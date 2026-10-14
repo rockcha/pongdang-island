@@ -15,3 +15,8 @@ export async function manageTank(tankId:string, action:'rename'|'equip', value:s
 export function backgroundUrl(path:string) {
  return createClient().storage.from('aquarium-backgrounds').getPublicUrl(path).data.publicUrl
 }
+export async function placeCollectible(id:string,tankId:string,x:number,y:number){
+ const {data,error}=await createClient().rpc('place_collectible',{p_collectible_id:id,p_tank_id:tankId,p_x:x,p_y:y})
+ if(error)throw error
+ return data
+}

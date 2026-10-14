@@ -74,7 +74,7 @@ export function SocialProvider({ children }: { children: ReactNode }) {
               const notification = payload.new as AppNotification
               if (!seen.has(notification.id)) {
                 seen.add(notification.id)
-                toast.info(notification.title, { id: notification.id, description: `${notification.category === 'friend' ? '친구' : '소식'} · ${notification.body}` })
+                toast.info(notification.title, { id: notification.id, description: `${notification.category === 'friend' ? '친구' : notification.category==='gift'?'선물':'소식'} · ${notification.body}`,action:notification.gift_id?{label:'선물 보기',onClick:()=>{window.location.assign(`/notifications?gift=${notification.gift_id}`)}}:undefined })
               }
               schedule()
             })

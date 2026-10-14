@@ -42,7 +42,7 @@ beforeAll(async () => {
   `)
   for (const file of [
     '01-profiles/01-tables.sql', '02-friends/01-tables.sql', '03-notifications/01-tables.sql',
-    '04-functions/01-social-api.sql', '05-realtime/01-publication.sql', '06-avatars/01-avatar-storage.sql', '07-friend-removal/01-remove-friend.sql', '08-gold/01-wallet.sql', '09-aquarium/01-backgrounds.sql', '10-aquarium-tanks/01-tanks.sql', '11-regions/01-regions.sql', '12-region-travel/01-travel.sql', '13-fishing/01-fishing.sql', '14-bait-catalog/01-baits.sql', '15-collectibles/01-collectibles.sql', '16-cartoon-collectibles/01-cartoon-collectibles.sql', '17-collectible-paths/01-paths.sql',
+    '04-functions/01-social-api.sql', '05-realtime/01-publication.sql', '06-avatars/01-avatar-storage.sql', '07-friend-removal/01-remove-friend.sql', '08-gold/01-wallet.sql', '09-aquarium/01-backgrounds.sql', '10-aquarium-tanks/01-tanks.sql', '11-regions/01-regions.sql', '12-region-travel/01-travel.sql', '13-fishing/01-fishing.sql', '14-bait-catalog/01-baits.sql', '15-collectibles/01-collectibles.sql', '16-cartoon-collectibles/01-cartoon-collectibles.sql', '17-collectible-paths/01-paths.sql', '22-aquarium-management/01-management.sql', '23-collectible-gifts/01-gifts.sql',
   ]) {
     const legacyId='99999999-9999-9999-9999-999999999999'
     if(file.startsWith('15-')) {
@@ -67,8 +67,106 @@ beforeAll(async () => {
     codes.push((profile.rows[0] as { friend_code: string }).friend_code)
   }
 }, 60000)
-beforeEach(async () => { await db.exec('truncate public.fishing_attempts; truncate public.player_collectibles cascade; truncate public.player_discoveries; update app_private.region_settings set test_lock_controls=true; truncate public.player_navigation; truncate public.player_map_fragments; truncate public.aquarium_tanks cascade; truncate public.player_aquariums; truncate public.owned_aquarium_backgrounds; truncate public.gold_transactions; truncate public.player_wallets; update app_private.gold_settings set test_charge_enabled=true; truncate public.friend_requests cascade; truncate public.notifications; truncate storage.objects; update public.player_profiles set avatar_path=null') })
+beforeEach(async () => { await db.exec('truncate public.collectible_gifts cascade; truncate public.fishing_attempts; truncate public.player_collectibles cascade; truncate public.player_discoveries; update app_private.region_settings set test_lock_controls=true; truncate public.player_navigation; truncate public.player_map_fragments; truncate public.aquarium_tanks cascade; truncate public.player_aquariums; truncate public.owned_aquarium_backgrounds; truncate public.gold_transactions; truncate public.player_wallets; update app_private.gold_settings set test_charge_enabled=true; truncate public.friend_requests cascade; truncate public.notifications; truncate storage.objects; update public.player_profiles set avatar_path=null') })
 afterAll(async () => { await db.close() })
+
+describe('collectible gift escrow, receipt and reactions',()=>{
+ async function setup(){
+  const request=await send();await respond(1,request,'accept')
+  await asUser(ids[0],'select public.aquarium_state()')
+  const tank=(await db.query<{id:string}>('select id from public.aquarium_tanks where user_id=$1',[ids[0]])).rows[0].id
+  const item=(await db.query<{id:string}>("insert into public.player_collectibles(user_id,species_id,tank_id) values($1,'pongul',$2) returning id",[ids[0],tank])).rows[0].id
+  return {request,item,tank}
+ }
+ async function gift(item:string){return (await asUser(ids[0],'select public.send_collectible_gift($1,$2,$3,$4) as gift',[ids[1],[item],'함께 헤엄치자!','aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'])).rows[0] as {gift:{id:string;status:string;message:string}}
+ }
+ it('reserves one existing individual, claims once and replies once without notification duplication',async()=>{
+  const {item}=await setup(),sent=await gift(item)
+  expect(sent.gift).toMatchObject({status:'pending',message:'함께 헤엄치자!'})
+  expect((await gift(item)).gift.id).toBe(sent.gift.id)
+  expect((await asUser(ids[0],'select * from public.player_collectibles')).rows).toHaveLength(0)
+  expect((await asUser(ids[1],'select * from public.player_collectibles')).rows).toHaveLength(0)
+  await expect(asUser(ids[1],'select public.sell_collectibles($1,$2)',[[item],'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb'])).rejects.toThrow('COLLECTIBLE_NOT_FOUND')
+  await expect(asUser(ids[1],'select public.react_to_collectible_gift($1,$2)',[sent.gift.id,'heart'])).rejects.toThrow('GIFT_NOT_CLAIMED')
+  await asUser(ids[1],'select public.claim_collectible_gift($1)',[sent.gift.id])
+  await asUser(ids[1],'select public.claim_collectible_gift($1)',[sent.gift.id])
+  const received=(await asUser(ids[1],'select * from public.player_collectibles')).rows
+  expect(received).toHaveLength(1);expect(received[0]).toMatchObject({id:item,user_id:ids[1],escrow_gift_id:null})
+  expect((await db.query('select * from public.player_discoveries where user_id=$1',[ids[1]])).rows).toHaveLength(1)
+  await asUser(ids[1],'select public.react_to_collectible_gift($1,$2)',[sent.gift.id,'thumbs_up'])
+  await asUser(ids[1],'select public.react_to_collectible_gift($1,$2)',[sent.gift.id,'thumbs_up'])
+  await expect(asUser(ids[1],'select public.react_to_collectible_gift($1,$2)',[sent.gift.id,'heart'])).rejects.toThrow('GIFT_ALREADY_REACTED')
+  expect((await db.query("select kind,title from public.notifications where category='gift' order by kind")).rows).toEqual([{kind:'gift_claimed',title:'선물을 받았어요'},{kind:'gift_reaction',title:'따봉을 보냈어요'},{kind:'gift_received',title:'선물을 받았습니다'}])
+ })
+ it('restricts participants and friendship, validates requests and preserves privacy',async()=>{
+  const {item}=await setup()
+  await expect(asUser(ids[0],'select public.send_collectible_gift($1,$2,$3,$4)',[ids[2],[item],'','aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'])).rejects.toThrow('GIFT_FRIEND_REQUIRED')
+  await expect(asUser(ids[0],'select public.send_collectible_gift($1,$2,$3,$4)',[ids[0],[item],'','aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'])).rejects.toThrow('INVALID_RECIPIENT')
+  await expect(asUser(ids[0],'select public.send_collectible_gift($1,$2,$3,$4)',[ids[1],[item,item],'','aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'])).rejects.toThrow('INVALID_GIFT')
+  await expect(asUser(ids[0],'select public.send_collectible_gift($1,$2,$3,$4)',[ids[1],[item],'a'.repeat(301),'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'])).rejects.toThrow('INVALID_GIFT')
+  const sent=await gift(item)
+  await expect(asUser(ids[0],'select public.send_collectible_gift($1,$2,$3,$4)',[ids[1],[item],'다른 메모','aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'])).rejects.toThrow('OPERATION_CONFLICT')
+  await expect(asUser(ids[2],'select public.gift_detail($1)',[sent.gift.id])).rejects.toThrow('GIFT_NOT_FOUND')
+  await expect(asUser(ids[0],'select public.claim_collectible_gift($1)',[sent.gift.id])).rejects.toThrow('GIFT_NOT_FOUND')
+  expect((await asUser(ids[2],'select * from public.collectible_gifts')).rows).toHaveLength(0)
+  await expect(asUser(ids[1],"update public.collectible_gifts set status='claimed'")).rejects.toThrow('permission denied')
+ })
+ it('keeps gifts receivable after friendship ends or the sender account is deleted',async()=>{
+  const {item,request}=await setup(),sent=await gift(item)
+  await asUser(ids[0],'select public.remove_friend($1)',[request])
+  await db.query('delete from auth.users where id=$1',[ids[0]])
+  await asUser(ids[1],'select public.claim_collectible_gift($1)',[sent.gift.id])
+  expect((await asUser(ids[1],'select * from public.player_collectibles')).rows).toHaveLength(1)
+  // Restore fixture account for subsequent tests.
+  await db.query('insert into auth.users(id,raw_user_meta_data) values($1,$2)',[ids[0],JSON.stringify({game_nickname:'낚시꾼0'})])
+  const result=await asUser(ids[0],'select * from public.sync_player_profile()');codes[0]=(result.rows[0] as {friend_code:string}).friend_code
+ })
+})
+
+describe('aquarium placement and collectible sales',()=>{
+ async function owned(user=0,species='pongul'){
+  await asUser(ids[user],'select public.aquarium_state()')
+  const tank=(await db.query<{id:string}>('select id from public.aquarium_tanks where user_id=$1',[ids[user]])).rows[0].id
+  const id=(await db.query<{id:string}>('insert into public.player_collectibles(user_id,species_id,tank_id) values($1,$2,$3) returning id',[ids[user],species,tank])).rows[0].id
+  return {id,tank}
+ }
+ it('sells an exact batch once, updates gold and preserves discoveries',async()=>{
+  const a=await owned(),b=await owned()
+  await db.query("insert into public.player_discoveries(user_id,species_id) values($1,'pongul')",[ids[0]])
+  const operation='aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
+  const first=await asUser(ids[0],'select public.sell_collectibles($1,$2) as result',[[b.id,a.id],operation])
+  expect(first.rows[0]).toMatchObject({result:{delta:80,gold:80}})
+  const replay=await asUser(ids[0],'select public.sell_collectibles($1,$2) as result',[[a.id,b.id],operation])
+  expect(replay.rows[0]).toMatchObject({result:{delta:0,gold:80}})
+  expect((await db.query('select * from public.player_collectibles where sold_at is null')).rows).toHaveLength(0)
+  expect((await db.query('select * from public.player_discoveries')).rows).toHaveLength(1)
+  expect((await db.query('select * from public.gold_transactions')).rows).toHaveLength(1)
+  await expect(asUser(ids[0],'select public.sell_collectibles($1,$2)',[[a.id],'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb'])).rejects.toThrow('COLLECTIBLE_NOT_FOUND')
+  await expect(asUser(ids[0],'select public.sell_collectibles($1,$2)',[[a.id],operation])).rejects.toThrow('OPERATION_CONFLICT')
+ })
+ it('rejects foreign ownership, duplicate IDs and invalid batches without partial sale',async()=>{
+  const own=await owned(),foreign=await owned(1)
+  const operation='aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
+  await expect(asUser(ids[0],'select public.sell_collectibles($1,$2)',[[own.id,foreign.id],operation])).rejects.toThrow('COLLECTIBLE_NOT_FOUND')
+  await expect(asUser(ids[0],'select public.sell_collectibles($1,$2)',[[own.id,own.id],operation])).rejects.toThrow('INVALID_TRADE')
+  expect((await db.query('select * from public.player_collectibles where sold_at is null')).rows).toHaveLength(2)
+  expect((await db.query('select * from public.gold_transactions')).rows).toHaveLength(0)
+  await db.query('insert into public.player_wallets(user_id,gold) values($1,1000000000) on conflict(user_id) do update set gold=excluded.gold',[ids[0]])
+  await expect(asUser(ids[0],'select public.sell_collectibles($1,$2)',[[own.id],operation])).rejects.toThrow('GOLD_LIMIT')
+  expect((await db.query('select sold_at from public.player_collectibles where id=$1',[own.id])).rows[0]).toEqual({sold_at:null})
+ })
+ it('persists owned placement only, validates coordinates and keeps RPCs private to signed-in users',async()=>{
+  const own=await owned(),foreign=await owned(1)
+  const placed=await asUser(ids[0],'select public.place_collectible($1,$2,$3,$4) as result',[own.id,own.tank,.3,.85])
+  expect(placed.rows[0]).toMatchObject({result:{id:own.id,position_x:.3,position_y:.85}})
+  await expect(asUser(ids[1],'select public.place_collectible($1,$2,$3,$4)',[own.id,foreign.tank,.2,.2])).rejects.toThrow('COLLECTIBLE_NOT_FOUND')
+  await expect(asUser(ids[0],'select public.place_collectible($1,$2,$3,$4)',[own.id,foreign.tank,.2,.2])).rejects.toThrow('TANK_NOT_FOUND')
+  await expect(asUser(ids[0],'select public.place_collectible($1,$2,$3,$4)',[own.id,own.tank,2,.2])).rejects.toThrow('INVALID_POSITION')
+  const permissions=await db.query("select has_function_privilege('anon','public.sell_collectibles(uuid[],uuid)','execute') as sale,has_function_privilege('anon','public.place_collectible(uuid,uuid,numeric,numeric)','execute') as placement")
+  expect(permissions.rows[0]).toEqual({sale:false,placement:false})
+  await expect(asUser(ids[0],'update public.player_collectibles set position_x=.1 where id=$1',[own.id])).rejects.toThrow('permission denied')
+ })
+})
 
 describe('friend and notification database permissions', () => {
   it('generates unique friend codes and limits profile browsing to related users', async () => {

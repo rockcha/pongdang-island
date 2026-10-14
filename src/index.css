@@ -268,3 +268,6 @@ button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 @media (prefers-reduced-motion: reduce) {
  .pongi-fishing[data-scene], .fishing-wait-dot { animation: none; background-position: 0% 0%; }
 }
+
+/* User convention: every button uses a pointer cursor, including disabled buttons. */
+button, [role='button'] { cursor: pointer; }

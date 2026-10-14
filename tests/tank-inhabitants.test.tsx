@@ -1,34 +1,32 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
-import { TankInhabitants } from '@/features/aquarium/tank-inhabitants'
-import type { OwnedCollectible, Species } from '@/features/collection/api'
+import { TankInhabitants } from '../src/features/aquarium/tank-inhabitants'
+import type { OwnedCollectible } from '../src/features/collection/api'
 
-vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>`/assets/${path}`}))
-let tick:FrameRequestCallback
+const mock=vi.hoisted(()=>({setItems:vi.fn(),resize:vi.fn(),setReduced:vi.fn(),setVisible:vi.fn(),destroy:vi.fn(),create:vi.fn()}))
+vi.mock('../src/features/aquarium/phaser-tank',()=>({createTankRenderer:mock.create}))
 beforeEach(()=>{
- vi.spyOn(performance,'now').mockReturnValue(1000)
- vi.stubGlobal('requestAnimationFrame',vi.fn((callback:FrameRequestCallback)=>{tick=callback;return 1}))
- vi.stubGlobal('cancelAnimationFrame',vi.fn())
- vi.stubGlobal('ResizeObserver',class{observe(){} disconnect(){}})
+ vi.clearAllMocks();mock.create.mockReturnValue(mock)
+ vi.stubGlobal('ResizeObserver',class{observe(){}disconnect(){}})
+ vi.stubGlobal('IntersectionObserver',class{observe(){}disconnect(){}})
  vi.stubGlobal('matchMedia',()=>({matches:false,addEventListener(){},removeEventListener(){}}))
 })
-afterEach(()=>{cleanup();vi.restoreAllMocks();vi.unstubAllGlobals()})
-function item(kind:Species['kind']):OwnedCollectible{
- return {id:kind,user_id:'me',species_id:kind,tank_id:'tank',animation_seed:0,position_x:null,position_y:null,acquired_at:'now',species:{id:kind,kind,name:kind,description:'',swim_y_min:0.2,swim_y_max:0.7,speed:0.05,size:72,rarity:'common',sprite_sheet_path:kind==='fish'?'fish/normal/pongul_sprite.png':null,thumbnail_path:`${kind}/${kind}_thumbnail.png`,sell_price:10}} as OwnedCollectible
-}
-it('shows exactly one quadrant at a time in the four-frame sheet without moving the sheet element',()=>{
- const view=render(<TankInhabitants items={[item('fish')]}/>)
- const sheet=view.container.querySelector<HTMLElement>('[data-fish-sheet]')!
- expect(sheet.style.backgroundImage).toContain('/assets/fish/normal/pongul_sprite.png')
- expect(sheet.style.backgroundSize).toBe('200% 200%')
- expect(view.container.querySelectorAll('img')).toHaveLength(0)
- for(const [time,position] of [[1000,'0% 0%'],[1210,'100% 0%'],[1410,'0% 100%'],[1610,'100% 100%']] as const){tick(time);expect(sheet.style.backgroundPosition).toBe(position);expect(sheet.style.transform).toBe('')}
+afterEach(()=>{cleanup();vi.unstubAllGlobals()})
+it('creates one renderer and updates the collection without restarting it, then destroys it',async()=>{
+ const first={id:'fish-a',species:{name:'멸치'}} as OwnedCollectible
+ const second={id:'fish-b',species:{name:'상어'}} as OwnedCollectible
+ const view=render(<TankInhabitants items={[first]}/> )
+ await waitFor(()=>expect(mock.create).toHaveBeenCalledOnce())
+ view.rerender(<TankInhabitants items={[first,second]}/> )
+ expect(mock.setItems).toHaveBeenLastCalledWith([first,second])
+ expect(mock.create).toHaveBeenCalledOnce()
+ expect(screen.getByText('상어')).toBeTruthy()
+ expect(view.container.firstElementChild?.className).toContain('cursor-pointer')
+ view.unmount()
+ expect(mock.destroy).toHaveBeenCalledOnce()
 })
-it('uses thumbnails for trash and structures, rotating only trash',()=>{
- render(<TankInhabitants items={[item('trash'),item('structure')]}/>)
- const structure=screen.getByRole('img',{name:'structure'})
- const initial=structure.style.transform
- tick(2000)
- expect(structure.style.transform).toBe(initial)
- expect(screen.getByRole('img',{name:'trash'}).style.transform).toContain('rotate(25deg)')
+it('shows a helpful error when the renderer cannot start',async()=>{
+ mock.create.mockImplementation(()=>{throw new Error('renderer unavailable')})
+ render(<TankInhabitants items={[]}/> )
+ expect(await screen.findByRole('alert')).toHaveProperty('textContent','어항 화면을 시작하지 못했어요. 새로고침해주세요.')
 })

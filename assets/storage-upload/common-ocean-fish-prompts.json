@@ -1,0 +1,31 @@
+{
+  "generator": "built-in image_gen",
+  "reference": "collectibles/fish/epic/star-ray_thumbnail.png",
+  "species": [
+    {
+      "id": "silver-anchovy",
+      "name": "은빛 멸치",
+      "sprite": "Use case: stylized-concept. Game aquarium PNG asset. Match the user's attached purple ray illustration style: thick smooth dark chocolate brown outlines, soft glossy pastel shading, huge shiny dark brown eyes with white highlights, pink blush cheeks and tiny smiling mouth, cute chibi proportions. Reference is STYLE ONLY; depict the specified fish, not a ray. Face right, side view, full body including tail, no accessories, no stars, no text, no watermark. Genuine transparent alpha background, no checkerboard drawn, no scenery, no ground shadow. Subject: slender small anchovy, pearl silver body, pale sky blue back. Produce a square 2 by 2 sprite sheet with EXACTLY four equal square cells, no visible grid. Same single fish centered at identical scale and position inside each quadrant with generous transparent margins. Reading order frames: neutral tail, tail gently bent up, neutral tail, tail gently bent down; tiny pectoral fin motion only. Consistent body, eyes and markings across frames. Four fish total, one per cell, all face right."
+    },
+    {
+      "id": "striped-mackerel",
+      "name": "줄무늬 고등어",
+      "sprite": "Use case: stylized-concept. Game aquarium PNG asset. Match the user's attached purple ray illustration style: thick smooth dark chocolate brown outlines, soft glossy pastel shading, huge shiny dark brown eyes with white highlights, pink blush cheeks and tiny smiling mouth, cute chibi proportions. Reference is STYLE ONLY; depict the specified fish, not a ray. Face right, side view, full body including tail, no accessories, no stars, no text, no watermark. Genuine transparent alpha background, no checkerboard drawn, no scenery, no ground shadow. Subject: plump streamlined mackerel, pastel blue teal back with dark blue wavy stripes, ivory belly. Square 2x2 sprite sheet, EXACTLY four equal square quadrants without grid lines. One identical fish centered in each quadrant, identical scale and body position with 12% transparent margins inside EACH cell. Reading order: tail neutral, gently up, neutral, gently down. Only tail and small pectoral fin move. Four fish total, all facing right. Each cell must function independently as a square animation frame."
+    },
+    {
+      "id": "plump-horse-mackerel",
+      "name": "통통 전갱이",
+      "sprite": "Use case: stylized-concept. Game aquarium PNG asset. Match the user's attached purple ray illustration style: thick smooth dark chocolate brown outlines, soft glossy pastel shading, huge shiny dark brown eyes with white highlights, pink blush cheeks and tiny smiling mouth, cute chibi proportions. Reference is STYLE ONLY; depict the specified fish, not a ray. Face right, side view, full body including tail, no accessories, no stars, no text, no watermark. Genuine transparent alpha background, no checkerboard drawn, no scenery, no ground shadow. Subject: rounded horse mackerel, silver mint body and pale yellow forked tail. Square 2x2 sprite sheet, EXACTLY four equal square quadrants without grid lines. One identical fish centered in each quadrant, identical scale and body position with 12% transparent margins inside EACH cell. Reading order: tail neutral, gently up, neutral, gently down. Only tail and small pectoral fin move. Four fish total, all facing right. Each cell must function independently as a square animation frame."
+    },
+    {
+      "id": "sand-goby",
+      "name": "모래 망둑어",
+      "sprite": "Use case: stylized-concept. Game aquarium PNG asset. Match the user's attached purple ray illustration style: thick smooth dark chocolate brown outlines, soft glossy pastel shading, huge shiny dark brown eyes with white highlights, pink blush cheeks and tiny smiling mouth, cute chibi proportions. Reference is STYLE ONLY; depict the specified fish, not a ray. Face right, side view, full body including tail, no accessories, no stars, no text, no watermark. Genuine transparent alpha background, no checkerboard drawn, no scenery, no ground shadow. Subject: stubby sand goby, sandy beige body with little caramel spots, round pectoral fins. Square 2x2 sprite sheet, EXACTLY four equal square quadrants without grid lines. One identical fish centered in each quadrant, identical scale and body position with 12% transparent margins inside EACH cell. Reading order: tail neutral, gently up, neutral, gently down. Only tail and small pectoral fin move. Four fish total, all facing right. Each cell must function independently as a square animation frame."
+    },
+    {
+      "id": "round-filefish",
+      "name": "동글 쥐치",
+      "sprite": "Use case: stylized-concept. Game aquarium PNG asset. Match the user's attached purple ray illustration style: thick smooth dark chocolate brown outlines, soft glossy pastel shading, huge shiny dark brown eyes with white highlights, pink blush cheeks and tiny smiling mouth, cute chibi proportions. Reference is STYLE ONLY; depict the specified fish, not a ray. Face right, side view, full body including tail, no accessories, no stars, no text, no watermark. Genuine transparent alpha background, no checkerboard drawn, no scenery, no ground shadow. Subject: round laterally flat filefish, pastel pale apricot body, small mouth, small fins, tiny dorsal spine. Square 2x2 sprite sheet, EXACTLY four equal square quadrants without grid lines. One identical fish centered in each quadrant, identical scale and body position with 12% transparent margins inside EACH cell. Reading order: tail neutral, gently up, neutral, gently down. Only tail and small pectoral fin move. Four fish total, all facing right. Each cell must function independently as a square animation frame."
+    }
+  ]
+}

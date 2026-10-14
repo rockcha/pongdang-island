@@ -5,14 +5,15 @@ export type FriendRequest = {
   id: string; sender_id: string; recipient_id: string; status: RequestStatus
   created_at: string; updated_at: string; sender: Profile; recipient: Profile
 }
-export type NotificationCategory = 'friend' | 'general'
+export type NotificationCategory = 'friend' | 'general' | 'gift'
 export type AppNotification = {
   id: string; recipient_id: string; actor_id: string | null; category: NotificationCategory
-  kind: 'friend_request' | 'friend_accepted' | 'announcement' | 'reward' | 'system'
+  kind: 'friend_request' | 'friend_accepted' | 'announcement' | 'reward' | 'system' | 'gift_received' | 'gift_claimed' | 'gift_reaction'
+  gift_id?:string|null
   title: string; body: string; request_id: string | null; read_at: string | null; created_at: string
   request: Pick<FriendRequest, 'id' | 'sender_id' | 'recipient_id' | 'status'> | null
 }
-export type UnreadCounts = { friend: number; general: number }
+export type UnreadCounts = { friend: number; general: number; gift?:number }
 export function socialErrorMessage(cause: unknown): string {
   const text = String((cause as { message?: string } | null)?.message ?? '')
   const messages: Record<string, string> = {

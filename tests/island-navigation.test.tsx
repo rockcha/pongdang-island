@@ -1,4 +1,4 @@
-﻿import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { MemoryRouter, useLocation } from 'react-router'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { IslandNavigation } from '@/components/island-navigation'
@@ -14,7 +14,7 @@ describe('island side navigation',()=>{
     const dialog=await screen.findByRole('dialog')
     expect(dialog.getAttribute('data-side')).toBe('left')
     expect(within(dialog).getByRole('link',{name:/아쿠아리움/}).getAttribute('aria-current')).toBe('page')
-    expect(within(dialog).getByRole('link',{name:/우체통/}).textContent).toContain('3')
+    expect(within(dialog).getByRole('link',{name:/파도 우편함/}).textContent).toContain('3')
     expect(within(dialog).getByRole('link',{name:/퐁당마을/})).toBeTruthy()
     expect(within(dialog).getByRole('link',{name:/마이페이지/})).toBeTruthy()
   })

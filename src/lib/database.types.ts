@@ -31,6 +31,13 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      send_collectible_gift:{Args:{p_recipient_id:string;p_collectible_ids:string[];p_message:string;p_operation_id:string};Returns:import('@/features/gifts/api').GiftRecord}
+      claim_collectible_gift:{Args:{p_gift_id:string};Returns:import('@/features/gifts/api').GiftRecord}
+      react_to_collectible_gift:{Args:{p_gift_id:string;p_reaction:string};Returns:import('@/features/gifts/api').GiftRecord}
+      gift_mailbox:{Args:{p_direction?:string;p_offset?:number};Returns:import('@/features/gifts/api').GiftMailbox}
+      gift_detail:{Args:{p_gift_id:string};Returns:import('@/features/gifts/api').GiftRecord}
+      place_collectible: { Args: {p_collectible_id:string;p_tank_id:string;p_x:number;p_y:number}; Returns:{id:string;position_x:number;position_y:number} }
+      sell_collectibles: { Args: {p_collectible_ids:string[];p_operation_id:string}; Returns:import('@/features/gold/api').GoldState & {delta:number} }
       collection_state: { Args: Record<string, never>; Returns: import('@/features/collection/api').CollectionState }
       fishing_state: { Args: Record<string, never>; Returns: import('@/features/fishing/api').FishingState }
       buy_fishing_bait: { Args: { p_bait_id: string; p_operation_id: string }; Returns: import('@/features/gold/api').GoldState & { delta: number } }

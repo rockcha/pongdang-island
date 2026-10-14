@@ -46,3 +46,7 @@ Supabase SQL Editor에서 다음 파일을 순서대로 실행합니다. 최초 
 폴더 재배치: 16 적용 후 17-collectible-paths/01-paths.sql 실행. 종이름_sprite.png 및 종이름_thumbnail.png 형식, v2 제거. 기존 데이터 보존.
 
 공통 등급 폴더: fish/trash/map/structures 모두 normal·rare·epic·mythic으로 구분합니다. 기존 일반 쓰레기·지도·구조물 이미지는 각각 normal로 이동했습니다. 수정된 17 SQL을 재실행하면 DB 경로가 갱신됩니다.
+
+개체 관리: 16/17 뒤 [22 드래그 위치 저장·판매](22-aquarium-management/01-management.sql)를 실행합니다. 데이터 초기화 없음.
+
+선물: 22 뒤 [23 선물·파도 우편함](23-collectible-gifts/01-gifts.sql)을 실행합니다. 메모·수령·이모지 답장·선물 알림과 예약 개체 보호를 추가합니다. [적용 안내](23-collectible-gifts/README.md). 이미지 재업로드 없음.

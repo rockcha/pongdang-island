@@ -14,7 +14,7 @@ export const islandNavigation = [
   { to: '/harbor', label: '선착장', description: '새로운 바다로 떠나는 곳', icon: Anchor },
   { to: '/shop', label: '섬 상점', description: '작은 물건을 사고파는 곳', icon: Store },
   { to: '/friends', label: '만남의 등대', description: '친구를 만나고 인연을 이어가는 곳', icon: TowerControl },
-  { to: '/notifications', label: '우체통', description: '친구와 섬에서 도착한 소식', icon: Mail },
+  { to: '/notifications', label: '파도 우편함', description: '친구와 섬에서 도착한 소식과 선물', icon: Mail },
   { to: '/profile', label: '마이페이지', description: '닉네임과 아바타 꾸미기', icon: UserRound },
 ]
 
@@ -23,7 +23,7 @@ export function IslandNavigation() {
   const { pathname } = useLocation()
   const { session } = useAuth()
   const { profile,unread } = useSocial()
-  const count = unread.friend + unread.general
+  const count = unread.friend + unread.general + (unread.gift ?? 0)
   useEffect(() => { setOpen(false) },[pathname,session?.user.id])
   return <Sheet open={open} onOpenChange={setOpen}>
     <SheetTrigger render={<Button variant="ghost" size="icon" className="min-h-11 min-w-11" aria-label="섬 메뉴 열기" />}><Menu className="size-5" /></SheetTrigger>

@@ -1,0 +1,106 @@
+# 친구와 실시간 알림
+
+## 설치
+
+[SQL 순서](../../supabase/sql/README.md)에 따라 01~07 파일을 Supabase SQL Editor에서 실행한 뒤 verification 파일로 확인합니다. 원격 적용은 아직 수행하지 않았습니다.
+
+설치 확인 결과:
+- player_profiles, friend_requests, notifications 모두 RLS 활성화.
+- supabase_realtime Publication에 friend_requests, notifications 포함.
+- public RPC는 INVOKER, 보호된 구현 함수는 app_private의 DEFINER.
+- app_private는 Supabase Data API의 노출 스키마에 추가하지 않음.
+
+SQL은 프로필·친구·알림·함수·Realtime 폴더별로 나뉩니다. `src/lib/database.types.ts`는 현재 스키마를 표현하며, 실제 적용 후 Supabase CLI로 타입을 생성해 대체할 수 있습니다.
+
+## 프로필과 친구 관계
+
+친구는 중복 가능한 닉네임 대신 12자리 A~F/숫자 코드로 찾습니다. player_profiles는 이메일/비밀번호를 보관하지 않습니다. 모든 사용자를 목록으로 열거할 수 없으며 본인 또는 요청 관계가 있는 프로필만 직접 조회할 수 있습니다. 정확한 친구 코드 검색 RPC는 한 명의 표시용 프로필만 반환합니다.
+
+Auth의 game_nickname은 프로필 표시용으로만 동기화합니다. RPC는 auth.uid()로 본인을 결정합니다. nickname 설정을 마치고 앱을 열면 sync_player_profile이 친구 코드를 생성합니다. 닉네임이 바뀌어도 친구 코드는 유지됩니다.
+
+요청 상태:
+
+```mermaid
+stateDiagram-v2
+    [*] --> pending: 친구 코드로 요청
+    pending --> accepted: 수신자 수락
+    pending --> declined: 수신자 거절
+    pending --> cancelled: 발신자 취소
+    accepted --> removed: 당사자 친구 끊기
+```
+
+accepted 행이 친구 관계입니다. 거절/취소 이력은 재활성화하지 않고, 새 요청은 새 ID를 만듭니다. 예전 알림이 새 요청의 수락 버튼으로 바뀌지 않게 하기 위한 구조입니다. 친구 끊기는 accepted → removed로 처리합니다. 양 당사자만 실행할 수 있고 행 잠금으로 중복 처리를 막습니다. 이력은 유지하고 관련 알림은 읽음 처리하며 별도 해제 알림은 보내지 않습니다. 차단은 구현하지 않았습니다.
+
+- 자기 자신, 중복/역방향 pending, 이미 accepted인 관계는 차단.
+- 서버에서 발신자별 1분 5건, 미처리 발신 요청 30건, 같은 쌍의 재요청 1분 대기.
+- 발신자/쌍 기준 트랜잭션 잠금과 활성 쌍 UNIQUE 인덱스로 경쟁 요청을 제어.
+- 응답은 행 잠금으로 한 번만 처리. 거절 결과는 별도 알림으로 보내지 않음.
+
+## 두 알림 종류
+
+| category | kind | 생성 주체 | 수신자 |
+| --- | --- | --- | --- |
+| friend | friend_request | 친구 요청 RPC | 요청받은 사용자 |
+| friend | friend_accepted | 수락 RPC | 요청한 사용자 |
+| general | announcement / reward / system | DB 관리자 또는 신뢰된 서버 | 지정한 사용자 |
+
+알림함은 전체/친구/소식 탭, 분류별 안 읽은 개수, 개별/분류별 전체 읽음을 제공합니다. 최신 100건을 표시하지만 안 읽은 개수와 모두 읽음 처리는 전체 이력을 대상으로 합니다. 친구·요청 화면은 최신 활성 관계 500건을 표시합니다.
+
+notifications.read_at과 friend_requests.status는 독립적입니다. 읽음 표시는 요청을 수락/거절하지 않습니다. 요청 처리 시 서버가 기존 friend_request 알림을 읽음으로 바꿉니다. 친구 알림의 문구는 당시 닉네임이며 현재 친구 목록에는 재조회 시 최신 닉네임을 표시합니다.
+
+일반 알림을 테스트하려면 `supabase/sql/examples/send-general-notification.sql`의 UUID를 받는 사용자의 player_profiles.id로 바꿔 실행합니다. 일반 사용자에게 INSERT 권한을 주지 않습니다. 향후 운영 이벤트/보상 처리 서버에서 service-role 자격 증명으로 알림을 작성합니다. 브라우저의 VITE_*에는 service-role/secret 키를 넣지 않습니다. 알림은 보상 지급 권한이나 지급 내역 자체가 아닙니다.
+
+## Realtime 구현
+
+`src/features/social/social-provider.tsx`가 로그인 계정당 채널 하나를 유지합니다.
+
+- notifications INSERT/UPDATE: recipient_id 필터.
+- friend_requests INSERT/UPDATE: sender_id와 recipient_id 필터.
+- RLS가 실제 데이터 접근을 제한하며 클라이언트 필터만 보안에 의존하지 않음.
+- 프로필 동기화 후 구독을 열고 초기 데이터 조회. SUBSCRIBED 때 재조회해 구독 사이 빈틈 보완.
+- 신규 INSERT만 Sonner 토스트, 같은 ID 중복 토스트 방지. 기존 저장 알림을 불러올 때 토스트를 재생하지 않음.
+- 변경 이벤트는 120ms 동안 모아서 조회하며 늦게 끝난 이전 조회는 최신 데이터를 덮지 못함.
+- 다시 연결되거나 앱에 포커스/온라인/가시성 복귀 시 저장 상태 재조회.
+- 로그아웃/계정 변경 때 채널·타이머·이벤트 리스너 제거. 이전 계정 데이터는 즉시 가림.
+- 계정 삭제처럼 현재 기능 외부의 DELETE는 다음 재조회에서 반영. 앱을 닫았을 때의 OS 푸시는 별도 구현 대상.
+
+## 권한 설계
+
+- 요청은 양 당사자만 SELECT. 브라우저 INSERT/UPDATE/DELETE 없음.
+- 알림은 수신자만 SELECT와 UPDATE(read_at). 제목/내용/수신자/종류/요청 참조 변경 불가.
+- 친구 요청/상태 변경은 public INVOKER 래퍼 → app_private의 인증/당사자 검사를 거치는 DEFINER 함수.
+- DEFINER는 search_path를 비우고 완전한 스키마명을 사용. anon/PUBLIC 실행 권한은 제거.
+- 일반 알림은 관리자/서버만 작성. 미로그인 사용자는 세 테이블/RPC에 접근할 수 없음.
+
+## 검증
+
+자동:
+
+```bash
+npm test
+npm run build
+```
+
+SQL 테스트는 PGlite의 실제 PostgreSQL 엔진에서 auth.users/역할/auth.uid()를 최소 모사한 뒤 설치 SQL을 그대로 실행합니다. 다른 사용자 조회·위조 차단, 수락/거절/취소, 중복 방지, rate limit, Publication을 검증합니다. Supabase Realtime 서비스 전달 자체는 모의 테스트로 대체할 수 없습니다.
+
+원격 적용 후:
+
+1. 서로 다른 브라우저/시크릿 창에서 A/B 계정으로 로그인하고 닉네임 설정.
+2. 친구 화면에서 각자 친구 코드 확인. A가 B 코드로 요청.
+3. B의 친구 토스트, 친구 탭, 안 읽은 배지와 받은 요청 확인.
+4. 알림만 읽음 처리했을 때 요청이 pending으로 남는지 확인.
+5. B가 수락하면 A에 수락 알림, 양쪽 친구 목록 갱신 확인.
+6. 다른 두 계정으로 거절/취소 확인. 거절 알림은 발신자에게 없음.
+7. 관리자 SQL로 A에게 일반 알림을 넣어 소식 탭/토스트/배지 확인. B에게는 보이지 않아야 함.
+8. 탭을 닫았다가 다시 열어 저장 이력 확인. 오프라인/재접속, 로그아웃/계정 변경도 확인.
+
+오류 시 먼저 SQL 전체 적용, Publication, 로그인 사용자, 프로필 동기화와 RLS를 확인합니다. 앱은 SQL 미적용/네트워크 실패 시 재시도 가능한 오류를 표시하며 로그인 자체는 유지합니다.
+
+공식 자료:
+- https://supabase.com/docs/guides/realtime/postgres-changes
+- https://supabase.com/docs/guides/database/postgres/row-level-security
+- https://supabase.com/docs/guides/database/functions
+
+## 만남의 등대
+
+경로는 /friends입니다. 친구·요청·친구 찾기 탭을 제공합니다. 친구 끊기는 remove-friend-button.tsx의 shadcn AlertDialog 확인 후 public.remove_friend RPC를 호출합니다. 구현 SQL은 07-friend-removal/01-remove-friend.sql입니다. 기존 friend_requests UPDATE 구독으로 양쪽 목록을 재조회합니다. 재요청에는 기존 1분 대기 규칙을 적용합니다. SQL 테스트는 양 당사자의 해제, 제삼자·미인증 차단, 중복 처리 및 재요청을 검증합니다.

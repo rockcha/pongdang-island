@@ -1,0 +1,48 @@
+import { CollectionPage } from '@/features/collection/collection-page'
+import { RegionPage } from '@/features/regions/region-page'
+import { SailingPage } from '@/features/regions/sailing-page'
+import { ShopPage } from '@/features/gold/shop-page'
+import { Route, Routes } from 'react-router'
+import { AppLayout } from '@/layouts/app-layout'
+import { HomePage } from '@/pages/home-page'
+import { NotFoundPage } from '@/pages/not-found-page'
+import { AuthGuard } from '@/components/auth-guard'
+import { LoginPage } from '@/pages/login-page'
+import { NicknamePage } from '@/pages/nickname-page'
+import { EmailConfirmPage } from '@/pages/email-confirm-page'
+import { ForgotPasswordPage } from '@/pages/forgot-password-page'
+import { ResetPasswordPage } from '@/pages/reset-password-page'
+import { FriendsPage } from '@/features/friends/friends-page'
+import { NotificationsPage } from '@/features/notifications/notifications-page'
+import { ProfilePage } from '@/features/profile/profile-page'
+import { AquariumPage } from '@/pages/aquarium-page'
+import { HarborPage } from '@/pages/harbor-page'
+
+export function AppRoutes() {
+  return (
+    <Routes>
+      <Route element={<AppLayout />}>
+        <Route path="login" element={<LoginPage />} />
+        <Route path="auth/confirm" element={<EmailConfirmPage />} />
+        <Route path="forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="reset-password" element={<ResetPasswordPage />} />
+        <Route element={<AuthGuard />}>
+          <Route path="nickname" element={<NicknamePage />} />
+          <Route element={<AuthGuard requireNickname />}>
+            <Route index element={<HomePage />} />
+            <Route path="aquarium" element={<AquariumPage />} />
+            <Route path="collection" element={<CollectionPage />} />
+            <Route path="harbor" element={<HarborPage />} />
+            <Route path="sailing/:regionId" element={<SailingPage />} />
+            <Route path="region/:regionId" element={<RegionPage />} />
+            <Route path="shop" element={<ShopPage />} />
+            <Route path="friends" element={<FriendsPage />} />
+            <Route path="profile" element={<ProfilePage />} />
+            <Route path="notifications" element={<NotificationsPage />} />
+          </Route>
+        </Route>
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
+  )
+}

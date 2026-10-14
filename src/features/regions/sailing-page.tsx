@@ -1,0 +1,45 @@
+import { useEffect, useState } from 'react'
+import { Link, useNavigate, useParams } from 'react-router'
+import { useAuth } from '@/components/auth-provider'
+import { Button, buttonVariants } from '@/components/ui/button'
+import { loadRegionMap, travelRegion } from './api'
+import type { Region } from './api'
+import { pickSailingScene } from './sailing-scenes'
+export const SAILING_DURATION = 5000
+export function SailingPage() {
+ const {regionId}=useParams()
+ const {session}=useAuth()
+ const [attempt,setAttempt]=useState(0)
+ return <SailingJourney key={`${session?.user.id}:${regionId}:${attempt}`} regionId={regionId??''} retry={()=>setAttempt(v=>v+1)}/>
+}
+function SailingJourney({regionId,retry}:{regionId:string;retry:()=>void}) {
+ const navigate=useNavigate()
+ const [region,setRegion]=useState<Region|null>(null)
+ const [error,setError]=useState('')
+ const [scene]=useState(()=>pickSailingScene())
+ useEffect(()=>{
+  let active=true
+  let timer:ReturnType<typeof setTimeout>|undefined
+  async function start(){
+   try{
+    const map=await loadRegionMap()
+    if(!active)return
+    const target=map.regions.find(item=>item.id===regionId)
+    if(!target)throw new Error('지역을 찾을 수 없어요.')
+    if(!target.unlocked)throw new Error('지도 조각이 없어 이동할 수 없어요.')
+    if(map.currentRegion===regionId){navigate(`/region/${regionId}`,{replace:true});return}
+    setRegion(target)
+    // Cleanup prevents a departure from committing if the player leaves during the animation.
+    timer=setTimeout(()=>{
+     void travelRegion(regionId).then(()=>{if(active)navigate(`/region/${regionId}`,{replace:true})}).catch(()=>{if(active)setError('도착하지 못했어요. 연결과 지역 잠금을 확인해주세요.')})
+    },SAILING_DURATION)
+   }catch(cause){if(active)setError(cause instanceof Error?cause.message:'항로를 확인하지 못했어요.')}
+  }
+  void start()
+  return()=>{active=false;clearTimeout(timer)}
+ },[regionId,navigate])
+ return <section className="fixed inset-0 z-50 flex min-h-dvh flex-col items-center justify-center bg-gradient-to-b from-sky-50 via-cyan-50 to-teal-100 px-6 text-center" aria-busy={!error}>
+  {!error ? <><p className="text-xs tracking-widest text-teal-700">퐁이와 함께 떠나는 항해</p><div className="relative my-8"><div className="pongi-raft" data-scene={scene.id} style={{backgroundImage: `url("${scene.image}")`}} role="img" aria-label={scene.label}/><div className="mx-auto h-1 w-48 rounded-full bg-teal-300/30"/></div><h1 role="status" className="text-xl font-bold text-teal-950">{region?`${region.name}로 이동하는 중…`:'항로를 확인하는 중…'}</h1><p className="mt-3 text-sm text-teal-700">{scene.caption}</p><div className="mt-6 h-1 w-40 overflow-hidden rounded-full bg-teal-200/60">{region&&<div className="sailing-progress h-full bg-teal-500/60"/>}</div></> : <div role="alert" className="space-y-4"><h1 className="text-xl font-bold">항해를 잠시 멈췄어요</h1><p className="text-sm text-muted-foreground">{error}</p><Button onClick={retry}>다시 시도</Button></div>}
+  <Link to="/harbor" className={buttonVariants({variant:'ghost',className:'mt-8 min-h-11 text-teal-800'})}>선착장으로 돌아가기</Link>
+ </section>
+}

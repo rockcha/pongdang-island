@@ -1,0 +1,270 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource/gowun-dodum";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: var(--font-sans);
+    --font-sans: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+    --background: #f4fbfa;
+    --foreground: #183d43;
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: #147d92;
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: #147d92;
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --radius: 0.625rem;
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+  html {
+    @apply font-sans;
+    }
+}
+
+.app-shell {
+  min-height: 100svh;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: max(1.5rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
+}
+
+button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+[data-sonner-toaster][data-y-position="bottom"] {
+  bottom: max(1rem, env(safe-area-inset-bottom, 0px)) !important;
+}
+
+[data-sonner-toaster][data-x-position="right"] {
+  right: max(1rem, env(safe-area-inset-right, 0px)) !important;
+}
+
+@keyframes gold-change {
+  0% { opacity: 0; }
+  15%, 70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.gold-change { animation: gold-change 1.4s ease-out both; }
+.gold-change-number { -webkit-text-stroke: 0.35px currentColor; }
+.gold-change-gain {
+  color: #4ade80;
+  text-shadow: 0 0 8px rgb(34 197 94 / 40%), 0 0 22px rgb(34 197 94 / 35%), 0 0 42px rgb(34 197 94 / 22%);
+}
+.gold-change-loss {
+  color: #f87171;
+  text-shadow: 0 0 8px rgb(239 68 68 / 40%), 0 0 22px rgb(239 68 68 / 35%), 0 0 42px rgb(239 68 68 / 22%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .gold-change { animation: none; }
+}
+
+/* Shared rarity tokens: use these classes on future fish/items as well. */
+.rarity-common { color: #64748b; background: rgb(148 163 184 / 10%); border-color: rgb(148 163 184 / 30%); --rarity-glow: rgb(148 163 184 / 30%); }
+.rarity-rare { color: #2563eb; background: rgb(59 130 246 / 10%); border-color: rgb(59 130 246 / 30%); --rarity-glow: rgb(59 130 246 / 30%); }
+.rarity-epic { color: #9333ea; background: rgb(168 85 247 / 10%); border-color: rgb(168 85 247 / 30%); --rarity-glow: rgb(168 85 247 / 30%); }
+.rarity-mythic { color: #b45309; background: rgb(245 158 11 / 10%); border-color: rgb(245 158 11 / 30%); --rarity-glow: rgb(245 158 11 / 30%); }
+
+.pongi-raft {
+ width: min(72vw, 280px); aspect-ratio: 1;
+ background-image: url('/sprites/pongi-sailing.png');
+ background-size: 200% 200%; background-repeat: no-repeat;
+ animation: pongi-row 1.2s step-end infinite;
+}
+@keyframes pongi-row {
+ 0%, 100% { background-position: 0% 0%; }
+ 25% { background-position: 100% 0%; }
+ 50% { background-position: 0% 100%; }
+ 75% { background-position: 100% 100%; }
+}
+/* Register hull positions independently of paddles, flags and other moving parts. */
+.pongi-raft[data-scene="raft"] { animation-name: pongi-sailing-raft; }
+.pongi-raft[data-scene="telescope"] { animation-name: pongi-sailing-telescope; }
+.pongi-raft[data-scene="shell-map"] { animation-name: pongi-sailing-shell; }
+@keyframes pongi-sailing-raft {
+ 0%, 100% { background-position: 0% 0%; }
+ 25% { background-position: 97.767145% 0%; }
+ 50% { background-position: 0% 94.736842%; }
+ 75% { background-position: 98.405104% 95.374801%; }
+}
+@keyframes pongi-sailing-telescope {
+ 0%, 100% { background-position: 0% 0%; }
+ 25% { background-position: 96.491228% 0.159490%; }
+ 50% { background-position: 0.318979% 97.129187%; }
+ 75% { background-position: 96.491228% 97.448166%; }
+}
+@keyframes pongi-sailing-shell {
+ 0%, 100% { background-position: 0% 0%; }
+ 25% { background-position: 94.896332% 0%; }
+ 50% { background-position: 2.870813% 94.258373%; }
+ 75% { background-position: 97.767145% 94.258373%; }
+}
+.sailing-progress { animation: sailing-progress 5s linear forwards; transform-origin: left; }
+@keyframes sailing-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) {
+ .pongi-raft, /* Register hull positions independently of paddles, flags and other moving parts. */
+.pongi-raft[data-scene="raft"] { animation-name: pongi-sailing-raft; }
+.pongi-raft[data-scene="telescope"] { animation-name: pongi-sailing-telescope; }
+.pongi-raft[data-scene="shell-map"] { animation-name: pongi-sailing-shell; }
+@keyframes pongi-sailing-raft {
+ 0%, 100% { background-position: 0% 0%; }
+ 25% { background-position: 97.767145% 0%; }
+ 50% { background-position: 0% 94.736842%; }
+ 75% { background-position: 98.405104% 95.374801%; }
+}
+@keyframes pongi-sailing-telescope {
+ 0%, 100% { background-position: 0% 0%; }
+ 25% { background-position: 96.491228% 0.159490%; }
+ 50% { background-position: 0.318979% 97.129187%; }
+ 75% { background-position: 96.491228% 97.448166%; }
+}
+@keyframes pongi-sailing-shell {
+ 0%, 100% { background-position: 0% 0%; }
+ 25% { background-position: 94.896332% 0%; }
+ 50% { background-position: 2.870813% 94.258373%; }
+ 75% { background-position: 97.767145% 94.258373%; }
+}
+.sailing-progress { animation: none; }
+}
+
+.pongi-fishing {
+ width: min(65vw, 240px); aspect-ratio: 1;
+ background-size: 200% 200%; background-repeat: no-repeat;
+ animation: pongi-row 1.6s step-end infinite;
+}
+/* 627px cells: register the platform baseline and left edge before switching.
+   Offsets change the sampling window; the sprite box itself never moves. */
+.pongi-fishing[data-scene="rock"] { animation-name: pongi-fishing-rock; }
+.pongi-fishing[data-scene="pier"] { animation-name: pongi-fishing-pier; }
+.pongi-fishing[data-scene="float"] { animation-name: pongi-fishing-float; }
+@keyframes pongi-fishing-rock {
+ 0%, 100% { background-position: 0% 0%; }
+ 25% { background-position: 98.724083% 0.159490%; }
+ 50% { background-position: 2.870813% 94.098884%; }
+ 75% { background-position: 98.405104% 94.098884%; }
+}
+@keyframes pongi-fishing-pier {
+ 0%, 100% { background-position: 0% 0%; }
+ 25% { background-position: 98.405104% -0.159490%; }
+ 50% { background-position: 0% 93.620415%; }
+ 75% { background-position: 98.086124% 92.982456%; }
+}
+@keyframes pongi-fishing-float {
+ 0%, 100% { background-position: 0% 0%; }
+ 25% { background-position: 98.405104% 0%; }
+ 50% { background-position: 0% 93.460925%; }
+ 75% { background-position: 97.767145% 93.460925%; }
+}
+.pongi-fishing.pongi-fishing-still { animation: none; background-position: 0% 0%; }
+.fishing-wait-dot { animation: fishing-wait-pulse 1.2s ease-in-out infinite; }
+@keyframes fishing-wait-pulse { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+ .pongi-fishing[data-scene], .fishing-wait-dot { animation: none; background-position: 0% 0%; }
+}

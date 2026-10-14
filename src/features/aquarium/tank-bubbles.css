@@ -1,0 +1,21 @@
+.tank-bubble-lane {
+ position: absolute;
+ inset: 0;
+ animation: tank-bubble-rise linear infinite;
+}
+.tank-bubble {
+ position: absolute;
+ bottom: 0;
+ border: 1px solid rgb(255 255 255 / 38%);
+ border-radius: 50%;
+ background: radial-gradient(circle at 30% 25%, rgb(255 255 255 / 28%), transparent 65%);
+}
+@keyframes tank-bubble-rise {
+ 0% { transform: translate3d(0, 5%, 0); opacity: 0; }
+ 12% { opacity: .55; }
+ 80% { opacity: .45; }
+ 100% { transform: translate3d(10px, -105%, 0); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .tank-bubble-lane { animation: none; opacity: 0; }
+}

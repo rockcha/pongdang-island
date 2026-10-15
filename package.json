@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "storage:upload": "node scripts/upload-collectibles.mjs",
     "test": "vitest run",
     "dev": "vite",
     "build": "tsc -b && vite build",

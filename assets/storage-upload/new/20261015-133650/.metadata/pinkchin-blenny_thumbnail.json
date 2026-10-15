@@ -1,0 +1,12 @@
+{
+  "id": "pinkchin-blenny",
+  "name": "분홍턱 베도라치",
+  "rarity": "common",
+  "native_region_id": "coral",
+  "file": "fish/normal/pinkchin-blenny_thumbnail.png",
+  "storage_path": "fish/normal/pinkchin-blenny_thumbnail.png",
+  "prompt": "Use case: stylized-concept. New collectible for a cozy Korean mobile aquarium game. STYLE REFERENCE ONLY; do not draw the reference character or reference background. Match the reference's CUTE CARTOON style: rounded plump proportions, clean strong dark-brown outlines, warm layered cel-painted shading, large expressive glossy eyes where appropriate, friendly clear silhouette. NOT a realistic scientific illustration, not fine anatomical realism. No otter ears/fur/accessories. Subject: A cute plump cream-colored BLENNY fish with rosy pink chin and cheeks, wide curious glossy eyes, two short branched coral-like head cirri, pale peach fins, round tapered body and stubby tail, side view facing LEFT. ONE single complete subject centered on a square canvas with transparent padding. Genuine ALPHA TRANSPARENT PNG, no checkerboard, black background, scene, rocks, floor, water, bubbles, cast shadow, text, labels, screen UI or watermark. ",
+  "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "reference_role": "style only",
+  "tool": "built-in image_gen"
+}

@@ -1,0 +1,12 @@
+{
+  "id": "coralfan-butterflyfish",
+  "name": "산호부채 나비고기",
+  "rarity": "rare",
+  "native_region_id": "coral",
+  "file": "fish/rare/coralfan-butterflyfish_thumbnail.png",
+  "storage_path": "fish/rare/coralfan-butterflyfish_thumbnail.png",
+  "prompt": "Use case: stylized-concept. New collectible for a cozy Korean mobile aquarium game. STYLE REFERENCE ONLY; do not draw the reference character or reference background. Match the reference's CUTE CARTOON style: rounded plump proportions, clean strong dark-brown outlines, warm layered cel-painted shading, large expressive glossy eyes where appropriate, friendly clear silhouette. NOT a realistic scientific illustration, not fine anatomical realism. No otter ears/fur/accessories. Subject: A rounded BUTTERFLYFISH with tall disk-shaped peach body, soft mint curved bands and cream patches, coral-pink fan-like dorsal and anal fins, small pointed mouth and cute glossy eye, refined warm cartoon detail. Side view facing LEFT. ONE single complete subject centered on a square canvas with transparent padding. Genuine ALPHA TRANSPARENT PNG, no checkerboard, black background, scene, rocks, floor, water, bubbles, cast shadow, text, labels, screen UI or watermark. ",
+  "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "reference_role": "style only",
+  "tool": "built-in image_gen"
+}

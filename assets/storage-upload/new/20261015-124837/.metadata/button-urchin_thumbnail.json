@@ -1,0 +1,12 @@
+{
+  "id": "button-urchin",
+  "name": "단추 성게",
+  "rarity": "common",
+  "movement_type": "crawl",
+  "flip_with_direction": false,
+  "file": "fish/normal/button-urchin_thumbnail.png",
+  "storage_path": "fish/normal/button-urchin_thumbnail.png",
+  "prompt": "Use case: stylized-concept. Create a NEW aquarium game asset, not the reference character. Match the REFERENCE illustration's friendly CARTOON visual language: chunky rounded simplified silhouette, strong clean dark brown outlines, bold appealing shapes, expressive oversized glossy eyes if the animal has eyes, warm layered hand-painted cel shading and broad clean highlights. Cute stylized mobile-game character, NOT scientific drawing, realistic rendering, fine anatomical filaments or washed-out watercolor. No otter traits or otter accessories. Subject: A small round chestnut-brown SEA URCHIN like a button, dense SHORT blunt warm brown and tan spines in a neat round mound, no eyes or face. Three-quarter front view. Front or top three-quarter view, upright, same orientation throughout. COMMON grade: especially round, lovable and strongly cartoonified, natural recognizable base colors; shrimp must be plump and simplified with BIG friendly eyes and short thick readable legs rather than realistic thin anatomy.  OUTPUT a single animal centered on a square canvas, entire body and appendages inside central 75% of canvas. True transparent background, no ground, scenery, bubbles, cast shadow, words, watermarks, grid, labels.",
+  "reference_role": "Pongi: cartoon style only",
+  "tool": "built-in image_gen"
+}

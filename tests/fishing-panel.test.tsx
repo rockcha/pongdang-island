@@ -10,6 +10,13 @@ vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wa
 const bait={id:'bait',name:'퐁당 지렁이',description:'퐁당섬의 선홍빛 지렁이',effect_kind:'fish',effect_description:'기본 확률',price:30,image_path:'/normal.png',common_bp:3000,rare_bp:1000,epic_bp:100,mythic_bp:30,failure_bp:5870}
 afterEach(()=>{cleanup();vi.clearAllMocks()})
 function setup(){load.mockResolvedValue({baits:[bait],items:[]});refresh.mockResolvedValue(undefined);return render(<MemoryRouter><FishingPanel regionId="pongdang"/></MemoryRouter>)}
+it('shows server-calculated region odds and the separate map chance',async()=>{
+ load.mockResolvedValue({regionId:'mistmoon',regionName:'안개달 해역',mapChanceBp:500,baits:[{...bait,common_bp:3347,rare_bp:660,epic_bp:107,mythic_bp:16}]})
+ render(<MemoryRouter><FishingPanel regionId="mistmoon"/></MemoryRouter>)
+ expect(await screen.findByText('안개달 해역 기준')).toBeTruthy()
+ expect(screen.getByText(/일반 33.47% · 희귀 6.6% · 특급 1.07% · 신화 0.16% · 실패 58.7%/)).toBeTruthy()
+ expect(screen.getByText(/지도 조각을 5% 확률/)).toBeTruthy()
+})
 it('buys one bait and shows failure with inventory refresh',async()=>{
  cast.mockResolvedValue({attempt:{operation_id:'test',rarity:null},replayed:false})
  setup();await screen.findByText('퐁당 지렁이')

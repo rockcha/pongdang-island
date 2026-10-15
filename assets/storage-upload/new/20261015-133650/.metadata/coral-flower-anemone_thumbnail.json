@@ -1,0 +1,12 @@
+{
+  "id": "coral-flower-anemone",
+  "name": "산호꽃 말미잘",
+  "rarity": "rare",
+  "native_region_id": "coral",
+  "file": "decorations/rare/coral-flower-anemone_thumbnail.png",
+  "storage_path": "decorations/rare/coral-flower-anemone_thumbnail.png",
+  "prompt": "Use case: stylized-concept. New collectible for a cozy Korean mobile aquarium game. STYLE REFERENCE ONLY; do not draw the reference character or reference background. Match the reference's CUTE CARTOON style: rounded plump proportions, clean strong dark-brown outlines, warm layered cel-painted shading, large expressive glossy eyes where appropriate, friendly clear silhouette. NOT a realistic scientific illustration, not fine anatomical realism. No otter ears/fur/accessories. Subject: A small sea ANEMONE ornament with thick soft pink tentacles ending in round flowerbud tips, cream peach center and small squat rosy base. Cluster of plush rounded tentacles curving gracefully upward. No face, no eyes, no rock, no fish, no sand or background. ONE single complete subject centered on a square canvas with transparent padding. Genuine ALPHA TRANSPARENT PNG, no checkerboard, black background, scene, rocks, floor, water, bubbles, cast shadow, text, labels, screen UI or watermark. ",
+  "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "reference_role": "style only",
+  "tool": "built-in image_gen"
+}

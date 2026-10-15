@@ -1,81 +1,62 @@
-import { BaitInventoryDialog } from '@/features/fishing/fishing-panel'
-import { useEffect, useRef, useState } from 'react'
-import { ChevronLeft, ChevronRight, LockKeyhole, Map, MapPin, Sailboat } from 'lucide-react'
+﻿import { useEffect, useState } from 'react'
+import { LockKeyhole, Map, Sailboat } from 'lucide-react'
 import { useNavigate } from 'react-router'
-import { toast } from 'sonner'
 import { useAuth } from '@/components/auth-provider'
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { RarityBadge } from '@/components/rarity-badge'
-import { loadRegionMap, regionImageUrl, setRegionTestLock } from '@/features/regions/api'
-import type { RegionMap } from '@/features/regions/api'
+import { CollectibleThumbnail } from '@/features/collection/collectible-thumbnail'
+import { loadHarborCatalog } from '@/features/regions/harbor-catalog'
+import type { CatalogEntry } from '@/features/collection/api'
+import { loadRegionMap, regionImageUrl } from '@/features/regions/api'
+import type { Region, RegionMap } from '@/features/regions/api'
+import { DestinationStrip } from '@/features/regions/destination-strip'
+import { regionIcons } from '@/features/regions/region-icons'
 
-function RegionImage({ path, name, locked }: { path:string; name:string; locked:boolean }) {
+function Landscape({region}:{region:Region}){
  const [failed,setFailed]=useState(false)
- useEffect(()=>setFailed(false),[path])
- return <div className="relative aspect-square overflow-hidden rounded-2xl bg-muted">{failed ? <div className="flex h-full items-center justify-center text-sm text-muted-foreground">지역 이미지를 준비 중이에요</div> : <img src={regionImageUrl(path)} alt={name} className={`h-full w-full object-cover ${locked?'grayscale brightness-75':''}`} onError={()=>setFailed(true)}/>} {locked&&<div className="absolute inset-0 flex items-center justify-center"><span className="rounded-full bg-black/35 p-3 text-white"><LockKeyhole className="size-7" aria-label="잠긴 지역"/></span></div>}</div>
+ return failed?<div className="absolute inset-0 grid place-items-center bg-secondary text-sm text-primary">지역 이미지를 준비 중이에요</div>:<img src={regionImageUrl(region.image_path)} alt={region.name} onError={()=>setFailed(true)} className={`absolute inset-0 size-full object-cover ${region.unlocked?'':'grayscale brightness-[0.35]'}`}/>
 }
-export function HarborPage() {
+export function HarborPage(){
  const {session}=useAuth()
  return <HarborMap key={session?.user.id??'guest'}/>
 }
-function HarborMap() {
+function HarborMap(){
  const navigate=useNavigate()
- const [open,setOpen]=useState(false)
  const [map,setMap]=useState<RegionMap|null>(null)
+ const [catalog,setCatalog]=useState<CatalogEntry[]>([])
+ const [catalogError,setCatalogError]=useState(false)
  const [index,setIndex]=useState(0)
- const [loading,setLoading]=useState(true)
- const [error,setError]=useState('')
- const [busy,setBusy]=useState(false)
- const active=useRef(true)
- const request=useRef(0)
- const lock=useRef(false)
- const touchX=useRef<number|null>(null)
- async function reload(reset=false){
-  const version=++request.current
-  setLoading(true);setError('')
-  try{const data=await loadRegionMap();if(!active.current||version!==request.current)return;setMap(data);if(reset)setIndex(Math.max(0,data.regions.findIndex(r=>r.id===data.currentRegion)))}
-  catch{if(active.current&&version===request.current)setError('지도를 불러오지 못했어요. 연결과 11 SQL 적용을 확인해주세요.')}
-  finally{if(active.current&&version===request.current)setLoading(false)}
- }
- useEffect(()=>{active.current=true;void reload(true);return()=>{active.current=false;request.current++}},[])
- const current=map?.regions.find(r=>r.id===map.currentRegion)
+ const [detail,setDetail]=useState<CatalogEntry|null>(null)
+ const [error,setError]=useState(false)
+ const [retry,setRetry]=useState(0)
+ useEffect(()=>{
+  let active=true;setError(false)
+  void loadRegionMap().then(data=>{if(active){setMap(data);setIndex(Math.max(0,data.regions.findIndex((r:Region)=>r.id==='pongdang')))}}).catch(()=>{if(active)setError(true)})
+  return()=>{active=false}
+ },[retry])
+ useEffect(()=>{
+  let active=true;setCatalogError(false)
+  void loadHarborCatalog().then(data=>{if(active)setCatalog(data)}).catch(()=>{if(active)setCatalogError(true)})
+  return()=>{active=false}
+ },[retry])
  const region=map?.regions[index]
- function step(direction:number){if(busy)return;setIndex(value=>Math.max(0,Math.min((map?.regions.length??1)-1,value+direction)))}
- function travel(){
-  if(!region||!region.unlocked||busy)return
-  setOpen(false)
-  navigate(region.id===map?.currentRegion?`/region/${region.id}`:`/sailing/${region.id}`)
- }
- async function toggleLock(){
-  if(!region||lock.current)return
-  lock.current=true;setBusy(true)
-  try{const data=await setRegionTestLock(region.id,region.unlocked);if(active.current)setMap(data)}
-  catch{toast.error('잠금 설정을 바꾸지 못했어요. 12 SQL과 테스트 설정을 확인해주세요.')}
-  finally{lock.current=false;if(active.current)setBusy(false)}
- }
- return <section className="space-y-6 py-6">
-  <header><h1 className="text-2xl font-bold">선착장</h1><p className="mt-2 text-sm text-muted-foreground">다음 바다에는 어떤 이야기가 기다릴까요?</p></header>
-  {current?<RegionImage path={current.image_path} name={current.name} locked={!current.unlocked}/>:<div className="flex aspect-square items-center justify-center rounded-2xl bg-sky-50"><Sailboat className="size-20 text-primary/50"/></div>}
-  <div className="flex items-center justify-between gap-2"><div><p className="mb-1 flex items-center gap-1 text-xs text-muted-foreground"><MapPin className="size-3"/>현재 지역</p><h2 className="text-lg font-semibold">{current?.name??(loading?'불러오는 중…':'지역을 확인해주세요')}</h2></div>{current&&<RarityBadge rarity={current.rarity}/>}</div>
-  {error&&!open&&<p role="alert" className="text-sm text-destructive">{error}</p>}
-  <Dialog open={open} onOpenChange={value=>{if(busy)return;setOpen(value);if(value)void reload(true)}}>
-   <DialogTrigger render={<Button className="min-h-12 w-full"/>}><Map className="size-4"/>지도 열기</DialogTrigger>
-   <DialogContent className="max-h-[90dvh] overflow-y-auto sm:max-w-sm">
-    <DialogHeader><DialogTitle>바다 지도</DialogTitle><DialogDescription>지역을 넘겨보며 새로운 항로를 찾아보세요.</DialogDescription></DialogHeader>
-    {loading&&<p role="status" className="text-sm text-muted-foreground">지도를 펼치는 중…</p>}
-    {error&&<div role="alert" className="space-y-2 text-sm text-destructive"><p>{error}</p><Button variant="outline" onClick={()=>void reload(true)}>다시 불러오기</Button></div>}
-    {region&&!loading&&!error&&<div className="space-y-4" onTouchStart={event=>{touchX.current=event.touches[0].clientX}} onTouchEnd={event=>{if(touchX.current!==null){const delta=event.changedTouches[0].clientX-touchX.current;if(Math.abs(delta)>50)step(delta<0?1:-1)}touchX.current=null}}>
-     <RegionImage path={region.image_path} name={region.name} locked={!region.unlocked}/>
-     <div aria-live="polite" className="space-y-3"><div className="flex items-center justify-between gap-2"><h3 className="text-lg font-bold">{region.name}</h3><RarityBadge rarity={region.rarity}/></div><p className="min-h-12 text-sm leading-6 text-muted-foreground">{region.description}</p></div>
-     <p className="flex items-center gap-1 text-xs text-muted-foreground">{!region.requires_map_fragment?'기본 항로':region.hasFragment?'지도 조각 보유':<><LockKeyhole className="size-3"/>지도 조각이 필요해요</>}</p>
-     <div className="flex items-center justify-between"><Button variant="outline" size="icon" className="min-h-11 min-w-11" aria-label="이전 지역" disabled={index===0||busy} onClick={()=>step(-1)}><ChevronLeft/></Button><span className="text-xs text-muted-foreground">{index+1} / {map?.regions.length}</span><Button variant="outline" size="icon" className="min-h-11 min-w-11" aria-label="다음 지역" disabled={index===(map?.regions.length??0)-1||busy} onClick={()=>step(1)}><ChevronRight/></Button></div>
-     <Button className="min-h-11 w-full" disabled={!region.unlocked||busy} onClick={()=>void travel()}>{busy?'이동 중…':region.id===map?.currentRegion?'현재 지역 둘러보기':!region.unlocked?'잠긴 항로':'이곳으로 이동'}</Button>
-     {map?.canTestLocks && region.requires_map_fragment && <div className="border-t pt-3"><Button variant="ghost" className="min-h-11 w-full text-xs text-muted-foreground" disabled={busy} onClick={()=>void toggleLock()}>{region.unlocked?'테스트: 지역 잠그기':'테스트: 지역 잠금 해제'}</Button></div>}
-    </div>}
-   </DialogContent>
-  </Dialog>
-  <BaitInventoryDialog />
-  <p className="text-xs leading-5 text-muted-foreground">지도 조각을 보유하면 새로운 항로가 열려요. 도착한 지역에서 낚시할 수 있어요.</p>
+ const natives=catalog.filter(item=>item.is_native&&item.native_region_id===region?.id)
+ function travel(){if(region?.unlocked)navigate(region.id===map?.currentRegion?`/region/${region.id}`:`/sailing/${region.id}`)}
+ return <section className="mx-auto flex min-h-0 w-full max-w-md flex-1 flex-col gap-3 overflow-hidden py-3">
+  <DestinationStrip>{map?.regions.map((item,i)=>{const fragment=catalog.find(s=>s.id===`map-${item.id}`);return <button key={item.id} aria-label={`${item.name} 지도 조각`} aria-pressed={index===i} onClick={()=>setIndex(i)} className={`harbor-map-piece relative isolate flex size-24 shrink-0 flex-col items-center justify-center gap-1 rounded-2xl p-2 outline-none focus-visible:ring-2 focus-visible:ring-ring ${index===i?'harbor-map-selected':''}`}><span className={item.unlocked?'':'grayscale brightness-[0.3] opacity-60'}>{fragment?<CollectibleThumbnail path={fragment.thumbnail_path} name={`${item.name} 지도`} className="size-20"/>:<Map className="m-2 size-14 text-primary/60"/>}</span>{!item.unlocked&&<LockKeyhole aria-hidden="true" className="absolute left-1/2 top-1/2 size-5 -translate-x-1/2 -translate-y-1/2 text-muted-foreground"/>}</button>})}</DestinationStrip>
+  {error?<div role="alert" className="space-y-3 rounded-2xl bg-muted p-5 text-sm"><p>항로를 불러오지 못했어요.</p><Button variant="outline" onClick={()=>setRetry(v=>v+1)}>다시 불러오기</Button></div>:!region?<p role="status" className="grid min-h-80 place-items-center text-sm text-muted-foreground">여행할 바다를 찾는 중…</p>:<>
+   <article aria-label="목적지" className="relative isolate flex min-h-0 flex-1 flex-col justify-end overflow-hidden bg-secondary p-4 text-white">
+    <Landscape key={region.id} region={region}/><div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/10 to-transparent"/>
+    <span className="absolute left-4 top-4 rounded-full bg-black/20 px-3 py-1.5 text-[11px] backdrop-blur-md">{region.id===map?.currentRegion?'현재 머무는 바다':region.unlocked?'탐험 가능한 바다':'아직 닿지 않은 바다'}</span>
+    {!region.unlocked&&<span className="absolute left-1/2 top-[28%] grid size-14 -translate-x-1/2 place-items-center rounded-full bg-black/25 backdrop-blur-sm"><LockKeyhole aria-label="잠긴 지역" className="size-6"/></span>}
+    <div className="relative space-y-2" aria-live="polite"><RarityBadge rarity={region.rarity}/><h3 className="flex items-center gap-2 text-xl font-bold tracking-tight">{regionIcons[region.id]&&<img src={regionIcons[region.id].src} alt="" className="size-7"/>}{region.name}</h3>{region.unlocked&&<p className="text-sm leading-6 text-white/80">{region.description}</p>}
+     {region.unlocked&&<div className="border-t border-white/20 pt-3"><p className="mb-2 text-[11px] text-white/70">이곳에서 만날 수 있어요 · 토착 개체</p><div className="flex gap-2 overflow-x-auto pb-1">{natives.map(item=><button key={item.id} aria-label={item.discovered?`${item.name} 살펴보기`:'미발견 토착 개체'} onClick={()=>setDetail(item)} className="grid size-12 shrink-0 place-items-center rounded-2xl bg-white/15 hover:bg-white/25"><span className={item.discovered?'':'brightness-0 opacity-50'}><CollectibleThumbnail path={item.thumbnail_path} name={item.discovered?item.name:'미발견 개체'} className="size-10"/></span></button>)}{!natives.length&&<span className="py-3 text-xs text-white/65">{catalogError?'개체 미리보기를 불러오지 못했어요.':'새로운 바다 친구들을 만나보세요.'}</span>}</div></div>}
+   <Button className="min-h-11 w-full rounded-xl" disabled={!region.unlocked} onClick={travel}>{region.unlocked?<><Sailboat className="size-4"/>{region.id===map?.currentRegion?'현재 바다에서 낚시하기':'항해하기'}</>:<><LockKeyhole className="size-4"/>잠긴 해역</>}</Button>{!region.unlocked&&<p className="text-center text-xs text-muted-foreground">{region.name} 지도 조각이 필요해요.</p>}
+    </div>
+   </article>
+
+  </>}
+  <Dialog open={!!detail} onOpenChange={open=>{if(!open)setDetail(null)}}><DialogContent className="rounded-3xl sm:max-w-sm"><DialogHeader><DialogTitle>{detail?.discovered?detail.name:'아직 만나지 못한 친구'}</DialogTitle><DialogDescription>{detail?.discovered?'이 바다에서만 만날 수 있는 토착 개체예요.':'이곳에서 낚시하며 어떤 친구인지 발견해보세요.'}</DialogDescription></DialogHeader>{detail&&<><div className={`mx-auto ${detail.discovered?'':'brightness-0 opacity-30'}`}><CollectibleThumbnail path={detail.thumbnail_path} name={detail.discovered?detail.name:'미발견 개체'} className="size-32"/></div><RarityBadge rarity={detail.rarity}/>{detail.discovered&&<p className="text-sm leading-6 text-muted-foreground">{detail.description}</p>}</>}</DialogContent></Dialog>
  </section>
 }

@@ -38,6 +38,8 @@ built-in image_gen 사용, 3:2 카툰 수중 배경, 중앙은 미래 물고기 
 최신 세로 배경: assets/storage-upload/aquarium-backgrounds-portrait/의 PNG 4개. 기존 스타일을 참고해 9:16 구도로 재생성했습니다. Storage의 기존 aquarium-backgrounds 버킷 루트에 같은 이름으로 교체하며 SQL 변경은 없습니다. 현재 화면 표시 비율은 별도 UI 변경 대상입니다.
 
 
-15 적용 후 어항은 세로 9:16 비율이며 실제 개체를 표시합니다. [유영/회전/구조물 및 첫 어항 자동 배치](collectibles.md).
+15 적용 후 어항은 세로 9:16 비율이며 실제 개체를 표시합니다. [유영/회전/장식물 및 첫 어항 자동 배치](collectibles.md).
 
 기본 기포 연출: src/features/aquarium/tank-bubbles.tsx 및 tank-bubbles.css. 어항 배경 위·개체 아래 6~11px 기포 12개가 서로 다른 주기로 천천히 올라갑니다. 모션 감소 설정에서는 숨깁니다. SQL/이미지 추가 없음.
+
+개체별 이동은 movement-settings.ts와 inhabitant-motion.ts에서 설정을 해석합니다. pulse는 개체마다 다른 느린 좌우 흐름과 얕은 상하 박동을 합쳐 사선 이동하며, crawl은 일정 높이 좌우 이동, fixed는 고정, travel_direction left/right는 반대편 재진입입니다. Phaser는 flip_with_direction을 적용하며 장식물의 편집 동작은 기존대로 유지합니다. [35 이동 설정](../../supabase/sql/35-collectible-movement/README.md).

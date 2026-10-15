@@ -1,0 +1,56 @@
+{
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "bucket": "collectibles",
+  "native_region_id": "mistmoon",
+  "assets": [
+    {
+      "id": "hazy-glass-marble",
+      "file": "hazy-glass-marble_thumbnail.png",
+      "storage_path": "trash/normal/hazy-glass-marble_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game asset. Clean dark brown outlines, softly rounded shapes, pastel silver, lavender and mist-blue palette, polished soft cel shading. Entire subject visible, centered square, small padding. True transparent background. No scenery, seabed, bubbles, text, letters, watermark, cast shadow. One isolated small old glass marble, cloudy frosted pale blue glass with one silver crescent-shaped swirl trapped inside and a tiny chipped edge. A humble found trash collectible, round, no face."
+    },
+    {
+      "id": "soaked-moonlight-postcard",
+      "file": "soaked-moonlight-postcard_thumbnail.png",
+      "storage_path": "trash/normal/soaked-moonlight-postcard_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game asset. Clean dark brown outlines, softly rounded shapes, pastel silver, lavender and mist-blue palette, polished soft cel shading. Entire subject visible, centered square, small padding. True transparent background. No scenery, seabed, bubbles, text, letters, watermark, cast shadow. One isolated small waterlogged postcard, softened slightly curled ragged cream paper, faded simple crescent moon and a few pale blue wave marks on the front, no readable writing, subtly lavender damp edges. Cute found trash collectible, no envelope, no face."
+    },
+    {
+      "id": "silver-mist-goby",
+      "file": "silver-mist-goby_thumbnail.png",
+      "storage_path": "fish/rare/silver-mist-goby_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game asset. Clean dark brown outlines, softly rounded shapes, pastel silver, lavender and mist-blue palette, polished soft cel shading. Entire subject visible, centered square, small padding. True transparent background. No scenery, seabed, bubbles, text, letters, watermark, cast shadow. One isolated small silver-mist GOBY fish in exact side view facing RIGHT, transparent silvery-blue body, small softly rounded fins tinted mist-blue, two tiny lavender dots near tail, large friendly dark eye. Recognizable short-bodied goby silhouette. Single fish, no glow aura."
+    },
+    {
+      "id": "crescent-seahorse",
+      "file": "crescent-seahorse_thumbnail.png",
+      "storage_path": "fish/rare/crescent-seahorse_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game asset. Clean dark brown outlines, softly rounded shapes, pastel silver, lavender and mist-blue palette, polished soft cel shading. Entire subject visible, centered square, small padding. True transparent background. No scenery, seabed, bubbles, text, letters, watermark, cast shadow. One isolated little lavender SEAHORSE in exact side view facing RIGHT, curled crescent-shaped tail, soft pale silver belly, small translucent ice-blue dorsal fin, tiny rounded crown and friendly dark eye. Short rounded snout. Single seahorse."
+    },
+    {
+      "id": "moon-sleep-waterlily",
+      "file": "moon-sleep-waterlily_thumbnail.png",
+      "storage_path": "decorations/rare/moon-sleep-waterlily_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game asset. Clean dark brown outlines, softly rounded shapes, pastel silver, lavender and mist-blue palette, polished soft cel shading. Entire subject visible, centered square, small padding. True transparent background. No scenery, seabed, bubbles, text, letters, watermark, cast shadow. One isolated small decorative WATER LILY blossom, layered silver-white rounded petals with faint lavender tips, a tiny pale blue center, resting on ONE small muted teal lily pad. Crafted magical aquarium decoration, subtle luminous center but no outside glow or sparkles. No face."
+    },
+    {
+      "id": "mist-bell-windchime",
+      "file": "mist-bell-windchime_thumbnail.png",
+      "storage_path": "decorations/rare/mist-bell-windchime_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game asset. Clean dark brown outlines, softly rounded shapes, pastel silver, lavender and mist-blue palette, polished soft cel shading. Entire subject visible, centered square, small padding. True transparent background. No scenery, seabed, bubbles, text, letters, watermark, cast shadow. One isolated small wind chime ornament: compact translucent lavender-blue glass bell with tiny silver hanging loop, short thin silver cord beneath holding one little ivory crescent-moon pendant. Delicate minimalist crafted decoration, clear simple silhouette, no lettering or face."
+    },
+    {
+      "id": "silver-mist-goby",
+      "file": "silver-mist-goby_sprite.png",
+      "storage_path": "fish/rare/silver-mist-goby_sprite.png",
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game asset. Clean dark brown outlines, softly rounded shapes, pastel silver, lavender and mist-blue palette, polished soft cel shading.  True transparent background. No scenery, seabed, bubbles, text, letters, watermark, cast shadow. One isolated small silver-mist GOBY fish in exact side view facing RIGHT, transparent silvery-blue body, small softly rounded fins tinted mist-blue, two tiny lavender dots near tail, large friendly dark eye. Recognizable short-bodied goby silhouette. Single fish, no glow aura. IMPORTANT OUTPUT: one square 2x2 ANIMATION SPRITE SHEET, four equal square cells, no borders or gutters. Same fish same body size and same central position in each cell, all face RIGHT. Four subtle swimming phases, only fins and tail change a little. Every cell full fish visible with padding. Transparent background everywhere; exactly 4 matching fish, one per cell. Not four different species."
+    },
+    {
+      "id": "crescent-seahorse",
+      "file": "crescent-seahorse_sprite.png",
+      "storage_path": "fish/rare/crescent-seahorse_sprite.png",
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game asset. Clean dark brown outlines, softly rounded shapes, pastel silver, lavender and mist-blue palette, polished soft cel shading.  True transparent background. No scenery, seabed, bubbles, text, letters, watermark, cast shadow. One isolated little lavender SEAHORSE in exact side view facing RIGHT, curled crescent-shaped tail, soft pale silver belly, small translucent ice-blue dorsal fin, tiny rounded crown and friendly dark eye. Short rounded snout. Single seahorse. IMPORTANT OUTPUT: one square 2x2 ANIMATION SPRITE SHEET, four equal square cells, no borders or gutters. Same fish same body size and same central position in each cell, all face RIGHT. Four subtle swimming phases, only fins and tail change a little. Every cell full fish visible with padding. Transparent background everywhere; exactly 4 matching fish, one per cell. Not four different species."
+    }
+  ]
+}

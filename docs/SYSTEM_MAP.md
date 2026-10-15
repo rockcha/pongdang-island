@@ -1,5 +1,9 @@
 # 퐁당섬 시스템 지도
 
+개체 그림체는 [저장된 등급별 참고 이미지](../assets/references/collectible-style/README.md)를 사용합니다. 일반·희귀는 퐁이 카툰풍, 특급·신화는 별빛 가오리 참고의 부드러운 판타지 일러스트풍입니다.
+
+개체 이미지 생성 작업은 [이미지 생성·업로드 규칙](../assets/storage-upload/README.md)을 따릅니다. 앞으로는 `assets/storage-upload/new/YYYYMMDD-HHmmss/` 아래에 버킷 내부의 종류·등급 폴더를 그대로 구성합니다(한국 시간).
+
 마지막 정리: 2026-10-14. React + Vite + TypeScript 모바일 PWA입니다. 기본 글꼴은 고운돋움이며 이메일/비밀번호 인증을 사용합니다.
 
 ## 기능별 진입점
@@ -98,8 +102,8 @@
 
 
 
-카툰 개체: 15 다음 16-cartoon-collectibles/01-cartoon-collectibles.sql 추가 실행. 총 7종(등급별 물고기 4 + 일반 지도/구조물/쓰레기). 물고기 sprite_sheet_path는 2×2 시트 한 장. collectibles 버킷의 fish/normal·rare·epic·mythic, map, structures, trash에 PNG 11개 업로드. 자세한 구조는 collectibles.md 참고.
+카툰 개체: 15 다음 16-cartoon-collectibles/01-cartoon-collectibles.sql 추가 실행. 총 7종(등급별 물고기 4 + 일반 지도/장식물/쓰레기). 물고기 sprite_sheet_path는 2×2 시트 한 장. collectibles 버킷의 fish/normal·rare·epic·mythic, map, decorations, trash에 PNG 11개 업로드. 자세한 구조는 collectibles.md 참고.
 
 폴더 재배치: 16 적용 후 17-collectible-paths/01-paths.sql 실행. 종이름_sprite.png 및 종이름_thumbnail.png 형식, v2 제거. 기존 데이터 보존.
 
-공통 등급 폴더: fish/trash/map/structures 모두 normal·rare·epic·mythic으로 구분합니다. 기존 일반 쓰레기·지도·구조물 이미지는 각각 normal로 이동했습니다. 수정된 17 SQL을 재실행하면 DB 경로가 갱신됩니다.
+공통 등급 폴더: fish/trash/map/decorations 모두 normal·rare·epic·mythic으로 구분합니다. 기존 일반 쓰레기·지도·장식물 이미지는 각각 normal로 이동했습니다. 수정된 17 SQL을 재실행하면 DB 경로가 갱신됩니다.

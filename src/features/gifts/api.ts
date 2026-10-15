@@ -12,5 +12,5 @@ export function giftError(cause:unknown){
 export async function sendGift(recipientId:string,ids:string[],message:string,operationId:string){const {data,error}=await createClient().rpc('send_collectible_gift',{p_recipient_id:recipientId,p_collectible_ids:ids,p_message:message,p_operation_id:operationId});if(error)throw error;return data}
 export async function loadGifts(direction:'received'|'sent',offset=0){const {data,error}=await createClient().rpc('gift_mailbox',{p_direction:direction,p_offset:offset});if(error)throw error;return data}
 export async function loadGift(id:string){const {data,error}=await createClient().rpc('gift_detail',{p_gift_id:id});if(error)throw error;return data}
-export async function claimGift(id:string){const {data,error}=await createClient().rpc('claim_collectible_gift',{p_gift_id:id});if(error)throw error;return data}
+export async function claimGift(id:string){const {data,error}=await createClient().rpc('claim_collectible_gift',{p_gift_id:id});if(error)throw error;if(typeof window!=='undefined')window.dispatchEvent(new Event('collectibles-changed'));return data}
 export async function reactToGift(id:string,reaction:GiftReaction){const {data,error}=await createClient().rpc('react_to_collectible_gift',{p_gift_id:id,p_reaction:reaction});if(error)throw error;return data}

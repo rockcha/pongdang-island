@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link,useSearchParams } from 'react-router'
+import { useSearchParams } from 'react-router'
 import { Bell,Gift,Inbox,UsersRound } from 'lucide-react'
 import { Tooltip,TooltipContent,TooltipProvider,TooltipTrigger } from '@/components/ui/tooltip'
 import { GiftMailbox,GiftDetailDialog } from '@/features/gifts/gift-mailbox'
@@ -30,7 +30,7 @@ export function NotificationsPage() {
     finally { setBusy(false) }
   }
   return <TooltipProvider><section className="space-y-5 py-6">
-    <div className="flex items-start justify-between gap-3"><div><h1 className="text-2xl font-bold">파도 우편함</h1><p role="status" className="mt-2 text-xs text-muted-foreground">{connection === 'live' ? '실시간으로 소식을 받고 있어요' : connection === 'connecting' ? '실시간 연결 중…' : '연결을 다시 확인하고 있어요'}</p></div><Link to="/friends" className="py-2 text-sm text-primary underline">만남의 등대</Link></div>
+    <p role="status" className="sr-only">{connection === 'live' ? '실시간으로 소식을 받고 있어요' : connection === 'connecting' ? '실시간 연결 중…' : '연결을 다시 확인하고 있어요'}</p>
     <div className="flex gap-2" role="group" aria-label="알림 분류">
       {([{ key: 'all', name: '전체', count: total,icon:Inbox }, { key: 'friend', name: '친구', count: unread.friend,icon:UsersRound }, { key: 'general', name: '소식', count: unread.general,icon:Bell },{key:'gift',name:'선물',count:unread.gift??0,icon:Gift}] as const).map(item => <Tooltip key={item.key}><TooltipTrigger render={<Button variant={tab === item.key ? 'default' : 'outline'} aria-label={`${item.name}${item.count>0?` (${item.count})`:''}`} aria-pressed={tab === item.key} className="min-h-11 flex-1" onClick={() => setTab(item.key)}/> }><item.icon className="size-4" aria-hidden="true"/>{item.count>0&&<span className="text-xs tabular-nums">{item.count}</span>}</TooltipTrigger><TooltipContent>{item.name}</TooltipContent></Tooltip>)}
     </div>

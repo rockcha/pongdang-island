@@ -2,16 +2,16 @@
 -- Wallets, bait counts, gold history, tanks and backgrounds remain intact.
 begin;
 truncate table public.fishing_attempts;
-create type public.collectible_kind as enum('fish','trash','structure','map');
+create type public.collectible_kind as enum('fish','trash','decoration','map');
 create table public.collectible_species (
  id text primary key,kind public.collectible_kind not null,name text not null,description text not null,
  swim_y_min numeric,swim_y_max numeric,speed numeric not null default 0 check(speed between 0 and 0.5),
  size integer not null check(size between 16 and 180),rarity public.game_rarity,
  sprite_paths text[] not null default '{}',thumbnail_path text not null,sell_price integer not null check(sell_price between 0 and 1000000),
- check((kind in ('structure','map') and swim_y_min is null and swim_y_max is null and speed=0) or
+ check((kind in ('decoration','map') and swim_y_min is null and swim_y_max is null and speed=0) or
  (kind in ('fish','trash') and swim_y_min>=0 and swim_y_max<=1 and swim_y_min<=swim_y_max and swim_y_min is not null and swim_y_max is not null and speed>0)),
  check((kind='fish' and cardinality(sprite_paths)=4) or(kind<>'fish' and cardinality(sprite_paths)=0)),
- check((kind in ('trash','map') and rarity is null) or(kind in ('fish','structure') and rarity is not null))
+ check((kind in ('trash','map') and rarity is null) or(kind in ('fish','decoration') and rarity is not null))
 );
 create table public.collectible_habitats (
  species_id text not null references public.collectible_species(id) on delete cascade,
@@ -53,7 +53,7 @@ insert into public.collectible_species(id,kind,name,description,swim_y_min,swim_
 ('star-ray','fish','별꼬리 가오리','보랏빛 날개에 작은 별무늬가 반짝이는 가오리. 어둑한 물속을 밤하늘처럼 미끄러져 간다.',0.30,0.75,0.045,88,'epic',array['epic/swim-1.png','epic/swim-2.png','epic/swim-3.png','epic/swim-4.png'],'epic/thumbnail.png',600),
 ('dawn-arowana','fish','여명 아로와나','진주빛 금색 비늘 사이로 새벽빛이 번지는 전설의 물고기. 긴 지느러미가 흘러가는 꿈처럼 물결을 감싼다.',0.20,0.70,0.040,96,'mythic',array['mythic/swim-1.png','mythic/swim-2.png','mythic/swim-3.png','mythic/swim-4.png'],'mythic/thumbnail.png',2000),
 ('glass-bottle','trash','잊힌 유리병','파도에 오래 씻겨 모서리가 둥글어진 빈 병. 작은 해초가 붙은 채 바닷속에서 빙글빙글 떠다닌다.',0.40,0.80,0.020,55,null,'{}','trash/thumbnail.png',8),
-('coral-house','structure','산호빛 작은 집','분홍 산호와 매끈한 조약돌로 지어진 작은 집. 어항 한쪽에 놓으면 바다 친구들이 쉬어 가기 좋다.',null,null,0,94,'rare','{}','structures/thumbnail.png',120),
+('coral-house','decoration','산호빛 작은 집','분홍 산호와 매끈한 조약돌로 지어진 작은 집. 어항 한쪽에 놓으면 바다 친구들이 쉬어 가기 좋다.',null,null,0,94,'rare','{}','decorations/thumbnail.png',120),
 ('ocean-map','map','잊힌 항로 조각','물결을 따라 떠내려온 작은 해도 조각. 아직 열리지 않은 항로의 이름과 바다의 기억이 담겨 있다.',null,null,0,60,null,'{}','map/thumbnail.png',0);
 -- Sample content is available in every initial region; habitats support any subset later.
 insert into public.collectible_habitats(species_id,region_id) select s.id,r.id from public.collectible_species s cross join public.regions r;
@@ -116,7 +116,7 @@ begin
   from public.collectible_species c join public.collectible_habitats h on h.species_id=c.id
   left join public.regions r on c.kind='map' and r.id=h.region_id
   where
-   (h.region_id=p_region_id and ((v_decoration and c.kind='structure') or
+   (h.region_id=p_region_id and ((v_decoration and c.kind='decoration') or
      (not v_decoration and ((c.kind='fish' and c.rarity=v_rarity) or(c.kind='trash' and v_rarity='common')))))
    or (not v_decoration and c.kind='map' and r.requires_map_fragment and r.rarity=v_rarity
      and not exists(select 1 from public.player_map_fragments f where f.user_id=v_uid and f.region_id=r.id))
@@ -140,7 +140,7 @@ create function public.collection_state() returns jsonb language sql security in
 revoke all on function app_private.collection_state(),public.collection_state() from public,anon;
 grant execute on function app_private.collection_state(),public.collection_state() to authenticated;
 
-update public.fishing_baits set effect_description='물고기 대신 서식 지역의 장식물을 반드시 끌어올린다. 획득한 구조물은 첫 어항에 보관된다.' where id='bait_magnet';
+update public.fishing_baits set effect_description='물고기 대신 서식 지역의 장식물을 반드시 끌어올린다. 획득한 장식물은 첫 어항에 보관된다.' where id='bait_magnet';
 drop table public.player_catch_counts;
 create or replace function app_private.aquarium_state() returns jsonb language plpgsql security definer set search_path='' as $$
 declare v_uid uuid:=auth.uid();

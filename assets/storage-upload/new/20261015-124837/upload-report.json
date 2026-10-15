@@ -1,0 +1,227 @@
+{
+  "bucket": "collectibles",
+  "uploaded": 36,
+  "skipped": 0,
+  "verified_at": "2026-10-15T04:13:51.403Z",
+  "verified_count": 36,
+  "verification": "Public URL download and SHA-256 match against local final PNG",
+  "db_sql_applied": false,
+  "files": [
+    {
+      "storage_path": "fish/epic/aurora-eel_sprite.png",
+      "bytes": 888238,
+      "sha256": "087a57bdb343066c7b9e341ea7012059f308a577e3bffac9f70734da0d9b31ad",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/epic/aurora-eel_thumbnail.png",
+      "bytes": 1604480,
+      "sha256": "330cb2aa22689267808e2a0f11aa3efc44b7d250ab3532e99a359f8f99efb3d8",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/epic/dreaming-dumbo-octopus_sprite.png",
+      "bytes": 775615,
+      "sha256": "bea1ccf0e5ee933b3504a1bc4219ce238422fdae7e1cd8c19a55588f9605c04f",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/epic/dreaming-dumbo-octopus_thumbnail.png",
+      "bytes": 1576158,
+      "sha256": "6cda3da317d240fdf43915017146e4af7c9965d09c1b2e182908e674173f8df3",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/epic/starpattern-manta_sprite.png",
+      "bytes": 1573215,
+      "sha256": "1c336a3d5b26d4ce5b151f568659abace939579516b939bea1ae0b5ad6d9b778",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/epic/starpattern-manta_thumbnail.png",
+      "bytes": 1251283,
+      "sha256": "636bc46e1b58106fedc58b47bc740a9f6af7e1cc4a8321b042b5a3e691eaaa3d",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/bean-pufferfish_sprite.png",
+      "bytes": 1047967,
+      "sha256": "7f098103eb6e32bd0d2b1cf3a959eb751f30bb5b7a83a942873bc0ca314dc051",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/bean-pufferfish_thumbnail.png",
+      "bytes": 908434,
+      "sha256": "73a1dddd24b65db7c45a85a7952df7d612d0657738a029625768f09cd97ac3ae",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/button-urchin_sprite.png",
+      "bytes": 1619983,
+      "sha256": "bada941cf6f03ce525f89a503e9358341c2215c0472a15bd3c1a529fdfa49439",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/button-urchin_thumbnail.png",
+      "bytes": 992476,
+      "sha256": "74efc429ccdf208bc3ddffd170e1aa5e1fa8e304fb4af036544f4464c22a89a1",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/orange-clownfish_sprite.png",
+      "bytes": 467542,
+      "sha256": "67417ea6b2a0b771dd9bded23147358d8538dcb9f9f21b55b8b190c4020e7172",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/orange-clownfish_thumbnail.png",
+      "bytes": 874291,
+      "sha256": "f98be3c23551b5479638081b29933c87f348cad04fa94e9993b80d8faca5ac04",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/peach-octopus_sprite.png",
+      "bytes": 644969,
+      "sha256": "6af753c567dc69b1ebd1d6476e76b423d19e7bfd533683c21410c072ed0a86e9",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/peach-octopus_thumbnail.png",
+      "bytes": 1155904,
+      "sha256": "1b62513168e1827b864937c412d21a2549844dc27217ce846c4f820de313dac5",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/pink-scallop_sprite.png",
+      "bytes": 450250,
+      "sha256": "89345a8ab9dfa859913ab0bbe568fb61ddd4ea1d5c87307400ee19e2be8f9595",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/pink-scallop_thumbnail.png",
+      "bytes": 1118666,
+      "sha256": "33fca51af1caa950d9b1115905aa769f59289f30b4d770cb95048ef1fe917061",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/ribbon-eel_sprite.png",
+      "bytes": 1114985,
+      "sha256": "d2b7c8a68d65b02a135c0907d5121c59e0ca322b00be9f9cfbc40534b7d8bab7",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/ribbon-eel_thumbnail.png",
+      "bytes": 784362,
+      "sha256": "6fb4c3d4f0cc15d7f5341b6060af68e7e59ace81cf82384a81e20900e5c31d26",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/soft-sea-cucumber_sprite.png",
+      "bytes": 1107526,
+      "sha256": "977adc6b56f421fcf1778cb8d06e0556d7610224affc049cb49b9fc20e130d82",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/soft-sea-cucumber_thumbnail.png",
+      "bytes": 783007,
+      "sha256": "16696514bce7186009d888b62c490bcd6937117f4a99bddab6f5ef39be05e75c",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/threadtail-shrimp_sprite.png",
+      "bytes": 548465,
+      "sha256": "d3f2a891e65db8ec8541e29a5189b94fbb3cfc1abcf0c48cd4bc064b4ea70a50",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/threadtail-shrimp_thumbnail.png",
+      "bytes": 799167,
+      "sha256": "6a074da140196cc68ea4bc0eac20c1fffd886a8facea7ff5ae76cac808ef5951",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/tiny-cuttlefish_sprite.png",
+      "bytes": 726294,
+      "sha256": "12472ad72d05b6823749a0174ac16509509d0a7905680ee34ac718da6b133050",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/tiny-cuttlefish_thumbnail.png",
+      "bytes": 1130389,
+      "sha256": "dbb07888792cd327a0688dd297262dabe402ee2a717e1c60b09bdeae8ce0181a",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/blue-bronze-horseshoe-crab_sprite.png",
+      "bytes": 1209160,
+      "sha256": "6bdd279ef3baae47c8692755bbc540de0fa89e83e19dd9ec93e0b56cc83d245f",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/blue-bronze-horseshoe-crab_thumbnail.png",
+      "bytes": 866355,
+      "sha256": "8fc9a796003cab159dc5f8bd65c40f6b4fa071d5775862cd34cc537c636ac637",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/glassfin-lionfish_sprite.png",
+      "bytes": 2062330,
+      "sha256": "89fdd97a45f7892490309e4dca90cff29084ebbedfa49de015a67ab2175d8372",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/glassfin-lionfish_thumbnail.png",
+      "bytes": 1445435,
+      "sha256": "dcff56e2b0789e704d9d05a7c17681c6de5dea04499f4a4fd41de11e436b2a03",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/opal-nautilus_sprite.png",
+      "bytes": 723405,
+      "sha256": "d6ffc399afa75b70472cc056ea46ca3dbc88e7690d27b9ca260b2f3dd558fae4",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/opal-nautilus_thumbnail.png",
+      "bytes": 1142912,
+      "sha256": "be6f3594c0a4465c1c95ba065cf3aa50a5a67f6aedfe87a2ab96356ddcb645b8",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/pearl-parrotfish_sprite.png",
+      "bytes": 1588752,
+      "sha256": "1a92fd43927bb4bcf238467a704e58b8030783f10e6b126c250d1819bdd8d247",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/pearl-parrotfish_thumbnail.png",
+      "bytes": 1144311,
+      "sha256": "409172dbd0fdb0e7d392e17cf8dfa4c3399c6c6b47f458e7b5b01430fba90c0b",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/petal-nudibranch_sprite.png",
+      "bytes": 1441795,
+      "sha256": "2c7ea4a3faa82852826e02bf08dad971a1dfd5e6ad26bcbdbc30ca0aba4aed7b",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/petal-nudibranch_thumbnail.png",
+      "bytes": 1013926,
+      "sha256": "237dfdd99d70a026e4d705626557b44c511218f8c5bdb515c1de6d4602c29c77",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/sea-crocodile_sprite.png",
+      "bytes": 491681,
+      "sha256": "4238f6ac7781570050e96e7fc33ef71e450f78a6b5dcd6e3ab8bd2e108106429",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/sea-crocodile_thumbnail.png",
+      "bytes": 782910,
+      "sha256": "2ad7fef812530aa3b8917ed54753aff59beff48eed8a82e701edeb4f8646e94f",
+      "public_download_verified": true
+    }
+  ]
+}

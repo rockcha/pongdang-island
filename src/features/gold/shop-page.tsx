@@ -10,7 +10,7 @@ export function ShopPage() {
     try { await transact(action) } catch (error) { toast.error(error instanceof Error ? error.message : '거래를 처리하지 못했어요.') }
   }
   return <section className="space-y-6 py-6">
-    <header><h1 className="text-2xl font-bold">섬 상점</h1><p className="mt-2 text-sm text-muted-foreground">작은 물건을 사고팔아 보세요.</p></header>
+    <h1 className="text-xl font-semibold">상점</h1>
     <div className="flex items-center justify-between rounded-2xl border bg-amber-50/50 p-4"><div><p className="text-xs text-muted-foreground">보유 골드</p><p className="mt-2 flex items-center gap-2 text-2xl font-bold tabular-nums"><GoldIcon className="size-9"/>{wallet.gold.toLocaleString('ko-KR')}<span className="text-sm font-normal">골드</span></p></div></div>
     {loading && <p role="status">골드를 불러오는 중…</p>}
     {error && <div role="alert" className="space-y-2 text-sm text-destructive"><p>{error}</p><Button variant="outline" onClick={() => void refresh()}>다시 불러오기</Button></div>}

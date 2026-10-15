@@ -25,6 +25,6 @@ it('groups species, combines filters and sells only real individuals with the se
  fireEvent.click(screen.getByRole('button',{name:'멸치 판매'}))
  expect(await screen.findByRole('alertdialog')).toBeTruthy()
  fireEvent.click(screen.getByRole('button',{name:'판매 수량 늘리기'}))
- fireEvent.click(screen.getByRole('button',{name:'판매하기'}))
+ fireEvent.click(screen.getByRole('button',{name:'확인'}))
  await waitFor(()=>expect(onSell).toHaveBeenCalledWith(['a','b']))
 })

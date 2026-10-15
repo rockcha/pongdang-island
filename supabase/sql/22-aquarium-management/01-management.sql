@@ -11,7 +11,7 @@ begin
  if not exists(select 1 from public.aquarium_tanks where id=p_tank_id and user_id=v_uid) then raise exception 'TANK_NOT_FOUND'; end if;
  select * into v_item from public.player_collectibles where id=p_collectible_id and user_id=v_uid and sold_at is null and (to_jsonb(player_collectibles)->>'escrow_gift_id') is null for update;
  if not found or v_item.tank_id is distinct from p_tank_id then raise exception 'COLLECTIBLE_NOT_FOUND'; end if;
- if not exists(select 1 from public.collectible_species where id=v_item.species_id and kind in ('fish','trash','structure')) then raise exception 'INVALID_ITEM'; end if;
+ if not exists(select 1 from public.collectible_species where id=v_item.species_id and kind in ('fish','trash','decoration')) then raise exception 'INVALID_ITEM'; end if;
  update public.player_collectibles set position_x=p_x,position_y=p_y where id=v_item.id;
  return jsonb_build_object('id',v_item.id,'position_x',p_x,'position_y',p_y);
 end $$;
@@ -37,7 +37,7 @@ begin
  perform 1 from public.player_collectibles where user_id=v_uid and id=any(v_ids) order by id for update;
  select count(*),coalesce(sum(s.sell_price),0) into v_count,v_price
  from public.player_collectibles c join public.collectible_species s on s.id=c.species_id
- where c.user_id=v_uid and c.id=any(v_ids) and c.sold_at is null and (to_jsonb(c)->>'escrow_gift_id') is null and s.kind in ('fish','trash','structure') and s.sell_price>0;
+ where c.user_id=v_uid and c.id=any(v_ids) and c.sold_at is null and (to_jsonb(c)->>'escrow_gift_id') is null and s.kind in ('fish','trash','decoration') and s.sell_price>0;
  if v_count<>cardinality(v_ids) then raise exception 'COLLECTIBLE_NOT_FOUND'; end if;
  if v_wallet.gold::bigint+v_price>1000000000 then raise exception 'GOLD_LIMIT'; end if;
  update public.player_collectibles set sold_at=now(),tank_id=null where user_id=v_uid and id=any(v_ids);

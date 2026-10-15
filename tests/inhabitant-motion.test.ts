@@ -32,8 +32,8 @@ it('keeps the escape displacement when normal swimming resumes',()=>{
   expect(resumed.direction).toBe(1)
   expect(Math.abs(resumed.x-drifting.x)).toBeLessThan(10)
 })
-it('ignores far taps and structures; preserves structure placement and reduced motion',()=>{
-  for(const kind of ['fish','structure']){
+it('ignores far taps and decorations; preserves decoration placement and reduced motion',()=>{
+  for(const kind of ['fish','decoration']){
     const entity=new InhabitantMotion(item(kind)), baseline=new InhabitantMotion(item(kind))
     const pose=entity.update(0,0,400,600)
     entity.flee(kind==='fish'?-1000:pose.x+36,pose.y+36,0,120)
@@ -51,4 +51,33 @@ it('pushes nearby trash without changing its rotation or pulling it back',()=>{
  expect(after.x).toBeGreaterThan(pose.x+10)
  expect(after.angle).toBeCloseTo(.7*25)
  expect(trash.update(1.5,.1,400,600).x).toBeGreaterThan(after.x)
+})
+it('restores decoration rotation and scale and keeps rotated edges within mobile glass',()=>{
+ for(const scale of [.5,1,2])for(const rotation of [0,45,90,225])for(const position of [0,.5,1]){
+  const decoration={...item('decoration'),rotation,scale,position_x:position,position_y:position}
+  const motion=new InhabitantMotion(decoration)
+  const pose=motion.update(0,0,320,560)
+  expect(pose.size).toBeCloseTo(72*scale)
+  expect(pose.angle).toBe(rotation)
+  const radians=rotation*Math.PI/180
+  const half=pose.size*(Math.abs(Math.cos(radians))+Math.abs(Math.sin(radians)))/2
+  const cx=pose.x+pose.size/2,cy=pose.y+pose.size/2
+  expect(cx-half).toBeGreaterThanOrEqual(-.000001)
+  expect(cx+half).toBeLessThanOrEqual(320.000001)
+  expect(cy-half).toBeGreaterThanOrEqual(-.000001)
+  expect(cy+half).toBeLessThanOrEqual(560.000001)
+  expect(motion.update(50,.1,320,560,true)).toEqual(pose)
+  const placed=motion.place(pose.x,pose.y,0,320,560)
+  expect(placed.x).toBeCloseTo(position)
+  expect(placed.y).toBeCloseTo(position)
+ }
+})
+it('keeps normalized decoration coordinates when changing its size, angle and position together',()=>{
+ const initial={...item('decoration'),rotation:0,scale:1,position_x:.2,position_y:.3}
+ const motion=new InhabitantMotion(initial)
+ motion.update(0,0,320,560)
+ const edited={...initial,rotation:45,scale:2,position_x:.8,position_y:.1}
+ motion.setItem(edited,1,320,560)
+ expect(motion.item).toMatchObject({position_x:.8,position_y:.1,rotation:45,scale:2})
+ expect(motion.update(1,0,320,560)).toEqual(new InhabitantMotion(edited).update(1,0,320,560))
 })

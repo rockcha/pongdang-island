@@ -1,0 +1,12 @@
+{
+  "id": "threadtail-shrimp",
+  "name": "실꼬리 새우",
+  "rarity": "common",
+  "movement_type": "crawl",
+  "flip_with_direction": true,
+  "file": "fish/normal/threadtail-shrimp_thumbnail.png",
+  "storage_path": "fish/normal/threadtail-shrimp_thumbnail.png",
+  "prompt": "Use case: stylized-concept. Create a NEW aquarium game asset, not the reference character. Match the REFERENCE illustration's friendly CARTOON visual language: chunky rounded simplified silhouette, strong clean dark brown outlines, bold appealing shapes, expressive oversized glossy eyes if the animal has eyes, warm layered hand-painted cel shading and broad clean highlights. Cute stylized mobile-game character, NOT scientific drawing, realistic rendering, fine anatomical filaments or washed-out watercolor. No otter traits or otter accessories. Subject: A tiny translucent peach SHRIMP with long fine antennae, curved segmented abdomen, slender walking legs and a delicate tail fan. Side profile. Side profile facing LEFT throughout. COMMON grade: especially round, lovable and strongly cartoonified, natural recognizable base colors; shrimp must be plump and simplified with BIG friendly eyes and short thick readable legs rather than realistic thin anatomy.  OUTPUT a single animal centered on a square canvas, entire body and appendages inside central 75% of canvas. True transparent background, no ground, scenery, bubbles, cast shadow, words, watermarks, grid, labels.",
+  "reference_role": "Pongi: cartoon style only",
+  "tool": "built-in image_gen"
+}

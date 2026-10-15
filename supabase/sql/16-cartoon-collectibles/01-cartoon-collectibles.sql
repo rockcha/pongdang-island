@@ -9,14 +9,14 @@ do $$ declare c record; begin
   execute format('alter table public.collectible_species drop constraint %I',c.conname);
  end loop;
 end $$;
-update public.collectible_species set rarity='common' where kind in ('trash','structure','map');
+update public.collectible_species set rarity='common' where kind in ('trash','decoration','map');
 update public.collectible_species set sprite_sheet_path=case id
  when 'pongul' then 'fish/normal/pongul_sprite.png' when 'moon-angelfish' then 'fish/rare/moon-angelfish_sprite.png'
  when 'star-ray' then 'fish/epic/star-ray_sprite.png' when 'dawn-arowana' then 'fish/mythic/dawn-arowana_sprite.png' end,
  thumbnail_path=case id
  when 'pongul' then 'fish/normal/pongul_thumbnail.png' when 'moon-angelfish' then 'fish/rare/moon-angelfish_thumbnail.png'
  when 'star-ray' then 'fish/epic/star-ray_thumbnail.png' when 'dawn-arowana' then 'fish/mythic/dawn-arowana_thumbnail.png'
- when 'glass-bottle' then 'trash/normal/glass-bottle_thumbnail.png' when 'coral-house' then 'structures/normal/coral-house_thumbnail.png'
+ when 'glass-bottle' then 'trash/normal/glass-bottle_thumbnail.png' when 'coral-house' then 'decorations/normal/coral-house_thumbnail.png'
  when 'ocean-map' then 'map/normal/ocean-map_thumbnail.png' else thumbnail_path end;
 alter table public.collectible_species drop column sprite_paths;
 alter table public.collectible_species alter column rarity set not null;
@@ -24,7 +24,7 @@ alter table public.collectible_species add constraint collectible_sheet_layout c
  ((kind='fish' and sprite_sheet_path is not null and btrim(sprite_sheet_path)<>'') or(kind<>'fish' and sprite_sheet_path is null));
 alter table public.collectible_species add constraint collectible_nonfish_common check(kind='fish' or rarity='common');
 -- This sample has only a COMMON map: its destinations are common, still-locked regions.
--- Habitat rows for maps describe eligible destinations; fish/trash/structure rows describe catch locations.
+-- Habitat rows for maps describe eligible destinations; fish/trash/decoration rows describe catch locations.
 delete from public.collectible_habitats h using public.regions r
  where h.species_id='ocean-map' and r.id=h.region_id and (r.rarity<>'common' or not r.requires_map_fragment);
 create or replace function app_private.species_payload(p_species_id text,p_map_region_id text default null) returns jsonb language sql stable set search_path='' as $$
@@ -63,7 +63,7 @@ begin
   from public.collectible_species c join public.collectible_habitats h on h.species_id=c.id
   left join public.regions r on c.kind='map' and r.id=h.region_id
   where
-   (h.region_id=p_region_id and ((v_decoration and c.kind='structure') or
+   (h.region_id=p_region_id and ((v_decoration and c.kind='decoration') or
      (not v_decoration and ((c.kind='fish' and c.rarity=v_rarity) or(c.kind='trash' and c.rarity=v_rarity)))))
    or (not v_decoration and c.kind='map' and c.rarity=v_rarity and r.requires_map_fragment and r.rarity=c.rarity
      and not exists(select 1 from public.player_map_fragments f where f.user_id=v_uid and f.region_id=r.id))

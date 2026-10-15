@@ -1,0 +1,12 @@
+{
+  "id": "ribbon-eel",
+  "name": "리본 장어",
+  "rarity": "common",
+  "movement_type": "swim",
+  "flip_with_direction": true,
+  "file": "fish/normal/ribbon-eel_thumbnail.png",
+  "storage_path": "fish/normal/ribbon-eel_thumbnail.png",
+  "prompt": "Use case: stylized-concept. Create a NEW aquarium game asset, not the reference character. Match the REFERENCE illustration's friendly CARTOON visual language: chunky rounded simplified silhouette, strong clean dark brown outlines, bold appealing shapes, expressive oversized glossy eyes if the animal has eyes, warm layered hand-painted cel shading and broad clean highlights. Cute stylized mobile-game character, NOT scientific drawing, realistic rendering, fine anatomical filaments or washed-out watercolor. No otter traits or otter accessories. Subject: A slender blue RIBBON EEL with a narrow yellow dorsal ribbon fin and yellow snout, gently S-curved long body, compact silhouette, friendly glossy eye. No extra ribbons. Side profile facing LEFT throughout. COMMON grade: especially round, lovable and strongly cartoonified, natural recognizable base colors; shrimp must be plump and simplified with BIG friendly eyes and short thick readable legs rather than realistic thin anatomy.  OUTPUT a single animal centered on a square canvas, entire body and appendages inside central 75% of canvas. True transparent background, no ground, scenery, bubbles, cast shadow, words, watermarks, grid, labels.",
+  "reference_role": "Pongi: cartoon style only",
+  "tool": "built-in image_gen"
+}

@@ -1,6 +1,6 @@
 ﻿import { useState } from 'react'
 import type { FormEvent } from 'react'
-import { Copy, TowerControl } from 'lucide-react'
+import { Copy } from 'lucide-react'
 import { toast } from 'sonner'
 import { useAuth } from '@/components/auth-provider'
 import { Button } from '@/components/ui/button'
@@ -42,9 +42,8 @@ export function FriendsPage() {
     catch(cause){toast.error(socialErrorMessage(cause))}finally{setBusy(false)}
   }
   return <section className="space-y-6 py-6">
-    <header className="space-y-3"><TowerControl className="size-7 text-primary" strokeWidth={1.5}/><h1 className="text-2xl font-bold">만남의 등대</h1><p className="text-sm text-muted-foreground">작은 인연들이 모이는 곳.</p></header>
     <div className="flex items-center justify-between gap-3 border-y py-3"><div><p className="text-xs text-muted-foreground">내 친구 코드</p><p className="mt-1 font-mono text-sm tracking-widest">{profile?.friend_code??'준비 중…'}</p></div><Button variant="ghost" size="icon" aria-label="내 친구 코드 복사" className="min-h-11 min-w-11" disabled={!profile} onClick={async()=>{try{await navigator.clipboard.writeText(profile!.friend_code);toast.success('친구 코드를 복사했어요.')}catch{toast.info('친구 코드를 길게 눌러 복사해주세요.')}}}><Copy className="size-4"/></Button></div>
-    <div role="group" aria-label="만남의 등대 메뉴" className="flex gap-1 rounded-xl bg-muted/60 p-1">{([{key:'friends',label:`친구 ${friends.length}`},{key:'requests',label:`요청 ${incoming.length+outgoing.length}`},{key:'invite',label:'친구 찾기'}] as const).map(item=><Button key={item.key} variant="ghost" aria-pressed={tab===item.key} onClick={()=>setTab(item.key)} className={`min-h-11 flex-1 rounded-lg text-sm ${tab===item.key?'bg-background shadow-sm':''}`}>{item.label}</Button>)}</div>
+    <div role="group" aria-label="등대 메뉴" className="flex gap-1 rounded-xl bg-muted/60 p-1">{([{key:'friends',label:`친구 ${friends.length}`},{key:'requests',label:`요청 ${incoming.length+outgoing.length}`},{key:'invite',label:'친구 찾기'}] as const).map(item=><Button key={item.key} variant="ghost" aria-pressed={tab===item.key} onClick={()=>setTab(item.key)} className={`min-h-11 flex-1 rounded-lg text-sm ${tab===item.key?'bg-background shadow-sm':''}`}>{item.label}</Button>)}</div>
     {loading && <p role="status" className="py-6 text-sm text-muted-foreground">등대의 소식을 불러오는 중…</p>}
     {error && <div role="alert" className="space-y-2 text-sm text-destructive"><p>{error}</p><Button variant="outline" onClick={()=>void refresh()}>다시 불러오기</Button></div>}
     {tab==='friends' && <div><ul className="divide-y">{friends.map(request=>{const friend=request.sender_id===session?.user.id?request.recipient:request.sender;return <li key={request.id} className="flex items-center justify-between gap-2 py-4"><div className="flex min-w-0 items-center gap-3"><PlayerAvatar nickname={friend?.nickname} path={friend?.avatar_path} className="size-10"/><p className="truncate text-sm font-medium">{friend?.nickname??'친구'}</p></div><RemoveFriendButton requestId={request.id} nickname={friend?.nickname??'친구'}/></li>})}</ul>{!loading&&!error&&!friends.length&&<div className="space-y-3 py-10 text-center"><p className="text-sm text-muted-foreground">아직 함께하는 친구가 없어요.</p><Button variant="outline" className="min-h-11" onClick={()=>setTab('invite')}>첫 친구 만나기</Button></div>}</div>}

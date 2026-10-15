@@ -1,0 +1,12 @@
+{
+  "id": "blue-bronze-horseshoe-crab",
+  "name": "청금 투구게",
+  "rarity": "rare",
+  "movement_type": "crawl",
+  "flip_with_direction": false,
+  "file": "fish/rare/blue-bronze-horseshoe-crab_sprite.png",
+  "storage_path": "fish/rare/blue-bronze-horseshoe-crab_sprite.png",
+  "prompt": "Use case: stylized-concept. Create a NEW aquarium game asset, not the reference character. Match the REFERENCE illustration's friendly CARTOON visual language: chunky rounded simplified silhouette, strong clean dark brown outlines, bold appealing shapes, expressive oversized glossy eyes if the animal has eyes, warm layered hand-painted cel shading and broad clean highlights. Cute stylized mobile-game character, NOT scientific drawing, realistic rendering, fine anatomical filaments or washed-out watercolor. No otter traits or otter accessories. Subject: A HORSESHOE CRAB with rounded aged bronze domed horseshoe carapace, subtle teal patina along edges, segmented rear and slender straight tail, tiny legs below. Top-down front view. Tail at top, face toward bottom. Front or top three-quarter view, upright, same orientation throughout. Maintain cute cartoon foundation.  OUTPUT a square 2x2 ANIMATION SPRITE SHEET: four equal square cells edge-to-edge, exactly ONE same character in each cell. Use thumbnail reference as exact character identity, same size and position relative to each cell. Four subtle tiny legs and underside feet crawling phases. Each creature occupies central 68% of its cell with generous padding, no body turning or translation. Grid must have no visible lines. True transparent background, no ground, scenery, bubbles, cast shadow, words, watermarks, grid, labels.",
+  "reference_role": "Generated thumbnail: exact identity",
+  "tool": "built-in image_gen"
+}

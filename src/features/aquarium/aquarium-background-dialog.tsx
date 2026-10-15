@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { Image,Check,ShoppingBag } from 'lucide-react'
 import { Tabs,TabsList,TabsTrigger,TabsContent } from '@/components/ui/tabs'
 import { Button } from '@/components/ui/button'
-import { Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle,DialogTrigger } from '@/components/ui/dialog'
+import { Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle } from '@/components/ui/dialog'
 import { GoldIcon } from '@/features/gold/gold-provider'
 import { backgroundUrl } from './api'
 import type { AquariumState } from './api'
+import { AquariumToolButton } from './aquarium-tool-button'
 
 function Preview({path,name}:{path:string;name:string}){
  const [failed,setFailed]=useState(false)
@@ -26,7 +27,7 @@ export function AquariumBackgroundDialog({state,selectedId,gold,busy,loading,err
   })}</ul>
  }
  return <Dialog open={open} onOpenChange={value=>{if(!busy)setOpen(value)}}>
-  <DialogTrigger render={<Button variant="secondary" size="sm" className="gap-1.5 bg-background/90 shadow-sm backdrop-blur"/>}><Image className="size-4"/>배경</DialogTrigger>
+  <AquariumToolButton label="배경" icon={<Image className="size-4"/>}/>
   <DialogContent className="max-h-[85dvh] gap-4 sm:max-w-md">
    <DialogHeader><DialogTitle>배경 꾸미기</DialogTitle><DialogDescription>배경을 골라 지금 어항에 적용해보세요.</DialogDescription></DialogHeader>
    <Tabs defaultValue="owned">

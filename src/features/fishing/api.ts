@@ -1,9 +1,9 @@
 import { createClient } from '@/lib/client'
-import type { OwnedCollectible, Species } from '@/features/collection/api'
+import type { Species } from '@/features/collection/api'
 import type { Rarity } from '@/lib/game/rarity'
 export type FishingBait = { id:string; name:string; description:string; price:number|null; effect_kind:'fish'|'decoration'; effect_description:string; image_path:string; common_bp:number; rare_bp:number; epic_bp:number; mythic_bp:number; failure_bp:number }
 export type FishingAttempt = { operation_id:string; region_id:string; bait_id:string; rarity:Rarity|null; created_at:string;collectible_id?:string|null;species?:Species|null }
-export type FishingState = { baits:FishingBait[]; items:OwnedCollectible[] }
+export type FishingState = { baits:FishingBait[];regionId?:string;regionName?:string;mapChanceBp?:number }
 export type FishingResult = { attempt:FishingAttempt; replayed:boolean }
 export async function loadFishing() {
  const {data,error}=await createClient().rpc('fishing_state')
@@ -13,6 +13,7 @@ export async function loadFishing() {
 export async function castFishing(regionId:string,baitId:string,operationId:string) {
  const {data,error}=await createClient().rpc('cast_fishing',{p_region_id:regionId,p_bait_id:baitId,p_operation_id:operationId})
  if(error)throw error
+ if(typeof window!=='undefined')window.dispatchEvent(new Event('collectibles-changed'))
  return data
 }
 export function fishingError(cause:unknown) {

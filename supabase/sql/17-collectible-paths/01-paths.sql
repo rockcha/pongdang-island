@@ -6,7 +6,7 @@ update public.collectible_species set sprite_sheet_path=case id
  thumbnail_path=case id
  when 'pongul' then 'fish/normal/pongul_thumbnail.png' when 'moon-angelfish' then 'fish/rare/moon-angelfish_thumbnail.png'
  when 'star-ray' then 'fish/epic/star-ray_thumbnail.png' when 'dawn-arowana' then 'fish/mythic/dawn-arowana_thumbnail.png'
- when 'glass-bottle' then 'trash/normal/glass-bottle_thumbnail.png' when 'coral-house' then 'structures/normal/coral-house_thumbnail.png'
+ when 'glass-bottle' then 'trash/normal/glass-bottle_thumbnail.png' when 'coral-house' then 'decorations/normal/coral-house_thumbnail.png'
  when 'ocean-map' then 'map/normal/ocean-map_thumbnail.png' else thumbnail_path end;
 notify pgrst,'reload schema';
 commit;

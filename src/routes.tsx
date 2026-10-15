@@ -1,8 +1,7 @@
-import { CollectionPage } from '@/features/collection/collection-page'
 import { RegionPage } from '@/features/regions/region-page'
 import { SailingPage } from '@/features/regions/sailing-page'
 import { ShopPage } from '@/features/gold/shop-page'
-import { Route, Routes } from 'react-router'
+import { Navigate,Route, Routes } from 'react-router'
 import { AppLayout } from '@/layouts/app-layout'
 import { HomePage } from '@/pages/home-page'
 import { NotFoundPage } from '@/pages/not-found-page'
@@ -17,6 +16,7 @@ import { NotificationsPage } from '@/features/notifications/notifications-page'
 import { ProfilePage } from '@/features/profile/profile-page'
 import { AquariumPage } from '@/pages/aquarium-page'
 import { HarborPage } from '@/pages/harbor-page'
+import { PlaceSectionPage } from '@/pages/place-section-page'
 
 export function AppRoutes() {
   return (
@@ -31,7 +31,7 @@ export function AppRoutes() {
           <Route element={<AuthGuard requireNickname />}>
             <Route index element={<HomePage />} />
             <Route path="aquarium" element={<AquariumPage />} />
-            <Route path="collection" element={<CollectionPage />} />
+            <Route path="collection" element={<Navigate to="/aquarium" replace />} />
             <Route path="harbor" element={<HarborPage />} />
             <Route path="sailing/:regionId" element={<SailingPage />} />
             <Route path="region/:regionId" element={<RegionPage />} />
@@ -39,6 +39,13 @@ export function AppRoutes() {
             <Route path="friends" element={<FriendsPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="notifications" element={<NotificationsPage />} />
+            <Route path="square" element={<PlaceSectionPage section="square" />} />
+            <Route path="square/notices" element={<PlaceSectionPage section="square" />} />
+            <Route path="square/suggestions" element={<PlaceSectionPage section="square" />} />
+            <Route path="square/bugs" element={<PlaceSectionPage section="square" />} />
+            <Route path="merchant-street" element={<PlaceSectionPage section="merchants" />} />
+            <Route path="merchant-street/exchange" element={<PlaceSectionPage section="merchants" />} />
+            <Route path="merchant-street/auctions" element={<PlaceSectionPage section="merchants" />} />
           </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />

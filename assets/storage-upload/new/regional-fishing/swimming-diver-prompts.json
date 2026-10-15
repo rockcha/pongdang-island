@@ -1,0 +1,19 @@
+{
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "reference": "Original diving outfit; changed to horizontal swimming pose",
+  "assets": [
+    {
+      "id": "diver-pongdang",
+      "file": "diver-pongdang-swimming_thumbnail.png",
+      "storage_path": "fish/epic/diver-pongdang-swimming_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Use reference ONLY for character identity and diving equipment: cute chubby apricot otter Pongi with cream muzzle, large dark eyes, smile and pink starfish ornament, teal diving suit, brass helmet with large clear front glass, little air tank. Create an ACTIVE SWIMMING character, body stretched HORIZONTALLY facing RIGHT, helmet on right, long otter tail and two short flippers extended to left, paws reaching forward. Not seated, not standing, no pedestal, no shell held. Exact side/three-quarter side view. Whole character including tail and helmet inside square with padding. Cozy cartoon game art, dark brown outline, soft cel shading. Genuine transparent background. No bubbles, floor, scenery, shadow, text or watermark. ONE character only."
+    },
+    {
+      "id": "diver-pongdang",
+      "file": "diver-pongdang-swimming_sprite.png",
+      "storage_path": "fish/epic/diver-pongdang-swimming_sprite.png",
+      "prompt": "Use case: stylized-concept. Use reference ONLY for character identity and diving equipment: cute chubby apricot otter Pongi with cream muzzle, large dark eyes, smile and pink starfish ornament, teal diving suit, brass helmet with large clear front glass, little air tank. Create an ACTIVE SWIMMING character, body stretched HORIZONTALLY facing RIGHT, helmet on right, long otter tail and two short flippers extended to left, paws reaching forward. Not seated, not standing, no pedestal, no shell held. Exact side/three-quarter side view. Whole character including tail and helmet inside square with padding. Cozy cartoon game art, dark brown outline, soft cel shading. Genuine transparent background. No bubbles, floor, scenery, shadow, text or watermark. OUTPUT a square 2x2 SWIMMING ANIMATION SPRITE SHEET. Four equal square cells, one identical right-facing swimmer per cell, same body size and center position; subtle flipper kicks and tail movements across four phases. No borders or gutters, each full character fits within its own cell."
+    }
+  ]
+}

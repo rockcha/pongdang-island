@@ -1,0 +1,77 @@
+{
+  "bucket": "collectibles",
+  "uploaded": 11,
+  "skipped": 0,
+  "verified_count": 11,
+  "verified_at": "2026-10-15T04:48:28.931Z",
+  "verification": "Public download SHA-256 matches local PNG",
+  "db_sql_applied": false,
+  "files": [
+    {
+      "storage_path": "decorations/rare/coral-flower-anemone_thumbnail.png",
+      "bytes": 1125820,
+      "sha256": "71fbc38cd1d7bb221119b576b0c1c45d096ca840a2fe146e096bc650aef6cef4",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/epic/coral-crowned-turtle_sprite.png",
+      "bytes": 1351054,
+      "sha256": "409de8f58a13a82156a4e0602e94cf62f6aabed24ea9a4544f5b4bb2f861dbf9",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/epic/coral-crowned-turtle_thumbnail.png",
+      "bytes": 1301263,
+      "sha256": "e840f20c6defcaeab0a69b5f004aa1903bcad7c070aadd314d314fca9f0d3447",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/coral-bean-shrimp_sprite.png",
+      "bytes": 780205,
+      "sha256": "5ddab3da07a43905e44da7de8a7f2cbbf37fa55b9a3bdf8b976144cf5793026f",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/coral-bean-shrimp_thumbnail.png",
+      "bytes": 836266,
+      "sha256": "8ed1539d2e14d1f0fb200cc7349f9c853e973c8fe4d2151381f95a1dd65c3e18",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/pinkchin-blenny_sprite.png",
+      "bytes": 867512,
+      "sha256": "e54f27333d044ea1d98d62b93fc0d91cb5fd88e3b4d569ecf14dc6f7edb47bf0",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/normal/pinkchin-blenny_thumbnail.png",
+      "bytes": 904936,
+      "sha256": "d02ef0eaac0880b6befb31ad98c3ca6f4017782cf995cdfff0280721e574628e",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/coralfan-butterflyfish_sprite.png",
+      "bytes": 1074492,
+      "sha256": "f542985446758a6240535132247179c35a6986c43e9d627df77ba3d755454fd2",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/coralfan-butterflyfish_thumbnail.png",
+      "bytes": 1049210,
+      "sha256": "02f676cb99b7ad58fd5a32a70e5c6989ccc2190f6962254757051d0708e5c61c",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/flower-coral-seadragon_sprite.png",
+      "bytes": 1039237,
+      "sha256": "64710080964ddf5138e7978135435acd69cffcfd2295aa4828634ae1b07dfd1d",
+      "public_download_verified": true
+    },
+    {
+      "storage_path": "fish/rare/flower-coral-seadragon_thumbnail.png",
+      "bytes": 964940,
+      "sha256": "1a95f19b84e3681a012775470a4671153835211f013cab9890967950174e3e51",
+      "public_download_verified": true
+    }
+  ]
+}

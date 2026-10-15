@@ -1,0 +1,104 @@
+[
+  {
+    "id": "coral-bean-shrimp",
+    "name": "산호콩 새우",
+    "kind": "fish",
+    "rarity": "common",
+    "movement": "crawl",
+    "flip": true,
+    "size": 48,
+    "speed": 0.018,
+    "y": [
+      0.85,
+      0.94
+    ],
+    "price": 35,
+    "subject": "A tiny plump peach-orange shrimp, bean-shaped chunky curved body, small white polka dots, BIG friendly glossy eyes, short thick walking legs, fine curved antennae and small tail fan; side view facing LEFT.",
+    "description": "작은 콩처럼 통통한 살구빛 몸에 하얀 점이 박혀 있다. 산호빛 여울의 산호 틈을 종종 걸으며 먹이를 찾는다."
+  },
+  {
+    "id": "pinkchin-blenny",
+    "name": "분홍턱 베도라치",
+    "kind": "fish",
+    "rarity": "common",
+    "movement": "swim",
+    "flip": true,
+    "size": 54,
+    "speed": 0.032,
+    "y": [
+      0.5,
+      0.83
+    ],
+    "price": 40,
+    "subject": "A cute plump cream-colored BLENNY fish with rosy pink chin and cheeks, wide curious glossy eyes, two short branched coral-like head cirri, pale peach fins, round tapered body and stubby tail, side view facing LEFT.",
+    "description": "크림색 몸 아래 분홍빛 턱을 내민 작은 베도라치. 머리 위 짧은 산호 모양 더듬이를 흔들며 산호빛 여울을 살핀다."
+  },
+  {
+    "id": "flower-coral-seadragon",
+    "name": "꽃산호 해룡",
+    "kind": "fish",
+    "rarity": "rare",
+    "movement": "swim",
+    "flip": true,
+    "size": 72,
+    "speed": 0.025,
+    "y": [
+      0.24,
+      0.73
+    ],
+    "price": 185,
+    "subject": "A cute leafy SEA DRAGON, slender curved seahorse-like peach body but elongated horizontal posture, long small tubular snout, curled tail, branching pink coral-flower leaf appendages along its back, mint accents and glossy expressive eye. Side profile facing LEFT; recognizable seadragon, NOT a dragon lizard.",
+    "description": "길게 휘어진 몸을 따라 분홍 산호꽃을 닮은 돌기가 피어 있다. 산호빛 여울의 가지 사이를 조용히 스쳐 지나간다."
+  },
+  {
+    "id": "coralfan-butterflyfish",
+    "name": "산호부채 나비고기",
+    "kind": "fish",
+    "rarity": "rare",
+    "movement": "swim",
+    "flip": true,
+    "size": 68,
+    "speed": 0.035,
+    "y": [
+      0.2,
+      0.76
+    ],
+    "price": 175,
+    "subject": "A rounded BUTTERFLYFISH with tall disk-shaped peach body, soft mint curved bands and cream patches, coral-pink fan-like dorsal and anal fins, small pointed mouth and cute glossy eye, refined warm cartoon detail. Side view facing LEFT.",
+    "description": "둥근 몸에 살구빛과 민트빛 무늬가 부채처럼 겹친다. 산호빛 여울의 물살을 타면 넓은 지느러미가 꽃잎처럼 펼쳐진다."
+  },
+  {
+    "id": "coral-flower-anemone",
+    "name": "산호꽃 말미잘",
+    "kind": "decoration",
+    "rarity": "rare",
+    "movement": "fixed",
+    "flip": false,
+    "size": 62,
+    "speed": 0,
+    "y": [
+      null,
+      null
+    ],
+    "price": 165,
+    "subject": "A small sea ANEMONE ornament with thick soft pink tentacles ending in round flowerbud tips, cream peach center and small squat rosy base. Cluster of plush rounded tentacles curving gracefully upward. No face, no eyes, no rock, no fish, no sand or background.",
+    "description": "분홍 촉수 끝에 작은 꽃봉오리 같은 방울이 맺혀 있다. 산호빛 여울에서 자라난 꽃 한 송이를 어항에 옮겨 둔 듯하다."
+  },
+  {
+    "id": "coral-crowned-turtle",
+    "name": "산호왕관 거북",
+    "kind": "fish",
+    "rarity": "epic",
+    "movement": "swim",
+    "flip": true,
+    "size": 96,
+    "speed": 0.028,
+    "y": [
+      0.2,
+      0.73
+    ],
+    "price": 680,
+    "subject": "A graceful fantasy SEA TURTLE with soft mint and ivory skin, flowing translucent peach-pink swimming flippers, a richly detailed domed shell bearing a miniature living coral garden of rose and lilac branches and pearly anemones, elegant small branching CORAL CROWN on its head, big gentle luminous eyes. Shell patterns glow softly like refracted coral light. Natural coral materials, not metallic gold armor, no chains, no jewelry costume. Three-quarter swimming side profile facing LEFT.",
+    "description": "등껍질 위에 작은 산호 정원이 자라는 거북. 머리의 산호 왕관과 반투명 지느러미에 여울의 빛이 은은하게 번진다."
+  }
+]

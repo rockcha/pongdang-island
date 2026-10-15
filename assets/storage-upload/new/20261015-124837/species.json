@@ -1,0 +1,200 @@
+[
+  [
+    "bean-pufferfish",
+    "콩알 복어",
+    "common",
+    "swim",
+    true,
+    52,
+    35,
+    "A bean-sized round YELLOW PUFFERFISH with cream belly, tiny brown spots, short soft spines, tiny fins and glossy black eyes, cute natural proportions.",
+    "작은 콩처럼 동그란 몸에 짧은 가시가 돋아 있다. 노란 지느러미를 파닥이며 바다 친구들 사이를 오간다."
+  ],
+  [
+    "orange-clownfish",
+    "흰동가리",
+    "common",
+    "swim",
+    true,
+    54,
+    35,
+    "A natural orange ocellaris CLOWNFISH with exactly three broad white vertical bands bordered in black, black fin edges, rounded cute shape. Normal orange coloration, NOT pastel milk or fantasy colors.",
+    "선명한 주황빛 몸에 하얀 띠가 둘러져 있다. 작은 지느러미를 부지런히 움직이며 느긋하게 헤엄친다."
+  ],
+  [
+    "threadtail-shrimp",
+    "실꼬리 새우",
+    "common",
+    "crawl",
+    true,
+    48,
+    30,
+    "A tiny translucent peach SHRIMP with long fine antennae, curved segmented abdomen, slender walking legs and a delicate tail fan. Side profile.",
+    "반투명한 몸 앞에서 실처럼 가는 수염이 살랑인다. 바닥을 종종 걸으며 모래 사이 작은 먹이를 찾는다."
+  ],
+  [
+    "button-urchin",
+    "단추 성게",
+    "common",
+    "crawl",
+    false,
+    46,
+    30,
+    "A small round chestnut-brown SEA URCHIN like a button, dense SHORT blunt warm brown and tan spines in a neat round mound, no eyes or face. Three-quarter front view.",
+    "단추처럼 둥근 몸에 짧은 밤색 가시가 촘촘하다. 눈에 띄지 않을 만큼 천천히 바닥을 돌아다닌다."
+  ],
+  [
+    "soft-sea-cucumber",
+    "말랑 해삼",
+    "common",
+    "crawl",
+    true,
+    54,
+    30,
+    "A short plump light brown SEA CUCUMBER, oblong loaf shape with small rounded tan tubercles and tiny underside tube feet. Natural no face. Side view.",
+    "말랑한 연갈색 몸에 작은 돌기가 오돌토돌 솟아 있다. 모래 위를 느릿느릿 지나며 바닥을 깨끗이 한다."
+  ],
+  [
+    "ribbon-eel",
+    "리본 장어",
+    "common",
+    "swim",
+    true,
+    74,
+    45,
+    "A slender blue RIBBON EEL with a narrow yellow dorsal ribbon fin and yellow snout, gently S-curved long body, compact silhouette, friendly glossy eye. No extra ribbons.",
+    "가느다란 푸른 몸을 따라 노란 지느러미가 이어진다. 리본을 풀어 놓은 듯 부드럽게 몸을 굽히며 헤엄친다."
+  ],
+  [
+    "pink-scallop",
+    "분홍 가리비",
+    "common",
+    "pulse",
+    false,
+    52,
+    35,
+    "A peach PINK SCALLOP, fan-shaped ridged pink top shell with cream rim, shell slightly open showing pale interior, no pearl, no face. Front view oriented upright.",
+    "분홍빛 부채 모양 껍데기를 살짝 열었다 닫는다. 물을 밀어 내며 작은 박자로 바닷속을 떠다닌다."
+  ],
+  [
+    "tiny-cuttlefish",
+    "꼬마 갑오징어",
+    "common",
+    "pulse",
+    false,
+    56,
+    40,
+    "A small cute beige CUTTLEFISH with broad oval mantle, wavy skirt fins along both sides, two glossy eyes and eight short gathered arms below. Front three-quarter upright view.",
+    "둥근 몸 양옆에 물결 같은 지느러미가 달려 있다. 짧은 팔을 모으고 몸을 오므리며 통통 떠오른다."
+  ],
+  [
+    "peach-octopus",
+    "복숭아 문어",
+    "common",
+    "pulse",
+    false,
+    60,
+    45,
+    "A cute peach-pink OCTOPUS with rounded peach shaped head, two glossy dark eyes and eight short plump curling arms, little cream suckers. Front upright view, no accessories.",
+    "복숭앗빛 둥근 머리 아래 통통한 여덟 팔이 모여 있다. 팔을 오므렸다 펼치며 물결에 몸을 맡긴다."
+  ],
+  [
+    "pearl-parrotfish",
+    "진주 비늘돔",
+    "rare",
+    "swim",
+    true,
+    70,
+    170,
+    "A PEARLESCENT PARROTFISH with overlapping mint, rose and cream scales showing restrained pearly luster, turquoise fins, visible small parrotlike beak, elegant rounded fish body.",
+    "민트빛과 분홍빛 비늘에 진주 같은 윤기가 흐른다. 둥근 입으로 바위 표면을 살피며 잔잔한 바다를 누빈다."
+  ],
+  [
+    "blue-bronze-horseshoe-crab",
+    "청금 투구게",
+    "rare",
+    "crawl",
+    false,
+    66,
+    170,
+    "A HORSESHOE CRAB with rounded aged bronze domed horseshoe carapace, subtle teal patina along edges, segmented rear and slender straight tail, tiny legs below. Top-down front view. Tail at top, face toward bottom.",
+    "오래된 청동을 닮은 등껍질 가장자리에 푸른빛이 돈다. 가느다란 꼬리를 끌며 바닥의 오래된 길을 더듬는다."
+  ],
+  [
+    "glassfin-lionfish",
+    "유리 지느러미 쏠배감펭",
+    "rare",
+    "swim",
+    true,
+    76,
+    190,
+    "A LIONFISH with red and cream striped body, spectacular large translucent glasslike fan pectoral fins with fine red rays, long dorsal spines, delicate pale blue highlights. Keep fins anatomically readable.",
+    "붉은 줄무늬 사이로 유리 같은 지느러미가 펼쳐진다. 가는 지느러미살마다 물빛이 맺혀 작은 부채처럼 반짝인다."
+  ],
+  [
+    "opal-nautilus",
+    "오팔 앵무조개",
+    "rare",
+    "pulse",
+    false,
+    64,
+    180,
+    "A NAUTILUS with cream spiral chambered shell, warm tan stripes and subtle opal iridescence around shell opening, many short fine cream tentacles beneath opening, natural visible eye. Front three-quarter view.",
+    "크림색 나선 껍데기 안쪽으로 오팔빛이 은근히 번진다. 가느다란 촉수를 모으며 오래된 바다의 박자로 떠오른다."
+  ],
+  [
+    "petal-nudibranch",
+    "꽃잎 갯민숭달팽이",
+    "rare",
+    "crawl",
+    true,
+    58,
+    160,
+    "A NUDIBRANCH sea slug with milky pink soft body, frilly rose-pink petal-shaped dorsal gills, two short peach rhinophores, ruffled cream foot rim. Elegant cute natural animal, side view.",
+    "우윳빛 몸 위에 분홍 꽃잎 같은 아가미가 피어 있다. 작은 더듬이를 세우고 바닥에 부드러운 발자국을 남긴다."
+  ],
+  [
+    "sea-crocodile",
+    "바다악어",
+    "rare",
+    "swim",
+    true,
+    88,
+    210,
+    "A cute stylized SALTWATER CROCODILE swimming horizontally, sage green armored back with darker scales, cream belly, long narrow toothy snout with friendly closed smile, four tucked short legs, strong curled tail. Recognizable crocodile, no clothes.",
+    "단단한 비늘과 긴 꼬리를 가진 바다의 여행자. 짧은 다리를 몸에 붙이고 물결 아래를 조용히 가로지른다."
+  ],
+  [
+    "starpattern-manta",
+    "별무늬 만타",
+    "epic",
+    "swim",
+    false,
+    104,
+    680,
+    "An ornate EPIC STAR CONSTELLATION MANTA RAY, majestic deep navy velvet diamond wings, intricate silver and cyan constellations engraved across wings, opalescent golden edge filigree, luminous pearl spots, graceful curled cephalic lobes and long tail. Rich layered details and jewel shimmer but animal readable. Front/dorsal view symmetric, head at bottom, tail above. Transparent glows contained around fins.",
+    "짙푸른 날개 위에 은빛 별자리가 이어진다. 금빛 가장자리와 작은 진주 같은 빛이 넓은 지느러미를 따라 흐른다."
+  ],
+  [
+    "aurora-eel",
+    "오로라장어",
+    "epic",
+    "swim",
+    true,
+    102,
+    700,
+    "An ornate EPIC AURORA EEL, elegant long S-curved indigo and violet translucent body, flowing multilayer ribbon dorsal and tail fins with luminous pink violet mint aurora gradients, intricate tiny silver scale patterns, opal fin beads and delicate golden highlights. Detailed lavish fantasy sea creature, one eye, eel anatomy. Entire body in compact S silhouette.",
+    "길게 휘어진 몸 안으로 분홍빛과 보랏빛 오로라가 흐른다. 겹겹의 지느러미를 펼칠 때마다 은빛 비늘이 별처럼 빛난다."
+  ],
+  [
+    "dreaming-dumbo-octopus",
+    "꿈꾸는 덤보문어",
+    "epic",
+    "pulse",
+    false,
+    88,
+    650,
+    "An ornate EPIC DREAMING DUMBO OCTOPUS, adorable lavender and midnight violet rounded head with big ear-like fins, sleepy closed eyes, eight short arms linked by softly translucent webbing, intricate glowing silver dream constellation patterns, tiny pearl ornaments along fin edges, pastel opal underside suckers and subtle gold details. Fancy rich texture and luminous layered fins. Front upright view, no clothes or hat.",
+    "라벤더빛 몸에 은빛 꿈무늬가 수놓아져 있다. 귀 같은 지느러미와 진주빛 팔을 펼치며 달콤한 잠결에 바다를 떠돈다."
+  ]
+]

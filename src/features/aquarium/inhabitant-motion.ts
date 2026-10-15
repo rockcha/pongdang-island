@@ -1,5 +1,7 @@
 import type { OwnedCollectible } from '@/features/collection/api'
 import { createSwimMotion } from './swim-motion'
+import { decorationGeometry } from './decoration-geometry'
+import {movementSettings} from './movement-settings'
 
 export class InhabitantMotion {
   private swim: ReturnType<typeof createSwimMotion>
@@ -19,14 +21,36 @@ export class InhabitantMotion {
   }
   setItem(item:OwnedCollectible,now:number,width:number,height:number,reduced=false){
     const changed=item.position_x!==this.item.position_x||item.position_y!==this.item.position_y
+    const before=this.item.species,after=item.species
+    if(before.movement_type!==after.movement_type||before.travel_direction!==after.travel_direction||before.speed!==after.speed||before.kind!==after.kind){
+      this.swim=createSwimMotion(item.id,item.animation_seed,Number(after.speed),after.kind==='fish')
+      this.offset={x:0,y:0};this.escape=null;this.initialized=false;this.born=now;this.angle=0;this.mirrored=false
+    }
     this.item=item
+    if(item.species.kind==='decoration')return
     if(changed&&item.position_x!==null&&item.position_y!==null){
       const size=Math.min(item.species.size,width*.4)
       this.place(item.position_x*Math.max(0,width-size),item.position_y*Math.max(0,height-size),now,width,height,reduced)
     }
   }
   place(x:number,y:number,now:number,width:number,height:number,reduced=false){
+    if(this.item.species.kind==='decoration'){
+      const {size,margin,w,h}=decorationGeometry(this.item,width,height)
+      const px=Math.max(0,Math.min(w,x-margin)),py=Math.max(0,Math.min(h,y-margin))
+      this.item={...this.item,position_x:w?px/w:0,position_y:h?py/h:0}
+      this.pose={...this.pose,x:px+margin,y:py+margin,size}
+      return {x:this.item.position_x!,y:this.item.position_y!}
+    }
     const size=Math.min(this.item.species.size,width*.4),w=Math.max(0,width-size),h=Math.max(0,height-size)
+    const settings=movementSettings(this.item.species)
+    if(settings.type!=='swim'||settings.travel!=='both'){
+      const px=Math.max(0,Math.min(w,x)),py=Math.max(0,Math.min(h,y))
+      const base=this.specialBase(reduced?0:Math.max(0,now-this.born),width,height,false)
+      this.offset={x:px-base.x,y:py-base.y};this.escape=null;this.placed=true;this.initialized=true
+      this.item={...this.item,position_x:w?px/w:0,position_y:h?py/h:0}
+      this.pose={...this.pose,x:px,y:py,size}
+      return {x:this.item.position_x!,y:this.item.position_y!}
+    }
     const motion=this.swim(reduced?0:Math.max(0,now-this.born))
     const low=Number(this.item.species.swim_y_min),high=Number(this.item.species.swim_y_max)
     const px=Math.max(0,Math.min(w,x)),py=Math.max(0,Math.min(h,y))
@@ -38,6 +62,8 @@ export class InhabitantMotion {
   }
   flee(x: number, y: number, now: number, radius: number) {
     if (!['fish','trash'].includes(this.item.species.kind)) return
+    const settings=movementSettings(this.item.species)
+    if(settings.type!=='swim'||settings.travel!=='both')return
     const dx = this.pose.x + this.pose.size / 2 - x, dy = this.pose.y + this.pose.size / 2 - y
     const distance = Math.hypot(dx, dy)
     if (distance > radius) return
@@ -45,18 +71,58 @@ export class InhabitantMotion {
     const strength = 16 + (1 - distance / radius) * 16
     this.escape = { start: now, dx: Math.cos(angle) * strength, dy: Math.sin(angle) * strength, x:this.pose.x,y:this.pose.y }
   }
+  private specialBase(time:number,width:number,height:number,withTravelOffset=true){
+    const s=this.item.species,settings=movementSettings(s),seed=this.item.animation_seed/1000000
+    const size=Math.min(s.size,width*.4),w=Math.max(0,width-size),h=Math.max(0,height-size)
+    const low=Number(s.swim_y_min??.2),high=Number(s.swim_y_max??.8),motion=this.swim(time)
+    let x=(.2+seed*.6)*w,y=(low+(high-low)*motion.y)*h,direction=motion.direction
+    if(settings.type==='fixed')return {x:(this.item.position_x??(.2+seed*.6))*w,y:(this.item.position_y??.5)*h,direction:1}
+    if(settings.type==='crawl'){x=motion.x*w;y=(low+high)/2*h}
+    if(settings.type==='pulse'){
+      // Gentle short vertical pulses, carried along an individual, slowly
+      // changing horizontal current instead of traversing the full depth range.
+      const current=this.swim(time*.25)
+      const duration=Math.max(24,Math.min(120,1.5/Math.max(Number(s.speed),.001)))*(.9+seed*.2)
+      const phase=(time/duration+seed)%1
+      const p=phase<.42?phase/.42:(phase-.42)/.58
+      const blend=p*p*(3-2*p)
+      const depth=Math.max(.12,Math.min(.88,current.y))
+      const pulse=(phase<.42?1-blend:blend)-.5
+      x=current.x*w
+      y=(low+(high-low)*(depth+pulse*.24))*h
+      direction=current.direction
+    }
+    if(settings.travel!=='both'){
+      const span=width+size,offset=withTravelOffset?this.offset.x*(settings.travel==='right'?1:-1):0
+      const progress=((seed*span+time*Math.max(Number(s.speed),.001)*width+offset)%span+span)%span
+      x=settings.travel==='right'?progress-size:width-progress;direction=settings.travel==='right'?1:-1
+    }else if(settings.type==='swim')x=motion.x*w
+    return {x,y,direction}
+  }
   update(now: number, delta: number, width: number, height: number, reduced = false) {
     const s = this.item.species, seed = this.item.animation_seed / 1000000
     const time = reduced ? 0 : Math.max(0, now - this.born)
     const motion = this.swim(time), size = Math.min(s.size, width * .4)
     const w = Math.max(0, width - size), h = Math.max(0, height - size)
-    if(!this.initialized&&this.item.position_x!==null&&this.item.position_y!==null&&s.kind!=='structure'){
+    if(!this.initialized&&this.item.position_x!==null&&this.item.position_y!==null&&s.kind!=='decoration'){
       this.place(this.item.position_x*w,this.item.position_y*h,now,width,height,reduced)
     }
     let x: number, y: number, direction = motion.direction, angle = 0
-    if (s.kind === 'structure') {
-      x = (this.item.position_x ?? (.2 + seed * .6)) * w
-      y = (this.item.position_y ?? .86) * h
+    if (s.kind === 'decoration') {
+      const geometry=decorationGeometry(this.item,width,height)
+      x = geometry.margin+(this.item.position_x ?? (.2 + seed * .6))*geometry.w
+      y = geometry.margin+(this.item.position_y ?? .86)*geometry.h
+      this.pose={x,y,size:geometry.size,direction:1,angle:geometry.angle,frame:0}
+      return this.pose
+    }
+    const settings=movementSettings(s)
+    if(settings.type!=='swim'||settings.travel!=='both'){
+      const base=this.specialBase(time,width,height),oneWay=settings.travel!=='both'
+      const fixed=settings.type==='fixed'
+      this.pose={x:fixed||oneWay?base.x:Math.max(0,Math.min(w,base.x+this.offset.x)),
+        y:fixed?base.y:Math.max(0,Math.min(h,base.y+this.offset.y)),size,direction:base.direction,angle:0,
+        frame:fixed||reduced?0:Math.floor(settings.type==='pulse'?time*1.6:motion.framePhase)%4}
+      return this.pose
     } else {
       const low = Number(s.swim_y_min), high = Number(s.swim_y_max)
       const baseY=(low+(high-low)*motion.y)*h
@@ -68,7 +134,7 @@ export class InhabitantMotion {
       }
       direction=this.mirrored?-motion.direction:motion.direction
       x = (this.mirrored?1-motion.x:motion.x) * w; y = baseY
-      if (s.kind === 'fish' && !reduced) {
+      if (s.kind === 'fish' && settings.flip && !reduced) {
         const target = Math.max(-10, Math.min(10, Math.atan2(motion.velocityY * (high - low) * h, Math.max(Math.abs(motion.velocityX * w), 4)) * 180 / Math.PI * direction))
         this.angle += (target - this.angle) * (1 - Math.exp(-Math.min(delta, .1) * 3))
         angle = this.angle
@@ -81,7 +147,7 @@ export class InhabitantMotion {
           this.offset = { x: escape.x + escape.dx * (push+drift)-x, y: escape.y + escape.dy * (push+drift)-y }
           if (s.kind==='fish') {
             direction = escape.dx >= 0 ? 1 : -1
-            angle = Math.max(-30, Math.min(30, Math.atan2(escape.dy, Math.max(Math.abs(escape.dx), 1)) * 180 / Math.PI * direction))
+            angle = settings.flip?Math.max(-30, Math.min(30, Math.atan2(escape.dy, Math.max(Math.abs(escape.dx), 1)) * 180 / Math.PI * direction)):0
             this.angle=angle
           }
         }

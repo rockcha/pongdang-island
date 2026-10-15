@@ -1,0 +1,12 @@
+{
+  "id": "starpattern-manta",
+  "name": "별무늬 만타",
+  "rarity": "epic",
+  "movement_type": "swim",
+  "flip_with_direction": false,
+  "file": "fish/epic/starpattern-manta_thumbnail.png",
+  "storage_path": "fish/epic/starpattern-manta_thumbnail.png",
+  "prompt": "Use case: stylized-concept. Create a NEW aquarium game asset, not the reference character. Match the REFERENCE illustration's friendly CARTOON visual language: chunky rounded simplified silhouette, strong clean dark brown outlines, bold appealing shapes, expressive oversized glossy eyes if the animal has eyes, warm layered hand-painted cel shading and broad clean highlights. Cute stylized mobile-game character, NOT scientific drawing, realistic rendering, fine anatomical filaments or washed-out watercolor. No otter traits or otter accessories. Subject: An ornate EPIC STAR CONSTELLATION MANTA RAY, majestic deep navy velvet diamond wings, intricate silver and cyan constellations engraved across wings, opalescent golden edge filigree, luminous pearl spots, graceful curled cephalic lobes and long tail. Rich layered details and jewel shimmer but animal readable. Front/dorsal view symmetric, head at bottom, tail above. Transparent glows contained around fins. Front or top three-quarter view, upright, same orientation throughout. Maintain cute cartoon foundation. EPIC grade: visibly luxurious intricate luminous patterns, jewel/pearl highlights, layered fins and rich color depth, considerably more ornate and detailed while keeping cartoon silhouette. OUTPUT a single animal centered on a square canvas, entire body and appendages inside central 75% of canvas. True transparent background, no ground, scenery, bubbles, cast shadow, words, watermarks, grid, labels.",
+  "reference_role": "Pongi: cartoon style only",
+  "tool": "built-in image_gen"
+}

@@ -9,11 +9,11 @@ export default defineConfig({
   plugins: [react(), tailwindcss(), VitePWA({
     registerType: 'prompt',
     workbox: { globPatterns: ['**/*.{js,css,html,woff2}'] },
-    includeAssets: ['favicon-32.png', 'favicon-64.png', 'apple-touch-icon.png', 'branding/pongi.png'],
+    includeAssets: ['favicon-32.png', 'favicon-64.png', 'apple-touch-icon.png', 'branding/pongi.png', 'region-icons/*.svg'],
     manifest: {
       name: '퐁당섬', short_name: '퐁당섬', lang: 'ko',
       description: '손끝에서 시작하는 작은 낚시 여행, 퐁당섬',
-      theme_color: '#147d92', background_color: '#f4fbfa',
+      theme_color: '#3b82f6', background_color: '#eff6ff',
       display: 'standalone', start_url: '/', scope: '/',
       icons: [
         { src: '/pwa-192x192.png', sizes: '192x192', type: 'image/png' },

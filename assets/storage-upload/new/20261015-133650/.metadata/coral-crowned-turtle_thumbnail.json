@@ -1,0 +1,13 @@
+{
+  "id": "coral-crowned-turtle",
+  "name": "산호왕관 거북",
+  "rarity": "epic",
+  "native_region_id": "coral",
+  "file": "fish/epic/coral-crowned-turtle_thumbnail.png",
+  "storage_path": "fish/epic/coral-crowned-turtle_thumbnail.png",
+  "prompt": "Use case: stylized-concept. New collectible for a cozy Korean mobile aquarium game. STYLE REFERENCE ONLY; do not draw the reference character or reference background. Match the reference's SOFT LUMINOUS FANTASY ILLUSTRATION style: smooth flowing organic shapes, fine softly colored contours, delicate gradients, dimensional painted shading, pearlescent translucent fins and soft refracted glow, magical sophisticated detail. NO chunky dark-brown cartoon outlines, no metallic costume or gold jewelry overload. Reference animal species/purple colors/stars are not required; use turtle and natural CORAL colors. Subject: A graceful fantasy SEA TURTLE with soft mint and ivory skin, flowing translucent peach-pink swimming flippers, a richly detailed domed shell bearing a miniature living coral garden of rose and lilac branches and pearly anemones, elegant small branching CORAL CROWN on its head, big gentle luminous eyes. Shell patterns glow softly like refracted coral light. Natural coral materials, not metallic gold armor, no chains, no jewelry costume. Three-quarter swimming side profile facing LEFT. ONE single complete subject centered on a square canvas with transparent padding. Genuine ALPHA TRANSPARENT PNG, no checkerboard, black background, scene, rocks, floor, water, bubbles, cast shadow, text, labels, screen UI or watermark. ",
+  "style_reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+  "reference_role": "style only",
+  "tool": "built-in image_gen",
+  "edge_cleanup_prompt": "Edit this single turtle illustration for CLEAN TRANSPARENT CUTOUT EDGES. Preserve exact turtle identity, soft mint skin, pastel coral garden and delicate painted fantasy shading INSIDE the turtle. Remove ALL stray disconnected pixels, stippling, dots, sparkles, white flecks, red/yellow flecks, halos and glow outside the turtle silhouette. No particles anywhere outside body and coral branches. Transparent gaps between branches and flippers must be entirely clear. Feathering is limited to a neat 1-pixel antialiased edge: absolutely no white matte, dirty glow or pixel dust. Use a thin smooth pastel-colored contour to define the clean silhouette; NOT thick brown cartoon outlines. Keep highlights and soft gradient detail confined inside the animal. Keep one centered complete turtle, no cropping, with 10% transparent padding. Output genuine transparent RGBA PNG. Do not introduce background checkerboard, scenery, text, drop shadows, water, rocks or any background color."
+}

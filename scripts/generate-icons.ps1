@@ -20,7 +20,7 @@ try {
       $graphics.Clear([System.Drawing.Color]::Transparent)
       $inset = 0
       if ($icon.Maskable) {
-        $graphics.Clear([System.Drawing.ColorTranslator]::FromHtml('#f4fbfa'))
+        $graphics.Clear([System.Drawing.ColorTranslator]::FromHtml('#eff6ff'))
         $inset = [int]($size * .14)
       }
       $graphics.DrawImage($source, $inset, $inset, $size - 2 * $inset, $size - 2 * $inset)

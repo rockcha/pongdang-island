@@ -1,0 +1,80 @@
+{
+  "tool": "built-in image_gen",
+  "transparent_background": true,
+  "created_at_kst": "2026-10-15T11:49:04+09:00",
+  "bucket": "collectibles",
+  "assets": [
+    {
+      "id": "moonbell-jellyfish",
+      "file": "fish/rare/moonbell-jellyfish_thumbnail.png",
+      "storage_path": "fish/rare/moonbell-jellyfish_thumbnail.png",
+      "native_region_id": "mistmoon",
+      "movement_type": "pulse",
+      "flip_with_direction": false,
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game collectible. Clean thick dark brown outlines, softly rounded shapes, polished pastel cel shading, readable small silhouette. Genuinely transparent background. Entire subject centered with generous padding. No ground, scenery, bubbles, text, labels, watermark or cast shadow. A little moonbell JELLYFISH seen from the front, translucent lavender hemispherical bell with ONE pale silver circular moon marking inside, six short soft cream-lavender tentacles hanging down, no face or eyes. Upright vertical silhouette, bell above tentacles. One single creature on a square canvas."
+    },
+    {
+      "id": "moonbell-jellyfish",
+      "file": "fish/rare/moonbell-jellyfish_sprite.png",
+      "storage_path": "fish/rare/moonbell-jellyfish_sprite.png",
+      "native_region_id": "mistmoon",
+      "movement_type": "pulse",
+      "flip_with_direction": false,
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game collectible. Clean thick dark brown outlines, softly rounded shapes, polished pastel cel shading, readable small silhouette. Genuinely transparent background. Entire subject centered with generous padding. No ground, scenery, bubbles, text, labels, watermark or cast shadow. A little moonbell JELLYFISH seen from the front, translucent lavender hemispherical bell with ONE pale silver circular moon marking inside, six short soft cream-lavender tentacles hanging down, no face or eyes. Upright vertical silhouette, bell above tentacles. OUTPUT one square 2x2 ANIMATION SPRITE SHEET, four equal square cells with no borders or gutters, exactly one identical creature per cell. Same body size, central position, colors and orientation in all four cells. Four phases: bell contracts and expands slightly, tentacles fold in then relax, always upright with no sideways turns. Ensure whole creature and all legs or tentacles fit within each cell with padding."
+    },
+    {
+      "id": "peach-umbrella-jellyfish",
+      "file": "fish/normal/peach-umbrella-jellyfish_thumbnail.png",
+      "storage_path": "fish/normal/peach-umbrella-jellyfish_thumbnail.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": false,
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game collectible. Clean thick dark brown outlines, softly rounded shapes, polished pastel cel shading, readable small silhouette. Genuinely transparent background. Entire subject centered with generous padding. No ground, scenery, bubbles, text, labels, watermark or cast shadow. A little peach umbrella JELLYFISH seen from the front, softly domed peach-pink umbrella bell with scalloped cream rim, six stubby cream tentacles. Simple cute natural jellyfish, no face or eyes. Upright vertical silhouette, bell above tentacles. One single creature on a square canvas."
+    },
+    {
+      "id": "peach-umbrella-jellyfish",
+      "file": "fish/normal/peach-umbrella-jellyfish_sprite.png",
+      "storage_path": "fish/normal/peach-umbrella-jellyfish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": false,
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game collectible. Clean thick dark brown outlines, softly rounded shapes, polished pastel cel shading, readable small silhouette. Genuinely transparent background. Entire subject centered with generous padding. No ground, scenery, bubbles, text, labels, watermark or cast shadow. A little peach umbrella JELLYFISH seen from the front, softly domed peach-pink umbrella bell with scalloped cream rim, six stubby cream tentacles. Simple cute natural jellyfish, no face or eyes. Upright vertical silhouette, bell above tentacles. OUTPUT one square 2x2 ANIMATION SPRITE SHEET, four equal square cells with no borders or gutters, exactly one identical creature per cell. Same body size, central position, colors and orientation in all four cells. Four phases: bell gently contracts and expands, short tentacles curl in then relax, always upright with no sideways turns. Ensure whole creature and all legs or tentacles fit within each cell with padding."
+    },
+    {
+      "id": "coral-claw-crab",
+      "file": "fish/rare/coral-claw-crab_thumbnail.png",
+      "storage_path": "fish/rare/coral-claw-crab_thumbnail.png",
+      "native_region_id": "coral",
+      "movement_type": "crawl",
+      "flip_with_direction": false,
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game collectible. Clean thick dark brown outlines, softly rounded shapes, polished pastel cel shading, readable small silhouette. Genuinely transparent background. Entire subject centered with generous padding. No ground, scenery, bubbles, text, labels, watermark or cast shadow. A small CORAL-CLAW CRAB looking directly toward the viewer, rounded apricot-orange shell, two coral-pink chunky claws held at sides, two little eye stalks with friendly dark eyes, FOUR short walking legs on each side. Compact symmetric frontal silhouette, no actual coral growing from it. One single creature on a square canvas."
+    },
+    {
+      "id": "coral-claw-crab",
+      "file": "fish/rare/coral-claw-crab_sprite.png",
+      "storage_path": "fish/rare/coral-claw-crab_sprite.png",
+      "native_region_id": "coral",
+      "movement_type": "crawl",
+      "flip_with_direction": false,
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game collectible. Clean thick dark brown outlines, softly rounded shapes, polished pastel cel shading, readable small silhouette. Genuinely transparent background. Entire subject centered with generous padding. No ground, scenery, bubbles, text, labels, watermark or cast shadow. A small CORAL-CLAW CRAB looking directly toward the viewer, rounded apricot-orange shell, two coral-pink chunky claws held at sides, two little eye stalks with friendly dark eyes, FOUR short walking legs on each side. Compact symmetric frontal silhouette, no actual coral growing from it. OUTPUT one square 2x2 ANIMATION SPRITE SHEET, four equal square cells with no borders or gutters, exactly one identical creature per cell. Same body size, central position, colors and orientation in all four cells. Four phases: walking legs alternate left/right sideways stepping poses and claws move very slightly, central shell and face stay in the exact same front-facing position. Ensure whole creature and all legs or tentacles fit within each cell with padding."
+    },
+    {
+      "id": "pebble-hermit-crab",
+      "file": "fish/normal/pebble-hermit-crab_thumbnail.png",
+      "storage_path": "fish/normal/pebble-hermit-crab_thumbnail.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "flip_with_direction": false,
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game collectible. Clean thick dark brown outlines, softly rounded shapes, polished pastel cel shading, readable small silhouette. Genuinely transparent background. Entire subject centered with generous padding. No ground, scenery, bubbles, text, labels, watermark or cast shadow. A little HERMIT CRAB seen mostly from the FRONT, small orange face with two friendly eye stalks, little orange claws and short orange walking legs peeking out under a large smooth rounded blue-gray spiral shell. Compact squat shape, shell has a subtle stone-speckled texture. One single creature on a square canvas."
+    },
+    {
+      "id": "pebble-hermit-crab",
+      "file": "fish/normal/pebble-hermit-crab_sprite.png",
+      "storage_path": "fish/normal/pebble-hermit-crab_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "flip_with_direction": false,
+      "prompt": "Use case: stylized-concept. Cozy cute cartoon aquarium game collectible. Clean thick dark brown outlines, softly rounded shapes, polished pastel cel shading, readable small silhouette. Genuinely transparent background. Entire subject centered with generous padding. No ground, scenery, bubbles, text, labels, watermark or cast shadow. A little HERMIT CRAB seen mostly from the FRONT, small orange face with two friendly eye stalks, little orange claws and short orange walking legs peeking out under a large smooth rounded blue-gray spiral shell. Compact squat shape, shell has a subtle stone-speckled texture. OUTPUT one square 2x2 ANIMATION SPRITE SHEET, four equal square cells with no borders or gutters, exactly one identical creature per cell. Same body size, central position, colors and orientation in all four cells. Four phases: short legs alternate sideways stepping poses, eyes and shell stay in exactly the same front-facing position. Ensure whole creature and all legs or tentacles fit within each cell with padding."
+    }
+  ]
+}

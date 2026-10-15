@@ -3,15 +3,17 @@ import { collectibleUrl } from '@/features/collection/api'
 import type { OwnedCollectible } from '@/features/collection/api'
 import { InhabitantMotion } from './inhabitant-motion'
 import { tankSwipeDirection } from './tank-swipe'
+import {shouldFlipSpecies} from './movement-settings'
 
 export type TankRenderer = { setItems: (items: OwnedCollectible[]) => void; resize: (width: number, height: number) => void; setReduced: (value: boolean) => void; setVisible: (value: boolean) => void; getStats: () => { count: number; textures: number; clock: number; renderer: string }; destroy: () => void }
 
-export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectible[], reduced: boolean, onError: (message: string) => void, onPlace?: (id:string,x:number,y:number)=>void,onNavigate?:(direction:'previous'|'next')=>void): TankRenderer {
+export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectible[], reduced: boolean, onError: (message: string) => void, onPlace?: (id:string,x:number,y:number)=>void,onNavigate?:(direction:'previous'|'next')=>void,onSelectDecoration?:(id:string)=>void,onBackgroundTap?:()=>void): TankRenderer {
   let items = initial, ready = false, disposed = false, clock = 0, visible = true
   const entries = new Map<string, { motion: InhabitantMotion; sprite: Phaser.GameObjects.Sprite; path: string; sheet: boolean }>()
   const queued = new Set<string>(), failed = new Set<string>()
   const dragging=new Set<string>()
   let swipe:{id:number;x:number;y:number;time:number}|null=null
+  let decorationPress:{id:string;pointerId:number;x:number;y:number;dragged:boolean}|null=null
   const textureKey = (path: string) => `collectible:${path}`
   const asset = (item: OwnedCollectible) => {
     const sheet = item.species.kind === 'fish' && !!item.species.sprite_sheet_path
@@ -26,27 +28,34 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
       this.input.dragDistanceThreshold=6
       this.input.on('pointerdown', (pointer: Phaser.Input.Pointer, targets: Phaser.GameObjects.GameObject[]) => {
         swipe=null
+        decorationPress=null
+        const target=targets[0] as Phaser.GameObjects.Sprite|undefined
+        const id=target?.getData('collectibleId') as string|undefined
+        if(id&&entries.get(id)?.motion.item.species.kind==='decoration')decorationPress={id,pointerId:pointer.id,x:pointer.x,y:pointer.y,dragged:false}
         if(targets.length)return
-        if(pointer.wasTouch){swipe={id:pointer.id,x:pointer.x,y:pointer.y,time:performance.now()};return}
-        this.tap(pointer)
+        swipe={id:pointer.id,x:pointer.x,y:pointer.y,time:performance.now()}
       })
       this.input.on('pointerup',(pointer:Phaser.Input.Pointer)=>{
+        const press=decorationPress;decorationPress=null
+        if(press&&press.pointerId===pointer.id&&!press.dragged&&Math.hypot(pointer.x-press.x,pointer.y-press.y)<6){onSelectDecoration?.(press.id);return}
         if(!swipe||swipe.id!==pointer.id)return
         const start=swipe;swipe=null
         const dx=pointer.x-start.x,dy=pointer.y-start.y
         const direction=tankSwipeDirection(dx,dy,performance.now()-start.time)
         if(direction&&onNavigate){onNavigate(direction);return}
-        if(Math.hypot(dx,dy)<15)this.tap(pointer)
+        if(Math.hypot(dx,dy)<15){onBackgroundTap?.();this.tap(pointer)}
       })
-      this.input.on('gameout',()=>{swipe=null})
+      this.input.on('gameout',()=>{swipe=null;decorationPress=null})
       this.input.on('dragstart',(_pointer:Phaser.Input.Pointer,sprite:Phaser.GameObjects.Sprite)=>{
         swipe=null
         const id=sprite.getData('collectibleId') as string
+        if(decorationPress?.id===id)decorationPress.dragged=true
         dragging.add(id);sprite.setDepth(900)
         this.input.setDefaultCursor('grabbing')
       })
       this.input.on('drag',(_pointer:Phaser.Input.Pointer,sprite:Phaser.GameObjects.Sprite,x:number,y:number)=>{
-        const half=sprite.displayWidth/2
+        const radians=sprite.angle*Math.PI/180
+        const half=sprite.displayWidth*(Math.abs(Math.cos(radians))+Math.abs(Math.sin(radians)))/2
         sprite.setPosition(Math.max(half,Math.min(this.scale.width-half,x)),Math.max(half,Math.min(this.scale.height-half,y)))
       })
       this.input.on('dragend',(_pointer:Phaser.Input.Pointer,sprite:Phaser.GameObjects.Sprite)=>{
@@ -104,7 +113,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         if(dragging.has(entry.motion.item.id))continue
         const pose = entry.motion.update(clock, delta, this.scale.width, this.scale.height, reduced)
         entry.sprite.setPosition(pose.x + pose.size / 2, pose.y + pose.size / 2).setDisplaySize(pose.size, pose.size).setAngle(pose.angle)
-        entry.sprite.setFlipX(entry.motion.item.species.kind === 'fish' && pose.direction < 0)
+        entry.sprite.setFlipX(shouldFlipSpecies(entry.motion.item.species,pose.direction))
         if (entry.sheet) { const frame = `swim-${pose.frame}`; if (entry.sprite.frame.name !== frame) entry.sprite.setFrame(frame) }
       }
     }

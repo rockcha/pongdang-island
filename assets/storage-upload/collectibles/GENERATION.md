@@ -1,5 +1,7 @@
 # 생성 기록
 
+아래는 과거 생성 기록입니다. 새 이미지의 그림체는 [최신 등급별 기준](../../references/collectible-style/README.md)을 우선합니다. 일반·희귀는 퐁이 카툰풍, 특급·신화는 별빛 가오리 참고의 부드러운 판타지 일러스트풍을 사용합니다.
+
 Built-in image_gen 사용. 참조 이미지: 사용자가 제공한 pongi.png. 따뜻한 갈색 윤곽선, 둥근 카툰 형태, 부드러운 셀 음영, 투명 배경. 기존 사실적인 에셋을 대체합니다.
 
 ## fish
@@ -47,7 +49,7 @@ Use case: stylized-concept. Generate a NEW mobile game collectible asset. Input 
 Asset type: ONE square 1:1 transparent inventory thumbnail. Exactly one complete item centered, occupying 75% canvas with ample transparent margins.
 Actual alpha transparency, no backdrop, no shadow on a floor, no water scenery.
 
-## structures
+## decorations
 
 산호빛 작은 집: one small humble rounded pale sandstone aquarium house, arched dark doorway, rounded pebble base, a tiny pink coral growing beside it and green seaweed. Common rarity so simple cozy design without jewels or sparkles.
 

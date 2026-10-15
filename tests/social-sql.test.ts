@@ -61,6 +61,8 @@ beforeAll(async () => {
       await db.query('delete from auth.users where id=$1',[legacyId])
     }
   }
+  await db.exec(await readFile(resolve('supabase/sql/25-decoration-editing/01-decoration-editing.sql'),'utf8'))
+  await db.exec(await readFile(resolve('supabase/sql/26-collectible-storage/01-storage.sql'),'utf8'))
   for (const [index, id] of ids.entries()) {
     await db.query('insert into auth.users(id,raw_user_meta_data) values($1,$2)', [id, JSON.stringify({ game_nickname: `낚시꾼${index}` })])
     const profile = await asUser(id, 'select * from public.sync_player_profile()')
@@ -130,6 +132,44 @@ describe('aquarium placement and collectible sales',()=>{
   const id=(await db.query<{id:string}>('insert into public.player_collectibles(user_id,species_id,tank_id) values($1,$2,$3) returning id',[ids[user],species,tank])).rows[0].id
   return {id,tank}
  }
+ it('saves decoration position, rotation and both scale limits while enforcing ownership and escrow',async()=>{
+  const own=await owned(0,'coral-house'),foreign=await owned(1,'coral-house'),fish=await owned()
+  for(const scale of [.5,2]){
+   const result=await asUser(ids[0],'select public.arrange_decoration($1,$2,.3,.8,360,$3) as result',[own.id,own.tank,scale])
+   expect(result.rows[0]).toMatchObject({result:{position_x:.3,position_y:.8,rotation:0,scale}})
+  }
+  const sql='select public.arrange_decoration($1,$2,.3,.8,$3,$4)'
+  for(const [rotation,scale] of [[-1,1],[361,1],[0,.49],[0,2.01],[null,1],[0,null],['NaN',1],[0,'NaN']]){
+   await expect(asUser(ids[0],sql,[own.id,own.tank,rotation,scale])).rejects.toThrow('INVALID_TRANSFORM')
+  }
+  await expect(asUser(ids[1],sql,[own.id,foreign.tank,30,1])).rejects.toThrow('COLLECTIBLE_NOT_FOUND')
+  await expect(asUser(ids[0],sql,[own.id,foreign.tank,30,1])).rejects.toThrow('TANK_NOT_FOUND')
+  await expect(asUser(ids[0],sql,[fish.id,fish.tank,30,1])).rejects.toThrow('INVALID_ITEM')
+  await expect(asUser(ids[0],'update public.player_collectibles set scale=2 where id=$1',[own.id])).rejects.toThrow('permission denied')
+  expect((await db.query("select has_function_privilege('anon','public.arrange_decoration(uuid,uuid,numeric,numeric,numeric,numeric)','execute') as allowed")).rows[0]).toEqual({allowed:false})
+  const request=await send();await respond(1,request,'accept')
+  await asUser(ids[0],'select public.send_collectible_gift($1,$2,$3,$4)',[ids[1],[own.id],'','aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'])
+  await expect(asUser(ids[1],sql,[own.id,foreign.tank,30,1])).rejects.toThrow('COLLECTIBLE_NOT_FOUND')
+  await db.query('update public.player_collectibles set sold_at=now() where id=$1',[foreign.id])
+  await expect(asUser(ids[1],sql,[foreign.id,foreign.tank,30,1])).rejects.toThrow('COLLECTIBLE_NOT_FOUND')
+ })
+ it('upgrades legacy enum, paths and gift snapshots twice without losing ownership or placement',async()=>{
+  const own=await owned(0,'coral-house')
+  await db.query('update public.player_collectibles set position_x=.2,position_y=.4,rotation=45,scale=1.5 where id=$1',[own.id])
+  const request=await send();await respond(1,request,'accept')
+  const other=await owned(0,'coral-house')
+  await asUser(ids[0],'select public.send_collectible_gift($1,$2,$3,$4)',[ids[1],[other.id],'','aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'])
+  // Reconstruct the old installed catalog and PL/pgSQL body, not just fresh install SQL.
+  await db.exec("alter type public.collectible_kind rename value 'decoration' to 'structure'; update public.collectible_species set thumbnail_path=replace(thumbnail_path,'decorations/','structures/') where kind='structure'; update public.collectible_gifts set species=species||jsonb_build_object('kind','structure','thumbnail_path','structures/normal/coral-house_thumbnail.png');")
+  const oldFunction=await db.query<{definition:string}>("select pg_get_functiondef('app_private.place_collectible(uuid,uuid,numeric,numeric)'::regprocedure) as definition")
+  await db.exec(oldFunction.rows[0].definition.replaceAll("'decoration'","'structure'"))
+  const migration=await readFile(resolve('supabase/sql/25-decoration-editing/01-decoration-editing.sql'),'utf8')
+  await db.exec(migration);await db.exec(migration)
+  expect((await db.query('select user_id,position_x::float as x,position_y::float as y,rotation::float as rotation,scale::float as scale from public.player_collectibles where id=$1',[own.id])).rows[0]).toEqual({user_id:ids[0],x:.2,y:.4,rotation:45,scale:1.5})
+  expect((await db.query('select species from public.collectible_gifts')).rows[0]).toMatchObject({species:{kind:'decoration',thumbnail_path:'decorations/normal/coral-house_thumbnail.png'}})
+  await asUser(ids[0],'select public.place_collectible($1,$2,.1,.2)',[own.id,own.tank])
+  expect((await db.query("select kind::text as kind from public.collectible_species where id='coral-house'")).rows[0]).toEqual({kind:'decoration'})
+ })
  it('sells an exact batch once, updates gold and preserves discoveries',async()=>{
   const a=await owned(),b=await owned()
   await db.query("insert into public.player_discoveries(user_id,species_id) values($1,'pongul')",[ids[0]])
@@ -165,6 +205,76 @@ describe('aquarium placement and collectible sales',()=>{
   const permissions=await db.query("select has_function_privilege('anon','public.sell_collectibles(uuid[],uuid)','execute') as sale,has_function_privilege('anon','public.place_collectible(uuid,uuid,numeric,numeric)','execute') as placement")
   expect(permissions.rows[0]).toEqual({sale:false,placement:false})
   await expect(asUser(ids[0],'update public.player_collectibles set position_x=.1 where id=$1',[own.id])).rejects.toThrow('permission denied')
+ })
+})
+
+describe('collectible storage and batch tank assignment',()=>{
+ async function stored(species='pongul',user=0){
+  return (await db.query<{id:string}>('insert into public.player_collectibles(user_id,species_id) values($1,$2) returning id',[ids[user],species])).rows[0].id
+ }
+ async function tank(user=0){
+  await asUser(ids[user],'select public.aquarium_state()')
+  return (await db.query<{id:string}>('select id from public.aquarium_tanks where user_id=$1 and is_default',[ids[user]])).rows[0].id
+ }
+ it('assigns mixed kinds atomically, preserves transforms, returns them to storage and accepts safe retries',async()=>{
+  const destination=await tank(),other=await tank(1)
+  const fish=await stored(),trash=await stored('glass-bottle'),decoration=await stored('coral-house'),foreign=await stored('pongul',1)
+  await db.query('update public.player_collectibles set rotation=45,scale=1.5 where id=$1',[decoration])
+  await expect(asUser(ids[0],'select public.move_collectibles($1,$2)',[[fish,foreign],destination])).rejects.toThrow('COLLECTIBLE_NOT_FOUND')
+  expect((await db.query('select tank_id from public.player_collectibles where id=$1',[fish])).rows[0]).toEqual({tank_id:null})
+  await expect(asUser(ids[0],'select public.move_collectibles($1,$2)',[[fish],other])).rejects.toThrow('TANK_NOT_FOUND')
+  await expect(asUser(ids[0],'select public.move_collectibles($1,$2)',[[fish,fish],destination])).rejects.toThrow('INVALID_SELECTION')
+  const result=await asUser(ids[0],'select public.move_collectibles($1,$2) as state',[[fish,trash,decoration],destination])
+  expect(result.rows[0]).toMatchObject({state:{storageCount:0,tankCapacity:50}})
+  await asUser(ids[0],'select public.move_collectibles($1,$2)',[[fish,trash,decoration],destination])
+  expect((await db.query('select scale::float as scale,rotation::float as rotation from public.player_collectibles where id=$1',[decoration])).rows[0]).toEqual({scale:1.5,rotation:45})
+  await asUser(ids[0],'select public.move_collectibles($1,null)',[[fish,trash,decoration]])
+  const storage=await asUser(ids[0],'select public.collectible_storage() as data')
+  expect(storage.rows[0]).toMatchObject({data:{total:3}})
+  expect((await db.query("select has_function_privilege('anon','public.move_collectibles(uuid[],uuid)','execute') as allowed")).rows[0]).toEqual({allowed:false})
+ })
+ it('enforces the 50-individual tank limit without partially moving an oversized batch',async()=>{
+  const destination=await tank()
+  await db.query("insert into public.player_collectibles(user_id,species_id,tank_id) select $1,'pongul',$2 from generate_series(1,49)",[ids[0],destination])
+  const a=await stored(),b=await stored()
+  await expect(asUser(ids[0],'select public.move_collectibles($1,$2)',[[a,b],destination])).rejects.toThrow('TANK_FULL')
+  expect((await db.query('select tank_id from public.player_collectibles where id=any($1)',[[a,b]])).rows).toEqual([{tank_id:null},{tank_id:null}])
+  await asUser(ids[0],'select public.move_collectibles($1,$2)',[[a],destination])
+  await asUser(ids[0],'select public.move_collectibles($1,$2)',[[a],destination])
+  await expect(asUser(ids[0],'select public.move_collectibles($1,$2)',[[b],destination])).rejects.toThrow('TANK_FULL')
+  await asUser(ids[0],'select public.move_collectibles($1,null)',[[a]])
+  await asUser(ids[0],'select public.move_collectibles($1,$2)',[[b],destination])
+  const map=await stored('ocean-map')
+  await expect(asUser(ids[0],'select public.move_collectibles($1,$2)',[[map],destination])).rejects.toThrow('COLLECTIBLE_NOT_FOUND')
+  await db.query('update public.player_collectibles set sold_at=now() where id=$1',[a])
+  await expect(asUser(ids[0],'select public.move_collectibles($1,$2)',[[a],destination])).rejects.toThrow('COLLECTIBLE_NOT_FOUND')
+ })
+ it('pages stored individuals, excludes maps and foreign accounts, and supports category search',async()=>{
+  await db.query("insert into public.player_collectibles(user_id,species_id) select $1,'pongul' from generate_series(1,51)",[ids[0]])
+  await stored('coral-house');await stored('ocean-map');await stored('pongul',1)
+  const first=(await asUser(ids[0],'select public.collectible_storage(0,\'\',\'fish\') as data')).rows[0] as {data:{items:{id:string}[];total:number}}
+  const second=(await asUser(ids[0],'select public.collectible_storage(50,\'\',\'fish\') as data')).rows[0] as typeof first
+  expect(first.data.items).toHaveLength(50);expect(second.data.items).toHaveLength(1);expect(first.data.total).toBe(51)
+  expect(first.data.items.some(item=>item.id===second.data.items[0].id)).toBe(false)
+  expect((await asUser(ids[0],"select public.collectible_storage(0,'산호','decoration') as data")).rows[0]).toMatchObject({data:{total:1}})
+  expect((await asUser(ids[0],"select public.collectible_storage(0,'%','all') as data")).rows[0]).toMatchObject({data:{total:0}})
+  expect((await asUser(ids[0],'select public.aquarium_state() as state')).rows[0]).toMatchObject({state:{storageCount:52,inhabitants:[]}})
+ })
+ it('receives fish, trash and decorations into storage only after claiming gifts and without duplicating retries',async()=>{
+  const request=await send();await respond(1,request,'accept')
+  const destination=await tank(1)
+  for(const [index,species] of ['pongul','glass-bottle','coral-house'].entries()){
+   const individual=await stored(species)
+   const sent=(await asUser(ids[0],'select public.send_collectible_gift($1,$2,$3,$4) as gift',[ids[1],[individual],'',`aaaaaaaa-aaaa-aaaa-aaaa-${String(index+1).padStart(12,'0')}`])).rows[0] as {gift:{id:string}}
+   await expect(asUser(ids[1],'select public.move_collectibles($1,$2)',[[individual],destination])).rejects.toThrow('COLLECTIBLE_NOT_FOUND')
+   await asUser(ids[1],'select public.claim_collectible_gift($1)',[sent.gift.id])
+   await asUser(ids[1],'select public.claim_collectible_gift($1)',[sent.gift.id])
+  }
+  expect((await asUser(ids[1],'select public.aquarium_state() as state')).rows[0]).toMatchObject({state:{storageCount:3,inhabitants:[]}})
+  expect((await asUser(ids[1],'select public.collectible_storage() as data')).rows[0]).toMatchObject({data:{total:3}})
+  const migration=await readFile(resolve('supabase/sql/26-collectible-storage/01-storage.sql'),'utf8')
+  await db.exec(migration)
+  expect((await asUser(ids[1],'select public.collectible_storage() as data')).rows[0]).toMatchObject({data:{total:3}})
  })
 })
 
@@ -512,32 +622,34 @@ describe('real collectible instances and aquarium integration',()=>{
   await asUser(ids[0],'select public.get_gold_wallet()')
   await db.query('update public.player_wallets set inventory=jsonb_build_object($2::text,2) where user_id=$1',[ids[0],bait])
  }
- it('places each real fish into the free first tank and preserves one instance on replay',async()=>{
+ it('keeps caught fish in storage and preserves one instance on replay',async()=>{
   await prepare('bait_epic')
   for(const region of ['coral','mistmoon','starruins','dreamabyss']) await asUser(ids[0],'select public.set_region_test_lock($1,false)',[region])
   const result=(await asUser(ids[0],"select public.cast_fishing('pongdang','bait_epic',$1) as result",[operation])).rows[0] as {result:{attempt:{collectible_id:string;species:{kind:string;name:string;rarity:string}}}}
   expect(result.result.attempt.species.kind).toBe('fish')
   expect(['epic','mythic']).toContain(result.result.attempt.species.rarity)
   const owned=(await asUser(ids[0],'select * from public.player_collectibles')).rows[0] as {tank_id:string}
+  await asUser(ids[0],'select public.aquarium_state()')
   const tank=(await asUser(ids[0],'select * from public.aquarium_tanks where is_default')).rows[0] as {id:string}
-  expect(owned.tank_id).toBe(tank.id)
+  expect(owned.tank_id).toBeNull()
   await asUser(ids[0],"select public.cast_fishing('pongdang','bait_epic',$1)",[operation])
   expect((await db.query('select * from public.player_collectibles')).rows).toHaveLength(1)
-  const state=(await asUser(ids[0],'select public.aquarium_state() as state')).rows[0] as {state:{inhabitants:unknown[]}}
-  expect(state.state.inhabitants).toHaveLength(1)
+  const state=(await asUser(ids[0],'select public.aquarium_state() as state')).rows[0] as {state:{inhabitants:unknown[];storageCount:number}}
+  expect(state.state.inhabitants).toHaveLength(0)
+  expect(state.state.storageCount).toBe(1)
   expect((await asUser(ids[1],'select * from public.player_collectibles')).rows).toHaveLength(0)
   await expect(asUser(ids[1],'update public.player_collectibles set tank_id=$1',[tank.id])).rejects.toThrow('permission denied')
  })
- it('magnet always catches a structure, unlocks its thumbnail in the guide and consumes one bait',async()=>{
+ it('magnet always catches a decoration, unlocks its thumbnail in the guide and consumes one bait',async()=>{
   await prepare('bait_magnet')
   const result=(await asUser(ids[0],"select public.cast_fishing('pongdang','bait_magnet',$1) as result",[operation])).rows[0] as {result:{attempt:{species:{id:string;kind:string}}}}
-  expect(result.result.attempt.species).toMatchObject({id:'coral-house',kind:'structure'})
+  expect(result.result.attempt.species).toMatchObject({id:'coral-house',kind:'decoration'})
   expect((await asUser(ids[0],'select inventory from public.player_wallets')).rows[0]).toMatchObject({inventory:{bait_magnet:1}})
   const state=(await asUser(ids[0],'select public.collection_state() as state')).rows[0] as {state:{catalog:{id:string;discovered:boolean;habitats:unknown[]}[]}}
   expect(state.state.catalog.find(s=>s.id==='coral-house')).toMatchObject({discovered:true})
   expect(state.state.catalog[0].habitats).toHaveLength(5)
  })
- it('supports common-grade trash, only a thumbnail and first-tank placement',async()=>{
+ it('supports common-grade trash with only a thumbnail and storage on acquisition',async()=>{
   await db.exec('begin')
   try{
    await prepare('bait')
@@ -556,7 +668,7 @@ describe('cartoon collectible catalog',()=>{
   const rows=(await db.query('select kind,rarity,sprite_sheet_path,thumbnail_path from public.collectible_species order by kind,rarity')).rows as {kind:string;rarity:string;sprite_sheet_path:string|null;thumbnail_path:string}[]
   expect(rows).toHaveLength(7)
   expect(rows.filter(s=>s.kind==='fish').map(s=>s.rarity)).toEqual(['common','rare','epic','mythic'])
-  expect(rows.filter(s=>s.kind!=='fish').map(s=>s.kind).sort()).toEqual(['map','structure','trash'])
+  expect(rows.filter(s=>s.kind!=='fish').map(s=>s.kind).sort()).toEqual(['decoration','map','trash'])
   expect(rows.filter(s=>s.kind!=='fish').every(s=>s.rarity==='common'&&s.sprite_sheet_path===null)).toBe(true)
   expect(rows.filter(s=>s.kind==='fish').every(s=>s.sprite_sheet_path?.endsWith('_sprite.png'))).toBe(true)
   expect(rows.every(s=>s.thumbnail_path.endsWith('_thumbnail.png')&&!s.thumbnail_path.startsWith('v2/'))).toBe(true)

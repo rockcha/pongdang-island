@@ -52,7 +52,7 @@ export function NotificationMenu() {
             })}
           </div>
           <Menu.Separator className="h-px bg-border" />
-          <Menu.LinkItem render={<Link to="/notifications" />} className="flex min-h-12 cursor-pointer items-center justify-center gap-2 text-xs font-medium outline-none data-highlighted:bg-accent">파도 우편함 가기<ArrowRight className="size-3.5" /></Menu.LinkItem>
+          <Menu.LinkItem render={<Link to="/notifications" />} className="flex min-h-12 cursor-pointer items-center justify-center gap-2 text-xs font-medium outline-none data-highlighted:bg-accent">우편함 가기<ArrowRight className="size-3.5" /></Menu.LinkItem>
         </Menu.Popup>
       </Menu.Positioner>
     </Menu.Portal>

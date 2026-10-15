@@ -1,0 +1,12 @@
+{
+  "id": "bean-pufferfish",
+  "name": "콩알 복어",
+  "rarity": "common",
+  "movement_type": "swim",
+  "flip_with_direction": true,
+  "file": "fish/normal/bean-pufferfish_sprite.png",
+  "storage_path": "fish/normal/bean-pufferfish_sprite.png",
+  "tool": "built-in image_gen",
+  "user_approved": true,
+  "prompt": "One square 2x2 animation sprite sheet, exactly four equal cells, one same cute bean-sized yellow pufferfish per cell, facing LEFT, small fins, cream round belly, brown tiny spots and stubby spines, glossy black eyes, natural noninflated round body. Cozy Korean aquarium game, warm dark brown outlines, softly rounded polished pastel cel shading. Four subtle fin and tail swim cycle phases, identical size and position relative to each cell, no turning. Full subject fits inside every cell with 15% padding. True transparent background. No text, borders, grids, scenery, cast shadow, bubbles, other objects."
+}

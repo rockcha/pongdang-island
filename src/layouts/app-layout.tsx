@@ -12,9 +12,10 @@ export function AppLayout() {
   const {pathname}=useLocation()
   const aquarium=pathname==='/aquarium'
   const harbor=pathname==='/harbor'
+  const fishing=pathname.startsWith('/region/')
   const { wallet, loading: goldLoading, error: goldError } = useGold()
-  return <div className={`app-shell mx-auto flex w-full max-w-md flex-col ${aquarium?'aquarium-shell':harbor?'aquarium-shell px-4':'px-6'}`}>
-    <header className={aquarium||harbor?'shrink-0 px-3 py-2':'space-y-2 py-5'}>
+  return <div className={`app-shell mx-auto flex w-full ${fishing?'':'max-w-md'} flex-col ${aquarium||fishing?'aquarium-shell':harbor?'aquarium-shell px-4':'px-6'}`}>
+    <header className={aquarium||harbor||fishing?'shrink-0 px-3 py-2':'space-y-2 py-5'}>
       <div className="flex items-center justify-between gap-2">
       <div className="flex items-center gap-1">
         {session && <IslandNavigation />}
@@ -28,6 +29,6 @@ export function AppLayout() {
       {session && <div className="flex justify-end"><Link to="/shop" className="flex min-h-11 items-center gap-1.5 rounded-lg px-2 text-sm font-semibold tabular-nums hover:bg-muted" aria-label={goldLoading ? '골드 불러오는 중, 상점 이동' : goldError ? '골드 조회 실패, 상점 이동' : `보유 골드 ${wallet.gold.toLocaleString('ko-KR')}, 상점 이동`}><GoldIcon className="size-6"/><span>{goldLoading ? '…' : goldError ? '—' : wallet.gold.toLocaleString('ko-KR')}</span></Link></div>}
     </header>
     {!harbor&&<PlaceBanner pathname={pathname}/>}
-    <main className={`flex flex-1 flex-col ${aquarium||harbor?'min-h-0 overflow-hidden':''}`}><Outlet /></main>
+    <main className={`flex flex-1 flex-col ${aquarium||harbor||fishing?'min-h-0 overflow-hidden':''}`}><Outlet /></main>
   </div>
 }

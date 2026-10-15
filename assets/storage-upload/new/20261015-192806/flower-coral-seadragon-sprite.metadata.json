@@ -1,0 +1,11 @@
+{
+  "id": "flower-coral-seadragon",
+  "type": "sprite",
+  "file": "fish/rare/flower-coral-seadragon-v2_sprite.png",
+  "storage_path": "fish/rare/flower-coral-seadragon-v2_sprite.png",
+  "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-8f375260-4b96-40cd-b85a-8675d69a0f53.png",
+  "prompt": "Square 1:1 transparent PNG animation sprite sheet. EXACTLY 2x2 four equal SQUARE cells. One same referenced organism in each cell, entire silhouette occupies 80–85% of cell longest dimension, about 40–42% of TOTAL canvas; transparent margin at least 7% each side per cell. Center horizontal and vertical dividers empty. Preserve exact apricot body, pink and mint coral-leaf appendages and original LEFT facing orientation of the existing sea dragon reference (intentional legacy direction exception). Head and eye remain fixed relative to each cell, stable body pose. Animate small dorsal fin flutter and flowing leaf appendage tips, slight tail-tip flex, no whole-body bouncing or recentering. Four distinct gentle swimming frames; no blink-only frame. Reference1 is EXACT identity, reference2 Pongi cartoon STYLE: warm brown outlines, soft clean cel shading. Keep rigid body registration invariant, do not independently recenter or resize by pose. All four frames same direction. Real alpha transparency outside silhouettes, no black/colored backdrop, glow, floor/shadows, labels, grid or UI.",
+  "tool": "image_gen",
+  "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "identity_reference": "assets/storage-upload/new/20261015-133650/fish/rare/flower-coral-seadragon_thumbnail.png"
+}

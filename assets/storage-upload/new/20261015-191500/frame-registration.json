@@ -1,0 +1,27 @@
+{
+  "path": "fish/rare/sea-crocodile-v2_sprite.png",
+  "referenceFrame": 0,
+  "method": "right snout boundary x; alpha weighted rightmost 30 percent rigid head centroid y; no frame scaling",
+  "layout": [
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      -1.072,
+      0.162,
+      1
+    ],
+    [
+      0,
+      -6.441,
+      1
+    ],
+    [
+      -0.766,
+      -6.022,
+      1
+    ]
+  ]
+}

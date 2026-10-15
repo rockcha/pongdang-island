@@ -1,0 +1,11 @@
+{
+  "id": "flowerveil-jellyfish",
+  "type": "sprite",
+  "file": "fish/epic/flowerveil-jellyfish_sprite.png",
+  "storage_path": "fish/epic/flowerveil-jellyfish_sprite.png",
+  "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-eaf8eeec-5c78-48a2-8de2-f0d858268ca6.png",
+  "prompt": "Create ONE SQUARE 1:1 PNG containing a 2x2 FOUR-frame game animation sheet of exactly the same animal as reference1; reference2 STYLE ONLY. Maintain its anatomy, palette and rarity styling. A luminous fantasy jellyfish, layered translucent apricot and rose petal bell, fine pearl ivory trailing tendrils, inner warm blush light, delicate teal iridescent rims, flowing elegant silhouette, side profile bell leaning slightly screen-right, no cute cartoon face, no gold jewelry. Four successive very shallow bell contraction/release phases. Keep bell center and upper head reference position stable; mostly flowing petal rims and tentacle tips change. No whole-body vertical bounce or recentering. ALL FOUR frames face SCREEN RIGHT, head/mouth right, body and tail trail left, no mirrored or front-facing frames. All four eyes stay open; movement is not a blink-only sequence. Equal SQUARE cells, 0->1->2->3->0 smooth loop. CRITICAL FRAMING: each full silhouette occupies only 76–82% of its CELL longest dimension, never more than 41% of entire canvas width or height. Give each CELL generous TRANSPARENT 9% margins on all sides. The center vertical/horizontal dividers are wide EMPTY gutters. Do not enlarge to fill the sheet. Rigid head/body at same local x/y each cell. No independent pose recentering or scaling. Real ALPHA transparent outside silhouettes, no dark/colored backdrop, painted checkerboard, shadow, scene, grid, labels or text.",
+  "identity_reference": "assets/storage-upload/new/20261015-192806/fish/epic/flowerveil-jellyfish_thumbnail.png",
+  "style_reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+  "tool": "image_gen"
+}

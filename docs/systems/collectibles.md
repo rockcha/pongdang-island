@@ -197,3 +197,15 @@ collectible_species의 movement_type(swim/pulse/crawl/fixed), flip_with_directio
 도감은 판매가 낮은 순으로 표시하며, 같은 가격은 이름순으로 정렬합니다. 종류와 등급(일반·희귀·특급·신화) 필터를 함께 적용할 수 있습니다.
 
 달방울 해파리는 안개달 토착 희귀 pulse, 산호집게 꽃게는 산호빛 여울 토착 희귀 crawl입니다. 복숭아 우산해파리는 일반 pulse, 조약돌 소라게는 일반 crawl이며 기존 5개 지역 공통입니다. 모두 kind=fish, 반전 없음, 전용 2×2 시트입니다. 새 PNG는 assets/storage-upload/new/20261015-114904/fish/normal·rare에 정리합니다. [36 안내](../../supabase/sql/36-pulse-crawl-species/README.md).
+
+50 적용 후 산호부채 나비고기·홍련 지느러미돔·홍옥 눈동자 곰치·꽃너울 해파리는 토착이 아닌 공통종으로 모든 현재 해역에 서식합니다. 천년산호 거대게는 산호 토착을 유지하고 crawl로 천천히 걷습니다.
+공통 바다 개체 추가는 [SQL 51](../../supabase/sql/51-shared-ocean-life/README.md)을 참고합니다. 완두 해면·붕장어·관벌레·침수된 풍차는 고정 어종의 제자리 애니메이션을 사용하며, 모래시계 병은 희귀 쓰레기로 등록합니다.
+최신 분류는 [SQL 52](../../supabase/sql/52-animated-decoration-types/README.md)를 따릅니다. 침수된 풍차·완두 해면·안개빵 해면은 스프라이트를 사용하는 장식품이며 `idle_animated=true`로 재생됩니다.
+소라빛 바람개비·여울의 작은 회전목마·진주 품은 조개·산호 덮인 보물상자의 스프라이트는 [SQL 53](../../supabase/sql/53-animated-decorations/README.md)에서 활성화합니다. 장식품 제자리 애니메이션과 고정 받침대의 프레임 기준점 보정을 사용합니다.
+추가 장식품 5종(난파선·요람·우물·집·풍등)의 제자리 스프라이트와 버터 불가사리·물결 산호 조각의 일반 등급 변경은 [SQL 54](../../supabase/sql/54-living-decorations/README.md)를 따릅니다.
+루네아의 기록 서가의 제자리 애니메이션은 [SQL 55](../../supabase/sql/55-lunea-archive-animation/README.md)에서 활성화합니다. 기존 특급·안개달 토착 설정을 유지합니다.
+아틀란티스 개체 16종은 별잠 유적 토착이며 [SQL 56](../../supabase/sql/56-atlantis-collection/README.md)으로 등록합니다. 같은 배치의 초록등 바다거북은 일반 공통종, 산호에 덮인 난파선은 특급 산호 토착 장식품입니다. 신화 수호병은 fixed 어종이며 제자리 스프라이트를 사용합니다.
+수호병의 최신 이동 설정은 [SQL 57](../../supabase/sql/57-walking-atlantean-sentinel/README.md)입니다. crawl로 천천히 걷고 새 보행 시트를 사용하며 신화·별잠 토착·크기 150은 유지합니다.
+전 해역 공통 수초 장식품 5종과 일반 쓰레기 2종은 [SQL 58](../../supabase/sql/58-shared-aquatic-plants/README.md)로 추가합니다. 수초는 다양한 높이와 실루엣의 정지형 장식품이며 토착 아이콘은 표시하지 않습니다.
+수초의 최신 이미지는 [SQL 59](../../supabase/sql/59-animated-aquatic-plants/README.md)로 전환합니다. 모래·돌 받침과 제자리 스프라이트를 사용하며 기존 등급·가격·서식지는 유지합니다.
+공통 쓰레기 소품 추가는 [SQL 60](../../supabase/sql/60-shared-lost-objects/README.md)입니다. 필름통·연실 얼레·주사위·돋보기는 일반, 회중나침반은 희귀이며 모든 현재 해역에 서식합니다.

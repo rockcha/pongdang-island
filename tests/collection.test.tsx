@@ -58,3 +58,16 @@ it('keeps repeated temporary insertion on cards and excludes maps',async()=>{
  expect(screen.getAllByRole('dialog')).toHaveLength(1)
  expect(screen.queryByRole('button',{name:'지도 조각 임시 넣기'})).toBeNull()
 })
+
+it('searches names, combines rarity filters, and clears without closing the book',async()=>{
+ await open()
+ fireEvent.change(screen.getByRole('searchbox',{name:'도감 개체 검색'}),{target:{value:'  물고기  '}})
+ expect(cards()).toEqual(['공통 물고기','산호 물고기'])
+ fireEvent.change(screen.getByRole('combobox',{name:'도감 등급'}),{target:{value:'rare'}})
+ expect(cards()).toEqual(['산호 물고기'])
+ fireEvent.change(screen.getByRole('searchbox',{name:'도감 개체 검색'}),{target:{value:'없는개체'}})
+ expect(cards()).toEqual([])
+ fireEvent.click(screen.getByRole('button',{name:'검색어 지우기'}))
+ expect(cards()).toEqual(['산호 물고기','달빛 장식물'])
+ expect(screen.getAllByRole('dialog')).toHaveLength(1)
+})

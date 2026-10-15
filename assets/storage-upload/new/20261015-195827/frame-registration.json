@@ -1,0 +1,37 @@
+﻿{
+    "file":  "assets/storage-upload/new/20261015-195827/fish/mythic/ancient-coral-giant-crab-walk_sprite.png",
+    "storage_path":  "fish/mythic/ancient-coral-giant-crab-walk_sprite.png",
+    "patch":  [
+                  440,
+                  300,
+                  60,
+                  55
+              ],
+    "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  0
+                   },
+                   {
+                       "frame":  1,
+                       "dx":  -8,
+                       "dy":  0,
+                       "rmse":  19.146938741164206
+                   },
+                   {
+                       "frame":  2,
+                       "dx":  1,
+                       "dy":  -27,
+                       "rmse":  25.838631318648684
+                   },
+                   {
+                       "frame":  3,
+                       "dx":  -7,
+                       "dy":  -27,
+                       "rmse":  21.675674578223688
+                   }
+               ]
+}

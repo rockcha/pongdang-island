@@ -298,5 +298,251 @@
     "path": "fish/normal/tiny-cuttlefish_sprite.png",
     "facing": "front",
     "sha256": "12472ad72d05b6823749a0174ac16509509d0a7905680ee34ac718da6b133050"
+  },
+  {
+    "id": "sea-crocodile",
+    "path": "fish/rare/sea-crocodile-v2_sprite.png",
+    "facing": "right",
+    "sha256": "b79c52ade915b16df0956b21592b4641d69210d6c7412ccd8a90ba83e6327a1e"
+  },
+  {
+    "id": "flower-coral-seadragon",
+    "path": "fish/rare/flower-coral-seadragon-v2_sprite.png",
+    "facing": "left",
+    "sha256": "88dde026657f693e735ab44da68cc7341b201dd97170db5ec70963cfd1d7cdaf"
+  },
+  {
+    "id": "coral-carrier-crab",
+    "path": "fish/normal/coral-carrier-crab_sprite.png",
+    "facing": "right",
+    "sha256": "57468909cac38e9b2e358c0ea455e53fed1ab246d4fef185501a1a8e5fc8c264"
+  },
+  {
+    "id": "crimson-fin-seabream",
+    "path": "fish/rare/crimson-fin-seabream_sprite.png",
+    "facing": "right",
+    "sha256": "ba7000cf9c95f9b32e79da0e37d0d907ea84a175b77af2c1d39e2bbc2dcdc4a1"
+  },
+  {
+    "id": "coral-hat-octopus",
+    "path": "fish/rare/coral-hat-octopus_sprite.png",
+    "facing": "right",
+    "sha256": "d781986b11795719851cdad2ac6491ae1604cc375094d8d8e393c0e97e4654df"
+  },
+  {
+    "id": "pearlback-spider-crab",
+    "path": "fish/rare/pearlback-spider-crab_sprite.png",
+    "facing": "right",
+    "sha256": "c301bd907429ed29788f2394c97aa56375259ac23d03324ba3ebe93ad2c70825"
+  },
+  {
+    "id": "flower-island-crab",
+    "path": "fish/rare/flower-island-crab_sprite.png",
+    "facing": "right",
+    "sha256": "141aecf1ca0a780781c2e065f9b236ee937ab566a4f6d07207fc0ff578bbf3a3"
+  },
+  {
+    "id": "flower-maned-sealion",
+    "path": "fish/epic/flower-maned-sealion_sprite.png",
+    "facing": "right",
+    "sha256": "7d67e3ad8e7f67c1403bdfdea589c01c3b7b555f3552f6d6ffdb677773d13a77"
+  },
+  {
+    "id": "rubyeye-moray",
+    "path": "fish/epic/rubyeye-moray_sprite.png",
+    "facing": "right",
+    "sha256": "e607b78d95dd1c684d85b9c79f34e904c4b63a11a4e7d5c2b4dbdac15c09ad74"
+  },
+  {
+    "id": "ancient-coral-giant-crab",
+    "path": "fish/mythic/ancient-coral-giant-crab_sprite.png",
+    "facing": "right",
+    "sha256": "2b830c322d4e49314fe8ba58f55e8fd2ccc55906122cbb9af3599e9736d69078"
+  },
+  {
+    "id": "flowerveil-jellyfish",
+    "path": "fish/epic/flowerveil-jellyfish_sprite.png",
+    "facing": "right",
+    "sha256": "abc99f5bc02b11774800ba6c6694f603dd147562480dcca8580151b7ae1e2be0"
+  },
+  {
+    "id": "ancient-coral-giant-crab",
+    "path": "fish/mythic/ancient-coral-giant-crab-walk_sprite.png",
+    "facing": "right",
+    "sha256": "1341c6a1305c2fffa68a6a0b35c235e208ebed156ec5de3f6723fc225393c00a"
+  },
+  {
+    "id": "rainbow-mantis-shrimp",
+    "path": "fish/normal/rainbow-mantis-shrimp_sprite.png",
+    "facing": "right",
+    "sha256": "2cebe8d96bb8ae416b22179584f0e05150590753bf5d64d6d8064f47595bb14f"
+  },
+  {
+    "id": "pea-sponge",
+    "path": "fish/normal/pea-sponge_sprite.png",
+    "facing": "right",
+    "sha256": "3fdd4238e76ed32c2fe71b7fec9f91b0677056353ed76e82063e9d1993fd1ddc"
+  },
+  {
+    "id": "tiny-sardine",
+    "path": "fish/normal/tiny-sardine_sprite.png",
+    "facing": "right",
+    "sha256": "9620ac9f6509e098e2c216d1043870f445db1682135ef807be0d826dbf1dad87"
+  },
+  {
+    "id": "peeking-conger-eel",
+    "path": "fish/normal/peeking-conger-eel_sprite.png",
+    "facing": "right",
+    "sha256": "0f442a0669b4eaa9c0dbe54297faf627e7089eecc925ad07d76597f2bfa4e05b"
+  },
+  {
+    "id": "starflower-feather-duster",
+    "path": "fish/rare/starflower-feather-duster_sprite.png",
+    "facing": "right",
+    "sha256": "95f139f534c4ada1ff6f5af0759d7b6badbdd7d432d7615276659cc397aa7b7e"
+  },
+  {
+    "id": "amethyst-king-shrimp",
+    "path": "fish/rare/amethyst-king-shrimp_sprite.png",
+    "facing": "right",
+    "sha256": "4c7f7c6c8affbcaf5b16e81f3ad9b105fc621065b5d582627f5bf36498f3ff99"
+  },
+  {
+    "id": "halfmoon-seal",
+    "path": "fish/rare/halfmoon-seal_sprite.png",
+    "facing": "right",
+    "sha256": "800085077d04274dd4448dc2bb44bb583cd2743641fc32e9ae420ac863f8c9c8"
+  },
+  {
+    "id": "blue-dolphin",
+    "path": "fish/rare/blue-dolphin_sprite.png",
+    "facing": "right",
+    "sha256": "d0fbd8cc8d4c47c6d0b8dbb9be57b323374e9e769ddf4ecae2e16251ebaf5177"
+  },
+  {
+    "id": "jetblack-orca",
+    "path": "fish/rare/jetblack-orca_sprite.png",
+    "facing": "right",
+    "sha256": "8557f09051943529e4438411a527a4c8c7dba4673d8aed838002c0c38a324c8a"
+  },
+  {
+    "id": "waterdrop-comb-jelly",
+    "path": "fish/rare/waterdrop-comb-jelly_sprite.png",
+    "facing": "right",
+    "sha256": "7e071dd34b0eca62bbe636a1ce6a7458f11dc47cd91950e882d41ecfa501ff70"
+  },
+  {
+    "id": "sandbutton-ray",
+    "path": "fish/rare/sandbutton-ray_sprite.png",
+    "facing": "right",
+    "sha256": "198cc5fe312944a659a4a31f417bc74c2eb3147c473eb2e0cbf49f5fede05646"
+  },
+  {
+    "id": "giant-walrus",
+    "path": "fish/rare/giant-walrus_sprite.png",
+    "facing": "right",
+    "sha256": "bce5b348bfddb2ce14d59cec7a97ace628d7bb40c91293b104de0a980c683b71"
+  },
+  {
+    "id": "sunken-windmill",
+    "path": "fish/epic/sunken-windmill_sprite.png",
+    "facing": "right",
+    "sha256": "1d37b2ef0b32811b612c688a146cfa50a85f352f97d17ce334070d10aa999a5f"
+  },
+  {
+    "id": "twilight-striped-dolphin",
+    "path": "fish/epic/twilight-striped-dolphin_sprite.png",
+    "facing": "right",
+    "sha256": "a065b70cd067efc291cc36e28eb46261e0d157184542f480dabdc4f7f3ecf1eb"
+  },
+  {
+    "id": "dawn-narwhal",
+    "path": "fish/mythic/dawn-narwhal_sprite.png",
+    "facing": "right",
+    "sha256": "26f2e14cdf78cf74182069357133309892c680fd2152a56fcd1f582b20787acc"
+  },
+  {
+    "id": "green-sea-turtle",
+    "path": "fish/normal/green-sea-turtle_sprite.png",
+    "facing": "right",
+    "sha256": "0f6e1d7c39462cafef74553b51d2671dbdce73134395019ecc279b1bedc61372"
+  },
+  {
+    "id": "tile-fitting-crab",
+    "path": "fish/normal/tile-fitting-crab_sprite.png",
+    "facing": "right",
+    "sha256": "40a13d89048aabec96754ed18dfa8a8fe1d5db64f9960aeb15a7ab2c970f36ba"
+  },
+  {
+    "id": "teacup-nest-blenny",
+    "path": "fish/normal/teacup-nest-blenny_sprite.png",
+    "facing": "right",
+    "sha256": "c55616cf15e60ab7e85e5df86c6757414053a3f85b6abd217c39cc1261082031"
+  },
+  {
+    "id": "amphora-home-octopus",
+    "path": "fish/normal/amphora-home-octopus_sprite.png",
+    "facing": "right",
+    "sha256": "b54753d54230a7fa30d577e20ea6d724e97bcb417831c29939c7bd188459ea18"
+  },
+  {
+    "id": "azure-armored-sea-turtle",
+    "path": "fish/rare/azure-armored-sea-turtle_sprite.png",
+    "facing": "right",
+    "sha256": "49de374dbf0a1c6cfcff71d272004264a5355b4ecf943039a062c018d6ed6e02"
+  },
+  {
+    "id": "templekeeper-moray",
+    "path": "fish/rare/templekeeper-moray_sprite.png",
+    "facing": "right",
+    "sha256": "20fb413a659ddcf895a4b424a58cad065daaf5349cf104ac3f97d1b3ad9f559d"
+  },
+  {
+    "id": "mask-changing-octopus",
+    "path": "fish/rare/mask-changing-octopus_sprite.png",
+    "facing": "right",
+    "sha256": "7a0159621a87d2da39739e3b52769f1161c273a3e6625d556b5781811e716afc"
+  },
+  {
+    "id": "letter-carrier-ray",
+    "path": "fish/rare/letter-carrier-ray_sprite.png",
+    "facing": "right",
+    "sha256": "3099410b597f19981edadaa23a6a9792211973e3ff0b78ae862debf897616e34"
+  },
+  {
+    "id": "atlantean-guard-shark",
+    "path": "fish/epic/atlantean-guard-shark_sprite.png",
+    "facing": "right",
+    "sha256": "2086425489f0fa2529f631d14bfe0ae7f23423fce1fb44b268af76325ad86bf8"
+  },
+  {
+    "id": "living-mosaic-ray",
+    "path": "fish/epic/living-mosaic-ray_sprite.png",
+    "facing": "right",
+    "sha256": "ade0745d2bb8d6817dfadbf92992ab7af2833f6b7e5fdced3b31d66af5db9efd"
+  },
+  {
+    "id": "palace-lantern-anglerfish",
+    "path": "fish/epic/palace-lantern-anglerfish_sprite.png",
+    "facing": "right",
+    "sha256": "e83f85fca28dc2b2ab400382e799e87e9bf6b36d380e3a68c20c66249ccdfb1c"
+  },
+  {
+    "id": "atlantean-giant-squid",
+    "path": "fish/epic/atlantean-giant-squid_sprite.png",
+    "facing": "right",
+    "sha256": "d7d4f166ca2e4ecb61a8e284067e27389d6638b35aa5bc7dbe6bb25dcd0a681f"
+  },
+  {
+    "id": "atlantean-sentinel",
+    "path": "fish/mythic/atlantean-sentinel_sprite.png",
+    "facing": "right",
+    "sha256": "9abf673e6ad8bc04c4477e0a887f37b54773bee90ed04c741d76deaee1af0883"
+  },
+  {
+    "id": "atlantean-sentinel",
+    "path": "fish/mythic/atlantean-sentinel-walk_sprite.png",
+    "facing": "right",
+    "sha256": "cadee9815bd52762d8a6eeacf92338cf1c24a70d92611c4198c053db93057448"
   }
 ]

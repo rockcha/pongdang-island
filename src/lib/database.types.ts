@@ -39,11 +39,14 @@ export type Database = {
       gift_mailbox:{Args:{p_direction?:string;p_offset?:number};Returns:import('@/features/gifts/api').GiftMailbox}
       gift_detail:{Args:{p_gift_id:string};Returns:import('@/features/gifts/api').GiftRecord}
       place_collectible: { Args: {p_collectible_id:string;p_tank_id:string;p_x:number;p_y:number}; Returns:{id:string;position_x:number;position_y:number} }
+      arrange_collectible: { Args:{p_collectible_id:string;p_tank_id:string;p_x:number;p_y:number;p_rotation:number;p_scale:number;p_flipped:boolean}; Returns:import('@/features/collection/api').DecorationPlacement & {id:string} }
       arrange_decoration: { Args:{p_collectible_id:string;p_tank_id:string;p_x:number;p_y:number;p_rotation:number;p_scale:number}; Returns:import('@/features/collection/api').DecorationPlacement & {id:string} }
       sell_collectibles: { Args: {p_collectible_ids:string[];p_operation_id:string}; Returns:import('@/features/gold/api').GoldState & {delta:number} }
       collection_state: { Args: Record<string, never>; Returns: import('@/features/collection/api').CollectionState }
       fishing_state: { Args: Record<string, never>; Returns: import('@/features/fishing/api').FishingState }
       buy_fishing_bait: { Args: { p_bait_id: string; p_operation_id: string }; Returns: import('@/features/gold/api').GoldState & { delta: number } }
+      prepare_fishing:{Args:{p_region_id:string;p_bait_id:string;p_operation_id:string};Returns:import('@/features/fishing/api').PreparedFishing}
+      finish_fishing:{Args:{p_operation_id:string;p_won:boolean};Returns:import('@/features/fishing/api').FishingResult}
       cast_fishing: { Args: { p_region_id: string; p_bait_id: string; p_operation_id: string }; Returns: import('@/features/fishing/api').FishingResult }
       set_region_test_lock: { Args: { p_region_id: string; p_locked: boolean }; Returns: import('@/features/regions/api').RegionMap }
       region_map: { Args: Record<string, never>; Returns: import('@/features/regions/api').RegionMap }

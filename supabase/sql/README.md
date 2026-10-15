@@ -94,3 +94,27 @@ Supabase SQL Editor에서 다음 파일을 순서대로 실행합니다. 최초 
 공통 어종 18종: 36 이후 [37 공통 어종 SQL](37-shared-sea-species/01-shared-sea-species.sql). 일반 9종·희귀 6종·특급 3종, 기존 5개 해역 공통 서식입니다. [설정·업로드 안내](37-shared-sea-species/README.md).
 
 산호빛 여울 토착 6종: 37 이후 [38 산호 토착 SQL](38-coral-natives/01-coral-natives.sql). 일반 2종·희귀 3종·특급 1종, 어종 5종과 고정 장식물 산호꽃 말미잘이며 서식지는 coral 하나입니다. [이미지·설정 안내](38-coral-natives/README.md).
+
+개체 변환: 45 이후 [46 반전·회전·크기 저장](46-collectible-transforms/01-collectible-transforms.sql). 기존 배치를 유지하고 개체별 flipped와 소유권을 검사하는 arrange_collectible RPC를 추가합니다.
+
+편집 제한: [47 고정 어종·장식품만 편집](47-fixed-collectible-editing/01-fixed-collectible-editing.sql). 45 이후, 46 적용 여부와 무관하게 실행 가능합니다.
+
+바다악어 이미지 교체: [48 오른쪽 원본 v2](48-sea-crocodile-refresh/01-sea-crocodile-refresh.sql). 47 이후 이미지 업로드 후 적용합니다. 기존 개체·크기·등급은 유지합니다.
+
+?? ?? ???: [49 ?? 15???? ??/??? ??](49-coral-collection/01-coral-collection.sql). 48 ?? ??? ??? ? ?????. [???????? ?????](49-coral-collection/README.md).
+
+공통 개체·거대게 이동: [50 공통 4종·거대게 걷기](50-shared-coral-and-walking-crab/01-shared-coral-and-walking-crab.sql). 49 이후 적용하며 새 걷기 시트를 먼저 업로드합니다.
+- [51 공통 바다 개체 16종](51-shared-ocean-life/README.md): 일반·희귀·특급·신화 어종과 희귀 모래시계 병.
+- [52 스프라이트 장식품 분류·크기](52-animated-decoration-types/README.md): 풍차·해면 장식품 전환, 풍차·일각고래 확대.
+- [53 장식품 4종 애니메이션](53-animated-decorations/README.md): 바람개비·회전목마·조개·보물상자.
+- [54 장식품 5종 애니메이션·등급 조정](54-living-decorations/README.md): 난파선·요람·우물·집·풍등, 불가사리·산호 조각 일반화.
+- [55 루네아의 기록 서가 애니메이션](55-lunea-archive-animation/README.md): 특급 장식품 제자리 스프라이트.
+- [56 아틀란티스 개체 18종](56-atlantis-collection/README.md): 별잠 토착 16종, 공통 거북과 산호 토착 난파선.
+- [57 걷는 아틀란티스 수호병](57-walking-atlantean-sentinel/README.md): crawl 보행 시트로 교체.
+- [58 공통 수초·쓰레기](58-shared-aquatic-plants/README.md): 수초 장식품 5종과 쓰레기 2종.
+- [59 수초 받침·애니메이션](59-animated-aquatic-plants/README.md): 모래·돌 받침과 제자리 스프라이트 5종.
+- [60 공통 쓰레기 소품](60-shared-lost-objects/README.md): 일반 4종과 희귀 나침반 1종.
+
+- [61 미니게임 성공 후 획득 보장](61-minigame-catch-guarantee/README.md): 서버의 이중 실패 추첨 제거.
+
+- [62 사전 추첨 낚시](62-prepared-fishing/README.md): 시작 시 성공 예정35%·개체 예약, 미니게임 결과로 지급 확정. 61 이후 적용.

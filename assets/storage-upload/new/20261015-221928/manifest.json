@@ -1,0 +1,23 @@
+{
+  "tool": "image_gen",
+  "bucket": "collectibles",
+  "references": [
+    {
+      "path": "assets/storage-upload/new/20261015-213344/fish/mythic/atlantean-sentinel_sprite.png",
+      "role": "identity"
+    },
+    {
+      "path": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "role": "style"
+    }
+  ],
+  "prompt": "Create a NEW 2x2 four-frame WALK CYCLE sprite sheet for the exact Atlantis guardian in image1. Image2 is fantasy illustration STYLE only. Preserve ivory marble bronze armor, teal cape and trident, helmet facing SCREEN RIGHT in all four frames. Actual biped walking, NOT stationary idle: frame0 left leg steps forward/right leg back; frame1 legs pass with rear heel lifting; frame2 opposite leg forward; frame3 opposite passing pose. Clearly bend knees, alternate planted feet and lifted feet; small counter-swing of free arm; trident carried slightly above floor, never planted as a fixed staff; cape and waist ribbons flow with walk. Head and torso same pixel position, scale and camera in every cell, no whole-body bob or zoom. Four equal square cells, full character and weapon contained within each at 82% longest axis, 9% margins. True transparent alpha, no grid, text, floor, shadows, particles or background. Rich refined mythic fantasy material/detail. Smooth four-phase loop.",
+  "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-14f3124b-2acc-412a-9b96-c8fc1d9de5e4.png",
+  "assets": [
+    {
+      "storage_path": "fish/mythic/atlantean-sentinel-walk_sprite.png",
+      "file": "fish/mythic/atlantean-sentinel-walk_sprite.png",
+      "sha256": "cadee9815bd52762d8a6eeacf92338cf1c24a70d92611c4198c053db93057448"
+    }
+  ]
+}

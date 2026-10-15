@@ -1,0 +1,104 @@
+{
+  "tool": "image_gen",
+  "bucket": "collectibles",
+  "references": [
+    {
+      "path": "assets/references/collectible-style/common-rare-pongi.png",
+      "role": "style"
+    }
+  ],
+  "species": [
+    {
+      "id": "empty-film-canister",
+      "name": "빈 필름통",
+      "rarity": "common",
+      "size": 40,
+      "price": 12,
+      "visual": "One old small mustard yellow film canister with a loose dark lid, tiny barnacles, faded blank label no text",
+      "description": "빛을 담던 필름은 사라지고 빈 통만 남았다. 닳은 뚜껑 안쪽에 작은 모래알이 굴러다닌다.",
+      "path": "trash/normal/empty-film-canister_thumbnail.png",
+      "prompt": "Create one isolated transparent game collectible thumbnail: One old small mustard yellow film canister with a loose dark lid, tiny barnacles, faded blank label no text. Use reference only for warm Pongi CARTOON STYLE: clean dark brown outlines, rounded readable proportions, soft cel shaded colors, charming object design. No animal anatomy, NO face eyes or limbs. Worn discarded object, no magical sparkle or decoration pedestal. Entire item fits at 82% longest axis with clear margins, no clipping. True alpha transparent PNG, no background ground shadows checkerboard text watermark or particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-1f20c084-9d73-4783-9662-c656398c51db.png"
+    },
+    {
+      "id": "tangled-kite-spool",
+      "name": "엉킨 연실 얼레",
+      "rarity": "common",
+      "size": 48,
+      "price": 16,
+      "visual": "One small weathered wooden kite string reel, tangled faded coral pink thread winding around its cross-shaped frame, short loose strand, no kite",
+      "description": "나무 얼레에 빛바랜 연실이 어지럽게 감겨 있다. 하늘로 향하던 실 끝이 이제 물결을 따라 흔들린다.",
+      "path": "trash/normal/tangled-kite-spool_thumbnail.png",
+      "prompt": "Create one isolated transparent game collectible thumbnail: One small weathered wooden kite string reel, tangled faded coral pink thread winding around its cross-shaped frame, short loose strand, no kite. Use reference only for warm Pongi CARTOON STYLE: clean dark brown outlines, rounded readable proportions, soft cel shaded colors, charming object design. No animal anatomy, NO face eyes or limbs. Worn discarded object, no magical sparkle or decoration pedestal. Entire item fits at 82% longest axis with clear margins, no clipping. True alpha transparent PNG, no background ground shadows checkerboard text watermark or particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-827f1625-b6c7-4793-b0b1-0541cb197198.png"
+    },
+    {
+      "id": "chipped-lucky-die",
+      "name": "이 빠진 주사위",
+      "rarity": "common",
+      "size": 36,
+      "price": 10,
+      "visual": "One small chipped ivory dice with rounded corners, faded blue recessed pips, single coherent cube three-quarter view, a little sand in the chip",
+      "description": "모서리 하나가 닳아 없어진 작은 주사위. 파란 눈금 사이로 누군가의 오래된 놀이가 남아 있다.",
+      "path": "trash/normal/chipped-lucky-die_thumbnail.png",
+      "prompt": "Create one isolated transparent game collectible thumbnail: One small chipped ivory dice with rounded corners, faded blue recessed pips, single coherent cube three-quarter view, a little sand in the chip. Use reference only for warm Pongi CARTOON STYLE: clean dark brown outlines, rounded readable proportions, soft cel shaded colors, charming object design. No animal anatomy, NO face eyes or limbs. Worn discarded object, no magical sparkle or decoration pedestal. Entire item fits at 82% longest axis with clear margins, no clipping. True alpha transparent PNG, no background ground shadows checkerboard text watermark or particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-d7c6f1b5-3c91-4c00-831d-e4ce6d75f8c2.png"
+    },
+    {
+      "id": "bent-magnifying-glass",
+      "name": "휘어진 돋보기",
+      "rarity": "common",
+      "size": 46,
+      "price": 18,
+      "visual": "One abandoned small magnifying glass with bent aged bronze rim and short teal handle, cracked clear lens, little salt wear, isolated three-quarter view",
+      "description": "테두리가 살짝 휘어진 낡은 돋보기. 금 간 유리 너머로 보면 평범한 모래알도 낯선 보물처럼 보인다.",
+      "path": "trash/normal/bent-magnifying-glass_thumbnail.png",
+      "prompt": "Create one isolated transparent game collectible thumbnail: One abandoned small magnifying glass with bent aged bronze rim and short teal handle, cracked clear lens, little salt wear, isolated three-quarter view. Use reference only for warm Pongi CARTOON STYLE: clean dark brown outlines, rounded readable proportions, soft cel shaded colors, charming object design. No animal anatomy, NO face eyes or limbs. Worn discarded object, no magical sparkle or decoration pedestal. Entire item fits at 82% longest axis with clear margins, no clipping. True alpha transparent PNG, no background ground shadows checkerboard text watermark or particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-ac7493d8-1878-40a1-b109-cf64f5afcdf9.png"
+    },
+    {
+      "id": "wandering-pocket-compass",
+      "name": "길 잃은 회중나침반",
+      "rarity": "rare",
+      "size": 50,
+      "price": 85,
+      "visual": "One weathered open brass pocket compass with cracked glass, tarnished teal enamel lid, stuck needle, abstract four-point directional marks without text or letters, tiny barnacles",
+      "description": "바늘이 한 방향에 멈춰 버린 회중나침반. 돌아갈 길은 잊었지만 손때 묻은 황동빛은 아직 남아 있다.",
+      "path": "trash/rare/wandering-pocket-compass_thumbnail.png",
+      "prompt": "Create one isolated transparent game collectible thumbnail: One weathered open brass pocket compass with cracked glass, tarnished teal enamel lid, stuck needle, abstract four-point directional marks without text or letters, tiny barnacles. Use reference only for warm Pongi CARTOON STYLE: clean dark brown outlines, rounded readable proportions, soft cel shaded colors, charming object design. No animal anatomy, NO face eyes or limbs. Worn discarded object, no magical sparkle or decoration pedestal. Entire item fits at 82% longest axis with clear margins, no clipping. True alpha transparent PNG, no background ground shadows checkerboard text watermark or particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-bbdf438b-6db7-4c8b-8c31-2dbdeae6360e.png"
+    }
+  ],
+  "assets": [
+    {
+      "id": "empty-film-canister",
+      "file": "trash/normal/empty-film-canister_thumbnail.png",
+      "storage_path": "trash/normal/empty-film-canister_thumbnail.png",
+      "sha256": "dbacbdb323e66aeff26e2ac5235ed7f639519bacd707e20fb4dce2f90105848f"
+    },
+    {
+      "id": "tangled-kite-spool",
+      "file": "trash/normal/tangled-kite-spool_thumbnail.png",
+      "storage_path": "trash/normal/tangled-kite-spool_thumbnail.png",
+      "sha256": "c7da8a50238887214e451f8b743541e530043130b001a3030cff89b817acfd57"
+    },
+    {
+      "id": "chipped-lucky-die",
+      "file": "trash/normal/chipped-lucky-die_thumbnail.png",
+      "storage_path": "trash/normal/chipped-lucky-die_thumbnail.png",
+      "sha256": "16e9de477f6abc7234eb023ee847edb273d7e99285d2d33173135df9cedbd429"
+    },
+    {
+      "id": "bent-magnifying-glass",
+      "file": "trash/normal/bent-magnifying-glass_thumbnail.png",
+      "storage_path": "trash/normal/bent-magnifying-glass_thumbnail.png",
+      "sha256": "fbf16921be32fe076fa9102b0f3a6e5b40863ee3fc40fc55112ca1901f13e620"
+    },
+    {
+      "id": "wandering-pocket-compass",
+      "file": "trash/rare/wandering-pocket-compass_thumbnail.png",
+      "storage_path": "trash/rare/wandering-pocket-compass_thumbnail.png",
+      "sha256": "c399630de2369d61114ada407589692627d73c61d46178eed7756180194a241b"
+    }
+  ]
+}

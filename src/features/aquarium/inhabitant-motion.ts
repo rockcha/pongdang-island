@@ -1,7 +1,7 @@
 import type { OwnedCollectible } from '@/features/collection/api'
 import { createSwimMotion } from './swim-motion'
 import { decorationGeometry } from './decoration-geometry'
-import {movementSettings} from './movement-settings'
+import {canArrangeSpecies,movementSettings} from './movement-settings'
 
 export class InhabitantMotion {
   private swim: ReturnType<typeof createSwimMotion>
@@ -20,28 +20,28 @@ export class InhabitantMotion {
     this.swim = createSwimMotion(item.id, item.animation_seed, Number(item.species.speed), item.species.kind === 'fish')
   }
   setItem(item:OwnedCollectible,now:number,width:number,height:number,reduced=false){
-    const changed=item.position_x!==this.item.position_x||item.position_y!==this.item.position_y
+    const changed=item.position_x!==this.item.position_x||item.position_y!==this.item.position_y||(!item.editing&&this.item.editing===true)
     const before=this.item.species,after=item.species
     if(before.movement_type!==after.movement_type||before.travel_direction!==after.travel_direction||before.speed!==after.speed||before.kind!==after.kind){
       this.swim=createSwimMotion(item.id,item.animation_seed,Number(after.speed),after.kind==='fish')
       this.offset={x:0,y:0};this.escape=null;this.initialized=false;this.born=now;this.angle=0;this.mirrored=false
     }
     this.item=item
-    if(item.species.kind==='decoration')return
+    if(canArrangeSpecies(item.species))return
     if(changed&&item.position_x!==null&&item.position_y!==null){
-      const size=Math.min(item.species.size,width*.4)
+      const size=Math.min(item.species.size,width*.4)*Number(item.scale??1)
       this.place(item.position_x*Math.max(0,width-size),item.position_y*Math.max(0,height-size),now,width,height,reduced)
     }
   }
   place(x:number,y:number,now:number,width:number,height:number,reduced=false){
-    if(this.item.species.kind==='decoration'){
+    if(canArrangeSpecies(this.item.species)||this.item.editing){
       const {size,margin,w,h}=decorationGeometry(this.item,width,height)
       const px=Math.max(0,Math.min(w,x-margin)),py=Math.max(0,Math.min(h,y-margin))
       this.item={...this.item,position_x:w?px/w:0,position_y:h?py/h:0}
       this.pose={...this.pose,x:px+margin,y:py+margin,size}
       return {x:this.item.position_x!,y:this.item.position_y!}
     }
-    const size=Math.min(this.item.species.size,width*.4),w=Math.max(0,width-size),h=Math.max(0,height-size)
+    const size=Math.min(this.item.species.size,width*.4)*Number(this.item.scale??1),w=Math.max(0,width-size),h=Math.max(0,height-size)
     const settings=movementSettings(this.item.species)
     if(settings.type!=='swim'||settings.travel!=='both'){
       const px=Math.max(0,Math.min(w,x)),py=Math.max(0,Math.min(h,y))
@@ -73,7 +73,7 @@ export class InhabitantMotion {
   }
   private specialBase(time:number,width:number,height:number,withTravelOffset=true){
     const s=this.item.species,settings=movementSettings(s),seed=this.item.animation_seed/1000000
-    const size=Math.min(s.size,width*.4),w=Math.max(0,width-size),h=Math.max(0,height-size)
+    const size=Math.min(s.size,width*.4)*Number(this.item.scale??1),w=Math.max(0,width-size),h=Math.max(0,height-size)
     const low=Number(s.swim_y_min??.2),high=Number(s.swim_y_max??.8),motion=this.swim(time)
     let x=(.2+seed*.6)*w,y=(low+(high-low)*motion.y)*h,direction=motion.direction
     if(settings.type==='fixed')return {x:(this.item.position_x??(.2+seed*.6))*w,y:(this.item.position_y??(s.kind==='fish'?(low+high)/2:.5))*h,direction:1}
@@ -89,7 +89,7 @@ export class InhabitantMotion {
       const depth=Math.max(.12,Math.min(.88,current.y))
       const pulse=(phase<.42?1-blend:blend)-.5
       x=current.x*w
-      y=(low+(high-low)*(depth+pulse*.24))*h
+      y=(low+(high-low)*(.35+depth*.3+pulse*.10))*h
       direction=current.direction
     }
     if(settings.travel!=='both'){
@@ -102,17 +102,17 @@ export class InhabitantMotion {
   update(now: number, delta: number, width: number, height: number, reduced = false) {
     const s = this.item.species, seed = this.item.animation_seed / 1000000
     const time = reduced ? 0 : Math.max(0, now - this.born)
-    const motion = this.swim(time), size = Math.min(s.size, width * .4)
+    const motion = this.swim(time), size = Math.min(s.size, width * .4)*Number(this.item.scale??1)
     const w = Math.max(0, width - size), h = Math.max(0, height - size)
-    if(!this.initialized&&this.item.position_x!==null&&this.item.position_y!==null&&s.kind!=='decoration'){
+    if(!this.initialized&&this.item.position_x!==null&&this.item.position_y!==null&&!canArrangeSpecies(s)){
       this.place(this.item.position_x*w,this.item.position_y*h,now,width,height,reduced)
     }
     let x: number, y: number, direction = motion.direction, angle = 0
-    if (s.kind === 'decoration') {
+    if (canArrangeSpecies(s)||this.item.editing) {
       const geometry=decorationGeometry(this.item,width,height)
       x = geometry.margin+(this.item.position_x ?? (.2 + seed * .6))*geometry.w
-      y = geometry.margin+(this.item.position_y ?? .86)*geometry.h
-      this.pose={x,y,size:geometry.size,direction:1,angle:geometry.angle,frame:0}
+      y = geometry.margin+(this.item.position_y ?? (s.kind==='fish'?(Number(s.swim_y_min??.2)+Number(s.swim_y_max??.8))/2:.86))*geometry.h
+      this.pose={x,y,size:geometry.size,direction:1,angle:geometry.angle,frame:!reduced&&!this.item.editing&&s.idle_animated?Math.floor(time*1.2)%4:0}
       return this.pose
     }
     const settings=movementSettings(s)

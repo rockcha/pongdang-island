@@ -1,6 +1,7 @@
 ﻿import { useEffect, useState } from 'react'
-import { BookOpenText, LayoutGrid, Plus } from 'lucide-react'
+import { BookOpenText, LayoutGrid, Plus, Search, X } from 'lucide-react'
 import { useAuth } from '@/components/auth-provider'
+import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
@@ -38,6 +39,7 @@ function CollectionBook({ onAddTemporary }: CollectionDialogProps) {
  const [error, setError] = useState('')
  const [tab, setTab] = useState<'all' | CollectibleKind>('all')
  const [rarity, setRarity] = useState<'all' | Rarity>('all')
+ const [query, setQuery] = useState('')
  const [origin, setOrigin] = useState<OriginFilter>('all')
  const [selectedHabitats, setSelectedHabitats] = useState<string[]>([])
  const [attempt, setAttempt] = useState(0)
@@ -49,12 +51,18 @@ function CollectionBook({ onAddTemporary }: CollectionDialogProps) {
  }, [attempt])
  const habitats = Array.from(new Map(state?.catalog.flatMap(s => s.habitats).map(region => [region.id, region]) ?? []).values()).sort((a, b) => a.name.localeCompare(b.name, 'ko'))
  const entries = state?.catalog.filter(s =>
+  (s.name.normalize('NFKC').toLocaleLowerCase('ko').includes(query.trim().normalize('NFKC').toLocaleLowerCase('ko'))) &&
   (tab === 'all' || s.kind === tab) && (rarity === 'all' || s.rarity === rarity) &&
   (origin === 'all' || (s.kind !== 'map' && (origin === 'native' ? s.habitats.length === 1 : s.habitats.length > 1))) &&
   (!selectedHabitats.length || s.habitats.some(region => selectedHabitats.includes(region.id)))
  ).sort((a, b) => a.sell_price - b.sell_price || a.name.localeCompare(b.name, 'ko') || a.id.localeCompare(b.id)) ?? []
  return <section className="flex min-h-0 flex-1 flex-col">
   <div className="shrink-0 space-y-3 border-b border-border/50 bg-popover px-4 py-3 sm:px-5">
+   <div className="relative">
+    <Search aria-hidden="true" className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"/>
+    <Input type="search" aria-label="도감 개체 검색" placeholder="이름으로 검색" value={query} onChange={event=>setQuery(event.target.value)} className="h-10 rounded-xl pl-9 pr-10 [&::-webkit-search-cancel-button]:appearance-none"/>
+    {query&&<Button type="button" variant="ghost" size="icon" aria-label="검색어 지우기" className="absolute right-1 top-1 size-8 rounded-lg" onClick={()=>setQuery('')}><X className="size-3.5"/></Button>}
+   </div>
    <div className="flex flex-wrap items-center justify-between gap-3">
     <TooltipProvider><div role="group" aria-label="도감 분류" className="flex gap-1">
      {(['all', 'fish', 'trash', 'decoration', 'map'] as const).map(value => {

@@ -1,0 +1,37 @@
+﻿{
+    "file":  "assets/storage-upload/new/20261015-221928/fish/mythic/atlantean-sentinel-walk_sprite.png",
+    "storage_path":  "fish/mythic/atlantean-sentinel-walk_sprite.png",
+    "patch":  [
+                  350,
+                  140,
+                  65,
+                  65
+              ],
+    "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  0
+                   },
+                   {
+                       "frame":  1,
+                       "dx":  -9,
+                       "dy":  0,
+                       "rmse":  25.184874281242372
+                   },
+                   {
+                       "frame":  2,
+                       "dx":  1,
+                       "dy":  -21,
+                       "rmse":  27.782229441268257
+                   },
+                   {
+                       "frame":  3,
+                       "dx":  -9,
+                       "dy":  -22,
+                       "rmse":  33.514852696075948
+                   }
+               ]
+}

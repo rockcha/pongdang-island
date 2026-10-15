@@ -17,3 +17,115 @@ it('anchors the whale body at the same position through all four frames and both
 it('preserves existing stable sheets including filefish',()=>{
  expect(swimFrameLayout('fish/normal/round-filefish_sprite.png',3)).toEqual({originX:.5,originY:.5,scale:1})
 })
+
+it.each([
+ ['fish/rare/sea-crocodile_sprite.png',[357.195,358.911,288.804,293.595]],
+ ['fish/normal/soft-sea-cucumber_sprite.png',[423.312,423.074,342.513,344.394]],
+ ['fish/normal/pink-scallop_sprite.png',[361.670,373.779,292.525,290.878]],
+] as const)('registers the reviewed head/body anchor without resizing %s',(path,measurements)=>{
+ const y=measurements.map((value,frame)=>(value/627-swimFrameLayout(path,frame).originY)*88)
+ expect(Math.max(...y)-Math.min(...y)).toBeLessThan(.01)
+ expect([0,1,2,3].every(frame=>swimFrameLayout(path,frame).scale===1)).toBe(true)
+})
+
+it('stabilizes the refreshed right-facing crocodile head without changing size',()=>{
+ const ys=[329.120,330.181,287.052,289.791],xs=[563,556,563,558]
+ const x=xs.map((value,frame)=>(value/627-swimFrameLayout('fish/rare/sea-crocodile-v2_sprite.png',frame).originX)*88)
+ const y=ys.map((value,frame)=>(value/627-swimFrameLayout('fish/rare/sea-crocodile-v2_sprite.png',frame).originY)*88)
+ expect(Math.max(...x)-Math.min(...x)).toBeLessThan(.01)
+ expect(Math.max(...y)-Math.min(...y)).toBeLessThan(.01)
+})
+
+it('applies the measured coral head and root translations without frame scaling',async()=>{
+ const {readFileSync}=await import('node:fs')
+ const rows=JSON.parse(readFileSync('assets/storage-upload/new/20261015-192806/frame-registration.json','utf8').replace(/^\uFEFF/,'')) as {storage_path:string;frames:{frame:number;dx:number;dy:number}[]}[]
+ expect(rows).toHaveLength(11)
+ for(const row of rows)for(const frame of row.frames){
+  const layout=swimFrameLayout(row.storage_path,frame.frame)
+  expect((frame.dx/627-layout.originX)*132).toBeCloseTo(-66,2)
+  expect((frame.dy/627-layout.originY)*132).toBeCloseTo(-66,2)
+  expect(layout.scale).toBe(1)
+ }
+})
+it('registers the walking giant crab head while its legs and pincers move',async()=>{
+ const {readFileSync}=await import('node:fs')
+ const row=JSON.parse(readFileSync('assets/storage-upload/new/20261015-195827/frame-registration.json','utf8').replace(/^\uFEFF/,'')) as {storage_path:string;frames:{frame:number;dx:number;dy:number}[]}
+ for(const frame of row.frames){
+  const layout=swimFrameLayout(row.storage_path,frame.frame)
+  expect((frame.dx/627-layout.originX)*132).toBeCloseTo(-66,2)
+  expect((frame.dy/627-layout.originY)*132).toBeCloseTo(-66,2)
+  expect(layout.scale).toBe(1)
+ }
+})
+it('stabilizes shared ocean sprites using measured rigid anchors',async()=>{
+ const {readFileSync}=await import('node:fs')
+ const rows=JSON.parse(readFileSync('assets/storage-upload/new/20261015-201817/frame-registration.json','utf8').replace(/^\uFEFF/,'')) as {storage_path:string;frames:{frame:number;dx:number;dy:number}[]}[]
+ expect(rows).toHaveLength(15)
+ for(const row of rows)for(const frame of row.frames){
+  const layout=swimFrameLayout(row.storage_path,frame.frame)
+  expect((frame.dx/627-layout.originX)*132).toBeCloseTo(-66,2)
+  expect((frame.dy/627-layout.originY)*132).toBeCloseTo(-66,2)
+  expect(layout.scale).toBe(1)
+ }
+})
+it('anchors animated decoration bases independently of lids and rotating parts',async()=>{
+ const {readFileSync}=await import('node:fs')
+ const rows=JSON.parse(readFileSync('assets/storage-upload/new/20261015-204537/frame-registration.json','utf8').replace(/^\uFEFF/,'')) as {storage_path:string;frames:{frame:number;dx:number;dy:number}[]}[]
+ expect(rows).toHaveLength(4)
+ for(const row of rows)for(const f of row.frames){
+  const layout=swimFrameLayout(row.storage_path,f.frame)
+  expect((f.dx/627-layout.originX)*132).toBeCloseTo(-66,2)
+  expect((f.dy/627-layout.originY)*132).toBeCloseTo(-66,2)
+  expect(layout.scale).toBe(1)
+ }
+})
+it('registers the rigid structures of the five additional animated decorations',async()=>{
+ const {readFileSync}=await import('node:fs')
+ const rows=JSON.parse(readFileSync('assets/storage-upload/new/20261015-205549/frame-registration.json','utf8').replace(/^\uFEFF/,'')) as {storage_path:string;frames:{frame:number;dx:number;dy:number}[]}[]
+ expect(rows).toHaveLength(5)
+ for(const row of rows)for(const f of row.frames){
+  const layout=swimFrameLayout(row.storage_path,f.frame)
+  expect((f.dx/627-layout.originX)*132).toBeCloseTo(-66,2)
+  expect((f.dy/627-layout.originY)*132).toBeCloseTo(-66,2)
+  expect(layout.scale).toBe(1)
+ }
+})
+it('keeps the moon archive base stable while bookmarks move',()=>{
+ const offsets=[[0,0],[-26,0],[0,-26],[-26,-26]]
+ for(const [frame,[x,y]] of offsets.entries()){
+  const layout=swimFrameLayout('decorations/epic/lunea-record-shelf_sprite.png',frame)
+  expect((x/627-layout.originX)*100).toBeCloseTo(-50,2)
+  expect((y/627-layout.originY)*100).toBeCloseTo(-50,2)
+ }
+})
+it('stabilizes Atlantis heads and decoration bases without rescaling frames',async()=>{
+ const {readFileSync}=await import('node:fs')
+ const rows=JSON.parse(readFileSync('assets/storage-upload/new/20261015-213344/frame-registration.json','utf8').replace(/^\uFEFF/,'')) as {storage_path:string;frames:{frame:number;dx:number;dy:number}[]}[]
+ expect(rows).toHaveLength(15)
+ for(const row of rows)for(const f of row.frames){
+  const layout=swimFrameLayout(row.storage_path,f.frame)
+  expect((f.dx/627-layout.originX)*132).toBeCloseTo(-66,2)
+  expect((f.dy/627-layout.originY)*132).toBeCloseTo(-66,2)
+  expect(layout.scale).toBe(1)
+ }
+})
+it('anchors the walking sentinel head while feet alternate',()=>{
+ const offsets=[[0,0],[-9,0],[1,-21],[-9,-22]]
+ for(const [frame,[x,y]] of offsets.entries()){
+  const layout=swimFrameLayout('fish/mythic/atlantean-sentinel-walk_sprite.png',frame)
+  expect((x/627-layout.originX)*150).toBeCloseTo(-75,2)
+  expect((y/627-layout.originY)*150).toBeCloseTo(-75,2)
+  expect(layout.scale).toBe(1)
+ }
+})
+it('stabilizes sand and stone bases in the five aquatic plant animations',async()=>{
+ const {readFileSync}=await import('node:fs')
+ const rows=JSON.parse(readFileSync('assets/storage-upload/new/20261015-225310/frame-registration.json','utf8').replace(/^\uFEFF/,'')) as {storage_path:string;frames:{frame:number;dx:number;dy:number}[]}[]
+ expect(rows).toHaveLength(5)
+ for(const row of rows)for(const f of row.frames){
+  const layout=swimFrameLayout(row.storage_path,f.frame)
+  expect((f.dx/627-layout.originX)*100).toBeCloseTo(-50,2)
+  expect((f.dy/627-layout.originY)*100).toBeCloseTo(-50,2)
+  expect(layout.scale).toBe(1)
+ }
+})

@@ -1,0 +1,11 @@
+{
+  "id": "coral-carrier-crab",
+  "type": "sprite",
+  "file": "fish/normal/coral-carrier-crab_sprite.png",
+  "storage_path": "fish/normal/coral-carrier-crab_sprite.png",
+  "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-856453dc-609f-4233-a336-a36e78f2b449.png",
+  "prompt": "Create ONE SQUARE 1:1 PNG containing a 2x2 FOUR-frame game animation sheet of exactly the same animal as reference1; reference2 STYLE ONLY. Maintain its anatomy, palette and rarity styling. A small plump apricot crab carrying a pink branching coral and a little green seaweed tied naturally to its shell, tiny ivory claws, clear screen-right side-three-quarter profile, legs tucked in a readable silhouette. Four successive phases of coordinated crab leg walking. Keep rigid shell, head, eye stalks, coral trunk and torso EXACTLY the same size and position in each cell. Move feet/leg joints in alternating coordinated groups; small claw adjustment only, no whole-body bouncing. Preserve species anatomy, no mammal muzzle/fur. ALL FOUR frames face SCREEN RIGHT, head/mouth right, body and tail trail left, no mirrored or front-facing frames. All four eyes stay open; movement is not a blink-only sequence. Equal SQUARE cells, 0->1->2->3->0 smooth loop. CRITICAL FRAMING: each full silhouette occupies only 76–82% of its CELL longest dimension, never more than 41% of entire canvas width or height. Give each CELL generous TRANSPARENT 9% margins on all sides. The center vertical/horizontal dividers are wide EMPTY gutters. Do not enlarge to fill the sheet. Rigid head/body at same local x/y each cell. No independent pose recentering or scaling. Real ALPHA transparent outside silhouettes, no dark/colored backdrop, painted checkerboard, shadow, scene, grid, labels or text.",
+  "identity_reference": "assets/storage-upload/new/20261015-192806/fish/normal/coral-carrier-crab_thumbnail.png",
+  "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "tool": "image_gen"
+}

@@ -1,0 +1,16 @@
+{
+  "bucket": "collectibles",
+  "species_id": "ancient-coral-giant-crab",
+  "movement_type": "crawl",
+  "native_region_id": "coral",
+  "rarity": "mythic",
+  "storage_path": "fish/mythic/ancient-coral-giant-crab-walk_sprite.png",
+  "sha256": "1341c6a1305c2fffa68a6a0b35c235e208ebed156ec5de3f6723fc225393c00a",
+  "generated_source": "exec-6282f387-2182-4cf1-a2cf-fe03dd3689b6.png",
+  "references": [
+    "assets/storage-upload/new/20261015-192806/fish/mythic/ancient-coral-giant-crab_thumbnail.png",
+    "assets/references/collectible-style/epic-mythic-starlight.png"
+  ],
+  "thumbnail": "unchanged",
+  "qa": "1254 square RGBA, four 627px cells; fully contained legs/claws; rigid head translation registered without scaling"
+}

@@ -1,0 +1,187 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261015-205549/decorations/rare/sleeping-mini-shipwreck_sprite.png",
+        "storage_path":  "decorations/rare/sleeping-mini-shipwreck_sprite.png",
+        "patch":  [
+                      275,
+                      330,
+                      40,
+                      45
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -26,
+                           "dy":  1,
+                           "rmse":  6.93275524146751
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -39,
+                           "rmse":  6.5397138425818868
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -25,
+                           "dy":  -39,
+                           "rmse":  6.20387743577315
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-205549/decorations/rare/first-coral-cradle_sprite.png",
+        "storage_path":  "decorations/rare/first-coral-cradle_sprite.png",
+        "patch":  [
+                      275,
+                      490,
+                      60,
+                      45
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -27,
+                           "dy":  0,
+                           "rmse":  2.8132128726185415
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -46,
+                           "rmse":  3.6797871315245034
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -26,
+                           "dy":  -48,
+                           "rmse":  3.9046980250291656
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-205549/decorations/rare/dream-keeping-well_sprite.png",
+        "storage_path":  "decorations/rare/dream-keeping-well_sprite.png",
+        "patch":  [
+                      270,
+                      450,
+                      65,
+                      50
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -10,
+                           "dy":  0,
+                           "rmse":  10.024535408707369
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -30,
+                           "rmse":  5.8847555253878552
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -8,
+                           "dy":  -31,
+                           "rmse":  13.616819773671939
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-205549/decorations/rare/coral-house_sprite.png",
+        "storage_path":  "decorations/rare/coral-house_sprite.png",
+        "patch":  [
+                      275,
+                      430,
+                      60,
+                      55
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -28,
+                           "dy":  0,
+                           "rmse":  1.7322407150095631
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  2,
+                           "dy":  -54,
+                           "rmse":  1.9518884243349135
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -23,
+                           "dy":  -52,
+                           "rmse":  1.450499006694266
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-205549/decorations/rare/moonlit-jellyfish-lantern_sprite.png",
+        "storage_path":  "decorations/rare/moonlit-jellyfish-lantern_sprite.png",
+        "patch":  [
+                      300,
+                      150,
+                      45,
+                      60
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -29,
+                           "dy":  0,
+                           "rmse":  14.699160894773993
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  2,
+                           "dy":  -4,
+                           "rmse":  21.452483754415233
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -29,
+                           "dy":  -4,
+                           "rmse":  25.834537831123189
+                       }
+                   ]
+    }
+]

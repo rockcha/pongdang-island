@@ -1,0 +1,11 @@
+{
+  "id": "coral-hat-octopus",
+  "file": "fish/rare/coral-hat-octopus_sprite.png",
+  "storage_path": "fish/rare/coral-hat-octopus_sprite.png",
+  "type": "sprite",
+  "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-cce47193-7506-4239-8a64-dbaab10eb13d.png",
+  "prompt": "Square 1:1 transparent PNG, exactly 2x2 FOUR equal square cells, gentle octopus swimming animation. Reference1 exact character identity: smooth apricot octopus with pink coral hat and eight arms with suction cups, NO FUR. Reference2 paint STYLE only. Four distinct shallow arm contraction and relaxation phases: gathered, lightly spread, relaxed, gently gathered opposite; head/eyes/coral hat/body center remain at exactly same cell coordinates and size. Do not bounce mantle vertically or recenter based on moving arms. All four face screen RIGHT, same direction and rightward gaze. Eyes open in all frames, not blink-only. Each full silhouette only 76–82% of cell longest dimension, never more than 41% of TOTAL square canvas. Wide empty transparent gutters between cells, at least 8% of cell all sides. NO mammals, muzzle, nose, fur, whiskers. Actual alpha transparency, NO scene, backdrop, glow, black background, shadow, text or dividing grid. Warm dark brown cartoon outlines and clean cel shading from Pongi, preserved smooth skin.",
+  "tool": "image_gen",
+  "identity_reference": "assets/storage-upload/new/20261015-192806/fish/rare/coral-hat-octopus_thumbnail.png",
+  "style_reference": "assets/references/collectible-style/common-rare-pongi.png"
+}

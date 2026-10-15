@@ -1,0 +1,37 @@
+﻿{
+    "file":  "assets/storage-upload/new/20261015-210827/decorations/epic/lunea-record-shelf_sprite.png",
+    "storage_path":  "decorations/epic/lunea-record-shelf_sprite.png",
+    "patch":  [
+                  280,
+                  520,
+                  65,
+                  45
+              ],
+    "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  0
+                   },
+                   {
+                       "frame":  1,
+                       "dx":  -26,
+                       "dy":  0,
+                       "rmse":  19.131622432446491
+                   },
+                   {
+                       "frame":  2,
+                       "dx":  0,
+                       "dy":  -26,
+                       "rmse":  17.472042731968198
+                   },
+                   {
+                       "frame":  3,
+                       "dx":  -26,
+                       "dy":  -26,
+                       "rmse":  24.842507220820156
+                   }
+               ]
+}

@@ -1,0 +1,147 @@
+{
+  "tool": "image_gen",
+  "bucket": "collectibles",
+  "references": [
+    {
+      "path": "assets/references/collectible-style/common-rare-pongi.png",
+      "role": "style"
+    }
+  ],
+  "species": [
+    {
+      "id": "ribbon-eelgrass",
+      "name": "리본 잘피",
+      "rarity": "common",
+      "kind": "decoration",
+      "size": 72,
+      "price": 35,
+      "visual": "A rooted tuft of long narrow fresh green ribbon eelgrass blades, tall slender gently curving silhouette",
+      "description": "가늘고 긴 초록 잎이 리본처럼 휘어진다. 작은 물고기가 잠깐 숨을 고를 수 있는 초록 그늘을 만든다.",
+      "path": "decorations/normal/ribbon-eelgrass_thumbnail.png",
+      "prompt": "One isolated transparent game collectible thumbnail: A rooted tuft of long narrow fresh green ribbon eelgrass blades, tall slender gently curving silhouette. Reference is STYLE ONLY: warm cute Pongi cartoon, clean dark brown contours, rounded readable forms, soft cel shading, no copied animal anatomy. Plant/object, NO face eyes limbs. Whole subject fits square at 82% longest axis with generous transparent margins. Distinct silhouette, no landscape or ground platform, tiny natural holdfast only if plant. True alpha transparency, no backdrop shadows particles text checkerboard. ",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-74bb93b0-345d-45b3-8415-c2763df8efbf.png"
+    },
+    {
+      "id": "pebble-sea-moss",
+      "name": "조약돌 바다이끼",
+      "rarity": "common",
+      "kind": "decoration",
+      "size": 52,
+      "price": 30,
+      "visual": "A low wide grey pebble covered in soft rounded emerald sea moss cushions, compact ground cover",
+      "description": "둥근 조약돌 위로 보드라운 초록 이끼가 내려앉았다. 바닥 한편에 작은 풀밭을 만들어 준다.",
+      "path": "decorations/normal/pebble-sea-moss_thumbnail.png",
+      "prompt": "One isolated transparent game collectible thumbnail: A low wide grey pebble covered in soft rounded emerald sea moss cushions, compact ground cover. Reference is STYLE ONLY: warm cute Pongi cartoon, clean dark brown contours, rounded readable forms, soft cel shading, no copied animal anatomy. Plant/object, NO face eyes limbs. Whole subject fits square at 82% longest axis with generous transparent margins. Distinct silhouette, no landscape or ground platform, tiny natural holdfast only if plant. True alpha transparency, no backdrop shadows particles text checkerboard. ",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-e8e7768a-0f78-4264-9f00-e7cc84edded9.png"
+    },
+    {
+      "id": "spiral-kelp",
+      "name": "꼬불 미역",
+      "rarity": "common",
+      "kind": "decoration",
+      "size": 82,
+      "price": 40,
+      "visual": "Three broad golden olive kelp fronds with curled ruffled edges rising from one tiny holdfast",
+      "description": "넓적한 올리브빛 잎 끝이 꼬불꼬불 말려 있다. 한 줄기만 놓아도 작은 바다에 풍성한 숲이 생긴다.",
+      "path": "decorations/normal/spiral-kelp_thumbnail.png",
+      "prompt": "One isolated transparent game collectible thumbnail: Three broad golden olive kelp fronds with curled ruffled edges rising from one tiny holdfast. Reference is STYLE ONLY: warm cute Pongi cartoon, clean dark brown contours, rounded readable forms, soft cel shading, no copied animal anatomy. Plant/object, NO face eyes limbs. Whole subject fits square at 82% longest axis with generous transparent margins. Distinct silhouette, no landscape or ground platform, tiny natural holdfast only if plant. True alpha transparency, no backdrop shadows particles text checkerboard. ",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-43abf776-44b7-4592-970e-7faef769c682.png"
+    },
+    {
+      "id": "pearl-sea-grapes",
+      "name": "진주알 바다포도",
+      "rarity": "rare",
+      "kind": "decoration",
+      "size": 68,
+      "price": 155,
+      "visual": "A rooted bushy cluster of mint sea grapes, many translucent spherical green pearl-shaped beads on fine branching stems, no jewelry",
+      "description": "가는 줄기마다 맑은 민트빛 방울이 송골송골 맺혀 있다. 빛을 받으면 작은 진주알처럼 은은하게 반짝인다.",
+      "path": "decorations/rare/pearl-sea-grapes_thumbnail.png",
+      "prompt": "One isolated transparent game collectible thumbnail: A rooted bushy cluster of mint sea grapes, many translucent spherical green pearl-shaped beads on fine branching stems, no jewelry. Reference is STYLE ONLY: warm cute Pongi cartoon, clean dark brown contours, rounded readable forms, soft cel shading, no copied animal anatomy. Plant/object, NO face eyes limbs. Whole subject fits square at 82% longest axis with generous transparent margins. Distinct silhouette, no landscape or ground platform, tiny natural holdfast only if plant. True alpha transparency, no backdrop shadows particles text checkerboard. Richer botanical detail and subtly translucent color, same cartoon style.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-5ce63e46-aab4-4248-a607-261bbfaa778e.png"
+    },
+    {
+      "id": "rose-fan-seaweed",
+      "name": "장밋빛 부채해초",
+      "rarity": "rare",
+      "kind": "decoration",
+      "size": 86,
+      "price": 175,
+      "visual": "Delicate rose pink red algae with translucent fan-shaped branching fronds and fine lace veins, airy layered wide fan silhouette, botanical seaweed not coral",
+      "description": "장밋빛 잎이 얇은 부채처럼 겹겹이 펼쳐진다. 잎맥 사이로 스며드는 물빛이 어항에 부드러운 색을 더한다.",
+      "path": "decorations/rare/rose-fan-seaweed_thumbnail.png",
+      "prompt": "One isolated transparent game collectible thumbnail: Delicate rose pink red algae with translucent fan-shaped branching fronds and fine lace veins, airy layered wide fan silhouette, botanical seaweed not coral. Reference is STYLE ONLY: warm cute Pongi cartoon, clean dark brown contours, rounded readable forms, soft cel shading, no copied animal anatomy. Plant/object, NO face eyes limbs. Whole subject fits square at 82% longest axis with generous transparent margins. Distinct silhouette, no landscape or ground platform, tiny natural holdfast only if plant. True alpha transparency, no backdrop shadows particles text checkerboard. Richer botanical detail and subtly translucent color, same cartoon style.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-1445e8a5-a782-454e-b312-adb77666a4c8.png"
+    },
+    {
+      "id": "rusty-bottle-cap",
+      "name": "녹슨 병뚜껑",
+      "rarity": "common",
+      "kind": "trash",
+      "size": 34,
+      "price": 8,
+      "visual": "One discarded dented blue metal bottle cap, chipped paint and small orange rust patches, three-quarter view, no brand or text",
+      "description": "푸른 칠이 벗겨진 병뚜껑. 가장자리의 작은 녹 자국에 바다를 떠돈 시간이 남아 있다.",
+      "path": "trash/normal/rusty-bottle-cap_thumbnail.png",
+      "prompt": "One isolated transparent game collectible thumbnail: One discarded dented blue metal bottle cap, chipped paint and small orange rust patches, three-quarter view, no brand or text. Reference is STYLE ONLY: warm cute Pongi cartoon, clean dark brown contours, rounded readable forms, soft cel shading, no copied animal anatomy. Plant/object, NO face eyes limbs. Whole subject fits square at 82% longest axis with generous transparent margins. Distinct silhouette, no landscape or ground platform, tiny natural holdfast only if plant. True alpha transparency, no backdrop shadows particles text checkerboard. ",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-29d4f10b-839e-4728-9175-d209fba87609.png"
+    },
+    {
+      "id": "cracked-flowerpot",
+      "name": "금 간 꼬마 화분",
+      "rarity": "common",
+      "kind": "trash",
+      "size": 46,
+      "price": 15,
+      "visual": "One abandoned small terracotta flowerpot with chipped rim and diagonal crack, pale barnacles and short algae strand, empty interior, no plant growing",
+      "description": "모서리가 깨진 작은 토분. 흙 대신 모래가 조금 남아 있고 금 간 틈에는 해초 한 줄기가 걸려 있다.",
+      "path": "trash/normal/cracked-flowerpot_thumbnail.png",
+      "prompt": "One isolated transparent game collectible thumbnail: One abandoned small terracotta flowerpot with chipped rim and diagonal crack, pale barnacles and short algae strand, empty interior, no plant growing. Reference is STYLE ONLY: warm cute Pongi cartoon, clean dark brown contours, rounded readable forms, soft cel shading, no copied animal anatomy. Plant/object, NO face eyes limbs. Whole subject fits square at 82% longest axis with generous transparent margins. Distinct silhouette, no landscape or ground platform, tiny natural holdfast only if plant. True alpha transparency, no backdrop shadows particles text checkerboard. ",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-5f1b195e-d6f6-4757-a325-df8284bd0ac1.png"
+    }
+  ],
+  "assets": [
+    {
+      "id": "ribbon-eelgrass",
+      "file": "decorations/normal/ribbon-eelgrass_thumbnail.png",
+      "storage_path": "decorations/normal/ribbon-eelgrass_thumbnail.png",
+      "sha256": "1c12a55a6544c45a443bdce2cfa7dae5c01663c1ae3f883da93aee1b57ac4545"
+    },
+    {
+      "id": "pebble-sea-moss",
+      "file": "decorations/normal/pebble-sea-moss_thumbnail.png",
+      "storage_path": "decorations/normal/pebble-sea-moss_thumbnail.png",
+      "sha256": "731ef1dfebf5075de1038c08a971fa1e2b6dccc6c1d035e580691fe327ebc4b1"
+    },
+    {
+      "id": "spiral-kelp",
+      "file": "decorations/normal/spiral-kelp_thumbnail.png",
+      "storage_path": "decorations/normal/spiral-kelp_thumbnail.png",
+      "sha256": "2535a905a06cbabf284bba91488f4b21f1a45dc8b1eba64b1242c4642f479bfd"
+    },
+    {
+      "id": "pearl-sea-grapes",
+      "file": "decorations/rare/pearl-sea-grapes_thumbnail.png",
+      "storage_path": "decorations/rare/pearl-sea-grapes_thumbnail.png",
+      "sha256": "00564760cd71e9f14f03d5a8e1360e365e1392f5580a4827e6a215f26c130183"
+    },
+    {
+      "id": "rose-fan-seaweed",
+      "file": "decorations/rare/rose-fan-seaweed_thumbnail.png",
+      "storage_path": "decorations/rare/rose-fan-seaweed_thumbnail.png",
+      "sha256": "a40ffdff616ba38cf19c7c9b0c02346846726180041fd5f2748b6c5cc9fb2c7d"
+    },
+    {
+      "id": "rusty-bottle-cap",
+      "file": "trash/normal/rusty-bottle-cap_thumbnail.png",
+      "storage_path": "trash/normal/rusty-bottle-cap_thumbnail.png",
+      "sha256": "c08f446c6f0bdfc85025e5f03a0941b8765b326ef517b4c89bd3e6de7068f16b"
+    },
+    {
+      "id": "cracked-flowerpot",
+      "file": "trash/normal/cracked-flowerpot_thumbnail.png",
+      "storage_path": "trash/normal/cracked-flowerpot_thumbnail.png",
+      "sha256": "c291b86be0b8cd432e1f9a92b563133c06388b44da403915e4afbb0ac1a9dcce"
+    }
+  ]
+}

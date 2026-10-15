@@ -27,7 +27,7 @@ it('auto-saves edits and dismisses the toolbar on background tap without cancell
  fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
  fireEvent.click(screen.getByRole('button',{name:'크기 키우기'}))
  expect(mock.items[0]).toMatchObject({scale:.6})
- expect(arrange).toHaveBeenCalledWith('starfish',{position_x:.2,position_y:.3,rotation:45,scale:.6})
+ expect(arrange).toHaveBeenCalledWith('starfish',expect.objectContaining({rotation:45,scale:.6,flipped:false}))
  fireEvent.click(screen.getByRole('button',{name:'수조 배경 클릭'}))
  expect(screen.queryByRole('region',{name:'살구 불가사리 꾸미기'})).toBeNull()
  finish()
@@ -39,4 +39,19 @@ it('restores the last position and size when automatic saving fails',async()=>{
  fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
  fireEvent.click(screen.getByRole('button',{name:'크기 키우기'}))
  await waitFor(()=>expect(mock.items[0]).toMatchObject({scale:.5}))
+})
+
+it('preserves the center and toolbar anchor while scaling',async()=>{
+ const arrange=vi.fn(async()=>{})
+ render(<AquariumView name="어항" items={[decoration]} busy={false} onPlace={()=>{}} onArrange={arrange} onSell={async()=>{}}/>)
+ fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
+ const toolbar=screen.getByRole('region',{name:'살구 불가사리 꾸미기'}).parentElement!
+ const before=toolbar.getAttribute('style')
+ fireEvent.click(screen.getByRole('button',{name:'크기 키우기'}))
+ await waitFor(()=>expect(arrange).toHaveBeenCalledOnce())
+ expect(toolbar.getAttribute('style')).toBe(before)
+ const next=arrange.mock.calls[0] as unknown as [string,{position_x:number;position_y:number;scale:number}]
+ const factor=Math.SQRT2,oldSize=26,newSize=31.2
+ expect(next[1].position_x*(320-newSize*factor)+newSize*factor/2).toBeCloseTo(.2*(320-oldSize*factor)+oldSize*factor/2)
+ expect(next[1].position_y*(560-newSize*factor)+newSize*factor/2).toBeCloseTo(.3*(560-oldSize*factor)+oldSize*factor/2)
 })

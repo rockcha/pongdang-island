@@ -13,7 +13,7 @@
 | 선물·우편함 | [선물](systems/gifts.md) |
 | 골드·상점 | [골드·상점](systems/gold-shop.md) |
 | 지역·지역 이동 | [지역](systems/regions.md) · [지역 이동](systems/region-travel.md) |
-| 낚시·미끼·연출 | [낚시](systems/fishing.md) · [미끼](systems/bait-catalog.md) · [연출](systems/fishing-presentation.md) |
+| 낚시·미끼·연출 | [낚시](systems/fishing.md) · [미끼](systems/bait-catalog.md) · [장력 미니게임](design/fishing-minigame.md) · [연출](systems/fishing-presentation.md) |
 | 개체·도감 | [개체](systems/collectibles.md) |
 | 수족관·어항 관리 | [수족관](systems/aquarium.md) · [어항 관리](systems/aquarium-tanks.md) |
 
@@ -27,3 +27,5 @@
 ## 과거 기록
 
 생성 당시 프롬프트·업로드 내역은 [생성 기록 목차](../assets/storage-upload/history.md)에서 필요한 배치만 찾습니다. 현재 생성 규칙은 [등급별 기준](../assets/references/collectible-style/README.md)과 [방향 규칙](../assets/references/collectible-style/artwork-facing.md)이 기준입니다. 문서에 과거 시점의 어종 수나 적용 상태가 나오면 해당 버전의 기록으로 읽고 실제 상태는 코드·대상 DB에서 확인합니다.
+
+스프라이트: [크기·선명도 기준](../assets/references/collectible-style/sprite-sizing.md) · [2026-10-15 점검 기록](design/sprite-quality-audit.md).

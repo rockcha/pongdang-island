@@ -19,3 +19,7 @@ export function shouldFlipSpecies(species:Species,direction:number){
  if(!movementSettings(species).flip||direction===0)return false
  return speciesFacing(species)==='left'?direction>0:direction<0
 }
+
+export function canArrangeSpecies(species:Species){
+ return species.kind==='decoration'||(species.kind==='fish'&&species.movement_type==='fixed')
+}

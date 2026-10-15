@@ -41,3 +41,7 @@
 기존 정면·좌우 방향 없는 원본 13종의 `front` 값은 과거 시각 검토 기록으로만 보존합니다. 실행 중 반전을 금지하는 값으로 사용하지 않고 오른쪽 기준으로 처리합니다. 이동하는 모든 어종은 `flip_with_direction=false` 여부와 관계없이 왼쪽 진행 시 반전합니다. 위 왼쪽 원본 14종만 반대 기준으로 처리하며, 검토한 이미지 경로의 방향은 오래된 DB 값보다 우선합니다. 전체 50종의 방향·경로·이미지 SHA-256은 [검토 기록](../../../src/features/aquarium/artwork-facing.json), 과거 DB 등록 SQL은 [39 원본 방향 SQL](../../../supabase/sql/39-artwork-facing/01-artwork-facing.sql)에 있습니다.
 
 기존 이미지를 오른쪽 원본으로 교체하는 작업은 별도 요청이 있을 때 수행합니다. 교체 시 실제 프레임을 다시 검수하고, DB 방향 값·클라이언트 검토 기록·이 문서의 예외 목록을 함께 갱신합니다. 원본 이미지를 바꾸지 않고 DB 값만 `right`로 덮어쓰지 않습니다.
+
+## 바다악어 v2 교체
+
+48 SQL의 fish/rare/sea-crocodile-v2_sprite.png는 오른쪽 원본입니다. 기존 fish/rare/sea-crocodile_sprite.png는 왼쪽 예외로 유지합니다. 경로별 검수 값으로 구분합니다.

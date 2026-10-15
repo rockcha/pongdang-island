@@ -10,3 +10,5 @@
 - 기존 [초기 생성 기록](storage-upload/collectibles/generation-history.md)와 개별 manifest는 과거 생성 기록입니다. 그림체가 충돌하면 위 최신 등급별 기준을 우선합니다. 기존 에셋은 사용자 요청 없이 일괄 재생성하지 않습니다.
 - 새 PNG는 `assets/storage-upload/new/YYYYMMDD-HHmmss/` 아래 Storage 경로 계층으로 저장하며 README·manifest에 참고 이미지와 최종 프롬프트를 기록합니다.
 - 새 어종은 썸네일과 스프라이트의 모든 프레임에서 머리가 화면 오른쪽을 향하고 앞으로 유영하는 원본으로 만듭니다. 생성 후 실제 이미지를 확인하며, 왼쪽·정면 원본은 새 어종의 최종본으로 채택하지 않습니다. 사용자 지정 예외가 있으면 그 지시를 따릅니다. [방향 규칙과 기존 왼쪽 어종 목록](references/collectible-style/artwork-facing.md)을 반드시 확인하고, 기존 어종은 검토된 방향 값을 보존합니다.
+
+스프라이트 생성·교체 전 [크기·선명도 기준](references/collectible-style/sprite-sizing.md)을 읽고, 셀 해상도와 실제 그림 점유율·몸통 기준점·게임 표시 크기를 검수합니다. 파일 해상도만으로 품질을 판정하지 않습니다.

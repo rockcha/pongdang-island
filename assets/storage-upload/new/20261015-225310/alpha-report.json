@@ -1,0 +1,291 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261015-225310/decorations/normal/pebble-sea-moss-based_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  78,
+                                           "y":  167,
+                                           "width":  478,
+                                           "height":  350,
+                                           "widthRatio":  0.7624,
+                                           "heightRatio":  0.5582,
+                                           "alphaPixels":  126664,
+                                           "leftAnchorY":  366.282,
+                                           "rightAnchorY":  369.148
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  76,
+                                           "y":  166,
+                                           "width":  475,
+                                           "height":  351,
+                                           "widthRatio":  0.7576,
+                                           "heightRatio":  0.5598,
+                                           "alphaPixels":  127196,
+                                           "leftAnchorY":  366.72,
+                                           "rightAnchorY":  367.83
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  76,
+                                           "y":  143,
+                                           "width":  480,
+                                           "height":  352,
+                                           "widthRatio":  0.7656,
+                                           "heightRatio":  0.5614,
+                                           "alphaPixels":  127033,
+                                           "leftAnchorY":  343.64,
+                                           "rightAnchorY":  347.15
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  77,
+                                           "y":  141,
+                                           "width":  477,
+                                           "height":  355,
+                                           "widthRatio":  0.7608,
+                                           "heightRatio":  0.5662,
+                                           "alphaPixels":  128455,
+                                           "leftAnchorY":  340.611,
+                                           "rightAnchorY":  344.708
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261015-225310/decorations/normal/ribbon-eelgrass-based_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  168,
+                                           "y":  90,
+                                           "width":  335,
+                                           "height":  468,
+                                           "widthRatio":  0.5343,
+                                           "heightRatio":  0.7464,
+                                           "alphaPixels":  66356,
+                                           "leftAnchorY":  335.23,
+                                           "rightAnchorY":  340.559
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  126,
+                                           "y":  90,
+                                           "width":  332,
+                                           "height":  468,
+                                           "widthRatio":  0.5295,
+                                           "heightRatio":  0.7464,
+                                           "alphaPixels":  65778,
+                                           "leftAnchorY":  332.329,
+                                           "rightAnchorY":  340.382
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  168,
+                                           "y":  63,
+                                           "width":  352,
+                                           "height":  473,
+                                           "widthRatio":  0.5614,
+                                           "heightRatio":  0.7544,
+                                           "alphaPixels":  69599,
+                                           "leftAnchorY":  317.154,
+                                           "rightAnchorY":  306.833
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  121,
+                                           "y":  64,
+                                           "width":  351,
+                                           "height":  473,
+                                           "widthRatio":  0.5598,
+                                           "heightRatio":  0.7544,
+                                           "alphaPixels":  69945,
+                                           "leftAnchorY":  309.316,
+                                           "rightAnchorY":  309.635
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261015-225310/decorations/normal/spiral-kelp-based_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  105,
+                                           "y":  53,
+                                           "width":  470,
+                                           "height":  548,
+                                           "widthRatio":  0.7496,
+                                           "heightRatio":  0.874,
+                                           "alphaPixels":  115516,
+                                           "leftAnchorY":  255.544,
+                                           "rightAnchorY":  353.821
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  78,
+                                           "y":  54,
+                                           "width":  460,
+                                           "height":  547,
+                                           "widthRatio":  0.7337,
+                                           "heightRatio":  0.8724,
+                                           "alphaPixels":  116239,
+                                           "leftAnchorY":  277.936,
+                                           "rightAnchorY":  351.659
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  75,
+                                           "y":  23,
+                                           "width":  498,
+                                           "height":  552,
+                                           "widthRatio":  0.7943,
+                                           "heightRatio":  0.8804,
+                                           "alphaPixels":  121659,
+                                           "leftAnchorY":  290.207,
+                                           "rightAnchorY":  275.411
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  63,
+                                           "y":  24,
+                                           "width":  487,
+                                           "height":  551,
+                                           "widthRatio":  0.7767,
+                                           "heightRatio":  0.8788,
+                                           "alphaPixels":  123302,
+                                           "leftAnchorY":  258.393,
+                                           "rightAnchorY":  321.402
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261015-225310/decorations/rare/pearl-sea-grapes-based_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  81,
+                                           "y":  117,
+                                           "width":  471,
+                                           "height":  439,
+                                           "widthRatio":  0.7512,
+                                           "heightRatio":  0.7002,
+                                           "alphaPixels":  110777,
+                                           "leftAnchorY":  372.42,
+                                           "rightAnchorY":  354.969
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  59,
+                                           "y":  117,
+                                           "width":  466,
+                                           "height":  440,
+                                           "widthRatio":  0.7432,
+                                           "heightRatio":  0.7018,
+                                           "alphaPixels":  111785,
+                                           "leftAnchorY":  371.219,
+                                           "rightAnchorY":  355.889
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  78,
+                                           "y":  75,
+                                           "width":  480,
+                                           "height":  444,
+                                           "widthRatio":  0.7656,
+                                           "heightRatio":  0.7081,
+                                           "alphaPixels":  114310,
+                                           "leftAnchorY":  333.339,
+                                           "rightAnchorY":  318.807
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  63,
+                                           "y":  75,
+                                           "width":  475,
+                                           "height":  444,
+                                           "widthRatio":  0.7576,
+                                           "heightRatio":  0.7081,
+                                           "alphaPixels":  113211,
+                                           "leftAnchorY":  333.915,
+                                           "rightAnchorY":  317.61
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261015-225310/decorations/rare/rose-fan-seaweed-based_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  68,
+                                           "y":  73,
+                                           "width":  492,
+                                           "height":  498,
+                                           "widthRatio":  0.7847,
+                                           "heightRatio":  0.7943,
+                                           "alphaPixels":  136552,
+                                           "leftAnchorY":  330.632,
+                                           "rightAnchorY":  368.681
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  59,
+                                           "y":  77,
+                                           "width":  490,
+                                           "height":  494,
+                                           "widthRatio":  0.7815,
+                                           "heightRatio":  0.7879,
+                                           "alphaPixels":  140997,
+                                           "leftAnchorY":  339.787,
+                                           "rightAnchorY":  358.03
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  80,
+                                           "y":  57,
+                                           "width":  505,
+                                           "height":  505,
+                                           "widthRatio":  0.8054,
+                                           "heightRatio":  0.8054,
+                                           "alphaPixels":  139329,
+                                           "leftAnchorY":  372.998,
+                                           "rightAnchorY":  315.87
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  60,
+                                           "y":  68,
+                                           "width":  491,
+                                           "height":  494,
+                                           "widthRatio":  0.7831,
+                                           "heightRatio":  0.7879,
+                                           "alphaPixels":  141235,
+                                           "leftAnchorY":  329.92,
+                                           "rightAnchorY":  349.951
+                                       }
+                                   ]
+                    }
+                ]
+}

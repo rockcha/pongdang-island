@@ -74,4 +74,4 @@ RPC: send_collectible_gift, claim_collectible_gift, react_to_collectible_gift, g
 - tests/social-sql.test.ts: 예약·실제 개체 이전·수령·반응·소유권·중복·탈퇴 처리.
 - tests/gifts.test.tsx: 메모 발송·네트워크 실패 재시도·수령 후 이모지 답장.
 
-같은 선물 재전송·동일 수령/답장 재시도·예약 개체 판매·잘못된 친구·자기 선물·중복 ID·메모 길이·타인 상세 조회·직접 상태 변경을 검증합니다. UI 규칙은 [공통 UI 규칙](../UI_CONVENTIONS.md)을 따릅니다.
+같은 선물 재전송·동일 수령/답장 재시도·예약 개체 판매·잘못된 친구·자기 선물·중복 ID·메모 길이·타인 상세 조회·직접 상태 변경을 검증합니다. UI 규칙은 [공통 UI 규칙](../ui-conventions.md)을 따릅니다.

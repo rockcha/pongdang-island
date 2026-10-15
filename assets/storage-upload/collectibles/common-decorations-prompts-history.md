@@ -1,3 +1,5 @@
+> 과거 생성 기록입니다. 새 작업은 [현재 그림체 기준](../../references/collectible-style/README.md)과 [방향 규칙](../../references/collectible-style/artwork-facing.md)을 따릅니다.
+
 # 일반 장식물 이미지 생성 기록
 
 내장 `image_gen` 도구 사용, 모두 `transparent_background=true`. 생성된 RGBA PNG를 수정하지 않고 `decorations/normal/`에 복사했습니다. 각 정사각형 이미지가 표시·썸네일을 겸하며 애니메이션 시트는 사용하지 않습니다.

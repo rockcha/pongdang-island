@@ -1,5 +1,19 @@
 # 개체·도감·어항 시스템
 
+고정 개체도 드래그로 좌표를 조정하고 저장할 수 있습니다. 어종의 자동 이동은 `movement_type: fixed`로 끄며 수동 배치는 유지합니다. 고정 개체는 잡기 쉽도록 이미지 사각 영역으로 입력을 판정하고, 이동하는 개체는 불투명 픽셀 기준으로 판정합니다.
+
+안개달 쓰레기·장식품은 [45 등록 안내](../../supabase/sql/45-mistmoon-relics/README.md)를 따릅니다. 각각 3종이며 모두 mistmoon 단독 서식입니다. 45는 쓰레기의 일반 등급 제한을 제거해 희귀 달시계·특급 초대장을 해당 등급 낚시 후보로 추가합니다. 이미지 업로드 완료, 원격 DB 등록은 SQL Editor 적용 대기입니다.
+
+안개달 토착 8종은 [44 등록 안내](../../supabase/sql/44-mistmoon-lunea/README.md)를 따릅니다. 일반 3·희귀 2·특급 2·신화 인어 루네아이며 서식지는 모두 mistmoon 한 곳입니다. 해면은 바닥 고정, 갯지렁이는 바닥 이동, 나머지는 유영합니다. 이미지 업로드 완료이며 원격 종 등록은 SQL Editor 적용 대기입니다.
+
+상어·고래 최신 설정은 [42 변경](../../supabase/sql/42-shared-shark-whale/README.md)을 따릅니다. 종 ID는 유지하되 햇물결 상어·물결날개 고래로 이름과 설명을 바꾸고 현재 전체 해역에 연결했습니다. 교체 시트는 눈을 모두 열린 상태로 유지하고 꼬리·지느러미의 네 유영 프레임을 순서대로 재생합니다.
+
+유영 안정성: 평상시 fish 이동은 몸통 기울기를 0도로 유지하고, 클릭 회피의 일시적인 기울기만 부드럽게 복귀시킵니다. 신규 앞바다 3종의 시트는 `swim-frame-layout.ts`에서 머리·몸통 기준점의 프레임별 위치·배율을 보정합니다. 좌우 반전 시 기준점도 대칭 적용하며 드래그 저장은 시각 보정 크기가 아닌 논리 크기를 사용합니다. 기존 동글 쥐치 등은 기본 중앙 기준점을 유지합니다. 시트를 교체하면 해당 이미지의 기준점 보정도 다시 검토합니다.
+
+현재 서식지 정책: 토종은 서식지가 한 곳인 개체를 의미합니다. 도감 카드에는 서식지 아이콘을 나란히 표시하며 별도 토종 배지·토착/일반 문구를 넣지 않습니다. 다섯 개체의 공통 서식지와 달잠 수련·안개종 풍경 삭제는 [40 서식지 조정](../../supabase/sql/40-habitat-rebalance/README.md)을 기준으로 합니다. 아래의 과거 단일 서식지 설명보다 이 정책을 우선합니다.
+
+도감은 고정된 제목·필터와 독립 스크롤 카드 목록으로 구성합니다. 카드에는 이미지·이름·설명·서식지·가치만 표시하고 상세 모달, 등급 뱃지, 발견 상태와 보유 수는 표시하지 않습니다. 등급은 공통 등급색 배경과 스크린리더 텍스트로 전달합니다. 종류는 아이콘 버튼과 툴팁으로 고르고, 토착 여부 select는 서식지가 한 곳인 개체 / 여러 곳인 개체를 필터링합니다. 지도는 토착·공통 개체 필터에서 제외합니다. 도감 목록 카드에는 모든 서식지역 아이콘을 가로로 표시합니다. 지역명은 아이콘 툴팁과 접근성 이름으로 제공합니다. 서식지역 필터는 지역별 아이콘 토글 버튼으로 여러 곳을 선택·해제합니다. 선택한 지역 중 한 곳에라도 서식하면 표시하며 모두 해제하면 전체 지역을 표시합니다. 지역 목록은 전체 카탈로그의 habitats에서 구성하고 종류·등급 필터와 함께 적용합니다. `collection-dialog.tsx`와 `habitat-icons.tsx`가 표시를 담당합니다.
+
 26부터 새 낚시 개체와 수령한 선물은 보관함(`tank_id=NULL`)에 들어갑니다. 지도·판매·미수령 예약 개체는 제외합니다. 아쿠아리움 보관함에서 여러 개를 골라 내 어항에 배정하며 실제 어항 정원은 50개입니다. `aquarium_state.inhabitants`에는 배치 개체만 반환하고 보관함은 페이지당 50개 조회합니다. 낚시 화면은 전체 보유 개체를 내려받거나 나열하지 않습니다. [26 적용 안내](../../supabase/sql/26-collectible-storage/README.md). 아래 최초 설치·이전 기능 설명은 도입 당시 동작을 포함합니다.
 
 25부터 `decoration`(장식물), Storage `decorations/`를 사용합니다. 장식물 클릭 편집에서 위치·회전(0~360°)·배율(0.5~2배)을 미리 보고 저장하며, 드래그 위치 저장도 유지합니다. 모바일 수조는 화면 좌우를 채웁니다. 기존 DB는 [25 전환·적용 안내](../../supabase/sql/25-decoration-editing/README.md)에 따라 Storage 이동 → 25 → 24 순서로 적용합니다.
@@ -73,7 +87,7 @@ Phaser 4.2.1을 버전 고정으로 사용합니다. React는 어항 설정·배
 
 어항에 포인터를 올리면 클릭 커서가 표시됩니다. 클릭/터치 지점에 유리를 두드리는 빛·원형 파동이 나타나고 근처 fish와 trash 개체가 반대 방향으로 살짝 이동합니다. 물고기는 회피 방향으로 약 1.8초 이동한 뒤 그 방향을 유지하는 경로로 이어가며, 쓰레기는 기존 회전을 유지합니다. 장식물과 먼 개체는 반응하지 않습니다. 모션 감소 설정에서는 도망 이동 없이 짧은 시각 표시만 제공합니다. 구현: tank-inhabitants.tsx, phaser-tank.ts, inhabitant-motion.ts. DB 변경은 없습니다.
 
-21은 푸른 백상아리·모래 귀상어·별점 고래상어·밤빛 범고래·구름 혹등고래를 rare로 추가합니다. 크기 128~172px, 판매가 340~520, 높이 범위 0.15~0.80이며 초기 5개 해역에서 희귀 추첨 후보가 됩니다. 게임의 fish는 유영 개체 분류라 고래도 같은 kind를 사용합니다. [업로드 안내](../../assets/storage-upload/RARE-SHARKS-WHALES.md), [등록 SQL](../../supabase/sql/21-rare-sharks-whales/01-rare-sharks-whales.sql), 검증 스크립트 scripts/verify-rare-sharks-whales.mjs를 참고합니다. 21까지 적용한 전체 카탈로그는 22종(유영 생물 19종·기타 3종), PNG 41장입니다.
+21은 푸른 백상아리·모래 귀상어·별점 고래상어·밤빛 범고래·구름 혹등고래를 rare로 추가합니다. 크기 128~172px, 판매가 340~520, 높이 범위 0.15~0.80이며 초기 5개 해역에서 희귀 추첨 후보가 됩니다. 게임의 fish는 유영 개체 분류라 고래도 같은 kind를 사용합니다. [업로드 안내](../../assets/storage-upload/rare-sharks-whales-history.md), [등록 SQL](../../supabase/sql/21-rare-sharks-whales/01-rare-sharks-whales.sql), 검증 스크립트 scripts/verify-rare-sharks-whales.mjs를 참고합니다. 21까지 적용한 전체 카탈로그는 22종(유영 생물 19종·기타 3종), PNG 41장입니다.
 
 아쿠아리움 상단 바다 도감에서 물고기·장식물·쓰레기 상세를 열고 임시 넣기 버튼을 누르면 현재 어항에 표시됩니다. 미발견 개체도 추가할 수 있으며 지도는 제외합니다. 같은 종을 여러 번 넣을 수 있고 장식물 편집도 가능합니다. React 메모리에만 보관하며 DB·로컬 스토리지에 저장하지 않습니다. 새로고침하거나 아쿠아리움을 떠나면 사라집니다. 구현은 src/features/collection/collection-dialog.tsx와 src/pages/aquarium-page.tsx입니다.
 
@@ -84,8 +98,8 @@ Phaser 4.2.1을 버전 고정으로 사용합니다. React는 어항 설정·배
 
 | 추가 SQL | 종류 | 크기 | 서식지 | 안내 |
 | --- | --- | --- | --- | --- |
-| [18](../../supabase/sql/18-common-ocean-fish/01-common-ocean-fish.sql) | 은빛 멸치·줄무늬 고등어·통통 전갱이·모래 망둑어·동글 쥐치 / common | 48~76px | pongdang, coral, mistmoon | [일반 5종](../../assets/storage-upload/COMMON-OCEAN-FISH.md) |
-| [19](../../supabase/sql/19-rare-ocean-fish/01-rare-ocean-fish.sql) | 푸른 돛새치·산호빛 참돔·얼룩 왕그루퍼·은빛 방어·민트 만새기 / common | 96~120px | 초기 5개 지역 모두 | [대형 일반 5종](../../assets/storage-upload/RARE-OCEAN-FISH.md) |
+| [18](../../supabase/sql/18-common-ocean-fish/01-common-ocean-fish.sql) | 은빛 멸치·줄무늬 고등어·통통 전갱이·모래 망둑어·동글 쥐치 / common | 48~76px | pongdang, coral, mistmoon | [일반 5종](../../assets/storage-upload/common-ocean-fish-history.md) |
+| [19](../../supabase/sql/19-rare-ocean-fish/01-rare-ocean-fish.sql) | 푸른 돛새치·산호빛 참돔·얼룩 왕그루퍼·은빛 방어·민트 만새기 / common | 96~120px | 초기 5개 지역 모두 | [대형 일반 5종](../../assets/storage-upload/rare-ocean-fish-history.md) |
 
 18·19까지 적용하면 총 17종(물고기 14종, 기타 3종), PNG 31장입니다. 아래의 7종·11장 설명은 최초 기본 샘플 기준입니다.
 18·19는 반복 실행 가능하며 기존 보유 개체·골드·미끼·어항을 보존합니다. 종류 설정을 갱신하고 부족한 서식지를 추가하지만 서식지 행을 삭제하지는 않습니다. 같은 등급 후보가 늘면 기존 종류의 상대 추첨 비율은 낮아지며 등급 당첨 확률은 유지됩니다.
@@ -131,7 +145,7 @@ SQL 테스트는 기존 기록 삭제/지갑·어항 보존, 등급 확률, 재�
 
 15가 이미 적용됐다면 16 → 17을 추가 실행합니다. 16까지 적용했다면 `supabase/sql/17-collectible-paths/01-paths.sql`만 실행합니다. 아직 15 이전이면 15 → 16 → 17 순서입니다. 15는 초기 낚시 기록 초기화, 16은 기존 보유 개체·골드·미끼·어항을 보존하며 이미지 경로/등급/추첨 규칙을 변경합니다. 16은 sprite_paths를 제거하고 sprite_sheet_path를 추가합니다. 원격 적용은 사용자가 SQL Editor에서 수행합니다.
 
-시트는 같은 크기의 정사각형 셀 2×2, 순서는 좌상→우상→좌하→우하입니다. 현재 재생은 이동 행동에 따라 정지 중 느리게, 이동·가속 중 빠르게 전환합니다. Phaser가 원본 이미지 크기로 네 프레임을 분할하여 Sprite.setFrame으로 재생합니다. 개별 DOM 스타일을 프레임마다 변경하지 않고 하나의 투명 캔버스에서 렌더링합니다. 시스템 모션 감소 설정 시 첫 프레임으로 정지합니다. 기본 프롬프트는 assets/storage-upload/collectibles/GENERATION.md, 추가 어종 프롬프트는 assets/storage-upload/common-ocean-fish-prompts.json 및 rare-ocean-fish-prompts.json에 기록합니다.
+시트는 같은 크기의 정사각형 셀 2×2, 순서는 좌상→우상→좌하→우하입니다. 현재 재생은 이동 행동에 따라 정지 중 느리게, 이동·가속 중 빠르게 전환합니다. Phaser가 원본 이미지 크기로 네 프레임을 분할하여 Sprite.setFrame으로 재생합니다. 개별 DOM 스타일을 프레임마다 변경하지 않고 하나의 투명 캔버스에서 렌더링합니다. 시스템 모션 감소 설정 시 첫 프레임으로 정지합니다. 기본 프롬프트는 assets/storage-upload/collectibles/generation-history.md, 추가 어종 프롬프트는 assets/storage-upload/common-ocean-fish-prompts.json 및 rare-ocean-fish-prompts.json에 기록합니다.
 
 유영 행동 계산은 src/features/aquarium/swim-motion.ts, 개체별 위치·회피 상태는 inhabitant-motion.ts, Phaser 렌더링은 phaser-tank.ts, React 연결은 tank-inhabitants.tsx입니다. 개체 ID와 animation_seed로 좌우 목적지와 이동 주기를 다르게 만들며 목적지 간 이동 가능 폭의 최소 44% 거리를 확보합니다. 어종의 높이 범위 안에서 좌우 이동보다 느린 독립적인 높이 변화로 완만한 대각선·곡선 경로를 만듭니다. 진행 방향에 맞춰 몸이 최대 30도 기울고 각도는 부드럽게 보간합니다. 주기적인 상하 흔들림은 없습니다. speed는 현재 목적지 이동 시간의 기준값이므로 실제 초당 이동 비율과 정확히 같지는 않습니다.
 

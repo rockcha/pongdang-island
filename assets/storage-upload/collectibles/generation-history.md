@@ -1,3 +1,5 @@
+> 과거 생성 기록입니다. 새 작업은 [현재 그림체 기준](../../references/collectible-style/README.md)과 [방향 규칙](../../references/collectible-style/artwork-facing.md)을 따릅니다.
+
 # 생성 기록
 
 아래는 과거 생성 기록입니다. 새 이미지의 그림체는 [최신 등급별 기준](../../references/collectible-style/README.md)을 우선합니다. 일반·희귀는 퐁이 카툰풍, 특급·신화는 별빛 가오리 참고의 부드러운 판타지 일러스트풍을 사용합니다.
@@ -74,4 +76,3 @@ Actual alpha transparency, no backdrop, no shadow on a floor, no water scenery.
 ## 물고기 썸네일
 
 각 최초 시트를 참조하여 좌상단 중립 자세의 동일 캐릭터 한 마리만 추출하는 새 이미지 생성: 1:1 투명, 전체 개체 중앙, 프레임·글자·배경 없음, 같은 그림체/색/캐릭터 유지.
-

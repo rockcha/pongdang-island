@@ -76,7 +76,7 @@ export class InhabitantMotion {
     const size=Math.min(s.size,width*.4),w=Math.max(0,width-size),h=Math.max(0,height-size)
     const low=Number(s.swim_y_min??.2),high=Number(s.swim_y_max??.8),motion=this.swim(time)
     let x=(.2+seed*.6)*w,y=(low+(high-low)*motion.y)*h,direction=motion.direction
-    if(settings.type==='fixed')return {x:(this.item.position_x??(.2+seed*.6))*w,y:(this.item.position_y??.5)*h,direction:1}
+    if(settings.type==='fixed')return {x:(this.item.position_x??(.2+seed*.6))*w,y:(this.item.position_y??(s.kind==='fish'?(low+high)/2:.5))*h,direction:1}
     if(settings.type==='crawl'){x=motion.x*w;y=(low+high)/2*h}
     if(settings.type==='pulse'){
       // Gentle short vertical pulses, carried along an individual, slowly
@@ -135,8 +135,9 @@ export class InhabitantMotion {
       direction=this.mirrored?-motion.direction:motion.direction
       x = (this.mirrored?1-motion.x:motion.x) * w; y = baseY
       if (s.kind === 'fish' && settings.flip && !reduced) {
-        const target = Math.max(-10, Math.min(10, Math.atan2(motion.velocityY * (high - low) * h, Math.max(Math.abs(motion.velocityX * w), 4)) * 180 / Math.PI * direction))
-        this.angle += (target - this.angle) * (1 - Math.exp(-Math.min(delta, .1) * 3))
+        // A turn or pause must not pitch a large sprite up and down.
+        // Depth changes stay in the path; only a tap escape briefly tilts the body.
+        this.angle += (0 - this.angle) * (1 - Math.exp(-Math.min(delta, .1) * 3))
         angle = this.angle
       }
       if (['fish','trash'].includes(s.kind)) {

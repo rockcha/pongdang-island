@@ -1,3 +1,5 @@
+> 과거 생성 기록입니다. 새 작업은 [현재 그림체 기준](../references/collectible-style/README.md)과 [방향 규칙](../references/collectible-style/artwork-facing.md)을 따릅니다.
+
 # 일반 바다 어종 5종 업로드
 
 내장 image_gen으로 기존 별꼬리 가오리 참고 이미지의 그림체를 맞췄습니다.

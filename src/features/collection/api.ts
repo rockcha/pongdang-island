@@ -2,7 +2,7 @@ import { createClient } from '@/lib/client'
 import type { Rarity } from '@/lib/game/rarity'
 export type CollectibleKind = 'fish'|'trash'|'decoration'|'map'
 export type MovementType='swim'|'pulse'|'crawl'|'fixed'
-export type Species = {movement_type?:MovementType;flip_with_direction?:boolean;travel_direction?:'both'|'left'|'right';is_native?:boolean;native_region_id?:string|null;id:string;kind:CollectibleKind;name:string;description:string;swim_y_min:number|null;swim_y_max:number|null;speed:number;size:number;rarity:Rarity;sprite_sheet_path:string|null;thumbnail_path:string;sell_price:number}
+export type Species = {facing_direction?:'left'|'right'|'front'|null;movement_type?:MovementType;flip_with_direction?:boolean;travel_direction?:'both'|'left'|'right';is_native?:boolean;native_region_id?:string|null;id:string;kind:CollectibleKind;name:string;description:string;swim_y_min:number|null;swim_y_max:number|null;speed:number;size:number;rarity:Rarity;sprite_sheet_path:string|null;thumbnail_path:string;sell_price:number}
 export type DecorationPlacement = {position_x:number;position_y:number;rotation:number;scale:number}
 export type OwnedCollectible = {id:string;species_id:string;tank_id:string|null;map_region_id?:string|null;animation_seed:number;position_x:number|null;position_y:number|null;rotation?:number;scale?:number;acquired_at:string;species:Species}
 export type CatalogEntry = Species & {discovered:boolean;habitats:{id:string;name:string}[]}

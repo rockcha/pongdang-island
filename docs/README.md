@@ -1,19 +1,29 @@
-# 개발 문서
+# 개발 문서 목차
 
-새 작업을 시작할 때 [시스템 지도](SYSTEM_MAP.md)를 먼저 읽습니다.
+작업 규칙은 [루트 AGENTS.md](../AGENTS.md), 실행 방법은 [README](../README.md)에 있습니다. 아래에서 관련 문서만 읽고, 코드 위치가 필요하면 [시스템 지도](system-map.md)를 확인합니다.
 
-개체 이미지 생성 전에는 [등급별 그림체와 실제 참고 이미지](../assets/references/collectible-style/README.md)를 확인합니다. 일반·희귀는 퐁이 카툰풍, 특급·신화는 별빛 가오리 일러스트풍입니다.
+## 현재 기능
 
-- [시스템 지도와 코드 진입점](SYSTEM_MAP.md): 기능 위치, 데이터 흐름, 작업별 읽을 파일
-- [개체 선물·우편함](systems/gifts.md): 개체 선물, 메모, 수령, 이모지 답장·실시간 알림과 23 SQL
-- [친구 / 실시간 알림](systems/realtime-social.md): SQL 설치, 권한, Realtime, 두 계정 검증
-- [프로젝트 실행 및 인증 설정](../README.md)
-- [SQL 실행 순서](../supabase/sql/README.md)
-- [새 이미지 생성·업로드 폴더 규칙](../assets/storage-upload/README.md): new/한국 생성시간/ 아래에 collectibles 내부 계층으로 저장
+| 작업 주제 | 읽을 문서 |
+| --- | --- |
+| 로그인·가입·세션·비밀번호 복구 | [인증과 계정](systems/auth.md) |
+| 메뉴·페이지 구조 | [내비게이션](systems/navigation.md) |
+| 프로필·아바타 | [아바타](systems/avatar.md) |
+| 친구·실시간 알림 | [친구·알림](systems/realtime-social.md) |
+| 선물·우편함 | [선물](systems/gifts.md) |
+| 골드·상점 | [골드·상점](systems/gold-shop.md) |
+| 지역·지역 이동 | [지역](systems/regions.md) · [지역 이동](systems/region-travel.md) |
+| 낚시·미끼·연출 | [낚시](systems/fishing.md) · [미끼](systems/bait-catalog.md) · [연출](systems/fishing-presentation.md) |
+| 개체·도감 | [개체](systems/collectibles.md) |
+| 수족관·어항 관리 | [수족관](systems/aquarium.md) · [어항 관리](systems/aquarium-tanks.md) |
 
-이 문서들은 코드의 현재 구조를 설명합니다. 변경 시 관련 문서와 SQL/DB 타입/테스트를 함께 갱신합니다.
-- [아바타와 프로필](systems/avatar.md): 이미지 업로드·Storage 정책·아바타 표시
-- [섬 메뉴와 페이지](systems/navigation.md): 왼쪽 drawer, 퐁당마을·아쿠아리움·선착장·우체통·마이페이지
-# 공통 UI 규칙
+## 디자인·이미지·DB
 
-[툴팁 색상·개체 카테고리 고정 아이콘](UI_CONVENTIONS.md)을 따릅니다.
+- UI 작업은 [공통 UI 규칙](ui-conventions.md)을 읽고 해당 항목의 상세 문서로 이동합니다.
+- 상세 디자인: [색상](design/colors.md), [장소 메뉴](design/place-navigation.md), [장소 배너](design/place-banners.md), [확인 모달](design/confirmation-dialog.md).
+- 이미지 생성·교체·업로드는 [에셋 안내](../assets/README.md)의 순서를 따릅니다.
+- DB 설치·변경은 [SQL 적용 순서](../supabase/sql/README.md)에서 관련 번호를 확인합니다.
+
+## 과거 기록
+
+생성 당시 프롬프트·업로드 내역은 [생성 기록 목차](../assets/storage-upload/history.md)에서 필요한 배치만 찾습니다. 현재 생성 규칙은 [등급별 기준](../assets/references/collectible-style/README.md)과 [방향 규칙](../assets/references/collectible-style/artwork-facing.md)이 기준입니다. 문서에 과거 시점의 어종 수나 적용 상태가 나오면 해당 버전의 기록으로 읽고 실제 상태는 코드·대상 DB에서 확인합니다.

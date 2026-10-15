@@ -3,13 +3,15 @@ import { collectibleUrl } from '@/features/collection/api'
 import type { OwnedCollectible } from '@/features/collection/api'
 import { InhabitantMotion } from './inhabitant-motion'
 import { tankSwipeDirection } from './tank-swipe'
-import {shouldFlipSpecies} from './movement-settings'
+import {movementSettings,shouldFlipSpecies} from './movement-settings'
+import {premiumSwimFrame} from './premium-swim-frame'
+import {swimFrameLayout} from './swim-frame-layout'
 
 export type TankRenderer = { setItems: (items: OwnedCollectible[]) => void; resize: (width: number, height: number) => void; setReduced: (value: boolean) => void; setVisible: (value: boolean) => void; getStats: () => { count: number; textures: number; clock: number; renderer: string }; destroy: () => void }
 
 export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectible[], reduced: boolean, onError: (message: string) => void, onPlace?: (id:string,x:number,y:number)=>void,onNavigate?:(direction:'previous'|'next')=>void,onSelectDecoration?:(id:string)=>void,onBackgroundTap?:()=>void): TankRenderer {
   let items = initial, ready = false, disposed = false, clock = 0, visible = true
-  const entries = new Map<string, { motion: InhabitantMotion; sprite: Phaser.GameObjects.Sprite; path: string; sheet: boolean }>()
+  const entries = new Map<string, { motion: InhabitantMotion; sprite: Phaser.GameObjects.Sprite; path: string; sheet: boolean; previousX?:number }>()
   const queued = new Set<string>(), failed = new Set<string>()
   const dragging=new Set<string>()
   let swipe:{id:number;x:number;y:number;time:number}|null=null
@@ -62,7 +64,8 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         const id=sprite.getData('collectibleId') as string,entry=entries.get(id)
         dragging.delete(id);sprite.setDepth(0);this.input.setDefaultCursor('pointer')
         if(!entry)return
-        const position=entry.motion.place(sprite.x-sprite.displayWidth/2,sprite.y-sprite.displayHeight/2,clock,this.scale.width,this.scale.height,reduced)
+        const size=Number(sprite.getData('logicalSize')??sprite.displayWidth)
+        const position=entry.motion.place(sprite.x-size/2,sprite.y-size/2,clock,this.scale.width,this.scale.height,reduced)
         onPlace?.(id,position.x,position.y)
       })
       this.load.on('loaderror', (file: Phaser.Loader.File) => {
@@ -98,10 +101,18 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
           for (let frame = 0; frame < 4; frame++) texture.add(`swim-${frame}`, 0, (frame % 2) * width, Math.floor(frame / 2) * height, width, height)
         }
         const current = entries.get(item.id)
-        if (current) { current.motion.setItem(item,clock,this.scale.width,this.scale.height,reduced); continue }
+        if (current) {
+          if(movementSettings(current.motion.item.species).type!==movementSettings(item.species).type){
+            this.input.setHitArea(current.sprite,{pixelPerfect:movementSettings(item.species).type!=='fixed',alphaTolerance:32,cursor:'grab'})
+            this.input.setDraggable(current.sprite)
+          }
+          current.motion.setItem(item,clock,this.scale.width,this.scale.height,reduced); continue
+        }
         const sprite = this.add.sprite(0, 0, key, sheet ? 'swim-0' : undefined)
         sprite.setData('collectibleId',item.id)
-        sprite.setInteractive({pixelPerfect:true,alphaTolerance:32,cursor:'grab'})
+        // Fixed inhabitants must remain easy to grab, including transparent
+        // gaps in a small sponge or other stationary species.
+        sprite.setInteractive({pixelPerfect:movementSettings(item.species).type!=='fixed',alphaTolerance:32,cursor:'grab'})
         this.input.setDraggable(sprite)
         entries.set(item.id, { motion: new InhabitantMotion(item, clock), sprite, path, sheet })
       }
@@ -112,9 +123,22 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
       for (const entry of entries.values()) {
         if(dragging.has(entry.motion.item.id))continue
         const pose = entry.motion.update(clock, delta, this.scale.width, this.scale.height, reduced)
-        entry.sprite.setPosition(pose.x + pose.size / 2, pose.y + pose.size / 2).setDisplaySize(pose.size, pose.size).setAngle(pose.angle)
-        entry.sprite.setFlipX(shouldFlipSpecies(entry.motion.item.species,pose.direction))
-        if (entry.sheet) { const frame = `swim-${pose.frame}`; if (entry.sprite.frame.name !== frame) entry.sprite.setFrame(frame) }
+        const dx = pose.x - (entry.previousX??pose.x)
+        entry.previousX=pose.x
+        // Use the movement actually displayed, except screen-edge wrapping.
+        const direction = Math.abs(dx) > .001 && Math.abs(dx) < this.scale.width / 2 ? Math.sign(dx) : pose.direction
+        let layout=swimFrameLayout('',0)
+        if (entry.sheet) {
+          const index=premiumSwimFrame(entry.path,clock,entry.motion.item.animation_seed,pose.frame,reduced)
+          layout=swimFrameLayout(entry.path,index)
+          const frame = `swim-${index}`; if (entry.sprite.frame.name !== frame) entry.sprite.setFrame(frame)
+        }
+        const flipped=shouldFlipSpecies(entry.motion.item.species,direction)
+        entry.sprite.setData('logicalSize',pose.size)
+        entry.sprite.setOrigin(flipped?1-layout.originX:layout.originX,layout.originY)
+          .setPosition(pose.x + pose.size / 2, pose.y + pose.size / 2)
+          .setDisplaySize(pose.size*layout.scale, pose.size*layout.scale).setAngle(pose.angle)
+        entry.sprite.setFlipX(flipped)
       }
     }
     update(_time: number, delta: number) {

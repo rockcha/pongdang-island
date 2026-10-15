@@ -290,15 +290,26 @@ button, [role='button'] { cursor: pointer; }
  inset: 5px;
  z-index: -1;
  border-radius: 50%;
- background: radial-gradient(ellipse, color-mix(in srgb, var(--primary) 55%, transparent), color-mix(in srgb, var(--primary) 20%, transparent) 45%, transparent 72%);
+ background: radial-gradient(ellipse, rgb(56 189 248 / 55%), rgb(14 165 233 / 20%) 45%, transparent 72%);
  filter: blur(5px);
  opacity: 0;
  transition: opacity 220ms ease;
 }
 .harbor-map-selected::before { opacity: 1; }
+.harbor-map-piece > span:first-child { transition: transform 280ms ease-out; }
+.harbor-map-piece:focus-visible::before { opacity: 1; }
+.harbor-map-piece:focus-visible > span:first-child { transform: scale(1.08); }
+@media (hover: hover) {
+ .harbor-map-piece:hover::before { opacity: 1; }
+ .harbor-map-piece:hover > span:first-child { transform: scale(1.08); }
+}
 .harbor-map-selected > span:first-child {
  filter: drop-shadow(0 0 7px color-mix(in srgb, var(--primary) 65%, transparent));
 }
 @media (prefers-reduced-motion: reduce) {
- .harbor-map-piece::before { transition: none; }
+ .harbor-map-piece::before, .harbor-map-piece > span:first-child { transition: none; }
+ .harbor-map-piece:is(:hover, :focus-visible) > span:first-child { transform: none; }
 }
+
+/* Rarity colors tint the card; text keeps theme contrast. */
+.collection-card { color: var(--foreground); }

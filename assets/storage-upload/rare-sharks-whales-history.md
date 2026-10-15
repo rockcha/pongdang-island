@@ -1,3 +1,5 @@
+> 과거 생성 기록입니다. 새 작업은 [현재 그림체 기준](../references/collectible-style/README.md)과 [방향 규칙](../references/collectible-style/artwork-facing.md)을 따릅니다.
+
 # 희귀 상어·고래 5종
 
 첨부 수달과 같은 갈색 외곽선·부드러운 음영·반짝이는 눈·볼터치 그림체로 내장 image_gen을 사용했습니다. 로컬 수달 이미지를 스타일 참조로 사용하며 동물의 종류는 상어·고래로 새로 그립니다.

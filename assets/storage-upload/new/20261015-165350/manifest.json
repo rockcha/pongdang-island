@@ -1,0 +1,117 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "file": "fish/normal/mistbread-sponge_thumbnail.png",
+      "storage_path": "fish/normal/mistbread-sponge_thumbnail.png",
+      "facing_direction": "right",
+      "prompt": "Use case stylized-concept. ONE square transparent inventory thumbnail for 안개빵 해면, common aquarium collectible endemic to a misty moonlit coast. Match image1 STYLE ONLY: warm hand-painted Pongi CARTOON, rounded appealing shapes, clear dark-brown outlines, soft cel shading, readable at small game size. Do not copy otter anatomy, fur, starfish accessory or fishing gear. Not photorealistic, not glossy fantasy gemstone art. Subject: a small lavender and cream bread-roll-shaped SEA SPONGE, rounded pillowy lobes, tiny natural water pores, no anthropomorphic face or added eyes, attached to a tiny pale stone, side view with slightly taller lobe on right. Entire subject facing SCREEN RIGHT where a head exists. One complete creature deliberately small, only 65% canvas width and height, generous alpha margins. Lavender, silver and cream palette appropriate to the species; humble common rarity, no excessive glow. No scenery, water backdrop, checkerboard, border, letters, text or floor shadow. Genuine RGBA alpha transparency.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png"
+    },
+    {
+      "file": "fish/normal/mistbread-sponge_sprite.png",
+      "storage_path": "fish/normal/mistbread-sponge_sprite.png",
+      "facing_direction": "right",
+      "prompt": "Create ONE transparent PNG sprite sheet for this exact referenced creature, preserving its design, colors and rendering style. Exactly 2 columns by 2 rows of equal square cells, four cyclic animation frames read top-left, top-right, bottom-left, bottom-right. All four creatures face SCREEN RIGHT. Each entire creature must fit within central 70% of its cell with clear transparent padding on every side. Identical head and rigid-body size, location and orientation within every cell; no overall translation, zoom or bouncing. Animate four distinct subtle phases: remain anchored; only pores subtly dilate and soft outer fringe gently responds to current; do not translate the sponge or invent eyes. Eyes stay naturally open; do not use blinking as the primary animation. No one-sided arm/flipper waving. Preserve the reference anatomy. No scenery, shadows outside creature, text, labels, dividers, borders or checkerboard. True alpha transparency. Output square sheet.",
+      "reference": "fish/normal/mistbread-sponge_thumbnail.png"
+    },
+    {
+      "file": "fish/normal/whisper-pipefish_thumbnail.png",
+      "storage_path": "fish/normal/whisper-pipefish_thumbnail.png",
+      "facing_direction": "right",
+      "prompt": "Use case stylized-concept. ONE square transparent inventory thumbnail for 속삭임 실고기, common aquarium collectible endemic to a misty moonlit coast. Match image1 STYLE ONLY: warm hand-painted Pongi CARTOON, rounded appealing shapes, clear dark-brown outlines, soft cel shading, readable at small game size. Do not copy otter anatomy, fur, starfish accessory or fishing gear. Not photorealistic, not glossy fantasy gemstone art. Subject: a slender silvery-lavender PIPEFISH with a clear long tubular snout, delicate cream segmented body, tiny ear-shaped pectoral fins, one gentle glossy eye; head to RIGHT and thin tail trailing LEFT. Entire subject facing SCREEN RIGHT where a head exists. One complete creature deliberately small, only 65% canvas width and height, generous alpha margins. Lavender, silver and cream palette appropriate to the species; humble common rarity, no excessive glow. No scenery, water backdrop, checkerboard, border, letters, text or floor shadow. Genuine RGBA alpha transparency.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png"
+    },
+    {
+      "file": "fish/normal/whisper-pipefish_sprite.png",
+      "storage_path": "fish/normal/whisper-pipefish_sprite.png",
+      "facing_direction": "right",
+      "prompt": "Create ONE transparent PNG sprite sheet for this exact referenced creature, preserving its design, colors and rendering style. Exactly 2 columns by 2 rows of equal square cells, four cyclic animation frames read top-left, top-right, bottom-left, bottom-right. All four creatures face SCREEN RIGHT. Each entire creature must fit within central 70% of its cell with clear transparent padding on every side. Identical head and rigid-body size, location and orientation within every cell; no overall translation, zoom or bouncing. Animate four distinct subtle phases: restrained fine dorsal-fin ripples, tiny fin-tip flutter and gentle tail-end wave; long tubular head and front body stay fixed; never wag a fin like an arm. Eyes stay naturally open; do not use blinking as the primary animation. No one-sided arm/flipper waving. Preserve the reference anatomy. No scenery, shadows outside creature, text, labels, dividers, borders or checkerboard. True alpha transparency. Output square sheet.",
+      "reference": "fish/normal/whisper-pipefish_thumbnail.png"
+    },
+    {
+      "file": "fish/normal/dream-thread-worm_thumbnail.png",
+      "storage_path": "fish/normal/dream-thread-worm_thumbnail.png",
+      "facing_direction": "right",
+      "prompt": "Use case stylized-concept. ONE square transparent inventory thumbnail for 꿈실타래 갯지렁이, common aquarium creature from a misty moonlit coast. Image1 is STYLE ONLY: match warm Pongi CARTOON, appealing rounded shapes, clear dark-brown outlines and soft cel shading, readable at small size. Do not copy otter anatomy, fur, head starfish or fishing gear. Subject: a friendly little silver-lilac segmented BRISTLE WORM, flowing loosely S-curved horizontal body, delicate short bristles, small rounded head at RIGHT, narrower tail LEFT; do not add a human face or giant eyes. Whole creature faces SCREEN RIGHT, deliberately small, 65% square with generous alpha margins. Lavender/silver/cream colors. Humble common or detailed but still cartoon rare, no gemstone fantasy styling. No backdrop, water scene, text, labels, border, checkerboard, floor shadow. Genuine alpha transparency.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png"
+    },
+    {
+      "file": "fish/normal/dream-thread-worm_sprite.png",
+      "storage_path": "fish/normal/dream-thread-worm_sprite.png",
+      "facing_direction": "right",
+      "prompt": "Create ONE transparent PNG sprite sheet for this exact referenced creature, preserving its design, colors and rendering style. Exactly 2 columns by 2 rows of equal square cells, four cyclic animation frames read top-left, top-right, bottom-left, bottom-right. All four creatures face SCREEN RIGHT. Each entire creature must fit within central 70% of its cell with clear transparent padding on every side. Identical head and rigid-body size, location and orientation within every cell; no overall translation, zoom or bouncing. Animate four distinct subtle phases: small coordinated bristle strokes and subtle segment undulation through four crawl phases, head remains registered; avoid whole-body bouncing or knotting. Eyes stay naturally open; do not use blinking as the primary animation. No one-sided arm/flipper waving. Preserve the reference anatomy. No scenery, shadows outside creature, text, labels, dividers, borders or checkerboard. True alpha transparency. Output square sheet.",
+      "reference": "fish/normal/dream-thread-worm_thumbnail.png"
+    },
+    {
+      "file": "fish/rare/mist-whisker-catfish_thumbnail.png",
+      "storage_path": "fish/rare/mist-whisker-catfish_thumbnail.png",
+      "facing_direction": "right",
+      "prompt": "Use case stylized-concept. ONE square transparent inventory thumbnail for 안개수염 메기, rare aquarium creature from a misty moonlit coast. Image1 is STYLE ONLY: match warm Pongi CARTOON, appealing rounded shapes, clear dark-brown outlines and soft cel shading, readable at small size. Do not copy otter anatomy, fur, head starfish or fishing gear. Subject: a round friendly gray-lavender CATFISH with creamy belly, broad short snout and long delicate silvery whiskers, small calm paired fins, glossy eyes, subtle mist-colored spots; head RIGHT tail LEFT. Whole creature faces SCREEN RIGHT, deliberately small, 65% square with generous alpha margins. Lavender/silver/cream colors. Humble common or detailed but still cartoon rare, no gemstone fantasy styling. No backdrop, water scene, text, labels, border, checkerboard, floor shadow. Genuine alpha transparency.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png"
+    },
+    {
+      "file": "fish/rare/mist-whisker-catfish_sprite.png",
+      "storage_path": "fish/rare/mist-whisker-catfish_sprite.png",
+      "facing_direction": "right",
+      "prompt": "Create ONE transparent PNG sprite sheet for this exact referenced creature, preserving its design, colors and rendering style. Exactly 2 columns by 2 rows of equal square cells, four cyclic animation frames read top-left, top-right, bottom-left, bottom-right. All four creatures face SCREEN RIGHT. Each entire creature must fit within central 70% of its cell with clear transparent padding on every side. Identical head and rigid-body size, location and orientation within every cell; no overall translation, zoom or bouncing. Animate four distinct subtle phases: long whiskers stream and gently curl in the current, small tail beat and thin rear-fin edges flex, paired front fins remain calm and still. Eyes stay naturally open; do not use blinking as the primary animation. No one-sided arm/flipper waving. Preserve the reference anatomy. No scenery, shadows outside creature, text, labels, dividers, borders or checkerboard. True alpha transparency. Output square sheet.",
+      "reference": "fish/rare/mist-whisker-catfish_thumbnail.png"
+    },
+    {
+      "file": "fish/rare/moonshadow-flounder_thumbnail.png",
+      "storage_path": "fish/rare/moonshadow-flounder_thumbnail.png",
+      "facing_direction": "right",
+      "prompt": "Use case stylized-concept. ONE square transparent thumbnail for 달그림자 가자미, rare mistmoon-native aquarium creature. Image1 STYLE ONLY: warm Pongi CARTOON, rounded friendly silhouettes, clear dark-brown contours, soft cel shading. Do not copy otter anatomy, fur or hair starfish. Not photorealistic. Subject: a cute flattened oval FLOUNDER, slate-lavender upper body, ivory-silver ruffled rim and subtle crescent shadow marking, anatomically readable two small eyes on upper visible side and mouth at RIGHT, tail at LEFT, low side-three-quarter view. Whole creature faces SCREEN RIGHT where a head exists, one complete subject at 65% square, wide alpha padding. Distinct silhouette and calm mystical silver/lavender/cream palette, no text or lettering. Actual RGBA transparency, no scene, water backdrop, checkerboard, border or floor shadow.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png"
+    },
+    {
+      "file": "fish/rare/moonshadow-flounder_sprite.png",
+      "storage_path": "fish/rare/moonshadow-flounder_sprite.png",
+      "facing_direction": "right",
+      "prompt": "Create ONE transparent PNG sprite sheet for this exact referenced creature, preserving its design, colors and rendering style. Exactly 2 columns by 2 rows of equal square cells, four cyclic animation frames read top-left, top-right, bottom-left, bottom-right. All four creatures face SCREEN RIGHT. Each entire creature must fit within central 70% of its cell with clear transparent padding on every side. Identical head and rigid-body size, location and orientation within every cell; no overall translation, zoom or bouncing. Animate four distinct subtle phases: small traveling wave along entire thin dorsal/anal perimeter, little tail flex; central flat body and eyes absolutely steady, no arm-like fin gestures. Eyes stay naturally open; do not use blinking as the primary animation. No one-sided arm/flipper waving. Preserve the reference anatomy. No scenery, shadows outside creature, text, labels, dividers, borders or checkerboard. True alpha transparency. Output square sheet.",
+      "reference": "fish/rare/moonshadow-flounder_thumbnail.png"
+    },
+    {
+      "file": "fish/epic/lunea-knight_thumbnail.png",
+      "storage_path": "fish/epic/lunea-knight_thumbnail.png",
+      "facing_direction": "right",
+      "prompt": "Use case stylized-concept. ONE square transparent thumbnail for 루네아의 기사, epic mistmoon-native aquarium creature. Image1 STYLE ONLY: soft luxurious fantasy illustration, delicate colored contours, dimensional pearlescent gradient shading and translucent membranes, NOT thick brown cartoon outlines. Do not copy manta anatomy, all-over purple stars, or excess gems. Subject: an elegant magical SEAHORSE KNIGHT, pearl-silver scale armor integrated into natural seahorse body, one small crescent horn, pale-lavender translucent dorsal fin, a tiny crescent emblem, curled tail and gentle vigilant violet eye, delicate flowing gill ribbons, no humanoid limbs or held weapons; head/snouted face RIGHT, curled tail trailing LEFT. Whole creature faces SCREEN RIGHT where a head exists, one complete subject at 65% square, wide alpha padding. Distinct silhouette and calm mystical silver/lavender/cream palette, no text or lettering. Actual RGBA transparency, no scene, water backdrop, checkerboard, border or floor shadow.",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png"
+    },
+    {
+      "file": "fish/epic/lunea-knight_sprite.png",
+      "storage_path": "fish/epic/lunea-knight_sprite.png",
+      "facing_direction": "right",
+      "prompt": "Create ONE transparent PNG sprite sheet for this exact referenced creature, preserving its design, colors and rendering style. Exactly 2 columns by 2 rows of equal square cells, four cyclic animation frames read top-left, top-right, bottom-left, bottom-right. All four creatures face SCREEN RIGHT. Each entire creature must fit within central 70% of its cell with clear transparent padding on every side. Identical head and rigid-body size, location and orientation within every cell; no overall translation, zoom or bouncing. Animate four distinct subtle phases: small natural dorsal membrane waves, gill ribbons and slender tail tip softly flow in current; armored head/chest and crescent horn stay rigid; no exaggerated rocking. Eyes stay naturally open; do not use blinking as the primary animation. No one-sided arm/flipper waving. Preserve the reference anatomy. No scenery, shadows outside creature, text, labels, dividers, borders or checkerboard. True alpha transparency. Output square sheet.",
+      "reference": "fish/epic/lunea-knight_thumbnail.png"
+    },
+    {
+      "file": "fish/epic/lunea-archivist_thumbnail.png",
+      "storage_path": "fish/epic/lunea-archivist_thumbnail.png",
+      "facing_direction": "right",
+      "prompt": "Use case stylized-concept. ONE square transparent inventory thumbnail for 루네아의 기록관, epic aquarium collectible endemic to mistmoon coast. Image1 STYLE ONLY: premium soft fantasy illustration, delicate colored contours, luxurious smooth pearl gradients, dimensional light and translucent flowing materials. NOT thick brown cartoon outlines, not flat cel shading or photorealism. Subject: a magical NAUTILUS archivist, pearlescent silver-lavender spiral shell with delicate crescent and tidal-ring engravings like ancient records, soft violet living body and long fine translucent tentacles emerging toward SCREEN RIGHT, a single gentle visible eye, subtle gold crescent emblem; no books, words or human arms. Whole subject faces SCREEN RIGHT. Full body fits deliberately small at 65% square with wide transparent margins. Silver/lavender/ivory palette, restrained moonlight; readable anatomy and sophisticated fantasy finish. No lettering, books with text, scenery, backdrop, floor shadow, border or checkerboard. Real RGBA transparency.",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png"
+    },
+    {
+      "file": "fish/epic/lunea-archivist_sprite.png",
+      "storage_path": "fish/epic/lunea-archivist_sprite.png",
+      "facing_direction": "right",
+      "prompt": "Create ONE transparent PNG sprite sheet for this exact referenced creature, preserving its design, colors and rendering style. Exactly 2 columns by 2 rows of equal square cells, four cyclic animation frames read top-left, top-right, bottom-left, bottom-right. All four creatures face SCREEN RIGHT. Each entire creature must fit within central 70% of its cell with clear transparent padding on every side. Identical head and rigid-body size, location and orientation within every cell; no overall translation, zoom or bouncing. Animate four distinct subtle phases: fine tentacles stream and flex through gentle current phases and small mantle-edge motion, solid spiral shell stays absolutely registered and unchanged; do not spin or resize shell. Eyes stay naturally open; do not use blinking as the primary animation. No one-sided arm/flipper waving. Preserve the reference anatomy. No scenery, shadows outside creature, text, labels, dividers, borders or checkerboard. True alpha transparency. Output square sheet.\nPadding repair: Edit this exact 2x2 transparent sprite sheet. Shrink EACH individual nautilus to 75% of its CURRENT size, independently centered within its existing quadrant. Keep the sheet dimensions and equal 2x2 layout. All tentacle tips and shell edges must have generous clear transparent margin on all sides; nothing may touch cell boundaries. Preserve the creature design, four subtly differing tentacle poses, right-facing direction, stable shell size, alpha transparency. Do not shrink the entire sheet as one object. No other changes.",
+      "reference": "fish/epic/lunea-archivist_thumbnail.png"
+    },
+    {
+      "file": "fish/mythic/lunea-mistmoon-goddess_thumbnail.png",
+      "storage_path": "fish/mythic/lunea-mistmoon-goddess_thumbnail.png",
+      "facing_direction": "right",
+      "prompt": "Use case stylized-concept. ONE square transparent inventory thumbnail for 안개달의 여신 루네아, mythic aquarium collectible endemic to mistmoon coast. Image1 STYLE ONLY: premium soft fantasy illustration, delicate colored contours, luxurious smooth pearl gradients, dimensional light and translucent flowing materials. NOT thick brown cartoon outlines, not flat cel shading or photorealism. Subject: an adult MERMAID goddess Lunea, serene kind face in right-facing profile, silver-white long flowing hair streaming LEFT, pearl crescent diadem, modest fully covered elegant ivory bodice and translucent lavender moon-veil flowing over shoulders, iridescent silver-lilac mermaid tail with delicate veil-like flukes, hands relaxed close to torso, dignified graceful aquarium fantasy guardian, no legs, no weapons, no sexualized pose; full head to RIGHT and tail flowing LEFT, horizontal gentle swimming profile. Whole subject faces SCREEN RIGHT. Full body fits deliberately small at 65% square with wide transparent margins. Silver/lavender/ivory palette, restrained moonlight; readable anatomy and sophisticated fantasy finish. No lettering, books with text, scenery, backdrop, floor shadow, border or checkerboard. Real RGBA transparency.",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png"
+    },
+    {
+      "file": "fish/mythic/lunea-mistmoon-goddess_sprite.png",
+      "storage_path": "fish/mythic/lunea-mistmoon-goddess_sprite.png",
+      "facing_direction": "right",
+      "prompt": "Create ONE transparent PNG sprite sheet for this exact referenced creature, preserving its design, colors and rendering style. Exactly 2 columns by 2 rows of equal square cells, four cyclic animation frames read top-left, top-right, bottom-left, bottom-right. All four creatures face SCREEN RIGHT. Each entire creature must fit within central 70% of its cell with clear transparent padding on every side. Identical head and rigid-body size, location and orientation within every cell; no overall translation, zoom or bouncing. Animate four distinct subtle phases: hair, veil, long sheer fabric edges and flexible tail-fluke membranes drift in coordinated current, relaxed hands and face/torso stay steady; no arm waving or whole-body bobbing. Eyes stay naturally open; do not use blinking as the primary animation. No one-sided arm/flipper waving. Preserve the reference anatomy. No scenery, shadows outside creature, text, labels, dividers, borders or checkerboard. True alpha transparency. Output square sheet.",
+      "reference": "fish/mythic/lunea-mistmoon-goddess_thumbnail.png"
+    }
+  ]
+}

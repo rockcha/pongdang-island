@@ -1,0 +1,71 @@
+{
+  "created_at": "2026-10-15T15:18:31+09:00",
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "file": "fish/epic/pongdang-shark_thumbnail.png",
+      "storage_path": "fish/epic/pongdang-shark_thumbnail.png",
+      "rarity": "epic",
+      "facing_direction": "right",
+      "prompt": "Use case: stylized-concept. Create ONE square transparent inventory thumbnail for a premium mobile aquarium creature: 퐁당 상어 (Pongdang shark), EPIC rarity. STYLE reference image 1 ONLY: match its soft fantasy illustration, delicate colored outlines, luminous gradient shading, translucent fins, polished dimensional light, NOT thick brown cartoon outlines. Do not copy purple stars or manta anatomy. Subject: a friendly compact shark with pearl-white belly, lagoon turquoise and warm sandy-gold back, wave-shaped pale markings, rounded but clearly shark snout, dorsal fin and crescent tail, bright expressive eyes. Entire shark faces SCREEN RIGHT, mouth and snout on right, tail on left; clear side-three-quarter profile, horizontal forward-swimming pose. Single complete shark centered occupying 75% of square, generous transparent padding. Actual alpha background, no checkerboard, no backdrop, no water scenery, no text, no frame, no floor shadow. Output only this asset.",
+      "repair_prompt": null,
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png"
+    },
+    {
+      "file": "fish/epic/pongdang-shark_sprite.png",
+      "storage_path": "fish/epic/pongdang-shark_sprite.png",
+      "rarity": "epic",
+      "facing_direction": "right",
+      "prompt": "Create a production transparent SPRITE SHEET for this exact reference shark, preserve identity/colors/soft fantasy EPIC illustration precisely. Image1 is character identity reference. Output ONE SQUARE PNG, exactly FOUR complete sharks in a perfectly equal 2x2 grid. Each square cell has transparent padding of 12% on each side and contains the full shark at IDENTICAL body center, body size and head position. ALL FOUR face SCREEN RIGHT with snout right, tail left. No mirroring, no camera rotation, no body translation. Frame order top-left, top-right, bottom-left, bottom-right: 0 neutral tail with eyes fully OPEN; 1 tail bends gently toward viewer and pectoral fins lift, eyelids HALF closed; 2 tail reaches opposite graceful sweep, pectoral fins lower, eyes CLOSED with a clean curved eyelid line; 3 tail returns near neutral and fins settle, eyes fully OPEN again. Distinct believable tail/fin swimming differences across four frames, smooth cyclic sequence, short blink with stable face and eye position. Keep exact same shark anatomy, wave markings, belly, dorsal fin, delicate luminous turquoise-gold shading. Do not duplicate four identical stills. No cropping any fins/tail, no border, divider, labels, text, extra animals, water background, checkerboard or opaque backdrop. Genuine alpha transparency.",
+      "repair_prompt": null,
+      "reference": "fish/epic/pongdang-shark_thumbnail.png"
+    },
+    {
+      "file": "fish/epic/pongdang-whale_thumbnail.png",
+      "storage_path": "fish/epic/pongdang-whale_thumbnail.png",
+      "rarity": "epic",
+      "facing_direction": "right",
+      "prompt": "Use case: stylized-concept. ONE square transparent inventory thumbnail: 퐁당 고래 (Pongdang whale), EPIC aquarium creature native to a sunny gentle island shore. Reference image 1 is STYLE ONLY: use its refined soft fantasy illustration, colored delicate contours, smooth luminous dimensional gradients, translucent highlights. NOT thick brown cartoon linework, not photorealism. Friendly rounded young whale with a broad ocean-blue back fading to seafoam, pearly ivory belly, pale wave-shaped streaks, flowing flippers, a tiny warm apricot accent by one fin, glossy expressive eyes; magical yet gentle sea creature. No copied purple stars or manta anatomy. Entire whale faces SCREEN RIGHT, head and mouth on right, tail trailing left. Horizontal side-three-quarter profile, single complete creature occupies 75% square, ample transparent margins. Actual alpha background, no checkerboard, scenery, text, shadow floor or border.",
+      "repair_prompt": null,
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png"
+    },
+    {
+      "file": "fish/epic/pongdang-whale_sprite.png",
+      "storage_path": "fish/epic/pongdang-whale_sprite.png",
+      "rarity": "epic",
+      "facing_direction": "right",
+      "prompt": "Generate ONE square RGBA transparent 2x2 FOUR-FRAME swimming sprite sheet for the EXACT whale in reference image 1. Preserve premium soft fantasy EPIC illustration, smooth colored contours and gradient dimensional shading, blue/seafoam flowing fins, ivory belly, wave markings, small apricot accent, exact identity. Equal square cells, each full whale has same body center, HEAD position, scale and overall pose facing SCREEN RIGHT. Full animal inside each cell with generous transparent padding; no fins crossing center lines. Cycle read TL,TR,BL,BR: frame0 OPEN eyes, tail neutral, flippers flowing down; frame1 HALF-CLOSED eyelids, tail sweeping up, flippers lift; frame2 CLOSED eyes curved eyelid, tail sweeping through opposite phase, flowing flippers gently curl; frame3 eyes fully OPEN again, tail settles, flippers flow back. Distinct visible but subtle fins and tail movements, body remains registered and steady, no camera changes or body stretching, closed eyes are eyelids not missing eyes. Every frame faces RIGHT, mouth right tail left. No duplicated stills, no text, grid lines, background, border, scenery or checkerboard. Actual alpha transparency.",
+      "repair_prompt": "Edit the reference sprite sheet for technical layout ONLY. Preserve the same FOUR different whale frames, right-facing direction, eye blink sequence, fin/tail movement, colors and character. CRITICAL FIX: shrink each entire whale to 65% of its CURRENT size, independently INSIDE its existing quadrant; do not scale the entire sheet. Center each whale's main body at the EXACT center of its equal square quadrant. Reconstruct any cropped tail tips so EVERY whale is complete. Leave a broad fully transparent margin around ALL FOUR sides of each whale, including left tail and right nose. No part may touch the outer canvas or the central horizontal/vertical boundaries. Keep output square equal 2x2 grid, actual alpha transparency, no visible grid lines, labels or background. Keep TL eyes open, TR half-closed, BL closed, BR open. Do not add creatures or rearrange frame order.",
+      "reference": "fish/epic/pongdang-whale_thumbnail.png"
+    },
+    {
+      "file": "fish/mythic/pongi-explorer_thumbnail.png",
+      "storage_path": "fish/mythic/pongi-explorer_thumbnail.png",
+      "rarity": "mythic",
+      "facing_direction": "right",
+      "prompt": "Use case: stylized-concept. ONE square transparent inventory thumbnail for 퐁이 탐사선 (Pongi exploration submersible), MYTHIC collectible for a fantasy aquarium. Image1 STYLE reference only: delicate colored outlines, luxurious smooth dimensional fantasy illustration, pearlescent luminous materials, soft gradients and translucent details. Image2 CHARACTER ID reference: Pongi the friendly brown otter with cream cheeks/muzzle, round dark eyes and peach starfish hair ornament. Do not copy fishing rod. Draw Pongi seated visibly inside a small crystal bubble cockpit of an elegant ivory-and-aquamarine underwater exploration submarine, curved shell-like hull, subtle champagne-gold metal accents, forward curved viewing window and short searchlight at RIGHT, small twin tail propellers at LEFT, graceful fin-like stabilizers. Clearly readable submarine silhouette, not a boat, not a flying spaceship. Pongi looks SCREEN RIGHT and has two normal glossy eyes. Whole craft faces SCREEN RIGHT, side-three-quarter horizontal profile. Magical refined mythic finish with soft light flowing through hull, NO thick brown cartoon outlines on vehicle, no excess gems or copied manta stars. One complete craft centered with generous alpha margins, occupies 75% square. Actual transparent background, no water scenery, floor shadow, text, lettering, borders or checkerboard.",
+      "repair_prompt": null,
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png"
+    },
+    {
+      "file": "fish/mythic/pongi-explorer_sprite.png",
+      "storage_path": "fish/mythic/pongi-explorer_sprite.png",
+      "rarity": "mythic",
+      "facing_direction": "right",
+      "prompt": "Create ONE square transparent FOUR-FRAME 2x2 sprite sheet for the EXACT Pongi exploration submarine in reference image1. Keep premium MYTHIC soft fantasy illustration, pearly ivory hull, turquoise crystal, delicate gold accents, brown otter Pongi identity and peach starfish hair ornament. CRITICAL: four perfectly equal square cells, each complete submarine occupies ONLY 70% of its cell width and height, at least 15% alpha margins on EVERY edge. Same cockpit, hull center, body size and head position in every cell; every frame points SCREEN RIGHT, front searchlight on right and tail propellers left. No hull translation or camera change. Cycle TL TR BL BR: frame0 propeller blades at 0 degrees, stabilizer fins neutral, Pongi eyes OPEN, searchlight soft; frame1 propellers rotate 30 degrees, fins gently up, Pongi HALF-CLOSED eyelids, light slightly brightens; frame2 propellers rotate 60 degrees, fins gently down, Pongi eyes CLOSED with clean curved eyelid lines; frame3 propellers rotate 90 degrees, fins return, eyes OPEN, light settles. Convincing subtle cyclic propeller/fin motion, stable craft silhouette and facial registration. No external trails crossing cell boundaries. No grid, text, border, labels, backdrop, water scenery or checkerboard. Actual RGBA transparency, all four craft must be fully visible and clear of cell edges.",
+      "repair_prompt": "Technical layout repair of reference sheet ONLY: shrink EACH submarine separately INSIDE its current equal quadrant to 70% of its CURRENT size. Keep the 2x2 square sheet and frame order unchanged. Center each MAIN HULL at exactly the same relative point in its square cell. Leave wide fully transparent padding on all four sides in every cell, so no searchlight or tail crosses central dividers or outer edges. Preserve exact MYTHIC polished fantasy illustration, craft identity, Pongi character and right-facing orientation. Preserve distinct propeller phases, subtle stabilizer motion and blink: TL eyes open, TR half shut, BL shut, BR open. No face/body distortion. Output alpha-transparent PNG, no borders, text, grid, background or checkerboard. Entire craft including light cone must fit comfortably in every frame.",
+      "reference": "fish/mythic/pongi-explorer_thumbnail.png"
+    }
+  ],
+  "visual_review": {
+    "all_frames_face_right": true,
+    "eye_sequence": [
+      "open",
+      "half_closed",
+      "closed",
+      "open"
+    ],
+    "transparent_background": true,
+    "whale_and_explorer_padding_repaired": true
+  }
+}

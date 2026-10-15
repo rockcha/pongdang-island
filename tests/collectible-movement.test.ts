@@ -26,13 +26,13 @@ it('gives pulse individuals different drifting paths',()=>{
  expect(Math.hypot(a.x-b.x,a.y-b.y)).toBeGreaterThan(20)
 })
 it('crawls horizontally at one depth and respects non-flipping artwork',()=>{
- const entity=item({movement_type:'crawl',flip_with_direction:false,swim_y_min:.86,swim_y_max:.92})
+ const entity=item({movement_type:'crawl',facing_direction:'front',flip_with_direction:false,swim_y_min:.86,swim_y_max:.92})
  const motion=new InhabitantMotion(entity)
  const poses=Array.from({length:80},(_,i)=>({...motion.update(i,.1,400,600)}))
  expect(new Set(poses.map(p=>p.y)).size).toBe(1)
  expect(Math.max(...poses.map(p=>p.x))-Math.min(...poses.map(p=>p.x))).toBeGreaterThan(100)
  expect(poses.every(p=>p.angle===0)).toBe(true)
- expect(shouldFlipSpecies(entity.species,-1)).toBe(false)
+ expect(shouldFlipSpecies(entity.species,-1)).toBe(true)
  expect(shouldFlipSpecies(base.species,-1)).toBe(true)
 })
 it('keeps fixed individuals still, ignores taps, and restores dragged placement',()=>{

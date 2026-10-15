@@ -1,0 +1,30 @@
+{
+  "created_at": "2026-10-15T15:55:35+09:00",
+  "tool": "built-in image_gen",
+  "replaces": "20261015-151831 shark/whale sheets only",
+  "assets": [
+    {
+      "species_id": "pongdang-shark",
+      "name": "햇물결 상어",
+      "file": "fish/epic/sunwave-shark_sprite.png",
+      "storage_path": "fish/epic/sunwave-shark_sprite.png",
+      "prompt": "Create a replacement production SWIMMING SPRITE SHEET for the EXACT shark in image1, EPIC soft fantasy illustration, preserve identity, turquoise/gold gradients, markings and friendly expression. One square RGBA image with exactly FOUR equally sized square cells in a 2x2 grid, each complete shark at 65% cell width with broad alpha margins. All four face SCREEN RIGHT, snout right tail left. CRITICAL animation priority: swim propulsion, NOT eye blinking. Both eyes fully OPEN in ALL FOUR frames, same eye/head/body position and scale pixel-aligned to the same cell-local coordinates. The head and main torso MUST remain absolutely stationary between frames. Only tail peduncle, tail fin and pectoral fins animate. TL tail swept toward viewer, near pectoral fin forward/down; TR tail passing through neutral, near fin backward/down; BL tail swept away, near fin back/up; BR tail returning through neutral, near fin forward/up. A four-phase continuous tail-beat with clear but gentle deformation at tail joint and fin bases, no whole-body bounce, no vertical translation, no body resizing, no camera rotation, no mouth/eye expression changes. Do not recenter based on extended tail. Same stable forward body silhouette; four distinct propulsion phases, no repeated identical stills. Preserve luminous refined colored contours, not thick cartoon linework. Actual transparent alpha background, no water scene, checkerboard, dividers, text, borders, shadows or labels."
+    },
+    {
+      "species_id": "pongdang-whale",
+      "name": "물결날개 고래",
+      "file": "fish/epic/wavefin-whale_sprite.png",
+      "storage_path": "fish/epic/wavefin-whale_sprite.png",
+      "prompt": "Create a replacement production SWIMMING SPRITE SHEET for the exact whale in image1. Retain EPIC soft fantasy painterly gradients, delicate colored contours, flowing blue/seafoam fins, pearly belly, wave markings and small apricot fin accent. ONE square transparent RGBA sheet with exactly FOUR equal square cells in 2x2 grid. Four FULL complete whales, each occupies only 65% of its cell width and fits with large transparent margins. Same exact HEAD and TORSO position, size and orientation in every cell. Every whale faces SCREEN RIGHT. Eyes fully OPEN and same friendly expression in ALL FOUR frames; no blink animation. MAIN motion is graceful TAIL/FLUKE propulsion plus pectoral fin strokes. TL tail raised from tail joint, flippers begin downstroke; TR tail passes level, flippers push down/back; BL tail lowered from tail joint, flippers recover up; BR tail passes level returning up, flippers return forward. Clearly different tail and fin silhouettes in four phases, smoothly cyclic, delicate flowing fin tips. The head, eye and front torso stay locked to identical pixel coordinates relative to each cell, no body bob, no changing body scale, no camera turn, no recentering based on tail extent. Entire tail inside each cell, no clipping. No static duplicates, no texts, lines, border, water scenery, shadows, checkerboard or backdrop. Actual alpha transparency.",
+      "repair_prompt": "Repair technical layout only. Keep this exact 2x2 four-frame whale swim sheet with all eyes open and the four distinct tail/fin stroke poses. Shrink EACH individual whale to 65% of its CURRENT size inside its own existing equal quadrant; do NOT shrink the whole sheet. Reconstruct any tail tip cut by the cell edge. Align the head and front torso to identical relative coordinates within each cell. Ample fully transparent padding on every side, at least 10%, so no tail, fin or nose touches any outer or central boundary. Keep square equal 2x2 frame order and all whales facing RIGHT. Preserve exact blue fantasy art, anatomy, eye expression and varied propulsion poses. NO blinking, body bob, captions, grid, checkerboard or background. Actual RGBA transparency."
+    }
+  ],
+  "review": {
+    "all_frames_face_right": true,
+    "eyes_open_all_frames": true,
+    "tail_and_fin_propulsion": true,
+    "frame_layout_compensated_in_renderer": true,
+    "habitats": "all current regions",
+    "thumbnail_identity_preserved": true
+  }
+}

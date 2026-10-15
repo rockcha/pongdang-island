@@ -1,5 +1,17 @@
 # SQL 설치 순서
 
+안개달 쓰레기·장식품 6종: 44 이후 [45 등록 안내](45-mistmoon-relics/README.md). 이미지 업로드 완료, 원격 DB는 SQL Editor 적용 대기입니다. 희귀·특급 쓰레기를 허용하는 변경도 포함합니다.
+
+안개달 토착 8종: 43 이후 [44 안개달·루네아 등록](44-mistmoon-lunea/README.md). 일반 3·희귀 2·특급 2·신화 1종이며 모두 안개달 단독 서식입니다. 이미지 업로드 완료, 원격 DB는 SQL Editor 적용 대기입니다.
+
+이동 시트·토착종 최신 변경: 42 이후 [43 주황 퐁당 상어·고래 추가와 3종 시트 교체](43-native-pongdang-and-current-swim/README.md). 기존 시트 교체는 원격 반영 완료이며 새 토착종 등록은 SQL Editor 적용 대기입니다.
+
+상어·고래 최신 변경: 41 이후 [42 공통 서식종·유영 시트 교체](42-shared-shark-whale/README.md). 햇물결 상어·물결날개 고래로 변경하고 모든 현재 해역에 배치합니다. 원격 DB와 이미지 교체 반영 완료.
+
+앞바다 고유 개체: 40 이후 [41 퐁당 상어·고래·퐁이 탐사선](41-pongdang-natives/README.md). 바다악어 확대와 퐁이 석상 앞바다 전용 서식지도 포함합니다. 이미지 업로드 완료, 새 종은 SQL Editor 등록 대기입니다.
+
+서식지 최신 조정: 39 이후 [40 서식지 조정·장식물 삭제](40-habitat-rebalance/README.md). 다섯 개체를 공통 서식종으로 바꾸고 달잠 수련·안개종 풍경을 제거합니다. 이전 등록 SQL을 재실행했다면 마지막에 40을 다시 적용합니다.
+
 개체 보관함: 25 적용 후 [26 보관함·일괄 어항 배정](26-collectible-storage/01-storage.sql)을 추가 실행합니다. 새 획득·수령 개체를 보관함에 모으고 어항당 50개까지 배정합니다. 기존 배치는 보존합니다. [적용 및 사용 안내](26-collectible-storage/README.md).
 
 Supabase SQL Editor에서 다음 파일을 순서대로 실행합니다. 최초 설치용 SQL입니다. 각 파일은 트랜잭션으로 묶여 있습니다.
@@ -74,6 +86,8 @@ Supabase SQL Editor에서 다음 파일을 순서대로 실행합니다. 최초 
 구형 지도 제거: 32 이후 [34 ocean-map 제거 SQL](34-remove-ocean-map/01-remove-ocean-map.sql). 유효한 기존 개체는 지역별 지도로 전환하고 구형 카탈로그를 삭제합니다. 지역 해금과 낚시 기록은 유지합니다.
 
 개체 이동 방식: 34 이후 [35 이동 설정 SQL](35-collectible-movement/01-collectible-movement.sql). swim·pulse·crawl·fixed, 그림 반전, 한 방향 이동을 지원하고 기존 움직임과 보유 데이터를 유지합니다. [설정 예시](35-collectible-movement/README.md).
+
+원본 그림 방향: 38 이후 [39 원본 방향 SQL](39-artwork-facing/01-artwork-facing.sql). Storage에서 검토한 50종의 `facing_direction`을 저장합니다. DB 적용 전에도 클라이언트의 이미지 경로별 검토 값으로 반전을 보정합니다. [검토 및 적용 안내](39-artwork-facing/README.md).
 
 특수 이동 어종 4종: 35 이후 [36 pulse·crawl 등록 SQL](36-pulse-crawl-species/01-pulse-crawl-species.sql). 달방울 해파리(안개달 토착), 산호집게 꽃게(산호 토착), 복숭아 우산해파리·조약돌 소라게를 추가합니다. [설정·업로드 안내](36-pulse-crawl-species/README.md).
 

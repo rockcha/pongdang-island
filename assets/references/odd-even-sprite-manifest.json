@@ -1,0 +1,15 @@
+{
+  "generator": "built-in image_gen",
+  "prompt": "Production animation sprite sheet, actual transparent alpha PNG. Exactly 2 by 2 equal square cells, FOUR frames in reading order. Reference image gives Pongi character identity and warm cartoon illustration style ONLY; discard entire background, wooden table, coins, plaques, text. Pongi is caramel furry otter, cream muzzle belly, shiny brown eyes, coral pink starfish above right ear. Front-facing seated host holding ONE large pearly pink clam. SAME scale and fixed face/body centers in ALL four cells; face center local x50% y31%, body local x50% y54%. Entire character fits 82% cell height with transparent margin, paws stay inside cell. Frame TOP LEFT: smiling Pongi gently shakes CLOSED clam to left at chest level, left paw slightly raised. Frame TOP RIGHT: same Pongi shakes CLOSED clam to right at chest level, right paw slightly raised. Clam movement is modest; head and torso fixed. Frame BOTTOM LEFT: Pongi holds the CLOSED clam forward toward viewer at lower belly level and looks inquisitive, both paws at shell sides. Frame BOTTOM RIGHT: exact same bottom-left pose and shell bowl position, Pongi has lifted clam lid up and toward his chest showing EMPTY smooth pale ivory bowl. The open bowl interior must be clearly empty, broad horizontal oval centered local x50% y74%, spanning local x30%-70% y68%-80%, so game can overlay dynamic pearls. No pearls ANYWHERE in any frame. Soft polished cozy cartoon shading with warm brown outlines, consistent anatomy, starfish and shell. No environment, no ground shadow, no separators, no grid lines, no text, no numbers, no checkerboard pixels. Four full clean transparent sprites, no objects crossing cell boundaries.",
+  "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-acfe569f-d848-4591-9f94-1b11c91b801c.png",
+  "path": "public/arcade/odd-even/pongi-shell-sprite.png",
+  "reference": "public/arcade/odd-even/thumbnail.png",
+  "frames": [
+    "mix-left",
+    "mix-right",
+    "offer-closed",
+    "reveal-empty"
+  ],
+  "layout": "2x2 equal cells; CSS background positions, no image processing",
+  "inspection": "Viewed entire sheet: transparent margins and four distinct poses; mixing moves paws and shell; opening empty bowl receives server-driven pearl overlay."
+}

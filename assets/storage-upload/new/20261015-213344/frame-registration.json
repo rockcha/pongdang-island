@@ -1,0 +1,557 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261015-213344/fish/normal/green-sea-turtle_sprite.png",
+        "storage_path":  "fish/normal/green-sea-turtle_sprite.png",
+        "patch":  [
+                      410,
+                      240,
+                      75,
+                      70
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -21,
+                           "dy":  0,
+                           "rmse":  17.387219923457192
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  5,
+                           "dy":  -58,
+                           "rmse":  22.779879645570269
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -9,
+                           "dy":  -61,
+                           "rmse":  20.340948027726405
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-213344/decorations/epic/coral-covered-shipwreck_sprite.png",
+        "storage_path":  "decorations/epic/coral-covered-shipwreck_sprite.png",
+        "patch":  [
+                      410,
+                      325,
+                      65,
+                      80
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -3,
+                           "dy":  0,
+                           "rmse":  24.55710379505993
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  6,
+                           "dy":  -14,
+                           "rmse":  39.178925655104628
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -13,
+                           "rmse":  35.616929353408004
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-213344/fish/normal/tile-fitting-crab_sprite.png",
+        "storage_path":  "fish/normal/tile-fitting-crab_sprite.png",
+        "patch":  [
+                      220,
+                      200,
+                      80,
+                      90
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -17,
+                           "dy":  0,
+                           "rmse":  17.251471577953524
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -17,
+                           "rmse":  30.216655941654039
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -16,
+                           "dy":  -16,
+                           "rmse":  30.312436839694922
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-213344/fish/normal/teacup-nest-blenny_sprite.png",
+        "storage_path":  "fish/normal/teacup-nest-blenny_sprite.png",
+        "patch":  [
+                      305,
+                      390,
+                      70,
+                      65
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -27,
+                           "dy":  0,
+                           "rmse":  18.180023585676604
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -27,
+                           "rmse":  14.131786382606991
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -23,
+                           "dy":  -26,
+                           "rmse":  22.081771671483136
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-213344/fish/normal/amphora-home-octopus_sprite.png",
+        "storage_path":  "fish/normal/amphora-home-octopus_sprite.png",
+        "patch":  [
+                      275,
+                      200,
+                      60,
+                      70
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -17,
+                           "dy":  0,
+                           "rmse":  17.129242175297772
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  6,
+                           "dy":  -44,
+                           "rmse":  17.878860305772662
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -15,
+                           "dy":  -45,
+                           "rmse":  23.085980594291421
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-213344/decorations/rare/sunken-kingdom-fountain_sprite.png",
+        "storage_path":  "decorations/rare/sunken-kingdom-fountain_sprite.png",
+        "patch":  [
+                      240,
+                      480,
+                      100,
+                      55
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -12,
+                           "dy":  2,
+                           "rmse":  10.085451465816979
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  2,
+                           "dy":  -16,
+                           "rmse":  18.077297908990783
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -11,
+                           "dy":  -17,
+                           "rmse":  12.143906216878255
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-213344/fish/rare/azure-armored-sea-turtle_sprite.png",
+        "storage_path":  "fish/rare/azure-armored-sea-turtle_sprite.png",
+        "patch":  [
+                      400,
+                      215,
+                      70,
+                      75
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -9,
+                           "dy":  0,
+                           "rmse":  9.9310539890453384
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  8,
+                           "dy":  -18,
+                           "rmse":  28.535993353424139
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  1,
+                           "dy":  -17,
+                           "rmse":  22.646283727505196
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-213344/fish/rare/templekeeper-moray_sprite.png",
+        "storage_path":  "fish/rare/templekeeper-moray_sprite.png",
+        "patch":  [
+                      420,
+                      230,
+                      65,
+                      70
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -11,
+                           "dy":  0,
+                           "rmse":  14.145265697987671
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -46,
+                           "rmse":  14.306324756215449
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -11,
+                           "dy":  -46,
+                           "rmse":  14.640774321301203
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-213344/fish/rare/mask-changing-octopus_sprite.png",
+        "storage_path":  "fish/rare/mask-changing-octopus_sprite.png",
+        "patch":  [
+                      340,
+                      230,
+                      70,
+                      70
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -10,
+                           "dy":  0,
+                           "rmse":  19.009648957101291
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -30,
+                           "rmse":  18.470415534037127
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -10,
+                           "dy":  -29,
+                           "rmse":  21.885860399277583
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-213344/fish/rare/letter-carrier-ray_sprite.png",
+        "storage_path":  "fish/rare/letter-carrier-ray_sprite.png",
+        "patch":  [
+                      410,
+                      305,
+                      65,
+                      65
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  13,
+                           "dy":  0,
+                           "rmse":  30.256598897752934
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  8,
+                           "dy":  -40,
+                           "rmse":  23.21966607343834
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  15,
+                           "dy":  -46,
+                           "rmse":  36.735464039287955
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-213344/fish/epic/atlantean-guard-shark_sprite.png",
+        "storage_path":  "fish/epic/atlantean-guard-shark_sprite.png",
+        "patch":  [
+                      440,
+                      340,
+                      65,
+                      60
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  16.463009500640574
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  3,
+                           "dy":  -68,
+                           "rmse":  19.276030216543315
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  2,
+                           "dy":  -68,
+                           "rmse":  28.540093409415846
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-213344/fish/epic/living-mosaic-ray_sprite.png",
+        "storage_path":  "fish/epic/living-mosaic-ray_sprite.png",
+        "patch":  [
+                      450,
+                      350,
+                      65,
+                      65
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -17,
+                           "dy":  5,
+                           "rmse":  36.19778228218906
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  35,
+                           "dy":  -96,
+                           "rmse":  49.490550270892143
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -16,
+                           "dy":  -59,
+                           "rmse":  49.660120646698275
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-213344/fish/epic/palace-lantern-anglerfish_sprite.png",
+        "storage_path":  "fish/epic/palace-lantern-anglerfish_sprite.png",
+        "patch":  [
+                      410,
+                      310,
+                      65,
+                      60
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -21,
+                           "dy":  0,
+                           "rmse":  24.765112466018511
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -37,
+                           "rmse":  23.003075387276528
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -19,
+                           "dy":  -38,
+                           "rmse":  23.239697130713058
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-213344/fish/epic/atlantean-giant-squid_sprite.png",
+        "storage_path":  "fish/epic/atlantean-giant-squid_sprite.png",
+        "patch":  [
+                      410,
+                      275,
+                      65,
+                      65
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -3,
+                           "dy":  5,
+                           "rmse":  35.771736815700123
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  7,
+                           "dy":  -10,
+                           "rmse":  47.482996295921488
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  7,
+                           "dy":  -4,
+                           "rmse":  39.635703812804962
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-213344/fish/mythic/atlantean-sentinel_sprite.png",
+        "storage_path":  "fish/mythic/atlantean-sentinel_sprite.png",
+        "patch":  [
+                      350,
+                      135,
+                      65,
+                      65
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -15,
+                           "dy":  5,
+                           "rmse":  35.217505164693151
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  5,
+                           "dy":  -11,
+                           "rmse":  35.530444248754527
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -11,
+                           "dy":  -10,
+                           "rmse":  33.339251153952112
+                       }
+                   ]
+    }
+]

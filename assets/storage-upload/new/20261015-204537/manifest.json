@@ -1,0 +1,55 @@
+{
+  "tool": "image_gen",
+  "bucket": "collectibles",
+  "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "assets": [
+    {
+      "id": "seashell-pinwheel",
+      "rarity": "normal",
+      "ref": "assets/references/decoration-animation/seashell-pinwheel_thumbnail.png",
+      "motion": "Wooden stick and central seashell hub perfectly fixed. Rotate FOUR pastel paper blades as a rigid rotor about that hub, clockwise phases0,45,90,135 degrees. Colors rotate WITH blades; phase next180 connects through symmetry. No bending or morphing blade shapes.",
+      "prompt": "Create square transparent 2x2 FOUR FRAME sprite sheet of EXACT same decorative object from first reference. Preserve original design colors and shape. Second reference STYLE ONLY warm Pongi cartoon, clean dark brown outlines and soft cel shade, no copied otter anatomy. Wooden stick and central seashell hub perfectly fixed. Rotate FOUR pastel paper blades as a rigid rotor about that hub, clockwise phases0,45,90,135 degrees. Colors rotate WITH blades; phase next180 connects through symmetry. No bending or morphing blade shapes. Entire four-pose motion envelope fits within80% of each square cell, leave10% clear transparent margins on ALL sides (40% wholecanvas). Identical rigid base anchor and size in all four cells. No grid, no background, no text, no floor, true alpha transparency. No zoom/recenter frame by frame. Four DISTINCT visible animation phases.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-479aeabe-7461-49bd-9dfa-f04134c34810.png",
+      "file": "decorations/normal/seashell-pinwheel_sprite.png",
+      "storage_path": "decorations/normal/seashell-pinwheel_sprite.png",
+      "sha256": "c846fafa0d5b87a0b72c0bbb644af27ae9f3184cc6e53e6728b92c9db043e395"
+    },
+    {
+      "id": "tiny-reef-carousel",
+      "rarity": "rare",
+      "ref": "assets/storage-upload/new/20261015-192806/decorations/rare/tiny-reef-carousel_thumbnail.png",
+      "motion": "Roof, center column and circular base absolutely stationary and same size. Three colored seahorse figurines travel around central column at four quarter-turn phases0,90,180,270degrees, front to back occlusion, attached poles move with them, small alternating vertical bob. No living facial animation; they are carved figures.",
+      "prompt": "Create square transparent 2x2 FOUR FRAME sprite sheet of EXACT same decorative object from first reference. Preserve original design colors and shape. Second reference STYLE ONLY warm Pongi cartoon, clean dark brown outlines and soft cel shade, no copied otter anatomy. Roof, center column and circular base absolutely stationary and same size. Three colored seahorse figurines travel around central column at four quarter-turn phases0,90,180,270degrees, front to back occlusion, attached poles move with them, small alternating vertical bob. No living facial animation; they are carved figures. Entire four-pose motion envelope fits within80% of each square cell, leave10% clear transparent margins on ALL sides (40% wholecanvas). Identical rigid base anchor and size in all four cells. No grid, no background, no text, no floor, true alpha transparency. No zoom/recenter frame by frame. Four DISTINCT visible animation phases.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-cdda474c-4ae4-4037-8bc3-86893da62aeb.png",
+      "editPrompt": "Edit this exact 2x2 four-frame animation sprite sheet. Preserve exact object and four distinct animation states. Uniformly shrink each entire object to90% of current size WITHIN ITS OWN QUADRANT, same scale four cells. Maintain identical base size and local coordinates in all frames. All coral tips roof tips and lid fit with8% transparent margin. Fix any clipped tip. Never resize the whole four-cell sheet as one object. No new background no text no particles. True transparent alpha PNG.",
+      "editSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-f16c74d6-3c1b-410f-806d-8f3c00ccb32a.png",
+      "file": "decorations/rare/tiny-reef-carousel_sprite.png",
+      "storage_path": "decorations/rare/tiny-reef-carousel_sprite.png",
+      "sha256": "78bca12bbc0f2cd4e63e09e65cb6f20f752a1819d41b905121aed095fac8ab6a"
+    },
+    {
+      "id": "pearl-bearing-clam",
+      "rarity": "normal",
+      "ref": "assets/references/decoration-animation/pearl-bearing-clam_thumbnail.png",
+      "motion": "Bottom pink shell and pearl perfectly stationary at identical coordinates. Upper shell hinged at back gently opens and closes: half-open, wide-open, half-open, almost-closed. Preserve scalloped edge and pearl identity.",
+      "prompt": "Create square transparent 2x2 FOUR FRAME sprite sheet of EXACT same decorative object from first reference. Preserve original design colors and shape. Second reference STYLE ONLY warm Pongi cartoon, clean dark brown outlines and soft cel shade, no copied otter anatomy. Bottom pink shell and pearl perfectly stationary at identical coordinates. Upper shell hinged at back gently opens and closes: half-open, wide-open, half-open, almost-closed. Preserve scalloped edge and pearl identity. Entire four-pose motion envelope fits within80% of each square cell, leave10% clear transparent margins on ALL sides (40% wholecanvas). Identical rigid base anchor and size in all four cells. No grid, no background, no text, no floor, true alpha transparency. No zoom/recenter frame by frame. Four DISTINCT visible animation phases.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-1d9f6c59-5e8d-4b9b-b1c1-e7b7e40fb8d1.png",
+      "file": "decorations/normal/pearl-bearing-clam_sprite.png",
+      "storage_path": "decorations/normal/pearl-bearing-clam_sprite.png",
+      "sha256": "9aeeb4661d5310f52a4d58c4288abcc5001388571cb58e570850f84c6db52951"
+    },
+    {
+      "id": "coral-covered-treasure-chest",
+      "rarity": "rare",
+      "ref": "assets/references/decoration-animation/coral-covered-treasure-chest_thumbnail.png",
+      "motion": "Box base keyhole and coral base completely fixed and equal size. Lid rotates about back hinge: nearly closed, half open, open, half open. Coral attached to lid follows lid. Coins remain inside, subtle warm reflected light, no floating particles.",
+      "prompt": "Create square transparent 2x2 FOUR FRAME sprite sheet of EXACT same decorative object from first reference. Preserve original design colors and shape. Second reference STYLE ONLY warm Pongi cartoon, clean dark brown outlines and soft cel shade, no copied otter anatomy. Box base keyhole and coral base completely fixed and equal size. Lid rotates about back hinge: nearly closed, half open, open, half open. Coral attached to lid follows lid. Coins remain inside, subtle warm reflected light, no floating particles. Entire four-pose motion envelope fits within80% of each square cell, leave10% clear transparent margins on ALL sides (40% wholecanvas). Identical rigid base anchor and size in all four cells. No grid, no background, no text, no floor, true alpha transparency. No zoom/recenter frame by frame. Four DISTINCT visible animation phases.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-a3c78159-d372-4566-8466-59cf7c8d0d89.png",
+      "editPrompt": "Edit this exact 2x2 four-frame animation sprite sheet. Preserve exact object and four distinct animation states. Uniformly shrink each entire object to90% of current size WITHIN ITS OWN QUADRANT, same scale four cells. Maintain identical base size and local coordinates in all frames. All coral tips roof tips and lid fit with8% transparent margin. Fix any clipped tip. Never resize the whole four-cell sheet as one object. No new background no text no particles. True transparent alpha PNG.",
+      "editSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-704464a3-3a45-4add-9f11-c1e786ea2468.png",
+      "file": "decorations/rare/coral-covered-treasure-chest_sprite.png",
+      "storage_path": "decorations/rare/coral-covered-treasure-chest_sprite.png",
+      "sha256": "aeea8089d40c39c91b38c5ef6d49c3f3431e45820580cbdc916d3bc67bfbfa3c"
+    }
+  ]
+}

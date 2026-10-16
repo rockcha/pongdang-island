@@ -74,7 +74,7 @@ React + Vite + TypeScript 모바일 PWA입니다. 기본 글꼴은 고운돋움�
 
 ## 섬 메뉴 / 페이지 구성
 
-[메뉴 시스템 문서](systems/navigation.md). 헤더 햄버거 버튼은 `src/components/island-navigation.tsx`의 왼쪽 Sheet를 엽니다. 퐁당마을(`/`), 아쿠아리움(`/aquarium`), 선착장(`/harbor`), 우체통(`/notifications`), 마이페이지(`/profile`)로 이동하며 만남의 등대(`/friends`)에서 친구를 관리합니다. 아쿠아리움·선착장은 게임 기능을 준비 중인 기본 화면입니다.
+[메뉴 시스템 문서](systems/navigation.md). 장소 이동은 `src/components/header-place-navigation.tsx`의 헤더 빠른 내비게이션만 사용합니다. 햄버거·드로어·접기 상태 저장 로직은 제거했습니다. 우편함은 알림 벨, 마이페이지는 아바타 메뉴에서 접근합니다.
 
 친구 끊기: src/features/friends/remove-friend-button.tsx → friends/api.ts → public.remove_friend. 추가 SQL은 supabase/sql/07-friend-removal/01-remove-friend.sql이며 기존 01~06 적용 DB에 추가 실행합니다. 친구 화면과 메뉴 명칭은 만남의 등대입니다.
 

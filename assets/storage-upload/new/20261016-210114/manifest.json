@@ -1,0 +1,82 @@
+{
+  "generator": "built-in image_gen",
+  "region": "primal",
+  "rarity": "epic",
+  "assets": [
+    {
+      "id": "region",
+      "transparent": false,
+      "prompt": "Square premium fantasy game location painting of a prehistoric dinosaur island surrounded by turquoise sea. Enormous fern jungle, ancient flat topped cliffs, twin smoking volcano far away, a long neck dinosaur silhouette above trees, tiny pterosaur silhouettes. Amber sunset mist and rich moss emerald vegetation. Beautiful polished painterly Korean cozy fantasy game, detailed soft color outlines and luminous gradients, not photorealistic. Establishing aerial island view, no text no interface no border.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-d462c5fb-a9ef-4431-9236-57de6cb4cd72.png",
+      "hint": "Generated images are saved to C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c as C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-d462c5fb-a9ef-4431-9236-57de6cb4cd72.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "bucket": "regions",
+      "storagePath": "primal.png",
+      "localPath": "assets/storage-upload/new/20261016-210114/regions/primal.png"
+    },
+    {
+      "id": "map",
+      "transparent": true,
+      "refs": [
+        "assets/storage-upload/new/regional-fishing/map-dreamabyss_thumbnail.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "prompt": "Create ONE transparent PNG collectible map fragment for a premium epic prehistoric dinosaur island. Reference1 defines torn parchment map object composition ONLY; reference2 defines soft polished gradient fantasy rendering ONLY, do not copy ray or purple palette. Warm irregular aged parchment, painted emerald fern-covered island, smoking volcano, amber fossil spiral and subtle dinosaur footprint route. No words, no lettering, no creatures standing on paper. Full parchment centered with transparent margin all sides, square canvas, actual alpha transparent background. Sophisticated soft shaded fantasy game item.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-a9e269ca-3768-45ff-9807-9086eab083d1.png",
+      "hint": "Generated images are saved to C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c as C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-a9e269ca-3768-45ff-9807-9086eab083d1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "bucket": "collectibles",
+      "storagePath": "map/epic/map-primal_thumbnail.png",
+      "localPath": "assets/storage-upload/new/20261016-210114/map/epic/map-primal_thumbnail.png"
+    },
+    {
+      "id": "banner",
+      "transparent": false,
+      "prompt": "Wide panoramic 3:1 fantasy game fishing horizon banner for a prehistoric dinosaur island. Calm turquoise ocean occupies lower half, distant lush fern jungle coastline and ancient basalt cliffs across middle, hazy volcano and enormous long neck dinosaur silhouette behind trees, a few small pterosaurs far away. Emerald green, amber sunlight, warm mist. Polished soft painterly fantasy illustration, immersive but uncluttered, clean open water foreground, no fishing rod no UI no text no border. Main scenery concentrated central horizontal band so it remains readable in shallow banner.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-b3bdd008-a1c5-4132-a595-9b5e58f9055f.png",
+      "hint": "Generated images are saved to C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c as C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-b3bdd008-a1c5-4132-a595-9b5e58f9055f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "localPath": "public/banners/primal-horizon.png"
+    },
+    {
+      "id": "thumbnail",
+      "transparent": true,
+      "prompt": "One premium fantasy fishing rod equipment shop illustration on a transparent square canvas: full slender flexible ancient wooden fishing rod diagonally from bottom left to top right, moss green bindings, warm ivory fossil bone collars, small amber gemstones, attached circular ammonite fossil fishing reel and one matching amber egg-shaped float beside it. Beautiful refined soft gradient game item painting, no thick black outlines, emerald moss, rich dark wood, amber gold, ivory. Full equipment visible with generous transparent margin, no text no environment no cast shadow outside asset. Cohesive prehistoric island gear called Amber Fossil fishing rod.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-87dea037-10ee-4931-98ef-01dd072f444e.png",
+      "hint": "Generated images are saved to C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c as C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-87dea037-10ee-4931-98ef-01dd072f444e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "bucket": "collectibles",
+      "storagePath": "equipment/rods/primal/thumbnail.png",
+      "localPath": "assets/storage-upload/new/20261016-210114/equipment/rods/primal/thumbnail.png"
+    },
+    {
+      "id": "reel-frame",
+      "transparent": true,
+      "refs": [
+        "assets/storage-upload/new/20261016-155626/equipment/rods/dreamabyss/reel-frame.png"
+      ],
+      "prompt": "Generate a NEW prehistoric fishing reel stationary outer frame asset, use reference ONLY for circular geometry and transparent cutout layout. Perfect front facing circular ring, center at exact canvas center, outer diameter 88% square canvas, empty circular transparent hole diameter 65%. Dark petrified wood ring with moss green recessed material, ivory fossil bone rim, four small amber inlays and subtle fern etching. Polished premium soft shaded fantasy game illustration. Ring ONLY: no central wheel no handle no rod no background no text, real alpha transparency both outside and center hole.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-7baa6de5-05e6-4707-82df-6ee6c2534302.png",
+      "hint": "Generated images are saved to C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c as C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-7baa6de5-05e6-4707-82df-6ee6c2534302.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "bucket": "collectibles",
+      "storagePath": "equipment/rods/primal/reel-frame.png",
+      "localPath": "assets/storage-upload/new/20261016-210114/equipment/rods/primal/reel-frame.png"
+    },
+    {
+      "id": "reel-rotor",
+      "transparent": true,
+      "prompt": "ONE front-facing circular spinning fishing reel rotor asset for prehistoric fantasy game. Perfect centered round disk 76% square canvas diameter, rotation axle at exact canvas center. Elegant golden amber ammonite fossil spiral inset into dark petrified wood disk, ivory bone spokes, small moss green accents. One short crank integrated inside circular outline at lower right, no extension beyond disk. Polished soft shaded premium game equipment art. Actual transparent background outside disk, no surrounding frame ring no rod no words no environment.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-ceb8db93-4967-4617-92df-f0d460a00da9.png",
+      "hint": "Generated images are saved to C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c as C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-ceb8db93-4967-4617-92df-f0d460a00da9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "bucket": "collectibles",
+      "storagePath": "equipment/rods/primal/reel-rotor.png",
+      "localPath": "assets/storage-upload/new/20261016-210114/equipment/rods/primal/reel-rotor.png"
+    },
+    {
+      "id": "float",
+      "transparent": true,
+      "prompt": "ONE upright fishing float asset for prehistoric fantasy island rod set, centered on square transparent canvas. Small smooth glowing amber egg-shaped bobber with a tiny fern fossil visible inside, ivory bone cap, moss green binding band and short ivory top antenna. Slender fishing bobber proportions about 30% canvas width and 76% height, body center at exact canvas center. Polished detailed soft gradient premium game item painting, warm amber and moss green. No water no ripples no fishing line no rod no text. Real alpha transparent background.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-9ecbae12-4c56-49a8-b81b-de89b6e12e5e.png",
+      "hint": "Generated images are saved to C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c as C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-9ecbae12-4c56-49a8-b81b-de89b6e12e5e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "bucket": "collectibles",
+      "storagePath": "equipment/rods/primal/float.png",
+      "localPath": "assets/storage-upload/new/20261016-210114/equipment/rods/primal/float.png"
+    }
+  ]
+}

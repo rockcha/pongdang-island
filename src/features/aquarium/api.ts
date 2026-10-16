@@ -31,7 +31,7 @@ export async function manageTank(tankId:string, action:'rename'|'equip', value:s
  return data
 }
 export function backgroundUrl(path:string) {
- return createClient().storage.from('aquarium-backgrounds').getPublicUrl(path).data.publicUrl
+ return createClient().storage.from('aquarium-backgrounds').getPublicUrl(path).data.publicUrl+'?v=20261016-minimal'
 }
 export async function placeCollectible(id:string,tankId:string,x:number,y:number){
  const {data,error}=await createClient().rpc('place_collectible',{p_collectible_id:id,p_tank_id:tankId,p_x:x,p_y:y})
@@ -39,7 +39,7 @@ export async function placeCollectible(id:string,tankId:string,x:number,y:number
  return data
 }
 export async function arrangeDecoration(id:string,tankId:string,placement:DecorationPlacement){
- const {data,error}=await createClient().rpc('arrange_decoration',{p_collectible_id:id,p_tank_id:tankId,p_x:placement.position_x,p_y:placement.position_y,p_rotation:placement.rotation,p_scale:placement.scale})
+ const {data,error}=await createClient().rpc('arrange_collectible',{p_collectible_id:id,p_tank_id:tankId,p_x:placement.position_x,p_y:placement.position_y,p_rotation:placement.rotation,p_scale:placement.scale,p_flipped:placement.flipped??false})
  if(error)throw error
  return data
 }

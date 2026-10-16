@@ -1,5 +1,7 @@
 # 이미지 생성·업로드 폴더 규칙
 
+특정 배치의 생성·업로드 내역은 [과거 기록 목차](history.md)에서 필요한 기록만 확인합니다.
+
 앞으로 생성하는 collectibles용 이미지는 **`assets/storage-upload/new/생성시간/` 아래에 버킷 내부 경로 그대로** 저장합니다. 기존 파일은 소급 이동하지 않습니다.
 
 생성시간은 **한국 시간(Asia/Seoul), `YYYYMMDD-HHmmss`** 형식입니다. 한 생성 작업은 같은 폴더에 모으며 이름이 겹치면 `-02`처럼 구분합니다.
@@ -66,3 +68,7 @@ collectibles 버킷 루트에 생성시간 폴더 **안의 종류 폴더**를 �
 | new/20261015-113000/decorations/rare/example-decoration_thumbnail.png | decorations/rare/example-decoration_thumbnail.png |
 
 트리는 형식 예시입니다. 빈 샘플 이미지나 생성시간 폴더를 미리 만들지 않습니다. 업로드할 때 최종 경로가 위 상대 경로와 같은지 확인합니다.
+
+## 낚싯대 장비 이미지
+
+`equipment/rods/{folder}/{thumbnail|reel-frame|reel-rotor|float}.png`도 업로드 도구에서 지원합니다. 기본 지급 입문용의 이미지 폴더는 `starter`이며 나머지는 낚싯대 ID와 같습니다. [현재 릴·찌 생성 기록](new/20261016-155626/README.md)을 참고하세요.

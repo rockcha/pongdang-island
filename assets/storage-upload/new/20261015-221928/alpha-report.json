@@ -1,0 +1,63 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261015-221928/fish/mythic/atlantean-sentinel-walk_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  56,
+                                           "y":  53,
+                                           "width":  493,
+                                           "height":  551,
+                                           "widthRatio":  0.7863,
+                                           "heightRatio":  0.8788,
+                                           "alphaPixels":  137535,
+                                           "leftAnchorY":  405.547,
+                                           "rightAnchorY":  335.387
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  67,
+                                           "y":  53,
+                                           "width":  472,
+                                           "height":  548,
+                                           "widthRatio":  0.7528,
+                                           "heightRatio":  0.874,
+                                           "alphaPixels":  126524,
+                                           "leftAnchorY":  404.08,
+                                           "rightAnchorY":  298.44
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  67,
+                                           "y":  32,
+                                           "width":  485,
+                                           "height":  539,
+                                           "widthRatio":  0.7735,
+                                           "heightRatio":  0.8596,
+                                           "alphaPixels":  129590,
+                                           "leftAnchorY":  374.177,
+                                           "rightAnchorY":  312.9
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  72,
+                                           "y":  32,
+                                           "width":  468,
+                                           "height":  530,
+                                           "widthRatio":  0.7464,
+                                           "heightRatio":  0.8453,
+                                           "alphaPixels":  126372,
+                                           "leftAnchorY":  376.644,
+                                           "rightAnchorY":  313.954
+                                       }
+                                   ]
+                    }
+                ]
+}

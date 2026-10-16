@@ -1,0 +1,21 @@
+{
+  "generator": "built-in image_gen",
+  "reference": "public/arcade/odd-even/pongi-shell-sprite.png",
+  "referenceRole": "character identity, material and proportions",
+  "assets": [
+    {
+      "id": "mix",
+      "prompt": "Create ONE transparent alpha PNG animation sprite sheet. Exactly 2x2 equal square cells, 4 frames in reading order. Use reference ONLY for the exact Pongi otter identity, clam prop, warm brown outline cartoon shading. Full seated Pongi caramel fur cream muzzle belly, coral starfish on right forehead, front facing. Both paws hold one CLOSED pearly pink clam, keep clam fully CLOSED in ALL 4 frames, no pearls visible. Action is gently mixing hidden pearls by swirling the closed clam in a small circular motion. Frame1 shell at center lowered and paws grip sides. Frame2 shell slightly left and up and paws follow. Frame3 shell centered slightly raised. Frame4 shell slightly right and down returning toward frame1. Head/eyes/body/feet/tail fixed at identical cell positions and same scale across all4; only forearms, paws and clam move. Subtle inquisitive smile, eyes open. No motion lines or duplicated objects. Full silhouette max85% cell dimension with equal margins. Face center x50% y30%, torso center x50% y52%, shell center approximately x50% y65%. Distinct but smooth connected poses, never mirrored head. Actual transparency outside character, no ground, no background no shadow no text no guides no grid. Crisp readable cozy game art.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-07f07f5f-085b-42a4-9b53-43ce2501466a.png",
+      "path": "public/arcade/odd-even/pongi-mix-sprite.png"
+    },
+    {
+      "id": "open",
+      "prompt": "Create ONE transparent alpha PNG animation sprite sheet. Exactly 2x2 equal square cells, FOUR frames in reading order of ONE continuous opening motion. Reference ONLY for exact Pongi otter identity, clam prop, warm cartoon art. Same seated caramel furry otter with cream muzzle belly and coral starfish on right forehead. Head, eyes, torso, feet, tail remain PINNED at exactly same cell positions and same scale across all4. Face center local50%30%, body50%52%; full silhouette within85%cell with transparent margins. Pongi holds one pearly pink clam forward, BOTTOM bowl absolutely fixed centered x50% y76% every frame. Frame1 TOPLEFT: clam completely CLOSED, inquisitive mouth, both paws holding sides. Frame2 TOPRIGHT: one paw begins lifting lid, clam opened about20 degrees, bowl position unchanged. Frame3 BOTTOMLEFT: lid lifted50 degrees, lid tilts toward Pongi chest, bowl stillfixed. Frame4 BOTTOMRIGHT: fully OPEN clam around90degrees with empty broad smooth ivory interior, delighted smile. Empty oval bowl interior spans local x30%-70%,y69%-80%. No pearls in any frame, game overlays variable pearls. Moving parts are forearm,paw,lid with smoothly increasing opening angle, not four similar fully open shells. Preserve body anatomy, starfish, face identity and closed shell volume. Actual alpha transparent background, no text no lines no dividers no checkerboard no environment. Polished warm cozy cartoon game art.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-6e7918d3-a881-4b6c-bc22-f1c62ab2368e.png",
+      "path": "public/arcade/odd-even/pongi-open-sprite.png"
+    }
+  ],
+  "layout": "Two 2x2 sheets. Mix: center, left, up, right. Open: closed, ajar, opening, open. CSS uses equal cells without image processing.",
+  "inspection": "Both sheets viewed: closed clam stays closed throughout mixing; opening shows successive lid/paw poses and empty bowl for dynamic pearl overlay."
+}

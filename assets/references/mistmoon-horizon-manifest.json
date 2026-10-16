@@ -1,0 +1,9 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-16",
+  "file": "historical intermediate image (replaced at same path)",
+  "reference": "public/banners/mistmoon-horizon.png (previous water-focused version)",
+  "prompt": "Edit this Mistmoon fishing banner, preserving its painterly midnight-blue and silver-lavender atmosphere, but completely RECOMPOSE camera framing to focus on SKY AND ISLAND LANDMARKS ABOVE THE HORIZON. Wide panoramic 3:1 opaque banner. Put the distant sea horizon at 88 percent of image height, almost along the bottom edge: water occupies only the bottom 10-12 percent as a narrow calm strip. The upper 88 percent is an expansive beautiful moonlit night sky, silver mist, layered wispy clouds and sparse stars. A pale luminous moon just right of center at 35 percent height. Distinct offshore island silhouettes and rugged coastal headlands RISE ABOVE the horizon on left and right, with dark pine-covered slopes, soft silver cliff edges, a small isolated sea stack near center-left and distant misty ridges. Landmarks should be tall enough to occupy lower half of SKY, readable even in a shallow 448x120 banner. Central sky remains open and serene. Eye-level gaze looking forward slightly upward from a fisher's dock, not downward at water. Do not draw the dock, foreground planks, people, boats, UI, text, borders, logos, large foreground ocean or a long moon reflection. Main subject is the sky and the island geography, NOT water. Keep all important landmarks in middle 70 percent width for mobile cropping.",
+  "composition": "Horizon at bottom, narrow water strip; sky, moon and misty island cliffs dominate.",
+  "status": "Historical intermediate composition; superseded by fishing-horizon-manifest.json"
+}

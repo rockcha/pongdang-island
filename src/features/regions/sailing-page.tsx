@@ -5,7 +5,7 @@ import { Button, buttonVariants } from '@/components/ui/button'
 import { loadRegionMap, travelRegion } from './api'
 import type { Region } from './api'
 import { pickSailingScene } from './sailing-scenes'
-export const SAILING_DURATION = 5000
+export const SAILING_DURATION = 1500
 export function SailingPage() {
  const {regionId}=useParams()
  const {session}=useAuth()
@@ -40,6 +40,6 @@ function SailingJourney({regionId,retry}:{regionId:string;retry:()=>void}) {
  },[regionId,navigate])
  return <section className="fixed inset-0 z-50 flex min-h-dvh flex-col items-center justify-center bg-gradient-to-b from-background via-blue-50 to-secondary px-6 text-center" aria-busy={!error}>
   {!error ? <><p className="text-xs tracking-widest text-primary">퐁이와 함께 떠나는 항해</p><div className="relative my-8"><div className="pongi-raft" data-scene={scene.id} style={{backgroundImage: `url("${scene.image}")`}} role="img" aria-label={scene.label}/><div className="mx-auto h-1 w-48 rounded-full bg-primary/20"/></div><h1 role="status" className="text-xl font-bold text-foreground">{region?`${region.name}로 이동하는 중…`:'항로를 확인하는 중…'}</h1><p className="mt-3 text-sm text-primary">{scene.caption}</p><div className="mt-6 h-1 w-40 overflow-hidden rounded-full bg-secondary">{region&&<div className="sailing-progress h-full bg-primary"/>}</div></> : <div role="alert" className="space-y-4"><h1 className="text-xl font-bold">항해를 잠시 멈췄어요</h1><p className="text-sm text-muted-foreground">{error}</p><Button onClick={retry}>다시 시도</Button></div>}
-  <Link to="/harbor" className={buttonVariants({variant:'ghost',className:'mt-8 min-h-11 text-primary'})}>선착장으로 돌아가기</Link>
+  <Link to="/harbor" className={buttonVariants({variant:'ghost',className:'mt-8 min-h-11 text-primary'})}>지도로 돌아가기</Link>
  </section>
 }

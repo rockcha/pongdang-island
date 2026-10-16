@@ -1,0 +1,321 @@
+{
+  "tool": "image_gen",
+  "bucket": "collectibles",
+  "references": [
+    {
+      "path": "assets/storage-upload/new/20261015-222454/",
+      "role": "original plant identity; based thumbnails are identity references for sprites"
+    },
+    {
+      "path": "assets/references/collectible-style/common-rare-pongi.png",
+      "role": "project style"
+    }
+  ],
+  "species": [
+    {
+      "id": "ribbon-eelgrass",
+      "folder": "normal",
+      "base": "a small low pale beige sand mound, all roots buried",
+      "thumb": {
+        "prompt": "Edit this exact aquatic plant thumbnail. Preserve plant identity, colors, leaves and warm cartoon style. Replace exposed root base with a small low pale beige sand mound, all roots buried. The base is subtle and compact, not a large landscape, no surrounding floor. Keep full plant and base inside square canvas with 9% clear margins. No face or text. True transparent alpha background.",
+        "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-08c9b90a-ae7e-4125-8ac8-a6f9a00bf4ef.png"
+      },
+      "sprite": {
+        "prompt": "Create a 2x2 four-frame loop sprite sheet of this exact aquatic decoration. Leaves and stems gently flex in a slow underwater current, small 4-phase left-center-right-center wave. Sand/stone base is absolutely fixed at identical pixel coordinates, size and shape in all four equal cells. Preserve exact plant identity, colors, leaf count and warm cartoon style. Full plant plus base and all motion fits inside EACH square cell at 80-85% longest axis, 8% minimum clear margins; no clipping or frame resizing, no whole-object translation. Low-amplitude soothing organic motion, not windstorm. True alpha transparency, no background grid text shadows particles.",
+        "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-29f84e84-9f99-476b-82fe-c39e365b9aa7.png"
+      },
+      "edits": [
+        {
+          "prompt": "Repair this sprite sheet. Output must be SQUARE overall, 2x2 four equal SQUARE cells. Remove ALL colored glow/haze and black background pixels, use genuinely transparent alpha everywhere outside plant and sand. Recompose four poses at identical scale within each square cell, longest axis 82% cell, generous margins. Keep sand bases at identical cell-relative coordinates and unchanged shape. Preserve gentle leaf pose variations and exact cartoon plant design. No colored fog anywhere.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-45b77344-474e-4078-8fd7-1d749fd801a4.png"
+        },
+        {
+          "prompt": "Framing correction ONLY: shrink every plant and sand base uniformly to 85% of current size within its quadrant. Keep exact existing four leaf poses, colors and style, equal square 2x2 layout. Same sand base cell-relative anchor in all frames. At least 8% empty transparent margins on all sides, no clipping. True transparent background, no glow haze shadow text. Do not re-enlarge to fill cells.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-5dadcc13-e342-40e4-9919-3ab658382bff.png"
+        }
+      ],
+      "name": "리본 잘피",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -41,
+          "dy": 0,
+          "rmse": 7.589893377477807
+        },
+        {
+          "frame": 2,
+          "dx": 3,
+          "dy": -22,
+          "rmse": 10.720610126363214
+        },
+        {
+          "frame": 3,
+          "dx": -38,
+          "dy": -21,
+          "rmse": 11.322707436991548
+        }
+      ]
+    },
+    {
+      "id": "pebble-sea-moss",
+      "folder": "normal",
+      "base": "the same rounded grey pebble, retain existing stone and moss identity",
+      "thumb": {
+        "prompt": "Edit this exact aquatic plant thumbnail. Preserve plant identity, colors, leaves and warm cartoon style. Replace exposed root base with the same rounded grey pebble, retain existing stone and moss identity. The base is subtle and compact, not a large landscape, no surrounding floor. Keep full plant and base inside square canvas with 9% clear margins. No face or text. True transparent alpha background.",
+        "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-bb644d5a-5be9-4fe7-8f80-0192e762ac71.png"
+      },
+      "sprite": {
+        "prompt": "Create a 2x2 four-frame loop sprite sheet of this exact aquatic decoration. Only soft moss fringes and tiny sprouts gently ripple; entire rock remains rigid. Sand/stone base is absolutely fixed at identical pixel coordinates, size and shape in all four equal cells. Preserve exact plant identity, colors, leaf count and warm cartoon style. Full plant plus base and all motion fits inside EACH square cell at 80-85% longest axis, 8% minimum clear margins; no clipping or frame resizing, no whole-object translation. Low-amplitude soothing organic motion, not windstorm. True alpha transparency, no background grid text shadows particles.",
+        "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-1122733a-7196-4413-bf26-22aa791e3a7c.png"
+      },
+      "edits": [
+        {
+          "prompt": "Edit this exact 2x2 square sprite sheet: uniformly reduce all four drawings to 82% of their present size within each quadrant, leaving generous true-alpha transparent margins. Preserve the same four moss-fringe motion poses and rock base shape; rock's cell-relative position identical across frames. No clipping. Do not add haze glow shadow floor text or background. Preserve cartoon style and total square 2x2 layout.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-289e9f77-56e9-4ae7-aaaf-5bce50558863.png"
+        }
+      ],
+      "name": "조약돌 바다이끼",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 9.673675619949224
+        },
+        {
+          "frame": 2,
+          "dx": -1,
+          "dy": -22,
+          "rmse": 7.1317365814131595
+        },
+        {
+          "frame": 3,
+          "dx": -2,
+          "dy": -23,
+          "rmse": 8.253812250509862
+        }
+      ]
+    },
+    {
+      "id": "spiral-kelp",
+      "folder": "normal",
+      "base": "a small low pale beige sand mound with two tiny pebbles, all roots buried",
+      "thumb": {
+        "prompt": "Edit this exact aquatic plant thumbnail. Preserve plant identity, colors, leaves and warm cartoon style. Replace exposed root base with a small low pale beige sand mound with two tiny pebbles, all roots buried. The base is subtle and compact, not a large landscape, no surrounding floor. Keep full plant and base inside square canvas with 9% clear margins. No face or text. True transparent alpha background.",
+        "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-662e37d0-2dc7-4ed7-9ae8-9cb7bceb1c11.png"
+      },
+      "sprite": {
+        "prompt": "Create a 2x2 four-frame loop sprite sheet of this exact aquatic decoration. Leaves gently flex in a slow underwater current, small four-phase left-center-right-center wave. Sand/stone base absolutely fixed at identical pixel coordinates, size and shape in all four equal cells. Preserve exact plant identity, colors, leaf count and warm cartoon style. Full plant plus base fits inside EACH square cell at 80-85% longest axis, 8% minimum clear margins; no clipping or frame resizing, no whole-object translation. Low-amplitude soothing organic motion. True alpha transparency, no background grid text shadows particles.",
+        "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-bb365e8c-7fbd-42e2-8b28-6a117d58e7ba.png"
+      },
+      "edits": [],
+      "name": "꼬불 미역",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -33,
+          "dy": 1,
+          "rmse": 14.776177336059103
+        },
+        {
+          "frame": 2,
+          "dx": 0,
+          "dy": -26,
+          "rmse": 7.434645810886577
+        },
+        {
+          "frame": 3,
+          "dx": -31,
+          "dy": -26,
+          "rmse": 11.290759496154367
+        }
+      ]
+    },
+    {
+      "id": "pearl-sea-grapes",
+      "folder": "rare",
+      "base": "two small smooth grey pebbles with stems growing from the narrow crevice, no exposed roots",
+      "thumb": {
+        "prompt": "Edit this exact aquatic plant thumbnail. Preserve plant identity, colors, leaves and warm cartoon style. Replace exposed root base with two small smooth grey pebbles with stems growing from the narrow crevice, no exposed roots. The base is subtle and compact, not a large landscape, no surrounding floor. Keep full plant and base inside square canvas with 9% clear margins. No face or text. True transparent alpha background.",
+        "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-0fe0f14d-1542-4371-bfc2-49a1008bbe01.png"
+      },
+      "sprite": {
+        "prompt": "Create a 2x2 four-frame loop sprite sheet of this exact aquatic decoration. Leaves and stems gently flex in a slow underwater current, small 4-phase left-center-right-center wave. Sand/stone base is absolutely fixed at identical pixel coordinates, size and shape in all four equal cells. Preserve exact plant identity, colors, leaf count and warm cartoon style. Full plant plus base and all motion fits inside EACH square cell at 80-85% longest axis, 8% minimum clear margins; no clipping or frame resizing, no whole-object translation. Low-amplitude soothing organic motion, not windstorm. True alpha transparency, no background grid text shadows particles.",
+        "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-7c2ece06-34dd-401c-9f3a-f38fe4388975.png"
+      },
+      "edits": [
+        {
+          "prompt": "Repair this sprite sheet. Output SQUARE overall, 2x2 four equal SQUARE cells. Remove ALL yellow glow/haze and black background pixels; genuine transparent alpha everywhere outside plant and stones. Recompose same four poses at identical scale, longest axis 82% cell, 9% clear margins. Stones at identical cell-relative coordinates with unchanged shape. Preserve subtle branch motions, green beads and cartoon style. No fog shadows background grid text.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-9c6c9108-c905-44f3-a49a-38bd0ecad4c5.png"
+        },
+        {
+          "prompt": "Framing correction ONLY: shrink all four plant-and-stone drawings uniformly to 84% of current size within each cell. Keep exact four poses, colors, cartoon style and square 2x2 layout. Stone base identical position and shape in every cell. Full plant has at least 8% transparent margin all sides, no clipping. Transparent alpha, no glow haze shadows text or background. Do not enlarge to fill cells.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-6948f9ff-a4e7-4def-a059-9adfd05e8a5f.png"
+        }
+      ],
+      "name": "진주알 바다포도",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -19,
+          "dy": 0,
+          "rmse": 9.94104122812599
+        },
+        {
+          "frame": 2,
+          "dx": 0,
+          "dy": -40,
+          "rmse": 10.581683607632009
+        },
+        {
+          "frame": 3,
+          "dx": -17,
+          "dy": -41,
+          "rmse": 21.88091578349671
+        }
+      ]
+    },
+    {
+      "id": "rose-fan-seaweed",
+      "folder": "rare",
+      "base": "a small smooth flat grey stone, stems attached in the crevice, no exposed roots",
+      "thumb": {
+        "prompt": "Edit this exact aquatic plant thumbnail. Preserve plant identity, colors, leaves and warm cartoon style. Replace exposed root base with a small smooth flat grey stone, stems attached in the crevice, no exposed roots. The base is subtle and compact, not a large landscape, no surrounding floor. Keep full plant and base inside square canvas with 9% clear margins. No face or text. True transparent alpha background.",
+        "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-b3408e8d-1fd5-4248-a054-8388ec10a0b4.png"
+      },
+      "sprite": {
+        "prompt": "Create a 2x2 four-frame loop sprite sheet of this exact aquatic decoration. Leaves gently flex in a slow underwater current, small four-phase left-center-right-center wave. Sand/stone base absolutely fixed at identical pixel coordinates, size and shape in all four equal cells. Preserve exact plant identity, colors, leaf count and warm cartoon style. Full plant plus base fits inside EACH square cell at 80-85% longest axis, 8% minimum clear margins; no clipping or frame resizing, no whole-object translation. Low-amplitude soothing organic motion. True alpha transparency, no background grid text shadows particles.",
+        "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-6d8a97f2-e052-4cd4-9487-f9b20ff39f73.png"
+      },
+      "edits": [
+        {
+          "prompt": "Edit this exact square 2x2 four-frame sheet only to improve framing: uniformly shrink all four drawings to 86% of present size inside their own cells. Preserve four leaf poses and exact style/color. Stone base at identical cell-relative coordinates with identical shape. Full fronds fit with 8% or more transparent margins, no clipping. True alpha transparency, no background, text, glow or shadow.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-c01bad03-4740-4167-934f-c3435b5a9c5a.png"
+        }
+      ],
+      "name": "장밋빛 부채해초",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -14,
+          "dy": 1,
+          "rmse": 7.879947678696503
+        },
+        {
+          "frame": 2,
+          "dx": -10,
+          "dy": -8,
+          "rmse": 12.058921915551288
+        },
+        {
+          "frame": 3,
+          "dx": -16,
+          "dy": -9,
+          "rmse": 7.50335120660155
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": "ribbon-eelgrass",
+      "type": "thumbnail",
+      "file": "decorations/normal/ribbon-eelgrass-based_thumbnail.png",
+      "storage_path": "decorations/normal/ribbon-eelgrass-based_thumbnail.png",
+      "sha256": "a8872b5cd3b2f494dbd1b4b6f34e97157d787aedb9e123d5b739211527c05f2b"
+    },
+    {
+      "id": "ribbon-eelgrass",
+      "type": "sprite",
+      "file": "decorations/normal/ribbon-eelgrass-based_sprite.png",
+      "storage_path": "decorations/normal/ribbon-eelgrass-based_sprite.png",
+      "sha256": "5688d09f2c91313683886ac60c20192a43a2fdc70ac30a0a8c9d425f41dcbc91"
+    },
+    {
+      "id": "pebble-sea-moss",
+      "type": "thumbnail",
+      "file": "decorations/normal/pebble-sea-moss-based_thumbnail.png",
+      "storage_path": "decorations/normal/pebble-sea-moss-based_thumbnail.png",
+      "sha256": "420888b7c8c4534ef81f69bbd49bdffe0690392793de83b5e6a3b52411cf4bbd"
+    },
+    {
+      "id": "pebble-sea-moss",
+      "type": "sprite",
+      "file": "decorations/normal/pebble-sea-moss-based_sprite.png",
+      "storage_path": "decorations/normal/pebble-sea-moss-based_sprite.png",
+      "sha256": "4a67052adceca9116890caed5f6e34ceb77adfbe3e23988fb557ea0a6d306d0e"
+    },
+    {
+      "id": "spiral-kelp",
+      "type": "thumbnail",
+      "file": "decorations/normal/spiral-kelp-based_thumbnail.png",
+      "storage_path": "decorations/normal/spiral-kelp-based_thumbnail.png",
+      "sha256": "1332c75579dfbdc01521e5f9407d3dc29690123ef293d005a0f03f3e73030426"
+    },
+    {
+      "id": "spiral-kelp",
+      "type": "sprite",
+      "file": "decorations/normal/spiral-kelp-based_sprite.png",
+      "storage_path": "decorations/normal/spiral-kelp-based_sprite.png",
+      "sha256": "9ac4efb75aabb48b8fd801f854d88f67f0b1a41ae3ad7045dc5f1ede0e61413d"
+    },
+    {
+      "id": "pearl-sea-grapes",
+      "type": "thumbnail",
+      "file": "decorations/rare/pearl-sea-grapes-based_thumbnail.png",
+      "storage_path": "decorations/rare/pearl-sea-grapes-based_thumbnail.png",
+      "sha256": "105881eda9fd468a3ff1d3f10c13d990f484762d23cee8e2f2450c4632c9d121"
+    },
+    {
+      "id": "pearl-sea-grapes",
+      "type": "sprite",
+      "file": "decorations/rare/pearl-sea-grapes-based_sprite.png",
+      "storage_path": "decorations/rare/pearl-sea-grapes-based_sprite.png",
+      "sha256": "c9ba5e04491a5dcd4cedae17c7b294fc67b4ad1e38dbf87afd1a36a91dfaefe3"
+    },
+    {
+      "id": "rose-fan-seaweed",
+      "type": "thumbnail",
+      "file": "decorations/rare/rose-fan-seaweed-based_thumbnail.png",
+      "storage_path": "decorations/rare/rose-fan-seaweed-based_thumbnail.png",
+      "sha256": "fd0f6f682d5671e67ffe1d328c7648cada5f7854e2efb1387af994fbc840a860"
+    },
+    {
+      "id": "rose-fan-seaweed",
+      "type": "sprite",
+      "file": "decorations/rare/rose-fan-seaweed-based_sprite.png",
+      "storage_path": "decorations/rare/rose-fan-seaweed-based_sprite.png",
+      "sha256": "f7ee7332b55712ae5d5f212011a0a4612591839597d44808f3e657dc8c9f239f"
+    }
+  ]
+}

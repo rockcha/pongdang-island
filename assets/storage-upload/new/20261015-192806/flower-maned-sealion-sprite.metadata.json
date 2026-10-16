@@ -1,0 +1,11 @@
+{
+  "id": "flower-maned-sealion",
+  "type": "sprite",
+  "file": "fish/epic/flower-maned-sealion_sprite.png",
+  "storage_path": "fish/epic/flower-maned-sealion_sprite.png",
+  "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-30a5f725-9610-4241-979b-28a833eb4c3b.png",
+  "prompt": "Create ONE SQUARE 1:1 PNG containing a 2x2 FOUR-frame game animation sheet of exactly the same animal as reference1; reference2 STYLE ONLY. Maintain its anatomy, palette and rarity styling. A fantasy marine sea lion with rounded cream face and soft ivory body, flowing translucent apricot and blush petal mane swept back by water, pearlescent flippers and fan tail, head right and body trailing left, luminous refined shading and soft color outlines, not a terrestrial lion, no accessories. Four successive natural forward-swimming phases. Stabilize eye, head, rigid torso and body size at identical cell-relative coordinates. Animate tail tip, fin margins, flowing mane or dorsal ribbon in a smooth cycle. No body pitching, no whole-body bounce, no arm-like single-front-fin waving. ALL FOUR frames face SCREEN RIGHT, head/mouth right, body and tail trail left, no mirrored or front-facing frames. All four eyes stay open; movement is not a blink-only sequence. Equal SQUARE cells, 0->1->2->3->0 smooth loop. CRITICAL FRAMING: each full silhouette occupies only 76–82% of its CELL longest dimension, never more than 41% of entire canvas width or height. Give each CELL generous TRANSPARENT 9% margins on all sides. The center vertical/horizontal dividers are wide EMPTY gutters. Do not enlarge to fill the sheet. Rigid head/body at same local x/y each cell. No independent pose recentering or scaling. Real ALPHA transparent outside silhouettes, no dark/colored backdrop, painted checkerboard, shadow, scene, grid, labels or text.",
+  "identity_reference": "assets/storage-upload/new/20261015-192806/fish/epic/flower-maned-sealion_thumbnail.png",
+  "style_reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+  "tool": "image_gen"
+}

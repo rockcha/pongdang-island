@@ -1,0 +1,17 @@
+.odd-even-scene{transition:background-color 240ms ease,color 240ms ease}
+.odd-even-actor-space{container-type:size;position:relative;flex:1;min-height:0;width:100%;display:grid;place-items:center}
+.odd-even-actor{position:relative;width:min(100cqw,100cqh,360px);aspect-ratio:1}
+.odd-even-sprite{position:absolute;inset:0;background-image:url('/arcade/odd-even/pongi-open-sprite.png');background-size:200% 200%;background-repeat:no-repeat;background-position:0 0;transform:translate(0,.03%)}
+.odd-even-actor--mixing .odd-even-sprite{background-image:url('/arcade/odd-even/pongi-mix-sprite.png');animation:odd-even-mix 640ms steps(1,end) infinite}
+.odd-even-actor--opening .odd-even-sprite{animation:odd-even-open 720ms steps(1,end) forwards}
+.odd-even-actor--result .odd-even-sprite{background-position:100% 100%;transform:translate(2.38%,1.47%)}
+.odd-even-shell-pearls{position:absolute;left:32.38%;top:66.47%;width:36%;height:10%;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(2,1fr);gap:3%;place-items:center}
+.odd-even-pearl{display:block;width:70%;aspect-ratio:1;max-height:100%;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 10%,#e8f6f5 38%,#a6ccd1 75%,#8fb4bf);box-shadow:inset 0 0 0 1px #89aebc66,0 1px 2px #45646b22;animation:odd-even-pearl-in 220ms backwards}
+.odd-even-result--correct{animation:odd-even-glow 550ms ease-out}
+.odd-even-result--wrong{animation:odd-even-miss 300ms ease-out}
+@keyframes odd-even-mix{0%{background-position:0 0;transform:translate(-.24%,-.43%)}25%{background-position:100% 0;transform:translate(3.99%,-.7%)}50%{background-position:0 100%;transform:translate(-.83%,.93%)}75%{background-position:100% 100%;transform:translate(4.35%,.7%)}}
+@keyframes odd-even-open{0%{background-position:0 0;transform:translate(0,.03%)}25%{background-position:100% 0;transform:translate(4.53%,-.14%)}50%{background-position:0 100%;transform:translate(-1.58%,.65%)}75%,100%{background-position:100% 100%;transform:translate(2.38%,1.47%)}}
+@keyframes odd-even-pearl-in{0%{opacity:0;transform:translate(-4px,-15px) scale(.5)}55%{opacity:1;transform:translate(1px,2px) scale(1.06)}80%{transform:translateY(-1px)}100%{opacity:1;transform:none}}
+@keyframes odd-even-glow{from{box-shadow:inset 0 0 28px #64bd7d55}to{box-shadow:inset 0 0 0 transparent}}
+@keyframes odd-even-miss{25%{transform:translateX(-2px)}75%{transform:translateX(2px)}}
+@media(prefers-reduced-motion:reduce){.odd-even-scene{transition:none}.odd-even-sprite,.odd-even-pearl,.odd-even-result--correct,.odd-even-result--wrong{animation:none!important}.odd-even-actor--opening .odd-even-sprite{background-position:100% 100%;transform:translate(2.38%,1.47%)}}

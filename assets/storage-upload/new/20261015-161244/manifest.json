@@ -1,0 +1,64 @@
+{
+  "tool": "built-in image_gen",
+  "created_at": "2026-10-15T16:12:44+09:00",
+  "assets": [
+    {
+      "file": "fish/epic/pongdang-native-shark_thumbnail.png",
+      "storage_path": "fish/epic/pongdang-native-shark_thumbnail.png",
+      "facing_direction": "right",
+      "prompt": "Use case stylized-concept. Generate ONE square transparent thumbnail for a NEW epic aquarium collectible 퐁당 상어, an orange island-native shark. Image1 is STYLE ONLY: match soft polished fantasy illustration, colored delicate contours, glowing dimensional gradients and pearly translucent highlights; NOT thick brown cartoon outlines. Image2 Pongi otter is a CHARACTER CUE ONLY: warm apricot-orange and cream palette, gentle friendly eyes and a small peach-pink five-arm starfish attached to the TOP OF THE HEAD like Pongi's hair ornament. Do not draw an otter body, ears, fur or fishing gear. Subject is clearly a friendly SHARK with short rounded snout, dorsal fin, compact streamlined apricot/tangerine body, creamy belly, small calm paired pectoral fins, elegant shark tail; seafoam light accents allowed but overall ORANGE. Starfish is an actual attached accessory, not a floating star. Full shark faces SCREEN RIGHT, snout right tail left in horizontal side-three-quarter profile. Single complete subject occupies 70% square, broad transparent margins. Actual alpha background, no water scenery, checkerboard, border, text or floor shadow.",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png"
+    },
+    {
+      "file": "fish/epic/pongdang-native-whale_thumbnail.png",
+      "storage_path": "fish/epic/pongdang-native-whale_thumbnail.png",
+      "facing_direction": "right",
+      "prompt": "Use case stylized-concept. ONE square transparent thumbnail for NEW EPIC 퐁당 고래: warm orange island-native WHALE, distinct from a shark. Image1 STYLE ONLY: refined soft fantasy illustration, delicate colored contours, pearlescent light and smooth dimensional shading. Image2 Pongi otter CHARACTER CUE ONLY: apricot orange and creamy warm-white colors, friendly round glossy eyes, one small coral-pink five-armed starfish attached on TOP OF HEAD like a hair accessory. Do not draw otter body, ears, fur or fishing gear. Friendly rounded whale with broad short snout, little blowhole, plump apricot/tangerine back, creamy grooved belly, short calm paired flippers held close alongside body and a graceful horizontal whale tail fluke. Not a shark, no sharp teeth or high shark dorsal fin. Orange translucent tail edge with warm golden highlights. Head on SCREEN RIGHT, tail on left, horizontal side-three-quarter forward-swimming profile. Single full creature centered, occupies only 70% square, ample transparent padding. No environment, floor shadow, labels, text, frame or checkerboard. Actual alpha-transparent PNG.",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png"
+    },
+    {
+      "file": "fish/epic/pongdang-native-shark_sprite.png",
+      "storage_path": "fish/epic/pongdang-native-shark_sprite.png",
+      "facing_direction": "right",
+      "prompt": "Create ONE production square RGBA FOUR-FRAME 2x2 swimming sprite sheet for the EXACT orange starfish-adorned shark reference. Preserve orange/cream colors, starfish attached on head, friendly open eyes, soft premium EPIC fantasy gradients. All four face SCREEN RIGHT and all four eyes OPEN. Head, attached starfish, front torso, pectoral fins remain pixel-registered in SAME pose/size/location. NO arm waving: paired front fins rest calmly alongside body, tiny fin-tip water flex only. Natural forward gliding cycle comes from rear body/tail joint and caudal fin: TL slight toward-viewer beat, TR neutral, BL slight away beat, BR neutral return; dorsal/rear translucent edges respond gently to flowing water. Understated smooth continuous locomotion, not exaggerated body wriggle. Do not bob, rotate, resize, morph the rigid front body or recenter the head based on tail extent. EXACTLY four complete sharks, equal square cells, animal only 60% cell width and broad alpha padding on all sides. No image touching outer or central boundaries, no text, grids, labels, checkerboard or background. Real alpha transparency.",
+      "reference": "fish/epic/pongdang-native-shark_thumbnail.png"
+    },
+    {
+      "file": "fish/epic/pongdang-native-whale_sprite.png",
+      "storage_path": "fish/epic/pongdang-native-whale_sprite.png",
+      "facing_direction": "right",
+      "prompt": "Create ONE square transparent RGBA production 2x2 FOUR-FRAME swimming sprite sheet for the EXACT ORANGE WHALE with starfish on head in reference image. Same friendly orange/cream epic fantasy creature, pearl gradients and proportions. Four equal square cells, all whales face SCREEN RIGHT with open eyes in every frame. Head, starfish, torso, facial features and BOTH FRONT FLIPPERS remain at identical cell-local positions and scale. Front flippers are relaxed and close to body, NO large hand-like wave and no one-sided stroke. Natural water response is a restrained tail-stock bend with horizontal whale flukes going slight up / neutral / slight down / neutral through TL TR BL BR; very small flexible rear edges, soft flowing highlights. Front body does not bob, stretch, rotate or move. Starfish stays attached, not animated separately. Distinct gentle swim phases, not identical clones, stable head anchoring. Each full whale occupies only 60% cell width, broad actual alpha margins on all sides, nothing crosses outer or center edges. No labels, lines, text, checkerboard, scenery or floor shadow. Preserve exact reference identity; never turn into shark.",
+      "reference": "fish/epic/pongdang-native-whale_thumbnail.png"
+    },
+    {
+      "file": "fish/epic/sunwave-shark-glide_sprite.png",
+      "storage_path": "fish/epic/sunwave-shark-glide_sprite.png",
+      "facing_direction": "right",
+      "prompt": "Generate replacement 2x2 FOUR-FRAME SWIM sprite sheet for EXACT turquoise/gold shark reference. Same premium soft fantasy art, face, colors and markings. ALL four sharks face SCREEN RIGHT; eyes open in every frame. Every head and torso has IDENTICAL cell-local position, scale and angle. Each full shark occupies only 60% cell width, ample transparent margins. IMPORTANT correction: paired PECTORAL FINS are calm, held in the SAME stable swept-back gliding pose in all four frames. No waving arm, no single flipper stroke, no large forefin gestures. Motion is subtle body-specific water response: small controlled side-to-side tail-peduncle beat through four phases, caudal fin bending gently, tiny dorsal-edge ripples and light flowing on translucent rear edges. Face/front body locked; no bobbing, stretching or recentering. Four phases TL toward-viewer tail beat, TR neutral tail, BL away tail beat, BR neutral recovery. Understated elegant forward GLIDING, not exaggerated movement. Exactly four complete animals in equal square cells, square RGBA alpha-transparent PNG. No words, lines, checkerboard, frames, water scenery, ground shadows. Keep snout right and tail left throughout.",
+      "reference": "assets/storage-upload/new/20261015-151831/fish/epic/pongdang-shark_thumbnail.png"
+    },
+    {
+      "file": "fish/epic/wavefin-whale-glide_sprite.png",
+      "storage_path": "fish/epic/wavefin-whale-glide_sprite.png",
+      "facing_direction": "right",
+      "prompt": "Create replacement production 2x2 FOUR-FRAME swimming sheet of the EXACT blue fantasy whale in reference image. Premium EPIC illustration, preserve blue/seafoam pearly gradients, wave pattern, little apricot fin accent, eyes and face. Every whale faces SCREEN RIGHT. Eyes remain OPEN. CRITICAL: BOTH pectoral flippers stay small and CALM in the SAME gently swept-back position across ALL four frames. Absolutely NO large single flipper wave or arm stroke. Natural motion is gentle tail-stock undulation, horizontal fluke tilting through a small up/neutral/down/neutral cycle and the thin translucent rear edges rippling in the current. The head and front torso stay rigidly registered at identical cell-local positions, dimensions and angle. Body never bobs, rotates or changes scale. Four distinct but understated water-response phases. Square equal 2x2 cells, each full animal occupies 60% cell width, at least 12% clear transparent padding around everything including tail. No clipping or crossing cell boundaries. No scene, water, floor shadow, text, grid or checkerboard. Genuine RGBA transparency.",
+      "reference": "assets/storage-upload/new/20261015-151831/fish/epic/pongdang-whale_thumbnail.png"
+    },
+    {
+      "file": "fish/mythic/pongi-explorer-cruise_sprite.png",
+      "storage_path": "fish/mythic/pongi-explorer-cruise_sprite.png",
+      "facing_direction": "right",
+      "prompt": "Create replacement MYTHIC production 2x2 FOUR-FRAME sprite sheet of the exact Pongi submarine in image1. Preserve pearl/ivory turquoise gold ship and friendly brown otter pilot with starfish ornament. Four equal square cells; each whole craft including short searchlight occupies ONLY 60% cell width, large transparent margins. Every craft faces SCREEN RIGHT and rigid HULL, cockpit, pilot HEAD, controls and hand positions remain pixel-registered and IDENTICAL in every frame. Pongi eyes OPEN all frames, no blink or arm waving. Boat should not flap like animal: large fin-shaped decorative wings stay in EXACT same resting pose. Motion comes from ROTATING left REAR PROPELLERS with visibly different blade angles 0/30/60/90 degrees and slight translucent rudder trailing-edge flex, plus restrained searchlight glint/current ripple along rear edges. Do not move the solid hull or recenter it to follow propellers. No hull bobbing, morphing, changing size or camera turn. Four distinct smooth cyclic propulsion phases, no duplicated stills. Entire craft fits each cell; no text, labels, grid, checkerboard, background scenery, water or floor shadow. Real alpha transparency. Keep soft luxurious fantasy gradients and colored outlines.",
+      "repair_prompt": "Technical layout repair ONLY. Keep the exact four right-facing submarine swim frames with rotating propeller phases and stable hull/pilot. Shrink EACH submarine including its searchlight and bubbles separately to 65% of its CURRENT size INSIDE its existing quadrant. Center the main HULL at the same relative coordinates in each equal square cell. Trim any detached far-away bubble effect; keep modest propulsion effects close to rear. Every whole craft and all light must fit with broad fully transparent padding and may NOT cross central or outer boundaries. Preserve face, colors, same open eyes, stable hands and large fins. Do not flap fins or change poses. Four equal square frames in same order, square RGBA alpha transparent output. No text, borders or checkerboard.",
+      "reference": "assets/storage-upload/new/20261015-151831/fish/mythic/pongi-explorer_thumbnail.png"
+    }
+  ],
+  "review": {
+    "all_frames_face_right": true,
+    "eyes_open_all_frames": true,
+    "front_flippers_calm": true,
+    "body_registration_measured": true,
+    "explorer_motion": "rear propellers, restrained current response",
+    "native_palette": "orange/cream with attached head starfish"
+  }
+}

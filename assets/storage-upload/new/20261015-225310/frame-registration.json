@@ -1,0 +1,187 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261015-225310/decorations/normal/ribbon-eelgrass-based_sprite.png",
+        "storage_path":  "decorations/normal/ribbon-eelgrass-based_sprite.png",
+        "patch":  [
+                      280,
+                      515,
+                      80,
+                      30
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -41,
+                           "dy":  0,
+                           "rmse":  7.5898933774778072
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  3,
+                           "dy":  -22,
+                           "rmse":  10.720610126363214
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -38,
+                           "dy":  -21,
+                           "rmse":  11.322707436991548
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-225310/decorations/normal/pebble-sea-moss-based_sprite.png",
+        "storage_path":  "decorations/normal/pebble-sea-moss-based_sprite.png",
+        "patch":  [
+                      225,
+                      395,
+                      90,
+                      60
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  9.6736756199492238
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -22,
+                           "rmse":  7.1317365814131595
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -2,
+                           "dy":  -23,
+                           "rmse":  8.2538122505098617
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-225310/decorations/normal/spiral-kelp-based_sprite.png",
+        "storage_path":  "decorations/normal/spiral-kelp-based_sprite.png",
+        "patch":  [
+                      280,
+                      550,
+                      70,
+                      30
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -33,
+                           "dy":  1,
+                           "rmse":  14.776177336059103
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -26,
+                           "rmse":  7.4346458108865772
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -31,
+                           "dy":  -26,
+                           "rmse":  11.290759496154367
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-225310/decorations/rare/pearl-sea-grapes-based_sprite.png",
+        "storage_path":  "decorations/rare/pearl-sea-grapes-based_sprite.png",
+        "patch":  [
+                      300,
+                      510,
+                      90,
+                      30
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -19,
+                           "dy":  0,
+                           "rmse":  9.94104122812599
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -40,
+                           "rmse":  10.581683607632009
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -17,
+                           "dy":  -41,
+                           "rmse":  21.880915783496711
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-225310/decorations/rare/rose-fan-seaweed-based_sprite.png",
+        "storage_path":  "decorations/rare/rose-fan-seaweed-based_sprite.png",
+        "patch":  [
+                      285,
+                      540,
+                      60,
+                      25
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -14,
+                           "dy":  1,
+                           "rmse":  7.879947678696503
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -10,
+                           "dy":  -8,
+                           "rmse":  12.058921915551288
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -16,
+                           "dy":  -9,
+                           "rmse":  7.50335120660155
+                       }
+                   ]
+    }
+]

@@ -1,0 +1,11 @@
+{
+  "id": "ancient-coral-giant-crab",
+  "type": "sprite",
+  "file": "fish/mythic/ancient-coral-giant-crab_sprite.png",
+  "storage_path": "fish/mythic/ancient-coral-giant-crab_sprite.png",
+  "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-6fc71876-2d97-4fb3-b209-bdf102abf585.png",
+  "prompt": "Create ONE SQUARE 1:1 PNG containing a 2x2 FOUR-frame game animation sheet of exactly the same animal as reference1; reference2 STYLE ONLY. Maintain its anatomy, palette and rarity styling. A majestic ancient fantasy giant crab with broad weathered ivory stone-like carapace, a mature red-pink coral grove growing naturally on its shell, subtle turquoise light in shell seams, powerful grounded legs, coral roots and tiny pearl shells, right-facing side-three-quarter head, rich finely shaded mythical illustration, no gaudy gold or piled jewels. The main carapace, eyes, head, body, coral trunks and all contact points remain EXACTLY FIXED at the same cell coordinates in all four frames. Animate ONLY slight articulated toe/ankle flex and delicate uppermost coral tips/seaweed. A subtle stationary idle loop, NO walking progression, NO bobbing, NO rigid-body rotation. ALL FOUR frames face SCREEN RIGHT, head/mouth right, body and tail trail left, no mirrored or front-facing frames. All four eyes stay open; movement is not a blink-only sequence. Equal SQUARE cells, 0->1->2->3->0 smooth loop. CRITICAL FRAMING: each full silhouette occupies only 76–82% of its CELL longest dimension, never more than 41% of entire canvas width or height. Give each CELL generous TRANSPARENT 9% margins on all sides. The center vertical/horizontal dividers are wide EMPTY gutters. Do not enlarge to fill the sheet. Rigid head/body at same local x/y each cell. No independent pose recentering or scaling. Real ALPHA transparent outside silhouettes, no dark/colored backdrop, painted checkerboard, shadow, scene, grid, labels or text.",
+  "identity_reference": "assets/storage-upload/new/20261015-192806/fish/mythic/ancient-coral-giant-crab_thumbnail.png",
+  "style_reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+  "tool": "image_gen"
+}

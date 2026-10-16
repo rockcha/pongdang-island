@@ -1,0 +1,48 @@
+{
+  "verifiedAt": "2026-10-16T12:06:56.474Z",
+  "assets": [
+    {
+      "bucket": "regions",
+      "path": "primal.png"
+    },
+    {
+      "bucket": "collectibles",
+      "path": "map/epic/map-primal_thumbnail.png"
+    },
+    {
+      "bucket": "collectibles",
+      "path": "equipment/rods/primal/thumbnail.png"
+    },
+    {
+      "bucket": "collectibles",
+      "path": "equipment/rods/primal/reel-frame.png"
+    },
+    {
+      "bucket": "collectibles",
+      "path": "equipment/rods/primal/reel-rotor.png"
+    },
+    {
+      "bucket": "collectibles",
+      "path": "equipment/rods/primal/float.png"
+    }
+  ],
+  "catalog": [
+    {
+      "table": "regions",
+      "id": "primal"
+    },
+    {
+      "table": "collectible_species",
+      "id": "map-primal"
+    },
+    {
+      "table": "collectible_habitats",
+      "id": "map-primal"
+    },
+    {
+      "table": "fishing_rods",
+      "id": "primal"
+    }
+  ],
+  "method": "Storage and Data API only; no SQL execution or migration history mutation"
+}

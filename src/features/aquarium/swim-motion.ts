@@ -46,14 +46,14 @@ export function createSwimMotion(id: string, seed: number, speed: number, varied
     const blend = progress * progress * (3 - 2 * progress)
     const from = waypoint(segment), to = waypoint(segment + 1)
     // Stay near an individual cruising depth, with only very slow, shallow course changes.
-    const verticalDuration = duration * (4 + random(6) * 2)
+    const verticalDuration = duration * (6 + random(6) * 2)
     const verticalPhase = (Math.max(0, time) + random(8) * verticalDuration) / verticalDuration
     const verticalSegment = Math.floor(verticalPhase)
     const verticalProgress = verticalPhase - verticalSegment
     const verticalBlend = verticalProgress ** 2 * (3 - 2 * verticalProgress)
     const depth = .2 + random(9) * .6
-    const fromY = depth + (random(verticalSegment + 20000) - .5) * .16
-    const toY = depth + (random(verticalSegment + 20001) - .5) * .16
+    const fromY = depth + (random(verticalSegment + 20000) - .5) * .08
+    const toY = depth + (random(verticalSegment + 20001) - .5) * .08
     return {
       x: from.x + (to.x - from.x) * blend,
       y: fromY + (toY - fromY) * verticalBlend,
@@ -62,7 +62,7 @@ export function createSwimMotion(id: string, seed: number, speed: number, varied
       behavior:activity.behavior,
       direction: to.x >= from.x ? 1 : -1,
       // Keep fins moving slowly at rest and accelerate them with swimming, without phase jumps.
-      framePhase: 2 * realTime + 6 * time + random(5) * 4,
+      framePhase: 1.6 * realTime + 1.4 * time + random(5) * 4,
     }
   }
 }

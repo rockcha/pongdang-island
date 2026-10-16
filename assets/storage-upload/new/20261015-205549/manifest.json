@@ -1,0 +1,72 @@
+{
+  "tool": "image_gen",
+  "bucket": "collectibles",
+  "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "assets": [
+    {
+      "id": "sleeping-mini-shipwreck",
+      "ref": "assets/references/decoration-animation/sleeping-mini-shipwreck_thumbnail.png",
+      "motion": "Rigid hull mast cabin stay fixed, torn sail corners and seaweed sway left-neutral-right-neutral in current.",
+      "path": "decorations/rare/sleeping-mini-shipwreck_sprite.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-1afb91d7-af10-44cf-9eba-6604ce7dae9b.png",
+      "prompt": "Create square transparent 2x2 FOUR FRAME animation sprite sheet of EXACT same object from first reference. Warm cute Pongi cartoon illustration style from second image, clean dark brown outlines and soft cel shading, no added face. Rigid hull mast cabin stay fixed, torn sail corners and seaweed sway left-neutral-right-neutral in current. Four distinct connected natural phases, same shape colors details as thumbnail. Lock rigid object base at exactly identical location and scale in all four square cells. Every entire subject longest dimension only78-84% of CELL, generous8-10% transparent margin all sides including sail ribbon and seaweed tips. No clipping, no grid no background no floor no text no detached particles. Real alpha PNG. Do not recenter poses or scale frames independently.",
+      "editPrompt": "Edit this exact2x2 four frame sprite sheet. Preserve exact decorative object design and four different animation poses. Uniformly shrink each entire drawing to85% current size WITHIN its own quadrant, same factor for allfour. Fix rigid base/structure at identical localcoordinates and same size in every cell. Leave8-10% transparent margins ALL sides. Reconstruct any clipped tip. No global sheet shrink, no frame-specific resizing, no text no particles or detached speckles, true clean alpha. Keep only moving leaves/sail/ribbons/branch tips/water reflection changing; main structure stays fixed.",
+      "editSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-84766e04-dbae-408c-90a3-8cfeebf79cd3.png",
+      "file": "decorations/rare/sleeping-mini-shipwreck_sprite.png",
+      "storage_path": "decorations/rare/sleeping-mini-shipwreck_sprite.png",
+      "sha256": "5ea8612d505b11cb57d559f7f7120f9ef24fdfc6120b82ca0990dbdd9881af9c"
+    },
+    {
+      "id": "first-coral-cradle",
+      "ref": "assets/storage-upload/new/20261015-192806/decorations/rare/first-coral-cradle_thumbnail.png",
+      "motion": "Rigid clam shell and main coral trunk stay fixed, only coral branch tips gently flex and pearl highlights softly shift.",
+      "path": "decorations/rare/first-coral-cradle_sprite.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-0e5f2cee-da1e-451b-a3eb-f6ba3d9a11eb.png",
+      "prompt": "Create square transparent 2x2 FOUR FRAME animation sprite sheet of EXACT same object from first reference. Warm cute Pongi cartoon illustration style from second image, clean dark brown outlines and soft cel shading, no added face. Rigid clam shell and main coral trunk stay fixed, only coral branch tips gently flex and pearl highlights softly shift. Four distinct connected natural phases, same shape colors details as thumbnail. Lock rigid object base at exactly identical location and scale in all four square cells. Every entire subject longest dimension only78-84% of CELL, generous8-10% transparent margin all sides including sail ribbon and seaweed tips. No clipping, no grid no background no floor no text no detached particles. Real alpha PNG. Do not recenter poses or scale frames independently.",
+      "editPrompt": "Edit this exact2x2 four frame sprite sheet. Preserve exact decorative object design and four different animation poses. Uniformly shrink each entire drawing to85% current size WITHIN its own quadrant, same factor for allfour. Fix rigid base/structure at identical localcoordinates and same size in every cell. Leave8-10% transparent margins ALL sides. Reconstruct any clipped tip. No global sheet shrink, no frame-specific resizing, no text no particles or detached speckles, true clean alpha. Keep only moving leaves/sail/ribbons/branch tips/water reflection changing; main structure stays fixed.",
+      "editSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-536908eb-b0f2-4a45-9ab8-874e49aee5a1.png",
+      "file": "decorations/rare/first-coral-cradle_sprite.png",
+      "storage_path": "decorations/rare/first-coral-cradle_sprite.png",
+      "sha256": "69fa97c0c96906e19fbc4bd5885b89928da7c2d30f2673ced125846976596bb6"
+    },
+    {
+      "id": "dream-keeping-well",
+      "ref": "assets/storage-upload/new/20261015-173555/decorations/rare/dream-keeping-well_thumbnail.png",
+      "motion": "Rigid stone well and shells stay fixed, surface concentric ripples expand and crescent moon reflection gently shimmers.",
+      "path": "decorations/rare/dream-keeping-well_sprite.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-27da5c76-09b6-415d-b359-79d5775e2028.png",
+      "prompt": "Create square transparent 2x2 FOUR FRAME animation sprite sheet of EXACT same object from first reference. Warm cute Pongi cartoon illustration style from second image, clean dark brown outlines and soft cel shading, no added face. Rigid stone well and shells stay fixed, surface concentric ripples expand and crescent moon reflection gently shimmers. Four distinct connected natural phases, same shape colors details as thumbnail. Lock rigid object base at exactly identical location and scale in all four square cells. Every entire subject longest dimension only78-84% of CELL, generous8-10% transparent margin all sides including sail ribbon and seaweed tips. No clipping, no grid no background no floor no text no detached particles. Real alpha PNG. Do not recenter poses or scale frames independently.",
+      "editPrompt": "Edit this exact2x2 four frame sprite sheet. Preserve exact decorative object design and four different animation poses. Uniformly shrink each entire drawing to85% current size WITHIN its own quadrant, same factor for allfour. Fix rigid base/structure at identical localcoordinates and same size in every cell. Leave8-10% transparent margins ALL sides. Reconstruct any clipped tip. No global sheet shrink, no frame-specific resizing, no text no particles or detached speckles, true clean alpha. Keep only moving leaves/sail/ribbons/branch tips/water reflection changing; main structure stays fixed.",
+      "editSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-ce57d125-e94a-49d9-986b-9dc3c4f2a531.png",
+      "file": "decorations/rare/dream-keeping-well_sprite.png",
+      "storage_path": "decorations/rare/dream-keeping-well_sprite.png",
+      "sha256": "a4b3ef08eaadf93c20e02c3f2d980c5ef92bd16dcd2a2fe01b9fdb5a7f5a03b1"
+    },
+    {
+      "id": "coral-house",
+      "ref": "assets/storage-upload/collectibles/decorations/normal/coral-house_thumbnail.png",
+      "motion": "Rigid stone house roof doorway and rocks stay fixed, back seaweed leaves slowly sway and coral tips subtly respond to current.",
+      "path": "decorations/rare/coral-house_sprite.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-d5e48144-c2b8-4fd9-928c-7d75a464ef57.png",
+      "prompt": "Create square transparent 2x2 FOUR FRAME animation sprite sheet of EXACT same object from first reference. Warm cute Pongi cartoon illustration style from second image, clean dark brown outlines and soft cel shading, no added face. Rigid stone house roof doorway and rocks stay fixed, back seaweed leaves slowly sway and coral tips subtly respond to current. Four distinct connected natural phases, same shape colors details as thumbnail. Lock rigid object base at exactly identical location and scale in all four square cells. Every entire subject longest dimension only78-84% of CELL, generous8-10% transparent margin all sides including sail ribbon and seaweed tips. No clipping, no grid no background no floor no text no detached particles. Real alpha PNG. Do not recenter poses or scale frames independently.",
+      "editPrompt": "Edit this exact2x2 four frame sprite sheet. Preserve exact decorative object design and four different animation poses. Uniformly shrink each entire drawing to85% current size WITHIN its own quadrant, same factor for allfour. Fix rigid base/structure at identical localcoordinates and same size in every cell. Leave8-10% transparent margins ALL sides. Reconstruct any clipped tip. No global sheet shrink, no frame-specific resizing, no text no particles or detached speckles, true clean alpha. Keep only moving leaves/sail/ribbons/branch tips/water reflection changing; main structure stays fixed.",
+      "editSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-434e3a38-1c4c-48dd-bc7f-e56d714fd4a2.png",
+      "file": "decorations/rare/coral-house_sprite.png",
+      "storage_path": "decorations/rare/coral-house_sprite.png",
+      "sha256": "8bef2b6cd6825b59f39205da15d200be614cf110880643d25c50b040c07d1bc1"
+    },
+    {
+      "id": "moonlit-jellyfish-lantern",
+      "ref": "assets/references/decoration-animation/moonlit-jellyfish-lantern_thumbnail.png",
+      "motion": "Rigid top loop and lantern dome stay fixed, hanging ribbon tentacles sway in four consecutive cyclic phases, internal light softly brightens then dims.",
+      "path": "decorations/rare/moonlit-jellyfish-lantern_sprite.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-ed7686a9-b1dd-463b-be40-8300cdcc0af4.png",
+      "prompt": "Create square transparent 2x2 FOUR FRAME animation sprite sheet of EXACT same object from first reference. Warm cute Pongi cartoon illustration style from second image, clean dark brown outlines and soft cel shading, no added face. Rigid top loop and lantern dome stay fixed, hanging ribbon tentacles sway in four consecutive cyclic phases, internal light softly brightens then dims. Four distinct connected natural phases, same shape colors details as thumbnail. Lock rigid object base at exactly identical location and scale in all four square cells. Every entire subject longest dimension only78-84% of CELL, generous8-10% transparent margin all sides including sail ribbon and seaweed tips. No clipping, no grid no background no floor no text no detached particles. Real alpha PNG. Do not recenter poses or scale frames independently.",
+      "editPrompt": "Edit this exact2x2 four frame sprite sheet. Preserve exact decorative object design and four different animation poses. Uniformly shrink each entire drawing to85% current size WITHIN its own quadrant, same factor for allfour. Fix rigid base/structure at identical localcoordinates and same size in every cell. Leave8-10% transparent margins ALL sides. Reconstruct any clipped tip. No global sheet shrink, no frame-specific resizing, no text no particles or detached speckles, true clean alpha. Keep only moving leaves/sail/ribbons/branch tips/water reflection changing; main structure stays fixed.",
+      "editSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-08d1ceaf-0448-4400-a5fa-b0d271b110a1.png",
+      "file": "decorations/rare/moonlit-jellyfish-lantern_sprite.png",
+      "storage_path": "decorations/rare/moonlit-jellyfish-lantern_sprite.png",
+      "sha256": "924c70a345895f3cbcb9789e272928f17ebbdf441c70a5026af56936aca2c4e5"
+    }
+  ]
+}

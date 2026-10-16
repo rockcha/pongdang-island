@@ -1,0 +1,702 @@
+{
+  "tool": "image_gen",
+  "created_at_kst": "2026-10-15 20:18:17",
+  "bucket": "collectibles",
+  "species": [
+    {
+      "id": "rainbow-mantis-shrimp",
+      "name": "색동 갯가재",
+      "rarity": "common",
+      "movement": "crawl",
+      "size": 54,
+      "price": 35,
+      "visual": "A plump mantis shrimp, mint teal and orange segmented armor, stalk eyes and tucked raptorial forelegs",
+      "motion": "alternate walking legs, tiny antenna sway and paired foreleg flex",
+      "kind": "fish",
+      "idle": false,
+      "path": "fish/normal/rainbow-mantis-shrimp",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-5f5cc80e-c0f7-47b7-8762-cc3a660aee27.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 색동 갯가재: A plump mantis shrimp, mint teal and orange segmented armor, stalk eyes and tucked raptorial forelegs. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "민트빛과 주황빛 갑각이 색동옷처럼 겹친다. 작은 다리를 바삐 움직이며 바닥의 먹이를 찾아다닌다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "style"
+        }
+      ]
+    },
+    {
+      "id": "pea-sponge",
+      "name": "완두 해면",
+      "rarity": "common",
+      "movement": "fixed",
+      "size": 60,
+      "price": 30,
+      "visual": "A small cluster of rounded pea-green sea sponge tubes, natural pores, NO eyes or face, side three-quarter view opening tilted right",
+      "motion": "subtle rhythmic pore contraction, stable tube bases",
+      "kind": "fish",
+      "idle": true,
+      "path": "fish/normal/pea-sponge",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-19bc4028-770d-450b-a334-39ba83037e21.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 완두 해면: A small cluster of rounded pea-green sea sponge tubes, natural pores, NO eyes or face, side three-quarter view opening tilted right. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "완두콩처럼 둥근 초록 관들이 옹기종기 모여 있다. 작은 구멍으로 물을 들이고 내보내며 조용히 살아간다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "style"
+        }
+      ]
+    },
+    {
+      "id": "tiny-sardine",
+      "name": "꼬마 정어리",
+      "rarity": "common",
+      "movement": "swim",
+      "size": 54,
+      "price": 30,
+      "visual": "A cute plump little sardine, slate blue back silver cream belly, big glossy eye, clear side profile right",
+      "motion": "tail oscillation and subtle coordinated fin movement, rigid head",
+      "kind": "fish",
+      "idle": false,
+      "path": "fish/normal/tiny-sardine",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-b12b6a2b-b3b5-47e5-ab89-5a4184b1f1a4.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 꼬마 정어리: A cute plump little sardine, slate blue back silver cream belly, big glossy eye, clear side profile right. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "푸른 등 아래 은빛 배가 반짝이는 작은 정어리. 짧은 꼬리를 부지런히 흔들며 바닷길을 누빈다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "style"
+        }
+      ]
+    },
+    {
+      "id": "peeking-conger-eel",
+      "name": "빼꼼 붕장어",
+      "rarity": "common",
+      "movement": "fixed",
+      "size": 74,
+      "price": 40,
+      "visual": "A cute sandy gray conger eel peeking halfway out of a tiny sand burrow, head looking screen right, slim upright curved body",
+      "motion": "tiny neck sway and dorsal fin ripple, burrow and head anchor stable",
+      "kind": "fish",
+      "idle": true,
+      "path": "fish/normal/peeking-conger-eel",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-830a991d-1b75-407d-901e-38dcba62c584.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 빼꼼 붕장어: A cute sandy gray conger eel peeking halfway out of a tiny sand burrow, head looking screen right, slim upright curved body. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "모래 구멍에서 고개를 빼꼼 내민 작은 붕장어. 길게 굽은 몸을 살짝 흔들며 지나가는 친구들을 구경한다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "style"
+        }
+      ]
+    },
+    {
+      "id": "starflower-feather-duster",
+      "name": "별꽃 관벌레",
+      "rarity": "rare",
+      "movement": "fixed",
+      "size": 78,
+      "price": 165,
+      "visual": "A marine feather duster worm with a pink ivory star flower feathery crown tilted right on a short curled tube, no face",
+      "motion": "feather filaments gently fan open and relax, rigid tube",
+      "kind": "fish",
+      "idle": true,
+      "path": "fish/rare/starflower-feather-duster",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-3863bf48-0f09-4cfc-b0da-cb340999fc68.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 별꽃 관벌레: A marine feather duster worm with a pink ivory star flower feathery crown tilted right on a short curled tube, no face. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "작은 관 끝에서 별꽃 같은 아가미를 펼치는 관벌레. 분홍 깃털을 오므렸다 펴며 물속의 작은 먹이를 모은다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "style"
+        }
+      ]
+    },
+    {
+      "id": "amethyst-king-shrimp",
+      "name": "자수정 왕새우",
+      "rarity": "rare",
+      "movement": "crawl",
+      "size": 72,
+      "price": 190,
+      "visual": "A large purple king shrimp with translucent amethyst shell segments, ivory underside, long silver antennae and glossy eyes, right profile",
+      "motion": "alternating small walking legs, restrained antenna sway",
+      "kind": "fish",
+      "idle": false,
+      "path": "fish/rare/amethyst-king-shrimp",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-20a25c41-9340-471d-b8f9-c0e4f284f1f2.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 자수정 왕새우: A large purple king shrimp with translucent amethyst shell segments, ivory underside, long silver antennae and glossy eyes, right profile. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "자수정빛 갑각에 은빛 수염이 길게 흐르는 새우. 단단한 마디 사이로 부드러운 보랏빛이 번진다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "style"
+        }
+      ]
+    },
+    {
+      "id": "halfmoon-seal",
+      "name": "반달 물범",
+      "rarity": "rare",
+      "movement": "swim",
+      "size": 82,
+      "price": 200,
+      "visual": "A plump silver gray seal with dark crescent spots, cute glossy eye, short flippers and whiskers, right side profile",
+      "motion": "gentle hind flipper propulsion with both foreflippers subtly stabilizing, steady head",
+      "kind": "fish",
+      "idle": false,
+      "path": "fish/rare/halfmoon-seal",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-d7330c58-463b-48f0-a177-5341936c5a90.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 반달 물범: A plump silver gray seal with dark crescent spots, cute glossy eye, short flippers and whiskers, right side profile. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "은회색 몸에 반달 모양 무늬가 박힌 물범. 짧은 지느러미로 자세를 잡으며 느긋하게 물살을 가른다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "style"
+        }
+      ]
+    },
+    {
+      "id": "blue-dolphin",
+      "name": "푸른 돌고래",
+      "rarity": "rare",
+      "movement": "swim",
+      "size": 86,
+      "price": 200,
+      "visual": "An ordinary bottlenose dolphin in natural blue gray, pale belly, friendly face, smooth skin, no fantasy accessories, right profile",
+      "motion": "subtle tail fluke propulsion, rigid torso and small coordinated flipper adjustments",
+      "kind": "fish",
+      "idle": false,
+      "path": "fish/rare/blue-dolphin",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-80d62b80-25c1-434d-adbd-82b785b16093.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 푸른 돌고래: An ordinary bottlenose dolphin in natural blue gray, pale belly, friendly face, smooth skin, no fantasy accessories, right profile. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "푸른 회색 등과 밝은 배를 가진 돌고래. 웃는 듯한 주둥이를 내밀고 바다 친구들 곁을 경쾌하게 지난다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "style"
+        }
+      ]
+    },
+    {
+      "id": "jetblack-orca",
+      "name": "칠흑 범고래",
+      "rarity": "rare",
+      "movement": "swim",
+      "size": 108,
+      "price": 220,
+      "visual": "An ordinary black and white killer whale, glossy black back, distinct white eye patch and cream belly, rounded friendly cartoon proportions, right profile",
+      "motion": "restrained tail fluke propulsion, stable dorsal fin torso head",
+      "kind": "fish",
+      "idle": false,
+      "path": "fish/rare/jetblack-orca",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-52dadb51-8d4f-419a-8b02-9811e59cac52.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 칠흑 범고래: An ordinary black and white killer whale, glossy black back, distinct white eye patch and cream belly, rounded friendly cartoon proportions, right profile. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "칠흑빛 등과 선명한 흰 무늬를 가진 범고래. 커다란 꼬리를 느긋하게 저으며 넓은 바다를 여행한다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "style"
+        }
+      ]
+    },
+    {
+      "id": "waterdrop-comb-jelly",
+      "name": "물방울 빗해파리",
+      "rarity": "rare",
+      "movement": "pulse",
+      "size": 60,
+      "price": 170,
+      "visual": "A transparent pear shaped comb jelly leaning screen right, delicate cyan pink comb rows, no face, short fine trailing filaments",
+      "motion": "gentle body compression and comb row ripple, stable central core",
+      "kind": "fish",
+      "idle": false,
+      "path": "fish/rare/waterdrop-comb-jelly",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-103276c8-b1a9-4e9b-b9b5-6fbd8f11ee58.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 물방울 빗해파리: A transparent pear shaped comb jelly leaning screen right, delicate cyan pink comb rows, no face, short fine trailing filaments. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "물방울처럼 투명한 몸에 가는 빛의 띠가 흐른다. 빗살 같은 줄을 따라 무지갯빛이 은근하게 번진다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "style"
+        }
+      ]
+    },
+    {
+      "id": "sandbutton-ray",
+      "name": "모래단추 가오리",
+      "rarity": "rare",
+      "movement": "swim",
+      "size": 84,
+      "price": 175,
+      "visual": "A small sandy beige rounded stingray with chocolate freckles and thin trailing tail, right-facing side-three-quarter profile, visible head pointing right",
+      "motion": "smooth alternating wing margin undulation, rigid face and center",
+      "kind": "fish",
+      "idle": false,
+      "path": "fish/rare/sandbutton-ray",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-7c93dab5-5200-459f-aafb-1fafb6572f7e.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 모래단추 가오리: A small sandy beige rounded stingray with chocolate freckles and thin trailing tail, right-facing side-three-quarter profile, visible head pointing right. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "모래빛 둥근 몸에 작은 갈색 점이 흩어진 가오리. 날개 가장자리를 팔랑이며 바닥 가까이 미끄러진다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "style"
+        }
+      ]
+    },
+    {
+      "id": "giant-walrus",
+      "name": "대왕 바다코끼리",
+      "rarity": "rare",
+      "movement": "crawl",
+      "size": 100,
+      "price": 230,
+      "visual": "A huge friendly warm brown walrus with long ivory tusks, thick whiskers, plump wrinkled body and little flippers, right profile",
+      "motion": "heavy slow alternating flipper walking, modest whisker sway and stable head",
+      "kind": "fish",
+      "idle": false,
+      "path": "fish/rare/giant-walrus",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-19135f06-243d-420b-b079-86c0c4351386.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 대왕 바다코끼리: A huge friendly warm brown walrus with long ivory tusks, thick whiskers, plump wrinkled body and little flippers, right profile. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "긴 상아와 풍성한 수염을 가진 커다란 바다코끼리. 묵직한 몸을 지느러미로 밀며 바닥을 천천히 누빈다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "style"
+        }
+      ]
+    },
+    {
+      "id": "sunken-windmill",
+      "name": "침수된 풍차",
+      "rarity": "epic",
+      "movement": "fixed",
+      "size": 98,
+      "price": 740,
+      "visual": "A submerged miniature old stone windmill with mother of pearl four blades, aged teal roof, seaweed and tiny barnacles, beautiful underwater fantasy object, no face no ground backdrop",
+      "motion": "four windmill blades rotate around EXACT SAME hub at phases 0,22.5,45,67.5 degrees; tower hub base rigid and identical",
+      "kind": "fish",
+      "idle": true,
+      "path": "fish/epic/sunken-windmill",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-24a1e11d-a092-4242-8283-75f8cd54063b.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 침수된 풍차: A submerged miniature old stone windmill with mother of pearl four blades, aged teal roof, seaweed and tiny barnacles, beautiful underwater fantasy object, no face no ground backdrop. Use reference only for refined luminous fantasy illustration style, smooth colored outlines, rich gradients, detailed fins and material, no copied stars or ray anatomy. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "물속에 잠긴 오래된 돌풍차. 자개빛 날개가 물살을 받아 천천히 돌고 지붕 틈에서는 가는 해초가 흔들린다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/epic-mythic-starlight.png",
+          "role": "style"
+        }
+      ]
+    },
+    {
+      "id": "twilight-striped-dolphin",
+      "name": "황혼 줄무늬돌고래",
+      "rarity": "epic",
+      "movement": "swim",
+      "size": 100,
+      "price": 760,
+      "visual": "An elegant striped dolphin, indigo back warm sunset peach belly, flowing teal and gold longitudinal stripes, subtly translucent fin edges, refined luminous fantasy",
+      "motion": "fluid restrained tail fluke cycle and delicate fin edge flow, stable rigid head torso",
+      "kind": "fish",
+      "idle": false,
+      "path": "fish/epic/twilight-striped-dolphin",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-7759fa21-dad0-48ce-922e-126ff92563f4.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 황혼 줄무늬돌고래: An elegant striped dolphin, indigo back warm sunset peach belly, flowing teal and gold longitudinal stripes, subtly translucent fin edges, refined luminous fantasy. Use reference only for refined luminous fantasy illustration style, smooth colored outlines, rich gradients, detailed fins and material, no copied stars or ray anatomy. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "짙푸른 등과 살구빛 배 사이로 청금색 줄무늬가 흐른다. 유려한 꼬리를 펼치면 저녁 바다의 빛이 따라온다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/epic-mythic-starlight.png",
+          "role": "style"
+        }
+      ]
+    },
+    {
+      "id": "dawn-narwhal",
+      "name": "새벽을 여는 일각고래",
+      "rarity": "mythic",
+      "movement": "swim",
+      "size": 118,
+      "price": 1850,
+      "visual": "A majestic pearlescent narwhal with long spiraled translucent crystal tusk pointing right, pale dawn peach cyan lavender light flowing along body, elegant luminous fins, no jewelry",
+      "motion": "slow flowing tail fluke cycle and soft fin edge response, tusk head and body perfectly stable",
+      "kind": "fish",
+      "idle": false,
+      "path": "fish/mythic/dawn-narwhal",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-700245a9-0a46-4f56-b780-260c3fb97e67.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 새벽을 여는 일각고래: A majestic pearlescent narwhal with long spiraled translucent crystal tusk pointing right, pale dawn peach cyan lavender light flowing along body, elegant luminous fins, no jewelry. Use reference only for refined luminous fantasy illustration style, smooth colored outlines, rich gradients, detailed fins and material, no copied stars or ray anatomy. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "길게 꼬인 수정빛 엄니를 가진 진주빛 일각고래. 지느러미를 펼칠 때마다 몸을 따라 옅은 새벽빛이 번진다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/epic-mythic-starlight.png",
+          "role": "style"
+        }
+      ]
+    },
+    {
+      "id": "hourglass-bottle",
+      "name": "모래시계 병",
+      "rarity": "rare",
+      "movement": "swim",
+      "size": 48,
+      "price": 80,
+      "visual": "An abandoned small hourglass shaped glass bottle with weathered cork, pale sand collected in the bottom, tiny seaweed and salt wear, no face",
+      "motion": "none",
+      "kind": "trash",
+      "idle": false,
+      "path": "trash/rare/hourglass-bottle",
+      "thumbSource": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-f8ee8311-e13d-47bb-b6e5-2bf11f789368.png",
+      "thumbPrompt": "Create ONE isolated game collectible thumbnail, 모래시계 병: An abandoned small hourglass shaped glass bottle with weathered cork, pale sand collected in the bottom, tiny seaweed and salt wear, no face. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "description": "모래가 밑바닥에 쌓인 모래시계 모양 유리병. 닳은 마개와 희미한 소금 자국에 오래 떠돈 시간이 남아 있다.",
+      "native_region_id": null,
+      "facing_direction": "right",
+      "references": [
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "style"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "species_id": "rainbow-mantis-shrimp",
+      "file": "fish/normal/rainbow-mantis-shrimp_thumbnail.png",
+      "storage_path": "fish/normal/rainbow-mantis-shrimp_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 색동 갯가재: A plump mantis shrimp, mint teal and orange segmented armor, stalk eyes and tucked raptorial forelegs. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-5f5cc80e-c0f7-47b7-8762-cc3a660aee27.png",
+      "sha256": "4dacb9c824724fec3d61b52f5b3b94a8670e8af84bedf052b46f5f81d8cc1330"
+    },
+    {
+      "species_id": "pea-sponge",
+      "file": "fish/normal/pea-sponge_thumbnail.png",
+      "storage_path": "fish/normal/pea-sponge_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 완두 해면: A small cluster of rounded pea-green sea sponge tubes, natural pores, NO eyes or face, side three-quarter view opening tilted right. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-19bc4028-770d-450b-a334-39ba83037e21.png",
+      "sha256": "cbf5b5fe8ba3d5a518a829ac14b21b44230f35080caf6436d19ba4ba7c108a56"
+    },
+    {
+      "species_id": "tiny-sardine",
+      "file": "fish/normal/tiny-sardine_thumbnail.png",
+      "storage_path": "fish/normal/tiny-sardine_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 꼬마 정어리: A cute plump little sardine, slate blue back silver cream belly, big glossy eye, clear side profile right. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-b12b6a2b-b3b5-47e5-ab89-5a4184b1f1a4.png",
+      "sha256": "9a0a137abaaaa41b0e9a598f669b3928c66869b8a9187babb701096aa0dc7e90"
+    },
+    {
+      "species_id": "peeking-conger-eel",
+      "file": "fish/normal/peeking-conger-eel_thumbnail.png",
+      "storage_path": "fish/normal/peeking-conger-eel_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 빼꼼 붕장어: A cute sandy gray conger eel peeking halfway out of a tiny sand burrow, head looking screen right, slim upright curved body. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-830a991d-1b75-407d-901e-38dcba62c584.png",
+      "sha256": "e5c3639d9440842aa10c8d632a0e2bee032da88e19a9d096dc84b054f446cfa3"
+    },
+    {
+      "species_id": "starflower-feather-duster",
+      "file": "fish/rare/starflower-feather-duster_thumbnail.png",
+      "storage_path": "fish/rare/starflower-feather-duster_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 별꽃 관벌레: A marine feather duster worm with a pink ivory star flower feathery crown tilted right on a short curled tube, no face. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-3863bf48-0f09-4cfc-b0da-cb340999fc68.png",
+      "sha256": "bdb22fc94dfe4d3aab94119d12da3babba262d7ae92adeedb1e7e9f41e0a1a94"
+    },
+    {
+      "species_id": "amethyst-king-shrimp",
+      "file": "fish/rare/amethyst-king-shrimp_thumbnail.png",
+      "storage_path": "fish/rare/amethyst-king-shrimp_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 자수정 왕새우: A large purple king shrimp with translucent amethyst shell segments, ivory underside, long silver antennae and glossy eyes, right profile. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-20a25c41-9340-471d-b8f9-c0e4f284f1f2.png",
+      "sha256": "5a88dd921e6720c3d2800df504f2ca5b95533dfe33b0e9c6f20c8d48077f416d"
+    },
+    {
+      "species_id": "halfmoon-seal",
+      "file": "fish/rare/halfmoon-seal_thumbnail.png",
+      "storage_path": "fish/rare/halfmoon-seal_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 반달 물범: A plump silver gray seal with dark crescent spots, cute glossy eye, short flippers and whiskers, right side profile. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-d7330c58-463b-48f0-a177-5341936c5a90.png",
+      "sha256": "93243039758599e8df7de176ec6c2f2707f55d345d85009067dbe9c4cbb2da9e"
+    },
+    {
+      "species_id": "blue-dolphin",
+      "file": "fish/rare/blue-dolphin_thumbnail.png",
+      "storage_path": "fish/rare/blue-dolphin_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 푸른 돌고래: An ordinary bottlenose dolphin in natural blue gray, pale belly, friendly face, smooth skin, no fantasy accessories, right profile. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-80d62b80-25c1-434d-adbd-82b785b16093.png",
+      "sha256": "63ba9249a19f284c01460a93f08366576d8f01efc22f5b8da4cb9c1fb56b4063"
+    },
+    {
+      "species_id": "jetblack-orca",
+      "file": "fish/rare/jetblack-orca_thumbnail.png",
+      "storage_path": "fish/rare/jetblack-orca_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 칠흑 범고래: An ordinary black and white killer whale, glossy black back, distinct white eye patch and cream belly, rounded friendly cartoon proportions, right profile. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-52dadb51-8d4f-419a-8b02-9811e59cac52.png",
+      "sha256": "3075bf45e5399dfa857f33175e045ae53139b2815384685c1a252ca58df749c2"
+    },
+    {
+      "species_id": "waterdrop-comb-jelly",
+      "file": "fish/rare/waterdrop-comb-jelly_thumbnail.png",
+      "storage_path": "fish/rare/waterdrop-comb-jelly_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 물방울 빗해파리: A transparent pear shaped comb jelly leaning screen right, delicate cyan pink comb rows, no face, short fine trailing filaments. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-103276c8-b1a9-4e9b-b9b5-6fbd8f11ee58.png",
+      "sha256": "b6f56a37087d218a5c2e462eb5ff8ed7fc0cc3a141b220bc82204bd2d932e5e6"
+    },
+    {
+      "species_id": "sandbutton-ray",
+      "file": "fish/rare/sandbutton-ray_thumbnail.png",
+      "storage_path": "fish/rare/sandbutton-ray_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 모래단추 가오리: A small sandy beige rounded stingray with chocolate freckles and thin trailing tail, right-facing side-three-quarter profile, visible head pointing right. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-7c93dab5-5200-459f-aafb-1fafb6572f7e.png",
+      "sha256": "90a17b6729b2657be0b30b3bde961c0e6dfc95f193724a7c4574c4b27100787f"
+    },
+    {
+      "species_id": "giant-walrus",
+      "file": "fish/rare/giant-walrus_thumbnail.png",
+      "storage_path": "fish/rare/giant-walrus_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 대왕 바다코끼리: A huge friendly warm brown walrus with long ivory tusks, thick whiskers, plump wrinkled body and little flippers, right profile. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-19135f06-243d-420b-b079-86c0c4351386.png",
+      "sha256": "ee2a8f157bb4067025af88e6e79e7a09d72b742511154c8ede8766edf90ef6fb"
+    },
+    {
+      "species_id": "sunken-windmill",
+      "file": "fish/epic/sunken-windmill_thumbnail.png",
+      "storage_path": "fish/epic/sunken-windmill_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 침수된 풍차: A submerged miniature old stone windmill with mother of pearl four blades, aged teal roof, seaweed and tiny barnacles, beautiful underwater fantasy object, no face no ground backdrop. Use reference only for refined luminous fantasy illustration style, smooth colored outlines, rich gradients, detailed fins and material, no copied stars or ray anatomy. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-24a1e11d-a092-4242-8283-75f8cd54063b.png",
+      "sha256": "20d11fc7396ab8b86cb4e8bf4566cd230e5b20f4cd5392d4c1b0840b7c55675c"
+    },
+    {
+      "species_id": "twilight-striped-dolphin",
+      "file": "fish/epic/twilight-striped-dolphin_thumbnail.png",
+      "storage_path": "fish/epic/twilight-striped-dolphin_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 황혼 줄무늬돌고래: An elegant striped dolphin, indigo back warm sunset peach belly, flowing teal and gold longitudinal stripes, subtly translucent fin edges, refined luminous fantasy. Use reference only for refined luminous fantasy illustration style, smooth colored outlines, rich gradients, detailed fins and material, no copied stars or ray anatomy. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-7759fa21-dad0-48ce-922e-126ff92563f4.png",
+      "sha256": "14b549e1d84958e03da6b51a2d6451485cb2ed3f5fdb32fe46ba3767b19295e4"
+    },
+    {
+      "species_id": "dawn-narwhal",
+      "file": "fish/mythic/dawn-narwhal_thumbnail.png",
+      "storage_path": "fish/mythic/dawn-narwhal_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 새벽을 여는 일각고래: A majestic pearlescent narwhal with long spiraled translucent crystal tusk pointing right, pale dawn peach cyan lavender light flowing along body, elegant luminous fins, no jewelry. Use reference only for refined luminous fantasy illustration style, smooth colored outlines, rich gradients, detailed fins and material, no copied stars or ray anatomy. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-700245a9-0a46-4f56-b780-260c3fb97e67.png",
+      "sha256": "23e9a1d5f30da6496c9b9938fcebaf44458f133ad3c47bc04486ded3118f47b8"
+    },
+    {
+      "species_id": "hourglass-bottle",
+      "file": "trash/rare/hourglass-bottle_thumbnail.png",
+      "storage_path": "trash/rare/hourglass-bottle_thumbnail.png",
+      "type": "thumbnail",
+      "prompt": "Create ONE isolated game collectible thumbnail, 모래시계 병: An abandoned small hourglass shaped glass bottle with weathered cork, pale sand collected in the bottom, tiny seaweed and salt wear, no face. Use reference only for warm cute cartoon STYLE: dark brown clean outlines, rounded proportions, glossy expressive eyes if anatomically appropriate, soft cel shading. Do not copy otter fur, ears or accessories. Face SCREEN RIGHT in clear side or side-three-quarter profile, head/snout points right, tail trails left. Objects and sessile organisms need no invented face. Full subject entirely within square canvas, longest axis 82% of canvas, generous transparent margin. True alpha PNG. No text, no background, no floor, no particles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-f8ee8311-e13d-47bb-b6e5-2bf11f789368.png",
+      "sha256": "c3709f59f22778490d88cbaa511dc5b97e231dd62286ff1d1efe20a89566c4de"
+    },
+    {
+      "species_id": "rainbow-mantis-shrimp",
+      "file": "fish/normal/rainbow-mantis-shrimp_sprite.png",
+      "storage_path": "fish/normal/rainbow-mantis-shrimp_sprite.png",
+      "type": "sprite",
+      "prompt": "Edit this exact 2x2 four-frame sheet. Preserve exact design, colors, four different anatomical motion poses, right facing direction. Critical layout correction: uniformly REDUCE every complete subject to 82 percent of current size INSIDE ITS OWN QUADRANT, using the same scale factor for all four, centering rigid head/body anchors identically. Keep FOUR equal square cells. Each full subject including tips fits with at least 8-10% transparent margins on all sides. Reconstruct any clipped tip completely. NO full-sheet shrink leaving grid wrong. No new background, no particles or stray pixels. Real transparent alpha. All rigid head/body sizes match; do not independently fit poses. Only moving limbs/fins/feathers differ. Keep clean crisp illustration.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-c425297e-fa71-45c0-b038-5230510e9784.png",
+      "initial_prompt": "Square transparent 2x2 four-frame animation sprite sheet of EXACT same 색동 갯가재 from reference. Animation: alternate walking legs, tiny antenna sway and paired foreleg flex. Four sequential cyclic distinct poses, not blink-only. Rigid head/body anchor and scale identical in all four equal square cells. Face SCREEN RIGHT in every frame. Full subject longest axis ONLY 78-84% of CELL (39-42% entire image), generous 8-10% blank margins on all sides; complete antennae/feathers inside frame. No cropped parts. No grid or backdrop or particles. True alpha PNG. Preserve cartoon style and design. Do not add faces to sponge or worm.",
+      "reference": "fish/normal/rainbow-mantis-shrimp_thumbnail.png",
+      "sha256": "2cebe8d96bb8ae416b22179584f0e05150590753bf5d64d6d8064f47595bb14f"
+    },
+    {
+      "species_id": "pea-sponge",
+      "file": "fish/normal/pea-sponge_sprite.png",
+      "storage_path": "fish/normal/pea-sponge_sprite.png",
+      "type": "sprite",
+      "prompt": "Edit this exact 2x2 four-frame sheet. Preserve exact design, colors, four different anatomical motion poses, right facing direction. Critical layout correction: uniformly REDUCE every complete subject to 82 percent of current size INSIDE ITS OWN QUADRANT, using the same scale factor for all four, centering rigid head/body anchors identically. Keep FOUR equal square cells. Each full subject including tips fits with at least 8-10% transparent margins on all sides. Reconstruct any clipped tip completely. NO full-sheet shrink leaving grid wrong. No new background, no particles or stray pixels. Real transparent alpha. All rigid head/body sizes match; do not independently fit poses. Only moving limbs/fins/feathers differ. Keep clean crisp illustration.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-126f7453-8487-465a-8dd1-99bb3fbcd713.png",
+      "initial_prompt": "Square transparent 2x2 four-frame animation sprite sheet of EXACT same 완두 해면 from reference. Animation: subtle rhythmic pore contraction, stable tube bases. Four sequential cyclic distinct poses, not blink-only. Rigid head/body anchor and scale identical in all four equal square cells. Face SCREEN RIGHT in every frame. Full subject longest axis ONLY 78-84% of CELL (39-42% entire image), generous 8-10% blank margins on all sides; complete antennae/feathers inside frame. No cropped parts. No grid or backdrop or particles. True alpha PNG. Preserve cartoon style and design. Do not add faces to sponge or worm.",
+      "reference": "fish/normal/pea-sponge_thumbnail.png",
+      "sha256": "3fdd4238e76ed32c2fe71b7fec9f91b0677056353ed76e82063e9d1993fd1ddc"
+    },
+    {
+      "species_id": "tiny-sardine",
+      "file": "fish/normal/tiny-sardine_sprite.png",
+      "storage_path": "fish/normal/tiny-sardine_sprite.png",
+      "type": "sprite",
+      "prompt": "Edit this exact 2x2 four-frame sheet. Preserve exact design, colors, four different anatomical motion poses, right facing direction. Critical layout correction: uniformly REDUCE every complete subject to 82 percent of current size INSIDE ITS OWN QUADRANT, using the same scale factor for all four, centering rigid head/body anchors identically. Keep FOUR equal square cells. Each full subject including tips fits with at least 8-10% transparent margins on all sides. Reconstruct any clipped tip completely. NO full-sheet shrink leaving grid wrong. No new background, no particles or stray pixels. Real transparent alpha. All rigid head/body sizes match; do not independently fit poses. Only moving limbs/fins/feathers differ. Keep clean crisp illustration.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-3cb62289-a876-454c-91d7-9337dee08d7f.png",
+      "initial_prompt": "Square transparent 2x2 four-frame animation sprite sheet of EXACT same 꼬마 정어리 from reference. Animation: tail oscillation and subtle coordinated fin movement, rigid head. Four sequential cyclic distinct poses, not blink-only. Rigid head/body anchor and scale identical in all four equal square cells. Face SCREEN RIGHT in every frame. Full subject longest axis ONLY 78-84% of CELL (39-42% entire image), generous 8-10% blank margins on all sides; complete antennae/feathers inside frame. No cropped parts. No grid or backdrop or particles. True alpha PNG. Preserve cartoon style and design. Do not add faces to sponge or worm.",
+      "reference": "fish/normal/tiny-sardine_thumbnail.png",
+      "sha256": "9620ac9f6509e098e2c216d1043870f445db1682135ef807be0d826dbf1dad87"
+    },
+    {
+      "species_id": "peeking-conger-eel",
+      "file": "fish/normal/peeking-conger-eel_sprite.png",
+      "storage_path": "fish/normal/peeking-conger-eel_sprite.png",
+      "type": "sprite",
+      "prompt": "Edit this exact 2x2 four-frame sheet. Preserve exact design, colors, four different anatomical motion poses, right facing direction. Critical layout correction: uniformly REDUCE every complete subject to 82 percent of current size INSIDE ITS OWN QUADRANT, using the same scale factor for all four, centering rigid head/body anchors identically. Keep FOUR equal square cells. Each full subject including tips fits with at least 8-10% transparent margins on all sides. Reconstruct any clipped tip completely. NO full-sheet shrink leaving grid wrong. No new background, no particles or stray pixels. Real transparent alpha. All rigid head/body sizes match; do not independently fit poses. Only moving limbs/fins/feathers differ. Keep clean crisp illustration.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-d0b55663-260f-45f9-80d3-926d8234d9ea.png",
+      "initial_prompt": "Square transparent 2x2 FOUR FRAME game sprite of exact reference character 빼꼼 붕장어. tiny neck sway and dorsal fin ripple, burrow and head anchor stable. Distinct sequential anatomical motion, not blinking-only. Keep rigid head/eye anchor and torso size identical across frames, same direction SCREEN RIGHT. Preserve colors design warm cartoon style. All antennae, fins and body fit in EACH cell with 10% margins, longest dimension80% CELL or40% whole sheet. No bounding box auto recenter or zoom, no background no floor no particles no lines, real transparent alpha.",
+      "reference": "fish/normal/peeking-conger-eel_thumbnail.png",
+      "sha256": "0f442a0669b4eaa9c0dbe54297faf627e7089eecc925ad07d76597f2bfa4e05b"
+    },
+    {
+      "species_id": "starflower-feather-duster",
+      "file": "fish/rare/starflower-feather-duster_sprite.png",
+      "storage_path": "fish/rare/starflower-feather-duster_sprite.png",
+      "type": "sprite",
+      "prompt": "Edit this exact 2x2 four-frame sheet. Preserve exact design, colors, four different anatomical motion poses, right facing direction. Critical layout correction: uniformly REDUCE every complete subject to 82 percent of current size INSIDE ITS OWN QUADRANT, using the same scale factor for all four, centering rigid head/body anchors identically. Keep FOUR equal square cells. Each full subject including tips fits with at least 8-10% transparent margins on all sides. Reconstruct any clipped tip completely. NO full-sheet shrink leaving grid wrong. No new background, no particles or stray pixels. Real transparent alpha. All rigid head/body sizes match; do not independently fit poses. Only moving limbs/fins/feathers differ. Keep clean crisp illustration.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-98f86d09-dfdc-499a-a488-581a7c565f3e.png",
+      "initial_prompt": "Square transparent 2x2 four-frame animation sprite sheet of EXACT same 별꽃 관벌레 from reference. Animation: feather filaments gently fan open and relax, rigid tube. Four sequential cyclic distinct poses, not blink-only. Rigid head/body anchor and scale identical in all four equal square cells. Face SCREEN RIGHT in every frame. Full subject longest axis ONLY 78-84% of CELL (39-42% entire image), generous 8-10% blank margins on all sides; complete antennae/feathers inside frame. No cropped parts. No grid or backdrop or particles. True alpha PNG. Preserve cartoon style and design. Do not add faces to sponge or worm.",
+      "reference": "fish/rare/starflower-feather-duster_thumbnail.png",
+      "sha256": "95f139f534c4ada1ff6f5af0759d7b6badbdd7d432d7615276659cc397aa7b7e"
+    },
+    {
+      "species_id": "amethyst-king-shrimp",
+      "file": "fish/rare/amethyst-king-shrimp_sprite.png",
+      "storage_path": "fish/rare/amethyst-king-shrimp_sprite.png",
+      "type": "sprite",
+      "prompt": "Edit this exact 2x2 four-frame sheet. Preserve exact design, colors, four different anatomical motion poses, right facing direction. Critical layout correction: uniformly REDUCE every complete subject to 82 percent of current size INSIDE ITS OWN QUADRANT, using the same scale factor for all four, centering rigid head/body anchors identically. Keep FOUR equal square cells. Each full subject including tips fits with at least 8-10% transparent margins on all sides. Reconstruct any clipped tip completely. NO full-sheet shrink leaving grid wrong. No new background, no particles or stray pixels. Real transparent alpha. All rigid head/body sizes match; do not independently fit poses. Only moving limbs/fins/feathers differ. Keep clean crisp illustration.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-3030de04-57c8-4804-82f7-7b364aa0a26b.png",
+      "initial_prompt": "Square transparent 2x2 FOUR FRAME game sprite of exact reference character 자수정 왕새우. alternating small walking legs, restrained antenna sway. Distinct sequential anatomical motion, not blinking-only. Keep rigid head/eye anchor and torso size identical across frames, same direction SCREEN RIGHT. Preserve colors design warm cartoon style. All antennae, fins and body fit in EACH cell with 10% margins, longest dimension80% CELL or40% whole sheet. No bounding box auto recenter or zoom, no background no floor no particles no lines, real transparent alpha.",
+      "reference": "fish/rare/amethyst-king-shrimp_thumbnail.png",
+      "sha256": "4c7f7c6c8affbcaf5b16e81f3ad9b105fc621065b5d582627f5bf36498f3ff99"
+    },
+    {
+      "species_id": "halfmoon-seal",
+      "file": "fish/rare/halfmoon-seal_sprite.png",
+      "storage_path": "fish/rare/halfmoon-seal_sprite.png",
+      "type": "sprite",
+      "prompt": "Edit this exact 2x2 four-frame sheet. Preserve exact design, colors, four different anatomical motion poses, right facing direction. Critical layout correction: uniformly REDUCE every complete subject to 82 percent of current size INSIDE ITS OWN QUADRANT, using the same scale factor for all four, centering rigid head/body anchors identically. Keep FOUR equal square cells. Each full subject including tips fits with at least 8-10% transparent margins on all sides. Reconstruct any clipped tip completely. NO full-sheet shrink leaving grid wrong. No new background, no particles or stray pixels. Real transparent alpha. All rigid head/body sizes match; do not independently fit poses. Only moving limbs/fins/feathers differ. Keep clean crisp illustration.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-1c648d7f-ab8c-46c7-802e-a0b7183d14e4.png",
+      "initial_prompt": "Square transparent 2x2 FOUR FRAME game sprite of exact reference character 반달 물범. gentle hind flipper propulsion with both foreflippers subtly stabilizing, steady head. Distinct sequential anatomical motion, not blinking-only. Keep rigid head/eye anchor and torso size identical across frames, same direction SCREEN RIGHT. Preserve colors design warm cartoon style. All antennae, fins and body fit in EACH cell with 10% margins, longest dimension80% CELL or40% whole sheet. No bounding box auto recenter or zoom, no background no floor no particles no lines, real transparent alpha.",
+      "reference": "fish/rare/halfmoon-seal_thumbnail.png",
+      "sha256": "800085077d04274dd4448dc2bb44bb583cd2743641fc32e9ae420ac863f8c9c8"
+    },
+    {
+      "species_id": "blue-dolphin",
+      "file": "fish/rare/blue-dolphin_sprite.png",
+      "storage_path": "fish/rare/blue-dolphin_sprite.png",
+      "type": "sprite",
+      "prompt": "Edit this exact 2x2 four-frame sheet. Preserve exact design, colors, four different anatomical motion poses, right facing direction. Critical layout correction: uniformly REDUCE every complete subject to 82 percent of current size INSIDE ITS OWN QUADRANT, using the same scale factor for all four, centering rigid head/body anchors identically. Keep FOUR equal square cells. Each full subject including tips fits with at least 8-10% transparent margins on all sides. Reconstruct any clipped tip completely. NO full-sheet shrink leaving grid wrong. No new background, no particles or stray pixels. Real transparent alpha. All rigid head/body sizes match; do not independently fit poses. Only moving limbs/fins/feathers differ. Keep clean crisp illustration.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-83a26135-3981-4291-93b1-f1ef2ef14a36.png",
+      "initial_prompt": "Square transparent 2x2 FOUR FRAME sprite sheet exact reference 푸른 돌고래. subtle tail fluke propulsion, rigid torso and small coordinated flipper adjustments. Four connected phases of forward swimming, head facing SCREEN RIGHT in all four. Same rigid face/torso anchor and scale, no body rotation or bobbing. Tail/flukes articulate naturally, foreflippers not waving hands. Preserve ordinary natural color and cute cartoon proportions. Subject longest dimension80% EACH CELL, leave10% transparent margins including snout and tail. No background no grid no particles real alpha PNG.",
+      "reference": "fish/rare/blue-dolphin_thumbnail.png",
+      "sha256": "d0fbd8cc8d4c47c6d0b8dbb9be57b323374e9e769ddf4ecae2e16251ebaf5177"
+    },
+    {
+      "species_id": "jetblack-orca",
+      "file": "fish/rare/jetblack-orca_sprite.png",
+      "storage_path": "fish/rare/jetblack-orca_sprite.png",
+      "type": "sprite",
+      "prompt": "Edit this exact 2x2 four-frame sheet. Preserve exact design, colors, four different anatomical motion poses, right facing direction. Critical layout correction: uniformly REDUCE every complete subject to 82 percent of current size INSIDE ITS OWN QUADRANT, using the same scale factor for all four, centering rigid head/body anchors identically. Keep FOUR equal square cells. Each full subject including tips fits with at least 8-10% transparent margins on all sides. Reconstruct any clipped tip completely. NO full-sheet shrink leaving grid wrong. No new background, no particles or stray pixels. Real transparent alpha. All rigid head/body sizes match; do not independently fit poses. Only moving limbs/fins/feathers differ. Keep clean crisp illustration.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-4432856e-c0e8-45b1-934c-382d25476815.png",
+      "initial_prompt": "Square transparent 2x2 FOUR FRAME sprite sheet exact reference 칠흑 범고래. restrained tail fluke propulsion, stable dorsal fin torso head. Four connected phases of forward swimming, head facing SCREEN RIGHT in all four. Same rigid face/torso anchor and scale, no body rotation or bobbing. Tail/flukes articulate naturally, foreflippers not waving hands. Preserve ordinary natural color and cute cartoon proportions. Subject longest dimension80% EACH CELL, leave10% transparent margins including snout and tail. No background no grid no particles real alpha PNG.",
+      "reference": "fish/rare/jetblack-orca_thumbnail.png",
+      "sha256": "8557f09051943529e4438411a527a4c8c7dba4673d8aed838002c0c38a324c8a"
+    },
+    {
+      "species_id": "waterdrop-comb-jelly",
+      "file": "fish/rare/waterdrop-comb-jelly_sprite.png",
+      "storage_path": "fish/rare/waterdrop-comb-jelly_sprite.png",
+      "type": "sprite",
+      "prompt": "Edit this exact 2x2 four-frame sheet. Preserve exact design, colors, four different anatomical motion poses, right facing direction. Critical layout correction: uniformly REDUCE every complete subject to 82 percent of current size INSIDE ITS OWN QUADRANT, using the same scale factor for all four, centering rigid head/body anchors identically. Keep FOUR equal square cells. Each full subject including tips fits with at least 8-10% transparent margins on all sides. Reconstruct any clipped tip completely. NO full-sheet shrink leaving grid wrong. No new background, no particles or stray pixels. Real transparent alpha. All rigid head/body sizes match; do not independently fit poses. Only moving limbs/fins/feathers differ. Keep clean crisp illustration.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-8b4da885-8f68-4dd2-9e0e-b1f5bc853469.png",
+      "initial_prompt": "Square transparent 2x2 FOUR FRAME sprite sheet exact reference 물방울 빗해파리. gentle body compression and comb row ripple, stable central core. Four connected phases, not four duplicates. SCREEN RIGHT orientation all four. Same rigid head/core anchor and scale. Preserve cute warm cartoon reference design. Longest dimension80% EACH CELL (40% entire sheet), leave10% transparent margins including whiskers/tusks/filaments. No background no grid no particles real alpha PNG.",
+      "reference": "fish/rare/waterdrop-comb-jelly_thumbnail.png",
+      "sha256": "7e071dd34b0eca62bbe636a1ce6a7458f11dc47cd91950e882d41ecfa501ff70"
+    },
+    {
+      "species_id": "sandbutton-ray",
+      "file": "fish/rare/sandbutton-ray_sprite.png",
+      "storage_path": "fish/rare/sandbutton-ray_sprite.png",
+      "type": "sprite",
+      "prompt": "Edit this exact 2x2 four-frame sheet. Preserve exact design, colors, four different anatomical motion poses, right facing direction. Critical layout correction: uniformly REDUCE every complete subject to 82 percent of current size INSIDE ITS OWN QUADRANT, using the same scale factor for all four, centering rigid head/body anchors identically. Keep FOUR equal square cells. Each full subject including tips fits with at least 8-10% transparent margins on all sides. Reconstruct any clipped tip completely. NO full-sheet shrink leaving grid wrong. No new background, no particles or stray pixels. Real transparent alpha. All rigid head/body sizes match; do not independently fit poses. Only moving limbs/fins/feathers differ. Keep clean crisp illustration.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-533d0464-a56b-4ae1-96c5-860797af1fc5.png",
+      "initial_prompt": "Square transparent 2x2 FOUR FRAME sprite sheet exact reference 모래단추 가오리. smooth alternating wing margin undulation, rigid face and center. Four connected anatomically natural swimming phases. Keep head torso and tusk IDENTICAL location and scale, only tail and fin edges articulate. Face SCREEN RIGHT in all four. Preserve illustration style and full details of reference. Longest dimension ONLY80% EACH CELL (40% entire image), leave10% margins including full tusk and tail; neverclip. No floor no background no grid no particles real transparent alpha. Avoid frame bobbing, never re-center by silhouette.",
+      "reference": "fish/rare/sandbutton-ray_thumbnail.png",
+      "sha256": "198cc5fe312944a659a4a31f417bc74c2eb3147c473eb2e0cbf49f5fede05646"
+    },
+    {
+      "species_id": "giant-walrus",
+      "file": "fish/rare/giant-walrus_sprite.png",
+      "storage_path": "fish/rare/giant-walrus_sprite.png",
+      "type": "sprite",
+      "prompt": "Edit this exact 2x2 four-frame sheet. Preserve exact design, colors, four different anatomical motion poses, right facing direction. Critical layout correction: uniformly REDUCE every complete subject to 82 percent of current size INSIDE ITS OWN QUADRANT, using the same scale factor for all four, centering rigid head/body anchors identically. Keep FOUR equal square cells. Each full subject including tips fits with at least 8-10% transparent margins on all sides. Reconstruct any clipped tip completely. NO full-sheet shrink leaving grid wrong. No new background, no particles or stray pixels. Real transparent alpha. All rigid head/body sizes match; do not independently fit poses. Only moving limbs/fins/feathers differ. Keep clean crisp illustration.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-ded9abfc-bbff-4d3c-a4af-70f6228a4096.png",
+      "initial_prompt": "Square transparent 2x2 FOUR FRAME sprite sheet exact reference 대왕 바다코끼리. heavy slow alternating flipper walking, modest whisker sway and stable head. Four connected phases, not four duplicates. SCREEN RIGHT orientation all four. Same rigid head/core anchor and scale. Preserve cute warm cartoon reference design. Longest dimension80% EACH CELL (40% entire sheet), leave10% transparent margins including whiskers/tusks/filaments. No background no grid no particles real alpha PNG.",
+      "reference": "fish/rare/giant-walrus_thumbnail.png",
+      "sha256": "bce5b348bfddb2ce14d59cec7a97ace628d7bb40c91293b104de0a980c683b71"
+    },
+    {
+      "species_id": "sunken-windmill",
+      "file": "fish/epic/sunken-windmill_sprite.png",
+      "storage_path": "fish/epic/sunken-windmill_sprite.png",
+      "type": "sprite",
+      "prompt": "Edit exact 2x2 windmill animation. Uniformly shrink each complete windmill drawing to82% current size WITHIN its quadrant, same factor four frames. Lock stone tower, roof, door, base at exactly same coordinates and size all four. Only blades rotate at0,22.5,45,67.5degrees around same fixed hub. Ensure10% transparent margins all sides, complete seaweed and blades. No particles or stray glow, real alpha transparent. Preserve exact beautiful materials and design.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-8f44da06-d586-43af-a349-60f7efc8d7eb.png",
+      "initial_prompt": "Create square transparent 2x2 FOUR FRAME sprite sheet of exact reference submerged windmill, preserve rich fantasy style. Tower roof hub and stone base IDENTICAL location scale and shape across all cells. FOUR BLADES rotate clockwise around fixed hub at phases 0 22.5 45 67.5 degrees, last-to-first repeat by 90-degree rotational symmetry. Seaweed tips subtly sway. Each entire windmill including full blade rotation area longest axis ONLY75-80% of CELL or38-40% entire image. AT LEAST10% transparent margins all four sides. No background, no grid, no face, no particles, real transparent alpha. Do not copy same blade angle four times.",
+      "reference": "fish/epic/sunken-windmill_thumbnail.png",
+      "sha256": "1d37b2ef0b32811b612c688a146cfa50a85f352f97d17ce334070d10aa999a5f"
+    },
+    {
+      "species_id": "twilight-striped-dolphin",
+      "file": "fish/epic/twilight-striped-dolphin_sprite.png",
+      "storage_path": "fish/epic/twilight-striped-dolphin_sprite.png",
+      "type": "sprite",
+      "prompt": "Edit exact 2x2 FOUR FRAME animation sheet, retain beautiful exact fantasy character, right-facing head and four swimming tail poses. Uniformly SHRINK each entire drawing to 78% current size centered WITHIN EACH QUADRANT, not the whole sheet. All heads/body/tusk anchors same local coordinates and same scale. Full tail tips and long tusk must fit with10% clear alpha margin on all sides. Reconstruct clipped tips. REMOVE stray glow clouds and detached speckles, clean alpha around silhouette, no white halo. Keep only subtle glow intrinsic to body. No background grid or text. True transparent PNG.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-6de4fea0-6b56-46d0-a949-cf4d96cedbcb.png",
+      "initial_prompt": "Square transparent 2x2 FOUR FRAME sprite sheet exact reference 황혼 줄무늬돌고래. fluid restrained tail fluke cycle and delicate fin edge flow, stable rigid head torso. Four connected anatomically natural swimming phases. Keep head torso and tusk IDENTICAL location and scale, only tail and fin edges articulate. Face SCREEN RIGHT in all four. Preserve illustration style and full details of reference. Longest dimension ONLY80% EACH CELL (40% entire image), leave10% margins including full tusk and tail; neverclip. No floor no background no grid no particles real transparent alpha. Avoid frame bobbing, never re-center by silhouette.",
+      "reference": "fish/epic/twilight-striped-dolphin_thumbnail.png",
+      "sha256": "a065b70cd067efc291cc36e28eb46261e0d157184542f480dabdc4f7f3ecf1eb"
+    },
+    {
+      "species_id": "dawn-narwhal",
+      "file": "fish/mythic/dawn-narwhal_sprite.png",
+      "storage_path": "fish/mythic/dawn-narwhal_sprite.png",
+      "type": "sprite",
+      "prompt": "Edit exact 2x2 FOUR FRAME animation sheet, retain beautiful exact fantasy character, right-facing head and four swimming tail poses. Uniformly SHRINK each entire drawing to 78% current size centered WITHIN EACH QUADRANT, not the whole sheet. All heads/body/tusk anchors same local coordinates and same scale. Full tail tips and long tusk must fit with10% clear alpha margin on all sides. Reconstruct clipped tips. REMOVE stray glow clouds and detached speckles, clean alpha around silhouette, no white halo. Keep only subtle glow intrinsic to body. No background grid or text. True transparent PNG.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-8ac90aa8-6791-417a-a50a-c4a59ec41313.png",
+      "initial_prompt": "Square transparent 2x2 FOUR FRAME sprite sheet exact reference 새벽을 여는 일각고래. slow flowing tail fluke cycle and soft fin edge response, tusk head and body perfectly stable. Four connected anatomically natural swimming phases. Keep head torso and tusk IDENTICAL location and scale, only tail and fin edges articulate. Face SCREEN RIGHT in all four. Preserve illustration style and full details of reference. Longest dimension ONLY80% EACH CELL (40% entire image), leave10% margins including full tusk and tail; neverclip. No floor no background no grid no particles real transparent alpha. Avoid frame bobbing, never re-center by silhouette.",
+      "reference": "fish/mythic/dawn-narwhal_thumbnail.png",
+      "sha256": "26f2e14cdf78cf74182069357133309892c680fd2152a56fcd1f582b20787acc"
+    }
+  ]
+}

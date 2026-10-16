@@ -1,0 +1,150 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261015-204537/decorations/normal/seashell-pinwheel_sprite.png",
+        "storage_path":  "decorations/normal/seashell-pinwheel_sprite.png",
+        "patch":  [
+                      350,
+                      480,
+                      25,
+                      60
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -78,
+                           "dy":  0,
+                           "rmse":  7.4570063996515685
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -21,
+                           "rmse":  4.9874843358150009
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -76,
+                           "dy":  -21,
+                           "rmse":  10.249796745952251
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-204537/decorations/rare/tiny-reef-carousel_sprite.png",
+        "storage_path":  "decorations/rare/tiny-reef-carousel_sprite.png",
+        "patch":  [
+                      290,
+                      470,
+                      55,
+                      50
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -6,
+                           "dy":  0,
+                           "rmse":  11.784671525848152
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -8,
+                           "rmse":  17.0601059088826
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -7,
+                           "dy":  -8,
+                           "rmse":  16.660561317241768
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-204537/decorations/normal/pearl-bearing-clam_sprite.png",
+        "storage_path":  "decorations/normal/pearl-bearing-clam_sprite.png",
+        "patch":  [
+                      275,
+                      525,
+                      70,
+                      55
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -33,
+                           "dy":  0,
+                           "rmse":  11.728517128566924
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -73,
+                           "rmse":  7.97501581145658
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -31,
+                           "dy":  -74,
+                           "rmse":  12.198288634641955
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261015-204537/decorations/rare/coral-covered-treasure-chest_sprite.png",
+        "storage_path":  "decorations/rare/coral-covered-treasure-chest_sprite.png",
+        "patch":  [
+                      390,
+                      415,
+                      45,
+                      65
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -17,
+                           "dy":  9,
+                           "rmse":  13.035237790022252
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -12,
+                           "rmse":  12.317516475378149
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -7,
+                           "dy":  -22,
+                           "rmse":  11.395805980245274
+                       }
+                   ]
+    }
+]

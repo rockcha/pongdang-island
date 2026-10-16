@@ -15,4 +15,4 @@
 
 **진주 품은 조개는 희귀 → 일반, 판매가 160 → 45골드로 변경합니다.** 기존 이미지를 그대로 쓰므로 `decorations/rare/pearl-bearing-clam_thumbnail.png` 경로를 유지합니다. 폴더명과 달리 실제 표시 등급은 카탈로그의 `common`입니다. 새 이미지 생성·재업로드는 필요 없습니다. 신규 설치용 28 SQL에도 일반 등급을 반영했습니다. 과거 선물에 기록된 스냅샷은 유지합니다.
 
-생성 도구는 내장 image_gen이며 최종 프롬프트와 업로드 매핑은 [statue-decorations.json](../../../assets/storage-upload/new/statue-decorations.json)에 기록합니다.
+생성 도구는 내장 image_gen입니다. 당시 기록에서 참조한 `statue-decorations.json`은 현재 저장소에 없습니다. 업로드 매핑은 위 표와 [등록 SQL](01-statue-decorations.sql)을 기준으로 확인합니다.

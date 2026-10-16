@@ -1,0 +1,52 @@
+[
+  {
+    "id": "empty-film-canister",
+    "name": "빈 필름통",
+    "rarity": "common",
+    "size": 40,
+    "price": 12,
+    "visual": "One old small mustard yellow film canister with a loose dark lid, tiny barnacles, faded blank label no text",
+    "description": "빛을 담던 필름은 사라지고 빈 통만 남았다. 닳은 뚜껑 안쪽에 작은 모래알이 굴러다닌다.",
+    "path": "trash/normal/empty-film-canister_thumbnail.png"
+  },
+  {
+    "id": "tangled-kite-spool",
+    "name": "엉킨 연실 얼레",
+    "rarity": "common",
+    "size": 48,
+    "price": 16,
+    "visual": "One small weathered wooden kite string reel, tangled faded coral pink thread winding around its cross-shaped frame, short loose strand, no kite",
+    "description": "나무 얼레에 빛바랜 연실이 어지럽게 감겨 있다. 하늘로 향하던 실 끝이 이제 물결을 따라 흔들린다.",
+    "path": "trash/normal/tangled-kite-spool_thumbnail.png"
+  },
+  {
+    "id": "chipped-lucky-die",
+    "name": "이 빠진 주사위",
+    "rarity": "common",
+    "size": 36,
+    "price": 10,
+    "visual": "One small chipped ivory dice with rounded corners, faded blue recessed pips, single coherent cube three-quarter view, a little sand in the chip",
+    "description": "모서리 하나가 닳아 없어진 작은 주사위. 파란 눈금 사이로 누군가의 오래된 놀이가 남아 있다.",
+    "path": "trash/normal/chipped-lucky-die_thumbnail.png"
+  },
+  {
+    "id": "bent-magnifying-glass",
+    "name": "휘어진 돋보기",
+    "rarity": "common",
+    "size": 46,
+    "price": 18,
+    "visual": "One abandoned small magnifying glass with bent aged bronze rim and short teal handle, cracked clear lens, little salt wear, isolated three-quarter view",
+    "description": "테두리가 살짝 휘어진 낡은 돋보기. 금 간 유리 너머로 보면 평범한 모래알도 낯선 보물처럼 보인다.",
+    "path": "trash/normal/bent-magnifying-glass_thumbnail.png"
+  },
+  {
+    "id": "wandering-pocket-compass",
+    "name": "길 잃은 회중나침반",
+    "rarity": "rare",
+    "size": 50,
+    "price": 85,
+    "visual": "One weathered open brass pocket compass with cracked glass, tarnished teal enamel lid, stuck needle, abstract four-point directional marks without text or letters, tiny barnacles",
+    "description": "바늘이 한 방향에 멈춰 버린 회중나침반. 돌아갈 길은 잊었지만 손때 묻은 황동빛은 아직 남아 있다.",
+    "path": "trash/rare/wandering-pocket-compass_thumbnail.png"
+  }
+]

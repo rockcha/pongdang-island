@@ -6,6 +6,16 @@ function item(kind='fish'): OwnedCollectible {
   return { id: kind, species_id: kind, tank_id: 'tank', animation_seed: 0, position_x: null, position_y: null, acquired_at: '',
     species: { id: kind, kind, name: kind, description: '', swim_y_min: .2, swim_y_max: .7, speed: .05, size: 72, rarity: 'common', sprite_sheet_path: 'fish.png', thumbnail_path: 'thumb.png', sell_price: 10 } } as OwnedCollectible
 }
+it('anchors fixed living species at their habitat depth and preserves manual placement',()=>{
+ const sponge=item()
+ sponge.species={...sponge.species,movement_type:'fixed',swim_y_min:.88,swim_y_max:.94,size:54}
+ const motion=new InhabitantMotion(sponge)
+ const first=motion.update(0,0,400,600)
+ expect(first.y).toBeCloseTo(.91*(600-54))
+ expect(motion.update(20,.1,400,600)).toEqual(first)
+ const placed=new InhabitantMotion({...sponge,position_x:.4,position_y:.6})
+ expect(placed.update(0,0,400,600).y).toBeCloseTo(.6*(600-54))
+})
 it('continues swimming from a dragged position and restores persisted placement',()=>{
  const fish=new InhabitantMotion(item())
  fish.update(2,.1,400,600)

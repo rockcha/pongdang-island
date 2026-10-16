@@ -15,6 +15,9 @@ DB 작업은 [DB 관리와 원격 확인](systems/database-management.md) → [�
 
 이 문서들은 코드의 현재 구조를 설명합니다. 변경 시 관련 문서와 SQL/DB 타입/테스트를 함께 갱신합니다.
 - [아바타와 프로필](systems/avatar.md): 이미지 업로드·Storage 정책·아바타 표시
+- [낚싯대 인벤토리·창고](systems/rod-inventory.md): 실제 골드 구매·반값 판매, DB 장착과 낚싯대/미끼 창고
+- [연속 출석](systems/attendance.md): 한국 시간 기준 30일 출석지·매일 골드·7일/30일 미끼 보상
+- [오락실](systems/arcade.md): 게임 목록·상세 페이지, 게임 등록과 참가 조건 확장
 - [섬 메뉴와 페이지](systems/navigation.md): 왼쪽 drawer, 퐁당마을·아쿠아리움·선착장·우체통·마이페이지
 # 공통 UI 규칙
 

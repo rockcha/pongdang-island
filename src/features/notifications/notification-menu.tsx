@@ -31,9 +31,9 @@ export function NotificationMenu() {
   }, [open])
 
   return <Menu.Root open={open} onOpenChange={value => { setOpen(value); if (value) setNow(Date.now()) }}>
-    <Menu.Trigger aria-label={`알림, 읽지 않은 알림 ${count}개`} className="relative flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-lg outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring">
+    <Menu.Trigger aria-label={`알림, 읽지 않은 알림 ${count}개`} className="relative flex size-10 min-h-10 min-w-10 cursor-pointer items-center justify-center rounded-lg outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring">
       <Bell className="size-5" />
-      {count > 0 && <span className="absolute right-0 top-0 min-w-4 rounded-full bg-primary px-1 text-center text-[10px] text-primary-foreground">{count > 99 ? '99+' : count}</span>}
+      {count > 0 && <span className="header-indicator" aria-hidden="true">{count > 99 ? '99+' : count}</span>}
     </Menu.Trigger>
     <Menu.Portal>
       <Menu.Positioner align="end" sideOffset={8} className="z-50">

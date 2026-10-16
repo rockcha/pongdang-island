@@ -1,3 +1,5 @@
+> 생성 배치 기록입니다. 현재 생성·저장 규칙은 [에셋 안내](../../../README.md)를 따릅니다.
+
 # 안개달 토착 개체 6종
 
 투명 PNG 8장을 이 폴더 바로 아래에 저장합니다. collectibles 버킷에 아래 경로로 분류해 업로드한 뒤 [31 등록 SQL](../../../../supabase/sql/31-mistmoon-natives/01-mistmoon-natives.sql)을 실행합니다. 먼저 30번 토착 구조 SQL이 적용되어 있어야 합니다.

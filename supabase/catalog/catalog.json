@@ -38,6 +38,15 @@
       "requires_map_fragment": false
     },
     {
+      "id": "primal",
+      "name": "태고의 원시섬",
+      "description": "거대한 고사리와 화산 안개 너머, 공룡 시대의 바다가 숨 쉬는 섬.",
+      "rarity": "epic",
+      "sort_order": 6,
+      "image_path": "primal.png",
+      "requires_map_fragment": true
+    },
+    {
       "id": "starruins",
       "name": "별잠 유적",
       "description": "별빛을 품은 오래된 유적. 잠든 바다의 기억과 희귀한 생명이 머물러요.",
@@ -49,16 +58,70 @@
   ],
   "aquarium_backgrounds": [
     {
+      "id": "aurorasea",
+      "name": "물속의 오로라",
+      "price": 800,
+      "image_path": "aurorasea.png"
+    },
+    {
+      "id": "autumnpond",
+      "name": "가을이 잠긴 연못",
+      "price": 350,
+      "image_path": "autumnpond.png"
+    },
+    {
+      "id": "blueflame",
+      "name": "심해의 푸른 불꽃",
+      "price": 700,
+      "image_path": "blueflame.png"
+    },
+    {
+      "id": "cloudsea",
+      "name": "구름이 잠긴 바다",
+      "price": 600,
+      "image_path": "cloudsea.png"
+    },
+    {
       "id": "coral",
       "name": "산호 정원",
       "price": 100,
       "image_path": "coral.png"
     },
     {
+      "id": "dawnmist",
+      "name": "새벽 물안개",
+      "price": 250,
+      "image_path": "dawnmist.png"
+    },
+    {
       "id": "default",
       "name": "맑은 물빛",
       "price": 0,
       "image_path": "default.png"
+    },
+    {
+      "id": "glacier",
+      "name": "빙하의 숨결",
+      "price": 400,
+      "image_path": "glacier.png"
+    },
+    {
+      "id": "goldendunes",
+      "name": "황금빛 물결 사막",
+      "price": 650,
+      "image_path": "goldendunes.png"
+    },
+    {
+      "id": "icebubbles",
+      "name": "빙하 속 기포",
+      "price": 700,
+      "image_path": "icebubbles.png"
+    },
+    {
+      "id": "inksea",
+      "name": "먹빛 수묵 바다",
+      "price": 650,
+      "image_path": "inksea.png"
     },
     {
       "id": "moon",
@@ -71,6 +134,42 @@
       "name": "진주 동굴",
       "price": 500,
       "image_path": "pearl.png"
+    },
+    {
+      "id": "rainsea",
+      "name": "비 내리는 바다",
+      "price": 200,
+      "image_path": "rainsea.png"
+    },
+    {
+      "id": "rosesalt",
+      "name": "장밋빛 소금 호수",
+      "price": 600,
+      "image_path": "rosesalt.png"
+    },
+    {
+      "id": "seagrass",
+      "name": "연둣빛 해초밭",
+      "price": 200,
+      "image_path": "seagrass.png"
+    },
+    {
+      "id": "stilltime",
+      "name": "시간이 잠든 바다",
+      "price": 800,
+      "image_path": "stilltime.png"
+    },
+    {
+      "id": "sunset",
+      "name": "노을빛 바다",
+      "price": 300,
+      "image_path": "sunset.png"
+    },
+    {
+      "id": "violet",
+      "name": "보랏빛 고요",
+      "price": 500,
+      "image_path": "violet.png"
     }
   ],
   "fishing_baits": [
@@ -702,6 +801,24 @@
       "size": 60,
       "rarity": "common",
       "thumbnail_path": "map/normal/map-pongdang_thumbnail.png",
+      "sell_price": 0,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "map-primal",
+      "kind": "map",
+      "name": "태고의 원시섬 지도 조각",
+      "description": "고대 화산과 공룡 발자국의 항로가 그려진 특급 지도 조각.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 60,
+      "rarity": "epic",
+      "thumbnail_path": "map/epic/map-primal_thumbnail.png",
       "sell_price": 0,
       "sprite_sheet_path": null,
       "native_region_id": null,
@@ -1986,6 +2103,10 @@
     {
       "species_id": "map-pongdang",
       "region_id": "pongdang"
+    },
+    {
+      "species_id": "map-primal",
+      "region_id": "primal"
     },
     {
       "species_id": "map-starruins",

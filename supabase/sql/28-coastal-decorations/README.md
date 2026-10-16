@@ -16,6 +16,6 @@
 
 도감·보관함·도감의 임시 넣기에는 DB 카탈로그 조회로 자동 반영됩니다. 임시 넣기는 기존처럼 새로고침하면 사라집니다.
 
-파일 매핑과 생성 프롬프트는 [coastal-decorations.json](../../../assets/storage-upload/new/coastal-decorations.json)에 기록합니다. 생성 도구는 내장 image_gen입니다.
+생성 도구는 내장 image_gen입니다. 당시 기록에서 참조한 `coastal-decorations.json`은 현재 저장소에 없습니다. 업로드 매핑은 위 표와 [등록 SQL](01-coastal-decorations.sql)을 기준으로 확인합니다.
 
 29 업데이트부터 진주 품은 조개는 일반입니다. 기존 이미지 재업로드를 피하기 위해 rare 폴더의 이미지 경로는 유지합니다. 이미 28을 실행했다면 29 SQL로 등급과 판매가를 반영합니다.

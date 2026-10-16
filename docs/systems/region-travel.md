@@ -1,4 +1,4 @@
-﻿# 지역 잠금 테스트와 출항/도착
+# 지역 잠금 테스트와 출항/도착
 
 ## 적용
 기존 01~11 적용 후 `supabase/sql/12-region-travel/01-travel.sql`을 추가 실행합니다. 원격 SQL 적용은 이 작업에서 하지 않았습니다. 퐁이 출항 스프라이트는 `public/sprites/pongi-sailing.png`에 포함하므로 별도 Storage 업로드가 필요 없습니다. 지역 이미지는 기존 `regions` 버킷을 사용합니다.
@@ -6,14 +6,14 @@
 ## 흐름
 - 선착장 지도에서 지역별 `테스트: 지역 잠금 해제/잠그기`로 본인의 지도 조각을 추가/제거합니다.
 - 앞바다는 항상 열려 있으며 잠글 수 없습니다. 현재 지역을 잠그면 DB 현재 위치도 앞바다로 복귀합니다. 다른 사용자 상태는 변경하지 않습니다.
-- 열린 지역 선택 → `/sailing/:regionId` → 잠금 확인 → 퐁이 뗏목 애니메이션 약 5초 → travel_region 서버 재검사/위치 저장 → `/region/:regionId` 도착 이미지.
+- 열린 지역 선택 → `/sailing/:regionId` → 잠금 확인 → 퐁이 뗏목 애니메이션 약 1.5초 → travel_region 서버 재검사/위치 저장 → `/region/:regionId` 도착 이미지.
 - 예: `/sailing/coral` → `/region/coral`. 현재 지역 둘러보기는 출항 없이 도착 화면으로 이동합니다.
-- 이동 전환 중 선착장으로 돌아가면 타이머를 정리합니다. 5초 후 요청이 이미 서버로 전송됐다면 요청 처리는 완료될 수 있습니다. 서버 응답이 늦으면 전환 화면도 더 오래 유지합니다. 실패 시 도착 페이지로 보내지 않고 재시도를 제공합니다.
+- 이동 전환 중 선착장으로 돌아가면 타이머를 정리합니다. 1.5초 후 요청이 이미 서버로 전송됐다면 요청 처리는 완료될 수 있습니다. 서버 응답이 늦으면 전환 화면도 더 오래 유지합니다. 실패 시 도착 페이지로 보내지 않고 재시도를 제공합니다.
 - 직접 `/region/...`에 접근하면 지역 존재·잠금·서버 현재 위치를 확인합니다. 미도착 지역은 출항 링크, 잠긴 지역은 안내만 제공합니다. 도착 확인 없이 직접 위치를 바꾸지 않습니다.
 
 ## 코드
 - `src/pages/harbor-page.tsx`: 지도, 테스트 잠금 버튼, 출항 링크.
-- `src/features/regions/sailing-page.tsx`: SAILING_DURATION=5000, 전환 페이지, 타이머/계정 변경 정리.
+- `src/features/regions/sailing-page.tsx`: SAILING_DURATION=1500, 전환 페이지, 타이머/계정 변경 정리.
 - `src/features/regions/region-page.tsx`: 도착 지역 이미지/이름/설명/등급, 직접 접근 검사.
 - `src/features/regions/api.ts`: setRegionTestLock, region_map, travel_region.
 - `src/routes.tsx`: 인증·닉네임 가드 아래 두 경로.
@@ -31,7 +31,7 @@ update app_private.region_settings set test_lock_controls=false where id=true;
 `set_region_test_lock`는 auth.uid만 사용하고 사용자 ID를 입력받지 않습니다. private DEFINER + public INVOKER, PUBLIC/anon 실행 금지, 설정 테이블 접근 금지. 잠금 변경과 이동은 계정별 advisory lock으로 직렬화합니다. 기존 테이블 직접 쓰기는 계속 차단합니다.
 
 ## 검증
-`tests/sailing.test.tsx`: 5초 전 이동 호출 없음, 완료 후 URL 변경, 잠긴 경로 차단, 언마운트 타이머 정리.
+`tests/sailing.test.tsx`: 1.5초 전 이동 호출 없음, 완료 후 URL 변경, 잠긴 경로 차단, 언마운트 타이머 정리.
 `tests/social-sql.test.ts`: 본인 잠금 토글, 타 사용자 격리, 현재 지역 잠금 시 복귀, 기본 지역 보호, 테스트 기능 종료, 미인증 차단.
 
 ## 이미지 제작
@@ -42,7 +42,7 @@ built-in image_gen. 사용자 제공 Downloads/pongi.png를 퐁이 정체성 참
 - public/sprites/pongi-sailing.png: 뗏목 노젓기
 - public/sprites/pongi-telescope.png: 돛단배에서 망원경 보기
 - public/sprites/pongi-shell-map.png: 조개 배에서 지도 펼쳐 보기
-장면별 접근성 이름과 작은 안내 문구도 함께 바뀝니다. 5초 이동과 서버 검사 흐름은 동일합니다. SQL/Storage 추가 적용은 없습니다. `tests/sailing-scenes.test.ts`에서 각 선택 구간을 검증합니다.
+장면별 접근성 이름과 작은 안내 문구도 함께 바뀝니다. 1.5초 이동과 서버 검사 흐름은 동일합니다. SQL/Storage 추가 적용은 없습니다. `tests/sailing-scenes.test.ts`에서 각 선택 구간을 검증합니다.
 새 스프라이트는 built-in image_gen으로 기존 퐁이 시트를 정체성과 스타일 참고로 삼아 생성했습니다. 공통 프롬프트: 투명 배경, 2x2 동일 크기 4프레임, 동일 카메라·배 기준점, 각 셀 안쪽 충분한 여백, 따뜻한 갈색 해달·크림색 배·별 머리핀. 망원경 버전은 작은 돛단배에서 바라보는 방향 변화, 조개 배 버전은 지도 읽기·고개 기울이기·가리키기 동작입니다.
 
 ## 출항 프레임 위치 보정

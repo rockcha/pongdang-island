@@ -1,0 +1,11 @@
+{
+  "id": "coral-flower-anemone",
+  "type": "sprite",
+  "file": "decorations/rare/coral-flower-anemone_sprite.png",
+  "storage_path": "decorations/rare/coral-flower-anemone_sprite.png",
+  "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-7f15814f-66cf-415f-b092-dd8928c1431c.png",
+  "prompt": "Square 1:1 transparent PNG animation sprite sheet. EXACTLY 2x2 four equal SQUARE cells. One same referenced organism in each cell, entire silhouette occupies 80–85% of cell longest dimension, about 40–42% of TOTAL canvas; transparent margin at least 7% each side per cell. Center horizontal and vertical dividers empty. Preserve exact pink bulb-tipped anemone, cream tentacle shafts, orange mouth and rounded red-pink foot from reference. Fixed rooted organism, no added eyes/face. Foot and central mouth stay at identical pixel coordinates and size in every cell. Animate only slight coordinated swaying of upper tentacle tips in four gentle loop phases, no whole organism bobbing or scaling. Reference1 is EXACT identity, reference2 Pongi cartoon STYLE: warm brown outlines, soft clean cel shading. Keep rigid body registration invariant, do not independently recenter or resize by pose. All four frames same direction. Real alpha transparency outside silhouettes, no black/colored backdrop, glow, floor/shadows, labels, grid or UI.",
+  "tool": "image_gen",
+  "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "identity_reference": "assets/storage-upload/new/20261015-133650/decorations/rare/coral-flower-anemone_thumbnail.png"
+}

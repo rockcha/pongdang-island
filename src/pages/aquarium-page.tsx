@@ -13,10 +13,11 @@ import {CollectibleStorageDialog} from '@/features/aquarium/collectible-storage-
 import type { AquariumState } from '@/features/aquarium/api'
 import {CollectionDialog} from '@/features/collection/collection-dialog'
 import { Link } from 'react-router'
-import { Anchor } from 'lucide-react'
+import { Map as MapIcon } from 'lucide-react'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription,DialogTrigger } from '@/components/ui/dialog'
 import { ConfirmDialog } from '@/components/confirm-dialog'
+import { TradeQuestion } from '@/components/trade-question'
 
 export function AquariumPage() {
  const {wallet,transact,busy:goldBusy,loading:goldLoading,error:goldLoadError}=useGold()
@@ -44,7 +45,7 @@ export function AquariumPage() {
   locked.current=true;setBusy(true)
   try{
    if(owned && tank){const data=await manageTank(tank.id,'equip',id);if(active.current)setState(data)}
-   else{await transact({type:'buy',id:`background:${id}`});await reload();toast.success('배경을 구매했어요. 적용 버튼으로 꾸며보세요.')}
+   else{await transact({type:'buy',id:`background:${id}`,name:state?.catalog.find(item=>item.id===id)?.name});await reload()}
   }catch(cause){toast.error(goldError(cause))}finally{locked.current=false;if(active.current)setBusy(false)}
  }
  const tank=state?.tanks.find(item=>item.id===selectedId)??state?.tanks[0]
@@ -94,7 +95,7 @@ export function AquariumPage() {
  async function sell(ids:string[]){
   if(locked.current||goldBusy)throw new Error('다른 작업을 마친 뒤 다시 판매해주세요.')
   locked.current=true;setBusy(true)
-  try{await transact({type:'sell',id:`collectibles:${[...ids].sort().join(',')}`});setState(current=>current?{...current,inhabitants:current.inhabitants.filter(item=>!ids.includes(item.id))}:current);await reload();toast.success('개체를 판매했어요.')}
+  try{await transact({type:'sell',id:`collectibles:${[...ids].sort().join(',')}`});setState(current=>current?{...current,inhabitants:current.inhabitants.filter(item=>!ids.includes(item.id))}:current);await reload()}
   finally{locked.current=false;if(active.current)setBusy(false)}
  }
  async function move(ids:string[],targetTankId:string|null){
@@ -111,7 +112,7 @@ export function AquariumPage() {
  async function buyTank(){
   if(locked.current)return
   locked.current=true;setBusy(true);setPurchaseError('')
-  try{await transact({type:'buy',id:'aquarium:tank'});await reload();setPurchaseOpen(false);toast.success('새 어항을 구매했어요.')}
+  try{await transact({type:'buy',id:'aquarium:tank'});setPurchaseOpen(false);await reload()}
   catch(cause){setPurchaseError(goldError(cause))}finally{locked.current=false;if(active.current)setBusy(false)}
  }
  async function rename(){
@@ -126,11 +127,11 @@ export function AquariumPage() {
    onGiftSent={ids=>{setState(current=>current?{...current,inhabitants:current.inhabitants.filter(item=>!ids.includes(item.id))}:current);void reload()}}
    navigation={state?{index:tankIndex,count:state.tanks.length,onChange:changeTank}:undefined}
    backgroundControls={state&&tank?<AquariumBackgroundDialog state={state} selectedId={tank.background_id} gold={wallet.gold} busy={busy||goldBusy} loading={goldLoading} error={!!goldLoadError} onAct={act}/>:null}
-   storageControls={<>{state&&tank&&<CollectibleStorageDialog state={state} currentTankId={tank.id} busy={busy||goldBusy} onAssign={move}/>}<CollectionDialog onAddTemporary={tank?addTemporary:undefined}/><Tooltip><TooltipTrigger render={<Link to="/harbor" aria-label="선착장으로" className="inline-flex size-10 shrink-0 items-center justify-center rounded-r-xl transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-ring"/>}><Anchor className="size-4"/></TooltipTrigger><TooltipContent>선착장으로</TooltipContent></Tooltip></>}
+   storageControls={<>{state&&tank&&<CollectibleStorageDialog state={state} currentTankId={tank.id} busy={busy||goldBusy} onAssign={move}/>}<CollectionDialog onAddTemporary={tank?addTemporary:undefined}/><Tooltip><TooltipTrigger render={<Link to="/harbor" aria-label="지도로" className="inline-flex size-10 shrink-0 items-center justify-center rounded-r-xl transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-ring"/>}><MapIcon className="size-4"/></TooltipTrigger><TooltipContent>지도로</TooltipContent></Tooltip></>}
    bottomControls={<>
     {tank&&<Dialog><DialogTrigger render={<Button variant="secondary" size="sm" className="max-w-32 truncate bg-background/85"/>}>{tank.name}</DialogTrigger><DialogContent><DialogHeader><DialogTitle>어항 이름</DialogTitle><DialogDescription>어항에 어울리는 이름을 붙여주세요.</DialogDescription></DialogHeader><form className="space-y-3" onSubmit={event=>{event.preventDefault();void rename()}}><Label htmlFor="tank-name">어항 이름</Label><Input id="tank-name" value={name} maxLength={20} required disabled={busy||goldBusy} onChange={event=>setName(event.target.value)}/><Button type="submit" disabled={busy||goldBusy||!name.trim()||name.trim()===tank.name}>저장</Button></form></DialogContent></Dialog>}
    </>}/>
-  <ConfirmDialog open={purchaseOpen} onOpenChange={setPurchaseOpen} title="새 어항을 구매하겠습니까?" description={`${state?.tankPrice??200}골드가 사용돼요. 새로운 어항에서 더 많은 바다 친구들을 꾸밀 수 있어요.`} busy={busy||goldBusy} error={purchaseError} confirmDisabled={!state||goldLoading||!!goldLoadError||wallet.gold<(state?.tankPrice??200)} onConfirm={()=>void buyTank()}/>
+  <ConfirmDialog open={purchaseOpen} onOpenChange={setPurchaseOpen} title={<TradeQuestion name="새 어항" price={state?.tankPrice??200}/>} description="새로운 어항에서 더 많은 바다 친구들을 꾸밀 수 있어요." busy={busy||goldBusy} error={purchaseError} confirmDisabled={!state||goldLoading||!!goldLoadError||wallet.gold<(state?.tankPrice??200)} onConfirm={()=>void buyTank()}/>
   {error&&<div role="alert" className="absolute inset-x-4 top-16 z-30 space-y-2 rounded-xl bg-background/95 p-3 text-sm text-destructive"><p>{error}</p><Button variant="outline" onClick={()=>void reload()}>다시 불러오기</Button></div>}
  </section>
 }

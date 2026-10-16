@@ -50,74 +50,74 @@
 }
 
 :root {
-    --background: #eff6ff;
-    --foreground: #1e3a5f;
-    --card: oklch(1 0 0);
-    --card-foreground: #1e3a5f;
-    --popover: oklch(1 0 0);
-    --popover-foreground: #1e3a5f;
-    --primary: #3b82f6;
-    --primary-hover: #2563eb;
-    --primary-foreground: #ffffff;
-    --secondary: #dbeafe;
-    --secondary-foreground: #1e3a5f;
-    --muted: #f1f5f9;
-    --muted-foreground: #52647a;
-    --accent: #dbeafe;
-    --accent-foreground: #1e3a5f;
+    --background: #fff8ee;
+    --foreground: #4a3328;
+    --card: #fffdf9;
+    --card-foreground: #4a3328;
+    --popover: #fffdf9;
+    --popover-foreground: #4a3328;
+    --primary: #995e36;
+    --primary-hover: #7d4829;
+    --primary-foreground: #fff8ee;
+    --secondary: #f2e2ce;
+    --secondary-foreground: #4a3328;
+    --muted: #f5ecdf;
+    --muted-foreground: #806651;
+    --accent: #f4dfcf;
+    --accent-foreground: #4a3328;
     --destructive: oklch(0.577 0.245 27.325);
-    --border: #d7e3f3;
-    --input: #c4d5ec;
-    --ring: #3b82f6;
+    --border: #ead7c2;
+    --input: #d7bda1;
+    --ring: #c98b57;
     --chart-1: oklch(0.87 0 0);
     --chart-2: oklch(0.556 0 0);
     --chart-3: oklch(0.439 0 0);
     --chart-4: oklch(0.371 0 0);
     --chart-5: oklch(0.269 0 0);
     --radius: 0.625rem;
-    --sidebar: #ffffff;
-    --sidebar-foreground: #1e3a5f;
-    --sidebar-primary: #3b82f6;
-    --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #dbeafe;
-    --sidebar-accent-foreground: #1e3a5f;
-    --sidebar-border: #d7e3f3;
-    --sidebar-ring: #3b82f6;
+    --sidebar: #fff8ee;
+    --sidebar-foreground: #4a3328;
+    --sidebar-primary: #995e36;
+    --sidebar-primary-foreground: #fff8ee;
+    --sidebar-accent: #f2dfc8;
+    --sidebar-accent-foreground: #75492d;
+    --sidebar-border: #ead7c2;
+    --sidebar-ring: #c98b57;
 }
 
 .dark {
-    --background: #0f172a;
-    --foreground: #e2e8f0;
-    --card: #17243a;
-    --card-foreground: #e2e8f0;
-    --popover: #17243a;
-    --popover-foreground: #e2e8f0;
-    --primary: #3b82f6;
-    --primary-hover: #2563eb;
-    --primary-foreground: #ffffff;
-    --secondary: #1e3a5f;
-    --secondary-foreground: #dbeafe;
-    --muted: #1e293b;
-    --muted-foreground: #a6b7ce;
-    --accent: #1e3a5f;
-    --accent-foreground: #dbeafe;
+    --background: #241c17;
+    --foreground: #f5e7d5;
+    --card: #30251e;
+    --card-foreground: #f5e7d5;
+    --popover: #30251e;
+    --popover-foreground: #f5e7d5;
+    --primary: #d6a06e;
+    --primary-hover: #e6b789;
+    --primary-foreground: #2d1e16;
+    --secondary: #433226;
+    --secondary-foreground: #f5e7d5;
+    --muted: #382c23;
+    --muted-foreground: #c4aa90;
+    --accent: #493426;
+    --accent-foreground: #f5e7d5;
     --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: #60a5fa;
+    --border: #574333;
+    --input: #6b503b;
+    --ring: #d6a06e;
     --chart-1: oklch(0.87 0 0);
     --chart-2: oklch(0.556 0 0);
     --chart-3: oklch(0.439 0 0);
     --chart-4: oklch(0.371 0 0);
     --chart-5: oklch(0.269 0 0);
-    --sidebar: #17243a;
-    --sidebar-foreground: #e2e8f0;
-    --sidebar-primary: #3b82f6;
-    --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #1e3a5f;
-    --sidebar-accent-foreground: #dbeafe;
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: #60a5fa;
+    --sidebar: #30251e;
+    --sidebar-foreground: #f5e7d5;
+    --sidebar-primary: #d6a06e;
+    --sidebar-primary-foreground: #2d1e16;
+    --sidebar-accent: #493426;
+    --sidebar-accent-foreground: #f5e7d5;
+    --sidebar-border: #574333;
+    --sidebar-ring: #d6a06e;
 }
 
 @layer base {
@@ -134,7 +134,7 @@
 
 .app-shell {
   min-height: 100svh;
-  padding-top: env(safe-area-inset-top, 0px);
+  padding-top: 0;
   padding-bottom: env(safe-area-inset-bottom, 0px);
   padding-left: max(1.5rem, env(safe-area-inset-left, 0px));
   padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
@@ -157,6 +157,74 @@ button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 [data-sonner-toaster][data-x-position="right"] {
   right: max(1rem, env(safe-area-inset-right, 0px)) !important;
 }
+
+[data-sonner-toaster] [data-sonner-toast][data-styled="true"] {
+  background: var(--pongi-cream) !important;
+  color: var(--pongi-ink) !important;
+  border: 1px solid var(--pongi-border) !important;
+  border-radius: 8px;
+  padding: 12px 16px;
+  gap: 10px;
+  box-shadow: 0 4px 20px #30271d12;
+  font-size: 13px;
+  line-height: 1.5;
+}
+[data-sonner-toaster] [data-sonner-toast] [data-title] { font-weight: 500; }
+[data-sonner-toaster] [data-sonner-toast] [data-description] { color: #80756b; font-size: 12px; }
+[data-sonner-toaster] [data-sonner-toast] [data-icon] { width: 28px; height: 28px; margin: 0; flex-shrink: 0; }
+[data-sonner-toaster] [data-sonner-toast][data-type="normal"]:not(:has([data-icon]))::before {
+  content: "";
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  background: url('/branding/pongi-starfish.png') center / contain no-repeat;
+}
+
+/* Pongi chrome: warm fur colors, restrained corners, no change to sea/rarity colors. */
+:root {
+  --pongi-cream: #fff8ee;
+  --pongi-caramel: #c98b57;
+  --pongi-coral: #f29b7d;
+  --pongi-ink: #4a3328;
+  --pongi-border: #ead7c2;
+}
+.pongi-header {
+  --primary: #995e36;
+  --primary-foreground: #fff8ee;
+  --muted: #f5e8d8;
+  --muted-foreground: #806651;
+  --border: #ead7c2;
+  color: var(--pongi-ink);
+  background: var(--pongi-cream);
+  border-color: var(--pongi-border);
+}
+.pongi-header { border-bottom: 1px solid var(--pongi-border); padding-top: calc(.5rem + env(safe-area-inset-top, 0px)); }
+.pongi-header button:hover, .pongi-header a:hover { background-color: #f5e8d8; }
+.pongi-header .header-gold, .pongi-header .header-gold:hover { background: transparent; border: 0; }
+.pongi-header .header-gold:hover { color: var(--primary); }
+.header-indicator { position: absolute; right: 0; top: 0; display: flex; align-items: center; justify-content: center; width: 16px; height: 16px; border-radius: 50%; background: #995e36; color: #fff8ee; font-size: 8px; line-height: 1; font-weight: 500; box-shadow: 0 0 0 2px #fff8ee; }
+.pongi-brand-title { font-weight: 400; }
+@keyframes attendance-stamp {
+  0% { transform: scale(1.5) rotate(-15deg); opacity: 0; }
+  25% { transform: scale(.9) rotate(4deg); opacity: 1; }
+  55% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0; }
+}
+.attendance-stamp { animation: attendance-stamp .9s ease-out forwards; }
+@media (prefers-reduced-motion: reduce) { .attendance-stamp { animation: none; display: none; } }
+.pongi-confirm {
+  --primary: #995e36;
+  --primary-foreground: #fff8ee;
+  --secondary: #f5e8d8;
+  --secondary-foreground: #4a3328;
+  --muted-foreground: #806651;
+  --ring: #c98b57;
+  background: var(--pongi-cream);
+  color: var(--pongi-ink);
+  border-color: var(--pongi-border);
+}
+.pongi-confirm button { border-radius: 8px; }
+[data-sonner-toaster] { z-index: 2147483647 !important; }
 
 @keyframes gold-change {
   0% { opacity: 0; }
@@ -217,7 +285,7 @@ button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation
  50% { background-position: 2.870813% 94.258373%; }
  75% { background-position: 97.767145% 94.258373%; }
 }
-.sailing-progress { animation: sailing-progress 5s linear forwards; transform-origin: left; }
+.sailing-progress { animation: sailing-progress 1.5s linear forwards; transform-origin: left; }
 @keyframes sailing-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @media (prefers-reduced-motion: reduce) {
  .pongi-raft, /* Register hull positions independently of paddles, flags and other moving parts. */
@@ -290,15 +358,62 @@ button, [role='button'] { cursor: pointer; }
  inset: 5px;
  z-index: -1;
  border-radius: 50%;
- background: radial-gradient(ellipse, color-mix(in srgb, var(--primary) 55%, transparent), color-mix(in srgb, var(--primary) 20%, transparent) 45%, transparent 72%);
+ background: radial-gradient(ellipse, rgb(56 189 248 / 55%), rgb(14 165 233 / 20%) 45%, transparent 72%);
  filter: blur(5px);
  opacity: 0;
  transition: opacity 220ms ease;
 }
 .harbor-map-selected::before { opacity: 1; }
+.harbor-map-piece > span:first-child { transition: transform 280ms ease-out; }
+.harbor-map-piece:focus-visible::before { opacity: 1; }
+.harbor-map-piece:focus-visible > span:first-child { transform: scale(1.08); }
+@media (hover: hover) {
+ .harbor-map-piece:hover::before { opacity: 1; }
+ .harbor-map-piece:hover > span:first-child { transform: scale(1.08); }
+}
 .harbor-map-selected > span:first-child {
  filter: drop-shadow(0 0 7px color-mix(in srgb, var(--primary) 65%, transparent));
 }
 @media (prefers-reduced-motion: reduce) {
- .harbor-map-piece::before { transition: none; }
+ .harbor-map-piece::before, .harbor-map-piece > span:first-child { transition: none; }
+ .harbor-map-piece:is(:hover, :focus-visible) > span:first-child { transform: none; }
+}
+
+/* Rarity colors tint the card; text keeps theme contrast. */
+.collection-card { color: var(--foreground); }
+
+@keyframes catch-rise{0%{opacity:0;transform:translate(-50%,80px) rotate(-16deg) scale(.65)}12%{opacity:1}48%{transform:translate(-50%,-22px) rotate(7deg) scale(1.06)}68%{transform:translate(-50%,-10px) rotate(-3deg) scale(1)}100%{opacity:1;transform:translate(-50%,-14px) rotate(0) scale(1)}}
+@keyframes catch-glow{from{opacity:0;scale:.3}to{opacity:1;scale:1.3}}
+@keyframes catch-spark{0%{opacity:0;transform:translate(0,80px) scale(0)}30%{opacity:1}100%{opacity:0;transform:translate(var(--spark-x),var(--spark-y))}}
+.catch-reveal-fish{animation:catch-rise 1.3s cubic-bezier(.18,.75,.28,1) both}.catch-reveal-glow{animation:catch-glow 1.2s ease-out both}.catch-reveal-spark{animation:catch-spark 1.3s ease-out both}
+@media(prefers-reduced-motion:reduce){.catch-reveal-fish{animation:none;transform:translateX(-50%)}.catch-reveal-glow{animation:none}.catch-reveal-spark{display:none}}
+
+@keyframes catch-ring{from{opacity:.8;transform:scale(.3)}to{opacity:0;transform:scale(1.8)}}
+@keyframes catch-drop{0%{opacity:0;transform:translate(0,0)}15%{opacity:.9}55%{opacity:.8;transform:translate(var(--drop-x),var(--drop-y))}100%{opacity:0;transform:translate(var(--drop-x),25px)}}
+.catch-surface-ring{transform-origin:120px 24px;animation:catch-ring 1.2s ease-out both}.catch-water-drop{animation:catch-drop .85s ease-out both}
+@media(prefers-reduced-motion:reduce){.catch-surface-ring,.catch-water-drop{animation:none;opacity:0}}
+
+@keyframes catch-center-rise{0%{opacity:0;transform:translateY(65px) rotate(-12deg) scale(.65)}55%{opacity:1;transform:translateY(-12px) rotate(4deg) scale(1.04)}100%{opacity:1;transform:translateY(0) rotate(0) scale(1)}}
+.catch-center-figure{animation:catch-center-rise 1.1s cubic-bezier(.18,.75,.28,1) both}
+@media(prefers-reduced-motion:reduce){.catch-center-figure{animation:none}}
+
+@keyframes fishing-failure-appear{from{opacity:0;transform:translateY(12px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+.fishing-failure-figure{animation:fishing-failure-appear .55s ease-out both}
+@media(prefers-reduced-motion:reduce){.fishing-failure-figure{animation:none}}
+
+@keyframes catch-grade-rays{from{rotate:0deg}to{rotate:360deg}}
+.catch-grade-rays{animation:catch-grade-rays 24s linear infinite}
+@media(prefers-reduced-motion:reduce){.catch-grade-rays{animation:none}}
+
+@keyframes native-species-loop{to{transform:translateX(-50%)}}
+.native-species-carousel-track{animation:native-species-loop linear infinite}
+.native-species-carousel[data-looping=true]{overflow-x:hidden}
+.native-species-carousel:focus-within{overflow-x:auto}
+.native-species-carousel:focus-within .native-species-carousel-track{animation:none}
+.native-species-carousel:focus-within .native-species-carousel-copy{display:none}
+@media(hover:hover){.native-species-carousel:hover .native-species-carousel-track{animation-play-state:paused}}
+@media(prefers-reduced-motion:reduce){
+ .native-species-carousel[data-looping=true]{overflow-x:auto}
+ .native-species-carousel-track{animation:none}
+ .native-species-carousel-copy{display:none}
 }

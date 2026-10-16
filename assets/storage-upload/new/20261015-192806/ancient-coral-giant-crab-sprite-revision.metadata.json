@@ -1,0 +1,11 @@
+{
+  "id": "ancient-coral-giant-crab",
+  "type": "sprite",
+  "file": "fish/mythic/ancient-coral-giant-crab_sprite.png",
+  "storage_path": "fish/mythic/ancient-coral-giant-crab_sprite.png",
+  "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-529c9316-3160-48a4-93b8-b675a9ab884e.png",
+  "prompt": "Correct the framing of this existing square transparent 2x2 game sprite sheet. Preserve EXACT same character and four distinct poses and RIGHT orientation. Uniformly SHRINK ALL FOUR creatures by factor 0.83 within their respective cells. Do NOT change canvas size. In every cell place creature comfortably centered with at least 9% CELL fully empty transparent border on ALL FOUR sides. Each silhouette occupies at most 82% of cell longest dimension (41% of TOTAL canvas). Center dividing horizontal and vertical bands must be EMPTY transparent. Remove stray colored pixels or hazy flecks outside the silhouette, particularly near dividers and outer edges. No cropping, no duplicate pose, no independent rescaling among frames. Keep rigid head/body aligned to SAME CELL-RELATIVE position and size in every frame. Stationary crab: carapace, eyes and coral trunks exactly fixed; only small toe joints and coral tips move.  True ALPHA transparency, no opaque black/colored/white backdrop, glow cloud, text or grid. Square 1:1 output, four equal square cells.",
+  "tool": "image_gen",
+  "revision": "Uniform per-cell reframing to clear alpha boundaries; preserve rigid body anchors",
+  "identity_reference": "assets/storage-upload/new/20261015-192806/fish/mythic/ancient-coral-giant-crab_sprite.png"
+}

@@ -5,5 +5,6 @@ it('recognizes deliberate horizontal swipes and ignores taps, scrolling and slow
  expect(tankSwipeDirection(100,15,300)).toBe('previous')
  expect(tankSwipeDirection(20,0,100)).toBeNull()
  expect(tankSwipeDirection(80,110,250)).toBeNull()
- expect(tankSwipeDirection(-100,0,1200)).toBeNull()
+ expect(tankSwipeDirection(-100,0,1200)).toBe('next')
+ expect(tankSwipeDirection(-100,0,2000)).toBeNull()
 })

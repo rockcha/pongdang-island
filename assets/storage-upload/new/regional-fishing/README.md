@@ -1,3 +1,5 @@
+> 생성 배치 기록입니다. 현재 생성·저장 규칙은 [에셋 안내](../../../README.md)를 따릅니다.
+
 # 해역 지도·퐁당 개체 업로드
 
 새 투명 PNG 9장을 이 폴더에 저장합니다. collectibles 버킷에 아래 경로로 업로드하고 [32 SQL](../../../../supabase/sql/32-regional-fishing/01-regional-fishing.sql)을 실행합니다. 먼저 31까지 적용되어 있어야 합니다.

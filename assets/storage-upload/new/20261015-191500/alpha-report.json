@@ -1,0 +1,63 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261015-191500/fish/rare/sea-crocodile-v2_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  79,
+                                           "y":  267,
+                                           "width":  485,
+                                           "height":  184,
+                                           "widthRatio":  0.7735,
+                                           "heightRatio":  0.2935,
+                                           "alphaPixels":  45813,
+                                           "leftAnchorY":  357.148,
+                                           "rightAnchorY":  329.12
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  63,
+                                           "y":  267,
+                                           "width":  494,
+                                           "height":  184,
+                                           "widthRatio":  0.7879,
+                                           "heightRatio":  0.2935,
+                                           "alphaPixels":  46129,
+                                           "leftAnchorY":  362.585,
+                                           "rightAnchorY":  330.181
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  78,
+                                           "y":  225,
+                                           "width":  486,
+                                           "height":  185,
+                                           "widthRatio":  0.7751,
+                                           "heightRatio":  0.2951,
+                                           "alphaPixels":  45425,
+                                           "leftAnchorY":  320.624,
+                                           "rightAnchorY":  287.052
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  62,
+                                           "y":  226,
+                                           "width":  497,
+                                           "height":  187,
+                                           "widthRatio":  0.7927,
+                                           "heightRatio":  0.2982,
+                                           "alphaPixels":  47973,
+                                           "leftAnchorY":  297.69,
+                                           "rightAnchorY":  289.791
+                                       }
+                                   ]
+                    }
+                ]
+}

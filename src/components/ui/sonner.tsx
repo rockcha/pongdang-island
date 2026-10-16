@@ -1,26 +1,30 @@
 import { Toaster as Sonner, type ToasterProps } from "sonner"
-import { CircleCheckIcon, InfoIcon, TriangleAlertIcon, OctagonXIcon, Loader2Icon } from "lucide-react"
+import {createPortal} from 'react-dom'
+
+function Starfish({loading=false}:{loading?:boolean}){
+  return <img src="/branding/pongi-starfish.png" alt="" aria-hidden="true" width={28} height={28} className={`size-7 shrink-0 object-contain ${loading?'animate-pulse motion-reduce:animate-none':''}`}/>
+}
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  return (
+  return typeof document==='undefined'?null:createPortal(
     <Sonner
       theme="light"
       className="toaster group"
       icons={{
         success: (
-          <CircleCheckIcon className="size-4" />
+          <Starfish />
         ),
         info: (
-          <InfoIcon className="size-4" />
+          <Starfish />
         ),
         warning: (
-          <TriangleAlertIcon className="size-4" />
+          <Starfish />
         ),
         error: (
-          <OctagonXIcon className="size-4" />
+          <Starfish />
         ),
         loading: (
-          <Loader2Icon className="size-4 animate-spin" />
+          <Starfish loading />
         ),
       }}
       style={
@@ -38,7 +42,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
         },
       }}
       {...props}
-    />
+    />, document.body
   )
 }
 

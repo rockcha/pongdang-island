@@ -33,6 +33,20 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      odd_even_game:{Args:import('@/features/arcade/odd-even-api').OddEvenAction;Returns:import('@/features/arcade/odd-even-api').OddEvenState}
+      odd_even_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/odd-even-api').OddEvenRanks}
+      memory_game:{Args:import('@/features/arcade/memory-api').MemoryAction;Returns:import('@/features/arcade/memory-api').MemoryState}
+      memory_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/memory-api').MemoryLeaderboard}
+      shadow_game:{Args:import('@/features/arcade/shadow-api').ShadowAction;Returns:import('@/features/arcade/shadow-api').ShadowState}
+      shadow_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/shadow-api').ShadowLeaderboard}
+      attendance_state:{Args:Record<string,never>;Returns:import('@/features/attendance/api').AttendanceState}
+      claim_attendance:{Args:{p_day:string};Returns:import('@/features/attendance/api').AttendanceClaim}
+      fishing_rod_state:{Args:Record<string,never>;Returns:import('@/features/fishing/rod-api').RodState}
+      equip_fishing_rod:{Args:{p_rod_id:string};Returns:import('@/features/fishing/rod-api').RodState}
+      trade_fishing_rod:{Args:{p_rod_id:string;p_action:string;p_operation_id:string};Returns:import('@/features/gold/api').GoldState & import('@/features/fishing/rod-api').RodState & {delta:number}}
+      prepare_fishing:{Args:{p_region_id:string;p_bait_id:string;p_operation_id:string};Returns:import('@/features/fishing/api').PreparedFishing}
+      finish_fishing:{Args:{p_operation_id:string;p_won:boolean};Returns:import('@/features/fishing/api').FishingResult}
+      arrange_collectible:{Args:{p_collectible_id:string;p_tank_id:string;p_x:number;p_y:number;p_rotation:number;p_scale:number;p_flipped:boolean};Returns:import('@/features/collection/api').DecorationPlacement & {id:string}}
       collectible_storage:{Args:{p_offset?:number;p_query?:string;p_kind?:string};Returns:import('@/features/aquarium/api').CollectibleStorage}
       move_collectibles:{Args:{p_collectible_ids:string[];p_tank_id:string|null};Returns:import('@/features/aquarium/api').AquariumState}
       send_collectible_gift:{Args:{p_recipient_id:string;p_collectible_ids:string[];p_message:string;p_operation_id:string};Returns:import('@/features/gifts/api').GiftRecord}

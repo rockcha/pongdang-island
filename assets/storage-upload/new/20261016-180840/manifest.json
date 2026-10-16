@@ -1,0 +1,37 @@
+{
+  "tool": "built-in image_gen",
+  "entries": [
+    {
+      "name": "default",
+      "bucket": "aquarium-backgrounds",
+      "storage_path": "default.png",
+      "reference": "assets/storage-upload/aquarium-backgrounds-portrait/default.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-623c3790-de31-42e5-92ef-7a01ba85ac05.png",
+      "prompt": "Create one portrait 9:16 underwater aquarium game background, full bleed, soft polished hand-painted illustration matching the supplied reference's palette and gentle painting style. Refactor to an elegant MINIMAL environment: 85-90% calm open water negative space, subtle atmospheric gradients and soft broad light shafts, faint distant seabed, clean low-contrast sand along bottom 10%. Decorative plants/rocks confined to tiny bottom corners, no tall framing clutter, no detailed rock walls, no animals or fish, no UI or text, no glitter or bubble confetti. Beautiful natural water depth rather than flat color. Clear turquoise daytime water, warm ivory sand, just two small rounded stones and a little sea grass at bottom corners."
+    },
+    {
+      "name": "coral",
+      "bucket": "aquarium-backgrounds",
+      "storage_path": "coral.png",
+      "reference": "assets/storage-upload/aquarium-backgrounds-portrait/coral.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-ab762ce4-c5cb-4387-8566-4a11e7e315bd.png",
+      "prompt": "Create one portrait 9:16 underwater aquarium game background, full bleed, soft polished hand-painted illustration matching the supplied reference's palette and gentle painting style. Refactor to an elegant MINIMAL environment: 85-90% calm open water negative space, subtle atmospheric gradients and soft broad light shafts, faint distant seabed, clean low-contrast sand along bottom 10%. Decorative plants/rocks confined to tiny bottom corners, no tall framing clutter, no detailed rock walls, no animals or fish, no UI or text, no glitter or bubble confetti. Beautiful natural water depth rather than flat color. Airy mint aqua water with blush light, ivory sand, only two small low pastel coral sprigs at bottom corners. No coral garden clutter."
+    },
+    {
+      "name": "moon",
+      "bucket": "aquarium-backgrounds",
+      "storage_path": "moon.png",
+      "reference": "assets/storage-upload/aquarium-backgrounds-portrait/moon.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-ea1a90db-4f3a-4ee2-a368-8532fe60167c.png",
+      "prompt": "Create one portrait 9:16 underwater aquarium game background, full bleed, soft polished hand-painted illustration matching the supplied reference's palette and gentle painting style. Refactor to an elegant MINIMAL environment: 85-90% calm open water negative space, subtle atmospheric gradients and soft broad light shafts, faint distant seabed, clean low-contrast sand along bottom 10%. Decorative plants/rocks confined to tiny bottom corners, no tall framing clutter, no detailed rock walls, no animals or fish, no UI or text, no glitter or bubble confetti. Beautiful natural water depth rather than flat color. Dreamy deep blue and muted periwinkle water, gentle silver moonlight from above, blue-gray sand, only a tiny low grass tuft and stone at bottom corners. Keep dark water readable and clear."
+    },
+    {
+      "name": "pearl",
+      "bucket": "aquarium-backgrounds",
+      "storage_path": "pearl.png",
+      "reference": "assets/storage-upload/aquarium-backgrounds-portrait/pearl.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-8b0d5ba7-138a-43d2-bdfe-3dbbe176557a.png",
+      "prompt": "Create one portrait 9:16 underwater aquarium game background, full bleed, soft polished hand-painted illustration matching the supplied reference's palette and gentle painting style. Refactor to an elegant MINIMAL environment: 85-90% calm open water negative space, subtle atmospheric gradients and soft broad light shafts, faint distant seabed, clean low-contrast sand along bottom 10%. Decorative plants/rocks confined to tiny bottom corners, no tall framing clutter, no detailed rock walls, no animals or fish, no UI or text, no glitter or bubble confetti. Beautiful natural water depth rather than flat color. Luminous soft aqua and lavender water, very subtle pearlescent warm light, pale cream sand, a single small closed pearl shell at the bottom corner and one smooth stone. No ruins, no arches, no piles of shells."
+    }
+  ]
+}

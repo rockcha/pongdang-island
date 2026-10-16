@@ -1,0 +1,234 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261015-204537/decorations/normal/pearl-bearing-clam_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  79,
+                                           "y":  163,
+                                           "width":  513,
+                                           "height":  458,
+                                           "widthRatio":  0.8182,
+                                           "heightRatio":  0.7305,
+                                           "alphaPixels":  175321,
+                                           "leftAnchorY":  399.761,
+                                           "rightAnchorY":  387.546
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  54,
+                                           "y":  70,
+                                           "width":  500,
+                                           "height":  551,
+                                           "widthRatio":  0.7974,
+                                           "heightRatio":  0.8788,
+                                           "alphaPixels":  204016,
+                                           "leftAnchorY":  366.694,
+                                           "rightAnchorY":  349.253
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  79,
+                                           "y":  86,
+                                           "width":  512,
+                                           "height":  461,
+                                           "widthRatio":  0.8166,
+                                           "heightRatio":  0.7352,
+                                           "alphaPixels":  175636,
+                                           "leftAnchorY":  330.462,
+                                           "rightAnchorY":  314.659
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  42,
+                                           "y":  142,
+                                           "width":  517,
+                                           "height":  405,
+                                           "widthRatio":  0.8246,
+                                           "heightRatio":  0.6459,
+                                           "alphaPixels":  155428,
+                                           "leftAnchorY":  347.656,
+                                           "rightAnchorY":  341.685
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261015-204537/decorations/normal/seashell-pinwheel_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  153,
+                                           "y":  67,
+                                           "width":  419,
+                                           "height":  527,
+                                           "widthRatio":  0.6683,
+                                           "heightRatio":  0.8405,
+                                           "alphaPixels":  99131,
+                                           "leftAnchorY":  247.667,
+                                           "rightAnchorY":  262.277
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  58,
+                                           "y":  45,
+                                           "width":  452,
+                                           "height":  549,
+                                           "widthRatio":  0.7209,
+                                           "heightRatio":  0.8756,
+                                           "alphaPixels":  92209,
+                                           "leftAnchorY":  250.265,
+                                           "rightAnchorY":  281.207
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  139,
+                                           "y":  29,
+                                           "width":  432,
+                                           "height":  546,
+                                           "widthRatio":  0.689,
+                                           "heightRatio":  0.8708,
+                                           "alphaPixels":  84940,
+                                           "leftAnchorY":  243.847,
+                                           "rightAnchorY":  228.147
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  60,
+                                           "y":  28,
+                                           "width":  451,
+                                           "height":  547,
+                                           "widthRatio":  0.7193,
+                                           "heightRatio":  0.8724,
+                                           "alphaPixels":  91981,
+                                           "leftAnchorY":  223.595,
+                                           "rightAnchorY":  248.476
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261015-204537/decorations/rare/coral-covered-treasure-chest_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  130,
+                                           "y":  168,
+                                           "width":  411,
+                                           "height":  366,
+                                           "widthRatio":  0.6555,
+                                           "heightRatio":  0.5837,
+                                           "alphaPixels":  107276,
+                                           "leftAnchorY":  337.019,
+                                           "rightAnchorY":  371.24
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  125,
+                                           "y":  111,
+                                           "width":  393,
+                                           "height":  428,
+                                           "widthRatio":  0.6268,
+                                           "heightRatio":  0.6826,
+                                           "alphaPixels":  116369,
+                                           "leftAnchorY":  313.171,
+                                           "rightAnchorY":  362.377
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  130,
+                                           "y":  93,
+                                           "width":  414,
+                                           "height":  430,
+                                           "widthRatio":  0.6603,
+                                           "heightRatio":  0.6858,
+                                           "alphaPixels":  128201,
+                                           "leftAnchorY":  294.332,
+                                           "rightAnchorY":  326.641
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  125,
+                                           "y":  125,
+                                           "width":  408,
+                                           "height":  387,
+                                           "widthRatio":  0.6507,
+                                           "heightRatio":  0.6172,
+                                           "alphaPixels":  112481,
+                                           "leftAnchorY":  305.624,
+                                           "rightAnchorY":  340.679
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261015-204537/decorations/rare/tiny-reef-carousel_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  128,
+                                           "y":  64,
+                                           "width":  377,
+                                           "height":  484,
+                                           "widthRatio":  0.6013,
+                                           "heightRatio":  0.7719,
+                                           "alphaPixels":  125383,
+                                           "leftAnchorY":  330.118,
+                                           "rightAnchorY":  330.924
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  123,
+                                           "y":  64,
+                                           "width":  375,
+                                           "height":  484,
+                                           "widthRatio":  0.5981,
+                                           "heightRatio":  0.7719,
+                                           "alphaPixels":  124093,
+                                           "leftAnchorY":  330.817,
+                                           "rightAnchorY":  330.321
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  128,
+                                           "y":  56,
+                                           "width":  377,
+                                           "height":  483,
+                                           "widthRatio":  0.6013,
+                                           "heightRatio":  0.7703,
+                                           "alphaPixels":  125119,
+                                           "leftAnchorY":  322.691,
+                                           "rightAnchorY":  322.802
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  122,
+                                           "y":  56,
+                                           "width":  376,
+                                           "height":  483,
+                                           "widthRatio":  0.5997,
+                                           "heightRatio":  0.7703,
+                                           "alphaPixels":  124744,
+                                           "leftAnchorY":  323.207,
+                                           "rightAnchorY":  322.698
+                                       }
+                                   ]
+                    }
+                ]
+}

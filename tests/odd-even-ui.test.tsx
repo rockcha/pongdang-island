@@ -1,0 +1,22 @@
+import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
+import {afterEach,beforeEach,expect,it,vi} from 'vitest'
+import OddEvenGame from '@/features/arcade/odd-even-game'
+const mocks=vi.hoisted(()=>({action:vi.fn(),ranking:vi.fn(),refresh:vi.fn(),friend:vi.fn()}))
+vi.mock('@/features/friends/api',async original=>({...await original<typeof import('@/features/friends/api')>(),sendFriendRequest:mocks.friend}))
+vi.mock('@/features/arcade/odd-even-api',async original=>({...await original<typeof import('@/features/arcade/odd-even-api')>(),oddEvenAction:mocks.action,oddEvenLeaderboard:mocks.ranking}))
+vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
+vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wallet:{gold:100},loading:false,refresh:mocks.refresh})}))
+beforeEach(()=>{vi.clearAllMocks();mocks.action.mockResolvedValue({run:null,maxWins:20});mocks.ranking.mockResolvedValue({rows:[],total:0})})
+afterEach(()=>{cleanup();vi.restoreAllMocks()})
+it('sends a friend request from cashout rankings and disables existing relationships',async()=>{
+ mocks.friend.mockResolvedValue(undefined)
+ mocks.ranking.mockResolvedValue({rows:[{id:'a',rank:1,userId:'u2',friendCode:'CODE2',nickname:'친구후보',gold:40,wins:2,mine:false,friendStatus:null},{id:'b',rank:2,userId:'u3',friendCode:'CODE3',nickname:'기존친구',gold:20,wins:1,mine:false,friendStatus:'accepted'},{id:'c',rank:3,nickname:'나',gold:20,wins:1,mine:true}],total:3})
+ render(<OddEvenGame/>);fireEvent.click(screen.getByRole('tab',{name:'랭킹'}))
+ const send=await screen.findByRole('button',{name:'친구후보 · 친구 요청'})
+ expect(screen.getByRole('button',{name:'기존친구 · 이미 친구예요'}).hasAttribute('disabled')).toBe(true)
+ fireEvent.click(send);await waitFor(()=>expect(mocks.friend).toHaveBeenCalledWith('CODE2'))
+ expect((await screen.findByRole('button',{name:'친구후보 · 요청 중'})).hasAttribute('disabled')).toBe(true)
+ expect(mocks.friend).toHaveBeenCalledOnce()
+})
+it('plays and cashes out free practice without any mutating RPC or wallet refresh',async()=>{vi.spyOn(Math,'random').mockReturnValue(0);render(<OddEvenGame/>);await waitFor(()=>expect(screen.getByRole('button',{name:'연습 시작'}).hasAttribute('disabled')).toBe(false));fireEvent.click(screen.getByRole('button',{name:'연습 시작'}));await waitFor(()=>expect(screen.getByRole('button',{name:'홀'}).hasAttribute('disabled')).toBe(false),{timeout:2000});fireEvent.click(screen.getByRole('button',{name:'홀'}));await screen.findByText('맞혔어요!');expect(screen.getByText('20')).toBeTruthy();fireEvent.click(screen.getByRole('button',{name:'묻고 더블로 가 !'}));await waitFor(()=>expect(screen.getByRole('button',{name:'홀'}).hasAttribute('disabled')).toBe(false),{timeout:2000});fireEvent.click(screen.getByRole('button',{name:'홀'}));await screen.findByText('40');expect(screen.queryByText(/연습 · 가상 골드/)).toBeNull();expect(screen.queryByText(/연속 성공/)).toBeNull();fireEvent.click(screen.getByRole('button',{name:'보상 받기'}));await screen.findByText('보상 수령 완료');expect(mocks.action.mock.calls.map(([arg])=>arg.p_action)).toEqual(['state']);expect(mocks.refresh).not.toHaveBeenCalled()},10000)
+it('resumes a real decision and sends its run and round when collecting gold',async()=>{const r={id:'run',stake:20,wins:1,round:1,stage:'decision',pearls:1,choice:'odd'};mocks.action.mockResolvedValueOnce({run:r,maxWins:20}).mockResolvedValue({run:{...r,stage:'banked'},maxWins:20});render(<OddEvenGame/>);await waitFor(()=>expect(screen.getByRole('button',{name:'보상 받기'}).hasAttribute('disabled')).toBe(false));fireEvent.click(screen.getByRole('button',{name:'보상 받기'}));await screen.findByText('보상 수령 완료');expect(mocks.action).toHaveBeenLastCalledWith({p_action:'cashout',p_run_id:'run',p_round:1,p_choice:undefined});await waitFor(()=>expect(mocks.refresh).toHaveBeenCalledOnce())})

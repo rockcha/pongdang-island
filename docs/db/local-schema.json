@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "4cccb877e1d5ba819d102a7f32d364e9d8441932b2acc288bd2613ee75321cac",
+  "migrationHash": "3981cb5f3ec5da0b667260d03985c815b0e1a60b367ddaa318805ca528ce5e6a",
   "structure": {
     "enums": [
       {
@@ -54,7 +54,19 @@
       },
       {
         "rls": true,
+        "name": "memory_game_boards",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
         "name": "region_settings",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "shadow_game_rounds",
         "schema": "app_private",
         "force_rls": false
       },
@@ -67,6 +79,12 @@
       {
         "rls": true,
         "name": "aquarium_tanks",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "attendance_claims",
         "schema": "public",
         "force_rls": false
       },
@@ -102,6 +120,12 @@
       },
       {
         "rls": true,
+        "name": "fishing_rods",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
         "name": "friend_requests",
         "schema": "public",
         "force_rls": false
@@ -114,7 +138,19 @@
       },
       {
         "rls": true,
+        "name": "memory_game_runs",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
         "name": "notifications",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "odd_even_runs",
         "schema": "public",
         "force_rls": false
       },
@@ -132,6 +168,12 @@
       },
       {
         "rls": true,
+        "name": "player_attendance",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
         "name": "player_collectibles",
         "schema": "public",
         "force_rls": false
@@ -139,6 +181,12 @@
       {
         "rls": true,
         "name": "player_discoveries",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "player_fishing_rods",
         "schema": "public",
         "force_rls": false
       },
@@ -162,6 +210,12 @@
       },
       {
         "rls": true,
+        "name": "player_rod_loadouts",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
         "name": "player_wallets",
         "schema": "public",
         "force_rls": false
@@ -169,6 +223,12 @@
       {
         "rls": true,
         "name": "regions",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "shadow_game_runs",
         "schema": "public",
         "force_rls": false
       }
@@ -232,6 +292,66 @@
         "generated": ""
       },
       {
+        "name": "run_id",
+        "type": "uuid",
+        "table": "memory_game_boards",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "deck",
+        "type": "text[]",
+        "table": "memory_game_boards",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "matched",
+        "type": "integer[]",
+        "table": "memory_game_boards",
+        "schema": "app_private",
+        "default": "'{}'::integer[]",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "first_card",
+        "type": "integer",
+        "table": "memory_game_boards",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "second_card",
+        "type": "integer",
+        "table": "memory_game_boards",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "clear_at",
+        "type": "timestamp with time zone",
+        "table": "memory_game_boards",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
         "name": "id",
         "type": "boolean",
         "table": "region_settings",
@@ -249,6 +369,116 @@
         "default": "true",
         "identity": "",
         "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "run_id",
+        "type": "uuid",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "number",
+        "type": "integer",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "target_id",
+        "type": "text",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "target_name",
+        "type": "text",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "image_path",
+        "type": "text",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "options",
+        "type": "jsonb",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "deadline",
+        "type": "timestamp with time zone",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "answered_at",
+        "type": "timestamp with time zone",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "correct",
+        "type": "boolean",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "timed_out",
+        "type": "boolean",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
         "generated": ""
       },
       {
@@ -349,6 +579,76 @@
         "default": "now()",
         "identity": "",
         "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "attendance_claims",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "claim_date",
+        "type": "date",
+        "table": "attendance_claims",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "attendance_claims",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "streak",
+        "type": "integer",
+        "table": "attendance_claims",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "sheet_day",
+        "type": "integer",
+        "table": "attendance_claims",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "gold",
+        "type": "integer",
+        "table": "attendance_claims",
+        "schema": "public",
+        "default": "50",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "bait_id",
+        "type": "text",
+        "table": "attendance_claims",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
         "generated": ""
       },
       {
@@ -893,6 +1193,66 @@
       },
       {
         "name": "id",
+        "type": "text",
+        "table": "fishing_rods",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "table": "fishing_rods",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "price",
+        "type": "integer",
+        "table": "fishing_rods",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "region_id",
+        "type": "text",
+        "table": "fishing_rods",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "failure_reduction_bp",
+        "type": "integer",
+        "table": "fishing_rods",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "native_bonus_bp",
+        "type": "integer",
+        "table": "fishing_rods",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
         "type": "uuid",
         "table": "friend_requests",
         "schema": "public",
@@ -1014,6 +1374,96 @@
       {
         "name": "id",
         "type": "uuid",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "timer_started_at",
+        "type": "timestamp with time zone",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "finished_at",
+        "type": "timestamp with time zone",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "abandoned_at",
+        "type": "timestamp with time zone",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "elapsed_ms",
+        "type": "bigint",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "moves",
+        "type": "integer",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
         "table": "notifications",
         "schema": "public",
         "default": "gen_random_uuid()",
@@ -1122,6 +1572,126 @@
         "generated": ""
       },
       {
+        "name": "id",
+        "type": "uuid",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "payout_operation_id",
+        "type": "uuid",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "stake",
+        "type": "integer",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "default": "10",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "wins",
+        "type": "integer",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "round",
+        "type": "integer",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "default": "1",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "stage",
+        "type": "text",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "default": "'choose'::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "pearls",
+        "type": "integer",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "choice",
+        "type": "text",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "finished_at",
+        "type": "timestamp with time zone",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
         "name": "user_id",
         "type": "uuid",
         "table": "owned_aquarium_backgrounds",
@@ -1167,6 +1737,46 @@
         "table": "player_aquariums",
         "schema": "public",
         "default": "'default'::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "player_attendance",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "last_claim_date",
+        "type": "date",
+        "table": "player_attendance",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "streak",
+        "type": "integer",
+        "table": "player_attendance",
+        "schema": "public",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "completed_sheets",
+        "type": "integer",
+        "table": "player_attendance",
+        "schema": "public",
+        "default": "0",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -1334,6 +1944,36 @@
       {
         "name": "user_id",
         "type": "uuid",
+        "table": "player_fishing_rods",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "rod_id",
+        "type": "text",
+        "table": "player_fishing_rods",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "acquired_at",
+        "type": "timestamp with time zone",
+        "table": "player_fishing_rods",
+        "schema": "public",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
         "table": "player_map_fragments",
         "schema": "public",
         "default": null,
@@ -1429,6 +2069,26 @@
         "default": null,
         "identity": "",
         "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "player_rod_loadouts",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "equipped_rod_id",
+        "type": "text",
+        "table": "player_rod_loadouts",
+        "schema": "public",
+        "default": "'basic'::text",
+        "identity": "",
+        "nullable": false,
         "generated": ""
       },
       {
@@ -1550,6 +2210,76 @@
         "identity": "",
         "nullable": false,
         "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "score",
+        "type": "integer",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "lives",
+        "type": "integer",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "default": "3",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "finished_at",
+        "type": "timestamp with time zone",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
       }
     ],
     "indexes": [
@@ -1560,10 +2290,28 @@
         "definition": "CREATE UNIQUE INDEX gold_settings_pkey ON app_private.gold_settings USING btree (id)"
       },
       {
+        "name": "memory_game_boards_pkey",
+        "table": "memory_game_boards",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX memory_game_boards_pkey ON app_private.memory_game_boards USING btree (run_id)"
+      },
+      {
         "name": "region_settings_pkey",
         "table": "region_settings",
         "schema": "app_private",
         "definition": "CREATE UNIQUE INDEX region_settings_pkey ON app_private.region_settings USING btree (id)"
+      },
+      {
+        "name": "shadow_game_rounds_pkey",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX shadow_game_rounds_pkey ON app_private.shadow_game_rounds USING btree (id)"
+      },
+      {
+        "name": "shadow_game_rounds_run_id_number_key",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX shadow_game_rounds_run_id_number_key ON app_private.shadow_game_rounds USING btree (run_id, number)"
       },
       {
         "name": "aquarium_backgrounds_image_path_key",
@@ -1600,6 +2348,18 @@
         "table": "aquarium_tanks",
         "schema": "public",
         "definition": "CREATE UNIQUE INDEX aquarium_tanks_pkey ON public.aquarium_tanks USING btree (id)"
+      },
+      {
+        "name": "attendance_claims_pkey",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX attendance_claims_pkey ON public.attendance_claims USING btree (user_id, claim_date)"
+      },
+      {
+        "name": "attendance_claims_user_id_operation_id_key",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX attendance_claims_user_id_operation_id_key ON public.attendance_claims USING btree (user_id, operation_id)"
       },
       {
         "name": "collectible_gifts_pkey",
@@ -1674,6 +2434,12 @@
         "definition": "CREATE UNIQUE INDEX fishing_baits_sort_order_key ON public.fishing_baits USING btree (sort_order)"
       },
       {
+        "name": "fishing_rods_pkey",
+        "table": "fishing_rods",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX fishing_rods_pkey ON public.fishing_rods USING btree (id)"
+      },
+      {
         "name": "friend_requests_active_pair",
         "table": "friend_requests",
         "schema": "public",
@@ -1702,6 +2468,30 @@
         "table": "gold_transactions",
         "schema": "public",
         "definition": "CREATE UNIQUE INDEX gold_transactions_pkey ON public.gold_transactions USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "memory_game_runs_pkey",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX memory_game_runs_pkey ON public.memory_game_runs USING btree (id)"
+      },
+      {
+        "name": "memory_game_runs_user_id_operation_id_key",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX memory_game_runs_user_id_operation_id_key ON public.memory_game_runs USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "memory_one_active",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX memory_one_active ON public.memory_game_runs USING btree (user_id) WHERE ((finished_at IS NULL) AND (abandoned_at IS NULL))"
+      },
+      {
+        "name": "memory_week_rank",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "definition": "CREATE INDEX memory_week_rank ON public.memory_game_runs USING btree (finished_at, elapsed_ms, user_id) WHERE (finished_at IS NOT NULL)"
       },
       {
         "name": "gift_notification_once",
@@ -1734,6 +2524,30 @@
         "definition": "CREATE INDEX notifications_unread ON public.notifications USING btree (recipient_id, category) WHERE (read_at IS NULL)"
       },
       {
+        "name": "odd_even_best",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "CREATE INDEX odd_even_best ON public.odd_even_runs USING btree (stake DESC, finished_at, id) WHERE (stage = 'banked'::text)"
+      },
+      {
+        "name": "odd_even_one_active",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX odd_even_one_active ON public.odd_even_runs USING btree (user_id) WHERE (finished_at IS NULL)"
+      },
+      {
+        "name": "odd_even_runs_pkey",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX odd_even_runs_pkey ON public.odd_even_runs USING btree (id)"
+      },
+      {
+        "name": "odd_even_runs_user_id_operation_id_key",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX odd_even_runs_user_id_operation_id_key ON public.odd_even_runs USING btree (user_id, operation_id)"
+      },
+      {
         "name": "owned_aquarium_backgrounds_pkey",
         "table": "owned_aquarium_backgrounds",
         "schema": "public",
@@ -1744,6 +2558,12 @@
         "table": "player_aquariums",
         "schema": "public",
         "definition": "CREATE UNIQUE INDEX player_aquariums_pkey ON public.player_aquariums USING btree (user_id)"
+      },
+      {
+        "name": "player_attendance_pkey",
+        "table": "player_attendance",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX player_attendance_pkey ON public.player_attendance USING btree (user_id)"
       },
       {
         "name": "collectible_storage_lookup",
@@ -1782,6 +2602,12 @@
         "definition": "CREATE UNIQUE INDEX player_discoveries_pkey ON public.player_discoveries USING btree (user_id, species_id)"
       },
       {
+        "name": "player_fishing_rods_pkey",
+        "table": "player_fishing_rods",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX player_fishing_rods_pkey ON public.player_fishing_rods USING btree (user_id, rod_id)"
+      },
+      {
         "name": "player_map_fragments_pkey",
         "table": "player_map_fragments",
         "schema": "public",
@@ -1806,6 +2632,12 @@
         "definition": "CREATE UNIQUE INDEX player_profiles_pkey ON public.player_profiles USING btree (id)"
       },
       {
+        "name": "player_rod_loadouts_pkey",
+        "table": "player_rod_loadouts",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX player_rod_loadouts_pkey ON public.player_rod_loadouts USING btree (user_id)"
+      },
+      {
         "name": "player_wallets_pkey",
         "table": "player_wallets",
         "schema": "public",
@@ -1828,6 +2660,30 @@
         "table": "regions",
         "schema": "public",
         "definition": "CREATE UNIQUE INDEX regions_sort_order_key ON public.regions USING btree (sort_order)"
+      },
+      {
+        "name": "shadow_game_runs_pkey",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX shadow_game_runs_pkey ON public.shadow_game_runs USING btree (id)"
+      },
+      {
+        "name": "shadow_game_runs_user_id_operation_id_key",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX shadow_game_runs_user_id_operation_id_key ON public.shadow_game_runs USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "shadow_leaderboard",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "CREATE INDEX shadow_leaderboard ON public.shadow_game_runs USING btree (score DESC, finished_at, id) WHERE (finished_at IS NOT NULL)"
+      },
+      {
+        "name": "shadow_one_active_run",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX shadow_one_active_run ON public.shadow_game_runs USING btree (user_id) WHERE (finished_at IS NULL)"
       }
     ],
     "policies": [
@@ -1852,6 +2708,18 @@
         "tablename": "aquarium_tanks",
         "permissive": "PERMISSIVE",
         "policyname": "tanks_owner_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(user_id = ( SELECT auth.uid() AS uid))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "attendance_claims",
+        "permissive": "PERMISSIVE",
+        "policyname": "attendance_claim_owner_read",
         "schemaname": "public",
         "with_check": null
       },
@@ -1912,6 +2780,18 @@
         "tablename": "fishing_baits",
         "permissive": "PERMISSIVE",
         "policyname": "baits_catalog_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "true",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "fishing_rods",
+        "permissive": "PERMISSIVE",
+        "policyname": "rods_catalog_read",
         "schemaname": "public",
         "with_check": null
       },
@@ -1989,6 +2869,18 @@
       },
       {
         "cmd": "SELECT",
+        "qual": "(user_id = ( SELECT auth.uid() AS uid))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "player_attendance",
+        "permissive": "PERMISSIVE",
+        "policyname": "attendance_owner_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
         "qual": "((user_id = ( SELECT auth.uid() AS uid)) AND (escrow_gift_id IS NULL))",
         "roles": [
           "authenticated"
@@ -2008,6 +2900,18 @@
         "tablename": "player_discoveries",
         "permissive": "PERMISSIVE",
         "policyname": "discovery_owner_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(user_id = ( SELECT auth.uid() AS uid))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "player_fishing_rods",
+        "permissive": "PERMISSIVE",
+        "policyname": "rods_owner_read",
         "schemaname": "public",
         "with_check": null
       },
@@ -2044,6 +2948,18 @@
         "tablename": "player_profiles",
         "permissive": "PERMISSIVE",
         "policyname": "profiles_related_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(user_id = ( SELECT auth.uid() AS uid))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "player_rod_loadouts",
+        "permissive": "PERMISSIVE",
+        "policyname": "rod_loadout_owner_read",
         "schemaname": "public",
         "with_check": null
       },
@@ -2187,6 +3103,16 @@
         "securityDefiner": true
       },
       {
+        "name": "attendance_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.attendance_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_today date:=(transaction_timestamp() at time zone 'Asia/Seoul')::date;\n a public.player_attendance;v_checked boolean;v_streak integer;v_day integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n select * into a from public.player_attendance where user_id=v_uid;\n v_checked:=coalesce(a.last_claim_date=v_today,false);\n v_streak:=case when a.last_claim_date between v_today-1 and v_today then a.streak else 0 end;\n v_day:=case when v_checked then (v_streak-1)%30+1 else v_streak%30+1 end;\n return jsonb_build_object('today',v_today,'checkedIn',v_checked,'streak',v_streak,\n  'currentDay',v_day,'completedDays',case when v_checked then v_day else v_day-1 end,\n  'sheetNumber',coalesce(a.completed_sheets,0)+case when v_checked and v_day=30 then 0 else 1 end,\n  'completedSheets',coalesce(a.completed_sheets,0),'reset',coalesce(a.last_claim_date<v_today-1,false));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "buy_aquarium_tank",
         "config": [
           "search_path=\"\""
@@ -2225,6 +3151,16 @@
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.check_native_collectible_habitats()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare v_ids text[];v_id text;v_region text;v_count bigint;v_match bigint;\nbegin\n if tg_table_name='collectible_species' then\n  if tg_op='DELETE' then v_ids:=array[old.id];\n  elsif tg_op='INSERT' then v_ids:=array[new.id];\n  else v_ids:=array[old.id,new.id]; end if;\n else\n  if tg_op='DELETE' then v_ids:=array[old.species_id];\n  elsif tg_op='INSERT' then v_ids:=array[new.species_id];\n  else v_ids:=array[old.species_id,new.species_id]; end if;\n end if;\n for v_id in select distinct unnest(v_ids) loop\n  select native_region_id into v_region from public.collectible_species where id=v_id;\n  if found and v_region is not null then\n   select count(*),count(*) filter(where region_id=v_region) into v_count,v_match\n    from public.collectible_habitats where species_id=v_id;\n   if v_count<>1 or v_match<>1 then\n    raise exception 'NATIVE_HABITAT_REQUIRED: % must have exactly one habitat in %',v_id,v_region using errcode='23514';\n   end if;\n  end if;\n end loop;\n return null;\nend $function$\n",
         "securityDefiner": false
+      },
+      {
+        "name": "claim_attendance",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_day date",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.claim_attendance(p_day date)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_today date:=(transaction_timestamp() at time zone 'Asia/Seoul')::date;\n a public.player_attendance;c public.attendance_claims;w public.player_wallets;\n v_streak integer;v_day integer;v_bait text;v_count integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_day is null then raise exception 'INVALID_ATTENDANCE_DAY'; end if;\n perform app_private.get_gold_wallet();\n -- Match the wallet-first lock order used by fishing and equipment purchases.\n select * into w from public.player_wallets where user_id=v_uid for update;\n select * into c from public.attendance_claims where user_id=v_uid and claim_date=p_day;\n if found then\n  return app_private.attendance_state()||jsonb_build_object('replayed',true,'reward',to_jsonb(c));\n end if;\n if p_day<>v_today then raise exception 'ATTENDANCE_DAY_CHANGED'; end if;\n insert into public.player_attendance(user_id) values(v_uid) on conflict do nothing;\n select * into a from public.player_attendance where user_id=v_uid;\n v_streak:=case when a.last_claim_date=v_today-1 then a.streak+1 else 1 end;\n v_day:=(v_streak-1)%30+1;\n v_bait:=case when v_day=30 then 'bait_epic' when v_day%7=0 then 'bait_special' else null end;\n if w.gold>1000000000-50 then raise exception 'GOLD_LIMIT'; end if;\n if v_bait is not null then\n  if not exists(select 1 from public.fishing_baits where id=v_bait) then raise exception 'ATTENDANCE_REWARD_UNAVAILABLE'; end if;\n  v_count:=coalesce((w.inventory->>v_bait)::integer,0);\n  if v_count>=2147483647 then raise exception 'INVENTORY_LIMIT'; end if;\n  w.inventory:=jsonb_set(w.inventory,array[v_bait],to_jsonb(v_count+1));\n end if;\n update public.player_wallets set gold=gold+50,inventory=w.inventory,updated_at=now() where user_id=v_uid;\n update public.player_attendance set last_claim_date=v_today,streak=v_streak,\n  completed_sheets=completed_sheets+case when v_day=30 then 1 else 0 end where user_id=v_uid;\n insert into public.attendance_claims(user_id,claim_date,streak,sheet_day,bait_id)\n values(v_uid,v_today,v_streak,v_day,v_bait) returning * into c;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n values(v_uid,c.operation_id,'charge','attendance:'||v_today::text,50);\n return app_private.attendance_state()||jsonb_build_object('replayed',false,'reward',to_jsonb(c));\nend $function$\n",
+        "securityDefiner": true
       },
       {
         "name": "claim_collectible_gift",
@@ -2267,6 +3203,16 @@
         "securityDefiner": false
       },
       {
+        "name": "equip_fishing_rod",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_rod_id text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.equip_fishing_rod(p_rod_id text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n perform app_private.fishing_rod_state();\n if not exists(select 1 from public.player_fishing_rods where user_id=v_uid and rod_id=p_rod_id) then raise exception 'ROD_NOT_OWNED'; end if;\n update public.player_rod_loadouts set equipped_rod_id=p_rod_id where user_id=v_uid;\n return app_private.fishing_rod_state();\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "find_player_by_code",
         "config": [
           "search_path=\"\""
@@ -2274,6 +3220,16 @@
         "schema": "app_private",
         "arguments": "p_code text",
         "definition": "CREATE OR REPLACE FUNCTION app_private.find_player_by_code(p_code text)\n RETURNS SETOF player_profiles\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n  if auth.uid() is null then raise exception 'AUTH_REQUIRED'; end if;\n  if upper(trim(p_code)) !~ '^[A-F0-9]{12}$' then raise exception 'INVALID_FRIEND_CODE'; end if;\n  return query select * from public.player_profiles where friend_code = upper(trim(p_code)) limit 1;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "fishing_rod_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_rod_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n perform app_private.get_gold_wallet();\n -- All rod operations serialize on the existing wallet, before inventory/loadout.\n perform 1 from public.player_wallets where user_id=v_uid for update;\n insert into public.player_fishing_rods(user_id,rod_id) values(v_uid,'basic') on conflict do nothing;\n insert into public.player_rod_loadouts(user_id) values(v_uid) on conflict do nothing;\n return jsonb_build_object(\n  'owned',(select jsonb_agg(rod_id order by rod_id) from public.player_fishing_rods where user_id=v_uid),\n  'selected',(select equipped_rod_id from public.player_rod_loadouts where user_id=v_uid),\n  'catalog',(select jsonb_agg(to_jsonb(r) order by price,id) from public.fishing_rods r),\n  'baits',coalesce((select jsonb_agg(to_jsonb(b) order by sort_order,id) from public.fishing_baits b),'[]'::jsonb)\n );\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -2337,6 +3293,36 @@
         "securityDefiner": true
       },
       {
+        "name": "memory_game",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_card integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.memory_game(p_action text, p_operation_id uuid DEFAULT NULL::uuid, p_run_id uuid DEFAULT NULL::uuid, p_card integer DEFAULT NULL::integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();r public.memory_game_runs;b app_private.memory_game_boards;v_gold integer;v_deck text[];\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_action is null or p_action not in ('state','start','flip','clear','leave') then raise exception 'INVALID_MEMORY_ACTION'; end if;\n if p_action='state' then\n  if p_run_id is null then select * into r from public.memory_game_runs where user_id=v_uid and finished_at is null and abandoned_at is null;\n  else select * into r from public.memory_game_runs where user_id=v_uid and id=p_run_id;\n   if not found then raise exception 'MEMORY_RUN_NOT_FOUND'; end if;\n  end if;\n  return app_private.memory_response(r.id);\n end if;\n perform app_private.get_gold_wallet();\n select gold into v_gold from public.player_wallets where user_id=v_uid for update;\n if p_action='start' then\n  if p_operation_id is null then raise exception 'INVALID_OPERATION'; end if;\n  select * into r from public.memory_game_runs where user_id=v_uid and operation_id=p_operation_id;\n  if found then return app_private.memory_response(r.id); end if;\n  select * into r from public.memory_game_runs where user_id=v_uid and finished_at is null and abandoned_at is null;\n  if found then return app_private.memory_response(r.id); end if;\n  if v_gold<10 then raise exception 'INSUFFICIENT_GOLD'; end if;\n  select array_agg(face order by shuffle) into v_deck from (\n   select face,random() shuffle from unnest(array['starfish','shell','pearl','rod','float','lighthouse','boat','treasure','coral','fish','shrimp','letter']) face cross join generate_series(1,2)) s;\n  v_deck:=v_deck[1:12]||array['pongi']||v_deck[13:24];\n  insert into public.memory_game_runs(user_id,operation_id) values(v_uid,p_operation_id) returning * into r;\n  insert into app_private.memory_game_boards(run_id,deck) values(r.id,v_deck);\n  update public.player_wallets set gold=gold-10,updated_at=clock_timestamp() where user_id=v_uid;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','arcade:memory',-10);\n  return app_private.memory_response(r.id);\n end if;\n select * into r from public.memory_game_runs where id=p_run_id and user_id=v_uid for update;\n if not found then raise exception 'MEMORY_RUN_NOT_FOUND'; end if;\n if r.finished_at is not null or r.abandoned_at is not null then return app_private.memory_response(r.id); end if;\n select * into strict b from app_private.memory_game_boards where run_id=r.id;\n if p_action='leave' then\n  update public.memory_game_runs set abandoned_at=clock_timestamp() where id=r.id;\n  return app_private.memory_response(r.id);\n end if;\n if p_action='clear' then\n  if b.clear_at is null or clock_timestamp()<b.clear_at then return app_private.memory_response(r.id); end if;\n  update app_private.memory_game_boards set first_card=null,second_card=null,clear_at=null where run_id=r.id;\n  return app_private.memory_response(r.id);\n end if;\n if p_card is null or p_card not between 1 and 25 then raise exception 'INVALID_MEMORY_CARD'; end if;\n if p_card=13 or p_card=any(b.matched) or p_card=b.first_card or b.second_card is not null then return app_private.memory_response(r.id); end if;\n if r.timer_started_at is null then\n  update public.memory_game_runs set timer_started_at=clock_timestamp() where id=r.id returning * into r;\n end if;\n if b.first_card is null then update app_private.memory_game_boards set first_card=p_card where run_id=r.id;\n else\n  update public.memory_game_runs set moves=moves+1 where id=r.id;\n  if b.deck[b.first_card]=b.deck[p_card] then\n   b.matched:=b.matched||array[b.first_card,p_card];\n   update app_private.memory_game_boards set matched=b.matched,first_card=null,second_card=null,clear_at=null where run_id=r.id;\n   if cardinality(b.matched)=24 then\n    update public.memory_game_runs set finished_at=clock_timestamp(),elapsed_ms=floor(extract(epoch from(clock_timestamp()-r.timer_started_at))*1000)::bigint where id=r.id;\n   end if;\n  else update app_private.memory_game_boards set second_card=p_card,clear_at=clock_timestamp()+interval '900 milliseconds' where run_id=r.id;\n  end if;\n end if;\n return app_private.memory_response(r.id);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "memory_leaderboard",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.memory_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_start timestamptz:=date_trunc('week',clock_timestamp() at time zone 'Asia/Seoul') at time zone 'Asia/Seoul';v_rows jsonb;v_total bigint;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_offset is null or p_offset<0 then raise exception 'INVALID_OFFSET'; end if;\n select count(distinct user_id) into v_total from public.memory_game_runs where finished_at>=v_start and abandoned_at is null;\n select coalesce(jsonb_agg(to_jsonb(t) order by t.rank),'[]'::jsonb) into v_rows from (\n select row_number() over(order by r.elapsed_ms,r.finished_at,r.id)+p_offset as rank,r.id,r.elapsed_ms as \"elapsedMs\",r.moves,\n coalesce(p.nickname,'섬 여행자') as nickname,r.user_id=auth.uid() as mine\n from (select * from (select distinct on(user_id) * from public.memory_game_runs where finished_at>=v_start and abandoned_at is null order by user_id,elapsed_ms,finished_at,id) best order by elapsed_ms,finished_at,id limit 20 offset p_offset) r\n left join public.player_profiles p on p.id=r.user_id) t;\n return jsonb_build_object('rows',v_rows,'total',v_total,'offset',p_offset,'pageSize',20,'weekStart',v_start,'weekEnd',v_start+interval '7 days');\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "memory_response",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.memory_response(p_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare r public.memory_game_runs;b app_private.memory_game_boards;v_cards jsonb;\nbegin\n if p_id is null then return jsonb_build_object('run',null,'serverNow',clock_timestamp()); end if;\n select * into strict r from public.memory_game_runs where id=p_id;\n select * into strict b from app_private.memory_game_boards where run_id=p_id;\n select jsonb_agg(case when i=13 or i=any(b.matched) or i=b.first_card or i=b.second_card then to_jsonb(b.deck[i]) else 'null'::jsonb end order by i) into v_cards from generate_series(1,25) i;\n return jsonb_build_object('serverNow',clock_timestamp(),'run',jsonb_build_object('id',r.id,'cards',v_cards,\n 'matched',to_jsonb(b.matched),'first',b.first_card,'second',b.second_card,'clearAt',b.clear_at,\n 'startedAt',r.timer_started_at,'elapsedMs',case when r.elapsed_ms is not null then r.elapsed_ms when r.timer_started_at is null then 0 else floor(extract(epoch from(clock_timestamp()-r.timer_started_at))*1000)::bigint end,\n 'moves',r.moves,'finished',r.finished_at is not null,'abandoned',r.abandoned_at is not null));\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "move_collectibles",
         "config": [
           "search_path=\"\""
@@ -2345,6 +3331,36 @@
         "arguments": "p_collectible_ids uuid[], p_tank_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION app_private.move_collectibles(p_collectible_ids uuid[], p_tank_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_ids uuid[];v_count integer;v_occupancy integer;v_added integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if coalesce(cardinality(p_collectible_ids),0) not between 1 and 50 then raise exception 'INVALID_SELECTION'; end if;\n select array_agg(id order by id) into v_ids from(select distinct unnest(p_collectible_ids) as id) q;\n if cardinality(v_ids)<>cardinality(p_collectible_ids) or array_position(v_ids,null) is not null then raise exception 'INVALID_SELECTION'; end if;\n -- Serialize admissions to the same tank before locking individuals in ID order.\n if p_tank_id is not null then\n  perform 1 from public.aquarium_tanks where id=p_tank_id and user_id=v_uid for update;\n  if not found then raise exception 'TANK_NOT_FOUND'; end if;\n end if;\n perform 1 from public.player_collectibles where id=any(v_ids) and user_id=v_uid order by id for update;\n select count(*) into v_count from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n where c.id=any(v_ids) and c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and s.kind in ('fish','trash','decoration');\n if v_count<>cardinality(v_ids) then raise exception 'COLLECTIBLE_NOT_FOUND'; end if;\n if p_tank_id is not null then\n  if exists(select 1 from public.player_collectibles where id=any(v_ids) and tank_id is not null and tank_id<>p_tank_id) then raise exception 'STORAGE_REQUIRED'; end if;\n  select count(*) into v_added from public.player_collectibles where id=any(v_ids) and tank_id is null;\n  select count(*) into v_occupancy from public.player_collectibles where tank_id=p_tank_id and user_id=v_uid and sold_at is null and escrow_gift_id is null;\n  if v_added>0 and v_occupancy+v_added>50 then raise exception 'TANK_FULL'; end if;\n end if;\n update public.player_collectibles set tank_id=p_tank_id,position_x=null,position_y=null\n where id=any(v_ids) and tank_id is distinct from p_tank_id;\n return app_private.aquarium_state();\nend $function$\n",
         "securityDefiner": true
+      },
+      {
+        "name": "odd_even_game",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round integer, p_choice text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.odd_even_game(p_action text, p_operation_id uuid DEFAULT NULL::uuid, p_run_id uuid DEFAULT NULL::uuid, p_round integer DEFAULT NULL::integer, p_choice text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();r public.odd_even_runs;v_gold integer;v_pearls integer;v_win boolean;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in ('state','start','answer','double','cashout') then raise exception 'INVALID_ODD_EVEN_ACTION';end if;\n if p_action='state' then\n  select * into r from public.odd_even_runs where user_id=v_uid and finished_at is null;\n  return app_private.odd_even_response(r.id);\n end if;\n perform app_private.get_gold_wallet();\n select gold into v_gold from public.player_wallets where user_id=v_uid for update;\n if p_action='start' then\n  if p_operation_id is null then raise exception 'INVALID_OPERATION';end if;\n  select * into r from public.odd_even_runs where user_id=v_uid and operation_id=p_operation_id;\n  if found then return app_private.odd_even_response(r.id);end if;\n  select * into r from public.odd_even_runs where user_id=v_uid and finished_at is null;\n  if found then return app_private.odd_even_response(r.id);end if;\n  if v_gold<10 then raise exception 'INSUFFICIENT_GOLD';end if;\n  insert into public.odd_even_runs(user_id,operation_id) values(v_uid,p_operation_id) returning * into r;\n  update public.player_wallets set gold=gold-10,updated_at=clock_timestamp() where user_id=v_uid;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','arcade:odd-even',-10);\n  return app_private.odd_even_response(r.id);\n end if;\n select * into r from public.odd_even_runs where id=p_run_id and user_id=v_uid for update;\n if not found then raise exception 'ODD_EVEN_RUN_NOT_FOUND';end if;\n if r.finished_at is not null then return app_private.odd_even_response(r.id);end if;\n if p_round is null then raise exception 'INVALID_ROUND';end if;\n if p_round<r.round then return app_private.odd_even_response(r.id);end if;\n if p_round<>r.round then raise exception 'INVALID_ROUND';end if;\n if p_action='answer' then\n  if r.stage<>'choose' then return app_private.odd_even_response(r.id);end if;\n  if p_choice is null or p_choice not in ('odd','even') then raise exception 'INVALID_CHOICE';end if;\n  v_pearls:=1+floor(random()*10)::integer;\n  v_win:=(v_pearls%2=1)=(p_choice='odd');\n  update public.odd_even_runs set pearls=v_pearls,choice=p_choice,stake=case when v_win then stake*2 else 0 end,\n   wins=wins+case when v_win then 1 else 0 end,stage=case when v_win then 'decision' else 'lost' end,\n   finished_at=case when v_win then null else clock_timestamp() end where id=r.id;\n elsif p_action='double' then\n  if r.stage='choose' then return app_private.odd_even_response(r.id);end if;\n  if r.wins>=20 then raise exception 'ODD_EVEN_LIMIT';end if;\n  update public.odd_even_runs set stage='choose',round=round+1,pearls=null,choice=null where id=r.id;\n else\n  if r.stage<>'decision' then raise exception 'ODD_EVEN_WIN_REQUIRED';end if;\n  if v_gold>1000000000-r.stake then raise exception 'GOLD_LIMIT';end if;\n  update public.player_wallets set gold=gold+r.stake,updated_at=clock_timestamp() where user_id=v_uid;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,r.payout_operation_id,'charge','arcade:odd-even:'||r.id::text,r.stake);\n  update public.odd_even_runs set stage='banked',finished_at=clock_timestamp() where id=r.id;\n end if;\n return app_private.odd_even_response(r.id);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "odd_even_leaderboard",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.odd_even_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_rows jsonb;v_total bigint;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 then raise exception 'INVALID_OFFSET';end if;\n select count(distinct user_id) into v_total from public.odd_even_runs where stage='banked';\n select coalesce(jsonb_agg(to_jsonb(t) order by t.rank),'[]'::jsonb) into v_rows from (\n  select row_number() over(order by r.stake desc,r.finished_at,r.id)+p_offset as rank,r.id,r.stake as gold,r.wins,\n   coalesce(p.nickname,'섬 여행자') as nickname,r.user_id=auth.uid() as mine,\n   r.user_id as \"userId\",p.friend_code as \"friendCode\",\n   (select f.status from public.friend_requests f where f.status in ('pending','accepted')\n    and ((f.sender_id=auth.uid() and f.recipient_id=r.user_id) or (f.recipient_id=auth.uid() and f.sender_id=r.user_id))\n    order by f.created_at desc limit 1) as \"friendStatus\"\n  from (select * from (select distinct on(user_id) * from public.odd_even_runs where stage='banked' order by user_id,stake desc,finished_at,id) best order by stake desc,finished_at,id limit 20 offset p_offset) r\n  left join public.player_profiles p on p.id=r.user_id\n ) t;\n return jsonb_build_object('rows',v_rows,'total',v_total);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "odd_even_response",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.odd_even_response(p_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select jsonb_build_object('run',(select jsonb_build_object('id',r.id,'stake',r.stake,'wins',r.wins,'round',r.round,'stage',r.stage,'pearls',r.pearls,'choice',r.choice) from public.odd_even_runs r where r.id=p_id),'maxWins',20)\n$function$\n",
+        "securityDefiner": false
       },
       {
         "name": "owned_collectibles",
@@ -2497,6 +3513,46 @@
         "securityDefiner": true
       },
       {
+        "name": "shadow_game",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round_id uuid, p_choice_id text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.shadow_game(p_action text, p_operation_id uuid DEFAULT NULL::uuid, p_run_id uuid DEFAULT NULL::uuid, p_round_id uuid DEFAULT NULL::uuid, p_choice_id text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();r public.shadow_game_runs;q app_private.shadow_game_rounds;v_gold integer;v_correct boolean;v_timeout boolean;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_action is null or p_action not in ('state','start','answer','next') then raise exception 'INVALID_SHADOW_ACTION'; end if;\n if p_action='state' then\n  if p_run_id is not null then\n   select * into r from public.shadow_game_runs where id=p_run_id and user_id=v_uid;\n   if not found then raise exception 'SHADOW_RUN_NOT_FOUND'; end if;\n  else select * into r from public.shadow_game_runs where user_id=v_uid and finished_at is null;\n  end if;\n  return app_private.shadow_run_response(r.id);\n end if;\n perform app_private.get_gold_wallet();\n select gold into v_gold from public.player_wallets where user_id=v_uid for update;\n if p_action='start' then\n  if p_operation_id is null then raise exception 'INVALID_OPERATION'; end if;\n  select * into r from public.shadow_game_runs where user_id=v_uid and operation_id=p_operation_id;\n  if found then return app_private.shadow_run_response(r.id); end if;\n  select * into r from public.shadow_game_runs where user_id=v_uid and finished_at is null;\n  if found then return app_private.shadow_run_response(r.id); end if;\n  if v_gold<10 then raise exception 'INSUFFICIENT_GOLD'; end if;\n  insert into public.shadow_game_runs(user_id,operation_id) values(v_uid,p_operation_id) returning * into r;\n  perform app_private.shadow_new_round(r.id);\n  update public.player_wallets set gold=gold-10,updated_at=clock_timestamp() where user_id=v_uid;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','arcade:shadow',-10);\n  return app_private.shadow_run_response(r.id);\n end if;\n select * into r from public.shadow_game_runs where id=p_run_id and user_id=v_uid for update;\n if not found then raise exception 'SHADOW_RUN_NOT_FOUND'; end if;\n select * into q from app_private.shadow_game_rounds where id=p_round_id and run_id=r.id;\n if not found then raise exception 'SHADOW_ROUND_NOT_FOUND'; end if;\n if r.finished_at is not null then return app_private.shadow_run_response(r.id); end if;\n if r.score>=100 then\n  update public.shadow_game_runs set finished_at=clock_timestamp() where id=r.id;\n  return app_private.shadow_run_response(r.id);\n end if;\n if p_action='answer' then\n  if q.answered_at is not null then return app_private.shadow_run_response(r.id); end if;\n  v_timeout:=clock_timestamp()>=q.deadline;\n  if p_choice_id is null and not v_timeout then raise exception 'SHADOW_NOT_EXPIRED'; end if;\n  if p_choice_id is not null and not exists(select 1 from jsonb_array_elements(q.options) o where o->>'id'=p_choice_id) then raise exception 'INVALID_SHADOW_CHOICE'; end if;\n  v_correct:=not v_timeout and coalesce(p_choice_id=q.target_id,false);\n  update app_private.shadow_game_rounds set answered_at=clock_timestamp(),correct=v_correct,timed_out=v_timeout where id=q.id;\n  update public.shadow_game_runs set score=least(100,score+case when v_correct then 1 else 0 end),\n   lives=lives-case when v_correct then 0 else 1 end,\n   finished_at=case when (not v_correct and lives=1) or (v_correct and score>=99) then clock_timestamp() else null end where id=r.id;\n else\n  if q.answered_at is null then raise exception 'SHADOW_ANSWER_REQUIRED'; end if;\n  if q.number=(select max(number) from app_private.shadow_game_rounds where run_id=r.id) then perform app_private.shadow_new_round(r.id); end if;\n end if;\n return app_private.shadow_run_response(r.id);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "shadow_leaderboard",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.shadow_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_rows jsonb;v_total bigint;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_offset is null or p_offset<0 then raise exception 'INVALID_OFFSET'; end if;\n select count(*) into v_total from public.shadow_game_runs where finished_at is not null;\n select coalesce(jsonb_agg(to_jsonb(t) order by t.rank),'[]'::jsonb) into v_rows from (\n select row_number() over(order by r.score desc,r.finished_at,r.id)+p_offset as rank,r.id,\n coalesce(p.nickname,'섬 여행자') as nickname,r.score,r.finished_at as \"finishedAt\",r.user_id=auth.uid() as mine\n from (select * from public.shadow_game_runs where finished_at is not null order by score desc,finished_at,id limit 20 offset p_offset) r\n left join public.player_profiles p on p.id=r.user_id) t;\n return jsonb_build_object('rows',v_rows,'total',v_total,'offset',p_offset,'pageSize',20);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "shadow_new_round",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_run uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.shadow_new_round(p_run uuid)\n RETURNS void\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare v_options jsonb;v_target jsonb;v_number integer;\nbegin\n select jsonb_agg(jsonb_build_object('id',id,'name',name,'path',thumbnail_path)) into v_options\n from (select * from (select distinct on(name) id,name,thumbnail_path from public.collectible_species\n where kind<>'map' and thumbnail_path is not null and thumbnail_path<>'' order by name,id) pool order by random() limit 4) chosen;\n if jsonb_array_length(coalesce(v_options,'[]'::jsonb))<>4 then raise exception 'SHADOW_POOL_UNAVAILABLE'; end if;\n v_target:=v_options->floor(random()*4)::integer;\n select coalesce(max(number),0)+1 into v_number from app_private.shadow_game_rounds where run_id=p_run;\n insert into app_private.shadow_game_rounds(run_id,number,target_id,target_name,image_path,options,deadline)\n values(p_run,v_number,v_target->>'id',v_target->>'name',v_target->>'path',\n (select jsonb_agg(jsonb_build_object('id',o->>'id','name',o->>'name')) from jsonb_array_elements(v_options) o),clock_timestamp()+interval '8 seconds');\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "shadow_run_response",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_run uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.shadow_run_response(p_run uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare r public.shadow_game_runs;q app_private.shadow_game_rounds;\nbegin\n if p_run is null then return jsonb_build_object('run',null,'serverNow',clock_timestamp()); end if;\n select * into strict r from public.shadow_game_runs where id=p_run;\n select * into q from app_private.shadow_game_rounds where run_id=r.id order by number desc limit 1;\n return jsonb_build_object('serverNow',clock_timestamp(),'run',jsonb_build_object(\n 'id',r.id,'score',r.score,'lives',r.lives,'finished',r.finished_at is not null,\n 'round',jsonb_build_object('id',q.id,'number',q.number,'imagePath',q.image_path,'options',q.options,'deadline',q.deadline,\n 'answered',q.answered_at is not null,'correct',q.correct,'timedOut',q.timed_out,\n 'answerName',case when q.answered_at is not null then q.target_name else null end)));\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "species_payload",
         "config": [
           "search_path=\"\""
@@ -2514,6 +3570,16 @@
         "schema": "app_private",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.sync_player_profile()\n RETURNS player_profiles\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid := auth.uid(); v_name text; v_profile public.player_profiles;\nbegin\n  if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n  select raw_user_meta_data ->> 'game_nickname' into v_name from auth.users where id = v_uid;\n  if v_name is null or v_name !~ '^[가-힣a-zA-Z0-9_]{2,12}$' then raise exception 'NICKNAME_REQUIRED'; end if;\n  -- Retry only the extraordinarily rare random-code collision.\n  for attempt in 1..5 loop\n    begin\n      insert into public.player_profiles(id, nickname) values (v_uid, v_name)\n      on conflict(id) do update set nickname = excluded.nickname\n      returning * into v_profile;\n      return v_profile;\n    exception when unique_violation then\n      if attempt = 5 then raise; end if;\n    end;\n  end loop;\n  raise exception 'PROFILE_CREATE_FAILED';\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "trade_fishing_rod",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_rod_id text, p_action text, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.trade_fishing_rod(p_rod_id text, p_action text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_rod public.fishing_rods;v_wallet public.player_wallets;\n v_previous public.gold_transactions;v_delta integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_operation_id is null or p_action is null or p_action not in ('buy','sell') then raise exception 'INVALID_TRADE'; end if;\n perform app_private.fishing_rod_state();\n select * into v_wallet from public.player_wallets where user_id=v_uid for update;\n select * into v_previous from public.gold_transactions where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if v_previous.action<>p_action or v_previous.item_id is distinct from 'rod:'||p_rod_id then raise exception 'OPERATION_CONFLICT'; end if;\n  return app_private.get_gold_wallet()||app_private.fishing_rod_state()||jsonb_build_object('delta',0);\n end if;\n select * into v_rod from public.fishing_rods where id=p_rod_id for share;\n if not found then raise exception 'INVALID_ROD'; end if;\n if p_rod_id='basic' then raise exception 'STARTER_ROD_NOT_TRADEABLE'; end if;\n if p_action='buy' then\n  if exists(select 1 from public.player_fishing_rods where user_id=v_uid and rod_id=p_rod_id) then raise exception 'ROD_ALREADY_OWNED'; end if;\n  if v_wallet.gold<v_rod.price then raise exception 'INSUFFICIENT_GOLD'; end if;\n  insert into public.player_fishing_rods(user_id,rod_id) values(v_uid,p_rod_id);\n  v_delta:=-v_rod.price;\n else\n  if not exists(select 1 from public.player_fishing_rods where user_id=v_uid and rod_id=p_rod_id) then raise exception 'ROD_NOT_OWNED'; end if;\n  v_delta:=v_rod.price/2;\n  if v_wallet.gold>1000000000-v_delta then raise exception 'GOLD_LIMIT'; end if;\n  update public.player_rod_loadouts set equipped_rod_id='basic' where user_id=v_uid and equipped_rod_id=p_rod_id;\n  delete from public.player_fishing_rods where user_id=v_uid and rod_id=p_rod_id;\n end if;\n update public.player_wallets set gold=gold+v_delta,updated_at=now() where user_id=v_uid;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n values(v_uid,p_operation_id,p_action,'rod:'||p_rod_id,v_delta);\n return app_private.get_gold_wallet()||app_private.fishing_rod_state()||jsonb_build_object('delta',v_delta);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -2567,6 +3633,16 @@
         "securityDefiner": false
       },
       {
+        "name": "attendance_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.attendance_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.attendance_state()$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "buy_aquarium_tank",
         "config": [
           "search_path=\"\""
@@ -2594,6 +3670,16 @@
         "schema": "public",
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION public.cast_fishing(p_region_id text, p_bait_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.cast_fishing(p_region_id,p_bait_id,p_operation_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "claim_attendance",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_day date",
+        "definition": "CREATE OR REPLACE FUNCTION public.claim_attendance(p_day date)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.claim_attendance(p_day)$function$\n",
         "securityDefiner": false
       },
       {
@@ -2627,6 +3713,16 @@
         "securityDefiner": false
       },
       {
+        "name": "equip_fishing_rod",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_rod_id text",
+        "definition": "CREATE OR REPLACE FUNCTION public.equip_fishing_rod(p_rod_id text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.equip_fishing_rod(p_rod_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "find_player_by_code",
         "config": [
           "search_path=\"\""
@@ -2634,6 +3730,16 @@
         "schema": "public",
         "arguments": "p_code text",
         "definition": "CREATE OR REPLACE FUNCTION public.find_player_by_code(p_code text)\n RETURNS SETOF player_profiles\n LANGUAGE sql\n SET search_path TO ''\nAS $function$ select * from app_private.find_player_by_code(p_code) $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "fishing_rod_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.fishing_rod_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.fishing_rod_state()$function$\n",
         "securityDefiner": false
       },
       {
@@ -2687,6 +3793,26 @@
         "securityDefiner": false
       },
       {
+        "name": "memory_game",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_card integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.memory_game(p_action text, p_operation_id uuid DEFAULT NULL::uuid, p_run_id uuid DEFAULT NULL::uuid, p_card integer DEFAULT NULL::integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.memory_game(p_action,p_operation_id,p_run_id,p_card)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "memory_leaderboard",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.memory_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.memory_leaderboard(p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "move_collectibles",
         "config": [
           "search_path=\"\""
@@ -2694,6 +3820,26 @@
         "schema": "public",
         "arguments": "p_collectible_ids uuid[], p_tank_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION public.move_collectibles(p_collectible_ids uuid[], p_tank_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.move_collectibles(p_collectible_ids,p_tank_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "odd_even_game",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round integer, p_choice text",
+        "definition": "CREATE OR REPLACE FUNCTION public.odd_even_game(p_action text, p_operation_id uuid DEFAULT NULL::uuid, p_run_id uuid DEFAULT NULL::uuid, p_round integer DEFAULT NULL::integer, p_choice text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.odd_even_game(p_action,p_operation_id,p_run_id,p_round,p_choice)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "odd_even_leaderboard",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.odd_even_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.odd_even_leaderboard(p_offset)$function$\n",
         "securityDefiner": false
       },
       {
@@ -2797,6 +3943,26 @@
         "securityDefiner": false
       },
       {
+        "name": "shadow_game",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round_id uuid, p_choice_id text",
+        "definition": "CREATE OR REPLACE FUNCTION public.shadow_game(p_action text, p_operation_id uuid DEFAULT NULL::uuid, p_run_id uuid DEFAULT NULL::uuid, p_round_id uuid DEFAULT NULL::uuid, p_choice_id text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.shadow_game(p_action,p_operation_id,p_run_id,p_round_id,p_choice_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "shadow_leaderboard",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.shadow_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.shadow_leaderboard(p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "sync_player_profile",
         "config": [
           "search_path=\"\""
@@ -2804,6 +3970,16 @@
         "schema": "public",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION public.sync_player_profile()\n RETURNS player_profiles\n LANGUAGE sql\n SET search_path TO ''\nAS $function$ select app_private.sync_player_profile() $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "trade_fishing_rod",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_rod_id text, p_action text, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.trade_fishing_rod(p_rod_id text, p_action text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.trade_fishing_rod(p_rod_id,p_action,p_operation_id)$function$\n",
         "securityDefiner": false
       },
       {
@@ -2854,6 +4030,42 @@
         "definition": "NOT NULL test_charge_enabled"
       },
       {
+        "name": "memory_game_boards_deck_check",
+        "table": "memory_game_boards",
+        "schema": "app_private",
+        "definition": "CHECK (((array_length(deck, 1) = 25) AND (deck[13] = 'pongi'::text)))"
+      },
+      {
+        "name": "memory_game_boards_deck_not_null",
+        "table": "memory_game_boards",
+        "schema": "app_private",
+        "definition": "NOT NULL deck"
+      },
+      {
+        "name": "memory_game_boards_matched_not_null",
+        "table": "memory_game_boards",
+        "schema": "app_private",
+        "definition": "NOT NULL matched"
+      },
+      {
+        "name": "memory_game_boards_pkey",
+        "table": "memory_game_boards",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (run_id)"
+      },
+      {
+        "name": "memory_game_boards_run_id_fkey",
+        "table": "memory_game_boards",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (run_id) REFERENCES memory_game_runs(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "memory_game_boards_run_id_not_null",
+        "table": "memory_game_boards",
+        "schema": "app_private",
+        "definition": "NOT NULL run_id"
+      },
+      {
         "name": "region_settings_id_check",
         "table": "region_settings",
         "schema": "app_private",
@@ -2876,6 +4088,84 @@
         "table": "region_settings",
         "schema": "app_private",
         "definition": "NOT NULL test_lock_controls"
+      },
+      {
+        "name": "shadow_game_rounds_deadline_not_null",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "definition": "NOT NULL deadline"
+      },
+      {
+        "name": "shadow_game_rounds_id_not_null",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "shadow_game_rounds_image_path_not_null",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "definition": "NOT NULL image_path"
+      },
+      {
+        "name": "shadow_game_rounds_number_check",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "definition": "CHECK ((number > 0))"
+      },
+      {
+        "name": "shadow_game_rounds_number_not_null",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "definition": "NOT NULL number"
+      },
+      {
+        "name": "shadow_game_rounds_options_check",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "definition": "CHECK ((jsonb_array_length(options) = 4))"
+      },
+      {
+        "name": "shadow_game_rounds_options_not_null",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "definition": "NOT NULL options"
+      },
+      {
+        "name": "shadow_game_rounds_pkey",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "shadow_game_rounds_run_id_fkey",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (run_id) REFERENCES shadow_game_runs(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "shadow_game_rounds_run_id_not_null",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "definition": "NOT NULL run_id"
+      },
+      {
+        "name": "shadow_game_rounds_run_id_number_key",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "definition": "UNIQUE (run_id, number)"
+      },
+      {
+        "name": "shadow_game_rounds_target_id_not_null",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "definition": "NOT NULL target_id"
+      },
+      {
+        "name": "shadow_game_rounds_target_name_not_null",
+        "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "definition": "NOT NULL target_name"
       },
       {
         "name": "aquarium_backgrounds_id_not_null",
@@ -2978,6 +4268,84 @@
         "table": "aquarium_tanks",
         "schema": "public",
         "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "attendance_claims_bait_id_fkey",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "FOREIGN KEY (bait_id) REFERENCES fishing_baits(id)"
+      },
+      {
+        "name": "attendance_claims_claim_date_not_null",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "NOT NULL claim_date"
+      },
+      {
+        "name": "attendance_claims_gold_check",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "CHECK ((gold = 50))"
+      },
+      {
+        "name": "attendance_claims_gold_not_null",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "NOT NULL gold"
+      },
+      {
+        "name": "attendance_claims_operation_id_not_null",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "attendance_claims_pkey",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "PRIMARY KEY (user_id, claim_date)"
+      },
+      {
+        "name": "attendance_claims_sheet_day_check",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "CHECK (((sheet_day >= 1) AND (sheet_day <= 30)))"
+      },
+      {
+        "name": "attendance_claims_sheet_day_not_null",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "NOT NULL sheet_day"
+      },
+      {
+        "name": "attendance_claims_streak_check",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "CHECK ((streak > 0))"
+      },
+      {
+        "name": "attendance_claims_streak_not_null",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "NOT NULL streak"
+      },
+      {
+        "name": "attendance_claims_user_id_fkey",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "attendance_claims_user_id_not_null",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "attendance_claims_user_id_operation_id_key",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "UNIQUE (user_id, operation_id)"
       },
       {
         "name": "collectible_gifts_check",
@@ -3472,6 +4840,78 @@
         "definition": "NOT NULL sort_order"
       },
       {
+        "name": "fishing_rods_check",
+        "table": "fishing_rods",
+        "schema": "public",
+        "definition": "CHECK (((id = 'basic'::text) = (price = 0)))"
+      },
+      {
+        "name": "fishing_rods_check1",
+        "table": "fishing_rods",
+        "schema": "public",
+        "definition": "CHECK (((native_bonus_bp = 0) OR (region_id IS NOT NULL)))"
+      },
+      {
+        "name": "fishing_rods_failure_reduction_bp_check",
+        "table": "fishing_rods",
+        "schema": "public",
+        "definition": "CHECK (((failure_reduction_bp >= 0) AND (failure_reduction_bp <= 10000)))"
+      },
+      {
+        "name": "fishing_rods_failure_reduction_bp_not_null",
+        "table": "fishing_rods",
+        "schema": "public",
+        "definition": "NOT NULL failure_reduction_bp"
+      },
+      {
+        "name": "fishing_rods_id_not_null",
+        "table": "fishing_rods",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "fishing_rods_name_not_null",
+        "table": "fishing_rods",
+        "schema": "public",
+        "definition": "NOT NULL name"
+      },
+      {
+        "name": "fishing_rods_native_bonus_bp_check",
+        "table": "fishing_rods",
+        "schema": "public",
+        "definition": "CHECK (((native_bonus_bp >= 0) AND (native_bonus_bp <= 10000)))"
+      },
+      {
+        "name": "fishing_rods_native_bonus_bp_not_null",
+        "table": "fishing_rods",
+        "schema": "public",
+        "definition": "NOT NULL native_bonus_bp"
+      },
+      {
+        "name": "fishing_rods_pkey",
+        "table": "fishing_rods",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "fishing_rods_price_check",
+        "table": "fishing_rods",
+        "schema": "public",
+        "definition": "CHECK ((((price >= 0) AND (price <= 1000000000)) AND ((price % 2) = 0)))"
+      },
+      {
+        "name": "fishing_rods_price_not_null",
+        "table": "fishing_rods",
+        "schema": "public",
+        "definition": "NOT NULL price"
+      },
+      {
+        "name": "fishing_rods_region_id_fkey",
+        "table": "fishing_rods",
+        "schema": "public",
+        "definition": "FOREIGN KEY (region_id) REFERENCES regions(id)"
+      },
+      {
         "name": "friend_requests_check",
         "table": "friend_requests",
         "schema": "public",
@@ -3586,6 +5026,66 @@
         "definition": "NOT NULL user_id"
       },
       {
+        "name": "memory_game_runs_created_at_not_null",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "memory_game_runs_elapsed_ms_check",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "definition": "CHECK ((elapsed_ms >= 0))"
+      },
+      {
+        "name": "memory_game_runs_id_not_null",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "memory_game_runs_moves_check",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "definition": "CHECK ((moves >= 0))"
+      },
+      {
+        "name": "memory_game_runs_moves_not_null",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL moves"
+      },
+      {
+        "name": "memory_game_runs_operation_id_not_null",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "memory_game_runs_pkey",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "memory_game_runs_user_id_fkey",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "memory_game_runs_user_id_not_null",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "memory_game_runs_user_id_operation_id_key",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "definition": "UNIQUE (user_id, operation_id)"
+      },
+      {
         "name": "notification_categories",
         "table": "notifications",
         "schema": "public",
@@ -3676,6 +5176,120 @@
         "definition": "NOT NULL title"
       },
       {
+        "name": "odd_even_runs_check",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "CHECK (((finished_at IS NOT NULL) = (stage = ANY (ARRAY['lost'::text, 'banked'::text]))))"
+      },
+      {
+        "name": "odd_even_runs_choice_check",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "CHECK ((choice = ANY (ARRAY['odd'::text, 'even'::text])))"
+      },
+      {
+        "name": "odd_even_runs_id_not_null",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "odd_even_runs_operation_id_not_null",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "odd_even_runs_payout_operation_id_not_null",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "NOT NULL payout_operation_id"
+      },
+      {
+        "name": "odd_even_runs_pearls_check",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "CHECK (((pearls >= 1) AND (pearls <= 10)))"
+      },
+      {
+        "name": "odd_even_runs_pkey",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "odd_even_runs_round_check",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "CHECK (((round >= 1) AND (round <= 20)))"
+      },
+      {
+        "name": "odd_even_runs_round_not_null",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "NOT NULL round"
+      },
+      {
+        "name": "odd_even_runs_stage_check",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "CHECK ((stage = ANY (ARRAY['choose'::text, 'decision'::text, 'lost'::text, 'banked'::text])))"
+      },
+      {
+        "name": "odd_even_runs_stage_not_null",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "NOT NULL stage"
+      },
+      {
+        "name": "odd_even_runs_stake_check",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "CHECK (((stake >= 0) AND (stake <= 10485760)))"
+      },
+      {
+        "name": "odd_even_runs_stake_not_null",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "NOT NULL stake"
+      },
+      {
+        "name": "odd_even_runs_started_at_not_null",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "NOT NULL started_at"
+      },
+      {
+        "name": "odd_even_runs_user_id_fkey",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "odd_even_runs_user_id_not_null",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "odd_even_runs_user_id_operation_id_key",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "UNIQUE (user_id, operation_id)"
+      },
+      {
+        "name": "odd_even_runs_wins_check",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "CHECK (((wins >= 0) AND (wins <= 20)))"
+      },
+      {
+        "name": "odd_even_runs_wins_not_null",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "NOT NULL wins"
+      },
+      {
         "name": "owned_aquarium_backgrounds_background_id_fkey",
         "table": "owned_aquarium_backgrounds",
         "schema": "public",
@@ -3738,6 +5352,54 @@
       {
         "name": "player_aquariums_user_id_not_null",
         "table": "player_aquariums",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "player_attendance_check",
+        "table": "player_attendance",
+        "schema": "public",
+        "definition": "CHECK (((last_claim_date IS NULL) = (streak = 0)))"
+      },
+      {
+        "name": "player_attendance_completed_sheets_check",
+        "table": "player_attendance",
+        "schema": "public",
+        "definition": "CHECK ((completed_sheets >= 0))"
+      },
+      {
+        "name": "player_attendance_completed_sheets_not_null",
+        "table": "player_attendance",
+        "schema": "public",
+        "definition": "NOT NULL completed_sheets"
+      },
+      {
+        "name": "player_attendance_pkey",
+        "table": "player_attendance",
+        "schema": "public",
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "player_attendance_streak_check",
+        "table": "player_attendance",
+        "schema": "public",
+        "definition": "CHECK (((streak >= 0) AND (streak <= 1000000)))"
+      },
+      {
+        "name": "player_attendance_streak_not_null",
+        "table": "player_attendance",
+        "schema": "public",
+        "definition": "NOT NULL streak"
+      },
+      {
+        "name": "player_attendance_user_id_fkey",
+        "table": "player_attendance",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "player_attendance_user_id_not_null",
+        "table": "player_attendance",
         "schema": "public",
         "definition": "NOT NULL user_id"
       },
@@ -3880,6 +5542,42 @@
         "definition": "NOT NULL user_id"
       },
       {
+        "name": "player_fishing_rods_acquired_at_not_null",
+        "table": "player_fishing_rods",
+        "schema": "public",
+        "definition": "NOT NULL acquired_at"
+      },
+      {
+        "name": "player_fishing_rods_pkey",
+        "table": "player_fishing_rods",
+        "schema": "public",
+        "definition": "PRIMARY KEY (user_id, rod_id)"
+      },
+      {
+        "name": "player_fishing_rods_rod_id_fkey",
+        "table": "player_fishing_rods",
+        "schema": "public",
+        "definition": "FOREIGN KEY (rod_id) REFERENCES fishing_rods(id)"
+      },
+      {
+        "name": "player_fishing_rods_rod_id_not_null",
+        "table": "player_fishing_rods",
+        "schema": "public",
+        "definition": "NOT NULL rod_id"
+      },
+      {
+        "name": "player_fishing_rods_user_id_fkey",
+        "table": "player_fishing_rods",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "player_fishing_rods_user_id_not_null",
+        "table": "player_fishing_rods",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
+      },
+      {
         "name": "player_map_fragments_acquired_at_not_null",
         "table": "player_map_fragments",
         "schema": "public",
@@ -4000,6 +5698,36 @@
         "definition": "PRIMARY KEY (id)"
       },
       {
+        "name": "player_rod_loadouts_equipped_rod_id_not_null",
+        "table": "player_rod_loadouts",
+        "schema": "public",
+        "definition": "NOT NULL equipped_rod_id"
+      },
+      {
+        "name": "player_rod_loadouts_pkey",
+        "table": "player_rod_loadouts",
+        "schema": "public",
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "player_rod_loadouts_user_id_equipped_rod_id_fkey",
+        "table": "player_rod_loadouts",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id, equipped_rod_id) REFERENCES player_fishing_rods(user_id, rod_id)"
+      },
+      {
+        "name": "player_rod_loadouts_user_id_fkey",
+        "table": "player_rod_loadouts",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "player_rod_loadouts_user_id_not_null",
+        "table": "player_rod_loadouts",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
+      },
+      {
         "name": "player_wallets_gold_check",
         "table": "player_wallets",
         "schema": "public",
@@ -4112,6 +5840,72 @@
         "table": "regions",
         "schema": "public",
         "definition": "NOT NULL sort_order"
+      },
+      {
+        "name": "shadow_game_runs_id_not_null",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "shadow_game_runs_lives_check",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "CHECK (((lives >= 0) AND (lives <= 3)))"
+      },
+      {
+        "name": "shadow_game_runs_lives_not_null",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL lives"
+      },
+      {
+        "name": "shadow_game_runs_operation_id_not_null",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "shadow_game_runs_pkey",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "shadow_game_runs_score_check",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "CHECK ((score >= 0))"
+      },
+      {
+        "name": "shadow_game_runs_score_not_null",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL score"
+      },
+      {
+        "name": "shadow_game_runs_started_at_not_null",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL started_at"
+      },
+      {
+        "name": "shadow_game_runs_user_id_fkey",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "shadow_game_runs_user_id_not_null",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "shadow_game_runs_user_id_operation_id_key",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "UNIQUE (user_id, operation_id)"
       }
     ],
     "publication": [
@@ -4148,6 +5942,13 @@
       },
       {
         "role": "authenticated",
+        "table": "attendance_claims",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
         "table": "collectible_gifts",
         "schema": "public",
         "grantable": "NO",
@@ -4177,6 +5978,13 @@
       {
         "role": "authenticated",
         "table": "fishing_baits",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_rods",
         "schema": "public",
         "grantable": "NO",
         "privilege": "SELECT"
@@ -4246,6 +6054,13 @@
       },
       {
         "role": "authenticated",
+        "table": "player_attendance",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
         "table": "player_collectibles",
         "schema": "public",
         "grantable": "NO",
@@ -4254,6 +6069,13 @@
       {
         "role": "authenticated",
         "table": "player_discoveries",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_fishing_rods",
         "schema": "public",
         "grantable": "NO",
         "privilege": "SELECT"
@@ -4275,6 +6097,13 @@
       {
         "role": "authenticated",
         "table": "player_profiles",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_rod_loadouts",
         "schema": "public",
         "grantable": "NO",
         "privilege": "SELECT"
@@ -4361,6 +6190,55 @@
       {
         "role": "authenticated",
         "table": "aquarium_tanks",
+        "column": "user_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "attendance_claims",
+        "column": "bait_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "attendance_claims",
+        "column": "claim_date",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "attendance_claims",
+        "column": "gold",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "attendance_claims",
+        "column": "operation_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "attendance_claims",
+        "column": "sheet_day",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "attendance_claims",
+        "column": "streak",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "attendance_claims",
         "column": "user_id",
         "schema": "public",
         "privilege": "SELECT"
@@ -4740,6 +6618,48 @@
         "role": "authenticated",
         "table": "fishing_baits",
         "column": "sort_order",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_rods",
+        "column": "failure_reduction_bp",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_rods",
+        "column": "id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_rods",
+        "column": "name",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_rods",
+        "column": "native_bonus_bp",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_rods",
+        "column": "price",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_rods",
+        "column": "region_id",
         "schema": "public",
         "privilege": "SELECT"
       },
@@ -5179,6 +7099,34 @@
       },
       {
         "role": "authenticated",
+        "table": "player_attendance",
+        "column": "completed_sheets",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_attendance",
+        "column": "last_claim_date",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_attendance",
+        "column": "streak",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_attendance",
+        "column": "user_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
         "table": "player_collectibles",
         "column": "acquired_at",
         "schema": "public",
@@ -5291,6 +7239,27 @@
       },
       {
         "role": "authenticated",
+        "table": "player_fishing_rods",
+        "column": "acquired_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_fishing_rods",
+        "column": "rod_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_fishing_rods",
+        "column": "user_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
         "table": "player_map_fragments",
         "column": "acquired_at",
         "schema": "public",
@@ -5356,6 +7325,20 @@
         "role": "authenticated",
         "table": "player_profiles",
         "column": "nickname",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_rod_loadouts",
+        "column": "equipped_rod_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_rod_loadouts",
+        "column": "user_id",
         "schema": "public",
         "privilege": "SELECT"
       },
@@ -5569,6 +7552,27 @@
         "arguments": "p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric, p_rotation numeric, p_scale numeric"
       },
       {
+        "name": "attendance_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "attendance_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "attendance_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "buy_aquarium_tank",
         "role": "anon",
         "schema": "app_private",
@@ -5651,6 +7655,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "claim_attendance",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_day date"
+      },
+      {
+        "name": "claim_attendance",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_day date"
+      },
+      {
+        "name": "claim_attendance",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_day date"
       },
       {
         "name": "claim_collectible_gift",
@@ -5737,6 +7762,27 @@
         "arguments": ""
       },
       {
+        "name": "equip_fishing_rod",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_rod_id text"
+      },
+      {
+        "name": "equip_fishing_rod",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_rod_id text"
+      },
+      {
+        "name": "equip_fishing_rod",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_rod_id text"
+      },
+      {
         "name": "find_player_by_code",
         "role": "anon",
         "schema": "app_private",
@@ -5756,6 +7802,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_code text"
+      },
+      {
+        "name": "fishing_rod_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "fishing_rod_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "fishing_rod_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "fishing_state",
@@ -5884,6 +7951,69 @@
         "arguments": "p_tank_id uuid, p_action text, p_value text"
       },
       {
+        "name": "memory_game",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_card integer"
+      },
+      {
+        "name": "memory_game",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_card integer"
+      },
+      {
+        "name": "memory_game",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_card integer"
+      },
+      {
+        "name": "memory_leaderboard",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "memory_leaderboard",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "memory_leaderboard",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "memory_response",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "memory_response",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "memory_response",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
         "name": "move_collectibles",
         "role": "anon",
         "schema": "app_private",
@@ -5903,6 +8033,69 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_collectible_ids uuid[], p_tank_id uuid"
+      },
+      {
+        "name": "odd_even_game",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round integer, p_choice text"
+      },
+      {
+        "name": "odd_even_game",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round integer, p_choice text"
+      },
+      {
+        "name": "odd_even_game",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round integer, p_choice text"
+      },
+      {
+        "name": "odd_even_leaderboard",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "odd_even_leaderboard",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "odd_even_leaderboard",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "odd_even_response",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "odd_even_response",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "odd_even_response",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
       },
       {
         "name": "owned_collectibles",
@@ -6220,6 +8413,90 @@
         "arguments": "p_region_id text, p_locked boolean"
       },
       {
+        "name": "shadow_game",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round_id uuid, p_choice_id text"
+      },
+      {
+        "name": "shadow_game",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round_id uuid, p_choice_id text"
+      },
+      {
+        "name": "shadow_game",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round_id uuid, p_choice_id text"
+      },
+      {
+        "name": "shadow_leaderboard",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "shadow_leaderboard",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "shadow_leaderboard",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "shadow_new_round",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_run uuid"
+      },
+      {
+        "name": "shadow_new_round",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_run uuid"
+      },
+      {
+        "name": "shadow_new_round",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_run uuid"
+      },
+      {
+        "name": "shadow_run_response",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_run uuid"
+      },
+      {
+        "name": "shadow_run_response",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_run uuid"
+      },
+      {
+        "name": "shadow_run_response",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_run uuid"
+      },
+      {
         "name": "species_payload",
         "role": "anon",
         "schema": "app_private",
@@ -6260,6 +8537,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "trade_fishing_rod",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_rod_id text, p_action text, p_operation_id uuid"
+      },
+      {
+        "name": "trade_fishing_rod",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_rod_id text, p_action text, p_operation_id uuid"
+      },
+      {
+        "name": "trade_fishing_rod",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_rod_id text, p_action text, p_operation_id uuid"
       },
       {
         "name": "trade_gold",
@@ -6367,6 +8665,27 @@
         "arguments": "p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric, p_rotation numeric, p_scale numeric"
       },
       {
+        "name": "attendance_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "attendance_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "attendance_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "buy_aquarium_tank",
         "role": "anon",
         "schema": "public",
@@ -6428,6 +8747,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid"
+      },
+      {
+        "name": "claim_attendance",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_day date"
+      },
+      {
+        "name": "claim_attendance",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_day date"
+      },
+      {
+        "name": "claim_attendance",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_day date"
       },
       {
         "name": "claim_collectible_gift",
@@ -6493,6 +8833,27 @@
         "arguments": ""
       },
       {
+        "name": "equip_fishing_rod",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_rod_id text"
+      },
+      {
+        "name": "equip_fishing_rod",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_rod_id text"
+      },
+      {
+        "name": "equip_fishing_rod",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_rod_id text"
+      },
+      {
         "name": "find_player_by_code",
         "role": "anon",
         "schema": "public",
@@ -6512,6 +8873,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_code text"
+      },
+      {
+        "name": "fishing_rod_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "fishing_rod_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "fishing_rod_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "fishing_state",
@@ -6619,6 +9001,48 @@
         "arguments": "p_tank_id uuid, p_action text, p_value text"
       },
       {
+        "name": "memory_game",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_card integer"
+      },
+      {
+        "name": "memory_game",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_card integer"
+      },
+      {
+        "name": "memory_game",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_card integer"
+      },
+      {
+        "name": "memory_leaderboard",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "memory_leaderboard",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "memory_leaderboard",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
         "name": "move_collectibles",
         "role": "anon",
         "schema": "public",
@@ -6638,6 +9062,48 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_collectible_ids uuid[], p_tank_id uuid"
+      },
+      {
+        "name": "odd_even_game",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round integer, p_choice text"
+      },
+      {
+        "name": "odd_even_game",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round integer, p_choice text"
+      },
+      {
+        "name": "odd_even_game",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round integer, p_choice text"
+      },
+      {
+        "name": "odd_even_leaderboard",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "odd_even_leaderboard",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "odd_even_leaderboard",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
       },
       {
         "name": "place_collectible",
@@ -6850,6 +9316,48 @@
         "arguments": "p_region_id text, p_locked boolean"
       },
       {
+        "name": "shadow_game",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round_id uuid, p_choice_id text"
+      },
+      {
+        "name": "shadow_game",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round_id uuid, p_choice_id text"
+      },
+      {
+        "name": "shadow_game",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round_id uuid, p_choice_id text"
+      },
+      {
+        "name": "shadow_leaderboard",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "shadow_leaderboard",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "shadow_leaderboard",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
         "name": "sync_player_profile",
         "role": "anon",
         "schema": "public",
@@ -6869,6 +9377,27 @@
         "schema": "public",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "trade_fishing_rod",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_rod_id text, p_action text, p_operation_id uuid"
+      },
+      {
+        "name": "trade_fishing_rod",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_rod_id text, p_action text, p_operation_id uuid"
+      },
+      {
+        "name": "trade_fishing_rod",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_rod_id text, p_action text, p_operation_id uuid"
       },
       {
         "name": "trade_gold",

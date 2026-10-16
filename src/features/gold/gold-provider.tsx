@@ -4,10 +4,12 @@ import { useAuth } from '@/components/auth-provider'
 import { emptyWallet } from './wallet'
 import { goldError, loadGold, transactGold } from './api'
 import type { Trade, Wallet } from './wallet'
+import {toast} from 'sonner'
+import {purchaseMessage} from './purchase-message'
 
 const GoldContext = createContext<{ wallet: Wallet; transact: (action: Trade) => Promise<void>; loading: boolean; busy: boolean; error: string; testClaimed: boolean; testEnabled: boolean; refresh: () => Promise<void> } | null>(null)
 export function GoldIcon({ className = 'size-6' }: { className?: string }) {
-  return <img src="/currency/gold-coin.png" alt="" aria-hidden="true" className={`${className} shrink-0 object-contain`} />
+  return <img src="/currency/gold-coin-starfish.png" alt="" aria-hidden="true" className={`${className} shrink-0 object-contain`} />
 }
 export function GoldProvider({ children }: { children: ReactNode }) {
   const { session } = useAuth()
@@ -37,8 +39,8 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
     active.current = true
     void refresh()
     const reload = () => { if (document.visibilityState === 'visible') void refresh() }
-    window.addEventListener('focus', reload); window.addEventListener('online', reload)
-    return () => { active.current = false; window.removeEventListener('focus', reload); window.removeEventListener('online', reload) }
+    window.addEventListener('focus', reload); window.addEventListener('online', reload);window.addEventListener('attendance-changed',reload)
+    return () => { active.current = false; window.removeEventListener('focus', reload); window.removeEventListener('online', reload);window.removeEventListener('attendance-changed',reload) }
     // AccountGold remounts when the authenticated user changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId])
@@ -66,7 +68,10 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
       if (cause && typeof cause === 'object' && 'code' in cause && /^[0-9A-Z]{5}$/.test(String(cause.code))) pending.current = null
       throw new Error(goldError(cause))
     } finally { locked.current = false; if (active.current) setBusy(false) }
-    if (!active.current || result.delta === 0) return
+    if (!active.current) return
+    const message=purchaseMessage(action)
+    if(message)toast.success(message)
+    if (result.delta === 0) return
     const id = ++sequence.current
     setEffects(previous => [...previous.slice(-3), { id, delta: result.delta }])
     const timer = setTimeout(() => {

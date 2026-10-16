@@ -6,7 +6,7 @@ import { AlertDialog,AlertDialogCancel,AlertDialogContent,AlertDialogDescription
 type Props={
  open:boolean
  onOpenChange:(open:boolean)=>void
- title:string
+ title:ReactNode
  description:ReactNode
  onConfirm:()=>void
  trigger?:ReactElement
@@ -21,10 +21,10 @@ export function ConfirmDialog({open,onOpenChange,title,description,onConfirm,tri
  const cancel=useRef<HTMLButtonElement>(null)
  return <AlertDialog open={open} onOpenChange={next=>{if(!busy)onOpenChange(next)}}>
   {trigger&&<AlertDialogTrigger render={trigger}/>}
-  <AlertDialogContent size="sm" initialFocus={cancel} className="max-h-[85dvh] w-[calc(100%-2rem)] gap-0 overflow-y-auto rounded-3xl p-6 text-center ring-foreground/5 shadow-sm">
+  <AlertDialogContent size="sm" initialFocus={cancel} className="pongi-confirm max-h-[85dvh] w-[calc(100%-2rem)] gap-0 overflow-y-auto rounded-[10px] border p-6 text-center shadow-sm">
    <img src="/branding/pongi-curious.png" alt="" width={112} height={112} className="mx-auto mb-4 size-28 shrink-0 object-contain"/>
    <AlertDialogHeader className="gap-2">
-    <AlertDialogTitle className="text-base font-semibold leading-6 text-balance">{title}</AlertDialogTitle>
+    <AlertDialogTitle className="text-base font-normal leading-7 text-balance">{title}</AlertDialogTitle>
     <AlertDialogDescription className="text-xs leading-5 text-pretty">{description}</AlertDialogDescription>
    </AlertDialogHeader>
    {children&&<div className="mt-5 text-left">{children}</div>}

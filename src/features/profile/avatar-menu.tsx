@@ -32,8 +32,8 @@ export function AvatarMenu() {
   }
 
   return <Menu.Root>
-    <Menu.Trigger aria-label="내 계정 메뉴" disabled={busy} className="flex min-h-11 min-w-11 cursor-pointer items-center justify-center rounded-full outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50">
-      <PlayerAvatar nickname={getNickname(session)} path={profile?.avatar_path} />
+    <Menu.Trigger aria-label="내 계정 메뉴" disabled={busy} className="flex size-10 min-h-10 min-w-10 cursor-pointer items-center justify-center rounded-full outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50">
+      <PlayerAvatar nickname={getNickname(session)} path={profile?.avatar_path} className="size-9" />
     </Menu.Trigger>
     <Menu.Portal>
       <Menu.Positioner align="end" sideOffset={8} className="z-50">

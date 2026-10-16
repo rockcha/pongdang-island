@@ -1,0 +1,56 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-16",
+  "composition": "Horizon at bottom edge; sky and above-horizon island landmarks dominate. No foreground water.",
+  "assets": [
+    {
+      "region_id": "pongdang",
+      "file": "public/banners/pongdang-horizon.png",
+      "reference": [
+        "previous Mistmoon horizon banner",
+        "public/fishing/environments/pongdang.png"
+      ],
+      "reference_roles": "composition/style and region palette only",
+      "prompt": "Use case: stylized-concept. Create ONE 3:1 wide opaque panoramic fishing-game header landscape. warm sunny island coast, bright soft blue sky with white summer clouds, lush green rounded island headlands, cream seaside cottages with coral roofs and one distant modest lighthouse, gentle inviting daylight. View from a fisher's dock looking straight forward and slightly UP, composition STARTS AT THE HORIZON AND GOES UP INTO THE SKY. CRITICAL: horizon at 99 percent of image height, exactly along bottom border; NO visible foreground ocean surface, no wide strip of water, no wave texture or long reflection. Sky and above-horizon island landforms fill virtually the ENTIRE canvas. Island cliffs rise from lower border into lower half, central sky open. All important landmarks fit in central 70 percent width for mobile crops. Same gentle polished painterly fantasy environment rendering as references. Reference1 sets composition/style (change it to eliminate water); reference2 sets region colors only, never copy downward camera or dock. Full-bleed image, no dock, planks, fishing rod, boats, people, underwater view, text, labels, UI, border, watermark. Lower-left quiet for white heading. Soft atmospheric depth and readable landmark silhouettes at 448x120."
+    },
+    {
+      "region_id": "coral",
+      "file": "public/banners/coral-horizon.png",
+      "reference": [
+        "previous Mistmoon horizon banner",
+        "public/fishing/environments/coral.png"
+      ],
+      "reference_roles": "composition/style and region palette only",
+      "prompt": "Use case: stylized-concept. Create ONE 3:1 wide opaque panoramic fishing-game header landscape. warm turquoise coastal light, pale peach and aqua sky, sculpted pale limestone islets, lush tropical greenery and coral-pink coastal flowering shrubs on rocky islands, peaceful colorful reef-coast atmosphere above water. View from a fisher's dock looking straight forward and slightly UP, composition STARTS AT THE HORIZON AND GOES UP INTO THE SKY. CRITICAL: horizon at 99 percent of image height, exactly along bottom border; NO visible foreground ocean surface, no wide strip of water, no wave texture or long reflection. Sky and above-horizon island landforms fill virtually the ENTIRE canvas. Island cliffs rise from lower border into lower half, central sky open. All important landmarks fit in central 70 percent width for mobile crops. Same gentle polished painterly fantasy environment rendering as references. Reference1 sets composition/style (change it to eliminate water); reference2 sets region colors only, never copy downward camera or dock. Full-bleed image, no dock, planks, fishing rod, boats, people, underwater view, text, labels, UI, border, watermark. Lower-left quiet for white heading. Soft atmospheric depth and readable landmark silhouettes at 448x120."
+    },
+    {
+      "region_id": "starruins",
+      "file": "public/banners/starruins-horizon.png",
+      "reference": [
+        "previous Mistmoon horizon banner",
+        "public/fishing/environments/starruins.png"
+      ],
+      "reference_roles": "composition/style and region palette only",
+      "prompt": "Use case: stylized-concept. Create ONE 3:1 wide opaque panoramic fishing-game header landscape. mysterious blue-teal twilight sky with early stars, distant rocky islands supporting weathered pale stone temple columns, broken classical arches and a subtle star-shaped crest on an ancient tower, noble quiet ruined coast. View from a fisher's dock looking straight forward and slightly UP, composition STARTS AT THE HORIZON AND GOES UP INTO THE SKY. CRITICAL: horizon at 99 percent of image height, exactly along bottom border; NO visible foreground ocean surface, no wide strip of water, no wave texture or long reflection. Sky and above-horizon island landforms fill virtually the ENTIRE canvas. Island cliffs rise from lower border into lower half, central sky open. All important landmarks fit in central 70 percent width for mobile crops. Same gentle polished painterly fantasy environment rendering as references. Reference1 sets composition/style (change it to eliminate water); reference2 sets region colors only, never copy downward camera or dock. Full-bleed image, no dock, planks, fishing rod, boats, people, underwater view, text, labels, UI, border, watermark. Lower-left quiet for white heading. Soft atmospheric depth and readable landmark silhouettes at 448x120."
+    },
+    {
+      "region_id": "dreamabyss",
+      "file": "public/banners/dreamabyss-horizon.png",
+      "reference": [
+        "previous Mistmoon horizon banner",
+        "public/fishing/environments/dreamabyss.png"
+      ],
+      "reference_roles": "composition/style and region palette only",
+      "prompt": "Use case: stylized-concept. Create ONE 3:1 wide opaque panoramic fishing-game header landscape. deep indigo and violet night sky, soft dreamlike aurora and distant star haze, imposing dark rocky islands and tall basalt sea stacks with faint blue-violet luminous mineral seams, mysterious tranquil dream coast, not horror. View from a fisher's dock looking straight forward and slightly UP, composition STARTS AT THE HORIZON AND GOES UP INTO THE SKY. CRITICAL: horizon at 99 percent of image height, exactly along bottom border; NO visible foreground ocean surface, no wide strip of water, no wave texture or long reflection. Sky and above-horizon island landforms fill virtually the ENTIRE canvas. Island cliffs rise from lower border into lower half, central sky open. All important landmarks fit in central 70 percent width for mobile crops. Same gentle polished painterly fantasy environment rendering as references. Reference1 sets composition/style (change it to eliminate water); reference2 sets region colors only, never copy downward camera or dock. Full-bleed image, no dock, planks, fishing rod, boats, people, underwater view, text, labels, UI, border, watermark. Lower-left quiet for white heading. Soft atmospheric depth and readable landmark silhouettes at 448x120."
+    },
+    {
+      "region_id": "mistmoon",
+      "file": "public/banners/mistmoon-horizon.png",
+      "reference": [
+        "previous Mistmoon horizon banner"
+      ],
+      "reference_roles": "composition/style and region palette only",
+      "prompt": "Use case: stylized-concept. Create ONE 3:1 wide opaque panoramic fishing-game header landscape. silver-lavender moonlit sky, pale luminous moon slightly right of center, layered silver clouds, mist around pine-covered island cliffs and a small sea stack; preserve existing Mistmoon design. View from a fisher's dock looking straight forward and slightly UP, composition STARTS AT THE HORIZON AND GOES UP INTO THE SKY. CRITICAL: horizon at 99 percent of image height, exactly along bottom border; NO visible foreground ocean surface, no wide strip of water, no wave texture or long reflection. Sky and above-horizon island landforms fill virtually the ENTIRE canvas. Island cliffs rise from lower border into lower half, central sky open. All important landmarks fit in central 70 percent width for mobile crops. Same gentle polished painterly fantasy environment rendering as references. Reference1 sets composition/style (change it to eliminate water); reference2 sets region colors only, never copy downward camera or dock. Full-bleed image, no dock, planks, fishing rod, boats, people, underwater view, text, labels, UI, border, watermark. Lower-left quiet for white heading. Soft atmospheric depth and readable landmark silhouettes at 448x120."
+    }
+  ]
+}

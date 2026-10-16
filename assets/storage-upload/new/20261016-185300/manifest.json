@@ -1,0 +1,50 @@
+{
+  "tool": "built-in image_gen",
+  "entries": [
+    {
+      "id": "autumnpond",
+      "name": "가을이 잠긴 연못",
+      "price": 350,
+      "prompt": "Single full bleed portrait 9:16 underwater aquarium game background, elegant polished soft painterly illustration. At least 80 percent uncluttered open water negative space for fish sprites. Seabed low at bottom, sparse corner details only. No fish, animals, text, UI, frames, ornate decoration or ruins. Distinct material and lighting composition, serene beautiful backdrop, not a busy scene. Warm clear amber brown pond water, diffused autumn sunlight and subtle red maple leaf shadows cast across water near the top, smooth warm ochre silt seabed with only two small fallen leaves at bottom corner. Gentle golden seasonal atmosphere, avoid rows of plants.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-7f4f7c6d-667b-4704-80d0-68ac3fa57cdd.png",
+      "storage_path": "autumnpond.png",
+      "bucket": "aquarium-backgrounds"
+    },
+    {
+      "id": "inksea",
+      "name": "먹빛 수묵 바다",
+      "price": 650,
+      "prompt": "Single full bleed portrait 9:16 underwater aquarium game background, elegant polished soft painterly illustration. At least 80 percent uncluttered open water negative space for fish sprites. Seabed low at bottom, sparse corner details only. No fish, animals, text, UI, frames, ornate decoration or ruins. Distinct material and lighting composition, serene beautiful backdrop, not a busy scene. Monochrome East Asian ink wash inspired underwater sea, pale gray white water, hazy charcoal rock silhouettes only far at bottom corners, soft diluted ink gradients and fine painterly paper texture, large luminous open space, simple gray sand floor. Elegant sumi-e aesthetic integrated with game background, no calligraphy, no landscape above water.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-44cdce82-c843-4527-bb7a-9ffbadbedf95.png",
+      "storage_path": "inksea.png",
+      "bucket": "aquarium-backgrounds"
+    },
+    {
+      "id": "cloudsea",
+      "name": "구름이 잠긴 바다",
+      "price": 600,
+      "prompt": "Single full bleed portrait 9:16 underwater aquarium game background, elegant polished soft painterly illustration. At least 80 percent uncluttered open water negative space for fish sprites. Seabed low at bottom, sparse corner details only. No fish, animals, text, UI, frames, ornate decoration or ruins. Distinct material and lighting composition, serene beautiful backdrop, not a busy scene. Dreamlike pale sky blue underwater world with soft milky cloudlike light banks subtly suspended along outer edges and upper part, broad airy open center, soft white sand bottom. Feels like clouds submerged in clear water, no actual sky horizon, no floating islands, no props.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-9a3c9509-8694-487d-97f8-f4067e2b7aa3.png",
+      "storage_path": "cloudsea.png",
+      "bucket": "aquarium-backgrounds"
+    },
+    {
+      "id": "aurorasea",
+      "name": "물속의 오로라",
+      "price": 800,
+      "prompt": "Single full bleed portrait 9:16 underwater aquarium game background, elegant polished soft painterly illustration. At least 80 percent uncluttered open water negative space for fish sprites. Seabed low at bottom, sparse corner details only. No fish, animals, text, UI, frames, ornate decoration or ruins. Distinct material and lighting composition, serene beautiful backdrop, not a busy scene. Deep midnight navy underwater sea, beautiful translucent curtains of mint cyan and blush pink aurora-like refracted light descending gently from overhead along the sides, calm open dark navy center, smooth low dark sand bottom, no stars, no glowing objects, restrained magical lighting.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-532bc1ed-2b36-4310-afb0-17117f627485.png",
+      "storage_path": "aurorasea.png",
+      "bucket": "aquarium-backgrounds"
+    },
+    {
+      "id": "icebubbles",
+      "name": "빙하 속 기포",
+      "price": 700,
+      "prompt": "Single full bleed portrait 9:16 underwater aquarium game background, elegant polished soft painterly illustration. At least 80 percent uncluttered open water negative space for fish sprites. Seabed low at bottom, sparse corner details only. No fish, animals, text, UI, frames, ornate decoration or ruins. Distinct material and lighting composition, serene beautiful backdrop, not a busy scene. Underwater beneath ancient milky blue glacier ice. Translucent pale blue ice visible at top edge and thin side margins with small round air bubbles trapped INSIDE the ice only. Broad clear cool blue water center and smooth silver blue sand floor. Soft icy diffuse light. No floating bubbles in center, no jagged giant ice spires.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-211b1ade-88a7-4b48-a075-eb5f02ce214c.png",
+      "storage_path": "icebubbles.png",
+      "bucket": "aquarium-backgrounds"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "bucket": "collectibles",
+  "assets": [
+    {
+      "path": "fish/rare/sea-crocodile-v2_thumbnail.png",
+      "sha256": "f5b31b8b439638dc826be5c54534962c2ec22144fe7f6a7d07dd89f9f3ebc223",
+      "bytes": 541198,
+      "verified": true
+    },
+    {
+      "path": "fish/rare/sea-crocodile-v2_sprite.png",
+      "sha256": "b79c52ade915b16df0956b21592b4641d69210d6c7412ccd8a90ba83e6327a1e",
+      "bytes": 591796,
+      "verified": true
+    }
+  ]
+}

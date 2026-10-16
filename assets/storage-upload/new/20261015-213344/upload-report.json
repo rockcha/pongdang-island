@@ -1,0 +1,204 @@
+{
+  "checked_at": "2026-10-15T13:03:03.612Z",
+  "bucket": "collectibles",
+  "files": [
+    {
+      "storage_path": "fish/normal/green-sea-turtle_thumbnail.png",
+      "status": 200,
+      "sha256": "542287f4d9852303105258a84582310fdbcd7678cc94b1361214d0511dfdbc79",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/normal/green-sea-turtle_sprite.png",
+      "status": 200,
+      "sha256": "0f6e1d7c39462cafef74553b51d2671dbdce73134395019ecc279b1bedc61372",
+      "matches_local": true
+    },
+    {
+      "storage_path": "decorations/epic/coral-covered-shipwreck_thumbnail.png",
+      "status": 200,
+      "sha256": "420a665835188eeaf22e223793cb102ea39750e98d5d7cd0deea5d51bf6c98cf",
+      "matches_local": true
+    },
+    {
+      "storage_path": "decorations/epic/coral-covered-shipwreck_sprite.png",
+      "status": 200,
+      "sha256": "0fac015f527a45e274721da81666b0caea36e3d9488d4040e13a99f8d7c7653b",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/normal/tile-fitting-crab_thumbnail.png",
+      "status": 200,
+      "sha256": "cffcabb1ad08ffb822f60d7b8fbbf8e67c1f5792ab59de68c9f511acdfa605d7",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/normal/tile-fitting-crab_sprite.png",
+      "status": 200,
+      "sha256": "40a13d89048aabec96754ed18dfa8a8fe1d5db64f9960aeb15a7ab2c970f36ba",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/normal/teacup-nest-blenny_thumbnail.png",
+      "status": 200,
+      "sha256": "9a29298c68b4291bd196f163bc6e37e09c2fcd2cd1374d70f8112a0147621bca",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/normal/teacup-nest-blenny_sprite.png",
+      "status": 200,
+      "sha256": "c55616cf15e60ab7e85e5df86c6757414053a3f85b6abd217c39cc1261082031",
+      "matches_local": true
+    },
+    {
+      "storage_path": "trash/normal/cracked-perfume-vial_thumbnail.png",
+      "status": 200,
+      "sha256": "f09c900e515614a10accd2e4dc31b1e6bf660201bf06080f9eaf4f747f99b864",
+      "matches_local": true
+    },
+    {
+      "storage_path": "trash/normal/lost-atlantean-crown_thumbnail.png",
+      "status": 200,
+      "sha256": "5d1ff4637fbcba77d9c4cec377efb8381cb537630dfe829e8791021a1574f281",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/normal/amphora-home-octopus_thumbnail.png",
+      "status": 200,
+      "sha256": "794af970089a7f5e2cba9e307be07f5d899a5069427dc24aee277c3bcbcb8905",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/normal/amphora-home-octopus_sprite.png",
+      "status": 200,
+      "sha256": "b54753d54230a7fa30d577e20ea6d724e97bcb417831c29939c7bd188459ea18",
+      "matches_local": true
+    },
+    {
+      "storage_path": "trash/rare/broken-kingdom-tile_thumbnail.png",
+      "status": 200,
+      "sha256": "3d6477264ae146d935daf2fe50f8970cc99799664e19ecaeadd855ce2f4b5941",
+      "matches_local": true
+    },
+    {
+      "storage_path": "decorations/rare/sunken-kingdom-fountain_thumbnail.png",
+      "status": 200,
+      "sha256": "3f3959f547e887c96d4f838932b5b7cc7c928137fdc57c9db606401e1735c131",
+      "matches_local": true
+    },
+    {
+      "storage_path": "decorations/rare/sunken-kingdom-fountain_sprite.png",
+      "status": 200,
+      "sha256": "6083626bc65e7dc119ae1645fc0a84a45968221b67418094196f54bd6552ff9d",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/rare/azure-armored-sea-turtle_thumbnail.png",
+      "status": 200,
+      "sha256": "47cb6592dcfc375545f4818b898d508ec0b3945914d19dc60754c1983a62b9ac",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/rare/azure-armored-sea-turtle_sprite.png",
+      "status": 200,
+      "sha256": "49de374dbf0a1c6cfcff71d272004264a5355b4ecf943039a062c018d6ed6e02",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/rare/templekeeper-moray_thumbnail.png",
+      "status": 200,
+      "sha256": "cb21c6c6d40a35f2dac11cb0f42ba6f7f038cf7600c391d73419d9bb1dbd52b7",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/rare/templekeeper-moray_sprite.png",
+      "status": 200,
+      "sha256": "20fb413a659ddcf895a4b424a58cad065daaf5349cf104ac3f97d1b3ad9f559d",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/rare/mask-changing-octopus_thumbnail.png",
+      "status": 200,
+      "sha256": "43de6a3128ac288ca3a26ffe1aca8f5050a47ce9a594778b436c064e41190ff2",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/rare/mask-changing-octopus_sprite.png",
+      "status": 200,
+      "sha256": "7a0159621a87d2da39739e3b52769f1161c273a3e6625d556b5781811e716afc",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/rare/letter-carrier-ray_thumbnail.png",
+      "status": 200,
+      "sha256": "39b76080765e1f0415884d115537bdf480b4e7b645b13b0b7f66fecefe313dd0",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/rare/letter-carrier-ray_sprite.png",
+      "status": 200,
+      "sha256": "3099410b597f19981edadaa23a6a9792211973e3ff0b78ae862debf897616e34",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/epic/atlantean-guard-shark_thumbnail.png",
+      "status": 200,
+      "sha256": "d7cb576727dc6be9a3fae7c42484a04633df46033c15400d9b357b4ed29b2f3e",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/epic/atlantean-guard-shark_sprite.png",
+      "status": 200,
+      "sha256": "2086425489f0fa2529f631d14bfe0ae7f23423fce1fb44b268af76325ad86bf8",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/epic/living-mosaic-ray_thumbnail.png",
+      "status": 200,
+      "sha256": "cab932a47bcf127667e0f9280dbe6ed958b1c6b4bc8e40f75f911ea235dbcfbf",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/epic/living-mosaic-ray_sprite.png",
+      "status": 200,
+      "sha256": "ade0745d2bb8d6817dfadbf92992ab7af2833f6b7e5fdced3b31d66af5db9efd",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/epic/palace-lantern-anglerfish_thumbnail.png",
+      "status": 200,
+      "sha256": "c4b1ef3a92110f72912a45c258df70b55f12cc66d4d5d94209314307ff3349c5",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/epic/palace-lantern-anglerfish_sprite.png",
+      "status": 200,
+      "sha256": "e83f85fca28dc2b2ab400382e799e87e9bf6b36d380e3a68c20c66249ccdfb1c",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/epic/atlantean-giant-squid_thumbnail.png",
+      "status": 200,
+      "sha256": "2e18214473e5ded091a34ba47561e9887c5f38754ac0d9b33fc5f33ece5bdf05",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/epic/atlantean-giant-squid_sprite.png",
+      "status": 200,
+      "sha256": "d7d4f166ca2e4ecb61a8e284067e27389d6638b35aa5bc7dbe6bb25dcd0a681f",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/mythic/atlantean-sentinel_thumbnail.png",
+      "status": 200,
+      "sha256": "f35422d345b70ec3445008eb2940921d87bc7416578c00cbfa11f872f91d4842",
+      "matches_local": true
+    },
+    {
+      "storage_path": "fish/mythic/atlantean-sentinel_sprite.png",
+      "status": 200,
+      "sha256": "9abf673e6ad8bc04c4477e0a887f37b54773bee90ed04c741d76deaee1af0883",
+      "matches_local": true
+    }
+  ]
+}

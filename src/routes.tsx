@@ -1,8 +1,10 @@
 import { RegionPage } from '@/features/regions/region-page'
 import { SailingPage } from '@/features/regions/sailing-page'
 import { ShopPage } from '@/features/gold/shop-page'
+import { WarehousePage } from '@/features/fishing/warehouse-page'
 import { Navigate,Route, Routes } from 'react-router'
 import { AppLayout } from '@/layouts/app-layout'
+import { ArcadePage, ArcadeGamePage } from '@/features/arcade/arcade-page'
 import { HomePage } from '@/pages/home-page'
 import { NotFoundPage } from '@/pages/not-found-page'
 import { AuthGuard } from '@/components/auth-guard'
@@ -36,6 +38,9 @@ export function AppRoutes() {
             <Route path="sailing/:regionId" element={<SailingPage />} />
             <Route path="region/:regionId" element={<RegionPage />} />
             <Route path="shop" element={<ShopPage />} />
+            <Route path="warehouse" element={<WarehousePage />} />
+            <Route path="arcade" element={<ArcadePage />} />
+            <Route path="arcade/:gameId" element={<ArcadeGamePage />} />
             <Route path="friends" element={<FriendsPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="notifications" element={<NotificationsPage />} />

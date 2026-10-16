@@ -1,0 +1,25 @@
+{
+  "tool": "image_gen",
+  "bucket": "collectibles",
+  "id": "lunea-record-shelf",
+  "file": "decorations/epic/lunea-record-shelf_sprite.png",
+  "storage_path": "decorations/epic/lunea-record-shelf_sprite.png",
+  "reference": "assets/storage-upload/new/20261015-173555/decorations/epic/lunea-record-shelf_thumbnail.png",
+  "style_reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+  "generation": {
+    "prompt": "Create beautiful square transparent 2x2 FOUR FRAME idle animation sprite sheet of EXACT Lunea moonlit archive shelf in first reference. Keep design: crescent moon atop pearlescent arched two-tier bookshelf, scallop shell books and ivory scrolls, lavender ribbon bookmarks and dangling pearls. Second reference only refined epic fantasy illustration STYLE, delicate colored lines rich gradients and luminous nacre, no copied animal. RIGID stone structure, crescent and shelf contents main masses identically positioned and same size in all four cells. Animate lavender ribbon bookmark ends and pearl pendants swaying subtly in cyclic four phases, one loose scroll edge gently curls and unfurls, warm moonlight travels gently along book edges, no flashing. Four distinct natural phases, no whole object translation or rotation. Entire motion envelope longest dimension80% of EACH cell,10% transparent margins on all sides, no clipping. True alpha PNG, no checkerboard no background no floor no text no detached particles or halos.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-a3b00900-269c-4865-8244-370a6f88d912.png"
+  },
+  "layout_edit": {
+    "prompt": "Polish this exact2x2fourframe sprite sheet. CRITICAL remove ALL detached haze, white speckles, glow clouds and opaque white halo around shelf. Clean true alpha silhouette with no background. Uniformly reduce all FOUR drawings to80% current size INSIDE their own equalquadrant, center same rigid shelf structure at identical localcoordinates allframes. Leave10% transparent margin all sides; fully contained crescent and base. Keep exact rich pearlescent fantasy design, colors and different ribbon/scroll animation poses. Do not merge fourcells or shrink whole sheet. Preserve intrinsic subtle highlights only on object itself, not outside. No checkerboard no particles no text. Fine crisp colored outlines.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-ea229370-9dd0-4bec-8662-caef2ff68fda.png"
+  },
+  "redraw": {
+    "prompt": "GAME SPRITE production asset: one square PNG with FOUR distinct animation frames in a 2x2 regular grid. Re-draw exact pearly moon bookshelf from reference1 in refined fantasy painted style reference2. Keep crescent, scallop books, scrolls, lavender ribbons and nacre stone shelf. Clean crisp silhouette; NO atmospheric glow, no exterior bloom, no mist, no detached sparkles or pixels. All negative space genuinely transparent. Each frame entire shelf only75% of CELL height, centered with12% clear margins, no clipping. Shelf BODY stable identical size and coordinates fourframes. Animate lavender bookmark ribbons gently left/down/right/down, small pendant pearl swing and loose scroll tip curl. Books and rigid crescent do not move. Subtle warm light on book edges INSIDE silhouette, not glowing outside. Same camera side-threequarter all frames. No background no floor no text no grid lines. True alpha transparency.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-51cabb2e-0fb7-4c05-b02a-702e070c1ab4.png"
+  },
+  "final": {
+    "prompt": "Make a CLEAN production sprite sheet from this reference. KEEP the four frames and ribbon poses. Draw all four complete shelves SMALLER: each shelf exactly 70 percent of its quadrant HEIGHT, centered. Four separate equal quadrants. No part near any edge. Use clean solid colored outlines, no glow effect whatsoever. Remove every stray speck, mist, cloud, white border and exterior bloom. Transparent negative space. Preserve pearlescent purple shelf, moon, books, scrolls and dangling bookmarks. Rigid shelf anchor identical allframes. Crisp detailed game illustration. Output square2x2 PNG true alpha.",
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a13ca6-4ca4-71d0-8866-2e80adc59502\\exec-4d80c925-f6b4-48a0-8baa-1b7a90e680d6.png"
+  }
+}

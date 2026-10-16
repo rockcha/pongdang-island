@@ -1,0 +1,36 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "assets/storage-upload/new/20261016-180840/aquarium-backgrounds/default.png",
+  "entries": [
+    {
+      "name": "노을빛 바다",
+      "price": 300,
+      "prompt": "One full-bleed portrait 9:16 underwater aquarium game background. Soft polished painterly illustration, elegant minimal environment matching the referenced image's quality. 85% calm open water for fish sprites, broad subtle lighting and smooth atmospheric depth. Only bottom 10-15% a softly painted seabed and tiny minimal edge accents. No fish, animals, text, UI, bubbles, clutter or ruins. Warm peach amber light filtering through water overhead, soft rose and dusty mauve water gradients deepening downward, pale warm sand, two tiny smooth terracotta stones at bottom corners. Quiet sunset underwater atmosphere.",
+      "hint": "Generated images are saved to C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c as C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-2cc61162-4188-4089-a291-38424e577e72.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "id": "sunset",
+      "bucket": "aquarium-backgrounds",
+      "storage_path": "sunset.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-2cc61162-4188-4089-a291-38424e577e72.png"
+    },
+    {
+      "name": "빙하의 숨결",
+      "price": 400,
+      "prompt": "One full-bleed portrait 9:16 underwater aquarium game background. Soft polished painterly illustration, elegant minimal environment matching the referenced image's quality. 85% calm open water for fish sprites, broad subtle lighting and smooth atmospheric depth. Only bottom 10-15% a softly painted seabed and tiny minimal edge accents. No fish, animals, text, UI, bubbles, clutter or ruins. Luminous mint and icy jade water beneath a softly translucent ice ceiling visible only at very top edge. Broad diffuse cool light, pale frosted sand, two small smooth aquamarine ice-like stones at bottom corners. Airy calm polar water, no huge jagged ice formations.",
+      "hint": "Generated images are saved to C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c as C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-3fe3264d-1d28-4d83-8363-d0d9bf9e43c0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "id": "glacier",
+      "bucket": "aquarium-backgrounds",
+      "storage_path": "glacier.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-3fe3264d-1d28-4d83-8363-d0d9bf9e43c0.png"
+    },
+    {
+      "name": "보랏빛 고요",
+      "price": 500,
+      "prompt": "One full-bleed portrait 9:16 underwater aquarium game background. Soft polished painterly illustration, elegant minimal environment matching the referenced image's quality. 85% calm open water for fish sprites, broad subtle lighting and smooth atmospheric depth. Only bottom 10-15% a softly painted seabed and tiny minimal edge accents. No fish, animals, text, UI, bubbles, clutter or ruins. Quiet velvety violet deep ocean, lavender light gently descending from far above into soft plum blue depths. Smooth dark lilac seabed bottom, just a tiny low sea plant and smooth dark pebble at corners, no glowing objects, no stars. Dreamy luxurious rich purple water.",
+      "hint": "Generated images are saved to C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c as C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-3bb0f5f2-0c52-4d48-a4df-c12231e77b3a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "id": "violet",
+      "bucket": "aquarium-backgrounds",
+      "storage_path": "violet.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-3bb0f5f2-0c52-4d48-a4df-c12231e77b3a.png"
+    }
+  ]
+}

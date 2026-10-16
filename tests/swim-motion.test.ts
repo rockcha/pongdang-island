@@ -62,3 +62,12 @@ it('stays inside the tank and remains continuous across route changes', () => {
     }
   }
 })
+
+it('uses shallow depth changes with continuous position at course and behavior boundaries',()=>{
+ for(const seed of [0,42,240000,999999]){
+  const route=createSwimMotion('sea-crocodile',seed,.045)
+  const points=Array.from({length:1801},(_,i)=>route(i*.1))
+  expect(Math.max(...points.map(p=>p.y))-Math.min(...points.map(p=>p.y))).toBeLessThan(.081)
+  for(let i=1;i<points.length;i++)expect(Math.abs(points[i].y-points[i-1].y)).toBeLessThan(.001)
+ }
+})

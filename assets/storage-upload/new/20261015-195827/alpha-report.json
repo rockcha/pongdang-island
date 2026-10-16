@@ -1,0 +1,63 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261015-195827/fish/mythic/ancient-coral-giant-crab-walk_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  72,
+                                           "y":  126,
+                                           "width":  495,
+                                           "height":  407,
+                                           "widthRatio":  0.7895,
+                                           "heightRatio":  0.6491,
+                                           "alphaPixels":  121593,
+                                           "leftAnchorY":  360.95,
+                                           "rightAnchorY":  380.921
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  64,
+                                           "y":  125,
+                                           "width":  491,
+                                           "height":  409,
+                                           "widthRatio":  0.7831,
+                                           "heightRatio":  0.6523,
+                                           "alphaPixels":  122974,
+                                           "leftAnchorY":  364.342,
+                                           "rightAnchorY":  381.631
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  74,
+                                           "y":  98,
+                                           "width":  496,
+                                           "height":  404,
+                                           "widthRatio":  0.7911,
+                                           "heightRatio":  0.6443,
+                                           "alphaPixels":  121450,
+                                           "leftAnchorY":  336.802,
+                                           "rightAnchorY":  351.708
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  62,
+                                           "y":  98,
+                                           "width":  492,
+                                           "height":  405,
+                                           "widthRatio":  0.7847,
+                                           "heightRatio":  0.6459,
+                                           "alphaPixels":  121656,
+                                           "leftAnchorY":  336.228,
+                                           "rightAnchorY":  351.784
+                                       }
+                                   ]
+                    }
+                ]
+}

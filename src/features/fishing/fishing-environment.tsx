@@ -20,9 +20,9 @@ export function FishingSea({regionId}:{regionId:string}){
   {failed!==theme.src&&<image href={theme.src} width={width} height={height} onError={()=>setFailed(theme.src)}/>}
  </svg>
 }
-export function FishingPlatform({regionId,y}:{regionId:string;y:number}){
+export function FishingPlatform({regionId,y,platformHeight=160}:{regionId:string;y:number;platformHeight?:number}){
  const theme=fishingEnvironment(regionId),[failed,setFailed]=useState<string|null>(null)
- return <svg x={-4} y={y} width={408} height={160} viewBox={`0 ${theme.deckStart} ${width} ${height-theme.deckStart}`} preserveAspectRatio="xMidYMin slice" overflow="hidden" data-fishing-platform={theme.id}>
+ return <svg x={-4} y={y} width={408} height={platformHeight} viewBox={`0 ${theme.deckStart} ${width} ${height-theme.deckStart}`} preserveAspectRatio="xMidYMin slice" overflow="hidden" data-fishing-platform={theme.id}>
   <rect x="0" y={theme.deckStart} width={width} height={height-theme.deckStart} fill={theme.deck}/>
   {failed!==theme.src&&<image href={theme.src} width={width} height={height} onError={()=>setFailed(theme.src)}/>}
   {failed===theme.src&&<path d={`M0 ${theme.deckStart+4}h1024m-800 0v440m250-440v440m250-440v440`} fill="none" stroke={theme.edge} strokeWidth="5" opacity=".4"/>}

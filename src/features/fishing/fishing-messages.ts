@@ -3,6 +3,8 @@ import { fishBehavior } from './tension-game'
 import type { TensionGame } from './tension-game'
 
 const waiting=['입질을 기다려요','누가 다가올까요?','물속이 조용해요','작은 기척이 느껴져요','찌가 살랑거려요','바닷속을 살펴봐요','어떤 친구가 올까요?','물결 따라 기다려요']
+const approaching=['검은 그림자가 나타났어요…!','무언가 근처를 서성거려요','물밑에서 움직임이 느껴져요','작은 그림자가 다가와요','미끼 주변을 맴돌고 있어요','누군가 미끼를 살펴봐요','물속에서 반짝 움직였어요','그림자가 찌 아래로 다가와요']
+const nibbling=['찌를 툭툭 건드렸어요!','입질이 오기 시작했어요!','미끼를 톡 건드렸어요!','찌가 살짝 잠겼어요!','뭔가 미끼를 물었어요!','톡톡, 입질이 느껴져요!','물고기가 미끼를 탐색해요!','찌 끝이 콕 움직였어요!']
 const calm=['살랑살랑 헤엄쳐요','느긋하게 맴돌아요','잠시 얌전해졌어요','물살에 몸을 맡겨요','꼬리를 살살 흔들어요','주변을 두리번거려요','동그랗게 돌아요','천천히 방향을 바꿔요']
 const warning=['몸을 움츠려요','꼬리가 씰룩!','휙 돌아볼까?','지느러미를 펼쳐요','몸을 낮추고 있어요','꼬리에 힘을 모아요','갑자기 방향을 틀어요','움직임이 심상치 않아요']
 const recover=['잠깐 숨을 골라요','힘이 조금 빠졌어요','천천히 헤엄쳐요','꼬리짓이 잦아들어요','잠시 쉬어가나 봐요','살짝 지친 모양이에요','물결에 둥실 떠요','한숨 돌리고 있어요']
@@ -22,9 +24,10 @@ function choose(pool:string[],seed:number,cycle:number){
 }
 export function fishingMessage(game:TensionGame):string{
  if(game.phase==='won')return ''
- if(game.phase==='waiting')return choose(waiting,game.seed,0)
+ if(game.phase==='waiting')return choose(game.time<.85?waiting:approaching,game.seed,0)
  if(game.phase==='lost')return choose(lost,game.seed,0)
  const behavior=fishBehavior(game.time,game.seed,game.rarity)
+ if(behavior.index===-1)return choose(nibbling,game.seed,0)
  const pool=behavior.mood==='surge'?surge[game.rarity]:behavior.mood==='warning'?warning:behavior.mood==='recover'?recover:calm
- return choose(pool,game.seed,Math.floor(behavior.index/4))
+ return choose(pool,game.seed,Math.floor(behavior.index/2))
 }

@@ -2,7 +2,7 @@ import { FishingSea,FishingPlatform } from './fishing-environment'
 import { collectibleUrl } from '@/features/collection/api'
 import type { Species } from '@/features/collection/api'
 import { useEffect, useId, useRef, useState } from 'react'
-import { fishBehavior } from './tension-game'
+import { fishBehavior, fishForce, fishStrength } from './tension-game'
 import type { FishMood,TensionGame } from './tension-game'
 
 const waters:Record<string,{top:string;bottom:string;light:string}>= {
@@ -18,31 +18,37 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,pulling=f
  const container=useRef<HTMLDivElement>(null),[sceneHeight,setSceneHeight]=useState(380)
  useEffect(()=>{if(!container.current||typeof ResizeObserver==='undefined')return;const observer=new ResizeObserver(([entry])=>{if(entry.contentRect.width>0)setSceneHeight(Math.max(380,entry.contentRect.height/entry.contentRect.width*400))});observer.observe(container.current);return()=>observer.disconnect()},[])
  const bottom=sceneHeight-380
- const t=reduced?0:visual.time,waiting=game.phase==='waiting',won=game.phase==='won',lost=game.phase==='lost',surge=mood==='surge'&&!waiting&&!lost&&!won,warning=mood==='warning'&&!waiting
+ const t=reduced?0:visual.time,waiting=game.phase==='waiting',won=game.phase==='won',lost=game.phase==='lost',surge=active&&mood==='surge'&&!waiting&&!lost&&!won,warning=active&&mood==='warning'&&!waiting&&!lost&&!won
+ const tug=surge?Math.min(1,fishForce(game.time,game.seed,game.rarity)/(fishStrength[game.rarity].surge*.48)):0
+ const motionTug=reduced?0:tug
  const behavior=fishBehavior(game.time,game.seed,game.rarity)
- const end=Math.min(1,visual.ending/1.15),tension=active&&!waiting?visual.tension/100:0,bend=active&&!waiting&&!lost?Math.min(1,(surge?.65:warning?.35:.1)+(pulling?.2:0)+tension*.15):0
- const recoil=!reduced&&surge?Math.sin(t*19)*tension*2.5:0
+ const end=Math.min(1,visual.ending/1.15),tension=active&&!waiting?visual.tension/100:0,bend=active&&!waiting&&!lost?Math.min(1,(surge?.2+tug*.45:warning?.35:.1)+(pulling?.2:0)+tension*.15):0
+ const recoil=Math.sin(t*19)*motionTug*3.5
  const lift=won?(reduced?1:1-Math.pow(1-end,3)):0
- const tip={x:197+bend*43+recoil-lift*62,y:100+bend*65-lift*65-(active&&waiting&&!reduced&&game.time<.85?Math.sin(game.time/.85*Math.PI)*50:0)}
- const baseY=361+bottom
+ const tip={x:263+bend*28+recoil-lift*62,y:112+bend*56-lift*65-(active&&waiting&&!reduced&&game.time<.85?Math.sin(game.time/.85*Math.PI)*50:0)}
+ const baseY=329+bottom
  const rodPath=`M303 ${baseY} C${303+(tip.x-303)*.33+bend*65} ${baseY+(tip.y-baseY)*.33},${303+(tip.x-303)*.7+bend*100} ${baseY+(tip.y-baseY)*.7-bend*30},${tip.x} ${tip.y}`
  const cast=active&&waiting?Math.min(1,game.time/.85):1
  const casting=active&&waiting&&cast<1
- const bobX=190+(!reduced&&active?Math.sin(t*2)*4:0)+(surge&&!reduced?Math.sin(t*15)*3:0)
+ const bobX=200+(!reduced&&active?Math.sin(t*2)*4:0)+Math.sin(t*15)*motionTug*4
  // Far cast, impact dip, resurfacing, then a short bite dip.
  const landing=active&&waiting?Math.max(0,Math.min(1,(game.time-.85)/.85)):1
  const dip=reduced?0:active&&waiting&&game.time>=.85&&game.time<1.7?Math.sin(landing*Math.PI):active&&!waiting&&!won&&!lost&&game.time<.6?Math.sin(game.time/.6*Math.PI):0
- const approach=Math.max(0,Math.min(1,(game.progress-.18)/.7))
+ const approach=waiting?Math.max(0,Math.min(.2,(game.time-.85)*.1)):Math.max(.2,Math.min(1,(game.progress-.12)/.75))
  const bobScale=active?.62+game.progress*.38:1
- const nearWater=Math.max(180,sceneHeight-235)
- const bobY=(active?nearWater-45+game.progress*65:nearWater)+(waiting?Math.sin(t*2)*1.4:0)+(won?-lift*138:0)
+ const platformHeight=Math.max(160,Math.min(220,sceneHeight*.32))
+ const platformY=sceneHeight-platformHeight+10
+ const nearWater=Math.min(sceneHeight*.42,platformY-117)
+ const bobY=nearWater+(active?(game.progress-.5)*28:0)+(waiting?Math.sin(t*2)*1.4:0)+motionTug*5+(won?-lift*138:0)
  const bx=tip.x+(bobX-tip.x)*cast,by=tip.y+(bobY-tip.y)*cast-(casting?Math.sin(cast*Math.PI)*85:0)
- const fx=205+Math.sin(t*1.5)*12+(surge&&!reduced?Math.sin(behavior.progress*Math.PI)*45:0)+(lost?end*155:0)
- const fy=nearWater-20+game.progress*65+(won?-lift*194:0),fishScale=.35+approach*.9
+ const fx=200+Math.sin(t*1.5)*12+Math.sin(behavior.progress*Math.PI)*motionTug*30+(lost?end*155:0)
+ const fy=nearWater+24+game.progress*20+(won?-lift*194:0),fishScale=.35+approach*.9
  const snapped=lost&&game.reason==='snap'
  const lineEnd=snapped?{x:tip.x+12*(1-end),y:tip.y-15*(1-end)}:{x:bx,y:by+dip*13}
  const impact=active&&waiting&&game.time>=.85&&game.time<1.7
- const splash=active&&!reduced&&(impact||surge||won||(!waiting&&game.time<.65))
+ const splash=active&&!reduced&&(impact||surge||(!waiting&&!won&&!lost&&game.time<.65))
+ const landingSplash=active&&won&&!reduced&&visual.ending<.95
+ const splashProgress=Math.max(0,Math.min(1,visual.ending/.95))
  return <div ref={container} className="relative h-full w-full overflow-hidden" style={{background:`linear-gradient(${palette.top},${palette.bottom})`}}>
  <FishingSea regionId={regionId}/>
  <svg viewBox="0 0 400 600" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden="true">
@@ -65,18 +71,29 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,pulling=f
   {regionId==='starruins'&&<g stroke={palette.light} opacity=".1" fill="none"><path d="M0 280l70-20 20 60-70 20Z M330 25l55 10-12 62-55-10Z"/><path d="M10 287l50-14 17 40-50 15Z M339 37l32 6-8 39-32-6Z"/></g>}
   {regionId==='mistmoon'&&<g fill="#e5e1ff" opacity=".065"><ellipse cx="50" cy="60" rx="150" ry="20"/><ellipse cx="350" cy="160" rx="140" ry="17"/></g>}
   {Array.from({length:12},(_,i)=><ellipse key={i} cx={(i*73+29)%400} cy={22+(i*47)%290} rx={i%3===0?5:2} ry=".8" fill={palette.light} opacity={reduced?.15:.12+Math.max(0,Math.sin(t+i))*.2}/>) }
-  {active&&!waiting&&!won&&approach>0&&<g transform={`translate(${fx} ${fy}) rotate(${won?-65:warning?-35*Math.min(1,behavior.progress):surge?-15:10}) scale(${fishScale})`} fill="#092b47" filter={`url(#${id}-depth)`} opacity={approach*(lost?(1-end)*.4:.42)}>{outline?<image href={collectibleUrl(outline.thumbnail_path)} x="-36" y="-32" width="72" height="64" preserveAspectRatio="xMidYMid meet" filter={`url(#${id}-silhouette)`}/>:<><path d="M-28 0Q-16-16 8-9L27-22 23-2 29 16 8 8Q-15 17-28 0Z"/><path d="M-5-8l12-14 4 16Z"/></>}</g>}
+  {active&&!won&&approach>0&&<g data-fishing-shadow="true" transform={`translate(${fx} ${fy}) rotate(${won?-65:warning?-35*Math.min(1,behavior.progress):surge?-15:10}) scale(${fishScale})`} fill="#092b47" filter={`url(#${id}-depth)`} opacity={approach*(lost?(1-end)*.4:.6)}>{outline?<image href={collectibleUrl(outline.thumbnail_path)} x="-36" y="-32" width="72" height="64" preserveAspectRatio="xMidYMid meet" filter={`url(#${id}-silhouette)`}/>:<><path d="M-28 0Q-16-16 8-9L27-22 23-2 29 16 8 8Q-15 17-28 0Z"/><path d="M-5-8l12-14 4 16Z"/></>}</g>}
+  {landingSplash&&<g data-fishing-catch-splash="true" transform={`translate(200 ${nearWater+32})`} pointerEvents="none">
+   {[0,1,2].map(i=>{const spread=Math.max(0,(splashProgress-i*.12)/(1-i*.12));return <ellipse key={i} rx={18+spread*(78-i*10)} ry={5+spread*18} fill="none" stroke={i===0?'#efffff':palette.light} strokeWidth={2.5-i*.5} opacity={(1-spread)*.8}/>})}
+   <path d={`M-42 3 Q-32 ${-Math.sin(splashProgress*Math.PI)*35} -20 -2 Q-12 ${-Math.sin(splashProgress*Math.PI)*57} 0 -4 Q12 ${-Math.sin(splashProgress*Math.PI)*50} 22 -1 Q33 ${-Math.sin(splashProgress*Math.PI)*30} 44 3 Q0 18 -42 3Z`} fill={palette.light} fillOpacity={(1-splashProgress)*.45} stroke="#e2faff" strokeOpacity={(1-splashProgress)*.7} strokeWidth="1.5"/>
+   {Array.from({length:14},(_,i)=>{const side=i%2?1:-1;return <ellipse key={i} cx={side*(8+splashProgress*(25+i%7*9))} cy={-Math.sin(splashProgress*Math.PI)*(28+i%5*12)+splashProgress*splashProgress*16} rx={1.8+i%3*.6} ry={3+i%3} fill={i%3===0?'#f5ffff':palette.light} opacity={(1-splashProgress)*.9} transform={`rotate(${side*splashProgress*25} ${side*(8+splashProgress*(25+i%7*9))} ${-Math.sin(splashProgress*Math.PI)*(28+i%5*12)+splashProgress*splashProgress*16})`}/>})}
+  </g>}
+  {active&&won&&outline&&<g data-fishing-lift="true" transform={`translate(${fx} ${fy}) rotate(${reduced?0:-12*lift}) scale(${.8+lift*.45})`}><image href={collectibleUrl(outline.thumbnail_path)} x="-44" y="-44" width="88" height="88" preserveAspectRatio="xMidYMid meet" style={{filter:'drop-shadow(0 4px 8px #123c6840)'}}/></g>}
   {surge&&!reduced&&[0,1,2].map(i=><path key={i} d={`M${fx+35+i*10} ${fy-10}q12 10 0 20`} fill="none" stroke={palette.light} opacity={.2-i*.05} strokeWidth="2"/>)}
-  {active&&!waiting&&[0,1,2].map(i=>{const ripple=(t*1.1+i/3)%1;return <ellipse key={i} cx={bx} cy={by+10} rx={12+ripple*(surge?62:35)} ry={3+ripple*10} stroke={palette.light} fill="none" opacity={reduced?0:(1-ripple)*(surge?.55:.25)} strokeWidth={surge?1.8:1}/>})}
-  <ellipse cx={bx} cy={by+10} rx={(surge?28:18)*bobScale} ry="5" stroke={palette.light} fill="none" opacity=".5"/>
-  <ellipse cx={bx} cy={by+10} rx={(surge?40:28)*bobScale} ry="9" stroke={palette.light} fill="none" opacity=".2"/>
-  <path d={`M${tip.x} ${tip.y} Q${(tip.x+lineEnd.x)/2+(!reduced&&tension>.85?Math.sin(t*38)*2:0)} ${(tip.y+lineEnd.y)/2+(1-tension)*45} ${lineEnd.x} ${lineEnd.y}`} fill="none" stroke={tension>.85?'#ffd1ba':'#e1edf2'} strokeWidth={tension>.85?1.8:1.2}/>
+  {surge&&!reduced&&<g data-fishing-resistance="true" pointerEvents="none">
+   <ellipse cx={bx} cy={by+10} rx={36+tug*30} ry={12+tug*8} fill={palette.light} opacity={tug*.09}/>
+   {[0,1,2,3].map(i=>{const phase=(t*1.5+i/4)%1;return <ellipse key={i} cx={bx} cy={by+10} rx={18+phase*(45+tug*35)} ry={5+phase*(12+tug*8)} fill="none" stroke="#e0f6ff" strokeWidth={1+tug*1.5} opacity={(1-phase)*tug*.65}/>})}
+   {[-1,1].map(side=><path key={side} d={`M${bx+side*(24+tug*8)} ${by-20}q${side*12} -12 ${side*20} -30 M${bx+side*38} ${by-8}l${side*23} -12`} fill="none" stroke={palette.light} strokeWidth="2" strokeLinecap="round" opacity={tug*.55}/>)}
+  </g>}
+  {active&&!waiting&&!won&&[0,1,2].map(i=>{const ripple=(t*1.1+i/3)%1;return <ellipse key={i} cx={bx} cy={by+10} rx={12+ripple*(surge?62:35)} ry={3+ripple*10} stroke={palette.light} fill="none" opacity={reduced?0:(1-ripple)*(surge?.55:.25)} strokeWidth={surge?1.8:1}/>})}
+  <ellipse cx={bx} cy={by+10} rx={(surge?28:18)*bobScale} ry="5" stroke={palette.light} fill="none" opacity={.5*(won?1-lift:1)}/>
+  <ellipse cx={bx} cy={by+10} rx={(surge?40:28)*bobScale} ry="9" stroke={palette.light} fill="none" opacity={.2*(won?1-lift:1)}/>
+  <path d={`M${tip.x} ${tip.y} Q${(tip.x+lineEnd.x)/2+(!reduced&&tension>.85?Math.sin(t*38)*2:0)} ${(tip.y+lineEnd.y)/2+(1-tension)*45*(1-tug*.8)} ${lineEnd.x} ${lineEnd.y}`} fill="none" stroke={tension>.85?'#ffd1ba':'#e1edf2'} strokeWidth={1.2+tug*.8}/>
   {!(snapped&&end>.5)&&<g transform={`translate(${bx} ${by+dip*13}) rotate(${surge?24:dip*12}) scale(${bobScale} ${bobScale*(1-dip*.35)})`} opacity={won?1-end:1-dip*.88}><path d="M0-17v12" stroke="#fff1d4" strokeWidth="2.5"/><ellipse rx="5" ry="9" fill="#fff1d4"/><path d="M-5 0a5 9 0 0 0 10 0Z" fill="#eb886f"/></g>}
-  {splash&&Array.from({length:9},(_,i)=>{const phase=(t*1.7+i*.17)%1,angle=i*Math.PI*2/9;return <ellipse key={i} cx={bx+Math.cos(angle)*(8+phase*(won?48:24))} cy={by+7-Math.sin(phase*Math.PI)*(12+i%3*8)} rx="1.7" ry="2.7" fill={palette.light} opacity={(1-phase)*.7}/>})}
-  <FishingPlatform regionId={regionId} y={sceneHeight-150}/>
+  {splash&&Array.from({length:9},(_,i)=>{const phase=(t*1.7+i*.17)%1,angle=i*Math.PI*2/9;return <ellipse key={i} cx={bx+Math.cos(angle)*(8+phase*(won?48:24+motionTug*22))} cy={by+7-Math.sin(phase*Math.PI)*(12+i%3*8+motionTug*12)} rx="1.7" ry="2.7" fill={palette.light} opacity={(1-phase)*.7}/>})}
+  <FishingPlatform regionId={regionId} y={platformY} platformHeight={platformHeight}/>
   <path d={rodPath} fill="none" stroke="#102b42" strokeWidth="6" strokeLinecap="round"/>
   <path d={rodPath} fill="none" stroke="#97c8d2" strokeWidth="2.3" strokeLinecap="round"/>
-  <g transform={`translate(0 ${bottom-30})`}><path d="M303 392l-27-52" stroke="#76503a" strokeWidth="13" strokeLinecap="round"/>
+  <g transform={`translate(0 ${bottom-62})`}><path d="M303 392l-27-52" stroke="#76503a" strokeWidth="13" strokeLinecap="round"/>
   <path d="M299 382l-18-34" stroke="#c89c6e" strokeWidth="7" strokeLinecap="round"/>
   <g transform={`translate(282 358) rotate(${reduced?0:visual.reel})`}><circle r="12" fill="#183b53" stroke="#abc7ce" strokeWidth="2"/><path d="M-8 0H8M0-8V8" stroke="#abc7ce" strokeWidth="2"/><circle r="4" fill="#d7b388"/><circle cx="8" cy="0" r="3" fill="#d7b388"/></g>
   </g>{active&&!waiting&&game.time<.7&&<text x="200" y="72" textAnchor="middle" fill="#fff1d4" fontSize="18" fontWeight="bold" opacity={1-game.time/.7}>물었어요!</text>}

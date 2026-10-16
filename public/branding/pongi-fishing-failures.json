@@ -1,0 +1,14 @@
+{
+  "generator": "Built-in image_gen",
+  "reference": "public/branding/pongi-fishing-fail.png",
+  "outputs": {
+    "snap": "public/branding/pongi-fishing-snap.png",
+    "slack": "public/branding/pongi-fishing-slack.png",
+    "chance": "public/branding/pongi-fishing-fail.png"
+  },
+  "prompts": {
+    "snap": "Use case: identity-preserve. Asset: transparent square PNG game result mascot. Reference image is the exact Pongi identity and style, not an edit target: fluffy chubby golden-brown baby otter, cream muzzle and belly, dark warm outlines, glossy brown eyes, pink cheeks, white whiskers, coral peach starfish on upper right of head. Create a NEW distinct full-body pose: Pongi startled and leaning backward, eyes wide and mouth small open in surprise, holding a short fishing rod with a visibly SNAPPED fishing line, its two disconnected curled ends visibly separated beside the rod tip. Convey reeled too much and line broke, no fish caught. Match reference polished cute 2D softly shaded mascot proportions. Centered, fully visible paws feet tail and rod within 10 percent transparent margin. No text, no lettering, no UI, no scenery, no ground or cast shadow, no backdrop or checkerboard. True transparent alpha background.",
+    "slack": "Use case: identity-preserve. Asset: transparent square PNG game result mascot. Reference image is the exact Pongi identity and style, not an edit target: fluffy chubby golden-brown baby otter, cream muzzle and belly, dark warm outlines, glossy brown eyes, pink cheeks, white whiskers, coral peach starfish on upper right of head. Create a NEW distinct full-body pose: Pongi sits looking confused and sheepish down at a very loose tangled coil of fishing line pooled between its feet, holds a drooping small fishing rod in one paw and lifts a slack loop with the other. Eyebrows raised unevenly, small worried mouth, no tears. Convey line became loose and fish escaped. Rod and line remain intact, no snapped ends, no fish caught. Match reference polished cute 2D softly shaded mascot proportions. Centered, fully visible paws feet tail and rod within 10 percent transparent margin. No text, no lettering, no UI, no scenery, no ground or cast shadow, no backdrop or checkerboard. True transparent alpha background."
+  },
+  "note": "Chance failure reuses the existing empty-hook Pongi artwork. New snap/slack poses visually inspected."
+}

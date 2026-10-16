@@ -13,6 +13,8 @@
 
 ## 생성 프롬프트
 
+지역 낚시 화면의 해역 배너는 `src/features/regions/region-page.tsx`에서 별도로 표시합니다. 해역 이름·지역 아이콘은 배너 중앙에 정렬하고 하단에 얇은 빛 구분선을 둡니다. 해역 등급은 왼쪽 아래, 선착장 링크는 오른쪽 위입니다. 세부 구성은 [낚시 화면 설계](fishing-minigame.md#화면과-조작)를 따릅니다.
+
 ### square.png
 
 Create one wide panoramic landscape banner for the same cozy Korean island-life cartoon game: painterly polished anime background, soft rounded shapes, cream coastal cottages with coral tile roofs, pastel turquoise sea, warm gentle morning sunlight, lush coastal greenery and small white flowers. Match a peaceful sunlit Mediterranean-tropical island village. Horizontal 3:1 composition, full-bleed opaque image, no people, no text, lettering, readable signs, logo, collage, borders or watermark. Main landmark in center-right, lower left relatively quiet for UI title and subtitle. Readable after cropping to a 448 by 120px game page banner. A small village square right by the sea, warm pale stone paving with a subtle shell mosaic in its center, an old wooden community noticeboard with a few blank cream notices on the right, a low stone bench, flowering bushes, a few pastel houses framing the square, the turquoise bay visible beyond. Inviting gathering place, open composition, a hint of market stalls in the far background.

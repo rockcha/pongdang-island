@@ -22,9 +22,11 @@
 - UI 작업은 [공통 UI 규칙](ui-conventions.md)을 읽고 해당 항목의 상세 문서로 이동합니다.
 - 상세 디자인: [색상](design/colors.md), [장소 메뉴](design/place-navigation.md), [장소 배너](design/place-banners.md), [확인 모달](design/confirmation-dialog.md).
 - 이미지 생성·교체·업로드는 [에셋 안내](../assets/README.md)의 순서를 따릅니다.
-- DB 설치·변경은 [SQL 적용 순서](../supabase/sql/README.md)에서 관련 번호를 확인합니다.
+- DB 설치·변경은 [SQL 찾기와 적용 안내](../supabase/sql/README.md)에서 관련 파일과 선행 조건을 확인합니다.
 
 ## 과거 기록
+
+이전 구현·설치 설명은 [구현 기록 목차](history/README.md), SQL별 설치·변경 안내는 [SQL 기록](../supabase/sql/installation-history.md)에 있습니다. 일반 기능 수정에서는 현재 기능 문서와 관련 코드·테스트만 확인하고, 과거 동작이나 적용 경위를 조사할 때만 기록을 읽습니다.
 
 생성 당시 프롬프트·업로드 내역은 [생성 기록 목차](../assets/storage-upload/history.md)에서 필요한 배치만 찾습니다. 현재 생성 규칙은 [등급별 기준](../assets/references/collectible-style/README.md)과 [방향 규칙](../assets/references/collectible-style/artwork-facing.md)이 기준입니다. 문서에 과거 시점의 어종 수나 적용 상태가 나오면 해당 버전의 기록으로 읽고 실제 상태는 코드·대상 DB에서 확인합니다.
 

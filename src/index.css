@@ -336,3 +336,16 @@ button, [role='button'] { cursor: pointer; }
 @keyframes catch-grade-rays{from{rotate:0deg}to{rotate:360deg}}
 .catch-grade-rays{animation:catch-grade-rays 24s linear infinite}
 @media(prefers-reduced-motion:reduce){.catch-grade-rays{animation:none}}
+
+@keyframes native-species-loop{to{transform:translateX(-50%)}}
+.native-species-carousel-track{animation:native-species-loop linear infinite}
+.native-species-carousel[data-looping=true]{overflow-x:hidden}
+.native-species-carousel:focus-within{overflow-x:auto}
+.native-species-carousel:focus-within .native-species-carousel-track{animation:none}
+.native-species-carousel:focus-within .native-species-carousel-copy{display:none}
+@media(hover:hover){.native-species-carousel:hover .native-species-carousel-track{animation-play-state:paused}}
+@media(prefers-reduced-motion:reduce){
+ .native-species-carousel[data-looping=true]{overflow-x:auto}
+ .native-species-carousel-track{animation:none}
+ .native-species-carousel-copy{display:none}
+}

@@ -17,8 +17,13 @@ export function CatchReveal({species,failure,onDismiss,practice=false,failureLab
    {Array.from({length:!species?0:rarity==='mythic'?22:rarity==='epic'?16:rarity==='rare'?10:6},(_,i)=><span key={i} className="catch-reveal-spark pointer-events-none absolute left-1/2 top-24 size-1.5 rounded-full bg-current" style={{'--spark-x':Math.cos(i*2.4)*(90+i*5)+'px','--spark-y':Math.sin(i*2.4)*120-40+'px'} as CSSProperties}/>)}
    <span className={`${species?"catch-center-figure":"fishing-failure-figure"} relative block size-52 sm:size-64`}><img src={species?collectibleUrl(species.thumbnail_path):failureImage} alt={species?"":failureAlt} className="size-full object-contain" style={{filter:'drop-shadow(0 0 22px '+color+'99)'}}/></span>
    <span role="status" className="relative mt-5 flex w-full flex-col items-center gap-3">
-    <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold tracking-widest backdrop-blur-sm"><span className="size-1.5 rounded-full bg-current" aria-hidden="true"/>{species?rarities[rarity].label:failureLabel}</span>
-    <span className={species?"text-balance break-keep text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_2px_16px_#0005] sm:text-4xl":"text-2xl font-bold tracking-tight text-white"}>{species?species.name+" 획득!":"낚시 실패"}</span>
+    {species?<span className="flex w-full flex-wrap items-center justify-center gap-x-2.5 gap-y-2">
+     <span className="text-balance break-keep text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_2px_16px_#0005] sm:text-4xl">{species.name}</span>
+     <span className="shrink-0 rounded px-2 py-1 text-xs font-bold leading-5 text-white" style={{backgroundColor:color}}>{rarities[rarity].label}</span>
+    </span>:<>
+     <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold tracking-widest backdrop-blur-sm"><span className="size-1.5 rounded-full bg-current" aria-hidden="true"/>{failureLabel}</span>
+     <span className="text-2xl font-bold tracking-tight text-white">낚시 실패</span>
+    </>}
     {species&&<span className="h-px w-12 bg-gradient-to-r from-transparent via-current to-transparent opacity-70" aria-hidden="true"/>}
     {!species&&<span className="max-w-xs text-sm leading-6 text-white/90">{failure}</span>}<span className="text-xs text-white/60">{species?(practice?'연습 결과예요. 실제 보상은 지급되지 않아요.':species.kind==='map'?'새 항로가 열렸어요.':'보관함에 들어갔어요.'):(practice?'연습에서는 미끼를 사용하지 않아요.':'사용한 미끼 1개는 소모됐어요.')}</span>
    </span>

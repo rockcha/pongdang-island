@@ -8,6 +8,7 @@ import { FishingReel } from './fishing-reel'
 import type { FishingStart } from './fishing-reel'
 import type { FishingVisual } from './fishing-water'
 import { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { RotateCcw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { fishBehavior, fishForce, fishStrength, newTensionGame, stepTensionGame } from './tension-game'
@@ -42,11 +43,19 @@ export function TensionFishingGame({onCaught,onCancel,active=true,regionId='pong
  const waiting=game.phase==='waiting',lost=game.phase==='lost',won=game.phase==='won'
  const label=!active?'낚싯대가 준비됐어요':fishingMessage(game)
  const reduced=typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches
+ const behavior=fishBehavior(game.time,game.seed,game.rarity)
+ const tug=active&&!helpOpen&&!reduced&&game.phase==='playing'&&behavior.mood==='surge'?Math.min(1,fishForce(game.time,game.seed,game.rarity)/(fishStrength[game.rarity].surge*.48)):0
+ // Only the crest of each effort wave gives the scenery a short, gentle jolt.
+ const jolt=Math.max(0,(tug-.9)/.1)
+ const sceneMotion=jolt>0?`translate(${Math.sin(visual.time*43)*jolt*1.2}px, ${Math.cos(visual.time*37)*jolt*.7}px)`:undefined
  return <div role="group" aria-label="낚시터" className="relative h-full min-h-0 w-full">
    <div className="absolute inset-0 overflow-hidden bg-[#123c68]">
-    <FishingWater game={game} visual={visual} mood={fishBehavior(game.time,game.seed,game.rarity).mood} active={active} reduced={reduced} regionId={regionId} pulling={pressed} label={quiet?undefined:label} outline={outline}/>
+    <div className="absolute -inset-1" style={{transform:sceneMotion}}>
+     <FishingWater game={game} visual={visual} mood={behavior.mood} active={active} reduced={reduced} regionId={regionId} pulling={pressed} label={quiet?undefined:label} outline={outline}/>
+    </div>
     {active&&!waiting&&!lost&&!won&&<div className="pointer-events-none absolute inset-0 transition-opacity duration-200" style={{opacity:Math.max(0,(visual.tension-85)/15,(20-visual.tension)/20),boxShadow:'inset 0 0 65px #f3a77966'}} aria-hidden="true"/>}
    </div>
+   {tug>0&&createPortal(<div aria-hidden="true" className="pointer-events-none fixed inset-0 z-40" style={{opacity:tug*.32,background:'radial-gradient(ellipse at center, transparent 52%, #81e6df55 78%, #a6f4ef 100%)',boxShadow:'inset 0 0 42px #a6f4ef55'}}/>,document.body)}
 
 
    <FishingHelp open={helpOpen} onOpenChange={open=>{release();setHelpOpen(open)}}/>

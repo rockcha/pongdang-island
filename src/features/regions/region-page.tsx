@@ -31,8 +31,10 @@ function Destination({regionId}:{regionId:string}){
   <div className="relative h-[100px] shrink-0 overflow-hidden bg-muted sm:h-[120px]">
    {!failed&&<img src={regionImageUrl(region.image_path)} alt="" className="absolute inset-0 h-full w-full object-cover" onError={()=>setFailed(true)}/>}
    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"/>
-   <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-1.5 px-20 text-center text-white"><h1 className="flex items-center justify-center gap-2 text-lg font-semibold tracking-wide drop-shadow-[0_2px_8px_#0008] sm:text-xl">{regionIcons[region.id]&&<img src={regionIcons[region.id].src} alt="" className="size-6 drop-shadow"/>}{region.name}</h1><span className="h-px w-12 bg-gradient-to-r from-transparent via-white/70 to-transparent" aria-hidden="true"/></div><div className="absolute bottom-2.5 left-3"><RarityBadge rarity={region.rarity}/></div>
-   <Link to="/harbor" className="absolute right-3 top-2 rounded-full bg-black/20 px-3 py-2 text-xs text-white">선착장으로</Link>
+   <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-1.5 px-8 text-center text-white">
+    <h1 className="flex items-center justify-center gap-2 text-lg font-semibold tracking-wide drop-shadow-[0_2px_8px_#0008] sm:text-xl">{regionIcons[region.id]&&<img src={regionIcons[region.id].src} alt="" className="size-6"/>}{region.name}</h1>
+    <span className="h-px w-12 bg-gradient-to-r from-transparent via-white/70 to-transparent" aria-hidden="true"/>
+   </div><div className="absolute bottom-2 left-3"><RarityBadge rarity={region.rarity}/></div>
   </div>
   <FishingPanel regionId={region.id}/>
  </section>

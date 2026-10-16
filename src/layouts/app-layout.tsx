@@ -6,10 +6,12 @@ import { useAuth } from '@/components/auth-provider'
 import { NotificationMenu } from '@/features/notifications/notification-menu'
 import { AvatarMenu } from '@/features/profile/avatar-menu'
 import { PlaceBanner } from '@/components/place-banner'
+import { useFishingTripRoute } from '@/features/fishing/fishing-trip'
 
 export function AppLayout() {
   const { session } = useAuth()
   const {pathname}=useLocation()
+  useFishingTripRoute(session?.user.id,pathname)
   const aquarium=pathname==='/aquarium'
   const harbor=pathname==='/harbor'
   const fishing=pathname.startsWith('/region/')

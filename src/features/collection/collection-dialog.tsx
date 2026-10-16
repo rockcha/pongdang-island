@@ -3,7 +3,7 @@ import { BookOpenText, LayoutGrid, Plus, Search, X } from 'lucide-react'
 import { useAuth } from '@/components/auth-provider'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription,DialogTrigger } from '@/components/ui/dialog'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { rarities } from '@/lib/game/rarity'
 import type { Rarity } from '@/lib/game/rarity'
@@ -15,15 +15,15 @@ import { HabitatIcons, HabitatFilters } from './habitat-icons'
 import { kindLabels, loadCollection } from './api'
 import type { CollectibleKind, CollectionState, Species } from './api'
 
-type CollectionDialogProps = { onAddTemporary?: (species: Species) => void }
+type CollectionDialogProps = { onAddTemporary?: (species: Species) => void; fishing?:boolean;disabled?:boolean }
 type OriginFilter = 'all' | 'native' | 'shared'
 const selectClass = 'min-h-10 min-w-0 flex-1 rounded-xl border border-border/60 bg-background px-2.5 text-xs text-foreground'
 
-export function CollectionDialog({ onAddTemporary }: CollectionDialogProps) {
+export function CollectionDialog({ onAddTemporary,fishing=false,disabled=false }: CollectionDialogProps) {
  const { session } = useAuth()
  const [open, setOpen] = useState(false)
  return <Dialog open={open} onOpenChange={setOpen}>
-  <AquariumToolButton label="바다 도감" icon={<BookOpenText className="size-[18px]" strokeWidth={1.7}/>}/>
+  {fishing?<TooltipProvider><Tooltip><TooltipTrigger render={<DialogTrigger render={<Button variant="ghost" size="icon" disabled={disabled} aria-label="바다 도감" className="size-11 rounded-full border border-white/20 bg-slate-950/20 text-white backdrop-blur-sm hover:bg-slate-950/35 hover:text-white"/>}/> }><BookOpenText className="size-5"/></TooltipTrigger><TooltipContent>바다 도감</TooltipContent></Tooltip></TooltipProvider>:<AquariumToolButton label="바다 도감" icon={<BookOpenText className="size-[18px]" strokeWidth={1.7}/>}/>}
   <DialogContent className="flex h-[88dvh] max-h-[88dvh] flex-col gap-0 overflow-hidden rounded-3xl p-0 sm:max-w-2xl">
    <DialogHeader className="shrink-0 border-b border-border/50 px-5 pb-4 pt-5 pr-12">
     <DialogTitle className="flex items-center gap-2 text-lg"><span aria-hidden="true">📖</span>바다 도감</DialogTitle>

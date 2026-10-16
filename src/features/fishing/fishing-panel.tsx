@@ -8,7 +8,13 @@ import { useEffect, useRef, useState } from 'react'
 import { FishingResultCard } from './fishing-result-card'
 import { createFishingPresentation } from './fishing-presentation'
 import type { FishingPresentation } from './fishing-presentation'
-import { Fish, ShoppingBag } from 'lucide-react'
+import { Fish, ShoppingBag,ChevronDown,FlaskConical } from 'lucide-react'
+import { useAuth } from '@/components/auth-provider'
+import { CollectionDialog } from '@/features/collection/collection-dialog'
+import { NativeSpeciesDialog } from '@/features/regions/native-species-dialog'
+import { Tooltip,TooltipContent,TooltipProvider,TooltipTrigger } from '@/components/ui/tooltip'
+import { FishingTripDialog } from './fishing-trip-dialog'
+import { readFishingTrip,recordFishingCatch } from './fishing-trip'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
@@ -22,6 +28,11 @@ export function BaitInventoryDialog(){
  return <Dialog><DialogTrigger render={<Button variant="outline" className="min-h-11 w-full"/>}><ShoppingBag className="size-4"/>미끼 상점 · 인벤토리</DialogTrigger><DialogContent className="max-h-[90dvh] overflow-y-auto sm:max-w-md"><DialogHeader><DialogTitle>미끼 상점 · 인벤토리</DialogTitle><DialogDescription>퐁당 지렁이를 구매하고, 획득한 미끼의 수량과 효과를 확인해요.</DialogDescription></DialogHeader><FishingPanel/></DialogContent></Dialog>
 }
 export function FishingPanel({regionId}:{regionId?:string}){
+ const {session}=useAuth()
+ const userId=session?.user.id??'guest'
+ const [trip,setTrip]=useState(()=>({userId,items:readFishingTrip(userId)}))
+ const catches=trip.userId===userId?trip.items:readFishingTrip(userId)
+ const [testOpen,setTestOpen]=useState(false)
  const {wallet,transact,busy:goldBusy,loading:goldLoading,error:goldError,refresh}=useGold()
  const [state,setState]=useState<FishingState|null>(null)
  const [error,setError]=useState('')
@@ -67,6 +78,7 @@ export function FishingPanel({regionId}:{regionId?:string}){
   return createFishingPresentation().failure
  }
  function showResult(attempt:FishingAttempt,reason?:string|null){
+  if(attempt.species&&!practice)setTrip({userId,items:recordFishingCatch(userId,attempt)})
   setGameOpen(false)
   setFailureReason(reason??null)
   setFailureLabel(reason&&reason in plannedFailureMessages?'입질만 하고 떠났어요':reason==='snap'||reason==='slack'?'힘 조절 실패':'다음엔 꼭 만나요')
@@ -127,18 +139,26 @@ export function FishingPanel({regionId}:{regionId?:string}){
  const castCaption=busy?'준비 중…':practice?`${rarities[practice].label} 테스트 시작`:uncertain?'결과 확인':state?.prepared?'이어하기':'낚시 시작'
  const baitList=(<ul className="space-y-3">{state?.baits.map(item=><li key={item.id} className={`rounded-xl border p-3 ${regionId&&selected===item.id?'border-primary/40 bg-primary/5':''}`}><div className="flex gap-3"><img src={item.image_path} alt="" className="size-12 shrink-0 object-contain"/><div className="min-w-0 flex-1"><div className="flex justify-between gap-2"><h3 className="text-sm font-semibold">{item.name}</h3><span className="text-xs tabular-nums text-muted-foreground">보유 {goldLoading?'…':wallet.inventory[item.id]??0}개</span></div><p className="mt-2 text-xs leading-6 text-muted-foreground">{item.description}</p><p className="mt-2 text-xs leading-5 text-primary">{item.effect_description}</p></div></div><div className="mt-3 flex gap-2">{regionId&&<Button variant={selected===item.id?'default':'outline'} aria-pressed={selected===item.id} className="min-h-11 flex-1" disabled={busy||goldBusy||uncertain} onClick={()=>setSelected(item.id)}>{selected===item.id?'선택됨':'선택'}</Button>}{item.price!==null?<Button variant="outline" className="min-h-11 flex-1" disabled={busy||goldBusy||goldLoading||!!goldError||uncertain||wallet.gold<item.price} onClick={()=>void buy(item.id)} aria-label={`${item.name} 1개 구매 ${item.price} 골드`}><GoldIcon className="size-5"/>{item.price} · 1개 구매</Button>:<span className="flex min-h-11 flex-1 items-center justify-center text-xs text-muted-foreground">획득 전용 · 획득처 준비 중</span>}</div></li>)}</ul>)
  return <div className={regionId?"relative isolate min-h-0 flex-1 bg-[#123c68]":"space-y-5"}>
-  {regionId?<div className="absolute bottom-6 left-4 z-20"><Button variant="ghost" aria-label={`미끼통 열기 · ${bait?.name??'미끼'} ${wallet.inventory[selected]??0}개`} className="h-14 gap-2.5 rounded-2xl border border-white/25 bg-slate-950/25 px-3 text-white shadow-lg shadow-black/10 backdrop-blur-md hover:bg-slate-950/40 hover:text-white" disabled={gameOpen||busy||uncertain||revealing} onClick={()=>setBaitOpen(true)}>{bait?<img src={bait.image_path} alt="" className="size-9 object-contain drop-shadow-sm"/>:<Fish className="size-6"/>}<span className="text-base font-semibold tabular-nums"><span className="mr-1 text-xs font-normal text-white/60">×</span>{goldLoading?'…':wallet.inventory[selected]??0}</span></Button></div>:<div className="flex items-center justify-between"><h2 className="font-semibold">미끼 인벤토리</h2><span className="flex items-center gap-1 text-sm"><GoldIcon/>{wallet.gold.toLocaleString('ko-KR')}</span></div>}
+  {regionId?<div className="absolute bottom-6 left-4 z-20 flex items-end gap-2"><Button variant="ghost" aria-label={`미끼통 열기 · ${bait?.name??'미끼'} ${wallet.inventory[selected]??0}개`} className="h-14 w-16 flex-col gap-0 rounded-2xl border border-white/25 bg-slate-950/25 px-3 text-white shadow-lg shadow-black/10 backdrop-blur-md hover:bg-slate-950/40 hover:text-white" disabled={gameOpen||busy||uncertain||revealing} onClick={()=>setBaitOpen(true)}>{bait?<img src={bait.image_path} alt="" className="size-7 object-contain drop-shadow-sm"/>:<Fish className="size-6"/>}<span className="text-xs font-semibold tabular-nums"><span className="mr-1 text-xs font-normal text-white/60">×</span>{goldLoading?'…':wallet.inventory[selected]??0}</span></Button><FishingTripDialog catches={catches} disabled={gameOpen||busy||uncertain||revealing||castOpen}/></div>:<div className="flex items-center justify-between"><h2 className="font-semibold">미끼 인벤토리</h2><span className="flex items-center gap-1 text-sm"><GoldIcon/>{wallet.gold.toLocaleString('ko-KR')}</span></div>}
   {!state&&!error&&<p role="status" className={regionId?"absolute inset-x-4 top-28 z-20 rounded-xl bg-background/95 p-3 text-sm":"text-sm"}>미끼를 불러오는 중…</p>}
   {error&&<div role="alert" className={regionId?"absolute inset-x-4 top-28 z-20 space-y-2 rounded-xl bg-background/95 p-3 text-sm text-destructive":"space-y-2 text-sm text-destructive"}><p>{error}</p>{!uncertain&&<Button variant="outline" onClick={()=>void Promise.all([reload(),refresh()])}>다시 불러오기</Button>}</div>}
   {goldError&&<p role="alert" className={regionId?"absolute inset-x-4 top-28 z-20 rounded-xl bg-background/95 p-3 text-sm text-destructive":"text-sm text-destructive"}>{goldError}</p>}
   {regionId?<Dialog open={baitOpen} onOpenChange={setBaitOpen}><DialogContent className="max-h-[85dvh] overflow-y-auto rounded-3xl sm:max-w-md"><DialogHeader><DialogTitle>미끼통</DialogTitle><DialogDescription>미끼를 고르고 효과와 해역별 확률을 확인해요.</DialogDescription></DialogHeader>{baitList}<div className="space-y-2 text-xs leading-5 text-muted-foreground">{bait&&<><p>{state?.regionName?state.regionName+' 기준':'현재 해역 기준'}</p><p>시작 시 성공 예정 {((state?.successChanceBp??3500)/100)}% · 미니게임 성공도 필요해요.</p><p>시작할 때 미끼 1개를 사용해요. 취소·실패해도 돌려받지 않아요.</p><p>성공 예정일 때의 등급 확률</p><p>{bait.effect_kind==='decoration'?'현재 해역 장식물':`일반 ${bait.common_bp/100}% · 희귀 ${bait.rare_bp/100}% · 특급 ${bait.epic_bp/100}% · 신화 ${bait.mythic_bp/100}%`}</p></>}{state?.mapChanceBp!==undefined&&<p>해당 등급에 잠긴 항로가 있으면 지도 조각을 {state.mapChanceBp/100}% 확률로 획득해요. 장식물 미끼는 제외돼요.</p>}</div><Button className="min-h-11" onClick={()=>setBaitOpen(false)}>이 미끼로 준비하기</Button></DialogContent></Dialog>:baitList}
   {regionId&&<TensionFishingGame start={bait&&!castOpen&&!revealing?{label:castLabel,caption:castCaption,disabled:castDisabled,onStart:()=>void cast()}:undefined} regionId={regionId} key={gameOpen?(prepared?.operation_id??'practice-'+practice):"ready"} active={gameOpen} quiet={!gameOpen&&(revealing||castOpen)} challenge={{rarity:practice??prepared?.rarity??'common',wait:practice?1:prepared?.wait_seconds,failureAt:prepared&&!prepared.eligible?preparedFailureSeconds:undefined,failureReason:prepared?.failure_reason}} outline={practice?practiceSpecies(practice):prepared?.species} practice={!!practice} onCancel={()=>void settle(false,'cancelled')} onFailed={reason=>void settle(false,reason)} onCaught={()=>void settle(true)}/>}
-  {regionId&&gameOpen&&practice&&<span className="pointer-events-none absolute left-3 top-3 z-20 rounded-full bg-black/20 px-3 py-1 text-xs text-white">{rarities[practice].label} 힘 테스트</span>}
+  {regionId&&<>
+   <div className="absolute right-[168px] top-3 z-20"><NativeSpeciesDialog regionId={regionId} disabled={gameOpen||busy||uncertain||revealing||castOpen}/></div>
+   <div className="absolute right-[116px] top-3 z-20"><CollectionDialog fishing disabled={gameOpen||busy||uncertain||revealing||castOpen}/></div>
+   <div className="absolute right-16 top-3 z-20"><TooltipProvider><Tooltip><TooltipTrigger render={<Link to="/harbor" aria-label="선착장" className="flex size-11 items-center justify-center rounded-full border border-white/20 bg-slate-950/20 text-xl text-white backdrop-blur-sm hover:bg-slate-950/35"/>}><span aria-hidden="true">⚓</span></TooltipTrigger><TooltipContent>선착장</TooltipContent></Tooltip></TooltipProvider></div>
+  </>}
+  {regionId&&gameOpen&&practice&&<span className="pointer-events-none absolute left-3 top-16 z-20 rounded-full sm:top-3 bg-black/20 px-3 py-1 text-xs text-white">{rarities[practice].label} 힘 테스트</span>}
 
   {revealing&&result?.species&&<CatchReveal species={result.species} practice={!!practice} onDismiss={()=>{setRevealing(false);setResult(null)}}/> }
   {presentation&&castOpen&&!result?.species&&(castError?<div className="absolute inset-x-4 top-1/2 z-30 mx-auto max-h-[80%] max-w-sm -translate-y-1/2 overflow-y-auto rounded-2xl bg-background/95"><FishingResultCard result={null} pending={busy} error={castError} practice={!!practice} failure={failureText||presentation.failure} onContinue={()=>setCastOpen(false)} onRetry={()=>void cast()}/></div>:!busy&&<CatchReveal failureReason={failureReason} failureLabel={failureLabel} failure={failureText||presentation.failure} practice={!!practice} onDismiss={()=>setCastOpen(false)}/>)}
 
-  {regionId&&!gameOpen&&!busy&&!revealing&&!castOpen&&!uncertain&&<div className="absolute left-3 top-3 z-20 rounded-xl bg-black/20 p-2 text-white"><p className="mb-1 text-[10px] text-white/70">힘 테스트 · 미끼/보상 없음</p><div className="flex gap-1"><Button variant="ghost" className="min-h-9 px-2 text-xs text-white" aria-pressed={practice===null} onClick={()=>setPractice(null)}>실전</Button>{(Object.keys(rarities) as Rarity[]).map(rarity=><Button key={rarity} variant="ghost" className="min-h-9 px-2 text-xs text-white hover:bg-white/15 hover:text-white" disabled={!!state?.prepared} aria-pressed={practice===rarity} onClick={()=>setPractice(rarity)}>{rarities[rarity].label}</Button>)}</div></div>}
+  {regionId&&!gameOpen&&!busy&&!revealing&&!castOpen&&!uncertain&&<div className="absolute left-3 top-3 z-20 text-white">
+   <Button variant="ghost" aria-expanded={testOpen} className="min-h-10 gap-1.5 rounded-xl border border-white/10 bg-slate-950/20 px-2.5 text-xs text-white/75 backdrop-blur-md hover:bg-slate-950/35 hover:text-white" onClick={()=>setTestOpen(value=>!value)}><FlaskConical className="size-3.5"/><span className="sr-only sm:not-sr-only">{practice?`${rarities[practice].label} 테스트`:'힘 테스트'}</span><ChevronDown className={`size-3 transition-transform ${testOpen?'rotate-180':''}`}/></Button>
+   {testOpen&&<div className="mt-2 w-36 rounded-2xl border border-white/15 bg-slate-950/85 p-2 shadow-xl backdrop-blur-md"><p className="px-2 py-1 text-[10px] text-white/50">미끼·보상 없는 연습</p><div className="flex flex-col gap-1"><Button variant="ghost" className="min-h-10 justify-start px-2 text-xs text-white hover:bg-white/15 hover:text-white" aria-pressed={practice===null} onClick={()=>{setPractice(null);setTestOpen(false)}}>실전</Button>{(Object.keys(rarities) as Rarity[]).map(rarity=><Button key={rarity} variant="ghost" className="min-h-10 justify-start gap-2 px-2 text-xs text-white hover:bg-white/15 hover:text-white" disabled={!!state?.prepared} aria-pressed={practice===rarity} onClick={()=>{setPractice(rarity);setTestOpen(false)}}><span className="size-2 rounded-sm" style={{backgroundColor:rarities[rarity].effectColor}}/>{rarities[rarity].label}</Button>)}</div></div>}
+  </div>}
   {regionId&&<Link to="/aquarium" className="sr-only focus:not-sr-only focus:absolute focus:bottom-2 focus:z-30">아쿠아리움 보관함으로</Link>}
  </div>
 }

@@ -12,6 +12,7 @@ import { loadRegionMap, regionImageUrl } from '@/features/regions/api'
 import type { Region, RegionMap } from '@/features/regions/api'
 import { DestinationStrip } from '@/features/regions/destination-strip'
 import { regionIcons } from '@/features/regions/region-icons'
+import { NativeSpeciesCarousel } from '@/features/regions/native-species-carousel'
 
 function Landscape({region}:{region:Region}){
  const [failed,setFailed]=useState(false)
@@ -51,7 +52,7 @@ function HarborMap(){
     <span className="absolute left-4 top-4 rounded-full bg-black/20 px-3 py-1.5 text-[11px] backdrop-blur-md">{region.id===map?.currentRegion?'현재 머무는 바다':region.unlocked?'탐험 가능한 바다':'아직 닿지 않은 바다'}</span>
     {!region.unlocked&&<span className="absolute left-1/2 top-[28%] grid size-14 -translate-x-1/2 place-items-center rounded-full bg-black/25 backdrop-blur-sm"><LockKeyhole aria-label="잠긴 지역" className="size-6"/></span>}
     <div className="relative space-y-2" aria-live="polite"><RarityBadge rarity={region.rarity}/><h3 className="flex items-center gap-2 text-xl font-bold tracking-tight">{regionIcons[region.id]&&<img src={regionIcons[region.id].src} alt="" className="size-7"/>}{region.name}</h3>{region.unlocked&&<p className="text-sm leading-6 text-white/80">{region.description}</p>}
-     {region.unlocked&&<div className="border-t border-white/20 pt-3"><p className="mb-2 text-[11px] text-white/70">이 구역에만 서식하는 특별한 개체들</p><div className="flex gap-2 overflow-x-auto pb-1">{natives.map(item=><button key={item.id} aria-label={item.discovered?`${item.name} 살펴보기`:'미발견 개체'} onClick={()=>setDetail(item)} className="grid size-12 shrink-0 place-items-center rounded-2xl bg-white/15 hover:bg-white/25"><span className={item.discovered?'':'brightness-0 opacity-50'}><CollectibleThumbnail path={item.thumbnail_path} name={item.discovered?item.name:'미발견 개체'} className="size-10"/></span></button>)}{!natives.length&&<span className="py-3 text-xs text-white/65">{catalogError?'개체 미리보기를 불러오지 못했어요.':'새로운 바다 친구들을 만나보세요.'}</span>}</div></div>}
+     {region.unlocked&&<div className="border-t border-white/20 pt-3"><p className="mb-2 text-[11px] text-white/70">이 바다에서만 만날 수 있는 특별한 개체</p>{natives.length?<NativeSpeciesCarousel key={region.id} items={natives} onSelect={setDetail}/>:<p className="py-3 text-xs text-white/65">{catalogError?'개체 미리보기를 불러오지 못했어요.':'새로운 바다 친구들을 만나보세요.'}</p>}</div>}
    <Button className="min-h-11 w-full rounded-xl" disabled={!region.unlocked} onClick={travel}>{region.unlocked?<><Sailboat className="size-4"/>{region.id===map?.currentRegion?'현재 바다에서 낚시하기':'항해하기'}</>:<><LockKeyhole className="size-4"/>잠긴 해역</>}</Button>{!region.unlocked&&<p className="text-center text-xs text-muted-foreground">{region.name} 지도 조각이 필요해요.</p>}
     </div>
    </article>

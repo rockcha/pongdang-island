@@ -6,10 +6,17 @@
 | 지역 ID / 이미지 | 이름 | 등급 |
 | --- | --- | --- |
 | pongdang / pongdang.png | 퐁당섬 앞바다 | common / 일반 |
+| bluegrove / bluegrove.png | 푸른골 해역 | common / 일반 |
 | coral / coral.png | 산호빛 여울 | common / 일반 |
 | mistmoon / mistmoon.png | 안개달 해역 | common / 일반 |
 | starruins / starruins.png | 별잠 유적 | rare / 희귀 |
 | dreamabyss / dreamabyss.png | 꿈먹는 심연 | epic / 특급 |
+
+## 푸른골 해역
+
+맑은 청록빛 얕은 바다 사이로 짙푸른 수중 골짜기가 이어지는 일반 해역입니다. 기존 해역 뒤에 표시하며 지도 조각이 있어야 출항할 수 있습니다. 공통 어종·장식물 58종을 연결해 모든 포획 등급과 장식물 미끼에 후보가 있습니다. 전용 토착 어종은 아직 추가하지 않았습니다. 일반 지도 조각은 기존 지도 추첨 경로를 따릅니다.
+
+등록 SQL은 [20261016155535_bluegrove_region_catalog.sql](../../supabase/migrations/20261016155535_bluegrove_region_catalog.sql)입니다. 기존 카탈로그·서식지·보유 기록은 보존하며 기존 낚시 RPC를 재정의하지 않습니다. 원격 DB 적용은 수행하지 않았습니다. [이미지·업로드 기록과 프롬프트](../../assets/storage-upload/new/20261017-005542/README.md), [낚싯대](rod-inventory.md)를 함께 봅니다.
 
 ## 공통 등급
 - `public.game_rarity`: common, rare, epic, mythic. 향후 물고기/아이템 rarity 컬럼에도 이 enum을 사용합니다.

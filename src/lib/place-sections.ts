@@ -8,7 +8,7 @@ export const placeSections={
  ]},
  merchants:{path:'/merchant-street',title:'상인거리',description:'소중한 물건이 새로운 주인을 만나는 곳',items:[
   {path:'/shop',title:'상점',description:'작은 물건을 사고파는 곳',icon:Store,empty:''},
-  {path:'/merchant-street/exchange',title:'거래소',description:'필요한 물건을 사고파는 곳',icon:Handshake,empty:'섬 친구들과 물건을 거래할 공간을 준비하고 있어요.'},
+  {path:'/merchant-street/exchange',title:'거래소',description:'보상을 맡기고 필요한 개체와 교환해요',icon:Handshake,empty:''},
   {path:'/merchant-street/auctions',title:'경매소',description:'특별한 물건의 가치를 발견하는 곳',icon:Gavel,empty:'특별한 물건을 만날 경매를 준비하고 있어요.'},
  ]},
 }

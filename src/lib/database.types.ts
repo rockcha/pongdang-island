@@ -7,6 +7,7 @@ type NotificationRow = Omit<AppNotification, 'request'>
 export type Database = {
   public: {
     Tables: {
+      notices: {Row:import('@/features/notices/api').Notice;Insert:never;Update:never;Relationships:[]}
       player_profiles: {
         Row: Profile
         Insert: { id: string; nickname: string; friend_code?: string; created_at?: string }
@@ -33,6 +34,16 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      notice_is_operator:{Args:Record<string,never>;Returns:boolean}
+      notice_save:{Args:import('@/features/notices/api').NoticeSave;Returns:import('@/features/notices/api').Notice}
+      auction_state:{Args:{p_tab?:string;p_query?:string;p_offset?:number};Returns:import('@/features/auctions/api').AuctionFeed}
+      auction_post:{Args:import('@/features/auctions/api').AuctionPost;Returns:import('@/features/auctions/api').Auction}
+      auction_bid:{Args:{p_id:string;p_amount:number;p_operation_id:string};Returns:import('@/features/auctions/api').Auction}
+      auction_cancel:{Args:{p_id:string};Returns:import('@/features/auctions/api').Auction}
+      exchange_state:{Args:{p_tab?:string;p_query?:string;p_offset?:number};Returns:import('@/features/exchange/api').ExchangePage}
+      exchange_inventory:{Args:Record<string,never>;Returns:import('@/features/exchange/api').ExchangeInventory}
+      exchange_post:{Args:import('@/features/exchange/api').ExchangePost;Returns:import('@/features/exchange/api').ExchangeListing}
+      exchange_action:{Args:{p_listing_id:string;p_action:string};Returns:import('@/features/exchange/api').ExchangeListing}
       odd_even_game:{Args:import('@/features/arcade/odd-even-api').OddEvenAction;Returns:import('@/features/arcade/odd-even-api').OddEvenState}
       odd_even_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/odd-even-api').OddEvenRanks}
       memory_game:{Args:import('@/features/arcade/memory-api').MemoryAction;Returns:import('@/features/arcade/memory-api').MemoryState}

@@ -1,0 +1,45 @@
+import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
+import {MemoryRouter,Route,Routes} from 'react-router'
+import {afterEach,beforeEach,expect,it,vi} from 'vitest'
+import {NoticePage} from '@/features/notices/notice-page'
+import {NoticeEditor} from '@/features/notices/notice-editor'
+import {NoticeBody} from '@/features/notices/notice-body'
+const mock=vi.hoisted(()=>({operator:vi.fn(),feed:vi.fn(),detail:vi.fn(),save:vi.fn(),upload:vi.fn()}))
+vi.mock('@/features/notices/api',async original=>({...await original<typeof import('@/features/notices/api')>(),isNoticeOperator:mock.operator,loadNotices:mock.feed,loadNotice:mock.detail,saveNotice:mock.save,uploadNoticeImage:mock.upload}))
+const notice={id:'notice',category:'update' as const,title:'푸른골 업데이트',body:'새 해역이 열렸어요.',images:[],urls:{},status:'published' as const,pinned:true,starts_at:null,ends_at:null,author_id:null,created_at:'2026-10-17T00:00:00Z',updated_at:'2026-10-17T00:00:00Z',published_at:'2026-10-17T00:00:00Z',revision:1}
+beforeEach(()=>{vi.clearAllMocks();mock.operator.mockResolvedValue(false);mock.feed.mockResolvedValue({items:[notice],total:1});mock.detail.mockResolvedValue(notice);mock.save.mockResolvedValue(notice);mock.upload.mockResolvedValue({path:'image.png',url:'/image.png'})})
+afterEach(cleanup)
+it('shows minimal notice rows and filters while hiding author tools from ordinary readers',async()=>{
+ render(<MemoryRouter><NoticePage/></MemoryRouter>)
+ expect(await screen.findByRole('heading',{name:notice.title})).toBeTruthy()
+ expect(screen.queryByRole('link',{name:/공지 작성/})).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'점검'}))
+ await waitFor(()=>expect(mock.feed).toHaveBeenLastCalledWith('maintenance','',0,false))
+})
+it('blocks editor access without an operator role',async()=>{
+ render(<MemoryRouter><NoticeEditor/></MemoryRouter>)
+ expect(await screen.findByRole('alert')).toHaveProperty('textContent','공지 작성 권한이 없어요.')
+ expect(screen.queryByLabelText('공지 제목')).toBeNull()
+})
+it('uploads images, inserts them into the body, previews and confirms publishing',async()=>{
+ mock.operator.mockResolvedValue(true)
+ render(<MemoryRouter initialEntries={['/square/notices/new']}><Routes><Route path="/square/notices/new" element={<NoticeEditor/>}/><Route path="/square/notices/:noticeId" element={<p>게시 완료 화면</p>}/></Routes></MemoryRouter>)
+ fireEvent.change(await screen.findByLabelText('공지 제목'),{target:{value:'새 소식'}})
+ fireEvent.change(screen.getByLabelText('공지 본문'),{target:{value:'안녕하세요'}})
+ fireEvent.change(screen.getByLabelText('공지 이미지 첨부'),{target:{files:[new File(['image'],'test.png',{type:'image/png'})]}})
+ fireEvent.click(await screen.findByRole('button',{name:'본문에 넣기'}))
+ fireEvent.click(screen.getByRole('button',{name:'미리보기'}))
+ expect(await screen.findByRole('img',{name:/새 소식 첨부 이미지/})).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'게시하기'}))
+ expect(mock.save).not.toHaveBeenCalled()
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'확인'}))
+ await waitFor(()=>expect(mock.save).toHaveBeenCalledWith(expect.objectContaining({title:'새 소식',images:['image.png'],body:'안녕하세요\n![이미지](image.png)\n',revision:0}),'published'))
+ expect(await screen.findByText('게시 완료 화면')).toBeTruthy()
+})
+it('renders user text without executing HTML or unsafe links',()=>{
+ const view=render(<NoticeBody notice={{...notice,body:'<script>alert(1)</script>\n[위험](javascript:alert)\n**강조**\n[안내](https://example.com)'}}/>)
+ expect(view.container.querySelector('script')).toBeNull()
+ expect(view.container.querySelector('strong')?.textContent).toBe('강조')
+ expect(screen.getByRole('link',{name:'안내'}).getAttribute('href')).toBe('https://example.com')
+ expect(screen.queryByRole('link',{name:'위험'})).toBeNull()
+})

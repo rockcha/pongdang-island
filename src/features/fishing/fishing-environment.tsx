@@ -1,6 +1,7 @@
 ﻿import { useState } from 'react'
 
 export const fishingEnvironments={
+ bluegrove:{name:'푸른골 해역',water:'#38b5cd',deck:'#af9c83',edge:'#e7d5b5',waterEnd:990,deckStart:1065},
  pongdang:{name:'퐁당섬 앞바다',water:'#529dc7',deck:'#b88b61',edge:'#e4c695',waterEnd:1048,deckStart:1058},
  coral:{name:'산호빛 여울',water:'#51b2ba',deck:'#98765c',edge:'#dfb59a',waterEnd:1100,deckStart:1128},
  mistmoon:{name:'안개달 해역',water:'#6678ad',deck:'#43556c',edge:'#90a7bc',waterEnd:980,deckStart:1064},

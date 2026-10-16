@@ -15,6 +15,11 @@ it('shows a brown pending dot, stamps today once and refreshes earned gold',asyn
  expect(view.container.querySelector('[data-attendance-pending]')).toBeTruthy()
  fireEvent.click(button)
  await screen.findByRole('dialog')
+ const sheet=screen.getByLabelText('28일 출석지')
+ expect(sheet.children).toHaveLength(28)
+ expect(sheet.classList.contains('grid-cols-7')).toBe(true)
+ for(const day of [7,14,21])expect(sheet.children[day-1].getAttribute('aria-label')).toContain('달빛 진주새우')
+ expect(sheet.children[27].getAttribute('aria-label')).toContain('별잠의 유혹')
  const attend=await screen.findByRole('button',{name:'오늘 출석하고 보상 받기'})
  await waitFor(()=>expect((attend as HTMLButtonElement).disabled).toBe(false))
  fireEvent.click(attend);fireEvent.click(attend)
@@ -25,8 +30,8 @@ it('shows a brown pending dot, stamps today once and refreshes earned gold',asyn
  expect(view.container.querySelector('[data-attendance-pending]')).toBeNull()
  expect(document.querySelector('[aria-label="7일차 출석 완료 · 달빛 진주새우"]')).toBeTruthy()
 })
-it('keeps a completed sheet visible and explains the next sheet after day 30',async()=>{
- load.mockResolvedValue({...pending,checkedIn:true,streak:30,currentDay:30,completedDays:30,completedSheets:1})
+it('keeps a completed sheet visible and explains the next sheet after day 28',async()=>{
+ load.mockResolvedValue({...pending,checkedIn:true,streak:28,currentDay:28,completedDays:28,completedSheets:1})
  render(<AttendanceButton/>)
  fireEvent.click(await screen.findByRole('button',{name:'출석체크 · 오늘 출석 완료'}))
  expect(await screen.findByText('완주했어요! 내일은 새로운 출석지가 열립니다.')).toBeTruthy()

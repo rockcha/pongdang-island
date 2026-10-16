@@ -3,6 +3,7 @@ import {collectibleUrl} from '@/features/collection/api'
 
 // Origins are the artwork's axle/body center, independent of the game's transforms.
 const artwork:Record<string,{frame:number;rotor:number;float:number;rotorWidth:number}>={
+ bluegrove:{frame:.49,rotor:.49,float:.51,rotorWidth:76},
  primal:{frame:.5,rotor:.5,float:.5,rotorWidth:64},
  basic:{frame:.495,rotor:.495,float:.50,rotorWidth:64},
  bronze:{frame:.495,rotor:.5,float:.45,rotorWidth:92},

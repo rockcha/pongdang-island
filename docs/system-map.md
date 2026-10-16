@@ -1,5 +1,9 @@
 # 시스템 지도
 
+공지사항은 `src/features/notices/`와 [공지 시스템 문서](systems/notices.md)를 참조합니다. 검증은 `tests/notices-sql.test.ts`, `tests/notices-ui.test.tsx`입니다.
+
+경매소는 `src/features/auctions/`와 [경매 시스템 문서](systems/auctions.md)를 참조합니다. DB 검증은 `tests/auction-sql.test.ts`입니다.
+
 [문서 목차](README.md)에서 작업 주제를 고른 뒤 코드 위치가 필요할 때 사용합니다. 기능의 상세 규칙은 각 시스템 문서가 기준입니다.
 
 | 기능 | 코드 진입점 | 설명 |
@@ -11,6 +15,7 @@
 | 친구·실시간 알림 | `src/features/friends/`, `src/features/notifications/`, `src/features/social/` | [친구·알림](systems/realtime-social.md) |
 | 선물·우편함 | `src/features/gifts/` | [선물](systems/gifts.md) |
 | 골드·상점 | `src/features/gold/` | [골드](systems/gold-shop.md) |
+| 거래소·보관·교환 | `src/features/exchange/`, `src/features/gifts/` | [거래소](systems/exchange.md) |
 | 지역·출항 | `src/features/regions/` | [지역](systems/regions.md) · [이동](systems/region-travel.md) |
 | 미끼·낚시 | `src/features/fishing/` | [낚시](systems/fishing.md) · [미끼](systems/bait-catalog.md) · [연출](systems/fishing-presentation.md) |
 | 개체·도감 | `src/features/collection/` | [개체](systems/collectibles.md) |

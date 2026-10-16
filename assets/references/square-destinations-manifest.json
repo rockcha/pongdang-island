@@ -1,0 +1,43 @@
+{
+  "generator": "built-in image_gen",
+  "dateKst": "2026-10-17",
+  "purpose": "광장 공지·건의함·버그 제보 썸네일과 전용 배너",
+  "assets": [
+    {
+      "name": "notice-thumbnail",
+      "prompt": "Use case: illustration-story. Create a polished hand-painted cozy seaside village game environment asset, warm sunlit cream plaster, honey wood, coral terracotta rooftops, turquoise sea, painterly anime storybook background like a beautiful coastal adventure game. No people, no characters, no text, no letters, no typography, no watermarks, no UI, opaque full-bleed art. Match a sunny fishing island with understated natural warm colors and crisp lovely material detail. Square 1:1 thumbnail. A charming outdoor roofed wooden town noticeboard, pinned cream papers with tiny nontext marks and a brass announcement bell, shells decorating its wooden legs, pink flowers at base, sunny blue harbor and tiled roofs in background. Main board very large and centered so recognizable at 80px.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-114a3f0e-8063-4468-bf97-374417dd9c08.png",
+      "path": "public/square/notice-thumbnail.png"
+    },
+    {
+      "name": "suggestion-thumbnail",
+      "prompt": "Use case: illustration-story. Create a polished hand-painted cozy seaside village game environment asset, warm sunlit cream plaster, honey wood, coral terracotta rooftops, turquoise sea, painterly anime storybook background like a beautiful coastal adventure game. No people, no characters, no text, no letters, no typography, no watermarks, no UI, opaque full-bleed art. Match a sunny fishing island with understated natural warm colors and crisp lovely material detail. Square 1:1 thumbnail. A charming mint-green wooden suggestion letterbox on a small writing desk with envelopes, a quill, a round glass jar of pencils and shell ornaments beneath a pergola in a sunny seaside village square. The letterbox and writing desk dominate center, warm flowers and ocean glimpse behind.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-56c2281f-f6f4-4057-811d-b9f1242a0e64.png",
+      "path": "public/square/suggestion-thumbnail.png"
+    },
+    {
+      "name": "bug-thumbnail",
+      "prompt": "Use case: illustration-story. Create a polished hand-painted cozy seaside village game environment asset, warm sunlit cream plaster, honey wood, coral terracotta rooftops, turquoise sea, painterly anime storybook background like a beautiful coastal adventure game. No people, no characters, no text, no letters, no typography, no watermarks, no UI, opaque full-bleed art. Match a sunny fishing island with understated natural warm colors and crisp lovely material detail. Square 1:1 thumbnail. A tiny inviting seaside repair desk under a coral fabric awning, big brass magnifying glass leaning against a wooden clipboard showing only simple diagrams, small wooden tool chest, screwdriver, brass gear and a lantern. Warm coastal village square, turquoise ocean glimpse, main repair props large and centered. Friendly technical help station, not insects.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-ad3060db-d714-47fe-baf3-829adf17cb22.png",
+      "path": "public/square/bug-thumbnail.png"
+    },
+    {
+      "name": "square-notices",
+      "prompt": "Use case: illustration-story. Create a polished hand-painted cozy seaside village game environment asset, warm sunlit cream plaster, honey wood, coral terracotta rooftops, turquoise sea, painterly anime storybook background like a beautiful coastal adventure game. No people, no characters, no text, no letters, no typography, no watermarks, no UI, opaque full-bleed art. Match a sunny fishing island with understated natural warm colors and crisp lovely material detail. Extra wide panoramic 3:1 landscape banner. A seaside village square public announcement corner: large roofed wood noticeboard and hanging brass bell in the center-right, pinned cream pages without readable writing, shell ornaments, pots of pink flowers, cobbled promenade, sparkling turquoise ocean and coral-roof town in distance. Entire scene composed horizontally, important board and bell remain within center 60% of width. Calm darker lower-left paving for UI title overlay, no text in art.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-9c2dd5b8-010d-4977-8072-4b5be07dcae4.png",
+      "path": "public/banners/square-notices.png"
+    },
+    {
+      "name": "square-suggestions",
+      "prompt": "Use case: illustration-story. Create a polished hand-painted cozy seaside village game environment asset, warm sunlit cream plaster, honey wood, coral terracotta rooftops, turquoise sea, painterly anime storybook background like a beautiful coastal adventure game. No people, no characters, no text, no letters, no typography, no watermarks, no UI, opaque full-bleed art. Match a sunny fishing island with understated natural warm colors and crisp lovely material detail. Extra wide panoramic 3:1 landscape banner. A welcoming community writing corner under a wood pergola in seaside village square, mint-green suggestion letterbox centered-right, a long honey wood table with envelopes, quill, pencils and shell ornaments, flowers, low cream wall, sparkling turquoise harbor and coral roofs behind. Main letterbox remains within center 60% width. Lower-left clear calm paving for title overlay. No text in art.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-b2507c13-39bc-497a-afed-6ad214c5a0e5.png",
+      "path": "public/banners/square-suggestions.png"
+    },
+    {
+      "name": "square-bugs",
+      "prompt": "Use case: illustration-story. Create a polished hand-painted cozy seaside village game environment asset, warm sunlit cream plaster, honey wood, coral terracotta rooftops, turquoise sea, painterly anime storybook background like a beautiful coastal adventure game. No people, no characters, no text, no letters, no typography, no watermarks, no UI, opaque full-bleed art. Match a sunny fishing island with understated natural warm colors and crisp lovely material detail. Extra wide panoramic 3:1 landscape banner. A sunny coastal village help and repair booth beneath a coral awning, wooden desk centered-right with large brass magnifying glass, clipboard of simple diagrams without writing, neatly arranged screwdriver, brass gears, tool chest and small lantern; cream village architecture and turquoise harbor behind. Main props remain within center 60% width. Clear calm lower-left paving for title overlay. No insects, no text in art.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-2c42c7e9-2240-4b82-bccb-c507491739e9.png",
+      "path": "public/banners/square-bugs.png"
+    }
+  ]
+}

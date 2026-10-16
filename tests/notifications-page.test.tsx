@@ -6,6 +6,7 @@ import { NotificationsPage } from '@/features/notifications/notifications-page'
 const { markRead, refresh } = vi.hoisted(() => ({ markRead: vi.fn(), refresh: vi.fn() }))
 vi.mock('@/components/auth-provider', () => ({ useAuth: () => ({ session: { user: { id: 'me' } } }) }))
 vi.mock('@/features/notifications/api', () => ({ markRead }))
+vi.mock('@/features/gold/gold-provider',()=>({useGold:()=>({refresh}),GoldIcon:()=>null}))
 vi.mock('@/features/social/social-provider', () => ({ useSocial: () => ({
   notifications: [
     { id: 'friend-1', title: '친구 요청 도착', body: '함께해요', category: 'friend', kind: 'friend_request', request: null, read_at: null, created_at: '2026-10-14T00:00:00Z' },

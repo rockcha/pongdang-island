@@ -39,7 +39,7 @@ npm.cmd run db:remote -- C:\경로\schema-export.json
 
 출력의 `capturedAt`, `serverVersion`, `migrationHash`, `changedSections`를 확인한다. 비교는 매번 최신 migrations를 재생한다. 차이가 있으면 종료 코드 1이며 자동 수정하지 않는다. JSON 단일 객체와 SQL Editor의 `[{"snapshot": {...}}]` 형식을 받는다.
 
-검사 범위: 앱 테이블·컬럼·제약·인덱스·함수 본문·트리거·enum·뷰 정의와 옵션·시퀀스 정의·RLS·앱 테이블/컬럼/함수/스키마 권한·앱 아바타 Storage 정책·Realtime publication·4개 버킷 설정. 공개 스키마의 추가 앱 객체도 차이로 표시한다. 플랫폼 extension 함수는 제외한다. 다른 Postgres 버전/기본 권한 때문에 차이가 날 수 있어 사람이 검토한다.
+검사 범위: 앱 테이블·컬럼·제약·인덱스·함수 본문·트리거·enum·뷰 정의와 옵션·시퀀스 정의·RLS·앱 테이블/컬럼/함수/스키마 권한·아바타 및 공지 이미지 Storage 정책·Realtime publication·5개 버킷 설정. 공개 스키마의 추가 앱 객체도 차이로 표시한다. 플랫폼 extension 함수는 제외한다. 다른 Postgres 버전/기본 권한 때문에 차이가 날 수 있어 사람이 검토한다.
 
 검사하지 않는 것: 사용자 데이터, 카탈로그 행, 런타임 플래그, 실제 Storage 파일, Dashboard Auth/Data API 설정, 실제 Realtime 전달, 플랫폼 소유 스키마 전체, migration history. export의 DB 이름 `postgres`는 프로젝트 식별자가 아니다. Dashboard 대상 프로젝트를 별도로 확인한다. 오래된 export를 현재 상태로 단정하지 않는다.
 

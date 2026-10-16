@@ -1,0 +1,95 @@
+{
+  "name": "푸른골 해역",
+  "regionId": "bluegrove",
+  "rarity": "common",
+  "generatedAtKst": "2026-10-17T00:55:42+09:00",
+  "generator": "built-in image_gen",
+  "reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "referenceRole": "common cartoon style only",
+  "prompts": [
+    {
+      "asset": "regions/bluegrove.png",
+      "prompt": "Use case: stylized-concept. Finished square game region landscape for 푸른골 해역 (Bluegrove Channel), common rarity natural sea. Elevated panoramic viewpoint over shallow luminous turquoise sea, a distinctive winding cobalt-blue underwater valley clearly visible cutting through pale sand shelves and low submerged rocks, a broad S-shaped blue channel leading toward distant open ocean. Low green rocky islets at left and right edges, bright blue sky and soft clouds in upper 15 percent, water 75 percent, calm warm daylight. Polished painterly cartoon anime environment for cozy Korean fishing game, naturally beautiful ordinary coastal geography, no mystical abyss. Not a sandy crescent bay: the central BLUE UNDERWATER GULLY is the unmistakable landmark. No buildings, boats, people, fish, coral forests, magical ruins, text, UI, border or watermark. Full-bleed opaque."
+    },
+    {
+      "asset": "public/banners/bluegrove-horizon.png",
+      "prompt": "Use case: stylized-concept. Wide 3:1 panorama fishing-game horizon banner for 푸른골 해역, Bluegrove Channel. Cozy polished painterly cartoon anime natural coastal environment, bright sky and fluffy soft clouds occupy 80%, low pale stone headlands with short green vegetation on both sides descend toward bottom center, distant small rocky islets. Only narrow sea strip at bottom 5%, cobalt channel between turquoise shallows hinted there. Camera just above water facing open passage. Main skyline stays low, center open, quiet low-left area for game title. No tall fantasy cliffs, magic, buildings, boats, people, fish, words, UI, borders or watermark. Opaque full bleed."
+    },
+    {
+      "asset": "map/normal/map-bluegrove_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Reference image 1 is STYLE ONLY: Pongi common-rarity cartoon shading, clean dark brown contour, rounded warm shapes; do not include otter, face or animal features. Generate a single common collectible nautical MAP FRAGMENT for 푸른골 해역 / Bluegrove Channel. Thick cream parchment with softly curled uneven corners, three-quarter overhead view, entire object inside square canvas with 10% transparent margins. Map drawing depicts light turquoise shallows split by a very clear winding S-shaped COBALT BLUE UNDERWATER GULLY bordered by two rocky green islets, small compass rose and dotted route, no words or letters. Charming readable simple game item, soft cel shading. No jewel, magic, UI, framing or watermark. Actual transparent PNG.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png"
+    },
+    {
+      "asset": "equipment/rods/bluegrove/thumbnail.png",
+      "prompt": "Use case: stylized-concept. Single fishing rod equipment thumbnail for 푸른골 해역 / Bluegrove Channel in cozy Korean game. References: image 1 Pongi is cartoon STYLE only, image 2 map is blue channel color motif only. Complete practical common-region rod with deep cobalt blue shaft, pale driftwood cork grip, turquoise wraps, simple brushed silver fittings, circular turquoise reel with winding cobalt S-channel inlay across pale ivory face, matching blue and ivory egg bobber hanging on thin line. One whole rod diagonally bottom left to top right, all parts fully within square with generous margins, no duplicated enlarged parts. Polished clean cartoon dark brown contours and warm soft cel shading, modest attainable equipment not magical or jeweled. No animals, hands, text, UI, border or watermark. Actual transparent PNG."
+    },
+    {
+      "asset": "equipment/rods/bluegrove/reel-frame.png",
+      "prompt": "Use case: stylized-concept. Reference: last image full Bluegrove Channel rod, same equipment identity. Generate ONLY stationary reel backing component, front-on orthographic circle. Teal housing rim with brushed silver narrow trim, pale ivory inner backing, subtle winding cobalt channel detail at bottom, NO HANDLE and no moving rotor, no rod no line no bobber. Circular axle centered exactly 50% x and y, circular housing diameter 76% square canvas, complete symmetrical object and transparent margins. Warm polished cartoon shading, clean brown contours consistent with reference. Actual transparent PNG no text UI border watermark."
+    },
+    {
+      "asset": "equipment/rods/bluegrove/reel-rotor.png",
+      "prompt": "Use case: stylized-concept. Generate ONLY moving reel rotor component for the Bluegrove Channel rod shown in first of last two reference images. Second image stationary backing is color reference only, MUST NOT duplicate backing outer housing. A single plain ivory circular FRONT DISC with deep cobalt winding S-channel flowing across it and narrow turquoise edge, small silver axle cap EXACTLY at center of canvas x50% y50%. Short silver crank extends from central axle toward lower right ending in small teal knob. Disc diameter 64% square canvas, all parts within generous transparent margins. Perfect front-on orthographic circular symmetry except crank; no perspective. No outer housing, spokes, line spool, rod, fishing line, bobber, extra objects. Polished clean dark brown cartoon contour soft cel shading. Actual transparent PNG, no text UI frame watermark."
+    },
+    {
+      "asset": "equipment/rods/bluegrove/float.png",
+      "prompt": "Use case: stylized-concept. Single isolated fishing BOBBER for Bluegrove Channel fishing rod. First of last three reference images is the complete rod; match its egg bobber, other two are color/material references only. Upright simple egg body ivory upper third, turquoise middle band, cobalt blue pointed lower half, small silver bottom eye and tiny teal top stem. No fishing line, no hook, no rod, no reel or other objects. Body center exactly canvas center (50%,50%), body height 58% canvas, stem and eye within 12% transparent margin. Clean brown outlined polished cozy cartoon shading. Square actual transparent PNG. No text UI borders watermark."
+    },
+    {
+      "asset": "equipment/rods/bluegrove/float.png",
+      "editPrompt": "Edit only last image: remove ALL gray smoky halo, shadow, glow, fuzz and colored speckles outside the bobber. Preserve the exact ivory turquoise cobalt bobber silhouette, silver fittings and highlights unchanged. Background must be truly transparent with perfectly clean crisp antialiased edges, no cast shadow whatsoever. Center whole bobber with clear transparent margin. No new objects or text."
+    },
+    {
+      "asset": "public/fishing/environments/bluegrove.png",
+      "prompt": "Use case: stylized-concept. Portrait 2:3 (1024x1536 composition) fishing gameplay environment painting for 푸른골 해역 Bluegrove Channel, cozy polished anime cartoon game. Camera looking down at water beside a simple wooden fishing platform. Upper 70% is FULL WATER ONLY: luminous clear turquoise shallows with soft caustics, a winding darker cobalt underwater gully visible through the center, subtle low submerged rocks near sides, plenty of empty clear water for gameplay. NO sky, NO horizon, no buildings, no land above water. Bottom 30% is a broad straight wooden pier deck seen obliquely from above, light driftwood weathered planks and pale rope edge, deck front edge crosses canvas horizontally exactly at y=70%, fills entire bottom and both lower corners. No projecting pier into water, no railing obstructing water. Warm natural daylight. No rod, fish, people, equipment, text, UI, frame or watermark. Full bleed opaque."
+    }
+  ],
+  "storageStatus": "uploaded and verified by public URL SHA-256 comparison (6/6)",
+  "databaseStatus": "migration prepared, remote not applied",
+  "storageVerification": {
+    "targetHost": "ewafafphiovbpjwogwzn.supabase.co",
+    "checkedAt": "2026-10-16T15:59:20.765Z",
+    "method": "download all six public PNGs and compare SHA-256 with local originals"
+  },
+  "files": [
+    {
+      "local": "assets/storage-upload/regions/bluegrove.png",
+      "bucket": "regions",
+      "storage_path": "bluegrove.png"
+    },
+    {
+      "local": "public/banners/bluegrove-horizon.png",
+      "public_path": "/banners/bluegrove-horizon.png"
+    },
+    {
+      "local": "public/fishing/environments/bluegrove.png",
+      "public_path": "/fishing/environments/bluegrove.png"
+    },
+    {
+      "local": "assets/storage-upload/new/20261017-005542/equipment/rods/bluegrove/thumbnail.png",
+      "bucket": "collectibles",
+      "storage_path": "equipment/rods/bluegrove/thumbnail.png"
+    },
+    {
+      "local": "assets/storage-upload/new/20261017-005542/equipment/rods/bluegrove/reel-frame.png",
+      "bucket": "collectibles",
+      "storage_path": "equipment/rods/bluegrove/reel-frame.png"
+    },
+    {
+      "local": "assets/storage-upload/new/20261017-005542/equipment/rods/bluegrove/reel-rotor.png",
+      "bucket": "collectibles",
+      "storage_path": "equipment/rods/bluegrove/reel-rotor.png"
+    },
+    {
+      "local": "assets/storage-upload/new/20261017-005542/equipment/rods/bluegrove/float.png",
+      "bucket": "collectibles",
+      "storage_path": "equipment/rods/bluegrove/float.png"
+    },
+    {
+      "local": "assets/storage-upload/new/20261017-005542/map/normal/map-bluegrove_thumbnail.png",
+      "bucket": "collectibles",
+      "storage_path": "map/normal/map-bluegrove_thumbnail.png"
+    }
+  ]
+}

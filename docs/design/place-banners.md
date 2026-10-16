@@ -1,5 +1,9 @@
 # 장소 풍경 배너
 
+광장 하위 공지사항·건의함·버그 제보는 `square-notices.png`, `square-suggestions.png`, `square-bugs.png` 전용 3:1 배너를 사용합니다. 제목은 `광장 › 공지` 등으로 표시하고 부모 링크로 광장에 돌아갑니다. 공지 상세·작성·수정도 같은 배너입니다. 썸네일은 `public/square/`에 두고 [광장 생성 manifest](../../assets/references/square-destinations-manifest.json)에 프롬프트를 기록합니다.
+
+상인거리 하위 상점·거래소·경매소는 전용 3:1 배너와 `상인거리 › 장소 이름` 경로 제목을 사용합니다. 미니게임과 경로 제목 컴포넌트를 공유합니다. [장소 이동과 썸네일 규칙](place-navigation.md), [이미지·프롬프트 manifest](../../assets/references/merchant-destinations-manifest.json)를 참고합니다.
+
 내장 `image_gen` 도구로 생성한 배경 이미지 7장을 `public/banners/`에서 제공합니다. Supabase Storage 업로드나 SQL 변경은 필요하지 않습니다. `PlaceBanner`가 헤더 바로 아래에서 경로별 이미지를 표시합니다. 높이는 120px, 왼쪽 아래에 제목과 한 줄 장소 설명을 흰색으로 함께 표시하며 본문의 제목·소개 문구는 제거합니다. 아쿠아리움에는 배너가 없습니다.
 
 | 경로 | 제목 | 이미지 |

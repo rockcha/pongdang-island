@@ -2,6 +2,15 @@
   "formatVersion": 1,
   "regions": [
     {
+      "id": "bluegrove",
+      "name": "푸른골 해역",
+      "description": "맑은 청록빛 바다 아래로 푸른 골짜기가 이어져요. 완만한 암반 사이에서 새로운 물길을 따라 낚시해 보세요.",
+      "rarity": "common",
+      "sort_order": 7,
+      "image_path": "bluegrove.png",
+      "requires_map_fragment": true
+    },
+    {
       "id": "coral",
       "name": "산호빛 여울",
       "description": "파스텔빛 산호 사이로 빠른 물살이 흘러요. 날쌘 물고기들이 여울 속에 숨어 있어요.",
@@ -730,6 +739,24 @@
       "rarity": "common",
       "thumbnail_path": "decorations/normal/lost-arrow-sign_thumbnail.png",
       "sell_price": 40,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "map-bluegrove",
+      "kind": "map",
+      "name": "푸른골 해역 지도 조각",
+      "description": "얕은 바다 사이로 이어지는 푸른 수중 골짜기와 항로가 그려진 일반 지도 조각.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "map/normal/map-bluegrove_thumbnail.png",
+      "sell_price": 0,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "fixed",
@@ -1694,6 +1721,10 @@
   "collectible_habitats": [
     {
       "species_id": "apricot-starfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "apricot-starfish",
       "region_id": "coral"
     },
     {
@@ -1714,6 +1745,10 @@
     },
     {
       "species_id": "aurora-eel",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "aurora-eel",
       "region_id": "coral"
     },
     {
@@ -1734,6 +1769,10 @@
     },
     {
       "species_id": "bean-pufferfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "bean-pufferfish",
       "region_id": "coral"
     },
     {
@@ -1754,6 +1793,10 @@
     },
     {
       "species_id": "blue-bronze-horseshoe-crab",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "blue-bronze-horseshoe-crab",
       "region_id": "coral"
     },
     {
@@ -1774,6 +1817,10 @@
     },
     {
       "species_id": "blue-great-white",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "blue-great-white",
       "region_id": "coral"
     },
     {
@@ -1794,6 +1841,10 @@
     },
     {
       "species_id": "blue-sailfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "blue-sailfish",
       "region_id": "coral"
     },
     {
@@ -1814,6 +1865,10 @@
     },
     {
       "species_id": "butter-starfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "butter-starfish",
       "region_id": "coral"
     },
     {
@@ -1834,6 +1889,10 @@
     },
     {
       "species_id": "button-urchin",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "button-urchin",
       "region_id": "coral"
     },
     {
@@ -1851,6 +1910,10 @@
     {
       "species_id": "button-urchin",
       "region_id": "starruins"
+    },
+    {
+      "species_id": "cloud-humpback",
+      "region_id": "bluegrove"
     },
     {
       "species_id": "cloud-humpback",
@@ -1882,6 +1945,10 @@
     },
     {
       "species_id": "coral-covered-treasure-chest",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "coral-covered-treasure-chest",
       "region_id": "coral"
     },
     {
@@ -1910,6 +1977,10 @@
     },
     {
       "species_id": "coral-house",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "coral-house",
       "region_id": "coral"
     },
     {
@@ -1927,6 +1998,10 @@
     {
       "species_id": "coral-house",
       "region_id": "starruins"
+    },
+    {
+      "species_id": "coral-seabream",
+      "region_id": "bluegrove"
     },
     {
       "species_id": "coral-seabream",
@@ -1958,6 +2033,10 @@
     },
     {
       "species_id": "dawn-arowana",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "dawn-arowana",
       "region_id": "coral"
     },
     {
@@ -1979,6 +2058,10 @@
     {
       "species_id": "diver-pongdang",
       "region_id": "pongdang"
+    },
+    {
+      "species_id": "dreaming-dumbo-octopus",
+      "region_id": "bluegrove"
     },
     {
       "species_id": "dreaming-dumbo-octopus",
@@ -2006,6 +2089,10 @@
     },
     {
       "species_id": "glass-bottle",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "glass-bottle",
       "region_id": "coral"
     },
     {
@@ -2023,6 +2110,10 @@
     {
       "species_id": "glass-bottle",
       "region_id": "starruins"
+    },
+    {
+      "species_id": "glassfin-lionfish",
+      "region_id": "bluegrove"
     },
     {
       "species_id": "glassfin-lionfish",
@@ -2050,6 +2141,10 @@
     },
     {
       "species_id": "lavender-starfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "lavender-starfish",
       "region_id": "coral"
     },
     {
@@ -2070,6 +2165,10 @@
     },
     {
       "species_id": "lost-arrow-sign",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "lost-arrow-sign",
       "region_id": "coral"
     },
     {
@@ -2087,6 +2186,10 @@
     {
       "species_id": "lost-arrow-sign",
       "region_id": "starruins"
+    },
+    {
+      "species_id": "map-bluegrove",
+      "region_id": "bluegrove"
     },
     {
       "species_id": "map-coral",
@@ -2114,6 +2217,10 @@
     },
     {
       "species_id": "mint-mahi-mahi",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "mint-mahi-mahi",
       "region_id": "coral"
     },
     {
@@ -2131,6 +2238,10 @@
     {
       "species_id": "mint-mahi-mahi",
       "region_id": "starruins"
+    },
+    {
+      "species_id": "mint-starfish",
+      "region_id": "bluegrove"
     },
     {
       "species_id": "mint-starfish",
@@ -2155,6 +2266,10 @@
     {
       "species_id": "mist-bell-windchime",
       "region_id": "mistmoon"
+    },
+    {
+      "species_id": "moon-angelfish",
+      "region_id": "bluegrove"
     },
     {
       "species_id": "moon-angelfish",
@@ -2186,6 +2301,10 @@
     },
     {
       "species_id": "moonlit-jellyfish-lantern",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "moonlit-jellyfish-lantern",
       "region_id": "coral"
     },
     {
@@ -2206,6 +2325,10 @@
     },
     {
       "species_id": "night-orca",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "night-orca",
       "region_id": "coral"
     },
     {
@@ -2226,6 +2349,10 @@
     },
     {
       "species_id": "opal-nautilus",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "opal-nautilus",
       "region_id": "coral"
     },
     {
@@ -2246,6 +2373,10 @@
     },
     {
       "species_id": "orange-clownfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "orange-clownfish",
       "region_id": "coral"
     },
     {
@@ -2266,6 +2397,10 @@
     },
     {
       "species_id": "peach-octopus",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "peach-octopus",
       "region_id": "coral"
     },
     {
@@ -2286,6 +2421,10 @@
     },
     {
       "species_id": "peach-umbrella-jellyfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "peach-umbrella-jellyfish",
       "region_id": "coral"
     },
     {
@@ -2306,6 +2445,10 @@
     },
     {
       "species_id": "pearl-bearing-clam",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "pearl-bearing-clam",
       "region_id": "coral"
     },
     {
@@ -2326,6 +2469,10 @@
     },
     {
       "species_id": "pearl-parrotfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "pearl-parrotfish",
       "region_id": "coral"
     },
     {
@@ -2346,6 +2493,10 @@
     },
     {
       "species_id": "pebble-hermit-crab",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "pebble-hermit-crab",
       "region_id": "coral"
     },
     {
@@ -2366,6 +2517,10 @@
     },
     {
       "species_id": "petal-nudibranch",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "petal-nudibranch",
       "region_id": "coral"
     },
     {
@@ -2383,6 +2538,10 @@
     {
       "species_id": "petal-nudibranch",
       "region_id": "starruins"
+    },
+    {
+      "species_id": "pink-scallop",
+      "region_id": "bluegrove"
     },
     {
       "species_id": "pink-scallop",
@@ -2410,6 +2569,10 @@
     },
     {
       "species_id": "plump-horse-mackerel",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "plump-horse-mackerel",
       "region_id": "coral"
     },
     {
@@ -2426,6 +2589,10 @@
     },
     {
       "species_id": "pongi-statue",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "pongi-statue",
       "region_id": "coral"
     },
     {
@@ -2446,6 +2613,10 @@
     },
     {
       "species_id": "pongul",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "pongul",
       "region_id": "coral"
     },
     {
@@ -2466,6 +2637,10 @@
     },
     {
       "species_id": "ribbon-eel",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "ribbon-eel",
       "region_id": "coral"
     },
     {
@@ -2486,6 +2661,10 @@
     },
     {
       "species_id": "ripple-coral-fragment",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "ripple-coral-fragment",
       "region_id": "coral"
     },
     {
@@ -2503,6 +2682,10 @@
     {
       "species_id": "ripple-coral-fragment",
       "region_id": "starruins"
+    },
+    {
+      "species_id": "round-barnacle-cluster",
+      "region_id": "bluegrove"
     },
     {
       "species_id": "round-barnacle-cluster",
@@ -2526,6 +2709,10 @@
     },
     {
       "species_id": "round-filefish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "round-filefish",
       "region_id": "coral"
     },
     {
@@ -2538,6 +2725,10 @@
     },
     {
       "species_id": "rusty-mini-anchor",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "rusty-mini-anchor",
       "region_id": "coral"
     },
     {
@@ -2558,6 +2749,10 @@
     },
     {
       "species_id": "sand-goby",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "sand-goby",
       "region_id": "coral"
     },
     {
@@ -2570,6 +2765,10 @@
     },
     {
       "species_id": "sand-hammerhead",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "sand-hammerhead",
       "region_id": "coral"
     },
     {
@@ -2590,6 +2789,10 @@
     },
     {
       "species_id": "sea-crocodile",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "sea-crocodile",
       "region_id": "coral"
     },
     {
@@ -2610,6 +2813,10 @@
     },
     {
       "species_id": "seashell-pinwheel",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "seashell-pinwheel",
       "region_id": "coral"
     },
     {
@@ -2627,6 +2834,10 @@
     {
       "species_id": "seashell-pinwheel",
       "region_id": "starruins"
+    },
+    {
+      "species_id": "silver-anchovy",
+      "region_id": "bluegrove"
     },
     {
       "species_id": "silver-anchovy",
@@ -2646,6 +2857,10 @@
     },
     {
       "species_id": "silver-yellowtail",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "silver-yellowtail",
       "region_id": "coral"
     },
     {
@@ -2666,6 +2881,10 @@
     },
     {
       "species_id": "sleeping-mini-shipwreck",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "sleeping-mini-shipwreck",
       "region_id": "coral"
     },
     {
@@ -2683,6 +2902,10 @@
     {
       "species_id": "sleeping-mini-shipwreck",
       "region_id": "starruins"
+    },
+    {
+      "species_id": "sleeping-seahorse-statue",
+      "region_id": "bluegrove"
     },
     {
       "species_id": "sleeping-seahorse-statue",
@@ -2710,6 +2933,10 @@
     },
     {
       "species_id": "soft-sea-cucumber",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "soft-sea-cucumber",
       "region_id": "coral"
     },
     {
@@ -2730,6 +2957,10 @@
     },
     {
       "species_id": "spotted-giant-grouper",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "spotted-giant-grouper",
       "region_id": "coral"
     },
     {
@@ -2750,6 +2981,10 @@
     },
     {
       "species_id": "star-ray",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "star-ray",
       "region_id": "coral"
     },
     {
@@ -2770,6 +3005,10 @@
     },
     {
       "species_id": "star-spotted-whale-shark",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "star-spotted-whale-shark",
       "region_id": "coral"
     },
     {
@@ -2787,6 +3026,10 @@
     {
       "species_id": "star-spotted-whale-shark",
       "region_id": "starruins"
+    },
+    {
+      "species_id": "starpattern-manta",
+      "region_id": "bluegrove"
     },
     {
       "species_id": "starpattern-manta",
@@ -2810,6 +3053,10 @@
     },
     {
       "species_id": "striped-mackerel",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "striped-mackerel",
       "region_id": "coral"
     },
     {
@@ -2822,6 +3069,10 @@
     },
     {
       "species_id": "sunken-mailbox",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "sunken-mailbox",
       "region_id": "coral"
     },
     {
@@ -2842,6 +3093,10 @@
     },
     {
       "species_id": "threadtail-shrimp",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "threadtail-shrimp",
       "region_id": "coral"
     },
     {
@@ -2862,6 +3117,10 @@
     },
     {
       "species_id": "tiny-cuttlefish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "tiny-cuttlefish",
       "region_id": "coral"
     },
     {
@@ -2879,6 +3138,10 @@
     {
       "species_id": "tiny-cuttlefish",
       "region_id": "starruins"
+    },
+    {
+      "species_id": "tiny-wooden-sign",
+      "region_id": "bluegrove"
     },
     {
       "species_id": "tiny-wooden-sign",

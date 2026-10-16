@@ -6,17 +6,22 @@
 
 | 부모 | 하위 메뉴 | 경로 | 공통 배너 |
 | --- | --- | --- | --- |
-| 광장 `/square` | 공지사항 | `/square/notices` | `/banners/square.png` |
-| 광장 | 건의함 | `/square/suggestions` | `/banners/square.png` |
-| 광장 | 버그 제보 | `/square/bugs` | `/banners/square.png` |
-| 상인거리 `/merchant-street` | 거래소 | `/merchant-street/exchange` | `/banners/merchant-street.png` |
-| 상인거리 | 경매소 | `/merchant-street/auctions` | `/banners/merchant-street.png` |
+| 광장 `/square` | 공지사항 | `/square/notices` | `/banners/square-notices.png` |
+| 광장 | 건의함 | `/square/suggestions` | `/banners/square-suggestions.png` |
+| 광장 | 버그 제보 | `/square/bugs` | `/banners/square-bugs.png` |
+| 상인거리 `/merchant-street` | 상점 | `/shop` | `/banners/merchant-shop.png` |
+| 상인거리 | 거래소 | `/merchant-street/exchange` | `/banners/merchant-exchange.png` |
+| 상인거리 | 경매소 | `/merchant-street/auctions` | `/banners/merchant-auction.png` |
 
-광장은 “섬의 소식을 나누고, 더 좋은 내일을 만드는 곳”, 상인거리는 “소중한 물건이 새로운 주인을 만나는 곳”으로 소개합니다. 하위 페이지도 같은 부모 풍경·제목·설명 배너를 사용하고 본문에 현재 하위 메뉴 이름을 표시합니다.
+광장은 “섬의 소식을 나누고, 더 좋은 내일을 만드는 곳”, 상인거리는 “소중한 물건이 새로운 주인을 만나는 곳”으로 소개합니다. 광장·상인거리 하위 페이지는 각각 전용 배너 위에 `광장 › 공지`, `광장 › 건의함`, `광장 › 버그 제보`, `상인거리 › 장소 이름`을 표시하며 부모 링크로 목록에 돌아옵니다. 공지 목록·상세·작성·수정은 모두 `광장 › 공지`를 유지합니다. 미니게임과 `BannerBreadcrumb` 컴포넌트·제목 크기·80~128px 배너 높이·object-contain 방식을 공유하고 부제와 본문의 중복 제목은 생략합니다.
 
 구역 정보는 `src/lib/place-sections.ts`에서 관리하며 사이드바·구역 페이지·배너가 공유합니다. 부모 페이지에는 하위 페이지로 이동하는 카드 목록이 있고 하위 페이지에는 구역으로 돌아가는 링크가 있습니다.
 
-이번 변경은 메뉴·페이지 이동·준비 화면과 배너까지입니다. 공지 CRUD, 건의·버그 제보 등록, 실제 거래·경매·골드 결제는 구현하지 않았으며 제출·거래가 가능한 것처럼 표시하지 않습니다. 새 DB SQL은 필요하지 않습니다. 우편함은 기존 `/notifications` 경로와 알림·선물 기능을 그대로 사용합니다.
+광장 입구는 공지사항·건의함·버그 제보의 썸네일 카드입니다. 상인거리와 `PlaceDestinations` 컴포넌트를 공유하며 왼쪽 36% 이미지·오른쪽 이름과 설명으로 배치합니다. 이미지 매핑은 `src/lib/square-destinations.ts`, 최종 PNG는 `public/square/`와 `public/banners/`, 생성 프롬프트는 [광장 이미지 manifest](../../assets/references/square-destinations-manifest.json)에 보관합니다. 건의함·버그 제보 기능은 준비 중 표시를 유지합니다. SQL·Storage 업로드는 필요하지 않습니다.
+
+상인거리 입구는 세 장소의 썸네일 카드 목록입니다. 이미지가 카드 왼쪽 36%와 세로 전체를 채우고 오른쪽에 장소 이름·설명을 표시합니다. 경매소 카드는 경매 목록으로 이동합니다. 이미지 매핑은 `src/lib/merchant-destinations.ts`, PNG 6종은 `public/merchants/`와 `public/banners/`, built-in image_gen 최종 프롬프트는 [생성 manifest](../../assets/references/merchant-destinations-manifest.json)에 보관합니다. 이 이미지들은 SQL·Storage 업로드가 필요하지 않습니다.
+
+거래소는 [물품 보관·교환과 우편 배송](../systems/exchange.md), 경매소는 [입찰금 보관·선물함 반환·마감 정산](../systems/auctions.md), 공지사항은 [운영자 작성·이미지·게시 관리](../systems/notices.md)를 구현했습니다. 건의·버그 제보 등록은 준비 화면입니다. 우편함은 기존 `/notifications` 경로와 알림·선물 기능을 사용합니다.
 
 ## 배너 생성
 

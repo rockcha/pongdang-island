@@ -33,3 +33,5 @@
 Pearls appear during opening, starting at 360ms (the third opening frame), staggered by 22ms with a short falling/bounce motion. They remain mounted when the scene changes to result, so opening does not replay their animation. Results and wallet amounts still wait for the opening to finish.
 
 Both 627px-cell sheets use per-frame translation offsets measured from the eye/nose centers, aligned to (330,199). No per-frame scaling or image edits are used. The pearl overlay follows the corrected final bowl position. The artificial waiting bob was removed; only the hands and clam poses provide movement. Reduced-motion settings skip animation.
+
+상단의 다음 성공 금액 안내는 결과·수령 상태에서도 한 줄 높이를 유지합니다. 문구가 사라질 때 퐁이 영역의 높이와 중심이 바뀌지 않도록 합니다.

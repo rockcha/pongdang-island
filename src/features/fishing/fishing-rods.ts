@@ -4,6 +4,7 @@ export const fishingRods:FishingRod[]=[
  {id:'bronze',name:'청동 낚싯대',description:'청동빛 장식과 청록색 릴을 갖춘 든든한 낚싯대예요.',effect:'사전 추첨 실패율 −1%p',price:800,color:'#76503a',accent:'#d7b388',failureReductionBp:100,nativeBonusBp:0},
  {id:'pongdang',name:'퐁당 나무 낚싯대',description:'따뜻한 나무와 황동 릴에 섬의 정취를 담았어요.',effect:'실패율 −2%p · 퐁당섬 토착 개체 확률 +2%p',price:1500,color:'#ac6f35',accent:'#ffbf79',region:'pongdang',failureReductionBp:200,nativeBonusBp:200},
  {id:'coral',name:'산호꽃 낚싯대',description:'산호빛 대와 조개 장식이 어우러진 낚싯대예요.',effect:'실패율 −2%p · 산호빛 여울 토착 개체 확률 +2%p',price:1500,color:'#db7c85',accent:'#ffd5b8',region:'coral',failureReductionBp:200,nativeBonusBp:200},
+ {id:'bluegrove',name:'푸른골 물길 낚싯대',description:'코발트빛 대와 청록 릴에 푸른 수중 골짜기의 물길을 담았어요.',effect:'실패율 −2%p · 푸른골 해역 토착 개체 확률 +2%p',price:1500,color:'#2468af',accent:'#83dcd7',region:'bluegrove',failureReductionBp:200,nativeBonusBp:200},
  {id:'mistmoon',name:'안개달 낚싯대',description:'초승달 릴 위로 은빛 안개가 머무는 듯해요.',effect:'실패율 −2%p · 안개달 토착 개체 확률 +2%p',price:1500,color:'#8c93bc',accent:'#e6dcff',region:'mistmoon',failureReductionBp:200,nativeBonusBp:200},
  {id:'starruins',name:'별잠 유물 낚싯대',description:'오래된 별의 문양을 품은 석금속 장비예요.',effect:'실패율 −2%p · 별잠 유적 토착 개체 확률 +2%p',price:1500,color:'#5d929b',accent:'#e3d2a4',region:'starruins',failureReductionBp:200,nativeBonusBp:200},
  {id:'dreamabyss',name:'꿈실 낚싯대',description:'오로라 빛 실과 남보라 릴이 고요히 빛나요.',effect:'실패율 −2%p · 꿈먹는 심연 토착 개체 확률 +2%p',price:1500,color:'#7661ad',accent:'#9ae4f2',region:'dreamabyss',failureReductionBp:200,nativeBonusBp:200},

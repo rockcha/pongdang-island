@@ -1,0 +1,39 @@
+{
+  "generator": "built-in image_gen",
+  "dateKst": "2026-10-17",
+  "assets": [
+    {
+      "name": "exchange-thumbnail",
+      "prompt": "Use case: stylized-concept. Single square thumbnail for a cozy Korean seaside fishing game's EXCHANGE marketplace destination. Warm cream wooden open-air trade counter, a tiny handcart with shells and fish-shaped wrapped parcels, balanced brass weighing scale and a few plain gold coins on countertop, teal cloth awning, turquoise sea glimpsed behind. Polished soft painterly cartoon anime background, rounded charming forms, warm daylight, ivory sand brown teal palette, readable at small card size. No people, no text, signs, letters, UI, border or watermark. Full bleed opaque."
+    },
+    {
+      "name": "exchange-banner",
+      "prompt": "Use case: stylized-concept. Wide 3:1 banner for seaside fishing game EXCHANGE marketplace. Open cream wood trading stall with teal cloth awning, brass balanced scales, baskets of shells and small wrapped fish parcels, a few plain gold coins, turquoise harbor and sunny village behind. Polished painterly cartoon anime scenery, soft warm daylight matching cozy island game. Scale and trade counter in center-right, quiet lower left for UI breadcrumb title, important objects in central horizontal band. Full bleed opaque. No people, no text, signs, lettering, UI, frame, watermark."
+    },
+    {
+      "name": "shop-thumbnail",
+      "prompt": "Use case: stylized-concept. Square destination thumbnail of a fishing supplies SHOP interior for cozy Korean seaside game. Cream wood shelves displaying elegant modest fishing rods, round reels, glass bait jars and little bobbers, warm coral-and-ivory striped awning above open shop window, turquoise harbor visible beyond. Polished soft painterly cartoon anime environment, warm sunlight, inviting small island shop, large identifiable rod and bait display readable at thumbnail size. No people, text, prices, labels, signs, UI, borders or watermark. Full bleed opaque."
+    },
+    {
+      "name": "shop-banner",
+      "prompt": "Use case: stylized-concept. Wide 3:1 banner for fishing supply SHOP of cozy island game. Warm cream wooden shop interior, fishing rods neatly arranged and colorful tiny bait jars and reels on shelves at center-right, coral ivory striped window awning, large open window onto turquoise harbor on left, warm sunny coastal light, polished soft painterly cartoon anime background matching cozy island marketplace. Readable central horizontal composition, quiet lower-left for breadcrumb title overlay. Full bleed opaque. No people, text, labels, prices, lettering, UI, borders or watermark."
+    },
+    {
+      "name": "auction-thumbnail",
+      "prompt": "Use case: stylized-concept. Square destination thumbnail for a cozy seaside AUCTION HOUSE in Korean fishing game. Modest polished walnut auction gavel resting on round block in foreground, cream cloth display pedestal with a beautiful large spiral shell and a small antique brass compass, curved rows of empty wooden chairs in background, arched open window overlooking turquoise sea, muted sage curtains and warm amber lanterns. Soft painterly cartoon anime, cream warm wood turquoise palette, welcoming small island auction room not royal palace. Clear gavel silhouette at small thumbnail size. No people, labels, lettering, numbers, bids, UI, borders or watermark. Full bleed opaque."
+    },
+    {
+      "name": "auction-banner",
+      "prompt": "Use case: stylized-concept. Wide 3:1 banner for cozy seaside AUCTION HOUSE game page. Warm walnut gavel and round block on a cream cloth counter center-right, beautiful spiral shell and antique brass compass on small display stand, empty wooden seats behind, arched window revealing turquoise harbor on left, muted sage curtains, warm amber lanterns. Polished soft painterly cartoon anime background, cream brown teal palette, modest island auction room. Quiet lower left for breadcrumb title overlay. Full bleed opaque no people, no words, letters, numbers, bid signs, UI, borders or watermark."
+    }
+  ],
+  "files": [
+    "public/merchants/exchange-thumbnail.png",
+    "public/merchants/shop-thumbnail.png",
+    "public/merchants/auction-thumbnail.png",
+    "public/banners/merchant-exchange.png",
+    "public/banners/merchant-shop.png",
+    "public/banners/merchant-auction.png"
+  ],
+  "notes": "New opaque square thumbnails and separate 3:1 banners. No Storage or DB changes. Auction remains upcoming."
+}

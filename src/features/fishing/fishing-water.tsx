@@ -9,6 +9,7 @@ import { fishBehavior, fishForce, fishStrength } from './tension-game'
 import type { FishMood,TensionGame } from './tension-game'
 
 const waters:Record<string,{top:string;bottom:string;light:string}>= {
+ bluegrove:{top:'#38b5cd',bottom:'#154c91',light:'#c5f4ed'},
  pongdang:{top:'#529dc7',bottom:'#173f6b',light:'#b9e8fa'},
  coral:{top:'#51b2ba',bottom:'#174c73',light:'#bdeee2'},
  mistmoon:{top:'#6678ad',bottom:'#232c54',light:'#d4d6fa'},

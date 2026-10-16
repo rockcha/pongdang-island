@@ -1,6 +1,10 @@
 import { RegionPage } from '@/features/regions/region-page'
 import { SailingPage } from '@/features/regions/sailing-page'
 import { ShopPage } from '@/features/gold/shop-page'
+import { ExchangePage } from '@/features/exchange/exchange-page'
+import { AuctionPage } from '@/features/auctions/auction-page'
+import { NoticePage,NoticeDetail } from '@/features/notices/notice-page'
+import { NoticeEditor } from '@/features/notices/notice-editor'
 import { WarehousePage } from '@/features/fishing/warehouse-page'
 import { Navigate,Route, Routes } from 'react-router'
 import { AppLayout } from '@/layouts/app-layout'
@@ -45,12 +49,15 @@ export function AppRoutes() {
             <Route path="profile" element={<ProfilePage />} />
             <Route path="notifications" element={<NotificationsPage />} />
             <Route path="square" element={<PlaceSectionPage section="square" />} />
-            <Route path="square/notices" element={<PlaceSectionPage section="square" />} />
+            <Route path="square/notices" element={<NoticePage />} />
+            <Route path="square/notices/new" element={<NoticeEditor />} />
+            <Route path="square/notices/:noticeId" element={<NoticeDetail />} />
+            <Route path="square/notices/:noticeId/edit" element={<NoticeEditor />} />
             <Route path="square/suggestions" element={<PlaceSectionPage section="square" />} />
             <Route path="square/bugs" element={<PlaceSectionPage section="square" />} />
             <Route path="merchant-street" element={<PlaceSectionPage section="merchants" />} />
-            <Route path="merchant-street/exchange" element={<PlaceSectionPage section="merchants" />} />
-            <Route path="merchant-street/auctions" element={<PlaceSectionPage section="merchants" />} />
+            <Route path="merchant-street/exchange" element={<ExchangePage />} />
+            <Route path="merchant-street/auctions" element={<AuctionPage />} />
           </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />

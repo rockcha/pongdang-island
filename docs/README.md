@@ -2,6 +2,8 @@
 
 새 작업을 시작할 때 [시스템 지도](SYSTEM_MAP.md)를 먼저 읽습니다.
 
+DB 작업은 [DB 관리와 원격 확인](systems/database-management.md) → [자동 생성 DB 컨텍스트](db/CONTEXT.md)를 먼저 읽습니다. 기능 문서의 과거 SQL 실행 안내는 설치 기준이 아닙니다.
+
 개체 이미지 생성 전에는 [등급별 그림체와 실제 참고 이미지](../assets/references/collectible-style/README.md)를 확인합니다. 일반·희귀는 퐁이 카툰풍, 특급·신화는 별빛 가오리 일러스트풍입니다.
 
 - [시스템 지도와 코드 진입점](SYSTEM_MAP.md): 기능 위치, 데이터 흐름, 작업별 읽을 파일

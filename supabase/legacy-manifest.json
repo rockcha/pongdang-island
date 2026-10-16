@@ -1,0 +1,160 @@
+{
+  "formatVersion": 1,
+  "baseline": "20261016015506_legacy_baseline.sql",
+  "baselineSha256": "fcdca6804a19b1173026e9aaa4be801b17ca681baa4ffca3c7aea7ee73e82fd7",
+  "files": [
+    {
+      "path": "01-profiles/01-tables.sql",
+      "sha256": "ed753b6999bfcd32106858271bce65b491ee0d3bd3d423efbf841f01577e2998"
+    },
+    {
+      "path": "02-friends/01-tables.sql",
+      "sha256": "e42a1bdde1afc909f5aafe1181863cfd06d2338f0c5de837b5a23a05cbbd11d7"
+    },
+    {
+      "path": "03-notifications/01-tables.sql",
+      "sha256": "b97481d08cb75b7f22e75515f59d879785d78b77502de2f53ddff8ee00fec9c6"
+    },
+    {
+      "path": "04-functions/01-social-api.sql",
+      "sha256": "89acd8575ac39f810e9626eb4728f05625fccf200e1ecb9784bcc6ee5aa595e2"
+    },
+    {
+      "path": "05-realtime/01-publication.sql",
+      "sha256": "16b89778ea69ba10eaa108ad481102c3d1a909070ca7d885139d143ced496c24"
+    },
+    {
+      "path": "06-avatars/01-avatar-storage.sql",
+      "sha256": "89ea9817e230e20812457cd317ad9c4979fabdadf769b2f6eb7d72c55bc6ab03"
+    },
+    {
+      "path": "07-friend-removal/01-remove-friend.sql",
+      "sha256": "9c709aa6ccc52929e64c7853e71cd69f5ed57619d2b5e083f66ee73af940e878"
+    },
+    {
+      "path": "08-gold/01-wallet.sql",
+      "sha256": "4417d14a9abb89cb0853509ae5be4242e0863a2d081cf5865ed16ffca9730897"
+    },
+    {
+      "path": "09-aquarium/01-backgrounds.sql",
+      "sha256": "95914c497c554fdeb4ad003247d3c28bc11c0d77e9403d2a691f9aeb39eb4916"
+    },
+    {
+      "path": "10-aquarium-tanks/01-tanks.sql",
+      "sha256": "5b1499c9f9bd3949e6645eee8f196d85ff241d93e5d55e36e04fa2d071f4086c"
+    },
+    {
+      "path": "11-regions/01-regions.sql",
+      "sha256": "41621b09cdbaa24309702c16b2be5cb4ae52af28fcb9cb2b3eb7e4c56c666f9e"
+    },
+    {
+      "path": "12-region-travel/01-travel.sql",
+      "sha256": "6d4b0b19c6ac327e29372fee640af62c483b5f4747c3e8bb55ff8038fb4c7a83"
+    },
+    {
+      "path": "13-fishing/01-fishing.sql",
+      "sha256": "48fda9ec8147975a7d5f6827b18b37d1315d8eb82d8b4672cd4e729681aec58d"
+    },
+    {
+      "path": "14-bait-catalog/01-baits.sql",
+      "sha256": "19e069f012281af2d6060687843cd338b9843174e912ec354f394b8b54697c2a"
+    },
+    {
+      "path": "15-collectibles/01-collectibles.sql",
+      "sha256": "010526bdb6794d140330e062561a6f29d2ba9540f9756f26bd47ed13532b4ff1"
+    },
+    {
+      "path": "16-cartoon-collectibles/01-cartoon-collectibles.sql",
+      "sha256": "b01cdb3b81174f845f53151b6a514a3bc8b8e9d893acd568459b10c028790a28"
+    },
+    {
+      "path": "17-collectible-paths/01-paths.sql",
+      "sha256": "cf90b66112df5094921c7fff9a858d4bb0eac23c596ee6b7726591b56b7ac8d6"
+    },
+    {
+      "path": "18-common-ocean-fish/01-common-ocean-fish.sql",
+      "sha256": "cf1503d18bd97f0eea578e9a54348459f84b64d69a678a479e5839391a802e8f"
+    },
+    {
+      "path": "19-rare-ocean-fish/01-rare-ocean-fish.sql",
+      "sha256": "3c037aadd9e2295693d4e499cce844acc9b2de2b6e5ed8f7902cdd32d8afc710"
+    },
+    {
+      "path": "20-large-fish-common/01-large-fish-common.sql",
+      "sha256": "89f7b4fd831e6d0e7d12fb6c0b01a72a9f0ae5c78fc8703b33d074adf12ef13c"
+    },
+    {
+      "path": "21-rare-sharks-whales/01-rare-sharks-whales.sql",
+      "sha256": "bba32a2c213bf485e05f2b6bd2eaa06c25281d2f9c3015d8b122b4e404ad6fd3"
+    },
+    {
+      "path": "22-aquarium-management/01-management.sql",
+      "sha256": "46fc0284721d26bb4628ab4ac6899546d32fd8b3e36fb53466cf4f515cf8ff5d"
+    },
+    {
+      "path": "23-collectible-gifts/01-gifts.sql",
+      "sha256": "4939ff54c183fbc3123828b53b6ced36736d3800b75fb08f382938163ed7b84a"
+    },
+    {
+      "path": "24-common-decorations/01-common-decorations.sql",
+      "sha256": "7785842a93dfe0e2fb9c6f1937ec7f879e30a1a493d03581b175a19c345f96e7"
+    },
+    {
+      "path": "25-decoration-editing/01-decoration-editing.sql",
+      "sha256": "3223b264c7ca2e1bc81c1ece7b591098e1a969db8a67c849c41cf08741899053"
+    },
+    {
+      "path": "26-collectible-storage/01-storage.sql",
+      "sha256": "9dba5aa50aacd5fd4a34a1db5b0030a7d8c6257911defb59e3ad9c879c20d012"
+    },
+    {
+      "path": "27-new-decorations/01-new-decorations.sql",
+      "sha256": "5d1e641e0b1213ed031b40d7b925d1df3eb18bc18b94971da581c937dfef05c0"
+    },
+    {
+      "path": "28-coastal-decorations/01-coastal-decorations.sql",
+      "sha256": "66c1d1e170a4117f20755c894c1104e3dba1591f1edd6f607814cf6d40ba2169"
+    },
+    {
+      "path": "29-statue-decorations/01-statue-decorations.sql",
+      "sha256": "a4818d4904be1fbf37dd98c5e134319b0c10555b3da6d88d189fa558ecc9249e"
+    },
+    {
+      "path": "30-native-collectibles/01-native-collectibles.sql",
+      "sha256": "57a13297530612c5b156681b9cdaeca2bc458d2c1a6ea131766c2182cc8b0820"
+    },
+    {
+      "path": "31-mistmoon-natives/01-mistmoon-natives.sql",
+      "sha256": "ca9948ce616568bfb018b632088a3d9f5e395d98acb38849ddc70b63e973b35d"
+    },
+    {
+      "path": "32-regional-fishing/01-regional-fishing.sql",
+      "sha256": "f4ad9f84d5d8d25d191bbf356e7a73a091e09114a938751ab315b285328a95a5"
+    },
+    {
+      "path": "33-swimming-diver/01-swimming-diver.sql",
+      "sha256": "7396d41443f2ce005b106b4574a6c02afab3703848eb34a2f714de11d2d6e50e"
+    },
+    {
+      "path": "34-remove-ocean-map/01-remove-ocean-map.sql",
+      "sha256": "6b887f6a6e8a97ed26b7f0fa32e68217eafef6563387045a270acd3b8fefd9e7"
+    },
+    {
+      "path": "35-collectible-movement/01-collectible-movement.sql",
+      "sha256": "3c527a8f54d63be09f341f63b8a2a20984fba7037b388b0eb77b335ddb652786"
+    },
+    {
+      "path": "36-pulse-crawl-species/01-pulse-crawl-species.sql",
+      "sha256": "e73fea2dfa67179f3bcb19810b14c8ac095be12e590959d2b09fb5ee73412024"
+    },
+    {
+      "path": "37-shared-sea-species/01-shared-sea-species.sql",
+      "sha256": "2b3870c456a0509cb0bd74f33f32f3617b116469e960e2a6405244c35ef0a9a3"
+    },
+    {
+      "path": "38-coral-natives/01-coral-natives.sql",
+      "sha256": "b098bb9c2b83850cd597fef5cbb9e8498c20410b4efd29547e56a227b7c7c8af"
+    }
+  ],
+  "hashNormalization": "utf8-lf"
+}

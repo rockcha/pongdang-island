@@ -1,4 +1,5 @@
 // @vitest-environment node
+import { legacyCoreFiles } from './sql-history'
 import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { PGlite } from '@electric-sql/pglite'
@@ -40,10 +41,7 @@ beforeAll(async () => {
     $$;
     grant usage on schema auth to anon, authenticated;
   `)
-  for (const file of [
-    '01-profiles/01-tables.sql', '02-friends/01-tables.sql', '03-notifications/01-tables.sql',
-    '04-functions/01-social-api.sql', '05-realtime/01-publication.sql', '06-avatars/01-avatar-storage.sql', '07-friend-removal/01-remove-friend.sql', '08-gold/01-wallet.sql', '09-aquarium/01-backgrounds.sql', '10-aquarium-tanks/01-tanks.sql', '11-regions/01-regions.sql', '12-region-travel/01-travel.sql', '13-fishing/01-fishing.sql', '14-bait-catalog/01-baits.sql', '15-collectibles/01-collectibles.sql', '16-cartoon-collectibles/01-cartoon-collectibles.sql', '17-collectible-paths/01-paths.sql', '22-aquarium-management/01-management.sql', '23-collectible-gifts/01-gifts.sql',
-  ]) {
+  for (const file of legacyCoreFiles(23)) {
     const legacyId='99999999-9999-9999-9999-999999999999'
     if(file.startsWith('15-')) {
       await db.query('insert into auth.users(id) values($1)',[legacyId])

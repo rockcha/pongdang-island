@@ -1,4 +1,5 @@
 // @vitest-environment node
+import { legacyCoreFiles } from './sql-history'
 import {PGlite} from '@electric-sql/pglite'
 import {readFileSync} from 'node:fs'
 import {beforeAll,afterAll,beforeEach,afterEach,expect,it} from 'vitest'
@@ -21,7 +22,7 @@ beforeAll(async()=>{
     grant usage on schema auth to anon, authenticated;
   `)
 
- for(const file of ["01-profiles/01-tables.sql","02-friends/01-tables.sql","03-notifications/01-tables.sql","04-functions/01-social-api.sql","05-realtime/01-publication.sql","06-avatars/01-avatar-storage.sql","07-friend-removal/01-remove-friend.sql","08-gold/01-wallet.sql","09-aquarium/01-backgrounds.sql","10-aquarium-tanks/01-tanks.sql","11-regions/01-regions.sql","12-region-travel/01-travel.sql","13-fishing/01-fishing.sql","14-bait-catalog/01-baits.sql","15-collectibles/01-collectibles.sql","16-cartoon-collectibles/01-cartoon-collectibles.sql","17-collectible-paths/01-paths.sql","22-aquarium-management/01-management.sql","23-collectible-gifts/01-gifts.sql","25-decoration-editing/01-decoration-editing.sql","26-collectible-storage/01-storage.sql","27-new-decorations/01-new-decorations.sql","28-coastal-decorations/01-coastal-decorations.sql","29-statue-decorations/01-statue-decorations.sql"])await db.exec(readFileSync('supabase/sql/'+file,'utf8'))
+ for(const file of legacyCoreFiles(29))await db.exec(readFileSync('supabase/sql/'+file,'utf8'))
  await db.exec(migration)
  await db.exec(readFileSync('supabase/sql/31-mistmoon-natives/01-mistmoon-natives.sql','utf8'))
  await db.exec(readFileSync('supabase/sql/32-regional-fishing/01-regional-fishing.sql','utf8'))

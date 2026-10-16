@@ -1,3 +1,7 @@
+# DB 관리 안내
+
+DB 구조·변경·원격 상태 확인은 [DB 관리](docs/systems/database-management.md)와 [생성된 현재 구조](docs/db/CONTEXT.md)를 기준으로 합니다. 아래 기존 SQL 번호별 설명은 과거 구현 기록입니다.
+
 # 퐁당섬
 
 React + TypeScript + Vite로 만드는 모바일 낚시 게임 PWA의 시작 프로젝트입니다.

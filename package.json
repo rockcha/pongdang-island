@@ -4,6 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "db:verify": "node scripts/db/verify.mjs && node scripts/db/context.mjs check",
+    "db:context": "node scripts/db/context.mjs write",
+    "db:remote": "node scripts/db/context.mjs remote",
+    "db:catalog": "node scripts/db/catalog.mjs",
     "storage:upload": "node scripts/upload-collectibles.mjs",
     "test": "vitest run",
     "dev": "vite",

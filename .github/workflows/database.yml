@@ -1,0 +1,16 @@
+name: Database consistency
+on:
+  push:
+  pull_request:
+jobs:
+  database:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run db:verify
+      - run: npm test -- tests/social-sql.test.ts tests/native-collectibles-sql.test.ts tests/regional-fishing-sql.test.ts tests/collectible-movement-sql.test.ts

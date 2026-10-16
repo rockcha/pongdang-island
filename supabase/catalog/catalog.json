@@ -1,0 +1,2783 @@
+{
+  "formatVersion": 1,
+  "regions": [
+    {
+      "id": "coral",
+      "name": "산호빛 여울",
+      "description": "파스텔빛 산호 사이로 빠른 물살이 흘러요. 날쌘 물고기들이 여울 속에 숨어 있어요.",
+      "rarity": "common",
+      "sort_order": 2,
+      "image_path": "coral.png",
+      "requires_map_fragment": true
+    },
+    {
+      "id": "dreamabyss",
+      "name": "꿈먹는 심연",
+      "description": "보랏빛 물결이 어둠 속으로 이어져요. 바다 깊이 감춰진 신비가 기다리고 있어요.",
+      "rarity": "epic",
+      "sort_order": 5,
+      "image_path": "dreamabyss.png",
+      "requires_map_fragment": true
+    },
+    {
+      "id": "mistmoon",
+      "name": "안개달 해역",
+      "description": "은빛 안개와 달빛이 겹치는 고요한 해역. 물결 너머 낯선 움직임이 느껴져요.",
+      "rarity": "rare",
+      "sort_order": 3,
+      "image_path": "mistmoon.png",
+      "requires_map_fragment": true
+    },
+    {
+      "id": "pongdang",
+      "name": "퐁당섬 앞바다",
+      "description": "햇살이 부서지는 잔잔한 바다. 작은 물고기들과 첫 낚시를 시작하는 곳이에요.",
+      "rarity": "common",
+      "sort_order": 1,
+      "image_path": "pongdang.png",
+      "requires_map_fragment": false
+    },
+    {
+      "id": "starruins",
+      "name": "별잠 유적",
+      "description": "별빛을 품은 오래된 유적. 잠든 바다의 기억과 희귀한 생명이 머물러요.",
+      "rarity": "rare",
+      "sort_order": 4,
+      "image_path": "starruins.png",
+      "requires_map_fragment": true
+    }
+  ],
+  "aquarium_backgrounds": [
+    {
+      "id": "coral",
+      "name": "산호 정원",
+      "price": 100,
+      "image_path": "coral.png"
+    },
+    {
+      "id": "default",
+      "name": "맑은 물빛",
+      "price": 0,
+      "image_path": "default.png"
+    },
+    {
+      "id": "moon",
+      "name": "달빛 바다",
+      "price": 300,
+      "image_path": "moon.png"
+    },
+    {
+      "id": "pearl",
+      "name": "진주 동굴",
+      "price": 500,
+      "image_path": "pearl.png"
+    }
+  ],
+  "fishing_baits": [
+    {
+      "id": "bait",
+      "name": "퐁당 지렁이",
+      "description": "퐁당섬의 촉촉한 모래와 풀숲에서만 서식하는 선홍빛 지렁이. 물속에서도 꼬물꼬물 움직여 물고기의 호기심을 자극한다. 매우 흔하고 구하기 쉬워, 섬의 초보 낚시꾼들이 가장 먼저 챙기는 미끼다.",
+      "price": 30,
+      "image_path": "/items/baits/pongdang-worm.png",
+      "sort_order": 1,
+      "common_bp": 3000,
+      "rare_bp": 1000,
+      "epic_bp": 100,
+      "mythic_bp": 30,
+      "failure_bp": 5870,
+      "effect_kind": "fish",
+      "effect_description": "해역 등급이 높아질수록 희귀·특급·신화 확률이 조금 높아져요. 실패해도 미끼 1개를 소모해요."
+    },
+    {
+      "id": "bait_epic",
+      "name": "별잠의 유혹",
+      "description": "별잠 유적의 틈에 맺힌 별가루를 자수정 조각에 봉인한 미끼. 물결에 닿으면 보랏빛 잔광이 길게 번져, 깊은 바다에 몸을 숨긴 비범한 생명까지 잠에서 깨운다고 전해진다.",
+      "price": null,
+      "image_path": "/items/baits/starlit-allure.png",
+      "sort_order": 5,
+      "common_bp": 0,
+      "rare_bp": 0,
+      "epic_bp": 9970,
+      "mythic_bp": 30,
+      "failure_bp": 0,
+      "effect_kind": "fish",
+      "effect_description": "실패 없이 최소 특급을 보장해요. 상위 해역에서는 신화 확률이 조금 높아져요."
+    },
+    {
+      "id": "bait_magnet",
+      "name": "심해 인력석",
+      "description": "깊은 해구에서 건져 올린 푸른 자철석을 다듬어 만든 인양용 미끼. 물고기 대신 바다 아래 잠든 장식물에 반응하며, 오래전에 가라앉은 보물의 흔적을 조용히 끌어당긴다.",
+      "price": null,
+      "image_path": "/items/baits/abyss-lodestone.png",
+      "sort_order": 4,
+      "common_bp": 0,
+      "rare_bp": 0,
+      "epic_bp": 0,
+      "mythic_bp": 0,
+      "failure_bp": 10000,
+      "effect_kind": "decoration",
+      "effect_description": "현재 해역에 서식하는 장식물을 반드시 획득해요. 지도는 나오지 않아요."
+    },
+    {
+      "id": "bait_safe",
+      "name": "이슬잎 경단",
+      "description": "새벽 이슬을 머금은 어린 잎에 향긋한 해초 반죽을 감싼 수제 미끼. 작은 쇠바늘에 단단히 붙어 쉽게 흩어지지 않고, 잎 사이로 퍼지는 순한 향이 경계심 많은 물고기를 안심시킨다.",
+      "price": null,
+      "image_path": "/items/baits/dewleaf-dumpling.png",
+      "sort_order": 3,
+      "common_bp": 4174,
+      "rare_bp": 1000,
+      "epic_bp": 100,
+      "mythic_bp": 30,
+      "failure_bp": 4696,
+      "effect_kind": "fish",
+      "effect_description": "기본 실패 확률을 상대적으로 20% 줄여요. 등급 확률은 해역에 따라 달라져요."
+    },
+    {
+      "id": "bait_special",
+      "name": "달빛 진주새우",
+      "description": "달빛이 스며드는 얕은 바다에서 자라는 작은 진주새우. 반투명한 껍질 속 푸른 진주가 은은하게 빛나며, 평범한 먹이에는 다가오지 않던 진귀한 물고기까지 불러 모은다고 한다.",
+      "price": null,
+      "image_path": "/items/baits/special.png",
+      "sort_order": 2,
+      "common_bp": 0,
+      "rare_bp": 9870,
+      "epic_bp": 100,
+      "mythic_bp": 30,
+      "failure_bp": 0,
+      "effect_kind": "fish",
+      "effect_description": "실패 없이 최소 희귀를 보장해요. 상위 해역에서는 특급·신화 확률이 조금 높아져요."
+    }
+  ],
+  "collectible_species": [
+    {
+      "id": "apricot-starfish",
+      "kind": "decoration",
+      "name": "살구 불가사리",
+      "description": "통통한 다섯 팔을 펼친 살구색 불가사리. 수조 벽에 착 붙어 느긋하게 바다를 구경한다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 52,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/apricot-starfish_thumbnail.png",
+      "sell_price": 35,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "aurora-eel",
+      "kind": "fish",
+      "name": "오로라장어",
+      "description": "길게 휘어진 몸 안으로 분홍빛과 보랏빛 오로라가 흐른다. 겹겹의 지느러미를 펼칠 때마다 은빛 비늘이 별처럼 빛난다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.8",
+      "speed": "0.045",
+      "size": 102,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/aurora-eel_thumbnail.png",
+      "sell_price": 700,
+      "sprite_sheet_path": "fish/epic/aurora-eel_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "bean-pufferfish",
+      "kind": "fish",
+      "name": "콩알 복어",
+      "description": "작은 콩처럼 동그란 몸에 짧은 가시가 돋아 있다. 노란 지느러미를 파닥이며 바다 친구들 사이를 오간다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.8",
+      "speed": "0.045",
+      "size": 52,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/bean-pufferfish_thumbnail.png",
+      "sell_price": 35,
+      "sprite_sheet_path": "fish/normal/bean-pufferfish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "blue-bronze-horseshoe-crab",
+      "kind": "fish",
+      "name": "청금 투구게",
+      "description": "오래된 청동을 닮은 등껍질 가장자리에 푸른빛이 돈다. 가느다란 꼬리를 끌며 바닥의 오래된 길을 더듬는다.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.95",
+      "speed": "0.022",
+      "size": 66,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/blue-bronze-horseshoe-crab_thumbnail.png",
+      "sell_price": 170,
+      "sprite_sheet_path": "fish/rare/blue-bronze-horseshoe-crab_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "blue-great-white",
+      "kind": "fish",
+      "name": "푸른 백상아리",
+      "description": "묵직한 몸과 뾰족한 등지느러미를 가진 상어. 푸른 회색 등 아래 크림빛 배가 드러나고, 작은 이빨 사이로 장난스러운 미소가 보인다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.80",
+      "speed": "0.055",
+      "size": 136,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/blue-great-white_thumbnail.png",
+      "sell_price": 380,
+      "sprite_sheet_path": "fish/rare/blue-great-white_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "blue-sailfish",
+      "kind": "fish",
+      "name": "푸른 돛새치",
+      "description": "긴 주둥이와 커다란 돛 모양 등지느러미를 가진 물고기. 푸른 몸을 펼치며 바닷속을 시원하게 가로지른다.",
+      "swim_y_min": "0.20",
+      "swim_y_max": "0.70",
+      "speed": "0.065",
+      "size": 112,
+      "rarity": "common",
+      "thumbnail_path": "fish/rare/blue-sailfish_thumbnail.png",
+      "sell_price": 220,
+      "sprite_sheet_path": "fish/rare/blue-sailfish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "butter-starfish",
+      "kind": "decoration",
+      "name": "버터 불가사리",
+      "description": "부드러운 버터빛 몸에 주황색 점이 콕콕 박힌 불가사리. 둥근 팔을 펼치면 작은 햇살을 붙여 둔 듯하다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 54,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/butter-starfish_thumbnail.png",
+      "sell_price": 140,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "button-urchin",
+      "kind": "fish",
+      "name": "단추 성게",
+      "description": "단추처럼 둥근 몸에 짧은 밤색 가시가 촘촘하다. 눈에 띄지 않을 만큼 천천히 바닥을 돌아다닌다.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.95",
+      "speed": "0.022",
+      "size": 46,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/button-urchin_thumbnail.png",
+      "sell_price": 30,
+      "sprite_sheet_path": "fish/normal/button-urchin_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "cloud-humpback",
+      "kind": "fish",
+      "name": "구름 혹등고래",
+      "description": "둥근 청회색 몸과 긴 가슴지느러미를 가진 고래. 하얀 배와 넓은 꼬리를 펼쳐 구름처럼 느긋하게 물속을 지나간다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.80",
+      "speed": "0.03",
+      "size": 172,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/cloud-humpback_thumbnail.png",
+      "sell_price": 520,
+      "sprite_sheet_path": "fish/rare/cloud-humpback_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "coral-bean-shrimp",
+      "kind": "fish",
+      "name": "산호콩 새우",
+      "description": "작은 콩처럼 통통한 살구빛 몸에 하얀 점이 박혀 있다. 산호빛 여울의 산호 틈을 종종 걸으며 먹이를 찾는다.",
+      "swim_y_min": "0.85",
+      "swim_y_max": "0.94",
+      "speed": "0.018",
+      "size": 48,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/coral-bean-shrimp_thumbnail.png",
+      "sell_price": 35,
+      "sprite_sheet_path": "fish/normal/coral-bean-shrimp_sprite.png",
+      "native_region_id": "coral",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "coral-claw-crab",
+      "kind": "fish",
+      "name": "산호집게 꽃게",
+      "description": "둥근 살구색 등딱지와 산호빛 집게를 가진 작은 꽃게. 산호빛 여울의 바닥을 옆으로 종종 걸으며 조개껍데기를 살핀다.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.94",
+      "speed": "0.030",
+      "size": 64,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/coral-claw-crab_thumbnail.png",
+      "sell_price": 180,
+      "sprite_sheet_path": "fish/rare/coral-claw-crab_sprite.png",
+      "native_region_id": "coral",
+      "movement_type": "crawl",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "coral-covered-treasure-chest",
+      "kind": "decoration",
+      "name": "산호 덮인 보물상자",
+      "description": "오래된 상자 위에 산호가 작은 정원을 만들었다. 뚜껑 사이에는 누군가의 반짝이는 기억이 남아 있다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 72,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/coral-covered-treasure-chest_thumbnail.png",
+      "sell_price": 190,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "coral-crowned-turtle",
+      "kind": "fish",
+      "name": "산호왕관 거북",
+      "description": "등껍질 위에 작은 산호 정원이 자라는 거북. 머리의 산호 왕관과 반투명 지느러미에 여울의 빛이 은은하게 번진다.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.73",
+      "speed": "0.028",
+      "size": 96,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/coral-crowned-turtle_thumbnail.png",
+      "sell_price": 680,
+      "sprite_sheet_path": "fish/epic/coral-crowned-turtle_sprite.png",
+      "native_region_id": "coral",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "coral-flower-anemone",
+      "kind": "decoration",
+      "name": "산호꽃 말미잘",
+      "description": "분홍 촉수 끝에 작은 꽃봉오리 같은 방울이 맺혀 있다. 산호빛 여울에서 자라난 꽃 한 송이를 어항에 옮겨 둔 듯하다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 62,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/coral-flower-anemone_thumbnail.png",
+      "sell_price": 165,
+      "sprite_sheet_path": null,
+      "native_region_id": "coral",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "coral-house",
+      "kind": "decoration",
+      "name": "산호빛 작은 집",
+      "description": "분홍 산호와 매끈한 조약돌로 지어진 작은 집. 어항 한쪽에 놓으면 바다 친구들이 쉬어 가기 좋다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 94,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/normal/coral-house_thumbnail.png",
+      "sell_price": 120,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "coral-seabream",
+      "kind": "fish",
+      "name": "산호빛 참돔",
+      "description": "통통하고 넓은 몸에 산호빛 비늘이 반짝이는 물고기. 큼직한 지느러미를 살랑이며 여유롭게 헤엄친다.",
+      "swim_y_min": "0.20",
+      "swim_y_max": "0.70",
+      "speed": "0.045",
+      "size": 96,
+      "rarity": "common",
+      "thumbnail_path": "fish/rare/coral-seabream_thumbnail.png",
+      "sell_price": 180,
+      "sprite_sheet_path": "fish/rare/coral-seabream_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "coralfan-butterflyfish",
+      "kind": "fish",
+      "name": "산호부채 나비고기",
+      "description": "둥근 몸에 살구빛과 민트빛 무늬가 부채처럼 겹친다. 산호빛 여울의 물살을 타면 넓은 지느러미가 꽃잎처럼 펼쳐진다.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.76",
+      "speed": "0.035",
+      "size": 68,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/coralfan-butterflyfish_thumbnail.png",
+      "sell_price": 175,
+      "sprite_sheet_path": "fish/rare/coralfan-butterflyfish_sprite.png",
+      "native_region_id": "coral",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "crescent-seahorse",
+      "kind": "fish",
+      "name": "초승달 해마",
+      "description": "연보랏빛 꼬리를 초승달처럼 감은 작은 해마. 안개가 내려앉은 밤이면 은빛 배를 반짝이며 느긋하게 헤엄친다.",
+      "swim_y_min": "0.30",
+      "swim_y_max": "0.70",
+      "speed": "0.025",
+      "size": 62,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/crescent-seahorse_thumbnail.png",
+      "sell_price": 180,
+      "sprite_sheet_path": "fish/rare/crescent-seahorse_sprite.png",
+      "native_region_id": "mistmoon",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "dawn-arowana",
+      "kind": "fish",
+      "name": "여명 아로와나",
+      "description": "진주빛 금색 비늘 사이로 새벽빛이 번지는 전설의 물고기. 긴 지느러미가 흘러가는 꿈처럼 물결을 감싼다.",
+      "swim_y_min": "0.20",
+      "swim_y_max": "0.70",
+      "speed": "0.040",
+      "size": 96,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/dawn-arowana_thumbnail.png",
+      "sell_price": 2000,
+      "sprite_sheet_path": "fish/mythic/dawn-arowana_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "diver-pongdang",
+      "kind": "fish",
+      "name": "잠수부 퐁당이",
+      "description": "잠수복을 입고 퐁당 앞바다를 탐험하는 퐁당이. 둥근 헬멧 너머 미소를 지으며 물갈퀴와 꼬리를 움직여 헤엄친다.",
+      "swim_y_min": "0.20",
+      "swim_y_max": "0.75",
+      "speed": "0.040",
+      "size": 82,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/diver-pongdang-swimming_thumbnail.png",
+      "sell_price": 650,
+      "sprite_sheet_path": "fish/epic/diver-pongdang-swimming_sprite.png",
+      "native_region_id": "pongdang",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "dreaming-dumbo-octopus",
+      "kind": "fish",
+      "name": "꿈꾸는 덤보문어",
+      "description": "라벤더빛 몸에 은빛 꿈무늬가 수놓아져 있다. 귀 같은 지느러미와 진주빛 팔을 펼치며 달콤한 잠결에 바다를 떠돈다.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.78",
+      "speed": "0.03",
+      "size": 88,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/dreaming-dumbo-octopus_thumbnail.png",
+      "sell_price": 650,
+      "sprite_sheet_path": "fish/epic/dreaming-dumbo-octopus_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "flower-coral-seadragon",
+      "kind": "fish",
+      "name": "꽃산호 해룡",
+      "description": "길게 휘어진 몸을 따라 분홍 산호꽃을 닮은 돌기가 피어 있다. 산호빛 여울의 가지 사이를 조용히 스쳐 지나간다.",
+      "swim_y_min": "0.24",
+      "swim_y_max": "0.73",
+      "speed": "0.025",
+      "size": 72,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/flower-coral-seadragon_thumbnail.png",
+      "sell_price": 185,
+      "sprite_sheet_path": "fish/rare/flower-coral-seadragon_sprite.png",
+      "native_region_id": "coral",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "glass-bottle",
+      "kind": "trash",
+      "name": "잊힌 유리병",
+      "description": "파도에 오래 씻겨 모서리가 둥글어진 빈 병. 작은 해초가 붙은 채 바닷속에서 빙글빙글 떠다닌다.",
+      "swim_y_min": "0.40",
+      "swim_y_max": "0.80",
+      "speed": "0.020",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/glass-bottle_thumbnail.png",
+      "sell_price": 8,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "glassfin-lionfish",
+      "kind": "fish",
+      "name": "유리 지느러미 쏠배감펭",
+      "description": "붉은 줄무늬 사이로 유리 같은 지느러미가 펼쳐진다. 가는 지느러미살마다 물빛이 맺혀 작은 부채처럼 반짝인다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.8",
+      "speed": "0.045",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/glassfin-lionfish_thumbnail.png",
+      "sell_price": 190,
+      "sprite_sheet_path": "fish/rare/glassfin-lionfish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "hazy-glass-marble",
+      "kind": "trash",
+      "name": "흐릿한 유리구슬",
+      "description": "안개달 해역의 은빛 모래에 오래 묻혀 뿌옇게 변한 구슬. 유리 속에는 지워지지 않는 초승달 무늬가 남아 있다.",
+      "swim_y_min": "0.65",
+      "swim_y_max": "0.90",
+      "speed": "0.015",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/hazy-glass-marble_thumbnail.png",
+      "sell_price": 10,
+      "sprite_sheet_path": null,
+      "native_region_id": "mistmoon",
+      "movement_type": "swim",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "lavender-starfish",
+      "kind": "decoration",
+      "name": "라벤더 불가사리",
+      "description": "연보랏빛 다섯 팔에 작은 진주 같은 돌기가 돋아 있다. 어항 벽에 붙어 조용히 바다를 바라본다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 52,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/lavender-starfish_thumbnail.png",
+      "sell_price": 35,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "lost-arrow-sign",
+      "kind": "decoration",
+      "name": "길 잃은 화살표 팻말",
+      "description": "파도에 닳은 나무 화살표에 작은 조개가 매달려 있다. 어디를 가리키는지는 잊었지만, 내 바다에서는 새로운 길의 시작이 된다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/lost-arrow-sign_thumbnail.png",
+      "sell_price": 40,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "map-coral",
+      "kind": "map",
+      "name": "산호빛 여울 지도 조각",
+      "description": "산호빛 여울의 풍경과 항로가 그려진 지도 조각. 아직 잠긴 바다로 향하는 길을 알려 준다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "map/normal/map-coral_thumbnail.png",
+      "sell_price": 0,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "map-dreamabyss",
+      "kind": "map",
+      "name": "꿈먹는 심연 지도 조각",
+      "description": "꿈먹는 심연의 풍경과 항로가 그려진 지도 조각. 아직 잠긴 바다로 향하는 길을 알려 준다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 60,
+      "rarity": "epic",
+      "thumbnail_path": "map/epic/map-dreamabyss_thumbnail.png",
+      "sell_price": 0,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "map-mistmoon",
+      "kind": "map",
+      "name": "안개달 해역 지도 조각",
+      "description": "안개달 해역의 풍경과 항로가 그려진 지도 조각. 아직 잠긴 바다로 향하는 길을 알려 준다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 60,
+      "rarity": "rare",
+      "thumbnail_path": "map/rare/map-mistmoon_thumbnail.png",
+      "sell_price": 0,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "map-pongdang",
+      "kind": "map",
+      "name": "퐁당섬 앞바다 지도 조각",
+      "description": "퐁당섬 앞바다의 풍경과 항로가 그려진 지도 조각. 아직 잠긴 바다로 향하는 길을 알려 준다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "map/normal/map-pongdang_thumbnail.png",
+      "sell_price": 0,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "map-starruins",
+      "kind": "map",
+      "name": "별잠 유적 지도 조각",
+      "description": "별잠 유적의 풍경과 항로가 그려진 지도 조각. 아직 잠긴 바다로 향하는 길을 알려 준다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 60,
+      "rarity": "rare",
+      "thumbnail_path": "map/rare/map-starruins_thumbnail.png",
+      "sell_price": 0,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "mint-mahi-mahi",
+      "kind": "fish",
+      "name": "민트 만새기",
+      "description": "높고 둥근 이마와 길게 이어진 등지느러미를 가진 물고기. 민트빛 몸과 연노란 지느러미가 물결 속에서 반짝인다.",
+      "swim_y_min": "0.20",
+      "swim_y_max": "0.70",
+      "speed": "0.055",
+      "size": 116,
+      "rarity": "common",
+      "thumbnail_path": "fish/rare/mint-mahi-mahi_thumbnail.png",
+      "sell_price": 240,
+      "sprite_sheet_path": "fish/rare/mint-mahi-mahi_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "mint-starfish",
+      "kind": "decoration",
+      "name": "민트 불가사리",
+      "description": "짧고 통통한 팔을 펼친 민트빛 불가사리. 작은 크림색 돌기가 시원한 바다 색과 어우러진다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 50,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/mint-starfish_thumbnail.png",
+      "sell_price": 35,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "mist-bell-windchime",
+      "kind": "decoration",
+      "name": "안개종 풍경",
+      "description": "작은 유리종 아래 달 모양 조각이 매달린 풍경. 안개달 해역의 잔물결을 따라 잊힌 자장가를 간직한다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 64,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/mist-bell-windchime_thumbnail.png",
+      "sell_price": 170,
+      "sprite_sheet_path": null,
+      "native_region_id": "mistmoon",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "moon-angelfish",
+      "kind": "fish",
+      "name": "달물결 엔젤피쉬",
+      "description": "은빛 초승달 무늬를 두른 푸른 엔젤피쉬. 길게 늘어진 지느러미가 달빛 물결처럼 흔들린다.",
+      "swim_y_min": "0.25",
+      "swim_y_max": "0.70",
+      "speed": "0.050",
+      "size": 80,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/moon-angelfish_thumbnail.png",
+      "sell_price": 180,
+      "sprite_sheet_path": "fish/rare/moon-angelfish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "moon-sleep-waterlily",
+      "kind": "decoration",
+      "name": "달잠 수련",
+      "description": "은백색 꽃잎 사이에 푸른빛을 품은 작은 수련. 안개달 해역의 고요한 밤을 꽃 한 송이에 담았다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 62,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/moon-sleep-waterlily_thumbnail.png",
+      "sell_price": 160,
+      "sprite_sheet_path": null,
+      "native_region_id": "mistmoon",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "moonbell-jellyfish",
+      "kind": "fish",
+      "name": "달방울 해파리",
+      "description": "반투명 연보라색 갓 안에 둥근 달무늬가 떠 있는 해파리. 안개달 해역에서 짧은 촉수를 모아 위로 솟았다 천천히 내려온다.",
+      "swim_y_min": "0.20",
+      "swim_y_max": "0.75",
+      "speed": "0.030",
+      "size": 60,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/moonbell-jellyfish_thumbnail.png",
+      "sell_price": 170,
+      "sprite_sheet_path": "fish/rare/moonbell-jellyfish_sprite.png",
+      "native_region_id": "mistmoon",
+      "movement_type": "pulse",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "moonlit-jellyfish-lantern",
+      "kind": "decoration",
+      "name": "달빛 해파리 풍등",
+      "description": "해파리를 닮은 작은 풍등. 은은한 달빛을 머금고 바닷속 길을 밝혀 준다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 62,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/moonlit-jellyfish-lantern_thumbnail.png",
+      "sell_price": 160,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "night-orca",
+      "kind": "fish",
+      "name": "밤빛 범고래",
+      "description": "짙은 보랏빛 몸에 하얀 눈 옆 무늬와 높은 등지느러미가 돋보이는 고래. 넓은 꼬리로 물살을 밀며 힘차게 헤엄친다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.80",
+      "speed": "0.045",
+      "size": 148,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/night-orca_thumbnail.png",
+      "sell_price": 450,
+      "sprite_sheet_path": "fish/rare/night-orca_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "opal-nautilus",
+      "kind": "fish",
+      "name": "오팔 앵무조개",
+      "description": "크림색 나선 껍데기 안쪽으로 오팔빛이 은근히 번진다. 가느다란 촉수를 모으며 오래된 바다의 박자로 떠오른다.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.78",
+      "speed": "0.03",
+      "size": 64,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/opal-nautilus_thumbnail.png",
+      "sell_price": 180,
+      "sprite_sheet_path": "fish/rare/opal-nautilus_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "orange-clownfish",
+      "kind": "fish",
+      "name": "흰동가리",
+      "description": "선명한 주황빛 몸에 하얀 띠가 둘러져 있다. 작은 지느러미를 부지런히 움직이며 느긋하게 헤엄친다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.8",
+      "speed": "0.045",
+      "size": 54,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/orange-clownfish_thumbnail.png",
+      "sell_price": 35,
+      "sprite_sheet_path": "fish/normal/orange-clownfish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "peach-octopus",
+      "kind": "fish",
+      "name": "복숭아 문어",
+      "description": "복숭앗빛 둥근 머리 아래 통통한 여덟 팔이 모여 있다. 팔을 오므렸다 펼치며 물결에 몸을 맡긴다.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.78",
+      "speed": "0.03",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/peach-octopus_thumbnail.png",
+      "sell_price": 45,
+      "sprite_sheet_path": "fish/normal/peach-octopus_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "peach-umbrella-jellyfish",
+      "kind": "fish",
+      "name": "복숭아 우산해파리",
+      "description": "복숭아빛 우산 같은 갓 아래 크림색 촉수가 모여 있다. 몸을 오므리며 통통 떠올랐다 잔물결 사이로 느긋하게 내려온다.",
+      "swim_y_min": "0.25",
+      "swim_y_max": "0.80",
+      "speed": "0.035",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/peach-umbrella-jellyfish_thumbnail.png",
+      "sell_price": 35,
+      "sprite_sheet_path": "fish/normal/peach-umbrella-jellyfish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pearl-bearing-clam",
+      "kind": "decoration",
+      "name": "진주 품은 조개",
+      "description": "살짝 열린 분홍빛 조개 안에 둥근 진주 한 알이 잠들어 있다. 오랜 시간 바다가 품어 온 작은 보물이다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 62,
+      "rarity": "common",
+      "thumbnail_path": "decorations/rare/pearl-bearing-clam_thumbnail.png",
+      "sell_price": 45,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pearl-parrotfish",
+      "kind": "fish",
+      "name": "진주 비늘돔",
+      "description": "민트빛과 분홍빛 비늘에 진주 같은 윤기가 흐른다. 둥근 입으로 바위 표면을 살피며 잔잔한 바다를 누빈다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.8",
+      "speed": "0.045",
+      "size": 70,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/pearl-parrotfish_thumbnail.png",
+      "sell_price": 170,
+      "sprite_sheet_path": "fish/rare/pearl-parrotfish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pebble-hermit-crab",
+      "kind": "fish",
+      "name": "조약돌 소라게",
+      "description": "매끈한 회청색 소라집 아래 주황색 다리가 옹기종기 모여 있다. 바닥을 느릿느릿 오가며 집 밖으로 눈을 내민다.",
+      "swim_y_min": "0.88",
+      "swim_y_max": "0.96",
+      "speed": "0.025",
+      "size": 52,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pebble-hermit-crab_thumbnail.png",
+      "sell_price": 30,
+      "sprite_sheet_path": "fish/normal/pebble-hermit-crab_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "petal-nudibranch",
+      "kind": "fish",
+      "name": "꽃잎 갯민숭달팽이",
+      "description": "우윳빛 몸 위에 분홍 꽃잎 같은 아가미가 피어 있다. 작은 더듬이를 세우고 바닥에 부드러운 발자국을 남긴다.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.95",
+      "speed": "0.022",
+      "size": 58,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/petal-nudibranch_thumbnail.png",
+      "sell_price": 160,
+      "sprite_sheet_path": "fish/rare/petal-nudibranch_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pink-scallop",
+      "kind": "fish",
+      "name": "분홍 가리비",
+      "description": "분홍빛 부채 모양 껍데기를 살짝 열었다 닫는다. 물을 밀어 내며 작은 박자로 바닷속을 떠다닌다.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.78",
+      "speed": "0.03",
+      "size": 52,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pink-scallop_thumbnail.png",
+      "sell_price": 35,
+      "sprite_sheet_path": "fish/normal/pink-scallop_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pinkchin-blenny",
+      "kind": "fish",
+      "name": "분홍턱 베도라치",
+      "description": "크림색 몸 아래 분홍빛 턱을 내민 작은 베도라치. 머리 위 짧은 산호 모양 더듬이를 흔들며 산호빛 여울을 살핀다.",
+      "swim_y_min": "0.5",
+      "swim_y_max": "0.83",
+      "speed": "0.032",
+      "size": 54,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pinkchin-blenny_thumbnail.png",
+      "sell_price": 40,
+      "sprite_sheet_path": "fish/normal/pinkchin-blenny_sprite.png",
+      "native_region_id": "coral",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "plump-horse-mackerel",
+      "kind": "fish",
+      "name": "통통 전갱이",
+      "description": "은빛 몸과 연노란 꼬리가 특징인 물고기. 지느러미를 부지런히 움직이며 주변을 호기심 있게 돌아다닌다.",
+      "swim_y_min": "0.30",
+      "swim_y_max": "0.70",
+      "speed": "0.065",
+      "size": 68,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/plump-horse-mackerel_thumbnail.png",
+      "sell_price": 35,
+      "sprite_sheet_path": "fish/normal/plump-horse-mackerel_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pongdang-fish",
+      "kind": "fish",
+      "name": "퐁당 물고기",
+      "description": "살구빛 몸과 머리 위 분홍 불가사리가 퐁당이를 닮은 물고기. 퐁당 앞바다에서 둥근 지느러미를 팔랑이며 헤엄친다.",
+      "swim_y_min": "0.25",
+      "swim_y_max": "0.70",
+      "speed": "0.045",
+      "size": 66,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/pongdang-fish_thumbnail.png",
+      "sell_price": 180,
+      "sprite_sheet_path": "fish/rare/pongdang-fish_sprite.png",
+      "native_region_id": "pongdang",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pongi-statue",
+      "kind": "decoration",
+      "name": "퐁이 석상",
+      "description": "작은 조개를 품고 앉은 퐁이의 모습을 돌에 새겼다. 머리 위 불가사리와 다정한 미소가 오래도록 내 작은 바다를 지켜 준다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 86,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/pongi-statue_thumbnail.png",
+      "sell_price": 600,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pongul",
+      "kind": "fish",
+      "name": "퐁울복",
+      "description": "퐁당섬의 잔잔한 물결을 따라 헤엄치는 작은 복어. 볼에 햇살 같은 무늬가 있어 언제나 웃는 것처럼 보인다.",
+      "swim_y_min": "0.20",
+      "swim_y_max": "0.65",
+      "speed": "0.055",
+      "size": 72,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pongul_thumbnail.png",
+      "sell_price": 40,
+      "sprite_sheet_path": "fish/normal/pongul_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "ribbon-eel",
+      "kind": "fish",
+      "name": "리본 장어",
+      "description": "가느다란 푸른 몸을 따라 노란 지느러미가 이어진다. 리본을 풀어 놓은 듯 부드럽게 몸을 굽히며 헤엄친다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.8",
+      "speed": "0.045",
+      "size": 74,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/ribbon-eel_thumbnail.png",
+      "sell_price": 45,
+      "sprite_sheet_path": "fish/normal/ribbon-eel_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "ripple-coral-fragment",
+      "kind": "decoration",
+      "name": "물결 산호 조각",
+      "description": "살구빛과 분홍빛이 겹겹이 번지는 작은 부채 모양 산호. 물결처럼 굽은 가장자리에 바다의 시간이 남아 있다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 62,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/ripple-coral-fragment_thumbnail.png",
+      "sell_price": 150,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "round-barnacle-cluster",
+      "kind": "decoration",
+      "name": "동글 따개비 무리",
+      "description": "작고 동그란 따개비들이 옹기종기 모여 있다. 벽 한쪽에 붙이면 소박한 바다 풍경이 된다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 46,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/round-barnacle-cluster_thumbnail.png",
+      "sell_price": 25,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "round-filefish",
+      "kind": "fish",
+      "name": "동글 쥐치",
+      "description": "납작하고 둥근 몸에 작은 입을 가진 물고기. 작은 지느러미를 팔랑이며 헤엄치고, 주변을 콕콕 건드리며 탐색한다.",
+      "swim_y_min": "0.35",
+      "swim_y_max": "0.75",
+      "speed": "0.040",
+      "size": 64,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/round-filefish_thumbnail.png",
+      "sell_price": 30,
+      "sprite_sheet_path": "fish/normal/round-filefish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "rusty-mini-anchor",
+      "kind": "decoration",
+      "name": "녹슨 꼬마 닻",
+      "description": "붉은 녹이 슬고 고리에 짧은 밧줄이 남은 작은 닻. 작은 배가 남기고 간 작은 흔적이다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 58,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/rusty-mini-anchor_thumbnail.png",
+      "sell_price": 45,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "sand-goby",
+      "kind": "fish",
+      "name": "모래 망둑어",
+      "description": "모래빛 몸에 작은 얼룩이 흩어진 물고기. 바닥 가까이에서 꼬리를 살랑이며 느긋하게 움직이는 모습이 귀엽다.",
+      "swim_y_min": "0.70",
+      "swim_y_max": "0.90",
+      "speed": "0.030",
+      "size": 54,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/sand-goby_thumbnail.png",
+      "sell_price": 25,
+      "sprite_sheet_path": "fish/normal/sand-goby_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "sand-hammerhead",
+      "kind": "fish",
+      "name": "모래 귀상어",
+      "description": "양옆으로 넓게 펼쳐진 머리가 특징인 상어. 모래빛 몸과 민트빛 지느러미로 물살을 가르며 주변을 천천히 살핀다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.80",
+      "speed": "0.05",
+      "size": 128,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/sand-hammerhead_thumbnail.png",
+      "sell_price": 340,
+      "sprite_sheet_path": "fish/rare/sand-hammerhead_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "sea-crocodile",
+      "kind": "fish",
+      "name": "바다악어",
+      "description": "단단한 비늘과 긴 꼬리를 가진 바다의 여행자. 짧은 다리를 몸에 붙이고 물결 아래를 조용히 가로지른다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.8",
+      "speed": "0.045",
+      "size": 88,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/sea-crocodile_thumbnail.png",
+      "sell_price": 210,
+      "sprite_sheet_path": "fish/rare/sea-crocodile_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "seashell-pinwheel",
+      "kind": "decoration",
+      "name": "소라빛 바람개비",
+      "description": "소라껍데기처럼 부드러운 빛깔을 두른 작은 바람개비. 바닷바람이 남긴 색을 간직한 채 물속에 아기자기한 쉼터를 꾸며 준다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/seashell-pinwheel_thumbnail.png",
+      "sell_price": 40,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "silver-anchovy",
+      "kind": "fish",
+      "name": "은빛 멸치",
+      "description": "가늘고 작은 몸에 반짝이는 은빛 비늘을 가진 물고기. 꼬리를 부지런히 흔들며 헤엄칠 때마다 작은 빛이 일렁인다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.45",
+      "speed": "0.085",
+      "size": 48,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/silver-anchovy_thumbnail.png",
+      "sell_price": 20,
+      "sprite_sheet_path": "fish/normal/silver-anchovy_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "silver-mist-goby",
+      "kind": "fish",
+      "name": "은안개 망둑",
+      "description": "반투명 은빛 몸에 안개빛 지느러미를 두른 작은 망둑. 안개달 해역의 물밑을 조용히 누비며 달빛을 좇는다.",
+      "swim_y_min": "0.60",
+      "swim_y_max": "0.88",
+      "speed": "0.030",
+      "size": 56,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/silver-mist-goby_thumbnail.png",
+      "sell_price": 160,
+      "sprite_sheet_path": "fish/rare/silver-mist-goby_sprite.png",
+      "native_region_id": "mistmoon",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "silver-yellowtail",
+      "kind": "fish",
+      "name": "은빛 방어",
+      "description": "굵고 길쭉한 은빛 몸에 노란 옆줄이 빛나는 물고기. 힘찬 꼬리로 물살을 가르며 묵직하게 나아간다.",
+      "swim_y_min": "0.20",
+      "swim_y_max": "0.70",
+      "speed": "0.06",
+      "size": 108,
+      "rarity": "common",
+      "thumbnail_path": "fish/rare/silver-yellowtail_thumbnail.png",
+      "sell_price": 200,
+      "sprite_sheet_path": "fish/rare/silver-yellowtail_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "sleeping-mini-shipwreck",
+      "kind": "decoration",
+      "name": "잠든 꼬마 난파선",
+      "description": "돛을 잃고 바닷속에 내려앉은 작은 나무배. 부서진 선실 사이로 바다 친구들이 드나들며 새로운 이야기를 채워 간다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 90,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/sleeping-mini-shipwreck_thumbnail.png",
+      "sell_price": 190,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "sleeping-seahorse-statue",
+      "kind": "decoration",
+      "name": "잠든 해마 석상",
+      "description": "둥근 꼬리를 감고 잠든 작은 해마 석상. 오랫동안 같은 자리에서 바다 친구들의 꿈을 지켜 왔다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 68,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/sleeping-seahorse-statue_thumbnail.png",
+      "sell_price": 170,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "soaked-moonlight-postcard",
+      "kind": "trash",
+      "name": "젖은 달빛 엽서",
+      "description": "은빛 안개에 젖어 글씨가 모두 지워진 엽서. 희미한 초승달 그림만이 누군가의 밤을 기억한다.",
+      "swim_y_min": "0.35",
+      "swim_y_max": "0.75",
+      "speed": "0.012",
+      "size": 46,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/soaked-moonlight-postcard_thumbnail.png",
+      "sell_price": 12,
+      "sprite_sheet_path": null,
+      "native_region_id": "mistmoon",
+      "movement_type": "swim",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "soft-sea-cucumber",
+      "kind": "fish",
+      "name": "말랑 해삼",
+      "description": "말랑한 연갈색 몸에 작은 돌기가 오돌토돌 솟아 있다. 모래 위를 느릿느릿 지나며 바닥을 깨끗이 한다.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.95",
+      "speed": "0.022",
+      "size": 54,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/soft-sea-cucumber_thumbnail.png",
+      "sell_price": 30,
+      "sprite_sheet_path": "fish/normal/soft-sea-cucumber_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "spotted-giant-grouper",
+      "kind": "fish",
+      "name": "얼룩 왕그루퍼",
+      "description": "두툼한 몸과 큰 입, 둥근 꼬리를 가진 물고기. 연갈색 몸의 초콜릿빛 얼룩과 느긋한 움직임이 듬직하다.",
+      "swim_y_min": "0.55",
+      "swim_y_max": "0.85",
+      "speed": "0.03",
+      "size": 120,
+      "rarity": "common",
+      "thumbnail_path": "fish/rare/spotted-giant-grouper_thumbnail.png",
+      "sell_price": 260,
+      "sprite_sheet_path": "fish/rare/spotted-giant-grouper_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "star-ray",
+      "kind": "fish",
+      "name": "별꼬리 가오리",
+      "description": "보랏빛 날개에 작은 별무늬가 반짝이는 가오리. 어둑한 물속을 밤하늘처럼 미끄러져 간다.",
+      "swim_y_min": "0.30",
+      "swim_y_max": "0.75",
+      "speed": "0.045",
+      "size": 88,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/star-ray_thumbnail.png",
+      "sell_price": 600,
+      "sprite_sheet_path": "fish/epic/star-ray_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "star-spotted-whale-shark",
+      "kind": "fish",
+      "name": "별점 고래상어",
+      "description": "넓고 둥근 머리와 거대한 몸을 가진 상어. 남색 등에 작은 흰 점들이 별처럼 빛나며 느긋하게 바다를 누빈다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.80",
+      "speed": "0.035",
+      "size": 160,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/star-spotted-whale-shark_thumbnail.png",
+      "sell_price": 480,
+      "sprite_sheet_path": "fish/rare/star-spotted-whale-shark_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "starpattern-manta",
+      "kind": "fish",
+      "name": "별무늬 만타",
+      "description": "짙푸른 날개 위에 은빛 별자리가 이어진다. 금빛 가장자리와 작은 진주 같은 빛이 넓은 지느러미를 따라 흐른다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.8",
+      "speed": "0.045",
+      "size": 104,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/starpattern-manta_thumbnail.png",
+      "sell_price": 680,
+      "sprite_sheet_path": "fish/epic/starpattern-manta_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "striped-mackerel",
+      "kind": "fish",
+      "name": "줄무늬 고등어",
+      "description": "푸른 등에 짙은 물결무늬가 새겨진 물고기. 날렵한 몸으로 바닷속을 빠르게 가로지르는 활발한 개체.",
+      "swim_y_min": "0.25",
+      "swim_y_max": "0.65",
+      "speed": "0.075",
+      "size": 76,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/striped-mackerel_thumbnail.png",
+      "sell_price": 40,
+      "sprite_sheet_path": "fish/normal/striped-mackerel_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "sunken-mailbox",
+      "kind": "decoration",
+      "name": "잠긴 우체통",
+      "description": "미역 줄기가 느슨하게 감기고 작은 따개비가 붙은 오래된 우체통. 전하지 못한 바다의 소식을 조용히 간직하고 있다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 64,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/sunken-mailbox_thumbnail.png",
+      "sell_price": 170,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "threadtail-shrimp",
+      "kind": "fish",
+      "name": "실꼬리 새우",
+      "description": "반투명한 몸 앞에서 실처럼 가는 수염이 살랑인다. 바닥을 종종 걸으며 모래 사이 작은 먹이를 찾는다.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.95",
+      "speed": "0.022",
+      "size": 48,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/threadtail-shrimp_thumbnail.png",
+      "sell_price": 30,
+      "sprite_sheet_path": "fish/normal/threadtail-shrimp_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "tiny-cuttlefish",
+      "kind": "fish",
+      "name": "꼬마 갑오징어",
+      "description": "둥근 몸 양옆에 물결 같은 지느러미가 달려 있다. 짧은 팔을 모으고 몸을 오므리며 통통 떠오른다.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.78",
+      "speed": "0.03",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/tiny-cuttlefish_thumbnail.png",
+      "sell_price": 40,
+      "sprite_sheet_path": "fish/normal/tiny-cuttlefish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "tiny-wooden-sign",
+      "kind": "decoration",
+      "name": "꼬마 나무 팻말",
+      "description": "파도에 닳은 작은 나무판에 물고기 모양이 새겨져 있다. 내 작은 바다에 아늑한 길잡이가 되어 준다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 54,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/tiny-wooden-sign_thumbnail.png",
+      "sell_price": 40,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    }
+  ],
+  "collectible_habitats": [
+    {
+      "species_id": "apricot-starfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "apricot-starfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "apricot-starfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "apricot-starfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "apricot-starfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "aurora-eel",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "aurora-eel",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "aurora-eel",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "aurora-eel",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "aurora-eel",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "bean-pufferfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "bean-pufferfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "bean-pufferfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "bean-pufferfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "bean-pufferfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "blue-bronze-horseshoe-crab",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "blue-bronze-horseshoe-crab",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "blue-bronze-horseshoe-crab",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "blue-bronze-horseshoe-crab",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "blue-bronze-horseshoe-crab",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "blue-great-white",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "blue-great-white",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "blue-great-white",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "blue-great-white",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "blue-great-white",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "blue-sailfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "blue-sailfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "blue-sailfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "blue-sailfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "blue-sailfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "butter-starfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "butter-starfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "butter-starfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "butter-starfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "butter-starfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "button-urchin",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "button-urchin",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "button-urchin",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "button-urchin",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "button-urchin",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "cloud-humpback",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "cloud-humpback",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "cloud-humpback",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "cloud-humpback",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "cloud-humpback",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "coral-bean-shrimp",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "coral-claw-crab",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "coral-covered-treasure-chest",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "coral-covered-treasure-chest",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "coral-covered-treasure-chest",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "coral-covered-treasure-chest",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "coral-covered-treasure-chest",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "coral-crowned-turtle",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "coral-flower-anemone",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "coral-house",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "coral-house",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "coral-house",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "coral-house",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "coral-house",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "coral-seabream",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "coral-seabream",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "coral-seabream",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "coral-seabream",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "coral-seabream",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "coralfan-butterflyfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "crescent-seahorse",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "dawn-arowana",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "dawn-arowana",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "dawn-arowana",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "dawn-arowana",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "dawn-arowana",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "diver-pongdang",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "dreaming-dumbo-octopus",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "dreaming-dumbo-octopus",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "dreaming-dumbo-octopus",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "dreaming-dumbo-octopus",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "dreaming-dumbo-octopus",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "flower-coral-seadragon",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "glass-bottle",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "glass-bottle",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "glass-bottle",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "glass-bottle",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "glass-bottle",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "glassfin-lionfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "glassfin-lionfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "glassfin-lionfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "glassfin-lionfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "glassfin-lionfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "hazy-glass-marble",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "lavender-starfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "lavender-starfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "lavender-starfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "lavender-starfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "lavender-starfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "lost-arrow-sign",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "lost-arrow-sign",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "lost-arrow-sign",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "lost-arrow-sign",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "lost-arrow-sign",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "map-coral",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "map-dreamabyss",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "map-mistmoon",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "map-pongdang",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "map-starruins",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "mint-mahi-mahi",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "mint-mahi-mahi",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "mint-mahi-mahi",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "mint-mahi-mahi",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "mint-mahi-mahi",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "mint-starfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "mint-starfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "mint-starfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "mint-starfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "mint-starfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "mist-bell-windchime",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "moon-angelfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "moon-angelfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "moon-angelfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "moon-angelfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "moon-angelfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "moon-sleep-waterlily",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "moonbell-jellyfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "moonlit-jellyfish-lantern",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "moonlit-jellyfish-lantern",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "moonlit-jellyfish-lantern",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "moonlit-jellyfish-lantern",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "moonlit-jellyfish-lantern",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "night-orca",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "night-orca",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "night-orca",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "night-orca",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "night-orca",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "opal-nautilus",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "opal-nautilus",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "opal-nautilus",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "opal-nautilus",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "opal-nautilus",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "orange-clownfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "orange-clownfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "orange-clownfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "orange-clownfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "orange-clownfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "peach-octopus",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "peach-octopus",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "peach-octopus",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "peach-octopus",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "peach-octopus",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "peach-umbrella-jellyfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "peach-umbrella-jellyfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "peach-umbrella-jellyfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "peach-umbrella-jellyfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "peach-umbrella-jellyfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "pearl-bearing-clam",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "pearl-bearing-clam",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "pearl-bearing-clam",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "pearl-bearing-clam",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pearl-bearing-clam",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "pearl-parrotfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "pearl-parrotfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "pearl-parrotfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "pearl-parrotfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pearl-parrotfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "pebble-hermit-crab",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "pebble-hermit-crab",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "pebble-hermit-crab",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "pebble-hermit-crab",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pebble-hermit-crab",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "petal-nudibranch",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "petal-nudibranch",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "petal-nudibranch",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "petal-nudibranch",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "petal-nudibranch",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "pink-scallop",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "pink-scallop",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "pink-scallop",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "pink-scallop",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pink-scallop",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "pinkchin-blenny",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "plump-horse-mackerel",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "plump-horse-mackerel",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "plump-horse-mackerel",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pongdang-fish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pongi-statue",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "pongi-statue",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "pongi-statue",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "pongi-statue",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pongi-statue",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "pongul",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "pongul",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "pongul",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "pongul",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pongul",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "ribbon-eel",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "ribbon-eel",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "ribbon-eel",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "ribbon-eel",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "ribbon-eel",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "ripple-coral-fragment",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "ripple-coral-fragment",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "ripple-coral-fragment",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "ripple-coral-fragment",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "ripple-coral-fragment",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "round-barnacle-cluster",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "round-barnacle-cluster",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "round-barnacle-cluster",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "round-barnacle-cluster",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "round-barnacle-cluster",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "round-filefish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "round-filefish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "round-filefish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "rusty-mini-anchor",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "rusty-mini-anchor",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "rusty-mini-anchor",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "rusty-mini-anchor",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "rusty-mini-anchor",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "sand-goby",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "sand-goby",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "sand-goby",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "sand-hammerhead",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "sand-hammerhead",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "sand-hammerhead",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "sand-hammerhead",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "sand-hammerhead",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "sea-crocodile",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "sea-crocodile",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "sea-crocodile",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "sea-crocodile",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "sea-crocodile",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "seashell-pinwheel",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "seashell-pinwheel",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "seashell-pinwheel",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "seashell-pinwheel",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "seashell-pinwheel",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "silver-anchovy",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "silver-anchovy",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "silver-anchovy",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "silver-mist-goby",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "silver-yellowtail",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "silver-yellowtail",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "silver-yellowtail",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "silver-yellowtail",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "silver-yellowtail",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "sleeping-mini-shipwreck",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "sleeping-mini-shipwreck",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "sleeping-mini-shipwreck",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "sleeping-mini-shipwreck",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "sleeping-mini-shipwreck",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "sleeping-seahorse-statue",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "sleeping-seahorse-statue",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "sleeping-seahorse-statue",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "sleeping-seahorse-statue",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "sleeping-seahorse-statue",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "soaked-moonlight-postcard",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "soft-sea-cucumber",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "soft-sea-cucumber",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "soft-sea-cucumber",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "soft-sea-cucumber",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "soft-sea-cucumber",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "spotted-giant-grouper",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "spotted-giant-grouper",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "spotted-giant-grouper",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "spotted-giant-grouper",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "spotted-giant-grouper",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "star-ray",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "star-ray",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "star-ray",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "star-ray",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "star-ray",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "star-spotted-whale-shark",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "star-spotted-whale-shark",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "star-spotted-whale-shark",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "star-spotted-whale-shark",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "star-spotted-whale-shark",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "starpattern-manta",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "starpattern-manta",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "starpattern-manta",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "starpattern-manta",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "starpattern-manta",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "striped-mackerel",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "striped-mackerel",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "striped-mackerel",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "sunken-mailbox",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "sunken-mailbox",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "sunken-mailbox",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "sunken-mailbox",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "sunken-mailbox",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "threadtail-shrimp",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "threadtail-shrimp",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "threadtail-shrimp",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "threadtail-shrimp",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "threadtail-shrimp",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "tiny-cuttlefish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "tiny-cuttlefish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "tiny-cuttlefish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "tiny-cuttlefish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "tiny-cuttlefish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "tiny-wooden-sign",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "tiny-wooden-sign",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "tiny-wooden-sign",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "tiny-wooden-sign",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "tiny-wooden-sign",
+      "region_id": "starruins"
+    }
+  ]
+}

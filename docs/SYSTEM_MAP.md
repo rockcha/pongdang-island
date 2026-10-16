@@ -4,7 +4,9 @@
 
 개체 이미지 생성 작업은 [이미지 생성·업로드 규칙](../assets/storage-upload/README.md)을 따릅니다. 앞으로는 `assets/storage-upload/new/YYYYMMDD-HHmmss/` 아래에 버킷 내부의 종류·등급 폴더를 그대로 구성합니다(한국 시간).
 
-마지막 정리: 2026-10-14. React + Vite + TypeScript 모바일 PWA입니다. 기본 글꼴은 고운돋움이며 이메일/비밀번호 인증을 사용합니다.
+DB 관리 정비: 2026-10-16. DB 작업은 [DB 관리](systems/database-management.md)와 [생성 컨텍스트](db/CONTEXT.md)를 먼저 확인합니다. 아래 기능별 SQL 번호와 적용 언급은 과거 구현 기록이며 원격 현재 상태의 근거가 아닙니다.
+
+React + Vite + TypeScript 모바일 PWA입니다. 기본 글꼴은 고운돋움이며 이메일/비밀번호 인증을 사용합니다.
 
 ## 기능별 진입점
 
@@ -21,14 +23,14 @@
 | 이메일 검사 | `src/lib/email-validation.ts` | 형식 및 도메인 MX/A/AAAA 보조 검사 |
 | 비밀번호 복구 | `src/pages/forgot-password-page.tsx`, `email-confirm-page.tsx`, `reset-password-page.tsx` | 메일 요청 → 링크 검증 → 비밀번호 변경 |
 | Supabase 연결 | `src/lib/client.ts` | 타입이 연결된 싱글턴 클라이언트, PKCE |
-| DB 타입 | `src/lib/database.types.ts` | 현재 SQL에 맞춘 테이블/RPC 타입 |
+| DB 타입 | `src/lib/database.types.ts` | 앱용 수기 계약 (일부 테이블/RPC만 표현) |
 | 세션 저장소 | `src/lib/auth-storage.ts` | local/sessionStorage 선택. 비밀번호 저장 없음 |
 | 아바타 / 프로필 | `src/features/profile/` | 사진 업로드·WebP 변환·미리보기·저장·기본값 복원 |
 | 친구 API/UI | `src/features/friends/` | 코드 검색, 만남의 등대: 요청/수락/거절/취소, 친구 끊기 |
 | 알림 API/UI | `src/features/notifications/` | 전체/친구/소식, 읽음, 정확한 전체 안 읽은 개수 |
 | 실시간 상태 | `src/features/social/social-provider.tsx` | 프로필 동기화, 구독, 토스트, 재연결/포커스 시 재조회 |
 | 도메인 타입/오류 | `src/features/social/types.ts` | 친구·알림 모델과 사용자 오류 문구 |
-| DB 정의 | `supabase/sql/` | 프로필, 친구 요청, 알림, 보호된 RPC, Publication |
+| DB 정의 | `supabase/migrations/`, `docs/db/` | 버전 변경 이력과 자동 생성 최종 구조 |
 | 일반 알림 발송 예 | `supabase/sql/examples/send-general-notification.sql` | 관리자/서버만 실행 |
 | UI 컴포넌트 | `src/components/ui/` | shadcn 및 Sonner |
 | 전역 디자인 | `src/index.css` | 테마, 고운돋움, 모바일 safe area |
@@ -49,7 +51,7 @@
 
 ## 무엇을 바꿀 때 어디부터 읽나
 
-- 친구 동작 추가: `friends/api.ts` → `04-functions/01-social-api.sql` → `types.ts` → `database.types.ts` → SQL 테스트.
+- 친구 동작 추가: `friends/api.ts` → 생성 DB 컨텍스트의 최종 함수 → 새 migration → `types.ts` / `database.types.ts` → SQL 테스트.
 - 새 일반 알림 종류: 알림 테이블 CHECK → 도메인/DB 타입 → 신뢰된 서버 발송 코드. 브라우저 INSERT 권한을 주지 않음.
 - 알림 도착/개수 문제: SocialProvider → notifications/api.ts → 수신자 RLS와 Publication → 실제 DB에서 두 계정 테스트.
 - 닉네임 변경: nickname-page → AuthProvider → SocialProvider의 닉네임 의존성 → sync RPC. 게임 닉네임은 권한 기준이 아님.
@@ -62,7 +64,7 @@
 
 친구·알림 SQL과 프론트엔드 코드는 준비됐지만 원격 Supabase에 SQL은 자동 적용하지 않았습니다. 로컬 SQL 검증은 통과했습니다. 실제 Realtime 전달은 원격 SQL 실행 후 서로 다른 두 브라우저/계정으로 확인해야 합니다. 이 앱의 Realtime은 앱 실행 중 연결이며 OS 푸시 알림은 포함하지 않습니다.
 
-향후 DB를 바꿀 때 SQL 파일, DB 타입, 관련 테스트, 이 문서를 함께 수정합니다. 현재 SQL은 초기 설치용이며 운영 DB의 후속 변경은 별도 버전 변경 SQL로 관리합니다.
+향후 DB를 바꿀 때 새 migration, 앱 타입, 관련 테스트를 함께 수정하고 `db:context`로 파생 문서를 갱신합니다. 01~38 SQL은 동결되었으며 후속 변경은 `supabase/migrations/`로 관리합니다.
 
 아바타 기능: [상세 구조와 설치](systems/avatar.md). 프로필 사진은 player_profiles.avatar_path와 avatars Storage 버킷을 사용합니다. 기존 DB는 06 SQL을 추가 실행합니다. 헤더 오른쪽에서 내 프로필로 이동하며 로그아웃은 프로필 화면에 있습니다.
 

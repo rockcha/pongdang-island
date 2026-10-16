@@ -1,4 +1,6 @@
-// Maintained alongside supabase/sql/. Regenerate with Supabase CLI after applying schema changes.
+// Hand-maintained APP CONTRACT: partial table coverage and domain-specific RPC returns.
+// Full expected schema: docs/db/local-schema.json (local replay, not remote evidence).
+// Compare separately generated remote types; do not blindly overwrite this contract.
 import type { AppNotification, FriendRequest, Profile } from '@/features/social/types'
 type RequestRow = Omit<FriendRequest, 'sender' | 'recipient'>
 type NotificationRow = Omit<AppNotification, 'request'>

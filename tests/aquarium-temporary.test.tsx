@@ -12,9 +12,9 @@ vi.mock('@/features/aquarium/aquarium-background-dialog',()=>({AquariumBackgroun
 vi.mock('@/features/aquarium/collectible-storage-dialog',()=>({CollectibleStorageDialog:()=>null}))
 vi.mock('@/components/confirm-dialog',()=>({ConfirmDialog:()=>null}))
 vi.mock('@/features/collection/collection-dialog',()=>({CollectionDialog:({onAddTemporary}:{onAddTemporary?:(species:Species)=>void})=><button disabled={!onAddTemporary} onClick={()=>onAddTemporary?.(species)}>도감 넣기</button>}))
-vi.mock('@/features/aquarium/aquarium-view',()=>({AquariumView:({items,storageControls,onPlace,onArrange}:{items:OwnedCollectible[];storageControls:React.ReactNode;onPlace:(id:string,x:number,y:number)=>void;onArrange:(id:string,value:object)=>Promise<void>})=>{
+vi.mock('@/features/aquarium/aquarium-view',()=>({AquariumView:({items,storageControls,managementControls,onPlace,onArrange}:{items:OwnedCollectible[];storageControls:React.ReactNode;managementControls:React.ReactNode;onPlace:(id:string,x:number,y:number)=>void;onArrange:(id:string,value:object)=>Promise<void>})=>{
  mock.items=items
- return <>{storageControls}<span data-testid="count">{items.length}</span>{items[0]&&<button onClick={()=>{onPlace(items[0].id,.2,.3);void onArrange(items[0].id,{position_x:.2,position_y:.3,rotation:30,scale:1.5})}}>꾸미기</button>}</>
+ return <>{storageControls}{managementControls}<span data-testid="count">{items.length}</span>{items[0]&&<button onClick={()=>{onPlace(items[0].id,.2,.3);void onArrange(items[0].id,{position_x:.2,position_y:.3,rotation:30,scale:1.5})}}>꾸미기</button>}</>
 }}))
 afterEach(()=>{cleanup();vi.clearAllMocks()})
 it('keeps inserted individuals and edits only in memory and removes them after a fresh page mount',async()=>{

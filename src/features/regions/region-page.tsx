@@ -36,8 +36,8 @@ function Destination({regionId}:{regionId:string}){
    <div className="absolute inset-x-4 bottom-4 text-white"><h1 className="flex items-center gap-2 text-2xl font-normal tracking-tight drop-shadow-sm"><MapPin className="size-5 shrink-0" aria-hidden="true"/>{region.name}</h1>{region.description&&<p className="mt-1.5 line-clamp-2 max-w-sm text-xs leading-5 text-white/85">{region.description}</p>}</div>
   </div>
   <div className="relative flex min-h-0 flex-1 flex-col">
-   <div ref={setToolbar} style={region.id==='primal'?{display:'none'}:undefined} role="group" aria-label="낚시 도구" className="absolute left-1/2 top-3 z-30 flex -translate-x-1/2 items-center gap-0 overflow-visible rounded-xl border border-white/20 bg-slate-950/45 p-1 text-white backdrop-blur-md [&>div>button]:size-11 [&>div>button]:rounded-none [&>div>button]:border-0 [&>div>button]:bg-transparent [&>div>button]:shadow-none [&>div>button]:backdrop-blur-none [&>div>button:hover]:bg-white/15 [&>div>a]:rounded-none [&>div>a]:border-0 [&>div>a]:bg-transparent [&>div>a]:backdrop-blur-none [&>div>a:hover]:bg-white/15 [&>div+div]:border-l [&>div+div]:border-white/15"/>
-   {region.id==='primal'?<div className="flex flex-1 items-center justify-center bg-muted/30 p-6 text-center text-sm text-muted-foreground">태고의 원시섬의 개체들을 준비하고 있어요.</div>:<FishingPanel regionId={region.id} toolbarTarget={toolbar}/>}
+   <div ref={setToolbar} role="group" aria-label="낚시 도구" className="absolute left-1/2 top-3 z-30 flex -translate-x-1/2 items-center gap-0 overflow-visible rounded-xl border border-white/20 bg-slate-950/45 p-1 text-white backdrop-blur-md [&>div>button]:size-11 [&>div>button]:rounded-none [&>div>button]:border-0 [&>div>button]:bg-transparent [&>div>button]:shadow-none [&>div>button]:backdrop-blur-none [&>div>button:hover]:bg-white/15 [&>div>a]:rounded-none [&>div>a]:border-0 [&>div>a]:bg-transparent [&>div>a]:backdrop-blur-none [&>div>a:hover]:bg-white/15 [&>div+div]:border-l [&>div+div]:border-white/15"/>
+   <FishingPanel regionId={region.id} toolbarTarget={toolbar}/>
   </div>
  </section>
 }

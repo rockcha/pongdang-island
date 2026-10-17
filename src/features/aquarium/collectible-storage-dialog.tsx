@@ -35,8 +35,8 @@ export function CollectibleStorageDialog({state,currentTankId,busy,onAssign}:{st
  }
  const disabled=busy||saving
  return <Dialog open={open} onOpenChange={value=>{if(disabled)return;setOpen(value);if(value){setSelection(new Set());setTarget(currentTankId);setPage(0);setRetry(v=>v+1)}}}>
-  <AquariumToolButton label="보관함" icon={<Archive className="size-4"/>} count={state.storageCount??0}/>
-  <DialogContent className="flex max-h-[88dvh] flex-col gap-3 overflow-y-auto sm:max-w-md">
+  <AquariumToolButton prominent label="물고기 넣기" icon={<Archive className="size-4"/>} count={state.storageCount??0}/>
+  <DialogContent className="bottom-0 top-auto left-0 flex max-h-[88dvh] max-w-full translate-x-0 translate-y-0 flex-col gap-3 overflow-y-auto rounded-t-2xl rounded-b-none pb-[max(1rem,env(safe-area-inset-bottom))] sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-xl">
    <DialogHeader><DialogTitle>보관함 <span className="ml-1 text-sm font-normal text-muted-foreground">{state.storageCount??0}개</span></DialogTitle><DialogDescription>함께 지낼 어항을 골라주세요. 한 번에 50개까지 선택할 수 있어요.</DialogDescription></DialogHeader>
    <Input aria-label="보관함 검색" placeholder="이름으로 찾기" maxLength={60} value={query} disabled={disabled} onChange={event=>setQuery(event.target.value)}/>
    <div role="group" aria-label="보관함 분류" className="grid grid-cols-4 gap-1">{[{id:'all',name:'전체'},{id:'fish',name:'물고기'},{id:'decoration',name:'장식물'},{id:'trash',name:'쓰레기'}].map(item=><Button key={item.id} variant={kind===item.id?'secondary':'ghost'} size="sm" className="min-h-10" aria-pressed={kind===item.id} disabled={disabled} onClick={()=>{setKind(item.id);setPage(0)}}>{item.name}</Button>)}</div>

@@ -27,7 +27,7 @@ export function AquariumBackgroundDialog({state,selectedId,gold,busy,loading,err
   })}</ul>
  }
  return <Dialog open={open} onOpenChange={value=>{if(!busy)setOpen(value)}}>
-  <AquariumToolButton label="배경" icon={<Image className="size-4"/>}/>
+  <AquariumToolButton prominent label="꾸미기" icon={<Image className="size-4"/>}/>
   <DialogContent className="max-h-[85dvh] gap-4 sm:max-w-md">
    <DialogHeader><DialogTitle>배경 꾸미기</DialogTitle><DialogDescription>배경을 골라 지금 어항에 적용해보세요.</DialogDescription></DialogHeader>
    <Tabs defaultValue="owned">

@@ -26,11 +26,12 @@ export function RodInventoryStatus(){
  return null
 }
 export function FishingRodShop(){return <RodCards/>}
-export function FishingRodInventory(){return <RodCards inventory/>}
-function RodCards({inventory=false}:{inventory?:boolean}){
+export function FishingRodInventory({query=''}:{query?:string}){return <RodCards inventory query={query}/>}
+function RodCards({inventory=false,query=''}:{inventory?:boolean;query?:string}){
  const {owned,selected,rods,loading,busy:equipping,error,refresh,select}=useRods()
  const {wallet,transact,loading:goldLoading,busy:trading,error:goldError}=useGold()
  const [pending,setPending]=useState<{rod:FishingRod;action:'buy'|'sell'}|null>(null),[processing,setProcessing]=useState(false),[tradeError,setTradeError]=useState('')
+ const [detail,setDetail]=useState<FishingRod|null>(null)
  const lock=useRef(false)
  const busy=processing||trading||equipping
  const unavailable=loading||goldLoading||busy||!!error||!!goldError
@@ -42,12 +43,13 @@ function RodCards({inventory=false}:{inventory?:boolean}){
   finally{lock.current=false;setProcessing(false)}
  }
  async function equip(id:string){try{await select(id)}catch(cause){toast.error(cause instanceof Error?cause.message:'장착하지 못했어요.')}}
- const visible=inventory?rods.filter(rod=>owned.includes(rod.id)):rods
+ const visible=inventory?rods.filter(rod=>owned.includes(rod.id)&&rod.name.includes(query.trim())):rods
  return <div className="space-y-4">
-  <p className="rounded-xl bg-muted/60 px-4 py-3 text-xs leading-5 text-muted-foreground">{inventory?'보유한 낚싯대를 장착하거나 구매가의 절반에 판매할 수 있어요.':'낚싯대는 종류별로 하나씩 보유할 수 있어요. 판매 가격은 구매가의 절반이에요.'} 확률 효과는 아직 적용되지 않아요.</p>
+  {!inventory&&<p className="rounded-xl bg-muted/60 px-4 py-3 text-xs leading-5 text-muted-foreground">{inventory?'보유한 낚싯대를 장착하거나 구매가의 절반에 판매할 수 있어요.':'낚싯대는 종류별로 하나씩 보유할 수 있어요. 판매 가격은 구매가의 절반이에요.'} 확률 효과는 아직 적용되지 않아요.</p>}
   <RodInventoryStatus/>
-  {!loading&&!error&&<div className="grid grid-cols-1 gap-3 sm:grid-cols-2">{visible.map(rod=>{
+  {!loading&&!error&&<div className={inventory?"grid grid-cols-3 gap-2 sm:grid-cols-4":"grid grid-cols-1 gap-3 sm:grid-cols-2"}>{visible.map(rod=>{
    const has=owned.includes(rod.id),equipped=selected===rod.id
+   if(inventory)return <button key={rod.id} onClick={()=>setDetail(rod)} aria-label={rod.name+' 상세 보기'} className="relative flex min-w-0 flex-col items-center gap-2 rounded-xl border border-border/60 bg-card p-2 pb-3 text-center transition-colors hover:bg-secondary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><img src={rodThumbnailUrl(rod.id)} alt="" className="aspect-square w-full object-contain"/><span className="text-xs leading-5">{rod.name}</span><span className="text-[10px] text-primary">{equipped?'장착 중':'보유 중'}</span></button>
    return <article key={rod.id} className="flex flex-col overflow-hidden rounded-2xl border bg-card">
     <div className="relative px-3 pt-2" style={{background:`linear-gradient(140deg,${rod.color}18,transparent)`}}><RodPreview rod={rod}/>{equipped&&<span className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-background/90 px-2 py-1 text-[10px] text-primary"><Check className="size-3"/>장착 중</span>}</div>
     <div className="flex flex-1 flex-col gap-2 p-4 pt-2"><div className="flex items-center justify-between gap-2"><h2 className="text-sm font-medium">{rod.name}</h2>{!rod.price&&<span className="rounded-full bg-muted px-2 py-0.5 text-[10px] text-muted-foreground">기본 지급</span>}</div>
@@ -59,6 +61,8 @@ function RodCards({inventory=false}:{inventory?:boolean}){
     </div>
    </article>
   })}</div>}
+  {inventory&&!loading&&!error&&!visible.length&&<p className="py-10 text-center text-sm text-muted-foreground">조건에 맞는 낚싯대가 없어요.</p>}
+  <Dialog open={!!detail} onOpenChange={open=>{if(!open)setDetail(null)}}><DialogContent className="bottom-0 top-auto left-0 max-h-[85dvh] max-w-full translate-x-0 translate-y-0 overflow-y-auto rounded-t-2xl rounded-b-none pb-[max(1rem,env(safe-area-inset-bottom))] sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:max-w-sm sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-xl"><DialogHeader><DialogTitle>{detail?.name}</DialogTitle><DialogDescription>{detail?.description}</DialogDescription></DialogHeader>{detail&&<><RodPreview rod={detail}/><RodEffect rod={detail}/><div className="flex gap-2"><Button className="min-h-11 flex-1" disabled={unavailable||selected===detail.id} onClick={()=>void equip(detail.id)}>{selected===detail.id?'장착 중':'장착하기'}</Button>{detail.price>0&&<Button variant="outline" className="min-h-11 flex-1" disabled={unavailable} onClick={()=>{setTradeError('');setPending({rod:detail,action:'sell'});setDetail(null)}}><GoldIcon className="size-4"/>{(detail.price/2).toLocaleString('ko-KR')} 판매</Button>}</div></>}</DialogContent></Dialog>
   <ConfirmDialog open={!!pending} onOpenChange={open=>{if(!open){setPending(null);setTradeError('')}}} title={pending?<TradeQuestion name={pending.rod.name} price={pending.action==='buy'?pending.rod.price:pending.rod.price/2} selling={pending.action==='sell'}/>:''} description={pending?.action==='sell'&&selected===pending.rod.id?'장착 장비는 입문용으로 바뀝니다.':pending?.action==='buy'?'구매한 낚싯대는 창고에 보관됩니다.':'판매한 낚싯대는 창고에서 사라집니다.'} busy={busy} confirmDisabled={unavailable} error={tradeError} onConfirm={()=>void confirm()}/>
  </div>
 }

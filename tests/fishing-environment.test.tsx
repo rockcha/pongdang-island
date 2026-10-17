@@ -1,7 +1,7 @@
 ﻿import {cleanup,fireEvent,render} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
 vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>`/collectibles/${path}`}))
-import {FishingSea,FishingPlatform,fishingEnvironments} from '@/features/fishing/fishing-environment'
+import {FishingSea,FishingPlatform,fishingEnvironments,fishingEnvironment} from '@/features/fishing/fishing-environment'
 import {FishingWater} from '@/features/fishing/fishing-water'
 import {newTensionGame,fishingBiteSeconds} from '@/features/fishing/tension-game'
 afterEach(cleanup)
@@ -16,8 +16,8 @@ it('keeps the rod straight while scouting and bends only after the first pull st
  rerender(<FishingWater {...props} active pulling game={{...game,phase:'playing',time:fishingBiteSeconds(game.seed)+.1}} mood="surge"/>)
  expect(rod()).not.toBe(straight)
 })
-it('pairs each region water and platform with the same region painting',()=>{
- for(const id of Object.keys(fishingEnvironments)){const {container,unmount}=render(<svg><FishingSea regionId={id}/><FishingPlatform regionId={id} y={420}/></svg>);expect(container.querySelector('[data-fishing-sea]')?.getAttribute('data-fishing-sea')).toBe(id);expect(container.querySelector('[data-fishing-platform]')?.getAttribute('y')).toBe('420');expect([...container.querySelectorAll('image')].map(el=>el.getAttribute('href'))).toEqual([`/fishing/environments/${id}.png`,`/fishing/environments/${id}.png`]);unmount()}
+it('keeps region water and terrain assets independently framed',()=>{
+ for(const id of Object.keys(fishingEnvironments)){const {container,unmount}=render(<svg><FishingSea regionId={id}/><FishingPlatform regionId={id} y={420}/></svg>);expect(container.querySelector('[data-fishing-sea]')?.getAttribute('data-fishing-sea')).toBe(id);expect(container.querySelector('[data-fishing-platform]')?.getAttribute('y')).toBe('420');expect([...container.querySelectorAll('image')].map(el=>el.getAttribute('href'))).toEqual([fishingEnvironment(id).src,fishingEnvironment(id).platformSrc??fishingEnvironment(id).src]);unmount()}
 })
 it('recovers image loading for the next region after a missing asset',()=>{
  const {container,rerender}=render(<FishingSea regionId="coral"/>);fireEvent.error(container.querySelector('image')!);expect(container.querySelector('image')).toBeNull();rerender(<FishingSea regionId="mistmoon"/>);expect(container.querySelector('image')?.getAttribute('href')).toContain('mistmoon.png')

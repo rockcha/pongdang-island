@@ -1,6 +1,6 @@
 import { useEffect,useRef,useState } from 'react'
 import type { ReactNode } from 'react'
-import { ChevronLeft,ChevronRight,Plus } from 'lucide-react'
+import { ChevronLeft,ChevronRight,Plus,Ellipsis } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import type { DecorationPlacement,OwnedCollectible } from '@/features/collection/api'
 import { backgroundUrl } from './api'
@@ -13,7 +13,7 @@ import { decorationGeometry } from './decoration-geometry'
 import { GoldIcon } from '@/features/gold/gold-provider'
 import {TooltipProvider} from '@/components/ui/tooltip'
 
-type Props={items:OwnedCollectible[];name:string;background?:{name:string;image_path:string};backgroundControls?:ReactNode;storageControls?:ReactNode;bottomControls?:ReactNode;purchase?:{price:number;disabled:boolean;onBuy:()=>void};busy:boolean;onPlace:(id:string,x:number,y:number)=>void;onArrange?:(id:string,value:DecorationPlacement)=>Promise<void>;onSell:(ids:string[])=>Promise<void>;onGiftSent?:(ids:string[])=>void;onStore?:(ids:string[])=>Promise<void>;navigation?:{index:number;count:number;onChange:(direction:'previous'|'next')=>void}}
+type Props={items:OwnedCollectible[];name:string;background?:{name:string;image_path:string};backgroundControls?:ReactNode;managementControls?:ReactNode;storageControls?:ReactNode;bottomControls?:ReactNode;purchase?:{price:number;disabled:boolean;onBuy:()=>void};busy:boolean;onPlace:(id:string,x:number,y:number)=>void;onArrange?:(id:string,value:DecorationPlacement)=>Promise<void>;onSell:(ids:string[])=>Promise<void>;onGiftSent?:(ids:string[])=>void;onStore?:(ids:string[])=>Promise<void>;navigation?:{index:number;count:number;onChange:(direction:'previous'|'next')=>void}}
 export function AquariumView(props:Props){
  const {items,name,background,busy,onPlace,onSell}=props
  const [failedPath,setFailedPath]=useState('')
@@ -75,19 +75,16 @@ export function AquariumView(props:Props){
   props.navigation.onChange(direction)
  }
  return <>
+  <div className="relative z-20 flex shrink-0 items-center justify-between gap-2 border-b border-border/50 bg-background px-3 py-2">
+   <div role="group" aria-label="어항 이동" className="flex min-w-0 items-center gap-1"><Button variant="ghost" size="icon" aria-label="이전 어항" disabled={busy||!props.navigation||props.navigation.index<=0} onClick={()=>navigate('previous')}><ChevronLeft className="size-4"/></Button><div className="min-w-0 text-center"><p className="truncate text-sm">{name}</p><span className="text-[11px] tabular-nums text-muted-foreground" aria-label="현재 어항" aria-live="polite">{(props.navigation?.index??0)+1}/{props.navigation?.count??1}</span></div><Button variant="ghost" size="icon" aria-label="다음 어항" disabled={busy||!props.navigation||props.navigation.index>=props.navigation.count-1} onClick={()=>navigate('next')}><ChevronRight className="size-4"/></Button></div>
+   <details className="relative"><summary aria-label="어항 관리" className="grid size-11 cursor-pointer list-none place-items-center rounded-xl hover:bg-secondary [&::-webkit-details-marker]:hidden"><Ellipsis className="size-5"/></summary><div className="absolute right-0 top-12 z-30 flex w-64 flex-col gap-3 rounded-xl border bg-popover p-3 shadow-lg"><TooltipProvider><div role="group" aria-label="어항 도구" className="flex items-center gap-1"><AquariumInventoryDialog items={items} name={name} busy={busy} onSell={onSell} onGiftSent={props.onGiftSent} onStore={props.onStore}/>{props.managementControls}</div></TooltipProvider>{props.bottomControls}{props.purchase&&<Button variant="outline" className="min-h-11" aria-label={'어항 구매 '+props.purchase.price+' 골드'} disabled={props.purchase.disabled} onClick={props.purchase.onBuy}><Plus className="size-4"/>새 어항<GoldIcon className="size-4"/>{props.purchase.price}</Button>}</div></details>
+  </div>
   <div ref={glass} data-testid="aquarium-glass" className="relative min-h-0 w-full flex-1 overflow-hidden bg-gradient-to-b from-blue-100 to-blue-200" tabIndex={0} aria-label={name} onKeyDown={event=>{if(event.target!==event.currentTarget)return;if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();navigate(event.key==='ArrowLeft'?'previous':'next')}}}>
    {background&&failedPath!==background.image_path&&<img key={background.image_path} src={backgroundUrl(background.image_path)} alt={background.name} className="absolute inset-0 h-full w-full object-cover" onError={()=>setFailedPath(background.image_path)}/>}
    <TankBubbles/><TankInhabitants items={displayed.map(item=>({...item,interaction_locked:busy}))} onPlace={place} onSelectDecoration={selectDecoration} onBackgroundTap={()=>setEditing(null)} onNavigate={direction=>{if(!busy){setEditing(null);props.navigation?.onChange(direction)}}}/>
-   <div className="pointer-events-none absolute inset-x-2 top-2 z-10 flex items-start justify-between gap-1">
-    <TooltipProvider><div role="group" aria-label="어항 도구" className="pointer-events-auto flex items-center divide-x divide-foreground/10 overflow-visible rounded-xl bg-background/95"><AquariumInventoryDialog items={items} name={name} busy={busy} onSell={onSell} onGiftSent={props.onGiftSent} onStore={props.onStore}/>{props.backgroundControls}{props.storageControls}</div></TooltipProvider>
-    <div className="pointer-events-auto flex shrink-0 items-center overflow-hidden rounded-full bg-background/90 shadow-sm backdrop-blur"><span className="px-2.5 text-xs tabular-nums" aria-label="현재 어항" aria-live="polite">{(props.navigation?.index??0)+1}/{props.navigation?.count??1}</span>{props.purchase&&<Button variant="ghost" size="sm" className="gap-1 rounded-none border-l px-2" aria-label={`어항 구매 ${props.purchase.price} 골드`} disabled={props.purchase.disabled} onClick={props.purchase.onBuy}><Plus className="size-3.5"/><GoldIcon className="size-4"/><span className="text-xs tabular-nums">{props.purchase.price}</span></Button>}</div>
-   </div>
-   {props.navigation&&<div role="group" aria-label="어항 이동" className="pointer-events-none absolute inset-x-2 top-1/2 z-10 flex -translate-y-1/2 justify-between">
-    <Button variant="ghost" size="icon" aria-label="이전 어항" disabled={busy||props.navigation.index<=0} onClick={()=>navigate('previous')} className="pointer-events-auto size-10 rounded-full border border-white/40 bg-background/85 shadow-sm backdrop-blur hover:bg-background disabled:opacity-35"><ChevronLeft className="size-5"/></Button>
-    <Button variant="ghost" size="icon" aria-label="다음 어항" disabled={busy||props.navigation.index>=props.navigation.count-1} onClick={()=>navigate('next')} className="pointer-events-auto size-10 rounded-full border border-white/40 bg-background/85 shadow-sm backdrop-blur hover:bg-background disabled:opacity-35"><ChevronRight className="size-5"/></Button>
-   </div>}
    {editing&&decoration&&props.onArrange&&<div className="absolute z-20 -translate-x-1/2" style={{left:toolbarX,top:toolbarY,width:toolbarWidth}}><DecorationEditor key={editing.id} name={decoration.species.name} value={editing.value} busy={busy} onChange={changeDecoration}/></div>}
-   {props.bottomControls&&<div className="absolute inset-x-3 bottom-3 z-10 flex items-center justify-between gap-2">{props.bottomControls}</div>}
+
   </div>
+  <TooltipProvider><div className="flex shrink-0 items-center justify-center gap-3 border-t border-border/50 bg-background px-3 pt-3 pb-[max(.75rem,env(safe-area-inset-bottom))]">{props.storageControls}{props.backgroundControls}</div></TooltipProvider>
  </>
 }

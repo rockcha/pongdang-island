@@ -1,0 +1,69 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "id": "coral",
+      "material": "limestone",
+      "prompt": "Create ONE wide horizontal 3:1 transparent PNG foreground terrain platform for a polished cozy fantasy fishing game. First-person view looking down at a broad ledge underfoot. Follow reference ONLY for framing, painterly texture quality and transparent jagged forward-edge layout, NOT its roots/moss/material. Terrain spans entire canvas width left to right and extends flush through bottom edge; no isolated floating object and no border margin at left/right/bottom. Forward shoreline edge around upper 25%-35% of canvas, genuinely transparent alpha ABOVE the uneven rim, broad flat surface below. Center mostly clear for rod and controls, tiny contextual decoration only near far edges. No water pixels, no sky, no horizon, no people, no rod, no UI, no text, no frame. Soft refined painterly game illustration, detailed material but clean readable composition. Material/theme: warm cream and peach LIMESTONE reef rock shelf, softly weathered natural rounded contours, a small blush pink coral cluster near far left, tiny ivory shell and a few barnacles at far right. Broad clean light sandy stone center. Subtle turquoise reflected light on edge, luminous warm sunny ocean feel. No wooden planks, no tree roots.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-6d3e26bc-9231-427d-bf78-fd0611e5ce12.png",
+      "path": "public/fishing/platforms/coral.png",
+      "reference": "public/fishing/platforms/primal.png",
+      "referenceRole": "framing, transparent edge and painterly material rendering only"
+    },
+    {
+      "id": "mistmoon",
+      "material": "wet-stone",
+      "prompt": "Create ONE wide horizontal 3:1 transparent PNG foreground terrain platform for a polished cozy fantasy fishing game. First-person view looking down at a broad ledge underfoot. Follow reference ONLY for framing, painterly texture quality and transparent jagged forward-edge layout, NOT its roots/moss/material. Terrain spans entire canvas width left to right and extends flush through bottom edge; no isolated floating object and no border margin at left/right/bottom. Forward shoreline edge around upper 25%-35% of canvas, genuinely transparent alpha ABOVE the uneven rim, broad flat surface below. Center mostly clear for rod and controls, tiny contextual decoration only near far edges. No water pixels, no sky, no horizon, no people, no rod, no UI, no text, no frame. Soft refined painterly game illustration, detailed material but clean readable composition. Material/theme: smooth damp dark blue-gray coastal slate ledge under moonlight, thin silvery reflection across shallow wet patches, slightly irregular rounded rock edge, a few tiny pale moon flowers at far left and one small dark stone far right. Broad empty subtly textured center, quiet silver lavender atmosphere, not luminous magical runes. No planks, no roots, no giant crystals.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-7cb0723a-f857-49c6-b4c2-d986f0acd31a.png",
+      "path": "public/fishing/platforms/mistmoon.png",
+      "reference": "public/fishing/platforms/primal.png",
+      "referenceRole": "framing, transparent edge and painterly material rendering only"
+    },
+    {
+      "id": "starruins",
+      "material": "ruins",
+      "prompt": "Create ONE wide horizontal 3:1 transparent PNG foreground terrain platform for a polished cozy fantasy fishing game. First-person view looking down at a broad ledge underfoot. Follow reference ONLY for framing, painterly texture quality and transparent jagged forward-edge layout, NOT its roots/moss/material. Terrain spans entire canvas width left to right and extends flush through bottom edge; no isolated floating object and no border margin at left/right/bottom. Forward shoreline edge around upper 25%-35% of canvas, genuinely transparent alpha ABOVE the uneven rim, broad flat surface below. Center mostly clear for rod and controls, tiny contextual decoration only near far edges. No water pixels, no sky, no horizon, no people, no rod, no UI, no text, no frame. Soft refined painterly game illustration, detailed material but clean readable composition. Material/theme: ancient teal-gray STONE terrace ruins, broad worn rectangular stone slabs with uneven chipped forward edge. A single faint faded gold star carving near far right, a tiny bit of muted moss within cracks at far left. Weathered premium pale blue-gray mineral texture, restrained antique warm gold inlay. Broad clean center. No wood, no tree roots, no standing pillars, no wall, no large ornament.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-4e773aab-ec5a-403d-9d8c-9f6c69d5d70b.png",
+      "path": "public/fishing/platforms/starruins.png",
+      "reference": "public/fishing/platforms/primal.png",
+      "referenceRole": "framing, transparent edge and painterly material rendering only"
+    },
+    {
+      "id": "dreamabyss",
+      "material": "basalt",
+      "prompt": "Create ONE wide horizontal 3:1 transparent PNG foreground terrain platform for a polished cozy fantasy fishing game. First-person view looking down at a broad ledge underfoot. Follow reference ONLY for framing, painterly texture quality and transparent jagged forward-edge layout, NOT its roots/moss/material. Terrain spans entire canvas width left to right and extends flush through bottom edge; no isolated floating object and no border margin at left/right/bottom. Forward shoreline edge around upper 25%-35% of canvas, genuinely transparent alpha ABOVE the uneven rim, broad flat surface below. Center mostly clear for rod and controls, tiny contextual decoration only near far edges. No water pixels, no sky, no horizon, no people, no rod, no UI, no text, no frame. Soft refined painterly game illustration, detailed material but clean readable composition. Material/theme: dark charcoal and indigo BASALT rocky shelf at deep ocean, angular uneven forward edge with a subtle thin cyan blue bioluminescent line down a few narrow cracks at far left and right. Center dark smooth enough for readable fishing controls, restrained mysterious blue violet reflected light. No wooden planks, no roots, no large crystals, no lava, no bright central glow.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-d00f2c73-5d71-431c-b3e8-99a541b19bd1.png",
+      "path": "public/fishing/platforms/dreamabyss.png",
+      "reference": "public/fishing/platforms/primal.png",
+      "referenceRole": "framing, transparent edge and painterly material rendering only"
+    },
+    {
+      "id": "bluegrove",
+      "material": "riverstone",
+      "prompt": "Create ONE wide horizontal 3:1 transparent PNG foreground terrain platform for a polished cozy fantasy fishing game. First-person view looking down at a broad ledge underfoot. Follow reference ONLY for framing, painterly texture quality and transparent jagged forward-edge layout, NOT its roots/moss/material. Terrain spans entire canvas width left to right and extends flush through bottom edge; no isolated floating object and no border margin at left/right/bottom. Forward shoreline edge around upper 25%-35% of canvas, genuinely transparent alpha ABOVE the uneven rim, broad flat surface below. Center mostly clear for rod and controls, tiny contextual decoration only near far edges. No water pixels, no sky, no horizon, no people, no rod, no UI, no text, no frame. Soft refined painterly game illustration, detailed material but clean readable composition. Material/theme: gently rounded pale cool gray RIVERSTONE and fine light sand shore ledge, a few smooth blue-gray pebbles along far left, tiny green reed tuft far right. Soft dappled turquoise sunlight, stone surfaces have subtle damp highlights and small shallow veins. Broad quiet center. Distinct natural smooth stones rather than constructed floor, no planks no roots no coral.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-471ed42e-5e3d-4cf8-8da7-d58fd44e9ae1.png",
+      "path": "public/fishing/platforms/bluegrove.png",
+      "reference": "public/fishing/platforms/primal.png",
+      "referenceRole": "framing, transparent edge and painterly material rendering only"
+    },
+    {
+      "id": "cloudferry",
+      "material": "cloud-stone",
+      "prompt": "Create ONE wide horizontal 3:1 transparent PNG foreground terrain platform for a polished cozy fantasy fishing game. First-person view looking down at a broad ledge underfoot. Follow reference ONLY for framing, painterly texture quality and transparent jagged forward-edge layout, NOT its roots/moss/material. Terrain spans entire canvas width left to right and extends flush through bottom edge; no isolated floating object and no border margin at left/right/bottom. Forward shoreline edge around upper 25%-35% of canvas, genuinely transparent alpha ABOVE the uneven rim, broad flat surface below. Center mostly clear for rod and controls, tiny contextual decoration only near far edges. No water pixels, no sky, no horizon, no people, no rod, no UI, no text, no frame. Soft refined painterly game illustration, detailed material but clean readable composition. Material/theme: ivory-white floating CLOUD STONE terrace, softly rounded smooth chalky pale stone surface, shallow wisps of soft white cloud curl around forward rim only, tiny antique brass mooring ring embedded far left, one tuft of pale grass far right. Gentle mint and warm golden sunlight, airy dreamy sky harbor material. Clouds are edge decoration ONLY, upper background truly transparent. No wood, no roots, no buildings, no characters.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-c340d90e-2987-4809-9378-65b6e0d6ed21.png",
+      "path": "public/fishing/platforms/cloudferry.png",
+      "reference": "public/fishing/platforms/primal.png",
+      "referenceRole": "framing, transparent edge and painterly material rendering only"
+    },
+    {
+      "id": "scrapisle",
+      "material": "metal",
+      "prompt": "Create ONE wide horizontal 3:1 transparent PNG foreground terrain platform for a polished cozy fantasy fishing game. First-person view looking down at a broad ledge underfoot. Follow reference ONLY for framing, painterly texture quality and transparent jagged forward-edge layout, NOT its roots/moss/material. Terrain spans entire canvas width left to right and extends flush through bottom edge; no isolated floating object and no border margin at left/right/bottom. Forward shoreline edge around upper 25%-35% of canvas, genuinely transparent alpha ABOVE the uneven rim, broad flat surface below. Center mostly clear for rod and controls, tiny contextual decoration only near far edges. No water pixels, no sky, no horizon, no people, no rod, no UI, no text, no frame. Soft refined painterly game illustration, detailed material but clean readable composition. Material/theme: salvaged flat METAL jetty made of broad mismatched dull olive green and faded teal steel plates, a few rusty copper rivets and visible plate seams. Jagged slightly bent forward metal edge, one short old chain tucked far left, small washer and bolt far right, worn paint and subtle oxidized patina. Broad center not cluttered, warm brown rust contrasts green metal. No wooden planks, no trees, no trash pile, no sharp large machinery.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-9b56cc27-c2ae-473f-8269-039a19cf9352.png",
+      "path": "public/fishing/platforms/scrapisle.png",
+      "reference": "public/fishing/platforms/primal.png",
+      "referenceRole": "framing, transparent edge and painterly material rendering only"
+    }
+  ],
+  "inspection": "All seven originals viewed. Region-specific materials, clear centers, small side decoration and transparent forward edges. No image processing."
+}

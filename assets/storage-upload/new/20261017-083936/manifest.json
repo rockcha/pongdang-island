@@ -1,0 +1,29 @@
+{
+  "generator": "built-in image_gen",
+  "dateKst": "2026-10-17",
+  "species": "lunea-mistmoon-goddess",
+  "rarity": "mythic",
+  "references": [
+    {
+      "path": "assets/storage-upload/new/20261015-165350/fish/mythic/lunea-mistmoon-goddess_sprite.png",
+      "role": "existing identity and swim endpoints"
+    },
+    {
+      "path": "assets/storage-upload/new/20261015-165350/fish/mythic/lunea-mistmoon-goddess_thumbnail.png",
+      "role": "same character reference"
+    },
+    {
+      "path": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "role": "style only"
+    }
+  ],
+  "prompts": [
+    "Create a genuinely transparent PNG 2x2 FOUR FRAME turning-animation sprite sheet for the EXACT same adult fantasy mermaid goddess Lunea shown in reference images 1 and 2. Reference 3 is STYLE ONLY, do not draw a ray. Preserve her identifiable pale lavender silver long hair, pointed fin ears, violet eyes, gold crescent moon crown, pearl chains, white-lavender bodice, iridescent mermaid tail and diaphanous lavender tail fins. Soft luminous refined high-detail fantasy painting, no bold cartoon outlines. This is a graceful three-dimensional YAW TURN in the water, NOT a flat rotation, NOT a squeezed or mirrored duplicate. Reading order: top-left frame 0 = right-facing three-quarter view turning toward viewer, top-right frame 1 = frontal symmetrical view looking at viewer, bottom-left frame 2 = left-facing three-quarter view turning away from viewer, bottom-right frame 3 = almost full LEFT-facing profile completing the turn. Long hair, translucent veil and fins flow and lag behind her body rotation with beautiful coherent water motion, hands stay relaxed near waist, no arm waving. Continuous same pose and same body proportions; no blinking, no outfit changes. Her torso/pelvis center stays fixed at the center of every square cell, crown top and pelvis height identical across all frames. Full head, hair, hands, entire curled mermaid tail and all flowing fins must fit in EACH cell with at least 7% genuinely transparent border. Longest silhouette axis occupies 82-86% of each cell, never touch cell divisions. Empty transparent gutters around and between cells. Equal square cells, square overall canvas, no frames, no grid, no text, no labels, no checkerboard pixels, no scenery, no glows disconnected from silhouette. Keep all four full-body subjects exactly same scale and crisply rendered. Preserve actual alpha transparency.",
+    "Edit THIS turning sprite sheet. Critical correction: BOTTOM LEFT and BOTTOM RIGHT currently face the WRONG direction. The completed sheet must have FOUR successively rotating orientations in this exact reading order: TOP LEFT = nose pointing RIGHT, three-quarter view toward viewer. TOP RIGHT = straight FRONT view, both eyes looking at viewer. BOTTOM LEFT = nose pointing LEFT, three-quarter view toward viewer. BOTTOM RIGHT = full LEFT profile, nose toward LEFT edge of its own cell, hair and tail trailing toward RIGHT edge. In bottom row swap the direction of her whole mermaid body, crown, head, face, hands, hair and tail to complete a 180-degree turn; do NOT leave either bottom figure facing right. Preserve same identity, painting style, colors and crescent tiara. All frames have same body scale, crown top at same cell-relative height, chest/pelvis center at same cell-relative location. Keep entire hair and fin silhouettes inside their cell: uniformly shrink ALL FOUR figures slightly so every cell has clear 7% transparent margins on all sides; no content crossing center dividers. Remove detached stray sparkle flecks in gutters. True transparent alpha background, do not paint checkerboard. No text, no labels, no borders. Elegant soft painterly mythic mermaid, eyes open throughout. The top two views already convey the right concept, preserve them while correcting bottom row yaw orientation.",
+    "Production sprite sheet correction ONLY: retain these exact four poses and directions and same adult lavender mermaid identity, do not redesign, do not add poses. The figures currently nearly touch the grid boundaries and a few stray colored pixels leak into adjacent cells. Reframe every one of the four equal square cells: reduce each ENTIRE existing figure uniformly to 82% of its current size, including hair and veil. Place each whole figure centered in its own cell with a completely clear transparent border at least 8% of the CELL dimension on all four sides. Clear ALL detached flecks, colored pixels, stars, fog or sparkle marks outside the continuous body/hair/fin silhouette. Entire central horizontal and vertical dividing gutters must be truly alpha transparent, as must outer edges. No crop, no cut-off fins, no changed face. Keep crown top at same relative y in all four cells, equal body proportions and scale, do not resize individual body parts. Preserve exact sequence RIGHT 3/4, FRONT, LEFT 3/4, LEFT PROFILE. Soft fine fantasy painting with translucent lavender hair and fins and gold crescent crown. Genuine transparent PNG, no white or black backdrop, no checkerboard, no text. Same square 2x2 layout."
+  ],
+  "asset": "fish/mythic/lunea-mistmoon-goddess_turn-v1_sprite.png",
+  "publicPath": "public/aquarium/turns/lunea-mistmoon-goddess_turn-v1_sprite.png",
+  "source": "Generated images are saved to C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e as C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-c5f417ab-7e4f-4dea-b9ee-76b72cb9b370.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+  "storageUploaded": false
+}

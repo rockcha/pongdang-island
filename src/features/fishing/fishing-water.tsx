@@ -9,6 +9,9 @@ import { fishBehavior, fishForce, fishStrength } from './tension-game'
 import type { FishMood,TensionGame } from './tension-game'
 
 const waters:Record<string,{top:string;bottom:string;light:string}>= {
+ scrapisle:{top:'#75a58c',bottom:'#244c43',light:'#eed4a1'},
+ cloudferry:{top:'#68bfb5',bottom:'#245d64',light:'#fff1ce'},
+ whitenight:{top:'#70c1d5',bottom:'#174d70',light:'#eaf9ff'},
  bluegrove:{top:'#38b5cd',bottom:'#154c91',light:'#c5f4ed'},
  pongdang:{top:'#529dc7',bottom:'#173f6b',light:'#b9e8fa'},
  coral:{top:'#51b2ba',bottom:'#174c73',light:'#bdeee2'},

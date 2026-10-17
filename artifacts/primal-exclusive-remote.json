@@ -1,0 +1,151 @@
+{
+  "verifiedAt": "2026-10-17T05:30:35.646Z",
+  "projectHost": "ewafafphiovbpjwogwzn.supabase.co",
+  "excluded": [
+    {
+      "id": "billowsail-sailfish",
+      "name": "돛너울 돛새치",
+      "kind": "fish",
+      "native_region_id": null
+    },
+    {
+      "id": "giant-seabass",
+      "name": "대왕농어",
+      "kind": "fish",
+      "native_region_id": null
+    },
+    {
+      "id": "goldstripe-amberjack",
+      "name": "금줄 부시리",
+      "kind": "fish",
+      "native_region_id": null
+    },
+    {
+      "id": "scale-armored-barracuda",
+      "name": "비늘갑옷 바라쿠다",
+      "kind": "fish",
+      "native_region_id": null
+    },
+    {
+      "id": "seawing-giant-manta",
+      "name": "바다날개 대왕 가오리",
+      "kind": "fish",
+      "native_region_id": null
+    },
+    {
+      "id": "silverblade-swordfish",
+      "name": "은검 황새치",
+      "kind": "fish",
+      "native_region_id": null
+    },
+    {
+      "id": "steelback-bluefin-tuna",
+      "name": "강철등 참다랑어",
+      "kind": "fish",
+      "native_region_id": null
+    }
+  ],
+  "remainingFish": [
+    {
+      "id": "spineback-hybodus",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "spineshell-diplomoceras",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "stoneshield-henodus",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "straighttower-baculites",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "billowmouth-leedsichthys",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "blackscale-mosasaurus",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "blueback-shonisaurus",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "bronze-spiral-ammonite",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "bronzejaw-liopleurodon",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "fangjaw-xiphactinus",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "longneck-elasmosaurus",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "paddlefoot-primal-shrimp",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "plios-blackwave-king",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "reedneck-tanystropheus",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "round-triassurus",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "shelljaw-placodus",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "silverarmored-dapedium",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "silvercurrent-ichthyosaurus",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "webfoot-marine-crocodile",
+      "kind": "fish",
+      "native_region_id": "primal"
+    },
+    {
+      "id": "whorl-tetragonites",
+      "kind": "fish",
+      "native_region_id": "primal"
+    }
+  ],
+  "scope": "Habitat rows only; no species, holdings or pending fishing casts changed."
+}

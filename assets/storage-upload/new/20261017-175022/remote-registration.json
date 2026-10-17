@@ -1,0 +1,383 @@
+{
+  "verifiedAt": "2026-10-17T09:24:50.815Z",
+  "species": [
+    {
+      "id": "cloud-wave-calling-ponyo",
+      "name": "파도를 부르는 포뇨",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/epic/cloud-wave-calling-ponyo_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/cloud-wave-calling-ponyo_sprite.png",
+      "size": 150,
+      "movement_type": "swim"
+    },
+    {
+      "id": "cloud-bath-token-frog",
+      "name": "목욕표 나르는 개구리",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/normal/cloud-bath-token-frog_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/cloud-bath-token-frog_sprite.png",
+      "size": 84,
+      "movement_type": "crawl"
+    },
+    {
+      "id": "cloud-bucket-little-ponyo",
+      "name": "양동이 꼬마 포뇨",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/rare/cloud-bucket-little-ponyo_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/cloud-bucket-little-ponyo_sprite.png",
+      "size": 105,
+      "movement_type": "swim"
+    },
+    {
+      "id": "cloud-cloud-boat-no-face",
+      "name": "구름배 가오나시",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/epic/cloud-cloud-boat-no-face_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/cloud-cloud-boat-no-face_sprite.png",
+      "size": 142,
+      "movement_type": "swim"
+    },
+    {
+      "id": "cloud-cloud-cotton-jellyfish",
+      "name": "구름솜 해파리",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/normal/cloud-cloud-cotton-jellyfish_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/cloud-cloud-cotton-jellyfish_sprite.png",
+      "size": 90,
+      "movement_type": "pulse"
+    },
+    {
+      "id": "cloud-cloud-umbrella-totoro",
+      "name": "구름우산 토토로",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/epic/cloud-cloud-umbrella-totoro_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/cloud-cloud-umbrella-totoro_sprite.png",
+      "size": 160,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "cloud-flame-spirit-calcifer",
+      "name": "불꽃 정령 캘시퍼",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/rare/cloud-flame-spirit-calcifer_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/cloud-flame-spirit-calcifer_sprite.png",
+      "size": 112,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "cloud-fluttering-paper-shikigami",
+      "name": "팔랑이는 종이 식신",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/rare/cloud-fluttering-paper-shikigami_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/cloud-fluttering-paper-shikigami_sprite.png",
+      "size": 100,
+      "movement_type": "swim"
+    },
+    {
+      "id": "cloud-forest-path-white-wolf",
+      "name": "숲길의 흰 늑대",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/rare/cloud-forest-path-white-wolf_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/cloud-forest-path-white-wolf_sprite.png",
+      "size": 130,
+      "movement_type": "swim"
+    },
+    {
+      "id": "cloud-head-tilt-kodama",
+      "name": "고개 갸웃 코다마",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/normal/cloud-head-tilt-kodama_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/cloud-head-tilt-kodama_sprite.png",
+      "size": 76,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "cloud-howl-magic-potion-box",
+      "name": "하울의 마법 약병 상자",
+      "kind": "decoration",
+      "rarity": "rare",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "decorations/rare/cloud-howl-magic-potion-box_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 115,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "cloud-howl-moving-castle",
+      "name": "하울의 움직이는 성",
+      "kind": "fish",
+      "rarity": "mythic",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/mythic/cloud-howl-moving-castle_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/cloud-howl-moving-castle_sprite.png",
+      "size": 180,
+      "movement_type": "crawl"
+    },
+    {
+      "id": "cloud-lantern-no-face",
+      "name": "등불 든 가오나시",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/epic/cloud-lantern-no-face_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/cloud-lantern-no-face_sprite.png",
+      "size": 142,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "cloud-little-log-calcifer",
+      "name": "장작 위 꼬마 캘시퍼",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/normal/cloud-little-log-calcifer_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/cloud-little-log-calcifer_sprite.png",
+      "size": 85,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "cloud-lotus-umbrella-river-spirit",
+      "name": "연꽃 우산의 오물신",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/epic/cloud-lotus-umbrella-river-spirit_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/cloud-lotus-umbrella-river-spirit_sprite.png",
+      "size": 158,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "cloud-masked-forest-san",
+      "name": "가면을 쓴 숲의 아이, 산",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/rare/cloud-masked-forest-san_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/cloud-masked-forest-san_sprite.png",
+      "size": 120,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "cloud-ponyo-green-bucket",
+      "name": "포뇨의 초록 양동이",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "decorations/normal/cloud-ponyo-green-bucket_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 95,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "cloud-ripple-running-catbus",
+      "name": "물결달리는 고양이버스",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/epic/cloud-ripple-running-catbus_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/cloud-ripple-running-catbus_sprite.png",
+      "size": 165,
+      "movement_type": "crawl"
+    },
+    {
+      "id": "cloud-shell-home-soot",
+      "name": "조개집 검댕이",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/normal/cloud-shell-home-soot_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/cloud-shell-home-soot_sprite.png",
+      "size": 85,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "cloud-star-candy-soot",
+      "name": "별사탕 검댕이",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/normal/cloud-star-candy-soot_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/cloud-star-candy-soot_sprite.png",
+      "size": 65,
+      "movement_type": "crawl"
+    },
+    {
+      "id": "cloud-sunset-delivery-kiki",
+      "name": "노을배달부 키키",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/rare/cloud-sunset-delivery-kiki_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/cloud-sunset-delivery-kiki_sprite.png",
+      "size": 125,
+      "movement_type": "swim"
+    },
+    {
+      "id": "cloud-teacup-soot",
+      "name": "찻잔 검댕이",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/normal/cloud-teacup-soot_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/cloud-teacup-soot_sprite.png",
+      "size": 82,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "cloud-totoro-lost-umbrella",
+      "name": "토토로의 우산",
+      "kind": "trash",
+      "rarity": "common",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "trash/normal/cloud-totoro-lost-umbrella_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 95,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "cloud-waterdrop-ponyo",
+      "name": "물방울 포뇨",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/rare/cloud-waterdrop-ponyo_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/cloud-waterdrop-ponyo_sprite.png",
+      "size": 90,
+      "movement_type": "swim"
+    },
+    {
+      "id": "cloud-white-dragon-haku",
+      "name": "백룡의 이름, 하쿠",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "cloudferry",
+      "thumbnail_path": "fish/epic/cloud-white-dragon-haku_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/cloud-white-dragon-haku_sprite.png",
+      "size": 175,
+      "movement_type": "swim"
+    }
+  ],
+  "habitats": [
+    {
+      "species_id": "cloud-star-candy-soot",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-shell-home-soot",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-teacup-soot",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-cloud-cotton-jellyfish",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-ponyo-green-bucket",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-totoro-lost-umbrella",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-head-tilt-kodama",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-bath-token-frog",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-little-log-calcifer",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-bucket-little-ponyo",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-waterdrop-ponyo",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-flame-spirit-calcifer",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-sunset-delivery-kiki",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-masked-forest-san",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-forest-path-white-wolf",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-howl-magic-potion-box",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-fluttering-paper-shikigami",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-white-dragon-haku",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-cloud-boat-no-face",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-ripple-running-catbus",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-lantern-no-face",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-wave-calling-ponyo",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-cloud-umbrella-totoro",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-lotus-umbrella-river-spirit",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-howl-moving-castle",
+      "region_id": "cloudferry"
+    }
+  ],
+  "limitations": "These catalog rows only; no schema or migration-history parity claim."
+}

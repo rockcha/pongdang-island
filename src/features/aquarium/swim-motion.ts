@@ -1,5 +1,5 @@
 // Stable per-individual randomness: never generate new random values per frame.
-export function createSwimMotion(id: string, seed: number, speed: number, varied = true) {
+export function createSwimMotion(id: string, seed: number, speed: number, varied = true, start?:{x:number;direction:number}) {
   let hash = seed >>> 0
   for (let i = 0; i < id.length; i++) hash = Math.imul(hash ^ id.charCodeAt(i), 16777619) >>> 0
   function random(index: number) {
@@ -9,11 +9,11 @@ export function createSwimMotion(id: string, seed: number, speed: number, varied
     return ((value ^ (value >>> 15)) >>> 0) / 4294967296
   }
   const duration = Math.max(5, (0.45 + random(0) * 0.2) / Math.max(speed, 0.001))
-  const offset = random(1) * duration
-  const firstSide = random(7) < 0.5 ? 0 : 1
+  const offset = start ? 0 : random(1) * duration
+  const firstSide = start ? (start.direction>=0?0:1) : random(7) < 0.5 ? 0 : 1
   // Alternate between broad left/right zones so nearby targets cannot stall swimming.
   const waypoint = (index: number) => ({
-    x: ((index + firstSide) % 2 === 0 ? 0.06 : 0.72) + random(index * 2 + 2) * 0.22,
+    x: index===0&&start ? start.x : index===1&&start ? (start.direction>=0?Math.min(1,Math.max(start.x+.06,.72+random(4)*.22)):Math.max(0,Math.min(start.x-.06,.06+random(4)*.22))) : ((index + firstSide) % 2 === 0 ? 0.06 : 0.72) + random(index * 2 + 2) * 0.22,
   })
   // Decide behavior once per six-second interval, independently for each individual.
   const totals=[0]

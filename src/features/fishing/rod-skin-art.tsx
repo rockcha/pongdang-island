@@ -19,7 +19,7 @@ export function RodSkinShaft({id,path}:{id:string;path:string}){
 }
 export function hasRodSkin(id?:string){return !!id&&(id==='basic'||id==='bronze'||id==='pongdang'||id==='coral'||id==='mistmoon'||hasExtraRodSkin(id))}
 export function rodShaftOutlineWidth(id?:string){return id==='pongdang'?7:id==='coral'?6:id==='mistmoon'?4.8:id&&extraRodWidth(id)?extraRodWidth(id)!+1.2:6}
-export function rodReelBackground(id:string){return ({bluegrove:'#174d72',primal:'#37412e',bronze:'#183b53',pongdang:'#54351f',coral:'#783f57',mistmoon:'#202d50',starruins:'#263d43',dreamabyss:'#241c42',lunea:'#65537c',calm:'#28575b'} as Record<string,string>)[id]}
+export function rodReelBackground(id:string){return ({scrapisle:'#426b57',cloudferry:'#527d69',whitenight:'#245c72',bluegrove:'#174d72',primal:'#37412e',bronze:'#183b53',pongdang:'#54351f',coral:'#783f57',mistmoon:'#202d50',starruins:'#263d43',dreamabyss:'#241c42',lunea:'#65537c',calm:'#28575b'} as Record<string,string>)[id]}
 function Star({fill='#f4a258'}:{fill?:string}){
  return <path d="m0-9 2.7 5.4 6-.8-3.8 4.8 2.6 5.5L1.7 3.6l-4.5 4-0.2-6-5.3-3 5.7-2Z" fill={fill} stroke="#a96a35" strokeWidth=".7"/>
 }

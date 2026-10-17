@@ -1,0 +1,226 @@
+[
+  {
+    "id": "broadleaf-water-fern",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-694bce8e-5e68-4386-aa5c-8143e07f6db8.png",
+    "storage_path": "decorations/normal/broadleaf-water-fern_sprite.png",
+    "prompt": "Use case: stylized-concept. Aquarium plant idle animation, production 2x2 sprite sheet exactly four equal SQUARE cells in a square alpha PNG. Same lush rooted broad-leaf aquatic fern, rounded green divided leaves, short natural root base with two pebbles, underwater plant no pot as the reference; preserve shape colors and cartoon style. Four continuous gentle underwater sway poses: upright, upper leaves drift a little right, upright, upper leaves drift a little left, loop. Root/rock base is ABSOLUTELY FIXED with identical local x/y and scale across all cells; trunks and roots never slide, rise or rotate. Only upper leaves flex naturally; no whole-image translation. Same size all frames. The full widest frond pose fits inside 82% of its cell with at least 9% transparent padding on all four sides and internal seams. No clipping. Transparent background, no grid, no text, no tank or scene, no face.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/decorations/normal/broadleaf-water-fern_thumbnail.png"
+  },
+  {
+    "id": "purple-fork-seaweed",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-4c0a1c97-4082-4be5-8b02-76bbfdb824e7.png",
+    "storage_path": "decorations/normal/purple-fork-seaweed_sprite.png",
+    "prompt": "Use case: stylized-concept. Aquarium plant idle animation, production 2x2 sprite sheet exactly four equal SQUARE cells in a square alpha PNG. Same rooted burgundy purple branching seaweed tuft, forked ribbon-like fronds, small natural pebble base, no pot as the reference; preserve shape colors and cartoon style. Four continuous gentle underwater sway poses: upright, upper leaves drift a little right, upright, upper leaves drift a little left, loop. Root/rock base is ABSOLUTELY FIXED with identical local x/y and scale across all cells; trunks and roots never slide, rise or rotate. Only upper leaves flex naturally; no whole-image translation. Same size all frames. The full widest frond pose fits inside 82% of its cell with at least 9% transparent padding on all four sides and internal seams. No clipping. Transparent background, no grid, no text, no tank or scene, no face.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/decorations/normal/purple-fork-seaweed_thumbnail.png"
+  },
+  {
+    "id": "giant-fan-water-fern",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-a9d30bbb-aa75-4fee-9c1f-ccf904e91b4a.png",
+    "storage_path": "decorations/rare/giant-fan-water-fern_sprite.png",
+    "prompt": "Use case: stylized-concept. Aquarium plant idle animation, production 2x2 sprite sheet exactly four equal SQUARE cells in a square alpha PNG. Same large rooted aquatic fern with grand fan-shaped emerald fronds, finely divided leaves, firm rock and root base, no pot as the reference; preserve shape colors and cartoon style. Four continuous gentle underwater sway poses: upright, upper leaves drift a little right, upright, upper leaves drift a little left, loop. Root/rock base is ABSOLUTELY FIXED with identical local x/y and scale across all cells; trunks and roots never slide, rise or rotate. Only upper leaves flex naturally; no whole-image translation. Same size all frames. The full widest frond pose fits inside 82% of its cell with at least 9% transparent padding on all four sides and internal seams. No clipping. Transparent background, no grid, no text, no tank or scene, no face.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/decorations/rare/giant-fan-water-fern_thumbnail.png"
+  },
+  {
+    "id": "bronze-spiral-ammonite",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-4730bad4-b999-46bd-8f8c-007f4447a5e0.png",
+    "storage_path": "fish/normal/bronze-spiral-ammonite_sprite.png",
+    "prompt": "Edit this 2x2 four-frame sprite atlas ONLY to add generous transparent padding INSIDE EACH CELL. Keep exactly 2 columns x 2 rows, square overall image and equal square cells. Each creature is currently too close to its cell edges. SHRINK ALL FOUR creatures by the SAME 25% around their own rigid shell center. They should now occupy only about 70-75% of each cell's width, leaving at least 12.5% EMPTY TRANSPARENT margin on every side including central seams. Do NOT simply shrink the entire atlas as one picture. Keep each creature centered in its own quadrant. Preserve four distinct tentacle motion poses, exact identity, colors, brown outlines, right-facing orientation and equal shell size. No new art, text, borders, backgrounds or grid. Output true alpha PNG.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/normal/bronze-spiral-ammonite_sprite.png"
+  },
+  {
+    "id": "shelljaw-placodus",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-dd2c5103-61df-4ad9-9c22-cbf26ee83899.png",
+    "storage_path": "fish/normal/shelljaw-placodus_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/normal/shelljaw-placodus_sprite.png"
+  },
+  {
+    "id": "silverarmored-dapedium",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-b7c9825f-b34a-4984-bb80-c8eaea75f690.png",
+    "storage_path": "fish/normal/silverarmored-dapedium_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/normal/silverarmored-dapedium_sprite.png"
+  },
+  {
+    "id": "straighttower-baculites",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-da5266ed-d7f9-4703-8d6e-97aa74554dfc.png",
+    "storage_path": "fish/normal/straighttower-baculites_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/normal/straighttower-baculites_sprite.png"
+  },
+  {
+    "id": "whorl-tetragonites",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-1708df2f-0032-469c-9b4c-c9f5ce6b6e7d.png",
+    "storage_path": "fish/normal/whorl-tetragonites_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/normal/whorl-tetragonites_sprite.png"
+  },
+  {
+    "id": "billowmouth-leedsichthys",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-653ca741-bc4a-4159-b14c-2191bb8e6865.png",
+    "storage_path": "fish/normal/billowmouth-leedsichthys_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/normal/billowmouth-leedsichthys_sprite.png"
+  },
+  {
+    "id": "spineshell-diplomoceras",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-621f9b7e-3020-40ba-872b-790c9268048d.png",
+    "storage_path": "fish/normal/spineshell-diplomoceras_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/normal/spineshell-diplomoceras_sprite.png"
+  },
+  {
+    "id": "stoneshield-henodus",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-4cb618f7-4d94-436a-aad4-7c8de9581226.png",
+    "storage_path": "fish/rare/stoneshield-henodus_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/rare/stoneshield-henodus_sprite.png"
+  },
+  {
+    "id": "paddlefoot-primal-shrimp",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-4ace05a2-f0eb-47fb-901b-32239a01a4a4.png",
+    "storage_path": "fish/normal/paddlefoot-primal-shrimp_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/normal/paddlefoot-primal-shrimp_sprite.png"
+  },
+  {
+    "id": "round-triassurus",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-03e020ab-9573-40aa-8b2d-27652c809a55.png",
+    "storage_path": "fish/normal/round-triassurus_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/normal/round-triassurus_sprite.png"
+  },
+  {
+    "id": "silvercurrent-ichthyosaurus",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-b7a4d9be-a5fa-4e35-acb5-1120c557cc01.png",
+    "storage_path": "fish/rare/silvercurrent-ichthyosaurus_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/rare/silvercurrent-ichthyosaurus_sprite.png"
+  },
+  {
+    "id": "spineback-hybodus",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-82653ccf-35d4-464d-8249-c17b9f4ce6a8.png",
+    "storage_path": "fish/rare/spineback-hybodus_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/rare/spineback-hybodus_sprite.png"
+  },
+  {
+    "id": "webfoot-marine-crocodile",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-4736ed3a-602c-44e7-b8d6-937a5634118a.png",
+    "storage_path": "fish/rare/webfoot-marine-crocodile_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/rare/webfoot-marine-crocodile_sprite.png"
+  },
+  {
+    "id": "fangjaw-xiphactinus",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-cf9d4410-ed80-46fa-95fe-2a854cc63625.png",
+    "storage_path": "fish/epic/fangjaw-xiphactinus_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/epic/fangjaw-xiphactinus_sprite.png"
+  },
+  {
+    "id": "reedneck-tanystropheus",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-a7782c37-49d9-419b-996f-dd5789dbfdb9.png",
+    "storage_path": "fish/rare/reedneck-tanystropheus_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/rare/reedneck-tanystropheus_sprite.png"
+  },
+  {
+    "id": "bronzejaw-liopleurodon",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-67577060-d07f-4c71-93c8-68e65431b21a.png",
+    "storage_path": "fish/epic/bronzejaw-liopleurodon_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/epic/bronzejaw-liopleurodon_sprite.png"
+  },
+  {
+    "id": "longneck-elasmosaurus",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-2dba0982-93fb-4f25-b6be-ffe07b035f05.png",
+    "storage_path": "fish/epic/longneck-elasmosaurus_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/epic/longneck-elasmosaurus_sprite.png"
+  },
+  {
+    "id": "blackscale-mosasaurus",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-d7ac7d7f-8714-4fe7-836f-52105d6f4b43.png",
+    "storage_path": "fish/epic/blackscale-mosasaurus_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/epic/blackscale-mosasaurus_sprite.png"
+  },
+  {
+    "id": "plios-blackwave-king",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-f7173764-a75b-43d3-9f80-30e942304f84.png",
+    "storage_path": "fish/mythic/plios-blackwave-king_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 4 columns x 2 rows, EIGHT equal SQUARE cells, total image aspect ratio 2:1. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move. Preserve top-row swim and bottom-row gradual cyan wave-marking illumination, body remains opaque. Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/mythic/plios-blackwave-king_sprite.png"
+  },
+  {
+    "id": "blueback-shonisaurus",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-3d5d423b-748a-4882-b3a5-0429a2771f5b.png",
+    "storage_path": "fish/epic/blueback-shonisaurus_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. Lock the rigid head, eye and chest at identical LOCAL coordinates and body angle in all cells; only swimming appendages/tail move.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/fish/epic/blueback-shonisaurus_sprite.png"
+  },
+  {
+    "id": "purple-fork-seaweed",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-2c77d96f-d66f-4baf-8bf5-b2204022e5d0.png",
+    "storage_path": "decorations/normal/purple-fork-seaweed_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. The ROOTS AND ROCK BASE must be IDENTICAL in shape, angle, scale and local position in all four frames; only the upper leaves gently flex right then left. No rotating the root.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/decorations/normal/purple-fork-seaweed_sprite.png"
+  },
+  {
+    "id": "giant-fan-water-fern",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-a97d3721-5df7-4385-bd43-44acb976caa1.png",
+    "storage_path": "decorations/rare/giant-fan-water-fern_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. The ROOTS AND ROCK BASE must be IDENTICAL in shape, angle, scale and local position in all four frames; only the upper leaves gently flex right then left. No rotating the root.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/decorations/rare/giant-fan-water-fern_sprite.png"
+  },
+  {
+    "id": "broadleaf-water-fern",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-854ae7fd-fb25-47fb-94d4-dc75796ea3ec.png",
+    "storage_path": "decorations/normal/broadleaf-water-fern_sprite.png",
+    "prompt": "Edit the reference sprite atlas to fix its INSUFFICIENT TRANSPARENT PADDING in EVERY cell. Keep exactly 2 columns x 2 rows, FOUR equal SQUARE cells, square overall image. Shrink EACH individual subject by the SAME 25% around its rigid body center inside its own cell. Each subject's longest extent must occupy only 70-75% of its cell, with AT LEAST 12.5% clearly empty transparent margin on EVERY side, including all middle seams. Do not shrink the whole atlas as a single image. Keep frames in their own exact equal cells, same subject scale across all cells, no clipping. Preserve subject identity, colors, right-facing direction, detailed art style and distinct continuous motion poses. The ROOTS AND ROCK BASE must be IDENTICAL in shape, angle, scale and local position in all four frames; only the upper leaves gently flex right then left. No rotating the root.  Output TRUE alpha transparency. No text, borders, scenery or checkerboard.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/decorations/normal/broadleaf-water-fern_sprite.png"
+  },
+  {
+    "id": "broadleaf-water-fern",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-09f047e6-a6e6-4ada-901d-de382ce20460.png",
+    "storage_path": "decorations/normal/broadleaf-water-fern_sprite.png",
+    "prompt": "Precise sprite atlas correction. Keep this exact 2x2 square sheet, four equal square cells, same plant art, same transparency and generous margins. CHANGE ONLY THE ROOTS AND STONES IN THE BOTTOM RIGHT CELL: they are incorrectly mirrored. Replace that bottom-right root-and-stone base with an EXACT COPY of the TOP LEFT plant's root and stone base, same orientation, same details, same shape, same scale. In fact all FOUR root and rock bases must be identical and sit at the exact same local x/y in their respective cells. The grey/cream stones must occur on the same side in every frame. Keep the upper leaf poses, including the leftward flex in the bottom-right, and connect their stems naturally to that unchanged fixed base. Do not flip the entire plant or alter any other cell's leaves. No whole-plant rotation or rescaling. Transparent alpha PNG, no grid or text.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/decorations/normal/broadleaf-water-fern_sprite.png"
+  },
+  {
+    "id": "giant-fan-water-fern",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-403d22f3-38d6-4d7c-aad8-b572c1b4a161.png",
+    "storage_path": "decorations/rare/giant-fan-water-fern_sprite.png",
+    "prompt": "Precise sprite atlas correction. Keep this exact 2x2 square sheet, four equal square cells, same plant art, same transparency and generous margins. CHANGE ONLY THE ROOTS AND STONES IN THE BOTTOM RIGHT CELL: they are incorrectly mirrored. Replace that bottom-right root-and-stone base with an EXACT COPY of the TOP LEFT plant's root and stone base, same orientation, same details, same shape, same scale. In fact all FOUR root and rock bases must be identical and sit at the exact same local x/y in their respective cells. The grey/cream stones must occur on the same side in every frame. Keep the upper leaf poses, including the leftward flex in the bottom-right, and connect their stems naturally to that unchanged fixed base. Do not flip the entire plant or alter any other cell's leaves. No whole-plant rotation or rescaling. Transparent alpha PNG, no grid or text.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/decorations/rare/giant-fan-water-fern_sprite.png"
+  },
+  {
+    "id": "broadleaf-water-fern",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-4226c897-813e-4600-be43-c133137de2a0.png",
+    "storage_path": "decorations/normal/broadleaf-water-fern_sprite.png",
+    "prompt": "Create a NEW production 2x2 equal-square-cell underwater plant animation sheet from this ONE reference thumbnail. Same lush rooted broad-leaf aquatic fern, rounded green divided leaves, short natural root base with two pebbles, underwater plant no pot and cozy cartoon rendering. Four leaf-tip flutter poses, not whole-plant swaying or rotating. The lower 30% containing rocks and roots MUST be a visually identical non-mirrored copy in ALL FOUR cells, same camera, same exact stone arrangement. Large GREY stone stays on the LEFT, small TAN stone stays on the RIGHT in every cell, including BOTTOM RIGHT. Only thin upper leaf tips curl slightly differently through four phases. Stems, roots and stones stay completely immobile. All four plants face the SAME orientation, never mirror any cell. Whole plant including tips fits within 75% of each square cell, 12.5% true alpha blank margin every edge. Reference identity, sharp brown outline and green palette unchanged. No labels, text, grid, checkerboard, scene or background. Alpha transparent PNG.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/decorations/normal/broadleaf-water-fern_thumbnail.png"
+  },
+  {
+    "id": "giant-fan-water-fern",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-5c08d039-f028-440f-a698-74cb290bc9b4.png",
+    "storage_path": "decorations/rare/giant-fan-water-fern_sprite.png",
+    "prompt": "Create a NEW production 2x2 equal-square-cell underwater plant animation sheet from this ONE reference thumbnail. Same large rooted aquatic fern with grand fan-shaped emerald fronds, finely divided leaves, firm rock and root base, no pot and cozy cartoon rendering. Four leaf-tip flutter poses, not whole-plant swaying or rotating. The lower 30% containing rocks and roots MUST be a visually identical non-mirrored copy in ALL FOUR cells, same camera, same exact stone arrangement. The small tan round stone is on the far LEFT in every cell, and the large gray elongated stone remains at the FRONT RIGHT in every cell including BOTTOM RIGHT. Only thin upper leaf tips curl slightly differently through four phases. Stems, roots and stones stay completely immobile. All four plants face the SAME orientation, never mirror any cell. Whole plant including tips fits within 75% of each square cell, 12.5% true alpha blank margin every edge. Reference identity, sharp brown outline and green palette unchanged. No labels, text, grid, checkerboard, scene or background. Alpha transparent PNG.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/decorations/rare/giant-fan-water-fern_thumbnail.png"
+  },
+  {
+    "id": "broadleaf-water-fern",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-9b883323-48ca-4bce-8b8f-d18a0c39388b.png",
+    "storage_path": "decorations/normal/broadleaf-water-fern_sprite.png",
+    "prompt": "Edit ONLY transparent spacing in this exact 2x2 four-frame sprite sheet. Shrink EACH plant uniformly by 25% INSIDE its own equal square cell, do not shrink whole sheet. Keep overall square sheet, exactly four equal square quadrants. Leave 12.5% fully transparent margin on ALL sides of EACH plant in every quadrant, including central seams. Preserve the exact four different existing poses and the current identical ROOT AND STONE ORIENTATION in all four cells. Do NOT mirror anything, do NOT rearrange or redraw the stones, do NOT change identity, leaf silhouettes, colors, frame sequence or illustration style. All four subjects scale by the SAME amount. Each plant centered in its quadrant. True alpha transparent PNG, no text, borders or grid.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/decorations/normal/broadleaf-water-fern_sprite.png"
+  },
+  {
+    "id": "giant-fan-water-fern",
+    "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-8e46dd4a-1ed6-4323-bb11-d4b5e13e9551.png",
+    "storage_path": "decorations/rare/giant-fan-water-fern_sprite.png",
+    "prompt": "Edit ONLY transparent spacing in this exact 2x2 four-frame sprite sheet. Shrink EACH plant uniformly by 25% INSIDE its own equal square cell, do not shrink whole sheet. Keep overall square sheet, exactly four equal square quadrants. Leave 12.5% fully transparent margin on ALL sides of EACH plant in every quadrant, including central seams. Preserve the exact four different existing poses and the current identical ROOT AND STONE ORIENTATION in all four cells. Do NOT mirror anything, do NOT rearrange or redraw the stones, do NOT change identity, leaf silhouettes, colors, frame sequence or illustration style. All four subjects scale by the SAME amount. Each plant centered in its quadrant. True alpha transparent PNG, no text, borders or grid.",
+    "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-135100/decorations/rare/giant-fan-water-fern_sprite.png"
+  }
+]

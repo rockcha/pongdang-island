@@ -18,6 +18,7 @@ export async function loadNotices(category:string,query:string,page:number,manag
  return {items:await hydrate(data??[]),total:count??0}
 }
 export async function loadNotice(id:string){const {data,error}=await createClient().from('notices').select('*').eq('id',id).maybeSingle();if(error)throw error;return data?(await hydrate([data]))[0]:null}
+export async function deleteNotice(id:string,revision:number){const {error}=await createClient().rpc('notice_delete',{p_id:id,p_revision:revision});if(error)throw error}
 export async function saveNotice(n:Notice,status:Notice['status']){
  const args:NoticeSave={p_id:n.id,p_category:n.category,p_title:n.title,p_body:n.body,p_images:n.images,p_status:status,p_pinned:n.pinned,p_starts_at:n.starts_at,p_ends_at:n.ends_at,p_revision:n.revision}
  const {data,error}=await createClient().rpc('notice_save',args);if(error)throw error;return (await hydrate([data]))[0]

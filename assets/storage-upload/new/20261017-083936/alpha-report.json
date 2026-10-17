@@ -1,0 +1,63 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261017-083936/fish/mythic/lunea-mistmoon-goddess_turn-v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  51,
+                                           "y":  89,
+                                           "width":  523,
+                                           "height":  496,
+                                           "widthRatio":  0.8341,
+                                           "heightRatio":  0.7911,
+                                           "alphaPixels":  153509,
+                                           "leftAnchorY":  378.525,
+                                           "rightAnchorY":  315.79
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  57,
+                                           "y":  90,
+                                           "width":  531,
+                                           "height":  513,
+                                           "widthRatio":  0.8469,
+                                           "heightRatio":  0.8182,
+                                           "alphaPixels":  161086,
+                                           "leftAnchorY":  383.19,
+                                           "rightAnchorY":  379.747
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  83,
+                                           "y":  50,
+                                           "width":  522,
+                                           "height":  504,
+                                           "widthRatio":  0.8325,
+                                           "heightRatio":  0.8038,
+                                           "alphaPixels":  160234,
+                                           "leftAnchorY":  280.371,
+                                           "rightAnchorY":  316.942
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  84,
+                                           "y":  52,
+                                           "width":  522,
+                                           "height":  512,
+                                           "widthRatio":  0.8325,
+                                           "heightRatio":  0.8166,
+                                           "alphaPixels":  151966,
+                                           "leftAnchorY":  288.711,
+                                           "rightAnchorY":  376.787
+                                       }
+                                   ]
+                    }
+                ]
+}

@@ -1,0 +1,30 @@
+{
+  "entries": [
+    {
+      "id": "cloud-teacup-soot",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-5cd3d3fb-ba78-4c98-b988-15b971113677.png",
+      "storage_path": "fish/normal/cloud-teacup-soot_sprite.png",
+      "prompt": "Re-create this exact approved individual as a clean TRANSPARENT 2x2 animation sheet, SQUARE image. Reference1 exact identity and props, reference2 only rounded cartoon style. A tiny black soot sprite peeking out of an old cream porcelain teacup with a teal rim and a small chipped lip. Four consecutive poses: little arms reach and retract and soot fuzz sways; cup remains still. CRITICAL FRAMING CORRECTION: each of the FOUR isolated subjects stays inside the CENTRAL 72 percent of ITS OWN square cell, with at least14 percent entirely empty transparent margin on EVERY side of EACH cell. Frame centers at image relative positions (25%,25%),(75%,25%),(25%,75%),(75%,75%). Never put a face or an arm at a cell edge. NO motion dashes, no particles, no stray pixels, no stroke trails, no grid, no labels. Head/chest/rigid cup exactly same CELL-relative location and same scale across all4; right-facing SIDE profile in all4, not front or left. Small restrained appendage changes only. Keep all props intact and never crop. Actual alpha transparency, no background. Whole subject long axis maximum72 percent of own cell.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/normal/cloud-teacup-soot_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "revision": "margin-fix"
+    },
+    {
+      "id": "cloud-cloud-cotton-jellyfish",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-f68c93ba-ca04-494b-9682-5718db86fada.png",
+      "storage_path": "fish/normal/cloud-cloud-cotton-jellyfish_sprite.png",
+      "prompt": "Re-create this exact approved individual as a clean TRANSPARENT 2x2 animation sheet, SQUARE image. Reference1 exact identity and props, reference2 only rounded cartoon style. A small fluffy white cloud-shaped jellyfish with a soft pale teal underside and several short flowing translucent tentacles, tiny eyes on its right-facing profile. Four consecutive poses: soft bell gently contracts and releases, tentacles lag smoothly. CRITICAL FRAMING CORRECTION: each of the FOUR isolated subjects stays inside the CENTRAL 72 percent of ITS OWN square cell, with at least14 percent entirely empty transparent margin on EVERY side of EACH cell. Frame centers at image relative positions (25%,25%),(75%,25%),(25%,75%),(75%,75%). Never put a face or an arm at a cell edge. NO motion dashes, no particles, no stray pixels, no stroke trails, no grid, no labels. Head/chest/rigid cup exactly same CELL-relative location and same scale across all4; right-facing SIDE profile in all4, not front or left. Small restrained appendage changes only. Keep all props intact and never crop. Actual alpha transparency, no background. Whole subject long axis maximum72 percent of own cell.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/normal/cloud-cloud-cotton-jellyfish_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "revision": "margin-fix"
+    }
+  ]
+}

@@ -9,13 +9,14 @@ export function catalogSql(catalog) {
     return `"${value}"`
   }
   const statements = ['-- Generated from supabase/catalog/catalog.json. Review before migration deployment.', 'begin;', 'set constraints all deferred;']
-  for (const table of ['regions', 'aquarium_backgrounds', 'fishing_baits', 'collectible_species']) {
+  for (const table of ['regions', 'aquarium_backgrounds', 'fishing_baits', 'collectible_species',...(catalog.region_maps?['region_maps']:[])]) {
     const rows = catalog[table]
     if (!Array.isArray(rows) || !rows.length) throw new Error(`Empty catalog: ${table}`)
     const columns = Object.keys(rows[0])
     if (columns.includes('is_native')) throw new Error('is_native is generated, omit it')
     for (const row of rows) if (Object.keys(row).join() !== columns.join()) throw new Error(`Inconsistent columns: ${table}`)
-    statements.push(`insert into public.${table} (${columns.map(identifier).join(',')}) values\n${rows.map(row => `(${columns.map(c => literal(row[c])).join(',')})`).join(',\n')}\non conflict(id) do update set ${columns.filter(c => c !== 'id').map(c => `${identifier(c)}=excluded.${identifier(c)}`).join(',')};`)
+    const key=table==='region_maps'?'region_id':'id'
+    statements.push(`insert into public.${table} (${columns.map(identifier).join(',')}) values\n${rows.map(row => `(${columns.map(c => literal(row[c])).join(',')})`).join(',\n')}\non conflict(${key}) do update set ${columns.filter(c => c !== key).map(c => `${identifier(c)}=excluded.${identifier(c)}`).join(',')};`)
   }
   // The manifest controls habitats only for its species; it never deletes species or player data.
   statements.push(`delete from public.collectible_habitats where species_id in (${catalog.collectible_species.map(r => literal(r.id)).join(',')});`)

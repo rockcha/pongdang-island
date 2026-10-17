@@ -1,0 +1,10 @@
+import {readFileSync,writeFileSync} from 'node:fs'
+const path='supabase/catalog/catalog.json',c=JSON.parse(readFileSync(path,'utf8'))
+if(c.regions.some(r=>r.id==='cloudferry'))throw Error('Cloud Ferry already prepared')
+c.regions.push({id:'cloudferry',name:'지브리의 구름나루',description:'낮은 구름 사이로 초록 섬과 작은 나루가 이어져요. 먼 물가의 붉은 목욕탕과 언덕 위 움직이는 성을 바라보며 낚시해 보세요.',rarity:'common',sort_order:9,image_path:'cloudferry.png',requires_map_fragment:true})
+c.regions.sort((a,b)=>a.id.localeCompare(b.id))
+c.region_maps.push({region_id:'cloudferry',price:2500,thumbnail_path:'map/routes/map-cloudferry_thumbnail.png'})
+c.region_maps.sort((a,b)=>a.region_id.localeCompare(b.region_id))
+for(const s of c.collectible_species.filter(s=>s.native_region_id===null&&s.kind!=='map'))c.collectible_habitats.push({species_id:s.id,region_id:'cloudferry'})
+c.collectible_habitats.sort((a,b)=>a.species_id.localeCompare(b.species_id)||a.region_id.localeCompare(b.region_id))
+writeFileSync(path,JSON.stringify(c,null,2)+'\n')

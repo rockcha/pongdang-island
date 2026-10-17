@@ -1,0 +1,83 @@
+{
+  "entries": [
+    {
+      "id": "cloud-little-log-calcifer",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-a2febccc-eece-4d9c-9f09-37088868df53.png",
+      "storage_path": "fish/normal/cloud-little-log-calcifer_sprite.png",
+      "prompt": "Production game sprite sheet, square canvas divided invisibly into EXACTLY2 columns and2 rows, FOUR equal square frames. Reference1 is exact individual identity: Small orange Calcifer flame from Howls Moving Castle with expressive eyes and a little mouth sitting on one charred log. Preserve appearance and proportions. Four sequential poses: orange flame tips ripple in sequence, log and central face stable. CRITICAL: center EACH complete subject at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of canvas. Each subject fits central70 percent of its OWN cell, at least15 percent totally TRANSPARENT margin around EVERY CELL. NEVER place head, limbs, whiskers, broom, tails, flame tips, paper or props near a cell edge. NO motion lines or dashes, NO sparks or detached glow, NO stray pixels, no labels, no grid, no floor, no scenery. No cropping. Keep rigid torso, head and main props EXACT same cell-relative coordinates and scale; only stated flexible parts move. Screen RIGHT profile ALL FOUR poses. Reference2 style only. Genuine alpha transparency. Fixed bases/logs stay completely still. Complete loop, not eye-only or identical duplicates.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/normal/cloud-little-log-calcifer_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "revision": "margin-fix-2"
+    },
+    {
+      "id": "cloud-waterdrop-ponyo",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-5c656b81-6c4f-4176-9873-4d98ac423aa6.png",
+      "storage_path": "fish/rare/cloud-waterdrop-ponyo_sprite.png",
+      "prompt": "Production game sprite sheet, square canvas divided invisibly into EXACTLY2 columns and2 rows, FOUR equal square frames. Reference1 is exact individual identity: Ponyo in her recognizable little red fish form with orange bob hair, cream rounded humanlike face and tiny fin arms, cheerful right-facing profile. Preserve appearance and proportions. Four sequential poses: small tail sweeps and both fin arms gently propel, hair ends flutter. CRITICAL: center EACH complete subject at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of canvas. Each subject fits central70 percent of its OWN cell, at least15 percent totally TRANSPARENT margin around EVERY CELL. NEVER place head, limbs, whiskers, broom, tails, flame tips, paper or props near a cell edge. NO motion lines or dashes, NO sparks or detached glow, NO stray pixels, no labels, no grid, no floor, no scenery. No cropping. Keep rigid torso, head and main props EXACT same cell-relative coordinates and scale; only stated flexible parts move. Screen RIGHT profile ALL FOUR poses. Reference2 style only. Genuine alpha transparency. Fixed bases/logs stay completely still. Complete loop, not eye-only or identical duplicates.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/rare/cloud-waterdrop-ponyo_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "revision": "margin-fix-2"
+    },
+    {
+      "id": "cloud-fluttering-paper-shikigami",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-e0ddc7c1-a781-4edf-a2e6-b7f41439cd5c.png",
+      "storage_path": "fish/rare/cloud-fluttering-paper-shikigami_sprite.png",
+      "prompt": "Production game sprite sheet, square canvas divided invisibly into EXACTLY2 columns and2 rows, FOUR equal square frames. Reference1 is exact individual identity: Three small white humanoid paper shikigami cutouts from Spirited Away flying in a compact flock toward screen right, simple folded paper heads and winglike arms, no eyes or drawn faces. Preserve appearance and proportions. Four sequential poses: paper arms and corners flap in offset sequence, flock spacing stable. CRITICAL: center EACH complete subject at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of canvas. Each subject fits central70 percent of its OWN cell, at least15 percent totally TRANSPARENT margin around EVERY CELL. NEVER place head, limbs, whiskers, broom, tails, flame tips, paper or props near a cell edge. NO motion lines or dashes, NO sparks or detached glow, NO stray pixels, no labels, no grid, no floor, no scenery. No cropping. Keep rigid torso, head and main props EXACT same cell-relative coordinates and scale; only stated flexible parts move. Screen RIGHT profile ALL FOUR poses. Reference2 style only. Genuine alpha transparency. Fixed bases/logs stay completely still. Complete loop, not eye-only or identical duplicates.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/rare/cloud-fluttering-paper-shikigami_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "revision": "margin-fix-2"
+    },
+    {
+      "id": "cloud-ripple-running-catbus",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-9035f4dc-27dc-4360-8cc3-ca4abca9d6d6.png",
+      "storage_path": "fish/epic/cloud-ripple-running-catbus_thumbnail.png",
+      "prompt": "Edit reference1 only to reframe the exact same Catbus as a transparent square thumbnail. Preserve appearance, colors, pose and identity. Reconstruct full tail tip and paws if needed. Reduce WHOLE subject to fit central74 percent of image long axis, leaving at least13 percent clear transparent margin on all four sides. Head faces screen RIGHT, entire tail left fully visible, no cropping, no particles, no external glow, no backdrop. Reference2 is only matching soft fantasy shading style.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/epic/cloud-ripple-running-catbus_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "frames": 0,
+      "revision": "margin-fix-2"
+    },
+    {
+      "id": "cloud-forest-path-white-wolf",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-e0d76a69-5aec-4d26-85b5-1068fb1d9737.png",
+      "storage_path": "fish/rare/cloud-forest-path-white-wolf_sprite.png",
+      "prompt": "Production game sprite sheet, square canvas divided invisibly into EXACTLY2 columns and2 rows, FOUR equal square frames. Reference1 is exact individual identity: A graceful white wolf companion of San from Princess Mononoke, thick cream-white fur, pointed ears, dark eyes, one long tail, calm right-facing side profile. Preserve appearance and proportions. Four sequential poses: four paws gently paddle in balanced sequence, tail and long fur follow water. CRITICAL: center EACH complete subject at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of canvas. Each subject fits central70 percent of its OWN cell, at least15 percent totally TRANSPARENT margin around EVERY CELL. NEVER place head, limbs, whiskers, broom, tails, flame tips, paper or props near a cell edge. NO motion lines or dashes, NO sparks or detached glow, NO stray pixels, no labels, no grid, no floor, no scenery. No cropping. Keep rigid torso, head and main props EXACT same cell-relative coordinates and scale; only stated flexible parts move. Screen RIGHT profile ALL FOUR poses. Reference2 style only. Genuine alpha transparency. Fixed bases/logs stay completely still. Complete loop, not eye-only or identical duplicates.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/rare/cloud-forest-path-white-wolf_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "revision": "margin-fix-2"
+    },
+    {
+      "id": "cloud-sunset-delivery-kiki",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-48698a8a-9775-4236-b5ff-da04880b9ab0.png",
+      "storage_path": "fish/rare/cloud-sunset-delivery-kiki_sprite.png",
+      "prompt": "Production game sprite sheet, square canvas divided invisibly into EXACTLY2 columns and2 rows, FOUR equal square frames. Reference1 is exact individual identity: Kiki in her black dress and red hair bow riding a brown broom toward screen right, small black cat Jiji seated behind her, modest outfit, side profile. Preserve appearance and proportions. Four sequential poses: red bow, dress hem and broom bristles trail in current; torso and broom shaft stable. CRITICAL: center EACH complete subject at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of canvas. Each subject fits central70 percent of its OWN cell, at least15 percent totally TRANSPARENT margin around EVERY CELL. NEVER place head, limbs, whiskers, broom, tails, flame tips, paper or props near a cell edge. NO motion lines or dashes, NO sparks or detached glow, NO stray pixels, no labels, no grid, no floor, no scenery. No cropping. Keep rigid torso, head and main props EXACT same cell-relative coordinates and scale; only stated flexible parts move. Screen RIGHT profile ALL FOUR poses. Reference2 style only. Genuine alpha transparency. Fixed bases/logs stay completely still. Complete loop, not eye-only or identical duplicates.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/rare/cloud-sunset-delivery-kiki_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "revision": "margin-fix-2"
+    }
+  ],
+  "errors": []
+}

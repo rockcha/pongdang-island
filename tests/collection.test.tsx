@@ -22,7 +22,8 @@ async function open(add?:()=>void){
 const cards=()=>within(screen.getByRole('list',{name:'도감 개체'})).queryAllByRole('article').map(card=>card.getAttribute('aria-label'))
 it('shows descriptions, habitats and value inline with rarity backgrounds and no detail modal',async()=>{
  await open()
- expect(cards()).toEqual(['지도 조각','공통 물고기','산호 물고기','달빛 장식물'])
+ expect(cards()).toEqual(['공통 물고기','산호 물고기','달빛 장식물'])
+ expect(screen.queryByRole('button',{name:'지도'})).toBeNull()
  const card=screen.getByRole('article',{name:'산호 물고기'})
  expect(card.classList.contains('rarity-rare')).toBe(true)
  expect(within(card).getByText('작은 바다 친구의 이야기')).toBeTruthy()

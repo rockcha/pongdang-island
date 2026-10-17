@@ -49,8 +49,9 @@ function CollectionBook({ onAddTemporary }: CollectionDialogProps) {
    .catch(() => { if (active) setError('도감을 불러오지 못했어요. 잠시 후 다시 시도해주세요.') })
   return () => { active = false }
  }, [attempt])
- const habitats = Array.from(new Map(state?.catalog.flatMap(s => s.habitats).map(region => [region.id, region]) ?? []).values()).sort((a, b) => a.name.localeCompare(b.name, 'ko'))
- const entries = state?.catalog.filter(s =>
+ const catalog=state?.catalog.filter(s=>s.kind!=='map')??[]
+ const habitats = Array.from(new Map(catalog.flatMap(s => s.habitats).map(region => [region.id, region])).values()).sort((a, b) => a.name.localeCompare(b.name, 'ko'))
+ const entries = catalog.filter(s =>
   (s.name.normalize('NFKC').toLocaleLowerCase('ko').includes(query.trim().normalize('NFKC').toLocaleLowerCase('ko'))) &&
   (tab === 'all' || s.kind === tab) && (rarity === 'all' || s.rarity === rarity) &&
   (origin === 'all' || (s.kind !== 'map' && (origin === 'native' ? s.habitats.length === 1 : s.habitats.length > 1))) &&
@@ -65,7 +66,7 @@ function CollectionBook({ onAddTemporary }: CollectionDialogProps) {
    </div>
    <div className="flex flex-wrap items-center justify-between gap-3">
     <TooltipProvider><div role="group" aria-label="도감 분류" className="flex gap-1">
-     {(['all', 'fish', 'trash', 'decoration', 'map'] as const).map(value => {
+     {(['all', 'fish', 'trash', 'decoration'] as const).map(value => {
       const label = value === 'all' ? '전체' : kindLabels[value]
       return <Tooltip key={value}><TooltipTrigger render={<Button type="button" size="icon" variant={tab === value ? 'secondary' : 'ghost'} aria-label={label} aria-pressed={tab === value} className="size-10 rounded-xl" onClick={() => setTab(value)}/> }>
        {value === 'all' ? <LayoutGrid className="size-[18px]"/> : <CollectibleKindIcon kind={value} className="size-[18px]"/>}

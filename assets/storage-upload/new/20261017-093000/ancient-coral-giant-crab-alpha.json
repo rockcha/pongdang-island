@@ -1,0 +1,152 @@
+﻿{
+    "width":  1774,
+    "height":  887,
+    "columns":  4,
+    "rows":  2,
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "threshold":  32,
+                       "x":  49,
+                       "y":  103,
+                       "width":  350,
+                       "height":  269,
+                       "edgePixels":  0
+                   },
+                   {
+                       "frame":  0,
+                       "threshold":  200,
+                       "x":  50,
+                       "y":  104,
+                       "width":  348,
+                       "height":  267,
+                       "edgePixels":  0
+                   },
+                   {
+                       "frame":  1,
+                       "threshold":  32,
+                       "x":  50,
+                       "y":  104,
+                       "width":  347,
+                       "height":  269,
+                       "edgePixels":  0
+                   },
+                   {
+                       "frame":  1,
+                       "threshold":  200,
+                       "x":  51,
+                       "y":  105,
+                       "width":  345,
+                       "height":  267,
+                       "edgePixels":  0
+                   },
+                   {
+                       "frame":  2,
+                       "threshold":  32,
+                       "x":  48,
+                       "y":  104,
+                       "width":  349,
+                       "height":  268,
+                       "edgePixels":  0
+                   },
+                   {
+                       "frame":  2,
+                       "threshold":  200,
+                       "x":  49,
+                       "y":  105,
+                       "width":  348,
+                       "height":  266,
+                       "edgePixels":  0
+                   },
+                   {
+                       "frame":  3,
+                       "threshold":  32,
+                       "x":  49,
+                       "y":  104,
+                       "width":  348,
+                       "height":  267,
+                       "edgePixels":  0
+                   },
+                   {
+                       "frame":  3,
+                       "threshold":  200,
+                       "x":  50,
+                       "y":  105,
+                       "width":  346,
+                       "height":  265,
+                       "edgePixels":  0
+                   },
+                   {
+                       "frame":  4,
+                       "threshold":  32,
+                       "x":  50,
+                       "y":  72,
+                       "width":  349,
+                       "height":  268,
+                       "edgePixels":  0
+                   },
+                   {
+                       "frame":  4,
+                       "threshold":  200,
+                       "x":  51,
+                       "y":  73,
+                       "width":  347,
+                       "height":  266,
+                       "edgePixels":  0
+                   },
+                   {
+                       "frame":  5,
+                       "threshold":  32,
+                       "x":  49,
+                       "y":  71,
+                       "width":  348,
+                       "height":  269,
+                       "edgePixels":  0
+                   },
+                   {
+                       "frame":  5,
+                       "threshold":  200,
+                       "x":  50,
+                       "y":  73,
+                       "width":  346,
+                       "height":  266,
+                       "edgePixels":  0
+                   },
+                   {
+                       "frame":  6,
+                       "threshold":  32,
+                       "x":  48,
+                       "y":  71,
+                       "width":  350,
+                       "height":  272,
+                       "edgePixels":  0
+                   },
+                   {
+                       "frame":  6,
+                       "threshold":  200,
+                       "x":  49,
+                       "y":  73,
+                       "width":  348,
+                       "height":  269,
+                       "edgePixels":  0
+                   },
+                   {
+                       "frame":  7,
+                       "threshold":  32,
+                       "x":  50,
+                       "y":  71,
+                       "width":  347,
+                       "height":  270,
+                       "edgePixels":  0
+                   },
+                   {
+                       "frame":  7,
+                       "threshold":  200,
+                       "x":  51,
+                       "y":  72,
+                       "width":  345,
+                       "height":  268,
+                       "edgePixels":  0
+                   }
+               ]
+}

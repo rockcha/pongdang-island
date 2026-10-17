@@ -18,6 +18,7 @@ import { EmailConfirmPage } from '@/pages/email-confirm-page'
 import { ForgotPasswordPage } from '@/pages/forgot-password-page'
 import { ResetPasswordPage } from '@/pages/reset-password-page'
 import { FriendsPage } from '@/features/friends/friends-page'
+import {FriendAquariumPage} from '@/features/friends/friend-aquarium-page'
 import { NotificationsPage } from '@/features/notifications/notifications-page'
 import { ProfilePage } from '@/features/profile/profile-page'
 import { AquariumPage } from '@/pages/aquarium-page'
@@ -46,6 +47,7 @@ export function AppRoutes() {
             <Route path="arcade" element={<ArcadePage />} />
             <Route path="arcade/:gameId" element={<ArcadeGamePage />} />
             <Route path="friends" element={<FriendsPage />} />
+            <Route path="friends/:ownerId/aquarium" element={<FriendAquariumPage />} />
             <Route path="profile" element={<ProfilePage />} />
             <Route path="notifications" element={<NotificationsPage />} />
             <Route path="square" element={<PlaceSectionPage section="square" />} />

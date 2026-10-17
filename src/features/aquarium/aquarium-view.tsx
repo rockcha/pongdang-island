@@ -1,6 +1,6 @@
 import { useEffect,useRef,useState } from 'react'
 import type { ReactNode } from 'react'
-import { Plus } from 'lucide-react'
+import { ChevronLeft,ChevronRight,Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import type { DecorationPlacement,OwnedCollectible } from '@/features/collection/api'
 import { backgroundUrl } from './api'
@@ -68,14 +68,24 @@ export function AquariumView(props:Props){
  const toolbarWidth=176
  const toolbarX=geometry&&editing?Math.max(toolbarWidth/2+8,Math.min(dimensions.width-toolbarWidth/2-8,editing.anchor.x)):0
  const toolbarY=geometry&&editing?Math.max(64,Math.min(dimensions.height-72,editing.anchor.y)):64
+ function navigate(direction:'previous'|'next'){
+  if(busy||!props.navigation||props.navigation.count<2)return
+  if(direction==='previous'?props.navigation.index<=0:props.navigation.index>=props.navigation.count-1)return
+  setEditing(null)
+  props.navigation.onChange(direction)
+ }
  return <>
-  <div ref={glass} data-testid="aquarium-glass" className="relative min-h-0 w-full flex-1 overflow-hidden bg-gradient-to-b from-blue-100 to-blue-200" tabIndex={0} aria-label={name} onKeyDown={event=>{if(event.target!==event.currentTarget||busy)return;if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();setEditing(null);props.navigation?.onChange(event.key==='ArrowLeft'?'previous':'next')}}}>
+  <div ref={glass} data-testid="aquarium-glass" className="relative min-h-0 w-full flex-1 overflow-hidden bg-gradient-to-b from-blue-100 to-blue-200" tabIndex={0} aria-label={name} onKeyDown={event=>{if(event.target!==event.currentTarget)return;if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();navigate(event.key==='ArrowLeft'?'previous':'next')}}}>
    {background&&failedPath!==background.image_path&&<img key={background.image_path} src={backgroundUrl(background.image_path)} alt={background.name} className="absolute inset-0 h-full w-full object-cover" onError={()=>setFailedPath(background.image_path)}/>}
    <TankBubbles/><TankInhabitants items={displayed.map(item=>({...item,interaction_locked:busy}))} onPlace={place} onSelectDecoration={selectDecoration} onBackgroundTap={()=>setEditing(null)} onNavigate={direction=>{if(!busy){setEditing(null);props.navigation?.onChange(direction)}}}/>
    <div className="pointer-events-none absolute inset-x-2 top-2 z-10 flex items-start justify-between gap-1">
     <TooltipProvider><div role="group" aria-label="어항 도구" className="pointer-events-auto flex items-center divide-x divide-foreground/10 overflow-visible rounded-xl bg-background/95"><AquariumInventoryDialog items={items} name={name} busy={busy} onSell={onSell} onGiftSent={props.onGiftSent} onStore={props.onStore}/>{props.backgroundControls}{props.storageControls}</div></TooltipProvider>
     <div className="pointer-events-auto flex shrink-0 items-center overflow-hidden rounded-full bg-background/90 shadow-sm backdrop-blur"><span className="px-2.5 text-xs tabular-nums" aria-label="현재 어항" aria-live="polite">{(props.navigation?.index??0)+1}/{props.navigation?.count??1}</span>{props.purchase&&<Button variant="ghost" size="sm" className="gap-1 rounded-none border-l px-2" aria-label={`어항 구매 ${props.purchase.price} 골드`} disabled={props.purchase.disabled} onClick={props.purchase.onBuy}><Plus className="size-3.5"/><GoldIcon className="size-4"/><span className="text-xs tabular-nums">{props.purchase.price}</span></Button>}</div>
    </div>
+   {props.navigation&&<div role="group" aria-label="어항 이동" className="pointer-events-none absolute inset-x-2 top-1/2 z-10 flex -translate-y-1/2 justify-between">
+    <Button variant="ghost" size="icon" aria-label="이전 어항" disabled={busy||props.navigation.index<=0} onClick={()=>navigate('previous')} className="pointer-events-auto size-10 rounded-full border border-white/40 bg-background/85 shadow-sm backdrop-blur hover:bg-background disabled:opacity-35"><ChevronLeft className="size-5"/></Button>
+    <Button variant="ghost" size="icon" aria-label="다음 어항" disabled={busy||props.navigation.index>=props.navigation.count-1} onClick={()=>navigate('next')} className="pointer-events-auto size-10 rounded-full border border-white/40 bg-background/85 shadow-sm backdrop-blur hover:bg-background disabled:opacity-35"><ChevronRight className="size-5"/></Button>
+   </div>}
    {editing&&decoration&&props.onArrange&&<div className="absolute z-20 -translate-x-1/2" style={{left:toolbarX,top:toolbarY,width:toolbarWidth}}><DecorationEditor key={editing.id} name={decoration.species.name} value={editing.value} busy={busy} onChange={changeDecoration}/></div>}
    {props.bottomControls&&<div className="absolute inset-x-3 bottom-3 z-10 flex items-center justify-between gap-2">{props.bottomControls}</div>}
   </div>

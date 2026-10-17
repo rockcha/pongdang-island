@@ -1,0 +1,947 @@
+[
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      434,
+                      310,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -40,
+                           "dy":  1,
+                           "error":  22.61
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  5,
+                           "dy":  -98,
+                           "error":  21.06
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -37,
+                           "dy":  -96,
+                           "error":  21.88
+                       }
+                   ],
+        "id":  "silverfrost-herring",
+        "columns":  2,
+        "storage_path":  "fish/normal/silverfrost-herring_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      449,
+                      316,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -2,
+                           "dy":  1,
+                           "error":  19.42
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -79,
+                           "error":  21.33
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -3,
+                           "dy":  -78,
+                           "error":  19.86
+                       }
+                   ],
+        "id":  "snowspot-capelin",
+        "columns":  2,
+        "storage_path":  "fish/normal/snowspot-capelin_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      446,
+                      270,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  6,
+                           "dy":  0,
+                           "error":  13.57
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -80,
+                           "error":  26.69
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  4,
+                           "dy":  -79,
+                           "error":  36.67
+                       }
+                   ],
+        "id":  "icewhisker-cod",
+        "columns":  2,
+        "storage_path":  "fish/normal/icewhisker-cod_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      448,
+                      275,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -55,
+                           "dy":  0,
+                           "error":  13.45
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -77,
+                           "error":  19.77
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -52,
+                           "dy":  -77,
+                           "error":  21.14
+                       }
+                   ],
+        "id":  "icefloe-lumpsucker",
+        "columns":  2,
+        "storage_path":  "fish/normal/icefloe-lumpsucker_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      452,
+                      265,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  -1,
+                           "error":  13.35
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -28,
+                           "error":  15.94
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -2,
+                           "dy":  -29,
+                           "error":  20.47
+                       }
+                   ],
+        "id":  "frostleg-krill",
+        "columns":  2,
+        "storage_path":  "fish/normal/frostleg-krill_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      435,
+                      293,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -44,
+                           "dy":  3,
+                           "error":  23.07
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  8,
+                           "dy":  -37,
+                           "error":  13.72
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -32,
+                           "dy":  -38,
+                           "error":  27.29
+                       }
+                   ],
+        "id":  "snowflake-sea-butterfly",
+        "columns":  2,
+        "storage_path":  "fish/normal/snowflake-sea-butterfly_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      312,
+                      502,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -33,
+                           "dy":  4,
+                           "error":  20.49
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  11,
+                           "dy":  -61,
+                           "error":  29.48
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -25,
+                           "dy":  -65,
+                           "error":  28.83
+                       }
+                   ],
+        "id":  "bluegrain-scallop",
+        "columns":  2,
+        "storage_path":  "fish/normal/bluegrain-scallop_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      310,
+                      464,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -2,
+                           "dy":  -3,
+                           "error":  8.47
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  4,
+                           "dy":  -41,
+                           "error":  16.62
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  8,
+                           "dy":  -29,
+                           "error":  13.49
+                       }
+                   ],
+        "id":  "iceflower-anemone",
+        "columns":  2,
+        "storage_path":  "fish/normal/iceflower-anemone_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      470,
+                      302,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -70,
+                           "dy":  7,
+                           "error":  52.35
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  6,
+                           "dy":  -70,
+                           "error":  53.18
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -54,
+                           "dy":  -71,
+                           "error":  50.21
+                       }
+                   ],
+        "id":  "silverspear-narwhal",
+        "columns":  2,
+        "storage_path":  "fish/rare/silverspear-narwhal_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      448,
+                      236,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -8,
+                           "dy":  0,
+                           "error":  3.24
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -56,
+                           "error":  3.31
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -4,
+                           "dy":  -57,
+                           "error":  3.50
+                       }
+                   ],
+        "id":  "snowmantle-beluga",
+        "columns":  2,
+        "storage_path":  "fish/rare/snowmantle-beluga_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      442,
+                      286,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -20,
+                           "dy":  1,
+                           "error":  18.07
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -85,
+                           "error":  19.42
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -24,
+                           "dy":  -81,
+                           "error":  18.50
+                       }
+                   ],
+        "id":  "frosttusk-walrus",
+        "columns":  2,
+        "storage_path":  "fish/rare/frosttusk-walrus_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      433,
+                      329,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -18,
+                           "dy":  1,
+                           "error":  37.36
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -2,
+                           "dy":  -61,
+                           "error":  57.44
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -36,
+                           "dy":  -56,
+                           "error":  42.61
+                       }
+                   ],
+        "id":  "longribbon-oarfish",
+        "columns":  2,
+        "storage_path":  "fish/rare/longribbon-oarfish_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      450,
+                      248,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -36,
+                           "dy":  -1,
+                           "error":  29.30
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -83,
+                           "error":  27.03
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -31,
+                           "dy":  -82,
+                           "error":  41.27
+                       }
+                   ],
+        "id":  "icearmor-king-crab",
+        "columns":  2,
+        "storage_path":  "fish/rare/icearmor-king-crab_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      427,
+                      265,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -31,
+                           "dy":  4,
+                           "error":  2.26
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  7,
+                           "dy":  -93,
+                           "error":  2.18
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -16,
+                           "dy":  -76,
+                           "error":  2.48
+                       }
+                   ],
+        "id":  "whitesnow-polar-bear",
+        "columns":  2,
+        "storage_path":  "fish/rare/whitesnow-polar-bear_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      436,
+                      231,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -38,
+                           "dy":  13,
+                           "error":  6.85
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  6,
+                           "dy":  -53,
+                           "error":  6.36
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -30,
+                           "dy":  -52,
+                           "error":  5.76
+                       }
+                   ],
+        "id":  "silverbell-jellyfish",
+        "columns":  2,
+        "storage_path":  "fish/rare/silverbell-jellyfish_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      450,
+                      355,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  1,
+                           "dy":  3,
+                           "error":  35.97
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  2,
+                           "dy":  -75,
+                           "error":  38.98
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  -75,
+                           "error":  34.84
+                       }
+                   ],
+        "id":  "icewall-greenland-shark",
+        "columns":  2,
+        "storage_path":  "fish/epic/icewall-greenland-shark_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      435,
+                      313,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -14,
+                           "dy":  -1,
+                           "error":  21.60
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -2,
+                           "dy":  -82,
+                           "error":  29.49
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -7,
+                           "dy":  -79,
+                           "error":  29.28
+                       }
+                   ],
+        "id":  "whitenight-polar-bear",
+        "columns":  2,
+        "storage_path":  "fish/epic/whitenight-polar-bear_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      452,
+                      243,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -3,
+                           "dy":  0,
+                           "error":  9.68
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -47,
+                           "error":  12.93
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -2,
+                           "dy":  -47,
+                           "error":  13.69
+                       }
+                   ],
+        "id":  "whitenight-bowhead-whale",
+        "columns":  2,
+        "storage_path":  "fish/epic/whitenight-bowhead-whale_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      457,
+                      270,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -39,
+                           "dy":  0,
+                           "error":  18.28
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  3,
+                           "dy":  -40,
+                           "error":  23.48
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -40,
+                           "dy":  -39,
+                           "error":  42.72
+                       }
+                   ],
+        "id":  "snowpattern-orca",
+        "columns":  2,
+        "storage_path":  "fish/epic/snowpattern-orca_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      450,
+                      240,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -39,
+                           "dy":  8,
+                           "error":  31.55
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  3,
+                           "dy":  -48,
+                           "error":  47.41
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -23,
+                           "dy":  -40,
+                           "error":  26.02
+                       }
+                   ],
+        "id":  "iceribbon-giant-jellyfish",
+        "columns":  2,
+        "storage_path":  "fish/epic/iceribbon-giant-jellyfish_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      426,
+                      353,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  7,
+                           "dy":  1,
+                           "error":  34.39
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  4,
+                           "dy":  -88,
+                           "error":  34.10
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  11,
+                           "dy":  -90,
+                           "error":  40.49
+                       }
+                   ],
+        "id":  "silverback-great-sealion",
+        "columns":  2,
+        "storage_path":  "fish/epic/silverback-great-sealion_sprite.png"
+    },
+    {
+        "width":  1774,
+        "height":  887,
+        "patch":  [
+                      318,
+                      224,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -6.5,
+                           "dy":  1,
+                           "error":  16.13
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -5,
+                           "dy":  4,
+                           "error":  15.04
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -7.5,
+                           "dy":  1,
+                           "error":  15.04
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  -1,
+                           "dy":  -7.5,
+                           "error":  15.90
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -2.5,
+                           "dy":  -13.5,
+                           "error":  31.28
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -9,
+                           "dy":  -9.5,
+                           "error":  24.71
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -5.5,
+                           "dy":  0.5,
+                           "error":  16.75
+                       }
+                   ],
+        "id":  "nivella-snowflake-dancer",
+        "columns":  4,
+        "storage_path":  "fish/mythic/nivella-snowflake-dancer_sprite.png"
+    },
+    {
+        "width":  1774,
+        "height":  887,
+        "patch":  [
+                      314,
+                      177,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  1.5,
+                           "dy":  0,
+                           "error":  27.23
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  19.90
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -0.5,
+                           "dy":  0,
+                           "error":  31.48
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  -2.5,
+                           "error":  27.23
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  1.5,
+                           "dy":  -4.5,
+                           "error":  36.56
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  1,
+                           "dy":  -2.5,
+                           "error":  30.69
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -0.5,
+                           "dy":  -0.5,
+                           "error":  31.93
+                       }
+                   ],
+        "id":  "mammor-frozen-memory",
+        "columns":  4,
+        "storage_path":  "fish/mythic/mammor-frozen-memory_sprite.png"
+    }
+]

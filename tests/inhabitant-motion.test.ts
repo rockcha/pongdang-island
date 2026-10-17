@@ -27,6 +27,17 @@ it('continues swimming from a dragged position and restores persisted placement'
  expect(restored.update(0,0,400,600).x).toBeCloseTo(200)
  expect(restored.pose.y).toBeCloseTo(470)
 })
+it('restarts the route from a drop independently of the old route phase and stale snapshots',()=>{
+ const original={...item(),position_x:.3,position_y:.5}
+ const fish=new InhabitantMotion(original)
+ fish.update(70,.1,400,600)
+ fish.place(315,300,70,400,600)
+ fish.setItem(original,70,400,600)
+ expect(fish.update(70,0,400,600).x).toBeCloseTo(315)
+ const positions=Array.from({length:80},(_,i)=>fish.update(70+i*.1,.1,400,600).x)
+ expect(positions.at(-1)).toBeLessThan(315)
+ expect(positions.every((x,i)=>i===0||x<=positions[i-1]+.0001)).toBe(true)
+})
 it('keeps the escape displacement when normal swimming resumes',()=>{
   const fish=new InhabitantMotion(item()), baseline=new InhabitantMotion(item())
   const start=fish.update(0,0,400,600)

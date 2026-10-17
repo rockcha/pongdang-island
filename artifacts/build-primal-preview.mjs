@@ -1,0 +1,25 @@
+import {readFileSync,writeFileSync} from 'node:fs'
+// Reuse the verified gallery renderer; only the catalog, plant assets and labels differ.
+let source=readFileSync('artifacts/build-bluegrove-preview.mjs','utf8')
+source=source.slice(0,source.indexOf("for(const p of ['artifacts/mythic-actions"))
+source=source.replaceAll('20261017-095349','20261017-135100').replaceAll('bluegrove-expansion','primal-expansion')
+source=source.replace("cards.unshift({...catalog.collectible_species.find(c=>c.id==='atlantean-sentinel'),scope:'existing'})",'')
+source=source.replace("const layouts=readFileSync", "const primal=readFileSync('src/features/aquarium/primal-frame-layouts.json','utf8')\nconst layouts=readFileSync")
+source=source.replace("['mythic-swim.ts','swim-frame-layout.ts']","['mythic-swim.ts','swim-frame-layout.ts','primal-plants.ts']")
+source=source.replace('const bluegroveLayouts=${layouts};','const primalLayouts=${primal},bluegroveLayouts=${layouts};')
+source=source.replace("const decoration=!c.spec.sprite_sheet_path", "const decoration=!c.spec.sprite_sheet_path&&!c.spec.plant")
+source=source.replace("const enhanced=mythicSwimAsset(spec.sprite_sheet_path||'',spec.rarity)","const plant=primalPlantAsset(spec.id,spec.kind);if(plant)image.src='../${root}/'+plant.path;const enhanced=mythicSwimAsset(spec.sprite_sheet_path||'',spec.rarity)")
+source=source.replace("path:enhanced?.path??spec.sprite_sheet_path", "path:enhanced?.path??plant?.path??spec.sprite_sheet_path")
+source=source.replace('mythicSwimFrame(c.path,ms/1000,0)??','primalPlantFrame(c.spec.id,ms/1000)??mythicSwimFrame(c.path,ms/1000,0)??')
+source=source.replace("(spec.scope==='shared'?'모든 해역':spec.scope==='bluegrove'?'푸른골 전용':'고정 자세 교체')", "'태고의 원시섬 전용'")
+// The old gallery filters shared/native scope. Use rarity here.
+source=source.replace('scope!==c.spec.scope','scope!==c.spec.rarity')
+const generated='artifacts/.primal-preview-builder.mjs'
+writeFileSync(generated,source)
+await import('./.primal-preview-builder.mjs?'+Date.now())
+let html=readFileSync('artifacts/bluegrove-expansion-preview.html','utf8')
+html=html.replaceAll('bluegrove-expansion-preview','primal-expansion-preview').replaceAll('푸른골','태고의 원시섬').replaceAll('22종','34종')
+html=html.replace('태고의 원시섬 · 신규 34종과 수호병 고정 자세','태고의 원시섬 · 생물 20종 / 장식물 14종')
+html=html.replace('공통 7종과 태고의 원시섬 전용 15종입니다. 일반·희귀·특급은 4프레임, 세일라와 수호병은 8프레임입니다.','모두 태고의 원시섬 전용입니다. 생물은 4프레임, 플리오스는 8프레임과 6초 주기 빛무늬 행동을 사용합니다. 수초 3종은 제자리에서 잎이 흔들립니다.')
+html=html.replace(/<select id="scope">[\s\S]*?<\/select>/,'<select id="scope"><option value="all">전체</option><option value="common">일반</option><option value="rare">희귀</option><option value="epic">특급</option><option value="mythic">신화</option></select>')
+writeFileSync('artifacts/primal-expansion-preview.html',html)

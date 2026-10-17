@@ -1,0 +1,748 @@
+[
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      451,
+      353,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": -27,
+        "dy": 1,
+        "error": 32.76
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -114,
+        "error": 28.78
+      },
+      {
+        "frame": 3,
+        "dx": -20,
+        "dy": -114,
+        "error": 34.54
+      }
+    ],
+    "id": "silverblade-swordfish",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      456,
+      353,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": -40,
+        "dy": 3,
+        "error": 38.34
+      },
+      {
+        "frame": 2,
+        "dx": -2,
+        "dy": -91,
+        "error": 33.53
+      },
+      {
+        "frame": 3,
+        "dx": -31,
+        "dy": -92,
+        "error": 34.51
+      }
+    ],
+    "id": "billowsail-sailfish",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      445,
+      250,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": 1,
+        "dy": 1,
+        "error": 19.88
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -38,
+        "error": 31.63
+      },
+      {
+        "frame": 3,
+        "dx": -4,
+        "dy": -39,
+        "error": 50.59
+      }
+    ],
+    "id": "steelback-bluefin-tuna",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      450,
+      302,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": -9,
+        "dy": 0,
+        "error": 28.48
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -36,
+        "error": 22.16
+      },
+      {
+        "frame": 3,
+        "dx": -11,
+        "dy": -35,
+        "error": 22.66
+      }
+    ],
+    "id": "scale-armored-barracuda",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      417,
+      289,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": -21,
+        "dy": 1,
+        "error": 27.67
+      },
+      {
+        "frame": 2,
+        "dx": 2,
+        "dy": -48,
+        "error": 36.92
+      },
+      {
+        "frame": 3,
+        "dx": -19,
+        "dy": -49,
+        "error": 34.67
+      }
+    ],
+    "id": "goldstripe-amberjack",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      448,
+      235,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": -12,
+        "dy": 0,
+        "error": 14.25
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -52,
+        "error": 18.2
+      },
+      {
+        "frame": 3,
+        "dx": -11,
+        "dy": -54,
+        "error": 17.45
+      }
+    ],
+    "id": "giant-seabass",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      407,
+      387,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": -43,
+        "dy": 0,
+        "error": 24.03
+      },
+      {
+        "frame": 2,
+        "dx": 8,
+        "dy": -113,
+        "error": 28.7
+      },
+      {
+        "frame": 3,
+        "dx": -23,
+        "dy": -100,
+        "error": 36.72
+      }
+    ],
+    "id": "seawing-giant-manta",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      431,
+      326,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": -24,
+        "dy": 0,
+        "error": 51.22
+      },
+      {
+        "frame": 2,
+        "dx": 3,
+        "dy": -111,
+        "error": 44.7
+      },
+      {
+        "frame": 3,
+        "dx": -22,
+        "dy": -111,
+        "error": 48.54
+      }
+    ],
+    "id": "silver-ripple-mullet",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      445,
+      342,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": -1,
+        "dy": 0,
+        "error": 13.64
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -120,
+        "error": 26.52
+      },
+      {
+        "frame": 3,
+        "dx": -1,
+        "dy": -120,
+        "error": 19.62
+      }
+    ],
+    "id": "blueback-spanish-mackerel",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      540,
+      290,
+      35,
+      35
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": -27,
+        "dy": 0,
+        "error": 19.33
+      },
+      {
+        "frame": 2,
+        "dx": -1,
+        "dy": -37,
+        "error": 40.97
+      },
+      {
+        "frame": 3,
+        "dx": -27,
+        "dy": -38,
+        "error": 26.98
+      }
+    ],
+    "id": "bluestripe-flyingfish",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      455,
+      396,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": -1,
+        "dy": 0,
+        "error": 20.54
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -148,
+        "error": 34.4
+      },
+      {
+        "frame": 3,
+        "dx": -1,
+        "dy": -148,
+        "error": 30.22
+      }
+    ],
+    "id": "striped-needlefish",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      456,
+      355,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": -26,
+        "dy": 3,
+        "error": 16.96
+      },
+      {
+        "frame": 2,
+        "dx": -1,
+        "dy": -148,
+        "error": 20.95
+      },
+      {
+        "frame": 3,
+        "dx": -25,
+        "dy": -148,
+        "error": 20.24
+      }
+    ],
+    "id": "bluegrove-spearfish",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      428,
+      281,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": -34,
+        "dy": 0,
+        "error": 21.33
+      },
+      {
+        "frame": 2,
+        "dx": 2,
+        "dy": -76,
+        "error": 19.57
+      },
+      {
+        "frame": 3,
+        "dx": -31,
+        "dy": -73,
+        "error": 26.41
+      }
+    ],
+    "id": "bronze-yellowtail",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      453,
+      259,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "error": 7.85
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -26,
+        "error": 16.13
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": -26,
+        "error": 20.1
+      }
+    ],
+    "id": "bluegrove-giant-seabass",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      456,
+      353,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "error": 7.34
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -3,
+        "error": 13.23
+      },
+      {
+        "frame": 3,
+        "dx": -1,
+        "dy": 0,
+        "error": 12.19
+      }
+    ],
+    "id": "longtail-thresher-shark",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      459,
+      362,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": -26,
+        "dy": 0,
+        "error": 39.48
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -61,
+        "error": 41.04
+      },
+      {
+        "frame": 3,
+        "dx": -19,
+        "dy": -64,
+        "error": 39.74
+      }
+    ],
+    "id": "blue-spotted-leopard-shark",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      444,
+      299,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": -20,
+        "dy": -1,
+        "error": 67.58
+      },
+      {
+        "frame": 2,
+        "dx": 3,
+        "dy": -113,
+        "error": 63.76
+      },
+      {
+        "frame": 3,
+        "dx": -8,
+        "dy": -114,
+        "error": 35.14
+      }
+    ],
+    "id": "blue-scaled-mahi-mahi",
+    "columns": 2
+  },
+  {
+    "width": 1254,
+    "height": 1254,
+    "patch": [
+      451,
+      300,
+      38,
+      38
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": -18,
+        "dy": 0,
+        "error": 42.98
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -82,
+        "error": 33.7
+      },
+      {
+        "frame": 3,
+        "dx": -13,
+        "dy": -85,
+        "error": 30.56
+      }
+    ],
+    "id": "ripple-pattern-giant-moray",
+    "columns": 2
+  },
+  {
+    "width": 1774,
+    "height": 887,
+    "patch": [
+      312,
+      253,
+      27,
+      27
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "error": 0
+      },
+      {
+        "frame": 1,
+        "dx": 8.5,
+        "dy": -1,
+        "error": 47.57
+      },
+      {
+        "frame": 2,
+        "dx": -2,
+        "dy": 0,
+        "error": 39.54
+      },
+      {
+        "frame": 3,
+        "dx": -0.5,
+        "dy": 0,
+        "error": 46.51
+      },
+      {
+        "frame": 4,
+        "dx": 3,
+        "dy": -6.5,
+        "error": 50.98
+      },
+      {
+        "frame": 5,
+        "dx": 11.5,
+        "dy": -6.5,
+        "error": 56.12
+      },
+      {
+        "frame": 6,
+        "dx": -4,
+        "dy": -6.5,
+        "error": 50.37
+      },
+      {
+        "frame": 7,
+        "dx": -2.5,
+        "dy": -9.5,
+        "error": 62.48
+      }
+    ],
+    "id": "seila-white-sail-guardian",
+    "columns": 4
+  }
+]

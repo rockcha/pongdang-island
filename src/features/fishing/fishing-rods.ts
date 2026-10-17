@@ -1,5 +1,8 @@
 export type FishingRod={id:string;name:string;description:string;effect:string;price:number;color:string;accent:string;region?:string;failureReductionBp:number;nativeBonusBp:number}
 export const fishingRods:FishingRod[]=[
+ {id:'scrapisle',name:'녹빛 고철 낚싯대',description:'되살린 구리 대와 녹청빛 톱니 릴로 만든 고물섬 장비예요.',effect:'실패율 −2%p · 녹빛 고물섬 토착 개체 확률 +2%p',price:1500,color:'#528b72',accent:'#d7aa71',region:'scrapisle',failureReductionBp:200,nativeBonusBp:200},
+ {id:'cloudferry',name:'구름나루 바람 낚싯대',description:'꿀빛 대나무와 초록 실, 구름 문양의 황동 릴을 엮은 나루의 낚싯대예요.',effect:'실패율 −2%p · 구름나루 토착 개체 확률 +2%p',price:1500,color:'#a5a56b',accent:'#fff1ce',region:'cloudferry',failureReductionBp:200,nativeBonusBp:200},
+ {id:'whitenight',name:'백야 서리 낚싯대',description:'진주빛 대와 은빛 눈꽃 릴에 푸른 빙하의 빛을 담았어요.',effect:'실패율 −2%p · 백야의 빙해 토착 개체 확률 +2%p',price:1500,color:'#78bcd6',accent:'#eaf9ff',region:'whitenight',failureReductionBp:200,nativeBonusBp:200},
  {id:'basic',name:'입문용 낚싯대',description:'소박한 대나무 대와 작은 릴, 빨간 찌를 갖춘 첫 낚시 장비예요.',effect:'추가 효과 없음',price:0,color:'#c69857',accent:'#e7d6b6',failureReductionBp:0,nativeBonusBp:0},
  {id:'bronze',name:'청동 낚싯대',description:'청동빛 장식과 청록색 릴을 갖춘 든든한 낚싯대예요.',effect:'사전 추첨 실패율 −1%p',price:800,color:'#76503a',accent:'#d7b388',failureReductionBp:100,nativeBonusBp:0},
  {id:'pongdang',name:'퐁당 나무 낚싯대',description:'따뜻한 나무와 황동 릴에 섬의 정취를 담았어요.',effect:'실패율 −2%p · 퐁당섬 토착 개체 확률 +2%p',price:1500,color:'#ac6f35',accent:'#ffbf79',region:'pongdang',failureReductionBp:200,nativeBonusBp:200},

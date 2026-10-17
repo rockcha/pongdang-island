@@ -2,7 +2,6 @@ import { useEffect,useRef,useState } from 'react'
 import { Gift,ChevronLeft,ChevronRight } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
-import { Tabs,TabsList,TabsTrigger,TabsContent } from '@/components/ui/tabs'
 import { Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription } from '@/components/ui/dialog'
 import { Tooltip,TooltipContent,TooltipProvider,TooltipTrigger } from '@/components/ui/tooltip'
 import { CollectibleThumbnail } from '@/features/collection/collectible-thumbnail'
@@ -10,6 +9,7 @@ import {GoldIcon,useGold} from '@/features/gold/gold-provider'
 import { useSocial } from '@/features/social/social-provider'
 import { claimGift,giftError,giftReactions,loadGift,loadGifts,reactToGift } from './api'
 import type { GiftMailbox as Mailbox,GiftRecord,GiftReaction } from './api'
+import {markRelatedRead} from '@/features/notifications/api'
 
 function GiftPicture({gift,className}:{gift:GiftRecord;className:string}){
  if(gift.reward_kind==='gold')return <GoldIcon className={className}/>
@@ -21,13 +21,13 @@ export function GiftMailbox({onOpen}:{onOpen:(id:string)=>void}){
  const {notifications}=useSocial()
  const [direction,setDirection]=useState<'received'|'sent'>('received'),[offset,setOffset]=useState(0),[mail,setMail]=useState<Mailbox|null>(null),[error,setError]=useState(''),[retry,setRetry]=useState(0)
  useEffect(()=>{let active=true;setMail(null);setError('');void loadGifts(direction,offset).then(data=>{if(active)setMail(data)}).catch(cause=>{if(active)setError(giftError(cause))});return()=>{active=false}},[direction,offset,notifications,retry])
- return <div className="space-y-4"><Tabs value={direction} onValueChange={value=>{setDirection(value as 'received'|'sent');setOffset(0)}}><TabsList aria-label="선물함"><TabsTrigger value="received">받은 선물</TabsTrigger><TabsTrigger value="sent">보낸 선물</TabsTrigger></TabsList><TabsContent value={direction}>
+ return <div className="space-y-4" aria-label="선물함"><div role="group" aria-label="선물 방향" className="grid grid-cols-2 gap-1 rounded-lg bg-muted/60 p-1">{([['received','받은 선물'],['sent','보낸 선물']] as const).map(([value,label])=><Button key={value} variant="ghost" aria-pressed={direction===value} className={direction===value?'bg-background shadow-sm':''} onClick={()=>{setDirection(value);setOffset(0)}}>{label}</Button>)}</div><div>
   {error?<div role="alert" className="space-y-2 text-sm text-destructive"><p>{error}</p><Button variant="outline" onClick={()=>setRetry(value=>value+1)}>다시 불러오기</Button></div>:!mail?<p role="status" className="py-6 text-sm text-muted-foreground">선물을 불러오는 중…</p>:<>
    <ul className="divide-y">{mail.items.map(gift=><li key={gift.id}><button className="flex w-full items-center gap-3 py-4 text-left" onClick={()=>onOpen(gift.id)}><GiftPicture gift={gift} className="size-14 shrink-0"/><div className="min-w-0 flex-1"><p className="truncate text-sm font-medium">{gift.species.name} <span className="text-xs text-muted-foreground">×{gift.quantity}</span></p><p className="mt-1 truncate text-xs text-muted-foreground">{direction==='received'?`${gift.sender_name}님이 보낸 선물`:`${gift.recipient_name}님에게 보낸 선물`}</p></div><span className="shrink-0 text-xs text-muted-foreground">{gift.reaction?giftReactions[gift.reaction].emoji:gift.status==='claimed'?'수령 완료':gift.recipient_id===null?'수신자 탈퇴':'미수령'}</span></button></li>)}</ul>
    {!mail.items.length&&<div className="py-10 text-center text-muted-foreground"><Gift className="mx-auto mb-3 size-7 opacity-40"/><p className="text-sm">{direction==='received'?'아직 도착한 선물이 없어요.':'아직 보낸 선물이 없어요.'}</p></div>}
    {mail.total>30&&<div className="flex items-center justify-between pt-3"><Button variant="ghost" size="icon" aria-label="이전 선물" disabled={offset===0} onClick={()=>setOffset(value=>Math.max(0,value-30))}><ChevronLeft/></Button><span className="text-xs tabular-nums text-muted-foreground">{offset+1}–{Math.min(offset+30,mail.total)} / {mail.total}</span><Button variant="ghost" size="icon" aria-label="다음 선물" disabled={offset+30>=mail.total} onClick={()=>setOffset(value=>value+30)}><ChevronRight/></Button></div>}
   </>}
- </TabsContent></Tabs></div>
+ </div></div>
 }
 
 export function GiftDetailDialog({id,onClose}:{id:string|null;onClose:()=>void}){
@@ -35,8 +35,10 @@ export function GiftDetailDialog({id,onClose}:{id:string|null;onClose:()=>void})
  const {owner,refresh,notifications}=useSocial()
  const [gift,setGift]=useState<GiftRecord|null>(null),[error,setError]=useState(''),[busy,setBusy]=useState(false),[retry,setRetry]=useState(0)
  const locked=useRef(false),active=useRef(true)
+ const confirmedReads=useRef(new Set<string>())
  useEffect(()=>{active.current=true;return()=>{active.current=false}},[])
  useEffect(()=>{let current=true;setGift(null);setError('');if(id)void loadGift(id).then(data=>{if(current)setGift(data)}).catch(cause=>{if(current)setError(giftError(cause))});return()=>{current=false}},[id,retry,notifications])
+ useEffect(()=>{if(!gift||!owner||confirmedReads.current.has(gift.id))return;const giftId=gift.id;confirmedReads.current.add(giftId);void markRelatedRead(owner,'gift_id',giftId).then(()=>refresh()).catch(()=>{confirmedReads.current.delete(giftId);toast.error('선물 확인 상태를 저장하지 못했어요.')})},[gift?.id,owner,refresh])
  async function act(reaction?:GiftReaction){
   if(!gift||locked.current)return
   locked.current=true;setBusy(true);setError('')

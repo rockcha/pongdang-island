@@ -9,6 +9,6 @@ export function purchaseMessage(action:Trade){
  if(action.type==='charge')return null
  const name=action.name||products.find(item=>item.id===action.id)?.name
   ||(action.id.startsWith('rod:')?fishingRods.find(rod=>rod.id===action.id.slice(4))?.name:undefined)
-  ||(action.id==='aquarium:tank'?'새 어항':action.id.startsWith('background:')?'어항 배경':action.id.startsWith('fishing:')?'미끼':action.id.startsWith('collectibles:')?'선택한 개체':'상품')
+  ||(action.id==='aquarium:tank'?'새 어항':action.id.startsWith('map:')?'지도':action.id.startsWith('background:')?'어항 배경':action.id.startsWith('fishing:')?'미끼':action.id.startsWith('collectibles:')?'선택한 개체':'상품')
  return `${productObject(name)} ${action.type==='buy'?'구매':'판매'}했습니다.`
 }

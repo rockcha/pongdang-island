@@ -1,0 +1,1099 @@
+{
+  "tool": "built-in image_gen",
+  "region": "scrapisle",
+  "species": 26,
+  "files": [
+    {
+      "id": "scrap-dented-sardine-can",
+      "storage_path": "trash/normal/scrap-dented-sardine-can_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 찌그러진 꽁치 통조림. SUBJECT: Dented open sardine tin, faded fish picture label, curled lid and short seaweed strand. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-4d086d8e-3685-485a-8e45-0c8d989a00aa.png",
+      "sha256": "f78701d23499115a987d348e265cfa726be34a27fe09d86ffae6284745900187",
+      "source_sha256": "86938ef4608ffad2103e71bb086e9207be56e15f0146f960705ce4c01d2ff5d7",
+      "rarity": "common",
+      "kind": "trash",
+      "movement": "swim",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.924,
+        "translation": [
+          19.932,
+          56.43
+        ],
+        "union": [
+          87,
+          84,
+          1226,
+          1150
+        ],
+        "storage_path": "trash/normal/scrap-dented-sardine-can_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-lost-rain-boot",
+      "storage_path": "trash/normal/scrap-lost-rain-boot_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 짝 잃은 장화. SUBJECT: One abandoned mustard yellow rubber rain boot, worn toe and tiny barnacles. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-0172c5b3-ce66-41e3-bba8-b7849305f66a.png",
+      "sha256": "39b5c624014173dcc4f6532cead2112843ff7ae68ccfdb467113edfb5fecf785",
+      "source_sha256": "055b1ee187878c31993cbc156d683334a0e29f5eec90afc3fc4ecc9cda93bd07",
+      "rarity": "common",
+      "kind": "trash",
+      "movement": "swim",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.95241,
+        "translation": [
+          8.41291,
+          36.50886
+        ],
+        "union": [
+          106,
+          67,
+          1192,
+          1172
+        ],
+        "storage_path": "trash/normal/scrap-lost-rain-boot_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-soggy-newspaper",
+      "storage_path": "trash/normal/scrap-soggy-newspaper_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 바닷물 먹은 신문지. SUBJECT: Waterlogged folded newspaper with illegible faded print marks and softly torn curling edges, no readable text. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-50abfa57-d04c-4ffd-9d97-6b8be550a7fa.png",
+      "sha256": "4d8a83a3efc5642992dcd0a706d1f9fd8279dc48e5700a06a59a5d538cd931b1",
+      "source_sha256": "448e645b4df2be06c5d9c4498caef34669e1e8f957082e94f93917ef88989cb5",
+      "rarity": "common",
+      "kind": "trash",
+      "movement": "swim",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.90031,
+        "translation": [
+          57.10523,
+          61.15662
+        ],
+        "union": [
+          48,
+          193,
+          1217,
+          1063
+        ],
+        "storage_path": "trash/normal/scrap-soggy-newspaper_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-leaky-cooking-pot",
+      "storage_path": "decorations/normal/scrap-leaky-cooking-pot_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 구멍 난 냄비. SUBJECT: Old two-handled cooking pot with a round hole near its base, short seaweed sprouting through it. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-c5ebdc80-a098-4fa7-a59a-9a227d91716f.png",
+      "sha256": "cd80b3ab3d983c08df7695b253ac63288286e4e99f500104649fcbf4a8217c7d",
+      "source_sha256": "021cba1f2b36dd690f64750e5d22adf2506c8c7c8edab80d761ca3e4a8605c1b",
+      "rarity": "common",
+      "kind": "decoration",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.92319,
+        "translation": [
+          45.85178,
+          0.61546
+        ],
+        "union": [
+          59,
+          227,
+          1199,
+          1129
+        ],
+        "storage_path": "decorations/normal/scrap-leaky-cooking-pot_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-discarded-cassette",
+      "storage_path": "trash/normal/scrap-discarded-cassette_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 버려진 카세트테이프. SUBJECT: Abandoned teal cassette tape with two reels and a short loose ribbon of magnetic tape. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-94d357df-0af8-4414-8d8f-03216de7e3df.png",
+      "sha256": "ed1d4d5f670ec2dccdcf6865f6055c606c7dd08f2b66bf88acbf6c6febb3a570",
+      "source_sha256": "c31034f6f060f31e39ec6ed3e9feaec132ff059e8be7040e4c54e95a7f6667b5",
+      "rarity": "common",
+      "kind": "trash",
+      "movement": "swim",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.92238,
+        "translation": [
+          42.20995,
+          25.60708
+        ],
+        "union": [
+          63,
+          136,
+          1204,
+          1167
+        ],
+        "storage_path": "trash/normal/scrap-discarded-cassette_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-stopped-alarm-clock",
+      "storage_path": "decorations/normal/scrap-stopped-alarm-clock_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 멈춘 알람시계. SUBJECT: Stopped rusty twin-bell alarm clock, cracked face, tiny barnacles, hands but no numerals. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-0015cdd2-d9f0-408f-9f5b-b17de3c3cf52.png",
+      "sha256": "db838989ed215ce6685de9990483d7aa39f820bb86e64addb05a5f278420e007",
+      "source_sha256": "f5633ff4445231d8d02ca1d4a061612023f1b49141fed02383d329120a2df7dd",
+      "rarity": "common",
+      "kind": "decoration",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.93715,
+        "translation": [
+          3.32466,
+          38.4679
+        ],
+        "union": [
+          186,
+          66,
+          1144,
+          1189
+        ],
+        "storage_path": "decorations/normal/scrap-stopped-alarm-clock_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-soaked-duck-toy",
+      "storage_path": "trash/normal/scrap-soaked-duck-toy_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 젖은 오리인형. SUBJECT: Soggy yellow plush duck toy facing RIGHT, stitched seam and small fabric patch, worn and lovable. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-722c22f5-8d0c-4c5d-9b21-fd0ca110727e.png",
+      "sha256": "502acbd417f549d55c6b26761d1a076aff49bf33ee43130cfe5a7123d9aac5c2",
+      "source_sha256": "2bfa18ada57a97226999dd979a22595d4f4bd27ed5338288144fe2087b3c37c6",
+      "rarity": "common",
+      "kind": "trash",
+      "movement": "swim",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.95154,
+        "translation": [
+          10.8748,
+          27.05106
+        ],
+        "union": [
+          136,
+          77,
+          1158,
+          1183
+        ],
+        "storage_path": "trash/normal/scrap-soaked-duck-toy_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-verdigris-fan",
+      "storage_path": "decorations/rare/scrap-verdigris-fan_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 녹청빛 선풍기. SUBJECT: Old pedestal desk fan with turquoise verdigris cage, three copper blades and seaweed on the sturdy base. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-71679743-d71b-4e1c-ba70-85bfbbc00650.png",
+      "sha256": "21ee65eaadd82568a6344085659bc8ad64f3e79d4039b8c8df62d584b5b9a13a",
+      "source_sha256": "f09fef7189f3f18164bd368edcc206994f3a8323c61c543856293d078054e79a",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.91279,
+        "translation": [
+          4.47702,
+          52.8549
+        ],
+        "union": [
+          191,
+          52,
+          1172,
+          1205
+        ],
+        "storage_path": "decorations/rare/scrap-verdigris-fan_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-wheel-less-bicycle",
+      "storage_path": "decorations/rare/scrap-wheel-less-bicycle_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 바퀴 잃은 자전거. SUBJECT: Old bicycle resting on seabed, one missing wheel, rusted teal frame, wicker basket and tangled seaweed. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-cbcea983-bc24-45ff-abb7-39445ce51149.png",
+      "sha256": "52293f0f154379d0f58806a0a8e93376e4916385614e1ecf9db4fe88ddb64ad6",
+      "source_sha256": "571ff24385d40727cef048421b4bca0b00b60541a1c5a5869f413f11acfa1c05",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.86839,
+        "translation": [
+          79.47858,
+          69.05787
+        ],
+        "union": [
+          24,
+          131,
+          1236,
+          1153
+        ],
+        "storage_path": "decorations/rare/scrap-wheel-less-bicycle_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-locked-suitcase",
+      "storage_path": "decorations/rare/scrap-locked-suitcase_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 잠긴 여행 가방. SUBJECT: Closed brown vintage travel suitcase with brass lock and faded illustrated travel stickers without text. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-b44d21fb-57a4-4bbc-9f4b-505e005acd39.png",
+      "sha256": "61d164a4120d03294e1abef6321613b76b89c7d7e394934fb4095916226360c3",
+      "source_sha256": "99d6718d10b71408f7deb36e0766b7aec04ac71e104a107820439e490487df4a",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.90651,
+        "translation": [
+          54.9947,
+          47.74265
+        ],
+        "union": [
+          50,
+          160,
+          1211,
+          1117
+        ],
+        "storage_path": "decorations/rare/scrap-locked-suitcase_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-barnacle-telephone",
+      "storage_path": "decorations/rare/scrap-barnacle-telephone_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 따개비 전화기. SUBJECT: Old sage green rotary telephone, receiver attached by curled cable, clusters of small barnacles. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-ff1a7b6e-0739-4dd6-8507-b6f9fb6f3f20.png",
+      "sha256": "28dc7504ed27a4c73a437b88b844634cfde4ffb6cb58a4d62703d9b35a1ef30c",
+      "source_sha256": "7430865814ae58c52fdc311dc5d95875cd0aa53ee60e38824bdb6f0bda34e598",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.90185,
+        "translation": [
+          51.62014,
+          38.99425
+        ],
+        "union": [
+          54,
+          172,
+          1221,
+          1131
+        ],
+        "storage_path": "decorations/rare/scrap-barnacle-telephone_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-broken-diving-helmet",
+      "storage_path": "decorations/rare/scrap-broken-diving-helmet_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 고장 난 잠수 헬멧. SUBJECT: Abandoned antique copper diving helmet with cracked round glass viewport, verdigris seams. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-a5a8001c-319d-46d4-8b9a-b68988a25d6b.png",
+      "sha256": "c24e3df2eb86d020faa49a95a3ac27fc16dd1f5fa8154070df5f14365736b4e6",
+      "source_sha256": "dbeb23902f42ca9b3e7e610ae72b173b57424c19bed0d4a29f87ba445364c308",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.91597,
+        "translation": [
+          41.24024,
+          49.94191
+        ],
+        "union": [
+          188,
+          55,
+          1090,
+          1204
+        ],
+        "storage_path": "decorations/rare/scrap-broken-diving-helmet_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-forgotten-clockwork-robot",
+      "storage_path": "decorations/rare/scrap-forgotten-clockwork-robot_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 잊힌 태엽 로봇. SUBJECT: Small forgotten wind-up tin robot standing on both feet, copper teal panels, square head, dim friendly eyes, key in its back. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-45976252-7d5a-42df-a365-07cc4c8d688e.png",
+      "sha256": "5a78cb2d30f4a1f96c788107c3cc0d218c196ba4d807cf6d9153855033b7fe59",
+      "source_sha256": "6ba12b69ddb1fe4667ee50a7ba919260fccff0020ae93b6a3f411a857e6f00e9",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.96109,
+        "translation": [
+          29.19898,
+          12.86036
+        ],
+        "union": [
+          166,
+          91,
+          1077,
+          1186
+        ],
+        "storage_path": "decorations/rare/scrap-forgotten-clockwork-robot_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-waterlogged-music-box",
+      "storage_path": "decorations/rare/scrap-waterlogged-music-box_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 물먹은 오르골. SUBJECT: Open waterlogged wooden music box, little shell ballerina on brass disc, worn carved lid. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-118280a8-7001-4613-b85b-2180a3645970.png",
+      "sha256": "a306e8aad9f17d505a17a6a79daf8202857e973582196bbad85870820f7a14a4",
+      "source_sha256": "a94e83daf550fb102cc8fe9d5ec73269111d3b7f955b0074b5f368514b9e386d",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.90885,
+        "translation": [
+          30.79279,
+          56.69508
+        ],
+        "union": [
+          106,
+          48,
+          1205,
+          1206
+        ],
+        "storage_path": "decorations/rare/scrap-waterlogged-music-box_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-seaweed-shopping-cart",
+      "storage_path": "decorations/rare/scrap-seaweed-shopping-cart_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 해초 감긴 쇼핑카트. SUBJECT: Abandoned small wire shopping cart, rusty turquoise metal and seaweed wrapped around wheels. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-4627e07c-d565-458a-906a-f70d4d2de4cf.png",
+      "sha256": "1c6133b4cd16495396bfd150497dc59a71942f472cc647f383d5d83ceb0f27e1",
+      "source_sha256": "9da5cefb80402c9cdc25dd0f6670ca47e1c6c7d24a6a9e4e1f6254c11afe667c",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.92644,
+        "translation": [
+          41.95441,
+          35.00612
+        ],
+        "union": [
+          63,
+          73,
+          1199,
+          1204
+        ],
+        "storage_path": "decorations/rare/scrap-seaweed-shopping-cart_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-coral-wreck-car",
+      "storage_path": "decorations/epic/scrap-coral-wreck-car_thumbnail.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-d4566704-804e-4a35-9dbe-8d0a1ea94488.png",
+      "prompt": "Edit attached coral-covered scrap automobile thumbnail: preserve vehicle design, right-facing direction, copper/teal paint, coral and seaweed. Zoom OUT so entire car AND ALL coral/seaweed fit only70 percent of the square, with at least15percent real transparent padding on EVERY side. Restore the small clipped bumper/coral at right edge. Do not clip or crop any part. Same soft detailed fantasy illustration, no ground, no text, true alpha.",
+      "sha256": "a563eec3ccf7588f736c9f6f4961f27010b220d4e815075c1493234102f5a145",
+      "source_sha256": "246cffc4d0993baaed03d1f92182ff16cf76696dcca27be4d629031b66b17fec",
+      "rarity": "epic",
+      "kind": "decoration",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.92319,
+        "translation": [
+          44.0054,
+          15.8481
+        ],
+        "union": [
+          61,
+          261,
+          1201,
+          1062
+        ],
+        "storage_path": "decorations/epic/scrap-coral-wreck-car_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-sleeping-vending-machine",
+      "storage_path": "decorations/epic/scrap-sleeping-vending-machine_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 잠든 심해 자판기. SUBJECT: Abandoned deep-sea drink vending machine standing on seabed, oxidized teal enamel, fogged glass, tiny warm inner lights and old cans, no readable logos. The attached image is STYLE reference only, do not copy its animal, props or background. Polished soft fantasy game illustration, fine colored outlines, rich material gradients, detailed dimensional shading, restrained emerald highlights. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "epic-mythic-starlight.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-dd798712-774d-42a7-9277-d9d80ad1ec30.png",
+      "sha256": "7e3a0fe8836d48232abc025031c4628791f0c3ea3af0b373505f2535b56d9f20",
+      "source_sha256": "e60a279911cbde2d2bb131ae5e6086c4a321efb03d3caee98c857c50ed48e0d2",
+      "rarity": "epic",
+      "kind": "decoration",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.89268,
+        "translation": [
+          30.69112,
+          67.29092
+        ],
+        "union": [
+          194,
+          37,
+          1141,
+          1216
+        ],
+        "storage_path": "decorations/epic/scrap-sleeping-vending-machine_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-rusted-lighthouse-lens",
+      "storage_path": "decorations/epic/scrap-rusted-lighthouse-lens_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 녹슨 등대 렌즈. SUBJECT: Huge antique lighthouse Fresnel lens inside rusted copper mounting pedestal, emerald glass rings reflecting gentle light. The attached image is STYLE reference only, do not copy its animal, props or background. Polished soft fantasy game illustration, fine colored outlines, rich material gradients, detailed dimensional shading, restrained emerald highlights. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "epic-mythic-starlight.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-8138c744-0440-44fb-a3f9-02455323aeb3.png",
+      "sha256": "9c6a8bb3bf6890d61ee21da9c570e0b23d7ffba69bf771e0f7cdb4b79602399e",
+      "source_sha256": "ead28e556394ea18f9f08a922b22f9300d13280f0371e19c306422bb243454a3",
+      "rarity": "epic",
+      "kind": "decoration",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.89801,
+        "translation": [
+          2.43744,
+          59.01176
+        ],
+        "union": [
+          188,
+          46,
+          1202,
+          1218
+        ],
+        "storage_path": "decorations/epic/scrap-rusted-lighthouse-lens_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-abandoned-survey-robot",
+      "storage_path": "fish/epic/scrap-abandoned-survey-robot_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 버려진 탐사 로봇. SUBJECT: Abandoned submarine survey robot facing RIGHT with two caterpillar treads, rounded copper shell, single turquoise camera lens and two small tool arms. The attached image is STYLE reference only, do not copy its animal, props or background. Polished soft fantasy game illustration, fine colored outlines, rich material gradients, detailed dimensional shading, restrained emerald highlights. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "epic-mythic-starlight.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-d0a48a8b-33d2-4550-a91a-3f5b7c66bfdd.png",
+      "sha256": "823ef75130655950e3bd4b673ebf02e9ab0a13903a5e135520741378dcdbd6cd",
+      "source_sha256": "585d2cb302e6ada5f6e956aa99eb0d1bf3ba09f43ebf8b631c79d5c28a5919f0",
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "crawl",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.96373,
+        "translation": [
+          -10.50928,
+          16.47524
+        ],
+        "union": [
+          115,
+          143,
+          1207,
+          1123
+        ],
+        "storage_path": "fish/epic/scrap-abandoned-survey-robot_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-abandoned-survey-robot",
+      "storage_path": "fish/epic/scrap-abandoned-survey-robot_sprite.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-c9a84783-a76d-4337-b76a-0e0522c34728.png",
+      "prompt": "Edit the attached PADDED PLACEMENT GUIDE ONLY. Keep its exact 2-by2 grid and SMALL subject footprint, about60 percent of every square cell. DO NOT zoom in or enlarge the ship/robot/tire to fill cells. Large empty transparent margins are REQUIRED. Preserve identical body location, scale and opacity in all cells. 4 real crawling poses: treads roll, small tool arms alternate. Rigid robot head/body unchanged. Claws fully inside cell. Same identity and tier style as guide. Complete silhouettes, no scene, no text, no shadows. True alpha transparency.",
+      "sha256": "ff63a224c4087d113335e0b03f252a6e174c85b4e88370a6e305318eb1d220fb",
+      "source_sha256": "e44bcca2a53372a461cbe1ae3138991260a28c50b60a842fa5eaaa8d111d3f6d",
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "crawl",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 1.19973,
+        "translation": [
+          -111.8031,
+          -90.80788
+        ],
+        "union": [
+          135,
+          136,
+          573,
+          537
+        ],
+        "storage_path": "fish/epic/scrap-abandoned-survey-robot_sprite.png"
+      }
+    },
+    {
+      "id": "scrap-sunken-scrap-carrier",
+      "storage_path": "decorations/epic/scrap-sunken-scrap-carrier_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 침몰한 고물 운반선. SUBJECT: Small sunken scrap cargo vessel resting on seabed, rusted hull facing RIGHT, broken mast, loaded with old tires cans and gears, seaweed and coral. The attached image is STYLE reference only, do not copy its animal, props or background. Polished soft fantasy game illustration, fine colored outlines, rich material gradients, detailed dimensional shading, restrained emerald highlights. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "epic-mythic-starlight.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-4672a9a8-83c9-4e7c-b4af-31c1556fd3ec.png",
+      "sha256": "067eb02b6e3dfd4cbf5671062b2b5b7e1d3f8c5ed67a25ffbd74e8ec1b6495ab",
+      "source_sha256": "358961da99b48b5a28e2a2d46e625622cbb40a8c37060c7588f11229fed82745",
+      "rarity": "epic",
+      "kind": "decoration",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.94727,
+        "translation": [
+          33.0641,
+          33.0641
+        ],
+        "union": [
+          71,
+          95,
+          1182,
+          1158
+        ],
+        "storage_path": "decorations/epic/scrap-sunken-scrap-carrier_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-greenark-last-collector",
+      "storage_path": "fish/mythic/scrap-greenark-last-collector_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 마지막 수거선, 그린아크. SUBJECT: Majestic huge living salvage ship facing RIGHT, patched rusted copper and jade green hull, stacked cargo of discarded objects, trees growing on deck, one articulated salvage crane with a claw holding a tiny luminous salvaged gear; warm cabin windows, emerald core, dignified magical vessel. The attached image is STYLE reference only, do not copy its animal, props or background. Polished soft fantasy game illustration, fine colored outlines, rich material gradients, detailed dimensional shading, restrained emerald highlights. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "epic-mythic-starlight.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-9411d50a-4a43-4ded-9555-65acf2948b14.png",
+      "sha256": "48468691870e2482a8456e03d126d644eb07cc0d62f31a0950e8f9b435d3b392",
+      "source_sha256": "20e660700a54441650a1fe2b7d09f3158ae7f0cbd37e1ba63237ab62e28e3bd1",
+      "rarity": "mythic",
+      "kind": "fish",
+      "movement": "swim",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.89192,
+        "translation": [
+          63.75119,
+          67.31888
+        ],
+        "union": [
+          41,
+          48,
+          1221,
+          1206
+        ],
+        "storage_path": "fish/mythic/scrap-greenark-last-collector_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-greenark-last-collector",
+      "storage_path": "fish/mythic/scrap-greenark-last-collector_sprite.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-647c0c16-bc4a-41e2-b645-9ab32e09540c.png",
+      "prompt": "Edit the attached PADDED PLACEMENT GUIDE ONLY. Keep its exact 4-column by2-row grid and SMALL subject footprint, about60 percent of every square cell. DO NOT zoom in or enlarge the ship/robot/tire to fill cells. Large empty transparent margins are REQUIRED. Preserve identical body location, scale and opacity in all cells. Top4frames cruise with flags and foliage swaying, bottom4frames show articulated crane lowering claw then lifting glowing gear halfway then high then returning. All crane and glow stay inside the central70percent of each cell. Hull/cabin and deck never shift. Same identity and tier style as guide. Complete silhouettes, no scene, no text, no shadows. True alpha transparency.",
+      "sha256": "964efd72aac4805c92c5644a1ee31d9479a9096c11e9137439662d6126010c41",
+      "source_sha256": "feab6cfaefc4728fb2ab70269282f9538fd995fd4cfdb671c807402e10be7796",
+      "rarity": "mythic",
+      "kind": "fish",
+      "movement": "swim",
+      "uniform_framing": {
+        "sourceWidth": 1774,
+        "sourceHeight": 887,
+        "cell": 444,
+        "columns": 4,
+        "rows": 2,
+        "uniformScale": 1.26857,
+        "translation": [
+          -62.79429,
+          -88.8
+        ],
+        "union": [
+          77.5,
+          105.5,
+          370.5,
+          383.5
+        ],
+        "storage_path": "fish/mythic/scrap-greenark-last-collector_sprite.png"
+      }
+    },
+    {
+      "id": "scrap-tin-home-hermit-crab",
+      "storage_path": "fish/rare/scrap-tin-home-hermit-crab_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 깡통집 소라게. SUBJECT: Cute hermit crab facing RIGHT wearing a dented sardine tin as shell, orange claws and glossy eyes, no natural shell. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-6d766965-dfcc-4410-82a8-49de87f91b9c.png",
+      "sha256": "30c503cf6c1680006aad85388fb36e69f207c15471c87a474224151580a14edf",
+      "source_sha256": "3ec81d79e034d4e4d6a2413c3ba5447632120ed6ca690bc0f326e9cb1777a928",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "crawl",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.90185,
+        "translation": [
+          54.32568,
+          65.14788
+        ],
+        "union": [
+          51,
+          159,
+          1218,
+          1086
+        ],
+        "storage_path": "fish/rare/scrap-tin-home-hermit-crab_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-tin-home-hermit-crab",
+      "storage_path": "fish/rare/scrap-tin-home-hermit-crab_sprite.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-9849b3d8-f849-4dc7-80ef-d1f2b5618d0d.png",
+      "prompt": "Use case: precise-object-edit. Edit Image1 the supplied placement guide into a professional 4-frame animation sprite sheet. Image2 is the approved individual character for exact identity. Image3 is tier STYLE only. Keep 2 columns and2 rows EQUAL SQUARE CELLS and preserve the GUIDE subject placement and padding in EVERY cell. Four sequential crawl poses with alternate little legs stepping, antennae swaying, small claws moving modestly. Tin shell, head and eyes fixed in same coordinates and size. Do not animate by eye state alone. Same right-facing orientation as guide in every frame. Keep all hard bodies scale/rotation/opacity constant, opaque body. Animate appendages with real connected poses, not duplicated images or fade blending. Every frame fully contains ALL appendages and glow, generous transparent margins, no pixel touching outer edge or internal cell boundary. No text, no frame grid lines, no background, no ground, no cast shadow. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "sha256": "b31a4882802575f54c18f778c69f500016686fbc4ceaa1ced97d79a1e9dbe500",
+      "source_sha256": "8a249a1150abec6d158604886b64b283245fb3b98d45f13722aa1cc438d91f78",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "crawl",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.91121,
+        "translation": [
+          11.88913,
+          36.03623
+        ],
+        "union": [
+          42,
+          66,
+          619,
+          542
+        ],
+        "storage_path": "fish/rare/scrap-tin-home-hermit-crab_sprite.png"
+      }
+    },
+    {
+      "id": "scrap-bottlecap-shield-crab",
+      "storage_path": "fish/rare/scrap-bottlecap-shield-crab_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 병뚜껑 방패게. SUBJECT: Cute small orange crab facing RIGHT, each claw holds a different worn bottle cap as a shield, blue and red caps. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-f51e499a-defc-4da2-a25b-17b125e5e901.png",
+      "sha256": "7c1494ee15f280faa67fed19f4f926b55dd2f2541cc72ff1201b3be366f16e5b",
+      "source_sha256": "8725d4156edd683f5fb44dda9b97dae590f28a6af27578672edd709659cb5101",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "crawl",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.95327,
+        "translation": [
+          25.96518,
+          2.1335
+        ],
+        "union": [
+          78,
+          221,
+          1182,
+          1089
+        ],
+        "storage_path": "fish/rare/scrap-bottlecap-shield-crab_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-bottlecap-shield-crab",
+      "storage_path": "fish/rare/scrap-bottlecap-shield-crab_sprite.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-ead068d0-bc1d-4367-a131-494d0ceea95f.png",
+      "prompt": "Use case: precise-object-edit. Edit Image1 the supplied placement guide into a professional 4-frame animation sprite sheet. Image2 is the approved individual character for exact identity. Image3 is tier STYLE only. Keep 2 columns and2 rows EQUAL SQUARE CELLS and preserve the GUIDE subject placement and padding in EVERY cell. Four sequential crawl poses, alternating walking legs and small opposing shifts of bottle cap shields. Head and eyes fixed, maintain coherent same claws and caps, no whole body bounce. Same right-facing orientation as guide in every frame. Keep all hard bodies scale/rotation/opacity constant, opaque body. Animate appendages with real connected poses, not duplicated images or fade blending. Every frame fully contains ALL appendages and glow, generous transparent margins, no pixel touching outer edge or internal cell boundary. No text, no frame grid lines, no background, no ground, no cast shadow. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "sha256": "01eb85651e234f0fc7e2989908e1852892499821bdb6b27790789c70e3701a5d",
+      "source_sha256": "fc3b008789694a4a5820290a719f637caa505ef8cfe376323567a1629b1d3b66",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "crawl",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.89419,
+        "translation": [
+          18.86323,
+          9.47419
+        ],
+        "union": [
+          35,
+          87,
+          623,
+          592
+        ],
+        "storage_path": "fish/rare/scrap-bottlecap-shield-crab_sprite.png"
+      }
+    },
+    {
+      "id": "scrap-bulb-home-octopus",
+      "storage_path": "fish/rare/scrap-bulb-home-octopus_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 전구집 문어. SUBJECT: Cute little lilac octopus peeking RIGHT out of a large broken clear lightbulb lying on its side, rounded glass edges and rusty screw base. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-ed782c3e-4fe8-433e-91ce-152cc25d24cb.png",
+      "sha256": "b4c3e5e8671c01d93f94ad8196e6689ccd37d958dd7ffe4041d6960be10472b3",
+      "source_sha256": "43404d8199ccc3f47327bcba33f8860e8a5db8cb4d3edb84a96c6d42419b0dee",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.91597,
+        "translation": [
+          49.94191,
+          60.47551
+        ],
+        "union": [
+          55,
+          224,
+          1204,
+          1012
+        ],
+        "storage_path": "fish/rare/scrap-bulb-home-octopus_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-bulb-home-octopus",
+      "storage_path": "fish/rare/scrap-bulb-home-octopus_sprite.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-94ea414c-10dd-419e-a3f8-e32e06e85c97.png",
+      "prompt": "Use case: precise-object-edit. Edit Image1 the supplied placement guide into a professional 4-frame animation sprite sheet. Image2 is the approved individual character for exact identity. Image3 is tier STYLE only. Keep 2 columns and2 rows EQUAL SQUARE CELLS and preserve the GUIDE subject placement and padding in EVERY cell. Four sequential idle poses. Glass lightbulb NEVER moves. Octopus tentacles curl/unfurl delicately outside opening, seaweed softly sways. Head and face anchor fixed, eyes open. Do not move or rescale bulb. Same right-facing orientation as guide in every frame. Keep all hard bodies scale/rotation/opacity constant, opaque body. Animate appendages with real connected poses, not duplicated images or fade blending. Every frame fully contains ALL appendages and glow, generous transparent margins, no pixel touching outer edge or internal cell boundary. No text, no frame grid lines, no background, no ground, no cast shadow. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "sha256": "63310fc73db6c5970ecd917d6604530a81374842c9e4f29baa55fca7d3d8a9b4",
+      "source_sha256": "a48c61fccad9b93a86f8d012781c335e368df946b419959bcd216a38cdf86aaf",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.85639,
+        "translation": [
+          41.5961,
+          47.16263
+        ],
+        "union": [
+          10,
+          90,
+          624,
+          531
+        ],
+        "storage_path": "fish/rare/scrap-bulb-home-octopus_sprite.png"
+      }
+    },
+    {
+      "id": "scrap-tire-moray",
+      "storage_path": "fish/rare/scrap-tire-moray_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 타이어 곰치. SUBJECT: Cute olive green moray eel facing RIGHT peeking out through the central hole of a discarded black tire on seabed, head and short neck only. The attached image is STYLE reference only, do not copy its animal, props or background. Rounded charming Pongi cartoon, bold clean dark brown outlines, warm soft cel shading, readable simple materials. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "common-rare-pongi.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-993ccef0-8cca-48a6-8147-767265ae25e4.png",
+      "sha256": "dfccdd73dba976a027134422b63eefb0f00d04fa7b089f7803b65a77702e86cf",
+      "source_sha256": "e11c18250d6c75fde81f2452fc0e08226b20fd704c2e9ead434bc2a7f8f68539",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.93549,
+        "translation": [
+          27.3519,
+          32.02934
+        ],
+        "union": [
+          102,
+          73,
+          1179,
+          1198
+        ],
+        "storage_path": "fish/rare/scrap-tire-moray_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-tire-moray",
+      "storage_path": "fish/rare/scrap-tire-moray_sprite.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-8106cc12-41cd-486f-bb2b-244e09c88945.png",
+      "prompt": "Edit the attached PADDED PLACEMENT GUIDE ONLY. Keep its exact 2-by2 grid and SMALL subject footprint, about60 percent of every square cell. DO NOT zoom in or enlarge the ship/robot/tire to fill cells. Large empty transparent margins are REQUIRED. Preserve identical body location, scale and opacity in all cells. 4 real idle poses: tire stationary, moray mouth slowly closes/opens and seaweed tips wave. Tire stays in same exact position. Same identity and tier style as guide. Complete silhouettes, no scene, no text, no shadows. True alpha transparency.",
+      "sha256": "19976d7647f023b7edd5fc6eece532b0b7638fa1ab5612d7e004b3beaf250589",
+      "source_sha256": "9b65f96eb15684380ef9a76e48101cdb8b15855208aea700f62ddd85f4fc84ee",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "fixed",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 1.39333,
+        "translation": [
+          -135.15333,
+          -124.70333
+        ],
+        "union": [
+          133,
+          126,
+          510,
+          502
+        ],
+        "storage_path": "fish/rare/scrap-tire-moray_sprite.png"
+      }
+    },
+    {
+      "id": "scrap-scrap-armored-sturgeon",
+      "storage_path": "fish/epic/scrap-scrap-armored-sturgeon_thumbnail.png",
+      "prompt": "Use case: stylized-concept. One game collectible thumbnail, 고철갑옷 철갑상어. SUBJECT: Large sturgeon fish facing RIGHT, long pointed snout and barbels, natural scutes resembling overlapping rusted copper and verdigris metal armor plates, flowing fins, clearly a fish not a robot. The attached image is STYLE reference only, do not copy its animal, props or background. Polished soft fantasy game illustration, fine colored outlines, rich material gradients, detailed dimensional shading, restrained emerald highlights. Copper rust, turquoise verdigris and soft seaweed green theme. For animals head points to SCREEN RIGHT and body in clear side/three-quarter side view, never front or left. Inanimate objects have NO invented faces. Single complete isolated object, full silhouette occupies about82 percent of square, at least8 percent transparent padding on every side including seaweed. No surrounding scene, no floor plane, no cast shadow, no bubbles outside silhouette, no writing, no UI, no checkerboard. Genuine alpha transparency.",
+      "ref": "epic-mythic-starlight.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-cfd168d2-1ba3-4b5f-9372-abd4fc2b8457.png",
+      "sha256": "0cc1607613c378b9d6db0871c83f749a653e82ac3089fd1c3b52bacdff4f09df",
+      "source_sha256": "dbb589beb1cb143aafde5a2bf3b346547fe52f6d83a8f6d1a88b75b5f95400bb",
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "swim",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.90651,
+        "translation": [
+          46.83614,
+          50.00892
+        ],
+        "union": [
+          59,
+          84,
+          1220,
+          1188
+        ],
+        "storage_path": "fish/epic/scrap-scrap-armored-sturgeon_thumbnail.png"
+      }
+    },
+    {
+      "id": "scrap-scrap-armored-sturgeon",
+      "storage_path": "fish/epic/scrap-scrap-armored-sturgeon_sprite.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-f80e538c-338a-4feb-a0f5-b8b6c5382a79.png",
+      "prompt": "Edit this PADDED2-by2 placement guide into4 sequential swim poses. Keep EXACT SMALL guide size about60percent of every cell; never zoom in or fill cells. Preserve same head and rigid armored trunk coordinates, same size and orientation in all4. Tail and trailing fin tips make SMALL gentle left-right strokes, do not swing tail in a huge arc, do not curl entire fish, do not vary eye or head placement. All fins barbels and tail fully within central75percent of each cell. Same copper jade armored sturgeon identity, soft detailed fantasy style. Four equal square cells, no grid, no text, no external scenery, true alpha transparency, generous padding.",
+      "sha256": "e872354cf3fb81872e25d2a03b07797813fb18aafa131e2e7f164ee6ee9fc20b",
+      "source_sha256": "0cfa0ecbea5cd9a8fc8717da62c0a08acdb8c555dae8568bba676c3c2525b166",
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "swim",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 1.18622,
+        "translation": [
+          -104.04811,
+          -80.91689
+        ],
+        "union": [
+          130,
+          139,
+          573,
+          525
+        ],
+        "storage_path": "fish/epic/scrap-scrap-armored-sturgeon_sprite.png"
+      }
+    },
+    {
+      "id": "map",
+      "path": "map/routes/map-scrapisle_thumbnail.png",
+      "transparent": true,
+      "prompt": "One square isolated transparent game map item. Unfolded cream parchment with curled edges, hand painted tiny Rustgreen Scrap Island: island of copper scrap hills, abandoned ships, small crane, moss-green roof harbor and emerald sea with dotted route. Warm brown outlines, rounded charming cartoon illustration, readable at128 pixels, no text, no numbers, no people. Whole parchment within84 percent of square, true transparent background, no exterior scenery or shadow.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-f67c7607-6bdb-4ca7-bcfe-dc00ac15699b.png",
+      "storage_path": "map/routes/map-scrapisle_thumbnail.png",
+      "sha256": "c3210209bd70c1ada7914006b483b16a749819fcb7b56b64828cbfdef5fbdff4"
+    },
+    {
+      "id": "rod",
+      "path": "equipment/rods/scrapisle/thumbnail.png",
+      "transparent": true,
+      "prompt": "One square isolated transparent polished cozy fantasy fishing equipment icon, entire rod diagonal bottom left to top right. Salvaged copper and verdigris metal fishing rod with moss green wrapping, sturdy cork grip, circular gear shaped brass reel with jade hub, little copper can shaped fishing float attached by line. Charming carefully restored handmade scrap equipment, no face, no words, no scenery, whole set inside84 percent image, transparent background.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-6a10af13-b1f9-4635-8bc2-98a8312fcd01.png",
+      "storage_path": "equipment/rods/scrapisle/thumbnail.png",
+      "sha256": "f6acc1130fba2dcce2c9c405682e6a9951b107910425cdaea152a18aac6da212"
+    },
+    {
+      "id": "reel-frame",
+      "path": "equipment/rods/scrapisle/reel-frame.png",
+      "prompt": "Use case: stylized-concept. Isolated transparent illustrated game equipment part for Rustgreen Scrap Island. Warm copper, verdigris jade and cream palette, clean polished cozy hand-painted dimensional game art. Fixed circular fishing reel BACKPLATE only, face-on straight orthographic, center axle at EXACT image center. Moss green enamel with rusted copper rim and little bolts, hollow central small axle socket. No crank, no handle, no rod, no scenery. Full circular silhouette within80 percent square. No text, no watermark, no ground shadow. True alpha transparency.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-ca1a545b-f710-4de7-8802-2513e92ca1f8.png",
+      "storage_path": "equipment/rods/scrapisle/reel-frame.png",
+      "sha256": "55b94310d934c23d4b05678d2ff3ffac9e56a2f20c1094175f2061d8e7b0d967"
+    },
+    {
+      "id": "reel-rotor",
+      "path": "equipment/rods/scrapisle/reel-rotor.png",
+      "prompt": "Use case: stylized-concept. Isolated transparent illustrated game equipment part for Rustgreen Scrap Island. Warm copper, verdigris jade and cream palette, clean polished cozy hand-painted dimensional game art. Separate rotating fishing reel gear and attached small crank handle, face-on orthographic. Copper toothed gear with jade hub, center axle at EXACT image center, short crank to lower right. Gear readable and balanced, complete silhouette inside80 percent square. No backplate, no rod, no scenery. No text, no watermark, no ground shadow. True alpha transparency.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-f0299420-d2fc-4c0a-b82e-487fd4436207.png",
+      "storage_path": "equipment/rods/scrapisle/reel-rotor.png",
+      "sha256": "1f7dc4f93c60650783ad3ca548d0c507e4e82d4d4e6d014a6dee2e11132af216"
+    },
+    {
+      "id": "float",
+      "path": "equipment/rods/scrapisle/float.png",
+      "prompt": "Use case: stylized-concept. Isolated transparent illustrated game equipment part for Rustgreen Scrap Island. Warm copper, verdigris jade and cream palette, clean polished cozy hand-painted dimensional game art. Small fishing FLOAT shaped like a tiny restored copper sardine can, sage green enamel band, round top eyelet, no face, upright vertical orientation, body center at EXACT image center. Clear compact silhouette within78 percent square, no line, no rod, no scenery. No text, no watermark, no ground shadow. True alpha transparency.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-83e0dcc3-faf7-47e8-9a21-c3d2eee77d42.png",
+      "storage_path": "equipment/rods/scrapisle/float.png",
+      "sha256": "37860113082ef14abe9a5cef0bb8369957877f646ee20b7e3e418cb162c915d9"
+    }
+  ],
+  "public_assets": [
+    {
+      "id": "horizon",
+      "path": "public/banners/scrapisle-horizon.png",
+      "transparent": false,
+      "prompt": "Wide landscape 3:1 panoramic hand-painted cozy fantasy game seascape for Rustgreen Scrap Island. A gently rusted island harbor built of abandoned ships, copper scrap hills, old cranes and patched corrugated sheds, turquoise patina, moss and seaweed reclaiming discarded objects. Clear jade green sea in foreground, warm pale afternoon sky, inviting whimsical melancholy, rich coherent detail not a landfill photograph, no people, no writing, no UI. Horizon through middle, distinctive scrap island silhouette in middle third, gentle light.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-ae069bf3-c8f6-4901-b1c8-acd89efc9f66.png",
+      "sha256": "1fe749f61d31354021a0c6801769f4e933581cdbf39e8561152f1035365f33ef"
+    },
+    {
+      "id": "fishing",
+      "path": "public/fishing/environments/scrapisle.png",
+      "transparent": false,
+      "prompt": "Portrait 1024x1536 hand-painted cozy fantasy game first person fishing environment Rustgreen Scrap Island. Top quarter distant island harbor of rusted abandoned ships, tiny salvage cranes and copper scrap hills covered in moss, pale warm sky. y400 through y1050 CLEAR OPEN JADE GREEN WATER for float. Bottom y1060 through1536, full width wooden fishing dock with weathered moss green boards and subtle rusty metal fittings. Straight horizontal dock edge at69 percent height, no railings, no equipment, no people, no close foreground junk, no lettering. Beautiful warm green copper palette, polished illustrated game background.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-6f1cb623-318b-4914-9211-9d18e3bbfd06.png",
+      "sha256": "220a01188af6990c7ee81c55e09225e3c6eecb32f34db767730eccd261895f6b"
+    },
+    {
+      "id": "icon",
+      "path": "public/region-icons/scrapisle.png",
+      "transparent": true,
+      "prompt": "One small square transparent cozy game region icon. A miniature moss-covered island made of a rusted boat bow, tiny salvage crane and copper gears, green seaweed and jade water rim. Rounded cartoon silhouette, bold warm brown outlines and soft warm cel shading, readable at48 pixels, not an emoji, no writing, no external background, whole silhouette within84 percent of square.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-85f8a708-eaf3-48bb-b94c-339b6f08ce76.png",
+      "sha256": "0be7ea8cd6b6f5eed5cfe384fc3176f18794ddec01c937db5fa6412b7d4ba84d"
+    }
+  ],
+  "validation": {
+    "alpha": "All38 transparent PNGs checked at alpha16; no cell boundary pixels.",
+    "framing": "Collectible framing uses one union scale and translation per entire sheet, never per pose.",
+    "registration": "7 rigid body or fixed base patch measurements.",
+    "limitations": "No physical mobile QA or remote schema verification. User selected manual SQL installation."
+  }
+}

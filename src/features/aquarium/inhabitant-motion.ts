@@ -14,13 +14,16 @@ export class InhabitantMotion {
   pose = { x: 0, y: 0, size: 0, direction: 1, angle: 0, frame: 0 }
   item: OwnedCollectible
   private born: number
+  private sourcePosition:{x:number|null;y:number|null}
   constructor(item: OwnedCollectible, born = 0) {
     this.item = item
+    this.sourcePosition={x:item.position_x,y:item.position_y}
     this.born = born
     this.swim = createSwimMotion(item.id, item.animation_seed, Number(item.species.speed), item.species.kind === 'fish')
   }
   setItem(item:OwnedCollectible,now:number,width:number,height:number,reduced=false){
-    const changed=item.position_x!==this.item.position_x||item.position_y!==this.item.position_y||(!item.editing&&this.item.editing===true)
+    const changed=item.position_x!==this.sourcePosition.x||item.position_y!==this.sourcePosition.y||(!item.editing&&this.item.editing===true)
+    this.sourcePosition={x:item.position_x,y:item.position_y}
     const before=this.item.species,after=item.species
     if(before.movement_type!==after.movement_type||before.travel_direction!==after.travel_direction||before.speed!==after.speed||before.kind!==after.kind){
       this.swim=createSwimMotion(item.id,item.animation_seed,Number(after.speed),after.kind==='fish')
@@ -51,13 +54,18 @@ export class InhabitantMotion {
       this.pose={...this.pose,x:px,y:py,size}
       return {x:this.item.position_x!,y:this.item.position_y!}
     }
-    const motion=this.swim(reduced?0:Math.max(0,now-this.born))
     const low=Number(this.item.species.swim_y_min),high=Number(this.item.species.swim_y_max)
     const px=Math.max(0,Math.min(w,x)),py=Math.max(0,Math.min(h,y))
+    // A new local route starts where the user dropped the inhabitant.
+    // Choose a target ahead of the drop, including drops inside the outer zones.
+    const direction=px>=w*.94?-1:px<=w*.06?1:this.pose.direction
+    this.swim=createSwimMotion(this.item.id,this.item.animation_seed,Number(this.item.species.speed),this.item.species.kind==='fish',{x:w?px/w:0,direction})
+    this.born=now;this.mirrored=false
+    const motion=this.swim(0)
     this.escape=null;this.placed=true;this.initialized=true
     this.offset={x:px-(this.mirrored?1-motion.x:motion.x)*w,y:py-(low+(high-low)*motion.y)*h}
     this.item={...this.item,position_x:w?px/w:0,position_y:h?py/h:0}
-    this.pose={...this.pose,x:px,y:py,size}
+    this.pose={...this.pose,x:px,y:py,size,direction:motion.direction}
     return {x:this.item.position_x!,y:this.item.position_y!}
   }
   flee(x: number, y: number, now: number, radius: number) {
@@ -99,13 +107,14 @@ export class InhabitantMotion {
     }else if(settings.type==='swim')x=motion.x*w
     return {x,y,direction}
   }
-  update(now: number, delta: number, width: number, height: number, reduced = false) {
+  update(now: number, delta: number, width: number, height: number, reduced = false): InhabitantMotion['pose'] {
     const s = this.item.species, seed = this.item.animation_seed / 1000000
     const time = reduced ? 0 : Math.max(0, now - this.born)
     const motion = this.swim(time), size = Math.min(s.size, width * .4)*Number(this.item.scale??1)
     const w = Math.max(0, width - size), h = Math.max(0, height - size)
     if(!this.initialized&&this.item.position_x!==null&&this.item.position_y!==null&&!canArrangeSpecies(s)){
       this.place(this.item.position_x*w,this.item.position_y*h,now,width,height,reduced)
+      return this.update(now,delta,width,height,reduced)
     }
     let x: number, y: number, direction = motion.direction, angle = 0
     if (canArrangeSpecies(s)||this.item.editing) {

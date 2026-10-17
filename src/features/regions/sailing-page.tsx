@@ -26,7 +26,7 @@ function SailingJourney({regionId,retry}:{regionId:string;retry:()=>void}) {
     if(!active)return
     const target=map.regions.find(item=>item.id===regionId)
     if(!target)throw new Error('지역을 찾을 수 없어요.')
-    if(!target.unlocked)throw new Error('지도 조각이 없어 이동할 수 없어요.')
+    if(!target.unlocked)throw new Error('지도가 없어 이동할 수 없어요.')
     if(map.currentRegion===regionId){navigate(`/region/${regionId}`,{replace:true});return}
     setRegion(target)
     // Cleanup prevents a departure from committing if the player leaves during the animation.

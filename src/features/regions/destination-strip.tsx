@@ -5,7 +5,7 @@ import type { ReactNode } from 'react'
 export function DestinationStrip({children}:{children:ReactNode}){
  const drag=useRef<{id:number;x:number;scroll:number;moved:boolean}|null>(null)
  const suppressClick=useRef(false)
- return <div role="group" aria-label="지도 조각 목록"
+ return <div role="group" aria-label="지도 목록"
   className="flex shrink-0 cursor-grab select-none gap-2 overflow-x-auto overscroll-x-contain py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden active:cursor-grabbing"
   onDragStart={event=>event.preventDefault()}
   onPointerDown={event=>{

@@ -1,0 +1,106 @@
+-- Reviewed catalog diff: 22 new species plus standing sentinel art; preserve all other catalog and player rows.
+begin;
+set constraints all deferred;
+insert into public.collectible_species ("id","kind","name","description","swim_y_min","swim_y_max","speed","size","rarity","thumbnail_path","sell_price","sprite_sheet_path","native_region_id","movement_type","flip_with_direction","travel_direction") values
+('anchor-chain-rock','decoration','닻줄 감긴 바위','굵은 닻 쇠사슬이 감긴 둥근 바위. 작은 해초가 푸른골 물길에 흔들린다.',null,null,'0',100,'common','decorations/normal/anchor-chain-rock_thumbnail.png',12,null,'bluegrove','fixed',false,'both'),
+('atlantean-sentinel','fish','아틀란티스 수호병','대리석 갑주와 청동 관절로 만들어진 고대 수호병. 삼지창을 들고 제자리에 서서 잠든 왕국을 지킨다. 물살에 망토가 흔들리고 갑옷 문양에 청록빛이 흐른다.','0.84','0.94','0.012',150,'mythic','fish/mythic/atlantean-sentinel_thumbnail.png',1950,'fish/mythic/atlantean-sentinel-standing_sprite.png','starruins','fixed',false,'both'),
+('billowsail-sailfish','fish','돛너울 돛새치','청록색 돛지느러미가 물결처럼 펼쳐지는 날렵한 돛새치.','0.18','0.8','0.035',144,'rare','fish/rare/billowsail-sailfish_thumbnail.png',210,'fish/rare/billowsail-sailfish_sprite.png',null,'swim',true,'both'),
+('blue-scaled-mahi-mahi','fish','푸른비늘 만새기','높은 이마와 길게 이어진 등지느러미, 청금빛 비늘을 가진 만새기.','0.18','0.8','0.025',145,'epic','fish/epic/blue-scaled-mahi-mahi_thumbnail.png',560,'fish/epic/blue-scaled-mahi-mahi_sprite.png','bluegrove','swim',true,'both'),
+('blue-spotted-leopard-shark','fish','푸른점 표범상어','유려한 긴 몸에 푸른 점무늬가 흐르는 푸른골의 표범상어.','0.18','0.8','0.025',156,'epic','fish/epic/blue-spotted-leopard-shark_thumbnail.png',590,'fish/epic/blue-spotted-leopard-shark_sprite.png','bluegrove','swim',true,'both'),
+('blueback-spanish-mackerel','fish','푸른등 삼치','푸른 등과 길쭉한 은빛 몸을 가진 삼치.','0.18','0.8','0.035',108,'common','fish/normal/blueback-spanish-mackerel_thumbnail.png',28,'fish/normal/blueback-spanish-mackerel_sprite.png','bluegrove','swim',true,'both'),
+('bluegrove-giant-seabass','fish','푸른골 대왕농어','푸른골 암반색의 청록 반점과 커다란 입을 가진 토착 대왕농어.','0.18','0.8','0.025',154,'rare','fish/rare/bluegrove-giant-seabass_thumbnail.png',240,'fish/rare/bluegrove-giant-seabass_sprite.png','bluegrove','swim',true,'both'),
+('bluegrove-spearfish','fish','푸른창 청새치','푸른골 물길을 따라 긴 창 같은 주둥이로 나아가는 청새치.','0.18','0.8','0.025',145,'rare','fish/rare/bluegrove-spearfish_thumbnail.png',225,'fish/rare/bluegrove-spearfish_sprite.png','bluegrove','swim',true,'both'),
+('bluestripe-flyingfish','fish','청줄 날치','파란 줄무늬와 날개 같은 가슴지느러미를 가진 날치.','0.18','0.8','0.035',94,'common','fish/normal/bluestripe-flyingfish_thumbnail.png',26,'fish/normal/bluestripe-flyingfish_sprite.png','bluegrove','swim',true,'both'),
+('bronze-yellowtail','fish','청동 방어','청동빛 등이 은은하게 빛나는 두툼한 방어.','0.18','0.8','0.035',126,'rare','fish/rare/bronze-yellowtail_thumbnail.png',180,'fish/rare/bronze-yellowtail_sprite.png','bluegrove','swim',true,'both'),
+('giant-seabass','fish','대왕농어','큼직한 아가미와 넓은 입을 가진 은회색 대왕농어.','0.18','0.8','0.025',148,'rare','fish/rare/giant-seabass_thumbnail.png',205,'fish/rare/giant-seabass_sprite.png',null,'swim',true,'both'),
+('goldstripe-amberjack','fish','금줄 부시리','은빛 옆구리를 따라 금빛 줄이 이어지는 날렵한 부시리.','0.18','0.8','0.035',124,'rare','fish/rare/goldstripe-amberjack_thumbnail.png',175,'fish/rare/goldstripe-amberjack_sprite.png',null,'swim',true,'both'),
+('longtail-thresher-shark','fish','긴꼬리 환도상어','몸만큼 긴 꼬리가 부드럽게 휘어지는 은청색 환도상어.','0.18','0.8','0.025',158,'rare','fish/rare/longtail-thresher-shark_thumbnail.png',245,'fish/rare/longtail-thresher-shark_sprite.png','bluegrove','swim',true,'both'),
+('ripple-pattern-giant-moray','fish','물결무늬 대왕곰치','굵고 긴 몸을 따라 청록색 물결무늬가 이어지는 거대한 곰치.','0.18','0.8','0.018',160,'epic','fish/epic/ripple-pattern-giant-moray_thumbnail.png',620,'fish/epic/ripple-pattern-giant-moray_sprite.png','bluegrove','swim',true,'both'),
+('sandburied-cannon','decoration','모래에 묻힌 대포','푸른골 모래에 반쯤 묻힌 낡은 청동 대포. 포신에 조개와 해초가 붙어 있다.',null,null,'0',116,'rare','decorations/rare/sandburied-cannon_thumbnail.png',155,null,'bluegrove','fixed',false,'both'),
+('scale-armored-barracuda','fish','비늘갑옷 바라쿠다','갑옷처럼 겹친 은색 비늘과 길게 뻗은 턱이 특징인 바라쿠다.','0.18','0.8','0.035',136,'rare','fish/rare/scale-armored-barracuda_thumbnail.png',190,'fish/rare/scale-armored-barracuda_sprite.png',null,'swim',true,'both'),
+('seawing-giant-manta','fish','바다날개 대왕 가오리','짙은 푸른 날개와 진주빛 배를 지닌 거대한 가오리. 넓은 날개가 유려하게 물결친다.','0.18','0.8','0.025',164,'epic','fish/epic/seawing-giant-manta_thumbnail.png',570,'fish/epic/seawing-giant-manta_sprite.png',null,'swim',true,'both'),
+('seila-white-sail-guardian','fish','흰돛의 수호자, 세일라','거대한 흰 돛으로 푸른골의 항로를 지키는 신화의 돛새치. 돛을 펼치면 푸른 항로 문양에 빛이 흐른다.','0.18','0.8','0.02',180,'mythic','fish/mythic/seila-white-sail-guardian_thumbnail.png',2100,'fish/mythic/seila-white-sail-guardian_sprite.png','bluegrove','swim',true,'both'),
+('silver-ripple-mullet','fish','은물결 숭어','은빛 비늘에 잔물결이 비치는 통통한 숭어.','0.18','0.8','0.035',100,'common','fish/normal/silver-ripple-mullet_thumbnail.png',24,'fish/normal/silver-ripple-mullet_sprite.png','bluegrove','swim',true,'both'),
+('silverblade-swordfish','fish','은검 황새치','은백색 몸과 길고 납작한 검 모양 주둥이를 가진 대형 황새치.','0.18','0.8','0.035',138,'rare','fish/rare/silverblade-swordfish_thumbnail.png',195,'fish/rare/silverblade-swordfish_sprite.png',null,'swim',true,'both'),
+('steelback-bluefin-tuna','fish','강철등 참다랑어','강철빛 푸른 등과 단단하고 둥근 몸통을 가진 참다랑어.','0.18','0.8','0.035',140,'rare','fish/rare/steelback-bluefin-tuna_thumbnail.png',215,'fish/rare/steelback-bluefin-tuna_sprite.png',null,'swim',true,'both'),
+('striped-needlefish','fish','줄무늬 동갈치','긴 주둥이와 청록색 줄무늬가 돋보이는 가느다란 동갈치.','0.18','0.8','0.035',116,'common','fish/normal/striped-needlefish_thumbnail.png',25,'fish/normal/striped-needlefish_sprite.png','bluegrove','swim',true,'both'),
+('sunken-channel-marker','decoration','가라앉은 항로 표지석','파도와 방향 화살표가 새겨진 오래된 항로 표지석.',null,null,'0',112,'rare','decorations/rare/sunken-channel-marker_thumbnail.png',145,null,'bluegrove','fixed',false,'both')
+on conflict(id) do update set "kind"=excluded."kind","name"=excluded."name","description"=excluded."description","swim_y_min"=excluded."swim_y_min","swim_y_max"=excluded."swim_y_max","speed"=excluded."speed","size"=excluded."size","rarity"=excluded."rarity","thumbnail_path"=excluded."thumbnail_path","sell_price"=excluded."sell_price","sprite_sheet_path"=excluded."sprite_sheet_path","native_region_id"=excluded."native_region_id","movement_type"=excluded."movement_type","flip_with_direction"=excluded."flip_with_direction","travel_direction"=excluded."travel_direction";
+delete from public.collectible_habitats where species_id in ('anchor-chain-rock','atlantean-sentinel','billowsail-sailfish','blue-scaled-mahi-mahi','blue-spotted-leopard-shark','blueback-spanish-mackerel','bluegrove-giant-seabass','bluegrove-spearfish','bluestripe-flyingfish','bronze-yellowtail','giant-seabass','goldstripe-amberjack','longtail-thresher-shark','ripple-pattern-giant-moray','sandburied-cannon','scale-armored-barracuda','seawing-giant-manta','seila-white-sail-guardian','silver-ripple-mullet','silverblade-swordfish','steelback-bluefin-tuna','striped-needlefish','sunken-channel-marker');
+insert into public.collectible_habitats(species_id,region_id) values
+('anchor-chain-rock','bluegrove'),
+('atlantean-sentinel','starruins'),
+('billowsail-sailfish','bluegrove'),
+('billowsail-sailfish','coral'),
+('billowsail-sailfish','dreamabyss'),
+('billowsail-sailfish','mistmoon'),
+('billowsail-sailfish','pongdang'),
+('billowsail-sailfish','primal'),
+('billowsail-sailfish','starruins'),
+('blue-scaled-mahi-mahi','bluegrove'),
+('blue-spotted-leopard-shark','bluegrove'),
+('blueback-spanish-mackerel','bluegrove'),
+('bluegrove-giant-seabass','bluegrove'),
+('bluegrove-spearfish','bluegrove'),
+('bluestripe-flyingfish','bluegrove'),
+('bronze-yellowtail','bluegrove'),
+('giant-seabass','bluegrove'),
+('giant-seabass','coral'),
+('giant-seabass','dreamabyss'),
+('giant-seabass','mistmoon'),
+('giant-seabass','pongdang'),
+('giant-seabass','primal'),
+('giant-seabass','starruins'),
+('goldstripe-amberjack','bluegrove'),
+('goldstripe-amberjack','coral'),
+('goldstripe-amberjack','dreamabyss'),
+('goldstripe-amberjack','mistmoon'),
+('goldstripe-amberjack','pongdang'),
+('goldstripe-amberjack','primal'),
+('goldstripe-amberjack','starruins'),
+('longtail-thresher-shark','bluegrove'),
+('ripple-pattern-giant-moray','bluegrove'),
+('sandburied-cannon','bluegrove'),
+('scale-armored-barracuda','bluegrove'),
+('scale-armored-barracuda','coral'),
+('scale-armored-barracuda','dreamabyss'),
+('scale-armored-barracuda','mistmoon'),
+('scale-armored-barracuda','pongdang'),
+('scale-armored-barracuda','primal'),
+('scale-armored-barracuda','starruins'),
+('seawing-giant-manta','bluegrove'),
+('seawing-giant-manta','coral'),
+('seawing-giant-manta','dreamabyss'),
+('seawing-giant-manta','mistmoon'),
+('seawing-giant-manta','pongdang'),
+('seawing-giant-manta','primal'),
+('seawing-giant-manta','starruins'),
+('seila-white-sail-guardian','bluegrove'),
+('silver-ripple-mullet','bluegrove'),
+('silverblade-swordfish','bluegrove'),
+('silverblade-swordfish','coral'),
+('silverblade-swordfish','dreamabyss'),
+('silverblade-swordfish','mistmoon'),
+('silverblade-swordfish','pongdang'),
+('silverblade-swordfish','primal'),
+('silverblade-swordfish','starruins'),
+('steelback-bluefin-tuna','bluegrove'),
+('steelback-bluefin-tuna','coral'),
+('steelback-bluefin-tuna','dreamabyss'),
+('steelback-bluefin-tuna','mistmoon'),
+('steelback-bluefin-tuna','pongdang'),
+('steelback-bluefin-tuna','primal'),
+('steelback-bluefin-tuna','starruins'),
+('striped-needlefish','bluegrove'),
+('sunken-channel-marker','bluegrove');
+-- Remote-only artwork metadata is optional in the older local baseline.
+do $$ begin
+ if exists(select 1 from information_schema.columns where table_schema='public' and table_name='collectible_species' and column_name='facing_direction') then
+  execute 'update public.collectible_species set facing_direction=''right'' where id in (''silverblade-swordfish'',''billowsail-sailfish'',''steelback-bluefin-tuna'',''scale-armored-barracuda'',''goldstripe-amberjack'',''giant-seabass'',''seawing-giant-manta'',''anchor-chain-rock'',''silver-ripple-mullet'',''blueback-spanish-mackerel'',''bluestripe-flyingfish'',''striped-needlefish'',''bluegrove-spearfish'',''bronze-yellowtail'',''bluegrove-giant-seabass'',''sunken-channel-marker'',''sandburied-cannon'',''longtail-thresher-shark'',''blue-spotted-leopard-shark'',''blue-scaled-mahi-mahi'',''ripple-pattern-giant-moray'',''seila-white-sail-guardian'',''atlantean-sentinel'')';
+ end if;
+ if exists(select 1 from information_schema.columns where table_schema='public' and table_name='collectible_species' and column_name='idle_animated') then
+  execute 'update public.collectible_species set idle_animated=true where id=''atlantean-sentinel''';
+ end if;
+end $$;
+notify pgrst, 'reload schema';
+commit;

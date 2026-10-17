@@ -1,0 +1,36 @@
+import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
+import {afterEach,expect,it,vi} from 'vitest'
+import {MemoryRouter} from 'react-router'
+import {ShopPage} from '@/features/gold/shop-page'
+const mock=vi.hoisted(()=>({load:vi.fn(),trade:vi.fn(),bait:vi.fn()}))
+vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wallet:{gold:10000,inventory:{}},transact:mock.trade,loading:false,busy:false,error:'',testEnabled:false,refresh:vi.fn()})}))
+vi.mock('@/features/regions/map-shop-api',()=>({loadMapShop:mock.load}))
+vi.mock('@/features/fishing/api',()=>({loadFishing:mock.bait}))
+vi.mock('@/features/fishing/fishing-rod-ui',()=>({FishingRodShop:()=> <p>낚싯대 목록</p>}))
+vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:()=>null}))
+afterEach(()=>{cleanup();vi.resetAllMocks()})
+it('opens the map shop from its link and confirms a purchase without rarity or duplicate purchase',async()=>{
+ mock.load.mockResolvedValue({items:[{region_id:'coral',name:'산호빛 여울 지도',description:'새 바다',price:500,thumbnail_path:'map.png',owned:false},{region_id:'primal',name:'태고의 원시섬 지도',description:'원시 바다',price:3000,thumbnail_path:'map2.png',owned:true}]})
+ mock.trade.mockResolvedValue(undefined)
+ render(<MemoryRouter initialEntries={['/shop?tab=maps']}><ShopPage/></MemoryRouter>)
+ expect(screen.getByRole('tab',{name:'낚싯대'})).toBeTruthy()
+ expect(screen.getByRole('tab',{name:'미끼'})).toBeTruthy()
+ expect(screen.getByRole('tab',{name:'지도'}).getAttribute('aria-selected')).toBe('true')
+ await screen.findByRole('article',{name:'산호빛 여울 지도'})
+ expect(screen.getByRole('button',{name:'태고의 원시섬 지도 구매'}).hasAttribute('disabled')).toBe(true)
+ expect(screen.getByRole('button',{name:'태고의 원시섬 지도 구매'}).textContent).toBe('보유중')
+ fireEvent.click(screen.getByRole('button',{name:'산호빛 여울 지도 구매'}))
+ const confirm=await screen.findByRole('alertdialog')
+ fireEvent.click(within(confirm).getByRole('button',{name:'확인'}))
+ await waitFor(()=>expect(mock.trade).toHaveBeenCalledWith({type:'buy',id:'map:coral',name:'산호빛 여울 지도'}))
+ await waitFor(()=>expect(screen.getByRole('button',{name:'산호빛 여울 지도 구매'}).hasAttribute('disabled')).toBe(true))
+ expect(screen.queryByText(/일반|희귀|특급|신화/)).toBeNull()
+})
+it('uses the actual fishing bait catalog instead of legacy shell merchandise',async()=>{
+ mock.bait.mockResolvedValue({baits:[{id:'bait_safe',name:'안심 미끼',description:'안전해요',price:70,effect_description:'안정적인 미끼',image_path:'bait.png'}]})
+ mock.trade.mockResolvedValue(undefined)
+ render(<MemoryRouter initialEntries={['/shop?tab=bait']}><ShopPage/></MemoryRouter>)
+ fireEvent.click(await screen.findByRole('button',{name:'안심 미끼 1개 구매'}))
+ expect(mock.trade).toHaveBeenCalledWith({type:'buy',id:'fishing:bait_safe',name:'안심 미끼'})
+ expect(screen.queryByText('진주 조개')).toBeNull()
+})

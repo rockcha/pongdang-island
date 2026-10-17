@@ -30,3 +30,17 @@ it('shows a helpful error when the renderer cannot start',async()=>{
  render(<TankInhabitants items={[]}/> )
  expect(await screen.findByRole('alert')).toHaveProperty('textContent','어항 화면을 시작하지 못했어요. 새로고침해주세요.')
 })
+it('resizes for density changes and removes resize listeners when unmounted',async()=>{
+ const listeners=new Map<string,()=>void>()
+ const media=vi.fn((query:string)=>({matches:false,addEventListener(_event:string,handler:()=>void){listeners.set(query,handler)},removeEventListener(){}}))
+ vi.stubGlobal('matchMedia',media)
+ const view=render(<TankInhabitants items={[]}/>)
+ await waitFor(()=>expect(mock.create).toHaveBeenCalledOnce())
+ const change=[...listeners].find(([query])=>query.startsWith('(resolution:'))![1]
+ vi.stubGlobal('devicePixelRatio',2)
+ change()
+ expect(mock.resize).toHaveBeenCalledOnce()
+ expect(media).toHaveBeenCalledWith('(resolution: 2dppx)')
+ window.dispatchEvent(new Event('resize'));expect(mock.resize).toHaveBeenCalledTimes(2)
+ view.unmount();window.dispatchEvent(new Event('resize'));expect(mock.resize).toHaveBeenCalledTimes(2)
+})

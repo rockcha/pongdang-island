@@ -1,0 +1,1736 @@
+{
+  "tool": "built-in image_gen",
+  "region": "cloudferry",
+  "species": 25,
+  "files": [
+    {
+      "id": "cloud-star-candy-soot",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-0f8caceb-a7fe-4d7b-905a-7213befa0783.png",
+      "storage_path": "fish/normal/cloud-star-candy-soot_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: A tiny round black soot sprite from Spirited Away, white eyes, thin little legs carrying one pink star candy above its head. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping.  Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "4ed3ae451a3d6cd941239353ac5b90db7baef98ab192b38cd86659f59df116b7",
+      "source_sha256": "64bdd58d32cb1b99e5c553631df79f5b4b9463e097439b2066d3607885178df3",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.97896,
+        "translation": [
+          -38.20271,
+          31.79286
+        ],
+        "union": [
+          265,
+          70,
+          1093,
+          1145
+        ],
+        "storage_path": "fish/normal/cloud-star-candy-soot_thumbnail.png"
+      },
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "crawl",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-star-candy-soot",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-bd892c98-5b60-4fa3-9dc3-4c35ab5f666d.png",
+      "storage_path": "fish/normal/cloud-star-candy-soot_sprite.png",
+      "prompt": "Create a production transparent sprite sheet. Reference1 is the APPROVED EXACT INDIVIDUAL thumbnail: preserve all identity, costume, colors, props and body proportions. Reference2 is style baseline only; do not copy its animal or checkerboard. Subject: A tiny round black soot sprite from Spirited Away, white eyes, thin little legs carrying one pink star candy above its head. EXACTLY FOUR frames, 2 COLUMNS by 2 ROWS, overall image EXACTLY SQUARE, every cell square. Reading order top-left0, top-right1, bottom-left2, bottom-right3. These are four distinct sequential in-between poses of ONE smooth looping action, not duplicates and not blink-only frames. ACTION: tiny feet step in alternating sequence, arms steady under candy.  Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward movement. Keep this exact right-facing orientation in ALL animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. CRITICAL: lock face, chest, rigid torso and props at exactly identical CELL-relative x/y positions and identical scale across every frame. No body translation, bobbing, zoom, crop or camera changes; only appendages move. Maximum pose long axis occupies 80-86 percent of a cell, minimum 7 percent clear transparent margin at each edge; thin tails stay fully inside own cell. Consistent generous padding, NO physical grid lines, NO text or frame labels, NO scenery or floor strip, NO checkerboard, NO glow crossing cell borders. Genuine transparent alpha. Refined Ghibli character game art matching the approved thumbnail.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/normal/cloud-star-candy-soot_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "sha256": "4b293489f25ce1bd7aaee70d8f46f8e1aa448a34412f99849409e4769a11007e",
+      "source_sha256": "95f4c539c845ef8b3565e6faf427ef8b894debf210d9680b419e155ab666d279",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.88074,
+        "translation": [
+          -3.56488,
+          38.71043
+        ],
+        "union": [
+          110,
+          13,
+          609,
+          610
+        ],
+        "storage_path": "fish/normal/cloud-star-candy-soot_sprite.png"
+      },
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "crawl",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-shell-home-soot",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-522b42b9-cc42-4e3a-9eb1-a306f5de897c.png",
+      "storage_path": "fish/normal/cloud-shell-home-soot_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: A black soot sprite peeking from an open pale peach seashell, tiny white eyes and two thin arms visible. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping. Upright stable resting/standing pose, not mid-step, no walking legs. Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "e517df503a375b5f31bda0491386758e60b7a5f609577fc4f570c22d5162bc9c",
+      "source_sha256": "a36825702c459f21d7d731012cd30e79d1caeea82320f91a7a852f43d85db33e",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.99656,
+        "translation": [
+          -31.22543,
+          13.6196
+        ],
+        "union": [
+          165,
+          87,
+          1155,
+          1143
+        ],
+        "storage_path": "fish/normal/cloud-shell-home-soot_thumbnail.png"
+      },
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-shell-home-soot",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-f9331f77-6bb1-43fd-99c9-f89fd0c31e31.png",
+      "storage_path": "fish/normal/cloud-shell-home-soot_sprite.png",
+      "prompt": "Create a production transparent sprite sheet. Reference1 is the APPROVED EXACT INDIVIDUAL thumbnail: preserve all identity, costume, colors, props and body proportions. Reference2 is style baseline only; do not copy its animal or checkerboard. Subject: A black soot sprite peeking from an open pale peach seashell, tiny white eyes and two thin arms visible. EXACTLY FOUR frames, 2 COLUMNS by 2 ROWS, overall image EXACTLY SQUARE, every cell square. Reading order top-left0, top-right1, bottom-left2, bottom-right3. These are four distinct sequential in-between poses of ONE smooth looping action, not duplicates and not blink-only frames. ACTION: arms gently wiggle and shell mantle subtly sways; rigid shell stays anchored. This is a FIXED character. All feet, seats, rocks, cups, shells, hearths and rigid bases remain at EXACTLY the same coordinates; NO stepping or changing poses. Animate only the specified flexible parts. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward movement. Keep this exact right-facing orientation in ALL animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. CRITICAL: lock face, chest, rigid torso and props at exactly identical CELL-relative x/y positions and identical scale across every frame. No body translation, bobbing, zoom, crop or camera changes; only appendages move. Maximum pose long axis occupies 80-86 percent of a cell, minimum 7 percent clear transparent margin at each edge; thin tails stay fully inside own cell. Consistent generous padding, NO physical grid lines, NO text or frame labels, NO scenery or floor strip, NO checkerboard, NO glow crossing cell borders. Genuine transparent alpha. Refined Ghibli character game art matching the approved thumbnail.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/normal/cloud-shell-home-soot_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "sha256": "7cf615b724c4b128dfb869a34489198467a0ac402e7ccb656233e570dc7cc14f",
+      "source_sha256": "84fe89d71d5ca4a4b1f93112a022457b879e9c52e7530359104dbbd53608148a",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.92562,
+        "translation": [
+          19.61441,
+          37.66408
+        ],
+        "union": [
+          33,
+          18,
+          601,
+          577
+        ],
+        "storage_path": "fish/normal/cloud-shell-home-soot_sprite.png"
+      },
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-teacup-soot",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-8326ff09-200b-4543-9c30-1e0991b9e037.png",
+      "storage_path": "fish/normal/cloud-teacup-soot_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: A tiny black soot sprite peeking out of an old cream porcelain teacup with a teal rim and a small chipped lip. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping. Upright stable resting/standing pose, not mid-step, no walking legs. Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "0099ec68ccb79f30c5d3761a2fdb66996a86d89c1994f10204bfe873a5a451dd",
+      "source_sha256": "c16bc8302731e0bda037a7efbe707d3f1171ba5b903576bcfe7c0caafa863e5d",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.98814,
+        "translation": [
+          8.91681,
+          6.44645
+        ],
+        "union": [
+          131,
+          95,
+          1119,
+          1160
+        ],
+        "storage_path": "fish/normal/cloud-teacup-soot_thumbnail.png"
+      },
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-teacup-soot",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-5cd3d3fb-ba78-4c98-b988-15b971113677.png",
+      "storage_path": "fish/normal/cloud-teacup-soot_sprite.png",
+      "prompt": "Re-create this exact approved individual as a clean TRANSPARENT 2x2 animation sheet, SQUARE image. Reference1 exact identity and props, reference2 only rounded cartoon style. A tiny black soot sprite peeking out of an old cream porcelain teacup with a teal rim and a small chipped lip. Four consecutive poses: little arms reach and retract and soot fuzz sways; cup remains still. CRITICAL FRAMING CORRECTION: each of the FOUR isolated subjects stays inside the CENTRAL 72 percent of ITS OWN square cell, with at least14 percent entirely empty transparent margin on EVERY side of EACH cell. Frame centers at image relative positions (25%,25%),(75%,25%),(25%,75%),(75%,75%). Never put a face or an arm at a cell edge. NO motion dashes, no particles, no stray pixels, no stroke trails, no grid, no labels. Head/chest/rigid cup exactly same CELL-relative location and same scale across all4; right-facing SIDE profile in all4, not front or left. Small restrained appendage changes only. Keep all props intact and never crop. Actual alpha transparency, no background. Whole subject long axis maximum72 percent of own cell.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/normal/cloud-teacup-soot_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "revision": "margin-fix",
+      "sha256": "4b5eb05e27b7dbb7f03a6623463716ef706a9fe787399f0d29554ed832be6fb2",
+      "source_sha256": "190db19481f6dc6f060f407865f8f036f86ada42f1033a23f492d3c34a020d5b",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.94218,
+        "translation": [
+          -3.5444,
+          3.52197
+        ],
+        "union": [
+          57,
+          54,
+          615,
+          603
+        ],
+        "storage_path": "fish/normal/cloud-teacup-soot_sprite.png"
+      },
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-cloud-cotton-jellyfish",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-6752a3a1-b1f8-4d64-9012-2bf473854cf1.png",
+      "storage_path": "fish/normal/cloud-cloud-cotton-jellyfish_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: A small fluffy white cloud-shaped jellyfish with a soft pale teal underside and several short flowing translucent tentacles, tiny eyes on its right-facing profile. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping.  Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "d2c23678444505bde44846c6775f0416c3717705607f92753ed18826b9bae4ca",
+      "source_sha256": "c5591b6c2a7fd3defa14952adf9b9429c8c92d13d5f9761a5cf57361a6189721",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.88147,
+        "translation": [
+          68.58698,
+          72.99434
+        ],
+        "union": [
+          36,
+          162,
+          1230,
+          1094
+        ],
+        "storage_path": "fish/normal/cloud-cloud-cotton-jellyfish_thumbnail.png"
+      },
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "pulse",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-cloud-cotton-jellyfish",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-f68c93ba-ca04-494b-9682-5718db86fada.png",
+      "storage_path": "fish/normal/cloud-cloud-cotton-jellyfish_sprite.png",
+      "prompt": "Re-create this exact approved individual as a clean TRANSPARENT 2x2 animation sheet, SQUARE image. Reference1 exact identity and props, reference2 only rounded cartoon style. A small fluffy white cloud-shaped jellyfish with a soft pale teal underside and several short flowing translucent tentacles, tiny eyes on its right-facing profile. Four consecutive poses: soft bell gently contracts and releases, tentacles lag smoothly. CRITICAL FRAMING CORRECTION: each of the FOUR isolated subjects stays inside the CENTRAL 72 percent of ITS OWN square cell, with at least14 percent entirely empty transparent margin on EVERY side of EACH cell. Frame centers at image relative positions (25%,25%),(75%,25%),(25%,75%),(75%,75%). Never put a face or an arm at a cell edge. NO motion dashes, no particles, no stray pixels, no stroke trails, no grid, no labels. Head/chest/rigid cup exactly same CELL-relative location and same scale across all4; right-facing SIDE profile in all4, not front or left. Small restrained appendage changes only. Keep all props intact and never crop. Actual alpha transparency, no background. Whole subject long axis maximum72 percent of own cell.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/normal/cloud-cloud-cotton-jellyfish_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "revision": "margin-fix",
+      "sha256": "7bb43644a9577cc024bc13483d78e59c18dd301426f5de8fe463070da7915226",
+      "source_sha256": "dcdb8b757cc4b052dc62b505c04e3f7066f1effa6451b02a0dcc0ebf6ec717a3",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.93053,
+        "translation": [
+          -1.94968,
+          12.00827
+        ],
+        "union": [
+          56,
+          72,
+          621,
+          575
+        ],
+        "storage_path": "fish/normal/cloud-cloud-cotton-jellyfish_sprite.png"
+      },
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "pulse",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-ponyo-green-bucket",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-211a200c-1f07-44a6-81f6-afc7fd16179c.png",
+      "storage_path": "decorations/normal/cloud-ponyo-green-bucket_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: Ponyo green plastic bucket, empty, slightly tilted with curved handle, gentle scuffs and a small leaf nearby. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Single isolated object in right-biased three-quarter view. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping. Upright stable resting/standing pose, not mid-step, no walking legs. Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "a31b44588d913b211daff83a35bb4c14fa1cdb660505ba105e7770e2bf10a347",
+      "source_sha256": "32fea3b8bba1ab61344a6005c18538fe05eebb9fc6403b5b002b68a30e82bba4",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.92319,
+        "translation": [
+          40.31264,
+          33.85031
+        ],
+        "union": [
+          65,
+          176,
+          1205,
+          1108
+        ],
+        "storage_path": "decorations/normal/cloud-ponyo-green-bucket_thumbnail.png"
+      },
+      "rarity": "common",
+      "kind": "decoration",
+      "movement": "fixed",
+      "facing_direction": null
+    },
+    {
+      "id": "cloud-totoro-lost-umbrella",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-937ee9b1-fad2-4ba3-bd04-bd300bf7fe79.png",
+      "storage_path": "trash/normal/cloud-totoro-lost-umbrella_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: Totoro old dark charcoal umbrella, discarded and resting diagonally on a small stone, worn fabric, bent wooden hooked handle, no character. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Single isolated object in right-biased three-quarter view. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping. Upright stable resting/standing pose, not mid-step, no walking legs. Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "a068f7991d9fc880471e4eeddcabbe8264adb7cf5a1156d0f9afa5af3e20b687",
+      "source_sha256": "1c86fabf3b0a2b8c587233944fbf0d7cc60666ab5dc6def9ab2be9c2eb89629a",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.91042,
+        "translation": [
+          44.78417,
+          69.82081
+        ],
+        "union": [
+          61,
+          110,
+          1217,
+          1113
+        ],
+        "storage_path": "trash/normal/cloud-totoro-lost-umbrella_thumbnail.png"
+      },
+      "rarity": "common",
+      "kind": "trash",
+      "movement": "fixed",
+      "facing_direction": null
+    },
+    {
+      "id": "cloud-head-tilt-kodama",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-18e47813-8e70-4d5e-9b96-e9b1ea009432.png",
+      "storage_path": "fish/normal/cloud-head-tilt-kodama_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: A small white Kodama forest spirit from Princess Mononoke sitting on a little mossy rock, round irregular head, small dark facial holes, clear right-facing three-quarter profile. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping. Upright stable resting/standing pose, not mid-step, no walking legs. Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "6236c1944ff8dfa269ad54724136a192e6cc5a0bce4cafefdd129ca28faa96bd",
+      "source_sha256": "ba7e0def08a739be26f917974045b266fb378423f1a1dc1346a0c71bed080a28",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.93632,
+        "translation": [
+          38.99104,
+          20.7328
+        ],
+        "union": [
+          184,
+          85,
+          1071,
+          1209
+        ],
+        "storage_path": "fish/normal/cloud-head-tilt-kodama_thumbnail.png"
+      },
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-head-tilt-kodama",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-f2de636d-ed80-42ee-9ecf-8d9a87e00b7e.png",
+      "storage_path": "fish/normal/cloud-head-tilt-kodama_sprite.png",
+      "prompt": "Create a production transparent sprite sheet. Reference1 is the APPROVED EXACT INDIVIDUAL thumbnail: preserve all identity, costume, colors, props and body proportions. Reference2 is style baseline only; do not copy its animal or checkerboard. Subject: A small white Kodama forest spirit from Princess Mononoke sitting on a little mossy rock, round irregular head, small dark facial holes, clear right-facing three-quarter profile. EXACTLY FOUR frames, 2 COLUMNS by 2 ROWS, overall image EXACTLY SQUARE, every cell square. Reading order top-left0, top-right1, bottom-left2, bottom-right3. These are four distinct sequential in-between poses of ONE smooth looping action, not duplicates and not blink-only frames. ACTION: neck gently tilts while seated torso and rock stay anchored. This is a FIXED character. All feet, seats, rocks, cups, shells, hearths and rigid bases remain at EXACTLY the same coordinates; NO stepping or changing poses. Animate only the specified flexible parts. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward movement. Keep this exact right-facing orientation in ALL animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. CRITICAL: lock face, chest, rigid torso and props at exactly identical CELL-relative x/y positions and identical scale across every frame. No body translation, bobbing, zoom, crop or camera changes; only appendages move. Maximum pose long axis occupies 80-86 percent of a cell, minimum 7 percent clear transparent margin at each edge; thin tails stay fully inside own cell. Consistent generous padding, NO physical grid lines, NO text or frame labels, NO scenery or floor strip, NO checkerboard, NO glow crossing cell borders. Genuine transparent alpha. Refined Ghibli character game art matching the approved thumbnail.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/normal/cloud-head-tilt-kodama_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "sha256": "178786c969a204d3bade37d2903a7c310bbc80f7ccd54bb7f5e98b83603099fa",
+      "source_sha256": "1166f49032d6b269e76995e757c4bf84d7671a444cd6d15f2edeb673824e8cef",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.87927,
+        "translation": [
+          44.44477,
+          31.69543
+        ],
+        "union": [
+          38,
+          21,
+          573,
+          619
+        ],
+        "storage_path": "fish/normal/cloud-head-tilt-kodama_sprite.png"
+      },
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-bath-token-frog",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-886203b3-bec2-4af8-a89d-f2bed9bbb00d.png",
+      "storage_path": "fish/normal/cloud-bath-token-frog_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: Small green frog bathhouse worker from Spirited Away in simple blue work clothes carrying two wooden bath tokens tied by a red cord. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping.  Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "73bcc9f98c80edf3f9e0f0a22a2b5e0f00f7b217437ce39975e00a2d0ff73b23",
+      "source_sha256": "dfbf0c0cbe9f090509670ff2a05995fb6e80970beaff13dd3539766df7e83f6c",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 1.00416,
+        "translation": [
+          -2.10395,
+          -31.22448
+        ],
+        "union": [
+          158,
+          131,
+          1094,
+          1179
+        ],
+        "storage_path": "fish/normal/cloud-bath-token-frog_thumbnail.png"
+      },
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "crawl",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-bath-token-frog",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-c547edc6-0cd7-41d0-96f4-4bc417e60f9f.png",
+      "storage_path": "fish/normal/cloud-bath-token-frog_sprite.png",
+      "prompt": "Create a production transparent sprite sheet. Reference1 is the APPROVED EXACT INDIVIDUAL thumbnail: preserve all identity, costume, colors, props and body proportions. Reference2 is style baseline only; do not copy its animal or checkerboard. Subject: Small green frog bathhouse worker from Spirited Away in simple blue work clothes carrying two wooden bath tokens tied by a red cord. EXACTLY FOUR frames, 2 COLUMNS by 2 ROWS, overall image EXACTLY SQUARE, every cell square. Reading order top-left0, top-right1, bottom-left2, bottom-right3. These are four distinct sequential in-between poses of ONE smooth looping action, not duplicates and not blink-only frames. ACTION: short legs alternate stepping and sleeves flutter; head and tokens stable.  Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward movement. Keep this exact right-facing orientation in ALL animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. CRITICAL: lock face, chest, rigid torso and props at exactly identical CELL-relative x/y positions and identical scale across every frame. No body translation, bobbing, zoom, crop or camera changes; only appendages move. Maximum pose long axis occupies 80-86 percent of a cell, minimum 7 percent clear transparent margin at each edge; thin tails stay fully inside own cell. Consistent generous padding, NO physical grid lines, NO text or frame labels, NO scenery or floor strip, NO checkerboard, NO glow crossing cell borders. Genuine transparent alpha. Refined Ghibli character game art matching the approved thumbnail.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/normal/cloud-bath-token-frog_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "sha256": "46bd145118e5ed4f3e14351a43b3efbea4ae366ca7d016f11a9f7690f299b94e",
+      "source_sha256": "698771bc717cc5ed7a7c347b3021f0e92f523d5e03107ec2739feff10bc824f9",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.88518,
+        "translation": [
+          37.32494,
+          35.112
+        ],
+        "union": [
+          38,
+          17,
+          585,
+          611
+        ],
+        "storage_path": "fish/normal/cloud-bath-token-frog_sprite.png"
+      },
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "crawl",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-little-log-calcifer",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-3ffe7c49-4753-459d-8c9c-d363639575ae.png",
+      "storage_path": "fish/normal/cloud-little-log-calcifer_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: Small orange Calcifer flame from Howls Moving Castle with expressive eyes and a little mouth sitting on one charred log. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping. Upright stable resting/standing pose, not mid-step, no walking legs. Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "cae856f73c29b55c969e39af33930e56da8b9fc57e8264af3eb4b2aad8e783ef",
+      "source_sha256": "3f58314fb1d67ce56b8369e72a6dd151dd0f131c7872e1ba1155a8f041569207",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.91358,
+        "translation": [
+          29.5174,
+          46.41866
+        ],
+        "union": [
+          161,
+          59,
+          1146,
+          1211
+        ],
+        "storage_path": "fish/normal/cloud-little-log-calcifer_thumbnail.png"
+      },
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-little-log-calcifer",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-a2febccc-eece-4d9c-9f09-37088868df53.png",
+      "storage_path": "fish/normal/cloud-little-log-calcifer_sprite.png",
+      "prompt": "Production game sprite sheet, square canvas divided invisibly into EXACTLY2 columns and2 rows, FOUR equal square frames. Reference1 is exact individual identity: Small orange Calcifer flame from Howls Moving Castle with expressive eyes and a little mouth sitting on one charred log. Preserve appearance and proportions. Four sequential poses: orange flame tips ripple in sequence, log and central face stable. CRITICAL: center EACH complete subject at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of canvas. Each subject fits central70 percent of its OWN cell, at least15 percent totally TRANSPARENT margin around EVERY CELL. NEVER place head, limbs, whiskers, broom, tails, flame tips, paper or props near a cell edge. NO motion lines or dashes, NO sparks or detached glow, NO stray pixels, no labels, no grid, no floor, no scenery. No cropping. Keep rigid torso, head and main props EXACT same cell-relative coordinates and scale; only stated flexible parts move. Screen RIGHT profile ALL FOUR poses. Reference2 style only. Genuine alpha transparency. Fixed bases/logs stay completely still. Complete loop, not eye-only or identical duplicates.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/normal/cloud-little-log-calcifer_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "revision": "margin-fix-2",
+      "sha256": "3cf604356d1d948c2be10b5dd862f373484754e2340be4f6f8180fc329b884ff",
+      "source_sha256": "4dd2ca81931112cf1858a7c17ce68f7b0b3de76c69499e6c6f6427237690f1c5",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.92725,
+        "translation": [
+          15.38799,
+          26.97866
+        ],
+        "union": [
+          70,
+          25,
+          572,
+          592
+        ],
+        "storage_path": "fish/normal/cloud-little-log-calcifer_sprite.png"
+      },
+      "rarity": "common",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-bucket-little-ponyo",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-2ec118ea-7719-42ce-be59-c48f0cb17123.png",
+      "storage_path": "fish/rare/cloud-bucket-little-ponyo_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: Tiny red fish-form Ponyo with orange hair and a cream face peeking out of a green bucket that floats upright; side-three-quarter view facing right. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping.  Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "c6615a84bccfe659f5dd621b781946291feac07789ea84833d180e6bafd25980",
+      "source_sha256": "3698bbd57df3fa31da5d7e0b57df7a4d6d23f2cdfd8f242e82ace5f1bccf8228",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.98722,
+        "translation": [
+          19.86186,
+          3.57278
+        ],
+        "union": [
+          86,
+          98,
+          1143,
+          1164
+        ],
+        "storage_path": "fish/rare/cloud-bucket-little-ponyo_thumbnail.png"
+      },
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-bucket-little-ponyo",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-22097e77-e7eb-443a-89bb-beec35e6cddf.png",
+      "storage_path": "fish/rare/cloud-bucket-little-ponyo_sprite.png",
+      "prompt": "Create a production transparent sprite sheet. Reference1 is the APPROVED EXACT INDIVIDUAL thumbnail: preserve all identity, costume, colors, props and body proportions. Reference2 is style baseline only; do not copy its animal or checkerboard. Subject: Tiny red fish-form Ponyo with orange hair and a cream face peeking out of a green bucket that floats upright; side-three-quarter view facing right. EXACTLY FOUR frames, 2 COLUMNS by 2 ROWS, overall image EXACTLY SQUARE, every cell square. Reading order top-left0, top-right1, bottom-left2, bottom-right3. These are four distinct sequential in-between poses of ONE smooth looping action, not duplicates and not blink-only frames. ACTION: Ponyo small fins and hair wave and bucket handle rocks subtly, bucket body stable.  Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward movement. Keep this exact right-facing orientation in ALL animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. CRITICAL: lock face, chest, rigid torso and props at exactly identical CELL-relative x/y positions and identical scale across every frame. No body translation, bobbing, zoom, crop or camera changes; only appendages move. Maximum pose long axis occupies 80-86 percent of a cell, minimum 7 percent clear transparent margin at each edge; thin tails stay fully inside own cell. Consistent generous padding, NO physical grid lines, NO text or frame labels, NO scenery or floor strip, NO checkerboard, NO glow crossing cell borders. Genuine transparent alpha. Refined Ghibli character game art matching the approved thumbnail.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/rare/cloud-bucket-little-ponyo_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "sha256": "9d8588e0992381d847058c2de60164efeee87156b7007af9e2f836fb89c1e42a",
+      "source_sha256": "3dbac5461cfc152eb7793b0864de43928472ebb9701c6c50cf753bc355a594e1",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.87199,
+        "translation": [
+          44.92808,
+          37.95219
+        ],
+        "union": [
+          6,
+          17,
+          609,
+          614
+        ],
+        "storage_path": "fish/rare/cloud-bucket-little-ponyo_sprite.png"
+      },
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-waterdrop-ponyo",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-248dec8e-2bc7-49aa-974e-f1560b97dbfa.png",
+      "storage_path": "fish/rare/cloud-waterdrop-ponyo_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: Ponyo in her recognizable little red fish form with orange bob hair, cream rounded humanlike face and tiny fin arms, cheerful right-facing profile. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping.  Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "f3596b658767e2e9910ee143e69dea9d0ff075b0d684a07aa8857fac5bb30ca2",
+      "source_sha256": "195af04f2d9025adc9e71c9904d1b3c8902184f8d4cf1fe9ad28e746c98d6c92",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.91836,
+        "translation": [
+          57.15704,
+          61.74884
+        ],
+        "union": [
+          47,
+          201,
+          1193,
+          1029
+        ],
+        "storage_path": "fish/rare/cloud-waterdrop-ponyo_thumbnail.png"
+      },
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-waterdrop-ponyo",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-5c656b81-6c4f-4176-9873-4d98ac423aa6.png",
+      "storage_path": "fish/rare/cloud-waterdrop-ponyo_sprite.png",
+      "prompt": "Production game sprite sheet, square canvas divided invisibly into EXACTLY2 columns and2 rows, FOUR equal square frames. Reference1 is exact individual identity: Ponyo in her recognizable little red fish form with orange bob hair, cream rounded humanlike face and tiny fin arms, cheerful right-facing profile. Preserve appearance and proportions. Four sequential poses: small tail sweeps and both fin arms gently propel, hair ends flutter. CRITICAL: center EACH complete subject at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of canvas. Each subject fits central70 percent of its OWN cell, at least15 percent totally TRANSPARENT margin around EVERY CELL. NEVER place head, limbs, whiskers, broom, tails, flame tips, paper or props near a cell edge. NO motion lines or dashes, NO sparks or detached glow, NO stray pixels, no labels, no grid, no floor, no scenery. No cropping. Keep rigid torso, head and main props EXACT same cell-relative coordinates and scale; only stated flexible parts move. Screen RIGHT profile ALL FOUR poses. Reference2 style only. Genuine alpha transparency. Fixed bases/logs stay completely still. Complete loop, not eye-only or identical duplicates.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/rare/cloud-waterdrop-ponyo_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "revision": "margin-fix-2",
+      "sha256": "0e4976493107047e5ffa01d53f839f19996b197cbdbbe66de05e62930d31b79c",
+      "source_sha256": "71b20481561f79865b7724bd80943e5a889cf21bbe0c061527c652ea360e5057",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.87488,
+        "translation": [
+          30.91256,
+          26.1007
+        ],
+        "union": [
+          22,
+          89,
+          623,
+          567
+        ],
+        "storage_path": "fish/rare/cloud-waterdrop-ponyo_sprite.png"
+      },
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-flame-spirit-calcifer",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-1f16786b-c243-4936-951c-2cd46a7b149e.png",
+      "storage_path": "fish/rare/cloud-flame-spirit-calcifer_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: Calcifer orange and golden flame spirit in a small rustic iron hearth with two short burning logs, expressive eyes and mouth facing right. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping. Upright stable resting/standing pose, not mid-step, no walking legs. Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "65b049eb615cb527511818c8fcb7feff85aad11c2ac529b6e6ef41b4c0fc6077",
+      "source_sha256": "f7b447277fadde28f1ccf3e3dbf84b54713585c98c0a0ac34a112abdf623916e",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.94387,
+        "translation": [
+          33.30516,
+          46.51935
+        ],
+        "union": [
+          168,
+          57,
+          1089,
+          1172
+        ],
+        "storage_path": "fish/rare/cloud-flame-spirit-calcifer_thumbnail.png"
+      },
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-flame-spirit-calcifer",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-af660d47-281a-43f9-9038-046ed698ecee.png",
+      "storage_path": "fish/rare/cloud-flame-spirit-calcifer_sprite.png",
+      "prompt": "Create a production transparent sprite sheet. Reference1 is the APPROVED EXACT INDIVIDUAL thumbnail: preserve all identity, costume, colors, props and body proportions. Reference2 is style baseline only; do not copy its animal or checkerboard. Subject: Calcifer orange and golden flame spirit in a small rustic iron hearth with two short burning logs, expressive eyes and mouth facing right. EXACTLY FOUR frames, 2 COLUMNS by 2 ROWS, overall image EXACTLY SQUARE, every cell square. Reading order top-left0, top-right1, bottom-left2, bottom-right3. These are four distinct sequential in-between poses of ONE smooth looping action, not duplicates and not blink-only frames. ACTION: flames stretch and curl with warm light, iron hearth and central face remain stable. This is a FIXED character. All feet, seats, rocks, cups, shells, hearths and rigid bases remain at EXACTLY the same coordinates; NO stepping or changing poses. Animate only the specified flexible parts. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward movement. Keep this exact right-facing orientation in ALL animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. CRITICAL: lock face, chest, rigid torso and props at exactly identical CELL-relative x/y positions and identical scale across every frame. No body translation, bobbing, zoom, crop or camera changes; only appendages move. Maximum pose long axis occupies 80-86 percent of a cell, minimum 7 percent clear transparent margin at each edge; thin tails stay fully inside own cell. Consistent generous padding, NO physical grid lines, NO text or frame labels, NO scenery or floor strip, NO checkerboard, NO glow crossing cell borders. Genuine transparent alpha. Refined Ghibli character game art matching the approved thumbnail.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/rare/cloud-flame-spirit-calcifer_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "sha256": "8fbfcb1f2d561dce74f9e34089c01994f643a41cc3702b17228cc2c34059ec1e",
+      "source_sha256": "f96c07ab86605935abf20bc01ac10e8b29075f37e83e70076573e86b960d74db",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.90964,
+        "translation": [
+          23.3257,
+          41.06363
+        ],
+        "union": [
+          42,
+          10,
+          595,
+          588
+        ],
+        "storage_path": "fish/rare/cloud-flame-spirit-calcifer_sprite.png"
+      },
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-sunset-delivery-kiki",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-2ca92e43-87f1-4a20-89dd-5a430824cc14.png",
+      "storage_path": "fish/rare/cloud-sunset-delivery-kiki_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: Kiki in her black dress and red hair bow riding a brown broom toward screen right, small black cat Jiji seated behind her, modest outfit, side profile. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping.  Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "5f2baba3b7077b2c6ba48ff277f4b12de8be647d9647a28df87dfd7cc58876f8",
+      "source_sha256": "b8298bd1e8e1ef09e7eb26128acdaa7ef850c95bb4eb6073e1d8b00f1e472308",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.85361,
+        "translation": [
+          91.78386,
+          89.64982
+        ],
+        "union": [
+          10,
+          149,
+          1243,
+          1109
+        ],
+        "storage_path": "fish/rare/cloud-sunset-delivery-kiki_thumbnail.png"
+      },
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-sunset-delivery-kiki",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-c7b44f3c-4e37-49f4-a038-2374ae3488b1.png",
+      "storage_path": "fish/rare/cloud-sunset-delivery-kiki_sprite.png",
+      "prompt": "EDIT THIS EXISTING 2x2 SHEET IN PLACE, do NOT generate a new composition. Preserve the exact small subject placement, large transparent cell margins, scale, face/chest positions and 4-cell arrangement shown in the input. Only alter flexible parts to make FOUR sequential poses of this action: red bow, dress hem and broom bristles trail in current; torso and broom shaft stable. Same exact individual and right-facing orientation in all4. Keep each subject within its current small central footprint. No zoom, no crop, no enlargement, no camera changes. Keep torso and main rigid props fixed. Never make the four drawings identical; animate the specified appendages by small restrained amounts only. Maintain existing clear transparent gaps between all cells and large outer margin. No text, no labels, no lines, no stray pixels or detached particles. Actual alpha transparency.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/artifacts/guide-cloud-sunset-delivery-kiki.png"
+      ],
+      "frames": 4,
+      "revision": "guided-layout",
+      "sha256": "c317210d36ee1c676854f04f401c8b394ad1b3470432d163ca00a585d60c142d",
+      "source_sha256": "b45ef99c5d383d88a9934c839164bb1eb66f6712eeed1b3632316b918066ac09",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 1.33675,
+        "translation": [
+          -102.22964,
+          -105.57152
+        ],
+        "union": [
+          114,
+          162,
+          507,
+          464
+        ],
+        "storage_path": "fish/rare/cloud-sunset-delivery-kiki_sprite.png"
+      },
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-masked-forest-san",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-af76ca59-a6e9-4936-bca4-7eb74e8fd177.png",
+      "storage_path": "fish/rare/cloud-masked-forest-san_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: San from Princess Mononoke wearing her red-and-white wolf mask, cream fur cloak over navy modest clothing, holding her spear while standing planted on a little moss rock, right-facing three-quarter profile. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping. Upright stable resting/standing pose, not mid-step, no walking legs. Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "c6224795534d03cb6c6f266459cf69185ee08213acd86f75f396d2f8fb1a1006",
+      "source_sha256": "01492bbf20eae266c18f4c8b5a2b463df45caa31e60f47487c4a68d8b2cfc557",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.89041,
+        "translation": [
+          33.09373,
+          55.79929
+        ],
+        "union": [
+          207,
+          50,
+          1126,
+          1232
+        ],
+        "storage_path": "fish/rare/cloud-masked-forest-san_thumbnail.png"
+      },
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-masked-forest-san",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-500006b2-f81b-4871-bf4d-177925436751.png",
+      "storage_path": "fish/rare/cloud-masked-forest-san_sprite.png",
+      "prompt": "Produce a TRANSPARENT production sprite sheet, EXACTLY FOUR sequential frames arranged 2 columns by2 rows on a SQUARE canvas. Exact approved individual from reference1: San from Princess Mononoke wearing her red-and-white wolf mask, cream fur cloak over navy modest clothing, holding her spear while standing planted on a little moss rock, right-facing three-quarter profile. Reference2 STYLE ONLY. Animate fur cloak and hair sway, spear ribbons flutter; both planted feet and torso remain still. Keep face/rigid torso/chest and main props at SAME cell-relative coordinates and SAME scale, screen-RIGHT profile all4. FRAMING IS CRITICAL: each COMPLETE subject is SMALL within its OWN cell, maximum68 percent of cell long axis; at least16 percent EMPTY ALPHA on EACH of four sides within EACH cell. Centers at image quarter positions. Especially keep entire spear tip, feet and cloak safely inside its cell. No frame labels, no grid, no motion dashes, no detached particles or glows, no scenery, no floor strip. Preserve body proportions and right-facing orientation; never crop. No pulse/zoom/camera movement. Only flexible appendages change, create a smooth loop, not identical copies or only eye changes. Genuine transparent background.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/rare/cloud-masked-forest-san_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "revision": "last-margin-fix",
+      "sha256": "aea4cbd7630c8a460152a790481aab33bdcc7f9c73110f58661a86113d7ebc9e",
+      "source_sha256": "47f5b48676bcee5404db70295064e59d846739ba9287a84e2c339d7cfde17e93",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 1.03068,
+        "translation": [
+          -28.17205,
+          -8.58904
+        ],
+        "union": [
+          98,
+          57,
+          564,
+          567
+        ],
+        "storage_path": "fish/rare/cloud-masked-forest-san_sprite.png"
+      },
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-forest-path-white-wolf",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-576fcb7e-829c-4674-90a9-4fc57db48b2b.png",
+      "storage_path": "fish/rare/cloud-forest-path-white-wolf_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: A graceful white wolf companion of San from Princess Mononoke, thick cream-white fur, pointed ears, dark eyes, one long tail, calm right-facing side profile. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping.  Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "ee1162cec5587c45a871160b21baf634aec2216f8b5b04b6df75ad1d1bc99e9f",
+      "source_sha256": "1d0e5cb328af2710554089be4ecdb8e70176b96d039a1d05ba3a6448239c46e0",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.85292,
+        "translation": [
+          90.08492,
+          98.61415
+        ],
+        "union": [
+          12,
+          87,
+          1246,
+          1151
+        ],
+        "storage_path": "fish/rare/cloud-forest-path-white-wolf_thumbnail.png"
+      },
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-forest-path-white-wolf",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-e0d76a69-5aec-4d26-85b5-1068fb1d9737.png",
+      "storage_path": "fish/rare/cloud-forest-path-white-wolf_sprite.png",
+      "prompt": "Production game sprite sheet, square canvas divided invisibly into EXACTLY2 columns and2 rows, FOUR equal square frames. Reference1 is exact individual identity: A graceful white wolf companion of San from Princess Mononoke, thick cream-white fur, pointed ears, dark eyes, one long tail, calm right-facing side profile. Preserve appearance and proportions. Four sequential poses: four paws gently paddle in balanced sequence, tail and long fur follow water. CRITICAL: center EACH complete subject at (25%,25%),(75%,25%),(25%,75%),(75%,75%) of canvas. Each subject fits central70 percent of its OWN cell, at least15 percent totally TRANSPARENT margin around EVERY CELL. NEVER place head, limbs, whiskers, broom, tails, flame tips, paper or props near a cell edge. NO motion lines or dashes, NO sparks or detached glow, NO stray pixels, no labels, no grid, no floor, no scenery. No cropping. Keep rigid torso, head and main props EXACT same cell-relative coordinates and scale; only stated flexible parts move. Screen RIGHT profile ALL FOUR poses. Reference2 style only. Genuine alpha transparency. Fixed bases/logs stay completely still. Complete loop, not eye-only or identical duplicates.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/rare/cloud-forest-path-white-wolf_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "frames": 4,
+      "revision": "margin-fix-2",
+      "sha256": "c5f04e3c56cebfddbd85f3a51d451bb9d98028446075b2bd18c9c33b126f44d8",
+      "source_sha256": "4e57fda159f8d7e12df3e88e9af2517a73bc16b0ced0f9afb78a296f5504b013",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.91121,
+        "translation": [
+          32.84699,
+          10.52232
+        ],
+        "union": [
+          19,
+          85,
+          596,
+          579
+        ],
+        "storage_path": "fish/rare/cloud-forest-path-white-wolf_sprite.png"
+      },
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-howl-magic-potion-box",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-ecc7cbd5-395f-47ec-a99e-97656db4ad4a.png",
+      "storage_path": "decorations/rare/cloud-howl-magic-potion-box_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: An open old wooden box of Howls magical potion bottles, small jewel-tone glass bottles, brass stoppers and parchment tags without writing, no face. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Single isolated object in right-biased three-quarter view. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping. Upright stable resting/standing pose, not mid-step, no walking legs. Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "208fb23595c156a4400512873492b25794b2a5254e14276bf315c81ade99165b",
+      "source_sha256": "96185f40002624f6a8796ccb056b29c4fb1a101191ef2a3f2e92824903b6fa90",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.89117,
+        "translation": [
+          56.65279,
+          45.06761
+        ],
+        "union": [
+          49,
+          72,
+          1230,
+          1233
+        ],
+        "storage_path": "decorations/rare/cloud-howl-magic-potion-box_thumbnail.png"
+      },
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "facing_direction": null
+    },
+    {
+      "id": "cloud-fluttering-paper-shikigami",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-6a987ffe-e1c9-4ad2-82c8-1dc04acf0d97.png",
+      "storage_path": "fish/rare/cloud-fluttering-paper-shikigami_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: Three small white humanoid paper shikigami cutouts from Spirited Away flying in a compact flock toward screen right, simple folded paper heads and winglike arms, no eyes or drawn faces. Reference image 1 is ONLY the rounded proportions, clear warm outlines and readable cartoon shading style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping.  Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "2d9fc2dfba35e51db7b7d79f9926609e15cbc7aa207b0ddcfe32a21c9ce90f4c",
+      "source_sha256": "13f0696acd3ec7d24df1fc81999b7a86adf993c9ba1ee2c50d6d29bbdcceedb1",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.92157,
+        "translation": [
+          19.22142,
+          35.34898
+        ],
+        "union": [
+          88,
+          110,
+          1230,
+          1173
+        ],
+        "storage_path": "fish/rare/cloud-fluttering-paper-shikigami_thumbnail.png"
+      },
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-fluttering-paper-shikigami",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-f603942e-1816-4f86-aaa4-892ecb64ed9d.png",
+      "storage_path": "fish/rare/cloud-fluttering-paper-shikigami_sprite.png",
+      "prompt": "EDIT THIS EXISTING 2x2 SHEET IN PLACE, do NOT generate a new composition. Preserve the exact small subject placement, large transparent cell margins, scale, face/chest positions and 4-cell arrangement shown in the input. Only alter flexible parts to make FOUR sequential poses of this action: paper arms and corners flap in offset sequence, flock spacing stable. Same exact individual and right-facing orientation in all4. Keep each subject within its current small central footprint. No zoom, no crop, no enlargement, no camera changes. Keep torso and main rigid props fixed. Never make the four drawings identical; animate the specified appendages by small restrained amounts only. Maintain existing clear transparent gaps between all cells and large outer margin. No text, no labels, no lines, no stray pixels or detached particles. Actual alpha transparency.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/artifacts/guide-cloud-fluttering-paper-shikigami.png"
+      ],
+      "frames": 4,
+      "revision": "guided-layout",
+      "sha256": "d02418a2c733f32528c3eaf68193fe1b5219f2054af2263811b8b98d857921e5",
+      "source_sha256": "ba129522c9a7145383c293f6f6462abbc9cc1f3d6248361a43d6de98b12ad455",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 1.46708,
+        "translation": [
+          -162.56591,
+          -154.49699
+        ],
+        "union": [
+          145,
+          152,
+          503,
+          485
+        ],
+        "storage_path": "fish/rare/cloud-fluttering-paper-shikigami_sprite.png"
+      },
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-white-dragon-haku",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-caff0817-7825-43cc-abfb-64eb09f4e421.png",
+      "storage_path": "fish/epic/cloud-white-dragon-haku_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: Haku in his white dragon form from Spirited Away, very long slender white serpentine body, teal mane, two elegant antlers, whiskers and four small legs, head pointing right, elongated horizontal silhouette. Reference image 1 is ONLY the soft colored outlines, dimensional fantasy shading and refined detail style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping.  Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "51e0960be9cd4ad35d3dd0fd3ac5d4c3b29698de3f7204861070fa8122c3b000",
+      "source_sha256": "3e1d393568224501c0792f3db38d34ad687bb335a8b059a10f52adaf68083d80",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.88295,
+        "translation": [
+          65.88493,
+          36.30609
+        ],
+        "union": [
+          39,
+          209,
+          1231,
+          1128
+        ],
+        "storage_path": "fish/epic/cloud-white-dragon-haku_thumbnail.png"
+      },
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-white-dragon-haku",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-2eefe53c-1905-4c0c-be96-1f5fcab2486f.png",
+      "storage_path": "fish/epic/cloud-white-dragon-haku_sprite.png",
+      "prompt": "EDIT THIS EXISTING 2x2 SHEET IN PLACE, do NOT generate a new composition. Preserve the exact small subject placement, large transparent cell margins, scale, face/chest positions and 4-cell arrangement shown in the input. Only alter flexible parts to make FOUR sequential poses of this action: long tail undulates behind left, teal mane and whiskers flow in delayed waves; head and chest stable. Same exact individual and right-facing orientation in all4. Keep each subject within its current small central footprint. No zoom, no crop, no enlargement, no camera changes. Keep torso and main rigid props fixed. Never make the four drawings identical; animate the specified appendages by small restrained amounts only. Maintain existing clear transparent gaps between all cells and large outer margin. No text, no labels, no lines, no stray pixels or detached particles. Actual alpha transparency.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/artifacts/guide-cloud-white-dragon-haku.png"
+      ],
+      "frames": 4,
+      "revision": "guided-layout",
+      "sha256": "7cbe6749d6c096e60956307ed1ab1b3a0d8f93eb346f19cbc271fa773c944514",
+      "source_sha256": "3aa2a30a0c75b564147fe454aa677e655d5eb5776c9d12a5f71d75a854b727cb",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 1.15247,
+        "translation": [
+          -6.31116,
+          -71.42586
+        ],
+        "union": [
+          49,
+          187,
+          505,
+          480
+        ],
+        "storage_path": "fish/epic/cloud-white-dragon-haku_sprite.png"
+      },
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-cloud-boat-no-face",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-82c6149c-8bdd-4d82-a044-1639d4c9bde4.png",
+      "storage_path": "fish/epic/cloud-cloud-boat-no-face_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: No-Face from Spirited Away quietly seated in a small warm wooden boat with a soft pale cloud cushion, white mask turned right, flowing black robe draped within the boat. Reference image 1 is ONLY the soft colored outlines, dimensional fantasy shading and refined detail style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping.  Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "4f51ccf6f0ce648ce75a10a74d1e09c782da1a95447aa633511d3824ff091de6",
+      "source_sha256": "0c49c23e28df04ddb76dba75a27f123fe8d0e188204716f4573825b910aff07b",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.8778,
+        "translation": [
+          69.597,
+          42.3852
+        ],
+        "union": [
+          35,
+          205,
+          1234,
+          1126
+        ],
+        "storage_path": "fish/epic/cloud-cloud-boat-no-face_thumbnail.png"
+      },
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-cloud-boat-no-face",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-6abd1993-5186-44c3-96f9-845b7d7bc199.png",
+      "storage_path": "fish/epic/cloud-cloud-boat-no-face_sprite.png",
+      "prompt": "Create a production transparent sprite sheet. Reference1 is the APPROVED EXACT INDIVIDUAL thumbnail: preserve all identity, costume, colors, props and body proportions. Reference2 is style baseline only; do not copy its animal or checkerboard. Subject: No-Face from Spirited Away quietly seated in a small warm wooden boat with a soft pale cloud cushion, white mask turned right, flowing black robe draped within the boat. EXACTLY FOUR frames, 2 COLUMNS by 2 ROWS, overall image EXACTLY SQUARE, every cell square. Reading order top-left0, top-right1, bottom-left2, bottom-right3. These are four distinct sequential in-between poses of ONE smooth looping action, not duplicates and not blink-only frames. ACTION: robe edges and hanging boat tassel sway, mask and boat hull stay anchored.  Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward movement. Keep this exact right-facing orientation in ALL animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. CRITICAL: lock face, chest, rigid torso and props at exactly identical CELL-relative x/y positions and identical scale across every frame. No body translation, bobbing, zoom, crop or camera changes; only appendages move. Maximum pose long axis occupies 80-86 percent of a cell, minimum 7 percent clear transparent margin at each edge; thin tails stay fully inside own cell. Consistent generous padding, NO physical grid lines, NO text or frame labels, NO scenery or floor strip, NO checkerboard, NO glow crossing cell borders. Genuine transparent alpha. Refined Ghibli character game art matching the approved thumbnail.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/epic/cloud-cloud-boat-no-face_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "frames": 4,
+      "sha256": "2c323ac3640d6c141f5f85f5723b41bf53b2cf87b7290b2d5a331f8c4f714fa2",
+      "source_sha256": "05642797ece257fa4afef83dbcf51dc2eedf44adb2efd076f7c8b52d2644864d",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.86341,
+        "translation": [
+          37.20885,
+          34.61862
+        ],
+        "union": [
+          15,
+          75,
+          624,
+          570
+        ],
+        "storage_path": "fish/epic/cloud-cloud-boat-no-face_sprite.png"
+      },
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-ripple-running-catbus",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-60b2c093-6b76-4ce0-8b3f-f02636b62ae4.png",
+      "storage_path": "fish/epic/cloud-ripple-running-catbus_thumbnail.png",
+      "prompt": "Edit this exact thumbnail layout. Keep the subject SMALL and centered with the existing very large transparent margin. Preserve all colors, pose, identity and proportions. Repair/finish every whisker tip and paw outline cleanly. Do NOT zoom, fill the canvas or shrink the margins. No scenery, no detached glow or particles. Transparent background.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/artifacts/guide-cloud-catbus-thumbnail.png"
+      ],
+      "frames": 0,
+      "revision": "guided-layout",
+      "sha256": "876e2957d6eab5cdfc54b8b6823c512c419372288d8a66aa02cdc5703a58c406",
+      "source_sha256": "60013db20f3c080aad8bcac13129cb705008d7e6cb05b88b73483c3e3e39e520",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 1.38418,
+        "translation": [
+          -274.79243,
+          -263.02691
+        ],
+        "union": [
+          271,
+          430,
+          1031,
+          855
+        ],
+        "storage_path": "fish/epic/cloud-ripple-running-catbus_thumbnail.png"
+      },
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "crawl",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-ripple-running-catbus",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-906f7355-32a4-4489-9d6d-89ccdca73d80.png",
+      "storage_path": "fish/epic/cloud-ripple-running-catbus_sprite.png",
+      "prompt": "EDIT THIS EXISTING 2x2 SHEET IN PLACE, do NOT generate a new composition. Preserve the exact small subject placement, large transparent cell margins, scale, face/chest positions and 4-cell arrangement shown in the input. Only alter flexible parts to make FOUR sequential poses of this action: many legs alternate running in ordered wave, tail sways, rigid bus body and face stable. Same exact individual and right-facing orientation in all4. Keep each subject within its current small central footprint. No zoom, no crop, no enlargement, no camera changes. Keep torso and main rigid props fixed. Never make the four drawings identical; animate the specified appendages by small restrained amounts only. Maintain existing clear transparent gaps between all cells and large outer margin. No text, no labels, no lines, no stray pixels or detached particles. Actual alpha transparency.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/artifacts/guide-cloud-ripple-running-catbus.png"
+      ],
+      "frames": 4,
+      "revision": "guided-layout",
+      "sha256": "538b42ec9986b07b54bb9a80ecc21fcb529f7731b681cb5c4c71fbfdd6a6e732",
+      "source_sha256": "46845cf94654dfb84b53d8cb5ddb9ab1ad158e180dfe31e80f14120bd9549608",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 1.31015,
+        "translation": [
+          -93.95642,
+          -109.67821
+        ],
+        "union": [
+          110,
+          215,
+          511,
+          430
+        ],
+        "storage_path": "fish/epic/cloud-ripple-running-catbus_sprite.png"
+      },
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "crawl",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-lantern-no-face",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-b81d6b79-505a-449a-8eb5-b3bc790d58ff.png",
+      "storage_path": "fish/epic/cloud-lantern-no-face_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: No-Face from Spirited Away standing planted with a flowing black robe, white mask turned right, holding a small warm amber paper lantern on a stick, no text. Reference image 1 is ONLY the soft colored outlines, dimensional fantasy shading and refined detail style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping. Upright stable resting/standing pose, not mid-step, no walking legs. Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "697f74a438acdbda68fc26fdbaab0f30b6ff1c0feb7a1ed606048e7f20705b54",
+      "source_sha256": "acdf559ab93bdea855781564979197cbec03f26586167c4b2d376d10435e4941",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.88966,
+        "translation": [
+          62.06453,
+          59.39554
+        ],
+        "union": [
+          43,
+          129,
+          1226,
+          1146
+        ],
+        "storage_path": "fish/epic/cloud-lantern-no-face_thumbnail.png"
+      },
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-lantern-no-face",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-bdefce91-dfef-4b6f-957e-6d02c92c205f.png",
+      "storage_path": "fish/epic/cloud-lantern-no-face_sprite.png",
+      "prompt": "Create a production transparent sprite sheet. Reference1 is the APPROVED EXACT INDIVIDUAL thumbnail: preserve all identity, costume, colors, props and body proportions. Reference2 is style baseline only; do not copy its animal or checkerboard. Subject: No-Face from Spirited Away standing planted with a flowing black robe, white mask turned right, holding a small warm amber paper lantern on a stick, no text. EXACTLY FOUR frames, 2 COLUMNS by 2 ROWS, overall image EXACTLY SQUARE, every cell square. Reading order top-left0, top-right1, bottom-left2, bottom-right3. These are four distinct sequential in-between poses of ONE smooth looping action, not duplicates and not blink-only frames. ACTION: robe hem and lantern tassel drift, lantern gently rocks; mask and central torso remain fixed. This is a FIXED character. All feet, seats, rocks, cups, shells, hearths and rigid bases remain at EXACTLY the same coordinates; NO stepping or changing poses. Animate only the specified flexible parts. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward movement. Keep this exact right-facing orientation in ALL animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. CRITICAL: lock face, chest, rigid torso and props at exactly identical CELL-relative x/y positions and identical scale across every frame. No body translation, bobbing, zoom, crop or camera changes; only appendages move. Maximum pose long axis occupies 80-86 percent of a cell, minimum 7 percent clear transparent margin at each edge; thin tails stay fully inside own cell. Consistent generous padding, NO physical grid lines, NO text or frame labels, NO scenery or floor strip, NO checkerboard, NO glow crossing cell borders. Genuine transparent alpha. Refined Ghibli character game art matching the approved thumbnail.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/epic/cloud-lantern-no-face_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "frames": 4,
+      "sha256": "7c3a3802d8c8b9116e277c82435ca74d6e4e1e46219ef8cce925b842c5c259b6",
+      "source_sha256": "49410fd20382bb1222167013e4296b57aa3231a30125690597d055aae190beef",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.87488,
+        "translation": [
+          35.28698,
+          33.53721
+        ],
+        "union": [
+          17,
+          42,
+          618,
+          597
+        ],
+        "storage_path": "fish/epic/cloud-lantern-no-face_sprite.png"
+      },
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-wave-calling-ponyo",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-6b988551-9f08-4f90-9538-1d836328e718.png",
+      "storage_path": "fish/epic/cloud-wave-calling-ponyo_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: Ponyo in her red dress riding one curling blue fish-shaped wave, orange bob hair, joyful right-facing profile with arms held open, modest childlike character, single coherent wave base. Reference image 1 is ONLY the soft colored outlines, dimensional fantasy shading and refined detail style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping.  Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "7e32354724d8f5a8bfae2769c2ea534c1b085121791852c0f72733636f7b6876",
+      "source_sha256": "5fd74d398f5b878afa63fe979639fab3e5c46559002fbca10c0ecab8a8ed7e98",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.89648,
+        "translation": [
+          53.70322,
+          23.67125
+        ],
+        "union": [
+          52,
+          184,
+          1226,
+          1161
+        ],
+        "storage_path": "fish/epic/cloud-wave-calling-ponyo_thumbnail.png"
+      },
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-wave-calling-ponyo",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-a25ecb96-3fbb-4442-b7ca-7d61a0ecc5d0.png",
+      "storage_path": "fish/epic/cloud-wave-calling-ponyo_sprite.png",
+      "prompt": "Create a production transparent sprite sheet. Reference1 is the APPROVED EXACT INDIVIDUAL thumbnail: preserve all identity, costume, colors, props and body proportions. Reference2 is style baseline only; do not copy its animal or checkerboard. Subject: Ponyo in her red dress riding one curling blue fish-shaped wave, orange bob hair, joyful right-facing profile with arms held open, modest childlike character, single coherent wave base. EXACTLY FOUR frames, 2 COLUMNS by 2 ROWS, overall image EXACTLY SQUARE, every cell square. Reading order top-left0, top-right1, bottom-left2, bottom-right3. These are four distinct sequential in-between poses of ONE smooth looping action, not duplicates and not blink-only frames. ACTION: fish-wave tail and crest flow through a smooth loop, dress and hair flutter; face and torso stable.  Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward movement. Keep this exact right-facing orientation in ALL animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. CRITICAL: lock face, chest, rigid torso and props at exactly identical CELL-relative x/y positions and identical scale across every frame. No body translation, bobbing, zoom, crop or camera changes; only appendages move. Maximum pose long axis occupies 80-86 percent of a cell, minimum 7 percent clear transparent margin at each edge; thin tails stay fully inside own cell. Consistent generous padding, NO physical grid lines, NO text or frame labels, NO scenery or floor strip, NO checkerboard, NO glow crossing cell borders. Genuine transparent alpha. Refined Ghibli character game art matching the approved thumbnail.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/epic/cloud-wave-calling-ponyo_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "frames": 4,
+      "sha256": "21a99f5ff31c0a00b682aef6c20154327ce61bb71a77711604d16295660f0790",
+      "source_sha256": "faaeca6e3971fdd1d155bf3db697e6739c95be4888b4cc7570fcba6bd1a11894",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.86341,
+        "translation": [
+          37.20885,
+          34.61862
+        ],
+        "union": [
+          15,
+          50,
+          624,
+          595
+        ],
+        "storage_path": "fish/epic/cloud-wave-calling-ponyo_sprite.png"
+      },
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "swim",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-cloud-umbrella-totoro",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-d343f63c-413c-4286-b8d6-bc66a1c0ddd2.png",
+      "storage_path": "fish/epic/cloud-cloud-umbrella-totoro_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: Large recognizable grey Totoro with cream chevron belly holding a fluffy cloud-shaped white umbrella on a wooden handle, small green leaf on head, standing with both feet planted, right-facing three-quarter profile. Reference image 1 is ONLY the soft colored outlines, dimensional fantasy shading and refined detail style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping. Upright stable resting/standing pose, not mid-step, no walking legs. Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "a1c2cf10b253723db1decbafb92f3b8fa5d3711539976f11712faeb49fec7c62",
+      "source_sha256": "c1fb52be2e74e0d8a2b5b03d0739f6b3aaf3e664b664ec5be52745b66991fe77",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.88147,
+        "translation": [
+          71.67213,
+          72.11287
+        ],
+        "union": [
+          127,
+          32,
+          1132,
+          1226
+        ],
+        "storage_path": "fish/epic/cloud-cloud-umbrella-totoro_thumbnail.png"
+      },
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-cloud-umbrella-totoro",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-eace1e6d-4253-451a-b14e-800e92f15538.png",
+      "storage_path": "fish/epic/cloud-cloud-umbrella-totoro_sprite.png",
+      "prompt": "Create a production transparent sprite sheet. Reference1 is the APPROVED EXACT INDIVIDUAL thumbnail: preserve all identity, costume, colors, props and body proportions. Reference2 is style baseline only; do not copy its animal or checkerboard. Subject: Large recognizable grey Totoro with cream chevron belly holding a fluffy cloud-shaped white umbrella on a wooden handle, small green leaf on head, standing with both feet planted, right-facing three-quarter profile. EXACTLY FOUR frames, 2 COLUMNS by 2 ROWS, overall image EXACTLY SQUARE, every cell square. Reading order top-left0, top-right1, bottom-left2, bottom-right3. These are four distinct sequential in-between poses of ONE smooth looping action, not duplicates and not blink-only frames. ACTION: ear tips twitch, cloud umbrella fringe and leaf sway; body, umbrella handle and feet stay planted. This is a FIXED character. All feet, seats, rocks, cups, shells, hearths and rigid bases remain at EXACTLY the same coordinates; NO stepping or changing poses. Animate only the specified flexible parts. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward movement. Keep this exact right-facing orientation in ALL animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. CRITICAL: lock face, chest, rigid torso and props at exactly identical CELL-relative x/y positions and identical scale across every frame. No body translation, bobbing, zoom, crop or camera changes; only appendages move. Maximum pose long axis occupies 80-86 percent of a cell, minimum 7 percent clear transparent margin at each edge; thin tails stay fully inside own cell. Consistent generous padding, NO physical grid lines, NO text or frame labels, NO scenery or floor strip, NO checkerboard, NO glow crossing cell borders. Genuine transparent alpha. Refined Ghibli character game art matching the approved thumbnail.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/epic/cloud-cloud-umbrella-totoro_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "frames": 4,
+      "sha256": "d62a84a2b599ea1c857dc21fa8c531e81c638872787c6aa7afcae8be278a3665",
+      "source_sha256": "16da897d0dd804b51b27a732ee0686f5db2388048ab8a1a3e1ac5e6e73aae7c7",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.84675,
+        "translation": [
+          45.50286,
+          46.77299
+        ],
+        "union": [
+          21,
+          4,
+          611,
+          625
+        ],
+        "storage_path": "fish/epic/cloud-cloud-umbrella-totoro_sprite.png"
+      },
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-lotus-umbrella-river-spirit",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-22dfa052-04de-411e-a614-e67aae2e5bb4.png",
+      "storage_path": "fish/epic/cloud-lotus-umbrella-river-spirit_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: The round mud-covered bathhouse stink spirit from Spirited Away, gentle muddy brown lumpy body with a small kind right-facing face, small reeds and harmless twigs caught in moss, holding a large green lotus leaf umbrella. Reference image 1 is ONLY the soft colored outlines, dimensional fantasy shading and refined detail style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping. Upright stable resting/standing pose, not mid-step, no walking legs. Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "b48158c42dee38c54b277fe7a9a589bbb289dc7265bc0cce88799e463fe18537",
+      "source_sha256": "fee14fab25c2b1a26b6c487628f499a54f20687fc40afbfff437dd5a5243ed18",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.91438,
+        "translation": [
+          26.25563,
+          50.94375
+        ],
+        "union": [
+          81,
+          72,
+          1232,
+          1187
+        ],
+        "storage_path": "fish/epic/cloud-lotus-umbrella-river-spirit_thumbnail.png"
+      },
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-lotus-umbrella-river-spirit",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-d41a3f7f-13be-48fd-a528-4e9f25917267.png",
+      "storage_path": "fish/epic/cloud-lotus-umbrella-river-spirit_sprite.png",
+      "prompt": "Produce a TRANSPARENT production sprite sheet, EXACTLY FOUR sequential frames arranged 2 columns by2 rows on a SQUARE canvas. Exact approved individual from reference1: The round mud-covered bathhouse stink spirit from Spirited Away, gentle muddy brown lumpy body with a small kind right-facing face, small reeds and harmless twigs caught in moss, holding a large green lotus leaf umbrella. Reference2 STYLE ONLY. Animate lotus leaf rim and dangling reeds ripple; solid seated body stays stable; a few attached clean light beads glimmer. Keep face/rigid torso/chest and main props at SAME cell-relative coordinates and SAME scale, screen-RIGHT profile all4. FRAMING IS CRITICAL: each COMPLETE subject is SMALL within its OWN cell, maximum68 percent of cell long axis; at least16 percent EMPTY ALPHA on EACH of four sides within EACH cell. Centers at image quarter positions. Especially keep entire lotus leaf, umbrella stem and all dangling reeds safely inside its cell. No frame labels, no grid, no motion dashes, no detached particles or glows, no scenery, no floor strip. Preserve body proportions and right-facing orientation; never crop. No pulse/zoom/camera movement. Only flexible appendages change, create a smooth loop, not identical copies or only eye changes. Genuine transparent background.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/epic/cloud-lotus-umbrella-river-spirit_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "frames": 4,
+      "revision": "last-margin-fix",
+      "sha256": "f3b0973128167244923fe4f16efa578640f972f610f9236b908096709d58210c",
+      "source_sha256": "ba7f0a53eca6c78a91d9cec9b89a60c5a2cb19e4455ea53c924b7c13dc29974e",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 627,
+        "columns": 2,
+        "rows": 2,
+        "uniformScale": 0.93715,
+        "translation": [
+          3.30235,
+          22.98256
+        ],
+        "union": [
+          50,
+          32,
+          611,
+          587
+        ],
+        "storage_path": "fish/epic/cloud-lotus-umbrella-river-spirit_sprite.png"
+      },
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "fixed",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-howl-moving-castle",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-0591183e-cdf4-4303-871c-11c307dd8773.png",
+      "storage_path": "fish/mythic/cloud-howl-moving-castle_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: one transparent square game collectible thumbnail for Ghibli Cloud Ferry. Subject: Howls Moving Castle, recognizable asymmetrical ramshackle walking mechanical castle with patched metal walls, curved towers, pipes, rusty brass details, birdlike front face pointing screen right, four jointed mechanical legs firmly on the ground plane, red roof and warm amber windows, horizontal side-three-quarter view. Reference image 1 is ONLY the soft colored outlines, dimensional fantasy shading and refined detail style baseline, not its animal, color, star pattern or background. Reference image 2 is ONLY the Ghibli hand-painted atmosphere and palette, not scenery to copy. Preserve recognizable original Ghibli character identity and costume. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Keep this exact right-facing orientation in the thumbnail and all animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Entire subject including props occupies 80-88 percent of square long axis, generous transparent margin on all sides, no cropping.  Cozy hand-painted animation art, warm clean small-screen silhouette. Genuinely transparent background, no floor scene, no horizon, no water rectangle, no UI, no letters, no labels, no checkerboard. No extra characters or separate floating effects.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/cloudferry/regions/cloudferry.png"
+      ],
+      "sha256": "1585d2ba08ff32f101a654886a12543afde89ded427270a2501bb25dc8ffb563",
+      "source_sha256": "3f9d32ff95e052a3c315eab0b1f54eea0b2e4ba803fdd3344bec9b06f21f6279",
+      "uniform_framing": {
+        "sourceWidth": 1254,
+        "sourceHeight": 1254,
+        "cell": 1254,
+        "columns": 1,
+        "rows": 1,
+        "uniformScale": 0.90651,
+        "translation": [
+          48.64916,
+          66.32602
+        ],
+        "union": [
+          57,
+          56,
+          1218,
+          1180
+        ],
+        "storage_path": "fish/mythic/cloud-howl-moving-castle_thumbnail.png"
+      },
+      "rarity": "mythic",
+      "kind": "fish",
+      "movement": "crawl",
+      "facing_direction": "right"
+    },
+    {
+      "id": "cloud-howl-moving-castle",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-9aa81d4c-6490-4976-af16-5547d23ba241.png",
+      "storage_path": "fish/mythic/cloud-howl-moving-castle_sprite.png",
+      "prompt": "Create a production transparent sprite sheet. Reference1 is the APPROVED EXACT INDIVIDUAL thumbnail: preserve all identity, costume, colors, props and body proportions. Reference2 is style baseline only; do not copy its animal or checkerboard. Subject: Howls Moving Castle, recognizable asymmetrical ramshackle walking mechanical castle with patched metal walls, curved towers, pipes, rusty brass details, birdlike front face pointing screen right, four jointed mechanical legs firmly on the ground plane, red roof and warm amber windows, horizontal side-three-quarter view. EXACTLY EIGHT frames, 4 COLUMNS by 2 ROWS, wide image aspect ratio EXACTLY 2:1, each cell square. Reading order top row 0,1,2,3 then bottom row4,5,6,7. Frames0-3: a smooth alternating leg walk cycle. Frames4-7: continue the same four walk poses while warm amber window illumination progressively rises, peaks, and fades back to frame0; do not move the rigid building for the light action. ACTION: four mechanical legs walk in alternating grounded sequence, small hanging parts sway, chimney smoke remains attached and minimal; rigid main building stays at identical height and scale; special frames progressively illuminate windows with warm Calcifer fire.  Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward movement. Keep this exact right-facing orientation in ALL animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. CRITICAL: lock face, chest, rigid torso and props at exactly identical CELL-relative x/y positions and identical scale across every frame. No body translation, bobbing, zoom, crop or camera changes; only appendages move. Maximum pose long axis occupies 80-86 percent of a cell, minimum 7 percent clear transparent margin at each edge; thin tails stay fully inside own cell. Consistent generous padding, NO physical grid lines, NO text or frame labels, NO scenery or floor strip, NO checkerboard, NO glow crossing cell borders. Genuine transparent alpha. Refined Ghibli character game art matching the approved thumbnail.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261017-175022/fish/mythic/cloud-howl-moving-castle_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "frames": 8,
+      "sha256": "7e89a112975a4087ef41847ae3ba8c639eef1d167e8f62d666628be6b53ade36",
+      "source_sha256": "82394d6c9f6ff66b98319c5303dae32347f46bb3b109b38ed4be099bba73e3c9",
+      "uniform_framing": {
+        "sourceWidth": 1774,
+        "sourceHeight": 887,
+        "cell": 444,
+        "columns": 4,
+        "rows": 2,
+        "uniformScale": 0.88066,
+        "translation": [
+          21.42942,
+          26.05289
+        ],
+        "union": [
+          16,
+          11,
+          438.5,
+          433
+        ],
+        "storage_path": "fish/mythic/cloud-howl-moving-castle_sprite.png"
+      },
+      "rarity": "mythic",
+      "kind": "fish",
+      "movement": "crawl",
+      "facing_direction": "right"
+    }
+  ],
+  "validation": {
+    "alpha": "All 47 selected PNGs: alpha>=16 clear at cell boundaries.",
+    "framing": "One union box and one uniform scale/translation per sheet; no per-pose crop, scale or auto-centering.",
+    "registration": "22 rigid head/body or fixed-base translations measured after uniform framing.",
+    "visual": "Reviewed right-facing thumbnails and frame contact sheets.",
+    "limitations": "Local asset and replay verification; no claim of physical mobile-device QA."
+  }
+}

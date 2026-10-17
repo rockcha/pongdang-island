@@ -1,0 +1,13 @@
+﻿.aquarium-feeding-surface{cursor:crosshair;touch-action:manipulation;background:transparent;border:0;padding:0}
+.aquarium-feeding-surface:focus-visible{outline:2px solid var(--primary);outline-offset:-4px}
+.aquarium-food-cursor{position:absolute;pointer-events:none;width:56px;height:56px;object-fit:contain;transform:translate(-30%,-64%);transform-origin:30% 64%;filter:drop-shadow(0 2px 2px #57362233)}
+.aquarium-food-cursor.is-pouring{transform:translate(-30%,-64%) rotate(-12deg)}
+@media(hover:hover) and (pointer:fine){.aquarium-feeding-surface.has-food-cursor{cursor:none}}
+.aquarium-food{position:absolute;width:5px;height:5px;border-radius:50%;background:#b57942;box-shadow:0 1px 2px #57362233;animation:aquarium-food-fall 1.8s linear both}
+@keyframes aquarium-food-fall{0%{transform:translateY(0);opacity:0}8%{opacity:.95}80%{opacity:.8}100%{transform:translateY(var(--food-fall,360px));opacity:0}}
+@media(prefers-reduced-motion:reduce){.aquarium-food{animation:none;opacity:.6}.aquarium-food-cursor.is-pouring{transform:translate(-30%,-64%)}}
+.aquarium-cleaning-surface{touch-action:none;user-select:none}
+.aquarium-cleaning-cursor{position:absolute;pointer-events:none;width:64px;height:64px;object-fit:contain;transform:translate(-30%,-65%);filter:drop-shadow(0 2px 2px #57362233)}
+.aquarium-soap-bubble{position:absolute;border:1px solid #ffffffed;border-radius:50%;background:radial-gradient(circle at 30% 25%,#ffffffed 0 8%,#e7fcff66 18%,#b5e5ed44 55%,#ffe6f080 90%);box-shadow:inset -2px -2px 3px #b6eaf088,0 0 4px #ffffff77;animation:aquarium-soap-rise 1.15s ease-out both}
+@keyframes aquarium-soap-rise{0%{opacity:0;transform:translate(0,0) scale(.5)}15%{opacity:1}80%{opacity:.8}100%{opacity:0;transform:translate(var(--bubble-drift),-65px) scale(1.2)}}
+@media(prefers-reduced-motion:reduce){.aquarium-soap-bubble{animation:none;opacity:.7}}

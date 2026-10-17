@@ -48,6 +48,7 @@ export async function readCatalog(db) {
       return stored
     })
   }
+  if((await db.query("select to_regclass('public.region_maps') is not null as present")).rows[0].present)result.region_maps=(await db.query('select * from public.region_maps order by region_id')).rows
   return result
 }
 

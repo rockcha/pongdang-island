@@ -1,0 +1,923 @@
+[
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      431,
+                      287,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -29,
+                           "dy":  2,
+                           "error":  18.31
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -2,
+                           "dy":  -67,
+                           "error":  29.18
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -27,
+                           "dy":  -68,
+                           "error":  31.42
+                       }
+                   ],
+        "id":  "shelljaw-placodus",
+        "columns":  2,
+        "storage_path":  "fish/normal/shelljaw-placodus_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      259,
+                      324,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -41,
+                           "dy":  1,
+                           "error":  47.18
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  2,
+                           "dy":  -35,
+                           "error":  29.23
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -37,
+                           "dy":  -34,
+                           "error":  39.33
+                       }
+                   ],
+        "id":  "bronze-spiral-ammonite",
+        "columns":  2,
+        "storage_path":  "fish/normal/bronze-spiral-ammonite_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      445,
+                      338,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -6,
+                           "dy":  -2,
+                           "error":  31.32
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -45,
+                           "error":  33.50
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -6,
+                           "dy":  -44,
+                           "error":  26.81
+                       }
+                   ],
+        "id":  "straighttower-baculites",
+        "columns":  2,
+        "storage_path":  "fish/normal/straighttower-baculites_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      438,
+                      283,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -31,
+                           "dy":  -1,
+                           "error":  31.43
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  4,
+                           "dy":  -105,
+                           "error":  42.85
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -20,
+                           "dy":  -105,
+                           "error":  60.97
+                       }
+                   ],
+        "id":  "billowmouth-leedsichthys",
+        "columns":  2,
+        "storage_path":  "fish/normal/billowmouth-leedsichthys_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      451,
+                      268,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -21,
+                           "dy":  -1,
+                           "error":  32.74
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -64,
+                           "error":  34.74
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -16,
+                           "dy":  -65,
+                           "error":  34.08
+                       }
+                   ],
+        "id":  "round-triassurus",
+        "columns":  2,
+        "storage_path":  "fish/normal/round-triassurus_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      442,
+                      260,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -44,
+                           "dy":  1,
+                           "error":  29.38
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  3,
+                           "dy":  -61,
+                           "error":  49.41
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -41,
+                           "dy":  -61,
+                           "error":  51.99
+                       }
+                   ],
+        "id":  "silverarmored-dapedium",
+        "columns":  2,
+        "storage_path":  "fish/normal/silverarmored-dapedium_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      256,
+                      335,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -33,
+                           "dy":  1,
+                           "error":  31.48
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  2,
+                           "dy":  -71,
+                           "error":  32.01
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -29,
+                           "dy":  -70,
+                           "error":  26.28
+                       }
+                   ],
+        "id":  "whorl-tetragonites",
+        "columns":  2,
+        "storage_path":  "fish/normal/whorl-tetragonites_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      459,
+                      335,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -24,
+                           "dy":  3,
+                           "error":  22.05
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -4,
+                           "dy":  -68,
+                           "error":  22.15
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -22,
+                           "dy":  -66,
+                           "error":  15.70
+                       }
+                   ],
+        "id":  "spineshell-diplomoceras",
+        "columns":  2,
+        "storage_path":  "fish/normal/spineshell-diplomoceras_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      463,
+                      260,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -43,
+                           "dy":  1,
+                           "error":  16.32
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  5,
+                           "dy":  -41,
+                           "error":  13.82
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -43,
+                           "dy":  -42,
+                           "error":  16.33
+                       }
+                   ],
+        "id":  "paddlefoot-primal-shrimp",
+        "columns":  2,
+        "storage_path":  "fish/normal/paddlefoot-primal-shrimp_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      433,
+                      314,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -18,
+                           "dy":  0,
+                           "error":  53.73
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -95,
+                           "error":  56.09
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -18,
+                           "dy":  -95,
+                           "error":  47.98
+                       }
+                   ],
+        "id":  "stoneshield-henodus",
+        "columns":  2,
+        "storage_path":  "fish/rare/stoneshield-henodus_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      452,
+                      328,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -14,
+                           "dy":  0,
+                           "error":  23.92
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -70,
+                           "error":  40.34
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -13,
+                           "dy":  -69,
+                           "error":  32.33
+                       }
+                   ],
+        "id":  "silvercurrent-ichthyosaurus",
+        "columns":  2,
+        "storage_path":  "fish/rare/silvercurrent-ichthyosaurus_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      445,
+                      341,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -8,
+                           "dy":  1,
+                           "error":  45.69
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -74,
+                           "error":  47.30
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -3,
+                           "dy":  -74,
+                           "error":  45.42
+                       }
+                   ],
+        "id":  "webfoot-marine-crocodile",
+        "columns":  2,
+        "storage_path":  "fish/rare/webfoot-marine-crocodile_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      452,
+                      301,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -53,
+                           "dy":  0,
+                           "error":  20.07
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -86,
+                           "error":  21.01
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -19,
+                           "dy":  -79,
+                           "error":  70.09
+                       }
+                   ],
+        "id":  "spineback-hybodus",
+        "columns":  2,
+        "storage_path":  "fish/rare/spineback-hybodus_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      394,
+                      328,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -18,
+                           "dy":  6,
+                           "error":  19.77
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -3,
+                           "dy":  -53,
+                           "error":  20.73
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -9,
+                           "dy":  -58,
+                           "error":  20.46
+                       }
+                   ],
+        "id":  "reedneck-tanystropheus",
+        "columns":  2,
+        "storage_path":  "fish/rare/reedneck-tanystropheus_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      455,
+                      337,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -41,
+                           "dy":  1,
+                           "error":  53.71
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -137,
+                           "error":  82.73
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -39,
+                           "dy":  -137,
+                           "error":  75.03
+                       }
+                   ],
+        "id":  "bronzejaw-liopleurodon",
+        "columns":  2,
+        "storage_path":  "fish/epic/bronzejaw-liopleurodon_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      448,
+                      307,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -28,
+                           "dy":  0,
+                           "error":  48.68
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -59,
+                           "error":  55.31
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -26,
+                           "dy":  -58,
+                           "error":  58.69
+                       }
+                   ],
+        "id":  "fangjaw-xiphactinus",
+        "columns":  2,
+        "storage_path":  "fish/epic/fangjaw-xiphactinus_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      434,
+                      384,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -20,
+                           "dy":  1,
+                           "error":  35.46
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  4,
+                           "dy":  -39,
+                           "error":  49.56
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -21,
+                           "dy":  -35,
+                           "error":  34.82
+                       }
+                   ],
+        "id":  "longneck-elasmosaurus",
+        "columns":  2,
+        "storage_path":  "fish/epic/longneck-elasmosaurus_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      442,
+                      318,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -10,
+                           "dy":  1,
+                           "error":  46.46
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -54,
+                           "error":  43.92
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -3,
+                           "dy":  -56,
+                           "error":  58.78
+                       }
+                   ],
+        "id":  "blackscale-mosasaurus",
+        "columns":  2,
+        "storage_path":  "fish/epic/blackscale-mosasaurus_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      447,
+                      334,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -2,
+                           "dy":  0,
+                           "error":  31.67
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -54,
+                           "error":  41.14
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -54,
+                           "error":  43.26
+                       }
+                   ],
+        "id":  "blueback-shonisaurus",
+        "columns":  2,
+        "storage_path":  "fish/epic/blueback-shonisaurus_sprite.png"
+    },
+    {
+        "width":  1774,
+        "height":  887,
+        "patch":  [
+                      300,
+                      202,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  2.5,
+                           "dy":  -1,
+                           "error":  32.93
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -3,
+                           "dy":  0,
+                           "error":  30.06
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -13.5,
+                           "dy":  -1,
+                           "error":  36.07
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  1,
+                           "dy":  -31.5,
+                           "error":  43.19
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  3.5,
+                           "dy":  -31.5,
+                           "error":  56.81
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -2,
+                           "dy":  -32.5,
+                           "error":  63.75
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -13.5,
+                           "dy":  -33.5,
+                           "error":  55.83
+                       }
+                   ],
+        "id":  "plios-blackwave-king",
+        "columns":  4,
+        "storage_path":  "fish/mythic/plios-blackwave-king_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      311,
+                      479,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -5,
+                           "dy":  -1,
+                           "error":  29.35
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -40,
+                           "error":  30.28
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -3,
+                           "dy":  -40,
+                           "error":  30.21
+                       }
+                   ],
+        "id":  "broadleaf-water-fern",
+        "columns":  2,
+        "storage_path":  "decorations/normal/broadleaf-water-fern_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      324,
+                      499,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -26,
+                           "dy":  0,
+                           "error":  24.85
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -26,
+                           "error":  35.24
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -25,
+                           "dy":  -24,
+                           "error":  41.38
+                       }
+                   ],
+        "id":  "purple-fork-seaweed",
+        "columns":  2,
+        "storage_path":  "decorations/normal/purple-fork-seaweed_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      300,
+                      498,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  8,
+                           "dy":  2,
+                           "error":  33.57
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -13,
+                           "error":  34.17
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  7,
+                           "dy":  -11,
+                           "error":  35.99
+                       }
+                   ],
+        "id":  "giant-fan-water-fern",
+        "columns":  2,
+        "storage_path":  "decorations/rare/giant-fan-water-fern_sprite.png"
+    }
+]

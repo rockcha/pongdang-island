@@ -1,0 +1,488 @@
+{
+  "verifiedAt": "2026-10-17T07:31:26.867Z",
+  "species": [
+    {
+      "id": "frosted-route-sign",
+      "name": "서리 낀 항로 표지판",
+      "kind": "decoration",
+      "rarity": "rare",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "decorations/rare/frosted-route-sign_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 128,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "blue-ice-crystal",
+      "name": "푸른 얼음 수정",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "decorations/normal/blue-ice-crystal_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 108,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "bluegrain-scallop",
+      "name": "푸른결 가리비",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/normal/bluegrain-scallop_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/bluegrain-scallop_sprite.png",
+      "size": 84,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "frosted-shell-pile",
+      "name": "서리 낀 조개무더기",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "decorations/normal/frosted-shell-pile_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 90,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "frostleg-krill",
+      "name": "서리발 크릴",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/normal/frostleg-krill_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/frostleg-krill_sprite.png",
+      "size": 65,
+      "movement_type": "swim"
+    },
+    {
+      "id": "frosttusk-walrus",
+      "name": "서리엄니 바다코끼리",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/rare/frosttusk-walrus_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/frosttusk-walrus_sprite.png",
+      "size": 142,
+      "movement_type": "swim"
+    },
+    {
+      "id": "glacier-ancient-creature-fossil",
+      "name": "빙하 속 고대 생물 화석",
+      "kind": "decoration",
+      "rarity": "epic",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "decorations/epic/glacier-ancient-creature-fossil_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 170,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "glacier-embedded-harpoon",
+      "name": "빙하에 박힌 작살",
+      "kind": "decoration",
+      "rarity": "rare",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "decorations/rare/glacier-embedded-harpoon_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 132,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "icearmor-king-crab",
+      "name": "얼음갑옷 왕게",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/rare/icearmor-king-crab_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/icearmor-king-crab_sprite.png",
+      "size": 114,
+      "movement_type": "swim"
+    },
+    {
+      "id": "icefloe-lumpsucker",
+      "name": "유빙 도치",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/normal/icefloe-lumpsucker_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/icefloe-lumpsucker_sprite.png",
+      "size": 82,
+      "movement_type": "swim"
+    },
+    {
+      "id": "iceflower-anemone",
+      "name": "얼음꽃 말미잘",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/normal/iceflower-anemone_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/iceflower-anemone_sprite.png",
+      "size": 95,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "iceribbon-giant-jellyfish",
+      "name": "얼음리본 대왕해파리",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/epic/iceribbon-giant-jellyfish_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/iceribbon-giant-jellyfish_sprite.png",
+      "size": 158,
+      "movement_type": "swim"
+    },
+    {
+      "id": "icewall-greenland-shark",
+      "name": "빙벽 그린란드상어",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/epic/icewall-greenland-shark_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/icewall-greenland-shark_sprite.png",
+      "size": 168,
+      "movement_type": "swim"
+    },
+    {
+      "id": "icewhisker-cod",
+      "name": "얼음수염 대구",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/normal/icewhisker-cod_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/icewhisker-cod_sprite.png",
+      "size": 108,
+      "movement_type": "swim"
+    },
+    {
+      "id": "longribbon-oarfish",
+      "name": "긴리본 산갈치",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/rare/longribbon-oarfish_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/longribbon-oarfish_sprite.png",
+      "size": 166,
+      "movement_type": "swim"
+    },
+    {
+      "id": "mammor-frozen-memory",
+      "name": "얼어붙은 기억, 맘모르",
+      "kind": "fish",
+      "rarity": "mythic",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/mythic/mammor-frozen-memory_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/mammor-frozen-memory_sprite.png",
+      "size": 180,
+      "movement_type": "swim"
+    },
+    {
+      "id": "mammoth-molar-fossil",
+      "name": "매머드 어금니 화석",
+      "kind": "decoration",
+      "rarity": "rare",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "decorations/rare/mammoth-molar-fossil_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 115,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "nivella-snowflake-dancer",
+      "name": "눈꽃의 무희, 니벨라",
+      "kind": "fish",
+      "rarity": "mythic",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/mythic/nivella-snowflake-dancer_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/nivella-snowflake-dancer_sprite.png",
+      "size": 172,
+      "movement_type": "swim"
+    },
+    {
+      "id": "silverback-great-sealion",
+      "name": "은등 큰바다사자",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/epic/silverback-great-sealion_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/silverback-great-sealion_sprite.png",
+      "size": 156,
+      "movement_type": "swim"
+    },
+    {
+      "id": "silverbell-jellyfish",
+      "name": "은방울 해파리",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/rare/silverbell-jellyfish_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/silverbell-jellyfish_sprite.png",
+      "size": 104,
+      "movement_type": "swim"
+    },
+    {
+      "id": "silverfrost-herring",
+      "name": "은서리 청어",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/normal/silverfrost-herring_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/silverfrost-herring_sprite.png",
+      "size": 88,
+      "movement_type": "swim"
+    },
+    {
+      "id": "silverspear-narwhal",
+      "name": "은창 일각고래",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/rare/silverspear-narwhal_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/silverspear-narwhal_sprite.png",
+      "size": 142,
+      "movement_type": "swim"
+    },
+    {
+      "id": "sleeping-expedition-submarine",
+      "name": "잠든 탐험 잠수정",
+      "kind": "decoration",
+      "rarity": "epic",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "decorations/epic/sleeping-expedition-submarine_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 174,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "snow-covered-round-rock",
+      "name": "눈 덮인 둥근 바위",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "decorations/normal/snow-covered-round-rock_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 102,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "snowflake-sea-butterfly",
+      "name": "눈꽃 바다나비",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/normal/snowflake-sea-butterfly_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/snowflake-sea-butterfly_sprite.png",
+      "size": 72,
+      "movement_type": "swim"
+    },
+    {
+      "id": "snowmantle-beluga",
+      "name": "눈망토 흰돌고래",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/rare/snowmantle-beluga_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/snowmantle-beluga_sprite.png",
+      "size": 130,
+      "movement_type": "swim"
+    },
+    {
+      "id": "snowpattern-orca",
+      "name": "눈무늬 범고래",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/epic/snowpattern-orca_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/snowpattern-orca_sprite.png",
+      "size": 166,
+      "movement_type": "swim"
+    },
+    {
+      "id": "snowspot-capelin",
+      "name": "눈점 열빙어",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/normal/snowspot-capelin_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/snowspot-capelin_sprite.png",
+      "size": 76,
+      "movement_type": "swim"
+    },
+    {
+      "id": "whitenight-bowhead-whale",
+      "name": "백야 북극고래",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/epic/whitenight-bowhead-whale_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/whitenight-bowhead-whale_sprite.png",
+      "size": 180,
+      "movement_type": "swim"
+    },
+    {
+      "id": "whitenight-crystal-tree",
+      "name": "백야의 수정 나무",
+      "kind": "decoration",
+      "rarity": "epic",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "decorations/epic/whitenight-crystal-tree_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 166,
+      "movement_type": "fixed"
+    },
+    {
+      "id": "whitenight-polar-bear",
+      "name": "백야 북극곰",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/epic/whitenight-polar-bear_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/whitenight-polar-bear_sprite.png",
+      "size": 164,
+      "movement_type": "swim"
+    },
+    {
+      "id": "whitesnow-polar-bear",
+      "name": "흰눈 북극곰",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "whitenight",
+      "thumbnail_path": "fish/rare/whitesnow-polar-bear_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/whitesnow-polar-bear_sprite.png",
+      "size": 140,
+      "movement_type": "swim"
+    }
+  ],
+  "habitats": [
+    {
+      "species_id": "silverfrost-herring",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "snowspot-capelin",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "icewhisker-cod",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "icefloe-lumpsucker",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "frostleg-krill",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "snowflake-sea-butterfly",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "bluegrain-scallop",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "iceflower-anemone",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "silverspear-narwhal",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "snowmantle-beluga",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "frosttusk-walrus",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "longribbon-oarfish",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "icearmor-king-crab",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "whitesnow-polar-bear",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "silverbell-jellyfish",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "icewall-greenland-shark",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "whitenight-polar-bear",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "whitenight-bowhead-whale",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "snowpattern-orca",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "iceribbon-giant-jellyfish",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "silverback-great-sealion",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "nivella-snowflake-dancer",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "mammor-frozen-memory",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "frosted-shell-pile",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "blue-ice-crystal",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "snow-covered-round-rock",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "mammoth-molar-fossil",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "frosted-route-sign",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "glacier-embedded-harpoon",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "glacier-ancient-creature-fossil",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "whitenight-crystal-tree",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "sleeping-expedition-submarine",
+      "region_id": "whitenight"
+    }
+  ],
+  "limitations": "These catalog rows only; no schema or migration-history parity claim."
+}

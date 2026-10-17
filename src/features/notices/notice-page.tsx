@@ -1,8 +1,12 @@
 import {useEffect,useState} from 'react'
-import {Link,useParams} from 'react-router'
+import {Link,useNavigate,useParams} from 'react-router'
 import {ArrowLeft,Pin,Plus} from 'lucide-react'
 import {Button} from '@/components/ui/button'
-import {isNoticeOperator,loadNotice,loadNotices,noticeCategories,noticeError,noticeProgress} from './api'
+import {deleteNotice,isNoticeOperator,loadNotice,loadNotices,noticeCategories,noticeError,noticeProgress} from './api'
+import {ConfirmDialog} from '@/components/confirm-dialog'
+import {useSocial} from '@/features/social/social-provider'
+import {markRelatedRead} from '@/features/notifications/api'
+import {toast} from 'sonner'
 import type {Notice,NoticeView} from './api'
 import {NoticeBody} from './notice-body'
 export const noticeField='min-h-11 w-full rounded-lg border bg-background px-3 text-sm'
@@ -20,8 +24,10 @@ export function NoticePage(){
   {feed&&feed.total>20&&<div className="flex items-center justify-between"><Button variant="outline" disabled={!page} onClick={()=>setPage(v=>v-1)}>이전</Button><span className="text-xs">{page+1} / {Math.ceil(feed.total/20)}</span><Button variant="outline" disabled={(page+1)*20>=feed.total} onClick={()=>setPage(v=>v+1)}>다음</Button></div>}
  </section>
 }
-export function NoticeDetail(){const {noticeId}=useParams();const [notice,setNotice]=useState<NoticeView|null>(null),[operator,setOperator]=useState(false),[error,setError]=useState(''),[loading,setLoading]=useState(true)
+export function NoticeDetail(){const {noticeId}=useParams(),navigate=useNavigate(),{owner,refresh}=useSocial();const [notice,setNotice]=useState<NoticeView|null>(null),[operator,setOperator]=useState(false),[error,setError]=useState(''),[loading,setLoading]=useState(true),[confirm,setConfirm]=useState(false),[busy,setBusy]=useState(false),[deleteError,setDeleteError]=useState('')
  useEffect(()=>{let active=true;setLoading(true);setError('');void Promise.all([loadNotice(noticeId??''),isNoticeOperator()]).then(([data,admin])=>{if(active){setNotice(data);setOperator(admin)}}).catch(e=>{if(active)setError(noticeError(e))}).finally(()=>{if(active)setLoading(false)});return()=>{active=false}},[noticeId])
- return <article className="space-y-5 py-5"><div className="flex justify-between"><Button variant="ghost" render={<Link to="/square/notices"/>}><ArrowLeft className="size-4"/>목록</Button>{operator&&notice&&<Button variant="outline" render={<Link to={`/square/notices/${notice.id}/edit`}/>}>수정</Button>}</div>{error?<p role="alert">{error}</p>:loading?<p role="status">소식을 불러오는 중…</p>:!notice?<p>공지를 찾을 수 없어요.</p>:<><header className="space-y-3 border-b pb-5"><NoticeBadge notice={notice}/><h2 className="break-words text-xl font-normal">{notice.title}</h2><p className="text-xs text-muted-foreground">{date(notice.published_at??notice.created_at)} · 운영팀{notice.status!=='published'&&` · ${notice.status==='draft'?'임시 저장':'숨김'}`}{noticeProgress(notice)&&` · ${noticeProgress(notice)}`}</p>{(notice.starts_at||notice.ends_at)&&<p className="text-xs text-muted-foreground">{date(notice.starts_at,true)} ~ {date(notice.ends_at,true)}</p>}</header><NoticeBody notice={notice}/></>}</article>
+ useEffect(()=>{if(owner&&notice?.status==='published')void markRelatedRead(owner,'notice_id',notice.id).then(()=>refresh()).catch(()=>toast.error('공지 확인 상태를 저장하지 못했어요.'))},[owner,notice?.id,notice?.status,refresh])
+ async function remove(){if(!notice||busy)return;setBusy(true);setDeleteError('');try{await deleteNotice(notice.id,notice.revision);void refresh();toast.success('공지를 삭제했어요.');navigate('/square/notices',{replace:true})}catch(e){setDeleteError(noticeError(e))}finally{setBusy(false)}}
+ return <article className="space-y-5 py-5"><div className="flex justify-between"><Button variant="ghost" render={<Link to="/square/notices"/>}><ArrowLeft className="size-4"/>목록</Button>{operator&&notice&&<div className="flex gap-2"><Button variant="ghost" onClick={()=>setConfirm(true)}>삭제</Button><Button variant="outline" render={<Link to={`/square/notices/${notice.id}/edit`}/>}>수정</Button></div>}</div>{error?<p role="alert">{error}</p>:loading?<p role="status">소식을 불러오는 중…</p>:!notice?<p>공지를 찾을 수 없어요.</p>:<><header className="space-y-3 border-b pb-5"><NoticeBadge notice={notice}/><h2 className="break-words text-xl font-normal">{notice.title}</h2><p className="text-xs text-muted-foreground">{date(notice.published_at??notice.created_at)} · 운영팀{notice.status!=='published'&&` · ${notice.status==='draft'?'임시 저장':'숨김'}`}{noticeProgress(notice)&&` · ${noticeProgress(notice)}`}</p>{(notice.starts_at||notice.ends_at)&&<p className="text-xs text-muted-foreground">{date(notice.starts_at,true)} ~ {date(notice.ends_at,true)}</p>}</header><NoticeBody notice={notice}/></>}<ConfirmDialog open={confirm} onOpenChange={setConfirm} title="공지를 삭제할까요?" description="공지와 연결된 알림이 삭제돼요. 삭제한 공지는 복구할 수 없어요." busy={busy} error={deleteError} onConfirm={()=>void remove()}/></article>
 }
 function date(value:string|null,time=false){return value?new Date(value).toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'numeric',day:'numeric',...(time?{hour:'2-digit',minute:'2-digit'} as const:{})}):'미정'}

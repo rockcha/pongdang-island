@@ -1,0 +1,20 @@
+{
+  "verifiedAt": "2026-10-17T06:12:01.748Z",
+  "verified": [
+    {
+      "bucket": "regions",
+      "key": "whitenight.png",
+      "sha256": "f31a7c2107fd47e16cd398bbb2f0d8e3a06bc061e4180e817a418c38127187a4"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "map/routes/map-whitenight_thumbnail.png",
+      "sha256": "38524f247ff365de25565d3d8733c22976821b86c5d4b1f03085a06f204f6636"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "equipment/rods/whitenight/thumbnail.png",
+      "sha256": "faf1de7d452f4d608adbb04da72a70ffaf763915c23f4459af0c0fc208c5eb50"
+    }
+  ]
+}

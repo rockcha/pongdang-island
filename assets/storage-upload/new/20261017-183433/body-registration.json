@@ -1,0 +1,299 @@
+[
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      421,
+                      231,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -16,
+                           "dy":  1,
+                           "error":  26.89
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  4,
+                           "dy":  -62,
+                           "error":  34.60
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -21,
+                           "dy":  -62,
+                           "error":  40.36
+                       }
+                   ],
+        "id":  "scrap-abandoned-survey-robot",
+        "columns":  2,
+        "storage_path":  "fish/epic/scrap-abandoned-survey-robot_sprite.png"
+    },
+    {
+        "width":  1776,
+        "height":  888,
+        "patch":  [
+                      292,
+                      185,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  38.62
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  29.45
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  38.63
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  41.67
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  46.53
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  -1,
+                           "error":  42.70
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  0,
+                           "dy":  -1,
+                           "error":  41.89
+                       }
+                   ],
+        "id":  "scrap-greenark-last-collector",
+        "columns":  4,
+        "storage_path":  "fish/mythic/scrap-greenark-last-collector_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      180,
+                      285,
+                      64,
+                      64
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  -1,
+                           "error":  40.67
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -36,
+                           "error":  42.11
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  4,
+                           "dy":  -35,
+                           "error":  34.61
+                       }
+                   ],
+        "id":  "scrap-tin-home-hermit-crab",
+        "columns":  2,
+        "storage_path":  "fish/rare/scrap-tin-home-hermit-crab_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      432,
+                      253,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -15,
+                           "dy":  0,
+                           "error":  35.92
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  4,
+                           "dy":  -52,
+                           "error":  42.98
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -15,
+                           "dy":  -53,
+                           "error":  39.86
+                       }
+                   ],
+        "id":  "scrap-bottlecap-shield-crab",
+        "columns":  2,
+        "storage_path":  "fish/rare/scrap-bottlecap-shield-crab_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      130,
+                      320,
+                      48,
+                      64
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -3,
+                           "dy":  -1,
+                           "error":  34.70
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -21,
+                           "error":  31.32
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -3,
+                           "dy":  -21,
+                           "error":  38.92
+                       }
+                   ],
+        "id":  "scrap-bulb-home-octopus",
+        "columns":  2,
+        "storage_path":  "fish/rare/scrap-bulb-home-octopus_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      294,
+                      503,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "error":  11.47
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  7,
+                           "dy":  0,
+                           "error":  26.58
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -4,
+                           "dy":  -4,
+                           "error":  21.87
+                       }
+                   ],
+        "id":  "scrap-tire-moray",
+        "columns":  2,
+        "storage_path":  "fish/rare/scrap-tire-moray_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      390,
+                      325,
+                      96,
+                      64
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -15,
+                           "dy":  -1,
+                           "error":  56.04
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  19,
+                           "dy":  -28,
+                           "error":  81.55
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -17,
+                           "dy":  -28,
+                           "error":  79.05
+                       }
+                   ],
+        "id":  "scrap-scrap-armored-sturgeon",
+        "columns":  2,
+        "storage_path":  "fish/epic/scrap-scrap-armored-sturgeon_sprite.png"
+    }
+]

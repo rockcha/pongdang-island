@@ -8,5 +8,6 @@ export type OwnedCollectible = {id:string;species_id:string;tank_id:string|null;
 export type CatalogEntry = Species & {discovered:boolean;habitats:{id:string;name:string}[]}
 export type CollectionState = {items:OwnedCollectible[];catalog:CatalogEntry[]}
 export const kindLabels:Record<CollectibleKind,string>={fish:'물고기',trash:'쓰레기',decoration:'장식물',map:'지도'}
-export function collectibleUrl(path:string){return createClient().storage.from('collectibles').getPublicUrl(path).data.publicUrl}
+const refreshedCloudArt=new Set(['map/routes/map-cloudferry_thumbnail.png','equipment/rods/cloudferry/thumbnail.png'])
+export function collectibleUrl(path:string){const url=createClient().storage.from('collectibles').getPublicUrl(path).data.publicUrl;return refreshedCloudArt.has(path)?`${url}${url.includes('?')?'&':'?'}v=totoro-2`:url}
 export async function loadCollection(){const {data,error}=await createClient().rpc('collection_state');if(error)throw error;return data}

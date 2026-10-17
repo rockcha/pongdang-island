@@ -34,6 +34,13 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      friend_aquarium:{Args:{p_owner:string};Returns:import('@/features/friends/aquarium-api').FriendAquarium}
+      feed_friend_aquarium:{Args:{p_tank:string;p_operation:string;p_step:number};Returns:import('@/features/friends/aquarium-api').FeedingResult}
+      clean_friend_aquarium:{Args:{p_tank:string;p_operation:string;p_step:number};Returns:import('@/features/friends/aquarium-api').CleaningResult}
+      map_shop_state:{Args:Record<string,never>;Returns:import('@/features/regions/map-shop-api').MapShopState}
+      buy_region_map:{Args:{p_region_id:string;p_operation_id:string};Returns:import('@/features/gold/api').GoldState & {delta:number}}
+      notice_delete:{Args:{p_id:string;p_revision:number};Returns:undefined}
+      notifications_opened:{Args:Record<string,never>;Returns:undefined}
       notice_is_operator:{Args:Record<string,never>;Returns:boolean}
       notice_save:{Args:import('@/features/notices/api').NoticeSave;Returns:import('@/features/notices/api').Notice}
       auction_state:{Args:{p_tab?:string;p_query?:string;p_offset?:number};Returns:import('@/features/auctions/api').AuctionFeed}

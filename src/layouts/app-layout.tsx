@@ -14,12 +14,14 @@ export function AppLayout() {
   const {pathname}=useLocation()
   useFishingTripRoute(session?.user.id,pathname)
   const aquarium=pathname==='/aquarium'
+  const friendAquarium=/^\/friends\/[^/]+\/aquarium\/?$/.test(pathname)
+  const tankScreen=aquarium||friendAquarium
   const harbor=pathname==='/harbor'
   const fishing=pathname.startsWith('/region/')
   const memory=pathname.startsWith('/arcade/')
   const { wallet, loading: goldLoading, error: goldError } = useGold()
-  return <div style={memory?{height:'100dvh',minHeight:0,overflow:'hidden'}:undefined} className={`app-shell mx-auto flex w-full ${fishing?'':'max-w-md'} flex-col ${aquarium||fishing?'aquarium-shell':harbor?'aquarium-shell px-4':'px-6'}`}>
-    <header className={`pongi-header sticky top-0 z-40 shrink-0 px-3 py-2 ${aquarium||harbor||fishing?'':'-mx-6'}`}>
+  return <div style={memory?{height:'100dvh',minHeight:0,overflow:'hidden'}:undefined} className={`app-shell mx-auto flex w-full ${fishing?'':'max-w-md'} flex-col ${tankScreen||fishing?'aquarium-shell':harbor?'aquarium-shell px-4':'px-6'}`}>
+    <header className={`pongi-header sticky top-0 z-40 shrink-0 px-3 py-2 ${tankScreen||harbor||fishing?'':'-mx-6'}`}>
       <div className="flex min-h-10 items-center justify-between gap-2">
       <div className="flex items-center gap-1">
         <Link to="/" className="pongi-brand-title flex items-center gap-1 text-lg font-normal tracking-tight"><BrandMascot decorative className="size-10 object-contain" />퐁당섬</Link>
@@ -34,7 +36,7 @@ export function AppLayout() {
         <div className="flex shrink-0 items-center border-l border-border/70 pl-1"><AttendanceButton /><NotificationMenu /></div>
       </div>}
     </header>
-    {!harbor&&<PlaceBanner pathname={pathname}/>}
-    <main className={`flex flex-1 flex-col ${aquarium||harbor||fishing||memory?'min-h-0 overflow-hidden':''}`}><Outlet /></main>
+    {!harbor&&!friendAquarium&&<PlaceBanner pathname={pathname}/>}
+    <main className={`flex flex-1 flex-col ${tankScreen||harbor||fishing||memory?'min-h-0 overflow-hidden':''}`}><Outlet /></main>
   </div>
 }

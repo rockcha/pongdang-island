@@ -1,0 +1,349 @@
+{
+  "batch": "assets/storage-upload/new/20261017-183433",
+  "species": [
+    {
+      "id": "scrap-dented-sardine-can",
+      "name": "찌그러진 꽁치 통조림",
+      "rarity": "common",
+      "kind": "trash",
+      "movement": "swim",
+      "size": 78,
+      "design": "Dented open sardine tin, faded fish picture label, curled lid and short seaweed strand",
+      "thumbnail": "trash/normal/scrap-dented-sardine-can_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-lost-rain-boot",
+      "name": "짝 잃은 장화",
+      "rarity": "common",
+      "kind": "trash",
+      "movement": "swim",
+      "size": 90,
+      "design": "One abandoned mustard yellow rubber rain boot, worn toe and tiny barnacles",
+      "thumbnail": "trash/normal/scrap-lost-rain-boot_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-soggy-newspaper",
+      "name": "바닷물 먹은 신문지",
+      "rarity": "common",
+      "kind": "trash",
+      "movement": "swim",
+      "size": 95,
+      "design": "Waterlogged folded newspaper with illegible faded print marks and softly torn curling edges, no readable text",
+      "thumbnail": "trash/normal/scrap-soggy-newspaper_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-leaky-cooking-pot",
+      "name": "구멍 난 냄비",
+      "rarity": "common",
+      "kind": "decoration",
+      "movement": "fixed",
+      "size": 100,
+      "design": "Old two-handled cooking pot with a round hole near its base, short seaweed sprouting through it",
+      "thumbnail": "decorations/normal/scrap-leaky-cooking-pot_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-discarded-cassette",
+      "name": "버려진 카세트테이프",
+      "rarity": "common",
+      "kind": "trash",
+      "movement": "swim",
+      "size": 85,
+      "design": "Abandoned teal cassette tape with two reels and a short loose ribbon of magnetic tape",
+      "thumbnail": "trash/normal/scrap-discarded-cassette_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-stopped-alarm-clock",
+      "name": "멈춘 알람시계",
+      "rarity": "common",
+      "kind": "decoration",
+      "movement": "fixed",
+      "size": 95,
+      "design": "Stopped rusty twin-bell alarm clock, cracked face, tiny barnacles, hands but no numerals",
+      "thumbnail": "decorations/normal/scrap-stopped-alarm-clock_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-soaked-duck-toy",
+      "name": "젖은 오리인형",
+      "rarity": "common",
+      "kind": "trash",
+      "movement": "swim",
+      "size": 85,
+      "design": "Soggy yellow plush duck toy facing RIGHT, stitched seam and small fabric patch, worn and lovable",
+      "thumbnail": "trash/normal/scrap-soaked-duck-toy_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-verdigris-fan",
+      "name": "녹청빛 선풍기",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "size": 135,
+      "design": "Old pedestal desk fan with turquoise verdigris cage, three copper blades and seaweed on the sturdy base",
+      "thumbnail": "decorations/rare/scrap-verdigris-fan_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-wheel-less-bicycle",
+      "name": "바퀴 잃은 자전거",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "size": 145,
+      "design": "Old bicycle resting on seabed, one missing wheel, rusted teal frame, wicker basket and tangled seaweed",
+      "thumbnail": "decorations/rare/scrap-wheel-less-bicycle_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-locked-suitcase",
+      "name": "잠긴 여행 가방",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "size": 115,
+      "design": "Closed brown vintage travel suitcase with brass lock and faded illustrated travel stickers without text",
+      "thumbnail": "decorations/rare/scrap-locked-suitcase_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-barnacle-telephone",
+      "name": "따개비 전화기",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "size": 108,
+      "design": "Old sage green rotary telephone, receiver attached by curled cable, clusters of small barnacles",
+      "thumbnail": "decorations/rare/scrap-barnacle-telephone_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-broken-diving-helmet",
+      "name": "고장 난 잠수 헬멧",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "size": 120,
+      "design": "Abandoned antique copper diving helmet with cracked round glass viewport, verdigris seams",
+      "thumbnail": "decorations/rare/scrap-broken-diving-helmet_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-forgotten-clockwork-robot",
+      "name": "잊힌 태엽 로봇",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "size": 118,
+      "design": "Small forgotten wind-up tin robot standing on both feet, copper teal panels, square head, dim friendly eyes, key in its back",
+      "thumbnail": "decorations/rare/scrap-forgotten-clockwork-robot_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-waterlogged-music-box",
+      "name": "물먹은 오르골",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "size": 112,
+      "design": "Open waterlogged wooden music box, little shell ballerina on brass disc, worn carved lid",
+      "thumbnail": "decorations/rare/scrap-waterlogged-music-box_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-seaweed-shopping-cart",
+      "name": "해초 감긴 쇼핑카트",
+      "rarity": "rare",
+      "kind": "decoration",
+      "movement": "fixed",
+      "size": 140,
+      "design": "Abandoned small wire shopping cart, rusty turquoise metal and seaweed wrapped around wheels",
+      "thumbnail": "decorations/rare/scrap-seaweed-shopping-cart_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-coral-wreck-car",
+      "name": "산호 품은 폐자동차",
+      "rarity": "epic",
+      "kind": "decoration",
+      "movement": "fixed",
+      "size": 170,
+      "design": "Abandoned rounded vintage automobile on seabed facing RIGHT, faded teal paint, broken windows, pink coral growing through hood and windows",
+      "thumbnail": "decorations/epic/scrap-coral-wreck-car_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-sleeping-vending-machine",
+      "name": "잠든 심해 자판기",
+      "rarity": "epic",
+      "kind": "decoration",
+      "movement": "fixed",
+      "size": 155,
+      "design": "Abandoned deep-sea drink vending machine standing on seabed, oxidized teal enamel, fogged glass, tiny warm inner lights and old cans, no readable logos",
+      "thumbnail": "decorations/epic/scrap-sleeping-vending-machine_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-rusted-lighthouse-lens",
+      "name": "녹슨 등대 렌즈",
+      "rarity": "epic",
+      "kind": "decoration",
+      "movement": "fixed",
+      "size": 150,
+      "design": "Huge antique lighthouse Fresnel lens inside rusted copper mounting pedestal, emerald glass rings reflecting gentle light",
+      "thumbnail": "decorations/epic/scrap-rusted-lighthouse-lens_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-abandoned-survey-robot",
+      "name": "버려진 탐사 로봇",
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "crawl",
+      "size": 150,
+      "design": "Abandoned submarine survey robot facing RIGHT with two caterpillar treads, rounded copper shell, single turquoise camera lens and two small tool arms",
+      "thumbnail": "fish/epic/scrap-abandoned-survey-robot_thumbnail.png",
+      "sprite": "fish/epic/scrap-abandoned-survey-robot_sprite.png",
+      "frames": 4
+    },
+    {
+      "id": "scrap-sunken-scrap-carrier",
+      "name": "침몰한 고물 운반선",
+      "rarity": "epic",
+      "kind": "decoration",
+      "movement": "fixed",
+      "size": 170,
+      "design": "Small sunken scrap cargo vessel resting on seabed, rusted hull facing RIGHT, broken mast, loaded with old tires cans and gears, seaweed and coral",
+      "thumbnail": "decorations/epic/scrap-sunken-scrap-carrier_thumbnail.png",
+      "sprite": null,
+      "frames": 1
+    },
+    {
+      "id": "scrap-greenark-last-collector",
+      "name": "마지막 수거선, 그린아크",
+      "rarity": "mythic",
+      "kind": "fish",
+      "movement": "swim",
+      "size": 180,
+      "design": "Majestic huge living salvage ship facing RIGHT, patched rusted copper and jade green hull, stacked cargo of discarded objects, trees growing on deck, one articulated salvage crane with a claw holding a tiny luminous salvaged gear; warm cabin windows, emerald core, dignified magical vessel",
+      "thumbnail": "fish/mythic/scrap-greenark-last-collector_thumbnail.png",
+      "sprite": "fish/mythic/scrap-greenark-last-collector_sprite.png",
+      "frames": 8
+    },
+    {
+      "id": "scrap-tin-home-hermit-crab",
+      "name": "깡통집 소라게",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "crawl",
+      "size": 90,
+      "design": "Cute hermit crab facing RIGHT wearing a dented sardine tin as shell, orange claws and glossy eyes, no natural shell",
+      "thumbnail": "fish/rare/scrap-tin-home-hermit-crab_thumbnail.png",
+      "sprite": "fish/rare/scrap-tin-home-hermit-crab_sprite.png",
+      "frames": 4
+    },
+    {
+      "id": "scrap-bottlecap-shield-crab",
+      "name": "병뚜껑 방패게",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "crawl",
+      "size": 92,
+      "design": "Cute small orange crab facing RIGHT, each claw holds a different worn bottle cap as a shield, blue and red caps",
+      "thumbnail": "fish/rare/scrap-bottlecap-shield-crab_thumbnail.png",
+      "sprite": "fish/rare/scrap-bottlecap-shield-crab_sprite.png",
+      "frames": 4
+    },
+    {
+      "id": "scrap-bulb-home-octopus",
+      "name": "전구집 문어",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "fixed",
+      "size": 105,
+      "design": "Cute little lilac octopus peeking RIGHT out of a large broken clear lightbulb lying on its side, rounded glass edges and rusty screw base",
+      "thumbnail": "fish/rare/scrap-bulb-home-octopus_thumbnail.png",
+      "sprite": "fish/rare/scrap-bulb-home-octopus_sprite.png",
+      "frames": 4
+    },
+    {
+      "id": "scrap-tire-moray",
+      "name": "타이어 곰치",
+      "rarity": "rare",
+      "kind": "fish",
+      "movement": "fixed",
+      "size": 125,
+      "design": "Cute olive green moray eel facing RIGHT peeking out through the central hole of a discarded black tire on seabed, head and short neck only",
+      "thumbnail": "fish/rare/scrap-tire-moray_thumbnail.png",
+      "sprite": "fish/rare/scrap-tire-moray_sprite.png",
+      "frames": 4
+    },
+    {
+      "id": "scrap-scrap-armored-sturgeon",
+      "name": "고철갑옷 철갑상어",
+      "rarity": "epic",
+      "kind": "fish",
+      "movement": "swim",
+      "size": 170,
+      "design": "Large sturgeon fish facing RIGHT, long pointed snout and barbels, natural scutes resembling overlapping rusted copper and verdigris metal armor plates, flowing fins, clearly a fish not a robot",
+      "thumbnail": "fish/epic/scrap-scrap-armored-sturgeon_thumbnail.png",
+      "sprite": "fish/epic/scrap-scrap-armored-sturgeon_sprite.png",
+      "frames": 4
+    }
+  ],
+  "assets": [
+    {
+      "id": "horizon",
+      "path": "public/banners/scrapisle-horizon.png",
+      "transparent": false,
+      "prompt": "Wide landscape 3:1 panoramic hand-painted cozy fantasy game seascape for Rustgreen Scrap Island. A gently rusted island harbor built of abandoned ships, copper scrap hills, old cranes and patched corrugated sheds, turquoise patina, moss and seaweed reclaiming discarded objects. Clear jade green sea in foreground, warm pale afternoon sky, inviting whimsical melancholy, rich coherent detail not a landfill photograph, no people, no writing, no UI. Horizon through middle, distinctive scrap island silhouette in middle third, gentle light."
+    },
+    {
+      "id": "fishing",
+      "path": "public/fishing/environments/scrapisle.png",
+      "transparent": false,
+      "prompt": "Portrait 1024x1536 hand-painted cozy fantasy game first person fishing environment Rustgreen Scrap Island. Top quarter distant island harbor of rusted abandoned ships, tiny salvage cranes and copper scrap hills covered in moss, pale warm sky. y400 through y1050 CLEAR OPEN JADE GREEN WATER for float. Bottom y1060 through1536, full width wooden fishing dock with weathered moss green boards and subtle rusty metal fittings. Straight horizontal dock edge at69 percent height, no railings, no equipment, no people, no close foreground junk, no lettering. Beautiful warm green copper palette, polished illustrated game background."
+    },
+    {
+      "id": "map",
+      "path": "map/routes/map-scrapisle_thumbnail.png",
+      "transparent": true,
+      "prompt": "One square isolated transparent game map item. Unfolded cream parchment with curled edges, hand painted tiny Rustgreen Scrap Island: island of copper scrap hills, abandoned ships, small crane, moss-green roof harbor and emerald sea with dotted route. Warm brown outlines, rounded charming cartoon illustration, readable at128 pixels, no text, no numbers, no people. Whole parchment within84 percent of square, true transparent background, no exterior scenery or shadow."
+    },
+    {
+      "id": "rod",
+      "path": "equipment/rods/scrapisle/thumbnail.png",
+      "transparent": true,
+      "prompt": "One square isolated transparent polished cozy fantasy fishing equipment icon, entire rod diagonal bottom left to top right. Salvaged copper and verdigris metal fishing rod with moss green wrapping, sturdy cork grip, circular gear shaped brass reel with jade hub, little copper can shaped fishing float attached by line. Charming carefully restored handmade scrap equipment, no face, no words, no scenery, whole set inside84 percent image, transparent background."
+    },
+    {
+      "id": "icon",
+      "path": "public/region-icons/scrapisle.png",
+      "transparent": true,
+      "prompt": "One small square transparent cozy game region icon. A miniature moss-covered island made of a rusted boat bow, tiny salvage crane and copper gears, green seaweed and jade water rim. Rounded cartoon silhouette, bold warm brown outlines and soft warm cel shading, readable at48 pixels, not an emoji, no writing, no external background, whole silhouette within84 percent of square."
+    }
+  ]
+}

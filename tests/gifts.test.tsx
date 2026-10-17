@@ -7,6 +7,7 @@ import type { Species,OwnedCollectible } from '../src/features/collection/api'
 const mock=vi.hoisted(()=>({send:vi.fn(),load:vi.fn(),claim:vi.fn(),react:vi.fn(),refresh:vi.fn(),social:{owner:'me',requests:[{status:'accepted',sender_id:'me',recipient:{id:'friend',nickname:'친구',friend_code:'ABCDEF123456'}}],notifications:[]}}))
 vi.mock('@/features/social/social-provider',()=>({useSocial:()=>({...mock.social,refresh:mock.refresh})}))
 vi.mock('@/features/gold/gold-provider',()=>({useGold:()=>({refresh:mock.refresh}),GoldIcon:()=>null}))
+vi.mock('@/features/notifications/api',()=>({markRelatedRead:vi.fn().mockResolvedValue(undefined)}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:()=>null}))
 vi.mock('@/features/gifts/api',async importOriginal=>({...await importOriginal<typeof import('../src/features/gifts/api')>(),sendGift:mock.send,loadGift:mock.load,claimGift:mock.claim,reactToGift:mock.react}))
 const species={id:'fish',name:'멸치',kind:'fish',thumbnail_path:'fish.png'} as Species

@@ -1,0 +1,20 @@
+{
+  "verifiedAt": "2026-10-17T08:27:31.440Z",
+  "verified": [
+    {
+      "bucket": "regions",
+      "key": "cloudferry.png",
+      "sha256": "80cb43201a6ed2d9c4317978fe3c10c3e98f842a8716aaa73f45684bf1055f86"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "map/routes/map-cloudferry_thumbnail.png",
+      "sha256": "5d6901c365434a9080e2799cec4b8043ea84038f8c3870c77754cb0493ff345b"
+    },
+    {
+      "bucket": "collectibles",
+      "key": "equipment/rods/cloudferry/thumbnail.png",
+      "sha256": "c7b08d8dabb99a638cec5b9c92df054cf6df58221535593b1dbb0287943bd59a"
+    }
+  ]
+}

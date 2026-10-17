@@ -27,7 +27,12 @@ export function TankInhabitants({ items,onPlace,onNavigate,onSelectDecoration,on
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
     const visibility = () => renderer.current?.setVisible(!pause.current&&onScreen.current && !document.hidden)
     const preference = () => renderer.current?.setReduced(reduced.matches)
-    const observer = new ResizeObserver(() => renderer.current?.resize(parent.clientWidth, parent.clientHeight))
+    const resize=()=>renderer.current?.resize(parent.clientWidth,parent.clientHeight)
+    let density=window.matchMedia(`(resolution: ${window.devicePixelRatio||1}dppx)`)
+    const densityChanged=()=>{density.removeEventListener('change',densityChanged);resize();density=window.matchMedia(`(resolution: ${window.devicePixelRatio||1}dppx)`);density.addEventListener('change',densityChanged)}
+    density.addEventListener('change',densityChanged)
+    window.addEventListener('resize',resize)
+    const observer = new ResizeObserver(resize)
     observer.observe(parent)
     const intersection = new IntersectionObserver(entries => { onScreen.current = entries[0]?.isIntersecting ?? true; visibility() })
     intersection.observe(parent)
@@ -43,6 +48,8 @@ export function TankInhabitants({ items,onPlace,onNavigate,onSelectDecoration,on
     return () => {
       active = false
       observer.disconnect(); intersection.disconnect()
+      density.removeEventListener('change',densityChanged)
+      window.removeEventListener('resize',resize)
       document.removeEventListener('visibilitychange', visibility)
       reduced.removeEventListener('change', preference)
       renderer.current?.destroy(); renderer.current = null

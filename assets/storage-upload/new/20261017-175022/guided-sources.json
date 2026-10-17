@@ -1,0 +1,65 @@
+{
+  "entries": [
+    {
+      "id": "cloud-ripple-running-catbus",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-906f7355-32a4-4489-9d6d-89ccdca73d80.png",
+      "storage_path": "fish/epic/cloud-ripple-running-catbus_sprite.png",
+      "prompt": "EDIT THIS EXISTING 2x2 SHEET IN PLACE, do NOT generate a new composition. Preserve the exact small subject placement, large transparent cell margins, scale, face/chest positions and 4-cell arrangement shown in the input. Only alter flexible parts to make FOUR sequential poses of this action: many legs alternate running in ordered wave, tail sways, rigid bus body and face stable. Same exact individual and right-facing orientation in all4. Keep each subject within its current small central footprint. No zoom, no crop, no enlargement, no camera changes. Keep torso and main rigid props fixed. Never make the four drawings identical; animate the specified appendages by small restrained amounts only. Maintain existing clear transparent gaps between all cells and large outer margin. No text, no labels, no lines, no stray pixels or detached particles. Actual alpha transparency.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/artifacts/guide-cloud-ripple-running-catbus.png"
+      ],
+      "frames": 4,
+      "revision": "guided-layout"
+    },
+    {
+      "id": "cloud-white-dragon-haku",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-2eefe53c-1905-4c0c-be96-1f5fcab2486f.png",
+      "storage_path": "fish/epic/cloud-white-dragon-haku_sprite.png",
+      "prompt": "EDIT THIS EXISTING 2x2 SHEET IN PLACE, do NOT generate a new composition. Preserve the exact small subject placement, large transparent cell margins, scale, face/chest positions and 4-cell arrangement shown in the input. Only alter flexible parts to make FOUR sequential poses of this action: long tail undulates behind left, teal mane and whiskers flow in delayed waves; head and chest stable. Same exact individual and right-facing orientation in all4. Keep each subject within its current small central footprint. No zoom, no crop, no enlargement, no camera changes. Keep torso and main rigid props fixed. Never make the four drawings identical; animate the specified appendages by small restrained amounts only. Maintain existing clear transparent gaps between all cells and large outer margin. No text, no labels, no lines, no stray pixels or detached particles. Actual alpha transparency.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/artifacts/guide-cloud-white-dragon-haku.png"
+      ],
+      "frames": 4,
+      "revision": "guided-layout"
+    },
+    {
+      "id": "cloud-fluttering-paper-shikigami",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-f603942e-1816-4f86-aaa4-892ecb64ed9d.png",
+      "storage_path": "fish/rare/cloud-fluttering-paper-shikigami_sprite.png",
+      "prompt": "EDIT THIS EXISTING 2x2 SHEET IN PLACE, do NOT generate a new composition. Preserve the exact small subject placement, large transparent cell margins, scale, face/chest positions and 4-cell arrangement shown in the input. Only alter flexible parts to make FOUR sequential poses of this action: paper arms and corners flap in offset sequence, flock spacing stable. Same exact individual and right-facing orientation in all4. Keep each subject within its current small central footprint. No zoom, no crop, no enlargement, no camera changes. Keep torso and main rigid props fixed. Never make the four drawings identical; animate the specified appendages by small restrained amounts only. Maintain existing clear transparent gaps between all cells and large outer margin. No text, no labels, no lines, no stray pixels or detached particles. Actual alpha transparency.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/artifacts/guide-cloud-fluttering-paper-shikigami.png"
+      ],
+      "frames": 4,
+      "revision": "guided-layout"
+    },
+    {
+      "id": "cloud-sunset-delivery-kiki",
+      "type": "sprite",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-c7b44f3c-4e37-49f4-a038-2374ae3488b1.png",
+      "storage_path": "fish/rare/cloud-sunset-delivery-kiki_sprite.png",
+      "prompt": "EDIT THIS EXISTING 2x2 SHEET IN PLACE, do NOT generate a new composition. Preserve the exact small subject placement, large transparent cell margins, scale, face/chest positions and 4-cell arrangement shown in the input. Only alter flexible parts to make FOUR sequential poses of this action: red bow, dress hem and broom bristles trail in current; torso and broom shaft stable. Same exact individual and right-facing orientation in all4. Keep each subject within its current small central footprint. No zoom, no crop, no enlargement, no camera changes. Keep torso and main rigid props fixed. Never make the four drawings identical; animate the specified appendages by small restrained amounts only. Maintain existing clear transparent gaps between all cells and large outer margin. No text, no labels, no lines, no stray pixels or detached particles. Actual alpha transparency.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/artifacts/guide-cloud-sunset-delivery-kiki.png"
+      ],
+      "frames": 4,
+      "revision": "guided-layout"
+    },
+    {
+      "id": "cloud-ripple-running-catbus",
+      "type": "thumbnail",
+      "path": "C:\\Users\\user\\.codex\\generated_images\\01a14511-dc16-7ff1-862c-ea039076728e\\exec-60b2c093-6b76-4ce0-8b3f-f02636b62ae4.png",
+      "storage_path": "fish/epic/cloud-ripple-running-catbus_thumbnail.png",
+      "prompt": "Edit this exact thumbnail layout. Keep the subject SMALL and centered with the existing very large transparent margin. Preserve all colors, pose, identity and proportions. Repair/finish every whisker tip and paw outline cleanly. Do NOT zoom, fill the canvas or shrink the margins. No scenery, no detached glow or particles. Transparent background.",
+      "reference_images": [
+        "C:/Users/user/Desktop/pongdang-island/artifacts/guide-cloud-catbus-thumbnail.png"
+      ],
+      "frames": 0,
+      "revision": "guided-layout"
+    }
+  ],
+  "errors": []
+}

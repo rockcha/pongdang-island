@@ -3,6 +3,8 @@ import type { Trade, Wallet } from './wallet'
 export type GoldState = Wallet & { testClaimed: boolean; testEnabled: boolean }
 export function goldError(cause: unknown): string {
   const message = cause && typeof cause === 'object' && 'message' in cause ? String(cause.message) : ''
+  if(message.includes('MAP_ALREADY_OWNED'))return '이미 해금한 해역이에요. 지도 목록을 다시 확인해주세요.'
+  if(message.includes('INVALID_MAP'))return '판매 중인 지도를 찾지 못했어요.'
   if(message.includes('STARTER_ROD_NOT_TRADEABLE'))return '기본 지급 낚싯대는 구매하거나 판매할 수 없어요.'
   if(message.includes('ROD_ALREADY_OWNED'))return '이미 보유한 낚싯대예요.'
   if(message.includes('ROD_NOT_OWNED'))return '판매할 낚싯대가 없어요. 목록을 다시 불러와주세요.'
@@ -18,6 +20,12 @@ export async function loadGold() {
   return data
 }
 export async function transactGold(action: Trade, operationId: string) {
+  if(action.type==='buy'&&action.id.startsWith('map:')){
+    const {data,error}=await createClient().rpc('buy_region_map',{p_region_id:action.id.slice(4),p_operation_id:operationId})
+    if(error)throw error
+    if(typeof window!=='undefined')window.dispatchEvent(new Event('region-maps-changed'))
+    return data
+  }
   if(action.type!=='charge'&&action.id.startsWith('rod:')){
     const {data,error}=await createClient().rpc('trade_fishing_rod',{p_rod_id:action.id.slice(4),p_action:action.type,p_operation_id:operationId})
     if(error)throw error

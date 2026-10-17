@@ -1,6 +1,9 @@
 ﻿import { useState } from 'react'
 
 export const fishingEnvironments={
+ scrapisle:{name:'녹빛 고물섬',water:'#578c78',deck:'#807c59',edge:'#b99765',waterEnd:990,deckStart:1065},
+ cloudferry:{name:'지브리의 구름나루',water:'#60bfb5',deck:'#ad8b56',edge:'#e1c99a',waterEnd:990,deckStart:1065},
+ whitenight:{name:'백야의 빙해',water:'#4c9cba',deck:'#d8edf7',edge:'#8ab9d1',waterEnd:990,deckStart:1065},
  bluegrove:{name:'푸른골 해역',water:'#38b5cd',deck:'#af9c83',edge:'#e7d5b5',waterEnd:990,deckStart:1065},
  pongdang:{name:'퐁당섬 앞바다',water:'#529dc7',deck:'#b88b61',edge:'#e4c695',waterEnd:1048,deckStart:1058},
  coral:{name:'산호빛 여울',water:'#51b2ba',deck:'#98765c',edge:'#dfb59a',waterEnd:1100,deckStart:1128},

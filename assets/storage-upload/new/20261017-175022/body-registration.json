@@ -1,0 +1,884 @@
+[
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      391,
+                      155,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -31,
+                           "dy":  -1,
+                           "error":  15.57
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -12,
+                           "error":  12.73
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -27,
+                           "dy":  -13,
+                           "error":  13.87
+                       }
+                   ],
+        "id":  "cloud-star-candy-soot",
+        "columns":  2,
+        "storage_path":  "fish/normal/cloud-star-candy-soot_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      302,
+                      503,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  2,
+                           "error":  6.38
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  3,
+                           "dy":  0,
+                           "error":  7.75
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  1,
+                           "dy":  0,
+                           "error":  7.79
+                       }
+                   ],
+        "id":  "cloud-shell-home-soot",
+        "columns":  2,
+        "storage_path":  "fish/normal/cloud-shell-home-soot_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      284,
+                      507,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -31,
+                           "dy":  0,
+                           "error":  13.14
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -8,
+                           "dy":  -15,
+                           "error":  19.00
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -27,
+                           "dy":  -12,
+                           "error":  17.78
+                       }
+                   ],
+        "id":  "cloud-teacup-soot",
+        "columns":  2,
+        "storage_path":  "fish/normal/cloud-teacup-soot_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      430,
+                      198,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -46,
+                           "dy":  17,
+                           "error":  10.31
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  3,
+                           "dy":  -53,
+                           "error":  9.74
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -33,
+                           "dy":  -32,
+                           "error":  8.67
+                       }
+                   ],
+        "id":  "cloud-cloud-cotton-jellyfish",
+        "columns":  2,
+        "storage_path":  "fish/normal/cloud-cloud-cotton-jellyfish_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      310,
+                      506,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -35,
+                           "dy":  0,
+                           "error":  19.32
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  8,
+                           "dy":  -20,
+                           "error":  18.07
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -33,
+                           "dy":  -19,
+                           "error":  24.52
+                       }
+                   ],
+        "id":  "cloud-head-tilt-kodama",
+        "columns":  2,
+        "storage_path":  "fish/normal/cloud-head-tilt-kodama_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      421,
+                      154,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -34,
+                           "dy":  1,
+                           "error":  7.11
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -17,
+                           "error":  7.30
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -32,
+                           "dy":  -19,
+                           "error":  9.68
+                       }
+                   ],
+        "id":  "cloud-bath-token-frog",
+        "columns":  2,
+        "storage_path":  "fish/normal/cloud-bath-token-frog_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      302,
+                      507,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -11,
+                           "dy":  0,
+                           "error":  11.22
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -22,
+                           "error":  16.91
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -12,
+                           "dy":  -22,
+                           "error":  17.36
+                       }
+                   ],
+        "id":  "cloud-little-log-calcifer",
+        "columns":  2,
+        "storage_path":  "fish/normal/cloud-little-log-calcifer_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      416,
+                      162,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  11,
+                           "dy":  5,
+                           "error":  13.68
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  16,
+                           "dy":  -18,
+                           "error":  25.30
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  14,
+                           "dy":  -21,
+                           "error":  24.54
+                       }
+                   ],
+        "id":  "cloud-bucket-little-ponyo",
+        "columns":  2,
+        "storage_path":  "fish/rare/cloud-bucket-little-ponyo_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      428,
+                      221,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -12,
+                           "dy":  0,
+                           "error":  5.73
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -24,
+                           "dy":  -39,
+                           "error":  13.03
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -31,
+                           "dy":  -36,
+                           "error":  13.40
+                       }
+                   ],
+        "id":  "cloud-waterdrop-ponyo",
+        "columns":  2,
+        "storage_path":  "fish/rare/cloud-waterdrop-ponyo_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      326,
+                      508,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -16,
+                           "dy":  0,
+                           "error":  16.97
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -11,
+                           "error":  15.14
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -15,
+                           "dy":  -11,
+                           "error":  19.42
+                       }
+                   ],
+        "id":  "cloud-flame-spirit-calcifer",
+        "columns":  2,
+        "storage_path":  "fish/rare/cloud-flame-spirit-calcifer_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      431,
+                      178,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  7.23
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  1,
+                           "error":  8.58
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  1,
+                           "error":  8.70
+                       }
+                   ],
+        "id":  "cloud-sunset-delivery-kiki",
+        "columns":  2,
+        "storage_path":  "fish/rare/cloud-sunset-delivery-kiki_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      299,
+                      505,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  28.55
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  16.27
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  24.86
+                       }
+                   ],
+        "id":  "cloud-masked-forest-san",
+        "columns":  2,
+        "storage_path":  "fish/rare/cloud-masked-forest-san_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      426,
+                      182,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -3,
+                           "dy":  1,
+                           "error":  23.94
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -22,
+                           "error":  22.37
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -25,
+                           "error":  21.89
+                       }
+                   ],
+        "id":  "cloud-forest-path-white-wolf",
+        "columns":  2,
+        "storage_path":  "fish/rare/cloud-forest-path-white-wolf_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      424,
+                      344,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "error":  14.48
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  2,
+                           "error":  17.97
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -2,
+                           "dy":  -4,
+                           "error":  16.41
+                       }
+                   ],
+        "id":  "cloud-fluttering-paper-shikigami",
+        "columns":  2,
+        "storage_path":  "fish/rare/cloud-fluttering-paper-shikigami_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      446,
+                      226,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  22.05
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  23.33
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  19.87
+                       }
+                   ],
+        "id":  "cloud-white-dragon-haku",
+        "columns":  2,
+        "storage_path":  "fish/epic/cloud-white-dragon-haku_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      426,
+                      188,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  1,
+                           "error":  5.02
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -23,
+                           "error":  6.29
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -21,
+                           "error":  5.78
+                       }
+                   ],
+        "id":  "cloud-cloud-boat-no-face",
+        "columns":  2,
+        "storage_path":  "fish/epic/cloud-cloud-boat-no-face_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      426,
+                      213,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "error":  14.82
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  17.14
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  0,
+                           "error":  19.94
+                       }
+                   ],
+        "id":  "cloud-ripple-running-catbus",
+        "columns":  2,
+        "storage_path":  "fish/epic/cloud-ripple-running-catbus_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      426,
+                      168,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  1,
+                           "dy":  0,
+                           "error":  9.16
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -20,
+                           "error":  16.03
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  2,
+                           "dy":  -20,
+                           "error":  18.87
+                       }
+                   ],
+        "id":  "cloud-lantern-no-face",
+        "columns":  2,
+        "storage_path":  "fish/epic/cloud-lantern-no-face_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      432,
+                      189,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -20,
+                           "dy":  0,
+                           "error":  22.52
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  2,
+                           "dy":  -45,
+                           "error":  37.27
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -14,
+                           "dy":  -44,
+                           "error":  36.26
+                       }
+                   ],
+        "id":  "cloud-wave-calling-ponyo",
+        "columns":  2,
+        "storage_path":  "fish/epic/cloud-wave-calling-ponyo_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      308,
+                      507,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -31,
+                           "dy":  2,
+                           "error":  12.62
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  2,
+                           "dy":  -13,
+                           "error":  8.65
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -17,
+                           "dy":  -15,
+                           "error":  8.03
+                       }
+                   ],
+        "id":  "cloud-cloud-umbrella-totoro",
+        "columns":  2,
+        "storage_path":  "fish/epic/cloud-cloud-umbrella-totoro_sprite.png"
+    },
+    {
+        "width":  1254,
+        "height":  1254,
+        "patch":  [
+                      306,
+                      503,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -18,
+                           "dy":  3,
+                           "error":  9.28
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -19,
+                           "error":  8.30
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -18,
+                           "dy":  -18,
+                           "error":  8.88
+                       }
+                   ],
+        "id":  "cloud-lotus-umbrella-river-spirit",
+        "columns":  2,
+        "storage_path":  "fish/epic/cloud-lotus-umbrella-river-spirit_sprite.png"
+    },
+    {
+        "width":  1776,
+        "height":  888,
+        "patch":  [
+                      295,
+                      125,
+                      32,
+                      32
+                  ],
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  0.00
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  27.36
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  19.74
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  0,
+                           "error":  30.89
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  23.98
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  26.57
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  0,
+                           "error":  25.79
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -1,
+                           "dy":  0,
+                           "error":  26.65
+                       }
+                   ],
+        "id":  "cloud-howl-moving-castle",
+        "columns":  4,
+        "storage_path":  "fish/mythic/cloud-howl-moving-castle_sprite.png"
+    }
+]

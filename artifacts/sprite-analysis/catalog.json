@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-10-16T23:30:41.795Z",
+  "species": [
+    {
+      "id": "flower-coral-seadragon",
+      "name": "꽃산호 해룡",
+      "size": 72,
+      "sprite_sheet_path": "fish/rare/flower-coral-seadragon-v2_sprite.png",
+      "thumbnail_path": "fish/rare/flower-coral-seadragon_thumbnail.png"
+    },
+    {
+      "id": "glassfin-lionfish",
+      "name": "유리 지느러미 쏠배감펭",
+      "size": 76,
+      "sprite_sheet_path": "fish/rare/glassfin-lionfish_sprite.png",
+      "thumbnail_path": "fish/rare/glassfin-lionfish_thumbnail.png"
+    },
+    {
+      "id": "sand-hammerhead",
+      "name": "모래 귀상어",
+      "size": 128,
+      "sprite_sheet_path": "fish/rare/sand-hammerhead_sprite.png",
+      "thumbnail_path": "fish/rare/sand-hammerhead_thumbnail.png"
+    },
+    {
+      "id": "waterdrop-comb-jelly",
+      "name": "물방울 빗해파리",
+      "size": 60,
+      "sprite_sheet_path": "fish/rare/waterdrop-comb-jelly_sprite.png",
+      "thumbnail_path": "fish/rare/waterdrop-comb-jelly_thumbnail.png"
+    }
+  ]
+}

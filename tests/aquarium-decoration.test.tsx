@@ -9,16 +9,21 @@ vi.mock('../src/features/aquarium/aquarium-inventory-dialog',()=>({AquariumInven
 vi.mock('../src/features/aquarium/api',()=>({backgroundUrl:(path:string)=>path}))
 const decoration:OwnedCollectible={id:'starfish',species_id:'starfish',tank_id:'tank',animation_seed:0,position_x:.2,position_y:.3,rotation:45,scale:.5,acquired_at:'',species:{id:'starfish',kind:'decoration',name:'살구 불가사리',description:'유지할 설명',swim_y_min:null,swim_y_max:null,speed:0,size:52,rarity:'common',sprite_sheet_path:null,thumbnail_path:'decorations/normal/apricot-starfish_thumbnail.png',sell_price:35}}
 afterEach(cleanup)
-it('shows the tank counter and a single purchase button without arrow buttons, and supports keyboard navigation',()=>{
+it('switches tanks with visible arrows and keyboard while respecting the first and last tank',()=>{
  const buy=vi.fn(),navigate=vi.fn()
- render(<AquariumView name="내 어항" items={[]} busy={false} onPlace={()=>{}} onSell={async()=>{}} navigation={{index:0,count:2,onChange:navigate}} purchase={{price:200,disabled:false,onBuy:buy}}/>)
+ const {rerender}=render(<AquariumView name="내 어항" items={[]} busy={false} onPlace={()=>{}} onSell={async()=>{}} navigation={{index:0,count:2,onChange:navigate}} purchase={{price:200,disabled:false,onBuy:buy}}/>)
  expect(screen.getByLabelText('현재 어항').textContent).toBe('1/2')
- expect(screen.queryByRole('button',{name:'이전 어항'})).toBeNull()
- expect(screen.queryByRole('button',{name:'다음 어항'})).toBeNull()
+ expect(screen.getByRole('button',{name:'이전 어항'}).hasAttribute('disabled')).toBe(true)
+ fireEvent.click(screen.getByRole('button',{name:'다음 어항'}))
+ expect(navigate).toHaveBeenCalledWith('next')
  fireEvent.click(screen.getByRole('button',{name:'어항 구매 200 골드'}))
  expect(buy).toHaveBeenCalledOnce()
  fireEvent.keyDown(screen.getByTestId('aquarium-glass'),{key:'ArrowRight'})
  expect(navigate).toHaveBeenCalledWith('next')
+ rerender(<AquariumView name="두 번째 어항" items={[]} busy={false} onPlace={()=>{}} onSell={async()=>{}} navigation={{index:1,count:2,onChange:navigate}}/>)
+ expect(screen.getByRole('button',{name:'다음 어항'}).hasAttribute('disabled')).toBe(true)
+ fireEvent.click(screen.getByRole('button',{name:'이전 어항'}))
+ expect(navigate).toHaveBeenLastCalledWith('previous')
 })
 it('auto-saves edits and dismisses the toolbar on background tap without cancelling the save',async()=>{
  let finish!:()=>void

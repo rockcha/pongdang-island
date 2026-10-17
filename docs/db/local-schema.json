@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "6e48e7c50658d4284b18c640598546a34b1b1ce9226ef664e205bc2c8b8f65ab",
+  "migrationHash": "2e0dc3f96eb2479276d6dba1c559ead1edf5d688defeb114107b9aa3a69563c2",
   "structure": {
     "enums": [
       {
@@ -48,6 +48,18 @@
     "tables": [
       {
         "rls": true,
+        "name": "aquarium_clean_notices",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "aquarium_feed_notices",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
         "name": "gold_settings",
         "schema": "app_private",
         "force_rls": false
@@ -79,6 +91,18 @@
       {
         "rls": true,
         "name": "aquarium_backgrounds",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "aquarium_cleanings",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "aquarium_feedings",
         "schema": "public",
         "force_rls": false
       },
@@ -252,6 +276,12 @@
       },
       {
         "rls": true,
+        "name": "region_maps",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
         "name": "regions",
         "schema": "public",
         "force_rls": false
@@ -311,6 +341,66 @@
       }
     ],
     "columns": [
+      {
+        "name": "visitor_id",
+        "type": "uuid",
+        "table": "aquarium_clean_notices",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "owner_id",
+        "type": "uuid",
+        "table": "aquarium_clean_notices",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "notice_day",
+        "type": "date",
+        "table": "aquarium_clean_notices",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "visitor_id",
+        "type": "uuid",
+        "table": "aquarium_feed_notices",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "owner_id",
+        "type": "uuid",
+        "table": "aquarium_feed_notices",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "notice_day",
+        "type": "date",
+        "table": "aquarium_feed_notices",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
       {
         "name": "id",
         "type": "boolean",
@@ -569,6 +659,166 @@
         "default": null,
         "identity": "",
         "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "visitor_id",
+        "type": "uuid",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "owner_id",
+        "type": "uuid",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "tank_id",
+        "type": "uuid",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "strokes",
+        "type": "integer",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "default": "transaction_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "completed_at",
+        "type": "timestamp with time zone",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "visitor_id",
+        "type": "uuid",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "owner_id",
+        "type": "uuid",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "tank_id",
+        "type": "uuid",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "clicks",
+        "type": "integer",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "default": "transaction_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "completed_at",
+        "type": "timestamp with time zone",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
         "generated": ""
       },
       {
@@ -2042,6 +2292,16 @@
         "generated": ""
       },
       {
+        "name": "notified_at",
+        "type": "timestamp with time zone",
+        "table": "notices",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
         "name": "id",
         "type": "uuid",
         "table": "notifications",
@@ -2143,6 +2403,16 @@
       },
       {
         "name": "gift_id",
+        "type": "uuid",
+        "table": "notifications",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "notice_id",
         "type": "uuid",
         "table": "notifications",
         "schema": "public",
@@ -2732,6 +3002,36 @@
         "generated": ""
       },
       {
+        "name": "region_id",
+        "type": "text",
+        "table": "region_maps",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "price",
+        "type": "integer",
+        "table": "region_maps",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "thumbnail_path",
+        "type": "text",
+        "table": "region_maps",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
         "name": "id",
         "type": "text",
         "table": "regions",
@@ -2874,6 +3174,18 @@
     ],
     "indexes": [
       {
+        "name": "aquarium_clean_notices_pkey",
+        "table": "aquarium_clean_notices",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX aquarium_clean_notices_pkey ON app_private.aquarium_clean_notices USING btree (visitor_id, owner_id, notice_day)"
+      },
+      {
+        "name": "aquarium_feed_notices_pkey",
+        "table": "aquarium_feed_notices",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX aquarium_feed_notices_pkey ON app_private.aquarium_feed_notices USING btree (visitor_id, owner_id, notice_day)"
+      },
+      {
         "name": "gold_settings_pkey",
         "table": "gold_settings",
         "schema": "app_private",
@@ -2920,6 +3232,42 @@
         "table": "aquarium_backgrounds",
         "schema": "public",
         "definition": "CREATE UNIQUE INDEX aquarium_backgrounds_pkey ON public.aquarium_backgrounds USING btree (id)"
+      },
+      {
+        "name": "aquarium_cleanings_owner",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "CREATE INDEX aquarium_cleanings_owner ON public.aquarium_cleanings USING btree (owner_id, completed_at DESC) WHERE (completed_at IS NOT NULL)"
+      },
+      {
+        "name": "aquarium_cleanings_pkey",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX aquarium_cleanings_pkey ON public.aquarium_cleanings USING btree (id)"
+      },
+      {
+        "name": "aquarium_cleanings_visitor_id_operation_id_key",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX aquarium_cleanings_visitor_id_operation_id_key ON public.aquarium_cleanings USING btree (visitor_id, operation_id)"
+      },
+      {
+        "name": "aquarium_feedings_owner",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "CREATE INDEX aquarium_feedings_owner ON public.aquarium_feedings USING btree (owner_id, completed_at DESC) WHERE (completed_at IS NOT NULL)"
+      },
+      {
+        "name": "aquarium_feedings_pkey",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX aquarium_feedings_pkey ON public.aquarium_feedings USING btree (id)"
+      },
+      {
+        "name": "aquarium_feedings_visitor_id_operation_id_key",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX aquarium_feedings_visitor_id_operation_id_key ON public.aquarium_feedings USING btree (visitor_id, operation_id)"
       },
       {
         "name": "aquarium_tanks_id_owner",
@@ -3198,6 +3546,18 @@
         "definition": "CREATE UNIQUE INDEX gift_notification_once ON public.notifications USING btree (recipient_id, kind, gift_id) WHERE (gift_id IS NOT NULL)"
       },
       {
+        "name": "notifications_notice",
+        "table": "notifications",
+        "schema": "public",
+        "definition": "CREATE INDEX notifications_notice ON public.notifications USING btree (notice_id) WHERE (notice_id IS NOT NULL)"
+      },
+      {
+        "name": "notifications_notice_recipient",
+        "table": "notifications",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX notifications_notice_recipient ON public.notifications USING btree (recipient_id, notice_id) WHERE (notice_id IS NOT NULL)"
+      },
+      {
         "name": "notifications_pkey",
         "table": "notifications",
         "schema": "public",
@@ -3342,6 +3702,12 @@
         "definition": "CREATE UNIQUE INDEX player_wallets_pkey ON public.player_wallets USING btree (user_id)"
       },
       {
+        "name": "region_maps_pkey",
+        "table": "region_maps",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX region_maps_pkey ON public.region_maps USING btree (region_id)"
+      },
+      {
         "name": "regions_image_path_key",
         "table": "regions",
         "schema": "public",
@@ -3394,6 +3760,30 @@
         "tablename": "aquarium_backgrounds",
         "permissive": "PERMISSIVE",
         "policyname": "catalog_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "((visitor_id = ( SELECT auth.uid() AS uid)) OR (owner_id = ( SELECT auth.uid() AS uid)))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "aquarium_cleanings",
+        "permissive": "PERMISSIVE",
+        "policyname": "aquarium_cleanings_participants",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "((visitor_id = ( SELECT auth.uid() AS uid)) OR (owner_id = ( SELECT auth.uid() AS uid)))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "aquarium_feedings",
+        "permissive": "PERMISSIVE",
+        "policyname": "aquarium_feedings_participants",
         "schemaname": "public",
         "with_check": null
       },
@@ -3567,7 +3957,7 @@
       },
       {
         "cmd": "SELECT",
-        "qual": "(recipient_id = ( SELECT auth.uid() AS uid))",
+        "qual": "((recipient_id = ( SELECT auth.uid() AS uid)) AND ((notice_id IS NULL) OR (EXISTS ( SELECT 1\n   FROM notices n\n  WHERE ((n.id = notifications.notice_id) AND (n.status = 'published'::text))))))",
         "roles": [
           "authenticated"
         ],
@@ -3727,6 +4117,18 @@
         "roles": [
           "authenticated"
         ],
+        "tablename": "region_maps",
+        "permissive": "PERMISSIVE",
+        "policyname": "region_maps_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "true",
+        "roles": [
+          "authenticated"
+        ],
         "tablename": "regions",
         "permissive": "PERMISSIVE",
         "policyname": "regions_catalog_read",
@@ -3841,6 +4243,13 @@
         "schema": "public",
         "enabled": "O",
         "definition": "CREATE TRIGGER pongdang_native_region BEFORE INSERT OR UPDATE OF name, kind, native_region_id ON public.collectible_species FOR EACH ROW EXECUTE FUNCTION app_private.apply_pongdang_native_region()"
+      },
+      {
+        "name": "notice_publication",
+        "table": "notices",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER notice_publication AFTER INSERT OR UPDATE OF status ON public.notices FOR EACH ROW EXECUTE FUNCTION app_private.deliver_notice_publication()"
       }
     ],
     "functions": [
@@ -3975,6 +4384,16 @@
         "securityDefiner": true
       },
       {
+        "name": "buy_region_map",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_region_id text, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.buy_region_map(p_region_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();m public.region_maps;w public.player_wallets;t public.gold_transactions;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_region_id is null then raise exception 'INVALID_TRADE';end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n select * into t from public.gold_transactions where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if t.action<>'buy' or t.item_id is distinct from 'map:'||p_region_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.get_gold_wallet()||jsonb_build_object('delta',0);\n end if;\n select * into m from public.region_maps where region_id=p_region_id for share;\n if not found then raise exception 'INVALID_MAP';end if;\n if exists(select 1 from public.regions r where r.id=p_region_id and not r.requires_map_fragment)\n or exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'MAP_ALREADY_OWNED';end if;\n if w.gold<m.price then raise exception 'INSUFFICIENT_GOLD';end if;\n update public.player_wallets set gold=gold-m.price,updated_at=now() where user_id=v_uid;\n insert into public.player_map_fragments(user_id,region_id) values(v_uid,p_region_id);\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','map:'||p_region_id,-m.price);\n return app_private.get_gold_wallet()||jsonb_build_object('delta',-m.price);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "cast_fishing",
         "config": [
           "search_path=\"\""
@@ -4015,6 +4434,16 @@
         "securityDefiner": true
       },
       {
+        "name": "clean_friend_aquarium",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.clean_friend_aquarium(p_tank uuid, p_operation uuid, p_step integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_owner uuid;v_tank_name text;f public.aquarium_cleanings;v_replayed boolean:=false;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_tank is null or p_operation is null or p_step is null or p_step not between 1 and 3 then raise exception 'INVALID_CLEANING';end if;\n select user_id,name into v_owner,v_tank_name from public.aquarium_tanks where id=p_tank for share;\n if not found then raise exception 'TANK_NOT_FOUND';end if;\n perform app_private.require_aquarium_friend(v_owner);\n if p_step=1 then\n  insert into public.aquarium_cleanings(visitor_id,owner_id,tank_id,operation_id,strokes)\n  values(v_uid,v_owner,p_tank,p_operation,1) on conflict(visitor_id,operation_id) do nothing;\n  v_replayed:=not found;\n end if;\n select * into f from public.aquarium_cleanings where visitor_id=v_uid and operation_id=p_operation for update;\n if not found then raise exception 'CLEANING_STEP_REQUIRED';end if;\n if f.tank_id is distinct from p_tank or f.owner_id<>v_owner then raise exception 'OPERATION_CONFLICT';end if;\n if p_step>f.strokes+1 then raise exception 'CLEANING_STEP_REQUIRED';end if;\n if p_step<=f.strokes then\n  if p_step<>1 then v_replayed:=true;end if;\n else\n  update public.aquarium_cleanings set strokes=p_step,completed_at=case when p_step=3 then transaction_timestamp() end\n  where id=f.id returning * into f;\n  if p_step=3 then\n   insert into app_private.aquarium_clean_notices(visitor_id,owner_id,notice_day)\n   values(v_uid,v_owner,(transaction_timestamp() at time zone 'Asia/Seoul')::date) on conflict do nothing;\n   if found then\n    insert into public.notifications(recipient_id,actor_id,category,kind,title,body)\n    values(v_owner,v_uid,'general','system','친구가 어항을 닦아줬어요',\n    (select nickname from public.player_profiles where id=v_uid)||'님이 '||v_tank_name||'을 반짝이게 닦아줬어요.');\n   end if;\n  end if;\n end if;\n return jsonb_build_object('id',f.id,'strokes',f.strokes,'completed',f.completed_at is not null,'replayed',v_replayed);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "collectible_storage",
         "config": [
           "search_path=\"\""
@@ -4031,7 +4460,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.collection_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('items',app_private.owned_collectibles(),\n 'catalog',(select coalesce(jsonb_agg(to_jsonb(s)||jsonb_build_object(\n 'discovered',d.species_id is not null,'habitats',coalesce((select jsonb_agg(jsonb_build_object('id',r.id,'name',r.name) order by r.sort_order)\n from public.collectible_habitats h join public.regions r on r.id=h.region_id where h.species_id=s.id),'[]'::jsonb)) order by s.kind,s.id),'[]'::jsonb)\n from public.collectible_species s left join public.player_discoveries d on d.species_id=s.id and d.user_id=v_uid where s.id<>'ocean-map'));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.collection_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('items',app_private.owned_collectibles(),\n 'catalog',(select coalesce(jsonb_agg(to_jsonb(s)||jsonb_build_object('discovered',d.species_id is not null,\n 'habitats',coalesce((select jsonb_agg(jsonb_build_object('id',r.id,'name',r.name) order by r.sort_order)\n from public.collectible_habitats h join public.regions r on r.id=h.region_id where h.species_id=s.id),'[]'::jsonb)) order by s.kind,s.id),'[]'::jsonb)\n from public.collectible_species s left join public.player_discoveries d on d.species_id=s.id and d.user_id=v_uid where s.kind<>'map'));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -4043,6 +4472,16 @@
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.default_collectible_movement()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n if new.kind in ('decoration','map') then\n  new.movement_type:='fixed';new.flip_with_direction:=false;new.travel_direction:='both';\n elsif tg_op='INSERT' and new.kind='trash' then new.flip_with_direction:=false;\n elsif tg_op='UPDATE' and new.kind<>old.kind then\n  new.movement_type:='swim';new.flip_with_direction:=(new.kind='fish');new.travel_direction:='both';\n end if;\n return new;\nend $function$\n",
         "securityDefiner": false
+      },
+      {
+        "name": "deliver_notice_publication",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.deliver_notice_publication()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if new.status='published' and new.notified_at is null then\n  insert into public.notifications(recipient_id,category,kind,title,body,notice_id)\n  select id,'notice','announcement',new.title,'새 공지가 등록됐어요.',new.id from public.player_profiles\n  on conflict(recipient_id,notice_id) where notice_id is not null do nothing;\n  update public.notices set notified_at=clock_timestamp() where id=new.id;\n end if;\n return null;\nend $function$\n",
+        "securityDefiner": true
       },
       {
         "name": "equip_fishing_rod",
@@ -4125,6 +4564,16 @@
         "securityDefiner": true
       },
       {
+        "name": "feed_friend_aquarium",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.feed_friend_aquarium(p_tank uuid, p_operation uuid, p_step integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_owner uuid;v_tank_name text;f public.aquarium_feedings;v_replayed boolean:=false;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_tank is null or p_operation is null or p_step is null or p_step not between 1 and 3 then raise exception 'INVALID_FEEDING';end if;\n select user_id,name into v_owner,v_tank_name from public.aquarium_tanks where id=p_tank for share;\n if not found then raise exception 'TANK_NOT_FOUND';end if;\n perform app_private.require_aquarium_friend(v_owner);\n if p_step=1 then\n  insert into public.aquarium_feedings(visitor_id,owner_id,tank_id,operation_id,clicks)\n  values(v_uid,v_owner,p_tank,p_operation,1) on conflict(visitor_id,operation_id) do nothing;\n  v_replayed:=not found;\n end if;\n select * into f from public.aquarium_feedings where visitor_id=v_uid and operation_id=p_operation for update;\n if not found then raise exception 'FEEDING_STEP_REQUIRED';end if;\n if f.tank_id is distinct from p_tank or f.owner_id<>v_owner then raise exception 'OPERATION_CONFLICT';end if;\n if p_step>f.clicks+1 then raise exception 'FEEDING_STEP_REQUIRED';end if;\n if p_step<=f.clicks then\n  if p_step<>1 then v_replayed:=true;end if;\n else\n  update public.aquarium_feedings set clicks=p_step,completed_at=case when p_step=3 then transaction_timestamp() end\n  where id=f.id returning * into f;\n  if p_step=3 then\n   insert into app_private.aquarium_feed_notices(visitor_id,owner_id,notice_day)\n   values(v_uid,v_owner,(transaction_timestamp() at time zone 'Asia/Seoul')::date) on conflict do nothing;\n   if found then\n    insert into public.notifications(recipient_id,actor_id,category,kind,title,body)\n    values(v_owner,v_uid,'general','system','친구가 먹이를 줬어요',\n    (select nickname from public.player_profiles where id=v_uid)||'님이 '||v_tank_name||'에 먹이를 줬어요.');\n   end if;\n  end if;\n end if;\n return jsonb_build_object('id',f.id,'clicks',f.clicks,'completed',f.completed_at is not null,'replayed',v_replayed);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "find_player_by_code",
         "config": [
           "search_path=\"\""
@@ -4152,6 +4601,16 @@
         "schema": "app_private",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_region text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select region_id into v_region from public.player_navigation where user_id=v_uid;\n v_region:=coalesce(v_region,'pongdang');\n return jsonb_build_object('regionId',v_region,'regionName',(select name from public.regions where id=v_region),'mapChanceBp',500,\n  'baits',(select jsonb_agg(to_jsonb(b)||app_private.regional_bait_odds(b.id,v_region) order by b.sort_order) from public.fishing_baits b));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "friend_aquarium",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_owner uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.friend_aquarium(p_owner uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n perform app_private.require_aquarium_friend(p_owner);\n return jsonb_build_object(\n 'owner',(select jsonb_build_object('id',id,'nickname',nickname,'avatar_path',avatar_path) from public.player_profiles where id=p_owner),\n 'tanks',coalesce((select jsonb_agg(jsonb_build_object('id',id,'name',name,'background_id',background_id,'is_default',is_default,'created_at',created_at) order by created_at,id) from public.aquarium_tanks where user_id=p_owner),'[]'::jsonb),\n 'inhabitants',coalesce((select jsonb_agg(to_jsonb(c)||jsonb_build_object('species',app_private.species_payload(c.species_id,c.map_region_id)) order by c.acquired_at,c.id)\n from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n join public.aquarium_tanks t on t.id=c.tank_id and t.user_id=p_owner\n where c.user_id=p_owner and c.sold_at is null and c.escrow_gift_id is null and s.kind in('fish','trash','decoration')),'[]'::jsonb),\n 'backgrounds',(select coalesce(jsonb_agg(jsonb_build_object('id',id,'name',name,'image_path',image_path)),'[]'::jsonb) from public.aquarium_backgrounds));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -4205,6 +4664,16 @@
         "securityDefiner": true
       },
       {
+        "name": "map_shop_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.map_shop_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('items',(select coalesce(jsonb_agg(jsonb_build_object(\n 'region_id',r.id,'name',r.name||' 지도','description',r.description,'price',m.price,'thumbnail_path',m.thumbnail_path,\n 'owned',not r.requires_map_fragment or exists(select 1 from public.player_map_fragments f where f.user_id=auth.uid() and f.region_id=r.id)\n ) order by r.sort_order,r.id),'[]'::jsonb) from public.region_maps m join public.regions r on r.id=m.region_id));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "memory_game",
         "config": [
           "search_path=\"\""
@@ -4245,6 +4714,16 @@
         "securityDefiner": true
       },
       {
+        "name": "notice_delete",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id uuid, p_revision integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.notice_delete(p_id uuid, p_revision integer)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare n public.notices;\nbegin\n if not app_private.notice_is_operator() then raise exception 'NOTICE_FORBIDDEN';end if;\n select * into n from public.notices where id=p_id for update;\n if not found then return;end if;\n if p_revision is distinct from n.revision then raise exception 'NOTICE_CHANGED';end if;\n -- Linked announcement notifications are removed by the foreign key cascade.\n delete from public.notices where id=p_id;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "notice_is_operator",
         "config": [
           "search_path=\"\""
@@ -4262,6 +4741,16 @@
         "schema": "app_private",
         "arguments": "p_id uuid, p_category text, p_title text, p_body text, p_images text[], p_status text, p_pinned boolean, p_starts_at timestamp with time zone, p_ends_at timestamp with time zone, p_revision integer",
         "definition": "CREATE OR REPLACE FUNCTION app_private.notice_save(p_id uuid, p_category text, p_title text, p_body text, p_images text[], p_status text, p_pinned boolean, p_starts_at timestamp with time zone, p_ends_at timestamp with time zone, p_revision integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare n public.notices;v_path text;\nbegin\n if not app_private.notice_is_operator() then raise exception 'NOTICE_FORBIDDEN';end if;\n if p_id is null or p_category is null or p_category not in('guide','update','maintenance','event') or p_title is null or char_length(btrim(p_title)) not between 2 and 100\n or p_body is null or char_length(p_body)>20000 or p_images is null or cardinality(p_images)>6 or array_position(p_images,null) is not null\n or p_status is null or p_status not in('draft','published','hidden') or p_pinned is null or p_revision is null or p_revision<0\n or (p_starts_at is not null and p_ends_at is not null and p_ends_at<=p_starts_at) then raise exception 'INVALID_NOTICE';end if;\n if p_status='published' and btrim(p_body)='' and cardinality(p_images)=0 then raise exception 'NOTICE_EMPTY';end if;\n foreach v_path in array p_images loop\n  if split_part(v_path,'/',1)<>p_id::text or not exists(select 1 from storage.objects where bucket_id='notice-images' and name=v_path and metadata->>'mimetype' in('image/png','image/jpeg','image/webp')) then raise exception 'NOTICE_IMAGE_INVALID';end if;\n end loop;\n -- Serialize creates and updates, including duplicate retries of the same document.\n perform pg_advisory_xact_lock(hashtextextended(p_id::text,0));\n select * into n from public.notices where id=p_id for update;\n if found then\n  if n.revision<>p_revision then raise exception 'NOTICE_CHANGED';end if;\n  update public.notices set category=p_category,title=btrim(p_title),body=p_body,images=p_images,status=p_status,pinned=p_pinned,\n   starts_at=p_starts_at,ends_at=p_ends_at,updated_at=clock_timestamp(),revision=revision+1,\n   published_at=case when p_status='published' then coalesce(published_at,clock_timestamp()) else published_at end where id=p_id returning * into n;\n else\n  if p_revision<>0 then raise exception 'NOTICE_CHANGED';end if;\n  insert into public.notices(id,category,title,body,images,status,pinned,starts_at,ends_at,author_id,published_at)\n  values(p_id,p_category,btrim(p_title),p_body,p_images,p_status,p_pinned,p_starts_at,p_ends_at,auth.uid(),case when p_status='published' then clock_timestamp() end) returning * into n;\n end if;\n return to_jsonb(n);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "notifications_opened",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.notifications_opened()\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n update public.notifications set read_at=transaction_timestamp()\n where recipient_id=auth.uid() and read_at is null and created_at<=transaction_timestamp();\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -4311,7 +4800,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region_id text, p_rarity game_rarity, p_decoration boolean, p_map_roll integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_regional_collectible(p_region_id text, p_rarity game_rarity, p_decoration boolean, p_map_roll integer)\n RETURNS TABLE(species_id text, map_region_id text)\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n if p_map_roll is null or p_map_roll<0 or p_map_roll>=10000 then raise exception 'INVALID_ROLL'; end if;\n if not p_decoration and p_map_roll<500 then\n  return query select c.id,r.id from public.collectible_species c\n   join public.collectible_habitats h on h.species_id=c.id join public.regions r on r.id=h.region_id\n   where c.kind='map' and c.id='map-'||r.id and c.rarity=p_rarity and r.rarity=p_rarity and r.requires_map_fragment\n    and not exists(select 1 from public.player_map_fragments f where f.user_id=auth.uid() and f.region_id=r.id)\n   order by random() limit 1;\n  if found then return;end if;\n end if;\n return query select c.id,null::text from public.collectible_species c join public.collectible_habitats h on h.species_id=c.id\n where h.region_id=p_region_id and ((p_decoration and c.kind='decoration') or(not p_decoration and c.kind in ('fish','trash') and c.rarity=p_rarity))\n order by random() limit 1;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_regional_collectible(p_region_id text, p_rarity game_rarity, p_decoration boolean, p_map_roll integer)\n RETURNS TABLE(species_id text, map_region_id text)\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare v_objects boolean;\nbegin\n if p_map_roll is null or p_map_roll<0 or p_map_roll>=10000 then raise exception 'INVALID_ROLL';end if;\n if p_region_id='scrapisle' and not p_decoration then\n  -- Objects on80% of ordinary rolls; fall back within the same tier if pool absent.\n  v_objects:=random()<0.8;\n  return query select s.id,null::text from public.collectible_species s join public.collectible_habitats h on h.species_id=s.id\n  where h.region_id=p_region_id and s.rarity=p_rarity and s.kind in('fish','trash','decoration')\n  order by case when (s.kind in('trash','decoration'))=v_objects then 0 else 1 end,random() limit 1;\n else\n  return query select s.id,null::text from public.collectible_species s join public.collectible_habitats h on h.species_id=s.id\n  where h.region_id=p_region_id and ((p_decoration and s.kind='decoration') or (not p_decoration and s.kind in('fish','trash') and s.rarity=p_rarity))\n  order by random() limit 1;\n end if;\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -4341,7 +4830,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.region_map()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n insert into public.player_navigation(user_id) values(v_uid) on conflict do nothing;\n return jsonb_build_object('currentRegion',(select region_id from public.player_navigation where user_id=v_uid),\n 'canTestLocks',coalesce((select test_lock_controls from app_private.region_settings where id),false),\n 'regions',(select jsonb_agg(to_jsonb(r)||jsonb_build_object('unlocked',not r.requires_map_fragment or f.region_id is not null,'hasFragment',f.region_id is not null) order by r.sort_order)\n from public.regions r left join public.player_map_fragments f on f.region_id=r.id and f.user_id=v_uid));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.region_map()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n insert into public.player_navigation(user_id) values(v_uid) on conflict do nothing;\n return jsonb_build_object('currentRegion',(select region_id from public.player_navigation where user_id=v_uid),\n 'canTestLocks',coalesce((select test_lock_controls from app_private.region_settings where id),false),\n 'regions',(select jsonb_agg((to_jsonb(r)-'rarity')||jsonb_build_object('map_image_path',m.thumbnail_path,\n 'unlocked',not r.requires_map_fragment or f.region_id is not null,'hasFragment',f.region_id is not null) order by r.sort_order)\n from public.regions r left join public.player_map_fragments f on f.region_id=r.id and f.user_id=v_uid\n left join public.region_maps m on m.region_id=r.id));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -4351,7 +4840,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_bait_id text, p_region_id text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.regional_bait_odds(p_bait_id text, p_region_id text)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare b public.fishing_baits;v_rank integer;v_success integer;v_c integer;v_r integer;v_e integer;v_m integer;\nbegin\n select * into b from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT'; end if;\n select case rarity when 'common' then 0 when 'rare' then 1 when 'epic' then 2 else 3 end into v_rank from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND'; end if;\n if b.effect_kind='decoration' then return jsonb_build_object('common_bp',0,'rare_bp',0,'epic_bp',0,'mythic_bp',0,'failure_bp',0); end if;\n v_success:=10000-b.failure_bp;\n if b.common_bp>0 then\n  v_r:=1300+300*v_rank;v_e:=180+80*v_rank;v_m:=20+20*v_rank;\n elsif b.rare_bp>0 then\n  v_r:=9870-50*v_rank;v_e:=100+40*v_rank;v_m:=30+10*v_rank;\n elsif b.epic_bp>0 then\n  v_r:=0;v_e:=9970-20*v_rank;v_m:=30+20*v_rank;\n else v_r:=0;v_e:=0;v_m:=10000;end if;\n -- Integer basis points; all rounding remainder goes to the lowest allowed tier.\n v_m:=floor(v_success::numeric*v_m/10000);v_e:=floor(v_success::numeric*v_e/10000);\n if b.common_bp>0 then v_r:=floor(v_success::numeric*v_r/10000);v_c:=v_success-v_r-v_e-v_m;\n elsif b.rare_bp>0 then v_c:=0;v_r:=v_success-v_e-v_m;\n elsif b.epic_bp>0 then v_c:=0;v_r:=0;v_e:=v_success-v_m;\n else v_c:=0;v_r:=0;v_e:=0;v_m:=v_success;end if;\n return jsonb_build_object('common_bp',v_c,'rare_bp',v_r,'epic_bp',v_e,'mythic_bp',v_m,'failure_bp',b.failure_bp);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.regional_bait_odds(p_bait_id text, p_region_id text)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare b public.fishing_baits;v_rank integer;v_success integer;v_c integer;v_r integer;v_e integer;v_m integer;\nbegin\n select * into b from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT';end if;\n select case rarity when 'common' then 0 when 'rare' then 1 when 'epic' then 2 else 3 end into v_rank from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND';end if;\n if b.effect_kind='decoration' then return jsonb_build_object('common_bp',0,'rare_bp',0,'epic_bp',0,'mythic_bp',0,'failure_bp',0);end if;\n v_success:=10000-b.failure_bp;\n if b.common_bp>0 then\n  v_r:=1300+300*v_rank;v_e:=180+80*v_rank;v_m:=20+20*v_rank;\n elsif b.rare_bp>0 then\n  v_r:=9870-50*v_rank;v_e:=100+40*v_rank;v_m:=30+10*v_rank;\n elsif b.epic_bp>0 then\n  v_r:=0;v_e:=9970-20*v_rank;v_m:=30+20*v_rank;\n else v_r:=0;v_e:=0;v_m:=10000;end if;\n v_m:=floor(v_success::numeric*v_m/10000);v_e:=floor(v_success::numeric*v_e/10000);\n if b.common_bp>0 then v_r:=floor(v_success::numeric*v_r/10000);v_c:=v_success-v_r-v_e-v_m;\n elsif b.rare_bp>0 then v_c:=0;v_r:=v_success-v_e-v_m;\n elsif b.epic_bp>0 then v_c:=0;v_r:=0;v_e:=v_success-v_m;\n else v_c:=0;v_r:=0;v_e:=0;v_m:=v_success;end if;\n if p_region_id in('whitenight','cloudferry') and not exists(\n  select 1 from public.collectible_species s join public.collectible_habitats h on h.species_id=s.id\n  where h.region_id=p_region_id and s.kind='fish' and s.rarity='mythic'\n ) then v_e:=v_e+v_m;v_m:=0;end if;\n return jsonb_build_object('common_bp',v_c,'rare_bp',v_r,'epic_bp',v_e,'mythic_bp',v_m,'failure_bp',b.failure_bp);\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -4363,6 +4852,16 @@
         "arguments": "p_request_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION app_private.remove_friend(p_request_id uuid)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid := auth.uid(); v_request public.friend_requests;\nbegin\n  if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n  select * into v_request from public.friend_requests where id=p_request_id for update;\n  if not found then raise exception 'REQUEST_NOT_FOUND'; end if;\n  if v_uid <> v_request.sender_id and v_uid <> v_request.recipient_id then raise exception 'NOT_ALLOWED'; end if;\n  if v_request.status <> 'accepted' then raise exception 'FRIENDSHIP_NOT_ACTIVE'; end if;\n  update public.friend_requests set status='removed',updated_at=now() where id=p_request_id;\n  update public.notifications set read_at=coalesce(read_at,now()) where request_id=p_request_id;\n  -- No separate unfriend notification. Existing UPDATE subscriptions update both lists.\nend $function$\n",
         "securityDefiner": true
+      },
+      {
+        "name": "require_aquarium_friend",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_owner uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.require_aquarium_friend(p_owner uuid)\n RETURNS void\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_owner is null or p_owner=auth.uid() then raise exception 'FRIENDSHIP_REQUIRED';end if;\n perform 1 from public.friend_requests where status='accepted' and\n ((sender_id=auth.uid() and recipient_id=p_owner) or (recipient_id=auth.uid() and sender_id=p_owner)) for share;\n if not found then raise exception 'FRIENDSHIP_REQUIRED';end if;\nend $function$\n",
+        "securityDefiner": false
       },
       {
         "name": "resolve_fishing",
@@ -4635,6 +5134,16 @@
         "securityDefiner": false
       },
       {
+        "name": "buy_region_map",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_region_id text, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.buy_region_map(p_region_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.buy_region_map(p_region_id,p_operation_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "cast_fishing",
         "config": [
           "search_path=\"\""
@@ -4662,6 +5171,16 @@
         "schema": "public",
         "arguments": "p_gift_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION public.claim_collectible_gift(p_gift_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.claim_collectible_gift(p_gift_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "clean_friend_aquarium",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.clean_friend_aquarium(p_tank uuid, p_operation uuid, p_step integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.clean_friend_aquarium(p_tank,p_operation,p_step)$function$\n",
         "securityDefiner": false
       },
       {
@@ -4735,6 +5254,16 @@
         "securityDefiner": false
       },
       {
+        "name": "feed_friend_aquarium",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.feed_friend_aquarium(p_tank uuid, p_operation uuid, p_step integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.feed_friend_aquarium(p_tank,p_operation,p_step)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "find_player_by_code",
         "config": [
           "search_path=\"\""
@@ -4761,7 +5290,17 @@
         ],
         "schema": "public",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION public.fishing_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.fishing_state()$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION public.fishing_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.fishing_state()-'mapChanceBp'$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "friend_aquarium",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_owner uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.friend_aquarium(p_owner uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.friend_aquarium(p_owner)$function$\n",
         "securityDefiner": false
       },
       {
@@ -4805,6 +5344,16 @@
         "securityDefiner": false
       },
       {
+        "name": "map_shop_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.map_shop_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.map_shop_state()$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "memory_game",
         "config": [
           "search_path=\"\""
@@ -4835,6 +5384,16 @@
         "securityDefiner": false
       },
       {
+        "name": "notice_delete",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_id uuid, p_revision integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.notice_delete(p_id uuid, p_revision integer)\n RETURNS void\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.notice_delete(p_id,p_revision)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "notice_is_operator",
         "config": [
           "search_path=\"\""
@@ -4852,6 +5411,16 @@
         "schema": "public",
         "arguments": "p_id uuid, p_category text, p_title text, p_body text, p_images text[], p_status text, p_pinned boolean, p_starts_at timestamp with time zone, p_ends_at timestamp with time zone, p_revision integer",
         "definition": "CREATE OR REPLACE FUNCTION public.notice_save(p_id uuid, p_category text, p_title text, p_body text, p_images text[], p_status text, p_pinned boolean, p_starts_at timestamp with time zone, p_ends_at timestamp with time zone, p_revision integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.notice_save(p_id,p_category,p_title,p_body,p_images,p_status,p_pinned,p_starts_at,p_ends_at,p_revision)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "notifications_opened",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.notifications_opened()\n RETURNS void\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.notifications_opened()$function$\n",
         "securityDefiner": false
       },
       {
@@ -5037,6 +5606,78 @@
     ],
     "sequences": [],
     "constraints": [
+      {
+        "name": "aquarium_clean_notices_notice_day_not_null",
+        "table": "aquarium_clean_notices",
+        "schema": "app_private",
+        "definition": "NOT NULL notice_day"
+      },
+      {
+        "name": "aquarium_clean_notices_owner_id_fkey",
+        "table": "aquarium_clean_notices",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (owner_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "aquarium_clean_notices_owner_id_not_null",
+        "table": "aquarium_clean_notices",
+        "schema": "app_private",
+        "definition": "NOT NULL owner_id"
+      },
+      {
+        "name": "aquarium_clean_notices_pkey",
+        "table": "aquarium_clean_notices",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (visitor_id, owner_id, notice_day)"
+      },
+      {
+        "name": "aquarium_clean_notices_visitor_id_fkey",
+        "table": "aquarium_clean_notices",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (visitor_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "aquarium_clean_notices_visitor_id_not_null",
+        "table": "aquarium_clean_notices",
+        "schema": "app_private",
+        "definition": "NOT NULL visitor_id"
+      },
+      {
+        "name": "aquarium_feed_notices_notice_day_not_null",
+        "table": "aquarium_feed_notices",
+        "schema": "app_private",
+        "definition": "NOT NULL notice_day"
+      },
+      {
+        "name": "aquarium_feed_notices_owner_id_fkey",
+        "table": "aquarium_feed_notices",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (owner_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "aquarium_feed_notices_owner_id_not_null",
+        "table": "aquarium_feed_notices",
+        "schema": "app_private",
+        "definition": "NOT NULL owner_id"
+      },
+      {
+        "name": "aquarium_feed_notices_pkey",
+        "table": "aquarium_feed_notices",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (visitor_id, owner_id, notice_day)"
+      },
+      {
+        "name": "aquarium_feed_notices_visitor_id_fkey",
+        "table": "aquarium_feed_notices",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (visitor_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "aquarium_feed_notices_visitor_id_not_null",
+        "table": "aquarium_feed_notices",
+        "schema": "app_private",
+        "definition": "NOT NULL visitor_id"
+      },
       {
         "name": "gold_settings_id_check",
         "table": "gold_settings",
@@ -5258,6 +5899,174 @@
         "table": "aquarium_backgrounds",
         "schema": "public",
         "definition": "NOT NULL price"
+      },
+      {
+        "name": "aquarium_cleanings_check",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "CHECK ((visitor_id <> owner_id))"
+      },
+      {
+        "name": "aquarium_cleanings_check1",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "CHECK (((strokes = 3) = (completed_at IS NOT NULL)))"
+      },
+      {
+        "name": "aquarium_cleanings_created_at_not_null",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "aquarium_cleanings_id_not_null",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "aquarium_cleanings_operation_id_not_null",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "aquarium_cleanings_owner_id_fkey",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "FOREIGN KEY (owner_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "aquarium_cleanings_owner_id_not_null",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "NOT NULL owner_id"
+      },
+      {
+        "name": "aquarium_cleanings_pkey",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "aquarium_cleanings_strokes_check",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "CHECK (((strokes >= 1) AND (strokes <= 3)))"
+      },
+      {
+        "name": "aquarium_cleanings_strokes_not_null",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "NOT NULL strokes"
+      },
+      {
+        "name": "aquarium_cleanings_tank_id_fkey",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "FOREIGN KEY (tank_id) REFERENCES aquarium_tanks(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "aquarium_cleanings_visitor_id_fkey",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "FOREIGN KEY (visitor_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "aquarium_cleanings_visitor_id_not_null",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "NOT NULL visitor_id"
+      },
+      {
+        "name": "aquarium_cleanings_visitor_id_operation_id_key",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "definition": "UNIQUE (visitor_id, operation_id)"
+      },
+      {
+        "name": "aquarium_feedings_check",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "CHECK ((visitor_id <> owner_id))"
+      },
+      {
+        "name": "aquarium_feedings_check1",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "CHECK (((clicks = 3) = (completed_at IS NOT NULL)))"
+      },
+      {
+        "name": "aquarium_feedings_clicks_check",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "CHECK (((clicks >= 1) AND (clicks <= 3)))"
+      },
+      {
+        "name": "aquarium_feedings_clicks_not_null",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "NOT NULL clicks"
+      },
+      {
+        "name": "aquarium_feedings_created_at_not_null",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "aquarium_feedings_id_not_null",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "aquarium_feedings_operation_id_not_null",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "aquarium_feedings_owner_id_fkey",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "FOREIGN KEY (owner_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "aquarium_feedings_owner_id_not_null",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "NOT NULL owner_id"
+      },
+      {
+        "name": "aquarium_feedings_pkey",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "aquarium_feedings_tank_id_fkey",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "FOREIGN KEY (tank_id) REFERENCES aquarium_tanks(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "aquarium_feedings_visitor_id_fkey",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "FOREIGN KEY (visitor_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "aquarium_feedings_visitor_id_not_null",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "NOT NULL visitor_id"
+      },
+      {
+        "name": "aquarium_feedings_visitor_id_operation_id_key",
+        "table": "aquarium_feedings",
+        "schema": "public",
+        "definition": "UNIQUE (visitor_id, operation_id)"
       },
       {
         "name": "aquarium_tanks_background_id_fkey",
@@ -6637,7 +7446,7 @@
         "name": "notification_categories",
         "table": "notifications",
         "schema": "public",
-        "definition": "CHECK ((((category = 'friend'::text) AND (kind = ANY (ARRAY['friend_request'::text, 'friend_accepted'::text])) AND (request_id IS NOT NULL) AND (gift_id IS NULL)) OR ((category = 'general'::text) AND (kind = ANY (ARRAY['announcement'::text, 'reward'::text, 'system'::text])) AND (request_id IS NULL) AND (gift_id IS NULL)) OR ((category = 'gift'::text) AND (kind = ANY (ARRAY['gift_received'::text, 'gift_claimed'::text, 'gift_reaction'::text])) AND (request_id IS NULL) AND (gift_id IS NOT NULL))))"
+        "definition": "CHECK ((((category = 'friend'::text) AND (kind = ANY (ARRAY['friend_request'::text, 'friend_accepted'::text])) AND (request_id IS NOT NULL) AND (gift_id IS NULL) AND (notice_id IS NULL)) OR ((category = 'general'::text) AND (kind = ANY (ARRAY['announcement'::text, 'reward'::text, 'system'::text])) AND (request_id IS NULL) AND (gift_id IS NULL) AND (notice_id IS NULL)) OR ((category = 'gift'::text) AND (kind = ANY (ARRAY['gift_received'::text, 'gift_claimed'::text, 'gift_reaction'::text])) AND (request_id IS NULL) AND (gift_id IS NOT NULL) AND (notice_id IS NULL)) OR ((category = 'notice'::text) AND (kind = 'announcement'::text) AND (request_id IS NULL) AND (gift_id IS NULL) AND (notice_id IS NOT NULL))))"
       },
       {
         "name": "notifications_actor_id_fkey",
@@ -6686,6 +7495,12 @@
         "table": "notifications",
         "schema": "public",
         "definition": "NOT NULL kind"
+      },
+      {
+        "name": "notifications_notice_id_fkey",
+        "table": "notifications",
+        "schema": "public",
+        "definition": "FOREIGN KEY (notice_id) REFERENCES notices(id) ON DELETE CASCADE"
       },
       {
         "name": "notifications_pkey",
@@ -7342,6 +8157,48 @@
         "definition": "NOT NULL user_id"
       },
       {
+        "name": "region_maps_pkey",
+        "table": "region_maps",
+        "schema": "public",
+        "definition": "PRIMARY KEY (region_id)"
+      },
+      {
+        "name": "region_maps_price_check",
+        "table": "region_maps",
+        "schema": "public",
+        "definition": "CHECK (((price >= 1) AND (price <= 1000000000)))"
+      },
+      {
+        "name": "region_maps_price_not_null",
+        "table": "region_maps",
+        "schema": "public",
+        "definition": "NOT NULL price"
+      },
+      {
+        "name": "region_maps_region_id_fkey",
+        "table": "region_maps",
+        "schema": "public",
+        "definition": "FOREIGN KEY (region_id) REFERENCES regions(id)"
+      },
+      {
+        "name": "region_maps_region_id_not_null",
+        "table": "region_maps",
+        "schema": "public",
+        "definition": "NOT NULL region_id"
+      },
+      {
+        "name": "region_maps_thumbnail_path_check",
+        "table": "region_maps",
+        "schema": "public",
+        "definition": "CHECK ((btrim(thumbnail_path) <> ''::text))"
+      },
+      {
+        "name": "region_maps_thumbnail_path_not_null",
+        "table": "region_maps",
+        "schema": "public",
+        "definition": "NOT NULL thumbnail_path"
+      },
+      {
         "name": "regions_description_not_null",
         "table": "regions",
         "schema": "public",
@@ -7489,6 +8346,20 @@
       {
         "role": "authenticated",
         "table": "aquarium_backgrounds",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_cleanings",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_feedings",
         "schema": "public",
         "grantable": "NO",
         "privilege": "SELECT"
@@ -7705,6 +8576,13 @@
       },
       {
         "role": "authenticated",
+        "table": "region_maps",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
         "table": "regions",
         "schema": "public",
         "grantable": "NO",
@@ -7737,6 +8615,118 @@
         "role": "authenticated",
         "table": "aquarium_backgrounds",
         "column": "price",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_cleanings",
+        "column": "completed_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_cleanings",
+        "column": "created_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_cleanings",
+        "column": "id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_cleanings",
+        "column": "operation_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_cleanings",
+        "column": "owner_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_cleanings",
+        "column": "strokes",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_cleanings",
+        "column": "tank_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_cleanings",
+        "column": "visitor_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_feedings",
+        "column": "clicks",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_feedings",
+        "column": "completed_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_feedings",
+        "column": "created_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_feedings",
+        "column": "id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_feedings",
+        "column": "operation_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_feedings",
+        "column": "owner_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_feedings",
+        "column": "tank_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_feedings",
+        "column": "visitor_id",
         "schema": "public",
         "privilege": "SELECT"
       },
@@ -8660,6 +9650,13 @@
       {
         "role": "authenticated",
         "table": "notices",
+        "column": "notified_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "notices",
         "column": "pinned",
         "schema": "public",
         "privilege": "SELECT"
@@ -8899,6 +9896,34 @@
         "role": "service_role",
         "table": "notifications",
         "column": "kind",
+        "schema": "public",
+        "privilege": "UPDATE"
+      },
+      {
+        "role": "authenticated",
+        "table": "notifications",
+        "column": "notice_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "notice_id",
+        "schema": "public",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "notice_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "notice_id",
         "schema": "public",
         "privilege": "UPDATE"
       },
@@ -9345,6 +10370,27 @@
       },
       {
         "role": "authenticated",
+        "table": "region_maps",
+        "column": "price",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "region_maps",
+        "column": "region_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "region_maps",
+        "column": "thumbnail_path",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
         "table": "regions",
         "column": "description",
         "schema": "public",
@@ -9707,6 +10753,27 @@
         "arguments": "p_bait_id text, p_operation_id uuid"
       },
       {
+        "name": "buy_region_map",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region_id text, p_operation_id uuid"
+      },
+      {
+        "name": "buy_region_map",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_region_id text, p_operation_id uuid"
+      },
+      {
+        "name": "buy_region_map",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region_id text, p_operation_id uuid"
+      },
+      {
         "name": "cast_fishing",
         "role": "anon",
         "schema": "app_private",
@@ -9791,6 +10858,27 @@
         "arguments": "p_gift_id uuid"
       },
       {
+        "name": "clean_friend_aquarium",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer"
+      },
+      {
+        "name": "clean_friend_aquarium",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer"
+      },
+      {
+        "name": "clean_friend_aquarium",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer"
+      },
+      {
         "name": "collectible_storage",
         "role": "anon",
         "schema": "app_private",
@@ -9848,6 +10936,27 @@
       },
       {
         "name": "default_collectible_movement",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "deliver_notice_publication",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "deliver_notice_publication",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "deliver_notice_publication",
         "role": "service_role",
         "schema": "app_private",
         "execute": false,
@@ -10022,6 +11131,27 @@
         "arguments": "p_tab text, p_query text, p_offset integer"
       },
       {
+        "name": "feed_friend_aquarium",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer"
+      },
+      {
+        "name": "feed_friend_aquarium",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer"
+      },
+      {
+        "name": "feed_friend_aquarium",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer"
+      },
+      {
         "name": "find_player_by_code",
         "role": "anon",
         "schema": "app_private",
@@ -10083,6 +11213,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "friend_aquarium",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_owner uuid"
+      },
+      {
+        "name": "friend_aquarium",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_owner uuid"
+      },
+      {
+        "name": "friend_aquarium",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_owner uuid"
       },
       {
         "name": "get_gold_wallet",
@@ -10190,6 +11341,27 @@
         "arguments": "p_tank_id uuid, p_action text, p_value text"
       },
       {
+        "name": "map_shop_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "map_shop_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "map_shop_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "memory_game",
         "role": "anon",
         "schema": "app_private",
@@ -10274,6 +11446,27 @@
         "arguments": "p_collectible_ids uuid[], p_tank_id uuid"
       },
       {
+        "name": "notice_delete",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid, p_revision integer"
+      },
+      {
+        "name": "notice_delete",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_id uuid, p_revision integer"
+      },
+      {
+        "name": "notice_delete",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid, p_revision integer"
+      },
+      {
         "name": "notice_is_operator",
         "role": "anon",
         "schema": "app_private",
@@ -10314,6 +11507,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_id uuid, p_category text, p_title text, p_body text, p_images text[], p_status text, p_pinned boolean, p_starts_at timestamp with time zone, p_ends_at timestamp with time zone, p_revision integer"
+      },
+      {
+        "name": "notifications_opened",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "notifications_opened",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "notifications_opened",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "odd_even_game",
@@ -10524,6 +11738,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_request_id uuid"
+      },
+      {
+        "name": "require_aquarium_friend",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_owner uuid"
+      },
+      {
+        "name": "require_aquarium_friend",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_owner uuid"
+      },
+      {
+        "name": "require_aquarium_friend",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_owner uuid"
       },
       {
         "name": "resolve_fishing",
@@ -11093,6 +12328,27 @@
         "arguments": "p_bait_id text, p_operation_id uuid"
       },
       {
+        "name": "buy_region_map",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_region_id text, p_operation_id uuid"
+      },
+      {
+        "name": "buy_region_map",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_region_id text, p_operation_id uuid"
+      },
+      {
+        "name": "buy_region_map",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_region_id text, p_operation_id uuid"
+      },
+      {
         "name": "cast_fishing",
         "role": "anon",
         "schema": "public",
@@ -11154,6 +12410,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_gift_id uuid"
+      },
+      {
+        "name": "clean_friend_aquarium",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer"
+      },
+      {
+        "name": "clean_friend_aquarium",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer"
+      },
+      {
+        "name": "clean_friend_aquarium",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer"
       },
       {
         "name": "collectible_storage",
@@ -11303,6 +12580,27 @@
         "arguments": "p_tab text, p_query text, p_offset integer"
       },
       {
+        "name": "feed_friend_aquarium",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer"
+      },
+      {
+        "name": "feed_friend_aquarium",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer"
+      },
+      {
+        "name": "feed_friend_aquarium",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_tank uuid, p_operation uuid, p_step integer"
+      },
+      {
         "name": "find_player_by_code",
         "role": "anon",
         "schema": "public",
@@ -11364,6 +12662,27 @@
         "schema": "public",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "friend_aquarium",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_owner uuid"
+      },
+      {
+        "name": "friend_aquarium",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_owner uuid"
+      },
+      {
+        "name": "friend_aquarium",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_owner uuid"
       },
       {
         "name": "get_gold_wallet",
@@ -11450,6 +12769,27 @@
         "arguments": "p_tank_id uuid, p_action text, p_value text"
       },
       {
+        "name": "map_shop_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "map_shop_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "map_shop_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "memory_game",
         "role": "anon",
         "schema": "public",
@@ -11513,6 +12853,27 @@
         "arguments": "p_collectible_ids uuid[], p_tank_id uuid"
       },
       {
+        "name": "notice_delete",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid, p_revision integer"
+      },
+      {
+        "name": "notice_delete",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_id uuid, p_revision integer"
+      },
+      {
+        "name": "notice_delete",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid, p_revision integer"
+      },
+      {
         "name": "notice_is_operator",
         "role": "anon",
         "schema": "public",
@@ -11553,6 +12914,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_id uuid, p_category text, p_title text, p_body text, p_images text[], p_status text, p_pinned boolean, p_starts_at timestamp with time zone, p_ends_at timestamp with time zone, p_revision integer"
+      },
+      {
+        "name": "notifications_opened",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "notifications_opened",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "notifications_opened",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "odd_even_game",

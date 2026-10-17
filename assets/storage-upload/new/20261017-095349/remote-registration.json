@@ -1,0 +1,440 @@
+{
+  "verifiedAt": "2026-10-17T01:19:51.391Z",
+  "species": [
+    {
+      "id": "billowsail-sailfish",
+      "name": "돛너울 돛새치",
+      "rarity": "rare",
+      "native_region_id": null,
+      "thumbnail_path": "fish/rare/billowsail-sailfish_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/billowsail-sailfish_sprite.png"
+    },
+    {
+      "id": "giant-seabass",
+      "name": "대왕농어",
+      "rarity": "rare",
+      "native_region_id": null,
+      "thumbnail_path": "fish/rare/giant-seabass_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/giant-seabass_sprite.png"
+    },
+    {
+      "id": "goldstripe-amberjack",
+      "name": "금줄 부시리",
+      "rarity": "rare",
+      "native_region_id": null,
+      "thumbnail_path": "fish/rare/goldstripe-amberjack_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/goldstripe-amberjack_sprite.png"
+    },
+    {
+      "id": "scale-armored-barracuda",
+      "name": "비늘갑옷 바라쿠다",
+      "rarity": "rare",
+      "native_region_id": null,
+      "thumbnail_path": "fish/rare/scale-armored-barracuda_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/scale-armored-barracuda_sprite.png"
+    },
+    {
+      "id": "seawing-giant-manta",
+      "name": "바다날개 대왕 가오리",
+      "rarity": "epic",
+      "native_region_id": null,
+      "thumbnail_path": "fish/epic/seawing-giant-manta_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/seawing-giant-manta_sprite.png"
+    },
+    {
+      "id": "silverblade-swordfish",
+      "name": "은검 황새치",
+      "rarity": "rare",
+      "native_region_id": null,
+      "thumbnail_path": "fish/rare/silverblade-swordfish_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/silverblade-swordfish_sprite.png"
+    },
+    {
+      "id": "steelback-bluefin-tuna",
+      "name": "강철등 참다랑어",
+      "rarity": "rare",
+      "native_region_id": null,
+      "thumbnail_path": "fish/rare/steelback-bluefin-tuna_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/steelback-bluefin-tuna_sprite.png"
+    },
+    {
+      "id": "anchor-chain-rock",
+      "name": "닻줄 감긴 바위",
+      "rarity": "common",
+      "native_region_id": "bluegrove",
+      "thumbnail_path": "decorations/normal/anchor-chain-rock_thumbnail.png",
+      "sprite_sheet_path": null
+    },
+    {
+      "id": "blue-scaled-mahi-mahi",
+      "name": "푸른비늘 만새기",
+      "rarity": "epic",
+      "native_region_id": "bluegrove",
+      "thumbnail_path": "fish/epic/blue-scaled-mahi-mahi_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/blue-scaled-mahi-mahi_sprite.png"
+    },
+    {
+      "id": "blue-spotted-leopard-shark",
+      "name": "푸른점 표범상어",
+      "rarity": "epic",
+      "native_region_id": "bluegrove",
+      "thumbnail_path": "fish/epic/blue-spotted-leopard-shark_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/blue-spotted-leopard-shark_sprite.png"
+    },
+    {
+      "id": "blueback-spanish-mackerel",
+      "name": "푸른등 삼치",
+      "rarity": "common",
+      "native_region_id": "bluegrove",
+      "thumbnail_path": "fish/normal/blueback-spanish-mackerel_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/blueback-spanish-mackerel_sprite.png"
+    },
+    {
+      "id": "bluegrove-giant-seabass",
+      "name": "푸른골 대왕농어",
+      "rarity": "rare",
+      "native_region_id": "bluegrove",
+      "thumbnail_path": "fish/rare/bluegrove-giant-seabass_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/bluegrove-giant-seabass_sprite.png"
+    },
+    {
+      "id": "bluegrove-spearfish",
+      "name": "푸른창 청새치",
+      "rarity": "rare",
+      "native_region_id": "bluegrove",
+      "thumbnail_path": "fish/rare/bluegrove-spearfish_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/bluegrove-spearfish_sprite.png"
+    },
+    {
+      "id": "bluestripe-flyingfish",
+      "name": "청줄 날치",
+      "rarity": "common",
+      "native_region_id": "bluegrove",
+      "thumbnail_path": "fish/normal/bluestripe-flyingfish_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/bluestripe-flyingfish_sprite.png"
+    },
+    {
+      "id": "bronze-yellowtail",
+      "name": "청동 방어",
+      "rarity": "rare",
+      "native_region_id": "bluegrove",
+      "thumbnail_path": "fish/rare/bronze-yellowtail_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/bronze-yellowtail_sprite.png"
+    },
+    {
+      "id": "longtail-thresher-shark",
+      "name": "긴꼬리 환도상어",
+      "rarity": "rare",
+      "native_region_id": "bluegrove",
+      "thumbnail_path": "fish/rare/longtail-thresher-shark_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/longtail-thresher-shark_sprite.png"
+    },
+    {
+      "id": "ripple-pattern-giant-moray",
+      "name": "물결무늬 대왕곰치",
+      "rarity": "epic",
+      "native_region_id": "bluegrove",
+      "thumbnail_path": "fish/epic/ripple-pattern-giant-moray_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/ripple-pattern-giant-moray_sprite.png"
+    },
+    {
+      "id": "sandburied-cannon",
+      "name": "모래에 묻힌 대포",
+      "rarity": "rare",
+      "native_region_id": "bluegrove",
+      "thumbnail_path": "decorations/rare/sandburied-cannon_thumbnail.png",
+      "sprite_sheet_path": null
+    },
+    {
+      "id": "seila-white-sail-guardian",
+      "name": "흰돛의 수호자, 세일라",
+      "rarity": "mythic",
+      "native_region_id": "bluegrove",
+      "thumbnail_path": "fish/mythic/seila-white-sail-guardian_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/seila-white-sail-guardian_sprite.png"
+    },
+    {
+      "id": "silver-ripple-mullet",
+      "name": "은물결 숭어",
+      "rarity": "common",
+      "native_region_id": "bluegrove",
+      "thumbnail_path": "fish/normal/silver-ripple-mullet_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/silver-ripple-mullet_sprite.png"
+    },
+    {
+      "id": "striped-needlefish",
+      "name": "줄무늬 동갈치",
+      "rarity": "common",
+      "native_region_id": "bluegrove",
+      "thumbnail_path": "fish/normal/striped-needlefish_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/striped-needlefish_sprite.png"
+    },
+    {
+      "id": "sunken-channel-marker",
+      "name": "가라앉은 항로 표지석",
+      "rarity": "rare",
+      "native_region_id": "bluegrove",
+      "thumbnail_path": "decorations/rare/sunken-channel-marker_thumbnail.png",
+      "sprite_sheet_path": null
+    }
+  ],
+  "habitats": [
+    {
+      "species_id": "anchor-chain-rock",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "billowsail-sailfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "billowsail-sailfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "billowsail-sailfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "billowsail-sailfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "billowsail-sailfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "billowsail-sailfish",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "billowsail-sailfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "blue-scaled-mahi-mahi",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "blue-spotted-leopard-shark",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "blueback-spanish-mackerel",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "bluegrove-giant-seabass",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "bluegrove-spearfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "bluestripe-flyingfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "bronze-yellowtail",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "giant-seabass",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "giant-seabass",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "giant-seabass",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "giant-seabass",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "giant-seabass",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "giant-seabass",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "giant-seabass",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "goldstripe-amberjack",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "goldstripe-amberjack",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "goldstripe-amberjack",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "goldstripe-amberjack",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "goldstripe-amberjack",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "goldstripe-amberjack",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "goldstripe-amberjack",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "longtail-thresher-shark",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "ripple-pattern-giant-moray",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "sandburied-cannon",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "scale-armored-barracuda",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "scale-armored-barracuda",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "scale-armored-barracuda",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "scale-armored-barracuda",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "scale-armored-barracuda",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "scale-armored-barracuda",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "scale-armored-barracuda",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "seawing-giant-manta",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "seawing-giant-manta",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "seawing-giant-manta",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "seawing-giant-manta",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "seawing-giant-manta",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "seawing-giant-manta",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "seawing-giant-manta",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "seila-white-sail-guardian",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "silver-ripple-mullet",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "silverblade-swordfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "silverblade-swordfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "silverblade-swordfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "silverblade-swordfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "silverblade-swordfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "silverblade-swordfish",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "silverblade-swordfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "steelback-bluefin-tuna",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "steelback-bluefin-tuna",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "steelback-bluefin-tuna",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "steelback-bluefin-tuna",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "steelback-bluefin-tuna",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "steelback-bluefin-tuna",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "steelback-bluefin-tuna",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "striped-needlefish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "sunken-channel-marker",
+      "region_id": "bluegrove"
+    }
+  ],
+  "limitations": "Catalog data verification only; migration history/schema parity not asserted."
+}

@@ -1,14 +1,26 @@
 import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
 import {MemoryRouter,Route,Routes} from 'react-router'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
-import {NoticePage} from '@/features/notices/notice-page'
+import {NoticePage,NoticeDetail} from '@/features/notices/notice-page'
 import {NoticeEditor} from '@/features/notices/notice-editor'
 import {NoticeBody} from '@/features/notices/notice-body'
-const mock=vi.hoisted(()=>({operator:vi.fn(),feed:vi.fn(),detail:vi.fn(),save:vi.fn(),upload:vi.fn()}))
-vi.mock('@/features/notices/api',async original=>({...await original<typeof import('@/features/notices/api')>(),isNoticeOperator:mock.operator,loadNotices:mock.feed,loadNotice:mock.detail,saveNotice:mock.save,uploadNoticeImage:mock.upload}))
+const mock=vi.hoisted(()=>({operator:vi.fn(),feed:vi.fn(),detail:vi.fn(),save:vi.fn(),upload:vi.fn(),remove:vi.fn(),read:vi.fn(),refresh:vi.fn()}))
+vi.mock('@/features/social/social-provider',()=>({useSocial:()=>({owner:'me',refresh:mock.refresh})}))
+vi.mock('@/features/notifications/api',()=>({markRelatedRead:mock.read}))
+vi.mock('@/features/notices/api',async original=>({...await original<typeof import('@/features/notices/api')>(),isNoticeOperator:mock.operator,loadNotices:mock.feed,loadNotice:mock.detail,saveNotice:mock.save,uploadNoticeImage:mock.upload,deleteNotice:mock.remove}))
 const notice={id:'notice',category:'update' as const,title:'푸른골 업데이트',body:'새 해역이 열렸어요.',images:[],urls:{},status:'published' as const,pinned:true,starts_at:null,ends_at:null,author_id:null,created_at:'2026-10-17T00:00:00Z',updated_at:'2026-10-17T00:00:00Z',published_at:'2026-10-17T00:00:00Z',revision:1}
-beforeEach(()=>{vi.clearAllMocks();mock.operator.mockResolvedValue(false);mock.feed.mockResolvedValue({items:[notice],total:1});mock.detail.mockResolvedValue(notice);mock.save.mockResolvedValue(notice);mock.upload.mockResolvedValue({path:'image.png',url:'/image.png'})})
+beforeEach(()=>{vi.clearAllMocks();mock.operator.mockResolvedValue(false);mock.feed.mockResolvedValue({items:[notice],total:1});mock.detail.mockResolvedValue(notice);mock.save.mockResolvedValue(notice);mock.upload.mockResolvedValue({path:'image.png',url:'/image.png'});mock.remove.mockResolvedValue(undefined);mock.read.mockResolvedValue(undefined);mock.refresh.mockResolvedValue(undefined)})
 afterEach(cleanup)
+it('marks the original notice read and lets an operator delete only after confirmation',async()=>{
+ mock.operator.mockResolvedValue(true)
+ render(<MemoryRouter initialEntries={['/square/notices/notice']}><Routes><Route path="/square/notices/:noticeId" element={<NoticeDetail/>}/><Route path="/square/notices" element={<p>공지 목록으로 이동</p>}/></Routes></MemoryRouter>)
+ fireEvent.click(await screen.findByRole('button',{name:'삭제'}))
+ await waitFor(()=>expect(mock.read).toHaveBeenCalledWith('me','notice_id','notice'))
+ expect(mock.remove).not.toHaveBeenCalled()
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'확인'}))
+ await waitFor(()=>expect(mock.remove).toHaveBeenCalledWith('notice',1))
+ expect(await screen.findByText('공지 목록으로 이동')).toBeTruthy()
+})
 it('shows minimal notice rows and filters while hiding author tools from ordinary readers',async()=>{
  render(<MemoryRouter><NoticePage/></MemoryRouter>)
  expect(await screen.findByRole('heading',{name:notice.title})).toBeTruthy()

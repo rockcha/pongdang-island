@@ -1,3 +1,9 @@
+import scrapisleLayouts from './scrapisle-frame-layouts.json'
+import cloudferryLayouts from './cloudferry-frame-layouts.json'
+import bluegroveLayouts from './bluegrove-frame-layouts.json'
+import primalLayouts from './primal-frame-layouts.json'
+import whitenightLayouts from './whitenight-frame-layouts.json'
+const registeredLayouts:Record<string,{cell:number;shifts:number[][]}>={...bluegroveLayouts,...primalLayouts,...whitenightLayouts,...cloudferryLayouts,...scrapisleLayouts}
 // Frame registration measured from each sheet's rigid head/body (or nautilus shell).
 // Coordinates are in a 96x96 sampling grid, relative to each frame's center.
 const layouts:Record<string,readonly (readonly [number,number,number])[]>={
@@ -49,7 +55,8 @@ const layouts:Record<string,readonly (readonly [number,number,number])[]>={
  'fish/rare/moonshadow-flounder_sprite.png':[[0,0,1],[-5,0,1],[1,-6,.96],[-5,-7,1]],
  'fish/epic/lunea-knight_sprite.png':[[0,0,1],[-2,0,1],[0,-2,1],[-2,-2,1]],
  'fish/epic/lunea-archivist_sprite.png':[[0,0,1],[1,0,1],[0,-6,1],[1,-6,1]],
- 'fish/mythic/lunea-mistmoon-goddess_sprite.png':[[0,0,1],[-1,0,1],[0,-4,1],[1,-4,.94]],
+ // The face/torso share the same horizontal anchor in all four source cells.
+ 'fish/mythic/lunea-mistmoon-goddess_sprite.png':[[0,0,1],[0,0,1],[0,-4,1],[0,-4,1]],
  'fish/epic/sunwave-shark-glide_sprite.png':[[0,0,1],[-2,0,1],[1,-7,.96],[-2,-7,1]],
  'fish/epic/wavefin-whale-glide_sprite.png':[[0,0,1],[-3,0,1],[0,-14,1],[-3,-14,1]],
  'fish/mythic/pongi-explorer-cruise_sprite.png':[[0,0,1],[-3,0,1],[0,-6,.98],[-2,-5,.96]],
@@ -84,6 +91,8 @@ const layouts:Record<string,readonly (readonly [number,number,number])[]>={
 }
 
 export function swimFrameLayout(path:string,frame:number){
+ const extra=registeredLayouts[path]
+ if(extra){const [x,y]=extra.shifts[frame]??[0,0];return {originX:.5+x/extra.cell,originY:.5+y/extra.cell,scale:1}}
  const [x,y,scale]=layouts[path]?.[frame]??[0,0,1]
  return {originX:.5+x/96,originY:.5+y/96,scale:1/scale}
 }

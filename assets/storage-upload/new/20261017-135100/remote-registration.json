@@ -1,0 +1,484 @@
+{
+  "verifiedAt": "2026-10-17T05:17:03.229Z",
+  "species": [
+    {
+      "id": "amber-bearing-root",
+      "name": "호박 품은 나무뿌리",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "decorations/normal/amber-bearing-root_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 105
+    },
+    {
+      "id": "ammonite-fossil-slab",
+      "name": "암모나이트 화석 판석",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "decorations/normal/ammonite-fossil-slab_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 95
+    },
+    {
+      "id": "ancient-coral-pillar",
+      "name": "고대 산호 기둥",
+      "kind": "decoration",
+      "rarity": "rare",
+      "native_region_id": "primal",
+      "thumbnail_path": "decorations/rare/ancient-coral-pillar_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 145
+    },
+    {
+      "id": "billowmouth-leedsichthys",
+      "name": "너울입 리즈시크티스",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/normal/billowmouth-leedsichthys_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/billowmouth-leedsichthys_sprite.png",
+      "size": 160
+    },
+    {
+      "id": "blackscale-mosasaurus",
+      "name": "흑청비늘 모사사우루스",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/epic/blackscale-mosasaurus_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/blackscale-mosasaurus_sprite.png",
+      "size": 178
+    },
+    {
+      "id": "blueback-shonisaurus",
+      "name": "푸른등 쇼니사우루스",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/epic/blueback-shonisaurus_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/blueback-shonisaurus_sprite.png",
+      "size": 180
+    },
+    {
+      "id": "broadleaf-water-fern",
+      "name": "넓은잎 물고사리",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "decorations/normal/broadleaf-water-fern_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 115
+    },
+    {
+      "id": "broken-ancient-shell",
+      "name": "부서진 고대 조개껍데기",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "decorations/normal/broken-ancient-shell_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 85
+    },
+    {
+      "id": "bronze-spiral-ammonite",
+      "name": "청동나선 암모나이트",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/normal/bronze-spiral-ammonite_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/bronze-spiral-ammonite_sprite.png",
+      "size": 80
+    },
+    {
+      "id": "bronzejaw-liopleurodon",
+      "name": "청동턱 리오플레우로돈",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/epic/bronzejaw-liopleurodon_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/bronzejaw-liopleurodon_sprite.png",
+      "size": 165
+    },
+    {
+      "id": "fangjaw-xiphactinus",
+      "name": "송곳턱 크시팍티누스",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/epic/fangjaw-xiphactinus_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/fangjaw-xiphactinus_sprite.png",
+      "size": 150
+    },
+    {
+      "id": "fern-forest-fragment",
+      "name": "고사리 숲 조각",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "decorations/normal/fern-forest-fragment_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 105
+    },
+    {
+      "id": "giant-ammonite-fossil",
+      "name": "거대 암모나이트 화석",
+      "kind": "decoration",
+      "rarity": "rare",
+      "native_region_id": "primal",
+      "thumbnail_path": "decorations/rare/giant-ammonite-fossil_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 145
+    },
+    {
+      "id": "giant-creature-ribs",
+      "name": "거대 생물의 갈비뼈",
+      "kind": "decoration",
+      "rarity": "rare",
+      "native_region_id": "primal",
+      "thumbnail_path": "decorations/rare/giant-creature-ribs_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 155
+    },
+    {
+      "id": "giant-fan-water-fern",
+      "name": "거대 부채 물고사리",
+      "kind": "decoration",
+      "rarity": "rare",
+      "native_region_id": "primal",
+      "thumbnail_path": "decorations/rare/giant-fan-water-fern_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 155
+    },
+    {
+      "id": "longneck-elasmosaurus",
+      "name": "긴목 엘라스모사우루스",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/epic/longneck-elasmosaurus_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/longneck-elasmosaurus_sprite.png",
+      "size": 175
+    },
+    {
+      "id": "paddlefoot-primal-shrimp",
+      "name": "넓적발 원시새우",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/normal/paddlefoot-primal-shrimp_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/paddlefoot-primal-shrimp_sprite.png",
+      "size": 76
+    },
+    {
+      "id": "plios-blackwave-king",
+      "name": "검은파도의 왕, 플리오스",
+      "kind": "fish",
+      "rarity": "mythic",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/mythic/plios-blackwave-king_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/plios-blackwave-king_sprite.png",
+      "size": 180
+    },
+    {
+      "id": "primal-sea-eggshell",
+      "name": "원시 바다의 알껍데기",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "decorations/normal/primal-sea-eggshell_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 78
+    },
+    {
+      "id": "purple-fork-seaweed",
+      "name": "자주빛 갈래해초",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "decorations/normal/purple-fork-seaweed_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 105
+    },
+    {
+      "id": "reedneck-tanystropheus",
+      "name": "갈대목 타니스트로페우스",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/rare/reedneck-tanystropheus_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/reedneck-tanystropheus_sprite.png",
+      "size": 150
+    },
+    {
+      "id": "round-triassurus",
+      "name": "동글이 트리아수루스",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/normal/round-triassurus_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/round-triassurus_sprite.png",
+      "size": 70
+    },
+    {
+      "id": "shelljaw-placodus",
+      "name": "조개턱 플라코두스",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/normal/shelljaw-placodus_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/shelljaw-placodus_sprite.png",
+      "size": 105
+    },
+    {
+      "id": "silverarmored-dapedium",
+      "name": "은갑 다페디우스",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/normal/silverarmored-dapedium_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/silverarmored-dapedium_sprite.png",
+      "size": 90
+    },
+    {
+      "id": "silvercurrent-ichthyosaurus",
+      "name": "은물살 이크티오사우루스",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/rare/silvercurrent-ichthyosaurus_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/silvercurrent-ichthyosaurus_sprite.png",
+      "size": 130
+    },
+    {
+      "id": "sleeping-seadragon-skull",
+      "name": "잠든 해룡의 두개골",
+      "kind": "decoration",
+      "rarity": "epic",
+      "native_region_id": "primal",
+      "thumbnail_path": "decorations/epic/sleeping-seadragon-skull_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 170
+    },
+    {
+      "id": "spineback-hybodus",
+      "name": "가시등 히보두스",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/rare/spineback-hybodus_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/spineback-hybodus_sprite.png",
+      "size": 125
+    },
+    {
+      "id": "spineshell-diplomoceras",
+      "name": "가시집 디플로모케라스",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/normal/spineshell-diplomoceras_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/spineshell-diplomoceras_sprite.png",
+      "size": 100
+    },
+    {
+      "id": "stoneshield-henodus",
+      "name": "돌방패 헤노두스",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/rare/stoneshield-henodus_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/stoneshield-henodus_sprite.png",
+      "size": 120
+    },
+    {
+      "id": "straighttower-baculites",
+      "name": "곧은탑 바쿨리테스",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/normal/straighttower-baculites_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/straighttower-baculites_sprite.png",
+      "size": 95
+    },
+    {
+      "id": "submerged-primal-trunk",
+      "name": "침수된 원시 고목",
+      "kind": "decoration",
+      "rarity": "rare",
+      "native_region_id": "primal",
+      "thumbnail_path": "decorations/rare/submerged-primal-trunk_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 160
+    },
+    {
+      "id": "trilobite-track-rock",
+      "name": "삼엽충 흔적 바위",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "decorations/normal/trilobite-track-rock_thumbnail.png",
+      "sprite_sheet_path": null,
+      "size": 90
+    },
+    {
+      "id": "webfoot-marine-crocodile",
+      "name": "물갈퀴 바다악어",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/rare/webfoot-marine-crocodile_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/webfoot-marine-crocodile_sprite.png",
+      "size": 135
+    },
+    {
+      "id": "whorl-tetragonites",
+      "name": "소용돌이 테트라고니테스",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "primal",
+      "thumbnail_path": "fish/normal/whorl-tetragonites_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/whorl-tetragonites_sprite.png",
+      "size": 78
+    }
+  ],
+  "habitats": [
+    {
+      "species_id": "shelljaw-placodus",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "bronze-spiral-ammonite",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "straighttower-baculites",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "billowmouth-leedsichthys",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "round-triassurus",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "silverarmored-dapedium",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "whorl-tetragonites",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "spineshell-diplomoceras",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "paddlefoot-primal-shrimp",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "stoneshield-henodus",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "silvercurrent-ichthyosaurus",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "webfoot-marine-crocodile",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "spineback-hybodus",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "reedneck-tanystropheus",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "bronzejaw-liopleurodon",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "fangjaw-xiphactinus",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "longneck-elasmosaurus",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "blackscale-mosasaurus",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "blueback-shonisaurus",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "plios-blackwave-king",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "ammonite-fossil-slab",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "trilobite-track-rock",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "fern-forest-fragment",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "amber-bearing-root",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "broken-ancient-shell",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "primal-sea-eggshell",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "broadleaf-water-fern",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "purple-fork-seaweed",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "giant-ammonite-fossil",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "giant-creature-ribs",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "ancient-coral-pillar",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "submerged-primal-trunk",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "giant-fan-water-fern",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "sleeping-seadragon-skull",
+      "region_id": "primal"
+    }
+  ],
+  "limitations": "Only these catalog records verified; schema and migration history not asserted."
+}

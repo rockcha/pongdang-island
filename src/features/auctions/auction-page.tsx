@@ -14,7 +14,7 @@ import type {ExchangeAsset,ExchangeInventory} from '@/features/exchange/api'
 import {auctionError,bidAuction,cancelAuction,loadAuctions,postAuction} from './api'
 import type {Auction,AuctionFeed,AuctionPost} from './api'
 
-const field='min-h-11 w-full rounded-lg border bg-background px-3 text-sm text-foreground'
+const field='min-h-11 min-w-0 w-full rounded-lg border bg-background px-3 text-sm text-foreground'
 const empty:ExchangeAsset={kind:'collectible',id:'',name:'',quantity:1,thumbnail_path:null}
 const statusLabels={active:'진행 중',sold:'낙찰 완료',unsold:'유찰 · 물품 반환',cancelled:'취소 · 물품 반환'}
 export function AuctionPage(){const {session}=useAuth();return <AccountAuctions key={session?.user.id??'guest'} owner={session?.user.id??''}/>}
@@ -55,9 +55,9 @@ function AccountAuctions({owner}:{owner:string}){
   }catch(cause){if(alive.current){if(cause&&typeof cause==='object'&&'code'in cause&&/^[0-9A-Z]{5}$/.test(String(cause.code))){if(kind==='post')postPending.current=null;else if(kind==='bid')bidPending.current=null}setActionError(auctionError(cause));setRetry(v=>v+1)}}finally{lock.current=false;if(alive.current)setBusy(false)}
  }
  function openBid(a:Auction){if(bidPending.current&&bidPending.current.id!==a.id){toast.error('이전 입찰의 결과부터 확인해주세요.');return}setActionError('');setSelected(a);setAmount(bidPending.current?.amount??Math.max(a.minimum_price,a.highest_amount+1))}
- return <section className="space-y-4 py-5">
+ return <section className="min-w-0 w-full space-y-4 py-5">
   <div className="flex justify-end gap-2"><Button variant="ghost" size="icon" aria-label="경매 새로고침" onClick={()=>setRetry(v=>v+1)}><RefreshCw className="size-4"/></Button><Button onClick={()=>void beginPost()}><Plus className="size-4"/>경매 등록</Button></div>
-  <div role="group" aria-label="경매 분류" className="grid grid-cols-3 gap-2">{[['all','경매 목록'],['mine','내 경매'],['bids','내 입찰']].map(([key,label])=><Button key={key} variant={tab===key?'default':'outline'} aria-pressed={tab===key} onClick={()=>{setTab(key);setOffset(0);setFeed(null)}}>{label}</Button>)}</div>
+  <div role="group" aria-label="경매 분류" className="grid grid-cols-3 gap-2">{[['all','경매 목록'],['mine','내 경매'],['bids','내 입찰']].map(([key,label])=><Button key={key} className="min-w-0 px-2 text-xs" variant={tab===key?'default':'outline'} aria-pressed={tab===key} onClick={()=>{setTab(key);setOffset(0);setFeed(null)}}>{label}</Button>)}</div>
   <input className={field} aria-label="경매 검색" placeholder="물품이나 경매 제목 검색" maxLength={80} value={query} onChange={e=>{setQuery(e.target.value);setOffset(0)}}/>
   {error&&<p role="alert" className="text-xs text-destructive">{error}</p>}{!feed&&!error&&<p role="status" className="py-8 text-center text-sm">경매를 불러오는 중…</p>}
   <ul className="divide-y">{feed?.items.map(a=>{const ended=a.status!=='active'||new Date(a.ends_at).getTime()<=now,mine=a.owner_id===owner;return <li key={a.id} className="space-y-3 py-4">

@@ -102,3 +102,17 @@ it('keeps normalized decoration coordinates when changing its size, angle and po
  expect(motion.item).toMatchObject({position_x:.8,position_y:.1,rotation:45,scale:2})
  expect(motion.update(1,0,320,560)).toEqual(new InhabitantMotion(edited).update(1,0,320,560))
 })
+
+it('holds a newly selected swimmer without recursive initialization and resumes after deselection',()=>{
+ const selected={...item(),editing:true,position_x:.4,position_y:.5}
+ const motion=new InhabitantMotion(selected)
+ const first={...motion.update(10,.016,400,600)}
+ expect(first.x).toBeCloseTo(.4*(400-72))
+ expect(first.y).toBeCloseTo(.5*(600-72))
+ expect(motion.update(11,.016,400,600)).toEqual(first)
+ motion.setItem({...selected,editing:false},11,400,600)
+ const resumed=motion.update(11,0,400,600)
+ expect(resumed.x).toBeCloseTo(first.x)
+ expect(resumed.y).toBeCloseTo(first.y)
+ expect(Number.isFinite(motion.update(12,.016,400,600).x)).toBe(true)
+})

@@ -1,3 +1,4 @@
+import {randomId} from '@/lib/random-id'
 import {useEffect,useRef,useState} from 'react'
 import type {CSSProperties,MouseEvent} from 'react'
 import {toast} from 'sonner'
@@ -27,7 +28,7 @@ export function Feeding({tank,blocked=false,onActiveChange}:{tank:string;blocked
   const x=event.detail===0?rect.width/2:Math.max(0,Math.min(rect.width,event.clientX-rect.left))
   const y=event.detail===0?rect.height/3:Math.max(0,Math.min(rect.height,event.clientY-rect.top))
   const point={x:rect.width?x/rect.width*100:50,y:rect.height?y/rect.height*100:33}
-  if(!operation.current)operation.current=crypto.randomUUID()
+  if(!operation.current)operation.current=randomId()
   const step=clicks+1
   locked.current=true;setPending(true);setError('')
   try{
@@ -43,14 +44,13 @@ export function Feeding({tank,blocked=false,onActiveChange}:{tank:string;blocked
   finally{locked.current=false;if(alive.current)setPending(false)}
  }
  return <>
-  {active&&<button ref={surface} type="button" className={`aquarium-feeding-surface absolute inset-0 z-10 ${cursor?'has-food-cursor':''}`} aria-label={`어항에 먹이 떨어뜨리기 ${clicks}/3`} aria-disabled={pending} aria-describedby="feeding-instructions" onClick={event=>void feed(event)} onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();stop()}}} onPointerMove={event=>{if(event.pointerType==='touch')return;const rect=event.currentTarget.getBoundingClientRect();setCursor({x:event.clientX-rect.left,y:event.clientY-rect.top})}} onPointerLeave={()=>setCursor(null)}>
+  {active&&<button ref={surface} type="button" className={`aquarium-feeding-surface absolute inset-0 z-10 ${cursor?'has-food-cursor':''}`} aria-label={`어항에 먹이 떨어뜨리기 ${clicks}/3`} aria-disabled={pending} onClick={event=>void feed(event)} onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();stop()}}} onPointerMove={event=>{if(event.pointerType==='touch')return;const rect=event.currentTarget.getBoundingClientRect();setCursor({x:event.clientX-rect.left,y:event.clientY-rect.top})}} onPointerLeave={()=>setCursor(null)}>
    {cursor&&<img src="/aquarium/food-canister.png" alt="" draggable={false} className={`aquarium-food-cursor ${pending?'is-pouring':''}`} style={{left:cursor.x,top:cursor.y}}/>}
   </button>}
   <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden" aria-hidden="true">{drops.flatMap(drop=>Array.from({length:12},(_,i)=><span key={`${drop.id}-${i}`} className="aquarium-food" style={{left:`calc(${drop.x}% + ${(i*7)%21-10}px)`,top:`${drop.y}%`,animationDelay:`${i*25}ms`,animationDuration:`${1500+i%4*160}ms`,'--food-fall':`${drop.distance}px`} as CSSProperties}/>))}</div>
-  {!blocked&&<div className={`absolute bottom-3 z-20 flex flex-col items-center gap-2 ${active?'inset-x-3':'left-3 w-[calc(50%_-_1rem)]'}`}>
+  {!blocked&&<div className={`absolute bottom-0 z-20 flex flex-col items-stretch gap-2 ${active?'inset-x-0':'left-0 w-1/2'}`}>
    {error&&<p role="alert" className="rounded-lg bg-background/95 p-2 text-xs text-destructive">{error}</p>}
-   {active&&<p id="feeding-instructions" className="pointer-events-none rounded-full bg-background/95 px-3 py-1.5 text-xs shadow-sm" aria-live="polite">{pending?'먹이를 주고 있어요…':'먹이를 줄 곳을 눌러주세요.'} ({clicks}/3)</p>}
-   <div className="flex w-full justify-center gap-2"><Button ref={trigger} className="h-11 min-h-11 min-w-0 flex-1 shrink gap-1.5 rounded-full px-3 text-xs shadow-sm" disabled={pending||active} onClick={start} aria-label={`먹이 주기 ${clicks}/3`}><img src="/aquarium/food-canister.png" alt="" className="size-7 shrink-0 object-contain"/><span className="truncate">{active?'먹이 주는 중':clicks===3?'다시 먹이 주기':'먹이 주기'}</span><span className="shrink-0 text-xs tabular-nums">{clicks}/3</span></Button>{active&&<Button variant="secondary" className="min-h-11 rounded-full" disabled={pending} onClick={stop}>그만하기</Button>}</div>
+   <div className="flex w-full justify-center gap-0"><Button ref={trigger} className="h-16 min-h-16 min-w-0 flex-1 shrink gap-2 rounded-none border-t border-border px-2 text-sm" disabled={pending||active} onClick={start} aria-label={`먹이 주기 ${clicks}/3`}><img src="/aquarium/food-canister.png" alt="" className="size-8 shrink-0 object-contain"/><span className="truncate">{active?'먹이 주는 중':clicks===3?'다시 먹이 주기':'먹이 주기'}</span><span className="shrink-0 text-xs tabular-nums">{clicks}/3</span></Button>{active&&<Button variant="secondary" className="h-16 min-h-16 rounded-none border-t border-l border-border px-4" disabled={pending} onClick={stop}>그만하기</Button>}</div>
   </div>}
  </>
 }

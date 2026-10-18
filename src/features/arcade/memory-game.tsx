@@ -1,3 +1,4 @@
+import {randomId} from '@/lib/random-id'
 import { useEffect, useRef, useState } from 'react'
 import { Clock3, Crown, RotateCcw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -82,10 +83,10 @@ function AccountMemory(){
   practice.current=createMemoryPractice();setPracticeMode(true);void request({p_action:'start'})
  }
  function startPaid(){
-  practice.current=null;setPracticeMode(false);operation.current??=crypto.randomUUID()
+  practice.current=null;setPracticeMode(false);operation.current??=randomId()
   void request({p_action:'start',p_operation_id:operation.current})
  }
- return <div className="memory-game flex min-h-0 flex-1 flex-col gap-2">
+ return <div className="memory-game flex min-h-0 min-w-0 flex-1 flex-col">
   <GameLeaveGuard active={playing||(busy&&operation.current!==null)} practice={practiceMode}/>
   <GameTabs id="memory" value={tab} onChange={setTab} />
   {tab==='rank'?<MemoryRanking />:<div id="memory-game-panel" role="tabpanel" aria-labelledby="memory-game-tab" className="flex min-h-0 flex-1 flex-col gap-2">

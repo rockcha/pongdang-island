@@ -50,6 +50,7 @@
 }
 
 :root {
+    color-scheme: only light;
     --background: #fff8ee;
     --foreground: #4a3328;
     --card: #fffdf9;
@@ -85,7 +86,9 @@
     --sidebar-ring: #c98b57;
 }
 
+
 .dark {
+    color-scheme: dark;
     --background: #241c17;
     --foreground: #f5e7d5;
     --card: #30251e;
@@ -101,15 +104,10 @@
     --muted-foreground: #c4aa90;
     --accent: #493426;
     --accent-foreground: #f5e7d5;
-    --destructive: oklch(0.704 0.191 22.216);
     --border: #574333;
     --input: #6b503b;
     --ring: #d6a06e;
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
+    --destructive: #ff9c91;
     --sidebar: #30251e;
     --sidebar-foreground: #f5e7d5;
     --sidebar-primary: #d6a06e;
@@ -138,6 +136,12 @@
   padding-bottom: env(safe-area-inset-bottom, 0px);
   padding-left: max(1.5rem, env(safe-area-inset-left, 0px));
   padding-right: max(1.5rem, env(safe-area-inset-right, 0px));
+}
+
+.app-shell.warehouse-shell {
+ height: 100dvh;
+ min-height: 0;
+ overflow: hidden;
 }
 
 .app-shell.aquarium-shell {
@@ -202,7 +206,7 @@ button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .pongi-header button:hover, .pongi-header a:hover { background-color: #f5e8d8; }
 .pongi-header .header-gold, .pongi-header .header-gold:hover { background: transparent; border: 0; }
 .pongi-header .header-gold:hover { color: var(--primary); }
-.header-indicator { position: absolute; right: 0; top: 0; display: flex; align-items: center; justify-content: center; width: 16px; height: 16px; border-radius: 50%; background: #995e36; color: #fff8ee; font-size: 8px; line-height: 1; font-weight: 500; box-shadow: 0 0 0 2px #fff8ee; }
+.header-indicator { position: absolute; right: 0; top: 0; display: flex; align-items: center; justify-content: center; width: 12px; height: 12px; border-radius: 50%; background: #995e36; color: #fff8ee; font-size: 7px; line-height: 1; font-weight: 500; box-shadow: 0 0 0 2px #fff8ee; }
 .pongi-brand-title { font-weight: 400; }
 @keyframes attendance-stamp {
   0% { transform: scale(1.5) rotate(-15deg); opacity: 0; }
@@ -416,4 +420,24 @@ button, [role='button'] { cursor: pointer; }
  .native-species-carousel[data-looping=true]{overflow-x:auto}
  .native-species-carousel-track{animation:none}
  .native-species-carousel-copy{display:none}
+}
+
+@keyframes game-screen-enter { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes notification-sheet-in { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes notification-sheet-out { to { transform: translateY(100%); opacity: 0; } }
+@media (prefers-reduced-motion: no-preference) {
+ .notification-sheet[data-open] { animation: notification-sheet-in 200ms ease-out both; }
+ .notification-sheet[data-closed] { animation: notification-sheet-out 200ms ease-in both; }
+}
+
+@keyframes attendance-claim-glow { 0%,100% { box-shadow: 0 0 0 0 #995e3633; } 50% { box-shadow: 0 0 0 3px #995e3620, 0 3px 10px #995e3626; } }
+@media (prefers-reduced-motion: no-preference) { .attendance-claimable:not(:disabled) { animation: attendance-claim-glow 1.8s ease-in-out infinite; } }
+
+@keyframes header-indicator-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 2px var(--background), 0 0 0 2px #995e3600; }
+  50% { opacity: .65; box-shadow: 0 0 0 2px var(--background), 0 0 0 6px #995e3626; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .header-indicator { animation: header-indicator-pulse 2s ease-in-out infinite; }
 }

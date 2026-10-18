@@ -1,6 +1,8 @@
--- MANUAL INSTALL: run this whole file in the intended project SQL Editor.
+-- REFERENCE PATCH: compare the entire patch against the target DB before any execution.
 -- Prerequisite: existing map shop. Safe to rerun; preserves players, wallets and other species.
--- This file has NOT been applied remotely.
+-- 2026-10-18 MCP check: scrapisle region and 26 native species exist.
+-- Full patch fields, maps, rod, odds and execution history remain unverified.
+-- See docs/db/REMOTE_REVIEW.md for scope and project identification limitations.
 -- Reviewed diff: Scrap Isle region, map, rod,26 exclusive collectibles and region-scoped object-heavy fishing.
 begin;
 set constraints all deferred;

@@ -1,3 +1,4 @@
+import { randomId } from '@/lib/random-id'
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { useAuth } from '@/components/auth-provider'
@@ -57,9 +58,9 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
       locked.current = false; setBusy(false)
       throw new Error('이전 거래 결과를 확인하려면 같은 거래를 다시 눌러주세요.')
     }
-    pending.current ??= { signature, id: crypto.randomUUID() }
     let result: Awaited<ReturnType<typeof transactGold>>
     try {
+      pending.current ??= { signature, id: randomId() }
       result = await transactGold(action, pending.current.id)
       pending.current = null
       apply(result)

@@ -9,8 +9,8 @@ vi.mock('@/features/collection/api',()=>({loadCollection:load,kindLabels:{fish:'
 afterEach(()=>{cleanup();vi.clearAllMocks()})
 const coral={id:'coral',name:'산호빛 여울'},moon={id:'mistmoon',name:'안개달 해역'}
 const base={description:'작은 바다 친구의 이야기',size:52,speed:.05,thumbnail_path:'preview.png',discovered:false}
-const shared={...base,id:'shared',name:'공통 물고기',kind:'fish',rarity:'common',sell_price:30,habitats:[coral,moon]}
-const native={...base,id:'native',name:'산호 물고기',kind:'fish',rarity:'rare',sell_price:150,habitats:[coral],is_native:false}
+const shared={...base,id:'shared',discovered:true,name:'공통 물고기',kind:'fish',rarity:'common',sell_price:30,habitats:[coral,moon]}
+const native={...base,id:'native',discovered:true,native_region_id:'coral',name:'산호 물고기',kind:'fish',rarity:'rare',sell_price:150,habitats:[coral],is_native:true}
 const decoration={...base,id:'decoration',name:'달빛 장식물',kind:'decoration',rarity:'rare',sell_price:180,habitats:[moon]}
 const map={...base,id:'map',name:'지도 조각',kind:'map',rarity:'common',sell_price:0,habitats:[coral]}
 async function open(add?:()=>void){
@@ -20,55 +20,49 @@ async function open(add?:()=>void){
  await screen.findByRole('article',{name:'공통 물고기'})
 }
 const cards=()=>within(screen.getByRole('list',{name:'도감 개체'})).queryAllByRole('article').map(card=>card.getAttribute('aria-label'))
-it('shows descriptions, habitats and value inline with rarity backgrounds and no detail modal',async()=>{
+
+async function choose(label:string, option:string){
+ fireEvent.mouseDown(screen.getByRole('combobox',{name:label}))
+ fireEvent.click(screen.getByRole('combobox',{name:label}))
+ fireEvent.keyDown(await screen.findByRole('option',{name:option}),{key:'Enter'})
+}
+it('locks undiscovered cards, marks native species, and keeps filters after details close',async()=>{
  await open()
  expect(cards()).toEqual(['공통 물고기','산호 물고기','달빛 장식물'])
  expect(screen.queryByRole('button',{name:'지도'})).toBeNull()
- const card=screen.getByRole('article',{name:'산호 물고기'})
- expect(card.classList.contains('rarity-rare')).toBe(true)
- expect(within(card).getByText('작은 바다 친구의 이야기')).toBeTruthy()
- expect(within(card).getByText('서식지:')).toBeTruthy()
- expect(within(card).getByText('가치:')).toBeTruthy()
- expect(within(card).getByRole('group',{name:'서식지역: 산호빛 여울'})).toBeTruthy()
- expect(screen.queryByText(/미발견|발견 완료|보유/)).toBeNull()
- fireEvent.click(card)
+ expect(screen.queryByText('작은 바다 친구의 이야기')).toBeNull()
+ expect(screen.queryByRole('searchbox')).toBeNull()
+ const locked=screen.getByRole('button',{name:'달빛 장식물 잠김'}) as HTMLButtonElement
+ expect(locked.disabled).toBe(true)
+ fireEvent.click(locked)
  expect(screen.getAllByRole('dialog')).toHaveLength(1)
- expect(screen.queryByRole('button',{name:/상세 보기/})).toBeNull()
-})
-it('combines native habitat count, rarity, category and region toggles',async()=>{
- await open()
- fireEvent.change(screen.getByRole('combobox',{name:'도감 토착 여부'}),{target:{value:'native'}})
+ expect(screen.queryByText('미발견')).toBeNull()
+ expect(screen.getByLabelText('산호빛 여울 토착 개체')).toBeTruthy()
+ await choose('도감 등급','희귀')
+ fireEvent.click(screen.getByRole('button',{name:'산호 물고기 상세 보기'}))
+ expect(await screen.findByText('작은 바다 친구의 이야기')).toBeTruthy()
+ fireEvent.click(screen.getAllByRole('button',{name:'Close'}).at(-1)!)
  expect(cards()).toEqual(['산호 물고기','달빛 장식물'])
- fireEvent.click(screen.getByRole('button',{name:'물고기'}))
- expect(cards()).toEqual(['산호 물고기'])
- fireEvent.click(screen.getByRole('button',{name:'안개달 해역 서식지역 필터'}))
- expect(screen.getByText('조건에 맞는 개체가 없어요.')).toBeTruthy()
- fireEvent.click(screen.getByRole('button',{name:'안개달 해역 서식지역 필터'}))
- fireEvent.change(screen.getByRole('combobox',{name:'도감 등급'}),{target:{value:'common'}})
- expect(cards()).toEqual([])
- fireEvent.change(screen.getByRole('combobox',{name:'도감 토착 여부'}),{target:{value:'shared'}})
- expect(cards()).toEqual(['공통 물고기'])
 })
-it('keeps repeated temporary insertion on cards and excludes maps',async()=>{
+it('replaces the selected habitat and combines it with category and rarity',async()=>{
+ await open()
+ await choose('도감 서식지역','산호빛 여울')
+ expect(cards()).toEqual(['공통 물고기','산호 물고기'])
+ await choose('도감 서식지역','안개달 해역')
+ expect(cards()).toEqual(['공통 물고기','달빛 장식물'])
+ fireEvent.click(screen.getByRole('button',{name:'물고기'}))
+ expect(cards()).toEqual(['공통 물고기'])
+ await choose('도감 등급','희귀')
+ expect(cards()).toEqual([])
+})
+it('allows repeated temporary insertion from cards without opening details',async()=>{
  const add=vi.fn()
  await open(add)
- const button=screen.getByRole('button',{name:'공통 물고기 임시 넣기'})
+ const button=await screen.findByRole('button',{name:'공통 물고기 임시 넣기'})
  fireEvent.click(button);fireEvent.click(button)
  expect(add).toHaveBeenCalledTimes(2)
  expect(add).toHaveBeenCalledWith(shared)
  expect(screen.getAllByRole('dialog')).toHaveLength(1)
- expect(screen.queryByRole('button',{name:'지도 조각 임시 넣기'})).toBeNull()
-})
-
-it('searches names, combines rarity filters, and clears without closing the book',async()=>{
- await open()
- fireEvent.change(screen.getByRole('searchbox',{name:'도감 개체 검색'}),{target:{value:'  물고기  '}})
- expect(cards()).toEqual(['공통 물고기','산호 물고기'])
- fireEvent.change(screen.getByRole('combobox',{name:'도감 등급'}),{target:{value:'rare'}})
- expect(cards()).toEqual(['산호 물고기'])
- fireEvent.change(screen.getByRole('searchbox',{name:'도감 개체 검색'}),{target:{value:'없는개체'}})
- expect(cards()).toEqual([])
- fireEvent.click(screen.getByRole('button',{name:'검색어 지우기'}))
- expect(cards()).toEqual(['산호 물고기','달빛 장식물'])
- expect(screen.getAllByRole('dialog')).toHaveLength(1)
+ fireEvent.click(screen.getByRole('button',{name:'달빛 장식물 임시 넣기'}))
+ expect(add).toHaveBeenLastCalledWith(decoration)
 })

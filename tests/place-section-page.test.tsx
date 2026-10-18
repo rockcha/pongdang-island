@@ -16,7 +16,7 @@ it('provides real links to every district destination',()=>{
 })
 it('shows square thumbnails and keeps unfinished child pages beneath the banner',()=>{
  const entrance=render(<MemoryRouter initialEntries={['/square']}><PlaceSectionPage section="square"/></MemoryRouter>)
- for(const item of squareDestinations){const link=screen.getByRole('link',{name:new RegExp(item.title)});expect(link.querySelector('img')?.getAttribute('src')).toBe(`/square/${item.thumbnail}.png`)}
+ for(const item of squareDestinations){const link=screen.getByRole('link',{name:new RegExp(item.title)});expect(link.closest('li')?.querySelector('img')?.getAttribute('src')).toBe(`/square/${item.thumbnail}.png`)}
  entrance.unmount()
  for(const item of squareDestinations.filter(item=>item.upcoming)){
   const view=render(<MemoryRouter initialEntries={[item.path]}><PlaceBanner pathname={item.path}/><PlaceSectionPage section="square"/></MemoryRouter>)

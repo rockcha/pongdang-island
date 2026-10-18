@@ -39,10 +39,10 @@ it('retains the same post operation and conditions after a transport error',asyn
  expect(mock.post.mock.calls[0][0]).toEqual(mock.post.mock.calls[1][0])
  expect(mock.post.mock.calls[0][0]).toMatchObject({p_side:'sell',p_offer_kind:'collectible',p_offer_id:'soft-sea-cucumber',p_wanted_kind:'gold',p_wanted_quantity:300})
 })
-it('shows cancellation instead of self trading and retains completed history',async()=>{
+it('shows cancellation instead of self trading and hides completed history',async()=>{
  mock.load.mockResolvedValue({items:[{...listing,owner_id:'me'},{...listing,id:'closed',status:'completed'}],total:2})
  setup();fireEvent.click(await screen.findByRole('button',{name:'등록 취소'}))
  fireEvent.click(within(await screen.findByRole('alertdialog')).getByRole('button',{name:'확인'}))
  await waitFor(()=>expect(mock.act).toHaveBeenCalledWith('listing','cancel'))
- expect(await screen.findByText('판매 완료')).toBeTruthy()
+ await waitFor(()=>expect(screen.queryByText('판매 완료')).toBeNull())
 })

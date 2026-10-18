@@ -13,11 +13,9 @@
 - 정답 확인 후 다음 문제를 누르면 새 제한시간이 시작됩니다. 새로고침·다른 탭에서도 시작한 문제의 시간은 흐릅니다.
 - 모든 완료 기록을 점수 내림차순, 동점은 먼저 완료한 순서로 정렬합니다. 계정 최고 기록만 남기지 않습니다. 상위 3개 기록 강조, 20개씩 더 보기로 전체 기록을 표시합니다.
 
-## 서버 적용
+## 서버 판정과 보안
 
-일반모드 100점 제한은 후속 `supabase/migrations/20261016103215_shadow_score_cap.sql`에 있습니다. 기본 게임 SQL 적용 후 이 파일을 실행합니다. 이미 완료한 과거 기록은 수정하지 않습니다. 연습모드는 이 후속 SQL 없이도 동작하지만 일반모드 점수 제한은 서버에 후속 SQL이 적용되어야 합니다.
-
-신규 `supabase/migrations/20261016101729_shadow_guessing_arcade.sql`에 테이블·권한·함수 전체를 기록했습니다. 기존 지갑·골드 거래·개체·프로필 테이블이 있는 호환 스키마 뒤에 적용합니다. 로컬 PGlite 검증 완료이며 원격에는 미적용입니다. Storage 서비스 키는 DDL을 실행할 수 없습니다. Dashboard SQL Editor에서 이 신규 파일만 적용하거나 연결된 CLI의 migration 상태를 검토하고 배포합니다. 기존 DB에 baseline을 재실행하지 않습니다.
+점수 제한을 변경해도 이미 완료한 기록을 소급 수정하지 않습니다. 제한시간 변경은 새 문제부터 적용하고 진행 중인 문제의 마감 시각은 보존합니다. DB 변경은 [DB 관리](database-management.md)를 따릅니다.
 
 `shadow_game`: state/start/answer/next. operation UUID로 중복 차감 방지, 계정당 활성 게임 1개. wallet → run 순서 잠금. 문제 선택지는 서버 스냅샷으로 고정하고 클라이언트 점수·시계·찬스를 신뢰하지 않습니다. 답변·다음 문제 재시도는 기존 결과를 반환합니다. 정답은 비공개 테이블에 저장합니다.
 
@@ -26,5 +24,3 @@
 썸네일 `public/arcade/shadow-thumbnail.png`: built-in image_gen 생성. [최종 프롬프트](../../assets/references/shadow-game-thumbnail-manifest.json).
 
 검증: tests/shadow-game-sql.test.ts, tests/shadow-game-ui.test.tsx.
-
-8-second server deadline migration: `supabase/migrations/20261016114524_shadow_eight_seconds.sql`. Apply after the original shadow game migration. Existing active questions retain their deadline; newly generated questions use 8 seconds.

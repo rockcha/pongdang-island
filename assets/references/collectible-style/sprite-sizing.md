@@ -47,9 +47,9 @@ PNG 해상도, 프레임에서 그림이 차지하는 비율, 게임 표시 크�
 저장소 루트에서 실행합니다. PNG를 수정하지 않는 읽기 전용 검사입니다. Windows PowerShell과 System.Drawing을 사용합니다.
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File scripts/inspect-sprites.ps1 -Output docs/design/sprite-audit.json
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/inspect-sprites.ps1 -Output docs/history/sprite-audit.json
 ```
 
 보고서는 프레임별 알파 32 이상 픽셀의 바운딩 박스·폭과 높이 점유율·픽셀 수를 기록합니다. 흐림 점수나 품질 합격 점수는 아닙니다. 알파 32 미만의 은은한 발광은 측정에서 제외됩니다. 현재 배포 중인 파일 목록이 아닌 과거 배치를 포함한 로컬 시트 목록입니다.
 
-2026-10-15 로컬 68개 시트 점검 결과는 [검수 기록](../../../docs/design/sprite-quality-audit.md)에 있습니다.
+2026-10-15 로컬 68개 시트 점검 결과는 [검수 기록](../../../docs/history/sprite-quality-audit.md)에 있습니다.

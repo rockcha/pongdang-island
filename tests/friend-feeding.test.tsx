@@ -4,8 +4,8 @@ import {Feeding} from '@/features/friends/feeding'
 const mocks=vi.hoisted(()=>({feed:vi.fn(),success:vi.fn()}))
 vi.mock('@/features/friends/aquarium-api',()=>({feedFriendAquarium:mocks.feed,visitError:()=> '연결 오류'}))
 vi.mock('sonner',()=>({toast:{success:mocks.success}}))
-beforeEach(()=>{vi.clearAllMocks();mocks.feed.mockImplementation(async(_t,_o,step)=>({id:'id',clicks:step,completed:step===3,replayed:false}))})
-afterEach(cleanup)
+beforeEach(()=>{const source=globalThis.crypto;vi.stubGlobal('crypto',{getRandomValues:source.getRandomValues.bind(source)});vi.clearAllMocks();mocks.feed.mockImplementation(async(_t,_o,step)=>({id:'id',clicks:step,completed:step===3,replayed:false}))})
+afterEach(()=>{cleanup();vi.unstubAllGlobals()})
 function surface(){return screen.getByRole('button',{name:/어항에 먹이 떨어뜨리기/})}
 async function pour(step:number){fireEvent.click(surface());await waitFor(()=>expect(screen.getByRole('button',{name:`먹이 주기 ${step}/3`}).textContent).toContain(`${step}/3`));await waitFor(()=>expect(surface().getAttribute('aria-disabled')).toBe('false'))}
 it('activates without a request, completes on three aquarium clicks and allows another round',async()=>{

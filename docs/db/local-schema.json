@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "2e0dc3f96eb2479276d6dba1c559ead1edf5d688defeb114107b9aa3a69563c2",
+  "migrationHash": "53fdefb4e426ad682e4ca0e35971ee07118925172c87d45ff342ee60f2db5073",
   "structure": {
     "enums": [
       {
@@ -6637,12 +6637,6 @@
         "table": "collectible_species",
         "schema": "public",
         "definition": "CHECK ((movement_type = ANY (ARRAY['swim'::text, 'pulse'::text, 'crawl'::text, 'fixed'::text])))"
-      },
-      {
-        "name": "collectible_nonfish_common",
-        "table": "collectible_species",
-        "schema": "public",
-        "definition": "CHECK (((kind = ANY (ARRAY['fish'::collectible_kind, 'decoration'::collectible_kind, 'map'::collectible_kind])) OR (rarity = 'common'::game_rarity)))"
       },
       {
         "name": "collectible_sheet_layout",

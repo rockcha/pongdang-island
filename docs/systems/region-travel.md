@@ -1,7 +1,7 @@
 # 지역 잠금 테스트와 출항/도착
 
 ## 적용
-기존 01~11 적용 후 `supabase/sql/12-region-travel/01-travel.sql`을 추가 실행합니다. 원격 SQL 적용은 이 작업에서 하지 않았습니다. 퐁이 출항 스프라이트는 `public/sprites/pongi-sailing.png`에 포함하므로 별도 Storage 업로드가 필요 없습니다. 지역 이미지는 기존 `regions` 버킷을 사용합니다.
+DB 변경은 [DB 관리](database-management.md)를 따릅니다. 기존 번호 SQL은 동결된 구현 이력으로 재실행하지 않습니다. 현재 정의는 로컬 컨텍스트에서, 실제 원격 상태는 별도 조회로 확인합니다. 퐁이 출항 스프라이트는 `public/sprites/pongi-sailing.png`에 포함하므로 별도 Storage 업로드가 필요 없습니다. 지역 이미지는 기존 `regions` 버킷을 사용합니다.
 
 ## 흐름
 - 선착장 지도에서 지역별 `테스트: 지역 잠금 해제/잠그기`로 본인의 지도 조각을 추가/제거합니다.

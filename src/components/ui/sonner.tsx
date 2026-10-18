@@ -1,3 +1,4 @@
+import { useAppTheme } from '@/components/theme-provider'
 import { Toaster as Sonner, type ToasterProps } from "sonner"
 import {createPortal} from 'react-dom'
 
@@ -6,9 +7,10 @@ function Starfish({loading=false}:{loading?:boolean}){
 }
 
 const Toaster = ({ ...props }: ToasterProps) => {
+  const { theme } = useAppTheme()
   return typeof document==='undefined'?null:createPortal(
     <Sonner
-      theme="light"
+      theme={theme}
       className="toaster group"
       icons={{
         success: (

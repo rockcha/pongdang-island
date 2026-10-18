@@ -1,28 +1,33 @@
-# 사용자 제공 원격 구조 검토
+# 원격 DB 조회 요약
 
-근거: 사용자가 제공한 `schema.sql` JSON 결과. 캡처 2026-10-16 11:01:53 KST (`2026-10-16T02:01:53Z`), PostgreSQL 17.11, database `postgres`. 프로젝트 식별자는 결과에 없으므로 대상 프로젝트를 이 결과만으로 독립 검증하지 않았다. 캡처 이후 상태는 확인하지 않았다.
+## 근거와 범위
 
-원본과 비교 결과는 git 제외 경로 `supabase/inspection/remote/schema-export.json`, `comparison.json`, `detailed-comparison.json`에 보관했다. 로컬 migrations의 기대 상태와 다르며 baseline 적용 완료로 간주하면 안 된다.
+2026-10-18 대화에서 Supabase MCP로 읽기 전용 조회했다. DB가 반환한 첫 조회 시각은 2026-10-18 08:10:24 KST (2026-10-17T23:10:24Z), database는 postgres, PostgreSQL은 17.11이다. 대상 프로젝트 식별자는 독립 검증하지 않았으므로 아래 결과는 이 세션의 MCP 연결 DB에 한정한다.
 
-## 확인된 실제 차이
+전체 schema export나 최신 migrations와의 자동 비교를 수행한 결과가 아니다. 기존 comparison.json을 이번 조회 결과로 갱신하지 않았다. 로컬 기대 상태의 migration SHA-256은 docs/db/CONTEXT.md에 기록된 144db3df07696b1aa59b3266ef63d4b84a2c2f9c071ca674ca84c2d164d92f3f이며, 이번 부분 조회로 그 해시와 원격의 동등성을 검증한 것은 아니다.
 
-- 로컬 21개/68개에 비해 원격은 테이블 22개/함수 75개. 로컬 기존 테이블·컬럼·함수 시그니처의 누락은 없다.
-- 원격에 `app_private.prepared_fishing_casts`와 낚시 준비/완료 RPC `prepare_fishing`, `finish_fishing`, 내부 payload 함수가 추가돼 있다.
-- 원격 `app_private.cast_fishing`은 인증 검사 후 항상 `FISHING_FLOW_UPDATED`를 발생시킨다. 로컬 `src/features/fishing/api.ts`는 여전히 `public.cast_fishing`을 호출하므로 이 원격 DB에 연결하면 기존 낚시 경로는 실패한다.
-- 원격 `fishing_state`는 `successChanceBp: 3500`과 진행 중인 `prepared`를 반환한다. `prepare_fishing`은 미끼 차감·성공 후보 추첨·준비 상태 저장, `finish_fishing`은 결과 확정·지급을 담당한다. 이는 기존 즉시 추첨 RPC와 다른 게임 흐름이다.
-- `collectible_species.facing_direction`, `idle_animated`, `player_collectibles.flipped` 컬럼과 `arrange_collectible` RPC가 원격에 추가됐다. `place_collectible`은 원격에서 장식물 또는 fixed 이동 물고기에 한정된다.
-- 로컬의 `collectible_nonfish_common` CHECK가 원격에는 없다. 의도 확인 없이 복구하면 원격 데이터와 충돌할 수 있다.
+## 확인된 상태
 
-## 환경·표현 차이와 일치 항목
+| 항목 | 조회 결과 | 확인 한계 |
+| --- | --- | --- |
+| 해역 | 10개, 로컬 카탈로그의 해역 ID 목록과 일치 | 전체 컬럼 값은 대조하지 않음 |
+| 퐁당 고유 5종 | 문어·복어·해마·고래·퐁이 인형 등록, native_region_id=pongdang, 서식지 수 각각 1 | 판매가·설명·유영 값과 서식지 ID 전체는 미대조 |
+| 공통 신화 5종 | 수평선고래·이름먹는 소라·오르페온·별을 삼킨 제사장·신탁의 삼면어 등록, native_region_id=null, 서식지 수 각각 10 | 전체 패치 실행 사실이나 실행 시점의 증거는 아님 |
+| 이미지 경로 | 이번 10종의 thumbnail_path와 sprite_sheet_path 조회 | 실제 Storage 파일·공개 URL은 이번에 검증하지 않음 |
+| 고철섬 | scrapisle 해역과 native_region_id=scrapisle인 26종 존재 | 지도·낚싯대·확률 함수 등 설치 SQL 전체는 미대조 |
+| 주요 RPC | prepare_fishing, finish_fishing, cast_fishing, arrange_collectible, notice_save, auction_state, feed_friend_aquarium, clean_friend_aquarium 존재 | public/app_private 시그니처와 authenticated EXECUTE 확인. 본문·내부 인가·게임 실행은 미검증 |
+| 앱 테이블 RLS | 조회한 public/app_private 일반 테이블 42개 모두 활성화 | 정책의 적절성이나 전체 권한 안전성을 보증하지 않음 |
+| 희귀 쓰레기 제약 | collectible_nonfish_common 이름의 제약 없음 | 다른 제약 전체는 미검토 |
+| migration 이력 | MCP list_migrations 결과 빈 목록 | 기능 미설치를 뜻하지 않음. 로컬 이력과 원격 적용 이력 일치도 증명하지 않음 |
 
-함수 정의의 CRLF/LF만 정규화하면 기존 함수 중 본문 차이는 `cast_fishing`, `fishing_state`, `place_collectible` 3개로 줄어든다. 나머지 다수의 함수 차이는 줄바꿈 표현이다. 제약 목록의 NOT NULL 표현 차이는 컬럼의 nullable 값과 함께 판단해야 하며 일괄 누락으로 해석하지 않는다.
+현재 fishing-panel.tsx는 prepareFishing과 finishFishing을 호출하고 api.ts에 해당 RPC 호출이 있다. 따라서 10월 16일 기록의 “앱이 cast_fishing만 사용하는 경로”를 현재 앱의 설명으로 사용하면 안 된다. cast_fishing 호출 함수 자체는 api.ts에 남아 있다. 실제 낚시 동작과 전체 호환성은 별도 검증이 필요하다.
 
-원격의 service_role 권한은 로컬 최소 모사보다 넓다. 역할별 권한 차이는 유지해 표시하되, service_role 차이를 일반 클라이언트 권한 취약점으로 단정하지 않는다. 내보낸 테이블 권한에서 anon/authenticated의 직접 쓰기 권한은 없었다. 컬럼별 권한·함수 내부 인가까지 안전하다는 포괄적 결론은 아니다.
+## 문서와 SQL 관리 기준
 
-기존 공통 테이블의 RLS 설정과 컬럼 정의는 일치한다. 원격의 추가 테이블도 RLS가 켜져 있다. policies, triggers, enums, schemaGrants, publication, buckets, views, sequences 섹션은 로컬 결과와 일치했다.
+- [10월 16일 전체 구조 검토](../history/remote-review-20261016.md)는 당시 비교 기록으로 보존한다.
+- 퐁당 설치 SQL은 확인된 등록 상태의 참고 패치로 보관한다. 전체 migration 적용 완료라고 표시하지 않는다.
+- 고철섬 SQL은 일부 등록 확인 상태다. 전체 패치 대조 전에는 완료·미적용을 단정하지 않는다.
+- 로컬 생성 문서는 계속 로컬 기대 상태로 관리한다. 원격에 맞춘다는 이유로 수기 덮어쓰기하지 않는다.
+- 다음 DB 정합성 작업은 프로젝트 식별 → 최신 전체 export → db:remote 비교 → 차이 검토 순서다. baseline 재실행·migration repair·원격 reset은 자동 수행하지 않는다.
 
-## 다음 작업의 기준
-
-원격을 로컬 baseline으로 되돌리지 않는다. 낚시/편집 흐름의 의도를 확인하고 원격 전용 변경을 정식 후속 migration·앱 계약·의미 있는 테스트에 반영해야 한다. 현재 로컬 테스트 통과는 위 원격과의 호환성을 증명하지 않는다. 이 검토에서는 원격 DB와 게임 동작을 변경하지 않았다.
-
-카탈로그 행, 보유 데이터, 런타임 플래그, migration history, Auth 설정과 Storage 실제 파일은 이 export에 없어 미확인이다.
+이번 조회와 문서 정리에서 원격 데이터·스키마·migration history는 변경하지 않았다. Auth 설정·Storage 실제 파일·런타임 플래그·플레이어 데이터는 조회하지 않았다.

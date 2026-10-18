@@ -1,3 +1,4 @@
+import {randomId} from '@/lib/random-id'
 import type { ShadowAction, ShadowState } from './shadow-api'
 type Item={id:string;name:string;kind:string;thumbnail_path:string}
 export function createShadowPractice(catalog:Item[]) {
@@ -9,10 +10,10 @@ export function createShadowPractice(catalog:Item[]) {
   const shuffled=[...pool]
   for(let i=shuffled.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]]}
   const choices=shuffled.slice(0,4);target=choices[Math.floor(Math.random()*4)]
-  return {id:crypto.randomUUID(),number:(current?.round.number??0)+1,imagePath:target.thumbnail_path,options:choices.map(({id,name})=>({id,name})),deadline:new Date(Date.now()+8000).toISOString(),answered:false,correct:null,timedOut:null,answerName:null}
+  return {id:randomId(),number:(current?.round.number??0)+1,imagePath:target.thumbnail_path,options:choices.map(({id,name})=>({id,name})),deadline:new Date(Date.now()+8000).toISOString(),answered:false,correct:null,timedOut:null,answerName:null}
  }
  return (action:ShadowAction):ShadowState=>{
-  if(action.p_action==='start'){current=null;current={id:crypto.randomUUID(),score:0,lives:3,finished:false,round:question()}}
+  if(action.p_action==='start'){current=null;current={id:randomId(),score:0,lives:3,finished:false,round:question()}}
   if(!current||current.finished||action.p_action==='state'||action.p_action==='start')return response()
   if(action.p_round_id!==current.round.id)return response()
   if(action.p_action==='next'&&current.round.answered)current={...current,round:question()}

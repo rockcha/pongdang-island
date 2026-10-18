@@ -305,6 +305,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "amber-lantern-snail",
+      "kind": "fish",
+      "name": "호박등불 고둥",
+      "description": "호박빛 껍데기 안에 작은 등불을 품은 고둥. 살구색 발바닥으로 앞유리에 붙어 바다의 저녁을 따뜻하게 밝힌다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.001",
+      "size": 84,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/amber-lantern-snail_thumbnail.png",
+      "sell_price": 200,
+      "sprite_sheet_path": "fish/rare/amber-lantern-snail_sprite.png",
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "ammonite-fossil-slab",
       "kind": "decoration",
       "name": "암모나이트 화석 판석",
@@ -823,6 +841,42 @@
       "sprite_sheet_path": "fish/normal/button-urchin_sprite.png",
       "native_region_id": null,
       "movement_type": "crawl",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "celadon-dewdrop-snail",
+      "kind": "fish",
+      "name": "청자물방울 고둥",
+      "description": "물방울처럼 둥근 청자색 껍데기의 고둥. 크림빛 발바닥을 유리에 붙이고 긴 더듬이로 물살의 작은 변화를 읽는다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.001",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/celadon-dewdrop-snail_thumbnail.png",
+      "sell_price": 190,
+      "sprite_sheet_path": "fish/rare/celadon-dewdrop-snail_sprite.png",
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "celadon-spiral-whelk",
+      "kind": "fish",
+      "name": "청자나선 골뱅이",
+      "description": "청자빛 나선 껍데기를 가진 골뱅이. 넓고 말랑한 발로 어항 앞유리에 붙어 바깥세상을 느긋하게 바라본다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.001",
+      "size": 78,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/celadon-spiral-whelk_thumbnail.png",
+      "sell_price": 180,
+      "sprite_sheet_path": "fish/rare/celadon-spiral-whelk_sprite.png",
+      "native_region_id": null,
+      "movement_type": "fixed",
       "flip_with_direction": false,
       "travel_direction": "both"
     },
@@ -1745,6 +1799,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "glass-dome-barreleye",
+      "kind": "fish",
+      "name": "유리관 투명머리물고기",
+      "description": "머리를 덮은 투명한 유리관 속에 초록빛 눈이 떠 있는 물고기. 작은 지느러미로 물살을 고르며 바다에 스며든 빛을 좇는다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.025",
+      "size": 108,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/glass-dome-barreleye_thumbnail.png",
+      "sell_price": 650,
+      "sprite_sheet_path": "fish/epic/glass-dome-barreleye_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "glassfin-lionfish",
       "kind": "fish",
       "name": "유리 지느러미 쏠배감펭",
@@ -1757,6 +1829,24 @@
       "thumbnail_path": "fish/rare/glassfin-lionfish_thumbnail.png",
       "sell_price": 190,
       "sprite_sheet_path": "fish/rare/glassfin-lionfish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "god-devouring-leviathan",
+      "kind": "fish",
+      "name": "신을 삼키는 레비아탄",
+      "description": "신들마저 삼켰다고 전해지는 태초의 바다 거수. 왕관 같은 뿔과 흑청색 비늘 사이로 새어 나오는 빛이 심연의 물결을 가른다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.018",
+      "size": 180,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/god-devouring-leviathan_thumbnail.png",
+      "sell_price": 2800,
+      "sprite_sheet_path": "fish/mythic/god-devouring-leviathan_sprite.png",
       "native_region_id": null,
       "movement_type": "swim",
       "flip_with_direction": true,
@@ -1796,6 +1886,24 @@
       "native_region_id": "mistmoon",
       "movement_type": "swim",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "horizon-whale",
+      "kind": "fish",
+      "name": "수평선고래",
+      "description": "등 위에 해와 달이 머무는 긴 고래. 어느 바다에서든 수평선을 따라 조용히 헤엄치며 낮과 밤의 경계를 잇는다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.018",
+      "size": 156,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/horizon-whale_thumbnail.png",
+      "sell_price": 1900,
+      "sprite_sheet_path": "fish/mythic/horizon-whale_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -1922,6 +2030,24 @@
       "native_region_id": null,
       "movement_type": "fixed",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "living-fossil-coelacanth",
+      "kind": "fish",
+      "name": "살아있는 화석 실러캔스",
+      "description": "아득한 옛 바다의 모습을 간직한 실러캔스. 푸른 광석 같은 비늘과 두툼한 지느러미를 천천히 움직이며 긴 시간을 헤엄친다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.025",
+      "size": 132,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/living-fossil-coelacanth_thumbnail.png",
+      "sell_price": 760,
+      "sprite_sheet_path": "fish/epic/living-fossil-coelacanth_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -2159,6 +2285,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "meteor-tentacle-squid",
+      "kind": "fish",
+      "name": "유성촉수 오징어",
+      "description": "남보라빛 몸에 유성 같은 빛무늬가 흐르는 오징어. 긴 촉수가 물살을 따라 펼쳐질 때마다 푸른 빛줄기가 이어진다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.025",
+      "size": 124,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/meteor-tentacle-squid_thumbnail.png",
+      "sell_price": 700,
+      "sprite_sheet_path": "fish/epic/meteor-tentacle-squid_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "mint-mahi-mahi",
       "kind": "fish",
       "name": "민트 만새기",
@@ -2285,6 +2429,42 @@
       "travel_direction": "both"
     },
     {
+      "id": "name-eating-conch",
+      "kind": "fish",
+      "name": "이름먹는 소라",
+      "description": "잊힌 이름을 먹고 사는 오래된 소라. 껍데기의 금빛 문양은 누군가 이름을 부를 때마다 다른 모습으로 바뀐다.",
+      "swim_y_min": "0.80",
+      "swim_y_max": "0.93",
+      "speed": "0.018",
+      "size": 110,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/name-eating-conch_thumbnail.png",
+      "sell_price": 1850,
+      "sprite_sheet_path": "fish/mythic/name-eating-conch_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "napping-moon-sunfish",
+      "kind": "fish",
+      "name": "낮잠달 개복치",
+      "description": "낮잠을 좋아하는 둥근 개복치. 은빛 몸에 내려앉은 초승달 무늬가 잔물결을 받을 때마다 부드럽게 반짝인다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.035",
+      "size": 104,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/napping-moon-sunfish_thumbnail.png",
+      "sell_price": 220,
+      "sprite_sheet_path": "fish/rare/napping-moon-sunfish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "night-orca",
       "kind": "fish",
       "name": "밤빛 범고래",
@@ -2297,6 +2477,24 @@
       "thumbnail_path": "fish/rare/night-orca_thumbnail.png",
       "sell_price": 450,
       "sprite_sheet_path": "fish/rare/night-orca_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "night-pouch-gulper-eel",
+      "kind": "fish",
+      "name": "밤주머니 풍선장어",
+      "description": "밤을 담은 듯 검푸른 입주머니를 가진 풍선장어. 길게 흐르는 꼬리 끝의 호박빛 불꽃이 어두운 물길을 가만히 비춘다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.025",
+      "size": 138,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/night-pouch-gulper-eel_thumbnail.png",
+      "sell_price": 720,
+      "sprite_sheet_path": "fish/epic/night-pouch-gulper-eel_sprite.png",
       "native_region_id": null,
       "movement_type": "swim",
       "flip_with_direction": true,
@@ -2317,6 +2515,24 @@
       "sprite_sheet_path": "fish/mythic/nivella-snowflake-dancer_sprite.png",
       "native_region_id": "whitenight",
       "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "obel-sunken-crown",
+      "kind": "fish",
+      "name": "오벨, 가라앉은 왕관",
+      "description": "가라앉은 왕관을 닮은 백금 가시의 성게. 푸른 몸속에 잊힌 왕국의 빛을 간직하고 작은 관족으로 바다 바닥을 더듬는다.",
+      "swim_y_min": "0.80",
+      "swim_y_max": "0.93",
+      "speed": "0.018",
+      "size": 130,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/obel-sunken-crown_thumbnail.png",
+      "sell_price": 2050,
+      "sprite_sheet_path": "fish/mythic/obel-sunken-crown_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
       "flip_with_direction": true,
       "travel_direction": "both"
     },
@@ -2351,6 +2567,24 @@
       "thumbnail_path": "fish/normal/orange-clownfish_thumbnail.png",
       "sell_price": 35,
       "sprite_sheet_path": "fish/normal/orange-clownfish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "orpheon-abyssal-hymn",
+      "kind": "fish",
+      "name": "오르페온, 심연의 성가",
+      "description": "은빛 현을 품은 고대의 바다뱀. 몸을 부드럽게 굽힐 때마다 현이 울려 심연을 잠재우는 성가가 흐른다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.018",
+      "size": 168,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/orpheon-abyssal-hymn_thumbnail.png",
+      "sell_price": 2300,
+      "sprite_sheet_path": "fish/mythic/orpheon-abyssal-hymn_sprite.png",
       "native_region_id": null,
       "movement_type": "swim",
       "flip_with_direction": true,
@@ -2570,6 +2804,96 @@
       "native_region_id": "pongdang",
       "movement_type": "swim",
       "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pongdang-octopus",
+      "kind": "fish",
+      "name": "퐁당 문어",
+      "description": "불가사리를 머리핀처럼 얹은 작은 문어. 짧고 통통한 촉수를 오므렸다 펴며 퐁당섬 앞바다를 떠다닌다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.025",
+      "size": 72,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/pongdang-octopus_thumbnail.png",
+      "sell_price": 190,
+      "sprite_sheet_path": "fish/rare/pongdang-octopus_sprite.png",
+      "native_region_id": "pongdang",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pongdang-pufferfish",
+      "kind": "fish",
+      "name": "퐁당 복어",
+      "description": "크림색 몸과 살구빛 지느러미를 가진 통통한 복어. 머리 위 불가사리가 물살에 흔들리면 볼을 살짝 부풀린다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.035",
+      "size": 64,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/pongdang-pufferfish_thumbnail.png",
+      "sell_price": 180,
+      "sprite_sheet_path": "fish/rare/pongdang-pufferfish_sprite.png",
+      "native_region_id": "pongdang",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pongdang-seahorse",
+      "kind": "fish",
+      "name": "퐁당 해마",
+      "description": "민트빛 몸과 크림색 배를 가진 작은 해마. 머리의 불가사리를 모자처럼 쓰고 꼬리를 말아 물살에 몸을 맡긴다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.025",
+      "size": 70,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/pongdang-seahorse_thumbnail.png",
+      "sell_price": 200,
+      "sprite_sheet_path": "fish/rare/pongdang-seahorse_sprite.png",
+      "native_region_id": "pongdang",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pongdang-whale",
+      "kind": "fish",
+      "name": "퐁당 고래",
+      "description": "살구빛 지느러미와 둥근 크림색 몸을 가진 퐁당섬의 고래. 머리 위 불가사리를 소중히 얹고 잔잔한 바다를 누빈다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.035",
+      "size": 112,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/pongdang-whale-starfish-v1_thumbnail.png",
+      "sell_price": 620,
+      "sprite_sheet_path": "fish/epic/pongdang-whale-starfish-v1_sprite.png",
+      "native_region_id": "pongdang",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pongi-plush",
+      "kind": "trash",
+      "name": "퐁이 인형",
+      "description": "머리에 불가사리를 단 퐁이 봉제 인형. 바닷물에 젖었지만 따뜻한 표정과 꼼꼼한 바느질 자국은 그대로 남아 있다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.035",
+      "size": 68,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/pongi-plush_thumbnail.png",
+      "sell_price": 160,
+      "sprite_sheet_path": null,
+      "native_region_id": "pongdang",
+      "movement_type": "swim",
+      "flip_with_direction": false,
       "travel_direction": "both"
     },
     {
@@ -2819,6 +3143,24 @@
       "thumbnail_path": "fish/rare/sand-hammerhead_thumbnail.png",
       "sell_price": 340,
       "sprite_sheet_path": "fish/rare/sand-hammerhead_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "sandbar-guide-sawshark",
+      "kind": "fish",
+      "name": "모래톱 길잡이",
+      "description": "모래톱 사이로 길을 여는 작은 톱상어. 크림빛 주둥이에 난 톱니로 모래를 살피며 낯선 바다의 길잡이가 되어준다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.035",
+      "size": 100,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/sandbar-guide-sawshark_thumbnail.png",
+      "sell_price": 210,
+      "sprite_sheet_path": "fish/rare/sandbar-guide-sawshark_sprite.png",
       "native_region_id": null,
       "movement_type": "swim",
       "flip_with_direction": true,
@@ -3905,6 +4247,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "star-swallowing-priest",
+      "kind": "fish",
+      "name": "별을 삼킨 제사장",
+      "description": "청동 의식 가면을 두른 문어 제사장. 반투명한 머릿속에는 삼킨 별들이 돌고, 긴 촉수와 망토는 물살을 따라 흐른다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.018",
+      "size": 144,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/star-swallowing-priest_thumbnail.png",
+      "sell_price": 2200,
+      "sprite_sheet_path": "fish/mythic/star-swallowing-priest_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "starpattern-manta",
       "kind": "fish",
       "name": "별무늬 만타",
@@ -4085,6 +4445,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "three-faced-oracle-fish",
+      "kind": "fish",
+      "name": "신탁의 삼면어",
+      "description": "세 개의 작은 가면을 등에 두른 신탁의 물고기. 가면마다 지나간 밀물과 지금의 바다, 다가올 썰물을 바라본다고 한다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.018",
+      "size": 136,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/three-faced-oracle-fish_thumbnail.png",
+      "sell_price": 2100,
+      "sprite_sheet_path": "fish/mythic/three-faced-oracle-fish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "tiny-cuttlefish",
       "kind": "fish",
       "name": "꼬마 갑오징어",
@@ -4136,6 +4514,24 @@
       "native_region_id": "primal",
       "movement_type": "fixed",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "unmong-cloud-weaver",
+      "kind": "fish",
+      "name": "운몽, 구름을 짜는 해파리",
+      "description": "투명한 갓 안에서 구름을 짜는 오래된 해파리. 비처럼 드리운 촉수가 흩어진 꿈을 모아 바다 위의 새벽으로 돌려보낸다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.018",
+      "size": 154,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/unmong-cloud-weaver_thumbnail.png",
+      "sell_price": 2200,
+      "sprite_sheet_path": "fish/mythic/unmong-cloud-weaver_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -4251,6 +4647,46 @@
     {
       "species_id": "amber-bearing-root",
       "region_id": "primal"
+    },
+    {
+      "species_id": "amber-lantern-snail",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "amber-lantern-snail",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "amber-lantern-snail",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "amber-lantern-snail",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "amber-lantern-snail",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "amber-lantern-snail",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "amber-lantern-snail",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "amber-lantern-snail",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "amber-lantern-snail",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "amber-lantern-snail",
+      "region_id": "whitenight"
     },
     {
       "species_id": "ammonite-fossil-slab",
@@ -4618,6 +5054,86 @@
     },
     {
       "species_id": "button-urchin",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "celadon-dewdrop-snail",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "celadon-dewdrop-snail",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "celadon-dewdrop-snail",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "celadon-dewdrop-snail",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "celadon-dewdrop-snail",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "celadon-dewdrop-snail",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "celadon-dewdrop-snail",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "celadon-dewdrop-snail",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "celadon-dewdrop-snail",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "celadon-dewdrop-snail",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "celadon-spiral-whelk",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "celadon-spiral-whelk",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "celadon-spiral-whelk",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "celadon-spiral-whelk",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "celadon-spiral-whelk",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "celadon-spiral-whelk",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "celadon-spiral-whelk",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "celadon-spiral-whelk",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "celadon-spiral-whelk",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "celadon-spiral-whelk",
       "region_id": "whitenight"
     },
     {
@@ -5021,6 +5537,46 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "glass-dome-barreleye",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "glass-dome-barreleye",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "glass-dome-barreleye",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "glass-dome-barreleye",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "glass-dome-barreleye",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "glass-dome-barreleye",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "glass-dome-barreleye",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "glass-dome-barreleye",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "glass-dome-barreleye",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "glass-dome-barreleye",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "glassfin-lionfish",
       "region_id": "bluegrove"
     },
@@ -5050,6 +5606,46 @@
     },
     {
       "species_id": "glassfin-lionfish",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "god-devouring-leviathan",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "god-devouring-leviathan",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "god-devouring-leviathan",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "god-devouring-leviathan",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "god-devouring-leviathan",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "god-devouring-leviathan",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "god-devouring-leviathan",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "god-devouring-leviathan",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "god-devouring-leviathan",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "god-devouring-leviathan",
       "region_id": "whitenight"
     },
     {
@@ -5087,6 +5683,46 @@
     {
       "species_id": "hazy-glass-marble",
       "region_id": "mistmoon"
+    },
+    {
+      "species_id": "horizon-whale",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "horizon-whale",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "horizon-whale",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "horizon-whale",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "horizon-whale",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "horizon-whale",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "horizon-whale",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "horizon-whale",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "horizon-whale",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "horizon-whale",
+      "region_id": "whitenight"
     },
     {
       "species_id": "icearmor-king-crab",
@@ -5142,6 +5778,46 @@
     },
     {
       "species_id": "lavender-starfish",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "living-fossil-coelacanth",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "living-fossil-coelacanth",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "living-fossil-coelacanth",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "living-fossil-coelacanth",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "living-fossil-coelacanth",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "living-fossil-coelacanth",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "living-fossil-coelacanth",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "living-fossil-coelacanth",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "living-fossil-coelacanth",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "living-fossil-coelacanth",
       "region_id": "whitenight"
     },
     {
@@ -5223,6 +5899,46 @@
     {
       "species_id": "map-starruins",
       "region_id": "starruins"
+    },
+    {
+      "species_id": "meteor-tentacle-squid",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "meteor-tentacle-squid",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "meteor-tentacle-squid",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "meteor-tentacle-squid",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "meteor-tentacle-squid",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "meteor-tentacle-squid",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "meteor-tentacle-squid",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "meteor-tentacle-squid",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "meteor-tentacle-squid",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "meteor-tentacle-squid",
+      "region_id": "whitenight"
     },
     {
       "species_id": "mint-mahi-mahi",
@@ -5365,6 +6081,86 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "name-eating-conch",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "name-eating-conch",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "name-eating-conch",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "name-eating-conch",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "name-eating-conch",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "name-eating-conch",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "name-eating-conch",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "name-eating-conch",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "name-eating-conch",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "name-eating-conch",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "napping-moon-sunfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "napping-moon-sunfish",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "napping-moon-sunfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "napping-moon-sunfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "napping-moon-sunfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "napping-moon-sunfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "napping-moon-sunfish",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "napping-moon-sunfish",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "napping-moon-sunfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "napping-moon-sunfish",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "night-orca",
       "region_id": "bluegrove"
     },
@@ -5394,6 +6190,46 @@
     },
     {
       "species_id": "night-orca",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "night-pouch-gulper-eel",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "night-pouch-gulper-eel",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "night-pouch-gulper-eel",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "night-pouch-gulper-eel",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "night-pouch-gulper-eel",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "night-pouch-gulper-eel",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "night-pouch-gulper-eel",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "night-pouch-gulper-eel",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "night-pouch-gulper-eel",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "night-pouch-gulper-eel",
       "region_id": "whitenight"
     },
     {
@@ -5401,6 +6237,46 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "obel-sunken-crown",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "obel-sunken-crown",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "obel-sunken-crown",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "obel-sunken-crown",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "obel-sunken-crown",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "obel-sunken-crown",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "obel-sunken-crown",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "obel-sunken-crown",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "obel-sunken-crown",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "obel-sunken-crown",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "opal-nautilus",
       "region_id": "bluegrove"
     },
@@ -5462,6 +6338,46 @@
     },
     {
       "species_id": "orange-clownfish",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "orpheon-abyssal-hymn",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "orpheon-abyssal-hymn",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "orpheon-abyssal-hymn",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "orpheon-abyssal-hymn",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "orpheon-abyssal-hymn",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "orpheon-abyssal-hymn",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "orpheon-abyssal-hymn",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "orpheon-abyssal-hymn",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "orpheon-abyssal-hymn",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "orpheon-abyssal-hymn",
       "region_id": "whitenight"
     },
     {
@@ -5726,6 +6642,26 @@
     },
     {
       "species_id": "pongdang-fish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pongdang-octopus",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pongdang-pufferfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pongdang-seahorse",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pongdang-whale",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pongi-plush",
       "region_id": "pongdang"
     },
     {
@@ -6018,6 +6954,46 @@
     },
     {
       "species_id": "sand-hammerhead",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "sandbar-guide-sawshark",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "sandbar-guide-sawshark",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "sandbar-guide-sawshark",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "sandbar-guide-sawshark",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "sandbar-guide-sawshark",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "sandbar-guide-sawshark",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "sandbar-guide-sawshark",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "sandbar-guide-sawshark",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "sandbar-guide-sawshark",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "sandbar-guide-sawshark",
       "region_id": "whitenight"
     },
     {
@@ -6617,6 +7593,46 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "star-swallowing-priest",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "star-swallowing-priest",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "star-swallowing-priest",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "star-swallowing-priest",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "star-swallowing-priest",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "star-swallowing-priest",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "star-swallowing-priest",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "star-swallowing-priest",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "star-swallowing-priest",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "star-swallowing-priest",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "starpattern-manta",
       "region_id": "bluegrove"
     },
@@ -6789,6 +7805,46 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "three-faced-oracle-fish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "three-faced-oracle-fish",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "three-faced-oracle-fish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "three-faced-oracle-fish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "three-faced-oracle-fish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "three-faced-oracle-fish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "three-faced-oracle-fish",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "three-faced-oracle-fish",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "three-faced-oracle-fish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "three-faced-oracle-fish",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "tiny-cuttlefish",
       "region_id": "bluegrove"
     },
@@ -6855,6 +7911,46 @@
     {
       "species_id": "trilobite-track-rock",
       "region_id": "primal"
+    },
+    {
+      "species_id": "unmong-cloud-weaver",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "unmong-cloud-weaver",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "unmong-cloud-weaver",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "unmong-cloud-weaver",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "unmong-cloud-weaver",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "unmong-cloud-weaver",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "unmong-cloud-weaver",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "unmong-cloud-weaver",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "unmong-cloud-weaver",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "unmong-cloud-weaver",
+      "region_id": "whitenight"
     },
     {
       "species_id": "webfoot-marine-crocodile",

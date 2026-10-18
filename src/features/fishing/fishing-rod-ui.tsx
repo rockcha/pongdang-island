@@ -1,6 +1,8 @@
+import {ProductSkeleton} from '@/components/product-skeleton'
+import {LandscapeImage} from '@/components/landscape-image'
 import {useRef,useState} from 'react'
 import {toast} from 'sonner'
-import {Check,FishingRod as RodIcon,MapPin,ShieldCheck} from 'lucide-react'
+import {Check,FishingRod as RodIcon} from 'lucide-react'
 import {Button} from '@/components/ui/button'
 import {ConfirmDialog} from '@/components/confirm-dialog'
 import {TradeQuestion} from '@/components/trade-question'
@@ -10,14 +12,14 @@ import {GoldIcon,useGold} from '@/features/gold/gold-provider'
 import {fishingRods,type FishingRod} from './fishing-rods'
 import {useRods} from './rod-provider'
 import {rodThumbnailUrl} from './rod-image-assets'
+import {regionIcons} from '@/features/regions/region-icons'
 
 export function RodPreview({rod}:{rod:FishingRod}){
- return <img src={rodThumbnailUrl(rod.id)} alt={rod.name+' 세트'} loading="lazy" className="h-40 w-full object-contain p-2"/>
+ return <div className="relative h-40 w-full"><LandscapeImage src={rodThumbnailUrl(rod.id)} alt={rod.name+' 세트'} className="absolute inset-0 size-full object-contain p-2"/></div>
 }
 export function RodEffect({rod}:{rod:FishingRod}){
- const Icon=rod.region?MapPin:ShieldCheck
- const effect=rod.failureReductionBp?`실패율 −${rod.failureReductionBp/100}%p${rod.nativeBonusBp?' · '+rod.effect.split(' · ').at(-1):''}`:'추가 효과 없음'
- return <p className="flex items-start gap-1.5 text-xs leading-5 text-primary"><Icon className="mt-0.5 size-3.5 shrink-0"/>{effect}</p>
+ const region=rod.region?regionIcons[rod.region]:undefined
+ return <div className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-xl bg-secondary/60 px-4 py-3 text-sm leading-6 text-primary"><span>{rod.failureReductionBp?`실패율 ${rod.failureReductionBp/100}% 경감`:'추가 효과 없음'}</span>{rod.nativeBonusBp>0&&<span className="inline-flex items-center gap-1"><span aria-hidden="true">·</span>{region?<img src={region.src} alt={region.name} title={region.name} className="size-6 shrink-0 object-contain"/>:null}<span>개체 확률 {rod.nativeBonusBp/100}% 증가</span></span>}</div>
 }
 export function RodInventoryStatus(){
  const {loading,error,refresh}=useRods()
@@ -43,26 +45,19 @@ function RodCards({inventory=false,query=''}:{inventory?:boolean;query?:string})
   finally{lock.current=false;setProcessing(false)}
  }
  async function equip(id:string){try{await select(id)}catch(cause){toast.error(cause instanceof Error?cause.message:'장착하지 못했어요.')}}
- const visible=inventory?rods.filter(rod=>owned.includes(rod.id)&&rod.name.includes(query.trim())):rods
+ const visible=(inventory?rods.filter(rod=>owned.includes(rod.id)&&rod.name.includes(query.trim())):[...rods]).sort((a,b)=>a.price-b.price)
  return <div className="space-y-4">
-  {!inventory&&<p className="rounded-xl bg-muted/60 px-4 py-3 text-xs leading-5 text-muted-foreground">{inventory?'보유한 낚싯대를 장착하거나 구매가의 절반에 판매할 수 있어요.':'낚싯대는 종류별로 하나씩 보유할 수 있어요. 판매 가격은 구매가의 절반이에요.'} 확률 효과는 아직 적용되지 않아요.</p>}
-  <RodInventoryStatus/>
-  {!loading&&!error&&<div className={inventory?"grid grid-cols-3 gap-2 sm:grid-cols-4":"grid grid-cols-1 gap-3 sm:grid-cols-2"}>{visible.map(rod=>{
+  {loading?<ProductSkeleton columns={inventory?3:2}/>:<RodInventoryStatus/>}
+  {!loading&&!error&&<div className={inventory?"grid grid-cols-3 border-t border-border/60 sm:grid-cols-4":"grid grid-cols-2 border-t border-border/60"}>{visible.map(rod=>{
    const has=owned.includes(rod.id),equipped=selected===rod.id
-   if(inventory)return <button key={rod.id} onClick={()=>setDetail(rod)} aria-label={rod.name+' 상세 보기'} className="relative flex min-w-0 flex-col items-center gap-2 rounded-xl border border-border/60 bg-card p-2 pb-3 text-center transition-colors hover:bg-secondary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><img src={rodThumbnailUrl(rod.id)} alt="" className="aspect-square w-full object-contain"/><span className="text-xs leading-5">{rod.name}</span><span className="text-[10px] text-primary">{equipped?'장착 중':'보유 중'}</span></button>
-   return <article key={rod.id} className="flex flex-col overflow-hidden rounded-2xl border bg-card">
-    <div className="relative px-3 pt-2" style={{background:`linear-gradient(140deg,${rod.color}18,transparent)`}}><RodPreview rod={rod}/>{equipped&&<span className="absolute right-3 top-3 flex items-center gap-1 rounded-full bg-background/90 px-2 py-1 text-[10px] text-primary"><Check className="size-3"/>장착 중</span>}</div>
-    <div className="flex flex-1 flex-col gap-2 p-4 pt-2"><div className="flex items-center justify-between gap-2"><h2 className="text-sm font-medium">{rod.name}</h2>{!rod.price&&<span className="rounded-full bg-muted px-2 py-0.5 text-[10px] text-muted-foreground">기본 지급</span>}</div>
-     <p className="text-xs leading-5 text-muted-foreground">{rod.description}</p><RodEffect rod={rod}/>
-     <div className="mt-auto flex gap-2 pt-3">
-      {has?<Button variant={equipped?'secondary':'outline'} className="min-h-11 flex-1 text-xs" disabled={unavailable||equipped} aria-label={rod.name+' 장착'} onClick={()=>void equip(rod.id)}>{equipped?'장착 중':'장착'}</Button>:<Button className="min-h-11 flex-1 text-xs" disabled={unavailable||wallet.gold<rod.price} aria-label={rod.name+' 구매'} onClick={()=>{setTradeError('');setPending({rod,action:'buy'})}}><GoldIcon className="size-4"/>{rod.price.toLocaleString('ko-KR')} 구매</Button>}
-      {rod.price>0&&<Button variant="ghost" className="min-h-11 flex-1 text-xs text-muted-foreground" disabled={unavailable||!has} aria-label={rod.name+' 반값 판매'} onClick={()=>{setTradeError('');setPending({rod,action:'sell'})}}><GoldIcon className="size-4"/>{(rod.price/2).toLocaleString('ko-KR')} 판매</Button>}
-     </div>
-    </div>
-   </article>
+   if(inventory)return <button key={rod.id} onClick={()=>setDetail(rod)} aria-label={rod.name+' 상세 보기'} aria-pressed={equipped} className={`relative flex min-w-0 flex-col items-center gap-2 border-r border-b border-border/60 px-2 pt-7 pb-3 text-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${equipped?'bg-secondary/60 ring-2 ring-inset ring-primary/60':'border-border/60 bg-card hover:bg-secondary/50'}`}>{equipped&&<span className="absolute left-1.5 top-1.5 flex items-center gap-1 rounded-md bg-primary px-2 py-1 text-[10px] leading-none text-primary-foreground"><Check className="size-3"/>장착 중</span>}<div className="relative aspect-square w-full"><LandscapeImage src={rodThumbnailUrl(rod.id)} alt="" className="absolute inset-0 size-full object-contain"/></div><span className="w-full truncate text-xs leading-5" title={rod.name}>{rod.name}</span></button>
+   return <button key={rod.id} type="button" onClick={()=>setDetail(rod)} aria-label={rod.name+' 상세 보기'} className="relative flex min-w-0 flex-col items-center border-r border-b border-border/60 bg-card px-2 pt-2 pb-3 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring">
+    <div className="relative aspect-square w-full"><LandscapeImage src={rodThumbnailUrl(rod.id)} alt={rod.name+' 세트'} className="absolute inset-0 size-full object-contain"/></div>
+    <h2 className="mt-1 h-10 text-xs leading-5 line-clamp-2">{rod.name}</h2><span className="flex items-center gap-1 text-xs text-primary">{has?<><Check className="size-3"/>{equipped?'장착 중':'보유중'}</>:<><GoldIcon className="size-4"/>{rod.price.toLocaleString('ko-KR')}</>}</span>
+   </button>
   })}</div>}
   {inventory&&!loading&&!error&&!visible.length&&<p className="py-10 text-center text-sm text-muted-foreground">조건에 맞는 낚싯대가 없어요.</p>}
-  <Dialog open={!!detail} onOpenChange={open=>{if(!open)setDetail(null)}}><DialogContent className="bottom-0 top-auto left-0 max-h-[85dvh] max-w-full translate-x-0 translate-y-0 overflow-y-auto rounded-t-2xl rounded-b-none pb-[max(1rem,env(safe-area-inset-bottom))] sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:max-w-sm sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-xl"><DialogHeader><DialogTitle>{detail?.name}</DialogTitle><DialogDescription>{detail?.description}</DialogDescription></DialogHeader>{detail&&<><RodPreview rod={detail}/><RodEffect rod={detail}/><div className="flex gap-2"><Button className="min-h-11 flex-1" disabled={unavailable||selected===detail.id} onClick={()=>void equip(detail.id)}>{selected===detail.id?'장착 중':'장착하기'}</Button>{detail.price>0&&<Button variant="outline" className="min-h-11 flex-1" disabled={unavailable} onClick={()=>{setTradeError('');setPending({rod:detail,action:'sell'});setDetail(null)}}><GoldIcon className="size-4"/>{(detail.price/2).toLocaleString('ko-KR')} 판매</Button>}</div></>}</DialogContent></Dialog>
+  <Dialog open={!!detail} onOpenChange={open=>{if(!open)setDetail(null)}}><DialogContent className="notification-sheet bottom-0 top-auto left-0 flex max-h-[88dvh] max-w-full translate-x-0 translate-y-0 flex-col gap-0 overflow-hidden rounded-t-2xl rounded-b-none pb-0 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2"><DialogHeader className="shrink-0"><DialogTitle className="flex items-center gap-2 pr-6"><img src="/branding/pongi-starfish.png" alt="" aria-hidden="true" className="size-6 shrink-0 object-contain"/>{detail?.name}</DialogTitle><DialogDescription>{detail?.description}</DialogDescription></DialogHeader>{detail&&<><div className="min-h-0 overflow-y-auto overscroll-contain py-4"><RodPreview rod={detail}/></div><div className="-mx-4 shrink-0 border-t border-border [&>div]:rounded-none"><RodEffect rod={detail}/></div><div className="-mx-4 flex shrink-0 border-t bg-secondary pb-[env(safe-area-inset-bottom)]"><Button className="h-16 min-w-0 flex-1 rounded-none" disabled={unavailable||(owned.includes(detail.id)?selected===detail.id:wallet.gold<detail.price)} onClick={()=>{if(owned.includes(detail.id))void equip(detail.id);else{setTradeError('');setPending({rod:detail,action:'buy'});setDetail(null)}}}>{owned.includes(detail.id)?selected===detail.id?'장착 중':'장착하기':<><GoldIcon className="size-4"/>{detail.price.toLocaleString('ko-KR')} 구매</>}</Button>{detail.price>0&&owned.includes(detail.id)&&<Button variant="outline" className="h-16 min-w-0 flex-1 rounded-none" disabled={unavailable} onClick={()=>{setTradeError('');setPending({rod:detail,action:'sell'});setDetail(null)}}><GoldIcon className="size-4"/>{(detail.price/2).toLocaleString('ko-KR')} 판매</Button>}</div></>}</DialogContent></Dialog>
   <ConfirmDialog open={!!pending} onOpenChange={open=>{if(!open){setPending(null);setTradeError('')}}} title={pending?<TradeQuestion name={pending.rod.name} price={pending.action==='buy'?pending.rod.price:pending.rod.price/2} selling={pending.action==='sell'}/>:''} description={pending?.action==='sell'&&selected===pending.rod.id?'장착 장비는 입문용으로 바뀝니다.':pending?.action==='buy'?'구매한 낚싯대는 창고에 보관됩니다.':'판매한 낚싯대는 창고에서 사라집니다.'} busy={busy} confirmDisabled={unavailable} error={tradeError} onConfirm={()=>void confirm()}/>
  </div>
 }

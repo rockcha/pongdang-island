@@ -1,0 +1,3 @@
+export function ProductSkeleton({ columns = 3 }: {columns?:2|3}) {
+  return <div role="status" aria-label="상품을 불러오는 중"><span className="sr-only">상품을 불러오는 중…</span><div aria-hidden="true" className={'grid border-t border-border/60 '+(columns===2?'grid-cols-2':'grid-cols-3')}>{Array.from({length:columns*3},(_,i)=><div key={i} className="border-r border-b border-border/60 bg-card px-2 pt-2 pb-3 motion-safe:animate-pulse"><div className="aspect-square rounded-lg bg-secondary/60"/><div className="mt-2 h-10 rounded bg-secondary/50"/><div className="mx-auto mt-1 h-4 w-1/2 rounded bg-secondary/60"/></div>)}</div></div>
+}

@@ -1,3 +1,4 @@
+import { SettingsPage } from '@/pages/settings-page'
 import { RegionPage } from '@/features/regions/region-page'
 import { SailingPage } from '@/features/regions/sailing-page'
 import { ShopPage } from '@/features/gold/shop-page'
@@ -49,6 +50,7 @@ export function AppRoutes() {
             <Route path="friends" element={<FriendsPage />} />
             <Route path="friends/:ownerId/aquarium" element={<FriendAquariumPage />} />
             <Route path="profile" element={<ProfilePage />} />
+            <Route path="profile/settings" element={<SettingsPage />} />
             <Route path="notifications" element={<NotificationsPage />} />
             <Route path="square" element={<PlaceSectionPage section="square" />} />
             <Route path="square/notices" element={<NoticePage />} />

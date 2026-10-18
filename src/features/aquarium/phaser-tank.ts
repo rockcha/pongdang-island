@@ -1,3 +1,4 @@
+import { glassAttachedSpecies } from './glass-attached-species'
 import Phaser from 'phaser'
 import { collectibleUrl } from '@/features/collection/api'
 import type { OwnedCollectible } from '@/features/collection/api'
@@ -15,17 +16,19 @@ import {scrapisleFixedFrame} from './scrapisle-animation'
 
 export type TankRenderer = { setItems: (items: OwnedCollectible[]) => void; resize: (width: number, height: number) => void; setReduced: (value: boolean) => void; setVisible: (value: boolean) => void; getStats: () => { count: number; textures: number; clock: number; renderer: string }; destroy: () => void }
 
-export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectible[], reduced: boolean, onError: (message: string) => void, onPlace?: (id:string,x:number,y:number)=>void,_onNavigate?:(direction:'previous'|'next')=>void,onSelectDecoration?:(id:string,x?:number,y?:number)=>void,onBackgroundTap?:()=>void): TankRenderer {
+export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectible[], reduced: boolean, onError: (message: string) => void, onPlace?: (id:string,x:number,y:number)=>void,_onNavigate?:(direction:'previous'|'next')=>void,onSelectDecoration?:(id:string,x?:number,y?:number)=>void,onBackgroundTap?:()=>void,onSelectionPosition?:(id:string,x:number,y:number)=>void): TankRenderer {
   let items = initial, ready = false, disposed = false, clock = 0, visible = true
   let viewport=tankResolution(parent.clientWidth,parent.clientHeight,window.devicePixelRatio)
   const entries = new Map<string, { motion: InhabitantMotion; sprite: Phaser.GameObjects.Sprite; path: string; sheet: boolean; previousX?:number }>()
   const queued = new Set<string>(), failed = new Set<string>()
+  let selectedId:string|null=null
   const dragging=new Set<string>()
   let swipe:{id:number;x:number;y:number;time:number}|null=null
   let decorationPress:{id:string;pointerId:number;x:number;y:number;dragged:boolean}|null=null
   const textureKey = (path: string) => `collectible:${path}`
   const draggable=(item:OwnedCollectible)=>item.species.kind!=='map'&&!item.interaction_locked
   const asset = (item: OwnedCollectible) => {
+    if(glassAttachedSpecies.has(item.species.id))return {path:item.species.thumbnail_path,sheet:false}
     const plant=primalPlantAsset(item.species.id,item.species.kind)
     if(plant)return {...plant,sheet:true}
     const sheet = item.species.kind !== 'map' && !!item.species.sprite_sheet_path
@@ -55,7 +58,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         decorationPress=null
         const target=targets[0] as Phaser.GameObjects.Sprite|undefined
         const id=target?.getData('collectibleId') as string|undefined
-        if(id&&entries.has(id)&&canArrangeSpecies(entries.get(id)!.motion.item.species)){
+        if(id&&entries.has(id)&&!entries.get(id)!.motion.item.interaction_locked){
           decorationPress={id,pointerId:pointer.id,x:point.x,y:point.y,dragged:false}
           return
         }
@@ -66,7 +69,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         const point=this.pointerPosition(pointer)
         const press=decorationPress;decorationPress=null
         if(press&&press.pointerId===pointer.id&&!press.dragged&&Math.hypot(point.x-press.x,point.y-press.y)<6){const entry=entries.get(press.id)
-          if(entry){const g=decorationGeometry(entry.motion.item,viewport.width,viewport.height);onSelectDecoration?.(press.id,g.w?(entry.sprite.x-g.size/2-g.margin)/g.w:.5,g.h?(entry.sprite.y-g.size/2-g.margin)/g.h:.5)}
+          if(entry){selectedId=press.id;const g=decorationGeometry(entry.motion.item,viewport.width,viewport.height);onSelectDecoration?.(press.id,g.w?(entry.sprite.x-g.size/2-g.margin)/g.w:.5,g.h?(entry.sprite.y-g.size/2-g.margin)/g.h:.5)}
           return}
         if(!swipe||swipe.id!==pointer.id)return
         const start=swipe;swipe=null
@@ -78,6 +81,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         swipe=null
         const id=sprite.getData('collectibleId') as string
         if(decorationPress?.id===id)decorationPress.dragged=true
+        selectedId=id
         dragging.add(id);sprite.setDepth(900)
         this.input.setDefaultCursor('grabbing')
       })
@@ -88,7 +92,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
       })
       this.input.on('dragend',(_pointer:Phaser.Input.Pointer,sprite:Phaser.GameObjects.Sprite)=>{
         const id=sprite.getData('collectibleId') as string,entry=entries.get(id)
-        dragging.delete(id);sprite.setDepth(0);this.input.setDefaultCursor('pointer')
+        dragging.delete(id);sprite.setDepth(entry&&glassAttachedSpecies.has(entry.motion.item.species.id)?100:0);this.input.setDefaultCursor('pointer')
         if(!entry)return
         const size=Number(sprite.getData('logicalSize')??sprite.displayWidth)
         const position=entry.motion.place(sprite.x-size/2,sprite.y-size/2,clock,viewport.width,viewport.height,reduced)
@@ -138,6 +142,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         }
         const sprite = this.add.sprite(0, 0, key, sheet ? 'swim-0' : undefined)
         sprite.setData('collectibleId',item.id)
+        sprite.setDepth(glassAttachedSpecies.has(item.species.id)?100:0)
         // Fixed inhabitants must remain easy to grab, including transparent
         // gaps in a small sponge or other stationary species.
         sprite.setInteractive({pixelPerfect:movementSettings(item.species).type!=='fixed',alphaTolerance:32,cursor:'grab'})
@@ -169,6 +174,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
           .setDisplaySize(pose.size*layout.scale, pose.size*layout.scale).setAngle(pose.angle+(canArrangeSpecies(entry.motion.item.species)?0:Number(entry.motion.item.rotation??0)))
         entry.sprite.setFlipX(flipped)
       }
+      if(selectedId){const entry=entries.get(selectedId);if(entry){const bounds=entry.sprite.getBounds();onSelectionPosition?.(selectedId,bounds.centerX,bounds.top)}}
     }
     update(_time: number, delta: number) {
       if (!visible) return

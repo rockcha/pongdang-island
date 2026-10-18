@@ -109,13 +109,13 @@ export class InhabitantMotion {
   }
   update(now: number, delta: number, width: number, height: number, reduced = false): InhabitantMotion['pose'] {
     const s = this.item.species, seed = this.item.animation_seed / 1000000
-    const time = reduced ? 0 : Math.max(0, now - this.born)
-    const motion = this.swim(time), size = Math.min(s.size, width * .4)*Number(this.item.scale??1)
+    const size = Math.min(s.size, width * .4)*Number(this.item.scale??1)
     const w = Math.max(0, width - size), h = Math.max(0, height - size)
-    if(!this.initialized&&this.item.position_x!==null&&this.item.position_y!==null&&!canArrangeSpecies(s)){
+    if(!this.initialized&&this.item.position_x!==null&&this.item.position_y!==null&&!canArrangeSpecies(s)&&!this.item.editing){
       this.place(this.item.position_x*w,this.item.position_y*h,now,width,height,reduced)
-      return this.update(now,delta,width,height,reduced)
     }
+    const time = reduced ? 0 : Math.max(0, now - this.born)
+    const motion = this.swim(time)
     let x: number, y: number, direction = motion.direction, angle = 0
     if (canArrangeSpecies(s)||this.item.editing) {
       const geometry=decorationGeometry(this.item,width,height)

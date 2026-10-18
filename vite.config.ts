@@ -13,7 +13,7 @@ export default defineConfig({
     manifest: {
       name: '퐁당섬', short_name: '퐁당섬', lang: 'ko',
       description: '손끝에서 시작하는 작은 낚시 여행, 퐁당섬',
-      theme_color: '#3b82f6', background_color: '#eff6ff',
+      theme_color: '#fff8ee', background_color: '#fff8ee',
       display: 'standalone', start_url: '/', scope: '/',
       icons: [
         { src: '/pwa-192x192.png', sizes: '192x192', type: 'image/png' },

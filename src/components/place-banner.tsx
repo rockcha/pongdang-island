@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { Warehouse } from 'lucide-react'
+import { LandscapeImage } from './landscape-image'
 import { placeSections } from '@/lib/place-sections'
 import { arcadeGames } from '@/features/arcade/games'
 import {merchantDestinations} from '@/lib/merchant-destinations'
@@ -26,13 +25,12 @@ export function PlaceBanner({pathname}:{pathname:string}){
  const base=placeBanners[visit?'/friends':pathname.startsWith('/arcade/')?'/arcade':section?.path??pathname]
  const banner=merchant?{title:merchant.title,image:merchant.banner,description:merchant.description,subtitle:''}:square?{title:square.bannerTitle,image:square.banner,description:square.description,subtitle:''}:base
  const game=pathname.startsWith('/arcade/')?arcadeGames.find(item=>pathname===`/arcade/${item.id}`):undefined
- const [failed,setFailed]=useState('')
  const compact=visit||!!merchant||!!square||pathname.startsWith('/arcade/')
  if(!banner)return null
  const src=`/banners/${banner.image}.png`
- return <div className={`relative -mx-6 ${compact?'h-[clamp(80px,16dvh,128px)]':'h-[120px]'} shrink-0 overflow-hidden bg-gradient-to-r from-primary to-blue-300`} aria-labelledby="place-banner-title">
-  {failed!==src&&<img key={src} src={src} alt={banner.description} width={1536} height={512} fetchPriority="high" decoding="async" className={`absolute inset-0 h-full w-full object-center ${compact?'object-contain':'object-cover'}`} onError={()=>setFailed(src)}/>}
-  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/15 to-transparent" aria-hidden="true"/>
-  <div className="absolute inset-x-6 bottom-4 space-y-1 text-white"><h1 id="place-banner-title" className={pathname==='/warehouse'?'flex items-center gap-2 text-2xl font-normal tracking-tight':'text-xl font-normal tracking-tight'}>{pathname==='/warehouse'&&<Warehouse className="size-6" aria-hidden="true"/>}{visit?<BannerBreadcrumb parent="등대" to="/friends" title="친구 아쿠아리움"/>:merchant?<BannerBreadcrumb parent={placeSections.merchants.title} to={placeSections.merchants.path} title={merchant.title}/>:square?<BannerBreadcrumb parent="광장" to="/square" title={square.bannerTitle}/>:game?<BannerBreadcrumb parent={placeBanners['/arcade'].title} to="/arcade" title={game.title}/>:banner.title}</h1>{!compact&&<p className="text-xs leading-5 text-white/90">{banner.subtitle}</p>}</div>
+ return <div className={`relative -mx-6 ${pathname.startsWith('/arcade/')?'aspect-[3/1]':compact?'h-[clamp(80px,16dvh,128px)]':'h-[120px]'} shrink-0 overflow-hidden bg-secondary`} aria-labelledby="place-banner-title">
+  <LandscapeImage key={src} src={src} alt={banner.description} width={1536} height={512} fetchPriority="high" decoding="async" className={`absolute inset-0 h-full w-full object-center ${compact&&!merchant&&!square?'object-contain':'object-cover'}`}/>
+  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/15 to-transparent" aria-hidden="true"/>
+  <div className="pointer-events-none absolute inset-x-6 bottom-4 space-y-1 text-white [&_a]:pointer-events-auto"><h1 id="place-banner-title" className={pathname==='/warehouse'?'flex items-center gap-2 text-2xl font-normal tracking-tight':'text-xl font-normal tracking-tight'}>{visit?<BannerBreadcrumb parent="등대" to="/friends" title="친구 아쿠아리움"/>:merchant?<BannerBreadcrumb parent={placeSections.merchants.title} to={placeSections.merchants.path} title={merchant.title}/>:square?<BannerBreadcrumb parent="광장" to="/square" title={square.bannerTitle}/>:game?<BannerBreadcrumb parent={placeBanners['/arcade'].title} to="/arcade" title={game.title}/>:banner.title}</h1>{!compact&&<p className="text-xs leading-5 text-white/90">{banner.subtitle}</p>}</div>
  </div>
 }

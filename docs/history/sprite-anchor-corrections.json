@@ -1,0 +1,83 @@
+[
+  {
+    "path": "fish/rare/sea-crocodile_sprite.png",
+    "method": "alpha-weighted head/body anchor in outer 30%; visually reviewed sheet",
+    "reference": 0,
+    "layout": [
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        0.263,
+        1
+      ],
+      [
+        0,
+        -10.471,
+        1
+      ],
+      [
+        0,
+        -9.738,
+        1
+      ]
+    ]
+  },
+  {
+    "path": "fish/normal/soft-sea-cucumber_sprite.png",
+    "method": "alpha-weighted head/body anchor in outer 30%; visually reviewed sheet",
+    "reference": 0,
+    "layout": [
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        -0.036,
+        1
+      ],
+      [
+        0,
+        -12.371,
+        1
+      ],
+      [
+        0,
+        -12.083,
+        1
+      ]
+    ]
+  },
+  {
+    "path": "fish/normal/pink-scallop_sprite.png",
+    "method": "alpha-weighted head/body anchor in outer 30%; visually reviewed sheet",
+    "reference": 0,
+    "layout": [
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0,
+        1.854,
+        1
+      ],
+      [
+        0,
+        -10.587,
+        1
+      ],
+      [
+        0,
+        -10.839,
+        1
+      ]
+    ]
+  }
+]

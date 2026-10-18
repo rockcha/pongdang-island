@@ -50,8 +50,14 @@ it('places the native species and anchor harbor tools beside the collection book
  expect(screen.getByRole('button',{name:'보관함 · 0개'})).toBeTruthy()
  expect(screen.queryByText('이번 낚시')).toBeNull()
 })
-it('shows 35 percent separately from conditional rarity odds in the bait box',async()=>{
- setup();fireEvent.click(await screen.findByRole('button',{name:/미끼통/}));expect(await screen.findByText(/성공 예정 35%/)).toBeTruthy();expect(screen.getByText('성공 예정일 때의 등급 확률')).toBeTruthy();expect(screen.getByText(/일반 85% · 희귀 13% · 특급 1.8% · 신화 0.2%/)).toBeTruthy();expect(screen.getByText(/취소·실패해도 돌려받지 않아요/)).toBeTruthy()
+it('shows a minimal bait list and applies the chosen bait through the footer',async()=>{
+ setup();fireEvent.click(await screen.findByRole('button',{name:/미끼통/}));
+ const dialog=screen.getByRole('dialog',{name:'미끼통'})
+ expect(within(dialog).getByRole('button',{name:'퐁당 지렁이 선택'})).toBeTruthy()
+ expect(within(dialog).queryByText(/성공 예정/)).toBeNull()
+ expect(within(dialog).queryByRole('button',{name:/구매/})).toBeNull()
+ fireEvent.click(within(dialog).getByRole('button',{name:'선택한 미끼 사용하기'}))
+ await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())
 })
 it('prepares before playing and passes the reserved silhouette and strength without granting early',async()=>{
  setup();await start();expect(prepare).toHaveBeenCalledWith('pongdang','bait',expect.any(String));expect(finish).not.toHaveBeenCalled();expect(screen.getByTestId('challenge').dataset).toMatchObject({rarity:'rare',outline:species.name,doomed:'false'});fireEvent.click(screen.getByRole('button',{name:'미니게임 성공'}));await screen.findByText('낚시 실패');expect(finish).toHaveBeenCalledWith(plan.operation_id,true)
@@ -116,3 +122,9 @@ it('lists a real catch in the trip modal and restores it when changing regions',
 })
 
 it('guarantees the selected practice catch when the minigame succeeds without server rolls',async()=>{setup();await screen.findByRole('button',{name:/미끼통/});fireEvent.click(screen.getByRole('button',{name:'힘 테스트'}));fireEvent.click(screen.getByRole('button',{name:'신화'}));fireEvent.click(screen.getByRole('button',{name:'신화 테스트 시작'}));fireEvent.click(screen.getByRole('button',{name:'미니게임 성공'}));await screen.findByText('새벽을 여는 일각고래',{}, {timeout:2500});expect(readFishingTrip('guest')).toEqual([]);expect(screen.getByText('연습 결과예요. 실제 보상은 지급되지 않아요.')).toBeTruthy();await new Promise(resolve=>setTimeout(resolve,1700));expect(screen.getByRole('button',{name:'새벽을 여는 일각고래 결과 닫기'})).toBeTruthy();expect(screen.queryByRole('region',{name:'낚시 결과'})).toBeNull();expect(screen.queryByRole('button',{name:'다시 낚시하기'})).toBeNull();expect(screen.queryByRole('dialog')).toBeNull();fireEvent.click(screen.getByRole('button',{name:'새벽을 여는 일각고래 결과 닫기'}));await screen.findByRole('button',{name:'신화 테스트 시작'});expect(prepare).not.toHaveBeenCalled();expect(finish).not.toHaveBeenCalled()})
+
+it('starts real fishing on LAN HTTP without randomUUID',async()=>{
+ const source=globalThis.crypto
+ vi.stubGlobal('crypto',{getRandomValues:source.getRandomValues.bind(source)})
+ try{setup();await start();expect(prepare).toHaveBeenCalledWith('pongdang','bait',expect.stringMatching(/^[0-9a-f-]{36}$/))}finally{vi.unstubAllGlobals()}
+})

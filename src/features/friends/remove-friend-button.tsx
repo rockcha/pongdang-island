@@ -1,3 +1,4 @@
+import { RemoveFriendIcon } from '@/components/place-icons'
 ﻿import { useState } from 'react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
@@ -22,7 +23,7 @@ export function RemoveFriendButton({requestId,nickname}:{requestId:string;nickna
     finally {await refresh();setBusy(false)}
   }
   return <ConfirmDialog open={open} onOpenChange={value=>{setOpen(value);setError('')}}
-   trigger={<Button variant="ghost" className="min-h-11 shrink-0 text-xs text-muted-foreground hover:text-destructive" aria-label={`${nickname}님과 친구 끊기`}>친구 끊기</Button>}
+   trigger={<Button variant="ghost" size="icon" className="min-h-11 min-w-11 rounded-xl bg-destructive/10 text-destructive hover:bg-destructive/20 hover:text-destructive" aria-label={`${nickname}님과 친구 끊기`}><RemoveFriendIcon className="size-5"/></Button>}
    title={`${nickname}님과 친구 관계를 끊겠습니까?`}
    description="서로의 친구 목록에서 사라져요. 상대방에게 별도 알림은 보내지 않아요."
    busy={busy} error={error} onConfirm={()=>void confirm()}/>

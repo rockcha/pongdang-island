@@ -1,3 +1,4 @@
+import {randomId} from '@/lib/random-id'
 import {useEffect,useRef,useState} from 'react'
 import type {CSSProperties,PointerEvent} from 'react'
 import {toast} from 'sonner'
@@ -44,7 +45,7 @@ export function Cleaning({tank,blocked,onActiveChange}:{tank:string;blocked:bool
  }
  async function finish(p:Point){
   if(locked.current)return
-  if(!operation.current)operation.current=crypto.randomUUID()
+  if(!operation.current)operation.current=randomId()
   locked.current=true;setPending(true);setError('')
   try{
    const result=await cleanFriendAquarium(tank,operation.current,strokes+1)
@@ -55,14 +56,13 @@ export function Cleaning({tank,blocked,onActiveChange}:{tank:string;blocked:bool
   finally{locked.current=false;if(alive.current)setPending(false)}
  }
  return <>
-  {active&&<button ref={surface} type="button" className={`aquarium-feeding-surface aquarium-cleaning-surface absolute inset-0 z-10 ${cursor?'has-food-cursor':''}`} aria-label={`어항 문지르기 ${strokes}/3`} aria-disabled={pending} aria-describedby="cleaning-instructions" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={()=>{stroke.current=null;setCursor(null)}} onLostPointerCapture={()=>{stroke.current=null}} onPointerLeave={()=>{if(!stroke.current)setCursor(null)}} onClick={event=>{if(event.detail===0)void finish({x:event.currentTarget.clientWidth/2,y:event.currentTarget.clientHeight/2})}} onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();stop()}}}>
+  {active&&<button ref={surface} type="button" className={`aquarium-feeding-surface aquarium-cleaning-surface absolute inset-0 z-10 ${cursor?'has-food-cursor':''}`} aria-label={`어항 문지르기 ${strokes}/3`} aria-disabled={pending} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={()=>{stroke.current=null;setCursor(null)}} onLostPointerCapture={()=>{stroke.current=null}} onPointerLeave={()=>{if(!stroke.current)setCursor(null)}} onClick={event=>{if(event.detail===0)void finish({x:event.currentTarget.clientWidth/2,y:event.currentTarget.clientHeight/2})}} onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();stop()}}}>
    {cursor&&<img src="/aquarium/cleaning-brush.png" alt="" draggable={false} className="aquarium-cleaning-cursor" style={{left:cursor.x,top:cursor.y}}/>}
   </button>}
   <div className="pointer-events-none absolute inset-0 z-10 overflow-hidden" aria-hidden="true">{bubbles.flatMap(b=>Array.from({length:5},(_,i)=><span key={`${b.id}-${i}`} className="aquarium-soap-bubble" style={{left:b.x+(i*11)%31-15,top:b.y+(i*7)%23-11,width:10+i*3,height:10+i*3,'--bubble-drift':`${(i-2)*12}px`,animationDelay:`${i*35}ms`} as CSSProperties}/>))}</div>
-  {!blocked&&<div className={`absolute bottom-3 z-20 flex flex-col items-center gap-2 ${active?'inset-x-3':'right-3 w-[calc(50%_-_1rem)]'}`}>
+  {!blocked&&<div className={`absolute bottom-0 z-20 flex flex-col items-stretch gap-2 ${active?'inset-x-0':'right-0 w-1/2'}`}>
    {error&&<p role="alert" className="rounded-lg bg-background/95 p-2 text-xs text-destructive">{error}</p>}
-   {active&&<p id="cleaning-instructions" className="pointer-events-none rounded-full bg-background/95 px-3 py-1.5 text-xs shadow-sm" aria-live="polite">{pending?'반짝이게 닦는 중…':'누른 채 문지르고 손을 떼주세요.'} ({strokes}/3)</p>}
-   <div className="flex w-full justify-center gap-2"><Button ref={trigger} variant="secondary" className="h-11 min-h-11 min-w-0 flex-1 shrink gap-1.5 rounded-full bg-background/95 px-3 text-xs shadow-sm" disabled={pending||active} onClick={start} aria-label={`청소하기 ${strokes}/3`}><img src="/aquarium/cleaning-brush.png" alt="" className="size-7 shrink-0 object-contain"/><span className="truncate">{active?'청소 중':strokes===3?'다시 청소':'청소하기'}</span><span className="shrink-0 tabular-nums">{strokes}/3</span></Button>{active&&<Button variant="secondary" className="min-h-11 rounded-full" disabled={pending} onClick={stop}>그만하기</Button>}</div>
+   <div className="flex w-full justify-center gap-0"><Button ref={trigger} variant="secondary" className="h-16 min-h-16 min-w-0 flex-1 shrink gap-2 rounded-none border-t border-l border-border bg-secondary px-2 text-sm" disabled={pending||active} onClick={start} aria-label={`청소하기 ${strokes}/3`}><img src="/aquarium/cleaning-brush.png" alt="" className="size-8 shrink-0 object-contain"/><span className="truncate">{active?'청소 중':strokes===3?'다시 청소':'청소하기'}</span><span className="shrink-0 tabular-nums">{strokes}/3</span></Button>{active&&<Button variant="secondary" className="h-16 min-h-16 rounded-none border-t border-l border-border px-4" disabled={pending} onClick={stop}>그만하기</Button>}</div>
   </div>}
  </>
 }

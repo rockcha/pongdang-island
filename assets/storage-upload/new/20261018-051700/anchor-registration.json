@@ -1,0 +1,335 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261018-051700/fish/rare/pongdang-pufferfish_sprite.png",
+        "storage_path":  "fish/rare/pongdang-pufferfish_sprite.png",
+        "patch":  [
+                      413,
+                      200,
+                      150,
+                      137
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -18,
+                           "dy":  0,
+                           "rmse":  18.604534125768922
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  4,
+                           "dy":  -10,
+                           "rmse":  9.2251023754556982
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -18,
+                           "dy":  -10,
+                           "rmse":  17.495007854113645
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-051700/fish/rare/pongdang-octopus_sprite.png",
+        "storage_path":  "fish/rare/pongdang-octopus_sprite.png",
+        "patch":  [
+                      363,
+                      200,
+                      175,
+                      137
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  9.8935856390598875
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  12.074078030688073
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  11.728017783591056
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-051700/fish/rare/pongdang-seahorse_sprite.png",
+        "storage_path":  "fish/rare/pongdang-seahorse_sprite.png",
+        "patch":  [
+                      376,
+                      112,
+                      137,
+                      125
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -21,
+                           "dy":  0,
+                           "rmse":  13.908808107303065
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -3,
+                           "rmse":  17.285073452506794
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -21,
+                           "dy":  -2,
+                           "rmse":  16.107357268493953
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-051700/fish/mythic/horizon-whale_sprite.png",
+        "storage_path":  "fish/mythic/horizon-whale_sprite.png",
+        "patch":  [
+                      426,
+                      288,
+                      137,
+                      125
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  7.4329920670738234
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  12.240649107218038
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  9.6146262400495353
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-051700/fish/mythic/name-eating-conch_sprite.png",
+        "storage_path":  "fish/mythic/name-eating-conch_sprite.png",
+        "patch":  [
+                      520,
+                      390,
+                      55,
+                      70
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -10,
+                           "dy":  7,
+                           "rmse":  22.761781217877619
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -7,
+                           "dy":  3,
+                           "rmse":  28.940321610380916
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -8,
+                           "dy":  3,
+                           "rmse":  21.756678748729975
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-051700/fish/mythic/star-swallowing-priest_sprite.png",
+        "storage_path":  "fish/mythic/star-swallowing-priest_sprite.png",
+        "patch":  [
+                      407,
+                      188,
+                      125,
+                      137
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -5,
+                           "dy":  0,
+                           "rmse":  15.138241423080114
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -28,
+                           "rmse":  21.088144892204944
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -5,
+                           "dy":  -28,
+                           "rmse":  26.046455234638184
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-051700/fish/mythic/orpheon-abyssal-hymn_sprite.png",
+        "storage_path":  "fish/mythic/orpheon-abyssal-hymn_sprite.png",
+        "patch":  [
+                      451,
+                      125,
+                      112,
+                      112
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  3,
+                           "dy":  2,
+                           "rmse":  21.264613242473295
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  4,
+                           "dy":  -29,
+                           "rmse":  25.142617950342476
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  4,
+                           "dy":  -28,
+                           "rmse":  24.44445526529957
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-051700/fish/mythic/three-faced-oracle-fish_sprite.png",
+        "storage_path":  "fish/mythic/three-faced-oracle-fish_sprite.png",
+        "patch":  [
+                      480,
+                      300,
+                      75,
+                      85
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -23,
+                           "dy":  1,
+                           "rmse":  26.50472306641943
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -64,
+                           "rmse":  30.017127294837572
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -21,
+                           "dy":  -59,
+                           "rmse":  22.34001358317742
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-051700/fish/epic/pongdang-whale-starfish-v1_sprite.png",
+        "storage_path":  "fish/epic/pongdang-whale-starfish-v1_sprite.png",
+        "patch":  [
+                      407,
+                      244,
+                      144,
+                      150
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  6.1230776602413943
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -47,
+                           "rmse":  10.232601211478299
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -47,
+                           "rmse":  11.479438638849446
+                       }
+                   ]
+    }
+]

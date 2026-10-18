@@ -1,3 +1,4 @@
+import {randomId} from '@/lib/random-id'
 import {useEffect,useRef,useState} from 'react'
 import {Crown,RotateCcw,UserPlus,UserCheck,Clock3} from 'lucide-react'
 import {toast} from 'sonner'
@@ -62,13 +63,13 @@ function AccountGame(){
   }catch(cause){if(alive.current){setError(oddEvenError(cause));setLoaded(true);if(args.p_action==='answer')setScene('asking')}}finally{locked.current=false;if(alive.current)setBusy(false)}
  }
  useEffect(()=>{alive.current=true;void request({p_action:'state'});const reload=()=>{if(!practice.current&&!operation.current&&document.visibilityState==='visible')void request({p_action:'state'})};window.addEventListener('focus',reload);window.addEventListener('online',reload);return()=>{alive.current=false;window.removeEventListener('focus',reload);window.removeEventListener('online',reload)}},[]) // eslint-disable-line react-hooks/exhaustive-deps
- function startPaid(){practice.current=null;setPracticeMode(false);operation.current??=crypto.randomUUID();void request({p_action:'start',p_operation_id:operation.current})}
+ function startPaid(){practice.current=null;setPracticeMode(false);operation.current??=randomId();void request({p_action:'start',p_operation_id:operation.current})}
  function startPractice(){if(locked.current||operation.current)return;practice.current=createOddEvenPractice();setPracticeMode(true);void request({p_action:'start'})}
  function act(p_action:OddEvenAction['p_action'],p_choice?:'odd'|'even'){if(!run||locked.current)return;if(p_action==='answer'){if(scene!=='asking')return;setScene('submitting')}if(p_action==='double'&&scene!=='result')return;void request({p_action,p_run_id:run.id,p_round:run.round,p_choice})}
- return <div className="flex min-h-0 flex-1 flex-col gap-2">
+ return <div className="flex min-h-0 min-w-0 flex-1 flex-col">
   <GameLeaveGuard active={playing||busy} practice={practiceMode} description="실전 진행과 확보 금액은 보관돼요. 돌아와 이어할 수 있어요."/>
   <GameTabs id="odd-even" value={tab} onChange={setTab}/>
-  {tab==='rank'?<Ranking/>:<div role="tabpanel" id="odd-even-game-panel" aria-labelledby="odd-even-game-tab" className="relative flex min-h-0 flex-1 flex-col overflow-hidden rounded-lg border bg-card">
+  {tab==='rank'?<Ranking/>:<div role="tabpanel" id="odd-even-game-panel" aria-labelledby="odd-even-game-tab" className="relative flex min-h-0 flex-1 flex-col overflow-hidden border-b border-border bg-card">
    {!run?<GameStartOverlay title="퐁이의 홀짝 조개" description="조개 속 진주, 홀일까요 짝일까요?" poster="/arcade/odd-even/thumbnail.png" onPaid={()=>setConfirm(true)} onPractice={startPractice} paidDisabled={!loaded||busy||gold.loading||gold.wallet.gold<10} practiceDisabled={busy||!!operation.current}/>:<div className="flex h-full min-h-0 flex-col gap-2 p-3 sm:p-4">
     <div className="shrink-0 text-center"><p className="text-xs text-muted-foreground">{run.stage==='banked'?'받은 보상':scene!=='result'?'현재 베팅금':'현재 확보 금액'}</p><p className="flex items-center justify-center gap-1 text-3xl tabular-nums text-primary"><GoldIcon className="size-7"/>{visibleStake.toLocaleString('ko-KR')}</p><p className="min-h-4 text-xs text-muted-foreground">{run.stage==='choose'?`맞히면 ${(run.stake*2).toLocaleString('ko-KR')}골드`:null}</p></div>
     <div aria-live="polite" className={`odd-even-scene flex min-h-0 flex-1 flex-col items-center gap-1 rounded-lg p-2 ${scene==='result'&&run.stage==='lost'?'odd-even-result--wrong bg-red-50 text-red-800':scene==='result'&&(run.stage==='decision'||run.stage==='banked')?'odd-even-result--correct bg-emerald-50 text-emerald-800':'bg-secondary/40 text-primary'}`}>
@@ -78,7 +79,7 @@ function AccountGame(){
      </div>
     </div>
     <div className="grid shrink-0 grid-cols-2 gap-2">
-     {run.stage==='choose'?<><Button disabled={busy||scene!=='asking'} onClick={()=>act('answer','odd')}>홀</Button><Button disabled={busy||scene!=='asking'} variant="outline" onClick={()=>act('answer','even')}>짝</Button></>:run.stage==='decision'?<><Button className={run.wins>=state.maxWins?'col-span-2':undefined} disabled={busy||scene!=='result'} onClick={()=>act('cashout')}>보상 받기</Button>{run.wins<state.maxWins&&<Button variant="outline" disabled={busy||scene!=='result'} onClick={()=>act('double')}>묻고 더블로 가 !</Button>}</>:<Button className="col-span-2" disabled={busy||scene!=='result'} onClick={()=>{setState({run:null,maxWins:20});setError('')}}>다시 하기</Button>}
+     {run.stage==='choose'?<><Button className="min-h-16 text-xl font-medium" disabled={busy||scene!=='asking'} onClick={()=>act('answer','odd')}>홀</Button><Button disabled={busy||scene!=='asking'} variant="outline" onClick={()=>act('answer','even')}>짝</Button></>:run.stage==='decision'?<><Button className={run.wins>=state.maxWins?'col-span-2':undefined} disabled={busy||scene!=='result'} onClick={()=>act('cashout')}>보상 받기</Button>{run.wins<state.maxWins&&<Button variant="outline" disabled={busy||scene!=='result'} onClick={()=>act('double')}>묻고 더블로 가 !</Button>}</>:<Button className="col-span-2 min-h-16 text-lg font-medium" disabled={busy||scene!=='result'} onClick={()=>{setState({run:null,maxWins:20});setError('')}}>다시 하기</Button>}
     </div>
    </div>}
    {error&&<div role="alert" className="absolute inset-x-2 bottom-2 z-30 rounded-lg border bg-card p-3 text-xs text-destructive">{error}<Button variant="ghost" className="ml-2 h-7 text-xs" disabled={busy} onClick={()=>operation.current?startPaid():void request({p_action:'state'})}>다시 확인</Button></div>}

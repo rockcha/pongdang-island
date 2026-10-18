@@ -1,6 +1,6 @@
 # DB 관리 안내
 
-DB 구조·변경·원격 상태 확인은 [DB 관리](docs/systems/database-management.md)와 [생성된 현재 구조](docs/db/CONTEXT.md)를 기준으로 합니다. 아래 기존 SQL 번호별 설명은 과거 구현 기록입니다.
+DB 구조·변경·원격 상태 확인은 [DB 관리](docs/systems/database-management.md)와 [생성된 현재 구조](docs/db/CONTEXT.md)를 기준으로 합니다. 기능 문서의 SQL 번호별 설명은 과거 구현 기록입니다.
 
 # 퐁당섬
 
@@ -33,7 +33,7 @@ VITE_SUPABASE_PUBLISHABLE_KEY=sb_publishable_...
 | 코드 위치 찾기 | [시스템 지도](docs/system-map.md) |
 | UI 수정 | [공통 UI 규칙](docs/ui-conventions.md) |
 | 이미지 생성·관리 | [에셋 안내](assets/README.md) |
-| DB 설치·변경 SQL | [SQL 적용 순서](supabase/sql/README.md) |
+| DB 구조·변경·원격 확인 | [DB 관리](docs/systems/database-management.md) |
 | 인증·비밀번호 복구 설정 | [인증과 계정](docs/systems/auth.md) |
 
 ## 검증과 실행 환경

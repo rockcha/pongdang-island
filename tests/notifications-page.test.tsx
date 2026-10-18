@@ -22,7 +22,7 @@ describe('notification categories and read state', () => {
   it('separates friend and general tabs while showing server unread totals', () => {
     render(<MemoryRouter><NotificationsPage /></MemoryRouter>)
     expect(screen.getByRole('button', { name: '공지 (1)' }).getAttribute('aria-pressed')).toBe('true')
-    expect(screen.getByRole('link',{name:'공지 보기'}).getAttribute('href')).toBe('/square/notices/new-notice')
+    expect(screen.getByRole('link',{name:/공지 도착/}).getAttribute('href')).toBe('/square/notices/new-notice')
     fireEvent.click(screen.getByRole('button', { name: '친구 (3)' }))
     expect(screen.getByRole('heading', { name: '친구 요청 도착' })).toBeTruthy()
     expect(screen.queryByRole('heading', { name: '새로운 섬 소식' })).toBeNull()
@@ -43,7 +43,7 @@ describe('notification categories and read state', () => {
   })
   it('links to the original notice without manual read controls',async()=>{
     render(<MemoryRouter><NotificationsPage/></MemoryRouter>)
-    fireEvent.click(screen.getByRole('link',{name:'공지 보기'}))
+    fireEvent.click(screen.getByRole('link',{name:/공지 도착/}))
     expect(markRead).not.toHaveBeenCalled()
   })
   it('has no manual read buttons in any category', async () => {

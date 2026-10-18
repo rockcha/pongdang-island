@@ -1,0 +1,27 @@
+import {useEffect,useState} from 'react'
+import {Fish} from 'lucide-react'
+import {backgroundUrl} from './api'
+import {TankBubbles} from './tank-bubbles'
+import './aquarium-loading.css'
+
+type Background={name:string;image_path:string}
+export function AquariumBackdrop({background,loading=false}:{background?:Background;loading?:boolean}){
+ const [shown,setShown]=useState<{current:Background;previous?:Background}|null>(null)
+ const [failed,setFailed]=useState('')
+ useEffect(()=>{
+  if(!background)return
+  let alive=true
+  const next=background
+  const image=new Image()
+  image.onload=()=>{if(alive)setShown(old=>old?.current.image_path===next.image_path?old:{current:next,previous:old?.current})}
+  image.onerror=()=>{if(alive)setFailed(next.image_path)}
+  image.src=backgroundUrl(next.image_path)
+  return()=>{alive=false}
+ },[background?.image_path,background?.name])
+ const preparing=loading||Boolean(background&&!shown&&failed!==background.image_path)
+ return <>
+  {shown?.previous&&<img src={backgroundUrl(shown.previous.image_path)} alt="" className="absolute inset-0 size-full object-cover"/>}
+  {shown&&<img key={shown.current.image_path} src={backgroundUrl(shown.current.image_path)} alt={shown.current.name} className="aquarium-background-enter absolute inset-0 size-full object-cover"/>}
+  {preparing&&<div role="status" className="aquarium-loading absolute inset-0 z-10 grid place-items-center overflow-hidden bg-background"><TankBubbles/><div className="flex flex-col items-center gap-3 text-primary"><Fish aria-hidden="true" className="aquarium-loading-fish size-10" strokeWidth={1.3}/><span className="text-xs text-muted-foreground">어항을 준비하고 있어요…</span></div></div>}
+ </>
+}

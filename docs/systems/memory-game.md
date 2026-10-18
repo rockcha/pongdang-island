@@ -11,14 +11,7 @@
 - 공통 게임 플레이 / 랭킹 아이콘 탭. 시작·완료 시 보드 위 오버레이에서 실전 시작(10골드)·연습 시작을 고릅니다. 게임 화면은 100dvh 높이에 맞추고 정사각형 카드판을 남은 너비·높이 중 작은 쪽으로 배치합니다. 배너 전체 그림을 유지하고 게임은 스크롤하지 않으며 랭킹 목록만 내부 스크롤합니다. [공통 규칙](../design/arcade-games.md).
 - 한국 시간 월요일 00:00부터 다음 월요일 00:00까지 완료한 기록 중 개인 최고 기록을 표시합니다. 동점은 먼저 완료한 순서, 1·2·3등 강조, 20명씩 더 보기로 전체 순위 조회.
 
-## 코드와 확장
-
-- games.ts: 게임 등록·10골드·썸네일·lazy component.
-- memory-api.ts: 12종 카드 ID·이름·RPC 타입·시간 표기.
-- memory-game.tsx / memory-game.css: 크기 적응·3D 뒤집기·짝 완성 효과·탭·주간 순위.
-- memory-practice.ts: 기록 없는 로컬 연습 엔진.
-
-## 서버 적용과 보안
+## 서버 판정과 보안
 
 `supabase/migrations/20261016105544_memory_card_arcade.sql`은 새 게임 전용 migration입니다. 기존 지갑·골드 거래·프로필 테이블이 있는 호환 DB에 적용합니다. 로컬 PGlite 재생과 테스트를 통과했으며 원격 DB에는 미적용입니다. Dashboard SQL Editor에서 신규 파일만 적용하거나 CLI migration 상태를 검토한 뒤 배포합니다. baseline 재실행은 하지 않습니다.
 
@@ -30,4 +23,4 @@
 
 `public/arcade/memory/`에 카드 앞면 12장·뒷면·썸네일을 저장합니다. 퐁이는 기존 `public/branding/pongi.png`를 사용합니다. built-in image_gen 생성, [최종 프롬프트·원본 기록](../../assets/references/memory-card-manifest.json).
 
-테스트: tests/memory-game-sql.test.ts, tests/memory-game-ui.test.tsx. 전체 구조는 npm run db:context로 검증합니다.
+검증 진입점은 tests/memory-game-sql.test.ts와 tests/memory-game-ui.test.tsx입니다. DB 변경 절차는 [DB 관리](database-management.md)를 따릅니다.

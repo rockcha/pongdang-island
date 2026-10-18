@@ -1,9 +1,11 @@
+import sharedCreatureLayouts from './shared-creature-frame-layouts.json'
+import pongdangLayouts from './pongdang-frame-layouts.json'
 import scrapisleLayouts from './scrapisle-frame-layouts.json'
 import cloudferryLayouts from './cloudferry-frame-layouts.json'
 import bluegroveLayouts from './bluegrove-frame-layouts.json'
 import primalLayouts from './primal-frame-layouts.json'
 import whitenightLayouts from './whitenight-frame-layouts.json'
-const registeredLayouts:Record<string,{cell:number;shifts:number[][]}>={...bluegroveLayouts,...primalLayouts,...whitenightLayouts,...cloudferryLayouts,...scrapisleLayouts}
+const registeredLayouts:Record<string,{cell:number;scale?:number;shifts:number[][]}>={...sharedCreatureLayouts,...pongdangLayouts,...bluegroveLayouts,...primalLayouts,...whitenightLayouts,...cloudferryLayouts,...scrapisleLayouts}
 // Frame registration measured from each sheet's rigid head/body (or nautilus shell).
 // Coordinates are in a 96x96 sampling grid, relative to each frame's center.
 const layouts:Record<string,readonly (readonly [number,number,number])[]>={
@@ -92,7 +94,7 @@ const layouts:Record<string,readonly (readonly [number,number,number])[]>={
 
 export function swimFrameLayout(path:string,frame:number){
  const extra=registeredLayouts[path]
- if(extra){const [x,y]=extra.shifts[frame]??[0,0];return {originX:.5+x/extra.cell,originY:.5+y/extra.cell,scale:1}}
+ if(extra){const [x,y]=extra.shifts[frame]??[0,0];return {originX:.5+x/extra.cell,originY:.5+y/extra.cell,scale:extra.scale??1}}
  const [x,y,scale]=layouts[path]?.[frame]??[0,0,1]
  return {originX:.5+x/96,originY:.5+y/96,scale:1/scale}
 }

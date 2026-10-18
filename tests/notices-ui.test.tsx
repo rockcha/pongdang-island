@@ -14,7 +14,8 @@ afterEach(cleanup)
 it('marks the original notice read and lets an operator delete only after confirmation',async()=>{
  mock.operator.mockResolvedValue(true)
  render(<MemoryRouter initialEntries={['/square/notices/notice']}><Routes><Route path="/square/notices/:noticeId" element={<NoticeDetail/>}/><Route path="/square/notices" element={<p>공지 목록으로 이동</p>}/></Routes></MemoryRouter>)
- fireEvent.click(await screen.findByRole('button',{name:'삭제'}))
+ fireEvent.click(await screen.findByRole('button',{name:'공지 관리'}))
+ fireEvent.click(await screen.findByRole('menuitem',{name:'삭제'}))
  await waitFor(()=>expect(mock.read).toHaveBeenCalledWith('me','notice_id','notice'))
  expect(mock.remove).not.toHaveBeenCalled()
  fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'확인'}))
@@ -24,6 +25,7 @@ it('marks the original notice read and lets an operator delete only after confir
 it('shows minimal notice rows and filters while hiding author tools from ordinary readers',async()=>{
  render(<MemoryRouter><NoticePage/></MemoryRouter>)
  expect(await screen.findByRole('heading',{name:notice.title})).toBeTruthy()
+ expect(screen.queryByRole('textbox',{name:'공지 검색'})).toBeNull()
  expect(screen.queryByRole('link',{name:/공지 작성/})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'점검'}))
  await waitFor(()=>expect(mock.feed).toHaveBeenLastCalledWith('maintenance','',0,false))

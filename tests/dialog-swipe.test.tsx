@@ -1,0 +1,7 @@
+﻿import {cleanup,fireEvent,render,screen} from '@testing-library/react'
+import {afterEach,expect,it,vi} from 'vitest'
+import {Dialog,DialogContent,DialogTitle} from '@/components/ui/dialog'
+afterEach(cleanup)
+function setup(){const close=vi.fn();render(<Dialog open onOpenChange={close}><DialogContent><DialogTitle>Test sheet</DialogTitle><div data-testid="body">Content</div></DialogContent></Dialog>);const root=screen.getByRole('dialog');vi.spyOn(root,'getBoundingClientRect').mockReturnValue({bottom:window.innerHeight} as DOMRect);return {close,root,body:screen.getByTestId('body')}}
+it('dismisses a bottom sheet with a downward swipe',()=>{const {close,body}=setup();fireEvent.touchStart(body,{touches:[{clientX:80,clientY:100}]});fireEvent.touchEnd(body,{changedTouches:[{clientX:85,clientY:210}]});expect(close).toHaveBeenCalledWith(false,expect.anything())})
+it('keeps a scrolled list open and ignores horizontal swipes',()=>{const {close,body}=setup();Object.defineProperties(body,{scrollHeight:{value:600},clientHeight:{value:200},scrollTop:{value:50,configurable:true}});fireEvent.touchStart(body,{touches:[{clientX:80,clientY:100}]});fireEvent.touchEnd(body,{changedTouches:[{clientX:80,clientY:210}]});expect(close).not.toHaveBeenCalled();Object.defineProperty(body,'scrollTop',{value:0});fireEvent.touchStart(body,{touches:[{clientX:80,clientY:100}]});fireEvent.touchEnd(body,{changedTouches:[{clientX:240,clientY:200}]});expect(close).not.toHaveBeenCalled()})

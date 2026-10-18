@@ -1,3 +1,4 @@
+import { randomId } from '@/lib/random-id'
 ﻿export const FISHING_ANIMATION_MS = 3000
 export const fishingScenes = [
  { id:'pier',image:'/sprites/pongi-fishing-pier.png',label:'부두에서 낚싯줄을 바라보는 퐁이' },
@@ -27,6 +28,6 @@ export function pickRandom<T>(items:readonly T[],random= Math.random):T {
  return items[Math.floor(random()*items.length)]
 }
 export function createFishingPresentation(){
- return {id:crypto.randomUUID(),scene:pickRandom(fishingScenes),trivia:pickRandom(oceanTrivia),failure:pickRandom(fishingFailureReasons)}
+ return {id:randomId(),scene:pickRandom(fishingScenes),trivia:pickRandom(oceanTrivia),failure:pickRandom(fishingFailureReasons)}
 }
 export type FishingPresentation = ReturnType<typeof createFishingPresentation>

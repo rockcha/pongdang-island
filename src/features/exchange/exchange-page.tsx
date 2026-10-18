@@ -1,5 +1,5 @@
 import {useEffect,useRef,useState} from 'react'
-import {Plus,RefreshCw} from 'lucide-react'
+import {Plus,RefreshCw,Store,ClipboardList,Search} from 'lucide-react'
 import {toast} from 'sonner'
 import {useAuth} from '@/components/auth-provider'
 import {Button} from '@/components/ui/button'
@@ -14,7 +14,7 @@ import {actExchange,exchangeChanged,exchangeError,loadExchange,loadExchangeInven
 import type {ExchangeAsset,ExchangeInventory,ExchangeListing,ExchangePage as PageData,ExchangePost} from './api'
 
 const gold:ExchangeAsset={kind:'gold',id:'gold',name:'골드',quantity:1,thumbnail_path:null}
-const field='min-h-11 w-full rounded-lg border bg-background px-3 text-sm'
+const field='min-h-11 min-w-0 w-full rounded-lg border bg-background px-3 text-sm'
 export function ExchangePage(){const {session}=useAuth();return <AccountExchange key={session?.user.id??'guest'} owner={session?.user.id??''}/>}
 function AccountExchange({owner}:{owner:string}){
  const wallet=useGold(),social=useSocial()
@@ -45,15 +45,18 @@ function AccountExchange({owner}:{owner:string}){
    if(alive.current){if(post){pending.current=null;setOpen(false);setPostConfirm(false);setOffer(empty);setWanted({...gold,quantity:300});setTab('mine');setQuery('');setOffset(0)}setConfirm(null);setRetry(v=>v+1);toast.success(post?'물품을 맡기고 판매 글을 등록했어요.':'처리했어요. 우편함의 선물 탭에서 물품을 받아주세요.')}
   }catch(cause){if(alive.current){if(post&&cause&&typeof cause==='object'&&'code'in cause&&/^[0-9A-Z]{5}$/.test(String(cause.code)))pending.current=null;setFormError(exchangeError(cause));if(!post)setRetry(v=>v+1)}}finally{lock.current=false;if(alive.current)setBusy(false)}
  }
- return <section className="space-y-4 py-5">
-  <div className="flex items-center justify-end gap-2"><Button variant="ghost" size="icon" aria-label="거래 목록 새로고침" onClick={()=>setRetry(v=>v+1)} disabled={loading}><RefreshCw className="size-4"/></Button><Button onClick={beginPost}><Plus className="size-4"/>판매 등록</Button></div>
-  <div role="group" aria-label="거래 분류" className="grid grid-cols-2 gap-2">{[['all','판매 목록'],['mine','내 판매']].map(([key,label])=><Button key={key} variant={tab===key?'default':'outline'} aria-pressed={tab===key} onClick={()=>{setTab(key);setOffset(0)}}>{label}</Button>)}</div>
-  <input className={field} aria-label="거래 물품 검색" placeholder="말랑 해삼 등 물품 이름 검색" maxLength={80} value={query} onChange={e=>{setQuery(e.target.value);setOffset(0)}}/>
-  {loading&&<p role="status" className="py-8 text-center text-sm">거래를 불러오는 중…</p>}
+ const visibleListings=page?.items.filter(listing=>listing.status!=='completed')??[]
+ return <section className="flex min-h-0 min-w-0 w-full flex-1 flex-col">
+  <div role="group" aria-label="거래 분류" className="grid shrink-0 grid-cols-2 border-b border-border">{[{key:'all',label:'판매 목록',icon:Store},{key:'mine',label:'내 판매',icon:ClipboardList}].map(({key,label,icon:Icon})=><Button key={key} variant="ghost" className={`min-h-12 min-w-0 gap-2 rounded-none border-r border-border ${tab===key?'bg-secondary text-primary hover:bg-secondary':'text-muted-foreground'}`} aria-pressed={tab===key} onClick={()=>{setTab(key);setOffset(0)}}><Icon className="size-4"/>{label}</Button>)}</div>
+  <div className="flex shrink-0 items-center gap-2 px-4 py-3"><div className="relative min-w-0 flex-1"><Search aria-hidden="true" className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"/><input className={field+' pl-9'} aria-label="거래 물품 검색" placeholder="물품 이름으로 검색" maxLength={80} value={query} onChange={e=>{setQuery(e.target.value);setOffset(0)}}/></div><Button variant="outline" size="icon" className="min-h-11 min-w-11 shrink-0" aria-label="거래 목록 새로고침" onClick={()=>setRetry(v=>v+1)} disabled={loading}><RefreshCw className="size-4"/></Button></div>
+  <div className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain pb-4">
+  {loading&&<div role="status" aria-label="거래를 불러오는 중"><span className="sr-only">거래를 불러오는 중…</span><div aria-hidden="true" className="divide-y divide-border/70">{Array.from({length:4},(_,i)=><div key={i} className="flex items-center gap-3 border-b border-border px-4 py-4 motion-safe:animate-pulse"><div className="size-14 shrink-0 rounded-lg bg-secondary"/><div className="flex-1 space-y-2"><div className="h-4 w-24 rounded bg-secondary"/><div className="h-3 w-16 rounded bg-secondary/60"/></div><div className="h-10 w-16 rounded-lg bg-secondary"/></div>)}</div></div>}
   {error&&<div role="alert" className="space-y-2 text-sm text-destructive"><p>{error}</p><Button variant="outline" onClick={()=>setRetry(v=>v+1)}>다시 불러오기</Button></div>}
-  <ul className="divide-y divide-border/70">{page?.items.map(listing=><SaleListingRow key={listing.id} listing={listing} owner={owner} busy={busy} onAction={action=>{setFormError('');setConfirm({listing,action})}}/>)}</ul>
-  {page&&!page.items.length&&<p className="py-10 text-center text-sm text-muted-foreground">{tab==='mine'?'등록한 거래가 없어요.':'조건에 맞는 거래가 없어요.'}</p>}
-  {page&&page.total>20&&<div className="flex items-center justify-between"><Button variant="outline" disabled={!offset||loading} onClick={()=>setOffset(v=>Math.max(0,v-20))}>이전</Button><span className="text-xs">{offset+1}–{Math.min(offset+20,page.total)} / {page.total}</span><Button variant="outline" disabled={offset+20>=page.total||loading} onClick={()=>setOffset(v=>v+20)}>다음</Button></div>}
+  <ul className="divide-y divide-border/70">{visibleListings.map(listing=><SaleListingRow key={listing.id} listing={listing} owner={owner} busy={busy} onAction={action=>{setFormError('');setConfirm({listing,action})}}/>)}</ul>
+  {page&&!visibleListings.length&&<p className="py-10 text-center text-sm text-muted-foreground">{tab==='mine'?'등록한 거래가 없어요.':'조건에 맞는 거래가 없어요.'}</p>}
+  {page&&page.total>20&&<div className="flex items-center justify-between px-4"><Button variant="outline" disabled={!offset||loading} onClick={()=>setOffset(v=>Math.max(0,v-20))}>이전</Button><span className="text-xs">{offset+1}–{Math.min(offset+20,page.total)} / {page.total}</span><Button variant="outline" disabled={offset+20>=page.total||loading} onClick={()=>setOffset(v=>v+20)}>다음</Button></div>}
+  </div>
+  <Button className="min-h-14 w-full shrink-0 gap-2 rounded-none border-t border-border pb-[env(safe-area-inset-bottom)] text-base" onClick={beginPost} disabled={busy}><Plus className="size-5"/>판매 등록</Button>
   <Dialog open={open} onOpenChange={next=>{if(!busy){setOpen(next);if(!next)setPostConfirm(false)}}}><DialogContent className="flex h-[min(640px,calc(100dvh-2rem))] flex-col gap-0 overflow-hidden rounded-[10px] p-0 sm:max-w-[420px]">
    <DialogHeader className="shrink-0 px-5 pb-4 pt-5"><DialogTitle className="font-normal">판매 등록</DialogTitle><DialogDescription className="text-xs">창고의 개체와 보유 미끼를 판매할 수 있어요.</DialogDescription></DialogHeader>
    <div className="flex min-h-0 flex-1 flex-col px-5"><SaleItemPicker value={offer} onChange={setOffer} inventory={inventory??{gold:0,assets:[]}} loading={inventoryLoading} disabled={busy||!!pending.current||inventoryLoading}/></div>

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { Menu } from '@base-ui/react/menu'
-import { LogOut, UserRound } from 'lucide-react'
+import { LogOut, Settings, UserRound } from 'lucide-react'
 import { Link, useNavigate } from 'react-router'
 import { toast } from 'sonner'
 import { getNickname, useAuth } from '@/components/auth-provider'
@@ -14,6 +14,7 @@ export function AvatarMenu() {
   const navigate = useNavigate()
   const [busy, setBusy] = useState(false)
   const pending = useRef(false)
+  const [open,setOpen]=useState(false)
 
   async function logout() {
     if (pending.current) return
@@ -31,15 +32,18 @@ export function AvatarMenu() {
     }
   }
 
-  return <Menu.Root>
+  return <Menu.Root open={open} onOpenChange={setOpen}>
     <Menu.Trigger aria-label="내 계정 메뉴" disabled={busy} className="flex size-10 min-h-10 min-w-10 cursor-pointer items-center justify-center rounded-full outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50">
       <PlayerAvatar nickname={getNickname(session)} path={profile?.avatar_path} className="size-9" />
     </Menu.Trigger>
     <Menu.Portal>
       <Menu.Positioner align="end" sideOffset={8} className="z-50">
         <Menu.Popup className="min-w-40 rounded-xl border bg-popover p-1 text-popover-foreground shadow-lg outline-none">
-          <Menu.LinkItem render={<Link to="/profile" />} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm outline-none data-highlighted:bg-accent">
+          <Menu.LinkItem onClick={()=>setOpen(false)} render={<Link to="/profile" />} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm outline-none data-highlighted:bg-accent">
             <UserRound className="size-4" />마이페이지
+          </Menu.LinkItem>
+          <Menu.LinkItem onClick={()=>setOpen(false)} render={<Link to="/profile/settings" />} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm outline-none data-highlighted:bg-accent">
+            <Settings className="size-4" />설정
           </Menu.LinkItem>
           <Menu.Separator className="my-1 h-px bg-border" />
           <Menu.Item disabled={busy} onClick={() => void logout()} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm text-destructive outline-none data-highlighted:bg-accent data-disabled:opacity-50">

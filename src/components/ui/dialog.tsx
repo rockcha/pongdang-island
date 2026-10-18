@@ -29,7 +29,7 @@ function DialogOverlay({
     <DialogPrimitive.Backdrop
       data-slot="dialog-overlay"
       className={cn(
-        "fixed inset-0 isolate z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
+        "fixed inset-0 isolate z-50 bg-black/10 duration-200 [animation-fill-mode:both] data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0 motion-reduce:animate-none",
         className
       )}
       {...props}
@@ -45,18 +45,58 @@ function DialogContent({
 }: DialogPrimitive.Popup.Props & {
   showCloseButton?: boolean
 }) {
+  const swipeClose = React.useRef<HTMLButtonElement>(null)
+  const dragRoot = React.useRef<HTMLElement|null>(null)
+  function resetDrag(){if(dragRoot.current){dragRoot.current.style.bottom='';dragRoot.current.style.transition='bottom 180ms ease-out';dragRoot.current=null}}
+  const gesture = React.useRef<{x:number;y:number;target:HTMLElement}|null>(null)
+  function scrollAtTop(target:HTMLElement,root:HTMLElement) {
+    for(let node:HTMLElement|null=target;node;node=node.parentElement){
+      if(node.scrollHeight>node.clientHeight&&node.scrollTop>0)return false
+      if(node===root)break
+    }
+    return true
+  }
+  const sheet = typeof className === 'string' && className.split(/\s+/).includes('notification-sheet')
   return (
     <DialogPortal>
       <DialogOverlay />
       <DialogPrimitive.Popup
         data-slot="dialog-content"
         className={cn(
-          "fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl bg-popover p-4 text-sm text-popover-foreground ring-1 ring-foreground/10 duration-100 outline-none sm:max-w-sm data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
+          "fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-xl bg-popover p-4 text-sm text-popover-foreground ring-1 ring-foreground/10 outline-none sm:max-w-sm",
+          !sheet && "duration-150 [animation-fill-mode:both] data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 motion-reduce:animate-none",
           className
         )}
         {...props}
+        onTouchStart={event=>{
+          props.onTouchStart?.(event)
+          gesture.current=null
+          if(event.defaultPrevented||event.touches.length!==1)return
+          const root=event.currentTarget,target=event.target as HTMLElement
+          if(Math.abs(root.getBoundingClientRect().bottom-window.innerHeight)>3||!scrollAtTop(target,root))return
+          if(target.closest('input,textarea,select,button,a,[role="slider"],[role="combobox"]'))return
+          dragRoot.current=root;root.style.transition='none'
+          gesture.current={x:event.touches[0].clientX,y:event.touches[0].clientY,target}
+        }}
+        onTouchMove={event=>{
+          props.onTouchMove?.(event)
+          if(event.touches.length!==1){gesture.current=null;resetDrag();return}
+          if(!gesture.current)return
+          const dx=event.touches[0].clientX-gesture.current.x,dy=event.touches[0].clientY-gesture.current.y
+          if(dy < -10||Math.abs(dx)>Math.max(20,Math.abs(dy))||!scrollAtTop(gesture.current.target,event.currentTarget)){gesture.current=null;resetDrag();return}
+          event.currentTarget.style.bottom=-Math.max(0,dy)+'px'
+        }}
+        onTouchCancel={event=>{gesture.current=null;resetDrag();props.onTouchCancel?.(event)}}
+        onTouchEnd={event=>{
+          props.onTouchEnd?.(event)
+          const start=gesture.current;gesture.current=null;resetDrag()
+          if(event.defaultPrevented||!start||!event.changedTouches.length)return
+          const dx=event.changedTouches[0].clientX-start.x,dy=event.changedTouches[0].clientY-start.y
+          if(dy>72&&dy>Math.abs(dx)*1.5&&scrollAtTop(start.target,event.currentTarget))swipeClose.current?.click()
+        }}
       >
         {children}
+        <DialogPrimitive.Close ref={swipeClose} tabIndex={-1} aria-hidden="true" className="hidden"/>
         {showCloseButton && (
           <DialogPrimitive.Close
             data-slot="dialog-close"

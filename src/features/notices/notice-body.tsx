@@ -15,6 +15,6 @@ export function NoticeBody({notice}:{notice:NoticeView}){
   if(line.startsWith('- '))return <p key={i} className="pl-3">• {inline(line.slice(2))}</p>
   return <p key={i} className="min-h-3 whitespace-pre-wrap break-words">{inline(line)}</p>
  })
- return <div className="space-y-2 text-sm leading-7">{lines}{notice.images.filter(path=>!inserted.has(path)).map(path=><NoticeImage key={path} path={path} notice={notice}/>)}</div>
+ return <div className="min-w-0 max-w-full space-y-2 text-sm leading-7 [overflow-wrap:anywhere]">{lines}{notice.images.filter(path=>!inserted.has(path)).map(path=><NoticeImage key={path} path={path} notice={notice}/>)}</div>
 }
 function NoticeImage({path,notice}:{path:string;notice:NoticeView}){return notice.urls[path]?<a href={notice.urls[path]} target="_blank" rel="noopener noreferrer" className="block"><img src={notice.urls[path]} alt={`${notice.title} 첨부 이미지 ${notice.images.indexOf(path)+1}`} loading="lazy" className="mx-auto h-auto max-h-[800px] max-w-full rounded-lg object-contain"/></a>:<p className="text-xs text-muted-foreground">이미지를 불러오지 못했어요. 페이지를 새로고침해주세요.</p>}

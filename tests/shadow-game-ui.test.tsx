@@ -45,7 +45,7 @@ it('submits an expired question once and displays the completed score and refres
  await screen.findByRole('status',{name:'오답'})
  fireEvent.click(screen.getByRole('button',{name:'결과 보기'}))
  await screen.findByText('5개 정답!')
- expect(screen.getByText('마지막 정답: 장식 C',{exact:false})).toBeTruthy()
+ expect(screen.queryByText('마지막 정답: 장식 C',{exact:false})).toBeNull()
  fireEvent.click(screen.getByRole('tab',{name:'랭킹'}))
  await screen.findByText('1등')
  await waitFor(()=>expect(mocks.action.mock.calls.filter(([a])=>a.p_action==='answer')).toHaveLength(1))

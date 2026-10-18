@@ -4,7 +4,7 @@ import {AquariumCare} from '@/features/friends/aquarium-care'
 const mocks=vi.hoisted(()=>({feed:vi.fn(),clean:vi.fn(),success:vi.fn()}))
 vi.mock('@/features/friends/aquarium-api',()=>({feedFriendAquarium:mocks.feed,cleanFriendAquarium:mocks.clean,visitError:()=> '연결 오류'}))
 vi.mock('sonner',()=>({toast:{success:mocks.success}}))
-beforeEach(()=>{
+beforeEach(()=>{const source=globalThis.crypto;vi.stubGlobal('crypto',{getRandomValues:source.getRandomValues.bind(source)});
  vi.clearAllMocks()
  class TestPointerEvent extends MouseEvent{pointerId:number;pointerType:string;isPrimary:boolean;constructor(type:string,options:PointerEventInit={}){super(type,options);this.pointerId=options.pointerId??1;this.pointerType=options.pointerType??'mouse';this.isPrimary=options.isPrimary??true}}
  vi.stubGlobal('PointerEvent',TestPointerEvent)

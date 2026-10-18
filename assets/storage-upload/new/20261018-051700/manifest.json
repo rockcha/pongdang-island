@@ -1,0 +1,353 @@
+{
+  "createdAt": "2026-10-18T05:17:00+09:00",
+  "tool": "built-in image_gen",
+  "species": [
+    {
+      "id": "horizon-whale",
+      "kind": "fish",
+      "name": "수평선고래",
+      "description": "등 위에 해와 달이 머무는 긴 고래. 어느 바다에서든 수평선을 따라 조용히 헤엄치며 낮과 밤의 경계를 잇는다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.018",
+      "size": 156,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/horizon-whale_thumbnail.png",
+      "sell_price": 1900,
+      "sprite_sheet_path": "fish/mythic/horizon-whale_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "name-eating-conch",
+      "kind": "fish",
+      "name": "이름먹는 소라",
+      "description": "잊힌 이름을 먹고 사는 오래된 소라. 껍데기의 금빛 문양은 누군가 이름을 부를 때마다 다른 모습으로 바뀐다.",
+      "swim_y_min": "0.80",
+      "swim_y_max": "0.93",
+      "speed": "0.018",
+      "size": 110,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/name-eating-conch_thumbnail.png",
+      "sell_price": 1850,
+      "sprite_sheet_path": "fish/mythic/name-eating-conch_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "orpheon-abyssal-hymn",
+      "kind": "fish",
+      "name": "오르페온, 심연의 성가",
+      "description": "은빛 현을 품은 고대의 바다뱀. 몸을 부드럽게 굽힐 때마다 현이 울려 심연을 잠재우는 성가가 흐른다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.018",
+      "size": 168,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/orpheon-abyssal-hymn_thumbnail.png",
+      "sell_price": 2300,
+      "sprite_sheet_path": "fish/mythic/orpheon-abyssal-hymn_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pongdang-octopus",
+      "kind": "fish",
+      "name": "퐁당 문어",
+      "description": "불가사리를 머리핀처럼 얹은 작은 문어. 짧고 통통한 촉수를 오므렸다 펴며 퐁당섬 앞바다를 떠다닌다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.025",
+      "size": 72,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/pongdang-octopus_thumbnail.png",
+      "sell_price": 190,
+      "sprite_sheet_path": "fish/rare/pongdang-octopus_sprite.png",
+      "native_region_id": "pongdang",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pongdang-pufferfish",
+      "kind": "fish",
+      "name": "퐁당 복어",
+      "description": "크림색 몸과 살구빛 지느러미를 가진 통통한 복어. 머리 위 불가사리가 물살에 흔들리면 볼을 살짝 부풀린다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.035",
+      "size": 64,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/pongdang-pufferfish_thumbnail.png",
+      "sell_price": 180,
+      "sprite_sheet_path": "fish/rare/pongdang-pufferfish_sprite.png",
+      "native_region_id": "pongdang",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pongdang-seahorse",
+      "kind": "fish",
+      "name": "퐁당 해마",
+      "description": "민트빛 몸과 크림색 배를 가진 작은 해마. 머리의 불가사리를 모자처럼 쓰고 꼬리를 말아 물살에 몸을 맡긴다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.025",
+      "size": 70,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/pongdang-seahorse_thumbnail.png",
+      "sell_price": 200,
+      "sprite_sheet_path": "fish/rare/pongdang-seahorse_sprite.png",
+      "native_region_id": "pongdang",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pongdang-whale",
+      "kind": "fish",
+      "name": "퐁당 고래",
+      "description": "살구빛 지느러미와 둥근 크림색 몸을 가진 퐁당섬의 고래. 머리 위 불가사리를 소중히 얹고 잔잔한 바다를 누빈다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.035",
+      "size": 112,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/pongdang-whale-starfish-v1_thumbnail.png",
+      "sell_price": 620,
+      "sprite_sheet_path": "fish/epic/pongdang-whale-starfish-v1_sprite.png",
+      "native_region_id": "pongdang",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pongi-plush",
+      "kind": "trash",
+      "name": "퐁이 인형",
+      "description": "머리에 불가사리를 단 퐁이 봉제 인형. 바닷물에 젖었지만 따뜻한 표정과 꼼꼼한 바느질 자국은 그대로 남아 있다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.035",
+      "size": 68,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/pongi-plush_thumbnail.png",
+      "sell_price": 160,
+      "sprite_sheet_path": null,
+      "native_region_id": "pongdang",
+      "movement_type": "swim",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "star-swallowing-priest",
+      "kind": "fish",
+      "name": "별을 삼킨 제사장",
+      "description": "청동 의식 가면을 두른 문어 제사장. 반투명한 머릿속에는 삼킨 별들이 돌고, 긴 촉수와 망토는 물살을 따라 흐른다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.018",
+      "size": 144,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/star-swallowing-priest_thumbnail.png",
+      "sell_price": 2200,
+      "sprite_sheet_path": "fish/mythic/star-swallowing-priest_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "three-faced-oracle-fish",
+      "kind": "fish",
+      "name": "신탁의 삼면어",
+      "description": "세 개의 작은 가면을 등에 두른 신탁의 물고기. 가면마다 지나간 밀물과 지금의 바다, 다가올 썰물을 바라본다고 한다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.018",
+      "size": 136,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/three-faced-oracle-fish_thumbnail.png",
+      "sell_price": 2100,
+      "sprite_sheet_path": "fish/mythic/three-faced-oracle-fish_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    }
+  ],
+  "prompts": {
+    "rareThumbnailAtlas": {
+      "prompt": "Create a transparent PNG game character concept atlas, EXACT 2 by 2 equal square cells, no text or labels or grid lines, each character entirely within its cell with 10% transparent padding. Reference image is STYLE reference and also identity reference ONLY for the plush otter: cute rounded shapes, crisp dark brown outlines, warm cel shading, big shiny eyes, readable at tiny size. Top-left: Pongdang pufferfish, a round cream puffer with apricot fins and one peach-orange five-arm starfish resting on its head. Top-right: Pongdang octopus, a plump pastel peach octopus with short flowing arms and one orange starfish on its head. Bottom-left: Pongdang seahorse, mint and cream seahorse with curled tail and one orange starfish on its head. Bottom-right: Pongi plush toy, a visibly sewn stuffed toy of the exact brown otter mascot in the reference, cream muzzle and belly, peach starfish on head, stitched seams, no fishing rod or hook. Fish face SCREEN RIGHT in clear side-three-quarter profile, head/mouth to right. Otter toy can be front-three-quarter. All four full body isolated, genuinely transparent background; no checkerboard, floor, shadows outside silhouettes, scenery, UI or text. Distinct four subjects only.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "role": "style; plush mascot identity"
+    },
+    "premiumThumbnailAtlas": {
+      "prompt": "Generate ONE transparent PNG character atlas EXACTLY 3 columns by 2 rows equal square cells. Six separate full-body game characters with generous transparent padding in each cell, no text, labels, frames, grid lines or checkerboard. Input is STYLE reference ONLY: soft premium fantasy illustration, delicate colored outlines, smooth luminous gradients, rich material shading, elegant shapes, readable silhouettes. All creatures face SCREEN RIGHT clear side or side-three-quarter profile, head/mouth right, tail trails left, never front-facing. Cell row1 col1: Horizon Whale, long graceful blue whale whose back is a fine golden horizon holding a tiny sun and crescent moon, flowing pale cloud fins, warm navy/gold. Row1 col2: Name-eating Conch, ivory spiral conch sea creature moving right with a gentle snail-like face, shell etched with abstract vanishing golden glyph shapes, teal aura, no readable words. Row1 col3: Star-swallowing Priest, elegant octopus with dark turquoise trailing arms and antique bronze ceremonial mask on its right-facing head, transparent cranial dome containing tiny golden stars, flowing ceremonial mantle. Row2 col1: Orpheon Song of the Abyss, elegant long ivory and indigo sea serpent swimming horizontally right, thin silver lyre strings beneath the neck, fine golden laurel crest, tail gently curved left, no human arms. Row2 col2: Three-faced Oracle Fish, one pearly violet fish body swimming right, three miniature ivory theatrical oracle masks arranged as a crown along its back with blue gold glow, main fish eye and mouth right, coherent fish silhouette. Row2 col3: Pongdang Whale, charming round cream and apricot whale with a single peach-orange starfish on its head, soft luminous fantasy rendering, no crown or other accessories. Each subject occupies 80 percent of cell long axis. Truly transparent, clean alpha, no scenery or surrounding particles outside individual silhouette glow.",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "role": "style only"
+    },
+    "premiumAlphaCleanup": {
+      "prompt": "Edit this exact six-character atlas for PRODUCTION game assets. Preserve all six character identities, designs, colors and right-facing orientations. REMOVE THE ENTIRE background: output truly transparent alpha PNG, absolutely no colored haze, opaque backdrop, checkerboard or floor. Keep character-local glow only. Layout EXACTLY 3 columns by 2 rows with SIX equal SQUARE cells, overall aspect ratio 3:2. Within each cell center that character, scale uniformly so all visible parts fit within central 80% of cell, leaving at least 10% completely transparent margin on all four sides. No art may touch any cell border. Preserve order: row1 horizon whale, conch, octopus priest; row2 lyre serpent, three masks fish, cream starfish whale. Do not crop, overlap, change identity, add text or change direction. This is alpha extraction and layout cleanup only.",
+      "reference": "assets/references/collectible-style/20261018-pongdang/premium-atlas.png",
+      "role": "atlas identity and transparent layout"
+    },
+    "sprites": {
+      "pongdang-pufferfish": {
+        "prompt": "Production transparent PNG animation sprite sheet of the EXACT character in the input reference. Input is identity and style reference. EXACT 2x2 equal SQUARE cells, overall square image; FOUR successive distinct animation frames read row-major, no lines/labels. Match identity, colors, silhouette, head and body size precisely. Face SCREEN RIGHT in clear side-three-quarter profile in ALL four frames, head/mouth right, body/tail behind left. Small tail bends left/right and both small pectoral fins flutter subtly, body/head/starfish perfectly stationary. Smooth repeating swimming loop, frame4 connects frame1; not four clones, not only blinking. Keep body center and head anchors at exactly same cell coordinate, no whole-body bobbing or scale changes. Frame art occupies 80-85% of cell with at least 8% true transparent margin every side, no cropping or neighboring-cell bleed. Each cell >=512x512 if possible. Rounded Pongi cartoon art with crisp brown outline and soft warm cel shading. GENUINE alpha transparency, no black/white/checkerboard background, no drop shadow or scenery. Starfish on head remains unchanged.",
+        "identityReference": "assets/references/collectible-style/20261018-pongdang/concepts/pongdang-pufferfish_thumbnail.png"
+      },
+      "pongdang-octopus": {
+        "prompt": "Production transparent PNG animation sprite sheet of the EXACT character in the input reference. Input is identity and style reference. EXACT 2x2 equal SQUARE cells, overall square image; FOUR successive distinct animation frames read row-major, no lines/labels. Match identity, colors, silhouette, head and body size precisely. Face SCREEN RIGHT in clear side-three-quarter profile in ALL four frames, head/mouth right, body/tail behind left. Eight arms softly curl and relax in a progressive propulsion cycle; hold head and starfish perfectly stationary. Smooth repeating swimming loop, frame4 connects frame1; not four clones, not only blinking. Keep body center and head anchors at exactly same cell coordinate, no whole-body bobbing or scale changes. Frame art occupies 80-85% of cell with at least 8% true transparent margin every side, no cropping or neighboring-cell bleed. Each cell >=512x512 if possible. Rounded Pongi cartoon art with crisp brown outline and soft warm cel shading. GENUINE alpha transparency, no black/white/checkerboard background, no drop shadow or scenery. Starfish on head remains unchanged.",
+        "identityReference": "assets/references/collectible-style/20261018-pongdang/concepts/pongdang-octopus_thumbnail.png"
+      },
+      "pongdang-seahorse": {
+        "prompt": "Production transparent PNG animation sprite sheet of the EXACT character in the input reference. Input is identity and style reference. EXACT 2x2 equal SQUARE cells, overall square image; FOUR successive distinct animation frames read row-major, no lines/labels. Match identity, colors, silhouette, head and body size precisely. Face SCREEN RIGHT in clear side-three-quarter profile in ALL four frames, head/mouth right, body/tail behind left. Fine dorsal fin undulates and curled tail tip gently flexes, body/head/starfish perfectly stationary. Smooth repeating swimming loop, frame4 connects frame1; not four clones, not only blinking. Keep body center and head anchors at exactly same cell coordinate, no whole-body bobbing or scale changes. Frame art occupies 80-85% of cell with at least 8% true transparent margin every side, no cropping or neighboring-cell bleed. Each cell >=512x512 if possible. Rounded Pongi cartoon art with crisp brown outline and soft warm cel shading. GENUINE alpha transparency, no black/white/checkerboard background, no drop shadow or scenery. Starfish on head remains unchanged.",
+        "identityReference": "assets/references/collectible-style/20261018-pongdang/concepts/pongdang-seahorse_thumbnail.png"
+      },
+      "horizon-whale": {
+        "prompt": "Create a production transparent PNG animation sprite sheet using the input as exact character identity/style reference. EXACTLY 2 by 2 equally-sized square cells on an overall square canvas, FOUR distinct sequential poses in row-major order, no grid lines or text. Soft premium fantasy illustration, delicate colored contours and beautiful clean gradients. Head, eyes, mask, torso center, body size and orientation have precisely identical cell coordinates across frames. Tail flukes flex gently and cloud-like fin edges ripple; sunrise and moon stay attached and stable. No whole-character translation, bobbing, rescaling or rotation. Not four cloned images, not light-only or blink-only frames. Smooth continuous loop linking fourth to first. Each character fully visible with maximum pose occupying 80-85% of cell long axis and at least 8% genuinely transparent padding at every cell edge. No crop, cell overlap or extra characters. Face SCREEN RIGHT in clear side or side-three-quarter profile in all frames, mouth and head right, body/tail trails left. Preserve reference colors, accessories, exact creature identity. GENUINELY TRANSPARENT alpha, no backdrop, colored fog, checkerboard, floor or drop shadow. Cell resolution at least512x512 if possible.",
+        "identityReference": "assets/references/collectible-style/20261018-pongdang/concepts/horizon-whale_thumbnail.png"
+      },
+      "name-eating-conch": {
+        "prompt": "Create a production transparent PNG animation sprite sheet using the input as exact character identity/style reference. EXACTLY 2 by 2 equally-sized square cells on an overall square canvas, FOUR distinct sequential poses in row-major order, no grid lines or text. Soft premium fantasy illustration, delicate colored contours and beautiful clean gradients. Head, eyes, mask, torso center, body size and orientation have precisely identical cell coordinates across frames. Crawling foot extends and contracts, feelers gently bend and mantle ripples; rigid shell remains absolutely fixed. No whole-character translation, bobbing, rescaling or rotation. Not four cloned images, not light-only or blink-only frames. Smooth continuous loop linking fourth to first. Each character fully visible with maximum pose occupying 80-85% of cell long axis and at least 8% genuinely transparent padding at every cell edge. No crop, cell overlap or extra characters. Face SCREEN RIGHT in clear side or side-three-quarter profile in all frames, mouth and head right, body/tail trails left. Preserve reference colors, accessories, exact creature identity. GENUINELY TRANSPARENT alpha, no backdrop, colored fog, checkerboard, floor or drop shadow. Cell resolution at least512x512 if possible.",
+        "identityReference": "assets/references/collectible-style/20261018-pongdang/concepts/name-eating-conch_thumbnail.png"
+      },
+      "star-swallowing-priest": {
+        "prompt": "Create a production transparent PNG animation sprite sheet using the input as exact character identity/style reference. EXACTLY 2 by 2 equally-sized square cells on an overall square canvas, FOUR distinct sequential poses in row-major order, no grid lines or text. Soft premium fantasy illustration, delicate colored contours and beautiful clean gradients. Head, eyes, mask, torso center, body size and orientation have precisely identical cell coordinates across frames. Trailing octopus arms curl in a flowing propulsion sequence and cloth edges ripple; bronze mask and head dome remain fixed. No whole-character translation, bobbing, rescaling or rotation. Not four cloned images, not light-only or blink-only frames. Smooth continuous loop linking fourth to first. Each character fully visible with maximum pose occupying 80-85% of cell long axis and at least 8% genuinely transparent padding at every cell edge. No crop, cell overlap or extra characters. Face SCREEN RIGHT in clear side or side-three-quarter profile in all frames, mouth and head right, body/tail trails left. Preserve reference colors, accessories, exact creature identity. GENUINELY TRANSPARENT alpha, no backdrop, colored fog, checkerboard, floor or drop shadow. Cell resolution at least512x512 if possible.",
+        "identityReference": "assets/references/collectible-style/20261018-pongdang/concepts/star-swallowing-priest_thumbnail.png"
+      },
+      "orpheon-abyssal-hymn": {
+        "prompt": "Create a production transparent PNG animation sprite sheet using the input as exact character identity/style reference. EXACTLY 2 by 2 equally-sized square cells on an overall square canvas, FOUR distinct sequential poses in row-major order, no grid lines or text. Soft premium fantasy illustration, delicate colored contours and beautiful clean gradients. Head, eyes, mask, torso center, body size and orientation have precisely identical cell coordinates across frames. Long tail curves smoothly through a gentle swimming wave and dorsal fin ribbons ripple; head and upper torso anchors fixed, lyre strings softly flex. No whole-character translation, bobbing, rescaling or rotation. Not four cloned images, not light-only or blink-only frames. Smooth continuous loop linking fourth to first. Each character fully visible with maximum pose occupying 80-85% of cell long axis and at least 8% genuinely transparent padding at every cell edge. No crop, cell overlap or extra characters. Face SCREEN RIGHT in clear side or side-three-quarter profile in all frames, mouth and head right, body/tail trails left. Preserve reference colors, accessories, exact creature identity. GENUINELY TRANSPARENT alpha, no backdrop, colored fog, checkerboard, floor or drop shadow. Cell resolution at least512x512 if possible.",
+        "identityReference": "assets/references/collectible-style/20261018-pongdang/concepts/orpheon-abyssal-hymn_thumbnail.png"
+      },
+      "three-faced-oracle-fish": {
+        "prompt": "Create a production transparent PNG animation sprite sheet using the input as exact character identity/style reference. EXACTLY 2 by 2 equally-sized square cells on an overall square canvas, FOUR distinct sequential poses in row-major order, no grid lines or text. Soft premium fantasy illustration, delicate colored contours and beautiful clean gradients. Head, eyes, mask, torso center, body size and orientation have precisely identical cell coordinates across frames. Tail and translucent fins flow in continuous undulation; main face and three oracle masks stay rigidly aligned, no morphing faces. No whole-character translation, bobbing, rescaling or rotation. Not four cloned images, not light-only or blink-only frames. Smooth continuous loop linking fourth to first. Each character fully visible with maximum pose occupying 80-85% of cell long axis and at least 8% genuinely transparent padding at every cell edge. No crop, cell overlap or extra characters. Face SCREEN RIGHT in clear side or side-three-quarter profile in all frames, mouth and head right, body/tail trails left. Preserve reference colors, accessories, exact creature identity. GENUINELY TRANSPARENT alpha, no backdrop, colored fog, checkerboard, floor or drop shadow. Cell resolution at least512x512 if possible.",
+        "identityReference": "assets/references/collectible-style/20261018-pongdang/concepts/three-faced-oracle-fish_thumbnail.png"
+      },
+      "pongdang-whale": {
+        "prompt": "Create a production transparent PNG animation sprite sheet using the input as exact character identity/style reference. EXACTLY 2 by 2 equally-sized square cells on an overall square canvas, FOUR distinct sequential poses in row-major order, no grid lines or text. Soft premium fantasy illustration, delicate colored contours and beautiful clean gradients. Head, eyes, mask, torso center, body size and orientation have precisely identical cell coordinates across frames. Tail flukes flex gently and tiny fins stabilize with subtle symmetrical motion; round body, face and starfish stay stationary. No whole-character translation, bobbing, rescaling or rotation. Not four cloned images, not light-only or blink-only frames. Smooth continuous loop linking fourth to first. Each character fully visible with maximum pose occupying 80-85% of cell long axis and at least 8% genuinely transparent padding at every cell edge. No crop, cell overlap or extra characters. Face SCREEN RIGHT in clear side or side-three-quarter profile in all frames, mouth and head right, body/tail trails left. Preserve reference colors, accessories, exact creature identity. GENUINELY TRANSPARENT alpha, no backdrop, colored fog, checkerboard, floor or drop shadow. Cell resolution at least512x512 if possible.",
+        "identityReference": "assets/references/collectible-style/20261018-pongdang/concepts/pongdang-whale_thumbnail.png"
+      }
+    },
+    "oracleRepair": {
+      "prompt": "Repair this exact 2x2 four-frame sprite sheet. The right cheek is clipped against the right cell edges and the tail is too close to left edges. Reconstruct complete uncut silhouettes and uniformly SHRINK all four creatures so each occupies only 75% of its square cell width. Large transparent padding ALL SIDES of EVERY cell is essential. Preserve all four pose variations, right-facing fish identity, three ivory oracle masks and purple fins. Keep the eye and masks at IDENTICAL positions within each cell across all four frames; vary ONLY trailing fins and tail waves. No whole-body movement or size change across frames. Maintain exact 2x2 square-cell overall square layout. Clear ALPHA transparency, no background, no colored haze, no labels or lines. Do not crop any head, cheek, fin or tail. Regenerate with margins rather than enlarging.",
+      "role": "restore full silhouette and transparent cell margins"
+    }
+  },
+  "facing": "right",
+  "files": [
+    {
+      "storage_path": "fish/mythic/horizon-whale_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/mythic/horizon-whale_thumbnail.png",
+      "sha256": "c0c98986603cfd4f24dc33d17d5c2ae407098f82cebdd2a44873a1d70c6e9eb6"
+    },
+    {
+      "storage_path": "fish/mythic/horizon-whale_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/mythic/horizon-whale_sprite.png",
+      "sha256": "68f0b06df5bd5d3b876130920b6878f3e67bcde1577c9a15116e38f16d42693f"
+    },
+    {
+      "storage_path": "fish/mythic/name-eating-conch_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/mythic/name-eating-conch_thumbnail.png",
+      "sha256": "c002014cd470727784b622eb9e4c8ad8ce3ffc8a0ac7ccf67c8567246146ec32"
+    },
+    {
+      "storage_path": "fish/mythic/name-eating-conch_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/mythic/name-eating-conch_sprite.png",
+      "sha256": "f0e9376c60e857bbf754fd8226cc58582cfd976d624d714ca0077d19550b345a"
+    },
+    {
+      "storage_path": "fish/mythic/orpheon-abyssal-hymn_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/mythic/orpheon-abyssal-hymn_thumbnail.png",
+      "sha256": "f5705f27f3ea4d582e0a4be813578fae7d69ba1018fa73f9a7d5fdf68e026318"
+    },
+    {
+      "storage_path": "fish/mythic/orpheon-abyssal-hymn_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/mythic/orpheon-abyssal-hymn_sprite.png",
+      "sha256": "94f826d6668e783165b1580f6aa62a54d2a4db7edc46f777d0dba231e33b8bcc"
+    },
+    {
+      "storage_path": "fish/rare/pongdang-octopus_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/rare/pongdang-octopus_thumbnail.png",
+      "sha256": "226ab9eb3cc5111cec632ec5ffddb3ad9eae6dfb12b3f78ffefa5707d9309a88"
+    },
+    {
+      "storage_path": "fish/rare/pongdang-octopus_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/rare/pongdang-octopus_sprite.png",
+      "sha256": "145cc291543454e4f994b71a46c1f6ca09abd279d704326ba5fdac102b5f057d"
+    },
+    {
+      "storage_path": "fish/rare/pongdang-pufferfish_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/rare/pongdang-pufferfish_thumbnail.png",
+      "sha256": "38bb6547693716d7b257262aeccba7c8a8e8cdbced4be1a259ec97c2ba3ab4d7"
+    },
+    {
+      "storage_path": "fish/rare/pongdang-pufferfish_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/rare/pongdang-pufferfish_sprite.png",
+      "sha256": "10b947db05578aaa5c384ee4c3140091f388fd4e1b19d0c363191ade7bae7bb4"
+    },
+    {
+      "storage_path": "fish/rare/pongdang-seahorse_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/rare/pongdang-seahorse_thumbnail.png",
+      "sha256": "cb8685f72b27da4dd82ff19c9e78818b99df3fa1794b8968a92c44583150adf4"
+    },
+    {
+      "storage_path": "fish/rare/pongdang-seahorse_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/rare/pongdang-seahorse_sprite.png",
+      "sha256": "8e8845cbd97d3510dd0c7b9c330c0b0d20b5945470a52e4ccbeb816fb9d5a043"
+    },
+    {
+      "storage_path": "fish/epic/pongdang-whale-starfish-v1_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/epic/pongdang-whale-starfish-v1_thumbnail.png",
+      "sha256": "99d2ba990c1ab8a49f7941376fc6d47d9f6ebc97906f46ffb55951758985d83f"
+    },
+    {
+      "storage_path": "fish/epic/pongdang-whale-starfish-v1_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/epic/pongdang-whale-starfish-v1_sprite.png",
+      "sha256": "c8e475b1591490e644dffae0c89f6757f421490b3f69da97f1ae673ad4a6eb10"
+    },
+    {
+      "storage_path": "trash/rare/pongi-plush_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/trash/rare/pongi-plush_thumbnail.png",
+      "sha256": "2109a8571ca3cacde1d559147f64bb5ad1450456ef6becae7aa8f8590c6f7a8d"
+    },
+    {
+      "storage_path": "fish/mythic/star-swallowing-priest_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/mythic/star-swallowing-priest_thumbnail.png",
+      "sha256": "8266e92a54e1d47972b320f0c0bd225bfffd07a42dc3ea685d9a5431c2d9f1ec"
+    },
+    {
+      "storage_path": "fish/mythic/star-swallowing-priest_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/mythic/star-swallowing-priest_sprite.png",
+      "sha256": "72146e504ca78002b3148a7054d2b790e5f51918fb70ddc980c3069ce7f750a8"
+    },
+    {
+      "storage_path": "fish/mythic/three-faced-oracle-fish_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/mythic/three-faced-oracle-fish_thumbnail.png",
+      "sha256": "0c838eebc18d0e6f80bdd2683914b1abd8cc5cc36c1b4dc79f0f62bb82f5266a"
+    },
+    {
+      "storage_path": "fish/mythic/three-faced-oracle-fish_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-051700/fish/mythic/three-faced-oracle-fish_sprite.png",
+      "sha256": "a8f46723c6caa85675e7a4f20a34ab68ae96438bcd3f8f9e82f23b9f3068ea62"
+    }
+  ],
+  "validation": {
+    "thumbnailSource": "Final thumbnails of living species are exported from accepted sprite frame 0; initial identity references are archived under concepts/.",
+    "normalization": "Shared uniform 88% scale/padding in each original 2x2 sheet; repaired oracle uses 100% as its padding is already sufficient. No frame-specific rescaling.",
+    "anchors": "anchor-registration.json; rigid head/body RGB template translation",
+    "alpha": "sprite-audit.json; alpha threshold 32",
+    "remoteDatabaseApplied": false,
+    "storage": "19 final paths uploaded without overwriting existing paths. Whale uses starfish-v1 suffix to avoid existing object collision.",
+    "storageVerification": "storage-verification.json",
+    "tests": "166 SQL/motion/frame-layout/artwork-facing tests passed; TypeScript build passed"
+  }
+}

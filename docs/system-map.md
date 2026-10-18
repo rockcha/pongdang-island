@@ -1,16 +1,12 @@
 # 시스템 지도
 
-공지사항은 `src/features/notices/`와 [공지 시스템 문서](systems/notices.md)를 참조합니다. 검증은 `tests/notices-sql.test.ts`, `tests/notices-ui.test.tsx`입니다.
-
-경매소는 `src/features/auctions/`와 [경매 시스템 문서](systems/auctions.md)를 참조합니다. DB 검증은 `tests/auction-sql.test.ts`입니다.
-
 [문서 목차](README.md)에서 작업 주제를 고른 뒤 코드 위치가 필요할 때 사용합니다. 기능의 상세 규칙은 각 시스템 문서가 기준입니다.
 
 | 기능 | 코드 진입점 | 설명 |
 | --- | --- | --- |
 | 앱·라우팅 | `src/main.tsx`, `src/App.tsx`, `src/routes.tsx`, `src/layouts/app-layout.tsx` | [메뉴](systems/navigation.md) |
 | 인증·계정 | `src/components/auth-provider.tsx`, `src/lib/auth-storage.ts`, `src/pages/login-page.tsx` | [인증](systems/auth.md) |
-| Supabase 연결·타입 | `src/lib/client.ts`, `src/lib/database.types.ts` | [SQL 안내](../supabase/sql/README.md) |
+| Supabase 연결·타입 | `src/lib/client.ts`, `src/lib/database.types.ts` | [DB 관리](systems/database-management.md) |
 | 프로필·아바타 | `src/features/profile/` | [아바타](systems/avatar.md) |
 | 친구·실시간 알림 | `src/features/friends/`, `src/features/notifications/`, `src/features/social/` | [친구·알림](systems/realtime-social.md) |
 | 선물·우편함 | `src/features/gifts/` | [선물](systems/gifts.md) |
@@ -22,16 +18,23 @@
 | 수족관·이동·편집 | `src/features/aquarium/` | [수족관](systems/aquarium.md) · [어항 관리](systems/aquarium-tanks.md) |
 | 이미지 방향 | `src/features/aquarium/movement-settings.ts`, `artwork-facing.json` | [방향 규칙·예외](../assets/references/collectible-style/artwork-facing.md) |
 | 공통 UI·테마 | `src/components/ui/`, `src/index.css` | [UI 규칙](ui-conventions.md) |
+| 공지사항 | `src/features/notices/` | [공지](systems/notices.md) |
+| 경매소 | `src/features/auctions/` | [경매](systems/auctions.md) |
+| 출석 | `src/features/attendance/` | [출석](systems/attendance.md) |
+| 오락실 | `src/features/arcade/` | [오락실](systems/arcade.md) |
+| 지도 상점 | `src/features/regions/map-shop.tsx` | [지도 상점](systems/map-shop.md) |
+| 친구 수족관 | `src/features/friends/friend-aquarium-page.tsx` | [방문·먹이·청소](systems/friend-aquarium-visits.md) |
+| 낚싯대·창고 | `src/features/fishing/warehouse-page.tsx` | [인벤토리](systems/rod-inventory.md) |
 | PWA | `vite.config.ts`, `src/components/pwa-status.tsx` | [실행·빌드](../README.md) |
 | 브랜드·고정 이미지 | `public/`, `src/components/brand-mascot.tsx` | [에셋 안내](../assets/README.md) |
 
 API 변경은 호출 코드 → 관련 SQL/RPC → 타입 → 관련 테스트 순서로 확인합니다. UI 변경은 컴포넌트와 공통 UI 규칙을 함께 확인합니다. 실제 DB·Storage 적용 여부는 이 지도에서 관리하지 않습니다.
 
-## 기능별 SQL과 테스트
+## 기능별 이력과 테스트
 
-위 코드 진입점에서 범위를 정한 뒤 해당 행의 SQL·테스트만 확인합니다. 번호는 탐색 시작점이며 후속 SQL에서 같은 RPC를 재정의할 수 있습니다. [SQL 안내](../supabase/sql/README.md)에서 관련 정의를 검색합니다. UI 표시만 수정하면 SQL을 읽을 필요는 없습니다.
+DB 작업은 [DB 관리](systems/database-management.md)와 [로컬 컨텍스트](db/CONTEXT.md)를 먼저 읽고 `local-schema.json`에서 필요한 최종 정의만 찾습니다. 아래 SQL 번호는 과거 구현을 조사하는 단서이며 설치·재실행 순서가 아닙니다. 신규 변경은 CLI migration으로 관리합니다. UI 표시만 수정하면 SQL을 읽을 필요는 없습니다.
 
-| 기능 | SQL 진입점 번호 | 테스트 진입점 (`tests/` 기준) |
+| 기능 | 과거 SQL 탐색 단서 | 테스트 진입점 (`tests/` 기준) |
 | --- | --- | --- |
 | 인증·계정 | 앱 인증은 Auth 사용, 프로필은 01 | `auth-storage.test.ts`, `auth-email.test.ts`, `signup.test.tsx`, `reset-password.test.tsx` |
 | 아바타 | 06 | `avatar.test.ts` |

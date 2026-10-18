@@ -1,3 +1,4 @@
+import {randomId} from '@/lib/random-id'
 import { memoryFaces, type MemoryAction, type MemoryRun, type MemoryState } from './memory-api'
 export function createMemoryPractice(){
  let run:MemoryRun|null=null,deck:string[]=[]
@@ -8,7 +9,7 @@ export function createMemoryPractice(){
  return (action:MemoryAction):MemoryState=>{
   if(action.p_action==='start'){
    deck=[...memoryFaces,...memoryFaces];for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]]}deck.splice(12,0,'pongi')
-   run={id:crypto.randomUUID(),cards:[],matched:[],first:null,second:null,clearAt:null,startedAt:null,elapsedMs:0,moves:0,finished:false,abandoned:false}
+   run={id:randomId(),cards:[],matched:[],first:null,second:null,clearAt:null,startedAt:null,elapsedMs:0,moves:0,finished:false,abandoned:false}
   }else if(action.p_action==='leave'){run=null}
   else if(run&&!run.finished){
    if(action.p_action==='clear'&&run.clearAt&&Date.now()>=Date.parse(run.clearAt)){run={...run,first:null,second:null,clearAt:null}}

@@ -21,4 +21,4 @@
 
 정책은 참고 기준 문서에, 생성 당시 결과는 배치 기록에 둡니다. 현재 규칙을 과거 프롬프트에서 추론하지 않습니다.
 
-스프라이트 크기·화질 문제는 [크기·선명도 기준](references/collectible-style/sprite-sizing.md)을 확인합니다. [로컬 68종 측정 기록](../docs/design/sprite-quality-audit.md)과 읽기 전용 검사 스크립트를 제공합니다.
+스프라이트 크기·화질 문제는 [크기·선명도 기준](references/collectible-style/sprite-sizing.md)을 확인합니다. [로컬 68종 측정 기록](../docs/history/sprite-quality-audit.md)과 읽기 전용 검사 스크립트를 제공합니다.

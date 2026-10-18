@@ -40,7 +40,7 @@ it('defaults to pongdang and selects destinations only through map buttons',asyn
 it('opens native species details without showing an inventory',async()=>{
  setup()
  expect(screen.queryByRole('button',{name:'퐁당 물고기 살펴보기'})).toBeNull()
- fireEvent.click(await screen.findByRole('button',{name:/토착종 도감/}))
+ fireEvent.click(await screen.findByRole('button',{name:/여기서만 만날 수 있어요/}))
  fireEvent.click(await screen.findByRole('button',{name:'퐁당 물고기 살펴보기'}))
  expect(await screen.findByText('작은 친구')).toBeTruthy()
  expect(screen.queryByText('미끼 인벤토리')).toBeNull()

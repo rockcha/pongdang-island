@@ -21,15 +21,15 @@ export function fishingEnvironment(regionId:string){
 // framed so neither responsive cropping nor a tall phone can move the shoreline.
 const width=1024,height=1536
 export function FishingSea({regionId}:{regionId:string}){
- const theme=fishingEnvironment(regionId),[failed,setFailed]=useState<string|null>(null)
+ const theme=fishingEnvironment(regionId),[failed,setFailed]=useState<string|null>(null),[loaded,setLoaded]=useState<string|null>(null)
  return <svg viewBox={`0 0 ${width} ${theme.waterEnd}`} preserveAspectRatio="xMidYMid slice" className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true" data-fishing-sea={theme.id}>
-  {failed!==theme.src&&<image href={theme.src} width={width} height={height} onError={()=>setFailed(theme.src)}/>}
+  <rect width={width} height={height} fill={theme.water} className={loaded!==theme.src&&failed!==theme.src?"motion-safe:animate-pulse":""}/>{failed!==theme.src&&<image href={theme.src} width={width} height={height} className="transition-opacity duration-300 motion-reduce:transition-none" opacity={loaded===theme.src?1:0} onLoad={()=>setLoaded(theme.src)} onError={()=>setFailed(theme.src)}/>}
  </svg>
 }
 export function FishingPlatform({regionId,y,platformHeight=160}:{regionId:string;y:number;platformHeight?:number}){
- const theme=fishingEnvironment(regionId),[failed,setFailed]=useState<string|null>(null)
+ const theme=fishingEnvironment(regionId),[failed,setFailed]=useState<string|null>(null),[loaded,setLoaded]=useState<string|null>(null)
  if(theme.platformSrc)return <svg x={-4} y={y} width={408} height={platformHeight} viewBox="0 0 1200 480" preserveAspectRatio="xMidYMin slice" overflow="hidden" data-fishing-platform={theme.id} data-platform-material={theme.material}>
-  {failed!==theme.platformSrc?<image href={theme.platformSrc} width="1200" height="480" preserveAspectRatio="xMidYMax slice" onError={()=>setFailed(theme.platformSrc)}/>:<>
+  {failed!==theme.platformSrc?<image className="transition-opacity duration-300 motion-reduce:transition-none" opacity={loaded===theme.platformSrc?1:0} onLoad={()=>setLoaded(theme.platformSrc)} href={theme.platformSrc} width="1200" height="480" preserveAspectRatio="xMidYMax slice" onError={()=>setFailed(theme.platformSrc)}/>:<>
    <path d="M0 75 140 55 265 80 430 58 615 82 780 50 980 77 1200 58V480H0Z" fill={theme.deck}/>
    <path d={theme.material==='wood'?'M0 160H1200M0 280H1200M0 400H1200':theme.material==='roots'?'M0 100Q170 180 110 480M1200 85Q1030 200 1100 480':theme.material==='metal'||theme.material==='ruins'?'M0 190H1200M0 350H1200M240 75V190M780 190V350M410 350V480':'M130 95 230 160 195 245M230 160 380 185M840 80 770 160 875 220'} fill="none" stroke={theme.edge} strokeWidth={theme.material==='roots'?24:4} opacity=".5"/>
   </>}

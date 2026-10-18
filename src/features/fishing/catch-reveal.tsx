@@ -6,11 +6,19 @@ import type { Species } from '@/features/collection/api'
 import { rarities } from '@/lib/game/rarity'
 type RevealProps={onDismiss:()=>void;practice?:boolean;failureLabel?:string;failureReason?:string|null}&({species:Species;failure?:never}|{species?:never;failure:string})
 export function CatchReveal({species,failure,onDismiss,practice=false,failureLabel='다음엔 꼭 만나요',failureReason}:RevealProps){
+ const openedAt=useRef(Date.now())
+ const lastInput=useRef(0)
+ function tryDismiss(){
+  const now=Date.now(),previous=lastInput.current
+  lastInput.current=now
+  if(now-openedAt.current<800||(previous>0&&now-previous<300))return
+  onDismiss()
+ }
  const failureImage=failureReason==='snap'?'/branding/pongi-fishing-snap.png':failureReason==='slack'?'/branding/pongi-fishing-slack.png':'/branding/pongi-fishing-fail.png'
  const failureAlt=failureReason==='snap'?'끊어진 낚싯줄을 보고 놀란 퐁이':failureReason==='slack'?'느슨해진 낚싯줄을 보고 당황한 퐁이':'낚시에 실패해 시무룩한 퐁이'
  const rarity=species?.rarity??'common',color=species?rarities[rarity].effectColor:'#9aafc9',dismiss=useRef<HTMLButtonElement>(null)
  useEffect(()=>{const previous=document.activeElement;dismiss.current?.focus({preventScroll:true});return()=>{if(previous instanceof HTMLElement&&previous.isConnected)previous.focus({preventScroll:true})}},[])
- return createPortal(<button ref={dismiss} type="button" aria-label={species?`${species.name} 결과 닫기`:'낚시 실패 결과 닫기'} onClick={onDismiss} onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();onDismiss()}}} className="fixed inset-0 z-[80] flex h-dvh w-screen cursor-pointer items-center justify-center overflow-hidden bg-slate-950/65 p-6 text-center backdrop-blur-sm focus-visible:outline-2 focus-visible:outline-white" style={{color,backgroundImage:species?`radial-gradient(ellipse at center,${color}25,transparent 65%)`:undefined}}>
+ return createPortal(<button ref={dismiss} type="button" aria-label={species?`${species.name} 결과 닫기`:'낚시 실패 결과 닫기'} onClick={tryDismiss} onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();if(!event.repeat)tryDismiss()}}} className="fixed inset-0 z-[80] flex h-dvh w-screen cursor-pointer items-center justify-center overflow-hidden bg-slate-950/65 p-6 text-center backdrop-blur-sm focus-visible:outline-2 focus-visible:outline-white" style={{color,backgroundImage:species?`radial-gradient(ellipse at center,${color}25,transparent 65%)`:undefined}}>
   <span className="relative flex w-full max-w-sm flex-col items-center">
    {species&&<span className="catch-grade-rays pointer-events-none absolute left-1/2 top-24 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40" style={{background:`repeating-conic-gradient(from 10deg,transparent 0deg 24deg,${color}33 26deg 32deg,transparent 34deg 48deg)`,maskImage:"radial-gradient(circle,#000 15%,transparent 70%)"}}/>}
    <span className="catch-reveal-glow pointer-events-none absolute left-1/2 top-24 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full" style={{background:'radial-gradient(circle,'+color+'88,transparent 68%)'}}/>

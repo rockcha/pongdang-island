@@ -1,18 +1,20 @@
+import {AquariumIcon,MerchantStreetIcon,PlazaIcon} from './place-icons'
 import { Link, useLocation } from 'react-router'
-import { Map, Fish, Warehouse, Gamepad2, TowerControl, Building2, ShoppingBag } from 'lucide-react'
+import { Map, Warehouse, Gamepad2, TowerControl, Mail } from 'lucide-react'
 import { IslandIcon } from './island-icon'
 import { placeSections } from '@/lib/place-sections'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from './ui/tooltip'
 
 export const headerPlaces=[
- {to:'/',label:'퐁당 섬',icon:IslandIcon},
- {to:'/aquarium',label:'아쿠아리움',icon:Fish},
+ {to:'/',label:'퐁당섬',icon:IslandIcon},
+ {to:'/aquarium',label:'아쿠아리움',icon:AquariumIcon},
  {to:'/harbor',label:'지도',icon:Map},
+ {to:placeSections.merchants.path,label:'상인거리',icon:MerchantStreetIcon},
  {to:'/warehouse',label:'창고',icon:Warehouse},
- {to:'/arcade',label:'오락실',icon:Gamepad2},
+ {to:'/arcade',label:'게임',icon:Gamepad2},
  {to:'/friends',label:'등대',icon:TowerControl},
- {to:placeSections.square.path,label:'광장',icon:Building2},
- {to:placeSections.merchants.path,label:'상인거리',icon:ShoppingBag},
+ {to:'/notifications',label:'우편함',icon:Mail},
+ {to:placeSections.square.path,label:'광장',icon:PlazaIcon},
 ]
 
 export function HeaderPlaceNavigation() {

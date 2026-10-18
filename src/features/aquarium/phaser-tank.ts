@@ -1,4 +1,5 @@
 import { glassAttachedSpecies } from './glass-attached-species'
+import {dreamabyssFixedFrame} from './dreamabyss-animation'
 import Phaser from 'phaser'
 import { collectibleUrl } from '@/features/collection/api'
 import type { OwnedCollectible } from '@/features/collection/api'
@@ -163,7 +164,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         const direction = Math.abs(dx) > .001 && Math.abs(dx) < viewport.width / 2 ? Math.sign(dx) : pose.direction
         let layout=swimFrameLayout('',0),index=0
         if (entry.sheet) {
-          index=scrapisleFixedFrame(entry.motion.item.species.id,clock,reduced,entry.motion.item.editing)??cloudferryFixedFrame(entry.motion.item.species.id,clock,reduced,entry.motion.item.editing)??whitenightFixedFrame(entry.motion.item.species.id,clock,reduced,entry.motion.item.editing)??primalPlantFrame(entry.motion.item.species.id,clock,reduced,entry.motion.item.editing)??mythicSwimFrame(entry.path,clock,entry.motion.item.animation_seed,reduced)??premiumSwimFrame(entry.path,clock,entry.motion.item.animation_seed,pose.frame,reduced)
+          index=dreamabyssFixedFrame(entry.motion.item.species.id,clock,reduced,entry.motion.item.editing)??scrapisleFixedFrame(entry.motion.item.species.id,clock,reduced,entry.motion.item.editing)??cloudferryFixedFrame(entry.motion.item.species.id,clock,reduced,entry.motion.item.editing)??whitenightFixedFrame(entry.motion.item.species.id,clock,reduced,entry.motion.item.editing)??primalPlantFrame(entry.motion.item.species.id,clock,reduced,entry.motion.item.editing)??mythicSwimFrame(entry.path,clock,entry.motion.item.animation_seed,reduced)??premiumSwimFrame(entry.path,clock,entry.motion.item.animation_seed,pose.frame,reduced)
           layout=mythicSwimLayout(entry.path,index)??swimFrameLayout(entry.path,index)
           entry.sprite.setTexture(textureKey(entry.path),`swim-${index}`)
         }

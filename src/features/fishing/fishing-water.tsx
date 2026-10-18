@@ -4,7 +4,7 @@ import type {FishingRod} from './fishing-rods'
 import { FishingSea,FishingPlatform } from './fishing-environment'
 import { collectibleUrl } from '@/features/collection/api'
 import type { Species } from '@/features/collection/api'
-import { useEffect, useId, useRef, useState } from 'react'
+import { useLayoutEffect, useId, useRef, useState } from 'react'
 import { fishBehavior, fishForce, fishStrength } from './tension-game'
 import type { FishMood,TensionGame } from './tension-game'
 
@@ -23,14 +23,22 @@ export type FishingVisual={time:number;tension:number;reel:number;ending:number}
 export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulling=false,label,outline}:{rod?:FishingRod;regionName?:string;outline?:Species|null;label?:string;pulling?:boolean;game:TensionGame;visual:FishingVisual;mood:FishMood;active:boolean;reduced:boolean;regionId:string}){
  const id=useId().replaceAll(':',''),palette=waters[regionId]??waters.pongdang
  const container=useRef<HTMLDivElement>(null),[sceneHeight,setSceneHeight]=useState(380)
- useEffect(()=>{if(!container.current||typeof ResizeObserver==='undefined')return;const observer=new ResizeObserver(([entry])=>{if(entry.contentRect.width>0)setSceneHeight(Math.max(380,entry.contentRect.height/entry.contentRect.width*400))});observer.observe(container.current);return()=>observer.disconnect()},[])
+ useLayoutEffect(()=>{
+  const element=container.current
+  if(!element)return
+  const measure=()=>{const {width,height}=element.getBoundingClientRect();if(width>0)setSceneHeight(Math.max(380,height/width*400))}
+  measure()
+  if(typeof ResizeObserver==='undefined')return
+  const observer=new ResizeObserver(measure);observer.observe(element);return()=>observer.disconnect()
+ },[])
  const bottom=sceneHeight-380
- const t=reduced?0:visual.time,waiting=game.phase==='waiting',won=game.phase==='won',lost=game.phase==='lost',surge=active&&mood==='surge'&&!waiting&&!lost&&!won,warning=active&&mood==='warning'&&!waiting&&!lost&&!won
+ const canBite=game.failureAt===undefined
+ const t=reduced?0:visual.time,waiting=game.phase==='waiting',won=game.phase==='won',lost=game.phase==='lost',surge=active&&canBite&&mood==='surge'&&!waiting&&!lost&&!won,warning=active&&canBite&&mood==='warning'&&!waiting&&!lost&&!won
  const tug=surge?Math.min(1,fishForce(game.time,game.seed,game.rarity)/(fishStrength[game.rarity].surge*.48)):0
  const motionTug=reduced?0:tug
  const behavior=fishBehavior(game.time,game.seed,game.rarity)
  const end=Math.min(1,visual.ending/1.15),tension=active&&!waiting?visual.tension/100:0
- const fighting=active&&!waiting&&!lost&&!won&&behavior.index>=0
+ const fighting=active&&canBite&&!waiting&&!lost&&!won&&behavior.index>=0
  const bend=fighting?Math.min(1,(surge?.2+tug*.45:warning?.35:.1)+(pulling?.2:0)+tension*.15):0
  const recoil=Math.sin(t*19)*motionTug*3.5
  const lift=won?(reduced?1:1-Math.pow(1-end,3)):0
@@ -41,23 +49,25 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
  const casting=active&&waiting&&cast<1
  const bobX=200+(!reduced&&active?Math.sin(t*2)*4:0)+Math.sin(t*15)*motionTug*4
  // Far cast, impact dip, resurfacing, then a short bite dip.
- const landing=active&&waiting?Math.max(0,Math.min(1,(game.time-.85)/.85)):1
- const dip=reduced?0:active&&waiting&&game.time>=.85&&game.time<1.7?Math.sin(landing*Math.PI):active&&!waiting&&!won&&!lost&&game.time<.6?Math.sin(game.time/.6*Math.PI):0
- const scouting=!waiting&&!won&&!lost&&behavior.index===-1
- const approach=waiting?0:scouting?.12+behavior.progress*.38:Math.max(.5,Math.min(1,(game.progress-.12)/.75))
- const shadowOpacity=scouting?(reduced?.16:(.07+.13*(.5+.5*Math.sin(t*3.2))))*Math.min(1,behavior.progress*5):approach*(lost?(1-end)*.4:.6)
+ const resurfacing=Math.max(0,Math.min(1,(game.time-1.65)/1))
+ const landingDip=game.time<.85?0:game.time<1.05?(game.time-.85)/.2:1-resurfacing*resurfacing*(3-2*resurfacing)
+ const dip=reduced?0:active&&waiting?landingDip:active&&canBite&&!waiting&&!won&&!lost&&game.time<.6?Math.sin(game.time/.6*Math.PI):0
+ const scouting=canBite&&!waiting&&!won&&!lost&&behavior.index===-1
+ const escapeProgress=canBite?0:Math.max(0,Math.min(1,(game.time-((game.failureAt??3)-.6)+(lost?visual.ending:0))/.9))
+ const approach=waiting?0:!canBite?.35:scouting?.12+behavior.progress*.38:Math.max(.5,Math.min(1,(game.progress-.12)/.75))
+ const shadowOpacity=!canBite?.22*Math.min(1,game.time/.6)*(1-escapeProgress):scouting?(reduced?.16:(.07+.13*(.5+.5*Math.sin(t*3.2))))*Math.min(1,behavior.progress*5):approach*(lost?(1-end)*.4:.6)
  const bobScale=active?.62+game.progress*.38:1
  const platformHeight=Math.max(160,Math.min(220,sceneHeight*.32))
  const platformY=sceneHeight-platformHeight+10
  const nearWater=Math.min(sceneHeight*.42,platformY-117)
  const bobY=nearWater+(active?(game.progress-.5)*28:0)+(waiting?Math.sin(t*2)*1.4:0)+motionTug*5+(won?-lift*138:0)
  const bx=tip.x+(bobX-tip.x)*cast,by=tip.y+(bobY-tip.y)*cast-(casting?Math.sin(cast*Math.PI)*85:0)
- const fx=200+Math.sin(t*1.5)*12+(scouting?(game.seed%2?1:-1)*(1-behavior.progress)*85:0)+Math.sin(behavior.progress*Math.PI)*motionTug*30+(lost?end*155:0)
+ const fx=200+Math.sin(t*1.5)*12+(scouting?(game.seed%2?1:-1)*(1-behavior.progress)*85:0)+Math.sin(behavior.progress*Math.PI)*motionTug*30+(!canBite?(reduced?0:escapeProgress*180):lost?end*155:0)
  const fy=nearWater+24+game.progress*20+(won?-lift*194:0),fishScale=.35+approach*.9
  const snapped=lost&&game.reason==='snap'
  const lineEnd=snapped?{x:tip.x+12*(1-end),y:tip.y-15*(1-end)}:{x:bx,y:by+dip*13}
- const impact=active&&waiting&&game.time>=.85&&game.time<1.7
- const splash=active&&!reduced&&(impact||surge||(!waiting&&!won&&!lost&&game.time<.65))
+ const impact=active&&waiting&&game.time>=.85&&game.time<1.35
+ const splash=active&&!reduced&&(impact||surge||(canBite&&!waiting&&!won&&!lost&&game.time<.65))
  const landingSplash=active&&won&&!reduced&&visual.ending<.95
  const splashProgress=Math.max(0,Math.min(1,visual.ending/.95))
  return <div ref={container} className="relative h-full w-full overflow-hidden" style={{background:`linear-gradient(${palette.top},${palette.bottom})`}}>
@@ -98,7 +108,7 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
   <ellipse cx={bx} cy={by+10} rx={(surge?28:18)*bobScale} ry="5" stroke={palette.light} fill="none" opacity={.5*(won?1-lift:1)}/>
   <ellipse cx={bx} cy={by+10} rx={(surge?40:28)*bobScale} ry="9" stroke={palette.light} fill="none" opacity={.2*(won?1-lift:1)}/>
   <path d={`M${tip.x} ${tip.y} Q${(tip.x+lineEnd.x)/2+(!reduced&&tension>.85?Math.sin(t*38)*2:0)} ${(tip.y+lineEnd.y)/2+(1-tension)*45*(1-tug*.8)} ${lineEnd.x} ${lineEnd.y}`} fill="none" stroke={tension>.85?'#ffd1ba':'#e1edf2'} strokeWidth={1.2+tug*.8}/>
-  {!(snapped&&end>.5)&&<g transform={`translate(${bx} ${by+dip*13}) rotate(${surge?24:dip*12}) scale(${bobScale} ${bobScale*(1-dip*.35)})`} opacity={won?1-end:1-dip*.88}>{(hasRodSkin(rod?.id)||hasRodImages(rod?.id))?<RodSkinFloat id={rod!.id}/>:<><path d="M0-17v12" stroke="#fff1d4" strokeWidth="2.5"/><ellipse rx="5" ry="9" fill="#fff1d4"/><path d="M-5 0a5 9 0 0 0 10 0Z" fill="#eb886f"/></>}</g>}
+  {!(snapped&&end>.5)&&<g data-fishing-float="true" transform={`translate(${bx} ${by+dip*13}) rotate(${surge?24:dip*12}) scale(${bobScale} ${bobScale*(1-dip*.35)})`} opacity={won?1-end:1-dip*.88}>{(hasRodSkin(rod?.id)||hasRodImages(rod?.id))?<RodSkinFloat id={rod!.id}/>:<><path d="M0-17v12" stroke="#fff1d4" strokeWidth="2.5"/><ellipse rx="5" ry="9" fill="#fff1d4"/><path d="M-5 0a5 9 0 0 0 10 0Z" fill="#eb886f"/></>}</g>}
   {splash&&Array.from({length:9},(_,i)=>{const phase=(t*1.7+i*.17)%1,angle=i*Math.PI*2/9;return <ellipse key={i} cx={bx+Math.cos(angle)*(8+phase*(won?48:24+motionTug*22))} cy={by+7-Math.sin(phase*Math.PI)*(12+i%3*8+motionTug*12)} rx="1.7" ry="2.7" fill={palette.light} opacity={(1-phase)*.7}/>})}
   <FishingPlatform regionId={regionId} y={platformY} platformHeight={platformHeight}/>
   <path d={rodPath} fill="none" stroke="#102b42" strokeWidth={rodShaftOutlineWidth(rod?.id)} strokeLinecap="round"/>
@@ -107,7 +117,7 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
   <g transform={`translate(0 ${bottom-62})`}><path d="M303 392l-27-52" stroke={rod?.color??"#76503a"} strokeWidth="13" strokeLinecap="round"/>
   <path d="M299 382l-18-34" stroke={rod&&rod.id!=="basic"?rod.accent:"#c89c6e"} strokeWidth="7" strokeLinecap="round"/>
   {(hasRodSkin(rod?.id)||hasRodImages(rod?.id))?<><g transform="translate(283 344)"><RodSkinGrip id={rod!.id}/></g><g transform="translate(282 358) scale(.4)"><RodSkinFrame id={rod!.id}/><g transform={`rotate(${reduced?0:visual.reel})`}><RodSkinRotor id={rod!.id}/></g></g></>:<>  <g transform={`translate(282 358) rotate(${reduced?0:visual.reel})`}><circle r="12" fill={rod&&rod.id!=="basic"?rod.color:"#183b53"} stroke={rod&&rod.id!=="basic"?rod.accent:"#abc7ce"} strokeWidth="2"/><path d="M-8 0H8M0-8V8" stroke="#abc7ce" strokeWidth="2"/><circle r="4" fill={rod?.accent??"#d7b388"}/><circle cx="8" cy="0" r="3" fill="#d7b388"/></g></>}
-  </g>{active&&!waiting&&game.time<.7&&<text x="200" y="72" textAnchor="middle" fill="#fff1d4" fontSize="18" fontWeight="bold" opacity={1-game.time/.7}>물었어요!</text>}
+  </g>{active&&canBite&&!waiting&&game.time<.7&&<text x="200" y="72" textAnchor="middle" fill="#fff1d4" fontSize="18" fontWeight="bold" opacity={1-game.time/.7}>물었어요!</text>}
 
  </svg>{label&&<p role="status" className="pointer-events-none absolute -translate-x-1/2 whitespace-nowrap text-center text-sm font-semibold text-white drop-shadow-[0_2px_3px_#174575]" style={{left:bx/400*100+'%',top:(by+27)/sceneHeight*100+'%'}}>{label}</p>}</div>
 }

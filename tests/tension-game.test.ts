@@ -74,12 +74,15 @@ it('resets slack when recovered before the 0.8-second limit',()=>{
  expect(stepTensionGame(s,.1,true)).toMatchObject({phase:'playing',slack:0})
 })
 it('ends chance failures after three seconds independently of gauge and input',()=>{
- for(const pulling of [false,true]){
-  let s:TensionGame={...newTensionGame(()=>.5,{failureAt:preparedFailureSeconds,failureReason:'bait'}),phase:'playing',tension:pulling?100:0}
-  for(let i=0;i<170;i++)s=stepTensionGame(s,1/60,pulling)
+ for(const pulling of [false,true])for(const tension of [0,38,100]){
+  let s:TensionGame={...newTensionGame(()=>.5,{failureAt:preparedFailureSeconds,failureReason:'bait'}),phase:'playing',tension}
+  for(let i=0;i<170;i++){
+   s=stepTensionGame(s,1/60,pulling)
+   expect(s).toMatchObject({tension,danger:0,slack:0})
+  }
   expect(s.phase).toBe('playing')
   for(let i=0;i<12;i++)s=stepTensionGame(s,1/60,pulling)
-  expect(s).toMatchObject({phase:'lost',reason:'bait'});expect(s.time).toBeCloseTo(3,1)
+  expect(s).toMatchObject({phase:'lost',reason:'bait',tension,danger:0,slack:0});expect(s.time).toBeCloseTo(3,1)
  }
 })
 it('smoothly releases resistance at every pull boundary',()=>{

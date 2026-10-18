@@ -216,13 +216,13 @@
       "price": 30,
       "image_path": "/items/baits/pongdang-worm.png",
       "sort_order": 1,
-      "common_bp": 3000,
-      "rare_bp": 1000,
-      "epic_bp": 100,
+      "common_bp": 7700,
+      "rare_bp": 2000,
+      "epic_bp": 270,
       "mythic_bp": 30,
-      "failure_bp": 5870,
+      "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "해역 등급이 높아질수록 희귀·특급·신화 확률이 조금 높아져요. 실패해도 미끼 1개를 소모해요."
+      "effect_description": "미끼별 등급 확률은 모든 해역에서 같아요. 주 서식지에서는 개체의 추첨 가중치가 높아져요."
     },
     {
       "id": "bait_epic",
@@ -237,7 +237,7 @@
       "mythic_bp": 30,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "실패 없이 최소 특급을 보장해요. 상위 해역에서는 신화 확률이 조금 높아져요."
+      "effect_description": "미끼별 등급 확률은 모든 해역에서 같아요. 주 서식지에서는 개체의 추첨 가중치가 높아져요."
     },
     {
       "id": "bait_magnet",
@@ -249,10 +249,10 @@
       "common_bp": 0,
       "rare_bp": 0,
       "epic_bp": 0,
-      "mythic_bp": 0,
-      "failure_bp": 10000,
+      "mythic_bp": 10000,
+      "failure_bp": 0,
       "effect_kind": "decoration",
-      "effect_description": "현재 해역에 서식하는 장식물을 반드시 획득해요. 지도는 나오지 않아요."
+      "effect_description": "모든 해역의 장식물을 만날 수 있어요. 주 서식지에서는 추첨 가중치가 높아져요."
     },
     {
       "id": "bait_safe",
@@ -261,13 +261,13 @@
       "price": null,
       "image_path": "/items/baits/dewleaf-dumpling.png",
       "sort_order": 3,
-      "common_bp": 4174,
-      "rare_bp": 1000,
-      "epic_bp": 100,
+      "common_bp": 7700,
+      "rare_bp": 2000,
+      "epic_bp": 270,
       "mythic_bp": 30,
-      "failure_bp": 4696,
+      "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "기본 실패 확률을 상대적으로 20% 줄여요. 등급 확률은 해역에 따라 달라져요."
+      "effect_description": "미끼별 등급 확률은 모든 해역에서 같아요. 주 서식지에서는 개체의 추첨 가중치가 높아져요."
     },
     {
       "id": "bait_special",
@@ -282,7 +282,7 @@
       "mythic_bp": 30,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "실패 없이 최소 희귀를 보장해요. 상위 해역에서는 특급·신화 확률이 조금 높아져요."
+      "effect_description": "미끼별 등급 확률은 모든 해역에서 같아요. 주 서식지에서는 개체의 추첨 가중치가 높아져요."
     }
   ],
   "collectible_species": [
@@ -320,6 +320,60 @@
       "native_region_id": null,
       "movement_type": "fixed",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "amethyst-cluster",
+      "kind": "decoration",
+      "name": "자수정 군락",
+      "description": "검은 암석 틈에서 맑은 보랏빛 결정들이 비스듬히 자란 군락.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 80,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/amethyst-cluster_thumbnail.png",
+      "sell_price": 140,
+      "sprite_sheet_path": null,
+      "native_region_id": "dreamabyss",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "amethyst-fangtooth",
+      "kind": "fish",
+      "name": "자수정 송곳니고기",
+      "description": "자수정처럼 맑은 송곳니와 짙은 보라색 비늘을 가진 심해어.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.8",
+      "speed": "0.025",
+      "size": 100,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/amethyst-fangtooth_thumbnail.png",
+      "sell_price": 230,
+      "sprite_sheet_path": "fish/rare/amethyst-fangtooth_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "amethyst-goblin-shark",
+      "kind": "fish",
+      "name": "자수정 마귀상어",
+      "description": "긴 주둥이와 자수정빛 지느러미로 심연을 가르는 마귀상어.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.8",
+      "speed": "0.025",
+      "size": 150,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/amethyst-goblin-shark_thumbnail.png",
+      "sell_price": 650,
+      "sprite_sheet_path": "fish/epic/amethyst-goblin-shark_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "swim",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -750,6 +804,24 @@
       "sell_price": 12,
       "sprite_sheet_path": null,
       "native_region_id": "primal",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "broken-survey-cable",
+      "kind": "trash",
+      "name": "끊어진 탐사 케이블",
+      "description": "보라색 피복이 벗겨지고 연결 단자가 끊어진 탐사 케이블.",
+      "swim_y_min": "0.84",
+      "swim_y_max": "0.94",
+      "speed": "0.012",
+      "size": 80,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/broken-survey-cable_thumbnail.png",
+      "sell_price": 5,
+      "sprite_sheet_path": null,
+      "native_region_id": "dreamabyss",
       "movement_type": "fixed",
       "flip_with_direction": false,
       "travel_direction": "both"
@@ -1493,6 +1565,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "cracked-pressure-gauge",
+      "kind": "trash",
+      "name": "금 간 수압계",
+      "description": "유리에 금이 가고 바늘이 끝까지 돌아간 낡은 수압계.",
+      "swim_y_min": "0.84",
+      "swim_y_max": "0.94",
+      "speed": "0.012",
+      "size": 80,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/cracked-pressure-gauge_thumbnail.png",
+      "sell_price": 18,
+      "sprite_sheet_path": null,
+      "native_region_id": "dreamabyss",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "crescent-seahorse",
       "kind": "fish",
       "name": "초승달 해마",
@@ -1508,6 +1598,42 @@
       "native_region_id": "mistmoon",
       "movement_type": "swim",
       "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "dented-diving-lamp",
+      "kind": "trash",
+      "name": "찌그러진 잠수등",
+      "description": "보호 철망이 찌그러진 잠수등. 흐린 유리 안쪽의 불빛은 꺼졌다.",
+      "swim_y_min": "0.84",
+      "swim_y_max": "0.94",
+      "speed": "0.012",
+      "size": 80,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/dented-diving-lamp_thumbnail.png",
+      "sell_price": 18,
+      "sprite_sheet_path": null,
+      "native_region_id": "dreamabyss",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "discarded-oxygen-tank",
+      "kind": "trash",
+      "name": "버려진 산소통",
+      "description": "빛바랜 산소통에 보라색 침전물이 내려앉았다.",
+      "swim_y_min": "0.84",
+      "swim_y_max": "0.94",
+      "speed": "0.012",
+      "size": 80,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/discarded-oxygen-tank_thumbnail.png",
+      "sell_price": 5,
+      "sprite_sheet_path": null,
+      "native_region_id": "dreamabyss",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
       "travel_direction": "both"
     },
     {
@@ -2015,6 +2141,42 @@
       "travel_direction": "both"
     },
     {
+      "id": "inky-purple-grenadier",
+      "kind": "fish",
+      "name": "먹보라 심해대구",
+      "description": "둥근 머리와 가늘게 이어지는 꼬리를 가진 먹보라색 심해대구.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.8",
+      "speed": "0.025",
+      "size": 100,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/inky-purple-grenadier_thumbnail.png",
+      "sell_price": 230,
+      "sprite_sheet_path": "fish/rare/inky-purple-grenadier_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "inky-purple-gulper-eel",
+      "kind": "fish",
+      "name": "먹보라 풍선장어",
+      "description": "커다란 주머니 입과 보랏빛 꼬리 등불을 지닌 풍선장어.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.8",
+      "speed": "0.025",
+      "size": 100,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/inky-purple-gulper-eel_thumbnail.png",
+      "sell_price": 230,
+      "sprite_sheet_path": "fish/rare/inky-purple-gulper-eel_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "lavender-starfish",
       "kind": "decoration",
       "name": "라벤더 불가사리",
@@ -2030,6 +2192,42 @@
       "native_region_id": null,
       "movement_type": "fixed",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "lavender-tube-coral",
+      "kind": "decoration",
+      "name": "라벤더 관산호",
+      "description": "옅은 보라색 입구를 가진 관산호가 작은 바위에 모여 자랐다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 80,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/lavender-tube-coral_thumbnail.png",
+      "sell_price": 20,
+      "sprite_sheet_path": null,
+      "native_region_id": "dreamabyss",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "lilac-frilled-shark",
+      "kind": "fish",
+      "name": "라일락 주름상어",
+      "description": "라일락빛 아가미 주름과 긴 몸을 부드럽게 움직이는 심해상어.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.8",
+      "speed": "0.025",
+      "size": 150,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/lilac-frilled-shark_thumbnail.png",
+      "sell_price": 650,
+      "sprite_sheet_path": "fish/epic/lilac-frilled-shark_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "swim",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -2429,6 +2627,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "moonlit-pearl-clam",
+      "kind": "decoration",
+      "name": "달빛 진주조개",
+      "description": "검보라색 조개 안의 은빛 진주가 달빛처럼 은은하게 빛난다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 80,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/moonlit-pearl-clam_thumbnail.png",
+      "sell_price": 140,
+      "sprite_sheet_path": "decorations/rare/moonlit-pearl-clam_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "name-eating-conch",
       "kind": "fish",
       "name": "이름먹는 소라",
@@ -2678,6 +2894,24 @@
       "native_region_id": null,
       "movement_type": "swim",
       "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pearl-sand-mound",
+      "kind": "decoration",
+      "name": "진주모래 둔덕",
+      "description": "회보라색 모래 사이로 작은 진주가 드러난 낮은 둔덕.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 80,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/pearl-sand-mound_thumbnail.png",
+      "sell_price": 20,
+      "sprite_sheet_path": null,
+      "native_region_id": "dreamabyss",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
       "travel_direction": "both"
     },
     {
@@ -2951,6 +3185,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "primordial-amethyst-heart",
+      "kind": "decoration",
+      "name": "태초의 자수정 심장",
+      "description": "갈라진 현무암에 감싸인 거대한 자수정. 중심의 은보랏빛이 느리게 맥박친다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 150,
+      "rarity": "mythic",
+      "thumbnail_path": "decorations/mythic/primordial-amethyst-heart_thumbnail.png",
+      "sell_price": 1800,
+      "sprite_sheet_path": "decorations/mythic/primordial-amethyst-heart_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "purple-fork-seaweed",
       "kind": "decoration",
       "name": "자주빛 갈래해초",
@@ -2964,6 +3216,24 @@
       "sell_price": 18,
       "sprite_sheet_path": null,
       "native_region_id": "primal",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "purple-stained-bottle",
+      "kind": "trash",
+      "name": "보랏물 든 유리병",
+      "description": "오래 가라앉아 보랏물이 든 유리병. 안쪽에 검은 모래가 조금 남았다.",
+      "swim_y_min": "0.84",
+      "swim_y_max": "0.94",
+      "speed": "0.012",
+      "size": 80,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/purple-stained-bottle_thumbnail.png",
+      "sell_price": 5,
+      "sprite_sheet_path": null,
+      "native_region_id": "dreamabyss",
       "movement_type": "fixed",
       "flip_with_direction": false,
       "travel_direction": "both"
@@ -3815,6 +4085,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "silver-speck-sponge",
+      "kind": "decoration",
+      "name": "은점 바다해면",
+      "description": "자줏빛 표면에 작은 은색 점이 박힌 둥근 바다해면.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 80,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/silver-speck-sponge_thumbnail.png",
+      "sell_price": 20,
+      "sprite_sheet_path": null,
+      "native_region_id": "dreamabyss",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "silver-yellowtail",
       "kind": "fish",
       "name": "은빛 방어",
@@ -4026,6 +4314,24 @@
       "sell_price": 170,
       "sprite_sheet_path": null,
       "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "sleeping-survey-pod",
+      "kind": "decoration",
+      "name": "잠든 심해 관측구",
+      "description": "둥근 보라색 관측창을 가진 잠수정이 심해 산호에 둘러싸여 잠들었다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 130,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/sleeping-survey-pod_thumbnail.png",
+      "sell_price": 460,
+      "sprite_sheet_path": null,
+      "native_region_id": "dreamabyss",
       "movement_type": "fixed",
       "flip_with_direction": false,
       "travel_direction": "both"
@@ -4283,6 +4589,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "starthread-dragonfish",
+      "kind": "fish",
+      "name": "별실 용고기",
+      "description": "턱 아래 별빛 수염을 늘어뜨리고 은빛 발광점을 따라 유영하는 용고기.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.8",
+      "speed": "0.025",
+      "size": 100,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/starthread-dragonfish_thumbnail.png",
+      "sell_price": 230,
+      "sprite_sheet_path": "fish/rare/starthread-dragonfish_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "steelback-bluefin-tuna",
       "kind": "fish",
       "name": "강철등 참다랑어",
@@ -4499,6 +4823,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "torn-survey-flag",
+      "kind": "trash",
+      "name": "찢어진 탐사 깃발",
+      "description": "부러진 깃대에 남보라색 천 조각이 남은 탐사 깃발.",
+      "swim_y_min": "0.84",
+      "swim_y_max": "0.94",
+      "speed": "0.012",
+      "size": 80,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/torn-survey-flag_thumbnail.png",
+      "sell_price": 5,
+      "sprite_sheet_path": null,
+      "native_region_id": "dreamabyss",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "trilobite-track-rock",
       "kind": "decoration",
       "name": "삼엽충 흔적 바위",
@@ -4517,6 +4859,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "twilight-frilled-shark",
+      "kind": "fish",
+      "name": "황혼 주름상어",
+      "description": "먹보라색 등에서 자주빛 배로 황혼이 번지는 긴 주름상어.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.8",
+      "speed": "0.025",
+      "size": 150,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/twilight-frilled-shark_thumbnail.png",
+      "sell_price": 650,
+      "sprite_sheet_path": "fish/epic/twilight-frilled-shark_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "unmong-cloud-weaver",
       "kind": "fish",
       "name": "운몽, 구름을 짜는 해파리",
@@ -4531,6 +4891,96 @@
       "sprite_sheet_path": "fish/mythic/unmong-cloud-weaver_sprite.png",
       "native_region_id": null,
       "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "violet-abyss-pebbles",
+      "kind": "decoration",
+      "name": "보랏빛 심해 자갈",
+      "description": "라벤더빛이 은은하게 감도는 둥근 심해 자갈 세 개.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 80,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/violet-abyss-pebbles_thumbnail.png",
+      "sell_price": 20,
+      "sprite_sheet_path": null,
+      "native_region_id": "dreamabyss",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "violet-hydrothermal-vent",
+      "kind": "decoration",
+      "name": "보랏빛 열수구",
+      "description": "낮은 암석 굴뚝에서 보라색 물안개가 천천히 피어나는 열수구.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 80,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/violet-hydrothermal-vent_thumbnail.png",
+      "sell_price": 140,
+      "sprite_sheet_path": "decorations/rare/violet-hydrothermal-vent_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "violet-longlure-angler",
+      "kind": "fish",
+      "name": "보랏불 긴수염아귀",
+      "description": "긴 낚싯줄 끝에서 보랏불이 흔들리는 심해 아귀.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.8",
+      "speed": "0.025",
+      "size": 150,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/violet-longlure-angler_thumbnail.png",
+      "sell_price": 650,
+      "sprite_sheet_path": "fish/epic/violet-longlure-angler_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "violet-telescopefish",
+      "kind": "fish",
+      "name": "자줏빛 망원경고기",
+      "description": "위를 향한 망원경 같은 눈으로 미약한 빛을 찾는 자줏빛 심해어.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.8",
+      "speed": "0.025",
+      "size": 100,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/violet-telescopefish_thumbnail.png",
+      "sell_price": 230,
+      "sprite_sheet_path": "fish/rare/violet-telescopefish_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "violiss-amethyst-trench",
+      "kind": "fish",
+      "name": "자수정 해구의 주인, 바이올리스",
+      "description": "자수정 능선을 등에 품은 심연의 거대한 마귀상어. 은빛 발광선과 유려한 지느러미가 깊은 해구를 밝힌다.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.8",
+      "speed": "0.016",
+      "size": 180,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/violiss-amethyst-trench_thumbnail.png",
+      "sell_price": 2400,
+      "sprite_sheet_path": "fish/mythic/violiss-amethyst-trench_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "swim",
       "flip_with_direction": true,
       "travel_direction": "both"
     },
@@ -4687,6 +5137,18 @@
     {
       "species_id": "amber-lantern-snail",
       "region_id": "whitenight"
+    },
+    {
+      "species_id": "amethyst-cluster",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "amethyst-fangtooth",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "amethyst-goblin-shark",
+      "region_id": "dreamabyss"
     },
     {
       "species_id": "ammonite-fossil-slab",
@@ -4979,6 +5441,10 @@
     {
       "species_id": "broken-ancient-shell",
       "region_id": "primal"
+    },
+    {
+      "species_id": "broken-survey-cable",
+      "region_id": "dreamabyss"
     },
     {
       "species_id": "bronze-spiral-ammonite",
@@ -5385,8 +5851,20 @@
       "region_id": "coral"
     },
     {
+      "species_id": "cracked-pressure-gauge",
+      "region_id": "dreamabyss"
+    },
+    {
       "species_id": "crescent-seahorse",
       "region_id": "mistmoon"
+    },
+    {
+      "species_id": "dented-diving-lamp",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "discarded-oxygen-tank",
+      "region_id": "dreamabyss"
     },
     {
       "species_id": "diver-pongdang",
@@ -5749,6 +6227,14 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "inky-purple-grenadier",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "inky-purple-gulper-eel",
+      "region_id": "dreamabyss"
+    },
+    {
       "species_id": "lavender-starfish",
       "region_id": "bluegrove"
     },
@@ -5779,6 +6265,14 @@
     {
       "species_id": "lavender-starfish",
       "region_id": "whitenight"
+    },
+    {
+      "species_id": "lavender-tube-coral",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "lilac-frilled-shark",
+      "region_id": "dreamabyss"
     },
     {
       "species_id": "living-fossil-coelacanth",
@@ -6079,6 +6573,10 @@
     {
       "species_id": "moonlit-jellyfish-lantern",
       "region_id": "whitenight"
+    },
+    {
+      "species_id": "moonlit-pearl-clam",
+      "region_id": "dreamabyss"
     },
     {
       "species_id": "name-eating-conch",
@@ -6513,6 +7011,10 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "pearl-sand-mound",
+      "region_id": "dreamabyss"
+    },
+    {
       "species_id": "pebble-hermit-crab",
       "region_id": "bluegrove"
     },
@@ -6733,8 +7235,16 @@
       "region_id": "primal"
     },
     {
+      "species_id": "primordial-amethyst-heart",
+      "region_id": "dreamabyss"
+    },
+    {
       "species_id": "purple-fork-seaweed",
       "region_id": "primal"
+    },
+    {
+      "species_id": "purple-stained-bottle",
+      "region_id": "dreamabyss"
     },
     {
       "species_id": "reedneck-tanystropheus",
@@ -7273,6 +7783,10 @@
       "region_id": "bluegrove"
     },
     {
+      "species_id": "silver-speck-sponge",
+      "region_id": "dreamabyss"
+    },
+    {
       "species_id": "silver-yellowtail",
       "region_id": "bluegrove"
     },
@@ -7431,6 +7945,10 @@
     {
       "species_id": "sleeping-seahorse-statue",
       "region_id": "whitenight"
+    },
+    {
+      "species_id": "sleeping-survey-pod",
+      "region_id": "dreamabyss"
     },
     {
       "species_id": "snow-covered-round-rock",
@@ -7663,6 +8181,10 @@
     {
       "species_id": "starpattern-manta",
       "region_id": "whitenight"
+    },
+    {
+      "species_id": "starthread-dragonfish",
+      "region_id": "dreamabyss"
     },
     {
       "species_id": "steelback-bluefin-tuna",
@@ -7909,8 +8431,16 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "torn-survey-flag",
+      "region_id": "dreamabyss"
+    },
+    {
       "species_id": "trilobite-track-rock",
       "region_id": "primal"
+    },
+    {
+      "species_id": "twilight-frilled-shark",
+      "region_id": "dreamabyss"
     },
     {
       "species_id": "unmong-cloud-weaver",
@@ -7951,6 +8481,26 @@
     {
       "species_id": "unmong-cloud-weaver",
       "region_id": "whitenight"
+    },
+    {
+      "species_id": "violet-abyss-pebbles",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "violet-hydrothermal-vent",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "violet-longlure-angler",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "violet-telescopefish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "violiss-amethyst-trench",
+      "region_id": "dreamabyss"
     },
     {
       "species_id": "webfoot-marine-crocodile",

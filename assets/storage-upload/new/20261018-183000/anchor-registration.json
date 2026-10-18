@@ -1,0 +1,483 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261018-183000/decorations/mythic/primordial-amethyst-heart_sprite.png",
+        "storage_path":  "decorations/mythic/primordial-amethyst-heart_sprite.png",
+        "patch":  [
+                      290,
+                      525,
+                      40,
+                      40
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -9,
+                           "dy":  1,
+                           "rmse":  12.930248510009863
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -39,
+                           "rmse":  10.140593308730077
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -9,
+                           "dy":  -39,
+                           "rmse":  8.9179222207134021
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-183000/decorations/rare/moonlit-pearl-clam_sprite.png",
+        "storage_path":  "decorations/rare/moonlit-pearl-clam_sprite.png",
+        "patch":  [
+                      290,
+                      535,
+                      40,
+                      40
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  2.9115358174555452
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  2.82729949757354
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  3.5293955081658424
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-183000/decorations/rare/violet-hydrothermal-vent_sprite.png",
+        "storage_path":  "decorations/rare/violet-hydrothermal-vent_sprite.png",
+        "patch":  [
+                      290,
+                      550,
+                      40,
+                      40
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -9,
+                           "dy":  0,
+                           "rmse":  7.7934921831078565
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -15,
+                           "rmse":  10.936621684850904
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -8,
+                           "dy":  -15,
+                           "rmse":  14.481823582881898
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-183000/fish/epic/amethyst-goblin-shark_sprite.png",
+        "storage_path":  "fish/epic/amethyst-goblin-shark_sprite.png",
+        "patch":  [
+                      450,
+                      365,
+                      30,
+                      30
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  18.341346733541677
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -52,
+                           "rmse":  30.996370755299726
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  -52,
+                           "rmse":  28.808939584788607
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-183000/fish/epic/lilac-frilled-shark_sprite.png",
+        "storage_path":  "fish/epic/lilac-frilled-shark_sprite.png",
+        "patch":  [
+                      515,
+                      365,
+                      30,
+                      30
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -23,
+                           "dy":  0,
+                           "rmse":  21.603703386225241
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -9,
+                           "dy":  -42,
+                           "rmse":  19.390783893386054
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -15,
+                           "dy":  -37,
+                           "rmse":  16.427263923124872
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-183000/fish/epic/twilight-frilled-shark_sprite.png",
+        "storage_path":  "fish/epic/twilight-frilled-shark_sprite.png",
+        "patch":  [
+                      515,
+                      385,
+                      30,
+                      30
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  -1,
+                           "rmse":  24.832790821814612
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -2,
+                           "dy":  -61,
+                           "rmse":  21.820632438130659
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -61,
+                           "rmse":  21.64676650218226
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-183000/fish/epic/violet-longlure-angler_sprite.png",
+        "storage_path":  "fish/epic/violet-longlure-angler_sprite.png",
+        "patch":  [
+                      450,
+                      400,
+                      25,
+                      25
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  18.952507244800028
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  3,
+                           "dy":  -43,
+                           "rmse":  24.843708993288622
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  3,
+                           "dy":  -43,
+                           "rmse":  26.115956997141485
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-183000/fish/mythic/violiss-amethyst-trench_sprite.png",
+        "storage_path":  "fish/mythic/violiss-amethyst-trench_sprite.png",
+        "patch":  [
+                      510,
+                      385,
+                      30,
+                      30
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -7,
+                           "dy":  3,
+                           "rmse":  25.558413487538697
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -75,
+                           "rmse":  21.491800762151133
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -6,
+                           "dy":  -75,
+                           "rmse":  18.758331482304069
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-183000/fish/rare/amethyst-fangtooth_sprite.png",
+        "storage_path":  "fish/rare/amethyst-fangtooth_sprite.png",
+        "patch":  [
+                      470,
+                      290,
+                      30,
+                      30
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  2.581666128685117
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -52,
+                           "rmse":  3.3615472627943221
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -52,
+                           "rmse":  3.3290389003434608
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-183000/fish/rare/inky-purple-grenadier_sprite.png",
+        "storage_path":  "fish/rare/inky-purple-grenadier_sprite.png",
+        "patch":  [
+                      475,
+                      370,
+                      30,
+                      30
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -36,
+                           "dy":  1,
+                           "rmse":  21.729530597783285
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -69,
+                           "rmse":  14.010799406172369
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -36,
+                           "dy":  -69,
+                           "rmse":  23.311316994112538
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-183000/fish/rare/inky-purple-gulper-eel_sprite.png",
+        "storage_path":  "fish/rare/inky-purple-gulper-eel_sprite.png",
+        "patch":  [
+                      425,
+                      325,
+                      25,
+                      25
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  2,
+                           "dy":  -1,
+                           "rmse":  15.902771712759639
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -52,
+                           "rmse":  12.745127367152447
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  2,
+                           "dy":  -52,
+                           "rmse":  12.252865626023274
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-183000/fish/rare/starthread-dragonfish_sprite.png",
+        "storage_path":  "fish/rare/starthread-dragonfish_sprite.png",
+        "patch":  [
+                      475,
+                      325,
+                      30,
+                      30
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  5,
+                           "dy":  2,
+                           "rmse":  14.888586232413068
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -11,
+                           "rmse":  21.44953379446742
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  5,
+                           "dy":  -12,
+                           "rmse":  19.204621839546853
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261018-183000/fish/rare/violet-telescopefish_sprite.png",
+        "storage_path":  "fish/rare/violet-telescopefish_sprite.png",
+        "patch":  [
+                      480,
+                      320,
+                      35,
+                      35
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  2.0581815058714112
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -52,
+                           "rmse":  3.3919328314890516
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -52,
+                           "rmse":  2.7172928726133949
+                       }
+                   ]
+    }
+]

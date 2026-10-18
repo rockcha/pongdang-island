@@ -2,8 +2,8 @@
 
 원격 DB의 현재 상태가 아닙니다. migrations 전체를 PGlite에 재생한 기대 상태입니다.
 
-- migration SHA-256: `53fdefb4e426ad682e4ca0e35971ee07118925172c87d45ff342ee60f2db5073`
-- migrations: 20261016015506_legacy_baseline.sql, 20261016074241_fishing_rod_inventory.sql, 20261016083949_attendance_streak.sql, 20261016092320_add_minimal_aquarium_backgrounds.sql, 20261016093649_add_seven_aquarium_themes.sql, 20261016095304_add_atmospheric_aquarium_backgrounds.sql, 20261016101729_shadow_guessing_arcade.sql, 20261016103215_shadow_score_cap.sql, 20261016105544_memory_card_arcade.sql, 20261016114524_shadow_eight_seconds.sql, 20261016120119_primal_island_catalog.sql, 20261016124501_odd_even_arcade.sql, 20261016131521_odd_even_rank_friends.sql, 20261016151410_attendance_28_day_sheet.sql, 20261016155535_bluegrove_region_catalog.sql, 20261016162605_exchange_escrow_market.sql, 20261016164527_exchange_sales_only.sql, 20261016180116_auction_gift_escrow.sql, 20261016181632_notice_board.sql, 20261016231528_notice_notifications.sql, 20261016232525_notice_delete_and_auto_read.sql, 20261017002343_retire_dawn_arowana.sql, 20261017003922_fixed_atlantean_sentinel.sql, 20261017005949_bluegrove_large_species.sql, 20261017045143_primal_prehistoric_species.sql, 20261017052918_primal_exclusive_fish.sql, 20261017054146_map_shop_routes.sql, 20261017054247_map_shop_catalog.sql, 20261017055506_correct_starruins_map_image.sql, 20261017055827_reorder_map_routes.sql, 20261017060959_whitenight_region_catalog.sql, 20261017061438_place_whitenight_after_mistmoon.sql, 20261017064137_whitenight_native_species.sql, 20261017074923_friend_aquarium_visits_feeding.sql, 20261017080527_friend_aquarium_cleaning.sql, 20261017082326_cloudferry_region_catalog.sql, 20261017085502_cloudferry_native_species.sql, 20261017093723_scrap_isle_region_and_species.sql, 20261017201704_allow_rare_collectible_trash.sql, 20261017201709_pongdang_natives_and_shared_mythics.sql, 20261018030010_shared_sea_creatures.sql
+- migration SHA-256: `f09e093eefeeefc0dc4f3c51e43454ebea7ba193cb09575a779ee672173d8fbc`
+- migrations: 20261016015506_legacy_baseline.sql, 20261016074241_fishing_rod_inventory.sql, 20261016083949_attendance_streak.sql, 20261016092320_add_minimal_aquarium_backgrounds.sql, 20261016093649_add_seven_aquarium_themes.sql, 20261016095304_add_atmospheric_aquarium_backgrounds.sql, 20261016101729_shadow_guessing_arcade.sql, 20261016103215_shadow_score_cap.sql, 20261016105544_memory_card_arcade.sql, 20261016114524_shadow_eight_seconds.sql, 20261016120119_primal_island_catalog.sql, 20261016124501_odd_even_arcade.sql, 20261016131521_odd_even_rank_friends.sql, 20261016151410_attendance_28_day_sheet.sql, 20261016155535_bluegrove_region_catalog.sql, 20261016162605_exchange_escrow_market.sql, 20261016164527_exchange_sales_only.sql, 20261016180116_auction_gift_escrow.sql, 20261016181632_notice_board.sql, 20261016231528_notice_notifications.sql, 20261016232525_notice_delete_and_auto_read.sql, 20261017002343_retire_dawn_arowana.sql, 20261017003922_fixed_atlantean_sentinel.sql, 20261017005949_bluegrove_large_species.sql, 20261017045143_primal_prehistoric_species.sql, 20261017052918_primal_exclusive_fish.sql, 20261017054146_map_shop_routes.sql, 20261017054247_map_shop_catalog.sql, 20261017055506_correct_starruins_map_image.sql, 20261017055827_reorder_map_routes.sql, 20261017060959_whitenight_region_catalog.sql, 20261017061438_place_whitenight_after_mistmoon.sql, 20261017064137_whitenight_native_species.sql, 20261017074923_friend_aquarium_visits_feeding.sql, 20261017080527_friend_aquarium_cleaning.sql, 20261017082326_cloudferry_region_catalog.sql, 20261017085502_cloudferry_native_species.sql, 20261017093723_scrap_isle_region_and_species.sql, 20261017201704_allow_rare_collectible_trash.sql, 20261017201709_pongdang_natives_and_shared_mythics.sql, 20261018030010_shared_sea_creatures.sql, 20261018044936_dreamabyss_violet_deepsea_catalog.sql, 20261018070101_global_fishing_primary_habitats.sql, 20261018071445_equipped_rod_habitat_weights.sql, 20261018075922_fishing_forty_percent_safe_bait.sql
 - 전체 정의·컬럼·권한·정책: [local-schema.json](local-schema.json)
 - 원격 상태와 전환 절차: [DB 관리](../systems/database-management.md)
 
@@ -16,6 +16,7 @@
 | app_private.gold_settings | true | id: boolean, test_charge_enabled: boolean |
 | app_private.memory_game_boards | true | run_id: uuid, deck: text[], matched: integer[], first_card: integer?, second_card: integer?, clear_at: timestamp with time zone? |
 | app_private.notice_operators | true | user_id: uuid |
+| app_private.prepared_fishing_casts | true | user_id: uuid, operation_id: uuid, region_id: text, bait_id: text, eligible: boolean, species_id: text?, map_region_id: text?, rarity: game_rarity, snapshot: jsonb?, wait_seconds: numeric, failure_at: numeric, failure_reason: text, created_at: timestamp with time zone, expires_at: timestamp with time zone, finished_at: timestamp with time zone?, result: jsonb? |
 | app_private.region_settings | true | id: boolean, test_lock_controls: boolean |
 | app_private.shadow_game_rounds | true | id: uuid, run_id: uuid, number: integer, target_id: text, target_name: text, image_path: text, options: jsonb, deadline: timestamp with time zone, answered_at: timestamp with time zone?, correct: boolean?, timed_out: boolean? |
 | public.aquarium_backgrounds | true | id: text, name: text, price: integer, image_path: text |
@@ -78,6 +79,7 @@
 | app_private.claim_attendance | p_day date | true |
 | app_private.claim_collectible_gift | p_gift_id uuid | true |
 | app_private.clean_friend_aquarium | p_tank uuid, p_operation uuid, p_step integer | true |
+| app_private.collectible_habitat_weight | p_primary_region text, p_region text | false |
 | app_private.collectible_storage | p_offset integer, p_query text, p_kind text | true |
 | app_private.collection_state |  | true |
 | app_private.default_collectible_movement |  | false |
@@ -92,8 +94,10 @@
 | app_private.exchange_state | p_tab text, p_query text, p_offset integer | true |
 | app_private.feed_friend_aquarium | p_tank uuid, p_operation uuid, p_step integer | true |
 | app_private.find_player_by_code | p_code text | true |
+| app_private.finish_fishing | p_operation_id uuid, p_won boolean | true |
 | app_private.fishing_rod_state |  | true |
 | app_private.fishing_state |  | true |
+| app_private.fishing_success_chance_bp | p_bait_id text | false |
 | app_private.friend_aquarium | p_owner uuid | true |
 | app_private.get_gold_wallet |  | true |
 | app_private.gift_detail | p_gift_id uuid | true |
@@ -115,6 +119,8 @@
 | app_private.owned_collectibles |  | true |
 | app_private.pick_regional_collectible | p_region_id text, p_rarity game_rarity, p_decoration boolean, p_map_roll integer | false |
 | app_private.place_collectible | p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric | true |
+| app_private.prepare_fishing | p_region_id text, p_bait_id text, p_operation_id uuid | true |
+| app_private.prepared_fishing_payload | p app_private.prepared_fishing_casts | false |
 | app_private.react_to_collectible_gift | p_gift_id uuid, p_reaction text | true |
 | app_private.region_map |  | true |
 | app_private.regional_bait_odds | p_bait_id text, p_region_id text | false |
@@ -123,6 +129,7 @@
 | app_private.resolve_fishing | p_bait_id text, p_roll integer | false |
 | app_private.resolve_regional_fishing | p_bait_id text, p_region_id text, p_roll integer | false |
 | app_private.respond_friend_request | p_request_id uuid, p_action text | true |
+| app_private.rod_habitat_weight | p_primary_region text, p_region text, p_rod_region text | false |
 | app_private.sell_collectibles | p_collectible_ids uuid[], p_operation_id uuid | true |
 | app_private.send_collectible_gift | p_recipient_id uuid, p_collectible_ids uuid[], p_message text, p_operation_id uuid | true |
 | app_private.send_friend_request | p_code text | true |
@@ -161,6 +168,7 @@
 | public.exchange_state | p_tab text, p_query text, p_offset integer | false |
 | public.feed_friend_aquarium | p_tank uuid, p_operation uuid, p_step integer | false |
 | public.find_player_by_code | p_code text | false |
+| public.finish_fishing | p_operation_id uuid, p_won boolean | false |
 | public.fishing_rod_state |  | false |
 | public.fishing_state |  | false |
 | public.friend_aquarium | p_owner uuid | false |
@@ -179,6 +187,7 @@
 | public.odd_even_game | p_action text, p_operation_id uuid, p_run_id uuid, p_round integer, p_choice text | false |
 | public.odd_even_leaderboard | p_offset integer | false |
 | public.place_collectible | p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric | false |
+| public.prepare_fishing | p_region_id text, p_bait_id text, p_operation_id uuid | false |
 | public.react_to_collectible_gift | p_gift_id uuid, p_reaction text | false |
 | public.region_map |  | false |
 | public.remove_friend | p_request_id uuid | false |

@@ -7,17 +7,17 @@ afterEach(cleanup)
 it('shows the correct public region icon only for native individuals, including image fallbacks',()=>{
  for(const [id,region] of Object.entries(regionIcons)){
   const view=render(<CollectibleThumbnail path="fish.png" name="물고기" species={{is_native:true,native_region_id:id}}/> )
-  const badge=screen.getByLabelText(`${region.name} 토착 개체`)
+  const badge=screen.getByLabelText(`주 서식지: ${region.name}`)
   expect(badge.querySelector('img')?.getAttribute('src')).toBe(region.src)
   fireEvent.error(screen.getByAltText('물고기'))
-  expect(screen.getByLabelText(`${region.name} 토착 개체`)).toBeTruthy()
+  expect(screen.getByLabelText(`주 서식지: ${region.name}`)).toBeTruthy()
   view.unmount()
  }
 })
 it('omits badges for non-native, legacy, and unknown regions',()=>{
  for(const species of [undefined,{is_native:false,native_region_id:'mistmoon'},{is_native:true,native_region_id:'unknown'}]){
   const view=render(<CollectibleThumbnail path="fish.png" name="물고기" species={species}/> )
-  expect(screen.queryByLabelText(/토착 개체/)).toBeNull()
+  expect(screen.queryByLabelText(/주 서식지/)).toBeNull()
   view.unmount()
  }
 })

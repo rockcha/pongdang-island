@@ -5,6 +5,33 @@ import {FishingSea,FishingPlatform,fishingEnvironments,fishingEnvironment} from 
 import {FishingWater} from '@/features/fishing/fishing-water'
 import {newTensionGame,fishingBiteSeconds} from '@/features/fishing/tension-game'
 afterEach(cleanup)
+it('shows a chance-failure shadow retreating without bite or resistance effects',()=>{
+ const game={...newTensionGame(()=>.5,{failureAt:3}),phase:'playing' as const,time:1}
+ const props={game,visual:{time:1,tension:38,reel:0,ending:0},mood:'surge' as const,active:true,reduced:false,regionId:'pongdang'}
+ const {container,rerender}=render(<FishingWater {...props}/>)
+ const shadow=()=>container.querySelector('[data-fishing-shadow]')!
+ const startPosition=shadow().getAttribute('transform')
+ expect(Number(shadow().getAttribute('opacity'))).toBeGreaterThan(0)
+ expect(container.querySelector('[data-fishing-resistance]')).toBeNull()
+ rerender(<FishingWater {...props} game={{...game,time:2.8}} visual={{...props.visual,time:2.8}}/>)
+ expect(shadow().getAttribute('transform')).not.toBe(startPosition)
+ expect(Number(shadow().getAttribute('opacity'))).toBeLessThan(.22)
+ rerender(<FishingWater {...props} game={{...game,phase:'lost',time:3}} visual={{...props.visual,ending:.5}}/>)
+ expect(Number(shadow().getAttribute('opacity'))).toBe(0)
+})
+it('holds the float below the surface before smoothly resurfacing',()=>{
+ const game=newTensionGame(()=>.5)
+ const props={game:{...game,time:1.3},visual:{time:1.3,tension:38,reel:0,ending:0},mood:'warning' as const,active:true,reduced:false,regionId:'pongdang'}
+ const {container,rerender}=render(<FishingWater {...props}/>)
+ const opacity=()=>Number(container.querySelector('[data-fishing-float]')?.getAttribute('opacity'))
+ expect(opacity()).toBeCloseTo(.12)
+ rerender(<FishingWater {...props} game={{...game,time:1.65}}/>)
+ expect(opacity()).toBeCloseTo(.12)
+ rerender(<FishingWater {...props} game={{...game,time:2.15}}/>)
+ expect(opacity()).toBeGreaterThan(.4);expect(opacity()).toBeLessThan(.8)
+ rerender(<FishingWater {...props} game={{...game,time:2.7}}/>)
+ expect(opacity()).toBe(1)
+})
 it('keeps the rod straight while scouting and bends only after the first pull starts',()=>{
  const game=newTensionGame(()=>.5)
  const props={game,visual:{time:2,tension:38,reel:0,ending:0},mood:'warning' as const,active:false,reduced:true,regionId:'pongdang'}

@@ -58,8 +58,15 @@ export function stepTensionGame(state:TensionGame,seconds:number,pulling:boolean
   if(s.phase==='waiting'){if(s.time>=s.wait){s.phase='playing';s.time=0}continue}
   const duration=s.failureAt??fishingFightDuration(s.seed,s.rarity)
   s.progress=Math.min(1,.12+.88*s.time/duration)
+  // A server-planned escape is independent of input. Keep the gauge stationary
+  // so it cannot suggest a player-caused line break or slack failure.
+  if(s.failureAt!==undefined){
+   s.danger=0;s.slack=0
+   if(s.time>=s.failureAt){s.phase='lost';s.reason=s.failureReason??'escape';break}
+   continue
+  }
   // Approach/nibbles last 2–4 seconds; gauge play starts with the first pull.
-  if(s.time<fishingBiteSeconds(s.seed)&&(s.failureAt===undefined||s.time<s.failureAt))continue
+  if(s.time<fishingBiteSeconds(s.seed))continue
   const strength=fishStrength[s.rarity]
   const drain=fishForce(s.time,s.seed,s.rarity)
   const recovering=fishBehavior(s.time,s.seed,s.rarity).mood==='recover'
@@ -67,9 +74,8 @@ export function stepTensionGame(state:TensionGame,seconds:number,pulling:boolean
   s.tension=Math.max(0,Math.min(100,s.tension+rate*dt))
   s.danger=s.tension>=95?s.danger+dt:Math.max(0,s.danger-dt*2)
   s.slack=s.tension<=0?s.slack+dt:0
-  if(s.failureAt!==undefined&&(s.time>=s.failureAt)){s.phase='lost';s.reason=s.failureReason??'escape'}
-  else if(s.failureAt===undefined&&s.danger>=gaugeFailureSeconds){s.phase='lost';s.reason='snap'}
-  else if(s.failureAt===undefined&&s.slack>=gaugeFailureSeconds){s.phase='lost';s.reason='slack'}
+  if(s.danger>=gaugeFailureSeconds){s.phase='lost';s.reason='snap'}
+  else if(s.slack>=gaugeFailureSeconds){s.phase='lost';s.reason='slack'}
   else if(s.progress>=1)s.phase='won'
   if(s.phase==='won'||s.phase==='lost')break
  }

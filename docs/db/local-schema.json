@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "53fdefb4e426ad682e4ca0e35971ee07118925172c87d45ff342ee60f2db5073",
+  "migrationHash": "f09e093eefeeefc0dc4f3c51e43454ebea7ba193cb09575a779ee672173d8fbc",
   "structure": {
     "enums": [
       {
@@ -73,6 +73,12 @@
       {
         "rls": true,
         "name": "notice_operators",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "prepared_fishing_casts",
         "schema": "app_private",
         "force_rls": false
       },
@@ -489,6 +495,166 @@
         "default": null,
         "identity": "",
         "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "region_id",
+        "type": "text",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "bait_id",
+        "type": "text",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "eligible",
+        "type": "boolean",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "species_id",
+        "type": "text",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "map_region_id",
+        "type": "text",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "rarity",
+        "type": "game_rarity",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "snapshot",
+        "type": "jsonb",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "wait_seconds",
+        "type": "numeric",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "failure_at",
+        "type": "numeric",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "failure_reason",
+        "type": "text",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "expires_at",
+        "type": "timestamp with time zone",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "finished_at",
+        "type": "timestamp with time zone",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "result",
+        "type": "jsonb",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
         "generated": ""
       },
       {
@@ -3204,6 +3370,18 @@
         "definition": "CREATE UNIQUE INDEX notice_operators_pkey ON app_private.notice_operators USING btree (user_id)"
       },
       {
+        "name": "prepared_fishing_casts_pkey",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX prepared_fishing_casts_pkey ON app_private.prepared_fishing_casts USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "prepared_fishing_one_active",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX prepared_fishing_one_active ON app_private.prepared_fishing_casts USING btree (user_id) WHERE (finished_at IS NULL)"
+      },
+      {
         "name": "region_settings_pkey",
         "table": "region_settings",
         "schema": "app_private",
@@ -4400,7 +4578,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.cast_fishing(p_region_id text, p_bait_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid(); w public.player_wallets; a public.fishing_attempts; s public.collectible_species;\n v_current text; v_required boolean; v_count integer; v_rarity public.game_rarity; v_tank uuid; v_item uuid; v_decoration boolean; v_map_region text; v_species_id text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_operation_id is null then raise exception 'INVALID_TRADE'; end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n select * into a from public.fishing_attempts where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if a.region_id is distinct from p_region_id or a.bait_id is distinct from p_bait_id then raise exception 'OPERATION_CONFLICT'; end if;\n  select c.species_id,c.map_region_id into v_species_id,v_map_region from public.player_collectibles c where c.id=a.collectible_id;\n  select * into s from public.collectible_species where id=v_species_id;\n  return jsonb_build_object('attempt',to_jsonb(a)||jsonb_build_object('species',case when s.id is null then null else app_private.species_payload(s.id,v_map_region) end),'replayed',true);\n end if;\n select effect_kind='decoration' into v_decoration from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT'; end if;\n select requires_map_fragment into v_required from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND'; end if;\n select region_id into v_current from public.player_navigation where user_id=v_uid;\n if v_current is distinct from p_region_id then raise exception 'NOT_IN_REGION'; end if;\n if v_required and not exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'REGION_LOCKED'; end if;\n v_count:=coalesce((w.inventory->>p_bait_id)::integer,0);\n if v_count<1 then raise exception 'NO_BAIT'; end if;\n if not v_decoration then v_rarity:=app_private.resolve_regional_fishing(p_bait_id,p_region_id,floor(random()*10000)::integer); end if;\n if v_decoration or v_rarity is not null then\n  select q.species_id,q.map_region_id into v_species_id,v_map_region\n  from app_private.pick_regional_collectible(p_region_id,v_rarity,v_decoration,floor(random()*10000)::integer) q;\n  if not found then raise exception 'NO_COLLECTIBLE_FOR_REGION'; end if;\n  select * into s from public.collectible_species where id=v_species_id;\n  if s.kind='map' then\n   insert into public.player_map_fragments(user_id,region_id) values(v_uid,v_map_region) on conflict do nothing;\n  end if;\n  insert into public.player_collectibles(user_id,species_id,tank_id,map_region_id) values(v_uid,s.id,v_tank,v_map_region) returning id into v_item;\n  insert into public.player_discoveries(user_id,species_id) values(v_uid,s.id) on conflict do nothing;\n end if;\n update public.player_wallets set inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(v_count-1)),updated_at=now() where user_id=v_uid;\n insert into public.fishing_attempts(user_id,operation_id,region_id,bait_id,rarity,collectible_id)\n values(v_uid,p_operation_id,p_region_id,p_bait_id,coalesce(s.rarity,(select rarity from public.regions where id=v_map_region)),v_item) returning * into a;\n return jsonb_build_object('attempt',to_jsonb(a)||jsonb_build_object('species',case when s.id is null then null else app_private.species_payload(s.id,v_map_region) end),'replayed',false);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.cast_fishing(p_region_id text, p_bait_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n raise exception 'FISHING_FLOW_UPDATED';\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -4444,6 +4622,16 @@
         "securityDefiner": true
       },
       {
+        "name": "collectible_habitat_weight",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_primary_region text, p_region text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.collectible_habitat_weight(p_primary_region text, p_region text)\n RETURNS numeric\n LANGUAGE sql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\n select case when p_primary_region is null then 1::numeric\n  when p_primary_region=p_region then 2::numeric else 0.2::numeric end\n$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "collectible_storage",
         "config": [
           "search_path=\"\""
@@ -4460,7 +4648,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.collection_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('items',app_private.owned_collectibles(),\n 'catalog',(select coalesce(jsonb_agg(to_jsonb(s)||jsonb_build_object('discovered',d.species_id is not null,\n 'habitats',coalesce((select jsonb_agg(jsonb_build_object('id',r.id,'name',r.name) order by r.sort_order)\n from public.collectible_habitats h join public.regions r on r.id=h.region_id where h.species_id=s.id),'[]'::jsonb)) order by s.kind,s.id),'[]'::jsonb)\n from public.collectible_species s left join public.player_discoveries d on d.species_id=s.id and d.user_id=v_uid where s.kind<>'map'));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.collection_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_regions jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select coalesce(jsonb_agg(jsonb_build_object('id',r.id,'name',r.name) order by r.sort_order),'[]'::jsonb)\n into v_regions from public.regions r;\n return jsonb_build_object('items',app_private.owned_collectibles(),\n 'catalog',(select coalesce(jsonb_agg(to_jsonb(s)||jsonb_build_object(\n 'discovered',d.species_id is not null,'habitats',v_regions) order by s.kind,s.id),'[]'::jsonb)\n from public.collectible_species s left join public.player_discoveries d on d.species_id=s.id and d.user_id=v_uid\n where s.kind<>'map'));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -4584,6 +4772,16 @@
         "securityDefiner": true
       },
       {
+        "name": "finish_fishing",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_operation_id uuid, p_won boolean",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.finish_fishing(p_operation_id uuid, p_won boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;a public.fishing_attempts;\n v_item uuid;v_success boolean;v_result jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_won is null then raise exception 'INVALID_RESULT';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id for update;\n if not found then raise exception 'CAST_NOT_FOUND';end if;\n if p.finished_at is not null then return p.result||jsonb_build_object('replayed',true);end if;\n if p_won and clock_timestamp()<p.created_at+make_interval(secs=>p.wait_seconds::double precision+3) then raise exception 'CAST_TOO_EARLY';end if;\n v_success:=p_won and p.eligible and clock_timestamp()<=p.expires_at;\n if v_success then\n  if p.map_region_id is not null then\n   insert into public.player_map_fragments(user_id,region_id) values(v_uid,p.map_region_id) on conflict do nothing;\n  end if;\n  insert into public.player_collectibles(user_id,species_id,map_region_id) values(v_uid,p.species_id,p.map_region_id) returning id into v_item;\n  insert into public.player_discoveries(user_id,species_id) values(v_uid,p.species_id) on conflict do nothing;\n end if;\n insert into public.fishing_attempts(user_id,operation_id,region_id,bait_id,rarity,collectible_id)\n values(v_uid,p.operation_id,p.region_id,p.bait_id,case when v_success then p.rarity end,v_item) returning * into a;\n v_result:=jsonb_build_object('attempt',to_jsonb(a)||jsonb_build_object('species',case when v_success then p.snapshot end),\n 'replayed',false,'failure_reason',case when v_success then null when clock_timestamp()>p.expires_at then 'expired' when not p.eligible then p.failure_reason else 'minigame' end);\n update app_private.prepared_fishing_casts set finished_at=clock_timestamp(),result=v_result where user_id=v_uid and operation_id=p_operation_id;\n return v_result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "fishing_rod_state",
         "config": [
           "search_path=\"\""
@@ -4600,8 +4798,18 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_region text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select region_id into v_region from public.player_navigation where user_id=v_uid;\n v_region:=coalesce(v_region,'pongdang');\n return jsonb_build_object('regionId',v_region,'regionName',(select name from public.regions where id=v_region),'mapChanceBp',500,\n  'baits',(select jsonb_agg(to_jsonb(b)||app_private.regional_bait_odds(b.id,v_region) order by b.sort_order) from public.fishing_baits b));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_region text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select region_id into v_region from public.player_navigation where user_id=v_uid;\n v_region:=coalesce(v_region,'pongdang');\n return jsonb_build_object('regionId',v_region,'regionName',(select name from public.regions where id=v_region),\n 'successChanceBp',4000,\n 'prepared',(select app_private.prepared_fishing_payload(p) from app_private.prepared_fishing_casts p where user_id=v_uid and finished_at is null and expires_at>clock_timestamp()),\n 'baits',(select jsonb_agg(to_jsonb(b)||app_private.regional_bait_odds(b.id,v_region)||jsonb_build_object('successChanceBp',app_private.fishing_success_chance_bp(b.id)) order by b.sort_order) from public.fishing_baits b));\nend $function$\n",
         "securityDefiner": true
+      },
+      {
+        "name": "fishing_success_chance_bp",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_bait_id text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_success_chance_bp(p_bait_id text)\n RETURNS integer\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\nbegin\n if not exists(select 1 from public.fishing_baits where id=p_bait_id) then raise exception 'INVALID_BAIT';end if;\n return case when p_bait_id='bait_safe' then 10000 else 4000 end;\nend $function$\n",
+        "securityDefiner": false
       },
       {
         "name": "friend_aquarium",
@@ -4800,7 +5008,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region_id text, p_rarity game_rarity, p_decoration boolean, p_map_roll integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_regional_collectible(p_region_id text, p_rarity game_rarity, p_decoration boolean, p_map_roll integer)\n RETURNS TABLE(species_id text, map_region_id text)\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare v_objects boolean;\nbegin\n if p_map_roll is null or p_map_roll<0 or p_map_roll>=10000 then raise exception 'INVALID_ROLL';end if;\n if p_region_id='scrapisle' and not p_decoration then\n  -- Objects on80% of ordinary rolls; fall back within the same tier if pool absent.\n  v_objects:=random()<0.8;\n  return query select s.id,null::text from public.collectible_species s join public.collectible_habitats h on h.species_id=s.id\n  where h.region_id=p_region_id and s.rarity=p_rarity and s.kind in('fish','trash','decoration')\n  order by case when (s.kind in('trash','decoration'))=v_objects then 0 else 1 end,random() limit 1;\n else\n  return query select s.id,null::text from public.collectible_species s join public.collectible_habitats h on h.species_id=s.id\n  where h.region_id=p_region_id and ((p_decoration and s.kind='decoration') or (not p_decoration and s.kind in('fish','trash') and s.rarity=p_rarity))\n  order by random() limit 1;\n end if;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_regional_collectible(p_region_id text, p_rarity game_rarity, p_decoration boolean, p_map_roll integer)\n RETURNS TABLE(species_id text, map_region_id text)\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare v_rod_region text;\nbegin\n if p_map_roll is null or p_map_roll<0 or p_map_roll>=10000 then raise exception 'INVALID_ROLL';end if;\n if not exists(select 1 from public.regions where id=p_region_id) then raise exception 'REGION_NOT_FOUND';end if;\n -- Read the caller's owned loadout once, never accept a client-supplied rod ID.\n select r.region_id into v_rod_region from public.player_rod_loadouts l\n join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n join public.fishing_rods r on r.id=o.rod_id\n where l.user_id=auth.uid() and r.native_bonus_bp>0;\n return query select s.id,null::text from public.collectible_species s\n where (p_decoration and s.kind='decoration')\n    or (not p_decoration and s.kind in ('fish','trash') and s.rarity=p_rarity)\n order by -ln(greatest(random(),1e-15))/app_private.rod_habitat_weight(\n  case when s.is_native then s.native_region_id else null end,p_region_id,v_rod_region),s.id limit 1;\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -4812,6 +5020,26 @@
         "arguments": "p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric",
         "definition": "CREATE OR REPLACE FUNCTION app_private.place_collectible(p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid(); v_item public.player_collectibles;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_x is null or p_y is null or not(p_x between 0 and 1) or not(p_y between 0 and 1) then raise exception 'INVALID_POSITION'; end if;\n if not exists(select 1 from public.aquarium_tanks where id=p_tank_id and user_id=v_uid) then raise exception 'TANK_NOT_FOUND'; end if;\n select * into v_item from public.player_collectibles where id=p_collectible_id and user_id=v_uid and sold_at is null and escrow_gift_id is null for update;\n if not found or v_item.tank_id is distinct from p_tank_id then raise exception 'COLLECTIBLE_NOT_FOUND'; end if;\n if not exists(select 1 from public.collectible_species where id=v_item.species_id and kind in ('fish','trash','decoration')) then raise exception 'INVALID_ITEM'; end if;\n update public.player_collectibles set position_x=p_x,position_y=p_y where id=v_item.id;\n return jsonb_build_object('id',v_item.id,'position_x',p_x,'position_y',p_y);\nend $function$\n",
         "securityDefiner": true
+      },
+      {
+        "name": "prepare_fishing",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.prepare_fishing(p_region_id text, p_bait_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;w public.player_wallets;\n v_current text;v_required boolean;v_count integer;v_decoration boolean;v_eligible boolean;\n v_rarity public.game_rarity;v_species text;v_map text;v_snapshot jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null then raise exception 'INVALID_TRADE';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if p.region_id<>p_region_id or p.bait_id<>p_bait_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.prepared_fishing_payload(p);\n end if;\n if exists(select 1 from public.fishing_attempts where user_id=v_uid and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and finished_at is null;\n if found then\n  if p.expires_at<=clock_timestamp() then perform app_private.finish_fishing(p.operation_id,false);\n  else return app_private.prepared_fishing_payload(p);end if;\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n select effect_kind='decoration' into v_decoration from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT';end if;\n select requires_map_fragment into v_required from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND';end if;\n select region_id into v_current from public.player_navigation where user_id=v_uid;\n if v_current is distinct from p_region_id then raise exception 'NOT_IN_REGION';end if;\n if v_required and not exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'REGION_LOCKED';end if;\n v_count:=coalesce((w.inventory->>p_bait_id)::integer,0);\n if v_count<1 then raise exception 'NO_BAIT';end if;\n -- Success is drawn once, independently of the conditional rarity roll.\n v_eligible:=random()<app_private.fishing_success_chance_bp(p_bait_id)::numeric/10000;\n v_rarity:='common';\n if v_eligible then\n  if not v_decoration then v_rarity:=app_private.resolve_regional_fishing(p_bait_id,p_region_id,floor(random()*10000)::integer);end if;\n  select q.species_id,q.map_region_id into v_species,v_map from app_private.pick_regional_collectible(p_region_id,v_rarity,v_decoration,floor(random()*10000)::integer) q;\n  if not found then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n  select rarity into v_rarity from public.collectible_species where id=v_species;\n  v_snapshot:=app_private.species_payload(v_species,v_map);\n end if;\n insert into app_private.prepared_fishing_casts(user_id,operation_id,region_id,bait_id,eligible,species_id,map_region_id,rarity,snapshot,wait_seconds,failure_at,failure_reason,expires_at)\n values(v_uid,p_operation_id,p_region_id,p_bait_id,v_eligible,v_species,v_map,v_rarity,v_snapshot,3+random()*2,\n  4.5+random()*3,(array['bait','escape','wave'])[1+floor(random()*3)::integer],clock_timestamp()+interval '3 minutes') returning * into p;\n update public.player_wallets set inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(v_count-1)),updated_at=now() where user_id=v_uid;\n return app_private.prepared_fishing_payload(p);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "prepared_fishing_payload",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p app_private.prepared_fishing_casts",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.prepared_fishing_payload(p app_private.prepared_fishing_casts)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select jsonb_build_object('operation_id',p.operation_id,'region_id',p.region_id,'bait_id',p.bait_id,\n 'eligible',p.eligible,'species',p.snapshot,'rarity',p.rarity,'wait_seconds',p.wait_seconds,\n 'failure_at',p.failure_at,'failure_reason',p.failure_reason,'expires_at',p.expires_at,\n 'finished',p.finished_at is not null,'result',p.result)\n$function$\n",
+        "securityDefiner": false
       },
       {
         "name": "react_to_collectible_gift",
@@ -4840,7 +5068,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_bait_id text, p_region_id text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.regional_bait_odds(p_bait_id text, p_region_id text)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare b public.fishing_baits;v_rank integer;v_success integer;v_c integer;v_r integer;v_e integer;v_m integer;\nbegin\n select * into b from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT';end if;\n select case rarity when 'common' then 0 when 'rare' then 1 when 'epic' then 2 else 3 end into v_rank from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND';end if;\n if b.effect_kind='decoration' then return jsonb_build_object('common_bp',0,'rare_bp',0,'epic_bp',0,'mythic_bp',0,'failure_bp',0);end if;\n v_success:=10000-b.failure_bp;\n if b.common_bp>0 then\n  v_r:=1300+300*v_rank;v_e:=180+80*v_rank;v_m:=20+20*v_rank;\n elsif b.rare_bp>0 then\n  v_r:=9870-50*v_rank;v_e:=100+40*v_rank;v_m:=30+10*v_rank;\n elsif b.epic_bp>0 then\n  v_r:=0;v_e:=9970-20*v_rank;v_m:=30+20*v_rank;\n else v_r:=0;v_e:=0;v_m:=10000;end if;\n v_m:=floor(v_success::numeric*v_m/10000);v_e:=floor(v_success::numeric*v_e/10000);\n if b.common_bp>0 then v_r:=floor(v_success::numeric*v_r/10000);v_c:=v_success-v_r-v_e-v_m;\n elsif b.rare_bp>0 then v_c:=0;v_r:=v_success-v_e-v_m;\n elsif b.epic_bp>0 then v_c:=0;v_r:=0;v_e:=v_success-v_m;\n else v_c:=0;v_r:=0;v_e:=0;v_m:=v_success;end if;\n if p_region_id in('whitenight','cloudferry') and not exists(\n  select 1 from public.collectible_species s join public.collectible_habitats h on h.species_id=s.id\n  where h.region_id=p_region_id and s.kind='fish' and s.rarity='mythic'\n ) then v_e:=v_e+v_m;v_m:=0;end if;\n return jsonb_build_object('common_bp',v_c,'rare_bp',v_r,'epic_bp',v_e,'mythic_bp',v_m,'failure_bp',b.failure_bp);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.regional_bait_odds(p_bait_id text, p_region_id text)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare b public.fishing_baits;\nbegin\n select * into b from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT';end if;\n if not exists(select 1 from public.regions where id=p_region_id) then raise exception 'REGION_NOT_FOUND';end if;\n if b.effect_kind='decoration' then\n  return jsonb_build_object('common_bp',0,'rare_bp',0,'epic_bp',0,'mythic_bp',0,'failure_bp',0);\n end if;\n return jsonb_build_object('common_bp',b.common_bp,'rare_bp',b.rare_bp,'epic_bp',b.epic_bp,'mythic_bp',b.mythic_bp,'failure_bp',b.failure_bp);\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -4892,6 +5120,16 @@
         "arguments": "p_request_id uuid, p_action text",
         "definition": "CREATE OR REPLACE FUNCTION app_private.respond_friend_request(p_request_id uuid, p_action text)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid := auth.uid(); v_request public.friend_requests; v_name text;\nbegin\n  if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n  select * into v_request from public.friend_requests where id = p_request_id for update;\n  if not found then raise exception 'REQUEST_NOT_FOUND'; end if;\n  if p_action is null or p_action not in ('accept','decline','cancel') then raise exception 'INVALID_ACTION'; end if;\n  if (p_action = 'cancel' and v_request.sender_id <> v_uid)\n    or (p_action in ('accept','decline') and v_request.recipient_id <> v_uid) then raise exception 'NOT_ALLOWED'; end if;\n  if v_request.status <> 'pending' then raise exception 'REQUEST_ALREADY_HANDLED'; end if;\n  update public.friend_requests set status = case p_action when 'accept' then 'accepted' when 'decline' then 'declined' else 'cancelled' end,\n    updated_at = now() where id = p_request_id;\n  update public.notifications set read_at = coalesce(read_at,now()) where request_id = p_request_id and kind = 'friend_request';\n  if p_action = 'accept' then\n    select nickname into v_name from public.player_profiles where id = v_uid;\n    insert into public.notifications(recipient_id,actor_id,category,kind,title,body,request_id)\n      values(v_request.sender_id,v_uid,'friend','friend_accepted',v_name || '님과 친구가 됐어요','친구 목록에서 확인해보세요.',p_request_id);\n  end if;\nend $function$\n",
         "securityDefiner": true
+      },
+      {
+        "name": "rod_habitat_weight",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_primary_region text, p_region text, p_rod_region text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.rod_habitat_weight(p_primary_region text, p_region text, p_rod_region text)\n RETURNS numeric\n LANGUAGE sql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\n select case when p_primary_region is not null and p_primary_region=p_rod_region\n  then case when p_primary_region=p_region then 2.2::numeric else 0.3::numeric end\n  else app_private.collectible_habitat_weight(p_primary_region,p_region) end\n$function$\n",
+        "securityDefiner": false
       },
       {
         "name": "sell_collectibles",
@@ -5274,6 +5512,16 @@
         "securityDefiner": false
       },
       {
+        "name": "finish_fishing",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_operation_id uuid, p_won boolean",
+        "definition": "CREATE OR REPLACE FUNCTION public.finish_fishing(p_operation_id uuid, p_won boolean)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.finish_fishing(p_operation_id,p_won)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "fishing_rod_state",
         "config": [
           "search_path=\"\""
@@ -5451,6 +5699,16 @@
         "schema": "public",
         "arguments": "p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric",
         "definition": "CREATE OR REPLACE FUNCTION public.place_collectible(p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.place_collectible(p_collectible_id,p_tank_id,p_x,p_y)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "prepare_fishing",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.prepare_fishing(p_region_id text, p_bait_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.prepare_fishing(p_region_id,p_bait_id,p_operation_id)$function$\n",
         "securityDefiner": false
       },
       {
@@ -5755,6 +6013,132 @@
         "table": "notice_operators",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "prepared_fishing_casts_bait_id_fkey",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (bait_id) REFERENCES fishing_baits(id)"
+      },
+      {
+        "name": "prepared_fishing_casts_bait_id_not_null",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "NOT NULL bait_id"
+      },
+      {
+        "name": "prepared_fishing_casts_check",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "CHECK ((eligible = (species_id IS NOT NULL)))"
+      },
+      {
+        "name": "prepared_fishing_casts_created_at_not_null",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "prepared_fishing_casts_eligible_not_null",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "NOT NULL eligible"
+      },
+      {
+        "name": "prepared_fishing_casts_expires_at_not_null",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "NOT NULL expires_at"
+      },
+      {
+        "name": "prepared_fishing_casts_failure_at_check",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "CHECK (((failure_at >= (4)::numeric) AND (failure_at <= (9)::numeric)))"
+      },
+      {
+        "name": "prepared_fishing_casts_failure_at_not_null",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "NOT NULL failure_at"
+      },
+      {
+        "name": "prepared_fishing_casts_failure_reason_check",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "CHECK ((failure_reason = ANY (ARRAY['bait'::text, 'escape'::text, 'wave'::text])))"
+      },
+      {
+        "name": "prepared_fishing_casts_failure_reason_not_null",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "NOT NULL failure_reason"
+      },
+      {
+        "name": "prepared_fishing_casts_map_region_id_fkey",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (map_region_id) REFERENCES regions(id)"
+      },
+      {
+        "name": "prepared_fishing_casts_operation_id_not_null",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "prepared_fishing_casts_pkey",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "prepared_fishing_casts_rarity_not_null",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "NOT NULL rarity"
+      },
+      {
+        "name": "prepared_fishing_casts_region_id_fkey",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (region_id) REFERENCES regions(id)"
+      },
+      {
+        "name": "prepared_fishing_casts_region_id_not_null",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "NOT NULL region_id"
+      },
+      {
+        "name": "prepared_fishing_casts_species_id_fkey",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (species_id) REFERENCES collectible_species(id)"
+      },
+      {
+        "name": "prepared_fishing_casts_user_id_fkey",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "prepared_fishing_casts_user_id_not_null",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "prepared_fishing_casts_wait_seconds_check",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "CHECK (((wait_seconds >= (3)::numeric) AND (wait_seconds <= (5)::numeric)))"
+      },
+      {
+        "name": "prepared_fishing_casts_wait_seconds_not_null",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "NOT NULL wait_seconds"
       },
       {
         "name": "region_settings_id_check",
@@ -6642,7 +7026,7 @@
         "name": "collectible_sheet_layout",
         "table": "collectible_species",
         "schema": "public",
-        "definition": "CHECK ((((kind = 'fish'::collectible_kind) AND (sprite_sheet_path IS NOT NULL) AND (btrim(sprite_sheet_path) <> ''::text)) OR ((kind <> 'fish'::collectible_kind) AND (sprite_sheet_path IS NULL))))"
+        "definition": "CHECK ((((kind = 'fish'::collectible_kind) AND (sprite_sheet_path IS NOT NULL) AND (btrim(sprite_sheet_path) <> ''::text)) OR ((kind = 'decoration'::collectible_kind) AND ((sprite_sheet_path IS NULL) OR (btrim(sprite_sheet_path) <> ''::text))) OR ((kind = ANY (ARRAY['trash'::collectible_kind, 'map'::collectible_kind])) AND (sprite_sheet_path IS NULL))))"
       },
       {
         "name": "collectible_species_check",
@@ -10873,6 +11257,27 @@
         "arguments": "p_tank uuid, p_operation uuid, p_step integer"
       },
       {
+        "name": "collectible_habitat_weight",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_primary_region text, p_region text"
+      },
+      {
+        "name": "collectible_habitat_weight",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_primary_region text, p_region text"
+      },
+      {
+        "name": "collectible_habitat_weight",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_primary_region text, p_region text"
+      },
+      {
         "name": "collectible_storage",
         "role": "anon",
         "schema": "app_private",
@@ -11167,6 +11572,27 @@
         "arguments": "p_code text"
       },
       {
+        "name": "finish_fishing",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_won boolean"
+      },
+      {
+        "name": "finish_fishing",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_won boolean"
+      },
+      {
+        "name": "finish_fishing",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_won boolean"
+      },
+      {
         "name": "fishing_rod_state",
         "role": "anon",
         "schema": "app_private",
@@ -11207,6 +11633,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "fishing_success_chance_bp",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait_id text"
+      },
+      {
+        "name": "fishing_success_chance_bp",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait_id text"
+      },
+      {
+        "name": "fishing_success_chance_bp",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait_id text"
       },
       {
         "name": "friend_aquarium",
@@ -11650,6 +12097,48 @@
         "arguments": "p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric"
       },
       {
+        "name": "prepare_fishing",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid"
+      },
+      {
+        "name": "prepare_fishing",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid"
+      },
+      {
+        "name": "prepare_fishing",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid"
+      },
+      {
+        "name": "prepared_fishing_payload",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p app_private.prepared_fishing_casts"
+      },
+      {
+        "name": "prepared_fishing_payload",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p app_private.prepared_fishing_casts"
+      },
+      {
+        "name": "prepared_fishing_payload",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p app_private.prepared_fishing_casts"
+      },
+      {
         "name": "react_to_collectible_gift",
         "role": "anon",
         "schema": "app_private",
@@ -11816,6 +12305,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_request_id uuid, p_action text"
+      },
+      {
+        "name": "rod_habitat_weight",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_primary_region text, p_region text, p_rod_region text"
+      },
+      {
+        "name": "rod_habitat_weight",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_primary_region text, p_region text, p_rod_region text"
+      },
+      {
+        "name": "rod_habitat_weight",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_primary_region text, p_region text, p_rod_region text"
       },
       {
         "name": "sell_collectibles",
@@ -12616,6 +13126,27 @@
         "arguments": "p_code text"
       },
       {
+        "name": "finish_fishing",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_won boolean"
+      },
+      {
+        "name": "finish_fishing",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_won boolean"
+      },
+      {
+        "name": "finish_fishing",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_won boolean"
+      },
+      {
         "name": "fishing_rod_state",
         "role": "anon",
         "schema": "public",
@@ -12992,6 +13523,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric"
+      },
+      {
+        "name": "prepare_fishing",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid"
+      },
+      {
+        "name": "prepare_fishing",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid"
+      },
+      {
+        "name": "prepare_fishing",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid"
       },
       {
         "name": "react_to_collectible_gift",

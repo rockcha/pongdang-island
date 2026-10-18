@@ -38,11 +38,12 @@ it('shows distinct Pongi artwork for a full gauge, an empty gauge and a chance e
  rerender(<CatchReveal failure="맛만 보고 달아났어요" failureReason="bait" onDismiss={vi.fn()}/>)
  expect(screen.getByRole('img',{name:'낚시에 실패해 시무룩한 퐁이'}).getAttribute('src')).toBe('/branding/pongi-fishing-fail.png')
 })
+function dismissResult(){const clock=vi.spyOn(Date,'now').mockReturnValue(Date.now()+1000);try{fireEvent.click(screen.getByRole('button',{name:'낚시 실패 결과 닫기'}))}finally{clock.mockRestore()}}
 async function start(){fireEvent.click(await screen.findByRole('button',{name:'퐁당 지렁이 1개로 낚시하기'}));await screen.findByRole('button',{name:'미니게임 성공'})}
 it('places the native species and anchor harbor tools beside the collection book',async()=>{
  setup()
  await screen.findByRole('button',{name:/미끼통/})
- expect(screen.getByRole('button',{name:'이 바다의 특별한 개체'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'이 바다를 주 서식지로 하는 개체'})).toBeTruthy()
  expect(screen.getByRole('button',{name:'바다 도감'})).toBeTruthy()
  const harbor=screen.getByRole('link',{name:'지도'})
  expect(harbor.getAttribute('href')).toBe('/harbor')
@@ -63,7 +64,7 @@ it('prepares before playing and passes the reserved silhouette and strength with
  setup();await start();expect(prepare).toHaveBeenCalledWith('pongdang','bait',expect.any(String));expect(finish).not.toHaveBeenCalled();expect(screen.getByTestId('challenge').dataset).toMatchObject({rarity:'rare',outline:species.name,doomed:'false'});fireEvent.click(screen.getByRole('button',{name:'미니게임 성공'}));await screen.findByText('낚시 실패');expect(finish).toHaveBeenCalledWith(plan.operation_id,true)
 })
 it('finalizes cancellation and minigame failure as losses',async()=>{
- setup();await start();fireEvent.click(screen.getByRole('button',{name:'미니게임 취소'}));await screen.findByText('낚시 실패');expect(finish).toHaveBeenCalledWith(plan.operation_id,false);expect(screen.getByText('사용한 미끼 1개는 소모됐어요.')).toBeTruthy();expect(screen.getByRole('img',{name:'낚시에 실패해 시무룩한 퐁이'}).getAttribute('src')).toBe('/branding/pongi-fishing-fail.png');expect(screen.getByText('낚시를 그만두었어요.')).toBeTruthy();expect(screen.queryByRole('dialog')).toBeNull();fireEvent.click(screen.getByRole('button',{name:'낚시 실패 결과 닫기'}));expect(screen.queryByText('낚시 실패')).toBeNull()
+ setup();await start();fireEvent.click(screen.getByRole('button',{name:'미니게임 취소'}));await screen.findByText('낚시 실패');expect(finish).toHaveBeenCalledWith(plan.operation_id,false);expect(screen.queryByText('사용한 미끼 1개는 소모됐어요.')).toBeNull();expect(screen.getByRole('img',{name:'낚시에 실패해 시무룩한 퐁이'}).getAttribute('src')).toBe('/branding/pongi-fishing-fail.png');expect(screen.getByText('낚시를 그만두었어요.')).toBeTruthy();expect(screen.queryByRole('dialog')).toBeNull();dismissResult();expect(screen.queryByText('낚시 실패')).toBeNull()
 })
 it('uses a generic common shadow and a scripted escape for the pre-drawn failure',async()=>{
  setup();prepare.mockResolvedValue({...plan,eligible:false,species:null,rarity:'common'});await start();expect(screen.getByTestId('challenge').dataset).toMatchObject({rarity:'common',outline:'generic',doomed:'true'});fireEvent.click(screen.getByRole('button',{name:'미니게임 실패'}));await screen.findByText('낚시 실패');expect(finish).toHaveBeenCalledWith(plan.operation_id,false)
@@ -76,14 +77,15 @@ it('distinguishes a planned escape from a broken line and preserves the latter o
  await start();fireEvent.click(screen.getByRole('button',{name:'미니게임 실패'}))
  fireEvent.click(await screen.findByRole('button',{name:'결과 다시 확인'}))
  expect(await screen.findByText('너무 세게 당겨 낚싯줄이 끊어졌어요.')).toBeTruthy()
- expect(screen.getByText('힘 조절 실패')).toBeTruthy()
+ expect(screen.queryByText('힘 조절 실패')).toBeNull()
 })
 it('labels pre-drawn failures as a fish leaving instead of player error',async()=>{
  setup();prepare.mockResolvedValue({...plan,eligible:false,species:null,rarity:'common',failure_reason:'bait'})
  finish.mockResolvedValue({attempt:{operation_id:plan.operation_id,rarity:null,species:null},failure_reason:'bait'})
  await start();fireEvent.click(screen.getByRole('button',{name:'미니게임 실패'}))
- expect(await screen.findByText('미끼를 맛만 보고 도망갔어요.')).toBeTruthy()
- expect(screen.getByText('입질만 하고 떠났어요')).toBeTruthy()
+ expect(await screen.findByText('낚시 실패')).toBeTruthy()
+ expect(screen.queryByText('미끼를 맛만 보고 도망갔어요.')).toBeNull()
+ expect(screen.queryByText('입질만 하고 떠났어요')).toBeNull()
  expect(screen.queryByText('힘 조절 실패')).toBeNull()
 })
 it('retries settlement with the frozen operation and win flag, then reveals the exact reward',async()=>{
@@ -101,7 +103,7 @@ it('keeps the landing scene visible until reward confirmation completes',async()
  expect(screen.queryByTestId('challenge')).toBeNull()
 })
 it('runs all four forced rarity practices without consuming bait or calling reward endpoints',async()=>{
- setup();await screen.findByRole('button',{name:/미끼통/});for(const [label,rarity] of [['일반','common'],['희귀','rare'],['특급','epic'],['신화','mythic']]){fireEvent.click(screen.getByRole('button',{name:/힘 테스트|테스트$/}));fireEvent.click(screen.getByRole('button',{name:label}));fireEvent.click(screen.getByRole('button',{name:label+' 테스트 시작'}));expect(screen.getByTestId('challenge').dataset.rarity).toBe(rarity);fireEvent.click(screen.getByRole('button',{name:'미니게임 실패'}));fireEvent.click(await screen.findByRole('button',{name:'낚시 실패 결과 닫기'}));await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())};expect(prepare).not.toHaveBeenCalled();expect(finish).not.toHaveBeenCalled();expect(transact).not.toHaveBeenCalled()
+ setup();await screen.findByRole('button',{name:/미끼통/});for(const [label,rarity] of [['일반','common'],['희귀','rare'],['특급','epic'],['신화','mythic']]){fireEvent.click(screen.getByRole('button',{name:/힘 테스트|테스트$/}));fireEvent.click(screen.getByRole('button',{name:label}));fireEvent.click(screen.getByRole('button',{name:label+' 테스트 시작'}));expect(screen.getByTestId('challenge').dataset.rarity).toBe(rarity);fireEvent.click(screen.getByRole('button',{name:'미니게임 실패'}));await screen.findByRole('button',{name:'낚시 실패 결과 닫기'});dismissResult();await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())};expect(prepare).not.toHaveBeenCalled();expect(finish).not.toHaveBeenCalled();expect(transact).not.toHaveBeenCalled()
 })
 it('continues to show the standalone shop inventory without a region',async()=>{
  load.mockResolvedValue({baits:[bait]});render(<MemoryRouter><FishingPanel/></MemoryRouter>);expect(await screen.findByText(bait.description)).toBeTruthy();expect(screen.getByRole('button',{name:'퐁당 지렁이 1개 구매 30 골드'})).toBeTruthy();expect(screen.queryByRole('button',{name:/낚시하기/})).toBeNull()

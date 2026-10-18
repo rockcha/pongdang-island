@@ -1,0 +1,14 @@
+﻿{
+  "id": "inky-purple-gulper-eel",
+  "name": "먹보라 풍선장어",
+  "kind": "fish",
+  "rarity": "rare",
+  "subject": "Inky purple pelican gulper eel with distinct enormous pouch mouth, slender ribbon tail and lavender tail-tip lure. Friendly readable silhouette.",
+  "motion": "Ribbon tail bends in gentle S-wave and mouth pouch breathes subtly.",
+  "type": "sprite",
+  "path": "assets/storage-upload/new/20261018-183000/fish/rare/inky-purple-gulper-eel_sprite.png",
+  "storage_path": "fish/rare/inky-purple-gulper-eel_sprite.png",
+  "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-280d1b8c-49d6-4ccf-939d-03b5e31a8918.png",
+  "prompt": "Edit supplied sprite sheet: preserve exact creature identity and four distinct swimming poses. REPAIR LAYOUT: precisely FOUR complete right-facing creatures in a 2x2 array of equal square cells. Make each creature SMALL, only 65% of its square cell width, with very LARGE transparent margins. A wide clear alpha CROSS separates all four quadrants. Every head, tail and fin must fit wholly within its cell. Never crop. LOCK head and rigid torso to same local coordinates and scale in all four cells. No scene or labels or grid lines or checkerboard. Animate appendages naturally: Ribbon tail bends in gentle S-wave and mouth pouch breathes subtly. Keep reference rendering unchanged, true alpha PNG.",
+  "reference": "assets/storage-upload/new/20261018-183000/fish/rare/inky-purple-gulper-eel_sprite.png"
+}

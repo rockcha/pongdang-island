@@ -1,0 +1,14 @@
+﻿{
+  "id": "inky-purple-grenadier",
+  "name": "먹보라 심해대구",
+  "kind": "fish",
+  "rarity": "rare",
+  "subject": "Deep purple grenadier rattail fish, rounded big head, soft belly, long tapering thin tail, small chin barbel.",
+  "motion": "Long tapered tail undulates sequentially, chin barbel drifts softly.",
+  "type": "sprite",
+  "path": "assets/storage-upload/new/20261018-183000/fish/rare/inky-purple-grenadier_sprite.png",
+  "storage_path": "fish/rare/inky-purple-grenadier_sprite.png",
+  "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-0161abb2-1b47-45dc-a21a-568783365085.png",
+  "prompt": "Edit supplied sprite sheet: preserve exact creature identity and four distinct swimming poses. REPAIR LAYOUT: precisely FOUR complete right-facing creatures in a 2x2 array of equal square cells. Make each creature SMALL, only 65% of its square cell width, with very LARGE transparent margins. A wide clear alpha CROSS separates all four quadrants. Every head, tail and fin must fit wholly within its cell. Never crop. LOCK head and rigid torso to same local coordinates and scale in all four cells. No scene or labels or grid lines or checkerboard. Animate appendages naturally: Long tapered tail undulates sequentially, chin barbel drifts softly. Keep reference rendering unchanged, true alpha PNG.",
+  "reference": "assets/storage-upload/new/20261018-183000/fish/rare/inky-purple-grenadier_sprite.png"
+}

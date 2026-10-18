@@ -1,0 +1,13 @@
+﻿{
+  "id": "violet-hydrothermal-vent",
+  "name": "보랏빛 열수구",
+  "kind": "decoration",
+  "rarity": "rare",
+  "subject": "Low dark rocky deep-sea hydrothermal chimney cluster with thin wispy lavender mineral plumes rising vertically, stable broad rock base, no face.",
+  "motion": "Only thin lavender plumes curl and disperse cyclically while every rock and base stays perfectly fixed.",
+  "path": "assets/storage-upload/new/20261018-183000/decorations/rare/violet-hydrothermal-vent_sprite.png",
+  "storage_path": "decorations/rare/violet-hydrothermal-vent_sprite.png",
+  "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-5de635ff-6e93-41c6-9520-47658d6050a4.png",
+  "prompt": "Use case: stylized-concept. Exact reference decoration as four-frame animated game sprite sheet. Square true-alpha PNG, exactly 2x2 equal square cells. In EACH cell, object only 65% of the cell's longest dimension, with HUGE 15% transparent padding on every side. Identical rigid rock/shell base at identical local coordinates and scale in all cells. Animation: Only thin lavender plumes curl and disperse cyclically while every rock and base stays perfectly fixed. Four distinct gentle loop phases 0,90,180,270 degrees. Entire object inside each cell. Preserve exact reference rendering and colors, NO animals, faces, text, grid, checkerboard, scenery or background. No whole-object movement.",
+  "reference": "assets/storage-upload/new/20261018-183000/decorations/rare/violet-hydrothermal-vent_thumbnail.png"
+}

@@ -8,7 +8,7 @@ import type { Trade, Wallet } from './wallet'
 import {toast} from 'sonner'
 import {purchaseMessage} from './purchase-message'
 
-const GoldContext = createContext<{ wallet: Wallet; transact: (action: Trade) => Promise<void>; loading: boolean; busy: boolean; error: string; testClaimed: boolean; testEnabled: boolean; refresh: () => Promise<void> } | null>(null)
+const GoldContext = createContext<{ wallet: Wallet; transact: (action: Trade) => Promise<void>; batchEffects: (work: () => Promise<void>) => Promise<void>; loading: boolean; busy: boolean; error: string; testClaimed: boolean; testEnabled: boolean; refresh: () => Promise<void> } | null>(null)
 export function GoldIcon({ className = 'size-6' }: { className?: string }) {
   return <img src="/currency/gold-coin-starfish.png" alt="" aria-hidden="true" className={`${className} shrink-0 object-contain`} />
 }
@@ -45,6 +45,8 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
     // AccountGold remounts when the authenticated user changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId])
+  const [groupBusy,setGroupBusy]=useState(false)
+  const effectBatch=useRef<{delta:number;message:string;purchases:number;purchaseName:string}|null>(null)
   const sequence = useRef(0)
   const [effects, setEffects] = useState<{ id: number; delta: number }[]>([])
   const timers = useRef<ReturnType<typeof setTimeout>[]>([])
@@ -71,20 +73,29 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
     } finally { locked.current = false; if (active.current) setBusy(false) }
     if (!active.current) return
     const message=purchaseMessage(action)
+    if(effectBatch.current){effectBatch.current.delta+=result.delta;if(message)effectBatch.current.message=message;if(action.type==='buy'&&action.id.startsWith('fishing:')){effectBatch.current.purchases++;effectBatch.current.purchaseName=action.name||'미끼'}return}
     if(message)toast.success(message)
-    if (result.delta === 0) return
+    showDelta(result.delta)
+  }
+  function showDelta(delta:number){
+    if(delta===0)return
     const id = ++sequence.current
-    setEffects(previous => [...previous.slice(-3), { id, delta: result.delta }])
+    setEffects(previous => [...previous.slice(-3), { id, delta }])
     const timer = setTimeout(() => {
       setEffects(previous => previous.filter(effect => effect.id !== id))
       timers.current = timers.current.filter(value => value !== timer)
     }, 1400)
     timers.current.push(timer)
   }
-  return <GoldContext.Provider value={{ wallet, transact, loading, busy, error, testClaimed, testEnabled, refresh }}>
+  async function batchEffects(work:()=>Promise<void>){
+    if(effectBatch.current||locked.current||loading)throw new Error('다른 구매를 마친 뒤 다시 시도해주세요.')
+    const batch={delta:0,message:'',purchases:0,purchaseName:''};effectBatch.current=batch;setGroupBusy(true)
+    try{await work()}finally{effectBatch.current=null;if(active.current){setGroupBusy(false);if(batch.message)toast.success(batch.purchases?`${batch.purchaseName} ${batch.purchases}마리 구매했습니다.`:batch.message);showDelta(batch.delta)}}
+  }
+  return <GoldContext.Provider value={{ wallet, transact, batchEffects, loading, busy:busy||groupBusy, error, testClaimed, testEnabled, refresh }}>
     {children}
     <div className="pointer-events-none fixed inset-0 z-[100] flex items-center justify-center" aria-live="polite" aria-atomic="true">
-      <div className="flex flex-col items-center gap-2">{effects.map(effect => <div key={effect.id} className={`gold-change flex items-center gap-2 py-1 ${effect.delta > 0 ? 'gold-change-gain' : 'gold-change-loss'}`}><span className="gold-change-number text-4xl font-extrabold tracking-tight tabular-nums">{effect.delta > 0 ? '+' : '−'}{Math.abs(effect.delta).toLocaleString('ko-KR')}</span><GoldIcon className="size-10"/><span className="sr-only">골드</span></div>)}</div>
+      <div className="flex flex-col items-center gap-2">{effects.map(effect => <div key={effect.id} className={`gold-change flex items-center gap-2 py-1 ${effect.delta > 0 ? 'gold-change-gain' : 'gold-change-loss'}`}><span className="gold-change-number">{effect.delta > 0 ? '+' : '−'}{Math.abs(effect.delta).toLocaleString('ko-KR')}</span><GoldIcon className="gold-change-coin"/>{effect.delta>0&&<span aria-hidden="true"><i className="gold-change-sparkle"/><i className="gold-change-sparkle"/><i className="gold-change-sparkle"/></span>}<span className="sr-only">골드</span></div>)}</div>
     </div>
   </GoldContext.Provider>
 }

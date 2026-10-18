@@ -19,7 +19,7 @@ export function RodPreview({rod}:{rod:FishingRod}){
 }
 export function RodEffect({rod}:{rod:FishingRod}){
  const region=rod.region?regionIcons[rod.region]:undefined
- return <div className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-xl bg-secondary/60 px-4 py-3 text-sm leading-6 text-primary"><span>{rod.failureReductionBp?`실패율 ${rod.failureReductionBp/100}% 경감`:'추가 효과 없음'}</span>{rod.nativeBonusBp>0&&<span className="inline-flex items-center gap-1"><span aria-hidden="true">·</span>{region?<img src={region.src} alt={region.name} title={region.name} className="size-6 shrink-0 object-contain"/>:null}<span>개체 확률 {rod.nativeBonusBp/100}% 증가</span></span>}</div>
+ return <div className="space-y-1 rounded-xl bg-secondary/60 px-4 py-3 text-xs leading-5 text-primary">{region&&rod.nativeBonusBp>0?<><p className="flex items-center gap-1.5"><img src={region.src} alt="" className="size-6 shrink-0 object-contain"/>{region.name} 주 서식지 개체</p><p>추첨 가중치 · 해당 해역 ×2.2 / 다른 해역 ×0.3</p></>:<p>주 서식지 추가 보정 없음</p>}</div>
 }
 export function RodInventoryStatus(){
  const {loading,error,refresh}=useRods()
@@ -69,11 +69,11 @@ export function FishingRodSelector({disabled=false,regionId}:{disabled?:boolean;
  return <Dialog open={open} onOpenChange={setOpen}>
   <TooltipProvider><Tooltip><TooltipTrigger render={<DialogTrigger render={<Button variant="ghost" size="icon" disabled={disabled} aria-label={'낚싯대 선택 · '+rod.name} className="size-11 rounded-full bg-slate-950/20 text-white hover:bg-slate-950/35 hover:text-white"/>}/> }><RodIcon className="size-5"/></TooltipTrigger><TooltipContent>낚싯대 선택 · {rod.name}</TooltipContent></Tooltip></TooltipProvider>
   <DialogContent className="flex max-h-[85dvh] flex-col overflow-hidden rounded-3xl sm:max-w-md">
-   <DialogHeader><DialogTitle>낚싯대 선택</DialogTitle><DialogDescription>보유한 낚싯대를 장착하세요. 확률 효과는 아직 적용되지 않아요.</DialogDescription></DialogHeader>
+   <DialogHeader><DialogTitle>낚싯대 선택</DialogTitle><DialogDescription>장착한 낚싯대의 주 서식지 개체를 어느 해역에서든 더 쉽게 만나요.</DialogDescription></DialogHeader>
    <RodInventoryStatus/>
    <div className="min-h-0 space-y-2 overflow-y-auto">{!loading&&!error&&rods.map(item=><button key={item.id} type="button" disabled={busy||!owned.includes(item.id)||selected===item.id} aria-pressed={selected===item.id} aria-label={item.name+' 선택'} onClick={()=>void equip(item.id)} className={`flex w-full items-center gap-3 rounded-xl border p-3 text-left transition-colors hover:bg-muted/50 disabled:opacity-50 ${selected===item.id?'border-primary bg-primary/5':'border-border/60'}`}>
     <img src={rodThumbnailUrl(item.id)} alt="" className="size-12 shrink-0 object-contain"/>
-    <div className="min-w-0 flex-1"><p className="text-sm font-medium">{item.name}</p><RodEffect rod={item}/><p className="text-[10px] text-muted-foreground">{!owned.includes(item.id)?'상점에서 구매':item.region?item.region===regionId?'현재 해역 대상':'다른 해역 토착 효과':'사용 가능'}</p></div>
+    <div className="min-w-0 flex-1"><p className="text-sm font-medium">{item.name}</p><RodEffect rod={item}/><p className="text-[10px] text-muted-foreground">{!owned.includes(item.id)?'상점에서 구매':item.region?item.region===regionId?'해당 해역 보정 적용':'다른 해역 보정 적용':'사용 가능'}</p></div>
     {selected===item.id&&<Check className="size-4 shrink-0 text-primary"/>}
    </button>)}</div>
    <Button disabled={busy} onClick={()=>setOpen(false)}>선택 완료</Button>

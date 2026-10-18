@@ -5,9 +5,8 @@ import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription} from '@
 import {CollectiblePreview} from '@/features/collection/collectible-preview'
 import {CollectibleKindIcon} from '@/features/collection/collectible-kind-icon'
 import {rarities} from '@/lib/game/rarity'
-import {kindLabels,loadCollection} from '@/features/collection/api'
-import {HabitatIcons} from '@/features/collection/habitat-icons'
-import type {CatalogEntry} from '@/features/collection/api'
+import {kindLabels} from '@/features/collection/api'
+import {PrimaryHabitat} from '@/features/collection/native-region-badge'
 import { Button } from '@/components/ui/button'
 import type { DecorationPlacement,OwnedCollectible } from '@/features/collection/api'
 import { AquariumBackdrop } from './aquarium-backdrop'
@@ -36,9 +35,6 @@ export function AquariumView(props:Props){
  const selectedId=useRef<string|null>(null)
  selectedId.current=editing?.id??null
  const [infoId,setInfoId]=useState<string|null>(null)
- const [habitatCatalog,setHabitatCatalog]=useState<CatalogEntry[]|null>(null)
- const [habitatError,setHabitatError]=useState(false)
- useEffect(()=>{if(!infoId||habitatCatalog)return;let active=true;setHabitatError(false);loadCollection().then(data=>{if(active)setHabitatCatalog(data.catalog)}).catch(()=>{if(active)setHabitatError(true)});return()=>{active=false}},[infoId,habitatCatalog])
  const infoItem=items.find(item=>item.id===infoId)
  const decoration=items.find(item=>item.id===editing?.id)
  const displayed=editing&&decoration?items.map(item=>item.id===editing.id?{...item,...editing.value,editing:true}:item):items
@@ -107,7 +103,7 @@ export function AquariumView(props:Props){
    {editing&&decoration&&<div ref={toolbar} className="absolute z-20 flex -translate-x-1/2 -translate-y-full flex-col items-center gap-1.5" style={{left:toolbarX,top:toolbarY,width:toolbarWidth}}><Button variant="secondary" className="order-2 min-h-11 gap-1.5 rounded-lg border bg-background/95 px-3 text-xs shadow-sm" onClick={()=>setInfoId(decoration.id)}><Info className="size-4"/>정보 보기</Button>{props.onArrange&&canArrangeSpecies(decoration.species)&&<DecorationEditor key={editing.id} name={decoration.species.name} value={editing.value} busy={busy} onChange={changeDecoration}/>}</div>}
 
   </div>
-  <Dialog open={!!infoItem} onOpenChange={open=>{if(!open)setInfoId(null)}}><DialogContent className="gap-4 rounded-xl sm:max-w-sm"><DialogHeader className="pr-7"><DialogTitle className="flex items-center gap-2">{infoItem&&<CollectibleKindIcon kind={infoItem.species.kind} className="size-5 shrink-0 text-primary"/>}{infoItem?.species.name}</DialogTitle><DialogDescription>{infoItem&&kindLabels[infoItem.species.kind]} · {infoItem&&rarities[infoItem.species.rarity].label}</DialogDescription></DialogHeader>{infoItem&&<><div className="grid place-items-center rounded-xl bg-secondary/40 py-5"><CollectiblePreview species={infoItem.species}/></div><p className="text-sm leading-6 text-muted-foreground">{infoItem.species.description}</p><div className="flex items-center justify-between border-t pt-3 text-xs"><span className="text-muted-foreground">가치</span><span className="flex items-center gap-1 text-primary"><GoldIcon className="size-5"/>{infoItem.species.sell_price.toLocaleString('ko-KR')}</span></div><div className="flex items-center justify-between gap-3 border-t pt-3 text-xs"><span className="shrink-0 text-muted-foreground">서식 지역</span>{habitatError?<span className="text-muted-foreground">불러오지 못했어요.</span>:!habitatCatalog?<span role="status" className="text-muted-foreground">불러오는 중…</span>:<HabitatIcons habitats={habitatCatalog.find(entry=>entry.id===infoItem.species.id)?.habitats??[]}/>}</div></>}</DialogContent></Dialog>
+  <Dialog open={!!infoItem} onOpenChange={open=>{if(!open)setInfoId(null)}}><DialogContent className="gap-4 rounded-xl sm:max-w-sm"><DialogHeader className="pr-7"><DialogTitle className="flex items-center gap-2">{infoItem&&<CollectibleKindIcon kind={infoItem.species.kind} className="size-5 shrink-0 text-primary"/>}{infoItem?.species.name}</DialogTitle><DialogDescription>{infoItem&&kindLabels[infoItem.species.kind]} · {infoItem&&rarities[infoItem.species.rarity].label}</DialogDescription></DialogHeader>{infoItem&&<><div className="grid place-items-center rounded-xl bg-secondary/40 py-5"><CollectiblePreview species={infoItem.species}/></div><p className="text-sm leading-6 text-muted-foreground">{infoItem.species.description}</p><div className="flex items-center justify-between border-t pt-3 text-xs"><span className="text-muted-foreground">가치</span><span className="flex items-center gap-1 text-primary"><GoldIcon className="size-5"/>{infoItem.species.sell_price.toLocaleString('ko-KR')}</span></div><PrimaryHabitat species={infoItem.species}/></>}</DialogContent></Dialog>
   <TooltipProvider><div className="grid shrink-0 grid-cols-2 gap-0 border-t border-border bg-background pb-[env(safe-area-inset-bottom)]"><AquariumInventoryDialog items={items} name={name} busy={busy} onSell={onSell} onGiftSent={props.onGiftSent} onStore={props.onStore}/>{props.storageControls}</div></TooltipProvider>
  </>
 }

@@ -1,0 +1,14 @@
+﻿{
+  "id": "violet-longlure-angler",
+  "name": "보랏불 긴수염아귀",
+  "kind": "fish",
+  "rarity": "epic",
+  "subject": "Refined deep purple anglerfish with a long arched flexible lure, glowing violet pearl at its end, small sweeping fins and luminous lavender spots.",
+  "motion": "Small tail and paired fins move subtly; arched lure sways fluidly with a stable head.",
+  "type": "sprite",
+  "path": "assets/storage-upload/new/20261018-183000/fish/epic/violet-longlure-angler_sprite.png",
+  "storage_path": "fish/epic/violet-longlure-angler_sprite.png",
+  "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-abcfbb97-cd59-4128-ae1c-b7792425da87.png",
+  "prompt": "Edit supplied sprite sheet: preserve exact creature identity and four distinct swimming poses. REPAIR LAYOUT: precisely FOUR complete right-facing creatures in a 2x2 array of equal square cells. Make each creature SMALL, only 65% of its square cell width, with very LARGE transparent margins. A wide clear alpha CROSS separates all four quadrants. Every head, tail and fin must fit wholly within its cell. Never crop. LOCK head and rigid torso to same local coordinates and scale in all four cells. No scene or labels or grid lines or checkerboard. Animate appendages naturally: Small tail and paired fins move subtly; arched lure sways fluidly with a stable head. Keep reference rendering unchanged, true alpha PNG.",
+  "reference": "assets/storage-upload/new/20261018-183000/fish/epic/violet-longlure-angler_sprite.png"
+}

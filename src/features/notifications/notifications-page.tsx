@@ -23,7 +23,7 @@ export function NotificationsPage() {
   const visible = notifications.filter(item => item.category === tab)
   return <TooltipProvider><section className="flex min-h-0 min-w-0 w-full flex-1 flex-col">
     <p role="status" className="sr-only">{connection === 'live' ? '실시간으로 소식을 받고 있어요' : connection === 'connecting' ? '실시간 연결 중…' : '연결을 다시 확인하고 있어요'}</p>
-    <div className="grid shrink-0 grid-cols-4 border-b border-border" role="group" aria-label="알림 분류">
+    <div className="segmented-control grid shrink-0 grid-cols-4 border-b border-border" role="group" aria-label="알림 분류">
       {([{ key: 'notice', name: '공지', count: unread.notice??0,icon:Megaphone }, { key: 'friend', name: '친구', count: unread.friend,icon:UsersRound }, { key: 'general', name: '소식', count: unread.general,icon:Bell },{key:'gift',name:'선물',count:unread.gift??0,icon:Gift}] as const).map(item => <Tooltip key={item.key}><TooltipTrigger render={<Button variant={tab === item.key ? 'secondary' : 'ghost'} aria-label={`${item.name}${item.count>0?` (${item.count})`:''}`} aria-pressed={tab === item.key} className="min-h-12 min-w-0 rounded-none border-r border-border" onClick={() => setTab(item.key)}/> }><item.icon className="size-4" aria-hidden="true"/>{item.count>0&&<span className="text-xs tabular-nums">{item.count}</span>}</TooltipTrigger><TooltipContent>{item.name}</TooltipContent></Tooltip>)}
     </div>
     <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3">

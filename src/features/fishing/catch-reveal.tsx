@@ -1,11 +1,14 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { collectibleUrl } from '@/features/collection/api'
 import type { Species } from '@/features/collection/api'
+import { chanceFailurePhrases } from './fishing-practice'
 import { rarities } from '@/lib/game/rarity'
 type RevealProps={onDismiss:()=>void;practice?:boolean;failureLabel?:string;failureReason?:string|null}&({species:Species;failure?:never}|{species?:never;failure:string})
-export function CatchReveal({species,failure,onDismiss,practice=false,failureLabel='다음엔 꼭 만나요',failureReason}:RevealProps){
+export function CatchReveal({species,failure,onDismiss,practice=false,failureReason}:RevealProps){
+ const chanceFailure=['bait','escape','wave'].includes(failureReason??'')
+ const [chanceMessage]=useState(()=>chanceFailurePhrases[Math.floor(Math.random()*chanceFailurePhrases.length)])
  const openedAt=useRef(Date.now())
  const lastInput=useRef(0)
  function tryDismiss(){
@@ -29,11 +32,12 @@ export function CatchReveal({species,failure,onDismiss,practice=false,failureLab
      <span className="text-balance break-keep text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_2px_16px_#0005] sm:text-4xl">{species.name}</span>
      <span className="shrink-0 rounded px-2 py-1 text-xs font-bold leading-5 text-white" style={{backgroundColor:color}}>{rarities[rarity].label}</span>
     </span>:<>
-     <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold tracking-widest backdrop-blur-sm"><span className="size-1.5 rounded-full bg-current" aria-hidden="true"/>{failureLabel}</span>
      <span className="text-2xl font-bold tracking-tight text-white">낚시 실패</span>
     </>}
     {species&&<span className="h-px w-12 bg-gradient-to-r from-transparent via-current to-transparent opacity-70" aria-hidden="true"/>}
-    {!species&&<span className="max-w-xs text-sm leading-6 text-white/90">{failure}</span>}<span className="text-xs text-white/60">{species?(practice?'연습 결과예요. 실제 보상은 지급되지 않아요.':species.kind==='map'?'새 항로가 열렸어요.':'보관함에 들어갔어요.'):(practice?'연습에서는 미끼를 사용하지 않아요.':'사용한 미끼 1개는 소모됐어요.')}</span>
+    {species?.description&&<span className="max-w-xs text-pretty break-keep px-2 text-sm font-normal leading-7 text-white/85 drop-shadow-sm">{species.description}</span>}
+    {!species&&<span className="max-w-xs text-sm leading-6 text-white/90">{chanceFailure?chanceMessage:failure}</span>}
+    {practice&&<span className="text-xs text-white/60">{species?'연습 결과예요. 실제 보상은 지급되지 않아요.':'연습에서는 미끼를 사용하지 않아요.'}</span>}
    </span>
    <span className="relative mt-8 text-xs text-white/50">화면을 누르면 계속해요</span>
   </span>

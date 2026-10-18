@@ -52,6 +52,8 @@ it('persists server equipment and renders it after returning to the fishing page
  await screen.findByRole('heading',{name:'산호꽃 낚싯대'})
  fireEvent.click(screen.getByRole('button',{name:'낚싯대 선택 · 입문용 낚싯대'}))
  const dialog=screen.getByRole('dialog',{name:'낚싯대 선택'})
+ expect(within(dialog).queryByText(/효과는 아직 적용되지/)).toBeNull()
+ expect(within(dialog).getAllByText('추첨 가중치 · 해당 해역 ×2.2 / 다른 해역 ×0.3').length).toBeGreaterThan(0)
  fireEvent.click(within(dialog).getByRole('button',{name:'산호꽃 낚싯대 선택'}))
  await waitFor(()=>expect(equip).toHaveBeenCalledWith('coral'))
  await waitFor(()=>expect(within(dialog).getByRole('button',{name:'산호꽃 낚싯대 선택'}).getAttribute('aria-pressed')).toBe('true'))

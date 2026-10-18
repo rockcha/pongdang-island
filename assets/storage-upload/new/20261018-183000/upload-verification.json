@@ -1,0 +1,311 @@
+{
+  "project": "ewafafphiovbpjwogwzn.supabase.co",
+  "capturedAt": "2026-10-18T05:24:24.370Z",
+  "scope": "25 new dreamabyss catalog rows, 25 exclusive habitats, 38 public PNG bytes; not full schema/history parity",
+  "species": [
+    {
+      "id": "violet-telescopefish",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "inky-purple-grenadier",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "inky-purple-gulper-eel",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "amethyst-fangtooth",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "starthread-dragonfish",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "lilac-frilled-shark",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "violet-longlure-angler",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "amethyst-goblin-shark",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "twilight-frilled-shark",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "violiss-amethyst-trench",
+      "kind": "fish",
+      "rarity": "mythic",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "purple-stained-bottle",
+      "kind": "trash",
+      "rarity": "common",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "broken-survey-cable",
+      "kind": "trash",
+      "rarity": "common",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "dented-diving-lamp",
+      "kind": "trash",
+      "rarity": "rare",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "discarded-oxygen-tank",
+      "kind": "trash",
+      "rarity": "common",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "cracked-pressure-gauge",
+      "kind": "trash",
+      "rarity": "rare",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "torn-survey-flag",
+      "kind": "trash",
+      "rarity": "common",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "violet-abyss-pebbles",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "lavender-tube-coral",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "silver-speck-sponge",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "pearl-sand-mound",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "amethyst-cluster",
+      "kind": "decoration",
+      "rarity": "rare",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "violet-hydrothermal-vent",
+      "kind": "decoration",
+      "rarity": "rare",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "moonlit-pearl-clam",
+      "kind": "decoration",
+      "rarity": "rare",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "sleeping-survey-pod",
+      "kind": "decoration",
+      "rarity": "epic",
+      "native_region_id": "dreamabyss"
+    },
+    {
+      "id": "primordial-amethyst-heart",
+      "kind": "decoration",
+      "rarity": "mythic",
+      "native_region_id": "dreamabyss"
+    }
+  ],
+  "assets": [
+    {
+      "storage_path": "decorations/epic/sleeping-survey-pod_thumbnail.png",
+      "sha256": "052dabf1ffb0ba9536dc7250cde0aef9f106391b5feab1cf58a0cbc626764a2c"
+    },
+    {
+      "storage_path": "decorations/mythic/primordial-amethyst-heart_sprite.png",
+      "sha256": "dd329dd682c2a2ea6e640f50e355b0ba26aef4053dacb63ae5d9afc0f9f6e6ea"
+    },
+    {
+      "storage_path": "decorations/mythic/primordial-amethyst-heart_thumbnail.png",
+      "sha256": "127edaab0ab66f2ce736b6a973dfc39444a6408a4b19755b3a66e6bf5f0e7b1f"
+    },
+    {
+      "storage_path": "decorations/normal/lavender-tube-coral_thumbnail.png",
+      "sha256": "748d45763cc6b718ab5b1eb04cbff790bd1289fcc488f137280a0d568cb3346f"
+    },
+    {
+      "storage_path": "decorations/normal/pearl-sand-mound_thumbnail.png",
+      "sha256": "e966a5699410f91cab680606a9ae8bf0641d5dbee7d2c3ca090f1fae512ad7a2"
+    },
+    {
+      "storage_path": "decorations/normal/silver-speck-sponge_thumbnail.png",
+      "sha256": "8359f948e92aaf4eb728143e44f266978dc4ab96f2fc6bebd1caaec2fdded7fd"
+    },
+    {
+      "storage_path": "decorations/normal/violet-abyss-pebbles_thumbnail.png",
+      "sha256": "47cd3dcdf8014002ef3128720fce91290d97998e61ddf622d61306e508219118"
+    },
+    {
+      "storage_path": "decorations/rare/amethyst-cluster_thumbnail.png",
+      "sha256": "ae98d597045cecf6d72b5bdba07fe0c73c257865a51df05fc60c4b9fc6010b5f"
+    },
+    {
+      "storage_path": "decorations/rare/moonlit-pearl-clam_sprite.png",
+      "sha256": "b3a36dbc720d95c2c82389ed97b848a60b2139e666c904cfa95b14edf99b1807"
+    },
+    {
+      "storage_path": "decorations/rare/moonlit-pearl-clam_thumbnail.png",
+      "sha256": "f3eff7bc8ff4dcc2c7c632119a2c57708f99fb70c05118b901a680d9ab000baf"
+    },
+    {
+      "storage_path": "decorations/rare/violet-hydrothermal-vent_sprite.png",
+      "sha256": "3e2b83becc0bdc558bb7de9679b3e73466bea9e2a8cb17ac40afbcf1bde0af37"
+    },
+    {
+      "storage_path": "decorations/rare/violet-hydrothermal-vent_thumbnail.png",
+      "sha256": "3b4ba02718ec2e52e2c5c7024f9cded03c34c8e0b1d64b96ef302f163d7b051d"
+    },
+    {
+      "storage_path": "fish/epic/amethyst-goblin-shark_sprite.png",
+      "sha256": "4f5a90dae79c2738567f7cddd8cd3b98339221a88218d9aeb01cf2ce1b5bdae5"
+    },
+    {
+      "storage_path": "fish/epic/amethyst-goblin-shark_thumbnail.png",
+      "sha256": "3666f8db56d41f79ed980907f57f2eca1b9ec032e85bb537a6434ed8a9d384cb"
+    },
+    {
+      "storage_path": "fish/epic/lilac-frilled-shark_sprite.png",
+      "sha256": "70225f2de4344601455dd24a177c62447ecfae3b6fc69e1b7cbd1c98ea149b82"
+    },
+    {
+      "storage_path": "fish/epic/lilac-frilled-shark_thumbnail.png",
+      "sha256": "65e9726df8ea6dcee26fff3c829958005db623f377e12f6982729e5ced8435a2"
+    },
+    {
+      "storage_path": "fish/epic/twilight-frilled-shark_sprite.png",
+      "sha256": "dfa3cae3808e020ef4d7ba00483bcafd5fbcaefd75a51b6f6d03c64d61fc29aa"
+    },
+    {
+      "storage_path": "fish/epic/twilight-frilled-shark_thumbnail.png",
+      "sha256": "ffaf53cb58dd265ea3d374bd02f74d64729e5e552bf10bca062d4c7b73905ec2"
+    },
+    {
+      "storage_path": "fish/epic/violet-longlure-angler_sprite.png",
+      "sha256": "759788fa10b1bed1e40c475623e2b7c141ed7778ae7336a2fba5f515ea5c04da"
+    },
+    {
+      "storage_path": "fish/epic/violet-longlure-angler_thumbnail.png",
+      "sha256": "e88f0c312946b87355f5d3177c612b1d6609fd15dfbd848c2ef2319f9e67c9bf"
+    },
+    {
+      "storage_path": "fish/mythic/violiss-amethyst-trench_sprite.png",
+      "sha256": "75b4f1ca8aedf76e80d71719544875f6a56c0f3dc92cd36d2a901b7b496f0798"
+    },
+    {
+      "storage_path": "fish/mythic/violiss-amethyst-trench_thumbnail.png",
+      "sha256": "ae840ebd1b1136bde402624458cd3f4ce08f1abad498ec81c838266cefc8ad26"
+    },
+    {
+      "storage_path": "fish/rare/amethyst-fangtooth_sprite.png",
+      "sha256": "9bd6b09c750287f5529fc7ec8039f9de843f1dfecc89e64024afc24e3dcaca0b"
+    },
+    {
+      "storage_path": "fish/rare/amethyst-fangtooth_thumbnail.png",
+      "sha256": "2773116918dfa00596146a270162e7c9e6dd7b7b3ae2f439db4944afcf6b0028"
+    },
+    {
+      "storage_path": "fish/rare/inky-purple-grenadier_sprite.png",
+      "sha256": "d503c69f6a23e0f10cdb1022dcf092a05b1efa22fd2d6d15a37c2c4f23754c0f"
+    },
+    {
+      "storage_path": "fish/rare/inky-purple-grenadier_thumbnail.png",
+      "sha256": "158bc4d2ba84caa4e6b0e08843a31ecb2b5aae2489c76af1872e6ad7db6e14ff"
+    },
+    {
+      "storage_path": "fish/rare/inky-purple-gulper-eel_sprite.png",
+      "sha256": "bf7890f473d520d91f443bb61b009858246199e37fd777a0cca1921c525b9efb"
+    },
+    {
+      "storage_path": "fish/rare/inky-purple-gulper-eel_thumbnail.png",
+      "sha256": "86ec62cb54f48f4740fa53e0087bc4bcc845c1b7317a84b8d6411d4ba2822fb1"
+    },
+    {
+      "storage_path": "fish/rare/starthread-dragonfish_sprite.png",
+      "sha256": "2021ac496d8fb5d3a23ebd488907c301e44f6d2ebf79598385cf851c1ad6dfa0"
+    },
+    {
+      "storage_path": "fish/rare/starthread-dragonfish_thumbnail.png",
+      "sha256": "a479ab7c851d3f67de7e59aabfdeb52396d0cd5f139d4ce17d6a2fcba81a62b7"
+    },
+    {
+      "storage_path": "fish/rare/violet-telescopefish_sprite.png",
+      "sha256": "3d69d026787e3f2a14e8c69847f9fa0396a952ddd38f00adbe27f3429f10a3cd"
+    },
+    {
+      "storage_path": "fish/rare/violet-telescopefish_thumbnail.png",
+      "sha256": "4cd6e265b41f389b4cd56ac76c2c3c1cd2a6ad0260ef5051e60059b644828772"
+    },
+    {
+      "storage_path": "trash/normal/broken-survey-cable_thumbnail.png",
+      "sha256": "b66b80387b4a679e010d3bf9f8c8acbc97db6c97d46281e29f73c9d7ad3102ed"
+    },
+    {
+      "storage_path": "trash/normal/discarded-oxygen-tank_thumbnail.png",
+      "sha256": "ed81f8b321fca3851f46432a8cb9afa81548098f3f0b37e4517daaa77d2a6da6"
+    },
+    {
+      "storage_path": "trash/normal/purple-stained-bottle_thumbnail.png",
+      "sha256": "97f1b0c1cb5ede1e52b36604930023a97bbda763e9a94b37dd55398d8366dd36"
+    },
+    {
+      "storage_path": "trash/normal/torn-survey-flag_thumbnail.png",
+      "sha256": "a40b63be880ba4177de1fc9d4b591f5fa8c5b1200be93cc387d709550c2778a9"
+    },
+    {
+      "storage_path": "trash/rare/cracked-pressure-gauge_thumbnail.png",
+      "sha256": "d8da6599b49a921d9440553ffe9fb90dea5aaa94a692617002ffb86da4c9182c"
+    },
+    {
+      "storage_path": "trash/rare/dented-diving-lamp_thumbnail.png",
+      "sha256": "16438b4a792107337068c83430c9135ece0d7e0c9c17e61e74dad0c19007e83c"
+    }
+  ]
+}

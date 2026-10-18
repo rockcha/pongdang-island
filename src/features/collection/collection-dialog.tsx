@@ -14,7 +14,7 @@ import { GoldIcon } from '@/features/gold/gold-provider'
 import { AquariumToolButton } from '@/features/aquarium/aquarium-tool-button'
 import { CollectibleThumbnail } from './collectible-thumbnail'
 import { CollectibleKindIcon } from './collectible-kind-icon'
-import { HabitatIcons } from './habitat-icons'
+import { PrimaryHabitat } from './native-region-badge'
 import { kindLabels, loadCollection } from './api'
 import type { CollectibleKind, CollectionState, CatalogEntry, Species } from './api'
 
@@ -31,7 +31,7 @@ export function CollectionDialog({ onAddTemporary,fishing=false,disabled=false }
   <DialogContent className="notification-sheet inset-x-0 bottom-0 top-auto left-0 flex h-[92dvh] max-h-[92dvh] w-full max-w-full translate-x-0 translate-y-0 flex-col gap-0 overflow-hidden rounded-t-2xl rounded-b-none p-0 pb-[env(safe-area-inset-bottom)] sm:left-1/2 sm:max-w-2xl sm:-translate-x-1/2">
    <DialogHeader className="shrink-0 border-b border-border/50 px-4 pb-3 pt-4 pr-12">
     <DialogTitle className="flex items-center gap-2 text-lg"><BookOpenText aria-hidden="true" className="size-5 text-primary"/>바다 도감</DialogTitle>
-    <DialogDescription className="text-xs">작은 바다에서 만나는 친구와 보물들.</DialogDescription>
+    <DialogDescription className="text-xs">모든 해역에서 만날 수 있어요. 주 서식지에서는 더 자주 발견돼요.</DialogDescription>
    </DialogHeader>
    {open && <CollectionBook key={session?.user.id} onAddTemporary={onAddTemporary}/>}
   </DialogContent>
@@ -58,7 +58,7 @@ function CollectionBook({ onAddTemporary }: CollectionDialogProps) {
  const habitats = Array.from(new Map(catalog.flatMap(s => s.habitats).map(region => [region.id, region])).values()).sort((a, b) => (a.id==='pongdang'?-1:mapPrices[a.id]??(['coral','bluegrove','mistmoon'].includes(a.id)?['coral','bluegrove','mistmoon'].indexOf(a.id):Infinity))-(b.id==='pongdang'?-1:mapPrices[b.id]??(['coral','bluegrove','mistmoon'].includes(b.id)?['coral','bluegrove','mistmoon'].indexOf(b.id):Infinity)) || a.name.localeCompare(b.name,'ko'))
  const entries = catalog.filter(s =>
   (tab === 'all' || s.kind === tab) && (rarity === 'all' || s.rarity === rarity) &&
-  (habitat === 'all' || s.habitats.some(region => region.id === habitat))
+  (habitat === 'all' || (s.is_native && s.native_region_id === habitat))
  ).sort((a, b) => a.sell_price - b.sell_price || a.name.localeCompare(b.name, 'ko') || a.id.localeCompare(b.id)) ?? []
  return <section className="flex min-h-0 flex-1 flex-col">
   <div className="shrink-0 space-y-3 border-b border-border/50 bg-popover px-4 py-3 sm:px-5">
@@ -74,7 +74,7 @@ function CollectionBook({ onAddTemporary }: CollectionDialogProps) {
     <span className="text-[11px] tabular-nums text-muted-foreground">{state ? `${entries.length}종 · 가치순` : '가치순'}</span>
    </div>
    <div className="flex gap-2">
-    <BookSelect region label="도감 서식지역" value={habitat} onChange={setHabitat} items={[{value:'all',label:'전체 해역'},...habitats.map(region=>({value:region.id,label:region.name}))]}/>
+    <BookSelect region label="도감 주 서식지" value={habitat} onChange={setHabitat} items={[{value:'all',label:'전체 주 서식지'},...habitats.map(region=>({value:region.id,label:region.name}))]}/>
     <BookSelect label="도감 등급" value={rarity} onChange={value=>setRarity(value as 'all'|Rarity)} items={[{value:'all',label:'전체 등급'},...Object.entries(rarities).map(([value,meta])=>({value,label:meta.label}))]}/>
    </div>
   </div>
@@ -90,7 +90,7 @@ function CollectionBook({ onAddTemporary }: CollectionDialogProps) {
        <h3 className="mt-2 h-10 line-clamp-2 text-xs font-medium leading-5">{s.name}</h3>
 
       </button>
-      {s.is_native&&s.native_region_id&&regionIcons[s.native_region_id]&&<TooltipProvider><Tooltip><TooltipTrigger render={<span tabIndex={0} aria-label={regionIcons[s.native_region_id].name+' 토착 개체'} className="absolute right-1 top-1 inline-flex size-6 items-center justify-center rounded-full border border-border bg-background/95 p-0.5"/>}><img src={regionIcons[s.native_region_id].src} alt="" className="size-5 object-contain"/></TooltipTrigger><TooltipContent>{regionIcons[s.native_region_id].name} 토착 개체</TooltipContent></Tooltip></TooltipProvider>}
+      {s.is_native&&s.native_region_id&&regionIcons[s.native_region_id]&&<TooltipProvider><Tooltip><TooltipTrigger render={<span tabIndex={0} aria-label={regionIcons[s.native_region_id].name+' 주 서식지'} className="absolute right-1 top-1 inline-flex size-6 items-center justify-center rounded-full border border-border bg-background/95 p-0.5"/>}><img src={regionIcons[s.native_region_id].src} alt="" className="size-5 object-contain"/></TooltipTrigger><TooltipContent>{regionIcons[s.native_region_id].name} 주 서식지</TooltipContent></Tooltip></TooltipProvider>}
       {onAddTemporary&&<TooltipProvider><Tooltip><TooltipTrigger render={<Button type="button" size="icon" variant="secondary" aria-label={s.name+' 임시 넣기'} className="absolute left-0.5 top-0.5 z-10 size-9 rounded-lg border border-border bg-background/95 shadow-sm" onClick={()=>onAddTemporary(s)}/> }><Plus className="size-4"/></TooltipTrigger><TooltipContent>어항에 임시 넣기</TooltipContent></Tooltip></TooltipProvider>}
      </article>
     </li>)}
@@ -98,7 +98,7 @@ function CollectionBook({ onAddTemporary }: CollectionDialogProps) {
   </div>
   <Dialog open={!!detail} onOpenChange={open=>{if(!open)setDetail(null)}}><DialogContent className="top-auto bottom-0 max-h-[85dvh] max-w-full translate-y-0 overflow-y-auto rounded-b-none rounded-t-2xl pb-[max(1rem,env(safe-area-inset-bottom))] sm:bottom-auto sm:top-1/2 sm:max-w-sm sm:-translate-y-1/2 sm:rounded-xl">
    <DialogHeader className="pr-7"><DialogTitle className="flex items-center gap-2">{detail&&<CollectibleKindIcon kind={detail.kind} className="size-5 shrink-0 text-primary"/>}{detail?.name}</DialogTitle><DialogDescription>{detail&&rarities[detail.rarity].label} · {detail&&kindLabels[detail.kind]}</DialogDescription></DialogHeader>
-   {detail&&<><div className="flex justify-center rounded-xl bg-secondary/40 p-4"><CollectiblePreview species={detail}/></div><p className="text-sm leading-6 text-muted-foreground">{detail.description}</p><div className="flex items-center justify-between gap-2 text-xs"><span>서식지역</span><HabitatIcons habitats={detail.habitats}/></div><div className="flex items-center justify-between text-sm"><span>가치</span><span className="flex items-center gap-1"><GoldIcon className="size-4"/>{detail.sell_price.toLocaleString()}</span></div></>}
+   {detail&&<><div className="flex justify-center rounded-xl bg-secondary/40 p-4"><CollectiblePreview species={detail}/></div><p className="text-sm leading-6 text-muted-foreground">{detail.description}</p><PrimaryHabitat species={detail}/><div className="flex items-center justify-between text-sm"><span>가치</span><span className="flex items-center gap-1"><GoldIcon className="size-4"/>{detail.sell_price.toLocaleString()}</span></div></>}
   </DialogContent></Dialog>
  </section>
 }

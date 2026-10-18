@@ -6,7 +6,9 @@ import { catalogSql } from './catalog.mjs'
 import { parseExport, differences } from './compare.mjs'
 
 const manifest = JSON.parse(readFileSync('supabase/legacy-manifest.json', 'utf8'))
-const discovered = readdirSync('supabase/sql').filter(f => /^\d{2}-/.test(f)).flatMap(dir => readdirSync(`supabase/sql/${dir}`).filter(f => f.endsWith('.sql')).map(file => `${dir}/${file}`)).sort()
+// Only 01–38 belong to the frozen baseline manifest. Later legacy folders remain
+// available as historical references and must not be mistaken for baseline files.
+const discovered = readdirSync('supabase/sql').filter(f => /^(?:0[1-9]|[12]\d|3[0-8])-/.test(f)).flatMap(dir => readdirSync(`supabase/sql/${dir}`).filter(f => f.endsWith('.sql')).map(file => `${dir}/${file}`)).sort()
 assert.deepEqual(discovered, manifest.files.map(f => f.path).sort(), 'Legacy SQL is frozen. Create a migration instead.')
 for (const file of manifest.files) assert.equal(createHash('sha256').update(readSql(`supabase/sql/${file.path}`)).digest('hex'), file.sha256, `Frozen SQL changed: ${file.path}`)
 assert.equal(createHash('sha256').update(readSql(`supabase/migrations/${manifest.baseline}`)).digest('hex'), manifest.baselineSha256, 'Baseline is immutable')

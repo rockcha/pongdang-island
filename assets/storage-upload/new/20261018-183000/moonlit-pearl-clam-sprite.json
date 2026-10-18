@@ -1,0 +1,13 @@
+﻿{
+  "id": "moonlit-pearl-clam",
+  "name": "달빛 진주조개",
+  "kind": "decoration",
+  "rarity": "rare",
+  "subject": "Open dark violet clam shell resting on a small base with one luminous silver-lavender pearl inside, no face.",
+  "motion": "Pearl light gently breathes while tiny mantle frills wave; rigid shells and pearl position completely fixed.",
+  "path": "assets/storage-upload/new/20261018-183000/decorations/rare/moonlit-pearl-clam_sprite.png",
+  "storage_path": "decorations/rare/moonlit-pearl-clam_sprite.png",
+  "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-777f6702-82e5-4c8c-8d36-8608f292cddf.png",
+  "prompt": "Use case: stylized-concept. Exact reference decoration as four-frame animated game sprite sheet. Square true-alpha PNG, exactly 2x2 equal square cells. In EACH cell, object only 65% of the cell's longest dimension, with HUGE 15% transparent padding on every side. Identical rigid rock/shell base at identical local coordinates and scale in all cells. Animation: Pearl light gently breathes while tiny mantle frills wave; rigid shells and pearl position completely fixed. Four distinct gentle loop phases 0,90,180,270 degrees. Entire object inside each cell. Preserve exact reference rendering and colors, NO animals, faces, text, grid, checkerboard, scenery or background. No whole-object movement.",
+  "reference": "assets/storage-upload/new/20261018-183000/decorations/rare/moonlit-pearl-clam_thumbnail.png"
+}

@@ -1,0 +1,14 @@
+﻿{
+  "id": "amethyst-goblin-shark",
+  "name": "자수정 마귀상어",
+  "kind": "fish",
+  "rarity": "epic",
+  "subject": "Streamlined goblin shark with unmistakable long flattened snout, rich amethyst-purple skin, translucent crystalline fin edges, restrained tiny mineral accents.",
+  "motion": "Strong smooth lateral tail sweep, pectoral fins only stabilize, rigid snout stays anchored.",
+  "type": "sprite",
+  "path": "assets/storage-upload/new/20261018-183000/fish/epic/amethyst-goblin-shark_sprite.png",
+  "storage_path": "fish/epic/amethyst-goblin-shark_sprite.png",
+  "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a13df7-3d56-7791-83cc-77958d7b0c5c\\exec-8560bb2d-546a-4d6e-8991-c98d856b37b7.png",
+  "prompt": "Edit supplied sprite sheet: preserve exact creature identity and four distinct swimming poses. REPAIR LAYOUT: precisely FOUR complete right-facing creatures in a 2x2 array of equal square cells. Make each creature SMALL, only 65% of its square cell width, with very LARGE transparent margins. A wide clear alpha CROSS separates all four quadrants. Every head, tail and fin must fit wholly within its cell. Never crop. LOCK head and rigid torso to same local coordinates and scale in all four cells. No scene or labels or grid lines or checkerboard. Animate appendages naturally: Strong smooth lateral tail sweep, pectoral fins only stabilize, rigid snout stays anchored. Keep reference rendering unchanged, true alpha PNG.",
+  "reference": "assets/storage-upload/new/20261018-183000/fish/epic/amethyst-goblin-shark_sprite.png"
+}

@@ -12,3 +12,5 @@ export function practiceSpecies(rarity:Rarity):Species{
  return {id,name,kind:'fish',description:'등급별 힘 조절 연습',rarity,thumbnail_path:`fish/${folder}/${id}_thumbnail.png`,sprite_sheet_path:null,swim_y_min:.2,swim_y_max:.8,speed:.03,size:80,sell_price:0}
 }
 export const plannedFailureMessages={bait:'미끼를 맛만 보고 도망갔어요.',escape:'수상한 낌새를 눈치채고 달아났어요.',wave:'지나가는 물결을 따라 훌쩍 떠났어요.'}
+
+export const chanceFailurePhrases=['미끼만 물고 쏙 도망갔어요.','조심성이 많은 녀석이었어요.','미끼 주변을 맴돌다 떠났어요.','수상한 낌새를 눈치채고 달아났어요.','입맛에 맞는 미끼가 아니었나 봐요.','물결 너머로 살며시 사라졌어요.','살짝 맛만 보고 돌아갔어요.','오늘은 경계심이 많은 친구였어요.']

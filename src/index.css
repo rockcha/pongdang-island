@@ -5,6 +5,40 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Shared full-width segmented navigation, including tabs and category filters. */
+.segmented-control {
+    width: 100%;
+    gap: 0;
+    padding: 0;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--background);
+}
+.segmented-control > :is(button, [role="tab"]) {
+    flex: 1 1 0%;
+    min-width: 0;
+    min-height: 3rem;
+    border: 0;
+    border-right: 1px solid var(--border);
+    border-radius: 0;
+    background: var(--background);
+    color: var(--muted-foreground);
+    font-weight: 400;
+    box-shadow: none;
+}
+.segmented-control > :is(button, [role="tab"]):last-child {
+    border-right: 0;
+}
+.segmented-control > :is([data-active], [aria-selected="true"], [aria-pressed="true"]) {
+    background: var(--secondary);
+    color: var(--primary);
+    font-weight: 600;
+}
+.segmented-control > :is(button, [role="tab"]):focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: -2px;
+}
+
 @theme inline {
     --font-heading: var(--font-sans);
     --font-sans: 'Gowun Dodum', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
@@ -230,23 +264,53 @@ button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .pongi-confirm button { border-radius: 8px; }
 [data-sonner-toaster] { z-index: 2147483647 !important; }
 
-@keyframes gold-change {
-  0% { opacity: 0; }
-  15%, 70% { opacity: 1; }
-  100% { opacity: 0; }
+@keyframes gold-gain-pop {
+  0% { opacity: 0; transform: translateY(5px) scale(.78); }
+  12% { opacity: 1; transform: translateY(0) scale(1.1); }
+  23%, 72% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-14px) scale(.98); }
 }
-.gold-change { animation: gold-change 1.4s ease-out both; }
-.gold-change-number { -webkit-text-stroke: 0.35px currentColor; }
-.gold-change-gain {
-  color: #4ade80;
-  text-shadow: 0 0 8px rgb(34 197 94 / 40%), 0 0 22px rgb(34 197 94 / 35%), 0 0 42px rgb(34 197 94 / 22%);
+@keyframes gold-loss-press {
+  0% { opacity: 0; transform: scale(1.04); }
+  10% { opacity: 1; transform: scale(.94); }
+  22%, 72% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: translateY(-10px) scale(.98); }
 }
-.gold-change-loss {
-  color: #f87171;
-  text-shadow: 0 0 8px rgb(239 68 68 / 40%), 0 0 22px rgb(239 68 68 / 35%), 0 0 42px rgb(239 68 68 / 22%);
+.gold-change { position: relative; isolation: isolate; animation-duration: 1.4s; animation-timing-function: ease-out; animation-fill-mode: both; }
+.gold-change-number {
+  font-family: 'Trebuchet MS', system-ui, sans-serif;
+  font-size: clamp(2rem, 7vw, 3.25rem);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -.035em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  -webkit-text-stroke: 2px #65432d;
+  paint-order: stroke fill;
+  text-shadow: 0 3px 0 #65432d, 0 5px 9px rgb(44 25 13 / 25%);
+}
+.gold-change-coin { width: 2rem; height: 2rem; filter: drop-shadow(0 2px 2px rgb(44 25 13 / 25%)); }
+.gold-change-gain { color: #fff0b9; animation-name: gold-gain-pop; }
+.gold-change-loss { color: #fff4e5; animation-name: gold-loss-press; }
+.gold-change-sparkle {
+  position: absolute;
+  width: 9px; height: 9px;
+  background: #f6cf70;
+  clip-path: polygon(50% 0, 63% 37%, 100% 50%, 63% 63%, 50% 100%, 37% 63%, 0 50%, 37% 37%);
+  animation: gold-sparkle 1.4s ease-out both;
+}
+.gold-change-sparkle:nth-child(1) { left: -10px; top: 7px; }
+.gold-change-sparkle:nth-child(2) { right: 8px; top: -5px; width: 7px; height: 7px; }
+.gold-change-sparkle:nth-child(3) { right: -9px; bottom: 6px; width: 6px; height: 6px; }
+@keyframes gold-sparkle {
+  0% { opacity: 0; transform: scale(.3); }
+  18% { opacity: 1; transform: scale(1.15); }
+  45% { opacity: .8; transform: translateY(-3px) scale(.9); }
+  72%, 100% { opacity: 0; transform: translateY(-7px) scale(.3); }
 }
 @media (prefers-reduced-motion: reduce) {
   .gold-change { animation: none; }
+  .gold-change-sparkle { display: none; }
 }
 
 /* Shared rarity tokens: use these classes on future fish/items as well. */
@@ -440,4 +504,12 @@ button, [role='button'] { cursor: pointer; }
 }
 @media (prefers-reduced-motion: no-preference) {
   .header-indicator { animation: header-indicator-pulse 2s ease-in-out infinite; }
+}
+@keyframes rod-gauge-bite {
+  0%, 100% { filter: drop-shadow(0 0 0 transparent); }
+  35% { filter: drop-shadow(0 0 5px currentColor); }
+}
+.rod-gauge-frame { animation: rod-gauge-bite 650ms ease-out both; }
+@media (prefers-reduced-motion: reduce) {
+  .rod-gauge-frame { animation: none; }
 }

@@ -1,0 +1,747 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261018-183000/decorations/mythic/primordial-amethyst-heart_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  118,
+                                           "y":  112,
+                                           "width":  458,
+                                           "height":  473,
+                                           "widthRatio":  0.7305,
+                                           "heightRatio":  0.7544,
+                                           "alphaPixels":  146340,
+                                           "leftAnchorY":  347.422,
+                                           "rightAnchorY":  394.024
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  106,
+                                           "y":  112,
+                                           "width":  461,
+                                           "height":  473,
+                                           "widthRatio":  0.7352,
+                                           "heightRatio":  0.7544,
+                                           "alphaPixels":  147187,
+                                           "leftAnchorY":  346.426,
+                                           "rightAnchorY":  394.147
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  117,
+                                           "y":  75,
+                                           "width":  460,
+                                           "height":  471,
+                                           "widthRatio":  0.7337,
+                                           "heightRatio":  0.7512,
+                                           "alphaPixels":  146560,
+                                           "leftAnchorY":  309.707,
+                                           "rightAnchorY":  355.267
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  107,
+                                           "y":  74,
+                                           "width":  461,
+                                           "height":  472,
+                                           "widthRatio":  0.7352,
+                                           "heightRatio":  0.7528,
+                                           "alphaPixels":  146923,
+                                           "leftAnchorY":  308.339,
+                                           "rightAnchorY":  354.86
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-183000/decorations/rare/moonlit-pearl-clam_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  68,
+                                           "y":  40,
+                                           "width":  496,
+                                           "height":  554,
+                                           "widthRatio":  0.7911,
+                                           "heightRatio":  0.8836,
+                                           "alphaPixels":  189490,
+                                           "leftAnchorY":  370.465,
+                                           "rightAnchorY":  324.946
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  68,
+                                           "y":  40,
+                                           "width":  497,
+                                           "height":  554,
+                                           "widthRatio":  0.7927,
+                                           "heightRatio":  0.8836,
+                                           "alphaPixels":  189616,
+                                           "leftAnchorY":  369.856,
+                                           "rightAnchorY":  324.898
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  68,
+                                           "y":  39,
+                                           "width":  498,
+                                           "height":  555,
+                                           "widthRatio":  0.7943,
+                                           "heightRatio":  0.8852,
+                                           "alphaPixels":  189953,
+                                           "leftAnchorY":  369.344,
+                                           "rightAnchorY":  324.272
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  68,
+                                           "y":  38,
+                                           "width":  498,
+                                           "height":  556,
+                                           "widthRatio":  0.7943,
+                                           "heightRatio":  0.8868,
+                                           "alphaPixels":  190560,
+                                           "leftAnchorY":  369.344,
+                                           "rightAnchorY":  324.385
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-183000/decorations/rare/violet-hydrothermal-vent_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  80,
+                                           "y":  21,
+                                           "width":  462,
+                                           "height":  601,
+                                           "widthRatio":  0.7368,
+                                           "heightRatio":  0.9585,
+                                           "alphaPixels":  131664,
+                                           "leftAnchorY":  469.268,
+                                           "rightAnchorY":  463.386
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  71,
+                                           "y":  46,
+                                           "width":  464,
+                                           "height":  575,
+                                           "widthRatio":  0.74,
+                                           "heightRatio":  0.9171,
+                                           "alphaPixels":  132772,
+                                           "leftAnchorY":  448.368,
+                                           "rightAnchorY":  456.788
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  79,
+                                           "y":  2,
+                                           "width":  463,
+                                           "height":  604,
+                                           "widthRatio":  0.7384,
+                                           "heightRatio":  0.9633,
+                                           "alphaPixels":  135001,
+                                           "leftAnchorY":  461.439,
+                                           "rightAnchorY":  416.17
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  70,
+                                           "y":  6,
+                                           "width":  466,
+                                           "height":  600,
+                                           "widthRatio":  0.7432,
+                                           "heightRatio":  0.9569,
+                                           "alphaPixels":  135149,
+                                           "leftAnchorY":  453.898,
+                                           "rightAnchorY":  439.97
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-183000/fish/epic/amethyst-goblin-shark_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  60,
+                                           "y":  168,
+                                           "width":  534,
+                                           "height":  386,
+                                           "widthRatio":  0.8517,
+                                           "heightRatio":  0.6156,
+                                           "alphaPixels":  62612,
+                                           "leftAnchorY":  348.746,
+                                           "rightAnchorY":  380.362
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  40,
+                                           "y":  229,
+                                           "width":  554,
+                                           "height":  325,
+                                           "widthRatio":  0.8836,
+                                           "heightRatio":  0.5183,
+                                           "alphaPixels":  60388,
+                                           "leftAnchorY":  369.256,
+                                           "rightAnchorY":  380.929
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  68,
+                                           "y":  212,
+                                           "width":  526,
+                                           "height":  318,
+                                           "widthRatio":  0.8389,
+                                           "heightRatio":  0.5072,
+                                           "alphaPixels":  55853,
+                                           "leftAnchorY":  385.659,
+                                           "rightAnchorY":  327.198
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  50,
+                                           "y":  177,
+                                           "width":  544,
+                                           "height":  334,
+                                           "widthRatio":  0.8676,
+                                           "heightRatio":  0.5327,
+                                           "alphaPixels":  61101,
+                                           "leftAnchorY":  321.445,
+                                           "rightAnchorY":  327.87
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-183000/fish/epic/lilac-frilled-shark_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  84,
+                                           "y":  176,
+                                           "width":  506,
+                                           "height":  402,
+                                           "widthRatio":  0.807,
+                                           "heightRatio":  0.6411,
+                                           "alphaPixels":  71420,
+                                           "leftAnchorY":  360.408,
+                                           "rightAnchorY":  376.806
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  103,
+                                           "y":  197,
+                                           "width":  462,
+                                           "height":  378,
+                                           "widthRatio":  0.7368,
+                                           "heightRatio":  0.6029,
+                                           "alphaPixels":  63904,
+                                           "leftAnchorY":  373.918,
+                                           "rightAnchorY":  377.722
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  85,
+                                           "y":  124,
+                                           "width":  495,
+                                           "height":  386,
+                                           "widthRatio":  0.7895,
+                                           "heightRatio":  0.6156,
+                                           "alphaPixels":  70111,
+                                           "leftAnchorY":  299.291,
+                                           "rightAnchorY":  333.971
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  86,
+                                           "y":  162,
+                                           "width":  488,
+                                           "height":  353,
+                                           "widthRatio":  0.7783,
+                                           "heightRatio":  0.563,
+                                           "alphaPixels":  65766,
+                                           "leftAnchorY":  329.918,
+                                           "rightAnchorY":  340.877
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-183000/fish/epic/twilight-frilled-shark_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  66,
+                                           "y":  213,
+                                           "width":  512,
+                                           "height":  335,
+                                           "widthRatio":  0.8166,
+                                           "heightRatio":  0.5343,
+                                           "alphaPixels":  71937,
+                                           "leftAnchorY":  366.284,
+                                           "rightAnchorY":  394.608
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  97,
+                                           "y":  207,
+                                           "width":  481,
+                                           "height":  332,
+                                           "widthRatio":  0.7671,
+                                           "heightRatio":  0.5295,
+                                           "alphaPixels":  61683,
+                                           "leftAnchorY":  334.655,
+                                           "rightAnchorY":  395.948
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  65,
+                                           "y":  199,
+                                           "width":  512,
+                                           "height":  269,
+                                           "widthRatio":  0.8166,
+                                           "heightRatio":  0.429,
+                                           "alphaPixels":  66848,
+                                           "leftAnchorY":  338.794,
+                                           "rightAnchorY":  334.183
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  85,
+                                           "y":  146,
+                                           "width":  493,
+                                           "height":  338,
+                                           "widthRatio":  0.7863,
+                                           "heightRatio":  0.5391,
+                                           "alphaPixels":  71012,
+                                           "leftAnchorY":  307.619,
+                                           "rightAnchorY":  334.396
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-183000/fish/epic/violet-longlure-angler_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  78,
+                                           "y":  237,
+                                           "width":  471,
+                                           "height":  312,
+                                           "widthRatio":  0.7512,
+                                           "heightRatio":  0.4976,
+                                           "alphaPixels":  68554,
+                                           "leftAnchorY":  434.298,
+                                           "rightAnchorY":  397.013
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  94,
+                                           "y":  237,
+                                           "width":  456,
+                                           "height":  309,
+                                           "widthRatio":  0.7273,
+                                           "heightRatio":  0.4928,
+                                           "alphaPixels":  68989,
+                                           "leftAnchorY":  428.602,
+                                           "rightAnchorY":  396.573
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  61,
+                                           "y":  196,
+                                           "width":  504,
+                                           "height":  300,
+                                           "widthRatio":  0.8038,
+                                           "heightRatio":  0.4785,
+                                           "alphaPixels":  72253,
+                                           "leftAnchorY":  375.994,
+                                           "rightAnchorY":  348.81
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  87,
+                                           "y":  196,
+                                           "width":  482,
+                                           "height":  300,
+                                           "widthRatio":  0.7687,
+                                           "heightRatio":  0.4785,
+                                           "alphaPixels":  69656,
+                                           "leftAnchorY":  382.802,
+                                           "rightAnchorY":  350.064
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-183000/fish/mythic/violiss-amethyst-trench_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  47,
+                                           "y":  184,
+                                           "width":  575,
+                                           "height":  358,
+                                           "widthRatio":  0.9171,
+                                           "heightRatio":  0.571,
+                                           "alphaPixels":  79916,
+                                           "leftAnchorY":  333.853,
+                                           "rightAnchorY":  405.662
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  27,
+                                           "y":  248,
+                                           "width":  579,
+                                           "height":  294,
+                                           "widthRatio":  0.9234,
+                                           "heightRatio":  0.4689,
+                                           "alphaPixels":  70861,
+                                           "leftAnchorY":  391.334,
+                                           "rightAnchorY":  407.917
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  37,
+                                           "y":  182,
+                                           "width":  579,
+                                           "height":  288,
+                                           "widthRatio":  0.9234,
+                                           "heightRatio":  0.4593,
+                                           "alphaPixels":  69237,
+                                           "leftAnchorY":  349.347,
+                                           "rightAnchorY":  330.407
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  73,
+                                           "y":  108,
+                                           "width":  533,
+                                           "height":  363,
+                                           "widthRatio":  0.8501,
+                                           "heightRatio":  0.5789,
+                                           "alphaPixels":  75942,
+                                           "leftAnchorY":  249.954,
+                                           "rightAnchorY":  330.29
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-183000/fish/rare/amethyst-fangtooth_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  17,
+                                           "y":  115,
+                                           "width":  599,
+                                           "height":  457,
+                                           "widthRatio":  0.9553,
+                                           "heightRatio":  0.7289,
+                                           "alphaPixels":  163320,
+                                           "leftAnchorY":  350.095,
+                                           "rightAnchorY":  348.536
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  49,
+                                           "y":  118,
+                                           "width":  567,
+                                           "height":  448,
+                                           "widthRatio":  0.9043,
+                                           "heightRatio":  0.7145,
+                                           "alphaPixels":  145899,
+                                           "leftAnchorY":  334.212,
+                                           "rightAnchorY":  348.967
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  12,
+                                           "y":  68,
+                                           "width":  604,
+                                           "height":  445,
+                                           "widthRatio":  0.9633,
+                                           "heightRatio":  0.7097,
+                                           "alphaPixels":  161529,
+                                           "leftAnchorY":  296.521,
+                                           "rightAnchorY":  296.726
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  20,
+                                           "y":  62,
+                                           "width":  596,
+                                           "height":  455,
+                                           "widthRatio":  0.9506,
+                                           "heightRatio":  0.7257,
+                                           "alphaPixels":  159983,
+                                           "leftAnchorY":  302.779,
+                                           "rightAnchorY":  296.717
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-183000/fish/rare/inky-purple-grenadier_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  118,
+                                           "y":  281,
+                                           "width":  436,
+                                           "height":  210,
+                                           "widthRatio":  0.6954,
+                                           "heightRatio":  0.3349,
+                                           "alphaPixels":  46036,
+                                           "leftAnchorY":  370.895,
+                                           "rightAnchorY":  402.121
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  110,
+                                           "y":  228,
+                                           "width":  409,
+                                           "height":  264,
+                                           "widthRatio":  0.6523,
+                                           "heightRatio":  0.4211,
+                                           "alphaPixels":  47716,
+                                           "leftAnchorY":  354.12,
+                                           "rightAnchorY":  402.707
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  132,
+                                           "y":  213,
+                                           "width":  423,
+                                           "height":  209,
+                                           "widthRatio":  0.6746,
+                                           "heightRatio":  0.3333,
+                                           "alphaPixels":  47221,
+                                           "leftAnchorY":  341.921,
+                                           "rightAnchorY":  333.547
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  74,
+                                           "y":  213,
+                                           "width":  445,
+                                           "height":  210,
+                                           "widthRatio":  0.7097,
+                                           "heightRatio":  0.3349,
+                                           "alphaPixels":  47022,
+                                           "leftAnchorY":  304.572,
+                                           "rightAnchorY":  334.219
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-183000/fish/rare/inky-purple-gulper-eel_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  124,
+                                           "y":  196,
+                                           "width":  423,
+                                           "height":  333,
+                                           "widthRatio":  0.6746,
+                                           "heightRatio":  0.5311,
+                                           "alphaPixels":  74719,
+                                           "leftAnchorY":  365.691,
+                                           "rightAnchorY":  413.906
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  95,
+                                           "y":  232,
+                                           "width":  453,
+                                           "height":  296,
+                                           "widthRatio":  0.7225,
+                                           "heightRatio":  0.4721,
+                                           "alphaPixels":  69687,
+                                           "leftAnchorY":  352.013,
+                                           "rightAnchorY":  413.752
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  119,
+                                           "y":  251,
+                                           "width":  428,
+                                           "height":  248,
+                                           "widthRatio":  0.6826,
+                                           "heightRatio":  0.3955,
+                                           "alphaPixels":  66843,
+                                           "leftAnchorY":  399.548,
+                                           "rightAnchorY":  363.147
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  103,
+                                           "y":  157,
+                                           "width":  445,
+                                           "height":  324,
+                                           "widthRatio":  0.7097,
+                                           "heightRatio":  0.5167,
+                                           "alphaPixels":  77135,
+                                           "leftAnchorY":  306.504,
+                                           "rightAnchorY":  363.179
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-183000/fish/rare/starthread-dragonfish_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  54,
+                                           "y":  166,
+                                           "width":  508,
+                                           "height":  362,
+                                           "widthRatio":  0.8102,
+                                           "heightRatio":  0.5774,
+                                           "alphaPixels":  73387,
+                                           "leftAnchorY":  284.36,
+                                           "rightAnchorY":  366.85
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  73,
+                                           "y":  188,
+                                           "width":  495,
+                                           "height":  341,
+                                           "widthRatio":  0.7895,
+                                           "heightRatio":  0.5439,
+                                           "alphaPixels":  70121,
+                                           "leftAnchorY":  300.674,
+                                           "rightAnchorY":  370.915
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  51,
+                                           "y":  224,
+                                           "width":  511,
+                                           "height":  292,
+                                           "widthRatio":  0.815,
+                                           "heightRatio":  0.4657,
+                                           "alphaPixels":  68343,
+                                           "leftAnchorY":  341.315,
+                                           "rightAnchorY":  355.793
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  64,
+                                           "y":  162,
+                                           "width":  504,
+                                           "height":  356,
+                                           "widthRatio":  0.8038,
+                                           "heightRatio":  0.5678,
+                                           "alphaPixels":  72073,
+                                           "leftAnchorY":  271.317,
+                                           "rightAnchorY":  356.711
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-183000/fish/rare/violet-telescopefish_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  12,
+                                           "y":  191,
+                                           "width":  605,
+                                           "height":  372,
+                                           "widthRatio":  0.9649,
+                                           "heightRatio":  0.5933,
+                                           "alphaPixels":  138842,
+                                           "leftAnchorY":  369.381,
+                                           "rightAnchorY":  370.915
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  33,
+                                           "y":  191,
+                                           "width":  584,
+                                           "height":  371,
+                                           "widthRatio":  0.9314,
+                                           "heightRatio":  0.5917,
+                                           "alphaPixels":  132106,
+                                           "leftAnchorY":  375.664,
+                                           "rightAnchorY":  368.029
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  16,
+                                           "y":  140,
+                                           "width":  601,
+                                           "height":  375,
+                                           "widthRatio":  0.9585,
+                                           "heightRatio":  0.5981,
+                                           "alphaPixels":  136905,
+                                           "leftAnchorY":  314.827,
+                                           "rightAnchorY":  319.806
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  24,
+                                           "y":  140,
+                                           "width":  593,
+                                           "height":  372,
+                                           "widthRatio":  0.9458,
+                                           "heightRatio":  0.5933,
+                                           "alphaPixels":  133478,
+                                           "leftAnchorY":  354.848,
+                                           "rightAnchorY":  318.424
+                                       }
+                                   ]
+                    }
+                ]
+}

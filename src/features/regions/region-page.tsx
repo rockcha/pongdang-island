@@ -45,7 +45,7 @@ function Destination({regionId,userId}:{regionId:string;userId?:string}){
    <div className="absolute inset-x-4 bottom-4 pr-14 text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.55)]"><div className="flex items-center gap-1"><h1 className="min-w-0 text-xl font-normal tracking-tight">{region.name}</h1><BannerInfo key={region.id} title={region.name} steps={fishingGuide}/></div>{region.description&&<p className="mt-1 line-clamp-2 max-w-sm text-xs leading-5 text-white">{region.description}</p>}</div>
    <Link to="/harbor" aria-label="지도로 이동" title="지도" className="absolute right-4 bottom-4 flex size-11 items-center justify-center rounded-full border border-white/25 bg-black/20 text-white backdrop-blur-sm transition-colors hover:bg-black/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"><appArt.map className="size-7"/></Link>
   </div>
-  <div ref={setOddsTarget} className="min-h-[52px] shrink-0 bg-background"/>
+  <div ref={setOddsTarget} className="min-h-11 shrink-0 bg-background"/>
   <div className="relative flex min-h-0 flex-1 flex-col">
    <div ref={setToolbar} role="group" aria-label="낚시 게이지" className="absolute inset-x-0 top-0 z-30 flex flex-col overflow-hidden text-white"/>
    <FishingPanel regionId={region.id} toolbarTarget={toolbar} oddsTarget={oddsTarget}/>

@@ -33,7 +33,7 @@ export function FishingSea({regionId,view='top'}:{regionId:string;view?:'front'|
  const src=view==='front'?theme.frontSrc:theme.src
  const opacity=view==='top'&&theme.id==='whitenight'?.72:1
  return <svg viewBox={`0 0 ${width} ${view==='front'?theme.frontWaterEnd:theme.waterEnd}`} preserveAspectRatio={view==='front'?'xMidYMin slice':'xMidYMid slice'} className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true" data-fishing-sea={theme.id} data-fishing-view={view}>
-  <rect width={width} height={height} fill={theme.water} className={loaded!==src&&failed!==src?"motion-safe:animate-pulse":""}/>{failed!==src&&<image href={src} width={width} height={height} className="transition-opacity duration-300 motion-reduce:transition-none" opacity={loaded===src?opacity:0} onLoad={()=>setLoaded(src)} onError={()=>setFailed(src)}/>}
+  <rect width={width} height={height} fill={theme.water} />{failed!==src&&<image href={src} width={width} height={height} className="transition-opacity duration-300 motion-reduce:transition-none" opacity={loaded===src?opacity:0} onLoad={()=>setLoaded(src)} onError={()=>setFailed(src)}/>}
  </svg>
 }
 export function FishingStandby({regionId}:{regionId:string}){

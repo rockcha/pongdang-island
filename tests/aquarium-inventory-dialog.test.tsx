@@ -24,7 +24,7 @@ it('groups species, combines filters and sells only real individuals with the se
  fireEvent.click(screen.getByRole('button',{name:/^목록/}))
  expect(await screen.findByText('×3')).toBeTruthy()
  fireEvent.click(screen.getByRole('combobox',{name:'등급 선택'}))
- fireEvent.keyDown(await screen.findByRole('option',{name:'희귀'}),{key:'Enter'})
+ fireEvent.keyDown(await screen.findByRole('option',{name:/^희귀\s/}),{key:'Enter'})
  await waitFor(()=>expect(screen.queryByRole('listbox')).toBeNull())
  expect(screen.queryByText('×3')).toBeNull()
  expect(screen.getByRole('button',{name:'상어 선택'})).toBeTruthy()

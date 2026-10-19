@@ -46,22 +46,25 @@ function HarborMap({userId}:{userId?:string}){
  const natives=catalog.filter(item=>item.is_native&&item.native_region_id===region?.id).sort((a,b)=>rarities[a.rarity].rank-rarities[b.rarity].rank)
  const mythics=region?regionalMythics(catalog,region.id):[]
  function travel(){if(region?.unlocked)navigate(region.id===map?.currentRegion?`/region/${region.id}`:`/sailing/${region.id}`)}
- return <section className="mx-auto flex min-h-0 w-full max-w-md flex-1 flex-col overflow-y-auto overscroll-contain">
+ return <section className="mx-auto flex min-h-0 w-full max-w-md flex-1 flex-col overflow-hidden">
   {error?<div role="alert" className="space-y-3 rounded-2xl bg-muted p-5 text-sm"><p>항로를 불러오지 못했어요.</p><Button variant="outline" onClick={()=>setRetry(v=>v+1)}>다시 불러오기</Button></div>:!region?<div role="status" className="flex min-h-80 flex-1 items-center justify-center"><JourneyProgress label="지도를 펼치는 중…"/></div>:<>
-   <article onDragStart={event=>event.preventDefault()} className="relative isolate flex min-h-[24rem] shrink-0 flex-1 flex-col overflow-hidden bg-secondary pt-32 text-white">
+   <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
+   <article onDragStart={event=>event.preventDefault()} className="relative isolate flex shrink-0 flex-col overflow-hidden bg-secondary text-white">
     <Landscape key={region.id} region={region}/><div className="pointer-events-none absolute inset-0 bg-slate-950/[0.38]"/>
-    <div className="absolute inset-x-0 top-0 z-10 bg-gradient-to-b from-background/80 via-background/50 to-transparent px-2 pt-2 pb-5">
-<DestinationStrip>{map?.regions.map((item,i)=>{const fragment=catalog.find(s=>s.id===`map-${item.id}`);return <button key={item.id} aria-label={`${item.name} 지도`} aria-pressed={index===i} onClick={()=>{setIndex(i);rememberRegion(item.id,userId)}} className={`harbor-map-piece relative isolate flex w-24 shrink-0 flex-col items-center justify-center gap-1 rounded-none px-2 py-2 outline-none focus-visible:ring-2 focus-visible:ring-ring ${index===i?'harbor-map-selected':''}`}><span className={item.unlocked?'':'grayscale brightness-75 opacity-70'}><CollectibleThumbnail fadeIn path={fragment?.thumbnail_path||item.map_image_path||`map/normal/map-${item.id}_thumbnail.png`} name={`${item.name} 지도`} className="size-20"/></span></button>})}</DestinationStrip>
+    <div className="relative z-10 shrink-0 bg-gradient-to-b from-background/80 via-background/50 to-transparent px-2 pt-2 pb-1">
+<DestinationStrip>{map?.regions.map((item,i)=>{const fragment=catalog.find(s=>s.id===`map-${item.id}`);return <button key={item.id} aria-label={`${item.name} 지도`} aria-pressed={index===i} onClick={()=>{setIndex(i);rememberRegion(item.id,userId)}} className={`harbor-map-piece relative isolate flex w-24 shrink-0 flex-col items-center justify-center gap-1 rounded-none px-2 py-2 outline-none focus-visible:ring-2 focus-visible:ring-ring ${index===i?'harbor-map-selected':''}`}><span className={item.unlocked?'':'grayscale brightness-75 opacity-70'}><CollectibleThumbnail fadeIn path={fragment?.thumbnail_path||item.map_image_path||`map/normal/map-${item.id}_thumbnail.png`} name={`${item.name} 지도`} className="size-16"/></span></button>})}</DestinationStrip>
     </div>
-    <div className="relative mx-auto flex w-full max-w-sm flex-1 flex-col items-center justify-center gap-3 px-4 py-4 text-center"><div className="relative translate-y-6 space-y-3"><h3 aria-live="polite" className="flex items-center justify-center gap-2 text-xl font-normal tracking-tight drop-shadow-md">{regionIcons[region.id]&&<img src={regionIcons[region.id].src} alt="" className="size-7"/>}{region.name}</h3><p className="max-w-64 text-sm leading-6 text-white/95 drop-shadow-md">{region.description}</p></div>{mythics.length>0&&<HarborMythicShowcase key={region.id} items={mythics} regionName={region.name}/>}
+    <div className="relative mx-auto flex w-full max-w-sm flex-col items-center gap-4 px-4 pb-5 pt-3 text-center"><div className="relative space-y-2"><h3 aria-live="polite" className="flex items-center justify-center gap-2 text-xl font-normal tracking-tight drop-shadow-md">{regionIcons[region.id]&&<img src={regionIcons[region.id].src} alt="" className="size-7"/>}{region.name}</h3><p className="max-w-72 text-xs leading-5 text-white/95 drop-shadow-md">{region.description}</p></div>{mythics.length>0&&<HarborMythicShowcase key={region.id} items={mythics} regionName={region.name} stacked/>}
     </div>
    </article>
+   {!catalogError&&<NativeSpeciesStrip key={region.id} items={natives} regionId={region.id} regionName={region.name}/>}
+   </div>
    <div className={`relative z-10 grid shrink-0 border-t border-border bg-background text-foreground ${region.unlocked?'grid-cols-2':'grid-cols-1'}`}>
-    <Button variant="ghost" className="flex h-20 min-w-0 flex-col gap-1 rounded-none border-r border-border bg-[#E8D1B8] px-2 text-sm font-medium text-[#5C3D29] hover:bg-[#DFC2A3]" onClick={()=>region.unlocked?travel():navigate(`/item-shop?tab=maps&region=${encodeURIComponent(region.id)}`)}>{region.unlocked?<appArt.rod className="size-8"/>:<appArt.shop className="size-8"/>}<span>{region.unlocked?'낚시 하기':'아이템 상점에서 구매하기'}</span></Button>
+    <Button variant="ghost" className="flex h-16 min-w-0 flex-col gap-1 rounded-none border-r border-border bg-[#E8D1B8] px-2 text-sm font-medium text-[#5C3D29] hover:bg-[#DFC2A3]" onClick={()=>region.unlocked?travel():navigate(`/item-shop?tab=maps&region=${encodeURIComponent(region.id)}`)}>{region.unlocked?<appArt.rod className="size-8"/>:<appArt.shop className="size-8"/>}<span>{region.unlocked?'낚시 하기':'아이템 상점에서 구매하기'}</span></Button>
     {region.unlocked&&<Button variant="ghost" className="flex h-20 min-w-0 flex-col gap-1 rounded-none bg-background px-2 text-sm font-medium text-primary hover:bg-secondary" onClick={()=>navigate(`/expeditions?region=${region.id}`)}><appArt.expeditions className="size-8"/><span>통발 설치</span></Button>}
    </div>
 
-   {!catalogError&&<NativeSpeciesStrip key={region.id} items={natives} regionId={region.id} regionName={region.name}/>}
+
 
   </>}
  </section>

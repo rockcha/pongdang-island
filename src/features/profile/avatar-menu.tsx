@@ -9,7 +9,7 @@ import { useSocial } from '@/features/social/social-provider'
 import { createClient } from '@/lib/client'
 import { PlayerAvatar } from './player-avatar'
 
-const {settings:Settings,profile:UserRound,logout:LogOut}=appArt
+const {profile:UserRound,logout:LogOut}=appArt
 
 export function AvatarMenu() {
   const { session } = useAuth()
@@ -45,9 +45,6 @@ export function AvatarMenu() {
           {profile?.equipped_title&&<p className="flex max-w-64 items-center gap-1.5 border-b px-3 py-2 text-[11px] text-primary"><appArt.title className="size-5"/><span className="truncate">{profile.equipped_title}</span></p>}
           <Menu.LinkItem onClick={()=>setOpen(false)} render={<Link to="/profile" />} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm outline-none data-highlighted:bg-accent">
             <UserRound className="size-7" />마이페이지
-          </Menu.LinkItem>
-          <Menu.LinkItem onClick={()=>setOpen(false)} render={<Link to="/profile/settings" />} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm outline-none data-highlighted:bg-accent">
-            <Settings className="size-7" />설정
           </Menu.LinkItem>
           <Menu.LinkItem onClick={()=>setOpen(false)} render={<Link to="/download" />} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm outline-none data-highlighted:bg-accent"><appArt.download className="size-7"/>다운로드</Menu.LinkItem>
           <Menu.Separator className="my-1 h-px bg-border" />

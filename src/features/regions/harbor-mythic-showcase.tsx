@@ -15,12 +15,12 @@ function MythicArt({item}:{item:CatalogEntry}){
  return <span data-silhouette={!item.discovered} className={`harbor-mythic-art relative inline-flex ${item.discovered?'':'harbor-mythic-silhouette'}`}><CollectiblePreview species={item}/></span>
 }
 
-export function HarborMythicShowcase({items,regionName}:{items:CatalogEntry[];regionName:string}){
+export function HarborMythicShowcase({items,regionName,stacked=false}:{items:CatalogEntry[];regionName:string;stacked?:boolean}){
  const [selection]=useState(()=>Math.random())
  const [detail,setDetail]=useState<CatalogEntry|null>(null)
  const item=items[Math.floor(selection*items.length)]
  if(!item)return null
- return <section role="region" aria-label={`${regionName}\uC758 \uC2E0\uD654 \uAC1C\uCCB4`} className="harbor-mythic-showcase relative w-full max-w-sm text-center">
+ return <section role="region" aria-label={`${regionName}\uC758 \uC2E0\uD654 \uAC1C\uCCB4`} className={`harbor-mythic-showcase relative w-full max-w-sm text-center ${stacked?'harbor-mythic-stacked':''}`}>
   <div className="relative flex items-center justify-center">
    <button key={item.id} type="button" aria-label={`${item.name} 소개 보기`} className="harbor-mythic-card harbor-mythic-enter relative grid min-w-0 flex-1 items-center gap-2 rounded-2xl text-left outline-none focus-visible:ring-2 focus-visible:ring-amber-100" onClick={()=>setDetail(item)}>
     <span aria-hidden="true" className="harbor-mythic-halo pointer-events-none absolute inset-0"/>

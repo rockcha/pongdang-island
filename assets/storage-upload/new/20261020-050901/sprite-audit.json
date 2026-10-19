@@ -1,0 +1,510 @@
+{
+  "alphaThreshold": 32,
+  "scope": "Local source sheets only, four-frame sheets and eight-frame robot inspected separately.",
+  "sprites": [
+    {
+      "file": "assets/storage-upload/new/20261020-050901/fish/rare/giseong-fish_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "x": 92,
+          "y": 223,
+          "width": 503,
+          "height": 316,
+          "widthRatio": 0.8022,
+          "heightRatio": 0.504,
+          "alphaPixels": 112781,
+          "leftAnchorY": 381.455,
+          "rightAnchorY": 371.092
+        },
+        {
+          "frame": 1,
+          "x": 51,
+          "y": 223,
+          "width": 499,
+          "height": 312,
+          "widthRatio": 0.7959,
+          "heightRatio": 0.4976,
+          "alphaPixels": 107936,
+          "leftAnchorY": 395.421,
+          "rightAnchorY": 369.954
+        },
+        {
+          "frame": 2,
+          "x": 93,
+          "y": 125,
+          "width": 502,
+          "height": 309,
+          "widthRatio": 0.8006,
+          "heightRatio": 0.4928,
+          "alphaPixels": 107520,
+          "leftAnchorY": 292.871,
+          "rightAnchorY": 270.552
+        },
+        {
+          "frame": 3,
+          "x": 51,
+          "y": 121,
+          "width": 501,
+          "height": 316,
+          "widthRatio": 0.799,
+          "heightRatio": 0.504,
+          "alphaPixels": 108964,
+          "leftAnchorY": 292.598,
+          "rightAnchorY": 269.64
+        }
+      ]
+    },
+    {
+      "file": "assets/storage-upload/new/20261020-050901/fish/rare/giseong-webfoot-octopus_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "x": 93,
+          "y": 137,
+          "width": 490,
+          "height": 419,
+          "widthRatio": 0.7815,
+          "heightRatio": 0.6683,
+          "alphaPixels": 144194,
+          "leftAnchorY": 404.768,
+          "rightAnchorY": 332.396
+        },
+        {
+          "frame": 1,
+          "x": 48,
+          "y": 142,
+          "width": 529,
+          "height": 419,
+          "widthRatio": 0.8437,
+          "heightRatio": 0.6683,
+          "alphaPixels": 145699,
+          "leftAnchorY": 402.508,
+          "rightAnchorY": 336.425
+        },
+        {
+          "frame": 2,
+          "x": 52,
+          "y": 98,
+          "width": 560,
+          "height": 404,
+          "widthRatio": 0.8931,
+          "heightRatio": 0.6443,
+          "alphaPixels": 143851,
+          "leftAnchorY": 335.831,
+          "rightAnchorY": 289.933
+        },
+        {
+          "frame": 3,
+          "x": 84,
+          "y": 96,
+          "width": 495,
+          "height": 417,
+          "widthRatio": 0.7895,
+          "heightRatio": 0.6651,
+          "alphaPixels": 146410,
+          "leftAnchorY": 363.633,
+          "rightAnchorY": 295.255
+        }
+      ]
+    },
+    {
+      "file": "assets/storage-upload/new/20261020-050901/fish/rare/pongi-hammerhead_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "x": 90,
+          "y": 213,
+          "width": 482,
+          "height": 301,
+          "widthRatio": 0.7687,
+          "heightRatio": 0.4801,
+          "alphaPixels": 68702,
+          "leftAnchorY": 342.285,
+          "rightAnchorY": 373.11
+        },
+        {
+          "frame": 1,
+          "x": 66,
+          "y": 214,
+          "width": 486,
+          "height": 304,
+          "widthRatio": 0.7751,
+          "heightRatio": 0.4848,
+          "alphaPixels": 70203,
+          "leftAnchorY": 347.368,
+          "rightAnchorY": 376.713
+        },
+        {
+          "frame": 2,
+          "x": 76,
+          "y": 155,
+          "width": 503,
+          "height": 290,
+          "widthRatio": 0.8022,
+          "heightRatio": 0.4625,
+          "alphaPixels": 71390,
+          "leftAnchorY": 290.12,
+          "rightAnchorY": 316.329
+        },
+        {
+          "frame": 3,
+          "x": 62,
+          "y": 157,
+          "width": 496,
+          "height": 297,
+          "widthRatio": 0.7911,
+          "heightRatio": 0.4737,
+          "alphaPixels": 71926,
+          "leftAnchorY": 290.55,
+          "rightAnchorY": 317.916
+        }
+      ]
+    },
+    {
+      "file": "assets/storage-upload/new/20261020-050901/fish/rare/pongi-jellyfish_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "x": 96,
+          "y": 173,
+          "width": 458,
+          "height": 378,
+          "widthRatio": 0.7305,
+          "heightRatio": 0.6029,
+          "alphaPixels": 111935,
+          "leftAnchorY": 430.978,
+          "rightAnchorY": 332.993
+        },
+        {
+          "frame": 1,
+          "x": 70,
+          "y": 175,
+          "width": 441,
+          "height": 376,
+          "widthRatio": 0.7033,
+          "heightRatio": 0.5997,
+          "alphaPixels": 107305,
+          "leftAnchorY": 430.291,
+          "rightAnchorY": 333.099
+        },
+        {
+          "frame": 2,
+          "x": 107,
+          "y": 138,
+          "width": 456,
+          "height": 357,
+          "widthRatio": 0.7273,
+          "heightRatio": 0.5694,
+          "alphaPixels": 100294,
+          "leftAnchorY": 373.017,
+          "rightAnchorY": 290.741
+        },
+        {
+          "frame": 3,
+          "x": 29,
+          "y": 124,
+          "width": 492,
+          "height": 387,
+          "widthRatio": 0.7847,
+          "heightRatio": 0.6172,
+          "alphaPixels": 119167,
+          "leftAnchorY": 400.139,
+          "rightAnchorY": 284.306
+        }
+      ]
+    },
+    {
+      "file": "assets/storage-upload/new/20261020-050901/fish/epic/pongi-seahorse-rider_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "x": 136,
+          "y": 87,
+          "width": 454,
+          "height": 477,
+          "widthRatio": 0.7241,
+          "heightRatio": 0.7608,
+          "alphaPixels": 127821,
+          "leftAnchorY": 371.43,
+          "rightAnchorY": 285.095
+        },
+        {
+          "frame": 1,
+          "x": 119,
+          "y": 87,
+          "width": 455,
+          "height": 478,
+          "widthRatio": 0.7257,
+          "heightRatio": 0.7624,
+          "alphaPixels": 128654,
+          "leftAnchorY": 375.442,
+          "rightAnchorY": 286.171
+        },
+        {
+          "frame": 2,
+          "x": 136,
+          "y": 63,
+          "width": 454,
+          "height": 470,
+          "widthRatio": 0.7241,
+          "heightRatio": 0.7496,
+          "alphaPixels": 127197,
+          "leftAnchorY": 344.581,
+          "rightAnchorY": 261.494
+        },
+        {
+          "frame": 3,
+          "x": 119,
+          "y": 63,
+          "width": 455,
+          "height": 473,
+          "widthRatio": 0.7257,
+          "heightRatio": 0.7544,
+          "alphaPixels": 127876,
+          "leftAnchorY": 349.837,
+          "rightAnchorY": 263.406
+        }
+      ]
+    },
+    {
+      "file": "assets/storage-upload/new/20261020-050901/fish/normal/pongi-crab_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "x": 61,
+          "y": 180,
+          "width": 524,
+          "height": 348,
+          "widthRatio": 0.8357,
+          "heightRatio": 0.555,
+          "alphaPixels": 116055,
+          "leftAnchorY": 379.891,
+          "rightAnchorY": 371.524
+        },
+        {
+          "frame": 1,
+          "x": 48,
+          "y": 180,
+          "width": 517,
+          "height": 348,
+          "widthRatio": 0.8246,
+          "heightRatio": 0.555,
+          "alphaPixels": 112463,
+          "leftAnchorY": 382.267,
+          "rightAnchorY": 372.638
+        },
+        {
+          "frame": 2,
+          "x": 62,
+          "y": 125,
+          "width": 520,
+          "height": 348,
+          "widthRatio": 0.8293,
+          "heightRatio": 0.555,
+          "alphaPixels": 112192,
+          "leftAnchorY": 321.7,
+          "rightAnchorY": 316.084
+        },
+        {
+          "frame": 3,
+          "x": 46,
+          "y": 124,
+          "width": 525,
+          "height": 349,
+          "widthRatio": 0.8373,
+          "heightRatio": 0.5566,
+          "alphaPixels": 114190,
+          "leftAnchorY": 320.188,
+          "rightAnchorY": 316.959
+        }
+      ]
+    },
+    {
+      "file": "assets/storage-upload/new/20261020-050901/fish/mythic/pongi-exploration-robot_swim8_sprite.png",
+      "width": 1774,
+      "height": 887,
+      "cellWidth": 443.5,
+      "cellHeight": 443.5,
+      "frames": [
+        {
+          "frame": 0,
+          "x": 58,
+          "y": 97,
+          "width": 346,
+          "height": 330,
+          "widthRatio": 0.7802,
+          "heightRatio": 0.7441,
+          "alphaPixels": 72586,
+          "leftAnchorY": 263.953,
+          "rightAnchorY": 263.884
+        },
+        {
+          "frame": 1,
+          "x": 57,
+          "y": 97,
+          "width": 350,
+          "height": 323,
+          "widthRatio": 0.7892,
+          "heightRatio": 0.7283,
+          "alphaPixels": 72452,
+          "leftAnchorY": 268.896,
+          "rightAnchorY": 254.468
+        },
+        {
+          "frame": 2,
+          "x": 53,
+          "y": 96,
+          "width": 366,
+          "height": 330,
+          "widthRatio": 0.8253,
+          "heightRatio": 0.7441,
+          "alphaPixels": 76149,
+          "leftAnchorY": 270.39,
+          "rightAnchorY": 261.624
+        },
+        {
+          "frame": 3,
+          "x": 72,
+          "y": 95,
+          "width": 323,
+          "height": 332,
+          "widthRatio": 0.7283,
+          "heightRatio": 0.7486,
+          "alphaPixels": 69785,
+          "leftAnchorY": 269.288,
+          "rightAnchorY": 250.176
+        },
+        {
+          "frame": 4,
+          "x": 57,
+          "y": 75,
+          "width": 335,
+          "height": 287,
+          "widthRatio": 0.7554,
+          "heightRatio": 0.6471,
+          "alphaPixels": 61229,
+          "leftAnchorY": 206.984,
+          "rightAnchorY": 224.105
+        },
+        {
+          "frame": 5,
+          "x": 60,
+          "y": 74,
+          "width": 309,
+          "height": 257,
+          "widthRatio": 0.6967,
+          "heightRatio": 0.5795,
+          "alphaPixels": 53170,
+          "leftAnchorY": 194.854,
+          "rightAnchorY": 214.885
+        },
+        {
+          "frame": 6,
+          "x": 61,
+          "y": 71,
+          "width": 354,
+          "height": 306,
+          "widthRatio": 0.7982,
+          "heightRatio": 0.69,
+          "alphaPixels": 71025,
+          "leftAnchorY": 229.845,
+          "rightAnchorY": 230.825
+        },
+        {
+          "frame": 7,
+          "x": 64,
+          "y": 67,
+          "width": 334,
+          "height": 320,
+          "widthRatio": 0.7531,
+          "heightRatio": 0.7215,
+          "alphaPixels": 70910,
+          "leftAnchorY": 227.197,
+          "rightAnchorY": 231.428
+        }
+      ]
+    },
+    {
+      "file": "assets/storage-upload/new/20261020-050901/fish/mythic/pongi-exploration-robot_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "cellWidth": 627,
+      "cellHeight": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "x": 105,
+          "y": 114,
+          "width": 501,
+          "height": 457,
+          "widthRatio": 0.799,
+          "heightRatio": 0.7289,
+          "alphaPixels": 134168,
+          "leftAnchorY": 333.5,
+          "rightAnchorY": 353.061
+        },
+        {
+          "frame": 1,
+          "x": 69,
+          "y": 114,
+          "width": 518,
+          "height": 457,
+          "widthRatio": 0.8262,
+          "heightRatio": 0.7289,
+          "alphaPixels": 141429,
+          "leftAnchorY": 340.818,
+          "rightAnchorY": 354.131
+        },
+        {
+          "frame": 2,
+          "x": 103,
+          "y": 69,
+          "width": 503,
+          "height": 453,
+          "widthRatio": 0.8022,
+          "heightRatio": 0.7225,
+          "alphaPixels": 134740,
+          "leftAnchorY": 287.234,
+          "rightAnchorY": 307.443
+        },
+        {
+          "frame": 3,
+          "x": 77,
+          "y": 69,
+          "width": 510,
+          "height": 454,
+          "widthRatio": 0.8134,
+          "heightRatio": 0.7241,
+          "alphaPixels": 135145,
+          "leftAnchorY": 282.468,
+          "rightAnchorY": 308.888
+        }
+      ]
+    }
+  ]
+}

@@ -25,18 +25,18 @@ it('sells exactly the three requested baits and keeps first greeting reward-only
  await expect(db.query("select public.buy_fishing_bait('bait_first_greeting',$1)",[crypto.randomUUID()])).rejects.toThrow(/BAIT_NOT_FOR_SALE/)
 })
 it('sells safe and decoration baits at their new prices and lists purchases first',async()=>{
- for(const [id,price] of [['bait_safe',50],['bait_magnet',50]] as const){
+ for(const [id,price] of [['bait_safe',65],['bait_magnet',50]] as const){
   const op=crypto.randomUUID()
   await db.query('select public.buy_fishing_bait($1,$2)',[id,op])
   await db.query('select public.buy_fishing_bait($1,$2)',[id,op])
   expect((await db.query('select delta from public.gold_transactions where operation_id=$1',[op])).rows).toEqual([{delta:-price}])
  }
  const rows=(await db.query('select price from public.fishing_baits order by sort_order')).rows
- expect(rows.map(row=>row.price)).toEqual([30,50,40,60,80,50,null,null,null])
+ expect(rows.map(row=>row.price)).toEqual([30,65,40,60,80,50,null,null,null])
 })
 it('boosts star candy rarity and eligibility without changing waiting time or gauge difficulty',async()=>{
  const baits=(await db.query('select id,common_bp,rare_bp,epic_bp,mythic_bp,app_private.fishing_success_chance_bp(id) chance from public.fishing_baits where id=any($1)',[newBaits])).rows
- for(const b of baits)expect(b.chance).toBe(b.id==='bait_sea_memory'?4000:6000)
+ for(const b of baits)expect(b.chance).toBe(b.id==='bait_sea_memory'?4000:7000)
  const candy=baits.find(b=>b.id==='bait_forbidden_star')
  expect(candy.epic_bp).toBeGreaterThan(270);expect(candy.mythic_bp).toBeGreaterThan(30)
  expect(candy.common_bp+candy.rare_bp+candy.epic_bp+candy.mythic_bp).toBe(10000)
@@ -60,7 +60,9 @@ it('targets only undiscovered non-map species, falls back across rarities, and p
 it('increases current-region native weighting without changing the rarity pool',async()=>{
  const baseline=(await db.query("with draws as materialized(select (app_private.pick_regional_collectible('pongdang','rare',false,0)).species_id id from generate_series(1,2500)) select count(*) filter(where s.is_native and s.native_region_id='pongdang')::int home from draws d join public.collectible_species s on s.id=d.id")).rows[0]
  const boosted=(await db.query("with draws as materialized(select app_private.pick_special_bait_collectible('pongdang','rare','bait_sea_memory') id from generate_series(1,2500)) select count(*) filter(where s.is_native and s.native_region_id='pongdang')::int home,count(*) filter(where s.rarity<>'rare')::int wrong from draws d join public.collectible_species s on s.id=d.id")).rows[0]
- expect(boosted.wrong).toBe(0);expect(boosted.home).toBeGreaterThan(baseline.home*1.5)
+ expect(boosted.wrong).toBe(0);expect(boosted.home).toBeGreaterThan(baseline.home)
+ expect(Math.abs(baseline.home/2500-.6)).toBeLessThan(.04)
+ expect(Math.abs(boosted.home/2500-180/220)).toBeLessThan(.04)
 })
 it('preserves server reservations and prevents duplicate consumption on retry',async()=>{
  const id=crypto.randomUUID(),args=['pongdang','bait_grubby_magnet',id]

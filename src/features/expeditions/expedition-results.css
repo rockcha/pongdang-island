@@ -1,0 +1,22 @@
+.expedition-result-card[data-rarity='mythic'] {
+ --result-glow: #f59e0b;
+ border-color: #edc16b;
+ background: linear-gradient(145deg, #fff9e9, #fffdf8 70%);
+}
+.expedition-result-card[data-rarity='epic'] {
+ --result-glow: #a855f7;
+ border-color: #d5b5eb;
+ background: linear-gradient(145deg, #f7efff, #fffdf8 70%);
+}
+.expedition-result-card:is([data-rarity='mythic'],[data-rarity='epic'])::before {
+ content: '';
+ position: absolute;
+ inset: 0;
+ z-index: -1;
+ pointer-events: none;
+ background: radial-gradient(ellipse at 50% 35%, color-mix(in srgb, var(--result-glow) 20%, transparent), transparent 65%);
+}
+@media (prefers-reduced-motion: no-preference) {
+ .expedition-result-card:is([data-rarity='mythic'],[data-rarity='epic'])::before { animation: expedition-result-glow 3s ease-in-out infinite; }
+}
+@keyframes expedition-result-glow { 0%,100% { opacity: .4; } 50% { opacity: 1; } }

@@ -1,25 +1,32 @@
 import {GameLoading,GameLoadBoundary} from './game-loading'
 import { LandscapeImage } from '@/components/landscape-image'
-import { ArrowUpRight, Gamepad2 } from 'lucide-react'
+import { ArrowUpRight, Gamepad2,Gift,CalendarDays } from 'lucide-react'
 import { Link, useParams } from 'react-router'
 import { arcadeGames, arcadeGamePath, arcadeTagLabels, type ArcadeGame } from './games'
 import { GoldIcon } from '@/features/gold/gold-provider'
-import { Suspense } from 'react'
+import { Suspense,useState } from 'react'
 
 function GameRules({ game }: { game: ArcadeGame }) {
   return <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground">
-    <span className="inline-flex items-center gap-1">{game.entryFee === undefined ? '참가비 미정' : !game.entryFee ? '무료' : <><GoldIcon className="size-4" />{game.entryFee.toLocaleString('ko-KR')}</>}</span>
+    <span className="inline-flex items-center gap-1">{game.entryFee === undefined ? '참가비 미정' : !game.entryFee ? '무료' : <>참가비: <GoldIcon className="size-4" />{game.entryFee.toLocaleString('ko-KR')}</>}</span>
     <span className="inline-flex flex-wrap items-center gap-1">{game.tags?.map(tag=><span key={tag} className="rounded-md bg-secondary px-2 py-0.5 text-[10px] text-primary">{arcadeTagLabels[tag]}</span>)}</span>
   </div>
 }
 
 export function ArcadePage() {
+  const [category,setCategory]=useState<keyof typeof arcadeTagLabels|null>(null)
+  const [reward,setReward]=useState<'instant'|'settlement'>('instant')
+  const filters=[{id:'luck',image:'/app-icons/arcade-luck.png'},{id:'brain',image:'/app-icons/arcade-brain.png'},{id:'physical',image:'/app-icons/arcade-physical.png'}] as const
+  const games=arcadeGames.filter(game=>(!category||game.tags?.includes(category))&&(game.rewardMode===reward||game.status==='coming-soon'))
   return <section className="flex min-h-0 min-w-0 flex-1 flex-col" aria-label="오락실 게임 목록">
-
-    <ul className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain px-6 py-3">{arcadeGames.map(game => <li key={game.id} className="group relative grid grid-cols-[36%_1fr] overflow-hidden rounded-xl border bg-card transition-colors hover:border-primary/40 hover:bg-primary/5 focus-within:ring-2 focus-within:ring-ring">
-        <div className="relative flex min-h-40 items-center justify-center bg-secondary text-primary">{game.thumbnail?<LandscapeImage src={game.thumbnail} alt="" className="absolute inset-0 size-full object-cover" />:<game.icon className="size-10 opacity-60" />}</div>
-        <Link to={arcadeGamePath(game.id)} className="min-w-0 space-y-2.5 p-4 outline-none before:absolute before:inset-0"><div className="flex items-start justify-between gap-2"><h2 className="text-base font-normal">{game.title}</h2><ArrowUpRight className="mt-0.5 size-4 shrink-0 text-muted-foreground group-hover:text-primary" /></div><div className="flex flex-wrap gap-1">{game.status==='coming-soon'&&<span className="rounded-md bg-muted px-2 py-0.5 text-[10px] text-muted-foreground">준비 중</span>}</div><p className="text-xs leading-5 text-muted-foreground">{game.description}</p><GameRules game={game} /></Link>
-    </li>)}</ul>
+    <div role="group" aria-label="게임 분류" className="grid shrink-0 grid-cols-3 divide-x border-y bg-background">{filters.map(({id,image})=><button key={id} type="button" aria-pressed={category===id} onClick={()=>setCategory(value=>value===id?null:id)} className={`flex min-h-24 flex-col items-center justify-center gap-1 px-2 outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${category===id?'bg-secondary text-primary':'text-muted-foreground hover:bg-secondary/40'}`}><img src={image} alt="" className="size-12 object-contain"/><span className="text-xs">{arcadeTagLabels[id]}</span></button>)}</div>
+    <div className="flex shrink-0 items-center gap-2 border-b px-3 py-2"><div role="group" aria-label="보상 방식" className="grid min-w-0 flex-1 grid-cols-2 rounded-lg bg-secondary/50 p-1">{(['instant','settlement'] as const).map(value=><button key={value} type="button" aria-pressed={reward===value} onClick={()=>setReward(value)} className={`flex min-h-9 items-center justify-center gap-1.5 rounded-md px-2 text-xs outline-none focus-visible:ring-2 focus-visible:ring-ring ${reward===value?'bg-background text-primary shadow-sm':'text-muted-foreground'}`}>{value==='instant'?<Gift aria-hidden="true" className="size-3.5"/>:<CalendarDays aria-hidden="true" className="size-3.5"/>}{value==='instant'?'즉시 보상':'주간 보상'}</button>)}</div>{category&&<button type="button" onClick={()=>setCategory(null)} className="min-h-11 shrink-0 px-1 text-[11px] text-primary">전체 보기</button>}</div>
+    <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-3"><ul className="grid grid-cols-2 items-stretch gap-3">{games.map(game => <li key={game.id} className="group min-w-0 overflow-hidden rounded-xl border border-border/60 bg-card focus-within:ring-2 focus-within:ring-ring">
+      <Link to={arcadeGamePath(game.id)} className="flex h-full flex-col outline-none">
+        <div className="relative flex aspect-[4/3] w-full shrink-0 items-center justify-center overflow-hidden bg-secondary/50 text-primary">{game.thumbnail?<LandscapeImage src={game.thumbnail} alt="" className="absolute inset-0 size-full object-cover" />:<game.icon className="size-10 opacity-50"/>}{game.status==='coming-soon'&&<span className="absolute right-2 top-2 rounded bg-background/95 px-1.5 py-0.5 text-[9px] text-muted-foreground">준비 중</span>}</div>
+        <div className="flex flex-1 flex-col gap-2 p-3"><h2 className="min-h-10 break-keep text-sm leading-5">{game.title}</h2><div className="mt-auto flex flex-wrap items-center justify-between gap-1 text-[10px] text-muted-foreground">{game.entryFee!==undefined?<span className="inline-flex items-center gap-1">{game.entryFee?<>참가비: <GoldIcon className="size-3.5"/>{game.entryFee.toLocaleString('ko-KR')}</>:'무료'}</span>:<span>{game.tags?.map(tag=>arcadeTagLabels[tag]).join(' · ')}</span>}<ArrowUpRight aria-hidden="true" className="size-3.5 shrink-0"/></div></div>
+      </Link>
+    </li>)}</ul>{!games.length&&<p className="py-12 text-center text-xs text-muted-foreground">이 분류의 게임을 준비하고 있어요.</p>}</div>
   </section>
 }
 

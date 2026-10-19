@@ -13,9 +13,8 @@ export default function App() {
   const musicKey=`pongdang:music:${session?.user.id??'guest'}`
   return (
     <>
-      <MusicProvider key={musicKey} storageKey={musicKey} userId={session?.user.id}><SocialProvider><GoldProvider><RodProvider><AppRoutes /></RodProvider></GoldProvider></SocialProvider></MusicProvider>
+      <MusicProvider key={musicKey} storageKey={musicKey} userId={session?.user.id}><SocialProvider><GoldProvider><RodProvider><AppRoutes /></RodProvider></GoldProvider><PwaStatus /></SocialProvider></MusicProvider>
       <Toaster position="bottom-right" duration={3500} />
-      <PwaStatus />
       <PortraitOrientation />
     </>
   )

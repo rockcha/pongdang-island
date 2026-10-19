@@ -12,9 +12,9 @@ beforeAll(async()=>{
 afterAll(async()=>{await db?.close()})
 it('boosts only matching primary habitats at home and away',async()=>{
  for(const [primary,current,rod,expected] of [
-  ['coral','coral','coral',2.2],['coral','pongdang','coral',.3],
-  ['pongdang','pongdang','coral',2],['mistmoon','pongdang','coral',.2],
-  [null,'coral','coral',1],['coral','coral',null,2],['coral','pongdang',null,.2],
+  ['coral','coral','coral',2.2],['coral','pongdang','coral',.15],
+  ['pongdang','pongdang','coral',2],['mistmoon','pongdang','coral',.05],
+  [null,'coral','coral',1],['coral','coral',null,2],['coral','pongdang',null,.05],
  ])expect((await db.query('select app_private.rod_habitat_weight($1,$2,$3)::float8 as w',[primary,current,rod])).rows[0].w).toBe(expected)
 })
 async function samples(uid:string){

@@ -94,7 +94,7 @@ export function CollectionBook({ onAddTemporary,previewAll=false }: CollectionDi
     {entries.map(s => <li key={s.id}>
      <article aria-label={s.name} className={`collection-card relative h-full border-r border-b ${rarities[s.rarity].className}`}>
       <button type="button" aria-label={s.name+(s.discovered||previewAll?' 상세 보기':' 미발견')} onClick={()=>setDetail(s)} className="flex h-full w-full cursor-pointer flex-col items-center px-1 pb-2 pt-3 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring">
-       <div className="relative flex w-full items-center justify-center"><CollectibleThumbnail loading="lazy" fadeIn path={s.thumbnail_path} name={s.name} className={"aspect-square w-full max-w-24 "+(!s.discovered&&!previewAll?"[&_img]:brightness-0":"")}/></div>
+       <div className="relative flex w-full items-center justify-center"><CollectibleThumbnail loading="lazy" fadeIn path={s.thumbnail_path} name={s.name} className={"aspect-square w-full max-w-24 "+(!s.discovered&&!previewAll?"opacity-80 [&_img]:brightness-[.25]":"")}/></div>
        <h3 title={s.name} className="mt-2 h-5 w-full truncate text-xs font-medium leading-5">{s.name}</h3>
 
       </button>
@@ -106,7 +106,7 @@ export function CollectionBook({ onAddTemporary,previewAll=false }: CollectionDi
   </div>
   <Dialog open={!!detail} onOpenChange={open=>{if(!open)setDetail(null)}}><DialogContent className="top-auto bottom-0 max-h-[85dvh] max-w-full translate-y-0 overflow-y-auto rounded-b-none rounded-t-2xl pb-[max(1rem,env(safe-area-inset-bottom))] sm:bottom-auto sm:top-1/2 sm:max-w-sm sm:-translate-y-1/2 sm:rounded-xl">
    <DialogHeader className="pr-7"><DialogTitle className="flex items-center gap-2">{detail&&<CollectibleKindIcon kind={detail.kind} className="size-6 shrink-0 text-primary"/>}{detail?.name}</DialogTitle><DialogDescription>{detail&&<RarityBadge rarity={detail.rarity}/>} · {detail&&kindLabels[detail.kind]}</DialogDescription></DialogHeader>
-   {detail&&<><div className="flex justify-center rounded-xl bg-secondary/40 p-4"><div className={detail.discovered||previewAll?undefined:"[&_canvas]:brightness-0 [&_img]:brightness-0"}><CollectiblePreview species={detail}/></div></div><p className="text-sm leading-6 text-muted-foreground">{detail.description}</p><PrimaryHabitat species={detail}/><div className="flex items-center justify-between text-sm"><span>가치</span><span className="flex items-center gap-1"><GoldIcon className="size-4"/>{detail.sell_price.toLocaleString()}</span></div></>}
+   {detail&&<><div className="flex justify-center rounded-xl bg-secondary/40 p-4"><div className={detail.discovered||previewAll?undefined:"[&_canvas]:brightness-[.25] [&_img]:brightness-0"}><CollectiblePreview species={detail}/></div></div><p className="text-sm leading-6 text-muted-foreground">{detail.description}</p><PrimaryHabitat species={detail}/><div className="flex items-center justify-between text-sm"><span>가치</span><span className="flex items-center gap-1"><GoldIcon className="size-4"/>{detail.sell_price.toLocaleString()}</span></div></>}
   </DialogContent></Dialog>
  </section>
 }

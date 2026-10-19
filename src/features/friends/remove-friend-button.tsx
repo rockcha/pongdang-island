@@ -22,7 +22,7 @@ export function RemoveFriendButton({requestId,nickname}:{requestId:string;nickna
     finally {await refresh();setBusy(false)}
   }
   return <ConfirmDialog illustration="unfriend" open={open} onOpenChange={value=>{setOpen(value);setError('')}}
-   trigger={<Button variant="ghost" className="h-auto min-h-12 min-w-14 flex-col gap-0 rounded-xl bg-destructive/10 px-1 text-destructive hover:bg-destructive/20 hover:text-destructive" aria-label={`${nickname}님과 친구 끊기`}><img src="/app-icons/friend-remove-heart.png" alt="" className="size-7 object-contain"/><span className="text-[9px] leading-4">친구 끊기</span></Button>}
+   trigger={<Button variant="ghost" className="h-auto min-h-12 min-w-14 flex-col gap-0 rounded-xl px-1 text-destructive hover:bg-secondary/50 hover:text-destructive" aria-label={`${nickname}님과 친구 끊기`}><img src="/app-icons/friend-remove-heart.png" alt="" className="size-7 object-contain"/><span className="text-[9px] leading-4">친구 끊기</span></Button>}
    title={`${nickname}님과 친구 관계를 끊겠습니까?`}
    description="서로의 친구 목록에서 사라져요. 상대방에게 별도 알림은 보내지 않아요."
    busy={busy} error={error} onConfirm={()=>void confirm()}/>

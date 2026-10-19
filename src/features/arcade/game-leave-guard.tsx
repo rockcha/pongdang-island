@@ -1,9 +1,11 @@
 import { useContext, useEffect } from 'react'
 import { UNSAFE_DataRouterContext, useBlocker } from 'react-router'
 import { ConfirmDialog } from '@/components/confirm-dialog'
+import {usePwaUpdateBlock} from '@/features/pwa/update-blockers'
 
 /** The data router covers links, programmatic navigation, and browser back/forward. */
 export function GameLeaveGuard({active,practice,description}:{active:boolean;practice:boolean;description?:string}) {
+ usePwaUpdateBlock(active)
  const router=useContext(UNSAFE_DataRouterContext)
  useEffect(()=>{
   if(!active)return

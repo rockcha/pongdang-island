@@ -1,6 +1,7 @@
 import {appArt} from '@/components/app-art'
 import { useRef, useState } from 'react'
 import { Menu } from '@base-ui/react/menu'
+import {UserRound,Download,LogOut} from 'lucide-react'
 
 import { Link, useNavigate } from 'react-router'
 import { toast } from 'sonner'
@@ -9,7 +10,6 @@ import { useSocial } from '@/features/social/social-provider'
 import { createClient } from '@/lib/client'
 import { PlayerAvatar } from './player-avatar'
 
-const {profile:UserRound,logout:LogOut}=appArt
 
 export function AvatarMenu() {
   const { session } = useAuth()
@@ -44,12 +44,12 @@ export function AvatarMenu() {
         <Menu.Popup className="min-w-40 rounded-xl border bg-popover p-1 text-popover-foreground shadow-lg outline-none">
           {profile?.equipped_title&&<p className="flex max-w-64 items-center gap-1.5 border-b px-3 py-2 text-[11px] text-primary"><appArt.title className="size-5"/><span className="truncate">{profile.equipped_title}</span></p>}
           <Menu.LinkItem onClick={()=>setOpen(false)} render={<Link to="/profile" />} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm outline-none data-highlighted:bg-accent">
-            <UserRound className="size-7" />마이페이지
+            <UserRound aria-hidden="true" className="size-4 shrink-0" strokeWidth={1.75}/>마이페이지
           </Menu.LinkItem>
-          <Menu.LinkItem onClick={()=>setOpen(false)} render={<Link to="/download" />} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm outline-none data-highlighted:bg-accent"><appArt.download className="size-7"/>다운로드</Menu.LinkItem>
+          <Menu.LinkItem onClick={()=>setOpen(false)} render={<Link to="/download" />} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm outline-none data-highlighted:bg-accent"><Download aria-hidden="true" className="size-4 shrink-0" strokeWidth={1.75}/>다운로드</Menu.LinkItem>
           <Menu.Separator className="my-1 h-px bg-border" />
           <Menu.Item disabled={busy} onClick={() => void logout()} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm text-destructive outline-none data-highlighted:bg-accent data-disabled:opacity-50">
-            <LogOut className="size-7" />로그아웃
+            <LogOut aria-hidden="true" className="size-4 shrink-0" strokeWidth={1.75}/>로그아웃
           </Menu.Item>
         </Menu.Popup>
       </Menu.Positioner>

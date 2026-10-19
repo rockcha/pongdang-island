@@ -41,6 +41,7 @@
 }
 .harbor-mythic-stacked .harbor-mythic-card .harbor-mythic-art > * { transform: scale(1.15); }
 .harbor-mythic-stacked .harbor-mythic-card > span:last-child { width: 100%; flex-shrink: 0; }
+.harbor-mythic-stacked .harbor-mythic-card > span:last-child > span:first-child { justify-content: center; }
 .harbor-mythic-stacked .harbor-mythic-card > span:last-child > span:last-child {
  margin-top: .25rem;
  font-size: 1rem;
@@ -53,6 +54,12 @@
 .harbor-mythic-detail { background: radial-gradient(circle, #b2d4dc55, transparent 72%); }
 @media (prefers-reduced-motion: no-preference) {
  .harbor-mythic-enter { animation: harbor-mythic-enter 600ms ease-out both; }
+ .harbor-mythic-new { animation: harbor-mythic-new 3.5s ease-in-out infinite; }
+}
+@keyframes harbor-mythic-new {
+ 0%,70%,100% { transform: translateY(0) scale(1); }
+ 80% { transform: translateY(-.5px) scale(1.02); }
+ 90% { transform: translateY(0) scale(1); }
 }
 @keyframes harbor-mythic-enter {
  from { opacity: 0; transform: translateY(5px); }

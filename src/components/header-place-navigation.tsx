@@ -43,16 +43,16 @@ export function HeaderPlaceNavigation() {
   const groups=[
     {label:'내 섬',paths:['/','/aquarium','/warehouse','/collection','/titles','/collection-animation']},
     {label:'바다',paths:['/harbor','/port','/shipyard']},
-    {label:'상점',paths:['/shop','/item-shop','/exchange','/savings']},
-    {label:'휴식',paths:['/arcade','/music-room','/farm']},
-    {label:'소통',paths:['/friends','/notifications','/square']},
+    {label:'장터',paths:['/shop','/item-shop','/exchange','/savings']},
+    {label:'놀이터',paths:['/arcade','/music-room','/farm']},
+    {label:'소셜',paths:['/friends','/notifications','/square']},
   ]
   return <nav aria-label="장소 바로가기" className="grid min-w-0 flex-1 grid-cols-5 gap-0">
     {groups.map(group=>{
       const items=group.paths.filter(path=>path!=='/collection-animation'||operator).map(path=>headerPlaces.find(item=>item.to===path)!)
       const selected=items.find(item=>current===item.to||current.startsWith(item.to+'/'))
       return <Menu.Root key={pathname+group.label}>
-        <Menu.Trigger aria-label={group.label} className={`group flex min-h-11 min-w-0 items-center justify-center border-b-2 px-1 py-2 outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring data-popup-open:text-primary ${selected?'border-primary text-primary':'border-transparent text-muted-foreground hover:text-foreground'}`}>
+        <Menu.Trigger aria-label={group.label} className={`group flex min-h-9 min-w-0 items-center justify-center px-1 py-1 outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring data-popup-open:text-primary ${selected?'text-primary':'text-muted-foreground hover:text-foreground'}`}>
           <span className="flex items-center gap-1 text-xs font-medium">{group.label}<ChevronDown aria-hidden="true" className="size-3 shrink-0 opacity-40 transition-transform group-data-popup-open:rotate-180"/></span>
         </Menu.Trigger>
         <Menu.Portal><Menu.Positioner sideOffset={8} align="center" collisionPadding={12} className="z-[60]">

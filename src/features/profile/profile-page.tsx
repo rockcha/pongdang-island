@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { useEffect, useRef, useState } from 'react'
 import type { ChangeEvent } from 'react'
 import { Link } from 'react-router'
-import {RotateCcw,Pencil,ChevronRight} from 'lucide-react'
+import {Pencil,ChevronRight} from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { LandscapeImage } from '@/components/landscape-image'
@@ -48,13 +48,13 @@ export function ProfilePage() {
     catch (cause) { if (version === selection.current) setMessage(cause instanceof Error ? cause.message : '이미지를 열지 못했어요.') }
     finally { if (version === selection.current) setBusy(false) }
   }
-  async function commit(remove = false) {
-    if (!session || !profile || busy || (!remove && !blob)) return
+  async function commit() {
+    if (!session || !profile || busy || !blob) return
     setBusy(true); setMessage('')
     try {
-      await saveAvatar(session.user.id,remove ? null : blob,profile.avatar_path)
+      await saveAvatar(session.user.id,blob,profile.avatar_path)
       await refresh(); setBlob(null)
-      toast.success(remove ? '기본 아바타로 바꿨어요.' : '아바타를 저장했어요!')
+      toast.success('아바타를 저장했어요!')
     } catch(cause) { setMessage(cause instanceof Error ? cause.message : '아바타를 저장하지 못했어요.') }
     finally { setBusy(false) }
   }
@@ -67,7 +67,6 @@ export function ProfilePage() {
         <Link to="/titles" className="mx-auto mt-1 inline-flex min-h-11 items-center gap-2 px-3 text-xs text-primary"><appArt.title className="size-6"/>{profile?.equipped_title||'칭호 선택하기'}<ChevronRight className="size-3.5"/></Link>
       </div>
       <input ref={input} type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" aria-label="아바타 이미지 선택" disabled={busy||!profile} onChange={event=>void select(event)}/>
-      {profile?.avatar_path&&<Button variant="ghost" className="mx-auto mb-3 flex min-h-11 text-xs text-muted-foreground" disabled={busy} onClick={()=>void commit(true)}><RotateCcw className="size-3.5"/>기본 아바타로 되돌리기</Button>}
       <div className="grid grid-cols-3 divide-x border-y" aria-label="나의 활동">{[{label:'발견한 개체',value:stats?.discovered,icon:BookOpen,to:'/collection'},{label:'보유 개체',value:stats?.owned,icon:Fish,to:'/aquarium'},{label:'친구',value:loading?undefined:requests.filter(item=>item.status==='accepted').length,icon:Users,to:'/friends'}].map(item=><Link key={item.label} to={item.to} className="flex min-h-24 min-w-0 flex-col items-center justify-center gap-1 py-3 hover:bg-secondary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"><item.icon className="mb-1 size-8 text-primary"/><span className="text-base tabular-nums">{item.value??(statsError?'—':'…')}</span><span className="text-[11px] text-muted-foreground">{item.label}</span></Link>)}</div>
       <div className="divide-y border-b"><Link to="/profile/settings" className="flex min-h-14 items-center gap-3 px-4 text-sm hover:bg-secondary/50"><Settings className="size-7 text-primary"/><span className="flex-1">설정</span><ChevronRight className="size-4 text-muted-foreground"/></Link><button className="flex min-h-14 w-full items-center gap-3 px-4 text-left text-sm text-destructive hover:bg-destructive/5 disabled:opacity-50" disabled={busy} onClick={async()=>{setBusy(true);try{const {error}=await createClient().auth.signOut({scope:'local'});if(error)throw error}catch{toast.error('로그아웃에 실패했어요. 다시 시도해주세요.')}finally{setBusy(false)}}}><LogOut className="size-7"/>로그아웃</button></div>
       {(busy||loading)&&<p role="status" className="px-4 py-3 text-xs text-muted-foreground">{busy?'변경 사항을 처리하고 있어요…':'프로필을 불러오는 중…'}</p>}

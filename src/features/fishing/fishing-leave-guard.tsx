@@ -1,10 +1,12 @@
 import { useContext, useEffect, useRef, useState } from 'react'
 import { UNSAFE_DataRouterContext, useBlocker } from 'react-router'
 import { ConfirmDialog } from '@/components/confirm-dialog'
+import {usePwaUpdateBlock} from '@/features/pwa/update-blockers'
 
 type Props={active:boolean;practice:boolean;busy:boolean;onPause:(paused:boolean)=>void;onLeave:()=>Promise<void>}
 
 export function FishingLeaveGuard(props:Props){
+ usePwaUpdateBlock(props.active)
  const router=useContext(UNSAFE_DataRouterContext)
  useEffect(()=>{
   if(!props.active)return

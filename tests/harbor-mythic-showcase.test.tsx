@@ -6,6 +6,14 @@ vi.mock('@/features/collection/collectible-preview',()=>({CollectiblePreview:({s
 const first={id:'native',name:'바다의 수호자',description:'파도를 지키는 친구예요.',kind:'fish',rarity:'mythic',is_native:true,native_region_id:'pongdang',discovered:false,habitats:[{id:'pongdang',name:'퐁당섬'}]} as CatalogEntry
 const second={...first,id:'shared',name:'별빛 고래',discovered:true,is_native:false,native_region_id:null}
 afterEach(()=>{cleanup();vi.useRealTimers();vi.restoreAllMocks()})
+it('features the exploration robot silhouette in the starter sea instead of shared mythics',()=>{
+ const robot={...first,id:'pongi-exploration-robot',name:'퐁이 탐사로봇'}
+ const items=regionalMythics([second,first,robot],'pongdang')
+ expect(items.map(item=>item.id)).toEqual([robot.id])
+ const view=render(<HarborMythicShowcase items={items} regionName="퐁당섬" interactive={false}/>)
+ expect(screen.getByLabelText(robot.name)).toBeTruthy()
+ expect(view.container.querySelector('[data-silhouette="true"]')).toBeTruthy()
+})
 it('renders a non-interactive mythic on the island home without opening a modal',()=>{
  render(<HarborMythicShowcase items={[first]} regionName="퐁당섬" interactive={false}/>)
  expect(screen.queryByRole('button',{name:/소개 보기/})).toBeNull()

@@ -6,6 +6,9 @@ export default defineConfig({
   // Tests use explicit mocks, never the developer's real Supabase credentials.
   envDir: false,
   plugins: [react()],
-  resolve: { alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) } },
+  resolve: { alias: {
+    '@': fileURLToPath(new URL('./src', import.meta.url)),
+    'virtual:pwa-register/react': fileURLToPath(new URL('./node_modules/vite-plugin-pwa/dist/client/build/react.js', import.meta.url)),
+  } },
   test: { environment: 'jsdom', include: ['tests/**/*.test.{ts,tsx}'], clearMocks: true },
 })

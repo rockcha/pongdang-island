@@ -12,5 +12,5 @@ export function NativeRegionBadge({species}:{species:Pick<Species,'is_native'|'n
 export function PrimaryHabitat({species}:{species:Pick<Species,'is_native'|'native_region_id'>}){
  const region=species.is_native&&species.native_region_id?regionIcons[species.native_region_id]:undefined
  if(!region)return null
- return <div className="flex items-center justify-between gap-3 text-xs"><span className="shrink-0 text-muted-foreground">주 서식지</span><TooltipProvider><Tooltip><TooltipTrigger render={<span tabIndex={0} aria-label={`주 서식지: ${region.name}`} className="inline-flex items-center gap-1.5 text-primary"/>}><img src={region.src} alt="" className="size-6 object-contain"/><span>확률 10배 업</span></TooltipTrigger><TooltipContent>{region.name} · 다른 해역 대비 추첨 가중치 10배</TooltipContent></Tooltip></TooltipProvider></div>
+ return <div className="flex items-center justify-between gap-3 text-xs"><span className="shrink-0 text-muted-foreground">주 서식지</span><TooltipProvider><Tooltip><TooltipTrigger render={<span tabIndex={0} aria-label={`주 서식지: ${region.name}`} className="inline-flex items-center gap-1.5 text-primary"/>}><img src={region.src} alt="" className="size-6 object-contain"/><span>확률 상승</span></TooltipTrigger><TooltipContent>{region.name} · 본래 서식지에서 해당 개체가 뽑힐 확률이 높아져요.</TooltipContent></Tooltip></TooltipProvider></div>
 }

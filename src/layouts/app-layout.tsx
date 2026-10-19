@@ -38,18 +38,18 @@ export function AppLayout() {
     <header className={`pongi-header sticky top-0 z-40 shrink-0 px-3 py-2 ${tankScreen||harbor||fishing||port?'':'-mx-6'}`}>
       {session && <div className="flex min-h-10 items-center justify-between gap-2">
         <div className="flex shrink-0 items-center gap-0">
-        <TitleSync /><NotificationMenu noticeOnly/><AttendanceButton /><QuestButton /><MusicToggleButton /><NotificationMenu /><span aria-hidden="true" className="ml-1 h-5 w-px shrink-0 bg-border"/>
+        <TitleSync /><NotificationMenu noticeOnly/><NotificationMenu /><AttendanceButton /><QuestButton /><MusicToggleButton /><span aria-hidden="true" className="ml-1 h-5 w-px shrink-0 bg-border"/>
         </div>
         <div className="ml-auto flex min-w-0 items-center gap-1">
         <Link to="/shop" aria-label="보유 골드, 상점 이동" className="header-gold inline-flex min-w-0 items-center gap-1 text-xs tabular-nums"><GoldIcon className="size-5" /><span className="truncate">{goldLoading ? '…' : goldError ? '—' : wallet.gold.toLocaleString('ko-KR')}</span></Link>
         <AvatarMenu />
         </div>
       </div>}
-      {session && <div className="mt-2 flex items-center gap-2 border-t border-border/70 pt-1">
+      {session && <div className="mt-1 flex items-center gap-2 border-t border-border/70 pt-0.5">
         <HeaderPlaceNavigation />
       </div>}
     </header>
     {!port&&!harbor&&!tankScreen&&<PlaceBanner pathname={pathname}/>}
-    <main className={`flex min-w-0 flex-1 flex-col ${shop||warehouse||memory||friends||exchange||noticeList||mailbox||home||profile?'-mx-6':expedition?'-mx-3':''} ${port||expedition||tankScreen||harbor||fishing||memory||warehouse||shop||friends||exchange||square||noticeList||profile?'min-h-0 overflow-hidden':''}`}><Outlet /></main>
+    <main className={`flex min-w-0 flex-1 flex-col ${shop||warehouse||memory||friends||exchange||noticeList||mailbox||home||profile?'-mx-6':expedition?'-mx-3':''} ${port||expedition||tankScreen||harbor||fishing||memory||warehouse||shop||friends||exchange||square||noticeList||home||profile?'min-h-0 overflow-hidden':''}`}><Outlet /></main>
   </div>
 }

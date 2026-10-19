@@ -1,0 +1,691 @@
+{
+  "createdAt": "2026-10-20",
+  "bucket": "collectibles",
+  "project": "ewafafphiovbpjwogwzn",
+  "assets": [
+    {
+      "id": "giseong-fish",
+      "name": "기성 물고기",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "pongdang",
+      "storage_path": "fish/rare/giseong-fish_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/fish/rare/giseong-fish_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:/Users/user/.codex/generated_images/01a153c9-6c1a-75d3-8990-e02eb5df332e/exec-c2aa046b-424f-429c-b64f-c5846ad268f6.png",
+      "prompt": "Reuse the approved second rare cartoon Giseong fish design with silver glasses and black hair.",
+      "history": [],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": "right",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "c8ec48a597fb22f486a2fa2e503c217ef60e140a5b08a0c12c8711c32ccff6fb"
+    },
+    {
+      "id": "giseong-fish",
+      "name": "기성 물고기",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "pongdang",
+      "storage_path": "fish/rare/giseong-fish_sprite.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/fish/rare/giseong-fish_sprite.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-3f94a43c-a200-4fc4-ae06-563ddd5cd164.png",
+      "prompt": "Edit this sprite sheet ONLY to fix inadequate TRANSPARENT MARGINS. Preserve all character designs, colors, exact different action poses, right-facing direction, row and column order. 2 columns x 2 rows, FOUR equal square cells, square canvas. Every character is currently TOO LARGE and touches cell edges. REDUCE ALL characters uniformly to 75% of their current size inside each original cell, same scale for every frame. Center rigid torso at identical relative position in every cell, preserve movement. At least 12% of each cell must be EMPTY TRANSPARENT space on ALL FOUR sides of every character including thrusters, fins, tails. The ENTIRE outer silhouette and faint glow must stay within central 76% of each cell. Do NOT fill the canvas. Do NOT crop any extremity. No grid lines, no text, no opaque background. Keep real alpha.",
+      "history": [
+        {
+          "id": "giseong-fish",
+          "path": "assets/storage-upload/new/20261020-050901/fish/rare/giseong-fish_sprite.png",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-aa4bc680-67c5-4f26-ad92-2c12c55ff751.png",
+          "prompt": "Make a game-ready FOUR-FRAME 2x2 sprite sheet of EXACTLY the character in the reference image. Preserve all design, silver glasses and black hair, proportions and cartoon style. Four sequential swimming poses: tail left, tail mid-return, tail right, tail mid-return; small coordinated fin undulations and gentle hair response. Head, eyes, glasses, hair root and main body CENTER must stay at the EXACT SAME CELL COORDINATES and size in every frame. Do NOT individually recenter a frame based on tail or arm extents. Face SCREEN RIGHT in ALL FOUR frames, head and mouth at right, tail or arms trail left. No front-facing or left-facing poses. EXACT 2 columns by 2 rows, four equally sized SQUARE cells on one SQUARE CANVAS. Each whole character fits inside the middle 80-85% of its cell; transparent gutters and outer edges. No overlaps or clipping. Fully transparent ALPHA background, no colored matte or glow backdrop, no checkerboard, no grid lines or labels, no text. Only appendages change; no body bobbing, no rotation, no scaling and no duplicates with only eye changes. Sharp final art, readable at mobile scale.",
+          "reference": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261020-050901/fish/rare/giseong-fish_thumbnail.png",
+          "columns": 2
+        },
+        {
+          "id": "giseong-fish",
+          "prompt": "Edit this sprite sheet ONLY to fix inadequate TRANSPARENT MARGINS. Preserve all character designs, colors, exact different action poses, right-facing direction, row and column order. 2 columns x 2 rows, FOUR equal square cells, square canvas. Every character is currently TOO LARGE and touches cell edges. REDUCE ALL characters uniformly to 75% of their current size inside each original cell, same scale for every frame. Center rigid torso at identical relative position in every cell, preserve movement. At least 12% of each cell must be EMPTY TRANSPARENT space on ALL FOUR sides of every character including thrusters, fins, tails. The ENTIRE outer silhouette and faint glow must stay within central 76% of each cell. Do NOT fill the canvas. Do NOT crop any extremity. No grid lines, no text, no opaque background. Keep real alpha.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-3f94a43c-a200-4fc4-ae06-563ddd5cd164.png",
+          "path": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261020-050901/fish/rare/giseong-fish_sprite.png"
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": "right",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "c232082e5af359b7ade5b3c56d0e5133cb0aba1da6e63bad6432823c6839bc19"
+    },
+    {
+      "id": "giseong-webfoot-octopus",
+      "name": "기성 쭈꾸미",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "pongdang",
+      "storage_path": "fish/rare/giseong-webfoot-octopus_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/fish/rare/giseong-webfoot-octopus_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-3d9bdcb5-0c13-48c2-b46d-5b104400d803.png",
+      "prompt": "Edit ONLY the extra tube-shaped opening on the BACK/LEFT side of the octopus head/body near the arms: remove it completely and replace that spot with smooth continuous peach-orange spotted skin. Keep the small puckered tubular mouth on the FRONT RIGHT face unchanged. There must be exactly ONE mouth, the front-right mouth. Preserve black hair, silver glasses, eyes, arms, suckers, colors, outline, pose, framing, transparency and everything else. Do not create a sprite sheet. One edited thumbnail only. Preserve real alpha transparency.",
+      "history": [
+        {
+          "id": "giseong-webfoot-octopus",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-b28cc62c-f8bd-4cf6-b4de-5133fb00e971.png",
+          "path": "assets/storage-upload/new/20261020-050901/fish/rare/giseong-webfoot-octopus_thumbnail.png",
+          "prompt": "Edit this exact cartoon octopus image. Change ONLY its front mouth: replace the wide open humanlike smiling mouth with a small cute octopus-style protruding tubular puckered mouth, like a short round peach-orange siphon beak pointing SCREEN RIGHT with a tiny dark circular opening. Keep its friendly expression. Preserve absolutely everything else: fluffy black hairstyle, thin silver glasses, shiny eyes, orange and cream skin, eight curled arms and suckers, body size, exact framing, RIGHT-facing direction, thick brown outline and warm cartoon art style. Do NOT add a second human mouth, teeth, tongue or nose. Preserve the existing transparent background and image dimensions. One character, no text, no backdrop.",
+          "styleException": "rare cartoon",
+          "mouth": "protruding tubular mouth"
+        },
+        {
+          "id": "giseong-webfoot-octopus",
+          "path": "assets/storage-upload/new/20261020-050901/fish/rare/giseong-webfoot-octopus_thumbnail.png",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-3d9bdcb5-0c13-48c2-b46d-5b104400d803.png",
+          "prompt": "Edit ONLY the extra tube-shaped opening on the BACK/LEFT side of the octopus head/body near the arms: remove it completely and replace that spot with smooth continuous peach-orange spotted skin. Keep the small puckered tubular mouth on the FRONT RIGHT face unchanged. There must be exactly ONE mouth, the front-right mouth. Preserve black hair, silver glasses, eyes, arms, suckers, colors, outline, pose, framing, transparency and everything else. Do not create a sprite sheet. One edited thumbnail only. Preserve real alpha transparency."
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/.codex/generated_images/01a153c9-6c1a-75d3-8990-e02eb5df332e/exec-c2aa046b-424f-429c-b64f-c5846ad268f6.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": "right",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "05074f796d9767638ce8da33c6b64eaaf8f8312f7b0f26215661721b40038c20"
+    },
+    {
+      "id": "giseong-webfoot-octopus",
+      "name": "기성 쭈꾸미",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "pongdang",
+      "storage_path": "fish/rare/giseong-webfoot-octopus_sprite.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/fish/rare/giseong-webfoot-octopus_sprite.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-16a810ce-a48f-4d2a-b7be-4de1207beac7.png",
+      "prompt": "Edit this sprite sheet ONLY to fix inadequate TRANSPARENT MARGINS. Preserve all character designs, colors, exact different action poses, right-facing direction, row and column order. 2 columns x 2 rows, FOUR equal square cells, square canvas. Every character is currently TOO LARGE and touches cell edges. REDUCE ALL characters uniformly to 75% of their current size inside each original cell, same scale for every frame. Center rigid torso at identical relative position in every cell, preserve movement. At least 12% of each cell must be EMPTY TRANSPARENT space on ALL FOUR sides of every character including thrusters, fins, tails. The ENTIRE outer silhouette and faint glow must stay within central 76% of each cell. Do NOT fill the canvas. Do NOT crop any extremity. No grid lines, no text, no opaque background. Keep real alpha.",
+      "history": [
+        {
+          "id": "giseong-webfoot-octopus",
+          "prompt": "Create a production-ready transparent PNG animation sprite sheet of EXACT SAME character in reference. 2 columns by 2 rows, exactly FOUR equal SQUARE cells, square canvas. No text, no borders, no backgrounds, real transparent alpha. Eight short octopus arms curl and relax in a coherent 4-phase swimming cycle. ONLY ONE front puckered tube mouth below glasses; absolutely NO extra hole or siphon on rear head. Preserve silver glasses and black hair. Face SCREEN RIGHT in clear side-three-quarter profile in EVERY frame, head leads right. Stable body size, head and torso anchor at identical cell-relative coordinates; no bouncing, no zoom changes. Preserve the reference art style and proportions. Maximum silhouette long axis 80–85% of each cell, all appendages and glow inside, generous transparent outer margins and gutters. Read left-to-right then next row. Actual continuous movement, not duplicate poses or eye-only animation. No extra characters.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-b04d97de-8fea-45a1-b610-b0c497f3c81d.png",
+          "path": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261020-050901/fish/rare/giseong-webfoot-octopus_sprite.png"
+        },
+        {
+          "id": "giseong-webfoot-octopus",
+          "prompt": "Edit this sprite sheet ONLY to fix inadequate TRANSPARENT MARGINS. Preserve all character designs, colors, exact different action poses, right-facing direction, row and column order. 2 columns x 2 rows, FOUR equal square cells, square canvas. Every character is currently TOO LARGE and touches cell edges. REDUCE ALL characters uniformly to 75% of their current size inside each original cell, same scale for every frame. Center rigid torso at identical relative position in every cell, preserve movement. At least 12% of each cell must be EMPTY TRANSPARENT space on ALL FOUR sides of every character including thrusters, fins, tails. The ENTIRE outer silhouette and faint glow must stay within central 76% of each cell. Do NOT fill the canvas. Do NOT crop any extremity. No grid lines, no text, no opaque background. Keep real alpha.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-16a810ce-a48f-4d2a-b7be-4de1207beac7.png",
+          "path": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261020-050901/fish/rare/giseong-webfoot-octopus_sprite.png"
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png",
+        "C:/Users/user/.codex/generated_images/01a153c9-6c1a-75d3-8990-e02eb5df332e/exec-c2aa046b-424f-429c-b64f-c5846ad268f6.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": "right",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "2cef43676b8f1e1d61784e4b7ffe117f2dc094599563db71476b1890a6abc77b"
+    },
+    {
+      "id": "pongi-seahorse-rider",
+      "name": "해마 탄 퐁이",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "pongdang",
+      "storage_path": "fish/epic/pongi-seahorse-rider_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/fish/epic/pongi-seahorse-rider_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-166d028d-0ed6-4092-b5fc-109e5fbc359f.png",
+      "prompt": "Correct ONLY how the otter holds the reins: the otter must hold the LEFT rein in its LEFT paw and the RIGHT rein in its RIGHT paw, with two paws clearly separated to opposite sides of the seahorse neck. Show two distinct leather reins running from opposite sides of the seahorse bridle to the corresponding paw. Do NOT have both paws grip the same rein on one side. A slight adjustment to forearm placement is allowed, but preserve the Pongi otter face, starfish clip, golden seahorse design, cartoon style, body proportions, rightward orientation, framing and transparent background. Do not create a sprite sheet. One edited thumbnail only. Preserve real alpha transparency.",
+      "history": [
+        {
+          "id": "pongi-seahorse-rider",
+          "prompt": "ONE square game collectible thumbnail. Pongi the adorable brown sea otter with cream muzzle, small round ears and salmon starfish hair clip riding a large friendly honey-gold seahorse. Otter securely seated holding simple reins. Seahorse has curled tail and delicate small dorsal fin. BOTH characters face right in profile, fully visible. This epic species intentionally uses the common/rare cartoon art style. Cozy Pongi rare/common cartoon style with thick warm dark brown outlines, large glossy eyes and soft cel shading. Face SCREEN RIGHT in clear side-three-quarter view, mouth and head point right, body and tail trail left. Entire subject fully visible and centered, longest axis 80-88% canvas. ACTUAL transparent alpha background. No floor or scenery, no black background, no checkerboard, no words, letters, label or watermark. Single static image, no sprite sheet.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-244c69df-f6e6-444a-9e31-1e2a9130d238.png",
+          "path": "assets/storage-upload/new/20261020-050901/fish/epic/pongi-seahorse-rider_thumbnail.png",
+          "refs": [
+            "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+          ]
+        },
+        {
+          "id": "pongi-seahorse-rider",
+          "path": "assets/storage-upload/new/20261020-050901/fish/epic/pongi-seahorse-rider_thumbnail.png",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-166d028d-0ed6-4092-b5fc-109e5fbc359f.png",
+          "prompt": "Correct ONLY how the otter holds the reins: the otter must hold the LEFT rein in its LEFT paw and the RIGHT rein in its RIGHT paw, with two paws clearly separated to opposite sides of the seahorse neck. Show two distinct leather reins running from opposite sides of the seahorse bridle to the corresponding paw. Do NOT have both paws grip the same rein on one side. A slight adjustment to forearm placement is allowed, but preserve the Pongi otter face, starfish clip, golden seahorse design, cartoon style, body proportions, rightward orientation, framing and transparent background. Do not create a sprite sheet. One edited thumbnail only. Preserve real alpha transparency."
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": "User requested rare cartoon art for this epic creature",
+      "artwork_facing": "right",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "7a4f2daa247b643061a3f2503f0ac9b42b01424509f1bef12aef3889e35a5e6f"
+    },
+    {
+      "id": "pongi-seahorse-rider",
+      "name": "해마 탄 퐁이",
+      "kind": "fish",
+      "rarity": "epic",
+      "native_region_id": "pongdang",
+      "storage_path": "fish/epic/pongi-seahorse-rider_sprite.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/fish/epic/pongi-seahorse-rider_sprite.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-03687427-8ac7-4a3f-b003-d1df664a85aa.png",
+      "prompt": "Edit this sprite sheet ONLY to fix inadequate TRANSPARENT MARGINS. Preserve all character designs, colors, exact different action poses, right-facing direction, row and column order. 2 columns x 2 rows, FOUR equal square cells, square canvas. Every character is currently TOO LARGE and touches cell edges. REDUCE ALL characters uniformly to 75% of their current size inside each original cell, same scale for every frame. Center rigid torso at identical relative position in every cell, preserve movement. At least 12% of each cell must be EMPTY TRANSPARENT space on ALL FOUR sides of every character including thrusters, fins, tails. The ENTIRE outer silhouette and faint glow must stay within central 76% of each cell. Do NOT fill the canvas. Do NOT crop any extremity. No grid lines, no text, no opaque background. Keep real alpha.",
+      "history": [
+        {
+          "id": "pongi-seahorse-rider",
+          "prompt": "Create a production-ready transparent PNG animation sprite sheet of EXACT SAME character in reference. 2 columns by 2 rows, exactly FOUR equal SQUARE cells, square canvas. No text, no borders, no backgrounds, real transparent alpha. Seahorse dorsal fin flutters and curled tail flexes in a gentle 4-phase cycle. Otter sits steadily. Its TWO paws each hold a DIFFERENT rein: left paw on one side, right paw on opposite side, NEVER both paws on the same side. Face SCREEN RIGHT in clear side-three-quarter profile in EVERY frame, head leads right. Stable body size, head and torso anchor at identical cell-relative coordinates; no bouncing, no zoom changes. Preserve the reference art style and proportions. Maximum silhouette long axis 80–85% of each cell, all appendages and glow inside, generous transparent outer margins and gutters. Read left-to-right then next row. Actual continuous movement, not duplicate poses or eye-only animation. No extra characters.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-7011dff8-bfed-422c-a265-16c58043e02c.png",
+          "path": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261020-050901/fish/epic/pongi-seahorse-rider_sprite.png"
+        },
+        {
+          "id": "pongi-seahorse-rider",
+          "prompt": "Edit this sprite sheet ONLY to fix inadequate TRANSPARENT MARGINS. Preserve all character designs, colors, exact different action poses, right-facing direction, row and column order. 2 columns x 2 rows, FOUR equal square cells, square canvas. Every character is currently TOO LARGE and touches cell edges. REDUCE ALL characters uniformly to 75% of their current size inside each original cell, same scale for every frame. Center rigid torso at identical relative position in every cell, preserve movement. At least 12% of each cell must be EMPTY TRANSPARENT space on ALL FOUR sides of every character including thrusters, fins, tails. The ENTIRE outer silhouette and faint glow must stay within central 76% of each cell. Do NOT fill the canvas. Do NOT crop any extremity. No grid lines, no text, no opaque background. Keep real alpha.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-03687427-8ac7-4a3f-b003-d1df664a85aa.png",
+          "path": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261020-050901/fish/epic/pongi-seahorse-rider_sprite.png"
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": "User requested rare cartoon art for this epic creature",
+      "artwork_facing": "right",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "0758374ac2ab93935f35e6ecac41dd56f48e3878f11a63c547f48a4e6d6c478f"
+    },
+    {
+      "id": "pongi-jellyfish",
+      "name": "퐁이 해파리",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "pongdang",
+      "storage_path": "fish/rare/pongi-jellyfish_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/fish/rare/pongi-jellyfish_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-0b3657d1-d588-44bb-abc7-e1d53e707b13.png",
+      "prompt": "Redesign this as a true cute JELLYFISH using ONLY the caramel/cream colors and salmon-pink starfish to reference Pongi. Completely remove the otter muzzle, mammalian nose, fur, whiskers, cheeks shaped like an otter and otter face mask. A simple pair of small cute jellyfish eyes on a smooth translucent bell is fine, with a tiny minimal jellyfish smile, NOT an animal muzzle. Smooth honey-gold and cream translucent jelly dome, salmon-pink starfish attached on top, pale turquoise and cream trailing tentacles. Actual jellyfish anatomy, no ears, no paws, no fur. Keep cozy rare-tier thick brown cartoon outlines and warm cel shading. Side-three-quarter moving SCREEN RIGHT with dome leading right and tentacles trailing left. Whole character centered, transparent alpha background, no scene or words. Do not create a sprite sheet. One edited thumbnail only. Preserve real alpha transparency.",
+      "history": [
+        {
+          "id": "pongi-jellyfish",
+          "prompt": "ONE square game collectible thumbnail. An actual jellyfish reimagined as Pongi: translucent honey and cream rounded jelly dome with an adorable otter-like face, tiny cheek whiskers, peach blush, one prominent salmon-pink STARFISH attached to top of its head. Short flowing turquoise and cream tentacles trail left while dome leads screen right. No otter mammal body, no arms or feet. Cute and visibly jellyfish. Cozy Pongi rare/common cartoon style with thick warm dark brown outlines, large glossy eyes and soft cel shading. Face SCREEN RIGHT in clear side-three-quarter view, mouth and head point right, body and tail trail left. Entire subject fully visible and centered, longest axis 80-88% canvas. ACTUAL transparent alpha background. No floor or scenery, no black background, no checkerboard, no words, letters, label or watermark. Single static image, no sprite sheet.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-a2160fc3-5c20-4ff4-babc-81ffe431cfcd.png",
+          "path": "assets/storage-upload/new/20261020-050901/fish/rare/pongi-jellyfish_thumbnail.png",
+          "refs": [
+            "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+          ]
+        },
+        {
+          "id": "pongi-jellyfish",
+          "path": "assets/storage-upload/new/20261020-050901/fish/rare/pongi-jellyfish_thumbnail.png",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-0b3657d1-d588-44bb-abc7-e1d53e707b13.png",
+          "prompt": "Redesign this as a true cute JELLYFISH using ONLY the caramel/cream colors and salmon-pink starfish to reference Pongi. Completely remove the otter muzzle, mammalian nose, fur, whiskers, cheeks shaped like an otter and otter face mask. A simple pair of small cute jellyfish eyes on a smooth translucent bell is fine, with a tiny minimal jellyfish smile, NOT an animal muzzle. Smooth honey-gold and cream translucent jelly dome, salmon-pink starfish attached on top, pale turquoise and cream trailing tentacles. Actual jellyfish anatomy, no ears, no paws, no fur. Keep cozy rare-tier thick brown cartoon outlines and warm cel shading. Side-three-quarter moving SCREEN RIGHT with dome leading right and tentacles trailing left. Whole character centered, transparent alpha background, no scene or words. Do not create a sprite sheet. One edited thumbnail only. Preserve real alpha transparency."
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": "right",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "ac9d5bf6a135058835d5994f5d9d42615ca21aac21febce28b31d20624d45c45"
+    },
+    {
+      "id": "pongi-jellyfish",
+      "name": "퐁이 해파리",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "pongdang",
+      "storage_path": "fish/rare/pongi-jellyfish_sprite.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/fish/rare/pongi-jellyfish_sprite.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-c72a33b4-74cd-42fc-8558-75abdcf6385a.png",
+      "prompt": "Edit this sprite sheet ONLY to fix inadequate TRANSPARENT MARGINS. Preserve all character designs, colors, exact different action poses, right-facing direction, row and column order. 2 columns x 2 rows, FOUR equal square cells, square canvas. Every character is currently TOO LARGE and touches cell edges. REDUCE ALL characters uniformly to 75% of their current size inside each original cell, same scale for every frame. Center rigid torso at identical relative position in every cell, preserve movement. At least 12% of each cell must be EMPTY TRANSPARENT space on ALL FOUR sides of every character including thrusters, fins, tails. The ENTIRE outer silhouette and faint glow must stay within central 76% of each cell. Do NOT fill the canvas. Do NOT crop any extremity. No grid lines, no text, no opaque background. Keep real alpha.",
+      "history": [
+        {
+          "id": "pongi-jellyfish",
+          "prompt": "Create a production-ready transparent PNG animation sprite sheet of EXACT SAME character in reference. 2 columns by 2 rows, exactly FOUR equal SQUARE cells, square canvas. No text, no borders, no backgrounds, real transparent alpha. Smooth translucent honey-cream jellyfish bell gently contracts and expands, aqua tentacles ripple in coherent 4-phase propulsion. Simple jellyfish eyes and mouth; NO otter muzzle, whiskers, fur or mammal anatomy. Preserve pink starfish. Face SCREEN RIGHT in clear side-three-quarter profile in EVERY frame, head leads right. Stable body size, head and torso anchor at identical cell-relative coordinates; no bouncing, no zoom changes. Preserve the reference art style and proportions. Maximum silhouette long axis 80–85% of each cell, all appendages and glow inside, generous transparent outer margins and gutters. Read left-to-right then next row. Actual continuous movement, not duplicate poses or eye-only animation. No extra characters.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-665c8bb8-969c-4508-b696-65989a1c37ef.png",
+          "path": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261020-050901/fish/rare/pongi-jellyfish_sprite.png"
+        },
+        {
+          "id": "pongi-jellyfish",
+          "prompt": "Edit this sprite sheet ONLY to fix inadequate TRANSPARENT MARGINS. Preserve all character designs, colors, exact different action poses, right-facing direction, row and column order. 2 columns x 2 rows, FOUR equal square cells, square canvas. Every character is currently TOO LARGE and touches cell edges. REDUCE ALL characters uniformly to 75% of their current size inside each original cell, same scale for every frame. Center rigid torso at identical relative position in every cell, preserve movement. At least 12% of each cell must be EMPTY TRANSPARENT space on ALL FOUR sides of every character including thrusters, fins, tails. The ENTIRE outer silhouette and faint glow must stay within central 76% of each cell. Do NOT fill the canvas. Do NOT crop any extremity. No grid lines, no text, no opaque background. Keep real alpha.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-c72a33b4-74cd-42fc-8558-75abdcf6385a.png",
+          "path": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261020-050901/fish/rare/pongi-jellyfish_sprite.png"
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": "right",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "bb5a81b1a03f92bb700c6dab7a5b65ceb148e81e21df2696d756020cd8fcde2e"
+    },
+    {
+      "id": "pongi-crab",
+      "name": "퐁이 게",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "pongdang",
+      "storage_path": "fish/normal/pongi-crab_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/fish/normal/pongi-crab_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-7ebb0faa-5b54-4d33-9ddb-7581701813f5.png",
+      "prompt": "ONE square game collectible thumbnail. A small caramel-brown and cream CRAB inspired by Pongi the otter, rounded carapace, big friendly glossy eyes, tiny whisker markings on cheeks, two small claws and naturally jointed crab legs. Salmon-pink starfish perched on shell. Side-three-quarter facing RIGHT and moving right, not front-facing. Clearly a crab, not an otter holding a crab. Cozy Pongi rare/common cartoon style with thick warm dark brown outlines, large glossy eyes and soft cel shading. Face SCREEN RIGHT in clear side-three-quarter view, mouth and head point right, body and tail trail left. Entire subject fully visible and centered, longest axis 80-88% canvas. ACTUAL transparent alpha background. No floor or scenery, no black background, no checkerboard, no words, letters, label or watermark. Single static image, no sprite sheet.",
+      "history": [
+        {
+          "id": "pongi-crab",
+          "prompt": "ONE square game collectible thumbnail. A small caramel-brown and cream CRAB inspired by Pongi the otter, rounded carapace, big friendly glossy eyes, tiny whisker markings on cheeks, two small claws and naturally jointed crab legs. Salmon-pink starfish perched on shell. Side-three-quarter facing RIGHT and moving right, not front-facing. Clearly a crab, not an otter holding a crab. Cozy Pongi rare/common cartoon style with thick warm dark brown outlines, large glossy eyes and soft cel shading. Face SCREEN RIGHT in clear side-three-quarter view, mouth and head point right, body and tail trail left. Entire subject fully visible and centered, longest axis 80-88% canvas. ACTUAL transparent alpha background. No floor or scenery, no black background, no checkerboard, no words, letters, label or watermark. Single static image, no sprite sheet.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-7ebb0faa-5b54-4d33-9ddb-7581701813f5.png",
+          "path": "assets/storage-upload/new/20261020-050901/fish/normal/pongi-crab_thumbnail.png",
+          "refs": [
+            "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+          ]
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": "right",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "430f88b7d998194c345375dde375c1cb52134e2395d757c1c45a40339d180ba4"
+    },
+    {
+      "id": "pongi-crab",
+      "name": "퐁이 게",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": "pongdang",
+      "storage_path": "fish/normal/pongi-crab_sprite.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/fish/normal/pongi-crab_sprite.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-3398acb0-eccf-4ef2-9e1c-fdae291d7dd7.png",
+      "prompt": "Edit this sprite sheet ONLY to fix inadequate TRANSPARENT MARGINS. Preserve all character designs, colors, exact different action poses, right-facing direction, row and column order. 2 columns x 2 rows, FOUR equal square cells, square canvas. Every character is currently TOO LARGE and touches cell edges. REDUCE ALL characters uniformly to 75% of their current size inside each original cell, same scale for every frame. Center rigid torso at identical relative position in every cell, preserve movement. At least 12% of each cell must be EMPTY TRANSPARENT space on ALL FOUR sides of every character including thrusters, fins, tails. The ENTIRE outer silhouette and faint glow must stay within central 76% of each cell. Do NOT fill the canvas. Do NOT crop any extremity. No grid lines, no text, no opaque background. Keep real alpha.",
+      "history": [
+        {
+          "id": "pongi-crab",
+          "path": "assets/storage-upload/new/20261020-050901/fish/normal/pongi-crab_sprite.png",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-80551620-11c8-4416-8e7d-598179f963d8.png",
+          "prompt": "Create an exact FOUR-FRAME 2x2 walking sprite sheet of the reference Pongi crab. Same cute caramel crab, starfish accessory, face, size and warm cartoon shading. All FOUR poses face SCREEN RIGHT. Four sequential natural jointed crab-leg walking phases, small coordinated claw motion; NO giant arm waving. Keep shell/body, face and starfish ROOT at exactly the same cell coordinates and scale, no bobbing or turning, no per-frame recentering. One square canvas, exactly TWO columns and TWO rows of equal square cells, no grid lines or labels. Whole crab plus every leg inside 80-85% of each cell, no clipping or overlap, alpha transparent gutters and outer margins. ACTUAL transparent background, no backdrop, no checkerboard, no text. Keep all outlines sharp and frame-to-frame identity stable.",
+          "columns": 2
+        },
+        {
+          "id": "pongi-crab",
+          "prompt": "Edit this sprite sheet ONLY to fix inadequate TRANSPARENT MARGINS. Preserve all character designs, colors, exact different action poses, right-facing direction, row and column order. 2 columns x 2 rows, FOUR equal square cells, square canvas. Every character is currently TOO LARGE and touches cell edges. REDUCE ALL characters uniformly to 75% of their current size inside each original cell, same scale for every frame. Center rigid torso at identical relative position in every cell, preserve movement. At least 12% of each cell must be EMPTY TRANSPARENT space on ALL FOUR sides of every character including thrusters, fins, tails. The ENTIRE outer silhouette and faint glow must stay within central 76% of each cell. Do NOT fill the canvas. Do NOT crop any extremity. No grid lines, no text, no opaque background. Keep real alpha.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-3398acb0-eccf-4ef2-9e1c-fdae291d7dd7.png",
+          "path": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261020-050901/fish/normal/pongi-crab_sprite.png"
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": "right",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "089674d8595f83bbfd6573167635b948a53c76f1049e1cfb2e17aab4dd97c673"
+    },
+    {
+      "id": "pongi-hammerhead",
+      "name": "퐁이 귀상어",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "pongdang",
+      "storage_path": "fish/rare/pongi-hammerhead_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/fish/rare/pongi-hammerhead_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-66d48fa0-50c1-496e-ada3-5057c5be6fb7.png",
+      "prompt": "Make this a true cute HAMMERHEAD SHARK. Keep the caramel tan back, cream belly and salmon-pink starfish hair clip, but remove ALL otter resemblance: no whisker spots, no mammal cheek patches, no otter muzzle, no furry shapes, no humanlike open mouth. Use a clean broad anatomical hammer-shaped snout, small glossy eyes at both tips, small simple shark smile beneath the snout, natural gill slits, streamlined shark body, proper fins and forked tail. Cute rounded rare-tier cartoon styling with thick brown outline. Screen RIGHT-facing side-three-quarter view, head right tail left. Preserve transparent background, whole subject visible, no words or scenery. Do not create a sprite sheet. One edited thumbnail only. Preserve real alpha transparency.",
+      "history": [
+        {
+          "id": "pongi-hammerhead",
+          "prompt": "ONE square game collectible thumbnail. An adorable plump HAMMERHEAD SHARK inspired by Pongi sea otter: distinctive broad hammer-shaped head with eyes at both lateral tips, caramel tan back and cream belly, peach cheeks and tiny whisker spots, tiny salmon starfish hair clip. Short shark fins and tail. Side-three-quarter swimming RIGHT with hammer snout leading right, tail trailing left. Strong readable actual hammerhead silhouette, no mammal ears. Cozy Pongi rare/common cartoon style with thick warm dark brown outlines, large glossy eyes and soft cel shading. Face SCREEN RIGHT in clear side-three-quarter view, mouth and head point right, body and tail trail left. Entire subject fully visible and centered, longest axis 80-88% canvas. ACTUAL transparent alpha background. No floor or scenery, no black background, no checkerboard, no words, letters, label or watermark. Single static image, no sprite sheet.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-f8d830d2-18c5-4b12-81e4-75fcbd730044.png",
+          "path": "assets/storage-upload/new/20261020-050901/fish/rare/pongi-hammerhead_thumbnail.png",
+          "refs": [
+            "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+          ]
+        },
+        {
+          "id": "pongi-hammerhead",
+          "path": "assets/storage-upload/new/20261020-050901/fish/rare/pongi-hammerhead_thumbnail.png",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-66d48fa0-50c1-496e-ada3-5057c5be6fb7.png",
+          "prompt": "Make this a true cute HAMMERHEAD SHARK. Keep the caramel tan back, cream belly and salmon-pink starfish hair clip, but remove ALL otter resemblance: no whisker spots, no mammal cheek patches, no otter muzzle, no furry shapes, no humanlike open mouth. Use a clean broad anatomical hammer-shaped snout, small glossy eyes at both tips, small simple shark smile beneath the snout, natural gill slits, streamlined shark body, proper fins and forked tail. Cute rounded rare-tier cartoon styling with thick brown outline. Screen RIGHT-facing side-three-quarter view, head right tail left. Preserve transparent background, whole subject visible, no words or scenery. Do not create a sprite sheet. One edited thumbnail only. Preserve real alpha transparency."
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": "right",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "de14b775ecf114a33aca588f4f7d62e890a4fe5d6573924a4674824ce1e42ea5"
+    },
+    {
+      "id": "pongi-hammerhead",
+      "name": "퐁이 귀상어",
+      "kind": "fish",
+      "rarity": "rare",
+      "native_region_id": "pongdang",
+      "storage_path": "fish/rare/pongi-hammerhead_sprite.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/fish/rare/pongi-hammerhead_sprite.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-1f9ad709-e8ed-4620-8f98-62a2cbec7a74.png",
+      "prompt": "Edit this sprite sheet ONLY to fix inadequate TRANSPARENT MARGINS. Preserve all character designs, colors, exact different action poses, right-facing direction, row and column order. 2 columns x 2 rows, FOUR equal square cells, square canvas. Every character is currently TOO LARGE and touches cell edges. REDUCE ALL characters uniformly to 75% of their current size inside each original cell, same scale for every frame. Center rigid torso at identical relative position in every cell, preserve movement. At least 12% of each cell must be EMPTY TRANSPARENT space on ALL FOUR sides of every character including thrusters, fins, tails. The ENTIRE outer silhouette and faint glow must stay within central 76% of each cell. Do NOT fill the canvas. Do NOT crop any extremity. No grid lines, no text, no opaque background. Keep real alpha.",
+      "history": [
+        {
+          "id": "pongi-hammerhead",
+          "prompt": "Create a production-ready transparent PNG animation sprite sheet of EXACT SAME character in reference. 2 columns by 2 rows, exactly FOUR equal SQUARE cells, square canvas. No text, no borders, no backgrounds, real transparent alpha. Natural hammerhead shark tail swings subtly with dorsal and paired fins making small adjustments, coherent 4-phase swim. No otter face, whiskers, ears or fur. Tan cream colors and pink starfish only. Face SCREEN RIGHT in clear side-three-quarter profile in EVERY frame, head leads right. Stable body size, head and torso anchor at identical cell-relative coordinates; no bouncing, no zoom changes. Preserve the reference art style and proportions. Maximum silhouette long axis 80–85% of each cell, all appendages and glow inside, generous transparent outer margins and gutters. Read left-to-right then next row. Actual continuous movement, not duplicate poses or eye-only animation. No extra characters.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-fa4650b6-c612-4364-9041-2fac79d81f88.png",
+          "path": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261020-050901/fish/rare/pongi-hammerhead_sprite.png"
+        },
+        {
+          "id": "pongi-hammerhead",
+          "prompt": "Edit this sprite sheet ONLY to fix inadequate TRANSPARENT MARGINS. Preserve all character designs, colors, exact different action poses, right-facing direction, row and column order. 2 columns x 2 rows, FOUR equal square cells, square canvas. Every character is currently TOO LARGE and touches cell edges. REDUCE ALL characters uniformly to 75% of their current size inside each original cell, same scale for every frame. Center rigid torso at identical relative position in every cell, preserve movement. At least 12% of each cell must be EMPTY TRANSPARENT space on ALL FOUR sides of every character including thrusters, fins, tails. The ENTIRE outer silhouette and faint glow must stay within central 76% of each cell. Do NOT fill the canvas. Do NOT crop any extremity. No grid lines, no text, no opaque background. Keep real alpha.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-1f9ad709-e8ed-4620-8f98-62a2cbec7a74.png",
+          "path": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261020-050901/fish/rare/pongi-hammerhead_sprite.png"
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": "right",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "bf6ae65a07deb8615317a5b8ec4a9fafb6e9e0a9ea847c412b39efcc52a1b876"
+    },
+    {
+      "id": "pongi-exploration-robot",
+      "name": "퐁이 탐사로봇",
+      "kind": "fish",
+      "rarity": "mythic",
+      "native_region_id": "pongdang",
+      "storage_path": "fish/mythic/pongi-exploration-robot_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/fish/mythic/pongi-exploration-robot_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-a461698b-d6a0-4357-b551-2bef5582c228.png",
+      "prompt": "Replace the submarine-like body with a MUCH MORE HEROIC HUMANOID EXPLORATION MECHA ROBOT, not a pod or fish-shaped sub. Clearly visible sturdy mechanical torso, broad angular armored shoulders, two articulated powerful mechanical arms with articulated claw hands, hip joints and two properly segmented mechanical legs with wide bootlike feet, back-mounted thrusters. Elegant ivory armor and navy panels, warm gold seams, glowing turquoise chest reactor, clean engineered panel geometry, cool handsome robot silhouette. A compact clear cockpit in upper chest contains Pongi the smiling brown otter with salmon starfish clip controlling two joysticks. Robot head above cockpit has a sleek visor and twin antenna details, no otter-shaped robot face. No guns or weapons. Heroic right-facing side-three-quarter dynamic hovering pose, entire mech visible with all limbs, ready to transform between compact exploration cruiser and humanoid robot. Use the reference for palette, Pongi pilot identity and polished soft fantasy rendering ONLY, do NOT preserve its submarine silhouette. Single full-body character, actual alpha transparent background, no backdrop, no black field, no labels or text. Do not create a sprite sheet. One edited thumbnail only. Preserve real alpha transparency.",
+      "history": [
+        {
+          "id": "pongi-exploration-robot",
+          "prompt": "ONE square game collectible thumbnail. A magnificent compact transforming underwater EXPLORATION ROBOT piloted by Pongi sea otter, coherent with the existing Pongi exploration sub reference. Pearl-ivory armor, luminous turquoise reactor, warm golden trim, crystal clear rounded cockpit with recognizable smiling brown otter inside and starfish hair clip. Folded articulated mechanical arms tucked beside hull, folded mechanical leg panels, aft propeller thrusters, searchlight pointing right. Beautiful sci-fi fantasy robot-submarine hybrid, transformed robot potential visibly engineered, no weapons, handsome heroic proportions. Keep Pongi cartoon-friendly within polished luminous soft fantasy machine illustration. Cruise form, RIGHT-facing side-three-quarter, all machinery fully visible. Soft-edged polished fantasy illustration, fine dimensional shading and delicate luminosity, like the fantasy reference. Face SCREEN RIGHT in clear side-three-quarter view, mouth and head point right, body and tail trail left. Entire subject fully visible and centered, longest axis 80-88% canvas. ACTUAL transparent alpha background. No floor or scenery, no black background, no checkerboard, no words, letters, label or watermark. Single static image, no sprite sheet.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-c3d27859-3edd-4e04-8513-584afffe052e.png",
+          "path": "assets/storage-upload/new/20261020-050901/fish/mythic/pongi-exploration-robot_thumbnail.png",
+          "refs": [
+            "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261015-151831/fish/mythic/pongi-explorer_thumbnail.png",
+            "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+          ]
+        },
+        {
+          "id": "pongi-exploration-robot",
+          "path": "assets/storage-upload/new/20261020-050901/fish/mythic/pongi-exploration-robot_thumbnail.png",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-a461698b-d6a0-4357-b551-2bef5582c228.png",
+          "prompt": "Replace the submarine-like body with a MUCH MORE HEROIC HUMANOID EXPLORATION MECHA ROBOT, not a pod or fish-shaped sub. Clearly visible sturdy mechanical torso, broad angular armored shoulders, two articulated powerful mechanical arms with articulated claw hands, hip joints and two properly segmented mechanical legs with wide bootlike feet, back-mounted thrusters. Elegant ivory armor and navy panels, warm gold seams, glowing turquoise chest reactor, clean engineered panel geometry, cool handsome robot silhouette. A compact clear cockpit in upper chest contains Pongi the smiling brown otter with salmon starfish clip controlling two joysticks. Robot head above cockpit has a sleek visor and twin antenna details, no otter-shaped robot face. No guns or weapons. Heroic right-facing side-three-quarter dynamic hovering pose, entire mech visible with all limbs, ready to transform between compact exploration cruiser and humanoid robot. Use the reference for palette, Pongi pilot identity and polished soft fantasy rendering ONLY, do NOT preserve its submarine silhouette. Single full-body character, actual alpha transparent background, no backdrop, no black field, no labels or text. Do not create a sprite sheet. One edited thumbnail only. Preserve real alpha transparency."
+        }
+      ],
+      "style_references": [
+        "assets/storage-upload/new/20261015-151831/fish/mythic/pongi-explorer_thumbnail.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": "right",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "1a960c0e806e684c64be3285fae3158f41c34e720fde99a686eeb2c0ab123f81"
+    },
+    {
+      "id": "pongi-exploration-robot",
+      "name": "퐁이 탐사로봇",
+      "kind": "fish",
+      "rarity": "mythic",
+      "native_region_id": "pongdang",
+      "storage_path": "fish/mythic/pongi-exploration-robot_sprite.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/fish/mythic/pongi-exploration-robot_sprite.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-0a1e5671-6248-4e47-bd23-868d184ad680.png",
+      "prompt": "Fix ONLY transparent spacing on this 2x2 FOUR-frame sprite sheet. The robots are far too large and clip each other. SHRINK EVERY robot to 65% of its current size, SAME SCALE for all four, within the SAME four equal square quadrants. All four robots fully contained with at least 15% empty transparent margin on EVERY edge, including right fists and left thruster exhaust. Keep the exact design, poses, pearl ivory/navy/gold/cyan colors, right-facing side-three-quarter orientation, chest otter pilot. Do not crop or fill the canvas. Torso and face at identical cell-relative anchor. Exactly four complete SMALLER robots on transparent background, no grid or text.",
+      "history": [
+        {
+          "prompt": "Create transparent PNG 2x2 FOUR equal square-cell animation sheet of EXACT robot reference for backward-compatible 4-frame game renderer. Heroic pearl ivory navy gold cyan exploration MECHA with otter pilot in chest cockpit, RIGHT-facing side-three-quarter EVERY frame, mechanical legs/arms and thruster exhaust make a 4-phase hover cycle. No transformation in this fallback sheet. Keep rigid cockpit and torso at exactly same cell-relative location and scale in all cells. Character occupies ONLY central 75% of each cell, generous fully transparent margins on all sides including exhaust; NOTHING may touch a cell edge. No text, no background, no grid. Same sophisticated illustration style and exact character design.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-a185714f-4a0d-49e9-b98d-288a3aef9a6a.png",
+          "path": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261020-050901/fish/mythic/pongi-exploration-robot_sprite.png"
+        },
+        {
+          "prompt": "Fix ONLY transparent spacing on this 2x2 FOUR-frame sprite sheet. The robots are far too large and clip each other. SHRINK EVERY robot to 65% of its current size, SAME SCALE for all four, within the SAME four equal square quadrants. All four robots fully contained with at least 15% empty transparent margin on EVERY edge, including right fists and left thruster exhaust. Keep the exact design, poses, pearl ivory/navy/gold/cyan colors, right-facing side-three-quarter orientation, chest otter pilot. Do not crop or fill the canvas. Torso and face at identical cell-relative anchor. Exactly four complete SMALLER robots on transparent background, no grid or text.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-0a1e5671-6248-4e47-bd23-868d184ad680.png",
+          "path": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261020-050901/fish/mythic/pongi-exploration-robot_sprite.png"
+        }
+      ],
+      "style_references": [
+        "assets/storage-upload/new/20261015-151831/fish/mythic/pongi-explorer_thumbnail.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": "right",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "2851fd4740fd4c6dffe43057afab6724ab6a3bf3287f88681d75994073fed806"
+    },
+    {
+      "id": "pongi-exploration-robot",
+      "name": "퐁이 탐사로봇",
+      "kind": "fish",
+      "rarity": "mythic",
+      "native_region_id": "pongdang",
+      "storage_path": "fish/mythic/pongi-exploration-robot_swim8_sprite.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/fish/mythic/pongi-exploration-robot_swim8_sprite.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-4ff50678-f92a-4a88-870c-e0e658eec1ce.png",
+      "prompt": "Edit this sprite sheet ONLY to fix inadequate TRANSPARENT MARGINS. Preserve all character designs, colors, exact different action poses, right-facing direction, row and column order. 4 columns x 2 rows, EIGHT equal square cells, wide 2:1 canvas. Every character is currently TOO LARGE and touches cell edges. REDUCE ALL characters uniformly to 75% of their current size inside each original cell, same scale for every frame. Center rigid torso at identical relative position in every cell, preserve movement. At least 12% of each cell must be EMPTY TRANSPARENT space on ALL FOUR sides of every character including thrusters, fins, tails. The ENTIRE outer silhouette and faint glow must stay within central 76% of each cell. Do NOT fill the canvas. Do NOT crop any extremity. No grid lines, no text, no opaque background. Keep real alpha.",
+      "history": [
+        {
+          "id": "pongi-exploration-robot",
+          "prompt": "Create a production-ready transparent PNG animation sprite sheet of EXACT SAME character in reference. 4 columns by 2 rows, exactly EIGHT equal SQUARE cells, wide canvas 2:1 aspect. No text, no borders, no backgrounds, real transparent alpha. Eight phases: top row 4 frames steady heroic mecha hovering with small thruster steering and mechanical joint movements; bottom row 4 frames arm and leg armor fold into compact robotic explorer configuration then unfold smoothly back toward first pose. Clearly a cool articulated ROBOT, not a round submarine. Preserve ivory/navy/gold metal and cyan reactor, Pongi visible in clear chest cockpit. Fixed torso/cockpit anchor. Both arms and legs clearly engineered. Face SCREEN RIGHT in clear side-three-quarter profile in EVERY frame, head leads right. Stable body size, head and torso anchor at identical cell-relative coordinates; no bouncing, no zoom changes. Preserve the reference art style and proportions. Maximum silhouette long axis 80–85% of each cell, all appendages and glow inside, generous transparent outer margins and gutters. Read left-to-right then next row. Actual continuous movement, not duplicate poses or eye-only animation. No extra characters.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-c361d231-c70f-4231-8dd3-8f4aeaba785e.png",
+          "path": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261020-050901/fish/mythic/pongi-exploration-robot_swim8_sprite.png"
+        },
+        {
+          "id": "pongi-exploration-robot",
+          "prompt": "Edit this sprite sheet ONLY to fix inadequate TRANSPARENT MARGINS. Preserve all character designs, colors, exact different action poses, right-facing direction, row and column order. 4 columns x 2 rows, EIGHT equal square cells, wide 2:1 canvas. Every character is currently TOO LARGE and touches cell edges. REDUCE ALL characters uniformly to 75% of their current size inside each original cell, same scale for every frame. Center rigid torso at identical relative position in every cell, preserve movement. At least 12% of each cell must be EMPTY TRANSPARENT space on ALL FOUR sides of every character including thrusters, fins, tails. The ENTIRE outer silhouette and faint glow must stay within central 76% of each cell. Do NOT fill the canvas. Do NOT crop any extremity. No grid lines, no text, no opaque background. Keep real alpha.",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-4ff50678-f92a-4a88-870c-e0e658eec1ce.png",
+          "path": "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261020-050901/fish/mythic/pongi-exploration-robot_swim8_sprite.png"
+        }
+      ],
+      "style_references": [
+        "assets/storage-upload/new/20261015-151831/fish/mythic/pongi-explorer_thumbnail.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": "right",
+      "width": 1774,
+      "height": 887,
+      "sha256": "9a778557e2795212395dfb534ae699eb0c6e15cc9438778ba2429f3531378632"
+    },
+    {
+      "id": "otter-furball",
+      "name": "해달의 털뭉치",
+      "kind": "trash",
+      "rarity": "common",
+      "native_region_id": "pongdang",
+      "storage_path": "trash/normal/otter-furball_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/trash/normal/otter-furball_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-0c24007c-d11b-4337-a59f-25fb2c4ab7f9.png",
+      "prompt": "ONE standalone aquarium collectible thumbnail. A small loosely tangled ball of warm brown sea-otter shed fur, a couple of tiny cream strands and one tiny wet seaweed thread. Adorable cozy seaside litter inventory item. No face, no eyes, no animal body. Simple rounded clump clearly furball. Warm cozy cartoon illustration with rounded shapes, clean thick brown outlines, simple soft cel shading. Whole subject visible in a square composition with 80-88% long-axis occupancy and generous transparent margins. Actual transparent alpha background. No environment, no floor, no black background, no checkerboard, no text, no words, no watermark. No sprite sheet.",
+      "history": [
+        {
+          "id": "otter-furball",
+          "path": "assets/storage-upload/new/20261020-050901/trash/normal/otter-furball_thumbnail.png",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-0c24007c-d11b-4337-a59f-25fb2c4ab7f9.png",
+          "prompt": "ONE standalone aquarium collectible thumbnail. A small loosely tangled ball of warm brown sea-otter shed fur, a couple of tiny cream strands and one tiny wet seaweed thread. Adorable cozy seaside litter inventory item. No face, no eyes, no animal body. Simple rounded clump clearly furball. Warm cozy cartoon illustration with rounded shapes, clean thick brown outlines, simple soft cel shading. Whole subject visible in a square composition with 80-88% long-axis occupancy and generous transparent margins. Actual transparent alpha background. No environment, no floor, no black background, no checkerboard, no text, no words, no watermark. No sprite sheet."
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": null,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "1b3d620545de1e01400a8c26518365c4aa9ed227c5177bc8bbb144cab1c2c59a"
+    },
+    {
+      "id": "pongdang-merch-set",
+      "name": "퐁당섬 굿즈세트",
+      "kind": "trash",
+      "rarity": "rare",
+      "native_region_id": "pongdang",
+      "storage_path": "trash/rare/pongdang-merch-set_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/trash/rare/pongdang-merch-set_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-67c22255-94f7-4b00-956f-2981530d64f3.png",
+      "prompt": "ONE standalone aquarium collectible thumbnail. A small waterlogged souvenir merchandise set from Pongdang Island: cute brown sea-otter face keychain, cream mug printed with tiny otter face, salmon starfish enamel pin, folded teal postcard with island pictogram, loosely gathered in a worn open kraft gift box. Seaside collectible trash, a little sand and tiny seaweed, not pristine retail photo. Compact single cohesive object. No lettering or readable text. Warm cozy cartoon illustration with rounded shapes, clean thick brown outlines, simple soft cel shading. Whole subject visible in a square composition with 80-88% long-axis occupancy and generous transparent margins. Actual transparent alpha background. No environment, no floor, no black background, no checkerboard, no text, no words, no watermark. No sprite sheet.",
+      "history": [
+        {
+          "id": "pongdang-merch-set",
+          "path": "assets/storage-upload/new/20261020-050901/trash/rare/pongdang-merch-set_thumbnail.png",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-67c22255-94f7-4b00-956f-2981530d64f3.png",
+          "prompt": "ONE standalone aquarium collectible thumbnail. A small waterlogged souvenir merchandise set from Pongdang Island: cute brown sea-otter face keychain, cream mug printed with tiny otter face, salmon starfish enamel pin, folded teal postcard with island pictogram, loosely gathered in a worn open kraft gift box. Seaside collectible trash, a little sand and tiny seaweed, not pristine retail photo. Compact single cohesive object. No lettering or readable text. Warm cozy cartoon illustration with rounded shapes, clean thick brown outlines, simple soft cel shading. Whole subject visible in a square composition with 80-88% long-axis occupancy and generous transparent margins. Actual transparent alpha background. No environment, no floor, no black background, no checkerboard, no text, no words, no watermark. No sprite sheet."
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": null,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "5bd4501ff2ea96b42f0768920e60ba283ad9d7642ed90fe15fb73f8981667125"
+    },
+    {
+      "id": "pongi-snack-wrapper",
+      "name": "퐁이가 먹던 과자봉다리",
+      "kind": "trash",
+      "rarity": "rare",
+      "native_region_id": "pongdang",
+      "storage_path": "trash/rare/pongi-snack-wrapper_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/trash/rare/pongi-snack-wrapper_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-95fedc4c-2095-41af-948f-279ff5ec9d37.png",
+      "prompt": "ONE standalone aquarium collectible thumbnail. A crumpled EMPTY opened snack bag left by Pongi sea otter, buttery cream and orange striped packaging with a cute brown otter face pictogram and salmon starfish motif. Torn open top, a few crumbs, mildly waterlogged folds. Clearly an empty snack wrapper, no actual animal inside, no text or letters. Warm cozy cartoon illustration with rounded shapes, clean thick brown outlines, simple soft cel shading. Whole subject visible in a square composition with 80-88% long-axis occupancy and generous transparent margins. Actual transparent alpha background. No environment, no floor, no black background, no checkerboard, no text, no words, no watermark. No sprite sheet.",
+      "history": [
+        {
+          "id": "pongi-snack-wrapper",
+          "path": "assets/storage-upload/new/20261020-050901/trash/rare/pongi-snack-wrapper_thumbnail.png",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-95fedc4c-2095-41af-948f-279ff5ec9d37.png",
+          "prompt": "ONE standalone aquarium collectible thumbnail. A crumpled EMPTY opened snack bag left by Pongi sea otter, buttery cream and orange striped packaging with a cute brown otter face pictogram and salmon starfish motif. Torn open top, a few crumbs, mildly waterlogged folds. Clearly an empty snack wrapper, no actual animal inside, no text or letters. Warm cozy cartoon illustration with rounded shapes, clean thick brown outlines, simple soft cel shading. Whole subject visible in a square composition with 80-88% long-axis occupancy and generous transparent margins. Actual transparent alpha background. No environment, no floor, no black background, no checkerboard, no text, no words, no watermark. No sprite sheet."
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": null,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "107c242af2f3c359cc14869f43da73ced908698cc6e44d459ba5a73d68f98137"
+    },
+    {
+      "id": "sunken-pongdang-entrance",
+      "name": "가라앉은 퐁당섬 입구",
+      "kind": "decoration",
+      "rarity": "epic",
+      "native_region_id": "pongdang",
+      "storage_path": "decorations/epic/sunken-pongdang-entrance_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/decorations/epic/sunken-pongdang-entrance_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-36fdf3a9-aacf-4e60-8436-e366848a73a5.png",
+      "prompt": "ONE standalone aquarium collectible thumbnail. A sunken whimsical entrance arch to Pongdang Island: weathered cream stone arch and old wood gate frame, carved brown otter face relief with starfish crest, small hanging shell lanterns, turquoise sea-glass accents, coral and seaweed growing at base. A self-contained underwater aquarium decoration miniature, no surrounding ocean scene, no text or lettering. Epic soft luminous fantasy illustration with beautiful material shading, not heavy cartoon outlines, recognizable friendly island landmark. Soft polished fantasy illustration with delicate dimensional shading, no harsh cartoon edge. Whole subject visible in a square composition with 80-88% long-axis occupancy and generous transparent margins. Actual transparent alpha background. No environment, no floor, no black background, no checkerboard, no text, no words, no watermark. No sprite sheet.",
+      "history": [
+        {
+          "id": "sunken-pongdang-entrance",
+          "path": "assets/storage-upload/new/20261020-050901/decorations/epic/sunken-pongdang-entrance_thumbnail.png",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-36fdf3a9-aacf-4e60-8436-e366848a73a5.png",
+          "prompt": "ONE standalone aquarium collectible thumbnail. A sunken whimsical entrance arch to Pongdang Island: weathered cream stone arch and old wood gate frame, carved brown otter face relief with starfish crest, small hanging shell lanterns, turquoise sea-glass accents, coral and seaweed growing at base. A self-contained underwater aquarium decoration miniature, no surrounding ocean scene, no text or lettering. Epic soft luminous fantasy illustration with beautiful material shading, not heavy cartoon outlines, recognizable friendly island landmark. Soft polished fantasy illustration with delicate dimensional shading, no harsh cartoon edge. Whole subject visible in a square composition with 80-88% long-axis occupancy and generous transparent margins. Actual transparent alpha background. No environment, no floor, no black background, no checkerboard, no text, no words, no watermark. No sprite sheet."
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png",
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": null,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "a9bfd3080e24ac7e178af39df12ab6ed7443a1f20b8291c85121a54590aeb69f"
+    },
+    {
+      "id": "tiny-pongi-figurine",
+      "name": "작은 퐁이 조각",
+      "kind": "decoration",
+      "rarity": "common",
+      "native_region_id": "pongdang",
+      "storage_path": "decorations/normal/tiny-pongi-figurine_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/decorations/normal/tiny-pongi-figurine_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-786ed665-2fdb-4dde-88ba-605fbeec6e6b.png",
+      "prompt": "ONE standalone aquarium collectible thumbnail. A tiny simple hand-carved warm beige stone figurine of Pongi sea otter, round cute seated silhouette hugging a small shell, starfish shape carved on head, compact low plinth. Slightly worn underwater miniature aquarium decoration. Restrained common-tier simple cozy cartoon shading, no glow, no gems, no actual furry living otter. Warm cozy cartoon illustration with rounded shapes, clean thick brown outlines, simple soft cel shading. Whole subject visible in a square composition with 80-88% long-axis occupancy and generous transparent margins. Actual transparent alpha background. No environment, no floor, no black background, no checkerboard, no text, no words, no watermark. No sprite sheet.",
+      "history": [
+        {
+          "id": "tiny-pongi-figurine",
+          "path": "assets/storage-upload/new/20261020-050901/decorations/normal/tiny-pongi-figurine_thumbnail.png",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-786ed665-2fdb-4dde-88ba-605fbeec6e6b.png",
+          "prompt": "ONE standalone aquarium collectible thumbnail. A tiny simple hand-carved warm beige stone figurine of Pongi sea otter, round cute seated silhouette hugging a small shell, starfish shape carved on head, compact low plinth. Slightly worn underwater miniature aquarium decoration. Restrained common-tier simple cozy cartoon shading, no glow, no gems, no actual furry living otter. Warm cozy cartoon illustration with rounded shapes, clean thick brown outlines, simple soft cel shading. Whole subject visible in a square composition with 80-88% long-axis occupancy and generous transparent margins. Actual transparent alpha background. No environment, no floor, no black background, no checkerboard, no text, no words, no watermark. No sprite sheet."
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": null,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "05d7efe7994a6cdb1e461a5282eb1192094c8aa1878edc6bfba935febf99fa0e"
+    },
+    {
+      "id": "pongdang-island-sign",
+      "name": "퐁당섬 표지판",
+      "kind": "decoration",
+      "rarity": "rare",
+      "native_region_id": "pongdang",
+      "storage_path": "decorations/rare/pongdang-island-sign_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261020-050901/decorations/rare/pongdang-island-sign_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-a83266e0-144f-42ba-8057-3b5479a30e12.png",
+      "prompt": "ONE standalone aquarium collectible thumbnail. A charming weathered wooden island direction sign on a short sturdy post and small stone base, warm brown wood, salmon starfish pinned at top, carved cute otter face and small palm island pictogram on board. Tiny turquoise seaweed at base and hanging shell. Aquarium miniature decoration, no background scene, NO text or letters (pictograms only). Warm cozy cartoon illustration with rounded shapes, clean thick brown outlines, simple soft cel shading. Whole subject visible in a square composition with 80-88% long-axis occupancy and generous transparent margins. Actual transparent alpha background. No environment, no floor, no black background, no checkerboard, no text, no words, no watermark. No sprite sheet.",
+      "history": [
+        {
+          "id": "pongdang-island-sign",
+          "path": "assets/storage-upload/new/20261020-050901/decorations/rare/pongdang-island-sign_thumbnail.png",
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a153c9-6c1a-75d3-8990-e02eb5df332e\\exec-a83266e0-144f-42ba-8057-3b5479a30e12.png",
+          "prompt": "ONE standalone aquarium collectible thumbnail. A charming weathered wooden island direction sign on a short sturdy post and small stone base, warm brown wood, salmon starfish pinned at top, carved cute otter face and small palm island pictogram on board. Tiny turquoise seaweed at base and hanging shell. Aquarium miniature decoration, no background scene, NO text or letters (pictograms only). Warm cozy cartoon illustration with rounded shapes, clean thick brown outlines, simple soft cel shading. Whole subject visible in a square composition with 80-88% long-axis occupancy and generous transparent margins. Actual transparent alpha background. No environment, no floor, no black background, no checkerboard, no text, no words, no watermark. No sprite sheet."
+        }
+      ],
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "style_exception": null,
+      "artwork_facing": null,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "6a72356102011d2be0ee5731fca87d9216e9155aca1732b23458447740d342f4"
+    }
+  ]
+}

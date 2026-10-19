@@ -27,6 +27,8 @@ export function AquariumView(props:Props){
  const [toolsOpen,setToolsOpen]=useState(()=>{try{return localStorage.getItem('pongdang:aquarium-tools-open')==='true'}catch{return false}})
  useEffect(()=>{try{localStorage.setItem('pongdang:aquarium-tools-open',String(toolsOpen))}catch{/* Storage can be disabled. */}},[toolsOpen])
  const toolsGesture=useRef<{y:number;dragged:boolean}|null>(null)
+ const [managementOpen,setManagementOpen]=useState(()=>{try{return localStorage.getItem('pongdang:aquarium-management-open')==='true'}catch{return false}})
+ useEffect(()=>{try{localStorage.setItem('pongdang:aquarium-management-open',String(managementOpen))}catch{/* Storage can be disabled. */}},[managementOpen])
  useEffect(()=>{
   const element=glass.current
   if(!element||typeof ResizeObserver==='undefined')return
@@ -95,7 +97,12 @@ export function AquariumView(props:Props){
 
   </div>
    <div className="absolute left-2 top-14 z-20 flex h-11 items-center rounded-full border border-[#DCC2A7]/40 bg-[#E8D1B8]/50 pl-3 pr-1 text-[#5C3D29] shadow-[0_2px_8px_#5C3D2912] backdrop-blur-sm"><span className="shrink-0 px-1.5 py-0.5 text-[11px] leading-4 tabular-nums text-[#5C3D29]" aria-label="현재 어항" aria-live="polite">{(props.navigation?.index??0)+1}/{props.navigation?.count??1}</span>{props.purchase&&<Button variant="ghost" size="icon" className="size-9 shrink-0 rounded-none" aria-label="어항 추가" disabled={busy} onClick={props.purchase.onBuy}><Plus className="size-4"/></Button>}</div>
-   <TooltipProvider><div role="group" aria-label="어항 도구" className="absolute right-2 top-14 z-20 flex items-center overflow-hidden rounded-2xl border border-[#DCC2A7]/40 bg-[#E8D1B8]/50 text-[#5C3D29] shadow-[0_2px_8px_#5C3D2912] backdrop-blur-sm [&_button]:h-13 [&_button]:w-13 [&_button]:flex-col [&_button]:gap-1 [&_button]:rounded-xl [&_button]:bg-transparent [&_button]:text-[#5C3D29] [&_button:hover]:bg-[#DFC2A3]/80 [&_a]:h-13 [&_a]:w-13 [&_a]:flex-col [&_a]:gap-1 [&_a]:rounded-xl [&_a:hover]:bg-[#DFC2A3]/80">{props.managementControls}</div></TooltipProvider>
+   {props.managementControls&&<div className="absolute right-2 top-14 z-20 flex flex-col items-end gap-1">
+    <button type="button" aria-label={managementOpen?'어항 도구 접기':'어항 도구 펼치기'} aria-expanded={managementOpen} onClick={()=>setManagementOpen(value=>!value)} className="flex min-h-9 items-center gap-2 rounded-full border border-[#DCC2A7]/40 bg-[#E8D1B8]/70 px-3 text-[#5C3D29] backdrop-blur-sm">
+     <span aria-hidden="true" className="size-1 rounded-full bg-current"/><span className="text-[11px]">어항 도구</span>{managementOpen?<ChevronUp aria-hidden="true" className="size-3.5"/>:<ChevronDown aria-hidden="true" className="size-3.5"/>}
+    </button>
+    <div hidden={!managementOpen}><TooltipProvider><div role="group" aria-label="어항 도구" className="flex items-center overflow-hidden rounded-2xl border border-[#DCC2A7]/40 bg-[#E8D1B8]/50 text-[#5C3D29] shadow-[0_2px_8px_#5C3D2912] backdrop-blur-sm [&_button]:h-13 [&_button]:w-13 [&_button]:flex-col [&_button]:gap-1 [&_button]:rounded-xl [&_button]:bg-transparent [&_button]:text-[#5C3D29] [&_button:hover]:bg-[#DFC2A3]/80 [&_a]:h-13 [&_a]:w-13 [&_a]:flex-col [&_a]:gap-1 [&_a]:rounded-xl [&_a:hover]:bg-[#DFC2A3]/80">{props.managementControls}</div></TooltipProvider></div>
+   </div>}
    <TankBubbles/><TankInhabitants items={displayed.map(item=>({...item,interaction_locked:busy}))} onPlace={place} onSelectDecoration={selectDecoration} onSelectionPosition={(id,x,y)=>{
     if(id!==selectedId.current||!toolbar.current)return
     const element=toolbar.current

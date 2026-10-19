@@ -1,3 +1,4 @@
+import {TrapResultPreview} from './trap-result-preview'
 import {ExpeditionResults} from './expedition-results'
 import {ActiveExpeditionCard} from './active-expedition-card'
 import {useEffect,useEffectEvent,useRef,useState} from 'react'
@@ -48,7 +49,7 @@ function AccountExpeditions(){
     </div></div><div className="shrink-0 space-y-2 border-t border-border bg-background pt-1 pb-[env(safe-area-inset-bottom)]">
      <div className="flex min-h-9 items-center justify-between gap-2 text-xs"><span className="text-muted-foreground">넣은 미끼 <strong className="font-medium tabular-nums text-foreground">{total}개</strong><span className="ml-1.5 text-muted-foreground">· 최대 {vessel?.max_baits??30}개</span></span></div>
      <div role="progressbar" aria-label="미끼 넣기 현황" aria-valuemin={0} aria-valuemax={vessel?.max_baits??30} aria-valuenow={total} className="h-1 overflow-hidden rounded-full bg-secondary"><div className="h-full rounded-full bg-primary transition-[width] motion-reduce:transition-none" style={{width:Math.min(100,total/(vessel?.max_baits??30)*100)+'%'}}/></div>
-     <Button aria-label={vessel&&total>=vessel.min_baits?'통발 설치하기':undefined} className="min-h-12 w-full rounded-xl text-base" disabled={!vessel||total>vessel.max_baits||!regions.some(r=>r.id===regionId)} onClick={()=>{if(vessel&&total<vessel.min_baits)setCargoOpen(true);else request('depart',{p_vessel_id:vesselId,p_region_id:regionId,p_cargo:cargo})}}>{vessel&&total<vessel.min_baits?'미끼 넣기':'통발 설치하기'}</Button></div>
+     <div className="flex gap-2 [&>button:first-child]:min-w-0 [&>button:first-child]:flex-1 [&>button:first-child]:w-auto"><Button aria-label={vessel&&total>=vessel.min_baits?'통발 설치하기':undefined} className="min-h-12 w-full rounded-xl text-base" disabled={!vessel||total>vessel.max_baits||!regions.some(r=>r.id===regionId)} onClick={()=>{if(vessel&&total<vessel.min_baits)setCargoOpen(true);else request('depart',{p_vessel_id:vesselId,p_region_id:regionId,p_cargo:cargo})}}>{vessel&&total<vessel.min_baits?'미끼 넣기':'통발 설치하기'}</Button><TrapResultPreview/></div></div>
    </div></>}
   </>}
 

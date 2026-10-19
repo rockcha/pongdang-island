@@ -1,0 +1,224 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261020-050901/fish/rare/giseong-fish_sprite.png",
+        "storage_path":  "fish/rare/giseong-fish_sprite.png",
+        "patch":  [
+                      450,
+                      330,
+                      65,
+                      65
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -42,
+                           "dy":  0,
+                           "rmse":  20.965290086944947
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -100,
+                           "rmse":  21.068623119826537
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -42,
+                           "dy":  -100,
+                           "rmse":  26.460822045163017
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261020-050901/fish/rare/giseong-webfoot-octopus_sprite.png",
+        "storage_path":  "fish/rare/giseong-webfoot-octopus_sprite.png",
+        "patch":  [
+                      440,
+                      280,
+                      90,
+                      85
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  1,
+                           "rmse":  39.027959326557188
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  34,
+                           "dy":  -40,
+                           "rmse":  41.585744407561521
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  -39,
+                           "rmse":  45.6296655621137
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261020-050901/fish/rare/pongi-jellyfish_sprite.png",
+        "storage_path":  "fish/rare/pongi-jellyfish_sprite.png",
+        "patch":  [
+                      420,
+                      260,
+                      70,
+                      70
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -36,
+                           "dy":  7,
+                           "rmse":  12.831473079459306
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  8,
+                           "dy":  -27,
+                           "rmse":  29.911893189276178
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -33,
+                           "dy":  -46,
+                           "rmse":  11.930007829232785
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261020-050901/fish/rare/pongi-hammerhead_sprite.png",
+        "storage_path":  "fish/rare/pongi-hammerhead_sprite.png",
+        "patch":  [
+                      345,
+                      330,
+                      75,
+                      60
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -16,
+                           "dy":  2,
+                           "rmse":  13.239467511950773
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  4,
+                           "dy":  -55,
+                           "rmse":  28.206222717691215
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -16,
+                           "dy":  -54,
+                           "rmse":  28.092125231103466
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261020-050901/fish/normal/pongi-crab_sprite.png",
+        "storage_path":  "fish/normal/pongi-crab_sprite.png",
+        "patch":  [
+                      350,
+                      300,
+                      70,
+                      70
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -14,
+                           "dy":  1,
+                           "rmse":  15.768562694311884
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -56,
+                           "rmse":  16.585584018123154
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -12,
+                           "dy":  -55,
+                           "rmse":  17.850398279870397
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261020-050901/fish/epic/pongi-seahorse-rider_sprite.png",
+        "storage_path":  "fish/epic/pongi-seahorse-rider_sprite.png",
+        "patch":  [
+                      460,
+                      240,
+                      55,
+                      70
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -16,
+                           "dy":  1,
+                           "rmse":  27.64626176309709
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -24,
+                           "rmse":  24.229236906114718
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -16,
+                           "dy":  -23,
+                           "rmse":  27.944915662844803
+                       }
+                   ]
+    }
+]

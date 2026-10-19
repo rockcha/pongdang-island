@@ -1,0 +1,61 @@
+﻿{
+    "file":  "assets/storage-upload/new/20261020-050901/fish/mythic/pongi-exploration-robot_swim8_sprite.png",
+    "storage_path":  "fish/mythic/pongi-exploration-robot_swim8_sprite.png",
+    "patch":  [
+                  280,
+                  200,
+                  50,
+                  50
+              ],
+    "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  0
+                   },
+                   {
+                       "frame":  1,
+                       "dx":  7,
+                       "dy":  -1,
+                       "rmse":  37.551510182082126
+                   },
+                   {
+                       "frame":  2,
+                       "dx":  4,
+                       "dy":  0,
+                       "rmse":  28.11075475457698
+                   },
+                   {
+                       "frame":  3,
+                       "dx":  18,
+                       "dy":  2,
+                       "rmse":  34.739577362053751
+                   },
+                   {
+                       "frame":  4,
+                       "dx":  6,
+                       "dy":  -23,
+                       "rmse":  44.085900342360482
+                   },
+                   {
+                       "frame":  5,
+                       "dx":  4,
+                       "dy":  -17,
+                       "rmse":  48.692879764832021
+                   },
+                   {
+                       "frame":  6,
+                       "dx":  4,
+                       "dy":  -25,
+                       "rmse":  30.63395903840674
+                   },
+                   {
+                       "frame":  7,
+                       "dx":  10,
+                       "dy":  -32,
+                       "rmse":  30.692018506445613
+                   }
+               ]
+}

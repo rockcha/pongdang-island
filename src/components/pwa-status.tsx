@@ -3,7 +3,7 @@ import { toast } from 'sonner'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 
 export function PwaStatus() {
-  const { offlineReady: [offlineReady], needRefresh: [needRefresh], updateServiceWorker } = useRegisterSW({
+  const { offlineReady: [offlineReady], needRefresh: [needRefresh,setNeedRefresh], updateServiceWorker } = useRegisterSW({
     onRegisterError(error) { console.error('서비스 워커 등록 실패:', error) },
   })
 
@@ -13,11 +13,13 @@ export function PwaStatus() {
 
   useEffect(() => {
     if (!needRefresh) return
-    toast('퐁당섬의 새 버전이 준비됐어요.', {
+    toast.info('퐁당섬에 새 업데이트가 있어요.', {
       id: 'pwa-update', duration: Infinity,
+      description: '편한 때 업데이트하고 새 소식을 만나보세요.',
       action: { label: '업데이트', onClick: () => { void updateServiceWorker(true) } },
+      cancel: { label: '나중에', onClick: () => setNeedRefresh(false) },
     })
-  }, [needRefresh, updateServiceWorker])
+  }, [needRefresh, updateServiceWorker,setNeedRefresh])
 
   return null
 }

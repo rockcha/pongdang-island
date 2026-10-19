@@ -600,3 +600,10 @@ button, [role='button'] { cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   .rod-gauge-frame { animation: none; }
 }
+@keyframes island-loading-float {
+ 0%,100% { transform: translateY(0) rotate(-2deg); }
+ 50% { transform: translateY(-7px) rotate(2deg); }
+}
+@media (prefers-reduced-motion: no-preference) {
+ .island-loading-pongi { animation: island-loading-float 2.4s ease-in-out infinite; }
+}

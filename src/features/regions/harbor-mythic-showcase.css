@@ -11,18 +11,36 @@
 .harbor-mythic-card { grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); }
 .harbor-mythic-card .harbor-mythic-art { width: 100%; height: auto; aspect-ratio: 1; }
 .harbor-mythic-card .harbor-mythic-art > * { transform: scale(1.15); }
+.harbor-mythic-art-space { display: contents; }
+.harbor-mythic-stacked { flex: 1; min-height: 0; }
+.harbor-mythic-stacked > div { height: 100%; min-height: 0; }
 .harbor-mythic-stacked .harbor-mythic-card {
- grid-template-columns: minmax(0, 1fr);
- justify-items: center;
+ display: flex;
+ flex-direction: column;
+ height: 100%;
+ min-height: 0;
+ width: 100%;
  gap: .25rem;
  text-align: center;
 }
-.harbor-mythic-stacked .harbor-mythic-card .harbor-mythic-art {
- width: clamp(6rem, 20dvh, 10rem);
- max-width: 100%;
+.harbor-mythic-stacked .harbor-mythic-art-space {
+ display: block;
+ position: relative;
+ flex: 1;
+ min-height: 0;
+ width: 100%;
+ container-type: size;
 }
-.harbor-mythic-stacked .harbor-mythic-card .harbor-mythic-art > * { transform: none; }
-.harbor-mythic-stacked .harbor-mythic-card > span:last-child { width: 100%; }
+.harbor-mythic-stacked .harbor-mythic-card .harbor-mythic-art {
+ position: absolute;
+ left: 50%;
+ top: 50%;
+ width: min(100cqw, 100cqh);
+ height: min(100cqw, 100cqh);
+ transform: translate(-50%, -50%);
+}
+.harbor-mythic-stacked .harbor-mythic-card .harbor-mythic-art > * { transform: scale(1.15); }
+.harbor-mythic-stacked .harbor-mythic-card > span:last-child { width: 100%; flex-shrink: 0; }
 .harbor-mythic-stacked .harbor-mythic-card > span:last-child > span:last-child {
  margin-top: .25rem;
  font-size: 1rem;

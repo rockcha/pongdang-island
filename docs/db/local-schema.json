@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "d907cdec10c3d021b856bc1771d5dff08f3cc4d3a57f62b29d9b69d9e0a2d7c7",
+  "migrationHash": "f7b7bdcf56241846f915a474fd209b81f3a1207803a2c1427abcbaa7b3f434a8",
   "structure": {
     "enums": [
       {
@@ -5542,6 +5542,12 @@
         "definition": "CREATE UNIQUE INDEX one_signup_gift_per_player ON public.collectible_gifts USING btree (recipient_id) WHERE ((source = 'system'::text) AND (reward_id = 'welcome'::text))"
       },
       {
+        "name": "one_welcome_bait_per_player",
+        "table": "collectible_gifts",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX one_welcome_bait_per_player ON public.collectible_gifts USING btree (recipient_id) WHERE ((source = 'system'::text) AND ((species ->> 'id'::text) = 'welcome-bait'::text))"
+      },
+      {
         "name": "collectible_habitats_pkey",
         "table": "collectible_habitats",
         "schema": "public",
@@ -8110,7 +8116,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_user_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.send_welcome_gift(p_user_id uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare gift uuid; player_name text;\nbegin\n -- Do not turn an uncorrected direct credit into a second payment.\n if exists(select 1 from public.gold_transactions where user_id=p_user_id and item_id='welcome:500')\n and not exists(select 1 from public.gold_transactions where user_id=p_user_id and item_id='welcome:500:reversal' and delta=-500)\n then raise exception 'WELCOME_DIRECT_CREDIT_REQUIRES_REVERSAL';end if;\n select nickname into strict player_name from public.player_profiles where id=p_user_id;\n insert into public.collectible_gifts(sender_name,recipient_id,recipient_name,operation_id,collectible_ids,species,quantity,message,source,reward_kind,reward_id)\n values('퐁당섬 운영자',p_user_id,player_name,gen_random_uuid(),'{}'::uuid[],\n jsonb_build_object('id','welcome-gold','name','모험 응원 골드'),500,\n '첫 모험을 응원하는 500골드 선물이에요. 원하실 때 받아주세요!','system','gold','welcome')\n on conflict do nothing returning id into gift;\n if gift is not null then\n  insert into public.notifications(recipient_id,category,kind,title,body,gift_id)\n  values(p_user_id,'gift','gift_received','운영자의 선물이 도착했어요!','500골드 선물이에요. 선물함에서 원하실 때 받아주세요.',gift);\n end if;\n return gift;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.send_welcome_gift(p_user_id uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare gift uuid; bait_gift uuid; player_name text;\nbegin\n -- Do not turn an uncorrected direct credit into a second payment.\n if exists(select 1 from public.gold_transactions where user_id=p_user_id and item_id='welcome:500')\n and not exists(select 1 from public.gold_transactions where user_id=p_user_id and item_id='welcome:500:reversal' and delta=-500)\n then raise exception 'WELCOME_DIRECT_CREDIT_REQUIRES_REVERSAL';end if;\n select nickname into strict player_name from public.player_profiles where id=p_user_id;\n insert into public.collectible_gifts(sender_name,recipient_id,recipient_name,operation_id,collectible_ids,species,quantity,message,source,reward_kind,reward_id)\n values('퐁당섬 운영자',p_user_id,player_name,gen_random_uuid(),'{}'::uuid[],\n jsonb_build_object('id','welcome-gold','name','모험 응원 골드'),500,\n '첫 모험을 응원하는 500골드 선물이에요. 원하실 때 받아주세요!','system','gold','welcome')\n on conflict do nothing returning id into gift;\n if gift is not null then\n  insert into public.notifications(recipient_id,category,kind,title,body,gift_id)\n  values(p_user_id,'gift','gift_received','운영자의 선물이 도착했어요!','500골드 선물이에요. 선물함에서 원하실 때 받아주세요.',gift);\n end if;\n insert into public.collectible_gifts(sender_name,recipient_id,recipient_name,operation_id,collectible_ids,species,quantity,message,source,reward_kind,reward_id)\n select '퐁당섬 운영자',p_user_id,player_name,gen_random_uuid(),'{}'::uuid[],\n jsonb_build_object('id','welcome-bait','name',b.name,'thumbnail_path',b.image_path),5,\n '첫 낚시를 위한 지렁이 미끼 5개를 준비했어요. 선물함에서 받아주세요!','system','bait','bait'\n from public.fishing_baits b where b.id='bait'\n on conflict do nothing returning id into bait_gift;\n if bait_gift is not null then\n  insert into public.notifications(recipient_id,category,kind,title,body,gift_id)\n  values(p_user_id,'gift','gift_received','첫 낚시를 위한 미끼가 도착했어요!','환영 미끼 5개를 선물함에서 받아주세요.',bait_gift);\n end if;\n return gift;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -10752,7 +10758,7 @@
         "name": "gift_asset_shape",
         "table": "collectible_gifts",
         "schema": "public",
-        "definition": "CHECK ((((reward_kind = 'collectible'::text) AND ((quantity >= 1) AND (quantity <= 20)) AND (cardinality(collectible_ids) = quantity)) OR ((source = 'exchange'::text) AND (reward_kind = 'gold'::text) AND ((quantity >= 1) AND (quantity <= 1000000000)) AND (cardinality(collectible_ids) = 0)) OR ((source = 'exchange'::text) AND (reward_kind = 'bait'::text) AND ((quantity >= 1) AND (quantity <= 9999)) AND (cardinality(collectible_ids) = 0) AND (reward_id IS NOT NULL)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id = 'welcome'::text) AND (quantity = 500) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'exchange'::text) AND (reward_kind = 'fuel'::text) AND (reward_id = 'fuel'::text) AND ((quantity >= 1) AND (quantity <= 9999)) AND (cardinality(collectible_ids) = 0))))"
+        "definition": "CHECK ((((reward_kind = 'collectible'::text) AND ((quantity >= 1) AND (quantity <= 20)) AND (cardinality(collectible_ids) = quantity)) OR ((source = 'exchange'::text) AND (reward_kind = 'gold'::text) AND ((quantity >= 1) AND (quantity <= 1000000000)) AND (cardinality(collectible_ids) = 0)) OR ((source = 'exchange'::text) AND (reward_kind = 'bait'::text) AND ((quantity >= 1) AND (quantity <= 9999)) AND (cardinality(collectible_ids) = 0) AND (reward_id IS NOT NULL)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id = 'welcome'::text) AND (quantity = 500) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'exchange'::text) AND (reward_kind = 'fuel'::text) AND (reward_id = 'fuel'::text) AND ((quantity >= 1) AND (quantity <= 9999)) AND (cardinality(collectible_ids) = 0)) OR ((source = 'system'::text) AND (reward_kind = 'bait'::text) AND (reward_id = 'bait'::text) AND ((species ->> 'id'::text) = 'welcome-bait'::text) AND (quantity = 5) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold))))"
       },
       {
         "name": "gift_hold_shape",

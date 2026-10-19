@@ -7,6 +7,14 @@ import { PlaceBanner,placeBanners } from '../src/components/place-banner'
 
 const render=(ui:ReactElement)=>baseRender(ui,{wrapper:MemoryRouter})
 afterEach(cleanup)
+it('shows board introductions and a square list action inside the banner',()=>{
+ const view=render(<PlaceBanner pathname="/square/suggestions"/>)
+ expect(screen.getByText('더 좋은 섬을 위한 생각을 들려주세요.')).toBeTruthy()
+ expect(screen.getByRole('link',{name:'목록으로'}).getAttribute('href')).toBe('/square')
+ view.rerender(<PlaceBanner pathname="/square/bugs"/>)
+ expect(screen.getByText('불편하거나 이상한 점을 알려주세요.')).toBeTruthy()
+ expect(screen.getByRole('link',{name:'목록으로'}).getAttribute('href')).toBe('/square')
+})
 it('uses one illustrated list action across game and community detail banners',()=>{
  const view=render(<PlaceBanner pathname="/arcade/odd-even"/>)
  for(const [path,parent] of [['/arcade/odd-even','/arcade'],['/arcade/underground','/arcade'],['/square/notices/new','/square/notices'],['/square/suggestions/post','/square/suggestions'],['/square/bugs/post','/square/bugs']]){

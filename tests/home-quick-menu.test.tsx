@@ -29,7 +29,7 @@ it('replaces shortcuts with two news tabs and shows the latest sea with its myth
  expect(screen.getByLabelText('신화 애니메이션').getAttribute('data-silhouette')).toBe('true')
  expect(screen.queryByText('자주 방문하는 곳을 정해두어요')).toBeNull()
  expect(mock.events).not.toHaveBeenCalled()
- fireEvent.click(screen.getByRole('button',{name:'다음 해역'}))
+ fireEvent.keyDown(screen.getByRole('article'),{key:'ArrowRight'})
  expect(screen.getByRole('heading',{name:'퐁당섬 앞바다'})).toBeTruthy()
 })
 it('shows published event titles descriptions and posters and excludes ended events',async()=>{
@@ -60,7 +60,7 @@ it('excludes seas outside seven days and swipes between current releases',async(
  fireEvent.touchEnd(slide,{changedTouches:[{clientX:100,clientY:110}]})
  expect(screen.getByRole('heading',{name:old.name})).toBeTruthy()
  expect(screen.getByText('2/2')).toBeTruthy()
- fireEvent.click(screen.getByRole('button',{name:'다음 해역'}))
+ fireEvent.keyDown(screen.getByRole('article'),{key:'ArrowRight'})
  expect(screen.getByRole('heading',{name:newest.name})).toBeTruthy()
 })
 it('shows an empty state when no seas were registered in the last week',async()=>{

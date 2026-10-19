@@ -10,6 +10,17 @@ beforeEach(()=>{
  })
 })
 afterEach(()=>{cleanup();vi.unstubAllGlobals();vi.useRealTimers()})
+it('shares completed sailing preparation with the destination without a second loading screen',async()=>{
+ const {prepareFishingScene,useFishingSceneImages}=await import('@/features/fishing/scene-images')
+ const progress:number[]=[]
+ const prepared=prepareFishingScene('pongdang',fraction=>progress.push(fraction))
+ images.forEach(image=>image.onload())
+ await prepared
+ expect(progress.at(-1)).toBe(1)
+ const view=renderHook(()=>useFishingSceneImages('pongdang'))
+ expect(view.result.current).toBe(true)
+ expect(new Set(images.map(image=>image.src)).size).toBe(images.length)
+})
 it('reveals the scene together after the banner scenery and platform are ready',async()=>{
  const {useFishingSceneImages}=await import('@/features/fishing/scene-images')
  const view=renderHook(()=>useFishingSceneImages('pongdang'))

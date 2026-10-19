@@ -6,6 +6,12 @@ vi.mock('@/features/collection/collectible-preview',()=>({CollectiblePreview:({s
 const first={id:'native',name:'바다의 수호자',description:'파도를 지키는 친구예요.',kind:'fish',rarity:'mythic',is_native:true,native_region_id:'pongdang',discovered:false,habitats:[{id:'pongdang',name:'퐁당섬'}]} as CatalogEntry
 const second={...first,id:'shared',name:'별빛 고래',discovered:true,is_native:false,native_region_id:null}
 afterEach(()=>{cleanup();vi.useRealTimers();vi.restoreAllMocks()})
+it('renders a non-interactive mythic on the island home without opening a modal',()=>{
+ render(<HarborMythicShowcase items={[first]} regionName="퐁당섬" interactive={false}/>)
+ expect(screen.queryByRole('button',{name:/소개 보기/})).toBeNull()
+ fireEvent.click(screen.getByLabelText(first.name))
+ expect(screen.queryByRole('dialog')).toBeNull()
+})
 it('shows shared mythics in the starter sea and only local natives in other seas',()=>{
  const wrongSea={...first,id:'other',habitats:[{id:'coral',name:'산호빛'}]}
  const rare={...first,id:'rare',rarity:'rare'} as CatalogEntry

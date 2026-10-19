@@ -76,7 +76,7 @@ it('consumes failed attempts including bonuses, stores the failure total, and ne
  expect((await db.query('select inventory from public.player_wallets where user_id=$1',[owner])).rows[0].inventory.bait).toBe(97)
 })
 it('keeps the safe bait guaranteed while applying the same success rule as direct fishing',async()=>{
- expect((await db.query("select app_private.fishing_success_chance_bp('bait') basic,app_private.fishing_success_chance_bp('bait_safe') safe")).rows[0]).toEqual({basic:4000,safe:10000})
+ expect((await db.query("select app_private.fishing_success_chance_bp('bait') basic,app_private.fishing_success_chance_bp('bait_safe') safe")).rows[0]).toEqual({basic:3500,safe:10000})
  await db.query(`update public.player_wallets set inventory='{"bait_safe":3}' where user_id=$1`,[owner])
  const s=await action('depart','dinghy',{bait_safe:3});await action('instant',null,null,s.active.id)
  const c=await action('claim',null,null,s.active.id)
@@ -115,7 +115,7 @@ it('enforces the revised durations, prices and compound bonus cargo',async()=>{
  }
 });
 it('uses the fullcatch reduction in each draw and caps safe bait success at 100%',async()=>{
- expect((await db.query("select app_private.expedition_success_chance_bp('bait',200) normal,app_private.expedition_success_chance_bp('bait_safe',200) safe")).rows[0]).toEqual({normal:4200,safe:10000});
+ expect((await db.query("select app_private.expedition_success_chance_bp('bait',200) normal,app_private.expedition_success_chance_bp('bait_safe',200) safe")).rows[0]).toEqual({normal:3700,safe:10000});
  await db.exec(successDefinition.replace(/AS \$function\$[\s\S]*?\$function\$/,()=> 'AS $function$ begin return 9800; end; $function$'));
  const trip=await legacyDeparture('fullcatch',{bait:15});
  expect(trip.active.vessel_snapshot).toMatchObject({failure_reduction_bp:200,bonus_count:0,price:1800});

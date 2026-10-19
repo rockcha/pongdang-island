@@ -1,33 +1,57 @@
+vi.mock('@/features/savings/use-savings-status',()=>({useSavingsStatus:()=>mock.savings}))
 import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
 import {MemoryRouter,useLocation} from 'react-router'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {HeaderPlaceNavigation} from '@/components/header-place-navigation'
-const mock=vi.hoisted(()=>({status:null as 'sailing'|'returned'|null}))
+const mock=vi.hoisted(()=>({status:null as 'sailing'|'returned'|null,harbor:null as {ready:number;total:number}|null,operator:false,savings:null as '미납'|'수령 가능'|null}))
+vi.mock('@/features/port/use-harbor-status',()=>({useHarborStatus:()=>mock.harbor}))
+vi.mock('@/features/notices/use-operator',()=>({useOperator:()=>({operator:mock.operator,loading:false})}))
 vi.mock('@/features/expeditions/use-expedition-status',()=>({useExpeditionStatus:()=>mock.status}))
-beforeEach(()=>{mock.status=null})
+beforeEach(()=>{mock.status=null;mock.harbor=null;mock.operator=false;mock.savings=null})
 function View(){const {pathname}=useLocation();return <><HeaderPlaceNavigation/><output data-testid="path">{pathname}</output></>}
 afterEach(cleanup)
-it('opens the new harbor from my island',async()=>{
- render(<MemoryRouter initialEntries={['/']}><View/></MemoryRouter>)
+it('shows unpaid or ready savings status beside the savings destination',async()=>{
+ mock.savings='미납'
+ const view=render(<MemoryRouter><View/></MemoryRouter>)
+ fireEvent.click(screen.getByRole('button',{name:'상점'}))
+ const menu=await screen.findByRole('menu')
+ expect(within(menu).getByRole('menuitem',{name:/조개 적금.*미납/})).toBeTruthy()
+ mock.savings='수령 가능';view.rerender(<MemoryRouter><View/></MemoryRouter>)
+ expect(within(menu).getByRole('menuitem',{name:/조개 적금.*수령 가능/})).toBeTruthy()
+})
+it('hides animation collection from regular players and labels it for operators',async()=>{
+ const view=render(<MemoryRouter><View/></MemoryRouter>)
  fireEvent.click(screen.getByRole('button',{name:'내 섬'}))
+ let menu=await screen.findByRole('menu')
+ expect(within(menu).queryByRole('menuitem',{name:/애니메이션 도감/})).toBeNull()
+ mock.operator=true
+ view.rerender(<MemoryRouter><View/></MemoryRouter>)
+ menu=screen.getByRole('menu')
+ expect(within(menu).getByRole('menuitem',{name:/애니메이션 도감.*운영자/})).toBeTruthy()
+})
+it('shows ready counts only beside the port without a pulsing sea dot',async()=>{
+ mock.harbor={ready:1,total:2}
+ render(<MemoryRouter><View/></MemoryRouter>)
+ const sea=screen.getByRole('button',{name:'바다'})
+ expect(sea.querySelector('.expedition-status-pulse')).toBeNull()
+ fireEvent.click(sea)
+ const menu=await screen.findByRole('menu')
+ expect(within(menu).getByRole('menuitem',{name:/항구.*수령 가능 \(1\/2\)/})).toBeTruthy()
+ expect(within(menu).queryByRole('menuitem',{name:/조선소.*수령 가능/})).toBeNull()
+})
+it('opens the harbor from the sea menu',async()=>{
+ render(<MemoryRouter initialEntries={['/']}><View/></MemoryRouter>)
+ fireEvent.click(screen.getByRole('button',{name:'바다'}))
  const menu=await screen.findByRole('menu')
  fireEvent.click(within(menu).getByRole('menuitem',{name:'항구'}))
  expect(screen.getByTestId('path').textContent).toBe('/port')
 })
-it('places expeditions below the map and shows sailing and returned states',async()=>{
- mock.status='sailing'
- const view=render(<MemoryRouter initialEntries={['/expeditions']}><View/></MemoryRouter>)
- const activity=screen.getByRole('button',{name:'모험'})
- expect(activity.getAttribute('aria-description')).toBe('파견 중')
- expect(activity.querySelector('.expedition-status-pulse')).toBeTruthy()
- fireEvent.click(activity)
+it('keeps traps out of the standalone sea destinations',async()=>{
+ render(<MemoryRouter initialEntries={['/harbor']}><View/></MemoryRouter>)
+ fireEvent.click(screen.getByRole('button',{name:'바다'}))
  const menu=await screen.findByRole('menu')
- expect(within(menu).getAllByRole('menuitem').map(item=>item.getAttribute('href'))).toEqual(['/harbor','/expeditions','/farm'])
- expect(within(menu).getByText('파견 중')).toBeTruthy()
- mock.status='returned'
- view.rerender(<MemoryRouter initialEntries={['/expeditions']}><View/></MemoryRouter>)
- expect(within(menu).getByText('귀항 완료')).toBeTruthy()
- expect(activity.querySelector('.expedition-status-pulse')).toBeNull()
+ expect(within(menu).getAllByRole('menuitem').map(item=>item.getAttribute('href'))).toEqual(['/harbor','/port','/shipyard'])
+ expect(within(menu).queryByRole('menuitem',{name:/통발/})).toBeNull()
 })
 it('opens my island from the life menu',async()=>{
  render(<MemoryRouter initialEntries={['/aquarium']}><View/></MemoryRouter>)
@@ -40,9 +64,11 @@ it('shows five category triggers and separates shop and exchange',async()=>{
  render(<MemoryRouter initialEntries={['/shop']}><View/></MemoryRouter>)
  const nav=screen.getByRole('navigation',{name:'장소 바로가기'})
  expect(within(nav).getAllByRole('button')).toHaveLength(5)
+ expect(within(nav).getAllByRole('button').map(button=>button.getAttribute('aria-label'))).toEqual(['내 섬','바다','상점','휴식','소통'])
  fireEvent.click(within(nav).getByRole('button',{name:'상점'}))
  const menu=await screen.findByRole('menu')
- const shop=within(menu).getByRole('menuitem',{name:/상점/})
+ const shop=within(menu).getByRole('menuitem',{name:/낚시 상점/})
+ expect(within(menu).getByRole('menuitem',{name:'아이템 상점'}).getAttribute('href')).toBe('/item-shop')
  expect(shop.getAttribute('aria-current')).toBe('page')
  fireEvent.click(within(menu).getByRole('menuitem',{name:'거래소'}))
  expect(screen.getByTestId('path').textContent).toBe('/exchange')

@@ -7,6 +7,30 @@ import { PlaceBanner,placeBanners } from '../src/components/place-banner'
 
 const render=(ui:ReactElement)=>baseRender(ui,{wrapper:MemoryRouter})
 afterEach(cleanup)
+it('uses one illustrated list action across game and community detail banners',()=>{
+ const view=render(<PlaceBanner pathname="/arcade/odd-even"/>)
+ for(const [path,parent] of [['/arcade/odd-even','/arcade'],['/arcade/underground','/arcade'],['/square/notices/new','/square/notices'],['/square/suggestions/post','/square/suggestions'],['/square/bugs/post','/square/bugs']]){
+  view.rerender(<PlaceBanner pathname={path}/>)
+  const action=screen.getByRole('link',{name:'목록으로'})
+  expect(action.getAttribute('href')).toBe(parent)
+  expect(action.querySelector('img')?.getAttribute('src')).toBe('/app-icons/back-to-list.png')
+ }
+})
+it('places the notice list link on its detail banner',()=>{
+ render(<PlaceBanner pathname="/square/notices/notice"/>)
+ expect(screen.getByRole('link',{name:'목록으로'}).getAttribute('href')).toBe('/square/notices')
+})
+it('gives fishing and item shops separate banner identities',()=>{
+ const view=render(<PlaceBanner pathname="/shop"/>)
+ expect(screen.getByRole('heading',{name:'낚시 상점'})).toBeTruthy()
+ view.rerender(<PlaceBanner pathname="/item-shop"/>)
+ expect(screen.getByRole('heading',{name:'아이템 상점'})).toBeTruthy()
+ expect(screen.getByRole('img').getAttribute('src')).toBe('/banners/item-shop.png')
+})
+it('links to the port from the right side of the shipyard banner',()=>{
+ render(<PlaceBanner pathname="/shipyard"/>)
+ expect(screen.getByRole('link',{name:'항구로'}).getAttribute('href')).toBe('/port')
+})
 it('shows the subtitle and opens a separate practical guide',async()=>{
  render(<PlaceBanner pathname="/warehouse"/>)
  expect(screen.getByText(placeBanners['/warehouse'].subtitle)).toBeTruthy()

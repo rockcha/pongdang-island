@@ -16,7 +16,7 @@ import {markRelatedRead} from '@/features/notifications/api'
 
 function GiftPicture({gift,className}:{gift:GiftRecord;className:string}){
  if(gift.reward_kind==='gold')return <GoldIcon className={className}/>
- if(gift.reward_kind==='bait')return <span className={`${className} relative inline-block shrink-0`}><LandscapeImage src={gift.species.thumbnail_path} alt="" className="absolute inset-0 size-full object-contain"/></span>
+ if(gift.reward_kind==='bait'||gift.reward_kind==='fuel')return <span className={`${className} relative inline-block shrink-0`}><LandscapeImage src={gift.species.thumbnail_path} alt="" className="absolute inset-0 size-full object-contain"/></span>
  return <CollectibleThumbnail fadeIn species={gift.species} path={gift.species.thumbnail_path} name={gift.species.name} className={className}/>
 }
 
@@ -50,7 +50,7 @@ export function GiftDetailDialog({id,onClose}:{id:string|null;onClose:()=>void})
  async function act(reaction?:GiftReaction){
   if(!gift||locked.current)return
   locked.current=true;setBusy(true);setError('')
-  try{const data=reaction?await reactToGift(gift.id,reaction):await claimGift(gift.id);if(active.current)setGift(data);toast.success(reaction?'이모지 답장을 보냈어요.':gift.reward_kind==='gold'?'골드를 받았어요.':gift.reward_kind==='bait'?'미끼를 받았어요.':'선물을 받았어요. 아쿠아리움 보관함에서 만나보세요.');if(!reaction){void gold.refresh();window.dispatchEvent(new Event('fishing-rods-changed'))}void refresh()}
+  try{const data=reaction?await reactToGift(gift.id,reaction):await claimGift(gift.id);if(active.current)setGift(data);toast.success(reaction?'이모지 답장을 보냈어요.':gift.reward_kind==='gold'?'골드를 받았어요.':gift.reward_kind==='bait'?'미끼를 받았어요.':gift.reward_kind==='fuel'?'기름을 받았어요.':'선물을 받았어요. 아쿠아리움 보관함에서 만나보세요.');if(!reaction){void gold.refresh();window.dispatchEvent(new Event('fishing-rods-changed'))}void refresh()}
   catch(cause){if(active.current)setError(giftError(cause))}finally{locked.current=false;if(active.current)setBusy(false)}
  }
  const received=gift?.recipient_id===owner

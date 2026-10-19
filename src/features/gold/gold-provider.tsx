@@ -27,10 +27,13 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
   const active = useRef(true)
   const locked = useRef(false)
   const pending = useRef<{ signature: string; id: string } | null>(null)
-  const previousGold=useRef<number|null>(null),revision=useRef(0),refreshRequest=useRef(0)
-  function apply(data: Awaited<ReturnType<typeof loadGold>>,notifyGain=false) {
+  const previousGold=useRef<number|null>(null),previousFuel=useRef<number|null>(null),revision=useRef(0),refreshRequest=useRef(0)
+  function apply(data: Awaited<ReturnType<typeof loadGold>>,notifyChange=false) {
     if (!active.current) return
-    if(notifyGain&&previousGold.current!==null&&data.gold>previousGold.current)showDelta(data.gold-previousGold.current)
+    if(notifyChange&&previousGold.current!==null)showDelta(data.gold-previousGold.current)
+    const fuel=data.inventory.fuel??0
+    if(previousFuel.current!==null)showDelta(fuel-previousFuel.current,'fuel')
+    previousFuel.current=fuel
     previousGold.current=data.gold;revision.current++
     setWallet({ gold: data.gold, inventory: data.inventory })
     setTestClaimed(data.testClaimed); setTestEnabled(data.testEnabled); setError('')
@@ -54,7 +57,7 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
   const [groupBusy,setGroupBusy]=useState(false)
   const effectBatch=useRef<{delta:number;message:string;purchases:number;purchaseName:string}|null>(null)
   const sequence = useRef(0)
-  const [effects, setEffects] = useState<{ id: number; delta: number }[]>([])
+  const [effects, setEffects] = useState<{ id: number; delta: number; resource:'gold'|'fuel' }[]>([])
   const timers = useRef<ReturnType<typeof setTimeout>[]>([])
   useEffect(() => () => timers.current.forEach(clearTimeout), [])
   async function transact(action: Trade) {
@@ -83,10 +86,10 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
     if(message)toast.success(message)
     showDelta(result.delta)
   }
-  function showDelta(delta:number){
+  function showDelta(delta:number,resource:'gold'|'fuel'='gold'){
     if(delta===0)return
     const id = ++sequence.current
-    setEffects(previous => [...previous.slice(-3), { id, delta }])
+    setEffects(previous => [...previous.slice(-3), { id, delta, resource }])
     const timer = setTimeout(() => {
       setEffects(previous => previous.filter(effect => effect.id !== id))
       timers.current = timers.current.filter(value => value !== timer)
@@ -101,7 +104,7 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
   return <GoldContext.Provider value={{ wallet, transact, batchEffects, loading, busy:busy||groupBusy, error, testClaimed, testEnabled, refresh }}>
     {children}
     {createPortal(<div data-gold-effects className="pointer-events-none fixed inset-0 z-[2147483000] flex items-center justify-center" aria-live="polite" aria-atomic="true">
-      <div className="flex flex-col items-center gap-2">{effects.map(effect => <div key={effect.id} className={`gold-change flex items-center gap-2 py-1 ${effect.delta > 0 ? 'gold-change-gain' : 'gold-change-loss'}`}><span className="gold-change-number">{effect.delta > 0 ? '+' : '−'}{Math.abs(effect.delta).toLocaleString('ko-KR')}</span><GoldIcon className="gold-change-coin"/>{effect.delta>0&&<span aria-hidden="true"><i className="gold-change-sparkle"/><i className="gold-change-sparkle"/><i className="gold-change-sparkle"/></span>}<span className="sr-only">골드</span></div>)}</div>
+      <div className="flex flex-col items-center gap-2">{effects.map(effect => <div key={effect.id} className={`gold-change flex items-center gap-2 py-1 ${effect.delta > 0 ? 'gold-change-gain' : 'gold-change-loss'}`}><span className="gold-change-number">{effect.delta > 0 ? '+' : '−'}{Math.abs(effect.delta).toLocaleString('ko-KR')}</span>{effect.resource==='fuel'?<img src="/app-icons/fuel.png" alt="" aria-hidden="true" className="gold-change-coin shrink-0 object-contain"/>:<GoldIcon className="gold-change-coin"/>}{effect.delta>0&&<span aria-hidden="true"><i className="gold-change-sparkle"/><i className="gold-change-sparkle"/><i className="gold-change-sparkle"/></span>}<span className="sr-only">{effect.resource==='fuel'?'기름':'골드'}</span></div>)}</div>
     </div>,document.body)}
   </GoldContext.Provider>
 }

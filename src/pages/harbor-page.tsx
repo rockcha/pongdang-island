@@ -57,8 +57,8 @@ function HarborMap({userId}:{userId?:string}){
     </div>
    </article>
    <div className={`relative z-10 grid shrink-0 border-t border-border bg-background text-foreground ${region.unlocked?'grid-cols-2':'grid-cols-1'}`}>
-    <Button variant="ghost" className="flex h-20 min-w-0 flex-col gap-1 rounded-none border-r border-border bg-[#E8D1B8] px-2 text-sm font-medium text-[#5C3D29] hover:bg-[#DFC2A3]" onClick={()=>region.unlocked?travel():navigate(`/shop?tab=maps&region=${encodeURIComponent(region.id)}`)}>{region.unlocked?<appArt.rod className="size-8"/>:<appArt.shop className="size-8"/>}<span>{region.unlocked?'낚시 하기':'상점에서 구매하기'}</span></Button>
-    {region.unlocked&&<Button variant="ghost" className="flex h-20 min-w-0 flex-col gap-1 rounded-none bg-background px-2 text-sm font-medium text-primary hover:bg-secondary" onClick={()=>navigate(`/expeditions?region=${region.id}`)}><appArt.expeditions className="size-8"/><span>어선 파견</span></Button>}
+    <Button variant="ghost" className="flex h-20 min-w-0 flex-col gap-1 rounded-none border-r border-border bg-[#E8D1B8] px-2 text-sm font-medium text-[#5C3D29] hover:bg-[#DFC2A3]" onClick={()=>region.unlocked?travel():navigate(`/item-shop?tab=maps&region=${encodeURIComponent(region.id)}`)}>{region.unlocked?<appArt.rod className="size-8"/>:<appArt.shop className="size-8"/>}<span>{region.unlocked?'낚시 하기':'아이템 상점에서 구매하기'}</span></Button>
+    {region.unlocked&&<Button variant="ghost" className="flex h-20 min-w-0 flex-col gap-1 rounded-none bg-background px-2 text-sm font-medium text-primary hover:bg-secondary" onClick={()=>navigate(`/expeditions?region=${region.id}`)}><appArt.expeditions className="size-8"/><span>통발 설치</span></Button>}
    </div>
 
    {!catalogError&&<NativeSpeciesStrip key={region.id} items={natives} regionId={region.id} regionName={region.name}/>}

@@ -2,6 +2,7 @@ import {useCallback,useEffect,useEffectEvent,useRef,useState} from 'react'
 import {useAuth} from '@/components/auth-provider'
 import {useGold} from '@/features/gold/gold-provider'
 import {randomId} from '@/lib/random-id'
+import {toast} from 'sonner'
 import {harborAction,harborError,loadHarbor} from './api'
 import type {HarborAction,HarborState} from './api'
 
@@ -35,6 +36,7 @@ export function useHarbor(){
    try{localStorage.removeItem(key)}catch{}
    if(!alive.current)return true
    apply(data);setPending(null)
+   if(args.p_action==='buy')toast.success(`${data.vessels.find(v=>v.id===args.p_vessel_id)?.name??'배'} 구매 완료`)
    if(args.p_action==='depart'&&data.receipt?.voyageId)setDeparture(data.receipt.voyageId)
    await Promise.allSettled([refresh()]);return true
   }catch(e){if(alive.current){setError(harborError(e));if((e as {code?:string}).code)remember(null)}return false}

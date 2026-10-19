@@ -44,7 +44,7 @@ it('charges only the difference for a self raise and retries idempotently',async
  const raised=await bid(a.id,first,800,op);await bid(a.id,first,800,op)
  expect(raised.highest_gift_id).toBe(initial.highest_gift_id);expect(await gold(first)).toBe(4200)
  expect((await db.query('select quantity from public.collectible_gifts where id=$1',[raised.highest_gift_id])).rows[0].quantity).toBe(800)
- expect((await db.query('select * from public.collectible_gifts where not exchange_hold')).rows).toHaveLength(0)
+ expect((await db.query("select * from public.collectible_gifts where source='exchange' and not exchange_hold")).rows).toHaveLength(0)
 })
 it('rolls back unaffordable bids and protects the current bidder',async()=>{
  const a=await post();await bid(a.id)

@@ -15,7 +15,7 @@ export function notificationIconName(item:NotificationIconSource){
   case 'reward':return item.title?.includes('버그')?'bug':/아이디어|건의/.test(item.title??'')?'suggestion':'reward'
  }
  const title=item.title??''
- if(/귀항/.test(title))return 'expedition'
+ if(/귀항|수확 준비/.test(title))return 'expedition'
  if(/닦|청소/.test(title))return 'clean'
  if(/먹이/.test(title))return 'feed'
  if(item.category==='gift')return 'gift-received'
@@ -26,5 +26,5 @@ export function notificationIconName(item:NotificationIconSource){
 /** Decorative artwork: the adjacent notification text supplies the accessible name. */
 export function NotificationIcon({notification,className='size-11'}:{notification:NotificationIconSource;className?:string}){
  if(notification.category==='notice'||notification.notice_id)return <NoticeCategoryIcon category={notification.notice?.category??'guide'} className={className}/>
- return <img src={`/notification-icons/${notificationIconName(notification)}.png`} alt="" aria-hidden="true" width={128} height={128} decoding="async" className={`${className} shrink-0 object-contain`} onError={event=>{const fallback='/notification-icons/system.png';if(!event.currentTarget.src.endsWith(fallback))event.currentTarget.src=fallback}}/>
+ return <img src={notification.expedition_id||notification.expedition_boost_id?'/app-icons/fish-trap.png':`/notification-icons/${notificationIconName(notification)}.png`} alt="" aria-hidden="true" width={128} height={128} decoding="async" className={`${className} shrink-0 object-contain`} onError={event=>{const fallback='/notification-icons/system.png';if(!event.currentTarget.src.endsWith(fallback))event.currentTarget.src=fallback}}/>
 }

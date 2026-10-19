@@ -4,12 +4,13 @@
 @import "@fontsource/gowun-dodum";
 
 .port-boat-sprite { background-size: 200% 200%; background-position: 0 0; background-repeat: no-repeat; }
-.port-boat-sprite[data-animate] { animation: port-boat-frames 2.8s steps(1) infinite; }
+.port-boat-sprite[data-animate] { animation: port-sprite-float 3.2s ease-in-out infinite; }
 .port-boat-bob { position: relative; animation: port-boat-bob 3s ease-in-out infinite; }
 .port-boat-wake { position: absolute; left: 8%; right: 8%; bottom: 14%; height: 14%; border-bottom: 2px solid #e8ffff99; border-radius: 50%; background: #a6e1dc33; }
 .port-vessel[data-phase="departing"] { animation: port-depart 1.8s ease-in both; pointer-events: none; }
 .port-vessel[data-phase="arriving"] { animation: port-arrive 1.8s ease-out both; pointer-events: none; }
-@keyframes port-boat-frames { 0%,100% { background-position: 0 0; } 25% { background-position: 100% 0; } 50% { background-position: 0 100%; } 75% { background-position: 100% 100%; } }
+/* Generated frames can have different centers. Keep one frame and move it continuously. */
+@keyframes port-sprite-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
 @keyframes port-boat-bob { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-4px) rotate(1deg); } }
 @keyframes port-depart { from { transform: translate(0,0) scale(1); opacity: 1; } to { transform: translate(170%,-60px) scale(.45); opacity: 0; } }
 @keyframes port-arrive { from { transform: translate(170%,-60px) scale(.45); opacity: 0; } to { transform: translate(0,0) scale(1); opacity: 1; } }

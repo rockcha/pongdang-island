@@ -11083,12 +11083,12 @@
     },
     {
       "region_id": "dreamabyss",
-      "price": 1750,
+      "price": 1400,
       "thumbnail_path": "map/epic/map-dreamabyss_thumbnail.png"
     },
     {
       "region_id": "mistmoon",
-      "price": 950,
+      "price": 1100,
       "thumbnail_path": "map/rare/map-mistmoon_thumbnail.png"
     },
     {
@@ -11103,7 +11103,7 @@
     },
     {
       "region_id": "scrapisle",
-      "price": 1200,
+      "price": 1500,
       "thumbnail_path": "map/routes/map-scrapisle_thumbnail.png"
     },
     {
@@ -11150,7 +11150,7 @@
     {
       "id": "calm",
       "name": "잔물결 낚싯대",
-      "price": 750,
+      "price": 800,
       "region_id": null,
       "failure_reduction_bp": 300,
       "native_bonus_bp": 0
@@ -11158,7 +11158,7 @@
     {
       "id": "cloudferry",
       "name": "구름나루 바람 낚싯대",
-      "price": 900,
+      "price": 800,
       "region_id": "cloudferry",
       "failure_reduction_bp": 200,
       "native_bonus_bp": 200
@@ -11182,7 +11182,7 @@
     {
       "id": "lunea",
       "name": "루네아의 축복",
-      "price": 750,
+      "price": 800,
       "region_id": "mistmoon",
       "failure_reduction_bp": 200,
       "native_bonus_bp": 200
@@ -11198,7 +11198,7 @@
     {
       "id": "mukhyang",
       "name": "여백을 긋는 붓",
-      "price": 1100,
+      "price": 800,
       "region_id": "mukhyang",
       "failure_reduction_bp": 200,
       "native_bonus_bp": 200
@@ -11214,7 +11214,7 @@
     {
       "id": "primal",
       "name": "호박화석 낚싯대",
-      "price": 700,
+      "price": 800,
       "region_id": "primal",
       "failure_reduction_bp": 200,
       "native_bonus_bp": 200
@@ -11222,7 +11222,7 @@
     {
       "id": "scrapisle",
       "name": "녹빛 고철 낚싯대",
-      "price": 1000,
+      "price": 800,
       "region_id": "scrapisle",
       "failure_reduction_bp": 200,
       "native_bonus_bp": 200
@@ -11230,7 +11230,7 @@
     {
       "id": "siren",
       "name": "세이렌의 송가 낚싯대",
-      "price": 1200,
+      "price": 800,
       "region_id": "siren",
       "failure_reduction_bp": 200,
       "native_bonus_bp": 200
@@ -11238,7 +11238,7 @@
     {
       "id": "starruins",
       "name": "별잠 유물 낚싯대",
-      "price": 650,
+      "price": 800,
       "region_id": "starruins",
       "failure_reduction_bp": 200,
       "native_bonus_bp": 200
@@ -11246,7 +11246,7 @@
     {
       "id": "whitenight",
       "name": "백야 서리 낚싯대",
-      "price": 600,
+      "price": 800,
       "region_id": "whitenight",
       "failure_reduction_bp": 200,
       "native_bonus_bp": 200
@@ -11254,24 +11254,108 @@
   ],
   "harbor_vessels": [
     {
-      "id": "fishing-raft",
-      "name": "낚시용 뗏목",
-      "price": 300,
-      "duration_minutes": 30,
+      "id": "billow-rider",
+      "name": "너울타기 어선",
+      "price": 1600,
+      "duration_minutes": 360,
+      "fuel_cost": 3,
+      "fishing_count": 10,
+      "sprite_path": "/port/billow-rider-sprite.png",
+      "sort_order": 9,
+      "fishing_count_max": 20,
+      "catch_bait_id": "bait",
+      "native_bonus": false
+    },
+    {
+      "id": "conch-explorer",
+      "name": "소라빛 탐사선",
+      "price": 2200,
+      "duration_minutes": 390,
+      "fuel_cost": 3,
+      "fishing_count": 5,
+      "sprite_path": "/port/conch-explorer-sprite.png",
+      "sort_order": 13,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait_first_greeting",
+      "native_bonus": false
+    },
+    {
+      "id": "current-rider",
+      "name": "물살타기 낚시보트",
+      "price": 700,
+      "duration_minutes": 15,
+      "fuel_cost": 1,
+      "fishing_count": 4,
+      "sprite_path": "/port/current-rider-sprite.png",
+      "sort_order": 11,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait",
+      "native_bonus": false
+    },
+    {
+      "id": "fishing-drone",
+      "name": "낚시용 드론",
+      "price": 800,
+      "duration_minutes": 60,
       "fuel_cost": 1,
       "fishing_count": 2,
+      "sprite_path": "/port/fishing-drone-sprite.png",
+      "sort_order": 2,
+      "fishing_count_max": 3,
+      "catch_bait_id": "bait",
+      "native_bonus": false
+    },
+    {
+      "id": "fishing-raft",
+      "name": "낚시용 뗏목",
+      "price": 400,
+      "duration_minutes": 40,
+      "fuel_cost": 0,
+      "fishing_count": 2,
       "sprite_path": "/port/fishing-raft-sprite.png",
-      "sort_order": 1
+      "sort_order": 1,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait",
+      "native_bonus": false
+    },
+    {
+      "id": "golden-luck",
+      "name": "행운의 금빛어선",
+      "price": 2500,
+      "duration_minutes": 480,
+      "fuel_cost": 4,
+      "fishing_count": 15,
+      "sprite_path": "/port/golden-luck-sprite.png",
+      "sort_order": 10,
+      "fishing_count_max": 30,
+      "catch_bait_id": "bait",
+      "native_bonus": false
     },
     {
       "id": "haeneomi-trawler",
       "name": "해넘이 원양어선",
-      "price": 2400,
-      "duration_minutes": 360,
+      "price": 1500,
+      "duration_minutes": 480,
       "fuel_cost": 5,
-      "fishing_count": 15,
+      "fishing_count": 18,
       "sprite_path": "/port/haeneomi-trawler-sprite.png",
-      "sort_order": 3
+      "sort_order": 4,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait",
+      "native_bonus": false
+    },
+    {
+      "id": "moonpearl-luxury",
+      "name": "달빛진주 호화어선",
+      "price": 3200,
+      "duration_minutes": 600,
+      "fuel_cost": 5,
+      "fishing_count": 10,
+      "sprite_path": "/port/moonpearl-luxury-sprite.png",
+      "sort_order": 12,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait_special",
+      "native_bonus": false
     },
     {
       "id": "neoul-boat",
@@ -11281,7 +11365,62 @@
       "fuel_cost": 2,
       "fishing_count": 5,
       "sprite_path": "/port/neoul-boat-sprite.png",
-      "sort_order": 2
+      "sort_order": 3,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait",
+      "native_bonus": false
+    },
+    {
+      "id": "pearl-salvager",
+      "name": "진주빛 인양선",
+      "price": 1800,
+      "duration_minutes": 360,
+      "fuel_cost": 3,
+      "fishing_count": 8,
+      "sprite_path": "/port/pearl-salvager-sprite.png",
+      "sort_order": 7,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait_magnet",
+      "native_bonus": false
+    },
+    {
+      "id": "scrap-gobbler",
+      "name": "고철먹보 집게봇",
+      "price": 1400,
+      "duration_minutes": 300,
+      "fuel_cost": 2,
+      "fishing_count": 10,
+      "sprite_path": "/port/scrap-gobbler-sprite.png",
+      "sort_order": 8,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait_grubby_magnet",
+      "native_bonus": false
+    },
+    {
+      "id": "starlit-cruiser",
+      "name": "별잠 유람선",
+      "price": 2200,
+      "duration_minutes": 900,
+      "fuel_cost": 5,
+      "fishing_count": 15,
+      "sprite_path": "/port/starlit-cruiser-sprite.png",
+      "sort_order": 5,
+      "fishing_count_max": 25,
+      "catch_bait_id": "bait",
+      "native_bonus": false
+    },
+    {
+      "id": "waterway-explorer",
+      "name": "물길잡이 탐사선",
+      "price": 1600,
+      "duration_minutes": 240,
+      "fuel_cost": 2,
+      "fishing_count": 8,
+      "sprite_path": "/port/waterway-explorer-sprite.png",
+      "sort_order": 6,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait",
+      "native_bonus": true
     }
   ]
 }

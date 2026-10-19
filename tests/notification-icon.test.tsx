@@ -24,5 +24,5 @@ it.each([
 ])('selects the matching artwork for %o',(notification,expected)=>{
  expect(notificationIconName(notification)).toBe(expected)
  const {container}=render(<NotificationIcon notification={notification}/>)
- expect(container.querySelector('img')?.getAttribute('src')).toBe('notice_id' in notification?'/app-icons/notice-guide.png':`/notification-icons/${expected}.png`)
+ expect(container.querySelector('img')?.getAttribute('src')).toBe('notice_id' in notification?'/app-icons/notice-guide.png':'expedition_id' in notification||'expedition_boost_id' in notification?'/app-icons/fish-trap.png':`/notification-icons/${expected}.png`)
 })

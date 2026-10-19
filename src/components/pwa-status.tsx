@@ -8,7 +8,7 @@ export function PwaStatus() {
   })
 
   useEffect(() => {
-    if (offlineReady) toast.success('오프라인에서도 퐁당섬을 열 수 있어요.', { id: 'pwa-offline' })
+    if (offlineReady) toast.success('퐁당섬의 기본 화면을 저장했어요. 게임 이용에는 인터넷 연결이 필요해요.', { id: 'pwa-offline' })
   }, [offlineReady])
 
   useEffect(() => {

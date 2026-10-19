@@ -1,5 +1,5 @@
 import {createClient} from '@/lib/client'
-export const noticeCategories={guide:'안내',update:'업데이트',maintenance:'점검',event:'이벤트'} as const
+export const noticeCategories={update:'업데이트',guide:'안내',maintenance:'버그 수정',event:'이벤트'} as const
 export type Notice={id:string;category:keyof typeof noticeCategories;title:string;body:string;images:string[];status:'draft'|'published'|'hidden';pinned:boolean;starts_at:string|null;ends_at:string|null;author_id:string|null;created_at:string;updated_at:string;published_at:string|null;revision:number}
 export type NoticeView=Notice&{urls:Record<string,string>}
 export type NoticeSave={p_id:string;p_category:Notice['category'];p_title:string;p_body:string;p_images:string[];p_status:Notice['status'];p_pinned:boolean;p_starts_at:string|null;p_ends_at:string|null;p_revision:number}
@@ -33,8 +33,8 @@ export async function uploadNoticeImage(id:string,file:File){
 }
 export function noticeError(error:unknown){const message=String((error as {message?:string})?.message??'');return message.includes('NOTICE_CHANGED')?'다른 곳에서 수정했거나 저장 응답이 끊겼어요. 공지를 다시 열어 내용을 확인해주세요.':message.includes('NOTICE_FORBIDDEN')?'공지 작성 권한이 없어요.':message.includes('IMAGE_LIMIT')?'PNG·JPG·WebP 이미지를 5MB 이하로 올려주세요.':message.includes('NOTICE_EMPTY')?'본문이나 이미지를 넣어주세요.':message.includes('INVALID_NOTICE')?'제목·내용·기간을 확인해주세요.':'소식을 처리하지 못했어요. 연결을 확인하고 다시 시도해주세요.'}
 export function noticeProgress(n:Notice,now=Date.now()){
- if(n.category!=='maintenance'&&n.category!=='event')return ''
- if(n.ends_at&&new Date(n.ends_at).getTime()<=now)return n.category==='maintenance'?'완료':'종료'
+ if(n.category!=='event')return ''
+ if(n.ends_at&&new Date(n.ends_at).getTime()<=now)return '종료'
  if(n.starts_at&&new Date(n.starts_at).getTime()>now)return '예정'
  return n.starts_at?'진행 중':''
 }

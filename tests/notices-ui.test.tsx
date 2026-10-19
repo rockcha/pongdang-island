@@ -11,6 +11,19 @@ vi.mock('@/features/notices/api',async original=>({...await original<typeof impo
 const notice={id:'notice',category:'update' as const,title:'푸른골 업데이트',body:'새 해역이 열렸어요.',images:[],urls:{},status:'published' as const,pinned:true,starts_at:null,ends_at:null,author_id:null,created_at:'2026-10-17T00:00:00Z',updated_at:'2026-10-17T00:00:00Z',published_at:'2026-10-17T00:00:00Z',revision:1}
 beforeEach(()=>{vi.clearAllMocks();mock.operator.mockResolvedValue(false);mock.feed.mockResolvedValue({items:[notice],total:1});mock.detail.mockResolvedValue(notice);mock.save.mockResolvedValue(notice);mock.upload.mockResolvedValue({path:'image.png',url:'/image.png'});mock.remove.mockResolvedValue(undefined);mock.read.mockResolvedValue(undefined);mock.refresh.mockResolvedValue(undefined)})
 afterEach(cleanup)
+it('keeps the category title and date outside the scrolling body and separates attachments',async()=>{
+ mock.detail.mockResolvedValue({...notice,images:['picture.png'],urls:{'picture.png':'/picture.png'}})
+ const {container}=render(<MemoryRouter initialEntries={['/square/notices/notice']}><Routes><Route path="/square/notices/:noticeId" element={<NoticeDetail/>}/></Routes></MemoryRouter>)
+ await screen.findByRole('heading',{name:notice.title})
+ const header=container.querySelector('[data-notice-header]')!,body=container.querySelector('[data-notice-body]')!
+ expect(within(header as HTMLElement).getByText('업데이트')).toBeTruthy()
+ expect(header.querySelector('time')).toBeTruthy()
+ expect(body.contains(header)).toBe(false)
+ expect(screen.queryByText(/운영팀/)).toBeNull()
+ expect(screen.queryByRole('button',{name:'목록'})).toBeNull()
+ expect(screen.getByRole('img',{name:/첨부 이미지 1/}).closest('figure')).toBeTruthy()
+ expect(screen.getByText('첨부 이미지 1')).toBeTruthy()
+})
 it('marks the original notice read and lets an operator delete only after confirmation',async()=>{
  mock.operator.mockResolvedValue(true)
  render(<MemoryRouter initialEntries={['/square/notices/notice']}><Routes><Route path="/square/notices/:noticeId" element={<NoticeDetail/>}/><Route path="/square/notices" element={<p>공지 목록으로 이동</p>}/></Routes></MemoryRouter>)
@@ -26,10 +39,10 @@ it('shows minimal notice rows and filters while hiding author tools from ordinar
  render(<MemoryRouter><NoticePage/></MemoryRouter>)
  expect(await screen.findByRole('heading',{name:notice.title})).toBeTruthy()
  const row=screen.getByRole('link',{name:/푸른골 업데이트/})
- expect(row.firstElementChild?.getAttribute('src')).toBe('/app-icons/notice-update.png')
+ expect(row.querySelector('img')?.getAttribute('src')).toBe('/app-icons/notice-update.png')
  expect(screen.queryByRole('textbox',{name:'공지 검색'})).toBeNull()
  expect(screen.queryByRole('link',{name:/공지 작성/})).toBeNull()
- fireEvent.click(screen.getByRole('button',{name:'점검'}))
+ fireEvent.click(screen.getByRole('button',{name:'버그 수정'}))
  await waitFor(()=>expect(mock.feed).toHaveBeenLastCalledWith('maintenance','',0,false))
 })
 it('blocks editor access without an operator role',async()=>{

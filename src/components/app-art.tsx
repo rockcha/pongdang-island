@@ -6,10 +6,13 @@ function artwork(name:string,folder='app-icons'){
  }
 }
 export const appArt={
+ download:artwork('download-orange'),
+ backToList:artwork('back-to-list'),
+ itemShop:artwork('item-shop'),
  port:artwork('port'),fuel:artwork('fuel'),
  music:artwork('music-disc-cartoon'),
  farm:artwork('farm'),
- expeditionBoost:artwork('expedition-boost','notification-icons'),
+ expeditionBoost:artwork('fish-trap'),
  noticeGuide:artwork('notice-guide'),noticeUpdate:artwork('notice-update'),noticeMaintenance:artwork('notice-maintenance'),noticeEvent:artwork('notice-event'),
  all:artwork('all'),
  title:artwork('title'),
@@ -20,14 +23,15 @@ export const appArt={
  fish:artwork('kind-fish'),decoration:artwork('kind-decoration'),trash:artwork('kind-trash'),
  attendance:artwork('attendance'),alerts:artwork('alerts'),mailNotice:artwork('mail-notice'),mailFriend:artwork('mail-friend'),mailNews:artwork('mail-news'),mailGift:artwork('mail-gift'),
  island:artwork('island'),aquarium:artwork('aquarium'),map:artwork('map'),shop:artwork('shop'),
- shipyard:artwork('shipyard'),expeditions:artwork('expeditions'),exchange:artwork('exchange'),
+ shipyard:artwork('shipyard'),expeditions:artwork('fish-trap'),exchange:artwork('exchange'),
  savings:artwork('savings'),warehouse:artwork('warehouse'),arcade:artwork('arcade'),
  lighthouse:artwork('lighthouse'),mailbox:artwork('mailbox'),plaza:artwork('plaza'),
  list:artwork('list'),storage:artwork('storage'),theme:artwork('theme'),collection:artwork('collection-v2'),
- bait:artwork('bait'),rod:artwork('rod'),profile:artwork('profile'),settings:artwork('settings'),
+ bait:artwork('bait'),rod:artwork('rod'),profile:artwork('profile-sailor'),settings:artwork('settings'),
  notices:artwork('announcement','notification-icons'),suggestions:artwork('suggestion','notification-icons'),bugs:artwork('bug','notification-icons'),
 }
 const placeArt:Record<string,ReturnType<typeof artwork>>={
+ '/item-shop':appArt.itemShop,
  '/port':appArt.port,
  '/music-room':appArt.music,
  '/':appArt.island,'/aquarium':appArt.aquarium,'/harbor':appArt.map,'/shop':appArt.shop,'/farm':appArt.farm,

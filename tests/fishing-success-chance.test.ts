@@ -18,10 +18,10 @@ async function finish(id:string,won:boolean){
 }
 it('returns bait-specific success chances through the helper and odds API',async()=>{
  const rows=(await db.query('select id,app_private.fishing_success_chance_bp(id) as chance from public.fishing_baits')).rows
- for(const r of rows)expect(r.chance).toBe(r.id==='bait_safe'?10000:['bait_grubby_magnet','bait_first_greeting','bait_magnet','bait_forbidden_star','bait_epic','bait_special'].includes(r.id)?6000:4000)
+ for(const r of rows)expect(r.chance).toBe(r.id==='bait_safe'?10000:['bait_grubby_magnet','bait_first_greeting','bait_magnet','bait_forbidden_star','bait_epic','bait_special'].includes(r.id)?7000:r.id==='bait'?3500:4000)
  const state=(await db.query('select public.fishing_state() as s')).rows[0].s
- expect(state.successChanceBp).toBe(4000)
- for(const b of state.baits)expect(b.successChanceBp).toBe(b.id==='bait_safe'?10000:['bait_grubby_magnet','bait_first_greeting','bait_magnet','bait_forbidden_star','bait_epic','bait_special'].includes(b.id)?6000:4000)
+ expect(state.successChanceBp).toBe(3500)
+ for(const b of state.baits)expect(b.successChanceBp).toBe(b.id==='bait_safe'?10000:['bait_grubby_magnet','bait_first_greeting','bait_magnet','bait_forbidden_star','bait_epic','bait_special'].includes(b.id)?7000:b.id==='bait'?3500:4000)
  for(let i=0;i<20;i++){
   const p=await prepare('bait_safe');expect(p.eligible).toBe(true);expect(p.species).toBeTruthy()
   await db.query("update app_private.prepared_fishing_casts set created_at=clock_timestamp()-interval '20 seconds' where operation_id=$1",[p.operation_id])
@@ -54,15 +54,15 @@ it('applies only owned bronze and calm rods to manual odds, with a 100% cap',asy
  await db.exec('begin');try{
   await db.query('select public.fishing_rod_state()');
   await db.query("insert into public.player_fishing_rods(user_id,rod_id) select $1,id from public.fishing_rods where id in ('bronze','calm','coral') on conflict do nothing",[uid]);
-  for(const [rod,chance]of [['bronze',4100],['calm',4300],['coral',4000],['basic',4000]]){
+  for(const [rod,chance]of [['bronze',3600],['calm',3800],['coral',3500],['basic',3500]]){
    await db.query('select public.equip_fishing_rod($1)',[rod]);
    const s=(await db.query('select public.fishing_state() s')).rows[0].s;
-   expect(s.baits.find(b=>b.id==='bait')).toMatchObject({successChanceBp:chance,baseSuccessChanceBp:4000});
+   expect(s.baits.find(b=>b.id==='bait')).toMatchObject({successChanceBp:chance,baseSuccessChanceBp:3500});
    expect(s.baits.find(b=>b.id==='bait_safe').successChanceBp).toBe(10000);
-   expect((await db.query("select app_private.fishing_success_chance_bp('bait') n")).rows[0].n).toBe(4000);
+   expect((await db.query("select app_private.fishing_success_chance_bp('bait') n")).rows[0].n).toBe(3500);
   }
   await db.query("delete from public.player_fishing_rods where user_id=$1 and rod_id='calm'",[uid]);
-  expect((await db.query("select app_private.manual_fishing_success_chance_bp('bait') n")).rows[0].n).toBe(4000);
+  expect((await db.query("select app_private.manual_fishing_success_chance_bp('bait') n")).rows[0].n).toBe(3500);
  }finally{await db.exec('rollback')}
 });
 
@@ -75,7 +75,7 @@ it('charges the new catalog prices and uses the reduced rod price for resale',as
   expect((await db.query("select public.trade_fishing_rod('bronze','buy',$1) s",[op])).rows[0].s.delta).toBe(0);
   expect((await db.query("select public.trade_fishing_rod('bronze','sell',gen_random_uuid()) s")).rows[0].s).toMatchObject({gold:4800,delta:200});
   expect((await db.query("select public.buy_fishing_bait('bait_grubby_magnet',gen_random_uuid()) s")).rows[0].s).toMatchObject({gold:4760});
-  expect((await db.query("select price from public.fishing_rods where id='lunea'")).rows[0].price).toBe(1000);
-  expect((await db.query("select price from public.fishing_rods where id='mistmoon'")).rows[0].price).toBe(800);
+  expect((await db.query("select price from public.fishing_rods where id='lunea'")).rows[0].price).toBe(800);
+  expect((await db.query("select price from public.fishing_rods where id='mistmoon'")).rows[0].price).toBe(550);
  }finally{await db.exec('rollback')}
 });

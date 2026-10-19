@@ -30,8 +30,31 @@ beforeEach(async()=>{
 afterEach(async()=>{await db.exec('rollback')})
 
 const sale=(kind='collectible',id='soft-sea-cucumber',quantity=1,price=300,operation=crypto.randomUUID())=>post(maker,'sell',kind,id,quantity,'gold','gold',price,operation)
+it('shares only seller avatar through listings without broadening profile access',async()=>{
+ const path=maker+'/avatar.webp'
+ await db.query('update public.player_profiles set avatar_path=$1 where id=$2',[path,maker])
+ await sale('bait','bait',1)
+ expect((await user(taker,'select avatar_path from public.player_profiles where id=$1',[maker])).rows).toHaveLength(0)
+ const page=(await user(taker,"select public.exchange_state('all','',0) value")).rows[0].value
+ expect(page.items[0].owner_avatar_path).toBe(path)
+ expect(page.items[0]).not.toHaveProperty('friend_code')
+})
+it('stores and searches custom titles and keeps retries atomic',async()=>{
+ const op=crypto.randomUUID(),args=['sell','bait','bait',2,'gold','gold',300,op,'  레전드 해파리 팝니다  ']
+ const sql='select public.exchange_post($1,$2,$3,$4,$5,$6,$7,$8,$9) value'
+ const first=(await user(maker,sql,args)).rows[0].value
+ expect(first.title).toBe('레전드 해파리 팝니다')
+ expect((await user(maker,sql,args)).rows[0].value.id).toBe(first.id)
+ expect((await wallet(maker)).inventory.bait).toBe(8)
+ await expect(user(maker,sql,[...args.slice(0,8),'다른 제목'])).rejects.toThrow(/CONFLICT/)
+ const search=(await user(taker,"select public.exchange_state('all','레전드',0) s")).rows[0].s
+ expect(search.total).toBe(1);expect(search.items[0].title).toBe(first.title)
+ for(const title of ['x'.repeat(81),'줄바꿈\n제목'])await expect(user(maker,sql,[...args.slice(0,7),crypto.randomUUID(),title])).rejects.toThrow(/INVALID_EXCHANGE_TITLE/)
+ expect((await wallet(maker)).inventory.bait).toBe(8)
+})
 it('lets a non-friend buy an escrowed individual for gold and notifies both parties once',async()=>{
  const item=await seedItem(maker),listing=await sale()
+ expect(listing.title).toBe('말랑 해삼 판매합니다')
  expect((await user(maker,'select * from public.player_collectibles where id=$1',[item])).rows).toHaveLength(0)
  await expect(claim(maker,listing.escrow_gift_id)).rejects.toThrow('GIFT_NOT_FOUND')
  expect((await db.query('select * from public.friend_requests')).rows).toHaveLength(0)
@@ -118,3 +141,34 @@ it('returns legacy buy and barter escrow while preserving valid sales during mig
  }finally{await legacy.close()}
 },60000)
 
+
+it('escrows fuel once, sells to a stranger and claims it once without collectible discovery',async()=>{
+ await db.query(`update public.player_wallets set inventory=inventory||'{"fuel":10}'::jsonb where user_id=$1`,[maker])
+ const inventory=(await user(maker,'select public.exchange_inventory() value')).rows[0].value
+ expect(inventory.assets.find((a:any)=>a.kind==='fuel')).toMatchObject({id:'fuel',name:'기름',available:10})
+ const op=crypto.randomUUID(),listing=await sale('fuel','fuel',4,300,op)
+ expect((await sale('fuel','fuel',4,300,op)).id).toBe(listing.id)
+ expect((await wallet(maker)).inventory.fuel).toBe(6)
+ const search=(await user(taker,"select public.exchange_state('all','기름',0) value")).rows[0].value
+ expect(search.total).toBe(1)
+ expect(search.items[0].offer).toMatchObject({kind:'fuel',quantity:4})
+ await expect(claim(maker,listing.escrow_gift_id)).rejects.toThrow('GIFT_NOT_FOUND')
+ await act(listing.id);await act(listing.id)
+ expect((await wallet(taker)).gold).toBe(4700)
+ await expect(claim(other,listing.escrow_gift_id)).rejects.toThrow('GIFT_NOT_FOUND')
+ await claim(taker,listing.escrow_gift_id);await claim(taker,listing.escrow_gift_id)
+ expect((await wallet(taker)).inventory.fuel).toBe(4)
+ expect((await db.query('select * from public.player_discoveries where user_id=$1',[taker])).rows).toHaveLength(0)
+})
+it('returns cancelled fuel once and rejects invalid or unavailable stock atomically',async()=>{
+ await db.query(`update public.player_wallets set inventory=inventory||'{"fuel":5}'::jsonb where user_id=$1`,[maker])
+ for(const [id,qty]of [['fuel',0],['fuel',10000],['bait',1]] as const)await expect(sale('fuel',id,qty)).rejects.toThrow('INVALID_EXCHANGE_ASSET')
+ await expect(sale('fuel','fuel',6)).rejects.toThrow('EXCHANGE_INSUFFICIENT_ITEMS')
+ expect((await wallet(maker)).inventory.fuel).toBe(5)
+ const listing=await sale('fuel','fuel',5)
+ await expect(sale('fuel','fuel',1)).rejects.toThrow('EXCHANGE_INSUFFICIENT_ITEMS')
+ await act(listing.id,'cancel',maker);await act(listing.id,'cancel',maker)
+ await claim(maker,listing.escrow_gift_id);await claim(maker,listing.escrow_gift_id)
+ expect((await wallet(maker)).inventory.fuel).toBe(5)
+ await expect(act(listing.id)).rejects.toThrow('EXCHANGE_UNAVAILABLE')
+})

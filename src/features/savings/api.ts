@@ -4,7 +4,7 @@ export type SavingsState={account:SavingsAccount|null;history:SavingsAccount[];s
 export type SavingsAction={p_action:'open'|'deposit'|'withdraw';p_operation_id:string;p_account_id?:string;p_term_days?:number;p_daily_amount?:number}
 export type SavingsResult=SavingsState&{receipt:{action:SavingsAction['p_action'];accountId:string;paidCount:number;payout:number;bonus:number;closeKind:SavingsAccount['close_kind']};replayed:boolean}
 export async function loadSavings(){const {data,error}=await createClient().rpc('savings_state');if(error)throw error;return data}
-export async function changeSavings(args:SavingsAction){const {data,error}=await createClient().rpc('savings_action',args);if(error)throw error;return data}
+export async function changeSavings(args:SavingsAction){const {data,error}=await createClient().rpc('savings_action',args);if(error)throw error;window.dispatchEvent(new Event('savings-changed'));return data}
 export function savingsError(cause:unknown){
  const message=String((cause as {message?:string})?.message??'')
  const messages:Record<string,string>={AUTH_REQUIRED:'로그인이 필요해요.',INVALID_SAVINGS_PLAN:'하루 10~5,000골드, 기간은 3·5·7일 중 선택해주세요.',SAVINGS_ALREADY_OPEN:'이미 진행 중인 적금이 있어요.',SAVINGS_NOT_FOUND:'내 적금을 찾지 못했어요. 새로고침해주세요.',SAVINGS_CLOSED:'이미 정산한 적금이에요.',SAVINGS_MISSED:'납입 기한이 지났어요. 넣은 원금을 돌려받을 수 있어요.',SAVINGS_NOT_DUE:'지금은 납입할 수 없어요. 다음 납입 시간을 확인해주세요.',INSUFFICIENT_GOLD:'보유 골드가 부족해요.',GOLD_LIMIT:'받은 뒤 보유 골드가 한도를 넘어요. 골드를 사용한 뒤 다시 받아주세요.',OPERATION_CONFLICT:'이전 요청과 내용이 달라요. 결과를 먼저 확인해주세요.'}

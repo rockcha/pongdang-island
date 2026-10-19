@@ -1,0 +1,14 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "assets": [
+    {
+      "path": "voyage-fishing.png",
+      "prompt": "A single minimal cute hand-painted game UI icon of a wooden fishing rod with curved line and hook, warm brown and cream with muted teal accent, bold clear silhouette readable at 20 pixels. Centered isolated object filling square, transparent background, no fish, no text, no border. Use case stylized-concept."
+    },
+    {
+      "path": "voyage-clock.png",
+      "prompt": "A single minimal cute hand-painted game UI icon of a round cream clock with warm brown rim and two clear brown hands, soft golden accent, bold clear silhouette readable at 20 pixels. Centered isolated object filling square, transparent background, no text, no numerals, no border. Use case stylized-concept."
+    }
+  ]
+}

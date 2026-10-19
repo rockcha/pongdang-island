@@ -44,6 +44,8 @@ export async function readCatalog(db) {
   for (const table of ['regions', 'aquarium_backgrounds', 'fishing_baits', 'collectible_species', 'collectible_habitats']) {
     const order = table === 'collectible_habitats' ? 'species_id,region_id' : 'id'
     result[table] = (await db.query(`select * from public.${table} order by ${order}`)).rows.map(row => {
+      // Registration time belongs to deployment history, not editable catalog content.
+      if (table === 'regions') delete row.created_at
       const { is_native: _generated, ...stored } = row
       return stored
     })

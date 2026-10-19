@@ -5,6 +5,9 @@ import { AuthProvider } from '@/components/auth-provider'
 import { ThemeProvider } from '@/components/theme-provider'
 import './index.css'
 import App from './App.tsx'
+import {initializePwaInstall} from '@/features/pwa/install'
+
+initializePwaInstall()
 
 const router=createBrowserRouter([{path:'*',element:<AuthProvider><App /></AuthProvider>}])
 

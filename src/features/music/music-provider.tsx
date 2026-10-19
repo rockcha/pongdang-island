@@ -59,6 +59,13 @@ export function MusicProvider({children,storageKey,userId}:{children:ReactNode;s
  const [bounds,setBounds]=useState<DOMRect|null>(null)
  const [clip,setClip]=useState('inset(0px)')
  useEffect(()=>{
+  // Browser/player interruptions must not replace an explicit playback choice.
+  const resume=()=>{if(document.visibilityState==='visible'&&wantsPlayback.current)player.current?.playVideo()}
+  window.addEventListener('focus',resume)
+  document.addEventListener('visibilitychange',resume)
+  return()=>{window.removeEventListener('focus',resume);document.removeEventListener('visibilitychange',resume)}
+ },[])
+ useEffect(()=>{
   if(!slot){setBounds(null);return}
   const update=()=>{
    const rect=slot.getBoundingClientRect(),section=slot.closest('section')?.getBoundingClientRect()

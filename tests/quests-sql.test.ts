@@ -19,7 +19,8 @@ it('returns requested goals and rewards with no progress for a new player',async
  expect(s.daily.bonus).toBe(200);expect(s.weekly.bonus).toBe(1000)
  expect(s.daily.quests.filter(q=>q.rewardFuel).map(q=>[q.id,q.rewardFuel,q.reward])).toEqual([['post',1,0],['depart',1,0],['care',1,0]])
  expect(s.daily.quests.every(q=>!q.complete)).toBe(true)
- expect(s.weekly.quests.filter(q=>q.rewardFuel).map(q=>[q.id,q.rewardFuel,q.reward])).toEqual([['trade',5,0],['gift',5,0]])
+ expect(s.weekly.quests.filter(q=>q.rewardFuel).map(q=>[q.id,q.rewardFuel,q.reward])).toEqual([['trade',3,0],['gift',5,0]])
+ expect(s.weekly.quests.filter(q=>!q.rewardFuel).map(q=>q.reward)).toEqual([80,80,80,80,80,80])
  expect(s.weekly.quests.every(q=>!q.complete)).toBe(true)
  await expect(claim('daily',s.daily.start,'fish')).rejects.toThrow(/INCOMPLETE/)
  await expect(claim('daily',s.daily.start,'all')).rejects.toThrow(/INCOMPLETE/)
@@ -117,10 +118,10 @@ it('counts real trades and sent gifts separately and pays all weekly rewards onl
  expect(s.weekly.quests.find(q=>q.id==='gift').progress).toBe(3);expect(s.weekly.quests.find(q=>q.id==='trade').progress).toBe(7)
  const before=await gold()
  for(const q of s.weekly.quests){const result=await claim('weekly',s.weekly.start,q.id);expect(result.credited).toBe(q.reward);expect(result.creditedFuel).toBe(q.rewardFuel??0)}
- expect((await db.query('select inventory from public.player_wallets where user_id=$1',[uid])).rows[0].inventory.fuel).toBe(10)
+ expect((await db.query('select inventory from public.player_wallets where user_id=$1',[uid])).rows[0].inventory.fuel).toBe(8)
  expect((await claim('weekly',s.weekly.start,'all')).credited).toBe(1000)
  expect((await claim('weekly',s.weekly.start,'all')).credited).toBe(0)
- expect(await gold()).toBe(before+1300)
+ expect(await gold()).toBe(before+1480)
 })
 
 it('omits the weekly rod purchase for full ownership while preserving a purchase this week',async()=>{

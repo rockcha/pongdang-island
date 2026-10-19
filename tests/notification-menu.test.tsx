@@ -13,7 +13,7 @@ it('links a tailwind notification to expeditions with the dedicated artwork',()=
  render(<MemoryRouter><NotificationMenu/></MemoryRouter>)
  fireEvent.click(screen.getByRole('button',{name:'알림, 읽지 않은 알림 1개'}))
  expect(screen.getByRole('link',{name:/민지님이 순풍/}).getAttribute('href')).toBe('/expeditions')
- expect(document.querySelector('img[src="/notification-icons/expedition-boost.png"]')).toBeTruthy()
+ expect(document.querySelector('img[src="/app-icons/fish-trap.png"]')).toBeTruthy()
 })
 it('marks only the clicked notification read',async()=>{
  mock.notifications=['first','second'].map(id=>({id,category:'general',kind:'system',title:id,read_at:null,created_at:new Date().toISOString()} as AppNotification))
@@ -89,8 +89,8 @@ it('filters the notice drawer by the linked publication category',async()=>{
  render(<MemoryRouter><NotificationMenu noticeOnly/></MemoryRouter>);
  fireEvent.click(screen.getByRole('button',{name:'공지, 읽지 않은 공지 2개'}));
  expect(screen.getByRole('group',{name:'공지 유형'})).toBeTruthy();
- for(const [label,key]of [['안내','guide'],['업데이트','update'],['점검','maintenance'],['이벤트','event']]){
-  expect(screen.queryByText(label)).toBeNull();
+ for(const [label,key]of [['안내','guide'],['업데이트','update'],['버그 수정','maintenance'],['이벤트','event']]){
+  expect(screen.getByRole('button',{name:label}).textContent).toContain(label);
   fireEvent.click(screen.getByRole('button',{name:label}));
   expect(screen.getByText('공지 '+key)).toBeTruthy();
   expect(screen.getAllByRole('link')).toHaveLength(1);

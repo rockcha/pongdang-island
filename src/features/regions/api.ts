@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/client'
 import type { Rarity } from '@/lib/game/rarity'
-export type Region = { id:string; name:string; description:string; rarity?:Rarity; map_image_path?:string|null; sort_order:number; image_path:string; requires_map_fragment:boolean; unlocked:boolean; hasFragment:boolean }
+export type Region = { id:string; name:string; description:string; rarity?:Rarity; map_image_path?:string|null; sort_order:number; created_at:string; image_path:string; requires_map_fragment:boolean; unlocked:boolean; hasFragment:boolean }
 export type RegionMap = { canTestLocks:boolean; currentRegion:string; regions:Region[] }
 export async function loadRegionMap() {
  const {data,error}=await createClient().rpc('region_map')

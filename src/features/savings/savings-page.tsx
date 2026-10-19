@@ -20,7 +20,7 @@ export function SavingsPage(){const {session}=useAuth();return <AccountSavings k
 function AccountSavings(){
  const gold=useGold()
  const [data,setData]=useState<SavingsState|null>(null),[loadError,setLoadError]=useState(''),[error,setError]=useState('')
- const [term,setTerm]=useState<3|5|7>(3),[amount,setAmount]=useState('10'),[busy,setBusy]=useState(false)
+ const [term,setTerm]=useState<3|5|7>(3),[amount,setAmount]=useState('100'),[busy,setBusy]=useState(false)
  const [confirm,setConfirm]=useState<'open'|'withdraw'|null>(null),[pending,setPending]=useState<SavingsAction|null>(null)
  const [receipt,setReceipt]=useState<SavingsResult['receipt']|null>(null)
  const [clock,setClock]=useState<{server:number;sample:number}|null>(null),[tick,setTick]=useState(()=>performance.now())

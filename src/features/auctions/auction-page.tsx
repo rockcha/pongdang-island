@@ -30,10 +30,10 @@ function AccountAuctions({owner}:{owner:string}){
  useEffect(()=>{alive.current=true;const refresh=()=>setRetry(v=>v+1);const timer=setInterval(()=>{setNow(Date.now()+serverOffset.current);if(document.visibilityState==='visible'&&!lock.current)refresh()},30000);window.addEventListener('focus',refresh);window.addEventListener('online',refresh);return()=>{alive.current=false;inventoryVersion.current++;clearInterval(timer);window.removeEventListener('focus',refresh);window.removeEventListener('online',refresh)}},[])
  useEffect(()=>{let active=true;setError('');const timer=setTimeout(()=>{void loadAuctions(tab,query,offset).then(data=>{if(active){setFeed(data);serverOffset.current=new Date(data.serverNow).getTime()-Date.now();setNow(Date.now()+serverOffset.current);void social.refresh()}}).catch(cause=>{if(active)setError(auctionError(cause))})},200);return()=>{active=false;clearTimeout(timer)}},[tab,query,offset,retry]) // eslint-disable-line react-hooks/exhaustive-deps
  useEffect(()=>{if(feed)setSelected(current=>current?(feed.items.find(item=>item.id===current.id)??current):null)},[feed])
- async function beginPost(){setOpen(true);setActionError('');setInventoryLoading(true);const version=++inventoryVersion.current;try{const next=await loadExchangeInventory();if(alive.current&&version===inventoryVersion.current)setInventory(next)}catch(cause){if(alive.current&&version===inventoryVersion.current)setActionError(auctionError(cause))}finally{if(alive.current&&version===inventoryVersion.current)setInventoryLoading(false)}}
+ async function beginPost(){setOpen(true);setActionError('');setInventoryLoading(true);const version=++inventoryVersion.current;try{const next=await loadExchangeInventory();if(alive.current&&version===inventoryVersion.current)setInventory({...next,assets:next.assets.filter(asset=>asset.kind!=='fuel')})}catch(cause){if(alive.current&&version===inventoryVersion.current)setActionError(auctionError(cause))}finally{if(alive.current&&version===inventoryVersion.current)setInventoryLoading(false)}}
  function choose(asset:ExchangeAsset){setOffer(asset);if(!title)setTitle(`${asset.name} 경매`.slice(0,60))}
  const available=inventory?.assets.find(a=>a.kind===offer.kind&&a.id===offer.id)?.available??0
- const valid=offer.id&&offer.kind!=='gold'&&Number.isSafeInteger(offer.quantity)&&offer.quantity>0&&offer.quantity<=Math.min(available,offer.kind==='bait'?9999:20)&&title.trim().length>=2&&title.trim().length<=60&&description.length<=1000&&Number.isSafeInteger(price)&&price>0&&price<=1000000000
+ const valid=offer.id&&offer.kind!=='gold'&&offer.kind!=='fuel'&&Number.isSafeInteger(offer.quantity)&&offer.quantity>0&&offer.quantity<=Math.min(available,offer.kind==='bait'?9999:20)&&title.trim().length>=2&&title.trim().length<=60&&description.length<=1000&&Number.isSafeInteger(price)&&price>0&&price<=1000000000
  const minimum=selected?Math.max(selected.minimum_price,selected.highest_amount+1):1
  const bidCost=selected?.highest_bidder===owner?amount-selected.highest_amount:amount
  const validBid=!!selected&&selected.status==='active'&&new Date(selected.ends_at).getTime()>now&&Number.isSafeInteger(amount)&&amount>=minimum&&amount<=1000000000&&bidCost<=wallet.wallet.gold&&!wallet.loading&&!wallet.error
@@ -43,7 +43,7 @@ function AccountAuctions({owner}:{owner:string}){
   lock.current=true;setBusy(true);setActionError('')
   try{
    if(kind==='post'){
-    if(offer.kind==='gold')return
+    if(offer.kind==='gold'||offer.kind==='fuel')return
     postPending.current??={p_kind:offer.kind,p_item_id:offer.id,p_quantity:offer.quantity,p_title:title,p_description:description,p_minimum_price:price,p_days:days,p_operation_id:crypto.randomUUID()}
     await postAuction(postPending.current)
    }else if(kind==='bid'){

@@ -10,6 +10,32 @@ function Buy(){const {transact,loading,busy}=useGold();return <button disabled={
 function RefreshWallet(){const {refresh,loading}=useGold();return <button disabled={loading} onClick={()=>void refresh()}>잔액 갱신</button>}
 function BuyMany({quantity=16}:{quantity?:number}){const {transact,batchEffects,loading,busy}=useGold();const[error,setError]=useState('');return <><button disabled={loading||busy} onClick={()=>void batchEffects(async()=>{for(let i=0;i<quantity;i++)await transact({type:'buy',id:'fishing:bait',name:'지렁이'})}).catch(()=>setError('부분 구매 실패'))}>{quantity}개 구매</button>{error&&<p role="alert">{error}</p>}</>}
 afterEach(()=>{cleanup();vi.unstubAllGlobals();vi.resetAllMocks()})
+it('shows external purchase deductions once when the wallet refreshes',async()=>{
+ const wallet={gold:5000,inventory:{},delta:0,testClaimed:false,testEnabled:false}
+ load.mockResolvedValue(wallet)
+ render(<GoldProvider><RefreshWallet/></GoldProvider>)
+ const button=screen.getByRole('button',{name:'잔액 갱신'}) as HTMLButtonElement
+ await waitFor(()=>expect(button.disabled).toBe(false))
+ load.mockResolvedValue({...wallet,gold:3400});fireEvent.click(button)
+ expect(await screen.findByText('−1,600')).toBeTruthy()
+ fireEvent.click(button);await waitFor(()=>expect(load).toHaveBeenCalledTimes(3))
+ expect(document.body.querySelectorAll('.gold-change')).toHaveLength(1)
+})
+it('shows fuel gains and usage once, without animating initial inventory',async()=>{
+ const wallet={gold:1000,inventory:{fuel:10},delta:0,testClaimed:false,testEnabled:false}
+ load.mockResolvedValue(wallet)
+ render(<GoldProvider><RefreshWallet/></GoldProvider>)
+ const button=screen.getByRole('button',{name:'잔액 갱신'}) as HTMLButtonElement
+ await waitFor(()=>expect(button.disabled).toBe(false))
+ expect(document.body.querySelectorAll('.gold-change')).toHaveLength(0)
+ load.mockResolvedValue({...wallet,inventory:{fuel:15}});fireEvent.click(button)
+ expect(await screen.findByText('+5')).toBeTruthy()
+ expect(document.body.querySelector('.gold-change img')?.getAttribute('src')).toBe('/app-icons/fuel.png')
+ load.mockResolvedValue({...wallet,inventory:{fuel:12}});fireEvent.click(button)
+ expect(await screen.findByText('−3')).toBeTruthy()
+ fireEvent.click(button);await waitFor(()=>expect(load).toHaveBeenCalledTimes(4))
+ expect(document.body.querySelectorAll('.gold-change')).toHaveLength(2)
+})
 it('shows newly received gold above dialogs but skips initial balances and duplicate refreshes',async()=>{
  const wallet={gold:1000,inventory:{},delta:0,testClaimed:false,testEnabled:false}
  load.mockResolvedValue(wallet)

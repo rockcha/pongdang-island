@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { AlertDialog,AlertDialogCancel,AlertDialogContent,AlertDialogDescription,AlertDialogHeader,AlertDialogTitle,AlertDialogTrigger } from '@/components/ui/alert-dialog'
 
 type Props={
- illustration?:'dispatch'|'return'|'purchase'|'sale'|'game'|'savings'|'publish'|'caution'|'aquarium'|'boost'|'unfriend'|'fishing-leave'
+ illustration?:'trap'|'dispatch'|'return'|'purchase'|'sale'|'game'|'savings'|'publish'|'caution'|'aquarium'|'boost'|'unfriend'|'fishing-leave'
  open:boolean
  onOpenChange:(open:boolean)=>void
  title:ReactNode
@@ -15,17 +15,18 @@ type Props={
  confirmDisabled?:boolean
  error?:string
  children?:ReactNode
- confirmLabel?:string
+ compact?:boolean
+ confirmLabel?:ReactNode
  cancelLabel?:string
 }
 
 /** Shared Pongi confirmation. The caller closes it only after a successful action. */
-export function ConfirmDialog({open,onOpenChange,title,description,onConfirm,trigger,busy=false,confirmDisabled=false,error,children,illustration='caution',confirmLabel='확인',cancelLabel='취소'}:Props){
+export function ConfirmDialog({open,onOpenChange,title,description,onConfirm,trigger,busy=false,confirmDisabled=false,error,children,illustration='caution',compact=false,confirmLabel='확인',cancelLabel='취소'}:Props){
  const cancel=useRef<HTMLButtonElement>(null)
  return <AlertDialog open={open} onOpenChange={next=>{if(!busy)onOpenChange(next)}}>
   {trigger&&<AlertDialogTrigger render={trigger}/>}
   <AlertDialogContent size="sm" initialFocus={cancel} className="pongi-confirm max-h-[85dvh] w-[calc(100%-2rem)] gap-0 overflow-y-auto rounded-[10px] border p-6 text-center shadow-sm">
-   <img src={`/branding/confirm/pongi-${illustration}.png`} alt="" width={160} height={160} className="mx-auto mb-4 size-40 shrink-0 object-contain"/>
+   {!compact&&<img src={illustration==='trap'?'/app-icons/fish-trap.png':`/branding/confirm/pongi-${illustration}.png`} alt="" width={160} height={160} className="mx-auto mb-4 size-40 shrink-0 object-contain"/>}
    <AlertDialogHeader className="gap-2">
     <AlertDialogTitle className="text-base font-normal leading-7 text-balance">{title}</AlertDialogTitle>
     <AlertDialogDescription className="text-xs leading-5 text-pretty">{description}</AlertDialogDescription>

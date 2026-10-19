@@ -49,6 +49,7 @@ export function AvatarMenu() {
           <Menu.LinkItem onClick={()=>setOpen(false)} render={<Link to="/profile/settings" />} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm outline-none data-highlighted:bg-accent">
             <Settings className="size-7" />설정
           </Menu.LinkItem>
+          <Menu.LinkItem onClick={()=>setOpen(false)} render={<Link to="/download" />} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm outline-none data-highlighted:bg-accent"><appArt.download className="size-7"/>다운로드</Menu.LinkItem>
           <Menu.Separator className="my-1 h-px bg-border" />
           <Menu.Item disabled={busy} onClick={() => void logout()} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm text-destructive outline-none data-highlighted:bg-accent data-disabled:opacity-50">
             <LogOut className="size-7" />로그아웃

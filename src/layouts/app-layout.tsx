@@ -19,13 +19,13 @@ export function AppLayout() {
   const friendAquarium=/^\/friends\/[^/]+\/aquarium\/?$/.test(pathname)
   const tankScreen=aquarium||friendAquarium
   const home=pathname==='/'
-  const profile=pathname==='/music-room'||pathname==='/farm'||pathname==='/profile'||pathname==='/titles'||pathname==='/collection'||pathname==='/collection-animation'
+  const profile=pathname==='/download'||pathname==='/music-room'||pathname==='/farm'||pathname==='/profile'||pathname==='/titles'||pathname==='/collection'||pathname==='/collection-animation'
   const mailbox=pathname==='/notifications'
   const square=pathname==='/square'
   const noticeList=pathname==='/square/notices'||(/^\/square\/notices\/[^/]+$/.test(pathname)&&!pathname.endsWith('/new'))||pathname==='/square/suggestions'||pathname.startsWith('/square/suggestions/')||pathname==='/square/bugs'||pathname.startsWith('/square/bugs/')
   const exchange=pathname==='/exchange'||pathname==='/savings'
   const friends=pathname==='/friends'
-  const shop=pathname==='/shop'||pathname==='/shipyard'
+  const shop=pathname==='/shop'||pathname==='/item-shop'||pathname==='/shipyard'
   const expedition=pathname==='/expeditions'||/^\/friends\/[^/]+\/expeditions\/?$/.test(pathname)
  const warehouse=pathname==='/warehouse'
   const harbor=pathname==='/harbor'
@@ -50,6 +50,6 @@ export function AppLayout() {
       </div>}
     </header>
     {!port&&!harbor&&!tankScreen&&<PlaceBanner pathname={pathname}/>}
-    <main className={`flex min-w-0 flex-1 flex-col ${shop||warehouse||memory||friends||exchange||noticeList||mailbox||home||profile?'-mx-6':''} ${port||expedition||tankScreen||harbor||fishing||memory||warehouse||shop||friends||exchange||square||noticeList||profile?'min-h-0 overflow-hidden':''}`}><Outlet /></main>
+    <main className={`flex min-w-0 flex-1 flex-col ${shop||warehouse||memory||friends||exchange||noticeList||mailbox||home||profile?'-mx-6':expedition?'-mx-3':''} ${port||expedition||tankScreen||harbor||fishing||memory||warehouse||shop||friends||exchange||square||noticeList||profile?'min-h-0 overflow-hidden':''}`}><Outlet /></main>
   </div>
 }

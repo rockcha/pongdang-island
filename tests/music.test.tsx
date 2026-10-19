@@ -16,7 +16,7 @@ it('restores an intentionally empty list and falls back safely for invalid stora
  localStorage.setItem('music','[]');expect(readTracks('music')).toEqual([])
  localStorage.setItem('music','invalid');expect(readTracks('music')).toEqual(defaultTracks)
 })
-function Controls(){const m=useMusic(),{pathname}=useLocation();return <>{pathname==='/'&&<div ref={m.setPlayerSlot}/>}<span role="status">{m.playing?'playing':'paused'}</span><button onClick={()=>m.play(m.tracks[0].id)}>play</button><button onClick={()=>m.remove(m.tracks[0].id)}>remove</button><button onClick={()=>m.rename(m.tracks[0].id,'내 노래')}>rename</button><Link to="/other">move</Link></>}
+function Controls(){const m=useMusic(),{pathname}=useLocation();return <>{pathname==='/'&&<div ref={m.setPlayerSlot}/>}<span role="status">{m.playing?'playing':'paused'}</span><button onClick={()=>m.play(m.tracks[0].id)}>play</button><button onClick={()=>m.pause()}>pause</button><button onClick={()=>m.remove(m.tracks[0].id)}>remove</button><button onClick={()=>m.rename(m.tracks[0].id,'내 노래')}>rename</button><Link to="/other">move</Link></>}
 it('keeps one looping player across navigation, reflects actual playback, and stops on deletion',async()=>{
  vi.stubGlobal('fetch',vi.fn().mockResolvedValue({ok:true,json:async()=>({title:'YouTube title'})}))
  vi.stubGlobal('ResizeObserver',class{observe(){}disconnect(){}})
@@ -34,8 +34,16 @@ it('keeps one looping player across navigation, reflects actual playback, and st
  expect(screen.getByLabelText('음악 플레이어')).toBe(playerElement)
  expect(playerElement.style.visibility).toBe('hidden')
  expect(screen.getByText('playing')).toBeTruthy()
+ Object.defineProperty(document,'visibilityState',{configurable:true,value:'hidden'})
+ fireEvent(document,new Event('visibilitychange'));expect(pauseVideo).not.toHaveBeenCalled()
+ Object.defineProperty(document,'visibilityState',{configurable:true,value:'visible'})
+ fireEvent(window,new Event('focus'));expect(playVideo).toHaveBeenCalledTimes(1)
+ fireEvent.click(screen.getByText('pause'));playVideo.mockClear()
+ fireEvent(document,new Event('visibilitychange'));fireEvent(window,new Event('focus'));expect(playVideo).not.toHaveBeenCalled()
+ fireEvent.click(screen.getByText('play'))
+
  fireEvent.click(screen.getByText('rename'));await waitFor(()=>expect(JSON.parse(localStorage.getItem('music')!)[0].customName).toBe('내 노래'))
- fireEvent.click(screen.getByText('remove'));await waitFor(()=>expect(pauseVideo).toHaveBeenCalled());expect(destroy).toHaveBeenCalled();expect(screen.queryByLabelText('음악 플레이어')).toBeNull()
+ fireEvent.click(screen.getByText('remove'));await waitFor(()=>expect(destroy).toHaveBeenCalled());expect(pauseVideo).toHaveBeenCalled();expect(screen.queryByLabelText('음악 플레이어')).toBeNull()
  await waitFor(()=>expect(readTracks('music')).toHaveLength(2));view.unmount()
 })
 

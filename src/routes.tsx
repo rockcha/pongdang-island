@@ -1,4 +1,6 @@
+import {DownloadPage} from '@/pages/download-page'
 import {CollectionPage} from '@/features/collection/collection-page'
+import {OperatorGuard} from '@/components/operator-guard'
 import {TitlePicker} from '@/features/titles/title-picker'
 import {ExpeditionPage} from '@/features/expeditions/expedition-page'
 import {PortPage} from '@/features/port/port-page'
@@ -39,6 +41,7 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route element={<AppLayout />}>
+        <Route path="download" element={<DownloadPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="auth/confirm" element={<EmailConfirmPage />} />
         <Route path="forgot-password" element={<ForgotPasswordPage />} />
@@ -49,7 +52,7 @@ export function AppRoutes() {
             <Route index element={<HomePage />} />
             <Route path="aquarium" element={<AquariumPage />} />
             <Route path="collection" element={<CollectionPage />} />
-            <Route path="collection-animation" element={<CollectionPage animationPreview />} />
+            <Route path="collection-animation" element={<OperatorGuard><CollectionPage animationPreview /></OperatorGuard>} />
             <Route path="titles" element={<TitlePicker page />} />
             <Route path="harbor" element={<HarborPage />} />
             <Route path="farm" element={<FarmPage />} />
@@ -59,7 +62,8 @@ export function AppRoutes() {
             <Route path="expeditions" element={<ExpeditionPage />} />
             <Route path="shipyard" element={<PortPage shipyard />} />
             <Route path="port" element={<PortPage />} />
-            <Route path="shop" element={<ShopPage />} />
+            <Route path="shop" element={<ShopPage key="fishing-shop" />} />
+            <Route path="item-shop" element={<ShopPage key="item-shop" items />} />
             <Route path="savings" element={<SavingsPage />} />
             <Route path="warehouse" element={<WarehousePage />} />
             <Route path="arcade" element={<ArcadePage />} />

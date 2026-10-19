@@ -1,5 +1,4 @@
 import {useEffect,useState} from 'react'
-import {Fish} from 'lucide-react'
 import {backgroundUrl} from './api'
 import {TankBubbles} from './tank-bubbles'
 import './aquarium-loading.css'
@@ -22,6 +21,6 @@ export function AquariumBackdrop({background,loading=false}:{background?:Backgro
  return <>
   {shown?.previous&&<img src={backgroundUrl(shown.previous.image_path)} alt="" className="absolute inset-0 size-full object-cover"/>}
   {shown&&<img key={shown.current.image_path} src={backgroundUrl(shown.current.image_path)} alt={shown.current.name} className="aquarium-background-enter absolute inset-0 size-full object-cover"/>}
-  {preparing&&<div role="status" className="aquarium-loading absolute inset-0 z-10 grid place-items-center overflow-hidden bg-background"><TankBubbles/><div className="flex flex-col items-center gap-3 text-primary"><Fish aria-hidden="true" className="aquarium-loading-fish size-10" strokeWidth={1.3}/><span className="text-xs text-muted-foreground">어항을 준비하고 있어요…</span></div></div>}
+  {preparing&&<div role="status" className="aquarium-loading absolute inset-0 z-10 grid place-items-center overflow-hidden bg-background"><TankBubbles/><div className="relative flex flex-col items-center gap-3 text-primary"><img src="/branding/pongi-aquarium-loading.png" alt="" aria-hidden="true" width={480} height={480} className="h-[min(11rem,32dvh)] w-44 object-contain" draggable={false}/><span className="text-xs text-muted-foreground">어항을 준비하고 있어요…</span></div></div>}
  </>
 }

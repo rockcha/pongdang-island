@@ -16,7 +16,7 @@ it('switches tanks with visible arrows and keyboard while respecting the first a
  expect(screen.getByRole('button',{name:'이전 어항'}).hasAttribute('disabled')).toBe(true)
  fireEvent.click(screen.getByRole('button',{name:'다음 어항'}))
  expect(navigate).toHaveBeenCalledWith('next')
- fireEvent.click(screen.getByRole('button',{name:'어항 구매 200 골드'}))
+ fireEvent.click(screen.getByRole('button',{name:'어항 추가'}))
  expect(buy).toHaveBeenCalledOnce()
  fireEvent.keyDown(screen.getByTestId('aquarium-glass'),{key:'ArrowRight'})
  expect(navigate).toHaveBeenCalledWith('next')

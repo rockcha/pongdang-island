@@ -1,6 +1,7 @@
 import { cleanup,fireEvent,render,screen,waitFor } from '@testing-library/react'
 import { afterEach,beforeEach,expect,it,vi } from 'vitest'
 import { SendGiftDialog } from '../src/features/gifts/send-gift-dialog'
+import {markRelatedRead} from '@/features/notifications/api'
 import { GiftDetailDialog } from '../src/features/gifts/gift-mailbox'
 import type { Species,OwnedCollectible } from '../src/features/collection/api'
 
@@ -49,4 +50,35 @@ it('claims exchange gold and refreshes the wallet without showing friend reactio
  await waitFor(()=>expect(mock.claim).toHaveBeenCalledWith('gift'))
  await waitFor(()=>expect(mock.refresh).toHaveBeenCalled())
  expect(screen.queryByRole('button',{name:'따봉 보내기'})).toBeNull()
+})
+
+it('shows the operator welcome gold and hides friend replies after claiming',async()=>{
+ const welcome={...gift,sender_id:null,sender_name:'퐁당섬 운영자',source:'system',reward_kind:'gold',species:{...species,name:'가입 축하 골드'},quantity:500,message:'퐁당섬에 오신 것을 환영해요!'};
+ mock.load.mockResolvedValue(welcome);mock.claim.mockResolvedValue({...welcome,status:'claimed'});
+ render(<GiftDetailDialog id="gift" onClose={()=>{}}/>);
+ expect(await screen.findByText('500 골드')).toBeTruthy();
+ expect(screen.getByRole('heading',{name:'모험 응원 선물'})).toBeTruthy();
+ expect(screen.getByText('공식')).toBeTruthy();
+ expect(screen.getByText('퐁당섬 운영팀에서 보내드렸어요')).toBeTruthy();
+ fireEvent.click(screen.getByRole('button',{name:'선물 받기'}));
+ await waitFor(()=>expect(screen.queryByRole('button',{name:'선물 받기'})).toBeNull());
+ expect(mock.claim).toHaveBeenCalledWith('gift');
+ expect(screen.queryByRole('button',{name:'따봉 보내기'})).toBeNull();
+});
+
+it('keeps a pending gift unread after opening and closing its detail',async()=>{
+ const close=vi.fn()
+ render(<GiftDetailDialog id="gift" onClose={close}/>)
+ await screen.findByText('잘 키워줘!')
+ expect(markRelatedRead).not.toHaveBeenCalled()
+ fireEvent.click(screen.getByRole('button',{name:'Close'}))
+ expect(close).toHaveBeenCalledOnce()
+ expect(markRelatedRead).not.toHaveBeenCalled()
+})
+
+it('does not give an official badge to a matching player nickname',async()=>{
+ mock.load.mockResolvedValue({...gift,sender_name:'퐁당섬 운영자',source:'friend'})
+ render(<GiftDetailDialog id="gift" onClose={()=>{}}/>)
+ await screen.findByText('잘 키워줘!')
+ expect(screen.queryByText('공식')).toBeNull()
 })

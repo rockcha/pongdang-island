@@ -1,7 +1,9 @@
 ﻿import { useState } from 'react'
 
 export const fishingEnvironments={
+ siren:{name:'세이렌의 해협',water:'#3bb9b0',deck:'#e9ddc4',edge:'#b39559',waterEnd:990,deckStart:1065},
  primal:{name:'태고의 원시섬',water:'#3f9f95',deck:'#a59470',edge:'#586c43',waterEnd:1048,deckStart:1058},
+ mukhyang:{name:'묵향 해역',water:'#c8d6d2',deck:'#384644',edge:'#86978a',waterEnd:1170,deckStart:1260},
  scrapisle:{name:'녹빛 고물섬',water:'#578c78',deck:'#66817b',edge:'#a7815d',waterEnd:990,deckStart:1065},
  cloudferry:{name:'지브리의 구름나루',water:'#60bfb5',deck:'#e8e6db',edge:'#bac9c7',waterEnd:990,deckStart:1065},
  whitenight:{name:'백야의 빙해',water:'#4c9cba',deck:'#d8edf7',edge:'#8ab9d1',waterEnd:990,deckStart:1065},
@@ -12,7 +14,7 @@ export const fishingEnvironments={
  starruins:{name:'별잠 유적',water:'#468ea5',deck:'#7b9495',edge:'#c4b88e',waterEnd:1078,deckStart:1128},
  dreamabyss:{name:'꿈먹는 심연',water:'#403f75',deck:'#292c43',edge:'#8072b8',waterEnd:1020,deckStart:1092},
 } as const
-const platformMaterials:Record<string,string>={pongdang:'wood',whitenight:'ice',primal:'roots',coral:'limestone',mistmoon:'wet-stone',starruins:'ruins',dreamabyss:'basalt',bluegrove:'riverstone',cloudferry:'cloud-stone',scrapisle:'metal'}
+const platformMaterials:Record<string,string>={siren:'marble',pongdang:'wood',whitenight:'ice',primal:'roots',coral:'limestone',mistmoon:'wet-stone',starruins:'ruins',dreamabyss:'basalt',bluegrove:'riverstone',cloudferry:'cloud-stone',scrapisle:'metal'}
 export function fishingEnvironment(regionId:string){
  const id=regionId in fishingEnvironments?regionId as keyof typeof fishingEnvironments:'pongdang'
  return {id,...fishingEnvironments[id],src:`/fishing/environments/${id==='primal'?'pongdang':id}.png`,platformSrc:platformMaterials[id]?`/fishing/platforms/${id}.png`:null,material:platformMaterials[id]}

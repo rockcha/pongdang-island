@@ -1,4 +1,4 @@
-const animatedDecorations=new Set(['violet-hydrothermal-vent','moonlit-pearl-clam','primordial-amethyst-heart'])
+const animatedDecorations=new Set(['violet-hydrothermal-vent','moonlit-pearl-clam','primordial-amethyst-heart','siren-scylla-tentacle'])
 
 /** Animate only the plume/light; placement and editing stay stationary. */
 export function dreamabyssFixedFrame(id:string,time:number,reduced=false,editing=false){

@@ -1,0 +1,1317 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/epic/muk-broken-ink-whale_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  79,
+                                           "y":  146,
+                                           "width":  486,
+                                           "height":  433,
+                                           "widthRatio":  0.7751,
+                                           "heightRatio":  0.6906,
+                                           "alphaPixels":  93023,
+                                           "leftAnchorY":  348.24,
+                                           "rightAnchorY":  375.693
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  61,
+                                           "y":  155,
+                                           "width":  502,
+                                           "height":  426,
+                                           "widthRatio":  0.8006,
+                                           "heightRatio":  0.6794,
+                                           "alphaPixels":  90275,
+                                           "leftAnchorY":  383.46,
+                                           "rightAnchorY":  379.73
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  64,
+                                           "y":  107,
+                                           "width":  500,
+                                           "height":  393,
+                                           "widthRatio":  0.7974,
+                                           "heightRatio":  0.6268,
+                                           "alphaPixels":  93243,
+                                           "leftAnchorY":  340.872,
+                                           "rightAnchorY":  290.692
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  73,
+                                           "y":  83,
+                                           "width":  497,
+                                           "height":  441,
+                                           "widthRatio":  0.7927,
+                                           "heightRatio":  0.7033,
+                                           "alphaPixels":  96556,
+                                           "leftAnchorY":  301.201,
+                                           "rightAnchorY":  296.319
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/epic/muk-celadon-ink-whelk_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  130,
+                                           "y":  153,
+                                           "width":  438,
+                                           "height":  394,
+                                           "widthRatio":  0.6986,
+                                           "heightRatio":  0.6284,
+                                           "alphaPixels":  74685,
+                                           "leftAnchorY":  368.311,
+                                           "rightAnchorY":  393.444
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  73,
+                                           "y":  154,
+                                           "width":  465,
+                                           "height":  405,
+                                           "widthRatio":  0.7416,
+                                           "heightRatio":  0.6459,
+                                           "alphaPixels":  84394,
+                                           "leftAnchorY":  362.361,
+                                           "rightAnchorY":  391.66
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  118,
+                                           "y":  103,
+                                           "width":  483,
+                                           "height":  397,
+                                           "widthRatio":  0.7703,
+                                           "heightRatio":  0.6332,
+                                           "alphaPixels":  85685,
+                                           "leftAnchorY":  313.258,
+                                           "rightAnchorY":  341.655
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  111,
+                                           "y":  108,
+                                           "width":  439,
+                                           "height":  386,
+                                           "widthRatio":  0.7002,
+                                           "heightRatio":  0.6156,
+                                           "alphaPixels":  72305,
+                                           "leftAnchorY":  309.093,
+                                           "rightAnchorY":  345.628
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/epic/muk-landscape-back-carp_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  90,
+                                           "y":  129,
+                                           "width":  510,
+                                           "height":  426,
+                                           "widthRatio":  0.8134,
+                                           "heightRatio":  0.6794,
+                                           "alphaPixels":  85920,
+                                           "leftAnchorY":  244.21,
+                                           "rightAnchorY":  403.499
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  39,
+                                           "y":  189,
+                                           "width":  527,
+                                           "height":  422,
+                                           "widthRatio":  0.8405,
+                                           "heightRatio":  0.673,
+                                           "alphaPixels":  102221,
+                                           "leftAnchorY":  400.079,
+                                           "rightAnchorY":  403.014
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  89,
+                                           "y":  135,
+                                           "width":  515,
+                                           "height":  419,
+                                           "widthRatio":  0.8214,
+                                           "heightRatio":  0.6683,
+                                           "alphaPixels":  110473,
+                                           "leftAnchorY":  320.689,
+                                           "rightAnchorY":  345.374
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  61,
+                                           "y":  124,
+                                           "width":  500,
+                                           "height":  418,
+                                           "widthRatio":  0.7974,
+                                           "heightRatio":  0.6667,
+                                           "alphaPixels":  100582,
+                                           "leftAnchorY":  325.708,
+                                           "rightAnchorY":  344.363
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/epic/muk-screenwing-lionfish_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  104,
+                                           "y":  137,
+                                           "width":  475,
+                                           "height":  449,
+                                           "widthRatio":  0.7576,
+                                           "heightRatio":  0.7161,
+                                           "alphaPixels":  115787,
+                                           "leftAnchorY":  391.228,
+                                           "rightAnchorY":  408.147
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  58,
+                                           "y":  113,
+                                           "width":  491,
+                                           "height":  483,
+                                           "widthRatio":  0.7831,
+                                           "heightRatio":  0.7703,
+                                           "alphaPixels":  128450,
+                                           "leftAnchorY":  382.03,
+                                           "rightAnchorY":  404.307
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  72,
+                                           "y":  82,
+                                           "width":  521,
+                                           "height":  452,
+                                           "widthRatio":  0.8309,
+                                           "heightRatio":  0.7209,
+                                           "alphaPixels":  127845,
+                                           "leftAnchorY":  338.313,
+                                           "rightAnchorY":  332.074
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  41,
+                                           "y":  82,
+                                           "width":  521,
+                                           "height":  451,
+                                           "widthRatio":  0.8309,
+                                           "heightRatio":  0.7193,
+                                           "alphaPixels":  130432,
+                                           "leftAnchorY":  336.255,
+                                           "rightAnchorY":  338.993
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/epic/muk-scroll-seadragon_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  120,
+                                           "y":  167,
+                                           "width":  481,
+                                           "height":  436,
+                                           "widthRatio":  0.7671,
+                                           "heightRatio":  0.6954,
+                                           "alphaPixels":  90149,
+                                           "leftAnchorY":  374.296,
+                                           "rightAnchorY":  353.532
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  46,
+                                           "y":  219,
+                                           "width":  506,
+                                           "height":  368,
+                                           "widthRatio":  0.807,
+                                           "heightRatio":  0.5869,
+                                           "alphaPixels":  80930,
+                                           "leftAnchorY":  397.218,
+                                           "rightAnchorY":  356.138
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  105,
+                                           "y":  131,
+                                           "width":  496,
+                                           "height":  387,
+                                           "widthRatio":  0.7911,
+                                           "heightRatio":  0.6172,
+                                           "alphaPixels":  82816,
+                                           "leftAnchorY":  332.915,
+                                           "rightAnchorY":  286.867
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  50,
+                                           "y":  100,
+                                           "width":  501,
+                                           "height":  426,
+                                           "widthRatio":  0.799,
+                                           "heightRatio":  0.6794,
+                                           "alphaPixels":  91388,
+                                           "leftAnchorY":  294.95,
+                                           "rightAnchorY":  289.515
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/epic/muk-unfinished-carp_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  133,
+                                           "y":  164,
+                                           "width":  430,
+                                           "height":  376,
+                                           "widthRatio":  0.6858,
+                                           "heightRatio":  0.5997,
+                                           "alphaPixels":  59259,
+                                           "leftAnchorY":  286.312,
+                                           "rightAnchorY":  411.756
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  106,
+                                           "y":  143,
+                                           "width":  422,
+                                           "height":  405,
+                                           "widthRatio":  0.673,
+                                           "heightRatio":  0.6459,
+                                           "alphaPixels":  69685,
+                                           "leftAnchorY":  309.585,
+                                           "rightAnchorY":  420
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  68,
+                                           "y":  106,
+                                           "width":  519,
+                                           "height":  423,
+                                           "widthRatio":  0.8278,
+                                           "heightRatio":  0.6746,
+                                           "alphaPixels":  93702,
+                                           "leftAnchorY":  354.649,
+                                           "rightAnchorY":  331.595
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  72,
+                                           "y":  76,
+                                           "width":  492,
+                                           "height":  448,
+                                           "widthRatio":  0.7847,
+                                           "heightRatio":  0.7145,
+                                           "alphaPixels":  93812,
+                                           "leftAnchorY":  317.024,
+                                           "rightAnchorY":  326.599
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/mythic/muk-hyeonmu_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  81,
+                                           "y":  141,
+                                           "width":  512,
+                                           "height":  445,
+                                           "widthRatio":  0.8166,
+                                           "heightRatio":  0.7097,
+                                           "alphaPixels":  133665,
+                                           "leftAnchorY":  441.385,
+                                           "rightAnchorY":  417.624
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  43,
+                                           "y":  141,
+                                           "width":  511,
+                                           "height":  446,
+                                           "widthRatio":  0.815,
+                                           "heightRatio":  0.7113,
+                                           "alphaPixels":  134206,
+                                           "leftAnchorY":  444.247,
+                                           "rightAnchorY":  415.447
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  70,
+                                           "y":  84,
+                                           "width":  527,
+                                           "height":  446,
+                                           "widthRatio":  0.8405,
+                                           "heightRatio":  0.7113,
+                                           "alphaPixels":  139956,
+                                           "leftAnchorY":  393.203,
+                                           "rightAnchorY":  362.248
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  41,
+                                           "y":  89,
+                                           "width":  526,
+                                           "height":  439,
+                                           "widthRatio":  0.8389,
+                                           "heightRatio":  0.7002,
+                                           "alphaPixels":  139339,
+                                           "leftAnchorY":  382.275,
+                                           "rightAnchorY":  366.256
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/normal/muk-bleeding-tail-goldfish_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  101,
+                                           "y":  145,
+                                           "width":  464,
+                                           "height":  390,
+                                           "widthRatio":  0.74,
+                                           "heightRatio":  0.622,
+                                           "alphaPixels":  100307,
+                                           "leftAnchorY":  337.018,
+                                           "rightAnchorY":  374.47
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  77,
+                                           "y":  198,
+                                           "width":  460,
+                                           "height":  340,
+                                           "widthRatio":  0.7337,
+                                           "heightRatio":  0.5423,
+                                           "alphaPixels":  94925,
+                                           "leftAnchorY":  351.207,
+                                           "rightAnchorY":  372.829
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  101,
+                                           "y":  140,
+                                           "width":  461,
+                                           "height":  340,
+                                           "widthRatio":  0.7352,
+                                           "heightRatio":  0.5423,
+                                           "alphaPixels":  93302,
+                                           "leftAnchorY":  301.868,
+                                           "rightAnchorY":  314.437
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  89,
+                                           "y":  137,
+                                           "width":  464,
+                                           "height":  337,
+                                           "widthRatio":  0.74,
+                                           "heightRatio":  0.5375,
+                                           "alphaPixels":  96355,
+                                           "leftAnchorY":  292.054,
+                                           "rightAnchorY":  315.433
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/normal/muk-brush-tail-shrimp_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  86,
+                                           "y":  140,
+                                           "width":  488,
+                                           "height":  396,
+                                           "widthRatio":  0.7783,
+                                           "heightRatio":  0.6316,
+                                           "alphaPixels":  76370,
+                                           "leftAnchorY":  270.521,
+                                           "rightAnchorY":  386.308
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  79,
+                                           "y":  157,
+                                           "width":  494,
+                                           "height":  384,
+                                           "widthRatio":  0.7879,
+                                           "heightRatio":  0.6124,
+                                           "alphaPixels":  75179,
+                                           "leftAnchorY":  279.515,
+                                           "rightAnchorY":  391.75
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  81,
+                                           "y":  120,
+                                           "width":  500,
+                                           "height":  364,
+                                           "widthRatio":  0.7974,
+                                           "heightRatio":  0.5805,
+                                           "alphaPixels":  73179,
+                                           "leftAnchorY":  244.346,
+                                           "rightAnchorY":  346.737
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  81,
+                                           "y":  117,
+                                           "width":  490,
+                                           "height":  391,
+                                           "widthRatio":  0.7815,
+                                           "heightRatio":  0.6236,
+                                           "alphaPixels":  75866,
+                                           "leftAnchorY":  243.074,
+                                           "rightAnchorY":  362.166
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/normal/muk-inkbean-whelk_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  84,
+                                           "y":  210,
+                                           "width":  503,
+                                           "height":  311,
+                                           "widthRatio":  0.8022,
+                                           "heightRatio":  0.496,
+                                           "alphaPixels":  92202,
+                                           "leftAnchorY":  387.048,
+                                           "rightAnchorY":  405.863
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  68,
+                                           "y":  209,
+                                           "width":  511,
+                                           "height":  316,
+                                           "widthRatio":  0.815,
+                                           "heightRatio":  0.504,
+                                           "alphaPixels":  94181,
+                                           "leftAnchorY":  387.007,
+                                           "rightAnchorY":  407.195
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  77,
+                                           "y":  133,
+                                           "width":  521,
+                                           "height":  301,
+                                           "widthRatio":  0.8309,
+                                           "heightRatio":  0.4801,
+                                           "alphaPixels":  92489,
+                                           "leftAnchorY":  315.811,
+                                           "rightAnchorY":  331.613
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  60,
+                                           "y":  133,
+                                           "width":  519,
+                                           "height":  307,
+                                           "widthRatio":  0.8278,
+                                           "heightRatio":  0.4896,
+                                           "alphaPixels":  93736,
+                                           "leftAnchorY":  314.299,
+                                           "rightAnchorY":  331.254
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/normal/muk-inkdrop-puffer_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  80,
+                                           "y":  149,
+                                           "width":  471,
+                                           "height":  382,
+                                           "widthRatio":  0.7512,
+                                           "heightRatio":  0.6093,
+                                           "alphaPixels":  103025,
+                                           "leftAnchorY":  343.802,
+                                           "rightAnchorY":  348.334
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  76,
+                                           "y":  149,
+                                           "width":  466,
+                                           "height":  385,
+                                           "widthRatio":  0.7432,
+                                           "heightRatio":  0.614,
+                                           "alphaPixels":  104927,
+                                           "leftAnchorY":  352.441,
+                                           "rightAnchorY":  349.984
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  72,
+                                           "y":  112,
+                                           "width":  481,
+                                           "height":  382,
+                                           "widthRatio":  0.7671,
+                                           "heightRatio":  0.6093,
+                                           "alphaPixels":  107754,
+                                           "leftAnchorY":  299.109,
+                                           "rightAnchorY":  311.089
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  68,
+                                           "y":  118,
+                                           "width":  477,
+                                           "height":  381,
+                                           "widthRatio":  0.7608,
+                                           "heightRatio":  0.6077,
+                                           "alphaPixels":  106986,
+                                           "leftAnchorY":  312.737,
+                                           "rightAnchorY":  316.597
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/normal/muk-inkdrop-snail_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  107,
+                                           "y":  175,
+                                           "width":  459,
+                                           "height":  324,
+                                           "widthRatio":  0.7321,
+                                           "heightRatio":  0.5167,
+                                           "alphaPixels":  97692,
+                                           "leftAnchorY":  355.663,
+                                           "rightAnchorY":  376.356
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  86,
+                                           "y":  175,
+                                           "width":  453,
+                                           "height":  325,
+                                           "widthRatio":  0.7225,
+                                           "heightRatio":  0.5183,
+                                           "alphaPixels":  98189,
+                                           "leftAnchorY":  354.029,
+                                           "rightAnchorY":  378.143
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  102,
+                                           "y":  145,
+                                           "width":  464,
+                                           "height":  320,
+                                           "widthRatio":  0.74,
+                                           "heightRatio":  0.5104,
+                                           "alphaPixels":  96900,
+                                           "leftAnchorY":  325.416,
+                                           "rightAnchorY":  347.018
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  84,
+                                           "y":  145,
+                                           "width":  459,
+                                           "height":  326,
+                                           "widthRatio":  0.7321,
+                                           "heightRatio":  0.5199,
+                                           "alphaPixels":  98898,
+                                           "leftAnchorY":  325.997,
+                                           "rightAnchorY":  348.964
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/normal/muk-inkstone-clam_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  84,
+                                           "y":  275,
+                                           "width":  478,
+                                           "height":  308,
+                                           "widthRatio":  0.7624,
+                                           "heightRatio":  0.4912,
+                                           "alphaPixels":  93063,
+                                           "leftAnchorY":  454.265,
+                                           "rightAnchorY":  433.726
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  66,
+                                           "y":  195,
+                                           "width":  470,
+                                           "height":  393,
+                                           "widthRatio":  0.7496,
+                                           "heightRatio":  0.6268,
+                                           "alphaPixels":  111676,
+                                           "leftAnchorY":  444.6,
+                                           "rightAnchorY":  384.348
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  88,
+                                           "y":  156,
+                                           "width":  471,
+                                           "height":  338,
+                                           "widthRatio":  0.7512,
+                                           "heightRatio":  0.5391,
+                                           "alphaPixels":  94259,
+                                           "leftAnchorY":  367.566,
+                                           "rightAnchorY":  326.495
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  79,
+                                           "y":  215,
+                                           "width":  468,
+                                           "height":  276,
+                                           "widthRatio":  0.7464,
+                                           "heightRatio":  0.4402,
+                                           "alphaPixels":  81016,
+                                           "leftAnchorY":  368.731,
+                                           "rightAnchorY":  360.538
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/normal/muk-paperboat-hermit_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  93,
+                                           "y":  152,
+                                           "width":  485,
+                                           "height":  384,
+                                           "widthRatio":  0.7735,
+                                           "heightRatio":  0.6124,
+                                           "alphaPixels":  104402,
+                                           "leftAnchorY":  340.477,
+                                           "rightAnchorY":  369.177
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  69,
+                                           "y":  153,
+                                           "width":  489,
+                                           "height":  389,
+                                           "widthRatio":  0.7799,
+                                           "heightRatio":  0.6204,
+                                           "alphaPixels":  107279,
+                                           "leftAnchorY":  343.886,
+                                           "rightAnchorY":  380.958
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  93,
+                                           "y":  108,
+                                           "width":  495,
+                                           "height":  385,
+                                           "widthRatio":  0.7895,
+                                           "heightRatio":  0.614,
+                                           "alphaPixels":  105430,
+                                           "leftAnchorY":  303.975,
+                                           "rightAnchorY":  326.964
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  62,
+                                           "y":  108,
+                                           "width":  501,
+                                           "height":  385,
+                                           "widthRatio":  0.799,
+                                           "heightRatio":  0.614,
+                                           "alphaPixels":  106623,
+                                           "leftAnchorY":  300.013,
+                                           "rightAnchorY":  333.517
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/normal/muk-single-stroke-minnow_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  89,
+                                           "y":  268,
+                                           "width":  490,
+                                           "height":  219,
+                                           "widthRatio":  0.7815,
+                                           "heightRatio":  0.3493,
+                                           "alphaPixels":  41962,
+                                           "leftAnchorY":  373.748,
+                                           "rightAnchorY":  362.191
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  69,
+                                           "y":  285,
+                                           "width":  487,
+                                           "height":  229,
+                                           "widthRatio":  0.7767,
+                                           "heightRatio":  0.3652,
+                                           "alphaPixels":  42784,
+                                           "leftAnchorY":  412.81,
+                                           "rightAnchorY":  360.248
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  111,
+                                           "y":  198,
+                                           "width":  468,
+                                           "height":  207,
+                                           "widthRatio":  0.7464,
+                                           "heightRatio":  0.3301,
+                                           "alphaPixels":  42987,
+                                           "leftAnchorY":  302.202,
+                                           "rightAnchorY":  280.433
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  68,
+                                           "y":  171,
+                                           "width":  487,
+                                           "height":  241,
+                                           "widthRatio":  0.7767,
+                                           "heightRatio":  0.3844,
+                                           "alphaPixels":  43228,
+                                           "leftAnchorY":  290.124,
+                                           "rightAnchorY":  282.341
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/rare/muk-bleeding-octopus_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  122,
+                                           "y":  191,
+                                           "width":  419,
+                                           "height":  336,
+                                           "widthRatio":  0.6683,
+                                           "heightRatio":  0.5359,
+                                           "alphaPixels":  77313,
+                                           "leftAnchorY":  370.686,
+                                           "rightAnchorY":  368.21
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  68,
+                                           "y":  184,
+                                           "width":  462,
+                                           "height":  356,
+                                           "widthRatio":  0.7368,
+                                           "heightRatio":  0.5678,
+                                           "alphaPixels":  91739,
+                                           "leftAnchorY":  347.601,
+                                           "rightAnchorY":  366.948
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  130,
+                                           "y":  114,
+                                           "width":  414,
+                                           "height":  365,
+                                           "widthRatio":  0.6603,
+                                           "heightRatio":  0.5821,
+                                           "alphaPixels":  80663,
+                                           "leftAnchorY":  308.191,
+                                           "rightAnchorY":  314.739
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  71,
+                                           "y":  129,
+                                           "width":  457,
+                                           "height":  350,
+                                           "widthRatio":  0.7289,
+                                           "heightRatio":  0.5582,
+                                           "alphaPixels":  89683,
+                                           "leftAnchorY":  290.315,
+                                           "rightAnchorY":  309.51
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/rare/muk-brush-whisker-catfish_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  64,
+                                           "y":  158,
+                                           "width":  539,
+                                           "height":  416,
+                                           "widthRatio":  0.8596,
+                                           "heightRatio":  0.6635,
+                                           "alphaPixels":  93069,
+                                           "leftAnchorY":  289.633,
+                                           "rightAnchorY":  436.542
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  81,
+                                           "y":  136,
+                                           "width":  494,
+                                           "height":  444,
+                                           "widthRatio":  0.7879,
+                                           "heightRatio":  0.7081,
+                                           "alphaPixels":  93104,
+                                           "leftAnchorY":  298.614,
+                                           "rightAnchorY":  438.026
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  60,
+                                           "y":  85,
+                                           "width":  541,
+                                           "height":  426,
+                                           "widthRatio":  0.8628,
+                                           "heightRatio":  0.6794,
+                                           "alphaPixels":  97481,
+                                           "leftAnchorY":  224.559,
+                                           "rightAnchorY":  375.145
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  72,
+                                           "y":  115,
+                                           "width":  522,
+                                           "height":  400,
+                                           "widthRatio":  0.8325,
+                                           "heightRatio":  0.638,
+                                           "alphaPixels":  93873,
+                                           "leftAnchorY":  237.128,
+                                           "rightAnchorY":  375.027
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/rare/muk-inkstone-home-octopus_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  140,
+                                           "y":  239,
+                                           "width":  427,
+                                           "height":  279,
+                                           "widthRatio":  0.681,
+                                           "heightRatio":  0.445,
+                                           "alphaPixels":  76207,
+                                           "leftAnchorY":  422.439,
+                                           "rightAnchorY":  394.526
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  53,
+                                           "y":  205,
+                                           "width":  451,
+                                           "height":  316,
+                                           "widthRatio":  0.7193,
+                                           "heightRatio":  0.504,
+                                           "alphaPixels":  81050,
+                                           "leftAnchorY":  402.074,
+                                           "rightAnchorY":  396.046
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  119,
+                                           "y":  166,
+                                           "width":  448,
+                                           "height":  301,
+                                           "widthRatio":  0.7145,
+                                           "heightRatio":  0.4801,
+                                           "alphaPixels":  80976,
+                                           "leftAnchorY":  352.188,
+                                           "rightAnchorY":  342.516
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  68,
+                                           "y":  177,
+                                           "width":  462,
+                                           "height":  290,
+                                           "widthRatio":  0.7368,
+                                           "heightRatio":  0.4625,
+                                           "alphaPixels":  82536,
+                                           "leftAnchorY":  364.543,
+                                           "rightAnchorY":  337.49
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/rare/muk-inkwashing-sea-otter_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  82,
+                                           "y":  212,
+                                           "width":  503,
+                                           "height":  339,
+                                           "widthRatio":  0.8022,
+                                           "heightRatio":  0.5407,
+                                           "alphaPixels":  89644,
+                                           "leftAnchorY":  489.918,
+                                           "rightAnchorY":  373.663
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  75,
+                                           "y":  213,
+                                           "width":  474,
+                                           "height":  350,
+                                           "widthRatio":  0.756,
+                                           "heightRatio":  0.5582,
+                                           "alphaPixels":  95364,
+                                           "leftAnchorY":  449.229,
+                                           "rightAnchorY":  375.593
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  95,
+                                           "y":  160,
+                                           "width":  493,
+                                           "height":  335,
+                                           "widthRatio":  0.7863,
+                                           "heightRatio":  0.5343,
+                                           "alphaPixels":  98700,
+                                           "leftAnchorY":  357.408,
+                                           "rightAnchorY":  321.277
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  58,
+                                           "y":  157,
+                                           "width":  493,
+                                           "height":  336,
+                                           "widthRatio":  0.7863,
+                                           "heightRatio":  0.5359,
+                                           "alphaPixels":  87077,
+                                           "leftAnchorY":  426.99,
+                                           "rightAnchorY":  320.336
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/rare/muk-lotus-jellyfish_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  87,
+                                           "y":  166,
+                                           "width":  503,
+                                           "height":  385,
+                                           "widthRatio":  0.8022,
+                                           "heightRatio":  0.614,
+                                           "alphaPixels":  81098,
+                                           "leftAnchorY":  425.767,
+                                           "rightAnchorY":  313.376
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  66,
+                                           "y":  200,
+                                           "width":  455,
+                                           "height":  346,
+                                           "widthRatio":  0.7257,
+                                           "heightRatio":  0.5518,
+                                           "alphaPixels":  65531,
+                                           "leftAnchorY":  405.449,
+                                           "rightAnchorY":  338.15
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  99,
+                                           "y":  176,
+                                           "width":  437,
+                                           "height":  310,
+                                           "widthRatio":  0.697,
+                                           "heightRatio":  0.4944,
+                                           "alphaPixels":  60177,
+                                           "leftAnchorY":  353.08,
+                                           "rightAnchorY":  299.157
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  58,
+                                           "y":  127,
+                                           "width":  501,
+                                           "height":  385,
+                                           "widthRatio":  0.799,
+                                           "heightRatio":  0.614,
+                                           "alphaPixels":  84599,
+                                           "leftAnchorY":  386.372,
+                                           "rightAnchorY":  277.302
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/rare/muk-orchid-fin-betta_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  112,
+                                           "y":  122,
+                                           "width":  477,
+                                           "height":  457,
+                                           "widthRatio":  0.7608,
+                                           "heightRatio":  0.7289,
+                                           "alphaPixels":  95786,
+                                           "leftAnchorY":  371.904,
+                                           "rightAnchorY":  360.353
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  71,
+                                           "y":  143,
+                                           "width":  483,
+                                           "height":  427,
+                                           "widthRatio":  0.7703,
+                                           "heightRatio":  0.681,
+                                           "alphaPixels":  92909,
+                                           "leftAnchorY":  375.573,
+                                           "rightAnchorY":  367.229
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  73,
+                                           "y":  109,
+                                           "width":  518,
+                                           "height":  437,
+                                           "widthRatio":  0.8262,
+                                           "heightRatio":  0.697,
+                                           "alphaPixels":  103977,
+                                           "leftAnchorY":  325.103,
+                                           "rightAnchorY":  322.307
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  64,
+                                           "y":  88,
+                                           "width":  496,
+                                           "height":  459,
+                                           "widthRatio":  0.7911,
+                                           "heightRatio":  0.7321,
+                                           "alphaPixels":  103944,
+                                           "leftAnchorY":  319.638,
+                                           "rightAnchorY":  316.567
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/rare/muk-plum-branch-seahorse_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  149,
+                                           "y":  142,
+                                           "width":  377,
+                                           "height":  438,
+                                           "widthRatio":  0.6013,
+                                           "heightRatio":  0.6986,
+                                           "alphaPixels":  68661,
+                                           "leftAnchorY":  491.257,
+                                           "rightAnchorY":  337.298
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  132,
+                                           "y":  137,
+                                           "width":  343,
+                                           "height":  441,
+                                           "widthRatio":  0.547,
+                                           "heightRatio":  0.7033,
+                                           "alphaPixels":  62428,
+                                           "leftAnchorY":  490.694,
+                                           "rightAnchorY":  340.011
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  154,
+                                           "y":  96,
+                                           "width":  387,
+                                           "height":  434,
+                                           "widthRatio":  0.6172,
+                                           "heightRatio":  0.6922,
+                                           "alphaPixels":  72925,
+                                           "leftAnchorY":  435.972,
+                                           "rightAnchorY":  272.158
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  118,
+                                           "y":  87,
+                                           "width":  367,
+                                           "height":  438,
+                                           "widthRatio":  0.5853,
+                                           "heightRatio":  0.6986,
+                                           "alphaPixels":  63352,
+                                           "leftAnchorY":  443.257,
+                                           "rightAnchorY":  286.199
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/rare/muk-seal-turtle_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  76,
+                                           "y":  232,
+                                           "width":  487,
+                                           "height":  311,
+                                           "widthRatio":  0.7767,
+                                           "heightRatio":  0.496,
+                                           "alphaPixels":  83168,
+                                           "leftAnchorY":  366.99,
+                                           "rightAnchorY":  353.103
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  67,
+                                           "y":  235,
+                                           "width":  489,
+                                           "height":  314,
+                                           "widthRatio":  0.7799,
+                                           "heightRatio":  0.5008,
+                                           "alphaPixels":  84708,
+                                           "leftAnchorY":  384.157,
+                                           "rightAnchorY":  360.122
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  70,
+                                           "y":  137,
+                                           "width":  506,
+                                           "height":  352,
+                                           "widthRatio":  0.807,
+                                           "heightRatio":  0.5614,
+                                           "alphaPixels":  86964,
+                                           "leftAnchorY":  324.96,
+                                           "rightAnchorY":  298.952
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  56,
+                                           "y":  174,
+                                           "width":  512,
+                                           "height":  324,
+                                           "widthRatio":  0.8166,
+                                           "heightRatio":  0.5167,
+                                           "alphaPixels":  91420,
+                                           "leftAnchorY":  331.505,
+                                           "rightAnchorY":  305.679
+                                       }
+                                   ]
+                    }
+                ]
+}

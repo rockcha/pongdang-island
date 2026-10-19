@@ -2,7 +2,11 @@ import {useState,type ReactNode} from 'react'
 import {collectibleUrl} from '@/features/collection/api'
 
 // Origins are the artwork's axle/body center, independent of the game's transforms.
-const artwork:Record<string,{frame:number;rotor:number;float:number;rotorWidth:number}>={
+const artwork:Record<string,{frame:number;rotor:number;float:number;rotorWidth:number;rotorX?:number}>={
+ siren:{frame:.5,rotor:.5,float:.5,rotorWidth:84},
+ whitenight:{frame:.5,rotor:.5,float:.5,rotorWidth:70},
+ cloudferry:{frame:.5,rotor:.5,float:.5,rotorWidth:70},
+ mukhyang:{frame:.5,rotor:.47,float:.52,rotorWidth:66,rotorX:.483},
  scrapisle:{frame:.5,rotor:.5,float:.5,rotorWidth:70},
  bluegrove:{frame:.49,rotor:.49,float:.51,rotorWidth:76},
  primal:{frame:.5,rotor:.5,float:.5,rotorWidth:64},
@@ -27,6 +31,6 @@ export function RodPartImage({id,part,fallback}:{id:string;part:'frame'|'rotor'|
  const file=part==='float'?'float':`reel-${part}`
  return <g {...{[`data-skin-${part}`]:id}}><image
   href={collectibleUrl(rodImagePath(id,file))}
-  x={-width/2} y={-width*spec[part]} width={width} height={width}
+  x={-width*(part==='rotor'?(spec.rotorX??.5):.5)} y={-width*spec[part]} width={width} height={width}
   preserveAspectRatio="xMidYMid meet" onError={()=>setFailed(true)}/></g>
 }

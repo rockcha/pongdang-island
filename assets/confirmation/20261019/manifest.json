@@ -1,0 +1,71 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "transparent_background": true,
+  "originals": "Generated originals kept here; production PNGs resized to 384x384 with alpha preserved.",
+  "assets": [
+    {
+      "id": "dispatch",
+      "file": "pongi-dispatch.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-636fc9b2-b10e-4242-bb91-099884db4216.png",
+      "public_path": "/branding/confirm/pongi-dispatch.png",
+      "prompt": "Use case: illustration-story. Create ONE production UI confirmation illustration. Reference image is identity and style reference ONLY: preserve Pongi, the round golden brown otter, cream muzzle and belly, glossy dark eyes, rosy cheeks, orange starfish hair accessory, warm dark brown outlines and polished soft cartoon shading. Remove original fishing rod and hook. Simple compact composition, whole character and props visible with generous clear padding, readable at 144 pixels. True transparent background, no text, no letters, no UI, no panel, no backdrop, no checkerboard, no ground rectangle. Single character. Scene: Pongi at a tiny wooden fishing boat, one paw holding the mooring rope and the other checking a bait crate, ready to set sail but still tied at dock. Boat bow and small teal waves only."
+    },
+    {
+      "id": "return",
+      "file": "pongi-return.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-6eb58fa3-4279-44ce-a9c6-efa509831419.png",
+      "public_path": "/branding/confirm/pongi-return.png",
+      "prompt": "Use case: illustration-story. Create ONE production UI confirmation illustration. Reference image is identity and style reference ONLY: preserve Pongi, the round golden brown otter, cream muzzle and belly, glossy dark eyes, rosy cheeks, orange starfish hair accessory, warm dark brown outlines and polished soft cartoon shading. Remove original fishing rod and hook. Simple compact composition, whole character and props visible with generous clear padding, readable at 144 pixels. True transparent background, no text, no letters, no UI, no panel, no backdrop, no checkerboard, no ground rectangle. Single character. Scene: Pongi aboard a tiny wooden fishing boat approaching a short dock, holding a coiled mooring rope, preparing to return to harbor. A few teal wave shapes only."
+    },
+    {
+      "id": "purchase",
+      "file": "pongi-purchase.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-f09a5163-d677-4e03-83cb-121935de073c.png",
+      "public_path": "/branding/confirm/pongi-purchase.png",
+      "prompt": "Use case: illustration-story. Create ONE production UI confirmation illustration. Reference image is identity and style reference ONLY: preserve Pongi, the round golden brown otter, cream muzzle and belly, glossy dark eyes, rosy cheeks, orange starfish hair accessory, warm dark brown outlines and polished soft cartoon shading. Remove original fishing rod and hook. Simple compact composition, whole character and props visible with generous clear padding, readable at 144 pixels. True transparent background, no text, no letters, no UI, no panel, no backdrop, no checkerboard, no ground rectangle. Single character. Scene: Pongi holding a small coin purse in one paw and considering a wrapped parcel beside it, poised to make a purchase, friendly thoughtful expression."
+    },
+    {
+      "id": "sale",
+      "file": "pongi-sale.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-b51225a8-5964-4653-8958-21d972519660.png",
+      "public_path": "/branding/confirm/pongi-sale.png",
+      "prompt": "Use case: illustration-story. Create ONE production UI confirmation illustration. Reference image is identity and style reference ONLY: preserve Pongi, the round golden brown otter, cream muzzle and belly, glossy dark eyes, rosy cheeks, orange starfish hair accessory, warm dark brown outlines and polished soft cartoon shading. Remove original fishing rod and hook. Simple compact composition, whole character and props visible with generous clear padding, readable at 144 pixels. True transparent background, no text, no letters, no UI, no panel, no backdrop, no checkerboard, no ground rectangle. Single character. Scene: Pongi beside a small wooden trading counter with a parcel and two gold coins, offering the parcel with one paw, calmly awaiting confirmation."
+    },
+    {
+      "id": "game",
+      "file": "pongi-game.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-45b2f57c-d961-407e-9b54-6bfd6b5a2bcc.png",
+      "public_path": "/branding/confirm/pongi-game.png",
+      "prompt": "Use case: illustration-story. Create ONE production UI confirmation illustration. Reference image is identity and style reference ONLY: preserve Pongi, the round golden brown otter, cream muzzle and belly, glossy dark eyes, rosy cheeks, orange starfish hair accessory, warm dark brown outlines and polished soft cartoon shading. Remove original fishing rod and hook. Simple compact composition, whole character and props visible with generous clear padding, readable at 144 pixels. True transparent background, no text, no letters, no UI, no panel, no backdrop, no checkerboard, no ground rectangle. Single character. Scene: Pongi holding two small playing cards beside a simple wooden game board, eager but waiting to start the game, a single gold coin beside board."
+    },
+    {
+      "id": "savings",
+      "file": "pongi-savings.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-7fd481b0-cb40-4cf2-a24d-835716e30a65.png",
+      "public_path": "/branding/confirm/pongi-savings.png",
+      "prompt": "Use case: illustration-story. Create ONE production UI confirmation illustration. Reference image is identity and style reference ONLY: preserve Pongi, the round golden brown otter, cream muzzle and belly, glossy dark eyes, rosy cheeks, orange starfish hair accessory, warm dark brown outlines and polished soft cartoon shading. Remove original fishing rod and hook. Simple compact composition, whole character and props visible with generous clear padding, readable at 144 pixels. True transparent background, no text, no letters, no UI, no panel, no backdrop, no checkerboard, no ground rectangle. Single character. Scene: Pongi carefully holding a large pink clam shell containing gold coins, one paw poised to place a coin inside, thoughtful warm expression."
+    },
+    {
+      "id": "publish",
+      "file": "pongi-publish.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-8d7fa78f-cd0b-4e8a-a0d1-10d8ce021d8e.png",
+      "public_path": "/branding/confirm/pongi-publish.png",
+      "prompt": "Use case: illustration-story. Create ONE production UI confirmation illustration. Reference image is identity and style reference ONLY: preserve Pongi, the round golden brown otter, cream muzzle and belly, glossy dark eyes, rosy cheeks, orange starfish hair accessory, warm dark brown outlines and polished soft cartoon shading. Remove original fishing rod and hook. Simple compact composition, whole character and props visible with generous clear padding, readable at 144 pixels. True transparent background, no text, no letters, no UI, no panel, no backdrop, no checkerboard, no ground rectangle. Single character. Scene: Pongi holding a clean blank paper notice and a small wooden approval stamp, about to stamp the paper, restrained pleased expression."
+    },
+    {
+      "id": "caution",
+      "file": "pongi-caution.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-96fee5ee-6e9b-434c-8600-c481aa364a55.png",
+      "public_path": "/branding/confirm/pongi-caution.png",
+      "prompt": "Use case: illustration-story. Create ONE production UI confirmation illustration. Reference image is identity and style reference ONLY: preserve Pongi, the round golden brown otter, cream muzzle and belly, glossy dark eyes, rosy cheeks, orange starfish hair accessory, warm dark brown outlines and polished soft cartoon shading. Remove original fishing rod and hook. Simple compact composition, whole character and props visible with generous clear padding, readable at 144 pixels. True transparent background, no text, no letters, no UI, no panel, no backdrop, no checkerboard, no ground rectangle. Single character. Scene: Pongi pausing thoughtfully with one paw gently raised and the other holding a closed notebook, hesitant neutral expression suitable for leaving, removing or discarding, no tears or celebration."
+    },
+    {
+      "id": "aquarium",
+      "file": "pongi-aquarium.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-67c1e3f6-4331-4f25-bd25-2c755ae5a83c.png",
+      "public_path": "/branding/confirm/pongi-aquarium.png",
+      "prompt": "Use case: illustration-story. Create ONE production UI confirmation illustration. Reference image is identity and style reference ONLY: preserve Pongi, the round golden brown otter, cream muzzle and belly, glossy dark eyes, rosy cheeks, orange starfish hair accessory, warm dark brown outlines and polished soft cartoon shading. Remove original fishing rod and hook. Simple compact composition, whole character and props visible with generous clear padding, readable at 144 pixels. True transparent background, no text, no letters, no UI, no panel, no backdrop, no checkerboard, no ground rectangle. Single character. Scene: Pongi gently holding a small clear round fishbowl with a tiny green aquatic plant and a small orange fish, carefully preparing to move it, no fishing equipment."
+    }
+  ]
+}

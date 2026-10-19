@@ -1,0 +1,14 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "public/banners/mukhyang-horizon.png",
+  "assets": [
+    {
+      "path": "map/rare/map-mukhyang_thumbnail.png",
+      "prompt": "Create a single collectible MAP FRAGMENT item icon for cozy Korean fishing game, square 1024x1024 transparent background. Reference image is STYLE AND REGION MOTIF ONLY. Center one aged ivory hanji parchment map with gently irregular torn edges and slightly curled corners, fully visible with 12% transparent margins. On the parchment draw a readable beautiful overhead nautical chart of ink-wash mountainous islands, pale jade waterways, tiny pavilion, pine tree, a dotted vermilion sailing route leading to a red seal destination, delicate compass rose. Recognizably a map item rather than a rectangular landscape painting. Soft polished hand-painted game item, dark ink contours, warm paper, restrained red seal mark without legible characters. No text, no labels, no numbers, no watermark, no background outside parchment."
+    },
+    {
+      "path": "public/region-icons/mukhyang.png",
+      "prompt": "Create one compact REGION ICON for Mukhyang ink sea in cozy Korean fishing game. Square 1024x1024 with genuine transparent background. Reference image is region theme and palette only. A single isolated miniature ink-wash mountainous island with one curving pine tree and a tiny Korean pavilion above two short pale jade water ripples. Rounded friendly polished game illustration, strong simple silhouette readable at 24 pixels, dark charcoal ink, ivory highlights, muted jade, one small vermilion seal square accent. Fill central 78% with generous transparent margins. Minimal details, no enclosing square, no text, no letters, no watermark, no full landscape background."
+    }
+  ]
+}

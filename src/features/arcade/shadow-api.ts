@@ -1,3 +1,4 @@
+import {questProgressChanged} from '@/features/quests/progress-events'
 import { createClient } from '@/lib/client'
 
 export type ShadowRound = { id:string;number:number;imagePath:string;options:{id:string;name:string}[];deadline:string;answered:boolean;correct:boolean|null;timedOut:boolean|null;answerName:string|null }
@@ -8,7 +9,7 @@ export type ShadowAction = {p_action:'state'|'start'|'answer'|'next';p_operation
 export async function shadowAction(args:ShadowAction):Promise<ShadowState> {
  const {data,error}=await createClient().rpc('shadow_game',args)
  if(error)throw error
- return data
+ if(args.p_action==='start')questProgressChanged();return data
 }
 export async function shadowLeaderboard(offset=0):Promise<ShadowLeaderboard> {
  const {data,error}=await createClient().rpc('shadow_leaderboard',{p_offset:offset})

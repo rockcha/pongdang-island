@@ -1,4 +1,4 @@
-import { cleanup,render,screen } from '@testing-library/react'
+import { cleanup,fireEvent,render,screen,waitFor } from '@testing-library/react'
 import { afterEach,expect,it,vi } from 'vitest'
 import { MemoryRouter,Route,Routes } from 'react-router'
 import { RegionPage } from '@/features/regions/region-page'
@@ -15,8 +15,12 @@ it.each(['pongdang','coral','mistmoon','starruins','dreamabyss'])('shows the loc
  expect(await screen.findByRole('heading',{name:'퐁당섬 앞바다'})).toBeTruthy()
  expect(screen.getByText('낚시 화면')).toBeTruthy()
  expect(screen.getByText('따뜻한 물결이 반기는 바다')).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'퐁당섬 앞바다 안내'}))
+ expect(await screen.findByText('미끼와 낚싯대를 준비하고 낚시를 시작해요.')).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'Close'}))
+ await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())
  expect(container.querySelector('img')?.getAttribute('src')).toBe(`/banners/${id}-horizon.png`)
- expect(screen.getByRole('group',{name:'낚시 도구'})).toBeTruthy()
+ expect(screen.getByRole('group',{name:'낚시 게이지'})).toBeTruthy()
  expect(screen.queryByRole('button',{name:'낚시 지역 이동'})).toBeNull()
  expect(screen.queryByRole('link',{name:'지도로'})).toBeNull()
 })

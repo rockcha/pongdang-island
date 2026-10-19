@@ -12,7 +12,7 @@ export async function travelRegion(regionId:string) {
  if(error)throw error
  return data
 }
-export function regionImageUrl(path:string) { return createClient().storage.from('regions').getPublicUrl(path).data.publicUrl }
+export function regionImageUrl(path:string) { if(path.startsWith('/siren/'))return path;return createClient().storage.from('regions').getPublicUrl(path).data.publicUrl }
 
 export async function setRegionTestLock(regionId:string, locked:boolean) {
  const {data,error}=await createClient().rpc('set_region_test_lock',{p_region_id:regionId,p_locked:locked})

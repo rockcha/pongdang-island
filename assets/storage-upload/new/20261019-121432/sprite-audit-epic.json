@@ -1,0 +1,348 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/epic/siren-acheron_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  96,
+                                           "y":  229,
+                                           "width":  467,
+                                           "height":  338,
+                                           "widthRatio":  0.7448,
+                                           "heightRatio":  0.5391,
+                                           "alphaPixels":  95770,
+                                           "leftAnchorY":  364.02,
+                                           "rightAnchorY":  383.029
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  114,
+                                           "y":  148,
+                                           "width":  457,
+                                           "height":  416,
+                                           "widthRatio":  0.7289,
+                                           "heightRatio":  0.6635,
+                                           "alphaPixels":  105520,
+                                           "leftAnchorY":  313.1,
+                                           "rightAnchorY":  385.242
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  102,
+                                           "y":  141,
+                                           "width":  475,
+                                           "height":  337,
+                                           "widthRatio":  0.7576,
+                                           "heightRatio":  0.5375,
+                                           "alphaPixels":  99916,
+                                           "leftAnchorY":  260.085,
+                                           "rightAnchorY":  295.588
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  65,
+                                           "y":  142,
+                                           "width":  504,
+                                           "height":  355,
+                                           "widthRatio":  0.8038,
+                                           "heightRatio":  0.5662,
+                                           "alphaPixels":  92068,
+                                           "leftAnchorY":  386.132,
+                                           "rightAnchorY":  299.603
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/epic/siren-gorgone_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  88,
+                                           "y":  178,
+                                           "width":  473,
+                                           "height":  391,
+                                           "widthRatio":  0.7544,
+                                           "heightRatio":  0.6236,
+                                           "alphaPixels":  124532,
+                                           "leftAnchorY":  398.764,
+                                           "rightAnchorY":  346.691
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  66,
+                                           "y":  148,
+                                           "width":  480,
+                                           "height":  401,
+                                           "widthRatio":  0.7656,
+                                           "heightRatio":  0.6396,
+                                           "alphaPixels":  132488,
+                                           "leftAnchorY":  346.135,
+                                           "rightAnchorY":  347.743
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  86,
+                                           "y":  100,
+                                           "width":  487,
+                                           "height":  393,
+                                           "widthRatio":  0.7767,
+                                           "heightRatio":  0.6268,
+                                           "alphaPixels":  128522,
+                                           "leftAnchorY":  311.475,
+                                           "rightAnchorY":  265.997
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  60,
+                                           "y":  100,
+                                           "width":  482,
+                                           "height":  409,
+                                           "widthRatio":  0.7687,
+                                           "heightRatio":  0.6523,
+                                           "alphaPixels":  128145,
+                                           "leftAnchorY":  331.849,
+                                           "rightAnchorY":  270.799
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/epic/siren-hippocampus_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  124,
+                                           "y":  181,
+                                           "width":  459,
+                                           "height":  381,
+                                           "widthRatio":  0.7321,
+                                           "heightRatio":  0.6077,
+                                           "alphaPixels":  108765,
+                                           "leftAnchorY":  392.545,
+                                           "rightAnchorY":  347.513
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  69,
+                                           "y":  187,
+                                           "width":  466,
+                                           "height":  363,
+                                           "widthRatio":  0.7432,
+                                           "heightRatio":  0.5789,
+                                           "alphaPixels":  114411,
+                                           "leftAnchorY":  375.334,
+                                           "rightAnchorY":  352.692
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  111,
+                                           "y":  106,
+                                           "width":  477,
+                                           "height":  380,
+                                           "widthRatio":  0.7608,
+                                           "heightRatio":  0.6061,
+                                           "alphaPixels":  111504,
+                                           "leftAnchorY":  312.253,
+                                           "rightAnchorY":  274.786
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  47,
+                                           "y":  108,
+                                           "width":  490,
+                                           "height":  386,
+                                           "widthRatio":  0.7815,
+                                           "heightRatio":  0.6156,
+                                           "alphaPixels":  103532,
+                                           "leftAnchorY":  335.69,
+                                           "rightAnchorY":  276.704
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/epic/siren-medusa-eel_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  104,
+                                           "y":  198,
+                                           "width":  473,
+                                           "height":  373,
+                                           "widthRatio":  0.7544,
+                                           "heightRatio":  0.5949,
+                                           "alphaPixels":  86070,
+                                           "leftAnchorY":  403.544,
+                                           "rightAnchorY":  349.334
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  64,
+                                           "y":  194,
+                                           "width":  461,
+                                           "height":  370,
+                                           "widthRatio":  0.7352,
+                                           "heightRatio":  0.5901,
+                                           "alphaPixels":  90901,
+                                           "leftAnchorY":  404.743,
+                                           "rightAnchorY":  353.686
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  112,
+                                           "y":  113,
+                                           "width":  465,
+                                           "height":  368,
+                                           "widthRatio":  0.7416,
+                                           "heightRatio":  0.5869,
+                                           "alphaPixels":  83626,
+                                           "leftAnchorY":  319.468,
+                                           "rightAnchorY":  262.264
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  63,
+                                           "y":  113,
+                                           "width":  474,
+                                           "height":  381,
+                                           "widthRatio":  0.756,
+                                           "heightRatio":  0.6077,
+                                           "alphaPixels":  87495,
+                                           "leftAnchorY":  341.754,
+                                           "rightAnchorY":  266.488
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/epic/siren-orpheus-melodyfish_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  72,
+                                           "y":  139,
+                                           "width":  540,
+                                           "height":  434,
+                                           "widthRatio":  0.8612,
+                                           "heightRatio":  0.6922,
+                                           "alphaPixels":  137735,
+                                           "leftAnchorY":  379.284,
+                                           "rightAnchorY":  376.984
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  42,
+                                           "y":  121,
+                                           "width":  523,
+                                           "height":  479,
+                                           "widthRatio":  0.8341,
+                                           "heightRatio":  0.764,
+                                           "alphaPixels":  138191,
+                                           "leftAnchorY":  385.644,
+                                           "rightAnchorY":  392.267
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  71,
+                                           "y":  80,
+                                           "width":  544,
+                                           "height":  449,
+                                           "widthRatio":  0.8676,
+                                           "heightRatio":  0.7161,
+                                           "alphaPixels":  139489,
+                                           "leftAnchorY":  319.816,
+                                           "rightAnchorY":  329.676
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  37,
+                                           "y":  94,
+                                           "width":  544,
+                                           "height":  418,
+                                           "widthRatio":  0.8676,
+                                           "heightRatio":  0.6667,
+                                           "alphaPixels":  131967,
+                                           "leftAnchorY":  320.707,
+                                           "rightAnchorY":  337.229
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/epic/siren-talos_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  122,
+                                           "y":  163,
+                                           "width":  479,
+                                           "height":  373,
+                                           "widthRatio":  0.764,
+                                           "heightRatio":  0.5949,
+                                           "alphaPixels":  111406,
+                                           "leftAnchorY":  356.03,
+                                           "rightAnchorY":  385.664
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  67,
+                                           "y":  162,
+                                           "width":  479,
+                                           "height":  374,
+                                           "widthRatio":  0.764,
+                                           "heightRatio":  0.5965,
+                                           "alphaPixels":  112336,
+                                           "leftAnchorY":  355.84,
+                                           "rightAnchorY":  386.079
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  120,
+                                           "y":  88,
+                                           "width":  485,
+                                           "height":  367,
+                                           "widthRatio":  0.7735,
+                                           "heightRatio":  0.5853,
+                                           "alphaPixels":  111141,
+                                           "leftAnchorY":  278.445,
+                                           "rightAnchorY":  307.601
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  66,
+                                           "y":  86,
+                                           "width":  480,
+                                           "height":  372,
+                                           "widthRatio":  0.7656,
+                                           "heightRatio":  0.5933,
+                                           "alphaPixels":  112746,
+                                           "leftAnchorY":  279.307,
+                                           "rightAnchorY":  310.591
+                                       }
+                                   ]
+                    }
+                ]
+}

@@ -6,7 +6,9 @@ import cloudferryLayouts from './cloudferry-frame-layouts.json'
 import bluegroveLayouts from './bluegrove-frame-layouts.json'
 import primalLayouts from './primal-frame-layouts.json'
 import whitenightLayouts from './whitenight-frame-layouts.json'
-const registeredLayouts:Record<string,{cell:number;scale?:number;shifts:number[][]}>={...dreamabyssLayouts,...sharedCreatureLayouts,...pongdangLayouts,...bluegroveLayouts,...primalLayouts,...whitenightLayouts,...cloudferryLayouts,...scrapisleLayouts}
+import mukhyangLayouts from './mukhyang-frame-layouts.json'
+import sirenLayouts from './siren-frame-layouts.json'
+const registeredLayouts:Record<string,{cell:number;scale?:number;shifts:number[][]}>={...dreamabyssLayouts,...sharedCreatureLayouts,...pongdangLayouts,...bluegroveLayouts,...primalLayouts,...whitenightLayouts,...cloudferryLayouts,...scrapisleLayouts,...mukhyangLayouts,...sirenLayouts}
 // Frame registration measured from each sheet's rigid head/body (or nautilus shell).
 // Coordinates are in a 96x96 sampling grid, relative to each frame's center.
 const layouts:Record<string,readonly (readonly [number,number,number])[]>={

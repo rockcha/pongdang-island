@@ -1,0 +1,444 @@
+{
+  "tool": "built-in image_gen",
+  "artDirection": "User requested black ink painting creatures; overrides normal reference colors. Common/rare reference controls approachable silhouette; epic/mythic controls flowing fantasy silhouette. All fish originals face screen right.",
+  "browserVerified": false,
+  "assets": [
+    {
+      "id": "muk-inkdrop-puffer",
+      "rarity": "common",
+      "path": "fish/normal/muk-inkdrop-puffer_thumbnail.png",
+      "prompt": "Production collectible common game thumbnail. Subject: Round puffer made from one spreading black ink blot, tiny dry-brush spines, ivory belly and white dot eye.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-inkdrop-puffer",
+      "rarity": "common",
+      "path": "fish/normal/muk-inkdrop-puffer_sprite.png",
+      "prompt": "Make ONE SQUARE 2x2 animation sprite sheet, square canvas 1536x1536, four EQUAL SQUARE cells in exact regular grid. Reference is SAME CREATURE identity. Round puffer made from one spreading black ink blot, tiny dry-brush spines, ivory belly and white dot eye.. Keep its ink-wash palette and brushwork. Face SCREEN RIGHT in all four frames; head right tail left, no mirrored/front views. Four sequential natural swimming frames: tail bends left-neutral-right-neutral rhythm, fins flow; maintain SAME head/body anchor, body size, orientation in each cell. Only appendages move. Fully contain each subject in central 78-84% of EACH cell; at least 8% TRANSPARENT padding to ALL FOUR cell edges, including thin ink splashes, whiskers and fins. Nothing crosses center dividers or outer edges. True transparent background, no drawn grid no labels no text no water no paper. Full subject in each frame, not cropped. Ink fade stays inside margins.",
+      "correction": "Correct this sprite sheet for game slicing. Keep a SQUARE canvas with exactly FOUR EQUAL SQUARE cells 2x2. In EVERY cell UNIFORMLY REDUCE the ENTIRE creature and all ink splashes to 70 PERCENT of its current size around the cell center. Keep subject fully intact, same right-facing creature, same four animation poses, same ink brushwork. Leave a VERY WIDE fully transparent moat on ALL FOUR sides of EACH cell, approximately 15 percent of each cell width. No content touching central dividers or outer edges. Restore any previously clipped appendage. Maintain same body size across four frames and fixed head anchors. True transparent background, no grid, no text.",
+      "reference": "fish/normal/muk-inkdrop-puffer_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-brush-tail-shrimp",
+      "rarity": "common",
+      "path": "fish/normal/muk-brush-tail-shrimp_thumbnail.png",
+      "prompt": "Production collectible common game thumbnail. Subject: Small translucent gray ink shrimp with a pointed black calligraphy brush tail and fine whiskers.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-brush-tail-shrimp",
+      "rarity": "common",
+      "path": "fish/normal/muk-brush-tail-shrimp_sprite.png",
+      "prompt": "Make ONE SQUARE 2x2 animation sprite sheet, square canvas 1536x1536, four EQUAL SQUARE cells in exact regular grid. Reference is SAME CREATURE identity. Small translucent gray ink shrimp with a pointed black calligraphy brush tail and fine whiskers.. Keep its ink-wash palette and brushwork. Face SCREEN RIGHT in all four frames; head right tail left, no mirrored/front views. Four sequential natural walking frames: legs change step, antenna/tail softly follow; maintain SAME head/body anchor, body size, orientation in each cell. Only appendages move. Fully contain each subject in central 78-84% of EACH cell; at least 8% TRANSPARENT padding to ALL FOUR cell edges, including thin ink splashes, whiskers and fins. Nothing crosses center dividers or outer edges. True transparent background, no drawn grid no labels no text no water no paper. Full subject in each frame, not cropped. Ink fade stays inside margins.",
+      "correction": "Correct this sprite sheet for game slicing. Keep a SQUARE canvas with exactly FOUR EQUAL SQUARE cells 2x2. In EVERY cell UNIFORMLY REDUCE the ENTIRE creature and all ink splashes to 70 PERCENT of its current size around the cell center. Keep subject fully intact, same right-facing creature, same four animation poses, same ink brushwork. Leave a VERY WIDE fully transparent moat on ALL FOUR sides of EACH cell, approximately 15 percent of each cell width. No content touching central dividers or outer edges. Restore any previously clipped appendage. Maintain same body size across four frames and fixed head anchors. True transparent background, no grid, no text.",
+      "reference": "fish/normal/muk-brush-tail-shrimp_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-paperboat-hermit",
+      "rarity": "common",
+      "path": "fish/normal/muk-paperboat-hermit_thumbnail.png",
+      "prompt": "Production collectible common game thumbnail. Subject: Ink-painted hermit crab carrying a folded ivory hanji paper boat as shell, charcoal legs and tiny white dot eye.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-paperboat-hermit",
+      "rarity": "common",
+      "path": "fish/normal/muk-paperboat-hermit_sprite.png",
+      "prompt": "ONE SQUARE 2x2 sprite sheet, 1536x1536 square canvas, FOUR EQUAL SQUARE cells at exact half divisions. Reference is SAME CREATURE identity. Ink-painted hermit crab carrying a folded ivory hanji paper boat as shell, charcoal legs and tiny white dot eye.. Preserve ink-wash colors and exact design. Face SCREEN RIGHT in ALL FOUR cells, head right body/tail left; never front or left. Four distinct consecutive frames of gentle walking, foot ripples or legs take alternating steps, shell stays rigid. SAME face/head/body anchor and body size in every cell; only moving appendages change. Central 78-84% occupancy of EACH cell, minimum 8% clear transparent padding on every cell edge, all whiskers splashes and fins INSIDE margins. Nothing touches center dividers or outer border. Genuine alpha transparency, no paper background no grid no text no scene. Full creature in each cell.",
+      "correction": "Correct sprite sheet padding. Preserve exact four right-facing animation poses and creature identity, ink style, square 2x2 grid with equal square cells. UNIFORMLY SHRINK EACH ENTIRE SUBJECT including splashes/whiskers to 70 PERCENT of present size, inside its SAME cell, with fixed body anchors. Add wide clear transparent padding around ALL FOUR SIDES OF EVERY CELL, including center dividers. Restore cropped ends. Subjects should occupy only 65-75% of cell, all intact. Keep true alpha background, no text no grids no scenery. Same scale across frames.",
+      "reference": "fish/normal/muk-paperboat-hermit_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-inkstone-clam",
+      "rarity": "common",
+      "path": "fish/normal/muk-inkstone-clam_thumbnail.png",
+      "prompt": "Production collectible common game thumbnail. Subject: Flattened charcoal inkstone clam with open oval shell and a small black ink pearl, side profile opening to right.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-inkstone-clam",
+      "rarity": "common",
+      "path": "fish/normal/muk-inkstone-clam_sprite.png",
+      "prompt": "ONE SQUARE 2x2 sprite sheet, 1536x1536 square canvas, FOUR EQUAL SQUARE cells at exact half divisions. Reference is SAME CREATURE identity. Flattened charcoal inkstone clam with open oval shell and a small black ink pearl, side profile opening to right.. Preserve ink-wash colors and exact design. Face SCREEN RIGHT in ALL FOUR cells, head right body/tail left; never front or left. Four distinct consecutive frames of fixed position, shell gently opens and closes or tentacles gently curl; keep inkstone/base fixed. SAME face/head/body anchor and body size in every cell; only moving appendages change. Central 78-84% occupancy of EACH cell, minimum 8% clear transparent padding on every cell edge, all whiskers splashes and fins INSIDE margins. Nothing touches center dividers or outer border. Genuine alpha transparency, no paper background no grid no text no scene. Full creature in each cell.",
+      "correction": "Correct sprite sheet padding. Preserve exact four right-facing animation poses and creature identity, ink style, square 2x2 grid with equal square cells. UNIFORMLY SHRINK EACH ENTIRE SUBJECT including splashes/whiskers to 70 PERCENT of present size, inside its SAME cell, with fixed body anchors. Add wide clear transparent padding around ALL FOUR SIDES OF EVERY CELL, including center dividers. Restore cropped ends. Subjects should occupy only 65-75% of cell, all intact. Keep true alpha background, no text no grids no scenery. Same scale across frames.",
+      "reference": "fish/normal/muk-inkstone-clam_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-bleeding-tail-goldfish",
+      "rarity": "common",
+      "path": "fish/normal/muk-bleeding-tail-goldfish_thumbnail.png",
+      "prompt": "Production collectible common game thumbnail. Subject: Ivory goldfish drawn in soft black ink with a long flowing tail dissolving into gentle gray ink blooms.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-bleeding-tail-goldfish",
+      "rarity": "common",
+      "path": "fish/normal/muk-bleeding-tail-goldfish_sprite.png",
+      "prompt": "Make ONE SQUARE 2x2 animation sprite sheet, square canvas 1536x1536, four EQUAL SQUARE cells in exact regular grid. Reference is SAME CREATURE identity. Ivory goldfish drawn in soft black ink with a long flowing tail dissolving into gentle gray ink blooms.. Keep its ink-wash palette and brushwork. Face SCREEN RIGHT in all four frames; head right tail left, no mirrored/front views. Four sequential natural swimming frames: tail bends left-neutral-right-neutral rhythm, fins flow; maintain SAME head/body anchor, body size, orientation in each cell. Only appendages move. Fully contain each subject in central 78-84% of EACH cell; at least 8% TRANSPARENT padding to ALL FOUR cell edges, including thin ink splashes, whiskers and fins. Nothing crosses center dividers or outer edges. True transparent background, no drawn grid no labels no text no water no paper. Full subject in each frame, not cropped. Ink fade stays inside margins.",
+      "correction": "Correct this sprite sheet for game slicing. Keep a SQUARE canvas with exactly FOUR EQUAL SQUARE cells 2x2. In EVERY cell UNIFORMLY REDUCE the ENTIRE creature and all ink splashes to 70 PERCENT of its current size around the cell center. Keep subject fully intact, same right-facing creature, same four animation poses, same ink brushwork. Leave a VERY WIDE fully transparent moat on ALL FOUR sides of EACH cell, approximately 15 percent of each cell width. No content touching central dividers or outer edges. Restore any previously clipped appendage. Maintain same body size across four frames and fixed head anchors. True transparent background, no grid, no text.",
+      "reference": "fish/normal/muk-bleeding-tail-goldfish_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-inkdrop-snail",
+      "rarity": "common",
+      "path": "fish/normal/muk-inkdrop-snail_thumbnail.png",
+      "prompt": "Production collectible common game thumbnail. Subject: Tiny pale gray snail carrying translucent rounded shell containing a single suspended black ink droplet.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-inkdrop-snail",
+      "rarity": "common",
+      "path": "fish/normal/muk-inkdrop-snail_sprite.png",
+      "prompt": "ONE SQUARE 2x2 sprite sheet, 1536x1536 square canvas, FOUR EQUAL SQUARE cells at exact half divisions. Reference is SAME CREATURE identity. Tiny pale gray snail carrying translucent rounded shell containing a single suspended black ink droplet.. Preserve ink-wash colors and exact design. Face SCREEN RIGHT in ALL FOUR cells, head right body/tail left; never front or left. Four distinct consecutive frames of gentle walking, foot ripples or legs take alternating steps, shell stays rigid. SAME face/head/body anchor and body size in every cell; only moving appendages change. Central 78-84% occupancy of EACH cell, minimum 8% clear transparent padding on every cell edge, all whiskers splashes and fins INSIDE margins. Nothing touches center dividers or outer border. Genuine alpha transparency, no paper background no grid no text no scene. Full creature in each cell.",
+      "correction": "Correct sprite sheet padding. Preserve exact four right-facing animation poses and creature identity, ink style, square 2x2 grid with equal square cells. UNIFORMLY SHRINK EACH ENTIRE SUBJECT including splashes/whiskers to 70 PERCENT of present size, inside its SAME cell, with fixed body anchors. Add wide clear transparent padding around ALL FOUR SIDES OF EVERY CELL, including center dividers. Restore cropped ends. Subjects should occupy only 65-75% of cell, all intact. Keep true alpha background, no text no grids no scenery. Same scale across frames.",
+      "reference": "fish/normal/muk-inkdrop-snail_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-inkbean-whelk",
+      "rarity": "common",
+      "path": "fish/normal/muk-inkbean-whelk_thumbnail.png",
+      "prompt": "Production collectible common game thumbnail. Subject: Plump tiny black ink pond snail with bean-shaped dark shell and one bold ivory spiral, light gray foot.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-inkbean-whelk",
+      "rarity": "common",
+      "path": "fish/normal/muk-inkbean-whelk_sprite.png",
+      "prompt": "ONE SQUARE 2x2 sprite sheet, 1536x1536 square canvas, FOUR EQUAL SQUARE cells at exact half divisions. Reference is SAME CREATURE identity. Plump tiny black ink pond snail with bean-shaped dark shell and one bold ivory spiral, light gray foot.. Preserve ink-wash colors and exact design. Face SCREEN RIGHT in ALL FOUR cells, head right body/tail left; never front or left. Four distinct consecutive frames of gentle walking, foot ripples or legs take alternating steps, shell stays rigid. SAME face/head/body anchor and body size in every cell; only moving appendages change. Central 78-84% occupancy of EACH cell, minimum 8% clear transparent padding on every cell edge, all whiskers splashes and fins INSIDE margins. Nothing touches center dividers or outer border. Genuine alpha transparency, no paper background no grid no text no scene. Full creature in each cell.",
+      "correction": "Correct sprite sheet padding. Preserve exact four right-facing animation poses and creature identity, ink style, square 2x2 grid with equal square cells. UNIFORMLY SHRINK EACH ENTIRE SUBJECT including splashes/whiskers to 70 PERCENT of present size, inside its SAME cell, with fixed body anchors. Add wide clear transparent padding around ALL FOUR SIDES OF EVERY CELL, including center dividers. Restore cropped ends. Subjects should occupy only 65-75% of cell, all intact. Keep true alpha background, no text no grids no scenery. Same scale across frames.",
+      "reference": "fish/normal/muk-inkbean-whelk_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-single-stroke-minnow",
+      "rarity": "common",
+      "path": "fish/normal/muk-single-stroke-minnow_thumbnail.png",
+      "prompt": "Production collectible common game thumbnail. Subject: Small slender minnow created by a SINGLE tapered black brush stroke with white dot eye and two minimal ink fins.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-single-stroke-minnow",
+      "rarity": "common",
+      "path": "fish/normal/muk-single-stroke-minnow_sprite.png",
+      "prompt": "ONE SQUARE 2x2 sprite sheet, 1536x1536 square canvas, FOUR EQUAL SQUARE cells at exact half divisions. Reference is SAME CREATURE identity. Small slender minnow created by a SINGLE tapered black brush stroke with white dot eye and two minimal ink fins.. Preserve ink-wash colors and exact design. Face SCREEN RIGHT in ALL FOUR cells, head right body/tail left; never front or left. Four distinct consecutive frames of gentle swimming with sequential tail bends and flowing fins. SAME face/head/body anchor and body size in every cell; only moving appendages change. Central 78-84% occupancy of EACH cell, minimum 8% clear transparent padding on every cell edge, all whiskers splashes and fins INSIDE margins. Nothing touches center dividers or outer border. Genuine alpha transparency, no paper background no grid no text no scene. Full creature in each cell.",
+      "correction": "Correct sprite sheet padding. Preserve exact four right-facing animation poses and creature identity, ink style, square 2x2 grid with equal square cells. UNIFORMLY SHRINK EACH ENTIRE SUBJECT including splashes/whiskers to 70 PERCENT of present size, inside its SAME cell, with fixed body anchors. Add wide clear transparent padding around ALL FOUR SIDES OF EVERY CELL, including center dividers. Restore cropped ends. Subjects should occupy only 65-75% of cell, all intact. Keep true alpha background, no text no grids no scenery. Same scale across frames.",
+      "reference": "fish/normal/muk-single-stroke-minnow_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-seal-turtle",
+      "rarity": "rare",
+      "path": "fish/rare/muk-seal-turtle_thumbnail.png",
+      "prompt": "Production collectible rare game thumbnail. Subject: Ivory ink-wash sea turtle with a single vermilion seal motif on shell, dark brush flippers and white dot eye.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-seal-turtle",
+      "rarity": "rare",
+      "path": "fish/rare/muk-seal-turtle_sprite.png",
+      "prompt": "ONE SQUARE 2x2 sprite sheet, 1536x1536 square canvas, FOUR EQUAL SQUARE cells at exact half divisions. Reference is SAME CREATURE identity. Ivory ink-wash sea turtle with a single vermilion seal motif on shell, dark brush flippers and white dot eye.. Preserve ink-wash colors and exact design. Face SCREEN RIGHT in ALL FOUR cells, head right body/tail left; never front or left. Four distinct consecutive frames of gentle swimming with sequential tail bends and flowing fins. SAME face/head/body anchor and body size in every cell; only moving appendages change. Central 78-84% occupancy of EACH cell, minimum 8% clear transparent padding on every cell edge, all whiskers splashes and fins INSIDE margins. Nothing touches center dividers or outer border. Genuine alpha transparency, no paper background no grid no text no scene. Full creature in each cell.",
+      "correction": "Correct sprite sheet padding. Preserve exact four right-facing animation poses and creature identity, ink style, square 2x2 grid with equal square cells. UNIFORMLY SHRINK EACH ENTIRE SUBJECT including splashes/whiskers to 70 PERCENT of present size, inside its SAME cell, with fixed body anchors. Add wide clear transparent padding around ALL FOUR SIDES OF EVERY CELL, including center dividers. Restore cropped ends. Subjects should occupy only 65-75% of cell, all intact. Keep true alpha background, no text no grids no scenery. Same scale across frames.",
+      "reference": "fish/rare/muk-seal-turtle_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-brush-whisker-catfish",
+      "rarity": "rare",
+      "path": "fish/rare/muk-brush-whisker-catfish_thumbnail.png",
+      "prompt": "Production collectible rare game thumbnail. Subject: Charcoal ink catfish with broad head and long calligraphy brush-tipped whiskers, pale belly.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-brush-whisker-catfish",
+      "rarity": "rare",
+      "path": "fish/rare/muk-brush-whisker-catfish_sprite.png",
+      "prompt": "ONE SQUARE 2x2 sprite sheet, 1536x1536 square canvas, FOUR EQUAL SQUARE cells at exact half divisions. Reference is SAME CREATURE identity. Charcoal ink catfish with broad head and long calligraphy brush-tipped whiskers, pale belly.. Preserve ink-wash colors and exact design. Face SCREEN RIGHT in ALL FOUR cells, head right body/tail left; never front or left. Four distinct consecutive frames of gentle swimming with sequential tail bends and flowing fins. SAME face/head/body anchor and body size in every cell; only moving appendages change. Central 78-84% occupancy of EACH cell, minimum 8% clear transparent padding on every cell edge, all whiskers splashes and fins INSIDE margins. Nothing touches center dividers or outer border. Genuine alpha transparency, no paper background no grid no text no scene. Full creature in each cell.",
+      "correction": "Correct sprite sheet padding. Preserve exact four right-facing animation poses and creature identity, ink style, square 2x2 grid with equal square cells. UNIFORMLY SHRINK EACH ENTIRE SUBJECT including splashes/whiskers to 70 PERCENT of present size, inside its SAME cell, with fixed body anchors. Add wide clear transparent padding around ALL FOUR SIDES OF EVERY CELL, including center dividers. Restore cropped ends. Subjects should occupy only 65-75% of cell, all intact. Keep true alpha background, no text no grids no scenery. Same scale across frames.",
+      "reference": "fish/rare/muk-brush-whisker-catfish_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-inkstone-home-octopus",
+      "rarity": "rare",
+      "path": "fish/rare/muk-inkstone-home-octopus_thumbnail.png",
+      "prompt": "Production collectible rare game thumbnail. Subject: Small ink-wash octopus peeking rightward out of a low oval dark inkstone dish, curved flexible ink tentacles.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-inkstone-home-octopus",
+      "rarity": "rare",
+      "path": "fish/rare/muk-inkstone-home-octopus_sprite.png",
+      "prompt": "SQUARE GAME ANIMATION SHEET, EXACT 2x2 grid FOUR EQUAL SQUARE CELLS. Same creature as reference: Small ink-wash octopus peeking rightward out of a low oval dark inkstone dish, curved flexible ink tentacles.. Four consecutive poses: stationary base with tentacles curling in four successive poses. Keep identity, ink colors and SAME body size, face and torso position relative to each cell. Face SCREEN RIGHT in ALL frames, head right tail left, never front or left. IMPORTANT COMPOSITION: deliberately SMALL subjects, each whole creature including ALL tentacles and ink splashes fits inside CENTRAL 60 PERCENT of its OWN cell. Leave huge 20 PERCENT EMPTY TRANSPARENT MARGINS on EACH side of EACH cell. Do NOT fill cells with large creatures. No part may touch central dividers or outer border. One square canvas 1536x1536. True alpha transparent background, no drawn grid, no labels, no scenery no paper.",
+      "reference": "fish/rare/muk-inkstone-home-octopus_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-lotus-jellyfish",
+      "rarity": "rare",
+      "path": "fish/rare/muk-lotus-jellyfish_thumbnail.png",
+      "prompt": "Production collectible rare game thumbnail. Subject: Side-profile ink-wash jellyfish with layered ivory lotus petal bell and flowing fine black ink tentacles, drift toward right.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-lotus-jellyfish",
+      "rarity": "rare",
+      "path": "fish/rare/muk-lotus-jellyfish_sprite.png",
+      "prompt": "SQUARE GAME ANIMATION SHEET, EXACT 2x2 grid FOUR EQUAL SQUARE CELLS. Same creature as reference: Side-profile ink-wash jellyfish with layered ivory lotus petal bell and flowing fine black ink tentacles, drift toward right.. Four consecutive poses: bell/body gently contracting and relaxing, tentacles/fins following. Keep identity, ink colors and SAME body size, face and torso position relative to each cell. Face SCREEN RIGHT in ALL frames, head right tail left, never front or left. IMPORTANT COMPOSITION: deliberately SMALL subjects, each whole creature including ALL tentacles and ink splashes fits inside CENTRAL 60 PERCENT of its OWN cell. Leave huge 20 PERCENT EMPTY TRANSPARENT MARGINS on EACH side of EACH cell. Do NOT fill cells with large creatures. No part may touch central dividers or outer border. One square canvas 1536x1536. True alpha transparent background, no drawn grid, no labels, no scenery no paper.",
+      "reference": "fish/rare/muk-lotus-jellyfish_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-orchid-fin-betta",
+      "rarity": "rare",
+      "path": "fish/rare/muk-orchid-fin-betta_thumbnail.png",
+      "prompt": "Production collectible rare game thumbnail. Subject: Elegant ink betta fish with very long narrow fins shaped like black orchid leaves, pale gray body and negative white brush streaks.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-orchid-fin-betta",
+      "rarity": "rare",
+      "path": "fish/rare/muk-orchid-fin-betta_sprite.png",
+      "prompt": "SQUARE GAME ANIMATION SHEET, EXACT 2x2 grid FOUR EQUAL SQUARE CELLS. Same creature as reference: Elegant ink betta fish with very long narrow fins shaped like black orchid leaves, pale gray body and negative white brush streaks.. Four consecutive poses: tail and fins gently undulating; torso/head held steady. Keep identity, ink colors and SAME body size, face and torso position relative to each cell. Face SCREEN RIGHT in ALL frames, head right tail left, never front or left. IMPORTANT COMPOSITION: deliberately SMALL subjects, each whole creature including ALL tentacles and ink splashes fits inside CENTRAL 60 PERCENT of its OWN cell. Leave huge 20 PERCENT EMPTY TRANSPARENT MARGINS on EACH side of EACH cell. Do NOT fill cells with large creatures. No part may touch central dividers or outer border. One square canvas 1536x1536. True alpha transparent background, no drawn grid, no labels, no scenery no paper.",
+      "reference": "fish/rare/muk-orchid-fin-betta_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-plum-branch-seahorse",
+      "rarity": "rare",
+      "path": "fish/rare/muk-plum-branch-seahorse_thumbnail.png",
+      "prompt": "Production collectible rare game thumbnail. Subject: Black ink seahorse resembling a curved plum branch, a few vermilion plum blossoms, curled brushstroke tail.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-plum-branch-seahorse",
+      "rarity": "rare",
+      "path": "fish/rare/muk-plum-branch-seahorse_sprite.png",
+      "prompt": "SQUARE GAME ANIMATION SHEET, EXACT 2x2 grid FOUR EQUAL SQUARE CELLS. Same creature as reference: Black ink seahorse resembling a curved plum branch, a few vermilion plum blossoms, curled brushstroke tail.. Four consecutive poses: bell/body gently contracting and relaxing, tentacles/fins following. Keep identity, ink colors and SAME body size, face and torso position relative to each cell. Face SCREEN RIGHT in ALL frames, head right tail left, never front or left. IMPORTANT COMPOSITION: deliberately SMALL subjects, each whole creature including ALL tentacles and ink splashes fits inside CENTRAL 60 PERCENT of its OWN cell. Leave huge 20 PERCENT EMPTY TRANSPARENT MARGINS on EACH side of EACH cell. Do NOT fill cells with large creatures. No part may touch central dividers or outer border. One square canvas 1536x1536. True alpha transparent background, no drawn grid, no labels, no scenery no paper.",
+      "reference": "fish/rare/muk-plum-branch-seahorse_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-inkwashing-sea-otter",
+      "rarity": "rare",
+      "path": "fish/rare/muk-inkwashing-sea-otter_thumbnail.png",
+      "prompt": "Production collectible rare game thumbnail. Subject: Cute sea otter entirely drawn in charcoal and pale ink, floating on back in right-facing side profile, holding small inkstone and washing ink-stained paws.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-inkwashing-sea-otter",
+      "rarity": "rare",
+      "path": "fish/rare/muk-inkwashing-sea-otter_sprite.png",
+      "prompt": "SQUARE GAME ANIMATION SHEET, EXACT 2x2 grid FOUR EQUAL SQUARE CELLS. Same creature as reference: Cute sea otter entirely drawn in charcoal and pale ink, floating on back in right-facing side profile, holding small inkstone and washing ink-stained paws.. Four consecutive poses: tail and fins gently undulating; torso/head held steady. Keep identity, ink colors and SAME body size, face and torso position relative to each cell. Face SCREEN RIGHT in ALL frames, head right tail left, never front or left. IMPORTANT COMPOSITION: deliberately SMALL subjects, each whole creature including ALL tentacles and ink splashes fits inside CENTRAL 60 PERCENT of its OWN cell. Leave huge 20 PERCENT EMPTY TRANSPARENT MARGINS on EACH side of EACH cell. Do NOT fill cells with large creatures. No part may touch central dividers or outer border. One square canvas 1536x1536. True alpha transparent background, no drawn grid, no labels, no scenery no paper.",
+      "reference": "fish/rare/muk-inkwashing-sea-otter_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-bleeding-octopus",
+      "rarity": "rare",
+      "path": "fish/rare/muk-bleeding-octopus_thumbnail.png",
+      "prompt": "Production collectible rare game thumbnail. Subject: Octopus born of one soft round black ink blot with eight tapered bleeding ink tentacles, white dot eye, no props.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-bleeding-octopus",
+      "rarity": "rare",
+      "path": "fish/rare/muk-bleeding-octopus_sprite.png",
+      "prompt": "SQUARE GAME ANIMATION SHEET, EXACT 2x2 grid FOUR EQUAL SQUARE CELLS. Same creature as reference: Octopus born of one soft round black ink blot with eight tapered bleeding ink tentacles, white dot eye, no props.. Four consecutive poses: bell/body gently contracting and relaxing, tentacles/fins following. Keep identity, ink colors and SAME body size, face and torso position relative to each cell. Face SCREEN RIGHT in ALL frames, head right tail left, never front or left. IMPORTANT COMPOSITION: deliberately SMALL subjects, each whole creature including ALL tentacles and ink splashes fits inside CENTRAL 60 PERCENT of its OWN cell. Leave huge 20 PERCENT EMPTY TRANSPARENT MARGINS on EACH side of EACH cell. Do NOT fill cells with large creatures. No part may touch central dividers or outer border. One square canvas 1536x1536. True alpha transparent background, no drawn grid, no labels, no scenery no paper.",
+      "reference": "fish/rare/muk-bleeding-octopus_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-scroll-seadragon",
+      "rarity": "epic",
+      "path": "fish/epic/muk-scroll-seadragon_thumbnail.png",
+      "prompt": "Production collectible epic game thumbnail. Subject: Long fluid ink-wash sea dragon shaped like unfurling ivory scroll with black mountain strokes along body, brushlike fins, subtle jade light, head at right.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and flowing refined fantasy silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-scroll-seadragon",
+      "rarity": "epic",
+      "path": "fish/epic/muk-scroll-seadragon_sprite.png",
+      "prompt": "SQUARE GAME ANIMATION SHEET, EXACT 2x2 grid FOUR EQUAL SQUARE CELLS. Same creature as reference: Long fluid ink-wash sea dragon shaped like unfurling ivory scroll with black mountain strokes along body, brushlike fins, subtle jade light, head at right.. Four consecutive poses: tail and fins gently undulating; torso/head held steady. Keep identity, ink colors and SAME body size, face and torso position relative to each cell. Face SCREEN RIGHT in ALL frames, head right tail left, never front or left. IMPORTANT COMPOSITION: deliberately SMALL subjects, each whole creature including ALL tentacles and ink splashes fits inside CENTRAL 60 PERCENT of its OWN cell. Leave huge 20 PERCENT EMPTY TRANSPARENT MARGINS on EACH side of EACH cell. Do NOT fill cells with large creatures. No part may touch central dividers or outer border. One square canvas 1536x1536. True alpha transparent background, no drawn grid, no labels, no scenery no paper.",
+      "reference": "fish/epic/muk-scroll-seadragon_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-landscape-back-carp",
+      "rarity": "epic",
+      "path": "fish/epic/muk-landscape-back-carp_thumbnail.png",
+      "prompt": "Production collectible epic game thumbnail. Subject: Majestic ink carp with miniature ink mountain peaks and small pine silhouette rising seamlessly from back, ivory negative-space scales.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and flowing refined fantasy silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-landscape-back-carp",
+      "rarity": "epic",
+      "path": "fish/epic/muk-landscape-back-carp_sprite.png",
+      "prompt": "SQUARE GAME ANIMATION SHEET, EXACT 2x2 grid FOUR EQUAL SQUARE CELLS. Same creature as reference: Majestic ink carp with miniature ink mountain peaks and small pine silhouette rising seamlessly from back, ivory negative-space scales.. Four consecutive poses: tail and fins gently undulating; torso/head held steady. Keep identity, ink colors and SAME body size, face and torso position relative to each cell. Face SCREEN RIGHT in ALL frames, head right tail left, never front or left. IMPORTANT COMPOSITION: deliberately SMALL subjects, each whole creature including ALL tentacles and ink splashes fits inside CENTRAL 60 PERCENT of its OWN cell. Leave huge 20 PERCENT EMPTY TRANSPARENT MARGINS on EACH side of EACH cell. Do NOT fill cells with large creatures. No part may touch central dividers or outer border. One square canvas 1536x1536. True alpha transparent background, no drawn grid, no labels, no scenery no paper.",
+      "reference": "fish/epic/muk-landscape-back-carp_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-celadon-ink-whelk",
+      "rarity": "epic",
+      "path": "fish/epic/muk-celadon-ink-whelk_thumbnail.png",
+      "prompt": "Production collectible epic game thumbnail. Subject: Luminous pale celadon spiral whelk rendered in ink wash, black ink veins following shell crackle, fluid dark foot, restrained jade glow.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and flowing refined fantasy silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-celadon-ink-whelk",
+      "rarity": "epic",
+      "path": "fish/epic/muk-celadon-ink-whelk_sprite.png",
+      "prompt": "SQUARE GAME ANIMATION SHEET, EXACT 2x2 grid FOUR EQUAL SQUARE CELLS. Same creature as reference: Luminous pale celadon spiral whelk rendered in ink wash, black ink veins following shell crackle, fluid dark foot, restrained jade glow.. Four consecutive poses: foot rippling gently, antennae following, rigid shell anchored. Keep identity, ink colors and SAME body size, face and torso position relative to each cell. Face SCREEN RIGHT in ALL frames, head right tail left, never front or left. IMPORTANT COMPOSITION: deliberately SMALL subjects, each whole creature including ALL tentacles and ink splashes fits inside CENTRAL 60 PERCENT of its OWN cell. Leave huge 20 PERCENT EMPTY TRANSPARENT MARGINS on EACH side of EACH cell. Do NOT fill cells with large creatures. No part may touch central dividers or outer border. One square canvas 1536x1536. True alpha transparent background, no drawn grid, no labels, no scenery no paper.",
+      "reference": "fish/epic/muk-celadon-ink-whelk_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right"
+    },
+    {
+      "id": "muk-screenwing-lionfish",
+      "rarity": "epic",
+      "path": "fish/epic/muk-screenwing-lionfish_thumbnail.png",
+      "prompt": "Production collectible epic game thumbnail. Subject: Ink-wash lionfish with magnificent fan-shaped fins like folded ivory landscape painting screens, ink mountain silhouettes, charcoal body.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and flowing refined fantasy silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-screenwing-lionfish",
+      "rarity": "epic",
+      "path": "fish/epic/muk-screenwing-lionfish_sprite.png",
+      "prompt": "ONE SQUARE 2x2 animation sprite sheet, four EXACT equal SQUARE cells. Subject same as reference: Ink-wash lionfish with magnificent fan-shaped fins like folded ivory landscape painting screens, ink mountain silhouettes, charcoal body.. Four distinct natural consecutive swimming poses with flowing tail and fins, head/torso anchored.  Face SCREEN RIGHT in ALL FOUR frames. Same body scale, proportions and head coordinates in each cell. CRITICAL: Each entire subject must fit CENTRAL 60% of its own cell, leave 20% BLANK TRANSPARENT PADDING along EVERY side of EACH cell. Small centered creatures, not zoomed in. All whiskers, tail, serpent and ink splashes stay well inside margins. No cropping at ANY cell edge. Genuine transparent background no grid no text no background. Square canvas 1536x1536.",
+      "reference": "fish/epic/muk-screenwing-lionfish_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right",
+      "correction": "Fix ONLY sprite sheet spacing and anchor alignment. Same square canvas, 2x2 four equal square cells. Uniformly SHRINK each of the four whole subjects to 75% of its present size around its own cell center. Preserve all four distinct animation poses, right-facing heads, ink design and colors. Keep rigid head/body anchored at identical relative coordinates in all frames. Wide transparent moat on EVERY cell edge, at least 12 percent margin, no splashes or extremities touching center dividers/outer borders. Restore clipped ink wisps. No grid no text, true transparent background."
+    },
+    {
+      "id": "muk-unfinished-carp",
+      "rarity": "epic",
+      "path": "fish/epic/muk-unfinished-carp_thumbnail.png",
+      "prompt": "Production collectible epic game thumbnail. Subject: Ink-wash carp fully painted dark head and body transitioning into pale incomplete sketch outline tail; deliberately unfinished but fully visible silhouette.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and flowing refined fantasy silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-unfinished-carp",
+      "rarity": "epic",
+      "path": "fish/epic/muk-unfinished-carp_sprite.png",
+      "prompt": "ONE SQUARE 2x2 animation sprite sheet, four EXACT equal SQUARE cells. Subject same as reference: Ink-wash carp fully painted dark head and body transitioning into pale incomplete sketch outline tail; deliberately unfinished but fully visible silhouette.. Four distinct natural consecutive swimming poses with flowing tail and fins, head/torso anchored.  Face SCREEN RIGHT in ALL FOUR frames. Same body scale, proportions and head coordinates in each cell. CRITICAL: Each entire subject must fit CENTRAL 60% of its own cell, leave 20% BLANK TRANSPARENT PADDING along EVERY side of EACH cell. Small centered creatures, not zoomed in. All whiskers, tail, serpent and ink splashes stay well inside margins. No cropping at ANY cell edge. Genuine transparent background no grid no text no background. Square canvas 1536x1536.",
+      "reference": "fish/epic/muk-unfinished-carp_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right",
+      "correction": "Fix ONLY sprite sheet spacing and anchor alignment. Same square canvas, 2x2 four equal square cells. Uniformly SHRINK each of the four whole subjects to 75% of its present size around its own cell center. Preserve all four distinct animation poses, right-facing heads, ink design and colors. Keep rigid head/body anchored at identical relative coordinates in all frames. Wide transparent moat on EVERY cell edge, at least 12 percent margin, no splashes or extremities touching center dividers/outer borders. Restore clipped ink wisps. No grid no text, true transparent background."
+    },
+    {
+      "id": "muk-broken-ink-whale",
+      "rarity": "epic",
+      "path": "fish/epic/muk-broken-ink-whale_thumbnail.png",
+      "prompt": "Production collectible epic game thumbnail. Subject: Large serene whale made of layered pale ink washes overlaid with dark bleeding brushwork, huge white negative-space belly, flowing brush tail.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and flowing refined fantasy silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-broken-ink-whale",
+      "rarity": "epic",
+      "path": "fish/epic/muk-broken-ink-whale_sprite.png",
+      "prompt": "ONE SQUARE 2x2 animation sprite sheet, four EXACT equal SQUARE cells. Subject same as reference: Large serene whale made of layered pale ink washes overlaid with dark bleeding brushwork, huge white negative-space belly, flowing brush tail.. Four distinct natural consecutive swimming poses with flowing tail and fins, head/torso anchored.  Face SCREEN RIGHT in ALL FOUR frames. Same body scale, proportions and head coordinates in each cell. CRITICAL: Each entire subject must fit CENTRAL 60% of its own cell, leave 20% BLANK TRANSPARENT PADDING along EVERY side of EACH cell. Small centered creatures, not zoomed in. All whiskers, tail, serpent and ink splashes stay well inside margins. No cropping at ANY cell edge. Genuine transparent background no grid no text no background. Square canvas 1536x1536.",
+      "reference": "fish/epic/muk-broken-ink-whale_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right",
+      "correction": "Fix ONLY sprite sheet spacing and anchor alignment. Same square canvas, 2x2 four equal square cells. Uniformly SHRINK each of the four whole subjects to 75% of its present size around its own cell center. Preserve all four distinct animation poses, right-facing heads, ink design and colors. Keep rigid head/body anchored at identical relative coordinates in all frames. Wide transparent moat on EVERY cell edge, at least 12 percent margin, no splashes or extremities touching center dividers/outer borders. Restore clipped ink wisps. No grid no text, true transparent background."
+    },
+    {
+      "id": "muk-hyeonmu",
+      "rarity": "mythic",
+      "path": "fish/mythic/muk-hyeonmu_thumbnail.png",
+      "prompt": "Production collectible mythic game thumbnail. Subject: Mythic HYEONMU black tortoise entwined with serpent, BOTH heads clearly facing right. Huge monumental turtle ink-black shell with white negative-space geometric scutes, long black serpent coiling shell and rising over right-facing turtle head. Bold powerful Korean sumi ink brushwork, dry brush white streaks, tiny jade eyes only, subtle silver mist, no colored armor or jewels.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and flowing refined fantasy silhouette, do not copy its colors stars mascot or background. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward movement toward the right, never backward. Keep this orientation in thumbnail and ALL FOUR future animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-hyeonmu",
+      "rarity": "mythic",
+      "path": "fish/mythic/muk-hyeonmu_sprite.png",
+      "prompt": "ONE SQUARE 2x2 animation sprite sheet, four EXACT equal SQUARE cells. Subject same as reference: Mythic HYEONMU black tortoise entwined with serpent, BOTH heads clearly facing right. Huge monumental turtle ink-black shell with white negative-space geometric scutes, long black serpent coiling shell and rising over right-facing turtle head. Bold powerful Korean sumi ink brushwork, dry brush white streaks, tiny jade eyes only, subtle silver mist, no colored armor or jewels.. Four distinct natural consecutive walking steps with rigid shell/body anchored, serpent gently swaying over shell. Turtle feet take subtle alternate steps; serpent head stays right-facing and coils gently shift. Face SCREEN RIGHT in ALL FOUR frames. Same body scale, proportions and head coordinates in each cell. CRITICAL: Each entire subject must fit CENTRAL 60% of its own cell, leave 20% BLANK TRANSPARENT PADDING along EVERY side of EACH cell. Small centered creatures, not zoomed in. All whiskers, tail, serpent and ink splashes stay well inside margins. No cropping at ANY cell edge. Genuine transparent background no grid no text no background. Square canvas 1536x1536.",
+      "reference": "fish/mythic/muk-hyeonmu_thumbnail.png",
+      "referenceRole": "Same creature identity",
+      "facing": "right",
+      "correction": "Fix ONLY sprite sheet spacing and anchor alignment. Same square canvas, 2x2 four equal square cells. Uniformly SHRINK each of the four whole subjects to 75% of its present size around its own cell center. Preserve all four distinct animation poses, right-facing heads, ink design and colors. Keep rigid head/body anchored at identical relative coordinates in all frames. Wide transparent moat on EVERY cell edge, at least 12 percent margin, no splashes or extremities touching center dividers/outer borders. Restore clipped ink wisps. No grid no text, true transparent background."
+    },
+    {
+      "id": "muk-single-stroke-grass",
+      "rarity": "common",
+      "path": "decorations/normal/muk-single-stroke-grass_thumbnail.png",
+      "prompt": "Production collectible common game thumbnail. Subject: Three slender aquatic grass blades formed by three tapered black ink brush strokes with pale gray base.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Single isolated aquarium decoration, grounded stable silhouette. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-pale-ink-pebbles",
+      "rarity": "common",
+      "path": "decorations/normal/muk-pale-ink-pebbles_thumbnail.png",
+      "prompt": "Production collectible common game thumbnail. Subject: A small cluster of three rounded pebbles painted with overlapping pale gray ink washes and subtle dark edges.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Single isolated aquarium decoration, grounded stable silhouette. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-inkdot-moss-rock",
+      "rarity": "common",
+      "path": "decorations/normal/muk-inkdot-moss-rock_thumbnail.png",
+      "prompt": "Production collectible common game thumbnail. Subject: One rough dry-brush gray rock with clusters of tiny dark ink dots forming moss on top.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Single isolated aquarium decoration, grounded stable silhouette. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    },
+    {
+      "id": "muk-drybrush-pine",
+      "rarity": "rare",
+      "path": "decorations/rare/muk-drybrush-pine_thumbnail.png",
+      "prompt": "Production collectible rare game thumbnail. Subject: Elegant crooked miniature Korean pine on small rock, entirely painted with dry black ink brushwork, broken white brush grain and simple needle clusters.. USER ART DIRECTION OVERRIDES reference palette/material: the creature/object ITSELF is painted from Korean black ink, dry brush grain, ivory negative space and watery gray ink bleeds; not a normal colorful animal with ink accessories. Reference image only for friendly readable proportions and compact approachable game silhouette, do not copy its colors stars mascot or background. Single isolated aquarium decoration, grounded stable silhouette. One full subject, square canvas 1024x1024, genuine transparent background, whole silhouette within central 80 percent, clear padding all sides including thin whiskers and fading ink. Small white eye where anatomically applicable, no forced faces on objects. No text, no label, no watermark, no paper background, no scene, no checkerboard.",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Style proportions only; user ink-wash direction overrides materials/colors"
+    }
+  ]
+}

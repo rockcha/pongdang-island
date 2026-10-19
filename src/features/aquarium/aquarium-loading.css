@@ -1,8 +1,6 @@
 .aquarium-background-enter { animation: aquarium-background-enter 240ms ease-out both; }
-.aquarium-loading-fish { animation: aquarium-loading-float 2s ease-in-out infinite; }
 @keyframes aquarium-background-enter { from { opacity: 0; } to { opacity: 1; } }
-@keyframes aquarium-loading-float { 0%,100% { transform: translateY(3px); } 50% { transform: translateY(-5px); } }
-@media (prefers-reduced-motion: reduce) { .aquarium-background-enter,.aquarium-loading-fish { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .aquarium-background-enter { animation: none; } }
 
 .aquarium-loading .tank-bubble { border-color: color-mix(in srgb, var(--primary) 45%, transparent); background: color-mix(in srgb, var(--primary) 8%, transparent); }
 .aquarium-loading .tank-bubble-lane { animation-duration: 4s !important; }

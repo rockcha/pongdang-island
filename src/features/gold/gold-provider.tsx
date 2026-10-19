@@ -1,4 +1,5 @@
 import { randomId } from '@/lib/random-id'
+import {createPortal} from 'react-dom'
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { useAuth } from '@/components/auth-provider'
@@ -26,14 +27,18 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
   const active = useRef(true)
   const locked = useRef(false)
   const pending = useRef<{ signature: string; id: string } | null>(null)
-  function apply(data: Awaited<ReturnType<typeof loadGold>>) {
+  const previousGold=useRef<number|null>(null),revision=useRef(0),refreshRequest=useRef(0)
+  function apply(data: Awaited<ReturnType<typeof loadGold>>,notifyGain=false) {
     if (!active.current) return
+    if(notifyGain&&previousGold.current!==null&&data.gold>previousGold.current)showDelta(data.gold-previousGold.current)
+    previousGold.current=data.gold;revision.current++
     setWallet({ gold: data.gold, inventory: data.inventory })
     setTestClaimed(data.testClaimed); setTestEnabled(data.testEnabled); setError('')
   }
   async function refresh() {
     if (!userId || locked.current) return
-    try { apply(await loadGold()) } catch (cause) { if (active.current) setError(goldError(cause)) }
+    const version=revision.current,request=++refreshRequest.current
+    try {const data=await loadGold();if(!locked.current&&version===revision.current&&request===refreshRequest.current)apply(data,true)} catch (cause) { if (active.current) setError(goldError(cause)) }
     finally { if (active.current) setLoading(false) }
   }
   useEffect(() => {
@@ -41,7 +46,8 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
     void refresh()
     const reload = () => { if (document.visibilityState === 'visible') void refresh() }
     window.addEventListener('focus', reload); window.addEventListener('online', reload);window.addEventListener('attendance-changed',reload)
-    return () => { active.current = false; window.removeEventListener('focus', reload); window.removeEventListener('online', reload);window.removeEventListener('attendance-changed',reload) }
+    window.addEventListener('wallet-changed',reload)
+    return () => { active.current = false; window.removeEventListener('focus', reload); window.removeEventListener('online', reload);window.removeEventListener('attendance-changed',reload);window.removeEventListener('wallet-changed',reload) }
     // AccountGold remounts when the authenticated user changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId])
@@ -94,9 +100,9 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
   }
   return <GoldContext.Provider value={{ wallet, transact, batchEffects, loading, busy:busy||groupBusy, error, testClaimed, testEnabled, refresh }}>
     {children}
-    <div className="pointer-events-none fixed inset-0 z-[100] flex items-center justify-center" aria-live="polite" aria-atomic="true">
+    {createPortal(<div data-gold-effects className="pointer-events-none fixed inset-0 z-[2147483000] flex items-center justify-center" aria-live="polite" aria-atomic="true">
       <div className="flex flex-col items-center gap-2">{effects.map(effect => <div key={effect.id} className={`gold-change flex items-center gap-2 py-1 ${effect.delta > 0 ? 'gold-change-gain' : 'gold-change-loss'}`}><span className="gold-change-number">{effect.delta > 0 ? '+' : '−'}{Math.abs(effect.delta).toLocaleString('ko-KR')}</span><GoldIcon className="gold-change-coin"/>{effect.delta>0&&<span aria-hidden="true"><i className="gold-change-sparkle"/><i className="gold-change-sparkle"/><i className="gold-change-sparkle"/></span>}<span className="sr-only">골드</span></div>)}</div>
-    </div>
+    </div>,document.body)}
   </GoldContext.Provider>
 }
 export function useGold() {

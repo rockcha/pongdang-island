@@ -1,0 +1,447 @@
+{
+  "generator": "built-in image_gen",
+  "icons": [
+    {
+      "id": "island",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a tiny green tropical island with one palm tree and a little cream cottage. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/island.png",
+      "file": "public/app-icons/island.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "3e6723cd5c7ffd88bfa70e0a67f60f78d70f30333f852e2219d5380c8c393e91",
+      "bytes": 21363
+    },
+    {
+      "id": "aquarium",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a small rounded glass aquarium containing one peach fish and mint seaweed. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/aquarium.png",
+      "file": "public/app-icons/aquarium.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "01b61dd8c2f5299f3eae03727399cf695014ce4cfc4dc20aa104a1fb1a35822c",
+      "bytes": 22126
+    },
+    {
+      "id": "map",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a folded cream nautical map with a simple mint island and peach location pin. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/map.png",
+      "file": "public/app-icons/map.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "2ed0ae00d3188ec9c9a4537c2ca3c8baca78abd2f282a8616a3a353602a3527a",
+      "bytes": 20922
+    },
+    {
+      "id": "shop",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a tiny cozy wooden shop stall with an apricot striped awning. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/shop.png",
+      "file": "public/app-icons/shop.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "8b3bc53a557e03811388253e5af685c22da7b953b8a5a070020c8eedcd98bf8d",
+      "bytes": 25897
+    },
+    {
+      "id": "shipyard",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a miniature fishing boat resting on wooden supports beside a tiny wooden mallet. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/shipyard.png",
+      "file": "public/app-icons/shipyard.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "872ebce886760abc4173a70fe72d008e5550bde4a2b5fb43c5d0d22802a7058e",
+      "bytes": 21543
+    },
+    {
+      "id": "expeditions",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a small cream and mint fishing boat with one peach sail and a simple outward arrow. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/expeditions.png",
+      "file": "public/app-icons/expeditions.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "562db6ca05521efb389c65b8097c0d785c9e77b7a842c160d0cea4476792691a",
+      "bytes": 18665
+    },
+    {
+      "id": "exchange",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a small wooden merchant balance scale with a fish on one pan and a starfish coin on the other. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/exchange.png",
+      "file": "public/app-icons/exchange.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "4dfb47b557ed780564a802c7e5bbaceb855aef17cee07db091aa87fcb685ecdd",
+      "bytes": 21457
+    },
+    {
+      "id": "savings",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: an open pearl cream clam holding three little golden starfish coins. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/savings.png",
+      "file": "public/app-icons/savings.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "870dff80afc578f2d0af6a6add0057b4bc3a4c5811323b0cf466c9ff656e382e",
+      "bytes": 20973
+    },
+    {
+      "id": "warehouse",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a little wooden seaside warehouse with a mint roof and one supply crate. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/warehouse.png",
+      "file": "public/app-icons/warehouse.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "eec29e215d9d80d21fe5ca1059d2bb87851454cbd78ee73a66e120681e7a1736",
+      "bytes": 27622
+    },
+    {
+      "id": "arcade",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a compact caramel arcade game machine with a mint screen and peach joystick. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/arcade.png",
+      "file": "public/app-icons/arcade.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "6a7c849fb8529e27c35b6ee7980831c6b47d6fc7c14c8a1e12a45d01329a5c38",
+      "bytes": 22426
+    },
+    {
+      "id": "lighthouse",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a little cream and peach striped lighthouse with two warm light beams. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/lighthouse.png",
+      "file": "public/app-icons/lighthouse.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "12b816bf46f8ba23fbcb122f75abbc6dfd011ad8af3c482fecbc4c0a030e1eea",
+      "bytes": 17805
+    },
+    {
+      "id": "mailbox",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a small peach seaside mailbox with a cream envelope peeking out. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/mailbox.png",
+      "file": "public/app-icons/mailbox.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "00c6ca418d05db90eab42c96d389b2695d7872b245b11d4c9c14bcdd8bf8f907",
+      "bytes": 17092
+    },
+    {
+      "id": "plaza",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a small island village fountain with a simple peach starfish ornament. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/plaza.png",
+      "file": "public/app-icons/plaza.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "422469fd187cb54801616d016a77b3a85e16f90af2cfd9b9044af486fa26743d",
+      "bytes": 24043
+    },
+    {
+      "id": "list",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a small cream clipboard with three simple list lines and a tiny peach fish pictogram. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/list.png",
+      "file": "public/app-icons/list.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "f8a2282750db82ee5778ad086b322c3fe6f3e1ecb42c21e1f1793f2e780a52ad",
+      "bytes": 17563
+    },
+    {
+      "id": "storage",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a wooden storage chest with an open lid showing one peach fish and a small cream seashell. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/storage.png",
+      "file": "public/app-icons/storage.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "ba6dbef643d90af3086a8e8c60ebb63a92546b2768d8fd27b24f7bdce7c2ce07",
+      "bytes": 25550
+    },
+    {
+      "id": "theme",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a small framed underwater landscape with mint seaweed and a peach sun. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/theme.png",
+      "file": "public/app-icons/theme.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "4000370bbdce3643bc2badae05bfa9ba6bb1a005791e97ee0900812009690c1e",
+      "bytes": 24352
+    },
+    {
+      "id": "collection",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: an open cream illustrated field guide book showing a peach fish on one page and a mint shell on the other. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/collection.png",
+      "file": "public/app-icons/collection.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "ef0f5e732b46e6fffaf90d06235d646f620b80ed74847d612c676671a67de47e",
+      "bytes": 24693
+    },
+    {
+      "id": "bait",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a small wooden bait tub with a friendly pink worm curling over its rim. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/bait.png",
+      "file": "public/app-icons/bait.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "8bcbd58bb98b85d25483897d14e8d6e8ac5263e913ce533d9e418815651d7482",
+      "bytes": 18844
+    },
+    {
+      "id": "rod",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: one short curved wooden fishing rod with a tiny peach float and mint reel. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
+      "source": "assets/app-icons/source/rod.png",
+      "file": "public/app-icons/rod.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "5a960211ef057aab15d9115fbd525cd9a5abc26b36e5edc2f3855e9b90dd4262",
+      "bytes": 11581
+    },
+    {
+      "id": "profile",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a single smiling friendly rounded island villager portrait wearing a tiny peach starfish pin. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Immediately readable at 24 to 40 pixels. Centered compact composition occupies 70 percent of square canvas with generous transparent margins. Transparent background with alpha. No text, no letters, no numerals, no surrounding tile or circle, no photorealistic texture, no glossy 3D.",
+      "source": "assets/app-icons/source/profile.png",
+      "file": "public/app-icons/profile.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "304453ffa6aa26d703db9e24f55cc93e27eca3bf793fa82e59bb6ba20f2d55f8",
+      "bytes": 19912
+    },
+    {
+      "id": "settings",
+      "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a simple warm caramel cogwheel with a mint center. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Immediately readable at 24 to 40 pixels. Centered compact composition occupies 70 percent of square canvas with generous transparent margins. Transparent background with alpha. No text, no letters, no numerals, no surrounding tile or circle, no photorealistic texture, no glossy 3D.",
+      "source": "assets/app-icons/source/settings.png",
+      "file": "public/app-icons/settings.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "51206d482d9a79588a1a75c5247669b536eb72b718f328999289025781bd17a4",
+      "bytes": 16165
+    },
+    {
+      "id": "attendance",
+      "prompt": "Create a single game UI icon: a cream calendar with a single peach starfish check stamp. Match cozy hand drawn flat island game icons: dark warm brown smooth bold outlines, cream apricot caramel muted mint, rounded shapes, minimal shading, no text, no border frame, no scenery, no photographic texture or gloss. Centered at 75% of square canvas, generous transparent padding. Clearly readable at 28px. Transparent background.",
+      "source": "assets/app-icons/source/attendance.png",
+      "file": "public/app-icons/attendance.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "889fc3fc7d8fe04e0ca347a690e2c5ebb9ceac209d64cb0ac75008f0cc1ee2b2",
+      "bytes": 16767
+    },
+    {
+      "id": "alerts",
+      "prompt": "Create a single game UI icon: a friendly golden caramel notification bell with a peach clapper. Match cozy hand drawn flat island game icons: dark warm brown smooth bold outlines, cream apricot caramel muted mint, rounded shapes, minimal shading, no text, no border frame, no scenery, no photographic texture or gloss. Centered at 75% of square canvas, generous transparent padding. Clearly readable at 28px. Transparent background.",
+      "source": "assets/app-icons/source/alerts.png",
+      "file": "public/app-icons/alerts.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "914fbe9175c8a322eb9202c1b401216c9e131d00a263734e0b5fbdaf215c23a6",
+      "bytes": 14704
+    },
+    {
+      "id": "mail-notice",
+      "prompt": "Create a single game UI icon: a peach and cream megaphone with two small sound rays. Match cozy hand drawn flat island game icons: dark warm brown smooth bold outlines, cream apricot caramel muted mint, rounded shapes, minimal shading, no text, no border frame, no scenery, no photographic texture or gloss. Centered at 75% of square canvas, generous transparent padding. Clearly readable at 28px. Transparent background.",
+      "source": "assets/app-icons/source/mail-notice.png",
+      "file": "public/app-icons/mail-notice.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "c5254631c3b4402b2a6109e53f6362b26a447ea34da41a88f07ec9f3474e5655",
+      "bytes": 14289
+    },
+    {
+      "id": "mail-friend",
+      "prompt": "Create a single game UI icon: two friendly rounded cream and mint smiling island companions side by side. Match cozy hand drawn flat island game icons: dark warm brown smooth bold outlines, cream apricot caramel muted mint, rounded shapes, minimal shading, no text, no border frame, no scenery, no photographic texture or gloss. Centered at 75% of square canvas, generous transparent padding. Clearly readable at 28px. Transparent background.",
+      "source": "assets/app-icons/source/mail-friend.png",
+      "file": "public/app-icons/mail-friend.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "0333364e7481ebbbe21dc928c6f37205a02027b8ca1b10f0afc167b8853898ee",
+      "bytes": 16199
+    },
+    {
+      "id": "mail-news",
+      "prompt": "Create a single game UI icon: a cream envelope with a peach starfish seal and a tiny mint news sparkle. Match cozy hand drawn flat island game icons: dark warm brown smooth bold outlines, cream apricot caramel muted mint, rounded shapes, minimal shading, no text, no border frame, no scenery, no photographic texture or gloss. Centered at 75% of square canvas, generous transparent padding. Clearly readable at 28px. Transparent background.",
+      "source": "assets/app-icons/source/mail-news.png",
+      "file": "public/app-icons/mail-news.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "527ffed6ca3a0e1f0244ab55b0eeababff357e4af753e3463d03136d73182124",
+      "bytes": 13040
+    },
+    {
+      "id": "mail-gift",
+      "prompt": "Create a single game UI icon: a cream gift parcel tied with a peach ribbon and mint bow. Match cozy hand drawn flat island game icons: dark warm brown smooth bold outlines, cream apricot caramel muted mint, rounded shapes, minimal shading, no text, no border frame, no scenery, no photographic texture or gloss. Centered at 75% of square canvas, generous transparent padding. Clearly readable at 28px. Transparent background.",
+      "source": "assets/app-icons/source/mail-gift.png",
+      "file": "public/app-icons/mail-gift.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "65e69ef6696d9bc401bdd7685591b0d27244e6b53f4b5db93ecfcff516038aef",
+      "bytes": 15152
+    },
+    {
+      "id": "kind-fish",
+      "prompt": "Create one cozy island game category icon: a single plump peach orange fish with cream belly and mint fins, clear side silhouette. Same family as warm hand drawn island UI icons: smooth dark brown bold outlines, cream apricot caramel muted mint, rounded simple shapes, minimal shading. Readable at 24px. Centered at 80% of square canvas. Transparent background, generous padding. No text, no frame, no scenery, no photorealism or gloss.",
+      "source": "assets/app-icons/source/kind-fish.png",
+      "file": "public/app-icons/kind-fish.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "e263a96c90c703d3e1a7775249aa2d279a354bf7cbf072f89484a6281f741737",
+      "bytes": 16640
+    },
+    {
+      "id": "kind-decoration",
+      "prompt": "Create one cozy island game category icon: a tiny charming underwater cream stone house with peach roof and small mint seaweed at its base. Same family as warm hand drawn island UI icons: smooth dark brown bold outlines, cream apricot caramel muted mint, rounded simple shapes, minimal shading. Readable at 24px. Centered at 80% of square canvas. Transparent background, generous padding. No text, no frame, no scenery, no photorealism or gloss.",
+      "source": "assets/app-icons/source/kind-decoration.png",
+      "file": "public/app-icons/kind-decoration.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "88e7731c87f9dfb366d6f53c187ab9b803e796075b191af59e62679c5b3fc44c",
+      "bytes": 15912
+    },
+    {
+      "id": "kind-trash",
+      "prompt": "Create one cozy island game category icon: one crumpled cream discarded paper with a small faded peach mark, unmistakable litter, no trash bin. Same family as warm hand drawn island UI icons: smooth dark brown bold outlines, cream apricot caramel muted mint, rounded simple shapes, minimal shading. Readable at 24px. Centered at 80% of square canvas. Transparent background, generous padding. No text, no frame, no scenery, no photorealism or gloss.",
+      "source": "assets/app-icons/source/kind-trash.png",
+      "file": "public/app-icons/kind-trash.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "0b05a785da5abf15bd759bfa6261ce3c40450d35fa95b20979b5dd4a24de71d8",
+      "bytes": 15036
+    },
+    {
+      "id": "friend-invite",
+      "prompt": "Single cozy island game UI icon: one cream envelope with a mint friendly smiling face and a clear peach plus sign, representing inviting a friend. Warm hand drawn flat illustration, bold smooth dark brown outlines, cream peach caramel muted mint, rounded simple shapes, minimal shading. Center at 80 percent of square canvas with transparent background and margin. Readable at 28px. No text, no scenery, no rectangular frame, no photorealism or gloss. Match the existing friendly fish and island menu icon family.",
+      "source": "assets/app-icons/source/friend-invite.png",
+      "file": "public/app-icons/friend-invite.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "6d4ac2c7064b05d85dbfcb0c34892809f7b7ec0cd89108a212bdddb808b9017c",
+      "bytes": 16689
+    },
+    {
+      "id": "friend-remove",
+      "prompt": "Single cozy island game UI icon: two small rounded friendly cream and mint companion portraits with a small peach minus badge between them, representing removing friendship, gentle not hostile. Warm hand drawn flat illustration, bold smooth dark brown outlines, cream peach caramel muted mint, rounded simple shapes, minimal shading. Center at 80 percent of square canvas with transparent background and margin. Readable at 28px. No text, no scenery, no rectangular frame, no photorealism or gloss. Match the existing friendly fish and island menu icon family.",
+      "source": "assets/app-icons/source/friend-remove.png",
+      "file": "public/app-icons/friend-remove.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "1c3d1a05e71dcea199674e815e9be1c3baeea4512dbcc284c658918244f67ce1",
+      "bytes": 15584
+    },
+    {
+      "id": "gameplay",
+      "prompt": "Single cozy island game UI icon: one friendly cream and caramel game controller with peach buttons and a muted mint directional pad. Warm hand drawn flat illustration, bold smooth dark brown outlines, cream peach caramel muted mint palette, rounded simple silhouette, minimal shading. Readable at 28px. Center at 80 percent of a square transparent canvas with generous margins. No text, numbers, scenery, frame, photorealism or gloss. Match cute island menu icon family.",
+      "source": "assets/app-icons/source/gameplay.png",
+      "file": "public/app-icons/gameplay.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "9462e39366a0a15b4b9a1718c9d7158442d508a3dd974c2a66736c30d2e2fc63",
+      "bytes": 11829
+    },
+    {
+      "id": "ranking",
+      "prompt": "Single cozy island game UI icon: one golden caramel trophy cup with a peach starfish emblem and mint ribbon on a small cream base. Warm hand drawn flat illustration, bold smooth dark brown outlines, cream peach caramel muted mint palette, rounded simple silhouette, minimal shading. Readable at 28px. Center at 80 percent of a square transparent canvas with generous margins. No text, numbers, scenery, frame, photorealism or gloss. Match cute island menu icon family.",
+      "source": "assets/app-icons/source/ranking.png",
+      "file": "public/app-icons/ranking.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "6f1998b84f1c1a6285e480c98cc9962cc615b0803775e433801b3ee4da615d4c",
+      "bytes": 13349
+    },
+    {
+      "id": "camera",
+      "prompt": "Single cozy island game UI icon: a tiny rounded cream camera with caramel outline, a mint circular lens and peach shutter button. Warm hand drawn flat illustration, bold smooth dark brown outlines, cream peach caramel muted mint, rounded simple shapes and minimal shading. Readable at 28px. Centered at 80% on square transparent canvas with margin. No text, numbers, scenery, frame, realism or gloss. Match island illustrated menu icons.",
+      "source": "assets/app-icons/source/camera.png",
+      "file": "public/app-icons/camera.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "dc2b89416ae576b95d9f527d30a175efbbf2cc9a455d832ab93f7999b89b48fe",
+      "bytes": 10004
+    },
+    {
+      "id": "logout",
+      "prompt": "Single cozy island game UI icon: an open cream seaside cottage door with a peach arrow pointing outward to the right, recognizable sign out action. Warm hand drawn flat illustration, bold smooth dark brown outlines, cream peach caramel muted mint, rounded simple shapes and minimal shading. Readable at 28px. Centered at 80% on square transparent canvas with margin. No text, numbers, scenery, frame, realism or gloss. Match island illustrated menu icons.",
+      "source": "assets/app-icons/source/logout.png",
+      "file": "public/app-icons/logout.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "f0c7d4392ac38cfa373ce749c5a2237b89e04c96dcd1963a0594cad708f6a974",
+      "bytes": 18034
+    },
+    {
+      "id": "empty",
+      "prompt": "Create a single universal empty state icon for a cozy island game UI: one small open empty cream cardboard box, flaps gently open, clearly visible completely empty interior, a tiny light muted mint wisp above indicating nothing inside. No fish, animals, characters, objects inside, text, numbers, scenery or frame. Warm hand drawn flat illustration, smooth bold caramel brown outlines, cream beige peach muted mint colors, rounded very simple shapes and minimal shading. Gentle quiet neutral mood. Centered at 75% of square transparent background with generous margins. Readable at 48px. Match warm island menu illustration family.",
+      "source": "assets/app-icons/source/empty.png",
+      "file": "public/app-icons/empty.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "3d2db1b28bbbd9830c1a83696aa0477b2f4c9b7c836029a0b5a73fd1bffc1096",
+      "bytes": 13519
+    },
+    {
+      "id": "title",
+      "prompt": "Create a single cozy island game achievement title icon: a cream parchment ribbon badge with a peach starfish medal in the center and two muted mint ribbon tails. Represents earned honorary player titles. Smooth bold dark caramel brown outline, hand drawn flat cute illustration, cream apricot muted mint warm palette, minimal shading, simple readable silhouette at 28px. Centered 80% of square transparent canvas, generous padding. No text, numbers, scenery, rectangular frame, realism or gloss. Match the existing friendly island menu icon family.",
+      "generator": "built-in image_gen",
+      "source": "assets/app-icons/source/title.png",
+      "file": "public/app-icons/title.png",
+      "notificationFile": "public/notification-icons/title.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "9eff7d7c50162eb4310bc4c3bee9309ff6a43844c4dc2448f31fdcdbaf7812a5",
+      "bytes": 17315
+    },
+    {
+      "id": "all",
+      "prompt": "Create one cozy island game UI icon representing ALL categories: four rounded small tiles arranged in a clear 2 by 2 grid, alternating cream apricot and muted mint, smooth bold warm dark caramel brown outlines. Friendly hand drawn flat illustration with minimal shading, simple chunky silhouette readable at 28px. Centered at 80 percent of square transparent canvas with generous padding. No text, numbers, scenery, frame, photorealism or gloss. Match cozy illustrated bell, gift and envelope menu icons.",
+      "source": "assets/app-icons/source/all.png",
+      "file": "public/app-icons/all.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "9b3a439c1aa020a7534959f854fa41ab55848f35598e8d8aad62c23e4b80837d",
+      "bytes": 13674
+    },
+    {
+      "id": "notice-guide",
+      "prompt": "Create ONE minimal hand-drawn game UI icon: a cream rolled instruction scroll with a peach starfish seal. Cozy Korean island fishing game. Bold smooth warm dark brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, restrained shading. Immediately readable at 32 pixels. Centered compact composition with entire object visible, occupies 78 percent of square, clear margin. Transparent alpha background. No text, letters, numerals, tiles, enclosing circles, scenery, glossy 3D or photographic textures. Match a cute illustrated fishing game icon set.",
+      "source": "assets/app-icons/source/notice-guide.png",
+      "file": "public/app-icons/notice-guide.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "ae3d3a74728db66a4f6413c7f7a8271c694e7d222821bb2dc859666a629d8d64",
+      "bytes": 18030
+    },
+    {
+      "id": "notice-update",
+      "prompt": "Create ONE minimal hand-drawn game UI icon: a cream open parcel with a mint upward arrow and one small peach sparkle. Cozy Korean island fishing game. Bold smooth warm dark brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, restrained shading. Immediately readable at 32 pixels. Centered compact composition with entire object visible, occupies 78 percent of square, clear margin. Transparent alpha background. No text, letters, numerals, tiles, enclosing circles, scenery, glossy 3D or photographic textures. Match a cute illustrated fishing game icon set.",
+      "source": "assets/app-icons/source/notice-update.png",
+      "file": "public/app-icons/notice-update.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "5ebe83f710ae9238481286b6c827602eebc449a346361c93c759688d5e3b0fda",
+      "bytes": 16260
+    },
+    {
+      "id": "notice-maintenance",
+      "prompt": "Create ONE minimal hand-drawn game UI icon: a small caramel wrench crossed with a cream screwdriver. Cozy Korean island fishing game. Bold smooth warm dark brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, restrained shading. Immediately readable at 32 pixels. Centered compact composition with entire object visible, occupies 78 percent of square, clear margin. Transparent alpha background. No text, letters, numerals, tiles, enclosing circles, scenery, glossy 3D or photographic textures. Match a cute illustrated fishing game icon set.",
+      "source": "assets/app-icons/source/notice-maintenance.png",
+      "file": "public/app-icons/notice-maintenance.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "206a49d81821bd536ed0dfea5f10103c1a8e686d6d2f9cbc35304358bf132a66",
+      "bytes": 16765
+    },
+    {
+      "id": "notice-event",
+      "prompt": "Create ONE minimal hand-drawn game UI icon: a cream gift box with an apricot bow and two small mint confetti pieces. Cozy Korean island fishing game. Bold smooth warm dark brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, restrained shading. Immediately readable at 32 pixels. Centered compact composition with entire object visible, occupies 78 percent of square, clear margin. Transparent alpha background. No text, letters, numerals, tiles, enclosing circles, scenery, glossy 3D or photographic textures. Match a cute illustrated fishing game icon set.",
+      "source": "assets/app-icons/source/notice-event.png",
+      "file": "public/app-icons/notice-event.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "2919df3f4ad4bfc34626a8bed20e77865db3b78da7634150ae85af3a1b08b0c3",
+      "bytes": 18817
+    },
+    {
+      "id": "collection-v2",
+      "prompt": "Create ONE highly legible hand-drawn UI icon for a FISH ENCYCLOPEDIA in a cozy Korean island fishing game. A large closed cream field-guide book tilted slightly, with a single oversized bright apricot fish silhouette embossed on its front cover, dark warm brown bold rounded outline, mint bookmark sticking from top. Fish is the dominant focal point and must be recognizable at 24 pixels. Simple bold chunky shapes, almost no fine details, soft cream and peach flat colors, restrained shading. Book occupies 90% of the square canvas with only 5% transparent margin. Entire book and fish visible. Transparent alpha background. No text, letters, numbers, background scenes, circles, tile, photorealism, glossy 3D. Make it immediately obvious this is a book about fish.",
+      "source": "assets/app-icons/source/collection-v2.png",
+      "file": "public/app-icons/collection-v2.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "6253406bee4d23461047fe57f2fb77c1b59382c6b99cbb1f0e01053d5f8baa20",
+      "bytes": 30149
+    }
+  ]
+}

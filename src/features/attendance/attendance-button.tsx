@@ -1,5 +1,6 @@
+import {appArt} from '@/components/app-art'
 import {useEffect,useRef,useState} from 'react'
-import {CalendarCheck,Check} from 'lucide-react'
+import {Check} from 'lucide-react'
 import {toast} from 'sonner'
 import {useAuth} from '@/components/auth-provider'
 import {Button} from '@/components/ui/button'
@@ -7,6 +8,8 @@ import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle,DialogTr
 import {Tooltip,TooltipContent,TooltipProvider,TooltipTrigger} from '@/components/ui/tooltip'
 import {GoldIcon,useGold} from '@/features/gold/gold-provider'
 import {attendanceError,claimAttendance,loadAttendance,type AttendanceState} from './api'
+
+const {attendance:CalendarCheck}=appArt
 
 const shrimp='/items/baits/special.png'
 const epic='/items/baits/starlit-allure.png'
@@ -55,9 +58,9 @@ function Attendance(){
   finally{lock.current=false;if(alive.current)setBusy(false)}
  }
  return <Dialog open={open} onOpenChange={next=>{if(busy)return;setOpen(next);if(next)void refresh()}}>
-  <TooltipProvider><Tooltip><TooltipTrigger render={<DialogTrigger render={<Button variant="ghost" size="icon" className="relative size-10 min-h-10 min-w-10" aria-label={`출석체크${state?state.checkedIn?' · 오늘 출석 완료':' · 오늘 출석 전':''}`}/>}/> }><CalendarCheck className="size-5"/>{state&&!state.checkedIn&&<span data-attendance-pending className="header-indicator" aria-hidden="true"/>}</TooltipTrigger><TooltipContent>출석체크</TooltipContent></Tooltip></TooltipProvider>
+  <TooltipProvider><Tooltip><TooltipTrigger render={<DialogTrigger render={<Button variant="ghost" size="icon" className="relative size-10 min-h-10 min-w-10" aria-label={`출석체크${state?state.checkedIn?' · 오늘 출석 완료':' · 오늘 출석 전':''}`}/>}/> }><CalendarCheck className="size-7"/>{state&&!state.checkedIn&&<span data-attendance-pending className="header-indicator" aria-hidden="true"/>}</TooltipTrigger><TooltipContent>출석체크</TooltipContent></Tooltip></TooltipProvider>
   <DialogContent className="notification-sheet inset-x-0 bottom-0 top-auto left-0 flex max-h-[85dvh] w-full max-w-full translate-x-0 translate-y-0 flex-col gap-4 overflow-hidden rounded-t-2xl rounded-b-none p-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:left-1/2 sm:max-w-lg sm:-translate-x-1/2">
-   <DialogHeader className="shrink-0 pr-6"><DialogTitle className="flex items-center gap-2 text-xl font-normal"><CalendarCheck className="size-5 text-primary"/>퐁당섬 출석체크</DialogTitle><DialogDescription className="text-xs leading-5">연속 출석 체크만 인정합니다. 하루라도 끊기면 처음부터 시작!</DialogDescription></DialogHeader>
+   <DialogHeader className="shrink-0 pr-6"><DialogTitle className="flex items-center gap-2 text-xl font-normal"><CalendarCheck className="size-7 text-primary"/>퐁당섬 출석체크</DialogTitle><DialogDescription className="text-xs leading-5">연속 출석 체크만 인정합니다. 하루라도 끊기면 처음부터 시작!</DialogDescription></DialogHeader>
    {loading&&!state&&<p role="status" className="py-5 text-sm text-muted-foreground">출석지를 불러오는 중…</p>}
    {error&&<div role="alert" className="space-y-2 rounded-lg bg-destructive/5 p-3 text-xs text-destructive"><p>{error}</p><Button variant="outline" disabled={busy||loading} onClick={()=>void refresh()}>다시 불러오기</Button></div>}
    {state&&<>
@@ -74,3 +77,4 @@ function Attendance(){
   </DialogContent>
  </Dialog>
 }
+

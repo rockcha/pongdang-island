@@ -1,0 +1,36 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "path": "equipment/rods/mukhyang/reel-frame.png",
+      "prompt": "Production game equipment asset for cozy Korean fishing game, Mukhyang calligraphy fishing rod set. Polished hand-painted storybook inventory art, dark charcoal inkstone, warm ivory, muted celadon jade and small vermilion seal accent. Genuine transparent background, square canvas, isolated asset fully visible with generous 12 percent clear margins. No text, letters, UI, watermark, ground shadows, scenery. Only stationary fishing reel housing seen perfectly straight-on, circular inkstone disk exactly centered at canvas (50%,50%), outer diameter 76% canvas. Thick rounded dark charcoal stone rim with delicate celadon edging, shallow subtle carved mountain-and-water ink pattern in rim, small red seal square at bottom. Center is a flat dark recessed circular well, no crank no handle no spool rotor. Symmetric frontal geometry for rotating layer overlay."
+    },
+    {
+      "path": "equipment/rods/mukhyang/reel-rotor.png",
+      "prompt": "Production game equipment asset for cozy Korean fishing game, Mukhyang calligraphy fishing rod set. Polished hand-painted storybook inventory art, dark charcoal inkstone, warm ivory, muted celadon jade and small vermilion seal accent. Genuine transparent background, square canvas, isolated asset fully visible with generous 12 percent clear margins. No text, letters, UI, watermark, ground shadows, scenery. Only separate rotating fishing reel spool and crank seen perfectly straight-on. Rotation axle EXACTLY at canvas center (50%,50%). Circular ivory spool disk diameter 54% canvas centered at axle, a few broad black ink brush strokes decor on face and jade hub. A short dark metal crank extends diagonally toward bottom-right from center to a rounded celadon jade handle ending at (76%,70%). Everything within central 78% canvas. No outer reel housing or rod. Mechanically clear compact silhouette."
+    },
+    {
+      "path": "equipment/rods/mukhyang/float.png",
+      "prompt": "Production game equipment asset for cozy Korean fishing game, Mukhyang calligraphy fishing rod set. Polished hand-painted storybook inventory art, dark charcoal inkstone, warm ivory, muted celadon jade and small vermilion seal accent. Genuine transparent background, square canvas, isolated asset fully visible with generous 12 percent clear margins. No text, letters, UI, watermark, ground shadows, scenery. Only one upright fishing bobber exactly centered. Compact ivory teardrop float body with a single black brushstroke, thin vermilion antenna on top, short charcoal stem below, small jade band near bottom. Whole bobber height 76% canvas, width 23%, body center around (50%,50%). Frontal view, no line, no water, no additional objects. Readable at 24px."
+    },
+    {
+      "path": "equipment/rods/mukhyang/thumbnail.png",
+      "prompt": "Production game equipment asset for cozy Korean fishing game, Mukhyang calligraphy fishing rod set. Polished hand-painted storybook inventory art, dark charcoal inkstone, warm ivory, muted celadon jade and small vermilion seal accent. Genuine transparent background, square canvas, isolated asset fully visible with generous 12 percent clear margins. No text, letters, UI, watermark, ground shadows, scenery. Complete calligraphy-inspired bamboo fishing rod equipment set inventory thumbnail. One elegantly bent bamboo fishing rod from lower left to upper right, cream silk wrapped grip and a small red seal hanging charm, black brush-like rod tip, circular dark inkstone reel with ivory spool and celadon jade crank mounted near handle, delicate silver line to a matching ivory and vermilion bobber on right. Entire set within central 78% canvas. Strong readable silhouette and consistent cohesive design, no separate floating reel parts."
+    }
+  ],
+  "alignment": {
+    "frame": [
+      0.5,
+      0.5
+    ],
+    "rotor": [
+      0.483,
+      0.47
+    ],
+    "float": [
+      0.5,
+      0.52
+    ]
+  },
+  "browserVerified": false
+}

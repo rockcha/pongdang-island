@@ -6,8 +6,8 @@ import { LoginPage } from '@/pages/login-page'
 import { useAuth } from '@/components/auth-provider'
 import { checkEmailDomain } from '@/lib/email-validation'
 
-const { signUp, signOut } = vi.hoisted(() => ({ signUp: vi.fn(), signOut: vi.fn() }))
-vi.mock('@/lib/client', () => ({ createClient: () => ({ auth: { signUp, signOut } }) }))
+const { signUp, signOut,signInWithPassword } = vi.hoisted(() => ({ signUp: vi.fn(), signOut: vi.fn(),signInWithPassword:vi.fn() }))
+vi.mock('@/lib/client', () => ({ createClient: () => ({ auth: { signUp, signOut,signInWithPassword } }) }))
 vi.mock('@/components/auth-provider', () => ({ useAuth: vi.fn(), getNickname: () => '' }))
 vi.mock('@/lib/email-validation', async original => ({ ...await original<typeof import('@/lib/email-validation')>(), checkEmailDomain: vi.fn() }))
 vi.mock('sonner', () => ({ toast: { success: vi.fn() } }))
@@ -24,6 +24,28 @@ function signupForm() {
   fireEvent.change(screen.getByLabelText('비밀번호'), { target: { value: 'safe-pass-123' } })
 }
 describe('signup without email confirmation', () => {
+  it('toggles password visibility and clears it when switching to signup',()=>{
+    render(<MemoryRouter><LoginPage/></MemoryRouter>)
+    const password=screen.getByLabelText('비밀번호')
+    fireEvent.change(password,{target:{value:'safe-pass-123'}})
+    fireEvent.click(screen.getByRole('button',{name:'비밀번호 보기'}))
+    expect(password).toHaveProperty('type','text')
+    fireEvent.click(screen.getByRole('button',{name:'처음 오셨나요? 회원가입'}))
+    expect(password).toHaveProperty('type','password')
+    expect(password).toHaveProperty('value','')
+    expect(screen.getByRole('heading',{name:'섬에서의 첫 하루'})).toBeTruthy()
+    expect(screen.queryByText(/1 \/ 2 계정 만들기/)).toBeNull()
+  })
+  it('keeps email/password sign-in and the recovery link available',async()=>{
+    signInWithPassword.mockResolvedValue({error:null})
+    render(<MemoryRouter><LoginPage/></MemoryRouter>)
+    expect(screen.getByRole('link',{name:'비밀번호 찾기'}).getAttribute('href')).toBe('/forgot-password')
+    fireEvent.change(screen.getByLabelText('이메일'),{target:{value:'fisher@example.com'}})
+    fireEvent.change(screen.getByLabelText('비밀번호'),{target:{value:'safe-pass-123'}})
+    fireEvent.click(screen.getByRole('button',{name:'로그인'}))
+    await screen.findByRole('button',{name:'로그인'})
+    expect(signInWithPassword).toHaveBeenCalledWith({email:'fisher@example.com',password:'safe-pass-123'})
+  })
   it('signs up without email options, keeps the session and redirects to nickname setup', async () => {
     signUp.mockImplementation(async () => {
       vi.mocked(useAuth).mockReturnValue({ session: { user: { id: 'user' } } as Session, loading: false, error: null, recovery: false })

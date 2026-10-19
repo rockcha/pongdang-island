@@ -1,0 +1,130 @@
+{
+  "generator": "Built-in image_gen",
+  "styleReference": "dinghy.png",
+  "purpose": "Shared transparent vessel artwork for mobile expedition selection, active trips and shipyard",
+  "assets": [
+    {
+      "id": "dinghy",
+      "path": "dinghy.png",
+      "prompt": "Create one isolated miniature fishing boat game asset for a cozy Korean island game. Soft hand-painted storybook illustration, rounded charming shapes, subtle warm brown contours, cream and caramel wood palette with restrained accent color. Three-quarter SIDE view looking slightly down onto deck, bow points RIGHT. Entire boat and all rigging fully inside frame with 12 percent clear margin. Same scale composition and soft upper-left daylight across the set. Landscape subject centered in square canvas. Transparent background, no sea, no water, no ground, no horizon, no people, no text, no labels, no frame, no cast shadow outside boat. Clear silhouette at mobile 160px size, detailed but uncluttered. Subject: a small round honey wooden dinghy, tiny apricot canvas sunshade",
+      "width": 512,
+      "height": 512,
+      "sha256": "c6858632670f90ccfdd50c7c46acb1443020a7206b4883ddf70386dd26ff3ada",
+      "source": "assets/vessels/source/dinghy.png",
+      "storage_path": "vessels/dinghy.png",
+      "local_path": "assets/storage-upload/new/20261018-234954/vessels/dinghy.png"
+    },
+    {
+      "id": "breeze",
+      "path": "breeze.png",
+      "prompt": "Create one isolated miniature fishing boat game asset for a cozy Korean island game. Soft hand-painted storybook illustration, rounded charming shapes, subtle warm brown contours, cream and caramel wood palette with restrained accent color. Three-quarter SIDE view looking slightly down onto deck, bow points RIGHT. Entire boat and all rigging fully inside frame with 12 percent clear margin. Same scale composition and soft upper-left daylight across the set. Landscape subject centered in square canvas. Transparent background, no sea, no water, no ground, no horizon, no people, no text, no labels, no frame, no cast shadow outside boat. Clear silhouette at mobile 160px size, detailed but uncluttered. Subject: a slender wooden fishing sailboat, one large cream sail, mint accent. Use the supplied boat as STYLE REFERENCE ONLY: match its warm painterly material rendering, gentle contours and camera angle. Create this distinct vessel, not a duplicate. Keep the full subject within the transparent canvas with generous margins.",
+      "width": 512,
+      "height": 512,
+      "sha256": "2e8c74e3a0de9c66cd81fd9a1c10f08d9775d81e78e2e195243769bfe656254c",
+      "source": "assets/vessels/source/breeze.png",
+      "storage_path": "vessels/breeze.png",
+      "local_path": "assets/storage-upload/new/20261018-234954/vessels/breeze.png"
+    },
+    {
+      "id": "coastal",
+      "path": "coastal.png",
+      "prompt": "Create one isolated miniature fishing boat game asset for a cozy Korean island game. Soft hand-painted storybook illustration, rounded charming shapes, subtle warm brown contours, cream and caramel wood palette with restrained accent color. Three-quarter SIDE view looking slightly down onto deck, bow points RIGHT. Entire boat and all rigging fully inside frame with 12 percent clear margin. Same scale composition and soft upper-left daylight across the set. Landscape subject centered in square canvas. Transparent background, no sea, no water, no ground, no horizon, no people, no text, no labels, no frame, no cast shadow outside boat. Clear silhouette at mobile 160px size, detailed but uncluttered. Subject: a relaxed coastal fishing boat, wide deck with two wicker baskets and folded pale green awning. Use the supplied boat as STYLE REFERENCE ONLY: match its warm painterly material rendering, gentle contours and camera angle. Create this distinct vessel, not a duplicate. Keep the full subject within the transparent canvas with generous margins.",
+      "width": 512,
+      "height": 512,
+      "sha256": "cea58c8243c95adfef179474d350e2f2fdcbe3722dc0f93579bac9d3bb1cf44c",
+      "source": "assets/vessels/source/coastal.png",
+      "storage_path": "vessels/coastal.png",
+      "local_path": "assets/storage-upload/new/20261018-234954/vessels/coastal.png"
+    },
+    {
+      "id": "moonlight",
+      "path": "moonlight.png",
+      "prompt": "Create one isolated miniature fishing boat game asset for a cozy Korean island game. Soft hand-painted storybook illustration, rounded charming shapes, subtle warm brown contours, cream and caramel wood palette with restrained accent color. Three-quarter SIDE view looking slightly down onto deck, bow points RIGHT. Entire boat and all rigging fully inside frame with 12 percent clear margin. Same scale composition and soft upper-left daylight across the set. Landscape subject centered in square canvas. Transparent background, no sea, no water, no ground, no horizon, no people, no text, no labels, no frame, no cast shadow outside boat. Clear silhouette at mobile 160px size, detailed but uncluttered. Subject: a nighttime fishing boat, deep navy blue canopy and warm crescent moon lantern. Use the supplied boat as STYLE REFERENCE ONLY: match its warm painterly material rendering, gentle contours and camera angle. Create this distinct vessel, not a duplicate. Keep the full subject within the transparent canvas with generous margins.",
+      "width": 512,
+      "height": 512,
+      "sha256": "ae01b7edca910b8da05fb974ccaf80119e8fd150d5cf45b63fcc86765297c772",
+      "source": "assets/vessels/source/moonlight.png",
+      "storage_path": "vessels/moonlight.png",
+      "local_path": "assets/storage-upload/new/20261018-234954/vessels/moonlight.png"
+    },
+    {
+      "id": "fullcatch",
+      "path": "fullcatch.png",
+      "prompt": "Create one isolated miniature fishing boat game asset for a cozy Korean island game. Soft hand-painted storybook illustration, rounded charming shapes, subtle warm brown contours, cream and caramel wood palette with restrained accent color. Three-quarter SIDE view looking slightly down onto deck, bow points RIGHT. Entire boat and all rigging fully inside frame with 12 percent clear margin. Same scale composition and soft upper-left daylight across the set. Landscape subject centered in square canvas. Transparent background, no sea, no water, no ground, no horizon, no people, no text, no labels, no frame, no cast shadow outside boat. Clear silhouette at mobile 160px size, detailed but uncluttered. Subject: a broad chubby wooden cargo fishing boat, neatly stacked wooden fish crates. Use the supplied boat as STYLE REFERENCE ONLY: match its warm painterly material rendering, gentle contours and camera angle. Create this distinct vessel, not a duplicate. Keep the full subject within the transparent canvas with generous margins.",
+      "width": 512,
+      "height": 512,
+      "sha256": "e4ae5c0d397839eb6667e2e8bd1d7ec4efd2f803d8c2dd67217b2d65af757267",
+      "source": "assets/vessels/source/fullcatch.png",
+      "storage_path": "vessels/fullcatch.png",
+      "local_path": "assets/storage-upload/new/20261018-234954/vessels/fullcatch.png"
+    },
+    {
+      "id": "homesea",
+      "path": "homesea.png",
+      "prompt": "Create one isolated miniature fishing boat game asset for a cozy Korean island game. Soft hand-painted storybook illustration, rounded charming shapes, subtle warm brown contours, cream and caramel wood palette with restrained accent color. Three-quarter SIDE view looking slightly down onto deck, bow points RIGHT. Entire boat and all rigging fully inside frame with 12 percent clear margin. Same scale composition and soft upper-left daylight across the set. Landscape subject centered in square canvas. Transparent background, no sea, no water, no ground, no horizon, no people, no text, no labels, no frame, no cast shadow outside boat. Clear silhouette at mobile 160px size, detailed but uncluttered. Subject: a teal roof exploration fishing boat, prominent round brass compass instrument. Use the supplied boat as STYLE REFERENCE ONLY: match its warm painterly material rendering, gentle contours and camera angle. Create this distinct vessel, not a duplicate. Keep the full subject within the transparent canvas with generous margins.",
+      "width": 512,
+      "height": 512,
+      "sha256": "52d636df35b80eebc9d58366c7fe7324f1d5d994fe58f0dc657ecde143568173",
+      "source": "assets/vessels/source/homesea.png",
+      "storage_path": "vessels/homesea.png",
+      "local_path": "assets/storage-upload/new/20261018-234954/vessels/homesea.png"
+    },
+    {
+      "id": "shrimp",
+      "path": "shrimp.png",
+      "prompt": "Create one isolated miniature fishing boat game asset for a cozy Korean island game. Soft hand-painted storybook illustration, rounded charming shapes, subtle warm brown contours, cream and caramel wood palette with restrained accent color. Three-quarter SIDE view looking slightly down onto deck, bow points RIGHT. Entire boat and all rigging fully inside frame with 12 percent clear margin. Same scale composition and soft upper-left daylight across the set. Landscape subject centered in square canvas. Transparent background, no sea, no water, no ground, no horizon, no people, no text, no labels, no frame, no cast shadow outside boat. Clear silhouette at mobile 160px size, detailed but uncluttered. Subject: a shrimp fishing boat with peach pink buoys and small woven shrimp traps. Use the supplied boat as STYLE REFERENCE ONLY: match its warm painterly material rendering, gentle contours and camera angle. Create this distinct vessel, not a duplicate. Keep the full subject within the transparent canvas with generous margins.",
+      "width": 512,
+      "height": 512,
+      "sha256": "3d1eced55004f00cd0c22aef76b288a0bfd05714360faebf49d63348b3b75fe0",
+      "source": "assets/vessels/source/shrimp.png",
+      "storage_path": "vessels/shrimp.png",
+      "local_path": "assets/storage-upload/new/20261018-234954/vessels/shrimp.png"
+    },
+    {
+      "id": "salvage",
+      "path": "salvage.png",
+      "prompt": "Create one isolated miniature fishing boat game asset for a cozy Korean island game. Soft hand-painted storybook illustration, rounded charming shapes, subtle warm brown contours, cream and caramel wood palette with restrained accent color. Three-quarter SIDE view looking slightly down onto deck, bow points RIGHT. Entire boat and all rigging fully inside frame with 12 percent clear margin. Same scale composition and soft upper-left daylight across the set. Landscape subject centered in square canvas. Transparent background, no sea, no water, no ground, no horizon, no people, no text, no labels, no frame, no cast shadow outside boat. Clear silhouette at mobile 160px size, detailed but uncluttered. Subject: a weathered verdigris green salvage boat, one small copper salvage crane. Use the supplied boat as STYLE REFERENCE ONLY: match its warm painterly material rendering, gentle contours and camera angle. Create this distinct vessel, not a duplicate. Keep the full subject within the transparent canvas with generous margins.",
+      "width": 512,
+      "height": 512,
+      "sha256": "bf3991a16df8b2d7319552e4c684bdb96488b08971c018cfb3ca52cf35e68511",
+      "source": "assets/vessels/source/salvage.png",
+      "storage_path": "vessels/salvage.png",
+      "local_path": "assets/storage-upload/new/20261018-234954/vessels/salvage.png"
+    },
+    {
+      "id": "candy",
+      "path": "candy.png",
+      "prompt": "Create one isolated miniature fishing boat game asset for a cozy Korean island game. Soft hand-painted storybook illustration, rounded charming shapes, subtle warm brown contours, cream and caramel wood palette with restrained accent color. Three-quarter SIDE view looking slightly down onto deck, bow points RIGHT. Entire boat and all rigging fully inside frame with 12 percent clear margin. Same scale composition and soft upper-left daylight across the set. Landscape subject centered in square canvas. Transparent background, no sea, no water, no ground, no horizon, no people, no text, no labels, no frame, no cast shadow outside boat. Clear silhouette at mobile 160px size, detailed but uncluttered. Subject: a whimsical violet canopy smuggler fishing boat, closed wooden cargo chest glowing faint golden star light. Use the supplied boat as STYLE REFERENCE ONLY: match its warm painterly material rendering, gentle contours and camera angle. Create this distinct vessel, not a duplicate. Keep the full subject within the transparent canvas with generous margins.",
+      "width": 512,
+      "height": 512,
+      "sha256": "cfb09ec2df416d5949e123fb6aa3d03e6b166bdf501a28af19109dc73fa51a99",
+      "source": "assets/vessels/source/candy.png",
+      "storage_path": "vessels/candy.png",
+      "local_path": "assets/storage-upload/new/20261018-234954/vessels/candy.png"
+    },
+    {
+      "id": "discovery",
+      "path": "discovery.png",
+      "prompt": "Create one isolated miniature fishing boat game asset for a cozy Korean island game. Soft hand-painted storybook illustration, rounded charming shapes, subtle warm brown contours, cream and caramel wood palette with restrained accent color. Three-quarter SIDE view looking slightly down onto deck, bow points RIGHT. Entire boat and all rigging fully inside frame with 12 percent clear margin. Same scale composition and soft upper-left daylight across the set. Landscape subject centered in square canvas. Transparent background, no sea, no water, no ground, no horizon, no people, no text, no labels, no frame, no cast shadow outside boat. Clear silhouette at mobile 160px size, detailed but uncluttered. Subject: a pearl ivory exploration fishing boat, large conch shell shaped observation instrument. Use the supplied boat as STYLE REFERENCE ONLY: match its warm painterly material rendering, gentle contours and camera angle. Create this distinct vessel, not a duplicate. Keep the full subject within the transparent canvas with generous margins.",
+      "width": 512,
+      "height": 512,
+      "sha256": "8e7b14e616a17972c7d5db66a2698923e6165ee5e462f09de523c8c7e184a07c",
+      "source": "assets/vessels/source/discovery.png",
+      "storage_path": "vessels/discovery.png",
+      "local_path": "assets/storage-upload/new/20261018-234954/vessels/discovery.png"
+    },
+    {
+      "id": "starlit",
+      "path": "starlit.png",
+      "prompt": "Create one isolated miniature fishing boat game asset for a cozy Korean island game. Soft hand-painted storybook illustration, rounded charming shapes, subtle warm brown contours, cream and caramel wood palette with restrained accent color. Three-quarter SIDE view looking slightly down onto deck, bow points RIGHT. Entire boat and all rigging fully inside frame with 12 percent clear margin. Same scale composition and soft upper-left daylight across the set. Landscape subject centered in square canvas. Transparent background, no sea, no water, no ground, no horizon, no people, no text, no labels, no frame, no cast shadow outside boat. Clear silhouette at mobile 160px size, detailed but uncluttered. Subject: a deep navy miniature deep sea research ship, round diving capsule equipment and subtle silver star glow. Use the supplied boat as STYLE REFERENCE ONLY: match its warm painterly material rendering, gentle contours and camera angle. Create this distinct vessel, not a duplicate. Keep the full subject within the transparent canvas with generous margins.",
+      "width": 512,
+      "height": 512,
+      "sha256": "3b4df9a584da1e0b6fecb342a14728b592203d1979fe98900d1ce7302edc2b2f",
+      "source": "assets/vessels/source/starlit.png",
+      "storage_path": "vessels/starlit.png",
+      "local_path": "assets/storage-upload/new/20261018-234954/vessels/starlit.png"
+    }
+  ],
+  "export": "512px PNG, alpha preserved, original generation saved under assets/vessels/source",
+  "bucket": "collectibles"
+}

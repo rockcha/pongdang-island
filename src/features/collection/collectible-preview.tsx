@@ -8,6 +8,7 @@ import { swimFrameLayout } from '@/features/aquarium/swim-frame-layout'
 import { whitenightFixedFrame } from '@/features/aquarium/whitenight-animation'
 import { cloudferryFixedFrame } from '@/features/aquarium/cloudferry-animation'
 import { scrapisleFixedFrame } from '@/features/aquarium/scrapisle-animation'
+import { dreamabyssFixedFrame } from '@/features/aquarium/dreamabyss-animation'
 
 export function CollectiblePreview({species}:{species:Species}) {
   if(glassAttachedSpecies.has(species.id))return <CollectibleThumbnail fadeIn path={species.thumbnail_path} name={species.name} className="size-32"/>
@@ -32,7 +33,7 @@ function Preview({species}:{species:Species}) {
       if(!start)start=now
       if(!document.hidden){
         const time=(now-start)/1000,reduced=media.matches
-        const index=scrapisleFixedFrame(species.id,time,reduced,false)??cloudferryFixedFrame(species.id,time,reduced,false)??whitenightFixedFrame(species.id,time,reduced,false)??mythicSwimFrame(path,time,0,reduced)??premiumSwimFrame(path,time,0,reduced?0:Math.floor(time*3)%4,reduced)
+        const index=dreamabyssFixedFrame(species.id,time,reduced,false)??scrapisleFixedFrame(species.id,time,reduced,false)??cloudferryFixedFrame(species.id,time,reduced,false)??whitenightFixedFrame(species.id,time,reduced,false)??mythicSwimFrame(path,time,0,reduced)??premiumSwimFrame(path,time,0,reduced?0:Math.floor(time*3)%4,reduced)
         const layout=mythicSwimLayout(path,index)??swimFrameLayout(path,index)
         const cellWidth=image.width/columns,cellHeight=image.height/2,size=128*layout.scale
         context!.setTransform(ratio,0,0,ratio,0,0);context!.clearRect(0,0,160,160)

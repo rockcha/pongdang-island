@@ -13,7 +13,7 @@ import { readFishingTrip } from '@/features/fishing/fishing-trip'
 const bait={id:'bait',name:'퐁당 지렁이',description:'퐁당섬의 선홍빛 지렁이',effect_kind:'fish',effect_description:'등급 확률',price:30,image_path:'/normal.png',common_bp:8500,rare_bp:1300,epic_bp:180,mythic_bp:20,failure_bp:0}
 const species={id:'sample',name:'달빛 퐁울복',kind:'fish',rarity:'rare',description:'푸른 바다의 친구',thumbnail_path:'fish/thumbnail.png'}
 const plan={operation_id:'prepared-id',region_id:'pongdang',bait_id:'bait',eligible:true,species,rarity:'rare',wait_seconds:3,failure_at:6,failure_reason:'escape',finished:false,expires_at:'2099-01-01'}
-it('keeps bait below the banner while collection tools use the banner target',async()=>{
+it('shows equipped rod and selected bait images in the four-button dock',async()=>{
  load.mockResolvedValue({baits:[bait],successChanceBp:3500})
  const target=document.createElement('div')
  document.body.appendChild(target)
@@ -22,8 +22,15 @@ it('keeps bait below the banner while collection tools use the banner target',as
   const tools=within(target)
   const baitButton=await screen.findByRole('button',{name:/미끼통 열기/})
   expect(target.contains(baitButton)).toBe(false)
-  expect(tools.getByRole('button',{name:'바다 도감'})).toBeTruthy()
-  expect(tools.getByRole('link',{name:'지도'})).toBeTruthy()
+  expect(baitButton.querySelector('img')?.getAttribute('src')).toBe('/normal.png')
+  expect(baitButton.textContent).toContain('×2')
+  expect(screen.getByRole('button',{name:'낚싯대 선택 · 입문용 낚싯대'}).querySelector('img')?.getAttribute('src')).toContain('equipment/rods/starter/thumbnail.png')
+  const dock=screen.getByRole('group',{name:'낚시 준비 도구'})
+  expect(within(dock).getAllByRole('button')).toHaveLength(4)
+  expect(within(dock).getByRole('button',{name:'바다 도감'})).toBeTruthy()
+  expect(target.contains(dock)).toBe(false)
+  expect(tools.queryByRole('link',{name:'지도'})).toBeNull()
+  expect(tools.queryByRole('button',{name:'힘 테스트'})).toBeNull()
   fireEvent.click(baitButton)
   expect(screen.getByRole('dialog',{name:'미끼통'})).toBeTruthy()
  }finally{cleanup();target.remove()}
@@ -40,14 +47,14 @@ it('shows distinct Pongi artwork for a full gauge, an empty gauge and a chance e
 })
 function dismissResult(){const clock=vi.spyOn(Date,'now').mockReturnValue(Date.now()+1000);try{fireEvent.click(screen.getByRole('button',{name:'낚시 실패 결과 닫기'}))}finally{clock.mockRestore()}}
 async function start(){fireEvent.click(await screen.findByRole('button',{name:'퐁당 지렁이 1개로 낚시하기'}));await screen.findByRole('button',{name:'미니게임 성공'})}
-it('places the native species and anchor harbor tools beside the collection book',async()=>{
+it('keeps harbor and collection tools without the removed native species modal',async()=>{
  setup()
  await screen.findByRole('button',{name:/미끼통/})
- expect(screen.getByRole('button',{name:'이 바다를 주 서식지로 하는 개체'})).toBeTruthy()
+ expect(screen.queryByRole('button',{name:'이 바다를 주 서식지로 하는 개체'})).toBeNull()
  expect(screen.getByRole('button',{name:'바다 도감'})).toBeTruthy()
  const harbor=screen.getByRole('link',{name:'지도'})
  expect(harbor.getAttribute('href')).toBe('/harbor')
- expect(harbor.querySelector('svg')).toBeTruthy()
+ expect(harbor.querySelector('img')?.getAttribute('src')).toBe('/app-icons/map.png')
  expect(screen.getByRole('button',{name:'보관함 · 0개'})).toBeTruthy()
  expect(screen.queryByText('이번 낚시')).toBeNull()
 })
@@ -120,7 +127,7 @@ it('lists a real catch in the trip modal and restores it when changing regions',
  fireEvent.click(await screen.findByRole('button',{name:'보관함 · 1개'}))
  expect(await screen.findByRole('dialog')).toBeTruthy()
  expect(screen.getByText('달빛 퐁울복')).toBeTruthy()
- expect(screen.getByText('×1')).toBeTruthy()
+ expect(within(screen.getByRole('dialog')).getByText('1')).toBeTruthy()
 })
 
 it('guarantees the selected practice catch when the minigame succeeds without server rolls',async()=>{setup();await screen.findByRole('button',{name:/미끼통/});fireEvent.click(screen.getByRole('button',{name:'힘 테스트'}));fireEvent.click(screen.getByRole('button',{name:'신화'}));fireEvent.click(screen.getByRole('button',{name:'신화 테스트 시작'}));fireEvent.click(screen.getByRole('button',{name:'미니게임 성공'}));await screen.findByText('새벽을 여는 일각고래',{}, {timeout:2500});expect(readFishingTrip('guest')).toEqual([]);expect(screen.getByText('연습 결과예요. 실제 보상은 지급되지 않아요.')).toBeTruthy();await new Promise(resolve=>setTimeout(resolve,1700));expect(screen.getByRole('button',{name:'새벽을 여는 일각고래 결과 닫기'})).toBeTruthy();expect(screen.queryByRole('region',{name:'낚시 결과'})).toBeNull();expect(screen.queryByRole('button',{name:'다시 낚시하기'})).toBeNull();expect(screen.queryByRole('dialog')).toBeNull();fireEvent.click(screen.getByRole('button',{name:'새벽을 여는 일각고래 결과 닫기'}));await screen.findByRole('button',{name:'신화 테스트 시작'});expect(prepare).not.toHaveBeenCalled();expect(finish).not.toHaveBeenCalled()})

@@ -1,9 +1,26 @@
-import { cleanup,fireEvent,render,screen } from '@testing-library/react'
+import { cleanup,fireEvent,render,screen,waitFor } from '@testing-library/react'
 import { afterEach,expect,it,vi } from 'vitest'
 import { AquariumBackgroundDialog } from '../src/features/aquarium/aquarium-background-dialog'
 import type { AquariumState } from '../src/features/aquarium/api'
 vi.mock('@/features/aquarium/api',()=>({backgroundUrl:(path:string)=>`/backgrounds/${path}`}))
 afterEach(cleanup)
+it('filters owned and purchasable themes by visual tier and explains empty results',async()=>{
+ const state={owned:['mood-owned'],catalog:[
+  {id:'default',name:'단순 배경',price:0,image_path:'default.png',tier:'simple'},
+  {id:'mood-owned',name:'자연 배경',price:400,image_path:'mood.png',tier:'mood'},
+  {id:'special-shop',name:'공간 배경',price:500,image_path:'special.png',tier:'special'},
+ ]} as AquariumState
+ render(<AquariumBackgroundDialog state={state} selectedId="default" gold={1000} busy={false} loading={false} error={false} onAct={vi.fn(async()=>{})}/>)
+ fireEvent.click(screen.getByRole('button',{name:'테마',exact:true}))
+ fireEvent.click(await screen.findByRole('button',{name:'감성 1'}))
+ expect(screen.getByRole('img',{name:'자연 배경'})).toBeTruthy()
+ expect(screen.queryByRole('img',{name:'단순 배경'})).toBeNull()
+ fireEvent.click(screen.getByRole('tab',{name:'구매'}))
+ expect(screen.getByText('이 등급에 해당하는 배경이 없어요.')).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'스페셜 1'}))
+ expect(screen.getByRole('img',{name:'공간 배경'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'500 구매'})).toBeTruthy()
+})
 it('shows stable skeletons for the catalog and allows failed previews to retry',async()=>{
  const props={selectedId:'default',gold:0,busy:false,loading:true,error:false,onAct:vi.fn(async()=>{})}
  const view=render(<AquariumBackgroundDialog {...props} state={{owned:[],catalog:[]} as unknown as AquariumState}/> )
@@ -27,7 +44,17 @@ it('opens the background modal and preserves owned application and purchase limi
  expect(screen.queryByRole('button',{name:'500 구매'})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'적용하기'}))
  expect(onAct).toHaveBeenCalledWith('coral',true)
+ await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())
+ fireEvent.click(screen.getByRole('button',{name:'테마',exact:true}))
  fireEvent.click(screen.getByRole('tab',{name:'구매'}))
  expect((screen.getByRole('button',{name:'500 구매'}) as HTMLButtonElement).disabled).toBe(true)
  expect(screen.queryByRole('button',{name:'적용하기'})).toBeNull()
+})
+it('keeps the background sheet open when applying fails',async()=>{
+ const state={owned:['coral'],catalog:[{id:'coral',name:'산호',price:100,image_path:'coral.png'}]} as AquariumState
+ render(<AquariumBackgroundDialog state={state} selectedId="default" gold={100} busy={false} loading={false} error={false} onAct={vi.fn().mockRejectedValue(new Error('offline'))}/>)
+ fireEvent.click(screen.getByRole('button',{name:'테마',exact:true}))
+ fireEvent.click(await screen.findByRole('button',{name:'적용하기'}))
+ expect(await screen.findByRole('alert')).toBeTruthy()
+ expect(screen.getByRole('dialog')).toBeTruthy()
 })

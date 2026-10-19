@@ -1,0 +1,133 @@
+{
+  "generator": "Built-in image_gen",
+  "purpose": "Dedicated minimal notification icons for inbox, notification sheet and realtime toast",
+  "assets": [
+    {
+      "id": "expedition",
+      "source": "assets/notification-icons/source/expedition.png",
+      "path": "public/notification-icons/expedition.png",
+      "prompt": "Create ONE polished notification pictogram for a cozy Korean island fishing game. Subject: a miniature fishing boat arriving beside a tiny dock, one small warm sparkle. Match a cohesive minimal hand-drawn cartoon icon family: bold smooth warm dark-brown outlines, rounded shapes, flat cream ivory, apricot peach, caramel and muted mint fills. Very restrained soft shading. Icon must remain immediately readable at 40 pixels. One compact centered silhouette occupying 70 percent of a square canvas with generous transparent margin on all sides. Genuine transparent background. No text, no letters, no numerals, no background tile, no circle container, no ocean scenery, no photorealism, no intricate texture, no glossy 3D, no border frame. Only the specified subject. Friendly clean UI asset.",
+      "width": 128,
+      "height": 128,
+      "sha256": "809ca804ac201c1a1b228dbc7cd1fa4dde806e0740d04bbe82048150b5d7dec6"
+    },
+    {
+      "id": "clean",
+      "source": "assets/notification-icons/source/clean.png",
+      "path": "public/notification-icons/clean.png",
+      "prompt": "Create ONE polished notification pictogram for a cozy Korean island fishing game. Subject: a mint cleaning sponge wiping a small aquarium glass pane, two simple sparkles. Match a cohesive minimal hand-drawn cartoon icon family: bold smooth warm dark-brown outlines, rounded shapes, flat cream ivory, apricot peach, caramel and muted mint fills. Very restrained soft shading. Icon must remain immediately readable at 40 pixels. One compact centered silhouette occupying 70 percent of a square canvas with generous transparent margin on all sides. Genuine transparent background. No text, no letters, no numerals, no background tile, no circle container, no ocean scenery, no photorealism, no intricate texture, no glossy 3D, no border frame. Only the specified subject. Friendly clean UI asset.",
+      "width": 128,
+      "height": 128,
+      "sha256": "f2207237fce828e7c7bd81278ec3570b5575c34f633252fb67c0cd96b8fd653b"
+    },
+    {
+      "id": "feed",
+      "source": "assets/notification-icons/source/feed.png",
+      "path": "public/notification-icons/feed.png",
+      "prompt": "Create ONE polished notification pictogram for a cozy Korean island fishing game. Subject: a small coral fish below three golden food pellets falling from a tiny feeding scoop. Match a cohesive minimal hand-drawn cartoon icon family: bold smooth warm dark-brown outlines, rounded shapes, flat cream ivory, apricot peach, caramel and muted mint fills. Very restrained soft shading. Icon must remain immediately readable at 40 pixels. One compact centered silhouette occupying 70 percent of a square canvas with generous transparent margin on all sides. Genuine transparent background. No text, no letters, no numerals, no background tile, no circle container, no ocean scenery, no photorealism, no intricate texture, no glossy 3D, no border frame. Only the specified subject. Friendly clean UI asset.",
+      "width": 128,
+      "height": 128,
+      "sha256": "208fcfdffb60393dca77315cc2c3d3ea47def2cba19774aae797f73db138427c"
+    },
+    {
+      "id": "friend-request",
+      "source": "assets/notification-icons/source/friend-request.png",
+      "path": "public/notification-icons/friend-request.png",
+      "prompt": "Create ONE polished notification pictogram for a cozy Korean island fishing game. Subject: a friendly pair of rounded person silhouettes with a clear small plus symbol. Match a cohesive minimal hand-drawn cartoon icon family: bold smooth warm dark-brown outlines, rounded shapes, flat cream ivory, apricot peach, caramel and muted mint fills. Very restrained soft shading. Icon must remain immediately readable at 40 pixels. One compact centered silhouette occupying 70 percent of a square canvas with generous transparent margin on all sides. Genuine transparent background. No text, no letters, no numerals, no background tile, no circle container, no ocean scenery, no photorealism, no intricate texture, no glossy 3D, no border frame. Only the specified subject. Friendly clean UI asset.",
+      "width": 128,
+      "height": 128,
+      "sha256": "8e892481154e68192ce3d695f636127a9881644d88b519bb17d3c9d4b3732fbf"
+    },
+    {
+      "id": "friend-accepted",
+      "source": "assets/notification-icons/source/friend-accepted.png",
+      "path": "public/notification-icons/friend-accepted.png",
+      "prompt": "Create ONE polished notification pictogram for a cozy Korean island fishing game. Subject: two friendly rounded person silhouettes connected by a small peach heart. Match a cohesive minimal hand-drawn cartoon icon family: bold smooth warm dark-brown outlines, rounded shapes, flat cream ivory, apricot peach, caramel and muted mint fills. Very restrained soft shading. Icon must remain immediately readable at 40 pixels. One compact centered silhouette occupying 70 percent of a square canvas with generous transparent margin on all sides. Genuine transparent background. No text, no letters, no numerals, no background tile, no circle container, no ocean scenery, no photorealism, no intricate texture, no glossy 3D, no border frame. Only the specified subject. Friendly clean UI asset.",
+      "width": 128,
+      "height": 128,
+      "sha256": "656077110988e3dc02ff35b090a5bea5f88471e3fe0423da333d9747b50aad8f"
+    },
+    {
+      "id": "gift-received",
+      "source": "assets/notification-icons/source/gift-received.png",
+      "path": "public/notification-icons/gift-received.png",
+      "prompt": "Create ONE polished notification pictogram for a cozy Korean island fishing game. Subject: a closed peach gift box with cream ribbon and a small downward arrow. Match a cohesive minimal hand-drawn cartoon icon family: bold smooth warm dark-brown outlines, rounded shapes, flat cream ivory, apricot peach, caramel and muted mint fills. Very restrained soft shading. Icon must remain immediately readable at 40 pixels. One compact centered silhouette occupying 70 percent of a square canvas with generous transparent margin on all sides. Genuine transparent background. No text, no letters, no numerals, no background tile, no circle container, no ocean scenery, no photorealism, no intricate texture, no glossy 3D, no border frame. Only the specified subject. Friendly clean UI asset.",
+      "width": 128,
+      "height": 128,
+      "sha256": "0137a027f2d6dd6d51533200c736295bcbeb45b1eef868ed988c83156c40046a"
+    },
+    {
+      "id": "gift-claimed",
+      "source": "assets/notification-icons/source/gift-claimed.png",
+      "path": "public/notification-icons/gift-claimed.png",
+      "prompt": "Create ONE polished notification pictogram for a cozy Korean island fishing game. Subject: an open peach gift box with cream ribbon and one small checkmark. Match a cohesive minimal hand-drawn cartoon icon family: bold smooth warm dark-brown outlines, rounded shapes, flat cream ivory, apricot peach, caramel and muted mint fills. Very restrained soft shading. Icon must remain immediately readable at 40 pixels. One compact centered silhouette occupying 70 percent of a square canvas with generous transparent margin on all sides. Genuine transparent background. No text, no letters, no numerals, no background tile, no circle container, no ocean scenery, no photorealism, no intricate texture, no glossy 3D, no border frame. Only the specified subject. Friendly clean UI asset.",
+      "width": 128,
+      "height": 128,
+      "sha256": "e377fcb3e82f89c2c3ab0c5cd99ea8fee739dec7d88ed09ed6f04905721ea505"
+    },
+    {
+      "id": "gift-reaction",
+      "source": "assets/notification-icons/source/gift-reaction.png",
+      "path": "public/notification-icons/gift-reaction.png",
+      "prompt": "Create ONE polished notification pictogram for a cozy Korean island fishing game. Subject: a small cream speech bubble containing a peach heart. Match a cohesive minimal hand-drawn cartoon icon family: bold smooth warm dark-brown outlines, rounded shapes, flat cream ivory, apricot peach, caramel and muted mint fills. Very restrained soft shading. Icon must remain immediately readable at 40 pixels. One compact centered silhouette occupying 70 percent of a square canvas with generous transparent margin on all sides. Genuine transparent background. No text, no letters, no numerals, no background tile, no circle container, no ocean scenery, no photorealism, no intricate texture, no glossy 3D, no border frame. Only the specified subject. Friendly clean UI asset.",
+      "width": 128,
+      "height": 128,
+      "sha256": "3c54c7abcb8797ffb7d70ce67adfb5c5ee0ec31f864f795c2979040e4b879c4c"
+    },
+    {
+      "id": "exchange",
+      "source": "assets/notification-icons/source/exchange.png",
+      "path": "public/notification-icons/exchange.png",
+      "prompt": "Create ONE polished notification pictogram for a cozy Korean island fishing game. Subject: two small wooden trade crates with two simple opposite direction curved arrows. Match a cohesive minimal hand-drawn cartoon icon family: bold smooth warm dark-brown outlines, rounded shapes, flat cream ivory, apricot peach, caramel and muted mint fills. Very restrained soft shading. Icon must remain immediately readable at 40 pixels. One compact centered silhouette occupying 70 percent of a square canvas with generous transparent margin on all sides. Genuine transparent background. No text, no letters, no numerals, no background tile, no circle container, no ocean scenery, no photorealism, no intricate texture, no glossy 3D, no border frame. Only the specified subject. Friendly clean UI asset.",
+      "width": 128,
+      "height": 128,
+      "sha256": "32fae20efb3440792d5abd189664aafd52070e1c1ba62e065d85b60c8267caab"
+    },
+    {
+      "id": "announcement",
+      "source": "assets/notification-icons/source/announcement.png",
+      "path": "public/notification-icons/announcement.png",
+      "prompt": "Create ONE polished notification pictogram for a cozy Korean island fishing game. Subject: a small cream and caramel megaphone with two short peach sound lines. Match a cohesive minimal hand-drawn cartoon icon family: bold smooth warm dark-brown outlines, rounded shapes, flat cream ivory, apricot peach, caramel and muted mint fills. Very restrained soft shading. Icon must remain immediately readable at 40 pixels. One compact centered silhouette occupying 70 percent of a square canvas with generous transparent margin on all sides. Genuine transparent background. No text, no letters, no numerals, no background tile, no circle container, no ocean scenery, no photorealism, no intricate texture, no glossy 3D, no border frame. Only the specified subject. Friendly clean UI asset.",
+      "width": 128,
+      "height": 128,
+      "sha256": "03cdd962ddec4f3528120f748beb1b9c20669bec011c6ea3423e404226277885"
+    },
+    {
+      "id": "reward",
+      "source": "assets/notification-icons/source/reward.png",
+      "path": "public/notification-icons/reward.png",
+      "prompt": "Create ONE polished notification pictogram for a cozy Korean island fishing game. Subject: three warm golden starfish coins beside a tiny cream ribbon medal. Match a cohesive minimal hand-drawn cartoon icon family: bold smooth warm dark-brown outlines, rounded shapes, flat cream ivory, apricot peach, caramel and muted mint fills. Very restrained soft shading. Icon must remain immediately readable at 40 pixels. One compact centered silhouette occupying 70 percent of a square canvas with generous transparent margin on all sides. Genuine transparent background. No text, no letters, no numerals, no background tile, no circle container, no ocean scenery, no photorealism, no intricate texture, no glossy 3D, no border frame. Only the specified subject. Friendly clean UI asset.",
+      "width": 128,
+      "height": 128,
+      "sha256": "c643b850aeb20a0142ca4162f96d520650a47e99659c79b1e6f4bb3a483e628f"
+    },
+    {
+      "id": "suggestion",
+      "source": "assets/notification-icons/source/suggestion.png",
+      "path": "public/notification-icons/suggestion.png",
+      "prompt": "Create ONE polished notification pictogram for a cozy Korean island fishing game. Subject: a warm golden light bulb with a tiny mint leaf inside, indicating an accepted idea. Match a cohesive minimal hand-drawn cartoon icon family: bold smooth warm dark-brown outlines, rounded shapes, flat cream ivory, apricot peach, caramel and muted mint fills. Very restrained soft shading. Icon must remain immediately readable at 40 pixels. One compact centered silhouette occupying 70 percent of a square canvas with generous transparent margin on all sides. Genuine transparent background. No text, no letters, no numerals, no background tile, no circle container, no ocean scenery, no photorealism, no intricate texture, no glossy 3D, no border frame. Only the specified subject. Friendly clean UI asset.",
+      "width": 128,
+      "height": 128,
+      "sha256": "6d88802fecac3b574357f240fdefcaf839d2443726153f0180ac47b5c6363a7f"
+    },
+    {
+      "id": "bug",
+      "source": "assets/notification-icons/source/bug.png",
+      "path": "public/notification-icons/bug.png",
+      "prompt": "Create ONE polished notification pictogram for a cozy Korean island fishing game. Subject: a tiny friendly caramel bug beside one simple mint checkmark. Match a cohesive minimal hand-drawn cartoon icon family: bold smooth warm dark-brown outlines, rounded shapes, flat cream ivory, apricot peach, caramel and muted mint fills. Very restrained soft shading. Icon must remain immediately readable at 40 pixels. One compact centered silhouette occupying 70 percent of a square canvas with generous transparent margin on all sides. Genuine transparent background. No text, no letters, no numerals, no background tile, no circle container, no ocean scenery, no photorealism, no intricate texture, no glossy 3D, no border frame. Only the specified subject. Friendly clean UI asset.",
+      "width": 128,
+      "height": 128,
+      "sha256": "f3a86ec3266f21eae65a242d323f4b9a647a134db41464fd2d6bfe438e696df7"
+    },
+    {
+      "id": "system",
+      "source": "assets/notification-icons/source/system.png",
+      "path": "public/notification-icons/system.png",
+      "prompt": "Create ONE polished notification pictogram for a cozy Korean island fishing game. Subject: a small cream envelope sealed with a peach starfish. Match a cohesive minimal hand-drawn cartoon icon family: bold smooth warm dark-brown outlines, rounded shapes, flat cream ivory, apricot peach, caramel and muted mint fills. Very restrained soft shading. Icon must remain immediately readable at 40 pixels. One compact centered silhouette occupying 70 percent of a square canvas with generous transparent margin on all sides. Genuine transparent background. No text, no letters, no numerals, no background tile, no circle container, no ocean scenery, no photorealism, no intricate texture, no glossy 3D, no border frame. Only the specified subject. Friendly clean UI asset.",
+      "width": 128,
+      "height": 128,
+      "sha256": "361e81c422f675c4bc75573b93207aa61221119bb8b2efac625e841f6c696e01"
+    }
+  ],
+  "export": "128px transparent PNG, optimized for 28px toast and 44px notification list"
+}

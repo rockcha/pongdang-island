@@ -1,0 +1,7 @@
+{
+  "tool": "image_gen.imagegen",
+  "reference": "public/app-icons/shipyard.png",
+  "referenceRole": "Existing navigation icon style",
+  "prompt": "Create ONE small cozy farming navigation icon matching the reference's soft hand-painted game UI icon style, warm brown outlines and cream highlights. A tiny wooden raised garden bed with two lush leafy carrot sprouts, a small ripe orange carrot peeking out of earth and a miniature cream watering can tucked to one side. Compact clear silhouette, moderately simple, warm sage green and terracotta brown, gently isometric 3/4 view, centered and filling 82% of a square canvas. No text, no letters, no people, no UI, no frame, no background, actual transparent alpha PNG. Readable at 28 pixels.",
+  "output": "public/app-icons/farm.png"
+}

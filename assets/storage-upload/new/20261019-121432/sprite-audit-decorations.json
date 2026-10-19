@@ -1,0 +1,63 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/decorations/rare/siren-scylla-tentacle_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  141,
+                                           "y":  185,
+                                           "width":  353,
+                                           "height":  374,
+                                           "widthRatio":  0.563,
+                                           "heightRatio":  0.5965,
+                                           "alphaPixels":  67042,
+                                           "leftAnchorY":  428.012,
+                                           "rightAnchorY":  320.294
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  111,
+                                           "y":  248,
+                                           "width":  426,
+                                           "height":  311,
+                                           "widthRatio":  0.6794,
+                                           "heightRatio":  0.496,
+                                           "alphaPixels":  68111,
+                                           "leftAnchorY":  430.777,
+                                           "rightAnchorY":  352.025
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  141,
+                                           "y":  136,
+                                           "width":  360,
+                                           "height":  385,
+                                           "widthRatio":  0.5742,
+                                           "heightRatio":  0.614,
+                                           "alphaPixels":  71430,
+                                           "leftAnchorY":  388.55,
+                                           "rightAnchorY":  281.574
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  113,
+                                           "y":  130,
+                                           "width":  378,
+                                           "height":  391,
+                                           "widthRatio":  0.6029,
+                                           "heightRatio":  0.6236,
+                                           "alphaPixels":  77221,
+                                           "leftAnchorY":  377.974,
+                                           "rightAnchorY":  386.89
+                                       }
+                                   ]
+                    }
+                ]
+}

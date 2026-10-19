@@ -32,7 +32,7 @@ export function NoticeEditor(){
   </fieldset>
   {error&&<p role="alert" className="text-sm text-destructive">{error}</p>}
   <div className="flex flex-wrap justify-end gap-2 border-t pt-4">{notice.revision>0&&notice.status==='published'?<Button variant="ghost" disabled={busy} onClick={()=>setConfirm('hidden')}>숨기기</Button>:<Button variant="outline" disabled={busy||notice.title.trim().length<2} onClick={()=>void save('draft')}>임시 저장</Button>}<Button disabled={busy||notice.title.trim().length<2} onClick={()=>setConfirm('published')}>{notice.status==='published'?'수정 게시':'게시하기'}</Button></div>
-  <ConfirmDialog open={!!confirm} onOpenChange={next=>{if(!next&&!busy)setConfirm(null)}} title={confirm==='hidden'?'공지를 숨길까요?':'이 내용으로 게시할까요?'} description={confirm==='hidden'?'일반 유저의 공지 목록에서 숨겨져요.':'게시하면 모든 섬 주민이 읽을 수 있어요.'} busy={busy} error={error} onConfirm={()=>confirm&&void save(confirm)}/>
+  <ConfirmDialog illustration={confirm==='hidden'?'caution':'publish'} open={!!confirm} onOpenChange={next=>{if(!next&&!busy)setConfirm(null)}} title={confirm==='hidden'?'공지를 숨길까요?':'이 내용으로 게시할까요?'} description={confirm==='hidden'?'일반 유저의 공지 목록에서 숨겨져요.':'게시하면 모든 섬 주민이 읽을 수 있어요.'} busy={busy} error={error} onConfirm={()=>confirm&&void save(confirm)}/>
  </section>
 }
 function toKoreanInput(value:string|null){return value?new Date(new Date(value).getTime()+9*3600000).toISOString().slice(0,16):''}

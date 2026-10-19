@@ -1,0 +1,36 @@
+.auth-shell { height: 100dvh; min-height: 0; overflow: hidden; background: var(--background); }
+.auth-page {
+ height: var(--auth-viewport-height, 100dvh);
+ overflow-y: auto;
+ overscroll-behavior-y: contain;
+ display: flex;
+ flex-direction: column;
+ padding: max(12px, env(safe-area-inset-top)) 24px max(12px, env(safe-area-inset-bottom));
+}
+.auth-panel { width: 100%; max-width: 352px; margin: auto; padding-block: 12px; }
+.auth-intro { display: flex; flex-direction: column; align-items: center; gap: 5px; text-align: center; margin-bottom: 24px; }
+.auth-topbar { display: flex; align-items: center; min-height: 36px; flex-shrink: 0; }
+.auth-wordmark { color: var(--primary); font-size: 17px; letter-spacing: .12em; }
+.auth-illustration { width: auto; height: clamp(88px, 21dvh, 168px); max-width: 100%; object-fit: contain; margin-block: 5px; }
+.auth-form { display: flex; flex-direction: column; gap: 16px; }
+.auth-field { display: flex; flex-direction: column; gap: 7px; }
+.auth-field label { font-size: 12px; color: var(--muted-foreground); }
+.auth-form input:not([type='checkbox']) { height: 48px; min-height: 48px; border-radius: 12px; background: var(--card); padding-inline: 14px; font-size: 16px; }
+.auth-form .auth-password-input { padding-right: 48px !important; }
+.auth-feedback { border-radius: 10px; padding: 10px 12px; font-size: 12px; line-height: 1.6; overflow-wrap: anywhere; }
+.auth-switch { margin-top: 8px; min-height: 44px; width: 100%; font-size: 12px; color: var(--muted-foreground); }
+.auth-switch:hover { color: var(--primary); }
+@media (max-height: 700px) {
+ .auth-intro { gap: 4px; margin-bottom: 18px; }
+ .auth-illustration { height: 104px; margin-block: 2px; }
+ .auth-form { gap: 12px; }
+ .auth-panel { padding-block: 4px; }
+}
+@media (max-height: 580px) {
+ .auth-illustration { height: 72px; }
+ .auth-intro { margin-bottom: 12px; }
+}
+/* Keyboard viewports may shrink independently of CSS viewport units on mobile. */
+.auth-page[data-compact='true'] .auth-illustration { display: none; }
+.auth-page[data-compact='true'] .auth-intro { margin-bottom: 14px; }
+.auth-page[data-compact='true'] .auth-description { display: none; }

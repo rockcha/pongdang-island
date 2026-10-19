@@ -1,0 +1,37 @@
+﻿{
+    "file":  "assets/storage-upload/new/leviathan-frame-fix/fish/mythic/god-devouring-leviathan_sprite.png",
+    "storage_path":  "fish/mythic/god-devouring-leviathan_sprite.png",
+    "patch":  [
+                  490,
+                  310,
+                  45,
+                  45
+              ],
+    "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  0
+                   },
+                   {
+                       "frame":  1,
+                       "dx":  -25,
+                       "dy":  0,
+                       "rmse":  20.615447282721437
+                   },
+                   {
+                       "frame":  2,
+                       "dx":  4,
+                       "dy":  -95,
+                       "rmse":  23.122860261366167
+                   },
+                   {
+                       "frame":  3,
+                       "dx":  -22,
+                       "dy":  -93,
+                       "rmse":  31.447981740575269
+                   }
+               ]
+}

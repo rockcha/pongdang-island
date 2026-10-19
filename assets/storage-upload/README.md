@@ -42,6 +42,8 @@ assets/storage-upload/new/20261015-113000/
 
 ## 업로드 기준
 
+어선 그림도 같은 업로드 도구를 사용하며 collectibles 버킷의 `vessels/{id}.png`에 저장합니다. 배치 폴더에 `vessels/`와 manifest를 두고 공개 다운로드의 해시를 확인합니다. 앱은 Storage 공개 URL을 사용하고, 원본 생성 PNG는 별도 재현 자료로 유지합니다.
+
 ### 명령어로 일괄 업로드
 
 프로젝트 루트에 `.env.storage.local`을 만들고 아래 값을 설정합니다. 이 파일은 Git에서 제외되며 브라우저용 `VITE_` 변수로 만들지 않습니다. Supabase 프로젝트의 서버용 secret key 또는 기존 service_role 키를 사용합니다.

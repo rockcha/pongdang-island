@@ -25,6 +25,8 @@ it('marks the original notice read and lets an operator delete only after confir
 it('shows minimal notice rows and filters while hiding author tools from ordinary readers',async()=>{
  render(<MemoryRouter><NoticePage/></MemoryRouter>)
  expect(await screen.findByRole('heading',{name:notice.title})).toBeTruthy()
+ const row=screen.getByRole('link',{name:/푸른골 업데이트/})
+ expect(row.firstElementChild?.getAttribute('src')).toBe('/app-icons/notice-update.png')
  expect(screen.queryByRole('textbox',{name:'공지 검색'})).toBeNull()
  expect(screen.queryByRole('link',{name:/공지 작성/})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'점검'}))

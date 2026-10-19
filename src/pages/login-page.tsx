@@ -1,4 +1,5 @@
-import { BrandMascot } from '@/components/brand-mascot'
+import {AuthFrame} from '@/components/auth-frame'
+import {Eye,EyeOff} from 'lucide-react'
 import { useState } from 'react'
 import type { FormEvent } from 'react'
 import { Link, Navigate, useSearchParams } from 'react-router'
@@ -19,6 +20,7 @@ export function LoginPage() {
   const [remember, setRemember] = useState(preference.remember)
   const [password, setPassword] = useState('')
   const [signup, setSignup] = useState(false)
+  const [showPassword,setShowPassword]=useState(false)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [params] = useSearchParams()
@@ -62,22 +64,15 @@ export function LoginPage() {
 
   if (loading) return <p role="status" className="py-16 text-center">잠시만 기다려주세요…</p>
   if (session && !busy) return <Navigate to={recovery ? '/reset-password' : getNickname(session) ? '/' : '/nickname'} replace />
-  return (
-    <section className="flex flex-1 flex-col justify-center gap-6 py-8">
-      <BrandMascot priority className="mx-auto h-auto w-40 drop-shadow-sm" />
-      <div className="text-center"><h1 className="text-2xl font-bold">퐁당섬으로 떠나요</h1><p className="mt-2 text-sm text-muted-foreground">로그인하고 나만의 낚시 여행을 시작하세요.</p></div>
-      <form onSubmit={submit} className="space-y-4 rounded-2xl border bg-card p-5">
-        <h2 className="font-semibold">{signup ? '이메일로 회원가입' : '이메일로 로그인'}</h2>
-        {signup && <p className="text-sm text-muted-foreground">이메일과 비밀번호만 입력하면 바로 시작할 수 있어요.</p>}
-        <div className="space-y-2"><Label htmlFor="email">이메일</Label><Input id="email" type="email" autoComplete="username" required value={email} onChange={e => setEmail(e.target.value)} disabled={busy} className="min-h-12 text-base" />{signup && <p className="text-xs text-muted-foreground">비밀번호를 찾을 때 사용할 이메일을 입력해주세요.</p>}</div>
-        <div className="space-y-2"><Label htmlFor="password">비밀번호</Label><Input id="password" type="password" minLength={signup ? 8 : undefined} autoComplete={signup ? 'new-password' : 'current-password'} required value={password} onChange={e => setPassword(e.target.value)} disabled={busy} className="min-h-12 text-base" />{signup && <p className="text-xs text-muted-foreground">8자 이상 입력해주세요.</p>}</div>
-        {!signup && <div className="space-y-1"><label className="flex min-h-11 cursor-pointer items-center gap-2 text-sm"><input type="checkbox" checked={remember} onChange={e => { setRemember(e.target.checked); saveLoginPreference(email, e.target.checked) }} disabled={busy} className="size-4 accent-primary" />이메일 및 로그인 상태 기억하기</label><p className="text-xs leading-5 text-muted-foreground">비밀번호 저장은 브라우저의 비밀번호 관리자를 이용해주세요.</p></div>}
-        {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
-        {notice && <p role="status" className="text-sm text-primary">{notice}</p>}
-        <Button type="submit" className="min-h-12 w-full" disabled={busy}>{busy ? '처리 중…' : signup ? '회원가입' : '로그인'}</Button>
-        {!signup && <Link to="/forgot-password" className="block py-2 text-center text-sm text-muted-foreground underline">이메일 / 비밀번호를 잊으셨나요?</Link>}
-        <Button type="button" variant="ghost" className="min-h-11 w-full" disabled={busy} onClick={() => { setSignup(!signup); setError(''); setNotice(''); setPassword('') }}>{signup ? '이미 계정이 있나요? 로그인' : '처음 오셨나요? 회원가입'}</Button>
-      </form>
-    </section>
-  )
+  return <AuthFrame title={signup?'섬에서의 첫 하루':'다시 만나 반가워요'} description={signup?'계정을 만들고 나만의 낚시 여행을 시작해요.':'오늘도 퐁당섬에서 잠깐 쉬어가요.'}>
+   <form onSubmit={submit} className="auth-form" aria-label={signup?'회원가입':'로그인'}>
+    <div className="auth-field"><Label htmlFor="email">이메일</Label><Input id="email" type="email" inputMode="email" autoCapitalize="none" autoCorrect="off" spellCheck={false} autoComplete="username" required value={email} onChange={e=>setEmail(e.target.value)} disabled={busy} placeholder="hello@example.com"/></div>
+    <div className="auth-field"><Label htmlFor="password">비밀번호</Label><div className="relative"><Input id="password" type={showPassword?'text':'password'} minLength={signup?8:undefined} autoComplete={signup?'new-password':'current-password'} required value={password} onChange={e=>setPassword(e.target.value)} disabled={busy} className="auth-password-input" aria-describedby={signup?'password-hint':undefined} placeholder={signup?'8자 이상 입력해주세요':'비밀번호를 입력해주세요'}/><button type="button" aria-label={showPassword?'비밀번호 숨기기':'비밀번호 보기'} aria-pressed={showPassword} aria-controls="password" disabled={busy} onClick={()=>setShowPassword(value=>!value)} className="absolute inset-y-0 right-1 grid w-11 place-items-center rounded-lg text-muted-foreground outline-none hover:text-primary focus-visible:ring-2 focus-visible:ring-ring">{showPassword?<EyeOff className="size-[18px]"/>:<Eye className="size-[18px]"/>}</button></div>{signup&&<p id="password-hint" className="text-[11px] leading-4 text-muted-foreground">비밀번호는 8자 이상으로 설정해주세요.</p>}</div>
+    {!signup&&<div className="flex min-h-10 items-center justify-between gap-2 text-xs text-muted-foreground"><label className="flex min-h-10 cursor-pointer items-center gap-2" title="이메일과 로그인 상태를 기억해요"><input type="checkbox" checked={remember} onChange={e=>{setRemember(e.target.checked);saveLoginPreference(email,e.target.checked)}} disabled={busy} className="size-4 accent-primary"/>로그인 유지</label><Link to="/forgot-password" className="inline-flex min-h-10 items-center rounded px-1 outline-none hover:text-primary focus-visible:ring-2 focus-visible:ring-ring">비밀번호 찾기</Link></div>}
+    {error&&<p role="alert" className="auth-feedback bg-destructive/5 text-destructive">{error}</p>}
+    {notice&&<p role="status" className="auth-feedback bg-secondary/70 text-primary">{notice}</p>}
+    <Button type="submit" className="min-h-12 w-full rounded-xl text-sm" disabled={busy} aria-busy={busy}>{busy?'처리 중…':signup?'회원가입':'로그인'}</Button>
+   </form>
+   <Button type="button" variant="ghost" className="auth-switch rounded-xl" disabled={busy} onClick={()=>{setSignup(!signup);setError('');setNotice('');setPassword('');setShowPassword(false)}}>{signup?'이미 계정이 있나요? 로그인':'처음 오셨나요? 회원가입'}</Button>
+  </AuthFrame>
 }

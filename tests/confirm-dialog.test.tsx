@@ -10,7 +10,7 @@ it('shows Pongi, question and explanation with cancel focused and exactly two ac
  const modal=await screen.findByRole('alertdialog')
  expect(within(modal).getByRole('heading',{name:text.title})).toBeTruthy()
  expect(within(modal).getByText(text.description)).toBeTruthy()
- expect(modal.querySelector('img')?.getAttribute('src')).toBe('/branding/pongi-curious.png')
+ expect(modal.querySelector('img')?.getAttribute('src')).toBe('/branding/confirm/pongi-caution.png')
  expect(within(modal).getAllByRole('button')).toHaveLength(2)
  await waitFor(()=>expect(document.activeElement).toBe(screen.getByRole('button',{name:'취소'})))
  fireEvent.click(screen.getByRole('button',{name:'확인'}))
@@ -29,4 +29,15 @@ it('blocks both actions while pending and keeps errors inside the same modal for
  view.rerender(<ConfirmDialog {...text} open error="다시 시도해주세요." onOpenChange={change} onConfirm={confirm}/>)
  expect(screen.getByRole('alert').textContent).toBe('다시 시도해주세요.')
  expect(screen.getByRole('button',{name:'확인'})).toHaveProperty('disabled',false)
+})
+
+it('changes the illustration with the pending action in the same dialog',async()=>{
+ const props={...text,open:true,onOpenChange:vi.fn(),onConfirm:vi.fn()}
+ const view=render(<ConfirmDialog {...props} illustration="dispatch"/>)
+ const modal=await screen.findByRole('alertdialog')
+ expect(modal.querySelector('img')?.getAttribute('src')).toBe('/branding/confirm/pongi-dispatch.png')
+ view.rerender(<ConfirmDialog {...props} illustration="return"/>)
+ expect(modal.querySelector('img')?.getAttribute('src')).toBe('/branding/confirm/pongi-return.png')
+ view.rerender(<ConfirmDialog {...props} illustration="purchase"/>)
+ expect(modal.querySelector('img')?.getAttribute('src')).toBe('/branding/confirm/pongi-purchase.png')
 })

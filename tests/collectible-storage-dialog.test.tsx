@@ -11,6 +11,15 @@ const stored=[{id:'fish',species_id:'fish',species:{id:'fish',kind:'fish',sell_p
 const state={inhabitants:[],storageCount:2,tankCapacity:50,tanks:[{id:'tank-a',name:'첫 어항'},{id:'tank-b',name:'두 번째 어항'}]} as unknown as AquariumState
 beforeEach(()=>{mock.load.mockReset();mock.load.mockResolvedValue({items:stored,total:2,pageSize:50})})
 afterEach(cleanup)
+it('searches the entire storage through the existing paginated API',async()=>{
+ mock.load.mockImplementation(async(_offset,query)=>({items:query?stored.filter(item=>item.species.name.includes(query)):stored,total:query?1:2,pageSize:50}))
+ render(<CollectibleStorageDialog state={state} currentTankId="tank-a" busy={false} onAssign={async()=>{}}/>)
+ fireEvent.click(screen.getByRole('button',{name:'보관함 2개'}));await screen.findByText('멸치')
+ fireEvent.change(screen.getByRole('searchbox',{name:'이름 검색'}),{target:{value:' 멸치 '}})
+ await waitFor(()=>expect(mock.load).toHaveBeenCalledWith(0,'멸치','all'))
+ await waitFor(()=>expect(screen.queryByRole('button',{name:'불가사리 선택'})).toBeNull())
+ expect(screen.getByRole('button',{name:'멸치 선택'})).toBeTruthy()
+})
 it('shows an icon badge and batches several selected individuals into the current tank',async()=>{
  const assign=vi.fn(async()=>{})
  render(<CollectibleStorageDialog state={state} currentTankId="tank-a" busy={false} onAssign={assign}/>)

@@ -1,6 +1,8 @@
+import additionalSheets from './mythic-action-layouts.json'
 export const luneaDetailedSwimPath='fish/mythic/lunea-mistmoon-goddess_swim8_sprite.png'
 type MythicSheet={id:string;aliases:string[];scale:number;shifts:number[][];cell:number}
 const sheets:MythicSheet[]=[
+ ...additionalSheets,
  {id:'scrap-greenark-last-collector',aliases:['scrap-greenark-last-collector'],scale:1,cell:444,shifts:[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,-1],[0,-1]]},
  {id:'cloud-howl-moving-castle',aliases:['cloud-howl-moving-castle'],scale:1,cell:444,shifts:[[0,0],[0,0],[0,0],[-1,0],[0,0],[0,0],[0,0],[-1,0]]},
  {id:'mammor-frozen-memory',aliases:['mammor-frozen-memory'],scale:1,cell:443.5,shifts:[[0,0],[1.5,0],[0,0],[-0.5,0],[0,-2.5],[1.5,-4.5],[1,-2.5],[-0.5,-0.5]]},

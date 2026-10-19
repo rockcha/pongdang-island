@@ -18,7 +18,7 @@ async function expire(id:string){await db.query("update public.auction_listings 
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},60000)
 afterAll(async()=>{await db.close()})
 beforeEach(async()=>{await db.exec('begin');for(const [id,name] of [[seller,'Seller'],[first,'First'],[second,'Second']]){
- await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,name]);await db.query(`insert into public.player_wallets(user_id,gold,inventory) values($1,5000,'{"bait_special":10}')`,[id])
+ await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,name]);await db.query(`insert into public.player_wallets(user_id,gold,inventory) values($1,5000,'{"bait_special":10}') on conflict(user_id) do update set gold=excluded.gold,inventory=excluded.inventory`,[id])
 }})
 afterEach(async()=>{await db.exec('rollback')})
 it('reserves stock once and prevents claiming held stock',async()=>{

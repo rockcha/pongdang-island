@@ -1,4 +1,4 @@
-export type Profile = { id: string; nickname: string; friend_code: string; created_at: string; avatar_path: string | null }
+export type Profile = { id: string; nickname: string; friend_code: string; created_at: string; avatar_path: string | null; equipped_title?:string|null }
 export type RequestStatus = 'pending' | 'accepted' | 'declined' | 'cancelled' | 'removed'
 export type RequestAction = 'accept' | 'decline' | 'cancel'
 export type FriendRequest = {
@@ -10,7 +10,11 @@ export type AppNotification = {
   id: string; recipient_id: string; actor_id: string | null; category: NotificationCategory
   kind: 'friend_request' | 'friend_accepted' | 'announcement' | 'reward' | 'system' | 'gift_received' | 'gift_claimed' | 'gift_reaction'
   gift_id?:string|null
+  achievement_id?:string|null
+  expedition_id?:string|null
+  expedition_boost_id?:string|null
   notice_id?:string|null
+  notice?:{category:'guide'|'update'|'maintenance'|'event'}|null
   title: string; body: string; request_id: string | null; read_at: string | null; created_at: string
   request: Pick<FriendRequest, 'id' | 'sender_id' | 'recipient_id' | 'status'> | null
 }

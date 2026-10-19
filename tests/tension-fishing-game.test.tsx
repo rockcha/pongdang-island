@@ -99,7 +99,7 @@ it('waits for a bite, accepts keyboard hold/release and clears hold on blur',asy
  fireEvent(window,new Event('blur'));expect(button.getAttribute('aria-pressed')).toBe('false')
  fireEvent.keyDown(button,{code:'Enter'});fireEvent.keyUp(button,{code:'Enter'})
  expect(button.getAttribute('aria-pressed')).toBe('false')
- fireEvent.click(screen.getByRole('button',{name:'그만하기'}));expect(cancel).toHaveBeenCalledOnce();expect(caught).not.toHaveBeenCalled()
+ expect(screen.queryByRole('button',{name:'그만하기'})).toBeNull();expect(cancel).not.toHaveBeenCalled();expect(caught).not.toHaveBeenCalled()
 })
 it('shows a loss and can restart the waiting phase',async()=>{
  vi.useFakeTimers();vi.spyOn(Math,'random').mockReturnValue(0)
@@ -147,3 +147,19 @@ it('reports a reserved failure once and prevents a retry before settlement',asyn
  await act(async()=>{vi.advanceTimersByTime(2000)})
  expect(failed).toHaveBeenCalledExactlyOnceWith('wave');expect(caught).not.toHaveBeenCalled()
 })
+
+it('places one text-free gauge near the float instead of in the toolbar',async()=>{
+ vi.useFakeTimers();const target=document.createElement('div');document.body.appendChild(target);
+ try{
+  const view=render(<TensionFishingGame toolbarTarget={target} active={false} onCaught={vi.fn()} onCancel={vi.fn()}/>);
+  expect(target.querySelector('[data-rod-gauge]')).toBeNull();
+  expect(view.container.querySelector('[data-fishing-gauge-layer]')).toBeNull();
+  expect(screen.queryByRole('button',{name:'낚시 도움말'})).toBeNull();
+  view.rerender(<TensionFishingGame toolbarTarget={target} onCaught={vi.fn()} onCancel={vi.fn()} challenge={{wait:.1}}/>);
+  expect(view.container.querySelector('[data-fishing-gauge-layer]')).toBeNull();
+  await act(async()=>{vi.advanceTimersByTime(1000)});
+  expect(document.querySelectorAll('[data-rod-gauge]')).toHaveLength(1);
+  expect(view.container.querySelector('[data-fishing-gauge-layer]')?.textContent).toBe('');
+  expect(screen.getByRole('button',{name:'꾹 눌러 당기기'})).toBeTruthy();
+ }finally{cleanup();target.remove()}
+});

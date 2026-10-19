@@ -15,7 +15,7 @@ export async function findPlayer(code: string): Promise<Profile | null> {
 }
 export async function loadFriendRequests(): Promise<FriendRequest[]> {
   const { data, error } = await createClient().from('friend_requests')
-    .select('*, sender:player_profiles!friend_requests_sender_id_fkey(id,nickname,friend_code,avatar_path), recipient:player_profiles!friend_requests_recipient_id_fkey(id,nickname,friend_code,avatar_path)')
+    .select('*, sender:player_profiles!friend_requests_sender_id_fkey(id,nickname,friend_code,avatar_path,equipped_title), recipient:player_profiles!friend_requests_recipient_id_fkey(id,nickname,friend_code,avatar_path,equipped_title)')
     .in('status', ['pending', 'accepted']).order('created_at', { ascending: false }).limit(500)
   if (error) throw error
   return data as unknown as FriendRequest[]

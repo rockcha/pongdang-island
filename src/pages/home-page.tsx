@@ -1,25 +1,28 @@
+import {appArt} from '@/components/app-art'
 import { useState } from 'react'
 import { Link } from 'react-router'
-import { Map, Warehouse, Gamepad2, TowerControl, Mail, Store, Handshake, Gavel, Megaphone, Check, Pencil, Settings, UserRound } from 'lucide-react'
+import {Check,Pencil} from 'lucide-react'
 import { toast } from 'sonner'
-import { AquariumIcon, MerchantStreetIcon, PlazaIcon } from '@/components/place-icons'
+
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 import { LandscapeImage } from '@/components/landscape-image'
 
+const {aquarium:AquariumIcon,plaza:PlazaIcon,savings:Shell,map:Map,warehouse:Warehouse,arcade:Gamepad2,lighthouse:TowerControl,mailbox:Mail,shop:Store,exchange:Handshake,notices:Megaphone,settings:Settings,profile:UserRound}=appArt
+
+
 const places = [
  {path:'/aquarium',name:'아쿠아리움',banner:'aquarium',icon:AquariumIcon},
  {path:'/harbor',name:'지도',banner:'map-menu',icon:Map},
- {path:'/merchant-street',name:'상인거리',banner:'merchant-street',icon:MerchantStreetIcon},
  {path:'/shop',name:'상점',banner:'merchant-shop',icon:Store},
+ {path:'/savings',name:'조개 적금',banner:'shell-savings',icon:Shell},
  {path:'/warehouse',name:'창고',banner:'warehouse',icon:Warehouse},
  {path:'/arcade',name:'게임',banner:'arcade',icon:Gamepad2},
  {path:'/friends',name:'등대',banner:'lighthouse',icon:TowerControl},
  {path:'/notifications',name:'우편함',banner:'mailbox-menu',icon:Mail},
  {path:'/square',name:'광장',banner:'square',icon:PlazaIcon},
  {path:'/square/notices',name:'공지사항',banner:'square-notices',icon:Megaphone},
- {path:'/merchant-street/exchange',name:'거래소',banner:'merchant-exchange',icon:Handshake},
- {path:'/merchant-street/auctions',name:'경매소',banner:'merchant-auction',icon:Gavel},
+ {path:'/exchange',name:'거래소',banner:'merchant-exchange',icon:Handshake},
  {path:'/profile',name:'마이페이지',banner:'profile-menu',icon:UserRound},
  {path:'/profile/settings',name:'설정',banner:'settings-menu',icon:Settings},
 ]
@@ -27,7 +30,9 @@ const defaults=['/aquarium','/harbor','/shop','/friends']
 const storageKey='pongdang:quick-menu'
 function savedMenu():string[]{
  try{
-  const value:unknown=JSON.parse(localStorage.getItem(storageKey)??'null')
+  const saved:unknown=JSON.parse(localStorage.getItem(storageKey)??'null')
+  const aliases:Record<string,string>={'/merchant-street':'/shop','/merchant-street/exchange':'/exchange','/merchant-street/auctions':'/exchange'}
+  const value=Array.isArray(saved)?saved.map(path=>typeof path==='string'?(aliases[path]??path):path):saved
   if(Array.isArray(value)&&value.length===4&&new Set(value).size===4&&value.every(path=>places.some(place=>place.path===path)))return value
  }catch{}
  return defaults

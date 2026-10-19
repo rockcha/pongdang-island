@@ -1,6 +1,7 @@
 import type { OwnedCollectible } from '@/features/collection/api'
 import { createSwimMotion } from './swim-motion'
 import { decorationGeometry } from './decoration-geometry'
+import { inhabitantBaseSize } from './inhabitant-size'
 import {canArrangeSpecies,movementSettings} from './movement-settings'
 
 export class InhabitantMotion {
@@ -32,7 +33,7 @@ export class InhabitantMotion {
     this.item=item
     if(canArrangeSpecies(item.species))return
     if(changed&&item.position_x!==null&&item.position_y!==null){
-      const size=Math.min(item.species.size,width*.4)*Number(item.scale??1)
+      const size=inhabitantBaseSize(item.species,width)*Number(item.scale??1)
       this.place(item.position_x*Math.max(0,width-size),item.position_y*Math.max(0,height-size),now,width,height,reduced)
     }
   }
@@ -44,7 +45,7 @@ export class InhabitantMotion {
       this.pose={...this.pose,x:px+margin,y:py+margin,size}
       return {x:this.item.position_x!,y:this.item.position_y!}
     }
-    const size=Math.min(this.item.species.size,width*.4)*Number(this.item.scale??1),w=Math.max(0,width-size),h=Math.max(0,height-size)
+    const size=inhabitantBaseSize(this.item.species,width)*Number(this.item.scale??1),w=Math.max(0,width-size),h=Math.max(0,height-size)
     const settings=movementSettings(this.item.species)
     if(settings.type!=='swim'||settings.travel!=='both'){
       const px=Math.max(0,Math.min(w,x)),py=Math.max(0,Math.min(h,y))
@@ -81,7 +82,7 @@ export class InhabitantMotion {
   }
   private specialBase(time:number,width:number,height:number,withTravelOffset=true){
     const s=this.item.species,settings=movementSettings(s),seed=this.item.animation_seed/1000000
-    const size=Math.min(s.size,width*.4)*Number(this.item.scale??1),w=Math.max(0,width-size),h=Math.max(0,height-size)
+    const size=inhabitantBaseSize(s,width)*Number(this.item.scale??1),w=Math.max(0,width-size),h=Math.max(0,height-size)
     const low=Number(s.swim_y_min??.2),high=Number(s.swim_y_max??.8),motion=this.swim(time)
     let x=(.2+seed*.6)*w,y=(low+(high-low)*motion.y)*h,direction=motion.direction
     if(settings.type==='fixed')return {x:(this.item.position_x??(.2+seed*.6))*w,y:(this.item.position_y??(s.kind==='fish'?(low+high)/2:.5))*h,direction:1}
@@ -109,7 +110,7 @@ export class InhabitantMotion {
   }
   update(now: number, delta: number, width: number, height: number, reduced = false): InhabitantMotion['pose'] {
     const s = this.item.species, seed = this.item.animation_seed / 1000000
-    const size = Math.min(s.size, width * .4)*Number(this.item.scale??1)
+    const size = inhabitantBaseSize(s,width)*Number(this.item.scale??1)
     const w = Math.max(0, width - size), h = Math.max(0, height - size)
     if(!this.initialized&&this.item.position_x!==null&&this.item.position_y!==null&&!canArrangeSpecies(s)&&!this.item.editing){
       this.place(this.item.position_x*w,this.item.position_y*h,now,width,height,reduced)
@@ -120,8 +121,8 @@ export class InhabitantMotion {
     if (canArrangeSpecies(s)||this.item.editing) {
       const geometry=decorationGeometry(this.item,width,height)
       x = geometry.margin+(this.item.position_x ?? (.2 + seed * .6))*geometry.w
-      y = geometry.margin+(this.item.position_y ?? (s.kind==='fish'?(Number(s.swim_y_min??.2)+Number(s.swim_y_max??.8))/2:.86))*geometry.h
-      this.pose={x,y,size:geometry.size,direction:1,angle:geometry.angle,frame:!reduced&&!this.item.editing&&s.idle_animated?Math.floor(time*1.2)%4:0}
+      y = geometry.margin+(this.item.position_y ?? (s.id==='siren-scylla-tentacle'?.32:s.kind==='fish'?(Number(s.swim_y_min??.2)+Number(s.swim_y_max??.8))/2:.86))*geometry.h
+      this.pose={x,y,size:geometry.size,direction:1,angle:geometry.angle,frame:!reduced&&!this.item.editing&&(s.idle_animated||s.id==='scrap-thimble-barnacle'||s.id==='muk-inkstone-clam'||s.id==='muk-inkstone-home-octopus')?Math.floor(time*1.2)%4:0}
       return this.pose
     }
     const settings=movementSettings(s)

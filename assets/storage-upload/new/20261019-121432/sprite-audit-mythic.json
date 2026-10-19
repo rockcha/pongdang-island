@@ -1,0 +1,216 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/mythic/siren-siren-last-song_sprite.png",
+                        "width":  1774,
+                        "height":  887,
+                        "cellWidth":  443.5,
+                        "cellHeight":  443.5,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  64,
+                                           "y":  98,
+                                           "width":  326,
+                                           "height":  297,
+                                           "widthRatio":  0.7351,
+                                           "heightRatio":  0.6697,
+                                           "alphaPixels":  56731,
+                                           "leftAnchorY":  307.05,
+                                           "rightAnchorY":  253.053
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  68,
+                                           "y":  112,
+                                           "width":  316,
+                                           "height":  297,
+                                           "widthRatio":  0.7125,
+                                           "heightRatio":  0.6697,
+                                           "alphaPixels":  54861,
+                                           "leftAnchorY":  309.593,
+                                           "rightAnchorY":  254.222
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  35,
+                                           "y":  154,
+                                           "width":  335,
+                                           "height":  241,
+                                           "widthRatio":  0.7554,
+                                           "heightRatio":  0.5434,
+                                           "alphaPixels":  54180,
+                                           "leftAnchorY":  298.136,
+                                           "rightAnchorY":  255.987
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  40,
+                                           "y":  112,
+                                           "width":  329,
+                                           "height":  303,
+                                           "widthRatio":  0.7418,
+                                           "heightRatio":  0.6832,
+                                           "alphaPixels":  60542,
+                                           "leftAnchorY":  311.256,
+                                           "rightAnchorY":  256.097
+                                       },
+                                       {
+                                           "frame":  4,
+                                           "x":  79,
+                                           "y":  62,
+                                           "width":  356,
+                                           "height":  294,
+                                           "widthRatio":  0.8027,
+                                           "heightRatio":  0.6629,
+                                           "alphaPixels":  57364,
+                                           "leftAnchorY":  265.895,
+                                           "rightAnchorY":  194.496
+                                       },
+                                       {
+                                           "frame":  5,
+                                           "x":  67,
+                                           "y":  62,
+                                           "width":  346,
+                                           "height":  300,
+                                           "widthRatio":  0.7802,
+                                           "heightRatio":  0.6764,
+                                           "alphaPixels":  56874,
+                                           "leftAnchorY":  274.481,
+                                           "rightAnchorY":  196.718
+                                       },
+                                       {
+                                           "frame":  6,
+                                           "x":  58,
+                                           "y":  63,
+                                           "width":  344,
+                                           "height":  298,
+                                           "widthRatio":  0.7756,
+                                           "heightRatio":  0.6719,
+                                           "alphaPixels":  57414,
+                                           "leftAnchorY":  243.178,
+                                           "rightAnchorY":  192.729
+                                       },
+                                       {
+                                           "frame":  7,
+                                           "x":  43,
+                                           "y":  112,
+                                           "width":  374,
+                                           "height":  249,
+                                           "widthRatio":  0.8433,
+                                           "heightRatio":  0.5614,
+                                           "alphaPixels":  59953,
+                                           "leftAnchorY":  257.57,
+                                           "rightAnchorY":  197.312
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/mythic/siren-skalla-six-shadows_sprite.png",
+                        "width":  1774,
+                        "height":  887,
+                        "cellWidth":  443.5,
+                        "cellHeight":  443.5,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  52,
+                                           "y":  132,
+                                           "width":  346,
+                                           "height":  292,
+                                           "widthRatio":  0.7802,
+                                           "heightRatio":  0.6584,
+                                           "alphaPixels":  63472,
+                                           "leftAnchorY":  308.639,
+                                           "rightAnchorY":  269.316
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  33,
+                                           "y":  132,
+                                           "width":  366,
+                                           "height":  292,
+                                           "widthRatio":  0.8253,
+                                           "heightRatio":  0.6584,
+                                           "alphaPixels":  64602,
+                                           "leftAnchorY":  310.98,
+                                           "rightAnchorY":  274.024
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  44,
+                                           "y":  132,
+                                           "width":  354,
+                                           "height":  292,
+                                           "widthRatio":  0.7982,
+                                           "heightRatio":  0.6584,
+                                           "alphaPixels":  65385,
+                                           "leftAnchorY":  312.033,
+                                           "rightAnchorY":  275.572
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  27,
+                                           "y":  127,
+                                           "width":  372,
+                                           "height":  299,
+                                           "widthRatio":  0.8388,
+                                           "heightRatio":  0.6742,
+                                           "alphaPixels":  69366,
+                                           "leftAnchorY":  299.943,
+                                           "rightAnchorY":  269.903
+                                       },
+                                       {
+                                           "frame":  4,
+                                           "x":  42,
+                                           "y":  97,
+                                           "width":  356,
+                                           "height":  297,
+                                           "widthRatio":  0.8027,
+                                           "heightRatio":  0.6697,
+                                           "alphaPixels":  65798,
+                                           "leftAnchorY":  279.307,
+                                           "rightAnchorY":  246.194
+                                       },
+                                       {
+                                           "frame":  5,
+                                           "x":  24,
+                                           "y":  96,
+                                           "width":  377,
+                                           "height":  299,
+                                           "widthRatio":  0.8501,
+                                           "heightRatio":  0.6742,
+                                           "alphaPixels":  70189,
+                                           "leftAnchorY":  280.958,
+                                           "rightAnchorY":  249.533
+                                       },
+                                       {
+                                           "frame":  6,
+                                           "x":  27,
+                                           "y":  92,
+                                           "width":  384,
+                                           "height":  307,
+                                           "widthRatio":  0.8658,
+                                           "heightRatio":  0.6922,
+                                           "alphaPixels":  71138,
+                                           "leftAnchorY":  274.885,
+                                           "rightAnchorY":  249.137
+                                       },
+                                       {
+                                           "frame":  7,
+                                           "x":  25,
+                                           "y":  98,
+                                           "width":  374,
+                                           "height":  302,
+                                           "widthRatio":  0.8433,
+                                           "heightRatio":  0.6809,
+                                           "alphaPixels":  68854,
+                                           "leftAnchorY":  292.493,
+                                           "rightAnchorY":  244.372
+                                       }
+                                   ]
+                    }
+                ]
+}

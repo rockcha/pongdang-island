@@ -1,0 +1,126 @@
+{
+  "generator": "built-in image_gen",
+  "designPolicy": "All scenes are underwater; simple=water/light/sand, mood=marine natural elements at edges; open central swimming space.",
+  "items": [
+    {
+      "id": "peach-water-haze",
+      "name": "복숭아 물안개",
+      "tier": "simple",
+      "price": 250,
+      "scene": "Pale peach and blush light diffuses through clear ocean water, faint suspended underwater haze, delicate peach-to-aqua gradient. Ivory sand at bottom. This is below the sea surface, not a foggy landscape.",
+      "file": "aquarium-backgrounds/peach-water-haze.png",
+      "prompt": "Use case: stylized-concept. One NEW opaque portrait 9:16 aquarium-game background. This must be unmistakably UNDER THE SEA, camera submerged looking straight through seawater, rippled sea surface overhead and sand below; no terrestrial garden, rooms, buildings or horizon. Soft polished hand-painted storybook art, clean broad forms, gentle caustics, restrained texture. CENTRAL 65% WIDTH and middle 70% HEIGHT remain uninterrupted LOW-CONTRAST OPEN WATER for gameplay fish. No text, UI, frame, characters, people, fish or live animals baked into the background. SIMPLE tier: minimal open water and lighting only; no coral, rocks, seaweed, props or scenery; sand bottom limited to bottom 12%. Pale peach and blush light diffuses through clear ocean water, faint suspended underwater haze, delicate peach-to-aqua gradient. Ivory sand at bottom. This is below the sea surface, not a foggy landscape.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-3ee51178-a696-41bd-8d60-b0d4c6663f5c.png"
+    },
+    {
+      "id": "silver-moon-halo",
+      "name": "은빛 달무리",
+      "tier": "simple",
+      "price": 300,
+      "scene": "Moonlight diffused through a rippling ocean surface makes a broad faint silvery halo above, cool silver-blue seawater, a single soft moonbeam, dim pearl sand. No moon disk or sky inside the water.",
+      "file": "aquarium-backgrounds/silver-moon-halo.png",
+      "prompt": "Use case: stylized-concept. One NEW opaque portrait 9:16 aquarium-game background. This must be unmistakably UNDER THE SEA, camera submerged looking straight through seawater, rippled sea surface overhead and sand below; no terrestrial garden, rooms, buildings or horizon. Soft polished hand-painted storybook art, clean broad forms, gentle caustics, restrained texture. CENTRAL 65% WIDTH and middle 70% HEIGHT remain uninterrupted LOW-CONTRAST OPEN WATER for gameplay fish. No text, UI, frame, characters, people, fish or live animals baked into the background. SIMPLE tier: minimal open water and lighting only; no coral, rocks, seaweed, props or scenery; sand bottom limited to bottom 12%. Moonlight diffused through a rippling ocean surface makes a broad faint silvery halo above, cool silver-blue seawater, a single soft moonbeam, dim pearl sand. No moon disk or sky inside the water.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-b8f2ce25-638b-4a3e-a5d9-f02b36cfcaca.png"
+    },
+    {
+      "id": "blue-glass-ripples",
+      "name": "푸른 유리물결",
+      "tier": "simple",
+      "price": 250,
+      "scene": "Crystal clear blue ocean water with elegant glass-like light refractions near the surface, gentle smooth azure gradients, delicate blue-white caustics and pale sand. Airy and clear, not actual glass objects.",
+      "file": "aquarium-backgrounds/blue-glass-ripples.png",
+      "prompt": "Use case: stylized-concept. One NEW opaque portrait 9:16 aquarium-game background. This must be unmistakably UNDER THE SEA, camera submerged looking straight through seawater, rippled sea surface overhead and sand below; no terrestrial garden, rooms, buildings or horizon. Soft polished hand-painted storybook art, clean broad forms, gentle caustics, restrained texture. CENTRAL 65% WIDTH and middle 70% HEIGHT remain uninterrupted LOW-CONTRAST OPEN WATER for gameplay fish. No text, UI, frame, characters, people, fish or live animals baked into the background. SIMPLE tier: minimal open water and lighting only; no coral, rocks, seaweed, props or scenery; sand bottom limited to bottom 12%. Crystal clear blue ocean water with elegant glass-like light refractions near the surface, gentle smooth azure gradients, delicate blue-white caustics and pale sand. Airy and clear, not actual glass objects.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-4860de77-6cee-46bd-be17-33b33b277ae1.png"
+    },
+    {
+      "id": "lemon-light-shallows",
+      "name": "레몬빛 여울",
+      "tier": "simple",
+      "price": 200,
+      "scene": "A very shallow clear turquoise sea with soft lemon-yellow sunlight spilling through the surface, pale buttery highlights on smooth white sand, broad gentle rays. The water stays blue-green, never opaque yellow.",
+      "file": "aquarium-backgrounds/lemon-light-shallows.png",
+      "prompt": "Use case: stylized-concept. One NEW opaque portrait 9:16 aquarium-game background. This must be unmistakably UNDER THE SEA, camera submerged looking straight through seawater, rippled sea surface overhead and sand below; no terrestrial garden, rooms, buildings or horizon. Soft polished hand-painted storybook art, clean broad forms, gentle caustics, restrained texture. CENTRAL 65% WIDTH and middle 70% HEIGHT remain uninterrupted LOW-CONTRAST OPEN WATER for gameplay fish. No text, UI, frame, characters, people, fish or live animals baked into the background. SIMPLE tier: minimal open water and lighting only; no coral, rocks, seaweed, props or scenery; sand bottom limited to bottom 12%. A very shallow clear turquoise sea with soft lemon-yellow sunlight spilling through the surface, pale buttery highlights on smooth white sand, broad gentle rays. The water stays blue-green, never opaque yellow.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-c8a0663c-1c15-42c0-a39a-54f85ad8e79c.png"
+    },
+    {
+      "id": "champagne-ripples",
+      "name": "샴페인 물결",
+      "tier": "simple",
+      "price": 350,
+      "scene": "Warm champagne-gold underwater sunlight through clear pale aqua seawater, soft pearly shimmer on clean sand, a few sparse tiny illuminated seawater particles. Restrained pale gold palette, not drink, wine glass or dense bubbles.",
+      "file": "aquarium-backgrounds/champagne-ripples.png",
+      "prompt": "Use case: stylized-concept. One NEW opaque portrait 9:16 aquarium-game background. This must be unmistakably UNDER THE SEA, camera submerged looking straight through seawater, rippled sea surface overhead and sand below; no terrestrial garden, rooms, buildings or horizon. Soft polished hand-painted storybook art, clean broad forms, gentle caustics, restrained texture. CENTRAL 65% WIDTH and middle 70% HEIGHT remain uninterrupted LOW-CONTRAST OPEN WATER for gameplay fish. No text, UI, frame, characters, people, fish or live animals baked into the background. SIMPLE tier: minimal open water and lighting only; no coral, rocks, seaweed, props or scenery; sand bottom limited to bottom 12%. Warm champagne-gold underwater sunlight through clear pale aqua seawater, soft pearly shimmer on clean sand, a few sparse tiny illuminated seawater particles. Restrained pale gold palette, not drink, wine glass or dense bubbles.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-35435b88-c4e5-47a0-a59c-4c70d5a144b8.png"
+    },
+    {
+      "id": "golden-sun-shallows",
+      "name": "금빛 햇살 여울",
+      "tier": "simple",
+      "price": 400,
+      "scene": "Sunny clear ocean with broad warm golden sunbeams and softly defined honey-gold caustic ribbons across the lower sandy floor. Slightly deeper blue ocean center than lemon theme, vivid golden morning illumination but clean and uncluttered.",
+      "file": "aquarium-backgrounds/golden-sun-shallows.png",
+      "prompt": "Use case: stylized-concept. One NEW opaque portrait 9:16 aquarium-game background. This must be unmistakably UNDER THE SEA, camera submerged looking straight through seawater, rippled sea surface overhead and sand below; no terrestrial garden, rooms, buildings or horizon. Soft polished hand-painted storybook art, clean broad forms, gentle caustics, restrained texture. CENTRAL 65% WIDTH and middle 70% HEIGHT remain uninterrupted LOW-CONTRAST OPEN WATER for gameplay fish. No text, UI, frame, characters, people, fish or live animals baked into the background. SIMPLE tier: minimal open water and lighting only; no coral, rocks, seaweed, props or scenery; sand bottom limited to bottom 12%. Sunny clear ocean with broad warm golden sunbeams and softly defined honey-gold caustic ribbons across the lower sandy floor. Slightly deeper blue ocean center than lemon theme, vivid golden morning illumination but clean and uncluttered.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-fd76dfe0-f817-4fda-9ebb-ee5875bf8385.png"
+    },
+    {
+      "id": "pink-coral-shallows",
+      "name": "분홍 산호 여울",
+      "tier": "mood",
+      "price": 500,
+      "scene": "A tranquil shallow ocean reef with only a few rounded soft pink coral clusters in the far lower corners, clear aqua sea center, white sand, gentle rosy reflected light. Coral shapes broad and simple, no dense branches or countless tiny polyps.",
+      "file": "aquarium-backgrounds/pink-coral-shallows.png",
+      "prompt": "Use case: stylized-concept. One NEW opaque portrait 9:16 aquarium-game background. This must be unmistakably UNDER THE SEA, camera submerged looking straight through seawater, rippled sea surface overhead and sand below; no terrestrial garden, rooms, buildings or horizon. Soft polished hand-painted storybook art, clean broad forms, gentle caustics, restrained texture. CENTRAL 65% WIDTH and middle 70% HEIGHT remain uninterrupted LOW-CONTRAST OPEN WATER for gameplay fish. No text, UI, frame, characters, people, fish or live animals baked into the background. MOOD tier: natural marine scenery at far edges and bottom 18% only; moderate simple detail, never densely ornate. A tranquil shallow ocean reef with only a few rounded soft pink coral clusters in the far lower corners, clear aqua sea center, white sand, gentle rosy reflected light. Coral shapes broad and simple, no dense branches or countless tiny polyps.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-152fd990-7ab1-4ffa-96d3-32288869dffb.png"
+    },
+    {
+      "id": "glowing-sea-cavern",
+      "name": "빛나는 해저 동굴",
+      "tier": "mood",
+      "price": 750,
+      "scene": "Entirely underwater natural sea cave. Broad smooth blue-gray rock edges on the far left, right and upper corners frame a spacious open blue water center; one natural slit above lets luminous turquoise sunlight pour down. Pale sand bottom, subtle reflected light. No crystals, lamps, structures or densely textured rocks.",
+      "file": "aquarium-backgrounds/glowing-sea-cavern.png",
+      "prompt": "Use case: stylized-concept. One NEW opaque portrait 9:16 aquarium-game background. This must be unmistakably UNDER THE SEA, camera submerged looking straight through seawater, rippled sea surface overhead and sand below; no terrestrial garden, rooms, buildings or horizon. Soft polished hand-painted storybook art, clean broad forms, gentle caustics, restrained texture. CENTRAL 65% WIDTH and middle 70% HEIGHT remain uninterrupted LOW-CONTRAST OPEN WATER for gameplay fish. No text, UI, frame, characters, people, fish or live animals baked into the background. MOOD tier: natural marine scenery at far edges and bottom 18% only; moderate simple detail, never densely ornate. Entirely underwater natural sea cave. Broad smooth blue-gray rock edges on the far left, right and upper corners frame a spacious open blue water center; one natural slit above lets luminous turquoise sunlight pour down. Pale sand bottom, subtle reflected light. No crystals, lamps, structures or densely textured rocks.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-846aad88-5c2e-43d7-b8ee-e3a6fcaf3c3b.png"
+    },
+    {
+      "id": "black-sand-coral",
+      "name": "검은 모래 산호밭",
+      "tier": "mood",
+      "price": 650,
+      "scene": "Clear blue ocean above a gently rippled charcoal volcanic sand bed, two sparse ivory and muted coral-pink reef clusters at lower outer corners. Dark sand is confined mainly to bottom 18 percent; the open water center is bright readable teal. No lava, smoke, glowing cracks or dense coral forest.",
+      "file": "aquarium-backgrounds/black-sand-coral.png",
+      "prompt": "Use case: stylized-concept. One NEW opaque portrait 9:16 aquarium-game background. This must be unmistakably UNDER THE SEA, camera submerged looking straight through seawater, rippled sea surface overhead and sand below; no terrestrial garden, rooms, buildings or horizon. Soft polished hand-painted storybook art, clean broad forms, gentle caustics, restrained texture. CENTRAL 65% WIDTH and middle 70% HEIGHT remain uninterrupted LOW-CONTRAST OPEN WATER for gameplay fish. No text, UI, frame, characters, people, fish or live animals baked into the background. MOOD tier: natural marine scenery at far edges and bottom 18% only; moderate simple detail, never densely ornate. Clear blue ocean above a gently rippled charcoal volcanic sand bed, two sparse ivory and muted coral-pink reef clusters at lower outer corners. Dark sand is confined mainly to bottom 18 percent; the open water center is bright readable teal. No lava, smoke, glowing cracks or dense coral forest.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-92d13c40-b5bf-4db0-9b10-ab2c2461876c.png"
+    },
+    {
+      "id": "blue-kelp-forest",
+      "name": "푸른 다시마숲",
+      "tier": "mood",
+      "price": 600,
+      "scene": "A peaceful underwater kelp forest with a few broad flowing blue-green kelp ribbons growing along far left and right edges, distant softly blurred stems, slanted morning beams through teal seawater, fine sandy bottom. Center completely open, not a wall of vegetation; simplified graceful leaf silhouettes.",
+      "file": "aquarium-backgrounds/blue-kelp-forest.png",
+      "prompt": "Use case: stylized-concept. One NEW opaque portrait 9:16 aquarium-game background. This must be unmistakably UNDER THE SEA, camera submerged looking straight through seawater, rippled sea surface overhead and sand below; no terrestrial garden, rooms, buildings or horizon. Soft polished hand-painted storybook art, clean broad forms, gentle caustics, restrained texture. CENTRAL 65% WIDTH and middle 70% HEIGHT remain uninterrupted LOW-CONTRAST OPEN WATER for gameplay fish. No text, UI, frame, characters, people, fish or live animals baked into the background. MOOD tier: natural marine scenery at far edges and bottom 18% only; moderate simple detail, never densely ornate. A peaceful underwater kelp forest with a few broad flowing blue-green kelp ribbons growing along far left and right edges, distant softly blurred stems, slanted morning beams through teal seawater, fine sandy bottom. Center completely open, not a wall of vegetation; simplified graceful leaf silhouettes.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-9d4eb89f-0f14-4017-b026-4e1c40f7aac0.png"
+    },
+    {
+      "id": "morning-eelgrass",
+      "name": "잘피밭의 아침",
+      "tier": "mood",
+      "price": 450,
+      "scene": "Fresh underwater morning in a shallow seagrass meadow. Short soft green eelgrass in two low sparse patches at bottom outer edges, white sand walkway-like open middle, light turquoise water and warm pale sunbeams. No land, sky horizon, flowers, reeds above water, no dense central grass.",
+      "file": "aquarium-backgrounds/morning-eelgrass.png",
+      "prompt": "Use case: stylized-concept. One NEW opaque portrait 9:16 aquarium-game background. This must be unmistakably UNDER THE SEA, camera submerged looking straight through seawater, rippled sea surface overhead and sand below; no terrestrial garden, rooms, buildings or horizon. Soft polished hand-painted storybook art, clean broad forms, gentle caustics, restrained texture. CENTRAL 65% WIDTH and middle 70% HEIGHT remain uninterrupted LOW-CONTRAST OPEN WATER for gameplay fish. No text, UI, frame, characters, people, fish or live animals baked into the background. MOOD tier: natural marine scenery at far edges and bottom 18% only; moderate simple detail, never densely ornate. Fresh underwater morning in a shallow seagrass meadow. Short soft green eelgrass in two low sparse patches at bottom outer edges, white sand walkway-like open middle, light turquoise water and warm pale sunbeams. No land, sky horizon, flowers, reeds above water, no dense central grass.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-8f3c5c0c-124f-4036-b96b-2b44b272a8fa.png"
+    },
+    {
+      "id": "red-fan-coral",
+      "name": "붉은 부채산호",
+      "tier": "mood",
+      "price": 700,
+      "scene": "Two elegant muted red sea-fan corals at the far lower left and right edges, their broad fan silhouettes gently translucent in clear deep cyan seawater. Fine branching is restrained and readable, no dense intricate lace. Pale sand and a couple smooth natural rocks only at bottom outer corners.",
+      "file": "aquarium-backgrounds/red-fan-coral.png",
+      "prompt": "Use case: stylized-concept. One NEW opaque portrait 9:16 aquarium-game background. This must be unmistakably UNDER THE SEA, camera submerged looking straight through seawater, rippled sea surface overhead and sand below; no terrestrial garden, rooms, buildings or horizon. Soft polished hand-painted storybook art, clean broad forms, gentle caustics, restrained texture. CENTRAL 65% WIDTH and middle 70% HEIGHT remain uninterrupted LOW-CONTRAST OPEN WATER for gameplay fish. No text, UI, frame, characters, people, fish or live animals baked into the background. MOOD tier: natural marine scenery at far edges and bottom 18% only; moderate simple detail, never densely ornate. Two elegant muted red sea-fan corals at the far lower left and right edges, their broad fan silhouettes gently translucent in clear deep cyan seawater. Fine branching is restrained and readable, no dense intricate lace. Pale sand and a couple smooth natural rocks only at bottom outer corners.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-03e63de5-2a15-4b22-b436-f91251f21962.png"
+    }
+  ]
+}

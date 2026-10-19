@@ -1,6 +1,7 @@
+import {RankingRow,rankingListClass} from './ranking-row'
 import {randomId} from '@/lib/random-id'
 import {useEffect,useRef,useState} from 'react'
-import {Crown,RotateCcw,UserPlus,UserCheck,Clock3} from 'lucide-react'
+import {RotateCcw,UserPlus,UserCheck,Clock3} from 'lucide-react'
 import {toast} from 'sonner'
 import {useAuth} from '@/components/auth-provider'
 import {Button} from '@/components/ui/button'
@@ -23,17 +24,17 @@ function Ranking(){
  async function addFriend(code:string){if(requestLock.current)return;requestLock.current=true;setRequesting(code);try{await sendFriendRequest(code);if(alive.current){setData(old=>old?{...old,rows:old.rows.map(row=>row.friendCode===code?{...row,friendStatus:'pending'}:row)}:old);toast.success('친구 요청을 보냈어요.');void social.refresh()}}catch(cause){if(alive.current)toast.error(socialErrorMessage(cause))}finally{requestLock.current=false;if(alive.current)setRequesting(null)}}
  async function load(offset=0){if(locked.current)return;locked.current=true;setBusy(true);try{const next=await oddEvenLeaderboard(offset);if(alive.current){setData(old=>({...next,rows:offset&&old?[...old.rows,...next.rows]:next.rows}));setError('')}}catch(cause){if(alive.current)setError(oddEvenError(cause))}finally{locked.current=false;if(alive.current)setBusy(false)}}
  useEffect(()=>{alive.current=true;void load();return()=>{alive.current=false}},[]) // eslint-disable-line react-hooks/exhaustive-deps
- return <div role="tabpanel" id="odd-even-rank-panel" aria-labelledby="odd-even-rank-tab" className="min-h-0 flex-1 space-y-3 overflow-y-auto">
+ return <div role="tabpanel" id="odd-even-rank-panel" aria-labelledby="odd-even-rank-tab" className="min-h-0 min-w-0 flex-1 space-y-3 overflow-y-auto overscroll-contain px-4 py-3">
   <div className="flex items-center justify-between"><h3 className="text-sm font-normal">최고 수령액</h3><Button variant="ghost" size="icon" aria-label="순위 새로고침" disabled={busy} onClick={()=>void load()}><RotateCcw className="size-4"/></Button></div>
   <p className="text-xs text-muted-foreground">실제 받은 보상 기준 · 개인 최고 기록</p>
-  <ol className="space-y-2">{data?.rows.map(row=>{
+  <ol className={rankingListClass}>{data?.rows.map(row=>{
    const related=social.requests.find(request=>(request.sender_id===row.userId||request.recipient_id===row.userId)&&(request.status==='accepted'||request.status==='pending'))
    const status=related?.status??row.friendStatus,label=status==='accepted'?'이미 친구예요':status==='pending'?'요청 중':'친구 요청'
    const Icon=status==='accepted'?UserCheck:status==='pending'?Clock3:UserPlus
-   return <li key={row.id} className={`flex items-center gap-2 rounded-lg border p-3 text-sm ${row.rank===1?'border-amber-300 bg-amber-50 text-amber-900':row.rank===2?'border-slate-300 bg-slate-50 text-slate-700':row.rank===3?'border-orange-200 bg-orange-50 text-orange-900':'bg-card'}`}><span className="flex w-12 shrink-0 items-center gap-1">{row.rank<=3&&<Crown className="size-4"/>}{row.rank}등</span><span className="min-w-0 flex-1 truncate">{row.nickname}{row.mine?' (나)':''}</span><span className="flex shrink-0 items-center gap-1"><GoldIcon className="size-4"/><span className="tabular-nums">{row.gold.toLocaleString('ko-KR')}</span></span>{!row.mine&&row.friendCode?<Button variant="ghost" size="icon" className="size-8 shrink-0" title={label} aria-label={`${row.nickname} · ${label}`} disabled={!!status||!!requesting} onClick={()=>void addFriend(row.friendCode!)}><Icon className="size-4"/></Button>:<span className="size-8 shrink-0"/>}</li>
+   return <RankingRow key={row.id} rank={row.rank} nickname={row.nickname} mine={row.mine} record={<span className="flex items-center justify-end gap-1"><GoldIcon className="size-4"/><span>{row.gold.toLocaleString('ko-KR')}</span></span>} action={!row.mine&&row.friendCode?<Button variant="ghost" size="icon" className="size-11 shrink-0" title={label} aria-label={`${row.nickname} · ${label}`} disabled={!!status||!!requesting} onClick={()=>void addFriend(row.friendCode!)}><Icon className="size-4"/></Button>:<span className="size-11 shrink-0"/>}/>
   })}</ol>
   {data&&!data.total&&<p className="py-6 text-center text-sm text-muted-foreground">아직 수령 기록이 없어요.</p>}{error&&<p role="alert" className="text-xs text-destructive">{error}</p>}
-  {busy&&<p role="status" className="text-xs">기록을 불러오는 중…</p>}{data&&data.rows.length<data.total&&<Button variant="outline" disabled={busy} onClick={()=>void load(data.rows.length)}>기록 더 보기 ({data.rows.length}/{data.total})</Button>}
+  {busy&&<p role="status" className="text-xs">기록을 불러오는 중…</p>}{data&&data.rows.length<data.total&&<Button variant="outline" className="w-full" disabled={busy} onClick={()=>void load(data.rows.length)}>기록 더 보기 ({data.rows.length}/{data.total})</Button>}
  </div>
 }
 export default function OddEvenGame(){const {session}=useAuth();return <AccountGame key={session?.user.id??'guest'}/>}
@@ -71,7 +72,7 @@ function AccountGame(){
   <GameTabs id="odd-even" value={tab} onChange={setTab}/>
   {tab==='rank'?<Ranking/>:<div role="tabpanel" id="odd-even-game-panel" aria-labelledby="odd-even-game-tab" className="relative flex min-h-0 flex-1 flex-col overflow-hidden border-b border-border bg-card">
    {!run?<GameStartOverlay title="퐁이의 홀짝 조개" description="조개 속 진주, 홀일까요 짝일까요?" poster="/arcade/odd-even/thumbnail.png" onPaid={()=>setConfirm(true)} onPractice={startPractice} paidDisabled={!loaded||busy||gold.loading||gold.wallet.gold<10} practiceDisabled={busy||!!operation.current}/>:<div className="flex h-full min-h-0 flex-col gap-2 p-3 sm:p-4">
-    <div className="shrink-0 text-center"><p className="text-xs text-muted-foreground">{run.stage==='banked'?'받은 보상':scene!=='result'?'현재 베팅금':'현재 확보 금액'}</p><p className="flex items-center justify-center gap-1 text-3xl tabular-nums text-primary"><GoldIcon className="size-7"/>{visibleStake.toLocaleString('ko-KR')}</p><p className="min-h-4 text-xs text-muted-foreground">{run.stage==='choose'?`맞히면 ${(run.stake*2).toLocaleString('ko-KR')}골드`:null}</p></div>
+    <div className="shrink-0 text-center"><p className="text-xs text-muted-foreground">{run.stage==='banked'?'받은 보상':scene!=='result'?'현재 배팅금':'현재 확보 금액'}</p><p className="flex items-center justify-center gap-1 text-3xl tabular-nums text-primary"><GoldIcon className="size-7"/>{visibleStake.toLocaleString('ko-KR')}</p><p className="min-h-4 text-xs text-muted-foreground">{run.stage==='choose'?'맞히면 두 배':null}</p></div>
     <div aria-live="polite" className={`odd-even-scene flex min-h-0 flex-1 flex-col items-center gap-1 rounded-lg p-2 ${scene==='result'&&run.stage==='lost'?'odd-even-result--wrong bg-red-50 text-red-800':scene==='result'&&(run.stage==='decision'||run.stage==='banked')?'odd-even-result--correct bg-emerald-50 text-emerald-800':'bg-secondary/40 text-primary'}`}>
      <OddEvenActor scene={scene} pearls={run.pearls}/>
      <div className="flex h-12 shrink-0 flex-col items-center justify-center gap-1">
@@ -79,11 +80,11 @@ function AccountGame(){
      </div>
     </div>
     <div className="grid shrink-0 grid-cols-2 gap-2">
-     {run.stage==='choose'?<><Button className="min-h-16 text-xl font-medium" disabled={busy||scene!=='asking'} onClick={()=>act('answer','odd')}>홀</Button><Button disabled={busy||scene!=='asking'} variant="outline" onClick={()=>act('answer','even')}>짝</Button></>:run.stage==='decision'?<><Button className={run.wins>=state.maxWins?'col-span-2':undefined} disabled={busy||scene!=='result'} onClick={()=>act('cashout')}>보상 받기</Button>{run.wins<state.maxWins&&<Button variant="outline" disabled={busy||scene!=='result'} onClick={()=>act('double')}>묻고 더블로 가 !</Button>}</>:<Button className="col-span-2 min-h-16 text-lg font-medium" disabled={busy||scene!=='result'} onClick={()=>{setState({run:null,maxWins:20});setError('')}}>다시 하기</Button>}
+     {run.stage==='choose'?<><Button className="h-16 min-h-16 w-full min-w-0 text-xl font-medium" disabled={busy||scene!=='asking'} onClick={()=>act('answer','odd')}>홀</Button><Button className="h-16 min-h-16 w-full min-w-0 text-xl font-medium" disabled={busy||scene!=='asking'} variant="outline" onClick={()=>act('answer','even')}>짝</Button></>:run.stage==='decision'?<><Button className={run.wins>=state.maxWins?'col-span-2':undefined} disabled={busy||scene!=='result'} onClick={()=>act('cashout')}>보상 받기</Button>{run.wins<state.maxWins&&<Button variant="outline" disabled={busy||scene!=='result'} onClick={()=>act('double')}>묻고 더블로 가 !</Button>}</>:<Button className="col-span-2 min-h-16 text-lg font-medium" disabled={busy||scene!=='result'} onClick={()=>{setState({run:null,maxWins:20});setError('')}}>다시 하기</Button>}
     </div>
    </div>}
    {error&&<div role="alert" className="absolute inset-x-2 bottom-2 z-30 rounded-lg border bg-card p-3 text-xs text-destructive">{error}<Button variant="ghost" className="ml-2 h-7 text-xs" disabled={busy} onClick={()=>operation.current?startPaid():void request({p_action:'state'})}>다시 확인</Button></div>}
   </div>}
-  <ConfirmDialog open={confirm} onOpenChange={setConfirm} title="10골드로 시작하시겠습니까?" description="별도 참가비 없이 10골드를 베팅해요. 틀리면 이번 판의 베팅금은 사라져요." busy={busy} onConfirm={startPaid}/>
+  <ConfirmDialog illustration="game" open={confirm} onOpenChange={setConfirm} title="10골드로 시작하시겠습니까?" description="별도 참가비 없이 10골드를 베팅해요. 틀리면 이번 판의 베팅금은 사라져요." busy={busy} onConfirm={startPaid}/>
  </div>
 }

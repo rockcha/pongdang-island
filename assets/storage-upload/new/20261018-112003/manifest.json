@@ -1,0 +1,218 @@
+{
+  "createdAt": "2026-10-18T11:29:59.374Z",
+  "tool": "built-in image_gen",
+  "species": [
+    {
+      "id": "scrap-thimble-barnacle",
+      "name": "골무 따개비",
+      "rarity": "common",
+      "native_region_id": "scrapisle"
+    },
+    {
+      "id": "scrap-lightbulb-jellyfish",
+      "name": "전구 해파리",
+      "rarity": "rare",
+      "native_region_id": "scrapisle"
+    },
+    {
+      "id": "scrap-cogwheel-seahorse",
+      "name": "톱니 해마",
+      "rarity": "rare",
+      "native_region_id": "scrapisle"
+    },
+    {
+      "id": "scrap-compass-turtle",
+      "name": "나침반 거북",
+      "rarity": "rare",
+      "native_region_id": "scrapisle"
+    },
+    {
+      "id": "scrap-garden-nudibranch",
+      "name": "고철정원 갯민숭달팽이",
+      "rarity": "epic",
+      "native_region_id": "scrapisle"
+    },
+    {
+      "id": "scrap-curiosity-hermit-crab",
+      "name": "만물상 소라게",
+      "rarity": "epic",
+      "native_region_id": "scrapisle"
+    },
+    {
+      "id": "scrap-sunken-orchestra-octopus",
+      "name": "침몰한 관현악 문어",
+      "rarity": "epic",
+      "native_region_id": "scrapisle"
+    }
+  ],
+  "files": [
+    {
+      "species_id": "scrap-thimble-barnacle",
+      "storage_path": "fish/normal/scrap-thimble-barnacle_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-112003/fish/normal/scrap-thimble-barnacle_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "db8e6c61394a14508aaf1e4eccba5eb467ea9e288985e999d6873ae7aab970eb",
+      "prompt": "Create one transparent PNG game collectible thumbnail for 골무 따개비. A little living barnacle whose weathered brass shell resembles a sewing thimble with tiny dimples, cream feeding cirri extending gently toward screen right, green patina at base. No artificial eyes. Reference image is STYLE ONLY, do not copy its species or props. Rounded cute cartoon with clean dark brown outlines, warm soft cel shading, readable silhouette. Face SCREEN RIGHT in clear side-three-quarter profile, head and mouth on right, body trails left. Single entire creature centered, longest extent 84% of square canvas, no cropping. Actual alpha transparency, no floor, water, scenery, cast shadow, text, frame or checkerboard.",
+      "reference_role": "style only",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "facing": "right"
+    },
+    {
+      "species_id": "scrap-thimble-barnacle",
+      "storage_path": "fish/normal/scrap-thimble-barnacle_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-112003/fish/normal/scrap-thimble-barnacle_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "dbd7a6e066e8fd204556af42825caaa45b84318439486e8e23a704348e2d4d55",
+      "prompt": "Create a genuine alpha transparent PNG 2 by 2 animation spritesheet of the EXACT thimble barnacle in the reference thumbnail. Four equal square cells, read top left, top right, bottom left, bottom right. Keep shell and body position, size and orientation perfectly fixed in each cell; show a continuous gentle feeding sweep of feathery cirri, extended, folded slightly, curled, extended again. Shell longest extent together with cirri occupies 80-86 percent of each cell, generous transparent margins outside and between cells; no lines or labels. Same warm cartoon style, patina colors, exact anatomy. Face SCREEN RIGHT in ALL FOUR frames, never mirror. No background, no checkerboard, no floor, no shadows. Whole creature in each cell. No text.\nSafety margin correction: Edit the provided 2x2 square transparent animation sheet: SHRINK all four creatures uniformly to 70 percent of existing size within their cells. Put each creature in the CENTER of its own square cell, retain poses and proportions and exact identity, all face right. Restore any clipped thin edges. Every cell must have at LEAST 60 pixels transparent margin on ALL FOUR sides at 1254x1254 overall. Keep 2x2 equal square grid on SQUARE canvas. Actual alpha transparency. Do not crop or tightly frame contents. No text or grid. Head and rigid body anchors match across frames. Only reduce scale and add transparent padding, preserve art.",
+      "reference_role": "same creature identity",
+      "reference": "fish/normal/scrap-thimble-barnacle_thumbnail.png",
+      "facing": "right"
+    },
+    {
+      "species_id": "scrap-lightbulb-jellyfish",
+      "storage_path": "fish/rare/scrap-lightbulb-jellyfish_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-112003/fish/rare/scrap-lightbulb-jellyfish_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "7aaaf4e4f51577c45bce0de1eb648aa54186fb82966c599813cde28530f59896",
+      "prompt": "Create one transparent PNG game collectible thumbnail for 전구 해파리. A cute translucent lightbulb jellyfish, round glass bell shaped like old incandescent bulb, warm glowing filament inside and copper socket base above flowing mint tentacles. Tiny gentle face on right side of bell. Reference image is STYLE ONLY, do not copy its species or props. Rounded cute cartoon with clean dark brown outlines, warm soft cel shading, readable silhouette. Face SCREEN RIGHT in clear side-three-quarter profile, head and mouth on right, body trails left. Single entire creature centered, longest extent 84% of square canvas, no cropping. Actual alpha transparency, no floor, water, scenery, cast shadow, text, frame or checkerboard.",
+      "reference_role": "style only",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "facing": "right"
+    },
+    {
+      "species_id": "scrap-lightbulb-jellyfish",
+      "storage_path": "fish/rare/scrap-lightbulb-jellyfish_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-112003/fish/rare/scrap-lightbulb-jellyfish_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "4e1789a03c16aaf47db7cfcb78ac6558390858e9f1da77b6ff296308bb72405f",
+      "prompt": "Recreate this exact lightbulb jellyfish as FOUR equal SQUARE animation frames in a SQUARE 1536x1536 canvas (NOT landscape). 2 columns by 2 rows, each cell square. Head face SCREEN RIGHT in every frame. Body only fills 80% of cell width, leave large blank transparent space above and below if needed. Keep eye head socket anchors fixed, same scale all cells. Four subtle tentacle swimming waves, bell slight contraction. Same cute art style and identity as reference thumbnail. Genuine alpha transparency. NO background, grid, text or checkerboard. Entire square sheet, no cropping, no layout with rectangular cells.\nSafety margin correction: Edit the provided 2x2 square transparent animation sheet: SHRINK all four creatures uniformly to 70 percent of existing size within their cells. Put each creature in the CENTER of its own square cell, retain poses and proportions and exact identity, all face right. Restore any clipped thin edges. Every cell must have at LEAST 60 pixels transparent margin on ALL FOUR sides at 1254x1254 overall. Keep 2x2 equal square grid on SQUARE canvas. Actual alpha transparency. Do not crop or tightly frame contents. No text or grid. Head and rigid body anchors match across frames. Only reduce scale and add transparent padding, preserve art.",
+      "reference_role": "same creature identity",
+      "reference": "fish/rare/scrap-lightbulb-jellyfish_thumbnail.png",
+      "facing": "right"
+    },
+    {
+      "species_id": "scrap-cogwheel-seahorse",
+      "storage_path": "fish/rare/scrap-cogwheel-seahorse_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-112003/fish/rare/scrap-cogwheel-seahorse_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "181866d0d9c6f52a765ef67325958cbc21e13654c25b0e0913844f150f70a687",
+      "prompt": "Create one transparent PNG game collectible thumbnail for 톱니 해마. A charming copper seahorse with cogwheel shaped dorsal fin and spring-coiled tail, teal verdigris details, long snout pointing right. Reference image is STYLE ONLY, do not copy its species or props. Rounded cute cartoon with clean dark brown outlines, warm soft cel shading, readable silhouette. Face SCREEN RIGHT in clear side-three-quarter profile, head and mouth on right, body trails left. Single entire creature centered, longest extent 84% of square canvas, no cropping. Actual alpha transparency, no floor, water, scenery, cast shadow, text, frame or checkerboard.",
+      "reference_role": "style only",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "facing": "right"
+    },
+    {
+      "species_id": "scrap-cogwheel-seahorse",
+      "storage_path": "fish/rare/scrap-cogwheel-seahorse_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-112003/fish/rare/scrap-cogwheel-seahorse_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "24511b6a80e208cb7dad6cb985f4e9fb2a547a9eae336ff75ce2e4522a2abd12",
+      "prompt": "Create alpha transparent PNG animation spritesheet, exactly 2x2 equal square cells, FOUR full-body frames of EXACT copper cogwheel seahorse in reference, same cartoon style. Face SCREEN RIGHT in ALL frames. Sequential subtle swimming loop: dorsal cog-shaped fin gently fans and small side fin flutters, spring tail relaxes slightly and curls back. Keep head, eyes, torso anchor and scale IDENTICAL in all cells, no bobbing or recentering. Whole creature occupies 82-86% of each cell longest axis, no clipping, wide transparent separation. No text, background, checkerboard, grids or floor.",
+      "reference_role": "same creature identity",
+      "reference": "fish/rare/scrap-cogwheel-seahorse_thumbnail.png",
+      "facing": "right"
+    },
+    {
+      "species_id": "scrap-compass-turtle",
+      "storage_path": "fish/rare/scrap-compass-turtle_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-112003/fish/rare/scrap-compass-turtle_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "d5ae6e5388fbc949f170547498a44f70f53b505ee5a20f639a91f44cc6f1140b",
+      "prompt": "Create one transparent PNG game collectible thumbnail for 나침반 거북. A friendly sea turtle, teal flippers, old brass compass embedded organically in domed shell, ruby red compass needle under glass, head extended right. Reference image is STYLE ONLY, do not copy its species or props. Rounded cute cartoon with clean dark brown outlines, warm soft cel shading, readable silhouette. Face SCREEN RIGHT in clear side-three-quarter profile, head and mouth on right, body trails left. Single entire creature centered, longest extent 84% of square canvas, no cropping. Actual alpha transparency, no floor, water, scenery, cast shadow, text, frame or checkerboard.",
+      "reference_role": "style only",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "facing": "right"
+    },
+    {
+      "species_id": "scrap-compass-turtle",
+      "storage_path": "fish/rare/scrap-compass-turtle_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-112003/fish/rare/scrap-compass-turtle_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "e180b64a81b21dda0dfb8123f3e112d5707ffb1d62162bf034f904d1f32a6df6",
+      "prompt": "SQUARE IMAGE. 1536x1536 SQUARE PNG canvas. Four SQUARE cells in 2x2 sprite sheet. Do NOT make a wide image. Each SQUARE cell has this exact compass turtle small in its middle, taking 80% width, with large transparent space above and below its body. Actual alpha transparency. Same identity as thumbnail. All heads face SCREEN RIGHT. Four coordinated subtle flipper swimming poses, keep shell compass head anchor fixed across frames. No bobbing or body recentering. Same art. No scenery, grid, lines or text. Entire canvas is SQUARE; extra vertical transparent padding is REQUIRED, NOT a rectangular sheet.\nSafety margin correction: Edit the provided 2x2 square transparent animation sheet: SHRINK all four creatures uniformly to 70 percent of existing size within their cells. Put each creature in the CENTER of its own square cell, retain poses and proportions and exact identity, all face right. Restore any clipped thin edges. Every cell must have at LEAST 60 pixels transparent margin on ALL FOUR sides at 1254x1254 overall. Keep 2x2 equal square grid on SQUARE canvas. Actual alpha transparency. Do not crop or tightly frame contents. No text or grid. Head and rigid body anchors match across frames. Only reduce scale and add transparent padding, preserve art.",
+      "reference_role": "same creature identity",
+      "reference": "fish/rare/scrap-compass-turtle_thumbnail.png",
+      "facing": "right"
+    },
+    {
+      "species_id": "scrap-garden-nudibranch",
+      "storage_path": "fish/epic/scrap-garden-nudibranch_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-112003/fish/epic/scrap-garden-nudibranch_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "5f26dd996c3fbe2565a60091381d63af3045f6f7a3e1e7c39c8553e803d90d5d",
+      "prompt": "Create one transparent PNG game collectible thumbnail for 고철정원 갯민숭달팽이. An exquisite sea slug with a miniature garden of soft corals, verdigris copper curls and tiny rusted metal petals growing on its back, pearly mint body, orange rhinophores at right. Reference image is STYLE ONLY, do not copy its species or props. Soft sophisticated fantasy illustration, luminous gradients, colored subtle outlines, rich fine detail. Face SCREEN RIGHT in clear side-three-quarter profile, head and mouth on right, body trails left. Single entire creature centered, longest extent 84% of square canvas, no cropping. Actual alpha transparency, no floor, water, scenery, cast shadow, text, frame or checkerboard.",
+      "reference_role": "style only",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "facing": "right"
+    },
+    {
+      "species_id": "scrap-garden-nudibranch",
+      "storage_path": "fish/epic/scrap-garden-nudibranch_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-112003/fish/epic/scrap-garden-nudibranch_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8162e9d9e5ad42e5e3a33c1908ffffd43ae4a242e65d19522227eaa261731c1a",
+      "prompt": "Create alpha transparent PNG 2x2 FOUR FRAME animation sheet of EXACT scrap garden nudibranch in reference, same pearly mint body, copper curls, corals, orange rhinophores and soft luminous fantasy illustration. All FOUR head profiles face SCREEN RIGHT, full body. Gentle crawling loop via small ripples along mantle skirt and a delicate sway of coral tips and rhinophores. Keep face, eyes and central back structures FIXED cell coordinates and scale, no bobbing, no recentering. Four equal square cells, longest creature extent 82 percent each cell, generous transparent separation and outside margins, no clipping. Actual transparency not checkerboard, no floor, no scene, no text or grid.\nMargin correction: Edit this square 2x2 transparent sprite sheet ONLY to reduce all four creatures uniformly to 82% of their present size within their respective cells, adding clear transparent margins at every outer edge and central boundaries. Preserve exact four poses, colors, anatomy, proportions, right facing orientation, cell grid layout. Each cell stays square and same size. Use identical scale and matching body anchors across all four frames. Do not crop anything, no new art or backgrounds. Result square PNG with actual alpha transparency.",
+      "reference_role": "same creature identity",
+      "reference": "fish/epic/scrap-garden-nudibranch_thumbnail.png",
+      "facing": "right"
+    },
+    {
+      "species_id": "scrap-curiosity-hermit-crab",
+      "storage_path": "fish/epic/scrap-curiosity-hermit-crab_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-112003/fish/epic/scrap-curiosity-hermit-crab_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "60b1fac9648fbdc0682ccf7450d5ccbe2c22e8ef1067bc4418b49f100a12ca1a",
+      "prompt": "Create one transparent PNG game collectible thumbnail for 만물상 소라게. A wondrous hermit crab carrying a compact spiral shell shop piled with tiny salvaged teapot, bottles, keys, brass trinkets and a little patched teal awning. Warm coral crab head and claws at right. No lettering. Reference image is STYLE ONLY, do not copy its species or props. Soft sophisticated fantasy illustration, luminous gradients, colored subtle outlines, rich fine detail. Face SCREEN RIGHT in clear side-three-quarter profile, head and mouth on right, body trails left. Single entire creature centered, longest extent 84% of square canvas, no cropping. Actual alpha transparency, no floor, water, scenery, cast shadow, text, frame or checkerboard.",
+      "reference_role": "style only",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "facing": "right"
+    },
+    {
+      "species_id": "scrap-curiosity-hermit-crab",
+      "storage_path": "fish/epic/scrap-curiosity-hermit-crab_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-112003/fish/epic/scrap-curiosity-hermit-crab_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "70ea1f58533c991f5855e9807f88ed1cde65dc9784119b92b928cfb16f2f73fb",
+      "prompt": "SQUARE canvas 1536x1536, SQUARE PNG. Exactly 2 rows and 2 columns of SQUARE frames, FOUR small full-body curiosity shop hermit crabs centered in their cells. Use thumbnail as EXACT identity reference. All heads face SCREEN RIGHT. Each body fits within middle 80 percent of square cell, extra TRANSPARENT padding above below and around, do NOT fit crop the canvas to the art. Same luminous fantasy style. Sequential tiny walking leg movements, awning edge and hanging keys gently sway. Head shell and torso anchor fixed across frames at same scale. True alpha transparency, no scenery text grid checkerboard or shadows. Output must be SQUARE, not wide.\nMargin correction: Edit this square 2x2 transparent sprite sheet. Reduce all four crabs to 80% of their current size within their respective cells, centered with identical shell and head anchors and scale. Add generous actual alpha transparent margins around EVERY creature including antennae, keys and claws. Preserve exact character design, four walking poses, right-facing orientation, proportions and colors. Keep square canvas and four square cells. Nothing may touch any outer edge or the middle cell boundaries. No text, lines, background or checkerboard.",
+      "reference_role": "same creature identity",
+      "reference": "fish/epic/scrap-curiosity-hermit-crab_thumbnail.png",
+      "facing": "right"
+    },
+    {
+      "species_id": "scrap-sunken-orchestra-octopus",
+      "storage_path": "fish/epic/scrap-sunken-orchestra-octopus_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261018-112003/fish/epic/scrap-sunken-orchestra-octopus_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "888ea1e05690c748927e45fa033c3492aaaacc69941457b81a6248923acf2645",
+      "prompt": "Create one transparent PNG game collectible thumbnail for 침몰한 관현악 문어. A graceful deep teal octopus with exactly eight curled arms playing a few salvaged instruments: tarnished brass trumpet, small violin and a tiny drum, antique conductor bowtie, warm amber eyes and head facing right. Compact cohesive creature, instruments close to body. Reference image is STYLE ONLY, do not copy its species or props. Soft sophisticated fantasy illustration, luminous gradients, colored subtle outlines, rich fine detail. Face SCREEN RIGHT in clear side-three-quarter profile, head and mouth on right, body trails left. Single entire creature centered, longest extent 84% of square canvas, no cropping. Actual alpha transparency, no floor, water, scenery, cast shadow, text, frame or checkerboard.",
+      "reference_role": "style only",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "facing": "right"
+    },
+    {
+      "species_id": "scrap-sunken-orchestra-octopus",
+      "storage_path": "fish/epic/scrap-sunken-orchestra-octopus_sprite.png",
+      "local_path": "assets/storage-upload/new/20261018-112003/fish/epic/scrap-sunken-orchestra-octopus_sprite.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "716b7158b438aca94ff689b2a45914a80fba2604f0f28b515257ad1aebe89f73",
+      "prompt": "Create SQUARE canvas 1536x1536 PNG with actual alpha transparency, a 2x2 animation sheet of EXACT orchestra octopus in reference. FOUR equal SQUARE cells. Each full octopus with same instruments and eight arms, head and mouth face SCREEN RIGHT. Keep head eyes central mantle and torso same coordinates and scale all frames. Delicate continuous loop of arm tips bowing violin and tapping drum, other arms flow softly, no extra arms or instruments. Stable body, no recentering or bobbing. Full creature all instruments longest extent ONLY 80% each cell, generous transparent margins outside and center. Same soft luminous fantasy art. No text, grid, scenery, floor or checkerboard. Sheet must be SQUARE not landscape.\nMargin correction: Edit this square 2x2 animation sprite sheet: shrink each of the four octopuses uniformly to 80% of current size around each cell center so all arm tips, instruments and glows have generous actual transparent margins, no contact with outer or cell boundary. Keep exact four poses, right facing heads, same body scale between cells, same color style and anatomy. Align head and eyes to same position within every cell. Keep 2x2 equal SQUARE cells on SQUARE canvas, actual alpha transparent PNG. No text, grid or background.",
+      "reference_role": "same creature identity",
+      "reference": "fish/epic/scrap-sunken-orchestra-octopus_thumbnail.png",
+      "facing": "right"
+    }
+  ]
+}

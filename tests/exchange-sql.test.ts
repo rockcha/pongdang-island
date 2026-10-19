@@ -24,7 +24,7 @@ beforeEach(async()=>{
  await db.exec('begin')
  for(const [id,nickname] of [[maker,'판매자'],[taker,'교환자'],[other,'구경꾼']]){
   await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,nickname])
-  await db.query(`insert into public.player_wallets(user_id,gold,inventory) values($1,5000,'{"bait_special":10,"bait":10}')`,[id])
+  await db.query(`insert into public.player_wallets(user_id,gold,inventory) values($1,5000,'{"bait_special":10,"bait":10}') on conflict(user_id) do update set gold=excluded.gold,inventory=excluded.inventory`,[id])
  }
 })
 afterEach(async()=>{await db.exec('rollback')})
@@ -39,12 +39,12 @@ it('lets a non-friend buy an escrowed individual for gold and notifies both part
  expect((await wallet(taker)).gold).toBe(4700)
  expect((await wallet(maker)).gold).toBe(5000)
  const parcels=(await db.query('select * from public.collectible_gifts where not exchange_hold')).rows
- const payment=parcels.find((g:any)=>g.recipient_id===maker)
+ const payment=parcels.find((g:any)=>g.recipient_id===maker&&g.source==='exchange')
  await claim(maker,payment.id);await claim(maker,payment.id)
  expect((await wallet(maker)).gold).toBe(5300)
  await claim(taker,listing.escrow_gift_id)
  expect((await user(taker,'select * from public.player_collectibles where id=$1',[item])).rows).toHaveLength(1)
- expect((await db.query("select title from public.notifications where kind='gift_received' order by title")).rows.map((r:any)=>r.title)).toEqual(['구매가 완료됐어요','판매가 성사됐어요'])
+ expect((await db.query("select title from public.notifications where kind='gift_received' and gift_id in (select id from public.collectible_gifts where source='exchange') order by title")).rows.map((r:any)=>r.title)).toEqual(['구매가 완료됐어요','판매가 성사됐어요'])
  await expect(act(listing.id,'accept',other)).rejects.toThrow('EXCHANGE_UNAVAILABLE')
 })
 it('sells bait in a bundle and restores quantities through gifts',async()=>{
@@ -101,7 +101,7 @@ it('returns legacy buy and barter escrow while preserving valid sales during mig
   }
   await legacy.query('insert into auth.users(id) values($1)',[maker])
   await legacy.query("insert into public.player_profiles(id,nickname) values($1,'판매자')",[maker])
-  await legacy.query("insert into public.player_wallets(user_id,gold,inventory) values($1,5000,'{\"bait\":10}')",[maker])
+  await legacy.query("insert into public.player_wallets(user_id,gold,inventory) values($1,5000,'{\"bait\":10}') on conflict(user_id) do update set gold=excluded.gold,inventory=excluded.inventory",[maker])
   await legacy.query("select set_config('request.jwt.claim.sub',$1,false)",[maker])
   await legacy.query('insert into public.player_collectibles(user_id,species_id) values($1,$2)',[maker,'glass-bottle'])
   await legacy.query('insert into public.player_collectibles(user_id,species_id) values($1,$2)',[maker,'soft-sea-cucumber'])

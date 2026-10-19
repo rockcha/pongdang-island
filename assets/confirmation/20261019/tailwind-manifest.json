@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "prompt": "Use case: illustration-story. Transparent UI icon and confirmation illustration for a cozy fishing island game. Reference image is identity and drawing style only. Preserve Pongi the round golden-brown otter, cream muzzle/belly, big glossy dark eyes, rosy cheeks and orange starfish hair clip, warm brown outlines and smooth soft cartoon shading. Pongi gently blowing a visible simple curved turquoise breeze toward a tiny wooden sailboat on a few teal waves. Friendly helpful action, cheeks slightly puffed, boat moves with the friendly tailwind. Compact clean silhouette readable at 48px, modest detail. Full character and little boat, centered with padding. No fishing rod, hook, text, lettering, UI, frame, background, checkerboard. True transparent background.",
+  "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-9ca78ac3-78f8-45ef-a0d2-82c379db789c.png",
+  "original": "pongi-boost.png",
+  "production": [
+    "public/branding/confirm/pongi-boost.png",
+    "public/notification-icons/expedition-boost.png"
+  ],
+  "transparent_background": true
+}

@@ -1,0 +1,23 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "transparent_background": true,
+  "assets": [
+    {
+      "id": "friend-remove",
+      "prompt": "Create one game UI raster icon: a soft coral pink heart split in two by a clear zigzag crack, two halves separated a little. Cozy fishing island game style, warm dark brown clean outline, softly shaded cartoon, slightly puffy shape, modest highlights, simple silhouette readable at 28 pixels. Centered full icon with padding. True transparent background. No text, no symbols other than broken heart, no character, no border, no backdrop. Reference is drawing style only.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-1d72cebf-1cde-40c6-9450-7d4236b6cbd8.png",
+      "file": "friend-remove.png",
+      "production": "public/app-icons/friend-remove-heart.png",
+      "size": 128
+    },
+    {
+      "id": "pongi-unfriend",
+      "prompt": "Create one transparent UI confirmation illustration. Reference is Pongi's identity and cartoon style: round golden brown otter, cream belly/muzzle, large glossy dark eyes, pink cheeks, orange starfish hair clip, warm dark brown outlines and soft polished cel shading. Pongi gently holds two separated halves of a small coral pink heart, one in each paw, looking thoughtful and slightly wistful before ending a friendship. Gentle expression, no tears, no anger, no celebration. Full character and tail visible with generous padding, compact clear silhouette readable at 160 pixels. No fishing rod, hook, text, lettering, UI, backdrop, checkerboard. True transparent background.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-902b6ed1-4d49-40ad-a4c2-fc2bc8312e27.png",
+      "file": "pongi-unfriend.png",
+      "production": "public/branding/confirm/pongi-unfriend.png",
+      "size": 384
+    }
+  ]
+}

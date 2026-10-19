@@ -1,0 +1,168 @@
+{
+  "tool": "image_gen.imagegen",
+  "purpose": "Missing runtime reel and float layers; fixed frame and independently rotating spool",
+  "entries": [
+    {
+      "id": "siren",
+      "part": "reel-frame",
+      "ref": "public/siren/rod-thumbnail.png",
+      "prompt": "Generate ONE transparent PNG game equipment component: a stationary circular fishing reel OUTER RING ONLY, large completely transparent circular center hole, NO spool, NO crank, ring centered exactly at image center, outer diameter 84% of square canvas. Theme: Greek ivory and warm bronze, turquoise enamel, laurel leaves and a lyre motif. Reference image 1 is the matching rod set for material/color identity; reference image 2 is the established rendering style and component presentation. Soft polished hand-painted fantasy game item, moderately detailed, crisp readable shape at small size. Orthographic straight front view, NO perspective tilt. Generous transparent padding, no text, no background, no shadows outside object. This is an independent animation layer; perfect centered geometry is essential.",
+      "path": "assets/storage-upload/new/20261019-132700/equipment/rods/siren/reel-frame.png",
+      "storage_path": "equipment/rods/siren/reel-frame.png",
+      "references": [
+        {
+          "path": "public/siren/rod-thumbnail.png",
+          "role": "Matching equipment identity"
+        },
+        {
+          "path": "assets/storage-upload/new/20261016-155626/equipment/rods/lunea/reel-frame.png",
+          "role": "Established component presentation and rendering style"
+        }
+      ]
+    },
+    {
+      "id": "siren",
+      "part": "reel-rotor",
+      "ref": "public/siren/rod-thumbnail.png",
+      "prompt": "Generate ONE transparent PNG game equipment component: a front-facing circular fishing reel rotating SPOOL with central axle exactly at canvas center and one small crank knob at lower right; circular spool diameter 70% of canvas, whole crank within 84% of square; NO outer casing ring. Theme: Greek ivory and warm bronze, turquoise enamel, laurel leaves and a lyre motif. Reference image 1 is the matching rod set for material/color identity; reference image 2 is the established rendering style and component presentation. Soft polished hand-painted fantasy game item, moderately detailed, crisp readable shape at small size. Orthographic straight front view, NO perspective tilt. Generous transparent padding, no text, no background, no shadows outside object. This is an independent animation layer; perfect centered geometry is essential.",
+      "path": "assets/storage-upload/new/20261019-132700/equipment/rods/siren/reel-rotor.png",
+      "storage_path": "equipment/rods/siren/reel-rotor.png",
+      "references": [
+        {
+          "path": "public/siren/rod-thumbnail.png",
+          "role": "Matching equipment identity"
+        },
+        {
+          "path": "assets/storage-upload/new/20261016-155626/equipment/rods/lunea/reel-rotor.png",
+          "role": "Established component presentation and rendering style"
+        }
+      ]
+    },
+    {
+      "id": "siren",
+      "part": "float",
+      "ref": "public/siren/rod-thumbnail.png",
+      "prompt": "Generate ONE transparent PNG game equipment component: a single fishing float, upright, centered, balanced around image center, slender oval body, top antenna and bottom stem all visible, 75% canvas height, no dangling characters. Theme: Greek ivory and warm bronze, turquoise enamel, laurel leaves and a lyre motif. Reference image 1 is the matching rod set for material/color identity; reference image 2 is the established rendering style and component presentation. Soft polished hand-painted fantasy game item, moderately detailed, crisp readable shape at small size. Orthographic straight front view, NO perspective tilt. Generous transparent padding, no text, no background, no shadows outside object. This is an independent animation layer; perfect centered geometry is essential.",
+      "path": "assets/storage-upload/new/20261019-132700/equipment/rods/siren/float.png",
+      "storage_path": "equipment/rods/siren/float.png",
+      "references": [
+        {
+          "path": "public/siren/rod-thumbnail.png",
+          "role": "Matching equipment identity"
+        },
+        {
+          "path": "assets/storage-upload/new/20261016-155626/equipment/rods/lunea/reel-frame.png",
+          "role": "Established component presentation and rendering style"
+        }
+      ]
+    },
+    {
+      "id": "whitenight",
+      "part": "reel-frame",
+      "ref": "assets/storage-upload/new/white-night/equipment/rods/whitenight/thumbnail.png",
+      "prompt": "Generate ONE transparent PNG game equipment component: a stationary circular fishing reel OUTER RING ONLY, large completely transparent circular center hole, NO spool, NO crank, ring centered exactly at image center, outer diameter 84% of square canvas. Theme: silver and ice-blue crystal, subtle snowflake motif. Reference image 1 is the matching rod set for material/color identity; reference image 2 is the established rendering style and component presentation. Soft polished hand-painted fantasy game item, moderately detailed, crisp readable shape at small size. Orthographic straight front view, NO perspective tilt. Generous transparent padding, no text, no background, no shadows outside object. This is an independent animation layer; perfect centered geometry is essential.",
+      "path": "assets/storage-upload/new/20261019-132700/equipment/rods/whitenight/reel-frame.png",
+      "storage_path": "equipment/rods/whitenight/reel-frame.png",
+      "references": [
+        {
+          "path": "assets/storage-upload/new/white-night/equipment/rods/whitenight/thumbnail.png",
+          "role": "Matching equipment identity"
+        },
+        {
+          "path": "assets/storage-upload/new/20261016-155626/equipment/rods/lunea/reel-frame.png",
+          "role": "Established component presentation and rendering style"
+        }
+      ]
+    },
+    {
+      "id": "whitenight",
+      "part": "reel-rotor",
+      "ref": "assets/storage-upload/new/white-night/equipment/rods/whitenight/thumbnail.png",
+      "prompt": "Generate ONE transparent PNG game equipment component: a front-facing circular fishing reel rotating SPOOL with central axle exactly at canvas center and one small crank knob at lower right; circular spool diameter 70% of canvas, whole crank within 84% of square; NO outer casing ring. Theme: silver and ice-blue crystal, subtle snowflake motif. Reference image 1 is the matching rod set for material/color identity; reference image 2 is the established rendering style and component presentation. Soft polished hand-painted fantasy game item, moderately detailed, crisp readable shape at small size. Orthographic straight front view, NO perspective tilt. Generous transparent padding, no text, no background, no shadows outside object. This is an independent animation layer; perfect centered geometry is essential.",
+      "path": "assets/storage-upload/new/20261019-132700/equipment/rods/whitenight/reel-rotor.png",
+      "storage_path": "equipment/rods/whitenight/reel-rotor.png",
+      "references": [
+        {
+          "path": "assets/storage-upload/new/white-night/equipment/rods/whitenight/thumbnail.png",
+          "role": "Matching equipment identity"
+        },
+        {
+          "path": "assets/storage-upload/new/20261016-155626/equipment/rods/lunea/reel-rotor.png",
+          "role": "Established component presentation and rendering style"
+        }
+      ]
+    },
+    {
+      "id": "whitenight",
+      "part": "float",
+      "ref": "assets/storage-upload/new/white-night/equipment/rods/whitenight/thumbnail.png",
+      "prompt": "Generate ONE transparent PNG game equipment component: a single fishing float, upright, centered, balanced around image center, slender oval body, top antenna and bottom stem all visible, 75% canvas height, no dangling characters. Theme: silver and ice-blue crystal, subtle snowflake motif. Reference image 1 is the matching rod set for material/color identity; reference image 2 is the established rendering style and component presentation. Soft polished hand-painted fantasy game item, moderately detailed, crisp readable shape at small size. Orthographic straight front view, NO perspective tilt. Generous transparent padding, no text, no background, no shadows outside object. This is an independent animation layer; perfect centered geometry is essential.",
+      "path": "assets/storage-upload/new/20261019-132700/equipment/rods/whitenight/float.png",
+      "storage_path": "equipment/rods/whitenight/float.png",
+      "references": [
+        {
+          "path": "assets/storage-upload/new/white-night/equipment/rods/whitenight/thumbnail.png",
+          "role": "Matching equipment identity"
+        },
+        {
+          "path": "assets/storage-upload/new/20261016-155626/equipment/rods/lunea/reel-frame.png",
+          "role": "Established component presentation and rendering style"
+        }
+      ]
+    },
+    {
+      "id": "cloudferry",
+      "part": "reel-frame",
+      "ref": "assets/storage-upload/new/cloudferry/equipment/rods/cloudferry/thumbnail.png",
+      "prompt": "Generate ONE transparent PNG game equipment component: a stationary circular fishing reel OUTER RING ONLY, large completely transparent circular center hole, NO spool, NO crank, ring centered exactly at image center, outer diameter 84% of square canvas. Theme: warm brass and sage-green enamel with simple cream cloud motif, NO character or animal. Reference image 1 is the matching rod set for material/color identity; reference image 2 is the established rendering style and component presentation. Soft polished hand-painted fantasy game item, moderately detailed, crisp readable shape at small size. Orthographic straight front view, NO perspective tilt. Generous transparent padding, no text, no background, no shadows outside object. This is an independent animation layer; perfect centered geometry is essential.",
+      "path": "assets/storage-upload/new/20261019-132700/equipment/rods/cloudferry/reel-frame.png",
+      "storage_path": "equipment/rods/cloudferry/reel-frame.png",
+      "references": [
+        {
+          "path": "assets/storage-upload/new/cloudferry/equipment/rods/cloudferry/thumbnail.png",
+          "role": "Matching equipment identity"
+        },
+        {
+          "path": "assets/storage-upload/new/20261016-155626/equipment/rods/lunea/reel-frame.png",
+          "role": "Established component presentation and rendering style"
+        }
+      ]
+    },
+    {
+      "id": "cloudferry",
+      "part": "reel-rotor",
+      "ref": "assets/storage-upload/new/cloudferry/equipment/rods/cloudferry/thumbnail.png",
+      "prompt": "Generate ONE transparent PNG game equipment component: a front-facing circular fishing reel rotating SPOOL with central axle exactly at canvas center and one small crank knob at lower right; circular spool diameter 70% of canvas, whole crank within 84% of square; NO outer casing ring. Theme: warm brass and sage-green enamel with simple cream cloud motif, NO character or animal. Reference image 1 is the matching rod set for material/color identity; reference image 2 is the established rendering style and component presentation. Soft polished hand-painted fantasy game item, moderately detailed, crisp readable shape at small size. Orthographic straight front view, NO perspective tilt. Generous transparent padding, no text, no background, no shadows outside object. This is an independent animation layer; perfect centered geometry is essential.",
+      "path": "assets/storage-upload/new/20261019-132700/equipment/rods/cloudferry/reel-rotor.png",
+      "storage_path": "equipment/rods/cloudferry/reel-rotor.png",
+      "references": [
+        {
+          "path": "assets/storage-upload/new/cloudferry/equipment/rods/cloudferry/thumbnail.png",
+          "role": "Matching equipment identity"
+        },
+        {
+          "path": "assets/storage-upload/new/20261016-155626/equipment/rods/lunea/reel-rotor.png",
+          "role": "Established component presentation and rendering style"
+        }
+      ]
+    },
+    {
+      "id": "cloudferry",
+      "part": "float",
+      "ref": "assets/storage-upload/new/cloudferry/equipment/rods/cloudferry/thumbnail.png",
+      "prompt": "Generate ONE transparent PNG game equipment component: a single fishing float, upright, centered, balanced around image center, slender oval body, top antenna and bottom stem all visible, 75% canvas height, no dangling characters. Theme: warm brass and sage-green enamel with simple cream cloud motif, NO character or animal. Reference image 1 is the matching rod set for material/color identity; reference image 2 is the established rendering style and component presentation. Soft polished hand-painted fantasy game item, moderately detailed, crisp readable shape at small size. Orthographic straight front view, NO perspective tilt. Generous transparent padding, no text, no background, no shadows outside object. This is an independent animation layer; perfect centered geometry is essential.",
+      "path": "assets/storage-upload/new/20261019-132700/equipment/rods/cloudferry/float.png",
+      "storage_path": "equipment/rods/cloudferry/float.png",
+      "references": [
+        {
+          "path": "assets/storage-upload/new/cloudferry/equipment/rods/cloudferry/thumbnail.png",
+          "role": "Matching equipment identity"
+        },
+        {
+          "path": "assets/storage-upload/new/20261016-155626/equipment/rods/lunea/reel-frame.png",
+          "role": "Established component presentation and rendering style"
+        }
+      ]
+    }
+  ]
+}

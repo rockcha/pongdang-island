@@ -1,4 +1,5 @@
 import {hasRodImages} from './rod-image-assets'
+import {RodGauge} from './rod-gauge'
 import {hasRodSkin,RodSkinFloat,RodSkinFrame,RodSkinRotor,RodSkinGrip,RodSkinShaft,rodShaftOutlineWidth} from './rod-skin-art'
 import type {FishingRod} from './fishing-rods'
 import { FishingSea,FishingPlatform } from './fishing-environment'
@@ -9,6 +10,8 @@ import { fishBehavior, fishForce, fishStrength } from './tension-game'
 import type { FishMood,TensionGame } from './tension-game'
 
 const waters:Record<string,{top:string;bottom:string;light:string}>= {
+ siren:{top:'#3bb9b0',bottom:'#164d63',light:'#f4e7c9'},
+ mukhyang:{top:'#d5ded5',bottom:'#788f8b',light:'#f7eedb'},
  scrapisle:{top:'#75a58c',bottom:'#244c43',light:'#eed4a1'},
  cloudferry:{top:'#68bfb5',bottom:'#245d64',light:'#fff1ce'},
  whitenight:{top:'#70c1d5',bottom:'#174d70',light:'#eaf9ff'},
@@ -20,7 +23,7 @@ const waters:Record<string,{top:string;bottom:string;light:string}>= {
  dreamabyss:{top:'#403f75',bottom:'#111b36',light:'#c6b8ee'},
 }
 export type FishingVisual={time:number;tension:number;reel:number;ending:number}
-export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulling=false,label,outline}:{rod?:FishingRod;regionName?:string;outline?:Species|null;label?:string;pulling?:boolean;game:TensionGame;visual:FishingVisual;mood:FishMood;active:boolean;reduced:boolean;regionId:string}){
+export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulling=false,label,outline,baitImage,showGauge=false}:{showGauge?:boolean;baitImage?:string;rod?:FishingRod;regionName?:string;outline?:Species|null;label?:string;pulling?:boolean;game:TensionGame;visual:FishingVisual;mood:FishMood;active:boolean;reduced:boolean;regionId:string}){
  const id=useId().replaceAll(':',''),palette=waters[regionId]??waters.pongdang
  const container=useRef<HTMLDivElement>(null),[sceneHeight,setSceneHeight]=useState(380)
  useLayoutEffect(()=>{
@@ -63,7 +66,7 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
  const bobY=nearWater+(active?(game.progress-.5)*28:0)+(waiting?Math.sin(t*2)*1.4:0)+motionTug*5+(won?-lift*138:0)
  const bx=tip.x+(bobX-tip.x)*cast,by=tip.y+(bobY-tip.y)*cast-(casting?Math.sin(cast*Math.PI)*85:0)
  const fx=200+Math.sin(t*1.5)*12+(scouting?(game.seed%2?1:-1)*(1-behavior.progress)*85:0)+Math.sin(behavior.progress*Math.PI)*motionTug*30+(!canBite?(reduced?0:escapeProgress*180):lost?end*155:0)
- const fy=nearWater+24+game.progress*20+(won?-lift*194:0),fishScale=.35+approach*.9
+ const fy=nearWater+24+game.progress*20+(won?-lift*194:0),fishScale=.48+approach*1.2
  const snapped=lost&&game.reason==='snap'
  const lineEnd=snapped?{x:tip.x+12*(1-end),y:tip.y-15*(1-end)}:{x:bx,y:by+dip*13}
  const impact=active&&waiting&&game.time>=.85&&game.time<1.35
@@ -92,7 +95,7 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
   {regionId==='starruins'&&<g stroke={palette.light} opacity=".1" fill="none"><path d="M0 280l70-20 20 60-70 20Z M330 25l55 10-12 62-55-10Z"/><path d="M10 287l50-14 17 40-50 15Z M339 37l32 6-8 39-32-6Z"/></g>}
   {regionId==='mistmoon'&&<g fill="#e5e1ff" opacity=".065"><ellipse cx="50" cy="60" rx="150" ry="20"/><ellipse cx="350" cy="160" rx="140" ry="17"/></g>}
   {Array.from({length:12},(_,i)=><ellipse key={i} cx={(i*73+29)%400} cy={22+(i*47)%290} rx={i%3===0?5:2} ry=".8" fill={palette.light} opacity={reduced?.15:.12+Math.max(0,Math.sin(t+i))*.2}/>) }
-  {active&&!waiting&&!won&&approach>0&&<g data-fishing-shadow="true" transform={`translate(${fx} ${fy}) rotate(${won?-65:warning?-35*Math.min(1,behavior.progress):surge?-15:10}) scale(${fishScale})`} fill="#092b47" filter={`url(#${id}-depth)`} opacity={shadowOpacity}>{outline?<image href={collectibleUrl(outline.thumbnail_path)} x="-36" y="-32" width="72" height="64" preserveAspectRatio="xMidYMid meet" filter={`url(#${id}-silhouette)`}/>:<><path d="M-28 0Q-16-16 8-9L27-22 23-2 29 16 8 8Q-15 17-28 0Z"/><path d="M-5-8l12-14 4 16Z"/></>}</g>}
+  {active&&!waiting&&!won&&approach>0&&<g data-fishing-shadow="true" transform={`translate(${fx} ${fy}) rotate(${won?-65:warning?-35*Math.min(1,behavior.progress):surge?-15:10}) scale(${lost||escapeProgress>0?-fishScale:fishScale} ${fishScale})`} fill="#092b47" filter={`url(#${id}-depth)`} opacity={shadowOpacity}>{outline?<image href={collectibleUrl(outline.thumbnail_path)} x="-36" y="-32" width="72" height="64" preserveAspectRatio="xMidYMid meet" filter={`url(#${id}-silhouette)`}/>:<><path d="M-28 0Q-16-16 8-9L27-22 23-2 29 16 8 8Q-15 17-28 0Z"/><path d="M-5-8l12-14 4 16Z"/></>}</g>}
   {landingSplash&&<g data-fishing-catch-splash="true" transform={`translate(200 ${nearWater+32})`} pointerEvents="none">
    {[0,1,2].map(i=>{const spread=Math.max(0,(splashProgress-i*.12)/(1-i*.12));return <ellipse key={i} rx={18+spread*(78-i*10)} ry={5+spread*18} fill="none" stroke={i===0?'#efffff':palette.light} strokeWidth={2.5-i*.5} opacity={(1-spread)*.8}/>})}
    <path d={`M-42 3 Q-32 ${-Math.sin(splashProgress*Math.PI)*35} -20 -2 Q-12 ${-Math.sin(splashProgress*Math.PI)*57} 0 -4 Q12 ${-Math.sin(splashProgress*Math.PI)*50} 22 -1 Q33 ${-Math.sin(splashProgress*Math.PI)*30} 44 3 Q0 18 -42 3Z`} fill={palette.light} fillOpacity={(1-splashProgress)*.45} stroke="#e2faff" strokeOpacity={(1-splashProgress)*.7} strokeWidth="1.5"/>
@@ -107,14 +110,18 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
   {active&&!waiting&&!won&&[0,1,2].map(i=>{const ripple=(t*1.1+i/3)%1;return <ellipse key={i} cx={bx} cy={by+10} rx={12+ripple*(surge?62:35)} ry={3+ripple*10} stroke={palette.light} fill="none" opacity={reduced?0:(1-ripple)*(surge?.55:.25)} strokeWidth={surge?1.8:1}/>})}
   <ellipse cx={bx} cy={by+10} rx={(surge?28:18)*bobScale} ry="5" stroke={palette.light} fill="none" opacity={.5*(won?1-lift:1)}/>
   <ellipse cx={bx} cy={by+10} rx={(surge?40:28)*bobScale} ry="9" stroke={palette.light} fill="none" opacity={.2*(won?1-lift:1)}/>
-  <path d={`M${tip.x} ${tip.y} Q${(tip.x+lineEnd.x)/2+(!reduced&&tension>.85?Math.sin(t*38)*2:0)} ${(tip.y+lineEnd.y)/2+(1-tension)*45*(1-tug*.8)} ${lineEnd.x} ${lineEnd.y}`} fill="none" stroke={tension>.85?'#ffd1ba':'#e1edf2'} strokeWidth={1.2+tug*.8}/>
+  {/* SVG paint order keeps the gauge behind the line, float and rod. Anchor to calm water, not bobbing motion. */}
+  {showGauge&&<foreignObject data-fishing-gauge-layer="true" x="96" y={Math.max(30,nearWater-48)} width="208" height="24" pointerEvents="none"><RodGauge floating rod={rod} tension={visual.tension} status={active&&canBite&&!waiting&&!won&&!lost?undefined:'idle'}/></foreignObject>}
+  <path data-fishing-line="true" d={`M${tip.x} ${tip.y} Q${(tip.x+lineEnd.x)/2+(!reduced&&tension>.85?Math.sin(t*38)*2:0)} ${(tip.y+lineEnd.y)/2+(1-tension)*45*(1-tug*.8)} ${lineEnd.x} ${lineEnd.y}`} fill="none" stroke={tension>.85?'#ffd1ba':rod?.id==='mukhyang'?'#5d716b':'#e1edf2'} strokeWidth={1.2+tug*.8}/>
   {!(snapped&&end>.5)&&<g data-fishing-float="true" transform={`translate(${bx} ${by+dip*13}) rotate(${surge?24:dip*12}) scale(${bobScale} ${bobScale*(1-dip*.35)})`} opacity={won?1-end:1-dip*.88}>{(hasRodSkin(rod?.id)||hasRodImages(rod?.id))?<RodSkinFloat id={rod!.id}/>:<><path d="M0-17v12" stroke="#fff1d4" strokeWidth="2.5"/><ellipse rx="5" ry="9" fill="#fff1d4"/><path d="M-5 0a5 9 0 0 0 10 0Z" fill="#eb886f"/></>}</g>}
+  {baitImage&&casting&&!reduced&&<g data-fishing-cast-bait="true" transform={`translate(${bx} ${by}) rotate(${Math.sin(cast*Math.PI)*12})`} pointerEvents="none"><path d="M0 9v14" fill="none" stroke="#e1edf2" strokeWidth="1"/><image href={baitImage} x="-16" y="21" width="32" height="32" preserveAspectRatio="xMidYMid meet"/></g>}
   {splash&&Array.from({length:9},(_,i)=>{const phase=(t*1.7+i*.17)%1,angle=i*Math.PI*2/9;return <ellipse key={i} cx={bx+Math.cos(angle)*(8+phase*(won?48:24+motionTug*22))} cy={by+7-Math.sin(phase*Math.PI)*(12+i%3*8+motionTug*12)} rx="1.7" ry="2.7" fill={palette.light} opacity={(1-phase)*.7}/>})}
   <FishingPlatform regionId={regionId} y={platformY} platformHeight={platformHeight}/>
   <path d={rodPath} fill="none" stroke="#102b42" strokeWidth={rodShaftOutlineWidth(rod?.id)} strokeLinecap="round"/>
   <path d={rodPath} fill="none" data-equipped-rod={rod?.id??"basic"} stroke={rod&&rod.id!=="basic"?rod.color:"#97c8d2"} strokeWidth="2.3" strokeLinecap="round"/>
   {hasRodSkin(rod?.id)&&<RodSkinShaft id={rod!.id} path={rodPath}/>}
   <g transform={`translate(0 ${bottom-62})`}><path d="M303 392l-27-52" stroke={rod?.color??"#76503a"} strokeWidth="13" strokeLinecap="round"/>
+  {rod?.id==='mukhyang'&&<g transform={`translate(${tip.x} ${tip.y})`}><path d="M-3 6Q-8-1 0-15Q7-3 3 6Z" fill="#293b35"/><path d="M0-13V4" stroke="#8eaaa0" strokeWidth=".7"/></g>}
   <path d="M299 382l-18-34" stroke={rod&&rod.id!=="basic"?rod.accent:"#c89c6e"} strokeWidth="7" strokeLinecap="round"/>
   {(hasRodSkin(rod?.id)||hasRodImages(rod?.id))?<><g transform="translate(283 344)"><RodSkinGrip id={rod!.id}/></g><g transform="translate(282 358) scale(.4)"><RodSkinFrame id={rod!.id}/><g transform={`rotate(${reduced?0:visual.reel})`}><RodSkinRotor id={rod!.id}/></g></g></>:<>  <g transform={`translate(282 358) rotate(${reduced?0:visual.reel})`}><circle r="12" fill={rod&&rod.id!=="basic"?rod.color:"#183b53"} stroke={rod&&rod.id!=="basic"?rod.accent:"#abc7ce"} strokeWidth="2"/><path d="M-8 0H8M0-8V8" stroke="#abc7ce" strokeWidth="2"/><circle r="4" fill={rod?.accent??"#d7b388"}/><circle cx="8" cy="0" r="3" fill="#d7b388"/></g></>}
   </g>{active&&canBite&&!waiting&&game.time<.7&&<text x="200" y="72" textAnchor="middle" fill="#fff1d4" fontSize="18" fontWeight="bold" opacity={1-game.time/.7}>물었어요!</text>}

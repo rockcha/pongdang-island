@@ -1,0 +1,8 @@
+.savings-shell-panel { background: radial-gradient(ellipse at 50% 35%, #fff6e8 0, #f6ede040 62%, transparent 100%); }
+.dark .savings-shell-panel { background: radial-gradient(ellipse at 50% 35%, #ab865828 0, transparent 75%); }
+@media (prefers-reduced-motion: no-preference) {
+ .savings-ready { animation: savings-glow 2.5s ease-in-out infinite; }
+ .savings-received { animation: savings-receive 350ms ease-out both; }
+}
+@keyframes savings-glow { 50% { filter: drop-shadow(0 0 12px #d8ad6a88); transform: translateY(-3px); } }
+@keyframes savings-receive { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }

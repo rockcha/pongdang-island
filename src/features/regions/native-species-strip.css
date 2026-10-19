@@ -1,0 +1,10 @@
+.native-species-viewport { scrollbar-width: none; }
+.native-species-track { animation: native-species-slide linear infinite; }
+.native-species-viewport:hover .native-species-track,
+.native-species-viewport:focus-within .native-species-track,
+.native-species-viewport:active .native-species-track { animation-play-state: paused; }
+@keyframes native-species-slide { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+ .native-species-track { animation: none; }
+ .native-species-track > ul[aria-hidden="true"] { display: none; }
+}

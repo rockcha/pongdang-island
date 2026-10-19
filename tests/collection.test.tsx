@@ -1,6 +1,6 @@
 ﻿import {cleanup,fireEvent,render,screen,within} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
-import {CollectionDialog} from '@/features/collection/collection-dialog'
+import {CollectionBook,CollectionDialog} from '@/features/collection/collection-dialog'
 const {load}=vi.hoisted(()=>({load:vi.fn()}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null}))
@@ -21,28 +21,49 @@ async function open(add?:()=>void){
 }
 const cards=()=>within(screen.getByRole('list',{name:'도감 개체'})).queryAllByRole('article').map(card=>card.getAttribute('aria-label'))
 
+it('previews undiscovered creatures in color without changing discovery records',async()=>{
+ load.mockResolvedValue({items:[],catalog:[decoration,native,shared,map]})
+ const view=render(<CollectionBook previewAll/>)
+ fireEvent.click(await screen.findByRole('button',{name:'달빛 장식물 상세 보기'}))
+ expect(await screen.findByRole('dialog')).toBeTruthy()
+ expect(screen.getByText('전체 3종')).toBeTruthy()
+ expect(view.container.querySelector('[class*="brightness-0"]')).toBeNull()
+ expect(document.querySelector('[role="dialog"] [class*="brightness-0"]')).toBeNull()
+ expect(decoration.discovered).toBe(false)
+ fireEvent.click(screen.getByRole('button',{name:'Close'}))
+ view.rerender(<CollectionBook/>)
+ expect(await screen.findByRole('button',{name:'달빛 장식물 미발견'})).toBeTruthy()
+ expect(screen.getByText('발견 2/3')).toBeTruthy()
+})
+
 async function choose(label:string, option:string){
  fireEvent.mouseDown(screen.getByRole('combobox',{name:label}))
  fireEvent.click(screen.getByRole('combobox',{name:label}))
  fireEvent.keyDown(await screen.findByRole('option',{name:option}),{key:'Enter'})
 }
-it('locks undiscovered cards, marks native species, and keeps filters after details close',async()=>{
+it('opens undiscovered details, marks native species, and keeps filters after details close',async()=>{
  await open()
  expect(cards()).toEqual(['공통 물고기','산호 물고기','달빛 장식물'])
+ expect(screen.getByText('발견 2/3')).toBeTruthy()
+ expect(screen.queryByText(/가치순/)).toBeNull()
  expect(screen.queryByRole('button',{name:'지도'})).toBeNull()
  expect(screen.queryByText('작은 바다 친구의 이야기')).toBeNull()
  expect(screen.queryByRole('searchbox')).toBeNull()
- const locked=screen.getByRole('button',{name:'달빛 장식물 잠김'}) as HTMLButtonElement
- expect(locked.disabled).toBe(true)
+ const locked=screen.getByRole('button',{name:'달빛 장식물 미발견'}) as HTMLButtonElement
+ expect(locked.disabled).toBe(false)
  fireEvent.click(locked)
- expect(screen.getAllByRole('dialog')).toHaveLength(1)
+ expect(await screen.findByRole('heading',{name:'달빛 장식물'})).toBeTruthy()
+ expect(screen.getByText('작은 바다 친구의 이야기')).toBeTruthy()
+ expect(screen.getByText('가치')).toBeTruthy()
+ fireEvent.click(screen.getAllByRole('button',{name:'Close'}).at(-1)!)
  expect(screen.queryByText('미발견')).toBeNull()
  expect(screen.getByLabelText('산호빛 여울 주 서식지')).toBeTruthy()
- await choose('도감 등급','희귀')
+ await choose('등급 선택','희귀 20%')
  fireEvent.click(screen.getByRole('button',{name:'산호 물고기 상세 보기'}))
  expect(await screen.findByText('작은 바다 친구의 이야기')).toBeTruthy()
  fireEvent.click(screen.getAllByRole('button',{name:'Close'}).at(-1)!)
  expect(cards()).toEqual(['산호 물고기','달빛 장식물'])
+ expect(screen.getByText('발견 1/2')).toBeTruthy()
 })
 it('replaces the selected habitat and combines it with category and rarity',async()=>{
  await open()
@@ -52,7 +73,7 @@ it('replaces the selected habitat and combines it with category and rarity',asyn
  expect(cards()).toEqual(['달빛 장식물'])
  fireEvent.click(screen.getByRole('button',{name:'물고기'}))
  expect(cards()).toEqual([])
- await choose('도감 등급','희귀')
+ await choose('등급 선택','희귀 20%')
  expect(cards()).toEqual([])
 })
 it('allows repeated temporary insertion from cards without opening details',async()=>{

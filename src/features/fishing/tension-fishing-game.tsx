@@ -11,12 +11,11 @@ import type { FishingStart } from './fishing-reel'
 import type { FishingVisual } from './fishing-water'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
-import { RotateCcw, Square } from 'lucide-react'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
+import { RotateCcw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { fishBehavior, fishForce, fishStrength, newTensionGame, stepTensionGame } from './tension-game'
 
-export function TensionFishingGame({onCaught,onCancel,active=true,regionId='pongdang',regionName,toolbarTarget,quiet=false,castId,challenge,outline,onFailed,practice=false,start}:{regionName?:string;toolbarTarget?:HTMLElement|null;start?:FishingStart;practice?:boolean;challenge?:TensionOptions;outline?:Species|null;onFailed?:(reason:string)=>void;quiet?:boolean;castId?:string;regionId?:string;onCaught:()=>void;onCancel:()=>void;active?:boolean}){
+export function TensionFishingGame({onCaught,active=true,regionId='pongdang',regionName,toolbarTarget,quiet=false,castId,challenge,outline,onFailed,practice=false,start,baitImage}:{baitImage?:string;regionName?:string;toolbarTarget?:HTMLElement|null;start?:FishingStart;practice?:boolean;challenge?:TensionOptions;outline?:Species|null;onFailed?:(reason:string)=>void;quiet?:boolean;castId?:string;regionId?:string;onCaught:()=>void;onCancel:()=>void;active?:boolean}){
  const {selected}=useRods()
  const rod=fishingRods.find(r=>r.id===selected)??fishingRods[0]
  const [game,setGame]=useState(()=>newTensionGame(Math.random,challenge))
@@ -64,17 +63,16 @@ export function TensionFishingGame({onCaught,onCancel,active=true,regionId='pong
  return <div role="group" aria-label="낚시터" className="relative h-full min-h-0 w-full">
    <div className="absolute inset-0 overflow-hidden bg-[#123c68]">
     <div className="absolute -inset-1" style={{transform:sceneMotion}}>
-     <FishingWater rod={rod} game={game} visual={visual} mood={behavior.mood} active={active} reduced={reduced} regionId={regionId} regionName={regionName} pulling={pressed} label={quiet||(active&&plannedFailure)?undefined:label} outline={outline}/>
+     <FishingWater showGauge={active&&!plannedFailure&&game.phase==='playing'} baitImage={baitImage} rod={rod} game={game} visual={visual} mood={behavior.mood} active={active} reduced={reduced} regionId={regionId} regionName={regionName} pulling={pressed} label={quiet||(active&&plannedFailure)?undefined:label} outline={outline}/>
     </div>
     {active&&!plannedFailure&&!waiting&&!lost&&!won&&<div className="pointer-events-none absolute inset-0 transition-opacity duration-200" style={{opacity:Math.max(0,(visual.tension-85)/15,(20-visual.tension)/20),boxShadow:'inset 0 0 65px #f3a77966'}} aria-hidden="true"/>}
    </div>
    {tug>0&&createPortal(<div aria-hidden="true" className="pointer-events-none fixed inset-0 z-40" style={{opacity:tug*.32,background:'radial-gradient(ellipse at center, transparent 52%, #81e6df55 78%, #a6f4ef 100%)',boxShadow:'inset 0 0 42px #a6f4ef55'}}/>,document.body)}
 
 
-   <FishingHelp toolbarTarget={toolbarTarget} open={helpOpen} onOpenChange={open=>{release();setHelpOpen(open)}}/>
+   {!toolbarTarget&&<FishingHelp open={helpOpen} onOpenChange={open=>{release();setHelpOpen(open)}}/>}
    {active&&!plannedFailure&&!waiting&&!lost&&<span role="meter" aria-label="버티는 힘" aria-valuenow={Math.round(game.tension)} aria-valuemin={0} aria-valuemax={100} className="sr-only"/>}
    {active&&lost&&!onFailed&&<div className="absolute inset-x-4 bottom-40 mx-auto max-w-sm space-y-3 rounded-2xl bg-background/95 p-4"><p className="text-center text-xs text-muted-foreground">{game.reason&&game.reason in plannedFailureMessages?plannedFailureMessages[game.reason as keyof typeof plannedFailureMessages]:game.reason==='snap'?'너무 팽팽해져 줄이 끊어졌어요.':game.reason==='slack'?'낚싯줄이 느슨해져 물고기가 빠져나갔어요.':'조금 더 힘차게 당겨볼까요?'} {practice?'연습에서는 미끼를 사용하지 않아요.':''}</p>{!onFailed&&<Button className="min-h-12 w-full" onClick={()=>{release();failed.current=false;current.current=newTensionGame(Math.random,challenge);animation.current={time:0,tension:38,reel:0,ending:0};setVisual(animation.current);setGame(current.current)}}><RotateCcw/>다시 도전</Button>}</div>}
-   {!lost&&(!quiet||active)&&<FishingReel rod={rod} active={active} waiting={waiting||plannedFailure} won={won} pressed={pressed} reduced={reduced} tension={visual.tension} rotation={visual.reel} start={start} buttonRef={pullButton} onHold={pointerId=>{if(plannedFailure||pointer.current!==null)return;pointer.current=pointerId??null;holding.current=true;setPressed(true)}} onRelease={release}/>}
-   {active&&(toolbarTarget?createPortal(<div className="order-60"><TooltipProvider><Tooltip><TooltipTrigger render={<Button variant="ghost" size="icon" aria-label="그만하기" onClick={onCancel}/> }><Square className="size-4"/></TooltipTrigger><TooltipContent>그만하기</TooltipContent></Tooltip></TooltipProvider></div>,toolbarTarget):<div className="absolute bottom-[calc(6.5rem+env(safe-area-inset-bottom))] left-4"><Button variant="ghost" className="min-h-11 rounded-full bg-black/25 px-3 text-xs text-white hover:bg-black/40 hover:text-white" onClick={onCancel}>그만하기</Button></div>)}
+   {!lost&&(!quiet||active)&&<FishingReel hideGauge rod={rod} active={active} waiting={waiting||plannedFailure} won={won} pressed={pressed} reduced={reduced} tension={visual.tension} rotation={visual.reel} start={start} buttonRef={pullButton} onHold={pointerId=>{if(plannedFailure||pointer.current!==null)return;pointer.current=pointerId??null;holding.current=true;setPressed(true)}} onRelease={release}/>}
  </div>
 }

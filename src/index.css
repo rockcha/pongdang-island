@@ -5,7 +5,45 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.portrait-orientation-notice { display: none; }
+/* Physical screen orientation avoids showing the notice when a keyboard shortens the viewport. */
+@media (pointer: coarse) and (max-device-width: 1024px) {
+ @media (device-aspect-ratio > 1/1) {
+  .portrait-orientation-notice { position: fixed; inset: 0; z-index: 2147483647; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 2rem; background: var(--background); color: var(--foreground); text-align: center; touch-action: none; }
+  body { overflow: hidden; }
+ }
+}
+
 /* Shared full-width segmented navigation, including tabs and category filters. */
+/* Keep inactive choice artwork quiet without fading labels or counts. */
+:where(.segmented-control, [role="tablist"]) :is([aria-pressed="false"], [aria-selected="false"]) :is(img, svg),
+[data-selection-icons][aria-pressed="false"] :is(img, svg) {
+  filter: grayscale(1);
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :is(.animate-pulse, [class~="motion-safe:animate-pulse"]) {
+    background-image: linear-gradient(100deg, transparent 20%, #fff8ee99 45%, #fffdf8cc 50%, transparent 75%);
+    background-size: 250% 100%;
+    animation: loading-shimmer 1.6s linear infinite;
+  }
+}
+@keyframes loading-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .expedition-status-pulse {
+    animation: expedition-status-pulse 2s ease-in-out infinite;
+  }
+}
+@keyframes expedition-status-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
 .segmented-control {
     width: 100%;
     gap: 0;
@@ -440,6 +478,7 @@ button, [role='button'] { cursor: pointer; }
  .harbor-map-piece:hover > span:first-child { transform: scale(1.08); }
 }
 .harbor-map-selected > span:first-child {
+ transform: scale(1.06);
  filter: drop-shadow(0 0 7px color-mix(in srgb, var(--primary) 65%, transparent));
 }
 @media (prefers-reduced-motion: reduce) {
@@ -510,6 +549,13 @@ button, [role='button'] { cursor: pointer; }
   35% { filter: drop-shadow(0 0 5px currentColor); }
 }
 .rod-gauge-frame { animation: rod-gauge-bite 650ms ease-out both; }
+.harbor-travel-shine { background: linear-gradient(110deg, transparent 25%, #ffffff30 48%, transparent 70%); transform: translateX(-130%); }
+@keyframes harbor-travel-shine { 0%, 65% { transform: translateX(-130%); } 90%, 100% { transform: translateX(130%); } }
+@keyframes harbor-travel-glow { 0%, 100% { box-shadow: 0 4px 18px #0003, 0 0 0 0 #ffffff20; } 50% { box-shadow: 0 6px 24px #0004, 0 0 0 4px #ffffff12; } }
+@media (prefers-reduced-motion: no-preference) {
+ .harbor-travel-ready { animation: harbor-travel-glow 3s ease-in-out infinite; }
+ .harbor-travel-ready .harbor-travel-shine { animation: harbor-travel-shine 4.5s ease-in-out infinite; }
+}
 @media (prefers-reduced-motion: reduce) {
   .rod-gauge-frame { animation: none; }
 }

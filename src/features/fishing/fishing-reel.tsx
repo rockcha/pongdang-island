@@ -6,12 +6,12 @@ import { useEffect, useRef } from 'react'
 import type { RefObject } from 'react'
 
 export type FishingStart={label:string;disabled:boolean;onStart:()=>void;caption?:string}
-type Props={rod?:FishingRod;active:boolean;waiting:boolean;won:boolean;pressed:boolean;reduced:boolean;tension:number;rotation:number;start?:FishingStart;buttonRef:RefObject<HTMLButtonElement|null>;onHold:(pointerId?:number)=>void;onRelease:()=>void}
-export function FishingReel({rod,active,waiting,won,pressed,reduced,tension,rotation,start,buttonRef,onHold,onRelease}:Props){
+type Props={hideGauge?:boolean;rod?:FishingRod;active:boolean;waiting:boolean;won:boolean;pressed:boolean;reduced:boolean;tension:number;rotation:number;start?:FishingStart;buttonRef:RefObject<HTMLButtonElement|null>;onHold:(pointerId?:number)=>void;onRelease:()=>void}
+export function FishingReel({hideGauge=false,rod,active,waiting,won,pressed,reduced,tension,rotation,start,buttonRef,onHold,onRelease}:Props){
  const pointer=useRef<number|null>(null)
  useEffect(()=>{if(!pressed)pointer.current=null},[pressed])
  const release=()=>{pointer.current=null;onRelease()}
- return <>{active&&!waiting&&!won&&<RodGauge rod={rod} tension={tension}/>}<button ref={buttonRef} type="button" disabled={active?waiting||won:!start||start.disabled} aria-label={active?'꾹 눌러 당기기':start?.label??'낚시 시작'} aria-pressed={active?pressed:undefined}
+ return <>{!hideGauge&&active&&!waiting&&!won&&<RodGauge rod={rod} tension={tension}/>}<button ref={buttonRef} type="button" disabled={active?waiting||won:!start||start.disabled} aria-label={active?'꾹 눌러 당기기':start?.label??'낚시 시작'} aria-pressed={active?pressed:undefined}
   style={!rod||rod.id==='basic'?{backgroundImage:'linear-gradient(140deg,#53565a,#292b2f 55%,#181a1d)'}:hasRodSkin(rod.id)?{backgroundImage:`linear-gradient(140deg,${rod.color},${rodReelBackground(rod.id)})`}:undefined}
   className={`absolute bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-4 flex size-32 touch-none select-none flex-col items-center justify-center overflow-hidden rounded-full border border-white/35 text-white shadow-[0_12px_36px_#092f3e50,inset_0_2px_0_#ffffff55] outline-none transition-[transform,box-shadow] focus-visible:ring-4 focus-visible:ring-white/80 focus-visible:ring-offset-4 focus-visible:ring-offset-teal-800 motion-reduce:transition-none sm:size-36 ${pressed?'scale-95 bg-gradient-to-br from-teal-500 to-teal-800 shadow-[0_0_35px_#94cfff66]':'bg-gradient-to-br from-[#438b89] via-[#286a71] to-[#164657] hover:shadow-[0_12px_40px_#092f3e70,inset_0_2px_0_#ffffff66]'} disabled:opacity-60`}
   onClick={()=>{if(!active)start?.onStart()}}

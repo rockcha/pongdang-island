@@ -6,6 +6,8 @@ function CloudferryFloat(){
 }
 
 const materials:Record<string,{width:number;colors:string[];band:string;dash:string}>={
+ siren:{width:5,colors:['#b39559','#fff3d6','#4a9f99'],band:'#d7b667',dash:'1 2 1 21'},
+ mukhyang:{width:5,colors:['#6a6855','#e0d4ad','#444b46'],band:'#828571',dash:'1 24'},
  scrapisle:{width:5.5,colors:['#78513c','#d6a976','#589279'],band:'#af8256',dash:'1.5 2 1.5 20'},
  cloudferry:{width:5,colors:['#8d6638','#e5c893','#b0a267'],band:'#70977c',dash:'1.2 23.8'},
  whitenight:{width:4.8,colors:['#428aa9','#eaf9ff','#78bcd6'],band:'#d9e4ee',dash:'1.2 23.8'},
@@ -28,6 +30,8 @@ export function ExtraShaft({id,path,gradientId}:{id:string;path:string;gradientI
  </g>
 }
 export function ExtraFrame({id}:{id:string}){
+ if(id==='siren')return <g data-skin-frame={id}><circle r="34" fill="#2f797b" stroke="#ddbd75" strokeWidth="3"/><circle r="28" fill="#f4e7c9" stroke="#a88842"/><path d="M-17-19Q-10 26 0 18Q10 26 17-19M-13-13H13M-7-12V13M0-12V18M7-12V13" fill="none" stroke="#b39559" strokeWidth="3"/></g>
+ if(id==='mukhyang')return <g data-skin-frame={id}><circle r="34" fill="#333b3b" stroke="#b4b6a4" strokeWidth="3"/><circle r="27" fill="#202c2e" stroke="#677875"/><path d="M-20 10Q-5-20 18-10" fill="none" stroke="#879c91" strokeWidth="2"/><rect x="17" y="15" width="9" height="9" rx="1" fill="#ae5145"/></g>
  if(id==='scrapisle')return <g data-skin-frame={id}><circle r="34" fill="#426b57" stroke="#bf9463" strokeWidth="4"/><circle r="27" fill="#77a48a" stroke="#e0bb84"/></g>
  if(id==='cloudferry')return <g data-skin-frame={id}><circle r="34" fill="#729789" stroke="#dfbd78" strokeWidth="4"/><circle r="28" fill="#fff3d8" stroke="#91b6a1"/></g>
  if(id==='whitenight')return <g data-skin-frame={id}><circle r="34" fill="#245c72" stroke="#d9e4ee" strokeWidth="4"/><circle r="29" fill="#3d819c" stroke="#a1e4f6"/></g>
@@ -39,6 +43,7 @@ export function ExtraFrame({id}:{id:string}){
  return <g data-skin-frame={id}><circle r="35" fill="#346f73" stroke="#d8e5d0" strokeWidth="3"/><circle r="30" fill="#5b9994" stroke="#bce7d6"/><path d="M-27-13q8-5 13 0m28 26q8 5 13 0" fill="none" stroke="#edf4da" strokeWidth="1.4"/></g>
 }
 export function ExtraRotor({id}:{id:string}){
+ if(id==='mukhyang')return <g data-skin-rotor={id}><circle r="24" fill="#f0ead9" stroke="#909d8e" strokeWidth="2"/><path d="M-16 12Q-11-17 2-13T16 9Q1-1-16 12Z" fill="#394440"/><path d="M0 0 22 15" stroke="#879a89" strokeWidth="3"/><ellipse cx="24" cy="17" rx="6" ry="5" fill="#dbe8d7" stroke="#718b7c"/><circle r="4" fill="#c8d9c6"/></g>
  if(id==='scrapisle')return <g data-skin-rotor={id}>{Array.from({length:10},(_,i)=><path key={i} transform={`rotate(${i*36})`} d="M-5-20-5-28H5V-20Z" fill="#bf9463" stroke="#e0bb84"/>)}<circle r="23" fill="#b88853" stroke="#e0bb84" strokeWidth="2"/><circle r="12" fill="#548b72"/><circle r="4" fill="#e0bb84"/><path d="M0 0 22 13" stroke="#e0bb84" strokeWidth="3"/><circle cx="24" cy="15" r="5" fill="#548b72"/></g>
  if(id==='cloudferry')return <g data-skin-rotor={id}><path d="M-23 10C-33-1-20-15-10-10C-10-27 14-29 19-12C34-14 36 9 23 13H-20Z" fill="#fff7df" stroke="#cda966" strokeWidth="2"/><circle r="5" fill="#83ae9a"/><path d="M0 0 22 15" stroke="#b59153" strokeWidth="3"/><circle cx="24" cy="17" r="5" fill="#dfbb78"/></g>
  if(id==='whitenight')return <g data-skin-rotor={id}>{[0,60,120,180,240,300].map(a=><path key={a} transform={`rotate(${a})`} d="M0-5-5-19 0-27 5-19Z" fill="#a1e4f6" stroke="#f2fcff"/>)}<circle r="6" fill="#f2fcff" stroke="#d6c397"/><path d="M0 0 20 15" stroke="#d6c397" strokeWidth="3"/><circle cx="22" cy="17" r="5" fill="#fff5dc"/></g>
@@ -50,6 +55,8 @@ export function ExtraRotor({id}:{id:string}){
  return <g data-skin-rotor={id}>{[0,120,240].map(a=><path key={a} transform={`rotate(${a})`} d="M0-5C-23-15-29 10-18 19C-23 4-9 0 0 5Z" fill="#f0ebd2" stroke="#c7e3cb"/>)}<circle r="5.5" fill="#c8e6d9" stroke="#f8edc6"/><path d="M0 0 22 11" stroke="#cbdcba" strokeWidth="2.5"/><circle cx="24" cy="12" r="4.5" fill="#f5eed8"/></g>
 }
 export function ExtraFloat({id}:{id:string}){
+ if(id==='siren')return <g data-skin-float={id}><ellipse rx="6" ry="11" fill="#faf1dc" stroke="#b39559"/><path d="M-6 1H6" stroke="#4a9f99" strokeWidth="5"/><path d="M0-17V-10" stroke="#b39559" strokeWidth="2"/></g>
+ if(id==='mukhyang')return <g data-skin-float={id}><path d="M0-18V-9" stroke="#ae5145" strokeWidth="3"/><ellipse rx="5.5" ry="10" fill="#f8f0dc" stroke="#818e80"/><path d="M-3-6Q4-2 0 5L3 7" fill="none" stroke="#303e3b" strokeWidth="3" strokeLinecap="round"/></g>
  if(id==='scrapisle')return <g data-skin-float={id}><path d="M-6-8Q0-12 6-8V8Q0 12-6 8Z" fill="#a6b592" stroke="#b48755"/><ellipse cy="-8" rx="6" ry="2.5" fill="#e2c795"/><path d="M-6 1H6" stroke="#548b72" strokeWidth="4"/></g>
  if(id==='cloudferry')return <CloudferryFloat/>
  if(id==='whitenight')return <g data-skin-float={id}><path d="M0-14 7-3 5 8 0 14-5 8-7-3Z" fill="#91d9ed" stroke="#eaf9ff"/><path d="m-7-3 7-11 7 11Z" fill="#f2fcff"/><path d="M0-14V14m-5-6 5 6 5-6" fill="none" stroke="#d9e4ee"/></g>
@@ -61,6 +68,7 @@ export function ExtraFloat({id}:{id:string}){
  return <g data-skin-float={id}><ellipse rx="6.5" ry="9" fill="#6baaa7" stroke="#dce9d3"/><path d="M-6-2Q-3-5 0-2T6-2M-6 3Q-3 0 0 3T6 3" fill="none" stroke="#fff0d4" strokeWidth="1.4"/><path d="M0-15v6" stroke="#f6e4b9" strokeWidth="2"/></g>
 }
 export function ExtraGrip({id}:{id:string}){
+ if(id==='mukhyang')return <g data-skin-grip={id}><path d="M-5-17H5M-5-12H5M-5-7H5M-5-2H5" stroke="#f0e9d3" strokeWidth="2"/><path d="M0 2V8" stroke="#ad5146"/><rect x="-4" y="8" width="8" height="8" rx="1" fill="#ad5146"/><path d="M-2 10H2V14H-2Z" stroke="#f5e8d2" fill="none"/></g>
  if(id==='scrapisle')return <g data-skin-grip={id}><circle r="6" fill="#b88853" stroke="#e0bb84"/><circle r="2" fill="#548b72"/><path d="M0-9V-6M0 6V9M-9 0H-6M6 0H9" stroke="#b88853" strokeWidth="3"/></g>
  if(id==='whitenight')return <g data-skin-grip={id}>{[0,60,120].map(a=><path key={a} transform={`rotate(${a})`} d="M0-8V8m-3-12 3 3 3-3m-6 8 3-3 3 3" stroke="#eaf9ff" strokeWidth="1.5" fill="none"/>)}</g>
  if(id==='bluegrove')return <g data-skin-grip={id}><path d="M-3-10Q7-4 0 2T3 10" stroke="#83dcd7" strokeWidth="3" fill="none"/></g>

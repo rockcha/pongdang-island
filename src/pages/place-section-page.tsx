@@ -1,6 +1,5 @@
 import {useLocation} from 'react-router'
 import { placeSections } from '@/lib/place-sections'
-import {MerchantDestinations} from '@/features/exchange/merchant-destinations'
 import {PlaceDestinations} from '@/components/place-destinations'
 import {squareDestinations} from '@/lib/square-destinations'
 
@@ -8,7 +7,6 @@ export function PlaceSectionPage({section}:{section:keyof typeof placeSections})
  const place=placeSections[section]
  const {pathname}=useLocation()
  const selected=place.items.find(item=>item.path===pathname)
- if(section==='merchants'&&!selected)return <MerchantDestinations/>
  if(section==='square'&&!selected)return <PlaceDestinations scrollable title="광장" directory="square" items={squareDestinations}/>
  return <section className="space-y-5 py-6">
   {selected?<>

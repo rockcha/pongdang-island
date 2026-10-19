@@ -1,37 +1,35 @@
-import type {FishingRod} from './fishing-rods'
+﻿import type {FishingRod} from './fishing-rods'
 
-function FrameOrnament({theme}:{theme:string}){
- switch(theme){
-  case 'pongdang':return <path d="m50-14 3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1Z"/>
-  case 'coral':return <g fill="none" strokeWidth="3" strokeLinecap="round"><path d="M50 3v-16m0 10-7-6m7 10 8-8m-15-2v-5m15 7v-5"/><circle cx="50" cy="109" r="4" fill="currentColor" stroke="none"/></g>
-  case 'bluegrove':return <g><path d="m50-15 7 8-7 10-7-10Z"/><path d="M29 103q10-7 21 0t21 0" fill="none" strokeWidth="2"/></g>
-  case 'mistmoon':return <path d="M55-15a10 10 0 1 0 5 17 10 10 0 0 1-5-17Z"/>
-  case 'lunea':return <g><path d="M55-15a10 10 0 1 0 5 17 10 10 0 0 1-5-17Z"/><circle cx="50" cy="108" r="4"/><circle cx="41" cy="106" r="2"/><circle cx="59" cy="106" r="2"/></g>
-  case 'starruins':return <g><path d="m50-15 3 9 9 3-9 3-3 9-3-9-9-3 9-3Z"/><path d="m43 105 7 6 7-6" fill="none" strokeWidth="2"/></g>
-  case 'dreamabyss':return <g><path d="m50-16 6 9-2 10h-8l-2-10Z"/><path d="m35 103 4 7 6-4m10 0 6 4 4-7" fill="none" strokeWidth="2"/></g>
-  case 'primal':return <g><path d="m50-14 7 5-2 11H45l-2-11Z"/><path d="m15 12 7 6m-16 4 8 5m64-9 7-6m1 15 8-5" fill="none" strokeWidth="3" strokeLinecap="round"/></g>
-  case 'whitenight':return <g fill="none" strokeWidth="2" strokeLinecap="round"><path d="M50-16V3M42-12l16 11m-16 0 16-11M47-13l3 3 3-3M47 0l3-3 3 3"/><path d="m36 103 7 5 7-3 7 3 7-5"/></g>
-  case 'cloudferry':return <g><path d="M38-2a5 5 0 0 1 2-9 7 7 0 0 1 13-1 5 5 0 0 1 8 6 4 4 0 0 1-3 4Z"/><path d="m12 13 6 5m64 0 6-5m-53 91 5 4m20 0 5-4" fill="none" strokeWidth="2"/></g>
-  case 'scrapisle':return <g><path d="m45-13 10 0 5 8-5 8H45l-5-8Z"/><circle cx="50" cy="-5" r="3" fill="#405c55" stroke="none"/>{[[-1,50],[101,50],[50,103]].map(([x,y])=><g key={x+':'+y}><circle cx={x} cy={y} r="3"/><path d={`m${x-1.5} ${y}h3`} fill="none" stroke="#405c55"/></g>)}</g>
-  case 'bronze':return <g><circle cx="50" cy="-4" r="5"/><path d="m46-4h8M50-8v8" fill="none" stroke="#705137" strokeWidth="1.5"/></g>
-  case 'calm':return <g fill="none" strokeWidth="2" strokeLinecap="round"><path d="M37-5q6-6 13 0t13 0M42 105q8-6 16 0"/></g>
-  default:return <g fill="none" strokeWidth="2" strokeLinecap="round"><path d="m16 12 6 5m56 0 6-5M45 103h10"/></g>
- }
+const themes:Record<string,{ink:string;light:string;pattern:string}>={
+ basic:{ink:'#3e3024',light:'#e4c79d',pattern:'linear-gradient(115deg,#c69a5720,transparent)'},
+ bronze:{ink:'#293b3e',light:'#d7b388',pattern:'linear-gradient(115deg,#b58b4520,transparent)'},
+ pongdang:{ink:'#403125',light:'#e8bd80',pattern:'repeating-linear-gradient(110deg,transparent 0 28px,#d6aa6b08 29px 30px)'},
+ coral:{ink:'#47303c',light:'#f2aaa9',pattern:'radial-gradient(ellipse at 15% 110%,#f3b8b830,transparent 65%)'},
+ bluegrove:{ink:'#183e52',light:'#83dcd7',pattern:'repeating-linear-gradient(170deg,transparent 0 20px,#83dcd709 21px 22px)'},
+ mistmoon:{ink:'#30334d',light:'#c6b9ee',pattern:'radial-gradient(ellipse at 85% 0%,#e6dcff25,transparent 60%)'},
+ lunea:{ink:'#40344f',light:'#eee1be',pattern:'radial-gradient(ellipse at 85% 0%,#fff1c92b,transparent 60%)'},
+ whitenight:{ink:'#243f51',light:'#c2ecff',pattern:'linear-gradient(135deg,#eaf9ff20,transparent 45%,#78bcd610)'},
+ starruins:{ink:'#293e42',light:'#e3d2a4',pattern:'repeating-linear-gradient(45deg,transparent 0 30px,#e3d2a409 31px 32px)'},
+ primal:{ink:'#333c2b',light:'#e8b45c',pattern:'radial-gradient(ellipse at 15% 100%,#e8b45c20,transparent 70%)'},
+ dreamabyss:{ink:'#302644',light:'#b6a5ee',pattern:'linear-gradient(125deg,#9ae4f21c,transparent 45%,#b69ae424)'},
+ cloudferry:{ink:'#33483d',light:'#e1d6a5',pattern:'radial-gradient(ellipse at 75% 110%,#fff1ce25,transparent 60%)'},
+ scrapisle:{ink:'#293e35',light:'#b7cd99',pattern:'repeating-linear-gradient(135deg,transparent 0 24px,#d7aa710a 25px 26px)'},
+ mukhyang:{ink:'#293b37',light:'#d9e1c9',pattern:'linear-gradient(165deg,#e9e2cd14,transparent 40%,#111e181c)'},
+ siren:{ink:'#24433f',light:'#8de0d2',pattern:'linear-gradient(155deg,transparent 25%,#ead9ab18 26%,transparent 28%,transparent 65%,#ead9ab10 66%,transparent 69%)'},
+ calm:{ink:'#274247',light:'#a1ded5',pattern:'linear-gradient(170deg,#c1eadb15,transparent)'},
 }
 
-export function RodGauge({rod,tension}:{rod?:FishingRod;tension:number}){
- const theme=rod?.id??'basic',value=Math.max(0,Math.min(100,tension))
- const danger=value>85||value<20
- const color=rod?.color??'#c69857',accent=rod?.accent??'#e7d6b6'
- return <div data-rod-gauge={theme} className="rod-gauge-frame pointer-events-none absolute inset-x-4 bottom-[calc(11rem+env(safe-area-inset-bottom))] z-20 rounded-lg border-2 bg-slate-950/90 px-3 pb-3 pt-2 text-white shadow-lg sm:bottom-[calc(12rem+env(safe-area-inset-bottom))]" style={{borderColor:color,color:accent,boxShadow:'0 4px 16px #071b3540,inset 0 0 0 1px '+accent+'55'}} aria-hidden="true">
-  <div className="mb-2 flex items-center justify-between gap-3 text-xs">
-   <span className="flex items-center gap-1.5"><svg viewBox="32 -20 36 28" className="h-5 w-6 overflow-visible" fill="currentColor" stroke={color} strokeWidth="1.3" strokeLinejoin="round"><FrameOrnament theme={theme}/></svg><span className="text-white/75">장력</span></span>
-   <span className={'flex items-center gap-2 font-medium '+(danger?'text-orange-200':'text-emerald-100')}><span>{danger?'위험':'안정'}</span><span className="min-w-9 text-right text-sm tabular-nums">{Math.round(value)}%</span></span>
-  </div>
-  <div className="relative h-3.5 overflow-hidden rounded border border-white/15 bg-white/10">
-   <span className="absolute inset-y-0 left-0 w-1/5 bg-orange-300/15"/><span className="absolute inset-y-0 right-0 w-[15%] bg-orange-300/15"/>
-   <span className="absolute inset-y-0 left-0 rounded-sm" style={{width:value+'%',background:danger?'linear-gradient(90deg,#edaf79,#ff9c7a)':'linear-gradient(90deg,#70c4b1,#b9f5df)'}}/>
-   <span className="absolute inset-y-0 left-[20%] border-l border-slate-950/35"/><span className="absolute inset-y-0 left-[85%] border-l border-slate-950/35"/>
+export function RodGauge({rod,tension,inline=false,floating=false,status}:{rod?:FishingRod;tension:number;inline?:boolean;floating?:boolean;status?:string}){
+ const id=rod?.id??'basic',theme=themes[id]??themes.basic
+ const value=Math.max(0,Math.min(100,tension)),danger=!status&&(value>85||value<20)
+ return <div data-rod-gauge={id} className={floating?'pointer-events-none w-full rounded-full p-2':inline?'relative order-first w-full shrink-0 px-4 pt-3 pb-2 backdrop-blur-md':'rod-gauge-frame pointer-events-none absolute inset-x-4 bottom-[calc(11rem+env(safe-area-inset-bottom))] z-20 rounded-xl px-4 py-3 backdrop-blur-md'} style={{backgroundColor:theme.ink+(floating?'a6':'df'),backgroundImage:theme.pattern}} aria-hidden="true">
+  {!floating&&status!=='낚시 준비'&&status!=='입질을 기다려요'&&<div className="mb-2 flex items-center justify-end gap-3 text-[11px] leading-4">
+   <span className={danger?'text-orange-200':'text-white/85'}>{status??(danger?'위험':'안정')}{!status&&<span className="ml-2 tabular-nums text-white/60">{Math.round(value)}%</span>}</span>
+  </div>}
+  <div className={`relative ${floating?'h-1.5':'h-2'} overflow-hidden rounded-full bg-black/20`}>
+   <span className="absolute inset-y-0 left-[20%] w-[65%] bg-white/10"/>
+   <span className="absolute inset-y-0 left-0 rounded-full" style={{width:value+'%',background:danger?'#f3a779':`linear-gradient(90deg,${rod?.color??'#c69857'},${theme.light})`}}/>
+   <span className="absolute inset-y-0 left-[20%] w-px bg-white/25"/><span className="absolute inset-y-0 left-[85%] w-px bg-white/25"/>
   </div>
  </div>
 }

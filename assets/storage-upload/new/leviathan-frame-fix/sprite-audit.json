@@ -1,0 +1,63 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/leviathan-frame-fix/fish/mythic/god-devouring-leviathan_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  60,
+                                           "y":  163,
+                                           "width":  541,
+                                           "height":  419,
+                                           "widthRatio":  0.8628,
+                                           "heightRatio":  0.6683,
+                                           "alphaPixels":  149183,
+                                           "leftAnchorY":  363.641,
+                                           "rightAnchorY":  398.1
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  29,
+                                           "y":  164,
+                                           "width":  545,
+                                           "height":  424,
+                                           "widthRatio":  0.8692,
+                                           "heightRatio":  0.6762,
+                                           "alphaPixels":  148871,
+                                           "leftAnchorY":  378.822,
+                                           "rightAnchorY":  397.24
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  57,
+                                           "y":  70,
+                                           "width":  546,
+                                           "height":  434,
+                                           "widthRatio":  0.8708,
+                                           "heightRatio":  0.6922,
+                                           "alphaPixels":  143598,
+                                           "leftAnchorY":  313.99,
+                                           "rightAnchorY":  303.346
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  33,
+                                           "y":  72,
+                                           "width":  543,
+                                           "height":  436,
+                                           "widthRatio":  0.866,
+                                           "heightRatio":  0.6954,
+                                           "alphaPixels":  151380,
+                                           "leftAnchorY":  287.063,
+                                           "rightAnchorY":  304.546
+                                       }
+                                   ]
+                    }
+                ]
+}

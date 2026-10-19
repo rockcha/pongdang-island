@@ -1,0 +1,1961 @@
+{
+  "tool": "image_gen",
+  "mode": "built-in",
+  "entries": [
+    {
+      "id": "siren-odysseus-helmet",
+      "name": "오디세우스의 투구",
+      "kind": "trash",
+      "rarity": "rare",
+      "price": 90,
+      "size": 90,
+      "subject": "a weathered ancient Greek bronze helmet with cheek guards, broken crest and a few barnacles",
+      "description": "긴 항해 끝에 해저에 잠든 청동 투구. 닳은 볏 아래로 작은 조개가 붙어 있어요.",
+      "path": "assets/storage-upload/new/20261019-121432/trash/rare/siren-odysseus-helmet_thumbnail.png",
+      "storage_path": "trash/rare/siren-odysseus-helmet_thumbnail.png",
+      "sprite_path": null
+    },
+    {
+      "id": "siren-siren-feather",
+      "name": "세이렌의 깃털",
+      "kind": "trash",
+      "rarity": "common",
+      "price": 12,
+      "size": 52,
+      "subject": "one long iridescent teal and ivory siren feather, salt-worn edges",
+      "description": "노랫소리가 스친 듯 은은하게 빛나는 깃털. 끝자락은 물결에 닳아 있어요.",
+      "path": "assets/storage-upload/new/20261019-121432/trash/normal/siren-siren-feather_thumbnail.png",
+      "storage_path": "trash/normal/siren-siren-feather_thumbnail.png",
+      "sprite_path": null
+    },
+    {
+      "id": "siren-circe-vial",
+      "name": "키르케의 약병",
+      "kind": "trash",
+      "rarity": "common",
+      "price": 16,
+      "size": 54,
+      "subject": "a small cracked ancient Greek potion vial containing faded purple residue, cork stopper",
+      "description": "키르케의 이름이 희미하게 남은 약병. 보랏빛 약은 바닷물에 씻겨 흔적만 남았어요.",
+      "path": "assets/storage-upload/new/20261019-121432/trash/normal/siren-circe-vial_thumbnail.png",
+      "storage_path": "trash/normal/siren-circe-vial_thumbnail.png",
+      "sprite_path": null
+    },
+    {
+      "id": "siren-cracked-idol",
+      "name": "금이 간 신상",
+      "kind": "trash",
+      "rarity": "common",
+      "price": 18,
+      "size": 60,
+      "subject": "a small cracked white marble Greek votive statuette, missing arm, light seaweed",
+      "description": "누군가의 소원을 품었던 작은 신상. 깊은 금 사이에 해초가 자랐어요.",
+      "path": "assets/storage-upload/new/20261019-121432/trash/normal/siren-cracked-idol_thumbnail.png",
+      "storage_path": "trash/normal/siren-cracked-idol_thumbnail.png",
+      "sprite_path": null
+    },
+    {
+      "id": "siren-broken-amphora",
+      "name": "깨진 암포라",
+      "kind": "trash",
+      "rarity": "common",
+      "price": 10,
+      "size": 58,
+      "subject": "a broken terracotta Greek amphora with one handle, turquoise sea patina",
+      "description": "물결무늬가 새겨진 항아리 조각. 무엇을 담았는지는 이제 알 수 없어요.",
+      "path": "assets/storage-upload/new/20261019-121432/trash/normal/siren-broken-amphora_thumbnail.png",
+      "storage_path": "trash/normal/siren-broken-amphora_thumbnail.png",
+      "sprite_path": null
+    },
+    {
+      "id": "siren-achilles-shield-shard",
+      "name": "아킬레우스의 방패 조각",
+      "kind": "trash",
+      "rarity": "common",
+      "price": 20,
+      "size": 58,
+      "subject": "a triangular fragment of ornate ancient bronze shield with worn sun relief",
+      "description": "찬란했던 방패의 작은 조각. 닳은 표면에 태양 문양이 남아 있어요.",
+      "path": "assets/storage-upload/new/20261019-121432/trash/normal/siren-achilles-shield-shard_thumbnail.png",
+      "storage_path": "trash/normal/siren-achilles-shield-shard_thumbnail.png",
+      "sprite_path": null
+    },
+    {
+      "id": "siren-perseus-shield",
+      "name": "페르세우스의 청동 방패",
+      "kind": "trash",
+      "rarity": "rare",
+      "price": 130,
+      "size": 80,
+      "subject": "a round polished yet sea-worn ancient Greek bronze shield, reflective center, olive wreath rim",
+      "description": "거울처럼 비쳤다는 청동 방패. 오랜 세월에도 가운데는 희미하게 빛나요.",
+      "path": "assets/storage-upload/new/20261019-121432/trash/rare/siren-perseus-shield_thumbnail.png",
+      "storage_path": "trash/rare/siren-perseus-shield_thumbnail.png",
+      "sprite_path": null
+    },
+    {
+      "id": "siren-zeus-lightning",
+      "name": "제우스의 번개",
+      "kind": "trash",
+      "rarity": "rare",
+      "price": 150,
+      "size": 72,
+      "subject": "an ancient gold-bronze lightning bolt relic, cracked and faintly glowing blue",
+      "description": "번개의 모습을 본뜬 낡은 유물. 갈라진 틈에 아주 작은 빛이 남아 있어요.",
+      "path": "assets/storage-upload/new/20261019-121432/trash/rare/siren-zeus-lightning_thumbnail.png",
+      "storage_path": "trash/rare/siren-zeus-lightning_thumbnail.png",
+      "sprite_path": null
+    },
+    {
+      "id": "siren-theseus-ship-fragment",
+      "name": "테세우스의 뱃조각",
+      "kind": "trash",
+      "rarity": "common",
+      "price": 14,
+      "size": 62,
+      "subject": "a curved fragment of ancient Greek wooden ship hull, bronze nail, worn painted eye",
+      "description": "몇 번이나 고쳐진 배에서 떨어져 나온 나무 조각. 소금기 밴 결이 단단해요.",
+      "path": "assets/storage-upload/new/20261019-121432/trash/normal/siren-theseus-ship-fragment_thumbnail.png",
+      "storage_path": "trash/normal/siren-theseus-ship-fragment_thumbnail.png",
+      "sprite_path": null
+    },
+    {
+      "id": "siren-trojan-horse",
+      "name": "트로이의 목마",
+      "kind": "decoration",
+      "rarity": "epic",
+      "price": 720,
+      "size": 130,
+      "subject": "an ancient wooden Trojan horse statue submerged for centuries, sparse seaweed and barnacles, no ground plane",
+      "description": "바닷속에 가라앉은 커다란 목마. 오래된 나무 틈에 해초와 따개비가 조금씩 붙었어요.",
+      "path": "assets/storage-upload/new/20261019-121432/decorations/epic/siren-trojan-horse_thumbnail.png",
+      "storage_path": "decorations/epic/siren-trojan-horse_thumbnail.png",
+      "sprite_path": null
+    },
+    {
+      "id": "siren-scylla-tentacle",
+      "name": "스킬라의 촉수",
+      "kind": "decoration",
+      "rarity": "rare",
+      "price": 190,
+      "size": 112,
+      "subject": "a single curling dark teal Scylla tentacle with violet suction cups, attached to a small broken marble wall bracket, front view, curved lively pose",
+      "description": "벽 틈에 붙어 조용히 꿈틀거리는 촉수. 무엇이 벽 너머에 있는지는 아무도 몰라요.",
+      "path": "assets/storage-upload/new/20261019-121432/decorations/rare/siren-scylla-tentacle_thumbnail.png",
+      "storage_path": "decorations/rare/siren-scylla-tentacle_thumbnail.png",
+      "sprite_path": "decorations/rare/siren-scylla-tentacle_sprite.png"
+    },
+    {
+      "id": "siren-poseidon-trident",
+      "name": "포세이돈의 삼지창",
+      "kind": "decoration",
+      "rarity": "rare",
+      "price": 210,
+      "size": 110,
+      "subject": "an upright ancient Greek bronze and turquoise trident, tip pointing up, lower shaft planted into a small mound of seabed sand",
+      "description": "모래바닥에 단단히 박힌 삼지창. 세 갈래 끝에 청록빛 녹이 피었어요.",
+      "path": "assets/storage-upload/new/20261019-121432/decorations/rare/siren-poseidon-trident_thumbnail.png",
+      "storage_path": "decorations/rare/siren-poseidon-trident_thumbnail.png",
+      "sprite_path": null
+    },
+    {
+      "id": "siren-poseidon-statue",
+      "name": "부서진 포세이돈 석상",
+      "kind": "decoration",
+      "rarity": "rare",
+      "price": 200,
+      "size": 116,
+      "subject": "a broken white marble Poseidon statue with bearded head and torso, fragmentary trident, small barnacles",
+      "description": "바다를 굽어보던 신의 석상. 부서진 어깨에도 당당한 기품이 남아 있어요.",
+      "path": "assets/storage-upload/new/20261019-121432/decorations/rare/siren-poseidon-statue_thumbnail.png",
+      "storage_path": "decorations/rare/siren-poseidon-statue_thumbnail.png",
+      "sprite_path": null
+    },
+    {
+      "id": "siren-amphora-goby",
+      "name": "암포라 망둥어",
+      "kind": "fish",
+      "rarity": "common",
+      "price": 70,
+      "size": 58,
+      "subject": "a cute small ochre goby peeking out of a tiny broken terracotta amphora, full creature and pot visible",
+      "description": "작은 암포라를 쉼터로 삼은 망둥어. 낯선 소리가 들리면 항아리 안으로 쏙 숨어요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/normal/siren-amphora-goby_thumbnail.png",
+      "storage_path": "fish/normal/siren-amphora-goby_thumbnail.png",
+      "sprite_path": "fish/normal/siren-amphora-goby_sprite.png"
+    },
+    {
+      "id": "siren-thread-snail",
+      "name": "실타래 바다달팽이",
+      "kind": "fish",
+      "rarity": "common",
+      "price": 60,
+      "size": 54,
+      "subject": "a cute sea snail with an ivory spiral shell wrapped in a single vivid red Ariadne thread",
+      "description": "붉은 실 같은 무늬가 껍데기를 감싸요. 지나간 자리에는 가느다란 물길이 남아요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/normal/siren-thread-snail_thumbnail.png",
+      "storage_path": "fish/normal/siren-thread-snail_thumbnail.png",
+      "sprite_path": "fish/normal/siren-thread-snail_sprite.png"
+    },
+    {
+      "id": "siren-laurel-shrimp",
+      "name": "월계수 새우",
+      "kind": "fish",
+      "rarity": "common",
+      "price": 80,
+      "size": 58,
+      "subject": "a small jade and gold shrimp with antennae shaped like a simple laurel wreath",
+      "description": "월계수 잎을 닮은 더듬이를 흔들며 헤엄쳐요. 작은 승리에도 신나게 춤추는 새우예요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/normal/siren-laurel-shrimp_thumbnail.png",
+      "storage_path": "fish/normal/siren-laurel-shrimp_thumbnail.png",
+      "sprite_path": "fish/normal/siren-laurel-shrimp_sprite.png"
+    },
+    {
+      "id": "siren-triton-golden-seahorse",
+      "name": "트리톤의 황금해마",
+      "kind": "fish",
+      "rarity": "rare",
+      "price": 320,
+      "size": 78,
+      "subject": "an elegant golden seahorse with teal fins and a small conch crown",
+      "description": "금빛 비늘과 푸른 지느러미를 가진 해마. 소라고둥 소리를 따라 물살을 건너요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-triton-golden-seahorse_thumbnail.png",
+      "storage_path": "fish/rare/siren-triton-golden-seahorse_thumbnail.png",
+      "sprite_path": "fish/rare/siren-triton-golden-seahorse_sprite.png"
+    },
+    {
+      "id": "siren-golden-fleece-puffer",
+      "name": "황금양털 복어",
+      "kind": "fish",
+      "rarity": "rare",
+      "price": 290,
+      "size": 74,
+      "subject": "a round cute pufferfish covered in soft golden fleece-like spines, tiny curled ram horns",
+      "description": "부드러운 금빛 가시를 양털처럼 부풀려요. 놀라면 작은 양 한 마리처럼 동그래져요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-golden-fleece-puffer_thumbnail.png",
+      "storage_path": "fish/rare/siren-golden-fleece-puffer_thumbnail.png",
+      "sprite_path": "fish/rare/siren-golden-fleece-puffer_sprite.png"
+    },
+    {
+      "id": "siren-triton-conch",
+      "name": "트리톤의 소라고둥",
+      "kind": "fish",
+      "rarity": "rare",
+      "price": 260,
+      "size": 72,
+      "subject": "a living large ivory and gold trumpet conch sea snail, turquoise soft body, one elegant spiral shell",
+      "description": "나팔을 닮은 소라껍데기를 지닌 고둥. 물살이 지나가면 낮은 울림이 흘러나와요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-triton-conch_thumbnail.png",
+      "storage_path": "fish/rare/siren-triton-conch_thumbnail.png",
+      "sprite_path": "fish/rare/siren-triton-conch_sprite.png"
+    },
+    {
+      "id": "siren-athens-fish",
+      "name": "아테네의 물고기",
+      "kind": "fish",
+      "rarity": "rare",
+      "price": 300,
+      "size": 76,
+      "subject": "a cute turquoise fish wearing a tiny ancient Greek Athena helmet and short ivory chiton, no human limbs",
+      "description": "작은 투구와 단정한 옷을 걸친 물고기. 호기심 많은 눈으로 신전 사이를 살펴봐요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-athens-fish_thumbnail.png",
+      "storage_path": "fish/rare/siren-athens-fish_thumbnail.png",
+      "sprite_path": "fish/rare/siren-athens-fish_sprite.png"
+    },
+    {
+      "id": "siren-hermes-flyingfish",
+      "name": "날개신 신은 헤르메스 날치",
+      "kind": "fish",
+      "rarity": "rare",
+      "price": 340,
+      "size": 82,
+      "subject": "a silver flying fish with little white winged sandals on its lower fins and a tiny scroll in its mouth",
+      "description": "지느러미에 날개신을 단 날치. 소식을 전하듯 해협의 물결 위를 날렵하게 달려요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-hermes-flyingfish_thumbnail.png",
+      "storage_path": "fish/rare/siren-hermes-flyingfish_thumbnail.png",
+      "sprite_path": "fish/rare/siren-hermes-flyingfish_sprite.png"
+    },
+    {
+      "id": "siren-oracle-octopus",
+      "name": "신탁의 문어",
+      "kind": "fish",
+      "rarity": "rare",
+      "price": 330,
+      "size": 82,
+      "subject": "a violet octopus with one luminous eye-shaped forehead marking, small gold laurel ornament",
+      "description": "이마의 눈 모양 무늬가 물빛에 반짝여요. 여덟 팔의 움직임에 답이 숨어 있다는 소문이 있어요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-oracle-octopus_thumbnail.png",
+      "storage_path": "fish/rare/siren-oracle-octopus_thumbnail.png",
+      "sprite_path": "fish/rare/siren-oracle-octopus_sprite.png"
+    },
+    {
+      "id": "siren-golden-apple-hermit",
+      "name": "황금사과를 훔친 소라게",
+      "kind": "fish",
+      "rarity": "rare",
+      "price": 350,
+      "size": 76,
+      "subject": "a mischievous cute hermit crab carrying a single golden apple instead of a shell, looking sideways",
+      "description": "황금사과를 집처럼 메고 다니는 소라게. 누가 바라보면 모르는 척 옆걸음쳐요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-golden-apple-hermit_thumbnail.png",
+      "storage_path": "fish/rare/siren-golden-apple-hermit_thumbnail.png",
+      "sprite_path": "fish/rare/siren-golden-apple-hermit_sprite.png"
+    },
+    {
+      "id": "siren-three-fates-octopuses",
+      "name": "운명의 실을 짜는 세 문어",
+      "kind": "fish",
+      "rarity": "rare",
+      "price": 420,
+      "size": 104,
+      "subject": "three tiny distinct pastel octopuses grouped as one compact creature, sharing one red thread with a spindle, measuring loop and tiny shears",
+      "description": "작은 문어 셋이 붉은 실 하나를 함께 다뤄요. 서로 떨어지지 않고 같은 물길을 헤엄쳐요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-three-fates-octopuses_thumbnail.png",
+      "storage_path": "fish/rare/siren-three-fates-octopuses_thumbnail.png",
+      "sprite_path": "fish/rare/siren-three-fates-octopuses_sprite.png"
+    },
+    {
+      "id": "siren-golden-fleece-sea-sheep",
+      "name": "황금양털 두른 바다양",
+      "kind": "fish",
+      "rarity": "rare",
+      "price": 380,
+      "size": 82,
+      "subject": "a cute sea sheep nudibranch with fluffy gold leaf-like cerata and small curled ram horns",
+      "description": "금빛 잎 같은 아가미가 양털처럼 풍성해요. 느긋하게 움직이며 햇살을 모아요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-golden-fleece-sea-sheep_thumbnail.png",
+      "storage_path": "fish/rare/siren-golden-fleece-sea-sheep_thumbnail.png",
+      "sprite_path": "fish/rare/siren-golden-fleece-sea-sheep_sprite.png"
+    },
+    {
+      "id": "siren-poseidon-chariot",
+      "name": "해마 전차 탄 꼬마 포세이돈",
+      "kind": "fish",
+      "rarity": "rare",
+      "price": 480,
+      "size": 108,
+      "subject": "a tiny cute turquoise octopus holding a trident riding a shell chariot pulled by two small golden seahorses, compact readable single group",
+      "description": "조개 전차 위에서 작은 삼지창을 든 문어. 해마 두 마리가 나란히 전차를 끌어요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-poseidon-chariot_thumbnail.png",
+      "storage_path": "fish/rare/siren-poseidon-chariot_thumbnail.png",
+      "sprite_path": "fish/rare/siren-poseidon-chariot_sprite.png"
+    },
+    {
+      "id": "siren-hephaestus-lobster",
+      "name": "청동 대장장이 헤파이스토스 가재",
+      "kind": "fish",
+      "rarity": "rare",
+      "price": 440,
+      "size": 94,
+      "subject": "a bronze armored lobster with one hammer-shaped claw and a tiny anvil on its back, teal patina",
+      "description": "망치 같은 집게로 청동 조각을 두드리는 가재. 등에는 작은 모루를 짊어졌어요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-hephaestus-lobster_thumbnail.png",
+      "storage_path": "fish/rare/siren-hephaestus-lobster_thumbnail.png",
+      "sprite_path": "fish/rare/siren-hephaestus-lobster_sprite.png"
+    },
+    {
+      "id": "siren-athena-cuttlefish",
+      "name": "방패 든 아테나 갑오징어",
+      "kind": "fish",
+      "rarity": "rare",
+      "price": 460,
+      "size": 96,
+      "subject": "a cute ivory cuttlefish wearing a bronze crested helmet and holding a round shell shield with an owl motif",
+      "description": "청동 투구와 조개 방패를 갖춘 갑오징어. 작은 친구들 앞에 먼저 나서는 용감한 수호자예요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-athena-cuttlefish_thumbnail.png",
+      "storage_path": "fish/rare/siren-athena-cuttlefish_thumbnail.png",
+      "sprite_path": "fish/rare/siren-athena-cuttlefish_sprite.png"
+    },
+    {
+      "id": "siren-orpheus-melodyfish",
+      "name": "오르페우스의 선율어",
+      "kind": "fish",
+      "rarity": "epic",
+      "price": 800,
+      "size": 112,
+      "subject": "an elegant sapphire and gold fish whose sweeping fins form a golden lyre silhouette, three glowing musical ripple arcs, no text or music glyphs",
+      "description": "금빛 현을 닮은 지느러미로 선율을 만드는 물고기. 그 울림에 거친 물살도 잠시 고요해져요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-orpheus-melodyfish_thumbnail.png",
+      "storage_path": "fish/epic/siren-orpheus-melodyfish_thumbnail.png",
+      "sprite_path": "fish/epic/siren-orpheus-melodyfish_sprite.png"
+    },
+    {
+      "id": "siren-medusa-eel",
+      "name": "메두사의 뱀장어",
+      "kind": "fish",
+      "rarity": "epic",
+      "price": 850,
+      "size": 116,
+      "subject": "a sinuous emerald eel with a crown of several tiny snake-like fins, ancient Greek gold collar, striking silhouette",
+      "description": "작은 뱀을 닮은 지느러미가 머리 주위를 감싸요. 에메랄드빛 몸이 기둥 사이를 미끄러져요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-medusa-eel_thumbnail.png",
+      "storage_path": "fish/epic/siren-medusa-eel_thumbnail.png",
+      "sprite_path": "fish/epic/siren-medusa-eel_sprite.png"
+    },
+    {
+      "id": "siren-hippocampus",
+      "name": "히포캄포스",
+      "kind": "fish",
+      "rarity": "epic",
+      "price": 900,
+      "size": 132,
+      "subject": "a majestic Greek hippocampus, white horse head and forelegs merging into a long turquoise fish tail, gold mane, fully clothed by natural scales",
+      "description": "말의 앞몸과 긴 물고기 꼬리를 지닌 바다의 신수. 물결을 박차며 해협을 달려요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-hippocampus_thumbnail.png",
+      "storage_path": "fish/epic/siren-hippocampus_thumbnail.png",
+      "sprite_path": "fish/epic/siren-hippocampus_sprite.png"
+    },
+    {
+      "id": "siren-gorgone",
+      "name": "석화의 눈, 고르고네",
+      "kind": "fish",
+      "rarity": "epic",
+      "price": 950,
+      "size": 120,
+      "subject": "a formidable emerald jellyfish with a gold Gorgon mask face and many snake-shaped tentacles, two luminous eyes, clearly different from an eel",
+      "description": "뱀 모양 촉수 사이에서 두 눈이 빛나요. 눈길이 닿은 물결조차 굳는다는 전설이 있어요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-gorgone_thumbnail.png",
+      "storage_path": "fish/epic/siren-gorgone_thumbnail.png",
+      "sprite_path": "fish/epic/siren-gorgone_sprite.png"
+    },
+    {
+      "id": "siren-talos",
+      "name": "청동 심장의 파수꾼, 탈로스",
+      "kind": "fish",
+      "rarity": "epic",
+      "price": 1000,
+      "size": 130,
+      "subject": "a powerful bronze armored giant lobster guardian with Greek geometric armor and one bright molten teal heart in its chest",
+      "description": "청동 갑옷 틈으로 심장빛이 흐르는 거대한 가재. 무너진 신전의 길목을 묵묵히 지켜요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-talos_thumbnail.png",
+      "storage_path": "fish/epic/siren-talos_thumbnail.png",
+      "sprite_path": "fish/epic/siren-talos_sprite.png"
+    },
+    {
+      "id": "siren-acheron",
+      "name": "명부의 등불, 아케론",
+      "kind": "fish",
+      "rarity": "epic",
+      "price": 980,
+      "size": 126,
+      "subject": "a dark navy spectral anglerfish with a blue lantern lure, carrying a small ancient Greek ferry-boat shaped dorsal shell and one bronze coin charm",
+      "description": "푸른 유인등을 밝히는 검푸른 아귀. 등 위의 낡은 나룻배에 해협의 기억을 실어요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-acheron_thumbnail.png",
+      "storage_path": "fish/epic/siren-acheron_thumbnail.png",
+      "sprite_path": "fish/epic/siren-acheron_sprite.png"
+    },
+    {
+      "id": "siren-siren-last-song",
+      "name": "세이렌, 잊힌 노래의 주인",
+      "kind": "fish",
+      "rarity": "mythic",
+      "price": 2800,
+      "size": 160,
+      "subject": "a majestic mythical Greek siren, elegant adult female avian sea spirit with large teal feathered wings, fully covered ivory and gold ancient Greek gown and long flowing aquatic feather tail, laurel crown, expressive singing pose, nonsexual, no nudity",
+      "description": "깃털 날개와 바다의 꼬리를 지닌 해협의 가희. 잊힌 항해자들을 위한 마지막 노래를 불러요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/mythic/siren-siren-last-song_thumbnail.png",
+      "storage_path": "fish/mythic/siren-siren-last-song_thumbnail.png",
+      "sprite_path": "fish/mythic/siren-siren-last-song_sprite.png"
+    },
+    {
+      "id": "siren-skalla-six-shadows",
+      "name": "스칼라, 여섯 그림자의 주인",
+      "kind": "fish",
+      "rarity": "mythic",
+      "price": 3000,
+      "size": 174,
+      "subject": "a majestic Greek sea monster with exactly six long distinct serpentine heads arising from one compact dark teal body, ivory horns, purple and gold accents, powerful readable silhouette, not grotesque",
+      "description": "여섯 머리가 서로 다른 물길을 바라보는 해협의 주인. 깊은 그림자가 지나가면 바다도 숨을 낮춰요.",
+      "path": "assets/storage-upload/new/20261019-121432/fish/mythic/siren-skalla-six-shadows_thumbnail.png",
+      "storage_path": "fish/mythic/siren-skalla-six-shadows_thumbnail.png",
+      "sprite_path": "fish/mythic/siren-skalla-six-shadows_sprite.png"
+    }
+  ],
+  "assets": [
+    {
+      "id": "siren-odysseus-helmet",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/trash/rare/siren-odysseus-helmet_thumbnail.png",
+      "storage_path": "trash/rare/siren-odysseus-helmet_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a weathered ancient Greek bronze helmet with cheek guards, broken crest and a few barnacles. Ancient Greek sea mythology theme. Inanimate artifact: do not invent eyes or faces. Complete object in three-quarter view. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-siren-feather",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/trash/normal/siren-siren-feather_thumbnail.png",
+      "storage_path": "trash/normal/siren-siren-feather_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: one long iridescent teal and ivory siren feather, salt-worn edges. Ancient Greek sea mythology theme. Inanimate artifact: do not invent eyes or faces. Complete object in three-quarter view. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-circe-vial",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/trash/normal/siren-circe-vial_thumbnail.png",
+      "storage_path": "trash/normal/siren-circe-vial_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a small cracked ancient Greek potion vial containing faded purple residue, cork stopper. Ancient Greek sea mythology theme. Inanimate artifact: do not invent eyes or faces. Complete object in three-quarter view. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-cracked-idol",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/trash/normal/siren-cracked-idol_thumbnail.png",
+      "storage_path": "trash/normal/siren-cracked-idol_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a small cracked ancient Greek votive statue wearing a complete long opaque marble robe covering the body, simple face, one broken arm, some seaweed, a stone artifact. Ancient Greek sea mythology theme. Inanimate artifact: do not invent eyes or faces. Complete object in three-quarter view. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-broken-amphora",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/trash/normal/siren-broken-amphora_thumbnail.png",
+      "storage_path": "trash/normal/siren-broken-amphora_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a broken terracotta Greek amphora with one handle, turquoise sea patina. Ancient Greek sea mythology theme. Inanimate artifact: do not invent eyes or faces. Complete object in three-quarter view. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-achilles-shield-shard",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/trash/normal/siren-achilles-shield-shard_thumbnail.png",
+      "storage_path": "trash/normal/siren-achilles-shield-shard_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a triangular fragment of ornate ancient bronze shield with worn sun relief. Ancient Greek sea mythology theme. Inanimate artifact: do not invent eyes or faces. Complete object in three-quarter view. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-perseus-shield",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/trash/rare/siren-perseus-shield_thumbnail.png",
+      "storage_path": "trash/rare/siren-perseus-shield_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a round polished yet sea-worn ancient Greek bronze shield, reflective center, olive wreath rim. Ancient Greek sea mythology theme. Inanimate artifact: do not invent eyes or faces. Complete object in three-quarter view. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-zeus-lightning",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/trash/rare/siren-zeus-lightning_thumbnail.png",
+      "storage_path": "trash/rare/siren-zeus-lightning_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: an ancient gold-bronze lightning bolt relic, cracked and faintly glowing blue. Ancient Greek sea mythology theme. Inanimate artifact: do not invent eyes or faces. Complete object in three-quarter view. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-theseus-ship-fragment",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/trash/normal/siren-theseus-ship-fragment_thumbnail.png",
+      "storage_path": "trash/normal/siren-theseus-ship-fragment_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a curved fragment of ancient Greek wooden ship hull, bronze nail, worn painted eye. Ancient Greek sea mythology theme. Inanimate artifact: do not invent eyes or faces. Complete object in three-quarter view. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-trojan-horse",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/decorations/epic/siren-trojan-horse_thumbnail.png",
+      "storage_path": "decorations/epic/siren-trojan-horse_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "Create a NEW game decoration using attached image only as a SOFT PAINTERLY SHADING reference, NOT its ray shape, purple palette, glow or stars. Subject: a SIMPLE ANCIENT WOODEN TROJAN HORSE statue submerged for a long time. Clearly made of warm weathered brown wooden planks, simple blocky horse head, four wooden legs standing on a small plain wooden base. Only a LITTLE muted green seaweed draped over one shoulder and a FEW small ivory barnacles on the lower legs. Plain wood is 90 percent of its visible material. NO jewels, NO gems, NO metal armor, NO magical glow, NO swirls, NO water effects, NO elaborate ornament. Elegant polished soft fantasy illustration, modest detail, readable silhouette, isolated complete object centered on square transparent alpha canvas with 10 percent clear margins, no scenery, no text, no border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-scylla-tentacle",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/decorations/rare/siren-scylla-tentacle_thumbnail.png",
+      "storage_path": "decorations/rare/siren-scylla-tentacle_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a single curling dark teal Scylla tentacle with violet suction cups, attached to a small broken marble wall bracket, front view, curved lively pose. Ancient Greek sea mythology theme. Inanimate artifact: do not invent eyes or faces. Complete object in three-quarter view. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-poseidon-trident",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/decorations/rare/siren-poseidon-trident_thumbnail.png",
+      "storage_path": "decorations/rare/siren-poseidon-trident_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: an upright ancient Greek bronze and turquoise trident, tip pointing up, lower shaft planted into a small mound of seabed sand. Ancient Greek sea mythology theme. Inanimate artifact: do not invent eyes or faces. Complete object in three-quarter view. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-poseidon-statue",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/decorations/rare/siren-poseidon-statue_thumbnail.png",
+      "storage_path": "decorations/rare/siren-poseidon-statue_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a broken white marble statue of a bearded ancient sea king wearing complete opaque ceremonial armor and long robe, trident fragment, barnacles, no exposed torso. Ancient Greek sea mythology theme. Inanimate artifact: do not invent eyes or faces. Complete object in three-quarter view. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-amphora-goby",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/normal/siren-amphora-goby_thumbnail.png",
+      "storage_path": "fish/normal/siren-amphora-goby_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a cute small ochre goby peeking out of a tiny broken terracotta amphora, full creature and pot visible. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-thread-snail",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/normal/siren-thread-snail_thumbnail.png",
+      "storage_path": "fish/normal/siren-thread-snail_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a cute sea snail with an ivory spiral shell wrapped in a single vivid red Ariadne thread. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-laurel-shrimp",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/normal/siren-laurel-shrimp_thumbnail.png",
+      "storage_path": "fish/normal/siren-laurel-shrimp_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a small jade and gold shrimp with antennae shaped like a simple laurel wreath. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-triton-golden-seahorse",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-triton-golden-seahorse_thumbnail.png",
+      "storage_path": "fish/rare/siren-triton-golden-seahorse_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: an elegant golden seahorse with teal fins and a small conch crown. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-golden-fleece-puffer",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-golden-fleece-puffer_thumbnail.png",
+      "storage_path": "fish/rare/siren-golden-fleece-puffer_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a round cute pufferfish covered in soft golden fleece-like spines, tiny curled ram horns. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-triton-conch",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-triton-conch_thumbnail.png",
+      "storage_path": "fish/rare/siren-triton-conch_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a living large ivory and gold trumpet conch sea snail, turquoise soft body, one elegant spiral shell. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-athens-fish",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-athens-fish_thumbnail.png",
+      "storage_path": "fish/rare/siren-athens-fish_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a cute turquoise fish wearing a tiny ancient Greek Athena helmet and short ivory chiton, no human limbs. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-hermes-flyingfish",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-hermes-flyingfish_thumbnail.png",
+      "storage_path": "fish/rare/siren-hermes-flyingfish_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a silver flying fish with little white winged sandals on its lower fins and a tiny scroll in its mouth. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-oracle-octopus",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-oracle-octopus_thumbnail.png",
+      "storage_path": "fish/rare/siren-oracle-octopus_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a violet octopus with one luminous eye-shaped forehead marking, small gold laurel ornament. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-golden-apple-hermit",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-golden-apple-hermit_thumbnail.png",
+      "storage_path": "fish/rare/siren-golden-apple-hermit_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a mischievous cute hermit crab carrying a single golden apple instead of a shell, looking sideways. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-three-fates-octopuses",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-three-fates-octopuses_thumbnail.png",
+      "storage_path": "fish/rare/siren-three-fates-octopuses_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: three tiny distinct pastel octopuses grouped as one compact creature, sharing one red thread with a spindle, measuring loop and tiny shears. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-golden-fleece-sea-sheep",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-golden-fleece-sea-sheep_thumbnail.png",
+      "storage_path": "fish/rare/siren-golden-fleece-sea-sheep_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a cute sea sheep nudibranch with fluffy gold leaf-like cerata and small curled ram horns. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-poseidon-chariot",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-poseidon-chariot_thumbnail.png",
+      "storage_path": "fish/rare/siren-poseidon-chariot_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a tiny cute turquoise octopus holding a trident riding a shell chariot pulled by two small golden seahorses, compact readable single group. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-hephaestus-lobster",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-hephaestus-lobster_thumbnail.png",
+      "storage_path": "fish/rare/siren-hephaestus-lobster_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a bronze armored lobster with one hammer-shaped claw and a tiny anvil on its back, teal patina. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-athena-cuttlefish",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-athena-cuttlefish_thumbnail.png",
+      "storage_path": "fish/rare/siren-athena-cuttlefish_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: rounded friendly chibi proportions, crisp thick dark chocolate brown outlines, big shiny brown eyes with white highlights, soft warm cel shading and blush. Not a realistic natural history illustration. Do not copy otter ears, fur, starfish ornament or fishing hook. Subject: a cute ivory cuttlefish wearing a bronze crested helmet and holding a round shell shield with an owl motif. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-orpheus-melodyfish",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-orpheus-melodyfish_thumbnail.png",
+      "storage_path": "fish/epic/siren-orpheus-melodyfish_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: elegant soft colored outlines, refined luminous gradients, dimensional soft shading, flowing fantasy forms, translucent highlights. Do not use thick dark cartoon outlines, do not copy the reference ray shape or stars. Subject: an elegant sapphire and gold fish whose sweeping fins form a golden lyre silhouette, three glowing musical ripple arcs, no text or music glyphs. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-medusa-eel",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-medusa-eel_thumbnail.png",
+      "storage_path": "fish/epic/siren-medusa-eel_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: elegant soft colored outlines, refined luminous gradients, dimensional soft shading, flowing fantasy forms, translucent highlights. Do not use thick dark cartoon outlines, do not copy the reference ray shape or stars. Subject: a sinuous emerald eel with a crown of several tiny snake-like fins, ancient Greek gold collar, striking silhouette. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-hippocampus",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-hippocampus_thumbnail.png",
+      "storage_path": "fish/epic/siren-hippocampus_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: elegant soft colored outlines, refined luminous gradients, dimensional soft shading, flowing fantasy forms, translucent highlights. Do not use thick dark cartoon outlines, do not copy the reference ray shape or stars. Subject: a majestic Greek hippocampus, white horse head and forelegs merging into a long turquoise fish tail, gold mane, fully clothed by natural scales. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-gorgone",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-gorgone_thumbnail.png",
+      "storage_path": "fish/epic/siren-gorgone_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: elegant soft colored outlines, refined luminous gradients, dimensional soft shading, flowing fantasy forms, translucent highlights. Do not use thick dark cartoon outlines, do not copy the reference ray shape or stars. Subject: a formidable emerald jellyfish with a gold Gorgon mask face and many snake-shaped tentacles, two luminous eyes, clearly different from an eel. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-talos",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-talos_thumbnail.png",
+      "storage_path": "fish/epic/siren-talos_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: elegant soft colored outlines, refined luminous gradients, dimensional soft shading, flowing fantasy forms, translucent highlights. Do not use thick dark cartoon outlines, do not copy the reference ray shape or stars. Subject: a powerful bronze armored giant lobster guardian with Greek geometric armor and one bright molten teal heart in its chest. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-acheron",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-acheron_thumbnail.png",
+      "storage_path": "fish/epic/siren-acheron_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: elegant soft colored outlines, refined luminous gradients, dimensional soft shading, flowing fantasy forms, translucent highlights. Do not use thick dark cartoon outlines, do not copy the reference ray shape or stars. Subject: a dark navy spectral anglerfish with a blue lantern lure, carrying a small ancient Greek ferry-boat shaped dorsal shell and one bronze coin charm. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-siren-last-song",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/mythic/siren-siren-last-song_thumbnail.png",
+      "storage_path": "fish/mythic/siren-siren-last-song_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: elegant soft colored outlines, refined luminous gradients, dimensional soft shading, flowing fantasy forms, translucent highlights. Do not use thick dark cartoon outlines, do not copy the reference ray shape or stars. Subject: a majestic mythical Greek siren, elegant adult female avian sea spirit with large teal feathered wings, fully covered ivory and gold ancient Greek gown and long flowing aquatic feather tail, laurel crown, expressive singing pose, nonsexual, no nudity. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    },
+    {
+      "id": "siren-skalla-six-shadows",
+      "phase": "thumbnail",
+      "path": "assets/storage-upload/new/20261019-121432/fish/mythic/siren-skalla-six-shadows_thumbnail.png",
+      "storage_path": "fish/mythic/siren-skalla-six-shadows_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "Create a brand-new isolated game collectible. The attached image is a STYLE REFERENCE, never an edit target. Match the provided reference STYLE ONLY: elegant soft colored outlines, refined luminous gradients, dimensional soft shading, flowing fantasy forms, translucent highlights. Do not use thick dark cartoon outlines, do not copy the reference ray shape or stars. Subject: a majestic Greek sea monster with exactly six long distinct serpentine heads arising from one compact dark teal body, ivory horns, purple and gold accents, powerful readable silhouette, not grotesque. Ancient Greek sea mythology theme. Full body, head on RIGHT and tail on LEFT, facing screen right, all limbs and accessories visible. One single subject centered on square canvas, long dimension occupies 82-86% with transparent margins. Actual transparent alpha background, no checkerboard, no ground, no scenery, no lettering or border.",
+      "transparent": true
+    }
+  ],
+  "batch": "assets/storage-upload/new/20261019-121432",
+  "references": {
+    "cartoon": "assets/references/collectible-style/common-rare-pongi.png",
+    "fantasy": "assets/references/collectible-style/epic-mythic-starlight.png"
+  },
+  "sprites": [
+    {
+      "id": "siren-scylla-tentacle",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/decorations/rare/siren-scylla-tentacle_sprite.png",
+      "storage_path": "decorations/rare/siren-scylla-tentacle_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/decorations/rare/siren-scylla-tentacle_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: The marble wall attachment at top stays exactly fixed. The tentacle below undulates from root to tip in four successive curling poses, suction cups preserved, no whole-body rotation or size pulsing.  All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.2363,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -30,
+            0
+          ],
+          [
+            0,
+            -40
+          ],
+          [
+            -28,
+            -40
+          ]
+        ],
+        "patch": [
+          232,
+          476,
+          41
+        ],
+        "scores": [
+          0,
+          46.961098398169334,
+          54.336384439359264,
+          62.7116704805492
+        ]
+      },
+      "layout_repair_prompt": "Edit this existing animation atlas for PRODUCTION FRAME PADDING. Keep the exact same siren-scylla-tentacle identity and the same four poses in a 2 by 2 grid. Scale ALL FOUR subjects uniformly down to 68 PERCENT of their current size by the same factor. Place the stationary head/rigid torso (or wall attachment for tentacle) at the exact same coordinates relative to each cell center. Every complete subject must fit INSIDE its own quadrant with a very large empty transparent margin and an unmistakable empty transparent cross between cells. Preserve every limb, tail, nose and prop, restore any clipped tips. No edge touches any cell boundary. Do not enlarge to fill canvas. Preserve right-facing heads, same colors, same style and natural swimming/tentacle pose differences. Do not add grid lines, visible frames, scenery or text. Actual transparent alpha background."
+    },
+    {
+      "id": "siren-amphora-goby",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/normal/siren-amphora-goby_sprite.png",
+      "storage_path": "fish/normal/siren-amphora-goby_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/normal/siren-amphora-goby_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: A smooth forward swim cycle: tail sweeps gently, paired fins stabilize symmetrically, cloth or decorative fins trail naturally; face and torso stay registered. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "layout_repair_prompt": "Edit this animation atlas for PRODUCTION FRAME PADDING. Keep the EXACT same cartoon amphora goby and the same four swimming poses. The atlas has four equal cells in a 2 by 2 grid. Scale all four characters down to 65 PERCENT of their current size, uniformly by the same factor. Center the RIGID AMPHORA BODY at coordinates (25%,25%), (75%,25%), (25%,75%), (75%,75%) of the full canvas, with identical body orientation and size in all cells. Every character including tail and nose must fit fully INSIDE its own quadrant with very large clear transparent margins, leaving an unmistakable EMPTY transparent cross between cells and empty outer border. Reconstruct any missing nose or tail edges. No character touches any cell border. Preserve right-facing heads, color, brown outlines and shape. Do not add grid lines or visible frames. Actual transparent alpha background. This is a technical layout correction, do not enlarge characters to fill the canvas.",
+      "registration": {
+        "cell": 627,
+        "scale": 1.2306,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -8,
+            0
+          ],
+          [
+            8,
+            -50
+          ],
+          [
+            4,
+            -50
+          ]
+        ],
+        "patch": [
+          411,
+          286,
+          41
+        ],
+        "scores": [
+          0,
+          92.99278846153847,
+          65.75240384615384,
+          69.02163461538461
+        ]
+      }
+    },
+    {
+      "id": "siren-thread-snail",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/normal/siren-thread-snail_sprite.png",
+      "storage_path": "fish/normal/siren-thread-snail_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/normal/siren-thread-snail_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: A slow crawling cycle: soft foot ripples and small antenna movement; shell position and size remain fixed. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.1862,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -8,
+            30
+          ],
+          [
+            -62,
+            26
+          ],
+          [
+            -76,
+            26
+          ]
+        ],
+        "patch": [
+          403,
+          308,
+          41
+        ],
+        "scores": [
+          0,
+          157.31629392971246,
+          196.07987220447285,
+          192.42492012779553
+        ]
+      },
+      "layout_repair_prompt": "Edit this existing animation atlas for PRODUCTION FRAME PADDING. Keep the exact same siren-thread-snail identity and the same four poses in a 2 by 2 grid. Scale ALL FOUR subjects uniformly down to 68 PERCENT of their current size by the same factor. Place the stationary head/rigid torso (or wall attachment for tentacle) at the exact same coordinates relative to each cell center. Every complete subject must fit INSIDE its own quadrant with a very large empty transparent margin and an unmistakable empty transparent cross between cells. Preserve every limb, tail, nose and prop, restore any clipped tips. No edge touches any cell boundary. Do not enlarge to fill canvas. Preserve right-facing heads, same colors, same style and natural swimming/tentacle pose differences. Do not add grid lines, visible frames, scenery or text. Actual transparent alpha background."
+    },
+    {
+      "id": "siren-laurel-shrimp",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/normal/siren-laurel-shrimp_sprite.png",
+      "storage_path": "fish/normal/siren-laurel-shrimp_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/normal/siren-laurel-shrimp_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: Natural paired leg paddling and antenna sway; armored torso and eye anchors remain stationary. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.1678,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            14,
+            8
+          ],
+          [
+            2,
+            -40
+          ],
+          [
+            12,
+            -42
+          ]
+        ],
+        "patch": [
+          408,
+          280,
+          41
+        ],
+        "scores": [
+          0,
+          187.33962264150944,
+          64.57861635220125,
+          167.25786163522014
+        ]
+      },
+      "layout_repair_prompt": "Edit this existing animation atlas for PRODUCTION FRAME PADDING. Keep the exact same siren-laurel-shrimp identity and the same four poses in a 2 by 2 grid. Scale ALL FOUR subjects uniformly down to 68 PERCENT of their current size by the same factor. Place the stationary head/rigid torso (or wall attachment for tentacle) at the exact same coordinates relative to each cell center. Every complete subject must fit INSIDE its own quadrant with a very large empty transparent margin and an unmistakable empty transparent cross between cells. Preserve every limb, tail, nose and prop, restore any clipped tips. No edge touches any cell boundary. Do not enlarge to fill canvas. Preserve right-facing heads, same colors, same style and natural swimming/tentacle pose differences. Do not add grid lines, visible frames, scenery or text. Actual transparent alpha background."
+    },
+    {
+      "id": "siren-triton-golden-seahorse",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-triton-golden-seahorse_sprite.png",
+      "storage_path": "fish/rare/siren-triton-golden-seahorse_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/rare/siren-triton-golden-seahorse_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: A smooth forward swim cycle: tail sweeps gently, paired fins stabilize symmetrically, cloth or decorative fins trail naturally; face and torso stay registered. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 0.9735,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -16,
+            8
+          ],
+          [
+            0,
+            -12
+          ],
+          [
+            4,
+            -12
+          ]
+        ],
+        "patch": [
+          433,
+          120,
+          41
+        ],
+        "scores": [
+          0,
+          106.46923076923076,
+          94.8076923076923,
+          83.53846153846153
+        ]
+      }
+    },
+    {
+      "id": "siren-golden-fleece-puffer",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-golden-fleece-puffer_sprite.png",
+      "storage_path": "fish/rare/siren-golden-fleece-puffer_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/rare/siren-golden-fleece-puffer_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: A smooth forward swim cycle: tail sweeps gently, paired fins stabilize symmetrically, cloth or decorative fins trail naturally; face and torso stay registered. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.1836,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            10,
+            22
+          ],
+          [
+            2,
+            -36
+          ],
+          [
+            34,
+            -26
+          ]
+        ],
+        "patch": [
+          405,
+          280,
+          41
+        ],
+        "scores": [
+          0,
+          36.04761904761905,
+          29.859410430839002,
+          34.63945578231292
+        ]
+      },
+      "layout_repair_prompt": "Edit this existing animation atlas for PRODUCTION FRAME PADDING. Keep the exact same siren-golden-fleece-puffer identity and the same four poses in a 2 by 2 grid. Scale ALL FOUR subjects uniformly down to 68 PERCENT of their current size by the same factor. Place the stationary head/rigid torso (or wall attachment for tentacle) at the exact same coordinates relative to each cell center. Every complete subject must fit INSIDE its own quadrant with a very large empty transparent margin and an unmistakable empty transparent cross between cells. Preserve every limb, tail, nose and prop, restore any clipped tips. No edge touches any cell boundary. Do not enlarge to fill canvas. Preserve right-facing heads, same colors, same style and natural swimming/tentacle pose differences. Do not add grid lines, visible frames, scenery or text. Actual transparent alpha background."
+    },
+    {
+      "id": "siren-triton-conch",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-triton-conch_sprite.png",
+      "storage_path": "fish/rare/siren-triton-conch_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/rare/siren-triton-conch_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: A slow crawling cycle: soft foot ripples and small antenna movement; shell position and size remain fixed. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.2306,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -32,
+            8
+          ],
+          [
+            4,
+            -62
+          ],
+          [
+            -30,
+            -60
+          ]
+        ],
+        "patch": [
+          421,
+          276,
+          41
+        ],
+        "scores": [
+          0,
+          120.49462365591398,
+          82.49731182795699,
+          106.3225806451613
+        ]
+      },
+      "layout_repair_prompt": "Technical layout correction of this EXISTING 4-frame animation atlas. Preserve the same character, identity, colors, right-facing head, exact poses and animation actions. Keep EXACTLY 2 columns and TWO rows of equal square cells, 4 subjects total, square canvas. Scale every COMPLETE subject UNIFORMLY to 68 PERCENT of its current size, using the same factor for every frame. Align the rigid HEAD AND TORSO at IDENTICAL COORDINATES within each cell, not by tail or fin bounds. Each complete silhouette including glow must fit fully INSIDE its own cell with very generous transparent padding. Leave an unmistakable wide EMPTY TRANSPARENT CROSS/GUTTERS between every cell and an empty outer border. No edge touches cell borders. Restore any clipped extremities. Keep the original natural tail, fin, tentacle, cloth or head-action differences. NO copying one pose, NO new poses, NO changing face or body size, NO visible grid, NO text, NO scenery. Actual clean alpha transparency. Do not enlarge the art to fill canvas."
+    },
+    {
+      "id": "siren-athens-fish",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-athens-fish_sprite.png",
+      "storage_path": "fish/rare/siren-athens-fish_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/rare/siren-athens-fish_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: A smooth forward swim cycle: tail sweeps gently, paired fins stabilize symmetrically, cloth or decorative fins trail naturally; face and torso stay registered. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.2164,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -10,
+            2
+          ],
+          [
+            4,
+            -52
+          ],
+          [
+            -8,
+            -50
+          ]
+        ],
+        "patch": [
+          413,
+          284,
+          41
+        ],
+        "scores": [
+          0,
+          72.59410430839003,
+          63.92290249433107,
+          66.70294784580499
+        ]
+      },
+      "layout_repair_prompt": "Edit this existing animation atlas for PRODUCTION FRAME PADDING. Keep the exact same siren-athens-fish identity and the same four poses in a 2 by 2 grid. Scale ALL FOUR subjects uniformly down to 68 PERCENT of their current size by the same factor. Place the stationary head/rigid torso (or wall attachment for tentacle) at the exact same coordinates relative to each cell center. Every complete subject must fit INSIDE its own quadrant with a very large empty transparent margin and an unmistakable empty transparent cross between cells. Preserve every limb, tail, nose and prop, restore any clipped tips. No edge touches any cell boundary. Do not enlarge to fill canvas. Preserve right-facing heads, same colors, same style and natural swimming/tentacle pose differences. Do not add grid lines, visible frames, scenery or text. Actual transparent alpha background."
+    },
+    {
+      "id": "siren-hermes-flyingfish",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-hermes-flyingfish_sprite.png",
+      "storage_path": "fish/rare/siren-hermes-flyingfish_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/rare/siren-hermes-flyingfish_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: A smooth forward swim cycle: tail sweeps gently, paired fins stabilize symmetrically, cloth or decorative fins trail naturally; face and torso stay registered. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 0.9388,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            10,
+            6
+          ],
+          [
+            10,
+            -18
+          ],
+          [
+            12,
+            -18
+          ]
+        ],
+        "patch": [
+          446,
+          241,
+          41
+        ],
+        "scores": [
+          0,
+          94.95038167938931,
+          96.52290076335878,
+          125.8854961832061
+        ]
+      }
+    },
+    {
+      "id": "siren-oracle-octopus",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-oracle-octopus_sprite.png",
+      "storage_path": "fish/rare/siren-oracle-octopus_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/rare/siren-oracle-octopus_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: Flowing trailing arms or tentacles curl gradually with water drag, mantle rim ripples; head and torso anchors remain stationary. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.2248,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -22,
+            6
+          ],
+          [
+            4,
+            -76
+          ],
+          [
+            -22,
+            -72
+          ]
+        ],
+        "patch": [
+          418,
+          307,
+          41
+        ],
+        "scores": [
+          0,
+          32,
+          37.46938775510204,
+          39.31519274376417
+        ]
+      },
+      "layout_repair_prompt": "Technical layout correction of this EXISTING 4-frame animation atlas. Preserve the same character, identity, colors, right-facing head, exact poses and animation actions. Keep EXACTLY 2 columns and TWO rows of equal square cells, 4 subjects total, square canvas. Scale every COMPLETE subject UNIFORMLY to 68 PERCENT of its current size, using the same factor for every frame. Align the rigid HEAD AND TORSO at IDENTICAL COORDINATES within each cell, not by tail or fin bounds. Each complete silhouette including glow must fit fully INSIDE its own cell with very generous transparent padding. Leave an unmistakable wide EMPTY TRANSPARENT CROSS/GUTTERS between every cell and an empty outer border. No edge touches cell borders. Restore any clipped extremities. Keep the original natural tail, fin, tentacle, cloth or head-action differences. NO copying one pose, NO new poses, NO changing face or body size, NO visible grid, NO text, NO scenery. Actual clean alpha transparency. Do not enlarge the art to fill canvas."
+    },
+    {
+      "id": "siren-golden-apple-hermit",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-golden-apple-hermit_sprite.png",
+      "storage_path": "fish/rare/siren-golden-apple-hermit_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/rare/siren-golden-apple-hermit_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: A slow crawling cycle: soft foot ripples and small antenna movement; shell position and size remain fixed. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.0995,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -28,
+            12
+          ],
+          [
+            0,
+            -26
+          ],
+          [
+            -26,
+            -20
+          ]
+        ],
+        "patch": [
+          448,
+          264,
+          41
+        ],
+        "scores": [
+          0,
+          119.98780487804878,
+          48.792682926829265,
+          103.51626016260163
+        ]
+      },
+      "layout_repair_prompt": "Technical layout correction of this EXISTING 4-frame animation atlas. Preserve the same character, identity, colors, right-facing head, exact poses and animation actions. Keep EXACTLY 2 columns and TWO rows of equal square cells, 4 subjects total, square canvas. Scale every COMPLETE subject UNIFORMLY to 68 PERCENT of its current size, using the same factor for every frame. Align the rigid HEAD AND TORSO at IDENTICAL COORDINATES within each cell, not by tail or fin bounds. Each complete silhouette including glow must fit fully INSIDE its own cell with very generous transparent padding. Leave an unmistakable wide EMPTY TRANSPARENT CROSS/GUTTERS between every cell and an empty outer border. No edge touches cell borders. Restore any clipped extremities. Keep the original natural tail, fin, tentacle, cloth or head-action differences. NO copying one pose, NO new poses, NO changing face or body size, NO visible grid, NO text, NO scenery. Actual clean alpha transparency. Do not enlarge the art to fill canvas."
+    },
+    {
+      "id": "siren-three-fates-octopuses",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-three-fates-octopuses_sprite.png",
+      "storage_path": "fish/rare/siren-three-fates-octopuses_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/rare/siren-three-fates-octopuses_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: Flowing trailing arms or tentacles curl gradually with water drag, mantle rim ripples; head and torso anchors remain stationary. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.0749,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            2,
+            -2
+          ],
+          [
+            2,
+            -64
+          ],
+          [
+            34,
+            -62
+          ]
+        ],
+        "patch": [
+          321,
+          401,
+          41
+        ],
+        "scores": [
+          0,
+          117.49886621315193,
+          65.72108843537416,
+          177.15873015873015
+        ]
+      },
+      "layout_repair_prompt": "Technical layout correction of this EXISTING 4-frame animation atlas. Preserve the same character, identity, colors, right-facing head, exact poses and animation actions. Keep EXACTLY 2 columns and TWO rows of equal square cells, 4 subjects total, square canvas. Scale every COMPLETE subject UNIFORMLY to 68 PERCENT of its current size, using the same factor for every frame. Align the rigid HEAD AND TORSO at IDENTICAL COORDINATES within each cell, not by tail or fin bounds. Each complete silhouette including glow must fit fully INSIDE its own cell with very generous transparent padding. Leave an unmistakable wide EMPTY TRANSPARENT CROSS/GUTTERS between every cell and an empty outer border. No edge touches cell borders. Restore any clipped extremities. Keep the original natural tail, fin, tentacle, cloth or head-action differences. NO copying one pose, NO new poses, NO changing face or body size, NO visible grid, NO text, NO scenery. Actual clean alpha transparency. Do not enlarge the art to fill canvas."
+    },
+    {
+      "id": "siren-golden-fleece-sea-sheep",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-golden-fleece-sea-sheep_sprite.png",
+      "storage_path": "fish/rare/siren-golden-fleece-sea-sheep_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/rare/siren-golden-fleece-sea-sheep_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: A slow crawling cycle: soft foot ripples and small antenna movement; shell position and size remain fixed. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.0793,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -26,
+            38
+          ],
+          [
+            0,
+            -56
+          ],
+          [
+            -34,
+            -64
+          ]
+        ],
+        "patch": [
+          416,
+          306,
+          41
+        ],
+        "scores": [
+          0,
+          171.25057471264367,
+          41.786206896551725,
+          72.57241379310345
+        ]
+      },
+      "layout_repair_prompt": "Technical layout correction of this EXISTING 4-frame animation atlas. Preserve the same character, identity, colors, right-facing head, exact poses and animation actions. Keep EXACTLY 2 columns and TWO rows of equal square cells, 4 subjects total, square canvas. Scale every COMPLETE subject UNIFORMLY to 68 PERCENT of its current size, using the same factor for every frame. Align the rigid HEAD AND TORSO at IDENTICAL COORDINATES within each cell, not by tail or fin bounds. Each complete silhouette including glow must fit fully INSIDE its own cell with very generous transparent padding. Leave an unmistakable wide EMPTY TRANSPARENT CROSS/GUTTERS between every cell and an empty outer border. No edge touches cell borders. Restore any clipped extremities. Keep the original natural tail, fin, tentacle, cloth or head-action differences. NO copying one pose, NO new poses, NO changing face or body size, NO visible grid, NO text, NO scenery. Actual clean alpha transparency. Do not enlarge the art to fill canvas."
+    },
+    {
+      "id": "siren-poseidon-chariot",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-poseidon-chariot_sprite.png",
+      "storage_path": "fish/rare/siren-poseidon-chariot_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/rare/siren-poseidon-chariot_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: The two seahorse tails and fins propel the chariot in synchrony; rigid chariot and rider stay registered in place. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.1158,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -40,
+            12
+          ],
+          [
+            -2,
+            -58
+          ],
+          [
+            -26,
+            -56
+          ]
+        ],
+        "patch": [
+          284,
+          397,
+          41
+        ],
+        "scores": [
+          0,
+          141.54195011337868,
+          91.43764172335601,
+          95.29251700680273
+        ]
+      },
+      "layout_repair_prompt": "Technical layout correction of this EXISTING 4-frame animation atlas. Preserve the same character, identity, colors, right-facing head, exact poses and animation actions. Keep EXACTLY 2 columns and TWO rows of equal square cells, 4 subjects total, square canvas. Scale every COMPLETE subject UNIFORMLY to 68 PERCENT of its current size, using the same factor for every frame. Align the rigid HEAD AND TORSO at IDENTICAL COORDINATES within each cell, not by tail or fin bounds. Each complete silhouette including glow must fit fully INSIDE its own cell with very generous transparent padding. Leave an unmistakable wide EMPTY TRANSPARENT CROSS/GUTTERS between every cell and an empty outer border. No edge touches cell borders. Restore any clipped extremities. Keep the original natural tail, fin, tentacle, cloth or head-action differences. NO copying one pose, NO new poses, NO changing face or body size, NO visible grid, NO text, NO scenery. Actual clean alpha transparency. Do not enlarge the art to fill canvas."
+    },
+    {
+      "id": "siren-hephaestus-lobster",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-hephaestus-lobster_sprite.png",
+      "storage_path": "fish/rare/siren-hephaestus-lobster_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/rare/siren-hephaestus-lobster_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: Natural paired leg paddling and antenna sway; armored torso and eye anchors remain stationary. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.007,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -20,
+            4
+          ],
+          [
+            0,
+            -78
+          ],
+          [
+            -22,
+            -74
+          ]
+        ],
+        "patch": [
+          442,
+          287,
+          41
+        ],
+        "scores": [
+          0,
+          175.72241992882562,
+          93.0711743772242,
+          142.12811387900356
+        ]
+      },
+      "layout_repair_prompt": "Technical layout correction of this EXISTING 4-frame animation atlas. Preserve the same character, identity, colors, right-facing head, exact poses and animation actions. Keep EXACTLY 2 columns and TWO rows of equal square cells, 4 subjects total, square canvas. Scale every COMPLETE subject UNIFORMLY to 68 PERCENT of its current size, using the same factor for every frame. Align the rigid HEAD AND TORSO at IDENTICAL COORDINATES within each cell, not by tail or fin bounds. Each complete silhouette including glow must fit fully INSIDE its own cell with very generous transparent padding. Leave an unmistakable wide EMPTY TRANSPARENT CROSS/GUTTERS between every cell and an empty outer border. No edge touches cell borders. Restore any clipped extremities. Keep the original natural tail, fin, tentacle, cloth or head-action differences. NO copying one pose, NO new poses, NO changing face or body size, NO visible grid, NO text, NO scenery. Actual clean alpha transparency. Do not enlarge the art to fill canvas."
+    },
+    {
+      "id": "siren-athena-cuttlefish",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/rare/siren-athena-cuttlefish_sprite.png",
+      "storage_path": "fish/rare/siren-athena-cuttlefish_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/rare/siren-athena-cuttlefish_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: Flowing trailing arms or tentacles curl gradually with water drag, mantle rim ripples; head and torso anchors remain stationary. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.1475,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -16,
+            2
+          ],
+          [
+            8,
+            -34
+          ],
+          [
+            -16,
+            -32
+          ]
+        ],
+        "patch": [
+          355,
+          247,
+          41
+        ],
+        "scores": [
+          0,
+          71.70521541950113,
+          66.12925170068027,
+          44.10204081632653
+        ]
+      },
+      "layout_repair_prompt": "Technical layout correction of this EXISTING 4-frame animation atlas. Preserve the same character, identity, colors, right-facing head, exact poses and animation actions. Keep EXACTLY 2 columns and TWO rows of equal square cells, 4 subjects total, square canvas. Scale every COMPLETE subject UNIFORMLY to 68 PERCENT of its current size, using the same factor for every frame. Align the rigid HEAD AND TORSO at IDENTICAL COORDINATES within each cell, not by tail or fin bounds. Each complete silhouette including glow must fit fully INSIDE its own cell with very generous transparent padding. Leave an unmistakable wide EMPTY TRANSPARENT CROSS/GUTTERS between every cell and an empty outer border. No edge touches cell borders. Restore any clipped extremities. Keep the original natural tail, fin, tentacle, cloth or head-action differences. NO copying one pose, NO new poses, NO changing face or body size, NO visible grid, NO text, NO scenery. Actual clean alpha transparency. Do not enlarge the art to fill canvas."
+    },
+    {
+      "id": "siren-orpheus-melodyfish",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-orpheus-melodyfish_sprite.png",
+      "storage_path": "fish/epic/siren-orpheus-melodyfish_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/epic/siren-orpheus-melodyfish_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: A smooth forward swim cycle: tail sweeps gently, paired fins stabilize symmetrically, cloth or decorative fins trail naturally; face and torso stay registered. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 0.9682,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -44,
+            6
+          ],
+          [
+            0,
+            -46
+          ],
+          [
+            -28,
+            -40
+          ]
+        ],
+        "patch": [
+          460,
+          269,
+          41
+        ],
+        "scores": [
+          0,
+          54.21830985915493,
+          34.37323943661972,
+          47.26056338028169
+        ]
+      }
+    },
+    {
+      "id": "siren-medusa-eel",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-medusa-eel_sprite.png",
+      "storage_path": "fish/epic/siren-medusa-eel_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/epic/siren-medusa-eel_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: Flowing trailing arms or tentacles curl gradually with water drag, mantle rim ripples; head and torso anchors remain stationary. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.1111,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -54,
+            2
+          ],
+          [
+            -2,
+            -88
+          ],
+          [
+            -42,
+            -88
+          ]
+        ],
+        "patch": [
+          444,
+          309,
+          41
+        ],
+        "scores": [
+          0,
+          66.70518867924528,
+          68.00471698113208,
+          70.02358490566037
+        ]
+      },
+      "layout_repair_prompt": "Technical layout correction of this EXISTING 4-frame animation atlas. Preserve the same character, identity, colors, right-facing head, exact poses and animation actions. Keep EXACTLY 2 columns and TWO rows of equal square cells, 4 subjects total, square canvas. Scale every COMPLETE subject UNIFORMLY to 68 PERCENT of its current size, using the same factor for every frame. Align the rigid HEAD AND TORSO at IDENTICAL COORDINATES within each cell, not by tail or fin bounds. Each complete silhouette including glow must fit fully INSIDE its own cell with very generous transparent padding. Leave an unmistakable wide EMPTY TRANSPARENT CROSS/GUTTERS between every cell and an empty outer border. No edge touches cell borders. Restore any clipped extremities. Keep the original natural tail, fin, tentacle, cloth or head-action differences. NO copying one pose, NO new poses, NO changing face or body size, NO visible grid, NO text, NO scenery. Actual clean alpha transparency. Do not enlarge the art to fill canvas."
+    },
+    {
+      "id": "siren-hippocampus",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-hippocampus_sprite.png",
+      "storage_path": "fish/epic/siren-hippocampus_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/epic/siren-hippocampus_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: A smooth forward swim cycle: tail sweeps gently, paired fins stabilize symmetrically, cloth or decorative fins trail naturally; face and torso stay registered. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.0749,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -44,
+            8
+          ],
+          [
+            6,
+            -72
+          ],
+          [
+            -46,
+            -74
+          ]
+        ],
+        "patch": [
+          445,
+          226,
+          41
+        ],
+        "scores": [
+          0,
+          65.98347107438016,
+          50.46280991735537,
+          63.55922865013774
+        ]
+      },
+      "layout_repair_prompt": "Technical layout correction of this EXISTING 4-frame animation atlas. Preserve the same character, identity, colors, right-facing head, exact poses and animation actions. Keep EXACTLY 2 columns and TWO rows of equal square cells, 4 subjects total, square canvas. Scale every COMPLETE subject UNIFORMLY to 68 PERCENT of its current size, using the same factor for every frame. Align the rigid HEAD AND TORSO at IDENTICAL COORDINATES within each cell, not by tail or fin bounds. Each complete silhouette including glow must fit fully INSIDE its own cell with very generous transparent padding. Leave an unmistakable wide EMPTY TRANSPARENT CROSS/GUTTERS between every cell and an empty outer border. No edge touches cell borders. Restore any clipped extremities. Keep the original natural tail, fin, tentacle, cloth or head-action differences. NO copying one pose, NO new poses, NO changing face or body size, NO visible grid, NO text, NO scenery. Actual clean alpha transparency. Do not enlarge the art to fill canvas."
+    },
+    {
+      "id": "siren-gorgone",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-gorgone_sprite.png",
+      "storage_path": "fish/epic/siren-gorgone_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/epic/siren-gorgone_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: Flowing trailing arms or tentacles curl gradually with water drag, mantle rim ripples; head and torso anchors remain stationary. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.0815,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -16,
+            4
+          ],
+          [
+            0,
+            -78
+          ],
+          [
+            -24,
+            -78
+          ]
+        ],
+        "patch": [
+          371,
+          275,
+          41
+        ],
+        "scores": [
+          0,
+          62.480725623582764,
+          56.30612244897959,
+          53.72108843537415
+        ]
+      },
+      "layout_repair_prompt": "Technical layout correction of this EXISTING 4-frame animation atlas. Preserve the same character, identity, colors, right-facing head, exact poses and animation actions. Keep EXACTLY 2 columns and TWO rows of equal square cells, 4 subjects total, square canvas. Scale every COMPLETE subject UNIFORMLY to 68 PERCENT of its current size, using the same factor for every frame. Align the rigid HEAD AND TORSO at IDENTICAL COORDINATES within each cell, not by tail or fin bounds. Each complete silhouette including glow must fit fully INSIDE its own cell with very generous transparent padding. Leave an unmistakable wide EMPTY TRANSPARENT CROSS/GUTTERS between every cell and an empty outer border. No edge touches cell borders. Restore any clipped extremities. Keep the original natural tail, fin, tentacle, cloth or head-action differences. NO copying one pose, NO new poses, NO changing face or body size, NO visible grid, NO text, NO scenery. Actual clean alpha transparency. Do not enlarge the art to fill canvas."
+    },
+    {
+      "id": "siren-talos",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-talos_sprite.png",
+      "storage_path": "fish/epic/siren-talos_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/epic/siren-talos_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: A smooth forward swim cycle: tail sweeps gently, paired fins stabilize symmetrically, cloth or decorative fins trail naturally; face and torso stay registered. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.0859,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -56,
+            0
+          ],
+          [
+            2,
+            -76
+          ],
+          [
+            -58,
+            -76
+          ]
+        ],
+        "patch": [
+          466,
+          274,
+          41
+        ],
+        "scores": [
+          0,
+          89.02216066481995,
+          88.26038781163435,
+          93.98614958448753
+        ]
+      },
+      "layout_repair_prompt": "Technical layout correction of this EXISTING 4-frame animation atlas. Preserve the same character, identity, colors, right-facing head, exact poses and animation actions. Keep EXACTLY 2 columns and TWO rows of equal square cells, 4 subjects total, square canvas. Scale every COMPLETE subject UNIFORMLY to 68 PERCENT of its current size, using the same factor for every frame. Align the rigid HEAD AND TORSO at IDENTICAL COORDINATES within each cell, not by tail or fin bounds. Each complete silhouette including glow must fit fully INSIDE its own cell with very generous transparent padding. Leave an unmistakable wide EMPTY TRANSPARENT CROSS/GUTTERS between every cell and an empty outer border. No edge touches cell borders. Restore any clipped extremities. Keep the original natural tail, fin, tentacle, cloth or head-action differences. NO copying one pose, NO new poses, NO changing face or body size, NO visible grid, NO text, NO scenery. Actual clean alpha transparency. Do not enlarge the art to fill canvas."
+    },
+    {
+      "id": "siren-acheron",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/epic/siren-acheron_sprite.png",
+      "storage_path": "fish/epic/siren-acheron_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/epic/siren-acheron_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Square sprite atlas with EXACTLY two columns and two rows, FOUR equal square cells. Reading order four frames form one seamless locomotion loop: neutral, bend one way, neutral transition, bend opposite way. Do not replace locomotion with blinking. Motion: A smooth forward swim cycle: tail sweeps gently, paired fins stabilize symmetrically, cloth or decorative fins trail naturally; face and torso stay registered. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 2,
+      "registration": {
+        "cell": 627,
+        "scale": 1.045,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            10,
+            -82
+          ],
+          [
+            8,
+            -86
+          ]
+        ],
+        "patch": [
+          432,
+          330,
+          41
+        ],
+        "scores": [
+          0,
+          102.66666666666667,
+          98.07536231884058,
+          102.83768115942028
+        ]
+      },
+      "layout_repair_prompt": "Technical layout correction of this EXISTING 4-frame animation atlas. Preserve the same character, identity, colors, right-facing head, exact poses and animation actions. Keep EXACTLY 2 columns and TWO rows of equal square cells, 4 subjects total, square canvas. Scale every COMPLETE subject UNIFORMLY to 68 PERCENT of its current size, using the same factor for every frame. Align the rigid HEAD AND TORSO at IDENTICAL COORDINATES within each cell, not by tail or fin bounds. Each complete silhouette including glow must fit fully INSIDE its own cell with very generous transparent padding. Leave an unmistakable wide EMPTY TRANSPARENT CROSS/GUTTERS between every cell and an empty outer border. No edge touches cell borders. Restore any clipped extremities. Keep the original natural tail, fin, tentacle, cloth or head-action differences. NO copying one pose, NO new poses, NO changing face or body size, NO visible grid, NO text, NO scenery. Actual clean alpha transparency. Do not enlarge the art to fill canvas."
+    },
+    {
+      "id": "siren-siren-last-song",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/mythic/siren-siren-last-song_sprite.png",
+      "storage_path": "fish/mythic/siren-siren-last-song_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/mythic/siren-siren-last-song_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Wide landscape 2:1 sprite atlas with EXACTLY four columns and two rows, EIGHT equal square cells. Eight frames: first row four smooth swimming poses with wings and aquatic feather tail flowing; second row four additional poses of singing, gently opening beak-like lips, lifting one wing and releasing three soft turquoise sound ripples, then settling back to swimming. Fully covered long opaque ivory gown in every frame. No letters or music note glyphs. Motion: A smooth forward swim cycle: tail sweeps gently, paired fins stabilize symmetrically, cloth or decorative fins trail naturally; face and torso stay registered. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 4,
+      "registration": {
+        "cell": 443.5,
+        "scale": 0.995,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            -7.5,
+            -1
+          ],
+          [
+            -22,
+            -3
+          ],
+          [
+            -24.5,
+            -1
+          ],
+          [
+            -21,
+            -47.5
+          ],
+          [
+            -39.5,
+            -45.5
+          ],
+          [
+            -56,
+            -47.5
+          ],
+          [
+            -26.5,
+            -47.5
+          ]
+        ],
+        "patch": [
+          360,
+          198,
+          29
+        ],
+        "scores": [
+          0,
+          77.56593406593407,
+          80.74725274725274,
+          60.59340659340659,
+          106.74725274725274,
+          88.64835164835165,
+          91.81318681318682,
+          95.26923076923077
+        ]
+      },
+      "layout_repair_prompt": "Technical layout correction of this EXISTING 8-frame animation atlas. Preserve the same character, identity, colors, right-facing head, exact poses and animation actions. Keep EXACTLY 4 columns and TWO rows of equal square cells, 8 subjects total, landscape 2:1 canvas. Scale every COMPLETE subject UNIFORMLY to 68 PERCENT of its current size, using the same factor for every frame. Align the rigid HEAD AND TORSO at IDENTICAL COORDINATES within each cell, not by tail or fin bounds. Each complete silhouette including glow must fit fully INSIDE its own cell with very generous transparent padding. Leave an unmistakable wide EMPTY TRANSPARENT CROSS/GUTTERS between every cell and an empty outer border. No edge touches cell borders. Restore any clipped extremities. Keep the original natural tail, fin, tentacle, cloth or head-action differences. NO copying one pose, NO new poses, NO changing face or body size, NO visible grid, NO text, NO scenery. Actual clean alpha transparency. Do not enlarge the art to fill canvas."
+    },
+    {
+      "id": "siren-skalla-six-shadows",
+      "phase": "sprite",
+      "path": "assets/storage-upload/new/20261019-121432/fish/mythic/siren-skalla-six-shadows_sprite.png",
+      "storage_path": "fish/mythic/siren-skalla-six-shadows_sprite.png",
+      "thumbnail": "assets/storage-upload/new/20261019-121432/fish/mythic/siren-skalla-six-shadows_thumbnail.png",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "TECHNICAL LAYOUT PRIORITY: use very generous EMPTY transparent gutters and outer margins. Each COMPLETE creature occupies only 60-65 percent of the width and height of its own cell, not the entire canvas. Never fill cells edge to edge. Create a production animation sprite sheet of the EXACT SAME CREATURE OR OBJECT in reference image 1 (identity reference). Reference image 2 is STYLE ONLY. Preserve its face, proportions, color, gear and Greek motifs. Wide landscape 2:1 sprite atlas with EXACTLY four columns and two rows, EIGHT equal square cells. Eight frames: first row four smooth swimming poses with six serpentine necks trailing in the current; second row four additional poses in which exactly six heads turn outward in sequence to guard the strait and return to neutral. One shared torso stays fixed; no extra or missing heads. Motion: A smooth forward swim cycle: tail sweeps gently, paired fins stabilize symmetrically, cloth or decorative fins trail naturally; face and torso stay registered. Every frame faces RIGHT, head on RIGHT and tail on LEFT, forward swimming. All frames at IDENTICAL SCALE with body/head landmark at identical cell coordinates. Do not recenter independently by tail bounds. Entire silhouette and glow fit in EACH cell with at least 16-18 percent clear transparent margin, longest pose dimension 60-65 percent of cell. No overlap or clipping across cell boundaries. Consistent character, natural anatomical motion, not copies and not only changing eyes. Actual transparent alpha background, no checkerboard, no scenery, no shadow floor, no text, no visible grid, no border.",
+      "transparent": true,
+      "columns": 4,
+      "registration": {
+        "cell": 443.5,
+        "scale": 0.9691,
+        "shifts": [
+          [
+            0,
+            0
+          ],
+          [
+            15,
+            -9
+          ],
+          [
+            11,
+            -3
+          ],
+          [
+            -1,
+            -5
+          ],
+          [
+            15,
+            -33
+          ],
+          [
+            11,
+            -33
+          ],
+          [
+            19,
+            -37
+          ],
+          [
+            3,
+            -25
+          ]
+        ],
+        "patch": [
+          207,
+          321,
+          29
+        ],
+        "scores": [
+          0,
+          94.80952380952381,
+          124.65608465608466,
+          97.21164021164022,
+          107.57671957671958,
+          112.23280423280423,
+          112.4021164021164,
+          106.97354497354497
+        ]
+      },
+      "layout_repair_prompt": "Technical layout correction of this EXISTING 8-frame animation atlas. Preserve the same character, identity, colors, right-facing head, exact poses and animation actions. Keep EXACTLY 4 columns and TWO rows of equal square cells, 8 subjects total, landscape 2:1 canvas. Scale every COMPLETE subject UNIFORMLY to 68 PERCENT of its current size, using the same factor for every frame. Align the rigid HEAD AND TORSO at IDENTICAL COORDINATES within each cell, not by tail or fin bounds. Each complete silhouette including glow must fit fully INSIDE its own cell with very generous transparent padding. Leave an unmistakable wide EMPTY TRANSPARENT CROSS/GUTTERS between every cell and an empty outer border. No edge touches cell borders. Restore any clipped extremities. Keep the original natural tail, fin, tentacle, cloth or head-action differences. NO copying one pose, NO new poses, NO changing face or body size, NO visible grid, NO text, NO scenery. Actual clean alpha transparency. Do not enlarge the art to fill canvas."
+    }
+  ],
+  "environmentAssets": [
+    {
+      "id": "siren-region",
+      "path": "public/siren/region.png",
+      "transparent": false,
+      "prompt": "Use case: illustration-story. Square map location background for a cozy painterly fishing game. Siren Strait of ancient Greek mythology: turquoise Aegean sea filling lower two thirds, white marble ruined temples and Doric columns on two rocky islands forming a narrow strait, olive trees, weathered bronze statues, pale sea mist, distant small Greek ship, soft late afternoon sunlight, ivory gold teal palette, moderate detail, no people, no text, no UI. Beautiful readable seaside panorama."
+    },
+    {
+      "id": "siren-map",
+      "path": "public/siren/map.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Isolated cute hand-painted fantasy parchment treasure map icon, square canvas, genuinely transparent background. Ancient Greek Siren Strait drawn as two little ivory marble temple islands, turquoise winding sea channel between them, olive trees and tiny gold lyre emblem. Weathered curled parchment edges, elegant moderate detail, warm cream and teal, map illustration only, no words, no letters, no border, complete map fits in canvas.",
+      "storage_path": "map/epic/map-siren_thumbnail.png"
+    },
+    {
+      "id": "siren-horizon",
+      "path": "public/banners/siren-horizon.png",
+      "transparent": false,
+      "prompt": "Use case: illustration-story. Very wide 3:1 painterly casual fishing game panorama. Ancient Greek Siren Strait, turquoise open sea, far shore white marble temple ruins and olive-covered rocky islands, distant columns and golden afternoon haze, horizon upper third, lower part calm clear water with room for fishing UI. No characters, no text, no fishing rod, no frame, moderate detail."
+    },
+    {
+      "id": "siren-rod",
+      "path": "public/siren/rod-thumbnail.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Isolated complete fishing rod equipment illustration for cozy painterly Greek mythology fishing game, diagonal from bottom left handle to top right tip, truly transparent square background. Elegant ivory rod with bronze gold laurel bands, turquoise line, round golden lyre-shaped reel with turquoise center, seashell handle and small trident ornament, matching small ivory teal float hanging from tip. Functional fishing rod shape clearly visible, no text, no border, whole rod fits inside canvas.",
+      "storage_path": "equipment/rods/siren/thumbnail.png"
+    },
+    {
+      "path": "public/fishing/environments/siren.png",
+      "prompt": "Painterly casual fishing game background, portrait 2:3, ancient Greek Siren Strait. Camera from shore looking down toward clear turquoise sea. Upper 65 percent mostly gently rippling transparent water with soft distant white marble temples and olive islands at very top. Bottom 30 percent a broad cream marble stone fishing ledge facing the sea, horizontal edge, weathered gold Greek meander carvings. Spacious calm playable water. No people, no creatures, no fishing rods, no UI, no lettering. Soft polished hand-painted illustration, matching warm Greek coastal game world."
+    },
+    {
+      "path": "public/fishing/platforms/siren.png",
+      "prompt": "Wide 5:2 painterly game platform foreground, ancient Greek white ivory marble quay at water edge. Low horizontal uneven marble ledge top, front face large aged marble slabs, sparse golden Greek meander ornament and small turquoise patina, perspective seen from slightly above facing ledge. Entire frame filled with continuous pale marble foreground platform, no background scenery, no characters, no text, no UI, no rods. Warm ivory cream, gentle shadows, polished casual game illustration."
+    }
+  ],
+  "sprite_layout_review": "Inspect complete atlas alpha bounds; preserve constant scale per creature and register one stationary body/head landmark. No independent frame crops or scale changes."
+}

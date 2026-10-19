@@ -19,6 +19,7 @@ DB 작업은 [DB 관리](systems/database-management.md) → [로컬 컨텍스�
 
 - [여러 어항 관리](systems/aquarium-tanks.md)
 - [수족관·배경·렌더링](systems/aquarium.md)
+- [테마 등급 기준·추천](systems/aquarium-theme-tiers.md)
 - [섬 오락실](systems/arcade.md)
 - [연속 출석과 28일 출석지](systems/attendance.md)
 - [경매소](systems/auctions.md)

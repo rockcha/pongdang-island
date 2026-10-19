@@ -7,7 +7,7 @@ import {squareDestinations} from '@/lib/square-destinations'
 import {placeSections} from '../src/lib/place-sections'
 afterEach(cleanup)
 it('provides real links to every district destination',()=>{
- for(const section of ['square','merchants'] as const){
+ for(const section of ['square'] as const){
   const place=placeSections[section]
   const view=render(<MemoryRouter initialEntries={[place.path]}><PlaceSectionPage section={section}/></MemoryRouter>)
   for(const item of place.items)expect(screen.getByRole('link',{name:new RegExp(item.title)}).getAttribute('href')).toBe(item.path)

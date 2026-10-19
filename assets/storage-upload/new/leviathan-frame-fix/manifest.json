@@ -1,0 +1,8 @@
+{
+  "tool": "built-in image_gen",
+  "editTarget": "assets/storage-upload/new/20261018-114000/fish/mythic/god-devouring-leviathan_sprite.png",
+  "prompt": "Edit target: supplied leviathan 2x2 animation sprite sheet. Correct frame overflow ONLY, preserve blue silver dragon identity and four distinct tail/fin poses. SQUARE canvas, EXACT 2x2 equal SQUARE cells. Uniformly shrink EACH whole creature to 68 percent of its present size about its respective cell center. All four creatures FULLY contained, generous TRANSPARENT padding 15 percent on ALL FOUR cell edges including horns, head, tail and glow. Restore any clipped snout/tail. Same body size and rigid head anchor in all four frames, head faces RIGHT every frame, tail left. No creature or glow reaches center dividing lines or canvas edges. No grid, no text, no scenery. Genuine transparent alpha. This is a game sprite sheet with four full separate creatures, not a single illustration.",
+  "storagePath": "fish/mythic/god-devouring-leviathan_sprite.png",
+  "reason": "Frame clipping and adjacent pose leakage",
+  "browserVerified": false
+}

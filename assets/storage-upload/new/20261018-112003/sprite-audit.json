@@ -1,0 +1,405 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261018-112003/fish/epic/scrap-curiosity-hermit-crab_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  87,
+                                           "y":  120,
+                                           "width":  494,
+                                           "height":  422,
+                                           "widthRatio":  0.7879,
+                                           "heightRatio":  0.673,
+                                           "alphaPixels":  126716,
+                                           "leftAnchorY":  329.159,
+                                           "rightAnchorY":  381.435
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  69,
+                                           "y":  119,
+                                           "width":  494,
+                                           "height":  428,
+                                           "widthRatio":  0.7879,
+                                           "heightRatio":  0.6826,
+                                           "alphaPixels":  125732,
+                                           "leftAnchorY":  329.684,
+                                           "rightAnchorY":  380.597
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  92,
+                                           "y":  76,
+                                           "width":  498,
+                                           "height":  427,
+                                           "widthRatio":  0.7943,
+                                           "heightRatio":  0.681,
+                                           "alphaPixels":  128636,
+                                           "leftAnchorY":  279.314,
+                                           "rightAnchorY":  343.085
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  71,
+                                           "y":  76,
+                                           "width":  494,
+                                           "height":  427,
+                                           "widthRatio":  0.7879,
+                                           "heightRatio":  0.681,
+                                           "alphaPixels":  124651,
+                                           "leftAnchorY":  284.012,
+                                           "rightAnchorY":  334.214
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-112003/fish/epic/scrap-garden-nudibranch_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  48,
+                                           "y":  165,
+                                           "width":  543,
+                                           "height":  375,
+                                           "widthRatio":  0.866,
+                                           "heightRatio":  0.5981,
+                                           "alphaPixels":  123710,
+                                           "leftAnchorY":  341.472,
+                                           "rightAnchorY":  397.999
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  38,
+                                           "y":  165,
+                                           "width":  545,
+                                           "height":  375,
+                                           "widthRatio":  0.8692,
+                                           "heightRatio":  0.5981,
+                                           "alphaPixels":  122551,
+                                           "leftAnchorY":  340.194,
+                                           "rightAnchorY":  400.07
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  51,
+                                           "y":  104,
+                                           "width":  541,
+                                           "height":  374,
+                                           "widthRatio":  0.8628,
+                                           "heightRatio":  0.5965,
+                                           "alphaPixels":  121212,
+                                           "leftAnchorY":  277.941,
+                                           "rightAnchorY":  337.983
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  38,
+                                           "y":  102,
+                                           "width":  544,
+                                           "height":  378,
+                                           "widthRatio":  0.8676,
+                                           "heightRatio":  0.6029,
+                                           "alphaPixels":  123872,
+                                           "leftAnchorY":  281.961,
+                                           "rightAnchorY":  340.183
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-112003/fish/epic/scrap-sunken-orchestra-octopus_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  47,
+                                           "y":  99,
+                                           "width":  575,
+                                           "height":  479,
+                                           "widthRatio":  0.9171,
+                                           "heightRatio":  0.764,
+                                           "alphaPixels":  162296,
+                                           "leftAnchorY":  316.238,
+                                           "rightAnchorY":  339.052
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  41,
+                                           "y":  96,
+                                           "width":  566,
+                                           "height":  482,
+                                           "widthRatio":  0.9027,
+                                           "heightRatio":  0.7687,
+                                           "alphaPixels":  161514,
+                                           "leftAnchorY":  319.373,
+                                           "rightAnchorY":  338.327
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  46,
+                                           "y":  71,
+                                           "width":  574,
+                                           "height":  481,
+                                           "widthRatio":  0.9155,
+                                           "heightRatio":  0.7671,
+                                           "alphaPixels":  163630,
+                                           "leftAnchorY":  288.943,
+                                           "rightAnchorY":  311.333
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  38,
+                                           "y":  71,
+                                           "width":  569,
+                                           "height":  481,
+                                           "widthRatio":  0.9075,
+                                           "heightRatio":  0.7671,
+                                           "alphaPixels":  163012,
+                                           "leftAnchorY":  289.346,
+                                           "rightAnchorY":  311.599
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-112003/fish/normal/scrap-thimble-barnacle_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  149,
+                                           "y":  209,
+                                           "width":  403,
+                                           "height":  266,
+                                           "widthRatio":  0.6427,
+                                           "heightRatio":  0.4242,
+                                           "alphaPixels":  72275,
+                                           "leftAnchorY":  350.735,
+                                           "rightAnchorY":  341.692
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  99,
+                                           "y":  220,
+                                           "width":  382,
+                                           "height":  254,
+                                           "widthRatio":  0.6093,
+                                           "heightRatio":  0.4051,
+                                           "alphaPixels":  68038,
+                                           "leftAnchorY":  351.171,
+                                           "rightAnchorY":  373.844
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  148,
+                                           "y":  193,
+                                           "width":  373,
+                                           "height":  254,
+                                           "widthRatio":  0.5949,
+                                           "heightRatio":  0.4051,
+                                           "alphaPixels":  65154,
+                                           "leftAnchorY":  325.035,
+                                           "rightAnchorY":  344.588
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  100,
+                                           "y":  175,
+                                           "width":  395,
+                                           "height":  272,
+                                           "widthRatio":  0.63,
+                                           "heightRatio":  0.4338,
+                                           "alphaPixels":  71728,
+                                           "leftAnchorY":  324.809,
+                                           "rightAnchorY":  311.761
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-112003/fish/rare/scrap-cogwheel-seahorse_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  120,
+                                           "y":  10,
+                                           "width":  476,
+                                           "height":  601,
+                                           "widthRatio":  0.7592,
+                                           "heightRatio":  0.9585,
+                                           "alphaPixels":  145020,
+                                           "leftAnchorY":  388.913,
+                                           "rightAnchorY":  249.182
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  110,
+                                           "y":  19,
+                                           "width":  464,
+                                           "height":  584,
+                                           "widthRatio":  0.74,
+                                           "heightRatio":  0.9314,
+                                           "alphaPixels":  137772,
+                                           "leftAnchorY":  387.801,
+                                           "rightAnchorY":  247.915
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  120,
+                                           "y":  7,
+                                           "width":  479,
+                                           "height":  601,
+                                           "widthRatio":  0.764,
+                                           "heightRatio":  0.9585,
+                                           "alphaPixels":  149519,
+                                           "leftAnchorY":  377.695,
+                                           "rightAnchorY":  246.337
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  115,
+                                           "y":  11,
+                                           "width":  462,
+                                           "height":  595,
+                                           "widthRatio":  0.7368,
+                                           "heightRatio":  0.949,
+                                           "alphaPixels":  143586,
+                                           "leftAnchorY":  368.134,
+                                           "rightAnchorY":  247.646
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-112003/fish/rare/scrap-compass-turtle_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  86,
+                                           "y":  231,
+                                           "width":  451,
+                                           "height":  279,
+                                           "widthRatio":  0.7193,
+                                           "heightRatio":  0.445,
+                                           "alphaPixels":  71742,
+                                           "leftAnchorY":  384.152,
+                                           "rightAnchorY":  331.183
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  72,
+                                           "y":  231,
+                                           "width":  447,
+                                           "height":  269,
+                                           "widthRatio":  0.7129,
+                                           "heightRatio":  0.429,
+                                           "alphaPixels":  69422,
+                                           "leftAnchorY":  377,
+                                           "rightAnchorY":  351.338
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  93,
+                                           "y":  172,
+                                           "width":  445,
+                                           "height":  270,
+                                           "widthRatio":  0.7097,
+                                           "heightRatio":  0.4306,
+                                           "alphaPixels":  67559,
+                                           "leftAnchorY":  313.841,
+                                           "rightAnchorY":  271.053
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  80,
+                                           "y":  171,
+                                           "width":  450,
+                                           "height":  270,
+                                           "widthRatio":  0.7177,
+                                           "heightRatio":  0.4306,
+                                           "alphaPixels":  70681,
+                                           "leftAnchorY":  318.884,
+                                           "rightAnchorY":  297.032
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261018-112003/fish/rare/scrap-lightbulb-jellyfish_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  102,
+                                           "y":  169,
+                                           "width":  436,
+                                           "height":  396,
+                                           "widthRatio":  0.6954,
+                                           "heightRatio":  0.6316,
+                                           "alphaPixels":  87384,
+                                           "leftAnchorY":  445.737,
+                                           "rightAnchorY":  300.73
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  106,
+                                           "y":  172,
+                                           "width":  395,
+                                           "height":  374,
+                                           "widthRatio":  0.63,
+                                           "heightRatio":  0.5965,
+                                           "alphaPixels":  80248,
+                                           "leftAnchorY":  437.958,
+                                           "rightAnchorY":  298.064
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  125,
+                                           "y":  126,
+                                           "width":  413,
+                                           "height":  390,
+                                           "widthRatio":  0.6587,
+                                           "heightRatio":  0.622,
+                                           "alphaPixels":  85801,
+                                           "leftAnchorY":  392.089,
+                                           "rightAnchorY":  257.33
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  81,
+                                           "y":  126,
+                                           "width":  437,
+                                           "height":  383,
+                                           "widthRatio":  0.697,
+                                           "heightRatio":  0.6108,
+                                           "alphaPixels":  86817,
+                                           "leftAnchorY":  402.778,
+                                           "rightAnchorY":  256.26
+                                       }
+                                   ]
+                    }
+                ]
+}

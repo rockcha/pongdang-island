@@ -1,0 +1,14 @@
+{
+  "tool": "image_gen",
+  "mode": "built-in",
+  "assets": [
+    {
+      "path": "public/banners/collection.png",
+      "prompt": "Wide landscape banner illustration for a cozy Korean seaside fishing game, aspect ratio 3:1. A peaceful wooden marine naturalist's study overlooking a turquoise sea, open illustrated marine field guide, a few seashells and glass specimen jars on a desk, soft sunlight. Painterly polished casual game background, cream and warm wood with muted teal, moderate detail, uncluttered readable composition, main objects center and right, bottom left softly shaded for UI title overlay. No text, no letters, no people, no border. Save final image to workspace public/banners/collection.png if file save is supported."
+    },
+    {
+      "path": "public/banners/titles.png",
+      "prompt": "Wide landscape banner illustration for a cozy Korean seaside fishing game, aspect ratio 3:1. A tasteful wooden seaside keepsake display with a few small gold star medals, ribbons and carved nautical commemorative plaques, warm afternoon light, turquoise sea seen through window behind. Painterly polished casual game background, cream and warm wood with muted teal, moderate detail, uncluttered readable composition, main objects center and right, bottom left softly shaded for UI title overlay. No text, no letters, no people, no border. Save final image to workspace public/banners/titles.png if file save is supported."
+    }
+  ]
+}

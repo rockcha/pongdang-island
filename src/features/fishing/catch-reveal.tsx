@@ -5,8 +5,10 @@ import { collectibleUrl } from '@/features/collection/api'
 import type { Species } from '@/features/collection/api'
 import { chanceFailurePhrases } from './fishing-practice'
 import { rarities } from '@/lib/game/rarity'
+import { regionIcons } from '@/features/regions/region-icons'
 type RevealProps={onDismiss:()=>void;practice?:boolean;failureLabel?:string;failureReason?:string|null}&({species:Species;failure?:never}|{species?:never;failure:string})
 export function CatchReveal({species,failure,onDismiss,practice=false,failureReason}:RevealProps){
+ const nativeRegion=species?.is_native&&species.native_region_id?regionIcons[species.native_region_id]:undefined
  const chanceFailure=['bait','escape','wave'].includes(failureReason??'')
  const [chanceMessage]=useState(()=>chanceFailurePhrases[Math.floor(Math.random()*chanceFailurePhrases.length)])
  const openedAt=useRef(Date.now())
@@ -29,6 +31,7 @@ export function CatchReveal({species,failure,onDismiss,practice=false,failureRea
    <span className={`${species?"catch-center-figure":"fishing-failure-figure"} relative block size-52 sm:size-64`}><img src={species?collectibleUrl(species.thumbnail_path):failureImage} alt={species?"":failureAlt} className="size-full object-contain" style={{filter:'drop-shadow(0 0 22px '+color+'99)'}}/></span>
    <span role="status" className="relative mt-5 flex w-full flex-col items-center gap-3">
     {species?<span className="flex w-full flex-wrap items-center justify-center gap-x-2.5 gap-y-2">
+     {nativeRegion&&<img src={nativeRegion.src} alt={`${nativeRegion.name} 고유종`} title={`${nativeRegion.name} 고유종`} className="size-8 shrink-0 object-contain drop-shadow-md sm:size-9"/>}
      <span className="text-balance break-keep text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_2px_16px_#0005] sm:text-4xl">{species.name}</span>
      <span className="shrink-0 rounded px-2 py-1 text-xs font-bold leading-5 text-white" style={{backgroundColor:color}}>{rarities[rarity].label}</span>
     </span>:<>

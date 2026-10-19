@@ -1,0 +1,14 @@
+{
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "path": "public/fishing/environments/mukhyang.png",
+      "prompt": "Create a finished portrait 1024x1536 background painting for a cozy Korean fishing game, Mukhyang ink sea. Soft hand-painted storybook meets Korean ink wash on warm ivory hanji. Top third distant layered ink mountains, mist, tiny pavilion and crooked pine at sides. Middle two thirds pale blue-gray calm open water, broad bright uncluttered central fishing space, subtle black ink diffusions near edges, one tiny paper boat far aside. Bottom 28 percent flat dark smooth inkstone shore across full width, gently curved top edge at 72 percent height, small lotus and resting calligraphy brush at extreme corners. View toward horizon from shore, no characters no fishing rod no UI no lettering no watermark. Gentle muted jade accents and one tiny vermilion detail. Refined beautiful atmospheric game illustration, readable foreground."
+    },
+    {
+      "path": "public/banners/mukhyang-horizon.png",
+      "prompt": "Use case stylized-concept. Finished wide landscape 1536x1024 illustration for cozy fishing game region Mukhyang ink sea. Korean ink-wash mountains on warm ivory hanji, pale jade blue gray open sea, distant pine island with tiny pavilion, mist, small lotus at edges and a tiny paper boat. Delicate flowing black ink strokes in water edges, central bright empty water. Soft polished storybook rendering, peaceful, restrained vermilion accent. No text no UI no people no borders no watermark. Landscape suitable harbor region card and panoramic banner."
+    }
+  ],
+  "rod": "Native SVG equipment, public/fishing/equipment/mukhyang-thumbnail.svg; extra-rod-skin-art.tsx"
+}

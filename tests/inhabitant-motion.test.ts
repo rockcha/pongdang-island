@@ -6,6 +6,36 @@ function item(kind='fish'): OwnedCollectible {
   return { id: kind, species_id: kind, tank_id: 'tank', animation_seed: 0, position_x: null, position_y: null, acquired_at: '',
     species: { id: kind, kind, name: kind, description: '', swim_y_min: .2, swim_y_max: .7, speed: .05, size: 72, rarity: 'common', sprite_sheet_path: 'fish.png', thumbnail_path: 'thumb.png', sell_price: 10 } } as OwnedCollectible
 }
+it('keeps mythics visibly larger on mobile in both swimming and placed poses',()=>{
+ for(const movement_type of ['swim','fixed','crawl']){
+  const mythic=item()
+  mythic.species={...mythic.species,rarity:'mythic',size:145,movement_type}
+  const rare=item()
+  rare.species={...rare.species,rarity:'rare',size:58,movement_type}
+  for(const width of [320,360,768]){
+   const motion=new InhabitantMotion({...mythic,position_x:.5,position_y:.5})
+   const large=motion.update(0,0,width,600,true)
+   const small=new InhabitantMotion(rare).update(0,0,width,600,true)
+   expect(large.size).toBeGreaterThan(small.size*2)
+   expect(large.x).toBeGreaterThanOrEqual(0)
+   expect(large.x+large.size).toBeLessThanOrEqual(width)
+   expect(large.y+large.size).toBeLessThanOrEqual(600)
+  }
+ }
+})
+it('animates fixed Mukhyang living creatures without moving their placed base',()=>{
+ for(const id of ['muk-inkstone-clam','muk-inkstone-home-octopus']){
+  const living=item()
+  living.species={...living.species,id,movement_type:'fixed',swim_y_min:.84,swim_y_max:.94}
+  const motion=new InhabitantMotion(living)
+  const first={...motion.update(0,0,400,600)}
+  const next={...motion.update(1,1,400,600)}
+  expect(next.x).toBe(first.x)
+  expect(next.y).toBe(first.y)
+  expect(next.frame).not.toBe(first.frame)
+  expect(motion.update(2,1,400,600,true).frame).toBe(0)
+ }
+})
 it('anchors fixed living species at their habitat depth and preserves manual placement',()=>{
  const sponge=item()
  sponge.species={...sponge.species,movement_type:'fixed',swim_y_min:.88,swim_y_max:.94,size:54}

@@ -1,3 +1,4 @@
+import {BannerInfo,fishingGuide} from '@/components/banner-info'
 import { LandscapeImage } from '@/components/landscape-image'
 import { fishingBannerPath } from './fishing-banner'
 import {regionIcons} from '@/features/regions/region-icons'
@@ -25,17 +26,17 @@ function Destination({regionId}:{regionId:string}){
  },[attempt])
  const region=map?.regions.find(item=>item.id===regionId)
  if(error)return <div role="alert" className="space-y-3 py-8"><p>{error}</p><Button onClick={()=>setAttempt(v=>v+1)}>다시 불러오기</Button></div>
- if(!map)return <p role="status" className="py-8">지역을 확인하는 중…</p>
+ if(!map)return <section role="status" aria-label="Loading" className="flex min-h-0 w-full flex-1 flex-col overflow-hidden bg-slate-950/5"><span className="sr-only">Loading</span><div aria-hidden="true" className="flex min-h-0 flex-1 flex-col motion-safe:animate-pulse"><div className="flex h-[120px] shrink-0 flex-col justify-end gap-3 bg-muted p-4"><div className="h-6 w-32 rounded bg-foreground/10"/><div className="h-3 w-56 max-w-full rounded bg-foreground/10"/></div><div className="flex h-12 shrink-0 items-center justify-around border-b bg-muted/70">{[0,1,2,3].map(i=><div key={i} className="size-6 rounded bg-foreground/10"/>)}</div><div className="relative min-h-64 flex-1 bg-gradient-to-b from-muted/50 to-muted"><div className="absolute bottom-8 left-4 h-12 w-44 rounded-lg bg-foreground/10"/><div className="absolute bottom-8 right-4 size-16 rounded-full bg-foreground/10"/></div><div className="h-28 shrink-0 border-t bg-muted/60"/></div></section>
  if(!region)return <section className="space-y-4 py-8"><h1>찾을 수 없는 지역이에요.</h1><Link to="/harbor">지도로</Link></section>
  if(!region.unlocked||map.currentRegion!==region.id)return <section className="space-y-4 py-8"><h1 className="text-xl font-bold">{regionIcons[region.id]&&<img src={regionIcons[region.id].src} alt="" className="mr-2 inline-block size-7 align-middle"/>}{region.name}</h1><p className="text-sm text-muted-foreground">{!region.unlocked?'지도가 필요한 잠긴 지역이에요.':'아직 도착하지 않은 지역이에요.'}</p>{region.unlocked&&<Link to={`/sailing/${region.id}`} className={buttonVariants()}>이 지역으로 출항</Link>}<Link to="/harbor" className={buttonVariants({variant:'outline'})}>지도로</Link></section>
  return <section className="flex min-h-0 w-full flex-1 flex-col">
   <div className="relative z-30 h-[120px] shrink-0 bg-muted">
    <LandscapeImage src={fishingBannerPath(region.id)??regionImageUrl(region.image_path)} alt="" fetchPriority="high" className="absolute inset-0 size-full object-cover"/>
-   <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/10"/>
-   <div className="absolute inset-x-4 bottom-4 text-white"><h1 className="flex items-center gap-2 text-2xl font-normal tracking-tight drop-shadow-sm">{regionIcons[region.id]&&<img src={regionIcons[region.id].src} alt="" aria-hidden="true" className="size-7 shrink-0 object-contain"/>}{region.name}</h1>{region.description&&<p className="mt-1.5 line-clamp-2 max-w-sm text-xs leading-5 text-white/85">{region.description}</p>}</div>
+   <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(45,28,20,0.88)_0%,rgba(45,28,20,0.50)_45%,rgba(45,28,20,0.04)_100%)]"/>
+   <div className="absolute inset-x-4 bottom-4 text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.55)]"><div className="flex items-center gap-1"><h1 className="min-w-0 text-xl font-normal tracking-tight">{region.name}</h1><BannerInfo key={region.id} title={region.name} steps={fishingGuide}/></div>{region.description&&<p className="mt-1 line-clamp-2 max-w-sm text-xs leading-5 text-white">{region.description}</p>}</div>
   </div>
   <div className="relative flex min-h-0 flex-1 flex-col">
-   <div ref={setToolbar} role="group" aria-label="낚시 도구" className="absolute inset-x-0 top-0 z-30 flex items-stretch gap-0 overflow-visible border-b border-white/20 bg-slate-950/45 text-white [&>div]:flex [&>div]:min-w-0 [&>div]:flex-1 [&>div]:justify-center [&>div>button]:h-12 [&>div>button]:w-full [&>div>a]:h-12 [&>div>a]:w-full [&>div>button]:rounded-none [&>div>button]:border-0 [&>div>button]:bg-transparent [&>div>button]:shadow-none [&>div>button]:backdrop-blur-none [&>div>button:hover]:bg-white/15 [&>div>a]:rounded-none [&>div>a]:border-0 [&>div>a]:bg-transparent [&>div>a]:backdrop-blur-none [&>div>a:hover]:bg-white/15 [&>div+div]:border-l [&>div+div]:border-white/15"/>
+   <div ref={setToolbar} role="group" aria-label="낚시 게이지" className="absolute inset-x-0 top-0 z-30 flex flex-col overflow-hidden text-white"/>
    <FishingPanel regionId={region.id} toolbarTarget={toolbar}/>
   </div>
  </section>

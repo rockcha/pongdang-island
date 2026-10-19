@@ -9,19 +9,28 @@ function item(id:string,speciesId:string,name:string,kind:CollectibleKind='fish'
  return {id,species_id:speciesId,species:{id:speciesId,name,kind,rarity,sell_price:40,thumbnail_path:'fish.png'}} as OwnedCollectible
 }
 const items=[item('a','anchovy','멸치'),item('b','anchovy','멸치'),item('test-c','anchovy','멸치'),item('d','shark','상어','fish','rare'),item('e','bottle','유리병','trash')]
+it('searches species names in the list and restores the list when cleared',async()=>{
+ render(<AquariumInventoryDialog name="내 어항" items={items} busy={false} onSell={async()=>{}}/> )
+ fireEvent.click(screen.getByRole('button',{name:/^목록/}))
+ fireEvent.change(screen.getByRole('searchbox',{name:'이름 검색'}),{target:{value:' 멸치 '}})
+ expect(screen.getByRole('button',{name:'멸치 선택'})).toBeTruthy()
+ expect(screen.queryByRole('button',{name:'상어 선택'})).toBeNull()
+ fireEvent.change(screen.getByRole('searchbox',{name:'이름 검색'}),{target:{value:''}})
+ expect(screen.getByRole('button',{name:'상어 선택'})).toBeTruthy()
+})
 it('groups species, combines filters and sells only real individuals with the selected quantity',async()=>{
  const onSell=vi.fn(async(_ids:string[])=>{})
  render(<AquariumInventoryDialog name="내 어항" items={items} busy={false} onSell={onSell}/> )
  fireEvent.click(screen.getByRole('button',{name:/^목록/}))
  expect(await screen.findByText('×3')).toBeTruthy()
- fireEvent.click(screen.getByRole('combobox',{name:'등급'}))
+ fireEvent.click(screen.getByRole('combobox',{name:'등급 선택'}))
  fireEvent.keyDown(await screen.findByRole('option',{name:'희귀'}),{key:'Enter'})
  await waitFor(()=>expect(screen.queryByRole('listbox')).toBeNull())
  expect(screen.queryByText('×3')).toBeNull()
  expect(screen.getByRole('button',{name:'상어 선택'})).toBeTruthy()
  fireEvent.click(screen.getByRole('button',{name:'쓰레기'}))
  expect(screen.getByText('조건에 맞는 개체가 없어요.')).toBeTruthy()
- fireEvent.click(screen.getByRole('combobox',{name:'등급'}))
+ fireEvent.click(screen.getByRole('combobox',{name:'등급 선택'}))
  fireEvent.keyDown(await screen.findByRole('option',{name:'전체 등급'}),{key:'Home'})
  fireEvent.keyDown(screen.getByRole('option',{name:'전체 등급'}),{key:'Enter'})
  await waitFor(()=>expect(screen.queryByRole('listbox')).toBeNull())

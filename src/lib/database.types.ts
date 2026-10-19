@@ -7,6 +7,8 @@ type NotificationRow = Omit<AppNotification, 'request'>
 export type Database = {
   public: {
     Tables: {
+      bug_reports: {Row:import('@/features/bugs/api').BugReport;Insert:import('@/features/bugs/api').BugReportDraft;Update:Partial<Omit<import('@/features/bugs/api').BugReportDraft,'id'>>;Relationships:[]}
+      suggestion_posts: {Row:import('@/features/suggestions/api').Suggestion;Insert:import('@/features/suggestions/api').SuggestionDraft;Update:Partial<Omit<import('@/features/suggestions/api').SuggestionDraft,'id'>>;Relationships:[]}
       notices: {Row:import('@/features/notices/api').Notice;Insert:never;Update:never;Relationships:[]}
       player_profiles: {
         Row: Profile
@@ -34,6 +36,20 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      friend_expedition:{Args:{p_owner:string};Returns:import('@/features/expeditions/api').FriendExpeditionVisit}
+      friend_expedition_status:{Args:Record<string,never>;Returns:import('@/features/expeditions/api').FriendExpeditionState}
+      boost_friend_expedition:{Args:{p_expedition_id:string};Returns:import('@/features/expeditions/api').FriendExpeditionState}
+      title_state:{Args:Record<string,never>;Returns:import('@/features/titles/api').TitleState}
+      equip_title:{Args:{p_title:string|null};Returns:import('@/features/titles/api').TitleState}
+      sync_titles:{Args:Record<string,never>;Returns:number}
+      quest_state:{Args:Record<string,never>;Returns:import('@/features/quests/api').QuestState}
+      claim_quest:{Args:{p_kind:import('@/features/quests/api').QuestKind;p_start:string;p_quest_id:string};Returns:import('@/features/quests/api').QuestState}
+      expedition_state:{Args:Record<string,never>;Returns:import('@/features/expeditions/api').ExpeditionState}
+      expedition_action:{Args:import('@/features/expeditions/api').ExpeditionAction;Returns:import('@/features/expeditions/api').ExpeditionState}
+      savings_state:{Args:Record<string,never>;Returns:import('@/features/savings/api').SavingsState}
+      savings_action:{Args:import('@/features/savings/api').SavingsAction;Returns:import('@/features/savings/api').SavingsResult}
+      confirm_bug_report:{Args:{p_id:string};Returns:import('@/features/bugs/api').BugReport}
+      adopt_suggestion:{Args:{p_id:string};Returns:import('@/features/suggestions/api').Suggestion}
       friend_aquarium:{Args:{p_owner:string};Returns:import('@/features/friends/aquarium-api').FriendAquarium}
       feed_friend_aquarium:{Args:{p_tank:string;p_operation:string;p_step:number};Returns:import('@/features/friends/aquarium-api').FeedingResult}
       clean_friend_aquarium:{Args:{p_tank:string;p_operation:string;p_step:number};Returns:import('@/features/friends/aquarium-api').CleaningResult}

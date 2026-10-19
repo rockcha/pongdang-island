@@ -1,6 +1,7 @@
+import {RankingRow,rankingListClass} from './ranking-row'
 import {randomId} from '@/lib/random-id'
 import { useEffect, useRef, useState } from 'react'
-import { Clock3, Crown, RotateCcw } from 'lucide-react'
+import { Clock3, RotateCcw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ConfirmDialog } from '@/components/confirm-dialog'
 import { useAuth } from '@/components/auth-provider'
@@ -20,12 +21,10 @@ export function MemoryRanking(){
   catch(cause){if(active.current)setError(memoryError(cause))}finally{lock.current=false;if(active.current)setBusy(false)}
  }
  useEffect(()=>{active.current=true;void load();return()=>{active.current=false}},[]) // eslint-disable-line react-hooks/exhaustive-deps
- return <div className="min-h-0 flex-1 space-y-3 overflow-y-auto pb-2" role="tabpanel" id="memory-rank-panel" aria-labelledby="memory-rank-tab">
+ return <div className="min-h-0 min-w-0 flex-1 space-y-3 overflow-y-auto overscroll-contain px-4 py-3" role="tabpanel" id="memory-rank-panel" aria-labelledby="memory-rank-tab">
   <div className="flex items-center justify-between"><h3 className="text-sm font-normal">이번 주 기록</h3><Button variant="ghost" size="icon" aria-label="순위 새로고침" disabled={busy} onClick={()=>void load()}><RotateCcw className="size-4" /></Button></div>
   <p className="text-xs leading-5 text-muted-foreground">한국 시간 월요일부터 일요일 자정까지 · 개인 최고 기록<br />짧은 시간이 우선이며 동점은 먼저 완료한 순서예요.</p>
-  <ol className="space-y-2">{data?.rows.map(row=><li key={row.id} className={`flex items-center gap-3 rounded-lg border px-3 py-3 text-sm ${row.rank===1?'border-amber-300 bg-amber-50 text-amber-900':row.rank===2?'border-slate-300 bg-slate-50 text-slate-700':row.rank===3?'border-orange-200 bg-orange-50 text-orange-900':'bg-card'}`}>
-   <span className="flex w-9 shrink-0 items-center gap-1 text-xs">{row.rank<=3&&<Crown className="size-4" />}{row.rank}등</span><span className="min-w-0 flex-1 truncate">{row.nickname}{row.mine?' (나)':''}</span><span className="shrink-0 tabular-nums">{memoryTime(row.elapsedMs)}</span>
-  </li>)}</ol>
+  <ol className={rankingListClass}>{data?.rows.map(row=><RankingRow key={row.id} rank={row.rank} nickname={row.nickname} mine={row.mine} record={memoryTime(row.elapsedMs)}/>)}</ol>
   {data&&!data.total&&<p className="py-6 text-center text-sm text-muted-foreground">이번 주 첫 기록을 남겨보세요.</p>}
   {error&&<p role="alert" className="text-xs text-destructive">{error}</p>}
   {busy&&<p role="status" className="text-xs">기록을 불러오는 중…</p>}
@@ -109,6 +108,6 @@ function AccountMemory(){
     {!loaded&&<p role="status" className="text-xs text-muted-foreground">게임을 불러오는 중…</p>}
    </div>
   </div>}
-  <ConfirmDialog open={confirmation!==null} onOpenChange={open=>{if(!open)setConfirmation(null)}} busy={busy} error={error} title={confirmation==='leave'?'게임을 그만하시겠습니까?':<><span className="block">카드 짝맞추기에</span><span className="inline-flex items-center gap-1"><GoldIcon className="size-5" />10골드로 참가하시겠습니까?</span></>} description={confirmation==='leave'?'진행 기록은 순위에 등록되지 않으며 참가비는 반환되지 않아요.':'첫 카드를 뒤집으면 시간이 시작돼요. 12짝을 모두 찾아주세요.'} onConfirm={()=>confirmation==='leave'?void request({p_action:'leave',p_run_id:run!.id}):startPaid()} />
+  <ConfirmDialog illustration={confirmation==='leave'?'caution':'game'} open={confirmation!==null} onOpenChange={open=>{if(!open)setConfirmation(null)}} busy={busy} error={error} title={confirmation==='leave'?'게임을 그만하시겠습니까?':<><span className="block">카드 짝맞추기에</span><span className="inline-flex items-center gap-1"><GoldIcon className="size-5" />10골드로 참가하시겠습니까?</span></>} description={confirmation==='leave'?'진행 기록은 순위에 등록되지 않으며 참가비는 반환되지 않아요.':'첫 카드를 뒤집으면 시간이 시작돼요. 12짝을 모두 찾아주세요.'} onConfirm={()=>confirmation==='leave'?void request({p_action:'leave',p_run_id:run!.id}):startPaid()} />
  </div>
 }

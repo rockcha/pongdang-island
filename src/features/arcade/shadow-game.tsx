@@ -1,6 +1,7 @@
+import {RankingRow,rankingListClass} from './ranking-row'
 import {randomId} from '@/lib/random-id'
 import { useEffect, useRef, useState } from 'react'
-import { Clock3, Heart, Trophy, Crown, RefreshCw, Check, X } from 'lucide-react'
+import { Clock3, Heart, Trophy, RefreshCw, Check, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ConfirmDialog } from '@/components/confirm-dialog'
 import { useAuth } from '@/components/auth-provider'
@@ -29,12 +30,11 @@ function Leaderboard({ revision }: { revision:number }) {
   finally{if(request===version.current){lock.current=false;setBusy(false)}}
  }
  useEffect(()=>{version.current++;lock.current=false;void load();return()=>{version.current++}},[revision]) // eslint-disable-line react-hooks/exhaustive-deps
- const podium=data?.rows.filter(row=>row.rank<=3)??[]
+
  return <section className="space-y-3" aria-label="서버 전체 기록">
-  <div className="flex items-center justify-between"><h3 className="flex items-center gap-2 text-base font-normal"><Trophy className="size-4 text-primary" />서버 전체 기록</h3><Button variant="ghost" size="icon" aria-label="기록 새로고침" disabled={busy} onClick={()=>void load()}><RefreshCw className="size-4" /></Button></div>
+  <div className="flex items-center justify-between"><h3 className="flex items-center gap-2 text-sm font-normal"><Trophy className="size-4 text-primary" />서버 전체 기록</h3><Button variant="ghost" size="icon" aria-label="기록 새로고침" disabled={busy} onClick={()=>void load()}><RefreshCw className="size-4" /></Button></div>
   <p className="text-xs text-muted-foreground">정답 수 순으로 모든 완료 기록을 표시해요. 동점은 먼저 달성한 기록이 앞서요.</p>
-  {podium.length>0&&<ol className="grid grid-cols-3 gap-2">{podium.map(row=><li key={row.id} className={`min-w-0 rounded-lg border p-3 text-center ${row.rank===1?'border-amber-300 bg-amber-50 text-amber-900':row.rank===2?'border-slate-300 bg-slate-50 text-slate-700':'border-orange-200 bg-orange-50 text-orange-900'}`}><Crown className={`mx-auto mb-1 size-5 ${row.rank===1?'text-amber-500':row.rank===2?'text-slate-400':'text-orange-500'}`} /><p className="text-xs">{row.rank}등</p><p className="mt-2 truncate text-sm" title={row.nickname}>{row.nickname}{row.mine?' (나)':''}</p><p className="mt-1 text-lg tabular-nums">{row.score}<span className="ml-1 text-xs">정답</span></p></li>)}</ol>}
-  {(data?.rows.length??0)>3&&<ol start={4} className="divide-y rounded-lg border bg-card">{data?.rows.filter(row=>row.rank>3).map(row=><li key={row.id} className={`flex items-center gap-3 px-3 py-3 text-sm ${row.mine?'bg-primary/5':''}`}><span className="w-7 shrink-0 text-xs tabular-nums text-muted-foreground">{row.rank}등</span><span className="min-w-0 flex-1 truncate">{row.nickname}{row.mine?' (나)':''}</span><span className="shrink-0 tabular-nums">{row.score} 정답</span></li>)}</ol>}
+  <ol className={rankingListClass}>{data?.rows.map(row=><RankingRow key={row.id} rank={row.rank} nickname={row.nickname} mine={row.mine} record={row.score+' 정답'}/>)}</ol>
   {data&&!data.total&&<p className="rounded-lg border border-dashed p-6 text-center text-sm text-muted-foreground">첫 번째 기록의 주인공이 되어보세요.</p>}
   {error&&<p role="alert" className="text-xs text-destructive">{error}</p>}
   {busy&&<p role="status" className="text-xs text-muted-foreground">기록을 불러오는 중…</p>}
@@ -108,7 +108,7 @@ function AccountShadowGame() {
  return <div className="flex min-h-0 min-w-0 flex-1 flex-col">
   <GameLeaveGuard active={Boolean(run&&!run.finished)||(busy&&operation.current!==null)} practice={practiceMode}/>
   <GameTabs id="shadow" value={tab} onChange={setTab} />
-  {tab==='rank'?<div role="tabpanel" id="shadow-rank-panel" aria-labelledby="shadow-rank-tab" className="min-h-0 flex-1 overflow-y-auto pb-2"><Leaderboard revision={revision} /></div>:<div role="tabpanel" id="shadow-game-panel" aria-labelledby="shadow-game-tab" className="flex min-h-0 flex-1 flex-col gap-2">
+  {tab==='rank'?<div role="tabpanel" id="shadow-rank-panel" aria-labelledby="shadow-rank-tab" className="min-h-0 min-w-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3"><Leaderboard revision={revision} /></div>:<div role="tabpanel" id="shadow-game-panel" aria-labelledby="shadow-game-tab" className="flex min-h-0 flex-1 flex-col gap-2">
    <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden border-b border-border bg-card">
     {run&&round&&(!run.finished||!finalReviewed)?<section className="flex min-h-0 flex-1 flex-col" aria-label="그림자 문제">
      <div className="flex shrink-0 items-center justify-between px-3 py-2 text-sm"><span className="tabular-nums">{run.score}/100점 <span className="ml-2 text-xs text-muted-foreground">{round.number}번째 문제</span></span><span className="flex gap-1" aria-label={`남은 찬스 ${run.lives}회`}>{[0,1,2].map(i=><Heart key={i} className={`size-4 ${i<run.lives?'fill-primary text-primary':'text-muted-foreground/25'}`} />)}</span></div>
@@ -123,6 +123,6 @@ function AccountShadowGame() {
    {!ready&&<p role="status" className="shrink-0 text-xs text-muted-foreground">진행 중인 게임을 확인하는 중…</p>}
    {error&&!confirm&&<div role="alert" className="flex shrink-0 items-center gap-2"><p className="flex-1 text-[11px] text-destructive">{error}</p><Button variant="ghost" size="sm" disabled={busy} onClick={()=>void request({p_action:'state',...(run?{p_run_id:run.id}:{})})}>다시 연결</Button></div>}
   </div>}
-  <ConfirmDialog open={confirm} onOpenChange={setConfirm} title={<><span className="block">그림자 맞추기에</span><span className="inline-flex items-center gap-1"><GoldIcon className="size-5" />10골드로 참가하시겠습니까?</span></>} description="참가비는 시작할 때 한 번만 차감돼요. 정답마다 1점이며 찬스는 3회예요." busy={busy} error={error} onConfirm={start} />
+  <ConfirmDialog illustration="game" open={confirm} onOpenChange={setConfirm} title={<><span className="block">그림자 맞추기에</span><span className="inline-flex items-center gap-1"><GoldIcon className="size-5" />10골드로 참가하시겠습니까?</span></>} description="참가비는 시작할 때 한 번만 차감돼요. 정답마다 1점이며 찬스는 3회예요." busy={busy} error={error} onConfirm={start} />
  </div>
 }

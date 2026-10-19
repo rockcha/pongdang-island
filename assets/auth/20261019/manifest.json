@@ -1,0 +1,9 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "prompt": "Use case: illustration-story. One welcoming illustration for login/signup of a cozy fishing island game. Reference image is identity/style only: Pongi is the round golden brown otter with cream muzzle and belly, big glossy dark eyes, rosy cheeks, orange starfish hair accessory, warm dark brown outline and smooth soft cartoon shading. Pongi standing at a very small simple wooden island gate, carrying a little teal travel satchel, waving hello to a visitor, warm gentle smile. Tiny seashell accent on the gate, modest detail, no large scenery. Full otter, ears, paws and tail visible, compact centered composition readable at 160 pixels. No original fishing rod or hook. No text, no lettering, no UI, no border, no background rectangle, no checkerboard. True transparent background. Keep character the dominant subject, gate is a small supporting prop.",
+  "source": "C:\\Users\\user\\.codex\\generated_images\\01a1515c-226e-7430-b33e-261afff97dee\\exec-83edfdb0-6b8c-4ecd-a087-933f00c8d909.png",
+  "original": "pongi-welcome.png",
+  "production": "public/branding/pongi-welcome.png",
+  "transparent_background": true
+}

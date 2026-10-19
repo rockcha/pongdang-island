@@ -1,3 +1,4 @@
+import {NotificationIcon} from '@/features/notifications/notification-icon'
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import type { RealtimeChannel } from '@supabase/supabase-js'
@@ -72,9 +73,11 @@ export function SocialProvider({ children }: { children: ReactNode }) {
             .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'notifications', filter: `recipient_id=eq.${userId}` }, payload => {
               if (!active) return
               const notification = payload.new as AppNotification
+              if(notification.expedition_id||notification.expedition_boost_id)window.dispatchEvent(new Event('expedition-changed'))
+              if(notification.kind==='reward')window.dispatchEvent(new Event('wallet-changed'))
               if (!seen.has(notification.id)) {
                 seen.add(notification.id)
-                toast.info(notification.title, { id: notification.id, description: `${notification.category === 'notice'?'공지':notification.category === 'friend' ? '친구' : notification.category==='gift'?'선물':'소식'} · ${notification.body}`,action:notification.notice_id?{label:'공지 보기',onClick:()=>{window.location.assign(`/square/notices/${notification.notice_id}`)}}:notification.gift_id?{label:'선물 보기',onClick:()=>{window.location.assign(`/notifications?gift=${notification.gift_id}`)}}:undefined })
+                toast.info(notification.title, { id: notification.id, icon:<NotificationIcon notification={notification} className="size-7"/>, description: `${notification.category === 'notice'?'공지':notification.category === 'friend' ? '친구' : notification.category==='gift'?'선물':'소식'} · ${notification.body}`,action:notification.achievement_id?undefined:(notification.expedition_id||notification.expedition_boost_id)?{label:'파견 보기',onClick:()=>{window.location.assign('/expeditions')}}:notification.notice_id?{label:'공지 보기',onClick:()=>{window.location.assign(`/square/notices/${notification.notice_id}`)}}:notification.gift_id?{label:'선물 보기',onClick:()=>{window.location.assign(`/notifications?gift=${notification.gift_id}`)}}:undefined })
               }
               schedule()
             })
@@ -84,6 +87,7 @@ export function SocialProvider({ children }: { children: ReactNode }) {
               channel.on('postgres_changes', { event, schema: 'public', table: 'friend_requests', filter: `${column}=eq.${userId}` }, schedule)
             }
           }
+          channel.on('postgres_changes', { event: '*', schema: 'public', table: 'collectible_gifts', filter: `recipient_id=eq.${userId}` }, schedule)
           channel.on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'player_profiles' }, schedule)
           channel.subscribe(status => {
             if (!active) return

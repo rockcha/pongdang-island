@@ -9,7 +9,7 @@ export function catalogSql(catalog) {
     return `"${value}"`
   }
   const statements = ['-- Generated from supabase/catalog/catalog.json. Review before migration deployment.', 'begin;', 'set constraints all deferred;']
-  for (const table of ['regions', 'aquarium_backgrounds', 'fishing_baits', 'collectible_species',...(catalog.region_maps?['region_maps']:[])]) {
+  for (const table of ['regions', 'aquarium_backgrounds', 'fishing_baits', 'collectible_species',...(catalog.region_maps?['region_maps']:[]),...(catalog.fishing_rods?['fishing_rods']:[])]) {
     const rows = catalog[table]
     if (!Array.isArray(rows) || !rows.length) throw new Error(`Empty catalog: ${table}`)
     const columns = Object.keys(rows[0])

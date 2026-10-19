@@ -1,3 +1,4 @@
+import {questProgressChanged} from '@/features/quests/progress-events'
 import { createClient } from '@/lib/client'
 import type { Trade, Wallet } from './wallet'
 export type GoldState = Wallet & { testClaimed: boolean; testEnabled: boolean }
@@ -45,11 +46,13 @@ export async function transactGold(action: Trade, operationId: string) {
   if (action.type === 'buy' && action.id === 'aquarium:tank') {
     const { data, error } = await createClient().rpc('buy_aquarium_tank', { p_operation_id: operationId })
     if (error) throw error
+    questProgressChanged()
     return data
   }
   if (action.type === 'buy' && action.id.startsWith('background:')) {
     const { data, error } = await createClient().rpc('aquarium_background', { p_id: action.id.slice(11), p_action: 'buy', p_operation_id: operationId })
     if (error) throw error
+    questProgressChanged()
     return data
   }
   const { data, error } = await createClient().rpc('trade_gold', { p_operation_id: operationId, p_action: action.type, ...(action.type === 'charge' ? {} : { p_item_id: action.id }) })

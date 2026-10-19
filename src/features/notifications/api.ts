@@ -3,16 +3,17 @@ import type { AppNotification, NotificationCategory, UnreadCounts } from '@/feat
 
 export async function loadNotifications(userId: string): Promise<{ notifications: AppNotification[]; unread: UnreadCounts }> {
   const client = createClient()
-  const [items, friends, general,gifts,notices] = await Promise.all([
-    client.from('notifications').select('*, request:friend_requests!notifications_request_id_fkey(id,sender_id,recipient_id,status)')
+  const [items, friends, general,gifts,notices,pendingGifts] = await Promise.all([
+    client.from('notifications').select('*, request:friend_requests!notifications_request_id_fkey(id,sender_id,recipient_id,status),notice:notices!notifications_notice_id_fkey(category)')
       .eq('recipient_id', userId).order('created_at', { ascending: false }).limit(100),
     client.from('notifications').select('id', { count: 'exact', head: true }).eq('recipient_id', userId).eq('category', 'friend').is('read_at', null),
     client.from('notifications').select('id', { count: 'exact', head: true }).eq('recipient_id', userId).eq('category', 'general').is('read_at', null),
-    client.from('notifications').select('id', { count: 'exact', head: true }).eq('recipient_id', userId).eq('category', 'gift').is('read_at', null),
+    client.from('notifications').select('id', { count: 'exact', head: true }).eq('recipient_id', userId).eq('category', 'gift').neq('kind','gift_received').is('read_at', null),
     client.from('notifications').select('id', { count: 'exact', head: true }).eq('recipient_id', userId).eq('category', 'notice').is('read_at', null),
+    client.from('collectible_gifts').select('id', { count: 'exact', head: true }).eq('recipient_id',userId).eq('status','pending').eq('exchange_hold',false),
   ])
-  if (items.error || friends.error || general.error||gifts.error||notices.error) throw items.error ?? friends.error ?? general.error??gifts.error??notices.error
-  return { notifications: items.data as unknown as AppNotification[], unread: { friend: friends.count ?? 0, general: general.count ?? 0,gift:gifts.count??0,notice:notices.count??0 } }
+  if (items.error || friends.error || general.error||gifts.error||notices.error||pendingGifts.error) throw items.error ?? friends.error ?? general.error??gifts.error??notices.error??pendingGifts.error
+  return { notifications: items.data as unknown as AppNotification[], unread: { friend: friends.count ?? 0, general: general.count ?? 0,gift:(gifts.count??0)+(pendingGifts.count??0),notice:notices.count??0 } }
 }
 export async function markRead(userId: string, id?: string, category?: NotificationCategory) {
   let query = createClient().from('notifications').update({ read_at: new Date().toISOString() }).eq('recipient_id', userId).is('read_at', null)

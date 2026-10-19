@@ -1,0 +1,690 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/rare/siren-athena-cuttlefish_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  98,
+                                           "y":  151,
+                                           "width":  429,
+                                           "height":  385,
+                                           "widthRatio":  0.6842,
+                                           "heightRatio":  0.614,
+                                           "alphaPixels":  99594,
+                                           "leftAnchorY":  376.628,
+                                           "rightAnchorY":  337.295
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  64,
+                                           "y":  156,
+                                           "width":  446,
+                                           "height":  384,
+                                           "widthRatio":  0.7113,
+                                           "heightRatio":  0.6124,
+                                           "alphaPixels":  101701,
+                                           "leftAnchorY":  367.275,
+                                           "rightAnchorY":  344.523
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  98,
+                                           "y":  119,
+                                           "width":  437,
+                                           "height":  383,
+                                           "widthRatio":  0.697,
+                                           "heightRatio":  0.6108,
+                                           "alphaPixels":  101043,
+                                           "leftAnchorY":  346.781,
+                                           "rightAnchorY":  303.216
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  53,
+                                           "y":  121,
+                                           "width":  459,
+                                           "height":  384,
+                                           "widthRatio":  0.7321,
+                                           "heightRatio":  0.6124,
+                                           "alphaPixels":  101614,
+                                           "leftAnchorY":  357.724,
+                                           "rightAnchorY":  297.776
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/rare/siren-athens-fish_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  113,
+                                           "y":  181,
+                                           "width":  417,
+                                           "height":  344,
+                                           "widthRatio":  0.6651,
+                                           "heightRatio":  0.5486,
+                                           "alphaPixels":  84064,
+                                           "leftAnchorY":  399.015,
+                                           "rightAnchorY":  347.085
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  100,
+                                           "y":  183,
+                                           "width":  426,
+                                           "height":  349,
+                                           "widthRatio":  0.6794,
+                                           "heightRatio":  0.5566,
+                                           "alphaPixels":  86850,
+                                           "leftAnchorY":  351.682,
+                                           "rightAnchorY":  351.81
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  105,
+                                           "y":  131,
+                                           "width":  432,
+                                           "height":  341,
+                                           "widthRatio":  0.689,
+                                           "heightRatio":  0.5439,
+                                           "alphaPixels":  85577,
+                                           "leftAnchorY":  354.083,
+                                           "rightAnchorY":  296.833
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  95,
+                                           "y":  130,
+                                           "width":  433,
+                                           "height":  347,
+                                           "widthRatio":  0.6906,
+                                           "heightRatio":  0.5534,
+                                           "alphaPixels":  87259,
+                                           "leftAnchorY":  376.584,
+                                           "rightAnchorY":  300.191
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/rare/siren-golden-apple-hermit_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  111,
+                                           "y":  146,
+                                           "width":  469,
+                                           "height":  394,
+                                           "widthRatio":  0.748,
+                                           "heightRatio":  0.6284,
+                                           "alphaPixels":  115481,
+                                           "leftAnchorY":  373.18,
+                                           "rightAnchorY":  400.235
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  80,
+                                           "y":  152,
+                                           "width":  475,
+                                           "height":  389,
+                                           "widthRatio":  0.7576,
+                                           "heightRatio":  0.6204,
+                                           "alphaPixels":  113536,
+                                           "leftAnchorY":  377.571,
+                                           "rightAnchorY":  410.01
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  106,
+                                           "y":  117,
+                                           "width":  475,
+                                           "height":  393,
+                                           "widthRatio":  0.7576,
+                                           "heightRatio":  0.6268,
+                                           "alphaPixels":  116118,
+                                           "leftAnchorY":  341.637,
+                                           "rightAnchorY":  369.823
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  76,
+                                           "y":  116,
+                                           "width":  479,
+                                           "height":  394,
+                                           "widthRatio":  0.764,
+                                           "heightRatio":  0.6284,
+                                           "alphaPixels":  115351,
+                                           "leftAnchorY":  343.043,
+                                           "rightAnchorY":  368.948
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/rare/siren-golden-fleece-puffer_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  113,
+                                           "y":  192,
+                                           "width":  406,
+                                           "height":  296,
+                                           "widthRatio":  0.6475,
+                                           "heightRatio":  0.4721,
+                                           "alphaPixels":  81881,
+                                           "leftAnchorY":  342.34,
+                                           "rightAnchorY":  338.67
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  102,
+                                           "y":  212,
+                                           "width":  414,
+                                           "height":  285,
+                                           "widthRatio":  0.6603,
+                                           "heightRatio":  0.4545,
+                                           "alphaPixels":  79558,
+                                           "leftAnchorY":  325.148,
+                                           "rightAnchorY":  352.182
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  99,
+                                           "y":  156,
+                                           "width":  429,
+                                           "height":  300,
+                                           "widthRatio":  0.6842,
+                                           "heightRatio":  0.4785,
+                                           "alphaPixels":  87870,
+                                           "leftAnchorY":  317.773,
+                                           "rightAnchorY":  301.605
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  97,
+                                           "y":  167,
+                                           "width":  445,
+                                           "height":  292,
+                                           "widthRatio":  0.7097,
+                                           "heightRatio":  0.4657,
+                                           "alphaPixels":  84422,
+                                           "leftAnchorY":  345.609,
+                                           "rightAnchorY":  311.028
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/rare/siren-golden-fleece-sea-sheep_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  65,
+                                           "y":  202,
+                                           "width":  488,
+                                           "height":  349,
+                                           "widthRatio":  0.7783,
+                                           "heightRatio":  0.5566,
+                                           "alphaPixels":  109312,
+                                           "leftAnchorY":  425.6,
+                                           "rightAnchorY":  380.054
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  39,
+                                           "y":  255,
+                                           "width":  480,
+                                           "height":  298,
+                                           "widthRatio":  0.7656,
+                                           "heightRatio":  0.4753,
+                                           "alphaPixels":  101604,
+                                           "leftAnchorY":  425.528,
+                                           "rightAnchorY":  415.059
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  69,
+                                           "y":  148,
+                                           "width":  485,
+                                           "height":  334,
+                                           "widthRatio":  0.7735,
+                                           "heightRatio":  0.5327,
+                                           "alphaPixels":  104663,
+                                           "leftAnchorY":  368.975,
+                                           "rightAnchorY":  321.407
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  34,
+                                           "y":  142,
+                                           "width":  480,
+                                           "height":  340,
+                                           "widthRatio":  0.7656,
+                                           "heightRatio":  0.5423,
+                                           "alphaPixels":  104709,
+                                           "leftAnchorY":  376.167,
+                                           "rightAnchorY":  316.342
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/rare/siren-hephaestus-lobster_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  74,
+                                           "y":  167,
+                                           "width":  512,
+                                           "height":  403,
+                                           "widthRatio":  0.8166,
+                                           "heightRatio":  0.6427,
+                                           "alphaPixels":  116981,
+                                           "leftAnchorY":  423.94,
+                                           "rightAnchorY":  404.623
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  44,
+                                           "y":  179,
+                                           "width":  514,
+                                           "height":  401,
+                                           "widthRatio":  0.8198,
+                                           "heightRatio":  0.6396,
+                                           "alphaPixels":  113219,
+                                           "leftAnchorY":  406.646,
+                                           "rightAnchorY":  406.814
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  62,
+                                           "y":  92,
+                                           "width":  523,
+                                           "height":  401,
+                                           "widthRatio":  0.8341,
+                                           "heightRatio":  0.6396,
+                                           "alphaPixels":  115232,
+                                           "leftAnchorY":  341.49,
+                                           "rightAnchorY":  325.564
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  40,
+                                           "y":  98,
+                                           "width":  521,
+                                           "height":  392,
+                                           "widthRatio":  0.8309,
+                                           "heightRatio":  0.6252,
+                                           "alphaPixels":  112520,
+                                           "leftAnchorY":  334.269,
+                                           "rightAnchorY":  328.434
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/rare/siren-hermes-flyingfish_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  48,
+                                           "y":  115,
+                                           "width":  554,
+                                           "height":  423,
+                                           "widthRatio":  0.8836,
+                                           "heightRatio":  0.6746,
+                                           "alphaPixels":  124212,
+                                           "leftAnchorY":  319.102,
+                                           "rightAnchorY":  365.44
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  47,
+                                           "y":  167,
+                                           "width":  559,
+                                           "height":  365,
+                                           "widthRatio":  0.8915,
+                                           "heightRatio":  0.5821,
+                                           "alphaPixels":  114306,
+                                           "leftAnchorY":  390.014,
+                                           "rightAnchorY":  370.162
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  48,
+                                           "y":  102,
+                                           "width":  561,
+                                           "height":  421,
+                                           "widthRatio":  0.8947,
+                                           "heightRatio":  0.6715,
+                                           "alphaPixels":  123724,
+                                           "leftAnchorY":  306.09,
+                                           "rightAnchorY":  346.693
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  62,
+                                           "y":  112,
+                                           "width":  547,
+                                           "height":  424,
+                                           "widthRatio":  0.8724,
+                                           "heightRatio":  0.6762,
+                                           "alphaPixels":  122285,
+                                           "leftAnchorY":  269.318,
+                                           "rightAnchorY":  346.634
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/rare/siren-oracle-octopus_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  110,
+                                           "y":  204,
+                                           "width":  428,
+                                           "height":  345,
+                                           "widthRatio":  0.6826,
+                                           "heightRatio":  0.5502,
+                                           "alphaPixels":  102024,
+                                           "leftAnchorY":  386.029,
+                                           "rightAnchorY":  373.907
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  80,
+                                           "y":  211,
+                                           "width":  430,
+                                           "height":  335,
+                                           "widthRatio":  0.6858,
+                                           "heightRatio":  0.5343,
+                                           "alphaPixels":  101124,
+                                           "leftAnchorY":  357.654,
+                                           "rightAnchorY":  375.824
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  109,
+                                           "y":  128,
+                                           "width":  430,
+                                           "height":  345,
+                                           "widthRatio":  0.6858,
+                                           "heightRatio":  0.5502,
+                                           "alphaPixels":  100858,
+                                           "leftAnchorY":  296.503,
+                                           "rightAnchorY":  294.711
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  75,
+                                           "y":  132,
+                                           "width":  430,
+                                           "height":  339,
+                                           "widthRatio":  0.6858,
+                                           "heightRatio":  0.5407,
+                                           "alphaPixels":  99442,
+                                           "leftAnchorY":  281.805,
+                                           "rightAnchorY":  293.177
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/rare/siren-poseidon-chariot_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  121,
+                                           "y":  144,
+                                           "width":  467,
+                                           "height":  423,
+                                           "widthRatio":  0.7448,
+                                           "heightRatio":  0.6746,
+                                           "alphaPixels":  113293,
+                                           "leftAnchorY":  370.955,
+                                           "rightAnchorY":  421.47
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  79,
+                                           "y":  163,
+                                           "width":  461,
+                                           "height":  421,
+                                           "widthRatio":  0.7352,
+                                           "heightRatio":  0.6715,
+                                           "alphaPixels":  112745,
+                                           "leftAnchorY":  382.693,
+                                           "rightAnchorY":  423.029
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  110,
+                                           "y":  91,
+                                           "width":  472,
+                                           "height":  421,
+                                           "widthRatio":  0.7528,
+                                           "heightRatio":  0.6715,
+                                           "alphaPixels":  115029,
+                                           "leftAnchorY":  318.877,
+                                           "rightAnchorY":  355.244
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  83,
+                                           "y":  90,
+                                           "width":  471,
+                                           "height":  422,
+                                           "widthRatio":  0.7512,
+                                           "heightRatio":  0.673,
+                                           "alphaPixels":  115331,
+                                           "leftAnchorY":  317.52,
+                                           "rightAnchorY":  358.049
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/rare/siren-three-fates-octopuses_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  85,
+                                           "y":  177,
+                                           "width":  473,
+                                           "height":  409,
+                                           "widthRatio":  0.7544,
+                                           "heightRatio":  0.6523,
+                                           "alphaPixels":  129181,
+                                           "leftAnchorY":  431.186,
+                                           "rightAnchorY":  386.75
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  49,
+                                           "y":  178,
+                                           "width":  483,
+                                           "height":  401,
+                                           "widthRatio":  0.7703,
+                                           "heightRatio":  0.6396,
+                                           "alphaPixels":  130428,
+                                           "leftAnchorY":  416.995,
+                                           "rightAnchorY":  397.846
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  85,
+                                           "y":  111,
+                                           "width":  474,
+                                           "height":  408,
+                                           "widthRatio":  0.756,
+                                           "heightRatio":  0.6507,
+                                           "alphaPixels":  129605,
+                                           "leftAnchorY":  368.683,
+                                           "rightAnchorY":  323.671
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  52,
+                                           "y":  114,
+                                           "width":  490,
+                                           "height":  403,
+                                           "widthRatio":  0.7815,
+                                           "heightRatio":  0.6427,
+                                           "alphaPixels":  128641,
+                                           "leftAnchorY":  349.078,
+                                           "rightAnchorY":  337.043
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/rare/siren-triton-conch_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  121,
+                                           "y":  173,
+                                           "width":  418,
+                                           "height":  344,
+                                           "widthRatio":  0.6667,
+                                           "heightRatio":  0.5486,
+                                           "alphaPixels":  96989,
+                                           "leftAnchorY":  340.808,
+                                           "rightAnchorY":  378.043
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  102,
+                                           "y":  185,
+                                           "width":  421,
+                                           "height":  336,
+                                           "widthRatio":  0.6715,
+                                           "heightRatio":  0.5359,
+                                           "alphaPixels":  88760,
+                                           "leftAnchorY":  348.052,
+                                           "rightAnchorY":  391.907
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  121,
+                                           "y":  115,
+                                           "width":  428,
+                                           "height":  336,
+                                           "widthRatio":  0.6826,
+                                           "heightRatio":  0.5359,
+                                           "alphaPixels":  96321,
+                                           "leftAnchorY":  282.64,
+                                           "rightAnchorY":  315.241
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  102,
+                                           "y":  115,
+                                           "width":  413,
+                                           "height":  336,
+                                           "widthRatio":  0.6587,
+                                           "heightRatio":  0.5359,
+                                           "alphaPixels":  93613,
+                                           "leftAnchorY":  283.914,
+                                           "rightAnchorY":  314.913
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261019-121432/fish/rare/siren-triton-golden-seahorse_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  144,
+                                           "y":  56,
+                                           "width":  414,
+                                           "height":  541,
+                                           "widthRatio":  0.6603,
+                                           "heightRatio":  0.8628,
+                                           "alphaPixels":  122878,
+                                           "leftAnchorY":  461.013,
+                                           "rightAnchorY":  288.829
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  87,
+                                           "y":  64,
+                                           "width":  463,
+                                           "height":  523,
+                                           "widthRatio":  0.7384,
+                                           "heightRatio":  0.8341,
+                                           "alphaPixels":  120141,
+                                           "leftAnchorY":  487.671,
+                                           "rightAnchorY":  301.376
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  144,
+                                           "y":  42,
+                                           "width":  418,
+                                           "height":  531,
+                                           "widthRatio":  0.6667,
+                                           "heightRatio":  0.8469,
+                                           "alphaPixels":  126816,
+                                           "leftAnchorY":  426.931,
+                                           "rightAnchorY":  280.122
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  128,
+                                           "y":  41,
+                                           "width":  428,
+                                           "height":  523,
+                                           "widthRatio":  0.6826,
+                                           "heightRatio":  0.8341,
+                                           "alphaPixels":  125596,
+                                           "leftAnchorY":  431.69,
+                                           "rightAnchorY":  271.024
+                                       }
+                                   ]
+                    }
+                ]
+}

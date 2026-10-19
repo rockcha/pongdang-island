@@ -11,7 +11,7 @@ import {attendanceError,claimAttendance,loadAttendance,type AttendanceState} fro
 
 const {attendance:CalendarCheck}=appArt
 
-const shrimp='/items/baits/special.png'
+const conch='/items/baits/conch-first-greeting.png'
 const epic='/items/baits/starlit-allure.png'
 export function AttendanceButton(){
  const {session}=useAuth()
@@ -49,10 +49,12 @@ function Attendance(){
    setState(data)
    if(!data.replayed){
     setCelebrate(value=>value+1)
-    const bait=data.reward.bait_id==='bait_epic'?' · 별잠의 유혹 1개':data.reward.bait_id==='bait_special'?' · 달빛 진주새우 1개':''
-    toast.success(`출석 완료! 50골드${bait}를 받았습니다.`)
+    const bait=data.reward.bait_id==='bait_epic'?'별잠의 유혹 1개':data.reward.bait_id==='bait_first_greeting'?'소라의 첫인사 1개':data.reward.bait_id==='bait_special'?'달빛 진주새우 1개':''
+    const reward=[data.reward.gold?`${data.reward.gold}골드`:'',data.reward.fuel?`기름 ${data.reward.fuel}통`:'',bait].filter(Boolean).join(' · ')
+    toast.success(`출석 완료! ${reward} 획득`)
    }
    window.dispatchEvent(new Event('attendance-changed'))
+   window.dispatchEvent(new Event('harbor-changed'))
    await refreshGold()
   }catch(cause){if(alive.current)setError(attendanceError(cause))}
   finally{lock.current=false;if(alive.current)setBusy(false)}
@@ -60,15 +62,15 @@ function Attendance(){
  return <Dialog open={open} onOpenChange={next=>{if(busy)return;setOpen(next);if(next)void refresh()}}>
   <TooltipProvider><Tooltip><TooltipTrigger render={<DialogTrigger render={<Button variant="ghost" size="icon" className="relative size-10 min-h-10 min-w-10" aria-label={`출석체크${state?state.checkedIn?' · 오늘 출석 완료':' · 오늘 출석 전':''}`}/>}/> }><CalendarCheck className="size-7"/>{state&&!state.checkedIn&&<span data-attendance-pending className="header-indicator" aria-hidden="true"/>}</TooltipTrigger><TooltipContent>출석체크</TooltipContent></Tooltip></TooltipProvider>
   <DialogContent className="notification-sheet inset-x-0 bottom-0 top-auto left-0 flex max-h-[85dvh] w-full max-w-full translate-x-0 translate-y-0 flex-col gap-4 overflow-hidden rounded-t-2xl rounded-b-none p-4 pb-[max(1rem,env(safe-area-inset-bottom))] sm:left-1/2 sm:max-w-lg sm:-translate-x-1/2">
-   <DialogHeader className="shrink-0 pr-6"><DialogTitle className="flex items-center gap-2 text-xl font-normal"><CalendarCheck className="size-7 text-primary"/>퐁당섬 출석체크</DialogTitle><DialogDescription className="text-xs leading-5">연속 출석 체크만 인정합니다. 하루라도 끊기면 처음부터 시작!</DialogDescription></DialogHeader>
+   <DialogHeader className="shrink-0 pr-6"><DialogTitle className="flex items-center gap-2 text-xl font-normal"><CalendarCheck className="size-7 text-primary"/>퐁당섬 출석체크</DialogTitle><DialogDescription className="text-xs leading-5">50골드와 기름 1통을 번갈아 받고, 7일마다 미끼만 받아요. 연속 출석 체크만 인정합니다. 하루라도 끊기면 처음부터 시작!</DialogDescription></DialogHeader>
    {loading&&!state&&<p role="status" className="py-5 text-sm text-muted-foreground">출석지를 불러오는 중…</p>}
    {error&&<div role="alert" className="space-y-2 rounded-lg bg-destructive/5 p-3 text-xs text-destructive"><p>{error}</p><Button variant="outline" disabled={busy||loading} onClick={()=>void refresh()}>다시 불러오기</Button></div>}
    {state&&<>
     <div className="-mx-4 grid min-h-0 grid-cols-7 content-start gap-0 overflow-y-auto overscroll-contain border-t border-border" aria-label="28일 출석지">{Array.from({length:28},(_,i)=>{
      const day=i+1,done=day<=state.completedDays,today=day===state.currentDay
-     const reward=day===28?epic:day%7===0?shrimp:null
-     return <button type="button" key={day} disabled={!today||done||busy||loading||!!error||state.checkedIn||goldBusy||goldLoading} onClick={()=>void claim()} aria-label={`${day}일차${done?' 출석 완료':today?' 오늘':''}${reward?day===28?' · 별잠의 유혹':' · 달빛 진주새우':''}`} className={`relative flex min-h-20 min-w-0 flex-col items-center justify-center gap-1 rounded-none border-r border-b border-border p-1 text-xs outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring disabled:cursor-default ${done?'bg-[#efddc5] text-[#75492d]':today&&!state.checkedIn?'attendance-claimable bg-secondary ring-2 ring-inset ring-primary':'border-border bg-background/50 text-muted-foreground'}`}>
-      <span>{day}일</span>{reward?<img src={reward} alt={day===28?'별잠의 유혹':'달빛 진주새우'} className="size-8 object-contain"/>:<span className="flex flex-wrap items-center justify-center gap-0.5 text-xs font-medium tabular-nums"><GoldIcon className="size-4"/>50</span>}{done&&<Check className="absolute right-1 top-1 size-4" aria-hidden="true"/>}{today&&!done&&busy&&<span className="sr-only">출석 확인 중…</span>}
+     const reward=day===28?epic:day%7===0?conch:null,fuel=day%2===0
+     return <button type="button" key={day} disabled={!today||done||busy||loading||!!error||state.checkedIn||goldBusy||goldLoading} onClick={()=>void claim()} aria-label={`${day}일차${done?' 출석 완료':today?' 오늘':''}${reward?day===28?' · 별잠의 유혹':' · 소라의 첫인사':''}${reward?'':fuel?' · 기름 1통':' · 50골드'}`} className={`relative flex min-h-20 min-w-0 flex-col items-center justify-center gap-1 rounded-none border-r border-b border-border p-1 text-xs outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring disabled:cursor-default ${done?'bg-[#efddc5] text-[#75492d]':today&&!state.checkedIn?'attendance-claimable bg-secondary ring-2 ring-inset ring-primary':'border-border bg-background/50 text-muted-foreground'}`}>
+      <span>{day}일</span>{reward?<img src={reward} alt={day===28?'별잠의 유혹':'소라의 첫인사'} className="size-7 object-contain"/>:<span className="flex flex-wrap items-center justify-center gap-0.5 text-xs font-medium tabular-nums">{fuel?<appArt.fuel className="size-6"/>:<GoldIcon className="size-4"/>}{fuel?1:50}</span>}{done&&<Check className="absolute right-1 top-1 size-4" aria-hidden="true"/>}{today&&!done&&busy&&<span className="sr-only">출석 확인 중…</span>}
       {done&&today&&celebrate>0&&<span key={celebrate} className="attendance-stamp pointer-events-none absolute inset-0 flex items-center justify-center bg-[#f2dfc8]" aria-hidden="true"><img src="/branding/pongi-starfish.png" alt="" className="size-7"/></span>}
      </button>
     })}</div>

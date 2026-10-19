@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 
-export function catalogSql(catalog) {
+export function catalogSql(catalog, {tables} = {}) {
   if (catalog.formatVersion !== 1) throw new Error('Unsupported catalog format')
   const literal = value => value === null ? 'null' : typeof value === 'boolean' || typeof value === 'number' ? String(value) : `'${String(value).replaceAll("'", "''")}'`
   const identifier = value => {
@@ -9,7 +9,9 @@ export function catalogSql(catalog) {
     return `"${value}"`
   }
   const statements = ['-- Generated from supabase/catalog/catalog.json. Review before migration deployment.', 'begin;', 'set constraints all deferred;']
-  for (const table of ['regions', 'aquarium_backgrounds', 'fishing_baits', 'collectible_species',...(catalog.region_maps?['region_maps']:[]),...(catalog.fishing_rods?['fishing_rods']:[])]) {
+  const managed=['regions', 'aquarium_backgrounds', 'fishing_baits', 'collectible_species',...(catalog.region_maps?['region_maps']:[]),...(catalog.fishing_rods?['fishing_rods']:[]),...(catalog.harbor_vessels?['harbor_vessels']:[])]
+  if(tables?.some(table=>!managed.includes(table)))throw new Error('Unsupported scoped catalog table')
+  for (const table of tables??managed) {
     const rows = catalog[table]
     if (!Array.isArray(rows) || !rows.length) throw new Error(`Empty catalog: ${table}`)
     const columns = Object.keys(rows[0])
@@ -19,14 +21,17 @@ export function catalogSql(catalog) {
     statements.push(`insert into public.${table} (${columns.map(identifier).join(',')}) values\n${rows.map(row => `(${columns.map(c => literal(row[c])).join(',')})`).join(',\n')}\non conflict(${key}) do update set ${columns.filter(c => c !== key).map(c => `${identifier(c)}=excluded.${identifier(c)}`).join(',')};`)
   }
   // The manifest controls habitats only for its species; it never deletes species or player data.
-  statements.push(`delete from public.collectible_habitats where species_id in (${catalog.collectible_species.map(r => literal(r.id)).join(',')});`)
-  if (catalog.collectible_habitats.length) statements.push(`insert into public.collectible_habitats(species_id,region_id) values\n${catalog.collectible_habitats.map(r => `(${literal(r.species_id)},${literal(r.region_id)})`).join(',\n')};`)
+  if(!tables||tables.includes('collectible_species')){
+    statements.push(`delete from public.collectible_habitats where species_id in (${catalog.collectible_species.map(r => literal(r.id)).join(',')});`)
+    if (catalog.collectible_habitats.length) statements.push(`insert into public.collectible_habitats(species_id,region_id) values\n${catalog.collectible_habitats.map(r => `(${literal(r.species_id)},${literal(r.region_id)})`).join(',\n')};`)
+  }
   statements.push("notify pgrst, 'reload schema';", 'commit;', '')
   return statements.join('\n')
 }
 
 if (process.argv[1]?.replaceAll('\\', '/').endsWith('/scripts/db/catalog.mjs')) {
-  const sql = catalogSql(JSON.parse(readFileSync('supabase/catalog/catalog.json', 'utf8')))
+  const scoped=process.argv.indexOf('--table')
+  const sql = catalogSql(JSON.parse(readFileSync('supabase/catalog/catalog.json', 'utf8')),scoped<0?{}:{tables:[process.argv[scoped+1]]})
   const output = process.argv[2]
   if (output) {
     if (dirname(resolve(output)) !== resolve('supabase/migrations') || !/^\d{14}_.+\.sql$/.test(output.replaceAll('\\', '/').split('/').at(-1))) throw new Error('Output must be a CLI-created file in supabase/migrations')

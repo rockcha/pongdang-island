@@ -36,6 +36,10 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      harbor_state:{Args:Record<string,never>;Returns:import('@/features/port/api').HarborState}
+      harbor_action:{Args:import('@/features/port/api').HarborAction;Returns:import('@/features/port/api').HarborState}
+      music_library:{Args:{p_import:import('@/features/music/music-library').MusicTrack[]|null};Returns:import('@/features/music/music-library').MusicTrack[]}
+      music_edit:{Args:{p_action:string;p_id:string;p_title:string;p_name:string};Returns:import('@/features/music/music-library').MusicTrack[]}
       friend_expedition:{Args:{p_owner:string};Returns:import('@/features/expeditions/api').FriendExpeditionVisit}
       friend_expedition_status:{Args:Record<string,never>;Returns:import('@/features/expeditions/api').FriendExpeditionState}
       boost_friend_expedition:{Args:{p_expedition_id:string};Returns:import('@/features/expeditions/api').FriendExpeditionState}

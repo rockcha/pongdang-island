@@ -11,6 +11,8 @@ const {island:IslandIcon,aquarium:AquariumIcon,plaza:PlazaIcon,shipyard:Ship,sho
 
 
 export const headerPlaces=[
+ {to:'/port',label:'항구',icon:appArt.port},
+ {to:'/music-room',label:'음악 감상',icon:appArt.music},
  {to:'/',label:'내 퐁당섬',icon:IslandIcon},
  {to:'/aquarium',label:'아쿠아리움',icon:AquariumIcon},
  {to:'/titles',label:'칭호',icon:appArt.title},
@@ -36,12 +38,13 @@ export function HeaderPlaceNavigation() {
   const expeditionLabel=expedition==='sailing'?'파견 중':expedition==='returned'?'귀항 완료':null
   const current=/^\/(region|sailing)\//.test(pathname)?'/harbor':pathname
   const groups=[
-    {label:'생활',paths:['/','/aquarium','/warehouse','/savings','/titles','/collection','/collection-animation']},
-    {label:'활동',paths:['/harbor','/expeditions','/farm','/arcade']},
-    {label:'거래',paths:['/shop','/exchange','/shipyard']},
-    {label:'커뮤니티',paths:['/friends','/notifications','/square']},
+    {label:'내 섬',paths:['/','/aquarium','/port','/warehouse','/titles','/collection','/collection-animation']},
+    {label:'모험',paths:['/harbor','/expeditions','/farm']},
+    {label:'상점',paths:['/shop','/exchange','/shipyard','/savings']},
+    {label:'놀이터',paths:['/arcade','/music-room']},
+    {label:'소통',paths:['/friends','/notifications','/square']},
   ]
-  return <nav aria-label="장소 바로가기" className="grid min-w-0 flex-1 grid-cols-4 gap-0">
+  return <nav aria-label="장소 바로가기" className="grid min-w-0 flex-1 grid-cols-5 gap-0">
     {groups.map(group=>{
       const items=group.paths.map(path=>headerPlaces.find(item=>item.to===path)!)
       const selected=items.find(item=>current===item.to||current.startsWith(item.to+'/'))

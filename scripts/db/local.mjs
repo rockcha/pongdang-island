@@ -50,6 +50,7 @@ export async function readCatalog(db) {
   }
   if((await db.query("select to_regclass('public.region_maps') is not null as present")).rows[0].present)result.region_maps=(await db.query('select * from public.region_maps order by region_id')).rows
   if((await db.query("select to_regclass('public.fishing_rods') is not null as present")).rows[0].present)result.fishing_rods=(await db.query('select * from public.fishing_rods order by id')).rows
+  if((await db.query("select to_regclass('public.harbor_vessels') is not null as present")).rows[0].present)result.harbor_vessels=(await db.query('select * from public.harbor_vessels order by id')).rows
   return result
 }
 

@@ -1,0 +1,56 @@
+{
+  "generator": "Built-in image_gen",
+  "createdAt": "2026-10-19T08:17:13.384Z",
+  "assets": [
+    {
+      "id": "harbor-scene",
+      "transparent": false,
+      "ref": "public/banners/harbor.png",
+      "prompt": "Use case: stylized-concept. Portrait 1024x1536 cozy island game harbor background. Reference image for painterly quality, warm island colors and attractive turquoise sea only. NEW composition: elevated oblique view, wooden shoreline dock along the LEFT 25 percent of frame, two short horizontal mooring fingers project from left toward center at 38 percent and 67 percent height, inviting clear turquoise open sea fills the RIGHT 75 percent and extends past right border. Top distant band only a small green island and pale warm sky, mostly water. Bottom left warm wooden boards, thick rope wrapped mooring posts and small crates, a tiny fishing hut clipped at far left. Water surface opaque blue-green with soft ripples and sun reflections, no visible seabed. Space to overlay two separately drawn boats at about x45 percent y40 and67. Hand painted polished fantasy game environment matching Pongdang island, charming and detailed but clean. NO boats, no characters, no text, no UI, no logos, no watermark.",
+      "path": "public/port/harbor-scene.png",
+      "sha256": "89ab8ee40e7a13e50074d9bf3732cfd7023d1d7a6a767da40bfa433149a05ebd",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "id": "port",
+      "transparent": true,
+      "ref": "public/branding/confirm/pongi-caution.png",
+      "prompt": "Use case: stylized-concept. Asset type: square transparent app icon for a cozy Korean island game. Draw a clean cute cartoon miniature harbor: warm brown wooden mooring pier with two chunky posts and coiled rope, a tiny cream lighthouse with terracotta cap, and one simple teal water wave at its base. Chunky compact silhouette readable at28px, soft warm dark-brown outlines and gentle polished shading matching reference cartoon style, no otter character. Centered complete silhouette with margin. Transparent background, no text or letters or circular badge or extra background.",
+      "path": "public/app-icons/port.png",
+      "sha256": "c8a3d0ae0c16849dd8729befaf294d161f9462f94f67323b5b229aaba6305efc",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "fuel",
+      "transparent": true,
+      "ref": "public/branding/confirm/pongi-caution.png",
+      "prompt": "Use case: stylized-concept. Square transparent inventory icon, small charming marine fuel can for cozy brown-themed island game. One squat warm honey-orange metal jerrycan with a chunky curved carrying handle, dark brown cap and a simple embossed cream teardrop symbol. Cute rounded proportions, clear thick warm brown outline, polished gentle cartoon shading matching reference, minimal detail readable at24px. Full can centered with safe margins, no character, no lettering, no text, no circular badge, transparent background.",
+      "path": "public/app-icons/fuel.png",
+      "sha256": "476f59709fe630d53bddc544d75fdc3ebb8f54f37608aca7eb20d85daa0ba3cd",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "fishing-raft",
+      "transparent": true,
+      "ref": "public/branding/confirm/pongi-caution.png",
+      "prompt": "Use case: stylized-concept. Asset type: 2x2 sprite sheet with FOUR equal square cells on transparent canvas, overall1536x1536. Draw the SAME cute fishing raft in all four cells as four gently animated frames. Fishing raft made of five chunky honey-brown logs tied with thick rope, a tiny cream canvas sunshade on two short poles, one wooden seat, small rolled fishing net and short fishing rod secured to side. No people, no animals. Three quarter elevated side view, bow pointing to RIGHT, entire raft contained in each cell with consistent size occupying75 percent width and SAME hull position/center in all four cells. Animation differences only slight canvas flutter and loose rope/net movement; rigid hull and poles unchanged, no camera changes or scale changes or whole-body vertical shifts. Charming clean polished cartoon warm brown outline and soft shading like reference. No cell lines, no borders, no water background, no ground shadow, no text. Transparent background.",
+      "path": "public/port/fishing-raft-sprite.png",
+      "sha256": "3d785a6da56f973f0edac3baf0c76f16867d4d9968c97824a2275221a0e13564",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "neoul-boat",
+      "transparent": true,
+      "ref": "public/branding/confirm/pongi-caution.png",
+      "prompt": "Use case: stylized-concept. Asset type:2x2 sprite sheet FOUR equal square cells on transparent canvas, overall1536x1536. Draw SAME charming small cabin fishing boat in four animated frames. Boat called Neoul fishing boat: compact rounded cream wooden hull with muted teal stripe and warm brown trim, small cream cabin with two dark blue windows, terracotta cabin roof, small exhaust pipe and one tiny fluttering pennant, rope fender, modest fishing reel. A REAL distinct cabin boat, NOT raft or sailboat. No text/name written. Three quarter elevated side view, BOW faces RIGHT. Cute clean cartoon warm brown outline and polished gentle shading matching reference. Rigid hull and cabin identical consistent position/scale in each cell, whole silhouette75 percent width with margin. Only pennant and small loose rope gently flutter in four phases; no whole-hull shifts, no viewpoint changes. Transparent background, no water scenery, no wake plate, no humans, no gridlines, no frame labels.",
+      "path": "public/port/neoul-boat-sprite.png",
+      "sha256": "7b8661fc167c18fc4049471d89b83680d78baff9aafbaa63712f1997fe6a3c03",
+      "width": 1254,
+      "height": 1254
+    }
+  ]
+}

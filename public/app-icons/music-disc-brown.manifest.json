@@ -1,0 +1,8 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "reference": "public/app-icons/music-disc.png",
+  "prompt": "Use case: precise-object-edit. Recolor this existing CD icon ONLY to a warm cozy Korean island-game palette: caramel brown and warm beige metallic disc surface, cream ivory reflections and pale champagne inner ring, warm dark brown outer rim. Remove ALL green, mint, teal and emerald from the disc, rim and reflections. Preserve perfectly circular straight-on shape, precise canvas-center placement, small circular transparent center hole, opposing asymmetric reflective highlights and restrained concentric grooves so rotation remains visible. Clean minimal polished UI icon readable at 28 pixels. No additional objects, decoration, text, logos, shadow or external glow. Preserve genuine alpha transparency outside the disc and in its center hole. Same square canvas and icon scale.",
+  "output": "public/app-icons/music-disc-brown.png",
+  "animation": "Brown CD spins during playback; only button background pulses subtle green."
+}

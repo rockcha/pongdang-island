@@ -1,0 +1,8 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "reference": "public/fishing/environments/coral.png",
+  "output": "public/fishing/environments/coral-soft.png",
+  "prompt": "Use case: precise-object-edit. Refine this cozy fishing-game overhead seawater background. Preserve portrait 2:3 composition, completely open central 65 percent water, straight horizontal shoreline at 73 percent height, bottom weathered wooden platform unchanged. Change underwater formations ONLY at far left and right water edges into softly blurred pale dusty-pink and peach branching corals, with sparse rounded rose-colored coral mounds underneath clear turquoise water. The pink should be a VERY FAINT submerged tint seen through a thick watery veil, low contrast, not bright red, not neon, not sharply outlined. Simplify rock texture and coral branching; no tiny readable detail. Soft gentle caustics and subdued highlights, peaceful warm coastal water. No fish, creatures, characters, rods, text, UI, horizon, sky, border or watermark. Pink corals must never encroach into central fishing float area. The result should feel like barely glimpsing a pink reef far below the surface, not viewing a detailed coral aquarium. Full bleed opaque painting.",
+  "display": "Soft pink underwater reef at edges; 0.72 opacity over turquoise base; separate limestone platform preserved."
+}

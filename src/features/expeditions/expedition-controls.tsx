@@ -13,7 +13,7 @@ import {duration} from './api'
 import type {ExpeditionState,Vessel} from './api'
 
 export function BoatImage({id,name,className='h-40 w-full'}:{id:string;name:string;className?:string}){
- return <img onError={event=>{if(event.currentTarget.dataset.fallback)return;event.currentTarget.dataset.fallback='true';event.currentTarget.src='/fallback-image.svg'}} src={collectibleUrl(`vessels/${id}.png`)} alt={name} loading="lazy" decoding="async" draggable={false} className={`${className} block min-w-0 max-w-full select-none object-contain`} width={512} height={512}/>
+ return <img onError={event=>{if(event.currentTarget.dataset.fallback)return;event.currentTarget.dataset.fallback='true';event.currentTarget.src='/fallback-image.svg'}} src={id==='dinghy'?'/navigation/journey-boat.png':collectibleUrl(`vessels/${id}.png`)} alt={name} loading="lazy" decoding="async" draggable={false} className={`${className} block min-w-0 max-w-full select-none object-contain`} width={512} height={512}/>
 }
 const bonusIcons:Record<string,typeof Gift>={breeze:Copy,fullcatch:PackagePlus,homesea:Compass,shrimp:Shrimp,salvage:Magnet,candy:Sparkles,discovery:Shell,starlit:Star}
 export function VesselStats({vessel:v}:{vessel:Vessel}){

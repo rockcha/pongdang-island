@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'
-import { MemoryRouter } from 'react-router'
+import { createMemoryRouter,Link,MemoryRouter,RouterProvider } from 'react-router'
 const {load,prepare,finish,refresh,transact}=vi.hoisted(()=>({load:vi.fn(),prepare:vi.fn(),finish:vi.fn(),refresh:vi.fn(),transact:vi.fn()}))
 vi.mock('@/features/fishing/tension-fishing-game',()=>({TensionFishingGame:({onCaught,onCancel,onFailed,active,challenge,outline,start}:{onCaught:()=>void;onCancel:()=>void;onFailed:(reason:string)=>void;active:boolean;challenge:{rarity:string;failureAt?:number};outline?:{name:string};start?:{label:string;disabled:boolean;onStart:()=>void}})=>active?<div data-testid="challenge" data-rarity={challenge.rarity} data-doomed={challenge.failureAt!==undefined} data-outline={outline?.name??'generic'}><button onClick={onCaught}>미니게임 성공</button><button onClick={onCancel}>미니게임 취소</button><button onClick={()=>onFailed('snap')}>미니게임 실패</button></div>:<div>낚싯대가 준비됐어요{start&&<button disabled={start.disabled} onClick={start.onStart}>{start.label}</button>}</div>}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:()=>null}))
@@ -37,6 +37,41 @@ it('shows equipped rod and selected bait images in the four-button dock',async()
 })
 afterEach(()=>{cleanup();localStorage.clear();vi.resetAllMocks()})
 function setup(){load.mockResolvedValue({baits:[bait],successChanceBp:3500});refresh.mockResolvedValue(undefined);prepare.mockResolvedValue(plan);finish.mockResolvedValue({attempt:{operation_id:plan.operation_id,rarity:null,species:null},replayed:false});return render(<MemoryRouter><FishingPanel regionId="pongdang"/></MemoryRouter>)}
+function setupNavigation(){
+ load.mockResolvedValue({baits:[bait],successChanceBp:3500});refresh.mockResolvedValue(undefined);prepare.mockResolvedValue(plan);finish.mockResolvedValue({attempt:{operation_id:plan.operation_id,rarity:null,species:null},replayed:false})
+ const router=createMemoryRouter([{path:'/fish',element:<><FishingPanel regionId="pongdang"/><Link to="/home">다른 페이지</Link></>},{path:'/home',element:<p>이동한 페이지</p>}],{initialEntries:['/fish']})
+ render(<RouterProvider router={router}/>);return router
+}
+it('cancels the paid cast only when leaving is confirmed, without preparing or spending again',async()=>{
+ const router=setupNavigation();await start()
+ fireEvent.click(screen.getByRole('link',{name:'다른 페이지'}))
+ fireEvent.click(await screen.findByRole('button',{name:'계속 낚시하기'}))
+ expect(router.state.location.pathname).toBe('/fish');expect(finish).not.toHaveBeenCalled()
+ fireEvent.click(screen.getByRole('link',{name:'다른 페이지'}))
+ fireEvent.click(await screen.findByRole('button',{name:'그만두고 이동'}))
+ await screen.findByText('이동한 페이지')
+ expect(prepare).toHaveBeenCalledOnce()
+ expect(finish).toHaveBeenCalledExactlyOnceWith(plan.operation_id,false)
+})
+it('reconciles an ambiguous preparation with the original operation before leaving',async()=>{
+ setupNavigation();prepare.mockRejectedValueOnce(new Error('offline')).mockResolvedValueOnce(plan)
+ fireEvent.click(await screen.findByRole('button',{name:'퐁당 지렁이 1개로 낚시하기'}))
+ await screen.findByRole('button',{name:'결과 다시 확인'})
+ fireEvent.click(screen.getByRole('link',{name:'다른 페이지'}))
+ fireEvent.click(await screen.findByRole('button',{name:'그만두고 이동'}))
+ await screen.findByText('이동한 페이지')
+ expect(prepare.mock.calls[0][2]).toBe(prepare.mock.calls[1][2])
+ expect(finish).toHaveBeenCalledExactlyOnceWith(prepare.mock.calls[0][2],false)
+})
+it('preserves an uncertain win when leaving instead of turning it into a loss',async()=>{
+ setupNavigation();finish.mockRejectedValueOnce(new Error('offline')).mockResolvedValueOnce({attempt:{operation_id:plan.operation_id,rarity:'rare',species},replayed:true})
+ await start();fireEvent.click(screen.getByRole('button',{name:'미니게임 성공'}))
+ await screen.findByRole('button',{name:'결과 다시 확인'})
+ fireEvent.click(screen.getByRole('link',{name:'다른 페이지'}))
+ fireEvent.click(await screen.findByRole('button',{name:'그만두고 이동'}))
+ await screen.findByText('이동한 페이지')
+ expect(finish.mock.calls).toEqual([[plan.operation_id,true],[plan.operation_id,true]])
+})
 it('shows distinct Pongi artwork for a full gauge, an empty gauge and a chance escape',()=>{
  const {rerender}=render(<CatchReveal failure="줄이 끊어졌어요" failureReason="snap" onDismiss={vi.fn()}/>)
  expect(screen.getByRole('img',{name:'끊어진 낚싯줄을 보고 놀란 퐁이'}).getAttribute('src')).toBe('/branding/pongi-fishing-snap.png')

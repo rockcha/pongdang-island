@@ -1,0 +1,167 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "assets": [
+    {
+      "id": "pongdang",
+      "kind": "front",
+      "path": "public/fishing/scenery/pongdang.png",
+      "prompt": "Use case: stylized-concept. Asset: portrait 2:3 cozy fishing-game STANDBY landscape background. Beautiful polished painterly casual-game environment. Camera is at eye level looking STRAIGHT FORWARD across ocean, NOT a top-down view. Horizon near upper third, lovely sky and distant region landmarks in upper 40%, calm OPAQUE reflective water fills lower 60%. Absolutely NO visible seafloor, underwater rocks, submerged coral or underwater plants. Water should have soft surface ripples and reflections only; never transparent. Foreground central water spacious and uncluttered. No dock, platform, foreground land, fishing gear, boats, animals, people, UI, text or borders. Bottom of image continues open opaque water; platform will be drawn separately by app. Keep important distant landmarks in central 80% width for mobile crops. Full bleed opaque image. Scene: sunlit welcoming island bay, soft summer-blue sky, white clouds, rounded lush green islands with a few tiny cream cottages and coral roofs, a small distant lighthouse, gentle blue seawater, warm friendly seaside mood.",
+      "reference": "public/fishing/environments/pongdang.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "5eaed2a694c116b5af665a24ba99e4d7b585cd362a996d200b3c0dc899958b87"
+    },
+    {
+      "id": "coral",
+      "kind": "front",
+      "path": "public/fishing/scenery/coral.png",
+      "prompt": "Use case: stylized-concept. Asset: portrait 2:3 cozy fishing-game STANDBY landscape background. Beautiful polished painterly casual-game environment. Camera is at eye level looking STRAIGHT FORWARD across ocean, NOT a top-down view. Horizon near upper third, lovely sky and distant region landmarks in upper 40%, calm OPAQUE reflective water fills lower 60%. Absolutely NO visible seafloor, underwater rocks, submerged coral or underwater plants. Water should have soft surface ripples and reflections only; never transparent. Foreground central water spacious and uncluttered. No dock, platform, foreground land, fishing gear, boats, animals, people, UI, text or borders. Bottom of image continues open opaque water; platform will be drawn separately by app. Keep important distant landmarks in central 80% width for mobile crops. Full bleed opaque image. Scene: warm tropical reef coast ABOVE water, pale limestone islets with pink flowering coastal shrubs, turquoise reflective ocean, pastel peach-white clouds and clear aqua sky. Coral identity comes from pink coastal flowers and pale reef-island rock; do not show underwater coral.",
+      "reference": "public/fishing/environments/coral-soft.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "2e7719c5d28fae417ac39dc5044e6196ecddc6283101780fb88969c3be09fe15"
+    },
+    {
+      "id": "mistmoon",
+      "kind": "front",
+      "path": "public/fishing/scenery/mistmoon.png",
+      "prompt": "Use case: stylized-concept. Asset: portrait 2:3 cozy fishing-game STANDBY landscape background. Beautiful polished painterly casual-game environment. Camera is at eye level looking STRAIGHT FORWARD across ocean, NOT a top-down view. Horizon near upper third, lovely sky and distant region landmarks in upper 40%, calm OPAQUE reflective water fills lower 60%. Absolutely NO visible seafloor, underwater rocks, submerged coral or underwater plants. Water should have soft surface ripples and reflections only; never transparent. Foreground central water spacious and uncluttered. No dock, platform, foreground land, fishing gear, boats, animals, people, UI, text or borders. Bottom of image continues open opaque water; platform will be drawn separately by app. Keep important distant landmarks in central 80% width for mobile crops. Full bleed opaque image. Scene: serene moonlit mist sea, luminous pearl moon behind layered lavender-silver clouds, distant pine-covered island silhouettes and sea stacks fading into fog, opaque dusky indigo-blue water reflecting a thin trail of moonlight, dreamy peaceful night.",
+      "reference": "public/fishing/environments/mistmoon.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "16aa45f6c5e0bae00f54cf0dba55eb9959daa6ab5f49f73f249ada744f17ebcf"
+    },
+    {
+      "id": "starruins",
+      "kind": "front",
+      "path": "public/fishing/scenery/starruins.png",
+      "prompt": "Use case: stylized-concept. Asset: portrait 2:3 cozy fishing-game STANDBY landscape background. Beautiful polished painterly casual-game environment. Camera is at eye level looking STRAIGHT FORWARD across ocean, NOT a top-down view. Horizon near upper third, lovely sky and distant region landmarks in upper 40%, calm OPAQUE reflective water fills lower 60%. Absolutely NO visible seafloor, underwater rocks, submerged coral or underwater plants. Water should have soft surface ripples and reflections only; never transparent. Foreground central water spacious and uncluttered. No dock, platform, foreground land, fishing gear, boats, animals, people, UI, text or borders. Bottom of image continues open opaque water; platform will be drawn separately by app. Keep important distant landmarks in central 80% width for mobile crops. Full bleed opaque image. Scene: quiet blue-teal twilight ruined island coast, ancient pale stone columns and broken arches rising on distant rocky islets, subtle star-shaped crest in ruined temple, early stars in blue sky, opaque deep azure water softly reflecting ruins. All ruin structures stay ABOVE water.",
+      "reference": "public/fishing/environments/starruins.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "bfdd4fbcd5267c48fd76cf430ea09b6d6bed62bf297e13cf8a27a533858a202e"
+    },
+    {
+      "id": "dreamabyss",
+      "kind": "front",
+      "path": "public/fishing/scenery/dreamabyss.png",
+      "prompt": "Use case: stylized-concept. Asset: portrait 2:3 cozy fishing-game STANDBY landscape background. Beautiful polished painterly casual-game environment. Camera is at eye level looking STRAIGHT FORWARD across ocean, NOT a top-down view. Horizon near upper third, lovely sky and distant region landmarks in upper 40%, calm OPAQUE reflective water fills lower 60%. Absolutely NO visible seafloor, underwater rocks, submerged coral or underwater plants. Water should have soft surface ripples and reflections only; never transparent. Foreground central water spacious and uncluttered. No dock, platform, foreground land, fishing gear, boats, animals, people, UI, text or borders. Bottom of image continues open opaque water; platform will be drawn separately by app. Keep important distant landmarks in central 80% width for mobile crops. Full bleed opaque image. Scene: mysterious tranquil violet deepsea island coast at night, dark basalt sea stacks with faint violet-blue luminous mineral seams ABOVE water, indigo sky with subtle dreamy aurora and star haze, very dark opaque navy-purple water with sparse restrained surface reflections; inviting fantasy, not horror.",
+      "reference": "public/fishing/environments/dreamabyss.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "75501601a4cf0a8ddfae853cd552dea59e71942070fab32efd9a9b2a9fa3912a"
+    },
+    {
+      "id": "primal",
+      "kind": "front",
+      "path": "public/fishing/scenery/primal.png",
+      "prompt": "Use case: stylized-concept. Asset: portrait 2:3 cozy fishing-game STANDBY landscape background. Beautiful polished painterly casual-game environment. Camera is at eye level looking STRAIGHT FORWARD across ocean, NOT a top-down view. Horizon near upper third, lovely sky and distant region landmarks in upper 40%, calm OPAQUE reflective water fills lower 60%. Absolutely NO visible seafloor, underwater rocks, submerged coral or underwater plants. Water should have soft surface ripples and reflections only; never transparent. Foreground central water spacious and uncluttered. No dock, platform, foreground land, fishing gear, boats, animals, people, UI, text or borders. Bottom of image continues open opaque water; platform will be drawn separately by app. Keep important distant landmarks in central 80% width for mobile crops. Full bleed opaque image. Scene: ancient prehistoric island coast, enormous primitive tree ferns and giant horsetail forest on distant mossy cliffs, mist curling between rugged volcanic rock islands, warm diffuse morning sky, calm opaque muted jade-teal sea. No dinosaurs, skeletons or animals.",
+      "reference": "public/fishing/environments/primal.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "b1ed9bb80e53901bbe75f0c889940e8147cc9e27aa6eb29e146c309a9df3638e"
+    },
+    {
+      "id": "bluegrove",
+      "kind": "front",
+      "path": "public/fishing/scenery/bluegrove.png",
+      "prompt": "Use case: stylized-concept. Asset: portrait 2:3 cozy fishing-game STANDBY landscape background. Beautiful polished painterly casual-game environment. Camera is at eye level looking STRAIGHT FORWARD across ocean, NOT a top-down view. Horizon near upper third, lovely sky and distant region landmarks in upper 40%, calm OPAQUE reflective water fills lower 60%. Absolutely NO visible seafloor, underwater rocks, submerged coral or underwater plants. Water should have soft surface ripples and reflections only; never transparent. Foreground central water spacious and uncluttered. No dock, platform, foreground land, fishing gear, boats, animals, people, UI, text or borders. Bottom of image continues open opaque water; platform will be drawn separately by app. Keep important distant landmarks in central 80% width for mobile crops. Full bleed opaque image. Scene: fresh bright turquoise river mouth opening between layered lush green mountain islands, white riverstone cliff faces, willow-like foliage at distant water edges, clear blue sky with airy white clouds, opaque blue-cyan water with soft green reflections; peaceful river-meets-sea landscape.",
+      "reference": "public/fishing/environments/bluegrove.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "010d4a99e51f54db737f0738cd250550be2d4a41bdf9be3749509705fbbb5d9c"
+    },
+    {
+      "id": "whitenight",
+      "kind": "front",
+      "path": "public/fishing/scenery/whitenight.png",
+      "prompt": "Use case: stylized-concept. Asset: portrait 2:3 cozy fishing-game STANDBY landscape background. Beautiful polished painterly casual-game environment. Camera is at eye level looking STRAIGHT FORWARD across ocean, NOT a top-down view. Horizon near upper third, lovely sky and distant region landmarks in upper 40%, calm OPAQUE reflective water fills lower 60%. Absolutely NO visible seafloor, underwater rocks, submerged coral or underwater plants. Water should have soft surface ripples and reflections only; never transparent. Foreground central water spacious and uncluttered. No dock, platform, foreground land, fishing gear, boats, animals, people, UI, text or borders. Bottom of image continues open opaque water; platform will be drawn separately by app. Keep important distant landmarks in central 80% width for mobile crops. Full bleed opaque image. Scene: white-night polar ocean, sculptural glacial cliffs and layered blue-white iceberg islands in distance, pale peach-white midnight-sun sky, snow softly lit by low golden sunlight, calm opaque cold cobalt-blue ocean with soft icy reflections, no underwater ice shapes.",
+      "reference": "public/fishing/environments/whitenight.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "7209328fdb6d628c29ef3ca3c80926f58bdbd147ab581999425e10fb8ac94783"
+    },
+    {
+      "id": "cloudferry",
+      "kind": "front",
+      "path": "public/fishing/scenery/cloudferry.png",
+      "prompt": "Use case: stylized-concept. Asset: portrait 2:3 cozy fishing-game STANDBY landscape background. Beautiful polished painterly casual-game environment. Camera is at eye level looking STRAIGHT FORWARD across ocean, NOT a top-down view. Horizon near upper third, lovely sky and distant region landmarks in upper 40%, calm OPAQUE reflective water fills lower 60%. Absolutely NO visible seafloor, underwater rocks, submerged coral or underwater plants. Water should have soft surface ripples and reflections only; never transparent. Foreground central water spacious and uncluttered. No dock, platform, foreground land, fishing gear, boats, animals, people, UI, text or borders. Bottom of image continues open opaque water; platform will be drawn separately by app. Keep important distant landmarks in central 80% width for mobile crops. Full bleed opaque image. Scene: whimsical bright cloud-harbor coast, fluffy towering cream clouds, lush rounded floating-looking island headlands and tiny warm stucco buildings with terracotta roofs among greenery, cheerful open blue sky, soft opaque cyan-turquoise water with cloud reflections. Never show seafloor.",
+      "reference": "public/fishing/environments/cloudferry.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "9bbe597a81721527d1be23d212fa4e839d5bb339b821c40c78d28a20ef17e1ee"
+    },
+    {
+      "id": "scrapisle",
+      "kind": "front",
+      "path": "public/fishing/scenery/scrapisle.png",
+      "prompt": "Use case: stylized-concept. Asset: portrait 2:3 cozy fishing-game STANDBY landscape background. Beautiful polished painterly casual-game environment. Camera is at eye level looking STRAIGHT FORWARD across ocean, NOT a top-down view. Horizon near upper third, lovely sky and distant region landmarks in upper 40%, calm OPAQUE reflective water fills lower 60%. Absolutely NO visible seafloor, underwater rocks, submerged coral or underwater plants. Water should have soft surface ripples and reflections only; never transparent. Foreground central water spacious and uncluttered. No dock, platform, foreground land, fishing gear, boats, animals, people, UI, text or borders. Bottom of image continues open opaque water; platform will be drawn separately by app. Keep important distant landmarks in central 80% width for mobile crops. Full bleed opaque image. Scene: cozy reclaimed harbor of weathered shipwreck hulls and rust-copper structures on distant overgrown islands, moss and vines softening old cranes and metal ruins, warm hazy afternoon clouds, opaque muted jade-green water with restrained copper-green reflections. Charming reclaimed nature, not pollution or horror.",
+      "reference": "public/fishing/environments/scrapisle.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "3187d61e3d03b407bf769515eb56f3ab6e1981ba4647622cdcc8dfcdec1b1ecb"
+    },
+    {
+      "id": "siren",
+      "kind": "front",
+      "path": "public/fishing/scenery/siren.png",
+      "prompt": "Use case: stylized-concept. Asset: portrait 2:3 cozy fishing-game STANDBY landscape background. Beautiful polished painterly casual-game environment. Camera is at eye level looking STRAIGHT FORWARD across ocean, NOT a top-down view. Horizon near upper third, lovely sky and distant region landmarks in upper 40%, calm OPAQUE reflective water fills lower 60%. Absolutely NO visible seafloor, underwater rocks, submerged coral or underwater plants. Water should have soft surface ripples and reflections only; never transparent. Foreground central water spacious and uncluttered. No dock, platform, foreground land, fishing gear, boats, animals, people, UI, text or borders. Bottom of image continues open opaque water; platform will be drawn separately by app. Keep important distant landmarks in central 80% width for mobile crops. Full bleed opaque image. Scene: beautiful sunlit ancient Greek island coast, white marble temples and slender columns on distant ivory cliffs, Mediterranean shrubs and small distant cypress trees, pearly white clouds and soft azure sky, opaque luminous turquoise-blue sea reflecting warm sunlight, no submerged stones or seabed.",
+      "reference": "public/fishing/environments/siren.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "330edbfbf31354a08a3009646c97e5efc325709c79aa65335164f4df29ebb278"
+    },
+    {
+      "id": "cloudferry",
+      "kind": "top",
+      "path": "public/fishing/topviews/cloudferry.png",
+      "prompt": "Use case: stylized-concept. Asset: portrait 2:3 fishing-game ACTIVE TOP-DOWN water background, overhead camera looking STRAIGHT DOWN into water. Entire canvas is WATER ONLY, no horizon, sky, shoreline, dock or platform. Calm low-contrast hand-painted water, subtle broad soft caustics, central 65 percent completely uncluttered for fishing float and silhouette. Underwater scenery confined to far left/right margins and barely visible through depth haze, no crisp detail or strong contrast. No living creatures, fishing gear, text, UI or frame. Full bleed opaque painting. Match the supplied reference's region palette and art quality, but replace frontal camera with strict overhead view. Region: cloud harbor. Soft pastel turquoise water with warm cream cloud reflections visible only as blurred diffuse light patches on surface; beneath edges faint pale rounded riverstone and a trace of soft green aquatic foliage. Clean airy dreamy feel; NO houses, clouds floating underwater, or detailed forest.",
+      "reference": "public/fishing/environments/cloudferry.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "9af5bfaf7c031e1b0bb1608f735cec7f86080ff0e34c5704297ff23efaeeb24e"
+    },
+    {
+      "id": "scrapisle",
+      "kind": "top",
+      "path": "public/fishing/topviews/scrapisle.png",
+      "prompt": "Use case: stylized-concept. Asset: portrait 2:3 fishing-game ACTIVE TOP-DOWN water background, overhead camera looking STRAIGHT DOWN into water. Entire canvas is WATER ONLY, no horizon, sky, shoreline, dock or platform. Calm low-contrast hand-painted water, subtle broad soft caustics, central 65 percent completely uncluttered for fishing float and silhouette. Underwater scenery confined to far left/right margins and barely visible through depth haze, no crisp detail or strong contrast. No living creatures, fishing gear, text, UI or frame. Full bleed opaque painting. Match the supplied reference's region palette and art quality, but replace frontal camera with strict overhead view. Region: overgrown salvage harbor. Muted jade-green water with warm moss-olive shadows. Far beneath edge water ONLY a few barely perceptible soft silhouettes of old curved wooden ribs, one indistinct rusty metal fragment and sparse flowing waterweed, as though long reclaimed by nature. Keep center empty green water. No crisp junk, no toxic green, no intricate machinery.",
+      "reference": "public/fishing/environments/scrapisle.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "360295c7d5b07dd690998f237b23fbc03bdb200ea403e588315df638bdb0cb15"
+    },
+    {
+      "id": "mukhyang",
+      "kind": "top",
+      "path": "public/fishing/topviews/mukhyang.png",
+      "prompt": "Use case: stylized-concept. Asset: portrait 2:3 fishing-game ACTIVE TOP-DOWN water background, overhead camera looking STRAIGHT DOWN into water. Entire canvas is WATER ONLY, no horizon, sky, shoreline, dock or platform. Calm low-contrast hand-painted water, subtle broad soft caustics, central 65 percent completely uncluttered for fishing float and silhouette. Underwater scenery confined to far left/right margins and barely visible through depth haze, no crisp detail or strong contrast. No living creatures, fishing gear, text, UI or frame. Full bleed opaque painting. Match the supplied reference's region palette and art quality, but replace frontal camera with strict overhead view. Region: Korean ink-painting sea. Very calm pale celadon-gray water, milky sage and warm ivory reflections, soft diffuse surface ripples. At extreme margins ONLY faint blurred ink-wash-like waterweed and rounded gray-green stone shapes far below surface, tiny hints of muted lotus stems. Airy minimal ink-and-paper mood without literal paper texture. NO mountain horizon, above-water trees or legible ink strokes.",
+      "reference": "public/fishing/environments/mukhyang.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "2b28c640a49ed0a27727a43be18f219a806ff73ac30b5676d5a1366ae4e703cc"
+    },
+    {
+      "id": "siren",
+      "kind": "top",
+      "path": "public/fishing/topviews/siren.png",
+      "prompt": "Use case: stylized-concept. Asset: portrait 2:3 fishing-game ACTIVE TOP-DOWN water background, overhead camera looking STRAIGHT DOWN into water. Entire canvas is WATER ONLY, no horizon, sky, shoreline, dock or platform. Calm low-contrast hand-painted water, subtle broad soft caustics, central 65 percent completely uncluttered for fishing float and silhouette. Underwater scenery confined to far left/right margins and barely visible through depth haze, no crisp detail or strong contrast. No living creatures, fishing gear, text, UI or frame. Full bleed opaque painting. Match the supplied reference's region palette and art quality, but replace frontal camera with strict overhead view. Region: Mediterranean siren strait. Soft clear turquoise-blue water, warm pale-gold diffuse caustics. Far underwater at extreme edges ONLY faint low-contrast ivory limestone and a barely recognizable broken marble column silhouette, sparse soft seagrass, seen hazily through deep water. No detailed temple, statues, sharp mosaics or busy architectural pattern.",
+      "reference": "public/fishing/environments/siren.png",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "e54271e5b9db3984d0639b1713a79ca503e5b189beb880382df3ff08291b4741"
+    }
+  ],
+  "retainedFront": "public/fishing/environments/mukhyang.png",
+  "retainedTop": [
+    "public/fishing/environments/pongdang.png",
+    "public/fishing/environments/coral-soft.png",
+    "public/fishing/environments/mistmoon.png",
+    "public/fishing/environments/starruins.png",
+    "public/fishing/environments/dreamabyss.png",
+    "public/fishing/environments/primal.png",
+    "public/fishing/environments/bluegrove.png",
+    "public/fishing/environments/whitenight.png"
+  ]
+}

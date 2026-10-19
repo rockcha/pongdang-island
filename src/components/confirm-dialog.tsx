@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { AlertDialog,AlertDialogCancel,AlertDialogContent,AlertDialogDescription,AlertDialogHeader,AlertDialogTitle,AlertDialogTrigger } from '@/components/ui/alert-dialog'
 
 type Props={
- illustration?:'dispatch'|'return'|'purchase'|'sale'|'game'|'savings'|'publish'|'caution'|'aquarium'|'boost'|'unfriend'
+ illustration?:'dispatch'|'return'|'purchase'|'sale'|'game'|'savings'|'publish'|'caution'|'aquarium'|'boost'|'unfriend'|'fishing-leave'
  open:boolean
  onOpenChange:(open:boolean)=>void
  title:ReactNode
@@ -15,10 +15,12 @@ type Props={
  confirmDisabled?:boolean
  error?:string
  children?:ReactNode
+ confirmLabel?:string
+ cancelLabel?:string
 }
 
 /** Shared Pongi confirmation. The caller closes it only after a successful action. */
-export function ConfirmDialog({open,onOpenChange,title,description,onConfirm,trigger,busy=false,confirmDisabled=false,error,children,illustration='caution'}:Props){
+export function ConfirmDialog({open,onOpenChange,title,description,onConfirm,trigger,busy=false,confirmDisabled=false,error,children,illustration='caution',confirmLabel='확인',cancelLabel='취소'}:Props){
  const cancel=useRef<HTMLButtonElement>(null)
  return <AlertDialog open={open} onOpenChange={next=>{if(!busy)onOpenChange(next)}}>
   {trigger&&<AlertDialogTrigger render={trigger}/>}
@@ -31,8 +33,8 @@ export function ConfirmDialog({open,onOpenChange,title,description,onConfirm,tri
    {children&&<div className="mt-5 text-left">{children}</div>}
    {error&&<p role="alert" className="mt-3 text-xs leading-5 text-destructive">{error}</p>}
    <div className="mt-6 grid grid-cols-2 gap-2.5">
-    <AlertDialogCancel ref={cancel} variant="secondary" className="min-h-11 rounded-xl border-0" disabled={busy}>취소</AlertDialogCancel>
-    <Button className="min-h-11 rounded-xl" disabled={busy||confirmDisabled} aria-busy={busy} onClick={()=>{if(!busy&&!confirmDisabled)onConfirm()}}>{busy?'처리 중…':'확인'}</Button>
+    <AlertDialogCancel ref={cancel} variant="secondary" className="min-h-11 rounded-xl border-0" disabled={busy}>{cancelLabel}</AlertDialogCancel>
+    <Button className="min-h-11 rounded-xl" disabled={busy||confirmDisabled} aria-busy={busy} onClick={()=>{if(!busy&&!confirmDisabled)onConfirm()}}>{busy?'처리 중…':confirmLabel}</Button>
    </div>
   </AlertDialogContent>
  </AlertDialog>

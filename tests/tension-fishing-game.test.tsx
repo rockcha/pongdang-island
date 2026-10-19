@@ -5,6 +5,24 @@ import { TensionFishingGame } from '@/features/fishing/tension-fishing-game'
 import { fishingBiteSeconds } from '@/features/fishing/tension-game'
 
 afterEach(()=>{cleanup();vi.useRealTimers();vi.restoreAllMocks()})
+it('freezes the current cast for a leave dialog and resumes without resetting or holding the reel',async()=>{
+ vi.useFakeTimers();vi.spyOn(Math,'random').mockReturnValue(0)
+ const props={onCaught:vi.fn(),onCancel:vi.fn(),onFailed:vi.fn(),castId:'same-cast',challenge:{wait:.1}}
+ const {rerender}=render(<TensionFishingGame {...props}/>)
+ await act(async()=>{vi.advanceTimersByTime(150+fishingBiteSeconds(0)*1000)})
+ fireEvent.keyDown(screen.getByRole('button',{name:'꾹 눌러 당기기'}),{code:'Space'})
+ rerender(<TensionFishingGame {...props} paused/>)
+ const before=screen.getByRole('meter').getAttribute('aria-valuenow')
+ await act(async()=>{vi.advanceTimersByTime(20000)})
+ expect(screen.getByRole('meter').getAttribute('aria-valuenow')).toBe(before)
+ expect(props.onFailed).not.toHaveBeenCalled()
+ expect(props.onCaught).not.toHaveBeenCalled()
+ rerender(<TensionFishingGame {...props}/>)
+ expect(screen.getByRole('meter').getAttribute('aria-valuenow')).toBe(before)
+ expect(screen.getByRole('button',{name:'꾹 눌러 당기기'}).getAttribute('aria-pressed')).toBe('false')
+ await act(async()=>{vi.advanceTimersByTime(300)})
+ expect(screen.getByRole('meter').getAttribute('aria-valuenow')).not.toBe(before)
+})
 it('never enables the reel or shows bites and gauges for chance failures',async()=>{
  vi.useFakeTimers();vi.spyOn(Math,'random').mockReturnValue(0)
  const failed=vi.fn(),caught=vi.fn()
@@ -27,15 +45,20 @@ it('preserves loaded scenery across casts while resetting gameplay',async()=>{
  vi.useFakeTimers()
  const props={onCaught:vi.fn(),onCancel:vi.fn(),onFailed:vi.fn()}
  const {container,rerender}=render(<TensionFishingGame {...props} active={false} castId="ready"/>)
+ expect((container.querySelector('[data-fishing-camera="front"]') as HTMLElement).style.opacity).toBe('1')
+ expect((container.querySelector('[data-fishing-camera="top"]') as HTMLElement).style.opacity).toBe('0')
  const sea=container.querySelector('[data-fishing-sea] image')!
  const platform=container.querySelector('[data-fishing-platform] image')!
  fireEvent.load(sea);fireEvent.load(platform)
  rerender(<TensionFishingGame {...props} castId="first" challenge={{wait:.1,failureAt:.2}}/>)
+ expect((container.querySelector('[data-fishing-camera="front"]') as HTMLElement).style.opacity).toBe('0')
+ expect((container.querySelector('[data-fishing-camera="top"]') as HTMLElement).style.opacity).toBe('1')
  expect(container.querySelector('[data-fishing-sea] image')).toBe(sea)
  expect(sea.getAttribute('opacity')).toBe('1');expect(platform.getAttribute('opacity')).toBe('1')
  await act(async()=>{vi.advanceTimersByTime(1500)})
  expect(props.onFailed).toHaveBeenCalledOnce()
  rerender(<TensionFishingGame {...props} active={false} castId="ready"/>)
+ expect((container.querySelector('[data-fishing-camera="front"]') as HTMLElement).style.opacity).toBe('1')
  rerender(<TensionFishingGame {...props} castId="second" challenge={{wait:3}}/>)
  expect(container.querySelector('[data-fishing-platform] image')).toBe(platform)
  expect((screen.getByRole('button',{name:'꾹 눌러 당기기'}) as HTMLButtonElement).disabled).toBe(true)

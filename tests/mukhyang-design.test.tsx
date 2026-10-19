@@ -8,7 +8,8 @@ import {rodThumbnailUrl} from '@/features/fishing/rod-image-assets'
 
 describe('묵향 해역 장비',()=>{
  it('connects the region painting and all moving equipment parts',()=>{
-  expect(fishingEnvironment('mukhyang').src).toBe('/fishing/environments/mukhyang.png')
+  expect(fishingEnvironment('mukhyang').frontSrc).toBe('/fishing/environments/mukhyang.png')
+  expect(fishingEnvironment('mukhyang').src).toBe('/fishing/close-water/mukhyang.png')
   expect(fishingRods.find(r=>r.id==='mukhyang')?.region).toBe('mukhyang')
   expect(rodThumbnailUrl('mukhyang')).toBe('/collectibles/equipment/rods/mukhyang/thumbnail.png')
   const markup=renderToStaticMarkup(<svg><RodSkinFrame id="mukhyang"/><RodSkinRotor id="mukhyang"/><RodSkinFloat id="mukhyang"/></svg>)

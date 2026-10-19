@@ -11251,5 +11251,37 @@
       "failure_reduction_bp": 200,
       "native_bonus_bp": 200
     }
+  ],
+  "harbor_vessels": [
+    {
+      "id": "fishing-raft",
+      "name": "낚시용 뗏목",
+      "price": 300,
+      "duration_minutes": 30,
+      "fuel_cost": 1,
+      "fishing_count": 2,
+      "sprite_path": "/port/fishing-raft-sprite.png",
+      "sort_order": 1
+    },
+    {
+      "id": "haeneomi-trawler",
+      "name": "해넘이 원양어선",
+      "price": 2400,
+      "duration_minutes": 360,
+      "fuel_cost": 5,
+      "fishing_count": 15,
+      "sprite_path": "/port/haeneomi-trawler-sprite.png",
+      "sort_order": 3
+    },
+    {
+      "id": "neoul-boat",
+      "name": "너울 낚싯배",
+      "price": 900,
+      "duration_minutes": 120,
+      "fuel_cost": 2,
+      "fishing_count": 5,
+      "sprite_path": "/port/neoul-boat-sprite.png",
+      "sort_order": 2
+    }
   ]
 }

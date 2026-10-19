@@ -1,0 +1,37 @@
+﻿{
+    "file":  "assets/storage-upload/new/20261019-152225/fish/epic/starpattern-manta_sprite.png",
+    "storage_path":  "fish/epic/starpattern-manta_sprite.png",
+    "patch":  [
+                  460,
+                  395,
+                  55,
+                  45
+              ],
+    "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  0
+                   },
+                   {
+                       "frame":  1,
+                       "dx":  -45,
+                       "dy":  0,
+                       "rmse":  18.914883214483346
+                   },
+                   {
+                       "frame":  2,
+                       "dx":  6,
+                       "dy":  -80,
+                       "rmse":  17.195266586548058
+                   },
+                   {
+                       "frame":  3,
+                       "dx":  -28,
+                       "dy":  -79,
+                       "rmse":  18.076688487293978
+                   }
+               ]
+}

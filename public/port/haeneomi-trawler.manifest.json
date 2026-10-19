@@ -1,0 +1,14 @@
+{
+  "generator": "Built-in image_gen",
+  "path": "public/port/haeneomi-trawler-sprite.png",
+  "reference": "public/port/neoul-boat-sprite.png",
+  "prompt": "Use case: stylized-concept. New long-distance fishing boat for cozy Pongdang island game. Reference is a 2x2 four-frame boat sheet: match its warm clean cartoon outline, soft polished shading, transparent canvas, same camera and grid format, but design a DISTINCT larger ocean-going trawler. FOUR equal square cells in 2x2 sprite sheet. Boat has long rounded warm dark brown wooden hull with muted terracotta-red stripe and cream rail, two-level cream cabin with ochre-orange roof, deep blue windows, a small mast and golden pennant, tidy rolled fishing net on rear deck and two rope fenders. Bow points RIGHT in every cell. No sail, no people, no text, no name painted. Identical rigid hull and cabin size, position, perspective in all four cells; centered fully inside each cell with10% margin. Only pennant, loose net corner and rope gently flutter between four frames. No whole hull vertical shift or camera/scale change. Transparent background, no grid lines, no scenery or water, no cast-shadow plate, no words, no labels. Clean attractive readable silhouette, matches other game boats.",
+  "frames": {
+    "columns": 2,
+    "rows": 2
+  },
+  "transparent": true,
+  "sha256": "ac145b62933ffcf6bc7ea456c7794d5acd8984b900105476a819060cd391e45c",
+  "width": 1254,
+  "height": 1254
+}

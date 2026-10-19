@@ -17,10 +17,30 @@ afterAll(async()=>{await db?.close()})
 it('returns requested goals and rewards with no progress for a new player',async()=>{
  const s=await state();expect(s.daily.quests).toHaveLength(6);expect(s.weekly.quests).toHaveLength(8)
  expect(s.daily.bonus).toBe(200);expect(s.weekly.bonus).toBe(1000)
- expect(s.daily.quests.every(q=>q.reward===30&&!q.complete)).toBe(true)
- expect(s.weekly.quests.every(q=>q.reward===50&&!q.complete)).toBe(true)
+ expect(s.daily.quests.filter(q=>q.rewardFuel).map(q=>[q.id,q.rewardFuel,q.reward])).toEqual([['post',1,0],['depart',1,0],['care',1,0]])
+ expect(s.daily.quests.every(q=>!q.complete)).toBe(true)
+ expect(s.weekly.quests.filter(q=>q.rewardFuel).map(q=>[q.id,q.rewardFuel,q.reward])).toEqual([['trade',5,0],['gift',5,0]])
+ expect(s.weekly.quests.every(q=>!q.complete)).toBe(true)
  await expect(claim('daily',s.daily.start,'fish')).rejects.toThrow(/INCOMPLETE/)
  await expect(claim('daily',s.daily.start,'all')).rejects.toThrow(/INCOMPLETE/)
+})
+it('does not pay fuel again for a quest already claimed before the reward changed',async()=>{
+ await user("select public.exchange_post('sell','bait','bait',1,'gold','gold',30,gen_random_uuid())")
+ const s=await state()
+ await db.query("insert into app_private.quest_claims(user_id,period_kind,period_start,quest_id,gold) values($1,'daily',$2,'post',30)",[uid,s.daily.start])
+ expect((await claim('daily',s.daily.start,'post')).creditedFuel).toBe(0)
+ expect((await db.query('select inventory from public.player_wallets where user_id=$1',[uid])).rows[0].inventory.fuel).toBeUndefined()
+})
+it('checks the fuel cap atomically and can grant fuel when gold is already full',async()=>{
+ await user("select public.exchange_post('sell','bait','bait',1,'gold','gold',30,gen_random_uuid())")
+ const s=await state()
+ await db.query("update public.player_wallets set gold=1000000000,inventory=jsonb_set(inventory,'{fuel}','100000') where user_id=$1",[uid])
+ await expect(claim('daily',s.daily.start,'post')).rejects.toThrow(/FUEL_LIMIT/)
+ expect((await state()).daily.quests.find(q=>q.id==='post').claimed).toBe(false)
+ await db.query("update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}','0') where user_id=$1",[uid])
+ const result=await claim('daily',s.daily.start,'post')
+ expect(result).toMatchObject({credited:0,creditedFuel:1})
+ expect(await gold()).toBe(1000000000)
 })
 it('counts failed manual attempts and credits a reward exactly once',async()=>{
  await attempts();const s=await state(),before=await gold()
@@ -67,6 +87,8 @@ it('grants the daily completion bonus once and does not require individual claim
  const tank=(await user('select public.aquarium_state() s',[],other)).rows[0].s.tanks[0].id
  await db.query('insert into public.aquarium_feedings(visitor_id,owner_id,tank_id,operation_id,clicks,completed_at) values($1,$2,$3,gen_random_uuid(),3,now())',[uid,other,tank])
  const s=await state();expect(s.daily.bonusReady).toBe(true);const before=await gold()
+ for(const id of ['post','depart','care']){expect((await claim('daily',s.daily.start,id)).creditedFuel).toBe(1);expect((await claim('daily',s.daily.start,id)).creditedFuel).toBe(0)}
+ expect((await db.query('select inventory from public.player_wallets where user_id=$1',[uid])).rows[0].inventory.fuel).toBe(3)
  expect((await claim('daily',s.daily.start,'all')).credited).toBe(200)
  expect((await claim('daily',s.daily.start,'all')).credited).toBe(0);expect(await gold()).toBe(before+200)
 })
@@ -94,10 +116,11 @@ it('counts real trades and sent gifts separately and pays all weekly rewards onl
  const s=await state();expect(s.weekly.bonusReady).toBe(true)
  expect(s.weekly.quests.find(q=>q.id==='gift').progress).toBe(3);expect(s.weekly.quests.find(q=>q.id==='trade').progress).toBe(7)
  const before=await gold()
- for(const q of s.weekly.quests){expect((await claim('weekly',s.weekly.start,q.id)).credited).toBe(50)}
+ for(const q of s.weekly.quests){const result=await claim('weekly',s.weekly.start,q.id);expect(result.credited).toBe(q.reward);expect(result.creditedFuel).toBe(q.rewardFuel??0)}
+ expect((await db.query('select inventory from public.player_wallets where user_id=$1',[uid])).rows[0].inventory.fuel).toBe(10)
  expect((await claim('weekly',s.weekly.start,'all')).credited).toBe(1000)
  expect((await claim('weekly',s.weekly.start,'all')).credited).toBe(0)
- expect(await gold()).toBe(before+1400)
+ expect(await gold()).toBe(before+1300)
 })
 
 it('omits the weekly rod purchase for full ownership while preserving a purchase this week',async()=>{

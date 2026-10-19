@@ -3,6 +3,34 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource/gowun-dodum";
 
+.port-boat-sprite { background-size: 200% 200%; background-position: 0 0; background-repeat: no-repeat; }
+.port-boat-sprite[data-animate] { animation: port-boat-frames 2.8s steps(1) infinite; }
+.port-boat-bob { position: relative; animation: port-boat-bob 3s ease-in-out infinite; }
+.port-boat-wake { position: absolute; left: 8%; right: 8%; bottom: 14%; height: 14%; border-bottom: 2px solid #e8ffff99; border-radius: 50%; background: #a6e1dc33; }
+.port-vessel[data-phase="departing"] { animation: port-depart 1.8s ease-in both; pointer-events: none; }
+.port-vessel[data-phase="arriving"] { animation: port-arrive 1.8s ease-out both; pointer-events: none; }
+@keyframes port-boat-frames { 0%,100% { background-position: 0 0; } 25% { background-position: 100% 0; } 50% { background-position: 0 100%; } 75% { background-position: 100% 100%; } }
+@keyframes port-boat-bob { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-4px) rotate(1deg); } }
+@keyframes port-depart { from { transform: translate(0,0) scale(1); opacity: 1; } to { transform: translate(170%,-60px) scale(.45); opacity: 0; } }
+@keyframes port-arrive { from { transform: translate(170%,-60px) scale(.45); opacity: 0; } to { transform: translate(0,0) scale(1); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+ .port-boat-sprite[data-animate], .port-boat-bob, .port-vessel[data-phase] { animation: none; }
+ .port-vessel[data-phase="departing"] { opacity: 0; }
+}
+
+.journey-progress-fill { width: 100%; animation: journey-progress-fill 1.5s linear both; }
+.journey-progress-fill[data-indeterminate] { animation: journey-progress-loading 2.4s ease-in-out infinite; }
+.journey-progress-boat { transform-origin: 50% 80%; animation: journey-boat-bob 1.1s ease-in-out infinite; }
+.journey-progress-wave { background: repeating-linear-gradient(115deg, transparent 0 12px, #ffffff30 13px 16px, transparent 17px 28px); background-size: 56px 100%; animation: journey-water-flow 1.8s linear infinite; }
+@keyframes journey-progress-fill { from { width: 0%; } to { width: 100%; } }
+@keyframes journey-progress-loading { 0%, 100% { width: 12%; } 50% { width: 88%; } }
+@keyframes journey-boat-bob { 0%, 100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-3px) rotate(3deg); } }
+@keyframes journey-water-flow { to { background-position: -56px 0; } }
+@media (prefers-reduced-motion: reduce) {
+ .journey-progress-fill, .journey-progress-fill[data-indeterminate], .journey-progress-boat, .journey-progress-wave { animation: none; }
+ .journey-progress-fill[data-indeterminate] { width: 50%; }
+}
+
 @custom-variant dark (&:is(.dark *));
 
 .portrait-orientation-notice { display: none; }
@@ -43,6 +71,18 @@
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
 }
+
+.music-playing-dot { box-shadow: 0 0 6px #22c55e99; }
+.music-disc { animation: music-disc-spin 5s linear infinite; animation-play-state: paused; transform-origin: center; }
+.music-disc[data-playing="true"] { animation-play-state: running; }
+@keyframes music-disc-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .music-disc { animation: none; } }
+.music-equalizer span { height: 45%; }
+@media (prefers-reduced-motion: no-preference) {
+ .music-equalizer span { animation: music-equalizer 850ms ease-in-out infinite alternate; }
+ .music-playing-dot { animation: expedition-status-pulse 2.4s ease-in-out infinite; }
+}
+@keyframes music-equalizer { from { height: 25%; } to { height: 100%; } }
 
 .segmented-control {
     width: 100%;

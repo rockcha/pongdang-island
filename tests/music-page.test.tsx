@@ -1,0 +1,35 @@
+import {afterEach,expect,it,vi} from 'vitest'
+import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
+import {MusicRoomPage} from '@/pages/music-room-page'
+
+const music=vi.hoisted(()=>({tracks:[{id:'28kGcceYcOI',title:'현재 노래',customName:''},{id:'fqSVyUeiduI',title:'다른 노래',customName:''}],activeId:'28kGcceYcOI',playing:true,setPlayerSlot:vi.fn(),play:vi.fn(),pause:vi.fn(),stop:vi.fn(),add:vi.fn(),remove:vi.fn(),rename:vi.fn()}))
+vi.mock('@/features/music/music-provider',()=>({useMusic:()=>music}))
+afterEach(()=>{cleanup();vi.clearAllMocks();vi.unstubAllGlobals()})
+it('shows current artwork, keeps other songs in a brown select, and pauses without stopping',async()=>{
+ render(<MusicRoomPage/>)
+ expect(screen.getByAltText('현재 노래 썸네일')).toBeTruthy()
+ expect(screen.queryByRole('option',{name:'현재 노래'})).toBeNull()
+ expect(screen.queryByText('나만의 작은 음악 시간')).toBeNull()
+ expect(screen.queryByText('영상 펼치기')).toBeNull()
+ expect(screen.queryByText('다른 페이지에서도 음악은 이어져요.')).toBeNull()
+ expect(screen.queryByRole('link')).toBeNull()
+ expect(screen.queryByLabelText('유튜브 링크')).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'음악 일시정지'}))
+ expect(music.pause).toHaveBeenCalledOnce();expect(music.stop).not.toHaveBeenCalled()
+ fireEvent.click(screen.getByRole('combobox',{name:'음악 선택'}))
+ const option=await screen.findByRole('option',{name:'다른 노래'})
+ expect(screen.queryByRole('option',{name:'현재 노래'})).toBeNull()
+ fireEvent.click(option)
+ expect(music.play).toHaveBeenCalledWith('fqSVyUeiduI')
+})
+it('adds a named song from the modal and closes after success',async()=>{
+ vi.stubGlobal('fetch',vi.fn().mockResolvedValue({ok:true,json:async()=>({title:'원래 영상 제목'})}))
+ render(<MusicRoomPage/>)
+ fireEvent.click(screen.getByRole('button',{name:'음악 추가'}))
+ await screen.findByRole('dialog')
+ fireEvent.change(screen.getByLabelText('유튜브 링크'),{target:{value:'https://youtu.be/icKtd3wUBug'}})
+ fireEvent.change(screen.getByLabelText(/이름 선택/),{target:{value:'쉬는 시간'}})
+ fireEvent.click(screen.getByRole('button',{name:'추가하기'}))
+ await waitFor(()=>expect(music.add).toHaveBeenCalledWith({id:'icKtd3wUBug',title:'원래 영상 제목',customName:'쉬는 시간'}))
+ await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())
+})

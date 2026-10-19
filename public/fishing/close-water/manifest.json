@@ -1,0 +1,116 @@
+{
+  "generator": "Built-in image_gen",
+  "createdAt": "2026-10-19T07:50:32.611Z",
+  "assets": [
+    {
+      "id": "pongdang",
+      "path": "public/fishing/close-water/pongdang.png",
+      "prompt": "Use case: stylized-concept. Asset type: portrait 1024x1536 fishing game background. Reference image is the approved White Night ice sea: match its painterly finish, CLOSE oblique downward camera and convincing large surface ripples; replace the ice biome completely with the requested region. Primary request: Sunny island home sea, rich clear blue and turquoise water, large rounded submerged coastal rocks near the lower left and right, soft warm sun dancing over broad ripples, subtle seaweed and sand beneath near edges. Welcoming peaceful coastal atmosphere. Composition: camera just above a fishing ledge looking diagonally down at nearby water, around 45 degrees downward, NOT a distant overhead map, NOT orthographic top-down. Water fills the whole frame; no horizon, sky, dock, platform, foreground dry ground, fishing rod, float, fish, characters, text or interface. Near lower sides have larger submerged forms, upper ripples become smaller in perspective. Keep the middle 45 percent clear for game float, but richly paint the surface with layered gentle ripples, attractive natural lighting, water caustics and refracted underwater forms. Underwater details visible softly through surface reflection, not crystal-clear aquarium. Refined lush hand-painted fantasy game environment, appealing detailed composition, natural region colors. Full opaque image, no transparent margins.",
+      "reference": "public/fishing/environments/whitenight.png",
+      "sha256": "0f941c26c5cb06a87d7f6c07ecb4940d6210da9477486b174c907e4c36763213",
+      "width": 1024,
+      "height": 1536,
+      "transparent": false
+    },
+    {
+      "id": "coral",
+      "path": "public/fishing/close-water/coral.png",
+      "prompt": "Use case: stylized-concept. Asset type: portrait 1024x1536 fishing game background. Reference image is the approved White Night ice sea: match its painterly finish, CLOSE oblique downward camera and convincing large surface ripples; replace the ice biome completely with the requested region. Primary request: Coral shallows, beautiful blue-green turquoise water, a few broad large blush pink and peach coral clusters under the water at the near left and right, partly concealed by reflective ripples, pale limestone and sandy patches. Water remains the main subject, coral is soft underwater color not a sharp aquarium display. Composition: camera just above a fishing ledge looking diagonally down at nearby water, around 45 degrees downward, NOT a distant overhead map, NOT orthographic top-down. Water fills the whole frame; no horizon, sky, dock, platform, foreground dry ground, fishing rod, float, fish, characters, text or interface. Near lower sides have larger submerged forms, upper ripples become smaller in perspective. Keep the middle 45 percent clear for game float, but richly paint the surface with layered gentle ripples, attractive natural lighting, water caustics and refracted underwater forms. Underwater details visible softly through surface reflection, not crystal-clear aquarium. Refined lush hand-painted fantasy game environment, appealing detailed composition, natural region colors. Full opaque image, no transparent margins.",
+      "reference": "public/fishing/environments/whitenight.png",
+      "sha256": "4255bf186bb7a41b59ade91abe14c334dc74b7f52311c2b756c0cc4b004b3032",
+      "width": 1024,
+      "height": 1536,
+      "transparent": false
+    },
+    {
+      "id": "mistmoon",
+      "path": "public/fishing/close-water/mistmoon.png",
+      "prompt": "Use case: stylized-concept. Asset type: portrait 1024x1536 fishing game background. Reference image is the approved White Night ice sea: match its painterly finish, CLOSE oblique downward camera and convincing large surface ripples; replace the ice biome completely with the requested region. Primary request: Misty moon sea at evening, rich muted slate blue and lavender water with silver moon reflections, large partly submerged dark rounded rocks and sparse underwater pale grasses at near sides, faint drifting mist near far upper edge. Moody beautiful and readable. Composition: camera just above a fishing ledge looking diagonally down at nearby water, around 45 degrees downward, NOT a distant overhead map, NOT orthographic top-down. Water fills the whole frame; no horizon, sky, dock, platform, foreground dry ground, fishing rod, float, fish, characters, text or interface. Near lower sides have larger submerged forms, upper ripples become smaller in perspective. Keep the middle 45 percent clear for game float, but richly paint the surface with layered gentle ripples, attractive natural lighting, water caustics and refracted underwater forms. Underwater details visible softly through surface reflection, not crystal-clear aquarium. Refined lush hand-painted fantasy game environment, appealing detailed composition, natural region colors. Full opaque image, no transparent margins.",
+      "reference": "public/fishing/environments/whitenight.png",
+      "sha256": "b2f23bd72873959fa6d58778501c9addcb3ea4b02e58926c5d2a40e7ccb79604",
+      "width": 1024,
+      "height": 1536,
+      "transparent": false
+    },
+    {
+      "id": "starruins",
+      "path": "public/fishing/close-water/starruins.png",
+      "prompt": "Use case: stylized-concept. Asset type: portrait 1024x1536 fishing game background. Reference image is the approved White Night ice sea: match its painterly finish, CLOSE oblique downward camera and convincing large surface ripples; replace the ice biome completely with the requested region. Primary request: Sleeping star ruins sea, luminous teal and deep blue water with a few golden reflected star glints, large ancient pale stone step fragments and broken carved pillars beneath the near side water, soft underwater shadows and gentle wave refraction. Enchanted ancient coastal ruins. Composition: camera just above a fishing ledge looking diagonally down at nearby water, around 45 degrees downward, NOT a distant overhead map, NOT orthographic top-down. Water fills the whole frame; no horizon, sky, dock, platform, foreground dry ground, fishing rod, float, fish, characters, text or interface. Near lower sides have larger submerged forms, upper ripples become smaller in perspective. Keep the middle 45 percent clear for game float, but richly paint the surface with layered gentle ripples, attractive natural lighting, water caustics and refracted underwater forms. Underwater details visible softly through surface reflection, not crystal-clear aquarium. Refined lush hand-painted fantasy game environment, appealing detailed composition, natural region colors. Full opaque image, no transparent margins.",
+      "reference": "public/fishing/environments/whitenight.png",
+      "sha256": "5c6dd44a05e1fa848ff1d75e60df17001d032edc812e40a56ce52a4fb5203e2a",
+      "width": 1024,
+      "height": 1536,
+      "transparent": false
+    },
+    {
+      "id": "dreamabyss",
+      "path": "public/fishing/close-water/dreamabyss.png",
+      "prompt": "Use case: stylized-concept. Asset type: portrait 1024x1536 fishing game background. Reference image is the approved White Night ice sea: match its painterly finish, CLOSE oblique downward camera and convincing large surface ripples; replace the ice biome completely with the requested region. Primary request: Dream abyss sea, deep indigo violet water with silver lavender small rippling highlights, large shadowy rock ledges submerged close to left and right, sparse soft bioluminescent blue violet growth dimly visible through dark translucent water. Dreamlike beautiful, no monsters or eyes, not neon. Composition: camera just above a fishing ledge looking diagonally down at nearby water, around 45 degrees downward, NOT a distant overhead map, NOT orthographic top-down. Water fills the whole frame; no horizon, sky, dock, platform, foreground dry ground, fishing rod, float, fish, characters, text or interface. Near lower sides have larger submerged forms, upper ripples become smaller in perspective. Keep the middle 45 percent clear for game float, but richly paint the surface with layered gentle ripples, attractive natural lighting, water caustics and refracted underwater forms. Underwater details visible softly through surface reflection, not crystal-clear aquarium. Refined lush hand-painted fantasy game environment, appealing detailed composition, natural region colors. Full opaque image, no transparent margins.",
+      "reference": "public/fishing/environments/whitenight.png",
+      "sha256": "4919805833fa1f65efb7d670932d3330b5f05ed3abf268498145c1f9a7069b52",
+      "width": 1024,
+      "height": 1536,
+      "transparent": false
+    },
+    {
+      "id": "primal",
+      "path": "public/fishing/close-water/primal.png",
+      "prompt": "Use case: stylized-concept. Asset type: portrait 1024x1536 fishing game background. Reference image is the approved White Night ice sea: match its painterly finish, CLOSE oblique downward camera and convincing large surface ripples; replace the ice biome completely with the requested region. Primary request: Prehistoric island water, rich jade green and petrol turquoise, massive submerged weathered dark rocks and ancient root-like forms near both side edges, a few fern and primitive marine plant silhouettes softly visible under water, soft warm daylight and lively ripples. Subtle Paleozoic mood, no dinosaurs, no sharp fossil museum exhibit. Composition: camera just above a fishing ledge looking diagonally down at nearby water, around 45 degrees downward, NOT a distant overhead map, NOT orthographic top-down. Water fills the whole frame; no horizon, sky, dock, platform, foreground dry ground, fishing rod, float, fish, characters, text or interface. Near lower sides have larger submerged forms, upper ripples become smaller in perspective. Keep the middle 45 percent clear for game float, but richly paint the surface with layered gentle ripples, attractive natural lighting, water caustics and refracted underwater forms. Underwater details visible softly through surface reflection, not crystal-clear aquarium. Refined lush hand-painted fantasy game environment, appealing detailed composition, natural region colors. Full opaque image, no transparent margins.",
+      "reference": "public/fishing/environments/whitenight.png",
+      "sha256": "0328d9d9dfcc1c8d7093f19d2132266b6a79930f6e0a87d5f32a396847f2e2e9",
+      "width": 1024,
+      "height": 1536,
+      "transparent": false
+    },
+    {
+      "id": "bluegrove",
+      "path": "public/fishing/close-water/bluegrove.png",
+      "prompt": "Use case: stylized-concept. Asset type: portrait 1024x1536 fishing game background. Reference image is the approved White Night ice sea: match its painterly finish, CLOSE oblique downward camera and convincing large surface ripples; replace the ice biome completely with the requested region. Primary request: Blue grove coastal water, crystalline cyan to deep azure blue, large smooth river stone ledges below water near sides with a few soft green aquatic plants and leaf reflections, rippling sunlight from leafy shore outside frame. Cool fresh clean atmosphere. Composition: camera just above a fishing ledge looking diagonally down at nearby water, around 45 degrees downward, NOT a distant overhead map, NOT orthographic top-down. Water fills the whole frame; no horizon, sky, dock, platform, foreground dry ground, fishing rod, float, fish, characters, text or interface. Near lower sides have larger submerged forms, upper ripples become smaller in perspective. Keep the middle 45 percent clear for game float, but richly paint the surface with layered gentle ripples, attractive natural lighting, water caustics and refracted underwater forms. Underwater details visible softly through surface reflection, not crystal-clear aquarium. Refined lush hand-painted fantasy game environment, appealing detailed composition, natural region colors. Full opaque image, no transparent margins.",
+      "reference": "public/fishing/environments/whitenight.png",
+      "sha256": "70b9c3fc3573b8a3b3467bd82c4aded9278ed3dbbda950641db019f193b10c2a",
+      "width": 1024,
+      "height": 1536,
+      "transparent": false
+    },
+    {
+      "id": "cloudferry",
+      "path": "public/fishing/close-water/cloudferry.png",
+      "prompt": "Use case: stylized-concept. Asset type: portrait 1024x1536 fishing game background. Reference image is the approved White Night ice sea: match its painterly finish, CLOSE oblique downward camera and convincing large surface ripples; replace the ice biome completely with the requested region. Primary request: Cloud ferry fantasy water, soft turquoise blue-green water and airy cream cloud reflections on gently rolling small waves, pale rounded rock shelves submerged near left and right and faint green aquatic grass, warm floating sky-island mood suggested through reflections only. No horizon or sky. Composition: camera just above a fishing ledge looking diagonally down at nearby water, around 45 degrees downward, NOT a distant overhead map, NOT orthographic top-down. Water fills the whole frame; no horizon, sky, dock, platform, foreground dry ground, fishing rod, float, fish, characters, text or interface. Near lower sides have larger submerged forms, upper ripples become smaller in perspective. Keep the middle 45 percent clear for game float, but richly paint the surface with layered gentle ripples, attractive natural lighting, water caustics and refracted underwater forms. Underwater details visible softly through surface reflection, not crystal-clear aquarium. Refined lush hand-painted fantasy game environment, appealing detailed composition, natural region colors. Full opaque image, no transparent margins.",
+      "reference": "public/fishing/environments/whitenight.png",
+      "sha256": "73898e616725605fe8b84cff5882effb54d95d4a3aea73c27e97b1540edc149d",
+      "width": 1024,
+      "height": 1536,
+      "transparent": false
+    },
+    {
+      "id": "scrapisle",
+      "path": "public/fishing/close-water/scrapisle.png",
+      "prompt": "Use case: stylized-concept. Asset type: portrait 1024x1536 fishing game background. Reference image is the approved White Night ice sea: match its painterly finish, CLOSE oblique downward camera and convincing large surface ripples; replace the ice biome completely with the requested region. Primary request: Verdigris scrap island water, beautiful muted jade green water with warm copper sunlight highlights, a few large old rust-brown gear fragments and rounded metal plates softened beneath water near sides among dark stones, small aquatic plants, gentle wave reflections. Cozy reclaimed harbor, not toxic or oily. Composition: camera just above a fishing ledge looking diagonally down at nearby water, around 45 degrees downward, NOT a distant overhead map, NOT orthographic top-down. Water fills the whole frame; no horizon, sky, dock, platform, foreground dry ground, fishing rod, float, fish, characters, text or interface. Near lower sides have larger submerged forms, upper ripples become smaller in perspective. Keep the middle 45 percent clear for game float, but richly paint the surface with layered gentle ripples, attractive natural lighting, water caustics and refracted underwater forms. Underwater details visible softly through surface reflection, not crystal-clear aquarium. Refined lush hand-painted fantasy game environment, appealing detailed composition, natural region colors. Full opaque image, no transparent margins.",
+      "reference": "public/fishing/environments/whitenight.png",
+      "sha256": "7a28114f4d3ea8d3120b6886e8ab61972da5e4b9c9313c5dfe18a2edb32cb398",
+      "width": 1024,
+      "height": 1536,
+      "transparent": false
+    },
+    {
+      "id": "mukhyang",
+      "path": "public/fishing/close-water/mukhyang.png",
+      "prompt": "Use case: stylized-concept. Asset type: portrait 1024x1536 fishing game background. Reference image is the approved White Night ice sea: match its painterly finish, CLOSE oblique downward camera and convincing large surface ripples; replace the ice biome completely with the requested region. Primary request: Ink fragrance sea, silver sage green gray water with fine dark ink-blue ripple shadows and soft pearl highlights, large submerged dark smooth stones and faint aquatic reeds near sides, subtle elegant Korean ink landscape atmosphere translated into painterly water. No distant landscape or horizon, water close and tactile. Composition: camera just above a fishing ledge looking diagonally down at nearby water, around 45 degrees downward, NOT a distant overhead map, NOT orthographic top-down. Water fills the whole frame; no horizon, sky, dock, platform, foreground dry ground, fishing rod, float, fish, characters, text or interface. Near lower sides have larger submerged forms, upper ripples become smaller in perspective. Keep the middle 45 percent clear for game float, but richly paint the surface with layered gentle ripples, attractive natural lighting, water caustics and refracted underwater forms. Underwater details visible softly through surface reflection, not crystal-clear aquarium. Refined lush hand-painted fantasy game environment, appealing detailed composition, natural region colors. Full opaque image, no transparent margins.",
+      "reference": "public/fishing/environments/whitenight.png",
+      "sha256": "71b34708f6fbb78ca7707bbe3fcd0d21347cd7bced5038b3e366542ea03f6ae7",
+      "width": 1024,
+      "height": 1536,
+      "transparent": false
+    },
+    {
+      "id": "siren",
+      "path": "public/fishing/close-water/siren.png",
+      "prompt": "Use case: stylized-concept. Asset type: portrait 1024x1536 fishing game background. Reference image is the approved White Night ice sea: match its painterly finish, CLOSE oblique downward camera and convincing large surface ripples; replace the ice biome completely with the requested region. Primary request: Siren strait sea, beautiful aquamarine emerald turquoise water, large pale marble rock ledges and a few softly submerged pearlescent shell shapes near sides, elegant gentle curves of ripples and sun sparkle, marine fantasy atmosphere. No mermaids or characters. Composition: camera just above a fishing ledge looking diagonally down at nearby water, around 45 degrees downward, NOT a distant overhead map, NOT orthographic top-down. Water fills the whole frame; no horizon, sky, dock, platform, foreground dry ground, fishing rod, float, fish, characters, text or interface. Near lower sides have larger submerged forms, upper ripples become smaller in perspective. Keep the middle 45 percent clear for game float, but richly paint the surface with layered gentle ripples, attractive natural lighting, water caustics and refracted underwater forms. Underwater details visible softly through surface reflection, not crystal-clear aquarium. Refined lush hand-painted fantasy game environment, appealing detailed composition, natural region colors. Full opaque image, no transparent margins.",
+      "reference": "public/fishing/environments/whitenight.png",
+      "sha256": "ca90f4e668bac9ba2dcadb1aa18ecf2c2bdf1a0e83426129f41b990082fba5ba",
+      "width": 1024,
+      "height": 1536,
+      "transparent": false
+    }
+  ]
+}

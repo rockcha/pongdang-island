@@ -12,7 +12,7 @@ const vessel={id:'dinghy',name:'꼬마 통통배',price:0,duration_minutes:30,mi
 const base={serverNow:'2026-10-18T12:00:00Z',testEnabled:true,vessels:[vessel],active:null,history:[],baits:[{id:'bait',name:'퐁당 지렁이',image_path:'/items/baits/pongdang-worm.png'}]}
 beforeEach(()=>{vi.clearAllMocks();mock.inventory={bait:10};mock.load.mockResolvedValue(base);mock.refresh.mockResolvedValue(undefined)})
 afterEach(cleanup)
-function show(shipyard=false){render(<MemoryRouter><ExpeditionPage shipyard={shipyard}/></MemoryRouter>)}
+function show(){render(<MemoryRouter><ExpeditionPage/></MemoryRouter>)}
 async function openCargo(){fireEvent.click(await screen.findByRole('button',{name:screen.queryByRole('button',{name:'미끼 변경'})?'미끼 변경':'미끼 선택하기'}));await screen.findByRole('dialog',{name:'미끼 선택하기'})}
 async function closeCargo(){fireEvent.click(screen.getByRole('button',{name:/적재 완료/}));await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())}
 it('enforces the departure minimum and confirms the chosen cargo',async()=>{
@@ -41,11 +41,6 @@ it('hides the instant return test button and offers collection only after arriva
  cleanup();mock.load.mockResolvedValue({...base,active:{...active,returns_at:base.serverNow}});show()
  expect(await screen.findByRole('button',{name:'결과 수령하기'})).toBeTruthy()
 })
-it('describes a permanent purchase using the shared confirmation',async()=>{
- mock.load.mockResolvedValue({...base,vessels:[{...vessel,id:'starlit',name:'별잠 심해탐사선',owned:false,price:6500,duration_minutes:1440}]});show(true)
- expect(await screen.findByText('24시간')).toBeTruthy();fireEvent.click(screen.getByRole('button',{name:/구매 6500 골드/}))
- const dialog=screen.getByRole('alertdialog');expect(within(dialog).getByText(/별잠 심해탐사선/)).toBeTruthy();expect(within(dialog).getByText(/계속 사용할 수 있어요/)).toBeTruthy()
-})
 it('shows failed trips clearly even when no collectibles were caught',async()=>{
  const active={id:'trip',region_id:'pongdang',vessel_snapshot:vessel,cargo:{bait:3},departed_at:'2026-10-18T11:00:00Z',returns_at:base.serverNow}
  mock.load.mockResolvedValue({...base,active});mock.change.mockResolvedValue({...base,receipt:{result:{items:[],failed:4,attempted:4,succeeded:0}}})
@@ -60,44 +55,43 @@ it('shows failed trips clearly even when no collectibles were caught',async()=>{
 })
 it('fills the selected bait without exceeding cargo capacity and supports one-tap adjustments',async()=>{
  show();await openCargo();const amount=await screen.findByRole('spinbutton',{name:'퐁당 지렁이 적재량'}) as HTMLInputElement
- fireEvent.click(screen.getByRole('button',{name:'최소 채우기'}));expect(amount.value).toBe('3')
- fireEvent.click(screen.getByRole('button',{name:'가득 싣기'}));expect(amount.value).toBe('5')
+ fireEvent.click(screen.getByRole('button',{name:'최소 채우기'}));expect(amount.value).toBe('1')
+ fireEvent.click(screen.getByRole('button',{name:'가득 싣기'}));expect(amount.value).toBe('10')
  expect((screen.getByRole('button',{name:'퐁당 지렁이 한 개 더 싣기'}) as HTMLButtonElement).disabled).toBe(true)
- fireEvent.click(screen.getByRole('button',{name:'퐁당 지렁이 한 개 빼기'}));expect(amount.value).toBe('4')
- fireEvent.change(amount,{target:{value:'999'}});expect(amount.value).toBe('5')
+ fireEvent.click(screen.getByRole('button',{name:'퐁당 지렁이 한 개 빼기'}));expect(amount.value).toBe('9')
+ fireEvent.change(amount,{target:{value:'999'}});expect(amount.value).toBe('10')
  await closeCargo()
  expect(screen.getByRole('button',{name:'퐁당섬'}).getAttribute('aria-pressed')).toBe('true')
 })
-it('changes owned vessels by swipe or button and clears incompatible cargo',async()=>{
- mock.load.mockResolvedValue({...base,vessels:[vessel,{...vessel,id:'breeze',name:'바람돛 낚싯배',min_baits:5,max_baits:10}]})
- show();await openCargo();const amount=await screen.findByRole('spinbutton') as HTMLInputElement
- fireEvent.click(screen.getByRole('button',{name:'최소 채우기'}));expect(amount.value).toBe('3')
- await closeCargo();fireEvent.click(screen.getByRole('button',{name:'다음 어선'}));await openCargo();expect((screen.getByRole('spinbutton') as HTMLInputElement).value).toBe('0');fireEvent.click(screen.getByRole('button',{name:'최소 채우기'}));await closeCargo()
- expect(screen.getByRole('heading',{name:'바람돛 낚싯배'})).toBeTruthy()
- const carousel=screen.getByLabelText('어선 선택')
- fireEvent.touchStart(carousel,{touches:[{clientX:100}]});fireEvent.touchEnd(carousel,{changedTouches:[{clientX:180}]})
- expect(screen.getByRole('heading',{name:'꼬마 통통배'})).toBeTruthy()
+it('always dispatches the little boat and does not offer a vessel picker',async()=>{
+ mock.load.mockResolvedValue({...base,vessels:[vessel,{...vessel,id:'breeze',name:'바람돛 낚싯배'}]})
+ show();await screen.findByRole('heading',{name:'꼬마 통통배'})
+ expect(screen.queryByRole('button',{name:'다음 어선'})).toBeNull()
+ expect(screen.queryByLabelText('어선 선택')).toBeNull()
+ expect(screen.queryByRole('heading',{name:'바람돛 낚싯배'})).toBeNull()
+ await openCargo();fireEvent.change(screen.getByRole('spinbutton'),{target:{value:'7'}});await closeCargo()
+ expect(screen.getByText('예상 조업 시간 1시간 10분')).toBeTruthy()
 })
 it('preserves mixed cargo across bait selection and keeps the visible capacity meter in sync',async()=>{
  mock.inventory={bait:10,bait_safe:10}
  mock.load.mockResolvedValue({...base,baits:[...base.baits,{id:'bait_safe',name:'이슬잎 경단',image_path:'/items/baits/dewleaf-dumpling.png'}]})
  show();await openCargo();await screen.findByRole('spinbutton',{name:'퐁당 지렁이 적재량'})
  fireEvent.click(screen.getByRole('button',{name:'최소 채우기'}))
- expect(screen.getByRole('progressbar',{name:'미끼 적재 현황'}).getAttribute('aria-valuenow')).toBe('3')
- expect(within(screen.getByRole('dialog')).getByLabelText('적재 3개')).toBeTruthy()
- expect(screen.getByLabelText('퐁당 지렁이 내 미끼 잔량 7개')).toBeTruthy()
+ expect(screen.getByRole('progressbar',{name:'미끼 적재 현황'}).getAttribute('aria-valuenow')).toBe('1')
+ expect(within(screen.getByRole('dialog')).getByLabelText('적재 1개')).toBeTruthy()
+ expect(screen.getByLabelText('퐁당 지렁이 내 미끼 잔량 9개')).toBeTruthy()
  fireEvent.click(screen.getByRole('button',{name:'이슬잎 경단 빠른 적재 선택'}))
  fireEvent.click(screen.getByRole('button',{name:'가득 싣기'}))
- expect((screen.getByRole('spinbutton',{name:'이슬잎 경단 적재량'}) as HTMLInputElement).value).toBe('2')
- expect(screen.getByLabelText('이슬잎 경단 내 미끼 잔량 8개')).toBeTruthy()
- expect(screen.getByText('내 미끼 8개 남음')).toBeTruthy()
- expect(screen.getByRole('progressbar').getAttribute('aria-valuenow')).toBe('5')
- expect(within(screen.getByRole('dialog')).getByText('가득 실었어요')).toBeTruthy()
+ expect((screen.getByRole('spinbutton',{name:'이슬잎 경단 적재량'}) as HTMLInputElement).value).toBe('10')
+ expect(screen.getByLabelText('이슬잎 경단 내 미끼 잔량 0개')).toBeTruthy()
+ expect(screen.getByText('내 미끼 0개 남음')).toBeTruthy()
+ expect(screen.getByRole('progressbar').getAttribute('aria-valuenow')).toBe('11')
+ expect(within(screen.getByRole('dialog')).getByText('출항 준비 완료')).toBeTruthy()
  fireEvent.click(screen.getByRole('button',{name:'퐁당 지렁이 빠른 적재 선택'}))
- expect((screen.getByRole('spinbutton',{name:'퐁당 지렁이 적재량'}) as HTMLInputElement).value).toBe('3')
+ expect((screen.getByRole('spinbutton',{name:'퐁당 지렁이 적재량'}) as HTMLInputElement).value).toBe('1')
  await closeCargo();expect(screen.queryByRole('spinbutton')).toBeNull();expect(screen.queryByLabelText('실은 미끼')).toBeNull()
- const summary=screen.getByLabelText('적재된 미끼 목록');expect(within(summary).getByText('×3')).toBeTruthy();expect(within(summary).getByText('×2')).toBeTruthy();expect(screen.queryByText('적재된 미끼가 없어요')).toBeNull()
- await openCargo();expect((screen.getByRole('spinbutton',{name:'퐁당 지렁이 적재량'}) as HTMLInputElement).value).toBe('3')
+ const summary=screen.getByLabelText('적재된 미끼 목록');expect(within(summary).getByText('×1')).toBeTruthy();expect(within(summary).getByText('×10')).toBeTruthy();expect(screen.queryByText('적재된 미끼가 없어요')).toBeNull()
+ await openCargo();expect((screen.getByRole('spinbutton',{name:'퐁당 지렁이 적재량'}) as HTMLInputElement).value).toBe('1')
 })
 it('keeps loaded bait inside the sheet and adjusts it with plus and minus',async()=>{
  mock.inventory={bait:10,bait_safe:10}
@@ -106,11 +100,11 @@ it('keeps loaded bait inside the sheet and adjusts it with plus and minus',async
  fireEvent.click(screen.getByRole('button',{name:'이슬잎 경단 빠른 적재 선택'}));fireEvent.click(screen.getByRole('button',{name:'이슬잎 경단 한 개 더 싣기'}));await closeCargo()
  expect(screen.queryByRole('spinbutton')).toBeNull();await openCargo();fireEvent.click(screen.getByRole('button',{name:'퐁당 지렁이 빠른 적재 선택'}))
  const dialog=await screen.findByRole('dialog')
- expect((within(dialog).getByRole('spinbutton',{name:'퐁당 지렁이 적재량'}) as HTMLInputElement).value).toBe('3')
+ expect((within(dialog).getByRole('spinbutton',{name:'퐁당 지렁이 적재량'}) as HTMLInputElement).value).toBe('1')
  fireEvent.click(within(dialog).getByRole('button',{name:'이슬잎 경단 빠른 적재 선택'}))
  fireEvent.click(within(dialog).getByRole('button',{name:'이슬잎 경단 한 개 빼기'}))
  expect((within(dialog).getByRole('spinbutton',{name:'이슬잎 경단 적재량'}) as HTMLInputElement).value).toBe('0')
- expect((within(dialog).getByRole('spinbutton',{name:'퐁당 지렁이 적재량'}) as HTMLInputElement).value).toBe('3')
+ expect((within(dialog).getByRole('spinbutton',{name:'퐁당 지렁이 적재량'}) as HTMLInputElement).value).toBe('1')
  fireEvent.click(within(dialog).getByRole('button',{name:'이슬잎 경단 한 개 더 싣기'}))
  expect(within(dialog).getByRole('button',{name:'이슬잎 경단 빠른 적재 선택'}).getAttribute('aria-pressed')).toBe('true')
 })

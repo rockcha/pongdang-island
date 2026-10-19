@@ -24,7 +24,7 @@ it('rejects locked routes and cancels the pending timer on unmount',async()=>{
  vi.useFakeTimers()
  load.mockResolvedValue({currentRegion:'pongdang',regions:[{id:'coral',name:'산호빛 여울',unlocked:false}]})
  const first=setup();await act(async()=>{})
- expect(screen.getByRole('alert').textContent).toContain('지도 조각')
+ expect(screen.getByRole('alert').textContent).toContain('지도가 없어 이동할 수 없어요.')
  first.unmount()
  load.mockResolvedValue({currentRegion:'pongdang',regions:[{id:'coral',name:'산호빛 여울',unlocked:true}]})
  const second=setup();await act(async()=>{});second.unmount()

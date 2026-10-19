@@ -5,6 +5,7 @@ import type { Species } from '@/features/collection/api'
 import type { TensionOptions } from './tension-game'
 import { plannedFailureMessages } from './fishing-practice'
 import { FishingWater } from './fishing-water'
+import {FishingStandby} from './fishing-environment'
 import { FishingHelp } from './fishing-help'
 import { FishingReel } from './fishing-reel'
 import type { FishingStart } from './fishing-reel'
@@ -15,7 +16,7 @@ import { RotateCcw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { fishBehavior, fishForce, fishStrength, newTensionGame, stepTensionGame } from './tension-game'
 
-export function TensionFishingGame({onCaught,active=true,regionId='pongdang',regionName,toolbarTarget,quiet=false,castId,challenge,outline,onFailed,practice=false,start,baitImage}:{baitImage?:string;regionName?:string;toolbarTarget?:HTMLElement|null;start?:FishingStart;practice?:boolean;challenge?:TensionOptions;outline?:Species|null;onFailed?:(reason:string)=>void;quiet?:boolean;castId?:string;regionId?:string;onCaught:()=>void;onCancel:()=>void;active?:boolean}){
+export function TensionFishingGame({onCaught,active=true,paused=false,regionId='pongdang',regionName,toolbarTarget,quiet=false,castId,challenge,outline,onFailed,practice=false,start,baitImage}:{baitImage?:string;regionName?:string;toolbarTarget?:HTMLElement|null;start?:FishingStart;practice?:boolean;challenge?:TensionOptions;outline?:Species|null;onFailed?:(reason:string)=>void;quiet?:boolean;castId?:string;regionId?:string;onCaught:()=>void;onCancel:()=>void;active?:boolean;paused?:boolean}){
  const {selected}=useRods()
  const rod=fishingRods.find(r=>r.id===selected)??fishingRods[0]
  const [game,setGame]=useState(()=>newTensionGame(Math.random,challenge))
@@ -35,7 +36,7 @@ export function TensionFishingGame({onCaught,active=true,regionId='pongdang',reg
  const release=()=>{pointer.current=null;holding.current=false;setPressed(false)}
  useEffect(()=>{if(game.phase==='playing'&&game.failureAt===undefined)pullButton.current?.focus({preventScroll:true})},[game.phase])
  useEffect(()=>{
-  if(!active||helpOpen)return
+  if(!active||helpOpen||paused){pointer.current=null;holding.current=false;setPressed(false);return}
   let raf=0,last=0
   const reset=()=>{pointer.current=null;holding.current=false;setPressed(false);last=0}
   const visibility=()=>{if(document.hidden)reset()}
@@ -50,20 +51,23 @@ export function TensionFishingGame({onCaught,active=true,regionId='pongdang',reg
   raf=requestAnimationFrame(draw)
   window.addEventListener('blur',reset);document.addEventListener('visibilitychange',visibility)
   return()=>{cancelAnimationFrame(raf);window.removeEventListener('blur',reset);document.removeEventListener('visibilitychange',visibility)}
- },[active,helpOpen])
+ },[active,helpOpen,paused])
  const waiting=game.phase==='waiting',lost=game.phase==='lost',won=game.phase==='won'
  const plannedFailure=game.failureAt!==undefined
  const label=!active?'낚싯대가 준비됐어요':fishingMessage(game)
  const reduced=typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches
  const behavior=fishBehavior(game.time,game.seed,game.rarity)
- const tug=active&&!plannedFailure&&!helpOpen&&!reduced&&game.phase==='playing'&&behavior.mood==='surge'?Math.min(1,fishForce(game.time,game.seed,game.rarity)/(fishStrength[game.rarity].surge*.48)):0
+ const tug=active&&!plannedFailure&&!helpOpen&&!paused&&!reduced&&game.phase==='playing'&&behavior.mood==='surge'?Math.min(1,fishForce(game.time,game.seed,game.rarity)/(fishStrength[game.rarity].surge*.48)):0
  // Only the crest of each effort wave gives the scenery a short, gentle jolt.
  const jolt=Math.max(0,(tug-.9)/.1)
  const sceneMotion=jolt>0?`translate(${Math.sin(visual.time*43)*jolt*1.2}px, ${Math.cos(visual.time*37)*jolt*.7}px)`:undefined
  return <div role="group" aria-label="낚시터" className="relative h-full min-h-0 w-full">
    <div className="absolute inset-0 overflow-hidden bg-[#123c68]">
     <div className="absolute -inset-1" style={{transform:sceneMotion}}>
+     <div data-fishing-camera="front" aria-hidden={active} className="absolute inset-0 transition-opacity duration-300 motion-reduce:transition-none" style={{opacity:active?0:1}}><FishingStandby regionId={regionId}/></div>
+     <div data-fishing-camera="top" aria-hidden={!active} className="absolute inset-0 transition-opacity duration-300 motion-reduce:transition-none" style={{opacity:active?1:0}}>
      <FishingWater showGauge={active&&!plannedFailure&&game.phase==='playing'} baitImage={baitImage} rod={rod} game={game} visual={visual} mood={behavior.mood} active={active} reduced={reduced} regionId={regionId} regionName={regionName} pulling={pressed} label={quiet||(active&&plannedFailure)?undefined:label} outline={outline}/>
+     </div>
     </div>
     {active&&!plannedFailure&&!waiting&&!lost&&!won&&<div className="pointer-events-none absolute inset-0 transition-opacity duration-200" style={{opacity:Math.max(0,(visual.tension-85)/15,(20-visual.tension)/20),boxShadow:'inset 0 0 65px #f3a77966'}} aria-hidden="true"/>}
    </div>
@@ -73,6 +77,6 @@ export function TensionFishingGame({onCaught,active=true,regionId='pongdang',reg
    {!toolbarTarget&&<FishingHelp open={helpOpen} onOpenChange={open=>{release();setHelpOpen(open)}}/>}
    {active&&!plannedFailure&&!waiting&&!lost&&<span role="meter" aria-label="버티는 힘" aria-valuenow={Math.round(game.tension)} aria-valuemin={0} aria-valuemax={100} className="sr-only"/>}
    {active&&lost&&!onFailed&&<div className="absolute inset-x-4 bottom-40 mx-auto max-w-sm space-y-3 rounded-2xl bg-background/95 p-4"><p className="text-center text-xs text-muted-foreground">{game.reason&&game.reason in plannedFailureMessages?plannedFailureMessages[game.reason as keyof typeof plannedFailureMessages]:game.reason==='snap'?'너무 팽팽해져 줄이 끊어졌어요.':game.reason==='slack'?'낚싯줄이 느슨해져 물고기가 빠져나갔어요.':'조금 더 힘차게 당겨볼까요?'} {practice?'연습에서는 미끼를 사용하지 않아요.':''}</p>{!onFailed&&<Button className="min-h-12 w-full" onClick={()=>{release();failed.current=false;current.current=newTensionGame(Math.random,challenge);animation.current={time:0,tension:38,reel:0,ending:0};setVisual(animation.current);setGame(current.current)}}><RotateCcw/>다시 도전</Button>}</div>}
-   {!lost&&(!quiet||active)&&<FishingReel hideGauge rod={rod} active={active} waiting={waiting||plannedFailure} won={won} pressed={pressed} reduced={reduced} tension={visual.tension} rotation={visual.reel} start={start} buttonRef={pullButton} onHold={pointerId=>{if(plannedFailure||pointer.current!==null)return;pointer.current=pointerId??null;holding.current=true;setPressed(true)}} onRelease={release}/>}
+   {!lost&&(!quiet||active)&&<FishingReel hideGauge rod={rod} active={active} waiting={waiting||plannedFailure} won={won} pressed={pressed} reduced={reduced} tension={visual.tension} rotation={visual.reel} start={start} buttonRef={pullButton} onHold={pointerId=>{if(paused||plannedFailure||pointer.current!==null)return;pointer.current=pointerId??null;holding.current=true;setPressed(true)}} onRelease={release}/>}
  </div>
 }

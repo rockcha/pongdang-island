@@ -11,7 +11,7 @@ export const kindLabels:Record<CollectibleKind,string>={fish:'물고기',trash:'
 const refreshedCloudArt=new Set(['map/routes/map-cloudferry_thumbnail.png','equipment/rods/cloudferry/thumbnail.png'])
 export function collectibleUrl(path:string){
  const url=createClient().storage.from('collectibles').getPublicUrl(path).data.publicUrl
- const revision=path==='fish/mythic/god-devouring-leviathan_sprite.png'?'leviathan-padding-2':refreshedCloudArt.has(path)?'totoro-2':null
+ const revision=/^fish\/epic\/starpattern-manta_(sprite|thumbnail)\.png$/.test(path)?'starlight-20261019':path==='fish/mythic/god-devouring-leviathan_sprite.png'?'leviathan-padding-2':refreshedCloudArt.has(path)?'totoro-2':null
  return revision?`${url}${url.includes('?')?'&':'?'}v=${revision}`:url
 }
 export async function loadCollection(){const {data,error}=await createClient().rpc('collection_state');if(error)throw error;return data}

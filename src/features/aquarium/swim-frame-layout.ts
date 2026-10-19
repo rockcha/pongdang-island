@@ -8,6 +8,7 @@ import primalLayouts from './primal-frame-layouts.json'
 import whitenightLayouts from './whitenight-frame-layouts.json'
 import mukhyangLayouts from './mukhyang-frame-layouts.json'
 import sirenLayouts from './siren-frame-layouts.json'
+import reviewedLayouts from './reviewed-frame-layouts.json'
 const registeredLayouts:Record<string,{cell:number;scale?:number;shifts:number[][]}>={...dreamabyssLayouts,...sharedCreatureLayouts,...pongdangLayouts,...bluegroveLayouts,...primalLayouts,...whitenightLayouts,...cloudferryLayouts,...scrapisleLayouts,...mukhyangLayouts,...sirenLayouts}
 // Frame registration measured from each sheet's rigid head/body (or nautilus shell).
 // Coordinates are in a 96x96 sampling grid, relative to each frame's center.
@@ -96,6 +97,9 @@ const layouts:Record<string,readonly (readonly [number,number,number])[]>={
 }
 
 export function swimFrameLayout(path:string,frame:number){
+ const reviewed:Record<string,{cell:number;scale?:number;shifts:number[][]}>=reviewedLayouts
+ const correction=reviewed[path]
+ if(correction){const [x,y]=correction.shifts[frame]??[0,0];return {originX:.5+x/correction.cell,originY:.5+y/correction.cell,scale:correction.scale??1}}
  const extra=registeredLayouts[path]
  if(extra){const [x,y]=extra.shifts[frame]??[0,0];return {originX:.5+x/extra.cell,originY:.5+y/extra.cell,scale:extra.scale??1}}
  const [x,y,scale]=layouts[path]?.[frame]??[0,0,1]

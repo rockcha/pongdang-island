@@ -1,0 +1,32 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+  "reference_role": "Epic soft fantasy illustration style only",
+  "id": "starpattern-manta",
+  "rarity": "epic",
+  "facing": "right",
+  "assets": [
+    {
+      "storage_path": "fish/epic/starpattern-manta_thumbnail.png",
+      "prompt": "Use case: stylized-concept. Asset: transparent game collectible thumbnail. Redesign starpattern manta as an elegant charming celestial MANTA RAY for a cozy fantasy fishing game. Style reference is the supplied epic/mythic starlight illustration: soft colored contours, luminous violet and blue gradients, dimensional gentle shading and rich but clean details, no thick brown cartoon outlines. Broad graceful manta wings with a few beautiful warm ivory star-shaped markings embedded in the skin, pearl lavender belly, two small natural cephalic fins beside mouth, single coherent fish body, long slender trailing tail. Cute expressive eye, restrained friendly smile; no human features, clothing, jewels or accessories. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward swimming toward the right, never backward swimming. Graceful nearly horizontal pose with both wings readable and fully within frame, no tightly curled tail. Whole subject occupies 82 percent of square canvas's long axis; safe transparent padding all around. Genuine transparent background, opaque body interiors with subtle translucent fin edges. NO checkerboard, background, detached glitter, glow clouds, labels, grid, border or watermark.",
+      "padding_correction": "Edit ONLY composition/padding of this existing transparent manta thumbnail. Keep EXACT same manta drawing, colors, details, pose and orientation. Uniformly shrink entire complete manta to 86 percent of current size, centered on square canvas, so generous clean transparent padding surrounds whole silhouette, including tail and wings. Remove isolated stray pixels outside silhouette. Genuine transparent alpha background, fully opaque face and body, no checkerboard or backdrop. Do not redraw, add or remove any anatomical feature. No text, border or watermark.",
+      "sha256": "84bfc48dee558d265ddc2a1f7872cc3b10ee4bcf4a24bf1afb84908e60bd3d0d",
+      "bytes": 736327,
+      "local_path": "assets/storage-upload/new/20261019-152225/fish/epic/starpattern-manta_thumbnail.png"
+    },
+    {
+      "storage_path": "fish/epic/starpattern-manta_sprite.png",
+      "reference_role": "Final thumbnail as same-creature identity",
+      "prompt": "Use case: stylized-concept. Produce ONE production game sprite atlas for the EXACT celestial purple starpattern manta in the supplied identity reference. Genuine transparent RGBA PNG. SQUARE sheet of EXACTLY TWO columns by TWO rows, FOUR EQUAL SQUARE cells, chronological swimming loop left-to-right then bottom row. EACH creature must be SMALLER within its cell: entire wings and trailing tail inside CENTRAL 80 percent, at least 10 percent empty transparent padding on ALL FOUR SIDES, including internal gutters. Same eye, mouth, pearl-lavender face, luminous blue-purple wing skin with cream stars, same proportions as reference, no gold ornaments. Frame0 wings neutral,1 wings gently lowered,2 wings neutral on return,3 wings gently lifted; tail tip flows through small opposing phases and returns smoothly to frame0. Subtle true fin deformation, NOT whole-body rotation or translation. Same rigid head/eye/body center and body size at EXACT identical cell-local x/y across all four frames, even if wing extent changes. Face SCREEN RIGHT in a clear side or side-three-quarter profile. The head, mouth and snout point to the right; the body and tail trail behind to the left. Show forward swimming toward the right, never backward swimming. Keep this exact right-facing orientation in the thumbnail and ALL FOUR animation frames. No left-facing, front-facing, mirrored or alternating-direction frames. Body opaque, transparent background, clear defined edges. No checkerboard, white background, frames, labels, cell borders, external glow, particles, cropping or touching adjacent cells. Keep whole head and body stationary, ONLY wings and tail bend. Preserve refined soft fantasy illustration style and natural ray anatomy.",
+      "padding_correction": "Edit the supplied FOUR-frame 2x2 manta sprite atlas. Keep the same four distinct wing/tail poses, exact character identity, colors and right-facing orientation. Fix production defects ONLY: uniformly shrink each ENTIRE manta to 84 percent of current size around its rigid head/body anchor, using SAME scale across all FOUR frames. Reposition each whole pose so rigid main eye center is at exactly cell-local x=76 percent,y=59 percent in EVERY cell. SAME head size across frames. Preserve all wing deformation. Remove ALL detached blue, purple, white noise/speckles and stray alpha pixels from empty background. Clean smooth silhouette alpha, fully opaque face/body. Preserve soft semi-transparent fin edges only inside coherent fin silhouette. Wide completely clean transparent padding on every side and internal dividers. No anatomy edits, no new stars, no lines, grid or checkerboard. Exact square 2x2 equal-cell layout. ALL full tail tips/wings must be completely visible, separated from cell boundaries by minimum 8 percent blank transparent margin. No automatic individual frame rescaling; one shared 84 percent scale for all poses.",
+      "sha256": "19e45dba991595861396b6ecc8f49cb28efa5d1dc49200575a2537d4184bb427",
+      "bytes": 919321,
+      "local_path": "assets/storage-upload/new/20261019-152225/fish/epic/starpattern-manta_sprite.png"
+    }
+  ],
+  "frame_registration": [
+    "frame-registration.json",
+    "manta-registration.json"
+  ]
+}

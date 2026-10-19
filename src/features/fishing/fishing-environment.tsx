@@ -17,16 +17,30 @@ export const fishingEnvironments={
 const platformMaterials:Record<string,string>={siren:'marble',pongdang:'wood',whitenight:'ice',primal:'roots',coral:'limestone',mistmoon:'wet-stone',starruins:'ruins',dreamabyss:'basalt',bluegrove:'riverstone',cloudferry:'cloud-stone',scrapisle:'metal'}
 export function fishingEnvironment(regionId:string){
  const id=regionId in fishingEnvironments?regionId as keyof typeof fishingEnvironments:'pongdang'
- return {id,...fishingEnvironments[id],src:`/fishing/environments/${id==='primal'?'pongdang':id}.png`,platformSrc:platformMaterials[id]?`/fishing/platforms/${id}.png`:null,material:platformMaterials[id]}
+ return {id,...fishingEnvironments[id],
+  src:id==='whitenight'?'/fishing/environments/whitenight.png':`/fishing/close-water/${id}.png`,
+  waterEnd:id==='whitenight'?fishingEnvironments[id].waterEnd:1536,
+  frontSrc:id==='mukhyang'?'/fishing/environments/mukhyang.png':`/fishing/scenery/${id}.png`,
+  frontWaterEnd:id==='mukhyang'?1170:1536,
+  platformFallbackSrc:`/fishing/environments/${id}.png`,
+  platformSrc:platformMaterials[id]?`/fishing/platforms/${id}.png`:null,material:platformMaterials[id]}
 }
-// One painting per region. Its upper water and lower platform are independently
-// framed so neither responsive cropping nor a tall phone can move the shoreline.
+// Standby landscapes and close, oblique fishing views have independent source crops.
+// Platforms keep their own source so changing camera never changes the terrain.
 const width=1024,height=1536
-export function FishingSea({regionId}:{regionId:string}){
+export function FishingSea({regionId,view='top'}:{regionId:string;view?:'front'|'top'}){
  const theme=fishingEnvironment(regionId),[failed,setFailed]=useState<string|null>(null),[loaded,setLoaded]=useState<string|null>(null)
- return <svg viewBox={`0 0 ${width} ${theme.waterEnd}`} preserveAspectRatio="xMidYMid slice" className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true" data-fishing-sea={theme.id}>
-  <rect width={width} height={height} fill={theme.water} className={loaded!==theme.src&&failed!==theme.src?"motion-safe:animate-pulse":""}/>{failed!==theme.src&&<image href={theme.src} width={width} height={height} className="transition-opacity duration-300 motion-reduce:transition-none" opacity={loaded===theme.src?1:0} onLoad={()=>setLoaded(theme.src)} onError={()=>setFailed(theme.src)}/>}
+ const src=view==='front'?theme.frontSrc:theme.src
+ const opacity=view==='top'&&theme.id==='whitenight'?.72:1
+ return <svg viewBox={`0 0 ${width} ${view==='front'?theme.frontWaterEnd:theme.waterEnd}`} preserveAspectRatio={view==='front'?'xMidYMin slice':'xMidYMid slice'} className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true" data-fishing-sea={theme.id} data-fishing-view={view}>
+  <rect width={width} height={height} fill={theme.water} className={loaded!==src&&failed!==src?"motion-safe:animate-pulse":""}/>{failed!==src&&<image href={src} width={width} height={height} className="transition-opacity duration-300 motion-reduce:transition-none" opacity={loaded===src?opacity:0} onLoad={()=>setLoaded(src)} onError={()=>setFailed(src)}/>}
  </svg>
+}
+export function FishingStandby({regionId}:{regionId:string}){
+ return <div className="absolute inset-0">
+  <FishingSea regionId={regionId} view="front"/>
+  <svg viewBox="0 0 400 180" preserveAspectRatio="none" className="pointer-events-none absolute inset-x-0 bottom-0 w-full" style={{height:'clamp(160px,32%,220px)'}} aria-hidden="true"><FishingPlatform regionId={regionId} y={0} platformHeight={180}/></svg>
+ </div>
 }
 export function FishingPlatform({regionId,y,platformHeight=160}:{regionId:string;y:number;platformHeight?:number}){
  const theme=fishingEnvironment(regionId),[failed,setFailed]=useState<string|null>(null),[loaded,setLoaded]=useState<string|null>(null)
@@ -38,7 +52,7 @@ export function FishingPlatform({regionId,y,platformHeight=160}:{regionId:string
  </svg>
  return <svg x={-4} y={y} width={408} height={platformHeight} viewBox={`0 ${theme.deckStart} ${width} ${height-theme.deckStart}`} preserveAspectRatio="xMidYMin slice" overflow="hidden" data-fishing-platform={theme.id}>
   <rect x="0" y={theme.deckStart} width={width} height={height-theme.deckStart} fill={theme.deck}/>
-  {failed!==theme.src&&<image href={theme.src} width={width} height={height} onError={()=>setFailed(theme.src)}/>}
-  {failed===theme.src&&<path d={`M0 ${theme.deckStart+4}h1024m-800 0v440m250-440v440m250-440v440`} fill="none" stroke={theme.edge} strokeWidth="5" opacity=".4"/>}
+  {failed!==theme.platformFallbackSrc&&<image href={theme.platformFallbackSrc} width={width} height={height} onError={()=>setFailed(theme.platformFallbackSrc)}/>}
+  {failed===theme.platformFallbackSrc&&<path d={`M0 ${theme.deckStart+4}h1024m-800 0v440m250-440v440m250-440v440`} fill="none" stroke={theme.edge} strokeWidth="5" opacity=".4"/>}
  </svg>
 }

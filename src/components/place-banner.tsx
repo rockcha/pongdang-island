@@ -6,10 +6,12 @@ import {BannerBreadcrumb} from './banner-breadcrumb'
 import {BannerInfo,bannerGuide} from './banner-info'
 
 export const placeBanners:Record<string,{title:string;image:string;description:string;subtitle:string}>={
+ '/port':{title:'항구',image:'harbor',description:'나만의 배가 쉬어 가는 퐁당섬 선착장',subtitle:'작은 배와 함께하는 느긋한 낚시'},
+ '/music-room':{title:'음악 감상',image:'music-room',description:'바다가 보이는 창가에 턴테이블과 레코드가 놓인 아늑한 음악 공간',subtitle:'좋아하는 음악과 함께 쉬어 가요'},
  '/collection':{title:'도감',image:'collection',description:'바다 생물을 기록하는 햇살 가득한 해양 관찰실',subtitle:'만난 바다 친구들을 한 장씩 기록해요'},
  '/collection-animation':{title:'애니메이션 도감',image:'collection',description:'바다 생물을 기록하는 햇살 가득한 해양 관찰실',subtitle:'개체를 눌러 움직이는 모습을 확인해요'},
  '/titles':{title:'칭호',image:'titles',description:'바다에서 쌓은 추억을 간직한 기념패 선반',subtitle:'나의 바다 이야기에 이름을 붙여요'},
- '/shipyard':{title:'조선소',image:'harbor',description:'어선이 쉬어 가는 항구',subtitle:'나만의 어선과 다음 항해를 준비해요'},
+ '/shipyard':{title:'조선소',image:'harbor',description:'항구에서 조업할 배를 만드는 조선소',subtitle:'항구에서 함께할 나만의 배를 만나요'},
  '/expeditions':{title:'어선 파견',image:'harbor',description:'어선이 출항하는 항구',subtitle:'미끼를 맡기고 기다리는 바다의 선물'},
  '/savings':{title:'조개 적금',image:'shell-savings',description:'바다가 보이는 작은 저금소의 진주빛 조개 저금통',subtitle:'하루 한 번, 차곡차곡 모으는 골드'},
  '/arcade':{title:'오락실',image:'arcade',description:'바다가 보이는 창문과 작은 게임기들이 있는 따뜻한 섬 오락실',subtitle:'잠깐의 놀이, 작은 즐거움'},

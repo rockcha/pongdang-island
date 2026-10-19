@@ -6,6 +6,8 @@ function artwork(name:string,folder='app-icons'){
  }
 }
 export const appArt={
+ port:artwork('port'),fuel:artwork('fuel'),
+ music:artwork('music-disc-cartoon'),
  farm:artwork('farm'),
  expeditionBoost:artwork('expedition-boost','notification-icons'),
  noticeGuide:artwork('notice-guide'),noticeUpdate:artwork('notice-update'),noticeMaintenance:artwork('notice-maintenance'),noticeEvent:artwork('notice-event'),
@@ -26,6 +28,8 @@ export const appArt={
  notices:artwork('announcement','notification-icons'),suggestions:artwork('suggestion','notification-icons'),bugs:artwork('bug','notification-icons'),
 }
 const placeArt:Record<string,ReturnType<typeof artwork>>={
+ '/port':appArt.port,
+ '/music-room':appArt.music,
  '/':appArt.island,'/aquarium':appArt.aquarium,'/harbor':appArt.map,'/shop':appArt.shop,'/farm':appArt.farm,
  '/shipyard':appArt.shipyard,'/expeditions':appArt.expeditions,'/exchange':appArt.exchange,
  '/savings':appArt.savings,'/warehouse':appArt.warehouse,'/arcade':appArt.arcade,'/friends':appArt.lighthouse,

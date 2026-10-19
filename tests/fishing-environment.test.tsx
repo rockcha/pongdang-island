@@ -44,7 +44,7 @@ it('keeps the rod straight while scouting and bends only after the first pull st
  expect(rod()).not.toBe(straight)
 })
 it('keeps region water and terrain assets independently framed',()=>{
- for(const id of Object.keys(fishingEnvironments)){const {container,unmount}=render(<svg><FishingSea regionId={id}/><FishingPlatform regionId={id} y={420}/></svg>);expect(container.querySelector('[data-fishing-sea]')?.getAttribute('data-fishing-sea')).toBe(id);expect(container.querySelector('[data-fishing-platform]')?.getAttribute('y')).toBe('420');expect([...container.querySelectorAll('image')].map(el=>el.getAttribute('href'))).toEqual([fishingEnvironment(id).src,fishingEnvironment(id).platformSrc??fishingEnvironment(id).src]);unmount()}
+ for(const id of Object.keys(fishingEnvironments)){const {container,unmount}=render(<svg><FishingSea regionId={id}/><FishingPlatform regionId={id} y={420}/></svg>);expect(container.querySelector('[data-fishing-sea]')?.getAttribute('data-fishing-sea')).toBe(id);expect(container.querySelector('[data-fishing-platform]')?.getAttribute('y')).toBe('420');expect([...container.querySelectorAll('image')].map(el=>el.getAttribute('href'))).toEqual([fishingEnvironment(id).src,fishingEnvironment(id).platformSrc??fishingEnvironment(id).platformFallbackSrc]);unmount()}
 })
 it('recovers image loading for the next region after a missing asset',()=>{
  const {container,rerender}=render(<FishingSea regionId="coral"/>);fireEvent.error(container.querySelector('image')!);expect(container.querySelector('image')).toBeNull();rerender(<FishingSea regionId="mistmoon"/>);expect(container.querySelector('image')?.getAttribute('href')).toContain('mistmoon.png')

@@ -2,8 +2,8 @@
 
 원격 DB의 현재 상태가 아닙니다. migrations 전체를 PGlite에 재생한 기대 상태입니다.
 
-- migration SHA-256: `69560aa72632fcef2fbac12a8197f81714d54f2503431b5204c1b1f403f6161d`
-- migrations: 20261016015506_legacy_baseline.sql, 20261016074241_fishing_rod_inventory.sql, 20261016083949_attendance_streak.sql, 20261016092320_add_minimal_aquarium_backgrounds.sql, 20261016093649_add_seven_aquarium_themes.sql, 20261016095304_add_atmospheric_aquarium_backgrounds.sql, 20261016101729_shadow_guessing_arcade.sql, 20261016103215_shadow_score_cap.sql, 20261016105544_memory_card_arcade.sql, 20261016114524_shadow_eight_seconds.sql, 20261016120119_primal_island_catalog.sql, 20261016124501_odd_even_arcade.sql, 20261016131521_odd_even_rank_friends.sql, 20261016151410_attendance_28_day_sheet.sql, 20261016155535_bluegrove_region_catalog.sql, 20261016162605_exchange_escrow_market.sql, 20261016164527_exchange_sales_only.sql, 20261016180116_auction_gift_escrow.sql, 20261016181632_notice_board.sql, 20261016231528_notice_notifications.sql, 20261016232525_notice_delete_and_auto_read.sql, 20261017002343_retire_dawn_arowana.sql, 20261017003922_fixed_atlantean_sentinel.sql, 20261017005949_bluegrove_large_species.sql, 20261017045143_primal_prehistoric_species.sql, 20261017052918_primal_exclusive_fish.sql, 20261017054146_map_shop_routes.sql, 20261017054247_map_shop_catalog.sql, 20261017055506_correct_starruins_map_image.sql, 20261017055827_reorder_map_routes.sql, 20261017060959_whitenight_region_catalog.sql, 20261017061438_place_whitenight_after_mistmoon.sql, 20261017064137_whitenight_native_species.sql, 20261017074923_friend_aquarium_visits_feeding.sql, 20261017080527_friend_aquarium_cleaning.sql, 20261017082326_cloudferry_region_catalog.sql, 20261017085502_cloudferry_native_species.sql, 20261017093723_scrap_isle_region_and_species.sql, 20261017201704_allow_rare_collectible_trash.sql, 20261017201709_pongdang_natives_and_shared_mythics.sql, 20261018030010_shared_sea_creatures.sql, 20261018044936_dreamabyss_violet_deepsea_catalog.sql, 20261018070101_global_fishing_primary_habitats.sql, 20261018071445_equipped_rod_habitat_weights.sql, 20261018075922_fishing_forty_percent_safe_bait.sql, 20261018092426_suggestion_board.sql, 20261018094132_bug_report_board.sql, 20261018095755_special_bait_catalog.sql, 20261018095800_special_bait_effects.sql, 20261018101003_forbidden_star_success_bonus.sql, 20261018105905_shell_savings.sql, 20261018111616_savings_amount_limits.sql, 20261018112003_scrap_island_seven_creatures.sql, 20261018122329_mukhyang_region_and_brush_rod.sql, 20261018122353_mukhyang_brush_rod.sql, 20261018131214_mukhyang_native_creatures.sql, 20261018134143_rebalance_collectible_sizes.sql, 20261018134256_collectible_size_catalog.sql, 20261018134919_species_proportion_sizes.sql, 20261018142534_fishing_vessel_expeditions.sql, 20261018143528_expedition_failures_and_return_notifications.sql, 20261018161320_aquarium_tank_price_350.sql, 20261018163311_special_baits_sixty_percent_success.sql, 20261018170746_daily_weekly_quests.sql, 20261018171951_player_titles.sql, 20261018173739_signup_title_and_welcome_gift.sql, 20261018174001_success_effect_baits_sixty_percent.sql, 20261018183011_rebalance_rod_effects_and_quest_conditions.sql, 20261018183017_grubby_magnet_price_40.sql, 20261018184245_rebalance_fishing_vessel_bonuses.sql, 20261018184531_rebalance_region_map_prices.sql, 20261018232502_automatic_signup_gold.sql, 20261018234630_rebalance_purchasable_baits.sql, 20261018234911_lower_abyss_lodestone_price.sql, 20261018235409_seven_cozy_aquarium_themes.sql, 20261019000301_eight_story_aquarium_themes.sql, 20261019000553_aquarium_theme_tiers.sql, 20261019001110_six_tier_aquarium_themes.sql, 20261019002347_rebalance_aquarium_theme_tier_prices.sql, 20261019003406_twelve_marine_aquarium_themes.sql, 20261019003842_enrich_red_fan_coral_background.sql, 20261019004514_simplify_bait_effects_and_worm_success.sql, 20261019004931_calm_rod_price_750.sql, 20261019012808_friend_expedition_tailwind.sql, 20261019015603_distinguish_friend_expedition_returned.sql, 20261019015918_friend_expedition_visits.sql, 20261019020653_expedition_aquarium_growth_quests.sql, 20261019022758_rebalance_growth_quests_tailwind_titles.sql, 20261019023121_dinghy_duration_forty_minutes.sql, 20261019024254_enlarge_small_epic_creatures.sql, 20261019024703_rebalance_fish_rarity_sell_prices.sql, 20261019031038_siren_strait_catalog.sql, 20261019041637_progressive_fishing_rod_prices.sql, 20261019041853_halve_regional_fishing_rod_prices.sql
+- migration SHA-256: `5c2f3d89840d87549a18d9aab3ad999cbe5758fe5ea3db17bb9ff1101c967da3`
+- migrations: 20261016015506_legacy_baseline.sql, 20261016074241_fishing_rod_inventory.sql, 20261016083949_attendance_streak.sql, 20261016092320_add_minimal_aquarium_backgrounds.sql, 20261016093649_add_seven_aquarium_themes.sql, 20261016095304_add_atmospheric_aquarium_backgrounds.sql, 20261016101729_shadow_guessing_arcade.sql, 20261016103215_shadow_score_cap.sql, 20261016105544_memory_card_arcade.sql, 20261016114524_shadow_eight_seconds.sql, 20261016120119_primal_island_catalog.sql, 20261016124501_odd_even_arcade.sql, 20261016131521_odd_even_rank_friends.sql, 20261016151410_attendance_28_day_sheet.sql, 20261016155535_bluegrove_region_catalog.sql, 20261016162605_exchange_escrow_market.sql, 20261016164527_exchange_sales_only.sql, 20261016180116_auction_gift_escrow.sql, 20261016181632_notice_board.sql, 20261016231528_notice_notifications.sql, 20261016232525_notice_delete_and_auto_read.sql, 20261017002343_retire_dawn_arowana.sql, 20261017003922_fixed_atlantean_sentinel.sql, 20261017005949_bluegrove_large_species.sql, 20261017045143_primal_prehistoric_species.sql, 20261017052918_primal_exclusive_fish.sql, 20261017054146_map_shop_routes.sql, 20261017054247_map_shop_catalog.sql, 20261017055506_correct_starruins_map_image.sql, 20261017055827_reorder_map_routes.sql, 20261017060959_whitenight_region_catalog.sql, 20261017061438_place_whitenight_after_mistmoon.sql, 20261017064137_whitenight_native_species.sql, 20261017074923_friend_aquarium_visits_feeding.sql, 20261017080527_friend_aquarium_cleaning.sql, 20261017082326_cloudferry_region_catalog.sql, 20261017085502_cloudferry_native_species.sql, 20261017093723_scrap_isle_region_and_species.sql, 20261017201704_allow_rare_collectible_trash.sql, 20261017201709_pongdang_natives_and_shared_mythics.sql, 20261018030010_shared_sea_creatures.sql, 20261018044936_dreamabyss_violet_deepsea_catalog.sql, 20261018070101_global_fishing_primary_habitats.sql, 20261018071445_equipped_rod_habitat_weights.sql, 20261018075922_fishing_forty_percent_safe_bait.sql, 20261018092426_suggestion_board.sql, 20261018094132_bug_report_board.sql, 20261018095755_special_bait_catalog.sql, 20261018095800_special_bait_effects.sql, 20261018101003_forbidden_star_success_bonus.sql, 20261018105905_shell_savings.sql, 20261018111616_savings_amount_limits.sql, 20261018112003_scrap_island_seven_creatures.sql, 20261018122329_mukhyang_region_and_brush_rod.sql, 20261018122353_mukhyang_brush_rod.sql, 20261018131214_mukhyang_native_creatures.sql, 20261018134143_rebalance_collectible_sizes.sql, 20261018134256_collectible_size_catalog.sql, 20261018134919_species_proportion_sizes.sql, 20261018142534_fishing_vessel_expeditions.sql, 20261018143528_expedition_failures_and_return_notifications.sql, 20261018161320_aquarium_tank_price_350.sql, 20261018163311_special_baits_sixty_percent_success.sql, 20261018170746_daily_weekly_quests.sql, 20261018171951_player_titles.sql, 20261018173739_signup_title_and_welcome_gift.sql, 20261018174001_success_effect_baits_sixty_percent.sql, 20261018183011_rebalance_rod_effects_and_quest_conditions.sql, 20261018183017_grubby_magnet_price_40.sql, 20261018184245_rebalance_fishing_vessel_bonuses.sql, 20261018184531_rebalance_region_map_prices.sql, 20261018232502_automatic_signup_gold.sql, 20261018234630_rebalance_purchasable_baits.sql, 20261018234911_lower_abyss_lodestone_price.sql, 20261018235409_seven_cozy_aquarium_themes.sql, 20261019000301_eight_story_aquarium_themes.sql, 20261019000553_aquarium_theme_tiers.sql, 20261019001110_six_tier_aquarium_themes.sql, 20261019002347_rebalance_aquarium_theme_tier_prices.sql, 20261019003406_twelve_marine_aquarium_themes.sql, 20261019003842_enrich_red_fan_coral_background.sql, 20261019004514_simplify_bait_effects_and_worm_success.sql, 20261019004931_calm_rod_price_750.sql, 20261019012808_friend_expedition_tailwind.sql, 20261019015603_distinguish_friend_expedition_returned.sql, 20261019015918_friend_expedition_visits.sql, 20261019020653_expedition_aquarium_growth_quests.sql, 20261019022758_rebalance_growth_quests_tailwind_titles.sql, 20261019023121_dinghy_duration_forty_minutes.sql, 20261019024254_enlarge_small_epic_creatures.sql, 20261019024703_rebalance_fish_rarity_sell_prices.sql, 20261019031038_siren_strait_catalog.sql, 20261019041637_progressive_fishing_rod_prices.sql, 20261019041853_halve_regional_fishing_rod_prices.sql, 20261019063956_music_library.sql, 20261019081506_harbor_idle_fishing.sql, 20261019085512_harbor_fleet_and_fuel_rewards.sql, 20261019091213_harbor_vessel_catalog.sql, 20261019093552_attendance_alternating_gold_fuel.sql, 20261019094406_attendance_bait_only_milestones.sql
 - 전체 정의·컬럼·권한·정책: [local-schema.json](local-schema.json)
 - 원격 상태와 전환 절차: [DB 관리](../systems/database-management.md)
 
@@ -17,10 +17,11 @@
 | app_private.expedition_operations | true | user_id: uuid, operation_id: uuid, signature: jsonb, receipt: jsonb |
 | app_private.expedition_settings | true | id: boolean, instant_return_enabled: boolean |
 | app_private.gold_settings | true | id: boolean, test_charge_enabled: boolean |
+| app_private.harbor_operations | true | user_id: uuid, operation_id: uuid, signature: jsonb, receipt: jsonb, created_at: timestamp with time zone |
 | app_private.memory_game_boards | true | run_id: uuid, deck: text[], matched: integer[], first_card: integer?, second_card: integer?, clear_at: timestamp with time zone? |
 | app_private.notice_operators | true | user_id: uuid |
 | app_private.prepared_fishing_casts | true | user_id: uuid, operation_id: uuid, region_id: text, bait_id: text, eligible: boolean, species_id: text?, map_region_id: text?, rarity: game_rarity, snapshot: jsonb?, wait_seconds: numeric, failure_at: numeric, failure_reason: text, created_at: timestamp with time zone, expires_at: timestamp with time zone, finished_at: timestamp with time zone?, result: jsonb?, last_bait: boolean |
-| app_private.quest_claims | true | user_id: uuid, period_kind: text, period_start: date, quest_id: text, gold: integer, claimed_at: timestamp with time zone |
+| app_private.quest_claims | true | user_id: uuid, period_kind: text, period_start: date, quest_id: text, gold: integer, claimed_at: timestamp with time zone, fuel: integer |
 | app_private.region_settings | true | id: boolean, test_lock_controls: boolean |
 | app_private.savings_operations | true | user_id: uuid, operation_id: uuid, account_id: uuid, signature: jsonb, receipt: jsonb, created_at: timestamp with time zone |
 | app_private.shadow_game_rounds | true | id: uuid, run_id: uuid, number: integer, target_id: text, target_name: text, image_path: text, options: jsonb, deadline: timestamp with time zone, answered_at: timestamp with time zone?, correct: boolean?, timed_out: boolean? |
@@ -30,7 +31,7 @@
 | public.aquarium_cleanings | true | id: uuid, visitor_id: uuid, owner_id: uuid, tank_id: uuid?, operation_id: uuid, strokes: integer, created_at: timestamp with time zone, completed_at: timestamp with time zone? |
 | public.aquarium_feedings | true | id: uuid, visitor_id: uuid, owner_id: uuid, tank_id: uuid?, operation_id: uuid, clicks: integer, created_at: timestamp with time zone, completed_at: timestamp with time zone? |
 | public.aquarium_tanks | true | id: uuid, user_id: uuid, name: text, background_id: text, is_default: boolean, created_at: timestamp with time zone |
-| public.attendance_claims | true | user_id: uuid, claim_date: date, operation_id: uuid, streak: integer, sheet_day: integer, gold: integer, bait_id: text? |
+| public.attendance_claims | true | user_id: uuid, claim_date: date, operation_id: uuid, streak: integer, sheet_day: integer, gold: integer, bait_id: text?, fuel: integer |
 | public.auction_bids | true | id: uuid, auction_id: uuid, bidder_id: uuid?, operation_id: uuid, amount: integer, created_at: timestamp with time zone |
 | public.auction_listings | true | id: uuid, owner_id: uuid?, owner_name: text, operation_id: uuid, title: text, description: text, offer: jsonb, escrow_gift_id: uuid, minimum_price: integer, duration_days: integer, highest_amount: integer, highest_bidder: uuid?, highest_gift_id: uuid?, status: text, created_at: timestamp with time zone, ends_at: timestamp with time zone, closed_at: timestamp with time zone? |
 | public.bug_reports | true | id: uuid, author_id: uuid, author_name: text, title: text, body: text, created_at: timestamp with time zone, confirmed_at: timestamp with time zone?, confirmed_by: uuid?, reward: jsonb, updated_at: timestamp with time zone |
@@ -45,7 +46,13 @@
 | public.fishing_vessels | true | id: text, name: text, price: integer, duration_minutes: integer, min_baits: integer, max_baits: integer, bonus_kind: text, bonus_count: integer, bonus_description: text, sort_order: integer, bonus_basic_count: integer, failure_reduction_bp: integer |
 | public.friend_requests | true | id: uuid, sender_id: uuid, recipient_id: uuid, status: text, created_at: timestamp with time zone, updated_at: timestamp with time zone |
 | public.gold_transactions | true | user_id: uuid, operation_id: uuid, action: text, item_id: text?, delta: integer, created_at: timestamp with time zone |
+| public.harbor_boats | true | id: uuid, user_id: uuid, vessel_id: text, instance_no: integer, dock_slot: integer?, purchased_at: timestamp with time zone |
+| public.harbor_vessels | true | id: text, name: text, price: integer, duration_minutes: integer, fuel_cost: integer, fishing_count: integer, sprite_path: text, sort_order: integer |
+| public.harbor_voyages | true | id: uuid, user_id: uuid, vessel_id: text, vessel_snapshot: jsonb, departed_at: timestamp with time zone, returns_at: timestamp with time zone, arrival_seen_at: timestamp with time zone?, claimed_at: timestamp with time zone?, result: jsonb?, boat_id: uuid |
 | public.memory_game_runs | true | id: uuid, user_id: uuid, operation_id: uuid, created_at: timestamp with time zone, timer_started_at: timestamp with time zone?, finished_at: timestamp with time zone?, abandoned_at: timestamp with time zone?, elapsed_ms: bigint?, moves: integer |
+| public.music_defaults | true | video_id: text, title: text, sort_order: integer |
+| public.music_libraries | true | user_id: uuid, created_at: timestamp with time zone |
+| public.music_tracks | true | user_id: uuid, video_id: text, title: text, custom_name: text, created_at: timestamp with time zone |
 | public.notices | true | id: uuid, category: text, title: text, body: text, images: text[], status: text, pinned: boolean, starts_at: timestamp with time zone?, ends_at: timestamp with time zone?, author_id: uuid?, created_at: timestamp with time zone, updated_at: timestamp with time zone, published_at: timestamp with time zone?, revision: integer, notified_at: timestamp with time zone? |
 | public.notifications | true | id: uuid, recipient_id: uuid, actor_id: uuid?, category: text, kind: text, title: text, body: text, request_id: uuid?, read_at: timestamp with time zone?, created_at: timestamp with time zone, gift_id: uuid?, notice_id: uuid?, expedition_id: uuid?, achievement_id: text?, expedition_boost_id: uuid? |
 | public.odd_even_runs | true | id: uuid, user_id: uuid, operation_id: uuid, payout_operation_id: uuid, stake: integer, wins: integer, round: integer, stage: text, pearls: integer?, choice: text?, started_at: timestamp with time zone, finished_at: timestamp with time zone? |
@@ -56,6 +63,7 @@
 | public.player_discoveries | true | user_id: uuid, species_id: text, discovered_at: timestamp with time zone |
 | public.player_fishing_rods | true | user_id: uuid, rod_id: text, acquired_at: timestamp with time zone |
 | public.player_fishing_vessels | true | user_id: uuid, vessel_id: text, purchased_at: timestamp with time zone |
+| public.player_harbor_vessels | true | user_id: uuid, vessel_id: text, purchased_at: timestamp with time zone |
 | public.player_map_fragments | true | user_id: uuid, region_id: text, acquired_at: timestamp with time zone |
 | public.player_navigation | true | user_id: uuid, region_id: text |
 | public.player_profiles | true | id: uuid, nickname: text, friend_code: text, created_at: timestamp with time zone, avatar_path: text?, equipped_title: text? |
@@ -88,6 +96,7 @@
 | app_private.auction_settle_due |  | true |
 | app_private.auction_state | p_tab text, p_query text, p_offset integer | true |
 | app_private.award_title | p_user uuid, p_title text | true |
+| app_private.base_quest_period | p_kind text, p_now timestamp with time zone | true |
 | app_private.boost_friend_expedition | p_expedition_id uuid | true |
 | app_private.buy_aquarium_tank | p_operation_id uuid | true |
 | app_private.buy_fishing_bait | p_bait_id text, p_operation_id uuid | true |
@@ -133,6 +142,8 @@
 | app_private.gift_mailbox | p_direction text, p_offset integer | true |
 | app_private.grant_special_bait_reward | p_recipient uuid, p_quantity integer | false |
 | app_private.growth_quest_period |  | true |
+| app_private.harbor_action | p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer, p_boat_id uuid, p_slot integer | true |
+| app_private.harbor_state |  | true |
 | app_private.initialize_player_welcome |  | true |
 | app_private.lock_collectible_habitat_species |  | false |
 | app_private.manage_aquarium_tank | p_tank_id uuid, p_action text, p_value text | true |
@@ -142,6 +153,8 @@
 | app_private.memory_leaderboard | p_offset integer | true |
 | app_private.memory_response | p_id uuid | false |
 | app_private.move_collectibles | p_collectible_ids uuid[], p_tank_id uuid | true |
+| app_private.music_edit | p_action text, p_id text, p_title text, p_name text | true |
+| app_private.music_library | p_import jsonb | true |
 | app_private.notice_delete | p_id uuid, p_revision integer | true |
 | app_private.notice_is_operator |  | true |
 | app_private.notice_save | p_id uuid, p_category text, p_title text, p_body text, p_images text[], p_status text, p_pinned boolean, p_starts_at timestamp with time zone, p_ends_at timestamp with time zone, p_revision integer | true |
@@ -177,6 +190,8 @@
 | app_private.send_welcome_gift | p_user_id uuid | true |
 | app_private.set_player_avatar | p_path text | true |
 | app_private.set_region_test_lock | p_region_id text, p_locked boolean | true |
+| app_private.settle_legacy_expedition | p_action text, p_operation_id uuid, p_vessel_id text, p_region_id text, p_cargo jsonb, p_expedition_id uuid | true |
+| app_private.settle_legacy_harbor | p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer | true |
 | app_private.shadow_game | p_action text, p_operation_id uuid, p_run_id uuid, p_round_id uuid, p_choice_id text | true |
 | app_private.shadow_leaderboard | p_offset integer | true |
 | app_private.shadow_new_round | p_run uuid | false |
@@ -236,11 +251,15 @@
 | public.get_gold_wallet |  | false |
 | public.gift_detail | p_gift_id uuid | false |
 | public.gift_mailbox | p_direction text, p_offset integer | false |
+| public.harbor_action | p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer, p_boat_id uuid, p_slot integer | false |
+| public.harbor_state |  | false |
 | public.manage_aquarium_tank | p_tank_id uuid, p_action text, p_value text | false |
 | public.map_shop_state |  | false |
 | public.memory_game | p_action text, p_operation_id uuid, p_run_id uuid, p_card integer | false |
 | public.memory_leaderboard | p_offset integer | false |
 | public.move_collectibles | p_collectible_ids uuid[], p_tank_id uuid | false |
+| public.music_edit | p_action text, p_id text, p_title text, p_name text | false |
+| public.music_library | p_import jsonb | false |
 | public.notice_delete | p_id uuid, p_revision integer | false |
 | public.notice_is_operator |  | false |
 | public.notice_save | p_id uuid, p_category text, p_title text, p_body text, p_images text[], p_status text, p_pinned boolean, p_starts_at timestamp with time zone, p_ends_at timestamp with time zone, p_revision integer | false |

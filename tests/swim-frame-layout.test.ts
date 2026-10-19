@@ -19,6 +19,24 @@ it('preserves existing stable sheets including filefish',()=>{
 })
 
 it.each([
+ ['fish/rare/silver-mist-goby_sprite.png',[[0,0],[-1,0],[4,-48],[-1,-48]]],
+ ['fish/epic/muk-landscape-back-carp_sprite.png',[[0,0],[-35,1],[9,-60],[-41,-61]]],
+ ['fish/epic/starpattern-manta_sprite.png',[[0,0],[-45,0],[6,-80],[-28,-79]]],
+] as const)('keeps the measured head stationary through every frame and heading: %s',(path,offsets)=>{
+ const anchor={x:510,y:350}
+ const first=swimFrameLayout(path,0)
+ for(const [frame,[dx,dy]] of offsets.entries()){
+  const layout=swimFrameLayout(path,frame)
+  expect(layout.scale).toBe(first.scale)
+  for(const flipped of [false,true]){
+   const x=anchor.x+dx,origin=flipped?1-layout.originX:layout.originX
+   expect(((flipped?627-x:x)-origin*627)*layout.scale).toBeCloseTo((flipped?313.5-anchor.x:anchor.x-313.5)*first.scale)
+   expect((anchor.y+dy-layout.originY*627)*layout.scale).toBeCloseTo((anchor.y-313.5)*first.scale)
+  }
+ }
+})
+
+it.each([
  ['fish/rare/sea-crocodile_sprite.png',[357.195,358.911,288.804,293.595]],
  ['fish/normal/soft-sea-cucumber_sprite.png',[423.312,423.074,342.513,344.394]],
  ['fish/normal/pink-scallop_sprite.png',[361.670,373.779,292.525,290.878]],

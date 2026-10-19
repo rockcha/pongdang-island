@@ -12,6 +12,7 @@ import type { Rarity } from '@/lib/game/rarity'
 import { practiceSpecies,plannedFailureMessages } from './fishing-practice'
 import { CatchReveal } from './catch-reveal'
 import { TensionFishingGame } from './tension-fishing-game'
+import { FishingLeaveGuard } from './fishing-leave-guard'
 import { useEffect, useRef, useState } from 'react'
 import { FishingResultCard } from './fishing-result-card'
 import { createFishingPresentation } from './fishing-presentation'
@@ -56,6 +57,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget}:{regionId?:stri
  const [failureLabel,setFailureLabel]=useState('다음엔 꼭 만나요')
  const [failureReason,setFailureReason]=useState<string|null>(null)
  const [gameOpen,setGameOpen]=useState(false)
+ const [leavePaused,setLeavePaused]=useState(false)
  const [revealing,setRevealing]=useState(false)
  const [baitOpen,setBaitOpen]=useState(false)
  const [uncertain,setUncertain]=useState(false)
@@ -103,7 +105,29 @@ export function FishingPanel({regionId,regionName,toolbarTarget}:{regionId?:stri
   if(definite)pending.current=null
   setCastError(fishingError(cause));setUncertain(!definite);setCastOpen(true)
  }
+ async function leaveFishing(){
+  if(lock.current)throw new Error('Fishing request in progress')
+  if(practice){setGameOpen(false);return}
+  if(!gameOpen&&!pending.current&&!uncertain)return
+  lock.current=true;setBusy(true)
+  try{
+   // Retry the same operation after an ambiguous response, never spend another bait.
+   let plan=prepared
+   if(pending.current?.stage==='prepare')plan=await prepareFishing(pending.current.region,pending.current.bait,pending.current.id)
+   if(!plan&&!pending.current)throw new Error('Missing fishing operation')
+   if(!plan?.finished){
+    pending.current??={id:plan!.operation_id,bait:plan!.bait_id,region:plan!.region_id,stage:'finish',won:false,reason:'cancelled'}
+    pending.current.stage='finish';pending.current.won??=false
+    const data=await finishFishing(pending.current.id,pending.current.won)
+    if(data.attempt.species)setTrip({userId,items:recordFishingCatch(userId,data.attempt)})
+   }
+   pending.current=null;setGameOpen(false);setUncertain(false);setPrepared(null)
+   await Promise.allSettled([refresh(),reload()])
+  }catch(cause){showError(cause);throw cause}
+  finally{lock.current=false;if(active.current)setBusy(false)}
+ }
  async function settle(won=true,reason?:string){
+  if(lock.current)return
   if(!won)setGameOpen(false)
   setBusy(true);lock.current=true;setCastError('');setResult(null)
   if(reason)setFailureText(failureMessage(reason))
@@ -152,6 +176,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget}:{regionId?:stri
  const castCaption=busy?'준비 중…':practice?`${rarities[practice].label} 테스트 시작`:uncertain?'결과 확인':state?.prepared?'이어하기':'낚시 시작'
  const baitList=(<ul className="space-y-3">{state?.baits.map(item=><li key={item.id} className={`rounded-xl border p-3 ${regionId&&selected===item.id?'border-primary/40 bg-primary/5':''}`}><div className="flex gap-3"><img src={item.image_path} alt="" className="size-12 shrink-0 object-contain"/><div className="min-w-0 flex-1"><div className="flex justify-between gap-2"><h3 className="text-sm font-semibold">{item.name}</h3><span className="text-xs tabular-nums text-muted-foreground">보유 {goldLoading?'…':wallet.inventory[item.id]??0}개</span></div><p className="mt-2 text-xs leading-6 text-muted-foreground">{item.description}</p><p className="mt-2 text-xs leading-5 text-primary">{item.effect_description}</p></div></div><div className="mt-3 flex gap-2">{regionId&&<Button variant={selected===item.id?'default':'outline'} data-selection-icons aria-pressed={selected===item.id} className="min-h-11 flex-1" disabled={busy||goldBusy||uncertain} onClick={()=>setSelected(item.id)}>{selected===item.id?'선택됨':'선택'}</Button>}{item.price!==null?<Button variant="outline" className="min-h-11 flex-1" disabled={busy||goldBusy||goldLoading||!!goldError||uncertain||wallet.gold<item.price} onClick={()=>void buy(item.id)} aria-label={`${item.name} 1개 구매 ${item.price} 골드`}><GoldIcon className="size-5"/>{item.price} · 1개 구매</Button>:<span className="flex min-h-11 flex-1 items-center justify-center text-xs text-muted-foreground">획득 전용 · 획득처 준비 중</span>}</div></li>)}</ul>)
  return <div className={regionId?"relative isolate min-h-0 flex-1 bg-[#123c68]":"space-y-5"}>
+  {regionId&&<FishingLeaveGuard active={gameOpen||uncertain||busy} practice={!!practice} busy={busy} onPause={setLeavePaused} onLeave={leaveFishing}/>}
   {regionId?<div role="group" aria-label="낚시 준비 도구" className="absolute bottom-[calc(1.5rem+env(safe-area-inset-bottom))] left-4 z-20 grid w-40 grid-cols-2 gap-px overflow-hidden rounded-xl border border-[#D5B797] bg-[#D5B797] shadow-sm">
    <FishingRodSelector dock regionId={regionId} disabled={gameOpen||busy||uncertain||revealing||castOpen}/>
    <CollectionDialog fishing dock disabled={gameOpen||busy||uncertain||revealing||castOpen}/>
@@ -162,7 +187,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget}:{regionId?:stri
   {error&&<div role="alert" className={regionId?"absolute inset-x-4 top-28 z-20 space-y-2 rounded-xl bg-background/95 p-3 text-sm text-destructive":"space-y-2 text-sm text-destructive"}><p>{error}</p>{!uncertain&&<Button variant="outline" onClick={()=>void Promise.all([reload(),refresh()])}>다시 불러오기</Button>}</div>}
   {goldError&&<p role="alert" className={regionId?"absolute inset-x-4 top-28 z-20 rounded-xl bg-background/95 p-3 text-sm text-destructive":"text-sm text-destructive"}>{goldError}</p>}
   {regionId?<Dialog open={baitOpen} onOpenChange={setBaitOpen}><DialogContent className="notification-sheet bottom-0 top-auto left-0 flex max-h-[85dvh] max-w-full translate-x-0 translate-y-0 flex-col overflow-hidden rounded-t-2xl rounded-b-none pb-0 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2"><DialogHeader className="shrink-0 pr-7"><DialogTitle className="flex items-center gap-2"><img src="/branding/pongi-starfish.png" alt="" className="size-6 object-contain"/>미끼통</DialogTitle><DialogDescription className="sr-only">사용할 미끼를 선택하세요.</DialogDescription></DialogHeader><ul className="-mx-4 min-h-0 divide-y border-t overflow-y-auto overscroll-contain">{state?.baits.map(item=><li key={item.id}><button type="button" aria-label={item.name+' 선택'} data-selection-icons aria-pressed={draftBait===item.id} disabled={busy||goldBusy||uncertain||!(wallet.inventory[item.id]>0)} onClick={()=>setDraftBait(item.id)} className={'flex min-h-20 w-full items-center gap-3 px-4 py-3 text-left outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring disabled:opacity-40 '+(draftBait===item.id?'bg-secondary':'hover:bg-secondary/40')}><span className="relative size-12 shrink-0"><LandscapeImage retryable={false} src={item.image_path} alt="" className="absolute inset-0 size-full object-contain"/></span><span className="min-w-0 flex-1"><span className="block text-sm">{item.name}</span><span className="mt-1 block text-xs leading-5 text-muted-foreground">{fishingBaitEffect(item.id,item.effect_description,item.successChanceBp,item.baseSuccessChanceBp)}</span></span><span className="flex min-w-16 shrink-0 flex-col items-end gap-0.5 border-l border-border pl-3"><span className="text-[10px] text-muted-foreground">보유</span><span className="text-base font-semibold tabular-nums text-primary">{(wallet.inventory[item.id]??0).toLocaleString('ko-KR')}<span className="ml-0.5 text-xs font-normal">개</span></span></span></button></li>)}</ul><div className="-mx-4 shrink-0 border-t bg-primary pb-[env(safe-area-inset-bottom)]">{state?.baits.some(item=>wallet.inventory[item.id]>0)?<Button className="h-16 w-full rounded-none" disabled={busy||goldBusy||uncertain||!(wallet.inventory[draftBait]>0)} onClick={()=>{setSelected(draftBait);setBaitOpen(false)}}>선택한 미끼 사용하기</Button>:<Link to="/shop?tab=bait" className="flex h-16 items-center justify-center text-primary-foreground">상점으로</Link>}</div></DialogContent></Dialog>:baitList}
-  {regionId&&<TensionFishingGame baitImage={state?.baits.find(item=>item.id===(prepared?.bait_id??selected))?.image_path} start={bait&&!castOpen&&!revealing?{label:castLabel,caption:castCaption,disabled:castDisabled,onStart:()=>void cast()}:undefined} regionId={regionId} regionName={regionName} toolbarTarget={toolbarTarget} castId={gameOpen?(prepared?.operation_id??'practice-'+practice):"ready"} active={gameOpen} quiet={!gameOpen&&(revealing||castOpen)} challenge={{rarity:practice??prepared?.rarity??'common',wait:prepared?.wait_seconds,failureAt:prepared&&!prepared.eligible?preparedFailureSeconds:undefined,failureReason:prepared?.failure_reason}} outline={practice?practiceSpecies(practice):prepared?.species} practice={!!practice} onCancel={()=>void settle(false,'cancelled')} onFailed={reason=>void settle(false,reason)} onCaught={()=>void settle(true)}/>}
+  {regionId&&<TensionFishingGame baitImage={state?.baits.find(item=>item.id===(prepared?.bait_id??selected))?.image_path} start={bait&&!castOpen&&!revealing?{label:castLabel,caption:castCaption,disabled:castDisabled,onStart:()=>void cast()}:undefined} regionId={regionId} regionName={regionName} toolbarTarget={toolbarTarget} castId={gameOpen?(prepared?.operation_id??'practice-'+practice):"ready"} active={gameOpen} paused={leavePaused} quiet={!gameOpen&&(revealing||castOpen)} challenge={{rarity:practice??prepared?.rarity??'common',wait:prepared?.wait_seconds,failureAt:prepared&&!prepared.eligible?preparedFailureSeconds:undefined,failureReason:prepared?.failure_reason}} outline={practice?practiceSpecies(practice):prepared?.species} practice={!!practice} onCancel={()=>void settle(false,'cancelled')} onFailed={reason=>void settle(false,reason)} onCaught={()=>void settle(true)}/>}
   {regionId&&!toolbarTarget&&tools(<>
    <div className={toolbarTarget?"order-10":"absolute right-16 top-3 z-20"}><TooltipProvider><Tooltip><TooltipTrigger render={<Link to="/harbor" aria-label="지도" className="flex size-11 items-center justify-center rounded-full border border-white/20 bg-slate-950/20 text-xl text-white backdrop-blur-sm hover:bg-slate-950/35"/>}><Map className="size-6" aria-hidden="true"/></TooltipTrigger><TooltipContent>지도</TooltipContent></Tooltip></TooltipProvider></div>
   </>)}

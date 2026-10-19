@@ -1,0 +1,76 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/1052/silver-mist-goby_sprite.png",
+        "storage_path":  "fish/rare/silver-mist-goby_sprite.png",
+        "patch":  [
+                      470,
+                      310,
+                      80,
+                      65
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  7.03849444415523
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  4,
+                           "dy":  -48,
+                           "rmse":  11.237488366229563
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  -48,
+                           "rmse":  13.457064783696056
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/mukhyang-creatures/fish/epic/muk-landscape-back-carp_sprite.png",
+        "storage_path":  "fish/epic/muk-landscape-back-carp_sprite.png",
+        "patch":  [
+                      500,
+                      395,
+                      65,
+                      45
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -35,
+                           "dy":  1,
+                           "rmse":  20.988398671358393
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  9,
+                           "dy":  -60,
+                           "rmse":  32.797877333384818
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -41,
+                           "dy":  -61,
+                           "rmse":  27.70883515152785
+                       }
+                   ]
+    }
+]

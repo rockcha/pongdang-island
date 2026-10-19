@@ -1,0 +1,16 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "assets": [
+    {
+      "path": "public/banners/music-room.png",
+      "reference": "public/banners/arcade.png",
+      "prompt": "Use case: stylized-concept. Create a wide 3:1 landscape banner for a cozy Korean seaside island game. Match the reference arcade background's warm painterly illustration style. A peaceful wooden music listening room overlooking turquoise ocean through a round window, vintage wooden turntable with a vinyl record and two small speakers, tidy vinyl shelf and comfortable mint upholstered chair, a few seashell accents and warm sunlight. Main music equipment center and right, calm lower left for title overlay. No people, text, letters, logos, watermark or border."
+    },
+    {
+      "path": "public/app-icons/music-room.png",
+      "reference": "public/app-icons/savings.png",
+      "prompt": "Use case: stylized-concept. Create ONE music listening room navigation pictogram for a cozy Korean island game matching the reference icon's bold smooth warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach and muted mint fills with restrained soft shading. Subject: a pair of cream and apricot over-ear headphones with one small mint musical note inside the arch. Compact centered silhouette occupying 78% of square canvas, whole object visible and clear at 28 pixels. Transparent alpha background. No text, letters, numerals, enclosing tile, circle, scenery, logos or watermark."
+    }
+  ]
+}

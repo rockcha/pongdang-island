@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "69560aa72632fcef2fbac12a8197f81714d54f2503431b5204c1b1f403f6161d",
+  "migrationHash": "5c2f3d89840d87549a18d9aab3ad999cbe5758fe5ea3db17bb9ff1101c967da3",
   "structure": {
     "enums": [
       {
@@ -79,6 +79,12 @@
       {
         "rls": true,
         "name": "gold_settings",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "harbor_operations",
         "schema": "app_private",
         "force_rls": false
       },
@@ -252,7 +258,43 @@
       },
       {
         "rls": true,
+        "name": "harbor_boats",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "harbor_vessels",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "harbor_voyages",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
         "name": "memory_game_runs",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "music_defaults",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "music_libraries",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "music_tracks",
         "schema": "public",
         "force_rls": false
       },
@@ -313,6 +355,12 @@
       {
         "rls": true,
         "name": "player_fishing_vessels",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "player_harbor_vessels",
         "schema": "public",
         "force_rls": false
       },
@@ -648,6 +696,56 @@
         "generated": ""
       },
       {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "harbor_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "harbor_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "signature",
+        "type": "jsonb",
+        "table": "harbor_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "receipt",
+        "type": "jsonb",
+        "table": "harbor_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "harbor_operations",
+        "schema": "app_private",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
         "name": "run_id",
         "type": "uuid",
         "table": "memory_game_boards",
@@ -943,6 +1041,16 @@
         "table": "quest_claims",
         "schema": "app_private",
         "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "fuel",
+        "type": "integer",
+        "table": "quest_claims",
+        "schema": "app_private",
+        "default": "0",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -1625,6 +1733,16 @@
         "default": null,
         "identity": "",
         "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "fuel",
+        "type": "integer",
+        "table": "attendance_claims",
+        "schema": "public",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
         "generated": ""
       },
       {
@@ -3070,6 +3188,246 @@
       {
         "name": "id",
         "type": "uuid",
+        "table": "harbor_boats",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "harbor_boats",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "vessel_id",
+        "type": "text",
+        "table": "harbor_boats",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "instance_no",
+        "type": "integer",
+        "table": "harbor_boats",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "dock_slot",
+        "type": "integer",
+        "table": "harbor_boats",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "purchased_at",
+        "type": "timestamp with time zone",
+        "table": "harbor_boats",
+        "schema": "public",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "text",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "price",
+        "type": "integer",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "duration_minutes",
+        "type": "integer",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "fuel_cost",
+        "type": "integer",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "fishing_count",
+        "type": "integer",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "sprite_path",
+        "type": "text",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "sort_order",
+        "type": "integer",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "vessel_id",
+        "type": "text",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "vessel_snapshot",
+        "type": "jsonb",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "departed_at",
+        "type": "timestamp with time zone",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "returns_at",
+        "type": "timestamp with time zone",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "arrival_seen_at",
+        "type": "timestamp with time zone",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "claimed_at",
+        "type": "timestamp with time zone",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "result",
+        "type": "jsonb",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "boat_id",
+        "type": "uuid",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
         "table": "memory_game_runs",
         "schema": "public",
         "default": "gen_random_uuid()",
@@ -3153,6 +3511,106 @@
         "table": "memory_game_runs",
         "schema": "public",
         "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "video_id",
+        "type": "text",
+        "table": "music_defaults",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "table": "music_defaults",
+        "schema": "public",
+        "default": "''::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "sort_order",
+        "type": "integer",
+        "table": "music_defaults",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "music_libraries",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "music_libraries",
+        "schema": "public",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "music_tracks",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "video_id",
+        "type": "text",
+        "table": "music_tracks",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "table": "music_tracks",
+        "schema": "public",
+        "default": "''::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "custom_name",
+        "type": "text",
+        "table": "music_tracks",
+        "schema": "public",
+        "default": "''::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "music_tracks",
+        "schema": "public",
+        "default": "now()",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -3900,6 +4358,36 @@
       {
         "name": "user_id",
         "type": "uuid",
+        "table": "player_harbor_vessels",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "vessel_id",
+        "type": "text",
+        "table": "player_harbor_vessels",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "purchased_at",
+        "type": "timestamp with time zone",
+        "table": "player_harbor_vessels",
+        "schema": "public",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
         "table": "player_map_fragments",
         "schema": "public",
         "default": null,
@@ -4628,6 +5116,12 @@
         "definition": "CREATE UNIQUE INDEX gold_settings_pkey ON app_private.gold_settings USING btree (id)"
       },
       {
+        "name": "harbor_operations_pkey",
+        "table": "harbor_operations",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX harbor_operations_pkey ON app_private.harbor_operations USING btree (user_id, operation_id)"
+      },
+      {
         "name": "memory_game_boards_pkey",
         "table": "memory_game_boards",
         "schema": "app_private",
@@ -5084,6 +5578,78 @@
         "definition": "CREATE INDEX quest_gold_history ON public.gold_transactions USING btree (user_id, created_at)"
       },
       {
+        "name": "harbor_boats_id_user_id_vessel_id_key",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX harbor_boats_id_user_id_vessel_id_key ON public.harbor_boats USING btree (id, user_id, vessel_id)"
+      },
+      {
+        "name": "harbor_boats_pkey",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX harbor_boats_pkey ON public.harbor_boats USING btree (id)"
+      },
+      {
+        "name": "harbor_boats_user_id_dock_slot_key",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX harbor_boats_user_id_dock_slot_key ON public.harbor_boats USING btree (user_id, dock_slot)"
+      },
+      {
+        "name": "harbor_boats_user_id_vessel_id_instance_no_key",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX harbor_boats_user_id_vessel_id_instance_no_key ON public.harbor_boats USING btree (user_id, vessel_id, instance_no)"
+      },
+      {
+        "name": "harbor_boats_vessel_idx",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "CREATE INDEX harbor_boats_vessel_idx ON public.harbor_boats USING btree (vessel_id)"
+      },
+      {
+        "name": "harbor_vessels_pkey",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX harbor_vessels_pkey ON public.harbor_vessels USING btree (id)"
+      },
+      {
+        "name": "harbor_one_voyage_per_boat",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX harbor_one_voyage_per_boat ON public.harbor_voyages USING btree (boat_id) WHERE (claimed_at IS NULL)"
+      },
+      {
+        "name": "harbor_voyages_boat_idx",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "CREATE INDEX harbor_voyages_boat_idx ON public.harbor_voyages USING btree (boat_id)"
+      },
+      {
+        "name": "harbor_voyages_owner_idx",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "CREATE INDEX harbor_voyages_owner_idx ON public.harbor_voyages USING btree (user_id, departed_at DESC)"
+      },
+      {
+        "name": "harbor_voyages_pkey",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX harbor_voyages_pkey ON public.harbor_voyages USING btree (id)"
+      },
+      {
+        "name": "harbor_voyages_ready_idx",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "CREATE INDEX harbor_voyages_ready_idx ON public.harbor_voyages USING btree (user_id, returns_at) WHERE (claimed_at IS NULL)"
+      },
+      {
+        "name": "harbor_voyages_vessel_idx",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "CREATE INDEX harbor_voyages_vessel_idx ON public.harbor_voyages USING btree (vessel_id)"
+      },
+      {
         "name": "memory_game_runs_pkey",
         "table": "memory_game_runs",
         "schema": "public",
@@ -5106,6 +5672,24 @@
         "table": "memory_game_runs",
         "schema": "public",
         "definition": "CREATE INDEX memory_week_rank ON public.memory_game_runs USING btree (finished_at, elapsed_ms, user_id) WHERE (finished_at IS NOT NULL)"
+      },
+      {
+        "name": "music_defaults_pkey",
+        "table": "music_defaults",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX music_defaults_pkey ON public.music_defaults USING btree (video_id)"
+      },
+      {
+        "name": "music_libraries_pkey",
+        "table": "music_libraries",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX music_libraries_pkey ON public.music_libraries USING btree (user_id)"
+      },
+      {
+        "name": "music_tracks_pkey",
+        "table": "music_tracks",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX music_tracks_pkey ON public.music_tracks USING btree (user_id, video_id)"
       },
       {
         "name": "notices_pkey",
@@ -5262,6 +5846,18 @@
         "table": "player_fishing_vessels",
         "schema": "public",
         "definition": "CREATE UNIQUE INDEX player_fishing_vessels_pkey ON public.player_fishing_vessels USING btree (user_id, vessel_id)"
+      },
+      {
+        "name": "player_harbor_vessels_pkey",
+        "table": "player_harbor_vessels",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX player_harbor_vessels_pkey ON public.player_harbor_vessels USING btree (user_id, vessel_id)"
+      },
+      {
+        "name": "player_harbor_vessels_vessel_idx",
+        "table": "player_harbor_vessels",
+        "schema": "public",
+        "definition": "CREATE INDEX player_harbor_vessels_vessel_idx ON public.player_harbor_vessels USING btree (vessel_id)"
       },
       {
         "name": "player_map_fragments_pkey",
@@ -5669,6 +6265,78 @@
       },
       {
         "cmd": "SELECT",
+        "qual": "(user_id = ( SELECT auth.uid() AS uid))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "harbor_boats",
+        "permissive": "PERMISSIVE",
+        "policyname": "harbor_boats_owner_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "true",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "harbor_vessels",
+        "permissive": "PERMISSIVE",
+        "policyname": "harbor_catalog_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(user_id = ( SELECT auth.uid() AS uid))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "harbor_voyages",
+        "permissive": "PERMISSIVE",
+        "policyname": "harbor_voyages_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "true",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "music_defaults",
+        "permissive": "PERMISSIVE",
+        "policyname": "music_defaults_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(user_id = ( SELECT auth.uid() AS uid))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "music_libraries",
+        "permissive": "PERMISSIVE",
+        "policyname": "music_libraries_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(user_id = ( SELECT auth.uid() AS uid))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "music_tracks",
+        "permissive": "PERMISSIVE",
+        "policyname": "music_tracks_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
         "qual": "((status = 'published'::text) OR ( SELECT app_private.notice_is_operator() AS notice_is_operator))",
         "roles": [
           "authenticated"
@@ -5784,6 +6452,18 @@
         "tablename": "player_fishing_vessels",
         "permissive": "PERMISSIVE",
         "policyname": "owned_vessels_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(user_id = ( SELECT auth.uid() AS uid))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "player_harbor_vessels",
+        "permissive": "PERMISSIVE",
+        "policyname": "harbor_owned_read",
         "schemaname": "public",
         "with_check": null
       },
@@ -6309,6 +6989,16 @@
         "securityDefiner": true
       },
       {
+        "name": "base_quest_period",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_kind text, p_now timestamp with time zone",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.base_quest_period(p_kind text, p_now timestamp with time zone)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();start_date date;start_at timestamptz;end_at timestamptz;\n attempts integer;rare_catches integer;epic_catches integer;trash_catches integer;decor_catches integer;\n posts integer;trades integer;departures integer;games integer;care integer;gifts integer;maps integer;rods integer;\n need_map boolean;need_rod boolean;entries jsonb;bonus integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_kind not in ('daily','weekly') or p_kind is null then raise exception 'INVALID_QUEST';end if;\n start_date:=case when p_kind='daily' then (p_now at time zone 'Asia/Seoul')::date else date_trunc('week',p_now at time zone 'Asia/Seoul')::date end;\n start_at:=start_date::timestamp at time zone 'Asia/Seoul';\n end_at:=(start_date+case when p_kind='daily' then 1 else 7 end)::timestamp at time zone 'Asia/Seoul';\n select count(*) into attempts from public.fishing_attempts where user_id=u and created_at>=start_at and created_at<end_at;\n -- Catch quests include manual catches and collected expedition results, never gifts or purchases.\n with catches as (\n  select s.rarity::text rarity,s.kind::text kind from public.fishing_attempts a\n  join public.player_collectibles c on c.id=a.collectible_id join public.collectible_species s on s.id=c.species_id\n  where a.user_id=u and a.created_at>=start_at and a.created_at<end_at\n  union all\n  select item->'species'->>'rarity',item->'species'->>'kind'\n  from public.fishing_expeditions e cross join lateral jsonb_array_elements(coalesce(e.result->'items','[]'::jsonb)) item\n  where e.user_id=u and e.claimed_at>=start_at and e.claimed_at<end_at\n ) select count(*) filter(where rarity in ('rare','epic','mythic')),\n count(*) filter(where rarity in ('epic','mythic')),\n count(*) filter(where kind='trash'),count(*) filter(where kind='decoration')\n into rare_catches,epic_catches,trash_catches,decor_catches from catches;\n select count(*) into posts from public.exchange_listings where owner_id=u and side='sell' and created_at>=start_at and created_at<end_at;\n select count(*) into trades from public.exchange_listings where (owner_id=u or taker_id=u) and status='completed' and closed_at>=start_at and closed_at<end_at;\n select count(*) into departures from public.fishing_expeditions where user_id=u and departed_at>=start_at and departed_at<end_at;\n select count(*) filter(where item_id in ('arcade:memory','arcade:shadow','arcade:odd-even')),\n count(*) filter(where item_id like 'map:%'),count(*) filter(where item_id like 'rod:%') into games,maps,rods\n from public.gold_transactions where user_id=u and action='buy' and delta<0 and created_at>=start_at and created_at<end_at;\n select count(*) into care from (\n  select id from public.aquarium_feedings where visitor_id=u and owner_id<>u and completed_at>=start_at and completed_at<end_at\n  union all select id from public.aquarium_cleanings where visitor_id=u and owner_id<>u and completed_at>=start_at and completed_at<end_at\n ) visits;\n select count(*) into gifts from public.collectible_gifts where sender_id=u and source='friend' and created_at>=start_at and created_at<end_at;\n need_map:=maps>0 or exists(select 1 from public.region_maps m join public.regions r on r.id=m.region_id\n  where r.requires_map_fragment and not exists(select 1 from public.player_map_fragments f where f.user_id=u and f.region_id=m.region_id));\n need_rod:=rods>0 or exists(select 1 from public.fishing_rods r where r.price>0\n  and not exists(select 1 from public.player_fishing_rods o where o.user_id=u and o.rod_id=r.id));\n with definitions(id,title,target,progress,href,icon,ord) as (values\n  ('post','판매글 올리기',1,posts,'/exchange','exchange',1),\n  ('fish','낚시 5회',5,attempts,'/harbor','rod',2),\n  ('depart','어선 파견 1회',1,departures,'/expeditions','expeditions',3),\n  ('rare','희귀 이상 포획',1,rare_catches,'/harbor','fish',4),\n  ('game','미니게임 실전 플레이 1회',1,games,'/arcade','gameplay',5),\n  ('care','친구 어항 청소 또는 먹이 주기',1,care,'/friends','mailFriend',6),\n  ('trade','거래 7회 완료',7,trades,'/exchange','exchange',11),\n  ('weekly_fish','낚시 40회',40,attempts,'/harbor','rod',12),\n  ('epic','특급 이상 포획',1,epic_catches,'/harbor','fish',13),\n  ('trash','쓰레기 10회 포획',10,trash_catches,'/harbor','trash',14),\n  ('gift','선물 3회 보내기',3,gifts,'/notifications?tab=gift','mailGift',15),\n  ('decor','장식물 10회 포획',10,decor_catches,'/harbor','decoration',16),\n  ('map','지도 구매',1,maps,'/shop?tab=maps','map',17),\n  ('rod','낚싯대 구매',1,rods,'/shop?tab=rods','rod',18)\n ), rows as (\n  select d.*,c.quest_id is not null claimed from definitions d left join app_private.quest_claims c\n   on c.user_id=u and c.period_kind=p_kind and c.period_start=start_date and c.quest_id=d.id\n  where (p_kind='daily' and ord<10) or (p_kind='weekly' and ord>10 and (id<>'map' or need_map or c.quest_id is not null) and (id<>'rod' or need_rod or c.quest_id is not null))\n ) select jsonb_agg(jsonb_build_object('id',id,'title',title,'target',target,'progress',least(progress,target),\n 'claimed',claimed,'complete',progress>=target or claimed,'reward',case when p_kind='daily' then 30 else 50 end,'href',href,'icon',icon) order by ord) into entries from rows;\n bonus:=case when p_kind='daily' then 200 else 1000 end;\n return jsonb_build_object('kind',p_kind,'start',start_date,'resetsAt',end_at,'quests',entries,'bonus',bonus,\n 'bonusReady',not exists(select 1 from jsonb_array_elements(entries) q where not (q->>'complete')::boolean),\n 'bonusClaimed',exists(select 1 from app_private.quest_claims where user_id=u and period_kind=p_kind and period_start=start_date and quest_id='all'));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "boost_friend_expedition",
         "config": [
           "search_path=\"\""
@@ -6375,7 +7065,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_day date",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.claim_attendance(p_day date)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_today date:=(transaction_timestamp() at time zone 'Asia/Seoul')::date;\n a public.player_attendance;c public.attendance_claims;w public.player_wallets;\n v_streak integer;v_day integer;v_bait text;v_count integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_day is null then raise exception 'INVALID_ATTENDANCE_DAY'; end if;\n perform app_private.get_gold_wallet();\n -- Match the wallet-first lock order used by fishing and equipment purchases.\n select * into w from public.player_wallets where user_id=v_uid for update;\n select * into c from public.attendance_claims where user_id=v_uid and claim_date=p_day;\n if found then\n  return app_private.attendance_state()||jsonb_build_object('replayed',true,'reward',to_jsonb(c));\n end if;\n if p_day<>v_today then raise exception 'ATTENDANCE_DAY_CHANGED'; end if;\n insert into public.player_attendance(user_id) values(v_uid) on conflict do nothing;\n select * into a from public.player_attendance where user_id=v_uid;\n v_streak:=case when a.last_claim_date=v_today-1 then a.streak+1 else 1 end;\n if a.last_claim_date is distinct from v_today-1 then a.sheet_streak_offset:=0; end if;\n v_day:=(v_streak-a.sheet_streak_offset-1)%28+1;\n v_bait:=case when v_day=28 then 'bait_epic' when v_day%7=0 then 'bait_special' else null end;\n if w.gold>1000000000-50 then raise exception 'GOLD_LIMIT'; end if;\n if v_bait is not null then\n  if not exists(select 1 from public.fishing_baits where id=v_bait) then raise exception 'ATTENDANCE_REWARD_UNAVAILABLE'; end if;\n  v_count:=coalesce((w.inventory->>v_bait)::integer,0);\n  if v_count>=2147483647 then raise exception 'INVENTORY_LIMIT'; end if;\n  w.inventory:=jsonb_set(w.inventory,array[v_bait],to_jsonb(v_count+1));\n end if;\n update public.player_wallets set gold=gold+50,inventory=w.inventory,updated_at=now() where user_id=v_uid;\n update public.player_attendance set last_claim_date=v_today,streak=v_streak,sheet_streak_offset=a.sheet_streak_offset,\n  completed_sheets=completed_sheets+case when v_day=28 then 1 else 0 end where user_id=v_uid;\n insert into public.attendance_claims(user_id,claim_date,streak,sheet_day,bait_id)\n values(v_uid,v_today,v_streak,v_day,v_bait) returning * into c;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n values(v_uid,c.operation_id,'charge','attendance:'||v_today::text,50);\n return app_private.attendance_state()||jsonb_build_object('replayed',false,'reward',to_jsonb(c));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.claim_attendance(p_day date)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_today date:=(transaction_timestamp() at time zone 'Asia/Seoul')::date;\n a public.player_attendance;c public.attendance_claims;w public.player_wallets;\n v_streak integer;v_day integer;v_bait text;v_count integer;v_gold integer;v_fuel integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_day is null then raise exception 'INVALID_ATTENDANCE_DAY'; end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n select * into c from public.attendance_claims where user_id=v_uid and claim_date=p_day;\n if found then\n  return app_private.attendance_state()||jsonb_build_object('replayed',true,'reward',to_jsonb(c));\n end if;\n if p_day<>v_today then raise exception 'ATTENDANCE_DAY_CHANGED'; end if;\n insert into public.player_attendance(user_id) values(v_uid) on conflict do nothing;\n select * into a from public.player_attendance where user_id=v_uid;\n v_streak:=case when a.last_claim_date=v_today-1 then a.streak+1 else 1 end;\n if a.last_claim_date is distinct from v_today-1 then a.sheet_streak_offset:=0; end if;\n v_day:=(v_streak-a.sheet_streak_offset-1)%28+1;\n v_gold:=case when v_day%7<>0 and v_day%2=1 then 50 else 0 end;\n v_fuel:=case when v_day%7<>0 and v_day%2=0 then 1 else 0 end;\n v_bait:=case when v_day=28 then 'bait_epic' when v_day%7=0 then 'bait_first_greeting' else null end;\n if v_gold>0 and w.gold>1000000000-v_gold then raise exception 'GOLD_LIMIT'; end if;\n if v_fuel>0 then\n  v_count:=coalesce((w.inventory->>'fuel')::integer,0);\n  if v_count>100000-v_fuel then raise exception 'FUEL_LIMIT'; end if;\n  w.inventory:=jsonb_set(w.inventory,'{fuel}',to_jsonb(v_count+v_fuel));\n end if;\n if v_bait is not null then\n  if not exists(select 1 from public.fishing_baits where id=v_bait) then raise exception 'ATTENDANCE_REWARD_UNAVAILABLE'; end if;\n  v_count:=coalesce((w.inventory->>v_bait)::integer,0);\n  if v_count>=2147483647 then raise exception 'INVENTORY_LIMIT'; end if;\n  w.inventory:=jsonb_set(w.inventory,array[v_bait],to_jsonb(v_count+1));\n end if;\n update public.player_wallets set gold=gold+v_gold,inventory=w.inventory,updated_at=now() where user_id=v_uid;\n update public.player_attendance set last_claim_date=v_today,streak=v_streak,sheet_streak_offset=a.sheet_streak_offset,\n  completed_sheets=completed_sheets+case when v_day=28 then 1 else 0 end where user_id=v_uid;\n insert into public.attendance_claims(user_id,claim_date,streak,sheet_day,bait_id,gold,fuel)\n values(v_uid,v_today,v_streak,v_day,v_bait,v_gold,v_fuel) returning * into c;\n if v_gold>0 then\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n  values(v_uid,c.operation_id,'charge','attendance:'||v_today::text,v_gold);\n end if;\n return app_private.attendance_state()||jsonb_build_object('replayed',false,'reward',to_jsonb(c));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -6395,7 +7085,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_kind text, p_start date, p_quest_id text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.claim_quest(p_kind text, p_start date, p_quest_id text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();p jsonb;q jsonb;amount integer;balance integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_kind is null or p_kind not in ('daily','weekly','growth') or p_start is null or p_quest_id is null then raise exception 'INVALID_QUEST';end if;\n perform app_private.get_gold_wallet();\n select gold into balance from public.player_wallets where user_id=u for update;\n if p_kind='growth' then p:=app_private.growth_quest_period();else p:=app_private.quest_period(p_kind,clock_timestamp());end if;\n if p_start<>(p->>'start')::date then raise exception 'QUEST_PERIOD_CHANGED';end if;\n if p_quest_id='all' then\n  if p_kind='growth' then raise exception 'INVALID_QUEST';end if;\n  if not (p->>'bonusReady')::boolean then raise exception 'QUEST_INCOMPLETE';end if;\n  amount:=(p->>'bonus')::integer;\n else\n  select value into q from jsonb_array_elements(p->'quests') where value->>'id'=p_quest_id;\n  if q is null then raise exception 'INVALID_QUEST';end if;\n  if not (q->>'complete')::boolean then raise exception 'QUEST_INCOMPLETE';end if;\n  amount:=(q->>'reward')::integer;\n end if;\n if exists(select 1 from app_private.quest_claims where user_id=u and period_kind=p_kind and period_start=p_start and quest_id=p_quest_id) then\n  return app_private.quest_state()||jsonb_build_object('credited',0);\n end if;\n if balance::bigint+amount>1000000000 then raise exception 'GOLD_LIMIT';end if;\n insert into app_private.quest_claims(user_id,period_kind,period_start,quest_id,gold) values(u,p_kind,p_start,p_quest_id,amount);\n update public.player_wallets set gold=gold+amount,updated_at=clock_timestamp() where user_id=u;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,gen_random_uuid(),'charge','quest:'||p_kind||':'||p_start||':'||p_quest_id,amount);\n return app_private.quest_state()||jsonb_build_object('credited',amount);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.claim_quest(p_kind text, p_start date, p_quest_id text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();p jsonb;q jsonb;amount integer;fuel integer:=0;w public.player_wallets;balance integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_kind is null or p_kind not in ('daily','weekly','growth') or p_start is null or p_quest_id is null then raise exception 'INVALID_QUEST';end if;\n perform app_private.get_gold_wallet();select * into w from public.player_wallets where user_id=u for update;\n if p_kind='growth' then p:=app_private.growth_quest_period();else p:=app_private.quest_period(p_kind,clock_timestamp());end if;\n if p_start<>(p->>'start')::date then raise exception 'QUEST_PERIOD_CHANGED';end if;\n if p_quest_id='all' then\n  if p_kind='growth' then raise exception 'INVALID_QUEST';end if;\n  if not (p->>'bonusReady')::boolean then raise exception 'QUEST_INCOMPLETE';end if;\n  amount:=(p->>'bonus')::integer;\n else\n  select value into q from jsonb_array_elements(p->'quests') where value->>'id'=p_quest_id;\n  if q is null then raise exception 'INVALID_QUEST';end if;\n  if not (q->>'complete')::boolean then raise exception 'QUEST_INCOMPLETE';end if;\n  amount:=(q->>'reward')::integer;fuel:=coalesce((q->>'rewardFuel')::integer,0);\n end if;\n if exists(select 1 from app_private.quest_claims where user_id=u and period_kind=p_kind and period_start=p_start and quest_id=p_quest_id) then\n  return app_private.quest_state()||jsonb_build_object('credited',0,'creditedFuel',0);\n end if;\n if w.gold::bigint+amount>1000000000 then raise exception 'GOLD_LIMIT';end if;\n balance:=coalesce((w.inventory->>'fuel')::integer,0);\n if fuel>0 and balance>100000-fuel then raise exception 'FUEL_LIMIT';end if;\n insert into app_private.quest_claims(user_id,period_kind,period_start,quest_id,gold,fuel) values(u,p_kind,p_start,p_quest_id,amount,fuel);\n update public.player_wallets set gold=gold+amount,inventory=case when fuel>0 then jsonb_set(inventory,'{fuel}',to_jsonb(balance+fuel)) else inventory end,updated_at=clock_timestamp() where user_id=u;\n if amount>0 then insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,gen_random_uuid(),'charge','quest:'||p_kind||':'||p_start||':'||p_quest_id,amount);end if;\n return app_private.quest_state()||jsonb_build_object('credited',amount,'creditedFuel',fuel);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -6565,7 +7255,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_region_id text, p_cargo jsonb, p_expedition_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_action(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_region_id text DEFAULT NULL::text, p_cargo jsonb DEFAULT NULL::jsonb, p_expedition_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v public.fishing_vessels;e public.fishing_expeditions;w public.player_wallets;\n sig jsonb;prev app_private.expedition_operations;receipt jsonb;cargo record;total integer:=0;count integer;sid text;bid text;\n bonus integer;bonus_bait text;draws text[]:=array[]::text[];i integer;item uuid;results jsonb:='[]';refunds jsonb:='{}';local_discovery boolean;failed integer:=0;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in ('buy','depart','claim','instant') or p_operation_id is null then raise exception 'INVALID_EXPEDITION';end if;\n sig:=jsonb_build_object('action',p_action,'vessel',p_vessel_id,'region',p_region_id,'cargo',p_cargo,'expedition',p_expedition_id);\n perform pg_advisory_xact_lock(hashtextextended('expedition:'||u::text,0));\n select * into prev from app_private.expedition_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.expedition_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n if p_action in ('buy','depart') then\n  select * into v from public.fishing_vessels where id=p_vessel_id;\n  if not found then raise exception 'VESSEL_NOT_FOUND';end if;\n end if;\n if p_action='buy' then\n  if v.price>0 and not exists(select 1 from public.player_fishing_vessels where user_id=u and vessel_id=v.id) then\n   if w.gold<v.price then raise exception 'INSUFFICIENT_GOLD';end if;\n   update public.player_wallets set gold=gold-v.price,updated_at=now() where user_id=u;\n   insert into public.player_fishing_vessels(user_id,vessel_id) values(u,v.id);\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','vessel:'||v.id,-v.price);\n  end if;\n  receipt:=jsonb_build_object('action','buy','vesselId',v.id);\n elsif p_action='depart' then\n  if v.price>0 and not exists(select 1 from public.player_fishing_vessels where user_id=u and vessel_id=v.id) then raise exception 'VESSEL_NOT_OWNED';end if;\n  if exists(select 1 from public.fishing_expeditions where user_id=u and claimed_at is null) then raise exception 'EXPEDITION_ACTIVE';end if;\n  if not exists(select 1 from public.regions r where r.id=p_region_id and (not r.requires_map_fragment or exists(select 1 from public.player_map_fragments f where f.user_id=u and f.region_id=r.id))) then raise exception 'REGION_LOCKED';end if;\n  if p_cargo is null or jsonb_typeof(p_cargo)<>'object' then raise exception 'INVALID_CARGO';end if;\n  for cargo in select key,value from jsonb_each_text(p_cargo) loop\n   if not exists(select 1 from public.fishing_baits where id=cargo.key) or cargo.value !~ '^[1-9][0-9]{0,2}$' then raise exception 'INVALID_CARGO';end if;\n   count:=cargo.value::integer;total:=total+count;\n   if coalesce((w.inventory->>cargo.key)::integer,0)<count then raise exception 'NO_BAIT';end if;\n   w.inventory:=jsonb_set(w.inventory,array[cargo.key],to_jsonb((w.inventory->>cargo.key)::integer-count));\n  end loop;\n  if total<v.min_baits or total>v.max_baits then raise exception 'CARGO_LIMIT';end if;\n  update public.player_wallets set inventory=w.inventory,updated_at=now() where user_id=u;\n  insert into public.fishing_expeditions(user_id,vessel_id,region_id,cargo,vessel_snapshot,returns_at)\n   values(u,v.id,p_region_id,p_cargo,to_jsonb(v),clock_timestamp()+make_interval(mins=>v.duration_minutes)) returning * into e;\n  receipt:=jsonb_build_object('action','depart','expeditionId',e.id);\n else\n  perform app_private.notify_due_expeditions(p_expedition_id);\n  select * into e from public.fishing_expeditions where id=p_expedition_id and user_id=u for update;\n  if not found then raise exception 'EXPEDITION_NOT_FOUND';end if;\n  if e.claimed_at is not null then\n   receipt:=jsonb_build_object('action','claim','expeditionId',e.id,'result',e.result);\n  elsif p_action='instant' then\n   if not coalesce((select instant_return_enabled from app_private.expedition_settings where id),false) then raise exception 'TEST_DISABLED';end if;\n   update public.fishing_expeditions set returns_at=least(returns_at,clock_timestamp()) where id=e.id;\n   receipt:=jsonb_build_object('action','instant','expeditionId',e.id);\n  else\n   if clock_timestamp()<e.returns_at then raise exception 'EXPEDITION_NOT_READY';end if;\n   v:=jsonb_populate_record(null::public.fishing_vessels,e.vessel_snapshot);\n   for cargo in select key,value from jsonb_each_text(e.cargo) loop\n    count:=cargo.value::integer;total:=total+count;\n    for i in 1..count loop draws:=array_append(draws,cargo.key);end loop;\n   end loop;\n   bonus:=case when v.bonus_kind='per_ten' then least(total/10,v.bonus_count) else v.bonus_count end;\n   bonus_bait:=case v.bonus_kind when 'special' then 'bait_special' when 'magnet' then 'bait_magnet' when 'candy' then 'bait_forbidden_star' when 'discovery' then 'bait_first_greeting' when 'epic' then 'bait_epic' else 'bait' end;\n   if v.bonus_kind='copy' then\n    select d into bonus_bait from unnest(draws) d where d not in ('bait_first_greeting','bait_epic','bait_magnet') order by random() limit 1;\n    bonus_bait:=coalesce(bonus_bait,'bait');\n   end if;\n   for i in 1..bonus loop draws:=array_append(draws,bonus_bait);end loop;\n   -- Snapshots from older departures have null for newly introduced fields.\n   for i in 1..coalesce(v.bonus_basic_count,0) loop draws:=array_append(draws,'bait');end loop;\n   for i in 1..cardinality(draws) loop\n    bid:=draws[i];local_discovery:=i>total and v.bonus_kind='discovery';\n    sid:=app_private.expedition_pick(e.region_id,bid,v.bonus_kind='native',local_discovery);\n    if sid is null and local_discovery then bid:='bait_special';sid:=app_private.expedition_pick(e.region_id,bid,false,false);end if;\n    if sid is null and bid='bait_first_greeting' and i<=total then\n     refunds:=jsonb_set(refunds,array[bid],to_jsonb(coalesce((refunds->>bid)::integer,0)+1));\n     w.inventory:=jsonb_set(w.inventory,array[bid],to_jsonb(coalesce((w.inventory->>bid)::integer,0)+1));\n    elsif sid is not null and random()>=app_private.expedition_success_chance_bp(bid,v.failure_reduction_bp)::numeric/10000 then\n     failed:=failed+1;\n    else\n     if sid is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n     insert into public.player_collectibles(user_id,species_id) values(u,sid) returning id into item;\n     insert into public.player_discoveries(user_id,species_id) values(u,sid) on conflict do nothing;\n     results:=results||jsonb_build_array(jsonb_build_object('id',item,'species',app_private.species_payload(sid,null),'bonus',i>total,'baitId',bid));\n    end if;\n   end loop;\n   receipt:=jsonb_build_object('action','claim','expeditionId',e.id,'result',jsonb_build_object('items',results,'refunds',refunds,'failed',failed,'attempted',cardinality(draws),'succeeded',jsonb_array_length(results)));\n   update public.player_wallets set inventory=w.inventory,updated_at=now() where user_id=u;\n   update public.fishing_expeditions set claimed_at=clock_timestamp(),result=receipt->'result' where id=e.id;\n  end if;\n end if;\n insert into app_private.expedition_operations values(u,p_operation_id,sig,receipt);\n return app_private.expedition_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_action(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_region_id text DEFAULT NULL::text, p_cargo jsonb DEFAULT NULL::jsonb, p_expedition_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();r jsonb;c record;total integer:=0;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action='buy' then raise exception 'VESSEL_RETIRED';end if;\n if p_action='depart' then\n  if p_vessel_id is distinct from 'dinghy' then raise exception 'VESSEL_RETIRED';end if;\n  if p_cargo is null or jsonb_typeof(p_cargo)<>'object' then raise exception 'INVALID_CARGO';end if;\n  for c in select value from jsonb_each_text(p_cargo) loop\n   if c.value !~ '^[1-9][0-9]{0,2}$' then raise exception 'INVALID_CARGO';end if;\n   total:=total+c.value::integer;\n  end loop;\n  if total<1 or total>30 then raise exception 'CARGO_LIMIT';end if;\n end if;\n r:=app_private.settle_legacy_expedition(p_action,p_operation_id,p_vessel_id,p_region_id,p_cargo,p_expedition_id);\n if p_action='depart' and not (r->>'replayed')::boolean then\n  update public.fishing_expeditions set returns_at=departed_at+make_interval(mins=>total*10),\n   vessel_snapshot=jsonb_set(vessel_snapshot,'{duration_minutes}',to_jsonb(total*10))\n   where id=(r->'receipt'->>'expeditionId')::uuid and user_id=u;\n  r:=app_private.expedition_state()||jsonb_build_object('receipt',r->'receipt','replayed',false);\n end if;\n return r;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -6605,7 +7295,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('serverNow',clock_timestamp(),'testEnabled',(select instant_return_enabled from app_private.expedition_settings where id),\n 'vessels',(select jsonb_agg(to_jsonb(v)||jsonb_build_object('owned',v.price=0 or exists(select 1 from public.player_fishing_vessels o where o.user_id=u and o.vessel_id=v.id)) order by sort_order) from public.fishing_vessels v),\n 'active',(select (to_jsonb(e)-'result')||jsonb_build_object('boosts',app_private.expedition_boosts_payload(e.id)) from public.fishing_expeditions e where user_id=u and claimed_at is null),\n 'history',coalesce((select jsonb_agg(to_jsonb(h)||jsonb_build_object('boosts',app_private.expedition_boosts_payload(h.id)) order by departed_at desc) from (select * from public.fishing_expeditions where user_id=u and claimed_at is not null order by departed_at desc limit 5) h),'[]'::jsonb),\n 'baits',(select jsonb_agg(to_jsonb(b) order by sort_order) from public.fishing_baits b));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('serverNow',clock_timestamp(),'testEnabled',(select instant_return_enabled from app_private.expedition_settings where id),\n 'vessels',(select jsonb_agg(to_jsonb(v)||jsonb_build_object('owned',true)) from public.fishing_vessels v where id='dinghy'),\n 'active',(select (to_jsonb(e)-'result')||jsonb_build_object('boosts',app_private.expedition_boosts_payload(e.id)) from public.fishing_expeditions e where user_id=u and claimed_at is null),\n 'history',coalesce((select jsonb_agg(to_jsonb(h)||jsonb_build_object('boosts',app_private.expedition_boosts_payload(h.id)) order by departed_at desc) from (select * from public.fishing_expeditions where user_id=u and claimed_at is not null order by departed_at desc limit 5) h),'[]'::jsonb),\n 'baits',(select jsonb_agg(to_jsonb(b) order by sort_order) from public.fishing_baits b));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -6759,6 +7449,26 @@
         "securityDefiner": true
       },
       {
+        "name": "harbor_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer, p_boat_id uuid, p_slot integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.harbor_action(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_voyage_id uuid DEFAULT NULL::uuid, p_quantity integer DEFAULT 1, p_boat_id uuid DEFAULT NULL::uuid, p_slot integer DEFAULT NULL::integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v public.harbor_vessels;b public.harbor_boats;occupant public.harbor_boats;w public.player_wallets;trip public.harbor_voyages;\n prev app_private.harbor_operations;sig jsonb;receipt jsonb;n integer;slot integer;fuel integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('buy','depart','dock','store','fuel','arrive','claim','claim_all') then raise exception 'INVALID_HARBOR_ACTION';end if;\n if p_action in ('fuel','arrive','claim','claim_all') then return app_private.settle_legacy_harbor(p_action,p_operation_id,p_vessel_id,p_voyage_id,p_quantity);end if;\n sig:=jsonb_build_object('action',p_action,'vessel',p_vessel_id,'voyage',p_voyage_id,'quantity',p_quantity);\n if p_boat_id is not null or p_slot is not null then sig:=sig||jsonb_build_object('boat',p_boat_id,'slot',p_slot);end if;\n perform pg_advisory_xact_lock(hashtextextended('harbor:'||u::text,0));\n select * into prev from app_private.harbor_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.harbor_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n perform app_private.get_gold_wallet();select * into w from public.player_wallets where user_id=u for update;\n if p_action='buy' then\n  select * into v from public.harbor_vessels where id=p_vessel_id;\n  if not found then raise exception 'VESSEL_NOT_FOUND';end if;\n  select count(*) into n from public.harbor_boats where user_id=u and vessel_id=v.id;\n  if n>=2 then raise exception 'VESSEL_OWNERSHIP_LIMIT';end if;\n  if w.gold<v.price then raise exception 'INSUFFICIENT_GOLD';end if;\n  select s into slot from generate_series(1,2) s where not exists(select 1 from public.harbor_boats where user_id=u and dock_slot=s) order by s limit 1;\n  insert into public.harbor_boats(user_id,vessel_id,instance_no,dock_slot) values(u,v.id,n+1,slot) returning * into b;\n  insert into public.player_harbor_vessels(user_id,vessel_id) values(u,v.id) on conflict do nothing;\n  update public.player_wallets set gold=gold-v.price,updated_at=now() where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','harbor-vessel:'||v.id,-v.price);\n  receipt:=jsonb_build_object('action','buy','vesselId',v.id,'boatId',b.id);\n else\n  if p_boat_id is not null then select * into b from public.harbor_boats where id=p_boat_id and user_id=u;\n  elsif p_action='depart' then\n   select * into b from public.harbor_boats b0 where b0.user_id=u and b0.vessel_id=p_vessel_id and b0.dock_slot is not null\n    order by exists(select 1 from public.harbor_voyages t where t.boat_id=b0.id and t.claimed_at is null),b0.dock_slot limit 1;\n  end if;\n  if b.id is null then raise exception 'VESSEL_NOT_OWNED';end if;\n  if p_vessel_id is not null and p_vessel_id<>b.vessel_id then raise exception 'INVALID_BOAT';end if;\n  if exists(select 1 from public.harbor_voyages where boat_id=b.id and claimed_at is null) then raise exception 'VOYAGE_ACTIVE';end if;\n  if p_action='dock' then\n   if p_slot is null or p_slot not between 1 and 2 then raise exception 'INVALID_DOCK_SLOT';end if;\n   if b.dock_slot is not null and b.dock_slot<>p_slot then raise exception 'BOAT_ALREADY_DOCKED';end if;\n   select * into occupant from public.harbor_boats where user_id=u and dock_slot=p_slot and id<>b.id;\n   if occupant.id is not null then\n    if exists(select 1 from public.harbor_voyages where boat_id=occupant.id and claimed_at is null) then raise exception 'DOCK_RESERVED';end if;\n    update public.harbor_boats set dock_slot=null where id=occupant.id;\n   end if;\n   update public.harbor_boats set dock_slot=p_slot where id=b.id;\n   receipt:=jsonb_build_object('action','dock','boatId',b.id,'slot',p_slot);\n  elsif p_action='store' then\n   update public.harbor_boats set dock_slot=null where id=b.id;\n   receipt:=jsonb_build_object('action','store','boatId',b.id);\n  else\n   if b.dock_slot is null then raise exception 'DOCK_REQUIRED';end if;\n   select * into strict v from public.harbor_vessels where id=b.vessel_id;\n   fuel:=coalesce((w.inventory->>'fuel')::integer,0);\n   if fuel<v.fuel_cost then raise exception 'INSUFFICIENT_FUEL';end if;\n   update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel-v.fuel_cost)),updated_at=now() where user_id=u;\n   insert into public.harbor_voyages(user_id,vessel_id,boat_id,vessel_snapshot,returns_at) values(u,v.id,b.id,to_jsonb(v),clock_timestamp()+make_interval(mins=>v.duration_minutes)) returning * into trip;\n   receipt:=jsonb_build_object('action','depart','voyageId',trip.id,'vesselId',v.id,'boatId',b.id);\n  end if;\n end if;\n insert into app_private.harbor_operations(user_id,operation_id,signature,receipt) values(u,p_operation_id,sig,receipt);\n return app_private.harbor_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "harbor_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.harbor_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n w:=app_private.get_gold_wallet();\n return jsonb_build_object('serverNow',clock_timestamp(),'fuel',coalesce((w->'inventory'->>'fuel')::integer,0),'fuelPrice',50,'dockSlots',2,\n 'vessels',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('owned',o.n>0,'ownedCount',o.n) order by v.sort_order)\n  from public.harbor_vessels v cross join lateral(select count(*)::integer n from public.harbor_boats b where b.user_id=u and b.vessel_id=v.id)o),'[]'::jsonb),\n 'boats',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('id',b.id,'vessel_id',b.vessel_id,'instance_no',b.instance_no,'dock_slot',b.dock_slot,'owned',true) order by b.purchased_at,b.id)\n  from public.harbor_boats b join public.harbor_vessels v on v.id=b.vessel_id where b.user_id=u),'[]'::jsonb),\n 'voyages',coalesce((select jsonb_agg(to_jsonb(v) order by v.departed_at) from public.harbor_voyages v where v.user_id=u and v.claimed_at is null),'[]'::jsonb));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "initialize_player_welcome",
         "config": [
           "search_path=\"\""
@@ -6846,6 +7556,26 @@
         "schema": "app_private",
         "arguments": "p_collectible_ids uuid[], p_tank_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION app_private.move_collectibles(p_collectible_ids uuid[], p_tank_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_ids uuid[];v_count integer;v_occupancy integer;v_added integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if coalesce(cardinality(p_collectible_ids),0) not between 1 and 50 then raise exception 'INVALID_SELECTION'; end if;\n select array_agg(id order by id) into v_ids from(select distinct unnest(p_collectible_ids) as id) q;\n if cardinality(v_ids)<>cardinality(p_collectible_ids) or array_position(v_ids,null) is not null then raise exception 'INVALID_SELECTION'; end if;\n -- Serialize admissions to the same tank before locking individuals in ID order.\n if p_tank_id is not null then\n  perform 1 from public.aquarium_tanks where id=p_tank_id and user_id=v_uid for update;\n  if not found then raise exception 'TANK_NOT_FOUND'; end if;\n end if;\n perform 1 from public.player_collectibles where id=any(v_ids) and user_id=v_uid order by id for update;\n select count(*) into v_count from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n where c.id=any(v_ids) and c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and s.kind in ('fish','trash','decoration');\n if v_count<>cardinality(v_ids) then raise exception 'COLLECTIBLE_NOT_FOUND'; end if;\n if p_tank_id is not null then\n  if exists(select 1 from public.player_collectibles where id=any(v_ids) and tank_id is not null and tank_id<>p_tank_id) then raise exception 'STORAGE_REQUIRED'; end if;\n  select count(*) into v_added from public.player_collectibles where id=any(v_ids) and tank_id is null;\n  select count(*) into v_occupancy from public.player_collectibles where tank_id=p_tank_id and user_id=v_uid and sold_at is null and escrow_gift_id is null;\n  if v_added>0 and v_occupancy+v_added>50 then raise exception 'TANK_FULL'; end if;\n end if;\n update public.player_collectibles set tank_id=p_tank_id,position_x=null,position_y=null\n where id=any(v_ids) and tank_id is distinct from p_tank_id;\n return app_private.aquarium_state();\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "music_edit",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_id text, p_title text, p_name text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.music_edit(p_action text, p_id text, p_title text DEFAULT ''::text, p_name text DEFAULT ''::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_user uuid:=auth.uid();\nbegin\n if v_user is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_id is null or p_id !~ '^[A-Za-z0-9_-]{11}$' or p_title is null or char_length(p_title)>1000 or p_name is null or char_length(p_name)>150 then raise exception 'INVALID_MUSIC'; end if;\n perform app_private.music_library();\n if p_action='add' then\n  if not exists(select 1 from public.music_tracks where user_id=v_user and video_id=p_id) and (select count(*) from public.music_tracks where user_id=v_user)>=200 then raise exception 'MUSIC_LIMIT'; end if;\n  insert into public.music_tracks(user_id,video_id,title,custom_name) values(v_user,p_id,p_title,btrim(p_name))\n  on conflict(user_id,video_id) do nothing;\n elsif p_action='rename' then update public.music_tracks set custom_name=btrim(p_name) where user_id=v_user and video_id=p_id;\n elsif p_action='title' then update public.music_tracks set title=p_title where user_id=v_user and video_id=p_id;\n elsif p_action='delete' then delete from public.music_tracks where user_id=v_user and video_id=p_id;\n else raise exception 'INVALID_MUSIC_ACTION'; end if;\n return app_private.music_library();\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "music_library",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_import jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.music_library(p_import jsonb DEFAULT NULL::jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_user uuid:=auth.uid(); v_new uuid; v_track jsonb;\nbegin\n if v_user is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_import is not null then\n  if jsonb_typeof(p_import)<>'array' then raise exception 'INVALID_MUSIC_IMPORT'; end if;\n  if jsonb_array_length(p_import)>200 then raise exception 'MUSIC_LIMIT'; end if;\n  for v_track in select value from jsonb_array_elements(p_import) loop\n   if jsonb_typeof(v_track)<>'object' or coalesce(v_track->>'id','') !~ '^[A-Za-z0-9_-]{11}$'\n    or jsonb_typeof(v_track->'id') is distinct from 'string'\n    or jsonb_typeof(v_track->'title') is distinct from 'string'\n    or jsonb_typeof(v_track->'customName') is distinct from 'string'\n    or char_length(v_track->>'title')>1000 or char_length(v_track->>'customName')>150\n    then raise exception 'INVALID_MUSIC_IMPORT'; end if;\n  end loop;\n end if;\n insert into public.music_libraries(user_id) values(v_user) on conflict do nothing returning user_id into v_new;\n -- Serialize initial import and all subsequent changes for this owner only.\n perform 1 from public.music_libraries where user_id=v_user for update;\n if v_new is not null then\n  if p_import is null then\n   insert into public.music_tracks(user_id,video_id,title,created_at)\n   select v_user,video_id,title,now()+sort_order*interval '1 microsecond' from public.music_defaults;\n  else\n   insert into public.music_tracks(user_id,video_id,title,custom_name,created_at)\n   select v_user,t.id,t.title,t.name,now()+t.ord*interval '1 microsecond' from (\n    select distinct on (value->>'id') value->>'id' id,value->>'title' title,btrim(value->>'customName') name,ordinality ord\n    from jsonb_array_elements(p_import) with ordinality order by value->>'id',ordinality desc\n   ) t;\n  end if;\n end if;\n return coalesce((select jsonb_agg(jsonb_build_object('id',video_id,'title',title,'customName',custom_name) order by created_at,video_id) from public.music_tracks where user_id=v_user),'[]'::jsonb);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -7005,7 +7735,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_kind text, p_now timestamp with time zone",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.quest_period(p_kind text, p_now timestamp with time zone)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();start_date date;start_at timestamptz;end_at timestamptz;\n attempts integer;rare_catches integer;epic_catches integer;trash_catches integer;decor_catches integer;\n posts integer;trades integer;departures integer;games integer;care integer;gifts integer;maps integer;rods integer;\n need_map boolean;need_rod boolean;entries jsonb;bonus integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_kind not in ('daily','weekly') or p_kind is null then raise exception 'INVALID_QUEST';end if;\n start_date:=case when p_kind='daily' then (p_now at time zone 'Asia/Seoul')::date else date_trunc('week',p_now at time zone 'Asia/Seoul')::date end;\n start_at:=start_date::timestamp at time zone 'Asia/Seoul';\n end_at:=(start_date+case when p_kind='daily' then 1 else 7 end)::timestamp at time zone 'Asia/Seoul';\n select count(*) into attempts from public.fishing_attempts where user_id=u and created_at>=start_at and created_at<end_at;\n -- Catch quests include manual catches and collected expedition results, never gifts or purchases.\n with catches as (\n  select s.rarity::text rarity,s.kind::text kind from public.fishing_attempts a\n  join public.player_collectibles c on c.id=a.collectible_id join public.collectible_species s on s.id=c.species_id\n  where a.user_id=u and a.created_at>=start_at and a.created_at<end_at\n  union all\n  select item->'species'->>'rarity',item->'species'->>'kind'\n  from public.fishing_expeditions e cross join lateral jsonb_array_elements(coalesce(e.result->'items','[]'::jsonb)) item\n  where e.user_id=u and e.claimed_at>=start_at and e.claimed_at<end_at\n ) select count(*) filter(where rarity in ('rare','epic','mythic')),\n count(*) filter(where rarity in ('epic','mythic')),\n count(*) filter(where kind='trash'),count(*) filter(where kind='decoration')\n into rare_catches,epic_catches,trash_catches,decor_catches from catches;\n select count(*) into posts from public.exchange_listings where owner_id=u and side='sell' and created_at>=start_at and created_at<end_at;\n select count(*) into trades from public.exchange_listings where (owner_id=u or taker_id=u) and status='completed' and closed_at>=start_at and closed_at<end_at;\n select count(*) into departures from public.fishing_expeditions where user_id=u and departed_at>=start_at and departed_at<end_at;\n select count(*) filter(where item_id in ('arcade:memory','arcade:shadow','arcade:odd-even')),\n count(*) filter(where item_id like 'map:%'),count(*) filter(where item_id like 'rod:%') into games,maps,rods\n from public.gold_transactions where user_id=u and action='buy' and delta<0 and created_at>=start_at and created_at<end_at;\n select count(*) into care from (\n  select id from public.aquarium_feedings where visitor_id=u and owner_id<>u and completed_at>=start_at and completed_at<end_at\n  union all select id from public.aquarium_cleanings where visitor_id=u and owner_id<>u and completed_at>=start_at and completed_at<end_at\n ) visits;\n select count(*) into gifts from public.collectible_gifts where sender_id=u and source='friend' and created_at>=start_at and created_at<end_at;\n need_map:=maps>0 or exists(select 1 from public.region_maps m join public.regions r on r.id=m.region_id\n  where r.requires_map_fragment and not exists(select 1 from public.player_map_fragments f where f.user_id=u and f.region_id=m.region_id));\n need_rod:=rods>0 or exists(select 1 from public.fishing_rods r where r.price>0\n  and not exists(select 1 from public.player_fishing_rods o where o.user_id=u and o.rod_id=r.id));\n with definitions(id,title,target,progress,href,icon,ord) as (values\n  ('post','판매글 올리기',1,posts,'/exchange','exchange',1),\n  ('fish','낚시 5회',5,attempts,'/harbor','rod',2),\n  ('depart','어선 파견 1회',1,departures,'/expeditions','expeditions',3),\n  ('rare','희귀 이상 포획',1,rare_catches,'/harbor','fish',4),\n  ('game','미니게임 실전 플레이 1회',1,games,'/arcade','gameplay',5),\n  ('care','친구 어항 청소 또는 먹이 주기',1,care,'/friends','mailFriend',6),\n  ('trade','거래 7회 완료',7,trades,'/exchange','exchange',11),\n  ('weekly_fish','낚시 40회',40,attempts,'/harbor','rod',12),\n  ('epic','특급 이상 포획',1,epic_catches,'/harbor','fish',13),\n  ('trash','쓰레기 10회 포획',10,trash_catches,'/harbor','trash',14),\n  ('gift','선물 3회 보내기',3,gifts,'/notifications?tab=gift','mailGift',15),\n  ('decor','장식물 10회 포획',10,decor_catches,'/harbor','decoration',16),\n  ('map','지도 구매',1,maps,'/shop?tab=maps','map',17),\n  ('rod','낚싯대 구매',1,rods,'/shop?tab=rods','rod',18)\n ), rows as (\n  select d.*,c.quest_id is not null claimed from definitions d left join app_private.quest_claims c\n   on c.user_id=u and c.period_kind=p_kind and c.period_start=start_date and c.quest_id=d.id\n  where (p_kind='daily' and ord<10) or (p_kind='weekly' and ord>10 and (id<>'map' or need_map or c.quest_id is not null) and (id<>'rod' or need_rod or c.quest_id is not null))\n ) select jsonb_agg(jsonb_build_object('id',id,'title',title,'target',target,'progress',least(progress,target),\n 'claimed',claimed,'complete',progress>=target or claimed,'reward',case when p_kind='daily' then 30 else 50 end,'href',href,'icon',icon) order by ord) into entries from rows;\n bonus:=case when p_kind='daily' then 200 else 1000 end;\n return jsonb_build_object('kind',p_kind,'start',start_date,'resetsAt',end_at,'quests',entries,'bonus',bonus,\n 'bonusReady',not exists(select 1 from jsonb_array_elements(entries) q where not (q->>'complete')::boolean),\n 'bonusClaimed',exists(select 1 from app_private.quest_claims where user_id=u and period_kind=p_kind and period_start=start_date and quest_id='all'));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.quest_period(p_kind text, p_now timestamp with time zone)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare p jsonb;q jsonb;entries jsonb:='[]'::jsonb;fuel integer;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n p:=app_private.base_quest_period(p_kind,p_now);\n for q in select value from jsonb_array_elements(p->'quests') loop\n  fuel:=case when p_kind='daily' and q->>'id' in ('post','depart','care') then 1 when p_kind='weekly' and q->>'id' in ('trade','gift') then 5 else 0 end;\n  entries:=entries||jsonb_build_array(q||jsonb_build_object('reward',case when fuel>0 then 0 else (q->>'reward')::integer end,'rewardFuel',fuel));\n end loop;\n return jsonb_set(p,'{quests}',entries);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -7196,6 +7926,26 @@
         "schema": "app_private",
         "arguments": "p_region_id text, p_locked boolean",
         "definition": "CREATE OR REPLACE FUNCTION app_private.set_region_test_lock(p_region_id text, p_locked boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid(); v_region public.regions;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if not coalesce((select test_lock_controls from app_private.region_settings where id),false) then raise exception 'TEST_CONTROLS_DISABLED'; end if;\n if p_locked is null then raise exception 'INVALID_LOCK_STATE'; end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into v_region from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND'; end if;\n if not v_region.requires_map_fragment then raise exception 'DEFAULT_REGION_ALWAYS_OPEN'; end if;\n if p_locked then\n  delete from public.player_map_fragments where user_id=v_uid and region_id=p_region_id;\n  update public.player_navigation set region_id='pongdang' where user_id=v_uid and region_id=p_region_id;\n else\n  insert into public.player_map_fragments(user_id,region_id) values(v_uid,p_region_id) on conflict do nothing;\n end if;\n return app_private.region_map();\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "settle_legacy_expedition",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_region_id text, p_cargo jsonb, p_expedition_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.settle_legacy_expedition(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_region_id text DEFAULT NULL::text, p_cargo jsonb DEFAULT NULL::jsonb, p_expedition_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v public.fishing_vessels;e public.fishing_expeditions;w public.player_wallets;\n sig jsonb;prev app_private.expedition_operations;receipt jsonb;cargo record;total integer:=0;count integer;sid text;bid text;\n bonus integer;bonus_bait text;draws text[]:=array[]::text[];i integer;item uuid;results jsonb:='[]';refunds jsonb:='{}';local_discovery boolean;failed integer:=0;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in ('buy','depart','claim','instant') or p_operation_id is null then raise exception 'INVALID_EXPEDITION';end if;\n sig:=jsonb_build_object('action',p_action,'vessel',p_vessel_id,'region',p_region_id,'cargo',p_cargo,'expedition',p_expedition_id);\n perform pg_advisory_xact_lock(hashtextextended('expedition:'||u::text,0));\n select * into prev from app_private.expedition_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.expedition_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n if p_action in ('buy','depart') then\n  select * into v from public.fishing_vessels where id=p_vessel_id;\n  if not found then raise exception 'VESSEL_NOT_FOUND';end if;\n end if;\n if p_action='buy' then\n  if v.price>0 and not exists(select 1 from public.player_fishing_vessels where user_id=u and vessel_id=v.id) then\n   if w.gold<v.price then raise exception 'INSUFFICIENT_GOLD';end if;\n   update public.player_wallets set gold=gold-v.price,updated_at=now() where user_id=u;\n   insert into public.player_fishing_vessels(user_id,vessel_id) values(u,v.id);\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','vessel:'||v.id,-v.price);\n  end if;\n  receipt:=jsonb_build_object('action','buy','vesselId',v.id);\n elsif p_action='depart' then\n  if v.price>0 and not exists(select 1 from public.player_fishing_vessels where user_id=u and vessel_id=v.id) then raise exception 'VESSEL_NOT_OWNED';end if;\n  if exists(select 1 from public.fishing_expeditions where user_id=u and claimed_at is null) then raise exception 'EXPEDITION_ACTIVE';end if;\n  if not exists(select 1 from public.regions r where r.id=p_region_id and (not r.requires_map_fragment or exists(select 1 from public.player_map_fragments f where f.user_id=u and f.region_id=r.id))) then raise exception 'REGION_LOCKED';end if;\n  if p_cargo is null or jsonb_typeof(p_cargo)<>'object' then raise exception 'INVALID_CARGO';end if;\n  for cargo in select key,value from jsonb_each_text(p_cargo) loop\n   if not exists(select 1 from public.fishing_baits where id=cargo.key) or cargo.value !~ '^[1-9][0-9]{0,2}$' then raise exception 'INVALID_CARGO';end if;\n   count:=cargo.value::integer;total:=total+count;\n   if coalesce((w.inventory->>cargo.key)::integer,0)<count then raise exception 'NO_BAIT';end if;\n   w.inventory:=jsonb_set(w.inventory,array[cargo.key],to_jsonb((w.inventory->>cargo.key)::integer-count));\n  end loop;\n  if total<v.min_baits or total>v.max_baits then raise exception 'CARGO_LIMIT';end if;\n  update public.player_wallets set inventory=w.inventory,updated_at=now() where user_id=u;\n  insert into public.fishing_expeditions(user_id,vessel_id,region_id,cargo,vessel_snapshot,returns_at)\n   values(u,v.id,p_region_id,p_cargo,to_jsonb(v),clock_timestamp()+make_interval(mins=>v.duration_minutes)) returning * into e;\n  receipt:=jsonb_build_object('action','depart','expeditionId',e.id);\n else\n  perform app_private.notify_due_expeditions(p_expedition_id);\n  select * into e from public.fishing_expeditions where id=p_expedition_id and user_id=u for update;\n  if not found then raise exception 'EXPEDITION_NOT_FOUND';end if;\n  if e.claimed_at is not null then\n   receipt:=jsonb_build_object('action','claim','expeditionId',e.id,'result',e.result);\n  elsif p_action='instant' then\n   if not coalesce((select instant_return_enabled from app_private.expedition_settings where id),false) then raise exception 'TEST_DISABLED';end if;\n   update public.fishing_expeditions set returns_at=least(returns_at,clock_timestamp()) where id=e.id;\n   receipt:=jsonb_build_object('action','instant','expeditionId',e.id);\n  else\n   if clock_timestamp()<e.returns_at then raise exception 'EXPEDITION_NOT_READY';end if;\n   v:=jsonb_populate_record(null::public.fishing_vessels,e.vessel_snapshot);\n   for cargo in select key,value from jsonb_each_text(e.cargo) loop\n    count:=cargo.value::integer;total:=total+count;\n    for i in 1..count loop draws:=array_append(draws,cargo.key);end loop;\n   end loop;\n   bonus:=case when v.bonus_kind='per_ten' then least(total/10,v.bonus_count) else v.bonus_count end;\n   bonus_bait:=case v.bonus_kind when 'special' then 'bait_special' when 'magnet' then 'bait_magnet' when 'candy' then 'bait_forbidden_star' when 'discovery' then 'bait_first_greeting' when 'epic' then 'bait_epic' else 'bait' end;\n   if v.bonus_kind='copy' then\n    select d into bonus_bait from unnest(draws) d where d not in ('bait_first_greeting','bait_epic','bait_magnet') order by random() limit 1;\n    bonus_bait:=coalesce(bonus_bait,'bait');\n   end if;\n   for i in 1..bonus loop draws:=array_append(draws,bonus_bait);end loop;\n   -- Snapshots from older departures have null for newly introduced fields.\n   for i in 1..coalesce(v.bonus_basic_count,0) loop draws:=array_append(draws,'bait');end loop;\n   for i in 1..cardinality(draws) loop\n    bid:=draws[i];local_discovery:=i>total and v.bonus_kind='discovery';\n    sid:=app_private.expedition_pick(e.region_id,bid,v.bonus_kind='native',local_discovery);\n    if sid is null and local_discovery then bid:='bait_special';sid:=app_private.expedition_pick(e.region_id,bid,false,false);end if;\n    if sid is null and bid='bait_first_greeting' and i<=total then\n     refunds:=jsonb_set(refunds,array[bid],to_jsonb(coalesce((refunds->>bid)::integer,0)+1));\n     w.inventory:=jsonb_set(w.inventory,array[bid],to_jsonb(coalesce((w.inventory->>bid)::integer,0)+1));\n    elsif sid is not null and random()>=app_private.expedition_success_chance_bp(bid,v.failure_reduction_bp)::numeric/10000 then\n     failed:=failed+1;\n    else\n     if sid is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n     insert into public.player_collectibles(user_id,species_id) values(u,sid) returning id into item;\n     insert into public.player_discoveries(user_id,species_id) values(u,sid) on conflict do nothing;\n     results:=results||jsonb_build_array(jsonb_build_object('id',item,'species',app_private.species_payload(sid,null),'bonus',i>total,'baitId',bid));\n    end if;\n   end loop;\n   receipt:=jsonb_build_object('action','claim','expeditionId',e.id,'result',jsonb_build_object('items',results,'refunds',refunds,'failed',failed,'attempted',cardinality(draws),'succeeded',jsonb_array_length(results)));\n   update public.player_wallets set inventory=w.inventory,updated_at=now() where user_id=u;\n   update public.fishing_expeditions set claimed_at=clock_timestamp(),result=receipt->'result' where id=e.id;\n  end if;\n end if;\n insert into app_private.expedition_operations values(u,p_operation_id,sig,receipt);\n return app_private.expedition_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "settle_legacy_harbor",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.settle_legacy_harbor(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_voyage_id uuid DEFAULT NULL::uuid, p_quantity integer DEFAULT 1)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v public.harbor_vessels;w public.player_wallets;trip public.harbor_voyages;\n prev app_private.harbor_operations;sig jsonb;receipt jsonb;fuel integer;cost integer;sid text;item uuid;i integer;\n results jsonb:='[]'::jsonb;items jsonb;failed integer;attempts integer;claimed integer:=0;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('buy','fuel','depart','arrive','claim','claim_all') then raise exception 'INVALID_HARBOR_ACTION';end if;\n sig:=jsonb_build_object('action',p_action,'vessel',p_vessel_id,'voyage',p_voyage_id,'quantity',p_quantity);\n perform pg_advisory_xact_lock(hashtextextended('harbor:'||u::text,0));\n select * into prev from app_private.harbor_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.harbor_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n fuel:=coalesce((w.inventory->>'fuel')::integer,0);\n if p_action in ('buy','depart') then\n  select * into v from public.harbor_vessels where id=p_vessel_id;\n  if not found then raise exception 'VESSEL_NOT_FOUND';end if;\n end if;\n if p_action='buy' then\n  if exists(select 1 from public.player_harbor_vessels where user_id=u and vessel_id=v.id) then raise exception 'VESSEL_ALREADY_OWNED';end if;\n  if w.gold<v.price then raise exception 'INSUFFICIENT_GOLD';end if;\n  insert into public.player_harbor_vessels(user_id,vessel_id) values(u,v.id);\n  update public.player_wallets set gold=gold-v.price,updated_at=now() where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','harbor-vessel:'||v.id,-v.price);\n  receipt:=jsonb_build_object('action','buy','vesselId',v.id);\n elsif p_action='fuel' then\n  if p_quantity is null or p_quantity<1 or p_quantity>100 or fuel>100000-p_quantity then raise exception 'INVALID_QUANTITY';end if;\n  cost:=p_quantity*50;\n  if w.gold<cost then raise exception 'INSUFFICIENT_GOLD';end if;\n  update public.player_wallets set gold=gold-cost,inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel+p_quantity)),updated_at=now() where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','fuel:'||p_quantity,-cost);\n  receipt:=jsonb_build_object('action','fuel','quantity',p_quantity);\n elsif p_action='depart' then\n  if not exists(select 1 from public.player_harbor_vessels where user_id=u and vessel_id=v.id) then raise exception 'VESSEL_NOT_OWNED';end if;\n  if exists(select 1 from public.harbor_voyages where user_id=u and vessel_id=v.id and claimed_at is null) then raise exception 'VOYAGE_ACTIVE';end if;\n  if fuel<v.fuel_cost then raise exception 'INSUFFICIENT_FUEL';end if;\n  update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel-v.fuel_cost)),updated_at=now() where user_id=u;\n  insert into public.harbor_voyages(user_id,vessel_id,vessel_snapshot,returns_at)\n   values(u,v.id,to_jsonb(v),clock_timestamp()+make_interval(mins=>v.duration_minutes)) returning * into trip;\n  receipt:=jsonb_build_object('action','depart','voyageId',trip.id,'vesselId',v.id);\n elsif p_action='arrive' then\n  select * into trip from public.harbor_voyages where id=p_voyage_id and user_id=u for update;\n  if not found then raise exception 'VOYAGE_NOT_FOUND';end if;\n  if trip.returns_at>clock_timestamp() then raise exception 'VOYAGE_NOT_READY';end if;\n  update public.harbor_voyages set arrival_seen_at=coalesce(arrival_seen_at,clock_timestamp()) where id=trip.id;\n  receipt:=jsonb_build_object('action','arrive','voyageId',trip.id);\n else\n  if p_action='claim' then\n   select * into trip from public.harbor_voyages where id=p_voyage_id and user_id=u;\n   if not found then raise exception 'VOYAGE_NOT_FOUND';end if;\n   if trip.claimed_at is not null then\n    receipt:=jsonb_build_object('action','claim','results',jsonb_build_array(trip.result));\n   elsif trip.returns_at>clock_timestamp() then raise exception 'VOYAGE_NOT_READY';end if;\n  end if;\n  if receipt is null then\n   for trip in select * from public.harbor_voyages where user_id=u and claimed_at is null and returns_at<=clock_timestamp()\n    and (p_action='claim_all' or id=p_voyage_id) order by id for update loop\n    items:='[]'::jsonb;failed:=0;attempts:=(trip.vessel_snapshot->>'fishing_count')::integer;\n    for i in 1..attempts loop\n     -- Same draw and success rules as a normal-bait expedition, no bait inventory debit.\n     sid:=app_private.expedition_pick('pongdang','bait',false,false);\n     if sid is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n     if random()<app_private.expedition_success_chance_bp('bait',0)::numeric/10000 then\n      insert into public.player_collectibles(user_id,species_id) values(u,sid) returning id into item;\n      insert into public.player_discoveries(user_id,species_id) values(u,sid) on conflict do nothing;\n      items:=items||jsonb_build_array(jsonb_build_object('id',item,'species',app_private.species_payload(sid,null),'bonus',false));\n     else failed:=failed+1;end if;\n    end loop;\n    update public.harbor_voyages set claimed_at=clock_timestamp(),arrival_seen_at=coalesce(arrival_seen_at,clock_timestamp()),\n     result=jsonb_build_object('voyageId',trip.id,'vesselName',trip.vessel_snapshot->>'name','items',items,'attempted',attempts,'failed',failed,'succeeded',jsonb_array_length(items)) where id=trip.id returning result into receipt;\n    results:=results||jsonb_build_array(receipt);claimed:=claimed+1;\n   end loop;\n   receipt:=jsonb_build_object('action',p_action,'results',results,'claimed',claimed);\n  end if;\n end if;\n insert into app_private.harbor_operations(user_id,operation_id,signature,receipt) values(u,p_operation_id,sig,receipt);\n return app_private.harbor_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -7789,6 +8539,26 @@
         "securityDefiner": false
       },
       {
+        "name": "harbor_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer, p_boat_id uuid, p_slot integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.harbor_action(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_voyage_id uuid DEFAULT NULL::uuid, p_quantity integer DEFAULT 1, p_boat_id uuid DEFAULT NULL::uuid, p_slot integer DEFAULT NULL::integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.harbor_action(p_action,p_operation_id,p_vessel_id,p_voyage_id,p_quantity,p_boat_id,p_slot)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "harbor_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.harbor_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.harbor_state()$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "manage_aquarium_tank",
         "config": [
           "search_path=\"\""
@@ -7836,6 +8606,26 @@
         "schema": "public",
         "arguments": "p_collectible_ids uuid[], p_tank_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION public.move_collectibles(p_collectible_ids uuid[], p_tank_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.move_collectibles(p_collectible_ids,p_tank_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "music_edit",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text, p_id text, p_title text, p_name text",
+        "definition": "CREATE OR REPLACE FUNCTION public.music_edit(p_action text, p_id text, p_title text DEFAULT ''::text, p_name text DEFAULT ''::text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.music_edit(p_action,p_id,p_title,p_name)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "music_library",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_import jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION public.music_library(p_import jsonb DEFAULT NULL::jsonb)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.music_library(p_import)$function$\n",
         "securityDefiner": false
       },
       {
@@ -8356,6 +9146,48 @@
         "definition": "NOT NULL test_charge_enabled"
       },
       {
+        "name": "harbor_operations_created_at_not_null",
+        "table": "harbor_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "harbor_operations_operation_id_not_null",
+        "table": "harbor_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "harbor_operations_pkey",
+        "table": "harbor_operations",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "harbor_operations_receipt_not_null",
+        "table": "harbor_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL receipt"
+      },
+      {
+        "name": "harbor_operations_signature_not_null",
+        "table": "harbor_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL signature"
+      },
+      {
+        "name": "harbor_operations_user_id_fkey",
+        "table": "harbor_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "harbor_operations_user_id_not_null",
+        "table": "harbor_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
         "name": "memory_game_boards_deck_check",
         "table": "memory_game_boards",
         "schema": "app_private",
@@ -8548,10 +9380,16 @@
         "definition": "NOT NULL claimed_at"
       },
       {
-        "name": "quest_claims_gold_check",
+        "name": "quest_claims_fuel_check",
         "table": "quest_claims",
         "schema": "app_private",
-        "definition": "CHECK ((gold > 0))"
+        "definition": "CHECK (((fuel >= 0) AND (fuel <= 100000)))"
+      },
+      {
+        "name": "quest_claims_fuel_not_null",
+        "table": "quest_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL fuel"
       },
       {
         "name": "quest_claims_gold_not_null",
@@ -8588,6 +9426,12 @@
         "table": "quest_claims",
         "schema": "app_private",
         "definition": "NOT NULL quest_id"
+      },
+      {
+        "name": "quest_claims_reward_check",
+        "table": "quest_claims",
+        "schema": "app_private",
+        "definition": "CHECK (((gold >= 0) AND ((gold > 0) OR (fuel > 0))))"
       },
       {
         "name": "quest_claims_user_id_fkey",
@@ -9124,10 +9968,16 @@
         "definition": "NOT NULL claim_date"
       },
       {
-        "name": "attendance_claims_gold_check",
+        "name": "attendance_claims_fuel_check",
         "table": "attendance_claims",
         "schema": "public",
-        "definition": "CHECK ((gold = 50))"
+        "definition": "CHECK ((fuel = ANY (ARRAY[0, 1])))"
+      },
+      {
+        "name": "attendance_claims_fuel_not_null",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "NOT NULL fuel"
       },
       {
         "name": "attendance_claims_gold_not_null",
@@ -9146,6 +9996,12 @@
         "table": "attendance_claims",
         "schema": "public",
         "definition": "PRIMARY KEY (user_id, claim_date)"
+      },
+      {
+        "name": "attendance_claims_reward_check",
+        "table": "attendance_claims",
+        "schema": "public",
+        "definition": "CHECK ((((gold = 50) AND (fuel = 0)) OR ((gold = 0) AND (fuel = 1)) OR ((gold = 0) AND (fuel = 0) AND (bait_id IS NOT NULL))))"
       },
       {
         "name": "attendance_claims_sheet_day_check",
@@ -10534,6 +11390,246 @@
         "definition": "NOT NULL user_id"
       },
       {
+        "name": "harbor_boats_dock_slot_check",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "CHECK (((dock_slot >= 1) AND (dock_slot <= 2)))"
+      },
+      {
+        "name": "harbor_boats_id_not_null",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "harbor_boats_id_user_id_vessel_id_key",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "UNIQUE (id, user_id, vessel_id)"
+      },
+      {
+        "name": "harbor_boats_instance_no_check",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "CHECK (((instance_no >= 1) AND (instance_no <= 2)))"
+      },
+      {
+        "name": "harbor_boats_instance_no_not_null",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "NOT NULL instance_no"
+      },
+      {
+        "name": "harbor_boats_pkey",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "harbor_boats_purchased_at_not_null",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "NOT NULL purchased_at"
+      },
+      {
+        "name": "harbor_boats_user_id_dock_slot_key",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "UNIQUE (user_id, dock_slot)"
+      },
+      {
+        "name": "harbor_boats_user_id_fkey",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "harbor_boats_user_id_not_null",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "harbor_boats_user_id_vessel_id_instance_no_key",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "UNIQUE (user_id, vessel_id, instance_no)"
+      },
+      {
+        "name": "harbor_boats_vessel_id_fkey",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "FOREIGN KEY (vessel_id) REFERENCES harbor_vessels(id)"
+      },
+      {
+        "name": "harbor_boats_vessel_id_not_null",
+        "table": "harbor_boats",
+        "schema": "public",
+        "definition": "NOT NULL vessel_id"
+      },
+      {
+        "name": "harbor_vessels_duration_minutes_check",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "CHECK (((duration_minutes >= 1) AND (duration_minutes <= 10080)))"
+      },
+      {
+        "name": "harbor_vessels_duration_minutes_not_null",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "NOT NULL duration_minutes"
+      },
+      {
+        "name": "harbor_vessels_fishing_count_check",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "CHECK (((fishing_count >= 1) AND (fishing_count <= 100)))"
+      },
+      {
+        "name": "harbor_vessels_fishing_count_not_null",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "NOT NULL fishing_count"
+      },
+      {
+        "name": "harbor_vessels_fuel_cost_check",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "CHECK (((fuel_cost >= 1) AND (fuel_cost <= 100)))"
+      },
+      {
+        "name": "harbor_vessels_fuel_cost_not_null",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "NOT NULL fuel_cost"
+      },
+      {
+        "name": "harbor_vessels_id_not_null",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "harbor_vessels_name_not_null",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "NOT NULL name"
+      },
+      {
+        "name": "harbor_vessels_pkey",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "harbor_vessels_price_check",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "CHECK ((price >= 0))"
+      },
+      {
+        "name": "harbor_vessels_price_not_null",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "NOT NULL price"
+      },
+      {
+        "name": "harbor_vessels_sort_order_not_null",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "NOT NULL sort_order"
+      },
+      {
+        "name": "harbor_vessels_sprite_path_not_null",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "NOT NULL sprite_path"
+      },
+      {
+        "name": "harbor_voyages_boat_id_not_null",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "NOT NULL boat_id"
+      },
+      {
+        "name": "harbor_voyages_boat_owner_fkey",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "FOREIGN KEY (boat_id, user_id, vessel_id) REFERENCES harbor_boats(id, user_id, vessel_id)"
+      },
+      {
+        "name": "harbor_voyages_check",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "CHECK ((returns_at > departed_at))"
+      },
+      {
+        "name": "harbor_voyages_check1",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "CHECK (((claimed_at IS NULL) OR (claimed_at >= returns_at)))"
+      },
+      {
+        "name": "harbor_voyages_departed_at_not_null",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "NOT NULL departed_at"
+      },
+      {
+        "name": "harbor_voyages_id_not_null",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "harbor_voyages_pkey",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "harbor_voyages_returns_at_not_null",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "NOT NULL returns_at"
+      },
+      {
+        "name": "harbor_voyages_user_id_fkey",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "harbor_voyages_user_id_not_null",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "harbor_voyages_vessel_id_fkey",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "FOREIGN KEY (vessel_id) REFERENCES harbor_vessels(id)"
+      },
+      {
+        "name": "harbor_voyages_vessel_id_not_null",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "NOT NULL vessel_id"
+      },
+      {
+        "name": "harbor_voyages_vessel_snapshot_check",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "CHECK ((jsonb_typeof(vessel_snapshot) = 'object'::text))"
+      },
+      {
+        "name": "harbor_voyages_vessel_snapshot_not_null",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "NOT NULL vessel_snapshot"
+      },
+      {
         "name": "memory_game_runs_created_at_not_null",
         "table": "memory_game_runs",
         "schema": "public",
@@ -10592,6 +11688,126 @@
         "table": "memory_game_runs",
         "schema": "public",
         "definition": "UNIQUE (user_id, operation_id)"
+      },
+      {
+        "name": "music_defaults_pkey",
+        "table": "music_defaults",
+        "schema": "public",
+        "definition": "PRIMARY KEY (video_id)"
+      },
+      {
+        "name": "music_defaults_sort_order_not_null",
+        "table": "music_defaults",
+        "schema": "public",
+        "definition": "NOT NULL sort_order"
+      },
+      {
+        "name": "music_defaults_title_check",
+        "table": "music_defaults",
+        "schema": "public",
+        "definition": "CHECK ((char_length(title) <= 1000))"
+      },
+      {
+        "name": "music_defaults_title_not_null",
+        "table": "music_defaults",
+        "schema": "public",
+        "definition": "NOT NULL title"
+      },
+      {
+        "name": "music_defaults_video_id_check",
+        "table": "music_defaults",
+        "schema": "public",
+        "definition": "CHECK ((video_id ~ '^[A-Za-z0-9_-]{11}$'::text))"
+      },
+      {
+        "name": "music_defaults_video_id_not_null",
+        "table": "music_defaults",
+        "schema": "public",
+        "definition": "NOT NULL video_id"
+      },
+      {
+        "name": "music_libraries_created_at_not_null",
+        "table": "music_libraries",
+        "schema": "public",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "music_libraries_pkey",
+        "table": "music_libraries",
+        "schema": "public",
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "music_libraries_user_id_fkey",
+        "table": "music_libraries",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "music_libraries_user_id_not_null",
+        "table": "music_libraries",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "music_tracks_created_at_not_null",
+        "table": "music_tracks",
+        "schema": "public",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "music_tracks_custom_name_check",
+        "table": "music_tracks",
+        "schema": "public",
+        "definition": "CHECK ((char_length(custom_name) <= 150))"
+      },
+      {
+        "name": "music_tracks_custom_name_not_null",
+        "table": "music_tracks",
+        "schema": "public",
+        "definition": "NOT NULL custom_name"
+      },
+      {
+        "name": "music_tracks_pkey",
+        "table": "music_tracks",
+        "schema": "public",
+        "definition": "PRIMARY KEY (user_id, video_id)"
+      },
+      {
+        "name": "music_tracks_title_check",
+        "table": "music_tracks",
+        "schema": "public",
+        "definition": "CHECK ((char_length(title) <= 1000))"
+      },
+      {
+        "name": "music_tracks_title_not_null",
+        "table": "music_tracks",
+        "schema": "public",
+        "definition": "NOT NULL title"
+      },
+      {
+        "name": "music_tracks_user_id_fkey",
+        "table": "music_tracks",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES music_libraries(user_id) ON DELETE CASCADE"
+      },
+      {
+        "name": "music_tracks_user_id_not_null",
+        "table": "music_tracks",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "music_tracks_video_id_check",
+        "table": "music_tracks",
+        "schema": "public",
+        "definition": "CHECK ((video_id ~ '^[A-Za-z0-9_-]{11}$'::text))"
+      },
+      {
+        "name": "music_tracks_video_id_not_null",
+        "table": "music_tracks",
+        "schema": "public",
+        "definition": "NOT NULL video_id"
       },
       {
         "name": "notices_author_id_fkey",
@@ -11262,6 +12478,42 @@
       {
         "name": "player_fishing_vessels_vessel_id_not_null",
         "table": "player_fishing_vessels",
+        "schema": "public",
+        "definition": "NOT NULL vessel_id"
+      },
+      {
+        "name": "player_harbor_vessels_pkey",
+        "table": "player_harbor_vessels",
+        "schema": "public",
+        "definition": "PRIMARY KEY (user_id, vessel_id)"
+      },
+      {
+        "name": "player_harbor_vessels_purchased_at_not_null",
+        "table": "player_harbor_vessels",
+        "schema": "public",
+        "definition": "NOT NULL purchased_at"
+      },
+      {
+        "name": "player_harbor_vessels_user_id_fkey",
+        "table": "player_harbor_vessels",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "player_harbor_vessels_user_id_not_null",
+        "table": "player_harbor_vessels",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "player_harbor_vessels_vessel_id_fkey",
+        "table": "player_harbor_vessels",
+        "schema": "public",
+        "definition": "FOREIGN KEY (vessel_id) REFERENCES harbor_vessels(id)"
+      },
+      {
+        "name": "player_harbor_vessels_vessel_id_not_null",
+        "table": "player_harbor_vessels",
         "schema": "public",
         "definition": "NOT NULL vessel_id"
       },
@@ -12178,6 +13430,48 @@
       },
       {
         "role": "authenticated",
+        "table": "harbor_boats",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "music_defaults",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "music_libraries",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "music_tracks",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
         "table": "notices",
         "schema": "public",
         "grantable": "NO",
@@ -12263,6 +13557,13 @@
       {
         "role": "authenticated",
         "table": "player_fishing_vessels",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_harbor_vessels",
         "schema": "public",
         "grantable": "NO",
         "privilege": "SELECT"
@@ -12819,6 +14120,13 @@
         "role": "authenticated",
         "table": "attendance_claims",
         "column": "claim_date",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "attendance_claims",
+        "column": "fuel",
         "schema": "public",
         "privilege": "SELECT"
       },
@@ -14182,6 +15490,244 @@
       },
       {
         "role": "authenticated",
+        "table": "harbor_boats",
+        "column": "dock_slot",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_boats",
+        "column": "id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_boats",
+        "column": "instance_no",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_boats",
+        "column": "purchased_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_boats",
+        "column": "user_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_boats",
+        "column": "vessel_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_vessels",
+        "column": "duration_minutes",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_vessels",
+        "column": "fishing_count",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_vessels",
+        "column": "fuel_cost",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_vessels",
+        "column": "id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_vessels",
+        "column": "name",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_vessels",
+        "column": "price",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_vessels",
+        "column": "sort_order",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_vessels",
+        "column": "sprite_path",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_voyages",
+        "column": "arrival_seen_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_voyages",
+        "column": "boat_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_voyages",
+        "column": "claimed_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_voyages",
+        "column": "departed_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_voyages",
+        "column": "id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_voyages",
+        "column": "result",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_voyages",
+        "column": "returns_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_voyages",
+        "column": "user_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_voyages",
+        "column": "vessel_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_voyages",
+        "column": "vessel_snapshot",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "music_defaults",
+        "column": "sort_order",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "music_defaults",
+        "column": "title",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "music_defaults",
+        "column": "video_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "music_libraries",
+        "column": "created_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "music_libraries",
+        "column": "user_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "music_tracks",
+        "column": "created_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "music_tracks",
+        "column": "custom_name",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "music_tracks",
+        "column": "title",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "music_tracks",
+        "column": "user_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "music_tracks",
+        "column": "video_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
         "table": "notices",
         "column": "author_id",
         "schema": "public",
@@ -14932,6 +16478,27 @@
       {
         "role": "authenticated",
         "table": "player_fishing_vessels",
+        "column": "vessel_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_harbor_vessels",
+        "column": "purchased_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_harbor_vessels",
+        "column": "user_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_harbor_vessels",
         "column": "vessel_id",
         "schema": "public",
         "privilege": "SELECT"
@@ -16287,6 +17854,27 @@
         "arguments": "p_user uuid, p_title text"
       },
       {
+        "name": "base_quest_period",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_now timestamp with time zone"
+      },
+      {
+        "name": "base_quest_period",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_now timestamp with time zone"
+      },
+      {
+        "name": "base_quest_period",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_now timestamp with time zone"
+      },
+      {
         "name": "boost_friend_expedition",
         "role": "anon",
         "schema": "app_private",
@@ -17232,6 +18820,48 @@
         "arguments": ""
       },
       {
+        "name": "harbor_action",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer, p_boat_id uuid, p_slot integer"
+      },
+      {
+        "name": "harbor_action",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer, p_boat_id uuid, p_slot integer"
+      },
+      {
+        "name": "harbor_action",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer, p_boat_id uuid, p_slot integer"
+      },
+      {
+        "name": "harbor_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "harbor_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "harbor_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "initialize_player_welcome",
         "role": "anon",
         "schema": "app_private",
@@ -17419,6 +19049,48 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_collectible_ids uuid[], p_tank_id uuid"
+      },
+      {
+        "name": "music_edit",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_id text, p_title text, p_name text"
+      },
+      {
+        "name": "music_edit",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text, p_id text, p_title text, p_name text"
+      },
+      {
+        "name": "music_edit",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_id text, p_title text, p_name text"
+      },
+      {
+        "name": "music_library",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_import jsonb"
+      },
+      {
+        "name": "music_library",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_import jsonb"
+      },
+      {
+        "name": "music_library",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_import jsonb"
       },
       {
         "name": "notice_delete",
@@ -17746,7 +19418,7 @@
         "name": "quest_period",
         "role": "authenticated",
         "schema": "app_private",
-        "execute": false,
+        "execute": true,
         "arguments": "p_kind text, p_now timestamp with time zone"
       },
       {
@@ -18154,6 +19826,48 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_region_id text, p_locked boolean"
+      },
+      {
+        "name": "settle_legacy_expedition",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_region_id text, p_cargo jsonb, p_expedition_id uuid"
+      },
+      {
+        "name": "settle_legacy_expedition",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_region_id text, p_cargo jsonb, p_expedition_id uuid"
+      },
+      {
+        "name": "settle_legacy_expedition",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_region_id text, p_cargo jsonb, p_expedition_id uuid"
+      },
+      {
+        "name": "settle_legacy_harbor",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer"
+      },
+      {
+        "name": "settle_legacy_harbor",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer"
+      },
+      {
+        "name": "settle_legacy_harbor",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer"
       },
       {
         "name": "shadow_game",
@@ -19395,6 +21109,48 @@
         "arguments": "p_direction text, p_offset integer"
       },
       {
+        "name": "harbor_action",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer, p_boat_id uuid, p_slot integer"
+      },
+      {
+        "name": "harbor_action",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer, p_boat_id uuid, p_slot integer"
+      },
+      {
+        "name": "harbor_action",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer, p_boat_id uuid, p_slot integer"
+      },
+      {
+        "name": "harbor_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "harbor_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "harbor_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "manage_aquarium_tank",
         "role": "anon",
         "schema": "public",
@@ -19498,6 +21254,48 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_collectible_ids uuid[], p_tank_id uuid"
+      },
+      {
+        "name": "music_edit",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_id text, p_title text, p_name text"
+      },
+      {
+        "name": "music_edit",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text, p_id text, p_title text, p_name text"
+      },
+      {
+        "name": "music_edit",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_id text, p_title text, p_name text"
+      },
+      {
+        "name": "music_library",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_import jsonb"
+      },
+      {
+        "name": "music_library",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_import jsonb"
+      },
+      {
+        "name": "music_library",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_import jsonb"
       },
       {
         "name": "notice_delete",

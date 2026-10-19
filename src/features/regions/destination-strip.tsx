@@ -10,7 +10,14 @@ export function DestinationStrip({children}:{children:ReactNode}){
  useLayoutEffect(()=>{
   const element=viewport.current,group=middle.current
   if(!element||!group)return
-  const measure=()=>{const width=group.getBoundingClientRect().width+8;if(width<=8)return;const offset=cycle.current?((element.scrollLeft%cycle.current)+cycle.current)%cycle.current:0;cycle.current=width;element.scrollLeft=width+offset}
+  const measure=()=>{
+   const bounds=group.getBoundingClientRect(),width=bounds.width+8
+   if(width<=8)return
+   const selected=group.querySelector<HTMLElement>('[aria-pressed="true"]')?.getBoundingClientRect()
+   const initial=selected?selected.left-bounds.left+selected.width/2-element.clientWidth/2:0
+   const offset=cycle.current?((element.scrollLeft%cycle.current)+cycle.current)%cycle.current:((initial%width)+width)%width
+   cycle.current=width;element.scrollLeft=width+offset
+  }
   measure()
   if(typeof ResizeObserver==='undefined')return
   const observer=new ResizeObserver(measure);observer.observe(group)

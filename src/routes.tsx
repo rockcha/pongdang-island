@@ -1,6 +1,7 @@
 import {CollectionPage} from '@/features/collection/collection-page'
 import {TitlePicker} from '@/features/titles/title-picker'
 import {ExpeditionPage} from '@/features/expeditions/expedition-page'
+import {PortPage} from '@/features/port/port-page'
 import {FriendExpeditionPage} from '@/features/expeditions/friend-expedition-page'
 import { SettingsPage } from '@/pages/settings-page'
 import { SavingsPage } from '@/features/savings/savings-page'
@@ -31,6 +32,7 @@ import { ProfilePage } from '@/features/profile/profile-page'
 import { AquariumPage } from '@/pages/aquarium-page'
 import { HarborPage } from '@/pages/harbor-page'
 import { FarmPage } from '@/pages/farm-page'
+import { MusicRoomPage } from '@/pages/music-room-page'
 import { PlaceSectionPage } from '@/pages/place-section-page'
 
 export function AppRoutes() {
@@ -51,10 +53,12 @@ export function AppRoutes() {
             <Route path="titles" element={<TitlePicker page />} />
             <Route path="harbor" element={<HarborPage />} />
             <Route path="farm" element={<FarmPage />} />
+            <Route path="music-room" element={<MusicRoomPage />} />
             <Route path="sailing/:regionId" element={<SailingPage />} />
             <Route path="region/:regionId" element={<RegionPage />} />
             <Route path="expeditions" element={<ExpeditionPage />} />
-            <Route path="shipyard" element={<ExpeditionPage shipyard />} />
+            <Route path="shipyard" element={<PortPage shipyard />} />
+            <Route path="port" element={<PortPage />} />
             <Route path="shop" element={<ShopPage />} />
             <Route path="savings" element={<SavingsPage />} />
             <Route path="warehouse" element={<WarehousePage />} />

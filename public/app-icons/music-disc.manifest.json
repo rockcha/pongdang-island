@@ -1,0 +1,7 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "prompt": "Use case: stylized-concept. Asset type: ONE clean minimal compact-disc music button icon for a cozy game UI. Subject: a perfectly circular emerald and mint GREEN compact disc, viewed EXACTLY straight-on from above, no perspective, with a small truly transparent central circular hole. Simple smooth circular rim, a subtle inner concentric track ring and two restrained pale-mint curved reflective highlights on opposing sides, asymmetric highlights so rotation is visible. Soft flat illustrated finish, clearly readable at 28 pixels. Entire circular disc centered precisely at canvas center, same outer radius in every direction, occupies 82 percent of square canvas. Calm green palette, smooth crisp edges. Actual transparent alpha background including center hole. NO note, headphones, writing, logos, sparkles, particles, drop shadow, enclosing tile or scene. A single beautiful uncluttered green CD icon.",
+  "output": "public/app-icons/music-disc.png",
+  "animation": "Header button rotates the centered disc during actual playback; pause preserves its angle; reduced motion disables rotation."
+}

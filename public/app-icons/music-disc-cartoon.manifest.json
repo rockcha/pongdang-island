@@ -1,0 +1,7 @@
+{
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "reference": "public/app-icons/music-disc-brown.png",
+  "prompt": "Use case: style-transfer. Edit the reference CD icon into a CLEAN SIMPLE CARTOON game UI pictogram. Keep perfectly round straight-on CD, centered exactly in square canvas, circular transparent center hole, warm brown-and-cream palette. Replace realistic metallic gradients and many fine grooves with flat caramel tan fill, one broad cream center ring, bold smooth dark cocoa brown outer outline and inner-hole outline, and ONLY two simple cream curved highlight strokes on opposing sides so rotation can be seen. Very restrained soft cel shading, rounded charming shapes, crisp polished illustration legible at 28px. NO realistic metal, shiny gold, brushed texture, fine concentric lines, glitter, gradients across many bands, faces, musical notes or lettering. This is a modest cartoon CD, not a coin. One subtle concentric track line maximum. Whole disc occupies 80 percent of square canvas with clean transparent margin. Actual transparent alpha background AND center hole. No shadow or halo, no tile, no background, no text.",
+  "output": "public/app-icons/music-disc-cartoon.png"
+}

@@ -10,6 +10,7 @@ import { fishBehavior, fishForce, fishStrength } from './tension-game'
 import type { FishMood,TensionGame } from './tension-game'
 
 const waters:Record<string,{top:string;bottom:string;light:string}>= {
+ primal:{top:'#469f99',bottom:'#245f60',light:'#c6e2cb'},
  siren:{top:'#3bb9b0',bottom:'#164d63',light:'#f4e7c9'},
  mukhyang:{top:'#d5ded5',bottom:'#788f8b',light:'#f7eedb'},
  scrapisle:{top:'#75a58c',bottom:'#244c43',light:'#eed4a1'},
@@ -91,7 +92,6 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
 
   <ellipse cx="110" cy="60" rx="230" ry="240" fill={`url(#${id}-light)`}/>
   {[30,75,125,180,240,300].map((y,i)=><path key={y} d={`M-30 ${y} Q70 ${y-9+Math.sin(t*.7+i)*3} 200 ${y} T430 ${y}`} fill="none" stroke={palette.light} opacity=".1" strokeWidth="1.3"/>)}
-  {regionId==='coral'&&[0,1,2].map(i=><path key={i} d={`M${i*22} 305q35-40 5-65m-5 40q-30-15-20-30m22 15q20-15 12-28`} fill="none" stroke="#e6a9aa" opacity=".13" strokeWidth="6" strokeLinecap="round"/>)}
   {regionId==='starruins'&&<g stroke={palette.light} opacity=".1" fill="none"><path d="M0 280l70-20 20 60-70 20Z M330 25l55 10-12 62-55-10Z"/><path d="M10 287l50-14 17 40-50 15Z M339 37l32 6-8 39-32-6Z"/></g>}
   {regionId==='mistmoon'&&<g fill="#e5e1ff" opacity=".065"><ellipse cx="50" cy="60" rx="150" ry="20"/><ellipse cx="350" cy="160" rx="140" ry="17"/></g>}
   {Array.from({length:12},(_,i)=><ellipse key={i} cx={(i*73+29)%400} cy={22+(i*47)%290} rx={i%3===0?5:2} ry=".8" fill={palette.light} opacity={reduced?.15:.12+Math.max(0,Math.sin(t+i))*.2}/>) }

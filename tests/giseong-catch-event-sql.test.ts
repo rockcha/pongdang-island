@@ -98,3 +98,32 @@ it('sends a gift in the public finish_fishing transaction and never duplicates o
  const active=Date.now()<Date.parse('2026-11-01T00:00:00+09:00')
  expect(await gifts()).toHaveLength(active?1:0)
 })
+it.each(['trap','vessel'])('rewards a real %s settlement immediately and shares the manual-catch limit',async kind=>{
+ await db.query("update public.notices set starts_at=clock_timestamp()-interval '1 hour' where id=$1",[event]);await publish()
+ // Deterministic draw, while retaining the actual authenticated settlement path.
+ await db.exec("create or replace function app_private.expedition_pick(p_region text,p_bait text,p_native boolean default false,p_local_discovery boolean default false) returns text language sql set search_path='' as $$select 'giseong-fish'::text$$")
+ await db.exec("create or replace function app_private.expedition_success_chance_bp(p_bait_id text,p_reduction integer default 0) returns integer language sql set search_path='' as $$select 10000$$")
+ let trip:string
+ if(kind==='trap'){
+  trip=(await db.query<{id:string}>("insert into public.fishing_expeditions(user_id,vessel_id,region_id,cargo,vessel_snapshot,departed_at,returns_at) select $1,v.id,'pongdang','{\"bait\":1}',to_jsonb(v)||'{\"bonus_count\":0,\"bonus_basic_count\":0}',clock_timestamp()-interval '1 hour',clock_timestamp()-interval '1 minute' from public.fishing_vessels v where id='dinghy' returning id",[user])).rows[0].id
+ }else{
+  const boat=(await db.query<{id:string}>("insert into public.harbor_boats(user_id,vessel_id,instance_no) values($1,'fishing-raft',1) returning id",[user])).rows[0].id
+  trip=(await db.query<{id:string}>("insert into public.harbor_voyages(user_id,vessel_id,boat_id,vessel_snapshot,departed_at,returns_at) select $1,v.id,$2,to_jsonb(v)||'{\"fishing_count\":1}',clock_timestamp()-interval '1 hour',clock_timestamp()-interval '1 minute' from public.harbor_vessels v where id='fishing-raft' returning id",[user,boat])).rows[0].id
+ }
+ const operation=crypto.randomUUID()
+ const sql=kind==='trap'?"select public.expedition_action('claim',$1,null,null,null,$2)":"select public.harbor_action('claim',$1,null,$2,1)"
+ await db.exec('set local role authenticated')
+ await db.query(sql,[operation,trip]);await db.query(sql,[operation,trip])
+ await db.exec('reset role')
+ const active=Date.now()<Date.parse('2026-11-01T00:00:00+09:00')
+ expect(await gifts()).toHaveLength(active?1:0)
+ const manual=await attempt('giseong-fish',true,new Date().toISOString())
+ expect(await grant(manual,new Date().toISOString())).toBeNull()
+})
+it('does not award a gift when an event species is received or ownership changes without a capture',async()=>{
+ await publish()
+ const item=(await db.query<{id:string}>("insert into public.player_collectibles(user_id,species_id) values($1,'giseong-fish') returning id",[user])).rows[0].id
+ await db.query('update public.player_collectibles set tank_id=null,escrow_gift_id=null where id=$1',[item])
+ expect(await gifts()).toHaveLength(0)
+ expect((await db.query<{allowed:boolean}>("select has_function_privilege('authenticated','app_private.grant_giseong_capture_reward(uuid,text,timestamptz,timestamptz)','execute') allowed")).rows[0].allowed).toBe(false)
+})

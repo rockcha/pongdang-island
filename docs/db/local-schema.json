@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "02d3f022026c807d88a24e0b4cf807812ba09a22c4355a9b064fe3206ea98d3d",
+  "migrationHash": "d0944964ae897058b62ef2a9a48a0402607f6dde7c8a0374f77a705a21e79da6",
   "structure": {
     "enums": [
       {
@@ -7190,6 +7190,13 @@
         "definition": "CREATE TRIGGER expedition_return_notice AFTER INSERT OR UPDATE OF returns_at ON public.fishing_expeditions FOR EACH ROW EXECUTE FUNCTION app_private.expedition_return_notice()"
       },
       {
+        "name": "giseong_trap_capture_reward",
+        "table": "fishing_expeditions",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER giseong_trap_capture_reward AFTER UPDATE OF claimed_at, result ON public.fishing_expeditions FOR EACH ROW WHEN (((old.claimed_at IS NULL) AND (new.claimed_at IS NOT NULL))) EXECUTE FUNCTION app_private.giseong_settled_capture_event()"
+      },
+      {
         "name": "title_expedition_catch",
         "table": "fishing_expeditions",
         "schema": "public",
@@ -7202,6 +7209,13 @@
         "schema": "public",
         "enabled": "O",
         "definition": "CREATE TRIGGER title_friend AFTER INSERT OR UPDATE OF status ON public.friend_requests FOR EACH ROW EXECUTE FUNCTION app_private.title_activity_event()"
+      },
+      {
+        "name": "giseong_vessel_capture_reward",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER giseong_vessel_capture_reward AFTER UPDATE OF claimed_at, result ON public.harbor_voyages FOR EACH ROW WHEN (((old.claimed_at IS NULL) AND (new.claimed_at IS NOT NULL))) EXECUTE FUNCTION app_private.giseong_settled_capture_event()"
       },
       {
         "name": "harbor_titles_dirty",
@@ -7875,13 +7889,33 @@
         "securityDefiner": true
       },
       {
+        "name": "giseong_settled_capture_event",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.giseong_settled_capture_event()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_item jsonb;v_species_id text;\nbegin\n if old.claimed_at is not null or new.claimed_at is null\n  or jsonb_typeof(new.result->'items') is distinct from 'array' then return new;end if;\n for v_item in select value from jsonb_array_elements(new.result->'items') loop\n  select c.species_id into v_species_id from public.player_collectibles c\n  where c.user_id=new.user_id and c.id=case\n   when v_item->>'id' ~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'\n   then (v_item->>'id')::uuid else null end;\n  if found then\n   perform app_private.grant_giseong_capture_reward(new.user_id,v_species_id,new.claimed_at,clock_timestamp());\n  end if;\n end loop;\n return new;\nend;\n$function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "grant_giseong_capture_reward",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_user_id uuid, p_species_id text, p_captured_at timestamp with time zone, p_now timestamp with time zone",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.grant_giseong_capture_reward(p_user_id uuid, p_species_id text, p_captured_at timestamp with time zone, p_now timestamp with time zone DEFAULT clock_timestamp())\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_event public.notices;v_species_name text;v_recipient_name text;v_gift uuid;\nbegin\n if p_species_id is null or p_species_id not in ('giseong-fish','giseong-webfoot-octopus') then return null;end if;\n select * into v_event from public.notices\n where id='a87b4c3e-cdbc-494e-b1d2-ca3810ba749d' and category='event' and status='published';\n if not found or p_now is null or p_captured_at is null\n  or v_event.starts_at is null or v_event.ends_at is null\n  or p_now<v_event.starts_at or p_captured_at<v_event.starts_at\n  or p_now>=least(v_event.ends_at,timestamptz '2026-11-01 00:00:00+09')\n  or p_captured_at>=least(v_event.ends_at,timestamptz '2026-11-01 00:00:00+09')\n  or p_captured_at>p_now then return null;end if;\n select s.name,p.nickname into v_species_name,v_recipient_name\n from public.collectible_species s cross join public.player_profiles p\n where s.id=p_species_id and p.id=p_user_id;\n if not found then return null;end if;\n insert into public.collectible_gifts(sender_name,recipient_id,recipient_name,operation_id,collectible_ids,\n  species,quantity,message,source,reward_kind,reward_id)\n values('퐁당섬 운영자',p_user_id,v_recipient_name,gen_random_uuid(),'{}'::uuid[],\n  jsonb_build_object('id','giseong-catch-202610:'||p_species_id,'name',v_species_name||' 포획 보상'),300,\n  v_species_name||' 포획 성공! 이벤트 보상 300골드예요. 낚시·통발·어선 포획을 인정하며, 종류별 보상은 계정당 한 번씩 받을 수 있어요.',\n  'system','gold','giseong-catch-202610:'||p_species_id)\n on conflict do nothing returning id into v_gift;\n if v_gift is not null then\n  insert into public.notifications(recipient_id,category,kind,title,body,gift_id)\n  values(p_user_id,'gift','gift_received','기성 포획 이벤트 보상 도착!',\n   v_species_name||'를 잡았어요! 선물함에서 300골드를 받아주세요.',v_gift);\n end if;\n return v_gift;\nend;\n$function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "grant_giseong_catch_reward",
         "config": [
           "search_path=\"\""
         ],
         "schema": "app_private",
         "arguments": "p_user_id uuid, p_operation_id uuid, p_now timestamp with time zone",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.grant_giseong_catch_reward(p_user_id uuid, p_operation_id uuid, p_now timestamp with time zone DEFAULT clock_timestamp())\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare\n v_event public.notices;\n v_species_id text;\n v_species_name text;\n v_recipient_name text;\n v_gift uuid;\nbegin\n -- Only an active published event can issue rewards; the hard deadline cannot\n -- be extended accidentally by editing the announcement.\n select * into v_event from public.notices\n where id='a87b4c3e-cdbc-494e-b1d2-ca3810ba749d'\n  and category='event' and status='published';\n if not found or p_now is null or v_event.starts_at is null\n  or v_event.ends_at is null or p_now<v_event.starts_at\n  or p_now>=least(v_event.ends_at,timestamptz '2026-11-01 00:00:00+09')\n then return null;end if;\n\n -- Read the persisted successful manual catch, never a client-supplied species.\n select s.id,s.name,p.nickname into v_species_id,v_species_name,v_recipient_name\n from public.fishing_attempts a\n join public.player_collectibles c on c.id=a.collectible_id and c.user_id=a.user_id\n join public.collectible_species s on s.id=c.species_id\n join public.player_profiles p on p.id=a.user_id\n where a.user_id=p_user_id and a.operation_id=p_operation_id\n  and a.rarity is not null\n  and a.created_at>=v_event.starts_at\n  and a.created_at<least(v_event.ends_at,timestamptz '2026-11-01 00:00:00+09')\n  and s.id in ('giseong-fish','giseong-webfoot-octopus');\n if not found then return null;end if;\n\n insert into public.collectible_gifts(\n  sender_name,recipient_id,recipient_name,operation_id,collectible_ids,\n  species,quantity,message,source,reward_kind,reward_id\n ) values (\n  '퐁당섬 운영자',p_user_id,v_recipient_name,gen_random_uuid(),'{}'::uuid[],\n  jsonb_build_object('id','giseong-catch-202610:'||v_species_id,'name',v_species_name||' 포획 보상'),\n  300,v_species_name||' 낚시 성공! 이벤트 보상 300골드예요. 종류별 보상은 계정당 한 번씩 받을 수 있어요.',\n  'system','gold','giseong-catch-202610:'||v_species_id\n ) on conflict do nothing returning id into v_gift;\n\n if v_gift is not null then\n  insert into public.notifications(recipient_id,category,kind,title,body,gift_id)\n  values(p_user_id,'gift','gift_received','기성 포획 이벤트 보상 도착!',\n   v_species_name||'를 잡았어요! 선물함에서 300골드를 받아주세요.',v_gift);\n end if;\n return v_gift;\nend;\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.grant_giseong_catch_reward(p_user_id uuid, p_operation_id uuid, p_now timestamp with time zone DEFAULT clock_timestamp())\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_species_id text;v_captured_at timestamptz;\nbegin\n select c.species_id,a.created_at into v_species_id,v_captured_at\n from public.fishing_attempts a\n join public.player_collectibles c on c.id=a.collectible_id and c.user_id=a.user_id\n where a.user_id=p_user_id and a.operation_id=p_operation_id and a.rarity is not null;\n if not found then return null;end if;\n return app_private.grant_giseong_capture_reward(p_user_id,v_species_id,v_captured_at,p_now);\nend;\n$function$\n",
         "securityDefiner": true
       },
       {
@@ -20226,6 +20260,48 @@
         "schema": "app_private",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "giseong_settled_capture_event",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "giseong_settled_capture_event",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "giseong_settled_capture_event",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "grant_giseong_capture_reward",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user_id uuid, p_species_id text, p_captured_at timestamp with time zone, p_now timestamp with time zone"
+      },
+      {
+        "name": "grant_giseong_capture_reward",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user_id uuid, p_species_id text, p_captured_at timestamp with time zone, p_now timestamp with time zone"
+      },
+      {
+        "name": "grant_giseong_capture_reward",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user_id uuid, p_species_id text, p_captured_at timestamp with time zone, p_now timestamp with time zone"
       },
       {
         "name": "grant_giseong_catch_reward",

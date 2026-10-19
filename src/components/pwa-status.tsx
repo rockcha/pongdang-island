@@ -4,9 +4,12 @@ import { useRegisterSW } from 'virtual:pwa-register/react'
 import {watchPwaUpdates} from '@/features/pwa/update-check'
 import {usePwaUpdateBlocked} from '@/features/pwa/update-blockers'
 import {useSocial} from '@/features/social/social-provider'
+import {setPwaUpdateAvailable,setPwaUpdateApplying,usePwaUpdate} from '@/features/pwa/update-state'
 
 export function PwaStatus() {
   const blocked=usePwaUpdateBlocked()
+  const {request}=usePwaUpdate()
+  const failedRequest=useRef<number|null>(null)
   const {owner,unread,loading,error}=useSocial()
   const previousNotice=useRef<{owner:string;count:number}|null>(null)
   const [acknowledged,setAcknowledged]=useState(false)
@@ -24,15 +27,20 @@ export function PwaStatus() {
     onRegisterError(error) { console.error('서비스 워커 등록 실패:', error) },
   })
   useEffect(()=>{if(registration)return watchPwaUpdates(registration)},[registration])
+  useEffect(()=>{
+    setPwaUpdateAvailable(needRefresh)
+    if(!needRefresh)failedRequest.current=null
+    return()=>setPwaUpdateAvailable(false)
+  },[needRefresh])
 
   useEffect(() => {
     if (offlineReady) toast.success('퐁당섬의 기본 화면을 저장했어요. 게임 이용에는 인터넷 연결이 필요해요.', { id: 'pwa-offline' })
   }, [offlineReady])
 
   useEffect(() => {
-    if (!needRefresh) return
-    if(!acknowledged||loading||error||!owner||(unread.notice??0)>0){
-      toast.info('퐁당섬에 새 업데이트가 있어요.',{id:'pwa-update',description:'위쪽 공지를 확인해 갈색 점이 사라지면 자동으로 적용해요.'})
+    if (!needRefresh||failedRequest.current===request) return
+    if(request===0&&(!acknowledged||loading||error||!owner||(unread.notice??0)>0)){
+      toast.info('퐁당섬에 새 업데이트가 있어요.',{id:'pwa-update',description:'아바타 메뉴에서 지금 업데이트를 누르거나, 위쪽 공지를 확인해주세요.'})
       return
     }
     if(blocked){
@@ -40,11 +48,13 @@ export function PwaStatus() {
       return
     }
     toast.info('퐁당섬을 업데이트하고 있어요.',{id:'pwa-update',duration:Infinity,description:'잠시 후 새 버전으로 다시 열려요.'})
-    const timer=window.setTimeout(()=>{void updateServiceWorker(true).catch(()=>{
+    const timer=window.setTimeout(()=>{setPwaUpdateApplying(true);void updateServiceWorker(true).catch(()=>{
+      failedRequest.current=request
+      setPwaUpdateApplying(false)
       toast.error('업데이트를 적용하지 못했어요.',{id:'pwa-update',description:'연결을 확인하고 앱을 다시 열어주세요.'})
     })},1500)
     return()=>window.clearTimeout(timer)
-  }, [needRefresh, updateServiceWorker,blocked,acknowledged,owner,unread.notice,loading,error])
+  }, [needRefresh, updateServiceWorker,blocked,acknowledged,owner,unread.notice,loading,error,request])
 
   return null
 }

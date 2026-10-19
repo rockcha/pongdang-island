@@ -1,3 +1,4 @@
+import {WeeklyRewards} from './weekly-rewards'
 import {RankingRow,rankingListClass} from './ranking-row'
 import {randomId} from '@/lib/random-id'
 import { useEffect, useRef, useState } from 'react'
@@ -32,9 +33,10 @@ function Leaderboard({ revision }: { revision:number }) {
  useEffect(()=>{version.current++;lock.current=false;void load();return()=>{version.current++}},[revision]) // eslint-disable-line react-hooks/exhaustive-deps
 
  return <section className="space-y-3" aria-label="서버 전체 기록">
-  <div className="flex items-center justify-between"><h3 className="flex items-center gap-2 text-sm font-normal"><Trophy className="size-4 text-primary" />서버 전체 기록</h3><Button variant="ghost" size="icon" aria-label="기록 새로고침" disabled={busy} onClick={()=>void load()}><RefreshCw className="size-4" /></Button></div>
-  <p className="text-xs text-muted-foreground">정답 수 순으로 모든 완료 기록을 표시해요. 동점은 먼저 달성한 기록이 앞서요.</p>
-  <ol className={rankingListClass}>{data?.rows.map(row=><RankingRow key={row.id} rank={row.rank} nickname={row.nickname} mine={row.mine} record={row.score+' 정답'}/>)}</ol>
+  <div className="flex items-center justify-between"><h3 className="flex items-center gap-2 text-sm font-normal"><Trophy className="size-4 text-primary" />이번 주 서버 랭킹</h3><Button variant="ghost" size="icon" aria-label="기록 새로고침" disabled={busy} onClick={()=>void load()}><RefreshCw className="size-4" /></Button></div>
+  <p className="text-xs text-muted-foreground">이번 주 개인 최고 정답 수로 순위를 매겨요. 동점은 먼저 완료한 순서예요.</p>
+  <WeeklyRewards rewards={data?.rewards} weekEnd={data?.weekEnd}/>
+  <ol className={rankingListClass}>{data?.rows.map(row=><RankingRow key={row.id} rank={row.rank} nickname={row.nickname} mine={row.mine} record={<><span className="block">{row.score} 정답</span>{row.rewardGold!==undefined&&<span className="mt-1 flex items-center justify-end gap-1 text-[10px] text-muted-foreground"><GoldIcon className="size-3.5"/>{row.rewardGold.toLocaleString('ko-KR')}</span>}</>}/>)}</ol>
   {data&&!data.total&&<p className="rounded-lg border border-dashed p-6 text-center text-sm text-muted-foreground">첫 번째 기록의 주인공이 되어보세요.</p>}
   {error&&<p role="alert" className="text-xs text-destructive">{error}</p>}
   {busy&&<p role="status" className="text-xs text-muted-foreground">기록을 불러오는 중…</p>}

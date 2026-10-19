@@ -1,4 +1,5 @@
 import {appArt} from '@/components/app-art'
+import {RarityBadge} from '@/components/rarity-badge'
 import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
 import type {Catch,ExpeditionOutcome} from './api'
 
@@ -17,7 +18,7 @@ export function ExpeditionResults({outcome,compact=false}:{outcome:ExpeditionOut
    <dl className="grid grid-cols-[1.3fr_1fr_1fr] items-center text-center"><div><dt className="text-[11px] text-muted-foreground">획득</dt><dd className="mt-1 text-3xl font-medium tabular-nums text-primary">{items.length}<span className="ml-1 text-xs font-normal">개</span></dd></div><div className="border-l border-primary/10"><dt className="text-[11px] text-muted-foreground">낚시 시도</dt><dd className="mt-1 text-lg tabular-nums">{outcome.attempted??items.length+failed}<span className="ml-0.5 text-[11px]">회</span></dd></div><div className="border-l border-primary/10"><dt className="text-[11px] text-muted-foreground">놓친 횟수</dt><dd className="mt-1 text-lg tabular-nums text-muted-foreground">{failed}<span className="ml-0.5 text-[11px]">회</span></dd></div></dl>
    <div aria-hidden="true" className="mt-4 flex h-1.5 gap-1">{Array.from({length:Math.min(30,outcome.attempted??items.length+failed)},(_,i)=><span key={i} className={`min-w-0 flex-1 rounded-full ${i<items.length?'bg-primary':'bg-primary/10'}`}/>)}</div>
   </div>
-  {groups.size>0?<ul aria-label="획득한 개체" className="divide-y divide-border/50">{[...groups.values()].map(group=><li key={group.species.id} className="flex items-center gap-3 py-2"><CollectibleThumbnail path={group.species.thumbnail_path} name={group.species.name} className="size-14 shrink-0"/><span className="min-w-0 flex-1 text-sm">{group.species.name}</span><span className="text-sm tabular-nums text-primary">×{group.count}</span></li>)}</ul>:<div className="py-3 text-center"><p className="text-sm">아쉽게도 빈손으로 돌아왔어요</p><p className="mt-1.5 text-[11px] text-muted-foreground">이번에는 낚은 개체가 없어요.</p></div>}
+  {groups.size>0?<ul aria-label="획득한 개체" className="divide-y divide-border/50">{[...groups.values()].map(group=><li key={group.species.id} className="flex items-center gap-3 py-2"><CollectibleThumbnail path={group.species.thumbnail_path} name={group.species.name} className="size-14 shrink-0"/><div className="min-w-0 flex-1"><p className="break-words text-sm">{group.species.name}</p>{group.species.rarity&&<div className="mt-1"><RarityBadge rarity={group.species.rarity}/></div>}</div><span className="text-sm tabular-nums text-primary">×{group.count}</span></li>)}</ul>:<div className="py-3 text-center"><p className="text-sm">아쉽게도 빈손으로 돌아왔어요</p><p className="mt-1.5 text-[11px] text-muted-foreground">이번에는 낚은 개체가 없어요.</p></div>}
  </div>
  return <div className="space-y-5 pb-2">
   <header className="pt-3 text-center">
@@ -37,6 +38,7 @@ export function ExpeditionResults({outcome,compact=false}:{outcome:ExpeditionOut
      <CollectibleThumbnail path={group.species.thumbnail_path} name={group.species.name} className="size-24 max-w-full"/>
      <span aria-label={`${group.count}개 획득`} className="absolute right-0 top-1 rounded-full bg-secondary px-2 py-1 text-[11px] tabular-nums text-primary">×{group.count}</span>
     </div>
+    {group.species.rarity&&<div className="mt-1 flex justify-center"><RarityBadge rarity={group.species.rarity}/></div>}
     <p className="mt-1 break-words text-center text-xs leading-5">{group.species.name}</p>
     {group.bonus>0&&<p className="mt-0.5 text-center text-[10px] text-primary">보너스 {group.bonus}개 포함</p>}
    </li>)}

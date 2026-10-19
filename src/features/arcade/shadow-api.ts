@@ -4,7 +4,7 @@ import { createClient } from '@/lib/client'
 export type ShadowRound = { id:string;number:number;imagePath:string;options:{id:string;name:string}[];deadline:string;answered:boolean;correct:boolean|null;timedOut:boolean|null;answerName:string|null }
 export type ShadowRun = { id:string;score:number;lives:number;finished:boolean;round:ShadowRound }
 export type ShadowState = { serverNow:string;run:ShadowRun|null }
-export type ShadowLeaderboard = { rows:{rank:number;id:string;nickname:string;score:number;finishedAt:string;mine:boolean}[];total:number;offset:number;pageSize:number }
+export type ShadowLeaderboard = { rows:{rank:number;id:string;nickname:string;score:number;finishedAt:string;mine:boolean;rewardGold?:number}[];total:number;offset:number;pageSize:number;weekStart?:string;weekEnd?:string;rewards?:number[] }
 export type ShadowAction = {p_action:'state'|'start'|'answer'|'next';p_operation_id?:string;p_run_id?:string;p_round_id?:string;p_choice_id?:string}
 export async function shadowAction(args:ShadowAction):Promise<ShadowState> {
  const {data,error}=await createClient().rpc('shadow_game',args)

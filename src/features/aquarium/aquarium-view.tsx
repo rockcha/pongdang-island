@@ -1,6 +1,6 @@
 import { useEffect,useRef,useState } from 'react'
 import type { ReactNode } from 'react'
-import { ChevronLeft,ChevronRight,Plus,Info } from 'lucide-react'
+import { ChevronLeft,ChevronRight,ChevronDown,ChevronUp,Plus,Info } from 'lucide-react'
 import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription} from '@/components/ui/dialog'
 import {CollectiblePreview} from '@/features/collection/collectible-preview'
 import {CollectibleKindIcon} from '@/features/collection/collectible-kind-icon'
@@ -24,6 +24,9 @@ export function AquariumView(props:Props){
  const {items,name,background,busy,onPlace,onSell}=props
  const glass=useRef<HTMLDivElement>(null)
  const [dimensions,setDimensions]=useState({width:320,height:560})
+ const [toolsOpen,setToolsOpen]=useState(()=>{try{return localStorage.getItem('pongdang:aquarium-tools-open')==='true'}catch{return false}})
+ useEffect(()=>{try{localStorage.setItem('pongdang:aquarium-tools-open',String(toolsOpen))}catch{/* Storage can be disabled. */}},[toolsOpen])
+ const toolsGesture=useRef<{y:number;dragged:boolean}|null>(null)
  useEffect(()=>{
   const element=glass.current
   if(!element||typeof ResizeObserver==='undefined')return
@@ -104,6 +107,11 @@ export function AquariumView(props:Props){
 
   </div>
   <Dialog open={!!infoItem} onOpenChange={open=>{if(!open)setInfoId(null)}}><DialogContent className="gap-4 rounded-xl sm:max-w-sm"><DialogHeader className="pr-7"><DialogTitle className="flex items-center gap-2">{infoItem&&<CollectibleKindIcon kind={infoItem.species.kind} className="size-6 shrink-0 text-primary"/>}{infoItem?.species.name}</DialogTitle><DialogDescription>{infoItem&&kindLabels[infoItem.species.kind]} · {infoItem&&rarities[infoItem.species.rarity].label}</DialogDescription></DialogHeader>{infoItem&&<><div className="grid place-items-center rounded-xl bg-secondary/40 py-5"><CollectiblePreview species={infoItem.species}/></div><p className="text-sm leading-6 text-muted-foreground">{infoItem.species.description}</p><div className="flex items-center justify-between border-t pt-3 text-xs"><span className="text-muted-foreground">가치</span><span className="flex items-center gap-1 text-primary"><GoldIcon className="size-5"/>{infoItem.species.sell_price.toLocaleString('ko-KR')}</span></div><PrimaryHabitat species={infoItem.species}/></>}</DialogContent></Dialog>
-  <TooltipProvider><div className="grid shrink-0 grid-cols-2 gap-0 border-t border-border bg-background pb-[env(safe-area-inset-bottom)]"><AquariumInventoryDialog items={items} name={name} busy={busy} onSell={onSell} onGiftSent={props.onGiftSent} onStore={props.onStore}/>{props.storageControls}</div></TooltipProvider>
+  <section aria-label="어항 목록·보관함 도구" className="shrink-0 border-t border-border bg-background pb-[env(safe-area-inset-bottom)]">
+   <button type="button" aria-label={toolsOpen?'목록·보관함 접기':'목록·보관함 펼치기'} aria-expanded={toolsOpen} className="flex h-8 w-full touch-none items-center justify-center gap-2 text-primary hover:bg-secondary/50" onClick={()=>{if(!toolsGesture.current?.dragged)setToolsOpen(value=>!value);toolsGesture.current=null}} onPointerDown={event=>{toolsGesture.current={y:event.clientY,dragged:false};event.currentTarget.setPointerCapture(event.pointerId)}} onPointerMove={event=>{const gesture=toolsGesture.current;if(!gesture)return;const delta=event.clientY-gesture.y;if(Math.abs(delta)>16){gesture.dragged=true;setToolsOpen(delta<0)}}} onPointerCancel={()=>{toolsGesture.current=null}}>
+    <span aria-hidden="true" className="size-1 rounded-full bg-primary"/><span className="text-[11px]">목록 · 보관함</span>{toolsOpen?<ChevronDown aria-hidden="true" className="size-3.5"/>:<ChevronUp aria-hidden="true" className="size-3.5"/>}
+   </button>
+   <div hidden={!toolsOpen}><TooltipProvider><div className="grid grid-cols-2 gap-0"><AquariumInventoryDialog items={items} name={name} busy={busy} onSell={onSell} onGiftSent={props.onGiftSent} onStore={props.onStore}/>{props.storageControls}</div></TooltipProvider></div>
+  </section>
  </>
 }

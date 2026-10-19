@@ -56,7 +56,6 @@ function IslandHome(){
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-black/35 via-black/20 to-black/65"/>
       <div className="max-w-sm space-y-3"><h2 className="flex items-center justify-center gap-2 text-2xl font-medium drop-shadow-md"><img src={regionIcons[region.id]?.src??'/region-icons/pongdang.svg'} alt="" className="size-9 shrink-0 object-contain"/>{region.name}</h2><p className="text-sm leading-7 text-white/95 drop-shadow-md">{region.description}</p></div>
       {mythics.length>0&&<HarborMythicShowcase key={region.id} items={mythics} regionName={region.name} interactive={false}/>}
-      <Link to="/harbor" className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full border border-white/40 bg-black/20 px-5 text-xs text-white backdrop-blur-sm"><appArt.map className="size-6"/>해역 살펴보기</Link>
      </article>
     </>:<p className="p-8 text-center text-sm text-muted-foreground">새로운 해역을 준비하고 있어요.</p>}
    </TabsContent>

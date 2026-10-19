@@ -1,3 +1,4 @@
+import {WeeklyRewards} from './weekly-rewards'
 import {RankingRow,rankingListClass} from './ranking-row'
 import {randomId} from '@/lib/random-id'
 import { useEffect, useRef, useState } from 'react'
@@ -24,7 +25,8 @@ export function MemoryRanking(){
  return <div className="min-h-0 min-w-0 flex-1 space-y-3 overflow-y-auto overscroll-contain px-4 py-3" role="tabpanel" id="memory-rank-panel" aria-labelledby="memory-rank-tab">
   <div className="flex items-center justify-between"><h3 className="text-sm font-normal">이번 주 기록</h3><Button variant="ghost" size="icon" aria-label="순위 새로고침" disabled={busy} onClick={()=>void load()}><RotateCcw className="size-4" /></Button></div>
   <p className="text-xs leading-5 text-muted-foreground">한국 시간 월요일부터 일요일 자정까지 · 개인 최고 기록<br />짧은 시간이 우선이며 동점은 먼저 완료한 순서예요.</p>
-  <ol className={rankingListClass}>{data?.rows.map(row=><RankingRow key={row.id} rank={row.rank} nickname={row.nickname} mine={row.mine} record={memoryTime(row.elapsedMs)}/>)}</ol>
+  <WeeklyRewards rewards={data?.rewards} weekEnd={data?.weekEnd}/>
+  <ol className={rankingListClass}>{data?.rows.map(row=><RankingRow key={row.id} rank={row.rank} nickname={row.nickname} mine={row.mine} record={<><span className="block">{memoryTime(row.elapsedMs)}</span>{row.rewardGold!==undefined&&<span className="mt-1 flex items-center justify-end gap-1 text-[10px] text-muted-foreground"><GoldIcon className="size-3.5"/>{row.rewardGold.toLocaleString('ko-KR')}</span>}</>}/>)}</ol>
   {data&&!data.total&&<p className="py-6 text-center text-sm text-muted-foreground">이번 주 첫 기록을 남겨보세요.</p>}
   {error&&<p role="alert" className="text-xs text-destructive">{error}</p>}
   {busy&&<p role="status" className="text-xs">기록을 불러오는 중…</p>}

@@ -1,15 +1,15 @@
 import {act,cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {PwaStatus} from '../src/components/pwa-status'
-import {OPEN_PWA_UPDATE_MENU,requestPwaUpdate} from '@/features/pwa/update-state'
+import {OPEN_PWA_UPDATE_MENU,requestPwaUpdate,usePwaUpdate} from '@/features/pwa/update-state'
 const mocks=vi.hoisted(()=>({
  social:{owner:'user-a',unread:{notice:0},loading:false,error:null as string|null},
- ready:true,blocked:false,update:vi.fn().mockResolvedValue(undefined),info:vi.fn(),success:vi.fn(),dismiss:vi.fn(),
+ ready:true,blocked:false,update:vi.fn().mockResolvedValue(undefined),info:vi.fn(),success:vi.fn(),dismiss:vi.fn(),error:vi.fn(),
 }))
 vi.mock('@/features/social/social-provider',()=>({useSocial:()=>mocks.social}))
 vi.mock('@/features/pwa/update-blockers',()=>({usePwaUpdateBlocked:()=>mocks.blocked}))
 vi.mock('virtual:pwa-register/react',()=>({useRegisterSW:()=>({offlineReady:[false],needRefresh:[mocks.ready],updateServiceWorker:mocks.update})}))
-vi.mock('sonner',()=>({toast:{info:mocks.info,success:mocks.success,dismiss:mocks.dismiss,error:vi.fn()}}))
+vi.mock('sonner',()=>({toast:{info:mocks.info,success:mocks.success,dismiss:mocks.dismiss,error:mocks.error}}))
 beforeEach(()=>{vi.clearAllMocks();sessionStorage.clear();vi.stubGlobal('navigator',{serviceWorker:new EventTarget()});vi.useFakeTimers();mocks.update.mockReset().mockResolvedValue(undefined);mocks.social={owner:'user-a',unread:{notice:0},loading:false,error:null};mocks.ready=true;mocks.blocked=false})
 afterEach(()=>{cleanup();vi.useRealTimers();vi.unstubAllGlobals()})
 it('opens the avatar menu when the available-update toast is clicked',()=>{
@@ -86,4 +86,30 @@ it('allows a manual retry after an update error without starting an automatic re
  act(()=>requestPwaUpdate())
  await act(()=>vi.advanceTimersByTimeAsync(1500))
  expect(mocks.update).toHaveBeenCalledTimes(2)
+})
+
+it('unlocks a stalled activation and retries only when requested',async()=>{
+ function State(){const {applying}=usePwaUpdate();return <span>{applying?'applying':'idle'}</span>}
+ render(<><PwaStatus/><State/></>);act(()=>requestPwaUpdate())
+ await act(()=>vi.advanceTimersByTimeAsync(1500))
+ expect(screen.getByText('applying')).toBeTruthy()
+ await act(()=>vi.advanceTimersByTimeAsync(20000))
+ expect(screen.getByText('idle')).toBeTruthy()
+ expect(mocks.error).toHaveBeenCalledOnce()
+ expect(sessionStorage.getItem('pongdang:pwa-update-feedback')).toBeNull()
+ await act(()=>vi.advanceTimersByTimeAsync(60000))
+ expect(mocks.update).toHaveBeenCalledOnce()
+ act(()=>mocks.error.mock.calls[0][1].action.onClick())
+ await act(()=>vi.advanceTimersByTimeAsync(1500))
+ expect(mocks.update).toHaveBeenCalledTimes(2)
+})
+
+it('ignores late update failures after unmount',async()=>{
+ let reject!:(error:Error)=>void
+ mocks.update.mockImplementationOnce(()=>new Promise((_,fail)=>{reject=fail}))
+ const view=render(<PwaStatus/>);act(()=>requestPwaUpdate())
+ await act(()=>vi.advanceTimersByTimeAsync(1500));view.unmount()
+ await act(async()=>reject(new Error('late failure')))
+ await act(()=>vi.advanceTimersByTimeAsync(20000))
+ expect(mocks.error).not.toHaveBeenCalled()
 })

@@ -6,13 +6,14 @@ import { ThemeProvider } from '@/components/theme-provider'
 import './index.css'
 import App from './App.tsx'
 import {initializePwaInstall} from '@/features/pwa/install'
+import {AppReady,AppRecovery,AppRecoveryBoundary} from '@/components/app-recovery'
 
 initializePwaInstall()
 
-const router=createBrowserRouter([{path:'*',element:<AuthProvider><App /></AuthProvider>}])
+const router=createBrowserRouter([{path:'*',element:<AuthProvider><App /><AppReady/></AuthProvider>,errorElement:<AppRecovery/>}])
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider><RouterProvider router={router}/></ThemeProvider>
+    <AppRecoveryBoundary><ThemeProvider><RouterProvider router={router}/></ThemeProvider></AppRecoveryBoundary>
   </StrictMode>,
 )

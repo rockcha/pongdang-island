@@ -3,7 +3,7 @@ import { toast } from 'sonner'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 import {watchPwaUpdates} from '@/features/pwa/update-check'
 import {usePwaUpdateBlocked} from '@/features/pwa/update-blockers'
-import {openPwaUpdateMenu,setPwaUpdateAvailable,setPwaUpdateApplying,usePwaUpdate} from '@/features/pwa/update-state'
+import {openPwaUpdateMenu,requestPwaUpdate,setPwaUpdateAvailable,setPwaUpdateApplying,usePwaUpdate} from '@/features/pwa/update-state'
 import {beginPwaUpdateFeedback,clearPwaUpdateFeedback,completePwaUpdateFeedback,consumePwaUpdateCompletion} from '@/features/pwa/update-feedback'
 
 export function PwaStatus() {
@@ -44,13 +44,24 @@ export function PwaStatus() {
       return
     }
     toast.info('퐁당섬을 업데이트하고 있어요.',{id:'pwa-update',duration:Infinity,description:'잠시 후 새 버전으로 다시 열려요.'})
-    const timer=window.setTimeout(()=>{setPwaUpdateApplying(true);beginPwaUpdateFeedback();void updateServiceWorker(true).catch(()=>{
+    let active=true,finished=false
+    let watchdog:number|undefined
+    const fail=()=>{
+      if(!active||finished)return
+      finished=true
+      window.clearTimeout(watchdog)
       clearPwaUpdateFeedback()
       failedRequest.current=request
       setPwaUpdateApplying(false)
-      toast.error('업데이트를 적용하지 못했어요.',{id:'pwa-update',description:'연결을 확인하고 앱을 다시 열어주세요.'})
-    })},1500)
-    return()=>window.clearTimeout(timer)
+      toast.error('업데이트를 완료하지 못했어요.',{id:'pwa-update',duration:8000,description:'연결을 확인하고 다시 시도해 주세요.',action:{label:'다시 시도',onClick:requestPwaUpdate}})
+    }
+    const timer=window.setTimeout(()=>{
+      setPwaUpdateApplying(true);beginPwaUpdateFeedback()
+      // Resolving this promise only means SKIP_WAITING was sent, not activation.
+      watchdog=window.setTimeout(fail,20000)
+      void updateServiceWorker(true).catch(fail)
+    },1500)
+    return()=>{active=false;window.clearTimeout(timer);window.clearTimeout(watchdog)}
   }, [needRefresh, updateServiceWorker,blocked,request])
 
   return null

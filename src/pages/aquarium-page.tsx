@@ -15,6 +15,7 @@ import { backgroundUrl,arrangeDecoration,manageTank, loadAquarium,moveCollectibl
 import {CollectibleStorageDialog} from '@/features/aquarium/collectible-storage-dialog'
 import type { AquariumState } from '@/features/aquarium/api'
 import {CollectionDialog} from '@/features/collection/collection-dialog'
+import {useOperator} from '@/features/notices/use-operator'
 import { Link } from 'react-router'
 
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
@@ -24,6 +25,7 @@ import { ConfirmDialog } from '@/components/confirm-dialog'
 const {map:MapIcon}=appArt
 
 export function AquariumPage() {
+ const {operator}=useOperator()
  const {wallet,transact,busy:goldBusy,loading:goldLoading,error:goldLoadError}=useGold()
  const [state,setState]=useState<AquariumState|null>(null)
  const [testFish,setTestFish]=useState<OwnedCollectible[]>([])
@@ -78,13 +80,13 @@ export function AquariumPage() {
   }
  },[state,tankIndex])
  function addTemporary(species:Species){
-  if(!tank||species.kind==='map')return
+  if(!operator||!tank||species.kind==='map')return
   setTestFish(current=>[...current,{id:'test-'+randomId(),species_id:species.id,tank_id:tank.id,
    animation_seed:Math.floor(Math.random()*1000000),position_x:null,position_y:null,
    rotation:0,scale:1,acquired_at:new Date().toISOString(),species}])
   toast.success(species.name+' 임시 개체를 넣었어요.')
  }
- const inhabitants=[...(state?.inhabitants??[]),...testFish].filter(item=>item.tank_id===tank?.id)
+ const inhabitants=[...(state?.inhabitants??[]),...(operator?testFish:[])].filter(item=>item.tank_id===tank?.id)
  function place(id:string,x:number,y:number){
   if(!tank)return
   const tankId=tank.id
@@ -148,7 +150,7 @@ export function AquariumPage() {
    onGiftSent={ids=>{setState(current=>current?{...current,inhabitants:current.inhabitants.filter(item=>!ids.includes(item.id))}:current);void reload()}}
    navigation={state?{index:tankIndex,count:state.tanks.length,onChange:changeTank}:undefined}
    storageControls={<>{state&&tank&&<CollectibleStorageDialog state={state} currentTankId={tank.id} busy={busy||goldBusy} onAssign={move} onSell={sell} onGiftSent={()=>void reload()}/>}</>}
-   managementControls={<><CollectionDialog onAddTemporary={tank?addTemporary:undefined}/>{state&&tank?<AquariumBackgroundDialog state={state} selectedId={tank.background_id} gold={wallet.gold} busy={busy||goldBusy} loading={goldLoading} error={!!goldLoadError} onAct={act}/>:null}<Tooltip><TooltipTrigger render={<Link to="/harbor" aria-label="지도로" className="inline-flex size-10 shrink-0 items-center justify-center rounded-r-xl transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-ring"/>}><MapIcon className="size-10"/></TooltipTrigger><TooltipContent>지도로</TooltipContent></Tooltip></>}
+   managementControls={<><CollectionDialog onAddTemporary={operator&&tank?addTemporary:undefined}/>{state&&tank?<AquariumBackgroundDialog state={state} selectedId={tank.background_id} gold={wallet.gold} busy={busy||goldBusy} loading={goldLoading} error={!!goldLoadError} onAct={act}/>:null}<Tooltip><TooltipTrigger render={<Link to="/harbor" aria-label="지도로" className="inline-flex size-10 shrink-0 items-center justify-center rounded-r-xl transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-ring"/>}><MapIcon className="size-10"/></TooltipTrigger><TooltipContent>지도로</TooltipContent></Tooltip></>}
    nameControls={<>
     {tank&&<Dialog open={renameOpen} onOpenChange={value=>{if(!busy&&!goldBusy){setRenameOpen(value);if(value){setName(tank.name);setRenameError('')}}}}>
      <DialogTrigger render={<Button variant="ghost" className="min-h-11 w-full min-w-0 max-w-full px-2 text-sm" disabled={busy||goldBusy} aria-label={`${tank.name} 이름 변경`}/>}><span className="block min-w-0 truncate">{tank.name}</span><Pencil aria-hidden="true" className="size-3.5 shrink-0 text-muted-foreground"/></DialogTrigger>

@@ -16,13 +16,13 @@ it('does not apply just because the notice badge is initially empty',async()=>{
  render(<PwaStatus/>);await act(()=>vi.advanceTimersByTimeAsync(5000))
  expect(mocks.update).not.toHaveBeenCalled()
 })
-it('waits for the notice badge to clear and for an active game to finish',async()=>{
+it('does not apply when the notice badge clears or a game ends without an explicit request',async()=>{
  mocks.social.unread.notice=2;mocks.blocked=true
  const view=render(<PwaStatus/>)
  mocks.social={...mocks.social,unread:{notice:0}};view.rerender(<PwaStatus/>)
  await act(()=>vi.advanceTimersByTimeAsync(5000));expect(mocks.update).not.toHaveBeenCalled()
  mocks.blocked=false;view.rerender(<PwaStatus/>)
- await act(()=>vi.advanceTimersByTimeAsync(1500));expect(mocks.update).toHaveBeenCalledWith(true)
+ await act(()=>vi.advanceTimersByTimeAsync(1500));expect(mocks.update).not.toHaveBeenCalled()
 })
 it('cancels scheduled application if a new unread notice arrives',async()=>{
  mocks.social.unread.notice=1

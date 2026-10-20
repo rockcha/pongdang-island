@@ -3,24 +3,12 @@ import { toast } from 'sonner'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 import {watchPwaUpdates} from '@/features/pwa/update-check'
 import {usePwaUpdateBlocked} from '@/features/pwa/update-blockers'
-import {useSocial} from '@/features/social/social-provider'
 import {setPwaUpdateAvailable,setPwaUpdateApplying,usePwaUpdate} from '@/features/pwa/update-state'
 
 export function PwaStatus() {
   const blocked=usePwaUpdateBlocked()
   const {request}=usePwaUpdate()
   const failedRequest=useRef<number|null>(null)
-  const {owner,unread,loading,error}=useSocial()
-  const previousNotice=useRef<{owner:string;count:number}|null>(null)
-  const [acknowledged,setAcknowledged]=useState(false)
-  useEffect(()=>{
-    if(!owner){previousNotice.current=null;setAcknowledged(false);return}
-    if(loading||error)return
-    const count=unread.notice??0,previous=previousNotice.current
-    if(previous?.owner!==owner||count>0)setAcknowledged(false)
-    else if(previous.count>0&&count===0)setAcknowledged(true)
-    previousNotice.current={owner,count}
-  },[owner,unread.notice,loading,error])
   const [registration,setRegistration]=useState<ServiceWorkerRegistration>()
   const { offlineReady: [offlineReady], needRefresh: [needRefresh], updateServiceWorker } = useRegisterSW({
     onRegisteredSW(_url,value){setRegistration(value)},
@@ -39,8 +27,8 @@ export function PwaStatus() {
 
   useEffect(() => {
     if (!needRefresh||failedRequest.current===request) return
-    if(request===0&&(!acknowledged||loading||error||!owner||(unread.notice??0)>0)){
-      toast.info('퐁당섬에 새 업데이트가 있어요.',{id:'pwa-update',description:'아바타 메뉴에서 지금 업데이트를 누르거나, 위쪽 공지를 확인해주세요.'})
+    if(request===0){
+      toast.info('퐁당섬에 새 업데이트가 있어요.',{id:'pwa-update',description:'아바타 메뉴에서 지금 업데이트를 눌러주세요.'})
       return
     }
     if(blocked){
@@ -54,7 +42,7 @@ export function PwaStatus() {
       toast.error('업데이트를 적용하지 못했어요.',{id:'pwa-update',description:'연결을 확인하고 앱을 다시 열어주세요.'})
     })},1500)
     return()=>window.clearTimeout(timer)
-  }, [needRefresh, updateServiceWorker,blocked,acknowledged,owner,unread.notice,loading,error,request])
+  }, [needRefresh, updateServiceWorker,blocked,request])
 
   return null
 }

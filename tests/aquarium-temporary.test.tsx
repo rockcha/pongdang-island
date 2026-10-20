@@ -3,7 +3,8 @@ import {afterEach,expect,it,vi} from 'vitest'
 import {AquariumPage} from '@/pages/aquarium-page'
 import {MemoryRouter} from 'react-router'
 import type {OwnedCollectible,Species} from '@/features/collection/api'
-const mock=vi.hoisted(()=>({load:vi.fn(),place:vi.fn(),arrange:vi.fn(),items:[] as OwnedCollectible[]}))
+const mock=vi.hoisted(()=>({operator:true,load:vi.fn(),place:vi.fn(),arrange:vi.fn(),items:[] as OwnedCollectible[]}))
+vi.mock('@/features/notices/use-operator',()=>({useOperator:()=>({operator:mock.operator,loading:false})}))
 const species:Species={id:'starfish',name:'불가사리',kind:'decoration',description:'',size:52,speed:0,swim_y_min:null,swim_y_max:null,rarity:'common',sprite_sheet_path:null,thumbnail_path:'starfish.png',sell_price:35}
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wallet:{gold:1000},transact:vi.fn(),busy:false,loading:false,error:null})}))
 vi.mock('@/features/gold/api',()=>({goldError:()=>''}))
@@ -16,7 +17,16 @@ vi.mock('@/features/aquarium/aquarium-view',()=>({AquariumView:({items,storageCo
  mock.items=items
  return <>{storageControls}{managementControls}<span data-testid="count">{items.length}</span>{items[0]&&<button onClick={()=>{onPlace(items[0].id,.2,.3);void onArrange(items[0].id,{position_x:.2,position_y:.3,rotation:30,scale:1.5})}}>꾸미기</button>}</>
 }}))
-afterEach(()=>{cleanup();vi.clearAllMocks()})
+afterEach(()=>{cleanup();vi.clearAllMocks();mock.operator=true})
+it('does not expose temporary insertion to a normal account',async()=>{
+ mock.operator=false
+ mock.load.mockResolvedValue({tanks:[{id:'tank',name:'어항',background_id:'sea'}],inhabitants:[],catalog:[],owned:[],storageCount:0,tankCapacity:50,tankPrice:200})
+ render(<MemoryRouter><AquariumPage/></MemoryRouter>)
+ await waitFor(()=>expect(mock.load).toHaveBeenCalled())
+ expect(screen.getByRole('button',{name:'도감 넣기'}).hasAttribute('disabled')).toBe(true)
+ fireEvent.click(screen.getByRole('button',{name:'도감 넣기'}))
+ expect(mock.items).toHaveLength(0)
+})
 it('keeps inserted individuals and edits only in memory and removes them after a fresh page mount',async()=>{
  mock.load.mockResolvedValue({tanks:[{id:'tank',name:'어항',background_id:'sea'}],inhabitants:[],catalog:[],owned:[],storageCount:0,tankCapacity:50,tankPrice:200})
  const view=render(<MemoryRouter><AquariumPage/></MemoryRouter>)

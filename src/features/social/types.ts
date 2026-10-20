@@ -14,6 +14,7 @@ export type AppNotification = {
   expedition_id?:string|null
   expedition_boost_id?:string|null
   notice_id?:string|null
+  board_post_id?:string|null
   notice?:{category:'guide'|'update'|'maintenance'|'event'}|null
   title: string; body: string; request_id: string | null; read_at: string | null; created_at: string
   request: Pick<FriendRequest, 'id' | 'sender_id' | 'recipient_id' | 'status'> | null

@@ -17,11 +17,11 @@ async function finish(id:string,won:boolean){
  return (await db.query('select public.finish_fishing($1,$2) as r',[id,won])).rows[0].r
 }
 it('returns bait-specific success chances through the helper and odds API',async()=>{
- const rows=(await db.query('select id,app_private.fishing_success_chance_bp(id) as chance from public.fishing_baits')).rows
- for(const r of rows)expect(r.chance).toBe(r.id==='bait_safe'?10000:['bait_grubby_magnet','bait_first_greeting','bait_magnet','bait_forbidden_star','bait_epic','bait_special'].includes(r.id)?7000:r.id==='bait'?3500:4000)
+ const rows=(await db.query('select id,success_chance_bp,app_private.fishing_success_chance_bp(id) as chance from public.fishing_baits')).rows
+ for(const r of rows)expect(r.chance).toBe(r.success_chance_bp??(r.id==='bait_safe'?10000:['bait_grubby_magnet','bait_first_greeting','bait_magnet','bait_forbidden_star','bait_epic','bait_special'].includes(r.id)?7000:r.id==='bait'?3500:4000))
  const state=(await db.query('select public.fishing_state() as s')).rows[0].s
  expect(state.successChanceBp).toBe(3500)
- for(const b of state.baits)expect(b.successChanceBp).toBe(b.id==='bait_safe'?10000:['bait_grubby_magnet','bait_first_greeting','bait_magnet','bait_forbidden_star','bait_epic','bait_special'].includes(b.id)?7000:b.id==='bait'?3500:4000)
+ for(const b of state.baits)expect(b.successChanceBp).toBe(b.success_chance_bp??(b.id==='bait_safe'?10000:['bait_grubby_magnet','bait_first_greeting','bait_magnet','bait_forbidden_star','bait_epic','bait_special'].includes(b.id)?7000:b.id==='bait'?3500:4000))
  for(let i=0;i<20;i++){
   const p=await prepare('bait_safe');expect(p.eligible).toBe(true);expect(p.species).toBeTruthy()
   await db.query("update app_private.prepared_fishing_casts set created_at=clock_timestamp()-interval '20 seconds' where operation_id=$1",[p.operation_id])

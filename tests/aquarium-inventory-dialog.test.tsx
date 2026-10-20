@@ -5,6 +5,28 @@ import type { OwnedCollectible,CollectibleKind } from '../src/features/collectio
 
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name}:{name:string})=><span>{name} 이미지</span>}))
 afterEach(cleanup)
+it('keeps the sale modal open after a failure and blocks double confirmation while selling',async()=>{
+ let fail!:(cause:Error)=>void
+ const onSell=vi.fn().mockImplementationOnce(()=>new Promise<void>((_resolve,reject)=>{fail=reject})).mockResolvedValueOnce(undefined)
+ render(<AquariumInventoryDialog name="내 어항" items={items} busy={false} onSell={onSell}/>)
+ fireEvent.click(screen.getByRole('button',{name:/^목록/}))
+ fireEvent.click(screen.getByRole('button',{name:'멸치 선택'}))
+ fireEvent.click(screen.getByRole('button',{name:/선택한 개체 판매/}))
+ const modal=await screen.findByRole('alertdialog')
+ expect(modal.querySelector('img[src="/branding/confirm/pongi-fish-sale.png"]')).toBeTruthy()
+ expect(onSell).not.toHaveBeenCalled()
+ const confirm=screen.getByRole('button',{name:'판매하기'})
+ fireEvent.click(confirm);fireEvent.click(confirm)
+ expect(onSell).toHaveBeenCalledTimes(1)
+ expect(screen.getByRole('button',{name:'돌아가기'})).toHaveProperty('disabled',true)
+ fail(new Error('연결을 확인해주세요.'))
+ expect(await screen.findByRole('alert')).toHaveProperty('textContent','연결을 확인해주세요.')
+ expect(screen.getByRole('alertdialog')).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'판매하기'}))
+ await waitFor(()=>expect(onSell).toHaveBeenCalledTimes(2))
+ expect(onSell.mock.calls.map(call=>call[0])).toEqual([['a'],['a']])
+ await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
+})
 function item(id:string,speciesId:string,name:string,kind:CollectibleKind='fish',rarity='common'):OwnedCollectible{
  return {id,species_id:speciesId,species:{id:speciesId,name,kind,rarity,sell_price:40,thumbnail_path:'fish.png'}} as OwnedCollectible
 }
@@ -40,7 +62,7 @@ it('groups species, combines filters and sells only real individuals with the se
  fireEvent.click(screen.getByRole('button',{name:'멸치 수량 늘리기'}))
  fireEvent.click(screen.getByRole('button',{name:/선택한 개체 판매/}))
  expect(await screen.findByRole('alertdialog')).toBeTruthy()
- fireEvent.click(screen.getByRole('button',{name:'확인'}))
+ fireEvent.click(screen.getByRole('button',{name:'판매하기'}))
  await waitFor(()=>expect(onSell).toHaveBeenCalledWith(['a','b']))
 })
 
@@ -65,11 +87,11 @@ it('supports cancelling and confirming a multi-species sale',async()=>{
  fireEvent.click(screen.getByRole('button',{name:'상어 선택'}))
  fireEvent.click(screen.getByRole('button',{name:'유리병 선택'}))
  fireEvent.click(screen.getByRole('button',{name:/선택한 개체 판매/}))
- fireEvent.click(screen.getByRole('button',{name:'취소'}))
+ fireEvent.click(screen.getByRole('button',{name:'돌아가기'}))
  await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
  expect(onSell).not.toHaveBeenCalled()
  fireEvent.click(screen.getByRole('button',{name:/선택한 개체 판매/}))
- fireEvent.click(screen.getByRole('button',{name:'확인'}))
+ fireEvent.click(screen.getByRole('button',{name:'판매하기'}))
  await waitFor(()=>expect(onSell).toHaveBeenCalledWith(expect.arrayContaining(['a','b','d','e'])))
  expect(onSell.mock.calls[0]?.[0]).not.toContain('test-c')
 })

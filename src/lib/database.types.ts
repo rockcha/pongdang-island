@@ -36,6 +36,9 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      board_feed:{Args:{p_sort?:string;p_mine?:boolean;p_offset?:number};Returns:import('@/features/board/api').BoardFeed}
+      board_detail:{Args:{p_id:string;p_offset?:number};Returns:import('@/features/board/api').BoardDetail|null}
+      board_action:{Args:{p_action:import('@/features/board/api').BoardAction;p_payload:import('@/features/board/api').BoardPayload};Returns:string}
       ladder_game:{Args:{p_action:'state'|'play';p_operation_id?:string;p_mode?:import('@/features/arcade/ladder-model').LadderMode;p_stake?:number;p_choice?:number};Returns:{run:import('@/features/arcade/ladder-model').LadderRun|null}}
       ladder_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/ladder-api').LadderRanks}
       brick_game_start:{Args:{p_operation_id:string;p_engine_version?:number};Returns:import('@/features/arcade/brick-breaker-api').BrickRun}

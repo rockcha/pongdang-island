@@ -10,7 +10,7 @@ import type { AquariumState } from './api'
 import { AquariumToolButton } from './aquarium-tool-button'
 import {themeTiers,type ThemeTier} from './theme-tiers'
 
-const {theme:Image,shop:ShoppingBag}=appArt
+const {background:Image,shop:ShoppingBag}=appArt
 
 
 function Preview({path,name}:{path:string;name:string}){
@@ -49,7 +49,7 @@ export function AquariumBackgroundDialog({state,selectedId,gold,busy,loading,err
   })}</ul>
  }
  return <Dialog open={open} onOpenChange={value=>{if(!busy&&!locked.current){setOpen(value);if(value)setTier('all')}}}>
-  <AquariumToolButton label="테마" icon={<Image className="size-10"/>}/>
+  <AquariumToolButton label="배경 바꾸기" icon={<Image className="size-7 text-primary"/>}/>
   <DialogContent className="notification-sheet inset-x-0 bottom-0 top-auto left-0 flex h-[92dvh] max-h-[92dvh] w-full max-w-full translate-x-0 translate-y-0 flex-col gap-4 overflow-hidden rounded-t-2xl rounded-b-none pb-[max(1rem,env(safe-area-inset-bottom))] sm:left-1/2 sm:max-w-md sm:-translate-x-1/2">
    <DialogHeader><DialogTitle className="flex items-center gap-2"><Image aria-hidden="true" className="size-8 text-primary"/>배경 꾸미기</DialogTitle><DialogDescription>배경을 골라 지금 어항에 적용해보세요.</DialogDescription></DialogHeader>
    {actionError&&<p role="alert" className="text-sm text-destructive">{actionError}</p>}

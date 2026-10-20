@@ -22,7 +22,7 @@ export function AppLayout() {
   const profile=pathname==='/download'||pathname==='/music-room'||pathname==='/farm'||pathname==='/profile'||pathname==='/titles'||pathname==='/collection'||pathname==='/collection-animation'
   const mailbox=pathname==='/notifications'
   const square=pathname==='/square'
-  const noticeList=pathname==='/square/notices'||(/^\/square\/notices\/[^/]+$/.test(pathname)&&!pathname.endsWith('/new'))||pathname==='/square/suggestions'||pathname.startsWith('/square/suggestions/')||pathname==='/square/bugs'||pathname.startsWith('/square/bugs/')
+  const noticeList=pathname==='/board'||pathname.startsWith('/board/')||pathname==='/square/notices'||(/^\/square\/notices\/[^/]+$/.test(pathname)&&!pathname.endsWith('/new'))||pathname==='/square/suggestions'||pathname.startsWith('/square/suggestions/')||pathname==='/square/bugs'||pathname.startsWith('/square/bugs/')
   const exchange=pathname==='/exchange'||pathname.startsWith('/exchange/')||pathname==='/savings'
   const friends=pathname==='/friends'
   const shop=pathname==='/shop'||pathname==='/item-shop'||pathname==='/shipyard'

@@ -1,0 +1,30 @@
+{
+  "tool": "image_gen.imagegen",
+  "transparentBackground": true,
+  "assets": [
+    {
+      "id": "sunny-honey-dumpling",
+      "prompt": "Create a single premium cozy fishing game inventory item icon: one plump golden honey-glazed fishing dough dumpling with a small amber honeycomb piece, a drop of honey and a delicate golden fishing hook. Beautiful hand-painted storybook gouache with softly textured three dimensional shading, warm cream and brown friendly palette, jewel-like highlights, rounded charming silhouette, readable at 64 pixels. One centered isolated object occupying 75% of a square canvas, generous clear margins around entire hook. Genuine transparent alpha background. No text, no letters, no labels, no frame, no card, no floor, no cast shadow outside the object. This is a standalone bitmap game asset.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a158a9-a0a4-7f53-a180-0ca7b707977d\\exec-0868ff82-9aca-4303-bb77-79d9cb6e17f7.png",
+      "path": "public/items/baits/sunny-honey-dumpling.png"
+    },
+    {
+      "id": "pearl-bubble",
+      "prompt": "Create a single premium cozy fishing game inventory item icon: a cluster of three translucent pale aqua iridescent bubbles enclosing one luminous ivory pearl, with a delicate golden fishing hook. Beautiful hand-painted storybook gouache with softly textured three dimensional shading, warm cream and brown friendly palette, jewel-like highlights, rounded charming silhouette, readable at 64 pixels. One centered isolated object occupying 75% of a square canvas, generous clear margins around entire hook. Genuine transparent alpha background. No text, no letters, no labels, no frame, no card, no floor, no cast shadow outside the object. This is a standalone bitmap game asset.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a158a9-a0a4-7f53-a180-0ca7b707977d\\exec-f9b43af4-6d07-4439-9515-49795ca86ca9.png",
+      "path": "public/items/baits/pearl-bubble.png"
+    },
+    {
+      "id": "coral-pollen",
+      "prompt": "Create a single premium cozy fishing game inventory item icon: a small cluster of peach pink coral blossoms dusted with warm sparkling pollen, one tiny coral branch and a delicate golden fishing hook. Beautiful hand-painted storybook gouache with softly textured three dimensional shading, warm cream and brown friendly palette, jewel-like highlights, rounded charming silhouette, readable at 64 pixels. One centered isolated object occupying 75% of a square canvas, generous clear margins around entire hook. Genuine transparent alpha background. No text, no letters, no labels, no frame, no card, no floor, no cast shadow outside the object. This is a standalone bitmap game asset.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a158a9-a0a4-7f53-a180-0ca7b707977d\\exec-c6ad5999-55bb-4a10-b51b-deb7860db60f.png",
+      "path": "public/items/baits/coral-pollen.png"
+    },
+    {
+      "id": "starlight-wax",
+      "prompt": "Create a single premium cozy fishing game inventory item icon: one small ivory beeswax bait lump embossed with a glowing five-pointed star, subtle lavender starlight within the wax and a delicate golden fishing hook. Beautiful hand-painted storybook gouache with softly textured three dimensional shading, warm cream and brown friendly palette, jewel-like highlights, rounded charming silhouette, readable at 64 pixels. One centered isolated object occupying 75% of a square canvas, generous clear margins around entire hook. Genuine transparent alpha background. No text, no letters, no labels, no frame, no card, no floor, no cast shadow outside the object. This is a standalone bitmap game asset.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a158a9-a0a4-7f53-a180-0ca7b707977d\\exec-6f8095f9-33b8-44f3-af03-1fb80605c1ff.png",
+      "path": "public/items/baits/starlight-wax.png"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "c2647b00fba5084a3c4404622c1448e6680e22662ecc2b1a48219bc707b8c2db",
+  "migrationHash": "7c69be73961da2defe5fc2c74560b145bc4febcd3e8ce88ab44f2eaabd1ebda3",
   "structure": {
     "enums": [
       {
@@ -73,6 +73,12 @@
       {
         "rls": true,
         "name": "arcade_weekly_rewards",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "bait_cycles",
         "schema": "app_private",
         "force_rls": false
       },
@@ -211,6 +217,24 @@
       {
         "rls": true,
         "name": "auction_listings",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "board_comments",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "board_posts",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "board_reactions",
         "schema": "public",
         "force_rls": false
       },
@@ -729,6 +753,26 @@
         "table": "arcade_weekly_rewards",
         "schema": "app_private",
         "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "bait_cycles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "next_rarity",
+        "type": "game_rarity",
+        "table": "bait_cycles",
+        "schema": "app_private",
+        "default": "'common'::game_rarity",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -2336,6 +2380,206 @@
       {
         "name": "id",
         "type": "uuid",
+        "table": "board_comments",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "post_id",
+        "type": "uuid",
+        "table": "board_comments",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "author_id",
+        "type": "uuid",
+        "table": "board_comments",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "parent_id",
+        "type": "uuid",
+        "table": "board_comments",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "body",
+        "type": "text",
+        "table": "board_comments",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "deleted",
+        "type": "boolean",
+        "table": "board_comments",
+        "schema": "public",
+        "default": "false",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "board_comments",
+        "schema": "public",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "board_comments",
+        "schema": "public",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "board_posts",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "author_id",
+        "type": "uuid",
+        "table": "board_posts",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "table": "board_posts",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "body",
+        "type": "text",
+        "table": "board_posts",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "images",
+        "type": "text[]",
+        "table": "board_posts",
+        "schema": "public",
+        "default": "'{}'::text[]",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "board_posts",
+        "schema": "public",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "board_posts",
+        "schema": "public",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "board_reactions",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "post_id",
+        "type": "uuid",
+        "table": "board_reactions",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "comment_id",
+        "type": "uuid",
+        "table": "board_reactions",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "value",
+        "type": "smallint",
+        "table": "board_reactions",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "board_reactions",
+        "schema": "public",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
         "table": "brick_game_runs",
         "schema": "public",
         "default": "gen_random_uuid()",
@@ -3359,6 +3603,36 @@
         "table": "fishing_baits",
         "schema": "public",
         "default": "''::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "success_chance_bp",
+        "type": "integer",
+        "table": "fishing_baits",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "fish_only",
+        "type": "boolean",
+        "table": "fishing_baits",
+        "schema": "public",
+        "default": "false",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "alternating",
+        "type": "boolean",
+        "table": "fishing_baits",
+        "schema": "public",
+        "default": "false",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -4545,6 +4819,16 @@
       },
       {
         "name": "expedition_boost_id",
+        "type": "uuid",
+        "table": "notifications",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "board_post_id",
         "type": "uuid",
         "table": "notifications",
         "schema": "public",
@@ -5752,6 +6036,12 @@
         "definition": "CREATE UNIQUE INDEX arcade_weekly_rewards_pkey ON app_private.arcade_weekly_rewards USING btree (game, week_start, user_id)"
       },
       {
+        "name": "bait_cycles_pkey",
+        "table": "bait_cycles",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX bait_cycles_pkey ON app_private.bait_cycles USING btree (user_id)"
+      },
+      {
         "name": "expedition_boosts_expedition_id_helper_id_key",
         "table": "expedition_boosts",
         "schema": "app_private",
@@ -6056,6 +6346,72 @@
         "table": "auction_listings",
         "schema": "public",
         "definition": "CREATE INDEX auction_owner ON public.auction_listings USING btree (owner_id, created_at DESC, id)"
+      },
+      {
+        "name": "board_comments_author",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "CREATE INDEX board_comments_author ON public.board_comments USING btree (author_id, created_at DESC)"
+      },
+      {
+        "name": "board_comments_id_post_id_key",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX board_comments_id_post_id_key ON public.board_comments USING btree (id, post_id)"
+      },
+      {
+        "name": "board_comments_parent",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "CREATE INDEX board_comments_parent ON public.board_comments USING btree (parent_id, post_id)"
+      },
+      {
+        "name": "board_comments_pkey",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX board_comments_pkey ON public.board_comments USING btree (id)"
+      },
+      {
+        "name": "board_comments_post",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "CREATE INDEX board_comments_post ON public.board_comments USING btree (post_id, created_at DESC, id DESC)"
+      },
+      {
+        "name": "board_posts_author",
+        "table": "board_posts",
+        "schema": "public",
+        "definition": "CREATE INDEX board_posts_author ON public.board_posts USING btree (author_id, created_at DESC)"
+      },
+      {
+        "name": "board_posts_pkey",
+        "table": "board_posts",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX board_posts_pkey ON public.board_posts USING btree (id)"
+      },
+      {
+        "name": "board_posts_recent",
+        "table": "board_posts",
+        "schema": "public",
+        "definition": "CREATE INDEX board_posts_recent ON public.board_posts USING btree (created_at DESC, id DESC)"
+      },
+      {
+        "name": "board_reactions_comment",
+        "table": "board_reactions",
+        "schema": "public",
+        "definition": "CREATE INDEX board_reactions_comment ON public.board_reactions USING btree (comment_id, post_id, value)"
+      },
+      {
+        "name": "board_reactions_post",
+        "table": "board_reactions",
+        "schema": "public",
+        "definition": "CREATE INDEX board_reactions_post ON public.board_reactions USING btree (post_id, value)"
+      },
+      {
+        "name": "board_reactions_user_id_post_id_comment_id_key",
+        "table": "board_reactions",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX board_reactions_user_id_post_id_comment_id_key ON public.board_reactions USING btree (user_id, post_id, comment_id) NULLS NOT DISTINCT"
       },
       {
         "name": "brick_game_one_active",
@@ -6508,6 +6864,12 @@
         "definition": "CREATE UNIQUE INDEX gift_notification_once ON public.notifications USING btree (recipient_id, kind, gift_id) WHERE (gift_id IS NOT NULL)"
       },
       {
+        "name": "notifications_board_post",
+        "table": "notifications",
+        "schema": "public",
+        "definition": "CREATE INDEX notifications_board_post ON public.notifications USING btree (board_post_id) WHERE (board_post_id IS NOT NULL)"
+      },
+      {
         "name": "notifications_expedition_boost_once",
         "table": "notifications",
         "schema": "public",
@@ -6805,6 +7167,18 @@
     "policies": [
       {
         "cmd": "SELECT",
+        "qual": "(user_id = ( SELECT auth.uid() AS uid))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "bait_cycles",
+        "permissive": "PERMISSIVE",
+        "policyname": "bait_cycles_owner",
+        "schemaname": "app_private",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
         "qual": "true",
         "roles": [
           "authenticated"
@@ -6884,6 +7258,30 @@
         "tablename": "auction_listings",
         "permissive": "PERMISSIVE",
         "policyname": "auction_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(( SELECT auth.uid() AS uid) IS NOT NULL)",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "board_comments",
+        "permissive": "PERMISSIVE",
+        "policyname": "board_comments_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(( SELECT auth.uid() AS uid) IS NOT NULL)",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "board_posts",
+        "permissive": "PERMISSIVE",
+        "policyname": "board_posts_read",
         "schemaname": "public",
         "with_check": null
       },
@@ -7897,6 +8295,46 @@
         "securityDefiner": true
       },
       {
+        "name": "board_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_payload jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.board_action(p_action text, p_payload jsonb)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n<<payload>>\ndeclare uid uuid:=auth.uid(); pid uuid; cid uuid; target public.board_posts; comment public.board_comments;\n  parent public.board_comments; actor text; choice smallint; previous smallint; images text[]; title text; body text;\nbegin\n  if uid is null then raise exception 'AUTH_REQUIRED'; end if;\n  select nickname into actor from public.player_profiles where id=uid;\n  if actor is null then raise exception 'NICKNAME_REQUIRED'; end if;\n  perform pg_advisory_xact_lock(hashtextextended(uid::text,4731));\n  pid:=(p_payload->>'post_id')::uuid;\n  if pid is null then raise exception 'INVALID_BOARD_REQUEST'; end if;\n  if p_action='save' then\n    select * into target from public.board_posts where id=pid for update;\n    if found and target.author_id<>uid then raise exception 'NOT_ALLOWED'; end if;\n    title:=btrim(p_payload->>'title'); body:=btrim(p_payload->>'body');\n    if title is null or char_length(title) not between 1 and 80 or body is null or char_length(body) not between 1 and 5000 then raise exception 'INVALID_BOARD_REQUEST'; end if;\n    select coalesce(array_agg(value),'{}'::text[]) into images from jsonb_array_elements_text(coalesce(p_payload->'images','[]'::jsonb));\n    if cardinality(images)>3 or exists(select 1 from unnest(images) path where path !~ ('^'||uid::text||'/'||pid::text||'/[0-9a-f-]+\\.(png|jpg|webp)$')) then raise exception 'INVALID_BOARD_IMAGE'; end if;\n    if exists(select 1 from unnest(images) path where not exists(select 1 from storage.objects o where o.bucket_id='board-images' and o.name=path)) then raise exception 'INVALID_BOARD_IMAGE'; end if;\n    if target.id is null then\n      if (select count(*) from public.board_posts where author_id=uid and created_at>now()-interval '1 minute')>=3 then raise exception 'BOARD_RATE_LIMIT'; end if;\n      insert into public.board_posts(id,author_id,title,body,images) values(pid,uid,title,body,images);\n    else update public.board_posts set title=payload.title,body=payload.body,images=payload.images,updated_at=now() where id=pid; end if;\n    return pid;\n  end if;\n  select * into target from public.board_posts where id=pid for update;\n  if not found then raise exception 'BOARD_NOT_FOUND'; end if;\n  if p_action='delete' then\n    if target.author_id<>uid and not app_private.notice_is_operator() then raise exception 'NOT_ALLOWED'; end if;\n    delete from public.board_posts where id=pid; return pid;\n  elsif p_action='comment' then\n    cid:=(p_payload->>'id')::uuid;\n    if cid is null then raise exception 'INVALID_BOARD_REQUEST'; end if;\n    select * into comment from public.board_comments where id=cid;\n    if found then\n      if comment.author_id<>uid or comment.post_id<>pid or comment.deleted then raise exception 'NOT_ALLOWED'; end if;\n      return pid; -- Retry of the same comment must not send duplicate notifications.\n    end if;\n    body:=btrim(p_payload->>'body');\n    if body is null or char_length(body) not between 1 and 1000 then raise exception 'INVALID_BOARD_REQUEST'; end if;\n    if (select count(*) from public.board_comments where author_id=uid and created_at>now()-interval '1 minute')>=10 then raise exception 'BOARD_RATE_LIMIT'; end if;\n    if nullif(p_payload->>'parent_id','') is not null then\n      select * into parent from public.board_comments where id=(p_payload->>'parent_id')::uuid and post_id=pid;\n      if not found or parent.parent_id is not null or parent.deleted then raise exception 'INVALID_BOARD_REPLY'; end if;\n    end if;\n    insert into public.board_comments(id,post_id,author_id,parent_id,body) values(cid,pid,uid,parent.id,body);\n    insert into public.notifications(recipient_id,actor_id,category,kind,title,body,board_post_id)\n      select recipient,uid,'general','system',case when parent.id is null then '내 글에 새 댓글이 달렸어요' else '새 답글이 달렸어요' end,\n        left(actor||': '||body,500),pid from (select target.author_id recipient union select parent.author_id where parent.author_id is not null) recipients where recipient<>uid;\n    return pid;\n  elsif p_action='edit_comment' or p_action='delete_comment' then\n    select * into comment from public.board_comments where id=(p_payload->>'id')::uuid and post_id=pid for update;\n    if not found or comment.deleted then raise exception 'COMMENT_NOT_FOUND'; end if;\n    if comment.author_id<>uid and not (p_action='delete_comment' and app_private.notice_is_operator()) then raise exception 'NOT_ALLOWED'; end if;\n    if p_action='delete_comment' then update public.board_comments set body='',deleted=true,updated_at=now() where id=comment.id;\n    else\n      body:=btrim(p_payload->>'body');\n      if body is null or char_length(body) not between 1 and 1000 then raise exception 'INVALID_BOARD_REQUEST'; end if;\n      update public.board_comments set body=payload.body,updated_at=now() where id=comment.id;\n    end if;\n    return pid;\n  elsif p_action='react' then\n    choice:=(p_payload->>'value')::smallint; cid:=nullif(p_payload->>'comment_id','')::uuid;\n    if choice is null or choice not in (-1,0,1) then raise exception 'INVALID_BOARD_REQUEST'; end if;\n    if cid is not null and not exists(select 1 from public.board_comments where id=cid and post_id=pid and not deleted) then raise exception 'COMMENT_NOT_FOUND'; end if;\n    -- Set the desired state, rather than toggling, so network retries are safe.\n    if choice=0 then delete from public.board_reactions where user_id=uid and post_id=pid and comment_id is not distinct from cid;\n    else insert into public.board_reactions(user_id,post_id,comment_id,value) values(uid,pid,cid,choice)\n      on conflict(user_id,post_id,comment_id) do update set value=excluded.value;\n    end if;\n    return pid;\n  end if;\n  raise exception 'INVALID_BOARD_REQUEST';\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "board_detail",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id uuid, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.board_detail(p_id uuid, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;\nbegin\n  if auth.uid() is null then raise exception 'AUTH_REQUIRED'; end if;\n  if p_offset<0 or p_offset>10000 then raise exception 'INVALID_BOARD_REQUEST'; end if;\n  select app_private.board_post_json(p) into result from public.board_posts p where p.id=p_id;\n  if result is null then return null; end if;\n  return jsonb_build_object('post',result,'comments',coalesce((select jsonb_agg(q.item order by q.created_at desc,q.id desc) from (\n    select c.id,c.created_at,to_jsonb(c)||jsonb_build_object(\n      'author_name',a.nickname,'avatar_path',a.avatar_path,'equipped_title',a.equipped_title,\n      'parent_author_name',pa.nickname,\n      'likes',(select count(*) from public.board_reactions r where r.comment_id=c.id and r.value=1),\n      'dislikes',(select count(*) from public.board_reactions r where r.comment_id=c.id and r.value=-1),\n      'my_reaction',coalesce((select r.value from public.board_reactions r where r.comment_id=c.id and r.user_id=auth.uid()),0)\n    ) item from public.board_comments c join public.player_profiles a on a.id=c.author_id\n    left join public.board_comments parent on parent.id=c.parent_id left join public.player_profiles pa on pa.id=parent.author_id\n    where c.post_id=p_id order by c.created_at desc,c.id desc limit 50 offset p_offset\n  )q),'[]'::jsonb),'comment_total',(select count(*) from public.board_comments where post_id=p_id));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "board_feed",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_sort text, p_mine boolean, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.board_feed(p_sort text DEFAULT 'latest'::text, p_mine boolean DEFAULT false, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;\nbegin\n  if auth.uid() is null then raise exception 'AUTH_REQUIRED'; end if;\n  if p_sort not in ('latest','popular') or p_offset<0 or p_offset>10000 then raise exception 'INVALID_BOARD_REQUEST'; end if;\n  select jsonb_build_object('items',coalesce(jsonb_agg(q.item order by q.rank_order),'[]'::jsonb),\n    'total',(select count(*) from public.board_posts p where not p_mine or p.author_id=auth.uid())) into result\n  from (select app_private.board_post_json(p) item,row_number() over(order by\n    case when p_sort='popular' then (select count(*) from public.board_reactions r where r.post_id=p.id and r.comment_id is null and r.value=1) end desc nulls last,p.created_at desc,p.id desc) rank_order\n    from public.board_posts p where not p_mine or p.author_id=auth.uid()\n    order by rank_order limit 20 offset p_offset) q;\n  return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "board_post_json",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p board_posts",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.board_post_json(p board_posts)\n RETURNS jsonb\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n  select to_jsonb(p) || jsonb_build_object(\n    'author_name',a.nickname,'avatar_path',a.avatar_path,'equipped_title',a.equipped_title,\n    'likes',(select count(*) from public.board_reactions r where r.post_id=p.id and r.comment_id is null and r.value=1),\n    'dislikes',(select count(*) from public.board_reactions r where r.post_id=p.id and r.comment_id is null and r.value=-1),\n    'my_reaction',coalesce((select r.value from public.board_reactions r where r.post_id=p.id and r.comment_id is null and r.user_id=auth.uid()),0),\n    'comment_count',(select count(*) from public.board_comments c where c.post_id=p.id and not c.deleted)\n  ) from public.player_profiles a where a.id=p.author_id and auth.uid() is not null\n$function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "boost_friend_expedition",
         "config": [
           "search_path=\"\""
@@ -8087,6 +8525,16 @@
         "securityDefiner": true
       },
       {
+        "name": "consume_bait_cycle",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.consume_bait_cycle()\n RETURNS game_rarity\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare r public.game_rarity;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n insert into app_private.bait_cycles(user_id,next_rarity) values(auth.uid(),'rare')\n on conflict(user_id) do update set next_rarity=case when bait_cycles.next_rarity='common' then 'rare'::public.game_rarity else 'common'::public.game_rarity end\n returning case when next_rarity='rare' then 'common'::public.game_rarity else 'rare'::public.game_rarity end into r;\n return r;\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "default_collectible_movement",
         "config": [
           "search_path=\"\""
@@ -8253,7 +8701,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region text, p_bait text, p_native boolean, p_local_discovery boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_pick(p_region text, p_bait text, p_native boolean, p_local_discovery boolean DEFAULT false)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare b public.fishing_baits;r public.game_rarity;roll integer:=floor(random()*10000);ids text[];fallback boolean;\nbegin\n select * into strict b from public.fishing_baits where id=p_bait;\n r:=case when roll<b.mythic_bp then 'mythic' when roll<b.mythic_bp+b.epic_bp then 'epic' when roll<b.mythic_bp+b.epic_bp+b.rare_bp then 'rare' else 'common' end;\n with candidates as materialized (\n  select s.id,s.rarity from public.collectible_species s where case\n   when p_bait='bait_first_greeting' then s.kind in ('fish','trash','decoration')\n    and not exists(select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id)\n    and (not p_local_discovery or exists(select 1 from public.collectible_habitats h where h.species_id=s.id and h.region_id=p_region))\n   when p_bait='bait_grubby_magnet' then s.kind='trash'\n   when b.effect_kind='decoration' then s.kind='decoration'\n   else s.kind in ('fish','trash') and s.rarity=r end\n ), pool as (select * from candidates c where b.effect_kind='decoration' or c.rarity=r or not exists(select 1 from candidates c2 where c2.rarity=r))\n select array_agg(id order by id),not coalesce(bool_or(rarity=r),false) into ids,fallback from pool;\n return app_private.pick_habitat_group(ids,p_region,null,\n  (case when p_native then 1.5 else 1 end)*(case when p_bait='bait_sea_memory' then 3 else 1 end),\n  fallback and b.effect_kind<>'decoration');\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_pick(p_region text, p_bait text, p_native boolean, p_local_discovery boolean DEFAULT false)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare b public.fishing_baits;r public.game_rarity;roll integer:=floor(random()*10000);ids text[];fallback boolean;\nbegin\n select * into strict b from public.fishing_baits where id=p_bait;\n r:=case when b.alternating then app_private.consume_bait_cycle()\n when roll<b.mythic_bp then 'mythic'::public.game_rarity when roll<b.mythic_bp+b.epic_bp then 'epic'::public.game_rarity\n when roll<b.mythic_bp+b.epic_bp+b.rare_bp then 'rare'::public.game_rarity else 'common'::public.game_rarity end;\n if b.fish_only then return app_private.pick_bait_fish(p_region,r,p_native,false);end if;\n with candidates as materialized (\n select s.id,s.rarity from public.collectible_species s where case\n when p_bait='bait_first_greeting' then s.kind in ('fish','trash','decoration') and not exists(select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id)\n and (not p_local_discovery or exists(select 1 from public.collectible_habitats h where h.species_id=s.id and h.region_id=p_region))\n when p_bait='bait_grubby_magnet' then s.kind='trash'\n when b.effect_kind='decoration' then s.kind='decoration' else s.kind in ('fish','trash') and s.rarity=r end\n ),pool as(select * from candidates c where b.effect_kind='decoration' or c.rarity=r or not exists(select 1 from candidates c2 where c2.rarity=r))\n select array_agg(id order by id),not coalesce(bool_or(rarity=r),false) into ids,fallback from pool;\n return app_private.pick_habitat_group(ids,p_region,null,(case when p_native then 1.5 else 1 end)*(case when p_bait='bait_sea_memory' then 3 else 1 end),fallback and b.effect_kind<>'decoration');\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -8283,7 +8731,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_bait_id text, p_reduction integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_success_chance_bp(p_bait_id text, p_reduction integer)\n RETURNS integer\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select least(10000,app_private.fishing_success_chance_bp(p_bait_id)+greatest(0,coalesce(p_reduction,0)))\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_success_chance_bp(p_bait_id text, p_reduction integer)\n RETURNS integer\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select coalesce((select success_chance_bp from public.fishing_baits where id=p_bait_id),\n least(10000,app_private.fishing_success_chance_bp(p_bait_id)+greatest(0,coalesce(p_reduction,0))))\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -8323,7 +8771,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_rod_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n perform app_private.get_gold_wallet();\n -- All rod operations serialize on the existing wallet, before inventory/loadout.\n perform 1 from public.player_wallets where user_id=v_uid for update;\n insert into public.player_fishing_rods(user_id,rod_id) values(v_uid,'basic') on conflict do nothing;\n insert into public.player_rod_loadouts(user_id) values(v_uid) on conflict do nothing;\n return jsonb_build_object(\n  'owned',(select jsonb_agg(rod_id order by rod_id) from public.player_fishing_rods where user_id=v_uid),\n  'selected',(select equipped_rod_id from public.player_rod_loadouts where user_id=v_uid),\n  'catalog',(select jsonb_agg(to_jsonb(r) order by price,id) from public.fishing_rods r),\n  'baits',coalesce((select jsonb_agg(to_jsonb(b) order by sort_order,id) from public.fishing_baits b),'[]'::jsonb)\n );\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_rod_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n perform 1 from public.player_wallets where user_id=v_uid for update;\n insert into public.player_fishing_rods(user_id,rod_id) values(v_uid,'basic') on conflict do nothing;\n insert into public.player_rod_loadouts(user_id) values(v_uid) on conflict do nothing;\n return jsonb_build_object(\n 'owned',(select jsonb_agg(rod_id order by rod_id) from public.player_fishing_rods where user_id=v_uid),\n 'selected',(select equipped_rod_id from public.player_rod_loadouts where user_id=v_uid),\n 'catalog',(select jsonb_agg(to_jsonb(r) order by price,id) from public.fishing_rods r),\n 'baits',app_private.fishing_state()->'baits');\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -8343,7 +8791,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_bait_id text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_success_chance_bp(p_bait_id text)\n RETURNS integer\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\nbegin\n if not exists(select 1 from public.fishing_baits where id=p_bait_id) then raise exception 'INVALID_BAIT';end if;\n return case\n  when p_bait_id='bait_safe' then 10000\n  when p_bait_id in ('bait_grubby_magnet','bait_first_greeting','bait_magnet','bait_forbidden_star','bait_epic','bait_special') then 7000\n  when p_bait_id='bait' then 3500\n  else 4000\n end;\nend;\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_success_chance_bp(p_bait_id text)\n RETURNS integer\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare b public.fishing_baits;\nbegin\n select * into b from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT';end if;\n return coalesce(b.success_chance_bp,case when p_bait_id='bait_safe' then 10000\n when p_bait_id in ('bait_grubby_magnet','bait_first_greeting','bait_magnet','bait_forbidden_star','bait_epic','bait_special') then 7000\n when p_bait_id='bait' then 3500 else 4000 end);\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -8543,7 +8991,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_bait_id text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.manual_fishing_success_chance_bp(p_bait_id text)\n RETURNS integer\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare bonus integer;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n select r.failure_reduction_bp into bonus from public.player_rod_loadouts l\n join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n join public.fishing_rods r on r.id=o.rod_id\n where l.user_id=auth.uid() and r.id in ('bronze','calm');\n return least(10000,app_private.fishing_success_chance_bp(p_bait_id)+coalesce(bonus,0));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.manual_fishing_success_chance_bp(p_bait_id text)\n RETURNS integer\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare bonus integer;fixed integer;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n select success_chance_bp into fixed from public.fishing_baits where id=p_bait_id;\n if fixed is not null then return fixed;end if;\n select r.failure_reduction_bp into bonus from public.player_rod_loadouts l\n join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n join public.fishing_rods r on r.id=o.rod_id where l.user_id=auth.uid() and r.id in ('bronze','calm');\n return least(10000,app_private.fishing_success_chance_bp(p_bait_id)+coalesce(bonus,0));\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -8717,6 +9165,16 @@
         "securityDefiner": true
       },
       {
+        "name": "pick_bait_fish",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_region text, p_rarity game_rarity, p_native boolean, p_manual boolean",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_bait_fish(p_region text, p_rarity game_rarity, p_native boolean DEFAULT false, p_manual boolean DEFAULT false)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare ids text[];rod_region text;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if not exists(select 1 from public.regions where id=p_region) then raise exception 'REGION_NOT_FOUND';end if;\n if p_manual then\n  select r.region_id into rod_region from public.player_rod_loadouts l\n  join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n  join public.fishing_rods r on r.id=o.rod_id where l.user_id=auth.uid() and r.native_bonus_bp>0;\n end if;\n select array_agg(id order by id) into ids from public.collectible_species where kind='fish' and rarity=p_rarity;\n return app_private.pick_habitat_group(ids,p_region,rod_region,case when p_native then 1.5 else 1 end,false);\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "pick_habitat_group",
         "config": [
           "search_path=\"\""
@@ -8763,7 +9221,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.prepare_fishing(p_region_id text, p_bait_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;w public.player_wallets;\n v_current text;v_required boolean;v_count integer;v_decoration boolean;v_eligible boolean;\n v_rarity public.game_rarity;v_species text;v_map text;v_snapshot jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null then raise exception 'INVALID_TRADE';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if p.region_id<>p_region_id or p.bait_id<>p_bait_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.prepared_fishing_payload(p);\n end if;\n if exists(select 1 from public.fishing_attempts where user_id=v_uid and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and finished_at is null;\n if found then\n  if p.expires_at<=clock_timestamp() then perform app_private.finish_fishing(p.operation_id,false);\n  else return app_private.prepared_fishing_payload(p);end if;\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n select effect_kind='decoration' into v_decoration from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT';end if;\n select requires_map_fragment into v_required from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND';end if;\n select region_id into v_current from public.player_navigation where user_id=v_uid;\n if v_current is distinct from p_region_id then raise exception 'NOT_IN_REGION';end if;\n if v_required and not exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'REGION_LOCKED';end if;\n v_count:=coalesce((w.inventory->>p_bait_id)::integer,0);\n if v_count<1 then raise exception 'NO_BAIT';end if;\n -- Reject an exhausted discovery pool before the failure roll or bait consumption.\n if p_bait_id='bait_first_greeting' and not exists (\n  select 1 from public.collectible_species s where s.kind in ('fish','trash','decoration')\n  and not exists(select 1 from public.player_discoveries d where d.user_id=v_uid and d.species_id=s.id)\n ) then raise exception 'ALL_COLLECTIBLES_DISCOVERED';end if;\n v_eligible:=random()<app_private.manual_fishing_success_chance_bp(p_bait_id)::numeric/10000;\n v_rarity:='common';\n if v_eligible then\n  if not v_decoration then v_rarity:=app_private.resolve_regional_fishing(p_bait_id,p_region_id,floor(random()*10000)::integer);end if;\n  if p_bait_id in ('bait_grubby_magnet','bait_sea_memory','bait_first_greeting') then\n   v_species:=app_private.pick_special_bait_collectible(p_region_id,v_rarity,p_bait_id);\n  else\n   select q.species_id,q.map_region_id into v_species,v_map from app_private.pick_regional_collectible(p_region_id,v_rarity,v_decoration,floor(random()*10000)::integer) q;\n  end if;\n  if v_species is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n  select rarity into v_rarity from public.collectible_species where id=v_species;\n  v_snapshot:=app_private.species_payload(v_species,v_map);\n end if;\n insert into app_private.prepared_fishing_casts(user_id,operation_id,region_id,bait_id,eligible,species_id,map_region_id,rarity,snapshot,wait_seconds,failure_at,failure_reason,expires_at)\n values(v_uid,p_operation_id,p_region_id,p_bait_id,v_eligible,v_species,v_map,v_rarity,v_snapshot,3+random()*2,\n  4.5+random()*3,(array['bait','escape','wave'])[1+floor(random()*3)::integer],clock_timestamp()+interval '3 minutes') returning * into p;\n update public.player_wallets set inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(v_count-1)),updated_at=now() where user_id=v_uid;\n return app_private.prepared_fishing_payload(p);\nend;\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.prepare_fishing(p_region_id text, p_bait_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;w public.player_wallets;b public.fishing_baits;\n v_current text;v_required boolean;v_count integer;v_decoration boolean;v_eligible boolean;\n v_rarity public.game_rarity;v_species text;v_map text;v_snapshot jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null then raise exception 'INVALID_TRADE';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if p.region_id<>p_region_id or p.bait_id<>p_bait_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.prepared_fishing_payload(p);\n end if;\n if exists(select 1 from public.fishing_attempts where user_id=v_uid and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and finished_at is null;\n if found then\n  if p.expires_at<=clock_timestamp() then perform app_private.finish_fishing(p.operation_id,false);\n  else return app_private.prepared_fishing_payload(p);end if;\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n select * into b from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT';end if;\n v_decoration:=b.effect_kind='decoration';\n select requires_map_fragment into v_required from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND';end if;\n select region_id into v_current from public.player_navigation where user_id=v_uid;\n if v_current is distinct from p_region_id then raise exception 'NOT_IN_REGION';end if;\n if v_required and not exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'REGION_LOCKED';end if;\n v_count:=coalesce((w.inventory->>p_bait_id)::integer,0);\n if v_count<1 then raise exception 'NO_BAIT';end if;\n if p_bait_id='bait_first_greeting' and not exists(select 1 from public.collectible_species s where s.kind in ('fish','trash','decoration')\n and not exists(select 1 from public.player_discoveries d where d.user_id=v_uid and d.species_id=s.id)) then raise exception 'ALL_COLLECTIBLES_DISCOVERED';end if;\n -- Advance once per committed bait consumption, including failures, never retries.\n v_rarity:=case when b.alternating then app_private.consume_bait_cycle() else 'common'::public.game_rarity end;\n v_eligible:=random()<app_private.manual_fishing_success_chance_bp(p_bait_id)::numeric/10000;\n if v_eligible then\n  if not v_decoration and not b.alternating then v_rarity:=app_private.resolve_regional_fishing(p_bait_id,p_region_id,floor(random()*10000)::integer);end if;\n  if b.fish_only then v_species:=app_private.pick_bait_fish(p_region_id,v_rarity,false,true);\n  elsif p_bait_id in ('bait_grubby_magnet','bait_sea_memory','bait_first_greeting') then v_species:=app_private.pick_special_bait_collectible(p_region_id,v_rarity,p_bait_id);\n  else select q.species_id,q.map_region_id into v_species,v_map from app_private.pick_regional_collectible(p_region_id,v_rarity,v_decoration,floor(random()*10000)::integer) q;\n  end if;\n  if v_species is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n  select rarity into v_rarity from public.collectible_species where id=v_species;\n  v_snapshot:=app_private.species_payload(v_species,v_map);\n end if;\n insert into app_private.prepared_fishing_casts(user_id,operation_id,region_id,bait_id,eligible,species_id,map_region_id,rarity,snapshot,wait_seconds,failure_at,failure_reason,expires_at)\n values(v_uid,p_operation_id,p_region_id,p_bait_id,v_eligible,v_species,v_map,v_rarity,v_snapshot,3+random()*2,4.5+random()*3,\n (array['bait','escape','wave'])[1+floor(random()*3)::integer],clock_timestamp()+interval '3 minutes') returning * into p;\n update public.player_wallets set inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(v_count-1)),updated_at=now() where user_id=v_uid;\n return app_private.prepared_fishing_payload(p);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -8853,7 +9311,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_bait_id text, p_region_id text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.regional_bait_odds(p_bait_id text, p_region_id text)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare b public.fishing_baits;\nbegin\n select * into b from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT';end if;\n if not exists(select 1 from public.regions where id=p_region_id) then raise exception 'REGION_NOT_FOUND';end if;\n if b.effect_kind='decoration' then\n  return jsonb_build_object('common_bp',0,'rare_bp',0,'epic_bp',0,'mythic_bp',0,'failure_bp',0);\n end if;\n return jsonb_build_object('common_bp',b.common_bp,'rare_bp',b.rare_bp,'epic_bp',b.epic_bp,'mythic_bp',b.mythic_bp,'failure_bp',b.failure_bp);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.regional_bait_odds(p_bait_id text, p_region_id text)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare b public.fishing_baits;r public.game_rarity;\nbegin\n select * into b from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT';end if;\n if not exists(select 1 from public.regions where id=p_region_id) then raise exception 'REGION_NOT_FOUND';end if;\n if b.effect_kind='decoration' then return jsonb_build_object('common_bp',0,'rare_bp',0,'epic_bp',0,'mythic_bp',0,'failure_bp',0);end if;\n if b.alternating then\n  select next_rarity into r from app_private.bait_cycles where user_id=auth.uid();r:=coalesce(r,'common');\n  return jsonb_build_object('common_bp',case when r='common' then 10000 else 0 end,'rare_bp',case when r='rare' then 10000 else 0 end,'epic_bp',0,'mythic_bp',0,'failure_bp',0,'nextRarity',r);\n end if;\n return jsonb_build_object('common_bp',b.common_bp,'rare_bp',b.rare_bp,'epic_bp',b.epic_bp,'mythic_bp',b.mythic_bp,'failure_bp',b.failure_bp);\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -9334,6 +9792,36 @@
         "schema": "public",
         "arguments": "p_tab text, p_query text, p_offset integer",
         "definition": "CREATE OR REPLACE FUNCTION public.auction_state(p_tab text DEFAULT 'all'::text, p_query text DEFAULT ''::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.auction_state(p_tab,p_query,p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "board_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text, p_payload jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION public.board_action(p_action text, p_payload jsonb)\n RETURNS uuid\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.board_action(p_action,p_payload)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "board_detail",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_id uuid, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.board_detail(p_id uuid, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$select app_private.board_detail(p_id,p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "board_feed",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_sort text, p_mine boolean, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.board_feed(p_sort text DEFAULT 'latest'::text, p_mine boolean DEFAULT false, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$select app_private.board_feed(p_sort,p_mine,p_offset)$function$\n",
         "securityDefiner": false
       },
       {
@@ -10358,6 +10846,36 @@
         "table": "arcade_weekly_rewards",
         "schema": "app_private",
         "definition": "NOT NULL week_start"
+      },
+      {
+        "name": "bait_cycles_next_rarity_check",
+        "table": "bait_cycles",
+        "schema": "app_private",
+        "definition": "CHECK ((next_rarity = ANY (ARRAY['common'::game_rarity, 'rare'::game_rarity])))"
+      },
+      {
+        "name": "bait_cycles_next_rarity_not_null",
+        "table": "bait_cycles",
+        "schema": "app_private",
+        "definition": "NOT NULL next_rarity"
+      },
+      {
+        "name": "bait_cycles_pkey",
+        "table": "bait_cycles",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "bait_cycles_user_id_fkey",
+        "table": "bait_cycles",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "bait_cycles_user_id_not_null",
+        "table": "bait_cycles",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
       },
       {
         "name": "expedition_boosts_created_at_not_null",
@@ -11824,6 +12342,216 @@
         "definition": "NOT NULL title"
       },
       {
+        "name": "board_comments_author_id_fkey",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "FOREIGN KEY (author_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "board_comments_author_id_not_null",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "NOT NULL author_id"
+      },
+      {
+        "name": "board_comments_body_check",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "CHECK ((char_length(body) <= 1000))"
+      },
+      {
+        "name": "board_comments_body_not_null",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "NOT NULL body"
+      },
+      {
+        "name": "board_comments_check",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "CHECK ((deleted OR (char_length(btrim(body)) >= 1)))"
+      },
+      {
+        "name": "board_comments_created_at_not_null",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "board_comments_deleted_not_null",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "NOT NULL deleted"
+      },
+      {
+        "name": "board_comments_id_not_null",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "board_comments_id_post_id_key",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "UNIQUE (id, post_id)"
+      },
+      {
+        "name": "board_comments_parent_id_post_id_fkey",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "FOREIGN KEY (parent_id, post_id) REFERENCES board_comments(id, post_id) ON DELETE CASCADE"
+      },
+      {
+        "name": "board_comments_pkey",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "board_comments_post_id_fkey",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "FOREIGN KEY (post_id) REFERENCES board_posts(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "board_comments_post_id_not_null",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "NOT NULL post_id"
+      },
+      {
+        "name": "board_comments_updated_at_not_null",
+        "table": "board_comments",
+        "schema": "public",
+        "definition": "NOT NULL updated_at"
+      },
+      {
+        "name": "board_posts_author_id_fkey",
+        "table": "board_posts",
+        "schema": "public",
+        "definition": "FOREIGN KEY (author_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "board_posts_author_id_not_null",
+        "table": "board_posts",
+        "schema": "public",
+        "definition": "NOT NULL author_id"
+      },
+      {
+        "name": "board_posts_body_check",
+        "table": "board_posts",
+        "schema": "public",
+        "definition": "CHECK (((char_length(btrim(body)) >= 1) AND (char_length(btrim(body)) <= 5000)))"
+      },
+      {
+        "name": "board_posts_body_not_null",
+        "table": "board_posts",
+        "schema": "public",
+        "definition": "NOT NULL body"
+      },
+      {
+        "name": "board_posts_created_at_not_null",
+        "table": "board_posts",
+        "schema": "public",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "board_posts_id_not_null",
+        "table": "board_posts",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "board_posts_images_check",
+        "table": "board_posts",
+        "schema": "public",
+        "definition": "CHECK ((cardinality(images) <= 3))"
+      },
+      {
+        "name": "board_posts_images_not_null",
+        "table": "board_posts",
+        "schema": "public",
+        "definition": "NOT NULL images"
+      },
+      {
+        "name": "board_posts_pkey",
+        "table": "board_posts",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "board_posts_title_check",
+        "table": "board_posts",
+        "schema": "public",
+        "definition": "CHECK (((char_length(btrim(title)) >= 1) AND (char_length(btrim(title)) <= 80)))"
+      },
+      {
+        "name": "board_posts_title_not_null",
+        "table": "board_posts",
+        "schema": "public",
+        "definition": "NOT NULL title"
+      },
+      {
+        "name": "board_posts_updated_at_not_null",
+        "table": "board_posts",
+        "schema": "public",
+        "definition": "NOT NULL updated_at"
+      },
+      {
+        "name": "board_reactions_comment_id_post_id_fkey",
+        "table": "board_reactions",
+        "schema": "public",
+        "definition": "FOREIGN KEY (comment_id, post_id) REFERENCES board_comments(id, post_id) ON DELETE CASCADE"
+      },
+      {
+        "name": "board_reactions_created_at_not_null",
+        "table": "board_reactions",
+        "schema": "public",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "board_reactions_post_id_fkey",
+        "table": "board_reactions",
+        "schema": "public",
+        "definition": "FOREIGN KEY (post_id) REFERENCES board_posts(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "board_reactions_post_id_not_null",
+        "table": "board_reactions",
+        "schema": "public",
+        "definition": "NOT NULL post_id"
+      },
+      {
+        "name": "board_reactions_user_id_fkey",
+        "table": "board_reactions",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "board_reactions_user_id_not_null",
+        "table": "board_reactions",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "board_reactions_user_id_post_id_comment_id_key",
+        "table": "board_reactions",
+        "schema": "public",
+        "definition": "UNIQUE NULLS NOT DISTINCT (user_id, post_id, comment_id)"
+      },
+      {
+        "name": "board_reactions_value_check",
+        "table": "board_reactions",
+        "schema": "public",
+        "definition": "CHECK ((value = ANY (ARRAY['-1'::integer, 1])))"
+      },
+      {
+        "name": "board_reactions_value_not_null",
+        "table": "board_reactions",
+        "schema": "public",
+        "definition": "NOT NULL value"
+      },
+      {
         "name": "brick_game_runs_check",
         "table": "brick_game_runs",
         "schema": "public",
@@ -12646,6 +13374,12 @@
         "definition": "NOT NULL user_id"
       },
       {
+        "name": "fishing_baits_alternating_not_null",
+        "table": "fishing_baits",
+        "schema": "public",
+        "definition": "NOT NULL alternating"
+      },
+      {
         "name": "fishing_baits_check",
         "table": "fishing_baits",
         "schema": "public",
@@ -12712,6 +13446,12 @@
         "definition": "NOT NULL failure_bp"
       },
       {
+        "name": "fishing_baits_fish_only_not_null",
+        "table": "fishing_baits",
+        "schema": "public",
+        "definition": "NOT NULL fish_only"
+      },
+      {
         "name": "fishing_baits_id_not_null",
         "table": "fishing_baits",
         "schema": "public",
@@ -12776,6 +13516,12 @@
         "table": "fishing_baits",
         "schema": "public",
         "definition": "NOT NULL sort_order"
+      },
+      {
+        "name": "fishing_baits_success_chance_bp_check",
+        "table": "fishing_baits",
+        "schema": "public",
+        "definition": "CHECK (((success_chance_bp >= 0) AND (success_chance_bp <= 10000)))"
       },
       {
         "name": "fishing_expeditions_cargo_check",
@@ -13754,6 +14500,12 @@
         "table": "notifications",
         "schema": "public",
         "definition": "FOREIGN KEY (actor_id) REFERENCES player_profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "notifications_board_post_id_fkey",
+        "table": "notifications",
+        "schema": "public",
+        "definition": "FOREIGN KEY (board_post_id) REFERENCES board_posts(id) ON DELETE CASCADE"
       },
       {
         "name": "notifications_body_check",
@@ -15263,6 +16015,20 @@
       },
       {
         "role": "authenticated",
+        "table": "board_comments",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "board_posts",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
         "table": "brick_game_runs",
         "schema": "public",
         "grantable": "NO",
@@ -16707,6 +17473,111 @@
       },
       {
         "role": "authenticated",
+        "table": "board_comments",
+        "column": "author_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "board_comments",
+        "column": "body",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "board_comments",
+        "column": "created_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "board_comments",
+        "column": "deleted",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "board_comments",
+        "column": "id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "board_comments",
+        "column": "parent_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "board_comments",
+        "column": "post_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "board_comments",
+        "column": "updated_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "board_posts",
+        "column": "author_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "board_posts",
+        "column": "body",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "board_posts",
+        "column": "created_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "board_posts",
+        "column": "id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "board_posts",
+        "column": "images",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "board_posts",
+        "column": "title",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "board_posts",
+        "column": "updated_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
         "table": "brick_game_runs",
         "column": "engine_version",
         "schema": "public",
@@ -17681,6 +18552,13 @@
       {
         "role": "authenticated",
         "table": "fishing_baits",
+        "column": "alternating",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_baits",
         "column": "common_bp",
         "schema": "public",
         "privilege": "SELECT"
@@ -17717,6 +18595,13 @@
         "role": "authenticated",
         "table": "fishing_baits",
         "column": "failure_bp",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_baits",
+        "column": "fish_only",
         "schema": "public",
         "privilege": "SELECT"
       },
@@ -17766,6 +18651,13 @@
         "role": "authenticated",
         "table": "fishing_baits",
         "column": "sort_order",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_baits",
+        "column": "success_chance_bp",
         "schema": "public",
         "privilege": "SELECT"
       },
@@ -18487,6 +19379,34 @@
         "role": "service_role",
         "table": "notifications",
         "column": "actor_id",
+        "schema": "public",
+        "privilege": "UPDATE"
+      },
+      {
+        "role": "authenticated",
+        "table": "notifications",
+        "column": "board_post_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "board_post_id",
+        "schema": "public",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "board_post_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "board_post_id",
         "schema": "public",
         "privilege": "UPDATE"
       },
@@ -20569,6 +21489,90 @@
         "arguments": "p_kind text, p_now timestamp with time zone"
       },
       {
+        "name": "board_action",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_payload jsonb"
+      },
+      {
+        "name": "board_action",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text, p_payload jsonb"
+      },
+      {
+        "name": "board_action",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_payload jsonb"
+      },
+      {
+        "name": "board_detail",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid, p_offset integer"
+      },
+      {
+        "name": "board_detail",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_id uuid, p_offset integer"
+      },
+      {
+        "name": "board_detail",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid, p_offset integer"
+      },
+      {
+        "name": "board_feed",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_sort text, p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "board_feed",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_sort text, p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "board_feed",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_sort text, p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "board_post_json",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p board_posts"
+      },
+      {
+        "name": "board_post_json",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p board_posts"
+      },
+      {
+        "name": "board_post_json",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p board_posts"
+      },
+      {
         "name": "boost_friend_expedition",
         "role": "anon",
         "schema": "app_private",
@@ -20966,6 +21970,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_id uuid"
+      },
+      {
+        "name": "consume_bait_cycle",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "consume_bait_cycle",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "consume_bait_cycle",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "default_collectible_movement",
@@ -22291,6 +23316,27 @@
         "arguments": ""
       },
       {
+        "name": "pick_bait_fish",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region text, p_rarity game_rarity, p_native boolean, p_manual boolean"
+      },
+      {
+        "name": "pick_bait_fish",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region text, p_rarity game_rarity, p_native boolean, p_manual boolean"
+      },
+      {
+        "name": "pick_bait_fish",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region text, p_rarity game_rarity, p_native boolean, p_manual boolean"
+      },
+      {
         "name": "pick_habitat_group",
         "role": "anon",
         "schema": "app_private",
@@ -23591,6 +24637,69 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_tab text, p_query text, p_offset integer"
+      },
+      {
+        "name": "board_action",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_payload jsonb"
+      },
+      {
+        "name": "board_action",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text, p_payload jsonb"
+      },
+      {
+        "name": "board_action",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_payload jsonb"
+      },
+      {
+        "name": "board_detail",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid, p_offset integer"
+      },
+      {
+        "name": "board_detail",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_id uuid, p_offset integer"
+      },
+      {
+        "name": "board_detail",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid, p_offset integer"
+      },
+      {
+        "name": "board_feed",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_sort text, p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "board_feed",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_sort text, p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "board_feed",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_sort text, p_mine boolean, p_offset integer"
       },
       {
         "name": "boost_friend_expedition",

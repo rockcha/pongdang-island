@@ -26,7 +26,7 @@ export const appArt={
  shipyard:artwork('shipyard'),expeditions:artwork('fish-trap'),exchange:artwork('exchange'),
  savings:artwork('savings'),warehouse:artwork('warehouse'),arcade:artwork('arcade'),
  lighthouse:artwork('lighthouse'),mailbox:artwork('mailbox'),plaza:artwork('plaza'),
- list:artwork('list'),storage:artwork('storage'),theme:artwork('theme'),collection:artwork('collection-v2'),
+ list:artwork('list'),storage:artwork('storage'),theme:artwork('theme'),background:artwork('aquarium-background'),collection:artwork('collection-v2'),
  bait:artwork('bait'),rod:artwork('rod'),profile:artwork('profile-sailor'),settings:artwork('settings'),
  notices:artwork('announcement','notification-icons'),suggestions:artwork('suggestion','notification-icons'),bugs:artwork('bug','notification-icons'),
 }
@@ -37,7 +37,7 @@ const placeArt:Record<string,ReturnType<typeof artwork>>={
  '/':appArt.island,'/aquarium':appArt.aquarium,'/harbor':appArt.map,'/shop':appArt.shop,'/farm':appArt.farm,
  '/shipyard':appArt.shipyard,'/expeditions':appArt.expeditions,'/exchange':appArt.exchange,
  '/savings':appArt.savings,'/warehouse':appArt.warehouse,'/arcade':appArt.arcade,'/friends':appArt.lighthouse,
- '/notifications':appArt.mailbox,'/square':appArt.plaza,'/square/notices':appArt.notices,
+ '/notifications':appArt.mailbox,'/board':appArt.plaza,'/square':appArt.plaza,'/square/notices':appArt.notices,
  '/square/suggestions':appArt.suggestions,'/square/bugs':appArt.bugs,'/profile':appArt.profile,'/profile/settings':appArt.settings,
 }
 export function placeArtwork(pathname:string){return placeArt[pathname]??Object.entries(placeArt).filter(([path])=>path!=='/'&&pathname.startsWith(path+'/')).sort(([a],[b])=>b.length-a.length)[0]?.[1]}

@@ -79,7 +79,7 @@ it('confirms the sale of exactly the selected stored individuals',async()=>{
  fireEvent.click(screen.getByRole('button',{name:'멸치 선택'}))
  fireEvent.click(screen.getByRole('button',{name:'선택한 개체 판매 40 골드'}))
  expect(onSell).not.toHaveBeenCalled()
- fireEvent.click(screen.getByRole('button',{name:'확인'}))
+ fireEvent.click(screen.getByRole('button',{name:'판매하기'}))
  await waitFor(()=>expect(onSell).toHaveBeenCalledWith(['fish']))
 })
 

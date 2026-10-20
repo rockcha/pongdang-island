@@ -10,6 +10,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
   const { theme } = useAppTheme()
   return typeof document==='undefined'?null:createPortal(
     <Sonner
+      closeButton
       theme={theme}
       className="toaster group"
       icons={{
@@ -39,6 +40,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
         } as React.CSSProperties
       }
       toastOptions={{
+        closeButtonAriaLabel: '알림 닫기',
         classNames: {
           toast: "cn-toast",
         },

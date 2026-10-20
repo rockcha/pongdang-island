@@ -11,7 +11,7 @@ it('filters owned and purchasable themes by visual tier and explains empty resul
   {id:'special-shop',name:'공간 배경',price:500,image_path:'special.png',tier:'special'},
  ]} as AquariumState
  render(<AquariumBackgroundDialog state={state} selectedId="default" gold={1000} busy={false} loading={false} error={false} onAct={vi.fn(async()=>{})}/>)
- fireEvent.click(screen.getByRole('button',{name:'테마',exact:true}))
+ fireEvent.click(screen.getByRole('button',{name:'배경 바꾸기',exact:true}))
  fireEvent.click(await screen.findByRole('button',{name:'감성 1'}))
  expect(screen.getByRole('img',{name:'자연 배경'})).toBeTruthy()
  expect(screen.queryByRole('img',{name:'단순 배경'})).toBeNull()
@@ -24,7 +24,7 @@ it('filters owned and purchasable themes by visual tier and explains empty resul
 it('shows stable skeletons for the catalog and allows failed previews to retry',async()=>{
  const props={selectedId:'default',gold:0,busy:false,loading:true,error:false,onAct:vi.fn(async()=>{})}
  const view=render(<AquariumBackgroundDialog {...props} state={{owned:[],catalog:[]} as unknown as AquariumState}/> )
- fireEvent.click(screen.getByRole('button',{name:'테마',exact:true}))
+ fireEvent.click(screen.getByRole('button',{name:'배경 바꾸기',exact:true}))
  expect(await screen.findByRole('status',{name:'배경 목록을 불러오는 중'})).toBeTruthy()
  view.rerender(<AquariumBackgroundDialog {...props} loading={false} state={{owned:[],catalog:[{id:'default',name:'기본',price:0,image_path:'default.png'}]} as AquariumState}/> )
  const image=screen.getByRole('img',{name:'기본'})
@@ -38,14 +38,14 @@ it('opens the background modal and preserves owned application and purchase limi
  const onAct=vi.fn(async()=>{})
  const state={owned:['coral'],catalog:[{id:'default',name:'기본',price:0,image_path:'default.png'},{id:'coral',name:'산호',price:50,image_path:'coral.png'},{id:'night',name:'밤',price:500,image_path:'night.png'}]} as AquariumState
  render(<AquariumBackgroundDialog state={state} selectedId="default" gold={100} busy={false} loading={false} error={false} onAct={onAct}/> )
- fireEvent.click(screen.getByRole('button',{name:'테마',exact:true}))
+ fireEvent.click(screen.getByRole('button',{name:'배경 바꾸기',exact:true}))
  expect(await screen.findByRole('dialog')).toBeTruthy()
  expect((screen.getByRole('button',{name:'적용 중'}) as HTMLButtonElement).disabled).toBe(true)
  expect(screen.queryByRole('button',{name:'500 구매'})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'적용하기'}))
  expect(onAct).toHaveBeenCalledWith('coral',true)
  await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())
- fireEvent.click(screen.getByRole('button',{name:'테마',exact:true}))
+ fireEvent.click(screen.getByRole('button',{name:'배경 바꾸기',exact:true}))
  fireEvent.click(screen.getByRole('tab',{name:'구매'}))
  expect((screen.getByRole('button',{name:'500 구매'}) as HTMLButtonElement).disabled).toBe(true)
  expect(screen.queryByRole('button',{name:'적용하기'})).toBeNull()
@@ -53,7 +53,7 @@ it('opens the background modal and preserves owned application and purchase limi
 it('keeps the background sheet open when applying fails',async()=>{
  const state={owned:['coral'],catalog:[{id:'coral',name:'산호',price:100,image_path:'coral.png'}]} as AquariumState
  render(<AquariumBackgroundDialog state={state} selectedId="default" gold={100} busy={false} loading={false} error={false} onAct={vi.fn().mockRejectedValue(new Error('offline'))}/>)
- fireEvent.click(screen.getByRole('button',{name:'테마',exact:true}))
+ fireEvent.click(screen.getByRole('button',{name:'배경 바꾸기',exact:true}))
  fireEvent.click(await screen.findByRole('button',{name:'적용하기'}))
  expect(await screen.findByRole('alert')).toBeTruthy()
  expect(screen.getByRole('dialog')).toBeTruthy()

@@ -2,6 +2,20 @@
   "generator": "built-in image_gen",
   "icons": [
     {
+      "id": "aquarium-background",
+      "prompt": "Use case: stylized-concept. Asset type: one transparent illustrated game toolbar icon for Change aquarium background. Style references: supplied cozy aquarium and wooden chest icons, match their caramel brown outlines, cream peach highlights, soft hand-painted cartoon shading and compact silhouette. Subject: two overlapping small rectangular landscape picture cards, front card clearly shows an underwater blue-teal background with light rays, sand and a tiny coral, back card shows purple ocean scenery. A small wooden paintbrush rests diagonally against the lower right frame to communicate changing the background. The frames are warm ivory with rounded corners. This is a picture/background customization icon, not a fishbowl or aquarium tank. Simple large shapes, readable at 32 pixels, centered with narrow transparent margins. No text, letters, numbers, watermark, ground shadow, scenery outside cards. Truly transparent background.",
+      "references": [
+        "public/app-icons/theme.png",
+        "public/app-icons/storage.png"
+      ],
+      "source": "assets/app-icons/source/aquarium-background.png",
+      "file": "public/app-icons/aquarium-background.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "127a8d791d3c5e75317e6e560161f6a6f785514f893ccaea3a4d1923f6ace849",
+      "bytes": 23146
+    },
+    {
       "id": "island",
       "prompt": "Create ONE cohesive minimal hand-drawn game UI pictogram. Subject: a tiny green tropical island with one palm tree and a little cream cottage. Cozy Korean island fishing game, bold smooth dark warm brown outlines, rounded charming shapes, flat cream ivory, apricot peach, caramel and muted mint fills, very restrained shading. Must be immediately legible at 24 to 40 pixels. Centered compact composition occupies about 70 percent of square canvas, generous clear margin, entire object visible. Transparent background with alpha. No text, no letters, no numerals, no UI tiles or enclosing circle, no photographic texture, no glossy 3D, no scenery outside the specified object. Same visual family as a friendly cartoon cream envelope with a peach starfish seal.",
       "source": "assets/app-icons/source/island.png",

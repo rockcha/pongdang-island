@@ -1,0 +1,42 @@
+{
+  "tool": "image_gen.imagegen",
+  "transparentBackground": true,
+  "assets": [
+    {
+      "id": "cloud-dough",
+      "prompt": "Create a single premium cozy fishing game inventory item icon: a soft ivory dough dumpling shaped like a tiny fluffy cloud, pale sky blue glowing flour and a tiny golden fishing hook. Beautiful hand-painted storybook gouache with softly textured three dimensional shading, warm cream and brown friendly palette, jewel-like highlights, rounded charming silhouette, readable at 64 pixels. One centered isolated object occupying 75% of a square canvas. Genuine transparent alpha background. No text, no letters, no labels, no frame, no card, no floor, no cast shadow outside the object. This is a standalone bitmap game asset.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a158a9-a0a4-7f53-a180-0ca7b707977d\\exec-bf521409-9507-4d52-9a3e-4e40bc976bf6.png",
+      "path": "public/items/baits/cloud-dough.png"
+    },
+    {
+      "id": "shell-crumbs",
+      "prompt": "Create a single premium cozy fishing game inventory item icon: a small cluster of peach pink seashell crumbs, one intact miniature scallop shell, sparkling sandy crumbs and a delicate golden fishing hook. Beautiful hand-painted storybook gouache with softly textured three dimensional shading, warm cream and brown friendly palette, jewel-like highlights, rounded charming silhouette, readable at 64 pixels. One centered isolated object occupying 75% of a square canvas. Genuine transparent alpha background. No text, no letters, no labels, no frame, no card, no floor, no cast shadow outside the object. This is a standalone bitmap game asset.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a158a9-a0a4-7f53-a180-0ca7b707977d\\exec-750b8079-d78b-4b11-9b5e-1577846047ae.png",
+      "path": "public/items/baits/shell-crumbs.png"
+    },
+    {
+      "id": "firefly-pupa",
+      "prompt": "Create a single premium cozy fishing game inventory item icon: one luminous amber firefly pupa in a translucent golden cocoon, softly glowing mint firefly sparks and a fine golden fishing hook. Beautiful hand-painted storybook gouache with softly textured three dimensional shading, warm cream and brown friendly palette, jewel-like highlights, rounded charming silhouette, readable at 64 pixels. One centered isolated object occupying 75% of a square canvas. Genuine transparent alpha background. No text, no letters, no labels, no frame, no card, no floor, no cast shadow outside the object. This is a standalone bitmap game asset.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a158a9-a0a4-7f53-a180-0ca7b707977d\\exec-65ebd0f4-6896-40e7-bcf7-af0fdc467e27.png",
+      "path": "public/items/baits/firefly-pupa.png"
+    },
+    {
+      "id": "zigzag-jelly",
+      "prompt": "Create a single premium cozy fishing game inventory item icon: one translucent lilac and peach jelly candy with a clear zigzag shape, two alternating colors and a delicate golden fishing hook. Beautiful hand-painted storybook gouache with softly textured three dimensional shading, warm cream and brown friendly palette, jewel-like highlights, rounded charming silhouette, readable at 64 pixels. One centered isolated object occupying 75% of a square canvas. Genuine transparent alpha background. No text, no letters, no labels, no frame, no card, no floor, no cast shadow outside the object. This is a standalone bitmap game asset.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a158a9-a0a4-7f53-a180-0ca7b707977d\\exec-0001da2b-cc95-43f2-b2af-0578adac21b9.png",
+      "path": "public/items/baits/zigzag-jelly.png"
+    },
+    {
+      "id": "lightning-stardust",
+      "prompt": "Create a single premium cozy fishing game inventory item icon: a tiny mound of golden stardust with a bright small lightning bolt crystal, warm amber sparks and a fine golden fishing hook. Beautiful hand-painted storybook gouache with softly textured three dimensional shading, warm cream and brown friendly palette, jewel-like highlights, rounded charming silhouette, readable at 64 pixels. One centered isolated object occupying 75% of a square canvas. Genuine transparent alpha background. No text, no letters, no labels, no frame, no card, no floor, no cast shadow outside the object. This is a standalone bitmap game asset.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a158a9-a0a4-7f53-a180-0ca7b707977d\\exec-3a23158d-e7a0-443b-bacc-a9eb5e1201e4.png",
+      "path": "public/items/baits/lightning-stardust.png"
+    },
+    {
+      "id": "cracked-star",
+      "prompt": "Create a single premium cozy fishing game inventory item icon: one small pale violet star crystal with a visible golden glowing crack, tiny star fragments and a delicate golden fishing hook. Beautiful hand-painted storybook gouache with softly textured three dimensional shading, warm cream and brown friendly palette, jewel-like highlights, rounded charming silhouette, readable at 64 pixels. One centered isolated object occupying 75% of a square canvas. Genuine transparent alpha background. No text, no letters, no labels, no frame, no card, no floor, no cast shadow outside the object. This is a standalone bitmap game asset.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a158a9-a0a4-7f53-a180-0ca7b707977d\\exec-2e64d451-07fc-4303-bd9b-937930a30ffb.png",
+      "path": "public/items/baits/cracked-star.png"
+    }
+  ]
+}

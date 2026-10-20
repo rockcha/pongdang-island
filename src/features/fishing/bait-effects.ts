@@ -15,3 +15,10 @@ export function fishingBaitEffect(id:string,fallback:string,success?:number,base
  if(success!==undefined&&base!==undefined&&success>base)return `${text} · 낚싯대로 성공 확률 추가 증가`
  return text
 }
+
+export function fishingBaitSummary(bait:import('./api').FishingBait){
+ const chance=bait.successChanceBp??bait.success_chance_bp??bait.baseSuccessChanceBp
+ const effect=fishingBaitEffect(bait.id,bait.effect_description,bait.successChanceBp,bait.baseSuccessChanceBp)
+ const next=bait.alternating?` · 다음: ${bait.nextRarity==='rare'?'희귀':'일반'} 전용`:''
+ return `${chance===undefined?'':`성공률 ${Number((chance/100).toFixed(2))}% · `}${effect}${next}`
+}

@@ -280,13 +280,28 @@ button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation
   color: var(--pongi-ink) !important;
   border: 1px solid var(--pongi-border) !important;
   border-radius: 8px;
-  padding: 12px 16px;
+  padding: 12px 48px 12px 16px;
   gap: 10px;
   box-shadow: 0 4px 20px #30271d12;
   font-size: 13px;
   line-height: 1.5;
 }
 [data-sonner-toaster] [data-sonner-toast] [data-title] { font-weight: 500; }
+[data-sonner-toaster] [data-sonner-toast][data-styled="true"] [data-close-button] {
+  left: auto;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--pongi-ink);
+}
+[data-sonner-toaster] [data-sonner-toast][data-styled="true"] [data-close-button]:hover {
+  background: var(--pongi-border);
+}
 [data-sonner-toaster] [data-sonner-toast] [data-description] { color: #80756b; font-size: 12px; }
 [data-sonner-toaster] [data-sonner-toast] [data-icon] { width: 28px; height: 28px; margin: 0; flex-shrink: 0; }
 [data-sonner-toaster] [data-sonner-toast][data-type="normal"]:not(:has([data-icon]))::before {
@@ -298,6 +313,23 @@ button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 }
 
 /* Pongi chrome: warm fur colors, restrained corners, no change to sea/rarity colors. */
+.aquarium-manager button[data-slot="dialog-trigger"] {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  min-height: 64px;
+  height: 64px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  padding: 6px;
+  font-size: 11px;
+}
+.aquarium-manager > div button[data-slot="dialog-trigger"] { min-height: 44px; height: 44px; }
+.aquarium-manager button[data-slot="dialog-trigger"] > :is(img,svg) { width: 30px; height: 30px; }
+.aquarium-manager button[data-slot="dialog-trigger"] > span.rounded-full { position: absolute; top: 0; right: 6px; }
+.aquarium-manager button[data-slot="dialog-trigger"]:hover { background: var(--secondary); }
 :root {
   --pongi-cream: #fff8ee;
   --pongi-caramel: #c98b57;

@@ -1,10 +1,11 @@
-import {DownloadPage} from '@/pages/download-page'
-import {CollectionPage} from '@/features/collection/collection-page'
-import {OperatorGuard} from '@/components/operator-guard'
-import {TitlePicker} from '@/features/titles/title-picker'
-import {ExpeditionPage} from '@/features/expeditions/expedition-page'
-import {PortPage} from '@/features/port/port-page'
-import {FriendExpeditionPage} from '@/features/expeditions/friend-expedition-page'
+import { DownloadPage } from '@/pages/download-page'
+import { BoardPage, BoardDetailPage } from '@/features/board/board-page'
+import { CollectionPage } from '@/features/collection/collection-page'
+import { OperatorGuard } from '@/components/operator-guard'
+import { TitlePicker } from '@/features/titles/title-picker'
+import { ExpeditionPage } from '@/features/expeditions/expedition-page'
+import { PortPage } from '@/features/port/port-page'
+import { FriendExpeditionPage } from '@/features/expeditions/friend-expedition-page'
 import { SettingsPage } from '@/pages/settings-page'
 import { SavingsPage } from '@/features/savings/savings-page'
 import { SuggestionsPage, SuggestionDetail } from '@/features/suggestions/suggestions-page'
@@ -14,10 +15,10 @@ import { SailingPage } from '@/features/regions/sailing-page'
 import { ShopPage } from '@/features/gold/shop-page'
 import { ExchangePage } from '@/features/exchange/exchange-page'
 import { ExchangeDetailPage } from '@/features/exchange/exchange-detail-page'
-import { NoticePage,NoticeDetail } from '@/features/notices/notice-page'
+import { NoticePage, NoticeDetail } from '@/features/notices/notice-page'
 import { NoticeEditor } from '@/features/notices/notice-editor'
 import { WarehousePage } from '@/features/fishing/warehouse-page'
-import { Navigate,Route, Routes } from 'react-router'
+import { Navigate, Route, Routes } from 'react-router'
 import { AppLayout } from '@/layouts/app-layout'
 import { ArcadePage, ArcadeGamePage } from '@/features/arcade/arcade-page'
 import { HomePage } from '@/pages/home-page'
@@ -29,14 +30,13 @@ import { EmailConfirmPage } from '@/pages/email-confirm-page'
 import { ForgotPasswordPage } from '@/pages/forgot-password-page'
 import { ResetPasswordPage } from '@/pages/reset-password-page'
 import { FriendsPage } from '@/features/friends/friends-page'
-import {FriendAquariumPage} from '@/features/friends/friend-aquarium-page'
+import { FriendAquariumPage } from '@/features/friends/friend-aquarium-page'
 import { NotificationsPage } from '@/features/notifications/notifications-page'
 import { ProfilePage } from '@/features/profile/profile-page'
 import { AquariumPage } from '@/pages/aquarium-page'
 import { HarborPage } from '@/pages/harbor-page'
 import { FarmPage } from '@/pages/farm-page'
 import { MusicRoomPage } from '@/pages/music-room-page'
-import { PlaceSectionPage } from '@/pages/place-section-page'
 
 export function AppRoutes() {
   return (
@@ -53,7 +53,14 @@ export function AppRoutes() {
             <Route index element={<HomePage />} />
             <Route path="aquarium" element={<AquariumPage />} />
             <Route path="collection" element={<CollectionPage />} />
-            <Route path="collection-animation" element={<OperatorGuard><CollectionPage animationPreview /></OperatorGuard>} />
+            <Route
+              path="collection-animation"
+              element={
+                <OperatorGuard>
+                  <CollectionPage animationPreview />
+                </OperatorGuard>
+              }
+            />
             <Route path="titles" element={<TitlePicker page />} />
             <Route path="harbor" element={<HarborPage />} />
             <Route path="farm" element={<FarmPage />} />
@@ -75,7 +82,9 @@ export function AppRoutes() {
             <Route path="profile" element={<ProfilePage />} />
             <Route path="profile/settings" element={<SettingsPage />} />
             <Route path="notifications" element={<NotificationsPage />} />
-            <Route path="square" element={<PlaceSectionPage section="square" />} />
+            <Route path="board" element={<BoardPage />} />
+            <Route path="board/:postId" element={<BoardDetailPage />} />
+            <Route path="square" element={<Navigate to="/board" replace />} />
             <Route path="square/notices" element={<NoticePage />} />
             <Route path="square/notices/new" element={<NoticeEditor />} />
             <Route path="square/notices/:noticeId" element={<NoticeDetail />} />

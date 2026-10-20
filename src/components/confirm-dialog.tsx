@@ -5,7 +5,7 @@ import { AlertDialog,AlertDialogCancel,AlertDialogContent,AlertDialogDescription
 
 type Props={
  portalContainer?:HTMLElement|null
- illustration?:'trap'|'dispatch'|'return'|'purchase'|'sale'|'game'|'savings'|'publish'|'caution'|'aquarium'|'boost'|'unfriend'|'fishing-leave'
+ illustration?:'trap'|'dispatch'|'return'|'purchase'|'sale'|'fish-sale'|'game'|'savings'|'publish'|'caution'|'aquarium'|'boost'|'unfriend'|'fishing-leave'
  open:boolean
  onOpenChange:(open:boolean)=>void
  title:ReactNode

@@ -27,7 +27,7 @@ beforeEach(()=>{
 afterEach(()=>{cleanup();vi.clearAllMocks()})
 it('uses real gold trades with confirmation and enables half-price sale only for owned rods',async()=>{
  render(<MemoryRouter><RodProvider><PlaceBanner pathname="/shop"/><ShopPage/></RodProvider></MemoryRouter>)
- expect(screen.getByRole('heading',{level:1,name:'상점'})).toBeTruthy()
+ expect(screen.getByRole('heading',{level:1,name:'낚시 상점'})).toBeTruthy()
  fireEvent.click(screen.getByRole('tab',{name:'낚싯대'}))
  await screen.findByRole('heading',{name:'입문용 낚싯대'})
  expect(screen.getAllByRole('heading',{level:2})).toHaveLength(fishingRods.length)

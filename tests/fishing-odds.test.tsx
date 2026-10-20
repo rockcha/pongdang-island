@@ -12,7 +12,7 @@ it('shows the bait and rod success contributions and live rarity changes',()=>{
  view.rerender(<FishingOdds bait={{...bait,id:'bait_special',name:'초록 미끼',baseSuccessChanceBp:7000,successChanceBp:7100,common_bp:0,rare_bp:9700}} rod={{name:'청동 낚싯대',effect:'성공률 상승'} as FishingRod}/>)
  expect(screen.getByText('71%')).toBeTruthy()
  expect(screen.queryByLabelText('기본 대비 성공률 변화')).toBeNull()
- expect(screen.getByLabelText('희귀 기본 대비 변화').textContent).toBe('+77%p')
+ expect(screen.getByLabelText('희귀 기본 대비 변화').textContent).toBe('+82%p')
  expect(screen.getByText('성공률 +35%p')).toBeTruthy()
  expect(screen.getByText('성공률 +1%p')).toBeTruthy()
 })

@@ -7,13 +7,13 @@ import { PlaceBanner,placeBanners } from '../src/components/place-banner'
 
 const render=(ui:ReactElement)=>baseRender(ui,{wrapper:MemoryRouter})
 afterEach(cleanup)
-it('shows board introductions and a square list action inside the banner',()=>{
+it('shows standalone board introductions without a square parent action',()=>{
  const view=render(<PlaceBanner pathname="/square/suggestions"/>)
  expect(screen.getByText('더 좋은 섬을 위한 생각을 들려주세요.')).toBeTruthy()
- expect(screen.getByRole('link',{name:'목록으로'}).getAttribute('href')).toBe('/square')
+ expect(screen.queryByRole('link',{name:'목록으로'})).toBeNull()
  view.rerender(<PlaceBanner pathname="/square/bugs"/>)
  expect(screen.getByText('불편하거나 이상한 점을 알려주세요.')).toBeTruthy()
- expect(screen.getByRole('link',{name:'목록으로'}).getAttribute('href')).toBe('/square')
+ expect(screen.queryByRole('link',{name:'목록으로'})).toBeNull()
 })
 it('uses one illustrated list action across game and community detail banners',()=>{
  const view=render(<PlaceBanner pathname="/arcade/odd-even"/>)
@@ -52,8 +52,8 @@ it('uses dedicated district child banners and breadcrumbs, including nested noti
  for(const item of squareDestinations){
   for(const pathname of [item.path,...(item.path==='/square/notices'?['/square/notices/new','/square/notices/test-id','/square/notices/test-id/edit']:[])]){
    view.rerender(<PlaceBanner pathname={pathname}/>)
-   expect(screen.getByRole('heading',{name:new RegExp(`광장.*${item.bannerTitle}`)})).toBeTruthy()
-   expect(screen.getByRole('link',{name:'광장'}).getAttribute('href')).toBe('/square')
+   expect(screen.getByRole('heading',{name:item.bannerTitle})).toBeTruthy()
+   expect(screen.queryByRole('link',{name:'광장'})).toBeNull()
    expect(screen.getByRole('img').getAttribute('src')).toBe(`/banners/${item.banner}.png`)
   }
  }

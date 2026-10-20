@@ -23,8 +23,8 @@ function AccountRods({children,userId}:{children:ReactNode;userId?:string}){
  useEffect(()=>{
   alive.current=true;void refresh()
   const reload=()=>{if(document.visibilityState==='visible')void refresh()}
-  window.addEventListener('fishing-rods-changed',reload);window.addEventListener('attendance-changed',reload);window.addEventListener('focus',reload);window.addEventListener('online',reload)
-  return()=>{alive.current=false;version.current++;window.removeEventListener('fishing-rods-changed',reload);window.removeEventListener('attendance-changed',reload);window.removeEventListener('focus',reload);window.removeEventListener('online',reload)}
+  window.addEventListener('fishing-rods-changed',reload);window.addEventListener('expedition-changed',reload);window.addEventListener('attendance-changed',reload);window.addEventListener('focus',reload);window.addEventListener('online',reload)
+  return()=>{alive.current=false;version.current++;window.removeEventListener('fishing-rods-changed',reload);window.removeEventListener('expedition-changed',reload);window.removeEventListener('attendance-changed',reload);window.removeEventListener('focus',reload);window.removeEventListener('online',reload)}
   // Remount on account changes; never reuse another player's ownership.
   // eslint-disable-next-line react-hooks/exhaustive-deps
  },[userId])

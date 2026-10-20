@@ -1,5 +1,13 @@
 # 원격 DB 조회 요약
 
+## 2026-10-20 고정 성공률 미끼와 장식물 재분류
+
+23:24~23:34 KST, MCP 프로젝트 URL로 `ewafafphiovbpjwogwzn`을 식별하고 관련 낚시·통발·장비 함수, 미끼 컬럼, 종·서식지와 제약을 조회했다. 향유병은 원격에만 완전한 정의가 있어 그 정의를 카탈로그에 명시적으로 편입했다. 나머지 관련 출발점은 로컬 기대 상태와 일치했으며 전체 원격 구조·이력 비교는 수행하지 않았다.
+
+로컬 CLI migration `20261020142456_varied_fishing_bait_rules.sql`, `20261020142504_varied_fishing_bait_catalog.sql`을 합쳐 MCP `varied_fishing_baits`로 적용했다. 원격 version은 `20261020143422`다. 기존 history는 repair하지 않았다. 카탈로그 생성은 미끼와 두 장식물 ID로 제한해 다른 종·서식지를 갱신하지 않았다.
+
+23:34:35 KST 재조회로 신규 미끼의 가격·등급 확률·고정 성공률·물고기 전용 및 교대 설정, 두 종의 장식물 분류·판매가·정지 속도, 교대 테이블 RLS와 직접 접근·보조 함수 실행 차단, 준비 RPC 실행 허용을 확인했다. Security Advisor에 이번 미끼 변경 관련 신규 항목은 없었다. 실제 플레이어 구매·포획은 실행하지 않았으며 실패·재요청 교대와 보유 개체 보존은 로컬 PGlite에서 검증했다. 프런트엔드 운영 배포는 이 조회의 범위가 아니다.
+
 ## 2026-10-20 서식 그룹 확률 조정
 
 14:13 KST 재조회 기준, 연결된 `pongdang-island` (`ewafafphiovbpjwogwzn`)의 `app_private.pick_habitat_group`만 확인·교체했다. 변경 전 본문은 로컬의 기존 정의와 일치했다. 최근 원격 migration 번호는 로컬과 달라 전체 push·repair 없이 `20261020051038_rebalance_habitat_group_odds.sql`을 직접 실행했다. 원격 migration history는 변경하지 않았다. 이후 이력 정합성을 검토할 때 이 직접 적용을 구분해야 한다.
@@ -172,3 +180,9 @@ CLI로 프로젝트 `pongdang-island` (`ewafafphiovbpjwogwzn`, PostgreSQL 17.11)
 MCP URL로 프로젝트 `ewafafphiovbpjwogwzn`을 식별하고 신규 사다리 테이블·RPC 부재와 골드 거래 제약을 확인했다. 전체 이력 push 대신 `20261020113640_ladder_arcade_game.sql`만 적용했다. 차감·추첨·지급은 지갑 잠금을 사용하는 단일 트랜잭션이며 동일 operation의 재요청은 저장된 결과를 반환한다.
 
 적용 뒤 결과 테이블 RLS 활성화·authenticated 직접 읽기 차단, authenticated 게임/랭킹 실행 허용·anon 게임 실행 차단을 재조회했다. 로컬 SQL 테스트로 지급액·경로 일치, 중복 차감 방지·잘못된 금액·잔액 부족·권한 차단을 검증했다. 실제 플레이어 골드를 사용한 원격 베팅, 전체 스키마 및 이력 동등성, 프런트엔드 운영 배포는 확인 범위에 포함하지 않았다.
+
+## 2026-10-20 자유게시판
+
+23:01~23:03 KST, MCP URL로 `ewafafphiovbpjwogwzn`을 식별하고 게시판 객체 부재, 관련 프로필·알림 컬럼과 제약, 운영자 판별 함수, 비공개 스키마 접근 권한을 확인했다. 관련 함수·컬럼은 로컬 기대 상태와 일치했으나 전체 원격 구조와 이력은 비교하지 않았다. 로컬 CLI migration `20261020135020_community_board.sql`의 변경만 MCP로 적용했다. MCP가 기록한 원격 migration version은 `20261020140151`, name은 `community_board`다. 기존 baseline이나 migration history를 repair하지 않았다.
+
+적용 뒤 게시판 RLS, anon 읽기·실행 차단, authenticated 직접 쓰기 차단과 RPC 실행 허용, public wrapper의 invoker 설정, 사진 버킷의 비공개·파일 제한·Storage 정책, 알림의 게시글 참조 컬럼을 재조회했다. Security Advisor의 게시판 관련 INFO는 반응 테이블에 직접 접근 정책이 없다는 항목이며, 모든 직접 권한을 회수하고 RPC로만 집계하는 의도된 차단이다. 계정 삭제·실제 사용자 작성·Storage 업로드의 원격 통합 동작과 프런트엔드 운영 배포는 확인하지 않았다. 작성·댓글·반응·알림·사진 정책은 로컬 PGlite와 UI 테스트로 별도 검증했다.

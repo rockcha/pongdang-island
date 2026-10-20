@@ -16,7 +16,7 @@ it('filters two-column cards by category and reward timing without descriptions'
  fireEvent.click(screen.getByRole('button',{name:/^피지컬/}))
  expect(screen.getByRole('link',{name:/벽돌깨기/})).toBeTruthy()
  expect(screen.queryByRole('link',{name:/카드 짝맞추기/})).toBeNull()
- fireEvent.click(screen.getByRole('button',{name:'전체 보기'}))
+ fireEvent.click(screen.getByRole('button',{name:'전체보기'}))
  fireEvent.click(screen.getByRole('button',{name:/^운빨/}))
  expect(screen.getByRole('link',{name:/퐁이의 홀짝 조개/})).toBeTruthy()
  expect(screen.queryByRole('link',{name:/그림자 맞추기/})).toBeNull()

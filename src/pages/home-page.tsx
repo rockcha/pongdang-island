@@ -11,6 +11,7 @@ import {loadHarborCatalog} from '@/features/regions/harbor-catalog'
 import {HarborMythicShowcase,regionalMythics} from '@/features/regions/harbor-mythic-showcase'
 import type {CatalogEntry} from '@/features/collection/api'
 import {loadNotices,noticeProgress,type NoticeView} from '@/features/notices/api'
+import {NewPongdangSpecies} from '@/features/regions/new-pongdang-species'
 
 function eventDescription(body:string){
  return body.split('\n').filter(line=>!line.trim().startsWith('![')).join(' ').replace(/\[([^\]]+)\]\([^)]+\)/g,'$1').replace(/[*#`]/g,'').replace(/\s+/g,' ').trim().slice(0,180)
@@ -47,7 +48,7 @@ function IslandHome(){
  const mythics=region?regionalMythics(catalog,region.id).map(item=>({...item,discovered:false})):[]
  return <section className="flex min-h-0 min-w-0 flex-1 flex-col">
   <Tabs value={tab} onValueChange={value=>setTab(String(value))} className="flex min-h-0 flex-1 flex-col gap-0">
-   <TabsList aria-label="퐁당섬 소식" className="segmented-control grid shrink-0 grid-cols-2"><TabsTrigger value="regions" className="min-h-12 gap-2 rounded-none"><appArt.map className="size-7"/>새로운 해역</TabsTrigger><TabsTrigger value="events" className="min-h-12 gap-2 rounded-none"><appArt.noticeEvent className="size-7"/>이벤트</TabsTrigger></TabsList>
+   <TabsList aria-label="퐁당섬 소식" className="segmented-control grid shrink-0 grid-cols-3"><TabsTrigger value="regions" className="min-h-14 min-w-0 flex-col gap-1 rounded-none px-1 py-2 text-xs"><appArt.map className="size-6"/>새로운 해역</TabsTrigger><TabsTrigger value="species" className="min-h-14 min-w-0 flex-col gap-1 rounded-none px-1 py-2 text-xs"><appArt.fish className="size-6"/>신규 어종</TabsTrigger><TabsTrigger value="events" className="min-h-14 min-w-0 flex-col gap-1 rounded-none px-1 py-2 text-xs"><appArt.noticeEvent className="size-6"/>이벤트</TabsTrigger></TabsList>
    <TabsContent value="regions" className="mt-0 min-h-0 flex-1 overflow-y-auto overscroll-contain">
     {regionError?<HomeError onRetry={()=>setRetry(v=>v+1)}/>:!loaded?<HomeLoading/>:region?<>
      <article key={region.id} aria-roledescription="슬라이드" aria-label={`새로운 해역 ${index+1}/${recent.length}`} tabIndex={0} onKeyDown={event=>{if(event.target!==event.currentTarget)return;if(event.key==='ArrowLeft'){event.preventDefault();move(-1)}if(event.key==='ArrowRight'){event.preventDefault();move(1)}}} onTouchStart={event=>{const touch=event.touches[0];swipe.current={x:touch.clientX,y:touch.clientY}}} onTouchEnd={event=>{const touch=event.changedTouches[0],start=swipe.current;swipe.current=null;if(start&&Math.abs(touch.clientX-start.x)>50&&Math.abs(touch.clientX-start.x)>Math.abs(touch.clientY-start.y)*1.5)move(touch.clientX<start.x?1:-1)}} className="relative isolate flex h-full min-h-[26rem] touch-pan-y flex-col items-center justify-between overflow-hidden px-5 pb-7 pt-14 text-center text-white outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary">
@@ -58,6 +59,9 @@ function IslandHome(){
       {mythics.length>0&&<div className="flex min-h-0 w-full flex-1 items-center justify-center pb-6 pt-4"><HarborMythicShowcase key={region.id} items={mythics} regionName={region.name} interactive={false} isNew/></div>}
      </article>
     </>:<p className="p-8 text-center text-sm text-muted-foreground">새로운 해역을 준비하고 있어요.</p>}
+   </TabsContent>
+   <TabsContent value="species" className="mt-0 min-h-0 flex-1 overflow-y-auto overscroll-contain">
+    {regionError?<HomeError onRetry={()=>setRetry(v=>v+1)}/>:!loaded?<HomeLoading/>:<NewPongdangSpecies catalog={catalog}/>}
    </TabsContent>
    <TabsContent value="events" className="mt-0 min-h-0 flex-1 overflow-y-auto overscroll-contain">
     {eventError?<HomeError onRetry={()=>setRetry(v=>v+1)}/>:events===null?<HomeLoading/>:events.length?<div className="divide-y divide-border/60">{events.map(event=><article key={event.id} className="space-y-4 p-5"><Link to={`/square/notices/${event.id}`} className="block space-y-2 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring"><h2 className="break-words text-xl font-medium leading-7">{event.title}</h2>{eventDescription(event.body)&&<p className="text-sm leading-6 text-muted-foreground">{eventDescription(event.body)}</p>}</Link>{event.images[0]&&event.urls[event.images[0]]&&<Link to={`/square/notices/${event.id}`} className="block overflow-hidden rounded-2xl border border-border/60 bg-secondary/20"><img src={event.urls[event.images[0]]} alt={`${event.title} 포스터`} loading="lazy" className="h-auto w-full object-contain"/></Link>}</article>)}</div>:<div className="flex flex-col items-center gap-3 px-6 py-12 text-center"><appArt.noticeEvent className="size-16 opacity-60"/><p className="text-sm text-muted-foreground">새로운 이벤트를 준비하고 있어요.</p></div>}

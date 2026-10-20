@@ -1,3 +1,26 @@
+.brick-countdown {
+  animation: brick-countdown 900ms ease-out both;
+}
+@keyframes brick-countdown {
+  from {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+  20%,
+  75% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0.4;
+    transform: scale(0.96);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .brick-countdown {
+    animation: none;
+  }
+}
 .brick-life-loss {
   animation: brick-life-loss 850ms ease-out both;
 }

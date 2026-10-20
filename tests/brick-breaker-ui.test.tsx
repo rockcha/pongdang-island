@@ -16,7 +16,7 @@ beforeEach(()=>{
  HTMLDialogElement.prototype.showModal=function(){this.setAttribute('open','')}
  HTMLDialogElement.prototype.close=function(){this.removeAttribute('open')}
 })
-afterEach(async()=>{cleanup();await new Promise(resolve=>setTimeout(resolve,30))})
+afterEach(async()=>{cleanup();vi.useRealTimers();await new Promise(resolve=>setTimeout(resolve,30))})
 const show=()=>render(<MemoryRouter><BrickBreakerGame/></MemoryRouter>)
 async function ready(){show();await act(async()=>{});act(()=>engine.ready())}
 
@@ -30,7 +30,17 @@ it('offers separate practice and laboratory modes, disabled until assets are rea
  expect(engine.start).toHaveBeenLastCalledWith('practice')
  expect(screen.queryByRole('button',{name:/수중 미사일/})).toBeNull()
  expect(engine.launch).not.toHaveBeenCalled()
- fireEvent.click(screen.getByRole('button',{name:'화면을 터치해서 시작'}));expect(engine.launch).toHaveBeenCalledOnce()
+ vi.useFakeTimers()
+ fireEvent.click(screen.getByRole('button',{name:'화면을 터치해서 시작'}))
+ expect(screen.getByLabelText('시작까지 3초')).toBeTruthy()
+ expect(engine.launch).not.toHaveBeenCalled()
+ await act(async()=>{vi.advanceTimersByTime(1000)})
+ expect(screen.getByLabelText('시작까지 2초')).toBeTruthy()
+ await act(async()=>{vi.advanceTimersByTime(1000)})
+ expect(screen.getByLabelText('시작까지 1초')).toBeTruthy()
+ await act(async()=>{vi.advanceTimersByTime(1000)})
+ expect(engine.launch).toHaveBeenCalledOnce()
+ expect(engine.pause).toHaveBeenLastCalledWith(false)
 })
 
 it('uses a bottom touch surface and stops movement when paused',async()=>{
@@ -43,6 +53,21 @@ it('uses a bottom touch surface and stops movement when paused',async()=>{
  expect(engine.setTarget).toHaveBeenLastCalledWith(null)
  expect(pad.getAttribute('aria-disabled')).toBe('true')
  expect(engine.launch).not.toHaveBeenCalled()
+})
+
+it('cancels countdown on pause and requires a fresh countdown before launch',async()=>{
+ await ready();fireEvent.click(screen.getByRole('button',{name:'연습'}))
+ vi.useFakeTimers()
+ fireEvent.click(screen.getByRole('button',{name:'화면을 터치해서 시작'}))
+ expect(screen.getByLabelText('시작까지 3초')).toBeTruthy()
+ expect(screen.getByRole('group',{name:'퐁이 이동 조작'}).getAttribute('aria-disabled')).toBe('true')
+ fireEvent.click(screen.getByRole('button',{name:'게임 일시정지'}))
+ expect(screen.getByText('일시정지')).toBeTruthy()
+ await act(async()=>{vi.advanceTimersByTime(5000)})
+ expect(engine.launch).not.toHaveBeenCalled()
+ fireEvent.click(screen.getByRole('button',{name:'게임 계속하기'}))
+ fireEvent.click(screen.getByRole('button',{name:'화면을 터치해서 시작'}))
+ expect(screen.getByLabelText('시작까지 3초')).toBeTruthy()
 })
 
 it('opens a dedicated lab modal and previews skills without practice or ball launch',async()=>{
@@ -104,7 +129,7 @@ it('waits for a manual restart after a dropped ball and shows remaining hearts',
  expect(screen.queryByLabelText('생명 1개 감소')).toBeNull()
  expect(engine.launch).not.toHaveBeenCalled()
  fireEvent.click(screen.getByRole('button',{name:'화면을 터치해서 시작'}))
- expect(engine.launch).toHaveBeenCalledOnce()
+ await waitFor(()=>expect(engine.launch).toHaveBeenCalledOnce(),{timeout:3500})
  act(()=>engine.score({phase:'playing',round:1,lives:2,remaining:24,awaitingRestart:false}))
  expect(screen.queryByRole('button',{name:'화면을 터치해서 시작'})).toBeNull()
 })
@@ -112,7 +137,9 @@ it('waits for a manual restart after a dropped ball and shows remaining hearts',
 it('shows life loss without pausing gameplay or blocking controls',async()=>{
  await ready();fireEvent.click(screen.getByRole('button',{name:"연습"}))
  act(()=>engine.score({phase:'playing',round:1,lives:3,remaining:24,held:true}))
- fireEvent.click(screen.getByRole('button',{name:"공 다시 발사"}));expect(engine.launch).toHaveBeenCalledOnce()
+ fireEvent.click(screen.getByRole('button',{name:"공 다시 발사"}))
+ await waitFor(()=>expect(engine.launch).toHaveBeenCalledOnce(),{timeout:3500})
+ engine.pause.mockClear()
  act(()=>engine.score({phase:'playing',round:1,lives:2,remaining:24}))
  expect(screen.getByLabelText("생명 1개 감소")).toBeTruthy()
  expect(screen.queryByLabelText("목숨 감소 안내")).toBeNull()

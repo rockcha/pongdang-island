@@ -3,7 +3,7 @@ import { createClient } from '@/lib/client'
 import type { Species } from '@/features/collection/api'
 import type { Rarity } from '@/lib/game/rarity'
 export type FishingBait = { successChanceBp?:number;baseSuccessChanceBp?:number;success_chance_bp?:number|null;fish_only?:boolean;alternating?:boolean;nextRarity?:'common'|'rare';id:string; name:string; description:string; price:number|null; effect_kind:'fish'|'decoration'; effect_description:string; image_path:string; common_bp:number; rare_bp:number; epic_bp:number; mythic_bp:number; failure_bp:number }
-export type FishingAttempt = { operation_id:string; region_id:string; bait_id:string; rarity:Rarity|null; created_at:string;collectible_id?:string|null;species?:Species|null }
+export type FishingAttempt = { firstDiscovery?:boolean; operation_id:string; region_id:string; bait_id:string; rarity:Rarity|null; created_at:string;collectible_id?:string|null;species?:Species|null }
 export type PreparedFishing = {operation_id:string;region_id:string;bait_id:string;eligible:boolean;species:Species|null;rarity:Rarity;wait_seconds:number;failure_at:number;failure_reason:'bait'|'escape'|'wave';expires_at:string;finished:boolean;result:FishingResult|null}
 export type FishingState = {successChanceBp?:number;prepared?:PreparedFishing|null; baits:FishingBait[];regionId?:string;regionName?:string;mapChanceBp?:number }
 export type FishingResult = { attempt:FishingAttempt; replayed:boolean;failure_reason?:string|null }

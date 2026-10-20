@@ -167,6 +167,7 @@ export function createBrickGame(
   onPause: () => void,
   onReady?: () => void,
   onError?: () => void,
+  onLaunchRequest?: () => void,
 ): BrickController {
   let model = new BrickPractice(),
     started = false,
@@ -346,7 +347,8 @@ export function createBrickGame(
           (parent.contains(document.activeElement) || document.activeElement === document.body)
         ) {
           event.preventDefault()
-          command('launch')
+          if (onLaunchRequest) onLaunchRequest()
+          else command('launch')
         }
       })
       this.input.keyboard?.on('keydown-P', () => {

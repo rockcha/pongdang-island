@@ -3,7 +3,7 @@ import {createClient} from '@/lib/client'
 import type {Rarity} from '@/lib/game/rarity'
 export type Vessel={id:string;name:string;price:number;duration_minutes:number;min_baits:number;max_baits:number;bonus_description:string;owned:boolean}
 export const fixedExpeditionVessel:Vessel={id:'dinghy',name:'꼬마 통발',price:0,duration_minutes:10,min_baits:1,max_baits:30,bonus_description:'미끼 1개당 10분 · 최대 30개',owned:true}
-export type Catch={id:string;species:{id:string;name:string;thumbnail_path:string;rarity?:Rarity};bonus:boolean}
+export type Catch={firstDiscovery?:boolean;id:string;species:{id:string;name:string;thumbnail_path:string;rarity?:Rarity};bonus:boolean}
 export type ExpeditionOutcome={items:Catch[];failed?:number;attempted?:number;succeeded?:number;refunds?:Record<string,number>}
 export type ExpeditionBoost={id:string;nickname:string;avatar_path:string|null;minutes:number;created_at:string}
 export type Expedition={id:string;region_id:string;departed_at:string;returns_at:string;vessel_snapshot:Vessel;cargo:Record<string,number>;boosts?:ExpeditionBoost[];result?:ExpeditionOutcome}

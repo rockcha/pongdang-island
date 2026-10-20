@@ -1,3 +1,4 @@
+import {NewDiscoveryBadge} from '@/components/new-discovery-badge'
 import {appArt} from '@/components/app-art'
 import {RarityBadge} from '@/components/rarity-badge'
 import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
@@ -17,15 +18,15 @@ export function ExpeditionResults({outcome,compact=false,preview=false}:{outcome
  const {items,refunds={}}=outcome
  const refunded=Object.values(refunds).reduce((sum,n)=>sum+n,0)
  const bonus=items.filter(item=>item.bonus).length
- const groups=new Map<string,{species:Catch['species'];count:number;bonus:number}>()
+ const groups=new Map<string,{species:Catch['species'];count:number;bonus:number;firstDiscovery:boolean}>()
  for(const item of items){
-  const group=groups.get(item.species.id)??{species:item.species,count:0,bonus:0}
-  group.count++;if(item.bonus)group.bonus++
+  const group=groups.get(item.species.id)??{species:item.species,count:0,bonus:0,firstDiscovery:false}
+  group.firstDiscovery ||= item.firstDiscovery===true;group.count++;if(item.bonus)group.bonus++
   groups.set(item.species.id,group)
  }
  if(compact)return <div className="space-y-3">
   <ResultSummary outcome={outcome}/>
-  {groups.size>0?<ul aria-label="획득한 개체" className="divide-y divide-border/50">{[...groups.values()].map(group=><li key={group.species.id} className="flex items-center gap-3 py-2"><CollectibleThumbnail path={group.species.thumbnail_path} name={group.species.name} className="size-14 shrink-0"/><div className="min-w-0 flex-1"><p className="break-words text-sm">{group.species.name}</p>{group.species.rarity&&<div className="mt-1"><RarityBadge rarity={group.species.rarity}/></div>}</div><span className="text-sm tabular-nums text-primary">×{group.count}</span></li>)}</ul>:<div className="py-3 text-center"><p className="text-sm">아쉽게도 빈손으로 돌아왔어요</p><p className="mt-1.5 text-[11px] text-muted-foreground">이번에는 낚은 개체가 없어요.</p></div>}
+  {groups.size>0?<ul aria-label="획득한 개체" className="divide-y divide-border/50">{[...groups.values()].map(group=><li key={group.species.id} className="flex items-center gap-3 py-2"><CollectibleThumbnail path={group.species.thumbnail_path} name={group.species.name} className="size-14 shrink-0"/><div className="min-w-0 flex-1">{group.firstDiscovery&&!preview&&<NewDiscoveryBadge className="mb-1.5"/>}<p className="break-words text-sm">{group.species.name}</p>{group.species.rarity&&<div className="mt-1"><RarityBadge rarity={group.species.rarity}/></div>}</div><span className="text-sm tabular-nums text-primary">×{group.count}</span></li>)}</ul>:<div className="py-3 text-center"><p className="text-sm">아쉽게도 빈손으로 돌아왔어요</p><p className="mt-1.5 text-[11px] text-muted-foreground">이번에는 낚은 개체가 없어요.</p></div>}
  </div>
  return <div className="space-y-4 pb-2">
   <header className="pt-3 text-center">
@@ -40,6 +41,7 @@ export function ExpeditionResults({outcome,compact=false,preview=false}:{outcome
   {groups.size>0?<ul aria-label="획득한 개체" className="grid grid-cols-2 gap-2.5">
    {[...groups.values()].map(group=><li key={group.species.id} data-rarity={group.species.rarity} className="expedition-result-card relative isolate min-w-0 overflow-hidden rounded-xl border border-border/60 bg-card px-3 pb-3 pt-2">
     <div className="relative flex justify-center">
+     {group.firstDiscovery&&!preview&&<NewDiscoveryBadge className="absolute left-0 top-1 z-10"/>}
      <CollectibleThumbnail path={group.species.thumbnail_path} name={group.species.name} className="size-24 max-w-full"/>
      <span aria-label={`${group.count}개 획득`} className="absolute right-0 top-1 rounded-[3px] bg-secondary px-2 py-1 text-[11px] tabular-nums text-primary">× {group.count}</span>
     </div>

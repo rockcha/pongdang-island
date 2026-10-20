@@ -195,7 +195,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{reg
   </>)}
   {regionId&&gameOpen&&practice&&<span className="pointer-events-none absolute left-3 top-16 z-20 rounded-full sm:top-3 bg-black/20 px-3 py-1 text-xs text-white">{rarities[practice].label} 힘 테스트</span>}
 
-  {revealing&&result?.species&&<CatchReveal species={result.species} practice={!!practice} onDismiss={()=>{setRevealing(false);setResult(null)}}/> }
+  {revealing&&result?.species&&<CatchReveal species={result.species} firstDiscovery={result.firstDiscovery} practice={!!practice} onDismiss={()=>{setRevealing(false);setResult(null)}}/> }
   {presentation&&castOpen&&!result?.species&&(castError?<div className="absolute inset-x-4 top-1/2 z-30 mx-auto max-h-[80%] max-w-sm -translate-y-1/2 overflow-y-auto rounded-2xl bg-background/95"><FishingResultCard result={null} pending={busy} error={castError} practice={!!practice} failure={failureText||presentation.failure} onContinue={()=>setCastOpen(false)} onRetry={()=>void cast()}/></div>:!busy&&<CatchReveal failureReason={failureReason} failureLabel={failureLabel} failure={failureText||presentation.failure} practice={!!practice} onDismiss={()=>setCastOpen(false)}/>)}
 
   {regionId&&!toolbarTarget&&!gameOpen&&!busy&&!revealing&&!castOpen&&!uncertain&&tools(<div className={toolbarTarget?"relative order-50 text-white":"absolute left-3 top-3 z-20 text-white"}>

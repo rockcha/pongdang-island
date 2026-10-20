@@ -35,6 +35,17 @@ beforeAll(async () => {
 afterAll(async () => {
   await db?.close()
 })
+it('paginates comments from oldest to newest with stable ordering for equal timestamps',async()=>{
+ const pid=crypto.randomUUID()
+ await db.query("insert into public.board_posts(id,author_id,title,body) values($1,$2,'댓글 순서','본문')",[pid,author])
+ await db.query("insert into public.board_comments(id,post_id,author_id,body,created_at) select ('99000000-0000-0000-0000-'||lpad(n::text,12,'0'))::uuid,$1,$2,n::text,'2026-10-01'::timestamptz+make_interval(secs=>(n/2)) from generate_series(1,55)n order by n desc",[pid,author])
+ const load=async(offset)=>(await asUser(author,'select public.board_detail($1,$2) r',[pid,offset])).rows[0].r
+ const first=await load(0),last=await load(50)
+ expect(first.comments.map(c=>Number(c.body))).toEqual(Array.from({length:50},(_,i)=>i+1))
+ expect(last.comments.map(c=>Number(c.body))).toEqual([51,52,53,54,55])
+ expect(first.comment_total).toBe(55)
+ await db.query('delete from public.board_posts where id=$1',[pid])
+})
 it('creates content only through authenticated APIs and denies forged ownership and image paths', async () => {
   await expect(asUser(null, 'select public.board_feed()')).rejects.toThrow(/permission denied/)
   await expect(

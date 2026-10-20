@@ -51,6 +51,9 @@ function AccountBrickGame() {
     [error, setError] = useState(''),
     [networkError, setNetworkError] = useState(''),
     [busy, setBusy] = useState(false)
+  const [countdown, setCountdown] = useState<number | null>(null)
+  const countdownLock = useRef(false),
+    launchRequest = useRef<() => void>(() => {})
   const paidRun = useRef<BrickRun | null>(null),
     operation = useRef<string | null>(null),
     queue = useRef<Promise<unknown>>(Promise.resolve()),
@@ -90,6 +93,7 @@ function AccountBrickGame() {
               setError('게임 이미지를 불러오지 못했어요. 새로고침해주세요.')
             }
           },
+          () => launchRequest.current(),
         )
         controller.current = instance
       })
@@ -122,7 +126,35 @@ function AccountBrickGame() {
     const timeout = setTimeout(() => setLifeLoss(0), 850)
     return () => clearTimeout(timeout)
   }, [lifeLoss])
+  useEffect(() => {
+    if (paused || ended || !started) {
+      countdownLock.current = false
+      setCountdown(null)
+    }
+  }, [paused, ended, started])
+  useEffect(() => {
+    if (countdown === null) return
+    const timer = setTimeout(() => {
+      if (countdown > 1) setCountdown(countdown - 1)
+      else {
+        countdownLock.current = false
+        setCountdown(null)
+        controller.current?.pause(false)
+        controller.current?.launch()
+      }
+    }, 1000)
+    return () => clearTimeout(timer)
+  }, [countdown])
+  function launch() {
+    if (countdownLock.current || paused || busy || ended || !started || lab) return
+    countdownLock.current = true
+    controller.current?.pause(true)
+    setCountdown(3)
+  }
+  launchRequest.current = launch
   function pause(value: boolean) {
+    countdownLock.current = false
+    setCountdown(null)
     controller.current?.pause(value)
     setPaused(value)
   }
@@ -239,13 +271,14 @@ function AccountBrickGame() {
           headerClassName="bg-[#38291f] text-[#fff1dd] border-[#e7c19b]/15"
           headerActions={
             <Button
-              variant="ghost"
-              size="icon"
+              variant="outline"
+              className="h-9 shrink-0 gap-1.5 rounded-lg border-[#e7c19b]/40 bg-[#fff1dd]/10 px-3 text-xs text-[#fff1dd] hover:bg-[#fff1dd]/20 hover:text-white"
               aria-label={paused ? '게임 계속하기' : '게임 일시정지'}
               disabled={ended || busy}
               onClick={() => pause(!paused)}
             >
               {paused ? <Play className="size-4" /> : <Pause className="size-4" />}
+              {paused ? '계속하기' : '일시정지'}
             </Button>
           }
         >
@@ -269,29 +302,45 @@ function AccountBrickGame() {
                 {started && lifeLoss > 0 && !score.awaitingRestart && (
                   <BrickLifeLoss sequence={lifeLoss} />
                 )}
-                {started && !lab && !ended && score.phase === 'ready' && !paused && !error && (
-                  <BrickRestartOverlay
-                    score={score}
-                    busy={busy}
-                    onStart={() => controller.current?.launch()}
-                  />
-                )}
+                {started &&
+                  !lab &&
+                  !ended &&
+                  score.phase === 'ready' &&
+                  !paused &&
+                  countdown === null &&
+                  !error && <BrickRestartOverlay score={score} busy={busy} onStart={launch} />}
                 {started &&
                   !lab &&
                   !ended &&
                   !score.awaitingRestart &&
                   score.held &&
                   !paused &&
+                  countdown === null &&
                   !error && (
                     <Button
                       className="absolute top-1/2 left-1/2 z-10 min-h-14 -translate-x-1/2 -translate-y-1/2 gap-2 rounded-xl bg-[#9b643c] px-8 text-lg text-white hover:bg-[#ad7549]"
                       disabled={busy}
-                      onClick={() => controller.current?.launch()}
+                      onClick={launch}
                     >
-                      <Play className="size-4" />
-                      공 다시 발사
+                      <Play className="size-4" />공 다시 발사
                     </Button>
                   )}
+                {countdown !== null && !paused && !ended && (
+                  <div
+                    role="status"
+                    aria-live="assertive"
+                    aria-label={`시작까지 ${countdown}초`}
+                    className="absolute inset-0 z-30 flex flex-col items-center justify-center gap-3 bg-[#102b32]/30 text-[#fff1dd]"
+                  >
+                    <span className="text-xs tracking-[0.2em] text-[#f2cf91]">준비하세요</span>
+                    <strong
+                      key={countdown}
+                      className="brick-countdown text-8xl font-bold tabular-nums drop-shadow-lg"
+                    >
+                      {countdown}
+                    </strong>
+                  </div>
+                )}
                 {!error && !started && (
                   <GameStartOverlay
                     fee={0}
@@ -342,7 +391,7 @@ function AccountBrickGame() {
                 )}
                 {!error && started && !ended && score.phase !== 'round-clear' && paused && (
                   <GameOverlay
-                    title={'잠시 쉬어가요'}
+                    title={'일시정지'}
                     actions={
                       <Button
                         className="min-h-12 rounded-xl"
@@ -418,7 +467,14 @@ function AccountBrickGame() {
               {started && (
                 <GameActions className="brick-controls">
                   <BrickMovementControls
-                    enabled={!ended && !paused && !error && !busy && score.phase !== 'round-clear'}
+                    enabled={
+                      !ended &&
+                      !paused &&
+                      countdown === null &&
+                      !error &&
+                      !busy &&
+                      score.phase !== 'round-clear'
+                    }
                     onDirection={move}
                     onTarget={target}
                   />

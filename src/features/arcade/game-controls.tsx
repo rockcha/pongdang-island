@@ -14,7 +14,7 @@ export function GameTabs({id,value,onChange}:{id:string;value:GameTab;onChange:(
  </div>
 }
 
-export function GameStartOverlay({title,description,poster,children,onPaid,onPractice,paidDisabled,practiceDisabled,fee=10}:{title:string;description:string;poster:string;children?:ReactNode;onPaid:()=>void;onPractice:()=>void;paidDisabled:boolean;practiceDisabled:boolean;fee?:number}) {
+export function GameStartOverlay({title,description,poster,children,onPaid,onPractice,paidDisabled,practiceDisabled,fee=10,extraAction,extraPanel}:{title:string;description:string;poster:string;children?:ReactNode;onPaid:()=>void;onPractice:()=>void;paidDisabled:boolean;practiceDisabled:boolean;fee?:number;extraAction?:ReactNode;extraPanel?:ReactNode}) {
  return <div className="absolute inset-0 z-20 flex flex-col overflow-hidden" role="group" aria-label="게임 시작 메뉴">
   <LandscapeImage src={poster} alt="" className="absolute inset-0 size-full object-cover"/>
   <div className="pointer-events-none absolute inset-0 bg-black/65" />
@@ -22,6 +22,6 @@ export function GameStartOverlay({title,description,poster,children,onPaid,onPra
    <div className="space-y-2"><h3 className="text-xl font-normal">{title}</h3><p className="text-xs leading-5 text-white/80">{description}</p></div>
    {children}
   </div></div>
-  <div className="relative grid shrink-0 grid-cols-2 border-t border-border bg-background pb-[env(safe-area-inset-bottom)]"><Button className="min-h-14 min-w-0 gap-1 rounded-none border-r border-border px-1 text-xs" disabled={paidDisabled} onClick={onPaid}><Play className="size-4"/>실전 시작 <span className="inline-flex items-center gap-0.5"><GoldIcon className="size-4"/>{fee}</span></Button><Button variant="secondary" className="min-h-14 min-w-0 gap-1 rounded-none px-1 text-xs" disabled={practiceDisabled} onClick={onPractice}><GraduationCap className="size-4"/>연습 시작</Button></div>
+  <div className="relative shrink-0 border-t border-border bg-background pb-[env(safe-area-inset-bottom)]"><div className={extraAction?'grid grid-cols-3':'grid grid-cols-2'}><Button className="min-h-14 min-w-0 gap-1 rounded-none border-r border-border px-1 text-xs" disabled={paidDisabled} onClick={onPaid}><Play className="size-4"/>실전 시작 <span className="inline-flex items-center gap-0.5"><GoldIcon className="size-4"/>{fee}</span></Button><Button variant="secondary" className="min-h-14 min-w-0 gap-1 rounded-none px-1 text-xs" disabled={practiceDisabled} onClick={onPractice}><GraduationCap className="size-4"/>연습 시작</Button>{extraAction}</div>{extraPanel}</div>
  </div>
 }

@@ -7,7 +7,7 @@ import {harborAction,harborError,loadHarbor} from './api'
 import type {HarborAction,HarborState} from './api'
 
 function readPending(key:string):HarborAction|null{
- try{const value=JSON.parse(localStorage.getItem(key)??'null');return value&&['buy','fuel','depart','claim','claim_all','dock','store'].includes(value.p_action)&&typeof value.p_operation_id==='string'?value:null}catch{return null}
+ try{const value=JSON.parse(localStorage.getItem(key)??'null');return value&&['buy','fuel','depart','claim','claim_all','dock','store','sell'].includes(value.p_action)&&typeof value.p_operation_id==='string'?value:null}catch{return null}
 }
 export function useHarbor(){
  const {session}=useAuth(),{refresh}=useGold()
@@ -37,6 +37,7 @@ export function useHarbor(){
    if(!alive.current)return true
    apply(data);setPending(null)
    if(args.p_action==='buy')toast.success(`${data.vessels.find(v=>v.id===args.p_vessel_id)?.name??'배'} 구매 완료`)
+   if(args.p_action==='sell')toast.success('배 판매 완료')
    if(args.p_action==='depart'&&data.receipt?.voyageId)setDeparture(data.receipt.voyageId)
    await Promise.allSettled([refresh()]);return true
   }catch(e){if(alive.current){setError(harborError(e));if((e as {code?:string}).code)remember(null)}return false}

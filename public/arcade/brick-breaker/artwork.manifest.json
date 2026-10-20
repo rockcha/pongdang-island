@@ -83,6 +83,93 @@
       "width": 1774,
       "height": 887,
       "sha256": "c0d24d0bb829a74390222c787c7c8656f5e69edceff8a4a7eaf92a72e9f71800"
+    },
+    {
+      "file": "wide.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production PNG art for a cozy marine breakout mobile game, matching polished warm outlined hand-painted cartoon assets. TRUE transparent background, clean anti-aliased edges, no checkerboard, no text, labels, watermarks, UI, background scenery, cast shadows or baked glow. Strong simple readable silhouette at 32 pixels; broad shading, avoid tiny noisy detail. Single pickup icon: one long horizontal warm honey-brown wooden plank with slightly irregular rounded ends, two brass corner nails, simple wood grain, straight-on view. Centered square canvas, 86% canvas width, about 28% canvas height, transparent margins. No arrows, no character. High resolution 1024 square.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "15b261fe5cd84575281e52e8d9ec67e81b3b79082774d59f25d6b7fccc58ffd6"
+    },
+    {
+      "file": "shield.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production PNG art for a cozy marine breakout mobile game, matching polished warm outlined hand-painted cartoon assets. TRUE transparent background, clean anti-aliased edges, no checkerboard, no text, labels, watermarks, UI, background scenery, cast shadows or baked glow. Strong simple readable silhouette at 32 pixels; broad shading, avoid tiny noisy detail. Single pickup icon: one round translucent aqua-blue water bubble shield with a glossy white curved highlight and a delicate luminous cyan rim, tiny pearl-like inner highlight. Bubble centered occupies 82% square canvas. Actual low-alpha transparent interior, not a solid white or black circle. No enclosing icon tile. High resolution 1024 square.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "26dfc7e1d5ca2c6a2bac20d11d897304375e66ef577e263dddaf95ae934f1f9d"
+    },
+    {
+      "file": "split.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production PNG art for a cozy marine breakout mobile game, matching polished warm outlined hand-painted cartoon assets. TRUE transparent background, clean anti-aliased edges, no checkerboard, no text, labels, watermarks, UI, background scenery, cast shadows or baked glow. Strong simple readable silhouette at 32 pixels; broad shading, avoid tiny noisy detail. Single pickup icon: TWO clearly separated luminous pearls arranged diagonally, one ivory-white and one pale lavender, gentle lilac shading, bright large highlights and a tiny star-shaped glint between them. Pearls have clean outlines, same approximate size. Centered compact pair occupies 80% square canvas. No shell, no arrows, no text. High resolution 1024 square.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "dcf19bbb5c28bf0abb5d99da3eeaabfc682f3161592f3c943f9d1a5bcc210245"
+    },
+    {
+      "file": "urchin.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Production PNG art for a cozy marine breakout mobile game, matching polished warm outlined hand-painted cartoon assets. TRUE transparent background, clean anti-aliased edges, no checkerboard, no text, labels, watermarks, UI, background scenery, cast shadows or baked glow. Strong simple readable silhouette at 32 pixels; broad shading, avoid tiny noisy detail. Single sea urchin hazard sprite: a cute round deep-purple sea urchin viewed overhead, a spherical plum body surrounded by 12 clearly separated short thick tapered violet spines, two small cream eyes for readability, mildly grumpy. Radially balanced silhouette suitable for rotation animation in code. Entire urchin occupies 82% square canvas with safe transparent margins, no motion blur, no spikes cut off. High resolution 1024 square.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "64b15941f16b287a5c7a6084b984654db248b25e09e10fa6666003bcc45f2e4d"
+    },
+    {
+      "file": "ink-sprite.png",
+      "transparent": true,
+      "grid": [
+        2,
+        2
+      ],
+      "prompt": "Use case: stylized-concept. Production PNG art for a cozy marine breakout mobile game, matching polished warm outlined hand-painted cartoon assets. TRUE transparent background, clean anti-aliased edges, no checkerboard, no text, labels, watermarks, UI, background scenery, cast shadows or baked glow. Strong simple readable silhouette at 32 pixels; broad shading, avoid tiny noisy detail. EXACT 2 columns by 2 rows SPRITE SHEET, FOUR equal square cells on a 2048 square canvas, no grid lines. In each cell the SAME cute lavender-purple ink octopus from overhead, head pointing DOWN, rounded mantle upper middle with two clear eyes toward lower middle, short flowing tentacles underneath/around sides. FOUR coherent idle swimming poses: tentacles curl gently left, center, right, center; head center/size/position absolutely identical in all cells. No head bobbing or blinking-only sequence. One octopus per cell, no ink splats outside the body. Each complete octopus including tentacles fits within central 82% of its cell with actual transparent gutters. Thick clean outlines and broad shading, designed for 32px game rendering. Exact regular equal-cell sprite grid is essential.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "495025ca2a4d01bf9204172b36044f0825ca1bcb20f32182431f6d6e72351b5b"
+    },
+    {
+      "file": "seaweed-sprite.png",
+      "transparent": true,
+      "grid": [
+        2,
+        2
+      ],
+      "prompt": "Use case: stylized-concept. Production PNG art for a cozy marine breakout mobile game, matching polished warm outlined hand-painted cartoon assets. TRUE transparent background, clean anti-aliased edges, no checkerboard, no text, labels, watermarks, UI, background scenery, cast shadows or baked glow. Strong simple readable silhouette at 32 pixels; broad shading, avoid tiny noisy detail. EXACT 2 columns by 2 rows SPRITE SHEET, FOUR equal square cells on a 2048 square canvas, no grid lines. In each cell the SAME spicy seaweed hazard: three flowing ribbon kelp fronds in muted coral red and burnt orange, darker burgundy outlines, joined at one small bottom holdfast. Fronds point UP and flutter as it falls DOWN. Recognizably a seaweed bunch, NOT a chili pepper, NOT flames. FOUR gentle flowing poses left, center, right, center. Holdfast fixed at x50% y82% of each cell, body scale identical, no whole-object bobbing. Entire silhouette stays within central 82% of EACH cell with actual transparent gutters. Clean bold shapes and smooth broad color shading readable at32px. Exact regular equal-cell sprite grid is essential.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "681447d5f89f75a65d4bb828e9ce58828ceb3ce854a7afd7cd2504d92eb60b5a"
+    },
+    {
+      "file": "background-underwater.png",
+      "transparent": false,
+      "references": [],
+      "prompt": "Use case: stylized-concept. Asset type: portrait background painting for a mobile underwater breakout game. Create a clean MINIMAL underwater scene, portrait 2:3 aspect ratio. Flat soft cartoon illustration with broad smooth painted shapes and extremely restrained detail. Muted desaturated slate teal and blue-green palette, medium-dark tone, calm and gentle, not black and not bright turquoise. The central 80% of the canvas is almost empty open water, an extremely subtle smooth depth gradient. Very faint broad diffuse light from the upper left, no sharp sun rays. Only at the extreme bottom corners: a few simple rounded muted seaweed silhouettes and two low rounded rocks, with a thin subdued sandy sea floor along the lowest 6%. Small sparse plant silhouettes at the outermost sides, never invading the center play area. All decoration has very low contrast against the water. This is a BACKGROUND behind bright pastel bricks, tiny white pearl balls, and cute fish hazards; it must be unobtrusive with exceptional gameplay readability. Orthographic flat game backdrop, no perspective tunnel or focal object. No fish, animals, characters, pearls, bubbles, sparkles, caustic noise, ornate coral, texture grain, fine detail, borders, UI, text, lettering or watermark. Opaque background, full bleed. Aim for spacious elegant simplicity, softly toned down rather than gloomy.",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "eff0aeafad80ab197aef7c5dee40d79de117b0161cb0091acd9d02d23618c509"
+    },
+    {
+      "file": "puffer.png",
+      "transparent": true,
+      "references": [],
+      "prompt": "Use case: stylized-concept. Production 2D PNG asset for a cozy sea-themed breakout arcade game. TRUE transparent background, clean smooth antialiased edges, polished simple cartoon shapes, restrained broad shading and dark warm outlines, readable at32 pixels. No scene, text, labels, numbers, watermarks, glow, bubbles or cast shadows. Cute small yellow-cream PUFFER FISH in STRICT TOP-DOWN OVERHEAD ORTHOGRAPHIC view: round pale golden back with a few brown spots, tiny short radial spines, teal pectoral fins left and right, little teal tail pointing UP, rounded nose pointing straight DOWN, two small dark eyes located on sides near the nose. This is the same single fish identity in every pose. Not a front portrait, not side view. One isolated fish centered in a square canvas, entire silhouette fits within central82% with transparent margins. Medium slightly inflated pose, compact cute silhouette. High resolution square PNG icon.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "9aa230734cbe6b230d638ffa1c4d886f352d995b4023849fae04e2f6970d0378"
+    },
+    {
+      "file": "puffer-sprite.png",
+      "transparent": true,
+      "grid": [
+        2,
+        2
+      ],
+      "references": [],
+      "prompt": "Use case: stylized-concept. Production 2D PNG asset for a cozy sea-themed breakout arcade game. TRUE transparent background, clean smooth antialiased edges, polished simple cartoon shapes, restrained broad shading and dark warm outlines, readable at32 pixels. No scene, text, labels, numbers, watermarks, glow, bubbles or cast shadows. Cute small yellow-cream PUFFER FISH in STRICT TOP-DOWN OVERHEAD ORTHOGRAPHIC view: round pale golden back with a few brown spots, tiny short radial spines, teal pectoral fins left and right, little teal tail pointing UP, rounded nose pointing straight DOWN, two small dark eyes located on sides near the nose. This is the same single fish identity in every pose. Not a front portrait, not side view. EXACT 2 columns x 2 rows SPRITE SHEET, four equal square cells on one square canvas. One fish in each cell. Four coherent frames reading order: relaxed, inflating, fully inflated, deflating. Fish body gets gently rounder while fins fan out, then settles. Rigid body CENTER stays at x50% y50% in EVERY cell, nose DOWN and tail UP in EVERY frame. No turning, no whole-object translation, no bobbing, no blinking-only loop. Maximum fully inflated silhouette fits within central82% of each cell; relaxed silhouette about64%. Transparent gutters around and between cells, no borders or panel lines. Four clear, aligned poses that loop naturally. Keep eyes, coloring, spots and spines consistent.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "2ed23300b8d3ba88d63b98822c4337be8597b220798a07c491325ea587f14b51"
     }
   ]
 }

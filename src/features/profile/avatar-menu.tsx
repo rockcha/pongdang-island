@@ -1,8 +1,8 @@
 import {appArt} from '@/components/app-art'
-import { useRef, useState } from 'react'
+import { useEffect,useRef, useState } from 'react'
 import { Menu } from '@base-ui/react/menu'
 import {UserRound,Download,LogOut,RefreshCw} from 'lucide-react'
-import {requestPwaUpdate,usePwaUpdate} from '@/features/pwa/update-state'
+import {OPEN_PWA_UPDATE_MENU,requestPwaUpdate,usePwaUpdate} from '@/features/pwa/update-state'
 
 import { Link, useNavigate } from 'react-router'
 import { toast } from 'sonner'
@@ -20,6 +20,12 @@ export function AvatarMenu() {
   const [busy, setBusy] = useState(false)
   const pending = useRef(false)
   const [open,setOpen]=useState(false)
+  const trigger=useRef<HTMLButtonElement>(null)
+  useEffect(()=>{
+    const show=()=>{if(!busy){trigger.current?.focus();setOpen(true)}}
+    window.addEventListener(OPEN_PWA_UPDATE_MENU,show)
+    return()=>window.removeEventListener(OPEN_PWA_UPDATE_MENU,show)
+  },[busy])
 
   async function logout() {
     if (pending.current) return
@@ -38,7 +44,7 @@ export function AvatarMenu() {
   }
 
   return <Menu.Root open={open} onOpenChange={setOpen}>
-    <Menu.Trigger aria-label={update.available?'내 계정 메뉴, 새 업데이트 있음':'내 계정 메뉴'} disabled={busy} className="relative flex size-10 min-h-10 min-w-10 cursor-pointer items-center justify-center rounded-full outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50">
+    <Menu.Trigger ref={trigger} aria-label={update.available?'내 계정 메뉴, 새 업데이트 있음':'내 계정 메뉴'} disabled={busy} className="relative flex size-10 min-h-10 min-w-10 cursor-pointer items-center justify-center rounded-full outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50">
       <PlayerAvatar nickname={getNickname(session)} path={profile?.avatar_path} className="size-9" />
       {update.available&&<span aria-hidden="true" className="pointer-events-none absolute right-0 top-0 flex size-2.5"><span className="absolute size-full rounded-full bg-primary/40 motion-safe:animate-ping"/><span className="relative size-2.5 rounded-full border border-background bg-primary"/></span>}
     </Menu.Trigger>

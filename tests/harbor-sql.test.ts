@@ -11,6 +11,43 @@ async function ready(){await db.exec("update public.harbor_voyages set departed_
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db);for(const id of [owner,other]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,id===owner?'항구선장':'다른선장']);await db.query('insert into public.player_wallets(user_id,gold) values($1,10000) on conflict(user_id) do update set gold=10000',[id])}},60000)
 beforeEach(async()=>{await db.exec(`truncate public.harbor_voyages,public.harbor_boats,public.player_harbor_vessels,app_private.harbor_operations;update public.player_wallets set gold=10000,inventory='{"bait":40,"fuel":10}'`)})
 afterAll(async()=>{await db?.close()})
+it('sells at half price once, frees the slot, and reuses an available instance number',async()=>{
+ const first=await action('buy','current-rider');await action('buy','current-rider')
+ const boat=first.receipt.boatId,op=crypto.randomUUID()
+ const sold=await fleetAction('sell',boat,null,owner,op)
+ expect(sold.receipt).toMatchObject({action:'sell',boatId:boat,gold:350})
+ expect(sold.boats.some(b=>b.id===boat)).toBe(false)
+ expect((await wallet()).gold).toBe(8950)
+ expect((await fleetAction('sell',boat,null,owner,op)).replayed).toBe(true)
+ expect((await wallet()).gold).toBe(8950)
+ await expect(fleetAction('sell',boat)).rejects.toThrow('VESSEL_NOT_OWNED')
+ const again=await action('buy','current-rider')
+ expect(again.boats.filter(b=>b.vessel_id==='current-rider').map(b=>b.instance_no).sort()).toEqual([1,2])
+ expect(again.boats.find(b=>b.id===again.receipt.boatId).dock_slot).toBe(1)
+})
+it('rejects foreign, active and unclaimed boats, preserving voyage history after sale',async()=>{
+ const bought=await action('buy','current-rider'),boat=bought.receipt.boatId
+ await expect(fleetAction('sell',boat,null,other)).rejects.toThrow('VESSEL_NOT_OWNED')
+ const departed=await action('depart','current-rider')
+ await expect(fleetAction('sell',boat)).rejects.toThrow('VOYAGE_ACTIVE')
+ await ready()
+ await expect(fleetAction('sell',boat)).rejects.toThrow('VOYAGE_ACTIVE')
+ await action('claim',null,departed.receipt.voyageId)
+ await fleetAction('sell',boat)
+ expect((await db.query('select count(*)::integer n from public.harbor_voyages where boat_id=$1',[boat])).rows[0].n).toBe(1)
+ await expect(fleetAction('dock',boat,1)).rejects.toThrow('VESSEL_NOT_OWNED')
+})
+it('sells stored boats and rejects a wallet overflow without losing the boat',async()=>{
+ const bought=await action('buy','current-rider'),boat=bought.receipt.boatId
+ await fleetAction('store',boat)
+ await db.query('update public.player_wallets set gold=1000000000 where user_id=$1',[owner])
+ await expect(fleetAction('sell',boat)).rejects.toThrow('GOLD_LIMIT')
+ expect((await wallet()).gold).toBe(1000000000)
+ await db.query('update public.player_wallets set gold=10000 where user_id=$1',[owner])
+ expect((await fleetAction('sell',boat)).receipt.gold).toBe(350)
+ const raft=await action('buy','fishing-raft')
+ expect((await fleetAction('sell',raft.receipt.boatId)).receipt.gold).toBe(200)
+})
 it('uses conch bait for unique discoveries and can finish when everything is discovered',async()=>{
  const chance=(await db.query("select pg_get_functiondef('app_private.expedition_success_chance_bp(text,integer)'::regprocedure) definition")).rows[0].definition
  await db.exec("create or replace function app_private.expedition_success_chance_bp(p_bait_id text,p_reduction integer) returns integer language sql as 'select 10000'")

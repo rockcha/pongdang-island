@@ -3,6 +3,8 @@ import {useSyncExternalStore} from 'react'
 const empty={available:false,request:0,applying:false}
 let state=empty
 const listeners=new Set<()=>void>()
+export const OPEN_PWA_UPDATE_MENU='pwa:open-update-menu'
+export function openPwaUpdateMenu(){window.dispatchEvent(new Event(OPEN_PWA_UPDATE_MENU))}
 function publish(next:typeof state){
  if(next.available===state.available&&next.request===state.request&&next.applying===state.applying)return
  state=next;listeners.forEach(listener=>listener())

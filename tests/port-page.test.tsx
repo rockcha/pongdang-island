@@ -19,6 +19,28 @@ afterEach(()=>{cleanup();localStorage.clear();vi.resetAllMocks();vi.useRealTimer
 function show(shipyard=false){return render(<MemoryRouter><PortPage shipyard={shipyard}/></MemoryRouter>)}
 const longVessel={...vessel,id:'haeneomi-trawler',name:'해넘이 원양어선',price:2400,duration_minutes:360,fuel_cost:5,fishing_count:15,sprite_path:'/port/haeneomi-trawler-sprite.png',ownedCount:1}
 const storedBoat={...longVessel,id:'trawler-1',vessel_id:longVessel.id,instance_no:1,dock_slot:null}
+it('confirms the half-price sale of a docked boat before sending the request',async()=>{
+ mock.action.mockResolvedValue({...base,boats:[boats[1]],receipt:{action:'sell',boatId:'raft-1',gold:150}})
+ show()
+ fireEvent.click(await screen.findByRole('button',{name:'항구 관리'}))
+ fireEvent.click(screen.getByRole('button',{name:'낚시용 뗏목 1호 판매'}))
+ const guard=screen.getByRole('alertdialog')
+ expect(guard.textContent).toContain('150')
+ expect(guard.textContent).toContain('50%')
+ expect(mock.action).not.toHaveBeenCalled()
+ fireEvent.click(within(guard).getByRole('button',{name:'확인'}))
+ await waitFor(()=>expect(mock.action).toHaveBeenCalledWith(expect.objectContaining({p_action:'sell',p_boat_id:'raft-1'})))
+ await waitFor(()=>expect(mock.toast).toHaveBeenCalledWith('배 판매 완료'))
+ expect(mock.refresh).toHaveBeenCalledTimes(1)
+})
+it('offers stored boat sales and hides sales for boats awaiting a catch',async()=>{
+ mock.load.mockResolvedValue({...base,boats:[...boats,storedBoat],vessels:[...base.vessels,longVessel],voyages:[trip]})
+ show()
+ fireEvent.click(await screen.findByRole('button',{name:'항구 관리'}))
+ expect(screen.queryByRole('button',{name:'낚시용 뗏목 1호 판매'})).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'해넘이 원양어선 1호 판매'}))
+ expect(screen.getByRole('alertdialog').textContent).toContain('1,200')
+})
 it('shows boat purchase stats visually and announces a confirmed purchase',async()=>{
  const explorer={...second,id:'waterway-explorer',name:'물길잡이 탐사선',price:1600,duration_minutes:240,fuel_cost:2,fishing_count:8,native_bonus:true}
  mock.load.mockResolvedValue({...base,vessels:[explorer]})

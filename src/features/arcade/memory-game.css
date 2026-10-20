@@ -1,16 +1,100 @@
-.memory-board-space { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; container-type: size; }
-.memory-board { width: min(100cqw, 100cqh); height: min(100cqw, 100cqh); display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); grid-template-rows: repeat(5,minmax(0,1fr)); gap: clamp(3px,1cqw,7px); }
-.memory-card { min-width: 0; min-height: 0; padding: 0; border: 0; background: transparent; perspective: 650px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-.memory-card:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 8px; }
-.memory-card-inner { position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 320ms cubic-bezier(.2,.65,.25,1); }
-.memory-card.is-up .memory-card-inner { transform: rotateY(180deg); }
-.memory-card-front,.memory-card-back { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px solid #d7bda1; border-radius: 8px; background: #fff8ee; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-.memory-card-front { transform: rotateY(180deg); }
-.memory-card img { width: 100%; height: 100%; object-fit: contain; user-select: none; pointer-events: none; }
-.memory-card-back img { object-fit: cover; }
-.memory-card.is-matched .memory-card-front { border-color: #c98b57; box-shadow: inset 0 0 0 2px #c98b5733; animation: memory-pair-glow 650ms ease-out; }
-.memory-card.is-pongi .memory-card-front { background: #f4dfcf; border-color: #c98b57; }
-.memory-card.is-pongi img { width: 85%; height: 85%; }
-.memory-card:disabled { cursor: default; }
-@keyframes memory-pair-glow { 50% { box-shadow: inset 0 0 0 3px #f2c98eaa, 0 0 10px #c98b5744; } }
-@media (prefers-reduced-motion: reduce) { .memory-card-inner { transition: none; } .memory-card.is-matched .memory-card-front { animation: none; } }
+.memory-board-space {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  container-type: size;
+}
+.memory-board {
+  width: min(100cqw, 100cqh);
+  height: min(100cqw, 100cqh);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(0, 1fr));
+  gap: clamp(3px, 1cqw, 7px);
+}
+.memory-card {
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  perspective: 650px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.memory-card:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+.memory-card-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 320ms cubic-bezier(0.2, 0.65, 0.25, 1);
+}
+.memory-card.is-up .memory-card-inner {
+  transform: rotateY(180deg);
+}
+.memory-card-front,
+.memory-card-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid #d7bda1;
+  border-radius: 8px;
+  background: #fff8ee;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.memory-card-front {
+  transform: rotateY(180deg);
+}
+.memory-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+.memory-card-back img {
+  object-fit: cover;
+}
+.memory-card.is-matched .memory-card-front {
+  border-color: #c98b57;
+  box-shadow: inset 0 0 0 2px #c98b5733;
+  animation: memory-pair-glow 650ms ease-out;
+}
+.memory-card.is-pongi .memory-card-front {
+  background: #f4dfcf;
+  border-color: #c98b57;
+}
+.memory-card.is-pongi img {
+  width: 85%;
+  height: 85%;
+}
+.memory-card:disabled {
+  cursor: default;
+}
+@keyframes memory-pair-glow {
+  50% {
+    box-shadow:
+      inset 0 0 0 3px #f2c98eaa,
+      0 0 10px #c98b5744;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .memory-card-inner {
+    transition: none;
+  }
+  .memory-card.is-matched .memory-card-front {
+    animation: none;
+  }
+}

@@ -4,6 +4,16 @@ import {createMemoryRouter,Link,RouterProvider} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
 import {GameModal} from '@/features/arcade/game-modal'
 afterEach(()=>cleanup())
+it('keeps the same board when moving from the waiting panel into a fullscreen modal',()=>{
+ const props={title:'공통 게임',active:true,practice:true,onExit:vi.fn(),layout:'fullscreen' as const}
+ const view=render(<GameModal {...props} open={false}><canvas data-testid="persistent-board"/></GameModal>)
+ const board=screen.getByTestId('persistent-board')
+ view.rerender(<GameModal {...props} open><canvas data-testid="persistent-board"/></GameModal>)
+ expect(screen.getByRole('dialog',{name:'공통 게임'}).getAttribute('data-layout')).toBe('fullscreen')
+ expect(screen.getByTestId('persistent-board')).toBe(board)
+ view.rerender(<GameModal {...props} open={false}><canvas data-testid="persistent-board"/></GameModal>)
+ expect(screen.getByTestId('persistent-board')).toBe(board)
+})
 it('guards a route change and runs game cleanup before proceeding',async()=>{
  const exit=vi.fn()
  function Game(){const [open,setOpen]=useState(true);return <GameModal open={open} title="공통 게임" active practice onExit={async()=>{exit();setOpen(false)}}><Link to="/other">다른 화면</Link></GameModal>}

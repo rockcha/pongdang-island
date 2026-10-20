@@ -578,7 +578,7 @@ var BrickPractice = class {
 		this.starShots = [];
 	}
 	damage(missedBall = false) {
-		if (this.phase !== "playing" || this.invulnerable > 0) return false;
+		if (this.phase !== "playing" || !missedBall && this.invulnerable > 0) return false;
 		if (this.testMode) {
 			this.invulnerable = 1.1;
 			if (missedBall) {
@@ -589,14 +589,16 @@ var BrickPractice = class {
 			return true;
 		}
 		this.lives--;
-		this.clearEffects();
-		this.drops = [];
-		this.shots = [];
 		this.invulnerable = 1.1;
-		if (this.lives <= 0) this.phase = "over";
-		else {
+		if (this.lives <= 0) {
+			this.phase = "over";
+			this.clearEffects();
+			this.drops = [];
+			this.shots = [];
+		} else if (missedBall) {
 			this.phase = "ready";
 			this.resetBall();
+			this.launch();
 		}
 		return true;
 	}

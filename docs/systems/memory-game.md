@@ -1,6 +1,6 @@
 # 카드 짝맞추기
 
-두 번째 오락실 게임. 경로 `/arcade/memory`. React + CSS 3D 회전을 사용하며 Phaser를 추가하지 않습니다.
+React + CSS 3D 회전을 사용하며 Phaser를 추가하지 않습니다. 화면 구조는 [공통 게임 UI](../design/arcade-games.md)를 따릅니다.
 
 ## 규칙
 
@@ -13,7 +13,7 @@
 
 ## 서버 판정과 보안
 
-`supabase/migrations/20261016105544_memory_card_arcade.sql`은 새 게임 전용 migration입니다. 기존 지갑·골드 거래·프로필 테이블이 있는 호환 DB에 적용합니다. 로컬 PGlite 재생과 테스트를 통과했으며 원격 DB에는 미적용입니다. Dashboard SQL Editor에서 신규 파일만 적용하거나 CLI migration 상태를 검토한 뒤 배포합니다. baseline 재실행은 하지 않습니다.
+DB 변경과 배포는 [DB 관리](database-management.md)를 따릅니다. 로컬 migration 재생 성공은 원격 적용의 근거가 아닙니다. 대상 프로젝트의 관련 함수·권한·이력을 확인하고 필요한 신규 변경만 적용합니다. 최초 설치 SQL만으로 현재 기대 상태를 판단하거나 baseline을 재실행하지 않습니다.
 
 서버는 비공개 deck과 matched/first/second 상태를 관리하고 공개/맞힌 카드만 응답합니다. 참가 operation UUID와 계정당 활성 게임 1개로 중복 결제를 막습니다. 모든 변경은 wallet → run 잠금 순서입니다. 정답·완료 시간·순위는 클라이언트가 제출하지 않습니다. 그만하기는 미완료로 종료하며 순위에 포함하지 않고 참가비를 환불하지 않습니다. 닉네임·순위·시간·시도 수·본인 여부만 순위 RPC에서 공개합니다.
 

@@ -14,6 +14,33 @@ function collect(game:BrickPractice,kind:DropKind){game.drops.push({id:900+game.
 function advance(game:BrickPractice,seconds:number){for(let i=0;i<Math.ceil(seconds*100);i++)game.step(0.01)}
 function catchLabDrop(game:BrickPractice,kind:DropKind){game.previewSkill(kind);advance(game,3)}
 function stillGame(){const game=new BrickPractice(()=>0.9);game.launch();game.ball={x:20,y:240,vx:0,vy:0};return game}
+it('preserves live balls, buffs, drops and projectiles on a nonfatal hazard hit',()=>{
+ const game=stillGame()
+ game.ball={x:80,y:240,vx:100,vy:-150}
+ game.wideSeconds=8;game.splitArmed=true;game.stickySeconds=6
+ game.drops=[{id:100,kind:'heart',x:300,y:80,warning:0}]
+ game.shots=[{id:101,x:200,y:300}]
+ game.waveShots=[{id:102,x:220,y:300,age:0,hitIds:new Set()}]
+ const ball=game.ball,before={...ball},drops=game.drops,shots=game.shots,waves=game.waveShots
+ expect(game.damage()).toBe(true)
+ expect(game.phase).toBe('playing');expect(game.lives).toBe(2)
+ expect(game.ball).toBe(ball);expect(game.ball).toEqual(before)
+ expect(game.drops).toBe(drops);expect(game.shots).toBe(shots);expect(game.waveShots).toBe(waves)
+ expect(game.wideSeconds).toBe(8);expect(game.splitArmed).toBe(true);expect(game.stickySeconds).toBe(6)
+ expect(game.damage()).toBe(false);expect(game.lives).toBe(2)
+ game.step(1/120)
+ expect(ball.x).toBeGreaterThan(before.x);expect(ball.y).toBeLessThan(before.y)
+ game.lives=1;game.invulnerable=0;game.damage()
+ expect(game.phase).toBe('over');expect(game.wideSeconds).toBe(0)
+ expect(game.shots).toHaveLength(0);expect(game.waveShots).toHaveLength(0)
+})
+it('replaces a missed final ball immediately even during hazard invulnerability',()=>{
+ const game=stillGame();game.invulnerable=1
+ game.ball.y=game.height+10;game.ball.vy=200
+ game.step(1/120)
+ expect(game.phase).toBe('playing');expect(game.lives).toBe(2)
+ expect(game.ball.y).toBeLessThan(game.paddleY);expect(game.ball.vy).toBeLessThan(0)
+})
 function splitAtPaddle(game:BrickPractice){
  collect(game,'split')
  game.ball={x:game.paddleX,y:game.paddleY-12,vx:0,vy:300}
@@ -111,7 +138,7 @@ it('warns before a shark rush and removes one life on contact',()=>{
  game.drops.push({id:1,kind:'shark',x:game.paddleX,y:BOARD.paddleY-25,warning:0.45})
  game.step(0.1);expect(game.lives).toBe(3)
  for(let i=0;i<5;i++)game.step(0.1)
- expect(game.lives).toBe(2);expect(game.phase).toBe('ready')
+ expect(game.lives).toBe(2);expect(game.phase).toBe('playing')
  expect(game.drainFeedback()).toEqual([{kind:'hazard',message:'상어에게 물렸어요 ㅠ'}])
  game.damage();expect(game.lives).toBe(2)
 })
@@ -176,7 +203,7 @@ it('resizes the playfield without losing durability or round scores',()=>{
  const hp=game.bricks.map(b=>b.hp);game.resize(380)
  expect(game.height).toBe(380);expect(game.paddleY).toBe(319);
  expect(game.bricks.map(b=>b.hp)).toEqual(hp)
- game.damage();expect(game.ball.y).toBe(game.paddleY-16)
+ const ball=game.ball,before={...ball};game.damage();expect(game.ball).toBe(ball);expect(game.ball).toEqual(before)
 })
 it('emits separate impact and destruction events for ball and torpedo effects',()=>{
  const game=new BrickPractice(()=>0.9);game.launch();const brick=weakenBrick(game,2)
@@ -226,7 +253,7 @@ it('blocks one hazard with a shield, then loses a life without losing gold',()=>
  collect(game,'shield');collect(game,'shield');collect(game,'urchin')
  expect(game.shield).toBe(false);expect(game.lives).toBe(3)
  advance(game,0.7);collect(game,'urchin')
- expect(game.lives).toBe(2);expect(game.phase).toBe('ready');expect(game.reward).toBe(70)
+ expect(game.lives).toBe(2);expect(game.phase).toBe('playing');expect(game.reward).toBe(70)
 })
 
 it('shields prevent shark damage, ink and speed effects but do not save a missed ball',()=>{
@@ -236,7 +263,7 @@ it('shields prevent shark damage, ink and speed effects but do not save a missed
   expect(game.inkSeconds).toBe(0);expect(game.fastSeconds).toBe(0)
  }
  const game=stillGame();collect(game,'shield');game.ball.y=game.height+10;game.step(0.01)
- expect(game.lives).toBe(2);expect(game.shield).toBe(false)
+ expect(game.lives).toBe(2);expect(game.shield).toBe(true);expect(game.ball.vy).toBeLessThan(0)
 })
 
 it('splits into two independently colliding balls and loses a life only after the last ball falls',()=>{
@@ -254,7 +281,7 @@ it('splits into two independently colliding balls and loses a life only after th
  game.balls[0].y=game.height+10;game.balls[0].vy=200;game.step(0.01)
  expect(game.balls).toHaveLength(1);expect(game.lives).toBe(3)
  game.ball.y=game.height+10;game.ball.vy=200;game.step(0.01)
- expect(game.lives).toBe(2);expect(game.phase).toBe('ready');expect(game.balls).toHaveLength(1)
+ expect(game.lives).toBe(2);expect(game.phase).toBe('playing');expect(game.balls).toHaveLength(1)
 })
 
 it('both split balls damage bricks and resize with the board',()=>{
@@ -298,8 +325,8 @@ it('boosts both balls by 1.5 for six seconds, refreshes without compounding and 
  game.balls.forEach(b=>expect(Math.abs(b.vx)).toBeCloseTo(100))
 })
 
-it('clears pending splits on life loss and a final brick without creating a ball after round clear',()=>{
- const game=stillGame();collect(game,'split');game.damage();expect(game.splitArmed).toBe(false)
+it('preserves pending splits on nonfatal hits and clears them on the final brick',()=>{
+ const game=stillGame();collect(game,'split');game.damage();expect(game.splitArmed).toBe(true)
  game.launch();collect(game,'split');expect(game.splitArmed).toBe(true)
  const brick=weakenBrick(game,1)
  game.bricks=[brick];game.ball={x:brick.x+BRICK.width/2,y:brick.y+BRICK.height+6.5,vx:0,vy:-200}
@@ -307,12 +334,12 @@ it('clears pending splits on life loss and a final brick without creating a ball
  expect(game.phase).toBe('round-clear');expect(game.splitArmed).toBe(false);expect(game.balls).toHaveLength(1)
 })
 
-it('maintains the speed boost after paddle bounce and clears effects on life loss and round change',()=>{
+it('maintains effects after a nonfatal hit and clears them on round change',()=>{
  const game=stillGame();collect(game,'seaweed');collect(game,'wide');collect(game,'ink');collect(game,'shield')
  game.ball={x:game.paddleX,y:game.paddleY-23,vx:0,vy:400};game.step(0.05)
  expect(Math.hypot(game.ball.vx,game.ball.vy)).toBeCloseTo((225+35)*1.2*1.5)
  game.invulnerable=0;game.damage()
- expect([game.fastSeconds,game.wideSeconds,game.inkSeconds]).toEqual([0,0,0]);expect(game.shield).toBe(false)
+ expect(game.fastSeconds).toBeGreaterThan(0);expect(game.wideSeconds).toBeGreaterThan(0);expect(game.inkSeconds).toBeGreaterThan(0);expect(game.shield).toBe(true)
  game.launch();collect(game,'wide');collect(game,'shield')
  for(const brick of [...game.bricks])for(let i=0;i<brick.maxHp;i++)game.hitBrick(brick.id)
  game.nextRound();expect(game.wideSeconds).toBe(0);expect(game.shield).toBe(false);expect(game.balls).toHaveLength(1)
@@ -405,7 +432,7 @@ it('starts the anchor slowly, accelerates, and slams the floor without homing',(
 
 it('anchor contact removes one life and can be blocked by a shield',()=>{
  const game=stillGame();collect(game,'anchor')
- expect(game.lives).toBe(2);expect(game.phase).toBe('ready')
+ expect(game.lives).toBe(2);expect(game.phase).toBe('playing')
  expect(game.drainAnchorSlams()).toHaveLength(1)
  const shielded=stillGame();collect(shielded,'shield');collect(shielded,'anchor')
  expect(shielded.lives).toBe(3);expect(shielded.shield).toBe(false)
@@ -486,8 +513,8 @@ it('each starfish deals one damage to its first brick and stops without piercing
  expect(game.drainImpacts()).toMatchObject([{brickId:1,source:'star',hp:3,destroyed:false}])
 })
 
-it('cancels unfired starfish on life loss and previews five throws without lab balls',()=>{
- const game=stillGame();collect(game,'star');game.damage();advance(game,1)
+it('cancels unfired starfish on game over and previews five throws without lab balls',()=>{
+ const game=stillGame();collect(game,'star');game.lives=1;game.damage();advance(game,1)
  expect(game.starShots).toHaveLength(0)
  const lab=new BrickPractice();lab.enterLaboratory();catchLabDrop(lab,'star')
  expect(lab.starShots).toHaveLength(5);advance(lab,1.5)
@@ -506,12 +533,12 @@ it('launches Pongi from the paddle and breaks only the first brick, including fo
  expect(game.drainImpacts()).toMatchObject([{brickId:1,hp:0,destroyed:true,source:'dash'}])
 })
 
-it('finishes a round with a dash and clears active dashes when a life is lost',()=>{
+it('clears dashes on round clear and preserves active dashes after a nonfatal hit',()=>{
  const game=stillGame();game.bricks=[{id:1,x:159,y:200,hp:4,maxHp:4}]
  collect(game,'dash');advance(game,2.4)
  expect(game.phase).toBe('round-clear');expect(game.dashShots).toHaveLength(0)
  game.nextRound();game.launch();collect(game,'dash');game.damage()
- expect(game.dashShots).toHaveLength(0)
+ expect(game.dashShots).toHaveLength(1)
 })
 
 it('previews Pongi dash without gameplay balls or scores and removes a missed dash at the top',()=>{
@@ -541,11 +568,11 @@ it('halves keyboard travel and limits pointer jumps for six seconds without stac
  expect(game.stickySeconds).toBe(0)
 })
 
-it('shields stop sticky liquid and losing a life clears it',()=>{
+it('shields stop sticky liquid and nonfatal hits preserve its duration',()=>{
  const game=stillGame();collect(game,'shield');collect(game,'sticky')
  expect(game.stickySeconds).toBe(0);expect(game.shield).toBe(false)
  advance(game,0.7);collect(game,'sticky');expect(game.stickySeconds).toBeCloseTo(6)
- game.damage();expect(game.stickySeconds).toBe(0)
+ game.damage();expect(game.stickySeconds).toBeCloseTo(6)
 })
 
 it('shrinks the plank for six seconds, refreshes without compounding and restores safe movement bounds',()=>{
@@ -561,13 +588,13 @@ it('uses the shorter plank for real ball collisions',()=>{
  expect(normal.ball.vy).toBeLessThan(0);expect(small.ball.vy).toBeGreaterThan(0)
 })
 
-it('lets the latest length effect win, blocks shrink with a shield and clears it on life loss',()=>{
+it('lets the latest length effect win, blocks shrink with a shield and preserves it on nonfatal hits',()=>{
  const game=stillGame();collect(game,'wide');collect(game,'shrink')
  expect(game.wideSeconds).toBe(0);expect(game.paddleWidth).toBe(54)
  collect(game,'wide');expect(game.shrinkSeconds).toBe(0);expect(game.paddleWidth).toBe(124)
  collect(game,'shield');collect(game,'shrink');expect(game.paddleWidth).toBe(124);expect(game.shield).toBe(false)
  advance(game,0.7);collect(game,'shrink');expect(game.paddleWidth).toBe(54)
- game.damage();expect(game.shrinkSeconds).toBe(0);expect(game.paddleWidth).toBe(82)
+ game.damage();expect(game.shrinkSeconds).toBeCloseTo(6);expect(game.paddleWidth).toBe(54)
 })
 
 it('uses a smaller inflated puffer collision area and loses one life on contact',()=>{
@@ -583,7 +610,7 @@ it('blocks a puffer with the shield and suppresses duplicate life loss',()=>{
  const game=stillGame();collect(game,'shield');collect(game,'puffer')
  expect(game.shield).toBe(false);expect(game.lives).toBe(3)
  advance(game,0.7);collect(game,'puffer');collect(game,'puffer')
- expect(game.lives).toBe(2);expect(game.phase).toBe('ready')
+ expect(game.lives).toBe(2);expect(game.phase).toBe('playing')
 })
 
 it('ignores hazard glancing contacts while keeping central body contacts for every hazard',()=>{
@@ -665,12 +692,12 @@ it('immediately fires one wave that pierces multiple bricks once each for one da
  expect(game.waveShots).toHaveLength(0);expect(game.bricks.map(b=>b.hp)).toEqual([2,1,2])
 })
 
-it('scores piercing destruction and removes all projectiles on life loss or round clear',()=>{
+it('clears piercing projectiles on round clear and preserves them after a nonfatal hit',()=>{
  const game=stillGame();game.bricks=[{id:1,x:159,y:200,hp:1,maxHp:1},{id:2,x:159,y:100,hp:1,maxHp:1}]
  collect(game,'wave');advance(game,1)
  expect(game.phase).toBe('round-clear');expect(game.waveShots).toHaveLength(0)
  game.nextRound();game.launch();collect(game,'wave');collect(game,'magnet');game.damage()
- expect(game.waveShots).toHaveLength(0);expect(game.magnetArmed).toBe(false)
+ expect(game.waveShots).toHaveLength(1);expect(game.magnetArmed).toBe(true)
 })
 
 it('keeps wave collision history after resizing and lets separate waves hit the same brick',()=>{
@@ -701,5 +728,5 @@ it('loses one life to poison while preserving gold and respecting shields',()=>{
  const game=stillGame();game.reward=50;collect(game,'shield');collect(game,'poison')
  expect(game.lives).toBe(3);expect(game.shield).toBe(false)
  advance(game,0.7);collect(game,'poison');collect(game,'poison')
- expect(game.lives).toBe(2);expect(game.phase).toBe('ready');expect(game.reward).toBe(50)
+ expect(game.lives).toBe(2);expect(game.phase).toBe('playing');expect(game.reward).toBe(50)
 })

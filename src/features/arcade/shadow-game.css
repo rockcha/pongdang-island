@@ -1,22 +1,99 @@
-.shadow-answer-correct { background: #edf8ef; animation: shadow-correct-glow 550ms ease-out; }
-.shadow-answer-wrong { background: #fff0ed; animation: shadow-wrong-nudge 340ms ease-out; }
-@keyframes shadow-correct-glow { 0%,100% { box-shadow: inset 0 0 0 1px #51a46a22; } 45% { box-shadow: inset 0 0 0 2px #51a46a55, inset 0 0 22px #76c88d26; } }
-@keyframes shadow-wrong-nudge { 0%,100% { transform: translateX(0); box-shadow: inset 0 0 0 1px #cf665522; } 25% { transform: translateX(-2px); box-shadow: inset 0 0 18px #e78a7733; } 65% { transform: translateX(2px); } }
-@media (prefers-reduced-motion: reduce) { .shadow-answer-result { animation: none; } }
-.shadow-feedback { animation: shadow-feedback-pop 900ms ease-out both; }
-.shadow-feedback-correct { color: #2baf62; }
-.shadow-feedback-wrong { color: #e34f45; }
-.shadow-feedback-symbol { filter: drop-shadow(0 2px 0 #fff9) drop-shadow(0 0 12px #fff8); }
-@keyframes shadow-feedback-pop {
- 0% { opacity: 0; transform: scale(.65); }
- 18% { opacity: 1; transform: scale(1.08); }
- 32%, 70% { opacity: 1; transform: scale(1); }
- 100% { opacity: 0; transform: scale(1.06); }
+.shadow-answer-correct {
+  background: #edf8ef;
+  animation: shadow-correct-glow 550ms ease-out;
+}
+.shadow-answer-wrong {
+  background: #fff0ed;
+  animation: shadow-wrong-nudge 340ms ease-out;
+}
+@keyframes shadow-correct-glow {
+  0%,
+  100% {
+    box-shadow: inset 0 0 0 1px #51a46a22;
+  }
+  45% {
+    box-shadow:
+      inset 0 0 0 2px #51a46a55,
+      inset 0 0 22px #76c88d26;
+  }
+}
+@keyframes shadow-wrong-nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+    box-shadow: inset 0 0 0 1px #cf665522;
+  }
+  25% {
+    transform: translateX(-2px);
+    box-shadow: inset 0 0 18px #e78a7733;
+  }
+  65% {
+    transform: translateX(2px);
+  }
 }
 @media (prefers-reduced-motion: reduce) {
- .shadow-feedback { animation-name: shadow-feedback-fade; }
+  .shadow-answer-result {
+    animation: none;
+  }
+}
+.shadow-feedback {
+  animation: shadow-feedback-pop 900ms ease-out both;
+}
+.shadow-feedback-correct {
+  color: #2baf62;
+}
+.shadow-feedback-wrong {
+  color: #e34f45;
+}
+.shadow-feedback-symbol {
+  filter: drop-shadow(0 2px 0 #fff9) drop-shadow(0 0 12px #fff8);
+}
+@keyframes shadow-feedback-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.65);
+  }
+  18% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+  32%,
+  70% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .shadow-feedback {
+    animation-name: shadow-feedback-fade;
+  }
 }
 @keyframes shadow-feedback-fade {
- 0%, 70% { opacity: 1; }
- 100% { opacity: 0; }
+  0%,
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (min-aspect-ratio: 6/5) and (max-height: 650px) {
+  .arcade-game-modal .shadow-question {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto minmax(0, 1fr);
+  }
+  .arcade-game-modal .shadow-question > div:nth-child(3) {
+    grid-column: 1;
+    grid-row: 1 / 4;
+  }
+  .arcade-game-modal .shadow-question > div:not(:nth-child(3)),
+  .arcade-game-modal .shadow-question > button {
+    grid-column: 2;
+  }
 }

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.cache/
+tmp/
+supabase/functions/_shared/
+supabase/migrations/
+supabase/sql/
+docs/db/

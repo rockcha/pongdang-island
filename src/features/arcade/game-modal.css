@@ -1,15 +1,70 @@
-.arcade-game-inline{position:static;display:flex;flex:1;flex-direction:column;min-height:0;width:100%;max-width:none;margin:0;padding:0;border:0;background:transparent;color:inherit}
-.arcade-game-modal{position:fixed;inset:0;display:flex;flex-direction:column;width:min(96dvw,1100px);height:96dvh;max-height:96dvh;max-width:none;margin:auto;padding:0;overflow:hidden;border:1px solid var(--border);border-radius:12px;background:var(--background);color:var(--foreground);box-shadow:0 20px 70px #0006}
-.arcade-game-modal::backdrop{background:#000b}
-body:has(dialog.arcade-game-modal[open]){overflow:hidden;overscroll-behavior:none}
+.arcade-game-inline {
+  position: static;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+.arcade-game-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  width: min(96dvw, 1100px);
+  height: 96dvh;
+  max-height: 96dvh;
+  max-width: none;
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--background);
+  color: var(--foreground);
+  box-shadow: 0 20px 70px #0006;
+}
+.arcade-game-modal::backdrop {
+  background: #000b;
+}
+body:has(dialog.arcade-game-modal[open]) {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
 /* Stable vertical composition on phones, Fold and tablets, even as browser chrome moves. */
-.arcade-game-modal:has(.brick-layout){width:100%;height:100svh;max-height:100svh;border:0;border-radius:0;margin:0 auto;padding:env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left)}
-.brick-hud,.brick-effects,.brick-lab-panel{flex-shrink:0}
-.game-modal-content{display:flex;flex:1;flex-direction:column;min-width:0;min-height:0;overflow:hidden}
-.arcade-game-modal .game-modal-content{padding-bottom:env(safe-area-inset-bottom)}
-@media(max-width:600px),(max-height:600px){.arcade-game-modal{width:100dvw;height:100dvh;max-height:100dvh;border:0;border-radius:0;padding:env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left)}}
-@media(min-aspect-ratio:6/5) and (max-height:650px){
- .arcade-game-modal .shadow-question{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto minmax(0,1fr)}
- .arcade-game-modal .shadow-question>div:nth-child(3){grid-column:1;grid-row:1 / 4}
- .arcade-game-modal .shadow-question>div:not(:nth-child(3)),.arcade-game-modal .shadow-question>button{grid-column:2}
+.arcade-game-modal[data-layout='fullscreen'] {
+  width: 100%;
+  height: 100svh;
+  max-height: 100svh;
+  border: 0;
+  border-radius: 0;
+  margin: 0 auto;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
+}
+.game-modal-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.arcade-game-modal .game-modal-content {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+@media (max-width: 600px), (max-height: 600px) {
+  .arcade-game-modal {
+    width: 100dvw;
+    height: 100dvh;
+    max-height: 100dvh;
+    border: 0;
+    border-radius: 0;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
+  }
 }

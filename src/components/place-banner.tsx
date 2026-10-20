@@ -34,7 +34,7 @@ export function PlaceBanner({pathname}:{pathname:string}){
  const square=squareDestinations.find(item=>pathname===item.path||pathname.startsWith(`${item.path}/`))
  const visit=pathname.startsWith('/friends/')
  const expeditionVisit=visit&&pathname.endsWith('/expeditions')
- const base=placeBanners[expeditionVisit?'/expeditions':visit?'/friends':pathname.startsWith('/arcade/')?'/arcade':section?.path??pathname]
+ const base=placeBanners[expeditionVisit?'/expeditions':visit?'/friends':pathname.startsWith('/arcade/')?'/arcade':pathname.startsWith('/exchange/')?'/exchange':section?.path??pathname]
  const boardList=pathname==='/square/suggestions'||pathname==='/square/bugs'
  const banner=square?{title:square.bannerTitle,image:square.banner,description:square.description,subtitle:boardList?square.description:''}:base
  const game=pathname.startsWith('/arcade/')?arcadeGames.find(item=>pathname===`/arcade/${item.id}`):undefined
@@ -47,6 +47,7 @@ export function PlaceBanner({pathname}:{pathname:string}){
   <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(45,28,20,0.30),transparent_80%)]" aria-hidden="true"/>
   <div className="absolute inset-x-6 bottom-3 space-y-1 text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.55)]"><div className="flex items-center gap-1"><h1 id="place-banner-title" className="min-w-0 text-xl font-normal tracking-tight">{visit?<BannerBreadcrumb parent="등대" to="/friends" title={expeditionVisit?'친구 통발 설치':'친구 아쿠아리움'}/>:square?<BannerBreadcrumb parent="광장" to="/square" title={square.bannerTitle}/>:game?<BannerBreadcrumb parent={placeBanners['/arcade'].title} to="/arcade" title={game.title}/>:banner.title}</h1><BannerInfo key={pathname} title={visit?(expeditionVisit?'친구 통발 설치':'친구 아쿠아리움'):game?.title??banner.title} steps={bannerGuide(pathname)}/></div>{(!compact||boardList)&&<p className="text-xs leading-5 text-white">{banner.subtitle}</p>}</div>
   {pathname==='/warehouse'&&<Link to="/shop" className="absolute right-4 top-3 z-10 flex min-h-11 items-center gap-1.5 rounded-full border border-white/35 bg-black/20 px-3 text-xs text-white backdrop-blur-sm hover:bg-black/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"><appArt.shop className="size-7"/>낚시 상점</Link>}
+  {pathname.startsWith('/exchange/')&&<BackToListLink to="/exchange"/>}
   {pathname==='/shipyard'&&<Link to="/port" className="absolute right-4 top-4 flex min-h-10 items-center gap-1.5 rounded-full border border-white/35 bg-black/20 px-3 text-xs text-white backdrop-blur-sm"><appArt.port className="size-6"/>항구로</Link>}
   {boardList?<BackToListLink to="/square"/>:pathname.startsWith('/arcade/')?<BackToListLink to="/arcade"/>:pathname.startsWith('/square/notices/')?<BackToListLink to="/square/notices"/>:pathname.startsWith('/square/suggestions/')?<BackToListLink to="/square/suggestions"/>:pathname.startsWith('/square/bugs/')?<BackToListLink to="/square/bugs"/>:null}
  </div>

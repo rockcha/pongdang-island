@@ -1,9 +1,10 @@
 import {questProgressChanged} from '@/features/quests/progress-events'
 import { createClient } from '@/lib/client'
 import type { Species } from '@/features/collection/api'
+import type {ExchangeAsset} from '@/features/exchange/api'
 export const giftReactions={thumbs_up:{emoji:'👍',label:'따봉',sent:'따봉을 보냈어요'},heart:{emoji:'❤️',label:'하트',sent:'하트를 보냈어요'},thanks:{emoji:'🥰',label:'고마움',sent:'고마움을 보냈어요'},laugh:{emoji:'😂',label:'웃음',sent:'웃음을 보냈어요'},celebrate:{emoji:'🎉',label:'축하',sent:'축하를 보냈어요'}} as const
 export type GiftReaction=keyof typeof giftReactions
-export type GiftRecord={id:string;sender_id:string|null;recipient_id:string|null;sender_name:string;recipient_name:string;species:Species;quantity:number;message:string;status:'pending'|'claimed';reaction:GiftReaction|null;created_at:string;claimed_at:string|null;reacted_at:string|null;source?:'friend'|'exchange'|'system';reward_kind?:'gold'|'bait'|'fuel'|'collectible';reward_id?:string|null}
+export type GiftRecord={id:string;sender_id:string|null;recipient_id:string|null;sender_name:string;recipient_name:string;species:Species&{exchange_offer?:ExchangeAsset};quantity:number;message:string;status:'pending'|'claimed';reaction:GiftReaction|null;created_at:string;claimed_at:string|null;reacted_at:string|null;source?:'friend'|'exchange'|'system';reward_kind?:'gold'|'bait'|'fuel'|'collectible';reward_id?:string|null}
 export type GiftMailbox={items:GiftRecord[];total:number}
 export function giftError(cause:unknown){
  const message=String((cause as {message?:string})?.message??'')

@@ -9,7 +9,7 @@ const mock=vi.hoisted(()=>({send:vi.fn(),load:vi.fn(),claim:vi.fn(),react:vi.fn(
 vi.mock('@/features/social/social-provider',()=>({useSocial:()=>({...mock.social,refresh:mock.refresh})}))
 vi.mock('@/features/gold/gold-provider',()=>({useGold:()=>({refresh:mock.refresh}),GoldIcon:()=>null}))
 vi.mock('@/features/notifications/api',()=>({markRelatedRead:vi.fn().mockResolvedValue(undefined)}))
-vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:()=>null}))
+vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name,path}:{name:string;path:string})=><img alt={name} src={path}/>}))
 vi.mock('@/features/gifts/api',async importOriginal=>({...await importOriginal<typeof import('../src/features/gifts/api')>(),sendGift:mock.send,loadGift:mock.load,claimGift:mock.claim,reactToGift:mock.react}))
 const species={id:'fish',name:'멸치',kind:'fish',thumbnail_path:'fish.png'} as Species
 const gift={id:'gift',sender_id:'friend',recipient_id:'me',sender_name:'친구',recipient_name:'나',species,quantity:1,message:'잘 키워줘!',status:'pending',reaction:null,created_at:'2026-10-15T00:00:00Z'}
@@ -50,6 +50,19 @@ it('claims exchange gold and refreshes the wallet without showing friend reactio
  await waitFor(()=>expect(mock.claim).toHaveBeenCalledWith('gift'))
  await waitFor(()=>expect(mock.refresh).toHaveBeenCalled())
  expect(screen.queryByRole('button',{name:'따봉 보내기'})).toBeNull()
+})
+it('shows the actual sold item and quantity on a gold payment parcel',async()=>{
+ const parcel={...gift,source:'exchange',reward_kind:'gold',quantity:10,species:{id:'gold',name:'골드',thumbnail_path:null,exchange_offer:{kind:'collectible',id:'fish',name:'멸치',quantity:2,thumbnail_path:'fish.png'}}}
+ mock.load.mockResolvedValue(parcel);mock.claim.mockResolvedValue({...parcel,status:'claimed'})
+ render(<GiftDetailDialog id="gift" onClose={()=>{}}/>)
+ const image=await screen.findByRole('img',{name:'멸치'})
+ expect(image.getAttribute('src')).toBe('fish.png')
+ expect(screen.getByText('×2')).toBeTruthy()
+ expect(screen.getByText('10')).toBeTruthy()
+ expect(screen.queryByText('거래 물품')).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'선물 받기'}))
+ await waitFor(()=>expect(screen.queryByRole('button',{name:'선물 받기'})).toBeNull())
+ expect(screen.getByRole('img',{name:'멸치'})).toBeTruthy()
 })
 
 it('shows the operator welcome gold and hides friend replies after claiming',async()=>{

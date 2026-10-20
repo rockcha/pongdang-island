@@ -68,6 +68,11 @@ export type Database = {
       auction_bid:{Args:{p_id:string;p_amount:number;p_operation_id:string};Returns:import('@/features/auctions/api').Auction}
       auction_cancel:{Args:{p_id:string};Returns:import('@/features/auctions/api').Auction}
       exchange_state:{Args:{p_tab?:string;p_query?:string;p_offset?:number};Returns:import('@/features/exchange/api').ExchangePage}
+      edit_exchange_listing_title:{Args:{p_listing_id:string;p_title:string};Returns:undefined}
+      exchange_listing_detail:{Args:{p_listing_id:string;p_offset?:number};Returns:import('@/features/exchange/api').ExchangeDetail}
+      set_exchange_listing_like:{Args:{p_listing_id:string;p_liked:boolean};Returns:{liked:boolean;like_count:number}}
+      add_exchange_listing_comment:{Args:{p_listing_id:string;p_body:string;p_operation_id:string};Returns:string}
+      delete_exchange_listing_comment:{Args:{p_comment_id:string};Returns:undefined}
       exchange_inventory:{Args:Record<string,never>;Returns:import('@/features/exchange/api').ExchangeInventory}
       exchange_post:{Args:import('@/features/exchange/api').ExchangePost;Returns:import('@/features/exchange/api').ExchangeListing}
       exchange_action:{Args:{p_listing_id:string;p_action:string};Returns:import('@/features/exchange/api').ExchangeListing}

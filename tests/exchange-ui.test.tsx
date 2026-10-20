@@ -14,15 +14,13 @@ const listing={id:'listing',owner_id:'other',owner_name:'섬친구',side:'sell',
 beforeEach(()=>{vi.clearAllMocks();mock.load.mockResolvedValue({items:[listing],total:1});mock.inventory.mockResolvedValue({gold:5000,assets:[fish]});mock.post.mockResolvedValue({...listing,owner_id:'me'});mock.act.mockResolvedValue({...listing,status:'completed'});mock.refresh.mockResolvedValue(undefined)})
 afterEach(cleanup)
 const setup=()=>render(<MemoryRouter><ExchangePage/></MemoryRouter>)
-it('shows a compact purchase with seller and a price-only action',async()=>{
- setup();fireEvent.click(await screen.findByRole('button',{name:'300 골드에 구매하기'}))
- const dialog=await screen.findByRole('alertdialog')
- expect(within(dialog).getByText('판매자')).toBeTruthy();expect(within(dialog).getByText('섬친구')).toBeTruthy()
- expect(within(dialog).queryByText('내가 보내요')).toBeNull()
- expect(dialog.querySelector('img[src*=pongi]')).toBeNull()
+it('opens posts from the list without purchase actions',async()=>{
+ setup();const link=await screen.findByRole('link',{name:'말랑 해삼 상세 보기'})
+ expect(link.getAttribute('href')).toBe('/exchange/listing')
+ expect(within(link).getByText('섬친구')).toBeTruthy()
+ expect(within(link).getByText('300')).toBeTruthy()
+ expect(within(link).queryByRole('button')).toBeNull()
  expect(mock.act).not.toHaveBeenCalled()
- const accept=within(dialog).getByRole('button',{name:'300'});fireEvent.click(accept);fireEvent.click(accept)
- await waitFor(()=>expect(mock.act).toHaveBeenCalledExactlyOnceWith('listing','accept'))
 })
 it('retains the same post operation and conditions after a transport error',async()=>{
  mock.post.mockRejectedValueOnce(new Error('connection lost')).mockResolvedValueOnce({...listing,owner_id:'me'})
@@ -42,12 +40,13 @@ it('retains the same post operation and conditions after a transport error',asyn
  expect(mock.post.mock.calls[0][0]).toEqual(mock.post.mock.calls[1][0])
  expect(mock.post.mock.calls[0][0]).toMatchObject({p_title:'레전드 해파리 팝니다',p_side:'sell',p_offer_kind:'collectible',p_offer_id:'soft-sea-cucumber',p_wanted_kind:'gold',p_wanted_quantity:300})
 })
-it('shows cancellation instead of self trading and hides completed history',async()=>{
+it('keeps own listings and completed history free of management actions',async()=>{
  mock.load.mockResolvedValue({items:[{...listing,owner_id:'me'},{...listing,id:'closed',status:'completed'}],total:2})
- setup();fireEvent.click(await screen.findByRole('button',{name:'등록 취소'}))
- fireEvent.click(within(await screen.findByRole('alertdialog')).getByRole('button',{name:'확인'}))
- await waitFor(()=>expect(mock.act).toHaveBeenCalledWith('listing','cancel'))
- await waitFor(()=>expect(screen.queryByText('판매 완료')).toBeNull())
+ setup();await screen.findByText('내 글')
+ expect(screen.getByText('판매 완료')).toBeTruthy()
+ expect(screen.queryByRole('button',{name:'등록 취소'})).toBeNull()
+ expect(screen.queryByRole('button',{name:'판매글 삭제'})).toBeNull()
+ expect(mock.act).not.toHaveBeenCalled()
 })
 
 it('lists owned fuel for sale with its icon and chosen quantity',async()=>{

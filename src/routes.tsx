@@ -13,6 +13,7 @@ import { RegionPage } from '@/features/regions/region-page'
 import { SailingPage } from '@/features/regions/sailing-page'
 import { ShopPage } from '@/features/gold/shop-page'
 import { ExchangePage } from '@/features/exchange/exchange-page'
+import { ExchangeDetailPage } from '@/features/exchange/exchange-detail-page'
 import { NoticePage,NoticeDetail } from '@/features/notices/notice-page'
 import { NoticeEditor } from '@/features/notices/notice-editor'
 import { WarehousePage } from '@/features/fishing/warehouse-page'
@@ -85,6 +86,7 @@ export function AppRoutes() {
             <Route path="square/bugs/:bugReportId" element={<BugReportDetail />} />
             <Route path="merchant-street" element={<Navigate to="/shop" replace />} />
             <Route path="exchange" element={<ExchangePage />} />
+            <Route path="exchange/:listingId" element={<ExchangeDetailPage />} />
             <Route path="merchant-street/exchange" element={<Navigate to="/exchange" replace />} />
             <Route path="merchant-street/auctions" element={<Navigate to="/exchange" replace />} />
           </Route>

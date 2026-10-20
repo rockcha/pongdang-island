@@ -1,0 +1,71 @@
+import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
+import {MemoryRouter,Routes,Route} from 'react-router'
+import {afterEach,beforeEach,expect,it,vi} from 'vitest'
+import {ExchangeDetailPage} from '@/features/exchange/exchange-detail-page'
+import {SaleListingRow} from '@/features/exchange/sale-listing-row'
+import type {ExchangeListing} from '@/features/exchange/api'
+const mocks=vi.hoisted(()=>({load:vi.fn(),like:vi.fn(),comment:vi.fn(),remove:vi.fn(),trade:vi.fn(),edit:vi.fn(),refresh:vi.fn()}))
+vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
+vi.mock('@/features/gold/gold-provider',()=>({useGold:()=>({refresh:mocks.refresh}),GoldIcon:()=>null}))
+vi.mock('@/features/social/social-provider',()=>({useSocial:()=>({refresh:mocks.refresh})}))
+vi.mock('@/features/profile/player-avatar',()=>({PlayerAvatar:({nickname}:{nickname:string})=><span>{nickname} 아바타</span>}))
+vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:()=>null}))
+vi.mock('@/features/exchange/api',async original=>({...await original<typeof import('@/features/exchange/api')>(),loadExchangeDetail:mocks.load,setExchangeLike:mocks.like,addExchangeComment:mocks.comment,deleteExchangeComment:mocks.remove,actExchange:mocks.trade,editExchangeTitle:mocks.edit}))
+const listing:ExchangeListing={id:'listing',title:'해파리 팝니다',owner_id:'seller',owner_name:'판매자',side:'sell',offer:{kind:'collectible',id:'fish',name:'해파리',quantity:1,thumbnail_path:null},wanted:{kind:'gold',id:'gold',name:'골드',quantity:300,thumbnail_path:null},status:'active',taker_id:null,created_at:'2026-10-20T00:00:00Z',closed_at:null,like_count:2,comment_count:0,liked:false}
+const data={listing,comments:[],pageSize:30}
+beforeEach(()=>{vi.clearAllMocks();mocks.load.mockResolvedValue(data);mocks.like.mockResolvedValue({liked:true,like_count:3});mocks.comment.mockResolvedValue('comment');mocks.trade.mockResolvedValue({...listing,status:'completed'})})
+afterEach(cleanup)
+const show=()=>render(<MemoryRouter initialEntries={['/exchange/listing']}><Routes><Route path="/exchange/:listingId" element={<ExchangeDetailPage/>}/></Routes></MemoryRouter>)
+it('links sale rows to details and displays only compact social counts',()=>{
+ render(<MemoryRouter><ul><SaleListingRow listing={{...listing,comment_count:4}} owner="me"/></ul></MemoryRouter>)
+ expect(screen.getByRole('link',{name:'해파리 팝니다 상세 보기'}).getAttribute('href')).toBe('/exchange/listing')
+ expect(screen.getByLabelText('좋아요 2개')).toBeTruthy()
+ expect(screen.getByLabelText('댓글 4개')).toBeTruthy()
+})
+it('shows seller and goods and updates the like after one explicit request',async()=>{
+ show();expect(await screen.findByRole('heading',{name:'해파리 팝니다'})).toBeTruthy()
+ expect(screen.getByText('판매자')).toBeTruthy()
+ const like=screen.getByRole('button',{name:'좋아요'})
+ fireEvent.click(like);fireEvent.click(like)
+ await waitFor(()=>expect(like.getAttribute('aria-pressed')).toBe('true'))
+ expect(mocks.like).toHaveBeenCalledExactlyOnceWith('listing',true)
+ expect(like.textContent).toBe('좋아요 3')
+ expect(screen.getByRole('button',{name:/구매하기\s*300/})).toBeTruthy()
+})
+it('allows the owner to edit the title through detail management',async()=>{
+ mocks.load.mockResolvedValue({...data,listing:{...listing,owner_id:'me'}})
+ mocks.edit.mockResolvedValue(undefined)
+ show();await screen.findByRole('heading',{name:listing.title!})
+ expect(screen.queryByRole('button',{name:/구매하기/})).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'판매글 관리'}))
+ fireEvent.click(await screen.findByRole('menuitem',{name:'제목 수정'}))
+ const dialog=await screen.findByRole('dialog')
+ fireEvent.change(within(dialog).getByLabelText('판매글 제목'),{target:{value:'해파리 저렴하게 판매해요'}})
+ fireEvent.click(within(dialog).getByRole('button',{name:'저장'}))
+ await screen.findByRole('heading',{name:'해파리 저렴하게 판매해요'})
+ expect(mocks.edit).toHaveBeenCalledExactlyOnceWith('listing','해파리 저렴하게 판매해요')
+})
+it('cancels an own sale only after deletion confirmation in details',async()=>{
+ mocks.load.mockResolvedValue({...data,listing:{...listing,owner_id:'me'}})
+ show();await screen.findByRole('heading',{name:listing.title!})
+ fireEvent.click(screen.getByRole('button',{name:'판매글 관리'}))
+ fireEvent.click(await screen.findByRole('menuitem',{name:'판매글 삭제'}))
+ const dialog=await screen.findByRole('alertdialog')
+ expect(within(dialog).getByText('판매글을 내리고 맡긴 물품을 선물함으로 돌려받아요.')).toBeTruthy()
+ expect(mocks.trade).not.toHaveBeenCalled()
+ fireEvent.click(within(dialog).getByRole('button',{name:'판매글 삭제'}))
+ await waitFor(()=>expect(mocks.trade).toHaveBeenCalledExactlyOnceWith('listing','cancel'))
+})
+it('reuses the comment operation after a connection error and reloads the confirmed comment',async()=>{
+ mocks.comment.mockRejectedValueOnce(new Error('connection lost')).mockResolvedValueOnce('comment')
+ show();await screen.findByRole('heading',{name:listing.title!})
+ fireEvent.change(screen.getByLabelText('댓글 내용'),{target:{value:'아직 판매하나요?'}})
+ fireEvent.click(screen.getByRole('button',{name:'댓글 등록'}))
+ await screen.findByRole('alert')
+ mocks.load.mockResolvedValue({listing:{...listing,comment_count:1},comments:[{id:'comment',user_id:'me',author_name:'나',author_avatar_path:null,body:'아직 판매하나요?',created_at:listing.created_at}],pageSize:30})
+ fireEvent.click(screen.getByRole('button',{name:'댓글 다시 등록'}))
+ await screen.findByText('아직 판매하나요?')
+ expect(mocks.comment.mock.calls[0]).toEqual(mocks.comment.mock.calls[1])
+ expect(screen.getByLabelText('댓글 내용').textContent).toBe('')
+ expect(screen.getByRole('button',{name:'나 댓글 삭제'})).toBeTruthy()
+})

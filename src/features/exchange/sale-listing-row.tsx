@@ -1,20 +1,29 @@
-import {Button} from '@/components/ui/button'
+import {Link} from 'react-router'
+import {Heart,MessageCircle} from 'lucide-react'
 import {GoldIcon} from '@/features/gold/gold-provider'
 import {PlayerAvatar} from '@/features/profile/player-avatar'
-import {AssetView} from './asset-view'
+import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
+import {LandscapeImage} from '@/components/landscape-image'
 import type {ExchangeListing} from './api'
 
-export function SaleListingRow({listing,owner,busy,onAction}:{listing:ExchangeListing;owner:string;busy:boolean;onAction:(action:'accept'|'cancel')=>void}){
+export function SaleListingRow({listing,owner}:{listing:ExchangeListing;owner:string}){
  const mine=listing.owner_id===owner
- return <li className="min-w-0 space-y-2.5 px-4 py-4">
-   <h2 className="break-words text-sm font-medium leading-5">{listing.title||`${listing.offer.name} 판매합니다`}</h2>
-   <div className="flex min-w-0 items-center gap-1.5" aria-label="판매자"><PlayerAvatar nickname={listing.owner_name} path={listing.owner_avatar_path} className="size-6 shrink-0"/><span className="truncate text-[11px] text-muted-foreground">{listing.owner_name}</span></div>
-  <div className="flex min-w-0 items-center justify-between gap-3">
-   <div className="min-w-0 flex-1"><AssetView asset={listing.offer} compact/></div>
-   <div className="flex shrink-0 flex-col items-end gap-1">
-    {mine&&<p className="flex items-center gap-1 text-xs tabular-nums text-primary"><GoldIcon className="size-4"/>{listing.wanted.quantity.toLocaleString('ko-KR')}</p>}
-    {listing.status==='active'?<Button className="min-h-11 min-w-20 gap-1.5 rounded-lg px-3 tabular-nums" variant={mine?'ghost':'default'} aria-label={mine?'등록 취소':`${listing.wanted.quantity.toLocaleString('ko-KR')} 골드에 구매하기`} disabled={busy} onClick={()=>onAction(mine?'cancel':'accept')}>{mine?'등록 취소':<><GoldIcon className="size-5"/>{listing.wanted.quantity.toLocaleString('ko-KR')}</>}</Button>:<span className="flex min-h-9 items-center text-xs text-muted-foreground">{listing.status==='completed'?'판매 완료':'취소 · 우편 반환'}</span>}
+ return <li className="min-w-0">
+  <Link to={'/exchange/'+listing.id} aria-label={(listing.title||listing.offer.name)+' 상세 보기'} className="block space-y-4 px-5 py-5 outline-none transition-colors hover:bg-secondary/20 focus-visible:bg-secondary/30 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring">
+   <div className="flex min-w-0 gap-4">
+    <div className="flex size-16 shrink-0 items-center justify-center self-center">
+     {listing.offer.kind==='collectible'?<CollectibleThumbnail path={listing.offer.thumbnail_path??''} name={listing.offer.name} className="size-16"/>:<LandscapeImage src={listing.offer.thumbnail_path??''} alt={listing.offer.name} className="size-14 object-contain"/>}
+    </div>
+    <div className="min-w-0 flex-1 space-y-1.5">
+     <div className="flex items-start gap-2"><h2 className="line-clamp-2 min-w-0 break-words text-sm font-medium leading-6">{listing.title||listing.offer.name+' 판매합니다'}</h2>{mine&&<span className="mt-1 shrink-0 rounded bg-secondary/70 px-1.5 py-0.5 text-[9px] text-primary">내 글</span>}</div>
+     <p className="truncate text-[11px] text-muted-foreground">{listing.offer.name}<span className="mx-1.5 opacity-50">·</span>{listing.offer.quantity.toLocaleString('ko-KR')}개</p>
+     <p className="flex items-center gap-1 text-base tabular-nums text-primary"><GoldIcon className="size-4"/>{listing.wanted.quantity.toLocaleString('ko-KR')}{listing.status!=='active'&&<span className="ml-1.5 text-[10px] text-muted-foreground">{listing.status==='completed'?'판매 완료':'판매 취소'}</span>}</p>
+    </div>
    </div>
-  </div>
+   <div className="flex min-w-0 items-center justify-between gap-3 text-[10px] text-muted-foreground">
+    <div className="flex min-w-0 items-center gap-1.5" aria-label="판매자"><PlayerAvatar nickname={listing.owner_name} path={listing.owner_avatar_path} className="size-5 shrink-0"/><span className="truncate">{listing.owner_name}</span><span aria-hidden="true" className="opacity-50">·</span><time dateTime={listing.created_at} className="shrink-0">{new Date(listing.created_at).toLocaleDateString('ko-KR',{month:'numeric',day:'numeric'})}</time></div>
+    <div className="flex shrink-0 items-center gap-3 tabular-nums"><span aria-label={'좋아요 '+(listing.like_count??0)+'개'} className="inline-flex items-center gap-1"><Heart aria-hidden="true" className="size-3"/>{listing.like_count??0}</span><span aria-label={'댓글 '+(listing.comment_count??0)+'개'} className="inline-flex items-center gap-1"><MessageCircle aria-hidden="true" className="size-3"/>{listing.comment_count??0}</span></div>
+   </div>
+  </Link>
  </li>
 }

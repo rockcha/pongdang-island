@@ -6,14 +6,13 @@ import {useAuth} from '@/components/auth-provider'
 import {Button} from '@/components/ui/button'
 import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription} from '@/components/ui/dialog'
 import {ConfirmDialog} from '@/components/confirm-dialog'
-import {GoldIcon,useGold} from '@/features/gold/gold-provider'
-import {PlayerAvatar} from '@/features/profile/player-avatar'
+import {useGold} from '@/features/gold/gold-provider'
 import {useSocial} from '@/features/social/social-provider'
 import {AssetView} from './asset-view'
 import {SaleItemPicker} from './sale-item-picker'
 import {SaleListingRow} from './sale-listing-row'
-import {actExchange,exchangeChanged,exchangeError,loadExchange,loadExchangeInventory,postExchange} from './api'
-import type {ExchangeAsset,ExchangeInventory,ExchangeListing,ExchangePage as PageData,ExchangePost} from './api'
+import {exchangeChanged,exchangeError,loadExchange,loadExchangeInventory,postExchange} from './api'
+import type {ExchangeAsset,ExchangeInventory,ExchangePage as PageData,ExchangePost} from './api'
 
 const gold:ExchangeAsset={kind:'gold',id:'gold',name:'골드',quantity:1,thumbnail_path:null}
 const field='min-h-11 min-w-0 w-full rounded-lg border bg-background px-3 text-sm'
@@ -27,7 +26,7 @@ function AccountExchange({owner}:{owner:string}){
  const [title,setTitle]=useState('')
  const [offer,setOffer]=useState<ExchangeAsset>(empty),[wanted,setWanted]=useState<ExchangeAsset>({...gold,quantity:300})
  const [busy,setBusy]=useState(false),[formError,setFormError]=useState(''),[inventoryLoading,setInventoryLoading]=useState(false)
- const [confirm,setConfirm]=useState<{listing:ExchangeListing;action:'accept'|'cancel'}|null>(null),[postConfirm,setPostConfirm]=useState(false)
+ const [postConfirm,setPostConfirm]=useState(false)
  const pending=useRef<ExchangePost|null>(null),lock=useRef(false),alive=useRef(true),inventoryVersion=useRef(0)
  useEffect(()=>{alive.current=true;return()=>{alive.current=false;inventoryVersion.current++}},[])
  useEffect(()=>{let current=true;setLoading(true);setPage(null);setError('');const timer=setTimeout(()=>{void loadExchange(tab,query,offset).then(data=>{if(current)setPage(data)}).catch(cause=>{if(current)setError(exchangeError(cause))}).finally(()=>{if(current)setLoading(false)})},200);return()=>{current=false;clearTimeout(timer)}},[tab,query,offset,retry])
@@ -37,25 +36,24 @@ function AccountExchange({owner}:{owner:string}){
  function validAsset(a:ExchangeAsset){return !!a.id&&Number.isSafeInteger(a.quantity)&&a.quantity>=1&&a.quantity<=(a.kind==='gold'?1000000000:a.kind==='collectible'?20:9999)}
  const available=inventory?.assets.find(a=>a.kind===offer.kind&&a.id===offer.id)?.available
  const valid=!!inventory&&!inventoryLoading&&offer.kind!=='gold'&&validAsset(offer)&&validAsset(wanted)&&(available??0)>=offer.quantity&&!(offer.kind===wanted.kind&&offer.id===wanted.id)
- async function mutate(post=false){
-  if(lock.current||(!post&&!confirm))return
-  if(post&&!pending.current&&!valid)return
+ async function mutate(){
+  if(lock.current)return
+  if(!pending.current&&!valid)return
   lock.current=true;setBusy(true);setFormError('')
   try{
-   if(post){if(offer.kind==='gold')return;pending.current??={p_title:title.trim()||`${offer.name} 판매합니다`,p_side:'sell',p_offer_kind:offer.kind,p_offer_id:offer.id,p_offer_quantity:offer.quantity,p_wanted_kind:'gold',p_wanted_id:'gold',p_wanted_quantity:wanted.quantity,p_operation_id:crypto.randomUUID()};await postExchange(pending.current)}
-   else await actExchange(confirm!.listing.id,confirm!.action)
+   if(offer.kind==='gold')return;pending.current??={p_title:title.trim()||`${offer.name} 판매합니다`,p_side:'sell',p_offer_kind:offer.kind,p_offer_id:offer.id,p_offer_quantity:offer.quantity,p_wanted_kind:'gold',p_wanted_id:'gold',p_wanted_quantity:wanted.quantity,p_operation_id:crypto.randomUUID()};await postExchange(pending.current)
    exchangeChanged();void wallet.refresh();void social.refresh()
-   if(alive.current){if(post){pending.current=null;setOpen(false);setPostConfirm(false);setTitle('');setOffer(empty);setWanted({...gold,quantity:300});setTab('mine');setQuery('');setOffset(0)}setConfirm(null);setRetry(v=>v+1);toast.success(post?'물품을 맡기고 판매 글을 등록했어요.':'처리했어요. 우편함의 선물 탭에서 물품을 받아주세요.')}
-  }catch(cause){if(alive.current){if(post&&cause&&typeof cause==='object'&&'code'in cause&&/^[0-9A-Z]{5}$/.test(String(cause.code)))pending.current=null;setFormError(exchangeError(cause));if(!post)setRetry(v=>v+1)}}finally{lock.current=false;if(alive.current)setBusy(false)}
+   if(alive.current){pending.current=null;setOpen(false);setPostConfirm(false);setTitle('');setOffer(empty);setWanted({...gold,quantity:300});setTab('mine');setQuery('');setOffset(0);setRetry(v=>v+1);toast.success('물품을 맡기고 판매 글을 등록했어요.')}
+  }catch(cause){if(alive.current){if(cause&&typeof cause==='object'&&'code'in cause&&/^[0-9A-Z]{5}$/.test(String(cause.code)))pending.current=null;setFormError(exchangeError(cause))}}finally{lock.current=false;if(alive.current)setBusy(false)}
  }
- const visibleListings=page?.items.filter(listing=>listing.status!=='completed')??[]
+ const visibleListings=page?.items??[]
  return <section className="flex min-h-0 min-w-0 w-full flex-1 flex-col">
   <div role="group" aria-label="거래 분류" className="segmented-control grid shrink-0 grid-cols-2 border-b border-border">{[{key:'all',label:'판매 목록',icon:Store},{key:'mine',label:'내 판매',icon:ClipboardList}].map(({key,label,icon:Icon})=><Button key={key} variant="ghost" className={`min-h-12 min-w-0 gap-2 rounded-none border-r border-border ${tab===key?'bg-secondary text-primary hover:bg-secondary':'text-muted-foreground'}`} aria-pressed={tab===key} onClick={()=>{setTab(key);setOffset(0)}}><Icon className="size-4"/>{label}</Button>)}</div>
   <div className="flex shrink-0 items-center gap-2 px-4 py-3"><div className="relative min-w-0 flex-1"><Search aria-hidden="true" className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"/><input className={field+' pl-9'} aria-label="거래 물품 검색" placeholder="제목 또는 물품 이름으로 검색" maxLength={80} value={query} onChange={e=>{setQuery(e.target.value);setOffset(0)}}/></div><Button variant="outline" size="icon" className="min-h-11 min-w-11 shrink-0" aria-label="거래 목록 새로고침" onClick={()=>setRetry(v=>v+1)} disabled={loading}><RefreshCw className="size-4"/></Button></div>
   <div className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain pb-4">
   {loading&&<div role="status" aria-label="거래를 불러오는 중"><span className="sr-only">거래를 불러오는 중…</span><div aria-hidden="true" className="divide-y divide-border/70">{Array.from({length:4},(_,i)=><div key={i} className="flex items-center gap-3 border-b border-border px-4 py-4 motion-safe:animate-pulse"><div className="size-14 shrink-0 rounded-lg bg-secondary"/><div className="flex-1 space-y-2"><div className="h-4 w-24 rounded bg-secondary"/><div className="h-3 w-16 rounded bg-secondary/60"/></div><div className="h-10 w-16 rounded-lg bg-secondary"/></div>)}</div></div>}
   {error&&<div role="alert" className="space-y-2 text-sm text-destructive"><p>{error}</p><Button variant="outline" onClick={()=>setRetry(v=>v+1)}>다시 불러오기</Button></div>}
-  <ul className="divide-y divide-border/70">{visibleListings.map(listing=><SaleListingRow key={listing.id} listing={listing} owner={owner} busy={busy} onAction={action=>{setFormError('');setConfirm({listing,action})}}/>)}</ul>
+  <ul className="divide-y divide-border/70">{visibleListings.map(listing=><SaleListingRow key={listing.id} listing={listing} owner={owner}/>)}</ul>
   {page&&!visibleListings.length&&<EmptyState>{tab==='mine'?'등록한 거래가 없어요.':'조건에 맞는 거래가 없어요.'}</EmptyState>}
   {page&&page.total>20&&<div className="flex items-center justify-between px-4"><Button variant="outline" disabled={!offset||loading} onClick={()=>setOffset(v=>Math.max(0,v-20))}>이전</Button><span className="text-xs">{offset+1}–{Math.min(offset+20,page.total)} / {page.total}</span><Button variant="outline" disabled={offset+20>=page.total||loading} onClick={()=>setOffset(v=>v+20)}>다음</Button></div>}
   </div>
@@ -71,10 +69,10 @@ function AccountExchange({owner}:{owner:string}){
      <label className="space-y-1.5 text-xs text-muted-foreground"><span>전체 가격 · 골드</span><input aria-label="판매 가격" type="number" inputMode="numeric" min={1} max={1000000000} value={wanted.quantity||''} disabled={busy||!!pending.current} className={field} onChange={e=>setWanted({...gold,quantity:Number(e.target.value)})}/></label>
     </div>
     {formError&&<p role="alert" className="text-xs text-destructive">{formError}</p>}
-    {!inventory&&!inventoryLoading?<Button className="min-h-11 w-full" variant="outline" onClick={()=>void loadInventory()}>보유 물품 다시 확인</Button>:<Button className="min-h-11 w-full" disabled={busy||(!pending.current&&!valid)} onClick={()=>{if(pending.current)void mutate(true);else setPostConfirm(true)}}>{pending.current?'이전 등록 결과 다시 확인':'맡기고 판매 등록'}</Button>}
+    {!inventory&&!inventoryLoading?<Button className="min-h-11 w-full" variant="outline" onClick={()=>void loadInventory()}>보유 물품 다시 확인</Button>:<Button className="min-h-11 w-full" disabled={busy||(!pending.current&&!valid)} onClick={()=>{if(pending.current)void mutate();else setPostConfirm(true)}}>{pending.current?'이전 등록 결과 다시 확인':'맡기고 판매 등록'}</Button>}
    </div>
   </DialogContent></Dialog>
-  <ConfirmDialog illustration="sale" open={postConfirm} onOpenChange={setPostConfirm} title="이 가격으로 판매 등록할까요?" description="맡긴 물품은 거래 중 사용할 수 없어요. 취소하면 우편함으로 돌려받아요." busy={busy} error={formError} onConfirm={()=>void mutate(true)}><div className="space-y-3"><p className="break-words text-sm font-medium">{title.trim()||`${offer.name} 판매합니다`}</p><p className="text-xs text-muted-foreground">내가 맡겨요</p><AssetView asset={offer}/><p className="text-xs text-muted-foreground">내가 받아요</p><AssetView asset={wanted}/></div></ConfirmDialog>
-  <ConfirmDialog compact={confirm?.action==='accept'} illustration="caution" open={!!confirm} onOpenChange={next=>{if(!next)setConfirm(null)}} title={confirm?.action==='cancel'?'판매 등록을 취소할까요?':<><span className="block break-words font-medium">{confirm?.listing.title||confirm?.listing.offer.name}</span><span>이 가격에 구매할까요?</span></>} description={confirm?.action==='cancel'?'맡긴 물품을 우편함으로 돌려보내요.':<span className="sr-only">구매한 물품은 우편함으로 보내드려요.</span>} confirmLabel={confirm?.action==='accept'?<><GoldIcon className="size-5"/>{confirm.listing.wanted.quantity.toLocaleString()}</>:'확인'} busy={busy} error={formError} onConfirm={()=>void mutate()}>{confirm&&<div className="space-y-4"><div className="rounded-xl bg-secondary/40 p-3"><AssetView asset={confirm.listing.offer} compact/></div>{confirm.action==='accept'&&<div className="flex min-w-0 items-center gap-2.5"><PlayerAvatar nickname={confirm.listing.owner_name} path={confirm.listing.owner_avatar_path} className="size-8 shrink-0"/><div className="min-w-0"><p className="text-[10px] text-muted-foreground">판매자</p><p className="truncate text-xs">{confirm.listing.owner_name}</p></div></div>}</div>}</ConfirmDialog>
+  <ConfirmDialog illustration="sale" open={postConfirm} onOpenChange={setPostConfirm} title="이 가격으로 판매 등록할까요?" description="맡긴 물품은 거래 중 사용할 수 없어요. 취소하면 우편함으로 돌려받아요." busy={busy} error={formError} onConfirm={()=>void mutate()}><div className="space-y-3"><p className="break-words text-sm font-medium">{title.trim()||`${offer.name} 판매합니다`}</p><p className="text-xs text-muted-foreground">내가 맡겨요</p><AssetView asset={offer}/><p className="text-xs text-muted-foreground">내가 받아요</p><AssetView asset={wanted}/></div></ConfirmDialog>
+
  </section>
 }

@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "d0944964ae897058b62ef2a9a48a0402607f6dde7c8a0374f77a705a21e79da6",
+  "migrationHash": "2fd8e42447b919b5b881fa6ead3145b3ed772f98b2c3f9d173caf6ee00c33900",
   "structure": {
     "enums": [
       {
@@ -229,6 +229,18 @@
       {
         "rls": true,
         "name": "collectible_species",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "exchange_listing_comments",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "exchange_listing_likes",
         "schema": "public",
         "force_rls": false
       },
@@ -2675,6 +2687,96 @@
         "table": "collectible_species",
         "schema": "public",
         "default": "'both'::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "listing_id",
+        "type": "uuid",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "body",
+        "type": "text",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "listing_id",
+        "type": "uuid",
+        "table": "exchange_listing_likes",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "exchange_listing_likes",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "exchange_listing_likes",
+        "schema": "public",
+        "default": "clock_timestamp()",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -5784,6 +5886,36 @@
         "definition": "CREATE UNIQUE INDEX collectible_species_pkey ON public.collectible_species USING btree (id)"
       },
       {
+        "name": "exchange_listing_comments_page",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "definition": "CREATE INDEX exchange_listing_comments_page ON public.exchange_listing_comments USING btree (listing_id, created_at, id)"
+      },
+      {
+        "name": "exchange_listing_comments_pkey",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX exchange_listing_comments_pkey ON public.exchange_listing_comments USING btree (id)"
+      },
+      {
+        "name": "exchange_listing_comments_user_id_operation_id_key",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX exchange_listing_comments_user_id_operation_id_key ON public.exchange_listing_comments USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "exchange_listing_likes_pkey",
+        "table": "exchange_listing_likes",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX exchange_listing_likes_pkey ON public.exchange_listing_likes USING btree (listing_id, user_id)"
+      },
+      {
+        "name": "exchange_listing_likes_user",
+        "table": "exchange_listing_likes",
+        "schema": "public",
+        "definition": "CREATE INDEX exchange_listing_likes_user ON public.exchange_listing_likes USING btree (user_id)"
+      },
+      {
         "name": "exchange_active_feed",
         "table": "exchange_listings",
         "schema": "public",
@@ -7269,6 +7401,16 @@
     ],
     "functions": [
       {
+        "name": "add_exchange_listing_comment",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_listing_id uuid, p_body text, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.add_exchange_listing_comment(p_listing_id uuid, p_body text, p_operation_id uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();c public.exchange_listing_comments;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_body is null or char_length(btrim(p_body)) not between 1 and 500 or p_body!~'[^[:space:]]' then raise exception 'INVALID_EXCHANGE_COMMENT';end if;\n perform 1 from public.exchange_listings where id=p_listing_id and side='sell' and status in ('active','completed') for share;\n if not found then raise exception 'EXCHANGE_UNAVAILABLE';end if;\n insert into public.exchange_listing_comments(listing_id,user_id,operation_id,body)\n values(p_listing_id,u,p_operation_id,btrim(p_body)) on conflict(user_id,operation_id) do nothing;\n select * into strict c from public.exchange_listing_comments where user_id=u and operation_id=p_operation_id;\n if c.listing_id<>p_listing_id or c.body<>btrim(p_body) then raise exception 'OPERATION_CONFLICT';end if;\n return c.id;\nend;\n$function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "adopt_suggestion",
         "config": [
           "search_path=\"\""
@@ -7599,6 +7741,16 @@
         "securityDefiner": false
       },
       {
+        "name": "delete_exchange_listing_comment",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_comment_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.delete_exchange_listing_comment(p_comment_id uuid)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();c public.exchange_listing_comments;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n select * into c from public.exchange_listing_comments where id=p_comment_id for update;\n if not found then return;end if;\n if c.user_id<>u then raise exception 'EXCHANGE_COMMENT_FORBIDDEN';end if;\n delete from public.exchange_listing_comments where id=c.id;\nend;\n$function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "deliver_notice_publication",
         "config": [
           "search_path=\"\""
@@ -7606,6 +7758,16 @@
         "schema": "app_private",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.deliver_notice_publication()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if new.status='published' and new.notified_at is null then\n  insert into public.notifications(recipient_id,category,kind,title,body,notice_id)\n  select id,'notice','announcement',new.title,'새 공지가 등록됐어요.',new.id from public.player_profiles\n  on conflict(recipient_id,notice_id) where notice_id is not null do nothing;\n  update public.notices set notified_at=clock_timestamp() where id=new.id;\n end if;\n return null;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "edit_exchange_listing_title",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_listing_id uuid, p_title text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.edit_exchange_listing_title(p_listing_id uuid, p_title text)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();l public.exchange_listings;v_title text:=btrim(p_title);\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if v_title is null or char_length(v_title) not between 1 and 80 or v_title~'[[:cntrl:]]' or v_title!~'[^[:space:]]' then raise exception 'INVALID_EXCHANGE_TITLE';end if;\n select * into l from public.exchange_listings where id=p_listing_id for update;\n if not found then raise exception 'EXCHANGE_NOT_FOUND';end if;\n if l.owner_id<>u then raise exception 'EXCHANGE_FORBIDDEN';end if;\n if l.side<>'sell' or l.status<>'active' then raise exception 'EXCHANGE_UNAVAILABLE';end if;\n update public.exchange_listings set title=v_title where id=l.id;\nend;\n$function$\n",
         "securityDefiner": true
       },
       {
@@ -7669,6 +7831,16 @@
         "securityDefiner": true
       },
       {
+        "name": "exchange_listing_detail",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_listing_id uuid, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.exchange_listing_detail(p_listing_id uuid, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();l public.exchange_listings;v_listing jsonb;v_comments jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 then raise exception 'INVALID_EXCHANGE';end if;\n select * into l from public.exchange_listings where id=p_listing_id and side='sell'\n  and (status in ('active','completed') or owner_id=u);\n if not found then raise exception 'EXCHANGE_NOT_FOUND';end if;\n select (to_jsonb(l)-'operation_id'-'escrow_gift_id')||jsonb_build_object(\n  'owner_avatar_path',(select avatar_path from public.player_profiles where id=l.owner_id),\n  'like_count',(select count(*) from public.exchange_listing_likes where listing_id=l.id),\n  'comment_count',(select count(*) from public.exchange_listing_comments where listing_id=l.id),\n  'liked',exists(select 1 from public.exchange_listing_likes where listing_id=l.id and user_id=u)\n ) into v_listing;\n select coalesce(jsonb_agg(to_jsonb(q) order by q.created_at desc,q.id desc),'[]'::jsonb) into v_comments from(\n  select c.id,c.user_id,c.body,c.created_at,p.nickname as author_name,p.avatar_path as author_avatar_path\n  from public.exchange_listing_comments c join public.player_profiles p on p.id=c.user_id\n  where c.listing_id=l.id order by c.created_at desc,c.id desc limit 30 offset p_offset\n ) q;\n return jsonb_build_object('listing',v_listing,'comments',v_comments,'pageSize',30);\nend;\n$function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "exchange_post",
         "config": [
           "search_path=\"\""
@@ -7695,7 +7867,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_tab text, p_query text, p_offset integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.exchange_state(p_tab text DEFAULT 'all'::text, p_query text DEFAULT ''::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_rows jsonb;v_total integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_tab is null or p_tab not in ('all','mine') or p_query is null or char_length(p_query)>80 or p_offset is null or p_offset<0 then raise exception 'INVALID_EXCHANGE';end if;\n select count(*) into v_total from public.exchange_listings l\n where (case when p_tab='mine' then l.owner_id=v_uid else l.status='active' and l.side='sell' end)\n and l.side='sell' and l.offer->>'kind' in ('collectible','bait','fuel') and l.wanted->>'kind'='gold' and l.wanted->>'id'='gold'\n and (coalesce(l.title,'') ilike '%'||p_query||'%' or l.offer->>'name' ilike '%'||p_query||'%' or l.wanted->>'name' ilike '%'||p_query||'%');\n select coalesce(jsonb_agg(to_jsonb(q) order by q.created_at desc,q.id),'[]') into v_rows from(\n  select l.*, (select p.avatar_path from public.player_profiles p where p.id=l.owner_id) as owner_avatar_path from public.exchange_listings l\n  where (case when p_tab='mine' then l.owner_id=v_uid else l.status='active' and l.side='sell' end)\n  and l.side='sell' and l.offer->>'kind' in ('collectible','bait','fuel') and l.wanted->>'kind'='gold' and l.wanted->>'id'='gold'\n and (coalesce(l.title,'') ilike '%'||p_query||'%' or l.offer->>'name' ilike '%'||p_query||'%' or l.wanted->>'name' ilike '%'||p_query||'%')\n  order by created_at desc,id limit 20 offset p_offset\n ) q;\n return jsonb_build_object('items',v_rows,'total',v_total);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.exchange_state(p_tab text DEFAULT 'all'::text, p_query text DEFAULT ''::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_rows jsonb;v_total integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_tab is null or p_tab not in ('all','mine') or p_query is null or char_length(p_query)>80 or p_offset is null or p_offset<0 then raise exception 'INVALID_EXCHANGE';end if;\n select count(*) into v_total from public.exchange_listings l\n where (case when p_tab='mine' then l.owner_id=v_uid else l.status='active' and l.side='sell' end)\n and l.side='sell' and l.offer->>'kind' in ('collectible','bait','fuel') and l.wanted->>'kind'='gold' and l.wanted->>'id'='gold'\n and (coalesce(l.title,'') ilike '%'||p_query||'%' or l.offer->>'name' ilike '%'||p_query||'%' or l.wanted->>'name' ilike '%'||p_query||'%');\n select coalesce(jsonb_agg(to_jsonb(q) order by q.created_at desc,q.id),'[]') into v_rows from(\n  select l.*,(select p.avatar_path from public.player_profiles p where p.id=l.owner_id) as owner_avatar_path,\n   (select count(*) from public.exchange_listing_likes s where s.listing_id=l.id) as like_count,\n   (select count(*) from public.exchange_listing_comments c where c.listing_id=l.id) as comment_count\n  from public.exchange_listings l\n  where (case when p_tab='mine' then l.owner_id=v_uid else l.status='active' and l.side='sell' end)\n  and l.side='sell' and l.offer->>'kind' in ('collectible','bait','fuel') and l.wanted->>'kind'='gold' and l.wanted->>'id'='gold'\n  and (coalesce(l.title,'') ilike '%'||p_query||'%' or l.offer->>'name' ilike '%'||p_query||'%' or l.wanted->>'name' ilike '%'||p_query||'%')\n  order by l.created_at desc,l.id limit 20 offset p_offset\n ) q;\n return jsonb_build_object('items',v_rows,'total',v_total);\nend;\n$function$\n",
         "securityDefiner": true
       },
       {
@@ -7865,7 +8037,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_gift_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.gift_detail(p_gift_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare g public.collectible_gifts;v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select * into g from public.collectible_gifts where id=p_gift_id and not exchange_hold and (sender_id=v_uid or recipient_id=v_uid);\n if not found then raise exception 'GIFT_NOT_FOUND';end if;\n return to_jsonb(g);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.gift_detail(p_gift_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare g public.collectible_gifts;v_uid uuid:=auth.uid();v_offers jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select * into g from public.collectible_gifts where id=p_gift_id and not exchange_hold and (sender_id=v_uid or recipient_id=v_uid);\n if not found then raise exception 'GIFT_NOT_FOUND';end if;\n if g.source='exchange' and g.reward_kind='gold' then\n  -- Payment creation and listing closure share the transaction's now(). Check\n  -- both participants and the exact amount, and never guess ambiguous matches.\n  select jsonb_agg(l.offer) into v_offers from public.exchange_listings l\n  where l.side='sell' and l.status='completed'\n   and l.owner_id=g.recipient_id and l.taker_id=g.sender_id and l.closed_at=g.created_at\n   and l.wanted->>'kind'='gold' and l.wanted->>'id'=g.reward_id\n   and (l.wanted->>'quantity')::integer=g.quantity;\n  if jsonb_array_length(v_offers)=1 then\n   g.species:=g.species||jsonb_build_object('exchange_offer',v_offers->0);\n  end if;\n end if;\n return to_jsonb(g);\nend;\n$function$\n",
         "securityDefiner": true
       },
       {
@@ -8439,6 +8611,16 @@
         "securityDefiner": true
       },
       {
+        "name": "set_exchange_listing_like",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_listing_id uuid, p_liked boolean",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.set_exchange_listing_like(p_listing_id uuid, p_liked boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();l public.exchange_listings;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_liked is null then raise exception 'INVALID_EXCHANGE';end if;\n select * into l from public.exchange_listings where id=p_listing_id and side='sell' and status in ('active','completed') for share;\n if not found then raise exception 'EXCHANGE_UNAVAILABLE';end if;\n perform pg_advisory_xact_lock(hashtextextended('exchange-like:'||p_listing_id::text||':'||u::text,0));\n if p_liked then insert into public.exchange_listing_likes(listing_id,user_id) values(l.id,u) on conflict do nothing;\n else delete from public.exchange_listing_likes where listing_id=l.id and user_id=u;end if;\n return jsonb_build_object('liked',p_liked,'like_count',(select count(*) from public.exchange_listing_likes where listing_id=l.id));\nend;\n$function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "set_player_avatar",
         "config": [
           "search_path=\"\""
@@ -8679,6 +8861,16 @@
         "securityDefiner": true
       },
       {
+        "name": "add_exchange_listing_comment",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_listing_id uuid, p_body text, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.add_exchange_listing_comment(p_listing_id uuid, p_body text, p_operation_id uuid)\n RETURNS uuid\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.add_exchange_listing_comment(p_listing_id,p_body,p_operation_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "adopt_suggestion",
         "config": [
           "search_path=\"\""
@@ -8889,6 +9081,26 @@
         "securityDefiner": false
       },
       {
+        "name": "delete_exchange_listing_comment",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_comment_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.delete_exchange_listing_comment(p_comment_id uuid)\n RETURNS void\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.delete_exchange_listing_comment(p_comment_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "edit_exchange_listing_title",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_listing_id uuid, p_title text",
+        "definition": "CREATE OR REPLACE FUNCTION public.edit_exchange_listing_title(p_listing_id uuid, p_title text)\n RETURNS void\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.edit_exchange_listing_title(p_listing_id,p_title)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "equip_fishing_rod",
         "config": [
           "search_path=\"\""
@@ -8926,6 +9138,16 @@
         "schema": "public",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION public.exchange_inventory()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.exchange_inventory()$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "exchange_listing_detail",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_listing_id uuid, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.exchange_listing_detail(p_listing_id uuid, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.exchange_listing_detail(p_listing_id,p_offset)$function$\n",
         "securityDefiner": false
       },
       {
@@ -9346,6 +9568,16 @@
         "schema": "public",
         "arguments": "p_code text",
         "definition": "CREATE OR REPLACE FUNCTION public.send_friend_request(p_code text)\n RETURNS uuid\n LANGUAGE sql\n SET search_path TO ''\nAS $function$ select app_private.send_friend_request(p_code) $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "set_exchange_listing_like",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_listing_id uuid, p_liked boolean",
+        "definition": "CREATE OR REPLACE FUNCTION public.set_exchange_listing_like(p_listing_id uuid, p_liked boolean)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.set_exchange_listing_like(p_listing_id,p_liked)$function$\n",
         "securityDefiner": false
       },
       {
@@ -11430,6 +11662,108 @@
         "table": "collectible_species",
         "schema": "public",
         "definition": "TRIGGER DEFERRABLE INITIALLY DEFERRED"
+      },
+      {
+        "name": "exchange_listing_comments_body_check",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "definition": "CHECK ((((char_length(btrim(body)) >= 1) AND (char_length(btrim(body)) <= 500)) AND (body ~ '[^[:space:]]'::text)))"
+      },
+      {
+        "name": "exchange_listing_comments_body_not_null",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "definition": "NOT NULL body"
+      },
+      {
+        "name": "exchange_listing_comments_created_at_not_null",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "exchange_listing_comments_id_not_null",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "exchange_listing_comments_listing_id_fkey",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "definition": "FOREIGN KEY (listing_id) REFERENCES exchange_listings(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "exchange_listing_comments_listing_id_not_null",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "definition": "NOT NULL listing_id"
+      },
+      {
+        "name": "exchange_listing_comments_operation_id_not_null",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "exchange_listing_comments_pkey",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "exchange_listing_comments_user_id_fkey",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "exchange_listing_comments_user_id_not_null",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "exchange_listing_comments_user_id_operation_id_key",
+        "table": "exchange_listing_comments",
+        "schema": "public",
+        "definition": "UNIQUE (user_id, operation_id)"
+      },
+      {
+        "name": "exchange_listing_likes_created_at_not_null",
+        "table": "exchange_listing_likes",
+        "schema": "public",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "exchange_listing_likes_listing_id_fkey",
+        "table": "exchange_listing_likes",
+        "schema": "public",
+        "definition": "FOREIGN KEY (listing_id) REFERENCES exchange_listings(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "exchange_listing_likes_listing_id_not_null",
+        "table": "exchange_listing_likes",
+        "schema": "public",
+        "definition": "NOT NULL listing_id"
+      },
+      {
+        "name": "exchange_listing_likes_pkey",
+        "table": "exchange_listing_likes",
+        "schema": "public",
+        "definition": "PRIMARY KEY (listing_id, user_id)"
+      },
+      {
+        "name": "exchange_listing_likes_user_id_fkey",
+        "table": "exchange_listing_likes",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "exchange_listing_likes_user_id_not_null",
+        "table": "exchange_listing_likes",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
       },
       {
         "name": "exchange_active_sale_only",
@@ -18960,6 +19294,27 @@
     "formatVersion": 1,
     "functionGrants": [
       {
+        "name": "add_exchange_listing_comment",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_body text, p_operation_id uuid"
+      },
+      {
+        "name": "add_exchange_listing_comment",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_listing_id uuid, p_body text, p_operation_id uuid"
+      },
+      {
+        "name": "add_exchange_listing_comment",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_body text, p_operation_id uuid"
+      },
+      {
         "name": "adopt_suggestion",
         "role": "anon",
         "schema": "app_private",
@@ -19653,6 +20008,27 @@
         "arguments": ""
       },
       {
+        "name": "delete_exchange_listing_comment",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_comment_id uuid"
+      },
+      {
+        "name": "delete_exchange_listing_comment",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_comment_id uuid"
+      },
+      {
+        "name": "delete_exchange_listing_comment",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_comment_id uuid"
+      },
+      {
         "name": "deliver_notice_publication",
         "role": "anon",
         "schema": "app_private",
@@ -19672,6 +20048,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "edit_exchange_listing_title",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_title text"
+      },
+      {
+        "name": "edit_exchange_listing_title",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_listing_id uuid, p_title text"
+      },
+      {
+        "name": "edit_exchange_listing_title",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_title text"
       },
       {
         "name": "equip_fishing_rod",
@@ -19798,6 +20195,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "exchange_listing_detail",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_offset integer"
+      },
+      {
+        "name": "exchange_listing_detail",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_listing_id uuid, p_offset integer"
+      },
+      {
+        "name": "exchange_listing_detail",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_offset integer"
       },
       {
         "name": "exchange_post",
@@ -21417,6 +21835,27 @@
         "arguments": "p_user_id uuid"
       },
       {
+        "name": "set_exchange_listing_like",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_liked boolean"
+      },
+      {
+        "name": "set_exchange_listing_like",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_listing_id uuid, p_liked boolean"
+      },
+      {
+        "name": "set_exchange_listing_like",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_liked boolean"
+      },
+      {
         "name": "set_player_avatar",
         "role": "anon",
         "schema": "app_private",
@@ -21921,6 +22360,27 @@
         "arguments": "p_region_id text"
       },
       {
+        "name": "add_exchange_listing_comment",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_body text, p_operation_id uuid"
+      },
+      {
+        "name": "add_exchange_listing_comment",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_listing_id uuid, p_body text, p_operation_id uuid"
+      },
+      {
+        "name": "add_exchange_listing_comment",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_body text, p_operation_id uuid"
+      },
+      {
         "name": "adopt_suggestion",
         "role": "anon",
         "schema": "public",
@@ -22362,6 +22822,48 @@
         "arguments": "p_id uuid"
       },
       {
+        "name": "delete_exchange_listing_comment",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_comment_id uuid"
+      },
+      {
+        "name": "delete_exchange_listing_comment",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_comment_id uuid"
+      },
+      {
+        "name": "delete_exchange_listing_comment",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_comment_id uuid"
+      },
+      {
+        "name": "edit_exchange_listing_title",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_title text"
+      },
+      {
+        "name": "edit_exchange_listing_title",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_listing_id uuid, p_title text"
+      },
+      {
+        "name": "edit_exchange_listing_title",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_title text"
+      },
+      {
         "name": "equip_fishing_rod",
         "role": "anon",
         "schema": "public",
@@ -22444,6 +22946,27 @@
         "schema": "public",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "exchange_listing_detail",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_offset integer"
+      },
+      {
+        "name": "exchange_listing_detail",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_listing_id uuid, p_offset integer"
+      },
+      {
+        "name": "exchange_listing_detail",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_offset integer"
       },
       {
         "name": "exchange_post",
@@ -23326,6 +23849,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_code text"
+      },
+      {
+        "name": "set_exchange_listing_like",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_liked boolean"
+      },
+      {
+        "name": "set_exchange_listing_like",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_listing_id uuid, p_liked boolean"
+      },
+      {
+        "name": "set_exchange_listing_like",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_listing_id uuid, p_liked boolean"
       },
       {
         "name": "set_player_avatar",

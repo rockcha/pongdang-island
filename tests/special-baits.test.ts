@@ -17,22 +17,22 @@ beforeEach(async()=>{
 })
 it('sells exactly the three requested baits and keeps first greeting reward-only',async()=>{
  const rows=(await db.query('select id,price from public.fishing_baits where id=any($1) order by id',[newBaits])).rows
- expect(rows).toEqual([{id:'bait_first_greeting',price:null},{id:'bait_forbidden_star',price:130},{id:'bait_grubby_magnet',price:40},{id:'bait_sea_memory',price:60}])
+ expect(rows).toEqual([{id:'bait_first_greeting',price:null},{id:'bait_forbidden_star',price:120},{id:'bait_grubby_magnet',price:20},{id:'bait_sea_memory',price:60}])
  const operation=crypto.randomUUID()
  await db.query("select public.buy_fishing_bait('bait_grubby_magnet',$1)",[operation])
  await db.query("select public.buy_fishing_bait('bait_grubby_magnet',$1)",[operation])
- expect((await db.query('select gold,inventory from public.player_wallets where user_id=$1',[uid])).rows[0]).toMatchObject({gold:9960,inventory:{bait_grubby_magnet:101}})
+ expect((await db.query('select gold,inventory from public.player_wallets where user_id=$1',[uid])).rows[0]).toMatchObject({gold:9980,inventory:{bait_grubby_magnet:101}})
  await expect(db.query("select public.buy_fishing_bait('bait_first_greeting',$1)",[crypto.randomUUID()])).rejects.toThrow(/BAIT_NOT_FOR_SALE/)
 })
 it('sells safe bait and reopens decoration bait sales',async()=>{
- for(const [id,price] of [['bait_safe',80],['bait_magnet',50]] as const){
+ for(const [id,price] of [['bait_safe',65],['bait_magnet',50]] as const){
   const op=crypto.randomUUID()
   await db.query('select public.buy_fishing_bait($1,$2)',[id,op])
   await db.query('select public.buy_fishing_bait($1,$2)',[id,op])
   expect((await db.query('select delta from public.gold_transactions where operation_id=$1',[op])).rows).toEqual([{delta:-price}])
  }
  const rows=(await db.query('select price from public.fishing_baits order by sort_order')).rows
- expect(rows.slice(0,9).map(row=>row.price)).toEqual([30,80,40,60,130,50,null,null,null])
+ expect(rows.slice(0,9).map(row=>row.price)).toEqual([25,65,20,60,120,50,null,null,null])
 })
 it('retries lodestone purchases without duplicate debit or inventory',async()=>{
  await db.query("update public.player_wallets set inventory=jsonb_set(inventory,'{bait_magnet}','3') where user_id=$1",[uid])

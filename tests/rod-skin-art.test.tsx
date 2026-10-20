@@ -11,12 +11,12 @@ it('changes reel decoration while preserving gauge geometry, rotation and contro
  const props={active:true,waiting:false,won:false,pressed:false,reduced:false,tension:62,rotation:144,buttonRef:createRef<HTMLButtonElement>(),onHold:()=>{},onRelease:()=>{}}
  const view=render(<FishingReel {...props}/>)
  const button=view.container.querySelector('button')!
- const original={label:button.getAttribute('aria-label'),size:button.className,gauge:view.container.querySelector('circle[stroke-dasharray]')!.outerHTML}
+ const original={label:button.getAttribute('aria-label'),size:button.className,gauge:(view.container.querySelector('[data-rod-gauge] span[style]') as HTMLElement).style.width}
  for(const {id} of fishingRods){
   view.rerender(<FishingReel {...props} rod={fishingRods.find(r=>r.id===id)}/>)
   expect(view.container.querySelector('[data-skin-frame]')?.getAttribute('data-skin-frame')).toBe(id)
   expect(view.container.querySelector('[data-skin-rotor]')?.parentElement?.getAttribute('transform')).toBe('rotate(144)')
-  expect(view.container.querySelector('circle[stroke-dasharray]')!.outerHTML).toBe(original.gauge)
+  expect((view.container.querySelector('[data-rod-gauge] span[style]') as HTMLElement).style.width).toBe(original.gauge)
   expect(button.getAttribute('aria-label')).toBe(original.label)
   expect(button.className).toBe(original.size)
  }

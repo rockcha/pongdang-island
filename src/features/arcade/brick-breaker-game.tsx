@@ -269,7 +269,7 @@ function AccountBrickGame() {
                 {started && lifeLoss > 0 && !score.awaitingRestart && (
                   <BrickLifeLoss sequence={lifeLoss} />
                 )}
-                {started && score.awaitingRestart && !paused && !error && (
+                {started && !lab && !ended && score.phase === 'ready' && !paused && !error && (
                   <BrickRestartOverlay
                     score={score}
                     busy={busy}
@@ -280,7 +280,7 @@ function AccountBrickGame() {
                   !lab &&
                   !ended &&
                   !score.awaitingRestart &&
-                  (score.phase === 'ready' || score.held) &&
+                  score.held &&
                   !paused &&
                   !error && (
                     <Button
@@ -289,7 +289,7 @@ function AccountBrickGame() {
                       onClick={() => controller.current?.launch()}
                     >
                       <Play className="size-4" />
-                      {score.held ? '공 다시 발사' : '시작하기'}
+                      공 다시 발사
                     </Button>
                   )}
                 {!error && !started && (

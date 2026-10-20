@@ -3,6 +3,32 @@
   "encoding": "768x512 JPEG, quality 90; full-resolution generated original preserved outside repository",
   "reference": "public/branding/pongi-welcome.png",
   "generator": "image_gen",
+  "modeIcons": [
+    {
+      "asset": "public/arcade/ladder/mode-calm.png",
+      "encoding": "192x192 transparent PNG",
+      "generator": "image_gen built-in",
+      "prompt": "Use case: stylized-concept. Asset type: single transparent PNG icon for a cozy island game wave mode selection card. Subject: one low gentle ripple with a small warm sun. Minimal cute hand-painted storybook game item, rounded shapes, caramel brown outline, warm cream foam, muted dusty teal water, peach and honey accents, soft matte shading. Centered square composition with generous transparent margins, readable at 64px. No text, letters, numbers, frame, scenery, ground shadow or watermark. Actual transparent background. Match a warm ivory peach seashell game UI."
+    },
+    {
+      "asset": "public/arcade/ladder/mode-wave.png",
+      "encoding": "192x192 transparent PNG",
+      "generator": "image_gen built-in",
+      "prompt": "Use case: stylized-concept. Asset type: single transparent PNG icon for a cozy island game wave mode selection card. Subject: one rounded curling medium ocean wave with soft foam. Minimal cute hand-painted storybook game item, rounded shapes, caramel brown outline, warm cream foam, muted dusty teal water, peach and honey accents, soft matte shading. Centered square composition with generous transparent margins, readable at 64px. No text, letters, numbers, frame, scenery, ground shadow or watermark. Actual transparent background. Match a warm ivory peach seashell game UI."
+    },
+    {
+      "asset": "public/arcade/ladder/mode-storm.png",
+      "encoding": "192x192 transparent PNG",
+      "generator": "image_gen built-in",
+      "prompt": "Use case: stylized-concept. Asset type: single transparent PNG icon for a cozy island game wave mode selection card. Subject: one dramatic curling ocean wave below a small storm cloud and golden lightning bolt. Minimal cute hand-painted storybook game item, rounded shapes, caramel brown outline, warm cream foam, muted dusty teal water, peach and honey accents, soft matte shading. Centered square composition with generous transparent margins, readable at 64px. No text, letters, numbers, frame, scenery, ground shadow or watermark. Actual transparent background. Match a warm ivory peach seashell game UI."
+    }
+  ],
+  "shellSprite": {
+    "asset": "public/arcade/ladder/shell-states.png",
+    "encoding": "256x128 transparent PNG, two 128px cells: closed / open",
+    "reference": "public/arcade/ladder/shell.png",
+    "prompt": "Two-frame horizontal scallop shell sprite sheet on transparent background. Match the ivory peach shell and caramel outline reference. Left: closed shell. Right: open shell with empty pearlescent interior, no pearl or coin. Equal square cells, centered, consistent hinge, generous margins, no text or dividers."
+  },
   "shell": {
     "asset": "public/arcade/ladder/shell.png",
     "encoding": "128x128 transparent PNG",

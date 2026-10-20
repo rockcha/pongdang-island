@@ -12,6 +12,8 @@ export function GameStartOverlay({
   paidDisabled,
   practiceDisabled,
   fee = 10,
+  freeLabel = '(무료)',
+  compactFreeLabel = false,
   extraAction,
   extraPanel,
   centerActions = false,
@@ -26,6 +28,8 @@ export function GameStartOverlay({
   paidDisabled: boolean
   practiceDisabled: boolean
   fee?: number
+  freeLabel?: string
+  compactFreeLabel?: boolean
   extraAction?: ReactNode
   extraPanel?: ReactNode
   centerActions?: boolean
@@ -37,15 +41,17 @@ export function GameStartOverlay({
     >
       <div className={extraAction ? 'grid grid-cols-3' : 'grid grid-cols-2'}>
         <Button
-          className="min-h-14 min-w-0 gap-1 rounded-none border-r border-border px-1 text-xs"
-          aria-label={fee === 0 ? '실전 (무료)' : `실전 (골드 ${fee})`}
+          className={`min-h-14 min-w-0 ${compactFreeLabel && fee === 0 ? 'gap-0' : 'gap-1'} rounded-none border-r border-border px-1 text-xs`}
+          aria-label={
+            fee === 0 ? `실전${compactFreeLabel ? '' : ' '}${freeLabel}` : `실전 (골드 ${fee})`
+          }
           disabled={paidDisabled}
           onClick={onPaid}
         >
-          실전{' '}
+          실전{compactFreeLabel && fee === 0 ? '' : ' '}
           <span className="inline-flex items-center gap-0.5">
             {fee === 0 ? (
-              '(무료)'
+              freeLabel
             ) : (
               <>
                 (

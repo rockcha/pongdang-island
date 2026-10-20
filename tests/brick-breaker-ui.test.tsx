@@ -29,7 +29,8 @@ it('offers separate practice and laboratory modes, disabled until assets are rea
  fireEvent.click(screen.getByRole('button',{name:'연습'}))
  expect(engine.start).toHaveBeenLastCalledWith('practice')
  expect(screen.queryByRole('button',{name:/수중 미사일/})).toBeNull()
- fireEvent.click(screen.getByRole('button',{name:'시작하기'}));expect(engine.launch).toHaveBeenCalledOnce()
+ expect(engine.launch).not.toHaveBeenCalled()
+ fireEvent.click(screen.getByRole('button',{name:'화면을 터치해서 시작'}));expect(engine.launch).toHaveBeenCalledOnce()
 })
 
 it('uses a bottom touch surface and stops movement when paused',async()=>{
@@ -50,7 +51,7 @@ it('opens a dedicated lab modal and previews skills without practice or ball lau
  expect(screen.getByRole('dialog',{name:'퐁이의 벽돌깨기'}).classList.contains('arcade-game-modal')).toBe(true)
  expect(screen.getByText('모션')).toBeTruthy()
  expect(screen.getByRole('heading',{name:'퐁이의 벽돌깨기'})).toBeTruthy()
- expect(screen.queryByRole('button',{name:'시작하기'})).toBeNull()
+ expect(screen.queryByRole('button',{name:'화면을 터치해서 시작'})).toBeNull()
  expect(screen.queryByText('현재 점수')).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:/돌진하는 퐁이/}))
  expect(engine.previewSkill).toHaveBeenLastCalledWith('dash')
@@ -99,14 +100,13 @@ it('waits for a manual restart after a dropped ball and shows remaining hearts',
  await ready();fireEvent.click(screen.getByRole('button',{name:'연습'}))
  act(()=>engine.score({phase:'playing',round:1,lives:3,remaining:24}))
  act(()=>engine.score({phase:'ready',round:1,lives:2,remaining:24,awaitingRestart:true}))
- expect(within(screen.getByLabelText('공 다시 시작 안내')).getByRole('img',{name:'남은 목숨 2개'})).toBeTruthy()
- expect(screen.getByLabelText('공 다시 시작 안내')).toBeTruthy()
+ expect(within(screen.getByRole('button',{name:'화면을 터치해서 시작'})).getByRole('img',{name:'남은 목숨 2개'})).toBeTruthy()
  expect(screen.queryByLabelText('생명 1개 감소')).toBeNull()
  expect(engine.launch).not.toHaveBeenCalled()
- fireEvent.click(screen.getByRole('button',{name:'다시 시작'}))
+ fireEvent.click(screen.getByRole('button',{name:'화면을 터치해서 시작'}))
  expect(engine.launch).toHaveBeenCalledOnce()
  act(()=>engine.score({phase:'playing',round:1,lives:2,remaining:24,awaitingRestart:false}))
- expect(screen.queryByLabelText('공 다시 시작 안내')).toBeNull()
+ expect(screen.queryByRole('button',{name:'화면을 터치해서 시작'})).toBeNull()
 })
 
 it('shows life loss without pausing gameplay or blocking controls',async()=>{

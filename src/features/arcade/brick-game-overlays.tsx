@@ -1,4 +1,4 @@
-import { ArrowUpRight, ShieldCheck, Heart, Play } from 'lucide-react'
+import { ArrowUpRight, ShieldCheck, Heart, Hand } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { GameOverlay } from './game-overlay'
 import type { BrickScore } from './brick-breaker-model'
@@ -16,37 +16,36 @@ export function BrickRestartOverlay({
   onStart: () => void
 }) {
   return (
-    <GameOverlay
-      tone="ocean"
-      eyebrow="잠깐, 숨을 고르고"
-      title="한 번 더 도전해요"
-      label="공 다시 시작 안내"
-      actions={
-        <Button className="min-h-12 rounded-xl" disabled={busy} onClick={onStart}>
-          <Play className="size-4" />
-          다시 시작
-        </Button>
-      }
+    <button
+      type="button"
+      disabled={busy}
+      onClick={onStart}
+      aria-label="화면을 터치해서 시작"
+      className="absolute inset-0 z-20 flex w-full cursor-pointer flex-col items-center justify-center gap-5 bg-transparent px-5 text-center text-[#fff1dd] outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#e7c19b]"
     >
-      <div
-        role="img"
-        aria-label={`남은 목숨 ${score.lives}개`}
-        className="flex justify-center gap-3"
-      >
-        {Array.from({ length: Math.max(3, score.lives) }, (_, i) => (
-          <Heart
-            key={i}
-            aria-hidden="true"
-            className={`size-9 ${i < score.lives ? 'fill-rose-400 text-rose-400' : 'text-white/20'}`}
-          />
-        ))}
-      </div>
-      <p className="text-sm text-white/70">
-        공이 퐁이 위에서 기다리고 있어요.
-        <br />
-        준비되면 다시 시작하세요.
-      </p>
-    </GameOverlay>
+      <span className="px-7 py-6">
+        <Hand aria-hidden="true" className="mx-auto mb-3 size-7 text-[#f2cf91]" />
+        <span className="block text-xl">화면을 터치해서 시작</span>
+        <span className="mt-2 block text-xs text-white/60">
+          준비되면 보드 아무 곳이나 눌러주세요
+        </span>
+        {score.awaitingRestart && (
+          <span
+            role="img"
+            aria-label={`남은 목숨 ${score.lives}개`}
+            className="mt-5 flex justify-center gap-3"
+          >
+            {Array.from({ length: Math.max(3, score.lives) }, (_, i) => (
+              <Heart
+                key={i}
+                aria-hidden="true"
+                className={`size-9 ${i < score.lives ? 'fill-rose-400 text-rose-400' : 'text-white/20'}`}
+              />
+            ))}
+          </span>
+        )}
+      </span>
+    </button>
   )
 }
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowDown, RotateCcw } from 'lucide-react'
+import { ArrowDown, ArrowLeft, ArrowRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/components/auth-provider'
 import { GoldIcon, useGold } from '@/features/gold/gold-provider'
@@ -13,6 +13,7 @@ import { LadderRanking } from './ladder-ranking'
 import { LadderBoard } from './ladder-board'
 import { LadderResult } from './ladder-result'
 import {
+  LADDER_REVEAL_MS,
   ladderModes,
   practiceLadder,
   type LadderBet,
@@ -55,7 +56,7 @@ function AccountLadder({ account }: { account: string }) {
   const [practice, setPractice] = useState(false)
   const [open, setOpen] = useState(false)
   const [busy, setBusy] = useState(false)
-  const [phase, setPhase] = useState<'select' | 'reveal' | 'result'>('select')
+  const [phase, setPhase] = useState<'setup' | 'stake' | 'select' | 'reveal' | 'result'>('setup')
   const [run, setRun] = useState<LadderRun | null>(null)
   const [goldEffect, setGoldEffect] = useState<{ id: string; amount: number } | null>(null)
   const [error, setError] = useState('')
@@ -78,6 +79,7 @@ function AccountLadder({ account }: { account: string }) {
     setMode(pending.mode)
     setStake(pending.stake)
     setChoice(pending.choice)
+    setPhase('select')
     setOpen(true)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -90,7 +92,7 @@ function AccountLadder({ account }: { account: string }) {
           void gold.refresh()
         }
       },
-      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 0 : 3400,
+      window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ? 0 : LADDER_REVEAL_MS,
     )
     return () => clearTimeout(timer)
   }, [phase, practice]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -110,12 +112,12 @@ function AccountLadder({ account }: { account: string }) {
     setGoldEffect(null)
     setChoice(null)
     setRun(null)
-    setPhase('select')
+    setPhase('setup')
     setError('')
     setOpen(true)
   }
   async function play() {
-    if (locked.current || (!pending && (!valid || choice === null))) return
+    if (locked.current || phase !== 'select' || (!pending && (!valid || choice === null))) return
     const bet = pending ?? { operation: randomId(), mode, stake, choice: choice! }
     locked.current = true
     setBusy(true)
@@ -174,7 +176,7 @@ function AccountLadder({ account }: { account: string }) {
           onExit={() => {
             setOpen(false)
             setGoldEffect(null)
-            if (!practice && phase !== 'select') void gold.refresh()
+            if (!practice && run) void gold.refresh()
           }}
         >
           {!open ? (
@@ -183,10 +185,11 @@ function AccountLadder({ account }: { account: string }) {
                 title="퐁이의 물결 사다리"
                 description="네 갈래 물결 중 하나를 골라, 조개 속 행운을 만나보세요."
                 poster="/arcade/ladder/thumbnail.jpg"
-                fee={stake}
+                fee={0}
+                compactFreeLabel
                 onPaid={() => begin(false)}
                 onPractice={() => begin(true)}
-                paidDisabled={!!pending || gold.loading || gold.wallet.gold < stake}
+                paidDisabled={!!pending}
                 practiceDisabled={!!pending}
                 extraPanel={
                   pending ? (
@@ -218,20 +221,62 @@ function AccountLadder({ account }: { account: string }) {
                   <GoldChange delta={goldEffect.amount} />
                 </div>
               )}
-              <div className="ladder-scroll min-h-0 flex-1 overflow-y-auto overscroll-contain">
+              <ol className="ladder-progress" aria-label="게임 진행 단계">
+                {['물결', '금액', '조개', '결과'].map((label, i) => {
+                  const current =
+                    phase === 'setup' ? 0 : phase === 'stake' ? 1 : phase === 'result' ? 3 : 2
+                  return (
+                    <li key={label} aria-current={current === i ? 'step' : undefined}>
+                      <span />
+                      {label}
+                    </li>
+                  )
+                })}
+              </ol>
+              <div
+                key={phase === 'setup' || phase === 'stake' ? phase : 'board'}
+                className={`ladder-scroll ladder-step-screen ${phase === 'setup' ? 'ladder-mode-screen' : ''} min-h-0 flex-1 overflow-y-auto overscroll-contain`}
+              >
                 <div className="ladder-intro">
-                  <span>{phase === 'select' ? '1. 물결과 금액을 골라요' : config.name}</span>
-                  <p>
-                    {phase === 'select'
+                  {phase !== 'setup' && !pending && (
+                    <button
+                      type="button"
+                      className="ladder-step-back"
+                      style={{
+                        visibility: phase === 'reveal' || phase === 'result' ? 'hidden' : undefined,
+                      }}
+                      disabled={busy || phase === 'reveal' || phase === 'result'}
+                      onClick={() => {
+                        setPhase(phase === 'stake' ? 'setup' : 'stake')
+                        setError('')
+                      }}
+                    >
+                      <ArrowLeft className="size-4" />
+                      이전
+                    </button>
+                  )}
+                  <span>
+                    {phase === 'setup'
+                      ? '어떤 물결을 탈까요?'
+                      : phase === 'stake'
+                        ? '얼마를 걸고 떠날까요?'
+                        : phase === 'select'
+                          ? '출발할 조개를 골라요'
+                          : phase === 'reveal'
+                            ? '행운을 따라가는 중…'
+                            : '조개가 열렸어요'}
+                  </span>
+                  <p hidden={phase === 'stake'}>
+                    {phase === 'setup'
                       ? '물결마다 보상의 크기가 달라요.'
-                      : phase === 'reveal'
-                        ? '조금만 기다려요. 행운을 따라가는 중…'
-                        : '조개 속 결과를 확인했어요.'}
+                      : phase === 'result'
+                        ? config.name
+                        : `${config.name} · ${stake}골드${practice ? ' · 연습' : ''}`}
                   </p>
                 </div>
-                {phase === 'select' && (
+                {phase === 'setup' && (
                   <fieldset disabled={busy || !!pending} className="ladder-settings">
-                    <legend className="sr-only">물결과 베팅금 선택</legend>
+                    <legend className="sr-only">물결 선택</legend>
                     <div role="group" aria-label="물결 유형" className="ladder-modes">
                       {(Object.keys(ladderModes) as LadderMode[]).map((id) => (
                         <button
@@ -240,6 +285,12 @@ function AccountLadder({ account }: { account: string }) {
                           aria-pressed={mode === id}
                           onClick={() => setMode(id)}
                         >
+                          <img
+                            src={`/arcade/ladder/mode-${id}.png`}
+                            alt=""
+                            width="80"
+                            height="80"
+                          />
                           <span>
                             {id === 'calm'
                               ? '잔잔한 물결'
@@ -248,17 +299,44 @@ function AccountLadder({ account }: { account: string }) {
                                 : '거친 폭풍'}
                             <small>{ladderModes[id].detail}</small>
                           </span>
+                          <span className="ladder-payout-preview">
+                            <span className="ladder-payout-grid">
+                              {ladderModes[id].payouts.map((p, i) => (
+                                <span
+                                  key={i}
+                                  className={
+                                    p === 0
+                                      ? 'ladder-payout-zero'
+                                      : p > 100
+                                        ? 'ladder-payout-profit'
+                                        : ''
+                                  }
+                                >
+                                  <strong>×{p / 100}</strong>
+                                </span>
+                              ))}
+                            </span>
+                          </span>
                         </button>
                       ))}
                     </div>
-                    <p className="ladder-odds">
-                      원금 포함 배당{' '}
-                      <span>{config.payouts.map((p) => `×${p / 100}`).join('  ·  ')}</span>
-                    </p>
+                  </fieldset>
+                )}
+                {phase === 'stake' && (
+                  <fieldset
+                    disabled={busy || !!pending}
+                    className="ladder-settings ladder-stake-settings"
+                  >
+                    <legend className="sr-only">베팅금 선택</legend>
+                    <div className="ladder-selected-mode">
+                      <img src={`/arcade/ladder/mode-${mode}.png`} alt="" width="64" height="64" />
+                      <span>
+                        {config.name}
+                        <small>{config.detail}</small>
+                      </span>
+                    </div>
                     <div className="ladder-bet">
-                      <label htmlFor="ladder-stake">
-                        베팅금 <span>(20~1,000골드)</span>
-                      </label>
+                      <label htmlFor="ladder-stake">베팅금</label>
                       <div>
                         <button
                           type="button"
@@ -289,6 +367,7 @@ function AccountLadder({ account }: { account: string }) {
                         </button>
                       </div>
                     </div>
+                    <p className="ladder-stake-limit">20골드 단위 · 최대 1,000골드</p>
                     <div className="ladder-presets">
                       {[20, 100, 200, 500].map((n) => (
                         <button
@@ -301,20 +380,39 @@ function AccountLadder({ account }: { account: string }) {
                         </button>
                       ))}
                     </div>
+                    <div className="ladder-payout-preview ladder-stake-payouts" aria-live="polite">
+                      <p className="ladder-payout-heading">예상 보상</p>
+                      <div className="ladder-payout-grid">
+                        {config.payouts.map((p, i) => (
+                          <div
+                            key={i}
+                            className={
+                              p === 0 ? 'ladder-payout-zero' : p > 100 ? 'ladder-payout-profit' : ''
+                            }
+                          >
+                            <span>×{p / 100}</span>
+                            <strong>
+                              <GoldIcon className="size-3.5" />
+                              {(stake * p) / 100}
+                            </strong>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </fieldset>
                 )}
-                {phase === 'select' && (
-                  <h3 className="ladder-step-title">2. 출발할 조개를 골라요</h3>
+                {(phase === 'select' || phase === 'reveal' || phase === 'result') && (
+                  <LadderBoard
+                    mode={mode}
+                    choice={choice}
+                    run={run}
+                    revealing={phase === 'reveal'}
+                    finished={phase === 'result'}
+                    onChoice={setChoice}
+                    disabled={busy || !!pending || phase !== 'select'}
+                    hidePaths={phase === 'select'}
+                  />
                 )}
-                <LadderBoard
-                  choice={choice}
-                  run={run}
-                  revealing={phase === 'reveal'}
-                  finished={phase === 'result'}
-                  onChoice={setChoice}
-                  disabled={busy || !!pending || phase !== 'select'}
-                />
-                {phase === 'result' && run && <LadderResult run={run} />}
                 {error && (
                   <p role="alert" className="px-4 pb-3 text-sm text-destructive">
                     {error}
@@ -322,6 +420,7 @@ function AccountLadder({ account }: { account: string }) {
                 )}
               </div>
               <GameActions className="ladder-actions" revealed={phase !== 'reveal'}>
+                {phase === 'result' && run && <LadderResult run={run} />}
                 {phase === 'select' && (
                   <p className="ladder-selection-summary">
                     {choice === null
@@ -329,18 +428,28 @@ function AccountLadder({ account }: { account: string }) {
                       : `${choice + 1}번 조개 · ${stake}골드${practice ? ' · 연습' : ''}`}
                   </p>
                 )}
-                {phase === 'result' ? (
+                {phase === 'setup' || phase === 'stake' ? (
                   <Button
                     className="min-h-12 w-full"
+                    disabled={!valid || busy}
                     onClick={() => {
-                      setRun(null)
-                      setChoice(null)
-                      setPhase('select')
+                      setPhase(phase === 'setup' ? 'stake' : 'select')
                       setError('')
                     }}
                   >
-                    <RotateCcw className="size-4" />
-                    다시 하기
+                    {phase === 'setup' ? '금액 정하기' : '조개 고르기'}
+                    <ArrowRight className="size-4" />
+                  </Button>
+                ) : phase === 'result' ? (
+                  <Button
+                    className="min-h-12 w-full"
+                    onClick={() => {
+                      setOpen(false)
+                      setGoldEffect(null)
+                      if (!practice) void gold.refresh()
+                    }}
+                  >
+                    나가기
                   </Button>
                 ) : (
                   <Button

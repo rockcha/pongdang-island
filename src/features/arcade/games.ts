@@ -30,7 +30,7 @@ export const arcadeGames: ArcadeGame[] = [
     title: '퐁이의 물결 사다리',
     description: '물결과 베팅금을 고르고 네 갈래 사다리에서 행운을 만나요.',
     icon: Shell,
-    entryFee: 20,
+    entryFee: 0,
     dailyLimit: null,
     status: 'ready',
     component: LadderGame,

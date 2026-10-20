@@ -11,31 +11,31 @@ export const HAZARD_KINDS=['shark','urchin','ink','seaweed','puffer','sticky','s
 export type DropKind=typeof ITEM_KINDS[number]|typeof HAZARD_KINDS[number]
 export const isItem=(kind:DropKind)=>ITEM_KINDS.some(item=>item===kind)
 export type Drop={id:number;kind:DropKind;x:number;y:number;warning:number;vx?:number;vy?:number;rotation?:number;age?:number;targetX?:number;targetY?:number;originX?:number;originY?:number;bottle?:boolean;emitted?:number}
-export const POISON_POURS=[1.25,1.43,1.95,2.08,2.66,3.15,3.28] as const
+export const POISON_POURS=[1.25,1.95,2.66] as const
 export function pufferRadius(age:number){return 12+3*(1-Math.cos(age*Math.PI*2/1.2))}
 export function pufferFrame(age:number){return Math.floor((age%1.2)/0.3)%4}
-export function itemDrop(roll:number):typeof ITEM_KINDS[number]{const normalSlots=(ITEM_KINDS.length-1)*2,slot=Math.max(0,Math.min(normalSlots,Math.floor(roll*(normalSlots+1))));return slot<normalSlots?ITEM_KINDS[Math.floor(slot/2)]:'heart'}
+export function itemDrop(roll:number):typeof ITEM_KINDS[number]{return ITEM_KINDS[Math.max(0,Math.min(ITEM_KINDS.length-1,Math.floor(roll*ITEM_KINDS.length)))]}
 export type Ball={x:number;y:number;vx:number;vy:number;held?:boolean;offset?:number}
 export function hazardTouches(drop:Drop,paddleX:number,paddleY:number,paddleWidth:number){
  if(drop.bottle)return false
  const dx=Math.max(0,Math.abs(drop.x-paddleX)-Math.max(12,paddleWidth/2-5)),dy=Math.max(0,Math.abs(drop.y-paddleY)-4)
  if(drop.kind==='shark')return (dx/9)**2+(dy/17)**2<=1
- const radius=drop.kind==='puffer'?pufferRadius(drop.age??0)*0.72:drop.kind==='anchor'?11:drop.kind==='urchin'||drop.kind==='jelly'?9:8
+ const radius=drop.kind==='puffer'?pufferRadius(drop.age??0)*0.5:drop.kind==='anchor'?11:drop.kind==='urchin'?6:drop.kind==='jelly'?9:8
  return dx*dx+dy*dy<=radius*radius
 }
 export type Shot={id:number;x:number;y:number}
 export type DropFeedback={kind:'item'|'hazard';message:string}
 export type BrickPhase='ready'|'playing'|'round-clear'|'over'|'banked'
 export type BrickEffect={kind:DropKind;label:string;seconds?:number}
-export type BrickScore={phase:BrickPhase;round:number;lives:number;secured:number;pending:number;remaining:number;testMode?:boolean;held?:boolean;reward?:number;roundReward?:number;effects?:BrickEffect[]}
-export function brickDrop(roll:number):Drop['kind']|null{return roll<0.25?'shark':roll<0.5?'item':null}
+export type BrickScore={phase:BrickPhase;round:number;lives:number;remaining:number;testMode?:boolean;held?:boolean;reward?:number;roundReward?:number;effects?:BrickEffect[]}
+export function brickDrop(roll:number):Drop['kind']|null{return roll<0.15?'shark':roll<0.30?'item':null}
 
-/** Local practice only. No wallet, score submission, or monetary reward calls. */
+/** Deterministic simulation shared by practice, real play and server verification. */
 export class BrickPractice {
  private paddleHit=false
  drainPaddleHit(){const hit=this.paddleHit;this.paddleHit=false;return hit}
  phase:BrickPhase='ready'
- round=1;lives=3;secured=0;pending=0;paddleX=180;invulnerable=0
+ round=1;lives=3;paddleX=180;invulnerable=0
  reward=0
  testMode=false
  labMode=false
@@ -46,9 +46,6 @@ export class BrickPractice {
  set ball(value:Ball){this.balls=[value]}
  wideSeconds=0;shrinkSeconds=0;fastSeconds=0;inkSeconds=0;stickySeconds=0;shield=false;splitArmed=false
  magnetArmed=false
- doubleScoreSeconds=0
- tripleScoreSeconds=0
- get scoreMultiplier(){return this.tripleScoreSeconds>0?3:this.doubleScoreSeconds>0?2:1}
  private anchorSlams:{x:number;y:number}[]=[]
  private torpedoBlasts:{x:number;y:number}[]=[]
  private songs:{y:number}[]=[]
@@ -72,7 +69,7 @@ export class BrickPractice {
  }
  activeEffects():BrickEffect[]{
   const effects:BrickEffect[]=[]
-  for(const [kind,label,seconds] of [['wide','긴 널판지',this.wideSeconds],['shrink','널판지 축소',this.shrinkSeconds],['seaweed','공 속도 증가',this.fastSeconds],['ink','먹물',this.inkSeconds],['sticky','끈끈이',this.stickySeconds],['treasure','점수 3배',this.tripleScoreSeconds],['pirate','점수 2배',this.tripleScoreSeconds>0?0:this.doubleScoreSeconds]] as const){
+  for(const [kind,label,seconds] of [['wide','긴 널판지',this.wideSeconds],['shrink','널판지 축소',this.shrinkSeconds],['seaweed','공 속도 증가',this.fastSeconds],['ink','먹물',this.inkSeconds],['sticky','끈끈이',this.stickySeconds]] as const){
    if(seconds>0)effects.push({kind,label,seconds:Math.ceil(seconds)})
   }
   if(this.shield)effects.push({kind:'shield',label:'보호막 1회'})
@@ -81,7 +78,7 @@ export class BrickPractice {
   if(this.magnetArmed||this.balls.some(ball=>ball.held))effects.push({kind:'magnet',label:this.magnetArmed?'자석 대기':'공 발사 대기'})
   return effects
  }
- score():BrickScore{return {phase:this.phase,round:this.round,lives:this.lives,secured:this.secured,pending:this.pending,remaining:this.bricks.length,testMode:this.testMode,held:this.balls.some(b=>b.held),reward:this.reward,roundReward:brickRound(this.round).reward,effects:this.activeEffects()}}
+ score():BrickScore{return {phase:this.phase,round:this.round,lives:this.lives,remaining:this.bricks.length,testMode:this.testMode,held:this.balls.some(b=>b.held),reward:this.reward,roundReward:brickRound(this.round).reward,effects:this.activeEffects()}}
  resize(height:number){
   const previous=this.height;this.height=Math.max(280,height)
   for(const brick of this.bricks){brick.x=BRICK.left+(brick.id%BRICK.columns)*(BRICK.width+BRICK.gapX);brick.y=this.brickTop()+Math.floor(brick.id/BRICK.columns)*(BRICK.height+BRICK.gapY)}
@@ -121,9 +118,13 @@ export class BrickPractice {
    this.drops.push({id:++this.serial,kind,x,y,age:0,warning:0.45,targetX,targetY,vx:dx/distance*440,vy:dy/distance*440})
    return
   }
-  for(let i=0;i<count;i++)this.drops.push({id:++this.serial,kind,x,y,age:0,warning:0,...(kind==='urchin'?{vx:(i-1)*95+(this.random()-0.5)*65,vy:-110-this.random()*90,rotation:i*Math.PI*2/3}:kind==='puffer'?{vx:i===0?-24:24,vy:38}:kind==='anchor'?{vy:6}:kind==='jelly'?{originX:x}:{})})
+  for(let i=0;i<count;i++)this.drops.push({id:++this.serial,kind,x,y,age:0,warning:0,...(kind==='urchin'?{vx:(i-1)*55+(this.random()-0.5)*30,vy:-110-this.random()*90,rotation:i*Math.PI*2/3}:kind==='puffer'?{vx:i===0?-12:12,vy:38}:kind==='anchor'?{vy:6}:kind==='jelly'?{originX:x}:{})})
  }
  move(x:number){this.paddleX=Math.max(this.paddleWidth/2+8,Math.min(BOARD.width-this.paddleWidth/2-8,x));if(this.phase==='ready')this.ball.x=this.paddleX;for(const b of this.balls)if(b.held){b.offset=Math.max(-this.paddleWidth/2+6,Math.min(this.paddleWidth/2-6,b.offset??0));b.x=this.paddleX+b.offset;b.y=this.paddleY-12}}
+ moveTarget(x:number,seconds:number){
+  const distance=960*(this.stickySeconds>0?0.5:1)*Math.max(0,Math.min(0.05,seconds))
+  this.move(this.paddleX+Math.max(-distance,Math.min(distance,x-this.paddleX)))
+ }
  moveInput(x:number,seconds:number){const max=420*0.5*Math.max(0,Math.min(0.1,seconds));this.move(this.stickySeconds>0?this.paddleX+Math.max(-max,Math.min(max,x-this.paddleX)):x)}
  launch(){
   if(this.labMode)return
@@ -141,16 +142,16 @@ export class BrickPractice {
   this.songs=[]
   this.anchorSlams=[]
   this.torpedoBlasts=[]
-  this.clearEffects();this.invulnerable=0;this.drops=[];this.shots=[];this.pending=0;this.phase='ready';this.resetBall()
+  this.clearEffects();this.invulnerable=0;this.drops=[];this.shots=[];this.phase='ready';this.resetBall()
  }
  private brickTop(){return Math.max(34,Math.min(78,48+(this.height-230)*0.27)-BRICK.height*1.5)}
  private resetBall(){this.ball={x:this.paddleX,y:this.paddleY-16,vx:0,vy:0}}
- private clearEffects(){this.wideSeconds=0;this.shrinkSeconds=0;this.fastSeconds=0;this.inkSeconds=0;this.stickySeconds=0;this.inkPatches=[];this.shield=false;this.splitArmed=false;this.magnetArmed=false;this.waveShots=[];this.dashShots=[];this.starShots=[];this.doubleScoreSeconds=0;this.tripleScoreSeconds=0}
+ private clearEffects(){this.wideSeconds=0;this.shrinkSeconds=0;this.fastSeconds=0;this.inkSeconds=0;this.stickySeconds=0;this.inkPatches=[];this.shield=false;this.splitArmed=false;this.magnetArmed=false;this.waveShots=[];this.dashShots=[];this.starShots=[]}
  damage(missedBall=false){
   if(this.phase!=='playing'||this.invulnerable>0)return false
   if(this.testMode){this.invulnerable=1.1;if(missedBall){this.resetBall();this.phase='ready';this.launch()}return true}
   this.lives--;this.clearEffects();this.drops=[];this.shots=[];this.invulnerable=1.1
-  if(this.lives<=0){this.phase='over';this.pending=0}else{this.phase='ready';this.resetBall()}
+  if(this.lives<=0){this.phase='over'}else{this.phase='ready';this.resetBall()}
   return true
  }
  hitBrick(id:number,source:BrickImpact['source']='ball'){
@@ -161,8 +162,8 @@ export class BrickPractice {
   if(this.impacts.length>64)this.impacts.shift()
   if(brick.hp>0)return
   if(this.labMode){this.bricks=this.bricks.filter(b=>b.id!==id);return}
-  this.bricks=this.bricks.filter(b=>b.id!==id);this.pending+=this.scoreMultiplier
-  if(!this.bricks.length){this.secured+=this.pending;this.reward+=brickRound(this.round).reward;this.pending=0;this.phase='round-clear';this.drops=[];this.shots=[];this.clearEffects();return}
+  this.bricks=this.bricks.filter(b=>b.id!==id);
+  if(!this.bricks.length){this.reward+=brickRound(this.round).reward;this.phase='round-clear';this.drops=[];this.shots=[];this.clearEffects();return}
   const category=brickDrop(this.random())
   if(category){const kind=category==='item'?itemDrop(this.random()):HAZARD_KINDS[Math.min(HAZARD_KINDS.length-1,Math.floor(this.random()*HAZARD_KINDS.length))];this.spawnDrop(kind,brick.x+BRICK.width/2,brick.y+BRICK.height/2)}
  }
@@ -172,8 +173,8 @@ export class BrickPractice {
   if(isItem(drop.kind)){
    let message='수중 미사일 발사!'
    if(drop.kind==='item')this.fire()
-   if(drop.kind==='pirate'){this.doubleScoreSeconds=10;message='해적의 동전! 10초간 점수 ×2'}
-   if(drop.kind==='treasure'){this.tripleScoreSeconds=10;message='해적의 보물! 10초간 점수 ×3'}
+   if(drop.kind==='pirate'){if(!this.labMode)this.reward+=20;message='해적의 동전! +20 골드'}
+   if(drop.kind==='treasure'){if(!this.labMode)this.reward+=50;message='해적의 보물! +50 골드'}
    if(drop.kind==='whale'){
     const bottomY=Math.max(...this.bricks.map(brick=>brick.y))
     const bottom=this.bricks.filter(brick=>Math.abs(brick.y-bottomY)<0.1)
@@ -199,14 +200,10 @@ export class BrickPractice {
   if(this.invulnerable>0)return
   if(drop.kind==='anchor')this.anchorSlams.push({x:drop.x,y:this.paddleY})
   if(this.shield){this.shield=false;this.invulnerable=0.6;this.feedback.push({kind:'item',message:'보호막이 막아줬어요!'});return}
-  if(drop.kind==='poison'){this.pending=Math.max(0,this.pending-1);this.invulnerable=0.6;this.feedback.push({kind:'hazard',message:'독극물에 닿았어요! 점수 −1'});return}
-  if(drop.kind==='shark'){if(this.damage())this.feedback.push({kind:'hazard',message:'상어에게 물렸어요 ㅠ'});return}
-  if(drop.kind==='anchor'){if(this.damage())this.feedback.push({kind:'hazard',message:'무거운 닻에 쾅! 생명 −1'});return}
-  if(drop.kind==='torpedo'){if(this.damage())this.feedback.push({kind:'hazard',message:'어뢰 폭발! 생명 −1'});return}
-  let message='성게에 콕! 점수 −2'
-  if(drop.kind==='urchin'){this.pending=Math.max(0,this.pending-2);this.invulnerable=0.6}
-  if(drop.kind==='puffer'){this.pending=Math.max(0,this.pending-2);this.invulnerable=0.6;message='복어에 콕! 점수 −2'}
-  if(drop.kind==='jelly'){this.pending=Math.max(0,this.pending-1);this.invulnerable=0.6;message='독해파리에 찌릿! 점수 −1'}
+  const damageMessages:Partial<Record<DropKind,string>>={poison:'독극물에 닿았어요! 생명 −1',shark:'상어에게 물렸어요 ㅠ',anchor:'무거운 닻에 쾅! 생명 −1',torpedo:'어뢰 폭발! 생명 −1',urchin:'성게에 콕! 생명 −1',puffer:'복어에 콕! 생명 −1',jelly:'독해파리에 찌릿! 생명 −1'}
+  const damageMessage=damageMessages[drop.kind]
+  if(damageMessage){if(this.damage())this.feedback.push({kind:'hazard',message:damageMessage});return}
+  let message=''
   if(drop.kind==='sticky'){this.stickySeconds=6;message='끈적끈적! 움직임이 느려요'}
   if(drop.kind==='shrink'){this.wideSeconds=0;this.shrinkSeconds=6;message='널판지가 줄었어요!'}
   if(drop.kind==='ink'){
@@ -236,8 +233,6 @@ export class BrickPractice {
   this.invulnerable=Math.max(0,this.invulnerable-dt)
   if(this.phase!=='playing')return
   this.previewSeconds=Math.max(0,this.previewSeconds-dt)
-  this.doubleScoreSeconds=Math.max(0,this.doubleScoreSeconds-dt)
-  this.tripleScoreSeconds=Math.max(0,this.tripleScoreSeconds-dt)
   this.wideSeconds=Math.max(0,this.wideSeconds-dt);this.shrinkSeconds=Math.max(0,this.shrinkSeconds-dt);this.move(this.paddleX)
   this.inkSeconds=Math.max(0,this.inkSeconds-dt)
   this.stickySeconds=Math.max(0,this.stickySeconds-dt)

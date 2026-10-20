@@ -25,3 +25,12 @@ it('compares persisted input prefixes by values regardless of JSON key order',as
  fetcher.mockReset();fetcher.mockResolvedValueOnce(Response.json({id:'owner'})).mockResolvedValueOnce(Response.json([{...run,replay:{ticks:1,inputs:[{action:'launch',tick:0}]}}])).mockResolvedValueOnce(Response.json(run))
  expect((await handler(request({action:'checkpoint',runId:run.id,replay:{ticks:1,inputs:[{tick:0,action:'launch'}]}}))).status).toBe(200)
 })
+it('replays version 2 target movement and rejects forged target coordinates',async()=>{
+ const replay={ticks:60,inputs:[{tick:0,action:'target',value:280},{tick:1,action:'launch'}]}
+ fetcher.mockReset();fetcher.mockResolvedValueOnce(Response.json({id:'owner'})).mockResolvedValueOnce(Response.json([{...run,engine_version:2}])).mockResolvedValueOnce(Response.json({...run,engine_version:2}))
+ expect((await handler(request({action:'checkpoint',runId:run.id,replay}))).status).toBe(200)
+ expect(JSON.parse(fetcher.mock.calls[2][1].body)).toMatchObject({p_score:0,p_reward:0,p_replay:replay})
+ fetcher.mockReset();fetcher.mockResolvedValueOnce(Response.json({id:'owner'})).mockResolvedValueOnce(Response.json([{...run,engine_version:2}]))
+ expect((await handler(request({action:'checkpoint',runId:run.id,replay:{ticks:1,inputs:[{tick:0,action:'target',value:9999}]}}))).status).toBe(400)
+ expect(fetcher).toHaveBeenCalledTimes(2)
+})

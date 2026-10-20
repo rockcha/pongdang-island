@@ -44,6 +44,6 @@ export function brickCamera(pixelWidth:number,pixelHeight:number){
 
 export function brickViewport(width:number,height:number,dpr:number){
  const w=Math.max(1,Math.round(width)||1),h=Math.max(1,Math.round(height)||1)
- const ratio=Math.max(1,Math.min(Number.isFinite(dpr)?dpr:1,2,Math.sqrt(4000000/(w*h))))
+ const ratio=Math.min(Math.max(1,Number.isFinite(dpr)?dpr:1),1.5,Math.sqrt(2000000/(w*h)))
  return {width:w,height:h,pixelWidth:Math.round(w*ratio),pixelHeight:Math.round(h*ratio),ratio}
 }

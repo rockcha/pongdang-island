@@ -6,6 +6,8 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  // Temporary HTML previews and browser profiles are not application entries.
+  optimizeDeps: { entries: ['index.html'] },
   plugins: [react(), tailwindcss(), VitePWA({
     registerType: 'prompt',
     workbox: { globPatterns: ['**/*.{js,css,html,woff2}'] },

@@ -127,7 +127,7 @@ function advanceSwimmer(drop, dt) {
 		drop.y += (28 + Math.sin(age * 2.4) * 3) * dt;
 		return;
 	}
-	drop.x += ((drop.vx ?? 24) + Math.sin(age * 2.2 + drop.id) * 12) * dt;
+	drop.x += ((drop.vx ?? 12) + Math.sin(age * 2.2 + drop.id) * 6) * dt;
 	drop.y += ((drop.vy ?? 38) + Math.sin(age * 2) * 4) * dt;
 	const margin = 27;
 	if (drop.x < margin) {
@@ -144,27 +144,27 @@ var BRICK_ROUNDS = [
 	{
 		minHp: 2,
 		maxHp: 2,
-		reward: 10
+		reward: 30
 	},
 	{
 		minHp: 2,
 		maxHp: 3,
-		reward: 20
+		reward: 50
 	},
 	{
 		minHp: 3,
 		maxHp: 3,
-		reward: 30
+		reward: 70
 	},
 	{
 		minHp: 3,
 		maxHp: 4,
-		reward: 40
+		reward: 100
 	},
 	{
 		minHp: 4,
 		maxHp: 4,
-		reward: 50
+		reward: 150
 	}
 ];
 var MAX_BRICK_ROUNDS = BRICK_ROUNDS.length;
@@ -207,31 +207,26 @@ var HAZARD_KINDS = [
 var isItem = (kind) => ITEM_KINDS.some((item) => item === kind);
 var POISON_POURS = [
 	1.25,
-	1.43,
 	1.95,
-	2.08,
-	2.66,
-	3.15,
-	3.28
+	2.66
 ];
 function pufferRadius(age) {
 	return 12 + 3 * (1 - Math.cos(age * Math.PI * 2 / 1.2));
 }
 function itemDrop(roll) {
-	const normalSlots = (ITEM_KINDS.length - 1) * 2, slot = Math.max(0, Math.min(normalSlots, Math.floor(roll * (normalSlots + 1))));
-	return slot < normalSlots ? ITEM_KINDS[Math.floor(slot / 2)] : "heart";
+	return ITEM_KINDS[Math.max(0, Math.min(ITEM_KINDS.length - 1, Math.floor(roll * ITEM_KINDS.length)))];
 }
 function hazardTouches(drop, paddleX, paddleY, paddleWidth) {
 	if (drop.bottle) return false;
 	const dx = Math.max(0, Math.abs(drop.x - paddleX) - Math.max(12, paddleWidth / 2 - 5)), dy = Math.max(0, Math.abs(drop.y - paddleY) - 4);
 	if (drop.kind === "shark") return (dx / 9) ** 2 + (dy / 17) ** 2 <= 1;
-	const radius = drop.kind === "puffer" ? pufferRadius(drop.age ?? 0) * .72 : drop.kind === "anchor" ? 11 : drop.kind === "urchin" || drop.kind === "jelly" ? 9 : 8;
+	const radius = drop.kind === "puffer" ? pufferRadius(drop.age ?? 0) * .5 : drop.kind === "anchor" ? 11 : drop.kind === "urchin" ? 6 : drop.kind === "jelly" ? 9 : 8;
 	return dx * dx + dy * dy <= radius * radius;
 }
 function brickDrop(roll) {
-	return roll < .25 ? "shark" : roll < .5 ? "item" : null;
+	return roll < .15 ? "shark" : roll < .3 ? "item" : null;
 }
-/** Local practice only. No wallet, score submission, or monetary reward calls. */
+/** Deterministic simulation shared by practice, real play and server verification. */
 var BrickPractice = class {
 	paddleHit = false;
 	drainPaddleHit() {
@@ -242,8 +237,6 @@ var BrickPractice = class {
 	phase = "ready";
 	round = 1;
 	lives = 3;
-	secured = 0;
-	pending = 0;
 	paddleX = 180;
 	invulnerable = 0;
 	reward = 0;
@@ -271,11 +264,6 @@ var BrickPractice = class {
 	shield = false;
 	splitArmed = false;
 	magnetArmed = false;
-	doubleScoreSeconds = 0;
-	tripleScoreSeconds = 0;
-	get scoreMultiplier() {
-		return this.tripleScoreSeconds > 0 ? 3 : this.doubleScoreSeconds > 0 ? 2 : 1;
-	}
 	anchorSlams = [];
 	torpedoBlasts = [];
 	songs = [];
@@ -339,16 +327,6 @@ var BrickPractice = class {
 				"sticky",
 				"끈끈이",
 				this.stickySeconds
-			],
-			[
-				"treasure",
-				"점수 3배",
-				this.tripleScoreSeconds
-			],
-			[
-				"pirate",
-				"점수 2배",
-				this.tripleScoreSeconds > 0 ? 0 : this.doubleScoreSeconds
 			]
 		]) if (seconds > 0) effects.push({
 			kind,
@@ -378,8 +356,6 @@ var BrickPractice = class {
 			phase: this.phase,
 			round: this.round,
 			lives: this.lives,
-			secured: this.secured,
-			pending: this.pending,
 			remaining: this.bricks.length,
 			testMode: this.testMode,
 			held: this.balls.some((b) => b.held),
@@ -494,11 +470,11 @@ var BrickPractice = class {
 			age: 0,
 			warning: 0,
 			...kind === "urchin" ? {
-				vx: (i - 1) * 95 + (this.random() - .5) * 65,
+				vx: (i - 1) * 55 + (this.random() - .5) * 30,
 				vy: -110 - this.random() * 90,
 				rotation: i * Math.PI * 2 / 3
 			} : kind === "puffer" ? {
-				vx: i === 0 ? -24 : 24,
+				vx: i === 0 ? -12 : 12,
 				vy: 38
 			} : kind === "anchor" ? { vy: 6 } : kind === "jelly" ? { originX: x } : {}
 		});
@@ -511,6 +487,10 @@ var BrickPractice = class {
 			b.x = this.paddleX + b.offset;
 			b.y = this.paddleY - 12;
 		}
+	}
+	moveTarget(x, seconds) {
+		const distance = 960 * (this.stickySeconds > 0 ? .5 : 1) * Math.max(0, Math.min(.05, seconds));
+		this.move(this.paddleX + Math.max(-distance, Math.min(distance, x - this.paddleX)));
 	}
 	moveInput(x, seconds) {
 		const max = 210 * Math.max(0, Math.min(.1, seconds));
@@ -569,7 +549,6 @@ var BrickPractice = class {
 		this.invulnerable = 0;
 		this.drops = [];
 		this.shots = [];
-		this.pending = 0;
 		this.phase = "ready";
 		this.resetBall();
 	}
@@ -597,8 +576,6 @@ var BrickPractice = class {
 		this.waveShots = [];
 		this.dashShots = [];
 		this.starShots = [];
-		this.doubleScoreSeconds = 0;
-		this.tripleScoreSeconds = 0;
 	}
 	damage(missedBall = false) {
 		if (this.phase !== "playing" || this.invulnerable > 0) return false;
@@ -616,10 +593,8 @@ var BrickPractice = class {
 		this.drops = [];
 		this.shots = [];
 		this.invulnerable = 1.1;
-		if (this.lives <= 0) {
-			this.phase = "over";
-			this.pending = 0;
-		} else {
+		if (this.lives <= 0) this.phase = "over";
+		else {
 			this.phase = "ready";
 			this.resetBall();
 		}
@@ -645,11 +620,8 @@ var BrickPractice = class {
 			return;
 		}
 		this.bricks = this.bricks.filter((b) => b.id !== id);
-		this.pending += this.scoreMultiplier;
 		if (!this.bricks.length) {
-			this.secured += this.pending;
 			this.reward += brickRound(this.round).reward;
-			this.pending = 0;
 			this.phase = "round-clear";
 			this.drops = [];
 			this.shots = [];
@@ -678,12 +650,12 @@ var BrickPractice = class {
 			let message = "수중 미사일 발사!";
 			if (drop.kind === "item") this.fire();
 			if (drop.kind === "pirate") {
-				this.doubleScoreSeconds = 10;
-				message = "해적의 동전! 10초간 점수 ×2";
+				if (!this.labMode) this.reward += 20;
+				message = "해적의 동전! +20 골드";
 			}
 			if (drop.kind === "treasure") {
-				this.tripleScoreSeconds = 10;
-				message = "해적의 보물! 10초간 점수 ×3";
+				if (!this.labMode) this.reward += 50;
+				message = "해적의 보물! +50 골드";
 			}
 			if (drop.kind === "whale") {
 				const bottomY = Math.max(...this.bricks.map((brick) => brick.y));
@@ -768,51 +740,23 @@ var BrickPractice = class {
 			});
 			return;
 		}
-		if (drop.kind === "poison") {
-			this.pending = Math.max(0, this.pending - 1);
-			this.invulnerable = .6;
-			this.feedback.push({
-				kind: "hazard",
-				message: "독극물에 닿았어요! 점수 −1"
-			});
-			return;
-		}
-		if (drop.kind === "shark") {
+		const damageMessage = {
+			poison: "독극물에 닿았어요! 생명 −1",
+			shark: "상어에게 물렸어요 ㅠ",
+			anchor: "무거운 닻에 쾅! 생명 −1",
+			torpedo: "어뢰 폭발! 생명 −1",
+			urchin: "성게에 콕! 생명 −1",
+			puffer: "복어에 콕! 생명 −1",
+			jelly: "독해파리에 찌릿! 생명 −1"
+		}[drop.kind];
+		if (damageMessage) {
 			if (this.damage()) this.feedback.push({
 				kind: "hazard",
-				message: "상어에게 물렸어요 ㅠ"
+				message: damageMessage
 			});
 			return;
 		}
-		if (drop.kind === "anchor") {
-			if (this.damage()) this.feedback.push({
-				kind: "hazard",
-				message: "무거운 닻에 쾅! 생명 −1"
-			});
-			return;
-		}
-		if (drop.kind === "torpedo") {
-			if (this.damage()) this.feedback.push({
-				kind: "hazard",
-				message: "어뢰 폭발! 생명 −1"
-			});
-			return;
-		}
-		let message = "성게에 콕! 점수 −2";
-		if (drop.kind === "urchin") {
-			this.pending = Math.max(0, this.pending - 2);
-			this.invulnerable = .6;
-		}
-		if (drop.kind === "puffer") {
-			this.pending = Math.max(0, this.pending - 2);
-			this.invulnerable = .6;
-			message = "복어에 콕! 점수 −2";
-		}
-		if (drop.kind === "jelly") {
-			this.pending = Math.max(0, this.pending - 1);
-			this.invulnerable = .6;
-			message = "독해파리에 찌릿! 점수 −1";
-		}
+		let message = "";
 		if (drop.kind === "sticky") {
 			this.stickySeconds = 6;
 			message = "끈적끈적! 움직임이 느려요";
@@ -873,8 +817,6 @@ var BrickPractice = class {
 		this.invulnerable = Math.max(0, this.invulnerable - dt);
 		if (this.phase !== "playing") return;
 		this.previewSeconds = Math.max(0, this.previewSeconds - dt);
-		this.doubleScoreSeconds = Math.max(0, this.doubleScoreSeconds - dt);
-		this.tripleScoreSeconds = Math.max(0, this.tripleScoreSeconds - dt);
 		this.wideSeconds = Math.max(0, this.wideSeconds - dt);
 		this.shrinkSeconds = Math.max(0, this.shrinkSeconds - dt);
 		this.move(this.paddleX);
@@ -1059,8 +1001,10 @@ var BrickPractice = class {
 };
 //#endregion
 //#region src/features/arcade/brick-breaker-replay.ts
-var BRICK_ENGINE_VERSION = 1;
+var BRICK_ENGINE_VERSION = 2;
 var BRICK_TICK = 1 / 120;
+var MAX_BRICK_INPUTS = 12e4;
+var MAX_BRICK_REPLAY_BYTES = 8e6;
 function brickRandom(seed) {
 	let state = seed >>> 0;
 	return () => {
@@ -1076,13 +1020,17 @@ var BrickSession = class {
 	ticks = 0;
 	inputs = [];
 	direction = 0;
+	target = null;
 	accumulator = 0;
 	constructor(seed) {
 		this.model = new BrickPractice(brickRandom(seed));
 	}
 	command(action, value) {
-		if (action === "direction" && value === this.direction) return;
-		if (this.inputs.length >= 1e4) throw new Error("INPUT_LIMIT");
+		if (action === "direction" && value === this.direction && this.target === null) return;
+		if (action === "target" && value === this.target) return;
+		const last = this.inputs[this.inputs.length - 1];
+		if (action === "target" && last?.action === "target" && this.ticks - last.tick < 2) return;
+		if (this.inputs.length >= 12e4) throw new Error("INPUT_LIMIT");
 		this.inputs.push({
 			tick: this.ticks,
 			action,
@@ -1091,12 +1039,22 @@ var BrickSession = class {
 		this.apply(action, value);
 	}
 	apply(action, value) {
-		if (action === "direction") this.direction = value ?? 0;
-		else if (action === "launch") this.model.launch();
-		else this.model.nextRound();
+		if (action === "target") {
+			this.target = value ?? this.model.paddleX;
+			this.direction = 0;
+		} else if (action === "direction") {
+			this.direction = value ?? 0;
+			this.target = null;
+		} else if (action === "launch") this.model.launch();
+		else {
+			this.direction = 0;
+			this.target = null;
+			this.model.nextRound();
+		}
 	}
 	step() {
-		if (this.direction) this.model.moveInput(this.model.paddleX + this.direction * 420 * BRICK_TICK, BRICK_TICK);
+		if (this.target !== null) this.model.moveTarget(this.target, BRICK_TICK);
+		else if (this.direction) this.model.moveInput(this.model.paddleX + this.direction * 420 * BRICK_TICK, BRICK_TICK);
 		this.model.step(BRICK_TICK);
 		this.ticks++;
 	}
@@ -1116,19 +1074,20 @@ var BrickSession = class {
 };
 /** Inputs, movement speed, damage and rewards all use the same simulation as the browser. */
 function verifyBrickReplay(seed, replay, elapsedSeconds) {
-	if (!replay || !Number.isInteger(replay.ticks) || replay.ticks < 0 || replay.ticks > 216e3 || replay.ticks / 120 > elapsedSeconds + 2 || !Array.isArray(replay.inputs) || replay.inputs.length > 1e4) throw new Error("INVALID_REPLAY");
+	if (!replay || !Number.isInteger(replay.ticks) || replay.ticks < 0 || replay.ticks > 216e3 || replay.ticks / 120 > elapsedSeconds + 2 || !Array.isArray(replay.inputs) || replay.inputs.length > 12e4) throw new Error("INVALID_REPLAY");
 	const session = new BrickSession(seed);
 	let previous = -1;
 	for (const input of replay.inputs) {
 		if (!Number.isInteger(input.tick) || input.tick < previous || input.tick > replay.ticks || ![
 			"direction",
+			"target",
 			"launch",
 			"next"
 		].includes(input.action) || input.action === "direction" && ![
 			-1,
 			0,
 			1
-		].includes(input.value)) throw new Error("INVALID_INPUT");
+		].includes(input.value) || input.action === "target" && (!Number.isFinite(input.value) || input.value < 0 || input.value > 360)) throw new Error("INVALID_INPUT");
 		previous = input.tick;
 	}
 	let index = 0;
@@ -1146,11 +1105,11 @@ function verifyBrickReplay(seed, replay, elapsedSeconds) {
 		session.model.drainPaddleHit();
 	}
 	return {
-		score: session.model.secured,
+		score: 0,
 		reward: session.model.reward,
 		round: session.model.round,
 		lives: session.model.lives
 	};
 }
 //#endregion
-export { BRICK_ENGINE_VERSION, BRICK_TICK, BrickSession, brickRandom, verifyBrickReplay };
+export { BRICK_ENGINE_VERSION, BRICK_TICK, BrickSession, MAX_BRICK_INPUTS, MAX_BRICK_REPLAY_BYTES, brickRandom, verifyBrickReplay };

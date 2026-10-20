@@ -1,7 +1,6 @@
 import {cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
 import {BrickMovementControls} from '@/features/arcade/brick-movement-controls'
-import {brickTargetDirection} from '@/features/arcade/brick-target-input'
 import {BrickSession,BRICK_TICK,verifyBrickReplay} from '@/features/arcade/brick-breaker-replay'
 
 afterEach(()=>cleanup())
@@ -43,15 +42,23 @@ it('clears input on pause, blur and unmount',()=>{
  pointer(pad,'pointerdown',2,300);expect(onTarget).toHaveBeenLastCalledWith(null)
  view.unmount();expect(onDirection).toHaveBeenLastCalledWith(0)
 })
-it('converges without teleporting and produces a replay accepted by the existing engine',()=>{
+it('tracks touch precisely without teleporting and produces a valid replay',()=>{
  const session=new BrickSession(42),target=270
  for(let tick=0;tick<120;tick++){
   const before=session.model.paddleX
-  session.command('direction',brickTargetDirection(before,target,BRICK_TICK));session.step()
-  expect(Math.abs(session.model.paddleX-before)).toBeLessThanOrEqual(420*BRICK_TICK+0.001)
+  session.command('target',target);session.step()
+  expect(Math.abs(session.model.paddleX-before)).toBeLessThanOrEqual(960*BRICK_TICK+0.001)
  }
- // Direction-only replay inputs settle within half a simulation movement step.
- expect(Math.abs(session.model.paddleX-target)).toBeLessThanOrEqual(420*BRICK_TICK/2)
- expect(brickTargetDirection(target,target,BRICK_TICK)).toBe(0)
+ expect(session.model.paddleX).toBeCloseTo(target)
+ expect(session.inputs.filter(input=>input.action==='target')).toHaveLength(1)
  expect(verifyBrickReplay(42,session.replay(),1)).toMatchObject({round:session.model.round,lives:session.model.lives})
+})
+it('follows touch faster than keyboard input while preserving the sticky slowdown',()=>{
+ const touch=new BrickSession(42),keyboard=new BrickSession(42),sticky=new BrickSession(42)
+ touch.command('target',300);keyboard.command('direction',1)
+ sticky.model.stickySeconds=6;sticky.command('target',300)
+ for(const game of [touch,keyboard,sticky])game.step()
+ expect(touch.model.paddleX-180).toBe(8)
+ expect(keyboard.model.paddleX-180).toBe(3.5)
+ expect(sticky.model.paddleX-180).toBe(4)
 })

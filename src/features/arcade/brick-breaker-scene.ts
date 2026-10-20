@@ -1,7 +1,6 @@
 import Phaser from 'phaser'
 import {BrickSession} from './brick-breaker-replay'
 import type {BrickReplay} from './brick-breaker-replay'
-import {brickTargetDirection} from './brick-target-input'
 import {gameIsCovered} from './game-interaction'
 import {dashHeadOrigins} from './brick-breaker-anchors'
 import {WAVE_SHOT,DASH_SHOT,STAR_SHOT,TORPEDO_DISPLAY_SIZE,TORPEDO_HAZARD} from './brick-breaker-config'
@@ -96,6 +95,8 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
  let failed=false,generation=0,logicalHeight:number=BOARD.height
  let viewport=brickViewport(parent.clientWidth,parent.clientHeight,window.devicePixelRatio)
  const sprites=new Map<string,Phaser.GameObjects.Image>()
+ // Reuse short-lived trails rather than allocating scene objects for every shot.
+ const spritePool:Phaser.GameObjects.Image[]=[]
  let game:Phaser.Game
  const canInteract=()=>started&&!paused&&!document.hidden&&!gameIsCovered(parent)
  class BrickScene extends Phaser.Scene{
@@ -114,6 +115,7 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
   private feedback:(DropFeedback&{at:number;x:number;y:number})|null=null
   private feedbackText!:Phaser.GameObjects.Text
   private effectClock=0
+  private paddleHitAt=-Infinity
   private generation=-1
   private paddle!:Phaser.GameObjects.Image
   private widePlank!:Phaser.GameObjects.Image
@@ -165,7 +167,7 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
    this.boardPaint=this.add.graphics().setDepth(0)
    this.paint=this.add.graphics().setDepth(2)
    this.inkPaint=this.add.graphics().setDepth(5)
-   this.feedbackText=this.add.text(0,0,'',{fontFamily:'Gowun Dodum, sans-serif',fontSize:'11px',padding:{x:0,y:0},resolution:2}).setDepth(6).setVisible(false)
+   this.feedbackText=this.add.text(0,0,'',{fontFamily:'Gowun Dodum, sans-serif',fontSize:'18px',fontStyle:'bold',stroke:'#14252b',strokeThickness:3,wordWrap:{width:BOARD.width-32,useAdvancedWrap:true},padding:{x:2,y:2},resolution:2}).setDepth(6).setVisible(false)
    this.resizeBoard()
    this.scale.on('resize',()=>this.resizeBoard())
    this.paddle=this.add.image(180,model.paddleY,'brick-pongi',0).setDisplaySize(102,78).setDepth(3)
@@ -178,20 +180,20 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
    this.input.keyboard?.on('keydown-SPACE',(event:KeyboardEvent)=>{if(canInteract()&&(parent.contains(document.activeElement)||document.activeElement===document.body)){event.preventDefault();command('launch')}})
    this.input.keyboard?.on('keydown-P',()=>{if(started&&model.phase==='playing'){heldDirection=0;touchTarget=null;paused=true;onPause()}})
    this.input.keyboard?.disableGlobalCapture()
-   this.events.once('shutdown',()=>{sprites.clear();this.tiles.clear();this.impacts.clear();this.explosions=[]})
+   this.events.once('shutdown',()=>{sprites.clear();spritePool.length=0;this.tiles.clear();this.impacts.clear();this.explosions=[]})
    onReady?.()
   }
-  update(time:number,delta:number){
+  update(_time:number,delta:number){
    if(disposed||!this.paint)return
    resizeViewport()
    if(started&&!paused&&(document.hidden||gameIsCovered(parent))){heldDirection=0;touchTarget=null;paused=true;this.input.keyboard?.resetKeys();onPause()}
-   if(this.generation!==generation){this.generation=generation;this.impacts.clear();this.explosions=[];this.waveBursts=[];this.songBursts=[];this.anchorBursts=[];this.torpedoBursts=[];for(const label of this.torpedoLabels.values())label.destroy();this.torpedoLabels.clear();this.feedback=null;this.cameras.main.shakeEffect.reset();this.feedbackText.setVisible(false);for(const image of this.tiles.values())image.destroy();this.tiles.clear()}
+   if(this.generation!==generation){this.generation=generation;this.paddleHitAt=-Infinity;this.impacts.clear();this.explosions=[];this.waveBursts=[];this.songBursts=[];this.anchorBursts=[];this.torpedoBursts=[];for(const label of this.torpedoLabels.values())label.destroy();this.torpedoLabels.clear();this.feedback=null;this.cameras.main.shakeEffect.reset();this.feedbackText.setVisible(false);for(const image of this.tiles.values())image.destroy();this.tiles.clear()}
    if(!paused)this.effectClock+=Math.min(delta,100)
    if(started&&!paused){
     const inputSeconds=Math.min(delta/1000,0.05)
-    const direction=touchTarget!==null?brickTargetDirection(model.paddleX,touchTarget,inputSeconds):heldDirection||((this.arrows?.right.isDown||this.keys?.right.isDown?1:0)-(this.arrows?.left.isDown||this.keys?.left.isDown?1:0))
-    if(paidSession){paidSession.command('direction',direction as -1|0|1);if(paidSession.ticks<216000)paidSession.advance(inputSeconds);else{paused=true;onPause()}}
-    else{if(direction)model.moveInput(model.paddleX+direction*420*inputSeconds,inputSeconds);model.step(delta/1000)}
+    const direction=heldDirection||((this.arrows?.right.isDown||this.keys?.right.isDown?1:0)-(this.arrows?.left.isDown||this.keys?.left.isDown?1:0))
+    if(paidSession){if(touchTarget!==null)paidSession.command('target',Math.round(touchTarget*10)/10);else paidSession.command('direction',direction as -1|0|1);if(paidSession.ticks<216000)paidSession.advance(inputSeconds);else{paused=true;onPause()}}
+    else{if(touchTarget!==null)model.moveTarget(touchTarget,inputSeconds);else if(direction)model.moveInput(model.paddleX+direction*420*inputSeconds,inputSeconds);model.step(delta/1000)}
    }
    this.paint.clear()
    for(const song of model.drainSongs())this.songBursts.push({...song,at:this.effectClock})
@@ -210,7 +212,7 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
     if(hit.source==='torpedo')this.explosions.push(effect)
    }
    // A tiny tap; never restart an ongoing shake or override hazard feedback.
-   if(ballHit&&!reduced)this.cameras.main.shake(65,0.0007,false)
+   if(ballHit)this.paddleHitAt=this.effectClock
    const feedback=model.drainFeedback()
    if(!reduced&&feedback.length&&!slams.length&&!blasts.length)this.cameras.main.shake(
     feedback.some(event=>event.kind==='hazard')?110:80,
@@ -225,7 +227,8 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
     let tile=this.tiles.get(brick.id)
     if(!tile){tile=this.add.image(0,0,'brick-tile-'+brick.hp,'tile').setDepth(1);this.tiles.set(brick.id,tile)}
     const hit=this.impacts.get(brick.id),t=hit?(this.effectClock-hit.at)/180:1,pulse=hit&&!reduced?Math.sin(Math.min(1,t)*Math.PI):0
-    tile.setTexture('brick-tile-'+brick.hp,'tile').setPosition(brick.x+BRICK.width/2,brick.y+BRICK.height/2+pulse*1.5).setDisplaySize(BRICK.width*(1+pulse*0.05),BRICK.height*(1-pulse*0.1))
+    if(tile.texture.key!=='brick-tile-'+brick.hp)tile.setTexture('brick-tile-'+brick.hp,'tile')
+    tile.setPosition(brick.x+BRICK.width/2,brick.y+BRICK.height/2+pulse*1.5).setDisplaySize(BRICK.width*(1+pulse*0.05),BRICK.height*(1-pulse*0.1))
     if(hit&&t<1){this.paint.fillStyle(0xffffff,(1-t)*0.3);this.paint.fillRoundedRect(brick.x,brick.y,BRICK.width,BRICK.height,4)}
    }
    for(const [id,image] of this.tiles)if(!aliveBricks.has(id)){image.destroy();this.tiles.delete(id)}
@@ -276,7 +279,8 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
      this.paint.fillCircle(wave.x+Math.cos(angle)*18*reach,wave.y+Math.sin(angle)*14*reach,1.5)
     }
    }
-   const frame=reduced?0:Math.floor(time/220)%4,origin=this.paddleOrigins[frame]
+   const recoil=this.effectClock-this.paddleHitAt
+   const frame=reduced||recoil>=180?0:recoil<60?1:recoil<120?2:1,origin=this.paddleOrigins[frame]
    this.widePlank.setVisible(model.wideSeconds>0||model.shrinkSeconds>0).setPosition(model.paddleX,model.paddleY).setDisplaySize(model.paddleWidth,14)
    this.shieldBubble.setVisible(model.shield).setPosition(model.paddleX,model.paddleY+7).setDisplaySize(90,90)
    if(model.stickySeconds>0){
@@ -320,7 +324,15 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
     this.inkPaint.fillStyle(0x514263,alpha*0.5);this.inkPaint.fillEllipse(patch.x-12,patch.y-16,22,9)
    }
    const live=new Set<string>()
-   const sprite=(key:string,texture:string,x:number,y:number,w:number,h:number)=>{live.add(key);let image=sprites.get(key);if(!image){image=this.add.image(x,y,texture,texture==='brick-shark'?0:undefined).setDepth(2);sprites.set(key,image)}image.setPosition(x,y).setDisplaySize(w,h);return image}
+   const sprite=(key:string,texture:string,x:number,y:number,w:number,h:number)=>{
+    live.add(key);let image=sprites.get(key)
+    if(!image){
+     image=spritePool.pop()??this.add.image(x,y,texture)
+     image.setTexture(texture,texture==='brick-shark'?0:undefined).setVisible(true).setActive(true).setOrigin(0.5).setAlpha(1).setRotation(0).setDepth(2)
+     sprites.set(key,image)
+    }
+    image.setPosition(x,y).setDisplaySize(w,h);return image
+   }
    this.songBursts=this.songBursts.filter(song=>this.effectClock-song.at<2400)
    for(const song of this.songBursts){
     const age=this.effectClock-song.at,t=Math.min(1,age/1600)
@@ -333,10 +345,7 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
     }
     sprite('whale-song-'+song.at,'brick-whale',BOARD.width/2+(reduced?0:(t-0.5)*50),song.y+55,88,66).setAlpha(fade).setDepth(2.5)
    }
-   if(model.scoreMultiplier>1){
-    this.paint.lineStyle(1.5,0xffd681,0.65)
-    this.paint.strokeCircle(model.paddleX,model.paddleY+7,35)
-   }
+
    if(this.feedback){
     const t=(this.effectClock-this.feedback.at)/550
     if(t<1){
@@ -386,7 +395,10 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
      this.paint.lineStyle(1.5,0xff6269,remaining<=3?0.85:0.4);this.paint.strokeCircle(targetX,targetY,TORPEDO_HAZARD.radius)
      let label=this.torpedoLabels.get(d.id)
      if(!label){label=this.add.text(0,0,'',{fontFamily:'Gowun Dodum, sans-serif',fontSize:'18px',fontStyle:'bold',color:'#fff4df',backgroundColor:'#5e242b',padding:{x:5,y:2},resolution:2}).setOrigin(0.5,1).setDepth(7);this.torpedoLabels.set(d.id,label)}
-     label.setText(String(Math.ceil(remaining))).setPosition(Math.max(25,Math.min(BOARD.width-25,d.x)),Math.max(35,d.y-23)).setColor(remaining<=3?'#ffb2a2':'#fff4df')
+     const countdown=String(Math.ceil(remaining)),color=remaining<=3?'#ffb2a2':'#fff4df'
+     if(label.text!==countdown)label.setText(countdown)
+     if(label.style.color!==color)label.setColor(color)
+     label.setPosition(Math.max(25,Math.min(BOARD.width-25,d.x)),Math.max(35,d.y-23))
     }
     const item=isItem(d.kind),color=item?0x55e999:0xff6269,radius=item?17:23,pulse=reduced?0:Math.sin(this.effectClock/170+d.id)*1.5
     this.paint.fillStyle(color,0.05);this.paint.fillCircle(d.x,d.y,radius+9+pulse)
@@ -411,7 +423,7 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
     const rotation=d.kind==='shark'?Math.atan2(-(d.vx??0),d.vy??440):(d.kind==='puffer'||d.kind==='jelly')&&!reduced?Math.sin((d.age??0)*2.4)*0.12:d.kind==='urchin'&&!reduced?(d.rotation??0):0
     if(d.kind==='shark'&&d.warning<=0&&!reduced){
      const vx=d.vx??0,vy=d.vy??440,speed=Math.hypot(vx,vy)||1,length=Math.min(96,(d.age??0)*speed)
-     for(let i=7;i>=1;i--){
+     for(let i=7;i>=1;i-=2){
       const offset=i*12
       if(offset>length)continue
       const trailSize=size*(1-i*0.065)
@@ -429,7 +441,7 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
    for(const shot of model.shots){
     if(!reduced){
      const length=Math.min(72,Math.max(0,model.paddleY-14-shot.y))
-     for(let i=7;i>=1;i--){
+     for(let i=7;i>=1;i-=2){
       const offset=i*9
       if(offset>length)continue
       const size=TORPEDO_DISPLAY_SIZE*(1-i*0.075)
@@ -445,7 +457,7 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
     if(shot.delay>0)continue
     if(!reduced){
      const length=Math.min(70,shot.age*STAR_SHOT.speed)
-     for(let i=7;i>=1;i--){
+     for(let i=7;i>=1;i-=2){
       const offset=i*9
       if(offset>length)continue
       const size=STAR_SHOT.displaySize*(1-i*0.065)
@@ -463,7 +475,7 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
     if(!reduced){
      // Keep the wake behind the upward-moving bolt and inside its travelled path.
      const length=Math.min(128,shot.age*WAVE_SHOT.speed)
-     for(let i=9;i>=1;i--){
+     for(let i=9;i>=1;i-=2){
       const offset=i*12
       if(offset>length)continue
       const size=WAVE_SHOT.displaySize*(1-i*0.065)
@@ -484,7 +496,7 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
     const frame=reduced?0:Math.floor(shot.age*1000/DASH_SHOT.frameMs)%4
     if(!reduced){
      const length=Math.min(100,shot.age*DASH_SHOT.speed)
-     for(let i=7;i>=1;i--){
+     for(let i=7;i>=1;i-=2){
       const offset=i*13
       if(offset>length)continue
       const size=DASH_SHOT.displaySize*(1-i*0.06)
@@ -500,7 +512,10 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
     sprite('dash'+shot.id,'brick-dash',shot.x,shot.y,DASH_SHOT.displaySize,DASH_SHOT.displaySize)
      .setFrame(frame).setOrigin(this.dashOrigins[frame].x,this.dashOrigins[frame].y).setDisplaySize(DASH_SHOT.displaySize,DASH_SHOT.displaySize).setDepth(3.2)
    }
-   for(const [key,image] of sprites)if(!live.has(key)){image.destroy();sprites.delete(key)}
+   for(const [key,image] of sprites)if(!live.has(key)){
+    sprites.delete(key)
+    if(spritePool.length<96){image.setVisible(false).setActive(false);spritePool.push(image)}else image.destroy()
+   }
    for(const [id,label] of this.torpedoLabels)if(!model.drops.some(drop=>drop.id===id)){label.destroy();this.torpedoLabels.delete(id)}
    if(this.feedback){
     const age=this.effectClock-this.feedback.at
@@ -525,12 +540,12 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
  game.canvas.setAttribute('aria-label','퐁이 벽돌깨기 게임 화면. 퐁이 아래 조작 영역을 좌우로 문지르거나 방향키로 이동하고 발사 버튼 또는 스페이스로 공을 발사하세요.')
  game.canvas.setAttribute('role','img');game.canvas.style.touchAction='none'
  const resize=new ResizeObserver(resizeViewport);resize.observe(parent)
- function reset(mode:BrickMode,seed?:number,replay?:BrickReplay){heldDirection=0;touchTarget=null;paidSession=mode==='paid'?new BrickSession(seed??0):null;if(paidSession&&replay){let i=0;for(let tick=0;tick<=replay.ticks;tick++){while(i<replay.inputs.length&&replay.inputs[i].tick===tick){const input=replay.inputs[i++];paidSession.apply(input.action,input.value)}if(tick<replay.ticks)paidSession.step()}paidSession.inputs=replay.inputs.map(input=>({...input}));paidSession.command('direction',0)}model=paidSession?.model??new BrickPractice();if(paidSession){model.drainImpacts();model.drainFeedback();model.drainSongs();model.drainAnchorSlams();model.drainTorpedoBlasts();model.drainPaddleHit()}model.resize(logicalHeight);if(mode==='lab')model.enterLaboratory();generation++;started=true;paused=false;lastScore='';onScore(model.score())}
+ function reset(mode:BrickMode,seed?:number,replay?:BrickReplay){heldDirection=0;touchTarget=null;paidSession=mode==='paid'?new BrickSession(seed??0):null;if(paidSession&&replay){let i=0;for(let tick=0;tick<=replay.ticks;tick++){while(i<replay.inputs.length&&replay.inputs[i].tick===tick){const input=replay.inputs[i++];paidSession.apply(input.action,input.value)}if(tick<replay.ticks)paidSession.step();paidSession.model.drainImpacts();paidSession.model.drainFeedback();paidSession.model.drainSongs();paidSession.model.drainAnchorSlams();paidSession.model.drainTorpedoBlasts();paidSession.model.drainPaddleHit()}paidSession.inputs=replay.inputs.map(input=>({...input}));paidSession.command('direction',0)}model=paidSession?.model??new BrickPractice();if(paidSession){model.drainImpacts();model.drainFeedback();model.drainSongs();model.drainAnchorSlams();model.drainTorpedoBlasts();model.drainPaddleHit()}model.resize(logicalHeight);if(mode==='lab')model.enterLaboratory();generation++;started=true;paused=false;lastScore='';onScore(model.score())}
  function preview(kind:DropKind){
   if(!started||!model.labMode)return
   const x=model.paddleX,direction=heldDirection
   reset('lab');model.move(x);heldDirection=direction
   model.previewSkill(kind);onScore(model.score())
  }
- return {start:(mode='practice',seed,replay)=>reset(mode,seed,replay),replay:()=>paidSession?.replay()??{ticks:0,inputs:[]},stop:()=>{heldDirection=0;touchTarget=null;paidSession=null;started=false;paused=true;model=new BrickPractice();generation++;lastScore='';onScore(model.score())},setDirection:direction=>{heldDirection=direction===0||canInteract()?direction:0},setTarget:position=>{touchTarget=position!==null&&Number.isFinite(position)&&canInteract()?Math.max(0,Math.min(1,position))*BOARD.width:null},launch:()=>{if(canInteract())command('launch')},next:()=>{heldDirection=0;touchTarget=null;if(paidSession)paidSession.command('direction',0);command('next');generation++},bank:()=>model.bank(),previewSkill:preview,pause:value=>{heldDirection=0;touchTarget=null;paused=value},destroy:()=>{heldDirection=0;touchTarget=null;disposed=true;resize.disconnect();sprites.clear();game.destroy(true)}}
+ return {start:(mode='practice',seed,replay)=>reset(mode,seed,replay),replay:()=>paidSession?.replay()??{ticks:0,inputs:[]},stop:()=>{heldDirection=0;touchTarget=null;paidSession=null;started=false;paused=true;model=new BrickPractice();generation++;lastScore='';onScore(model.score())},setDirection:direction=>{heldDirection=direction===0||canInteract()?direction:0},setTarget:position=>{touchTarget=position!==null&&Number.isFinite(position)&&canInteract()?Math.max(0,Math.min(1,position))*BOARD.width:null},launch:()=>{if(canInteract())command('launch')},next:()=>{heldDirection=0;touchTarget=null;if(paidSession)paidSession.command('direction',0);command('next');generation++},bank:()=>model.bank(),previewSkill:preview,pause:value=>{heldDirection=0;touchTarget=null;paused=value},destroy:()=>{heldDirection=0;touchTarget=null;disposed=true;resize.disconnect();sprites.clear();spritePool.length=0;game.destroy(true)}}
 }

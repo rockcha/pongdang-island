@@ -82,7 +82,7 @@ function AccountGame(){
       {scene==='result'&&run.pearls!==null?<><p className="text-base">진주 {run.pearls}개 · {run.pearls%2?'홀':'짝'}</p><p className="text-xs">{run.stage==='lost'?'아쉬워요!':run.stage==='banked'?'보상 수령 완료':'맞혔어요!'}</p></>:scene==='asking'?<p className="text-sm">홀일까요, 짝일까요?</p>:<span className="sr-only">{scene==='mixing'?'퐁이가 진주를 섞고 있어요.':'조개를 열고 있어요.'}</span>}
      </div>
     </div>
-    <div className="odd-even-actions grid shrink-0 grid-cols-2 gap-2">
+    <div className={`odd-even-actions grid shrink-0 grid-cols-2 gap-2 ${scene==='asking'||scene==='result'?'':'invisible'}`}>
      {run.stage==='choose'?<><Button className="h-full min-h-20 w-full min-w-0 text-3xl font-medium" disabled={busy||scene!=='asking'} onClick={()=>act('answer','odd')}>홀</Button><Button className="h-full min-h-20 w-full min-w-0 text-3xl font-medium" disabled={busy||scene!=='asking'} variant="outline" onClick={()=>act('answer','even')}>짝</Button></>:run.stage==='decision'?<><Button className={run.wins>=state.maxWins?'col-span-2':undefined} disabled={busy||scene!=='result'} onClick={()=>act('cashout')}>보상 받기</Button>{run.wins<state.maxWins&&<Button variant="outline" disabled={busy||scene!=='result'} onClick={()=>act('double')}>묻고 더블로 가 !</Button>}</>:<Button className="col-span-2 text-lg font-medium" disabled={busy||scene!=='result'} onClick={()=>{setState({run:null,maxWins:20});setError('')}}>다시 하기</Button>}
     </div>
    </div>}

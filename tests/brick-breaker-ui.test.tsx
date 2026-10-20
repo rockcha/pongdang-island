@@ -7,11 +7,11 @@ import type {BrickScore} from '@/features/arcade/brick-breaker-model'
 const server=vi.hoisted(()=>({start:vi.fn(),settle:vi.fn(),ranks:vi.fn()}))
 const engine=vi.hoisted(()=>({start:vi.fn(),stop:vi.fn(),setDirection:vi.fn(),setTarget:vi.fn(),launch:vi.fn(),next:vi.fn(),bank:vi.fn(),previewSkill:vi.fn(),replay:vi.fn(()=>({ticks:0,inputs:[]})),pause:vi.fn(),destroy:vi.fn(),ready:()=>{},error:()=>{},score:(_value:BrickScore)=>{}}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
-vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wallet:{gold:100},loading:false,busy:false,error:'',refresh:vi.fn()})}))
+vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wallet:{gold:0},loading:false,busy:false,error:'',refresh:vi.fn()})}))
 vi.mock('@/features/arcade/brick-breaker-api',()=>({startBrickRun:server.start,settleBrickRun:server.settle,brickLeaderboard:server.ranks,brickError:()=>'서버 연결 오류'}))
 vi.mock('@/features/arcade/brick-breaker-scene',()=>({createBrickGame:(_parent:HTMLElement,onScore:(score:BrickScore)=>void,_pause:()=>void,ready:()=>void,error:()=>void)=>{engine.ready=ready;engine.error=error;engine.score=onScore;return engine}}))
 beforeEach(()=>{
- vi.clearAllMocks();window.history.replaceState({},'');server.ranks.mockResolvedValue({rows:[],total:0});server.start.mockResolvedValue({id:'paid-run',seed:42,engine_version:1,replay:{ticks:0,inputs:[]},finished_at:null});server.settle.mockResolvedValue({id:'paid-run',reward:0,score:0})
+ vi.clearAllMocks();window.history.replaceState({},'');server.ranks.mockResolvedValue({rows:[],total:0});server.start.mockResolvedValue({id:'paid-run',seed:42,engine_version:2,replay:{ticks:0,inputs:[]},finished_at:null});server.settle.mockResolvedValue({id:'paid-run',reward:0,score:0})
  HTMLDialogElement.prototype.showModal=function(){this.setAttribute('open','')}
  HTMLDialogElement.prototype.close=function(){this.removeAttribute('open')}
 })
@@ -23,7 +23,7 @@ it('offers separate practice and laboratory modes, disabled until assets are rea
  show()
  expect((screen.getByRole('button',{name:'연습'}) as HTMLButtonElement).disabled).toBe(true)
  expect((screen.getByRole('button',{name:'모션'}) as HTMLButtonElement).disabled).toBe(true)
- expect((screen.getByRole('button',{name:'실전 (골드 20)'}) as HTMLButtonElement).disabled).toBe(true)
+ expect((screen.getByRole('button',{name:'실전 (무료)'}) as HTMLButtonElement).disabled).toBe(true)
  await act(async()=>{});act(()=>engine.ready())
  fireEvent.click(screen.getByRole('button',{name:'연습'}))
  expect(engine.start).toHaveBeenLastCalledWith('practice')
@@ -73,7 +73,7 @@ it('opens a dedicated lab modal and previews skills without practice or ball lau
 })
 
 it.each(['연습'])('returns %s to the waiting menu using browser back',async(name)=>{
- await ready();fireEvent.click(screen.getByRole('button',{name}));if(name==='연습')act(()=>engine.score({phase:'over',round:1,lives:0,secured:0,pending:0,remaining:24}))
+ await ready();fireEvent.click(screen.getByRole('button',{name}));if(name==='연습')act(()=>engine.score({phase:'over',round:1,lives:0,remaining:24}))
  await act(async()=>{window.history.back();await new Promise(resolve=>setTimeout(resolve,30))})
  await waitFor(()=>expect(screen.getByRole('group',{name:'게임 시작 메뉴'})).toBeTruthy())
  expect(engine.stop).toHaveBeenCalledOnce()
@@ -81,12 +81,12 @@ it.each(['연습'])('returns %s to the waiting menu using browser back',async(na
  expect(screen.queryByRole('button',{name:'게임 나가기'})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'연습'}))
  expect(engine.start).toHaveBeenLastCalledWith('practice')
- expect(screen.getByLabelText('현재 라운드 점수 0점')).toBeTruthy()
+ expect(screen.getByLabelText('연습 누적 보상 0골드')).toBeTruthy()
 })
 
 it('returns to the waiting menu from the back button and Escape',async()=>{
  await ready();fireEvent.click(screen.getByRole('button',{name:'연습'}))
- act(()=>engine.score({phase:'over',round:1,lives:0,secured:0,pending:0,remaining:24}));fireEvent.click(screen.getByRole('button',{name:'게임 나가기'}))
+ act(()=>engine.score({phase:'over',round:1,lives:0,remaining:24}));fireEvent.click(screen.getByRole('button',{name:'게임 나가기'}))
  await waitFor(()=>expect(screen.getByRole('button',{name:'모션'})).toBeTruthy())
  fireEvent.click(screen.getByRole('button',{name:'모션'}))
  fireEvent(screen.getByRole('dialog',{name:'퐁이의 벽돌깨기'}),new Event('cancel',{cancelable:true}));fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'나가기'}))
@@ -94,15 +94,22 @@ it('returns to the waiting menu from the back button and Escape',async()=>{
  await waitFor(()=>expect(engine.stop).toHaveBeenCalledTimes(2))
 })
 
-it('shows actual heart loss above game over and relaunches magnet-held balls',async()=>{
+it('waits for continue after life loss, removes the heart effect and relaunches held balls',async()=>{
  await ready();fireEvent.click(screen.getByRole('button',{name:'연습'}))
- act(()=>engine.score({phase:'playing',round:1,lives:3,secured:0,pending:0,remaining:24,held:true}))
+ act(()=>engine.score({phase:'playing',round:1,lives:3,remaining:24,held:true}))
  fireEvent.click(screen.getByRole('button',{name:'공 다시 발사'}));expect(engine.launch).toHaveBeenCalledOnce()
  expect(screen.queryByLabelText('생명 1개 감소')).toBeNull()
- act(()=>engine.score({phase:'ready',round:1,lives:2,secured:0,pending:0,remaining:24}))
- expect(screen.getByLabelText('생명 1개 감소')).toBeTruthy()
- act(()=>engine.score({phase:'over',round:1,lives:0,secured:0,pending:0,remaining:24}))
- expect(screen.getByLabelText('생명 1개 감소')).toBeTruthy()
+ act(()=>engine.score({phase:'ready',round:1,lives:2,remaining:24}))
+ expect(screen.getByText('목숨 2개 남았습니다')).toBeTruthy()
+ expect(screen.getByRole('group',{name:'퐁이 이동 조작'}).getAttribute('aria-disabled')).toBe('true')
+ expect(screen.queryByRole('button',{name:'시작하기'})).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'계속하기'}))
+ expect(engine.pause).toHaveBeenLastCalledWith(false)
+ expect(engine.launch).toHaveBeenCalledTimes(2)
+ expect(screen.queryByLabelText('목숨 감소 안내')).toBeNull()
+ act(()=>engine.score({phase:'over',round:1,lives:0,remaining:24}))
+ expect(screen.queryByLabelText('생명 1개 감소')).toBeNull()
+ expect(screen.getByText('이번 도전은 여기까지')).toBeTruthy()
 })
 
 it('keeps both modes unavailable when artwork fails and destroys the renderer on exit',async()=>{
@@ -122,18 +129,17 @@ it('guards practice exits with hearts left and restores history after browser ba
  expect(screen.getByRole('alertdialog')).toBeTruthy();expect(engine.stop).not.toHaveBeenCalled()
  expect(window.history.state.brickGameModal).toBeTruthy()
  fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'취소'}))
- act(()=>engine.score({phase:'round-clear',round:1,lives:2,secured:24,pending:0,remaining:0}))
+ act(()=>engine.score({phase:'round-clear',round:1,lives:2,remaining:0}))
  expect(screen.queryByRole('button',{name:'여기서 점수 확보'})).toBeNull()
- act(()=>engine.score({phase:'playing',round:1,lives:2,secured:24,pending:0,remaining:12}))
+ act(()=>engine.score({phase:'playing',round:1,lives:2,remaining:12}))
  fireEvent.click(screen.getByRole('button',{name:'게임 나가기'}))
  fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'나가기'}))
  await waitFor(()=>expect(engine.stop).toHaveBeenCalledOnce())
 })
 
-it('opens paid mode only after confirming 20 gold and settles before leaving',async()=>{
- await ready();fireEvent.click(screen.getByRole('button',{name:'실전 (골드 20)'}))
- expect(engine.start).not.toHaveBeenCalled()
- fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'실전'}))
+it('starts free real play directly and settles before leaving',async()=>{
+ await ready();fireEvent.click(screen.getByRole('button',{name:'실전 (무료)'}))
+ expect(screen.queryByRole('alertdialog')).toBeNull()
  await waitFor(()=>expect(engine.start).toHaveBeenLastCalledWith('paid',42,{ticks:0,inputs:[]}))
  expect(server.start).toHaveBeenCalledOnce()
  fireEvent.click(screen.getByRole('button',{name:'게임 나가기'}))
@@ -146,4 +152,19 @@ it('loads brick rankings only when selected',async()=>{
  fireEvent.click(screen.getByRole('tab',{name:'랭킹'}))
  await waitFor(()=>expect(server.ranks).toHaveBeenCalledWith(0))
  expect(screen.getByRole('tabpanel',{name:'랭킹'})).toBeTruthy()
+})
+it('shows round, clear reward and cumulative gold without score counters',async()=>{
+ await ready();fireEvent.click(screen.getByRole('button',{name:'연습'}))
+ act(()=>engine.score({phase:'playing',round:4,lives:2,remaining:12,reward:220,roundReward:100}))
+ expect(screen.getByLabelText('현재 4라운드, 전체 5라운드')).toBeTruthy()
+ expect(screen.getByLabelText('클리어 보상 100골드')).toBeTruthy()
+ expect(screen.getByLabelText('연습 누적 보상 220골드')).toBeTruthy()
+ expect(screen.queryByText('이번 라운드 점수')).toBeNull()
+})
+it('settles a saved legacy run before starting with the new rules',async()=>{
+ server.start.mockResolvedValueOnce({id:'legacy',engine_version:1,seed:1,replay:{ticks:12,inputs:[]},finished_at:null})
+ await ready();fireEvent.click(screen.getByRole('button',{name:'실전 (무료)'}))
+ await waitFor(()=>expect(engine.start).toHaveBeenLastCalledWith('paid',42,{ticks:0,inputs:[]}))
+ expect(server.settle).toHaveBeenCalledWith('legacy',{ticks:12,inputs:[]},true)
+ expect(server.start).toHaveBeenCalledTimes(2)
 })

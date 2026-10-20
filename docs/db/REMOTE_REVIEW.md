@@ -157,3 +157,6 @@
 CLI로 프로젝트 `pongdang-island` (`ewafafphiovbpjwogwzn`, PostgreSQL 17.11)의 신규 게임 테이블 부재, 지갑 함수·거래 제약·관련 trigger·service_role 권한·최근 migration 이력을 확인했다. 로컬과 원격 전체 이력은 달라 전체 push·baseline 재실행·repair를 하지 않았다. 지갑 함수 해시와 신규 객체 부재를 가드로 둔 트랜잭션으로 `20261020072750_brick_breaker_verified_runs.sql`만 적용·기록하고 `brick-game` Edge Function을 JWT 확인을 유지해 배포했다.
 
 적용 후 해당 migration, 테이블 RLS, 본인 읽기 정책, authenticated 시작 허용·직접 쓰기/정산 호출 차단, service_role 정산 허용, public wrapper의 invoker 설정과 기존 지갑 함수 해시 보존을 조회했다. Edge Function은 preflight 200, 익명·위조 토큰 401을 반환했다. Security Advisor에는 기존 Auth 유출 암호 보호 비활성 경고만 남았다. 실제 플레이어의 참가비 차감·보상 지급은 실행하지 않았고, 전체 원격 구조 비교·다른 migration 이력의 동등성·프런트엔드 운영 배포는 이번 검증 범위가 아니다.
+## 2026-10-20 토착종 그룹 비율 조정
+
+19:12 KST, MCP 프로젝트 URL로 `ewafafphiovbpjwogwzn`을 식별하고 `pick_habitat_group` 본문을 읽기 전용으로 확인했다. 관련 함수는 로컬 변경의 출발점과 일치했다. `20261020101140_habitat_group_35_60_5.sql` 변경만 MCP migration으로 적용하고, 19:12:41 KST에 함수 본문과 anon/authenticated의 직접 실행 차단을 재조회했다. 낚싯대·미끼 보정과 후보 그룹 재분배는 유지했다. 전체 구조 비교·기존 migration 이력 정합성·다른 미배포 변경은 이번 검증 범위에 포함하지 않았다.

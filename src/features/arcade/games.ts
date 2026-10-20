@@ -28,7 +28,7 @@ export const arcadeGames: ArcadeGame[] = [
   { id: 'shadow', title: '그림자 맞추기', description: '그림자 속 개체의 이름을 맞히고 섬 최고의 기록에 도전하세요.', icon: Scan, entryFee: 10, dailyLimit: null, status: 'ready', component: ShadowGame, thumbnail: '/arcade/shadow-thumbnail.png', tags:['brain'], rewardMode:'settlement' },
   { id: 'memory', title: '카드 짝맞추기', description: '퐁이와 함께 12짝을 찾고 가장 빠른 기록에 도전하세요.', icon: Brain, entryFee: 10, dailyLimit: null, status: 'ready', component: MemoryGame, thumbnail: '/arcade/memory/thumbnail.png', tags:['brain'], rewardMode:'settlement' },
   { id: 'underground', title: '지하 탐험하기', description: '섬 아래 숨겨진 길을 따라 지하 세계를 탐험해요.', icon: Pickaxe, tags:['luck','brain'], status: 'coming-soon' },
-  { id: 'brick-breaker', title: '벽돌깨기', description: '퐁이와 벽돌을 깨고 라운드마다 점수를 확보해요. 5라운드 클리어 보상을 확보해보세요.', icon: Blocks, entryFee:20, dailyLimit:null, tags:['physical'], status:'ready', component:BrickBreakerGame, thumbnail:'/arcade/brick-breaker/thumbnail.png', rewardMode:'instant' },
+  { id: 'brick-breaker', title: '벽돌깨기', description: '무료로 도전하고 5개 라운드의 보상과 해적의 보물을 모아요.', icon: Blocks, entryFee:0, dailyLimit:null, tags:['physical'], status:'ready', component:BrickBreakerGame, thumbnail:'/arcade/brick-breaker/thumbnail.png', rewardMode:'instant' },
   { id: 'tower-defense', title: '타워 디펜스', description: '타워를 세우고 전략을 짜서 섬을 지켜요.', icon: Castle, tags:['brain'], status: 'coming-soon' },
 ]
 

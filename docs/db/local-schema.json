@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "fdfe6afe198f89497db2fb1cb1a4784b3f067d0a9a8abe319b62023bc021313b",
+  "migrationHash": "a24dc6d6ad555071fc308fd18b56fd0a838fe53b572a47b4157816fa5cf0536d",
   "structure": {
     "enums": [
       {
@@ -2272,7 +2272,7 @@
         "type": "integer",
         "table": "brick_game_runs",
         "schema": "public",
-        "default": "1",
+        "default": "2",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -7779,7 +7779,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_user_id uuid, p_run_id uuid, p_score integer, p_reward integer, p_replay jsonb, p_final boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.brick_game_settle(p_user_id uuid, p_run_id uuid, p_score integer, p_reward integer, p_replay jsonb, p_final boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare r public.brick_game_runs;v_gold integer;v_delta integer;v_ticks integer;\nbegin\n select gold into v_gold from public.player_wallets where user_id=p_user_id for update;\n if not found then raise exception 'WALLET_NOT_FOUND';end if;\n select * into r from public.brick_game_runs where id=p_run_id and user_id=p_user_id for update;\n if not found then raise exception 'RUN_NOT_FOUND';end if;\n if r.finished_at is not null then return to_jsonb(r);end if;\n v_ticks:=(p_replay->>'ticks')::integer;\n if p_score is null or p_score not between 0 and 360 or p_reward is null or p_reward not in (0,10,30,60,100,150)\n  or p_reward<r.reward or p_score<r.score or v_ticks is null or v_ticks<r.ticks or v_ticks>216000\n  or v_ticks>floor(extract(epoch from(clock_timestamp()-r.started_at))*120)+240\n  or jsonb_typeof(p_replay->'inputs') is distinct from 'array' or octet_length(p_replay::text)>1000000 or p_final is null then raise exception 'INVALID_SETTLEMENT';end if;\n v_delta:=p_reward-r.paid_reward;\n if v_gold>1000000000-v_delta then raise exception 'GOLD_LIMIT';end if;\n if v_delta>0 then\n  update public.player_wallets set gold=gold+v_delta,updated_at=clock_timestamp() where user_id=p_user_id;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(p_user_id,gen_random_uuid(),'charge','arcade:brick-breaker:'||r.id::text,v_delta);\n end if;\n update public.brick_game_runs set score=p_score,reward=p_reward,paid_reward=p_reward,ticks=v_ticks,replay=p_replay,\n  finished_at=case when p_final then clock_timestamp() else null end where id=r.id returning * into r;\n return to_jsonb(r);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.brick_game_settle(p_user_id uuid, p_run_id uuid, p_score integer, p_reward integer, p_replay jsonb, p_final boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare r public.brick_game_runs;v_gold integer;v_delta integer;v_ticks integer;\nbegin\n select gold into v_gold from public.player_wallets where user_id=p_user_id for update;\n if not found then raise exception 'WALLET_NOT_FOUND';end if;\n select * into r from public.brick_game_runs where id=p_run_id and user_id=p_user_id for update;\n if not found then raise exception 'RUN_NOT_FOUND';end if;\n if r.finished_at is not null then return to_jsonb(r);end if;\n v_ticks:=(p_replay->>'ticks')::integer;\n if p_score is null or p_score not between 0 and 360 or p_reward is null or (r.engine_version=1 and p_reward not in (0,10,30,60,100,150))\n  or (r.engine_version=2 and (p_score<>0 or p_reward not between 0 and 6400 or p_reward%10<>0))\n  or p_reward<r.reward or p_score<r.score or v_ticks is null or v_ticks<r.ticks or v_ticks>216000\n  or v_ticks>floor(extract(epoch from(clock_timestamp()-r.started_at))*120)+240\n  or jsonb_typeof(p_replay->'inputs') is distinct from 'array'\n  or octet_length(p_replay::text)>(case when r.engine_version=1 then 1000000 else 8000000 end)\n  or p_final is null then raise exception 'INVALID_SETTLEMENT';end if;\n v_delta:=p_reward-r.paid_reward;\n if v_gold>1000000000-v_delta then raise exception 'GOLD_LIMIT';end if;\n if v_delta>0 then\n  update public.player_wallets set gold=gold+v_delta,updated_at=clock_timestamp() where user_id=p_user_id;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(p_user_id,gen_random_uuid(),'charge','arcade:brick-breaker:'||r.id::text,v_delta);\n end if;\n update public.brick_game_runs set score=p_score,reward=p_reward,paid_reward=p_reward,ticks=v_ticks,replay=p_replay,\n  finished_at=case when p_final then clock_timestamp() else null end where id=r.id returning * into r;\n return to_jsonb(r);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -7789,7 +7789,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_operation_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.brick_game_start(p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();r public.brick_game_runs;v_gold integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null then raise exception 'INVALID_OPERATION';end if;\n perform app_private.get_gold_wallet();\n select gold into v_gold from public.player_wallets where user_id=v_uid for update;\n select * into r from public.brick_game_runs where user_id=v_uid and operation_id=p_operation_id;\n if found then return to_jsonb(r);end if;\n select * into r from public.brick_game_runs where user_id=v_uid and finished_at is null;\n if found then return to_jsonb(r);end if;\n if v_gold<20 then raise exception 'INSUFFICIENT_GOLD';end if;\n insert into public.brick_game_runs(user_id,operation_id,seed) values(v_uid,p_operation_id,floor(random()*4294967296)::bigint) returning * into r;\n update public.player_wallets set gold=gold-20,updated_at=clock_timestamp() where user_id=v_uid;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','arcade:brick-breaker',-20);\n return to_jsonb(r);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.brick_game_start(p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();r public.brick_game_runs;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null then raise exception 'INVALID_OPERATION';end if;\n perform app_private.get_gold_wallet();\n perform 1 from public.player_wallets where user_id=v_uid for update;\n select * into r from public.brick_game_runs where user_id=v_uid and operation_id=p_operation_id;\n if found then return to_jsonb(r);end if;\n select * into r from public.brick_game_runs where user_id=v_uid and finished_at is null;\n if found then return to_jsonb(r);end if;\n insert into public.brick_game_runs(user_id,operation_id,seed) values(v_uid,p_operation_id,floor(random()*4294967296)::bigint) returning * into r;\n return to_jsonb(r);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -7799,7 +7799,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_offset integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.brick_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_offset integer:=greatest(0,least(coalesce(p_offset,0),10000));v_result jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n with personal as (\n  select r.*,row_number() over(partition by user_id order by reward desc,score desc,started_at,id) as personal_rank from public.brick_game_runs r where finished_at is not null and score>0\n ), ranks as (\n  select p.*,row_number() over(order by reward desc,score desc,started_at,id) as rank from personal p where personal_rank=1\n ), page as (select * from ranks order by rank offset v_offset limit 30)\n select jsonb_build_object('total',(select count(*) from ranks),'offset',v_offset,'rows',coalesce((select jsonb_agg(jsonb_build_object('id',p.id,'rank',p.rank,'score',p.score,'gold',p.reward,'nickname',coalesce(u.nickname,'퐁이'),'mine',p.user_id=v_uid) order by p.rank) from page p left join public.player_profiles u on u.id=p.user_id),'[]'::jsonb)) into v_result;\n return v_result;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.brick_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_offset integer:=greatest(0,least(coalesce(p_offset,0),10000));v_result jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n with personal as (\n  select r.*,row_number() over(partition by user_id order by reward desc,started_at,id) as personal_rank from public.brick_game_runs r where finished_at is not null and reward>0\n ), ranks as (\n  select p.*,row_number() over(order by reward desc,started_at,id) as rank from personal p where personal_rank=1\n ), page as (select * from ranks order by rank offset v_offset limit 30)\n select jsonb_build_object('total',(select count(*) from ranks),'offset',v_offset,'rows',coalesce((select jsonb_agg(jsonb_build_object('id',p.id,'rank',p.rank,'gold',p.reward,'nickname',coalesce(u.nickname,'퐁이'),'mine',p.user_id=v_uid) order by p.rank) from page p left join public.player_profiles u on u.id=p.user_id),'[]'::jsonb)) into v_result;\n return v_result;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -8559,7 +8559,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_ids text[], p_region text, p_rod_region text, p_home_multiplier numeric, p_rarity_fallback boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_habitat_group(p_ids text[], p_region text, p_rod_region text DEFAULT NULL::text, p_home_multiplier numeric DEFAULT 1, p_rarity_fallback boolean DEFAULT false)\n RETURNS text\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n with candidates as materialized (\n  select s.id,s.rarity,s.native_region_id,\n   case when not s.is_native then 'shared' when s.native_region_id=p_region then 'home' else 'away' end bucket\n  from public.collectible_species s where s.id=any(p_ids)\n ), groups as materialized (\n  select distinct bucket from candidates\n ), selected as materialized (\n  select bucket from groups\n  order by -ln(greatest(random(),1e-15))/case bucket\n   when 'home' then 45*greatest(p_home_multiplier,0.001)*case when p_rod_region=p_region then 1.1 else 1 end\n   when 'shared' then 50 else 5 end,bucket limit 1\n )\n select c.id from candidates c join selected g using(bucket)\n order by -ln(greatest(random(),1e-15))/(\n  case when c.bucket='away' and c.native_region_id=p_rod_region then 3 else 1 end\n  *case when p_rarity_fallback then case c.rarity when 'common' then 7700 when 'rare' then 2000 when 'epic' then 270 else 30 end else 1 end\n ),c.id limit 1\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_habitat_group(p_ids text[], p_region text, p_rod_region text DEFAULT NULL::text, p_home_multiplier numeric DEFAULT 1, p_rarity_fallback boolean DEFAULT false)\n RETURNS text\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n with candidates as materialized (\n  select s.id,s.rarity,s.native_region_id,\n   case when not s.is_native then 'shared' when s.native_region_id=p_region then 'home' else 'away' end bucket\n  from public.collectible_species s where s.id=any(p_ids)\n ), groups as materialized (\n  select distinct bucket from candidates\n ), selected as materialized (\n  select bucket from groups\n  order by -ln(greatest(random(),1e-15))/case bucket\n   when 'home' then 35*greatest(p_home_multiplier,0.001)*case when p_rod_region=p_region then 1.1 else 1 end\n   when 'shared' then 60 else 5 end,bucket limit 1\n )\n select c.id from candidates c join selected g using(bucket)\n order by -ln(greatest(random(),1e-15))/(\n  case when c.bucket='away' and c.native_region_id=p_rod_region then 3 else 1 end\n  *case when p_rarity_fallback then case c.rarity when 'common' then 7700 when 'rare' then 2000 when 'epic' then 270 else 30 end else 1 end\n ),c.id limit 1\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -11513,7 +11513,7 @@
         "name": "brick_game_runs_engine_version_check",
         "table": "brick_game_runs",
         "schema": "public",
-        "definition": "CHECK ((engine_version = 1))"
+        "definition": "CHECK ((engine_version = ANY (ARRAY[1, 2])))"
       },
       {
         "name": "brick_game_runs_engine_version_not_null",
@@ -11537,7 +11537,7 @@
         "name": "brick_game_runs_paid_reward_check",
         "table": "brick_game_runs",
         "schema": "public",
-        "definition": "CHECK (((paid_reward >= 0) AND (paid_reward <= 150)))"
+        "definition": "CHECK (((paid_reward >= 0) AND (paid_reward <= 6400)))"
       },
       {
         "name": "brick_game_runs_paid_reward_not_null",
@@ -11567,7 +11567,7 @@
         "name": "brick_game_runs_reward_check",
         "table": "brick_game_runs",
         "schema": "public",
-        "definition": "CHECK ((reward = ANY (ARRAY[0, 10, 30, 60, 100, 150])))"
+        "definition": "CHECK ((((engine_version = 1) AND (reward = ANY (ARRAY[0, 10, 30, 60, 100, 150]))) OR ((engine_version = 2) AND (score = 0) AND ((reward >= 0) AND (reward <= 6400)) AND ((reward % 10) = 0))))"
       },
       {
         "name": "brick_game_runs_reward_not_null",

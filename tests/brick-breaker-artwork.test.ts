@@ -26,7 +26,7 @@ it('raises drawing resolution while keeping board, paddle and pointer coordinate
  const camera=new Camera(0,0,360,520)
  for(const [width,height,dpr] of [[360,520,1],[360,520,2],[360,520,3],[399,613,1.25],[600,400,2]]){
  const r=brickViewport(width,height,dpr),logicalHeight=520,fit=brickCamera(r.pixelWidth,r.pixelHeight)
-  expect(r.pixelWidth).toBe(Math.round(width*Math.min(dpr,2)))
+  expect(r.pixelWidth).toBe(Math.round(width*Math.min(dpr,1.5)))
   camera.setViewport(fit.x,fit.y,fit.width,fit.height).setZoom(fit.zoom).centerOn(180,logicalHeight/2)
   camera.preRender()
   expect(camera.worldView.width).toBeCloseTo(360);expect(camera.worldView.height).toBeCloseTo(logicalHeight)
@@ -43,9 +43,9 @@ it('raises drawing resolution while keeping board, paddle and pointer coordinate
 })
 
 it('caps mobile GPU work and handles hidden or very large containers',()=>{
- expect(brickViewport(360,520,3).ratio).toBe(2)
+ expect(brickViewport(360,520,3).ratio).toBe(1.5)
  const large=brickViewport(2000,1500,3)
- expect(large.pixelWidth*large.pixelHeight).toBeLessThanOrEqual(4005000)
+ expect(large.pixelWidth*large.pixelHeight).toBeLessThanOrEqual(2005000)
  expect(brickViewport(0,0,NaN)).toMatchObject({width:1,height:1,pixelWidth:1,pixelHeight:1})
  expect(brickViewport(360,520,0.5).ratio).toBe(1)
 })

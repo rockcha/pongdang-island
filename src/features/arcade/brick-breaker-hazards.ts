@@ -22,7 +22,7 @@ export function advanceSwimmer(drop:Drop,dt:number){
   drop.y+=(28+Math.sin(age*2.4)*3)*dt
   return
  }
- drop.x+=((drop.vx??24)+Math.sin(age*2.2+drop.id)*12)*dt
+ drop.x+=((drop.vx??12)+Math.sin(age*2.2+drop.id)*6)*dt
  drop.y+=((drop.vy??38)+Math.sin(age*2)*4)*dt
  const margin=27
  if(drop.x<margin){drop.x=margin;drop.vx=Math.abs(drop.vx??24)}

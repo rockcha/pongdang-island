@@ -22,13 +22,19 @@
       } catch {}
     </script>
     <title>퐁당섬</title>
+    <link rel="stylesheet" href="/startup.css" />
+    <link rel="stylesheet" href="/src/startup-font.css" />
+    <link rel="preload" as="image" href="/branding/pongi-welcome.png" />
   </head>
   <body>
-    <div id="app-startup" role="status" style="position:fixed;inset:0;z-index:2147483647;display:grid;place-content:center;gap:16px;padding:24px;text-align:center;background:#fff8ee;color:#49382d;font-family:system-ui,sans-serif">
-      <strong id="app-startup-title">퐁당섬을 여는 중이에요</strong>
-      <p id="app-startup-detail">잠시만 기다려 주세요.</p>
-      <button id="app-startup-retry" hidden type="button" style="min-height:44px;border:1px solid currentColor;border-radius:12px;padding:10px 20px;background:transparent;color:inherit;font:inherit">다시 시도</button>
-      <button id="app-startup-repair" hidden type="button" style="min-height:44px;border:0;background:transparent;color:inherit;font:inherit;text-decoration:underline">계속 안 열리면 앱 파일 복구</button>
+    <div id="app-startup" class="island-startup" role="status" aria-live="polite">
+      <div class="island-startup-art" aria-hidden="true"><img src="/branding/pongi-welcome.png" alt="" width="180" height="172" fetchpriority="high" /></div>
+      <p class="island-startup-brand" aria-hidden="true">퐁당섬</p>
+      <strong id="app-startup-title" class="island-startup-title">섬으로 가는 중…</strong>
+      <p id="app-startup-detail" class="island-startup-detail">퐁이가 작은 여행을 준비하고 있어요.</p>
+      <div class="island-startup-progress" aria-hidden="true"><span></span></div>
+      <button id="app-startup-retry" hidden type="button">다시 시도</button>
+      <button id="app-startup-repair" hidden type="button">계속 안 열리면 앱 파일 복구</button>
     </div>
     <style>#app-startup[hidden]{display:none!important}</style>
     <script id="app-startup-script">

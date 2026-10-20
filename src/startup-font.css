@@ -1,0 +1,2 @@
+/* Load the same Korean typeface before the application bundle starts. */
+@import '@fontsource/gowun-dodum';

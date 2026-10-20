@@ -2,7 +2,6 @@
 @source "../index.html";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@fontsource/gowun-dodum";
 
 .port-boat-sprite { background-size: 200% 200%; background-position: 0 0; background-repeat: no-repeat; }
 .port-boat-sprite[data-animate] { animation: port-sprite-float 3.2s ease-in-out infinite; }

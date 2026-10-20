@@ -1,3 +1,9 @@
-export function IslandLoading(){
- return <div role="status" aria-label="퐁당섬 준비 중" className="flex min-h-[70dvh] flex-1 flex-col items-center justify-center gap-4 bg-background px-6 text-center"><img src="/branding/pongi-welcome.png" alt="" className="island-loading-pongi size-36 object-contain"/><p className="text-lg text-primary">섬으로 가는 중…</p><p className="text-xs text-muted-foreground">퐁이가 낚시할 준비를 하고 있어요.</p><span aria-hidden="true" className="flex gap-1.5">{[0,1,2].map(i=><span key={i} className="size-1.5 rounded-full bg-primary/40 motion-safe:animate-pulse" style={{animationDelay:`${i*200}ms`}}/>)}</span></div>
+export function IslandLoading() {
+  return <div role="status" aria-label="퐁당섬 준비 중" className="island-startup flex-1">
+    <div className="island-startup-art" aria-hidden="true"><img src="/branding/pongi-welcome.png" alt="" width="180" height="172" /></div>
+    <p className="island-startup-brand" aria-hidden="true">퐁당섬</p>
+    <p className="island-startup-title">섬으로 가는 중…</p>
+    <p className="island-startup-detail">퐁이가 작은 여행을 준비하고 있어요.</p>
+    <div className="island-startup-progress" aria-hidden="true"><span /></div>
+  </div>
 }

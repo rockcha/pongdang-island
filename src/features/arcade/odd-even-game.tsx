@@ -201,6 +201,7 @@ function AccountGame() {
   const [scene, setScene] = useState<OddEvenScene>('mixing')
   const alive = useRef(true),
     locked = useRef(false),
+    acceptedRunKey = useRef(''),
     operation = useRef<string | null>(null),
     practice = useRef<ReturnType<typeof createOddEvenPractice> | null>(null)
   const run = state.run,
@@ -239,6 +240,19 @@ function AccountGame() {
     try {
       const next = practice.current ? practice.current(args) : await oddEvenAction(args)
       if (!alive.current) return
+      // Change the animation with its result, before the next paint. The effect
+      // below owns the timer, but must not leave old buttons visible for a frame.
+      const nextRunKey = next.run ? `${next.run.id}:${next.run.round}:${next.run.stage}` : ''
+      if (nextRunKey !== acceptedRunKey.current) {
+        acceptedRunKey.current = nextRunKey
+        setScene(
+          next.run?.stage === 'banked'
+            ? 'result'
+            : next.run?.stage === 'choose'
+              ? 'mixing'
+              : 'opening',
+        )
+      }
       setState(next)
       setError('')
       setLoaded(true)
@@ -420,21 +434,21 @@ function AccountGame() {
                   </div>
                 </GameStage>
                 <GameActions
-                  revealed={scene === 'asking' || scene === 'result'}
+                  revealed={scene !== 'mixing'}
                   className="odd-even-actions grid grid-cols-2 gap-2"
                 >
-                  {run.stage === 'choose' ? (
+                  {run.stage === 'choose' || scene !== 'result' ? (
                     <>
                       <Button
                         className="h-full min-h-20 w-full min-w-0 text-3xl font-medium"
-                        disabled={busy || scene !== 'asking'}
+                        disabled={busy || run.stage !== 'choose' || scene !== 'asking'}
                         onClick={() => act('answer', 'odd')}
                       >
                         홀
                       </Button>
                       <Button
                         className="h-full min-h-20 w-full min-w-0 text-3xl font-medium"
-                        disabled={busy || scene !== 'asking'}
+                        disabled={busy || run.stage !== 'choose' || scene !== 'asking'}
                         variant="outline"
                         onClick={() => act('answer', 'even')}
                       >

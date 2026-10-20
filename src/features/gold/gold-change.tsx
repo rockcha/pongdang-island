@@ -1,0 +1,34 @@
+/** Shared wallet feedback, also usable inside a native game's top layer. */
+export function GoldChange({
+  delta,
+  resource = 'gold',
+}: {
+  delta: number
+  resource?: 'gold' | 'fuel'
+}) {
+  if (!delta) return null
+  return (
+    <div
+      className={`gold-change flex items-center gap-2 py-1 ${delta > 0 ? 'gold-change-gain' : 'gold-change-loss'}`}
+    >
+      <span className="gold-change-number">
+        {delta > 0 ? '+' : '−'}
+        {Math.abs(delta).toLocaleString('ko-KR')}
+      </span>
+      <img
+        src={resource === 'fuel' ? '/app-icons/fuel.png' : '/currency/gold-coin-starfish.png'}
+        alt=""
+        aria-hidden="true"
+        className="gold-change-coin shrink-0 object-contain"
+      />
+      {delta > 0 && (
+        <span aria-hidden="true">
+          <i className="gold-change-sparkle" />
+          <i className="gold-change-sparkle" />
+          <i className="gold-change-sparkle" />
+        </span>
+      )}
+      <span className="sr-only">{resource === 'fuel' ? '기름' : '골드'}</span>
+    </div>
+  )
+}

@@ -5,6 +5,7 @@ const ShadowGame = lazy(() => import('./shadow-game'))
 const MemoryGame = lazy(() => import('./memory-game'))
 const OddEvenGame = lazy(() => import('./odd-even-game'))
 const BrickBreakerGame = lazy(() => import('./brick-breaker-game'))
+const LadderGame = lazy(() => import('./ladder-game'))
 
 export type ArcadeGame = {
   id: string
@@ -24,6 +25,19 @@ export const arcadeTagLabels = { luck: '운빨', brain: '뇌지컬', physical: '
 
 // Placeholder concepts: replace or extend these entries when games are approved.
 export const arcadeGames: ArcadeGame[] = [
+  {
+    id: 'ladder',
+    title: '퐁이의 물결 사다리',
+    description: '물결과 베팅금을 고르고 네 갈래 사다리에서 행운을 만나요.',
+    icon: Shell,
+    entryFee: 20,
+    dailyLimit: null,
+    status: 'ready',
+    component: LadderGame,
+    thumbnail: '/arcade/ladder/thumbnail.jpg',
+    tags: ['luck'],
+    rewardMode: 'instant',
+  },
   {
     id: 'odd-even',
     title: '퐁이의 홀짝 조개',

@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "633ac397511c757c58267b333c856665383fcd79926a56c75869dadde62bb1fa",
+  "migrationHash": "c2647b00fba5084a3c4404622c1448e6680e22662ecc2b1a48219bc707b8c2db",
   "structure": {
     "enums": [
       {
@@ -103,6 +103,12 @@
       {
         "rls": true,
         "name": "harbor_operations",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "ladder_runs",
         "schema": "app_private",
         "force_rls": false
       },
@@ -923,6 +929,116 @@
         "table": "harbor_operations",
         "schema": "app_private",
         "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "mode",
+        "type": "text",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "stake",
+        "type": "integer",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "choice",
+        "type": "integer",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "bridges",
+        "type": "integer[]",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "payouts",
+        "type": "integer[]",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "destination",
+        "type": "integer",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "reward",
+        "type": "integer",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -5678,6 +5794,24 @@
         "definition": "CREATE UNIQUE INDEX harbor_operations_pkey ON app_private.harbor_operations USING btree (user_id, operation_id)"
       },
       {
+        "name": "ladder_runs_latest",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "CREATE INDEX ladder_runs_latest ON app_private.ladder_runs USING btree (user_id, created_at DESC, id)"
+      },
+      {
+        "name": "ladder_runs_pkey",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX ladder_runs_pkey ON app_private.ladder_runs USING btree (id)"
+      },
+      {
+        "name": "ladder_runs_user_id_operation_id_key",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX ladder_runs_user_id_operation_id_key ON app_private.ladder_runs USING btree (user_id, operation_id)"
+      },
+      {
         "name": "memory_game_boards_pkey",
         "table": "memory_game_boards",
         "schema": "app_private",
@@ -8363,6 +8497,26 @@
         "securityDefiner": true
       },
       {
+        "name": "ladder_game",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_operation_id uuid, p_mode text, p_stake integer, p_choice integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.ladder_game(p_action text, p_operation_id uuid DEFAULT NULL::uuid, p_mode text DEFAULT NULL::text, p_stake integer DEFAULT NULL::integer, p_choice integer DEFAULT NULL::integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();r app_private.ladder_runs;v_gold integer;v_payouts integer[];v_bridges integer[]:='{}';v_col integer;v_link integer;v_reward integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action='state' then\n  select * into r from app_private.ladder_runs where user_id=v_uid order by created_at desc,id limit 1;\n  return jsonb_build_object('run',case when r.id is null then null else to_jsonb(r)-'user_id' end);\n end if;\n if p_action is distinct from 'play' or p_operation_id is null or p_mode is null or p_mode not in ('calm','wave','storm')\n  or p_stake is null or p_stake not between 20 and 1000 or p_stake%20<>0\n  or p_choice is null or p_choice not between 0 and 3 then raise exception 'INVALID_LADDER_REQUEST';end if;\n perform app_private.get_gold_wallet();\n select gold into v_gold from public.player_wallets where user_id=v_uid for update;\n select * into r from app_private.ladder_runs where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if r.mode<>p_mode or r.stake<>p_stake or r.choice<>p_choice then raise exception 'OPERATION_CONFLICT';end if;\n  return jsonb_build_object('run',to_jsonb(r)-'user_id');\n end if;\n if v_gold<p_stake then raise exception 'INSUFFICIENT_GOLD';end if;\n -- Independent shuffled endpoints make each payout equally likely for every start.\n select array_agg(x order by random()) into v_payouts from unnest(case p_mode when 'calm' then array[50,75,125,150] when 'wave' then array[0,50,150,200] else array[0,0,0,400] end) x;\n v_col:=p_choice;\n for i in 1..12 loop\n  v_link:=floor(random()*4)::integer-1;\n  v_bridges:=array_append(v_bridges,v_link);\n  if v_link>=0 then\n   if v_link=v_col then v_col:=v_col+1;elsif v_link=v_col-1 then v_col:=v_col-1;end if;\n  end if;\n end loop;\n v_reward:=p_stake*v_payouts[v_col+1]/100;\n if v_gold-p_stake+v_reward>1000000000 then raise exception 'GOLD_LIMIT';end if;\n insert into app_private.ladder_runs(user_id,operation_id,mode,stake,choice,bridges,payouts,destination,reward)\n values(v_uid,p_operation_id,p_mode,p_stake,p_choice,v_bridges,v_payouts,v_col,v_reward) returning * into r;\n update public.player_wallets set gold=gold-p_stake+v_reward,updated_at=clock_timestamp() where user_id=v_uid;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n values(v_uid,p_operation_id,'buy','arcade:ladder:'||r.id::text,-p_stake);\n if v_reward>0 then\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n  values(v_uid,gen_random_uuid(),'charge','arcade:ladder:'||r.id::text,v_reward);\n end if;\n return jsonb_build_object('run',to_jsonb(r)-'user_id');\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "ladder_leaderboard",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.ladder_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_result jsonb;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>10000 then raise exception 'INVALID_OFFSET';end if;\n with personal as (\n  select r.*,row_number() over(partition by user_id order by reward desc,created_at,id) rn from app_private.ladder_runs r where reward>0\n ), ranked as (\n  select p.*,row_number() over(order by reward desc,created_at,id) rank from personal p where rn=1\n ), page as (select * from ranked order by rank offset p_offset limit 20)\n select jsonb_build_object('total',(select count(*) from ranked),'rows',coalesce((select jsonb_agg(jsonb_build_object('id',p.id,'rank',p.rank,'gold',p.reward,'nickname',coalesce(u.nickname,'섬 여행자'),'mine',p.user_id=auth.uid()) order by p.rank) from page p left join public.player_profiles u on u.id=p.user_id),'[]'::jsonb)) into v_result;\n return v_result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "lock_collectible_habitat_species",
         "config": [
           "search_path=\"\""
@@ -9583,6 +9737,26 @@
         "securityDefiner": false
       },
       {
+        "name": "ladder_game",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text, p_operation_id uuid, p_mode text, p_stake integer, p_choice integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.ladder_game(p_action text, p_operation_id uuid DEFAULT NULL::uuid, p_mode text DEFAULT NULL::text, p_stake integer DEFAULT NULL::integer, p_choice integer DEFAULT NULL::integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.ladder_game(p_action,p_operation_id,p_mode,p_stake,p_choice)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "ladder_leaderboard",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.ladder_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.ladder_leaderboard(p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "manage_aquarium_tank",
         "config": [
           "search_path=\"\""
@@ -10376,6 +10550,132 @@
         "table": "harbor_operations",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "ladder_runs_bridges_check",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "CHECK ((cardinality(bridges) = 12))"
+      },
+      {
+        "name": "ladder_runs_bridges_not_null",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL bridges"
+      },
+      {
+        "name": "ladder_runs_choice_check",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "CHECK (((choice >= 0) AND (choice <= 3)))"
+      },
+      {
+        "name": "ladder_runs_choice_not_null",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL choice"
+      },
+      {
+        "name": "ladder_runs_created_at_not_null",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "ladder_runs_destination_check",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "CHECK (((destination >= 0) AND (destination <= 3)))"
+      },
+      {
+        "name": "ladder_runs_destination_not_null",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL destination"
+      },
+      {
+        "name": "ladder_runs_id_not_null",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "ladder_runs_mode_check",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "CHECK ((mode = ANY (ARRAY['calm'::text, 'wave'::text, 'storm'::text])))"
+      },
+      {
+        "name": "ladder_runs_mode_not_null",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL mode"
+      },
+      {
+        "name": "ladder_runs_operation_id_not_null",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "ladder_runs_payouts_check",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "CHECK ((cardinality(payouts) = 4))"
+      },
+      {
+        "name": "ladder_runs_payouts_not_null",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL payouts"
+      },
+      {
+        "name": "ladder_runs_pkey",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "ladder_runs_reward_check",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "CHECK (((reward >= 0) AND (reward <= 4000)))"
+      },
+      {
+        "name": "ladder_runs_reward_not_null",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL reward"
+      },
+      {
+        "name": "ladder_runs_stake_check",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "CHECK ((((stake >= 20) AND (stake <= 1000)) AND ((stake % 20) = 0)))"
+      },
+      {
+        "name": "ladder_runs_stake_not_null",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL stake"
+      },
+      {
+        "name": "ladder_runs_user_id_fkey",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "ladder_runs_user_id_not_null",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "ladder_runs_user_id_operation_id_key",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "definition": "UNIQUE (user_id, operation_id)"
       },
       {
         "name": "memory_game_boards_deck_check",
@@ -21529,6 +21829,48 @@
         "arguments": ""
       },
       {
+        "name": "ladder_game",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_mode text, p_stake integer, p_choice integer"
+      },
+      {
+        "name": "ladder_game",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_mode text, p_stake integer, p_choice integer"
+      },
+      {
+        "name": "ladder_game",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_mode text, p_stake integer, p_choice integer"
+      },
+      {
+        "name": "ladder_leaderboard",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "ladder_leaderboard",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "ladder_leaderboard",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
         "name": "lock_collectible_habitat_species",
         "role": "anon",
         "schema": "app_private",
@@ -24089,6 +24431,48 @@
         "schema": "public",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "ladder_game",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_mode text, p_stake integer, p_choice integer"
+      },
+      {
+        "name": "ladder_game",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_mode text, p_stake integer, p_choice integer"
+      },
+      {
+        "name": "ladder_game",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_mode text, p_stake integer, p_choice integer"
+      },
+      {
+        "name": "ladder_leaderboard",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "ladder_leaderboard",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "ladder_leaderboard",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
       },
       {
         "name": "manage_aquarium_tank",

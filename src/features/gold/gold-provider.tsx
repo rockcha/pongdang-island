@@ -8,6 +8,7 @@ import { goldError, loadGold, transactGold } from './api'
 import type { Trade, Wallet } from './wallet'
 import {toast} from 'sonner'
 import {purchaseMessage} from './purchase-message'
+import {GoldChange} from './gold-change'
 
 const GoldContext = createContext<{ wallet: Wallet; transact: (action: Trade) => Promise<void>; batchEffects: (work: () => Promise<void>) => Promise<void>; loading: boolean; busy: boolean; error: string; testClaimed: boolean; testEnabled: boolean; refresh: () => Promise<void> } | null>(null)
 export function GoldIcon({ className = 'size-6' }: { className?: string }) {
@@ -104,7 +105,7 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
   return <GoldContext.Provider value={{ wallet, transact, batchEffects, loading, busy:busy||groupBusy, error, testClaimed, testEnabled, refresh }}>
     {children}
     {createPortal(<div data-gold-effects className="pointer-events-none fixed inset-0 z-[2147483000] flex items-center justify-center" aria-live="polite" aria-atomic="true">
-      <div className="flex flex-col items-center gap-2">{effects.map(effect => <div key={effect.id} className={`gold-change flex items-center gap-2 py-1 ${effect.delta > 0 ? 'gold-change-gain' : 'gold-change-loss'}`}><span className="gold-change-number">{effect.delta > 0 ? '+' : '−'}{Math.abs(effect.delta).toLocaleString('ko-KR')}</span>{effect.resource==='fuel'?<img src="/app-icons/fuel.png" alt="" aria-hidden="true" className="gold-change-coin shrink-0 object-contain"/>:<GoldIcon className="gold-change-coin"/>}{effect.delta>0&&<span aria-hidden="true"><i className="gold-change-sparkle"/><i className="gold-change-sparkle"/><i className="gold-change-sparkle"/></span>}<span className="sr-only">{effect.resource==='fuel'?'기름':'골드'}</span></div>)}</div>
+      <div className="flex flex-col items-center gap-2">{effects.map(effect => <GoldChange key={effect.id} delta={effect.delta} resource={effect.resource} />)}</div>
     </div>,document.body)}
   </GoldContext.Provider>
 }

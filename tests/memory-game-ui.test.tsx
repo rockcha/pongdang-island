@@ -16,6 +16,8 @@ it('keeps paid admission in a stable portal and can leave after starting',async(
  fireEvent.click(screen.getByRole('button',{name:'실전 (골드 10)'}))
  const confirm=screen.getByRole('alertdialog')
  expect(confirm.closest('dialog')).toBe(screen.getByRole('dialog',{name:'카드 짝맞추기'}))
+ expect(confirm.closest('dialog')!.classList.contains('arcade-game-modal')).toBe(true)
+ expect(mocks.action.mock.calls.filter(([a])=>a.p_action==='start')).toHaveLength(0)
  fireEvent.click(within(confirm).getByRole('button',{name:'확인'}))
  await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
  expect(screen.getByRole('button',{name:'1번 카드 뒤집기'}).hasAttribute('disabled')).toBe(false)

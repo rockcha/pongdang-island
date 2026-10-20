@@ -469,7 +469,10 @@ function AccountShadowGame() {
                       Boolean(error)
                     }
                     practiceDisabled={!ready || busy}
-                    onPaid={() => setConfirm(true)}
+                    onPaid={() => {
+                      setGameOpen(true)
+                      setConfirm(true)
+                    }}
                     onPractice={() => void startPractice()}
                   ></GameStartOverlay>
                 </>
@@ -502,7 +505,10 @@ function AccountShadowGame() {
         portalContainer={modalContainer}
         illustration="game"
         open={confirm}
-        onOpenChange={setConfirm}
+        onOpenChange={(open) => {
+          setConfirm(open)
+          if (!open) setGameOpen(false)
+        }}
         title={
           <>
             <span className="block">그림자 맞추기에</span>

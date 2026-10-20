@@ -376,7 +376,10 @@ function AccountMemory() {
                     Boolean(error)
                   }
                   practiceDisabled={!loaded || busy}
-                  onPaid={() => setConfirmation('start')}
+                  onPaid={() => {
+                    setGameOpen(true)
+                    setConfirmation('start')
+                  }}
                   onPractice={startPractice}
                 />
               )}
@@ -423,7 +426,10 @@ function AccountMemory() {
         illustration={confirmation === 'leave' ? 'caution' : 'game'}
         open={confirmation !== null}
         onOpenChange={(open) => {
-          if (!open) setConfirmation(null)
+          if (!open) {
+            setConfirmation(null)
+            if (confirmation === 'start') setGameOpen(false)
+          }
         }}
         busy={busy}
         error={error}

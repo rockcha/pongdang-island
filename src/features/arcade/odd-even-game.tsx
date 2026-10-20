@@ -360,7 +360,10 @@ function AccountGame() {
                 title="퐁이의 홀짝 조개"
                 description="조개 속 진주, 홀일까요 짝일까요?"
                 poster="/arcade/odd-even/thumbnail.png"
-                onPaid={() => setConfirm(true)}
+                onPaid={() => {
+                  setGameOpen(true)
+                  setConfirm(true)
+                }}
                 onPractice={startPractice}
                 paidDisabled={!loaded || busy || gold.loading || gold.wallet.gold < 10}
                 practiceDisabled={busy || !!operation.current}
@@ -514,7 +517,10 @@ function AccountGame() {
         portalContainer={modalContainer}
         illustration="game"
         open={confirm}
-        onOpenChange={setConfirm}
+        onOpenChange={(open) => {
+          setConfirm(open)
+          if (!open) setGameOpen(false)
+        }}
         title="10골드로 시작하시겠습니까?"
         description="별도 참가비 없이 10골드를 베팅해요. 틀리면 이번 판의 베팅금은 사라져요."
         busy={busy}

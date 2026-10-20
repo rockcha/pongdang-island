@@ -16,6 +16,8 @@ it('keeps paid admission confirmation in the game dialog while opening and allow
  fireEvent.click(screen.getByRole('button',{name:'실전 (골드 10)'}))
  const confirm=screen.getByRole('alertdialog')
  expect(confirm.closest('dialog')).toBe(screen.getByRole('dialog',{name:'퐁이의 홀짝 조개'}))
+ expect(confirm.closest('dialog')!.classList.contains('arcade-game-modal')).toBe(true)
+ expect(mocks.action.mock.calls.filter(([a])=>a.p_action==='start')).toHaveLength(0)
  fireEvent.click(within(confirm).getByRole('button',{name:'확인'}))
  await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
  await waitFor(()=>expect(screen.getByRole('button',{name:'홀'}).hasAttribute('disabled')).toBe(false),{timeout:2000})

@@ -17,6 +17,8 @@ it('closes paid admission without moving its portal and leaves the running game'
  fireEvent.click(screen.getByRole('button',{name:'실전 (골드 10)'}))
  const confirm=screen.getByRole('alertdialog')
  expect(confirm.closest('dialog')).toBe(screen.getByRole('dialog',{name:'그림자 맞추기'}))
+ expect(confirm.closest('dialog')!.classList.contains('arcade-game-modal')).toBe(true)
+ expect(mocks.action.mock.calls.filter(([a])=>a.p_action==='start')).toHaveLength(0)
  fireEvent.click(within(confirm).getByRole('button',{name:'확인'}))
  await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
  expect(screen.getByRole('region',{name:'그림자 문제'})).toBeTruthy()

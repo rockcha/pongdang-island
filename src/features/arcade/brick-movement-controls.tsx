@@ -1,37 +1,33 @@
 import {useEffect,useRef,useState} from 'react'
-import {ChevronLeft,ChevronRight} from 'lucide-react'
 
-export function BrickMovementControls({enabled,onDirection}:{enabled:boolean;onDirection:(direction:-1|0|1)=>void}){
- const held=useRef(new Map<string,-1|1>())
- const [direction,setDirection]=useState<-1|0|1>(0)
- function update(key:string,value:-1|1|null){
-  if(value===null)held.current.delete(key)
-  else{held.current.delete(key);held.current.set(key,value)}
-  const next=Array.from(held.current.values()).at(-1)??0
-  setDirection(next);onDirection(next)
- }
+export function BrickMovementControls({enabled,onDirection,onTarget}:{enabled:boolean;onDirection:(direction:-1|0|1)=>void;onTarget:(position:number|null)=>void}){
+ const pointer=useRef<number|null>(null)
+ const [position,setPosition]=useState<number|null>(null)
+ const clear=()=>{pointer.current=null;setPosition(null);onTarget(null);onDirection(0)}
  useEffect(()=>{
-  const inputs=held.current
-  const clear=()=>{inputs.clear();setDirection(0);onDirection(0)}
-  clear()
-  const hide=()=>{if(document.hidden)clear()}
-  window.addEventListener('blur',clear);document.addEventListener('visibilitychange',hide)
-  return()=>{window.removeEventListener('blur',clear);document.removeEventListener('visibilitychange',hide);inputs.clear();onDirection(0)}
- },[enabled,onDirection])
- return <div className="shrink-0 border-t border-white/10 bg-[#50372b] text-white select-none [@media(max-height:500px)]:pt-1" role="group" aria-label="패들 이동 조작">
-  <div className="grid w-full grid-cols-2 gap-px">
-   {([-1,1] as const).map(value=><button key={value} type="button" disabled={!enabled} aria-label={value===-1?'왼쪽으로 이동':'오른쪽으로 이동'} aria-pressed={direction===value}
-    className={`flex h-16 touch-none items-center justify-center gap-2 rounded-none border-0 text-base font-medium shadow-[0_3px_0_rgba(0,0,0,0.25)] transition-[background-color,transform] duration-75 disabled:opacity-35 [@media(max-height:500px)]:h-12 ${direction===value?'translate-y-0.5 bg-[#805337] shadow-none':'bg-[#62432f] hover:bg-[#755039]'} focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e7c19b]`}
-    onContextMenu={event=>event.preventDefault()}
-    onPointerDown={event=>{if(!enabled)return;event.preventDefault();event.currentTarget.setPointerCapture?.(event.pointerId);update(`pointer-${event.pointerId}`,value)}}
-    onPointerUp={event=>update(`pointer-${event.pointerId}`,null)}
-    onPointerCancel={event=>update(`pointer-${event.pointerId}`,null)}
-    onLostPointerCapture={event=>update(`pointer-${event.pointerId}`,null)}
-    onKeyDown={event=>{if(enabled&&(event.key===' '||event.key==='Enter')){event.preventDefault();update(`key-${value}-${event.key}`,value)}}}
-    onKeyUp={event=>{if(event.key===' '||event.key==='Enter'){event.preventDefault();update(`key-${value}-${event.key}`,null)}}}
-    onBlur={()=>{update(`key-${value}- `,null);update(`key-${value}-Enter`,null)}}>
-    {value===-1?<ChevronLeft className="size-7"/>:<ChevronRight className="size-7"/>}<span>{value===-1?'왼쪽':'오른쪽'}</span>
-   </button>)}
-  </div>
+  const reset=()=>{pointer.current=null;setPosition(null);onTarget(null);onDirection(0)}
+  reset()
+  const hide=()=>{if(document.hidden)reset()}
+  window.addEventListener('blur',reset);document.addEventListener('visibilitychange',hide)
+  return()=>{window.removeEventListener('blur',reset);document.removeEventListener('visibilitychange',hide);onTarget(null);onDirection(0)}
+ },[enabled,onTarget,onDirection])
+ function move(element:HTMLElement,clientX:number){
+  const rect=element.getBoundingClientRect();if(rect.width<=0)return
+  const next=Math.max(0,Math.min(1,(clientX-rect.left)/rect.width))
+  setPosition(next);onTarget(next)
+ }
+ return <div role="group" aria-label="퐁이 이동 조작" aria-disabled={!enabled} tabIndex={enabled?0:-1}
+  className={`relative h-16 shrink-0 touch-none select-none overflow-hidden border-t border-white/10 bg-[#50372b] text-[#ffe3bd] outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#e7c19b] ${enabled?'cursor-ew-resize':'opacity-40'}`}
+  onPointerDown={event=>{if(!enabled||pointer.current!==null||event.button>0)return;event.preventDefault();pointer.current=event.pointerId;event.currentTarget.setPointerCapture?.(event.pointerId);move(event.currentTarget,event.clientX)}}
+  onPointerMove={event=>{if(enabled&&pointer.current===event.pointerId)move(event.currentTarget,event.clientX)}}
+  onPointerUp={event=>{if(pointer.current===event.pointerId)clear()}}
+  onPointerCancel={event=>{if(pointer.current===event.pointerId)clear()}}
+  onLostPointerCapture={event=>{if(pointer.current===event.pointerId)clear()}}
+  onContextMenu={event=>event.preventDefault()}
+  onKeyDown={event=>{if(enabled&&(event.key==='ArrowLeft'||event.key==='ArrowRight')){event.preventDefault();onTarget(null);onDirection(event.key==='ArrowLeft'?-1:1)}}}
+  onKeyUp={event=>{if(event.key==='ArrowLeft'||event.key==='ArrowRight')clear()}}
+  onBlur={clear}>
+  <span className="pointer-events-none absolute inset-x-5 top-1/2 h-px bg-[#e7c19b]/30"/>
+  {position!==null?<span aria-hidden="true" className="pointer-events-none absolute top-1/2 size-8 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#ffe3bd]/70 bg-[#b98555]/80" style={{left:`${position*100}%`}}/>:<span className="pointer-events-none absolute inset-0 flex items-center justify-center text-xs">여기를 좌우로 문질러 퐁이를 움직여요</span>}
  </div>
 }

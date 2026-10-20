@@ -5,7 +5,7 @@ import BrickBreakerGame from '@/features/arcade/brick-breaker-game'
 import type {BrickScore} from '@/features/arcade/brick-breaker-model'
 
 const server=vi.hoisted(()=>({start:vi.fn(),settle:vi.fn(),ranks:vi.fn()}))
-const engine=vi.hoisted(()=>({start:vi.fn(),stop:vi.fn(),setDirection:vi.fn(),launch:vi.fn(),next:vi.fn(),bank:vi.fn(),previewSkill:vi.fn(),replay:vi.fn(()=>({ticks:0,inputs:[]})),pause:vi.fn(),destroy:vi.fn(),ready:()=>{},error:()=>{},score:(_value:BrickScore)=>{}}))
+const engine=vi.hoisted(()=>({start:vi.fn(),stop:vi.fn(),setDirection:vi.fn(),setTarget:vi.fn(),launch:vi.fn(),next:vi.fn(),bank:vi.fn(),previewSkill:vi.fn(),replay:vi.fn(()=>({ticks:0,inputs:[]})),pause:vi.fn(),destroy:vi.fn(),ready:()=>{},error:()=>{},score:(_value:BrickScore)=>{}}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wallet:{gold:100},loading:false,busy:false,error:'',refresh:vi.fn()})}))
 vi.mock('@/features/arcade/brick-breaker-api',()=>({startBrickRun:server.start,settleBrickRun:server.settle,brickLeaderboard:server.ranks,brickError:()=>'서버 연결 오류'}))
@@ -31,19 +31,15 @@ it('offers separate practice and laboratory modes, disabled until assets are rea
  fireEvent.click(screen.getByRole('button',{name:'시작하기'}));expect(engine.launch).toHaveBeenCalledOnce()
 })
 
-it('holds movement with the direction buttons and stops on release, cancellation and pause',async()=>{
+it('uses a bottom touch surface and stops movement when paused',async()=>{
  await ready();fireEvent.click(screen.getByRole('button',{name:'연습'}))
- const left=screen.getByRole('button',{name:'왼쪽으로 이동'}),right=screen.getByRole('button',{name:'오른쪽으로 이동'})
- fireEvent.pointerDown(left);expect(engine.setDirection).toHaveBeenLastCalledWith(-1)
- fireEvent.pointerUp(left);expect(engine.setDirection).toHaveBeenLastCalledWith(0)
- fireEvent.pointerDown(right);expect(engine.setDirection).toHaveBeenLastCalledWith(1)
- fireEvent.pointerCancel(right);expect(engine.setDirection).toHaveBeenLastCalledWith(0)
- fireEvent.keyDown(left,{key:' '});expect(engine.setDirection).toHaveBeenLastCalledWith(-1)
- fireEvent.keyUp(left,{key:' '});expect(engine.setDirection).toHaveBeenLastCalledWith(0)
- fireEvent.pointerDown(right)
+ const pad=screen.getByRole('group',{name:'퐁이 이동 조작'})
+ expect(screen.queryByRole('button',{name:'왼쪽으로 이동'})).toBeNull()
+ fireEvent.keyDown(pad,{key:'ArrowLeft'});expect(engine.setDirection).toHaveBeenLastCalledWith(-1)
+ fireEvent.keyUp(pad,{key:'ArrowLeft'});expect(engine.setDirection).toHaveBeenLastCalledWith(0)
  fireEvent.click(screen.getByRole('button',{name:'게임 일시정지'}))
- expect(engine.setDirection).toHaveBeenLastCalledWith(0)
- expect((left as HTMLButtonElement).disabled).toBe(true)
+ expect(engine.setTarget).toHaveBeenLastCalledWith(null)
+ expect(pad.getAttribute('aria-disabled')).toBe('true')
  expect(engine.launch).not.toHaveBeenCalled()
 })
 

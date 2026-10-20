@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 import {BrickSession} from './brick-breaker-replay'
 import type {BrickReplay} from './brick-breaker-replay'
+import {brickTargetDirection} from './brick-target-input'
 import {gameIsCovered} from './game-interaction'
 import {dashHeadOrigins} from './brick-breaker-anchors'
 import {WAVE_SHOT,DASH_SHOT,STAR_SHOT,TORPEDO_DISPLAY_SIZE,TORPEDO_HAZARD} from './brick-breaker-config'
@@ -9,7 +10,7 @@ import type {BrickScore,BrickImpact,DropFeedback,DropKind} from './brick-breaker
 import {brickCamera,brickViewport,dropArtwork,brickMaterials} from './brick-breaker-artwork'
 
 export type BrickMode='paid'|'practice'|'lab'
-export type BrickController={start:(mode?:BrickMode,seed?:number,replay?:BrickReplay)=>void;replay:()=>BrickReplay;stop:()=>void;setDirection:(direction:-1|0|1)=>void;launch:()=>void;next:()=>void;bank:()=>void;previewSkill:(kind:DropKind)=>void;pause:(paused:boolean)=>void;destroy:()=>void}
+export type BrickController={start:(mode?:BrickMode,seed?:number,replay?:BrickReplay)=>void;replay:()=>BrickReplay;stop:()=>void;setDirection:(direction:-1|0|1)=>void;setTarget:(position:number|null)=>void;launch:()=>void;next:()=>void;bank:()=>void;previewSkill:(kind:DropKind)=>void;pause:(paused:boolean)=>void;destroy:()=>void}
 const ink=0x183f4a
 const palette=[0x8bd2c5,0xf4d792,0xeaa78d,0x9eafda]
 
@@ -90,6 +91,7 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
  let paidSession:BrickSession|null=null
  const command=(action:'launch'|'next')=>{if(paidSession)paidSession.command(action);else if(action==='launch')model.launch();else model.nextRound()}
  let heldDirection:-1|0|1=0
+ let touchTarget:number|null=null
  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches
  let failed=false,generation=0,logicalHeight:number=BOARD.height
  let viewport=brickViewport(parent.clientWidth,parent.clientHeight,window.devicePixelRatio)
@@ -174,7 +176,7 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
    this.arrows=this.input.keyboard?.createCursorKeys()
    if(this.input.keyboard)this.keys={left:this.input.keyboard.addKey('A'),right:this.input.keyboard.addKey('D'),space:this.input.keyboard.addKey('SPACE')}
    this.input.keyboard?.on('keydown-SPACE',(event:KeyboardEvent)=>{if(canInteract()&&(parent.contains(document.activeElement)||document.activeElement===document.body)){event.preventDefault();command('launch')}})
-   this.input.keyboard?.on('keydown-P',()=>{if(started&&model.phase==='playing'){heldDirection=0;paused=true;onPause()}})
+   this.input.keyboard?.on('keydown-P',()=>{if(started&&model.phase==='playing'){heldDirection=0;touchTarget=null;paused=true;onPause()}})
    this.input.keyboard?.disableGlobalCapture()
    this.events.once('shutdown',()=>{sprites.clear();this.tiles.clear();this.impacts.clear();this.explosions=[]})
    onReady?.()
@@ -182,12 +184,12 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
   update(time:number,delta:number){
    if(disposed||!this.paint)return
    resizeViewport()
-   if(started&&!paused&&(document.hidden||gameIsCovered(parent))){heldDirection=0;paused=true;this.input.keyboard?.resetKeys();onPause()}
+   if(started&&!paused&&(document.hidden||gameIsCovered(parent))){heldDirection=0;touchTarget=null;paused=true;this.input.keyboard?.resetKeys();onPause()}
    if(this.generation!==generation){this.generation=generation;this.impacts.clear();this.explosions=[];this.waveBursts=[];this.songBursts=[];this.anchorBursts=[];this.torpedoBursts=[];for(const label of this.torpedoLabels.values())label.destroy();this.torpedoLabels.clear();this.feedback=null;this.cameras.main.shakeEffect.reset();this.feedbackText.setVisible(false);for(const image of this.tiles.values())image.destroy();this.tiles.clear()}
    if(!paused)this.effectClock+=Math.min(delta,100)
    if(started&&!paused){
-    const direction=heldDirection||((this.arrows?.right.isDown||this.keys?.right.isDown?1:0)-(this.arrows?.left.isDown||this.keys?.left.isDown?1:0))
     const inputSeconds=Math.min(delta/1000,0.05)
+    const direction=touchTarget!==null?brickTargetDirection(model.paddleX,touchTarget,inputSeconds):heldDirection||((this.arrows?.right.isDown||this.keys?.right.isDown?1:0)-(this.arrows?.left.isDown||this.keys?.left.isDown?1:0))
     if(paidSession){paidSession.command('direction',direction as -1|0|1);if(paidSession.ticks<216000)paidSession.advance(inputSeconds);else{paused=true;onPause()}}
     else{if(direction)model.moveInput(model.paddleX+direction*420*inputSeconds,inputSeconds);model.step(delta/1000)}
    }
@@ -520,15 +522,15 @@ export function createBrickGame(parent:HTMLElement,onScore:(score:BrickScore)=>v
   viewport=next;game.scale.setZoom(1/viewport.ratio);game.scale.resize(viewport.pixelWidth,viewport.pixelHeight)
  }
  game=new Phaser.Game({type:Phaser.AUTO,parent,width:viewport.pixelWidth,height:viewport.pixelHeight,backgroundColor:'#183139',scene:BrickScene,scale:{mode:Phaser.Scale.NONE,zoom:1/viewport.ratio},render:{antialias:true,antialiasGL:true,pixelArt:false,mipmapFilter:'LINEAR_MIPMAP_LINEAR'},input:{activePointers:2},audio:{noAudio:true},banner:false})
- game.canvas.setAttribute('aria-label','퐁이 벽돌깨기 게임 화면. 하단 좌우 버튼을 누르거나 방향키로 이동하고 발사 버튼 또는 스페이스로 공을 발사하세요.')
+ game.canvas.setAttribute('aria-label','퐁이 벽돌깨기 게임 화면. 퐁이 아래 조작 영역을 좌우로 문지르거나 방향키로 이동하고 발사 버튼 또는 스페이스로 공을 발사하세요.')
  game.canvas.setAttribute('role','img');game.canvas.style.touchAction='none'
  const resize=new ResizeObserver(resizeViewport);resize.observe(parent)
- function reset(mode:BrickMode,seed?:number,replay?:BrickReplay){heldDirection=0;paidSession=mode==='paid'?new BrickSession(seed??0):null;if(paidSession&&replay){let i=0;for(let tick=0;tick<=replay.ticks;tick++){while(i<replay.inputs.length&&replay.inputs[i].tick===tick){const input=replay.inputs[i++];paidSession.apply(input.action,input.value)}if(tick<replay.ticks)paidSession.step()}paidSession.inputs=replay.inputs.map(input=>({...input}));paidSession.command('direction',0)}model=paidSession?.model??new BrickPractice();if(paidSession){model.drainImpacts();model.drainFeedback();model.drainSongs();model.drainAnchorSlams();model.drainTorpedoBlasts();model.drainPaddleHit()}model.resize(logicalHeight);if(mode==='lab')model.enterLaboratory();generation++;started=true;paused=false;lastScore='';onScore(model.score())}
+ function reset(mode:BrickMode,seed?:number,replay?:BrickReplay){heldDirection=0;touchTarget=null;paidSession=mode==='paid'?new BrickSession(seed??0):null;if(paidSession&&replay){let i=0;for(let tick=0;tick<=replay.ticks;tick++){while(i<replay.inputs.length&&replay.inputs[i].tick===tick){const input=replay.inputs[i++];paidSession.apply(input.action,input.value)}if(tick<replay.ticks)paidSession.step()}paidSession.inputs=replay.inputs.map(input=>({...input}));paidSession.command('direction',0)}model=paidSession?.model??new BrickPractice();if(paidSession){model.drainImpacts();model.drainFeedback();model.drainSongs();model.drainAnchorSlams();model.drainTorpedoBlasts();model.drainPaddleHit()}model.resize(logicalHeight);if(mode==='lab')model.enterLaboratory();generation++;started=true;paused=false;lastScore='';onScore(model.score())}
  function preview(kind:DropKind){
   if(!started||!model.labMode)return
   const x=model.paddleX,direction=heldDirection
   reset('lab');model.move(x);heldDirection=direction
   model.previewSkill(kind);onScore(model.score())
  }
- return {start:(mode='practice',seed,replay)=>reset(mode,seed,replay),replay:()=>paidSession?.replay()??{ticks:0,inputs:[]},stop:()=>{heldDirection=0;paidSession=null;started=false;paused=true;model=new BrickPractice();generation++;lastScore='';onScore(model.score())},setDirection:direction=>{heldDirection=direction===0||canInteract()?direction:0},launch:()=>{if(canInteract())command('launch')},next:()=>{heldDirection=0;if(paidSession)paidSession.command('direction',0);command('next');generation++},bank:()=>model.bank(),previewSkill:preview,pause:value=>{heldDirection=0;paused=value},destroy:()=>{heldDirection=0;disposed=true;resize.disconnect();sprites.clear();game.destroy(true)}}
+ return {start:(mode='practice',seed,replay)=>reset(mode,seed,replay),replay:()=>paidSession?.replay()??{ticks:0,inputs:[]},stop:()=>{heldDirection=0;touchTarget=null;paidSession=null;started=false;paused=true;model=new BrickPractice();generation++;lastScore='';onScore(model.score())},setDirection:direction=>{heldDirection=direction===0||canInteract()?direction:0},setTarget:position=>{touchTarget=position!==null&&Number.isFinite(position)&&canInteract()?Math.max(0,Math.min(1,position))*BOARD.width:null},launch:()=>{if(canInteract())command('launch')},next:()=>{heldDirection=0;touchTarget=null;if(paidSession)paidSession.command('direction',0);command('next');generation++},bank:()=>model.bank(),previewSkill:preview,pause:value=>{heldDirection=0;touchTarget=null;paused=value},destroy:()=>{heldDirection=0;touchTarget=null;disposed=true;resize.disconnect();sprites.clear();game.destroy(true)}}
 }

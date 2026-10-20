@@ -52,6 +52,7 @@ export default function BrickBreakerGame(){const {session}=useAuth();return <Acc
 function AccountBrickGame(){
  const gold=useGold(),host=useRef<HTMLDivElement>(null),controller=useRef<BrickController|null>(null)
  const move=useCallback((direction:-1|0|1)=>controller.current?.setDirection(direction),[])
+ const target=useCallback((position:number|null)=>controller.current?.setTarget(position),[])
  const [tab,setTab]=useState<'game'|'rank'>('game'),[score,setScore]=useState(initial),[mode,setMode]=useState<BrickMode|null>(null)
  const [ready,setReady]=useState(false),[paused,setPaused]=useState(false),[error,setError]=useState(''),[networkError,setNetworkError]=useState(''),[busy,setBusy]=useState(false),[paidConfirm,setPaidConfirm]=useState(false)
  const paidRun=useRef<BrickRun|null>(null),operation=useRef<string|null>(null),queue=useRef<Promise<unknown>>(Promise.resolve()),requestLock=useRef(false),alive=useRef(true)
@@ -91,7 +92,7 @@ function AccountBrickGame(){
    <GameModal open={started} title="퐁이의 벽돌깨기" active={started&&!ended} practice={!paid} onExit={exit} onPause={pause} busy={busy} modeLabel={lab?'모션':paid?'실전':'연습'} headerClassName="bg-[#38291f] text-[#fff1dd] border-[#e7c19b]/15" headerActions={<Button variant="ghost" size="icon" aria-label={paused?'게임 계속하기':'게임 일시정지'} disabled={ended||busy} onClick={()=>pause(!paused)}>{paused?<Play className="size-4"/>:<Pause className="size-4"/>}</Button>}>
     {()=><section className="brick-layout flex min-h-0 flex-1 flex-col bg-[#38291f]" aria-label="퐁이 벽돌깨기 연습">
      {started&&!lab&&<div className="brick-hud"><BrickGameHud score={score} practice={!paid}/></div>}
-     {started&&<div className="brick-effects"><BrickEffectBadges effects={score.effects??[]}/></div>}
+     {started&&<div className="brick-effects h-10 shrink-0 overflow-hidden"><BrickEffectBadges effects={score.effects??[]}/></div>}
      <div className="brick-stage relative min-h-0 flex-1 overflow-hidden">
       <div ref={host} className="absolute inset-0"/>
       {lifeLoss>0&&<div key={lifeLoss} role="status" aria-label="생명 1개 감소" className="pointer-events-none absolute inset-0 z-30 flex items-center justify-center"><div className="gold-change gold-change-loss flex items-center gap-3"><span className="gold-change-number">−1</span><Heart aria-hidden="true" className="size-10 fill-[#f09b91] text-[#ffd0c9]"/></div></div>}
@@ -106,7 +107,7 @@ function AccountBrickGame(){
       {networkError&&<div role="alert" className="absolute inset-x-3 bottom-3 z-30 rounded-lg border bg-background p-3 text-sm text-foreground">{networkError}{paid&&<Button variant="ghost" disabled={busy} onClick={()=>void settle(ended).catch(()=>{})}>다시 확인</Button>}</div>}
      </div>
      {lab&&<div className="brick-lab-panel"><div id="brick-test-list" aria-label="아이템·방해물 테스트 목록" className="grid max-h-44 shrink-0 grid-cols-2 gap-2 overflow-y-auto border-t bg-background p-2">{testDrops.map(drop=><Button key={drop.kind} variant="outline" className="min-h-14 min-w-0 justify-start gap-2 px-2" disabled={!ready} onClick={()=>{pause(false);controller.current?.previewSkill(drop.kind)}}><span aria-hidden="true" className="relative size-9 shrink-0 overflow-hidden"><img src={dropArtwork[drop.kind].preview??dropArtwork[drop.kind].src} alt="" className={dropArtwork[drop.kind].sheet&&!dropArtwork[drop.kind].preview?'absolute left-0 top-0 size-18 max-w-none':'size-9 object-contain'}/></span><span className="min-w-0 text-left whitespace-normal"><span className="block text-sm">{drop.name}</span><span className="block text-xs font-normal text-muted-foreground">{drop.detail}</span></span></Button>)}</div></div>}
-     {started&&!ended&&<div className="brick-controls"><BrickMovementControls enabled={!paused&&!error&&!busy&&score.phase!=='round-clear'} onDirection={move}/></div>}
+     {started&&<div className="brick-controls shrink-0"><BrickMovementControls enabled={!ended&&!paused&&!error&&!busy&&score.phase!=='round-clear'} onDirection={move} onTarget={target}/></div>}
     </section>}
    </GameModal>
   </div>

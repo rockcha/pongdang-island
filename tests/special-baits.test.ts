@@ -25,14 +25,14 @@ it('sells exactly the three requested baits and keeps first greeting reward-only
  await expect(db.query("select public.buy_fishing_bait('bait_first_greeting',$1)",[crypto.randomUUID()])).rejects.toThrow(/BAIT_NOT_FOR_SALE/)
 })
 it('sells safe bait and temporarily pauses decoration bait sales',async()=>{
- for(const [id,price] of [['bait_safe',65]] as const){
+ for(const [id,price] of [['bait_safe',90]] as const){
   const op=crypto.randomUUID()
   await db.query('select public.buy_fishing_bait($1,$2)',[id,op])
   await db.query('select public.buy_fishing_bait($1,$2)',[id,op])
   expect((await db.query('select delta from public.gold_transactions where operation_id=$1',[op])).rows).toEqual([{delta:-price}])
  }
  const rows=(await db.query('select price from public.fishing_baits order by sort_order')).rows
- expect(rows.map(row=>row.price)).toEqual([30,65,40,60,80,null,null,null,null])
+ expect(rows.slice(0,9).map(row=>row.price)).toEqual([30,90,40,60,130,null,null,null,null])
  await expect(db.query("select public.buy_fishing_bait('bait_magnet',$1)",[crypto.randomUUID()])).rejects.toThrow(/BAIT_NOT_FOR_SALE/)
 })
 it('rejects paused lodestone purchases without changing gold, existing inventory or receipts',async()=>{

@@ -22,6 +22,13 @@ export function catalogSql(catalog, {tables} = {}) {
   }
   // The manifest controls habitats only for its species; it never deletes species or player data.
   if(!tables||tables.includes('collectible_species')){
+    // Retained remote species may not have a complete definition in this catalog.
+    // Price overrides update existing rows only; they never recreate or retire species.
+    if(catalog.retained_species_prices?.length){
+      const prices=catalog.retained_species_prices
+      if(new Set(prices.map(p=>p.id)).size!==prices.length||prices.some(p=>!/^[-a-z0-9]+$/.test(p.id)||!Number.isSafeInteger(p.sell_price)||p.sell_price<0||catalog.collectible_species.some(s=>s.id===p.id)))throw new Error('Invalid retained species price')
+      statements.push(`update public.collectible_species s set sell_price=p.sell_price from (values\n${prices.map(p=>`(${literal(p.id)},${p.sell_price})`).join(',\n')}) as p(id,sell_price) where s.id=p.id;`)
+    }
     statements.push(`delete from public.collectible_habitats where species_id in (${catalog.collectible_species.map(r => literal(r.id)).join(',')});`)
     if (catalog.collectible_habitats.length) statements.push(`insert into public.collectible_habitats(species_id,region_id) values\n${catalog.collectible_habitats.map(r => `(${literal(r.species_id)},${literal(r.region_id)})`).join(',\n')};`)
   }

@@ -10,10 +10,10 @@ vi.mock('@/features/fishing/api',()=>({loadFishing:mock.bait}))
 vi.mock('@/features/fishing/fishing-rod-ui',()=>({FishingRodShop:()=> <p>낚싯대 목록</p>}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:()=>null}))
 afterEach(()=>{cleanup();vi.resetAllMocks()})
-it('starts with bait and orders tabs as bait, rods, maps',()=>{
+it('starts with bait and keeps maps in the item shop',()=>{
  mock.bait.mockResolvedValue({baits:[]})
  render(<MemoryRouter initialEntries={['/shop']}><ShopPage/></MemoryRouter>)
- expect(screen.getAllByRole('tab').map(tab=>tab.textContent)).toEqual(['미끼','낚싯대','지도'])
+ expect(screen.getAllByRole('tab').map(tab=>tab.textContent)).toEqual(['미끼','낚싯대'])
  expect(screen.getByRole('tab',{name:'미끼'}).getAttribute('aria-selected')).toBe('true')
 })
 it('buys the selected bait quantity and releases the purchase lock afterwards',async()=>{
@@ -37,11 +37,11 @@ it('buys the selected bait quantity and releases the purchase lock afterwards',a
 it('opens the map shop from its link and confirms a purchase without rarity or duplicate purchase',async()=>{
  mock.load.mockResolvedValue({items:[{region_id:'coral',name:'산호빛 여울 지도',description:'새 바다',price:500,thumbnail_path:'map.png',owned:false},{region_id:'primal',name:'태고의 원시섬 지도',description:'원시 바다',price:3000,thumbnail_path:'map2.png',owned:true}]})
  mock.trade.mockResolvedValue(undefined)
- render(<MemoryRouter initialEntries={['/shop?tab=maps']}><ShopPage/></MemoryRouter>)
- expect(screen.getByRole('tab',{name:'낚싯대'})).toBeTruthy()
- expect(screen.getByRole('tab',{name:'미끼'})).toBeTruthy()
+ render(<MemoryRouter initialEntries={['/item-shop?tab=maps']}><ShopPage items/></MemoryRouter>)
+ expect(screen.getByRole('tab',{name:'기름'})).toBeTruthy()
  expect(screen.getByRole('tab',{name:'지도'}).getAttribute('aria-selected')).toBe('true')
  await screen.findByRole('article',{name:'산호빛 여울 지도'})
+ expect(screen.getByText('더 비싼 지도에서는 같은 등급의 고유 생물이 평균적으로 더 높은 가치를 가져요.')).toBeTruthy()
  fireEvent.click(screen.getByRole('button',{name:'태고의 원시섬 지도 상세 보기'}))
  expect((screen.getByRole('button',{name:'태고의 원시섬 지도 보유중'}) as HTMLButtonElement).disabled).toBe(true)
  fireEvent.click(screen.getByRole('button',{name:'Close'}))
@@ -66,7 +66,7 @@ it('uses the actual fishing bait catalog instead of legacy shell merchandise',as
 
 it('opens the linked region map detail after the catalog loads',async()=>{
  mock.load.mockResolvedValue({items:[{region_id:'coral',name:'산호빛 여울 지도',description:'새 바다',price:500,thumbnail_path:'map.png',owned:false}]})
- render(<MemoryRouter initialEntries={['/shop?tab=maps&region=coral']}><ShopPage/></MemoryRouter>)
+ render(<MemoryRouter initialEntries={['/item-shop?tab=maps&region=coral']}><ShopPage items/></MemoryRouter>)
  expect(await screen.findByRole('dialog',{name:'산호빛 여울 지도'})).toBeTruthy()
  expect(screen.getByRole('button',{name:'산호빛 여울 지도 구매'})).toBeTruthy()
  fireEvent.click(screen.getByRole('button',{name:'Close'}))

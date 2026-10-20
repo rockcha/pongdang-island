@@ -59,6 +59,8 @@ Supabase CLI를 설치한 환경에서 먼저 `supabase --help`, `supabase migra
 
 카탈로그 변경:
 
+원격에만 남아 있는 기존 종의 가격만 조정해야 할 때는 카탈로그의 `retained_species_prices`에 ID와 판매가를 선언합니다. 이 목록은 존재하는 행의 가격만 갱신하며 종을 새로 만들거나 다른 속성·서식지·보유 데이터를 바꾸지 않습니다. 로컬 검증은 해당 행이 존재하면 실제 가격을 대조하고, 없는 종의 정의는 복원하지 않습니다. 신규 종 등록이나 퇴역을 이 목록으로 대신하지 않습니다.
+
 ```powershell
 # 1. supabase/catalog/catalog.json에서 필요한 항목만 수정
 supabase migration new update_collectible_catalog

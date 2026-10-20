@@ -170,6 +170,125 @@
       "width": 1254,
       "height": 1254,
       "sha256": "2ed23300b8d3ba88d63b98822c4337be8597b220798a07c491325ea587f14b51"
+    },
+    {
+      "file": "wave-projectile-sprite.png",
+      "transparent": true,
+      "grid": [
+        2,
+        2
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: transparent 2x2 game sprite sheet, four equal square cells, no grid lines, no labels. A single magical turquoise ocean wave projectile flying straight UP, curling spirals of teal water wrapping around a narrow vertical water bolt, white foam crest at the upper tip, short swirling trailing ribbons below, cute polished hand painted cartoon aquatic game style, strong clean silhouette readable at 36 pixels. Four sequential animation frames left to right then down, identical size and center anchor, water ribbons wrap clockwise through frames, no body translation or scaling. Entire canvas 1024x1024, each cell 512x512, artwork centered in each cell occupying about 70% height and 55% width, generous transparent margins, actual alpha transparent background. No background, no text, no panel borders. For an underwater brick breaker piercing wave shot.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "b1d84e79b015dc8e70987f0f68a14862d6b7296e412305201995519b1080bd3d"
+    },
+    {
+      "file": "wave-icon.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: single collectible power-up icon for a cozy underwater brick breaker game. One compact curling turquoise ocean wave wrapped around a luminous pearl-shaped vertical water bolt, white foam tips and two tiny droplets, upward direction. Polished hand-painted cartoon, bold dark teal outline, aqua and mint highlights, strong simple silhouette readable at 32px. Centered square composition, object occupies 80% of image, true transparent alpha background, no circle badge, no environment, no lettering or watermark. This is the pickup icon for a piercing wave projectile power-up.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "b344a599146469d578e3d114214453e9808df0874c44fb39c99cf5f4c2b3080f"
+    },
+    {
+      "file": "pongi-dash-sprite.png",
+      "transparent": true,
+      "grid": [
+        2,
+        2
+      ],
+      "reference": "/branding/pongi.png",
+      "prompt": "Use case: stylized-concept. Asset: production transparent 2x2 four frame sprite sheet for a vertical brick breaker game. Character identity reference: attached Pongi brown OTTER, warm brown fur, small round ears, cream muzzle, salmon pink starfish hair clip, tapered brown tail. Remove fishing rod. STRICT overhead TOP DOWN view, otter head points NORTH/TOP of each cell, back of head and back visible, tail BELOW, never front facing. Pongi swimming/dashing straight upward in streamlined pose, arms swept backward near body, feet and tail subtly paddling. No wooden paddle, no equipment. Four sequential swimming dash animation frames reading left-right then next row: gentle arm paddle and tail sweep, head center stays fixed, same body scale and orientation. Each square cell same dimensions, character centered at x50% y50%, occupies 68% cell height and 42% width, transparent margins on all sides. Clean cozy cartoon game style matching reference dark warm outlines and painted fur. True transparent alpha, no background, no checkerboard, no text or numbers or cell borders, no trail (trail will be rendered in game).",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "65818fcfb8fc3d95b5d056660ee2a3a6c40e8d9f23c64ddbcac5b482d84afa27"
+    },
+    {
+      "file": "star-shuriken.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset: single transparent game icon and spinning projectile sprite for cozy underwater brick breaker. One coral orange five-armed starfish shaped like a throwing star, curved pointed arms in subtle pinwheel arrangement, small cream raised dots along the arms, warm dark brown outline, glossy salmon pink highlights, no face, no metal blade, cute readable silhouette at 28 pixels. Top down orthographic view, perfectly centered on square canvas, equal transparent padding all sides, object occupies 75 percent canvas width and height. Hand painted cartoon aquatic game style. True alpha transparent background, no scenery, no badge, no lettering, no motion lines, no watermark.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "35a4b59794269f236d203bbfdf60f81a3e9a196fb64474955e2a23f905411c90"
+    },
+    {
+      "file": "tile-1-cracked.png",
+      "transparent": true,
+      "reference": "/arcade/brick-breaker/tile-1.png",
+      "prompt": "Edit target: the attached mint sea glass game brick. Preserve the single horizontal rounded rectangular mint turquoise sea glass brick, centered pearl, same proportions, outline, lighting and transparent margins. Add a few clearly visible dark teal hairline branching cracks running inward from the left and right edge and tiny chips at two corners, so it reads as slightly damaged and one hit away from breaking. Keep it intact as one block, not shattered. Cracks should be readable at 42x20 pixel game size, about three main branching lines, not noisy. No numbers, letters or UI. Keep true alpha transparent background. Same hand-painted aquatic cartoon style. Do not add objects or background.",
+      "width": 1774,
+      "height": 887,
+      "sha256": "fb94a551373eb2391dfca5b0e2e531f46343ae8ff7dd69752b945cbbc3527d9f"
+    },
+    {
+      "file": "pirate-coin.png",
+      "prompt": "Use case: stylized-concept. Asset: single transparent power-up icon for a cozy underwater brick breaker game. One chunky antique golden pirate coin with a cute embossed skull and crossed tiny anchors, thick round rim, warm honey gold, soft highlights, subtle worn edges. Front view with slight dimension, perfectly centered square composition, equal transparent margins, object occupies 78 percent canvas. Polished hand painted cartoon aquatic game style, readable at 32px. True transparent alpha background. No numbers, no lettering, no badge or environment, no watermark.",
+      "transparent": true,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "067b18cc2a0d86ad9be41e818df2ecf915dfe89c25d52f0acfb03c1dab147972"
+    },
+    {
+      "file": "humpback-song.png",
+      "prompt": "Use case: stylized-concept. Asset: single transparent power-up icon for a cozy underwater brick breaker game. A friendly tiny humpback whale singing, blue-gray back, creamy white long pectoral fins and belly pleats, recognizable humpback silhouette, one curved aqua sound ripple beside mouth. Three-quarter side view facing upper right, centered compact square composition, generous transparent margin, artwork occupies 78 percent canvas. Polished hand-painted cozy cartoon aquatic game style, strong outline, readable at 32px. True alpha transparent background, no numbers, letters, musical notation, scenery, badge or watermark.",
+      "transparent": true,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "4b5ef93b0926665a7c94c0849ba331ef7bdab34a03203812a7af9f5c0f3f37cd"
+    },
+    {
+      "file": "naval-treasure.png",
+      "prompt": "Use case: stylized-concept. Asset: transparent power-up icon for a cozy underwater brick breaker. A compact open pirate treasure chest filled with glowing golden coins and a few aqua pearls, dark warm wooden chest with brass corner bands, small embossed skull clasp, warm golden light. Centered square composition and generous transparent margins. Polished hand-painted cartoon aquatic style, strong silhouette readable at 32px. True alpha transparent background. No lettering, digits, UI, scenery or watermark.",
+      "transparent": true,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "5c3529c4629aa53948acd144f122a02043a34817179216478d4912507deeeb59"
+    },
+    {
+      "file": "heavy-anchor.png",
+      "prompt": "Use case: stylized-concept. Asset: single transparent falling hazard sprite and icon for a cozy underwater brick breaker. A heavy weathered iron ship anchor pointing down, upright and symmetrical, broad curved sharp flukes at bottom, thick crossbar and round attachment ring at top. Dark slate blue iron with rusty bronze accents and subtle scratches, bulky weight, readable clean cartoon silhouette at 44px. Centered square composition, equal transparent margins, occupies 78 percent canvas. No chain (chain is drawn in game), no background, numbers, text or watermark. True alpha transparent.",
+      "transparent": true,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "789b0d08345aefa1334c19a502b61424c4ce40a001f85770270b863b0665c2c5"
+    },
+    {
+      "file": "poison-jelly-sprite.png",
+      "grid": [
+        2,
+        2
+      ],
+      "prompt": "Use case: stylized-concept. Asset: production transparent 2x2 four frame sprite sheet for an underwater brick breaker hazard. A single poisonous jellyfish in each equal square cell, deep violet bell with bright mint glowing rim and flowing lavender tentacles pointing down. Cute aquatic cartoon style, clear dangerous purple silhouette but no face. Four sequential swimming animation frames, bell gently contracts and tentacles flow left, center, right, center. Bell top center and overall scale remain fixed in all cells. View from side, jellyfish upright, tentacles down. Each frame centered with generous transparent margins. True alpha transparent background, no text, grid lines, numbers, badge or scenery. Same painted linework and shading as cozy Pongi sea game assets.",
+      "transparent": true,
+      "width": 1774,
+      "height": 888,
+      "sha256": "1eda739d97a4bd5d0d4e93c57f6906b4f133443908dfffa66ba89dd56ceb81f7",
+      "preparation": "Added one transparent bottom row for an even 2x2 grid; original artwork pixels unchanged."
+    },
+    {
+      "file": "enemy-torpedo.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset: single transparent enemy naval torpedo countdown hazard for a cozy underwater brick breaker game. One chunky dark slate iron torpedo pointing straight downward, round blunt nose at bottom, small fins and propeller at top, rusty brass fittings and two red warning bands, a small red indicator lamp. Straight overhead orthographic view, symmetrical centered body. Hand-painted cartoon aquatic game style, clean silhouette readable at 40 pixels. Centered square canvas with generous transparent margins. Actual alpha transparent background. No letters, digits, timer, chain, scene, badge or watermark. Visually a dangerous slowly sinking naval torpedo, not a friendly shiny missile.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8bb8709499f57f8a86f36486f4d9380e28e36ae8b26ee63fc93c13a08249116d"
+    },
+    {
+      "file": "pongi-dash-icon.png",
+      "prompt": "Use case: stylized-concept. Asset: single static power-up pickup icon for Pongi dash in a cozy underwater brick breaker game. Pongi is a cute warm brown otter with round ears, cream muzzle, glossy black eyes and a coral pink starfish hair clip. Compact head-and-shoulders portrait leaning upward with two small aqua speed chevrons behind the shoulders, confident cute expression. Polished hand-painted cartoon linework, same Pongi identity. One centered icon, no sprite sheet or multiple poses. Square canvas, ample true transparent alpha margins, readable at 32px. No circle badge, text, digits, fishing rod, wooden paddle or background.",
+      "transparent": true,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8efeae02d120d3f91cfe9baa1fca5fc7450bd47ef3bdb122d785a18f3ddb799e"
+    },
+    {
+      "file": "poison-jelly-icon.png",
+      "prompt": "Use case: stylized-concept. Asset: single static poison jellyfish icon for a cozy underwater brick breaker. One upright jellyfish with a deep violet rounded bell, bright mint glowing scalloped rim and flowing lavender tentacles downward. Natural rounded bell proportions, not stretched or squashed. No face. Polished hand-painted cartoon aquatic style. Compact square composition, whole jellyfish centered with generous true alpha transparent margins. One icon, not a sprite sheet. Readable at 32px, strong clean silhouette. No letters, digits, border, badge, scenery or watermark.",
+      "transparent": true,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "f3f76a4338dd8b249ee1e0daf11eaa04476d8aa3876d52de78bdea1f64f65fe9"
     }
   ]
 }

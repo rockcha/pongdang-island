@@ -10,5 +10,5 @@ export default defineConfig({
     '@': fileURLToPath(new URL('./src', import.meta.url)),
     'virtual:pwa-register/react': fileURLToPath(new URL('./node_modules/vite-plugin-pwa/dist/client/build/react.js', import.meta.url)),
   } },
-  test: { environment: 'jsdom', include: ['tests/**/*.test.{ts,tsx}'], clearMocks: true },
+  test: { environment: 'jsdom', setupFiles:['tests/dialog-setup.ts'], include: ['tests/**/*.test.{ts,tsx}'], clearMocks: true },
 })

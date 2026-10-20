@@ -64,7 +64,7 @@ it('groups stored duplicates and assigns exactly the entered quantity',async()=>
  fireEvent.click(screen.getByRole('button',{name:'보관함 2개'}))
  await screen.findByText('멸치')
  expect(screen.queryByPlaceholderText('이름으로 찾기')).toBeNull()
- expect(screen.queryByRole('button',{name:'전체 선택'})).toBeNull()
+ expect(screen.getByRole('button',{name:'전체 선택'})).toBeTruthy()
  fireEvent.change(screen.getByRole('textbox',{name:'멸치 선택 수량'}),{target:{value:'2'}})
  fireEvent.click(screen.getByRole('button',{name:'2개 어항에 넣기'}))
  fireEvent.click(screen.getByRole('button',{name:'확인'}))
@@ -81,4 +81,14 @@ it('confirms the sale of exactly the selected stored individuals',async()=>{
  expect(onSell).not.toHaveBeenCalled()
  fireEvent.click(screen.getByRole('button',{name:'확인'}))
  await waitFor(()=>expect(onSell).toHaveBeenCalledWith(['fish']))
+})
+
+it('selects and clears every individual on the current storage page',async()=>{
+ render(<CollectibleStorageDialog state={state} currentTankId="tank-a" busy={false} onAssign={async()=>{}}/>)
+ fireEvent.click(screen.getByRole('button',{name:'보관함 2개'}));await screen.findByText('멸치')
+ fireEvent.click(screen.getByRole('button',{name:'전체 선택'}))
+ expect(screen.getByRole('button',{name:'2개 어항에 넣기'})).toHaveProperty('disabled',false)
+ expect(screen.getByRole('button',{name:'전체 해제'})).toHaveProperty('ariaPressed','true')
+ fireEvent.click(screen.getByRole('button',{name:'전체 해제'}))
+ expect(screen.getByRole('button',{name:'0개 어항에 넣기'})).toHaveProperty('disabled',true)
 })

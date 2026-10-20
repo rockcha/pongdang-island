@@ -1,5 +1,11 @@
 # 원격 DB 조회 요약
 
+## 2026-10-20 서식 그룹 확률 조정
+
+14:13 KST 재조회 기준, 연결된 `pongdang-island` (`ewafafphiovbpjwogwzn`)의 `app_private.pick_habitat_group`만 확인·교체했다. 변경 전 본문은 로컬의 기존 정의와 일치했다. 최근 원격 migration 번호는 로컬과 달라 전체 push·repair 없이 `20261020051038_rebalance_habitat_group_odds.sql`을 직접 실행했다. 원격 migration history는 변경하지 않았다. 이후 이력 정합성을 검토할 때 이 직접 적용을 구분해야 한다.
+
+적용 후 기본 가중치 45/50/5, 기존 낚싯대·미끼 보정 보존, anon/authenticated 직접 실행 차단을 재조회했다. 전체 구조 비교·다른 호출 함수·실제 플레이어 낚시 결과는 이번 확인 범위가 아니다. 로컬 migration 재생·확률 테스트·db:verify는 별도로 통과했다.
+
 ## 2026-10-20 해역별 생물 가치 조정 시 발견한 카탈로그 차이
 
 프로젝트 `ewafafphiovbpjwogwzn`의 관련 카탈로그 조회에서 로컬 원본에 없는 기존 종 79종을 확인했다. 공통으로 존재하는 종의 종류·등급·판매가·주 서식지는 조회 당시 일치했지만, 전체 종·서식지 집합은 달랐다. 이 차이를 해소하려고 종을 삭제하거나 원격 정의로 로컬 이력을 덮어쓰지 않았다.
@@ -145,3 +151,9 @@
 ### 같은 날 후속 변경: 미끼 단독 보상
 
 18:44~18:48 KST, 동일 프로젝트의 현재 출석 함수 해시·보상 제약과 소라/완주 미끼 등록을 다시 조회한 뒤 `20261019094406_attendance_bait_only_milestones.sql`만 함수 해시 가드 트랜잭션으로 적용했다. 기존 혼합 지급 기록은 보존하고 신규 미끼 지급일의 골드·기름을 제외했다. 적용 뒤 함수 본문·단독 미끼 허용 제약·migration 기록·RLS와 호출/쓰기 권한을 재조회했다. Security Advisor는 앞서 확인한 Auth 경고만 반환했다. 실제 플레이어 수령과 전체 원격 구조는 검사하지 않았다.
+
+## 2026-10-20 벽돌깨기 실전 서버
+
+CLI로 프로젝트 `pongdang-island` (`ewafafphiovbpjwogwzn`, PostgreSQL 17.11)의 신규 게임 테이블 부재, 지갑 함수·거래 제약·관련 trigger·service_role 권한·최근 migration 이력을 확인했다. 로컬과 원격 전체 이력은 달라 전체 push·baseline 재실행·repair를 하지 않았다. 지갑 함수 해시와 신규 객체 부재를 가드로 둔 트랜잭션으로 `20261020072750_brick_breaker_verified_runs.sql`만 적용·기록하고 `brick-game` Edge Function을 JWT 확인을 유지해 배포했다.
+
+적용 후 해당 migration, 테이블 RLS, 본인 읽기 정책, authenticated 시작 허용·직접 쓰기/정산 호출 차단, service_role 정산 허용, public wrapper의 invoker 설정과 기존 지갑 함수 해시 보존을 조회했다. Edge Function은 preflight 200, 익명·위조 토큰 401을 반환했다. Security Advisor에는 기존 Auth 유출 암호 보호 비활성 경고만 남았다. 실제 플레이어의 참가비 차감·보상 지급은 실행하지 않았고, 전체 원격 구조 비교·다른 migration 이력의 동등성·프런트엔드 운영 배포는 이번 검증 범위가 아니다.

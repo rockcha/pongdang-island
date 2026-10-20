@@ -13,4 +13,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run db:verify
+      - run: npm run arcade:engine:check
+      - run: npm test -- tests/brick-game-sql.test.ts tests/brick-breaker-replay.test.ts tests/brick-edge.test.ts
       - run: npm test -- tests/social-sql.test.ts tests/native-collectibles-sql.test.ts tests/regional-fishing-sql.test.ts tests/collectible-movement-sql.test.ts

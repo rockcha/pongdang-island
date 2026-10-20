@@ -11,7 +11,7 @@ import { collectibleUrl, loadCollection } from '@/features/collection/api'
 import { createShadowPractice } from './shadow-practice'
 import { shadowAction, shadowError, shadowLeaderboard, type ShadowState, type ShadowAction, type ShadowLeaderboard } from './shadow-api'
 import { GameTabs, GameStartOverlay } from './game-controls'
-import { GameLeaveGuard } from './game-leave-guard'
+import { GameModal } from './game-modal'
 import './shadow-game.css'
 
 function Leaderboard({ revision }: { revision:number }) {
@@ -50,6 +50,8 @@ export default function ShadowGame() {
 }
 
 function AccountShadowGame() {
+ const [modalContainer,setModalContainer]=useState<HTMLDialogElement|null>(null)
+ const [gameOpen,setGameOpen]=useState(false),restore=useRef(true)
  const gold=useGold()
  const [state,setState]=useState<ShadowState|null>(null)
  const [busy,setBusy]=useState(false),[error,setError]=useState('')
@@ -74,7 +76,8 @@ function AccountShadowGame() {
    const result=practice.current?practice.current(args):await shadowAction(args)
    if(!active.current)return
    apply(result)
-   if(args.p_action==='start'){operation.current=null;setConfirm(false);if(!practice.current)void gold.refresh()}
+   if(restore.current){restore.current=false;if(result.run&&!result.run.finished)setGameOpen(true)}
+   if(args.p_action==='start'){setGameOpen(true);operation.current=null;setConfirm(false);if(!practice.current)void gold.refresh()}
    if(result.run?.finished&&!practice.current)setRevision(value=>value+1)
   }catch(cause){if(active.current){setError(shadowError(cause));setReady(true)}}
   finally{lock.current=false;if(active.current)setBusy(false)}
@@ -103,16 +106,15 @@ function AccountShadowGame() {
    const collection=await loadCollection()
    if(!active.current)return
    practice.current=createShadowPractice(collection.catalog);setPracticeMode(true)
-   apply(practice.current({p_action:'start'}))
+   setGameOpen(true);apply(practice.current({p_action:'start'}))
   }catch(cause){if(active.current)setError(shadowError(cause))}
   finally{lock.current=false;if(active.current)setBusy(false)}
  }
  return <div className="flex min-h-0 min-w-0 flex-1 flex-col">
-  <GameLeaveGuard active={Boolean(run&&!run.finished)||(busy&&operation.current!==null)} practice={practiceMode}/>
   <GameTabs id="shadow" value={tab} onChange={setTab} />
-  {tab==='rank'?<div role="tabpanel" id="shadow-rank-panel" aria-labelledby="shadow-rank-tab" className="min-h-0 min-w-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3"><Leaderboard revision={revision} /></div>:<div role="tabpanel" id="shadow-game-panel" aria-labelledby="shadow-game-tab" className="flex min-h-0 flex-1 flex-col gap-2">
+  {tab==='rank'?<div role="tabpanel" id="shadow-rank-panel" aria-labelledby="shadow-rank-tab" className="min-h-0 min-w-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3"><Leaderboard revision={revision} /></div>:<GameModal onContainer={setModalContainer} open={gameOpen} title="그림자 맞추기" active={Boolean(run&&!run.finished)} practice={practiceMode} busy={busy} exitDescription={practiceMode?'나가면 연습 진행이 사라져요.':'실전 기록은 유지되며 문제의 제한 시간은 계속 흘러요.'} onExit={()=>{setGameOpen(false);if(practiceMode){setState(null);practice.current=null}}}><div role="tabpanel" id="shadow-game-panel" aria-labelledby="shadow-game-tab" className="flex min-h-0 flex-1 flex-col gap-2">
    <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden border-b border-border bg-card">
-    {run&&round&&(!run.finished||!finalReviewed)?<section className="flex min-h-0 flex-1 flex-col" aria-label="그림자 문제">
+    {gameOpen&&run&&round&&(!run.finished||!finalReviewed)?<section className="shadow-question flex min-h-0 flex-1 flex-col" aria-label="그림자 문제">
      <div className="flex shrink-0 items-center justify-between px-3 py-2 text-sm"><span className="tabular-nums">{run.score}/100점 <span className="ml-2 text-xs text-muted-foreground">{round.number}번째 문제</span></span><span className="flex gap-1" aria-label={`남은 찬스 ${run.lives}회`}>{[0,1,2].map(i=><Heart key={i} className={`size-4 ${i<run.lives?'fill-primary text-primary':'text-muted-foreground/25'}`} />)}</span></div>
      <div className="shrink-0 space-y-1 px-3 pb-2"><div className="flex items-center justify-between text-xs text-muted-foreground"><span>이 그림자의 이름은?</span><span className="flex items-center gap-1 tabular-nums"><Clock3 className="size-3.5" />{Math.ceil(remaining)}초</span></div><div role="progressbar" aria-label="남은 시간" aria-valuemin={0} aria-valuemax={8} aria-valuenow={Math.ceil(remaining)} className="h-1.5 overflow-hidden rounded-full bg-muted"><div className={`h-full transition-[width] duration-100 ${remaining<=3?'bg-destructive':'bg-primary'}`} style={{width:`${Math.min(100,remaining/8*100)}%`}} /></div></div>
      <div className={`relative min-h-0 flex-1 overflow-hidden ${round.answered?`shadow-answer-result ${round.correct?'shadow-answer-correct':'shadow-answer-wrong'}`:'bg-secondary/40'}`}>
@@ -121,11 +123,11 @@ function AccountShadowGame() {
       {imageFailed?<p className="flex h-full items-center justify-center px-3 text-center text-xs text-destructive">이미지를 불러오지 못했어요.</p>:<img key={round.id} src={collectibleUrl(round.imagePath)} alt={round.answered?round.answerName??'정답 개체':'맞혀야 할 개체의 그림자'} className={`absolute inset-0 size-full object-contain p-3 ${round.answered?'pt-12':''}`} style={{filter:round.answered?'none':'brightness(0)'}} draggable={false} onError={()=>setImageFailed(true)} />}
      </div>
      {round.answered?<Button className="min-h-14 w-full shrink-0 rounded-none text-base" disabled={busy} onClick={()=>run.finished?setFinalReviewed(true):void request({p_action:'next',p_run_id:run.id,p_round_id:round.id})}>{run.finished?'결과 보기':'다음 문제'}</Button>:<div className="grid shrink-0 grid-cols-2 grid-rows-2 gap-px border-t border-border bg-border">{round.options.map(option=><Button key={option.id} variant="outline" className="min-h-14 h-full min-w-0 whitespace-normal rounded-none border-0 bg-background px-3 py-3 text-sm" disabled={busy||remaining<=0||imageFailed} onClick={()=>void request({p_action:'answer',p_run_id:run.id,p_round_id:round.id,p_choice_id:option.id})}>{option.name}</Button>)}</div>}
-    </section>:<><GameStartOverlay poster="/arcade/shadow-thumbnail.png" title={run?.finished?(run.score>=100?'100점 달성!':`${run.score}개 정답!`):'그림자 맞추기'} description={run?.finished?(practiceMode?'연습 기록은 저장되지 않아요.':'기록이 서버 전체 순위에 등록됐어요.'):'지도 외 개체의 이름을 골라주세요. 문제당 8초 · 찬스 3회'} paidDisabled={!ready||busy||gold.loading||gold.busy||Boolean(gold.error)||gold.wallet.gold<10||Boolean(error)} practiceDisabled={!ready||busy} onPaid={()=>setConfirm(true)} onPractice={()=>void startPractice()}></GameStartOverlay></>}
+    </section>:<><GameStartOverlay rules={['문제마다 8초 안에 그림자의 이름을 고르세요.','틀리거나 시간이 지나면 찬스가 하나 줄어요.','찬스 3회를 모두 쓰거나 100점을 달성하면 종료돼요.']} poster="/arcade/shadow-thumbnail.png" title={run?.finished?(run.score>=100?'100점 달성!':`${run.score}개 정답!`):'그림자 맞추기'} description={run?.finished?(practiceMode?'연습 기록은 저장되지 않아요.':'기록이 서버 전체 순위에 등록됐어요.'):'지도 외 개체의 이름을 골라주세요. 문제당 8초 · 찬스 3회'} paidDisabled={!ready||busy||gold.loading||gold.busy||Boolean(gold.error)||gold.wallet.gold<10||Boolean(error)} practiceDisabled={!ready||busy} onPaid={()=>setConfirm(true)} onPractice={()=>void startPractice()}></GameStartOverlay></>}
    </div>
    {!ready&&<p role="status" className="shrink-0 text-xs text-muted-foreground">진행 중인 게임을 확인하는 중…</p>}
    {error&&!confirm&&<div role="alert" className="flex shrink-0 items-center gap-2"><p className="flex-1 text-[11px] text-destructive">{error}</p><Button variant="ghost" size="sm" disabled={busy} onClick={()=>void request({p_action:'state',...(run?{p_run_id:run.id}:{})})}>다시 연결</Button></div>}
-  </div>}
-  <ConfirmDialog illustration="game" open={confirm} onOpenChange={setConfirm} title={<><span className="block">그림자 맞추기에</span><span className="inline-flex items-center gap-1"><GoldIcon className="size-5" />10골드로 참가하시겠습니까?</span></>} description="참가비는 시작할 때 한 번만 차감돼요. 정답마다 1점이며 찬스는 3회예요." busy={busy} error={error} onConfirm={start} />
+  </div></GameModal>}
+  <ConfirmDialog portalContainer={gameOpen?modalContainer:undefined} illustration="game" open={confirm} onOpenChange={setConfirm} title={<><span className="block">그림자 맞추기에</span><span className="inline-flex items-center gap-1"><GoldIcon className="size-5" />10골드로 참가하시겠습니까?</span></>} description="참가비는 시작할 때 한 번만 차감돼요. 정답마다 1점이며 찬스는 3회예요." busy={busy} error={error} onConfirm={start} />
  </div>
 }

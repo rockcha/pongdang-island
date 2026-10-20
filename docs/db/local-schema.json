@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "e354b71ba65649cbb569c78bc01959b1b05409168152d9ee1163b8f19e6cd9fd",
+  "migrationHash": "fdfe6afe198f89497db2fb1cb1a4784b3f067d0a9a8abe319b62023bc021313b",
   "structure": {
     "enums": [
       {
@@ -205,6 +205,12 @@
       {
         "rls": true,
         "name": "auction_listings",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "brick_game_runs",
         "schema": "public",
         "force_rls": false
       },
@@ -2209,6 +2215,136 @@
         "default": null,
         "identity": "",
         "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "payout_operation_id",
+        "type": "uuid",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "seed",
+        "type": "bigint",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "engine_version",
+        "type": "integer",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "default": "1",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "finished_at",
+        "type": "timestamp with time zone",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "score",
+        "type": "integer",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "reward",
+        "type": "integer",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "paid_reward",
+        "type": "integer",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "ticks",
+        "type": "integer",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "replay",
+        "type": "jsonb",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "default": "'{\"ticks\": 0, \"inputs\": []}'::jsonb",
+        "identity": "",
+        "nullable": false,
         "generated": ""
       },
       {
@@ -5788,6 +5924,30 @@
         "definition": "CREATE INDEX auction_owner ON public.auction_listings USING btree (owner_id, created_at DESC, id)"
       },
       {
+        "name": "brick_game_one_active",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX brick_game_one_active ON public.brick_game_runs USING btree (user_id) WHERE (finished_at IS NULL)"
+      },
+      {
+        "name": "brick_game_ranking",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "CREATE INDEX brick_game_ranking ON public.brick_game_runs USING btree (reward DESC, score DESC, started_at, id) WHERE (finished_at IS NOT NULL)"
+      },
+      {
+        "name": "brick_game_runs_pkey",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX brick_game_runs_pkey ON public.brick_game_runs USING btree (id)"
+      },
+      {
+        "name": "brick_game_runs_user_id_operation_id_key",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX brick_game_runs_user_id_operation_id_key ON public.brick_game_runs USING btree (user_id, operation_id)"
+      },
+      {
         "name": "bug_reports_author_idx",
         "table": "bug_reports",
         "schema": "public",
@@ -6590,6 +6750,18 @@
         "tablename": "auction_listings",
         "permissive": "PERMISSIVE",
         "policyname": "auction_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "brick_game_runs",
+        "permissive": "PERMISSIVE",
+        "policyname": "brick_game_own_read",
         "schemaname": "public",
         "with_check": null
       },
@@ -7601,6 +7773,36 @@
         "securityDefiner": true
       },
       {
+        "name": "brick_game_settle",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_user_id uuid, p_run_id uuid, p_score integer, p_reward integer, p_replay jsonb, p_final boolean",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.brick_game_settle(p_user_id uuid, p_run_id uuid, p_score integer, p_reward integer, p_replay jsonb, p_final boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare r public.brick_game_runs;v_gold integer;v_delta integer;v_ticks integer;\nbegin\n select gold into v_gold from public.player_wallets where user_id=p_user_id for update;\n if not found then raise exception 'WALLET_NOT_FOUND';end if;\n select * into r from public.brick_game_runs where id=p_run_id and user_id=p_user_id for update;\n if not found then raise exception 'RUN_NOT_FOUND';end if;\n if r.finished_at is not null then return to_jsonb(r);end if;\n v_ticks:=(p_replay->>'ticks')::integer;\n if p_score is null or p_score not between 0 and 360 or p_reward is null or p_reward not in (0,10,30,60,100,150)\n  or p_reward<r.reward or p_score<r.score or v_ticks is null or v_ticks<r.ticks or v_ticks>216000\n  or v_ticks>floor(extract(epoch from(clock_timestamp()-r.started_at))*120)+240\n  or jsonb_typeof(p_replay->'inputs') is distinct from 'array' or octet_length(p_replay::text)>1000000 or p_final is null then raise exception 'INVALID_SETTLEMENT';end if;\n v_delta:=p_reward-r.paid_reward;\n if v_gold>1000000000-v_delta then raise exception 'GOLD_LIMIT';end if;\n if v_delta>0 then\n  update public.player_wallets set gold=gold+v_delta,updated_at=clock_timestamp() where user_id=p_user_id;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(p_user_id,gen_random_uuid(),'charge','arcade:brick-breaker:'||r.id::text,v_delta);\n end if;\n update public.brick_game_runs set score=p_score,reward=p_reward,paid_reward=p_reward,ticks=v_ticks,replay=p_replay,\n  finished_at=case when p_final then clock_timestamp() else null end where id=r.id returning * into r;\n return to_jsonb(r);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "brick_game_start",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.brick_game_start(p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();r public.brick_game_runs;v_gold integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null then raise exception 'INVALID_OPERATION';end if;\n perform app_private.get_gold_wallet();\n select gold into v_gold from public.player_wallets where user_id=v_uid for update;\n select * into r from public.brick_game_runs where user_id=v_uid and operation_id=p_operation_id;\n if found then return to_jsonb(r);end if;\n select * into r from public.brick_game_runs where user_id=v_uid and finished_at is null;\n if found then return to_jsonb(r);end if;\n if v_gold<20 then raise exception 'INSUFFICIENT_GOLD';end if;\n insert into public.brick_game_runs(user_id,operation_id,seed) values(v_uid,p_operation_id,floor(random()*4294967296)::bigint) returning * into r;\n update public.player_wallets set gold=gold-20,updated_at=clock_timestamp() where user_id=v_uid;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','arcade:brick-breaker',-20);\n return to_jsonb(r);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "brick_leaderboard",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.brick_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_offset integer:=greatest(0,least(coalesce(p_offset,0),10000));v_result jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n with personal as (\n  select r.*,row_number() over(partition by user_id order by reward desc,score desc,started_at,id) as personal_rank from public.brick_game_runs r where finished_at is not null and score>0\n ), ranks as (\n  select p.*,row_number() over(order by reward desc,score desc,started_at,id) as rank from personal p where personal_rank=1\n ), page as (select * from ranks order by rank offset v_offset limit 30)\n select jsonb_build_object('total',(select count(*) from ranks),'offset',v_offset,'rows',coalesce((select jsonb_agg(jsonb_build_object('id',p.id,'rank',p.rank,'score',p.score,'gold',p.reward,'nickname',coalesce(u.nickname,'퐁이'),'mine',p.user_id=v_uid) order by p.rank) from page p left join public.player_profiles u on u.id=p.user_id),'[]'::jsonb)) into v_result;\n return v_result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "buy_aquarium_tank",
         "config": [
           "search_path=\"\""
@@ -8357,7 +8559,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_ids text[], p_region text, p_rod_region text, p_home_multiplier numeric, p_rarity_fallback boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_habitat_group(p_ids text[], p_region text, p_rod_region text DEFAULT NULL::text, p_home_multiplier numeric DEFAULT 1, p_rarity_fallback boolean DEFAULT false)\n RETURNS text\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n with candidates as materialized (\n  select s.id,s.rarity,s.native_region_id,\n   case when not s.is_native then 'shared' when s.native_region_id=p_region then 'home' else 'away' end bucket\n  from public.collectible_species s where s.id=any(p_ids)\n ), groups as materialized (\n  select distinct bucket from candidates\n ), selected as materialized (\n  select bucket from groups\n  order by -ln(greatest(random(),1e-15))/case bucket\n   when 'home' then 60*greatest(p_home_multiplier,0.001)*case when p_rod_region=p_region then 1.1 else 1 end\n   when 'shared' then 35 else 5 end,bucket limit 1\n )\n select c.id from candidates c join selected g using(bucket)\n order by -ln(greatest(random(),1e-15))/(\n  case when c.bucket='away' and c.native_region_id=p_rod_region then 3 else 1 end\n  *case when p_rarity_fallback then case c.rarity when 'common' then 7700 when 'rare' then 2000 when 'epic' then 270 else 30 end else 1 end\n ),c.id limit 1\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_habitat_group(p_ids text[], p_region text, p_rod_region text DEFAULT NULL::text, p_home_multiplier numeric DEFAULT 1, p_rarity_fallback boolean DEFAULT false)\n RETURNS text\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n with candidates as materialized (\n  select s.id,s.rarity,s.native_region_id,\n   case when not s.is_native then 'shared' when s.native_region_id=p_region then 'home' else 'away' end bucket\n  from public.collectible_species s where s.id=any(p_ids)\n ), groups as materialized (\n  select distinct bucket from candidates\n ), selected as materialized (\n  select bucket from groups\n  order by -ln(greatest(random(),1e-15))/case bucket\n   when 'home' then 45*greatest(p_home_multiplier,0.001)*case when p_rod_region=p_region then 1.1 else 1 end\n   when 'shared' then 50 else 5 end,bucket limit 1\n )\n select c.id from candidates c join selected g using(bucket)\n order by -ln(greatest(random(),1e-15))/(\n  case when c.bucket='away' and c.native_region_id=p_rod_region then 3 else 1 end\n  *case when p_rarity_fallback then case c.rarity when 'common' then 7700 when 'rare' then 2000 when 'epic' then 270 else 30 end else 1 end\n ),c.id limit 1\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -8978,6 +9180,36 @@
         "schema": "public",
         "arguments": "p_expedition_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION public.boost_friend_expedition(p_expedition_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$ select app_private.boost_friend_expedition(p_expedition_id); $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "brick_game_settle",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_user_id uuid, p_run_id uuid, p_score integer, p_reward integer, p_replay jsonb, p_final boolean",
+        "definition": "CREATE OR REPLACE FUNCTION public.brick_game_settle(p_user_id uuid, p_run_id uuid, p_score integer, p_reward integer, p_replay jsonb, p_final boolean)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.brick_game_settle(p_user_id,p_run_id,p_score,p_reward,p_replay,p_final)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "brick_game_start",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.brick_game_start(p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.brick_game_start(p_operation_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "brick_leaderboard",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.brick_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$select app_private.brick_leaderboard(p_offset)$function$\n",
         "securityDefiner": false
       },
       {
@@ -11270,6 +11502,138 @@
         "table": "auction_listings",
         "schema": "public",
         "definition": "NOT NULL title"
+      },
+      {
+        "name": "brick_game_runs_check",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "CHECK ((paid_reward = reward))"
+      },
+      {
+        "name": "brick_game_runs_engine_version_check",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "CHECK ((engine_version = 1))"
+      },
+      {
+        "name": "brick_game_runs_engine_version_not_null",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL engine_version"
+      },
+      {
+        "name": "brick_game_runs_id_not_null",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "brick_game_runs_operation_id_not_null",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "brick_game_runs_paid_reward_check",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "CHECK (((paid_reward >= 0) AND (paid_reward <= 150)))"
+      },
+      {
+        "name": "brick_game_runs_paid_reward_not_null",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL paid_reward"
+      },
+      {
+        "name": "brick_game_runs_payout_operation_id_not_null",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL payout_operation_id"
+      },
+      {
+        "name": "brick_game_runs_pkey",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "brick_game_runs_replay_not_null",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL replay"
+      },
+      {
+        "name": "brick_game_runs_reward_check",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "CHECK ((reward = ANY (ARRAY[0, 10, 30, 60, 100, 150])))"
+      },
+      {
+        "name": "brick_game_runs_reward_not_null",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL reward"
+      },
+      {
+        "name": "brick_game_runs_score_check",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "CHECK (((score >= 0) AND (score <= 360)))"
+      },
+      {
+        "name": "brick_game_runs_score_not_null",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL score"
+      },
+      {
+        "name": "brick_game_runs_seed_check",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "CHECK (((seed >= 0) AND (seed <= '4294967295'::bigint)))"
+      },
+      {
+        "name": "brick_game_runs_seed_not_null",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL seed"
+      },
+      {
+        "name": "brick_game_runs_started_at_not_null",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL started_at"
+      },
+      {
+        "name": "brick_game_runs_ticks_check",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "CHECK (((ticks >= 0) AND (ticks <= 216000)))"
+      },
+      {
+        "name": "brick_game_runs_ticks_not_null",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL ticks"
+      },
+      {
+        "name": "brick_game_runs_user_id_fkey",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "brick_game_runs_user_id_not_null",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "brick_game_runs_user_id_operation_id_key",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "definition": "UNIQUE (user_id, operation_id)"
       },
       {
         "name": "bug_reports_author_id_fkey",
@@ -14579,6 +14943,20 @@
       },
       {
         "role": "authenticated",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
         "table": "bug_reports",
         "schema": "public",
         "grantable": "NO",
@@ -16004,6 +16382,188 @@
         "role": "authenticated",
         "table": "auction_listings",
         "column": "title",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "brick_game_runs",
+        "column": "engine_version",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "brick_game_runs",
+        "column": "engine_version",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "brick_game_runs",
+        "column": "finished_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "brick_game_runs",
+        "column": "finished_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "brick_game_runs",
+        "column": "id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "brick_game_runs",
+        "column": "id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "brick_game_runs",
+        "column": "operation_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "brick_game_runs",
+        "column": "operation_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "brick_game_runs",
+        "column": "paid_reward",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "brick_game_runs",
+        "column": "paid_reward",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "brick_game_runs",
+        "column": "payout_operation_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "brick_game_runs",
+        "column": "payout_operation_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "brick_game_runs",
+        "column": "replay",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "brick_game_runs",
+        "column": "replay",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "brick_game_runs",
+        "column": "reward",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "brick_game_runs",
+        "column": "reward",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "brick_game_runs",
+        "column": "score",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "brick_game_runs",
+        "column": "score",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "brick_game_runs",
+        "column": "seed",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "brick_game_runs",
+        "column": "seed",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "brick_game_runs",
+        "column": "started_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "brick_game_runs",
+        "column": "started_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "brick_game_runs",
+        "column": "ticks",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "brick_game_runs",
+        "column": "ticks",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "brick_game_runs",
+        "column": "user_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "brick_game_runs",
+        "column": "user_id",
         "schema": "public",
         "privilege": "SELECT"
       },
@@ -19285,7 +19845,7 @@
       },
       {
         "role": "service_role",
-        "usage": false,
+        "usage": true,
         "create": false,
         "schema": "app_private"
       },
@@ -19710,6 +20270,69 @@
         "arguments": "p_expedition_id uuid"
       },
       {
+        "name": "brick_game_settle",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user_id uuid, p_run_id uuid, p_score integer, p_reward integer, p_replay jsonb, p_final boolean"
+      },
+      {
+        "name": "brick_game_settle",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user_id uuid, p_run_id uuid, p_score integer, p_reward integer, p_replay jsonb, p_final boolean"
+      },
+      {
+        "name": "brick_game_settle",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_user_id uuid, p_run_id uuid, p_score integer, p_reward integer, p_replay jsonb, p_final boolean"
+      },
+      {
+        "name": "brick_game_start",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid"
+      },
+      {
+        "name": "brick_game_start",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_operation_id uuid"
+      },
+      {
+        "name": "brick_game_start",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid"
+      },
+      {
+        "name": "brick_leaderboard",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "brick_leaderboard",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "brick_leaderboard",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
         "name": "buy_aquarium_tank",
         "role": "anon",
         "schema": "app_private",
@@ -22606,6 +23229,69 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_expedition_id uuid"
+      },
+      {
+        "name": "brick_game_settle",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_user_id uuid, p_run_id uuid, p_score integer, p_reward integer, p_replay jsonb, p_final boolean"
+      },
+      {
+        "name": "brick_game_settle",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_user_id uuid, p_run_id uuid, p_score integer, p_reward integer, p_replay jsonb, p_final boolean"
+      },
+      {
+        "name": "brick_game_settle",
+        "role": "service_role",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_user_id uuid, p_run_id uuid, p_score integer, p_reward integer, p_replay jsonb, p_final boolean"
+      },
+      {
+        "name": "brick_game_start",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid"
+      },
+      {
+        "name": "brick_game_start",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_operation_id uuid"
+      },
+      {
+        "name": "brick_game_start",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid"
+      },
+      {
+        "name": "brick_leaderboard",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "brick_leaderboard",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "brick_leaderboard",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
       },
       {
         "name": "buy_aquarium_tank",

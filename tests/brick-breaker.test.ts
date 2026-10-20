@@ -2,39 +2,109 @@ import {expect,it} from 'vitest'
 import {BOARD,BRICK,BrickPractice,brickDrop,pufferRadius,pufferFrame,itemDrop,hazardTouches,HAZARD_KINDS} from '@/features/arcade/brick-breaker-model'
 import type {DropKind} from '@/features/arcade/brick-breaker-model'
 
+function weakenBrick(game:BrickPractice,hp:number){const brick=game.bricks[0];brick.hp=hp;return brick}
+function torpedoGame(side:'left'|'right'){
+ const rolls=[0.9,0.1,0.86],game=new BrickPractice(()=>rolls.shift()??0.9)
+ game.launch();game.ball={x:20,y:240,vx:0,vy:0}
+ game.bricks=[{id:1,x:side==='left'?50:270,y:60,hp:1,maxHp:4},{id:2,x:150,y:100,hp:4,maxHp:4}]
+ game.hitBrick(1)
+ return game
+}
 function collect(game:BrickPractice,kind:DropKind){game.drops.push({id:900+game.drops.length,kind,x:game.paddleX,y:game.paddleY,warning:0});game.step(1/120)}
 function advance(game:BrickPractice,seconds:number){for(let i=0;i<Math.ceil(seconds*100);i++)game.step(0.01)}
+function catchLabDrop(game:BrickPractice,kind:DropKind){game.previewSkill(kind);advance(game,3)}
 function stillGame(){const game=new BrickPractice(()=>0.9);game.launch();game.ball={x:20,y:240,vx:0,vy:0};return game}
-function splitAtBrick(game:BrickPractice){
+function splitAtPaddle(game:BrickPractice){
  collect(game,'split')
- const brick=game.bricks.find(b=>b.hp>=2)!,speed=Math.hypot(game.ball.vx,game.ball.vy)||200
- game.ball={x:brick.x+BRICK.width/2,y:brick.y+BRICK.height+6.5,vx:0,vy:-speed}
+ game.ball={x:game.paddleX,y:game.paddleY-12,vx:0,vy:300}
  game.step(1/120)
 }
 
-it('uses four durability levels and scores only destroyed bricks',()=>{
+it('keeps the laboratory free of gameplay balls even after launch and skill previews',()=>{
+ const game=new BrickPractice(()=>0.9);game.enterLaboratory()
+ for(const kind of ['split','magnet','seaweed','wide','heart','wave','shark','urchin'] as const){
+  game.previewSkill(kind);game.launch();advance(game,2)
+  expect(game.balls).toHaveLength(0)
+  expect(game.lives).toBe(3)
+  expect(game.pending).toBe(0);expect(game.secured).toBe(0)
+ }
+ expect(game.phase).toBe('playing')
+})
+
+it('only activates laboratory skills after catching their drops and never ends a laboratory round',()=>{
+ const game=new BrickPractice(()=>0.9);game.enterLaboratory();game.previewSkill('item')
+ expect(game.shots).toHaveLength(0);expect(game.drops[0].y).toBe(48)
+ advance(game,1);expect(game.shots).toHaveLength(0)
+ advance(game,2)
+ expect(game.shots).toHaveLength(2)
+ catchLabDrop(game,'wave');expect(game.waveShots).toHaveLength(1)
+ game.bricks=[{id:1,x:159,y:200,hp:1,maxHp:1}]
+ advance(game,1)
+ expect(game.bricks).toHaveLength(0);expect(game.phase).toBe('playing')
+ expect(game.score()).toMatchObject({lives:3,pending:0,secured:0,held:false})
+})
+
+it('does not activate a missed laboratory item or start its preview animation early',()=>{
+ const game=new BrickPractice();game.enterLaboratory();game.move(260);game.previewSkill('wide')
+ expect(game.drops[0]).toMatchObject({kind:'wide',x:260,y:48})
+ expect(game.previewKind).toBeNull();expect(game.wideSeconds).toBe(0)
+ game.move(80);advance(game,4)
+ expect(game.drops).toHaveLength(0);expect(game.wideSeconds).toBe(0);expect(game.previewKind).toBeNull()
+ expect(game.balls).toHaveLength(0)
+ game.previewSkill('split');expect(game.splitArmed).toBe(false)
+ advance(game,3);expect(game.splitArmed).toBe(true);expect(game.previewKind).toBe('split')
+ expect(game.previewSeconds).toBeGreaterThan(1);expect(game.balls).toHaveLength(0)
+})
+
+it('starts round one at two durability and scores only destroyed bricks',()=>{
  const game=new BrickPractice(()=>0.9);game.launch()
- expect(new Set(game.bricks.map(b=>b.hp))).toEqual(new Set([1,2,3,4]))
- const brick=game.bricks.find(b=>b.hp===4)!
- for(let i=0;i<3;i++)game.hitBrick(brick.id)
+ expect(new Set(game.bricks.map(b=>b.hp))).toEqual(new Set([2]))
+ const brick=game.bricks[0]
+ game.hitBrick(brick.id)
  expect(game.pending).toBe(0);expect(brick.hp).toBe(1)
  game.hitBrick(brick.id);expect(game.pending).toBe(1);expect(game.bricks).not.toContain(brick)
 })
-it('gives exclusive 25 percent hazard and 15 percent item categories',()=>{
+
+it('progresses through five balanced rounds, grants fixed clear rewards and ends at round five',()=>{
+ const game=new BrickPractice(()=>0.9)
+ const expected=[{2:24},{2:12,3:12},{3:24},{3:12,4:12},{4:24}]
+ let reward=0
+ for(let round=1;round<=5;round++){
+  const counts:Record<number,number>={}
+  for(const brick of game.bricks)counts[brick.hp]=(counts[brick.hp]??0)+1
+  expect(counts).toEqual(expected[round-1]);expect(game.round).toBe(round)
+  game.launch()
+  for(const brick of [...game.bricks])for(let i=0;i<brick.maxHp;i++)game.hitBrick(brick.id)
+  reward+=round*10
+  expect(game.score()).toMatchObject({phase:'round-clear',reward,roundReward:round*10})
+  game.nextRound()
+ }
+ expect(game.phase).toBe('banked');expect(game.round).toBe(5);expect(game.reward).toBe(150)
+ game.nextRound();expect(game.round).toBe(5)
+})
+
+it('reports active buff and debuff icons with rounded remaining times and removes expired effects',()=>{
+ const game=stillGame();collect(game,'wide');collect(game,'sticky');collect(game,'shield')
+ expect(game.score().effects).toEqual(expect.arrayContaining([{kind:'wide',label:'긴 널판지',seconds:8},{kind:'sticky',label:'끈끈이',seconds:6},{kind:'shield',label:'보호막 1회'}]))
+ advance(game,6.1)
+ expect(game.score().effects?.some(effect=>effect.kind==='sticky')).toBe(false)
+ expect(game.score().effects?.some(effect=>effect.kind==='wide')).toBe(true)
+})
+it('gives exclusive 25 percent hazard and 25 percent item categories',()=>{
  const drops=Array.from({length:100},(_,i)=>brickDrop(i/100))
  expect(drops.filter(d=>d==='shark')).toHaveLength(25)
- expect(drops.filter(d=>d==='item')).toHaveLength(15)
- expect(drops.filter(d=>d===null)).toHaveLength(60)
+ expect(drops.filter(d=>d==='item')).toHaveLength(25)
+ expect(drops.filter(d=>d===null)).toHaveLength(50)
 })
 it('banks cleared rounds and loses only the unfinished round on game over',()=>{
  const game=new BrickPractice(()=>0.9);game.launch()
  for(const brick of [...game.bricks])for(let i=0;i<brick.maxHp;i++)game.hitBrick(brick.id)
- expect(game.score()).toMatchObject({phase:'round-clear',secured:30,pending:0})
+ expect(game.score()).toMatchObject({phase:'round-clear',secured:24,pending:0})
  game.nextRound();game.launch();expect(game.round).toBe(2)
  const brick=game.bricks[0];for(let i=0;i<brick.maxHp;i++)game.hitBrick(brick.id)
  expect(game.pending).toBe(1)
  for(let i=0;i<3;i++){game.invulnerable=0;game.damage();if(i<2){expect(game.pending).toBe(1);game.launch()}}
- expect(game.score()).toMatchObject({phase:'over',lives:0,secured:30,pending:0})
+ expect(game.score()).toMatchObject({phase:'over',lives:0,secured:24,pending:0})
 })
 it('warns before a shark rush and removes one life on contact',()=>{
  const game=new BrickPractice(()=>0.9);game.launch()
@@ -45,12 +115,31 @@ it('warns before a shark rush and removes one life on contact',()=>{
  expect(game.drainFeedback()).toEqual([{kind:'hazard',message:'상어에게 물렸어요 ㅠ'}])
  game.damage();expect(game.lives).toBe(2)
 })
+
+it('locks a shark warning onto the paddle at spawn and charges along that fixed line',()=>{
+ // Force a shark drop through the normal destroyed-brick selection path.
+ const normal=new BrickPractice(()=>0);normal.launch();normal.move(260)
+ const target=weakenBrick(normal,1)
+ normal.hitBrick(target.id)
+ const shark=normal.drops.find(d=>d.kind==='shark')!
+ expect(shark.targetX).toBe(260);expect(shark.targetY).toBe(normal.paddleY)
+ const start={x:shark.x,y:shark.y},velocity={x:shark.vx!,y:shark.vy!}
+ expect(Math.hypot(velocity.x,velocity.y)).toBeCloseTo(440)
+ expect(velocity.x/velocity.y).toBeCloseTo((260-start.x)/(normal.paddleY-start.y))
+ normal.move(80);normal.step(0.1)
+ expect([shark.x,shark.y]).toEqual([start.x,start.y]);expect(shark.targetX).toBe(260)
+ advance(normal,0.4)
+ const before={x:shark.x,y:shark.y};normal.step(0.05)
+ expect(shark.x-before.x).toBeCloseTo(velocity.x*0.05)
+ expect(shark.y-before.y).toBeCloseTo(velocity.y*0.05)
+ expect(shark.vx).toBe(velocity.x);expect(shark.targetX).toBe(260)
+})
 it('collecting an item fires two upward torpedoes from paddle edges',()=>{
  const game=new BrickPractice(()=>0.9);game.launch()
  game.drops.push({id:1,kind:'item',x:game.paddleX,y:BOARD.paddleY-18,warning:0})
  game.step(0.01)
  expect(game.shots).toHaveLength(2)
- expect(game.drainFeedback()).toEqual([{kind:'item',message:'어뢰 발사!'}])
+ expect(game.drainFeedback()).toEqual([{kind:'item',message:'수중 미사일 발사!'}])
  expect(game.shots.map(s=>s.x)).toEqual([game.paddleX-32,game.paddleX+32])
  const y=game.shots[0].y;game.step(0.01);expect(game.shots[0].y).toBeLessThan(y)
 })
@@ -58,7 +147,7 @@ it('reflects a descending ball at the plank and prevents tunnelling at low FPS',
  const game=new BrickPractice(()=>0.9);game.launch()
  game.ball={x:game.paddleX,y:BOARD.paddleY-26,vx:0,vy:320};game.step(0.1)
  expect(game.ball.vy).toBeLessThan(0);expect(game.lives).toBe(3)
- const brick=game.bricks.find(b=>b.hp===1)!
+ const brick=weakenBrick(game,1)
  game.bricks=[brick,{id:999,x:300,y:250,hp:4,maxHp:4}]
  game.ball={x:brick.x+25,y:brick.y+40,vx:0,vy:-330};game.step(0.1)
  expect(game.pending).toBe(1)
@@ -68,7 +157,7 @@ it('ends voluntarily only after a round is secured and clamps paddle movement',(
  game.move(-1000);expect(game.paddleX).toBe(49)
  game.move(1000);expect(game.paddleX).toBe(311)
  game.launch();for(const brick of [...game.bricks])for(let i=0;i<brick.maxHp;i++)game.hitBrick(brick.id)
- game.bank();game.nextRound();expect(game.phase).toBe('banked');expect(game.secured).toBe(30)
+ game.bank();game.nextRound();expect(game.phase).toBe('banked');expect(game.secured).toBe(24)
 })
 it('leaves side lanes wide enough to reach the space above every brick',()=>{
  const game=new BrickPractice(()=>0.9);game.launch()
@@ -80,23 +169,23 @@ it('leaves side lanes wide enough to reach the space above every brick',()=>{
  expect(game.ball.y).toBeLessThan(Math.min(...game.bricks.map(b=>b.y))-BOARD.ballRadius)
  game.ball.vx=225;game.ball.vy=0
  for(let i=0;i<13;i++)game.step(0.1)
- expect(game.ball.x).toBeGreaterThan(300);expect(game.bricks).toHaveLength(30)
+ expect(game.ball.x).toBeGreaterThan(300);expect(game.bricks).toHaveLength(24)
 })
 it('resizes the playfield without losing durability or round scores',()=>{
- const game=new BrickPractice(()=>0.9);game.launch();game.hitBrick(game.bricks.find(b=>b.hp===1)!.id)
+ const game=new BrickPractice(()=>0.9);game.launch();game.hitBrick(weakenBrick(game,1).id)
  const hp=game.bricks.map(b=>b.hp);game.resize(380)
- expect(game.height).toBe(380);expect(game.paddleY).toBe(346);expect(game.pending).toBe(1)
+ expect(game.height).toBe(380);expect(game.paddleY).toBe(319);expect(game.pending).toBe(1)
  expect(game.bricks.map(b=>b.hp)).toEqual(hp)
  game.damage();expect(game.ball.y).toBe(game.paddleY-16)
 })
 it('emits separate impact and destruction events for ball and torpedo effects',()=>{
- const game=new BrickPractice(()=>0.9);game.launch();const brick=game.bricks.find(b=>b.hp===2)!
+ const game=new BrickPractice(()=>0.9);game.launch();const brick=weakenBrick(game,2)
  game.hitBrick(brick.id);expect(game.drainImpacts()).toMatchObject([{brickId:brick.id,hp:1,destroyed:false}])
  expect(game.drainImpacts()).toEqual([])
  game.hitBrick(brick.id);expect(game.drainImpacts()).toMatchObject([{brickId:brick.id,hp:0,destroyed:true}])
 })
 it('marks a real torpedo collision for explosion effects while dealing one damage',()=>{
- const game=new BrickPractice(()=>0.9);game.launch();const brick=game.bricks.find(b=>b.hp===2)!
+ const game=new BrickPractice(()=>0.9);game.launch();const brick=weakenBrick(game,2)
  game.shots.push({id:1,x:brick.x+BRICK.width/2,y:brick.y+BRICK.height+4})
  game.step(1/120)
  expect(game.shots).toHaveLength(0)
@@ -136,7 +225,7 @@ it('does not stack shields and blocks exactly one hazard while leaving secured s
  const game=stillGame();game.secured=30;game.pending=8
  collect(game,'shield');collect(game,'shield');expect(game.shield).toBe(true)
  collect(game,'urchin');expect(game.shield).toBe(false);expect(game.pending).toBe(8)
- advance(game,0.7);collect(game,'urchin');expect(game.pending).toBe(5);expect(game.secured).toBe(30)
+ advance(game,0.7);collect(game,'urchin');expect(game.pending).toBe(6);expect(game.secured).toBe(30)
  advance(game,0.7);game.pending=1;collect(game,'urchin');expect(game.pending).toBe(0)
 })
 
@@ -152,25 +241,25 @@ it('shields prevent shark damage, ink and speed effects but do not save a missed
 
 it('splits into two independently colliding balls and loses a life only after the last ball falls',()=>{
  const game=stillGame();game.ball.vx=100;game.ball.vy=-200
- const speed=Math.hypot(game.ball.vx,game.ball.vy);collect(game,'split');collect(game,'split')
+ const speed=(225+35)*1.2;collect(game,'split');collect(game,'split')
  expect(game.balls).toHaveLength(1);expect(game.splitArmed).toBe(true)
- game.hitBrick(game.bricks.find(b=>b.hp===4)!.id,'torpedo')
+ game.hitBrick(weakenBrick(game,4).id,'torpedo')
  expect(game.balls).toHaveLength(1);expect(game.splitArmed).toBe(true)
- splitAtBrick(game)
+ splitAtPaddle(game)
  expect(game.balls).toHaveLength(2);expect(Math.hypot(game.balls[1].vx,game.balls[1].vy)).toBeCloseTo(speed)
  expect(game.splitArmed).toBe(false)
  expect([game.balls[1].x,game.balls[1].y]).toEqual([game.ball.x,game.ball.y])
- expect(game.balls[1].vy).toBeGreaterThan(0)
+ expect(game.balls[1].vy).toBeLessThan(0)
  collect(game,'split');expect(game.splitArmed).toBe(false);expect(game.balls).toHaveLength(2)
- game.balls[0].y=game.height+10;game.step(0.01)
+ game.balls[0].y=game.height+10;game.balls[0].vy=200;game.step(0.01)
  expect(game.balls).toHaveLength(1);expect(game.lives).toBe(3)
- game.ball.y=game.height+10;game.step(0.01)
+ game.ball.y=game.height+10;game.ball.vy=200;game.step(0.01)
  expect(game.lives).toBe(2);expect(game.phase).toBe('ready');expect(game.balls).toHaveLength(1)
 })
 
 it('both split balls damage bricks and resize with the board',()=>{
- const game=stillGame();splitAtBrick(game)
- const brick=game.bricks.find(b=>b.hp===2)!
+ const game=stillGame();splitAtPaddle(game)
+ const brick=weakenBrick(game,2)
  game.balls[1]={x:brick.x+BRICK.width/2,y:brick.y+BRICK.height+8,vx:0,vy:-300}
  game.step(0.02);expect(brick.hp).toBe(1)
  const ys=game.balls.map(b=>b.y);game.resize(400)
@@ -198,7 +287,7 @@ it('keeps localized ink patches for six seconds and then restores visibility',()
 })
 
 it('boosts both balls by 1.5 for six seconds, refreshes without compounding and restores speed',()=>{
- const game=stillGame();game.ball.vx=100;splitAtBrick(game)
+ const game=stillGame();game.ball.vx=100;splitAtPaddle(game)
  const speeds=game.balls.map(b=>Math.hypot(b.vx,b.vy))
  collect(game,'seaweed')
  game.balls.forEach((b,i)=>expect(Math.hypot(b.vx,b.vy)).toBeCloseTo(speeds[i]*1.5))
@@ -212,7 +301,7 @@ it('boosts both balls by 1.5 for six seconds, refreshes without compounding and 
 it('clears pending splits on life loss and a final brick without creating a ball after round clear',()=>{
  const game=stillGame();collect(game,'split');game.damage();expect(game.splitArmed).toBe(false)
  game.launch();collect(game,'split');expect(game.splitArmed).toBe(true)
- const brick=game.bricks.find(b=>b.hp===1)!
+ const brick=weakenBrick(game,1)
  game.bricks=[brick];game.ball={x:brick.x+BRICK.width/2,y:brick.y+BRICK.height+6.5,vx:0,vy:-200}
  game.step(1/120)
  expect(game.phase).toBe('round-clear');expect(game.splitArmed).toBe(false);expect(game.balls).toHaveLength(1)
@@ -221,7 +310,7 @@ it('clears pending splits on life loss and a final brick without creating a ball
 it('maintains the speed boost after paddle bounce and clears effects on life loss and round change',()=>{
  const game=stillGame();collect(game,'seaweed');collect(game,'wide');collect(game,'ink');collect(game,'shield')
  game.ball={x:game.paddleX,y:game.paddleY-23,vx:0,vy:400};game.step(0.05)
- expect(Math.hypot(game.ball.vx,game.ball.vy)).toBeCloseTo((225+35)*1.5*1.5)
+ expect(Math.hypot(game.ball.vx,game.ball.vy)).toBeCloseTo((225+35)*1.2*1.5)
  game.invulnerable=0;game.damage()
  expect([game.fastSeconds,game.wideSeconds,game.inkSeconds]).toEqual([0,0,0]);expect(game.shield).toBe(false)
  game.launch();collect(game,'wide');collect(game,'shield')
@@ -230,9 +319,9 @@ it('maintains the speed boost after paddle bounce and clears effects on life los
 })
 
 it('selects the new drop types within the original exclusive category rates',()=>{
- for(const [roll,expected] of [[0.1,'shrink'],[0.3,'heart']] as const){
+ for(const [roll,expected] of [[0.1,'poison'],[0.3,'heart']] as const){
   const values=[0.9,roll,0.99];const game=new BrickPractice(()=>values.shift()??0.9);game.launch()
-  game.hitBrick(game.bricks.find(b=>b.hp===1)!.id)
+  game.hitBrick(weakenBrick(game,1).id)
   expect(game.drops[0]?.kind).toBe(expected)
  }
 })
@@ -240,10 +329,11 @@ it('selects the new drop types within the original exclusive category rates',()=
 it('fires a pair of puffers along two diverging downward paths and periodically inflates them',()=>{
  const game=stillGame();game.spawnTestDrop('puffer')
  expect(game.drops).toHaveLength(2)
- expect(game.drops.map(d=>d.vx)).toEqual([-90,90])
+ expect(game.drops.map(d=>d.vx)).toEqual([-24,24])
  const y=game.drops[0].y;game.step(0.1)
  expect(game.drops[0].x).toBeLessThan(game.paddleX);expect(game.drops[1].x).toBeGreaterThan(game.paddleX)
  expect(game.drops.every(d=>d.y>y)).toBe(true)
+ expect(game.drops.every(d=>d.y-y<5)).toBe(true)
  expect(pufferRadius(0)).toBe(12);expect(pufferRadius(0.6)).toBe(18);expect(pufferRadius(1.2)).toBe(12)
  expect([0,0.3,0.6,0.9,1.2].map(pufferFrame)).toEqual([0,1,2,3,0])
 })
@@ -263,9 +353,186 @@ it('only enables infinite lives in item and hazard testing and relaunches every 
 })
 
 it('weights the heart at half the probability of every other item',()=>{
- const drops=Array.from({length:1300},(_,i)=>itemDrop((i+0.5)/1300))
- for(const kind of ['item','wide','shield','split','magnet','wave'])expect(drops.filter(d=>d===kind)).toHaveLength(200)
+ const drops=Array.from({length:2300},(_,i)=>itemDrop((i+0.5)/2300))
+ for(const kind of ['item','wide','shield','split','magnet','wave','dash','star','pirate','whale','treasure'])expect(drops.filter(d=>d===kind)).toHaveLength(200)
  expect(drops.filter(d=>d==='heart')).toHaveLength(100)
+})
+
+it('a countdown torpedo chooses the edge from its spawn and sinks there over ten seconds',()=>{
+ for(const side of ['left','right'] as const){
+  const game=torpedoGame(side),torpedo=game.drops[0],start={x:torpedo.x,y:torpedo.y}
+  const target=side==='left'?24:336
+  expect(torpedo.kind).toBe('torpedo');expect(torpedo.targetX).toBe(target)
+  game.move(side==='left'?280:80);advance(game,5)
+  expect(torpedo.x).toBeCloseTo((start.x+target)/2)
+  expect(torpedo.y).toBeCloseTo((start.y+game.paddleY)/2)
+  expect(game.lives).toBe(3);expect(game.drainTorpedoBlasts()).toHaveLength(0)
+ }
+})
+
+it('only damages the two-brick radius at zero seconds, for either edge',()=>{
+ for(const side of ['left','right'] as const)for(const inside of [true,false]){
+  const game=torpedoGame(side),distance=inside?91:93
+  game.move(side==='left'?24+distance:336-distance)
+  advance(game,9.9);expect(game.lives).toBe(3)
+  advance(game,0.2);expect(game.lives).toBe(inside?2:3)
+  expect(game.drops.some(d=>d.kind==='torpedo')).toBe(false)
+  expect(game.drainTorpedoBlasts()).toHaveLength(1)
+  advance(game,1);expect(game.drainTorpedoBlasts()).toHaveLength(0)
+ }
+})
+
+it('shields block the timed explosion and laboratory countdowns never create a ball',()=>{
+ const game=torpedoGame('left');game.move(70);collect(game,'shield');advance(game,10.1)
+ expect(game.lives).toBe(3);expect(game.shield).toBe(false)
+ const lab=new BrickPractice();lab.enterLaboratory();lab.move(280);lab.previewSkill('torpedo');advance(lab,10.1)
+ expect(lab.drainTorpedoBlasts()).toHaveLength(1);expect(lab.lives).toBe(3);expect(lab.balls).toHaveLength(0)
+})
+
+it('triples scores for ten seconds, refreshes, and takes priority over the pirate coin',()=>{
+ const game=stillGame();collect(game,'pirate');collect(game,'treasure')
+ expect(game.scoreMultiplier).toBe(3)
+ game.hitBrick(weakenBrick(game,1).id);expect(game.pending).toBe(3)
+ advance(game,5);collect(game,'treasure');expect(game.tripleScoreSeconds).toBe(10)
+ expect(game.scoreMultiplier).toBe(3)
+ advance(game,10.1);expect(game.scoreMultiplier).toBe(1)
+ game.hitBrick(weakenBrick(game,1).id);expect(game.pending).toBe(4)
+ collect(game,'treasure');game.damage();expect(game.tripleScoreSeconds).toBe(0)
+})
+
+it('starts the anchor slowly, accelerates, and slams the floor without homing',()=>{
+ const game=new BrickPractice();game.enterLaboratory();game.previewSkill('anchor')
+ const anchor=game.drops[0],y=anchor.y,x=anchor.x
+ game.move(80);game.step(0.1)
+ const first=anchor.y-y,speed=anchor.vy!
+ expect(first).toBeLessThan(2)
+ advance(game,0.5);expect(anchor.vy!).toBeGreaterThan(speed*4)
+ expect(anchor.x).toBe(x)
+ advance(game,2);expect(game.drops.some(d=>d.kind==='anchor')).toBe(false)
+ expect(game.drainAnchorSlams()).toEqual([{x,y:game.height-12}])
+})
+
+it('anchor contact removes one life and can be blocked by a shield',()=>{
+ const game=stillGame();collect(game,'anchor')
+ expect(game.lives).toBe(2);expect(game.phase).toBe('ready')
+ expect(game.drainAnchorSlams()).toHaveLength(1)
+ const shielded=stillGame();collect(shielded,'shield');collect(shielded,'anchor')
+ expect(shielded.lives).toBe(3);expect(shielded.shield).toBe(false)
+})
+
+it('jellyfish sway in both directions while descending slowly and only deduct one point',()=>{
+ const game=new BrickPractice();game.enterLaboratory();game.previewSkill('jelly');game.move(80)
+ const jelly=game.drops[0],start={x:jelly.x,y:jelly.y}
+ advance(game,0.7);expect(jelly.x).toBeGreaterThan(start.x)
+ advance(game,0.8);expect(jelly.x).toBeLessThan(start.x)
+ expect(jelly.y-start.y).toBeGreaterThan(35);expect(jelly.y-start.y).toBeLessThan(50)
+ const normal=stillGame();normal.pending=5;collect(normal,'jelly')
+ expect(normal.pending).toBe(4);expect(normal.lives).toBe(3)
+})
+
+it('doubles destruction scores for ten seconds and refreshes without stacking',()=>{
+ const game=stillGame();collect(game,'pirate')
+ expect(game.doubleScoreSeconds).toBe(10)
+ advance(game,9.8);game.hitBrick(weakenBrick(game,1).id)
+ expect(game.pending).toBe(2)
+ advance(game,0.3);game.hitBrick(weakenBrick(game,1).id)
+ expect(game.pending).toBe(3);expect(game.doubleScoreSeconds).toBe(0)
+ collect(game,'pirate');advance(game,6);collect(game,'pirate')
+ expect(game.doubleScoreSeconds).toBe(10)
+ game.hitBrick(weakenBrick(game,1).id,'star');expect(game.pending).toBe(5)
+ game.damage();expect(game.doubleScoreSeconds).toBe(0)
+})
+
+it('banks double points on the last brick and clears the coin for the next round',()=>{
+ const game=stillGame();collect(game,'pirate')
+ for(const brick of [...game.bricks])for(let i=0;i<brick.maxHp;i++)game.hitBrick(brick.id)
+ expect(game.phase).toBe('round-clear');expect(game.secured).toBe(48)
+ game.nextRound();expect(game.doubleScoreSeconds).toBe(0)
+})
+
+it('whale song damages every remaining brick in the lowest row exactly once',()=>{
+ const game=stillGame(),bottomY=Math.max(...game.bricks.map(b=>b.y))
+ game.bricks=game.bricks.filter(b=>b.y!==bottomY||b.id%2===0)
+ collect(game,'whale')
+ expect(game.bricks.filter(b=>b.y===bottomY).map(b=>b.hp)).toEqual([1,1,1])
+ expect(game.bricks.filter(b=>b.y!==bottomY).every(b=>b.hp===2)).toBe(true)
+ expect(game.drainImpacts()).toHaveLength(3)
+ expect(game.drainSongs()).toEqual([{y:bottomY+BRICK.height/2}])
+})
+
+it('retargets the next lowest row and doubles whale destruction with a pirate coin',()=>{
+ const game=stillGame(),bottomY=Math.max(...game.bricks.map(b=>b.y))
+ for(const brick of game.bricks)if(brick.y===bottomY)brick.hp=1
+ collect(game,'pirate');collect(game,'whale')
+ expect(game.pending).toBe(12);expect(game.bricks).toHaveLength(18)
+ collect(game,'whale')
+ const nextY=Math.max(...game.bricks.map(b=>b.y))
+ expect(game.bricks.filter(b=>b.y===nextY).every(b=>b.hp===1)).toBe(true)
+ expect(game.bricks.filter(b=>b.y<nextY).every(b=>b.hp===2)).toBe(true)
+})
+
+it('previews coin and whale song without awarding laboratory scores',()=>{
+ const game=new BrickPractice();game.enterLaboratory()
+ catchLabDrop(game,'pirate');game.bricks.forEach(b=>b.hp=1);catchLabDrop(game,'whale')
+ expect(game.bricks).toHaveLength(18);expect(game.pending).toBe(0);expect(game.secured).toBe(0)
+ expect(game.balls).toHaveLength(0);expect(game.phase).toBe('playing')
+})
+
+it('throws exactly five starfish in a staggered upward fan',()=>{
+ const game=stillGame();collect(game,'star')
+ expect(game.starShots).toHaveLength(5)
+ expect(game.starShots.filter(shot=>shot.delay===0)).toHaveLength(1)
+ expect(game.starShots.every(shot=>shot.x===game.paddleX&&shot.vy<0)).toBe(true)
+ expect(game.starShots.map(shot=>Math.sign(shot.vx))).toEqual([-1,-1,0,1,1])
+ advance(game,0.08);expect(game.starShots.filter(shot=>shot.age>0)).toHaveLength(2)
+ advance(game,0.24);expect(game.starShots.filter(shot=>shot.age>0)).toHaveLength(5)
+ expect(game.starShots[0].y).toBeLessThan(game.starShots[4].y)
+})
+
+it('each starfish deals one damage to its first brick and stops without piercing',()=>{
+ const game=stillGame()
+ game.bricks=[{id:1,x:159,y:240,hp:4,maxHp:4},{id:2,x:159,y:100,hp:4,maxHp:4}]
+ collect(game,'star');game.starShots=[{...game.starShots[0],vx:0,vy:-500}]
+ advance(game,0.8)
+ expect(game.bricks.map(brick=>brick.hp)).toEqual([3,4]);expect(game.starShots).toHaveLength(0)
+ expect(game.drainImpacts()).toMatchObject([{brickId:1,source:'star',hp:3,destroyed:false}])
+})
+
+it('cancels unfired starfish on life loss and previews five throws without lab balls',()=>{
+ const game=stillGame();collect(game,'star');game.damage();advance(game,1)
+ expect(game.starShots).toHaveLength(0)
+ const lab=new BrickPractice();lab.enterLaboratory();catchLabDrop(lab,'star')
+ expect(lab.starShots).toHaveLength(5);advance(lab,1.5)
+ expect(lab.starShots).toHaveLength(0);expect(lab.balls).toHaveLength(0)
+ expect(lab.score()).toMatchObject({lives:3,secured:0,pending:0})
+})
+
+it('launches Pongi from the paddle and breaks only the first brick, including four durability',()=>{
+ const game=stillGame()
+ game.bricks=[{id:1,x:159,y:240,hp:4,maxHp:4},{id:2,x:159,y:100,hp:4,maxHp:4},{id:3,x:250,y:240,hp:4,maxHp:4}]
+ collect(game,'dash')
+ expect(game.dashShots).toHaveLength(1);expect(game.dashShots[0].x).toBe(game.paddleX)
+ advance(game,1.6)
+ expect(game.bricks.map(b=>b.id)).toEqual([2,3]);expect(game.bricks.every(b=>b.hp===4)).toBe(true)
+ expect(game.pending).toBe(1);expect(game.dashShots).toHaveLength(0)
+ expect(game.drainImpacts()).toMatchObject([{brickId:1,hp:0,destroyed:true,source:'dash'}])
+})
+
+it('finishes a round with a dash and clears active dashes when a life is lost',()=>{
+ const game=stillGame();game.bricks=[{id:1,x:159,y:200,hp:4,maxHp:4}]
+ collect(game,'dash');advance(game,2.4)
+ expect(game.phase).toBe('round-clear');expect(game.secured).toBe(1);expect(game.dashShots).toHaveLength(0)
+ game.nextRound();game.launch();collect(game,'dash');game.damage()
+ expect(game.dashShots).toHaveLength(0)
+})
+
+it('previews Pongi dash without gameplay balls or scores and removes a missed dash at the top',()=>{
+ const game=new BrickPractice();game.enterLaboratory();catchLabDrop(game,'dash');advance(game,2)
+ expect(game.balls).toHaveLength(0);expect(game.pending).toBe(0);expect(game.lives).toBe(3)
+ expect(game.bricks).toHaveLength(23);expect(game.dashShots).toHaveLength(0)
+ const missed=stillGame();missed.bricks=[{id:1,x:250,y:200,hp:4,maxHp:4}]
+ collect(missed,'dash');advance(missed,4)
+ expect(missed.dashShots).toHaveLength(0);expect(missed.bricks).toHaveLength(1)
 })
 
 it('heals exactly one life up to three without changing round scores',()=>{
@@ -315,13 +582,13 @@ it('lets the latest length effect win, blocks shrink with a shield and clears it
  game.damage();expect(game.shrinkSeconds).toBe(0);expect(game.paddleWidth).toBe(82)
 })
 
-it('uses the inflated puffer radius for collision and subtracts only one pending point',()=>{
- for(const [age,expected] of [[0,4],[0.6,3]]){
+it('uses the inflated puffer radius for collision and subtracts two pending points',()=>{
+ for(const [age,expected] of [[0,4],[0.6,2]]){
   const game=stillGame();game.secured=30;game.pending=4
   game.drops.push({id:1,kind:'puffer',x:game.paddleX,y:game.paddleY-15,vx:0,vy:0,warning:0,age})
   game.step(1/120)
   expect(game.pending).toBe(expected);expect(game.secured).toBe(30);expect(game.lives).toBe(3)
-  expect(game.drainFeedback()).toEqual(age===0?[]:[{kind:'hazard',message:'아앗 따가워'}])
+  expect(game.drainFeedback()).toEqual(age===0?[]:[{kind:'hazard',message:'복어에 콕! 점수 −2'}])
  }
  const game=stillGame();collect(game,'puffer');expect(game.pending).toBe(0)
 })
@@ -331,8 +598,8 @@ it('blocks a puffer with the shield and suppresses duplicate hits during invulne
  expect(game.shield).toBe(false);expect(game.pending).toBe(5)
  expect(game.drainFeedback().every(e=>e.kind==='item')).toBe(true)
  advance(game,0.7);collect(game,'puffer');collect(game,'puffer')
- expect(game.pending).toBe(4)
- expect(game.drainFeedback()).toEqual([{kind:'hazard',message:'아앗 따가워'}])
+ expect(game.pending).toBe(3)
+ expect(game.drainFeedback()).toEqual([{kind:'hazard',message:'복어에 콕! 점수 −2'}])
 })
 
 it('ignores hazard glancing contacts while keeping central body contacts for every hazard',()=>{
@@ -373,29 +640,84 @@ it('clamps a held ball to a shortened plank and preserves its attachment after r
  expect(game.ball.y).toBe(game.paddleY-12)
 })
 
-it('detonates a wave once on a real ball collision and damages only the surrounding eight cells',()=>{
- const game=stillGame();game.bricks.forEach(b=>{b.hp=2;b.maxHp=2});collect(game,'wave')
- game.hitBrick(29,'torpedo');expect(game.waveArmed).toBe(true);game.drainImpacts()
- const center=game.bricks[14];game.ball={x:center.x+21,y:center.y+10,vx:0,vy:-200};game.step(1/120)
- for(const brick of game.bricks){
-  const nearby=Math.abs(brick.x-center.x)<=46&&Math.abs(brick.y-center.y)<=25
-  expect(brick.hp).toBe(nearby||brick.id===29?1:2)
- }
- expect(game.waveArmed).toBe(false)
- const hits=game.drainImpacts();expect(hits).toHaveLength(9);expect(hits.filter(h=>h.source==='wave')).toHaveLength(8)
- expect(game.drainWaves()).toEqual([{x:center.x+21,y:center.y+10}]);expect(game.drainWaves()).toEqual([])
+
+it('builds four rows of six bricks',()=>{
+ const game=new BrickPractice()
+ expect(game.bricks).toHaveLength(24)
+ expect(new Set(game.bricks.map(b=>b.y)).size).toBe(4)
+ expect(new Set(game.bricks.map(b=>b.x)).size).toBe(6)
 })
 
-it('scores wave destruction normally and never chains damage beyond one cell',()=>{
- const game=stillGame();game.bricks.forEach(b=>{b.hp=1;b.maxHp=1});collect(game,'wave')
- const center=game.bricks[14];game.ball={x:center.x+21,y:center.y+10,vx:0,vy:-200};game.step(1/120)
- expect(game.pending).toBe(9);expect(game.bricks).toHaveLength(21)
- expect(game.bricks.some(b=>b.id===12)).toBe(true)
+it('does not split at a brick and fires two upward balls on the next paddle bounce',()=>{
+ const game=stillGame();collect(game,'split')
+ const brick=weakenBrick(game,4)
+ game.ball={x:brick.x+21,y:brick.y+26.5,vx:0,vy:-200};game.step(1/120)
+ expect(game.balls).toHaveLength(1);expect(game.splitArmed).toBe(true)
+ splitAtPaddle(game)
+ expect(game.balls).toHaveLength(2);expect(game.splitArmed).toBe(false)
+ expect(game.balls.every(b=>b.vy<0)).toBe(true)
+ expect(game.balls[0].vx).toBeLessThan(0);expect(game.balls[1].vx).toBeGreaterThan(0)
 })
 
-it('does not wrap edge waves across rows and clears pending powers on a lost life',()=>{
- const game=stillGame();game.bricks.forEach(b=>{b.hp=2;b.maxHp=2});collect(game,'wave');collect(game,'magnet')
- const center=game.bricks[0];game.ball={x:center.x+21,y:center.y+10,vx:0,vy:-200};game.step(1/120)
- expect(game.drainImpacts()).toHaveLength(4);expect(game.bricks.find(b=>b.id===5)!.hp).toBe(2)
- collect(game,'wave');game.damage();expect(game.waveArmed).toBe(false);expect(game.magnetArmed).toBe(false)
+it('waits for explicit release when magnet and split are collected together',()=>{
+ const game=stillGame();collect(game,'split');collect(game,'magnet')
+ game.ball={x:game.paddleX,y:game.paddleY-12,vx:0,vy:300};game.step(1/120)
+ expect(game.ball.held).toBe(true);expect(game.balls).toHaveLength(1)
+ game.launch()
+ expect(game.balls).toHaveLength(2);expect(game.balls.every(b=>!b.held&&b.vy<0)).toBe(true)
+})
+
+it('immediately fires one wave that pierces multiple bricks once each for one damage',()=>{
+ const game=stillGame()
+ game.bricks=[{id:1,x:159,y:200,hp:3,maxHp:3},{id:2,x:159,y:100,hp:2,maxHp:2},{id:3,x:250,y:100,hp:2,maxHp:2}]
+ collect(game,'wave')
+ expect(game.waveShots).toHaveLength(1);expect(game.shots).toHaveLength(0)
+ expect(game.waveShots[0].x).toBe(game.paddleX)
+ advance(game,0.9)
+ expect(game.bricks.map(b=>b.hp)).toEqual([2,1,2])
+ const hits=game.drainImpacts();expect(hits).toHaveLength(2);expect(hits.every(h=>h.source==='wave')).toBe(true)
+ expect(game.waveShots).toHaveLength(1)
+ advance(game,0.4)
+ expect(game.waveShots).toHaveLength(0);expect(game.bricks.map(b=>b.hp)).toEqual([2,1,2])
+})
+
+it('scores piercing destruction and removes all projectiles on life loss or round clear',()=>{
+ const game=stillGame();game.bricks=[{id:1,x:159,y:200,hp:1,maxHp:1},{id:2,x:159,y:100,hp:1,maxHp:1}]
+ collect(game,'wave');advance(game,1)
+ expect(game.phase).toBe('round-clear');expect(game.secured).toBe(2);expect(game.waveShots).toHaveLength(0)
+ game.nextRound();game.launch();collect(game,'wave');collect(game,'magnet');game.damage()
+ expect(game.waveShots).toHaveLength(0);expect(game.magnetArmed).toBe(false)
+})
+
+it('keeps wave collision history after resizing and lets separate waves hit the same brick',()=>{
+ const game=stillGame();game.bricks=[{id:1,x:159,y:200,hp:4,maxHp:4},{id:2,x:250,y:100,hp:4,maxHp:4}]
+ collect(game,'wave');advance(game,0.6)
+ expect(game.bricks[0].hp).toBe(3)
+ expect(game.waveShots[0].hitIds.has(1)).toBe(true)
+ const y=game.waveShots[0].y;game.resize(400)
+ expect(game.waveShots[0].y).toBeCloseTo(y*400/520)
+ expect(game.waveShots[0].hitIds.has(1)).toBe(true)
+ const second=stillGame();second.bricks=[{id:1,x:159,y:200,hp:4,maxHp:4},{id:2,x:250,y:100,hp:4,maxHp:4}]
+ collect(second,'wave');collect(second,'wave');advance(second,0.7)
+ expect(second.bricks[0].hp).toBe(2)
+})
+
+it('reveals a stationary poison bottle then pours at irregular intervals',()=>{
+ const game=new BrickPractice(()=>0.9);game.enterLaboratory();game.previewSkill('poison')
+ const bottle=game.drops[0],position={x:bottle.x,y:bottle.y}
+ advance(game,1.2);expect(game.drops).toHaveLength(1)
+ advance(game,0.1);expect(game.drops.filter(d=>!d.bottle)).toHaveLength(1)
+ advance(game,0.15);expect(game.drops.filter(d=>!d.bottle)).toHaveLength(2)
+ expect({x:bottle.x,y:bottle.y}).toEqual(position)
+ expect(hazardTouches({...bottle,y:game.paddleY},game.paddleX,game.paddleY,game.paddleWidth)).toBe(false)
+ game.move(300);advance(game,2.9);expect(game.drops.some(d=>d.bottle)).toBe(false)
+ expect(bottle.emitted).toBe(7)
+})
+it('subtracts one point from poison while respecting shields and invulnerability',()=>{
+ const game=stillGame();game.pending=3;game.secured=30;collect(game,'shield');collect(game,'poison')
+ expect(game.shield).toBe(false);expect(game.lives).toBe(3);expect(game.pending).toBe(3)
+ advance(game,0.7);collect(game,'poison');collect(game,'poison')
+ expect(game.lives).toBe(3);expect(game.pending).toBe(2);expect(game.secured).toBe(30)
+ expect(game.drainFeedback().some(event=>event.message==='독극물에 닿았어요! 점수 −1')).toBe(true)
+ advance(game,0.7);game.pending=0;collect(game,'poison');expect(game.pending).toBe(0)
 })

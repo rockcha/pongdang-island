@@ -13,7 +13,7 @@ beforeEach(()=>{vi.clearAllMocks();mocks.board.mockResolvedValue({rows:[],total:
 it('starts and answers practice without sending a start or answer RPC or refreshing gold',async()=>{
  mocks.action.mockResolvedValue({serverNow:new Date().toISOString(),run:null})
  render(<ShadowGame />)
- const practice=await screen.findByRole('button',{name:'연습 시작'})
+ const practice=await screen.findByRole('button',{name:'연습'})
  await waitFor(()=>expect(practice.hasAttribute('disabled')).toBe(false))
  fireEvent.click(practice)
  const game=await screen.findByRole('region',{name:'그림자 문제'})

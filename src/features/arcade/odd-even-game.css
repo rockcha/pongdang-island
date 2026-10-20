@@ -9,6 +9,13 @@
 .odd-even-pearl{display:block;width:70%;aspect-ratio:1;max-height:100%;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 10%,#e8f6f5 38%,#a6ccd1 75%,#8fb4bf);box-shadow:inset 0 0 0 1px #89aebc66,0 1px 2px #45646b22;animation:odd-even-pearl-in 220ms backwards}
 .odd-even-result--correct{animation:odd-even-glow 550ms ease-out}
 .odd-even-result--wrong{animation:odd-even-miss 300ms ease-out}
+.odd-even-actions{height:80px;min-height:80px}
+.odd-even-actions>button{height:100%;min-height:80px;border-radius:10px;font-size:18px}
+.odd-even-actions>button.text-3xl{font-size:30px}
+.odd-even-feedback{animation:odd-even-feedback-pop 1000ms ease-out both}
+@keyframes odd-even-feedback-pop{0%{opacity:0;transform:scale(.7)}20%{opacity:1;transform:scale(1.05)}35%,65%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.04)}}
+@media(prefers-reduced-motion:reduce){.odd-even-feedback{animation-name:odd-even-feedback-fade}}
+@keyframes odd-even-feedback-fade{0%,65%{opacity:1}100%{opacity:0}}
 @keyframes odd-even-mix{0%{background-position:0 0;transform:translate(-.24%,-.43%)}25%{background-position:100% 0;transform:translate(3.99%,-.7%)}50%{background-position:0 100%;transform:translate(-.83%,.93%)}75%{background-position:100% 100%;transform:translate(4.35%,.7%)}}
 @keyframes odd-even-open{0%{background-position:0 0;transform:translate(0,.03%)}25%{background-position:100% 0;transform:translate(4.53%,-.14%)}50%{background-position:0 100%;transform:translate(-1.58%,.65%)}75%,100%{background-position:100% 100%;transform:translate(2.38%,1.47%)}}
 @keyframes odd-even-pearl-in{0%{opacity:0;transform:translate(-4px,-15px) scale(.5)}55%{opacity:1;transform:translate(1px,2px) scale(1.06)}80%{transform:translateY(-1px)}100%{opacity:1;transform:none}}

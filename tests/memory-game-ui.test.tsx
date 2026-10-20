@@ -13,7 +13,7 @@ it('shows an already revealed center Pongi, starts free practice, flips and clos
  const board=screen.getByRole('group',{name:'5행 5열 카드판'})
  expect(within(board).getAllByRole('button')).toHaveLength(25)
  expect(screen.getByRole('button',{name:'퐁이 조커 · 처음부터 공개'}).getAttribute('aria-pressed')).toBe('true')
- const practice=screen.getByRole('button',{name:'연습 시작'})
+ const practice=screen.getByRole('button',{name:'연습'})
  await waitFor(()=>expect(practice.hasAttribute('disabled')).toBe(false));fireEvent.click(practice)
  fireEvent.click(screen.getByRole('button',{name:'1번 카드 뒤집기'}))
  await waitFor(()=>expect(within(board).getAllByRole('button').filter(b=>b.getAttribute('aria-pressed')==='true')).toHaveLength(2))

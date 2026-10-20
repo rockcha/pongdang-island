@@ -1,0 +1,88 @@
+{
+  "generator": "built-in image_gen",
+  "date": "2026-10-20",
+  "reference": "/branding/pongi.png",
+  "assets": [
+    {
+      "file": "thumbnail.png",
+      "transparent": false,
+      "prompt": "Use case: illustration-story. Create a polished cozy mobile arcade game thumbnail, landscape 4:3 composition, no lettering or UI. Reference image is character identity reference ONLY: Pongi is this cute warm brown OTTER, round ears, cream muzzle and belly, large glossy black eyes, pink coral starfish hair clip, brown tapered tail; keep this identity, remove fishing rod. Pongi at bottom center holds a long wooden plank horizontally with both paws like a breakout paddle. Above him a white pearl ball bounces toward rows of chunky pastel sea-glass bricks in mint, butter yellow, peach and lavender; a cute blue-gray shark rushes down from upper side and two small torpedoes fire upward. Shallow turquoise sea background, soft foam, subtly sunlit, friendly adventure, painterly cartoon game illustration matching reference polished shading and dark warm outlines. Clear readable silhouette even in small arcade card, uncluttered, central subjects safe for cropping to 4:3 or square. No text, numbers, interface, watermarks, collage panels.",
+      "width": 1448,
+      "height": 1086,
+      "sha256": "1fed212aa3fd643a3933b239ee9c695d0ee4c27a64acd5e491bf001f2f3dafcc"
+    },
+    {
+      "file": "pongi-sprite.png",
+      "transparent": true,
+      "grid": [
+        2,
+        2
+      ],
+      "anchor": "Computed from the widest opaque plank rows in each frame; plank remains fixed while tail moves.",
+      "prompt": "Use case: stylized-concept. Production 2D transparent PNG SPRITE SHEET for Phaser breakout game, EXACT 2 columns x 2 rows equal square cells, four frames reading left to right then next row, square 1024x1024 sheet. TRUE transparent background, no checkerboard, labels, borders or environment. Reference is character identity only: Pongi cute brown OTTER, round ears, cream muzzle, starfish hair clip, brown tapered tail, no fishing rod, no clothes. TOP DOWN overhead orthographic camera. Pongi is standing facing NORTH / TOP of each cell, viewed from above and slightly behind so round head, ears, starfish and body/tail visible, not front-facing portrait. Both paws hold the same wide straight wooden plank horizontally in front of him toward TOP of cell. The plank is wide, about 84% of cell width at y=26% of EACH cell, otter centered below plank, tail extends downward ending y=88%. Whole figure within cell. Four coherent gentle idle animation frames: tiny tail swish and paw/ear settling; plank perfectly fixed identical pixel length, center and height in all frames, head center fixed, scale consistent, no full-body bobbing, no duplicates of characters per cell. Cartoon linework, warm brown fur and cream cheek accents matching reference, smooth painted finish, game sprite readability at 104px wide. Alpha surrounds each entire frame.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "082be879d508f24c7cafb58af8b9c3cbeae95157163551683df897988b832ed4"
+    },
+    {
+      "file": "shark-sprite.png",
+      "transparent": true,
+      "grid": [
+        2,
+        2
+      ],
+      "prompt": "Use case: stylized-concept. Production 2D cute SHARK charge animation spritesheet, TRUE transparent PNG, exactly 2 columns x 2 rows equal square cells, four frames in reading order, square 1024x1024 canvas. Single blue-gray shark in each cell from STRICT TOP DOWN ORTHOGRAPHIC camera. Every shark head points DOWN toward bottom of screen, tail points UP, symmetrical pectoral fins spread left/right. Each shark fully contained within cell from y=8% tail to y=92% rounded nose, body centered at x=50%, same head center y=75%, same size and alignment across all four cells. Frames animate lateral tail and body flex left, middle, right, middle with stable head and smooth loop. Cute friendly but determined, navy outline, blue-gray back with lighter highlights, small dorsal fin, readable silhouette. Cozy polished cartoon sea-game art, not pixel art, no front view, no side view, no waves, no motion lines, no shadows on ground, no text, numbers, borders or checkerboard. Transparent gutters around each frame. This is a GAME sheet, not an illustration collage.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "ce28b5716feabb9be3f2fe4dd6ed50fc7197646f5775d2977252782827f3feb2"
+    },
+    {
+      "file": "item.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. One isolated arcade power-up icon for a cozy sea-themed breakout game. TRUE transparent PNG, square 1024 canvas. Two cute mini torpedoes side by side pointing UP, mint/teal rounded metal bodies, brass-gold nose caps, small coral tail fins, held together by a little cream/gold band, clear compact silhouette, rounded friendly toy design. Centered, entire object occupies about 80% width and 80% height with transparent margins, crisp warm outlined painterly cartoon game item art. No circle background, no glow cloud, no explosion, no labels, text or UI. No cast shadow or checkerboard.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "3388614b0c163b58d08c38721880f7b8bd65e918f51c65fcd2c963dedc7933c2"
+    },
+    {
+      "file": "torpedo.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. One isolated vertical torpedo projectile sprite for a cute cozy marine arcade game. TRUE transparent PNG, square 1024 canvas. Top down overhead view, nose points straight UP, small symmetric mint/teal torpedo with rounded brass-gold nose and two tiny coral tail fins at bottom. Narrow clean silhouette, polished cartoon shading and clear outline, centered x=50%, from y=6% to y=94%, approximately 32% canvas width. No smoke, bubbles, trail, background, text, shadow, checkerboard or extra objects. Designed to be readable at 10 by 26 pixels.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "17685f5a13cbfaa9481e594f78a9c11fe80992d8bea09708288da53dbcce2c84"
+    },
+    {
+      "file": "tile-1.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. One isolated horizontal rectangular brick tile for a cozy underwater breakout arcade game. TRUE transparent PNG. Straight-on orthographic front view, no perspective tilt. The tile occupies x=8% to92%, y=30% to70% of a square canvas, rounded corners, clean dark teal outline, smooth glazed sea-glass material with subtle bevel, readable at 42 by21 pixels. No surrounding objects, ground, shadow, glow cloud, border, labels, letters or numbers. Consistent rectangular geometry for a set of four strength levels. Strength ONE: mint turquoise sea glass, one small ivory pearl inset centered horizontally on the tile face. Simple thin rim, lightest and softest of the set.",
+      "width": 1774,
+      "height": 887,
+      "sha256": "ba3cc1af1cf20a2c34be5e7022eab452905c09af7f231e7487648c05f9347722"
+    },
+    {
+      "file": "tile-2.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. One isolated horizontal rectangular brick tile for a cozy underwater breakout arcade game. TRUE transparent PNG. Straight-on orthographic front view, no perspective tilt. The tile occupies x=8% to92%, y=30% to70% of a square canvas, rounded corners, clean dark teal outline, smooth glazed sea-glass material with subtle bevel, readable at 42 by21 pixels. No surrounding objects, ground, shadow, glow cloud, border, labels, letters or numbers. Consistent rectangular geometry for a set of four strength levels. Strength TWO: warm butter-yellow sea glass, two small ivory pearl insets centered in a horizontal line. Slightly thicker rim, stronger than the mint tile.",
+      "width": 1774,
+      "height": 887,
+      "sha256": "5158e0fb74384a567bc85baf58a760d5264b607ede44b36c533f9d067cc2e8ba"
+    },
+    {
+      "file": "tile-3.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. One isolated horizontal rectangular brick tile for a cozy underwater breakout arcade game. TRUE transparent PNG. Straight-on orthographic front view, no perspective tilt. The tile occupies x=8% to92%, y=30% to70% of a square canvas, rounded corners, clean dark teal outline, smooth glazed sea-glass material with subtle bevel, readable at 42 by21 pixels. No surrounding objects, ground, shadow, glow cloud, border, labels, letters or numbers. Consistent rectangular geometry for a set of four strength levels. Strength THREE: soft coral peach sea glass, three small ivory pearl insets centered in a horizontal line. Reinforced double rim, strong sturdy construction.",
+      "width": 1774,
+      "height": 887,
+      "sha256": "715cfa4f73a689c8cbe3fb3d9cd394c9feda3284cb150177829ecbcaaaa97e1c"
+    },
+    {
+      "file": "tile-4.png",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. One isolated horizontal rectangular brick tile for a cozy underwater breakout arcade game. TRUE transparent PNG. Straight-on orthographic front view, no perspective tilt. The tile occupies x=8% to92%, y=30% to70% of a square canvas, rounded corners, clean dark teal outline, smooth glazed sea-glass material with subtle bevel, readable at 42 by21 pixels. No surrounding objects, ground, shadow, glow cloud, border, labels, letters or numbers. Consistent rectangular geometry for a set of four strength levels. Strength FOUR: lavender blue sea glass, four small ivory pearl insets centered in a horizontal line. Thick reinforced rim with tiny bronze corner caps, strongest of the set.",
+      "width": 1774,
+      "height": 887,
+      "sha256": "c0d24d0bb829a74390222c787c7c8656f5e69edceff8a4a7eaf92a72e9f71800"
+    }
+  ]
+}

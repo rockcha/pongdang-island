@@ -50,6 +50,6 @@ export function AppLayout() {
       </div>}
     </header>
     {!port&&!harbor&&!tankScreen&&<PlaceBanner pathname={pathname}/>}
-    <main className={`flex min-w-0 flex-1 flex-col ${shop||warehouse||memory||friends||exchange||noticeList||mailbox||home||profile?'-mx-6':expedition?'-mx-3':''} ${port||expedition||tankScreen||harbor||fishing||memory||warehouse||shop||friends||exchange||square||noticeList||home||profile?'min-h-0 overflow-hidden':''}`}><Outlet /></main>
+    <main className={`flex min-w-0 flex-1 flex-col ${shop||warehouse||memory||friends||exchange||noticeList||mailbox||home||profile?'-mx-6':expedition?'-mx-3':''} ${port||expedition||tankScreen||harbor||fishing||memory||warehouse||shop||friends||exchange||square||noticeList||mailbox||home||profile?'min-h-0 overflow-hidden':''}`}><Outlet /></main>
   </div>
 }

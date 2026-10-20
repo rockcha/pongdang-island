@@ -12,12 +12,12 @@ var BRICK = {
 	height: 20,
 	rows: 4,
 	columns: 6,
-	gapX: 4,
-	gapY: 5,
-	left: 44
+	gapX: 2,
+	gapY: 3,
+	left: 49
 };
 var BRICK_COUNT = BRICK.rows * BRICK.columns;
-var BALL_SPEED_MULTIPLIER = 1.2;
+var BALL_SPEED_MULTIPLIER = 1.482;
 var WAVE_SHOT = {
 	speed: 420,
 	hitRadius: 10,
@@ -45,7 +45,7 @@ var STAR_SHOT = {
 };
 var TORPEDO_HAZARD = {
 	countdown: 10,
-	radius: (BRICK.width + BRICK.gapX) * 2,
+	radius: 92,
 	edge: 24
 };
 //#endregion
@@ -224,7 +224,7 @@ function hazardTouches(drop, paddleX, paddleY, paddleWidth) {
 	return dx * dx + dy * dy <= radius * radius;
 }
 function brickDrop(roll) {
-	return roll < .15 ? "shark" : roll < .3 ? "item" : null;
+	return roll < .2 ? "shark" : roll < .4 ? "item" : null;
 }
 /** Deterministic simulation shared by practice, real play and server verification. */
 var BrickPractice = class {
@@ -235,6 +235,7 @@ var BrickPractice = class {
 		return hit;
 	}
 	phase = "ready";
+	awaitingRestart = false;
 	round = 1;
 	lives = 3;
 	paddleX = 180;
@@ -359,6 +360,7 @@ var BrickPractice = class {
 			remaining: this.bricks.length,
 			testMode: this.testMode,
 			held: this.balls.some((b) => b.held),
+			awaitingRestart: this.awaitingRestart,
 			reward: this.reward,
 			roundReward: brickRound(this.round).reward,
 			effects: this.activeEffects()
@@ -510,6 +512,7 @@ var BrickPractice = class {
 			return;
 		}
 		if (this.phase !== "ready") return;
+		this.awaitingRestart = false;
 		this.phase = "playing";
 		this.ball.vx = 105 * BALL_SPEED_MULTIPLIER * boost * (this.random() < .5 ? -1 : 1);
 		this.ball.vy = -this.speed() * BALL_SPEED_MULTIPLIER * boost;
@@ -530,6 +533,7 @@ var BrickPractice = class {
 		return Math.min(330, 225 + (this.round - 1) * 15);
 	}
 	buildRound() {
+		this.awaitingRestart = false;
 		this.bricks = Array.from({ length: BRICK_COUNT }, (_, id) => {
 			const row = Math.floor(id / BRICK.columns), col = id % BRICK.columns, hp = this.labMode ? 4 : roundBrickHp(this.round, id);
 			return {
@@ -598,7 +602,7 @@ var BrickPractice = class {
 		} else if (missedBall) {
 			this.phase = "ready";
 			this.resetBall();
-			this.launch();
+			this.awaitingRestart = true;
 		}
 		return true;
 	}
@@ -1003,7 +1007,7 @@ var BrickPractice = class {
 };
 //#endregion
 //#region src/features/arcade/brick-breaker-replay.ts
-var BRICK_ENGINE_VERSION = 2;
+var BRICK_ENGINE_VERSION = 6;
 var BRICK_TICK = 1 / 120;
 var MAX_BRICK_INPUTS = 12e4;
 var MAX_BRICK_REPLAY_BYTES = 8e6;

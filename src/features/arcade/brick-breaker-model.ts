@@ -107,12 +107,13 @@ export type BrickScore = {
   remaining: number
   testMode?: boolean
   held?: boolean
+  awaitingRestart?: boolean
   reward?: number
   roundReward?: number
   effects?: BrickEffect[]
 }
 export function brickDrop(roll: number): Drop['kind'] | null {
-  return roll < 0.15 ? 'shark' : roll < 0.3 ? 'item' : null
+  return roll < 0.2 ? 'shark' : roll < 0.4 ? 'item' : null
 }
 
 /** Deterministic simulation shared by practice, real play and server verification. */
@@ -124,6 +125,7 @@ export class BrickPractice {
     return hit
   }
   phase: BrickPhase = 'ready'
+  awaitingRestart = false
   round = 1
   lives = 3
   paddleX = 180
@@ -210,6 +212,7 @@ export class BrickPractice {
       remaining: this.bricks.length,
       testMode: this.testMode,
       held: this.balls.some((b) => b.held),
+      awaitingRestart: this.awaitingRestart,
       reward: this.reward,
       roundReward: brickRound(this.round).reward,
       effects: this.activeEffects(),
@@ -382,6 +385,7 @@ export class BrickPractice {
       return
     }
     if (this.phase !== 'ready') return
+    this.awaitingRestart = false
     this.phase = 'playing'
     this.ball.vx = 105 * BALL_SPEED_MULTIPLIER * boost * (this.random() < 0.5 ? -1 : 1)
     this.ball.vy = -this.speed() * BALL_SPEED_MULTIPLIER * boost
@@ -402,6 +406,7 @@ export class BrickPractice {
     return Math.min(330, 225 + (this.round - 1) * 15)
   }
   private buildRound() {
+    this.awaitingRestart = false
     this.bricks = Array.from({ length: BRICK_COUNT }, (_, id) => {
       const row = Math.floor(id / BRICK.columns),
         col = id % BRICK.columns,
@@ -468,7 +473,7 @@ export class BrickPractice {
       // Only a lost final ball needs replacing. Hazard hits keep the live board intact.
       this.phase = 'ready'
       this.resetBall()
-      this.launch()
+      this.awaitingRestart = true
     }
     return true
   }

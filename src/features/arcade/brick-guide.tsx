@@ -108,8 +108,8 @@ export function BrickGuide() {
                   <Heart className="mb-2 size-5 fill-[#d99180] text-[#d99180]" />
                   <h3 className="text-xs font-medium">맞아도 멈추지 않아요</h3>
                   <p className="mt-1 text-xs leading-5 text-[#78614a]">
-                    목숨이 남아 있으면 그대로 계속해요. 공을 놓치면 목숨 하나를 잃고 새 공이 바로
-                    출발해요.
+                    방해물에 맞아도 목숨이 남으면 계속해요. 공을 놓치면 남은 하트를 확인하고
+                    다시 시작 버튼으로 공을 발사해요.
                   </p>
                 </div>
                 <div className="rounded-xl bg-[#e1e9db] p-3">
@@ -135,7 +135,7 @@ export function BrickGuide() {
                   ))}
                 </div>
                 <p className="mt-3 text-[11px] leading-5 text-[#89725a]">
-                  실전은 무료예요. 연습·모션 테스트에서는 실제 골드가 지급되지 않아요.
+                  보상은 누적됩니다. 전부 클리어할 시 400골드!
                 </p>
               </section>
             </div>

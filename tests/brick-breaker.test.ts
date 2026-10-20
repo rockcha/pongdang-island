@@ -34,12 +34,12 @@ it('preserves live balls, buffs, drops and projectiles on a nonfatal hazard hit'
  expect(game.phase).toBe('over');expect(game.wideSeconds).toBe(0)
  expect(game.shots).toHaveLength(0);expect(game.waveShots).toHaveLength(0)
 })
-it('replaces a missed final ball immediately even during hazard invulnerability',()=>{
+it('holds a missed final ball until manual launch even during hazard invulnerability',()=>{
  const game=stillGame();game.invulnerable=1
  game.ball.y=game.height+10;game.ball.vy=200
  game.step(1/120)
- expect(game.phase).toBe('playing');expect(game.lives).toBe(2)
- expect(game.ball.y).toBeLessThan(game.paddleY);expect(game.ball.vy).toBeLessThan(0)
+ expect(game.phase).toBe('ready');expect(game.lives).toBe(2)
+ expect(game.ball.y).toBeLessThan(game.paddleY);expect(game.ball.vy).toBe(0);expect(game.score().awaitingRestart).toBe(true);game.launch();expect(game.phase).toBe('playing');expect(game.score().awaitingRestart).toBe(false)
 })
 function splitAtPaddle(game:BrickPractice){
  collect(game,'split')
@@ -117,11 +117,11 @@ it('reports active buff and debuff icons with rounded remaining times and remove
  expect(game.score().effects?.some(effect=>effect.kind==='sticky')).toBe(false)
  expect(game.score().effects?.some(effect=>effect.kind==='wide')).toBe(true)
 })
-it('gives exclusive 15 percent hazard and 15 percent item categories',()=>{
+it('gives exclusive 20 percent hazard and 20 percent item categories',()=>{
  const drops=Array.from({length:100},(_,i)=>brickDrop(i/100))
- expect(drops.filter(d=>d==='shark')).toHaveLength(15)
- expect(drops.filter(d=>d==='item')).toHaveLength(15)
- expect(drops.filter(d=>d===null)).toHaveLength(70)
+ expect(drops.filter(d=>d==='shark')).toHaveLength(20)
+ expect(drops.filter(d=>d==='item')).toHaveLength(20)
+ expect(drops.filter(d=>d===null)).toHaveLength(60)
 })
 it('retains cleared round gold after losing all lives in the next round',()=>{
  const game=new BrickPractice(()=>0.9);game.launch()
@@ -263,12 +263,12 @@ it('shields prevent shark damage, ink and speed effects but do not save a missed
   expect(game.inkSeconds).toBe(0);expect(game.fastSeconds).toBe(0)
  }
  const game=stillGame();collect(game,'shield');game.ball.y=game.height+10;game.step(0.01)
- expect(game.lives).toBe(2);expect(game.shield).toBe(true);expect(game.ball.vy).toBeLessThan(0)
+ expect(game.lives).toBe(2);expect(game.shield).toBe(true);expect(game.ball.vy).toBe(0)
 })
 
 it('splits into two independently colliding balls and loses a life only after the last ball falls',()=>{
  const game=stillGame();game.ball.vx=100;game.ball.vy=-200
- const speed=(225+35)*1.2;collect(game,'split');collect(game,'split')
+ const speed=(225+35)*1.482;collect(game,'split');collect(game,'split')
  expect(game.balls).toHaveLength(1);expect(game.splitArmed).toBe(true)
  game.hitBrick(weakenBrick(game,4).id,'torpedo')
  expect(game.balls).toHaveLength(1);expect(game.splitArmed).toBe(true)
@@ -281,7 +281,7 @@ it('splits into two independently colliding balls and loses a life only after th
  game.balls[0].y=game.height+10;game.balls[0].vy=200;game.step(0.01)
  expect(game.balls).toHaveLength(1);expect(game.lives).toBe(3)
  game.ball.y=game.height+10;game.ball.vy=200;game.step(0.01)
- expect(game.lives).toBe(2);expect(game.phase).toBe('playing');expect(game.balls).toHaveLength(1)
+ expect(game.lives).toBe(2);expect(game.phase).toBe('ready');expect(game.balls).toHaveLength(1)
 })
 
 it('both split balls damage bricks and resize with the board',()=>{
@@ -337,7 +337,7 @@ it('preserves pending splits on nonfatal hits and clears them on the final brick
 it('maintains effects after a nonfatal hit and clears them on round change',()=>{
  const game=stillGame();collect(game,'seaweed');collect(game,'wide');collect(game,'ink');collect(game,'shield')
  game.ball={x:game.paddleX,y:game.paddleY-23,vx:0,vy:400};game.step(0.05)
- expect(Math.hypot(game.ball.vx,game.ball.vy)).toBeCloseTo((225+35)*1.2*1.5)
+ expect(Math.hypot(game.ball.vx,game.ball.vy)).toBeCloseTo((225+35)*1.482*1.5)
  game.invulnerable=0;game.damage()
  expect(game.fastSeconds).toBeGreaterThan(0);expect(game.wideSeconds).toBeGreaterThan(0);expect(game.inkSeconds).toBeGreaterThan(0);expect(game.shield).toBe(true)
  game.launch();collect(game,'wide');collect(game,'shield')

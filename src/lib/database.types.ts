@@ -36,7 +36,7 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
-      brick_game_start:{Args:{p_operation_id:string};Returns:import('@/features/arcade/brick-breaker-api').BrickRun}
+      brick_game_start:{Args:{p_operation_id:string;p_engine_version?:number};Returns:import('@/features/arcade/brick-breaker-api').BrickRun}
       brick_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/brick-breaker-api').BrickRanks}
       harbor_state:{Args:Record<string,never>;Returns:import('@/features/port/api').HarborState}
       harbor_action:{Args:import('@/features/port/api').HarborAction;Returns:import('@/features/port/api').HarborState}

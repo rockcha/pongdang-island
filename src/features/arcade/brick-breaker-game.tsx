@@ -1,5 +1,5 @@
 import { GameOverlay } from './game-overlay'
-import { BrickRoundOverlay, BrickResultOverlay } from './brick-game-overlays'
+import { BrickRoundOverlay, BrickResultOverlay, BrickRestartOverlay } from './brick-game-overlays'
 import { GamePanel, GameStage, GameActions } from './game-layout'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Pause, Play } from 'lucide-react'
@@ -145,7 +145,7 @@ function AccountBrickGame() {
       let run = await startBrickRun(operation.current)
       if (!alive.current) return
       // Preserve already verified legacy gold before starting with the new rules.
-      if (run.engine_version === 1 && !run.finished_at) {
+      if ([1, 2, 3, 4, 5].includes(run.engine_version) && !run.finished_at) {
         await settleBrickRun(run.id, run.replay, true)
         operation.current = randomId()
         run = await startBrickRun(operation.current)
@@ -266,10 +266,20 @@ function AccountBrickGame() {
               )}
               <GameStage className="brick-stage">
                 <div ref={host} className="absolute inset-0" />
-                {started && lifeLoss > 0 && <BrickLifeLoss sequence={lifeLoss} />}
+                {started && lifeLoss > 0 && !score.awaitingRestart && (
+                  <BrickLifeLoss sequence={lifeLoss} />
+                )}
+                {started && score.awaitingRestart && !paused && !error && (
+                  <BrickRestartOverlay
+                    score={score}
+                    busy={busy}
+                    onStart={() => controller.current?.launch()}
+                  />
+                )}
                 {started &&
                   !lab &&
                   !ended &&
+                  !score.awaitingRestart &&
                   (score.phase === 'ready' || score.held) &&
                   !paused &&
                   !error && (

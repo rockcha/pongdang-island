@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises'
 import {beforeAll,beforeEach,afterAll,expect,it} from 'vitest'
 const db=new PGlite(),uid='00000000-0000-0000-0000-000000000001',other='00000000-0000-0000-0000-000000000002'
 async function as(role:string,sql:string,args:unknown[]=[],user=uid){await db.exec('set role '+role);try{await db.query("select set_config('request.jwt.claim.sub',$1,false)",[user]);return await db.query(sql,args)}finally{await db.exec('reset role')}}
-async function start(op=crypto.randomUUID(),user=uid){return (await as('authenticated','select public.brick_game_start($1) as run',[op],user)).rows[0].run as {id:string;reward:number;finished_at:string|null}}
+async function start(op=crypto.randomUUID(),user=uid){return (await as('authenticated','select public.brick_game_start($1,3) as run',[op],user)).rows[0].run as {id:string;reward:number;finished_at:string|null}}
 async function settle(id:string,score:number,reward:number,final=false,user=uid){return (await as('service_role','select public.brick_game_settle($1,$2,$3,$4,$5,$6) as run',[user,id,score,reward,{ticks:0,inputs:[]},final])).rows[0].run as {reward:number;finished_at:string|null}}
 beforeAll(async()=>{
  await db.exec(`create role anon;create role authenticated;create role service_role bypassrls;create schema auth;create schema app_private;
@@ -16,9 +16,20 @@ beforeAll(async()=>{
  create function app_private.get_gold_wallet() returns void language sql as $$select$$;`)
  await db.exec(await readFile('supabase/migrations/20261020072750_brick_breaker_verified_runs.sql','utf8'))
  await db.exec(await readFile('supabase/migrations/20261020094725_brick_breaker_round_rewards_v2.sql','utf8'))
+ await db.exec(await readFile('supabase/migrations/20261020111314_brick_breaker_ball_speed_v3.sql','utf8'))
+ await db.exec(await readFile('supabase/migrations/20261020111636_brick_breaker_drop_odds_v4.sql','utf8'))
+ await db.exec(await readFile('supabase/migrations/20261020111824_brick_breaker_compact_bricks_v5.sql','utf8'))
+ await db.exec(await readFile('supabase/migrations/20261020112041_brick_breaker_missed_ball_restart_v6.sql','utf8'))
 },30000)
 beforeEach(async()=>{await db.exec('truncate public.brick_game_runs,public.gold_transactions,public.player_wallets');await db.query('insert into public.player_wallets(user_id,gold) values($1,100),($2,100)',[uid,other])})
 afterAll(()=>db.close())
+it('keeps older clients on version 2 while new clients explicitly start version 3',async()=>{
+ const old=(await as('authenticated','select public.brick_game_start($1) as run',[crypto.randomUUID()])).rows[0].run as {id:string;engine_version:number}
+ expect(old.engine_version).toBe(2)
+ await settle(old.id,0,0,true)
+ const next=await start()
+ expect((await db.query('select engine_version from public.brick_game_runs where id=$1',[next.id])).rows[0].engine_version).toBe(3)
+})
 it('starts free, retries idempotently and resumes a single active run',async()=>{
  const op=crypto.randomUUID(),run=await start(op)
  expect((await start(op)).id).toBe(run.id);expect((await start()).id).toBe(run.id)
@@ -63,5 +74,5 @@ it('keeps legacy runs settleable without mixing their rules with version 2',asyn
  await settle(run.id,48,30,true)
  expect((await db.query('select gold from public.player_wallets where user_id=$1',[uid])).rows[0].gold).toBe(130)
  const next=await start()
- expect((await db.query('select engine_version from public.brick_game_runs where id=$1',[next.id])).rows[0].engine_version).toBe(2)
+ expect((await db.query('select engine_version from public.brick_game_runs where id=$1',[next.id])).rows[0].engine_version).toBe(3)
 })

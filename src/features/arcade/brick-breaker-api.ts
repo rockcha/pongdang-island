@@ -1,5 +1,5 @@
 import { createClient } from '@/lib/client'
-import type { BrickReplay } from './brick-breaker-replay'
+import { BRICK_ENGINE_VERSION, type BrickReplay } from './brick-breaker-replay'
 export type BrickRun = {
   id: string
   seed: number
@@ -19,6 +19,7 @@ export type BrickRanks = {
 export async function startBrickRun(operationId: string) {
   const { data, error } = await createClient().rpc('brick_game_start', {
     p_operation_id: operationId,
+    p_engine_version: BRICK_ENGINE_VERSION,
   })
   if (error) throw error
   return data

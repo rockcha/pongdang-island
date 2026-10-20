@@ -1,6 +1,6 @@
 import { BrickPractice } from './brick-breaker-model'
 
-export const BRICK_ENGINE_VERSION = 2
+export const BRICK_ENGINE_VERSION = 6
 export const BRICK_TICK = 1 / 120
 // A full 30-minute run can contain 60 target updates per second.
 export const MAX_BRICK_INPUTS = 120000

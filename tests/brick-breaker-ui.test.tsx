@@ -3,6 +3,7 @@ import {MemoryRouter} from 'react-router'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import BrickBreakerGame from '@/features/arcade/brick-breaker-game'
 import type {BrickScore} from '@/features/arcade/brick-breaker-model'
+import {BRICK_ENGINE_VERSION} from '@/features/arcade/brick-breaker-replay'
 
 const server=vi.hoisted(()=>({start:vi.fn(),settle:vi.fn(),ranks:vi.fn()}))
 const engine=vi.hoisted(()=>({start:vi.fn(),stop:vi.fn(),setDirection:vi.fn(),setTarget:vi.fn(),launch:vi.fn(),next:vi.fn(),bank:vi.fn(),previewSkill:vi.fn(),replay:vi.fn(()=>({ticks:0,inputs:[]})),pause:vi.fn(),destroy:vi.fn(),ready:()=>{},error:()=>{},score:(_value:BrickScore)=>{}}))
@@ -11,7 +12,7 @@ vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wa
 vi.mock('@/features/arcade/brick-breaker-api',()=>({startBrickRun:server.start,settleBrickRun:server.settle,brickLeaderboard:server.ranks,brickError:()=>'서버 연결 오류'}))
 vi.mock('@/features/arcade/brick-breaker-scene',()=>({createBrickGame:(_parent:HTMLElement,onScore:(score:BrickScore)=>void,_pause:()=>void,ready:()=>void,error:()=>void)=>{engine.ready=ready;engine.error=error;engine.score=onScore;return engine}}))
 beforeEach(()=>{
- vi.clearAllMocks();window.history.replaceState({},'');server.ranks.mockResolvedValue({rows:[],total:0});server.start.mockResolvedValue({id:'paid-run',seed:42,engine_version:2,replay:{ticks:0,inputs:[]},finished_at:null});server.settle.mockResolvedValue({id:'paid-run',reward:0,score:0})
+ vi.clearAllMocks();window.history.replaceState({},'');server.ranks.mockResolvedValue({rows:[],total:0});server.start.mockResolvedValue({id:'paid-run',seed:42,engine_version:BRICK_ENGINE_VERSION,replay:{ticks:0,inputs:[]},finished_at:null});server.settle.mockResolvedValue({id:'paid-run',reward:0,score:0})
  HTMLDialogElement.prototype.showModal=function(){this.setAttribute('open','')}
  HTMLDialogElement.prototype.close=function(){this.removeAttribute('open')}
 })
@@ -92,6 +93,20 @@ it('returns to the waiting menu from the back button and Escape',async()=>{
  fireEvent(screen.getByRole('dialog',{name:'퐁이의 벽돌깨기'}),new Event('cancel',{cancelable:true}));fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'나가기'}))
  await waitFor(()=>expect(screen.getByRole('button',{name:'연습'})).toBeTruthy())
  await waitFor(()=>expect(engine.stop).toHaveBeenCalledTimes(2))
+})
+
+it('waits for a manual restart after a dropped ball and shows remaining hearts',async()=>{
+ await ready();fireEvent.click(screen.getByRole('button',{name:'연습'}))
+ act(()=>engine.score({phase:'playing',round:1,lives:3,remaining:24}))
+ act(()=>engine.score({phase:'ready',round:1,lives:2,remaining:24,awaitingRestart:true}))
+ expect(within(screen.getByLabelText('공 다시 시작 안내')).getByRole('img',{name:'남은 목숨 2개'})).toBeTruthy()
+ expect(screen.getByLabelText('공 다시 시작 안내')).toBeTruthy()
+ expect(screen.queryByLabelText('생명 1개 감소')).toBeNull()
+ expect(engine.launch).not.toHaveBeenCalled()
+ fireEvent.click(screen.getByRole('button',{name:'다시 시작'}))
+ expect(engine.launch).toHaveBeenCalledOnce()
+ act(()=>engine.score({phase:'playing',round:1,lives:2,remaining:24,awaitingRestart:false}))
+ expect(screen.queryByLabelText('공 다시 시작 안내')).toBeNull()
 })
 
 it('shows life loss without pausing gameplay or blocking controls',async()=>{

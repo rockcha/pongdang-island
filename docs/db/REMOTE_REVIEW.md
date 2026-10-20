@@ -160,3 +160,9 @@ CLI로 프로젝트 `pongdang-island` (`ewafafphiovbpjwogwzn`, PostgreSQL 17.11)
 ## 2026-10-20 토착종 그룹 비율 조정
 
 19:12 KST, MCP 프로젝트 URL로 `ewafafphiovbpjwogwzn`을 식별하고 `pick_habitat_group` 본문을 읽기 전용으로 확인했다. 관련 함수는 로컬 변경의 출발점과 일치했다. `20261020101140_habitat_group_35_60_5.sql` 변경만 MCP migration으로 적용하고, 19:12:41 KST에 함수 본문과 anon/authenticated의 직접 실행 차단을 재조회했다. 낚싯대·미끼 보정과 후보 그룹 재분배는 유지했다. 전체 구조 비교·기존 migration 이력 정합성·다른 미배포 변경은 이번 검증 범위에 포함하지 않았다.
+
+## 2026-10-20 벽돌깨기 새 규칙 시작 차단 복구
+
+20:04~20:05 KST, 동일 프로젝트에서 원격 게임 엔진 기본값·허용 제약이 1이고 Edge 검증기도 구버전인 것을 확인했다. 프런트엔드는 엔진 2를 요구하여 시작을 차단하고 있었다. 기존 엔진 1도 검증하는 Edge Function을 먼저 배포한 뒤 `20261020094725_brick_breaker_round_rewards_v2.sql`만 적용했다. 기존 게임·지갑 기록을 삭제하거나 초기화하지 않았다.
+
+적용 후 엔진 기본값 2·버전 1/2 허용 제약, authenticated 시작 허용·정산 차단, service_role 정산 허용을 재조회했다. Edge 버전 2가 ACTIVE이고 배포된 세 파일이 로컬과 일치하며 JWT 검증이 유지됨을 확인했다. preflight 200·익명 POST 401, 로컬 관련 테스트 15개 통과를 확인했다. 실제 플레이어의 게임 시작·보상 지급과 전체 DB 구조·migration 이력의 동등성은 검사하지 않았다.

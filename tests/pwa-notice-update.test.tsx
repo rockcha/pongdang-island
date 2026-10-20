@@ -5,10 +5,11 @@ import {OPEN_PWA_UPDATE_MENU,requestPwaUpdate,usePwaUpdate} from '@/features/pwa
 const mocks=vi.hoisted(()=>({
  social:{owner:'user-a',unread:{notice:0},loading:false,error:null as string|null},
  ready:true,blocked:false,update:vi.fn().mockResolvedValue(undefined),info:vi.fn(),success:vi.fn(),dismiss:vi.fn(),error:vi.fn(),
+ registered:null as null|((url:string,registration:ServiceWorkerRegistration)=>void),
 }))
 vi.mock('@/features/social/social-provider',()=>({useSocial:()=>mocks.social}))
 vi.mock('@/features/pwa/update-blockers',()=>({usePwaUpdateBlocked:()=>mocks.blocked}))
-vi.mock('virtual:pwa-register/react',()=>({useRegisterSW:()=>({offlineReady:[false],needRefresh:[mocks.ready],updateServiceWorker:mocks.update})}))
+vi.mock('virtual:pwa-register/react',()=>({useRegisterSW:(options:{onRegisteredSW:(url:string,registration:ServiceWorkerRegistration)=>void})=>{mocks.registered=options.onRegisteredSW;return {offlineReady:[false],needRefresh:[mocks.ready],updateServiceWorker:mocks.update}}}))
 vi.mock('sonner',()=>({toast:{info:mocks.info,success:mocks.success,dismiss:mocks.dismiss,error:mocks.error}}))
 beforeEach(()=>{vi.clearAllMocks();sessionStorage.clear();vi.stubGlobal('navigator',{serviceWorker:new EventTarget()});vi.useFakeTimers();mocks.update.mockReset().mockResolvedValue(undefined);mocks.social={owner:'user-a',unread:{notice:0},loading:false,error:null};mocks.ready=true;mocks.blocked=false})
 afterEach(()=>{cleanup();vi.useRealTimers();vi.unstubAllGlobals()})
@@ -112,4 +113,22 @@ it('ignores late update failures after unmount',async()=>{
  await act(async()=>reject(new Error('late failure')))
  await act(()=>vi.advanceTimersByTimeAsync(20000))
  expect(mocks.error).not.toHaveBeenCalled()
+})
+
+it('activates once only after refreshing an old waiting version and installing the newest worker',async()=>{
+ const latest=Object.assign(new EventTarget(),{state:'installing'})
+ const registration={waiting:{} as unknown,installing:null as unknown,update:vi.fn().mockResolvedValue(undefined)}
+ render(<PwaStatus/>)
+ await act(async()=>{mocks.registered?.('/sw.js',registration as ServiceWorkerRegistration)})
+ registration.update.mockImplementationOnce(async()=>{registration.installing=latest})
+ act(()=>requestPwaUpdate())
+ await act(()=>vi.advanceTimersByTimeAsync(1500))
+ expect(registration.update).toHaveBeenCalledOnce()
+ expect(mocks.update).not.toHaveBeenCalled()
+ await act(async()=>{
+  latest.state='installed';registration.installing=null;registration.waiting=latest
+  latest.dispatchEvent(new Event('statechange'))
+  await vi.advanceTimersByTimeAsync(0)
+ })
+ expect(mocks.update).toHaveBeenCalledExactlyOnceWith(true)
 })

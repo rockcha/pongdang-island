@@ -24,23 +24,22 @@ it('sells exactly the three requested baits and keeps first greeting reward-only
  expect((await db.query('select gold,inventory from public.player_wallets where user_id=$1',[uid])).rows[0]).toMatchObject({gold:9960,inventory:{bait_grubby_magnet:101}})
  await expect(db.query("select public.buy_fishing_bait('bait_first_greeting',$1)",[crypto.randomUUID()])).rejects.toThrow(/BAIT_NOT_FOR_SALE/)
 })
-it('sells safe bait and temporarily pauses decoration bait sales',async()=>{
- for(const [id,price] of [['bait_safe',90]] as const){
+it('sells safe bait and reopens decoration bait sales',async()=>{
+ for(const [id,price] of [['bait_safe',80],['bait_magnet',50]] as const){
   const op=crypto.randomUUID()
   await db.query('select public.buy_fishing_bait($1,$2)',[id,op])
   await db.query('select public.buy_fishing_bait($1,$2)',[id,op])
   expect((await db.query('select delta from public.gold_transactions where operation_id=$1',[op])).rows).toEqual([{delta:-price}])
  }
  const rows=(await db.query('select price from public.fishing_baits order by sort_order')).rows
- expect(rows.slice(0,9).map(row=>row.price)).toEqual([30,90,40,60,130,null,null,null,null])
- await expect(db.query("select public.buy_fishing_bait('bait_magnet',$1)",[crypto.randomUUID()])).rejects.toThrow(/BAIT_NOT_FOR_SALE/)
+ expect(rows.slice(0,9).map(row=>row.price)).toEqual([30,80,40,60,130,50,null,null,null])
 })
-it('rejects paused lodestone purchases without changing gold, existing inventory or receipts',async()=>{
+it('retries lodestone purchases without duplicate debit or inventory',async()=>{
  await db.query("update public.player_wallets set inventory=jsonb_set(inventory,'{bait_magnet}','3') where user_id=$1",[uid])
- const before=(await db.query('select gold,inventory from public.player_wallets where user_id=$1',[uid])).rows
- await expect(db.query("select public.buy_fishing_bait('bait_magnet',$1)",[crypto.randomUUID()])).rejects.toThrow(/BAIT_NOT_FOR_SALE/)
- expect((await db.query('select gold,inventory from public.player_wallets where user_id=$1',[uid])).rows).toEqual(before)
- expect((await db.query('select * from public.gold_transactions where user_id=$1',[uid])).rows).toHaveLength(0)
+ const op=crypto.randomUUID()
+ for(let i=0;i<2;i++)await db.query("select public.buy_fishing_bait('bait_magnet',$1)",[op])
+ expect((await db.query('select gold,inventory from public.player_wallets where user_id=$1',[uid])).rows[0]).toMatchObject({gold:9950,inventory:{bait_magnet:4}})
+ expect((await db.query('select * from public.gold_transactions where user_id=$1',[uid])).rows).toHaveLength(1)
 })
 it('boosts star candy rarity and eligibility without changing waiting time or gauge difficulty',async()=>{
  const baits=(await db.query('select id,common_bp,rare_bp,epic_bp,mythic_bp,app_private.fishing_success_chance_bp(id) chance from public.fishing_baits where id=any($1)',[newBaits])).rows

@@ -82,7 +82,7 @@ it('supports self reactions, mutually exclusive votes, cancellation and retries'
   await action(author, 'react', { post_id: post, value: 0 })
   expect((await db.query('select count(*)::int n from public.board_reactions')).rows[0].n).toBe(0)
 })
-it('keeps replies one level deep and sends each recipient one notification per comment', async () => {
+it('rejects new replies, preserves legacy replies and sends one notification per comment', async () => {
   await action(other, 'comment', { post_id: post, id: comment, body: '댓글' })
   await action(other, 'comment', { post_id: post, id: comment, body: '댓글' })
   expect(
@@ -92,7 +92,12 @@ it('keeps replies one level deep and sends each recipient one notification per c
       ])
     ).rows[0].n,
   ).toBe(1)
-  await action(author, 'comment', { post_id: post, id: reply, parent_id: comment, body: '답글' })
+  await expect(action(author, 'comment', { post_id: post, id: reply, parent_id: comment, body: '답글' })).rejects.toThrow(/BOARD_REPLIES_DISABLED/)
+  expect((await db.query('select count(*)::int n from public.notifications where board_post_id=$1',[post])).rows[0].n).toBe(1)
+  // Seed an old reply as the database owner, representing content before the restriction.
+  await db.exec('alter table public.board_comments disable trigger board_comments_no_new_replies')
+  try{await db.query('insert into public.board_comments(id,post_id,author_id,parent_id,body) values($1,$2,$3,$4,$5)',[reply,post,author,comment,'기존 답글'])}
+  finally{await db.exec('alter table public.board_comments enable trigger board_comments_no_new_replies')}
   await action(author,'edit_comment',{post_id:post,id:reply,body:'수정한 답글'})
   expect((await db.query('select body from public.board_comments where id=$1',[reply])).rows[0].body).toBe('수정한 답글')
   await expect(

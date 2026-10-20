@@ -17,7 +17,7 @@ export function BaitShop(){
  const lock=useRef(false)
  const maxQuantity=detail?.price?Math.min(99,Math.floor(wallet.gold/detail.price)):0
  const [items,setItems]=useState<FishingBait[]|null>(null),[error,setError]=useState(''),[attempt,setAttempt]=useState(0)
- useEffect(()=>{let active=true;setError('');loadFishing().then(data=>{if(active)setItems(data.baits)}).catch(()=>{if(active)setError('미끼를 불러오지 못했어요.')});return()=>{active=false}},[attempt])
+ useEffect(()=>{let active=true;setError('');loadFishing().then(data=>{if(active)setItems([...data.baits].sort((a,b)=>(a.price??Number.MAX_SAFE_INTEGER)-(b.price??Number.MAX_SAFE_INTEGER)))}).catch(()=>{if(active)setError('미끼를 불러오지 못했어요.')});return()=>{active=false}},[attempt])
  async function buy(item:FishingBait){
   if(lock.current||busy||loading||goldError||item.price===null||!Number.isInteger(count)||count<1||count>99||wallet.gold<item.price*count)return
   lock.current=true;setPurchasing(true);setPurchaseError('')

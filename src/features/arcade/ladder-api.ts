@@ -1,8 +1,15 @@
+import type { RankingFriend } from './ranking-friend-action'
 import { createClient } from '@/lib/client'
 import type { LadderBet } from './ladder-model'
 export type LadderRanks = {
   total: number
-  rows: { id: string; rank: number; gold: number; nickname: string; mine: boolean }[]
+  rows: (RankingFriend & {
+    id: string
+    rank: number
+    gold: number
+    nickname: string
+    mine: boolean
+  })[]
 }
 export async function loadLadderRanks(offset = 0) {
   const { data, error } = await createClient().rpc('ladder_leaderboard', { p_offset: offset })

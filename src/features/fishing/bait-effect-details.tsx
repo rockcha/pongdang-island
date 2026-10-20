@@ -9,7 +9,7 @@ export function BaitEffectDetails({bait}:{bait:FishingBait}){
  const grades=(Object.keys(rarities) as Rarity[]).filter(key=>bait[`${key}_bp`]>0)
  const discovery=bait.id==='bait_first_greeting',trash=bait.id==='bait_grubby_magnet',decoration=bait.effect_kind==='decoration'
  const next=bait.nextRarity
- const special=decoration?{icon:Shell,title:'장식물만 인양',text:'성공하면 장식물만 만나요.'}
+ const special=decoration?{icon:Shell,title:'장식물만 인양',text:'등급을 먼저 추첨한 뒤 해당 등급의 장식물을 인양해요.'}
   :trash?{icon:Trash2,title:'쓰레기만 포획',text:'성공하면 쓰레기만 건져요. 물고기는 나오지 않아요.'}
   :discovery?{icon:BookOpen,title:'새로운 발견',text:'성공하면 아직 발견하지 못한 개체를 만나요.'}
   :bait.id==='bait_sea_memory'?{icon:MapPin,title:'이 해역 토착종 우대',text:'등급이 정해진 뒤, 토착종 선택 가중치가 높아져요.'}:null
@@ -25,7 +25,7 @@ export function BaitEffectDetails({bait}:{bait:FishingBait}){
    <p className="mt-2.5 text-[11px] leading-5 text-muted-foreground">일반과 희귀가 번갈아 나와요. 실패해도 다음 차례로 넘어가요.</p>
   </div>:special?<div><h3 className="flex items-center gap-1.5 text-xs text-primary"><special.icon aria-hidden="true" className="size-3.5"/>{special.title}</h3><p className="mt-1.5 text-[11px] leading-5 text-muted-foreground">{special.text}</p></div>:null}
 
-  {!bait.alternating&&!decoration&&!trash&&!discovery&&grades.length>0&&<div>
+  {!bait.alternating&&!trash&&!discovery&&grades.length>0&&<div>
    <h3 className="text-xs text-muted-foreground">성공 시 등급 확률</h3>
    <div className="mt-3 grid divide-x divide-border/60" style={{gridTemplateColumns:`repeat(${grades.length},minmax(0,1fr))`}}>{grades.map(key=><div key={key} className="min-w-0 px-1 text-center"><span className="flex items-center justify-center gap-1 text-[11px] text-muted-foreground"><span aria-hidden="true" className="size-1.5 rounded-full" style={{backgroundColor:rarities[key].effectColor}}/>{rarities[key].label}</span><strong className="mt-1 block text-base font-medium tabular-nums text-foreground">{baitPercent(bait[`${key}_bp`])}</strong></div>)}</div>
    {bait.fish_only&&<p className="mt-2.5 flex items-center gap-1 text-[10px] text-muted-foreground"><Fish aria-hidden="true" className="size-3"/>물고기 전용 · 쓰레기·장식물 제외</p>}
@@ -40,7 +40,7 @@ export function BaitEffectDetails({bait}:{bait:FishingBait}){
     {bait.alternating&&<><p>재접속하거나 미끼를 바꿔도 다음 순서는 유지돼요.</p><p>통발은 회수 시 각 추첨마다 순서가 진행돼요. 실패한 추첨도 포함해요.</p>{!next&&<p>다음 차례를 불러오는 중이에요.</p>}</>}
     {discovery&&<p>모두 발견했다면 직접 낚시에서는 미끼를 소모하지 않아요. 등급은 남은 미발견 개체에 따라 달라져요.</p>}
     {trash&&<p>추첨한 등급의 쓰레기가 없으면 다른 등급의 쓰레기가 선택될 수 있어요.</p>}
-    {!bait.alternating&&!decoration&&!trash&&!discovery&&<p>등급별 확률은 포획에 성공한 경우를 기준으로 표시해요.</p>}
+    {!bait.alternating&&!trash&&!discovery&&<p>등급별 확률은 포획에 성공한 경우를 기준으로 표시해요.</p>}
    </div></details>
   </div>
  </section>

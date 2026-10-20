@@ -1,3 +1,4 @@
+import { RankingFriendAction } from './ranking-friend-action'
 import { useEffect, useState, useRef } from 'react'
 import { GoldIcon } from '@/features/gold/gold-provider'
 import { Button } from '@/components/ui/button'
@@ -52,6 +53,7 @@ export function LadderRanking() {
             rank={row.rank}
             nickname={row.nickname}
             mine={row.mine}
+            action={<RankingFriendAction player={row} />}
             record={
               <span className="flex items-center gap-1">
                 <GoldIcon className="size-4" />

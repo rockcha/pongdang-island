@@ -1,7 +1,7 @@
 import { useEffect,useRef,useState } from 'react'
 import { toast } from 'sonner'
 import { useRegisterSW } from 'virtual:pwa-register/react'
-import {watchPwaUpdates} from '@/features/pwa/update-check'
+import {prepareLatestPwaUpdate,watchPwaUpdates} from '@/features/pwa/update-check'
 import {usePwaUpdateBlocked} from '@/features/pwa/update-blockers'
 import {openPwaUpdateMenu,requestPwaUpdate,setPwaUpdateAvailable,setPwaUpdateApplying,usePwaUpdate} from '@/features/pwa/update-state'
 import {beginPwaUpdateFeedback,clearPwaUpdateFeedback,completePwaUpdateFeedback,consumePwaUpdateCompletion} from '@/features/pwa/update-feedback'
@@ -17,8 +17,16 @@ export function PwaStatus() {
   const blocked=usePwaUpdateBlocked()
   const {request}=usePwaUpdate()
   const failedRequest=useRef<number|null>(null)
+  const reloading=useRef(false)
   const [registration,setRegistration]=useState<ServiceWorkerRegistration>()
   const { offlineReady: [offlineReady], needRefresh: [needRefresh], updateServiceWorker } = useRegisterSW({
+    onNeedReload(){
+      // Multiple waiting events can attach multiple Workbox controlling listeners.
+      if(reloading.current)return
+      reloading.current=true
+      completePwaUpdateFeedback()
+      window.location.reload()
+    },
     onRegisteredSW(_url,value){setRegistration(value)},
     onRegisterError(error) { console.error('서비스 워커 등록 실패:', error) },
   })
@@ -45,10 +53,12 @@ export function PwaStatus() {
     }
     toast.info('퐁당섬을 업데이트하고 있어요.',{id:'pwa-update',duration:Infinity,description:'잠시 후 새 버전으로 다시 열려요.'})
     let active=true,finished=false
+    const controller=new AbortController()
     let watchdog:number|undefined
     const fail=()=>{
       if(!active||finished)return
       finished=true
+      controller.abort()
       window.clearTimeout(watchdog)
       clearPwaUpdateFeedback()
       failedRequest.current=request
@@ -59,10 +69,13 @@ export function PwaStatus() {
       setPwaUpdateApplying(true);beginPwaUpdateFeedback()
       // Resolving this promise only means SKIP_WAITING was sent, not activation.
       watchdog=window.setTimeout(fail,20000)
-      void updateServiceWorker(true).catch(fail)
+      void (async()=>{
+        if(registration)await prepareLatestPwaUpdate(registration,controller.signal)
+        if(active&&!finished)await updateServiceWorker(true)
+      })().catch(fail)
     },1500)
-    return()=>{active=false;window.clearTimeout(timer);window.clearTimeout(watchdog)}
-  }, [needRefresh, updateServiceWorker,blocked,request])
+    return()=>{active=false;controller.abort();window.clearTimeout(timer);window.clearTimeout(watchdog)}
+  }, [needRefresh, updateServiceWorker,blocked,request,registration])
 
   return null
 }

@@ -1,3 +1,4 @@
+import type { RankingFriend } from './ranking-friend-action'
 import { questProgressChanged } from '@/features/quests/progress-events'
 import { createClient } from '@/lib/client'
 export const memoryFaces = [
@@ -49,7 +50,7 @@ export type MemoryAction = {
   p_run_id?: string
   p_card?: number
 }
-export type MemoryRank = {
+export type MemoryRank = RankingFriend & {
   rewardGold?: number
   rank: number
   id: string

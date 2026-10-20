@@ -286,11 +286,10 @@ function Detail({ id }: { id: string }) {
     [editor, setEditor] = useState(false),
     [confirm, setConfirm] = useState<BoardComment | 'post' | null>(null)
   const [body, setBody] = useState(''),
-    [reply, setReply] = useState<BoardComment | null>(null),
     [editing, setEditing] = useState<BoardComment | null>(null)
   const lock = useRef(false),
     input = useRef<HTMLTextAreaElement>(null),
-    pendingComment = useRef<{ id: string; body: string; parent: string | null } | null>(null)
+    pendingComment = useRef<{ id: string; body: string } | null>(null)
   useEffect(() => {
     let active = true
     setLoading(true)
@@ -342,19 +341,18 @@ function Detail({ id }: { id: string }) {
       else {
         const previous = pendingComment.current
         const draft =
-          previous && previous.body === body.trim() && previous.parent === (reply?.id ?? null)
+          previous && previous.body === body.trim()
             ? previous
-            : { id: randomId(), body: body.trim(), parent: reply?.id ?? null }
+            : { id: randomId(), body: body.trim() }
         pendingComment.current = draft
         await boardAction('comment', {
           post_id: id,
           id: draft.id,
           body: draft.body,
-          parent_id: draft.parent,
+          parent_id: null,
         })
       }
       setBody('')
-      setReply(null)
       setEditing(null)
       pendingComment.current = null
       await refresh()
@@ -491,21 +489,6 @@ function Detail({ id }: { id: string }) {
                         busy={busy}
                         onChange={(value) => void react(value, comment.id)}
                       />
-                      {!comment.parent_id && (
-                        <Button
-                          variant="ghost"
-                          className="min-h-11 px-2 text-[11px] text-muted-foreground"
-                          disabled={busy}
-                          onClick={() => {
-                            setReply(comment)
-                            setEditing(null)
-                            setBody('')
-                            input.current?.focus()
-                          }}
-                        >
-                          답글
-                        </Button>
-                      )}
                       {(comment.author_id === session?.user.id || operator) && (
                         <div className="ml-auto">
                           <Actions
@@ -514,7 +497,6 @@ function Detail({ id }: { id: string }) {
                               comment.author_id === session?.user.id
                                 ? () => {
                                     setEditing(comment)
-                                    setReply(null)
                                     setBody(comment.body)
                                     input.current?.focus()
                                   }
@@ -555,9 +537,9 @@ function Detail({ id }: { id: string }) {
           onSubmit={(event) => void send(event)}
           className="shrink-0 space-y-2 border-t bg-background p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
         >
-          {(reply || editing) && (
+          {editing && (
             <div className="flex items-center justify-between text-[11px] text-primary">
-              <span>{editing ? '댓글 수정' : `${reply?.author_name}님에게 답글`}</span>
+              <span>댓글 수정</span>
               <Button
                 type="button"
                 size="icon"
@@ -565,7 +547,6 @@ function Detail({ id }: { id: string }) {
                 aria-label="댓글 작성 모드 취소"
                 disabled={busy}
                 onClick={() => {
-                  setReply(null)
                   setEditing(null)
                   setBody('')
                 }}
@@ -582,13 +563,13 @@ function Detail({ id }: { id: string }) {
           <div className="flex items-end gap-2">
             <textarea
               ref={input}
-              aria-label={editing ? '댓글 수정' : reply ? '답글 내용' : '댓글 내용'}
+              aria-label={editing ? '댓글 수정' : '댓글 내용'}
               value={body}
               maxLength={1000}
               disabled={busy}
               onChange={(event) => setBody(event.target.value)}
               rows={2}
-              placeholder={reply ? '답글을 남겨주세요.' : '따뜻한 댓글을 남겨주세요.'}
+              placeholder="따뜻한 댓글을 남겨주세요."
               className="min-h-11 max-h-32 min-w-0 flex-1 resize-none rounded-lg border border-border bg-transparent px-3 py-2 text-sm leading-5 outline-none focus-visible:ring-2 focus-visible:ring-ring"
             />
             <Button

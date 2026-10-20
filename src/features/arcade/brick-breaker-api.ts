@@ -1,3 +1,4 @@
+import type { RankingFriend } from './ranking-friend-action'
 import { createClient } from '@/lib/client'
 import { BRICK_ENGINE_VERSION, type BrickReplay } from './brick-breaker-replay'
 export type BrickRun = {
@@ -14,7 +15,13 @@ export type BrickRun = {
 export type BrickRanks = {
   total: number
   offset: number
-  rows: { id: string; rank: number; gold: number; nickname: string; mine: boolean }[]
+  rows: (RankingFriend & {
+    id: string
+    rank: number
+    gold: number
+    nickname: string
+    mine: boolean
+  })[]
 }
 export async function startBrickRun(operationId: string) {
   const { data, error } = await createClient().rpc('brick_game_start', {

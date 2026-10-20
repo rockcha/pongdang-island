@@ -121,11 +121,11 @@ it('cancels an own like by setting its desired state and displays reaction error
   fireEvent.click(within(groups[0]).getByRole('button', { name: '싫어요' }))
   expect(await screen.findByRole('alert')).toBeTruthy()
 })
-it('submits a reply to the selected root and retains it for an idempotent retry', async () => {
+it('offers only post comments and retains the request for an idempotent retry', async () => {
   show(true)
   await screen.findByText('반가워요')
-  fireEvent.click(screen.getByRole('button', { name: '답글' }))
-  fireEvent.change(screen.getByRole('textbox', { name: '답글 내용' }), {
+  expect(screen.queryByRole('button', { name: '답글' })).toBeNull()
+  fireEvent.change(screen.getByRole('textbox', { name: '댓글 내용' }), {
     target: { value: '저도 반가워요' },
   })
   api.action.mockRejectedValueOnce(new Error('offline'))
@@ -135,7 +135,7 @@ it('submits a reply to the selected root and retains it for an idempotent retry'
   fireEvent.click(screen.getByRole('button', { name: '등록' }))
   await waitFor(() => expect(api.action).toHaveBeenCalledTimes(2))
   expect(api.action.mock.calls[1][1]).toEqual(first)
-  expect(first).toMatchObject({ parent_id: 'comment', body: '저도 반가워요', post_id: 'post' })
+  expect(first).toMatchObject({ parent_id: null, body: '저도 반가워요', post_id: 'post' })
   await waitFor(() => expect(api.refresh).toHaveBeenCalled())
 })
 it('asks for confirmation before deleting an own post', async () => {

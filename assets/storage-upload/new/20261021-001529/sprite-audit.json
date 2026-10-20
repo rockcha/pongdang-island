@@ -1,0 +1,120 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261021-001529/fish/epic/starpattern-manta-swim-v2_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  100,
+                                           "y":  161,
+                                           "width":  476,
+                                           "height":  416,
+                                           "widthRatio":  0.7592,
+                                           "heightRatio":  0.6635,
+                                           "alphaPixels":  74047,
+                                           "leftAnchorY":  376.746,
+                                           "rightAnchorY":  380.219
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  76,
+                                           "y":  279,
+                                           "width":  494,
+                                           "height":  300,
+                                           "widthRatio":  0.7879,
+                                           "heightRatio":  0.4785,
+                                           "alphaPixels":  72894,
+                                           "leftAnchorY":  439.483,
+                                           "rightAnchorY":  384.178
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  97,
+                                           "y":  116,
+                                           "width":  481,
+                                           "height":  456,
+                                           "widthRatio":  0.7671,
+                                           "heightRatio":  0.7273,
+                                           "alphaPixels":  58848,
+                                           "leftAnchorY":  462.11,
+                                           "rightAnchorY":  395.234
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  76,
+                                           "y":  116,
+                                           "width":  502,
+                                           "height":  463,
+                                           "widthRatio":  0.8006,
+                                           "heightRatio":  0.7384,
+                                           "alphaPixels":  70018,
+                                           "leftAnchorY":  415.233,
+                                           "rightAnchorY":  388.583
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261021-001529/fish/rare/cloud-forest-path-white-wolf-swim-v2_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  62,
+                                           "y":  236,
+                                           "width":  515,
+                                           "height":  244,
+                                           "widthRatio":  0.8214,
+                                           "heightRatio":  0.3892,
+                                           "alphaPixels":  65435,
+                                           "leftAnchorY":  392.607,
+                                           "rightAnchorY":  361.666
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  50,
+                                           "y":  238,
+                                           "width":  516,
+                                           "height":  276,
+                                           "widthRatio":  0.823,
+                                           "heightRatio":  0.4402,
+                                           "alphaPixels":  67810,
+                                           "leftAnchorY":  386.502,
+                                           "rightAnchorY":  363.242
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  59,
+                                           "y":  238,
+                                           "width":  515,
+                                           "height":  266,
+                                           "widthRatio":  0.8214,
+                                           "heightRatio":  0.4242,
+                                           "alphaPixels":  65736,
+                                           "leftAnchorY":  382.447,
+                                           "rightAnchorY":  357.647
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  57,
+                                           "y":  236,
+                                           "width":  508,
+                                           "height":  268,
+                                           "widthRatio":  0.8102,
+                                           "heightRatio":  0.4274,
+                                           "alphaPixels":  68225,
+                                           "leftAnchorY":  385.559,
+                                           "rightAnchorY":  364.409
+                                       }
+                                   ]
+                    }
+                ]
+}

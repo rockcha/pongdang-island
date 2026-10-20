@@ -1,0 +1,76 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261021-001529/fish/epic/starpattern-manta-swim-v2_sprite.png",
+        "storage_path":  "fish/epic/starpattern-manta-swim-v2_sprite.png",
+        "patch":  [
+                      450,
+                      370,
+                      65,
+                      60
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -7,
+                           "dy":  -2,
+                           "rmse":  12.36920203937623
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -66,
+                           "rmse":  31.980871413450203
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -26,
+                           "dy":  -66,
+                           "rmse":  31.595211446730918
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261021-001529/fish/rare/cloud-forest-path-white-wolf-swim-v2_sprite.png",
+        "storage_path":  "fish/rare/cloud-forest-path-white-wolf-swim-v2_sprite.png",
+        "patch":  [
+                      490,
+                      285,
+                      65,
+                      65
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  2,
+                           "rmse":  16.965466655047525
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -80,
+                           "rmse":  19.641193206835354
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  6,
+                           "dy":  -79,
+                           "rmse":  21.400261130897171
+                       }
+                   ]
+    }
+]

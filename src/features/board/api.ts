@@ -103,6 +103,7 @@ export async function removeBoardImages(paths: string[]) {
 export function boardError(cause: unknown) {
   const message = String((cause as { message?: string })?.message ?? '')
   if (message.includes('BOARD_RATE_LIMIT')) return '잠깐 쉬었다가 다시 작성해주세요.'
+  if (message.includes('BOARD_REPLIES_DISABLED')) return '댓글에는 답글을 달 수 없어요. 게시글에 댓글을 남겨주세요.'
   if (message.includes('NOT_ALLOWED')) return '작성자만 변경할 수 있어요.'
   if (message.includes('BOARD_NOT_FOUND') || message.includes('COMMENT_NOT_FOUND'))
     return '삭제되었거나 찾을 수 없는 내용이에요.'

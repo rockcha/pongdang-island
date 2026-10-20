@@ -7,7 +7,7 @@ export const baitEffects:Record<string,string>={
  bait_safe:'무조건 낚시에 성공해요. 단, 게이지 조작은 직접 해야 해요.',
  bait_special:'성공 확률 소폭 증가 · 낚시 성공 시 희귀 개체를 주로 만나요.',
  bait_epic:'성공 확률 소폭 증가 · 낚시 성공 시 특급 개체를 주로 만나요.',
- bait_magnet:'성공 확률 소폭 증가 · 낚시 성공 시 장식물 포획 100%',
+ bait_magnet:'등급을 먼저 추첨한 뒤 해당 등급의 장식물만 인양해요.',
 }
 
 export function fishingBaitEffect(id:string,fallback:string,success?:number,base?:number){

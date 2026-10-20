@@ -1,8 +1,9 @@
+import { RankingFriendAction } from './ranking-friend-action'
 import { GamePanel, GameStage, GameActions } from './game-layout'
 import { RankingRow, rankingListClass } from './ranking-row'
 import { randomId } from '@/lib/random-id'
 import { useEffect, useRef, useState } from 'react'
-import { RotateCcw, UserPlus, UserCheck, Clock3 } from 'lucide-react'
+import { RotateCcw } from 'lucide-react'
 import { toast } from 'sonner'
 import { useAuth } from '@/components/auth-provider'
 import { Button } from '@/components/ui/button'
@@ -19,48 +20,15 @@ import {
   type OddEvenRanks,
 } from './odd-even-api'
 import { createOddEvenPractice } from './odd-even-practice'
-import { sendFriendRequest } from '@/features/friends/api'
-import { useSocial } from '@/features/social/social-provider'
-import { socialErrorMessage } from '@/features/social/types'
 import { OddEvenActor, type OddEvenScene } from './odd-even-actor'
 import './odd-even-game.css'
 
 function Ranking() {
-  const social = useSocial(),
-    [requesting, setRequesting] = useState<string | null>(null),
-    requestLock = useRef(false)
   const [data, setData] = useState<OddEvenRanks | null>(null),
     [error, setError] = useState(''),
     [busy, setBusy] = useState(false)
   const alive = useRef(true),
     locked = useRef(false)
-  async function addFriend(code: string) {
-    if (requestLock.current) return
-    requestLock.current = true
-    setRequesting(code)
-    try {
-      await sendFriendRequest(code)
-      if (alive.current) {
-        setData((old) =>
-          old
-            ? {
-                ...old,
-                rows: old.rows.map((row) =>
-                  row.friendCode === code ? { ...row, friendStatus: 'pending' } : row,
-                ),
-              }
-            : old,
-        )
-        toast.success('친구 요청을 보냈어요.')
-        void social.refresh()
-      }
-    } catch (cause) {
-      if (alive.current) toast.error(socialErrorMessage(cause))
-    } finally {
-      requestLock.current = false
-      if (alive.current) setRequesting(null)
-    }
-  }
   async function load(offset = 0) {
     if (locked.current) return
     locked.current = true
@@ -109,52 +77,21 @@ function Ranking() {
       </div>
       <p className="text-xs text-muted-foreground">실제 받은 보상 기준 · 개인 최고 기록</p>
       <ol className={rankingListClass}>
-        {data?.rows.map((row) => {
-          const related = social.requests.find(
-            (request) =>
-              (request.sender_id === row.userId || request.recipient_id === row.userId) &&
-              (request.status === 'accepted' || request.status === 'pending'),
-          )
-          const status = related?.status ?? row.friendStatus,
-            label =
-              status === 'accepted'
-                ? '이미 친구예요'
-                : status === 'pending'
-                  ? '요청 중'
-                  : '친구 요청'
-          const Icon = status === 'accepted' ? UserCheck : status === 'pending' ? Clock3 : UserPlus
-          return (
-            <RankingRow
-              key={row.id}
-              rank={row.rank}
-              nickname={row.nickname}
-              mine={row.mine}
-              record={
-                <span className="flex items-center justify-end gap-1">
-                  <GoldIcon className="size-4" />
-                  <span>{row.gold.toLocaleString('ko-KR')}</span>
-                </span>
-              }
-              action={
-                !row.mine && row.friendCode ? (
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="size-11 shrink-0"
-                    title={label}
-                    aria-label={`${row.nickname} · ${label}`}
-                    disabled={!!status || !!requesting}
-                    onClick={() => void addFriend(row.friendCode!)}
-                  >
-                    <Icon className="size-4" />
-                  </Button>
-                ) : (
-                  <span className="size-11 shrink-0" />
-                )
-              }
-            />
-          )
-        })}
+        {data?.rows.map((row) => (
+          <RankingRow
+            key={row.id}
+            rank={row.rank}
+            nickname={row.nickname}
+            mine={row.mine}
+            record={
+              <span className="flex items-center justify-end gap-1">
+                <GoldIcon className="size-4" />
+                <span>{row.gold.toLocaleString('ko-KR')}</span>
+              </span>
+            }
+            action={<RankingFriendAction player={row} />}
+          />
+        ))}
       </ol>
       {data && !data.total && (
         <p className="py-6 text-center text-sm text-muted-foreground">아직 수령 기록이 없어요.</p>

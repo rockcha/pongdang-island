@@ -1,3 +1,4 @@
+import type { RankingFriend } from './ranking-friend-action'
 import { questProgressChanged } from '@/features/quests/progress-events'
 import { createClient } from '@/lib/client'
 
@@ -21,7 +22,7 @@ export type ShadowRun = {
 }
 export type ShadowState = { serverNow: string; run: ShadowRun | null }
 export type ShadowLeaderboard = {
-  rows: {
+  rows: (RankingFriend & {
     rank: number
     id: string
     nickname: string
@@ -29,7 +30,7 @@ export type ShadowLeaderboard = {
     finishedAt: string
     mine: boolean
     rewardGold?: number
-  }[]
+  })[]
   total: number
   offset: number
   pageSize: number

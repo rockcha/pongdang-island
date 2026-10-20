@@ -1,3 +1,4 @@
+import { RankingFriendAction } from './ranking-friend-action'
 import { GamePanel, GameStage } from './game-layout'
 import { WeeklyRewards } from './weekly-rewards'
 import { RankingRow, rankingListClass } from './ranking-row'
@@ -89,6 +90,7 @@ export function MemoryRanking() {
             rank={row.rank}
             nickname={row.nickname}
             mine={row.mine}
+            action={<RankingFriendAction player={row} />}
             record={
               <>
                 <span className="block">{memoryTime(row.elapsedMs)}</span>

@@ -1,3 +1,4 @@
+import { RankingFriendAction } from './ranking-friend-action'
 import { useEffect, useRef, useState } from 'react'
 import { RotateCcw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -69,6 +70,7 @@ export function BrickRanking() {
             rank={row.rank}
             nickname={row.nickname}
             mine={row.mine}
+            action={<RankingFriendAction player={row} />}
             record={
               <span className="flex items-center justify-end gap-1">
                 <GoldIcon className="size-4" />

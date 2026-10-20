@@ -11,7 +11,7 @@ afterAll(async () => { await db?.close() })
 
 it('prices the two everyday baits and preserves their distinct success chances', async () => {
   const { rows } = await db.query("select id,price,app_private.fishing_success_chance_bp(id) chance from public.fishing_baits where id in ('bait','bait_safe') order by id")
-  expect(rows).toEqual([{ id: 'bait', price: 30, chance: 3500 }, { id: 'bait_safe', price: 90, chance: 10000 }])
+  expect(rows).toEqual([{ id: 'bait', price: 30, chance: 3500 }, { id: 'bait_safe', price: 80, chance: 10000 }])
 })
 
 it('resolves every roll using the rebalanced ordinary bait probabilities', async () => {

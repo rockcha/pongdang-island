@@ -1,0 +1,50 @@
+{
+  "tool": "image_gen.imagegen",
+  "transparentBackground": true,
+  "assets": [
+    {
+      "id": "starpattern-manta",
+      "path": "fish/epic/starpattern-manta-swim-v2_sprite.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a158a9-a0a4-7f53-a180-0ca7b707977d\\exec-59dd6f76-0369-43a8-9091-608fb0670498.png",
+      "reference": [
+        "tmp/sprite-repair/manta-current.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "prompt": "Edit the FIRST reference sprite sheet. Keep the exact existing starpattern manta character: luminous cobalt blue and lavender, warm golden star patterns, cute white belly and purple eyes, long flowing tail. SECOND reference is rendering style only. Repair the animation, not a redesign. Produce a production-ready square 2x2 sprite sheet, FOUR equal square cells, row-major animation frames. Genuine transparent alpha background, no checkerboard pixels or grid lines. Face SCREEN RIGHT in a clear side-three-quarter profile in ALL FOUR frames. Keep the rigid torso, eye and head identically positioned and identically scaled within each cell. Body/head reference point must stay near x=70%, y=50% in each cell. Both pectoral fins must be clearly visible and BOTH must change pose continuously, like broad manta wings undulating together; DO NOT leave the farther fin frozen above the head. Frame 0 both near and far fin tips lifted, frame 1 both sweeping through horizontal extended positions, frame 2 BOTH fin tips lowered with clear curved downstroke, frame 3 both returning through horizontal positions. The farther fin has smaller perspective amplitude but an unmistakably different tip position in every phase; it is not a static dorsal fin. Keep facial identity, count and layout of stars consistent. Tail follows a gentle fluid S-wave in all four phases. No global body bounce, no face rotation, no zoom, no eyes-only frames. Entire manta and tail within 85% of each cell with generous clear margins. No text, water, scenery or decorative background.",
+      "refinementPrompt": "Refine the attached 2x2 FOUR-frame sprite sheet, retaining the exact character, colors and swimming poses. Critical production repair: EACH cell must have 10% genuinely transparent empty margin on ALL FOUR SIDES. Every part of tail, fins, toes and glow must fit comfortably inside its own cell. Longest silhouette dimension no more than 80% of cell. Use exactly the SAME fixed character scale in all four cells. Place the right-facing main eye at exactly x=75%, y=46% in EVERY cell; rigid head must be identical size, direction and registered position across frames. Do not center each pose by its bounding box. No floor, no grid, no checkerboard, no text, genuine transparent alpha. Keep the manta two pectoral wings VERY visibly undulating together: both lifted in top-left, both extended horizontally in top-right, BOTH lowered in bottom-left, both returning toward horizontal in bottom-right. The far fin behind the head MUST noticeably flex and change tip direction too, never remain a rigid upright horn. Keep the blue-violet star-pattern identity and face unchanged.",
+      "packing": {
+        "uniformCellScale": 0.84,
+        "centered": true
+      },
+      "facing": "right",
+      "sha256": "ca287f160e9989f67605b9d45756856e6c01e071799bcb3bb9c544f7b485d0a6",
+      "review": {
+        "facing": "right in all four frames",
+        "rigidHeadTranslation": "0 pixels in all four final frames",
+        "motion": "near and far pectoral fins flex; tail follows water"
+      }
+    },
+    {
+      "id": "cloud-forest-path-white-wolf",
+      "path": "fish/rare/cloud-forest-path-white-wolf-swim-v2_sprite.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a158a9-a0a4-7f53-a180-0ca7b707977d\\exec-04edeca0-e07a-4081-8ef1-1df3afbec759.png",
+      "reference": [
+        "tmp/sprite-repair/wolf-current.png",
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "prompt": "Edit the FIRST reference sprite sheet. Preserve this exact white forest wolf's identity, white ivory fluffy fur, brown-edged painted outlines, amber eyes, pointed ears and long fluffy tail. SECOND reference is cozy game rendering style only; do not add otter features, fishing gear or starfish. Replace the ground-walking animation with genuine underwater dog-paddle SWIMMING. Production-ready square 2x2 sprite sheet, FOUR equal square cells, row-major looping swim frames. Genuine transparent alpha background; no grid, checkerboard pixels, text, waterline, bubbles, scenery or floor. Face SCREEN RIGHT in clear side profile in ALL FOUR animation frames; snout to right, tail to left. Body long and nearly horizontal, held afloat, belly level, head relaxed facing forward, tail trailing nearly horizontally rather than hanging down. Paws must NEVER line up on a ground plane. All four legs flex and extend in distinct complementary paddle phases: frame 0 near foreleg reaching forward with folded wrist and far foreleg pulling backwards, hind legs tucked and pushing; frame 1 forelegs bending under the chest as hind legs exchange positions; frame 2 opposite foreleg forward while near foreleg sweeps back, opposite hind leg pushes back; frame 3 transition back to frame 0. Readable alternating strokes of BOTH front and BOTH hind legs, not walking or running or standing. Fur, ear tips and tail gently stream backward in the water. Preserve head, eye and rigid ribcage identical location/scale in all four cells, no vertical bounce or camera movement. Whole character occupies 80-85% cell width, all paws and tail fit within each cell. Clearly different limb silhouettes in each frame with a seamless loop.",
+      "refinementPrompt": "Refine the attached 2x2 FOUR-frame sprite sheet, retaining the exact character, colors and swimming poses. Critical production repair: EACH cell must have 10% genuinely transparent empty margin on ALL FOUR SIDES. Every part of tail, fins, toes and glow must fit comfortably inside its own cell. Longest silhouette dimension no more than 80% of cell. Use exactly the SAME fixed character scale in all four cells. Place the right-facing main eye at exactly x=75%, y=46% in EVERY cell; rigid head must be identical size, direction and registered position across frames. Do not center each pose by its bounding box. No floor, no grid, no checkerboard, no text, genuine transparent alpha. Maintain horizontal underwater swimming with four alternating paddling legs, never walking on a ground plane. Face and fluffy ivory body unchanged. All four leg silhouettes remain distinct across frames. Tail trails horizontally and gently undulates.",
+      "packing": {
+        "uniformCellScale": 0.84,
+        "centered": true
+      },
+      "facing": "right",
+      "sha256": "4fd909143476601c6ff88b3e9a6036954bed979df3a56b8651d4593c4ca276ff",
+      "review": {
+        "facing": "right in all four frames",
+        "rigidHeadTranslation": "0 pixels in all four final frames",
+        "motion": "horizontal body, alternating front and hind leg paddles"
+      }
+    }
+  ]
+}

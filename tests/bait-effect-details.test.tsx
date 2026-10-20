@@ -5,6 +5,13 @@ import {BaitEffectDetails} from '@/features/fishing/bait-effect-details'
 import type {FishingBait} from '@/features/fishing/api'
 const catalog=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8'))
 afterEach(cleanup)
+it('shows grade-first decoration odds',()=>{
+ const bait=catalog.fishing_baits.find(b=>b.id==='bait_magnet')
+ render(<BaitEffectDetails bait={{...bait,successChanceBp:7000}}/>)
+ expect(screen.getByText('70%')).toBeTruthy()
+ for(const odds of ['83.2%','15%','1.5%','0.3%'])expect(screen.getByText(odds)).toBeTruthy()
+ expect(screen.getByText('등급을 먼저 추첨한 뒤 해당 등급의 장식물을 인양해요.')).toBeTruthy()
+})
 it('shows separate success and conditional grade odds for every new bait with a real image',()=>{
  for(const bait of catalog.fishing_baits.filter(b=>b.fish_only&&!b.alternating)){
   render(<BaitEffectDetails bait={bait as FishingBait}/>)
@@ -24,7 +31,7 @@ it('shows the server-provided next jelly phase and failure progression',()=>{
  expect(screen.getByText('다음 차례').closest('[aria-label]')?.getAttribute('aria-label')).toContain('희귀')
 })
 it('keeps fallback-dependent trash and undiscovered pools out of fixed grade percentages',()=>{
- for(const id of ['bait_grubby_magnet','bait_first_greeting','bait_magnet']){
+ for(const id of ['bait_grubby_magnet','bait_first_greeting']){
   render(<BaitEffectDetails bait={catalog.fishing_baits.find(b=>b.id===id)}/>)
   expect(screen.queryByText('성공 시 등급 확률')).toBeNull()
   expect(screen.getByText('자세히 알아보기').closest('details')?.open).toBe(false)

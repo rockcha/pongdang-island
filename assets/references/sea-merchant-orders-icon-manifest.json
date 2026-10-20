@@ -1,0 +1,10 @@
+{
+  "tool": "image_gen.imagegen (built-in)",
+  "source": "C:/Users/user/.codex/generated_images/01a158a9-a0a4-7f53-a180-0ca7b707977d/exec-49c882fa-ca1d-47f2-a5f1-80ad5d56d024.png",
+  "output": "public/app-icons/sea-merchant-orders.png",
+  "prompt": "Use case: stylized-concept. Create ONE polished illustrated game menu icon for 'Sea Merchant Orders', a cozy Korean seaside fishing game. Subject: a small warm wooden delivery crate containing one cute silvery teal fish, with a cream parchment order slip attached to its front by a tiny coral-orange starfish wax seal. A small tied rope handle suggests a merchant parcel. Clear instantly readable single compact silhouette at 28 pixels. Hand-painted storybook game inventory illustration with clean dark warm-brown outlines, softly shaded caramel wood, ivory paper, gentle aqua fish, muted coral accents. Rounded cute proportions, subtle watercolor texture, three-quarter front view, centered with comfortable transparent padding. Match a charming illustrated wooden merchant balance-scale icon family, not a flat UI glyph. No text, no letters, no numbers, no extra detached decorations, no backdrop, no border or tile. True transparent background with clean alpha. Square composition.",
+  "transforms": [
+    "Resize to 256 x 256 using System.Drawing high quality bicubic interpolation; preserve transparency."
+  ],
+  "review": "Inspected original generated PNG: centered fish delivery crate, parchment order and starfish seal, no text, alpha preserved. Connected to merchant menu and place artwork."
+}

@@ -36,6 +36,8 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      merchant_state:{Args:Record<string,never>;Returns:import('@/features/merchant/api').MerchantState}
+      deliver_merchant_order:{Args:{p_order_id:string;p_operation_id:string;p_message:string};Returns:import('@/features/merchant/api').MerchantState}
       board_feed:{Args:{p_sort?:string;p_mine?:boolean;p_offset?:number};Returns:import('@/features/board/api').BoardFeed}
       board_detail:{Args:{p_id:string;p_offset?:number};Returns:import('@/features/board/api').BoardDetail|null}
       board_action:{Args:{p_action:import('@/features/board/api').BoardAction;p_payload:import('@/features/board/api').BoardPayload};Returns:string}
@@ -98,6 +100,7 @@ export type Database = {
       finish_fishing:{Args:{p_operation_id:string;p_won:boolean};Returns:import('@/features/fishing/api').FishingResult}
       arrange_collectible:{Args:{p_collectible_id:string;p_tank_id:string;p_x:number;p_y:number;p_rotation:number;p_scale:number;p_flipped:boolean};Returns:import('@/features/collection/api').DecorationPlacement & {id:string}}
       collectible_storage:{Args:{p_offset?:number;p_query?:string;p_kind?:string};Returns:import('@/features/aquarium/api').CollectibleStorage}
+      collectible_storage_filtered:{Args:{p_offset?:number;p_query?:string;p_kind?:string;p_rarity?:string;p_concept?:string};Returns:import('@/features/aquarium/api').CollectibleStorage}
       move_collectibles:{Args:{p_collectible_ids:string[];p_tank_id:string|null};Returns:import('@/features/aquarium/api').AquariumState}
       send_collectible_gift:{Args:{p_recipient_id:string;p_collectible_ids:string[];p_message:string;p_operation_id:string};Returns:import('@/features/gifts/api').GiftRecord}
       claim_collectible_gift:{Args:{p_gift_id:string};Returns:import('@/features/gifts/api').GiftRecord}

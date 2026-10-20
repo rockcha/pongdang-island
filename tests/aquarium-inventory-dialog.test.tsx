@@ -5,6 +5,18 @@ import type { OwnedCollectible,CollectibleKind } from '../src/features/collectio
 
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name}:{name:string})=><span>{name} 이미지</span>}))
 afterEach(cleanup)
+it('filters by sea concept and clears hidden selections when the concept changes',async()=>{
+ const themed=items.map((entry,i)=>({...entry,species:{...entry.species,native_region_id:i===0?'mukhyang':null}}))
+ render(<AquariumInventoryDialog name="내 어항" items={themed} busy={false} onSell={async()=>{}} />)
+ fireEvent.click(screen.getByRole('button',{name:/^목록/}))
+ fireEvent.click(screen.getByRole('button',{name:'상어 선택'}))
+ fireEvent.click(screen.getByRole('combobox',{name:'해역 콘셉트 선택'}))
+ fireEvent.keyDown(await screen.findByRole('option',{name:'묵향 해역'}),{key:'Enter'})
+ await waitFor(()=>expect(screen.queryByRole('listbox')).toBeNull())
+ expect(screen.getByRole('button',{name:'멸치 선택'})).toBeTruthy()
+ expect(screen.queryByRole('button',{name:'상어 선택'})).toBeNull()
+ expect(screen.getByRole('button',{name:/선택한 개체 판매 0 골드/}).hasAttribute('disabled')).toBe(true)
+})
 it('keeps the sale modal open after a failure and blocks double confirmation while selling',async()=>{
  let fail!:(cause:Error)=>void
  const onSell=vi.fn().mockImplementationOnce(()=>new Promise<void>((_resolve,reject)=>{fail=reject})).mockResolvedValueOnce(undefined)

@@ -2,6 +2,7 @@ import { EmptyState } from '@/components/empty-state'
 import { appArt } from '@/components/app-art'
 import { CollectibleSearchInput } from './collectible-search-input'
 import { RaritySelect } from '@/components/rarity-select'
+import { RegionConceptSelect } from '@/components/region-concept-select'
 import type { RarityFilter } from '@/components/rarity-select'
 import { useEffect, useRef, useState } from 'react'
 import { groupCollectibles } from './collectible-groups'
@@ -41,6 +42,7 @@ export function CollectibleStorageDialog({
     [page, setPage] = useState(0),
     [kind, setKind] = useState('all')
   const [rarity, setRarity] = useState<RarityFilter>('all')
+  const [concept, setConcept] = useState('all')
   const [query, setQuery] = useState(''),
     [search, setSearch] = useState('')
   useEffect(() => {
@@ -72,24 +74,7 @@ export function CollectibleStorageDialog({
     setLoading(true)
     setError('')
     setData(null)
-    void (async () => {
-      if (rarity === 'all') return loadCollectibleStorage(page * 50, search, kind)
-      const first = await loadCollectibleStorage(0, search, kind)
-      const items = [...first.items]
-      for (let offset = first.items.length; offset < first.total;) {
-        if (!active) return { items: [], total: 0, pageSize: 50 }
-        const next = await loadCollectibleStorage(offset, search, kind)
-        if (!next.items.length) break
-        items.push(...next.items)
-        offset += next.items.length
-      }
-      const filtered = items.filter((item) => item.species.rarity === rarity)
-      return {
-        items: filtered.slice(page * 50, (page + 1) * 50),
-        total: filtered.length,
-        pageSize: 50,
-      }
-    })()
+    void loadCollectibleStorage(page * 50, search, kind, rarity, concept)
       .then((result) => {
         if (active) {
           result.items.forEach((item) => cache.current.set(item.id, item))
@@ -105,7 +90,7 @@ export function CollectibleStorageDialog({
     return () => {
       active = false
     }
-  }, [open, page, kind, rarity, retry, search])
+  }, [open, page, kind, rarity, concept, retry, search])
   async function assign() {
     if (!assignIds?.length) return
     if (locked.current || busy || !assignIds.length || assignIds.length > free) return
@@ -216,6 +201,17 @@ export function CollectibleStorageDialog({
             disabled={disabled}
             onChange={(value) => {
               setQuery(value)
+              setSelection(new Set())
+            }}
+          />
+        </div>
+        <div className="flex min-w-0 shrink-0 items-center gap-2">
+          <RegionConceptSelect
+            value={concept}
+            disabled={disabled}
+            onChange={(value) => {
+              setConcept(value)
+              setPage(0)
               setSelection(new Set())
             }}
           />

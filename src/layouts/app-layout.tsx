@@ -23,7 +23,7 @@ export function AppLayout() {
   const mailbox=pathname==='/notifications'
   const square=pathname==='/square'
   const noticeList=pathname==='/board'||pathname.startsWith('/board/')||pathname==='/square/notices'||(/^\/square\/notices\/[^/]+$/.test(pathname)&&!pathname.endsWith('/new'))||pathname==='/square/suggestions'||pathname.startsWith('/square/suggestions/')||pathname==='/square/bugs'||pathname.startsWith('/square/bugs/')
-  const exchange=pathname==='/exchange'||pathname.startsWith('/exchange/')||pathname==='/savings'
+  const exchange=pathname==='/merchant-orders'||pathname==='/exchange'||pathname.startsWith('/exchange/')||pathname==='/savings'
   const friends=pathname==='/friends'
   const shop=pathname==='/shop'||pathname==='/item-shop'||pathname==='/shipyard'
   const expedition=pathname==='/expeditions'||/^\/friends\/[^/]+\/expeditions\/?$/.test(pathname)

@@ -1,0 +1,12 @@
+{
+  "tool": "image_gen.imagegen",
+  "asset": "public/banners/sea-merchant.png",
+  "source": "C:/Users/user/.codex/generated_images/01a158a9-a0a4-7f53-a180-0ca7b707977d/exec-fe90fed6-da15-41c8-b0ea-1fd1909162e3.png",
+  "prompt": "Create a polished wide landscape banner illustration for a cozy Korean island fishing game, aspect ratio 3:2 with all key content inside a horizontal central band so it crops elegantly to 4:1. Hand-painted storybook watercolor and gouache, soft warm cream parchment, muted caramel brown wood, turquoise sea, gentle golden afternoon light. A charming small sea otter merchant wearing a simple tan apron at a wooden harbor stall on the RIGHT third, checking blank parchment orders clipped to a board, wicker baskets of tiny colorful fish, a couple of seashells, small blue ceramic pot, antique brass balance scale, crates. Quiet blue-green water and moored tiny wooden boat in background. LEFT half is spacious softly lit empty wood-and-sea scenery for UI title overlay, with lower detail and no focal subjects. Minimal uncluttered composition, refined soft edges, cute premium game illustration matching a warm brown and ivory mobile UI. No text, no letters, no numbers, no watermark, no UI, no border. Deliver the image as a saved local file and report its path.",
+  "processing": {
+    "sourceCrop": { "x": 0, "y": 200, "width": 1536, "height": 512 },
+    "output": { "width": 960, "height": 320, "format": "png" },
+    "method": "System.Drawing crop and bicubic resize; no semantic edits"
+  },
+  "review": "Checked the generated illustration, mobile board and confirmation at 390x844, and desktop at 1280x900. No text baked into artwork. Title remains an accessible HTML heading."
+}

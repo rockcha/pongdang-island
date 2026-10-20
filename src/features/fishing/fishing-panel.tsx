@@ -23,7 +23,7 @@ import { useAuth } from '@/components/auth-provider'
 import { CollectionDialog } from '@/features/collection/collection-dialog'
 import { Tooltip,TooltipContent,TooltipProvider,TooltipTrigger } from '@/components/ui/tooltip'
 import { FishingTripDialog } from './fishing-trip-dialog'
-import { readFishingTrip,recordFishingCatch } from './fishing-trip'
+import { readFishingTrip,recordFishingCatch,removeFishingCatches } from './fishing-trip'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
@@ -181,7 +181,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{reg
   {regionId&&<FishingLeaveGuard active={gameOpen||uncertain||busy} practice={!!practice} busy={busy} onPause={setLeavePaused} onLeave={leaveFishing}/>}
   {regionId?<div role="group" aria-label="낚시 준비 도구" className="absolute bottom-[calc(1.5rem+env(safe-area-inset-bottom))] left-4 z-20 grid w-40 grid-cols-2 gap-px overflow-hidden rounded-xl border border-[#D5B797] bg-[#D5B797] shadow-sm">
    <Button variant="ghost" aria-label={`미끼통 열기 · ${bait?.name??'미끼'} ${wallet.inventory[selected]??0}개`} className={fishingDockButton} disabled={gameOpen||busy||uncertain||revealing||castOpen} onClick={()=>{setDraftBait(selected);setBaitOpen(true)}}>{bait?<img src={bait.image_path} alt=""/>:<appArt.bait/>}<span className="text-[11px] tabular-nums">미끼 ×{goldLoading?'…':wallet.inventory[selected]??0}</span></Button>
-   <FishingTripDialog dock catches={catches} disabled={gameOpen||busy||uncertain||revealing||castOpen}/>
+   <FishingTripDialog dock catches={catches} disabled={gameOpen||busy||uncertain||revealing||castOpen} onSold={ids=>setTrip({userId,items:removeFishingCatches(userId,ids)})}/>
    <FishingRodSelector dock regionId={regionId} disabled={gameOpen||busy||uncertain||revealing||castOpen}/>
    <CollectionDialog fishing dock disabled={gameOpen||busy||uncertain||revealing||castOpen}/>
   </div>:<div className="flex items-center justify-between"><h2 className="font-semibold">미끼 인벤토리</h2><span className="flex items-center gap-1 text-sm"><GoldIcon/>{wallet.gold.toLocaleString('ko-KR')}</span></div>}

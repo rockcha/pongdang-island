@@ -1,0 +1,513 @@
+import { PlayerAvatar } from '@/features/profile/player-avatar'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import {
+  Check,
+  ChevronRight,
+  ClipboardList,
+  PackageCheck,
+  PackageOpen,
+  RefreshCw,
+} from 'lucide-react'
+import { toast } from 'sonner'
+import { useAuth } from '@/components/auth-provider'
+import { Button } from '@/components/ui/button'
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from '@/components/ui/dialog'
+import { CollectibleThumbnail } from '@/features/collection/collectible-thumbnail'
+import { GoldIcon, useGold } from '@/features/gold/gold-provider'
+import { rarities } from '@/lib/game/rarity'
+import { randomId } from '@/lib/random-id'
+import { canDeliver, deliverMerchant, loadMerchant, merchantError } from './api'
+import type { MerchantItem, MerchantOrder, MerchantState } from './api'
+
+type Pending = { order: string; operation: string; message: string }
+function readPending(key: string): Pending | null {
+  try {
+    const p = JSON.parse(localStorage.getItem(key) ?? 'null')
+    return typeof p?.order === 'string' && typeof p?.operation === 'string'
+      ? { ...p, message: typeof p.message === 'string' ? p.message : '' }
+      : null
+  } catch {
+    return null
+  }
+}
+function ItemRow({ item, delivery = false }: { item: MerchantItem; delivery?: boolean }) {
+  const enough = item.owned >= item.quantity
+  return (
+    <li className="flex min-w-0 items-center gap-3 py-2">
+      <CollectibleThumbnail
+        path={item.thumbnailPath}
+        name={item.name}
+        className="size-12 shrink-0"
+      />
+      <div className="min-w-0 flex-1">
+        <p className="break-keep text-sm font-medium leading-5">{item.name}</p>
+        <span className="mt-0.5 flex items-center gap-1 text-[10px] text-muted-foreground">
+          <span
+            aria-hidden
+            className="size-1.5 rounded-full"
+            style={{ background: rarities[item.rarity].effectColor }}
+          />
+          {rarities[item.rarity].label} ·{' '}
+          {item.kind === 'fish' ? '물고기' : item.kind === 'trash' ? '쓰레기' : '장식물'}
+        </span>
+      </div>
+      <div className="shrink-0 text-right">
+        <span
+          aria-label={`${item.name} 보유 ${item.owned}개, 필요 ${item.quantity}개`}
+          className={`flex shrink-0 items-center gap-1 text-xs tabular-nums ${enough ? 'text-primary' : 'text-muted-foreground'}`}
+        >
+          {enough && <Check aria-hidden className="size-3" />}
+          <strong className="text-sm font-medium">
+            {(delivery ? Math.min(item.owned, item.quantity) : item.owned).toLocaleString('ko-KR')}
+          </strong>
+          <span className="opacity-60">/ {item.quantity}</span>
+        </span>
+        {delivery && (
+          <p className={`mt-1 text-[10px] ${enough ? 'text-primary' : 'text-destructive'}`}>
+            {enough ? '자동으로 채웠어요' : `${item.quantity - item.owned}개 부족`}
+          </p>
+        )}
+      </div>
+    </li>
+  )
+}
+export function MerchantPage() {
+  const { session } = useAuth()
+  return <AccountMerchant key={session?.user.id ?? 'guest'} owner={session?.user.id ?? 'guest'} />
+}
+function AccountMerchant({ owner }: { owner: string }) {
+  const gold = useGold(),
+    key = `pongdang:merchant:${owner}`
+  const [data, setData] = useState<MerchantState | null>(null),
+    [error, setError] = useState(''),
+    [loading, setLoading] = useState(true),
+    [busy, setBusy] = useState(false)
+  const [filter, setFilter] = useState<'open' | 'ready' | 'done'>('open'),
+    [selected, setSelected] = useState<MerchantOrder | null>(null)
+  const [message, setMessage] = useState('')
+  const [itemCount, setItemCount] = useState<0 | 1 | 2 | 3>(0)
+  const [pending, setPending] = useState<Pending | null>(() => readPending(key)),
+    [now, setNow] = useState(Date.now)
+  const alive = useRef(true),
+    lock = useRef(false),
+    version = useRef(0),
+    offset = useRef(0)
+  function apply(next: MerchantState) {
+    offset.current = Date.parse(next.serverNow) - Date.now()
+    setNow(Date.now() + offset.current)
+    setData(next)
+    setError('')
+  }
+  const reload = useCallback(async () => {
+    if (lock.current) return
+    const request = ++version.current
+    try {
+      const next = await loadMerchant()
+      if (alive.current && request === version.current && !lock.current) apply(next)
+    } catch (cause) {
+      if (alive.current && request === version.current) setError(merchantError(cause))
+    } finally {
+      if (alive.current && request === version.current) setLoading(false)
+    }
+  }, [])
+  useEffect(() => {
+    alive.current = true
+    void reload()
+    const refresh = () => {
+      if (!document.hidden) void reload()
+    }
+    const timer = setInterval(refresh, 30000),
+      clock = setInterval(() => setNow(Date.now() + offset.current), 1000)
+    window.addEventListener('focus', refresh)
+    window.addEventListener('online', refresh)
+    window.addEventListener('collectibles-changed', refresh)
+    document.addEventListener('visibilitychange', refresh)
+    return () => {
+      alive.current = false
+      version.current++
+      clearInterval(timer)
+      clearInterval(clock)
+      window.removeEventListener('focus', refresh)
+      window.removeEventListener('online', refresh)
+      window.removeEventListener('collectibles-changed', refresh)
+      document.removeEventListener('visibilitychange', refresh)
+    }
+  }, [reload])
+  const expired = !!data && now >= Date.parse(data.resetsAt)
+  useEffect(() => {
+    if (expired && !busy) void reload()
+  }, [expired, busy, reload])
+  function remember(value: Pending | null) {
+    setPending(value)
+    try {
+      if (value) localStorage.setItem(key, JSON.stringify(value))
+      else localStorage.removeItem(key)
+    } catch {
+      /* The same operation stays available in memory. */
+    }
+  }
+  async function submit(order?: MerchantOrder) {
+    if (lock.current) return
+    const request =
+      pending ??
+      (order ? { order: order.id, operation: randomId(), message: message.trim() } : null)
+    if (!request) return
+    lock.current = true
+    version.current++
+    setBusy(true)
+    setError('')
+    remember(request)
+    try {
+      const next = await deliverMerchant(request.order, request.operation, request.message)
+      // Clear a confirmed receipt even when navigation unmounted the page.
+      try {
+        localStorage.removeItem(key)
+      } catch {}
+      if (alive.current) {
+        remember(null)
+        apply(next)
+        setSelected(null)
+        setMessage('')
+        setFilter('done')
+        toast.success(`납품 완료 · ${next.receipt?.gold.toLocaleString('ko-KR') ?? ''}골드`)
+        void gold.refresh()
+      }
+    } catch (cause) {
+      if (alive.current) {
+        const code = String((cause as { code?: string })?.code ?? '')
+        if (/^[0-9A-Z]{5}$/.test(code)) {
+          remember(null)
+          setSelected(null)
+        }
+        setSelected(null)
+        setError(merchantError(cause))
+        toast.error(merchantError(cause))
+      }
+    } finally {
+      lock.current = false
+      if (alive.current) {
+        setBusy(false)
+        setLoading(false)
+        void reload()
+      }
+    }
+  }
+  const orders =
+    data?.orders.filter((order) =>
+      filter === 'done'
+        ? order.completed
+        : filter === 'ready'
+          ? canDeliver(order)
+          : !order.completed && (itemCount === 0 || order.items.length === itemCount),
+    ) ?? []
+  return (
+    <section aria-label="바다 상인의 의뢰" className="flex min-h-0 min-w-0 flex-1 flex-col">
+      <div className="shrink-0 border-b border-border/60 bg-background">
+        <div
+          role="group"
+          aria-label="주문 필터"
+          className="grid grid-cols-3 divide-x border-y bg-background"
+        >
+          {(
+            [
+              ['open', '진행 중', ClipboardList],
+              ['ready', '납품 가능', PackageOpen],
+              ['done', '완료', PackageCheck],
+            ] as const
+          ).map(([value, label, Icon]) => (
+            <button
+              key={value}
+              type="button"
+              aria-pressed={filter === value}
+              onClick={() => setFilter(value)}
+              className={`flex min-h-18 flex-col items-center justify-center gap-1.5 px-2 py-2 text-xs outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${filter === value ? 'bg-secondary font-medium text-primary' : 'text-muted-foreground hover:bg-secondary/40'}`}
+            >
+              <Icon aria-hidden className="size-5" strokeWidth={1.5} />
+              {label}
+            </button>
+          ))}
+        </div>
+        {filter === 'open' && (
+          <div
+            role="group"
+            aria-label="주문 종류 수"
+            className="grid grid-cols-4 divide-x divide-border/60"
+          >
+            {([0, 1, 2, 3] as const).map((count) => (
+              <button
+                key={count}
+                type="button"
+                aria-label={count === 0 ? '전체' : `${count}종`}
+                aria-pressed={itemCount === count}
+                onClick={() => setItemCount(count)}
+                className={`flex min-h-10 min-w-0 items-center justify-center gap-1 px-1 text-[11px] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${itemCount === count ? 'bg-secondary font-medium text-primary' : 'text-muted-foreground hover:bg-secondary/40'}`}
+              >
+                <span>{count === 0 ? '전체' : `${count}종`}</span>
+                <span className="text-[10px] tabular-nums opacity-60">
+                  {data?.orders.filter(
+                    (order) => !order.completed && (count === 0 || order.items.length === count),
+                  ).length ?? 0}
+                </span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+      <div className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain p-3">
+        <div className="flex items-center justify-between gap-2">
+          <p className="text-[11px] leading-5 text-muted-foreground">
+            서버 공통 선착순 · 보관함 개체로 납품해요.
+          </p>
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label="주문 새로고침"
+            disabled={loading || busy}
+            onClick={() => void reload()}
+          >
+            <RefreshCw className={`size-3.5 ${loading ? 'animate-spin' : ''}`} />
+          </Button>
+        </div>
+        {error && (
+          <div
+            role="alert"
+            className="space-y-2 rounded-xl border border-border bg-card p-3 text-xs leading-5"
+          >
+            <p>{error}</p>
+            {!pending && (
+              <Button size="sm" variant="outline" onClick={() => void reload()}>
+                목록 새로고침
+              </Button>
+            )}
+          </div>
+        )}
+        {pending && (
+          <div className="space-y-2 rounded-xl border border-primary/30 bg-secondary/40 p-3">
+            <p className="text-xs leading-5">
+              이전 납품 결과를 확인해주세요. 다시 눌러도 중복 지급되지 않아요.
+            </p>
+            <Button className="w-full" disabled={busy} onClick={() => void submit()}>
+              {busy ? '확인 중…' : '납품 결과 다시 확인'}
+            </Button>
+          </div>
+        )}
+        {loading && !data ? (
+          <div role="status" className="space-y-3 py-3">
+            <span className="sr-only">주문을 불러오는 중</span>
+            {[1, 2, 3].map((n) => (
+              <div key={n} className="h-56 animate-pulse rounded-xl bg-secondary/50" />
+            ))}
+          </div>
+        ) : (
+          <ul className="space-y-3">
+            {orders.map((order) => (
+              <li
+                key={order.id}
+                className="min-w-0 overflow-hidden rounded-xl border border-border/60 bg-card"
+              >
+                <button
+                  type="button"
+                  aria-label={`주문 ${String(order.number).padStart(2, '0')} 상세 보기`}
+                  disabled={busy}
+                  onClick={() => {
+                    setMessage('')
+                    setSelected(order)
+                  }}
+                  className="flex min-h-7 w-full items-center justify-end gap-2 px-3 pt-1 text-left outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                >
+                  {order.completed ? (
+                    <span className="flex items-center gap-1 text-[10px] text-primary">
+                      <PackageCheck className="size-3.5" />
+                      {order.mine ? '내가 납품했어요' : '납품 완료'}
+                    </span>
+                  ) : (
+                    <span className="flex min-w-0 items-center gap-1 text-[10px] text-muted-foreground/70">
+                      <ChevronRight aria-hidden className="size-3 opacity-60" />
+                    </span>
+                  )}
+                </button>
+                <ul className="space-y-1 px-3 pb-2">
+                  {order.items.map((item) => (
+                    <ItemRow key={item.speciesId} item={item} />
+                  ))}
+                </ul>
+                <div className="flex min-h-14 items-center justify-between gap-3 border-t border-border/40 bg-secondary/20 px-3 py-2.5">
+                  <div>
+                    <p className="flex items-center gap-1.5 text-lg font-medium tabular-nums text-primary">
+                      <GoldIcon className="size-5" />
+                      {order.rewardGold.toLocaleString('ko-KR')}
+                    </p>
+                  </div>
+                  {!order.completed && (
+                    <Button
+                      className="min-h-10 shrink-0 rounded-lg px-4 text-xs"
+                      disabled={busy || !!pending || expired}
+                      onClick={() => {
+                        setMessage('')
+                        setSelected(order)
+                      }}
+                    >
+                      납품하기
+                    </Button>
+                  )}
+                </div>
+                {order.completed && order.delivery && (
+                  <div className="flex items-start gap-2.5 border-t border-border/40 bg-secondary/25 px-4 py-3">
+                    <PlayerAvatar
+                      nickname={order.delivery.nickname}
+                      path={order.delivery.avatarPath}
+                      className="size-9 shrink-0"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
+                        <span className="break-words font-medium">{order.delivery.nickname}</span>
+                        <span className="text-[10px] text-muted-foreground">납품 완료</span>
+                      </p>
+                      <p className="mt-1 whitespace-pre-wrap break-words text-xs leading-5 text-muted-foreground">
+                        {order.delivery.message || '상인에게 꾸러미를 전해드렸어요.'}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        )}
+        {!loading && data && !orders.length && (
+          <div className="flex flex-col items-center gap-3 py-12 text-center text-muted-foreground">
+            <PackageCheck className="size-8 opacity-40" />
+            <p className="text-sm">
+              {filter === 'ready'
+                ? '지금 납품할 수 있는 주문이 없어요.'
+                : filter === 'done'
+                  ? '아직 완료된 주문이 없어요.'
+                  : itemCount > 0
+                    ? `${itemCount}종으로 구성된 진행 중 주문이 없어요.`
+                    : '오늘 주문이 모두 마감됐어요.'}
+            </p>
+            <p className="text-xs">
+              {filter === 'ready'
+                ? '어항의 개체는 보관함으로 옮긴 뒤 확인해주세요.'
+                : filter === 'open' && itemCount > 0
+                  ? '전체 또는 다른 종류 수를 선택해주세요.'
+                  : '새 주문은 한국 시간 자정에 도착해요.'}
+            </p>
+          </div>
+        )}
+      </div>
+      <Dialog
+        open={!!selected}
+        onOpenChange={(value) => {
+          if (!value && !busy) setSelected(null)
+        }}
+      >
+        <DialogContent
+          className="max-h-[85dvh] overflow-y-auto rounded-2xl sm:max-w-sm"
+          showCloseButton={!busy}
+        >
+          <DialogHeader>
+            <DialogTitle>
+              {selected?.completed
+                ? '완료된 주문'
+                : selected && canDeliver(selected)
+                  ? '상인에게 납품할까요?'
+                  : '납품할 개체 확인'}
+            </DialogTitle>
+            <DialogDescription>
+              {selected?.completed
+                ? '완료된 주문의 구성과 지급액을 확인해요.'
+                : '납품하면 아래 개체가 보관함에서 판매됩니다. 완료한 납품은 되돌릴 수 없어요.'}
+            </DialogDescription>
+          </DialogHeader>
+          {selected && (
+            <>
+              {!selected.completed && (
+                <p className="rounded-lg bg-secondary/40 px-3 py-2.5 text-[11px] leading-5 text-muted-foreground">
+                  보관함에서 필요한 수량을 자동으로 채워요. 어항에 있는 개체는 포함되지 않아요.
+                </p>
+              )}
+              <ul className="divide-y divide-border/50">
+                {selected.items.map((item) => (
+                  <ItemRow key={item.speciesId} item={item} delivery={!selected.completed} />
+                ))}
+              </ul>
+              <div className="flex items-center justify-between border-t pt-4 text-xs text-muted-foreground">
+                <span>일반 판매가</span>
+                <span className="tabular-nums">
+                  {selected.baseGold.toLocaleString('ko-KR')}골드
+                </span>
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-xs text-muted-foreground">추가 보상</span>
+                <span className="text-xs tabular-nums text-primary">
+                  +{Math.max(0, selected.rewardGold - selected.baseGold).toLocaleString('ko-KR')}골드
+                </span>
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <span>받는 골드</span>
+                <strong className="flex items-center gap-1.5 text-xl font-medium tabular-nums text-primary">
+                  <GoldIcon className="size-5" />
+                  {selected.rewardGold.toLocaleString('ko-KR')}
+                </strong>
+              </div>
+              <p className="text-[11px] leading-5 text-muted-foreground">
+                선착순이라 확인하는 동안 다른 모험가가 먼저 납품할 수 있어요.
+              </p>
+              {canDeliver(selected) && (
+                <label className="space-y-2 text-xs">
+                  <span className="flex items-center justify-between text-muted-foreground">
+                    <span>
+                      납품하며 한마디 <span className="text-[10px]">· 선택</span>
+                    </span>
+                    <span className="text-[10px] tabular-nums">{message.length} / 80</span>
+                  </span>
+                  <textarea
+                    aria-label="납품 한마디"
+                    value={message}
+                    maxLength={80}
+                    rows={2}
+                    disabled={busy}
+                    onChange={(event) => setMessage(event.target.value)}
+                    placeholder="잘 모아왔어요. 다음 의뢰도 기대할게요!"
+                    className="w-full resize-none rounded-xl border border-border bg-background px-3 py-2.5 text-sm leading-6 outline-none focus:border-primary/60 focus:ring-2 focus:ring-primary/10"
+                  />
+                  <span className="block text-[10px] leading-4 text-muted-foreground">
+                    완료 카드에 내 아바타·이름과 함께 모두에게 보여요.
+                  </span>
+                </label>
+              )}
+              {error && (
+                <p role="alert" className="text-xs text-destructive">
+                  {error}
+                </p>
+              )}
+              {canDeliver(selected) ? (
+                <Button
+                  className="min-h-12 w-full rounded-xl"
+                  disabled={busy || expired || !!pending}
+                  onClick={() => void submit(selected)}
+                >
+                  {busy
+                    ? '납품 확인 중…'
+                    : `${selected.rewardGold.toLocaleString('ko-KR')}골드 받고 납품`}
+                </Button>
+              ) : (
+                !selected.completed && (
+                  <Button className="min-h-12 w-full rounded-xl" disabled>
+                    개체가 부족해요
+                  </Button>
+                )
+              )}
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+    </section>
+  )
+}

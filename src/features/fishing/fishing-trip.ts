@@ -23,6 +23,13 @@ export function clearFishingTrip(userId:string){
  try{localStorage.removeItem(fishingTripKey(userId))}catch{/* Storage may be disabled. */}
 }
 
+export function removeFishingCatches(userId:string,ids:string[]){
+ const removed=new Set(ids)
+ const next=readFishingTrip(userId).filter(item=>!item.collectible_id||!removed.has(item.collectible_id))
+ try{localStorage.setItem(fishingTripKey(userId),JSON.stringify(next))}catch{}
+ return next
+}
+
 export function isFishingTripRoute(pathname:string){
  return /^\/(region|sailing)\/[^/]+\/?$/.test(pathname)
 }

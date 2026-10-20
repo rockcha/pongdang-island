@@ -1,6 +1,6 @@
 import { cleanup,renderHook } from '@testing-library/react'
 import { afterEach,expect,it } from 'vitest'
-import { clearFishingTrip,fishingTripKey,readFishingTrip,recordFishingCatch,useFishingTripRoute } from '@/features/fishing/fishing-trip'
+import { clearFishingTrip,fishingTripKey,readFishingTrip,recordFishingCatch,removeFishingCatches,useFishingTripRoute } from '@/features/fishing/fishing-trip'
 import type { FishingAttempt } from '@/features/fishing/api'
 
 const caught={operation_id:'first',region_id:'pongdang',bait_id:'bait',rarity:'rare',created_at:'2026-10-16',species:{id:'fish',name:'달빛 물고기',rarity:'rare',thumbnail_path:'fish.png'}} as FishingAttempt
@@ -39,5 +39,14 @@ it('recovers from malformed storage and clears only the selected account',()=>{
  recordFishingCatch('other',caught)
  clearFishingTrip('me')
  expect(readFishingTrip('me')).toEqual([])
+ expect(readFishingTrip('other')).toHaveLength(1)
+})
+
+it('removes sold catches without touching other catches or accounts',()=>{
+ recordFishingCatch('me',{...caught,collectible_id:'sold'})
+ recordFishingCatch('me',{...caught,operation_id:'next',collectible_id:'keep'})
+ recordFishingCatch('other',{...caught,collectible_id:'sold'})
+ expect(removeFishingCatches('me',['sold']).map(item=>item.collectible_id)).toEqual(['keep'])
+ expect(readFishingTrip('me').map(item=>item.collectible_id)).toEqual(['keep'])
  expect(readFishingTrip('other')).toHaveLength(1)
 })

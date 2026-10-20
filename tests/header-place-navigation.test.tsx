@@ -1,15 +1,26 @@
 vi.mock('@/features/savings/use-savings-status',()=>({useSavingsStatus:()=>mock.savings}))
+vi.mock('@/components/use-new-content',()=>({useNewContent:()=>mock.newContent}))
 import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
 import {MemoryRouter,useLocation} from 'react-router'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {HeaderPlaceNavigation} from '@/components/header-place-navigation'
-const mock=vi.hoisted(()=>({status:null as 'sailing'|'returned'|null,harbor:null as {ready:number;total:number}|null,operator:false,savings:null as '미납'|'수령 가능'|null}))
+const mock=vi.hoisted(()=>({newContent:{board:false,exchange:false},status:null as 'sailing'|'returned'|null,harbor:null as {ready:number;total:number}|null,operator:false,savings:null as '미납'|'수령 가능'|null}))
 vi.mock('@/features/port/use-harbor-status',()=>({useHarborStatus:()=>mock.harbor}))
 vi.mock('@/features/notices/use-operator',()=>({useOperator:()=>({operator:mock.operator,loading:false})}))
 vi.mock('@/features/expeditions/use-expedition-status',()=>({useExpeditionStatus:()=>mock.status}))
-beforeEach(()=>{mock.status=null;mock.harbor=null;mock.operator=false;mock.savings=null})
+beforeEach(()=>{mock.newContent={board:false,exchange:false};mock.status=null;mock.harbor=null;mock.operator=false;mock.savings=null})
 function View(){const {pathname}=useLocation();return <><HeaderPlaceNavigation/><output data-testid="path">{pathname}</output></>}
 afterEach(cleanup)
+it.each([['장터','거래소'],['소셜','자유게시판']])('keeps NEW inside the %s menu only beside %s',async(group,label)=>{
+ mock.newContent={board:true,exchange:true}
+ render(<MemoryRouter><View/></MemoryRouter>)
+ expect(screen.getByRole('button',{name:'장터'}).textContent).not.toContain('NEW')
+ expect(screen.getByRole('button',{name:'소셜'}).textContent).not.toContain('NEW')
+ fireEvent.click(screen.getByRole('button',{name:group}))
+ const menu=await screen.findByRole('menu')
+ expect(within(menu).getByRole('menuitem',{name:new RegExp('^'+label)}).textContent).toContain('NEW')
+ expect(within(menu).getAllByLabelText('새 글 있음')).toHaveLength(1)
+})
 it('lists community destinations directly under social without a mailbox or square',async()=>{
  render(<MemoryRouter initialEntries={['/board']}><View/></MemoryRouter>)
  fireEvent.click(screen.getByRole('button',{name:'소셜'}))

@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "cdf883d2e5fb4b8660e16d1eb4708c3bb10f3304a23518d66530e4e7d901e5c4",
+  "migrationHash": "7f6faf6dd88872fea823bbc8a14b082265883026b28a02e7d95c9c06dafcc2f1",
   "structure": {
     "enums": [
       {
@@ -121,6 +121,24 @@
       {
         "rls": true,
         "name": "memory_game_boards",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "merchant_days",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "merchant_deliveries",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "merchant_orders",
         "schema": "app_private",
         "force_rls": false
       },
@@ -1145,6 +1163,246 @@
         "default": null,
         "identity": "",
         "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "day",
+        "type": "date",
+        "table": "merchant_days",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "merchant_days",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "rules_version",
+        "type": "integer",
+        "table": "merchant_days",
+        "schema": "app_private",
+        "default": "1",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "order_id",
+        "type": "uuid",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "day",
+        "type": "date",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "gold",
+        "type": "integer",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "collectible_ids",
+        "type": "uuid[]",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "message",
+        "type": "text",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "default": "''::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "day",
+        "type": "date",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "slot",
+        "type": "integer",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "tier",
+        "type": "text",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "region_id",
+        "type": "text",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "items",
+        "type": "jsonb",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "base_gold",
+        "type": "integer",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "reward_gold",
+        "type": "integer",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "completed_by",
+        "type": "uuid",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "completed_at",
+        "type": "timestamp with time zone",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "completed_name",
+        "type": "text",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "completed_avatar_path",
+        "type": "text",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "completed_message",
+        "type": "text",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "default": "''::text",
+        "identity": "",
+        "nullable": false,
         "generated": ""
       },
       {
@@ -6108,6 +6366,42 @@
         "definition": "CREATE UNIQUE INDEX memory_game_boards_pkey ON app_private.memory_game_boards USING btree (run_id)"
       },
       {
+        "name": "merchant_days_pkey",
+        "table": "merchant_days",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX merchant_days_pkey ON app_private.merchant_days USING btree (day)"
+      },
+      {
+        "name": "merchant_daily_limit",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "CREATE INDEX merchant_daily_limit ON app_private.merchant_deliveries USING btree (user_id, day)"
+      },
+      {
+        "name": "merchant_deliveries_order_id_key",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX merchant_deliveries_order_id_key ON app_private.merchant_deliveries USING btree (order_id)"
+      },
+      {
+        "name": "merchant_deliveries_pkey",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX merchant_deliveries_pkey ON app_private.merchant_deliveries USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "merchant_orders_day_slot_key",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX merchant_orders_day_slot_key ON app_private.merchant_orders USING btree (day, slot)"
+      },
+      {
+        "name": "merchant_orders_pkey",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX merchant_orders_pkey ON app_private.merchant_orders USING btree (id)"
+      },
+      {
         "name": "notice_operators_pkey",
         "table": "notice_operators",
         "schema": "app_private",
@@ -6988,6 +7282,12 @@
         "table": "player_collectibles",
         "schema": "public",
         "definition": "CREATE INDEX collectibles_tank ON public.player_collectibles USING btree (tank_id) WHERE (sold_at IS NULL)"
+      },
+      {
+        "name": "merchant_storage_candidates",
+        "table": "player_collectibles",
+        "schema": "public",
+        "definition": "CREATE INDEX merchant_storage_candidates ON public.player_collectibles USING btree (user_id, species_id, id) WHERE ((sold_at IS NULL) AND (escrow_gift_id IS NULL) AND (tank_id IS NULL))"
       },
       {
         "name": "player_collectibles_pkey",
@@ -7937,6 +8237,13 @@
         "definition": "CREATE TRIGGER title_tailwind_activity AFTER INSERT ON app_private.expedition_boosts FOR EACH ROW EXECUTE FUNCTION app_private.title_activity_event()"
       },
       {
+        "name": "merchant_titles_dirty",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER merchant_titles_dirty AFTER INSERT ON app_private.merchant_deliveries FOR EACH ROW EXECUTE FUNCTION app_private.title_activity_event()"
+      },
+      {
         "name": "title_last_bait",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
@@ -8124,6 +8431,13 @@
         "schema": "public",
         "enabled": "O",
         "definition": "CREATE TRIGGER stamp_suggestion_post BEFORE INSERT OR UPDATE ON public.suggestion_posts FOR EACH ROW EXECUTE FUNCTION app_private.stamp_suggestion_author()"
+      },
+      {
+        "name": "title_catalog_changed",
+        "table": "title_catalog",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER title_catalog_changed AFTER INSERT OR UPDATE ON public.title_catalog FOR EACH STATEMENT EXECUTE FUNCTION app_private.queue_title_catalog_change()"
       }
     ],
     "functions": [
@@ -8448,6 +8762,16 @@
         "securityDefiner": true
       },
       {
+        "name": "challenge_title_metrics",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_user uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.challenge_title_metrics(p_user uuid)\n RETURNS jsonb\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nwith logs as materialized (\n select *, (occurred_at at time zone 'Asia/Seoul')::date play_day from app_private.title_fishing_log where user_id=p_user and source='manual'\n), runs as materialized (\n select *,count(*) over w12 n12,count(*) over w5 n5,count(*) over w3 n3,count(*) over w2 n2,count(*) over w7 n7,\n bool_and(coalesce(kind='fish' and species_id is not null,false)) over w12 fish12,\n bool_and(coalesce(kind='fish' and species_id is not null and rarity in ('rare','epic','mythic'),false)) over w5 rare5,\n bool_and(coalesce(kind='fish' and species_id is not null and rarity in ('epic','mythic'),false)) over w3 epic3,\n bool_and(coalesce(kind='fish' and species_id is not null and rarity='mythic',false)) over w2 mythic2,\n bool_and(coalesce(kind='trash' and species_id is not null,false)) over w7 trash7\n from logs window\n w12 as (order by occurred_at,id rows between 11 preceding and current row),\n w5 as (order by occurred_at,id rows between 4 preceding and current row),\n w3 as (order by occurred_at,id rows between 2 preceding and current row),\n w2 as (order by occurred_at,id rows between 1 preceding and current row),\n w7 as (order by occurred_at,id rows between 6 preceding and current row)\n), fish as materialized (select * from logs where kind='fish' and species_id is not null),\n days as materialized (\n select play_day,count(distinct kind) filter(where kind in ('fish','trash','decoration') and species_id is not null) kinds,\n count(distinct rarity) filter(where kind='fish' and species_id is not null) grades from logs group by play_day\n), deliveries as materialized (\n select o.items from app_private.merchant_deliveries d join app_private.merchant_orders o on o.id=d.order_id where d.user_id=p_user and o.completed_at is not null and o.completed_by=d.user_id\n), harbor as materialized (\n select result from public.harbor_voyages where user_id=p_user and claimed_at is not null\n)\nselect jsonb_build_object(\n 'challenge_manual',(select count(*) from logs),\n 'challenge_days',(select count(distinct play_day) from logs),\n 'challenge_fish12',(select count(*) from runs where n12=12 and fish12),\n 'challenge_rare5',(select count(*) from runs where n5=5 and rare5),\n 'challenge_epic3',(select count(*) from runs where n3=3 and epic3),\n 'challenge_mythic2',(select count(*) from runs where n2=2 and mythic2),\n 'challenge_trash7',(select count(*) from runs where n7=7 and trash7),\n 'challenge_same_fish',coalesce((select max(n) from (select count(*) n from fish group by species_id) q),0),\n 'challenge_unique',(select count(distinct species_id) from fish),\n 'challenge_mythic_seas',(select count(distinct region_id) from fish where rarity='mythic'),\n 'challenge_mythic_baits',(select count(distinct bait_id) from fish where rarity='mythic'),\n 'challenge_rainbow_days',(select count(*) from days where grades=4),\n 'challenge_rare_unique',(select count(distinct species_id) from fish where rarity='rare'),\n 'challenge_epic_unique',(select count(distinct species_id) from fish where rarity='epic'),\n 'challenge_mythic_unique',(select count(distinct species_id) from fish where rarity='mythic'),\n 'challenge_crumbs',(select count(*) from fish where bait_id='bait_shell_crumbs' and rarity='rare'),\n 'challenge_pupa',(select count(*) from fish where bait_id='bait_firefly_pupa' and rarity='epic'),\n 'challenge_lightning',(select count(*) from fish where bait_id='bait_lightning_stardust' and rarity='epic'),\n 'challenge_wax',(select count(*) from fish where bait_id='bait_starlight_wax' and rarity='mythic'),\n 'challenge_star',(select count(*) from fish where bait_id='bait_cracked_star' and rarity='mythic'),\n 'challenge_cloud',(select count(*) from fish where bait_id='bait_cloud_dough' and rarity='common'),\n 'challenge_worm',(select count(*) from fish where bait_id='bait' and rarity='mythic'),\n 'challenge_last_mythic',(select count(*) from fish where last_bait and rarity='mythic'),\n 'challenge_buffet_days',(select count(*) from days where kinds=3),\n 'challenge_deliveries',(select count(*) from deliveries),\n 'challenge_delivery_species',(select count(distinct a->>'speciesId') from deliveries cross join lateral jsonb_array_elements(items) a),\n 'challenge_delivery_mythic',(select count(*) from deliveries where exists(select 1 from jsonb_array_elements(items) a where a->>'rarity'='mythic')),\n 'challenge_harbor',(select count(*) from harbor),\n 'challenge_harbor_pair',(select count(*) from harbor where (select count(*) from jsonb_array_elements(coalesce(result->'items','[]'::jsonb)) a where a->'species'->>'kind'='fish' and a->'species'->>'rarity'='mythic')>=2)\n)\n$function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "check_native_collectible_habitats",
         "config": [
           "search_path=\"\""
@@ -8518,6 +8842,16 @@
         "securityDefiner": true
       },
       {
+        "name": "collectible_storage_filtered",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_offset integer, p_query text, p_kind text, p_rarity text, p_concept text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.collectible_storage_filtered(p_offset integer DEFAULT 0, p_query text DEFAULT ''::text, p_kind text DEFAULT 'all'::text, p_rarity text DEFAULT 'all'::text, p_concept text DEFAULT 'all'::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare uid uuid:=auth.uid();query text:=btrim(coalesce(p_query,''));result jsonb;\nbegin\n if uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or char_length(query)>60 or p_kind is null or p_kind not in ('all','fish','trash','decoration')\n or p_rarity is null or p_rarity not in ('all','common','rare','epic','mythic') or p_concept is null\n or (p_concept not in ('all','common') and not exists(select 1 from public.regions where id=p_concept)) then raise exception 'INVALID_STORAGE_QUERY';end if;\n with matched as materialized (\n  select c.* from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n  where c.user_id=uid and c.tank_id is null and c.sold_at is null and c.escrow_gift_id is null\n  and s.kind in ('fish','trash','decoration') and (p_kind='all' or s.kind::text=p_kind)\n  and (p_rarity='all' or s.rarity::text=p_rarity)\n  and (p_concept='all' or (p_concept='common' and s.native_region_id is null) or s.native_region_id=p_concept)\n  and strpos(lower(s.name),lower(query))>0\n ), page as (select * from matched order by acquired_at desc,id limit 50 offset p_offset)\n select jsonb_build_object('total',(select count(*) from matched),'pageSize',50,'items',coalesce((select jsonb_agg(to_jsonb(p)||jsonb_build_object('species',app_private.species_payload(p.species_id,p.map_region_id)) order by p.acquired_at desc,p.id) from page p),'[]'::jsonb)) into result;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "collection_state",
         "config": [
           "search_path=\"\""
@@ -8568,6 +8902,26 @@
         "securityDefiner": true
       },
       {
+        "name": "deliver_merchant_order",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_order_id uuid, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.deliver_merchant_order(p_order_id uuid, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$select app_private.deliver_merchant_order(p_order_id,p_operation_id,'')$function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "deliver_merchant_order",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_order_id uuid, p_operation_id uuid, p_message text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.deliver_merchant_order(p_order_id uuid, p_operation_id uuid, p_message text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare uid uuid:=auth.uid();d date;o app_private.merchant_orders;prev app_private.merchant_deliveries;\n item jsonb;chosen uuid[];ids uuid[]:='{}';v_gold integer;v_message text:=btrim(coalesce(p_message,''));\nbegin\n if uid is null then raise exception 'AUTH_REQUIRED';end if;\n if char_length(v_message)>80 then raise exception 'MERCHANT_MESSAGE_TOO_LONG';end if;\n if p_order_id is null or p_operation_id is null then raise exception 'INVALID_MERCHANT_REQUEST';end if;\n perform app_private.get_gold_wallet();\n -- Consistent wallet -> order -> collectibles lock order; the wallet serializes competing wallet operations.\n select w.gold into v_gold from public.player_wallets w where w.user_id=uid for update;\n select * into prev from app_private.merchant_deliveries x where x.user_id=uid and x.operation_id=p_operation_id;\n if found then\n  if prev.order_id<>p_order_id or prev.message<>v_message then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.merchant_state()||jsonb_build_object('replayed',true,'receipt',jsonb_build_object('orderId',prev.order_id,'gold',prev.gold));\n end if;\n if exists(select 1 from public.gold_transactions t where t.user_id=uid and t.operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into o from app_private.merchant_orders x where x.id=p_order_id for update;\n if not found then raise exception 'MERCHANT_ORDER_NOT_FOUND';end if;\n d:=(clock_timestamp() at time zone 'Asia/Seoul')::date;\n if o.day<>d then raise exception 'MERCHANT_ORDER_EXPIRED';end if;\n if o.completed_at is not null then raise exception 'MERCHANT_ORDER_TAKEN';end if;\n if v_gold::bigint+o.reward_gold>1000000000 then raise exception 'GOLD_LIMIT';end if;\n -- Lock all relevant storage rows in ID order, matching regular sales and gift sending.\n perform 1 from public.player_collectibles c where c.user_id=uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is null\n and exists(select 1 from jsonb_array_elements(o.items) a where a->>'speciesId'=c.species_id) order by c.id for update;\n for item in select value from jsonb_array_elements(o.items) loop\n  select array_agg(q.id order by q.id) into chosen from (select c.id from public.player_collectibles c where c.user_id=uid and c.species_id=item->>'speciesId'\n   and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is null order by c.id limit (item->>'quantity')::integer) q;\n  if coalesce(cardinality(chosen),0)<>(item->>'quantity')::integer then raise exception 'MERCHANT_INSUFFICIENT_ITEMS';end if;\n  ids:=ids||chosen;\n end loop;\n if (clock_timestamp() at time zone 'Asia/Seoul')::date<>d then raise exception 'MERCHANT_ORDER_EXPIRED';end if;\n update public.player_collectibles set sold_at=clock_timestamp() where user_id=uid and id=any(ids);\n update public.player_wallets set gold=gold+o.reward_gold,updated_at=now() where user_id=uid;\n update app_private.merchant_orders set completed_by=uid,completed_at=clock_timestamp(),completed_name=coalesce((select p.nickname from public.player_profiles p where p.id=uid),'섬 모험가'),completed_avatar_path=(select p.avatar_path from public.player_profiles p where p.id=uid),completed_message=v_message where id=o.id;\n insert into app_private.merchant_deliveries(user_id,operation_id,order_id,day,gold,collectible_ids,message) values(uid,p_operation_id,o.id,d,o.reward_gold,ids,v_message);\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(uid,p_operation_id,'sell','merchant:'||o.id,o.reward_gold);\n return app_private.merchant_state()||jsonb_build_object('replayed',false,'receipt',jsonb_build_object('orderId',o.id,'gold',o.reward_gold));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "deliver_notice_publication",
         "config": [
           "search_path=\"\""
@@ -8585,6 +8939,16 @@
         "schema": "app_private",
         "arguments": "p_listing_id uuid, p_title text",
         "definition": "CREATE OR REPLACE FUNCTION app_private.edit_exchange_listing_title(p_listing_id uuid, p_title text)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();l public.exchange_listings;v_title text:=btrim(p_title);\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if v_title is null or char_length(v_title) not between 1 and 80 or v_title~'[[:cntrl:]]' or v_title!~'[^[:space:]]' then raise exception 'INVALID_EXCHANGE_TITLE';end if;\n select * into l from public.exchange_listings where id=p_listing_id for update;\n if not found then raise exception 'EXCHANGE_NOT_FOUND';end if;\n if l.owner_id<>u then raise exception 'EXCHANGE_FORBIDDEN';end if;\n if l.side<>'sell' or l.status<>'active' then raise exception 'EXCHANGE_UNAVAILABLE';end if;\n update public.exchange_listings set title=v_title where id=l.id;\nend;\n$function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "ensure_merchant_orders",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.ensure_merchant_orders()\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare d date:=(clock_timestamp() at time zone 'Asia/Seoul')::date;\n i integer;j integer;n integer;shape integer[];eligible integer;high_position integer;rare_count integer;qroll integer;\n k public.collectible_kind;r public.game_rarity;highest public.game_rarity;\n s public.collectible_species;items jsonb;tier text;base integer;reward integer;used text[];\nbegin\n perform pg_advisory_xact_lock(hashtextextended('merchant-day:'||d::text,0));\n if exists(select 1 from app_private.merchant_days m where m.day=d and m.rules_version=6) then return;end if;\n insert into app_private.merchant_days(day,rules_version) values(d,6) on conflict(day) do update set rules_version=6;\n -- Rotate only open IDs on a composition change. Completed receipts remain replayable.\n delete from app_private.merchant_orders where day=d and completed_at is null;\n select coalesce(array_agg(a->>'speciesId'),'{}'::text[]) into used from app_private.merchant_orders o cross join lateral jsonb_array_elements(o.items) a where o.day=d;\n for i in 1..40 loop\n  if exists(select 1 from app_private.merchant_orders o where o.day=d and o.slot=i) then continue;end if;\n  shape:=app_private.merchant_order_shape(i);n:=cardinality(shape);\n  select count(*)::integer into eligible from unnest(shape) quantity where quantity=1;\n  qroll:=floor(random()*10000)::integer;\n  highest:=app_private.merchant_order_grade(qroll);\n  tier:=case highest when 'common' then 'small' when 'rare' then 'mixed' when 'epic' then 'special' else 'grand' end;\n  -- Two-unit slots are always common. Rare-only orders can use every single-unit slot.\n  high_position:=1+floor(random()*eligible)::integer;\n  rare_count:=case when highest='rare' then 1+floor(random()*eligible)::integer else 0 end;\n  items:='[]';base:=0;\n  for j in 1..n loop\n   r:=case when shape[j]=2 then 'common'::public.game_rarity when highest='rare' and ((j-high_position+eligible)%eligible)<rare_count then 'rare'::public.game_rarity when j=high_position then highest else 'common'::public.game_rarity end;\n   qroll:=floor(random()*10000)::integer;\n   k:=case when qroll<6000 then 'fish'::public.collectible_kind when qroll<8000 then 'trash'::public.collectible_kind else 'decoration'::public.collectible_kind end;\n   select x.* into s from public.collectible_species x where x.rarity=r and x.kind=k and x.sell_price>0\n    and (select count(*) from unnest(used) u(id) where u.id=x.id)<2\n    and not exists(select 1 from jsonb_array_elements(items) t where t->>'speciesId'=x.id)\n   order by random() limit 1;\n   if s.id is null then\n    select x.* into s from public.collectible_species x where x.rarity=r and x.kind in ('fish','trash','decoration') and x.sell_price>0\n     and (select count(*) from unnest(used) u(id) where u.id=x.id)<2\n     and not exists(select 1 from jsonb_array_elements(items) t where t->>'speciesId'=x.id)\n    order by random() limit 1;\n   end if;\n   if s.id is null then raise exception 'MERCHANT_POOL_EMPTY';end if;\n   used:=array_append(used,s.id);\n   items:=items||jsonb_build_array(jsonb_build_object('speciesId',s.id,'name',s.name,'thumbnailPath',s.thumbnail_path,'kind',s.kind,'rarity',s.rarity,'quantity',shape[j],'unitGold',s.sell_price));\n   base:=base+s.sell_price*shape[j];\n  end loop;\n  reward:=base+app_private.merchant_order_bonus(items);\n  insert into app_private.merchant_orders(day,slot,tier,region_id,items,base_gold,reward_gold) values(d,i,tier,null,items,base,reward);\n end loop;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -9058,6 +9422,76 @@
         "securityDefiner": false
       },
       {
+        "name": "merchant_easy_items",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_items jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.merchant_easy_items(p_items jsonb)\n RETURNS jsonb\n LANGUAGE sql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\n select case when jsonb_array_length(p_items)<=1 then p_items else (\n  with entries as (select item,ord from jsonb_array_elements(p_items) with ordinality a(item,ord))\n  select jsonb_agg(item||jsonb_build_object('quantity',case when ord=(select min(e.ord) from entries e where (e.item->>'quantity')::integer>1 and e.item->>'rarity'='common') then 2 else 1 end) order by ord) from entries\n ) end\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "merchant_order_bonus",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_items jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.merchant_order_bonus(p_items jsonb)\n RETURNS integer\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\ndeclare n integer;total integer;rare_units integer;rare_kinds integer;epics integer;mythics integer;bonus integer;\nbegin\n if jsonb_typeof(p_items) is distinct from 'array' then raise exception 'INVALID_MERCHANT_ITEMS';end if;\n n:=jsonb_array_length(p_items);\n if n not between 1 and 3 or exists(select 1 from jsonb_array_elements(p_items) a where (a->>'quantity') is null or (a->>'quantity')::integer not between 1 and 2 or coalesce(a->>'rarity','') not in ('common','rare','epic','mythic')) then raise exception 'INVALID_MERCHANT_ITEMS';end if;\n select sum((a->>'quantity')::integer),coalesce(sum((a->>'quantity')::integer) filter(where a->>'rarity'='rare'),0),count(*) filter(where a->>'rarity'='rare'),count(*) filter(where a->>'rarity'='epic'),count(*) filter(where a->>'rarity'='mythic')\n into total,rare_units,rare_kinds,epics,mythics from jsonb_array_elements(p_items) a;\n if n=1 and total=1 then\n  return case p_items->0->>'rarity' when 'common' then 80 when 'rare' then 100 when 'epic' then 250 else 600 end;\n elsif n=2 and total=2 then\n  bonus:=case rare_kinds when 0 then 120 when 1 then 200 else 250 end;\n elsif n=2 and total=3 then\n  bonus:=case rare_units when 0 then 200 when 1 then 300 when 2 then 380 else 500 end;\n elsif n=3 and total=4 and (select max((a->>'quantity')::integer) from jsonb_array_elements(p_items) a)=2 then\n  bonus:=case rare_kinds when 0 then 300 when 1 then 400 else 500 end;\n else raise exception 'INVALID_MERCHANT_ITEMS';end if;\n return bonus+epics*250+mythics*600;\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "merchant_order_grade",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_roll integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.merchant_order_grade(p_roll integer)\n RETURNS game_rarity\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\nbegin\n if p_roll is null or p_roll not between 0 and 9999 then raise exception 'INVALID_MERCHANT_ROLL';end if;\n return case when p_roll<7600 then 'common'::public.game_rarity when p_roll<9600 then 'rare'::public.game_rarity when p_roll<9970 then 'epic'::public.game_rarity else 'mythic'::public.game_rarity end;\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "merchant_order_shape",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_slot integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.merchant_order_shape(p_slot integer)\n RETURNS integer[]\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\nbegin\n if p_slot is null or p_slot not between 1 and 40 then raise exception 'INVALID_MERCHANT_SLOT';end if;\n return case when p_slot<=10 then array[1] when p_slot<=30 then array[1,1] when p_slot<=37 then array[1,2] else array[1,1,2] end;\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "merchant_recipe",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_size_roll integer, p_grade_roll integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.merchant_recipe(p_size_roll integer, p_grade_roll integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\ndeclare n integer;grade text;\nbegin\n if p_size_roll is null or p_grade_roll is null or p_size_roll not between 0 and 9999 or p_grade_roll not between 0 and 9999 then raise exception 'INVALID_MERCHANT_ROLL';end if;\n n:=case when p_size_roll<3000 then 1 when p_size_roll<8000 then 2 when p_size_roll<9700 then 3 else 4 end;\n grade:=case when p_grade_roll<7600 then 'common' when p_grade_roll<9600 then 'rare' when p_grade_roll<9970 then 'epic' else 'mythic' end;\n return jsonb_build_object('count',n,'rarity',grade);\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "merchant_reward",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_count integer, p_rarity text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.merchant_reward(p_count integer, p_rarity text)\n RETURNS integer\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\ndeclare position integer;rewards integer[];\nbegin\n if p_count is null or p_count not between 1 and 4 or p_rarity is null or p_rarity not in ('common','rare','epic','mythic') then raise exception 'INVALID_MERCHANT_REWARD';end if;\n position:=case p_rarity when 'common' then 1 when 'rare' then 2 when 'epic' then 3 else 4 end;\n rewards:=case p_count when 1 then array[100,130,170,200] when 2 then array[200,230,270,300] when 3 then array[300,360,430,500] else array[500,560,630,700] end;\n return rewards[position];\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "merchant_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.merchant_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare uid uuid:=auth.uid();d date;result jsonb;\nbegin\n if uid is null then raise exception 'AUTH_REQUIRED';end if;\n loop\n  perform app_private.ensure_merchant_orders();\n  d:=(clock_timestamp() at time zone 'Asia/Seoul')::date;\n  exit when exists(select 1 from app_private.merchant_days m where m.day=d);\n end loop;\n with stock as materialized (select c.species_id,count(*) n from public.player_collectibles c where c.user_id=uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is null group by c.species_id)\n select jsonb_build_object('day',d,'serverNow',clock_timestamp(),'resetsAt',(d+1)::timestamp at time zone 'Asia/Seoul','dailyLimit',null,\n 'deliveredToday',(select count(*) from app_private.merchant_deliveries x where x.user_id=uid and x.day=d),\n 'orders',coalesce(jsonb_agg(jsonb_build_object('id',o.id,'number',o.slot,'tier',o.tier,'regionName',r.name,\n 'baseGold',o.base_gold,'rewardGold',o.reward_gold,'completed',o.completed_at is not null,'mine',coalesce(o.completed_by=uid,false),\n 'delivery',case when o.completed_at is not null then jsonb_build_object('nickname',coalesce(o.completed_name,'섬 모험가'),'avatarPath',case when profile.id is not null then profile.avatar_path else o.completed_avatar_path end,'message',o.completed_message) end,\n 'items',(select jsonb_agg(item||jsonb_build_object('owned',coalesce(stock.n,0)) order by ord) from jsonb_array_elements(o.items) with ordinality a(item,ord)\n left join stock on stock.species_id=item->>'speciesId')) order by o.slot),'[]'::jsonb)) into result\n from app_private.merchant_orders o left join public.regions r on r.id=o.region_id left join public.player_profiles profile on profile.id=o.completed_by where o.day=d;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "move_collectibles",
         "config": [
           "search_path=\"\""
@@ -9275,6 +9709,16 @@
         "schema": "app_private",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.quest_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare t timestamptz:=clock_timestamp();\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('serverNow',t,'daily',app_private.quest_period('daily',t),'weekly',app_private.quest_period('weekly',t),'growth',app_private.growth_quest_period());\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "queue_title_catalog_change",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.queue_title_catalog_change()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n insert into app_private.title_dirty(user_id) select id from public.player_profiles on conflict do nothing;\n return null;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -9614,7 +10058,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_user uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.sync_player_titles(p_user uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare metrics jsonb;t record;\nbegin\n perform pg_advisory_xact_lock(hashtextextended('titles:'||p_user::text,0));\n metrics:=app_private.title_metrics(p_user)||app_private.rare_title_metrics(p_user);\n for t in select * from public.title_catalog c where coalesce((metrics->>c.metric)::bigint,0)>=c.target\n and (c.extra_metric is null or coalesce((metrics->>c.extra_metric)::bigint,0)>=c.extra_target)\n and not exists(select 1 from public.player_titles o where o.user_id=p_user and o.title_id=c.id) order by sort_order\n loop perform app_private.award_title(p_user,t.id);end loop;\n return metrics;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.sync_player_titles(p_user uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare metrics jsonb;t record;\nbegin\n perform pg_advisory_xact_lock(hashtextextended('titles:'||p_user::text,0));\n metrics:=app_private.title_metrics(p_user)||app_private.rare_title_metrics(p_user)||app_private.challenge_title_metrics(p_user);\n for t in select * from public.title_catalog c where coalesce((metrics->>c.metric)::bigint,0)>=c.target\n and (c.extra_metric is null or coalesce((metrics->>c.extra_metric)::bigint,0)>=c.extra_target)\n and not exists(select 1 from public.player_titles o where o.user_id=p_user and o.title_id=c.id) order by sort_order\n loop perform app_private.award_title(p_user,t.id);end loop;\n return metrics;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -9988,6 +10432,16 @@
         "securityDefiner": false
       },
       {
+        "name": "collectible_storage_filtered",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_offset integer, p_query text, p_kind text, p_rarity text, p_concept text",
+        "definition": "CREATE OR REPLACE FUNCTION public.collectible_storage_filtered(p_offset integer DEFAULT 0, p_query text DEFAULT ''::text, p_kind text DEFAULT 'all'::text, p_rarity text DEFAULT 'all'::text, p_concept text DEFAULT 'all'::text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.collectible_storage_filtered(p_offset,p_query,p_kind,p_rarity,p_concept)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "collection_state",
         "config": [
           "search_path=\"\""
@@ -10015,6 +10469,26 @@
         "schema": "public",
         "arguments": "p_comment_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION public.delete_exchange_listing_comment(p_comment_id uuid)\n RETURNS void\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.delete_exchange_listing_comment(p_comment_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "deliver_merchant_order",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_order_id uuid, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.deliver_merchant_order(p_order_id uuid, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.deliver_merchant_order(p_order_id,p_operation_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "deliver_merchant_order",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_order_id uuid, p_operation_id uuid, p_message text",
+        "definition": "CREATE OR REPLACE FUNCTION public.deliver_merchant_order(p_order_id uuid, p_operation_id uuid, p_message text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.deliver_merchant_order(p_order_id,p_operation_id,p_message)$function$\n",
         "securityDefiner": false
       },
       {
@@ -10305,6 +10779,16 @@
         "schema": "public",
         "arguments": "p_offset integer",
         "definition": "CREATE OR REPLACE FUNCTION public.memory_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.memory_leaderboard(p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "merchant_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.merchant_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.merchant_state()$function$\n",
         "securityDefiner": false
       },
       {
@@ -11253,6 +11737,228 @@
         "table": "memory_game_boards",
         "schema": "app_private",
         "definition": "NOT NULL run_id"
+      },
+      {
+        "name": "merchant_days_created_at_not_null",
+        "table": "merchant_days",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "merchant_days_day_not_null",
+        "table": "merchant_days",
+        "schema": "app_private",
+        "definition": "NOT NULL day"
+      },
+      {
+        "name": "merchant_days_pkey",
+        "table": "merchant_days",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (day)"
+      },
+      {
+        "name": "merchant_days_rules_version_not_null",
+        "table": "merchant_days",
+        "schema": "app_private",
+        "definition": "NOT NULL rules_version"
+      },
+      {
+        "name": "merchant_deliveries_collectible_ids_not_null",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL collectible_ids"
+      },
+      {
+        "name": "merchant_deliveries_created_at_not_null",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "merchant_deliveries_day_not_null",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL day"
+      },
+      {
+        "name": "merchant_deliveries_gold_check",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "CHECK ((gold > 0))"
+      },
+      {
+        "name": "merchant_deliveries_gold_not_null",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL gold"
+      },
+      {
+        "name": "merchant_deliveries_message_check",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "CHECK ((char_length(message) <= 80))"
+      },
+      {
+        "name": "merchant_deliveries_message_not_null",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL message"
+      },
+      {
+        "name": "merchant_deliveries_operation_id_not_null",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "merchant_deliveries_order_id_fkey",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (order_id) REFERENCES app_private.merchant_orders(id)"
+      },
+      {
+        "name": "merchant_deliveries_order_id_key",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "UNIQUE (order_id)"
+      },
+      {
+        "name": "merchant_deliveries_order_id_not_null",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL order_id"
+      },
+      {
+        "name": "merchant_deliveries_pkey",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "merchant_deliveries_user_id_fkey",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "merchant_deliveries_user_id_not_null",
+        "table": "merchant_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "merchant_orders_base_gold_check",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "CHECK ((base_gold > 0))"
+      },
+      {
+        "name": "merchant_orders_base_gold_not_null",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "NOT NULL base_gold"
+      },
+      {
+        "name": "merchant_orders_check",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "CHECK ((reward_gold > 0))"
+      },
+      {
+        "name": "merchant_orders_completed_by_fkey",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (completed_by) REFERENCES auth.users(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "merchant_orders_completed_message_check",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "CHECK ((char_length(completed_message) <= 80))"
+      },
+      {
+        "name": "merchant_orders_completed_message_not_null",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "NOT NULL completed_message"
+      },
+      {
+        "name": "merchant_orders_day_fkey",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (day) REFERENCES app_private.merchant_days(day)"
+      },
+      {
+        "name": "merchant_orders_day_not_null",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "NOT NULL day"
+      },
+      {
+        "name": "merchant_orders_day_slot_key",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "UNIQUE (day, slot)"
+      },
+      {
+        "name": "merchant_orders_id_not_null",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "merchant_orders_items_check",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "CHECK (((jsonb_typeof(items) = 'array'::text) AND ((jsonb_array_length(items) >= 1) AND (jsonb_array_length(items) <= 4))))"
+      },
+      {
+        "name": "merchant_orders_items_not_null",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "NOT NULL items"
+      },
+      {
+        "name": "merchant_orders_pkey",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "merchant_orders_region_id_fkey",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (region_id) REFERENCES regions(id)"
+      },
+      {
+        "name": "merchant_orders_reward_gold_not_null",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "NOT NULL reward_gold"
+      },
+      {
+        "name": "merchant_orders_slot_check",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "CHECK (((slot >= 1) AND (slot <= 40)))"
+      },
+      {
+        "name": "merchant_orders_slot_not_null",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "NOT NULL slot"
+      },
+      {
+        "name": "merchant_orders_tier_check",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "CHECK ((tier = ANY (ARRAY['small'::text, 'mixed'::text, 'special'::text, 'grand'::text])))"
+      },
+      {
+        "name": "merchant_orders_tier_not_null",
+        "table": "merchant_orders",
+        "schema": "app_private",
+        "definition": "NOT NULL tier"
       },
       {
         "name": "notice_operators_pkey",
@@ -21806,6 +22512,27 @@
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid"
       },
       {
+        "name": "challenge_title_metrics",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid"
+      },
+      {
+        "name": "challenge_title_metrics",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid"
+      },
+      {
+        "name": "challenge_title_metrics",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid"
+      },
+      {
         "name": "check_native_collectible_habitats",
         "role": "anon",
         "schema": "app_private",
@@ -21953,6 +22680,27 @@
         "arguments": "p_offset integer, p_query text, p_kind text"
       },
       {
+        "name": "collectible_storage_filtered",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer, p_query text, p_kind text, p_rarity text, p_concept text"
+      },
+      {
+        "name": "collectible_storage_filtered",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_offset integer, p_query text, p_kind text, p_rarity text, p_concept text"
+      },
+      {
+        "name": "collectible_storage_filtered",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer, p_query text, p_kind text, p_rarity text, p_concept text"
+      },
+      {
         "name": "collection_state",
         "role": "anon",
         "schema": "app_private",
@@ -22058,6 +22806,48 @@
         "arguments": "p_comment_id uuid"
       },
       {
+        "name": "deliver_merchant_order",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_order_id uuid, p_operation_id uuid"
+      },
+      {
+        "name": "deliver_merchant_order",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_order_id uuid, p_operation_id uuid"
+      },
+      {
+        "name": "deliver_merchant_order",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_order_id uuid, p_operation_id uuid"
+      },
+      {
+        "name": "deliver_merchant_order",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_order_id uuid, p_operation_id uuid, p_message text"
+      },
+      {
+        "name": "deliver_merchant_order",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_order_id uuid, p_operation_id uuid, p_message text"
+      },
+      {
+        "name": "deliver_merchant_order",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_order_id uuid, p_operation_id uuid, p_message text"
+      },
+      {
         "name": "deliver_notice_publication",
         "role": "anon",
         "schema": "app_private",
@@ -22098,6 +22888,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_listing_id uuid, p_title text"
+      },
+      {
+        "name": "ensure_merchant_orders",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "ensure_merchant_orders",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "ensure_merchant_orders",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "equip_fishing_rod",
@@ -23087,6 +23898,153 @@
         "arguments": "p_id uuid"
       },
       {
+        "name": "merchant_easy_items",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_items jsonb"
+      },
+      {
+        "name": "merchant_easy_items",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_items jsonb"
+      },
+      {
+        "name": "merchant_easy_items",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_items jsonb"
+      },
+      {
+        "name": "merchant_order_bonus",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_items jsonb"
+      },
+      {
+        "name": "merchant_order_bonus",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_items jsonb"
+      },
+      {
+        "name": "merchant_order_bonus",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_items jsonb"
+      },
+      {
+        "name": "merchant_order_grade",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_roll integer"
+      },
+      {
+        "name": "merchant_order_grade",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_roll integer"
+      },
+      {
+        "name": "merchant_order_grade",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_roll integer"
+      },
+      {
+        "name": "merchant_order_shape",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_slot integer"
+      },
+      {
+        "name": "merchant_order_shape",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_slot integer"
+      },
+      {
+        "name": "merchant_order_shape",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_slot integer"
+      },
+      {
+        "name": "merchant_recipe",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_size_roll integer, p_grade_roll integer"
+      },
+      {
+        "name": "merchant_recipe",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_size_roll integer, p_grade_roll integer"
+      },
+      {
+        "name": "merchant_recipe",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_size_roll integer, p_grade_roll integer"
+      },
+      {
+        "name": "merchant_reward",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_count integer, p_rarity text"
+      },
+      {
+        "name": "merchant_reward",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_count integer, p_rarity text"
+      },
+      {
+        "name": "merchant_reward",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_count integer, p_rarity text"
+      },
+      {
+        "name": "merchant_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "merchant_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "merchant_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "move_collectibles",
         "role": "anon",
         "schema": "app_private",
@@ -23543,6 +24501,27 @@
       },
       {
         "name": "quest_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "queue_title_catalog_change",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "queue_title_catalog_change",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "queue_title_catalog_change",
         "role": "service_role",
         "schema": "app_private",
         "execute": false,
@@ -25040,6 +26019,27 @@
         "arguments": "p_offset integer, p_query text, p_kind text"
       },
       {
+        "name": "collectible_storage_filtered",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer, p_query text, p_kind text, p_rarity text, p_concept text"
+      },
+      {
+        "name": "collectible_storage_filtered",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_offset integer, p_query text, p_kind text, p_rarity text, p_concept text"
+      },
+      {
+        "name": "collectible_storage_filtered",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer, p_query text, p_kind text, p_rarity text, p_concept text"
+      },
+      {
         "name": "collection_state",
         "role": "anon",
         "schema": "public",
@@ -25101,6 +26101,48 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_comment_id uuid"
+      },
+      {
+        "name": "deliver_merchant_order",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_order_id uuid, p_operation_id uuid"
+      },
+      {
+        "name": "deliver_merchant_order",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_order_id uuid, p_operation_id uuid"
+      },
+      {
+        "name": "deliver_merchant_order",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_order_id uuid, p_operation_id uuid"
+      },
+      {
+        "name": "deliver_merchant_order",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_order_id uuid, p_operation_id uuid, p_message text"
+      },
+      {
+        "name": "deliver_merchant_order",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_order_id uuid, p_operation_id uuid, p_message text"
+      },
+      {
+        "name": "deliver_merchant_order",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_order_id uuid, p_operation_id uuid, p_message text"
       },
       {
         "name": "edit_exchange_listing_title",
@@ -25710,6 +26752,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_offset integer"
+      },
+      {
+        "name": "merchant_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "merchant_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "merchant_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "move_collectibles",

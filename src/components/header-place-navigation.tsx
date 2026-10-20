@@ -2,6 +2,7 @@ import { useSavingsStatus } from '@/features/savings/use-savings-status'
 import { useHarborStatus } from '@/features/port/use-harbor-status'
 import { useOperator } from '@/features/notices/use-operator'
 import { appArt } from '@/components/app-art'
+import { useNewContent } from './use-new-content'
 
 import { Link, useLocation } from 'react-router'
 import { ChevronDown, Check } from 'lucide-react'
@@ -37,6 +38,7 @@ export const headerPlaces = [
   { to: '/expeditions', label: '통발 설치', icon: appArt.expeditions },
   { to: '/farm', label: '농장', icon: appArt.farm },
   { to: '/exchange', label: '거래소', icon: Handshake },
+  { to: '/merchant-orders', label: '바다 상인의 의뢰', icon: appArt.merchantOrders },
   { to: '/savings', label: '조개 적금', icon: Shell },
   { to: '/warehouse', label: '창고', icon: Warehouse },
   { to: '/arcade', label: '게임', icon: Gamepad2 },
@@ -48,6 +50,7 @@ export const headerPlaces = [
 ]
 
 export function HeaderPlaceNavigation() {
+  const newContent = useNewContent()
   const { pathname } = useLocation()
   const harbor = useHarborStatus(),
     savings = useSavingsStatus(),
@@ -59,7 +62,7 @@ export function HeaderPlaceNavigation() {
       paths: ['/', '/aquarium', '/warehouse', '/collection', '/titles', '/collection-animation'],
     },
     { label: '바다', paths: ['/harbor', '/port', '/shipyard'] },
-    { label: '장터', paths: ['/shop', '/item-shop', '/exchange', '/savings'] },
+    { label: '장터', paths: ['/shop', '/item-shop', '/exchange', '/merchant-orders', '/savings'] },
     { label: '놀이터', paths: ['/arcade', '/music-room', '/farm'] },
     {
       label: '소셜',
@@ -112,6 +115,15 @@ export function HeaderPlaceNavigation() {
                           <ItemIcon aria-hidden="true" className="size-7" />
                         </span>
                         <span className="flex-1 whitespace-nowrap">{label}</span>
+                        {((to === '/board' && newContent.board) ||
+                          (to === '/exchange' && newContent.exchange)) && (
+                          <span
+                            aria-label="새 글 있음"
+                            className="text-[9px] font-bold tracking-wider text-rose-600 dark:text-rose-400"
+                          >
+                            NEW
+                          </span>
+                        )}
                         {to === '/collection-animation' && (
                           <span className="shrink-0 rounded bg-primary/10 px-1.5 py-1 text-[10px] text-primary">
                             운영자

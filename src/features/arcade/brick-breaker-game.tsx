@@ -53,6 +53,7 @@ function AccountBrickGame() {
     [busy, setBusy] = useState(false)
   const [countdown, setCountdown] = useState<number | null>(null)
   const countdownLock = useRef(false),
+    manualPause = useRef(false),
     launchRequest = useRef<() => void>(() => {})
   const paidRun = useRef<BrickRun | null>(null),
     operation = useRef<string | null>(null),
@@ -140,27 +141,33 @@ function AccountBrickGame() {
         countdownLock.current = false
         setCountdown(null)
         controller.current?.pause(false)
-        controller.current?.launch()
       }
     }, 1000)
     return () => clearTimeout(timer)
   }, [countdown])
   function launch() {
     if (countdownLock.current || paused || busy || ended || !started || lab) return
-    countdownLock.current = true
-    controller.current?.pause(true)
-    setCountdown(3)
+    controller.current?.launch()
   }
   launchRequest.current = launch
-  function pause(value: boolean) {
+  function pause(value: boolean, manual = false) {
     countdownLock.current = false
     setCountdown(null)
+    if (!value && manual && manualPause.current && started && !ended && !lab) {
+      manualPause.current = false
+      countdownLock.current = true
+      setPaused(false)
+      setCountdown(3)
+      return
+    }
+    manualPause.current = value && manual
     controller.current?.pause(value)
     setPaused(value)
   }
   function start(nextMode: BrickMode) {
     if (requestLock.current || busy) return
     previousLives.current = 3
+    manualPause.current = false
     setLifeLoss(0)
     setNetworkError('')
     setMode(nextMode)
@@ -189,6 +196,7 @@ function AccountBrickGame() {
         throw new Error('FINISHED_OPERATION')
       }
       paidRun.current = run
+      manualPause.current = false
       operation.current = null
       previousLives.current = 0
       setLifeLoss(0)
@@ -236,6 +244,7 @@ function AccountBrickGame() {
     controller.current?.stop()
     paidRun.current = null
     setMode(null)
+    manualPause.current = false
     setScore(initial)
     previousLives.current = 3
     setPaused(false)
@@ -275,7 +284,7 @@ function AccountBrickGame() {
               className="h-9 shrink-0 gap-1.5 rounded-lg border-[#e7c19b]/40 bg-[#fff1dd]/10 px-3 text-xs text-[#fff1dd] hover:bg-[#fff1dd]/20 hover:text-white"
               aria-label={paused ? '게임 계속하기' : '게임 일시정지'}
               disabled={ended || busy}
-              onClick={() => pause(!paused)}
+              onClick={() => pause(!paused, true)}
             >
               {paused ? <Play className="size-4" /> : <Pause className="size-4" />}
               {paused ? '계속하기' : '일시정지'}
@@ -396,7 +405,7 @@ function AccountBrickGame() {
                       <Button
                         className="min-h-12 rounded-xl"
                         disabled={busy}
-                        onClick={() => pause(false)}
+                        onClick={() => pause(false, true)}
                       >
                         {'계속하기'}
                       </Button>

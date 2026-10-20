@@ -10,8 +10,8 @@ async function earned(){return (await state()).titles.filter(t=>t.earnedAt).map(
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},60000)
 beforeEach(async()=>{await db.exec('begin');for(const [id,name]of [[uid,'낚시꾼'],[other,'친구']]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,name]);await db.query('insert into public.player_wallets(user_id,gold) values($1,50000)',[id])}})
 afterEach(async()=>{await db.exec('rollback')});afterAll(async()=>{await db?.close()})
-it('lists all 69 titles and forbids equipping an unearned title',async()=>{
- const s=await state();expect(s.titles).toHaveLength(69);expect(s.titles.filter(t=>t.category==='growth')).toHaveLength(41)
+it('lists all 99 titles and forbids equipping an unearned title',async()=>{
+ const s=await state();expect(s.titles).toHaveLength(99);expect(s.titles.filter(t=>t.category==='growth')).toHaveLength(46)
  expect(s.equipped).toBe('beginner');expect(s.titles.filter(t=>t.earnedAt).map(t=>t.id)).toEqual(['beginner'])
  await expect(user("select public.equip_title('fishing-4')")).rejects.toThrow(/NOT_EARNED/)
 })
@@ -202,7 +202,7 @@ it('recognizes reciprocal friendship gifts, fresh catches and different neighbor
 })
 
 it('delivers welcome gold once and credits only when the recipient claims',async()=>{
- const gifts=(await user('select public.gift_mailbox() s')).rows[0].s.items
+ const gifts=(await user('select public.gift_mailbox() s')).rows[0].s.items.filter(g=>g.reward_kind==='gold')
  expect(gifts).toHaveLength(1);const gift=gifts[0]
  expect(gift).toMatchObject({sender_id:null,sender_name:'퐁당섬 운영자',source:'system',reward_kind:'gold',quantity:500,status:'pending'})
  expect((await db.query('select gold from public.player_wallets where user_id=$1',[uid])).rows[0].gold).toBe(50000)
@@ -212,7 +212,7 @@ it('delivers welcome gold once and credits only when the recipient claims',async
  expect((await db.query('select gold from public.player_wallets where user_id=$1',[uid])).rows[0].gold).toBe(50500)
  await db.query("update auth.users set raw_user_meta_data=jsonb_build_object('game_nickname','새이름') where id=$1",[uid])
  await user('select public.sync_player_profile()');await user('select public.sync_player_profile()')
- expect((await user('select public.gift_mailbox() s')).rows[0].s.items).toHaveLength(1)
+ expect((await user('select public.gift_mailbox() s')).rows[0].s.items.filter(g=>g.id===gift.id)).toHaveLength(1)
  expect((await db.query('select app_private.send_welcome_gift($1) gift',[uid])).rows[0].gift).toBeNull()
  expect((await db.query('select count(*) n from public.notifications where recipient_id=$1 and gift_id=$2',[uid,gift.id])).rows[0].n).toBe(1)
 })
@@ -224,3 +224,67 @@ it('awards the full course for fish, trash and decoration on one Korea date with
  expect(await earned()).toContain('full-course');
  expect((await state()).titles.find(t=>t.id==='full-course').description).toBe('하루에 물고기·쓰레기·장식물 모두 포획');
 });
+
+it.each([
+ ['challenge-unbroken-reel',12,'fish','common'],
+ ['challenge-no-ordinary',5,'fish','rare'],
+ ['challenge-fish-interview',3,'fish','epic'],
+ ['challenge-gods-in-line',2,'fish','mythic'],
+ ['challenge-recycling-day',7,'trash','common'],
+])('requires the full uninterrupted manual streak for %s',async(id,n,kind,rarity)=>{
+ for(let i=0;i<n-1;i++)await log({kind,rarity,species:'streak'})
+ await log({kind,rarity,species:'streak',source:'expedition'})
+ expect(await earned()).not.toContain(id)
+ await log()
+ for(let i=0;i<n-1;i++)await log({kind,rarity,species:'streak'})
+ expect(await earned()).not.toContain(id)
+ await log({kind,rarity,species:'streak'})
+ expect(await earned()).toContain(id)
+ await state();await state()
+ expect((await db.query('select count(*)::int n from public.notifications where recipient_id=$1 and achievement_id=$2',[uid,id])).rows[0].n).toBe(1)
+})
+it.each([
+ ['challenge-crumb-rebellion','bait_shell_crumbs','rare',30],
+ ['challenge-pupa-dream','bait_firefly_pupa','epic',20],
+ ['challenge-lightning-twenty','bait_lightning_stardust','epic',20],
+ ['challenge-candle-god','bait_starlight_wax','mythic',3],
+ ['challenge-cracked-starlight','bait_cracked_star','mythic',5],
+ ['challenge-worm-theology','bait','mythic',3],
+])('counts only the exact manual bait and grade for %s',async(id,bait,rarity,target)=>{
+ await log({kind:'fish',rarity,species:'bait-test',bait,source:'expedition'})
+ await log({kind:'fish',rarity,species:'bait-test',bait:'other-bait'})
+ await log({kind:'decoration',rarity,species:'bait-test',bait})
+ for(let i=0;i<target-1;i++)await log({kind:'fish',rarity,species:'bait-test',bait})
+ expect(await earned()).not.toContain(id)
+ await log({kind:'fish',rarity,species:'bait-test',bait})
+ expect(await earned()).toContain(id)
+ expect((await state()).titles.find(t=>t.id===id).description).toBeTruthy()
+})
+it('counts distinct species, seas, baits and Korea dates rather than repeated catches',async()=>{
+ for(let i=0;i<20;i++)await log({kind:'fish',rarity:'mythic',species:'same',region:'pongdang',bait:'bait'})
+ const first=(await db.query('select app_private.challenge_title_metrics($1) m',[uid])).rows[0].m
+ expect(first).toMatchObject({challenge_mythic_unique:1,challenge_mythic_seas:1,challenge_mythic_baits:1,challenge_days:1})
+ for(let i=1;i<20;i++)await log({kind:'fish',rarity:'mythic',species:'unique-'+i,region:'sea-'+i,bait:'bait-'+i})
+ expect(await earned()).toEqual(expect.arrayContaining(['challenge-mythic-editor','challenge-mythic-business-trip','challenge-divine-menu']))
+ await log({at:'2026-10-19T14:59:59Z'});await log({at:'2026-10-19T15:00:00Z'})
+ expect((await db.query('select app_private.challenge_title_metrics($1) m',[uid])).rows[0].m.challenge_days).toBe(2)
+ await expect(user('select app_private.challenge_title_metrics($1)',[other])).rejects.toThrow(/permission denied/)
+})
+it('requires a completed mythic delivery and queues the delivering player only',async()=>{
+ const order=(await db.query("select id from app_private.merchant_orders order by day desc,slot limit 1")).rows[0]
+ await db.query("update app_private.merchant_orders set items=jsonb_build_array(jsonb_build_object('speciesId','muk-hyeonmu','rarity','mythic','quantity',1,'unitGold',300)) where id=$1",[order.id])
+ expect(await earned()).not.toContain('challenge-mythic-parcel')
+ await db.query('update app_private.merchant_orders set completed_by=$1,completed_at=clock_timestamp() where id=$2',[uid,order.id])
+ await db.exec('delete from app_private.title_dirty')
+ await db.query('insert into app_private.merchant_deliveries(user_id,operation_id,order_id,day,gold,collectible_ids) select $1,gen_random_uuid(),id,day,reward_gold,\'{}\'::uuid[] from app_private.merchant_orders where id=$2',[uid,order.id])
+ expect((await db.query('select user_id from app_private.title_dirty')).rows).toEqual([{user_id:uid}])
+ expect(await earned()).toContain('challenge-mythic-parcel')
+ expect((await user('select public.title_state() s',[],other)).rows[0].s.titles.find(t=>t.id==='challenge-mythic-parcel').earnedAt).toBeNull()
+})
+it('requires two mythic fish in a single claimed harbor voyage, not separate trips or decorations',async()=>{
+ await harborCatch('neoul-boat','bait','pongdang',[{id:crypto.randomUUID(),species:{id:'muk-hyeonmu',kind:'fish',rarity:'mythic'}}])
+ await harborCatch('neoul-boat','bait','pongdang',[{id:crypto.randomUUID(),species:{id:'muk-hyeonmu',kind:'fish',rarity:'mythic'}},{id:crypto.randomUUID(),species:{id:'fake-decor',kind:'decoration',rarity:'mythic'}}])
+ expect(await earned()).not.toContain('challenge-captain-really')
+ await harborCatch('neoul-boat','bait','pongdang',[{id:crypto.randomUUID(),species:{id:'muk-hyeonmu',kind:'fish',rarity:'mythic'}},{id:crypto.randomUUID(),species:{id:'muk-hyeonmu',kind:'fish',rarity:'mythic'}}])
+ expect(await earned()).toContain('challenge-captain-really')
+})

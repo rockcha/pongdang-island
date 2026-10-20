@@ -23,7 +23,7 @@ export const appArt={
  fish:artwork('kind-fish'),decoration:artwork('kind-decoration'),trash:artwork('kind-trash'),
  attendance:artwork('attendance'),alerts:artwork('alerts'),mailNotice:artwork('mail-notice'),mailFriend:artwork('mail-friend'),mailNews:artwork('mail-news'),mailGift:artwork('mail-gift'),
  island:artwork('island'),aquarium:artwork('aquarium'),map:artwork('map'),shop:artwork('shop'),
- shipyard:artwork('shipyard'),expeditions:artwork('fish-trap'),exchange:artwork('exchange'),
+ shipyard:artwork('shipyard'),expeditions:artwork('fish-trap'),exchange:artwork('exchange'),merchantOrders:artwork('sea-merchant-orders'),
  savings:artwork('savings'),warehouse:artwork('warehouse'),arcade:artwork('arcade'),
  lighthouse:artwork('lighthouse'),mailbox:artwork('mailbox'),plaza:artwork('plaza'),
  list:artwork('list'),storage:artwork('storage'),theme:artwork('theme'),background:artwork('aquarium-background'),collection:artwork('collection-v2'),
@@ -32,6 +32,7 @@ export const appArt={
 }
 const placeArt:Record<string,ReturnType<typeof artwork>>={
  '/item-shop':appArt.itemShop,
+ '/merchant-orders':appArt.merchantOrders,
  '/port':appArt.port,
  '/music-room':appArt.music,
  '/':appArt.island,'/aquarium':appArt.aquarium,'/harbor':appArt.map,'/shop':appArt.shop,'/farm':appArt.farm,

@@ -1,3 +1,4 @@
+import { MerchantPage } from '@/features/merchant/merchant-page'
 import { DownloadPage } from '@/pages/download-page'
 import { BoardPage, BoardDetailPage } from '@/features/board/board-page'
 import { CollectionPage } from '@/features/collection/collection-page'
@@ -94,6 +95,7 @@ export function AppRoutes() {
             <Route path="square/bugs" element={<BugReportsPage />} />
             <Route path="square/bugs/:bugReportId" element={<BugReportDetail />} />
             <Route path="merchant-street" element={<Navigate to="/shop" replace />} />
+            <Route path="merchant-orders" element={<MerchantPage />} />
             <Route path="exchange" element={<ExchangePage />} />
             <Route path="exchange/:listingId" element={<ExchangeDetailPage />} />
             <Route path="merchant-street/exchange" element={<Navigate to="/exchange" replace />} />

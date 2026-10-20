@@ -2,6 +2,7 @@ import { EmptyState } from '@/components/empty-state'
 import { appArt } from '@/components/app-art'
 import { CollectibleSearchInput } from './collectible-search-input'
 import { RaritySelect } from '@/components/rarity-select'
+import { RegionConceptSelect, matchesRegionConcept } from '@/components/region-concept-select'
 import { Label } from '@/components/ui/label'
 import { useRef, useState } from 'react'
 import { Minus, Plus } from 'lucide-react'
@@ -45,6 +46,7 @@ export function AquariumInventoryDialog({
     [category, setCategory] = useState<CollectibleKind | 'all'>('all'),
     [rarity, setRarity] = useState<Rarity | 'all'>('all')
   const [query, setQuery] = useState('')
+  const [concept, setConcept] = useState('all')
   const [selection, setSelection] = useState<Set<string>>(new Set())
   const [storeIds, setStoreIds] = useState<string[] | null>(null),
     [storeError, setStoreError] = useState('')
@@ -66,6 +68,7 @@ export function AquariumInventoryDialog({
     (group) =>
       (category === 'all' || group.species.kind === category) &&
       (rarity === 'all' || group.species.rarity === rarity) &&
+      matchesRegionConcept(group.species, concept) &&
       group.species.name.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()),
   )
   const selected = groups
@@ -172,7 +175,24 @@ export function AquariumInventoryDialog({
                 setSelection(new Set())
               }}
             />
-            <RaritySelect value={rarity} onChange={setRarity} />
+          </div>
+          <div className="flex min-w-0 shrink-0 items-center gap-2">
+            <RegionConceptSelect
+              value={concept}
+              disabled={busy || selling}
+              onChange={(value) => {
+                setConcept(value)
+                setSelection(new Set())
+              }}
+            />
+            <RaritySelect
+              value={rarity}
+              disabled={busy || selling}
+              onChange={(value) => {
+                setRarity(value)
+                setSelection(new Set())
+              }}
+            />
           </div>
           <div className="-mx-4 flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain">
             {filtered.length ? (

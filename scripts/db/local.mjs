@@ -53,6 +53,7 @@ export async function readCatalog(db) {
   if((await db.query("select to_regclass('public.region_maps') is not null as present")).rows[0].present)result.region_maps=(await db.query('select * from public.region_maps order by region_id')).rows
   if((await db.query("select to_regclass('public.fishing_rods') is not null as present")).rows[0].present)result.fishing_rods=(await db.query('select * from public.fishing_rods order by id')).rows
   if((await db.query("select to_regclass('public.harbor_vessels') is not null as present")).rows[0].present)result.harbor_vessels=(await db.query('select * from public.harbor_vessels order by id')).rows
+  if(JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8')).title_catalog)result.title_catalog=(await db.query('select * from public.title_catalog order by id')).rows
   const retained=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8')).retained_species_prices
   if(retained){
     const ids=new Set(retained.map(p=>p.id))
@@ -60,6 +61,14 @@ export async function readCatalog(db) {
     result.collectible_species=result.collectible_species.filter(s=>!ids.has(s.id))
     result.collectible_habitats=result.collectible_habitats.filter(h=>!ids.has(h.species_id))
     result.retained_species_prices=retained.map(p=>({...p,sell_price:prices.get(p.id)??p.sell_price}))
+  }
+  const details=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8')).retained_species_details
+  if(details){
+    const ids=new Set(details.map(r=>r.id))
+    const current=new Map(result.collectible_species.filter(s=>ids.has(s.id)).map(s=>[s.id,s]))
+    result.collectible_species=result.collectible_species.filter(s=>!ids.has(s.id))
+    result.collectible_habitats=result.collectible_habitats.filter(h=>!ids.has(h.species_id))
+    result.retained_species_details=details.map(r=>({id:r.id,name:current.get(r.id)?.name??r.name,description:current.get(r.id)?.description??r.description}))
   }
   return result
 }

@@ -4,8 +4,8 @@ import type {ThemeTier} from './theme-tiers'
 export type AquariumTank = { id: string; name: string; background_id: string; is_default: boolean; created_at: string }
 export type AquariumState = { inhabitants:OwnedCollectible[]; storageCount:number; tankCapacity:number; tanks: AquariumTank[]; tankPrice: number; background: string; owned: string[]; catalog: { id: string; name: string; price: number; image_path: string; tier?:ThemeTier }[] }
 export type CollectibleStorage={items:OwnedCollectible[];total:number;pageSize:number}
-export async function loadCollectibleStorage(offset=0,query='',kind='all'){
- const {data,error}=await createClient().rpc('collectible_storage',{p_offset:offset,p_query:query,p_kind:kind})
+export async function loadCollectibleStorage(offset=0,query='',kind='all',rarity='all',concept='all'){
+ const {data,error}=await createClient().rpc('collectible_storage_filtered',{p_offset:offset,p_query:query,p_kind:kind,p_rarity:rarity,p_concept:concept})
  if(error)throw error
  return data
 }

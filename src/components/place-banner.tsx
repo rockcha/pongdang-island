@@ -120,6 +120,12 @@ export const placeBanners: Record<
     description: '게시판과 작은 집들이 둘러선 섬의 광장',
     subtitle: placeSections.square.description,
   },
+  '/merchant-orders': {
+    title: '바다 상인의 의뢰',
+    image: 'sea-merchant',
+    description: '햇살이 드는 항구에서 주문서를 붙이는 수달 상인',
+    subtitle: '바다에서 모은 작은 것들, 상인이 기다려요',
+  },
   '/exchange': {
     title: '거래소',
     image: 'merchant-exchange',

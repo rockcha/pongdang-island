@@ -1,4 +1,4 @@
-import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
+import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import OddEvenGame from '@/features/arcade/odd-even-game'
 const mocks=vi.hoisted(()=>({action:vi.fn(),ranking:vi.fn(),refresh:vi.fn(),friend:vi.fn()}))
@@ -8,6 +8,23 @@ vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wallet:{gold:100},loading:false,refresh:mocks.refresh})}))
 beforeEach(()=>{vi.clearAllMocks();mocks.action.mockResolvedValue({run:null,maxWins:20});mocks.ranking.mockResolvedValue({rows:[],total:0})})
 afterEach(()=>{cleanup();vi.restoreAllMocks()})
+it('keeps paid admission confirmation in the game dialog while opening and allows exit',async()=>{
+ const run={id:'paid-run',stake:10,wins:0,round:1,stage:'choose',pearls:null,choice:null}
+ mocks.action.mockResolvedValueOnce({run:null,maxWins:20}).mockResolvedValue({run,maxWins:20})
+ render(<OddEvenGame />)
+ await waitFor(()=>expect(screen.getByRole('button',{name:'실전 (골드 10)'}).hasAttribute('disabled')).toBe(false))
+ fireEvent.click(screen.getByRole('button',{name:'실전 (골드 10)'}))
+ const confirm=screen.getByRole('alertdialog')
+ expect(confirm.closest('dialog')).toBe(screen.getByRole('dialog',{name:'퐁이의 홀짝 조개'}))
+ fireEvent.click(within(confirm).getByRole('button',{name:'확인'}))
+ await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
+ await waitFor(()=>expect(screen.getByRole('button',{name:'홀'}).hasAttribute('disabled')).toBe(false),{timeout:2000})
+ fireEvent.click(screen.getByRole('button',{name:'게임 나가기'}))
+ expect(screen.getByRole('alertdialog')).toBeTruthy()
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'나가기'}))
+ await waitFor(()=>expect(screen.getByRole('button',{name:'실전 (골드 10)'})).toBeTruthy())
+ expect(mocks.action.mock.calls.filter(([a])=>a.p_action==='start')).toHaveLength(1)
+})
 it('sends a friend request from cashout rankings and disables existing relationships',async()=>{
  mocks.friend.mockResolvedValue(undefined)
  mocks.ranking.mockResolvedValue({rows:[{id:'a',rank:1,userId:'u2',friendCode:'CODE2',nickname:'친구후보',gold:40,wins:2,mine:false,friendStatus:null},{id:'b',rank:2,userId:'u3',friendCode:'CODE3',nickname:'기존친구',gold:20,wins:1,mine:false,friendStatus:'accepted'},{id:'c',rank:3,nickname:'나',gold:20,wins:1,mine:true}],total:3})

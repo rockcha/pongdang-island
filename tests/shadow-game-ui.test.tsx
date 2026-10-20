@@ -10,6 +10,21 @@ vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>'/images
 afterEach(()=>cleanup())
 function state(expired=false):ShadowState{return {serverNow:new Date().toISOString(),run:{id:'run',score:0,lives:3,finished:false,round:{id:'round',number:1,imagePath:'fish.png',options:[{id:'a',name:'물고기 A'},{id:'b',name:'쓰레기 B'},{id:'c',name:'장식 C'},{id:'d',name:'물고기 D'}],deadline:new Date(Date.now()+(expired?-1000:10000)).toISOString(),answered:false,correct:null,timedOut:null,answerName:null}}}}
 beforeEach(()=>{vi.clearAllMocks();mocks.board.mockResolvedValue({rows:[],total:0,pageSize:20,offset:0})})
+it('closes paid admission without moving its portal and leaves the running game',async()=>{
+ mocks.action.mockResolvedValueOnce({serverNow:new Date().toISOString(),run:null}).mockResolvedValue(state())
+ render(<ShadowGame />)
+ await waitFor(()=>expect(screen.getByRole('button',{name:'실전 (골드 10)'}).hasAttribute('disabled')).toBe(false))
+ fireEvent.click(screen.getByRole('button',{name:'실전 (골드 10)'}))
+ const confirm=screen.getByRole('alertdialog')
+ expect(confirm.closest('dialog')).toBe(screen.getByRole('dialog',{name:'그림자 맞추기'}))
+ fireEvent.click(within(confirm).getByRole('button',{name:'확인'}))
+ await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
+ expect(screen.getByRole('region',{name:'그림자 문제'})).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'게임 나가기'}))
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'나가기'}))
+ await waitFor(()=>expect(screen.getByRole('button',{name:'실전 (골드 10)'})).toBeTruthy())
+ expect(mocks.action.mock.calls.filter(([a])=>a.p_action==='start')).toHaveLength(1)
+})
 it('starts and answers practice without sending a start or answer RPC or refreshing gold',async()=>{
  mocks.action.mockResolvedValue({serverNow:new Date().toISOString(),run:null})
  render(<ShadowGame />)

@@ -511,7 +511,7 @@ function AccountGame() {
         </GameModal>
       )}
       <ConfirmDialog
-        portalContainer={gameOpen ? modalContainer : undefined}
+        portalContainer={modalContainer}
         illustration="game"
         open={confirm}
         onOpenChange={setConfirm}

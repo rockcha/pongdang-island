@@ -419,7 +419,7 @@ function AccountMemory() {
         </GameModal>
       )}
       <ConfirmDialog
-        portalContainer={gameOpen ? modalContainer : undefined}
+        portalContainer={modalContainer}
         illustration={confirmation === 'leave' ? 'caution' : 'game'}
         open={confirmation !== null}
         onOpenChange={(open) => {

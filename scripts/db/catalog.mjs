@@ -3,6 +3,7 @@ import { resolve, dirname } from 'node:path'
 
 export function catalogSql(catalog, {tables,ids} = {}) {
   if (catalog.formatVersion !== 1) throw new Error('Unsupported catalog format')
+  if(catalog.collectible_species.some(s=>s.kind==='trash'&&(!Number.isSafeInteger(s.sell_price)||s.sell_price<=0)))throw new Error('Trash must have a positive sell price')
   const literal = value => value === null ? 'null' : typeof value === 'boolean' || typeof value === 'number' ? String(value) : `'${String(value).replaceAll("'", "''")}'`
   const identifier = value => {
     if (!/^[a-z_]+$/.test(value)) throw new Error(`Invalid column: ${value}`)

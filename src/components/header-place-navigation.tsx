@@ -1,5 +1,7 @@
 import { useSavingsStatus } from '@/features/savings/use-savings-status'
 import { useHarborStatus } from '@/features/port/use-harbor-status'
+import { useExpeditionStatus } from '@/features/expeditions/use-expedition-status'
+import { Fragment } from 'react'
 import { useOperator } from '@/features/notices/use-operator'
 import { appArt } from '@/components/app-art'
 import { useNewContent } from './use-new-content'
@@ -32,10 +34,11 @@ export const headerPlaces = [
   { to: '/collection', label: '도감', icon: appArt.collection },
   { to: '/collection-animation', label: '애니메이션 도감', icon: appArt.collection },
   { to: '/harbor', label: '지도', icon: Map },
+  { to: '/fishing', label: '낚시', icon: appArt.rod },
   { to: '/shop', label: '낚시 상점', icon: Store },
   { to: '/item-shop', label: '아이템 상점', icon: appArt.itemShop },
   { to: '/shipyard', label: '조선소', icon: Ship },
-  { to: '/expeditions', label: '통발 설치', icon: appArt.expeditions },
+  { to: '/expeditions', label: '통발', icon: appArt.expeditions },
   { to: '/farm', label: '농장', icon: appArt.farm },
   { to: '/exchange', label: '거래소', icon: Handshake },
   { to: '/merchant-orders', label: '바다 상인의 의뢰', icon: appArt.merchantOrders },
@@ -52,20 +55,28 @@ export function HeaderPlaceNavigation() {
   const newContent = useNewContent()
   const { pathname } = useLocation()
   const harbor = useHarborStatus(),
+    expedition = useExpeditionStatus(),
     savings = useSavingsStatus(),
     { operator } = useOperator()
-  const current = /^\/(region|sailing)\//.test(pathname) ? '/harbor' : pathname
+  const current = /^\/(region|sailing)\//.test(pathname) ? '/fishing' : pathname
+  const hasNewContent=(to:string)=>
+    (to==='/board'&&newContent.board)||
+    (to==='/square/suggestions'&&newContent.suggestions)||
+    (to==='/square/bugs'&&newContent.bugs)||
+    (to==='/exchange'&&newContent.exchange)
   const groups = [
     {
       label: '내 섬',
-      paths: ['/', '/aquarium', '/warehouse', '/collection', '/titles', '/collection-animation'],
+      paths: ['/', '/aquarium', '/warehouse', '/collection', '/titles', '/collection-animation', '/savings'],
+      separatorBefore: '/warehouse',
     },
-    { label: '바다', paths: ['/harbor', '/port', '/shipyard'] },
-    { label: '장터', paths: ['/shop', '/item-shop', '/exchange', '/merchant-orders', '/savings'] },
-    { label: '놀이터', paths: ['/arcade', '/music-room', '/farm'] },
+    { label: '바다', paths: ['/harbor', '/fishing', '/expeditions', '/port', '/shipyard'], separatorBefore: '/port' },
+    { label: '장터', paths: ['/shop', '/item-shop', '/exchange', '/merchant-orders'], separatorBefore: '/exchange' },
+    { label: '놀이터', paths: ['/arcade', '/farm', '/music-room'] },
     {
       label: '소셜',
       paths: ['/friends', '/board', '/square/suggestions', '/square/bugs'],
+      separatorBefore: '/board',
     },
   ]
   return (
@@ -77,13 +88,16 @@ export function HeaderPlaceNavigation() {
         const selected = items.find(
           (item) => current === item.to || current.startsWith(item.to + '/'),
         )
+        const hasActivity=items.some(item=>hasNewContent(item.to)||(item.to==='/port'&&!!harbor?.ready)||(item.to==='/expeditions'&&expedition==='returned')||(item.to==='/savings'&&!!savings))
         return (
           <Menu.Root key={pathname + group.label}>
             <Menu.Trigger
               aria-label={group.label}
+              aria-description={hasActivity?'새 소식 또는 확인할 항목이 있어요':undefined}
               className={`group flex min-h-9 min-w-0 items-center justify-center px-1 py-1 outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring data-popup-open:text-primary ${selected ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
             >
               <span className="flex items-center gap-1 text-xs font-medium">
+                {hasActivity&&<span aria-hidden="true" data-category-activity={group.label} className="category-activity-dot"/>}
                 {group.label}
                 <ChevronDown
                   aria-hidden="true"
@@ -105,6 +119,8 @@ export function HeaderPlaceNavigation() {
                   {items.map(({ to, label, icon: ItemIcon }) => {
                     const active = selected?.to === to
                     return (
+                     <Fragment key={to}>
+                      {group.separatorBefore===to&&<Menu.Separator className="mx-3 my-1 h-px bg-border/60"/>}
                       <Menu.LinkItem
                         key={to}
                         render={<Link to={to} aria-current={active ? 'page' : undefined} />}
@@ -114,10 +130,7 @@ export function HeaderPlaceNavigation() {
                           <ItemIcon aria-hidden="true" className="size-7" />
                         </span>
                         <span className="flex-1 whitespace-nowrap">{label}</span>
-                        {((to === '/board' && newContent.board) ||
-                          (to === '/square/suggestions' && newContent.suggestions) ||
-                          (to === '/square/bugs' && newContent.bugs) ||
-                          (to === '/exchange' && newContent.exchange)) && (
+                        {hasNewContent(to) && (
                           <span
                             aria-label="새 글 있음"
                             className="text-[9px] font-bold tracking-wider text-rose-600 dark:text-rose-400"
@@ -140,6 +153,9 @@ export function HeaderPlaceNavigation() {
                             수령 가능 ({harbor.ready}/{harbor.total})
                           </span>
                         )}
+                        {to === '/expeditions' && expedition === 'returned' && (
+                          <span className="shrink-0 rounded bg-primary/10 px-1.5 py-1 text-[10px] text-primary">수거 대기 중</span>
+                        )}
                         {to === '/savings' && savings && (
                           <span className="shrink-0 rounded bg-primary/10 px-1.5 py-1 text-[10px] text-primary">
                             {savings}
@@ -147,6 +163,7 @@ export function HeaderPlaceNavigation() {
                         )}
                         {active && <Check aria-label="현재 위치" className="size-4 shrink-0" />}
                       </Menu.LinkItem>
+                     </Fragment>
                     )
                   })}
                 </Menu.Popup>

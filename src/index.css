@@ -620,8 +620,14 @@ button, [role='button'] { cursor: pointer; }
   0%, 100% { opacity: 1; box-shadow: 0 0 0 2px var(--background), 0 0 0 2px #995e3600; }
   50% { opacity: .65; box-shadow: 0 0 0 2px var(--background), 0 0 0 6px #995e3626; }
 }
+.category-activity-dot { display: inline-block; flex-shrink: 0; width: 4px; height: 4px; border-radius: 50%; background: #995e36; }
+@keyframes category-activity-pulse {
+  0%, 100% { opacity: .9; box-shadow: 0 0 0 0 #995e3600; }
+  50% { opacity: .55; box-shadow: 0 0 0 2px #995e361a; }
+}
 @media (prefers-reduced-motion: no-preference) {
   .header-indicator { animation: header-indicator-pulse 2s ease-in-out infinite; }
+  .category-activity-dot { animation: category-activity-pulse 2.8s ease-in-out infinite; }
 }
 @keyframes rod-gauge-bite {
   0%, 100% { filter: drop-shadow(0 0 0 transparent); }

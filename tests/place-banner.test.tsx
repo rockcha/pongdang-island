@@ -15,13 +15,14 @@ it('shows standalone board introductions without a square parent action',()=>{
  expect(screen.getByText('불편하거나 이상한 점을 알려주세요.')).toBeTruthy()
  expect(screen.queryByRole('link',{name:'목록으로'})).toBeNull()
 })
-it('uses one illustrated list action across game and community detail banners',()=>{
+it('uses one compact list action across game and community detail banners',()=>{
  const view=render(<PlaceBanner pathname="/arcade/odd-even"/>)
  for(const [path,parent] of [['/arcade/odd-even','/arcade'],['/arcade/underground','/arcade'],['/square/notices/new','/square/notices'],['/square/suggestions/post','/square/suggestions'],['/square/bugs/post','/square/bugs']]){
   view.rerender(<PlaceBanner pathname={path}/>)
   const action=screen.getByRole('link',{name:'목록으로'})
   expect(action.getAttribute('href')).toBe(parent)
-  expect(action.querySelector('img')?.getAttribute('src')).toBe('/app-icons/back-to-list.png')
+  expect(action.querySelector('img')).toBeNull()
+  expect(action.querySelector('svg')?.getAttribute('aria-hidden')).toBe('true')
  }
 })
 it('places the notice list link on its detail banner',()=>{

@@ -197,7 +197,6 @@ export function AquariumView(props: Props) {
           }
         }}
       >
-        <AquariumBackdrop background={background} loading={props.loading} />
         <div className="absolute inset-x-0 top-0 z-20 flex items-center justify-center gap-2 border-b border-white/15 bg-background/25 backdrop-blur-sm px-3 py-0.5">
           <div
             role="group"
@@ -240,8 +239,8 @@ export function AquariumView(props: Props) {
             </Button>
           </div>
         </div>
-        <TankBubbles />
         <TankInhabitants
+          scenery={<><AquariumBackdrop background={background} loading={props.loading} /><TankBubbles /></>}
           items={displayed.map((item) => ({ ...item, interaction_locked: busy }))}
           onPlace={place}
           onSelectDecoration={selectDecoration}

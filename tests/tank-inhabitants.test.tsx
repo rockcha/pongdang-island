@@ -25,6 +25,27 @@ it('creates one renderer and updates the collection without restarting it, then 
  view.unmount()
  expect(mock.destroy).toHaveBeenCalledOnce()
 })
+
+it('zooms the background and renderer together while leaving accessible controls outside',async()=>{
+ const view=render(<TankInhabitants items={[]} scenery={<img data-testid="tank-map" alt="배경" src="/map.png"/>}/>)
+ await waitFor(()=>expect(mock.create).toHaveBeenCalledOnce())
+ const viewport=view.container.firstElementChild as HTMLElement
+ Object.defineProperties(viewport,{clientWidth:{value:300},clientHeight:{value:500}})
+ const touch=(type:string,points:number[][])=>{
+  const event=new Event(type,{bubbles:true,cancelable:true})
+  Object.defineProperty(event,'touches',{value:points.map(([clientX,clientY])=>({clientX,clientY}))})
+  viewport.dispatchEvent(event)
+ }
+ touch('touchstart',[[100,200],[200,200]])
+ touch('touchmove',[[50,200],[250,200]])
+ const scene=view.container.querySelector('[data-tank-zoom-scene]') as HTMLElement
+ const canvasParent=mock.create.mock.calls[0][0] as HTMLElement
+ expect(scene.contains(screen.getByTestId('tank-map'))).toBe(true)
+ expect(scene.contains(canvasParent)).toBe(true)
+ expect(scene.style.transform).toBe('translate(-150px,-200px) scale(2)')
+ expect(scene.contains(view.container.querySelector('ul'))).toBe(false)
+ expect(canvasParent.style.transform).toBe('')
+})
 it('shows a helpful error when the renderer cannot start',async()=>{
  mock.create.mockImplementation(()=>{throw new Error('renderer unavailable')})
  render(<TankInhabitants items={[]}/> )

@@ -88,6 +88,7 @@ export type Database = {
       delete_exchange_listing_comment:{Args:{p_comment_id:string};Returns:undefined}
       exchange_inventory:{Args:Record<string,never>;Returns:import('@/features/exchange/api').ExchangeInventory}
       exchange_post:{Args:import('@/features/exchange/api').ExchangePost;Returns:import('@/features/exchange/api').ExchangeListing}
+      exchange_post_bundle:{Args:import('@/features/exchange/api').ExchangeBundlePost;Returns:import('@/features/exchange/api').ExchangeListing}
       exchange_action:{Args:{p_listing_id:string;p_action:string};Returns:import('@/features/exchange/api').ExchangeListing}
       odd_even_game:{Args:import('@/features/arcade/odd-even-api').OddEvenAction;Returns:import('@/features/arcade/odd-even-api').OddEvenState}
       odd_even_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/odd-even-api').OddEvenRanks}

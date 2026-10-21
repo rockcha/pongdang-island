@@ -5,19 +5,20 @@ import {GoldIcon} from '@/features/gold/gold-provider'
 import {PlayerAvatar} from '@/features/profile/player-avatar'
 import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
 import {LandscapeImage} from '@/components/landscape-image'
-import type {ExchangeListing} from './api'
+import {exchangeOfferItems,type ExchangeListing} from './api'
 
 export function SaleListingRow({listing,owner}:{listing:ExchangeListing;owner:string}){
  const mine=listing.owner_id===owner
+ const items=exchangeOfferItems(listing.offer),bundle=items.length>1
  return <li className="min-w-0">
   <Link to={'/exchange/'+listing.id} aria-label={(listing.title||listing.offer.name)+' 상세 보기'} className="block space-y-4 px-5 py-5 outline-none transition-colors hover:bg-secondary/20 focus-visible:bg-secondary/30 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring">
    <div className="flex min-w-0 gap-4">
-    <div className="flex size-16 shrink-0 items-center justify-center self-center">
-     {listing.offer.kind==='collectible'?<CollectibleThumbnail path={listing.offer.thumbnail_path??''} name={listing.offer.name} className="size-16"/>:<LandscapeImage src={listing.offer.thumbnail_path??''} alt={listing.offer.name} className="size-14 object-contain"/>}
+    <div className={bundle?'grid size-16 shrink-0 grid-cols-2 items-center justify-items-center self-center':'flex size-16 shrink-0 items-center justify-center self-center'}>
+     {items.slice(0,4).map(item=>item.kind==='collectible'?<CollectibleThumbnail key={item.kind+item.id} path={item.thumbnail_path??''} name={item.name} className={bundle?'size-8':'size-16'}/>:<LandscapeImage key={item.kind+item.id} src={item.thumbnail_path??''} alt={item.name} className={bundle?'size-8 object-contain':'size-14 object-contain'}/>)}
     </div>
     <div className="min-w-0 flex-1 space-y-1.5">
      <div className="flex items-start gap-2"><h2 className="line-clamp-2 min-w-0 break-words text-sm font-medium leading-6">{listing.title||listing.offer.name+' 판매합니다'}</h2>{mine&&<span className="mt-1 shrink-0 rounded bg-secondary/70 px-1.5 py-0.5 text-[9px] text-primary">내 글</span>}</div>
-     <p className="truncate text-[11px] text-muted-foreground">{listing.offer.name}<span className="mx-1.5 opacity-50">·</span>{listing.offer.quantity.toLocaleString('ko-KR')}개</p>
+     <p className="truncate text-[11px] text-muted-foreground">{bundle?`${items.length}종 묶음`:listing.offer.name}<span className="mx-1.5 opacity-50">·</span>{bundle?'총 ':''}{listing.offer.quantity.toLocaleString('ko-KR')}개</p>
      <p className="flex items-center gap-1 text-base tabular-nums text-primary"><GoldIcon className="size-4"/>{listing.wanted.quantity.toLocaleString('ko-KR')}{listing.status!=='active'&&<span className="ml-1.5 text-[10px] text-muted-foreground">{listing.status==='completed'?'판매 완료':'판매 취소'}</span>}</p>
     </div>
    </div>

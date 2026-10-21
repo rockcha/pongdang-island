@@ -22,7 +22,7 @@ it('keeps the category title and date outside the scrolling body and separates a
  expect(screen.queryByText(/운영팀/)).toBeNull()
  expect(screen.queryByRole('button',{name:'목록'})).toBeNull()
  expect(screen.getByRole('img',{name:/첨부 이미지 1/}).closest('figure')).toBeTruthy()
- expect(screen.getByText('첨부 이미지 1')).toBeTruthy()
+  expect(screen.queryByText('첨부 이미지 1')).toBeNull()
 })
 it('marks the original notice read and lets an operator delete only after confirmation',async()=>{
  mock.operator.mockResolvedValue(true)

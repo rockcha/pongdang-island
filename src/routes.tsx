@@ -13,6 +13,7 @@ import { SuggestionsPage, SuggestionDetail } from '@/features/suggestions/sugges
 import { BugReportsPage, BugReportDetail } from '@/features/bugs/bug-reports-page'
 import { RegionPage } from '@/features/regions/region-page'
 import { SailingPage } from '@/features/regions/sailing-page'
+import { FishingShortcutPage } from '@/features/regions/fishing-shortcut-page'
 import { ShopPage } from '@/features/gold/shop-page'
 import { ExchangePage } from '@/features/exchange/exchange-page'
 import { ExchangeDetailPage } from '@/features/exchange/exchange-detail-page'
@@ -64,6 +65,7 @@ export function AppRoutes() {
             />
             <Route path="titles" element={<TitlePicker page />} />
             <Route path="harbor" element={<HarborPage />} />
+            <Route path="fishing" element={<FishingShortcutPage />} />
             <Route path="farm" element={<FarmPage />} />
             <Route path="music-room" element={<MusicRoomPage />} />
             <Route path="sailing/:regionId" element={<SailingPage />} />

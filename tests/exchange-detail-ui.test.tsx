@@ -51,7 +51,7 @@ it('cancels an own sale only after deletion confirmation in details',async()=>{
  fireEvent.click(screen.getByRole('button',{name:'판매글 관리'}))
  fireEvent.click(await screen.findByRole('menuitem',{name:'판매글 삭제'}))
  const dialog=await screen.findByRole('alertdialog')
- expect(within(dialog).getByText('판매글을 내리고 맡긴 물품을 선물함으로 돌려받아요.')).toBeTruthy()
+ expect(within(dialog).getByText('판매글을 내리고 맡긴 물품 전체를 선물함으로 돌려받아요.')).toBeTruthy()
  expect(mocks.trade).not.toHaveBeenCalled()
  fireEvent.click(within(dialog).getByRole('button',{name:'판매글 삭제'}))
  await waitFor(()=>expect(mocks.trade).toHaveBeenCalledExactlyOnceWith('listing','cancel'))

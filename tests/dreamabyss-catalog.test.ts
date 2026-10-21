@@ -7,6 +7,29 @@ const added=JSON.parse(readFileSync('assets/storage-upload/new/20261018-183000/c
 let db
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},60000)
 afterAll(async()=>{await db?.close()})
+it('keeps trash sellable and rejects future zero-price trash',async()=>{
+ const rows=(await db.query("select id,sell_price from public.collectible_species where id in ('cracked-pressure-gauge','dented-diving-lamp') order by id")).rows
+ expect(rows).toEqual([{id:'cracked-pressure-gauge',sell_price:19},{id:'dented-diving-lamp',sell_price:19}])
+ expect((await db.query("select id from public.collectible_species where kind='trash' and sell_price<=0")).rows).toHaveLength(0)
+ await expect(db.query("update public.collectible_species set sell_price=0 where id='cracked-pressure-gauge'")).rejects.toThrow('collectible_species_trash_positive_sell_price')
+})
+it('sells the formerly zero-price items once for their combined price',async()=>{
+ const user=crypto.randomUUID(),operation=crypto.randomUUID()
+ await db.exec('begin')
+ try{
+  await db.query('insert into auth.users(id) values($1)',[user])
+  await db.query("insert into public.player_profiles(id,nickname) values($1,'가격확인')",[user])
+  await db.query('insert into public.player_wallets(user_id,gold) values($1,100) on conflict(user_id) do update set gold=100',[user])
+  const items=(await db.query("insert into public.player_collectibles(user_id,species_id) values($1,'cracked-pressure-gauge'),($1,'dented-diving-lamp') returning id",[user])).rows.map(row=>row.id)
+  await db.exec('set local role authenticated')
+  await db.query("select set_config('request.jwt.claim.sub',$1,true)",[user])
+  const sell=()=>db.query('select public.sell_collectibles($1,$2) value',[items,operation])
+  expect((await sell()).rows[0].value.delta).toBe(38)
+  expect((await sell()).rows[0].value.delta).toBe(0)
+  await db.exec('reset role')
+  expect((await db.query('select gold from public.player_wallets where user_id=$1',[user])).rows[0].gold).toBe(138)
+ }finally{await db.exec('rollback')}
+})
 it('registers all selected species exclusively in dreamabyss with the requested fish grades',async()=>{
  expect(added.filter(s=>s.kind==='fish'&&s.rarity==='rare')).toHaveLength(5)
  expect(added.filter(s=>s.kind==='fish'&&s.rarity==='epic')).toHaveLength(4)

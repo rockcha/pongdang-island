@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "4941c36ea3d41e590f7d81116ed53cdcde6b9f2580eea11076039dede67b7e73",
+  "migrationHash": "49fe41ea625bfa7dcf423dbfe0bb5af2b7e19f85699c7afebec2e436ae87579b",
   "structure": {
     "enums": [
       {
@@ -79,6 +79,12 @@
       {
         "rls": true,
         "name": "bait_cycles",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "exchange_bundle_gifts",
         "schema": "app_private",
         "force_rls": false
       },
@@ -803,6 +809,26 @@
         "table": "bait_cycles",
         "schema": "app_private",
         "default": "'common'::game_rarity",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "listing_id",
+        "type": "uuid",
+        "table": "exchange_bundle_gifts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "gift_id",
+        "type": "uuid",
+        "table": "exchange_bundle_gifts",
+        "schema": "app_private",
+        "default": null,
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -6392,6 +6418,18 @@
         "definition": "CREATE UNIQUE INDEX bait_cycles_pkey ON app_private.bait_cycles USING btree (user_id)"
       },
       {
+        "name": "exchange_bundle_gifts_gift_id_key",
+        "table": "exchange_bundle_gifts",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX exchange_bundle_gifts_gift_id_key ON app_private.exchange_bundle_gifts USING btree (gift_id)"
+      },
+      {
+        "name": "exchange_bundle_gifts_pkey",
+        "table": "exchange_bundle_gifts",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX exchange_bundle_gifts_pkey ON app_private.exchange_bundle_gifts USING btree (listing_id, gift_id)"
+      },
+      {
         "name": "expedition_boosts_expedition_id_helper_id_key",
         "table": "expedition_boosts",
         "schema": "app_private",
@@ -9202,7 +9240,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_listing_id uuid, p_action text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.exchange_action(p_listing_id uuid, p_action text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();l public.exchange_listings;v_owner uuid;v_gift uuid;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in ('accept','cancel') then raise exception 'INVALID_EXCHANGE';end if;\n select owner_id into v_owner from public.exchange_listings where id=p_listing_id;\n if v_owner is null then raise exception 'EXCHANGE_NOT_FOUND';end if;\n perform app_private.get_gold_wallet();\n -- Match wallet-first transactions; both participants always lock in UUID order.\n perform 1 from public.player_wallets where user_id in(v_uid,v_owner) order by user_id for update;\n select * into l from public.exchange_listings where id=p_listing_id for update;\n if p_action='cancel' then\n  if l.owner_id<>v_uid then raise exception 'EXCHANGE_FORBIDDEN';end if;\n  if l.status='cancelled' then return to_jsonb(l);end if;\n  if l.status<>'active' then raise exception 'EXCHANGE_UNAVAILABLE';end if;\n  update public.exchange_listings set status='cancelled',closed_at=now() where id=l.id returning * into l;\n  perform app_private.exchange_deliver(l.escrow_gift_id,v_uid,'거래를 취소하여 맡긴 물품을 돌려보냈어요.');\n else\n  if l.owner_id=v_uid then raise exception 'EXCHANGE_SELF_TRADE';end if;\n  if l.status='completed' and l.taker_id=v_uid then return to_jsonb(l);end if;\n  if l.status<>'active' then raise exception 'EXCHANGE_UNAVAILABLE';end if;\n  if l.side<>'sell' or l.offer->>'kind' not in ('collectible','bait','fuel') or l.wanted->>'kind'<>'gold' then raise exception 'EXCHANGE_UNAVAILABLE';end if;\n  v_gift:=app_private.exchange_reserve(v_uid,l.wanted);\n  update public.exchange_listings set status='completed',taker_id=v_uid,closed_at=now() where id=l.id returning * into l;\n  perform app_private.exchange_deliver(l.escrow_gift_id,v_uid,'교환이 완료되어 물품을 보냈어요.');\n  perform app_private.exchange_deliver(v_gift,l.owner_id,'판매가 성사되어 판매 대금을 보냈어요.');\n  update public.notifications set title='판매가 성사됐어요' where gift_id=v_gift and kind='gift_received';\n  update public.notifications set title='구매가 완료됐어요',body='구매한 물품을 선물함에서 받아주세요.' where gift_id=l.escrow_gift_id and kind='gift_received';\n end if;\n return to_jsonb(l);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.exchange_action(p_listing_id uuid, p_action text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();l public.exchange_listings;owner uuid;payment uuid;parcel uuid;parcels uuid[];\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in ('accept','cancel') then raise exception 'INVALID_EXCHANGE';end if;\n select owner_id into owner from public.exchange_listings where id=p_listing_id;\n if owner is null then raise exception 'EXCHANGE_NOT_FOUND';end if;\n perform app_private.get_gold_wallet();\n perform 1 from public.player_wallets where user_id in(u,owner) order by user_id for update;\n select * into l from public.exchange_listings where id=p_listing_id for update;\n select array_agg(gift_id order by gift_id) into parcels from app_private.exchange_bundle_gifts where listing_id=l.id;\n parcels:=coalesce(parcels,array[l.escrow_gift_id]);\n if p_action='cancel' then\n  if l.owner_id<>u then raise exception 'EXCHANGE_FORBIDDEN';end if;\n  if l.status='cancelled' then return to_jsonb(l);end if;\n  if l.status<>'active' then raise exception 'EXCHANGE_UNAVAILABLE';end if;\n  update public.exchange_listings set status='cancelled',closed_at=now() where id=l.id returning * into l;\n  foreach parcel in array parcels loop\n   perform app_private.exchange_deliver(parcel,u,'거래를 취소하여 맡긴 물품을 돌려보냈어요.');\n  end loop;\n else\n  if l.owner_id=u then raise exception 'EXCHANGE_SELF_TRADE';end if;\n  if l.status='completed' and l.taker_id=u then return to_jsonb(l);end if;\n  if l.status<>'active' then raise exception 'EXCHANGE_UNAVAILABLE';end if;\n  if l.side<>'sell' or l.offer->>'kind' not in ('collectible','bait','fuel') or l.wanted->>'kind'<>'gold' then raise exception 'EXCHANGE_UNAVAILABLE';end if;\n  payment:=app_private.exchange_reserve(u,l.wanted);\n  update public.exchange_listings set status='completed',taker_id=u,closed_at=now() where id=l.id returning * into l;\n  foreach parcel in array parcels loop\n   perform app_private.exchange_deliver(parcel,u,'구매한 묶음 물품을 선물함에서 받아주세요.');\n  end loop;\n  perform app_private.exchange_deliver(payment,l.owner_id,'판매가 성사되어 판매 대금을 보냈어요.');\n  update public.notifications set title='판매가 성사됐어요' where gift_id=payment and kind='gift_received';\n  update public.notifications set title='구매가 완료됐어요',body='구매한 물품을 선물함에서 받아주세요.' where gift_id=any(parcels) and kind='gift_received';\n end if;\n return to_jsonb(l);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -9253,6 +9291,16 @@
         "schema": "app_private",
         "arguments": "p_side text, p_offer_kind text, p_offer_id text, p_offer_quantity integer, p_wanted_kind text, p_wanted_id text, p_wanted_quantity integer, p_operation_id uuid, p_title text",
         "definition": "CREATE OR REPLACE FUNCTION app_private.exchange_post(p_side text, p_offer_kind text, p_offer_id text, p_offer_quantity integer, p_wanted_kind text, p_wanted_id text, p_wanted_quantity integer, p_operation_id uuid, p_title text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_offer jsonb;v_wanted jsonb;l public.exchange_listings;v_gift uuid;v_title text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_side is null or p_side<>'sell' or p_operation_id is null then raise exception 'INVALID_EXCHANGE';end if;\n v_offer:=app_private.exchange_asset(p_offer_kind,p_offer_id,p_offer_quantity);\n v_title:=coalesce(nullif(btrim(p_title),''),(v_offer->>'name')||' 판매합니다');\n if char_length(v_title)>80 or v_title ~ '[[:cntrl:]]' then raise exception 'INVALID_EXCHANGE_TITLE';end if;\n v_wanted:=app_private.exchange_asset(p_wanted_kind,p_wanted_id,p_wanted_quantity);\n if p_offer_kind not in ('collectible','bait','fuel') or p_wanted_kind<>'gold' or p_wanted_id<>'gold' then raise exception 'INVALID_EXCHANGE';end if;\n perform app_private.get_gold_wallet();\n perform 1 from public.player_wallets where user_id=v_uid for update;\n select * into l from public.exchange_listings where owner_id=v_uid and operation_id=p_operation_id;\n if found then\n  if l.side<>p_side or l.offer<>v_offer or l.wanted<>v_wanted or coalesce(l.title,(l.offer->>'name')||' 판매합니다')<>v_title then raise exception 'OPERATION_CONFLICT';end if;\n  return to_jsonb(l);\n end if;\n if (select count(*) from public.exchange_listings where owner_id=v_uid and status='active')>=10 then raise exception 'EXCHANGE_LISTING_LIMIT';end if;\n v_gift:=app_private.exchange_reserve(v_uid,v_offer);\n insert into public.exchange_listings(owner_id,owner_name,side,operation_id,offer,wanted,escrow_gift_id,title)\n values(v_uid,(select nickname from public.player_profiles where id=v_uid),p_side,p_operation_id,v_offer,v_wanted,v_gift,v_title) returning * into l;\n return to_jsonb(l);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "exchange_post_bundle",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_items jsonb, p_price integer, p_operation_id uuid, p_title text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.exchange_post_bundle(p_items jsonb, p_price integer, p_operation_id uuid, p_title text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();part jsonb;asset jsonb;assets jsonb:='[]';v_offer jsonb;v_wanted jsonb;\n l public.exchange_listings;gifts uuid[]:='{}';v_title text;keys text[]:='{}';key text;collectibles integer:=0;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or jsonb_typeof(p_items) is distinct from 'array' then raise exception 'INVALID_EXCHANGE';end if;\n if jsonb_array_length(p_items) not between 1 and 10 then raise exception 'EXCHANGE_BUNDLE_LIMIT';end if;\n for part in select value from jsonb_array_elements(p_items) order by value->>'kind',value->>'id' loop\n  if jsonb_typeof(part) is distinct from 'object' or coalesce(part->>'kind','') not in ('collectible','bait','fuel')\n   or coalesce(part->>'id','')='' or coalesce(part->>'quantity','') !~ '^[1-9][0-9]{0,3}$' then raise exception 'INVALID_EXCHANGE_ASSET';end if;\n  key:=(part->>'kind')||':'||(part->>'id');\n  if key=any(keys) then raise exception 'INVALID_EXCHANGE_ASSET';end if;\n  keys:=array_append(keys,key);\n  asset:=app_private.exchange_asset(part->>'kind',part->>'id',(part->>'quantity')::integer);\n  if asset->>'kind'='collectible' then collectibles:=collectibles+(asset->>'quantity')::integer;end if;\n  assets:=assets||jsonb_build_array(asset);\n end loop;\n if collectibles>20 then raise exception 'EXCHANGE_BUNDLE_LIMIT';end if;\n v_wanted:=app_private.exchange_asset('gold','gold',p_price);\n -- Keep the legacy first-item shape for old clients; items is authoritative for bundles.\n v_offer:=assets->0;\n if jsonb_array_length(assets)>1 then\n  v_offer:=v_offer||jsonb_build_object('items',assets,'name',(select string_agg(value->>'name',' + ') from jsonb_array_elements(assets)),\n   'quantity',(select sum((value->>'quantity')::integer) from jsonb_array_elements(assets)));\n end if;\n v_title:=coalesce(nullif(btrim(p_title),''),case when jsonb_array_length(assets)>1 then '묶음 판매합니다' else (v_offer->>'name')||' 판매합니다' end);\n if char_length(v_title)>80 or v_title ~ '[[:cntrl:]]' then raise exception 'INVALID_EXCHANGE_TITLE';end if;\n perform app_private.get_gold_wallet();\n perform 1 from public.player_wallets where user_id=u for update;\n select * into l from public.exchange_listings where owner_id=u and operation_id=p_operation_id;\n if found then\n  if l.side<>'sell' or l.offer<>v_offer or l.wanted<>v_wanted or l.title<>v_title then raise exception 'OPERATION_CONFLICT';end if;\n  return to_jsonb(l);\n end if;\n if (select count(*) from public.exchange_listings where owner_id=u and status='active')>=10 then raise exception 'EXCHANGE_LISTING_LIMIT';end if;\n -- A failure on any item rolls back every earlier reservation in this call.\n for asset in select value from jsonb_array_elements(assets) loop\n  gifts:=array_append(gifts,app_private.exchange_reserve(u,asset));\n end loop;\n insert into public.exchange_listings(owner_id,owner_name,side,operation_id,offer,wanted,escrow_gift_id,title)\n values(u,(select nickname from public.player_profiles where id=u),'sell',p_operation_id,v_offer,v_wanted,gifts[1],v_title) returning * into l;\n if cardinality(gifts)>1 then\n  insert into app_private.exchange_bundle_gifts(listing_id,gift_id) select l.id,unnest(gifts);\n end if;\n return to_jsonb(l);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -10816,6 +10864,16 @@
         "securityDefiner": false
       },
       {
+        "name": "exchange_post_bundle",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_items jsonb, p_price integer, p_operation_id uuid, p_title text",
+        "definition": "CREATE OR REPLACE FUNCTION public.exchange_post_bundle(p_items jsonb, p_price integer, p_operation_id uuid, p_title text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.exchange_post_bundle(p_items,p_price,p_operation_id,p_title);\n$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "exchange_state",
         "config": [
           "search_path=\"\""
@@ -11677,6 +11735,42 @@
         "table": "bait_cycles",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "exchange_bundle_gifts_gift_id_fkey",
+        "table": "exchange_bundle_gifts",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (gift_id) REFERENCES collectible_gifts(id)"
+      },
+      {
+        "name": "exchange_bundle_gifts_gift_id_key",
+        "table": "exchange_bundle_gifts",
+        "schema": "app_private",
+        "definition": "UNIQUE (gift_id)"
+      },
+      {
+        "name": "exchange_bundle_gifts_gift_id_not_null",
+        "table": "exchange_bundle_gifts",
+        "schema": "app_private",
+        "definition": "NOT NULL gift_id"
+      },
+      {
+        "name": "exchange_bundle_gifts_listing_id_fkey",
+        "table": "exchange_bundle_gifts",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (listing_id) REFERENCES exchange_listings(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "exchange_bundle_gifts_listing_id_not_null",
+        "table": "exchange_bundle_gifts",
+        "schema": "app_private",
+        "definition": "NOT NULL listing_id"
+      },
+      {
+        "name": "exchange_bundle_gifts_pkey",
+        "table": "exchange_bundle_gifts",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (listing_id, gift_id)"
       },
       {
         "name": "expedition_boosts_created_at_not_null",
@@ -14167,6 +14261,12 @@
         "table": "collectible_species",
         "schema": "public",
         "definition": "NOT NULL thumbnail_path"
+      },
+      {
+        "name": "collectible_species_trash_positive_sell_price",
+        "table": "collectible_species",
+        "schema": "public",
+        "definition": "CHECK (((kind <> 'trash'::collectible_kind) OR (sell_price > 0)))"
       },
       {
         "name": "collectible_species_travel_direction_not_null",
@@ -23680,6 +23780,27 @@
         "arguments": "p_side text, p_offer_kind text, p_offer_id text, p_offer_quantity integer, p_wanted_kind text, p_wanted_id text, p_wanted_quantity integer, p_operation_id uuid, p_title text"
       },
       {
+        "name": "exchange_post_bundle",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_items jsonb, p_price integer, p_operation_id uuid, p_title text"
+      },
+      {
+        "name": "exchange_post_bundle",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_items jsonb, p_price integer, p_operation_id uuid, p_title text"
+      },
+      {
+        "name": "exchange_post_bundle",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_items jsonb, p_price integer, p_operation_id uuid, p_title text"
+      },
+      {
         "name": "exchange_reserve",
         "role": "anon",
         "schema": "app_private",
@@ -26954,6 +27075,27 @@
         "schema": "public",
         "execute": true,
         "arguments": "p_side text, p_offer_kind text, p_offer_id text, p_offer_quantity integer, p_wanted_kind text, p_wanted_id text, p_wanted_quantity integer, p_operation_id uuid, p_title text"
+      },
+      {
+        "name": "exchange_post_bundle",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_items jsonb, p_price integer, p_operation_id uuid, p_title text"
+      },
+      {
+        "name": "exchange_post_bundle",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_items jsonb, p_price integer, p_operation_id uuid, p_title text"
+      },
+      {
+        "name": "exchange_post_bundle",
+        "role": "service_role",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_items jsonb, p_price integer, p_operation_id uuid, p_title text"
       },
       {
         "name": "exchange_state",

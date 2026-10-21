@@ -3,9 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   Check,
   ChevronRight,
-  ClipboardList,
   PackageCheck,
-  PackageOpen,
   RefreshCw,
 } from 'lucide-react'
 import { toast } from 'sonner'
@@ -36,17 +34,17 @@ function readPending(key: string): Pending | null {
     return null
   }
 }
-function ItemRow({ item, delivery = false }: { item: MerchantItem; delivery?: boolean }) {
+function ItemRow({ item, delivery = false, completed = false }: { item: MerchantItem; delivery?: boolean; completed?: boolean }) {
   const enough = item.owned >= item.quantity
   return (
     <li className="flex min-w-0 items-center gap-3 py-2">
       <CollectibleThumbnail
         path={item.thumbnailPath}
         name={item.name}
-        className="size-12 shrink-0"
+        className="size-10 shrink-0"
       />
       <div className="min-w-0 flex-1">
-        <p className="break-keep text-sm font-medium leading-5">{item.name}</p>
+        <p className="break-words text-sm leading-5">{item.name}</p>
         <span className="mt-0.5 flex items-center gap-1 text-[10px] text-muted-foreground">
           <span
             aria-hidden
@@ -58,16 +56,16 @@ function ItemRow({ item, delivery = false }: { item: MerchantItem; delivery?: bo
         </span>
       </div>
       <div className="shrink-0 text-right">
-        <span
+        {completed?<span className="text-xs tabular-nums text-muted-foreground">×{item.quantity}</span>:<span
           aria-label={`${item.name} 보유 ${item.owned}개, 필요 ${item.quantity}개`}
           className={`flex shrink-0 items-center gap-1 text-xs tabular-nums ${enough ? 'text-primary' : 'text-muted-foreground'}`}
         >
-          {enough && <Check aria-hidden className="size-3" />}
           <strong className="text-sm font-medium">
             {(delivery ? Math.min(item.owned, item.quantity) : item.owned).toLocaleString('ko-KR')}
           </strong>
           <span className="opacity-60">/ {item.quantity}</span>
-        </span>
+          {enough && <Check aria-hidden className="size-3" />}
+        </span>}
         {delivery && (
           <p className={`mt-1 text-[10px] ${enough ? 'text-primary' : 'text-destructive'}`}>
             {enough ? '자동으로 채웠어요' : `${item.quantity - item.owned}개 부족`}
@@ -206,30 +204,41 @@ function AccountMerchant({ owner }: { owner: string }) {
           ? canDeliver(order)
           : !order.completed && (itemCount === 0 || order.items.length === itemCount),
     ) ?? []
+  const counts = {
+    open: data?.orders.filter(order => !order.completed).length,
+    ready: data?.orders.filter(canDeliver).length,
+    done: data?.orders.filter(order => order.completed).length,
+  }
   return (
     <section aria-label="바다 상인의 의뢰" className="flex min-h-0 min-w-0 flex-1 flex-col">
       <div className="shrink-0 border-b border-border/60 bg-background">
         <div
           role="group"
           aria-label="주문 필터"
-          className="grid grid-cols-3 divide-x border-y bg-background"
+          className="grid grid-cols-3 border-b border-border/60 px-3"
         >
           {(
             [
-              ['open', '진행 중', ClipboardList],
-              ['ready', '납품 가능', PackageOpen],
-              ['done', '완료', PackageCheck],
+              ['open', '진행 중'],
+              ['ready', '납품 가능'],
+              ['done', '완료'],
             ] as const
-          ).map(([value, label, Icon]) => (
+          ).map(([value, label]) => (
             <button
               key={value}
               type="button"
+              aria-label={label}
+              aria-description={counts[value] === undefined ? '의뢰 수를 불러오는 중' : `${counts[value]}개 의뢰`}
               aria-pressed={filter === value}
               onClick={() => setFilter(value)}
-              className={`flex min-h-18 flex-col items-center justify-center gap-1.5 px-2 py-2 text-xs outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${filter === value ? 'bg-secondary font-medium text-primary' : 'text-muted-foreground hover:bg-secondary/40'}`}
+              className={`flex min-h-12 items-center justify-center border-b-2 px-1 py-3 text-xs outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${filter === value ? 'border-primary font-medium text-primary' : 'border-transparent text-muted-foreground hover:text-foreground'}`}
             >
-              <Icon aria-hidden className="size-5" strokeWidth={1.5} />
-              {label}
+              <span className="inline-flex items-center gap-1.5">
+                {label}
+                <span className="text-[11px] tabular-nums opacity-70">
+                  {counts[value] ?? '–'}
+                </span>
+              </span>
             </button>
           ))}
         </div>
@@ -237,7 +246,7 @@ function AccountMerchant({ owner }: { owner: string }) {
           <div
             role="group"
             aria-label="주문 종류 수"
-            className="grid grid-cols-4 divide-x divide-border/60"
+            className="flex items-center gap-1 px-4 py-2"
           >
             {([0, 1, 2, 3] as const).map((count) => (
               <button
@@ -246,7 +255,7 @@ function AccountMerchant({ owner }: { owner: string }) {
                 aria-label={count === 0 ? '전체' : `${count}종`}
                 aria-pressed={itemCount === count}
                 onClick={() => setItemCount(count)}
-                className={`flex min-h-10 min-w-0 items-center justify-center gap-1 px-1 text-[11px] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${itemCount === count ? 'bg-secondary font-medium text-primary' : 'text-muted-foreground hover:bg-secondary/40'}`}
+                className={`flex min-h-11 min-w-0 items-center justify-center gap-1.5 rounded-md px-3 text-[11px] outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${itemCount === count ? 'bg-primary/5 font-medium text-primary' : 'text-muted-foreground hover:bg-secondary/40'}`}
               >
                 <span>{count === 0 ? '전체' : `${count}종`}</span>
                 <span className="text-[10px] tabular-nums opacity-60">
@@ -301,7 +310,7 @@ function AccountMerchant({ owner }: { owner: string }) {
           <div role="status" className="space-y-3 py-3">
             <span className="sr-only">주문을 불러오는 중</span>
             {[1, 2, 3].map((n) => (
-              <div key={n} className="h-56 animate-pulse rounded-xl bg-secondary/50" />
+              <div key={n} className="h-36 animate-pulse rounded-xl bg-secondary/50" />
             ))}
           </div>
         ) : (
@@ -309,8 +318,9 @@ function AccountMerchant({ owner }: { owner: string }) {
             {orders.map((order) => (
               <li
                 key={order.id}
-                className="min-w-0 overflow-hidden rounded-xl border border-border/60 bg-card"
+                className={`min-w-0 overflow-hidden rounded-xl border bg-card ${canDeliver(order)?'border-primary/35':'border-border/60'}`}
               >
+               <div className="relative">
                 <button
                   type="button"
                   aria-label={`주문 ${String(order.number).padStart(2, '0')} 상세 보기`}
@@ -319,34 +329,26 @@ function AccountMerchant({ owner }: { owner: string }) {
                     setMessage('')
                     setSelected(order)
                   }}
-                  className="flex min-h-7 w-full items-center justify-end gap-2 px-3 pt-1 text-left outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                  className="absolute inset-0 flex w-full items-center justify-end rounded-t-xl pr-3 text-muted-foreground outline-none transition-colors hover:bg-secondary/20 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
                 >
-                  {order.completed ? (
-                    <span className="flex items-center gap-1 text-[10px] text-primary">
-                      <PackageCheck className="size-3.5" />
-                      {order.mine ? '내가 납품했어요' : '납품 완료'}
-                    </span>
-                  ) : (
-                    <span className="flex min-w-0 items-center gap-1 text-[10px] text-muted-foreground/70">
-                      <ChevronRight aria-hidden className="size-3 opacity-60" />
-                    </span>
-                  )}
+                  <ChevronRight aria-hidden className="size-3.5 opacity-50" />
                 </button>
-                <ul className="space-y-1 px-3 pb-2">
+                <ul className="pointer-events-none relative space-y-1 py-3 pr-9 pl-4">
                   {order.items.map((item) => (
-                    <ItemRow key={item.speciesId} item={item} />
+                    <ItemRow key={item.speciesId} item={item} completed={order.completed}/>
                   ))}
                 </ul>
-                <div className="flex min-h-14 items-center justify-between gap-3 border-t border-border/40 bg-secondary/20 px-3 py-2.5">
+               </div>
+                <div className="flex min-h-14 items-center justify-between gap-3 px-4 pb-3">
                   <div>
-                    <p className="flex items-center gap-1.5 text-lg font-medium tabular-nums text-primary">
-                      <GoldIcon className="size-5" />
+                    <p className="flex items-center gap-1.5 text-base font-medium tabular-nums text-primary">
+                      <GoldIcon className="size-4" />
                       {order.rewardGold.toLocaleString('ko-KR')}
                     </p>
                   </div>
-                  {!order.completed && (
+                  {order.completed?<span className="flex items-center gap-1 text-[10px] text-muted-foreground"><Check aria-hidden className="size-3"/>{order.mine?'내가 납품':'납품 완료'}</span>:canDeliver(order)?(
                     <Button
-                      className="min-h-10 shrink-0 rounded-lg px-4 text-xs"
+                      className="min-h-11 shrink-0 rounded-md px-4 text-xs"
                       disabled={busy || !!pending || expired}
                       onClick={() => {
                         setMessage('')
@@ -355,23 +357,20 @@ function AccountMerchant({ owner }: { owner: string }) {
                     >
                       납품하기
                     </Button>
-                  )}
+                  ):<Button variant="ghost" className="min-h-11 shrink-0 rounded-md px-2 text-[11px] text-muted-foreground" disabled={busy} onClick={()=>{setMessage('');setSelected(order)}}>{order.items.reduce((total,item)=>total+Math.max(0,item.quantity-item.owned),0)}개 부족</Button>}
                 </div>
                 {order.completed && order.delivery && (
-                  <div className="flex items-start gap-2.5 border-t border-border/40 bg-secondary/25 px-4 py-3">
+                  <div className="mx-4 flex items-start gap-2 border-t border-border/40 py-3">
                     <PlayerAvatar
                       nickname={order.delivery.nickname}
                       path={order.delivery.avatarPath}
-                      className="size-9 shrink-0"
+                      className="size-6 shrink-0"
                     />
                     <div className="min-w-0 flex-1">
                       <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
                         <span className="break-words font-medium">{order.delivery.nickname}</span>
-                        <span className="text-[10px] text-muted-foreground">납품 완료</span>
                       </p>
-                      <p className="mt-1 whitespace-pre-wrap break-words text-xs leading-5 text-muted-foreground">
-                        {order.delivery.message || '상인에게 꾸러미를 전해드렸어요.'}
-                      </p>
+                      {order.delivery.message&&<p className="mt-0.5 whitespace-pre-wrap break-words text-[11px] leading-5 text-muted-foreground">{order.delivery.message}</p>}
                     </div>
                   </div>
                 )}

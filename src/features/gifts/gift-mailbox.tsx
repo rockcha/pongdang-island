@@ -13,6 +13,7 @@ import { useSocial } from '@/features/social/social-provider'
 import { claimGift,giftError,giftReactions,loadGift,loadGifts,reactToGift } from './api'
 import type { GiftMailbox as Mailbox,GiftRecord,GiftReaction } from './api'
 import {markRelatedRead} from '@/features/notifications/api'
+import {PlayerAvatar} from '@/features/profile/player-avatar'
 
 function GiftPicture({gift,className}:{gift:GiftRecord;className:string}){
  if(gift.reward_kind==='gold')return <GoldIcon className={className}/>
@@ -40,7 +41,7 @@ export function GiftMailbox({onOpen}:{onOpen:(id:string)=>void}){
 
 export function GiftDetailDialog({id,onClose}:{id:string|null;onClose:()=>void}){
  const gold=useGold()
- const {owner,refresh,notifications}=useSocial()
+ const {owner,refresh,notifications,requests,profile}=useSocial()
  const [gift,setGift]=useState<GiftRecord|null>(null),[error,setError]=useState(''),[busy,setBusy]=useState(false),[retry,setRetry]=useState(0)
  const locked=useRef(false),active=useRef(true)
  const confirmedReads=useRef(new Set<string>())
@@ -54,19 +55,25 @@ export function GiftDetailDialog({id,onClose}:{id:string|null;onClose:()=>void})
   catch(cause){if(active.current)setError(giftError(cause))}finally{locked.current=false;if(active.current)setBusy(false)}
  }
  const received=gift?.recipient_id===owner
+ const sender=gift?.sender_id===owner?profile:requests?.flatMap(request=>[request.sender,request.recipient]).find(player=>player?.id===gift?.sender_id)
+ const personal=gift&&(gift.source??'friend')==='friend'
  const traded=gift?.source==='exchange'&&gift.reward_kind==='gold'?gift.species.exchange_offer:undefined
  return <Dialog open={!!id} onOpenChange={value=>{if(!value&&!busy)onClose()}}><DialogContent className="max-h-[85dvh] overflow-y-auto sm:max-w-sm" showCloseButton={!busy}>
-  <DialogHeader><DialogTitle className="flex items-center gap-2 pr-6"><img src="/branding/pongi-starfish.png" alt="" aria-hidden="true" className="size-6 shrink-0 object-contain"/>{gift?.source==='system'?'모험 응원 선물':gift?.source==='exchange'?'거래소 배송':'선물 이야기'}</DialogTitle><DialogDescription>{gift&&(gift.source==='system'?<GiftSender gift={gift}/>: `${gift.sender_name} → ${gift.recipient_name}`)}</DialogDescription></DialogHeader>
+  <DialogHeader><DialogTitle className="flex items-center gap-2 pr-6"><img src="/branding/pongi-starfish.png" alt="" aria-hidden="true" className="size-6 shrink-0 object-contain"/>{gift?.source==='system'?'모험 응원 선물':gift?.source==='exchange'?'거래소 배송':'선물 이야기'}</DialogTitle><DialogDescription className={personal?'sr-only':undefined}>{gift&&(gift.source==='system'?<GiftSender gift={gift}/>: `${gift.sender_name} → ${gift.recipient_name}`)}</DialogDescription></DialogHeader>
   {gift?<>
    {gift.source==='exchange'?<div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-xl bg-secondary/40 p-4">
     <div className="flex min-w-0 flex-col items-center gap-2">{traded?(traded.kind==='collectible'?<CollectibleThumbnail path={traded.thumbnail_path??''} name={traded.name} className="size-20"/>:<LandscapeImage src={traded.thumbnail_path??''} alt={traded.name} className="size-20 object-contain"/>):gift.reward_kind==='gold'?<Package aria-hidden="true" className="size-14 text-primary"/>:<GiftPicture gift={gift} className="size-20"/>}<p className="break-words text-center text-xs">{traded?.name??(gift.reward_kind==='gold'?'거래 물품':gift.species.name)}</p>{(traded||gift.reward_kind!=='gold')&&<span className="text-xs text-muted-foreground">×{traded?.quantity??gift.quantity}</span>}</div>
     <ArrowLeftRight aria-label="물품과 골드 거래" className="size-5 text-muted-foreground"/>
     <div className="flex min-w-0 flex-col items-center gap-2"><GoldIcon className="size-14"/><p className="text-sm font-medium tabular-nums">{gift.reward_kind==='gold'?gift.quantity.toLocaleString('ko-KR'):'골드'}</p><span className="text-xs text-muted-foreground">{gift.reward_kind==='gold'?'받을 판매 대금':'거래 대금'}</span></div>
-   </div>:<><GiftPicture gift={gift} className="mx-auto size-28"/><p className="text-center font-medium">{gift.reward_kind==='gold'?`${gift.quantity.toLocaleString('ko-KR')} 골드`:<>{gift.species.name} <span className="text-sm text-muted-foreground">×{gift.quantity}</span></>}</p></>}
-   <div className="rounded-xl bg-muted/50 p-4"><p className="whitespace-pre-wrap break-words text-sm leading-6">{gift.message||'메모 없이 마음을 보냈어요.'}</p></div>
-   {received&&(gift.reward_kind??'collectible')==='collectible'&&<p className="text-center text-xs leading-5 text-muted-foreground">받은 개체는 보관함에 들어가요.<br/>도감은 직접 낚시·통발·항구에서 잡으면 해금돼요.</p>}
+   </div>:null}
+   {personal?<div className="rounded-xl border border-rose-200/30 bg-rose-50/40 p-4 dark:border-rose-300/10 dark:bg-rose-300/5">
+    <div className="mb-3 flex min-w-0 items-center gap-2.5"><PlayerAvatar nickname={gift.sender_name} path={sender?.avatar_path} className="size-9 shrink-0 ring-2 ring-background"/><span className="min-w-0 truncate text-xs font-medium">{gift.sender_name}</span></div>
+    {gift.message&&<div className="min-h-16 max-h-28 overflow-y-auto overscroll-contain"><p className="whitespace-pre-wrap break-words text-sm leading-6">{gift.message}</p></div>}
+   </div>:gift.message&&<div className="flex min-h-20 max-h-32 items-start overflow-y-auto overscroll-contain rounded-xl bg-muted/50 px-4 py-3"><p className="whitespace-pre-wrap break-words text-sm leading-6">{gift.message}</p></div>}
+   {gift.source!=='exchange'&&<div className="space-y-2 py-2"><GiftPicture gift={gift} className="mx-auto size-28"/><p className="text-center text-sm font-medium">{gift.reward_kind==='gold'?`${gift.quantity.toLocaleString('ko-KR')} 골드`:<>{gift.species.name} <span className="text-xs text-muted-foreground">×{gift.quantity}</span></>}</p></div>}
+   {received&&(gift.reward_kind??'collectible')==='collectible'&&<p className="text-center text-xs leading-5 text-muted-foreground">보관함에 보관돼요.</p>}
    {received&&gift.status==='pending'&&<Button className="mt-2 min-h-14 w-full text-base" disabled={busy} onClick={()=>void act()}><Gift className="size-5"/>{busy?'받는 중…':'선물 받기'}</Button>}
-   {received&&(gift.source??'friend')==='friend'&&gift.status==='claimed'&&!gift.reaction&&<div className="space-y-3 border-t pt-4"><p className="text-center text-xs text-muted-foreground">고마운 마음을 이모지로 보내세요. 한 번만 보낼 수 있어요.</p><TooltipProvider><div className="flex justify-center gap-2">{Object.entries(giftReactions).map(([key,reaction])=><Tooltip key={key}><TooltipTrigger render={<Button variant="outline" size="icon-lg" disabled={busy} aria-label={`${reaction.label} 보내기`} onClick={()=>void act(key as GiftReaction)}/> }><span className="text-xl">{reaction.emoji}</span></TooltipTrigger><TooltipContent>{reaction.label} 보내기</TooltipContent></Tooltip>)}</div></TooltipProvider></div>}
+   {received&&(gift.source??'friend')==='friend'&&gift.status==='claimed'&&!gift.reaction&&<div className="border-t pt-4"><TooltipProvider><div className="flex justify-center gap-2">{Object.entries(giftReactions).map(([key,reaction])=><Tooltip key={key}><TooltipTrigger render={<Button variant="outline" size="icon-lg" disabled={busy} aria-label={`${reaction.label} 보내기`} onClick={()=>void act(key as GiftReaction)}/> }><span className="text-xl">{reaction.emoji}</span></TooltipTrigger><TooltipContent>{reaction.label} 보내기</TooltipContent></Tooltip>)}</div></TooltipProvider></div>}
    {gift.reaction&&<p className="rounded-lg bg-primary/5 p-3 text-center text-sm">{giftReactions[gift.reaction].emoji} {received?'답장을 보냈어요.':`${gift.recipient_name}님이 ${giftReactions[gift.reaction].sent}.`}</p>}
   </>:!error&&<p role="status" className="py-6 text-center text-sm text-muted-foreground">선물을 열어보는 중…</p>}
   {error&&<div role="alert" className="space-y-2 text-xs text-destructive"><p>{error}</p>{!gift&&<Button variant="outline" onClick={()=>setRetry(value=>value+1)}>다시 불러오기</Button>}</div>}

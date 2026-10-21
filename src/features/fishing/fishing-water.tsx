@@ -1,5 +1,5 @@
 import {hasRodImages} from './rod-image-assets'
-import {RodGauge} from './rod-gauge'
+import {FloatingRodGauge} from './rod-gauge'
 import {hasRodSkin,RodSkinFloat,RodSkinFrame,RodSkinRotor,RodSkinGrip,RodSkinShaft,rodShaftOutlineWidth} from './rod-skin-art'
 import type {FishingRod} from './fishing-rods'
 import { FishingSea,FishingPlatform } from './fishing-environment'
@@ -113,7 +113,7 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
   <ellipse cx={bx} cy={by+10} rx={(surge?28:18)*bobScale} ry="5" stroke={palette.light} fill="none" opacity={.5*(won?1-lift:1)}/>
   <ellipse cx={bx} cy={by+10} rx={(surge?40:28)*bobScale} ry="9" stroke={palette.light} fill="none" opacity={.2*(won?1-lift:1)}/>
   {/* SVG paint order keeps the gauge behind the line, float and rod. Anchor to calm water, not bobbing motion. */}
-  {showGauge&&<foreignObject data-fishing-gauge-layer="true" x="96" y={Math.max(30,nearWater-48)} width="208" height="24" pointerEvents="none"><RodGauge floating rod={rod} tension={visual.tension} status={active&&canBite&&!waiting&&!won&&!lost?undefined:'idle'}/></foreignObject>}
+  {showGauge&&<FloatingRodGauge x={96} y={Math.max(30,nearWater-48)} rod={rod} tension={visual.tension} idle={!(active&&canBite&&!waiting&&!won&&!lost)}/>}
   <path data-fishing-line="true" d={`M${tip.x} ${tip.y} Q${(tip.x+lineEnd.x)/2+(!reduced&&tension>.85?Math.sin(t*38)*2:0)} ${(tip.y+lineEnd.y)/2+(1-tension)*45*(1-tug*.8)} ${lineEnd.x} ${lineEnd.y}`} fill="none" stroke={tension>.85?'#ffd1ba':rod?.id==='mukhyang'?'#5d716b':'#e1edf2'} strokeWidth={1.2+tug*.8}/>
   {!(snapped&&end>.5)&&<g data-fishing-float="true" transform={`translate(${bx} ${by+dip*13}) rotate(${surge?24:dip*12}) scale(${bobScale} ${bobScale*(1-dip*.35)})`} opacity={won?1-end:1-dip*.88}>{(hasRodSkin(rod?.id)||hasRodImages(rod?.id))?<RodSkinFloat id={rod!.id}/>:<><path d="M0-17v12" stroke="#fff1d4" strokeWidth="2.5"/><ellipse rx="5" ry="9" fill="#fff1d4"/><path d="M-5 0a5 9 0 0 0 10 0Z" fill="#eb886f"/></>}</g>}
   {baitImage&&casting&&!reduced&&<g data-fishing-cast-bait="true" transform={`translate(${bx} ${by}) rotate(${Math.sin(cast*Math.PI)*12})`} pointerEvents="none"><path d="M0 9v14" fill="none" stroke="#e1edf2" strokeWidth="1"/><image href={baitImage} x="-16" y="21" width="32" height="32" preserveAspectRatio="xMidYMid meet"/></g>}

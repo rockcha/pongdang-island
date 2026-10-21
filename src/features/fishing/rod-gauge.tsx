@@ -19,6 +19,21 @@ const themes:Record<string,{ink:string;light:string;pattern:string}>={
  calm:{ink:'#274247',light:'#a1ded5',pattern:'linear-gradient(170deg,#c1eadb15,transparent)'},
 }
 
+// Native SVG avoids foreignObject rendering issues in mobile browsers.
+export function FloatingRodGauge({rod,tension,idle,x,y}:{rod?:FishingRod;tension:number;idle:boolean;x:number;y:number}){
+ const id=rod?.id??'basic',theme=themes[id]??themes.basic
+ const value=Math.max(0,Math.min(100,tension)),danger=!idle&&(value>85||value<20)
+ return <g data-fishing-gauge-layer="true" data-rod-gauge={id} transform={`translate(${x} ${y})`} pointerEvents="none" aria-hidden="true">
+  <rect width="208" height="22" rx="11" fill={theme.ink} fillOpacity=".65"/>
+  <g transform="translate(8 8)">
+   <rect width="192" height="6" rx="3" fill="black" fillOpacity=".2"/>
+   <rect x="38.4" width="124.8" height="6" fill="white" fillOpacity=".1"/>
+   <rect width={192*value/100} height="6" rx="3" fill={danger?'#f3a779':theme.light}/>
+   <path d="M38.4 0v6 M163.2 0v6" stroke="white" strokeOpacity=".25"/>
+  </g>
+ </g>
+}
+
 export function RodGauge({rod,tension,inline=false,floating=false,status}:{rod?:FishingRod;tension:number;inline?:boolean;floating?:boolean;status?:string}){
  const id=rod?.id??'basic',theme=themes[id]??themes.basic
  const value=Math.max(0,Math.min(100,tension)),danger=!status&&(value>85||value<20)

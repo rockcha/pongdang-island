@@ -17,7 +17,9 @@ it('places the floating gauge above the float and paints the line and rod in fro
  expect(gauge.compareDocumentPosition(float)&Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
  expect(gauge.getAttribute('pointer-events')).toBe('none')
  expect(gauge.textContent).toBe('')
- expect(Number(gauge.getAttribute('width'))).toBe(208)
+ expect(gauge.namespaceURI).toBe('http://www.w3.org/2000/svg')
+ expect(gauge.querySelector('rect')?.getAttribute('width')).toBe('208')
+ expect(view.container.querySelector('foreignObject')).toBeNull()
 })
 it('uses distinct rod themes while preserving the same safety boundaries',()=>{
  const backgrounds=new Set<string>()

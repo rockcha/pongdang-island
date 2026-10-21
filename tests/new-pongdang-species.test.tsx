@@ -1,5 +1,5 @@
 import {readFileSync} from 'node:fs'
-import {render,screen,cleanup} from '@testing-library/react'
+import {render,screen,cleanup,fireEvent,within} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
 import {NewPongdangSpecies,recentSpeciesIds} from '@/features/regions/new-pongdang-species'
 import type {CatalogEntry} from '@/features/collection/api'
@@ -10,17 +10,27 @@ afterEach(cleanup)
 const released=Date.parse('2026-10-21T00:00:00+09:00')
 it('shows the 17 new species from every sea with silhouettes and full descriptions',()=>{
  const view=render(<NewPongdangSpecies catalog={catalog} now={released}/>)
- expect(screen.getAllByRole('article')).toHaveLength(17)
- expect(screen.getAllByRole('region').map(r=>r.getAttribute('aria-label'))).toEqual(['신화 신규 개체','특급 신규 개체','희귀 신규 개체','일반 신규 개체'])
- expect(view.container.querySelectorAll('[data-silhouette="true"]')).toHaveLength(17)
+ expect(screen.getAllByRole('tab').map(tab=>tab.textContent)).toEqual(['일반9','희귀1','특급3','신화4'])
+ expect(screen.getAllByRole('article')).toHaveLength(9)
+ expect(view.container.querySelectorAll('[data-silhouette="true"]')).toHaveLength(9)
  expect(screen.queryByRole('heading',{name:'퐁이 탐사로봇 NEW'})).toBeNull()
  for(const article of screen.getAllByRole('article')){
   const name=article.querySelector('h4')!.textContent!.replace(/ NEW$/,'')
   const species=catalog.find(s=>s.name===name)!
   expect(article.textContent).toContain(species.description)
  }
- for(const name of ['푸른볼 쥐치','루네아의 거울비늘','병 속의 바다, 유리온'])expect(screen.getByRole('heading',{name:name+' NEW'})).toBeTruthy()
- expect(screen.queryByRole('button')).toBeNull()
+ expect(screen.getByRole('heading',{name:'푸른볼 쥐치 NEW'})).toBeTruthy()
+ expect(screen.getAllByRole('img',{name:/주 서식지:/})).toHaveLength(9)
+ fireEvent.click(screen.getByRole('tab',{name:/특급/}))
+ expect(screen.getAllByRole('article')).toHaveLength(3)
+ expect(screen.getByRole('heading',{name:'루네아의 거울비늘 NEW'})).toBeTruthy()
+ fireEvent.click(screen.getByRole('tab',{name:/희귀/}))
+ expect(screen.getAllByRole('article')).toHaveLength(1)
+ fireEvent.click(screen.getByRole('tab',{name:/신화/}))
+ expect(screen.getAllByRole('article')).toHaveLength(4)
+ const shared=screen.getByRole('heading',{name:'병 속의 바다, 유리온 NEW'}).closest('article')!
+ expect(within(shared).queryByRole('img',{name:/주 서식지:/})).toBeNull()
+ expect(screen.getAllByRole('img',{name:/주 서식지:/})).toHaveLength(1)
 })
 it('starts at release and expires exactly seven days later',()=>{
  expect(recentSpeciesIds(released-1).size).toBe(0)

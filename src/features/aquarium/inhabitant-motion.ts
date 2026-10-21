@@ -92,7 +92,8 @@ export class InhabitantMotion {
       // midpoint of a top-left travel box. Allow for transparent sprite margins
       // while keeping the whole logical cell inside the glass.
       const floor=Math.min(.98,Math.max(.94,high))
-      y=Math.max(0,Math.min(h,height*floor-size*.8))
+      const laneOffset=motion.floorLane*Math.min(24,height*.035)
+      y=Math.max(0,Math.min(h,height*floor-size*.8-laneOffset))
     }
     if(settings.type==='pulse'){
       // Gentle short vertical pulses, carried along an individual, slowly

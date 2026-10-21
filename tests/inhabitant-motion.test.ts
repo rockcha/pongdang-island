@@ -29,6 +29,32 @@ it('preserves a manually placed crawler height instead of snapping it to the flo
  expect(motion.update(30,.016,400,600).y).toBeCloseTo(.5*(600-72))
 })
 
+it('gives identical crawlers stable but different lanes within the bottom strip',()=>{
+ const crawler=item();crawler.species={...crawler.species,movement_type:'crawl',swim_y_min:.86,swim_y_max:.95}
+ const heights=Array.from({length:40},(_,i)=>{
+  const specimen={...crawler,id:`crawler-${i}`}
+  const motion=new InhabitantMotion(specimen),y=motion.update(0,0,400,600).y
+  expect(motion.update(40,.1,400,600).y).toBe(y)
+  expect(new InhabitantMotion(specimen).update(0,0,400,600).y).toBe(y)
+  expect(y+motion.pose.size*.8).toBeGreaterThan(600*.9)
+  return y
+ })
+ const range=Math.max(...heights)-Math.min(...heights)
+ expect(range).toBeGreaterThan(12)
+ expect(range).toBeLessThanOrEqual(24)
+})
+
+it('shows visible diagonal displacement within a short viewing period',()=>{
+ let diagonal=0
+ for(let i=0;i<60;i++){
+  const motion=new InhabitantMotion({...item(),id:`visible-diagonal-${i}`,animation_seed:i})
+  const first={...motion.update(0,0,400,600)}
+  const last=motion.update(16,.1,400,600)
+  if(Math.abs(last.y-first.y)>10&&Math.abs(last.x-first.x)>15)diagonal++
+ }
+ expect(diagonal).toBeGreaterThan(25)
+})
+
 it('gently pitches swimmers along rising and falling diagonal routes without steep turns',()=>{
  let rising=false,falling=false
  for(let i=0;i<12;i++){

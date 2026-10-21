@@ -19,6 +19,16 @@ export function createSwimMotion(id: string, seed: number, speed: number, varied
   })
   // Decide behavior once per six-second interval, independently for each individual.
   const totals=[0],depthTotals=[0]
+  const depths=[.04+random(20000)*.92]
+  function depthAt(index:number){
+    while(depths.length<=index){
+      const previous=depths[depths.length-1],roll=random(depths.length+20000)
+      let next=.04+roll*.92
+      if(Math.abs(next-previous)<.2)next=previous<.5?Math.min(.96,previous+.25+roll*.2):Math.max(.04,previous-.25-roll*.2)
+      depths.push(next)
+    }
+    return depths[index]
+  }
   function interval(index:number, elapsed:number){
     const roll=random(index+30000)
     const cruising=.8+random(index+40000)*.3
@@ -52,12 +62,11 @@ export function createSwimMotion(id: string, seed: number, speed: number, varied
     const from = waypoint(segment), to = waypoint(segment + 1)
     // Use most of the species' permitted depth band. Each fish changes depth
     // on its own slow schedule, keeping large vertical journeys gentle.
-    const verticalDuration = Math.max(64,duration*(5+random(6)*3))
+    const verticalDuration = Math.max(24,duration*(1.8+random(6)*.8))
     const verticalPhase = depthTime / verticalDuration
     const verticalSegment = Math.floor(verticalPhase)
     const verticalProgress = verticalPhase - verticalSegment
     const verticalBlend = verticalProgress ** 2 * (3 - 2 * verticalProgress)
-    const depthAt=(index:number)=>.04+random(index+20000)*.92
     const fromY = depthAt(verticalSegment)
     const toY = depthAt(verticalSegment+1)
     return {
@@ -66,6 +75,7 @@ export function createSwimMotion(id: string, seed: number, speed: number, varied
       velocityX: (to.x - from.x) * 6 * progress * (1 - progress) / duration*activity.rate,
       velocityY: (toY - fromY) * 6 * verticalProgress * (1 - verticalProgress) / verticalDuration*activity.depthRate,
       behavior:activity.behavior,
+      floorLane:random(11000),
       direction: to.x >= from.x ? 1 : -1,
       // Keep fins moving slowly at rest and accelerate them with swimming, without phase jumps.
       framePhase: 1.6 * realTime + 1.4 * time + random(5) * 4,

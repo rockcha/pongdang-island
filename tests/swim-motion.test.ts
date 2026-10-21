@@ -30,7 +30,7 @@ it('explores different heights with diagonal travel without rapid vertical movem
   expect(heightRange).toBeGreaterThan(0.01)
   expect(heightRange).toBeLessThanOrEqual(0.92)
   expect(points.some(p => Math.abs(p.velocityX) > 0.01 && Math.abs(p.velocityY) > 0.0001)).toBe(true)
-  expect(points.every(p => Math.abs(p.velocityY) < 0.025)).toBe(true)
+  expect(points.every(p => Math.abs(p.velocityY) < 0.065)).toBe(true)
 })
 
 it('makes noticeable horizontal progress for every individual, including slow species', () => {
@@ -67,7 +67,7 @@ it('changes depth gently with continuous position at course and behavior boundar
  for(const seed of [0,42,240000,999999]){
   const route=createSwimMotion('sea-crocodile',seed,.045)
   const points=Array.from({length:1801},(_,i)=>route(i*.1))
-  for(let i=1;i<points.length;i++)expect(Math.abs(points[i].y-points[i-1].y)).toBeLessThan(.004)
+  for(let i=1;i<points.length;i++)expect(Math.abs(points[i].y-points[i-1].y)).toBeLessThan(.007)
  }
 })
 
@@ -84,7 +84,7 @@ it('lets individuals explore a wider depth range over time without vertical jump
  const ranges=Array.from({length:40},(_,i)=>{
   const motion=createSwimMotion(`explorer-${i}`,i,.05)
   const points=Array.from({length:601},(_,t)=>motion(t))
-  expect(points.every(p=>p.y>=0&&p.y<=1&&Math.abs(p.velocityY)<.025)).toBe(true)
+  expect(points.every(p=>p.y>=0&&p.y<=1&&Math.abs(p.velocityY)<.065)).toBe(true)
   return Math.max(...points.map(p=>p.y))-Math.min(...points.map(p=>p.y))
  })
  expect(ranges.filter(range=>range>.3).length).toBeGreaterThan(30)

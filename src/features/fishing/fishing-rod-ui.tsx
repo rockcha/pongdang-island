@@ -99,9 +99,9 @@ export function FishingRodSelector({disabled=false,regionId,dock=false,compact=f
      </li>
     })}</ul>}
    </div>
-   <div className="shrink-0 border-t bg-background pb-[env(safe-area-inset-bottom)]">
-    <Link to="/shop?tab=rods" onClick={event=>{if(unavailable)event.preventDefault();else changeOpen(false)}} aria-disabled={unavailable} className="flex min-h-11 items-center justify-center gap-1 text-xs text-muted-foreground outline-none hover:bg-secondary/40 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring">낚싯대 상점으로<ChevronRight className="size-3"/></Link>
-    <Button className="h-14 w-full rounded-none" disabled={unavailable||!pending} onClick={()=>void equip()}>{saving?'장착 중…':'이 낚싯대 사용하기'}</Button>
+   <div className="grid shrink-0 grid-cols-2 border-t bg-background pb-[env(safe-area-inset-bottom)]">
+    <Link to="/shop?tab=rods" aria-label="낚싯대 상점으로" onClick={event=>{if(unavailable)event.preventDefault();else changeOpen(false)}} aria-disabled={unavailable} className="flex h-14 items-center justify-center gap-1 border-r bg-secondary/40 text-sm text-primary outline-none hover:bg-secondary focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring aria-disabled:opacity-50">상점<ChevronRight className="size-3"/></Link>
+    <Button aria-label="이 낚싯대 사용하기" className="h-14 w-full rounded-none" disabled={unavailable||!pending} onClick={()=>void equip()}>{saving?'장착 중…':'사용'}</Button>
    </div>
    <Dialog open={!!details} onOpenChange={value=>{if(!value)setDetails(null)}}><DialogContent className="rounded-2xl sm:max-w-sm"><DialogHeader><DialogTitle className="text-base font-normal">{details?.name}</DialogTitle><DialogDescription>해역 낚싯대는 고유종 추첨을, 청동·잔물결 낚싯대는 직접 낚시 성공 판정을 보정해요. 게이지 조작 실패와 통발 설치에는 적용되지 않아요.</DialogDescription></DialogHeader>{details&&<RodEffect rod={details}/>}</DialogContent></Dialog>
   </DialogContent>

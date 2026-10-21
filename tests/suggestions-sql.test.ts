@@ -19,7 +19,7 @@ beforeAll(async()=>{
 },60000)
 afterAll(async()=>{await db?.close()})
 beforeEach(async()=>{
- await db.exec('truncate public.suggestion_posts; truncate public.notifications cascade; truncate public.friend_requests cascade; truncate public.player_wallets cascade;')
+ await db.exec('truncate public.suggestion_posts cascade; truncate public.notifications cascade; truncate public.friend_requests cascade; truncate public.player_wallets cascade;')
  await db.query("insert into public.friend_requests(sender_id,recipient_id,status) values($1,$2,'accepted')",[author,friend])
  await asUser(author,"insert into public.suggestion_posts(id,title,body,friends_only) values($1,'Public idea','Details',false),($2,'Private idea','Friends details',true)",[publicPost,privatePost])
 })

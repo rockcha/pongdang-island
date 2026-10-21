@@ -4,9 +4,14 @@ import { cn } from "cn"
 
 import { Button } from "@/components/ui/button"
 import { XIcon } from "lucide-react"
+import {OverlayDepth,useOverlayBack} from '@/components/overlay-back'
 
-function Dialog({ ...props }: DialogPrimitive.Root.Props) {
-  return <DialogPrimitive.Root data-slot="dialog" {...props} />
+function Dialog({open,defaultOpen=false,onOpenChange,actionsRef,...props}: DialogPrimitive.Root.Props) {
+  const [uncontrolled,setUncontrolled]=React.useState(defaultOpen)
+  const internalActions=React.useRef<DialogPrimitive.Root.Actions|null>(null)
+  const actions=actionsRef??internalActions
+  const depth=useOverlayBack(open??uncontrolled,()=>actions.current?.close())
+  return <OverlayDepth value={depth+1}><DialogPrimitive.Root data-slot="dialog" {...props} open={open??uncontrolled} actionsRef={actions} onOpenChange={(next,details)=>{onOpenChange?.(next,details);if(!details.isCanceled)setUncontrolled(next)}} /></OverlayDepth>
 }
 
 function DialogTrigger({ ...props }: DialogPrimitive.Trigger.Props) {

@@ -36,6 +36,10 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      refresh_return_notifications:{Args:Record<string,never>;Returns:import('@/features/notifications/api').ReturnNotificationStatus}
+      feedback_authors:{Args:{p_kind:import('@/features/board/feedback-reactions').FeedbackKind;p_ids:string[]};Returns:import('@/features/board/feedback-post-row').FeedbackAuthorAvatar[]}
+      feedback_reactions:{Args:{p_kind:import('@/features/board/feedback-reactions').FeedbackKind;p_ids:string[]};Returns:import('@/features/board/feedback-reactions').FeedbackReaction[]}
+      set_feedback_reaction:{Args:{p_kind:import('@/features/board/feedback-reactions').FeedbackKind;p_id:string;p_value:number};Returns:import('@/features/board/feedback-reactions').FeedbackReaction}
       merchant_state:{Args:Record<string,never>;Returns:import('@/features/merchant/api').MerchantState}
       deliver_merchant_order:{Args:{p_order_id:string;p_operation_id:string;p_message:string};Returns:import('@/features/merchant/api').MerchantState}
       board_feed:{Args:{p_sort?:string;p_mine?:boolean;p_offset?:number};Returns:import('@/features/board/api').BoardFeed}

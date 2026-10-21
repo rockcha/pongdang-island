@@ -8,6 +8,12 @@ vi.mock('@/features/notifications/api',()=>({markRead:mock.opened}))
 vi.mock('@/features/social/social-provider',()=>({useSocial:()=>({owner:'me',notifications:mock.notifications,unread:mock.unread,loading:false,error:null,refresh:mock.refresh})}))
 beforeEach(()=>{vi.clearAllMocks();mock.notifications=[];mock.unread={friend:1,general:0,notice:2,gift:0};mock.opened.mockResolvedValue(undefined);mock.refresh.mockResolvedValue(undefined)})
 afterEach(cleanup)
+it('opens the harbor for a returned fishing boat',()=>{
+ mock.notifications=[{id:'boat',category:'general',kind:'system',title:'어선이 돌아왔어요!',harbor_voyage_id:'voyage',read_at:null,created_at:new Date().toISOString()} as AppNotification]
+ render(<MemoryRouter><NotificationMenu/></MemoryRouter>)
+ fireEvent.click(screen.getByRole('button',{name:'알림, 읽지 않은 알림 1개'}))
+ expect(screen.getByRole('link',{name:/어선이 돌아왔어요/}).getAttribute('href')).toBe('/port')
+})
 it('opens the originating board post from a comment notification',()=>{
  mock.notifications=[{id:'comment',category:'general',kind:'system',title:'내 글에 새 댓글이 달렸어요',board_post_id:'post',read_at:null,created_at:new Date().toISOString()} as AppNotification]
  render(<MemoryRouter><NotificationMenu/></MemoryRouter>)

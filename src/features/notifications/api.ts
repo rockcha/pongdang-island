@@ -23,6 +23,12 @@ export async function markRead(userId: string, id?: string, category?: Notificat
   if (error) throw error
 }
 export async function notificationsOpened(){const {error}=await createClient().rpc('notifications_opened');if(error)throw error}
+export type ReturnNotificationStatus={created:number;nextAt:string|null;serverNow:string}
+export async function refreshReturnNotifications(){
+ const {data,error}=await createClient().rpc('refresh_return_notifications')
+ if(error)throw error
+ return data
+}
 export async function markRelatedRead(userId:string,column:'notice_id'|'gift_id'|'request_id',id:string){
  const {error}=await createClient().from('notifications').update({read_at:new Date().toISOString()}).eq('recipient_id',userId).eq(column,id).is('read_at',null)
  if(error)throw error

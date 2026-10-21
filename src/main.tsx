@@ -7,10 +7,11 @@ import './index.css'
 import App from './App.tsx'
 import {initializePwaInstall} from '@/features/pwa/install'
 import {AppReady,AppRecovery,AppRecoveryBoundary} from '@/components/app-recovery'
+import {OverlayHistoryTracker} from '@/components/overlay-back'
 
 initializePwaInstall()
 
-const router=createBrowserRouter([{path:'*',element:<AuthProvider><App /><AppReady/></AuthProvider>,errorElement:<AppRecovery/>}])
+const router=createBrowserRouter([{path:'*',element:<AuthProvider><OverlayHistoryTracker/><App /><AppReady/></AuthProvider>,errorElement:<AppRecovery/>}])
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

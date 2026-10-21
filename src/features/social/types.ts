@@ -12,6 +12,7 @@ export type AppNotification = {
   gift_id?:string|null
   achievement_id?:string|null
   expedition_id?:string|null
+  harbor_voyage_id?:string|null
   expedition_boost_id?:string|null
   notice_id?:string|null
   board_post_id?:string|null

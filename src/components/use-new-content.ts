@@ -3,9 +3,13 @@ import { useLocation } from 'react-router'
 import { useAuth } from './auth-provider'
 import { loadBoardFeed } from '@/features/board/api'
 import { loadExchange } from '@/features/exchange/api'
+import { loadSuggestions } from '@/features/suggestions/api'
+import { loadBugReports } from '@/features/bugs/api'
 
-type Source = 'board' | 'exchange'
-const sources: Source[] = ['board', 'exchange']
+type Source = 'board' | 'exchange' | 'suggestions' | 'bugs'
+const sources: Source[] = ['board', 'exchange', 'suggestions', 'bugs']
+const sourcePaths:Record<Source,string>={board:'/board',exchange:'/exchange',suggestions:'/square/suggestions',bugs:'/square/bugs'}
+const emptyState={board:false,exchange:false,suggestions:false,bugs:false}
 const seenKey = (owner: string, source: Source) => `pongdang:content-seen:${owner}:${source}`
 function seen(owner: string, source: Source) {
   try {
@@ -24,7 +28,7 @@ export function useNewContent() {
   const { session, recovery } = useAuth()
   const owner = session?.user.id
   const { pathname } = useLocation()
-  const [state, setState] = useState<{ owner: string; board: boolean; exchange: boolean } | null>(
+  const [state, setState] = useState<({ owner: string } & Record<Source,boolean>) | null>(
     null,
   )
   useEffect(() => {
@@ -32,13 +36,15 @@ export function useNewContent() {
     let active = true,
       loading = false
     const onSourcePage = (source: Source) =>
-      pathname === `/${source}` || pathname.startsWith(`/${source}/`)
+      pathname === sourcePaths[source] || pathname.startsWith(`${sourcePaths[source]}/`)
     async function refresh() {
       if (!active || loading || document.hidden) return
       loading = true
       const results = await Promise.allSettled([
         loadBoardFeed('latest', false, 0),
         loadExchange('all', '', 0),
+        loadSuggestions(0,null),
+        loadBugReports(0,null),
       ])
       loading = false
       if (!active) return
@@ -65,8 +71,7 @@ export function useNewContent() {
       })
       setState((previous) => ({
         owner: owner!,
-        board: false,
-        exchange: false,
+        ...emptyState,
         ...(previous?.owner === owner ? previous : {}),
         ...updates,
       }))
@@ -94,7 +99,7 @@ export function useNewContent() {
       document.removeEventListener('visibilitychange', update)
     }
   }, [owner, recovery, pathname])
-  return !recovery && state?.owner === owner
-    ? { board: state?.board ?? false, exchange: state?.exchange ?? false }
-    : { board: false, exchange: false }
+  return !recovery && state && state.owner === owner
+    ? { board: state.board, exchange: state.exchange, suggestions:state.suggestions, bugs:state.bugs }
+    : emptyState
 }

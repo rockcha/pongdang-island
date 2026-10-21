@@ -19,7 +19,7 @@ beforeAll(async()=>{
 },60000)
 afterAll(async()=>{await db?.close()})
 beforeEach(async()=>{
- await db.exec('truncate public.bug_reports; truncate public.notifications cascade; truncate public.player_wallets cascade;')
+ await db.exec('truncate public.bug_reports cascade; truncate public.notifications cascade; truncate public.player_wallets cascade;')
  await asUser(author,"insert into public.bug_reports(id,title,body) values($1,'A bug','Steps to reproduce')",[report])
 })
 it('lets signed-in players report and read, without spoofing another author or confirmation',async()=>{

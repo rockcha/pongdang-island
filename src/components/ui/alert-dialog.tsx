@@ -3,9 +3,14 @@ import { AlertDialog as AlertDialogPrimitive } from "@base-ui/react/alert-dialog
 import { cn } from "cn"
 
 import { Button } from "@/components/ui/button"
+import {OverlayDepth,useOverlayBack} from '@/components/overlay-back'
 
-function AlertDialog({ ...props }: AlertDialogPrimitive.Root.Props) {
-  return <AlertDialogPrimitive.Root data-slot="alert-dialog" {...props} />
+function AlertDialog({open,defaultOpen=false,onOpenChange,actionsRef,...props}: AlertDialogPrimitive.Root.Props) {
+  const [uncontrolled,setUncontrolled]=React.useState(defaultOpen)
+  const internalActions=React.useRef<AlertDialogPrimitive.Root.Actions|null>(null)
+  const actions=actionsRef??internalActions
+  const depth=useOverlayBack(open??uncontrolled,()=>actions.current?.close(),false)
+  return <OverlayDepth value={depth+1}><AlertDialogPrimitive.Root data-slot="alert-dialog" {...props} open={open??uncontrolled} actionsRef={actions} onOpenChange={(next,details)=>{onOpenChange?.(next,details);if(!details.isCanceled)setUncontrolled(next)}} /></OverlayDepth>
 }
 
 function AlertDialogTrigger({ ...props }: AlertDialogPrimitive.Trigger.Props) {

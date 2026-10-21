@@ -24,22 +24,15 @@ import {
   type BoardReactions,
 } from './api'
 import { BoardEditor } from './board-editor'
+import { BoardTime } from './board-time'
 
-function date(value: string) {
-  return new Date(value).toLocaleString('ko-KR', {
-    month: 'numeric',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-  })
-}
 function Author({ author, time }: { author: BoardAuthor; time: string }) {
   return (
     <div className="flex min-w-0 items-center gap-2">
       <PlayerAvatar
         nickname={author.author_name}
         path={author.avatar_path}
-        className="size-9 shrink-0"
+        className="size-9 shrink-0 ring-1 ring-border bg-secondary"
       />
       <div className="min-w-0 flex-1">
         <p className="truncate text-xs">{author.author_name}</p>
@@ -50,9 +43,7 @@ function Author({ author, time }: { author: BoardAuthor; time: string }) {
           </p>
         )}
       </div>
-      <time dateTime={time} className="shrink-0 text-[10px] text-muted-foreground">
-        {date(time)}
-      </time>
+      <BoardTime value={time} className="shrink-0 text-[10px] text-muted-foreground" />
     </div>
   )
 }
@@ -203,27 +194,31 @@ export function BoardPage() {
               <li key={post.id}>
                 <Link
                   to={`/board/${post.id}`}
-                  className="block space-y-2 py-4 outline-none hover:bg-secondary/20 focus-visible:ring-2 focus-visible:ring-ring"
+                  className="group flex gap-3 py-5 outline-none transition-colors hover:bg-secondary/20 focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  <h2 className="break-words text-sm leading-6 [overflow-wrap:anywhere]">
+                  <PlayerAvatar nickname={post.author_name} path={post.avatar_path} className="size-8 shrink-0 ring-1 ring-border bg-secondary" />
+                  <div className="min-w-0 flex-1">
+                  <div className="mb-1.5 flex min-w-0 items-center gap-1.5 text-[11px] text-muted-foreground">
+                    <span className="min-w-0 truncate font-medium text-foreground/80">{post.author_name}</span>
+                    <span aria-hidden="true" className="opacity-50">·</span>
+                    <BoardTime value={post.created_at} className="shrink-0" />
+                  </div>
+                  <h2 className="line-clamp-2 break-words text-sm font-semibold leading-6 [overflow-wrap:anywhere] group-hover:text-primary">
                     {post.title}
                   </h2>
-                  <p className="line-clamp-1 break-words text-xs text-muted-foreground">
+                  <p className="mt-1 line-clamp-1 break-words text-xs leading-5 text-muted-foreground">
                     {post.body}
                   </p>
-                  <div className="flex min-w-0 items-center gap-3 text-[10px] text-muted-foreground">
-                    <span className="min-w-0 truncate">{post.author_name}</span>
-                    <time className="shrink-0" dateTime={post.created_at}>
-                      {date(post.created_at)}
-                    </time>
-                    <span className="ml-auto inline-flex shrink-0 items-center gap-1">
-                      <MessageCircle className="size-3" />
+                  <div className="mt-2.5 flex items-center gap-3 text-[11px] tabular-nums text-muted-foreground">
+                    <span aria-label={`댓글 ${post.comment_count}개`} className={`inline-flex items-center gap-1 ${post.comment_count>0?'text-primary':''}`}>
+                      <MessageCircle aria-hidden="true" className="size-3.5" />
                       {post.comment_count}
                     </span>
-                    <span className="inline-flex shrink-0 items-center gap-1">
-                      <ThumbsUp className="size-3" />
+                    <span aria-label={`좋아요 ${post.likes}개`} className="inline-flex items-center gap-1">
+                      <ThumbsUp aria-hidden="true" className="size-3.5" />
                       {post.likes}
                     </span>
+                  </div>
                   </div>
                 </Link>
               </li>

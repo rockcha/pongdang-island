@@ -1,10 +1,11 @@
 import {NoticeCategoryIcon} from '@/features/notices/notice-category-icon'
-export type NotificationIconSource={achievement_id?:string|null;kind?:string;category?:string;title?:string;expedition_id?:string|null;expedition_boost_id?:string|null;notice_id?:string|null;notice?:{category:'guide'|'update'|'maintenance'|'event'}|null}
+export type NotificationIconSource={achievement_id?:string|null;kind?:string;category?:string;title?:string;expedition_id?:string|null;harbor_voyage_id?:string|null;expedition_boost_id?:string|null;notice_id?:string|null;notice?:{category:'guide'|'update'|'maintenance'|'event'}|null}
 
 export function notificationIconName(item:NotificationIconSource){
  if(item.achievement_id)return 'title'
  if(item.expedition_boost_id)return 'expedition-boost'
  if(item.expedition_id)return 'expedition'
+ if(item.harbor_voyage_id)return 'expedition'
  if(item.notice_id||item.category==='notice'||item.kind==='announcement')return 'announcement'
  switch(item.kind){
   case 'friend_request':return 'friend-request'

@@ -7,6 +7,7 @@ import { getNickname, useAuth } from '@/components/auth-provider'
 import { createClient } from '@/lib/client'
 import { loadFriendRequests, loadProfile, syncProfile } from '@/features/friends/api'
 import { loadNotifications } from '@/features/notifications/api'
+import {useReturnNotifications} from '@/features/notifications/use-return-notifications'
 import { socialErrorMessage } from './types'
 import type { AppNotification, FriendRequest, Profile, UnreadCounts } from './types'
 
@@ -27,6 +28,7 @@ export function SocialProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<State>(initial)
   const refreshRef = useRef<() => Promise<void>>(async () => {})
   const refresh = useCallback(async () => { await refreshRef.current() }, [])
+  useReturnNotifications(!recovery&&nickname?userId:undefined,refresh)
 
   useEffect(() => {
     if (!userId || !nickname || recovery) {
@@ -41,6 +43,11 @@ export function SocialProvider({ children }: { children: ReactNode }) {
     let profile: Profile | null = null
     let starting: Promise<void> | null = null
     const seen = new Set<string>()
+    function announce(notification:AppNotification){
+      if(seen.has(notification.id))return
+      seen.add(notification.id)
+      toast.info(notification.title, { id: notification.id, icon:<NotificationIcon notification={notification} className="size-7"/>, description: `${notification.category === 'notice'?'공지':notification.category === 'friend' ? '친구' : notification.category==='gift'?'선물':'소식'} · ${notification.body}`,action:notification.achievement_id?undefined:notification.harbor_voyage_id?{label:'항구 보기',onClick:()=>{window.location.assign('/port')}}:(notification.expedition_id||notification.expedition_boost_id)?{label:'통발 보기',onClick:()=>{window.location.assign('/expeditions')}}:notification.notice_id?{label:'공지 보기',onClick:()=>{window.location.assign(`/square/notices/${notification.notice_id}`)}}:notification.gift_id?{label:'선물 보기',onClick:()=>{window.location.assign(`/notifications?gift=${notification.gift_id}`)}}:undefined })
+    }
     const client = createClient()
     setState({ ...initial, owner: userId, loading: true })
 
@@ -51,6 +58,9 @@ export function SocialProvider({ children }: { children: ReactNode }) {
         if (!active || version !== revision) return
         profile = latestProfile
         setState(previous => ({ ...previous, profile, requests, ...inbox, loading: false, error: null }))
+        for(const notification of inbox.notifications){
+          if(!notification.read_at&&(notification.expedition_id||notification.harbor_voyage_id))announce(notification)
+        }
       } catch (cause) {
         if (active && version === revision) setState(previous => ({ ...previous, loading: false, error: socialErrorMessage(cause) }))
       }
@@ -74,11 +84,9 @@ export function SocialProvider({ children }: { children: ReactNode }) {
               if (!active) return
               const notification = payload.new as AppNotification
               if(notification.expedition_id||notification.expedition_boost_id)window.dispatchEvent(new Event('expedition-changed'))
+              if(notification.harbor_voyage_id)window.dispatchEvent(new Event('harbor-changed'))
               if(notification.kind==='reward')window.dispatchEvent(new Event('wallet-changed'))
-              if (!seen.has(notification.id)) {
-                seen.add(notification.id)
-                toast.info(notification.title, { id: notification.id, icon:<NotificationIcon notification={notification} className="size-7"/>, description: `${notification.category === 'notice'?'공지':notification.category === 'friend' ? '친구' : notification.category==='gift'?'선물':'소식'} · ${notification.body}`,action:notification.achievement_id?undefined:(notification.expedition_id||notification.expedition_boost_id)?{label:'통발 보기',onClick:()=>{window.location.assign('/expeditions')}}:notification.notice_id?{label:'공지 보기',onClick:()=>{window.location.assign(`/square/notices/${notification.notice_id}`)}}:notification.gift_id?{label:'선물 보기',onClick:()=>{window.location.assign(`/notifications?gift=${notification.gift_id}`)}}:undefined })
-              }
+              announce(notification)
               schedule()
             })
             .on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'notifications', filter: `recipient_id=eq.${userId}` }, schedule)

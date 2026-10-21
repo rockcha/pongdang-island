@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "ea8377436939e42ed4244f2e28c4c0dbf1d2dfd59c0d68a0e7674882b1fa70a8",
+  "migrationHash": "780df51b60980d30c2086632662b51b082635d172e50fbb4d6d99d2868c646ef",
   "structure": {
     "enums": [
       {
@@ -97,6 +97,18 @@
       {
         "rls": true,
         "name": "expedition_settings",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "feedback_bug_votes",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "feedback_suggestion_votes",
         "schema": "app_private",
         "force_rls": false
       },
@@ -921,6 +933,66 @@
         "table": "expedition_settings",
         "schema": "app_private",
         "default": "false",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "post_id",
+        "type": "uuid",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "value",
+        "type": "smallint",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "post_id",
+        "type": "uuid",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "value",
+        "type": "smallint",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "default": null,
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -4596,6 +4668,16 @@
         "generated": ""
       },
       {
+        "name": "notified_at",
+        "type": "timestamp with time zone",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
         "name": "id",
         "type": "uuid",
         "table": "memory_game_runs",
@@ -5087,6 +5169,16 @@
       },
       {
         "name": "board_post_id",
+        "type": "uuid",
+        "table": "notifications",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "harbor_voyage_id",
         "type": "uuid",
         "table": "notifications",
         "schema": "public",
@@ -6330,6 +6422,30 @@
         "definition": "CREATE UNIQUE INDEX expedition_settings_pkey ON app_private.expedition_settings USING btree (id)"
       },
       {
+        "name": "feedback_bug_votes_pkey",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX feedback_bug_votes_pkey ON app_private.feedback_bug_votes USING btree (post_id, user_id)"
+      },
+      {
+        "name": "feedback_bug_votes_user_idx",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "definition": "CREATE INDEX feedback_bug_votes_user_idx ON app_private.feedback_bug_votes USING btree (user_id)"
+      },
+      {
+        "name": "feedback_suggestion_votes_pkey",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX feedback_suggestion_votes_pkey ON app_private.feedback_suggestion_votes USING btree (post_id, user_id)"
+      },
+      {
+        "name": "feedback_suggestion_votes_user_idx",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "definition": "CREATE INDEX feedback_suggestion_votes_user_idx ON app_private.feedback_suggestion_votes USING btree (user_id)"
+      },
+      {
         "name": "gold_settings_pkey",
         "table": "gold_settings",
         "schema": "app_private",
@@ -7074,6 +7190,12 @@
         "definition": "CREATE INDEX harbor_voyages_boat_idx ON public.harbor_voyages USING btree (boat_id)"
       },
       {
+        "name": "harbor_voyages_due_notifications",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "definition": "CREATE INDEX harbor_voyages_due_notifications ON public.harbor_voyages USING btree (returns_at) WHERE ((notified_at IS NULL) AND (claimed_at IS NULL))"
+      },
+      {
         "name": "harbor_voyages_owner_idx",
         "table": "harbor_voyages",
         "schema": "public",
@@ -7180,6 +7302,12 @@
         "table": "notifications",
         "schema": "public",
         "definition": "CREATE UNIQUE INDEX notifications_expedition_once ON public.notifications USING btree (expedition_id) WHERE (expedition_id IS NOT NULL)"
+      },
+      {
+        "name": "notifications_harbor_voyage_once",
+        "table": "notifications",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX notifications_harbor_voyage_once ON public.notifications USING btree (harbor_voyage_id) WHERE (harbor_voyage_id IS NOT NULL)"
       },
       {
         "name": "notifications_notice",
@@ -7482,6 +7610,102 @@
         "policyname": "bait_cycles_owner",
         "schemaname": "app_private",
         "with_check": null
+      },
+      {
+        "cmd": "DELETE",
+        "qual": "((user_id = ( SELECT auth.uid() AS uid)) AND (EXISTS ( SELECT 1\n   FROM bug_reports p\n  WHERE (p.id = feedback_bug_votes.post_id))))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "feedback_bug_votes",
+        "permissive": "PERMISSIVE",
+        "policyname": "feedback_bug_votes_delete",
+        "schemaname": "app_private",
+        "with_check": null
+      },
+      {
+        "cmd": "INSERT",
+        "qual": null,
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "feedback_bug_votes",
+        "permissive": "PERMISSIVE",
+        "policyname": "feedback_bug_votes_insert",
+        "schemaname": "app_private",
+        "with_check": "((user_id = ( SELECT auth.uid() AS uid)) AND (EXISTS ( SELECT 1\n   FROM bug_reports p\n  WHERE (p.id = feedback_bug_votes.post_id))))"
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(EXISTS ( SELECT 1\n   FROM bug_reports p\n  WHERE (p.id = feedback_bug_votes.post_id)))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "feedback_bug_votes",
+        "permissive": "PERMISSIVE",
+        "policyname": "feedback_bug_votes_read",
+        "schemaname": "app_private",
+        "with_check": null
+      },
+      {
+        "cmd": "UPDATE",
+        "qual": "((user_id = ( SELECT auth.uid() AS uid)) AND (EXISTS ( SELECT 1\n   FROM bug_reports p\n  WHERE (p.id = feedback_bug_votes.post_id))))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "feedback_bug_votes",
+        "permissive": "PERMISSIVE",
+        "policyname": "feedback_bug_votes_update",
+        "schemaname": "app_private",
+        "with_check": "((user_id = ( SELECT auth.uid() AS uid)) AND (EXISTS ( SELECT 1\n   FROM bug_reports p\n  WHERE (p.id = feedback_bug_votes.post_id))))"
+      },
+      {
+        "cmd": "DELETE",
+        "qual": "((user_id = ( SELECT auth.uid() AS uid)) AND (EXISTS ( SELECT 1\n   FROM suggestion_posts p\n  WHERE (p.id = feedback_suggestion_votes.post_id))))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "feedback_suggestion_votes",
+        "permissive": "PERMISSIVE",
+        "policyname": "feedback_suggestion_votes_delete",
+        "schemaname": "app_private",
+        "with_check": null
+      },
+      {
+        "cmd": "INSERT",
+        "qual": null,
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "feedback_suggestion_votes",
+        "permissive": "PERMISSIVE",
+        "policyname": "feedback_suggestion_votes_insert",
+        "schemaname": "app_private",
+        "with_check": "((user_id = ( SELECT auth.uid() AS uid)) AND (EXISTS ( SELECT 1\n   FROM suggestion_posts p\n  WHERE (p.id = feedback_suggestion_votes.post_id))))"
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(EXISTS ( SELECT 1\n   FROM suggestion_posts p\n  WHERE (p.id = feedback_suggestion_votes.post_id)))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "feedback_suggestion_votes",
+        "permissive": "PERMISSIVE",
+        "policyname": "feedback_suggestion_votes_read",
+        "schemaname": "app_private",
+        "with_check": null
+      },
+      {
+        "cmd": "UPDATE",
+        "qual": "((user_id = ( SELECT auth.uid() AS uid)) AND (EXISTS ( SELECT 1\n   FROM suggestion_posts p\n  WHERE (p.id = feedback_suggestion_votes.post_id))))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "feedback_suggestion_votes",
+        "permissive": "PERMISSIVE",
+        "policyname": "feedback_suggestion_votes_update",
+        "schemaname": "app_private",
+        "with_check": "((user_id = ( SELECT auth.uid() AS uid)) AND (EXISTS ( SELECT 1\n   FROM suggestion_posts p\n  WHERE (p.id = feedback_suggestion_votes.post_id))))"
       },
       {
         "cmd": "SELECT",
@@ -9122,6 +9346,16 @@
         "securityDefiner": true
       },
       {
+        "name": "feedback_authors",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_kind text, p_ids uuid[]",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.feedback_authors(p_kind text, p_ids uuid[])\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare actor uuid:=auth.uid(); result jsonb;\nbegin\n if actor is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_ids is null or cardinality(p_ids)>20 then raise exception 'INVALID_FEEDBACK_IDS'; end if;\n if p_kind='suggestion' then\n  select coalesce(jsonb_agg(jsonb_build_object('id',p.id,'avatar_path',a.avatar_path)),'[]'::jsonb) into result\n  from public.suggestion_posts p left join public.player_profiles a on a.id=p.author_id\n  where p.id=any(p_ids) and (\n   not p.friends_only or p.author_id=actor or (select app_private.notice_is_operator()) or exists(\n    select 1 from public.friend_requests f where f.status='accepted' and\n    ((f.sender_id=actor and f.recipient_id=p.author_id) or (f.recipient_id=actor and f.sender_id=p.author_id))\n   )\n  );\n elsif p_kind='bug' then\n  select coalesce(jsonb_agg(jsonb_build_object('id',p.id,'avatar_path',a.avatar_path)),'[]'::jsonb) into result\n  from public.bug_reports p left join public.player_profiles a on a.id=p.author_id where p.id=any(p_ids);\n else raise exception 'INVALID_FEEDBACK_KIND'; end if;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "find_player_by_code",
         "config": [
           "search_path=\"\""
@@ -9572,6 +9806,16 @@
         "securityDefiner": true
       },
       {
+        "name": "notify_due_harbor_voyages",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_voyage_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.notify_due_harbor_voyages(p_voyage_id uuid DEFAULT NULL::uuid)\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare n integer;\nbegin\n with due as (\n  select id from public.harbor_voyages\n  where returns_at<=clock_timestamp() and notified_at is null and claimed_at is null\n   and (p_voyage_id is null or id=p_voyage_id)\n  order by returns_at,id limit 500 for update skip locked\n ), marked as (\n  update public.harbor_voyages v set notified_at=clock_timestamp() from due where v.id=due.id returning v.*\n ) insert into public.notifications(recipient_id,category,kind,title,body,harbor_voyage_id)\n select user_id,'general','system','어선이 돌아왔어요!',\n  coalesce(vessel_snapshot->>'name','어선')||'이 조업을 마치고 돌아왔어요. 항구에서 어획물을 받아주세요.',id from marked\n on conflict(harbor_voyage_id) where harbor_voyage_id is not null do nothing;\n get diagnostics n=row_count;\n return n;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "odd_even_game",
         "config": [
           "search_path=\"\""
@@ -9749,6 +9993,16 @@
         "schema": "app_private",
         "arguments": "p_gift_id uuid, p_reaction text",
         "definition": "CREATE OR REPLACE FUNCTION app_private.react_to_collectible_gift(p_gift_id uuid, p_reaction text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();g public.collectible_gifts;v_title text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_reaction is null or p_reaction not in ('thumbs_up','heart','thanks','laugh','celebrate') then raise exception 'INVALID_REACTION'; end if;\n select * into g from public.collectible_gifts where id=p_gift_id and recipient_id=v_uid for update;\n if not found then raise exception 'GIFT_NOT_FOUND'; end if;\n if g.status<>'claimed' then raise exception 'GIFT_NOT_CLAIMED'; end if;\n if g.reaction is not null then\n  if g.reaction<>p_reaction then raise exception 'GIFT_ALREADY_REACTED'; end if;\n  return to_jsonb(g);\n end if;\n update public.collectible_gifts set reaction=p_reaction,reacted_at=now() where id=g.id returning * into g;\n v_title:=case p_reaction when 'thumbs_up' then '따봉을 보냈어요' when 'heart' then '하트를 보냈어요' when 'thanks' then '고마움을 보냈어요' when 'laugh' then '웃음을 보냈어요' else '축하를 보냈어요' end;\n if g.sender_id is not null then\n  insert into public.notifications(recipient_id,actor_id,category,kind,title,body,gift_id) values(g.sender_id,v_uid,'gift','gift_reaction',v_title,g.recipient_name||'님이 선물에 답장했어요.',g.id) on conflict do nothing;\n end if;\n return to_jsonb(g);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "refresh_return_notifications",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.refresh_return_notifications()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare actor uuid:=auth.uid(); trip uuid; n integer:=0; next_at timestamptz;\nbegin\n if actor is null then raise exception 'AUTH_REQUIRED'; end if;\n for trip in select id from public.fishing_expeditions where user_id=actor and claimed_at is null\n  and notified_at is null and returns_at<=clock_timestamp() order by returns_at,id limit 500\n loop n:=n+app_private.notify_due_expeditions(trip); end loop;\n for trip in select id from public.harbor_voyages where user_id=actor and claimed_at is null\n  and notified_at is null and returns_at<=clock_timestamp() order by returns_at,id limit 500\n loop n:=n+app_private.notify_due_harbor_voyages(trip); end loop;\n select min(returns_at) into next_at from (\n  select returns_at from public.fishing_expeditions where user_id=actor and claimed_at is null and notified_at is null\n  union all\n  select returns_at from public.harbor_voyages where user_id=actor and claimed_at is null and notified_at is null\n ) pending;\n return jsonb_build_object('created',n,'nextAt',next_at,'serverNow',clock_timestamp());\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -10602,6 +10856,26 @@
         "securityDefiner": false
       },
       {
+        "name": "feedback_authors",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_kind text, p_ids uuid[]",
+        "definition": "CREATE OR REPLACE FUNCTION public.feedback_authors(p_kind text, p_ids uuid[])\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select app_private.feedback_authors(p_kind,p_ids)\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "feedback_reactions",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_kind text, p_ids uuid[]",
+        "definition": "CREATE OR REPLACE FUNCTION public.feedback_reactions(p_kind text, p_ids uuid[])\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_ids is null or cardinality(p_ids)>20 then raise exception 'INVALID_FEEDBACK_IDS'; end if;\n if p_kind='suggestion' then\n select coalesce(jsonb_agg(jsonb_build_object('id',p.id,'likes',coalesce(v.likes,0),'dislikes',coalesce(v.dislikes,0),'my_reaction',coalesce(v.mine,0))),'[]'::jsonb) into result\n from public.suggestion_posts p left join lateral (\n  select count(*) filter(where value=1) likes,count(*) filter(where value=-1) dislikes,\n   max(value) filter(where user_id=auth.uid()) mine\n  from app_private.feedback_suggestion_votes where post_id=p.id\n ) v on true where p.id=any(p_ids);\n elsif p_kind='bug' then\n select coalesce(jsonb_agg(jsonb_build_object('id',p.id,'likes',coalesce(v.likes,0),'dislikes',coalesce(v.dislikes,0),'my_reaction',coalesce(v.mine,0))),'[]'::jsonb) into result\n from public.bug_reports p left join lateral (\n  select count(*) filter(where value=1) likes,count(*) filter(where value=-1) dislikes,\n   max(value) filter(where user_id=auth.uid()) mine\n  from app_private.feedback_bug_votes where post_id=p.id\n ) v on true where p.id=any(p_ids);\n else raise exception 'INVALID_FEEDBACK_KIND'; end if;\n return result;\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "find_player_by_code",
         "config": [
           "search_path=\"\""
@@ -10922,6 +11196,16 @@
         "securityDefiner": false
       },
       {
+        "name": "refresh_return_notifications",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.refresh_return_notifications()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.refresh_return_notifications()\n$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "region_map",
         "config": [
           "search_path=\"\""
@@ -11009,6 +11293,16 @@
         "schema": "public",
         "arguments": "p_listing_id uuid, p_liked boolean",
         "definition": "CREATE OR REPLACE FUNCTION public.set_exchange_listing_like(p_listing_id uuid, p_liked boolean)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.set_exchange_listing_like(p_listing_id,p_liked)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "set_feedback_reaction",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_kind text, p_id uuid, p_value integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.set_feedback_reaction(p_kind text, p_id uuid, p_value integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_value is null or p_value not in (-1,0,1) then raise exception 'INVALID_FEEDBACK_VALUE'; end if;\n if p_kind='suggestion' then\n if not exists(select 1 from public.suggestion_posts where id=p_id) then raise exception 'FEEDBACK_NOT_FOUND'; end if;\n if p_value=0 then\n  delete from app_private.feedback_suggestion_votes where post_id=p_id and user_id=auth.uid();\n else\n  insert into app_private.feedback_suggestion_votes(post_id,user_id,value) values(p_id,auth.uid(),p_value)\n  on conflict(post_id,user_id) do update set value=excluded.value;\n end if;\n elsif p_kind='bug' then\n if not exists(select 1 from public.bug_reports where id=p_id) then raise exception 'FEEDBACK_NOT_FOUND'; end if;\n if p_value=0 then\n  delete from app_private.feedback_bug_votes where post_id=p_id and user_id=auth.uid();\n else\n  insert into app_private.feedback_bug_votes(post_id,user_id,value) values(p_id,auth.uid(),p_value)\n  on conflict(post_id,user_id) do update set value=excluded.value;\n end if;\n else raise exception 'INVALID_FEEDBACK_KIND'; end if;\n return public.feedback_reactions(p_kind,array[p_id])->0;\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -11509,6 +11803,90 @@
         "table": "expedition_settings",
         "schema": "app_private",
         "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "feedback_bug_votes_pkey",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (post_id, user_id)"
+      },
+      {
+        "name": "feedback_bug_votes_post_id_fkey",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (post_id) REFERENCES bug_reports(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "feedback_bug_votes_post_id_not_null",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "definition": "NOT NULL post_id"
+      },
+      {
+        "name": "feedback_bug_votes_user_id_fkey",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "feedback_bug_votes_user_id_not_null",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "feedback_bug_votes_value_check",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "definition": "CHECK ((value = ANY (ARRAY['-1'::integer, 1])))"
+      },
+      {
+        "name": "feedback_bug_votes_value_not_null",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "definition": "NOT NULL value"
+      },
+      {
+        "name": "feedback_suggestion_votes_pkey",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (post_id, user_id)"
+      },
+      {
+        "name": "feedback_suggestion_votes_post_id_fkey",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (post_id) REFERENCES suggestion_posts(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "feedback_suggestion_votes_post_id_not_null",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "definition": "NOT NULL post_id"
+      },
+      {
+        "name": "feedback_suggestion_votes_user_id_fkey",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "feedback_suggestion_votes_user_id_not_null",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "feedback_suggestion_votes_value_check",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "definition": "CHECK ((value = ANY (ARRAY['-1'::integer, 1])))"
+      },
+      {
+        "name": "feedback_suggestion_votes_value_not_null",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "definition": "NOT NULL value"
       },
       {
         "name": "gold_settings_id_check",
@@ -15279,6 +15657,12 @@
         "definition": "FOREIGN KEY (gift_id) REFERENCES collectible_gifts(id) ON DELETE CASCADE"
       },
       {
+        "name": "notifications_harbor_voyage_id_fkey",
+        "table": "notifications",
+        "schema": "public",
+        "definition": "FOREIGN KEY (harbor_voyage_id) REFERENCES harbor_voyages(id) ON DELETE CASCADE"
+      },
+      {
         "name": "notifications_id_not_null",
         "table": "notifications",
         "schema": "public",
@@ -16645,6 +17029,62 @@
         "privilege": "UPDATE"
       },
       {
+        "role": "authenticated",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "grantable": "NO",
+        "privilege": "DELETE"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "grantable": "NO",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_bug_votes",
+        "schema": "app_private",
+        "grantable": "NO",
+        "privilege": "UPDATE"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "grantable": "NO",
+        "privilege": "DELETE"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "grantable": "NO",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "grantable": "NO",
+        "privilege": "UPDATE"
+      },
+      {
         "role": "service_role",
         "table": "savings_operations",
         "schema": "app_private",
@@ -17623,6 +18063,132 @@
         "role": "service_role",
         "table": "arcade_weekly_rewards",
         "column": "week_start",
+        "schema": "app_private",
+        "privilege": "UPDATE"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_bug_votes",
+        "column": "post_id",
+        "schema": "app_private",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_bug_votes",
+        "column": "post_id",
+        "schema": "app_private",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_bug_votes",
+        "column": "post_id",
+        "schema": "app_private",
+        "privilege": "UPDATE"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_bug_votes",
+        "column": "user_id",
+        "schema": "app_private",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_bug_votes",
+        "column": "user_id",
+        "schema": "app_private",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_bug_votes",
+        "column": "user_id",
+        "schema": "app_private",
+        "privilege": "UPDATE"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_bug_votes",
+        "column": "value",
+        "schema": "app_private",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_bug_votes",
+        "column": "value",
+        "schema": "app_private",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_bug_votes",
+        "column": "value",
+        "schema": "app_private",
+        "privilege": "UPDATE"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_suggestion_votes",
+        "column": "post_id",
+        "schema": "app_private",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_suggestion_votes",
+        "column": "post_id",
+        "schema": "app_private",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_suggestion_votes",
+        "column": "post_id",
+        "schema": "app_private",
+        "privilege": "UPDATE"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_suggestion_votes",
+        "column": "user_id",
+        "schema": "app_private",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_suggestion_votes",
+        "column": "user_id",
+        "schema": "app_private",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_suggestion_votes",
+        "column": "user_id",
+        "schema": "app_private",
+        "privilege": "UPDATE"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_suggestion_votes",
+        "column": "value",
+        "schema": "app_private",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_suggestion_votes",
+        "column": "value",
+        "schema": "app_private",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "feedback_suggestion_votes",
+        "column": "value",
         "schema": "app_private",
         "privilege": "UPDATE"
       },
@@ -19841,6 +20407,13 @@
       {
         "role": "authenticated",
         "table": "harbor_voyages",
+        "column": "notified_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_voyages",
         "column": "region_id",
         "schema": "public",
         "privilege": "SELECT"
@@ -20304,6 +20877,34 @@
         "role": "service_role",
         "table": "notifications",
         "column": "gift_id",
+        "schema": "public",
+        "privilege": "UPDATE"
+      },
+      {
+        "role": "authenticated",
+        "table": "notifications",
+        "column": "harbor_voyage_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "harbor_voyage_id",
+        "schema": "public",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "harbor_voyage_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "harbor_voyage_id",
         "schema": "public",
         "privilege": "UPDATE"
       },
@@ -23268,6 +23869,27 @@
         "arguments": "p_tank uuid, p_operation uuid, p_step integer"
       },
       {
+        "name": "feedback_authors",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_ids uuid[]"
+      },
+      {
+        "name": "feedback_authors",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_kind text, p_ids uuid[]"
+      },
+      {
+        "name": "feedback_authors",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_ids uuid[]"
+      },
+      {
         "name": "find_player_by_code",
         "role": "anon",
         "schema": "app_private",
@@ -24213,6 +24835,27 @@
         "arguments": "p_expedition_id uuid"
       },
       {
+        "name": "notify_due_harbor_voyages",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_voyage_id uuid"
+      },
+      {
+        "name": "notify_due_harbor_voyages",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_voyage_id uuid"
+      },
+      {
+        "name": "notify_due_harbor_voyages",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_voyage_id uuid"
+      },
+      {
         "name": "odd_even_game",
         "role": "anon",
         "schema": "app_private",
@@ -24589,6 +25232,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_gift_id uuid, p_reaction text"
+      },
+      {
+        "name": "refresh_return_notifications",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "refresh_return_notifications",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "refresh_return_notifications",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "region_map",
@@ -26376,6 +27040,48 @@
         "arguments": "p_tank uuid, p_operation uuid, p_step integer"
       },
       {
+        "name": "feedback_authors",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_kind text, p_ids uuid[]"
+      },
+      {
+        "name": "feedback_authors",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_kind text, p_ids uuid[]"
+      },
+      {
+        "name": "feedback_authors",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_kind text, p_ids uuid[]"
+      },
+      {
+        "name": "feedback_reactions",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_kind text, p_ids uuid[]"
+      },
+      {
+        "name": "feedback_reactions",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_kind text, p_ids uuid[]"
+      },
+      {
+        "name": "feedback_reactions",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_kind text, p_ids uuid[]"
+      },
+      {
         "name": "find_player_by_code",
         "role": "anon",
         "schema": "public",
@@ -27048,6 +27754,27 @@
         "arguments": "p_gift_id uuid, p_reaction text"
       },
       {
+        "name": "refresh_return_notifications",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "refresh_return_notifications",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "refresh_return_notifications",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "region_map",
         "role": "anon",
         "schema": "public",
@@ -27235,6 +27962,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_listing_id uuid, p_liked boolean"
+      },
+      {
+        "name": "set_feedback_reaction",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_kind text, p_id uuid, p_value integer"
+      },
+      {
+        "name": "set_feedback_reaction",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_kind text, p_id uuid, p_value integer"
+      },
+      {
+        "name": "set_feedback_reaction",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_kind text, p_id uuid, p_value integer"
       },
       {
         "name": "set_player_avatar",

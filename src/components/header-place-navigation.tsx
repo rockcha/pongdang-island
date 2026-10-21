@@ -115,6 +115,8 @@ export function HeaderPlaceNavigation() {
                         </span>
                         <span className="flex-1 whitespace-nowrap">{label}</span>
                         {((to === '/board' && newContent.board) ||
+                          (to === '/square/suggestions' && newContent.suggestions) ||
+                          (to === '/square/bugs' && newContent.bugs) ||
                           (to === '/exchange' && newContent.exchange)) && (
                           <span
                             aria-label="새 글 있음"

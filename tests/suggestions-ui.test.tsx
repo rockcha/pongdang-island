@@ -3,6 +3,7 @@ import { afterEach,beforeEach,expect,it,vi } from 'vitest'
 import { MemoryRouter,Route,Routes } from 'react-router'
 import { SuggestionsPage,SuggestionDetail } from '@/features/suggestions/suggestions-page'
 const mock=vi.hoisted(()=>({feed:vi.fn(),detail:vi.fn(),save:vi.fn(),adopt:vi.fn(),remove:vi.fn(),operator:vi.fn(),refresh:vi.fn()}))
+vi.mock('@/lib/client',()=>({createClient:()=>({rpc:async()=>({data:[{id:'idea',likes:0,dislikes:0,my_reaction:0}],error:null})})}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
 vi.mock('@/features/gold/gold-provider',()=>({useGold:()=>({refresh:mock.refresh})}))
 vi.mock('@/features/social/social-provider',()=>({useSocial:()=>({refresh:mock.refresh})}))
@@ -49,11 +50,12 @@ it('uses friends-only as a feed filter and clears it when switching to my posts'
  render(<MemoryRouter><SuggestionsPage/></MemoryRouter>)
  await screen.findByText(post.title)
  expect(mock.feed).toHaveBeenLastCalledWith(0,null,null)
- fireEvent.click(screen.getByRole('checkbox',{name:'친구만 보기'}))
+ fireEvent.click(screen.getByRole('button',{name:'친구 글'}))
  await waitFor(()=>expect(mock.feed).toHaveBeenLastCalledWith(0,null,'me'))
- fireEvent.click(screen.getByRole('button',{name:'내 건의'}))
+ fireEvent.click(screen.getByRole('button',{name:'내 글'}))
  await waitFor(()=>expect(mock.feed).toHaveBeenLastCalledWith(0,'me',null))
- expect((screen.getByRole('checkbox') as HTMLInputElement).checked).toBe(false)
+ expect(screen.getByRole('button',{name:'친구 글'}).getAttribute('aria-pressed')).toBe('false')
+ expect(screen.getByRole('button',{name:'내 글'}).getAttribute('aria-pressed')).toBe('true')
 })
 it('lets an author edit their own suggestion and saves the existing post',async()=>{
  mock.detail.mockResolvedValue({...post,author_id:'me'})

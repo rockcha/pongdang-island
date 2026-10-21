@@ -5,6 +5,7 @@ import { useAuth } from '@/components/auth-provider'
 import { syncProfile } from '@/features/friends/api'
 import { loadNotifications } from '@/features/notifications/api'
 import type { Session } from '@supabase/supabase-js'
+import type {AppNotification} from '@/features/social/types'
 
 const mocks = vi.hoisted(() => ({
   channels: [] as { handlers: { options: Record<string, string>; callback: (payload: unknown) => void }[]; status?: (value: string) => void }[],
@@ -12,7 +13,7 @@ const mocks = vi.hoisted(() => ({
 }))
 vi.mock('@/components/auth-provider', () => ({ useAuth: vi.fn(), getNickname: (session: Session | null) => session?.user.user_metadata.game_nickname ?? '' }))
 vi.mock('@/features/friends/api', () => ({ syncProfile: vi.fn(), loadProfile: vi.fn().mockResolvedValue({id: 'user-a', nickname:'낚시꾼',friend_code:'ABCDEF123456',avatar_path:null}), loadFriendRequests: vi.fn().mockResolvedValue([]) }))
-vi.mock('@/features/notifications/api', () => ({ loadNotifications: vi.fn() }))
+vi.mock('@/features/notifications/api', () => ({ loadNotifications: vi.fn(),refreshReturnNotifications:vi.fn().mockResolvedValue({created:0,nextAt:null,serverNow:'2026-10-21T00:00:00Z'}) }))
 vi.mock('sonner', () => ({ toast: { info: mocks.toast } }))
 vi.mock('@/lib/client', () => ({ createClient: () => ({
   removeChannel: mocks.removeChannel,
@@ -42,6 +43,18 @@ beforeEach(() => {
 afterEach(cleanup)
 
 describe('realtime social lifecycle', () => {
+  it('announces missed unread return notices once and supplies the correct destinations',async()=>{
+    const boat={id:'boat-return',recipient_id:'user-a',category:'general',kind:'system',title:'어선이 돌아왔어요!',body:'어획물을 받아주세요.',harbor_voyage_id:'voyage',read_at:null} as AppNotification
+    const trap={...boat,id:'trap-return',harbor_voyage_id:null,expedition_id:'trap',title:'통발 수확을 준비했어요!'} as AppNotification
+    vi.mocked(loadNotifications).mockResolvedValue({notifications:[boat,trap],unread:{friend:0,general:2}})
+    render(<SocialProvider><Probe/></SocialProvider>)
+    await waitFor(()=>expect(mocks.toast).toHaveBeenCalledTimes(2))
+    expect(mocks.toast.mock.calls.find(call=>call[0]===boat.title)?.[1].action.label).toBe('항구 보기')
+    expect(mocks.toast.mock.calls.find(call=>call[0]===trap.title)?.[1].action.label).toBe('통발 보기')
+    const insert=mocks.channels[0].handlers.find(h=>h.options.table==='notifications'&&h.options.event==='INSERT')!
+    act(()=>{insert.callback({new:boat});insert.callback({new:trap})})
+    expect(mocks.toast).toHaveBeenCalledTimes(2)
+  })
   it('loads stored counts without replaying historical toasts and subscribes with owner filters', async () => {
     render(<SocialProvider><Probe /></SocialProvider>)
     await waitFor(() => expect(screen.getByTestId('count').textContent).toBe('3'))

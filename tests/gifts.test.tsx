@@ -15,6 +15,34 @@ const species={id:'fish',name:'멸치',kind:'fish',thumbnail_path:'fish.png'} as
 const gift={id:'gift',sender_id:'friend',recipient_id:'me',sender_name:'친구',recipient_name:'나',species,quantity:1,message:'잘 키워줘!',status:'pending',reaction:null,created_at:'2026-10-15T00:00:00Z'}
 beforeEach(()=>{vi.clearAllMocks();mock.refresh.mockResolvedValue(undefined);mock.load.mockResolvedValue(gift);mock.claim.mockResolvedValue({...gift,status:'claimed'});mock.react.mockResolvedValue({...gift,status:'claimed',reaction:'thumbs_up'})})
 afterEach(cleanup)
+it('keeps received and sent gift contents visible during notification refreshes',async()=>{
+ const original=mock.social.notifications
+ for(const sent of [false,true]){
+  const record={...gift,...(sent?{sender_id:'me',recipient_id:'friend'}:{})}
+  mock.load.mockResolvedValue(record)
+  const view=render(<GiftDetailDialog id="gift" onClose={()=>{}}/>)
+  await screen.findByText('잘 키워줘!')
+  const image=screen.getByRole('img',{name:'멸치'})
+  let finish!:(value:typeof record)=>void
+  mock.load.mockImplementationOnce(()=>new Promise(resolve=>{finish=resolve}))
+  mock.social.notifications=[...original]
+  view.rerender(<GiftDetailDialog id="gift" onClose={()=>{}}/>)
+  await waitFor(()=>expect(finish).toBeTypeOf('function'))
+  expect(screen.getByText('잘 키워줘!')).toBeTruthy()
+  expect(screen.getByRole('img',{name:'멸치'})).toBe(image)
+  expect(screen.queryByText('선물을 열어보는 중…')).toBeNull()
+  finish(record)
+  view.unmount()
+ }
+ mock.social.notifications=original
+})
+it('opens the gift sender without focusing the friend search input',async()=>{
+ render(<SendGiftDialog species={species} items={[{id:'real',species}] as OwnedCollectible[]} disabled={false} onSent={()=>{}}/>)
+ fireEvent.click(screen.getByRole('button',{name:'멸치 선물'}))
+ const input=await screen.findByRole('textbox',{name:'친구 검색'})
+ await new Promise(resolve=>setTimeout(resolve,0))
+ expect(document.activeElement).not.toBe(input)
+})
 it('sends a real individual with a note and reuses the operation ID after a transport failure',async()=>{
  const onSent=vi.fn(),items=[{id:'real',species},{id:'test-demo',species}] as OwnedCollectible[]
  mock.send.mockRejectedValueOnce(new Error('connection lost')).mockResolvedValueOnce(gift)

@@ -29,7 +29,8 @@ function GiftSender({gift,direction='received'}:{gift:GiftRecord;direction?:'rec
 export function GiftMailbox({onOpen}:{onOpen:(id:string)=>void}){
  const {notifications}=useSocial()
  const [direction,setDirection]=useState<'received'|'sent'>('received'),[offset,setOffset]=useState(0),[mail,setMail]=useState<Mailbox|null>(null),[error,setError]=useState(''),[retry,setRetry]=useState(0)
- useEffect(()=>{let active=true;setMail(null);setError('');void loadGifts(direction,offset).then(data=>{if(active)setMail(data)}).catch(cause=>{if(active)setError(giftError(cause))});return()=>{active=false}},[direction,offset,notifications,retry])
+ const page=useRef('')
+ useEffect(()=>{let active=true;const key=direction+':'+offset;if(page.current!==key)setMail(null);page.current=key;setError('');void loadGifts(direction,offset).then(data=>{if(active)setMail(data)}).catch(cause=>{if(active)setError(giftError(cause))});return()=>{active=false}},[direction,offset,notifications,retry])
  return <div className="flex min-h-0 flex-1 flex-col overflow-hidden" aria-label="선물함"><div role="group" aria-label="선물 방향" className="segmented-control grid shrink-0 grid-cols-2 gap-0 border-b border-border bg-background">{([['received','받은 선물'],['sent','보낸 선물']] as const).map(([value,label])=><Button key={value} variant="ghost" aria-pressed={direction===value} className={`min-h-12 min-w-0 rounded-none border-r border-border ${direction===value?'bg-secondary text-primary':'text-muted-foreground'}`} onClick={()=>{setDirection(value);setOffset(0)}}>{label}</Button>)}</div><div key={direction} className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-3">
   {error?<div role="alert" className="space-y-2 text-sm text-destructive"><p>{error}</p><Button variant="outline" onClick={()=>setRetry(value=>value+1)}>다시 불러오기</Button></div>:!mail?<NotificationSkeleton label="선물을 불러오는 중…"/>:<>
    <ul className="divide-y">{mail.items.map(gift=><li key={gift.id}><button className={`my-2 flex w-full items-center gap-3 rounded-xl p-3 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring ${gift.status==='pending'?'bg-secondary/65':'bg-muted/30 text-muted-foreground'}`} onClick={()=>onOpen(gift.id)}><GiftPicture gift={gift} className={`size-14 shrink-0 ${gift.status==='claimed'?'grayscale opacity-50':''}`}/><div className="min-w-0 flex-1"><p className="truncate text-sm font-medium">{gift.species.name} <span className="text-xs text-muted-foreground">×{gift.quantity}</span></p><p className="mt-1 truncate text-xs text-muted-foreground"><GiftSender gift={gift} direction={direction}/></p></div><span className={`shrink-0 rounded-full px-2 py-1 text-xs ${gift.status==='pending'?'bg-primary/15 font-semibold text-primary':'bg-muted text-muted-foreground'}`}>{gift.reaction&&<span className="mr-1">{giftReactions[gift.reaction].emoji}</span>}{gift.status==='claimed'?'수령 완료':gift.recipient_id===null?'수신자 탈퇴':'미수령'}</span></button></li>)}</ul>
@@ -46,7 +47,7 @@ export function GiftDetailDialog({id,onClose}:{id:string|null;onClose:()=>void})
  const locked=useRef(false),active=useRef(true)
  const confirmedReads=useRef(new Set<string>())
  useEffect(()=>{active.current=true;return()=>{active.current=false}},[])
- useEffect(()=>{let current=true;setGift(null);setError('');if(id)void loadGift(id).then(data=>{if(current)setGift(data)}).catch(cause=>{if(current)setError(giftError(cause))});return()=>{current=false}},[id,retry,notifications])
+ useEffect(()=>{let current=true;if(id){setGift(previous=>previous?.id===id?previous:null);setError('');void loadGift(id).then(data=>{if(current)setGift(data)}).catch(cause=>{if(current)setError(giftError(cause))})}return()=>{current=false}},[id,retry,notifications])
  useEffect(()=>{if(!gift||gift.status==='pending'||!owner||confirmedReads.current.has(gift.id))return;const giftId=gift.id;confirmedReads.current.add(giftId);void markRelatedRead(owner,'gift_id',giftId).then(()=>refresh()).catch(()=>{confirmedReads.current.delete(giftId);toast.error('선물 확인 상태를 저장하지 못했어요.')})},[gift?.id,gift?.status,owner,refresh])
  async function act(reaction?:GiftReaction){
   if(!gift||locked.current)return
@@ -58,7 +59,7 @@ export function GiftDetailDialog({id,onClose}:{id:string|null;onClose:()=>void})
  const sender=gift?.sender_id===owner?profile:requests?.flatMap(request=>[request.sender,request.recipient]).find(player=>player?.id===gift?.sender_id)
  const personal=gift&&(gift.source??'friend')==='friend'
  const traded=gift?.source==='exchange'&&gift.reward_kind==='gold'?gift.species.exchange_offer:undefined
- return <Dialog open={!!id} onOpenChange={value=>{if(!value&&!busy)onClose()}}><DialogContent className="max-h-[85dvh] overflow-y-auto sm:max-w-sm" showCloseButton={!busy}>
+ return <Dialog open={!!id} onOpenChange={value=>{if(!value&&!busy)onClose()}}><DialogContent initialFocus={false} className="min-h-80 max-h-[85dvh] overflow-y-auto sm:max-w-sm" showCloseButton={!busy}>
   <DialogHeader><DialogTitle className="flex items-center gap-2 pr-6"><img src="/branding/pongi-starfish.png" alt="" aria-hidden="true" className="size-6 shrink-0 object-contain"/>{gift?.source==='system'?'모험 응원 선물':gift?.source==='exchange'?'거래소 배송':'선물 이야기'}</DialogTitle><DialogDescription className={personal?'sr-only':undefined}>{gift&&(gift.source==='system'?<GiftSender gift={gift}/>: `${gift.sender_name} → ${gift.recipient_name}`)}</DialogDescription></DialogHeader>
   {gift?<>
    {gift.source==='exchange'?<div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3 rounded-xl bg-secondary/40 p-4">

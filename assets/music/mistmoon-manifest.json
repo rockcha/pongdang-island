@@ -1,0 +1,14 @@
+{
+  "region": "mistmoon",
+  "sourceFilename": "Y2Mate.st - .mp3",
+  "sourceSha256": "2b8720c6bc803f47f062346bfca08cbee6f33c6807981df6692bced9277f0a0d",
+  "output": "public/music/mistmoon.mp3",
+  "sha256": "e44efab4d15efb8e0c40216b800b0dd94b68e765428334a706b7691ceb9edce5",
+  "bytes": 6848185,
+  "conversion": {
+    "tool": "ffmpeg",
+    "audioCodec": "copy",
+    "fullLength": true,
+    "coverRemoved": true
+  }
+}

@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "69e69825b86df2b61218c6766f9b926f1bf0bd3be677c10ae4adc2aed22bbffb",
+  "migrationHash": "cd9c44fe5016c8c4bf768ef6e5ed6cd44ed644cdb19b30870ea21a3b50160bd9",
   "structure": {
     "enums": [
       {
@@ -10800,7 +10800,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_post_id uuid, p_reaction text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.react_fishing_showcase(p_post_id uuid, p_reaction text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare p public.fishing_showcase_posts;u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_reaction is not null and p_reaction not in ('celebrate','love','wow','luck') then raise exception 'INVALID_SHOWCASE_REACTION';end if;\n select * into p from public.fishing_showcase_posts where id=p_post_id for share;\n if not found then raise exception 'SHOWCASE_NOT_FOUND';end if;\n perform pg_advisory_xact_lock(hashtextextended('showcase-react:'||p_post_id::text||':'||u::text,0));\n if p_reaction is null then delete from public.fishing_showcase_reactions where post_id=p_post_id and user_id=u;\n else insert into public.fishing_showcase_reactions(post_id,user_id,reaction) values(p_post_id,u,p_reaction)\n on conflict(post_id,user_id) do update set reaction=excluded.reaction;end if;\n return app_private.showcase_post_json(p);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.react_fishing_showcase(p_post_id uuid, p_reaction text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare p public.fishing_showcase_posts;u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_reaction is not null and p_reaction not in ('celebrate','love','wow','luck','sad','angry') then raise exception 'INVALID_SHOWCASE_REACTION';end if;\n select * into p from public.fishing_showcase_posts where id=p_post_id for share;\n if not found then raise exception 'SHOWCASE_NOT_FOUND';end if;\n perform pg_advisory_xact_lock(hashtextextended('showcase-react:'||p_post_id::text||':'||u::text,0));\n if p_reaction is null then delete from public.fishing_showcase_reactions where post_id=p_post_id and user_id=u;\n else insert into public.fishing_showcase_reactions(post_id,user_id,reaction) values(p_post_id,u,p_reaction)\n on conflict(post_id,user_id) do update set reaction=excluded.reaction;end if;\n return app_private.showcase_post_json(p);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -16216,7 +16216,7 @@
         "name": "fishing_showcase_reactions_reaction_check",
         "table": "fishing_showcase_reactions",
         "schema": "public",
-        "definition": "CHECK ((reaction = ANY (ARRAY['celebrate'::text, 'love'::text, 'wow'::text, 'luck'::text])))"
+        "definition": "CHECK ((reaction = ANY (ARRAY['celebrate'::text, 'love'::text, 'wow'::text, 'luck'::text, 'sad'::text, 'angry'::text])))"
       },
       {
         "name": "fishing_showcase_reactions_reaction_not_null",

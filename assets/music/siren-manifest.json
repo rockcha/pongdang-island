@@ -1,0 +1,14 @@
+{
+  "region": "siren",
+  "sourceFilename": "Y2Mate.st -       _ Down Below _   _ ai .mp3",
+  "sourceSha256": "bd03e8f10890f5946d93031e83517b012ab3fdf8180d193db0b194d6729794bf",
+  "output": "public/music/siren.mp3",
+  "sha256": "a356c5d816aca7ca44464407aed1785794a8cc654c5f3c91d4c36887435fb28a",
+  "bytes": 3625027,
+  "conversion": {
+    "tool": "ffmpeg",
+    "audioCodec": "copy",
+    "fullLength": true,
+    "coverRemoved": true
+  }
+}

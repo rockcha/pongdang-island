@@ -1,0 +1,14 @@
+{
+  "region": "starruins",
+  "sourceFilename": "Y2Mate.st - The Witcher 3_ Wild Hunt OST - The Fields of Ard Skellig Extended.mp3",
+  "sourceSha256": "5ff749a312516b08352671548a1bcf48965eed6992c61d1817e5e13af5522780",
+  "output": "public/music/starruins.mp3",
+  "sha256": "7e422bd6b5ec18147b37ea61d45be11537982d22a9135bfcb8a1c8f9e6e283dc",
+  "bytes": 13109799,
+  "conversion": {
+    "tool": "ffmpeg",
+    "audioCodec": "copy",
+    "fullLength": true,
+    "coverRemoved": true
+  }
+}

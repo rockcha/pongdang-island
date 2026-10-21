@@ -1,0 +1,14 @@
+{
+  "region": "primal",
+  "sourceFilename": "Y2Mate.st - Jurassic Park - Soundtrack Soft Piano Version Sleep Study Relax.mp3",
+  "sourceSha256": "7898300583da2cb09917598bcd687dd1a9d72052c3f8c6b49c781626255ba5d8",
+  "output": "public/music/primal.mp3",
+  "sha256": "0d85f70696ae7762c3caa5512ccf64b8f911d1461d6ab67bf98966701182bc84",
+  "bytes": 22366866,
+  "conversion": {
+    "tool": "ffmpeg",
+    "audioCodec": "copy",
+    "fullLength": true,
+    "coverRemoved": true
+  }
+}

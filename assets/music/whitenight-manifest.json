@@ -1,0 +1,14 @@
+{
+  "region": "whitenight",
+  "sourceFilename": "Y2Mate.st -            BGM.mp3",
+  "sourceSha256": "918efa71763effda3df64a064bac14fb14e139a29ffe6fb3a48cc0512f4d5f8b",
+  "output": "public/music/whitenight.mp3",
+  "sha256": "e48bc6b99612670401f54d8cc9123e475f60355a77ffe19ac70ab234558e992c",
+  "bytes": 28655657,
+  "conversion": {
+    "tool": "ffmpeg",
+    "audioCodec": "copy",
+    "fullLength": true,
+    "coverRemoved": true
+  }
+}

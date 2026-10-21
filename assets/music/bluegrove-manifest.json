@@ -1,0 +1,14 @@
+{
+  "region": "bluegrove",
+  "sourceFilename": "Y2Mate.st - Playlist        .mp3",
+  "sourceSha256": "22fef9ed344ca4c98f89e2d5d891b343587dfa5e40d5484ba39629dbae2087e4",
+  "output": "public/music/bluegrove.mp3",
+  "sha256": "7c75551c9d706c9d4048a263a3971d87e68745daab3c325ef57f58811094dcee",
+  "bytes": 22047786,
+  "conversion": {
+    "tool": "ffmpeg",
+    "audioCodec": "copy",
+    "fullLength": true,
+    "coverRemoved": true
+  }
+}

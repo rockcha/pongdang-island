@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router'
+import {HallCategoryIcon,HallTabIcon} from './hall-category-icon'
 import {
   Crown,
   Frown,
@@ -8,14 +9,12 @@ import {
   MessageCircle,
   RefreshCw,
   Send,
-  Sparkles,
   ThumbsDown,
   ThumbsUp,
   Trash2,
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { useAuth } from '@/components/auth-provider'
-import { appArt } from '@/components/app-art'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { PlayerAvatar } from '@/features/profile/player-avatar'
@@ -294,10 +293,10 @@ function RankingCard({
   return (
     <section className="rounded-2xl border border-border/70 bg-card px-4 pb-4 pt-4">
       <div className="mb-4 flex items-start gap-2.5">
-        <category.icon aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-primary" />
+        <HallCategoryIcon category={category}/>
         <div className="min-w-0">
           <h3 className="text-sm font-medium">{category.label}</h3>
-          <p className="mt-0.5 text-[11px] text-muted-foreground">{category.title}</p>
+          <p className="mt-1 text-xs leading-5 text-muted-foreground">{category.title}</p>
         </div>
       </div>
       {players.length ? (
@@ -429,13 +428,13 @@ export function HallPage() {
       className="flex min-h-0 flex-1 flex-col overflow-hidden"
     >
       <div className="shrink-0 border-b border-border/60 bg-background px-4 pt-4 pb-2">
-        <TabsList aria-label="기록 분류" className="mb-2">
-          <TabsTrigger value="honor">
-            <appArt.ranking aria-hidden="true" className="size-5 shrink-0" />
+        <TabsList aria-label="기록 분류" className="mb-3 gap-1 rounded-xl p-1.5">
+          <TabsTrigger value="honor" className="min-h-14 gap-2 rounded-lg px-2 text-sm font-medium">
+            <HallTabIcon kind="honor"/>
             명예로운 기록
           </TabsTrigger>
-          <TabsTrigger value="fun">
-            <Sparkles aria-hidden="true" className="size-4 shrink-0" />
+          <TabsTrigger value="fun" className="min-h-14 gap-2 rounded-lg px-2 text-sm font-medium">
+            <HallTabIcon kind="fun"/>
             별별 기록
           </TabsTrigger>
         </TabsList>

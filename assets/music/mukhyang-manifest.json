@@ -1,0 +1,14 @@
+{
+  "region": "mukhyang",
+  "sourceFilename": "Y2Mate.st -         .mp3",
+  "sourceSha256": "fc9f10ff8407c94c65ab111b89475b62d6986e4ff804eee8630ad3d62beb87fb",
+  "output": "public/music/mukhyang.mp3",
+  "sha256": "36310985e11f1fc7263969575342739946c98f0205768c18a83e0568590521b2",
+  "bytes": 31308243,
+  "conversion": {
+    "tool": "ffmpeg",
+    "audioCodec": "copy",
+    "fullLength": true,
+    "coverRemoved": true
+  }
+}

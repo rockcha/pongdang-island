@@ -73,6 +73,17 @@ it('keeps one reaction per player with replacement, cancellation and retry safet
  await asUser(owner,'select public.delete_fishing_showcase($1)',[id])
  expect((await db.query('select * from public.fishing_showcase_reactions where post_id=$1',[id])).rows).toEqual([])
 })
+it('saves sad and angry reactions, replaces them and cancels without losing other players reactions',async()=>{
+ const {operation}=await catchFish('mythic'),id=await publish(operation)
+ await asUser(owner,'select public.react_fishing_showcase($1,$2)',[id,'celebrate'])
+ for(const reaction of ['sad','sad','angry']){
+  const row=(await asUser(other,'select public.react_fishing_showcase($1,$2) p',[id,reaction])).rows[0].p
+  expect(row.my_reaction).toBe(reaction)
+  expect(row.reactions).toEqual({celebrate:1,[reaction]:1})
+ }
+ const row=(await asUser(other,'select public.react_fishing_showcase($1,null) p',[id])).rows[0].p
+ expect(row.my_reaction).toBeNull();expect(row.reactions).toEqual({celebrate:1})
+})
 it('removes upload surfaces and denies anonymous RPCs, forged writes and invalid pagination',async()=>{
  await expect(asUser(null,'select public.showcase_feed()')).rejects.toThrow(/permission denied/)
  await expect(asUser(owner,"insert into public.fishing_showcase_posts(author_id,operation_id,species,rarity,region_name,caught_at) values($1,$2,'{}','mythic','fake',now())",[owner,crypto.randomUUID()])).rejects.toThrow(/permission denied/)

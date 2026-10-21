@@ -1,0 +1,27 @@
+{
+  "tool": "image_gen (built-in)",
+  "asset": "public/hall-icons/honor-records.png",
+  "layout": {
+    "columns": 4,
+    "rows": 4
+  },
+  "categoryOrder": [
+    "casts",
+    "fish",
+    "collection",
+    "mythic",
+    "mythic_rate",
+    "gifts",
+    "sales",
+    "purchases",
+    "titles",
+    "cleanings",
+    "feedings",
+    "voyages",
+    "failure_rate",
+    "games",
+    "honor-tab",
+    "fun-tab"
+  ],
+  "prompt": "ONE game UI icon atlas, transparent background, square canvas divided precisely into FOUR columns FOUR rows of equal square cells. 16 separate centered icons, no labels/text/grid/borders. Every icon fully inside its own cell with 15 percent transparent padding, no overlap. Cozy ocean fishing game, warm painterly storybook item art, turquoise, cream, honey gold, brown outlines, dimensional soft shading. Match adorable collectible game inventory icons, clear at 40px. Exact row order: ROW1: fishing rod with small bobber; two freshly caught fish; open illustrated sea encyclopedia; luminous rainbow pearl inside shell (mythic catch). ROW2: golden dice beside shining pearl (mythic chance); wrapped gift box with seashell bow; little merchant stall with outgoing parcel (sales); shopping basket with shell and fish (purchases). ROW3: medal ribbon with tiny scroll (titles); bucket and sponge with bubbles (aquarium cleaning); jar of fish food beside small fish; tiny wooden fishing boat with sail. ROW4: empty hook beside a slipping fish (failure percentage); cute arcade machine; golden trophy with laurel and a turquoise fish emblem (honorable records TAB); playful shell treasure box spilling a star, potato and coin (quirky records TAB). All icons similar scale and weight. Single atlas, transparent background."
+}

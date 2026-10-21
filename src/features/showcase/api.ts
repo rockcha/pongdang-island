@@ -1,6 +1,6 @@
 import {createClient} from '@/lib/client'
 import type {Species} from '@/features/collection/api'
-export const showcaseReactions=[{id:'celebrate',emoji:'🎉',label:'축하해요'},{id:'love',emoji:'😍',label:'멋져요'},{id:'wow',emoji:'👀',label:'부러워요'},{id:'luck',emoji:'🍀',label:'행운 나눠요'}] as const
+export const showcaseReactions=[{id:'celebrate',emoji:'🎉',label:'축하해요'},{id:'love',emoji:'😍',label:'멋져요'},{id:'wow',emoji:'👀',label:'부러워요'},{id:'luck',emoji:'🍀',label:'행운 나눠요'},{id:'sad',emoji:'😢',label:'슬퍼요'},{id:'angry',emoji:'😡',label:'화나요'}] as const
 export type ShowcaseReaction=typeof showcaseReactions[number]['id']
 export type ShowcasePost={id:string;author_id:string;author_name:string;avatar_path:string|null;operation_id:string;caption:string;species:Species;rarity:'epic'|'mythic';region_name:string;caught_at:string;created_at:string;first_discovery:boolean;render_version:1;reactions:Partial<Record<ShowcaseReaction,number>>;my_reaction:ShowcaseReaction|null}
 export type ShowcaseFeed={items:ShowcasePost[];total:number}

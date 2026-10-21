@@ -1,0 +1,14 @@
+{
+  "region": "coral",
+  "sourceFilename": "Y2Mate.st -  _ .mp3",
+  "sourceSha256": "1ae3a3f85350938895953e4fb80b234fcd60e53298be89c91cc4b0c3c5da4e6c",
+  "output": "public/music/coral.mp3",
+  "sha256": "a7270d9a96b19b5cc587682eba31c854bfaf90035103d383eea8c5d805e66285",
+  "bytes": 18143163,
+  "conversion": {
+    "tool": "ffmpeg",
+    "audioCodec": "copy",
+    "fullLength": true,
+    "coverRemoved": true
+  }
+}

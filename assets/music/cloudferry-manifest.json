@@ -1,0 +1,14 @@
+{
+  "region": "cloudferry",
+  "sourceFilename": "Y2Mate.st -       OST  _   _    _ Studio Ghibli OST.mp3",
+  "sourceSha256": "05c396cd8743a52b8878b0bf7b092ebc7d7d222e17fd0f9a1307f7a6dc653d1f",
+  "output": "public/music/cloudferry.mp3",
+  "sha256": "ba713d047bfc470ad4e87f3f49b0fdd97ef35268209186ea48502f2aeb584323",
+  "bytes": 98500531,
+  "conversion": {
+    "tool": "ffmpeg",
+    "audioCodec": "copy",
+    "fullLength": true,
+    "coverRemoved": true
+  }
+}

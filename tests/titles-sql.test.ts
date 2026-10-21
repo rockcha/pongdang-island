@@ -10,10 +10,32 @@ async function earned(){return (await state()).titles.filter(t=>t.earnedAt).map(
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},60000)
 beforeEach(async()=>{await db.exec('begin');for(const [id,name]of [[uid,'낚시꾼'],[other,'친구']]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,name]);await db.query('insert into public.player_wallets(user_id,gold) values($1,50000)',[id])}})
 afterEach(async()=>{await db.exec('rollback')});afterAll(async()=>{await db?.close()})
-it('lists all 99 titles and forbids equipping an unearned title',async()=>{
- const s=await state();expect(s.titles).toHaveLength(99);expect(s.titles.filter(t=>t.category==='growth')).toHaveLength(46)
+it('lists all 119 titles and forbids equipping an unearned title',async()=>{
+ const s=await state();expect(s.titles).toHaveLength(119);expect(s.titles.filter(t=>t.category==='growth')).toHaveLength(52)
  expect(s.equipped).toBe('beginner');expect(s.titles.filter(t=>t.earnedAt).map(t=>t.id)).toEqual(['beginner'])
  await expect(user("select public.equip_title('fishing-4')")).rejects.toThrow(/NOT_EARNED/)
+})
+it('awards intermediate repeat catches at the boundary and keeps the achievement after selling',async()=>{
+ const added=(await db.query("select * from public.title_catalog where id like 'intermediate-%' order by id")).rows
+ expect(added).toHaveLength(20)
+ expect(added.every(t=>t.tier===2)).toBe(true)
+ for(let i=0;i<24;i++)await log({kind:'fish',rarity:'common',species:'sand-goby'})
+ expect(await earned()).not.toContain('intermediate-familiar-face')
+ await log({kind:'fish',rarity:'common',species:'sand-goby'})
+ expect(await earned()).toContain('intermediate-familiar-face')
+ await db.query('delete from public.player_collectibles where user_id=$1',[uid])
+ expect(await earned()).toContain('intermediate-familiar-face')
+ expect(await user('select title_id from public.player_titles where user_id=$1',[uid],other)).toMatchObject({rows:[]})
+})
+it('requires both intermediate conditions and reconsiders prior evidence when the catalog changes',async()=>{
+ for(let i=0;i<15;i++)await log({at:`2026-09-${String(i+1).padStart(2,'0')}T12:00:00Z`})
+ expect(await earned()).toContain('intermediate-sea-routine')
+ expect(await earned()).not.toContain('intermediate-weekly-journal')
+ await db.query("delete from public.player_titles where user_id=$1 and title_id='intermediate-sea-routine'",[uid])
+ await db.query('delete from app_private.title_dirty where user_id=$1',[uid])
+ await db.exec("update public.title_catalog set name=name where id='intermediate-sea-routine'")
+ expect((await db.query('select user_id from app_private.title_dirty where user_id=$1',[uid])).rows).toHaveLength(1)
+ expect(await earned()).toContain('intermediate-sea-routine')
 })
 it('hides all unearned requirements in RPC responses and direct catalog reads',async()=>{
  const s=await state(),hidden=s.titles.find(t=>t.id==='last-miracle')

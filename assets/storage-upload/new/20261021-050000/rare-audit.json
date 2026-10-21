@@ -1,0 +1,63 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261021-050000/fish/rare/mistmoon-moonletter-butterflyfish_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  139,
+                                           "y":  203,
+                                           "width":  453,
+                                           "height":  326,
+                                           "widthRatio":  0.7225,
+                                           "heightRatio":  0.5199,
+                                           "alphaPixels":  88566,
+                                           "leftAnchorY":  389.801,
+                                           "rightAnchorY":  374.465
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  73,
+                                           "y":  203,
+                                           "width":  455,
+                                           "height":  322,
+                                           "widthRatio":  0.7257,
+                                           "heightRatio":  0.5136,
+                                           "alphaPixels":  78120,
+                                           "leftAnchorY":  397.853,
+                                           "rightAnchorY":  375.167
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  139,
+                                           "y":  119,
+                                           "width":  452,
+                                           "height":  315,
+                                           "widthRatio":  0.7209,
+                                           "heightRatio":  0.5024,
+                                           "alphaPixels":  73373,
+                                           "leftAnchorY":  313.62,
+                                           "rightAnchorY":  285.745
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  88,
+                                           "y":  119,
+                                           "width":  440,
+                                           "height":  317,
+                                           "widthRatio":  0.7018,
+                                           "heightRatio":  0.5056,
+                                           "alphaPixels":  84286,
+                                           "leftAnchorY":  297.638,
+                                           "rightAnchorY":  288.965
+                                       }
+                                   ]
+                    }
+                ]
+}

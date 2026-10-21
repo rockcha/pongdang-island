@@ -9,6 +9,7 @@
 - 일반(common)·희귀(rare): `assets/references/collectible-style/common-rare-pongi.png`의 퐁이 카툰풍.
 - 특급(epic)·신화(mythic): `assets/references/collectible-style/epic-mythic-starlight.png`의 부드러운 판타지 일러스트풍. 퐁이 그림체에 보석만 더하는 방식으로 대체하지 않습니다.
 - 참고 그림은 스타일 기준입니다. 같은 동물·색·무늬를 모든 개체에 복제하지 않습니다. 스크린샷 배경·체커보드·화면 UI를 결과에 넣지 않습니다.
+- 특급·신화 참고의 가오리 실루엣(위로 크게 솟은 날개 지느러미·작은 몸통·리본 꼬리)을 새 개체에 그대로 재사용하지 않습니다. 색이나 장식만 바꾼 변형도 금지합니다. 사용자가 그 형태를 명시적으로 요청한 경우에만 사용합니다. 참고에서는 채색·빛·재질만 가져오고, 개체별 몸통·머리·부속지·꼬리의 구조를 먼저 설계합니다.
 - 기존 [초기 생성 기록](storage-upload/collectibles/generation-history.md)와 개별 manifest는 과거 생성 기록입니다. 그림체가 충돌하면 위 최신 등급별 기준을 우선합니다. 기존 에셋은 사용자 요청 없이 일괄 재생성하지 않습니다.
 - 새 PNG는 `assets/storage-upload/new/YYYYMMDD-HHmmss/` 아래 Storage 경로 계층으로 저장하며 README·manifest에 참고 이미지와 최종 프롬프트를 기록합니다.
 - 새 어종은 썸네일과 스프라이트의 모든 프레임에서 머리가 화면 오른쪽을 향하고 앞으로 유영하는 원본으로 만듭니다. 생성 후 실제 이미지를 확인하며, 왼쪽·정면 원본은 새 어종의 최종본으로 채택하지 않습니다. 사용자 지정 예외가 있으면 그 지시를 따릅니다. [방향 규칙과 기존 왼쪽 어종 목록](references/collectible-style/artwork-facing.md)을 반드시 확인하고, 기존 어종은 검토된 방향 값을 보존합니다.

@@ -1,0 +1,923 @@
+{
+  "createdAt": "2026-10-21",
+  "bucket": "collectibles",
+  "project": "ewafafphiovbpjwogwzn",
+  "species": [
+    {
+      "id": "bluegrove-lost-ship-nameplate",
+      "name": "돌아오지 못한 배의 명패",
+      "kind": "trash",
+      "rarity": "common",
+      "region": "bluegrove",
+      "design": "An old brass ship nameplate with barnacles, broken bolts and illegible weathered engravings. No readable text, no face.",
+      "price": 22,
+      "size": 50
+    },
+    {
+      "id": "bluegrove-waveworn-driftwood",
+      "name": "물결 깎은 유목",
+      "kind": "trash",
+      "rarity": "common",
+      "region": "bluegrove",
+      "design": "A smooth pale driftwood branch sculpted by waves, forked silhouette, tiny blue seaweed ribbon and shell attached. No face.",
+      "price": 20,
+      "size": 60
+    },
+    {
+      "id": "bluegrove-bluecheek-filefish",
+      "name": "푸른볼 쥐치",
+      "kind": "fish",
+      "rarity": "common",
+      "region": "bluegrove",
+      "design": "A plump oval filefish with a small puckered mouth, big kind eye, blue cheek patches, warm ivory belly and teal dorsal fin.",
+      "price": 65,
+      "size": 62
+    },
+    {
+      "id": "bluegrove-sandsleep-flounder",
+      "name": "모래잠 넙치",
+      "kind": "fish",
+      "rarity": "common",
+      "region": "bluegrove",
+      "design": "A sleepy sand-colored flatfish with both expressive eyes visible on its upper side, turquoise freckles, soft rippling fin skirt, side-three-quarter swimming view with snout right.",
+      "price": 68,
+      "size": 68
+    },
+    {
+      "id": "bluegrove-changryu-thousand-currents",
+      "name": "천 개의 물살, 창류",
+      "kind": "fish",
+      "rarity": "mythic",
+      "region": "bluegrove",
+      "design": "A majestic long azure sea dragon eel with a pearl-white chest, teal translucent flowing fin ribbons, elegant coral antlers and long whiskers; tiny silver fish form a flowing current ribbon around its rear body. Rich cyan-gold light, powerful dignified face.",
+      "price": 3200,
+      "size": 155
+    },
+    {
+      "id": "shared-yurion-bottled-sea",
+      "name": "병 속의 바다, 유리온",
+      "kind": "fish",
+      "rarity": "mythic",
+      "region": null,
+      "design": "A magnificent translucent turquoise glass whale shark, cute dignified face, a tiny living ocean with an ivory sand island visible INSIDE its glass belly; natural shark silhouette, no literal external bottle, iridescent glass edges and delicate gold caustics.",
+      "price": 3100,
+      "size": 148
+    },
+    {
+      "id": "shared-cheolgak-sunken-harbor",
+      "name": "가라앉은 항구의 주인, 철각",
+      "kind": "fish",
+      "rarity": "mythic",
+      "region": null,
+      "design": "A magnificent giant armored lobster in deep navy teal and antique bronze. One massive claw resembles a ship anchor, the other a heavy pincer, shipwreck plating and tiny barnacles integrated on its carapace, luminous sea-green seams, elegant articulate legs and antennae.",
+      "price": 3300,
+      "size": 150
+    },
+    {
+      "id": "shared-maru-returning-wave",
+      "name": "돌아오는 파도, 마루",
+      "kind": "fish",
+      "rarity": "mythic",
+      "region": null,
+      "design": "A beautiful plump pearl-white seal with kind ocean-blue eyes, turquoise markings and an actual small sculptural curling ocean wave flowing along its back; foamy crest trails toward tail, luminous aqua accents, charming mythic sea guardian.",
+      "price": 2950,
+      "size": 135
+    },
+    {
+      "id": "mistmoon-mistwhisker-loach",
+      "name": "안개수염 미꾸리",
+      "kind": "fish",
+      "rarity": "common",
+      "region": "mistmoon",
+      "design": "A plump milky-white loach with a long soft lavender moustache, small lilac fins, pink cheeks and drowsy friendly eyes; elongated rounded body.",
+      "price": 66,
+      "size": 60
+    },
+    {
+      "id": "mistmoon-moonspot-salamander",
+      "name": "달점 도롱뇽",
+      "kind": "fish",
+      "rarity": "common",
+      "region": "mistmoon",
+      "design": "A cute small navy-lavender aquatic salamander, four little feet and long paddle tail, pale golden crescent spots on its back, bright gentle eyes, clearly a salamander not axolotl.",
+      "price": 70,
+      "size": 65
+    },
+    {
+      "id": "mistmoon-postman-hermit",
+      "name": "안개 우체부 소라게",
+      "kind": "fish",
+      "rarity": "common",
+      "region": "mistmoon",
+      "design": "A small cream-and-lavender hermit crab carrying a tiny cozy mailbox-shaped shell, miniature brass crescent latch, one little envelope tucked under shell, no readable writing, head and eyes right.",
+      "price": 72,
+      "size": 62
+    },
+    {
+      "id": "mistmoon-moonletter-butterflyfish",
+      "name": "달편지 나비고기",
+      "kind": "fish",
+      "rarity": "rare",
+      "region": "mistmoon",
+      "design": "A lovely silver-lilac butterflyfish with layered fins shaped like folded envelopes, a small gold crescent wax-seal marking, warm peach belly, expressive eye, trailing ribbon fin.",
+      "price": 350,
+      "size": 68
+    },
+    {
+      "id": "mistmoon-moonpillow-flounder",
+      "name": "달베개 가자미",
+      "kind": "fish",
+      "rarity": "common",
+      "region": "mistmoon",
+      "design": "A cute plump lavender flounder shaped like a tiny soft pillow, cream underside, sleepy half-closed eyes visible on upper side, tiny crescent cheek and gently ruffled fins. Nose right.",
+      "price": 68,
+      "size": 64
+    },
+    {
+      "id": "mistmoon-sleeptalk-jellyfish",
+      "name": "잠꼬대 방울해파리",
+      "kind": "fish",
+      "rarity": "common",
+      "region": "mistmoon",
+      "design": "A tiny cute translucent milky-lavender jellyfish with a rounded sleeping-cap-shaped bell, little cap-tip trailing LEFT, sleepy face looking RIGHT, soft short ribbon tentacles flowing left.",
+      "price": 67,
+      "size": 58
+    },
+    {
+      "id": "mistmoon-yumyeon-moonrest",
+      "name": "달을 베고 잠든, 유면",
+      "kind": "fish",
+      "rarity": "epic",
+      "region": "mistmoon",
+      "design": "A noble dreamy pearl-white seal knight, sleeping half-lidded violet eyes, elegant silver-lavender crescent crest curving above head like a moon pillow, delicate moon armor plates and flowing lilac fin-cape. Reference knight is family styling only: keep unmistakable seal anatomy, NOT a seahorse.",
+      "price": 1250,
+      "size": 108
+    },
+    {
+      "id": "lunea-dreamkeeper",
+      "name": "루네아의 꿈지기",
+      "kind": "fish",
+      "rarity": "epic",
+      "region": "mistmoon",
+      "design": "An elegant silver-lavender dream-guardian manta ray with a moonstone on its forehead, long graceful wing fins with a few luminous star embroidery patterns, pearl armor filigree and flowing soft fins. Match Lunea knight family materials, not its seahorse anatomy.",
+      "price": 1200,
+      "size": 112
+    },
+    {
+      "id": "lunea-mirrorscale",
+      "name": "루네아의 거울비늘",
+      "kind": "fish",
+      "rarity": "epic",
+      "region": "mistmoon",
+      "design": "A graceful silver-white broad-scaled fish, reflective overlapping mirror scales with fine crescent reflections, flowing translucent lavender tail and dorsal fins, violet kind eye, tasteful pearl-gold crescent crest. Match Lunea knight's materials, not its anatomy.",
+      "price": 1280,
+      "size": 110
+    }
+  ],
+  "assets": [
+    {
+      "id": "bluegrove-lost-ship-nameplate",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-9c79f222-7103-45cd-aa5d-52b77630c038.png",
+      "prompt": "Create ONE game inventory item thumbnail, transparent RGBA background. Reference image is STYLE ONLY: rounded Korean cozy cartoon game art, clean dark brown outlines and warm cel shading, no otter traits. Subject: an old ship's brass nameplate salvaged from the blue sea, rounded weathered rectangular plaque, two broken mounting bolts, faint illegible engraved ship-name marks (NO readable text), small barnacles and a tiny blue seaweed strand. Beautiful polished hand-painted icon, no eyes or face, full object centered with 12% clear padding, no scenery, no checkerboard, no labels. This is common trash, tasteful simple silhouette.",
+      "storage_path": "trash/normal/bluegrove-lost-ship-nameplate_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/trash/normal/bluegrove-lost-ship-nameplate_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "a7dd3f0ed3c6f383500b4cb25810f285a99d3a1992eac083b74f10613caead0c",
+      "artwork_facing": "not-applicable",
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "bluegrove-waveworn-driftwood",
+      "type": "thumbnail",
+      "source": "C:/Users/user/.codex/generated_images/01a15ac7-8461-7c23-ab36-5740b34cb1df/exec-4e1771a0-3d1b-49bf-a2ae-245a195bdc14.png",
+      "prompt": "ONE transparent common cartoon driftwood thumbnail. A smooth pale driftwood branch sculpted by waves, forked silhouette, tiny blue seaweed ribbon and shell attached. No face.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "storage_path": "trash/normal/bluegrove-waveworn-driftwood_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/trash/normal/bluegrove-waveworn-driftwood_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "83731b0de0cbdbcf4882aed99d52134a80ae175a3eec05566484e0d0b4c93d36",
+      "artwork_facing": "not-applicable",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "bluegrove-bluecheek-filefish",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-b7237695-60d9-4cfe-9f79-cce2b535f16e.png",
+      "prompt": "ONE isolated full-body game collectible thumbnail. TRUE TRANSPARENT RGBA background, no scenery, no labels, no text, no frame, no checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. Subject: A plump oval filefish with a small puckered mouth, big kind eye, blue cheek patches, warm ivory belly and teal dorsal fin. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. Center with comfortable 12% transparent padding around every extremity and glow. Beautiful polished consistent game art; clear details at mobile icon size. Reference is style only; preserve this unique species anatomy.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "storage_path": "fish/normal/bluegrove-bluecheek-filefish_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/normal/bluegrove-bluecheek-filefish_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "1655e0d234ea2dfd90cd3523b3bf01befc7c5997136201f6c6aedf9dc4ed35eb",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "bluegrove-sandsleep-flounder",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-14109f9a-76da-4485-96ad-f8953899605d.png",
+      "prompt": "ONE isolated full-body game collectible thumbnail. TRUE TRANSPARENT RGBA background, no scenery, no labels, no text, no frame, no checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. Subject: A sleepy sand-colored flatfish with both expressive eyes visible on its upper side, turquoise freckles, soft rippling fin skirt, side-three-quarter swimming view with snout right. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. Center with comfortable 12% transparent padding around every extremity and glow. Beautiful polished consistent game art; clear details at mobile icon size. Reference is style only; preserve this unique species anatomy.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "storage_path": "fish/normal/bluegrove-sandsleep-flounder_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/normal/bluegrove-sandsleep-flounder_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "88e6d9003735040326f6ddca34664f68258bd901581306900a631e804244d4f2",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "bluegrove-changryu-thousand-currents",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-673fd667-1593-4898-81fe-5c13e03335c1.png",
+      "prompt": "ONE isolated full-body game collectible thumbnail. TRUE TRANSPARENT RGBA background, no scenery, no labels, no text, no frame, no checkerboard. Premium soft fantasy game illustration, delicate colored contours, luminous gradients and dimensional pearlescent shading, elegant readable silhouette, no thick cartoon outline. Subject: A majestic long azure sea dragon eel with a pearl-white chest, teal translucent flowing fin ribbons, elegant coral antlers and long whiskers; tiny silver fish form a flowing current ribbon around its rear body. Rich cyan-gold light, powerful dignified face. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. Center with comfortable 12% transparent padding around every extremity and glow. Beautiful polished consistent game art; clear details at mobile icon size. Reference is style only; preserve this unique species anatomy.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "storage_path": "fish/mythic/bluegrove-changryu-thousand-currents_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/mythic/bluegrove-changryu-thousand-currents_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1536,
+      "height": 1024,
+      "sha256": "c42f2cb152708a7425a70bdc3f87c3d7f2e6fd284287ef0defaa705c9866e73a",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "shared-yurion-bottled-sea",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-47e5f6e3-e397-4056-a65f-6c0f2c5a3335.png",
+      "prompt": "ONE isolated full-body game collectible thumbnail. TRUE TRANSPARENT RGBA background, no scenery, no labels, no text, no frame, no checkerboard. Premium soft fantasy game illustration, delicate colored contours, luminous gradients and dimensional pearlescent shading, elegant readable silhouette, no thick cartoon outline. Subject: A magnificent translucent turquoise glass whale shark, cute dignified face, a tiny living ocean with an ivory sand island visible INSIDE its glass belly; natural shark silhouette, no literal external bottle, iridescent glass edges and delicate gold caustics. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. Center with comfortable 12% transparent padding around every extremity and glow. Beautiful polished consistent game art; clear details at mobile icon size. Reference is style only; preserve this unique species anatomy.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "storage_path": "fish/mythic/shared-yurion-bottled-sea_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/mythic/shared-yurion-bottled-sea_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1536,
+      "height": 1024,
+      "sha256": "4c5f58d95cca75f8d609452242c3846f89ec2a54f3262ba7b99ec5cbeef2f8e4",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "shared-cheolgak-sunken-harbor",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-76fb4083-4b78-49d0-8412-7350736cb967.png",
+      "prompt": "ONE isolated full-body game collectible thumbnail. TRUE TRANSPARENT RGBA background, no scenery, no labels, no text, no frame, no checkerboard. Premium soft fantasy game illustration, delicate colored contours, luminous gradients and dimensional pearlescent shading, elegant readable silhouette, no thick cartoon outline. Subject: A magnificent giant armored lobster in deep navy teal and antique bronze. One massive claw resembles a ship anchor, the other a heavy pincer, shipwreck plating and tiny barnacles integrated on its carapace, luminous sea-green seams, elegant articulate legs and antennae. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. Center with comfortable 12% transparent padding around every extremity and glow. Beautiful polished consistent game art; clear details at mobile icon size. Reference is style only; preserve this unique species anatomy.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "storage_path": "fish/mythic/shared-cheolgak-sunken-harbor_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/mythic/shared-cheolgak-sunken-harbor_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1536,
+      "height": 1024,
+      "sha256": "cc6c3e40d39f4fdf7aeee3e578730973bfa93458b92b671c6991473d6d0edb5a",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "shared-maru-returning-wave",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-1e632e9d-00c1-4c04-9f19-6f85f937015a.png",
+      "prompt": "ONE isolated full-body game collectible thumbnail. TRUE TRANSPARENT RGBA background, no scenery, no labels, no text, no frame, no checkerboard. Premium soft fantasy game illustration, delicate colored contours, luminous gradients and dimensional pearlescent shading, elegant readable silhouette, no thick cartoon outline. Subject: A beautiful plump pearl-white seal with kind ocean-blue eyes, turquoise markings and an actual small sculptural curling ocean wave flowing along its back; foamy crest trails toward tail, luminous aqua accents, charming mythic sea guardian. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. Center with comfortable 12% transparent padding around every extremity and glow. Beautiful polished consistent game art; clear details at mobile icon size. Reference is style only; preserve this unique species anatomy.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "storage_path": "fish/mythic/shared-maru-returning-wave_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/mythic/shared-maru-returning-wave_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1536,
+      "height": 1024,
+      "sha256": "2f16531fc8b31fbca3b38792f96708daed00ea970822a3026c024f05444f714f",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "mistmoon-mistwhisker-loach",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-f03316e8-12d9-4052-927c-f5f000d1b7db.png",
+      "prompt": "ONE isolated full-body game collectible thumbnail. TRUE TRANSPARENT RGBA background, no scenery, no labels, no text, no frame, no checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. Subject: A plump milky-white loach with a long soft lavender moustache, small lilac fins, pink cheeks and drowsy friendly eyes; elongated rounded body. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. Center with comfortable 12% transparent padding around every extremity and glow. Beautiful polished consistent game art; clear details at mobile icon size. Reference is style only; preserve this unique species anatomy.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "storage_path": "fish/normal/mistmoon-mistwhisker-loach_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-mistwhisker-loach_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "c9c3225f8b869bb78c9a1ff7dc07ff5173adee2053010da0f48b26ee8a0604d7",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "mistmoon-moonspot-salamander",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-a21fcb7e-7017-41ee-a940-1bb37a19174c.png",
+      "prompt": "ONE isolated full-body game collectible thumbnail. TRUE TRANSPARENT RGBA background, no scenery, no labels, no text, no frame, no checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. Subject: A cute small navy-lavender aquatic salamander, four little feet and long paddle tail, pale golden crescent spots on its back, bright gentle eyes, clearly a salamander not axolotl. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. Center with comfortable 12% transparent padding around every extremity and glow. Beautiful polished consistent game art; clear details at mobile icon size. Reference is style only; preserve this unique species anatomy.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "storage_path": "fish/normal/mistmoon-moonspot-salamander_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-moonspot-salamander_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "2d05f6e70d1a06756c90cf4e725f7a2edd75a76725ca1092717c3c2b2b2d2ab4",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "mistmoon-postman-hermit",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-6eb71442-7907-42a7-9404-fbfee90e034a.png",
+      "prompt": "ONE isolated full-body game collectible thumbnail. TRUE TRANSPARENT RGBA background, no scenery, no labels, no text, no frame, no checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. Subject: A small cream-and-lavender hermit crab carrying a tiny cozy mailbox-shaped shell, miniature brass crescent latch, one little envelope tucked under shell, no readable writing, head and eyes right. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. Center with comfortable 12% transparent padding around every extremity and glow. Beautiful polished consistent game art; clear details at mobile icon size. Reference is style only; preserve this unique species anatomy.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "storage_path": "fish/normal/mistmoon-postman-hermit_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-postman-hermit_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "e06233ba5014843e5ec6a4660b1522d093b9f3d4e6811768b10df6b38c9aa0f6",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "mistmoon-moonletter-butterflyfish",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-cfb24306-be26-47d2-937b-bf612143fc1a.png",
+      "prompt": "ONE isolated full-body game collectible thumbnail. TRUE TRANSPARENT RGBA background, no scenery, no labels, no text, no frame, no checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. Subject: A lovely silver-lilac butterflyfish with layered fins shaped like folded envelopes, a small gold crescent wax-seal marking, warm peach belly, expressive eye, trailing ribbon fin. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. Center with comfortable 12% transparent padding around every extremity and glow. Beautiful polished consistent game art; clear details at mobile icon size. Reference is style only; preserve this unique species anatomy.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "storage_path": "fish/rare/mistmoon-moonletter-butterflyfish_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/rare/mistmoon-moonletter-butterflyfish_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "d17cfdfffce36a8d4c01b561b584aebcad268384c798281aaf39e549f75f089f",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "mistmoon-moonpillow-flounder",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-1bc51bba-e5a4-4ff2-8721-873fd746a8b4.png",
+      "prompt": "ONE isolated full-body game collectible thumbnail. TRUE TRANSPARENT RGBA background, no scenery, no labels, no text, no frame, no checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. Subject: A cute plump lavender flounder shaped like a tiny soft pillow, cream underside, sleepy half-closed eyes visible on upper side, tiny crescent cheek and gently ruffled fins. Nose right. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. Center with comfortable 12% transparent padding around every extremity and glow. Beautiful polished consistent game art; clear details at mobile icon size. Reference is style only; preserve this unique species anatomy.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "storage_path": "fish/normal/mistmoon-moonpillow-flounder_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-moonpillow-flounder_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "4871e1467d8efef6bc04a302f43bc66f20ef3a85f617b442f9dee991e49f3bfa",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "mistmoon-sleeptalk-jellyfish",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-6f6ebdf3-b1aa-4214-8a1c-1245e9970936.png",
+      "prompt": "ONE isolated full-body game collectible thumbnail. TRUE TRANSPARENT RGBA background, no scenery, no labels, no text, no frame, no checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. Subject: A tiny cute translucent milky-lavender jellyfish with a rounded sleeping-cap-shaped bell, little cap-tip trailing LEFT, sleepy face looking RIGHT, soft short ribbon tentacles flowing left. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. Center with comfortable 12% transparent padding around every extremity and glow. Beautiful polished consistent game art; clear details at mobile icon size. Reference is style only; preserve this unique species anatomy.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "storage_path": "fish/normal/mistmoon-sleeptalk-jellyfish_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-sleeptalk-jellyfish_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "f3334dcc108183c7570e5bacc42dd5d14604e23ee67bd3ac47bf40027aef52cd",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "mistmoon-yumyeon-moonrest",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-430db21a-745c-42d7-86be-37ffc85ca3c6.png",
+      "prompt": "ONE isolated full-body game collectible thumbnail. TRUE TRANSPARENT RGBA background, no scenery, no labels, no text, no frame, no checkerboard. Premium soft fantasy game illustration, delicate colored contours, luminous gradients and dimensional pearlescent shading, elegant readable silhouette, no thick cartoon outline. Subject: A noble dreamy pearl-white seal knight, sleeping half-lidded violet eyes, elegant silver-lavender crescent crest curving above head like a moon pillow, delicate moon armor plates and flowing lilac fin-cape. Reference knight is family styling only: keep unmistakable seal anatomy, NOT a seahorse. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. Center with comfortable 12% transparent padding around every extremity and glow. Beautiful polished consistent game art; clear details at mobile icon size. Reference is style only; preserve this unique species anatomy.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261015-165350/fish/epic/lunea-knight_thumbnail.png"
+      ],
+      "storage_path": "fish/epic/mistmoon-yumyeon-moonrest_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/epic/mistmoon-yumyeon-moonrest_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1536,
+      "height": 1024,
+      "sha256": "6e7a297f77967253ff4cecde827e29c90cfd7b2dfc2a111a80e1d5a62588df16",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "lunea-dreamkeeper",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-4ce7b51e-f58e-44e0-816f-fe241ab987d0.png",
+      "prompt": "ONE isolated full-body game collectible thumbnail. TRUE TRANSPARENT RGBA background, no scenery, no labels, no text, no frame, no checkerboard. Premium soft fantasy game illustration, delicate colored contours, luminous gradients and dimensional pearlescent shading, elegant readable silhouette, no thick cartoon outline. Subject: An elegant silver-lavender dream-guardian manta ray with a moonstone on its forehead, long graceful wing fins with a few luminous star embroidery patterns, pearl armor filigree and flowing soft fins. Match Lunea knight family materials, not its seahorse anatomy. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. Center with comfortable 12% transparent padding around every extremity and glow. Beautiful polished consistent game art; clear details at mobile icon size. Reference is style only; preserve this unique species anatomy.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261015-165350/fish/epic/lunea-knight_thumbnail.png"
+      ],
+      "storage_path": "fish/epic/lunea-dreamkeeper_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/epic/lunea-dreamkeeper_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1536,
+      "height": 1024,
+      "sha256": "91ad70814f3f85972a34ef379f03bb3ec81b8250596a1ca3cb277cb01680b7ce",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "lunea-mirrorscale",
+      "type": "thumbnail",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-6b61d4ed-4fbb-4729-80b5-c9d64573f72a.png",
+      "prompt": "ONE isolated full-body game collectible thumbnail. TRUE TRANSPARENT RGBA background, no scenery, no labels, no text, no frame, no checkerboard. Premium soft fantasy game illustration, delicate colored contours, luminous gradients and dimensional pearlescent shading, elegant readable silhouette, no thick cartoon outline. Subject: A graceful silver-white broad-scaled fish, reflective overlapping mirror scales with fine crescent reflections, flowing translucent lavender tail and dorsal fins, violet kind eye, tasteful pearl-gold crescent crest. Match Lunea knight's materials, not its anatomy. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. Center with comfortable 12% transparent padding around every extremity and glow. Beautiful polished consistent game art; clear details at mobile icon size. Reference is style only; preserve this unique species anatomy.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261015-165350/fish/epic/lunea-knight_thumbnail.png"
+      ],
+      "storage_path": "fish/epic/lunea-mirrorscale_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/epic/lunea-mirrorscale_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1377,
+      "height": 1142,
+      "sha256": "12c9f656ad91b3a0bdd4dedca695a0fa1d4cc0e589c116c3dc98d63e37dc7ac8",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "bluegrove-bluecheek-filefish",
+      "type": "sprite",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-04ce9be9-f67f-46cc-8db2-a11232dedc4b.png",
+      "prompt": "EDIT THIS EXISTING SPRITE SHEET: layout correction only. Keep 4 poses, 2 columns x 2 rows, equal square cells. SHRINK EACH INDIVIDUAL CREATURE INSIDE ITS OWN CELL by the SAME 20%, leaving wide transparent gaps on all sides. Do NOT resize the whole sheet. Keep anatomy, colors, pose actions and details unchanged. Reconstruct any clipped tips naturally. Keep head same relative position in all cells. All glow must stay near creature outline, no particles between cells. No background, checkerboard, text or grid. True RGBA transparency.",
+      "storage_path": "fish/normal/bluegrove-bluecheek-filefish_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/normal/bluegrove-bluecheek-filefish_sprite.png",
+      "repair": "imagegen cell padding",
+      "tool": "image_gen.imagegen",
+      "history": [
+        {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-f24920a6-c429-480c-b8b5-40ad5e199867.png",
+          "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. TWO columns by TWO rows, 4 equal SQUARE cells, sheet aspect ratio 1:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Longest action silhouette occupies 80-88% of cell, all fins/effects contained with generous transparent gaps. Do not recenter individual poses. Read row-major left-to-right. Frames 1-4 form a smooth connected swimming loop: actual tail, fin, bell, legs or tentacle articulation appropriate to the anatomy, not just eye changes. Stable face and torso, no whole-body bobbing or scale changes, no exaggerated arm-like single front-fin paddling. Creature design: A plump oval filefish with a small puckered mouth, big kind eye, blue cheek patches, warm ivory belly and teal dorsal fin. Match the approved thumbnail colors, anatomy, facial features and proportions exactly."
+        },
+        {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-d866d8d4-166f-4273-9cce-f625a1042635.png",
+          "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. TWO columns by TWO rows, 4 equal SQUARE cells, sheet aspect ratio 1:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Longest action silhouette occupies 80% of cell maximum. CRITICAL: each cell has at least 10% totally empty transparent margin on ALL FOUR sides, including on the internal sheet dividers. Draw each subject SMALLER than the reference so zero tips are cut off. All fins and glow remain inside this safety margin. Do not recenter individual poses. Read row-major left-to-right. Frames 1-4 form a smooth connected swimming loop: actual tail, fin, bell, legs or tentacle articulation appropriate to the anatomy, not just eye changes. Stable face and torso, no whole-body bobbing or scale changes, no exaggerated arm-like single front-fin paddling. Creature design: A plump oval filefish with a small puckered mouth, big kind eye, blue cheek patches, warm ivory belly and teal dorsal fin. Match the approved thumbnail colors, anatomy, facial features and proportions exactly."
+        }
+      ],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "2c80a22653516863c895e07c8ef2875ae7f988ea9def7ea89691e8aae58015e2",
+      "artwork_facing": "right",
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "reference_roles": [
+        "existing same-creature thumbnail or sheet",
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "bluegrove-sandsleep-flounder",
+      "type": "sprite",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-acf26e74-4087-4057-a019-5ed87c9e4143.png",
+      "prompt": "EDIT THIS EXISTING SPRITE SHEET: layout correction only. Keep 4 poses, 2 columns x 2 rows, equal square cells. SHRINK EACH INDIVIDUAL CREATURE INSIDE ITS OWN CELL by the SAME 20%, leaving wide transparent gaps on all sides. Do NOT resize the whole sheet. Keep anatomy, colors, pose actions and details unchanged. Reconstruct any clipped tips naturally. Keep head same relative position in all cells. All glow must stay near creature outline, no particles between cells. No background, checkerboard, text or grid. True RGBA transparency.",
+      "storage_path": "fish/normal/bluegrove-sandsleep-flounder_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/normal/bluegrove-sandsleep-flounder_sprite.png",
+      "repair": "imagegen cell padding",
+      "tool": "image_gen.imagegen",
+      "history": [
+        {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-d05535a1-a787-40bb-8b2f-48f78870c8bb.png",
+          "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. TWO columns by TWO rows, 4 equal SQUARE cells, sheet aspect ratio 1:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Longest action silhouette occupies 80% of cell maximum. CRITICAL: each cell has at least 10% totally empty transparent margin on ALL FOUR sides, including on the internal sheet dividers. Draw each subject SMALLER than the reference so zero tips are cut off. All fins and glow remain inside this safety margin. Do not recenter individual poses. Read row-major left-to-right. Frames 1-4 form a smooth connected swimming loop: actual tail, fin, bell, legs or tentacle articulation appropriate to the anatomy, not just eye changes. Stable face and torso, no whole-body bobbing or scale changes, no exaggerated arm-like single front-fin paddling. Creature design: A sleepy sand-colored flatfish with both expressive eyes visible on its upper side, turquoise freckles, soft rippling fin skirt, side-three-quarter swimming view with snout right. Match the approved thumbnail colors, anatomy, facial features and proportions exactly."
+        }
+      ],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "bcd95cc0a08588fe9a91582151ea4041b75c5556538af1192152c9bd26745a65",
+      "artwork_facing": "right",
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "reference_roles": [
+        "existing same-creature thumbnail or sheet",
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "bluegrove-changryu-thousand-currents",
+      "type": "sprite",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-bd490756-a503-4a0b-8767-7e9aad0181f1.png",
+      "prompt": "EDIT this existing 4-column 2-row animation sprite sheet. Keep exactly eight poses and all existing artwork. Layout repair only: REDUCE EVERY INDIVIDUAL DRAGON to 75% of its previous size INSIDE ITS OWN CELL, centered within that same cell. Leave wide completely TRANSPARENT gutters between all 8 dragons and transparent outer borders. Reconstruct any cropped fin tips. No overlapping cells. No checkerboard or background. Output remains 4 columns x 2 rows with square cells, aspect 2:1. Do not scale the whole sheet; shrink each dragon separately by the SAME factor. Keep the head at the same cell-relative position in all poses; moving fins/tail effects stay inside each cell.",
+      "storage_path": "fish/mythic/bluegrove-changryu-thousand-currents_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/mythic/bluegrove-changryu-thousand-currents_sprite.png",
+      "repair": "imagegen cell padding",
+      "tool": "image_gen.imagegen",
+      "history": [
+        {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-8d56740b-9959-436c-b270-cfb812b2b0ba.png",
+          "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. FOUR columns by TWO rows, 8 equal SQUARE cells, sheet aspect ratio 2:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Premium soft fantasy game illustration, delicate colored contours, luminous gradients and dimensional pearlescent shading, elegant readable silhouette, no thick cartoon outline. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Longest action silhouette occupies 80% of cell maximum. CRITICAL: each cell has at least 10% totally empty transparent margin on ALL FOUR sides, including on the internal sheet dividers. Draw each subject SMALLER than the reference so zero tips are cut off. All fins and glow remain inside this safety margin. Do not recenter individual poses. Read row-major left-to-right. Top row frames 1-4 form a fluid ordinary swimming cycle using tail propulsion and flowing appendages. Bottom row frames 5-8 show a distinct physical signature action: rear sequence: whiskers and fin ribbons sweep outward; dragon flexes its long tail into a strong S; silver fish ribbon spirals into a luminous water ring; current unfurls and returns smoothly. Keep head and upper chest fixed. Creature design: A majestic long azure sea dragon eel with a pearl-white chest, teal translucent flowing fin ribbons, elegant coral antlers and long whiskers; tiny silver fish form a flowing current ribbon around its rear body. Rich cyan-gold light, powerful dignified face. Match the approved thumbnail colors, anatomy, facial features and proportions exactly."
+        },
+        {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-3421e1f9-7550-44d1-a3be-94b7033baadf.png",
+          "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. FOUR columns by TWO rows, 8 equal SQUARE cells, sheet aspect ratio 2:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Premium soft fantasy game illustration, delicate colored contours, luminous gradients and dimensional pearlescent shading, elegant readable silhouette, no thick cartoon outline. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Each creature including ALL effects must fit inside the CENTER 70% of its square cell. CRITICAL 15% TRANSPARENT MARGIN on every side. Eight separate small figures with huge empty transparent gutters, never touching. ZERO floating particles or aura outside the creature outline. No background glow. Do not fill the sheet. Each figure must be much smaller than its cell. Preserve head position across frames. Do not recenter individual poses. Read row-major left-to-right. Top row frames 1-4 form a fluid ordinary swimming cycle using tail propulsion and flowing appendages. Bottom row frames 5-8 show a distinct physical signature action: rear sequence: whiskers and fin ribbons sweep outward; dragon flexes its long tail into a strong S; silver fish ribbon spirals into a luminous water ring; current unfurls and returns smoothly. Keep head and upper chest fixed. Creature design: A majestic long azure sea dragon eel with a pearl-white chest, teal translucent flowing fin ribbons, elegant coral antlers and long whiskers; tiny silver fish form a flowing current ribbon around its rear body. Rich cyan-gold light, powerful dignified face. Match the approved thumbnail colors, anatomy, facial features and proportions exactly."
+        }
+      ],
+      "width": 1774,
+      "height": 887,
+      "sha256": "a2d8257a3ffe82e2dc09e01f93844f01ee708dd2011f7f5961ac105937d4da49",
+      "artwork_facing": "right",
+      "style_references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "reference_roles": [
+        "existing same-creature thumbnail or sheet",
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "shared-yurion-bottled-sea",
+      "type": "sprite",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-b7e45da9-6525-43ee-8dec-fc2a9cbf080f.png",
+      "prompt": "EDIT THIS EXISTING SPRITE SHEET: layout correction only. Keep 8 poses, 4 columns x 2 rows, equal square cells. SHRINK EACH INDIVIDUAL CREATURE INSIDE ITS OWN CELL by the SAME 20%, leaving wide transparent gaps on all sides. Do NOT resize the whole sheet. Keep anatomy, colors, pose actions and details unchanged. Reconstruct any clipped tips naturally. Keep head same relative position in all cells. All glow must stay near creature outline, no particles between cells. No background, checkerboard, text or grid. True RGBA transparency.",
+      "storage_path": "fish/mythic/shared-yurion-bottled-sea_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/mythic/shared-yurion-bottled-sea_sprite.png",
+      "repair": "imagegen cell padding",
+      "tool": "image_gen.imagegen",
+      "history": [
+        {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-7487ef9d-de34-49e3-b6a8-88164992a9cb.png",
+          "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. FOUR columns by TWO rows, 8 equal SQUARE cells, sheet aspect ratio 2:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Premium soft fantasy game illustration, delicate colored contours, luminous gradients and dimensional pearlescent shading, elegant readable silhouette, no thick cartoon outline. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Each creature including ALL effects must fit inside the CENTER 70% of its square cell. CRITICAL 15% TRANSPARENT MARGIN on every side. Eight separate small figures with huge empty transparent gutters, never touching. ZERO floating particles or aura outside the creature outline. No background glow. Do not fill the sheet. Each figure must be much smaller than its cell. Preserve head position across frames. Do not recenter individual poses. Read row-major left-to-right. Top row frames 1-4 form a fluid ordinary swimming cycle using tail propulsion and flowing appendages. Bottom row frames 5-8 show a distinct physical signature action: rear sequence: internal ocean tide rises, tail makes a strong graceful sweep, tiny island palms lean with the tide, internal wave curls and washes back while glass pectoral fins steer gently. Body outline and head fixed. Creature design: A magnificent translucent turquoise glass whale shark, cute dignified face, a tiny living ocean with an ivory sand island visible INSIDE its glass belly; natural shark silhouette, no literal external bottle, iridescent glass edges and delicate gold caustics. Match the approved thumbnail colors, anatomy, facial features and proportions exactly."
+        }
+      ],
+      "width": 1774,
+      "height": 887,
+      "sha256": "c71c391b163e5e7acd2a31a4460330f706945bc165594317affd10c2ca03ea20",
+      "artwork_facing": "right",
+      "style_references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "reference_roles": [
+        "existing same-creature thumbnail or sheet",
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "shared-cheolgak-sunken-harbor",
+      "type": "sprite",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-a91dd303-8f87-474d-b555-a267328219dc.png",
+      "prompt": "EDIT THIS EXISTING SPRITE SHEET: layout correction only. Keep 8 poses, 4 columns x 2 rows, equal square cells. SHRINK EACH INDIVIDUAL CREATURE INSIDE ITS OWN CELL by the SAME 20%, leaving wide transparent gaps on all sides. Do NOT resize the whole sheet. Keep anatomy, colors, pose actions and details unchanged. Reconstruct any clipped tips naturally. Keep head same relative position in all cells. All glow must stay near creature outline, no particles between cells. No background, checkerboard, text or grid. True RGBA transparency.",
+      "storage_path": "fish/mythic/shared-cheolgak-sunken-harbor_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/mythic/shared-cheolgak-sunken-harbor_sprite.png",
+      "repair": "imagegen cell padding",
+      "tool": "image_gen.imagegen",
+      "history": [
+        {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-56bd2153-dc68-4c11-afd3-60fd0c89c881.png",
+          "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. FOUR columns by TWO rows, 8 equal SQUARE cells, sheet aspect ratio 2:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Premium soft fantasy game illustration, delicate colored contours, luminous gradients and dimensional pearlescent shading, elegant readable silhouette, no thick cartoon outline. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Each creature including ALL effects must fit inside the CENTER 70% of its square cell. CRITICAL 15% TRANSPARENT MARGIN on every side. Eight separate small figures with huge empty transparent gutters, never touching. ZERO floating particles or aura outside the creature outline. No background glow. Do not fill the sheet. Each figure must be much smaller than its cell. Preserve head position across frames. Do not recenter individual poses. Read row-major left-to-right. Top row frames 1-4 form a fluid ordinary swimming cycle using tail propulsion and flowing appendages. Bottom row frames 5-8 show a distinct physical signature action: rear sequence: anchor claw rotates upward in preparation, both pincers open, anchor claw sweeps a controlled arc with sea-green water ribbons, claws return to swimming position. Carapace/head fixed, antennae and small legs undulate throughout. Creature design: A magnificent giant armored lobster in deep navy teal and antique bronze. One massive claw resembles a ship anchor, the other a heavy pincer, shipwreck plating and tiny barnacles integrated on its carapace, luminous sea-green seams, elegant articulate legs and antennae. Match the approved thumbnail colors, anatomy, facial features and proportions exactly."
+        },
+        {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-b7f4e3e5-ab51-48bf-ac0f-1fc5b3ffad97.png",
+          "prompt": "EDIT THIS EXISTING SPRITE SHEET: layout correction only. Keep 8 poses, 4 columns x 2 rows, equal square cells. SHRINK EACH INDIVIDUAL CREATURE INSIDE ITS OWN CELL by the SAME 20%, leaving wide transparent gaps on all sides. Do NOT resize the whole sheet. Keep anatomy, colors, pose actions and details unchanged. Reconstruct any clipped tips naturally. Keep head same relative position in all cells. All glow must stay near creature outline, no particles between cells. No background, checkerboard, text or grid. True RGBA transparency."
+        }
+      ],
+      "width": 1774,
+      "height": 887,
+      "sha256": "0d0c96b1116ef965858434c0b314372024b8ee4e092d84a01305e4694a55d103",
+      "artwork_facing": "right",
+      "style_references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "reference_roles": [
+        "existing same-creature thumbnail or sheet",
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "shared-maru-returning-wave",
+      "type": "sprite",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-798d2375-412b-4c63-b83c-c066598a0e9b.png",
+      "prompt": "EDIT THIS EXISTING SPRITE SHEET: layout correction only. Keep 8 poses, 4 columns x 2 rows, equal square cells. SHRINK EACH INDIVIDUAL CREATURE INSIDE ITS OWN CELL by the SAME 20%, leaving wide transparent gaps on all sides. Do NOT resize the whole sheet. Keep anatomy, colors, pose actions and details unchanged. Reconstruct any clipped tips naturally. Keep head same relative position in all cells. All glow must stay near creature outline, no particles between cells. No background, checkerboard, text or grid. True RGBA transparency.",
+      "storage_path": "fish/mythic/shared-maru-returning-wave_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/mythic/shared-maru-returning-wave_sprite.png",
+      "repair": "imagegen cell padding",
+      "tool": "image_gen.imagegen",
+      "history": [
+        {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-fea3dd6a-44f1-4488-9a6a-cb7db0b651cf.png",
+          "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. FOUR columns by TWO rows, 8 equal SQUARE cells, sheet aspect ratio 2:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Premium soft fantasy game illustration, delicate colored contours, luminous gradients and dimensional pearlescent shading, elegant readable silhouette, no thick cartoon outline. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Each creature including ALL effects must fit inside the CENTER 70% of its square cell. CRITICAL 15% TRANSPARENT MARGIN on every side. Eight separate small figures with huge empty transparent gutters, never touching. ZERO floating particles or aura outside the creature outline. No background glow. Do not fill the sheet. Each figure must be much smaller than its cell. Preserve head position across frames. Do not recenter individual poses. Read row-major left-to-right. Top row frames 1-4 form a fluid ordinary swimming cycle using tail propulsion and flowing appendages. Bottom row frames 5-8 show a distinct physical signature action: rear sequence: back wave builds, crest curls into a spectacular turquoise foam arch, wave rolls toward tail and disperses in foam droplets, smoothly returns to small wave. Seal face/torso fixed; tail and both hind flippers propel naturally. Creature design: A beautiful plump pearl-white seal with kind ocean-blue eyes, turquoise markings and an actual small sculptural curling ocean wave flowing along its back; foamy crest trails toward tail, luminous aqua accents, charming mythic sea guardian. Match the approved thumbnail colors, anatomy, facial features and proportions exactly."
+        }
+      ],
+      "width": 1774,
+      "height": 887,
+      "sha256": "30627631de219eba8b1bdb8c2e19bfc824eaba9af569a1d3ac8b27b6e6a4672e",
+      "artwork_facing": "right",
+      "style_references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "reference_roles": [
+        "existing same-creature thumbnail or sheet",
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "mistmoon-mistwhisker-loach",
+      "type": "sprite",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-8771b471-53d1-48f1-ab1d-fcf7339aac40.png",
+      "prompt": "EDIT THIS EXISTING SPRITE SHEET: layout correction only. Keep 4 poses, 2 columns x 2 rows, equal square cells. SHRINK EACH INDIVIDUAL CREATURE INSIDE ITS OWN CELL by the SAME 20%, leaving wide transparent gaps on all sides. Do NOT resize the whole sheet. Keep anatomy, colors, pose actions and details unchanged. Reconstruct any clipped tips naturally. Keep head same relative position in all cells. All glow must stay near creature outline, no particles between cells. No background, checkerboard, text or grid. True RGBA transparency.",
+      "storage_path": "fish/normal/mistmoon-mistwhisker-loach_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-mistwhisker-loach_sprite.png",
+      "repair": "imagegen cell padding",
+      "tool": "image_gen.imagegen",
+      "history": [
+        {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-c88be074-891f-4d1b-8368-319978303350.png",
+          "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. TWO columns by TWO rows, 4 equal SQUARE cells, sheet aspect ratio 1:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Each creature including ALL effects must fit inside the CENTER 70% of its square cell. CRITICAL 15% TRANSPARENT MARGIN on every side. Eight separate small figures with huge empty transparent gutters, never touching. ZERO floating particles or aura outside the creature outline. No background glow. Do not fill the sheet. Each figure must be much smaller than its cell. Preserve head position across frames. Do not recenter individual poses. Read row-major left-to-right. Frames 1-4 form a smooth connected swimming loop: actual tail, fin, bell, legs or tentacle articulation appropriate to the anatomy, not just eye changes. Stable face and torso, no whole-body bobbing or scale changes, no exaggerated arm-like single front-fin paddling. Creature design: A plump milky-white loach with a long soft lavender moustache, small lilac fins, pink cheeks and drowsy friendly eyes; elongated rounded body. Match the approved thumbnail colors, anatomy, facial features and proportions exactly."
+        }
+      ],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "479a496474cec8230ddade3e61a73904b02c4aa2094d25b061cdf364ced7f60c",
+      "artwork_facing": "right",
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "reference_roles": [
+        "existing same-creature thumbnail or sheet",
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "mistmoon-moonspot-salamander",
+      "type": "sprite",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-1cb8d437-3391-4b92-98ec-2dcff6bcc9ae.png",
+      "prompt": "EDIT THIS EXISTING SPRITE SHEET: layout correction only. Keep 4 poses, 2 columns x 2 rows, equal square cells. SHRINK EACH INDIVIDUAL CREATURE INSIDE ITS OWN CELL by the SAME 20%, leaving wide transparent gaps on all sides. Do NOT resize the whole sheet. Keep anatomy, colors, pose actions and details unchanged. Reconstruct any clipped tips naturally. Keep head same relative position in all cells. All glow must stay near creature outline, no particles between cells. No background, checkerboard, text or grid. True RGBA transparency.",
+      "storage_path": "fish/normal/mistmoon-moonspot-salamander_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-moonspot-salamander_sprite.png",
+      "repair": "imagegen cell padding",
+      "tool": "image_gen.imagegen",
+      "history": [
+        {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-ff0ff0d7-15ca-4d73-b7b5-2519d521d363.png",
+          "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. TWO columns by TWO rows, 4 equal SQUARE cells, sheet aspect ratio 1:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Each creature including ALL effects must fit inside the CENTER 70% of its square cell. CRITICAL 15% TRANSPARENT MARGIN on every side. Eight separate small figures with huge empty transparent gutters, never touching. ZERO floating particles or aura outside the creature outline. No background glow. Do not fill the sheet. Each figure must be much smaller than its cell. Preserve head position across frames. Do not recenter individual poses. Read row-major left-to-right. Frames 1-4 form a smooth connected swimming loop: actual tail, fin, bell, legs or tentacle articulation appropriate to the anatomy, not just eye changes. Stable face and torso, no whole-body bobbing or scale changes, no exaggerated arm-like single front-fin paddling. Creature design: A cute small navy-lavender aquatic salamander, four little feet and long paddle tail, pale golden crescent spots on its back, bright gentle eyes, clearly a salamander not axolotl. Match the approved thumbnail colors, anatomy, facial features and proportions exactly."
+        }
+      ],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "33ecab0e1e0699840f6d0d7e9b26de7868e3cf6ffee16508c6875de2993c8fe7",
+      "artwork_facing": "right",
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "reference_roles": [
+        "existing same-creature thumbnail or sheet",
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "mistmoon-postman-hermit",
+      "type": "sprite",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-5b25b436-77b2-4a53-b841-0f5cc4986b8d.png",
+      "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. TWO columns by TWO rows, 4 equal SQUARE cells, sheet aspect ratio 1:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Each creature including ALL effects must fit inside the CENTER 70% of its square cell. CRITICAL 15% TRANSPARENT MARGIN on every side. Eight separate small figures with huge empty transparent gutters, never touching. ZERO floating particles or aura outside the creature outline. No background glow. Do not fill the sheet. Each figure must be much smaller than its cell. Preserve head position across frames. Do not recenter individual poses. Read row-major left-to-right. Frames 1-4 form a smooth connected swimming loop: actual tail, fin, bell, legs or tentacle articulation appropriate to the anatomy, not just eye changes. Stable face and torso, no whole-body bobbing or scale changes, no exaggerated arm-like single front-fin paddling. Creature design: A small cream-and-lavender hermit crab carrying a tiny cozy mailbox-shaped shell, miniature brass crescent latch, one little envelope tucked under shell, no readable writing, head and eyes right. Match the approved thumbnail colors, anatomy, facial features and proportions exactly.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-postman-hermit_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "storage_path": "fish/normal/mistmoon-postman-hermit_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-postman-hermit_sprite.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "b80346241b662c1d9c45b2e9831fe0c7143faa737c0f6ab515a51657fd12237f",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "existing same-creature thumbnail or sheet",
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "mistmoon-moonletter-butterflyfish",
+      "type": "sprite",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-e1d85499-6a9e-476f-ad62-2fc591aa4d04.png",
+      "prompt": "EDIT THIS EXISTING SPRITE SHEET: layout correction only. Keep 4 poses, 2 columns x 2 rows, equal square cells. SHRINK EACH INDIVIDUAL CREATURE INSIDE ITS OWN CELL by the SAME 20%, leaving wide transparent gaps on all sides. Do NOT resize the whole sheet. Keep anatomy, colors, pose actions and details unchanged. Reconstruct any clipped tips naturally. Keep head same relative position in all cells. All glow must stay near creature outline, no particles between cells. No background, checkerboard, text or grid. True RGBA transparency.",
+      "storage_path": "fish/rare/mistmoon-moonletter-butterflyfish_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/rare/mistmoon-moonletter-butterflyfish_sprite.png",
+      "repair": "imagegen cell padding",
+      "history": [
+        {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-dfdefe4f-bc7e-4316-bfc3-54759317959c.png",
+          "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. TWO columns by TWO rows, 4 equal SQUARE cells, sheet aspect ratio 1:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Each creature including ALL effects must fit inside the CENTER 70% of its square cell. CRITICAL 15% TRANSPARENT MARGIN on every side. Eight separate small figures with huge empty transparent gutters, never touching. ZERO floating particles or aura outside the creature outline. No background glow. Do not fill the sheet. Each figure must be much smaller than its cell. Preserve head position across frames. Do not recenter individual poses. Read row-major left-to-right. Frames 1-4 form a smooth connected swimming loop: actual tail, fin, bell, legs or tentacle articulation appropriate to the anatomy, not just eye changes. Stable face and torso, no whole-body bobbing or scale changes, no exaggerated arm-like single front-fin paddling. Creature design: A lovely silver-lilac butterflyfish with layered fins shaped like folded envelopes, a small gold crescent wax-seal marking, warm peach belly, expressive eye, trailing ribbon fin. Match the approved thumbnail colors, anatomy, facial features and proportions exactly."
+        }
+      ],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "3cd1dbf1e3e278e48ed55eed4566c56a75ee8a049322cded3302713a8959a683",
+      "artwork_facing": "right",
+      "style_references": [
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "reference_roles": [
+        "existing same-creature thumbnail or sheet",
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "mistmoon-moonpillow-flounder",
+      "type": "sprite",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-8c6f99b8-e113-4f69-b038-e0d1acd8bdef.png",
+      "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. TWO columns by TWO rows, 4 equal SQUARE cells, sheet aspect ratio 1:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Each creature including ALL effects must fit inside the CENTER 70% of its square cell. CRITICAL 15% TRANSPARENT MARGIN on every side. Eight separate small figures with huge empty transparent gutters, never touching. ZERO floating particles or aura outside the creature outline. No background glow. Do not fill the sheet. Each figure must be much smaller than its cell. Preserve head position across frames. Do not recenter individual poses. Read row-major left-to-right. Frames 1-4 form a smooth connected swimming loop: actual tail, fin, bell, legs or tentacle articulation appropriate to the anatomy, not just eye changes. Stable face and torso, no whole-body bobbing or scale changes, no exaggerated arm-like single front-fin paddling. Creature design: A cute plump lavender flounder shaped like a tiny soft pillow, cream underside, sleepy half-closed eyes visible on upper side, tiny crescent cheek and gently ruffled fins. Nose right. Match the approved thumbnail colors, anatomy, facial features and proportions exactly.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-moonpillow-flounder_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "storage_path": "fish/normal/mistmoon-moonpillow-flounder_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-moonpillow-flounder_sprite.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "a9b665ba6c5fc6ac3b010419d7659b0c29d393147e8ca4455ad7c4fea8312fea",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "existing same-creature thumbnail or sheet",
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "mistmoon-sleeptalk-jellyfish",
+      "type": "sprite",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-13e475e7-aedf-42bd-9ccd-c24e13124559.png",
+      "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. TWO columns by TWO rows, 4 equal SQUARE cells, sheet aspect ratio 1:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Cozy rounded Korean cartoon game art matching reference style only, clean dark brown contours, warm soft cel shading and expressive eyes where appropriate. Do not copy otter features. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Each creature including ALL effects must fit inside the CENTER 70% of its square cell. CRITICAL 15% TRANSPARENT MARGIN on every side. Eight separate small figures with huge empty transparent gutters, never touching. ZERO floating particles or aura outside the creature outline. No background glow. Do not fill the sheet. Each figure must be much smaller than its cell. Preserve head position across frames. Do not recenter individual poses. Read row-major left-to-right. Frames 1-4 form a smooth connected swimming loop: actual tail, fin, bell, legs or tentacle articulation appropriate to the anatomy, not just eye changes. Stable face and torso, no whole-body bobbing or scale changes, no exaggerated arm-like single front-fin paddling. Creature design: A tiny cute translucent milky-lavender jellyfish with a rounded sleeping-cap-shaped bell, little cap-tip trailing LEFT, sleepy face looking RIGHT, soft short ribbon tentacles flowing left. Match the approved thumbnail colors, anatomy, facial features and proportions exactly.",
+      "style_references": [
+        "C:/Users/user/Desktop/pongdang-island/assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-sleeptalk-jellyfish_thumbnail.png",
+        "C:/Users/user/Desktop/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "storage_path": "fish/normal/mistmoon-sleeptalk-jellyfish_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-sleeptalk-jellyfish_sprite.png",
+      "tool": "image_gen.imagegen",
+      "history": [],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "b47abc30c37cee40220150ba3c6d5761231d237833a2679f6b50069e82c364bb",
+      "artwork_facing": "right",
+      "reference_roles": [
+        "existing same-creature thumbnail or sheet",
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "mistmoon-yumyeon-moonrest",
+      "type": "sprite",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-92684ffa-7cd3-4dda-a034-a3924afeb3b6.png",
+      "prompt": "EDIT THIS EXISTING SPRITE SHEET: layout correction only. Keep 4 poses, 2 columns x 2 rows, equal square cells. SHRINK EACH INDIVIDUAL CREATURE INSIDE ITS OWN CELL by the SAME 20%, leaving wide transparent gaps on all sides. Do NOT resize the whole sheet. Keep anatomy, colors, pose actions and details unchanged. Reconstruct any clipped tips naturally. Keep head same relative position in all cells. All glow must stay near creature outline, no particles between cells. No background, checkerboard, text or grid. True RGBA transparency.",
+      "storage_path": "fish/epic/mistmoon-yumyeon-moonrest_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/epic/mistmoon-yumyeon-moonrest_sprite.png",
+      "repair": "imagegen cell padding",
+      "tool": "image_gen.imagegen",
+      "history": [
+        {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-99930ccf-d4a5-47d6-aa1d-c8bdc64d7e67.png",
+          "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. TWO columns by TWO rows, 4 equal SQUARE cells, sheet aspect ratio 1:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Premium soft fantasy game illustration, delicate colored contours, luminous gradients and dimensional pearlescent shading, elegant readable silhouette, no thick cartoon outline. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Each creature including ALL effects must fit inside the CENTER 70% of its square cell. CRITICAL 15% TRANSPARENT MARGIN on every side. Eight separate small figures with huge empty transparent gutters, never touching. ZERO floating particles or aura outside the creature outline. No background glow. Do not fill the sheet. Each figure must be much smaller than its cell. Preserve head position across frames. Do not recenter individual poses. Read row-major left-to-right. Frames 1-4 form a smooth connected swimming loop: actual tail, fin, bell, legs or tentacle articulation appropriate to the anatomy, not just eye changes. Stable face and torso, no whole-body bobbing or scale changes, no exaggerated arm-like single front-fin paddling. Creature design: A noble dreamy pearl-white seal knight, sleeping half-lidded violet eyes, elegant silver-lavender crescent crest curving above head like a moon pillow, delicate moon armor plates and flowing lilac fin-cape. Reference knight is family styling only: keep unmistakable seal anatomy, NOT a seahorse. Match the approved thumbnail colors, anatomy, facial features and proportions exactly."
+        }
+      ],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "a40d99ac04cdcbfd9a4cdf85fb858af4d4cfeb4da4df1eef0b06e7fb523552cb",
+      "artwork_facing": "right",
+      "style_references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "reference_roles": [
+        "existing same-creature thumbnail or sheet",
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "lunea-dreamkeeper",
+      "type": "sprite",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-016af784-d4bb-4c6e-b7ff-d1633b0124dd.png",
+      "prompt": "EDIT THIS EXISTING SPRITE SHEET: layout correction only. Keep 4 poses, 2 columns x 2 rows, equal square cells. SHRINK EACH INDIVIDUAL CREATURE INSIDE ITS OWN CELL by the SAME 20%, leaving wide transparent gaps on all sides. Do NOT resize the whole sheet. Keep anatomy, colors, pose actions and details unchanged. Reconstruct any clipped tips naturally. Keep head same relative position in all cells. All glow must stay near creature outline, no particles between cells. No background, checkerboard, text or grid. True RGBA transparency.",
+      "storage_path": "fish/epic/lunea-dreamkeeper_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/epic/lunea-dreamkeeper_sprite.png",
+      "repair": "imagegen cell padding",
+      "tool": "image_gen.imagegen",
+      "history": [
+        {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-b63d7f98-6a02-468b-be22-8e5b43f25369.png",
+          "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. TWO columns by TWO rows, 4 equal SQUARE cells, sheet aspect ratio 1:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Premium soft fantasy game illustration, delicate colored contours, luminous gradients and dimensional pearlescent shading, elegant readable silhouette, no thick cartoon outline. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Each creature including ALL effects must fit inside the CENTER 70% of its square cell. CRITICAL 15% TRANSPARENT MARGIN on every side. Eight separate small figures with huge empty transparent gutters, never touching. ZERO floating particles or aura outside the creature outline. No background glow. Do not fill the sheet. Each figure must be much smaller than its cell. Preserve head position across frames. Do not recenter individual poses. Read row-major left-to-right. Frames 1-4 form a smooth connected swimming loop: actual tail, fin, bell, legs or tentacle articulation appropriate to the anatomy, not just eye changes. Stable face and torso, no whole-body bobbing or scale changes, no exaggerated arm-like single front-fin paddling. Creature design: An elegant silver-lavender dream-guardian manta ray with a moonstone on its forehead, long graceful wing fins with a few luminous star embroidery patterns, pearl armor filigree and flowing soft fins. Match Lunea knight family materials, not its seahorse anatomy. Match the approved thumbnail colors, anatomy, facial features and proportions exactly."
+        }
+      ],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "d89e5304166445bfc10875fbe78adb5c5dca057b77ebb48d8156cfcfd0f628d3",
+      "artwork_facing": "right",
+      "style_references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "reference_roles": [
+        "existing same-creature thumbnail or sheet",
+        "tier style reference"
+      ]
+    },
+    {
+      "id": "lunea-mirrorscale",
+      "type": "sprite",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-60d9569e-6895-40ba-b4bd-56fb89bfcb21.png",
+      "prompt": "EDIT THIS EXISTING SPRITE SHEET: layout correction only. Keep 4 poses, 2 columns x 2 rows, equal square cells. SHRINK EACH INDIVIDUAL CREATURE INSIDE ITS OWN CELL by the SAME 20%, leaving wide transparent gaps on all sides. Do NOT resize the whole sheet. Keep anatomy, colors, pose actions and details unchanged. Reconstruct any clipped tips naturally. Keep head same relative position in all cells. All glow must stay near creature outline, no particles between cells. No background, checkerboard, text or grid. True RGBA transparency.",
+      "storage_path": "fish/epic/lunea-mirrorscale_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-050000/fish/epic/lunea-mirrorscale_sprite.png",
+      "repair": "imagegen cell padding",
+      "tool": "image_gen.imagegen",
+      "history": [
+        {
+          "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-ae75fbea-fac1-42fd-8b47-480dba385767.png",
+          "prompt": "Create a precise animation SPRITE SHEET of the EXACT creature from reference 1. TWO columns by TWO rows, 4 equal SQUARE cells, sheet aspect ratio 1:1. Transparent RGBA background. No grid lines, labels, borders, scenery, text or checkerboard. Premium soft fantasy game illustration, delicate colored contours, luminous gradients and dimensional pearlescent shading, elegant readable silhouette, no thick cartoon outline. The creature faces RIGHT (viewer right), head/snouth to right, tail to left, side or three-quarter side view, swimming forward. Never front-facing. All cells contain same full creature, identical head and torso position and size relative to cell. Use consistent camera and scale. Each creature including ALL effects must fit inside the CENTER 70% of its square cell. CRITICAL 15% TRANSPARENT MARGIN on every side. Eight separate small figures with huge empty transparent gutters, never touching. ZERO floating particles or aura outside the creature outline. No background glow. Do not fill the sheet. Each figure must be much smaller than its cell. Preserve head position across frames. Do not recenter individual poses. Read row-major left-to-right. Frames 1-4 form a smooth connected swimming loop: actual tail, fin, bell, legs or tentacle articulation appropriate to the anatomy, not just eye changes. Stable face and torso, no whole-body bobbing or scale changes, no exaggerated arm-like single front-fin paddling. Creature design: A graceful silver-white broad-scaled fish, reflective overlapping mirror scales with fine crescent reflections, flowing translucent lavender tail and dorsal fins, violet kind eye, tasteful pearl-gold crescent crest. Match Lunea knight's materials, not its anatomy. Match the approved thumbnail colors, anatomy, facial features and proportions exactly."
+        }
+      ],
+      "width": 1254,
+      "height": 1254,
+      "sha256": "2778e98e3fc9eb2d5f23ef66dfd36feae47fc96e5ff655c2b5ab8daa2c0ab785",
+      "artwork_facing": "right",
+      "style_references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "reference_roles": [
+        "existing same-creature thumbnail or sheet",
+        "tier style reference"
+      ]
+    }
+  ]
+}

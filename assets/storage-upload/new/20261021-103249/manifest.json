@@ -1,0 +1,62 @@
+{
+  "createdAt": "2026-10-21",
+  "project": "ewafafphiovbpjwogwzn",
+  "bucket": "collectibles",
+  "replacementFor": "assets/storage-upload/new/20261021-050000",
+  "species": [
+    {
+      "id": "lunea-mirrorscale",
+      "name": "루네아의 거울비늘",
+      "kind": "fish",
+      "rarity": "epic",
+      "region": "mistmoon",
+      "price": 1280
+    }
+  ],
+  "assets": [
+    {
+      "id": "lunea-mirrorscale",
+      "type": "thumbnail",
+      "storage_path": "fish/epic/lunea-mirrorscale_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261021-103249/fish/epic/lunea-mirrorscale_thumbnail.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-480fc4f9-51d6-4aba-b810-1d59fbe7b69e.png",
+      "prompt": "Edit this exact fantasy goldfish illustration: recolor its main palette to beautiful LIGHT LAVENDER / PALE LILAC. Preserve the exact rounded fish anatomy, right-facing orientation, mirror-like crescent scales, broad flowing fan tail on LEFT, facial expression, elegant gold outlines, pearl shimmer and rendering quality. Make scales predominantly pearlescent light lavender with silver highlights and subtle icy-blue reflections; tail and fins silky translucent pastel lavender with pale pink and white gradients. Keep violet eyes and delicate warm gold crescent reflections. Lavender should be clearly noticeable but airy and luminous, NOT dark purple. Keep all shapes and proportions unchanged. True transparent RGBA background, no scene, checkerboard, text or UI. No ray wings.",
+      "artwork_facing": "right",
+      "style_references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "reference_role": "Rendering style only; approved oval goldfish anatomy, no manta silhouette",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "0d6c3d5b2229815f1f35ee59f406546d3336beece5645d74370339cd65554f0b"
+    },
+    {
+      "id": "lunea-mirrorscale",
+      "type": "sprite",
+      "storage_path": "fish/epic/lunea-mirrorscale_sprite.png",
+      "local_path": "assets/storage-upload/new/20261021-103249/fish/epic/lunea-mirrorscale_sprite.png",
+      "tool": "image_gen.imagegen",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-54833516-8274-48ad-a8e6-e856d327f3a3.png",
+      "prompt": "EDIT this existing 2x2 four-pose goldfish sprite sheet. Layout repair only: shrink EACH FISH within its own square cell to 75% of its previous size, using exactly the SAME scale factor in ALL FOUR cells. Keep four poses, 2 columns and 2 rows, square sheet. Wide truly transparent gutters and outer margins. Reconstruct clipped tail tips. Keep all anatomy, lavender colors, mirror crescent scales and swimming actions unchanged. Align the head and round torso to the same relative coordinates in every cell. No background glow, particles in gutters, grid or text. Transparent RGBA.",
+      "artwork_facing": "right",
+      "style_references": [
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "reference_role": "Rendering style only; approved oval goldfish anatomy, no manta silhouette",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "6fb50697f7a08ddf35ee21bb3926ee41930956a4d487567ccad493a679b6980b"
+    }
+  ],
+  "designHistory": [
+    {
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-18bd8798-28fa-4e03-9b75-7c3616dadd95.png",
+      "prompt": "Create ONE isolated EPIC fantasy aquarium fish thumbnail on TRUE transparent RGBA background. Reference is ONLY for soft luminous painterly rendering, delicate colored contour, premium dimensional shading. Absolutely DO NOT copy its anatomy or silhouette. New subject: Lunea's Mirrorscale, a magnificent plump oval-bodied celestial fantail goldfish, head clearly SCREEN RIGHT, tail behind LEFT. A thick rounded pearl-white and pale turquoise FISH torso with large overlapping convex MIRROR scales that reflect crescent moon shapes in rose-gold and icy cyan, one expressive violet eye on its right-facing fish head, small elegant mouth. Short LOW dorsal fin following the back and two SMALL normal pectoral fins. Behind the fish on the LEFT, a gorgeous wide pleated split fantail like flowing iridescent organza, opal-pink, pearl, aqua and gold edges, folds catch moonlight. Luxurious but readable. No ray, no manta, NO huge upward swept wing fins, no crescent horns, no starry purple wings, no ribbon-eel tail. Distinct silhouette: round substantial fish body on right and broad FAN TAIL on left; not a winged ray. Elegant intricate mirror scales should be focal point, not huge fins. Full body and all tail tips visible with 12% transparent padding. NO background, checkerboard, scenery, text, UI, labels. Keep exact right-facing side-three-quarter fish orientation."
+    },
+    {
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-969c9dc1-2922-4c25-a52a-ba5afaff882a.png",
+      "prompt": "Create a precise 2x2 FOUR-FRAME swimming sprite sheet of EXACTLY this approved lavender mirror-scale fantail goldfish. True transparent background. Four equal SQUARE cells, square overall image. Same fish in all cells, HEAD FACING SCREEN RIGHT, broad pleated fan tail behind LEFT. Keep round torso, violet eye, gold crescent mirror scales, pastel lavender palette and delicate gold outlines identical. NO MANTA WINGS or ray silhouette. Each fish including all fins and glow fits in central 75% of its cell with wide empty transparent gutters and outer margins. Four sequential gentle swimming poses: tail pleats swing and compress then open, small pectoral fins steer subtly, low dorsal fin ripples. Head/eye/torso center and torso size fixed in every cell, no bobbing, no scaling, no rotation, no blinking-only frames. Keep every tail tip contained. No text, grid, background glow or checkerboard."
+    }
+  ]
+}

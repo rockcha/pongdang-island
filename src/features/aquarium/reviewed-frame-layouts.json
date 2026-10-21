@@ -1,5 +1,308 @@
 {
- "fish/rare/silver-mist-goby_sprite.png":{"cell":627,"shifts":[[0,0],[-1,0],[4,-48],[-1,-48]]},
- "fish/epic/muk-landscape-back-carp_sprite.png":{"cell":627,"scale":0.9994,"shifts":[[0,0],[-35,1],[9,-60],[-41,-61]]},
- "fish/epic/starpattern-manta_sprite.png":{"cell":627,"shifts":[[0,0],[-45,0],[6,-80],[-28,-79]]}
+  "fish/rare/silver-mist-goby_sprite.png": {
+    "cell": 627,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        4,
+        -48
+      ],
+      [
+        -1,
+        -48
+      ]
+    ]
+  },
+  "fish/epic/muk-landscape-back-carp_sprite.png": {
+    "cell": 627,
+    "scale": 0.9994,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -35,
+        1
+      ],
+      [
+        9,
+        -60
+      ],
+      [
+        -41,
+        -61
+      ]
+    ]
+  },
+  "fish/epic/starpattern-manta_sprite.png": {
+    "cell": 627,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -45,
+        0
+      ],
+      [
+        6,
+        -80
+      ],
+      [
+        -28,
+        -79
+      ]
+    ]
+  },
+  "fish/normal/bluegrove-bluecheek-filefish_sprite.png": {
+    "cell": 627,
+    "scale": 1,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -19,
+        -2
+      ],
+      [
+        6,
+        -36
+      ],
+      [
+        -15,
+        -35
+      ]
+    ]
+  },
+  "fish/normal/bluegrove-sandsleep-flounder_sprite.png": {
+    "cell": 627,
+    "scale": 1,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -33,
+        1
+      ],
+      [
+        -2,
+        -90
+      ],
+      [
+        -32,
+        -90
+      ]
+    ]
+  },
+  "fish/normal/mistmoon-mistwhisker-loach_sprite.png": {
+    "cell": 627,
+    "scale": 1,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -57,
+        -1
+      ],
+      [
+        -1,
+        -93
+      ],
+      [
+        -32,
+        -89
+      ]
+    ]
+  },
+  "fish/normal/mistmoon-moonspot-salamander_sprite.png": {
+    "cell": 627,
+    "scale": 1,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        -80
+      ],
+      [
+        4,
+        -79
+      ]
+    ]
+  },
+  "fish/normal/mistmoon-postman-hermit_sprite.png": {
+    "cell": 627,
+    "scale": 1,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        -10
+      ],
+      [
+        0,
+        -10
+      ]
+    ]
+  },
+  "fish/rare/mistmoon-moonletter-butterflyfish_sprite.png": {
+    "cell": 627,
+    "scale": 1,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -65,
+        0
+      ],
+      [
+        -1,
+        -88
+      ],
+      [
+        -64,
+        -85
+      ]
+    ]
+  },
+  "fish/normal/mistmoon-moonpillow-flounder_sprite.png": {
+    "cell": 627,
+    "scale": 1,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -10,
+        0
+      ],
+      [
+        1,
+        -96
+      ],
+      [
+        -8,
+        -96
+      ]
+    ]
+  },
+  "fish/normal/mistmoon-sleeptalk-jellyfish_sprite.png": {
+    "cell": 627,
+    "scale": 1,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -30,
+        -2
+      ],
+      [
+        9,
+        -71
+      ],
+      [
+        -28,
+        -67
+      ]
+    ]
+  },
+  "fish/epic/mistmoon-yumyeon-moonrest_sprite.png": {
+    "cell": 627,
+    "scale": 1,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -15,
+        -1
+      ],
+      [
+        0,
+        -70
+      ],
+      [
+        -11,
+        -70
+      ]
+    ]
+  },
+  "fish/epic/lunea-dreamkeeper_sprite.png": {
+    "cell": 627,
+    "scale": 1,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        0,
+        -52
+      ],
+      [
+        -1,
+        -52
+      ]
+    ]
+  },
+  "fish/epic/lunea-mirrorscale_sprite.png": {
+    "cell": 627,
+    "scale": 1,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -37,
+        0
+      ],
+      [
+        -9,
+        -43
+      ],
+      [
+        -21,
+        -41
+      ]
+    ]
+  }
 }

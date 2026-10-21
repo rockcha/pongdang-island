@@ -1,0 +1,39 @@
+[
+  {
+    "file": "assets/storage-upload/new/20261021-103249/fish/epic/lunea-mirrorscale_sprite.png",
+    "storage_path": "fish/epic/lunea-mirrorscale_sprite.png",
+    "patch": [
+      475,
+      320,
+      80,
+      75
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -37,
+        "dy": 0,
+        "rmse": 17.146655339088944
+      },
+      {
+        "frame": 2,
+        "dx": -9,
+        "dy": -43,
+        "rmse": 26.428715499761978
+      },
+      {
+        "frame": 3,
+        "dx": -21,
+        "dy": -41,
+        "rmse": 22.26976666735414
+      }
+    ]
+  }
+]

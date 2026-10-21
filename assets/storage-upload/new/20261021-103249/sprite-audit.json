@@ -1,0 +1,63 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261021-103249/fish/epic/lunea-mirrorscale_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  91,
+                                           "y":  114,
+                                           "width":  506,
+                                           "height":  439,
+                                           "widthRatio":  0.807,
+                                           "heightRatio":  0.7002,
+                                           "alphaPixels":  133251,
+                                           "leftAnchorY":  329.998,
+                                           "rightAnchorY":  374.155
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  87,
+                                           "y":  172,
+                                           "width":  475,
+                                           "height":  365,
+                                           "widthRatio":  0.7576,
+                                           "heightRatio":  0.5821,
+                                           "alphaPixels":  111820,
+                                           "leftAnchorY":  346.284,
+                                           "rightAnchorY":  375.041
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  101,
+                                           "y":  114,
+                                           "width":  493,
+                                           "height":  368,
+                                           "widthRatio":  0.7863,
+                                           "heightRatio":  0.5869,
+                                           "alphaPixels":  116149,
+                                           "leftAnchorY":  297.057,
+                                           "rightAnchorY":  336.299
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  79,
+                                           "y":  78,
+                                           "width":  499,
+                                           "height":  432,
+                                           "widthRatio":  0.7959,
+                                           "heightRatio":  0.689,
+                                           "alphaPixels":  130750,
+                                           "leftAnchorY":  293.596,
+                                           "rightAnchorY":  335.236
+                                       }
+                                   ]
+                    }
+                ]
+}

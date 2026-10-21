@@ -1,3 +1,4 @@
+import { useDailyOrderSpecies } from '@/features/merchant/use-daily-order-species'
 import { useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { fishingDockButton } from '@/components/fishing-dock-style'
@@ -37,6 +38,7 @@ export function FishingTripDialog({
 }) {
   const gold = useGold()
   const [open, setOpen] = useState(false)
+  const dailyOrderSpecies = useDailyOrderSpecies(open)
   const [rarity, setRarity] = useState<RarityFilter>('all')
   const [concept, setConcept] = useState('all')
   const [items, setItems] = useState<OwnedCollectible[]>([])
@@ -194,6 +196,7 @@ export function FishingTripDialog({
                   <CollectibleQuantityCard
                     key={group.species.id}
                     species={group.species}
+                    dailyOrder={dailyOrderSpecies.has(group.species.id)}
                     count={group.items.length}
                     value={group.items.filter((item) => selection.has(item.id)).length}
                     disabled={busy}

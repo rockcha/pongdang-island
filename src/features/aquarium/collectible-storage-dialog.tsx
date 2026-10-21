@@ -1,3 +1,4 @@
+import { useDailyOrderSpecies } from '@/features/merchant/use-daily-order-species'
 import { EmptyState } from '@/components/empty-state'
 import { appArt } from '@/components/app-art'
 import { CollectibleSearchInput } from './collectible-search-input'
@@ -41,6 +42,7 @@ export function CollectibleStorageDialog({
   const [open, setOpen] = useState(false),
     [page, setPage] = useState(0),
     [kind, setKind] = useState('all')
+  const dailyOrderSpecies = useDailyOrderSpecies(open)
   const [rarity, setRarity] = useState<RarityFilter>('all')
   const [concept, setConcept] = useState('all')
   const [query, setQuery] = useState(''),
@@ -253,6 +255,7 @@ export function CollectibleStorageDialog({
                   <li key={group.species.id} className="min-w-0">
                     <CollectibleQuantityCard
                       species={group.species}
+                    dailyOrder={dailyOrderSpecies.has(group.species.id)}
                       count={group.items.length}
                       value={value}
                       max={max}

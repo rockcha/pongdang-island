@@ -1,0 +1,177 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261021-050000/fish/epic/lunea-dreamkeeper_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  81,
+                                           "y":  175,
+                                           "width":  487,
+                                           "height":  403,
+                                           "widthRatio":  0.7767,
+                                           "heightRatio":  0.6427,
+                                           "alphaPixels":  88093,
+                                           "leftAnchorY":  388.78,
+                                           "rightAnchorY":  380.823
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  81,
+                                           "y":  174,
+                                           "width":  484,
+                                           "height":  404,
+                                           "widthRatio":  0.7719,
+                                           "heightRatio":  0.6443,
+                                           "alphaPixels":  87880,
+                                           "leftAnchorY":  388.635,
+                                           "rightAnchorY":  381.6
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  81,
+                                           "y":  122,
+                                           "width":  491,
+                                           "height":  404,
+                                           "widthRatio":  0.7831,
+                                           "heightRatio":  0.6443,
+                                           "alphaPixels":  89028,
+                                           "leftAnchorY":  336.206,
+                                           "rightAnchorY":  326.753
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  81,
+                                           "y":  122,
+                                           "width":  490,
+                                           "height":  404,
+                                           "widthRatio":  0.7815,
+                                           "heightRatio":  0.6443,
+                                           "alphaPixels":  88623,
+                                           "leftAnchorY":  336.445,
+                                           "rightAnchorY":  327.339
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261021-050000/fish/epic/lunea-mirrorscale_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  73,
+                                           "y":  166,
+                                           "width":  533,
+                                           "height":  426,
+                                           "widthRatio":  0.8501,
+                                           "heightRatio":  0.6794,
+                                           "alphaPixels":  98867,
+                                           "leftAnchorY":  397.438,
+                                           "rightAnchorY":  390.722
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  51,
+                                           "y":  168,
+                                           "width":  527,
+                                           "height":  426,
+                                           "widthRatio":  0.8405,
+                                           "heightRatio":  0.6794,
+                                           "alphaPixels":  96441,
+                                           "leftAnchorY":  395.517,
+                                           "rightAnchorY":  392.4
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  78,
+                                           "y":  108,
+                                           "width":  529,
+                                           "height":  422,
+                                           "widthRatio":  0.8437,
+                                           "heightRatio":  0.673,
+                                           "alphaPixels":  97577,
+                                           "leftAnchorY":  330.957,
+                                           "rightAnchorY":  331.381
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  63,
+                                           "y":  107,
+                                           "width":  517,
+                                           "height":  423,
+                                           "widthRatio":  0.8246,
+                                           "heightRatio":  0.6746,
+                                           "alphaPixels":  96940,
+                                           "leftAnchorY":  328.238,
+                                           "rightAnchorY":  332.525
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261021-050000/fish/epic/mistmoon-yumyeon-moonrest_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  77,
+                                           "y":  178,
+                                           "width":  476,
+                                           "height":  376,
+                                           "widthRatio":  0.7592,
+                                           "heightRatio":  0.5997,
+                                           "alphaPixels":  97597,
+                                           "leftAnchorY":  360.452,
+                                           "rightAnchorY":  400.654
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  69,
+                                           "y":  191,
+                                           "width":  471,
+                                           "height":  363,
+                                           "widthRatio":  0.7512,
+                                           "heightRatio":  0.5789,
+                                           "alphaPixels":  94717,
+                                           "leftAnchorY":  365.231,
+                                           "rightAnchorY":  400.463
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  81,
+                                           "y":  114,
+                                           "width":  472,
+                                           "height":  371,
+                                           "widthRatio":  0.7528,
+                                           "heightRatio":  0.5917,
+                                           "alphaPixels":  95452,
+                                           "leftAnchorY":  288.545,
+                                           "rightAnchorY":  331.938
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  73,
+                                           "y":  114,
+                                           "width":  469,
+                                           "height":  373,
+                                           "widthRatio":  0.748,
+                                           "heightRatio":  0.5949,
+                                           "alphaPixels":  96385,
+                                           "leftAnchorY":  290.55,
+                                           "rightAnchorY":  332.914
+                                       }
+                                   ]
+                    }
+                ]
+}

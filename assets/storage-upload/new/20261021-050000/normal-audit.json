@@ -1,0 +1,405 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261021-050000/fish/normal/bluegrove-bluecheek-filefish_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  100,
+                                           "y":  165,
+                                           "width":  444,
+                                           "height":  344,
+                                           "widthRatio":  0.7081,
+                                           "heightRatio":  0.5486,
+                                           "alphaPixels":  87433,
+                                           "leftAnchorY":  370.105,
+                                           "rightAnchorY":  358.528
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  80,
+                                           "y":  169,
+                                           "width":  444,
+                                           "height":  341,
+                                           "widthRatio":  0.7081,
+                                           "heightRatio":  0.5439,
+                                           "alphaPixels":  86250,
+                                           "leftAnchorY":  372.6,
+                                           "rightAnchorY":  360.46
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  102,
+                                           "y":  127,
+                                           "width":  446,
+                                           "height":  344,
+                                           "widthRatio":  0.7113,
+                                           "heightRatio":  0.5486,
+                                           "alphaPixels":  86133,
+                                           "leftAnchorY":  331.711,
+                                           "rightAnchorY":  321.318
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  68,
+                                           "y":  127,
+                                           "width":  460,
+                                           "height":  348,
+                                           "widthRatio":  0.7337,
+                                           "heightRatio":  0.555,
+                                           "alphaPixels":  91851,
+                                           "leftAnchorY":  333.471,
+                                           "rightAnchorY":  323.776
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261021-050000/fish/normal/bluegrove-sandsleep-flounder_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  98,
+                                           "y":  221,
+                                           "width":  471,
+                                           "height":  292,
+                                           "widthRatio":  0.7512,
+                                           "heightRatio":  0.4657,
+                                           "alphaPixels":  86094,
+                                           "leftAnchorY":  365.532,
+                                           "rightAnchorY":  374.285
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  65,
+                                           "y":  223,
+                                           "width":  473,
+                                           "height":  294,
+                                           "widthRatio":  0.7544,
+                                           "heightRatio":  0.4689,
+                                           "alphaPixels":  87011,
+                                           "leftAnchorY":  369.035,
+                                           "rightAnchorY":  377.34
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  99,
+                                           "y":  132,
+                                           "width":  469,
+                                           "height":  291,
+                                           "widthRatio":  0.748,
+                                           "heightRatio":  0.4641,
+                                           "alphaPixels":  86362,
+                                           "leftAnchorY":  277.823,
+                                           "rightAnchorY":  285.047
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  68,
+                                           "y":  131,
+                                           "width":  470,
+                                           "height":  292,
+                                           "widthRatio":  0.7496,
+                                           "heightRatio":  0.4657,
+                                           "alphaPixels":  86237,
+                                           "leftAnchorY":  277.806,
+                                           "rightAnchorY":  285.148
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-mistwhisker-loach_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  121,
+                                           "y":  262,
+                                           "width":  448,
+                                           "height":  235,
+                                           "widthRatio":  0.7145,
+                                           "heightRatio":  0.3748,
+                                           "alphaPixels":  60367,
+                                           "leftAnchorY":  361.902,
+                                           "rightAnchorY":  395.932
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  68,
+                                           "y":  294,
+                                           "width":  443,
+                                           "height":  203,
+                                           "widthRatio":  0.7065,
+                                           "heightRatio":  0.3238,
+                                           "alphaPixels":  57989,
+                                           "leftAnchorY":  373.896,
+                                           "rightAnchorY":  394.77
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  107,
+                                           "y":  208,
+                                           "width":  465,
+                                           "height":  199,
+                                           "widthRatio":  0.7416,
+                                           "heightRatio":  0.3174,
+                                           "alphaPixels":  58719,
+                                           "leftAnchorY":  312.8,
+                                           "rightAnchorY":  304.215
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  78,
+                                           "y":  179,
+                                           "width":  460,
+                                           "height":  234,
+                                           "widthRatio":  0.7337,
+                                           "heightRatio":  0.3732,
+                                           "alphaPixels":  62850,
+                                           "leftAnchorY":  276.111,
+                                           "rightAnchorY":  307.447
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-moonpillow-flounder_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  48,
+                                           "y":  213,
+                                           "width":  550,
+                                           "height":  316,
+                                           "widthRatio":  0.8772,
+                                           "heightRatio":  0.504,
+                                           "alphaPixels":  111024,
+                                           "leftAnchorY":  375.54,
+                                           "rightAnchorY":  376.678
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  37,
+                                           "y":  213,
+                                           "width":  550,
+                                           "height":  314,
+                                           "widthRatio":  0.8772,
+                                           "heightRatio":  0.5008,
+                                           "alphaPixels":  113273,
+                                           "leftAnchorY":  379.264,
+                                           "rightAnchorY":  376.475
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  44,
+                                           "y":  113,
+                                           "width":  554,
+                                           "height":  316,
+                                           "widthRatio":  0.8836,
+                                           "heightRatio":  0.504,
+                                           "alphaPixels":  111365,
+                                           "leftAnchorY":  276.928,
+                                           "rightAnchorY":  279.752
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  39,
+                                           "y":  113,
+                                           "width":  549,
+                                           "height":  316,
+                                           "widthRatio":  0.8756,
+                                           "heightRatio":  0.504,
+                                           "alphaPixels":  113049,
+                                           "leftAnchorY":  284.137,
+                                           "rightAnchorY":  279.031
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-moonspot-salamander_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  78,
+                                           "y":  219,
+                                           "width":  489,
+                                           "height":  321,
+                                           "widthRatio":  0.7799,
+                                           "heightRatio":  0.512,
+                                           "alphaPixels":  71278,
+                                           "leftAnchorY":  324.752,
+                                           "rightAnchorY":  392.857
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  87,
+                                           "y":  228,
+                                           "width":  478,
+                                           "height":  307,
+                                           "widthRatio":  0.7624,
+                                           "heightRatio":  0.4896,
+                                           "alphaPixels":  67073,
+                                           "leftAnchorY":  327.357,
+                                           "rightAnchorY":  392.248
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  79,
+                                           "y":  138,
+                                           "width":  488,
+                                           "height":  320,
+                                           "widthRatio":  0.7783,
+                                           "heightRatio":  0.5104,
+                                           "alphaPixels":  71484,
+                                           "leftAnchorY":  243.719,
+                                           "rightAnchorY":  311.302
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  85,
+                                           "y":  144,
+                                           "width":  486,
+                                           "height":  310,
+                                           "widthRatio":  0.7751,
+                                           "heightRatio":  0.4944,
+                                           "alphaPixels":  69493,
+                                           "leftAnchorY":  243.126,
+                                           "rightAnchorY":  312.661
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-postman-hermit_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  74,
+                                           "y":  139,
+                                           "width":  539,
+                                           "height":  412,
+                                           "widthRatio":  0.8596,
+                                           "heightRatio":  0.6571,
+                                           "alphaPixels":  142564,
+                                           "leftAnchorY":  345.542,
+                                           "rightAnchorY":  410.521
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  74,
+                                           "y":  139,
+                                           "width":  537,
+                                           "height":  423,
+                                           "widthRatio":  0.8565,
+                                           "heightRatio":  0.6746,
+                                           "alphaPixels":  141702,
+                                           "leftAnchorY":  343.995,
+                                           "rightAnchorY":  408.201
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  75,
+                                           "y":  130,
+                                           "width":  538,
+                                           "height":  415,
+                                           "widthRatio":  0.8581,
+                                           "heightRatio":  0.6619,
+                                           "alphaPixels":  140350,
+                                           "leftAnchorY":  337.569,
+                                           "rightAnchorY":  391.816
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  75,
+                                           "y":  130,
+                                           "width":  536,
+                                           "height":  422,
+                                           "widthRatio":  0.8549,
+                                           "heightRatio":  0.673,
+                                           "alphaPixels":  141365,
+                                           "leftAnchorY":  334.868,
+                                           "rightAnchorY":  399.487
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-sleeptalk-jellyfish_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  97,
+                                           "y":  161,
+                                           "width":  486,
+                                           "height":  406,
+                                           "widthRatio":  0.7751,
+                                           "heightRatio":  0.6475,
+                                           "alphaPixels":  120561,
+                                           "leftAnchorY":  428.792,
+                                           "rightAnchorY":  323.104
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  68,
+                                           "y":  159,
+                                           "width":  487,
+                                           "height":  415,
+                                           "widthRatio":  0.7767,
+                                           "heightRatio":  0.6619,
+                                           "alphaPixels":  122086,
+                                           "leftAnchorY":  384.364,
+                                           "rightAnchorY":  325.545
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  98,
+                                           "y":  89,
+                                           "width":  496,
+                                           "height":  410,
+                                           "widthRatio":  0.7911,
+                                           "heightRatio":  0.6539,
+                                           "alphaPixels":  121737,
+                                           "leftAnchorY":  337.593,
+                                           "rightAnchorY":  255.691
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  40,
+                                           "y":  94,
+                                           "width":  516,
+                                           "height":  405,
+                                           "widthRatio":  0.823,
+                                           "heightRatio":  0.6459,
+                                           "alphaPixels":  123187,
+                                           "leftAnchorY":  363.089,
+                                           "rightAnchorY":  258.693
+                                       }
+                                   ]
+                    }
+                ]
+}

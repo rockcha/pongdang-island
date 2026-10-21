@@ -1254,6 +1254,42 @@
       "travel_direction": "both"
     },
     {
+      "id": "bluegrove-bluecheek-filefish",
+      "kind": "fish",
+      "name": "푸른볼 쥐치",
+      "description": "동그란 볼에 푸른 물방울 무늬가 있는 쥐치. 작은 입을 오므리며 푸른골의 해초 사이를 헤엄친다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.82",
+      "speed": "0.028",
+      "size": 62,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/bluegrove-bluecheek-filefish_thumbnail.png",
+      "sell_price": 65,
+      "sprite_sheet_path": "fish/normal/bluegrove-bluecheek-filefish_sprite.png",
+      "native_region_id": "bluegrove",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "bluegrove-changryu-thousand-currents",
+      "kind": "fish",
+      "name": "천 개의 물살, 창류",
+      "description": "천 갈래 물살을 지느러미에 두른 푸른 해룡. 창류가 꼬리를 휘두르면 은빛 물고기 떼가 둥근 물길을 그린다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.82",
+      "speed": "0.018",
+      "size": 155,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/bluegrove-changryu-thousand-currents_thumbnail.png",
+      "sell_price": 3200,
+      "sprite_sheet_path": "fish/mythic/bluegrove-changryu-thousand-currents_sprite.png",
+      "native_region_id": "bluegrove",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "bluegrove-giant-seabass",
       "kind": "fish",
       "name": "푸른골 대왕농어",
@@ -1266,6 +1302,42 @@
       "thumbnail_path": "fish/rare/bluegrove-giant-seabass_thumbnail.png",
       "sell_price": 288,
       "sprite_sheet_path": "fish/rare/bluegrove-giant-seabass_sprite.png",
+      "native_region_id": "bluegrove",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "bluegrove-lost-ship-nameplate",
+      "kind": "trash",
+      "name": "돌아오지 못한 배의 명패",
+      "description": "돌아오지 못한 배의 이름을 품은 황동 명패. 따개비와 푸른 해초 사이로 오래된 글자의 흔적이 남아 있다.",
+      "swim_y_min": "0.65",
+      "swim_y_max": "0.82",
+      "speed": "0.012",
+      "size": 50,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/bluegrove-lost-ship-nameplate_thumbnail.png",
+      "sell_price": 22,
+      "sprite_sheet_path": null,
+      "native_region_id": "bluegrove",
+      "movement_type": "swim",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "bluegrove-sandsleep-flounder",
+      "kind": "fish",
+      "name": "모래잠 넙치",
+      "description": "모래빛 몸에 청록색 점이 흩어진 넙치. 물결 같은 지느러미를 펼치고 푸른골 바닥에서 느긋하게 쉰다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.82",
+      "speed": "0.028",
+      "size": 68,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/bluegrove-sandsleep-flounder_thumbnail.png",
+      "sell_price": 68,
+      "sprite_sheet_path": "fish/normal/bluegrove-sandsleep-flounder_sprite.png",
       "native_region_id": "bluegrove",
       "movement_type": "swim",
       "flip_with_direction": true,
@@ -1287,6 +1359,24 @@
       "native_region_id": "bluegrove",
       "movement_type": "swim",
       "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "bluegrove-waveworn-driftwood",
+      "kind": "trash",
+      "name": "물결 깎은 유목",
+      "description": "푸른골의 물결이 오랜 시간 매만진 유목. 매끈한 나뭇결에 작은 조개와 해초가 걸려 있다.",
+      "swim_y_min": "0.65",
+      "swim_y_max": "0.82",
+      "speed": "0.012",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/bluegrove-waveworn-driftwood_thumbnail.png",
+      "sell_price": 20,
+      "sprite_sheet_path": null,
+      "native_region_id": "bluegrove",
+      "movement_type": "swim",
+      "flip_with_direction": false,
       "travel_direction": "both"
     },
     {
@@ -2910,6 +3000,42 @@
       "travel_direction": "both"
     },
     {
+      "id": "lunea-dreamkeeper",
+      "kind": "fish",
+      "name": "루네아의 꿈지기",
+      "description": "이마의 달빛 보석과 별무늬 지느러미를 가진 은백색 가오리. 긴 날개를 펼쳐 잠든 루네아의 꿈을 감싸 준다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.82",
+      "speed": "0.022",
+      "size": 112,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/lunea-dreamkeeper_thumbnail.png",
+      "sell_price": 1200,
+      "sprite_sheet_path": "fish/epic/lunea-dreamkeeper_sprite.png",
+      "native_region_id": "mistmoon",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "lunea-mirrorscale",
+      "kind": "fish",
+      "name": "루네아의 거울비늘",
+      "description": "넓은 은빛 비늘에 달빛을 비추는 우아한 물고기. 루네아가 가까이 오면 온몸에 초승달의 잔상이 흐른다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.82",
+      "speed": "0.022",
+      "size": 110,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/lunea-mirrorscale_thumbnail.png",
+      "sell_price": 1280,
+      "sprite_sheet_path": "fish/epic/lunea-mirrorscale_sprite.png",
+      "native_region_id": "mistmoon",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "mammor-frozen-memory",
       "kind": "fish",
       "name": "얼어붙은 기억, 맘모르",
@@ -3159,6 +3285,132 @@
       "native_region_id": "mistmoon",
       "movement_type": "fixed",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "mistmoon-mistwhisker-loach",
+      "kind": "fish",
+      "name": "안개수염 미꾸리",
+      "description": "우윳빛 몸과 연보라 수염을 가진 통통한 미꾸리. 루네아가 쉬어 간 물길에서 수염을 살랑인다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.82",
+      "speed": "0.028",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mistmoon-mistwhisker-loach_thumbnail.png",
+      "sell_price": 66,
+      "sprite_sheet_path": "fish/normal/mistmoon-mistwhisker-loach_sprite.png",
+      "native_region_id": "mistmoon",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "mistmoon-moonletter-butterflyfish",
+      "kind": "fish",
+      "name": "달편지 나비고기",
+      "description": "접힌 편지 같은 지느러미와 초승달 봉인 무늬가 있는 나비고기. 루네아에게 전하지 못한 소원을 옮긴다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.82",
+      "speed": "0.028",
+      "size": 68,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/mistmoon-moonletter-butterflyfish_thumbnail.png",
+      "sell_price": 350,
+      "sprite_sheet_path": "fish/rare/mistmoon-moonletter-butterflyfish_sprite.png",
+      "native_region_id": "mistmoon",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "mistmoon-moonpillow-flounder",
+      "kind": "fish",
+      "name": "달베개 가자미",
+      "description": "작은 베개처럼 통통하고 납작한 연보라 가자미. 루네아가 잠들면 곁의 모래에 파고들어 함께 눈을 감는다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.82",
+      "speed": "0.028",
+      "size": 64,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mistmoon-moonpillow-flounder_thumbnail.png",
+      "sell_price": 68,
+      "sprite_sheet_path": "fish/normal/mistmoon-moonpillow-flounder_sprite.png",
+      "native_region_id": "mistmoon",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "mistmoon-moonspot-salamander",
+      "kind": "fish",
+      "name": "달점 도롱뇽",
+      "description": "남보라색 등에 작은 달무늬가 떠 있는 도롱뇽. 루네아의 달빛을 등에 모으고 조용한 물밑을 산책한다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.82",
+      "speed": "0.028",
+      "size": 65,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mistmoon-moonspot-salamander_thumbnail.png",
+      "sell_price": 70,
+      "sprite_sheet_path": "fish/normal/mistmoon-moonspot-salamander_sprite.png",
+      "native_region_id": "mistmoon",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "mistmoon-postman-hermit",
+      "kind": "fish",
+      "name": "안개 우체부 소라게",
+      "description": "초승달 자물쇠가 달린 우편함을 메고 다니는 소라게. 안개마을의 작은 편지를 루네아의 물길로 배달한다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.82",
+      "speed": "0.028",
+      "size": 62,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mistmoon-postman-hermit_thumbnail.png",
+      "sell_price": 72,
+      "sprite_sheet_path": "fish/normal/mistmoon-postman-hermit_sprite.png",
+      "native_region_id": "mistmoon",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "mistmoon-sleeptalk-jellyfish",
+      "kind": "fish",
+      "name": "잠꼬대 방울해파리",
+      "description": "수면모자 같은 갓을 쓴 작은 해파리. 루네아의 자장가를 들으며 촉수를 오므릴 때마다 희미한 달빛이 번진다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.82",
+      "speed": "0.028",
+      "size": 58,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mistmoon-sleeptalk-jellyfish_thumbnail.png",
+      "sell_price": 67,
+      "sprite_sheet_path": "fish/normal/mistmoon-sleeptalk-jellyfish_sprite.png",
+      "native_region_id": "mistmoon",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "mistmoon-yumyeon-moonrest",
+      "kind": "fish",
+      "name": "달을 베고 잠든, 유면",
+      "description": "은빛 달 갑옷과 긴 보라색 지느러미를 두른 물범 기사. 초승달을 베개 삼아 졸면서도 루네아 곁을 지킨다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.82",
+      "speed": "0.022",
+      "size": 108,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/mistmoon-yumyeon-moonrest_thumbnail.png",
+      "sell_price": 1250,
+      "sprite_sheet_path": "fish/epic/mistmoon-yumyeon-moonrest_sprite.png",
+      "native_region_id": "mistmoon",
+      "movement_type": "swim",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -5394,6 +5646,60 @@
       "travel_direction": "both"
     },
     {
+      "id": "shared-cheolgak-sunken-harbor",
+      "kind": "fish",
+      "name": "가라앉은 항구의 주인, 철각",
+      "description": "가라앉은 배의 갑옷과 닻 모양 집게를 가진 거대한 바닷가재. 잊힌 항구들의 기억을 싣고 모든 바다를 순회한다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.82",
+      "speed": "0.018",
+      "size": 150,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/shared-cheolgak-sunken-harbor_thumbnail.png",
+      "sell_price": 3300,
+      "sprite_sheet_path": "fish/mythic/shared-cheolgak-sunken-harbor_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-maru-returning-wave",
+      "kind": "fish",
+      "name": "돌아오는 파도, 마루",
+      "description": "등 위에 작은 파도가 끊임없이 밀려오는 진주빛 물범. 어느 바다에 놓아주어도 언젠가 다시 만난다고 한다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.82",
+      "speed": "0.018",
+      "size": 135,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/shared-maru-returning-wave_thumbnail.png",
+      "sell_price": 2950,
+      "sprite_sheet_path": "fish/mythic/shared-maru-returning-wave_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-yurion-bottled-sea",
+      "kind": "fish",
+      "name": "병 속의 바다, 유리온",
+      "description": "투명한 몸 안에 작은 섬과 바다를 품은 고래상어. 어느 해역에서 만나도 유리온의 몸속에는 따뜻한 파도가 친다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.82",
+      "speed": "0.018",
+      "size": 148,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/shared-yurion-bottled-sea_thumbnail.png",
+      "sell_price": 3100,
+      "sprite_sheet_path": "fish/mythic/shared-yurion-bottled-sea_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "shelljaw-placodus",
       "kind": "fish",
       "name": "조개턱 플라코두스",
@@ -7552,11 +7858,31 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "bluegrove-bluecheek-filefish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "bluegrove-changryu-thousand-currents",
+      "region_id": "bluegrove"
+    },
+    {
       "species_id": "bluegrove-giant-seabass",
       "region_id": "bluegrove"
     },
     {
+      "species_id": "bluegrove-lost-ship-nameplate",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "bluegrove-sandsleep-flounder",
+      "region_id": "bluegrove"
+    },
+    {
       "species_id": "bluegrove-spearfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "bluegrove-waveworn-driftwood",
       "region_id": "bluegrove"
     },
     {
@@ -8652,6 +8978,14 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "lunea-dreamkeeper",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "lunea-mirrorscale",
+      "region_id": "mistmoon"
+    },
+    {
       "species_id": "mammor-frozen-memory",
       "region_id": "whitenight"
     },
@@ -8821,6 +9155,34 @@
     },
     {
       "species_id": "mist-bell-windchime",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "mistmoon-mistwhisker-loach",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "mistmoon-moonletter-butterflyfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "mistmoon-moonpillow-flounder",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "mistmoon-moonspot-salamander",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "mistmoon-postman-hermit",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "mistmoon-sleeptalk-jellyfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "mistmoon-yumyeon-moonrest",
       "region_id": "mistmoon"
     },
     {
@@ -10494,6 +10856,150 @@
     {
       "species_id": "seila-white-sail-guardian",
       "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-cheolgak-sunken-harbor",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-cheolgak-sunken-harbor",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-cheolgak-sunken-harbor",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-cheolgak-sunken-harbor",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-cheolgak-sunken-harbor",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-cheolgak-sunken-harbor",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-cheolgak-sunken-harbor",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-cheolgak-sunken-harbor",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-cheolgak-sunken-harbor",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-cheolgak-sunken-harbor",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-cheolgak-sunken-harbor",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-cheolgak-sunken-harbor",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-maru-returning-wave",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-maru-returning-wave",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-maru-returning-wave",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-maru-returning-wave",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-maru-returning-wave",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-maru-returning-wave",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-maru-returning-wave",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-maru-returning-wave",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-maru-returning-wave",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-maru-returning-wave",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-maru-returning-wave",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-maru-returning-wave",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-yurion-bottled-sea",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-yurion-bottled-sea",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-yurion-bottled-sea",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-yurion-bottled-sea",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-yurion-bottled-sea",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-yurion-bottled-sea",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-yurion-bottled-sea",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-yurion-bottled-sea",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-yurion-bottled-sea",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-yurion-bottled-sea",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-yurion-bottled-sea",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-yurion-bottled-sea",
+      "region_id": "whitenight"
     },
     {
       "species_id": "shelljaw-placodus",
@@ -12732,6 +13238,246 @@
       "extra_metric": null,
       "extra_target": null,
       "sort_order": 204
+    },
+    {
+      "id": "intermediate-buffet-stamp",
+      "name": "바다 한 상 단골",
+      "tier": 2,
+      "category": "moment",
+      "description": "하루 동안 물고기·쓰레기·장식물을 모두 직접 잡은 날 5일 달성",
+      "metric": "challenge_buffet_days",
+      "target": 5,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2012
+    },
+    {
+      "id": "intermediate-cloud-snack",
+      "name": "구름 간식 단골",
+      "tier": 2,
+      "category": "moment",
+      "description": "솜구름 반죽으로 일반 물고기 80마리 직접 포획",
+      "metric": "challenge_cloud",
+      "target": 80,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2011
+    },
+    {
+      "id": "intermediate-crumb-talent",
+      "name": "부스러기도 재주껏",
+      "tier": 2,
+      "category": "moment",
+      "description": "조개 부스러기로 희귀 물고기 5마리 직접 포획",
+      "metric": "challenge_crumbs",
+      "target": 5,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2008
+    },
+    {
+      "id": "intermediate-epic-shelf",
+      "name": "특별한 수집 선반",
+      "tier": 2,
+      "category": "collection",
+      "description": "서로 다른 특급 물고기 8종을 직접 포획",
+      "metric": "challenge_epic_unique",
+      "target": 8,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2004
+    },
+    {
+      "id": "intermediate-familiar-face",
+      "name": "물고기도 안면이 있다",
+      "tier": 2,
+      "category": "collection",
+      "description": "같은 종의 물고기를 직접 낚시로 25마리 포획",
+      "metric": "challenge_same_fish",
+      "target": 25,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2001
+    },
+    {
+      "id": "intermediate-firefly-guest",
+      "name": "반딧불의 초대장",
+      "tier": 2,
+      "category": "moment",
+      "description": "반딧불 번데기로 특급 물고기 3마리 직접 포획",
+      "metric": "challenge_pupa",
+      "target": 3,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2009
+    },
+    {
+      "id": "intermediate-harbor-regular",
+      "name": "선착장의 익숙한 발걸음",
+      "tier": 2,
+      "category": "growth",
+      "description": "항구 조업 결과 30회 수령 완료",
+      "metric": "challenge_harbor",
+      "target": 30,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2015
+    },
+    {
+      "id": "intermediate-kind-neighbor",
+      "name": "이웃 바다의 든든한 손",
+      "tier": 2,
+      "category": "social",
+      "description": "친구 어항 돌보기 누적 15회와 친구 통발 물고기 유인 10회",
+      "metric": "care",
+      "target": 15,
+      "extra_metric": "tailwind",
+      "extra_target": 10,
+      "sort_order": 2017
+    },
+    {
+      "id": "intermediate-lightning-spark",
+      "name": "손끝에 작은 벼락",
+      "tier": 2,
+      "category": "moment",
+      "description": "벼락 별가루로 특급 물고기 3마리 직접 포획",
+      "metric": "challenge_lightning",
+      "target": 3,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2010
+    },
+    {
+      "id": "intermediate-merchant-trust",
+      "name": "상인이 기억하는 이름",
+      "tier": 2,
+      "category": "growth",
+      "description": "바다 상인의 의뢰 10건 납품 완료",
+      "metric": "challenge_deliveries",
+      "target": 10,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2013
+    },
+    {
+      "id": "intermediate-mythic-notes",
+      "name": "전설의 첫 페이지",
+      "tier": 2,
+      "category": "collection",
+      "description": "서로 다른 신화 물고기 3종을 직접 포획",
+      "metric": "challenge_mythic_unique",
+      "target": 3,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2005
+    },
+    {
+      "id": "intermediate-pocket-guide",
+      "name": "주머니 속 바다 도감",
+      "tier": 2,
+      "category": "collection",
+      "description": "서로 다른 물고기 40종을 직접 낚시로 포획",
+      "metric": "challenge_unique",
+      "target": 40,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2002
+    },
+    {
+      "id": "intermediate-rare-eye",
+      "name": "제법 귀한 눈썰미",
+      "tier": 2,
+      "category": "collection",
+      "description": "서로 다른 희귀 물고기 15종을 직접 포획",
+      "metric": "challenge_rare_unique",
+      "target": 15,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2003
+    },
+    {
+      "id": "intermediate-sea-arranger",
+      "name": "바다를 가꾸는 취미",
+      "tier": 2,
+      "category": "growth",
+      "description": "쓰레기 포획 누적 50회와 장식물 포획 누적 25회",
+      "metric": "trash",
+      "target": 50,
+      "extra_metric": "decor",
+      "extra_target": 25,
+      "sort_order": 2018
+    },
+    {
+      "id": "intermediate-sea-routine",
+      "name": "바다가 일상이 된",
+      "tier": 2,
+      "category": "growth",
+      "description": "서로 다른 한국 날짜 14일에 직접 낚시하기",
+      "metric": "challenge_days",
+      "target": 14,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2000
+    },
+    {
+      "id": "intermediate-steady-explorer",
+      "name": "손맛도 취향도 제법",
+      "tier": 2,
+      "category": "growth",
+      "description": "직접 낚시 300회와 서로 다른 물고기 20종 직접 포획",
+      "metric": "challenge_manual",
+      "target": 300,
+      "extra_metric": "challenge_unique",
+      "extra_target": 20,
+      "sort_order": 2016
+    },
+    {
+      "id": "intermediate-three-seas",
+      "name": "세 바다의 별을 따라",
+      "tier": 2,
+      "category": "collection",
+      "description": "서로 다른 해역 3곳에서 신화 물고기를 직접 포획",
+      "metric": "challenge_mythic_seas",
+      "target": 3,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2006
+    },
+    {
+      "id": "intermediate-two-flavors",
+      "name": "전설도 취향이 있대요",
+      "tier": 2,
+      "category": "collection",
+      "description": "서로 다른 미끼 2종으로 신화 물고기를 직접 포획",
+      "metric": "challenge_mythic_baits",
+      "target": 2,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2007
+    },
+    {
+      "id": "intermediate-varied-parcel",
+      "name": "꾸러미마다 다른 바다",
+      "tier": 2,
+      "category": "collection",
+      "description": "바다 상인에게 서로 다른 개체 10종 납품 완료",
+      "metric": "challenge_delivery_species",
+      "target": 10,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 2014
+    },
+    {
+      "id": "intermediate-weekly-journal",
+      "name": "일주일의 바다 수첩",
+      "tier": 2,
+      "category": "growth",
+      "description": "일일 퀘스트 전체 완료 보상 수령 누적 7일과 서로 다른 한국 날짜 7일에 직접 낚시",
+      "metric": "quest",
+      "target": 7,
+      "extra_metric": "challenge_days",
+      "extra_target": 7,
+      "sort_order": 2019
     },
     {
       "id": "last-bite",

@@ -1,0 +1,409 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261021-050000/fish/normal/bluegrove-bluecheek-filefish_sprite.png",
+        "storage_path":  "fish/normal/bluegrove-bluecheek-filefish_sprite.png",
+        "patch":  [
+                      451,
+                      245,
+                      94,
+                      94
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -19,
+                           "dy":  -2,
+                           "rmse":  22.827574903297663
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  6,
+                           "dy":  -36,
+                           "rmse":  27.979654242004955
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -15,
+                           "dy":  -35,
+                           "rmse":  24.378915994448516
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261021-050000/fish/normal/bluegrove-sandsleep-flounder_sprite.png",
+        "storage_path":  "fish/normal/bluegrove-sandsleep-flounder_sprite.png",
+        "patch":  [
+                      451,
+                      295,
+                      94,
+                      88
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -33,
+                           "dy":  1,
+                           "rmse":  37.504632008091349
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -2,
+                           "dy":  -90,
+                           "rmse":  30.868940487333731
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -32,
+                           "dy":  -90,
+                           "rmse":  32.177751224423858
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-mistwhisker-loach_sprite.png",
+        "storage_path":  "fish/normal/mistmoon-mistwhisker-loach_sprite.png",
+        "patch":  [
+                      451,
+                      314,
+                      94,
+                      88
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -57,
+                           "dy":  -1,
+                           "rmse":  22.025385984927915
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -93,
+                           "rmse":  40.045730739477278
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -32,
+                           "dy":  -89,
+                           "rmse":  32.879720432622172
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-moonspot-salamander_sprite.png",
+        "storage_path":  "fish/normal/mistmoon-moonspot-salamander_sprite.png",
+        "patch":  [
+                      451,
+                      314,
+                      94,
+                      88
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  1,
+                           "rmse":  37.930722768354016
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -80,
+                           "rmse":  15.567299406474163
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  4,
+                           "dy":  -79,
+                           "rmse":  22.188413095029478
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-postman-hermit_sprite.png",
+        "storage_path":  "fish/normal/mistmoon-postman-hermit_sprite.png",
+        "patch":  [
+                      414,
+                      307,
+                      94,
+                      88
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  9.6145201555434259
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -10,
+                           "rmse":  19.918126262593983
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -10,
+                           "rmse":  20.860896798808643
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261021-050000/fish/rare/mistmoon-moonletter-butterflyfish_sprite.png",
+        "storage_path":  "fish/rare/mistmoon-moonletter-butterflyfish_sprite.png",
+        "patch":  [
+                      489,
+                      326,
+                      82,
+                      88
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -65,
+                           "dy":  0,
+                           "rmse":  19.192515333751125
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -88,
+                           "rmse":  28.406598241915237
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -64,
+                           "dy":  -85,
+                           "rmse":  41.78300592804294
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-moonpillow-flounder_sprite.png",
+        "storage_path":  "fish/normal/mistmoon-moonpillow-flounder_sprite.png",
+        "patch":  [
+                      439,
+                      307,
+                      94,
+                      88
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -10,
+                           "dy":  0,
+                           "rmse":  6.58318868828219
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -96,
+                           "rmse":  11.787946513414806
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -8,
+                           "dy":  -96,
+                           "rmse":  12.654220693333064
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-sleeptalk-jellyfish_sprite.png",
+        "storage_path":  "fish/normal/mistmoon-sleeptalk-jellyfish_sprite.png",
+        "patch":  [
+                      414,
+                      301,
+                      94,
+                      88
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -30,
+                           "dy":  -2,
+                           "rmse":  11.839376391235026
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  9,
+                           "dy":  -71,
+                           "rmse":  12.582415805400805
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -28,
+                           "dy":  -67,
+                           "rmse":  9.63180225001185
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261021-050000/fish/epic/mistmoon-yumyeon-moonrest_sprite.png",
+        "storage_path":  "fish/epic/mistmoon-yumyeon-moonrest_sprite.png",
+        "patch":  [
+                      458,
+                      320,
+                      82,
+                      88
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -15,
+                           "dy":  -1,
+                           "rmse":  16.2876888681071
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -70,
+                           "rmse":  16.947279687568276
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -11,
+                           "dy":  -70,
+                           "rmse":  19.971858962579805
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261021-050000/fish/epic/lunea-dreamkeeper_sprite.png",
+        "storage_path":  "fish/epic/lunea-dreamkeeper_sprite.png",
+        "patch":  [
+                      451,
+                      357,
+                      82,
+                      88
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  22.913938328577743
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -52,
+                           "rmse":  18.233275191129838
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  -52,
+                           "rmse":  24.290068944827176
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261021-050000/fish/epic/lunea-mirrorscale_sprite.png",
+        "storage_path":  "fish/epic/lunea-mirrorscale_sprite.png",
+        "patch":  [
+                      458,
+                      351,
+                      82,
+                      88
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -25,
+                           "dy":  1,
+                           "rmse":  15.458788711231275
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -59,
+                           "rmse":  15.766236369081305
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -23,
+                           "dy":  -59,
+                           "rmse":  17.833245218874112
+                       }
+                   ]
+    }
+]

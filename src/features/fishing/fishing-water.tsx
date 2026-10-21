@@ -36,6 +36,7 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
   const observer=new ResizeObserver(measure);observer.observe(element);return()=>observer.disconnect()
  },[])
  const bottom=sceneHeight-380
+ const fishingLift=24
  const canBite=game.failureAt===undefined
  const t=reduced?0:visual.time,waiting=game.phase==='waiting',won=game.phase==='won',lost=game.phase==='lost',surge=active&&canBite&&mood==='surge'&&!waiting&&!lost&&!won,warning=active&&canBite&&mood==='warning'&&!waiting&&!lost&&!won
  const tug=surge?Math.min(1,fishForce(game.time,game.seed,game.rarity)/(fishStrength[game.rarity].surge*.48)):0
@@ -46,8 +47,8 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
  const bend=fighting?Math.min(1,(surge?.2+tug*.45:warning?.35:.1)+(pulling?.2:0)+tension*.15):0
  const recoil=Math.sin(t*19)*motionTug*3.5
  const lift=won?(reduced?1:1-Math.pow(1-end,3)):0
- const tip={x:263+bend*28+recoil-lift*62,y:112+bend*56-lift*65-(active&&waiting&&!reduced&&game.time<.85?Math.sin(game.time/.85*Math.PI)*50:0)}
- const baseY=329+bottom
+ const tip={x:263+bend*28+recoil-lift*62,y:112-fishingLift+bend*56-lift*65-(active&&waiting&&!reduced&&game.time<.85?Math.sin(game.time/.85*Math.PI)*50:0)}
+ const baseY=329+bottom-fishingLift
  const rodPath=`M303 ${baseY} C${303+(tip.x-303)*.33+bend*65} ${baseY+(tip.y-baseY)*.33},${303+(tip.x-303)*.7+bend*100} ${baseY+(tip.y-baseY)*.7-bend*30},${tip.x} ${tip.y}`
  const cast=active&&waiting?Math.min(1,game.time/.85):1
  const casting=active&&waiting&&cast<1
@@ -63,7 +64,7 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
  const bobScale=active?.62+game.progress*.38:1
  const platformHeight=Math.max(160,Math.min(220,sceneHeight*.32))
  const platformY=sceneHeight-platformHeight+10
- const nearWater=Math.min(sceneHeight*(sceneryOverlay?.58:.42),platformY-(sceneryOverlay?70:117))
+ const nearWater=Math.min(sceneHeight*(sceneryOverlay?.58:.42),platformY-(sceneryOverlay?70:117))-fishingLift
  const bobY=nearWater+(active?(game.progress-.5)*28:0)+(waiting?Math.sin(t*2)*1.4:0)+motionTug*5+(won?-lift*138:0)
  const bx=tip.x+(bobX-tip.x)*cast,by=tip.y+(bobY-tip.y)*cast-(casting?Math.sin(cast*Math.PI)*85:0)
  const fx=200+Math.sin(t*1.5)*12+(scouting?(game.seed%2?1:-1)*(1-behavior.progress)*85:0)+Math.sin(behavior.progress*Math.PI)*motionTug*30+(!canBite?(reduced?0:escapeProgress*180):lost?end*155:0)
@@ -128,7 +129,7 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
   <path d={rodPath} fill="none" stroke="#102b42" strokeWidth={rodShaftOutlineWidth(rod?.id)} strokeLinecap="round"/>
   <path d={rodPath} fill="none" data-equipped-rod={rod?.id??"basic"} stroke={rod&&rod.id!=="basic"?rod.color:"#97c8d2"} strokeWidth="2.3" strokeLinecap="round"/>
   {hasRodSkin(rod?.id)&&<RodSkinShaft id={rod!.id} path={rodPath}/>}
-  <g transform={`translate(0 ${bottom-62})`}><path d="M303 392l-27-52" stroke={rod?.color??"#76503a"} strokeWidth="13" strokeLinecap="round"/>
+  <g transform={`translate(0 ${bottom-62-fishingLift})`}><path d="M303 392l-27-52" stroke={rod?.color??"#76503a"} strokeWidth="13" strokeLinecap="round"/>
   {rod?.id==='mukhyang'&&<g transform={`translate(${tip.x} ${tip.y})`}><path d="M-3 6Q-8-1 0-15Q7-3 3 6Z" fill="#293b35"/><path d="M0-13V4" stroke="#8eaaa0" strokeWidth=".7"/></g>}
   <path d="M299 382l-18-34" stroke={rod&&rod.id!=="basic"?rod.accent:"#c89c6e"} strokeWidth="7" strokeLinecap="round"/>
   {(hasRodSkin(rod?.id)||hasRodImages(rod?.id))?<><g transform="translate(283 344)"><RodSkinGrip id={rod!.id}/></g><g transform="translate(282 358) scale(.4)"><RodSkinFrame id={rod!.id}/><g transform={`rotate(${reduced?0:visual.reel})`}><RodSkinRotor id={rod!.id}/></g></g></>:<>  <g transform={`translate(282 358) rotate(${reduced?0:visual.reel})`}><circle r="12" fill={rod&&rod.id!=="basic"?rod.color:"#183b53"} stroke={rod&&rod.id!=="basic"?rod.accent:"#abc7ce"} strokeWidth="2"/><path d="M-8 0H8M0-8V8" stroke="#abc7ce" strokeWidth="2"/><circle r="4" fill={rod?.accent??"#d7b388"}/><circle cx="8" cy="0" r="3" fill="#d7b388"/></g></>}

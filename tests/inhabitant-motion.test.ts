@@ -24,7 +24,7 @@ it('keeps mythics visibly larger on mobile in both swimming and placed poses',()
  }
 })
 it('animates fixed Mukhyang living creatures without moving their placed base',()=>{
- for(const id of ['muk-inkstone-clam','muk-inkstone-home-octopus']){
+ for(const id of ['muk-inkstone-clam','muk-inkstone-home-octopus','pleated-skirt-sea-squirt']){
   const living=item()
   living.species={...living.species,id,movement_type:'fixed',swim_y_min:.84,swim_y_max:.94}
   const motion=new InhabitantMotion(living)
@@ -145,4 +145,17 @@ it('holds a newly selected swimmer without recursive initialization and resumes 
  expect(resumed.x).toBeCloseTo(first.x)
  expect(resumed.y).toBeCloseTo(first.y)
  expect(Number.isFinite(motion.update(12,.016,400,600).x)).toBe(true)
+})
+
+it('holds the megalodon in place during its fossil jaw action and resumes afterward',()=>{
+ const creature=item()
+ creature.species={...creature.species,id:'extinction-defying-megalodon',rarity:'mythic',movement_type:'swim'}
+ const motion=new InhabitantMotion(creature)
+ const start={...motion.update(4.3,.016,400,600)}
+ const held={...motion.update(5,.016,400,600)}
+ expect(held.x).toBe(start.x)
+ expect(held.y).toBe(start.y)
+ expect(held.direction).toBe(start.direction)
+ const resumed=motion.update(5.8,.016,400,600)
+ expect(resumed.x===held.x&&resumed.y===held.y).toBe(false)
 })

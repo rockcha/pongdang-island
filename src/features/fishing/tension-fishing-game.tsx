@@ -64,9 +64,9 @@ export function TensionFishingGame({onCaught,active=true,paused=false,regionId='
  return <div role="group" aria-label="낚시터" className="relative h-full min-h-0 w-full">
    <div className="absolute inset-0 overflow-hidden bg-[#123c68]">
     <div className="absolute -inset-1" style={{transform:sceneMotion}}>
-     <div data-fishing-camera="front" aria-hidden={active} className="absolute inset-0 transition-opacity duration-300 motion-reduce:transition-none" style={{opacity:active?0:1}}><FishingStandby regionId={regionId}/></div>
-     <div data-fishing-camera="top" aria-hidden={!active} className="absolute inset-0 transition-opacity duration-300 motion-reduce:transition-none" style={{opacity:active?1:0}}>
-     <FishingWater showGauge={active&&!plannedFailure&&game.phase==='playing'} baitImage={baitImage} rod={rod} game={game} visual={visual} mood={behavior.mood} active={active} reduced={reduced} regionId={regionId} regionName={regionName} pulling={pressed} label={quiet||(active&&plannedFailure)?undefined:label} outline={outline}/>
+     <div data-fishing-camera="front" className="absolute inset-0"><FishingStandby regionId={regionId}/></div>
+     <div data-fishing-effects="true" aria-hidden={!active} className="absolute inset-0 transition-opacity duration-300 motion-reduce:transition-none" style={{opacity:active?1:0}}>
+     <FishingWater sceneryOverlay showGauge={active&&!plannedFailure&&game.phase==='playing'} baitImage={baitImage} rod={rod} game={game} visual={visual} mood={behavior.mood} active={active} reduced={reduced} regionId={regionId} regionName={regionName} pulling={pressed} label={quiet||(active&&plannedFailure)?undefined:label} outline={outline}/>
      </div>
     </div>
     {active&&!plannedFailure&&!waiting&&!lost&&!won&&<div className="pointer-events-none absolute inset-0 transition-opacity duration-200" style={{opacity:Math.max(0,(visual.tension-85)/15,(20-visual.tension)/20),boxShadow:'inset 0 0 65px #f3a77966'}} aria-hidden="true"/>}

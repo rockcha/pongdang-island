@@ -1,0 +1,84 @@
+{
+  "generator": "image_gen",
+  "status": "local-ready",
+  "remote_database_applied": false,
+  "reference": "assets/storage-upload/new/20261021-115454/decorations/mythic/{species-id}_thumbnail.png",
+  "entries": [
+    {
+      "id": "surface-seeking-beanstalk",
+      "type": "sprite",
+      "rarity": "epic",
+      "source": "assets/references/animated-decorations/surface-seeking-beanstalk_sprite.png",
+      "storage_path": "decorations/epic/surface-seeking-beanstalk_animated-v1_sprite.png",
+      "prompt": "Production transparent PNG animation sheet, EXACTLY TWO columns and TWO rows, FOUR equal SQUARE cells. Match the reference object exactly, same soft painted fantasy material and design. Full tall decoration in EVERY cell, same roots/base location, same rock/rigid trunk proportions and scale, fixed camera, NO whole object translation, resizing, rotation, opacity flashing. Object plus effects occupies only 60-65% of each cell, centered with very generous transparent gutters so no leaf or droplet crosses a cell boundary. Animate a growing breathing aquatic beanstalk: four successive loop poses of the top curled tendril unfurling and curling, leaves gently bending at their stems in the current, large dew drops leaving lower leaves and drifting upward to upper leaves, then new drops gathering. Keep roots and main woody spiral trunk absolutely identical and fixed across all poses. Real anatomical leaf/tendril deformation, not only glow. No borders, labels, cell outlines, words, checkerboard, background or additional objects. Actual alpha transparency. Smooth loop top-left top-right bottom-left bottom-right.",
+      "reference_role": "same object identity, fixed base and painting style",
+      "generation_output": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-efb40fae-44d7-45c2-832d-793b7a7a98dd.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "cb525ea06bdf877c75bc5bfdfde651db05a07a6f20c4adbd74508a8a4793ec88",
+      "review": {
+        "framing": "four complete poses with transparent gutters; base registered without frame scaling",
+        "style": "preserves approved fantasy paint",
+        "motion": "tendril unfurling, leaf flex and rising dew"
+      }
+    },
+    {
+      "id": "upward-sinking-waterfall",
+      "type": "sprite",
+      "rarity": "epic",
+      "source": "assets/references/animated-decorations/upward-sinking-waterfall_sprite.png",
+      "storage_path": "decorations/epic/upward-sinking-waterfall_animated-v1_sprite.png",
+      "prompt": "Production transparent PNG animation sheet, EXACTLY TWO columns and TWO rows, FOUR equal SQUARE cells. Match the reference object exactly, same soft painted fantasy material and design. Full tall decoration in EVERY cell, same roots/base location, same rock/rigid trunk proportions and scale, fixed camera, NO whole object translation, resizing, rotation, opacity flashing. Object plus effects occupies only 60-65% of each cell, centered with very generous transparent gutters so no leaf or droplet crosses a cell boundary. Animate an impossible UPWARD waterfall: four successive loop phases of a stream accelerating from the bottom pool up between the two stone pillars, distinct curving water ribbons and bubble clusters rising to the top and bursting into droplets, with small pool ripples replenishing at the base. Keep both stone pillars and basin absolutely identical and fixed in all four poses. Water visibly moves UP, not conventional downward waterfall. No global opacity changes. No borders, labels, cell outlines, words, checkerboard, background or additional objects. Actual alpha transparency. Smooth loop top-left top-right bottom-left bottom-right.",
+      "reference_role": "same object identity, fixed base and painting style",
+      "generation_output": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-8e2b2280-8f5c-4727-b872-d20eb5f40b1b.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "b1db2cb06b95021ca62fb0ca43d74da001e76317413808e9d6409228ffebf56b",
+      "review": {
+        "framing": "four complete poses with transparent gutters; base registered without frame scaling",
+        "style": "preserves approved fantasy paint",
+        "motion": "upward ribbons, bubble transport and replenishing pool ripples"
+      }
+    },
+    {
+      "id": "surface-seeking-beanstalk",
+      "type": "thumbnail",
+      "rarity": "epic",
+      "source": "assets/storage-upload/new/20261021-115454/decorations/mythic/surface-seeking-beanstalk_thumbnail.png",
+      "storage_path": "decorations/epic/surface-seeking-beanstalk_thumbnail.png",
+      "reference_role": "preserved existing thumbnail; grade path changed",
+      "prompt": "Preserve previously approved thumbnail without regenerating.",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "9f0a5f0a2119ee606c7bbfc22770dad62e3ea099bf6f2a10687e42baad31835a",
+      "review": {
+        "framing": "four complete poses with transparent gutters; base registered without frame scaling",
+        "style": "preserves approved fantasy paint",
+        "motion": "tendril unfurling, leaf flex and rising dew"
+      }
+    },
+    {
+      "id": "upward-sinking-waterfall",
+      "type": "thumbnail",
+      "rarity": "epic",
+      "source": "assets/storage-upload/new/20261021-115454/decorations/mythic/upward-sinking-waterfall_thumbnail.png",
+      "storage_path": "decorations/epic/upward-sinking-waterfall_thumbnail.png",
+      "reference_role": "preserved existing thumbnail; grade path changed",
+      "prompt": "Preserve previously approved thumbnail without regenerating.",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "a9c2712c249371a5cdffb140c2caf8be0efc0f9480fb22bf57d8898af58d0bc3",
+      "review": {
+        "framing": "four complete poses with transparent gutters; base registered without frame scaling",
+        "style": "preserves approved fantasy paint",
+        "motion": "upward ribbons, bubble transport and replenishing pool ripples"
+      }
+    }
+  ],
+  "storageVerification": {
+    "project": "ewafafphiovbpjwogwzn.supabase.co",
+    "checkedAt": "2026-10-21T03:36:22.011Z",
+    "count": 4,
+    "allSha256Match": true
+  }
+}

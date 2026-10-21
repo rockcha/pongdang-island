@@ -1,4 +1,5 @@
 import sharedCreatureLayouts from './shared-creature-frame-layouts.json'
+import sharedCollectibleLayouts from './shared-collectible-frame-layouts.json'
 import dreamabyssLayouts from './dreamabyss-frame-layouts.json'
 import pongdangLayouts from './pongdang-frame-layouts.json'
 import scrapisleLayouts from './scrapisle-frame-layouts.json'
@@ -9,7 +10,7 @@ import whitenightLayouts from './whitenight-frame-layouts.json'
 import mukhyangLayouts from './mukhyang-frame-layouts.json'
 import sirenLayouts from './siren-frame-layouts.json'
 import reviewedLayouts from './reviewed-frame-layouts.json'
-const registeredLayouts:Record<string,{cell:number;scale?:number;shifts:number[][]}>={...dreamabyssLayouts,...sharedCreatureLayouts,...pongdangLayouts,...bluegroveLayouts,...primalLayouts,...whitenightLayouts,...cloudferryLayouts,...scrapisleLayouts,...mukhyangLayouts,...sirenLayouts}
+const registeredLayouts:Record<string,{cell:number;scale?:number;shifts:number[][]}>={...dreamabyssLayouts,...sharedCreatureLayouts,...sharedCollectibleLayouts,...pongdangLayouts,...bluegroveLayouts,...primalLayouts,...whitenightLayouts,...cloudferryLayouts,...scrapisleLayouts,...mukhyangLayouts,...sirenLayouts}
 // Frame registration measured from each sheet's rigid head/body (or nautilus shell).
 // Coordinates are in a 96x96 sampling grid, relative to each frame's center.
 const layouts:Record<string,readonly (readonly [number,number,number])[]>={

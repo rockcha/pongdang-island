@@ -1,0 +1,124 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261021-115454/fish/mythic/never-return-ghost-ship_sprite.png",
+        "storage_path":  "fish/mythic/never-return-ghost-ship_swim8_sprite.png",
+        "patch":  [
+                      220,
+                      305,
+                      65,
+                      45
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -7,
+                           "dy":  10,
+                           "rmse":  25.691688904933418
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -12,
+                           "dy":  10,
+                           "rmse":  21.389019414530239
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -5,
+                           "dy":  10,
+                           "rmse":  20.980221566268003
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  8,
+                           "dy":  16,
+                           "rmse":  42.955782409638893
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  11,
+                           "dy":  6,
+                           "rmse":  44.016543033342138
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  14,
+                           "dy":  19,
+                           "rmse":  42.3657862960768
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  11,
+                           "dy":  26,
+                           "rmse":  45.679549167228132
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261021-115454/fish/mythic/extinction-defying-megalodon_sprite.png",
+        "storage_path":  "fish/mythic/extinction-defying-megalodon_swim8_sprite.png",
+        "patch":  [
+                      240,
+                      250,
+                      65,
+                      45
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -14,
+                           "dy":  0,
+                           "rmse":  32.304434914598261
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -4,
+                           "dy":  -2,
+                           "rmse":  30.512888483989247
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  9,
+                           "dy":  4,
+                           "rmse":  33.775966441997028
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  -17,
+                           "dy":  -1,
+                           "rmse":  33.8075995580696
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -30,
+                           "dy":  -1,
+                           "rmse":  31.675293880629464
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -19,
+                           "dy":  -7,
+                           "rmse":  29.846183959925209
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -20,
+                           "dy":  -3,
+                           "rmse":  35.329027038897515
+                       }
+                   ]
+    }
+]

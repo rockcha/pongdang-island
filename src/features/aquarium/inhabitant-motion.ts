@@ -12,6 +12,7 @@ export class InhabitantMotion {
   private mirrored = false
   private placed = false
   private initialized = false
+  private mythicHolding = false
   pose = { x: 0, y: 0, size: 0, direction: 1, angle: 0, frame: 0 }
   item: OwnedCollectible
   private born: number
@@ -122,7 +123,7 @@ export class InhabitantMotion {
       const geometry=decorationGeometry(this.item,width,height)
       x = geometry.margin+(this.item.position_x ?? (.2 + seed * .6))*geometry.w
       y = geometry.margin+(this.item.position_y ?? (s.id==='siren-scylla-tentacle'?.32:s.kind==='fish'?(Number(s.swim_y_min??.2)+Number(s.swim_y_max??.8))/2:.86))*geometry.h
-      this.pose={x,y,size:geometry.size,direction:1,angle:geometry.angle,frame:!reduced&&!this.item.editing&&(s.idle_animated||s.id==='scrap-thimble-barnacle'||s.id==='muk-inkstone-clam'||s.id==='muk-inkstone-home-octopus')?Math.floor(time*1.2)%4:0}
+      this.pose={x,y,size:geometry.size,direction:1,angle:geometry.angle,frame:!reduced&&!this.item.editing&&(s.idle_animated||s.id==='pleated-skirt-sea-squirt'||s.id==='scrap-thimble-barnacle'||s.id==='muk-inkstone-clam'||s.id==='muk-inkstone-home-octopus')?Math.floor(time*1.2)%4:0}
       return this.pose
     }
     const settings=movementSettings(s)
@@ -165,6 +166,13 @@ export class InhabitantMotion {
         const baseX = x, baseY = y
         x = Math.max(0, Math.min(w, x + this.offset.x))
         y = Math.max((this.placed?0:low) * h, Math.min((this.placed?1:high) * h, y + this.offset.y))
+        const phase=((now+seed)%6+6)%6
+        const holding=s.id==='extinction-defying-megalodon'&&!reduced&&!this.escape&&phase>=4.2&&phase<5.55
+        if(holding&&this.mythicHolding){x=this.pose.x;y=this.pose.y;direction=this.pose.direction}
+        this.mythicHolding=holding
+        if(s.id==='never-return-ghost-ship'&&!reduced&&!this.escape&&phase>=5.4){
+          x=Math.max(0,Math.min(w,x+direction*Math.min(delta,.1)*18))
+        }
         this.offset = { x: x - baseX, y: y - baseY }
       }
       if (s.kind === 'trash') angle = time * 25 + seed * 360

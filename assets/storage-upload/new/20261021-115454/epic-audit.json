@@ -1,0 +1,120 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261021-115454/fish/epic/borrowed-body-shoal_sprite.png",
+                        "width":  1024,
+                        "height":  1024,
+                        "cellWidth":  512,
+                        "cellHeight":  512,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  47,
+                                           "y":  127,
+                                           "width":  425,
+                                           "height":  267,
+                                           "widthRatio":  0.8301,
+                                           "heightRatio":  0.5215,
+                                           "alphaPixels":  48830,
+                                           "leftAnchorY":  259.412,
+                                           "rightAnchorY":  258.699
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  41,
+                                           "y":  130,
+                                           "width":  418,
+                                           "height":  265,
+                                           "widthRatio":  0.8164,
+                                           "heightRatio":  0.5176,
+                                           "alphaPixels":  51840,
+                                           "leftAnchorY":  266.142,
+                                           "rightAnchorY":  274.911
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  52,
+                                           "y":  118,
+                                           "width":  418,
+                                           "height":  271,
+                                           "widthRatio":  0.8164,
+                                           "heightRatio":  0.5293,
+                                           "alphaPixels":  52786,
+                                           "leftAnchorY":  249.865,
+                                           "rightAnchorY":  258.927
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  53,
+                                           "y":  118,
+                                           "width":  411,
+                                           "height":  273,
+                                           "widthRatio":  0.8027,
+                                           "heightRatio":  0.5332,
+                                           "alphaPixels":  52414,
+                                           "leftAnchorY":  249.012,
+                                           "rightAnchorY":  259.876
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261021-115454/fish/epic/hourglass-sea-cucumber_sprite.png",
+                        "width":  1024,
+                        "height":  1024,
+                        "cellWidth":  512,
+                        "cellHeight":  512,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  43,
+                                           "y":  184,
+                                           "width":  428,
+                                           "height":  186,
+                                           "widthRatio":  0.8359,
+                                           "heightRatio":  0.3633,
+                                           "alphaPixels":  47184,
+                                           "leftAnchorY":  272.502,
+                                           "rightAnchorY":  297.602
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  51,
+                                           "y":  186,
+                                           "width":  419,
+                                           "height":  192,
+                                           "widthRatio":  0.8184,
+                                           "heightRatio":  0.375,
+                                           "alphaPixels":  47525,
+                                           "leftAnchorY":  273.984,
+                                           "rightAnchorY":  302.966
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  52,
+                                           "y":  135,
+                                           "width":  420,
+                                           "height":  215,
+                                           "widthRatio":  0.8203,
+                                           "heightRatio":  0.4199,
+                                           "alphaPixels":  50438,
+                                           "leftAnchorY":  229.001,
+                                           "rightAnchorY":  276.39
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  41,
+                                           "y":  145,
+                                           "width":  428,
+                                           "height":  207,
+                                           "widthRatio":  0.8359,
+                                           "heightRatio":  0.4043,
+                                           "alphaPixels":  50064,
+                                           "leftAnchorY":  241.583,
+                                           "rightAnchorY":  278.059
+                                       }
+                                   ]
+                    }
+                ]
+}

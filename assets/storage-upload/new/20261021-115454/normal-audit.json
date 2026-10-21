@@ -1,0 +1,177 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261021-115454/fish/normal/acorn-cheek-puffer_sprite.png",
+                        "width":  1024,
+                        "height":  1024,
+                        "cellWidth":  512,
+                        "cellHeight":  512,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  43,
+                                           "y":  116,
+                                           "width":  429,
+                                           "height":  317,
+                                           "widthRatio":  0.8379,
+                                           "heightRatio":  0.6191,
+                                           "alphaPixels":  84838,
+                                           "leftAnchorY":  295.323,
+                                           "rightAnchorY":  275.516
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  41,
+                                           "y":  116,
+                                           "width":  429,
+                                           "height":  318,
+                                           "widthRatio":  0.8379,
+                                           "heightRatio":  0.6211,
+                                           "alphaPixels":  85042,
+                                           "leftAnchorY":  298.142,
+                                           "rightAnchorY":  273.975
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  41,
+                                           "y":  78,
+                                           "width":  431,
+                                           "height":  317,
+                                           "widthRatio":  0.8418,
+                                           "heightRatio":  0.6191,
+                                           "alphaPixels":  85292,
+                                           "leftAnchorY":  254.114,
+                                           "rightAnchorY":  236.826
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  41,
+                                           "y":  78,
+                                           "width":  429,
+                                           "height":  315,
+                                           "widthRatio":  0.8379,
+                                           "heightRatio":  0.6152,
+                                           "alphaPixels":  85234,
+                                           "leftAnchorY":  256.017,
+                                           "rightAnchorY":  235.932
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261021-115454/fish/normal/fluffy-fur-crab_sprite.png",
+                        "width":  1024,
+                        "height":  1024,
+                        "cellWidth":  512,
+                        "cellHeight":  512,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  46,
+                                           "y":  123,
+                                           "width":  426,
+                                           "height":  313,
+                                           "widthRatio":  0.832,
+                                           "heightRatio":  0.6113,
+                                           "alphaPixels":  88413,
+                                           "leftAnchorY":  305.16,
+                                           "rightAnchorY":  289.951
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  41,
+                                           "y":  160,
+                                           "width":  425,
+                                           "height":  272,
+                                           "widthRatio":  0.8301,
+                                           "heightRatio":  0.5312,
+                                           "alphaPixels":  80317,
+                                           "leftAnchorY":  295.296,
+                                           "rightAnchorY":  297.902
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  44,
+                                           "y":  76,
+                                           "width":  428,
+                                           "height":  303,
+                                           "widthRatio":  0.8359,
+                                           "heightRatio":  0.5918,
+                                           "alphaPixels":  84371,
+                                           "leftAnchorY":  247.381,
+                                           "rightAnchorY":  237.655
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  41,
+                                           "y":  106,
+                                           "width":  427,
+                                           "height":  280,
+                                           "widthRatio":  0.834,
+                                           "heightRatio":  0.5469,
+                                           "alphaPixels":  81746,
+                                           "leftAnchorY":  251.022,
+                                           "rightAnchorY":  247.109
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261021-115454/fish/normal/tiptoe-sand-bubbler-crab_sprite.png",
+                        "width":  1024,
+                        "height":  1024,
+                        "cellWidth":  512,
+                        "cellHeight":  512,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  57,
+                                           "y":  89,
+                                           "width":  415,
+                                           "height":  334,
+                                           "widthRatio":  0.8105,
+                                           "heightRatio":  0.6523,
+                                           "alphaPixels":  60836,
+                                           "leftAnchorY":  273.436,
+                                           "rightAnchorY":  219.681
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  52,
+                                           "y":  123,
+                                           "width":  412,
+                                           "height":  290,
+                                           "widthRatio":  0.8047,
+                                           "heightRatio":  0.5664,
+                                           "alphaPixels":  58507,
+                                           "leftAnchorY":  285.518,
+                                           "rightAnchorY":  253.892
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  51,
+                                           "y":  93,
+                                           "width":  421,
+                                           "height":  279,
+                                           "widthRatio":  0.8223,
+                                           "heightRatio":  0.5449,
+                                           "alphaPixels":  57338,
+                                           "leftAnchorY":  257.783,
+                                           "rightAnchorY":  215.237
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  41,
+                                           "y":  94,
+                                           "width":  425,
+                                           "height":  265,
+                                           "widthRatio":  0.8301,
+                                           "heightRatio":  0.5176,
+                                           "alphaPixels":  55673,
+                                           "leftAnchorY":  240.931,
+                                           "rightAnchorY":  217.443
+                                       }
+                                   ]
+                    }
+                ]
+}

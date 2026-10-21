@@ -1,0 +1,177 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261021-115454/fish/rare/pinwheel-gill-nudibranch_sprite.png",
+                        "width":  1024,
+                        "height":  1024,
+                        "cellWidth":  512,
+                        "cellHeight":  512,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  52,
+                                           "y":  121,
+                                           "width":  417,
+                                           "height":  303,
+                                           "widthRatio":  0.8145,
+                                           "heightRatio":  0.5918,
+                                           "alphaPixels":  68041,
+                                           "leftAnchorY":  297.555,
+                                           "rightAnchorY":  306.146
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  42,
+                                           "y":  127,
+                                           "width":  425,
+                                           "height":  294,
+                                           "widthRatio":  0.8301,
+                                           "heightRatio":  0.5742,
+                                           "alphaPixels":  67243,
+                                           "leftAnchorY":  301.511,
+                                           "rightAnchorY":  303.742
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  48,
+                                           "y":  91,
+                                           "width":  424,
+                                           "height":  293,
+                                           "widthRatio":  0.8281,
+                                           "heightRatio":  0.5723,
+                                           "alphaPixels":  63484,
+                                           "leftAnchorY":  266.471,
+                                           "rightAnchorY":  273.008
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  44,
+                                           "y":  88,
+                                           "width":  422,
+                                           "height":  302,
+                                           "widthRatio":  0.8242,
+                                           "heightRatio":  0.5898,
+                                           "alphaPixels":  68079,
+                                           "leftAnchorY":  274.099,
+                                           "rightAnchorY":  273.749
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261021-115454/fish/rare/pleated-skirt-sea-squirt_sprite.png",
+                        "width":  1024,
+                        "height":  1024,
+                        "cellWidth":  512,
+                        "cellHeight":  512,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  48,
+                                           "y":  113,
+                                           "width":  424,
+                                           "height":  313,
+                                           "widthRatio":  0.8281,
+                                           "heightRatio":  0.6113,
+                                           "alphaPixels":  67841,
+                                           "leftAnchorY":  329.14,
+                                           "rightAnchorY":  217.117
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  41,
+                                           "y":  139,
+                                           "width":  424,
+                                           "height":  290,
+                                           "widthRatio":  0.8281,
+                                           "heightRatio":  0.5664,
+                                           "alphaPixels":  69886,
+                                           "leftAnchorY":  313.364,
+                                           "rightAnchorY":  258.297
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  46,
+                                           "y":  98,
+                                           "width":  426,
+                                           "height":  289,
+                                           "widthRatio":  0.832,
+                                           "heightRatio":  0.5645,
+                                           "alphaPixels":  72346,
+                                           "leftAnchorY":  250.192,
+                                           "rightAnchorY":  233.956
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  41,
+                                           "y":  83,
+                                           "width":  414,
+                                           "height":  312,
+                                           "widthRatio":  0.8086,
+                                           "heightRatio":  0.6094,
+                                           "alphaPixels":  70105,
+                                           "leftAnchorY":  278.671,
+                                           "rightAnchorY":  209.014
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261021-115454/fish/rare/ringtail-pipe-seahorse_sprite.png",
+                        "width":  1024,
+                        "height":  1024,
+                        "cellWidth":  512,
+                        "cellHeight":  512,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  89,
+                                           "y":  76,
+                                           "width":  344,
+                                           "height":  395,
+                                           "widthRatio":  0.6719,
+                                           "heightRatio":  0.7715,
+                                           "alphaPixels":  62591,
+                                           "leftAnchorY":  361.39,
+                                           "rightAnchorY":  199.413
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  77,
+                                           "y":  69,
+                                           "width":  332,
+                                           "height":  403,
+                                           "widthRatio":  0.6484,
+                                           "heightRatio":  0.7871,
+                                           "alphaPixels":  61833,
+                                           "leftAnchorY":  343.896,
+                                           "rightAnchorY":  211.697
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  91,
+                                           "y":  41,
+                                           "width":  348,
+                                           "height":  394,
+                                           "widthRatio":  0.6797,
+                                           "heightRatio":  0.7695,
+                                           "alphaPixels":  66443,
+                                           "leftAnchorY":  314.845,
+                                           "rightAnchorY":  169.441
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  74,
+                                           "y":  41,
+                                           "width":  348,
+                                           "height":  394,
+                                           "widthRatio":  0.6797,
+                                           "heightRatio":  0.7695,
+                                           "alphaPixels":  65823,
+                                           "leftAnchorY":  315.814,
+                                           "rightAnchorY":  165.352
+                                       }
+                                   ]
+                    }
+                ]
+}

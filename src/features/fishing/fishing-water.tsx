@@ -24,7 +24,7 @@ const waters:Record<string,{top:string;bottom:string;light:string}>= {
  dreamabyss:{top:'#403f75',bottom:'#111b36',light:'#c6b8ee'},
 }
 export type FishingVisual={time:number;tension:number;reel:number;ending:number}
-export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulling=false,label,outline,baitImage,showGauge=false}:{showGauge?:boolean;baitImage?:string;rod?:FishingRod;regionName?:string;outline?:Species|null;label?:string;pulling?:boolean;game:TensionGame;visual:FishingVisual;mood:FishMood;active:boolean;reduced:boolean;regionId:string}){
+export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulling=false,label,outline,baitImage,showGauge=false,sceneryOverlay=false}:{sceneryOverlay?:boolean;showGauge?:boolean;baitImage?:string;rod?:FishingRod;regionName?:string;outline?:Species|null;label?:string;pulling?:boolean;game:TensionGame;visual:FishingVisual;mood:FishMood;active:boolean;reduced:boolean;regionId:string}){
  const id=useId().replaceAll(':',''),palette=waters[regionId]??waters.pongdang
  const container=useRef<HTMLDivElement>(null),[sceneHeight,setSceneHeight]=useState(380)
  useLayoutEffect(()=>{
@@ -63,7 +63,7 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
  const bobScale=active?.62+game.progress*.38:1
  const platformHeight=Math.max(160,Math.min(220,sceneHeight*.32))
  const platformY=sceneHeight-platformHeight+10
- const nearWater=Math.min(sceneHeight*.42,platformY-117)
+ const nearWater=Math.min(sceneHeight*(sceneryOverlay?.58:.42),platformY-(sceneryOverlay?70:117))
  const bobY=nearWater+(active?(game.progress-.5)*28:0)+(waiting?Math.sin(t*2)*1.4:0)+motionTug*5+(won?-lift*138:0)
  const bx=tip.x+(bobX-tip.x)*cast,by=tip.y+(bobY-tip.y)*cast-(casting?Math.sin(cast*Math.PI)*85:0)
  const fx=200+Math.sin(t*1.5)*12+(scouting?(game.seed%2?1:-1)*(1-behavior.progress)*85:0)+Math.sin(behavior.progress*Math.PI)*motionTug*30+(!canBite?(reduced?0:escapeProgress*180):lost?end*155:0)
@@ -74,15 +74,15 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
  const splash=active&&!reduced&&(impact||surge||(canBite&&!waiting&&!won&&!lost&&game.time<.65))
  const landingSplash=active&&won&&!reduced&&visual.ending<.95
  const splashProgress=Math.max(0,Math.min(1,visual.ending/.95))
- return <div ref={container} className="relative h-full w-full overflow-hidden" style={{background:`linear-gradient(${palette.top},${palette.bottom})`}}>
- <FishingSea regionId={regionId}/>
- <svg viewBox="0 0 400 600" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden="true">
+ return <div ref={container} className="relative h-full w-full overflow-hidden" style={sceneryOverlay?undefined:{background:`linear-gradient(${palette.top},${palette.bottom})`}}>
+ {!sceneryOverlay&&<FishingSea regionId={regionId}/>}
+ {!sceneryOverlay&&<svg viewBox="0 0 400 600" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden="true">
   {Array.from({length:15},(_,i)=><g key={i} opacity={i%3===0?.21:.1}>
    {!reduced&&<animateTransform attributeName="transform" type="translate" values={i%2?'0 0;18 4;0 0':'0 0;-15 5;0 0'} dur={`${7+i%4}s`} repeatCount="indefinite"/>}
    <path d={`M-40 ${18+i*43}q55 -12 110 0t110 0t110 0t110 0`} fill="none" stroke={palette.light} strokeWidth={i%3===0?1.5:.8}/>
    <path d={`M${(i*67)%340} ${25+i*43}q17 -3 34 0`} fill="none" stroke={palette.light} strokeWidth="2"/>
   </g>)}
- </svg><svg viewBox={`0 0 400 ${sceneHeight}`} preserveAspectRatio="xMidYMin meet" className="relative block h-full w-full" aria-hidden="true" data-region={regionId}>
+ </svg>}<svg viewBox={`0 0 400 ${sceneHeight}`} preserveAspectRatio="xMidYMin meet" className="relative block h-full w-full" aria-hidden="true" data-region={regionId}>
   <defs>
    <linearGradient id={id} x2="0" y2="1"><stop stopColor={palette.top}/><stop offset="1" stopColor={palette.bottom}/></linearGradient>
    <radialGradient id={`${id}-light`}><stop stopColor={palette.light} stopOpacity=".19"/><stop offset="1" stopColor={palette.light} stopOpacity="0"/></radialGradient>
@@ -90,11 +90,13 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
    <filter id={`${id}-silhouette`} x="-40%" y="-50%" width="180%" height="200%"><feColorMatrix type="matrix" values="0 0 0 0 .035 0 0 0 0 .13 0 0 0 0 .2 0 0 0 1 0"/><feGaussianBlur stdDeviation={(1-approach)*2.8}/></filter>
   </defs>
 
+  {!sceneryOverlay&&<>
   <ellipse cx="110" cy="60" rx="230" ry="240" fill={`url(#${id}-light)`}/>
   {[30,75,125,180,240,300].map((y,i)=><path key={y} d={`M-30 ${y} Q70 ${y-9+Math.sin(t*.7+i)*3} 200 ${y} T430 ${y}`} fill="none" stroke={palette.light} opacity=".1" strokeWidth="1.3"/>)}
   {regionId==='starruins'&&<g stroke={palette.light} opacity=".1" fill="none"><path d="M0 280l70-20 20 60-70 20Z M330 25l55 10-12 62-55-10Z"/><path d="M10 287l50-14 17 40-50 15Z M339 37l32 6-8 39-32-6Z"/></g>}
   {regionId==='mistmoon'&&<g fill="#e5e1ff" opacity=".065"><ellipse cx="50" cy="60" rx="150" ry="20"/><ellipse cx="350" cy="160" rx="140" ry="17"/></g>}
   {Array.from({length:12},(_,i)=><ellipse key={i} cx={(i*73+29)%400} cy={22+(i*47)%290} rx={i%3===0?5:2} ry=".8" fill={palette.light} opacity={reduced?.15:.12+Math.max(0,Math.sin(t+i))*.2}/>) }
+  </>}
   {active&&!waiting&&!won&&approach>0&&<g data-fishing-shadow="true" transform={`translate(${fx} ${fy}) rotate(${won?-65:warning?-35*Math.min(1,behavior.progress):surge?-15:10}) scale(${lost||escapeProgress>0?-fishScale:fishScale} ${fishScale})`} fill="#092b47" filter={`url(#${id}-depth)`} opacity={shadowOpacity}>{outline?<image href={collectibleUrl(outline.thumbnail_path)} x="-36" y="-32" width="72" height="64" preserveAspectRatio="xMidYMid meet" filter={`url(#${id}-silhouette)`}/>:<><path d="M-28 0Q-16-16 8-9L27-22 23-2 29 16 8 8Q-15 17-28 0Z"/><path d="M-5-8l12-14 4 16Z"/></>}</g>}
   {landingSplash&&<g data-fishing-catch-splash="true" transform={`translate(200 ${nearWater+32})`} pointerEvents="none">
    {[0,1,2].map(i=>{const spread=Math.max(0,(splashProgress-i*.12)/(1-i*.12));return <ellipse key={i} rx={18+spread*(78-i*10)} ry={5+spread*18} fill="none" stroke={i===0?'#efffff':palette.light} strokeWidth={2.5-i*.5} opacity={(1-spread)*.8}/>})}
@@ -116,7 +118,7 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
   {!(snapped&&end>.5)&&<g data-fishing-float="true" transform={`translate(${bx} ${by+dip*13}) rotate(${surge?24:dip*12}) scale(${bobScale} ${bobScale*(1-dip*.35)})`} opacity={won?1-end:1-dip*.88}>{(hasRodSkin(rod?.id)||hasRodImages(rod?.id))?<RodSkinFloat id={rod!.id}/>:<><path d="M0-17v12" stroke="#fff1d4" strokeWidth="2.5"/><ellipse rx="5" ry="9" fill="#fff1d4"/><path d="M-5 0a5 9 0 0 0 10 0Z" fill="#eb886f"/></>}</g>}
   {baitImage&&casting&&!reduced&&<g data-fishing-cast-bait="true" transform={`translate(${bx} ${by}) rotate(${Math.sin(cast*Math.PI)*12})`} pointerEvents="none"><path d="M0 9v14" fill="none" stroke="#e1edf2" strokeWidth="1"/><image href={baitImage} x="-16" y="21" width="32" height="32" preserveAspectRatio="xMidYMid meet"/></g>}
   {splash&&Array.from({length:9},(_,i)=>{const phase=(t*1.7+i*.17)%1,angle=i*Math.PI*2/9;return <ellipse key={i} cx={bx+Math.cos(angle)*(8+phase*(won?48:24+motionTug*22))} cy={by+7-Math.sin(phase*Math.PI)*(12+i%3*8+motionTug*12)} rx="1.7" ry="2.7" fill={palette.light} opacity={(1-phase)*.7}/>})}
-  <FishingPlatform regionId={regionId} y={platformY} platformHeight={platformHeight}/>
+  {!sceneryOverlay&&<FishingPlatform regionId={regionId} y={platformY} platformHeight={platformHeight}/>}
   <path d={rodPath} fill="none" stroke="#102b42" strokeWidth={rodShaftOutlineWidth(rod?.id)} strokeLinecap="round"/>
   <path d={rodPath} fill="none" data-equipped-rod={rod?.id??"basic"} stroke={rod&&rod.id!=="basic"?rod.color:"#97c8d2"} strokeWidth="2.3" strokeLinecap="round"/>
   {hasRodSkin(rod?.id)&&<RodSkinShaft id={rod!.id} path={rodPath}/>}

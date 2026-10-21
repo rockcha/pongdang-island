@@ -13,13 +13,13 @@ import { useAuth } from '@/components/auth-provider'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription,DialogTrigger } from '@/components/ui/dialog'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { rarities } from '@/lib/game/rarity'
 import type { Rarity } from '@/lib/game/rarity'
 import { GoldIcon } from '@/features/gold/gold-provider'
 import { AquariumToolButton } from '@/features/aquarium/aquarium-tool-button'
 import { CollectibleThumbnail } from './collectible-thumbnail'
 import { CollectibleKindIcon } from './collectible-kind-icon'
 import { PrimaryHabitat } from './native-region-badge'
+import {collectibleCardTones} from './collectible-card-tones'
 import { kindLabels, loadCollection } from './api'
 import type { CollectibleKind, CollectionState, CatalogEntry, Species } from './api'
 
@@ -92,13 +92,13 @@ export function CollectionBook({ onAddTemporary,previewAll=false }: CollectionDi
    {state && entries.length === 0 && <EmptyState className="py-12">조건에 맞는 개체가 없어요.</EmptyState>}
    <ul aria-label="도감 개체" className="grid grid-cols-3 border-t border-border sm:grid-cols-4">
     {entries.map(s => <li key={s.id}>
-     <article aria-label={s.name} className={`collection-card relative h-full border-r border-b ${rarities[s.rarity].className}`}>
-      <button type="button" aria-label={s.name+(s.discovered||previewAll?' 상세 보기':' 미발견')} onClick={()=>setDetail(s)} className="flex h-full w-full cursor-pointer flex-col items-center px-1 pb-2 pt-3 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring">
-       <div className="relative flex w-full items-center justify-center"><CollectibleThumbnail loading="lazy" fadeIn path={s.thumbnail_path} name={s.name} className={"aspect-square w-full max-w-24 "+(!s.discovered&&!previewAll?"opacity-80 [&_img]:brightness-[.25]":"")}/></div>
-       <h3 title={s.name} className="mt-2 h-5 w-full truncate text-xs font-medium leading-5">{s.name}</h3>
+     <article aria-label={s.name} className="collection-card relative h-full border-r border-b bg-background/80">
+      <button type="button" aria-label={s.name+(s.discovered||previewAll?' 상세 보기':' 미발견')} onClick={()=>setDetail(s)} className="flex h-full w-full cursor-pointer flex-col items-center pb-2 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring">
+       <div className={`relative flex w-full items-center justify-center bg-gradient-to-b px-1 pt-3 pb-2 ${collectibleCardTones[s.rarity]}`}><CollectibleThumbnail loading="lazy" fadeIn path={s.thumbnail_path} name={s.name} className={"aspect-square w-full max-w-24 "+(!s.discovered&&!previewAll?"opacity-80 [&_img]:brightness-[.25]":"")}/></div>
+       {s.is_native&&s.native_region_id&&regionIcons[s.native_region_id]&&<span aria-label={regionIcons[s.native_region_id].name+' 주 서식지'} title={regionIcons[s.native_region_id].name+' 주 서식지'} className="absolute right-2 top-2 inline-flex size-7 items-center justify-center rounded-full border border-border/60 bg-background/95 p-1 shadow-sm"><img src={regionIcons[s.native_region_id].src} alt="" className="size-5 object-contain"/></span>}
+       <h3 title={s.name} className="mt-2 h-5 w-full truncate px-1 text-xs font-medium leading-5">{s.name}</h3>
 
       </button>
-      {s.is_native&&s.native_region_id&&regionIcons[s.native_region_id]&&<TooltipProvider><Tooltip><TooltipTrigger render={<span tabIndex={0} aria-label={regionIcons[s.native_region_id].name+' 주 서식지'} className="absolute right-1 top-1 inline-flex size-6 items-center justify-center rounded-full border border-border bg-background/95 p-0.5"/>}><img src={regionIcons[s.native_region_id].src} alt="" className="size-5 object-contain"/></TooltipTrigger><TooltipContent>{regionIcons[s.native_region_id].name} 주 서식지</TooltipContent></Tooltip></TooltipProvider>}
       {onAddTemporary&&<TooltipProvider><Tooltip><TooltipTrigger render={<Button type="button" size="icon" variant="secondary" aria-label={s.name+' 임시 넣기'} className="absolute left-0.5 top-0.5 z-10 size-9 rounded-lg border border-border bg-background/95 shadow-sm" onClick={()=>onAddTemporary(s)}/> }><Plus className="size-4"/></TooltipTrigger><TooltipContent>어항에 임시 넣기</TooltipContent></Tooltip></TooltipProvider>}
      </article>
     </li>)}

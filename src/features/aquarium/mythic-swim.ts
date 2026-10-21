@@ -27,6 +27,11 @@ export function mythicSwimFrame(path:string,time:number,seed:number,reduced=fals
  // A short glance is part of the swim loop, independent of travel direction.
  if(reduced)return 0
  const phase=((time+seed/1000000)%6+6)%6
+ const actionDuration=path==='fish/mythic/extinction-defying-megalodon_swim8_sprite.png'?1.8:path==='fish/mythic/never-return-ghost-ship_swim8_sprite.png'?2.4:undefined
+ if(actionDuration!==undefined){
+  const actionStart=6-actionDuration
+  return phase<actionStart?Math.floor(phase*3)%4:4+Math.min(3,Math.floor((phase-actionStart)/actionDuration*4))
+ }
  if(path==='fish/mythic/scrap-greenark-last-collector_swim8_sprite.png'){
   return phase<4?Math.floor(phase*3)%4:4+Math.min(3,Math.floor((phase-4)*2))
  }

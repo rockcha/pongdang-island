@@ -112,3 +112,16 @@ it.each(['atlantean-sentinel','pongi-explorer','ancient-coral-giant-crab','dawn-
  expect(png.readUInt32BE(16)).toBe(report.width)
  expect(png.readUInt32BE(20)).toBe(report.height)
 })
+
+it('uses the requested action durations for the new megalodon and ghost ship',()=>{
+ for(const [id,duration] of [['extinction-defying-megalodon',1.8],['never-return-ghost-ship',2.4]] as const){
+  const asset=mythicSwimAsset('fish/mythic/'+id+'_sprite.png','mythic')!
+  expect(asset).not.toBeNull()
+  const start=6-duration
+  expect(mythicSwimFrame(asset.path,start-.01,0)).toBeLessThan(4)
+  expect(mythicSwimFrame(asset.path,start+.01,0)).toBe(4)
+  expect(mythicSwimFrame(asset.path,5.99,0)).toBe(7)
+  expect(mythicSwimFrame(asset.path,5.99,0,true)).toBe(0)
+  for(const time of [.1,1.1,3.7,4.8,5.8])expect(mythicSwimFrame(asset.path,time,0)).toBe(mythicSwimFrame(asset.path,time+6,0))
+ }
+})

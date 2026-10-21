@@ -1,3 +1,4 @@
+import {sharedDecorationFrame} from '@/features/aquarium/shared-decoration-animation'
 import { glassAttachedSpecies } from '@/features/aquarium/glass-attached-species'
 import { useEffect, useRef, useState } from 'react'
 import { collectibleUrl, type Species } from './api'
@@ -34,7 +35,7 @@ function Preview({species,large=false}:{species:Species;large?:boolean}) {
       if(!start)start=now
       if(!document.hidden){
         const time=(now-start)/1000,reduced=media.matches
-        const index=dreamabyssFixedFrame(species.id,time,reduced,false)??scrapisleFixedFrame(species.id,time,reduced,false)??cloudferryFixedFrame(species.id,time,reduced,false)??whitenightFixedFrame(species.id,time,reduced,false)??mythicSwimFrame(path,time,0,reduced)??premiumSwimFrame(path,time,0,reduced?0:Math.floor(time*3)%4,reduced)
+        const index=sharedDecorationFrame(species.id,time,reduced,false)??dreamabyssFixedFrame(species.id,time,reduced,false)??scrapisleFixedFrame(species.id,time,reduced,false)??cloudferryFixedFrame(species.id,time,reduced,false)??whitenightFixedFrame(species.id,time,reduced,false)??mythicSwimFrame(path,time,0,reduced)??premiumSwimFrame(path,time,0,reduced?0:Math.floor(time*3)%4,reduced)
         const layout=mythicSwimLayout(path,index)??swimFrameLayout(path,index)
         const cellWidth=image.width/columns,cellHeight=image.height/2,size=viewport*.8*layout.scale
         context!.setTransform(ratio,0,0,ratio,0,0);context!.clearRect(0,0,viewport,viewport)

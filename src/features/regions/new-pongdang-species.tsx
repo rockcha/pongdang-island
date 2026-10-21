@@ -1,10 +1,10 @@
 import {appArt} from '@/components/app-art'
-import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
 import type {CatalogEntry} from '@/features/collection/api'
 import {Tabs,TabsList,TabsTrigger,TabsContent} from '@/components/ui/tabs'
 import {regionIcons} from './region-icons'
 import {rarities} from '@/lib/game/rarity'
 import releases from './species-releases.json'
+import {collectibleCardTones as tones} from '@/features/collection/collectible-card-tones'
 
 const week=7*24*60*60*1000
 export function recentSpeciesIds(now:number){
@@ -17,7 +17,6 @@ export function recentSpeciesIds(now:number){
  return new Set([...firstRelease].filter(([,time])=>time<=now&&now<time+week).map(([id])=>id))
 }
 const grades=['common','rare','epic','mythic'] as const
-const tones={mythic:'from-amber-100/80 to-orange-50/30',epic:'from-purple-100/70 to-purple-50/20',rare:'from-sky-100/70 to-sky-50/20',common:'from-stone-100/80 to-stone-50/20'}
 export function NewPongdangSpecies({catalog,now=Date.now()}:{catalog:CatalogEntry[];now?:number}){
  const releaseIds=recentSpeciesIds(now)
  const items=catalog.filter(item=>releaseIds.has(item.id))
@@ -30,8 +29,7 @@ export function NewPongdangSpecies({catalog,now=Date.now()}:{catalog:CatalogEntr
     <h3 className="mb-3 flex items-center gap-2 text-sm"><span aria-hidden="true" className="size-2 rounded-full" style={{backgroundColor:rarities[grade].effectColor}}/>{rarities[grade].label}<span className="text-xs tabular-nums text-muted-foreground">{group.length}</span></h3>
     {!group.length&&<p className="py-8 text-center text-sm text-muted-foreground">새로 등록된 {rarities[grade].label} 개체가 없어요.</p>}
     <ul className="grid grid-cols-2 items-stretch gap-3">{group.map(item=>{const region=item.native_region_id?regionIcons[item.native_region_id]:undefined;return <li key={item.id} className={grade==='mythic'?'col-span-2':''}>
-     <article className="h-full overflow-hidden rounded-xl border border-border/60 bg-background/80">
-      <div className={`flex items-center justify-center bg-gradient-to-b px-3 py-4 ${tones[grade]}`}><div data-silhouette="true" className="brightness-0 opacity-80"><CollectibleThumbnail path={item.thumbnail_path} name={`${item.name} 실루엣`} className={grade==='mythic'?'size-48':'size-28'}/></div></div>
+     <article className={`h-full overflow-hidden rounded-xl border border-border/60 bg-gradient-to-b ${tones[grade]}`}>
       <div className="px-3 pb-4 pt-3">{region&&<img src={region.src} alt={`주 서식지: ${region.name}`} title={region.name} className="mb-1 size-6 object-contain"/>}<h4 className="break-keep text-sm leading-5">{item.name} <span className="inline-block rounded-[2px] bg-red-600 px-1.5 py-0.5 align-middle text-[9px] font-semibold leading-3 text-white">NEW</span></h4><p className="mt-2 break-words text-xs leading-5 text-muted-foreground">{item.description}</p></div>
      </article>
     </li>})}</ul>

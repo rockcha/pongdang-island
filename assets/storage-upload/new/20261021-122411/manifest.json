@@ -1,0 +1,76 @@
+{
+  "generator": "image_gen",
+  "status": "local-ready",
+  "remote_database_applied": false,
+  "references": [
+    "assets/references/collectible-style/common-rare-pongi.png",
+    "assets/storage-upload/new/20261021-115454/trash/rare/octopus-plush_thumbnail.png"
+  ],
+  "entries": [
+    {
+      "id": "flower-crab-plush",
+      "type": "thumbnail",
+      "rarity": "rare",
+      "source": "assets/references/plush-trio-sources/flower-crab-plush.png",
+      "storage_path": "trash/rare/flower-crab-plush_thumbnail.png",
+      "reference_role": "grade style and existing plush fabric identity",
+      "prompt": "Create ONE isolated transparent PNG collectible thumbnail for cozy aquarium game. A cute waterlogged apricot-orange swimming crab plush toy, broad flattened rounded crab shell with little side points, two soft stuffed claws, four pairs of short floppy legs including paddle-shaped rear feet. Cream belly, button eyes, stitched smile, visible brown seams and one cream repair patch. Match the provided octopus plush example's rounded shapes, warm dark-brown outlines, soft cel shading and worn fabric texture. The otter reference is ONLY the cartoon rendering style, never copy its anatomy or starfish. Full object fully visible centered, no base or scene, no extra animals, no words or labels, no checkerboard. Real alpha transparency. Longest silhouette fills roughly 82% canvas, generous transparent margins. Lovable slightly shabby toy found underwater, not a living animal or photorealistic product photo.",
+      "generation_output": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-e98ff84f-7c50-4f7e-802b-2436eaf75dba.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "4c463dc6c5e7d131e9c9532aefbba0e8d12d461d41e995933fffe4f38d6e7a90",
+      "review": {
+        "style": "matches existing plush collection",
+        "fabric": "visible seams, soft stuffed body and repair patch",
+        "framing": "full object inside square transparent canvas"
+      }
+    },
+    {
+      "id": "jellyfish-plush",
+      "type": "thumbnail",
+      "rarity": "rare",
+      "source": "assets/references/plush-trio-sources/jellyfish-plush.png",
+      "storage_path": "trash/rare/jellyfish-plush_thumbnail.png",
+      "reference_role": "grade style and existing plush fabric identity",
+      "prompt": "Create ONE isolated transparent PNG collectible thumbnail for cozy aquarium game. A cute waterlogged pale lavender jellyfish plush toy, soft dome shaped padded fabric bell, scalloped cream hem, several long floppy ribbon-like stuffed tentacles, button eyes and embroidered small smile. Visible seams and one hand-mended patch. Obviously stitched textile toy, not a translucent living jellyfish. Match the provided octopus plush example's rounded shapes, warm dark-brown outlines, soft cel shading and worn fabric texture. The otter reference is ONLY the cartoon rendering style, never copy its anatomy or starfish. Full object fully visible centered, no base or scene, no extra animals, no words or labels, no checkerboard. Real alpha transparency. Longest silhouette fills roughly 82% canvas, generous transparent margins. Lovable slightly shabby toy found underwater, not a living animal or photorealistic product photo.",
+      "generation_output": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-73895fda-3fde-4e94-b0eb-541fdee7ef86.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "f6210f349e32d76ef93abcb2c8bb1720188caac62ab0ba6e3804b3a44472dfbe",
+      "review": {
+        "style": "matches existing plush collection",
+        "fabric": "visible seams, soft stuffed body and repair patch",
+        "framing": "full object inside square transparent canvas"
+      }
+    },
+    {
+      "id": "turtle-plush",
+      "type": "thumbnail",
+      "rarity": "rare",
+      "source": "assets/references/plush-trio-sources/turtle-plush.png",
+      "storage_path": "trash/rare/turtle-plush_thumbnail.png",
+      "reference_role": "grade style and existing plush fabric identity",
+      "prompt": "Create ONE isolated transparent PNG collectible thumbnail for cozy aquarium game. A cute waterlogged sage-green sea turtle plush toy, rounded head and four floppy stuffed flippers, olive shell made of hexagonal patchwork fabric panels, cream belly, stitched smile, small shiny button eyes, visible seams and a worn repaired flipper. Side-three-quarter pose looking right. Match the provided octopus plush example's rounded shapes, warm dark-brown outlines, soft cel shading and worn fabric texture. The otter reference is ONLY the cartoon rendering style, never copy its anatomy or starfish. Full object fully visible centered, no base or scene, no extra animals, no words or labels, no checkerboard. Real alpha transparency. Longest silhouette fills roughly 82% canvas, generous transparent margins. Lovable slightly shabby toy found underwater, not a living animal or photorealistic product photo.",
+      "generation_output": "C:\\Users\\user\\.codex\\generated_images\\01a15ac7-8461-7c23-ab36-5740b34cb1df\\exec-bebf3af2-33d8-49ee-a7ac-e7b0f661491e.png",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "d8d5eafa6522dfa54506b9e0c5fb99a1df6623c1abc3b47bf52c537bfd8e17f5",
+      "review": {
+        "style": "matches existing plush collection",
+        "fabric": "visible seams, soft stuffed body and repair patch",
+        "framing": "full object inside square transparent canvas"
+      }
+    }
+  ],
+  "species_ids": [
+    "flower-crab-plush",
+    "jellyfish-plush",
+    "turtle-plush"
+  ],
+  "storageVerification": {
+    "project": "ewafafphiovbpjwogwzn.supabase.co",
+    "checkedAt": "2026-10-21T03:27:53.579Z",
+    "count": 3,
+    "allSha256Match": true
+  }
+}

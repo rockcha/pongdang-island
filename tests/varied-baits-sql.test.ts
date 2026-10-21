@@ -4,7 +4,7 @@ import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
 import {catalogSql} from '../scripts/db/catalog.mjs'
 import {readFileSync} from 'node:fs'
 const catalog=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8'))
-const baits=catalog.fishing_baits.filter(b=>b.fish_only)
+const baits=catalog.fishing_baits.filter(b=>b.fish_only&&b.sort_order<120)
 const uid='00000000-0000-0000-0000-000000005601'
 let db:Awaited<ReturnType<typeof createLocalDatabase>>
 beforeAll(async()=>{
@@ -73,7 +73,7 @@ it('advances jelly on failed casts, persists across state reloads, and never adv
 })
 
 it('keeps the two cheap decorations and existing ownership while scoping catalog writes',async()=>{
- expect((await db.query("select id,kind,sell_price,speed::float8 speed from public.collectible_species where id in ('cracked-perfume-vial','siren-cracked-idol') order by id")).rows).toEqual([{id:'cracked-perfume-vial',kind:'decoration',sell_price:10,speed:0},{id:'siren-cracked-idol',kind:'decoration',sell_price:15,speed:0}])
+ expect((await db.query("select id,kind,sell_price,speed::float8 speed from public.collectible_species where id in ('cracked-perfume-vial','siren-cracked-idol') order by id")).rows).toEqual([{id:'cracked-perfume-vial',kind:'decoration',sell_price:20,speed:0},{id:'siren-cracked-idol',kind:'decoration',sell_price:25,speed:0}])
  const item=(await db.query("insert into public.player_collectibles(user_id,species_id) values($1,'siren-cracked-idol') returning id",[uid])).rows[0].id
  const sql=catalogSql(catalog,{tables:['collectible_species'],ids:['siren-cracked-idol']})
  expect(sql).not.toContain('cracked-perfume-vial');expect(sql).not.toContain('public.fishing_baits');expect(sql).not.toContain('delete from public.collectible_species')

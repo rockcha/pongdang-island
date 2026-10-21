@@ -5,6 +5,20 @@ import {BaitEffectDetails} from '@/features/fishing/bait-effect-details'
 import type {FishingBait} from '@/features/fishing/api'
 const catalog=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8'))
 afterEach(cleanup)
+it('distinguishes shared species from common grade and mythic grade from fish-only',()=>{
+ render(<BaitEffectDetails bait={catalog.fishing_baits.find(b=>b.id==='bait_snowflake_salt')}/> )
+ expect(screen.getByText('공통종만 포획')).toBeTruthy()
+ expect(screen.getByText(/토착종·외지종과 장식물은 제외/)).toBeTruthy()
+ expect(screen.getByText('0.3%')).toBeTruthy()
+ cleanup()
+ render(<BaitEffectDetails bait={catalog.fishing_baits.find(b=>b.id==='bait_shooting_star_tail')}/> )
+ expect(screen.getByText('일반 쓰레기')).toBeTruthy()
+ expect(screen.getByText('신화 등급')).toBeTruthy()
+ expect(screen.getByText('99%')).toBeTruthy()
+ expect(screen.getByText('1%')).toBeTruthy()
+ expect(screen.getByText(/신화는 물고기·쓰레기·장식물 중/)).toBeTruthy()
+ expect(screen.queryByText(/물고기 전용/)).toBeNull()
+})
 it('shows grade-first decoration odds',()=>{
  const bait=catalog.fishing_baits.find(b=>b.id==='bait_magnet')
  render(<BaitEffectDetails bait={{...bait,successChanceBp:7000}}/>)
@@ -18,7 +32,8 @@ it('shows separate success and conditional grade odds for every new bait with a 
   expect(screen.getByText('낚시 성공률').nextElementSibling?.textContent).toBe(`${bait.success_chance_bp/100}%`)
   expect(screen.getByText('성공 시 등급 확률')).toBeTruthy()
   expect(screen.getByText(/물고기 전용/).textContent).toContain('쓰레기·장식물 제외')
-  expect(existsSync('public'+bait.image_path)).toBe(true)
+  const localImage=bait.image_path.includes('/items/baits/')?'/items/baits/'+bait.image_path.split('/').at(-1):bait.image_path
+  expect(existsSync('public'+localImage)).toBe(true)
   cleanup()
  }
 })

@@ -1,0 +1,17 @@
+{
+  "tool": "image_gen",
+  "createdAt": "2026-10-21T19:57:00+09:00",
+  "bucket": "collectibles",
+  "items": [
+    {
+      "id": "bait_shooting_star_tail",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a15dea-ebf1-7670-b22e-c00f7080aa31\\exec-7ae6836a-8834-4c87-a560-981db1bbec5a.png",
+      "reference": "public/items/baits/shooting-star-tail-jelly.png",
+      "referenceRole": "Edit target; preserve shape and change palette only",
+      "prompt": "Edit the provided fishing bait icon by changing its colors only. Preserve exactly the five-point jelly star, curved flowing comet tail, gold fishing hook, overall silhouette, scale, placement, painted translucent jelly material, crisp small-game-icon readability, and transparent alpha background. Replace the entire purple/violet/lavender star body with rich saturated lagoon teal and sea-glass mint highlights; no purple remains. Replace the peach-gold tail with vivid watermelon coral-red fading into pale shell-pink along its translucent edges. Make scattered sparkles pearl-white and pale mint instead of gold, but keep the metal hook warm gold. Keep the center star glint pearly-white. This must read distinctly as TEAL + CORAL at 48 pixels, contrasting with many purple and golden baits. No redesign, no additional objects, no text, frame, background, or checkerboard.",
+      "path": "public/items/baits/shooting-star-tail-jelly-teal.png",
+      "storage_path": "items/baits/shooting-star-tail-jelly-teal.png",
+      "supersedes": "items/baits/shooting-star-tail-jelly.png"
+    }
+  ]
+}

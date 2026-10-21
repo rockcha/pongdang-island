@@ -1,0 +1,30 @@
+{
+  "tool": "image_gen",
+  "createdAt": "2026-10-21T19:40:00+09:00",
+  "items": [
+    {
+      "id": "halfmoon-honey-jelly",
+      "prompt": "Create a premium cozy fishing game inventory item icon matching the existing pearl bubble bait reference in the conversation: softly painted three-dimensional storybook object, delicate warm gold fishing hook, rounded clear silhouette, rich readable colors at 48 pixels, centered whole object occupying 75% of square canvas, transparent alpha background. No text, UI, frame, floor, checkerboard, or surrounding shadow. One plump crescent moon shaped translucent honey jelly candy, golden amber and creamy pale yellow two-tone layers, tiny honey droplet, exquisite golden hook alongside. The crescent shape must be very distinct.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a15dea-ebf1-7670-b22e-c00f7080aa31\\exec-ff9177b4-fddd-4190-9fe5-15fc62381e57.png",
+      "path": "public/items/baits/halfmoon-honey-jelly.png",
+      "reference": "public/items/baits/pearl-bubble.png",
+      "referenceRole": "Existing bait style: painted item, gold hook, transparent background"
+    },
+    {
+      "id": "snowflake-salt-candy",
+      "prompt": "Create a premium cozy fishing game inventory item icon matching the existing pearl bubble bait reference in the conversation: softly painted three-dimensional storybook object, delicate warm gold fishing hook, rounded clear silhouette, rich readable colors at 48 pixels, centered whole object occupying 75% of square canvas, transparent alpha background. No text, UI, frame, floor, checkerboard, or surrounding shadow. One icy pale blue salt candy crystal with a large simple white six-armed snowflake embedded inside, small sea-salt crystals at its base, silver-blue highlights and a delicate gold fishing hook. Frosty and sweet, very distinct silhouette.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a15dea-ebf1-7670-b22e-c00f7080aa31\\exec-680896f5-3ff7-457e-bb3d-3a89848de897.png",
+      "path": "public/items/baits/snowflake-salt-candy.png",
+      "reference": "public/items/baits/pearl-bubble.png",
+      "referenceRole": "Existing bait style: painted item, gold hook, transparent background"
+    },
+    {
+      "id": "shooting-star-tail-jelly",
+      "prompt": "Create a premium cozy fishing game inventory item icon matching the existing pearl bubble bait reference in the conversation: softly painted three-dimensional storybook object, delicate warm gold fishing hook, rounded clear silhouette, rich readable colors at 48 pixels, centered whole object occupying 75% of square canvas, transparent alpha background. No text, UI, frame, floor, checkerboard, or surrounding shadow. One translucent deep violet five-pointed star jelly candy with a long flowing curved peach-gold comet tail, a few small warm golden sparkles and delicate golden fishing hook. A single cohesive shooting-star silhouette.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a15dea-ebf1-7670-b22e-c00f7080aa31\\exec-a7ee0c51-9990-48cf-ac48-e1ac6f9e4994.png",
+      "path": "public/items/baits/shooting-star-tail-jelly.png",
+      "reference": "public/items/baits/pearl-bubble.png",
+      "referenceRole": "Existing bait style: painted item, gold hook, transparent background"
+    }
+  ]
+}

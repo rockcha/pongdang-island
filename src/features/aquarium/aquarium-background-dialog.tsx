@@ -4,6 +4,7 @@ import {Check} from 'lucide-react'
 import { Tabs,TabsList,TabsTrigger,TabsContent } from '@/components/ui/tabs'
 import { Button } from '@/components/ui/button'
 import { Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle } from '@/components/ui/dialog'
+import {AlertDialog,AlertDialogContent,AlertDialogHeader,AlertDialogTitle,AlertDialogDescription,AlertDialogFooter,AlertDialogCancel,AlertDialogAction} from '@/components/ui/alert-dialog'
 import { GoldIcon } from '@/features/gold/gold-provider'
 import { backgroundUrl } from './api'
 import type { AquariumState } from './api'
@@ -27,11 +28,14 @@ export function AquariumBackgroundDialog({state,selectedId,gold,busy,loading,err
  const [tab,setTab]=useState('owned')
  const [pending,setPending]=useState<string|null>(null)
  const [actionError,setActionError]=useState('')
+ const [purchaseId,setPurchaseId]=useState<string|null>(null)
+ const purchase=state.catalog.find(item=>item.id===purchaseId)
+ const canPurchase=!!purchase&&!state.owned.includes(purchase.id)&&!loading&&!error&&gold>=purchase.price
  const locked=useRef(false)
  async function act(id:string,owned:boolean){
-  if(locked.current||busy)return
+  if(locked.current||busy||(!owned&&(!canPurchase||id!==purchaseId)))return
   locked.current=true;setPending(id);setActionError('')
-  try{await onAct(id,owned);if(owned)setOpen(false)}catch{setActionError('배경을 변경하지 못했어요. 다시 시도해주세요.')}finally{locked.current=false;setPending(null)}
+  try{await onAct(id,owned);setPurchaseId(null);if(owned)setOpen(false)}catch{setActionError('배경을 변경하지 못했어요. 다시 시도해주세요.')}finally{locked.current=false;setPending(null)}
  }
  const ownedItems=state.catalog.filter(item=>item.id==='default'||state.owned.includes(item.id))
  const shopItems=state.catalog.filter(item=>item.id!=='default'&&!state.owned.includes(item.id))
@@ -44,11 +48,11 @@ export function AquariumBackgroundDialog({state,selectedId,gold,busy,loading,err
    const equipped=selectedId===item.id
    return <li key={item.id} className={`overflow-hidden rounded-xl border transition-colors ${equipped?'border-primary/40 bg-primary/5':'border-border/60'}`}>
     <div className="relative"><Preview key={item.image_path} path={item.image_path} name={item.name}/>{equipped&&<span className="absolute left-2 top-2 flex items-center gap-1 rounded-full bg-background/90 px-2 py-1 text-[10px] font-medium shadow-sm backdrop-blur"><Check className="size-3"/>현재 배경</span>}</div>
-    <div className="space-y-2.5 p-3"><p className="truncate text-sm font-medium">{item.name}</p><Button className="min-h-9 w-full" variant={owned?'outline':'default'} disabled={busy||pending!==null||equipped||(!owned&&(loading||error||gold<item.price))} onClick={()=>void act(item.id,owned)}>{pending===item.id?<span role="status">{owned?'적용 중…':'구매 중…'}</span>:equipped?<><Check className="size-3.5"/>적용 중</>:owned?'적용하기':<><GoldIcon className="size-4"/>{item.price.toLocaleString('ko-KR')} 구매</>}</Button></div>
+    <div className="space-y-2.5 p-3"><p className="truncate text-sm font-medium">{item.name}</p><Button className="min-h-9 w-full" variant={owned?'outline':'default'} disabled={busy||pending!==null||equipped||(!owned&&(loading||error||gold<item.price))} onClick={()=>{if(owned)void act(item.id,true);else {setActionError('');setPurchaseId(item.id)}}}>{pending===item.id?<span role="status">{owned?'적용 중…':'구매 중…'}</span>:equipped?<><Check className="size-3.5"/>적용 중</>:owned?'적용하기':<><GoldIcon className="size-4"/>{item.price.toLocaleString('ko-KR')} 구매</>}</Button></div>
    </li>
   })}</ul>
  }
- return <Dialog open={open} onOpenChange={value=>{if(!busy&&!locked.current){setOpen(value);if(value)setTier('all')}}}>
+ return <Dialog open={open} onOpenChange={value=>{if(!busy&&!locked.current){setOpen(value);if(value)setTier('all');else setPurchaseId(null)}}}>
   <AquariumToolButton label="배경 바꾸기" icon={<Image className="size-7 text-primary"/>}/>
   <DialogContent className="notification-sheet inset-x-0 bottom-0 top-auto left-0 flex h-[92dvh] max-h-[92dvh] w-full max-w-full translate-x-0 translate-y-0 flex-col gap-4 overflow-hidden rounded-t-2xl rounded-b-none pb-[max(1rem,env(safe-area-inset-bottom))] sm:left-1/2 sm:max-w-md sm:-translate-x-1/2">
    <DialogHeader><DialogTitle className="flex items-center gap-2"><Image aria-hidden="true" className="size-8 text-primary"/>배경 꾸미기</DialogTitle><DialogDescription>배경을 골라 지금 어항에 적용해보세요.</DialogDescription></DialogHeader>
@@ -61,6 +65,13 @@ export function AquariumBackgroundDialog({state,selectedId,gold,busy,loading,err
     <TabsContent value="owned" className="mt-3 min-h-0 flex-1 overflow-y-auto overscroll-contain">{cards(ownedItems,true)}</TabsContent>
     <TabsContent value="shop" className="min-h-0 flex-1 overflow-y-auto overscroll-contain"><div className="mb-3 flex items-center justify-between text-xs"><span className="text-muted-foreground">새로운 분위기를 만나보세요.</span><span className="flex items-center gap-1 tabular-nums"><GoldIcon className="size-4"/>{loading?'…':error?'—':gold.toLocaleString('ko-KR')}</span></div>{cards(shopItems,false)}</TabsContent>
    </Tabs>
+   <AlertDialog open={!!purchase} onOpenChange={value=>{if(!value&&!locked.current)setPurchaseId(null)}}>
+    <AlertDialogContent size="sm">
+     <AlertDialogHeader><AlertDialogTitle>구매하시겠습니까?</AlertDialogTitle><AlertDialogDescription>{purchase?.name} 배경을 {purchase?.price.toLocaleString('ko-KR')}골드에 구매합니다.</AlertDialogDescription></AlertDialogHeader>
+     {actionError&&<p role="alert" className="text-sm text-destructive">{actionError}</p>}
+     <AlertDialogFooter><AlertDialogCancel disabled={pending!==null}>취소</AlertDialogCancel><AlertDialogAction disabled={busy||pending!==null||!canPurchase} onClick={()=>{if(purchase)void act(purchase.id,false)}}>{pending!==null?'구매 중…':'구매하기'}</AlertDialogAction></AlertDialogFooter>
+    </AlertDialogContent>
+   </AlertDialog>
   </DialogContent>
  </Dialog>
 }

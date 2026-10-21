@@ -267,6 +267,10 @@
 
 button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
 
+[data-sonner-toaster][data-y-position="top"] {
+  top: max(1rem, env(safe-area-inset-top, 0px)) !important;
+}
+
 [data-sonner-toaster][data-y-position="bottom"] {
   bottom: max(1rem, env(safe-area-inset-bottom, 0px)) !important;
 }

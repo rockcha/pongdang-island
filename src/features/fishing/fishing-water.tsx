@@ -67,7 +67,7 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
  const bobY=nearWater+(active?(game.progress-.5)*28:0)+(waiting?Math.sin(t*2)*1.4:0)+motionTug*5+(won?-lift*138:0)
  const bx=tip.x+(bobX-tip.x)*cast,by=tip.y+(bobY-tip.y)*cast-(casting?Math.sin(cast*Math.PI)*85:0)
  const fx=200+Math.sin(t*1.5)*12+(scouting?(game.seed%2?1:-1)*(1-behavior.progress)*85:0)+Math.sin(behavior.progress*Math.PI)*motionTug*30+(!canBite?(reduced?0:escapeProgress*180):lost?end*155:0)
- const fy=nearWater+24+game.progress*20+(won?-lift*194:0),fishScale=.48+approach*1.2
+ const fy=nearWater+12+game.progress*20+(won?-lift*194:0),fishScale=.48+approach*1.2
  const snapped=lost&&game.reason==='snap'
  const lineEnd=snapped?{x:tip.x+12*(1-end),y:tip.y-15*(1-end)}:{x:bx,y:by+dip*13}
  const impact=active&&waiting&&game.time>=.85&&game.time<1.35

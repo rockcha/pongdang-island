@@ -1,9 +1,48 @@
-import { cleanup,fireEvent,render,screen,waitFor } from '@testing-library/react'
+import { cleanup,fireEvent,render,screen,waitFor,within } from '@testing-library/react'
 import { afterEach,expect,it,vi } from 'vitest'
 import { AquariumBackgroundDialog } from '../src/features/aquarium/aquarium-background-dialog'
 import type { AquariumState } from '../src/features/aquarium/api'
 vi.mock('@/features/aquarium/api',()=>({backgroundUrl:(path:string)=>`/backgrounds/${path}`}))
 afterEach(cleanup)
+it('requires purchase confirmation, supports cancellation and prevents duplicate purchases',async()=>{
+ let finish!:()=>void
+ const onAct=vi.fn(()=>new Promise<void>(resolve=>{finish=resolve}))
+ const state={owned:[],catalog:[{id:'night',name:'달밤',price:500,image_path:'night.png'}]} as AquariumState
+ render(<AquariumBackgroundDialog state={state} selectedId="default" gold={1000} busy={false} loading={false} error={false} onAct={onAct}/>)
+ fireEvent.click(screen.getByRole('button',{name:'배경 바꾸기',exact:true}))
+ fireEvent.click(await screen.findByRole('tab',{name:'구매'}))
+ fireEvent.click(screen.getByRole('button',{name:'500 구매'}))
+ let guard=await screen.findByRole('alertdialog')
+ expect(within(guard).getByText('구매하시겠습니까?')).toBeTruthy()
+ expect(within(guard).getByText('달밤 배경을 500골드에 구매합니다.')).toBeTruthy()
+ expect(onAct).not.toHaveBeenCalled()
+ fireEvent.click(within(guard).getByRole('button',{name:'취소'}))
+ await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
+ expect(onAct).not.toHaveBeenCalled()
+ fireEvent.click(screen.getByRole('button',{name:'500 구매'}))
+ guard=await screen.findByRole('alertdialog')
+ const confirm=within(guard).getByRole('button',{name:'구매하기'})
+ fireEvent.click(confirm);fireEvent.click(confirm)
+ expect(onAct).toHaveBeenCalledTimes(1)
+ expect(onAct).toHaveBeenCalledWith('night',false)
+ finish()
+ await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
+ expect(screen.getByRole('dialog')).toBeTruthy()
+})
+it('rechecks current gold before allowing a confirmed purchase',async()=>{
+ const onAct=vi.fn(async()=>{})
+ const props={state:{owned:[],catalog:[{id:'night',name:'달밤',price:500,image_path:'night.png'}]} as AquariumState,selectedId:'default',busy:false,loading:false,error:false,onAct}
+ const view=render(<AquariumBackgroundDialog {...props} gold={1000}/>)
+ fireEvent.click(screen.getByRole('button',{name:'배경 바꾸기',exact:true}))
+ fireEvent.click(await screen.findByRole('tab',{name:'구매'}))
+ fireEvent.click(screen.getByRole('button',{name:'500 구매'}))
+ await screen.findByRole('alertdialog')
+ view.rerender(<AquariumBackgroundDialog {...props} gold={100}/>)
+ const confirm=within(screen.getByRole('alertdialog')).getByRole('button',{name:'구매하기'}) as HTMLButtonElement
+ expect(confirm.disabled).toBe(true)
+ fireEvent.click(confirm)
+ expect(onAct).not.toHaveBeenCalled()
+})
 it('filters owned and purchasable themes by visual tier and explains empty results',async()=>{
  const state={owned:['mood-owned'],catalog:[
   {id:'default',name:'단순 배경',price:0,image_path:'default.png',tier:'simple'},

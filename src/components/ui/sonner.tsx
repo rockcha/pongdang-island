@@ -10,6 +10,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
   const { theme } = useAppTheme()
   return typeof document==='undefined'?null:createPortal(
     <Sonner
+      position="top-center"
       closeButton
       theme={theme}
       className="toaster group"

@@ -10,4 +10,6 @@ it('puts the Pongi starfish image beside notification text',async()=>{
  const image=document.body.querySelector('[data-icon] img')
  expect(image?.getAttribute('src')).toBe('/branding/pongi-starfish.png')
  expect(image?.getAttribute('alt')).toBe('')
+ expect(document.body.querySelector('[data-sonner-toaster]')?.getAttribute('data-y-position')).toBe('top')
+ expect(document.body.querySelector('[data-sonner-toaster]')?.getAttribute('data-x-position')).toBe('center')
 })

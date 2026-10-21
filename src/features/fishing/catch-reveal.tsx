@@ -39,7 +39,7 @@ export function CatchReveal({species,failure,onDismiss,practice=false,onShare,fa
     {species?<span className="flex w-full flex-wrap items-center justify-center gap-x-2.5 gap-y-2">
      {nativeRegion&&<img src={nativeRegion.src} alt={`${nativeRegion.name} 고유종`} title={`${nativeRegion.name} 고유종`} className="size-8 shrink-0 object-contain drop-shadow-md sm:size-9"/>}
      <span className="text-balance break-keep text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_2px_16px_#0005] sm:text-4xl">{species.name}</span>
-     <span className="inline-flex shrink-0 items-center gap-2"><span className="rounded px-2 py-1 text-xs font-bold leading-5 text-white" style={{backgroundColor:color}}>{rarities[rarity].label}</span>{firstDiscovery&&!practice&&<NewDiscoveryBadge/>}</span>
+     <span className="inline-flex shrink-0 items-center gap-2"><span className="inline-flex h-7 items-center rounded px-2 text-xs font-bold leading-5 text-white" style={{backgroundColor:color}}>{rarities[rarity].label}</span>{firstDiscovery&&!practice&&<NewDiscoveryBadge size="md"/>}</span>
     </span>:<>
      <span className="text-2xl font-bold tracking-tight text-white">낚시 실패</span>
     </>}
@@ -50,6 +50,6 @@ export function CatchReveal({species,failure,onDismiss,practice=false,onShare,fa
    </span>
    <span className="relative mt-8 text-xs text-white/50">화면을 누르면 계속해요</span>
   </span>
-  {shareable&&<button type="button" disabled={!ready} onClick={()=>onShare?.()} className="absolute bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 inline-flex min-h-11 -translate-x-1/2 items-center gap-2 rounded-lg border border-white/25 bg-white/10 px-5 text-sm text-white outline-none backdrop-blur-sm hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-white disabled:opacity-50"><Camera className="size-4"/>자랑하기</button>}
+  {shareable&&<button type="button" disabled={!ready} onClick={()=>onShare?.()} className="absolute bottom-[calc(3.5rem+env(safe-area-inset-bottom))] left-1/2 inline-flex min-h-11 -translate-x-1/2 items-center gap-2 rounded-lg border border-white/25 bg-white/10 px-5 text-sm text-white outline-none backdrop-blur-sm hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-white disabled:opacity-50"><Camera className="size-4"/>자랑하기</button>}
  </div>,document.body)
 }

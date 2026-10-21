@@ -1,0 +1,64 @@
+{
+  "generator": "image_gen",
+  "status": "uploaded",
+  "remote_database_applied": false,
+  "entries": [
+    {
+      "id": "parasol-sponge-tree",
+      "type": "sprite",
+      "rarity": "epic",
+      "source": "assets/references/animated-decorations/parasol-sponge-tree_sprite.png",
+      "storage_path": "decorations/epic/parasol-sponge-tree_animated-v1_sprite.png",
+      "reference": "assets/storage-upload/new/20261021-115454/decorations/epic/parasol-sponge-tree_thumbnail.png",
+      "prompt": "Transparent PNG 2x2 four equal square cells; preserve reference identity, fixed camera, same scale and anchor, no text or background. Four canopy wave phases; rigid stem and base.",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "5fa124e43f1d030576fda18a9676fbc918d46db05d79a9e5e49e785851c4604e",
+      "review": {
+        "framing": "Four complete poses, transparent padding, uniform sheet scale",
+        "motion": "Transparent PNG 2x2 four equal square cells; preserve reference identity, fixed camera, same scale and anchor, no text or background. Four canopy wave phases; rigid stem and base.",
+        "anchors": "Rigid base registered by RGB template; no per-frame rescaling"
+      }
+    },
+    {
+      "id": "waterwheel-cascade-tower",
+      "type": "sprite",
+      "rarity": "epic",
+      "source": "assets/references/animated-decorations/waterwheel-cascade-tower_sprite.png",
+      "storage_path": "decorations/epic/waterwheel-cascade-tower_animated-v1_sprite.png",
+      "reference": "assets/storage-upload/new/20261021-115454/decorations/epic/waterwheel-cascade-tower_thumbnail.png",
+      "prompt": "Transparent PNG 2x2 four equal square cells; preserve reference identity, fixed camera, same scale and anchor, no text or background. Four clockwise wheel rotation phases and falling water; rigid structure and basin.",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "b2b6dc6f1fe4944b349c4308b9845abcdebbdc78d2652d86f1b2e39040f4e377",
+      "review": {
+        "framing": "Four complete poses, transparent padding, uniform sheet scale",
+        "motion": "Transparent PNG 2x2 four equal square cells; preserve reference identity, fixed camera, same scale and anchor, no text or background. Four clockwise wheel rotation phases and falling water; rigid structure and basin.",
+        "anchors": "Rigid base registered by RGB template; no per-frame rescaling"
+      }
+    },
+    {
+      "id": "levitating-stone-spire",
+      "type": "sprite",
+      "rarity": "epic",
+      "source": "assets/references/animated-decorations/levitating-stone-spire_sprite.png",
+      "storage_path": "decorations/epic/levitating-stone-spire_animated-v1_sprite.png",
+      "reference": "assets/storage-upload/new/20261021-115454/decorations/epic/levitating-stone-spire_thumbnail.png",
+      "prompt": "Transparent PNG 2x2 four equal square cells; preserve reference identity, fixed camera, same scale and anchor, no text or background. Four rune light phases: dark, soft, bright, soft; fixed stone positions.",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "e763be789df49fabd45296e9e8eab29a7ba41809f63f6b05741cd9596c5b9d0f",
+      "review": {
+        "framing": "Four complete poses, transparent padding, uniform sheet scale",
+        "motion": "Transparent PNG 2x2 four equal square cells; preserve reference identity, fixed camera, same scale and anchor, no text or background. Four rune light phases: dark, soft, bright, soft; fixed stone positions.",
+        "anchors": "Rigid base registered by RGB template; no per-frame rescaling"
+      }
+    }
+  ],
+  "storageVerification": {
+    "project": "ewafafphiovbpjwogwzn.supabase.co",
+    "checkedAt": "2026-10-21T03:49:37.060Z",
+    "count": 3,
+    "allHashesMatch": true
+  }
+}

@@ -218,5 +218,71 @@
         3
       ]
     ]
+  },
+  "decorations/epic/parasol-sponge-tree_animated-v1_sprite.png": {
+    "cell": 512,
+    "scale": 1,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "decorations/epic/waterwheel-cascade-tower_animated-v1_sprite.png": {
+    "cell": 512,
+    "scale": 1,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -39,
+        0
+      ],
+      [
+        0,
+        -3
+      ],
+      [
+        -38,
+        -3
+      ]
+    ]
+  },
+  "decorations/epic/levitating-stone-spire_animated-v1_sprite.png": {
+    "cell": 512,
+    "scale": 1,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -4,
+        0
+      ],
+      [
+        0,
+        -20
+      ],
+      [
+        -3,
+        -20
+      ]
+    ]
   }
 }

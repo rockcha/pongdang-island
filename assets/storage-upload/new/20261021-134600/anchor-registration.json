@@ -1,0 +1,113 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261021-134600/decorations/epic/parasol-sponge-tree_animated-v1_sprite.png",
+        "storage_path":  "decorations/epic/parasol-sponge-tree_animated-v1_sprite.png",
+        "patch":  [
+                      235,
+                      420,
+                      55,
+                      25
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  4.7055087786016374
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  4.3081250585919433
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  4.8318206949420395
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261021-134600/decorations/epic/waterwheel-cascade-tower_animated-v1_sprite.png",
+        "storage_path":  "decorations/epic/waterwheel-cascade-tower_animated-v1_sprite.png",
+        "patch":  [
+                      225,
+                      435,
+                      65,
+                      25
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -39,
+                           "dy":  0,
+                           "rmse":  9.65300759118916
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -3,
+                           "rmse":  9.3909208248921967
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -38,
+                           "dy":  -3,
+                           "rmse":  9.4381292017159222
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261021-134600/decorations/epic/levitating-stone-spire_animated-v1_sprite.png",
+        "storage_path":  "decorations/epic/levitating-stone-spire_animated-v1_sprite.png",
+        "patch":  [
+                      242,
+                      90,
+                      24,
+                      16
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -4,
+                           "dy":  0,
+                           "rmse":  15.2540978100968
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -20,
+                           "rmse":  22.032882622722489
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -3,
+                           "dy":  -20,
+                           "rmse":  15.601816133600174
+                       }
+                   ]
+    }
+]

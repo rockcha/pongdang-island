@@ -9,6 +9,7 @@ const catalog=source.collectible_species.map((s:CatalogEntry)=>({...s,discovered
 afterEach(cleanup)
 const released=Date.parse('2026-10-21T00:00:00+09:00')
 const additionalRelease=Date.parse('2026-10-21T12:28:39+09:00')
+const releases=JSON.parse(readFileSync('src/features/regions/species-releases.json','utf8')) as {releasedAt:string;speciesIds:string[]}[]
 it('shows the first 17 species with descriptions and region icons with collectible thumbnails',()=>{
  const view=render(<NewPongdangSpecies catalog={catalog} now={released}/>)
  expect(screen.getAllByRole('tab').map(tab=>tab.textContent)).toEqual(['일반9','희귀1','특급3','신화4'])
@@ -36,18 +37,19 @@ it('shows the first 17 species with descriptions and region icons with collectib
  expect(screen.getAllByRole('img',{name:/주 서식지:/})).toHaveLength(1)
 })
 it('starts at release and expires exactly seven days later',()=>{
- expect(recentSpeciesIds(released-1).size).toBe(0)
- expect(recentSpeciesIds(released).size).toBe(17)
- expect(recentSpeciesIds(released+7*86400000-1).size).toBe(50)
- expect(recentSpeciesIds(released+7*86400000).size).toBe(33)
- expect(recentSpeciesIds(additionalRelease-1).size).toBe(17)
- expect(recentSpeciesIds(additionalRelease).size).toBe(50)
- expect(recentSpeciesIds(additionalRelease+7*86400000-1).size).toBe(33)
- expect(recentSpeciesIds(additionalRelease+7*86400000).size).toBe(0)
+ const firstRelease=new Map<string,number>()
+ for(const release of releases)for(const id of release.speciesIds)firstRelease.set(id,Math.min(firstRelease.get(id)??Infinity,Date.parse(release.releasedAt)))
+ for(const [id,start] of firstRelease){
+  expect(recentSpeciesIds(start-1).has(id)).toBe(false)
+  expect(recentSpeciesIds(start).has(id)).toBe(true)
+  expect(recentSpeciesIds(start+7*86400000-1).has(id)).toBe(true)
+  expect(recentSpeciesIds(start+7*86400000).has(id)).toBe(false)
+ }
 })
 it('removes expired entries while the page stays open',()=>{
  const view=render(<NewPongdangSpecies catalog={catalog} now={released}/>)
- view.rerender(<NewPongdangSpecies catalog={catalog} now={additionalRelease+7*86400000}/>)
+ const lastRelease=Math.max(...releases.map(r=>Date.parse(r.releasedAt)))
+ view.rerender(<NewPongdangSpecies catalog={catalog} now={lastRelease+7*86400000}/>)
  expect(screen.queryByRole('article')).toBeNull()
  expect(screen.getByText('새로운 개체를 준비하고 있어요.')).toBeTruthy()
 })

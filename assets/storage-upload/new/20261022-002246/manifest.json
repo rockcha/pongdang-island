@@ -1,0 +1,46 @@
+{
+  "tool": "image_gen",
+  "createdAt": "2026-10-22T00:22:46+09:00",
+  "bucket": "collectibles",
+  "items": [
+    {
+      "id": "siren-lost-song-gramophone",
+      "name": "노래를 잃은 축음기",
+      "rarity": "common",
+      "sell_price": 35,
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c\\exec-31c7b2b6-557c-42bb-9f0d-e4943f6ef938.png",
+      "storage_path": "decorations/normal/siren-lost-song-gramophone_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Art style only: rounded cartoon objects, brown outline and soft cel shading",
+      "prompt": "Create a single isolated cozy aquarium game decoration thumbnail. Match the supplied Pongi image ONLY in art style: friendly rounded chibi object proportions, crisp dark warm brown outlines and warm soft cel shading, clean readable silhouette at 80px display. Do NOT copy the otter, fishing line, hook, starfish, fur or eyes. Do not add eyes or faces to inanimate furniture. Whole object centered occupying 78 percent of square canvas with generous transparent margin. True transparent alpha background, no scene, seabed, floor plane, cast shadow, text, UI, frame or checkerboard. Stationary decorative furniture, not a swimming animal. Subject: An old compact underwater gramophone with a big warm brass trumpet horn, dark walnut rounded base and visible record, two little blush-pink coral branches on the base, a few teal seaweed leaves, one tiny empty bubble near the horn. Distinct oversized gramophone horn silhouette. A silent lost-song object, no face.",
+      "movement_type": "fixed",
+      "sprite_sheet_path": null
+    },
+    {
+      "id": "siren-glass-music-box",
+      "name": "세이렌의 유리 오르골",
+      "rarity": "rare",
+      "sell_price": 200,
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c\\exec-fdb82f32-496d-4a0a-972b-6a15de48743b.png",
+      "storage_path": "decorations/rare/siren-glass-music-box_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Art style only: rounded cartoon objects, brown outline and soft cel shading",
+      "prompt": "Create a single isolated cozy aquarium game decoration thumbnail. Match the supplied Pongi image ONLY in art style: friendly rounded chibi object proportions, crisp dark warm brown outlines and warm soft cel shading, clean readable silhouette at 80px display. Do NOT copy the otter, fishing line, hook, starfish, fur or eyes. Do not add eyes or faces to inanimate furniture. Whole object centered occupying 78 percent of square canvas with generous transparent margin. True transparent alpha background, no scene, seabed, floor plane, cast shadow, text, UI, frame or checkerboard. Stationary decorative furniture, not a swimming animal. Subject: A charming underwater music box: clear round glass dome on a scalloped pearl-ivory and muted coral pink base, a tiny turquoise mermaid silhouette figurine standing on a seashell stage INSIDE the dome, delicate brass winding key at the side. Clear rounded glass dome silhouette, simple cute collectible proportions, glass readability with crisp cel highlights, no external scenery. No face on the box.",
+      "movement_type": "fixed",
+      "sprite_sheet_path": null
+    },
+    {
+      "id": "siren-mermaid-vanity",
+      "name": "인어의 빗질 자리",
+      "rarity": "rare",
+      "sell_price": 40,
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c\\exec-1dbed9b5-1128-4ad1-88d4-fa9e08bd3682.png",
+      "storage_path": "decorations/rare/siren-mermaid-vanity_thumbnail.png",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "referenceRole": "Art style only: rounded cartoon objects, brown outline and soft cel shading",
+      "prompt": "Create a single isolated cozy aquarium game decoration thumbnail. Match the supplied Pongi image ONLY in art style: friendly rounded chibi object proportions, crisp dark warm brown outlines and warm soft cel shading, clean readable silhouette at 80px display. Do NOT copy the otter, fishing line, hook, starfish, fur or eyes. Do not add eyes or faces to inanimate furniture. Whole object centered occupying 78 percent of square canvas with generous transparent margin. True transparent alpha background, no scene, seabed, floor plane, cast shadow, text, UI, frame or checkerboard. Stationary decorative furniture, not a swimming animal. Subject: A small mermaid vanity made from an open pearly scallop shell resting on three rounded coral feet, a small upright oval seashell-rimmed mirror, a clearly visible ivory pearl comb placed on the shell table, long soft mint green seaweed hanging down the side like flowing hair, a few lavender pearls. Full miniature furniture object in three-quarter view, no actual mermaid, no face on furniture.",
+      "movement_type": "fixed",
+      "sprite_sheet_path": null
+    }
+  ]
+}

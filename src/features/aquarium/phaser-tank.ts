@@ -5,7 +5,7 @@ import Phaser from 'phaser'
 import { collectibleUrl } from '@/features/collection/api'
 import type { OwnedCollectible } from '@/features/collection/api'
 import { InhabitantMotion } from './inhabitant-motion'
-import {canArrangeSpecies,movementSettings,shouldFlipSpecies} from './movement-settings'
+import {canArrangeSpecies,isPositionFixed,movementSettings,shouldFlipSpecies} from './movement-settings'
 import {premiumSwimFrame} from './premium-swim-frame'
 import {decorationGeometry} from './decoration-geometry'
 import {swimFrameLayout} from './swim-frame-layout'
@@ -188,7 +188,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         entry.sprite.setData('logicalSize',pose.size)
         entry.sprite.setOrigin(flipped?1-layout.originX:layout.originX,layout.originY)
           .setPosition(pose.x + pose.size / 2, pose.y + pose.size / 2)
-          .setDisplaySize(pose.size*layout.scale, pose.size*layout.scale).setAngle(pose.angle+(canArrangeSpecies(entry.motion.item.species)?0:Number(entry.motion.item.rotation??0)))
+          .setDisplaySize(pose.size*layout.scale, pose.size*layout.scale).setAngle(pose.angle+(isPositionFixed(entry.motion.item)||entry.motion.item.editing?0:Number(entry.motion.item.rotation??0)))
         entry.sprite.setFlipX(flipped)
       }
       if(selectedId){const entry=entries.get(selectedId);if(entry){const bounds=entry.sprite.getBounds();onSelectionPosition?.(selectedId,bounds.centerX,bounds.top)}}

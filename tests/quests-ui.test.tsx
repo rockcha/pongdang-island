@@ -92,3 +92,15 @@ it('shows growth rewards without a reset timer or all-complete bonus and claims 
  await waitFor(()=>expect(mock.claim).toHaveBeenCalledWith('growth','2000-01-01','tanks_2'))
  expect(await screen.findByRole('button',{name:'어항 2개 보유하기 보상 수령 완료'})).toBeTruthy()
 })
+it('uses the region artwork and links a regional collection goal to its filtered book',async()=>{
+ const s=state()
+ s.growth={kind:'growth',start:'2000-01-01',resetsAt:null,quests:[{id:'region_collection_pongdang',title:'퐁당섬 앞바다 개체 전부 해금하기',target:23,progress:10,complete:false,claimed:false,reward:1000,href:'/collection?region=pongdang',icon:'region:pongdang'}],bonus:0,bonusReady:false,bonusClaimed:false}
+ mock.load.mockResolvedValue(s)
+ setup();fireEvent.click(screen.getByRole('button',{name:'퀘스트'}))
+ await screen.findByRole('button',{name:'낚시 5회 30골드 받기'})
+ fireEvent.click(screen.getByRole('tab',{name:'성장'}))
+ const link=screen.getByRole('link',{name:'퐁당섬 앞바다 개체 전부 해금하기'})
+ expect(link.getAttribute('href')).toBe('/collection?region=pongdang')
+ expect(link.querySelector('img')?.getAttribute('src')).toBe('/region-icons/pongdang.svg')
+ expect(screen.getByRole('button',{name:'퐁당섬 앞바다 개체 전부 해금하기 1000골드 받기'}).hasAttribute('disabled')).toBe(true)
+})

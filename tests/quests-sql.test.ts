@@ -9,18 +9,22 @@ async function claim(kind,start,id,who=uid){return (await user('select public.cl
 async function gold(){return (await db.query('select gold from public.player_wallets where user_id=$1',[uid])).rows[0].gold}
 async function ledger(item,n=1){for(let i=0;i<n;i++)await db.query("insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values($1,gen_random_uuid(),'buy',$2,-10)",[uid,item])}
 async function attempts(n=5){for(let i=0;i<n;i++)await db.query("insert into public.fishing_attempts(user_id,operation_id,region_id,bait_id) values($1,gen_random_uuid(),'pongdang','bait')",[uid])}
+async function help(n=30,helper=uid,createdAt=new Date().toISOString()){
+ const trips=(await db.query("insert into public.fishing_expeditions(user_id,vessel_id,region_id,cargo,vessel_snapshot,returns_at,claimed_at,result) select $1,'dinghy','pongdang','{}','{}',now(),now(),'{}' from generate_series(1,$2) returning id",[helper===uid?other:uid,n])).rows
+ for(const trip of trips)await db.query("insert into app_private.expedition_boosts(expedition_id,helper_id,nickname,created_at) values($1,$2,'도우미',$3)",[trip.id,helper,createdAt])
+}
 async function catchFish(species){const id=(await db.query('insert into public.player_collectibles(user_id,species_id) values($1,$2) returning id',[uid,species])).rows[0].id;await db.query("insert into public.fishing_attempts(user_id,operation_id,region_id,bait_id,collectible_id) values($1,gen_random_uuid(),'pongdang','bait',$2)",[uid,id])}
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},60000)
 beforeEach(async()=>{await db.exec('begin');for(const [id,name]of [[uid,'퀘스트'],[other,'친구']]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,name]);await db.query("insert into public.player_wallets(user_id,gold,inventory) values($1,50000,'{\"bait\":100}') on conflict(user_id) do update set gold=excluded.gold,inventory=excluded.inventory",[id])}})
 afterEach(async()=>{await db.exec('rollback')})
 afterAll(async()=>{await db?.close()})
 it('returns requested goals and rewards with no progress for a new player',async()=>{
- const s=await state();expect(s.daily.quests).toHaveLength(6);expect(s.weekly.quests).toHaveLength(8)
+ const s=await state();expect(s.daily.quests).toHaveLength(6);expect(s.weekly.quests).toHaveLength(9)
  expect(s.daily.bonus).toBe(200);expect(s.weekly.bonus).toBe(1000)
  expect(s.daily.quests.filter(q=>q.rewardFuel).map(q=>[q.id,q.rewardFuel,q.reward])).toEqual([['post',1,0],['depart',1,0],['care',1,0]])
  expect(s.daily.quests.every(q=>!q.complete)).toBe(true)
  expect(s.weekly.quests.filter(q=>q.rewardFuel).map(q=>[q.id,q.rewardFuel,q.reward])).toEqual([['trade',3,0],['gift',5,0]])
- expect(s.weekly.quests.filter(q=>!q.rewardFuel).map(q=>q.reward)).toEqual([80,80,80,80,80,80])
+ expect(s.weekly.quests.filter(q=>!q.rewardFuel).map(q=>q.reward)).toEqual([80,80,80,80,80,80,80])
  expect(s.weekly.quests.every(q=>!q.complete)).toBe(true)
  await expect(claim('daily',s.daily.start,'fish')).rejects.toThrow(/INCOMPLETE/)
  await expect(claim('daily',s.daily.start,'all')).rejects.toThrow(/INCOMPLETE/)
@@ -114,6 +118,7 @@ it('counts real trades and sent gifts separately and pays all weekly rewards onl
  await attempts(40);await catchFish('god-devouring-leviathan')
  for(let i=0;i<10;i++){await catchFish('glass-bottle');await catchFish('rusty-mini-anchor')}
  await ledger('map:coral');await ledger('rod:bronze')
+ await help()
  const s=await state();expect(s.weekly.bonusReady).toBe(true)
  expect(s.weekly.quests.find(q=>q.id==='gift').progress).toBe(3);expect(s.weekly.quests.find(q=>q.id==='trade').progress).toBe(7)
  const before=await gold()
@@ -121,7 +126,7 @@ it('counts real trades and sent gifts separately and pays all weekly rewards onl
  expect((await db.query('select inventory from public.player_wallets where user_id=$1',[uid])).rows[0].inventory.fuel).toBe(8)
  expect((await claim('weekly',s.weekly.start,'all')).credited).toBe(1000)
  expect((await claim('weekly',s.weekly.start,'all')).credited).toBe(0)
- expect(await gold()).toBe(before+1480)
+ expect(await gold()).toBe(before+1560)
 })
 
 it('omits the weekly rod purchase for full ownership while preserving a purchase this week',async()=>{
@@ -133,12 +138,13 @@ it('omits the weekly rod purchase for full ownership while preserving a purchase
  expect((await state()).weekly.quests.find(q=>q.id==='rod').claimed).toBe(true);
 });
 
-it('adds sixteen permanent growth goals without changing daily or weekly completion requirements',async()=>{
+it('adds regional collection growth goals and one weekly help goal',async()=>{
  const s=await state()
  expect(s.growth).toMatchObject({kind:'growth',start:'2000-01-01',resetsAt:null,bonus:0,bonusReady:false})
- expect(s.growth.quests).toHaveLength(16)
+ const regions=(await db.query("select count(distinct native_region_id)::int n from public.collectible_species where kind in ('fish','trash','decoration')")).rows[0].n
+ expect(s.growth.quests).toHaveLength(16+regions)
  expect(s.growth.quests.every(q=>!q.complete&&!q.claimed)).toBe(true)
- expect(s.daily.quests).toHaveLength(6);expect(s.weekly.quests).toHaveLength(8)
+ expect(s.daily.quests).toHaveLength(6);expect(s.weekly.quests).toHaveLength(9)
  await expect(claim('growth',s.growth.start,'all')).rejects.toThrow(/INVALID_QUEST/)
  await expect(user('select app_private.growth_quest_period()')).rejects.toThrow(/permission denied/)
 })
@@ -199,4 +205,35 @@ it('uses the rebalanced permanent targets and rewards while preserving earlier c
  const before=await gold()
  expect((await claim('growth','2000-01-01','themes_3')).credited).toBe(0)
  expect(await gold()).toBe(before)
+})
+it('uses existing regional discoveries across every collectible kind and rewards completion once',async()=>{
+ const region='pongdang',id='region_collection_'+region
+ const count=(await db.query("select count(*)::int n from public.collectible_species where native_region_id=$1 and kind in ('fish','trash','decoration')",[region])).rows[0].n
+ let s=await state()
+ expect(s.growth.quests.find(q=>q.id===id)).toMatchObject({target:count,progress:0,reward:1000,icon:'region:pongdang',href:'/collection?region=pongdang',complete:false})
+ await expect(claim('growth',s.growth.start,id)).rejects.toThrow('QUEST_INCOMPLETE')
+ await db.query("insert into public.player_discoveries(user_id,species_id) select $1,id from public.collectible_species where native_region_id=$2 and kind in ('fish','trash','decoration') on conflict do nothing",[uid,region])
+ s=await state();expect(s.growth.quests.find(q=>q.id===id)).toMatchObject({complete:true,progress:count})
+ await expect(claim('growth',s.growth.start,id,other)).rejects.toThrow('QUEST_INCOMPLETE')
+ const before=await gold()
+ expect((await claim('growth',s.growth.start,id)).credited).toBe(1000)
+ expect((await claim('growth',s.growth.start,id)).credited).toBe(0)
+ expect(await gold()).toBe(before+1000)
+ await db.query('delete from public.player_discoveries where user_id=$1',[uid])
+ expect((await state()).growth.quests.find(q=>q.id===id)).toMatchObject({complete:true,claimed:true})
+})
+it('counts only help sent in the current Seoul week and pays 80 gold once at 30',async()=>{
+ const s=await state(),start=s.weekly.start
+ await help(29)
+ await help(1,uid,new Date(Date.parse(start+'T00:00:00+09:00')-1).toISOString())
+ await help(1,other)
+ let q=(await state()).weekly.quests.find(q=>q.id==='boost')
+ expect(q).toMatchObject({target:30,progress:29,complete:false,reward:80})
+ await expect(claim('weekly',start,'boost')).rejects.toThrow('QUEST_INCOMPLETE')
+ await help(1)
+ q=(await state()).weekly.quests.find(q=>q.id==='boost');expect(q.complete).toBe(true)
+ const before=await gold()
+ expect((await claim('weekly',start,'boost')).credited).toBe(80)
+ expect((await claim('weekly',start,'boost')).credited).toBe(0)
+ expect(await gold()).toBe(before+80)
 })

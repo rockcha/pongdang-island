@@ -10,8 +10,8 @@ async function earned(){return (await state()).titles.filter(t=>t.earnedAt).map(
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},60000)
 beforeEach(async()=>{await db.exec('begin');for(const [id,name]of [[uid,'낚시꾼'],[other,'친구']]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,name]);await db.query('insert into public.player_wallets(user_id,gold) values($1,50000)',[id])}})
 afterEach(async()=>{await db.exec('rollback')});afterAll(async()=>{await db?.close()})
-it('lists all 119 titles and forbids equipping an unearned title',async()=>{
- const s=await state();expect(s.titles).toHaveLength(119);expect(s.titles.filter(t=>t.category==='growth')).toHaveLength(52)
+it('lists all 130 titles and forbids equipping an unearned title',async()=>{
+ const s=await state();expect(s.titles).toHaveLength(130);expect(s.titles.filter(t=>t.category==='growth')).toHaveLength(55)
  expect(s.equipped).toBe('beginner');expect(s.titles.filter(t=>t.earnedAt).map(t=>t.id)).toEqual(['beginner'])
  await expect(user("select public.equip_title('fishing-4')")).rejects.toThrow(/NOT_EARNED/)
 })
@@ -309,4 +309,84 @@ it('requires two mythic fish in a single claimed harbor voyage, not separate tri
  expect(await earned()).not.toContain('challenge-captain-really')
  await harborCatch('neoul-boat','bait','pongdang',[{id:crypto.randomUUID(),species:{id:'muk-hyeonmu',kind:'fish',rarity:'mythic'}},{id:crypto.randomUUID(),species:{id:'muk-hyeonmu',kind:'fish',rarity:'mythic'}}])
  expect(await earned()).toContain('challenge-captain-really')
+})
+async function preparedFailures(n,reason='minigame',who=uid,finished=true){
+ await db.query("insert into app_private.prepared_fishing_casts(user_id,operation_id,region_id,bait_id,eligible,species_id,rarity,wait_seconds,failure_at,failure_reason,expires_at,finished_at,result) select $1,gen_random_uuid(),'pongdang','bait',true,'orange-clownfish','common',3,4,'escape',now()+interval '1 hour',case when $4 then now() else null end,jsonb_build_object('failure_reason',$3::text) from generate_series(1,$2)",[who,n,reason,finished])
+}
+it('awards operation failure titles at 10 and 50 without counting chance failures or unfinished casts',async()=>{
+ await preparedFailures(9)
+ await preparedFailures(20,'escape')
+ await preparedFailures(1,'expired')
+ await preparedFailures(1,'minigame',other)
+ await preparedFailures(1,'minigame',uid,false)
+ expect(await earned()).not.toContain('operation-failure-1')
+ await preparedFailures(1)
+ expect(await earned()).toContain('operation-failure-1')
+ await preparedFailures(39)
+ expect(await earned()).not.toContain('operation-failure-2')
+ await preparedFailures(1)
+ expect(await earned()).toContain('operation-failure-2')
+ await expect(user('select app_private.everyday_title_metrics($1)',[other])).rejects.toThrow('permission denied')
+})
+it('counts only direct fishing failures and immediate recovery catches',async()=>{
+ for(let i=0;i<29;i++)await log({at:new Date(Date.UTC(2026,9,19,12,0,i)).toISOString()})
+ await log({source:'expedition'})
+ expect(await earned()).not.toContain('empty-hook')
+ await log({at:'2026-10-19T12:01:00Z'})
+ expect(await earned()).toContain('empty-hook')
+ for(let i=0;i<19;i++){
+  await log({at:new Date(Date.UTC(2026,9,20,12,i,0)).toISOString()})
+  await log({at:new Date(Date.UTC(2026,9,20,12,i,1)).toISOString(),kind:'fish',rarity:'common',species:'sand-goby'})
+  await log({at:new Date(Date.UTC(2026,9,20,12,i,2)).toISOString(),kind:'fish',rarity:'common',species:'sand-goby'})
+ }
+ expect(await earned()).not.toContain('cast-again')
+ await log({at:'2026-10-20T13:00:00Z'})
+ await log({at:'2026-10-20T13:00:01Z',kind:'fish',rarity:'common',species:'sand-goby'})
+ expect(await earned()).toContain('cast-again')
+})
+async function post(){return (await db.query("insert into public.board_posts(author_id,title,body) values($1,'바다 이야기','오늘의 바다') returning id",[uid])).rows[0].id}
+it('awards board writing titles at 1 and 30 and queues the author',async()=>{
+ await db.exec('delete from app_private.title_dirty')
+ await post()
+ expect((await db.query('select user_id from app_private.title_dirty')).rows).toEqual([{user_id:uid}])
+ expect((await user('select public.sync_titles() n')).rows[0].n).toBeGreaterThan(0)
+ expect(await earned()).toContain('community-first-word')
+ for(let i=0;i<28;i++)await post()
+ expect(await earned()).not.toContain('community-storyteller')
+ await post();expect(await earned()).toContain('community-storyteller')
+})
+it('counts other players likes on posts, excluding self votes, dislikes and comments',async()=>{
+ const own=await post(),disliked=await post(),commentPost=await post()
+ await db.query('insert into public.board_reactions(user_id,post_id,value) values($1,$2,1),($3,$4,-1)',[uid,own,other,disliked])
+ const comment=(await db.query("insert into public.board_comments(author_id,post_id,body) values($1,$2,'답글') returning id",[uid,commentPost])).rows[0].id
+ await db.query('insert into public.board_reactions(user_id,post_id,comment_id,value) values($1,$2,$3,1)',[other,commentPost,comment])
+ expect((await db.query('select app_private.everyday_title_metrics($1) m',[uid])).rows[0].m.community_likes).toBe(0)
+ let last
+ for(let i=0;i<19;i++){last=await post();await db.query('insert into public.board_reactions(user_id,post_id,value) values($1,$2,1)',[other,last])}
+ expect(await earned()).not.toContain('community-empathy')
+ await db.exec('delete from app_private.title_dirty')
+ await db.query('update public.board_reactions set value=1 where user_id=$1 and post_id=$2',[other,disliked])
+ expect((await db.query('select user_id from app_private.title_dirty')).rows).toEqual([{user_id:uid}])
+ expect(await earned()).toContain('community-empathy')
+ await db.query('delete from public.board_reactions where user_id=$1 and post_id=$2',[other,disliked])
+ expect(await earned()).toContain('community-empathy')
+ for(let i=0;i<81;i++){last=await post();await db.query('insert into public.board_reactions(user_id,post_id,value) values($1,$2,1)',[other,last])}
+ expect(await earned()).toContain('community-heart-angler')
+ expect((await user('select public.title_state() s',[],other)).rows[0].s.titles.find(t=>t.id==='community-heart-angler').earnedAt).toBeNull()
+})
+it('unlocks the three merchant titles only from completed delivery records',async()=>{
+ async function delivery(i){
+  await db.query("insert into app_private.merchant_days(day) values(date '2020-01-01'+$1::integer) on conflict do nothing",[i])
+  const row=(await db.query("insert into app_private.merchant_orders(day,slot,tier,items,base_gold,reward_gold,completed_by,completed_at) values(date '2020-01-01'+$1::integer,1,'small',jsonb_build_array(jsonb_build_object('speciesId','orange-clownfish','quantity',1,'rarity','common')),10,15,$2,now()) returning id,day",[i,uid])).rows[0]
+  await db.query("insert into app_private.merchant_deliveries(user_id,operation_id,order_id,day,gold,collectible_ids) values($1,gen_random_uuid(),$2,$3,15,'{}')",[uid,row.id,row.day])
+ }
+ for(let i=0;i<9;i++)await delivery(i)
+ expect(await earned()).not.toContain('merchant-regular')
+ await delivery(9);expect(await earned()).toContain('merchant-regular')
+ for(let i=10;i<49;i++)await delivery(i)
+ expect(await earned()).not.toContain('merchant-trusted')
+ await delivery(49);expect(await earned()).toContain('merchant-trusted')
+ for(let i=50;i<99;i++)await delivery(i)
+ expect(await earned()).not.toContain('merchant-solver')
+ await delivery(99);expect(await earned()).toContain('merchant-solver')
 })

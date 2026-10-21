@@ -106,3 +106,17 @@ it('animates rooted anemone tentacles while keeping decoration placement and rot
  expect(b.frame).not.toBe(a.frame)
  expect({...b,frame:0}).toEqual({...a,frame:0})
 })
+it('pins trash at the saved location and manual rotation across taps, time and reloads',()=>{
+ const trash={...item({kind:'trash',movement_type:'swim'}),position_x:.3,position_y:.6,rotation:75,scale:1.2,position_locked:true}
+ const motion=new InhabitantMotion(trash)
+ const first={...motion.update(0,0,400,600)}
+ motion.flee(first.x,first.y,0,180)
+ expect(motion.update(100,.1,400,600)).toEqual(first)
+ expect(first.angle).toBe(75)
+ expect(new InhabitantMotion(trash).update(0,0,400,600)).toEqual(first)
+ motion.setItem({...trash,position_locked:false},101,400,600)
+ const released={...motion.update(101,.1,400,600)}
+ const later={...motion.update(104,.1,400,600)}
+ expect(later.angle).not.toBe(released.angle)
+ expect(Math.hypot(later.x-released.x,later.y-released.y)).toBeGreaterThan(0)
+})

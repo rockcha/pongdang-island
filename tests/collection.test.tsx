@@ -20,6 +20,13 @@ async function open(add?:()=>void){
  await screen.findByRole('article',{name:'공통 물고기'})
 }
 const cards=()=>within(screen.getByRole('list',{name:'도감 개체'})).queryAllByRole('article').map(card=>card.getAttribute('aria-label'))
+it('opens the region requested by a collection growth quest',async()=>{
+ load.mockResolvedValue({items:[],catalog:[decoration,native,shared,map]})
+ render(<CollectionBook initialRegion="coral"/>)
+ await screen.findByRole('article',{name:'산호 물고기'})
+ expect(cards()).toEqual(['산호 물고기'])
+ expect(screen.getByText('발견 1/1')).toBeTruthy()
+})
 
 it('previews undiscovered creatures in color without changing discovery records',async()=>{
  load.mockResolvedValue({items:[],catalog:[decoration,native,shared,map]})

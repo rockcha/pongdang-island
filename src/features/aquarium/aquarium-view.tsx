@@ -67,6 +67,7 @@ export function AquariumView(props: Props) {
     anchor: { x: number; y: number }
   } | null>(null)
   const toolbar = useRef<HTMLDivElement>(null)
+  const infoAnchor = useRef<{id:string;x:number;y:number}|null>(null)
   const selectedId = useRef<string | null>(null)
   selectedId.current = editing?.id ?? null
   const [infoId, setInfoId] = useState<string | null>(null)
@@ -82,6 +83,7 @@ export function AquariumView(props: Props) {
     if (busy || !props.onArrange) return
     const item = items.find((item) => item.id === id)
     if (item) {
+      infoAnchor.current = null
       const current = editing?.id === id ? { ...item, ...editing.value } : item
       const g = decorationGeometry(current, dimensions.width, dimensions.height)
       const value = {
@@ -90,6 +92,7 @@ export function AquariumView(props: Props) {
         rotation: Number(current.rotation ?? 0),
         scale: Number(current.scale ?? 1),
         flipped: current.flipped ?? false,
+        ...(item.species.kind==='trash'?{position_locked:current.position_locked??false}:{}),
       }
       setEditing({
         id,
@@ -152,7 +155,7 @@ export function AquariumView(props: Props) {
     }
   }
   // Screen-space controls stay the same size regardless of decoration scale.
-  const toolbarWidth = 176
+  const toolbarWidth = decoration?.species.kind==='trash'?212:decoration && canArrangeSpecies(decoration.species) ? 176 : 112
   const toolbarX =
     geometry && editing
       ? Math.max(
@@ -163,10 +166,10 @@ export function AquariumView(props: Props) {
   const toolbarY =
     geometry && editing
       ? Math.max(
-          8,
+          (toolbar.current?.offsetHeight || 44) + 8,
           Math.min(
-            dimensions.height - 52,
-            editing.anchor.y - (decoration && canArrangeSpecies(decoration.species) ? 94 : 52),
+            dimensions.height - 8,
+            editing.anchor.y - 6,
           ),
         )
       : 8
@@ -246,10 +249,15 @@ export function AquariumView(props: Props) {
           onSelectDecoration={selectDecoration}
           onSelectionPosition={(id, x, y) => {
             if (id !== selectedId.current || !toolbar.current) return
+            if (decoration && !canArrangeSpecies(decoration.species)) {
+              infoAnchor.current ??= {id,x,y}
+              x = infoAnchor.current.x
+              y = infoAnchor.current.y
+            }
             const element = toolbar.current
             const width = glass.current?.clientWidth ?? dimensions.width
             element.style.left = `${Math.max(toolbarWidth / 2 + 8, Math.min(width - toolbarWidth / 2 - 8, x))}px`
-            element.style.top = `${Math.max(element.offsetHeight + 8, y - 8)}px`
+            element.style.top = `${Math.max(element.offsetHeight + 8, Math.min((glass.current?.clientHeight || dimensions.height) - 8, y - 6))}px`
           }}
           onBackgroundTap={() => setEditing(null)}
           onNavigate={(direction) => {
@@ -279,6 +287,7 @@ export function AquariumView(props: Props) {
                 name={decoration.species.name}
                 value={editing.value}
                 busy={busy}
+                allowPositionLock={decoration.species.kind==='trash'}
                 onChange={changeDecoration}
               />
             )}

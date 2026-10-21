@@ -178,7 +178,7 @@ export function AquariumPage() {
       try {
         await placeCollectible(id, tankId, x, y)
       } catch {
-        toast.error('위치를 저장하지 못했어요. 22번 SQL 적용과 연결을 확인해주세요.')
+        toast.error('위치를 저장하지 못했어요. 연결을 확인하고 다시 옮겨주세요.')
       }
     })
     placementQueue.current.set(id, operation)

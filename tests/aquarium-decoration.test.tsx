@@ -3,18 +3,21 @@ import { afterEach, expect, it, vi } from 'vitest'
 import { AquariumView } from '../src/features/aquarium/aquarium-view'
 import type { OwnedCollectible } from '../src/features/collection/api'
 
-const mock = vi.hoisted(() => ({ items: [] as unknown[] }))
+const mock = vi.hoisted(() => ({ items: [] as unknown[],position:undefined as undefined|((id:string,x:number,y:number)=>void) }))
 vi.mock('../src/features/aquarium/tank-inhabitants', () => ({
   TankInhabitants: ({
     items,
     onSelectDecoration,
     onBackgroundTap,
+    onSelectionPosition,
   }: {
     items: OwnedCollectible[]
     onSelectDecoration: (id: string) => void
     onBackgroundTap: () => void
+    onSelectionPosition?: (id:string,x:number,y:number)=>void
   }) => {
     mock.items = items
+    mock.position = onSelectionPosition
     return (
       <>
         <button onClick={() => onSelectDecoration(items[0].id)}>수조 장식물 클릭</button>
@@ -53,6 +56,35 @@ const decoration: OwnedCollectible = {
   },
 }
 afterEach(cleanup)
+it('keeps fish info near the initial selection without following subsequent swim positions',()=>{
+ const fish={...decoration,id:'fish',species:{...decoration.species,kind:'fish' as const,movement_type:'swim' as const,speed:.05}}
+ render(<AquariumView name="어항" items={[fish]} busy={false} onPlace={()=>{}} onArrange={async()=>{}} onSell={async()=>{}}/>)
+ fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
+ const toolbar=screen.getByRole('button',{name:'정보 보기'}).parentElement!
+ const glass=screen.getByTestId('aquarium-glass')
+ Object.defineProperties(glass,{clientWidth:{value:320},clientHeight:{value:560}})
+ mock.position?.('fish',150,250)
+ expect(toolbar.style.left).toBe('150px')
+ expect(toolbar.style.top).toBe('244px')
+ mock.position?.('fish',220,400)
+ expect(toolbar.style.left).toBe('150px')
+ expect(toolbar.style.top).toBe('244px')
+ fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
+ mock.position?.('fish',220,400)
+ expect(toolbar.style.left).toBe('220px')
+ expect(toolbar.style.top).toBe('394px')
+})
+it('shows trash transform controls and saves the position lock from its toolbar',async()=>{
+ const trash={...decoration,id:'bottle',species:{...decoration.species,kind:'trash' as const,movement_type:'swim' as const,speed:.03}},arrange=vi.fn(async()=>{})
+ render(<AquariumView name="어항" items={[trash]} busy={false} onPlace={()=>{}} onArrange={arrange} onSell={async()=>{}}/>)
+ fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
+ expect(screen.getByRole('button',{name:'정보 보기'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'시계 방향 15도 회전'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'크기 키우기'})).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'위치 고정'}))
+ await waitFor(()=>expect(arrange).toHaveBeenCalledWith('bottle',expect.objectContaining({position_locked:true,rotation:45,scale:.5})))
+ expect(await screen.findByRole('button',{name:'위치 고정 해제'})).toBeTruthy()
+})
 it('switches tanks with visible arrows and keyboard while respecting the first and last tank', () => {
   const buy = vi.fn(),
     navigate = vi.fn()

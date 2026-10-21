@@ -1,4 +1,4 @@
-import type {Species} from '@/features/collection/api'
+import type {Species,OwnedCollectible} from '@/features/collection/api'
 import reviewedArtwork from './artwork-facing.json'
 
 const artworkFacing = new Map(reviewedArtwork.map(art => [art.path, art.facing]))
@@ -21,5 +21,8 @@ export function shouldFlipSpecies(species:Species,direction:number){
 }
 
 export function canArrangeSpecies(species:Species){
- return species.kind==='decoration'||(species.kind==='fish'&&species.movement_type==='fixed')
+ return species.kind==='decoration'||species.kind==='trash'||(species.kind==='fish'&&species.movement_type==='fixed')
+}
+export function isPositionFixed(item:OwnedCollectible){
+ return item.species.kind==='trash'?item.position_locked===true:canArrangeSpecies(item.species)
 }

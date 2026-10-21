@@ -47,7 +47,11 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
     void import('./phaser-tank').then(({ createTankRenderer }) => {
       if (!active) return
       try {
-        renderer.current = createTankRenderer(parent, latest.current, reduced.matches, message => { if (active) setError(message) },(id,x,y)=>placement.current?.(id,x,y),direction=>navigation.current?.(direction),(id,x,y)=>selection.current?.(id,x,y),()=>backgroundTap.current?.(),(id,x,y)=>position.current?.(id,x,y))
+        renderer.current = createTankRenderer(parent, latest.current, reduced.matches, message => { if (active) setError(message) },(id,x,y)=>placement.current?.(id,x,y),direction=>navigation.current?.(direction),(id,x,y)=>selection.current?.(id,x,y),()=>backgroundTap.current?.(),(id,x,y)=>{
+          const bounds=parent.getBoundingClientRect(),viewport=zoomViewport.current?.getBoundingClientRect()
+          const scaleX=parent.clientWidth?bounds.width/parent.clientWidth:1,scaleY=parent.clientHeight?bounds.height/parent.clientHeight:1
+          position.current?.(id,bounds.left-(viewport?.left??bounds.left)+x*scaleX,bounds.top-(viewport?.top??bounds.top)+y*scaleY)
+        })
         visibility()
       } catch { setError('어항 화면을 시작하지 못했어요. 새로고침해주세요.') }
     }).catch(() => { if (active) setError('어항 화면을 불러오지 못했어요. 새로고침해주세요.') })

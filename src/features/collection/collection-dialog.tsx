@@ -46,12 +46,12 @@ export function CollectionDialog({ onAddTemporary,fishing=false,disabled=false,d
  </Dialog>
 }
 
-export function CollectionBook({ onAddTemporary,previewAll=false }: CollectionDialogProps & {previewAll?:boolean}) {
+export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='all' }: CollectionDialogProps & {previewAll?:boolean;initialRegion?:string}) {
  const [state, setState] = useState<CollectionState | null>(null)
  const [error, setError] = useState('')
  const [tab, setTab] = useState<'all' | CollectibleKind>('all')
  const [rarity, setRarity] = useState<'all' | Rarity>('all')
- const [habitat, setHabitat] = useState('all')
+ const [habitat, setHabitat] = useState(initialRegion)
  const [detail,setDetail] = useState<CatalogEntry|null>(null)
  const [attempt, setAttempt] = useState(0)
  const [mapPrices,setMapPrices]=useState<Record<string,number>>({})

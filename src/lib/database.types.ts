@@ -114,6 +114,7 @@ export type Database = {
       gift_detail:{Args:{p_gift_id:string};Returns:import('@/features/gifts/api').GiftRecord}
       place_collectible: { Args: {p_collectible_id:string;p_tank_id:string;p_x:number;p_y:number}; Returns:{id:string;position_x:number;position_y:number} }
       arrange_decoration: { Args:{p_collectible_id:string;p_tank_id:string;p_x:number;p_y:number;p_rotation:number;p_scale:number}; Returns:import('@/features/collection/api').DecorationPlacement & {id:string} }
+      arrange_collectible_with_lock:{Args:{p_collectible_id:string;p_tank_id:string;p_x:number;p_y:number;p_rotation:number;p_scale:number;p_flipped:boolean;p_position_locked:boolean};Returns:import('@/features/collection/api').DecorationPlacement & {id:string}}
       sell_collectibles: { Args: {p_collectible_ids:string[];p_operation_id:string}; Returns:import('@/features/gold/api').GoldState & {delta:number} }
       collection_state: { Args: Record<string, never>; Returns: import('@/features/collection/api').CollectionState }
       fishing_state: { Args: Record<string, never>; Returns: import('@/features/fishing/api').FishingState }

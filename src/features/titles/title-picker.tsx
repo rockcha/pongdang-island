@@ -7,7 +7,7 @@ import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle,DialogTr
 import {useSocial} from '@/features/social/social-provider'
 import {equipTitle,loadTitles,type TitleState} from './api'
 
-const categories=[['all','전체'],['growth','성장'],['moment','특별한 순간'],['collection','수집·꾸미기'],['social','친구']] as const
+const categories=[['all','전체'],['growth','성장'],['moment','특별한 순간'],['collection','수집·꾸미기'],['social','소셜']] as const
 export function TitlePicker({page=false}:{page?:boolean}){
  const {profile,refresh}=useSocial();const [params,setParams]=useSearchParams()
  const [open,setOpen]=useState(page),[data,setData]=useState<TitleState|null>(null),[category,setCategory]=useState('all'),[owned,setOwned]=useState(false),[loading,setLoading]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState(''),[retry,setRetry]=useState(0)

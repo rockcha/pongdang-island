@@ -1,28 +1,22 @@
 /* Available before React loads; shared with the authentication loader. */
-.island-startup{box-sizing:border-box;display:flex;min-height:100svh;align-items:center;justify-content:center;flex-direction:column;padding:max(32px,env(safe-area-inset-top)) 24px max(32px,env(safe-area-inset-bottom));background:radial-gradient(ellipse at 50% 38%,#fffdf8,#fff8ee 70%);color:#49382d;font-family:system-ui,-apple-system,sans-serif;text-align:center}
+.island-startup{box-sizing:border-box;display:flex;min-height:100svh;align-items:center;justify-content:center;flex-direction:column;padding:max(24px,env(safe-area-inset-top)) 24px max(32px,env(safe-area-inset-bottom));background:#fff8ee;color:#49382d;font-family:'Gowun Dodum',system-ui,-apple-system,sans-serif;text-align:center}
 #app-startup{position:fixed;inset:0;z-index:2147483647}
 #app-startup[hidden]{display:none!important}
-.island-startup-art{position:relative;width:180px;height:172px;margin-bottom:24px}
-.island-startup-art::before{content:'';position:absolute;inset:16px 8px 0;border-radius:50%;background:#efe2d2}
-.island-startup-art::after{content:'';position:absolute;width:88px;height:10px;bottom:7px;left:46px;border-radius:50%;background:#805d3d20}
-.island-startup-art img{position:relative;z-index:1;display:block;width:100%;height:100%;object-fit:contain;animation:island-startup-float 3s ease-in-out infinite}
-.island-startup-brand{margin:0 0 10px;font-size:11px;letter-spacing:.28em;color:#a18265}
-.island-startup-title{margin:0;font-size:clamp(22px,6vw,28px);font-weight:600;letter-spacing:-.05em;line-height:1.5}
-.island-startup-detail{max-width:280px;margin:10px 0 0;font-size:13px;line-height:1.8;color:#95877b;word-break:keep-all}
-.island-startup{font-family:'Gowun Dodum',sans-serif}
-.island-startup-title{font-weight:400;letter-spacing:-.025em}
-.island-startup-detail{font-size:14px}
-.island-startup-progress{width:min(176px,60vw);height:6px;margin-top:28px;overflow:hidden;border-radius:999px;background:#a77b4d24}
-.island-startup-progress span{display:block;width:42%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#d1b08b,#a57648);animation:island-startup-progress 1.9s ease-in-out infinite}
-.island-startup button{min-height:44px;max-width:280px;margin-top:20px;border:0;border-radius:16px;padding:12px 28px;background:#ebd9c3;color:#704c30;font:inherit;font-size:14px;cursor:pointer}
+.island-startup-art{width:clamp(176px,52vw,248px);aspect-ratio:1;margin-bottom:24px}
+.island-startup-art img{display:block;width:100%;height:100%;object-fit:contain;animation:island-startup-float 3s ease-in-out infinite}
+.island-startup-brand{margin:0;font-size:30px;font-weight:400;letter-spacing:.04em;line-height:1.5}
+.island-startup-tagline{margin:8px 0 0;font-size:14px;line-height:1.8;letter-spacing:-.02em;color:#846c57;word-break:keep-all}
+.island-startup-title{max-width:280px;margin:28px 0 0;font-size:12px;font-weight:400;line-height:1.7;color:#95877b;word-break:keep-all}
+.island-startup-detail{max-width:280px;margin:8px 0 0;font-size:12px;line-height:1.8;color:#95877b;word-break:keep-all}
+.island-startup-detail:empty{display:none}
+.island-startup-progress{width:72px;height:3px;margin-top:12px;overflow:hidden;border-radius:999px;background:#a77b4d20}
+.island-startup-progress span{display:block;width:42%;height:100%;border-radius:inherit;background:#ad805b;animation:island-startup-progress 1.9s ease-in-out infinite}
+.island-startup button{min-height:44px;max-width:280px;margin-top:20px;border:0;border-radius:10px;padding:12px 28px;background:#ebd9c3;color:#704c30;font:inherit;font-size:13px;cursor:pointer}
 .island-startup button:focus-visible{outline:2px solid #a57648;outline-offset:4px}
 .island-startup button:disabled{opacity:.5}
 #app-startup-repair{margin-top:8px;background:transparent;color:#95877b;font-size:12px;text-decoration:underline;text-underline-offset:4px}
 .island-startup:has(#app-startup-retry:not([hidden])) .island-startup-progress{display:none}
-.dark .island-startup{background:radial-gradient(ellipse at 50% 38%,#302b23,#241c17 70%);color:#f4eadc}
-.dark .island-startup-art::before{background:#514032}
-.dark .island-startup-detail,.dark .island-startup-brand{color:#c2ad98}
-@keyframes island-startup-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes island-startup-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 @keyframes island-startup-progress{0%{transform:translateX(-105%)}100%{transform:translateX(345%)}}
 @media(prefers-reduced-motion:reduce){.island-startup-art img,.island-startup-progress span{animation:none}.island-startup-progress span{width:50%;margin:auto}}
-@media(max-height:500px){.island-startup-art{width:120px;height:112px;margin-bottom:12px}.island-startup-art::after{left:25px;width:70px}.island-startup-progress{margin-top:16px}}
+@media(max-height:500px){.island-startup-art{width:112px;margin-bottom:8px}.island-startup-brand{font-size:24px}.island-startup-tagline{margin-top:4px;font-size:12px}.island-startup-title{margin-top:16px}}

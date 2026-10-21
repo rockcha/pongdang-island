@@ -51,6 +51,17 @@ it('shows a helpful error when the renderer cannot start',async()=>{
  render(<TankInhabitants items={[]}/> )
  expect(await screen.findByRole('alert')).toHaveProperty('textContent','어항 화면을 시작하지 못했어요. 새로고침해주세요.')
 })
+it('places selection controls in screen coordinates after the tank has been zoomed',async()=>{
+ const position=vi.fn()
+ const view=render(<TankInhabitants items={[]} onSelectionPosition={position}/>)
+ await waitFor(()=>expect(mock.create).toHaveBeenCalledOnce())
+ const viewport=view.container.firstElementChild as HTMLElement,parent=mock.create.mock.calls[0][0] as HTMLElement
+ Object.defineProperties(parent,{clientWidth:{value:300},clientHeight:{value:500}})
+ vi.spyOn(viewport,'getBoundingClientRect').mockReturnValue({left:10,top:20,width:300,height:500} as DOMRect)
+ vi.spyOn(parent,'getBoundingClientRect').mockReturnValue({left:-40,top:-80,width:600,height:1000} as DOMRect)
+ mock.create.mock.calls[0][8]('fish',100,200)
+ expect(position).toHaveBeenCalledWith('fish',150,300)
+})
 it('resizes for density changes and removes resize listeners when unmounted',async()=>{
  const listeners=new Map<string,()=>void>()
  const media=vi.fn((query:string)=>({matches:false,addEventListener(_event:string,handler:()=>void){listeners.set(query,handler)},removeEventListener(){}}))

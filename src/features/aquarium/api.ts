@@ -40,7 +40,8 @@ export async function placeCollectible(id:string,tankId:string,x:number,y:number
  return data
 }
 export async function arrangeDecoration(id:string,tankId:string,placement:DecorationPlacement){
- const {data,error}=await createClient().rpc('arrange_collectible',{p_collectible_id:id,p_tank_id:tankId,p_x:placement.position_x,p_y:placement.position_y,p_rotation:placement.rotation,p_scale:placement.scale,p_flipped:placement.flipped??false})
+ const args={p_collectible_id:id,p_tank_id:tankId,p_x:placement.position_x,p_y:placement.position_y,p_rotation:placement.rotation,p_scale:placement.scale,p_flipped:placement.flipped??false}
+ const {data,error}=placement.position_locked===undefined?await createClient().rpc('arrange_collectible',args):await createClient().rpc('arrange_collectible_with_lock',{...args,p_position_locked:placement.position_locked})
  if(error)throw error
  return data
 }

@@ -15058,6 +15058,18 @@
       "sort_order": 28
     },
     {
+      "id": "cast-again",
+      "name": "그래도 던진다",
+      "tier": 2,
+      "category": "moment",
+      "description": "직접 낚시 실패 직후 다음 낚시에서 포획 성공 20회",
+      "metric": "recovery_catches",
+      "target": 20,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 603
+    },
+    {
       "id": "challenge-buffet-member",
       "name": "바다 뷔페 연간회원",
       "tier": 4,
@@ -15418,6 +15430,54 @@
       "sort_order": 3007
     },
     {
+      "id": "community-empathy",
+      "name": "작은 공감 수집가",
+      "tier": 1,
+      "category": "social",
+      "description": "자유게시판 내 글에 받은 좋아요 20개",
+      "metric": "community_likes",
+      "target": 20,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 606
+    },
+    {
+      "id": "community-first-word",
+      "name": "방파제의 첫마디",
+      "tier": 1,
+      "category": "social",
+      "description": "자유게시판 첫 게시글 작성",
+      "metric": "community_posts",
+      "target": 1,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 604
+    },
+    {
+      "id": "community-heart-angler",
+      "name": "마음을 낚는 사람",
+      "tier": 3,
+      "category": "social",
+      "description": "자유게시판 내 글에 받은 좋아요 100개",
+      "metric": "community_likes",
+      "target": 100,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 607
+    },
+    {
+      "id": "community-storyteller",
+      "name": "퐁당섬 이야기꾼",
+      "tier": 2,
+      "category": "social",
+      "description": "자유게시판 게시글 30개 작성",
+      "metric": "community_posts",
+      "target": 30,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 605
+    },
+    {
       "id": "dawn-1",
       "name": "새벽에 드리운 낚싯줄",
       "tier": 1,
@@ -15536,6 +15596,18 @@
       "extra_metric": null,
       "extra_target": null,
       "sort_order": 47
+    },
+    {
+      "id": "empty-hook",
+      "name": "오늘도 빈 바늘",
+      "tier": 1,
+      "category": "moment",
+      "description": "직접 낚시 실패 누적 30회",
+      "metric": "fishing_failures",
+      "target": 30,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 602
     },
     {
       "id": "first-legend",
@@ -15958,6 +16030,42 @@
       "sort_order": 206
     },
     {
+      "id": "merchant-regular",
+      "name": "상인의 단골손님",
+      "tier": 1,
+      "category": "growth",
+      "description": "바다 상인의 의뢰 10회 납품 완료",
+      "metric": "challenge_deliveries",
+      "target": 10,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 608
+    },
+    {
+      "id": "merchant-solver",
+      "name": "항구의 해결사",
+      "tier": 3,
+      "category": "growth",
+      "description": "바다 상인의 의뢰 100회 납품 완료",
+      "metric": "challenge_deliveries",
+      "target": 100,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 610
+    },
+    {
+      "id": "merchant-trusted",
+      "name": "믿고 맡기는 손",
+      "tier": 2,
+      "category": "growth",
+      "description": "바다 상인의 의뢰 50회 납품 완료",
+      "metric": "challenge_deliveries",
+      "target": 50,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 609
+    },
+    {
       "id": "midnight",
       "name": "자정의 경계에서",
       "tier": 2,
@@ -16064,6 +16172,30 @@
       "extra_metric": null,
       "extra_target": null,
       "sort_order": 203
+    },
+    {
+      "id": "operation-failure-1",
+      "name": "손이 꼬인 사람",
+      "tier": 1,
+      "category": "moment",
+      "description": "낚시 조작 실패 누적 10회",
+      "metric": "operation_failures",
+      "target": 10,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 600
+    },
+    {
+      "id": "operation-failure-2",
+      "name": "줄과 밀당하는 사람",
+      "tier": 2,
+      "category": "moment",
+      "description": "낚시 조작 실패 누적 50회",
+      "metric": "operation_failures",
+      "target": 50,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 601
     },
     {
       "id": "quest-1",

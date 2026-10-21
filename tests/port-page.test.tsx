@@ -3,6 +3,7 @@ import {act,cleanup,fireEvent,render,screen,waitFor,within} from '@testing-libra
 import {MemoryRouter} from 'react-router'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {PortPage} from '@/features/port/port-page'
+import {readDockRegion,rememberDockRegion} from '@/features/port/dock-region'
 const mock=vi.hoisted(()=>({load:vi.fn(),action:vi.fn(),refresh:vi.fn(),toast:vi.fn()}))
 vi.mock('sonner',()=>({toast:{success:mock.toast}}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'captain'}}})}))
@@ -83,6 +84,20 @@ it('selects an unlocked sea before departure and confirms the same destination',
  fireEvent.click(within(confirm).getByRole('button',{name:'확인'}))
  await waitFor(()=>expect(mock.action).toHaveBeenCalledWith(expect.objectContaining({p_action:'depart',p_region_id:'coral'})))
  expect(await screen.findByText('산호빛 여울')).toBeTruthy()
+ expect(readDockRegion('captain',1,[{id:'coral',unlocked:true}])).toBe('coral')
+})
+it('restores the destination for the selected dock after reopening the page',async()=>{
+ const regions=[{id:'pongdang',name:'퐁당섬 앞바다',unlocked:true},{id:'coral',name:'산호빛 여울',unlocked:true}]
+ mock.load.mockResolvedValue({...base,regions})
+ rememberDockRegion('captain',1,'coral')
+ rememberDockRegion('captain',2,'pongdang')
+ const view=show()
+ fireEvent.click(await screen.findByRole('button',{name:'낚시용 뗏목 출항 준비'}))
+ expect(within(screen.getByRole('group',{name:'조업 해역'})).getByRole('button',{name:'산호빛 여울'}).getAttribute('aria-pressed')).toBe('true')
+ view.unmount()
+ show()
+ fireEvent.click(await screen.findByRole('button',{name:'너울 낚싯배 출항 준비'}))
+ expect(within(screen.getByRole('group',{name:'조업 해역'})).getByRole('button',{name:'퐁당섬 앞바다'}).getAttribute('aria-pressed')).toBe('true')
 })
 it('replaces a dock boat from the inventory modal while keeping exactly two dock positions',async()=>{
  const state={...base,vessels:[vessel,second,longVessel],boats:[...boats,storedBoat]}

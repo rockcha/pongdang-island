@@ -17,6 +17,7 @@ import {regionIcons} from '@/features/regions/region-icons'
 import {BoatSprite} from './boat-sprite'
 import {useHarbor} from './use-harbor'
 import {FleetDialog} from './fleet-dialog'
+import {readDockRegion} from './dock-region'
 
 export function PortPage({shipyard=false}:{shipyard?:boolean}){
  const {session}=useAuth()
@@ -29,6 +30,7 @@ function VesselStats({vessel}:{vessel:Pick<HarborVessel,'duration_minutes'|'fish
  return <><div className="grid grid-cols-2 justify-items-center gap-x-1 gap-y-2 text-[11px] text-muted-foreground"><span className="flex items-center gap-1"><img src="/app-icons/voyage-clock.png" alt="" className="size-5 object-contain"/>{voyageDuration(vessel.duration_minutes)}</span><span className="flex items-center gap-1"><img src="/app-icons/voyage-fishing.png" alt="" className="size-5 object-contain"/><span className="sr-only">낚시 </span>{vessel.fishing_count}{vessel.fishing_count_max&&vessel.fishing_count_max>vessel.fishing_count?`~${vessel.fishing_count_max}`:''}회</span><span className="col-span-2 flex items-center gap-1"><span className="sr-only">기름 </span><appArt.fuel className="size-5"/>× {vessel.fuel_cost}</span></div>{effect&&<details className="group mt-1 text-center"><summary aria-label="특수효과 보기" className="mx-auto flex min-h-11 w-fit cursor-pointer list-none items-center justify-center gap-1.5 rounded-full px-2 text-[11px] text-primary hover:bg-secondary [&::-webkit-details-marker]:hidden"><EffectIcon aria-hidden="true" className="size-4"/><span>특수 효과</span><ChevronDown aria-hidden="true" className="size-3 transition-transform group-open:rotate-180"/></summary><p className="pb-1 text-[11px] leading-5 text-primary">{effect}</p></details>}</>
 }
 function AccountPort({shipyard}:{shipyard:boolean}){
+ const {session}=useAuth()
  const harbor=useHarbor(),{wallet}=useGold()
  const [selected,setSelected]=useState<string|null>(null),[confirm,setConfirm]=useState<HarborAction|null>(null)
  const [dismissedResults,setDismissedResults]=useState<HarborResult[]|undefined>(undefined)
@@ -37,6 +39,11 @@ function AccountPort({shipyard}:{shipyard:boolean}){
  const [regionId,setRegionId]=useState('pongdang')
  const regions=state?.regions??[{id:'pongdang',name:'퐁당섬 앞바다',unlocked:true}]
  const unlockedRegions=regions.filter(r=>r.unlocked)
+ function selectBoat(id:string){
+  const boat=state?.boats.find(boat=>boat.id===id)
+  setRegionId(readDockRegion(session?.user.id??'guest',boat?.dock_slot??null,regions))
+  setSelected(id)
+ }
  const vessel=state?.boats.find(v=>v.id===selected)
  const voyage=state?.voyages.find(v=>v.boat_id===selected)
  const ready=state?.voyages.filter(v=>Date.parse(v.returns_at)<=now)??[]
@@ -63,10 +70,10 @@ function AccountPort({shipyard}:{shipyard:boolean}){
      const boat=state?.boats.find(b=>b.dock_slot===slot),trip=boat?state?.voyages.find(t=>t.boat_id===boat.id):undefined
      const isReady=!!trip&&Date.parse(trip.returns_at)<=now
      return <div key={slot} data-dock-slot={slot}>
-      <button type="button" className="absolute left-2 z-10 min-h-11 max-w-[44%] rounded-xl border border-white/50 bg-[#fff7e7]/95 px-3 py-2 text-left text-[#654932] shadow-sm backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" style={{top:slot===1?'calc(31% - 12px)':'62%'}} disabled={!state||busy||!!pending} onClick={()=>{if(boat)setSelected(boat.id);else{setFleetSlot(slot);setFleetOpen(true)}}} aria-label={boat?`${boat.name} ${boat.instance_no}호 · ${!trip?'출항 준비':isReady?'어획물 수령 가능':'조업 중'}`:`${slot}번 선착장 배 배치`}>
+      <button type="button" className="absolute left-2 z-10 min-h-11 max-w-[44%] rounded-xl border border-white/50 bg-[#fff7e7]/95 px-3 py-2 text-left text-[#654932] shadow-sm backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" style={{top:slot===1?'calc(31% - 12px)':'62%'}} disabled={!state||busy||!!pending} onClick={()=>{if(boat)selectBoat(boat.id);else{setFleetSlot(slot);setFleetOpen(true)}}} aria-label={boat?`${boat.name} ${boat.instance_no}호 · ${!trip?'출항 준비':isReady?'어획물 수령 가능':'조업 중'}`:`${slot}번 선착장 배 배치`}>
        <span className="mb-2 block border-b border-primary/15 pb-1.5 text-[11px] font-semibold text-primary">{slot}번 선착장</span><span className="block truncate text-xs">{boat?boat.name+' '+boat.instance_no+'호':'배 배치하기'}</span>{trip&&<span className="mt-1 flex items-center gap-1 text-[10px]"><img src={regionIcons[trip.region_id??'pongdang']?.src??'/region-icons/pongdang.svg'} alt="" className="size-4 object-contain"/><span className="truncate">{trip.region_name??regions.find(r=>r.id===trip.region_id)?.name}</span></span>}{!trip&&<span className="mt-1 block text-[10px] text-[#927258]">{boat?'출항하기':'항구 관리에서 선택'}</span>}{trip&&<VoyageProgress voyage={trip} now={now}/>}
       </button>
-      {boat&&<MooredBoat key={boat.id} vessel={boat} voyage={trip} now={now} index={slot-1} departure={harbor.departure} onSelect={()=>setSelected(boat.id)} onArrival={harbor.acknowledgeArrival}/>}
+      {boat&&<MooredBoat key={boat.id} vessel={boat} voyage={trip} now={now} index={slot-1} departure={harbor.departure} onSelect={()=>selectBoat(boat.id)} onArrival={harbor.acknowledgeArrival}/>}
      </div>
     })}
     {state&&!state.boats.length&&<div className="pointer-events-none absolute inset-x-6 bottom-5 rounded-xl bg-[#fff7e7]/90 p-3 text-center text-xs leading-6 text-[#795b42]">조선소에서 첫 배를 데려와 보세요.</div>}

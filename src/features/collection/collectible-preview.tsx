@@ -48,5 +48,5 @@ function Preview({species,large=false}:{species:Species;large?:boolean}) {
     return()=>{alive=false;cancelAnimationFrame(frame);image.onload=null;image.onerror=null}
   },[species,viewport])
   if(!species.sprite_sheet_path||status==='failed')return <CollectibleThumbnail fadeIn path={species.thumbnail_path} name={species.name} className={large?"aspect-square w-full max-w-80":"size-40"}/>
-  return <div className="relative aspect-square" style={{width:viewport,maxWidth:'100%'}} aria-busy={status==='loading'}>{status==='loading'&&<div aria-hidden="true" className="absolute inset-0 rounded-xl bg-secondary/50 motion-safe:animate-pulse"/>}<canvas ref={canvas} role="img" aria-label={species.name+' 움직이는 모습'} className={'size-full transition-opacity duration-150 motion-reduce:transition-none '+(status==='ready'?'opacity-100':'opacity-0')}/></div>
+  return <div className={large?'relative aspect-square':'relative size-40'} style={large?{width:viewport,maxWidth:'100%'}:undefined} aria-busy={status==='loading'}>{status==='loading'&&<div aria-hidden="true" className="absolute inset-0 rounded-xl bg-secondary/50 motion-safe:animate-pulse"/>}<canvas ref={canvas} role="img" aria-label={species.name+' 움직이는 모습'} className={'size-full transition-opacity duration-150 motion-reduce:transition-none '+(status==='ready'?'opacity-100':'opacity-0')}/></div>
 }

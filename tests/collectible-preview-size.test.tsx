@@ -18,6 +18,8 @@ it('doubles the detail canvas and drawn creature while preserving the normal pre
  const canvas=screen.getByRole('img',{name:'미리보기 움직이는 모습'}) as HTMLCanvasElement
  nextFrame(100)
  expect(canvas.width).toBe(160)
+ expect(canvas.parentElement?.style.width).toBe('')
+ expect(canvas.parentElement?.className).toContain('size-40')
  expect(drawImage.mock.calls.at(-1)?.slice(-2)).toEqual([128,128])
  view.rerender(<CollectiblePreview species={species} large/>)
  nextFrame(200)

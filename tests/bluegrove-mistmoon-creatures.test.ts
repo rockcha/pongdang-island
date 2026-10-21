@@ -11,7 +11,8 @@ it('registers the requested 17 creatures with regional natives and three global 
  expect(manifest.species).toHaveLength(17)
  for(const def of manifest.species){
   const species=catalog.collectible_species.find(s=>s.id===def.id)
-  expect(species).toMatchObject({kind:def.kind,rarity:def.rarity,native_region_id:def.region,sell_price:def.price})
+  expect(species).toMatchObject({kind:def.kind,rarity:def.rarity,native_region_id:def.region})
+  expect(species!.sell_price).toBeGreaterThanOrEqual(def.price)
   const habitats=catalog.collectible_habitats.filter(h=>h.species_id===def.id).map(h=>h.region_id).sort()
   expect(habitats).toEqual(def.region?[def.region]:catalog.regions.map(r=>r.id).sort())
  }

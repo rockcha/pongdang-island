@@ -5,6 +5,7 @@ import {randomId} from '@/lib/random-id'
 import {toast} from 'sonner'
 import {harborAction,harborError,loadHarbor} from './api'
 import type {HarborAction,HarborState} from './api'
+import {rememberDockRegion} from './dock-region'
 
 function readPending(key:string):HarborAction|null{
  try{const value=JSON.parse(localStorage.getItem(key)??'null');return value&&['buy','fuel','depart','claim','claim_all','dock','store','sell'].includes(value.p_action)&&typeof value.p_operation_id==='string'?value:null}catch{return null}
@@ -32,6 +33,10 @@ export function useHarbor(){
   lock.current=true;revision.current++;setBusy(true);setError('');remember(args)
   try{
    const data=await harborAction(args)
+   if(args.p_action==='depart'&&args.p_region_id){
+    const boat=state?.boats.find(boat=>boat.id===args.p_boat_id)
+    rememberDockRegion(session?.user.id??'guest',boat?.dock_slot??null,args.p_region_id)
+   }
    // Persist the receipt outcome even if navigation unmounted this page meanwhile.
    try{localStorage.removeItem(key)}catch{}
    if(!alive.current)return true

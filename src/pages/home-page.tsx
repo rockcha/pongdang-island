@@ -61,7 +61,7 @@ function IslandHome(){
     </>:<p className="p-8 text-center text-sm text-muted-foreground">새로운 해역을 준비하고 있어요.</p>}
    </TabsContent>
    <TabsContent value="species" className="mt-0 min-h-0 flex-1 overflow-y-auto overscroll-contain">
-    {regionError?<HomeError onRetry={()=>setRetry(v=>v+1)}/>:!loaded?<HomeLoading/>:<NewPongdangSpecies catalog={catalog}/>}
+    {regionError?<HomeError onRetry={()=>setRetry(v=>v+1)}/>:!loaded?<HomeLoading/>:<NewPongdangSpecies catalog={catalog} now={now}/>}
    </TabsContent>
    <TabsContent value="events" className="mt-0 min-h-0 flex-1 overflow-y-auto overscroll-contain">
     {eventError?<HomeError onRetry={()=>setRetry(v=>v+1)}/>:events===null?<HomeLoading/>:events.length?<div className="divide-y divide-border/60">{events.map(event=><article key={event.id} className="space-y-4 p-5"><Link to={`/square/notices/${event.id}`} className="block space-y-2 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring"><h2 className="break-words text-xl font-medium leading-7">{event.title}</h2>{eventDescription(event.body)&&<p className="text-sm leading-6 text-muted-foreground">{eventDescription(event.body)}</p>}</Link>{event.images[0]&&event.urls[event.images[0]]&&<Link to={`/square/notices/${event.id}`} className="block overflow-hidden rounded-2xl border border-border/60 bg-secondary/20"><img src={event.urls[event.images[0]]} alt={`${event.title} 포스터`} loading="lazy" className="h-auto w-full object-contain"/></Link>}</article>)}</div>:<div className="flex flex-col items-center gap-3 px-6 py-12 text-center"><appArt.noticeEvent className="size-16 opacity-60"/><p className="text-sm text-muted-foreground">새로운 이벤트를 준비하고 있어요.</p></div>}

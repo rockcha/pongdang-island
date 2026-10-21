@@ -10,12 +10,17 @@ export function catalogSql(catalog, {tables,ids} = {}) {
   }
   const statements = ['-- Generated from supabase/catalog/catalog.json. Review before migration deployment.', 'begin;', 'set constraints all deferred;']
   const managed=['regions', 'aquarium_backgrounds', 'fishing_baits', 'collectible_species',...(catalog.region_maps?['region_maps']:[]),...(catalog.fishing_rods?['fishing_rods']:[]),...(catalog.harbor_vessels?['harbor_vessels']:[]),...(catalog.title_catalog?['title_catalog']:[]),...(catalog.retained_species_details?['retained_species_details']:[])]
-  if(tables?.some(table=>!managed.includes(table)))throw new Error('Unsupported scoped catalog table')
+  if(tables?.some(table=>!managed.includes(table)&&table!=='retained_species_prices'))throw new Error('Unsupported scoped catalog table')
   if(ids&&(!tables?.length||ids.some(id=>!tables.some(table=>catalog[table].some(row=>(row.id??row.region_id)===id)))))throw new Error('Unknown scoped catalog id')
   for (const table of tables??managed) {
     const rows = ids?catalog[table].filter(row=>ids.includes(row.id??row.region_id)):catalog[table]
     if(ids&&!rows.length)continue
     if (!Array.isArray(rows) || !rows.length) throw new Error(`Empty catalog: ${table}`)
+    if(table==='retained_species_prices'){
+      if(new Set(rows.map(p=>p.id)).size!==rows.length||rows.some(p=>!/^[-a-z0-9]+$/.test(p.id)||!Number.isSafeInteger(p.sell_price)||p.sell_price<0||catalog.collectible_species.some(s=>s.id===p.id)))throw new Error('Invalid retained species price')
+      statements.push(`update public.collectible_species s set sell_price=p.sell_price from (values\n${rows.map(p=>`(${literal(p.id)},${p.sell_price})`).join(',\n')}) as p(id,sell_price) where s.id=p.id;`)
+      continue
+    }
     if(table==='retained_species_details'){
       if(new Set(rows.map(r=>r.id)).size!==rows.length||rows.some(r=>!/^[-a-z0-9]+$/.test(r.id)||Object.keys(r).sort().join(',')!=='description,id,name'||typeof r.name!=='string'||!r.name.trim()||typeof r.description!=='string'||catalog.collectible_species.some(s=>s.id===r.id)))throw new Error('Invalid retained species details')
       statements.push(`update public.collectible_species s set name=p.name,description=p.description from (values\n${rows.map(r=>`(${literal(r.id)},${literal(r.name)},${literal(r.description)})`).join(',\n')}) as p(id,name,description) where s.id=p.id;`)

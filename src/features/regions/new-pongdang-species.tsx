@@ -2,22 +2,27 @@ import {appArt} from '@/components/app-art'
 import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
 import {kindLabels,type CatalogEntry} from '@/features/collection/api'
 import {rarities} from '@/lib/game/rarity'
+import releases from './species-releases.json'
 
-// Curated October 20 release; names, descriptions and grades come from the catalog.
-const releaseIds=new Set([
- 'giseong-fish','giseong-webfoot-octopus','pongi-seahorse-rider',
- 'pongi-jellyfish','pongi-crab','pongi-hammerhead','pongi-exploration-robot',
- 'otter-furball','pongdang-merch-set','pongi-snack-wrapper',
- 'sunken-pongdang-entrance','tiny-pongi-figurine','pongdang-island-sign',
-])
+const week=7*24*60*60*1000
+export function recentSpeciesIds(now:number){
+ // A replacement image or price change must not restart a species' release window.
+ const firstRelease=new Map<string,number>()
+ for(const release of releases){
+  const time=Date.parse(release.releasedAt)
+  for(const id of release.speciesIds)firstRelease.set(id,Math.min(firstRelease.get(id)??Infinity,time))
+ }
+ return new Set([...firstRelease].filter(([,time])=>time<=now&&now<time+week).map(([id])=>id))
+}
 const grades=['mythic','epic','rare','common'] as const
 const tones={mythic:'from-amber-100/80 to-orange-50/30',epic:'from-purple-100/70 to-purple-50/20',rare:'from-sky-100/70 to-sky-50/20',common:'from-stone-100/80 to-stone-50/20'}
 const kindIcons={fish:appArt.fish,decoration:appArt.decoration,trash:appArt.trash,map:appArt.map}
-export function NewPongdangSpecies({catalog}:{catalog:CatalogEntry[]}){
- const items=catalog.filter(item=>releaseIds.has(item.id)&&item.native_region_id==='pongdang')
+export function NewPongdangSpecies({catalog,now=Date.now()}:{catalog:CatalogEntry[];now?:number}){
+ const releaseIds=recentSpeciesIds(now)
+ const items=catalog.filter(item=>releaseIds.has(item.id))
  if(!items.length)return <p className="px-6 py-12 text-center text-sm text-muted-foreground">새로운 개체를 준비하고 있어요.</p>
  return <div className="pb-8">
-  <div className="sticky top-0 z-10 flex items-center gap-3 border-b border-border/60 bg-background px-4 py-4"><appArt.island className="size-10"/><div><h2 className="text-base">퐁당섬 앞바다의 새 얼굴들</h2><p className="mt-1 text-xs text-muted-foreground">새롭게 찾아온 {items.length}종을 만나보세요.</p></div></div>
+  <div className="sticky top-0 z-10 flex items-center gap-3 border-b border-border/60 bg-background px-4 py-4"><appArt.fish className="size-10"/><div><h2 className="text-base">바다에 찾아온 새 얼굴들</h2><p className="mt-1 text-xs text-muted-foreground">새롭게 찾아온 {items.length}종 · 등록 후 7일 동안 소개해요.</p></div></div>
   <div className="space-y-7 px-4 pt-5">{grades.map(grade=>{
    const group=items.filter(item=>item.rarity===grade).sort((a,b)=>a.name.localeCompare(b.name,'ko'))
    if(!group.length)return null

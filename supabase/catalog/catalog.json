@@ -12446,6 +12446,10 @@
   ],
   "retained_species_prices": [
     {
+      "id": "amethyst-king-shrimp",
+      "sell_price": 200
+    },
+    {
       "id": "amphora-home-octopus",
       "sell_price": 66
     },
@@ -12466,16 +12470,80 @@
       "sell_price": 298
     },
     {
+      "id": "bent-magnifying-glass",
+      "sell_price": 28
+    },
+    {
+      "id": "blue-dolphin",
+      "sell_price": 210
+    },
+    {
+      "id": "broken-kingdom-tile",
+      "sell_price": 95
+    },
+    {
+      "id": "chipped-lucky-die",
+      "sell_price": 20
+    },
+    {
+      "id": "coral-blossom-arch",
+      "sell_price": 55
+    },
+    {
       "id": "coral-carrier-crab",
       "sell_price": 59
+    },
+    {
+      "id": "coral-covered-shipwreck",
+      "sell_price": 800
     },
     {
       "id": "coral-hat-octopus",
       "sell_price": 256
     },
     {
+      "id": "coral-shard",
+      "sell_price": 22
+    },
+    {
+      "id": "cracked-flowerpot",
+      "sell_price": 25
+    },
+    {
+      "id": "cracked-teacup",
+      "sell_price": 25
+    },
+    {
+      "id": "crimson-fin-seabream",
+      "sell_price": 200
+    },
+    {
+      "id": "dawn-narwhal",
+      "sell_price": 1880
+    },
+    {
+      "id": "dream-keeping-well",
+      "sell_price": 200
+    },
+    {
       "id": "dream-thread-worm",
       "sell_price": 58
+    },
+    {
+      "id": "drowsy-mushroom-cluster",
+      "sell_price": 60
+    },
+    {
+      "id": "empty-film-canister",
+      "sell_price": 22
+    },
+    {
+      "id": "first-coral-cradle",
+      "sell_price": 205
+    },
+    {
+      "id": "fish-nap-sign",
+      "sell_price": 160
     },
     {
       "id": "flower-island-crab",
@@ -12486,12 +12554,60 @@
       "sell_price": 981
     },
     {
+      "id": "flowerveil-jellyfish",
+      "sell_price": 740
+    },
+    {
+      "id": "giant-walrus",
+      "sell_price": 240
+    },
+    {
+      "id": "green-sea-turtle",
+      "sell_price": 50
+    },
+    {
+      "id": "halfmoon-seal",
+      "sell_price": 210
+    },
+    {
+      "id": "hourglass-bottle",
+      "sell_price": 90
+    },
+    {
+      "id": "jetblack-orca",
+      "sell_price": 230
+    },
+    {
       "id": "letter-carrier-ray",
       "sell_price": 305
     },
     {
       "id": "living-mosaic-ray",
       "sell_price": 995
+    },
+    {
+      "id": "lost-atlantean-crown",
+      "sell_price": 30
+    },
+    {
+      "id": "lunea-archivist",
+      "sell_price": 810
+    },
+    {
+      "id": "lunea-failed-invitation",
+      "sell_price": 260
+    },
+    {
+      "id": "lunea-knight",
+      "sell_price": 780
+    },
+    {
+      "id": "lunea-mistmoon-goddess",
+      "sell_price": 2630
+    },
+    {
+      "id": "lunea-record-shelf",
+      "sell_price": 700
     },
     {
       "id": "mask-changing-octopus",
@@ -12502,6 +12618,10 @@
       "sell_price": 291
     },
     {
+      "id": "mistbread-sponge",
+      "sell_price": 45
+    },
+    {
       "id": "moonshadow-flounder",
       "sell_price": 307
     },
@@ -12510,8 +12630,76 @@
       "sell_price": 974
     },
     {
+      "id": "pea-sponge",
+      "sell_price": 40
+    },
+    {
+      "id": "pearl-sea-grapes",
+      "sell_price": 165
+    },
+    {
       "id": "pearlback-spider-crab",
       "sell_price": 269
+    },
+    {
+      "id": "pebble-sea-moss",
+      "sell_price": 40
+    },
+    {
+      "id": "peeking-conger-eel",
+      "sell_price": 50
+    },
+    {
+      "id": "rainbow-mantis-shrimp",
+      "sell_price": 45
+    },
+    {
+      "id": "ribbon-eelgrass",
+      "sell_price": 45
+    },
+    {
+      "id": "rose-fan-seaweed",
+      "sell_price": 185
+    },
+    {
+      "id": "rubyeye-moray",
+      "sell_price": 760
+    },
+    {
+      "id": "rusty-bottle-cap",
+      "sell_price": 18
+    },
+    {
+      "id": "sandbutton-ray",
+      "sell_price": 185
+    },
+    {
+      "id": "sea-music-box",
+      "sell_price": 28
+    },
+    {
+      "id": "spiral-kelp",
+      "sell_price": 50
+    },
+    {
+      "id": "starflower-feather-duster",
+      "sell_price": 175
+    },
+    {
+      "id": "stopped-moon-watch",
+      "sell_price": 85
+    },
+    {
+      "id": "sunken-kingdom-fountain",
+      "sell_price": 220
+    },
+    {
+      "id": "sunken-windmill",
+      "sell_price": 760
+    },
+    {
+      "id": "tangled-kite-spool",
+      "sell_price": 26
     },
     {
       "id": "teacup-nest-blenny",
@@ -12524,6 +12712,26 @@
     {
       "id": "tile-fitting-crab",
       "sell_price": 66
+    },
+    {
+      "id": "tiny-reef-carousel",
+      "sell_price": 210
+    },
+    {
+      "id": "tiny-sardine",
+      "sell_price": 40
+    },
+    {
+      "id": "twilight-striped-dolphin",
+      "sell_price": 780
+    },
+    {
+      "id": "wandering-pocket-compass",
+      "sell_price": 95
+    },
+    {
+      "id": "waterdrop-comb-jelly",
+      "sell_price": 180
     },
     {
       "id": "whisper-pipefish",

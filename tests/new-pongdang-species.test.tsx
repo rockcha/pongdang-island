@@ -1,25 +1,36 @@
 import {readFileSync} from 'node:fs'
 import {render,screen,cleanup} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
-import {NewPongdangSpecies} from '@/features/regions/new-pongdang-species'
+import {NewPongdangSpecies,recentSpeciesIds} from '@/features/regions/new-pongdang-species'
 import type {CatalogEntry} from '@/features/collection/api'
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name}:{name:string})=><img alt={name}/>}))
 const source=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8'))
 const catalog=source.collectible_species.map((s:CatalogEntry)=>({...s,discovered:true,habitats:[]})) as CatalogEntry[]
 afterEach(cleanup)
-it('shows only the 13 released local species, grouped by descending rarity with silhouettes and full descriptions',()=>{
- const view=render(<NewPongdangSpecies catalog={catalog}/>)
- expect(screen.getAllByRole('article')).toHaveLength(13)
+const released=Date.parse('2026-10-21T00:00:00+09:00')
+it('shows the 17 new species from every sea with silhouettes and full descriptions',()=>{
+ const view=render(<NewPongdangSpecies catalog={catalog} now={released}/>)
+ expect(screen.getAllByRole('article')).toHaveLength(17)
  expect(screen.getAllByRole('region').map(r=>r.getAttribute('aria-label'))).toEqual(['신화 신규 개체','특급 신규 개체','희귀 신규 개체','일반 신규 개체'])
- expect(view.container.querySelectorAll('[data-silhouette="true"]')).toHaveLength(13)
- expect(screen.getAllByRole('heading',{level:4})[0].textContent).toBe('퐁이 탐사로봇 NEW')
+ expect(view.container.querySelectorAll('[data-silhouette="true"]')).toHaveLength(17)
+ expect(screen.queryByRole('heading',{name:'퐁이 탐사로봇 NEW'})).toBeNull()
  for(const article of screen.getAllByRole('article')){
   const name=article.querySelector('h4')!.textContent!.replace(/ NEW$/,'')
   const species=catalog.find(s=>s.name===name)!
-  expect(species.native_region_id).toBe('pongdang')
   expect(article.textContent).toContain(species.description)
  }
- expect(screen.getByRole('heading',{name:'퐁당섬 굿즈세트 NEW'})).toBeTruthy()
- expect(screen.getByRole('heading',{name:'가라앉은 퐁당섬 입구 NEW'})).toBeTruthy()
+ for(const name of ['푸른볼 쥐치','루네아의 거울비늘','병 속의 바다, 유리온'])expect(screen.getByRole('heading',{name:name+' NEW'})).toBeTruthy()
  expect(screen.queryByRole('button')).toBeNull()
+})
+it('starts at release and expires exactly seven days later',()=>{
+ expect(recentSpeciesIds(released-1).size).toBe(0)
+ expect(recentSpeciesIds(released).size).toBe(17)
+ expect(recentSpeciesIds(released+7*86400000-1).size).toBe(17)
+ expect(recentSpeciesIds(released+7*86400000).size).toBe(0)
+})
+it('removes expired entries while the page stays open',()=>{
+ const view=render(<NewPongdangSpecies catalog={catalog} now={released}/>)
+ view.rerender(<NewPongdangSpecies catalog={catalog} now={released+7*86400000}/>)
+ expect(screen.queryByRole('article')).toBeNull()
+ expect(screen.getByText('새로운 개체를 준비하고 있어요.')).toBeTruthy()
 })

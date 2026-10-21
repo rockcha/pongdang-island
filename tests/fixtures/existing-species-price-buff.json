@@ -1,0 +1,409 @@
+[
+  {
+    "id": "mistbread-sponge",
+    "name": "안개빵 해면",
+    "rarity": "common",
+    "price": 35,
+    "source": "assets/storage-upload/new/20261015-165350/species.json"
+  },
+  {
+    "id": "lunea-knight",
+    "name": "루네아의 기사",
+    "rarity": "epic",
+    "price": 760,
+    "source": "assets/storage-upload/new/20261015-165350/species.json"
+  },
+  {
+    "id": "lunea-archivist",
+    "name": "루네아의 기록관",
+    "rarity": "epic",
+    "price": 790,
+    "source": "assets/storage-upload/new/20261015-165350/species.json"
+  },
+  {
+    "id": "lunea-mistmoon-goddess",
+    "name": "안개달의 여신 루네아",
+    "rarity": "mythic",
+    "price": 2600,
+    "source": "assets/storage-upload/new/20261015-165350/species.json"
+  },
+  {
+    "id": "stopped-moon-watch",
+    "name": "멈춘 달시계",
+    "rarity": "rare",
+    "kind": "trash",
+    "price": 75,
+    "source": "assets/storage-upload/new/20261015-173555/manifest.json"
+  },
+  {
+    "id": "lunea-failed-invitation",
+    "name": "루네아의 실패한 초대장",
+    "rarity": "epic",
+    "kind": "trash",
+    "price": 240,
+    "source": "assets/storage-upload/new/20261015-173555/manifest.json"
+  },
+  {
+    "id": "cracked-teacup",
+    "name": "금 간 찻잔",
+    "rarity": "common",
+    "kind": "trash",
+    "price": 15,
+    "source": "assets/storage-upload/new/20261015-173555/manifest.json"
+  },
+  {
+    "id": "drowsy-mushroom-cluster",
+    "name": "졸음버섯 군락",
+    "rarity": "common",
+    "kind": "decoration",
+    "price": 50,
+    "source": "assets/storage-upload/new/20261015-173555/manifest.json"
+  },
+  {
+    "id": "dream-keeping-well",
+    "name": "꿈을 담는 우물",
+    "rarity": "rare",
+    "kind": "decoration",
+    "price": 190,
+    "source": "assets/storage-upload/new/20261015-173555/manifest.json"
+  },
+  {
+    "id": "lunea-record-shelf",
+    "name": "루네아의 기록 서가",
+    "rarity": "epic",
+    "kind": "decoration",
+    "price": 680,
+    "source": "assets/storage-upload/new/20261015-173555/manifest.json"
+  },
+  {
+    "id": "coral-blossom-arch",
+    "name": "산호꽃 아치",
+    "rarity": "common",
+    "kind": "decoration",
+    "price": 45,
+    "source": "assets/storage-upload/new/20261015-192806/species.json"
+  },
+  {
+    "id": "coral-shard",
+    "name": "산호 조각",
+    "rarity": "common",
+    "kind": "trash",
+    "price": 12,
+    "source": "assets/storage-upload/new/20261015-192806/species.json"
+  },
+  {
+    "id": "sea-music-box",
+    "name": "바다 오르골",
+    "rarity": "common",
+    "kind": "trash",
+    "price": 18,
+    "source": "assets/storage-upload/new/20261015-192806/species.json"
+  },
+  {
+    "id": "crimson-fin-seabream",
+    "name": "홍련 지느러미돔",
+    "rarity": "rare",
+    "kind": "fish",
+    "price": 190,
+    "source": "assets/storage-upload/new/20261015-192806/species.json"
+  },
+  {
+    "id": "tiny-reef-carousel",
+    "name": "여울의 작은 회전목마",
+    "rarity": "rare",
+    "kind": "decoration",
+    "price": 200,
+    "source": "assets/storage-upload/new/20261015-192806/species.json"
+  },
+  {
+    "id": "first-coral-cradle",
+    "name": "첫 산호의 요람",
+    "rarity": "rare",
+    "kind": "decoration",
+    "price": 195,
+    "source": "assets/storage-upload/new/20261015-192806/species.json"
+  },
+  {
+    "id": "fish-nap-sign",
+    "name": "물고기 낮잠표지판",
+    "rarity": "rare",
+    "kind": "decoration",
+    "price": 150,
+    "source": "assets/storage-upload/new/20261015-192806/species.json"
+  },
+  {
+    "id": "flowerveil-jellyfish",
+    "name": "꽃너울 해파리",
+    "rarity": "epic",
+    "kind": "fish",
+    "price": 720,
+    "source": "assets/storage-upload/new/20261015-192806/species.json"
+  },
+  {
+    "id": "rubyeye-moray",
+    "name": "홍옥 눈동자 곰치",
+    "rarity": "epic",
+    "kind": "fish",
+    "price": 740,
+    "source": "assets/storage-upload/new/20261015-192806/species.json"
+  },
+  {
+    "id": "rainbow-mantis-shrimp",
+    "name": "색동 갯가재",
+    "rarity": "common",
+    "kind": "fish",
+    "price": 35,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "pea-sponge",
+    "name": "완두 해면",
+    "rarity": "common",
+    "kind": "fish",
+    "price": 30,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "tiny-sardine",
+    "name": "꼬마 정어리",
+    "rarity": "common",
+    "kind": "fish",
+    "price": 30,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "peeking-conger-eel",
+    "name": "빼꼼 붕장어",
+    "rarity": "common",
+    "kind": "fish",
+    "price": 40,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "starflower-feather-duster",
+    "name": "별꽃 관벌레",
+    "rarity": "rare",
+    "kind": "fish",
+    "price": 165,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "amethyst-king-shrimp",
+    "name": "자수정 왕새우",
+    "rarity": "rare",
+    "kind": "fish",
+    "price": 190,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "halfmoon-seal",
+    "name": "반달 물범",
+    "rarity": "rare",
+    "kind": "fish",
+    "price": 200,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "blue-dolphin",
+    "name": "푸른 돌고래",
+    "rarity": "rare",
+    "kind": "fish",
+    "price": 200,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "jetblack-orca",
+    "name": "칠흑 범고래",
+    "rarity": "rare",
+    "kind": "fish",
+    "price": 220,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "waterdrop-comb-jelly",
+    "name": "물방울 빗해파리",
+    "rarity": "rare",
+    "kind": "fish",
+    "price": 170,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "sandbutton-ray",
+    "name": "모래단추 가오리",
+    "rarity": "rare",
+    "kind": "fish",
+    "price": 175,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "giant-walrus",
+    "name": "대왕 바다코끼리",
+    "rarity": "rare",
+    "kind": "fish",
+    "price": 230,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "sunken-windmill",
+    "name": "침수된 풍차",
+    "rarity": "epic",
+    "kind": "fish",
+    "price": 740,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "twilight-striped-dolphin",
+    "name": "황혼 줄무늬돌고래",
+    "rarity": "epic",
+    "kind": "fish",
+    "price": 760,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "dawn-narwhal",
+    "name": "새벽을 여는 일각고래",
+    "rarity": "mythic",
+    "kind": "fish",
+    "price": 1850,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "hourglass-bottle",
+    "name": "모래시계 병",
+    "rarity": "rare",
+    "kind": "trash",
+    "price": 80,
+    "source": "assets/storage-upload/new/20261015-201817/species.json"
+  },
+  {
+    "id": "green-sea-turtle",
+    "name": "초록등 바다거북",
+    "rarity": "common",
+    "kind": "fish",
+    "price": 40,
+    "source": "assets/storage-upload/new/20261015-213344/species.json"
+  },
+  {
+    "id": "coral-covered-shipwreck",
+    "name": "산호에 덮인 난파선",
+    "rarity": "epic",
+    "kind": "decoration",
+    "price": 780,
+    "source": "assets/storage-upload/new/20261015-213344/species.json"
+  },
+  {
+    "id": "lost-atlantean-crown",
+    "name": "잃어버린 왕관",
+    "rarity": "common",
+    "kind": "trash",
+    "price": 20,
+    "source": "assets/storage-upload/new/20261015-213344/species.json"
+  },
+  {
+    "id": "broken-kingdom-tile",
+    "name": "깨진 왕국 타일",
+    "rarity": "rare",
+    "kind": "trash",
+    "price": 85,
+    "source": "assets/storage-upload/new/20261015-213344/species.json"
+  },
+  {
+    "id": "sunken-kingdom-fountain",
+    "name": "잠긴 왕국 분수",
+    "rarity": "rare",
+    "kind": "decoration",
+    "price": 210,
+    "source": "assets/storage-upload/new/20261015-213344/species.json"
+  },
+  {
+    "id": "ribbon-eelgrass",
+    "name": "리본 잘피",
+    "rarity": "common",
+    "kind": "decoration",
+    "price": 35,
+    "source": "assets/storage-upload/new/20261015-222454/species.json"
+  },
+  {
+    "id": "pebble-sea-moss",
+    "name": "조약돌 바다이끼",
+    "rarity": "common",
+    "kind": "decoration",
+    "price": 30,
+    "source": "assets/storage-upload/new/20261015-222454/species.json"
+  },
+  {
+    "id": "spiral-kelp",
+    "name": "꼬불 미역",
+    "rarity": "common",
+    "kind": "decoration",
+    "price": 40,
+    "source": "assets/storage-upload/new/20261015-222454/species.json"
+  },
+  {
+    "id": "pearl-sea-grapes",
+    "name": "진주알 바다포도",
+    "rarity": "rare",
+    "kind": "decoration",
+    "price": 155,
+    "source": "assets/storage-upload/new/20261015-222454/species.json"
+  },
+  {
+    "id": "rose-fan-seaweed",
+    "name": "장밋빛 부채해초",
+    "rarity": "rare",
+    "kind": "decoration",
+    "price": 175,
+    "source": "assets/storage-upload/new/20261015-222454/species.json"
+  },
+  {
+    "id": "rusty-bottle-cap",
+    "name": "녹슨 병뚜껑",
+    "rarity": "common",
+    "kind": "trash",
+    "price": 8,
+    "source": "assets/storage-upload/new/20261015-222454/species.json"
+  },
+  {
+    "id": "cracked-flowerpot",
+    "name": "금 간 꼬마 화분",
+    "rarity": "common",
+    "kind": "trash",
+    "price": 15,
+    "source": "assets/storage-upload/new/20261015-222454/species.json"
+  },
+  {
+    "id": "empty-film-canister",
+    "name": "빈 필름통",
+    "rarity": "common",
+    "price": 12,
+    "source": "assets/storage-upload/new/20261015-232647/species.json"
+  },
+  {
+    "id": "tangled-kite-spool",
+    "name": "엉킨 연실 얼레",
+    "rarity": "common",
+    "price": 16,
+    "source": "assets/storage-upload/new/20261015-232647/species.json"
+  },
+  {
+    "id": "chipped-lucky-die",
+    "name": "이 빠진 주사위",
+    "rarity": "common",
+    "price": 10,
+    "source": "assets/storage-upload/new/20261015-232647/species.json"
+  },
+  {
+    "id": "bent-magnifying-glass",
+    "name": "휘어진 돋보기",
+    "rarity": "common",
+    "price": 18,
+    "source": "assets/storage-upload/new/20261015-232647/species.json"
+  },
+  {
+    "id": "wandering-pocket-compass",
+    "name": "길 잃은 회중나침반",
+    "rarity": "rare",
+    "price": 85,
+    "source": "assets/storage-upload/new/20261015-232647/species.json"
+  }
+]

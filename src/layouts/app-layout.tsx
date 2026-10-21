@@ -25,7 +25,7 @@ export function AppLayout() {
   const showcase=pathname==='/showcase'||pathname.startsWith('/showcase/')
   const noticeList=pathname==='/board'||pathname.startsWith('/board/')||pathname==='/square/notices'||(/^\/square\/notices\/[^/]+$/.test(pathname)&&!pathname.endsWith('/new'))||pathname==='/square/suggestions'||pathname.startsWith('/square/suggestions/')||pathname==='/square/bugs'||pathname.startsWith('/square/bugs/')
   const exchange=pathname==='/merchant-orders'||pathname==='/exchange'||pathname.startsWith('/exchange/')||pathname==='/savings'
-  const friends=pathname==='/friends'
+  const friends=pathname==='/friends'||pathname==='/hall-of-fame'
   const shop=pathname==='/shop'||pathname==='/item-shop'||pathname==='/shipyard'
   const expedition=pathname==='/expeditions'||/^\/friends\/[^/]+\/expeditions\/?$/.test(pathname)
  const warehouse=pathname==='/warehouse'

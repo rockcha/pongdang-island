@@ -32,6 +32,7 @@ export const appArt={
  notices:artwork('announcement','notification-icons'),suggestions:artwork('suggestion','notification-icons'),bugs:artwork('bug','notification-icons'),
 }
 const placeArt:Record<string,ReturnType<typeof artwork>>={
+ '/hall-of-fame':appArt.ranking,
  '/showcase':appArt.showcase,
  '/item-shop':appArt.itemShop,
  '/merchant-orders':appArt.merchantOrders,

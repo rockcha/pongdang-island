@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "934dc901a28af7a193bfda32b2475a31562da1403eb13556fcd858c0e77fde27",
+  "migrationHash": "1f18f6baaac79fafc2821901f9ace7beb5bf6a3cda7347397849a3a31f3be613",
   "structure": {
     "enums": [
       {
@@ -121,6 +121,18 @@
       {
         "rls": true,
         "name": "gold_settings",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "hall_comments",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "hall_reactions",
         "schema": "app_private",
         "force_rls": false
       },
@@ -1065,6 +1077,86 @@
         "table": "gold_settings",
         "schema": "app_private",
         "default": "true",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "target_id",
+        "type": "uuid",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "author_id",
+        "type": "uuid",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "body",
+        "type": "text",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "target_id",
+        "type": "uuid",
+        "table": "hall_reactions",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "hall_reactions",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "value",
+        "type": "smallint",
+        "table": "hall_reactions",
+        "schema": "app_private",
+        "default": null,
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -6746,6 +6838,36 @@
         "definition": "CREATE UNIQUE INDEX gold_settings_pkey ON app_private.gold_settings USING btree (id)"
       },
       {
+        "name": "hall_comments_author_idx",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "definition": "CREATE INDEX hall_comments_author_idx ON app_private.hall_comments USING btree (author_id, created_at DESC)"
+      },
+      {
+        "name": "hall_comments_pkey",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX hall_comments_pkey ON app_private.hall_comments USING btree (id)"
+      },
+      {
+        "name": "hall_comments_target_idx",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "definition": "CREATE INDEX hall_comments_target_idx ON app_private.hall_comments USING btree (target_id, created_at DESC, id DESC)"
+      },
+      {
+        "name": "hall_reactions_pkey",
+        "table": "hall_reactions",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX hall_reactions_pkey ON app_private.hall_reactions USING btree (target_id, user_id)"
+      },
+      {
+        "name": "hall_reactions_user_idx",
+        "table": "hall_reactions",
+        "schema": "app_private",
+        "definition": "CREATE INDEX hall_reactions_user_idx ON app_private.hall_reactions USING btree (user_id)"
+      },
+      {
         "name": "harbor_operations_pkey",
         "table": "harbor_operations",
         "schema": "app_private",
@@ -9988,6 +10110,36 @@
         "securityDefiner": true
       },
       {
+        "name": "hall_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_target uuid, p_action text, p_value integer, p_body text, p_comment_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.hall_action(p_target uuid, p_action text, p_value integer DEFAULT 0, p_body text DEFAULT ''::text, p_comment_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_target is null or not exists(select 1 from public.player_profiles where id=p_target) then raise exception 'HALL_NOT_FOUND';end if;\n perform pg_advisory_xact_lock(hashtextextended('hall:'||u::text,0));\n if p_action='react' then\n  if p_target=u then raise exception 'HALL_SELF_REACTION';end if;\n  if p_value is null or p_value not in (-1,0,1) then raise exception 'INVALID_HALL';end if;\n  if p_value=0 then delete from app_private.hall_reactions where target_id=p_target and user_id=u;\n  else insert into app_private.hall_reactions(target_id,user_id,value) values(p_target,u,p_value)\n   on conflict(target_id,user_id) do update set value=excluded.value;end if;\n elsif p_action='comment' then\n  if p_body is null or char_length(btrim(p_body)) not between 1 and 500 then raise exception 'INVALID_HALL';end if;\n  if exists(select 1 from app_private.hall_comments where author_id=u and created_at>clock_timestamp()-interval '5 seconds') then raise exception 'HALL_RATE_LIMIT';end if;\n  insert into app_private.hall_comments(target_id,author_id,body) values(p_target,u,btrim(p_body));\n elsif p_action='delete_comment' then\n  delete from app_private.hall_comments where id=p_comment_id and target_id=p_target and author_id=u;\n  if not found then raise exception 'NOT_ALLOWED';end if;\n else raise exception 'INVALID_HALL';end if;\n return app_private.hall_wall(p_target,0);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "hall_of_fame",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.hall_of_fame()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n with logs as materialized (\n  select user_id,id,occurred_at,source,kind,rarity,species_id from app_private.title_fishing_log\n ), catches as materialized (\n  select user_id,kind,rarity from logs where species_id is not null\n  union all\n  select v.user_id,item->'species'->>'kind',item->'species'->>'rarity'\n  from public.harbor_voyages v cross join lateral jsonb_array_elements(coalesce(v.result->'items','[]'::jsonb)) item\n  where v.claimed_at is not null\n ), manual as materialized (\n  select *, (occurred_at at time zone 'Asia/Seoul')::date play_day,\n   row_number() over(partition by user_id order by occurred_at,id)\n   -row_number() over(partition by user_id,(species_id is not null) order by occurred_at,id) run\n  from logs where source='manual'\n ), fishing as (\n  select user_id,count(*) attempts,count(*) filter(where species_id is null) failures from manual group by user_id\n ), totals as (\n  select user_id,count(*) filter(where kind='fish') fish,count(*) filter(where rarity='mythic') mythic from catches group by user_id\n ), daily as materialized (\n  select user_id,play_day,count(*) n from manual group by user_id,play_day\n ), days as (\n  select user_id,play_day-(row_number() over(partition by user_id order by play_day))::integer island from daily\n ), day_streaks as (\n  select user_id,max(n) n from (select user_id,island,count(*) n from days group by user_id,island) s group by user_id\n ), runs as (\n  select user_id,max(n) filter(where success) success,max(n) filter(where not success) failure\n  from (select user_id,species_id is not null success,run,count(*) n from manual group by user_id,(species_id is not null),run) s group by user_id\n ), games as (\n  select user_id from public.brick_game_runs union all select user_id from public.shadow_game_runs\n  union all select user_id from public.memory_game_runs union all select user_id from public.odd_even_runs\n  union all select user_id from app_private.ladder_runs\n ), reactions as materialized (\n  select target_id user_id,value from app_private.hall_reactions\n  union all\n  select coalesce(c.author_id,p.author_id),r.value from public.board_reactions r\n  join public.board_posts p on p.id=r.post_id left join public.board_comments c on c.id=r.comment_id\n  where r.user_id<>coalesce(c.author_id,p.author_id) and (r.comment_id is null or not c.deleted)\n ), helps as (\n  select visitor_id user_id from public.aquarium_feedings where completed_at is not null and visitor_id<>owner_id\n  union all select visitor_id from public.aquarium_cleanings where completed_at is not null and visitor_id<>owner_id\n  union all select helper_id from app_private.expedition_boosts\n ), metrics as (\n  select user_id,'casts' key,attempts::numeric value from fishing\n  union all select user_id,'fish',fish from totals\n  union all select d.user_id,'collection',100.0*count(*)/greatest((select count(*) from public.collectible_species where kind<>'map'),1)\n   from public.player_discoveries d join public.collectible_species s on s.id=d.species_id where s.kind<>'map' group by d.user_id\n  union all select user_id,'mythic',mythic from totals\n  union all select user_id,'failure_rate',100.0*failures/attempts from fishing where attempts>=100\n  union all select user_id,'games',count(*) from games group by user_id\n  union all select user_id,'daily',max(n) from daily group by user_id\n  union all select user_id,'success_run',success from runs\n  union all select user_id,'failure_run',failure from runs\n  union all select user_id,'trash',count(*) from manual where kind='trash' group by user_id\n  union all select user_id,'days',n from day_streaks\n  union all select user_id,'likes',count(*) from reactions where value=1 group by user_id\n  union all select user_id,'dislikes',count(*) from reactions where value=-1 group by user_id\n  union all select user_id,'helps',count(*) from helps group by user_id\n ), ranked as (\n  select m.*,p.nickname,p.avatar_path,row_number() over(partition by key order by value desc,p.created_at,p.id) rank\n  from metrics m join public.player_profiles p on p.id=m.user_id where m.value>0\n ), grouped as (\n  select key,jsonb_agg(jsonb_build_object('id',user_id,'nickname',nickname,'avatar_path',avatar_path,'value',value,'rank',rank) order by rank) rows\n  from ranked where rank<=5 group by key\n ) select coalesce(jsonb_object_agg(key,rows),'{}'::jsonb) into result from grouped;\n return jsonb_build_object('rankings',result,'generatedAt',statement_timestamp());\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "hall_wall",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_target uuid, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.hall_wall(p_target uuid, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>100000 then raise exception 'INVALID_HALL';end if;\n if not exists(select 1 from public.player_profiles where id=p_target) then raise exception 'HALL_NOT_FOUND';end if;\n select jsonb_build_object(\n  'likes',(select count(*) from app_private.hall_reactions where target_id=p_target and value=1),\n  'dislikes',(select count(*) from app_private.hall_reactions where target_id=p_target and value=-1),\n  'myReaction',coalesce((select value from app_private.hall_reactions where target_id=p_target and user_id=auth.uid()),0),\n  'total',(select count(*) from app_private.hall_comments where target_id=p_target),\n  'comments',coalesce((select jsonb_agg(to_jsonb(c) order by c.created_at desc,c.id desc) from (\n   select c.id,c.author_id,c.body,c.created_at,p.nickname,p.avatar_path from app_private.hall_comments c\n   join public.player_profiles p on p.id=c.author_id where target_id=p_target\n   order by c.created_at desc,c.id desc limit 30 offset p_offset\n  ) c),'[]'::jsonb)\n ) into result;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "harbor_action",
         "config": [
           "search_path=\"\""
@@ -11548,6 +11700,36 @@
         "securityDefiner": false
       },
       {
+        "name": "hall_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_target uuid, p_action text, p_value integer, p_body text, p_comment_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.hall_action(p_target uuid, p_action text, p_value integer DEFAULT 0, p_body text DEFAULT ''::text, p_comment_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.hall_action(p_target,p_action,p_value,p_body,p_comment_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "hall_of_fame",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.hall_of_fame()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.hall_of_fame()$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "hall_wall",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_target uuid, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.hall_wall(p_target uuid, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.hall_wall(p_target,p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "harbor_action",
         "config": [
           "search_path=\"\""
@@ -12549,6 +12731,108 @@
         "table": "gold_settings",
         "schema": "app_private",
         "definition": "NOT NULL test_charge_enabled"
+      },
+      {
+        "name": "hall_comments_author_id_fkey",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (author_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "hall_comments_author_id_not_null",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "definition": "NOT NULL author_id"
+      },
+      {
+        "name": "hall_comments_body_check",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "definition": "CHECK (((char_length(btrim(body)) >= 1) AND (char_length(btrim(body)) <= 500)))"
+      },
+      {
+        "name": "hall_comments_body_not_null",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "definition": "NOT NULL body"
+      },
+      {
+        "name": "hall_comments_created_at_not_null",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "hall_comments_id_not_null",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "hall_comments_pkey",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "hall_comments_target_id_fkey",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (target_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "hall_comments_target_id_not_null",
+        "table": "hall_comments",
+        "schema": "app_private",
+        "definition": "NOT NULL target_id"
+      },
+      {
+        "name": "hall_reactions_check",
+        "table": "hall_reactions",
+        "schema": "app_private",
+        "definition": "CHECK ((target_id <> user_id))"
+      },
+      {
+        "name": "hall_reactions_pkey",
+        "table": "hall_reactions",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (target_id, user_id)"
+      },
+      {
+        "name": "hall_reactions_target_id_fkey",
+        "table": "hall_reactions",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (target_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "hall_reactions_target_id_not_null",
+        "table": "hall_reactions",
+        "schema": "app_private",
+        "definition": "NOT NULL target_id"
+      },
+      {
+        "name": "hall_reactions_user_id_fkey",
+        "table": "hall_reactions",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "hall_reactions_user_id_not_null",
+        "table": "hall_reactions",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "hall_reactions_value_check",
+        "table": "hall_reactions",
+        "schema": "app_private",
+        "definition": "CHECK ((value = ANY (ARRAY['-1'::integer, 1])))"
+      },
+      {
+        "name": "hall_reactions_value_not_null",
+        "table": "hall_reactions",
+        "schema": "app_private",
+        "definition": "NOT NULL value"
       },
       {
         "name": "harbor_operations_created_at_not_null",
@@ -25392,6 +25676,69 @@
         "arguments": ""
       },
       {
+        "name": "hall_action",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_target uuid, p_action text, p_value integer, p_body text, p_comment_id uuid"
+      },
+      {
+        "name": "hall_action",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_target uuid, p_action text, p_value integer, p_body text, p_comment_id uuid"
+      },
+      {
+        "name": "hall_action",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_target uuid, p_action text, p_value integer, p_body text, p_comment_id uuid"
+      },
+      {
+        "name": "hall_of_fame",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "hall_of_fame",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "hall_of_fame",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "hall_wall",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_target uuid, p_offset integer"
+      },
+      {
+        "name": "hall_wall",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_target uuid, p_offset integer"
+      },
+      {
+        "name": "hall_wall",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_target uuid, p_offset integer"
+      },
+      {
         "name": "harbor_action",
         "role": "anon",
         "schema": "app_private",
@@ -28666,6 +29013,69 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_direction text, p_offset integer"
+      },
+      {
+        "name": "hall_action",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_target uuid, p_action text, p_value integer, p_body text, p_comment_id uuid"
+      },
+      {
+        "name": "hall_action",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_target uuid, p_action text, p_value integer, p_body text, p_comment_id uuid"
+      },
+      {
+        "name": "hall_action",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_target uuid, p_action text, p_value integer, p_body text, p_comment_id uuid"
+      },
+      {
+        "name": "hall_of_fame",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "hall_of_fame",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "hall_of_fame",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "hall_wall",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_target uuid, p_offset integer"
+      },
+      {
+        "name": "hall_wall",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_target uuid, p_offset integer"
+      },
+      {
+        "name": "hall_wall",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_target uuid, p_offset integer"
       },
       {
         "name": "harbor_action",

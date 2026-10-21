@@ -46,6 +46,7 @@ export const headerPlaces = [
   { to: '/warehouse', label: '창고', icon: Warehouse },
   { to: '/arcade', label: '게임', icon: Gamepad2 },
   { to: '/friends', label: '등대', icon: TowerControl },
+  { to: '/hall-of-fame', label: '명예의 전당', icon: appArt.ranking },
   { to: '/board', label: '자유게시판', icon: PlazaIcon },
   { to: '/showcase', label: '자랑하기', icon: appArt.showcase },
   { to: '/square/suggestions', label: '건의함', icon: appArt.suggestions },
@@ -77,7 +78,7 @@ export function HeaderPlaceNavigation() {
     { label: '놀이터', paths: ['/arcade', '/farm', '/music-room'] },
     {
       label: '소셜',
-      paths: ['/friends', '/board', '/showcase', '/square/suggestions', '/square/bugs'],
+      paths: ['/friends', '/hall-of-fame', '/board', '/showcase', '/square/suggestions', '/square/bugs'],
       separatorBefore: '/board',
     },
   ]

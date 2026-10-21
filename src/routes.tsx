@@ -1,4 +1,5 @@
 import { MerchantPage } from '@/features/merchant/merchant-page'
+import { HallPage } from '@/features/hall-of-fame/hall-page'
 import {ShowcasePage} from '@/features/showcase/showcase-page'
 import {ShowcaseEditor} from '@/features/showcase/showcase-editor'
 import {ShowcasePreview} from '@/features/showcase/showcase-preview'
@@ -83,6 +84,7 @@ export function AppRoutes() {
             <Route path="arcade" element={<ArcadePage />} />
             <Route path="arcade/:gameId" element={<ArcadeGamePage />} />
             <Route path="friends" element={<FriendsPage />} />
+            <Route path="hall-of-fame" element={<HallPage />} />
             <Route path="friends/:ownerId/aquarium" element={<FriendAquariumPage />} />
             <Route path="friends/:ownerId/expeditions" element={<FriendExpeditionPage />} />
             <Route path="profile" element={<ProfilePage />} />

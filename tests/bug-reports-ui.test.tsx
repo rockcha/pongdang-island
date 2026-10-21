@@ -1,3 +1,4 @@
+vi.mock('@/features/board/feedback-comments-api',()=>({loadFeedbackComments:vi.fn().mockResolvedValue({items:[],total:0}),feedbackCommentAction:vi.fn()}))
 import { cleanup,fireEvent,render,screen,waitFor,within } from '@testing-library/react'
 import { afterEach,beforeEach,expect,it,vi } from 'vitest'
 import { MemoryRouter,Route,Routes } from 'react-router'
@@ -35,7 +36,7 @@ function detail(){render(<MemoryRouter initialEntries={['/square/bugs/idea']}><R
 it('does not expose adoption to ordinary players',async()=>{
  detail();await screen.findByText(post.title)
  expect(screen.queryByRole('button',{name:'버그로 확인하기'})).toBeNull()
- expect(screen.queryByRole('textbox')).toBeNull()
+ expect(screen.getByRole('textbox',{name:'댓글 내용'})).toBeTruthy()
 })
 it('requires operator confirmation before adoption and then shows the adopted status',async()=>{
  mock.operator.mockResolvedValue(true);detail()

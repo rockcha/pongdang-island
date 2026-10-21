@@ -47,6 +47,7 @@ export const headerPlaces = [
   { to: '/arcade', label: '게임', icon: Gamepad2 },
   { to: '/friends', label: '등대', icon: TowerControl },
   { to: '/board', label: '자유게시판', icon: PlazaIcon },
+  { to: '/showcase', label: '자랑하기', icon: appArt.showcase },
   { to: '/square/suggestions', label: '건의함', icon: appArt.suggestions },
   { to: '/square/bugs', label: '버그 제보', icon: appArt.bugs },
 ]
@@ -61,6 +62,7 @@ export function HeaderPlaceNavigation() {
   const current = /^\/(region|sailing)\//.test(pathname) ? '/fishing' : pathname
   const hasNewContent=(to:string)=>
     (to==='/board'&&newContent.board)||
+    (to==='/showcase'&&newContent.showcase)||
     (to==='/square/suggestions'&&newContent.suggestions)||
     (to==='/square/bugs'&&newContent.bugs)||
     (to==='/exchange'&&newContent.exchange)
@@ -75,7 +77,7 @@ export function HeaderPlaceNavigation() {
     { label: '놀이터', paths: ['/arcade', '/farm', '/music-room'] },
     {
       label: '소셜',
-      paths: ['/friends', '/board', '/square/suggestions', '/square/bugs'],
+      paths: ['/friends', '/board', '/showcase', '/square/suggestions', '/square/bugs'],
       separatorBefore: '/board',
     },
   ]

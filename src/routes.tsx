@@ -1,4 +1,7 @@
 import { MerchantPage } from '@/features/merchant/merchant-page'
+import {ShowcasePage} from '@/features/showcase/showcase-page'
+import {ShowcaseEditor} from '@/features/showcase/showcase-editor'
+import {ShowcasePreview} from '@/features/showcase/showcase-preview'
 import { DownloadPage } from '@/pages/download-page'
 import { BoardPage, BoardDetailPage } from '@/features/board/board-page'
 import { CollectionPage } from '@/features/collection/collection-page'
@@ -86,6 +89,9 @@ export function AppRoutes() {
             <Route path="profile/settings" element={<SettingsPage />} />
             <Route path="notifications" element={<NotificationsPage />} />
             <Route path="board" element={<BoardPage />} />
+            <Route path="showcase" element={<ShowcasePage />} />
+            <Route path="showcase/new" element={<ShowcaseEditor />} />
+            <Route path="showcase/preview" element={<ShowcasePreview />} />
             <Route path="board/:postId" element={<BoardDetailPage />} />
             <Route path="square" element={<Navigate to="/board" replace />} />
             <Route path="square/notices" element={<NoticePage />} />

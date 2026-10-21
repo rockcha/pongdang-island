@@ -67,7 +67,7 @@ it('sorts shipyard cards by price and keeps fuel purchases outside the shipyard'
  show(true)
  await screen.findByRole('button',{name:'낚시용 뗏목 구매 300 골드'})
  expect(screen.getAllByRole('heading',{level:2}).map(h=>h.textContent)).toEqual(['낚시용 뗏목','너울 낚싯배'])
- expect(screen.queryByRole('button',{name:/기름 구매/})).toBeNull()
+ expect(screen.queryByRole('button',{name:/연료 구매/})).toBeNull()
  expect(screen.queryByText('항구에서 조업하는 나만의 배')).toBeNull()
 })
 it('selects an unlocked sea before departure and confirms the same destination',async()=>{

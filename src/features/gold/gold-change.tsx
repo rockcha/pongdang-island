@@ -16,7 +16,7 @@ export function GoldChange({
         {Math.abs(delta).toLocaleString('ko-KR')}
       </span>
       <img
-        src={resource === 'fuel' ? '/app-icons/fuel.png' : '/currency/gold-coin-starfish.png'}
+        src={resource === 'fuel' ? '/app-icons/fuel-can.svg' : '/currency/gold-coin-starfish.png'}
         alt=""
         aria-hidden="true"
         className="gold-change-coin shrink-0 object-contain"
@@ -28,7 +28,7 @@ export function GoldChange({
           <i className="gold-change-sparkle" />
         </span>
       )}
-      <span className="sr-only">{resource === 'fuel' ? '기름' : '골드'}</span>
+      <span className="sr-only">{resource === 'fuel' ? '연료' : '골드'}</span>
     </div>
   )
 }

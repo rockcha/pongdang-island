@@ -1,4 +1,5 @@
 import {FishingOdds} from './fishing-odds'
+import {readLastBait,saveLastBait} from './bait-preference'
 import {fishingDockButton} from '@/components/fishing-dock-style'
 import {useRods} from './rod-provider'
 import {appArt} from '@/components/app-art'
@@ -30,7 +31,8 @@ import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 
 import { GoldIcon, useGold } from '@/features/gold/gold-provider'
-import { Link } from 'react-router'
+import { Link,useNavigate } from 'react-router'
+import {startShowcaseDraft} from '@/features/showcase/draft'
 import { prepareFishing,finishFishing, fishingError, loadFishing } from './api'
 import type { PreparedFishing,FishingAttempt, FishingState } from './api'
 
@@ -41,6 +43,7 @@ export function BaitInventoryDialog(){
  return <Dialog><DialogTrigger render={<Button variant="outline" className="min-h-11 w-full"/>}><ShoppingBag className="size-4"/>미끼 상점 · 인벤토리</DialogTrigger><DialogContent className="max-h-[90dvh] overflow-y-auto sm:max-w-md"><DialogHeader><DialogTitle>미끼 상점 · 인벤토리</DialogTitle><DialogDescription>퐁당 지렁이를 구매하고, 획득한 미끼의 수량과 효과를 확인해요.</DialogDescription></DialogHeader><FishingPanel/></DialogContent></Dialog>
 }
 export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{regionId?:string;regionName?:string;toolbarTarget?:HTMLElement|null;oddsTarget?:HTMLElement|null}){
+ const navigate=useNavigate()
  const {selected:equippedRod,rods}=useRods()
  const {session}=useAuth()
  const userId=session?.user.id??'guest'
@@ -50,7 +53,10 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{reg
  const {wallet,transact,busy:goldBusy,loading:goldLoading,error:goldError,refresh}=useGold()
  const [state,setState]=useState<FishingState|null>(null)
  const [error,setError]=useState('')
- const [selected,setSelected]=useState('bait')
+ const [baitPreference,setBaitPreference]=useState(()=>({userId,id:readLastBait(userId)}))
+ const preferredBait=baitPreference.userId===userId?baitPreference.id:readLastBait(userId)
+ const selected=state&&!state.baits.some(item=>item.id===preferredBait)?'bait':preferredBait
+ function setSelected(id:string){setBaitPreference({userId,id});saveLastBait(userId,id)}
  const [draftBait,setDraftBait]=useState('bait')
  const [busy,setBusy]=useState(false)
  const [prepared,setPrepared]=useState<PreparedFishing|null>(null)
@@ -198,7 +204,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{reg
   </>)}
   {regionId&&gameOpen&&practice&&<span className="pointer-events-none absolute left-3 top-16 z-20 rounded-full sm:top-3 bg-black/20 px-3 py-1 text-xs text-white">{rarities[practice].label} 힘 테스트</span>}
 
-  {revealing&&result?.species&&<CatchReveal species={result.species} firstDiscovery={result.firstDiscovery} practice={!!practice} onDismiss={()=>{setRevealing(false);setResult(null)}}/> }
+  {revealing&&result?.species&&<CatchReveal species={result.species} firstDiscovery={result.firstDiscovery} practice={!!practice} regionName={regionName} caughtAt={result.created_at} onShare={!practice&&session?.user.id&&result.operation_id!=='practice'?()=>{const id=startShowcaseDraft({owner:session.user.id,operationId:result.operation_id,firstDiscovery:!!result.firstDiscovery,renderVersion:1,species:result.species!,regionName:regionName??'퐁당섬 앞바다',caughtAt:result.created_at,preview:false});setRevealing(false);navigate('/showcase/new',{state:{showcaseDraft:id}})}:undefined} onDismiss={()=>{setRevealing(false);setResult(null)}}/> }
   {presentation&&castOpen&&!result?.species&&(castError?<div className="absolute inset-x-4 top-1/2 z-30 mx-auto max-h-[80%] max-w-sm -translate-y-1/2 overflow-y-auto rounded-2xl bg-background/95"><FishingResultCard result={null} pending={busy} error={castError} practice={!!practice} failure={failureText||presentation.failure} onContinue={()=>setCastOpen(false)} onRetry={()=>void cast()}/></div>:!busy&&<CatchReveal failureReason={failureReason} failureLabel={failureLabel} failure={failureText||presentation.failure} practice={!!practice} onDismiss={()=>setCastOpen(false)}/>)}
 
   {regionId&&!toolbarTarget&&!gameOpen&&!busy&&!revealing&&!castOpen&&!uncertain&&tools(<div className={toolbarTarget?"relative order-50 text-white":"absolute left-3 top-3 z-20 text-white"}>

@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "4b47a34ab98a4b0f3bc8831ff400f812c72a6538be2f50912bd51fab404c4c76",
+  "migrationHash": "934dc901a28af7a193bfda32b2475a31562da1403eb13556fcd858c0e77fde27",
   "structure": {
     "enums": [
       {
@@ -324,6 +324,12 @@
       },
       {
         "rls": true,
+        "name": "feedback_comments",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
         "name": "fishing_attempts",
         "schema": "public",
         "force_rls": false
@@ -343,6 +349,18 @@
       {
         "rls": true,
         "name": "fishing_rods",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "fishing_showcase_posts",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "fishing_showcase_reactions",
         "schema": "public",
         "force_rls": false
       },
@@ -561,6 +579,14 @@
         "file_size_limit": 5242880,
         "allowed_mime_types": [
           "image/webp"
+        ]
+      },
+      {
+        "id": "catch-showcases",
+        "public": false,
+        "file_size_limit": 5242880,
+        "allowed_mime_types": [
+          "image/png"
         ]
       },
       {
@@ -3764,6 +3790,76 @@
         "generated": ""
       },
       {
+        "name": "id",
+        "type": "uuid",
+        "table": "feedback_comments",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "suggestion_id",
+        "type": "uuid",
+        "table": "feedback_comments",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "bug_id",
+        "type": "uuid",
+        "table": "feedback_comments",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "author_id",
+        "type": "uuid",
+        "table": "feedback_comments",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "body",
+        "type": "text",
+        "table": "feedback_comments",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "feedback_comments",
+        "schema": "public",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "feedback_comments",
+        "schema": "public",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
         "name": "user_id",
         "type": "uuid",
         "table": "fishing_attempts",
@@ -4157,6 +4253,146 @@
         "name": "native_bonus_bp",
         "type": "integer",
         "table": "fishing_rods",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "author_id",
+        "type": "uuid",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "caption",
+        "type": "text",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "default": "''::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "species",
+        "type": "jsonb",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "rarity",
+        "type": "game_rarity",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "region_name",
+        "type": "text",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "caught_at",
+        "type": "timestamp with time zone",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "first_discovery",
+        "type": "boolean",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "default": "false",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "render_version",
+        "type": "smallint",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "default": "1",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "post_id",
+        "type": "uuid",
+        "table": "fishing_showcase_reactions",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "fishing_showcase_reactions",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "reaction",
+        "type": "text",
+        "table": "fishing_showcase_reactions",
         "schema": "public",
         "default": null,
         "identity": "",
@@ -7098,6 +7334,30 @@
         "definition": "CREATE INDEX quest_completed_sales ON public.exchange_listings USING btree (owner_id, closed_at) WHERE (status = 'completed'::text)"
       },
       {
+        "name": "feedback_comments_author",
+        "table": "feedback_comments",
+        "schema": "public",
+        "definition": "CREATE INDEX feedback_comments_author ON public.feedback_comments USING btree (author_id)"
+      },
+      {
+        "name": "feedback_comments_bug",
+        "table": "feedback_comments",
+        "schema": "public",
+        "definition": "CREATE INDEX feedback_comments_bug ON public.feedback_comments USING btree (bug_id, created_at, id) WHERE (bug_id IS NOT NULL)"
+      },
+      {
+        "name": "feedback_comments_pkey",
+        "table": "feedback_comments",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX feedback_comments_pkey ON public.feedback_comments USING btree (id)"
+      },
+      {
+        "name": "feedback_comments_suggestion",
+        "table": "feedback_comments",
+        "schema": "public",
+        "definition": "CREATE INDEX feedback_comments_suggestion ON public.feedback_comments USING btree (suggestion_id, created_at, id) WHERE (suggestion_id IS NOT NULL)"
+      },
+      {
         "name": "fishing_attempts_pkey",
         "table": "fishing_attempts",
         "schema": "public",
@@ -7156,6 +7416,42 @@
         "table": "fishing_rods",
         "schema": "public",
         "definition": "CREATE UNIQUE INDEX fishing_rods_pkey ON public.fishing_rods USING btree (id)"
+      },
+      {
+        "name": "fishing_showcase_posts_author_id_operation_id_key",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX fishing_showcase_posts_author_id_operation_id_key ON public.fishing_showcase_posts USING btree (author_id, operation_id)"
+      },
+      {
+        "name": "fishing_showcase_posts_author_idx",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "CREATE INDEX fishing_showcase_posts_author_idx ON public.fishing_showcase_posts USING btree (author_id, created_at DESC, id DESC)"
+      },
+      {
+        "name": "fishing_showcase_posts_feed_idx",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "CREATE INDEX fishing_showcase_posts_feed_idx ON public.fishing_showcase_posts USING btree (created_at DESC, id DESC)"
+      },
+      {
+        "name": "fishing_showcase_posts_pkey",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX fishing_showcase_posts_pkey ON public.fishing_showcase_posts USING btree (id)"
+      },
+      {
+        "name": "fishing_showcase_reactions_pkey",
+        "table": "fishing_showcase_reactions",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX fishing_showcase_reactions_pkey ON public.fishing_showcase_reactions USING btree (post_id, user_id)"
+      },
+      {
+        "name": "fishing_showcase_reactions_user_idx",
+        "table": "fishing_showcase_reactions",
+        "schema": "public",
+        "definition": "CREATE INDEX fishing_showcase_reactions_user_idx ON public.fishing_showcase_reactions USING btree (user_id)"
       },
       {
         "name": "fishing_vessels_pkey",
@@ -8026,6 +8322,30 @@
         "tablename": "fishing_rods",
         "permissive": "PERMISSIVE",
         "policyname": "rods_catalog_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(( SELECT auth.uid() AS uid) IS NOT NULL)",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "fishing_showcase_posts",
+        "permissive": "PERMISSIVE",
+        "policyname": "showcase_posts_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(( SELECT auth.uid() AS uid) IS NOT NULL)",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "fishing_showcase_reactions",
+        "permissive": "PERMISSIVE",
+        "policyname": "showcase_reactions_read",
         "schemaname": "public",
         "with_check": null
       },
@@ -9208,6 +9528,16 @@
         "securityDefiner": true
       },
       {
+        "name": "delete_fishing_showcase",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_post_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.delete_fishing_showcase(p_post_id uuid)\n RETURNS text\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare p public.fishing_showcase_posts;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n select * into p from public.fishing_showcase_posts where id=p_post_id for update;\n if not found then raise exception 'SHOWCASE_NOT_FOUND';end if;\n if p.author_id<>auth.uid() and not app_private.notice_is_operator() then raise exception 'NOT_ALLOWED';end if;\n delete from public.fishing_showcase_posts where id=p_post_id;\n return p.id::text;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "deliver_merchant_order",
         "config": [
           "search_path=\"\""
@@ -9455,6 +9785,36 @@
         "schema": "app_private",
         "arguments": "p_kind text, p_ids uuid[]",
         "definition": "CREATE OR REPLACE FUNCTION app_private.feedback_authors(p_kind text, p_ids uuid[])\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare actor uuid:=auth.uid(); result jsonb;\nbegin\n if actor is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_ids is null or cardinality(p_ids)>20 then raise exception 'INVALID_FEEDBACK_IDS'; end if;\n if p_kind='suggestion' then\n  select coalesce(jsonb_agg(jsonb_build_object('id',p.id,'avatar_path',a.avatar_path)),'[]'::jsonb) into result\n  from public.suggestion_posts p left join public.player_profiles a on a.id=p.author_id\n  where p.id=any(p_ids) and (\n   not p.friends_only or p.author_id=actor or (select app_private.notice_is_operator()) or exists(\n    select 1 from public.friend_requests f where f.status='accepted' and\n    ((f.sender_id=actor and f.recipient_id=p.author_id) or (f.recipient_id=actor and f.sender_id=p.author_id))\n   )\n  );\n elsif p_kind='bug' then\n  select coalesce(jsonb_agg(jsonb_build_object('id',p.id,'avatar_path',a.avatar_path)),'[]'::jsonb) into result\n  from public.bug_reports p left join public.player_profiles a on a.id=p.author_id where p.id=any(p_ids);\n else raise exception 'INVALID_FEEDBACK_KIND'; end if;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "feedback_can_read",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_kind text, p_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.feedback_can_read(p_kind text, p_id uuid)\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select auth.uid() is not null and case p_kind\n when 'bug' then exists(select 1 from public.bug_reports where id=p_id)\n when 'suggestion' then exists(select 1 from public.suggestion_posts p where p.id=p_id and (\n  not p.friends_only or p.author_id=auth.uid() or app_private.notice_is_operator() or exists(\n   select 1 from public.friend_requests f where f.status='accepted' and\n   ((f.sender_id=auth.uid() and f.recipient_id=p.author_id) or (f.recipient_id=auth.uid() and f.sender_id=p.author_id))\n  )\n )) else false end\n$function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "feedback_comment_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_kind text, p_id uuid, p_action text, p_comment_id uuid, p_body text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.feedback_comment_action(p_kind text, p_id uuid, p_action text, p_comment_id uuid, p_body text DEFAULT ''::text)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();c public.feedback_comments;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_comment_id is null or p_action is null or p_action not in ('add','edit','delete') then raise exception 'INVALID_FEEDBACK_COMMENT';end if;\n -- Lock the parent against concurrent deletion or visibility changes.\n if p_kind='suggestion' then perform 1 from public.suggestion_posts where id=p_id for share;\n elsif p_kind='bug' then perform 1 from public.bug_reports where id=p_id for share;\n else raise exception 'INVALID_FEEDBACK_COMMENT';end if;\n if not app_private.feedback_can_read(p_kind,p_id) then raise exception 'FEEDBACK_NOT_FOUND';end if;\n perform pg_advisory_xact_lock(hashtextextended('feedback-comment:'||p_comment_id::text,0));\n select * into c from public.feedback_comments where id=p_comment_id for update;\n if found then\n  if (p_kind='suggestion' and c.suggestion_id is distinct from p_id) or (p_kind='bug' and c.bug_id is distinct from p_id) then raise exception 'FEEDBACK_COMMENT_FORBIDDEN';end if;\n  if c.author_id<>u and not (p_action='delete' and app_private.notice_is_operator()) then raise exception 'FEEDBACK_COMMENT_FORBIDDEN';end if;\n  if p_action='add' then\n   if c.body is distinct from btrim(p_body) then raise exception 'OPERATION_CONFLICT';end if;\n   return c.id;\n  end if;\n elsif p_action='delete' then return p_comment_id;\n elsif p_action<>'add' then raise exception 'FEEDBACK_COMMENT_NOT_FOUND';\n end if;\n if p_action='delete' then delete from public.feedback_comments where id=p_comment_id;return p_comment_id;end if;\n if p_body is null or char_length(btrim(p_body)) not between 1 and 500 then raise exception 'INVALID_FEEDBACK_COMMENT';end if;\n if p_action='add' then\n  insert into public.feedback_comments(id,suggestion_id,bug_id,author_id,body)\n  values(p_comment_id,case when p_kind='suggestion' then p_id end,case when p_kind='bug' then p_id end,u,btrim(p_body));\n else update public.feedback_comments set body=btrim(p_body),updated_at=now() where id=p_comment_id;end if;\n return p_comment_id;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "feedback_comments",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_kind text, p_id uuid, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.feedback_comments(p_kind text, p_id uuid, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;total bigint;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>100000 then raise exception 'INVALID_FEEDBACK_COMMENT';end if;\n if not app_private.feedback_can_read(p_kind,p_id) then raise exception 'FEEDBACK_NOT_FOUND';end if;\n select count(*) into total from public.feedback_comments c where case p_kind when 'suggestion' then c.suggestion_id=p_id else c.bug_id=p_id end;\n select coalesce(jsonb_agg(to_jsonb(t) order by t.created_at,t.id),'[]'::jsonb) into result from (\n  select c.id,c.author_id,coalesce(p.nickname,'낚시꾼') author_name,p.avatar_path,c.body,c.created_at,c.updated_at\n  from public.feedback_comments c left join public.player_profiles p on p.id=c.author_id\n  where case p_kind when 'suggestion' then c.suggestion_id=p_id else c.bug_id=p_id end\n  order by c.created_at,c.id limit 20 offset p_offset\n ) t;\n return jsonb_build_object('items',result,'total',total);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -10048,6 +10408,16 @@
         "securityDefiner": true
       },
       {
+        "name": "publish_fishing_showcase",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_operation_id uuid, p_caption text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.publish_fishing_showcase(p_operation_id uuid, p_caption text)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();existing uuid;p app_private.prepared_fishing_casts;a public.fishing_attempts;result_id uuid;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_caption is null or char_length(btrim(p_caption))>200 then raise exception 'INVALID_SHOWCASE';end if;\n perform pg_advisory_xact_lock(hashtextextended('showcase:'||u::text||':'||p_operation_id::text,0));\n select id into existing from public.fishing_showcase_posts where author_id=u and operation_id=p_operation_id;\n if found then return existing;end if;\n select * into p from app_private.prepared_fishing_casts where user_id=u and operation_id=p_operation_id;\n if not found then raise exception 'CATCH_NOT_SHAREABLE';end if;\n select * into a from public.fishing_attempts where user_id=u and operation_id=p_operation_id;\n if not found or p.finished_at is null or not p.eligible or a.rarity is null or a.rarity not in ('epic','mythic')\n or p.result->'attempt'->'species'->>'id' is null\n or p.result->'attempt'->'species'->>'rarity' is distinct from a.rarity::text\n then raise exception 'CATCH_NOT_SHAREABLE';end if;\n insert into public.fishing_showcase_posts(author_id,operation_id,caption,species,rarity,region_name,caught_at,first_discovery,render_version)\n values(u,p_operation_id,btrim(p_caption),p.result->'attempt'->'species',a.rarity,\n (select name from public.regions where id=p.region_id),a.created_at,\n coalesce((p.result->'attempt'->>'firstDiscovery')::boolean,false),1) returning id into result_id;\n return result_id;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "quest_period",
         "config": [
           "search_path=\"\""
@@ -10095,6 +10465,16 @@
         "schema": "app_private",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.rare_title_tank_event()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare m jsonb;t record;\nbegin\n if new.tank_id is null or new.sold_at is not null or new.escrow_gift_id is not null then return new;end if;\n m:=app_private.rare_title_metrics(new.user_id);\n for t in select id from public.title_catalog where metric in ('rare_trash_tank','rare_ink_tank','rare_stars_tank') and coalesce((m->>metric)::integer,0)>=target\n loop perform app_private.award_title(new.user_id,t.id);end loop;\n return new;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "react_fishing_showcase",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_post_id uuid, p_reaction text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.react_fishing_showcase(p_post_id uuid, p_reaction text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare p public.fishing_showcase_posts;u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_reaction is not null and p_reaction not in ('celebrate','love','wow','luck') then raise exception 'INVALID_SHOWCASE_REACTION';end if;\n select * into p from public.fishing_showcase_posts where id=p_post_id for share;\n if not found then raise exception 'SHOWCASE_NOT_FOUND';end if;\n perform pg_advisory_xact_lock(hashtextextended('showcase-react:'||p_post_id::text||':'||u::text,0));\n if p_reaction is null then delete from public.fishing_showcase_reactions where post_id=p_post_id and user_id=u;\n else insert into public.fishing_showcase_reactions(post_id,user_id,reaction) values(p_post_id,u,p_reaction)\n on conflict(post_id,user_id) do update set reaction=excluded.reaction;end if;\n return app_private.showcase_post_json(p);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -10375,6 +10755,26 @@
         "schema": "app_private",
         "arguments": "p_run uuid",
         "definition": "CREATE OR REPLACE FUNCTION app_private.shadow_run_response(p_run uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare r public.shadow_game_runs;q app_private.shadow_game_rounds;\nbegin\n if p_run is null then return jsonb_build_object('run',null,'serverNow',clock_timestamp()); end if;\n select * into strict r from public.shadow_game_runs where id=p_run;\n select * into q from app_private.shadow_game_rounds where run_id=r.id order by number desc limit 1;\n return jsonb_build_object('serverNow',clock_timestamp(),'run',jsonb_build_object(\n 'id',r.id,'score',r.score,'lives',r.lives,'finished',r.finished_at is not null,\n 'round',jsonb_build_object('id',q.id,'number',q.number,'imagePath',q.image_path,'options',q.options,'deadline',q.deadline,\n 'answered',q.answered_at is not null,'correct',q.correct,'timedOut',q.timed_out,\n 'answerName',case when q.answered_at is not null then q.target_name else null end)));\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "showcase_feed",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_mine boolean, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.showcase_feed(p_mine boolean DEFAULT false, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>10000 or p_mine is null then raise exception 'INVALID_SHOWCASE';end if;\n select jsonb_build_object('items',coalesce(jsonb_agg(app_private.showcase_post_json(p) order by p.created_at desc,p.id desc),'[]'::jsonb),\n 'total',(select count(*) from public.fishing_showcase_posts where not p_mine or author_id=auth.uid())) into result\n from (select * from public.fishing_showcase_posts where not p_mine or author_id=auth.uid() order by created_at desc,id desc limit 20 offset p_offset) p;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "showcase_post_json",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p fishing_showcase_posts",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.showcase_post_json(p fishing_showcase_posts)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select to_jsonb(p)||jsonb_build_object('author_name',a.nickname,'avatar_path',a.avatar_path,\n 'reactions',coalesce((select jsonb_object_agg(q.reaction,q.n) from\n (select reaction,count(*)::int n from public.fishing_showcase_reactions where post_id=p.id group by reaction) q),'{}'::jsonb),\n 'my_reaction',(select reaction from public.fishing_showcase_reactions where post_id=p.id and user_id=auth.uid()))\n from public.player_profiles a where a.id=p.author_id\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -10858,6 +11258,16 @@
         "securityDefiner": false
       },
       {
+        "name": "delete_fishing_showcase",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_post_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.delete_fishing_showcase(p_post_id uuid)\n RETURNS text\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.delete_fishing_showcase(p_post_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "deliver_merchant_order",
         "config": [
           "search_path=\"\""
@@ -11005,6 +11415,26 @@
         "schema": "public",
         "arguments": "p_kind text, p_ids uuid[]",
         "definition": "CREATE OR REPLACE FUNCTION public.feedback_authors(p_kind text, p_ids uuid[])\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select app_private.feedback_authors(p_kind,p_ids)\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "feedback_comment_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_kind text, p_id uuid, p_action text, p_comment_id uuid, p_body text",
+        "definition": "CREATE OR REPLACE FUNCTION public.feedback_comment_action(p_kind text, p_id uuid, p_action text, p_comment_id uuid, p_body text DEFAULT ''::text)\n RETURNS uuid\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.feedback_comment_action(p_kind,p_id,p_action,p_comment_id,p_body)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "feedback_comments",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_kind text, p_id uuid, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.feedback_comments(p_kind text, p_id uuid, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$select app_private.feedback_comments(p_kind,p_id,p_offset)$function$\n",
         "securityDefiner": false
       },
       {
@@ -11318,6 +11748,16 @@
         "securityDefiner": false
       },
       {
+        "name": "publish_fishing_showcase",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_operation_id uuid, p_caption text",
+        "definition": "CREATE OR REPLACE FUNCTION public.publish_fishing_showcase(p_operation_id uuid, p_caption text)\n RETURNS uuid\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.publish_fishing_showcase(p_operation_id,p_caption)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "quest_state",
         "config": [
           "search_path=\"\""
@@ -11325,6 +11765,16 @@
         "schema": "public",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION public.quest_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.quest_state()$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "react_fishing_showcase",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_post_id uuid, p_reaction text",
+        "definition": "CREATE OR REPLACE FUNCTION public.react_fishing_showcase(p_post_id uuid, p_reaction text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.react_fishing_showcase(p_post_id,p_reaction)$function$\n",
         "securityDefiner": false
       },
       {
@@ -11485,6 +11935,16 @@
         "schema": "public",
         "arguments": "p_offset integer",
         "definition": "CREATE OR REPLACE FUNCTION public.shadow_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.shadow_leaderboard(p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "showcase_feed",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_mine boolean, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.showcase_feed(p_mine boolean DEFAULT false, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.showcase_feed(p_mine,p_offset)$function$\n",
         "securityDefiner": false
       },
       {
@@ -14605,6 +15065,72 @@
         "definition": "NOT NULL wanted"
       },
       {
+        "name": "feedback_comments_author_id_fkey",
+        "table": "feedback_comments",
+        "schema": "public",
+        "definition": "FOREIGN KEY (author_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "feedback_comments_author_id_not_null",
+        "table": "feedback_comments",
+        "schema": "public",
+        "definition": "NOT NULL author_id"
+      },
+      {
+        "name": "feedback_comments_body_check",
+        "table": "feedback_comments",
+        "schema": "public",
+        "definition": "CHECK (((char_length(btrim(body)) >= 1) AND (char_length(btrim(body)) <= 500)))"
+      },
+      {
+        "name": "feedback_comments_body_not_null",
+        "table": "feedback_comments",
+        "schema": "public",
+        "definition": "NOT NULL body"
+      },
+      {
+        "name": "feedback_comments_bug_id_fkey",
+        "table": "feedback_comments",
+        "schema": "public",
+        "definition": "FOREIGN KEY (bug_id) REFERENCES bug_reports(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "feedback_comments_check",
+        "table": "feedback_comments",
+        "schema": "public",
+        "definition": "CHECK ((num_nonnulls(suggestion_id, bug_id) = 1))"
+      },
+      {
+        "name": "feedback_comments_created_at_not_null",
+        "table": "feedback_comments",
+        "schema": "public",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "feedback_comments_id_not_null",
+        "table": "feedback_comments",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "feedback_comments_pkey",
+        "table": "feedback_comments",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "feedback_comments_suggestion_id_fkey",
+        "table": "feedback_comments",
+        "schema": "public",
+        "definition": "FOREIGN KEY (suggestion_id) REFERENCES suggestion_posts(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "feedback_comments_updated_at_not_null",
+        "table": "feedback_comments",
+        "schema": "public",
+        "definition": "NOT NULL updated_at"
+      },
+      {
         "name": "fishing_attempts_bait_id_fkey",
         "table": "fishing_attempts",
         "schema": "public",
@@ -14963,6 +15489,156 @@
         "table": "fishing_rods",
         "schema": "public",
         "definition": "FOREIGN KEY (region_id) REFERENCES regions(id)"
+      },
+      {
+        "name": "fishing_showcase_posts_author_id_fkey",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "FOREIGN KEY (author_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "fishing_showcase_posts_author_id_not_null",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "NOT NULL author_id"
+      },
+      {
+        "name": "fishing_showcase_posts_author_id_operation_id_key",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "UNIQUE (author_id, operation_id)"
+      },
+      {
+        "name": "fishing_showcase_posts_caption_check",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "CHECK ((char_length(caption) <= 200))"
+      },
+      {
+        "name": "fishing_showcase_posts_caption_not_null",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "NOT NULL caption"
+      },
+      {
+        "name": "fishing_showcase_posts_caught_at_not_null",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "NOT NULL caught_at"
+      },
+      {
+        "name": "fishing_showcase_posts_created_at_not_null",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "fishing_showcase_posts_first_discovery_not_null",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "NOT NULL first_discovery"
+      },
+      {
+        "name": "fishing_showcase_posts_id_not_null",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "fishing_showcase_posts_operation_id_not_null",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "fishing_showcase_posts_pkey",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "fishing_showcase_posts_rarity_check",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "CHECK ((rarity = ANY (ARRAY['epic'::game_rarity, 'mythic'::game_rarity])))"
+      },
+      {
+        "name": "fishing_showcase_posts_rarity_not_null",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "NOT NULL rarity"
+      },
+      {
+        "name": "fishing_showcase_posts_region_name_not_null",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "NOT NULL region_name"
+      },
+      {
+        "name": "fishing_showcase_posts_render_version_check",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "CHECK ((render_version = 1))"
+      },
+      {
+        "name": "fishing_showcase_posts_render_version_not_null",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "NOT NULL render_version"
+      },
+      {
+        "name": "fishing_showcase_posts_species_check",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "CHECK ((jsonb_typeof(species) = 'object'::text))"
+      },
+      {
+        "name": "fishing_showcase_posts_species_not_null",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "definition": "NOT NULL species"
+      },
+      {
+        "name": "fishing_showcase_reactions_pkey",
+        "table": "fishing_showcase_reactions",
+        "schema": "public",
+        "definition": "PRIMARY KEY (post_id, user_id)"
+      },
+      {
+        "name": "fishing_showcase_reactions_post_id_fkey",
+        "table": "fishing_showcase_reactions",
+        "schema": "public",
+        "definition": "FOREIGN KEY (post_id) REFERENCES fishing_showcase_posts(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "fishing_showcase_reactions_post_id_not_null",
+        "table": "fishing_showcase_reactions",
+        "schema": "public",
+        "definition": "NOT NULL post_id"
+      },
+      {
+        "name": "fishing_showcase_reactions_reaction_check",
+        "table": "fishing_showcase_reactions",
+        "schema": "public",
+        "definition": "CHECK ((reaction = ANY (ARRAY['celebrate'::text, 'love'::text, 'wow'::text, 'luck'::text])))"
+      },
+      {
+        "name": "fishing_showcase_reactions_reaction_not_null",
+        "table": "fishing_showcase_reactions",
+        "schema": "public",
+        "definition": "NOT NULL reaction"
+      },
+      {
+        "name": "fishing_showcase_reactions_user_id_fkey",
+        "table": "fishing_showcase_reactions",
+        "schema": "public",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "fishing_showcase_reactions_user_id_not_null",
+        "table": "fishing_showcase_reactions",
+        "schema": "public",
+        "definition": "NOT NULL user_id"
       },
       {
         "name": "fishing_vessels_bonus_basic_count_check",
@@ -17521,6 +18197,20 @@
       {
         "role": "authenticated",
         "table": "fishing_rods",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_posts",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_reactions",
         "schema": "public",
         "grantable": "NO",
         "privilege": "SELECT"
@@ -20268,6 +20958,104 @@
         "role": "authenticated",
         "table": "fishing_rods",
         "column": "region_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_posts",
+        "column": "author_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_posts",
+        "column": "caption",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_posts",
+        "column": "caught_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_posts",
+        "column": "created_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_posts",
+        "column": "first_discovery",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_posts",
+        "column": "id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_posts",
+        "column": "operation_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_posts",
+        "column": "rarity",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_posts",
+        "column": "region_name",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_posts",
+        "column": "render_version",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_posts",
+        "column": "species",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_reactions",
+        "column": "post_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_reactions",
+        "column": "reaction",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_showcase_reactions",
+        "column": "user_id",
         "schema": "public",
         "privilege": "SELECT"
       },
@@ -23638,6 +24426,27 @@
         "arguments": "p_comment_id uuid"
       },
       {
+        "name": "delete_fishing_showcase",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_post_id uuid"
+      },
+      {
+        "name": "delete_fishing_showcase",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_post_id uuid"
+      },
+      {
+        "name": "delete_fishing_showcase",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_post_id uuid"
+      },
+      {
         "name": "deliver_merchant_order",
         "role": "anon",
         "schema": "app_private",
@@ -24161,6 +24970,69 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_kind text, p_ids uuid[]"
+      },
+      {
+        "name": "feedback_can_read",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_id uuid"
+      },
+      {
+        "name": "feedback_can_read",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_id uuid"
+      },
+      {
+        "name": "feedback_can_read",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_id uuid"
+      },
+      {
+        "name": "feedback_comment_action",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_id uuid, p_action text, p_comment_id uuid, p_body text"
+      },
+      {
+        "name": "feedback_comment_action",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_kind text, p_id uuid, p_action text, p_comment_id uuid, p_body text"
+      },
+      {
+        "name": "feedback_comment_action",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_id uuid, p_action text, p_comment_id uuid, p_body text"
+      },
+      {
+        "name": "feedback_comments",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_id uuid, p_offset integer"
+      },
+      {
+        "name": "feedback_comments",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_kind text, p_id uuid, p_offset integer"
+      },
+      {
+        "name": "feedback_comments",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_id uuid, p_offset integer"
       },
       {
         "name": "find_player_by_code",
@@ -25402,6 +26274,27 @@
         "arguments": ""
       },
       {
+        "name": "publish_fishing_showcase",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_caption text"
+      },
+      {
+        "name": "publish_fishing_showcase",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_caption text"
+      },
+      {
+        "name": "publish_fishing_showcase",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_caption text"
+      },
+      {
         "name": "quest_period",
         "role": "anon",
         "schema": "app_private",
@@ -25505,6 +26398,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "react_fishing_showcase",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_post_id uuid, p_reaction text"
+      },
+      {
+        "name": "react_fishing_showcase",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_post_id uuid, p_reaction text"
+      },
+      {
+        "name": "react_fishing_showcase",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_post_id uuid, p_reaction text"
       },
       {
         "name": "react_to_collectible_gift",
@@ -26093,6 +27007,48 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_run uuid"
+      },
+      {
+        "name": "showcase_feed",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "showcase_feed",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "showcase_feed",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "showcase_post_json",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p fishing_showcase_posts"
+      },
+      {
+        "name": "showcase_post_json",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p fishing_showcase_posts"
+      },
+      {
+        "name": "showcase_post_json",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p fishing_showcase_posts"
       },
       {
         "name": "species_payload",
@@ -27103,6 +28059,27 @@
         "arguments": "p_comment_id uuid"
       },
       {
+        "name": "delete_fishing_showcase",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_post_id uuid"
+      },
+      {
+        "name": "delete_fishing_showcase",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_post_id uuid"
+      },
+      {
+        "name": "delete_fishing_showcase",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_post_id uuid"
+      },
+      {
         "name": "deliver_merchant_order",
         "role": "anon",
         "schema": "public",
@@ -27416,6 +28393,48 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_kind text, p_ids uuid[]"
+      },
+      {
+        "name": "feedback_comment_action",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_kind text, p_id uuid, p_action text, p_comment_id uuid, p_body text"
+      },
+      {
+        "name": "feedback_comment_action",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_kind text, p_id uuid, p_action text, p_comment_id uuid, p_body text"
+      },
+      {
+        "name": "feedback_comment_action",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_kind text, p_id uuid, p_action text, p_comment_id uuid, p_body text"
+      },
+      {
+        "name": "feedback_comments",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_kind text, p_id uuid, p_offset integer"
+      },
+      {
+        "name": "feedback_comments",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_kind text, p_id uuid, p_offset integer"
+      },
+      {
+        "name": "feedback_comments",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_kind text, p_id uuid, p_offset integer"
       },
       {
         "name": "feedback_reactions",
@@ -28069,6 +29088,27 @@
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid"
       },
       {
+        "name": "publish_fishing_showcase",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_caption text"
+      },
+      {
+        "name": "publish_fishing_showcase",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_caption text"
+      },
+      {
+        "name": "publish_fishing_showcase",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_caption text"
+      },
+      {
         "name": "quest_state",
         "role": "anon",
         "schema": "public",
@@ -28088,6 +29128,27 @@
         "schema": "public",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "react_fishing_showcase",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_post_id uuid, p_reaction text"
+      },
+      {
+        "name": "react_fishing_showcase",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_post_id uuid, p_reaction text"
+      },
+      {
+        "name": "react_fishing_showcase",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_post_id uuid, p_reaction text"
       },
       {
         "name": "react_to_collectible_gift",
@@ -28424,6 +29485,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_offset integer"
+      },
+      {
+        "name": "showcase_feed",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "showcase_feed",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_mine boolean, p_offset integer"
+      },
+      {
+        "name": "showcase_feed",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_mine boolean, p_offset integer"
       },
       {
         "name": "sync_player_profile",

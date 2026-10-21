@@ -1,5 +1,7 @@
 ﻿import type {FishingRod} from './fishing-rods'
 
+import {RodGaugeCharm} from './rod-gauge-charm'
+
 const themes:Record<string,{ink:string;light:string;pattern:string}>={
  basic:{ink:'#3e3024',light:'#e4c79d',pattern:'linear-gradient(115deg,#c69a5720,transparent)'},
  bronze:{ink:'#293b3e',light:'#d7b388',pattern:'linear-gradient(115deg,#b58b4520,transparent)'},
@@ -31,6 +33,7 @@ export function FloatingRodGauge({rod,tension,idle,x,y}:{rod?:FishingRod;tension
    <rect width={192*value/100} height="6" rx="3" fill={danger?'#f3a779':theme.light}/>
    <path d="M38.4 0v6 M163.2 0v6" stroke="white" strokeOpacity=".25"/>
   </g>
+  <RodGaugeCharm rodId={id} x={195} y={-1} width={24} height={24}/>
  </g>
 }
 
@@ -41,10 +44,13 @@ export function RodGauge({rod,tension,inline=false,floating=false,status}:{rod?:
   {!floating&&status!=='낚시 준비'&&status!=='입질을 기다려요'&&<div className="mb-2 flex items-center justify-end gap-3 text-[11px] leading-4">
    <span className={danger?'text-orange-200':'text-white/85'}>{status??(danger?'위험':'안정')}{!status&&<span className="ml-2 tabular-nums text-white/60">{Math.round(value)}%</span>}</span>
   </div>}
+  <div className="relative">
   <div className={`relative ${floating?'h-1.5':'h-2'} overflow-hidden rounded-full bg-black/20`}>
    <span className="absolute inset-y-0 left-[20%] w-[65%] bg-white/10"/>
    <span className="absolute inset-y-0 left-0 rounded-full" style={{width:value+'%',background:danger?'#f3a779':`linear-gradient(90deg,${rod?.color??'#c69857'},${theme.light})`}}/>
    <span className="absolute inset-y-0 left-[20%] w-px bg-white/25"/><span className="absolute inset-y-0 left-[85%] w-px bg-white/25"/>
+  </div>
+  <RodGaugeCharm rodId={id} className="pointer-events-none absolute top-1/2 -right-2 size-6 -translate-y-1/2"/>
   </div>
  </div>
 }

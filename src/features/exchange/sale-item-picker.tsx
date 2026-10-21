@@ -10,7 +10,7 @@ type Props={value:ExchangeAsset[];onChange:(assets:ExchangeAsset[])=>void;invent
 export function SaleItemPicker({value,onChange,inventory,disabled,loading=false,multiple=true}:Props){
  const [query,setQuery]=useState('')
  const [tab,setTab]=useState('collectible')
- const categories=[{kind:'fuel',label:'기름'},{kind:'bait',label:'미끼'},{kind:'collectible',label:'개체'}]
+ const categories=[{kind:'fuel',label:'연료'},{kind:'bait',label:'미끼'},{kind:'collectible',label:'개체'}]
  const assets=inventory.assets.filter(asset=>asset.kind!=='gold'&&(asset.available??0)>0)
  const normalized=query.trim().replace(/\s+/g,'').toLocaleLowerCase()
  const results=assets.filter(asset=>asset.kind===tab&&asset.name.replace(/\s+/g,'').toLocaleLowerCase().includes(normalized))

@@ -12,6 +12,7 @@ export const placeBanners: Record<
   string,
   { title: string; image: string; description: string; subtitle: string }
 > = {
+  '/showcase': {title:'자랑하기',image:'community-board',description:'바다의 특별한 순간을 나누는 게시판',subtitle:'특급과 신화, 그 순간을 함께 나눠요'},
   '/board': {
     title: '자유게시판',
     image: 'community-board',
@@ -81,8 +82,8 @@ export const placeBanners: Record<
   '/item-shop': {
     title: '아이템 상점',
     image: 'item-shop',
-    description: '기름통과 항해 지도가 진열된 포근한 해변 잡화점',
-    subtitle: '기름을 채우고 새로운 바다를 준비해요',
+    description: '연료통과 항해 지도가 진열된 포근한 해변 잡화점',
+    subtitle: '연료를 채우고 새로운 바다를 준비해요',
   },
   '/shop': {
     title: '낚시 상점',

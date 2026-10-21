@@ -1,3 +1,4 @@
+import {loadShowcase} from '@/features/showcase/api'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 import { useAuth } from './auth-provider'
@@ -6,10 +7,10 @@ import { loadExchange } from '@/features/exchange/api'
 import { loadSuggestions } from '@/features/suggestions/api'
 import { loadBugReports } from '@/features/bugs/api'
 
-type Source = 'board' | 'exchange' | 'suggestions' | 'bugs'
-const sources: Source[] = ['board', 'exchange', 'suggestions', 'bugs']
-const sourcePaths:Record<Source,string>={board:'/board',exchange:'/exchange',suggestions:'/square/suggestions',bugs:'/square/bugs'}
-const emptyState={board:false,exchange:false,suggestions:false,bugs:false}
+type Source = 'board' | 'exchange' | 'suggestions' | 'bugs' | 'showcase'
+const sources: Source[] = ['board', 'exchange', 'suggestions', 'bugs', 'showcase']
+const sourcePaths:Record<Source,string>={board:'/board',exchange:'/exchange',suggestions:'/square/suggestions',bugs:'/square/bugs',showcase:'/showcase'}
+const emptyState={board:false,exchange:false,suggestions:false,bugs:false,showcase:false}
 const seenKey = (owner: string, source: Source) => `pongdang:content-seen:${owner}:${source}`
 function seen(owner: string, source: Source) {
   try {
@@ -36,7 +37,7 @@ export function useNewContent() {
     let active = true,
       loading = false
     const onSourcePage = (source: Source) =>
-      pathname === sourcePaths[source] || pathname.startsWith(`${sourcePaths[source]}/`)
+      pathname === sourcePaths[source] || (source!=='showcase'&&pathname.startsWith(`${sourcePaths[source]}/`))
     async function refresh() {
       if (!active || loading || document.hidden) return
       loading = true
@@ -45,6 +46,7 @@ export function useNewContent() {
         loadExchange('all', '', 0),
         loadSuggestions(0,null),
         loadBugReports(0,null),
+        loadShowcase(false,0),
       ])
       loading = false
       if (!active) return
@@ -86,6 +88,7 @@ export function useNewContent() {
     window.addEventListener('online', update)
     window.addEventListener('exchange-changed', update)
     window.addEventListener('board-changed', update)
+    window.addEventListener('showcase-changed', update)
     window.addEventListener('storage', storage)
     document.addEventListener('visibilitychange', update)
     return () => {
@@ -95,11 +98,12 @@ export function useNewContent() {
       window.removeEventListener('online', update)
       window.removeEventListener('exchange-changed', update)
       window.removeEventListener('board-changed', update)
+      window.removeEventListener('showcase-changed', update)
       window.removeEventListener('storage', storage)
       document.removeEventListener('visibilitychange', update)
     }
   }, [owner, recovery, pathname])
   return !recovery && state && state.owner === owner
-    ? { board: state.board, exchange: state.exchange, suggestions:state.suggestions, bugs:state.bugs }
+    ? { board: state.board, exchange: state.exchange, suggestions:state.suggestions, bugs:state.bugs, showcase:state.showcase }
     : emptyState
 }

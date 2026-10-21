@@ -36,8 +36,14 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      showcase_feed:{Args:{p_mine?:boolean;p_offset?:number};Returns:import('@/features/showcase/api').ShowcaseFeed}
+      publish_fishing_showcase:{Args:{p_operation_id:string;p_caption:string};Returns:string}
+      react_fishing_showcase:{Args:{p_post_id:string;p_reaction:import('@/features/showcase/api').ShowcaseReaction|null};Returns:import('@/features/showcase/api').ShowcasePost}
+      delete_fishing_showcase:{Args:{p_post_id:string};Returns:string}
       refresh_return_notifications:{Args:Record<string,never>;Returns:import('@/features/notifications/api').ReturnNotificationStatus}
       feedback_authors:{Args:{p_kind:import('@/features/board/feedback-reactions').FeedbackKind;p_ids:string[]};Returns:import('@/features/board/feedback-post-row').FeedbackAuthorAvatar[]}
+      feedback_comments:{Args:{p_kind:string;p_id:string;p_offset?:number};Returns:import('@/features/board/feedback-comments-api').FeedbackCommentPage}
+      feedback_comment_action:{Args:{p_kind:string;p_id:string;p_action:string;p_comment_id:string;p_body?:string};Returns:string}
       feedback_reactions:{Args:{p_kind:import('@/features/board/feedback-reactions').FeedbackKind;p_ids:string[]};Returns:import('@/features/board/feedback-reactions').FeedbackReaction[]}
       set_feedback_reaction:{Args:{p_kind:import('@/features/board/feedback-reactions').FeedbackKind;p_id:string;p_value:number};Returns:import('@/features/board/feedback-reactions').FeedbackReaction}
       merchant_state:{Args:Record<string,never>;Returns:import('@/features/merchant/api').MerchantState}

@@ -1,15 +1,16 @@
 import type {ComponentProps} from 'react'
 
-function artwork(name:string,folder='app-icons'){
+function artwork(name:string,folder='app-icons',extension='png'){
  return function Artwork({className='size-6',strokeWidth:_strokeWidth,...props}:Omit<ComponentProps<'img'>,'src'|'alt'>&{strokeWidth?:number}){
-  return <img {...props} onError={event=>{if(event.currentTarget.dataset.fallback)return;event.currentTarget.dataset.fallback='true';event.currentTarget.src='/fallback-image.svg'}} src={`/${folder}/${name}.png`} alt="" aria-hidden={props['aria-hidden']??true} width={128} height={128} decoding="async" draggable={false} className={`${className} shrink-0 object-contain`}/>
+  return <img {...props} onError={event=>{if(event.currentTarget.dataset.fallback)return;event.currentTarget.dataset.fallback='true';event.currentTarget.src='/fallback-image.svg'}} src={`/${folder}/${name}.${extension}`} alt="" aria-hidden={props['aria-hidden']??true} width={128} height={128} decoding="async" draggable={false} className={`${className} shrink-0 object-contain`}/>
  }
 }
 export const appArt={
+ showcase:artwork('showcase-fish-trophy'),
  download:artwork('download-orange'),
  backToList:artwork('back-to-list'),
  itemShop:artwork('item-shop'),
- port:artwork('port'),fuel:artwork('fuel'),
+ port:artwork('port'),fuel:artwork('fuel-can','app-icons','svg'),
  music:artwork('music-disc-cartoon'),
  farm:artwork('farm'),
  expeditionBoost:artwork('fish-trap'),
@@ -31,6 +32,7 @@ export const appArt={
  notices:artwork('announcement','notification-icons'),suggestions:artwork('suggestion','notification-icons'),bugs:artwork('bug','notification-icons'),
 }
 const placeArt:Record<string,ReturnType<typeof artwork>>={
+ '/showcase':appArt.showcase,
  '/item-shop':appArt.itemShop,
  '/merchant-orders':appArt.merchantOrders,
  '/port':appArt.port,

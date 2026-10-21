@@ -1,3 +1,4 @@
+import {Camera} from 'lucide-react'
 import {NewDiscoveryBadge} from '@/components/new-discovery-badge'
 import { useEffect, useRef, useState } from 'react'
 import type { CSSProperties } from 'react'
@@ -7,8 +8,11 @@ import type { Species } from '@/features/collection/api'
 import { chanceFailurePhrases } from './fishing-practice'
 import { rarities } from '@/lib/game/rarity'
 import { regionIcons } from '@/features/regions/region-icons'
-type RevealProps={firstDiscovery?:boolean;onDismiss:()=>void;practice?:boolean;failureLabel?:string;failureReason?:string|null}&({species:Species;failure?:never}|{species?:never;failure:string})
-export function CatchReveal({species,failure,onDismiss,practice=false,failureReason,firstDiscovery=false}:RevealProps){
+type RevealProps={firstDiscovery?:boolean;onDismiss:()=>void;practice?:boolean;preview?:boolean;regionName?:string;caughtAt?:string;onShare?:()=>void;failureLabel?:string;failureReason?:string|null}&({species:Species;failure?:never}|{species?:never;failure:string})
+export function CatchReveal({species,failure,onDismiss,practice=false,onShare,failureReason,firstDiscovery=false}:RevealProps){
+ const [ready,setReady]=useState(false)
+ const shareable=!!species&&['epic','mythic'].includes(species.rarity)&&!practice&&!!onShare
+ useEffect(()=>{const timer=setTimeout(()=>setReady(true),1300);return()=>clearTimeout(timer)},[])
  const nativeRegion=species?.is_native&&species.native_region_id?regionIcons[species.native_region_id]:undefined
  const chanceFailure=['bait','escape','wave'].includes(failureReason??'')
  const [chanceMessage]=useState(()=>chanceFailurePhrases[Math.floor(Math.random()*chanceFailurePhrases.length)])
@@ -24,8 +28,9 @@ export function CatchReveal({species,failure,onDismiss,practice=false,failureRea
  const failureAlt=failureReason==='snap'?'끊어진 낚싯줄을 보고 놀란 퐁이':failureReason==='slack'?'느슨해진 낚싯줄을 보고 당황한 퐁이':'낚시에 실패해 시무룩한 퐁이'
  const rarity=species?.rarity??'common',color=species?rarities[rarity].effectColor:'#9aafc9',dismiss=useRef<HTMLButtonElement>(null)
  useEffect(()=>{const previous=document.activeElement;dismiss.current?.focus({preventScroll:true});return()=>{if(previous instanceof HTMLElement&&previous.isConnected)previous.focus({preventScroll:true})}},[])
- return createPortal(<button ref={dismiss} type="button" aria-label={species?`${species.name} 결과 닫기`:'낚시 실패 결과 닫기'} onClick={tryDismiss} onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();if(!event.repeat)tryDismiss()}}} className="fixed inset-0 z-[80] flex h-dvh w-screen cursor-pointer items-center justify-center overflow-hidden bg-slate-950/65 p-6 text-center backdrop-blur-sm focus-visible:outline-2 focus-visible:outline-white" style={{color,backgroundImage:species?`radial-gradient(ellipse at center,${color}25,transparent 65%)`:undefined}}>
-  <span className="relative flex w-full max-w-sm flex-col items-center">
+ return createPortal(<div className="fixed inset-0 z-[80] flex h-dvh w-screen items-center justify-center overflow-hidden bg-slate-950/65 p-6 text-center backdrop-blur-sm" style={{color,backgroundImage:species?`radial-gradient(ellipse at center,${color}25,transparent 65%)`:undefined}} onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();if(!event.repeat)tryDismiss()}}}>
+  <button ref={dismiss} type="button" aria-label={species?`${species.name} 결과 닫기`:'낚시 실패 결과 닫기'} onClick={tryDismiss} className="absolute inset-0 size-full cursor-pointer focus-visible:outline-2 focus-visible:outline-white"/>
+  <span className="pointer-events-none relative flex w-full max-w-sm flex-col items-center">
    {species&&<span className="catch-grade-rays pointer-events-none absolute left-1/2 top-24 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40" style={{background:`repeating-conic-gradient(from 10deg,transparent 0deg 24deg,${color}33 26deg 32deg,transparent 34deg 48deg)`,maskImage:"radial-gradient(circle,#000 15%,transparent 70%)"}}/>}
    <span className="catch-reveal-glow pointer-events-none absolute left-1/2 top-24 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full" style={{background:'radial-gradient(circle,'+color+'88,transparent 68%)'}}/>
    {Array.from({length:!species?0:rarity==='mythic'?22:rarity==='epic'?16:rarity==='rare'?10:6},(_,i)=><span key={i} className="catch-reveal-spark pointer-events-none absolute left-1/2 top-24 size-1.5 rounded-full bg-current" style={{'--spark-x':Math.cos(i*2.4)*(90+i*5)+'px','--spark-y':Math.sin(i*2.4)*120-40+'px'} as CSSProperties}/>)}
@@ -45,5 +50,6 @@ export function CatchReveal({species,failure,onDismiss,practice=false,failureRea
    </span>
    <span className="relative mt-8 text-xs text-white/50">화면을 누르면 계속해요</span>
   </span>
- </button>,document.body)
+  {shareable&&<button type="button" disabled={!ready} onClick={()=>onShare?.()} className="absolute bottom-[max(1.5rem,env(safe-area-inset-bottom))] left-1/2 inline-flex min-h-11 -translate-x-1/2 items-center gap-2 rounded-lg border border-white/25 bg-white/10 px-5 text-sm text-white outline-none backdrop-blur-sm hover:bg-white/20 focus-visible:ring-2 focus-visible:ring-white disabled:opacity-50"><Camera className="size-4"/>자랑하기</button>}
+ </div>,document.body)
 }

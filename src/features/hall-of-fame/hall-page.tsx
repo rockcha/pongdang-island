@@ -1,9 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
-import { MessageCircle, RefreshCw, Send, ThumbsDown, ThumbsUp, Trash2 } from 'lucide-react'
+import {
+  MessageCircle,
+  RefreshCw,
+  Send,
+  Sparkles,
+  ThumbsDown,
+  ThumbsUp,
+  Trash2,
+} from 'lucide-react'
 import { toast } from 'sonner'
 import { useAuth } from '@/components/auth-provider'
 import { appArt } from '@/components/app-art'
 import { Button } from '@/components/ui/button'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
   Dialog,
   DialogContent,
@@ -14,31 +23,32 @@ import {
 import { PlayerAvatar } from '@/features/profile/player-avatar'
 import { BoardTime } from '@/features/board/board-time'
 import {
-  actOnWall,
+  actOnSection,
   hallError,
   loadHall,
-  loadWall,
-  type HallAction,
+  loadSectionWall,
+  loadSectionCounts,
+  type HallSectionAction,
   type HallFeed,
   type HallPlayer,
-  type HallWall,
+  type HallSectionWall,
 } from './api'
 import { formatHallValue, funCategories, hallCategories, type HallCategory } from './categories'
 
-type Selection = { player: HallPlayer; category: HallCategory }
+type Selection = HallCategory
 
-function PlayerWall({
+function SectionWall({
   selection,
   onClose,
   onChange,
 }: {
   selection: Selection
   onClose: () => void
-  onChange: () => void
+  onChange: (total: number) => void
 }) {
   const { session } = useAuth()
-  const { player, category } = selection
-  const [wall, setWall] = useState<HallWall | null>(null)
+  const category = selection
+  const [wall, setWall] = useState<HallSectionWall | null>(null)
   const [body, setBody] = useState('')
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
@@ -50,7 +60,7 @@ function PlayerWall({
   useEffect(() => {
     active.current = true
     let current = true
-    void loadWall(player.id)
+    void loadSectionWall(category.id)
       .then((data) => {
         if (current) {
           setWall(data)
@@ -65,14 +75,14 @@ function PlayerWall({
       current = false
       active.current = false
     }
-  }, [player.id, retry])
-  async function act(args: Omit<HallAction, 'p_target'>) {
+  }, [category.id, retry])
+  async function act(args: Omit<HallSectionAction, 'p_section'>) {
     if (lock.current) return
     lock.current = true
     setBusy(true)
     try {
-      const next = await actOnWall({ p_target: player.id, ...args })
-      onChange()
+      const next = await actOnSection({ p_section: category.id, ...args })
+      onChange(next.total)
       if (!active.current) return
       setWall(next)
       setOffset(next.comments.length)
@@ -90,7 +100,7 @@ function PlayerWall({
     lock.current = true
     setBusy(true)
     try {
-      const next = await loadWall(player.id, offset)
+      const next = await loadSectionWall(category.id, offset)
       if (active.current) {
         setOffset((previous) => previous + next.comments.length)
         setWall((previous) =>
@@ -124,64 +134,14 @@ function PlayerWall({
         className="flex max-h-[85dvh] flex-col gap-0 overflow-hidden p-0 max-sm:top-auto max-sm:bottom-0 max-sm:max-w-md max-sm:translate-y-0 max-sm:rounded-b-none"
       >
         <DialogHeader className="shrink-0 border-b border-border px-5 py-5 text-left">
-          <DialogTitle>퐁이에게 한마디</DialogTitle>
+          <DialogTitle className="flex items-center gap-2">
+            <category.icon aria-hidden="true" className="size-5 text-primary" />
+            {category.label} 이야기
+          </DialogTitle>
           <DialogDescription>
-            {category.label} · {category.title}
+            순위는 바뀌어도, 여기에 남긴 이야기는 계속 이어져요.
           </DialogDescription>
         </DialogHeader>
-        <div className="shrink-0 px-5 pt-4">
-          <div className="flex items-center gap-3">
-            <PlayerAvatar
-              nickname={player.nickname}
-              path={player.avatar_path}
-              className="size-12 ring-2 ring-secondary"
-            />
-            <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-medium">{player.nickname}</p>
-              <p className="mt-1 text-xs text-muted-foreground">
-                {player.rank}위 · {formatHallValue(player.value, category.unit)}
-              </p>
-            </div>
-          </div>
-          {wall && (
-            <div className="mt-3 flex items-center gap-1 border-b border-border/70 pb-2">
-              {(
-                [
-                  { value: 1, icon: ThumbsUp, label: '좋아요', count: wall.likes },
-                  { value: -1, icon: ThumbsDown, label: '싫어요', count: wall.dislikes },
-                ] as const
-              ).map((item) => (
-                <Button
-                  key={item.value}
-                  variant="ghost"
-                  className="min-h-11 gap-2 px-3 text-xs"
-                  disabled={busy || session?.user.id === player.id}
-                  aria-label={item.label}
-                  aria-pressed={wall.myReaction === item.value}
-                  onClick={() =>
-                    void act({
-                      p_action: 'react',
-                      p_value: wall.myReaction === item.value ? 0 : item.value,
-                    })
-                  }
-                >
-                  <item.icon
-                    className={`size-4 ${wall.myReaction === item.value ? 'fill-primary/15 text-primary' : 'text-muted-foreground'}`}
-                  />
-                  {item.count}
-                </Button>
-              ))}
-              <Button
-                variant="ghost"
-                className="ml-auto min-h-11 gap-1.5 px-2 text-xs text-muted-foreground"
-                onClick={() => input.current?.focus()}
-              >
-                <MessageCircle className="size-4" />
-                댓글 {wall.total}
-              </Button>
-            </div>
-          )}
-        </div>
         <div
           className="min-h-24 flex-1 overflow-y-auto overscroll-contain px-5"
           aria-busy={!wall && !error}
@@ -207,7 +167,7 @@ function PlayerWall({
                   />
                   <p className="text-sm">첫 한마디를 남겨주세요</p>
                   <p className="mt-1 text-xs text-muted-foreground">
-                    작은 응원이 오래 기억될 거예요.
+                    이 기록에 대한 응원과 바다 수다를 나눠요.
                   </p>
                 </div>
               )}
@@ -230,6 +190,40 @@ function PlayerWall({
                       <p className="mt-1.5 whitespace-pre-wrap break-words text-sm leading-relaxed">
                         {comment.body}
                       </p>
+                      <div className="mt-1 flex gap-1">
+                        {(
+                          [
+                            { value: 1, icon: ThumbsUp, label: '좋아요', count: comment.likes },
+                            {
+                              value: -1,
+                              icon: ThumbsDown,
+                              label: '싫어요',
+                              count: comment.dislikes,
+                            },
+                          ] as const
+                        ).map((reaction) => (
+                          <Button
+                            key={reaction.value}
+                            variant="ghost"
+                            className="min-h-9 gap-1.5 px-2 text-[11px]"
+                            aria-label={reaction.label}
+                            aria-pressed={comment.myReaction === reaction.value}
+                            disabled={busy || comment.author_id === session?.user.id}
+                            onClick={() =>
+                              void act({
+                                p_action: 'react',
+                                p_comment_id: comment.id,
+                                p_value: comment.myReaction === reaction.value ? 0 : reaction.value,
+                              })
+                            }
+                          >
+                            <reaction.icon
+                              className={`size-3.5 ${comment.myReaction === reaction.value ? 'text-primary' : 'text-muted-foreground'}`}
+                            />
+                            {reaction.count}
+                          </Button>
+                        ))}
+                      </div>
                     </div>
                     {comment.author_id === session?.user.id && (
                       <Button
@@ -270,7 +264,7 @@ function PlayerWall({
           <textarea
             ref={input}
             aria-label="댓글 내용"
-            placeholder="따뜻한 한마디 남기기…"
+            placeholder="이 기록에 대해 한마디 남겨주세요…"
             maxLength={500}
             rows={2}
             value={body}
@@ -296,10 +290,12 @@ function RankingCard({
   category,
   players,
   onSelect,
+  commentCount,
 }: {
   category: HallCategory
   players: HallPlayer[]
   onSelect: (selection: Selection) => void
+  commentCount?: number
 }) {
   return (
     <section className="rounded-2xl border border-border/70 bg-card px-4 pb-4 pt-4">
@@ -314,11 +310,9 @@ function RankingCard({
         <ol className="grid grid-cols-5 gap-1">
           {players.map((player) => (
             <li key={player.id} className="min-w-0">
-              <button
-                type="button"
-                className="group flex min-h-24 w-full min-w-0 flex-col items-center rounded-xl py-1 outline-none transition-colors hover:bg-secondary/60 focus-visible:ring-2 focus-visible:ring-ring"
-                onClick={() => onSelect({ player, category })}
-                aria-label={`${player.rank}위 ${player.nickname}, ${formatHallValue(player.value, category.unit)}, 반응과 댓글`}
+              <div
+                className="flex min-h-24 w-full min-w-0 flex-col items-center py-1"
+                aria-label={`${player.rank}위 ${player.nickname}, ${formatHallValue(player.value, category.unit)}`}
               >
                 <span className="relative">
                   <PlayerAvatar
@@ -341,7 +335,7 @@ function RankingCard({
                 >
                   {formatHallValue(player.value, category.unit)}
                 </span>
-              </button>
+              </div>
             </li>
           ))}
         </ol>
@@ -354,6 +348,17 @@ function RankingCard({
         <summary className="min-h-6 cursor-pointer">집계 기준</summary>
         <p className="pt-1">{category.description}</p>
       </details>
+      <div className="mt-3 border-t border-border/50 pt-2">
+        <Button
+          variant="ghost"
+          className="min-h-10 w-full gap-2 rounded-xl text-xs text-primary hover:bg-secondary/60"
+          aria-label={category.label + ' 이야기 열기'}
+          onClick={() => onSelect(category)}
+        >
+          <MessageCircle className="size-4" />
+          이야기{commentCount === undefined ? '' : ` ${commentCount}`}
+        </Button>
+      </div>
     </section>
   )
 }
@@ -364,9 +369,17 @@ export function HallPage() {
   const [loading, setLoading] = useState(true)
   const [retry, setRetry] = useState(0)
   const [selection, setSelection] = useState<Selection | null>(null)
-  const dirty = useRef(false)
+  const [counts, setCounts] = useState<Record<string, number>>({})
+  const list = useRef<HTMLDivElement>(null)
   useEffect(() => {
     let active = true
+    void loadSectionCounts()
+      .then((data) => {
+        if (active) setCounts(data)
+      })
+      .catch(() => {
+        /* Keep rankings available if discussions are not deployed. */
+      })
     void loadHall()
       .then((data) => {
         if (active) {
@@ -389,98 +402,111 @@ export function HallPage() {
     setRetry((n) => n + 1)
   }
   return (
-    <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-8 pt-5">
-      <div className="mb-5 flex items-center gap-3">
-        <appArt.ranking className="size-11" />
-        <div className="min-w-0 flex-1">
-          <p className="text-sm font-medium">퐁당섬을 빛낸 작은 기록들</p>
-          <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
-            각 부문 TOP 5 · 아바타를 눌러 반응과 한마디를 남겨요.
-          </p>
-        </div>
-        <Button
-          variant="ghost"
-          size="icon"
-          aria-label="순위 새로고침"
-          disabled={loading}
-          onClick={refresh}
-        >
-          <RefreshCw
-            className={`size-4 text-muted-foreground ${loading ? 'motion-safe:animate-spin' : ''}`}
-          />
-        </Button>
-      </div>
-      {error && (
-        <div role="alert" className="mb-4 rounded-xl border border-border p-4 text-center text-xs">
-          <p>{error}</p>
-          <Button variant="ghost" disabled={loading} onClick={refresh}>
-            다시 불러오기
+    <Tabs
+      defaultValue="honor"
+      onValueChange={() => {
+        if (list.current) list.current.scrollTop = 0
+      }}
+      className="flex min-h-0 flex-1 flex-col overflow-hidden"
+    >
+      <div className="shrink-0 border-b border-border/60 bg-background px-4 pt-4 pb-2">
+        <TabsList aria-label="기록 분류" className="mb-2">
+          <TabsTrigger value="honor">
+            <appArt.ranking aria-hidden="true" className="size-5 shrink-0" />
+            명예로운 기록
+          </TabsTrigger>
+          <TabsTrigger value="fun">
+            <Sparkles aria-hidden="true" className="size-4 shrink-0" />
+            별별 기록
+          </TabsTrigger>
+        </TabsList>
+        <div className="flex items-center gap-3">
+          <div className="min-w-0 flex-1">
+            <p className="text-[11px] leading-relaxed text-muted-foreground">
+              각 부문 TOP 5 · 이야기에서 응원과 수다를 나눠요.
+            </p>
+          </div>
+          <Button
+            variant="ghost"
+            size="icon"
+            aria-label="순위 새로고침"
+            disabled={loading}
+            onClick={refresh}
+          >
+            <RefreshCw
+              className={`size-4 text-muted-foreground ${loading ? 'motion-safe:animate-spin' : ''}`}
+            />
           </Button>
         </div>
-      )}
-      {!feed && loading ? (
-        <div role="status" aria-label="순위를 불러오는 중" className="space-y-3">
-          {Array.from({ length: 3 }, (_, i) => (
-            <div key={i} className="h-44 rounded-2xl bg-secondary/60 motion-safe:animate-pulse" />
-          ))}
-        </div>
-      ) : (
-        feed && (
-          <>
-            <div className="space-y-3">
-              {hallCategories.map((category) => (
-                <RankingCard
-                  key={category.id}
-                  category={category}
-                  players={feed.rankings[category.id] ?? []}
-                  onSelect={setSelection}
-                />
-              ))}
-            </div>
-            <div className="mb-4 mt-8">
-              <h2 className="text-sm font-medium">바다의 별별 기록</h2>
-              <p className="mt-1 text-[11px] text-muted-foreground">
-                잘해도, 조금 서툴러도. 모두의 이야기가 되는 순위.
+      </div>
+      <div
+        ref={list}
+        className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pt-4 pb-8"
+        aria-label="기록 목록"
+      >
+        {error && (
+          <div
+            role="alert"
+            className="mb-4 rounded-xl border border-border p-4 text-center text-xs"
+          >
+            <p>{error}</p>
+            <Button variant="ghost" disabled={loading} onClick={refresh}>
+              다시 불러오기
+            </Button>
+          </div>
+        )}
+        {!feed && loading ? (
+          <div role="status" aria-label="순위를 불러오는 중" className="space-y-3">
+            {Array.from({ length: 3 }, (_, i) => (
+              <div key={i} className="h-44 rounded-2xl bg-secondary/60 motion-safe:animate-pulse" />
+            ))}
+          </div>
+        ) : (
+          feed && (
+            <>
+              <TabsContent value="honor" className="mt-0 space-y-3">
+                {hallCategories.map((category) => (
+                  <RankingCard
+                    key={category.id}
+                    category={category}
+                    players={feed.rankings[category.id] ?? []}
+                    onSelect={setSelection}
+                    commentCount={counts[category.id]}
+                  />
+                ))}
+              </TabsContent>
+              <TabsContent value="fun" className="mt-0 space-y-3">
+                {funCategories.map((category) => (
+                  <RankingCard
+                    key={category.id}
+                    category={category}
+                    players={feed.rankings[category.id] ?? []}
+                    onSelect={setSelection}
+                    commentCount={counts[category.id]}
+                  />
+                ))}
+              </TabsContent>
+              <p className="mt-5 text-center text-[10px] leading-relaxed text-muted-foreground">
+                누적 기록 기준 · 같은 기록은 먼저 가입한 퐁이 순<br />
+                {new Date(feed.generatedAt).toLocaleTimeString('ko-KR', {
+                  timeZone: 'Asia/Seoul',
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })}{' '}
+                기준
               </p>
-            </div>
-            <div className="space-y-3">
-              {funCategories.map((category) => (
-                <RankingCard
-                  key={category.id}
-                  category={category}
-                  players={feed.rankings[category.id] ?? []}
-                  onSelect={setSelection}
-                />
-              ))}
-            </div>
-            <p className="mt-5 text-center text-[10px] leading-relaxed text-muted-foreground">
-              누적 기록 기준 · 같은 기록은 먼저 가입한 퐁이 순<br />
-              {new Date(feed.generatedAt).toLocaleTimeString('ko-KR', {
-                timeZone: 'Asia/Seoul',
-                hour: '2-digit',
-                minute: '2-digit',
-              })}{' '}
-              기준
-            </p>
-          </>
-        )
-      )}
+            </>
+          )
+        )}
+      </div>
       {selection && (
-        <PlayerWall
-          key={selection.player.id}
+        <SectionWall
+          key={selection.id}
           selection={selection}
-          onChange={() => {
-            dirty.current = true
-          }}
-          onClose={() => {
-            setSelection(null)
-            if (dirty.current) {
-              dirty.current = false
-              refresh()
-            }
-          }}
+          onChange={(total) => setCounts((previous) => ({ ...previous, [selection.id]: total }))}
+          onClose={() => setSelection(null)}
         />
       )}
-    </div>
+    </Tabs>
   )
 }

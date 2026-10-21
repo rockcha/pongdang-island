@@ -1,0 +1,34 @@
+{
+  "tool": "image_gen",
+  "createdAt": "2026-10-21T23:44:00+09:00",
+  "bucket": "collectibles",
+  "items": [
+    {
+      "id": "bait_goblin_bell_cherry",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c\\exec-766eb183-acc9-4bd3-a732-4ba381fe762f.png",
+      "path": "public/items/baits/goblin-bell-cherry.png",
+      "storage_path": "items/baits/goblin-bell-cherry.png",
+      "reference": "public/items/baits/pearl-bubble.png",
+      "referenceRole": "Existing bait style: painted object, gold hook, transparent alpha",
+      "prompt": "Create one cozy fishing game inventory bait icon in the exact softly painted premium three dimensional storybook item style of the supplied pearl bubble reference. Rounded clear silhouette, refined luminous materials, warm gold fishing hook, readable at 48 pixels. Whole single object centered occupying 78% of a square canvas, true transparent alpha background. No text, UI, frame, ground, checkerboard or cast shadow. Reference is style only; create this distinct subject: A pair of plump ruby red cherries, one shaped like a tiny mischievous Korean goblin bell with subtle little horn bumps and a golden bell slit, mint green leaf and curved golden fishing hook. Cute magical fruit, not a scary face."
+    },
+    {
+      "id": "bait_aurora_clockwork_bug",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c\\exec-737b02e6-dc04-4a68-8be4-bd1c5a56400a.png",
+      "path": "public/items/baits/aurora-clockwork-bug.png",
+      "storage_path": "items/baits/aurora-clockwork-bug.png",
+      "reference": "public/items/baits/pearl-bubble.png",
+      "referenceRole": "Existing bait style: painted object, gold hook, transparent alpha",
+      "prompt": "Create one cozy fishing game inventory bait icon in the exact softly painted premium three dimensional storybook item style of the supplied pearl bubble reference. Rounded clear silhouette, refined luminous materials, warm gold fishing hook, readable at 48 pixels. Whole single object centered occupying 78% of a square canvas, true transparent alpha background. No text, UI, frame, ground, checkerboard or cast shadow. Reference is style only; create this distinct subject: One adorable curled clockwork grub lure with segmented iridescent teal lavender and pink body, tiny brass joints, a clearly visible brass winding key on its back, gold fishing hook, subtle aurora sheen. Distinct curled caterpillar silhouette."
+    },
+    {
+      "id": "bait_mermaid_whisper_candy",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c\\exec-180840a2-e3da-4500-9e10-aaafac15a1b3.png",
+      "path": "public/items/baits/mermaid-whisper-candy.png",
+      "storage_path": "items/baits/mermaid-whisper-candy.png",
+      "reference": "public/items/baits/pearl-bubble.png",
+      "referenceRole": "Existing bait style: painted object, gold hook, transparent alpha",
+      "prompt": "Create one cozy fishing game inventory bait icon in the exact softly painted premium three dimensional storybook item style of the supplied pearl bubble reference. Rounded clear silhouette, refined luminous materials, warm gold fishing hook, readable at 48 pixels. Whole single object centered occupying 78% of a square canvas, true transparent alpha background. No text, UI, frame, ground, checkerboard or cast shadow. Reference is style only; create this distinct subject: One luminous seafoam turquoise and soft pink spiral seashell hard candy, delicate pearlescent highlights, a tiny liquid music-note shaped droplet beside it, small gold fishing hook. Candy, not a person. Refined ocean fairytale sweetness."
+    }
+  ]
+}

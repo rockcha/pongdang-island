@@ -145,9 +145,9 @@ describe('hall of fame rankings', () => {
   it('uses ordered results and Korean calendar days for personal bests', async () => {
     const { rankings } = await feed()
     expect(rankings.daily[0].value).toBe(40)
-    expect(rankings.success_run[0].value).toBe(60)
+    expect(rankings.success_run).toBeUndefined()
     expect(rankings.failure_run[0].value).toBe(40)
-    expect(rankings.days[0].value).toBe(3)
+    expect(rankings.days).toBeUndefined()
     expect(rankings.trash).toBeUndefined() // Expedition trash is not manual fishing trash.
     expect(rankings.collection[0].value).toBeGreaterThan(0)
   })
@@ -155,6 +155,88 @@ describe('hall of fame rankings', () => {
     const { rankings } = await feed()
     expect(rankings.helps[0]).toMatchObject({ id: ids[0], value: 3 })
     expect(rankings.games[0]).toMatchObject({ id: ids[0], value: 2 })
+    expect(rankings.cleanings[0]).toMatchObject({ id: ids[0], value: 1 })
+    expect(rankings.feedings[0]).toMatchObject({ id: ids[0], value: 1 })
+    expect(rankings.voyages[0]).toMatchObject({ id: ids[0], value: 1 })
+    expect(rankings.decorations[0]).toMatchObject({ id: ids[0], value: 1 })
+    expect(rankings.mythic_rate).toHaveLength(1)
+    expect(rankings.mythic_rate[0]).toMatchObject({ id: ids[0], value: 1 })
+  })
+  it('excludes the requested account before selecting TOP 5 in every category', async () => {
+    await db.exec('begin')
+    try {
+      await db.query('update auth.users set email=$1 where id=$2', ['1@1.com', ids[0]])
+      const { rankings } = await feed()
+      expect(rankings.casts).toHaveLength(5)
+      expect(rankings.casts[0]).toMatchObject({ id: ids[6], value: 6, rank: 1 })
+      for (const rows of Object.values(rankings))
+        expect(rows.some((p) => p.id === ids[0])).toBe(false)
+      expect(JSON.stringify(rankings)).not.toContain('1@1.com')
+    } finally {
+      await db.exec('rollback')
+    }
+  })
+  it('separates arcade income and spend, gift sends, completed trades, titles and control misses', async () => {
+    await db.exec('begin')
+    try {
+      await db.query(
+        `insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values
+        ($1,gen_random_uuid(),'charge','arcade:brick-breaker:fixture',120),
+        ($1,gen_random_uuid(),'charge','arcade:ladder:fixture',80),
+        ($1,gen_random_uuid(),'buy','arcade:memory',-10),
+        ($1,gen_random_uuid(),'buy','arcade:ladder:fixture',-50),
+        ($1,gen_random_uuid(),'charge','quest:fixture',999),
+        ($1,gen_random_uuid(),'buy','fishing:bait',-999)`,
+        [ids[0]],
+      )
+      await db.query(
+        `insert into public.collectible_gifts(sender_id,recipient_id,sender_name,recipient_name,
+        operation_id,collectible_ids,species,quantity,source) values
+        ($1,$2,'보낸퐁','받은퐁',gen_random_uuid(),array[gen_random_uuid(),gen_random_uuid()],'[]',2,'friend')`,
+        [ids[0], ids[1]],
+      )
+      await db.query(
+        `insert into public.player_wallets(user_id,gold,inventory) values
+        ($1,10000,'{"bait":10}'),($2,10000,'{"bait":10}')
+        on conflict(user_id) do update set gold=excluded.gold,inventory=excluded.inventory`,
+        [ids[0], ids[1]],
+      )
+      for (const state of ['completed', 'cancelled', 'active']) {
+        const listing = await asUser<{ id: string }>(
+          ids[0],
+          "select public.exchange_post('sell','bait','bait',1,'gold','gold',100,$1) data",
+          [crypto.randomUUID()],
+        )
+        if (state === 'completed')
+          await asUser(ids[1], "select public.exchange_action($1,'accept') data", [listing.id])
+        if (state === 'cancelled')
+          await asUser(ids[0], "select public.exchange_action($1,'cancel') data", [listing.id])
+      }
+      await db.query(
+        `insert into app_private.prepared_fishing_casts(user_id,operation_id,region_id,bait_id,
+        eligible,rarity,wait_seconds,failure_at,failure_reason,expires_at,finished_at,result)
+        select $1,gen_random_uuid(),'pongdang','bait',false,'common',3,5,'bait',now(),now(),
+        jsonb_build_object('failure_reason',reason) from unnest(array['minigame','minigame','expired','bait','escape','wave']) reason`,
+        [ids[0]],
+      )
+      const { rankings } = await feed()
+      expect(rankings.arcade_earned[0]).toMatchObject({ id: ids[0], value: 200 })
+      expect(rankings.arcade_spent[0]).toMatchObject({ id: ids[0], value: 60 })
+      expect(rankings.gifts[0]).toMatchObject({ id: ids[0], value: 1 })
+      expect(rankings.sales[0]).toMatchObject({ id: ids[0], value: 1 })
+      expect(rankings.purchases[0]).toMatchObject({ id: ids[1], value: 1 })
+      expect(rankings.control_miss[0]).toMatchObject({ id: ids[0], value: 2 })
+      const titleCount = (
+        await db.query<{ n: number }>(
+          'select count(*)::int n from public.player_titles where user_id=$1',
+          [ids[0]],
+        )
+      ).rows[0].n
+      expect(titleCount).toBeGreaterThan(0)
+      expect(rankings.titles.find((p) => p.id === ids[0])?.value).toBe(titleCount)
+    } finally {
+      await db.exec('rollback')
+    }
   })
 })
 

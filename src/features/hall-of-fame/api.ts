@@ -31,6 +31,38 @@ export type HallAction = {
   p_comment_id?: string
 }
 
+export type HallSectionComment = HallComment & {
+  likes: number
+  dislikes: number
+  myReaction: number
+}
+export type HallSectionWall = { total: number; comments: HallSectionComment[] }
+export type HallSectionAction = {
+  p_section: string
+  p_action: 'comment' | 'delete_comment' | 'react'
+  p_body?: string
+  p_comment_id?: string
+  p_value?: number
+}
+export async function loadSectionWall(section: string, offset = 0): Promise<HallSectionWall> {
+  const { data, error } = await createClient().rpc('hall_section_wall', {
+    p_section: section,
+    p_offset: offset,
+  })
+  if (error) throw error
+  return data
+}
+export async function actOnSection(args: HallSectionAction): Promise<HallSectionWall> {
+  const { data, error } = await createClient().rpc('hall_section_action', args)
+  if (error) throw error
+  return data
+}
+export async function loadSectionCounts(): Promise<Record<string, number>> {
+  const { data, error } = await createClient().rpc('hall_section_counts', {})
+  if (error) throw error
+  return data
+}
+
 export async function loadHall(): Promise<HallFeed> {
   const { data, error } = await createClient().rpc('hall_of_fame', {})
   if (error) throw error

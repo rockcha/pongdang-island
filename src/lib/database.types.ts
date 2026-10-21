@@ -97,6 +97,9 @@ export type Database = {
       exchange_post_bundle:{Args:import('@/features/exchange/api').ExchangeBundlePost;Returns:import('@/features/exchange/api').ExchangeListing}
       exchange_action:{Args:{p_listing_id:string;p_action:string};Returns:import('@/features/exchange/api').ExchangeListing}
       hall_of_fame:{Args:Record<string,never>;Returns:import('@/features/hall-of-fame/api').HallFeed}
+      hall_section_wall:{Args:{p_section:string;p_offset?:number};Returns:import('@/features/hall-of-fame/api').HallSectionWall}
+      hall_section_action:{Args:import('@/features/hall-of-fame/api').HallSectionAction;Returns:import('@/features/hall-of-fame/api').HallSectionWall}
+      hall_section_counts:{Args:Record<string,never>;Returns:Record<string,number>}
       hall_wall:{Args:{p_target:string;p_offset?:number};Returns:import('@/features/hall-of-fame/api').HallWall}
       hall_action:{Args:import('@/features/hall-of-fame/api').HallAction;Returns:import('@/features/hall-of-fame/api').HallWall}
       odd_even_game:{Args:import('@/features/arcade/odd-even-api').OddEvenAction;Returns:import('@/features/arcade/odd-even-api').OddEvenState}

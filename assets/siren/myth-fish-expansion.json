@@ -1,0 +1,34 @@
+{
+  "tool": "image_gen",
+  "mode": "built-in",
+  "batch": "assets/storage-upload/new/20261022-siren-myth-fish",
+  "entries": [
+    {
+      "id": "siren-temple-column-seahorse",
+      "name": "신전기둥 해마",
+      "rarity": "common",
+      "sell_price": 80,
+      "size": 62,
+      "description": "대리석 기둥처럼 홈이 파인 몸을 가진 해마. 가만히 서 있으면 유적 관람객이 사진을 찍어요.",
+      "prompt": "Four-frame 2x2 transparent game atlas of a right-facing cute ivory marble seahorse with Ionic column fluting, scroll capital crest and seafoam fins; warm brown outlines, soft storybook shading, stable body and gently moving fins/tail, generous cell margins."
+    },
+    {
+      "id": "siren-coin-scale-carp",
+      "name": "동전비늘 붕어",
+      "rarity": "common",
+      "sell_price": 90,
+      "size": 60,
+      "description": "낡은 청동 동전 같은 비늘이 반짝이는 붕어. 카론의 뱃삯으로 내밀었지만 승선은 거절당했어요.",
+      "prompt": "Four-frame 2x2 transparent game atlas of a right-facing cute bronze coin-scaled crucian carp, subtle Greek dolphin and olive reliefs, mint fins and cream belly; warm brown outlines, soft storybook shading, stable body and alternating tail bends, generous cell margins."
+    },
+    {
+      "id": "siren-ariadne-threadtail",
+      "name": "아리아드네 실꼬리",
+      "rarity": "rare",
+      "sell_price": 350,
+      "size": 76,
+      "description": "붉은 실 같은 꼬리로 돌아갈 길을 남기는 물고기. 미궁에서도 길을 찾지만 낚싯줄과 엉키면 잠깐 생각에 잠겨요.",
+      "prompt": "Four-frame 2x2 transparent game atlas of a right-facing cute pearl-ivory rose fish with Greek meander dorsal motif, long crimson thread tail and tiny gold spindle charm; warm brown outlines, soft storybook shading, stable body and gently waving thread/fins, entire tail inside generous cell margins."
+    }
+  ]
+}

@@ -11,6 +11,15 @@ vi.mock('@/features/expeditions/use-expedition-status',()=>({useExpeditionStatus
 beforeEach(()=>{mock.newContent={board:false,exchange:false,suggestions:false,bugs:false};mock.status=null;mock.harbor=null;mock.operator=false;mock.savings=null})
 function View(){const {pathname}=useLocation();return <><HeaderPlaceNavigation/><output data-testid="path">{pathname}</output></>}
 afterEach(cleanup)
+it('places storage directly above the collection in the island dropdown',async()=>{
+ render(<MemoryRouter><View/></MemoryRouter>)
+ fireEvent.click(screen.getByRole('button',{name:'내 섬'}))
+ const menu=await screen.findByRole('menu')
+ const items=within(menu).getAllByRole('menuitem')
+ const index=items.findIndex(item=>item.getAttribute('href')==='/collection')
+ expect(items[index-1].getAttribute('href')).toBe('/storage')
+ expect(items[index-1].textContent).toContain('보관함')
+})
 it('summarizes child NEW and returned boats as category dots and clears resolved states',()=>{
  mock.newContent.bugs=true;mock.newContent.exchange=true;mock.harbor={ready:1,total:2}
  const view=render(<MemoryRouter><View/></MemoryRouter>)

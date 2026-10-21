@@ -1,6 +1,22 @@
 import {expect,it} from 'vitest'
 import {swimFrameLayout} from '@/features/aquarium/swim-frame-layout'
 
+it('keeps the thread snail shell stationary instead of anchoring its stretching face',()=>{
+ // Shell-spiral patch positions measured from the four 627px atlas cells.
+ const anchors=[[255,340],[235,360],[257,306],[245,306]]
+ const path='fish/normal/siren-thread-snail_sprite.png'
+ const first=swimFrameLayout(path,0)
+ for(const [frame,[x,y]] of anchors.entries()){
+  const layout=swimFrameLayout(path,frame)
+  expect(layout.scale).toBe(first.scale)
+  expect((y-layout.originY*627)*layout.scale).toBeCloseTo((340-first.originY*627)*first.scale)
+  for(const flipped of [false,true]){
+   const origin=flipped?1-layout.originX:layout.originX
+   expect(((flipped?627-x:x)-origin*627)*layout.scale).toBeCloseTo((flipped?313.5-255:255-313.5)*first.scale)
+  }
+ }
+})
+
 it('anchors the whale body at the same position through all four frames and both headings',()=>{
  const measurements=[[0,0,1],[-1,1,.94],[3,-17,.94],[0,-17,.98]]
  const reference={x:72,y:57}

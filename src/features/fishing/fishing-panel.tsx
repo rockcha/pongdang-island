@@ -24,8 +24,8 @@ import {ShoppingBag,FlaskConical} from 'lucide-react'
 import { useAuth } from '@/components/auth-provider'
 import { CollectionDialog } from '@/features/collection/collection-dialog'
 import { Tooltip,TooltipContent,TooltipProvider,TooltipTrigger } from '@/components/ui/tooltip'
-import { FishingTripDialog } from './fishing-trip-dialog'
-import { readFishingTrip,recordFishingCatch,removeFishingCatches } from './fishing-trip'
+import { FishingStorageDialog } from './fishing-storage-dialog'
+
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
@@ -47,8 +47,8 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{reg
  const {selected:equippedRod,rods}=useRods()
  const {session}=useAuth()
  const userId=session?.user.id??'guest'
- const [trip,setTrip]=useState(()=>({userId,items:readFishingTrip(userId)}))
- const catches=trip.userId===userId?trip.items:readFishingTrip(userId)
+ const [trip,setTrip]=useState<{userId:string;items:FishingAttempt[]}>(()=>({userId,items:[]}))
+ const catches=trip.userId===userId?trip.items:[]
  const [testOpen,setTestOpen]=useState(false)
  const {wallet,transact,busy:goldBusy,loading:goldLoading,error:goldError,refresh}=useGold()
  const [state,setState]=useState<FishingState|null>(null)
@@ -101,8 +101,12 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{reg
   if(reason==='cancelled')return '낚시를 그만두었어요.'
   return createFishingPresentation().failure
  }
+ function rememberCatch(attempt:FishingAttempt){
+  if(!attempt.species)return
+  setTrip(previous=>({userId,items:previous.userId===userId?previous.items.some(item=>item.operation_id===attempt.operation_id)?previous.items:[attempt,...previous.items]:[attempt]}))
+ }
  function showResult(attempt:FishingAttempt,reason?:string|null){
-  if(attempt.species&&!practice)setTrip({userId,items:recordFishingCatch(userId,attempt)})
+  if(attempt.species&&!practice)rememberCatch(attempt)
   setGameOpen(false)
   setFailureReason(reason??null)
   setFailureLabel(reason&&reason in plannedFailureMessages?'입질만 하고 떠났어요':reason==='snap'||reason==='slack'?'힘 조절 실패':'다음엔 꼭 만나요')
@@ -129,7 +133,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{reg
     pending.current??={id:plan!.operation_id,bait:plan!.bait_id,region:plan!.region_id,stage:'finish',won:false,reason:'cancelled'}
     pending.current.stage='finish';pending.current.won??=false
     const data=await finishFishing(pending.current.id,pending.current.won)
-    if(data.attempt.species)setTrip({userId,items:recordFishingCatch(userId,data.attempt)})
+    if(data.attempt.species)rememberCatch(data.attempt)
    }
    pending.current=null;setGameOpen(false);setUncertain(false);setPrepared(null)
    await Promise.allSettled([refresh(),reload()])
@@ -190,7 +194,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{reg
   {regionId&&<FishingLeaveGuard active={gameOpen||uncertain||busy} practice={!!practice} busy={busy} onPause={setLeavePaused} onLeave={leaveFishing}/>}
   {regionId?<div role="group" aria-label="낚시 준비 도구" className="absolute bottom-[max(0.5rem,env(safe-area-inset-bottom))] left-2 z-20 grid w-40 grid-cols-2 gap-px overflow-hidden rounded-xl border border-[#D5B797] bg-[#D5B797] shadow-sm">
    <Button variant="ghost" aria-label={`미끼통 열기 · ${bait?.name??'미끼'} ${wallet.inventory[selected]??0}개`} className={fishingDockButton} disabled={gameOpen||busy||uncertain||revealing||castOpen} onClick={()=>{setDraftBait(selected);setBaitOpen(true)}}>{bait?<img src={bait.image_path} alt=""/>:<appArt.bait/>}<span className="text-[11px] tabular-nums">미끼 ×{goldLoading?'…':wallet.inventory[selected]??0}</span></Button>
-   <FishingTripDialog dock catches={catches} disabled={gameOpen||busy||uncertain||revealing||castOpen} onSold={ids=>setTrip({userId,items:removeFishingCatches(userId,ids)})}/>
+   <FishingStorageDialog catches={catches} disabled={gameOpen||busy||uncertain||revealing||castOpen} onSold={ids=>setTrip(previous=>({userId,items:previous.items.filter(item=>!item.collectible_id||!ids.includes(item.collectible_id))}))}/>
    <FishingRodSelector dock regionId={regionId} disabled={gameOpen||busy||uncertain||revealing||castOpen}/>
    <CollectionDialog fishing dock disabled={gameOpen||busy||uncertain||revealing||castOpen}/>
   </div>:<div className="flex items-center justify-between"><h2 className="font-semibold">미끼 인벤토리</h2><span className="flex items-center gap-1 text-sm"><GoldIcon/>{wallet.gold.toLocaleString('ko-KR')}</span></div>}

@@ -38,6 +38,12 @@ export const placeBanners: Record<
     description: '바다 생물을 기록하는 햇살 가득한 해양 관찰실',
     subtitle: '만난 바다 친구들을 한 장씩 기록해요',
   },
+  '/storage': {
+    title: '보관함',
+    image: 'storage',
+    description: '바다에서 만난 친구와 보물을 간직하는 햇살 가득한 보관실',
+    subtitle: '소중한 만남을 보관하고 나누는 곳',
+  },
   '/collection-animation': {
     title: '애니메이션 도감',
     image: 'collection',

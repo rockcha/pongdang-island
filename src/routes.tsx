@@ -6,6 +6,7 @@ import {ShowcasePreview} from '@/features/showcase/showcase-preview'
 import { DownloadPage } from '@/pages/download-page'
 import { BoardPage, BoardDetailPage } from '@/features/board/board-page'
 import { CollectionPage } from '@/features/collection/collection-page'
+import { StoragePage } from '@/features/aquarium/storage-page'
 import { OperatorGuard } from '@/components/operator-guard'
 import { TitlePicker } from '@/features/titles/title-picker'
 import { ExpeditionPage } from '@/features/expeditions/expedition-page'
@@ -59,6 +60,7 @@ export function AppRoutes() {
             <Route index element={<HomePage />} />
             <Route path="aquarium" element={<AquariumPage />} />
             <Route path="collection" element={<CollectionPage />} />
+            <Route path="storage" element={<StoragePage />} />
             <Route
               path="collection-animation"
               element={

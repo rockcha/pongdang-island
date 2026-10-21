@@ -27,6 +27,12 @@ export function mythicSwimFrame(path:string,time:number,seed:number,reduced=fals
  // A short glance is part of the swim loop, independent of travel direction.
  if(reduced)return 0
  const phase=((time+seed/1000000)%6+6)%6
+ if(path==='fish/mythic/siren-skalla-six-shadows_swim8_sprite.png'){
+  // Reverse each tail beat and unwind the guarding heads before returning to
+  // swimming. Direct 3->0 and 7->0 jumps skip the intermediate neck/tail poses.
+  const cycle=[0,1,2,3,2,1,0,1,2,3,2,1,0,4,5,6,7,6,5,4,0,1,2,1]
+  return cycle[Math.min(cycle.length-1,Math.floor(phase*4))]
+ }
  if(path==='fish/mythic/extinction-defying-megalodon_swim8_sprite.png'){
   // Reverse the tail beat instead of snapping from its last pose to the first.
   if(phase<4.2)return [0,1,2,3,2,1][Math.floor(phase*2.5)%6]

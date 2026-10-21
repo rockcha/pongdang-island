@@ -11,6 +11,19 @@ const stored=[{id:'fish',species_id:'fish',species:{id:'fish',kind:'fish',sell_p
 const state={inhabitants:[],storageCount:2,tankCapacity:50,tanks:[{id:'tank-a',name:'첫 어항'},{id:'tank-b',name:'두 번째 어항'}]} as unknown as AquariumState
 beforeEach(()=>{mock.load.mockReset();mock.load.mockResolvedValue({items:stored,total:2,pageSize:50})})
 afterEach(cleanup)
+it('separates this trip from older copies of the same species and filters without losing identity',async()=>{
+ const fresh={...stored[0],id:'fresh'}
+ mock.load.mockResolvedValue({items:[stored[0],fresh,stored[1]],total:3,pageSize:50})
+ render(<CollectibleStorageDialog state={{...state,storageCount:3}} currentTankId="tank-a" busy={false} onAssign={async()=>{}} recentItems={[fresh]}/>)
+ fireEvent.click(screen.getByRole('button',{name:'보관함 3개'}))
+ await waitFor(()=>expect(screen.getAllByRole('button',{name:'멸치 선택'})).toHaveLength(2))
+ expect(screen.getByText('🎣 이번 낚시')).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'이번 낚시 · 1'}))
+ await waitFor(()=>expect(screen.getAllByRole('button',{name:'멸치 선택'})).toHaveLength(1))
+ expect(screen.queryByRole('button',{name:'불가사리 선택'})).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'전체 보관함'}))
+ await screen.findByRole('button',{name:'불가사리 선택'})
+})
 it('sends sea concept and rarity together to one paginated storage request',async()=>{
  render(<CollectibleStorageDialog state={state} currentTankId="tank-a" busy={false} onAssign={async()=>{}} />)
  fireEvent.click(screen.getByRole('button',{name:'보관함 2개'}));await screen.findByText('멸치')

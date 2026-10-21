@@ -2,6 +2,7 @@ import {useEffect,useState} from 'react'
 import {collectibleUrl} from './api'
 import type {Species} from './api'
 import {NativeRegionBadge} from './native-region-badge'
+import {ImageLoadingSpinner} from '@/components/image-loading-spinner'
 
 // Remember successes across filters and dialog reopening; retain no image objects.
 const loadedUrls=new Set<string>()
@@ -24,7 +25,7 @@ function ThumbnailImage({url,name,className='size-16',species,fadeIn=true,loadin
  const src=attempt?`${url}${url.includes('?')?'&':'?'}retry=1`:url
  function ready(){remember(url);setLoaded(true);setFailed(false)}
  return <span className={`${className} relative inline-flex shrink-0`} aria-busy={!loaded&&!unavailable}>
-  {!loaded&&!unavailable&&<span aria-hidden="true" className="absolute inset-0 rounded-lg bg-secondary/50 motion-safe:animate-pulse"/>}
+  {!loaded&&!unavailable&&<ImageLoadingSpinner/>}
   {unavailable?<img src="/fallback-image.svg" alt={`${name} 이미지 없음`} className="size-full rounded-lg object-contain"/>:<img key={attempt} src={src} alt={name} loading={loading} decoding="async" draggable={false} className={`size-full object-contain ${fadeIn?'transition-opacity duration-150 motion-reduce:transition-none':''} ${loaded?'opacity-100':'opacity-0'}`} ref={image=>{if(image?.complete&&image.naturalWidth>0&&!loaded)ready()}} onLoad={ready} onError={()=>{loadedUrls.delete(url);setLoaded(false);setFailed(true)}}/>}
   {species&&<NativeRegionBadge species={species}/>}
  </span>

@@ -40,7 +40,7 @@ const placeArt:Record<string,ReturnType<typeof artwork>>={
  '/music-room':appArt.music,
  '/':appArt.island,'/aquarium':appArt.aquarium,'/harbor':appArt.map,'/shop':appArt.shop,'/farm':appArt.farm,
  '/shipyard':appArt.shipyard,'/expeditions':appArt.expeditions,'/exchange':appArt.exchange,
- '/savings':appArt.savings,'/warehouse':appArt.warehouse,'/arcade':appArt.arcade,'/friends':appArt.lighthouse,
+ '/storage':appArt.storage,'/savings':appArt.savings,'/warehouse':appArt.warehouse,'/arcade':appArt.arcade,'/friends':appArt.lighthouse,
  '/notifications':appArt.mailbox,'/board':appArt.plaza,'/square':appArt.plaza,'/square/notices':appArt.notices,
  '/square/suggestions':appArt.suggestions,'/square/bugs':appArt.bugs,'/profile':appArt.profile,'/profile/settings':appArt.settings,
 }

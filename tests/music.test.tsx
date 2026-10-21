@@ -1,7 +1,8 @@
 import {afterEach,expect,it,vi} from 'vitest'
-import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
+import {act,cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
 import {Link,MemoryRouter,Route,Routes,useLocation} from 'react-router'
 import {MusicProvider,useMusic} from '@/features/music/music-provider'
+import {claimPlayback} from '@/features/music/playback-ownership'
 import {defaultTracks,readTracks,youtubeId} from '@/features/music/music-library'
 
 const api=vi.hoisted(()=>({loadMusic:vi.fn(),editMusic:vi.fn()}))
@@ -47,6 +48,26 @@ it('keeps one looping player across navigation, reflects actual playback, and st
  await waitFor(()=>expect(readTracks('music')).toHaveLength(2));view.unmount()
 })
 
+it('pauses library music for a region and prevents focus and late player events from resuming it',async()=>{
+ vi.stubGlobal('fetch',vi.fn().mockResolvedValue({ok:true,json:async()=>({title:'title'})}))
+ vi.stubGlobal('ResizeObserver',class{observe(){}disconnect(){}})
+ let events:Record<string,(e:unknown)=>void>={}
+ const pauseVideo=vi.fn(),playVideo=vi.fn()
+ const target={pauseVideo,playVideo,destroy:vi.fn(),getVideoData:()=>({title:'title'})}
+ window.YT={Player:vi.fn(function(_element:HTMLElement,options:Record<string,unknown>){events=options.events as typeof events;return target}) as unknown as NonNullable<typeof window.YT>['Player']}
+ render(<MemoryRouter><MusicProvider storageKey="music"><Controls/></MusicProvider></MemoryRouter>)
+ fireEvent.click(screen.getByText('play'))
+ await waitFor(()=>expect(events.onReady).toBeTruthy())
+ act(()=>events.onReady({target}))
+ act(()=>claimPlayback('region'))
+ expect(pauseVideo).toHaveBeenCalled()
+ playVideo.mockClear()
+ fireEvent(window,new Event('focus'))
+ expect(playVideo).not.toHaveBeenCalled()
+ act(()=>events.onStateChange({data:1,target}))
+ expect(screen.getByRole('status').textContent).toBe('paused')
+ expect(pauseVideo).toHaveBeenCalledTimes(2)
+})
 function LibraryControls(){const m=useMusic();return <><p>{m.tracks.map(t=>t.customName||t.title).join(',')}</p><p>{m.error}</p><button onClick={()=>void m.rename(m.tracks[0].id,'새 이름').catch(()=>{})}>save name</button></>}
 it('imports the browser list once and replaces cache only after the DB confirms a change',async()=>{
  const cached=[{id:'28kGcceYcOI',title:'원래 제목',customName:'브라우저 이름'}]

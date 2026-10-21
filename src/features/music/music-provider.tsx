@@ -2,6 +2,7 @@ import {createContext,useContext,useEffect,useRef,useState,type ReactNode} from 
 import {toast} from 'sonner'
 import {readTracks,youtubeTitle,type MusicTrack} from './music-library'
 import {loadMusic,editMusic} from './api'
+import {claimPlayback,playbackEvent} from './playback-ownership'
 
 type Player={playVideo():void;pauseVideo():void;destroy():void;getVideoData():{title?:string}}
 type PlayerEvent={target:Player;data:number}
@@ -29,6 +30,11 @@ export function MusicProvider({children,storageKey,userId}:{children:ReactNode;s
  const [attempt,setAttempt]=useState(0)
  const host=useRef<HTMLDivElement>(null),player=useRef<Player|null>(null)
  const wantsPlayback=useRef(true)
+ useEffect(()=>{
+  const relinquish=(event:Event)=>{if((event as CustomEvent).detail!=='library'){wantsPlayback.current=false;player.current?.pauseVideo();setPlaying(false)}}
+  window.addEventListener(playbackEvent,relinquish)
+  return()=>window.removeEventListener(playbackEvent,relinquish)
+ },[])
  const [ready,setReady]=useState(!userId),[error,setError]=useState(''),[reloadId,setReloadId]=useState(0)
  const queue=useRef<Promise<unknown>>(Promise.resolve()),alive=useRef(true),tracksRef=useRef(tracks)
  tracksRef.current=tracks
@@ -92,7 +98,7 @@ export function MusicProvider({children,storageKey,userId}:{children:ReactNode;s
    if(cancelled)return
    player.current=new YT.Player(element,{width:'100%',height:'100%',videoId:activeId,playerVars:{autoplay:1,loop:1,playlist:activeId,playsinline:1,origin:window.location.origin},events:{
     onReady:({target}:PlayerEvent)=>{if(cancelled)return;if(wantsPlayback.current)target.playVideo();else target.pauseVideo();const title=target.getVideoData().title;if(title)cacheTitle(activeId,title)},
-    onStateChange:({data,target}:PlayerEvent)=>{if(cancelled)return;setPlaying(data===1);const title=target.getVideoData().title;if(title)cacheTitle(activeId,title)},
+    onStateChange:({data,target}:PlayerEvent)=>{if(cancelled)return;if(data===1&&!wantsPlayback.current){target.pauseVideo();setPlaying(false);return}setPlaying(data===1);const title=target.getVideoData().title;if(title)cacheTitle(activeId,title)},
     onAutoplayBlocked:()=>{if(!cancelled){setPlaying(false);toast.info('음악 재생 버튼을 다시 눌러 주세요.')}},
     onError:()=>{if(!cancelled){setPlaying(false);toast.error('이 영상은 재생할 수 없어요. 다른 곡을 선택해 주세요.')}}
    }})
@@ -101,7 +107,7 @@ export function MusicProvider({children,storageKey,userId}:{children:ReactNode;s
  },[activeId,attempt])
  const pause=()=>{wantsPlayback.current=false;player.current?.pauseVideo?.();setPlaying(false)}
  const stop=()=>{pause();setActiveId(null)}
- const play=(id:string)=>{wantsPlayback.current=true;if(activeId===id&&player.current)player.current.playVideo?.();else{setActiveId(id);setAttempt(n=>n+1)}}
+ const play=(id:string)=>{claimPlayback('library');wantsPlayback.current=true;if(activeId===id&&player.current)player.current.playVideo?.();else{setActiveId(id);setAttempt(n=>n+1)}}
  return <MusicContext.Provider value={{setPlayerSlot,tracks,activeId,playing,play,pause,stop,loading:!ready&&!error,error,reload:()=>setReloadId(n=>n+1),add:track=>mutate('add',track.id,track.title,track.customName),remove:async id=>{await mutate('delete',id);if(id===activeId)stop()},rename:(id,name)=>mutate('rename',id,'',name)}}>
   {children}
   {activeId&&<div ref={host} aria-label="음악 플레이어" aria-hidden={!bounds} className="fixed z-30 overflow-hidden rounded-xl bg-black" style={{top:bounds?.top??0,left:bounds?.left??0,width:bounds?.width??320,height:bounds?.height??224,clipPath:clip,visibility:bounds?'visible':'hidden',pointerEvents:bounds?'auto':'none'}}/>}

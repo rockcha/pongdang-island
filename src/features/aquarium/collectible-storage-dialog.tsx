@@ -3,7 +3,7 @@ import { EmptyState } from '@/components/empty-state'
 import { appArt } from '@/components/app-art'
 import { CollectibleSearchInput } from './collectible-search-input'
 import { RaritySelect } from '@/components/rarity-select'
-import { RegionConceptSelect } from '@/components/region-concept-select'
+import { RegionConceptSelect, matchesRegionConcept } from '@/components/region-concept-select'
 import type { RarityFilter } from '@/components/rarity-select'
 import { useEffect, useRef, useState } from 'react'
 import { groupCollectibles } from './collectible-groups'
@@ -31,17 +31,31 @@ export function CollectibleStorageDialog({
   onAssign,
   onSell,
   onGiftSent,
+  open: controlledOpen,
+  onOpenChange,
+  hideTrigger = false,
+  recentItems,
+  page: pageMode = false,
 }: {
   state: AquariumState
   currentTankId: string
   busy: boolean
-  onAssign: (ids: string[], tankId: string) => Promise<void>
+  onAssign?: (ids: string[], tankId: string) => Promise<void>
   onSell?: (ids: string[]) => Promise<void>
   onGiftSent?: (ids: string[]) => void
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
+  hideTrigger?: boolean
+  recentItems?: OwnedCollectible[]
+  page?: boolean
 }) {
-  const [open, setOpen] = useState(false),
+  const [internalOpen, setInternalOpen] = useState(false),
     [page, setPage] = useState(0),
     [kind, setKind] = useState('all')
+  const open = pageMode || (controlledOpen ?? internalOpen)
+  const setOpen = (value: boolean) => { setInternalOpen(value); onOpenChange?.(value) }
+  const [recentOnly, setRecentOnly] = useState(false)
+  const recentIds = new Set(recentItems?.map(item => item.id) ?? [])
   const dailyOrderSpecies = useDailyOrderSpecies(open)
   const [rarity, setRarity] = useState<RarityFilter>('all')
   const [concept, setConcept] = useState('all')
@@ -76,7 +90,15 @@ export function CollectibleStorageDialog({
     setLoading(true)
     setError('')
     setData(null)
-    void loadCollectibleStorage(page * 50, search, kind, rarity, concept)
+    const filteredRecent = (recentItems ?? []).filter(item =>
+      (kind === 'all' || item.species.kind === kind) &&
+      (rarity === 'all' || item.species.rarity === rarity) &&
+      matchesRegionConcept(item.species, concept) &&
+      (!search || item.species.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+    )
+    void (recentOnly
+      ? Promise.resolve({ items: filteredRecent.slice(page * 50, (page + 1) * 50), total: filteredRecent.length, pageSize: 50 })
+      : loadCollectibleStorage(page * 50, search, kind, rarity, concept))
       .then((result) => {
         if (active) {
           result.items.forEach((item) => cache.current.set(item.id, item))
@@ -92,9 +114,9 @@ export function CollectibleStorageDialog({
     return () => {
       active = false
     }
-  }, [open, page, kind, rarity, concept, retry, search])
+  }, [open, page, kind, rarity, concept, retry, search, recentOnly, recentItems])
   async function assign() {
-    if (!assignIds?.length) return
+    if (!assignIds?.length || !onAssign) return
     if (locked.current || busy || !assignIds.length || assignIds.length > free) return
     locked.current = true
     setSaving(true)
@@ -112,9 +134,10 @@ export function CollectibleStorageDialog({
       setSaving(false)
     }
   }
-  const groups = groupCollectibles(data?.items ?? []).sort(
-    (a, b) => (rarities[a.species.rarity]?.rank ?? 0) - (rarities[b.species.rarity]?.rank ?? 0),
-  )
+  const groups = [
+    ...groupCollectibles((data?.items ?? []).filter(item => recentIds.has(item.id))).map(group => ({ ...group, recent: true })),
+    ...groupCollectibles((data?.items ?? []).filter(item => !recentIds.has(item.id))).map(group => ({ ...group, recent: false })),
+  ].sort((a, b) => Number(b.recent) - Number(a.recent) || (rarities[a.species.rarity]?.rank ?? 0) - (rarities[b.species.rarity]?.rank ?? 0))
   const selectedItems = [...selection].flatMap((id) =>
     cache.current.get(id) ? [cache.current.get(id)!] : [],
   )
@@ -132,9 +155,10 @@ export function CollectibleStorageDialog({
   const pageIds = (data?.items ?? []).map((item) => item.id)
   const allSelected = pageIds.length > 0 && pageIds.every((id) => selection.has(id))
   const disabled = busy || saving
+  const Content = pageMode ? 'div' : DialogContent
   return (
     <Dialog
-      open={open}
+      open={!pageMode && open}
       onOpenChange={(value) => {
         if (disabled) return
         setOpen(value)
@@ -145,14 +169,14 @@ export function CollectibleStorageDialog({
         }
       }}
     >
-      <AquariumToolButton
+      {!hideTrigger && !pageMode && <AquariumToolButton
         prominent
         label="보관함"
         icon={<Archive className="size-8" />}
         count={state.storageCount ?? 0}
-      />
-      <DialogContent className="bottom-0 top-auto left-0 flex h-[88dvh] max-h-[88dvh] max-w-full translate-x-0 translate-y-0 flex-col gap-3 overflow-hidden rounded-t-2xl rounded-b-none pb-4 sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-xl">
-        <DialogHeader className="shrink-0">
+      />}
+      <Content className={pageMode ? 'relative flex min-h-0 flex-1 flex-col gap-3 overflow-hidden px-4 pt-3 pb-4' : 'bottom-0 top-auto left-0 flex h-[88dvh] max-h-[88dvh] max-w-full translate-x-0 translate-y-0 flex-col gap-3 overflow-hidden rounded-t-2xl rounded-b-none pb-4 sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-xl'}>
+        {!pageMode && <DialogHeader className="shrink-0">
           <DialogTitle className="flex items-center gap-2">
             <Archive aria-hidden="true" className="size-5 shrink-0 text-primary" />
             보관함{' '}
@@ -160,11 +184,14 @@ export function CollectibleStorageDialog({
               {state.storageCount ?? 0}개
             </span>
           </DialogTitle>
-        </DialogHeader>
+        </DialogHeader>}
+        {recentItems !== undefined && <div role="group" aria-label="이번 낚시 구분" className="flex shrink-0 gap-1 rounded-xl bg-secondary/40 p-1">
+          {[false, true].map(value => <Button key={String(value)} variant={recentOnly === value ? 'secondary' : 'ghost'} size="sm" className="flex-1 rounded-lg text-xs" aria-pressed={recentOnly === value} disabled={disabled} onClick={() => { setRecentOnly(value); setPage(0); setSelection(new Set()) }}>{value ? `이번 낚시 · ${recentItems.length}` : '전체 보관함'}</Button>)}
+        </div>}
         <div
           role="group"
           aria-label="보관함 분류"
-          className="segmented-control grid shrink-0 grid-cols-4 gap-1"
+          className="segmented-control grid shrink-0 grid-cols-4 gap-1 p-2"
         >
           {[
             { id: 'all', name: '전체' },
@@ -252,9 +279,10 @@ export function CollectibleStorageDialog({
                 const value = group.items.filter((item) => selection.has(item.id)).length
                 const max = Math.min(group.items.length, Math.max(0, 50 - selection.size + value))
                 return (
-                  <li key={group.species.id} className="min-w-0">
+                  <li key={group.species.id + ':' + group.recent} className="min-w-0">
                     <CollectibleQuantityCard
                       species={group.species}
+                      recent={group.recent}
                     dailyOrder={dailyOrderSpecies.has(group.species.id)}
                       count={group.items.length}
                       value={value}
@@ -348,8 +376,8 @@ export function CollectibleStorageDialog({
             ))}
           </div>
         )}
-        <div className="-mx-4 -mb-4 -mt-3 grid shrink-0 grid-cols-3 border-t pb-[env(safe-area-inset-bottom)]">
-          <Button
+        <div className={`-mx-4 -mb-4 -mt-3 grid shrink-0 ${pageMode ? 'grid-cols-2' : 'grid-cols-3'} border-t pb-[env(safe-area-inset-bottom)]`}>
+          {!pageMode && <Button
             variant="secondary"
             aria-label={selection.size + '개 어항에 넣기'}
             className="h-16 min-w-0 rounded-none border-r"
@@ -360,7 +388,7 @@ export function CollectibleStorageDialog({
             }}
           >
             <Aquarium className="size-9" />
-          </Button>
+          </Button>}
           {selectedGroups.length === 1 ? (
             <SendGiftDialog
               species={selectedGroups[0].species}
@@ -436,7 +464,7 @@ export function CollectibleStorageDialog({
             }
           }}
         />
-      </DialogContent>
+      </Content>
     </Dialog>
   )
 }

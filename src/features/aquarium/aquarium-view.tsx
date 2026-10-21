@@ -175,12 +175,6 @@ export function AquariumView(props: Props) {
       : 8
   function navigate(direction: 'previous' | 'next') {
     if (busy || !props.navigation || props.navigation.count < 2) return
-    if (
-      direction === 'previous'
-        ? props.navigation.index <= 0
-        : props.navigation.index >= props.navigation.count - 1
-    )
-      return
     setEditing(null)
     props.navigation.onChange(direction)
   }
@@ -211,7 +205,7 @@ export function AquariumView(props: Props) {
               size="icon"
               className="min-h-11 min-w-11 shrink-0"
               aria-label="이전 어항"
-              disabled={busy || !props.navigation || props.navigation.index <= 0}
+              disabled={busy || !props.navigation || props.navigation.count < 2}
               onClick={() => navigate('previous')}
             >
               <ChevronLeft className="size-4" />
@@ -234,7 +228,7 @@ export function AquariumView(props: Props) {
               className="min-h-11 min-w-11 shrink-0"
               aria-label="다음 어항"
               disabled={
-                busy || !props.navigation || props.navigation.index >= props.navigation.count - 1
+                busy || !props.navigation || props.navigation.count < 2
               }
               onClick={() => navigate('next')}
             >
@@ -260,12 +254,7 @@ export function AquariumView(props: Props) {
             element.style.top = `${Math.max(element.offsetHeight + 8, Math.min((glass.current?.clientHeight || dimensions.height) - 8, y - 6))}px`
           }}
           onBackgroundTap={() => setEditing(null)}
-          onNavigate={(direction) => {
-            if (!busy) {
-              setEditing(null)
-              props.navigation?.onChange(direction)
-            }
-          }}
+          onNavigate={navigate}
         />
         {editing && decoration && (
           <div

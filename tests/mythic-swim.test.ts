@@ -1,6 +1,19 @@
 import {expect,it} from 'vitest'
 import {readFileSync} from 'node:fs'
 import {swimFrameLayout} from '@/features/aquarium/swim-frame-layout'
+it('lets Skalla unwind her tail and guarding heads without snapping across the loop seam',()=>{
+ const path='fish/mythic/siren-skalla-six-shadows_swim8_sprite.png'
+ const frames=Array.from({length:24},(_,i)=>mythicSwimFrame(path,(i+.5)/4,0)!)
+ expect(new Set(frames)).toEqual(new Set([0,1,2,3,4,5,6,7]))
+ expect(frames).toContain(7)
+ for(let i=0;i<frames.length;i++){
+  const next=frames[(i+1)%frames.length],current=frames[i]
+  const neutralTransition=(current===0&&next===4)||(current===4&&next===0)
+  expect(neutralTransition||Math.abs(next-current)<=1,`${current}->${next}`).toBe(true)
+  expect(mythicSwimFrame(path,(i+.5)/4+6,0)).toBe(current)
+ }
+ expect(mythicSwimFrame(path,4,0,true)).toBe(0)
+})
 it('anchors Siren to her face rather than the moving wing in every pose',()=>{
  const path='fish/mythic/siren-siren-last-song_swim8_sprite.png'
  const faceShifts=[[0,0],[-7.5,-1],[-22,-3],[-24.5,-1],[-21,-47.5],[-39.5,-45.5],[-56,-47.5],[-26.5,-47.5]]

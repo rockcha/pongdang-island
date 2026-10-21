@@ -7,6 +7,8 @@ const {load}=vi.hoisted(()=>({load:vi.fn()}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
 vi.mock('@/features/regions/api',()=>({loadRegionMap:load,regionImageUrl:(path:string)=>'/test/'+path}))
 vi.mock('@/features/fishing/fishing-panel',()=>({FishingPanel:()=><p>낚시 화면</p>}))
+vi.mock('@/features/fishing/scene-images',()=>({useFishingSceneImages:()=>true}))
+vi.mock('@/features/music/region-music',()=>({RegionMusic:()=>null}))
 afterEach(()=>{cleanup();vi.resetAllMocks()})
 
 it.each(['pongdang','coral','mistmoon','starruins','dreamabyss'])('shows the location and description with the appropriate banner for %s',async id=>{

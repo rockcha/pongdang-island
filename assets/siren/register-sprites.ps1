@@ -38,6 +38,8 @@ $results=@()
 foreach($job in $manifest.sprites){
  if(!(Test-Path -LiteralPath $job.path)){continue}
  $ax=.72;$ay=.3
+ # Antennae and face stretch while crawling; register the shell spiral instead.
+ if($job.id -eq 'siren-thread-snail'){$ax=.36;$ay=.42}
  if($job.id -match 'hippocampus|golden-seahorse'){$ax=.7;$ay=.12}
  if($job.id -match 'athena-cuttlefish'){$ax=.6;$ay=.25}
  if($job.id -match 'gorgone'){$ax=.6;$ay=.25}

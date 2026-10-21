@@ -112,8 +112,8 @@ export function AquariumPage() {
   const selected = state?.catalog.find((item) => item.id === tank?.background_id)
   const tankIndex = state?.tanks.findIndex((item) => item.id === tank?.id) ?? 0
   function changeTank(direction: 'previous' | 'next') {
-    if (busy || goldBusy || !state) return
-    const next = state.tanks[tankIndex + (direction === 'next' ? 1 : -1)]
+    if (busy || goldBusy || !state || state.tanks.length < 2) return
+    const next = state.tanks[(tankIndex + (direction === 'next' ? 1 : -1) + state.tanks.length) % state.tanks.length]
     if (next) {
       const request = ++navigationRequest.current
       const background = state.catalog.find((item) => item.id === next.background_id)
@@ -131,8 +131,9 @@ export function AquariumPage() {
     }
   }
   useEffect(() => {
-    if (!state) return
-    for (const nearby of [state.tanks[tankIndex - 1], state.tanks[tankIndex + 1]]) {
+    if (!state || state.tanks.length < 2) return
+    const count = state.tanks.length
+    for (const nearby of [state.tanks[(tankIndex - 1 + count) % count], state.tanks[(tankIndex + 1) % count]]) {
       const background = state.catalog.find((item) => item.id === nearby?.background_id)
       if (background) {
         const image = new Image()

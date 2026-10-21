@@ -7,6 +7,11 @@ import { PlaceBanner,placeBanners } from '../src/components/place-banner'
 
 const render=(ui:ReactElement)=>baseRender(ui,{wrapper:MemoryRouter})
 afterEach(cleanup)
+it('gives storage its own banner',()=>{
+ render(<PlaceBanner pathname="/storage"/>)
+ expect(screen.getByRole('heading',{name:'보관함'})).toBeTruthy()
+ expect(screen.getByRole('img').getAttribute('src')).toBe('/banners/storage.png')
+})
 it('shows standalone board introductions without a square parent action',()=>{
  const view=render(<PlaceBanner pathname="/square/suggestions"/>)
  expect(screen.getByText('더 좋은 섬을 위한 생각을 들려주세요.')).toBeTruthy()

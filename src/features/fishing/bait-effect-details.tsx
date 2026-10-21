@@ -1,4 +1,4 @@
-import {ArrowRight,BookOpen,ChevronDown,Fish,Info,MapPin,Repeat2,Shell,Trash2} from 'lucide-react'
+import {ArrowRight,BookOpen,Fish,MapPin,Repeat2,Shell,Trash2} from 'lucide-react'
 import type {FishingBait} from './api'
 import {rarities,type Rarity} from '@/lib/game/rarity'
 
@@ -18,6 +18,7 @@ export function BaitEffectDetails({bait,compact=false}:{bait:FishingBait;compact
   :tail?{icon:Trash2,title:'쓰레기 속 신화의 기회',text:'성공 시 일반 쓰레기 99% · 신화 등급 개체 1%예요. 신화는 물고기·쓰레기·장식물 중에서 포획해요.'}:null
  const bonus=bait.successChanceBp!==undefined&&bait.baseSuccessChanceBp!==undefined?Math.max(0,bait.successChanceBp-bait.baseSuccessChanceBp):0
  return <section aria-label="미끼 효과" className={compact?"min-w-0 space-y-3":"min-w-0 space-y-5 py-1"}>
+  {compact&&bait.description&&<p className="rounded-xl border border-primary/10 bg-secondary/30 px-3 py-2.5 text-xs leading-6 text-foreground/80">{bait.description}</p>}
   {!compact&&<div>
    <div className="flex items-center justify-between gap-3"><span className="text-xs text-muted-foreground">낚시 성공률</span><strong className="text-xl font-semibold tabular-nums text-primary">{chance===undefined?'—':baitPercent(chance)}</strong></div>
   </div>}
@@ -37,8 +38,7 @@ export function BaitEffectDetails({bait,compact=false}:{bait:FishingBait;compact
   {compact&&(special||bait.fish_only)&&<p className="text-xs leading-5 text-muted-foreground">{special?.text??'물고기만 포획해요. 쓰레기·장식물은 제외해요.'}</p>}
   <div className={compact?"":"border-t border-border/60 pt-2"}>
    {!compact&&<p className="text-[10px] leading-5 text-muted-foreground">직접 낚시는 게이지 조작 성공도 필요해요.</p>}
-   <details className="group mt-1"><summary className="flex min-h-9 w-fit cursor-pointer list-none items-center gap-1 rounded text-[10px] text-primary outline-none focus-visible:ring-2 focus-visible:ring-ring [&::-webkit-details-marker]:hidden"><Info aria-hidden="true" className="size-3"/>{compact?'자세한 설명':'자세히 알아보기'}<ChevronDown aria-hidden="true" className="size-3 transition-transform group-open:rotate-180"/></summary><div className="space-y-1 pb-1 text-[11px] leading-5 text-muted-foreground">
-    {compact&&<p className="pb-1">{bait.description}</p>}
+   <div className="rounded-xl border border-border/60 bg-background/60 px-3 py-3"><div className="space-y-2 text-[11px] leading-5 text-muted-foreground">
     <p>성공률은 포획 판정 확률이에요. 직접 낚시에서 조작에 실패하거나 취소하면 잡지 못해요.</p>
     {bait.fish_only&&<p>물고기만 포획해요. 성공률은 고정이며 낚싯대·통발 성공률 보너스는 적용되지 않아요.</p>}
     {bonus>0&&<p>현재 성공률에 낚싯대 보너스 +{baitPercent(bonus)}p가 반영됐어요.</p>}
@@ -46,7 +46,7 @@ export function BaitEffectDetails({bait,compact=false}:{bait:FishingBait;compact
     {discovery&&<p>모두 발견했다면 직접 낚시에서는 미끼를 소모하지 않아요. 등급은 남은 미발견 개체에 따라 달라져요.</p>}
     {trash&&<p>추첨한 등급의 쓰레기가 없으면 다른 등급의 쓰레기가 선택될 수 있어요.</p>}
     {!bait.alternating&&!trash&&!discovery&&<p>등급별 확률은 포획에 성공한 경우를 기준으로 표시해요.</p>}
-   </div></details>
+   </div></div>
   </div>
  </section>
 }

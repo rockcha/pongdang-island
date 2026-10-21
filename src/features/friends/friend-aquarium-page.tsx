@@ -62,7 +62,9 @@ function Visit({ owner }: { owner: string }) {
       </p>
     )
   function move(direction: number) {
-    setIndex((i) => Math.max(0, Math.min(data!.tanks.length - 1, i + direction)))
+    if (!data || data.tanks.length < 2) return
+    const count = data.tanks.length
+    setIndex((i) => (i + direction + count) % count)
   }
   return (
     <section className="flex min-h-0 w-full flex-1 flex-col" aria-label="친구 아쿠아리움">
@@ -98,7 +100,7 @@ function Visit({ owner }: { owner: string }) {
               size="icon"
               className="min-h-11"
               aria-label="이전 어항"
-              disabled={index === 0}
+              disabled={data.tanks.length < 2}
               onClick={() => move(-1)}
             >
               <ChevronLeft className="size-4" />
@@ -114,7 +116,7 @@ function Visit({ owner }: { owner: string }) {
               size="icon"
               className="min-h-11"
               aria-label="다음 어항"
-              disabled={index === data.tanks.length - 1}
+              disabled={data.tanks.length < 2}
               onClick={() => move(1)}
             >
               <ChevronRight className="size-4" />

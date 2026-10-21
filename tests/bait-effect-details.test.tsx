@@ -49,7 +49,8 @@ it('keeps fallback-dependent trash and undiscovered pools out of fixed grade per
  for(const id of ['bait_grubby_magnet','bait_first_greeting']){
   render(<BaitEffectDetails bait={catalog.fishing_baits.find(b=>b.id===id)}/>)
   expect(screen.queryByText('성공 시 등급 확률')).toBeNull()
-  expect(screen.getByText('자세히 알아보기').closest('details')?.open).toBe(false)
+  expect(screen.queryByText('알아두세요')).toBeNull()
+  expect(screen.getByText(/성공률은 포획 판정 확률/).closest('details')).toBeNull()
   cleanup()
  }
 })

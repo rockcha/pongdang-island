@@ -196,6 +196,13 @@
       "tier": "special"
     },
     {
+      "id": "cozy-undersea-doll-room",
+      "name": "바닷속 포근한 인형방",
+      "price": 1000,
+      "image_path": "cozy-undersea-doll-room-v3.png",
+      "tier": "special"
+    },
+    {
       "id": "dawn-flower-market",
       "name": "새벽 꽃시장",
       "price": 800,
@@ -843,7 +850,7 @@
       "id": "bait_safe",
       "name": "이슬잎 경단",
       "description": "새벽 이슬을 머금은 어린 잎에 향긋한 해초 반죽을 감싼 수제 미끼. 작은 쇠바늘에 단단히 붙어 쉽게 흩어지지 않고, 잎 사이로 퍼지는 순한 향이 경계심 많은 물고기를 안심시킨다.",
-      "price": 60,
+      "price": 69,
       "image_path": "/items/baits/dewleaf-dumpling.png",
       "sort_order": 102,
       "common_bp": 8320,
@@ -6548,6 +6555,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "siren-ariadne-threadtail",
+      "kind": "fish",
+      "name": "아리아드네 실꼬리",
+      "description": "붉은 실 같은 꼬리로 돌아갈 길을 남기는 물고기. 미궁에서도 길을 찾지만 낚싯줄과 엉키면 잠깐 생각에 잠겨요.",
+      "swim_y_min": "0.16",
+      "swim_y_max": "0.78",
+      "speed": "0.04",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/siren-ariadne-threadtail_thumbnail.png",
+      "sell_price": 350,
+      "sprite_sheet_path": "fish/rare/siren-ariadne-threadtail_sprite.png",
+      "native_region_id": "siren",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "siren-athena-cuttlefish",
       "kind": "fish",
       "name": "방패 든 아테나 갑오징어",
@@ -6617,6 +6642,24 @@
       "native_region_id": "siren",
       "movement_type": "fixed",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "siren-coin-scale-carp",
+      "kind": "fish",
+      "name": "동전비늘 붕어",
+      "description": "낡은 청동 동전 같은 비늘이 반짝이는 붕어. 카론의 뱃삯으로 내밀었지만 승선은 거절당했어요.",
+      "swim_y_min": "0.16",
+      "swim_y_max": "0.78",
+      "speed": "0.04",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/siren-coin-scale-carp_thumbnail.png",
+      "sell_price": 90,
+      "sprite_sheet_path": "fish/normal/siren-coin-scale-carp_sprite.png",
+      "native_region_id": "siren",
+      "movement_type": "swim",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -7064,6 +7107,24 @@
       "thumbnail_path": "fish/epic/siren-talos_thumbnail.png",
       "sell_price": 1334,
       "sprite_sheet_path": "fish/epic/siren-talos_sprite.png",
+      "native_region_id": "siren",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "siren-temple-column-seahorse",
+      "kind": "fish",
+      "name": "신전기둥 해마",
+      "description": "대리석 기둥처럼 홈이 파인 몸을 가진 해마. 가만히 서 있으면 유적 관람객이 사진을 찍어요.",
+      "swim_y_min": "0.16",
+      "swim_y_max": "0.78",
+      "speed": "0.04",
+      "size": 62,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/siren-temple-column-seahorse_thumbnail.png",
+      "sell_price": 80,
+      "sprite_sheet_path": "fish/normal/siren-temple-column-seahorse_sprite.png",
       "native_region_id": "siren",
       "movement_type": "swim",
       "flip_with_direction": true,
@@ -13034,6 +13095,10 @@
       "region_id": "siren"
     },
     {
+      "species_id": "siren-ariadne-threadtail",
+      "region_id": "siren"
+    },
+    {
       "species_id": "siren-athena-cuttlefish",
       "region_id": "siren"
     },
@@ -13047,6 +13112,10 @@
     },
     {
       "species_id": "siren-circe-vial",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "siren-coin-scale-carp",
       "region_id": "siren"
     },
     {
@@ -13147,6 +13216,10 @@
     },
     {
       "species_id": "siren-talos",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "siren-temple-column-seahorse",
       "region_id": "siren"
     },
     {

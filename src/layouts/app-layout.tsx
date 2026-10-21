@@ -19,7 +19,7 @@ export function AppLayout() {
   const friendAquarium=/^\/friends\/[^/]+\/aquarium\/?$/.test(pathname)
   const tankScreen=aquarium||friendAquarium
   const home=pathname==='/'
-  const profile=pathname==='/download'||pathname==='/music-room'||pathname==='/farm'||pathname==='/profile'||pathname==='/titles'||pathname==='/collection'||pathname==='/collection-animation'
+  const profile=pathname==='/storage'||pathname==='/download'||pathname==='/music-room'||pathname==='/farm'||pathname==='/profile'||pathname==='/titles'||pathname==='/collection'||pathname==='/collection-animation'
   const mailbox=pathname==='/notifications'
   const square=pathname==='/square'
   const showcase=pathname==='/showcase'||pathname.startsWith('/showcase/')

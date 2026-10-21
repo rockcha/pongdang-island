@@ -5,6 +5,18 @@ import {FishingSea,FishingPlatform,fishingEnvironments,fishingEnvironment} from 
 import {FishingWater} from '@/features/fishing/fishing-water'
 import {newTensionGame,fishingBiteSeconds} from '@/features/fishing/tension-game'
 afterEach(cleanup)
+it('shows water contact through the casting impact on normal and reduced-motion displays',()=>{
+ const game={...newTensionGame(()=>.5),phase:'waiting' as const,time:1.5}
+ const props={game,visual:{time:1.5,tension:38,reel:0,ending:0},mood:'recover' as const,active:true,reduced:false,regionId:'pongdang'}
+ const {container,rerender}=render(<FishingWater {...props}/>)
+ expect(container.querySelector('[data-fishing-water-impact]')).toBeTruthy()
+ rerender(<FishingWater {...props} reduced/>)
+ expect(container.querySelector('[data-fishing-water-impact]')?.getAttribute('data-reduced-motion')).toBe('true')
+ rerender(<FishingWater {...props} game={{...game,time:2}}/>)
+ expect(container.querySelector('[data-fishing-water-impact]')).toBeNull()
+ rerender(<FishingWater {...props} active={false}/>)
+ expect(container.querySelector('[data-fishing-water-impact]')).toBeNull()
+})
 it('shows a chance-failure shadow retreating without bite or resistance effects',()=>{
  const game={...newTensionGame(()=>.5,{failureAt:3}),phase:'playing' as const,time:1}
  const props={game,visual:{time:1,tension:38,reel:0,ending:0},mood:'surge' as const,active:true,reduced:false,regionId:'pongdang'}
@@ -85,6 +97,7 @@ it('keeps the creature hidden at the surface so only the result screen reveals i
  rerender(<FishingWater {...props} reduced/>)
  expect(container.querySelector('[data-fishing-lift]')).toBeNull()
  expect(container.querySelector('[data-fishing-catch-splash]')).toBeNull()
+ expect(container.querySelector('[data-fishing-water-impact]')).toBeTruthy()
  rerender(<FishingWater {...props} visual={{...props.visual,ending:1.1}}/>)
  expect(container.querySelector('[data-fishing-catch-splash]')).toBeNull()
 })

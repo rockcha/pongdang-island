@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
+import { Link } from 'react-router'
 import {
+  Crown,
+  Frown,
+  Angry,
+  ChevronDown,
   MessageCircle,
   RefreshCw,
   Send,
@@ -13,13 +18,6 @@ import { useAuth } from '@/components/auth-provider'
 import { appArt } from '@/components/app-art'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog'
 import { PlayerAvatar } from '@/features/profile/player-avatar'
 import { BoardTime } from '@/features/board/board-time'
 import {
@@ -35,15 +33,11 @@ import {
 } from './api'
 import { formatHallValue, funCategories, hallCategories, type HallCategory } from './categories'
 
-type Selection = HallCategory
-
 function SectionWall({
   selection,
-  onClose,
   onChange,
 }: {
-  selection: Selection
-  onClose: () => void
+  selection: HallCategory
   onChange: (total: number) => void
 }) {
   const { session } = useAuth()
@@ -123,180 +117,180 @@ function SectionWall({
     }
   }
   return (
-    <Dialog
-      open
-      onOpenChange={(open) => {
-        if (!open) onClose()
-      }}
-    >
-      <DialogContent
-        initialFocus={false}
-        className="flex max-h-[85dvh] flex-col gap-0 overflow-hidden p-0 max-sm:top-auto max-sm:bottom-0 max-sm:max-w-md max-sm:translate-y-0 max-sm:rounded-b-none"
-      >
-        <DialogHeader className="shrink-0 border-b border-border px-5 py-5 text-left">
-          <DialogTitle className="flex items-center gap-2">
-            <category.icon aria-hidden="true" className="size-5 text-primary" />
-            {category.label} 이야기
-          </DialogTitle>
-          <DialogDescription>
-            순위는 바뀌어도, 여기에 남긴 이야기는 계속 이어져요.
-          </DialogDescription>
-        </DialogHeader>
-        <div
-          className="min-h-24 flex-1 overflow-y-auto overscroll-contain px-5"
-          aria-busy={!wall && !error}
-        >
-          {error ? (
-            <div role="alert" className="py-8 text-center text-xs">
-              <p>{error}</p>
-              <Button variant="ghost" onClick={() => setRetry((n) => n + 1)}>
-                다시 불러오기
-              </Button>
-            </div>
-          ) : !wall ? (
-            <p role="status" className="py-10 text-center text-xs text-muted-foreground">
-              한마디를 불러오는 중…
-            </p>
-          ) : (
-            <>
-              {!wall.comments.length && (
-                <div className="py-10 text-center">
-                  <MessageCircle
-                    aria-hidden="true"
-                    className="mx-auto mb-3 size-6 text-primary/40"
-                  />
-                  <p className="text-sm">첫 한마디를 남겨주세요</p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    이 기록에 대한 응원과 바다 수다를 나눠요.
-                  </p>
-                </div>
-              )}
-              <ul className="divide-y divide-border/50">
-                {wall.comments.map((comment) => (
-                  <li key={comment.id} className="flex gap-2.5 py-4">
+    <div className="mt-2 overflow-hidden rounded-xl border border-border/60 bg-secondary/15">
+      <div className="px-3" aria-busy={!wall && !error}>
+        {error ? (
+          <div role="alert" className="py-8 text-center text-xs">
+            <p>{error}</p>
+            <Button variant="ghost" onClick={() => setRetry((n) => n + 1)}>
+              다시 불러오기
+            </Button>
+          </div>
+        ) : !wall ? (
+          <p role="status" className="py-10 text-center text-xs text-muted-foreground">
+            한마디를 불러오는 중…
+          </p>
+        ) : (
+          <>
+            {!wall.comments.length && (
+              <div className="py-6 text-center">
+                <MessageCircle aria-hidden="true" className="mx-auto mb-2 size-5 text-primary/40" />
+                <p className="text-sm">첫 한마디를 남겨주세요</p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  이 기록에 대한 응원과 바다 수다를 나눠요.
+                </p>
+              </div>
+            )}
+            <ul className="divide-y divide-border/50">
+              {wall.comments.map((comment) => (
+                <li key={comment.id} className="flex gap-2.5 py-4">
+                  <Link
+                    to={
+                      comment.author_id === session?.user.id
+                        ? '/aquarium'
+                        : `/friends/${comment.author_id}/aquarium`
+                    }
+                    aria-label={`${comment.nickname} 아쿠아리움 방문`}
+                    className="shrink-0 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
                     <PlayerAvatar
                       nickname={comment.nickname}
                       path={comment.avatar_path}
                       className="size-8 shrink-0"
                     />
-                    <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2">
-                        <span className="truncate text-xs font-medium">{comment.nickname}</span>
-                        <BoardTime
-                          value={comment.created_at}
-                          className="shrink-0 text-[10px] text-muted-foreground"
-                        />
-                      </div>
-                      <p className="mt-1.5 whitespace-pre-wrap break-words text-sm leading-relaxed">
-                        {comment.body}
-                      </p>
-                      <div className="mt-1 flex gap-1">
-                        {(
-                          [
-                            { value: 1, icon: ThumbsUp, label: '좋아요', count: comment.likes },
-                            {
-                              value: -1,
-                              icon: ThumbsDown,
-                              label: '싫어요',
-                              count: comment.dislikes,
-                            },
-                          ] as const
-                        ).map((reaction) => (
-                          <Button
-                            key={reaction.value}
-                            variant="ghost"
-                            className="min-h-9 gap-1.5 px-2 text-[11px]"
-                            aria-label={reaction.label}
-                            aria-pressed={comment.myReaction === reaction.value}
-                            disabled={busy || comment.author_id === session?.user.id}
-                            onClick={() =>
-                              void act({
-                                p_action: 'react',
-                                p_comment_id: comment.id,
-                                p_value: comment.myReaction === reaction.value ? 0 : reaction.value,
-                              })
-                            }
-                          >
-                            <reaction.icon
-                              className={`size-3.5 ${comment.myReaction === reaction.value ? 'text-primary' : 'text-muted-foreground'}`}
-                            />
-                            {reaction.count}
-                          </Button>
-                        ))}
-                      </div>
-                    </div>
-                    {comment.author_id === session?.user.id && (
-                      <Button
-                        variant="ghost"
-                        size="icon-sm"
-                        aria-label="내 댓글 삭제"
-                        disabled={busy}
-                        onClick={() =>
-                          void act({ p_action: 'delete_comment', p_comment_id: comment.id })
+                  </Link>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
+                      <Link
+                        to={
+                          comment.author_id === session?.user.id
+                            ? '/aquarium'
+                            : `/friends/${comment.author_id}/aquarium`
                         }
+                        className="truncate text-xs font-medium hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       >
-                        <Trash2 className="size-3.5 text-muted-foreground" />
-                      </Button>
-                    )}
-                  </li>
-                ))}
-              </ul>
-              {offset < wall.total && (
-                <Button
-                  variant="ghost"
-                  className="mb-3 w-full text-xs"
-                  disabled={busy}
-                  onClick={() => void more()}
-                >
-                  이전 댓글 더 보기
-                </Button>
-              )}
-            </>
-          )}
-        </div>
-        <form
-          className="flex shrink-0 items-end gap-2 border-t border-border bg-background p-4 pb-[max(1rem,env(safe-area-inset-bottom))]"
-          onSubmit={(event) => {
-            event.preventDefault()
-            if (body.trim()) void act({ p_action: 'comment', p_body: body.trim() })
-          }}
+                        {comment.nickname}
+                      </Link>
+                      <BoardTime
+                        value={comment.created_at}
+                        className="shrink-0 text-[10px] text-muted-foreground"
+                      />
+                    </div>
+                    <p className="mt-1.5 whitespace-pre-wrap break-words text-sm leading-relaxed">
+                      {comment.body}
+                    </p>
+                    <div className="mt-1 flex flex-wrap gap-1">
+                      {(
+                        [
+                          { value: 1, icon: ThumbsUp, label: '좋아요', count: comment.likes },
+                          { value: 2, icon: Frown, label: '슬퍼요', count: comment.sad ?? 0 },
+                          { value: 3, icon: Angry, label: '화나요', count: comment.angry ?? 0 },
+                          {
+                            value: -1,
+                            icon: ThumbsDown,
+                            label: '싫어요',
+                            count: comment.dislikes,
+                          },
+                        ] as const
+                      ).map((reaction) => (
+                        <Button
+                          key={reaction.value}
+                          variant="ghost"
+                          className="min-h-9 gap-1.5 px-2 text-[11px]"
+                          aria-label={reaction.label}
+                          aria-pressed={comment.myReaction === reaction.value}
+                          disabled={busy || comment.author_id === session?.user.id}
+                          onClick={() =>
+                            void act({
+                              p_action: 'react',
+                              p_comment_id: comment.id,
+                              p_value: comment.myReaction === reaction.value ? 0 : reaction.value,
+                            })
+                          }
+                        >
+                          <reaction.icon
+                            className={`size-3.5 ${comment.myReaction === reaction.value ? 'text-primary' : 'text-muted-foreground'}`}
+                          />
+                          {reaction.count}
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+                  {comment.author_id === session?.user.id && (
+                    <Button
+                      variant="ghost"
+                      size="icon-sm"
+                      aria-label="내 댓글 삭제"
+                      disabled={busy}
+                      onClick={() =>
+                        void act({ p_action: 'delete_comment', p_comment_id: comment.id })
+                      }
+                    >
+                      <Trash2 className="size-3.5 text-muted-foreground" />
+                    </Button>
+                  )}
+                </li>
+              ))}
+            </ul>
+            {offset < wall.total && (
+              <Button
+                variant="ghost"
+                className="mb-3 w-full text-xs"
+                disabled={busy}
+                onClick={() => void more()}
+              >
+                이전 댓글 더 보기
+              </Button>
+            )}
+          </>
+        )}
+      </div>
+      <form
+        className="flex items-end gap-2 border-t border-border/60 bg-background/70 p-3"
+        onSubmit={(event) => {
+          event.preventDefault()
+          if (body.trim()) void act({ p_action: 'comment', p_body: body.trim() })
+        }}
+      >
+        <textarea
+          ref={input}
+          aria-label="댓글 내용"
+          placeholder="이 기록에 대해 한마디 남겨주세요…"
+          maxLength={500}
+          rows={2}
+          value={body}
+          onChange={(event) => setBody(event.target.value)}
+          className="max-h-28 min-h-11 min-w-0 flex-1 resize-none rounded-xl border border-border bg-secondary/30 px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        />
+        <Button
+          type="submit"
+          size="icon"
+          aria-label="댓글 등록"
+          disabled={busy || !wall || !body.trim()}
+          className="size-11 shrink-0 rounded-xl"
         >
-          <textarea
-            ref={input}
-            aria-label="댓글 내용"
-            placeholder="이 기록에 대해 한마디 남겨주세요…"
-            maxLength={500}
-            rows={2}
-            value={body}
-            onChange={(event) => setBody(event.target.value)}
-            className="max-h-28 min-h-11 min-w-0 flex-1 resize-none rounded-xl border border-border bg-secondary/30 px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          />
-          <Button
-            type="submit"
-            size="icon"
-            aria-label="댓글 등록"
-            disabled={busy || !wall || !body.trim()}
-            className="size-11 shrink-0 rounded-xl"
-          >
-            <Send className="size-4" />
-          </Button>
-        </form>
-      </DialogContent>
-    </Dialog>
+          <Send className="size-4" />
+        </Button>
+      </form>
+    </div>
   )
 }
 
 function RankingCard({
   category,
   players,
-  onSelect,
+  onCountChange,
   commentCount,
 }: {
   category: HallCategory
   players: HallPlayer[]
-  onSelect: (selection: Selection) => void
+  onCountChange: (total: number) => void
   commentCount?: number
 }) {
+  const [expanded, setExpanded] = useState(false)
+  const { session } = useAuth()
+  const [opened, setOpened] = useState(false)
+  const discussionId = 'hall-discussion-' + category.id
   return (
     <section className="rounded-2xl border border-border/70 bg-card px-4 pb-4 pt-4">
       <div className="mb-4 flex items-start gap-2.5">
@@ -307,14 +301,23 @@ function RankingCard({
         </div>
       </div>
       {players.length ? (
-        <ol className="grid grid-cols-5 gap-1">
+        <ol className="grid grid-cols-5 gap-1 pt-3">
           {players.map((player) => (
             <li key={player.id} className="min-w-0">
-              <div
-                className="flex min-h-24 w-full min-w-0 flex-col items-center py-1"
+              <Link
+                to={player.id === session?.user.id ? '/aquarium' : `/friends/${player.id}/aquarium`}
+                title={`${player.nickname} 아쿠아리움 방문`}
+                className="flex min-h-24 w-full min-w-0 flex-col items-center rounded-xl py-1 transition-colors hover:bg-secondary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 aria-label={`${player.rank}위 ${player.nickname}, ${formatHallValue(player.value, category.unit)}`}
               >
                 <span className="relative">
+                  {player.rank === 1 && (
+                    <Crown
+                      aria-label="1등 왕관"
+                      className="pointer-events-none absolute -top-4 left-1/2 z-10 size-6 -translate-x-1/2 -rotate-6 fill-amber-300 text-amber-600 drop-shadow-sm"
+                      strokeWidth={1.5}
+                    />
+                  )}
                   <PlayerAvatar
                     nickname={player.nickname}
                     path={player.avatar_path}
@@ -335,7 +338,7 @@ function RankingCard({
                 >
                   {formatHallValue(player.value, category.unit)}
                 </span>
-              </div>
+              </Link>
             </li>
           ))}
         </ol>
@@ -352,12 +355,29 @@ function RankingCard({
         <Button
           variant="ghost"
           className="min-h-10 w-full gap-2 rounded-xl text-xs text-primary hover:bg-secondary/60"
-          aria-label={category.label + ' 이야기 열기'}
-          onClick={() => onSelect(category)}
+          aria-label={category.label + ' 이야기 ' + (expanded ? '접기' : '열기')}
+          aria-expanded={expanded}
+          aria-controls={discussionId}
+          onClick={() => {
+            setOpened(true)
+            setExpanded((value) => !value)
+          }}
         >
           <MessageCircle className="size-4" />
           이야기{commentCount === undefined ? '' : ` ${commentCount}`}
+          <ChevronDown
+            className={`ml-auto size-3.5 transition-transform motion-reduce:transition-none ${expanded ? 'rotate-180' : ''}`}
+            aria-hidden="true"
+          />
         </Button>
+      </div>
+      <div
+        id={discussionId}
+        role="region"
+        aria-label={category.label + ' 이야기'}
+        hidden={!expanded}
+      >
+        {opened && <SectionWall selection={category} onChange={onCountChange} />}
       </div>
     </section>
   )
@@ -368,7 +388,6 @@ export function HallPage() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(true)
   const [retry, setRetry] = useState(0)
-  const [selection, setSelection] = useState<Selection | null>(null)
   const [counts, setCounts] = useState<Record<string, number>>({})
   const list = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -470,7 +489,9 @@ export function HallPage() {
                     key={category.id}
                     category={category}
                     players={feed.rankings[category.id] ?? []}
-                    onSelect={setSelection}
+                    onCountChange={(total) =>
+                      setCounts((previous) => ({ ...previous, [category.id]: total }))
+                    }
                     commentCount={counts[category.id]}
                   />
                 ))}
@@ -481,7 +502,9 @@ export function HallPage() {
                     key={category.id}
                     category={category}
                     players={feed.rankings[category.id] ?? []}
-                    onSelect={setSelection}
+                    onCountChange={(total) =>
+                      setCounts((previous) => ({ ...previous, [category.id]: total }))
+                    }
                     commentCount={counts[category.id]}
                   />
                 ))}
@@ -499,14 +522,6 @@ export function HallPage() {
           )
         )}
       </div>
-      {selection && (
-        <SectionWall
-          key={selection.id}
-          selection={selection}
-          onChange={(total) => setCounts((previous) => ({ ...previous, [selection.id]: total }))}
-          onClose={() => setSelection(null)}
-        />
-      )}
     </Tabs>
   )
 }

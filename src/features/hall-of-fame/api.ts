@@ -32,6 +32,8 @@ export type HallAction = {
 }
 
 export type HallSectionComment = HallComment & {
+  sad?: number
+  angry?: number
   likes: number
   dislikes: number
   myReaction: number

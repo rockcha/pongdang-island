@@ -139,16 +139,16 @@ export const hallCategories = [
 export const funCategories = [
   {
     id: 'daily',
-    title: '오늘 바다 대관하신 분 찾습니다.',
-    label: '하루 최다 낚시',
+    title: '하루 최다 낚시 · 오늘 바다 대관하신 분 찾습니다.',
+    label: '바다 전세 낸 퐁이',
     unit: '회',
     icon: Flame,
     description: '한국 시간 하루 동안 완료한 직접 낚시의 개인 최고 기록이에요.',
   },
   {
     id: 'control_miss',
-    title: '분명 눌렀는데요. 진짜 눌렀는데요.',
-    label: '최다 조작 MISS',
+    title: '최다 조작 MISS · 분명 눌렀는데요. 진짜 눌렀는데요.',
+    label: '손이 미끄러웠을 뿐',
     unit: '회',
     icon: Anchor,
     description:
@@ -156,8 +156,8 @@ export const funCategories = [
   },
   {
     id: 'decorations',
-    title: '어항보다 소품 창고가 커졌어요.',
-    label: '장식물 획득',
+    title: '장식물 획득 · 어항보다 소품 창고가 커졌어요.',
+    label: '어항 인테리어 장인',
     unit: '개',
     icon: Sparkles,
     description:
@@ -165,16 +165,16 @@ export const funCategories = [
   },
   {
     id: 'trash',
-    title: '낚시하러 왔다가 환경상을 받았어요.',
-    label: '쓰레기 획득',
+    title: '쓰레기 획득 · 낚시하러 왔다가 환경상을 받았어요.',
+    label: '바닷가 청소부',
     unit: '개',
     icon: Trash2,
     description: '직접 낚시로 건져 올린 쓰레기의 누적 개수예요.',
   },
   {
     id: 'arcade_earned',
-    title: '게임은 취미고 수입은 본업이에요.',
-    label: '미니게임에서 번 돈',
+    title: '미니게임에서 번 돈 · 게임은 취미고 수입은 본업이에요.',
+    label: '오락실 금손',
     unit: '골드',
     icon: Gamepad2,
     description:
@@ -182,8 +182,8 @@ export const funCategories = [
   },
   {
     id: 'arcade_spent',
-    title: '한 판만 더, 라고 300번 말했어요.',
-    label: '미니게임에 사용한 돈',
+    title: '미니게임에 사용한 돈 · 한 판만 더, 라고 300번 말했어요.',
+    label: '오락실 건물주 후원자',
     unit: '골드',
     icon: Gamepad2,
     description:
@@ -191,16 +191,16 @@ export const funCategories = [
   },
   {
     id: 'failure_run',
-    title: '용왕님도 이 끈기에는 박수 쳐요.',
-    label: '최다 연속 실패',
+    title: '최다 연속 실패 · 용왕님도 이 끈기에는 박수 쳐요.',
+    label: '꺾이지 않는 낚싯대',
     unit: '회',
     icon: Anchor,
     description: '직접 낚시에서 성공 없이 연속으로 실패한 최장 기록이에요.',
   },
   {
     id: 'likes',
-    title: '섬에 팬클럽 창단 소문이 돌아요.',
-    label: '받은 좋아요',
+    title: '받은 좋아요 · 섬에 팬클럽 창단 소문이 돌아요.',
+    label: '퐁당섬 인기스타',
     unit: '개',
     icon: ThumbsUp,
     description:
@@ -208,8 +208,8 @@ export const funCategories = [
   },
   {
     id: 'dislikes',
-    title: '오늘도 섬의 뜨거운 감자예요.',
-    label: '받은 싫어요',
+    title: '받은 싫어요 · 오늘도 섬의 뜨거운 감자예요.',
+    label: '퐁당섬 뜨거운 감자',
     unit: '개',
     icon: ThumbsDown,
     description:
@@ -217,8 +217,8 @@ export const funCategories = [
   },
   {
     id: 'helps',
-    title: '친구가 부르기 전에 이미 와 있어요.',
-    label: '친구 도와준 횟수',
+    title: '친구 도와준 횟수 · 친구가 부르기 전에 이미 와 있어요.',
+    label: '부르면 오는 퐁반장',
     unit: '회',
     icon: HandHeart,
     description: '친구 먹이 주기·어항 청소를 완료한 횟수와 통발에 순풍을 보낸 횟수를 합산해요.',

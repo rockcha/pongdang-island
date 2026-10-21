@@ -44,6 +44,29 @@ beforeAll(async () => {
   }
 }, 60000)
 beforeEach(async () => await db.exec('truncate app_private.hall_section_comments cascade'))
+
+it('saves, switches and clears emotions without counting them as likes or dislikes', async () => {
+  const id = (await act(users[0], 'casts', 'comment', 'emotions')).comments[0].id
+  expect((await act(users[1], 'casts', 'react', '', id, 2)).comments[0]).toMatchObject({
+    sad: 1,
+    angry: 0,
+    likes: 0,
+    dislikes: 0,
+    myReaction: 2,
+  })
+  expect((await act(users[1], 'casts', 'react', '', id, 3)).comments[0]).toMatchObject({
+    sad: 0,
+    angry: 1,
+    myReaction: 3,
+  })
+  expect((await act(users[1], 'casts', 'react', '', id, 0)).comments[0]).toMatchObject({
+    sad: 0,
+    angry: 0,
+    myReaction: 0,
+  })
+  await expect(act(users[0], 'casts', 'react', '', id, 2)).rejects.toThrow('HALL_SELF_REACTION')
+  await expect(act(users[1], 'casts', 'react', '', id, 4)).rejects.toThrow('INVALID_HALL')
+})
 afterAll(async () => await db?.close())
 it('registers exactly the visible sections, without retired records', async () => {
   const ids = (
@@ -105,7 +128,7 @@ it('keeps a single reaction per comment, switches and removes it, and rejects se
   })
   await expect(act(users[0], 'casts', 'react', '', id, 1)).rejects.toThrow('HALL_SELF_REACTION')
   await expect(act(users[1], 'fish', 'react', '', id, 1)).rejects.toThrow('HALL_NOT_FOUND')
-  await expect(act(users[1], 'casts', 'react', '', id, 2)).rejects.toThrow('INVALID_HALL')
+  await expect(act(users[1], 'casts', 'react', '', id, 4)).rejects.toThrow('INVALID_HALL')
   await act(users[1], 'casts', 'react', '', id, 1)
   const rankings = await asUser<{ rankings: Record<string, { id: string; value: number }[]> }>(
     users[0],

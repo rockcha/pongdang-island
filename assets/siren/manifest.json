@@ -912,28 +912,28 @@
             0
           ],
           [
-            -8,
-            30
+            -20,
+            20
           ],
           [
-            -62,
-            26
+            2,
+            -34
           ],
           [
-            -76,
-            26
+            -10,
+            -34
           ]
         ],
         "patch": [
-          403,
-          308,
+          255,
+          340,
           41
         ],
         "scores": [
           0,
-          157.31629392971246,
-          196.07987220447285,
-          192.42492012779553
+          57.95918367346939,
+          55.30385487528345,
+          78.43310657596372
         ]
       },
       "layout_repair_prompt": "Edit this existing animation atlas for PRODUCTION FRAME PADDING. Keep the exact same siren-thread-snail identity and the same four poses in a 2 by 2 grid. Scale ALL FOUR subjects uniformly down to 68 PERCENT of their current size by the same factor. Place the stationary head/rigid torso (or wall attachment for tentacle) at the exact same coordinates relative to each cell center. Every complete subject must fit INSIDE its own quadrant with a very large empty transparent margin and an unmistakable empty transparent cross between cells. Preserve every limb, tail, nose and prop, restore any clipped tips. No edge touches any cell boundary. Do not enlarge to fill canvas. Preserve right-facing heads, same colors, same style and natural swimming/tentacle pose differences. Do not add grid lines, visible frames, scenery or text. Actual transparent alpha background."

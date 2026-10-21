@@ -85,7 +85,7 @@ it('shows trash transform controls and saves the position lock from its toolbar'
  await waitFor(()=>expect(arrange).toHaveBeenCalledWith('bottle',expect.objectContaining({position_locked:true,rotation:45,scale:.5})))
  expect(await screen.findByRole('button',{name:'위치 고정 해제'})).toBeTruthy()
 })
-it('switches tanks with visible arrows and keyboard while respecting the first and last tank', () => {
+it('allows circular navigation with arrows and keyboard at both ends', () => {
   const buy = vi.fn(),
     navigate = vi.fn()
   const { rerender } = render(
@@ -100,7 +100,9 @@ it('switches tanks with visible arrows and keyboard while respecting the first a
     />,
   )
   expect(screen.getByLabelText('현재 어항').textContent?.replace(/\s/g, '')).toBe('1/2')
-  expect(screen.getByRole('button', { name: '이전 어항' }).hasAttribute('disabled')).toBe(true)
+  expect(screen.getByRole('button', { name: '이전 어항' }).hasAttribute('disabled')).toBe(false)
+  fireEvent.click(screen.getByRole('button', { name: '이전 어항' }))
+  expect(navigate).toHaveBeenLastCalledWith('previous')
   fireEvent.click(screen.getByRole('button', { name: '다음 어항' }))
   expect(navigate).toHaveBeenCalledWith('next')
   expect(screen.queryByRole('button', { name: '어항 추가' })).toBeNull()
@@ -118,7 +120,9 @@ it('switches tanks with visible arrows and keyboard while respecting the first a
       navigation={{ index: 1, count: 2, onChange: navigate }}
     />,
   )
-  expect(screen.getByRole('button', { name: '다음 어항' }).hasAttribute('disabled')).toBe(true)
+  expect(screen.getByRole('button', { name: '다음 어항' }).hasAttribute('disabled')).toBe(false)
+  fireEvent.click(screen.getByRole('button', { name: '다음 어항' }))
+  expect(navigate).toHaveBeenLastCalledWith('next')
   fireEvent.click(screen.getByRole('button', { name: '이전 어항' }))
   expect(navigate).toHaveBeenLastCalledWith('previous')
 })

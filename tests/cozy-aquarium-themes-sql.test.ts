@@ -5,7 +5,7 @@ import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
 let db
 const uid='00000000-0000-0000-0000-000000000709'
 const catalog=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8')).aquarium_backgrounds
-const themes=['20261019-085100','20261019-085940','20261019-090840','20261019-092750','20261021-150650','20261021-151542'].flatMap(batch=>JSON.parse(readFileSync(`assets/storage-upload/new/${batch}/manifest.json`,'utf8')).items).map(theme=>({...theme,price:catalog.find(item=>item.id===theme.id).price,image_path:catalog.find(item=>item.id===theme.id).image_path}))
+const themes=['20261019-085100','20261019-085940','20261019-090840','20261019-092750','20261021-150650','20261021-151542','20261022-cozy-doll-room'].flatMap(batch=>JSON.parse(readFileSync(`assets/storage-upload/new/${batch}/manifest.json`,'utf8')).items).map(theme=>({...theme,price:catalog.find(item=>item.id===theme.id).price,image_path:catalog.find(item=>item.id===theme.id).image_path}))
 beforeAll(async()=>{
  db=await createLocalDatabase();await replayMigrations(db)
  await db.query('insert into auth.users(id) values($1)',[uid])

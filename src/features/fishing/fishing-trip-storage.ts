@@ -3,7 +3,7 @@ import type { OwnedCollectible } from '@/features/collection/api'
 import type { FishingAttempt } from './api'
 
 // Resolve actual storage rows, rather than treating a local catch history as ownership.
-export async function loadTripStorage(catches: FishingAttempt[], active = () => true) {
+export async function loadTripStorage(catches: FishingAttempt[], active = () => true, sellableOnly = true) {
   const ids = new Set(catches.flatMap((c) => (c.collectible_id ? [c.collectible_id] : [])))
   if (!ids.size) return []
   const times = catches.map((c) => Date.parse(c.created_at)).filter(Number.isFinite)
@@ -20,6 +20,6 @@ export async function loadTripStorage(catches: FishingAttempt[], active = () => 
     if (oldest < earliest) break
   }
   return [...found.values()].filter(
-    (item) => item.species.kind !== 'map' && item.species.sell_price > 0,
+    (item) => !sellableOnly || (item.species.kind !== 'map' && item.species.sell_price > 0),
   )
 }

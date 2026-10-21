@@ -1,0 +1,68 @@
+{
+  "projectHost": "ewafafphiovbpjwogwzn.supabase.co",
+  "verifiedAt": "2026-10-21T16:11:40.531Z",
+  "species": [
+    {
+      "id": "siren-ariadne-threadtail",
+      "name": "아리아드네 실꼬리",
+      "rarity": "rare",
+      "sell_price": 350,
+      "native_region_id": "siren"
+    },
+    {
+      "id": "siren-coin-scale-carp",
+      "name": "동전비늘 붕어",
+      "rarity": "common",
+      "sell_price": 90,
+      "native_region_id": "siren"
+    },
+    {
+      "id": "siren-temple-column-seahorse",
+      "name": "신전기둥 해마",
+      "rarity": "common",
+      "sell_price": 80,
+      "native_region_id": "siren"
+    }
+  ],
+  "habitats": [
+    {
+      "species_id": "siren-ariadne-threadtail",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "siren-coin-scale-carp",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "siren-temple-column-seahorse",
+      "region_id": "siren"
+    }
+  ],
+  "files": [
+    {
+      "key": "fish/rare/siren-ariadne-threadtail_thumbnail.png",
+      "sha256": "d2289956bddfe9392cf781400e470e2d0a013a5509ecc8d1fb2e2d7b9fae8460"
+    },
+    {
+      "key": "fish/rare/siren-ariadne-threadtail_sprite.png",
+      "sha256": "48273b31e64b3d08cbc4c6f4128bf5035fd96c9165741ccb1154936cffb182e7"
+    },
+    {
+      "key": "fish/normal/siren-coin-scale-carp_thumbnail.png",
+      "sha256": "6250052913d2b82bdaec4b1dee946b143eddfb358f9b00f440232fff63f9cb62"
+    },
+    {
+      "key": "fish/normal/siren-coin-scale-carp_sprite.png",
+      "sha256": "88c2f6b4c53eaffb1238490f7e57c5a8000a7f89cc4b0817ef32e7264ea648ae"
+    },
+    {
+      "key": "fish/normal/siren-temple-column-seahorse_thumbnail.png",
+      "sha256": "63170c5355e2be20e26a49361f47e9d44ad94251085152408390ea0d231b00f4"
+    },
+    {
+      "key": "fish/normal/siren-temple-column-seahorse_sprite.png",
+      "sha256": "0d8d7ad92e87703f47ad2084e290d61e16e3318dcaa0acde7d87ca9cc0a0b086"
+    }
+  ],
+  "scope": "Three new catalog species and six public Storage images only; migration history and whole schema parity not verified or changed."
+}

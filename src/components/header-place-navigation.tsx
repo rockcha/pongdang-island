@@ -32,6 +32,7 @@ export const headerPlaces = [
   { to: '/aquarium', label: '아쿠아리움', icon: AquariumIcon },
   { to: '/titles', label: '칭호', icon: appArt.title },
   { to: '/collection', label: '도감', icon: appArt.collection },
+  { to: '/storage', label: '보관함', icon: appArt.storage },
   { to: '/collection-animation', label: '애니메이션 도감', icon: appArt.collection },
   { to: '/harbor', label: '지도', icon: Map },
   { to: '/fishing', label: '낚시', icon: appArt.rod },
@@ -70,7 +71,7 @@ export function HeaderPlaceNavigation() {
   const groups = [
     {
       label: '내 섬',
-      paths: ['/', '/aquarium', '/warehouse', '/collection', '/titles', '/collection-animation', '/savings'],
+      paths: ['/', '/aquarium', '/warehouse', '/storage', '/collection', '/titles', '/collection-animation', '/savings'],
       separatorBefore: '/warehouse',
     },
     { label: '바다', paths: ['/harbor', '/fishing', '/expeditions', '/port', '/shipyard'], separatorBefore: '/port' },

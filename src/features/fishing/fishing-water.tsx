@@ -70,8 +70,10 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
  const fy=nearWater+12+game.progress*20+(won?-lift*194:0),fishScale=.48+approach*1.2
  const snapped=lost&&game.reason==='snap'
  const lineEnd=snapped?{x:tip.x+12*(1-end),y:tip.y-15*(1-end)}:{x:bx,y:by+dip*13}
- const impact=active&&waiting&&game.time>=.85&&game.time<1.35
- const splash=active&&!reduced&&(impact||surge||(canBite&&!waiting&&!won&&!lost&&game.time<.65))
+ const impact=active&&waiting&&game.time>=.85&&game.time<1.65
+ const waterContact=active&&(impact||surge||(canBite&&!waiting&&!won&&!lost&&game.time<.8))
+ const splash=!reduced&&waterContact
+ const reducedSplash=reduced&&active&&(waterContact||(won&&visual.ending<.95))
  const landingSplash=active&&won&&!reduced&&visual.ending<.95
  const splashProgress=Math.max(0,Math.min(1,visual.ending/.95))
  return <div ref={container} className="relative h-full w-full overflow-hidden" style={sceneryOverlay?undefined:{background:`linear-gradient(${palette.top},${palette.bottom})`}}>
@@ -117,7 +119,11 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
   <path data-fishing-line="true" d={`M${tip.x} ${tip.y} Q${(tip.x+lineEnd.x)/2+(!reduced&&tension>.85?Math.sin(t*38)*2:0)} ${(tip.y+lineEnd.y)/2+(1-tension)*45*(1-tug*.8)} ${lineEnd.x} ${lineEnd.y}`} fill="none" stroke={tension>.85?'#ffd1ba':rod?.id==='mukhyang'?'#5d716b':'#e1edf2'} strokeWidth={1.2+tug*.8}/>
   {!(snapped&&end>.5)&&<g data-fishing-float="true" transform={`translate(${bx} ${by+dip*13}) rotate(${surge?24:dip*12}) scale(${bobScale} ${bobScale*(1-dip*.35)})`} opacity={won?1-end:1-dip*.88}>{(hasRodSkin(rod?.id)||hasRodImages(rod?.id))?<RodSkinFloat id={rod!.id}/>:<><path d="M0-17v12" stroke="#fff1d4" strokeWidth="2.5"/><ellipse rx="5" ry="9" fill="#fff1d4"/><path d="M-5 0a5 9 0 0 0 10 0Z" fill="#eb886f"/></>}</g>}
   {baitImage&&casting&&!reduced&&<g data-fishing-cast-bait="true" transform={`translate(${bx} ${by}) rotate(${Math.sin(cast*Math.PI)*12})`} pointerEvents="none"><path d="M0 9v14" fill="none" stroke="#e1edf2" strokeWidth="1"/><image href={baitImage} x="-16" y="21" width="32" height="32" preserveAspectRatio="xMidYMid meet"/></g>}
-  {splash&&Array.from({length:9},(_,i)=>{const phase=(t*1.7+i*.17)%1,angle=i*Math.PI*2/9;return <ellipse key={i} cx={bx+Math.cos(angle)*(8+phase*(won?48:24+motionTug*22))} cy={by+7-Math.sin(phase*Math.PI)*(12+i%3*8+motionTug*12)} rx="1.7" ry="2.7" fill={palette.light} opacity={(1-phase)*.7}/>})}
+  {(splash||reducedSplash)&&<g data-fishing-water-impact="true" data-reduced-motion={reduced} transform={`translate(${bx} ${by+10})`} pointerEvents="none">
+   <ellipse rx="28" ry="8" fill="#e6fbff" fillOpacity=".08" stroke="#efffff" strokeWidth="2" opacity=".85"/>
+   <ellipse rx="44" ry="13" fill="none" stroke="#e6fbff" strokeWidth="1.5" opacity=".5"/>
+  </g>}
+  {splash&&Array.from({length:9},(_,i)=>{const phase=(t*1.7+i*.17)%1,angle=i*Math.PI*2/9;return <ellipse key={i} cx={bx+Math.cos(angle)*(8+phase*(won?48:24+motionTug*22))} cy={by+7-Math.sin(phase*Math.PI)*(12+i%3*8+motionTug*12)} rx="2.3" ry="3.7" fill="#efffff" opacity={(1-phase)*.9}/>})}
   {!sceneryOverlay&&<FishingPlatform regionId={regionId} y={platformY} platformHeight={platformHeight}/>}
   <path d={rodPath} fill="none" stroke="#102b42" strokeWidth={rodShaftOutlineWidth(rod?.id)} strokeLinecap="round"/>
   <path d={rodPath} fill="none" data-equipped-rod={rod?.id??"basic"} stroke={rod&&rod.id!=="basic"?rod.color:"#97c8d2"} strokeWidth="2.3" strokeLinecap="round"/>

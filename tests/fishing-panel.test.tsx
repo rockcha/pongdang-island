@@ -1,8 +1,8 @@
 import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'
 import { createMemoryRouter,Link,MemoryRouter,RouterProvider } from 'react-router'
-const {load,prepare,finish,refresh,transact,storage}=vi.hoisted(()=>({load:vi.fn(),prepare:vi.fn(),finish:vi.fn(),refresh:vi.fn(),transact:vi.fn(),storage:vi.fn()}))
-vi.mock('@/features/aquarium/api',async original=>({...await original<typeof import('@/features/aquarium/api')>(),loadCollectibleStorage:storage}))
+const {load,prepare,finish,refresh,transact,storage,aquarium}=vi.hoisted(()=>({load:vi.fn(),prepare:vi.fn(),finish:vi.fn(),refresh:vi.fn(),transact:vi.fn(),storage:vi.fn(),aquarium:vi.fn()}))
+vi.mock('@/features/aquarium/api',async original=>({...await original<typeof import('@/features/aquarium/api')>(),loadCollectibleStorage:storage,loadAquarium:aquarium}))
 vi.mock('@/features/fishing/tension-fishing-game',()=>({TensionFishingGame:({onCaught,onCancel,onFailed,active,challenge,outline,start}:{onCaught:()=>void;onCancel:()=>void;onFailed:(reason:string)=>void;active:boolean;challenge:{rarity:string;failureAt?:number};outline?:{name:string};start?:{label:string;disabled:boolean;onStart:()=>void}})=>active?<div data-testid="challenge" data-rarity={challenge.rarity} data-doomed={challenge.failureAt!==undefined} data-outline={outline?.name??'generic'}><button onClick={onCaught}>미니게임 성공</button><button onClick={onCancel}>미니게임 취소</button><button onClick={()=>onFailed('snap')}>미니게임 실패</button></div>:<div>낚싯대가 준비됐어요{start&&<button disabled={start.disabled} onClick={start.onStart}>{start.label}</button>}</div>}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:()=>null}))
 vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>'/collectibles/'+path}))
@@ -91,7 +91,7 @@ it('keeps harbor and collection tools without the removed native species modal',
  const harbor=screen.getByRole('link',{name:'지도'})
  expect(harbor.getAttribute('href')).toBe('/harbor')
  expect(harbor.querySelector('img')?.getAttribute('src')).toBe('/app-icons/map.png')
- expect(screen.getByRole('button',{name:'보관함 · 0개'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'보관함'})).toBeTruthy()
  expect(screen.queryByText('이번 낚시')).toBeNull()
 })
 it('stages the bait selection and applies it with the footer use button beside the shop',async()=>{
@@ -155,20 +155,29 @@ it('continues to show the standalone shop inventory without a region',async()=>{
  load.mockResolvedValue({baits:[bait]});render(<MemoryRouter><FishingPanel/></MemoryRouter>);expect(await screen.findByText(bait.description)).toBeTruthy();expect(screen.getByRole('button',{name:'퐁당 지렁이 1개 구매 30 골드'})).toBeTruthy();expect(screen.queryByRole('button',{name:/낚시하기/})).toBeNull()
 })
 
-it('lists a real catch in the trip modal and restores it when changing regions',async()=>{
+it('lists actual storage and clears trip markers when leaving the fishing page',async()=>{
  const view=setup()
  const owned={id:'caught-1',species_id:species.id,tank_id:null,acquired_at:new Date().toISOString(),species:{...species,sell_price:30}}
  storage.mockResolvedValue({items:[owned],total:1})
+ aquarium.mockResolvedValue({storageCount:1,inhabitants:[],tanks:[{id:'tank',name:'tank'}],tankCapacity:50})
  finish.mockResolvedValue({attempt:{operation_id:plan.operation_id,collectible_id:owned.id,rarity:'rare',species},replayed:false})
  await start()
  fireEvent.click(screen.getByRole('button',{name:'미니게임 성공'}))
+ await screen.findByRole('button',{name:'달빛 퐁울복 결과 닫기'})
+ // CatchReveal ignores accidental taps during its first 800ms.
+ await new Promise(resolve=>setTimeout(resolve,850))
  fireEvent.click(await screen.findByRole('button',{name:'달빛 퐁울복 결과 닫기'}))
- expect(readFishingTrip('guest')).toHaveLength(1)
+ expect(readFishingTrip('guest')).toHaveLength(0)
+ await waitFor(()=>expect(screen.getByRole('button',{name:'보관함'})).toHaveProperty('disabled',false),{timeout:2500})
+ fireEvent.click(await screen.findByRole('button',{name:'보관함'}))
+ expect(await screen.findByRole('button',{name:'이번 낚시 · 1'})).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'Close'}))
  view.rerender(<MemoryRouter><FishingPanel key="coral" regionId="coral"/></MemoryRouter>)
- fireEvent.click(await screen.findByRole('button',{name:'보관함 · 1개'}))
+ fireEvent.click(await screen.findByRole('button',{name:'보관함'}))
  expect(await screen.findByRole('dialog')).toBeTruthy()
  expect(await screen.findByText('달빛 퐁울복')).toBeTruthy()
  expect(within(screen.getByRole('dialog')).getByRole('button',{name:'달빛 퐁울복 선택'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'이번 낚시 · 0'})).toBeTruthy()
 })
 
 it('guarantees the selected practice catch when the minigame succeeds without server rolls',async()=>{setup();await screen.findByRole('button',{name:/미끼통/});fireEvent.click(screen.getByRole('button',{name:'힘 테스트'}));fireEvent.click(screen.getByRole('button',{name:'신화'}));fireEvent.click(screen.getByRole('button',{name:'신화 테스트 시작'}));fireEvent.click(screen.getByRole('button',{name:'미니게임 성공'}));await screen.findByText('새벽을 여는 일각고래',{}, {timeout:2500});expect(readFishingTrip('guest')).toEqual([]);expect(screen.getByText('연습 결과예요. 실제 보상은 지급되지 않아요.')).toBeTruthy();await new Promise(resolve=>setTimeout(resolve,1700));expect(screen.getByRole('button',{name:'새벽을 여는 일각고래 결과 닫기'})).toBeTruthy();expect(screen.queryByRole('region',{name:'낚시 결과'})).toBeNull();expect(screen.queryByRole('button',{name:'다시 낚시하기'})).toBeNull();expect(screen.queryByRole('dialog')).toBeNull();fireEvent.click(screen.getByRole('button',{name:'새벽을 여는 일각고래 결과 닫기'}));await screen.findByRole('button',{name:'신화 테스트 시작'});expect(prepare).not.toHaveBeenCalled();expect(finish).not.toHaveBeenCalled()})

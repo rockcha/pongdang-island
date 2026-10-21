@@ -43,8 +43,8 @@ export function TensionFishingGame({onCaught,active=true,paused=false,regionId='
   const draw=(now:number)=>{
    if(!document.hidden){if(last){const dt=Math.min((now-last)/1000,.1);current.current=stepTensionGame(current.current,dt,holding.current);setGame(current.current);const v=animation.current,terminal=current.current.phase==='won'||current.current.phase==='lost';v.time+=dt;const gaugeChange=(current.current.tension-v.tension)*(1-Math.exp(-dt*14));v.tension+=gaugeChange;v.reel+=gaugeChange*9;if(terminal)v.ending+=dt;setVisual({...v})}last=now}
    else last=0
-   // Hand off at the first surface splash; reveal the creature only in CatchReveal.
-   if(current.current.phase==='won'&&animation.current.ending>=.25&&!completed.current){completed.current=true;caught.current();return}
+   // Leave the surface splash visible before the catch result covers the water.
+   if(current.current.phase==='won'&&animation.current.ending>=.65&&!completed.current){completed.current=true;caught.current();return}
    if(current.current.phase==='lost'&&animation.current.ending>=.65&&failure.current&&!failed.current){failed.current=true;failure.current(current.current.reason??'escape');return}
    raf=requestAnimationFrame(draw)
   }

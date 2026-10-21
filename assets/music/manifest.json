@@ -1,0 +1,18 @@
+{
+  "region": "pongdang",
+  "title": "A Regular Day on the Journey",
+  "artist": "Tales of Velmora",
+  "sourceFilename": "Y2Mate.st - A Regular Day on the Journey _ Medieval Fantasy Music for Deep Focus and Inner Calm.mp3",
+  "sourceSha256": "289d9a5d147715ce0da5425f950b5c1fe96bf3ec42b4ee3ea2031c70b952f1ff",
+  "output": "public/music/pongdang-journey.mp3",
+  "sha256": "0e5f1afdcdc300ca45bbe4b4875611beed63f3fcebc77e8b0c4626e0b2ee0dca",
+  "bytes": 46676349,
+  "conversion": {
+    "tool": "ffmpeg",
+    "audioCodec": "libmp3lame",
+    "bitrate": "48k",
+    "sampleRate": 32000,
+    "fullLength": true,
+    "coverRemoved": true
+  }
+}

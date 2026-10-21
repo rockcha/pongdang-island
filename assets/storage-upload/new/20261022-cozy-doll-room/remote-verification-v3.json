@@ -1,0 +1,23 @@
+{
+  "projectHost": "ewafafphiovbpjwogwzn.supabase.co",
+  "verifiedAt": "2026-10-21T16:21:00.395Z",
+  "before": {
+    "id": "cozy-undersea-doll-room",
+    "name": "바닷속 포근한 인형방",
+    "price": 1000,
+    "image_path": "cozy-undersea-doll-room.png",
+    "tier": "special"
+  },
+  "after": {
+    "id": "cozy-undersea-doll-room",
+    "name": "바닷속 포근한 인형방",
+    "price": 1000,
+    "image_path": "cozy-undersea-doll-room-v3.png",
+    "tier": "special"
+  },
+  "image": {
+    "url": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/aquarium-backgrounds/cozy-undersea-doll-room-v3.png",
+    "sha256": "2f88503088f9c624ea586104004d103e099a7a4476b002de82ae450e4948a74a"
+  },
+  "scope": "One background image path updated; ownership, price and tier preserved; full schema and migration history unverified."
+}

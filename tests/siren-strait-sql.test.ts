@@ -28,9 +28,9 @@ it('matches displayed prices to checkout and increases regional rod prices in ma
 it('registers the complete requested native roster and preserves existing native habitats',async()=>{
  const rows=(await db.query("select kind,rarity,count(*)::integer n from public.collectible_species where native_region_id='siren' group by kind,rarity order by kind,rarity")).rows
  expect(rows).toEqual([
-  {kind:'fish',rarity:'common',n:3},{kind:'fish',rarity:'rare',n:12},{kind:'fish',rarity:'epic',n:6},{kind:'fish',rarity:'mythic',n:2},
-  {kind:'trash',rarity:'common',n:6},{kind:'trash',rarity:'rare',n:3},
-  {kind:'decoration',rarity:'rare',n:3},{kind:'decoration',rarity:'epic',n:1}
+  {kind:'fish',rarity:'common',n:5},{kind:'fish',rarity:'rare',n:13},{kind:'fish',rarity:'epic',n:6},{kind:'fish',rarity:'mythic',n:2},
+  {kind:'trash',rarity:'common',n:5},{kind:'trash',rarity:'rare',n:3},
+  {kind:'decoration',rarity:'common',n:2},{kind:'decoration',rarity:'rare',n:5},{kind:'decoration',rarity:'epic',n:1}
  ])
  expect((await db.query("select count(*)::integer n from public.collectible_species s join public.collectible_habitats h on h.species_id=s.id and h.region_id='siren' where s.native_region_id is not null and s.native_region_id<>'siren'")).rows[0].n).toBe(0)
  expect((await db.query("select count(*)::integer n from public.collectible_species where native_region_id='siren' and kind='fish' and sprite_sheet_path is null")).rows[0].n).toBe(0)

@@ -147,14 +147,14 @@ it('holds a newly selected swimmer without recursive initialization and resumes 
  expect(Number.isFinite(motion.update(12,.016,400,600).x)).toBe(true)
 })
 
-it('holds the megalodon in place during its fossil jaw action and resumes afterward',()=>{
+it('keeps the megalodon gliding during its jaw action and resumes afterward',()=>{
  const creature=item()
  creature.species={...creature.species,id:'extinction-defying-megalodon',rarity:'mythic',movement_type:'swim'}
  const motion=new InhabitantMotion(creature)
  const start={...motion.update(4.3,.016,400,600)}
  const held={...motion.update(5,.016,400,600)}
- expect(held.x).toBe(start.x)
- expect(held.y).toBe(start.y)
+ expect(held.x===start.x&&held.y===start.y).toBe(false)
+ expect(Number.isFinite(held.x)&&Number.isFinite(held.y)).toBe(true)
  expect(held.direction).toBe(start.direction)
  const resumed=motion.update(5.8,.016,400,600)
  expect(resumed.x===held.x&&resumed.y===held.y).toBe(false)

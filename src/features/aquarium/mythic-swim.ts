@@ -27,7 +27,15 @@ export function mythicSwimFrame(path:string,time:number,seed:number,reduced=fals
  // A short glance is part of the swim loop, independent of travel direction.
  if(reduced)return 0
  const phase=((time+seed/1000000)%6+6)%6
- const actionDuration=path==='fish/mythic/extinction-defying-megalodon_swim8_sprite.png'?1.8:path==='fish/mythic/never-return-ghost-ship_swim8_sprite.png'?2.4:undefined
+ if(path==='fish/mythic/extinction-defying-megalodon_swim8_sprite.png'){
+  // Reverse the tail beat instead of snapping from its last pose to the first.
+  if(phase<4.2)return [0,1,2,3,2,1][Math.floor(phase*2.5)%6]
+  // The old wide-open jaw pose distorts the silhouette. Use the clean bite
+  // poses, then settle back into a closed mouth before the next cruise.
+  const bite=(phase-4.2)/1.8
+  return bite<.22?4:bite<.48?6:7
+ }
+ const actionDuration=path==='fish/mythic/never-return-ghost-ship_swim8_sprite.png'?2.4:undefined
  if(actionDuration!==undefined){
   const actionStart=6-actionDuration
   return phase<actionStart?Math.floor(phase*3)%4:4+Math.min(3,Math.floor((phase-actionStart)/actionDuration*4))

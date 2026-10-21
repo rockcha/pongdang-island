@@ -1,0 +1,28 @@
+{
+  "generator": "built-in image_gen",
+  "designPolicy": "세로 수중 배경. 중앙 유영 공간 확보. 루네아는 연분홍 진주빛, 태고는 에메랄드빛 화석 테마.",
+  "items": [
+    {
+      "id": "lunea-pink-lullaby",
+      "name": "루네아의 연분홍 자장가",
+      "price": 1100,
+      "tier": "special",
+      "file": "aquarium-backgrounds/lunea-pink-lullaby.png",
+      "bucket": "aquarium-backgrounds",
+      "storage_path": "lunea-pink-lullaby.png",
+      "prompt": "Use case: stylized-concept. ONE opaque full bleed portrait 9:16 premium aquarium game background titled concept Lunea's pale pink lullaby. Elegant soft polished hand-painted fantasy storybook art. Entirely underwater dreamy rose-quartz lagoon, luminous pale blush pink and lavender seawater, gentle silver and rose light filtering through rippled water overhead like a lullaby. Delicate translucent pearly pink shell arches, small crescent-shaped mother-of-pearl stones and graceful ribbon-like pink aquatic plants restricted to far side margins and bottom corners. Soft pink sand lowest 12%, restrained pearly sparkle. CENTRAL 70% width and middle 75% height broad uninterrupted LOW CONTRAST pale pink swimming water for live fish sprites. Uncluttered, tender, serene and magical, not a room or stage. No fish, animals, creatures, people, text, music symbols, UI, frame, watermark, literal moon disk, sky or horizon. Pink is the dominant hue, not blue. Distinctive delicate premium scenery at the edges.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a15cc2-64fa-74d2-a11e-4db4eab32eba\\exec-edef4779-1a4b-4b2d-b2d7-6e640767eeef.png"
+    },
+    {
+      "id": "primal-emerald-bay",
+      "name": "태고의 에메랄드 만",
+      "price": 1150,
+      "tier": "special",
+      "file": "aquarium-backgrounds/primal-emerald-bay.png",
+      "bucket": "aquarium-backgrounds",
+      "storage_path": "primal-emerald-bay.png",
+      "prompt": "Use case: stylized-concept. ONE full bleed opaque portrait 9:16 premium aquarium game background. Theme PREHISTORIC EMERALD BAY, a calm ancient lagoon entirely underwater, clearly different from generic mangrove roots. Polished soft hand-painted fantasy storybook illustration. Rich clear emerald-green water with luminous warm shafts filtering through a rippled surface, dark green volcanic cliff walls at far margins with immense fossil ammonite impressions, small rounded amber stones and ancient fern fronds at bottom corners. A partly buried weathered dinosaur fossil vertebra nestled in the lowest left corner as scenery, no living dinosaur. Low pale green limestone sand floor. Premium lost-world atmosphere with restrained intriguing archaeological details at edges. Central 70% width and middle 75% height must remain broad LOW CONTRAST unobstructed emerald swimming water for live fish sprites. No fish, live animals, characters, people, text, UI, frame, watermark, jungle above water, horizon or sky. No central fossil skeleton or giant props. Gentle, beautiful rather than frightening.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a15cc2-64fa-74d2-a11e-4db4eab32eba\\exec-69ffb9c2-10ab-4915-bd3a-354f4207e08b.png"
+    }
+  ]
+}

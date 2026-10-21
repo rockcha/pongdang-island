@@ -1,0 +1,78 @@
+{
+  "generator": "built-in image_gen",
+  "designPolicy": "해역별 아쿠아리움 배경. 기존 먹빛·산호·달빛·구름·빙해 테마 제외. 세로 수중 구도, 중앙 유영 공간 확보, 생물과 UI 없음.",
+  "items": [
+    {
+      "id": "region-bluegrove",
+      "region_id": "bluegrove",
+      "name": "푸른골의 물빛 골짜기",
+      "price": 650,
+      "tier": "mood",
+      "file": "aquarium-backgrounds/region-bluegrove.png",
+      "bucket": "aquarium-backgrounds",
+      "storage_path": "region-bluegrove.png",
+      "prompt": "Use case: stylized-concept. Create ONE full bleed opaque PORTRAIT 9:16 underwater aquarium game background, soft polished hand-painted storybook illustration, serene broad forms and delicate caustics. Theme: BLUEGROVE submerged turquoise valley. Rounded blue slate ledges with small moss patches and slender eelgrass only at far left and right margins, pale sand bottom 12%, warm sun rays through rippling water surface overhead. CENTRAL 70% width and middle 75% height must be low-contrast uninterrupted clear turquoise swimming water for live fish sprites, unobstructed. Camera underwater straight ahead; no horizon or sky. No fish, animals, characters, text, UI, frame, watermark. Attractive restrained natural setting, no central props.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a15cc2-64fa-74d2-a11e-4db4eab32eba\\exec-71e6d969-56b5-4306-90f4-d95eb6b32aba.png"
+    },
+    {
+      "id": "region-primal",
+      "region_id": "primal",
+      "name": "태고의 뿌리 바다",
+      "price": 800,
+      "tier": "mood",
+      "file": "aquarium-backgrounds/region-primal.png",
+      "bucket": "aquarium-backgrounds",
+      "storage_path": "region-primal.png",
+      "prompt": "Use case: stylized-concept. ONE opaque portrait 9:16 underwater aquarium game background, elegant soft polished hand-painted storybook illustration. Theme PRIMAL prehistoric island lagoon seen entirely underwater. Huge ancient submerged mangrove roots and fern silhouettes at the OUTER edges only, mossy dark volcanic stones and tiny amber pebbles at bottom corners, warm jade-green water with soft golden sunbeams overhead, low smooth sand floor. Central 70% width and middle 75% height broad uninterrupted LOW CONTRAST open jade water for fish sprites. No fish, animals, dinosaurs, skulls, people, text, UI, borders, watermark, buildings, land horizon or sky. Distinct ancient lush atmosphere while calm and spacious.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a15cc2-64fa-74d2-a11e-4db4eab32eba\\exec-b6e2cc98-4356-4a26-af47-a1d941ddc9fc.png"
+    },
+    {
+      "id": "region-starruins",
+      "region_id": "starruins",
+      "name": "별잠 유적의 고요",
+      "price": 900,
+      "tier": "special",
+      "file": "aquarium-backgrounds/region-starruins.png",
+      "bucket": "aquarium-backgrounds",
+      "storage_path": "region-starruins.png",
+      "prompt": "Use case: stylized-concept. ONE opaque full bleed portrait 9:16 aquarium game backdrop, soft polished hand-painted storybook fantasy illustration. Theme STAR RUINS asleep underwater. Dim ultramarine blue water lit by silvery shafts refracted from surface. A few ancient weathered slate pillars and small softly glowing star-shaped carvings confined to far side margins and bottom corners, low sand and scattered stone fragments bottom 12%. Broad central 70% width and middle 75% height uninterrupted LOW CONTRAST open blue water to display fish sprites, no central monument. No fish, animals, people, text, UI, frame, watermark, actual sky or outer-space galaxy. Ancient tranquil submerged observatory atmosphere, sparse restrained magical glints.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a15cc2-64fa-74d2-a11e-4db4eab32eba\\exec-bc2275a7-f900-4935-bcae-d3252e39b2ae.png"
+    },
+    {
+      "id": "region-dreamabyss",
+      "region_id": "dreamabyss",
+      "name": "꿈먹는 심연의 숨결",
+      "price": 800,
+      "tier": "mood",
+      "file": "aquarium-backgrounds/region-dreamabyss.png",
+      "bucket": "aquarium-backgrounds",
+      "storage_path": "region-dreamabyss.png",
+      "prompt": "Use case: stylized-concept. ONE opaque portrait 9:16 full bleed underwater aquarium game background, polished soft hand-painted storybook fantasy illustration. Theme DREAM-EATING ABYSS. Deep plum and indigo seawater, soft lavender bioluminescent wisps and sparse tiny luminous particles confined to outer margins, rounded obsidian ledges and a few small translucent violet crystalline mineral clusters at bottom corners, low dark violet sand. Broad central 70% width and middle 75% height LOW CONTRAST unobstructed open violet water for fish sprites. Underwater diffuse overhead violet light, ethereal peaceful mystery, beautiful enough to stay readable rather than pitch black. No fish, creatures, eyes, people, jellyfish, text, UI, frame, watermark, moon, stars, galaxy or sky.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a15cc2-64fa-74d2-a11e-4db4eab32eba\\exec-6942f5e4-d866-4411-b0f5-fbea9b3c2281.png"
+    },
+    {
+      "id": "region-scrapisle",
+      "region_id": "scrapisle",
+      "name": "녹빛 고물섬의 기억",
+      "price": 800,
+      "tier": "special",
+      "file": "aquarium-backgrounds/region-scrapisle.png",
+      "bucket": "aquarium-backgrounds",
+      "storage_path": "region-scrapisle.png",
+      "prompt": "Use case: stylized-concept. ONE opaque portrait 9:16 full bleed aquarium game background, soft polished hand-painted storybook illustration. Theme SCRAP ISLE: a forgotten little underwater salvage harbor reclaimed by seaweed. Clear muted sea-green water and warm rusty copper accents. Partial old riveted ship hull at far left edge, weathered small gear and anchor fragments at bottom right corner, sparse fine kelp growing on metal, low sandy seabed. Friendly nostalgic tranquil beauty, no pollution clouds. CENTRAL 70% width and middle 75% height must stay broad unobstructed LOW CONTRAST open green water for live fish sprites. Sun rays through rippled surface overhead, camera submerged straight ahead. No fish, animals, robots, people, text, UI, frame, watermark, sky or horizon. No central wreck or large debris blocking swimming space.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a15cc2-64fa-74d2-a11e-4db4eab32eba\\exec-d0c364fa-1cf3-4afe-a2ce-19391a53f66e.png"
+    },
+    {
+      "id": "region-siren",
+      "region_id": "siren",
+      "name": "세이렌의 잠든 신전",
+      "price": 1000,
+      "tier": "special",
+      "file": "aquarium-backgrounds/region-siren.png",
+      "bucket": "aquarium-backgrounds",
+      "storage_path": "region-siren.png",
+      "prompt": "Use case: stylized-concept. ONE full bleed opaque PORTRAIT 9:16 underwater aquarium game background, elegant soft polished hand-painted storybook illustration. Theme SIREN STRAIT: sunken classical white marble sanctuary in beautiful clear pale turquoise water. Broken ivory fluted columns with restrained bronze patina fragments and small sea grasses only on far side edges and bottom corners. Honey-gold sunlight refracted from rippling water surface overhead, low pale limestone sand floor. Central 70% width and middle 75% height broad uninterrupted LOW CONTRAST open turquoise water for gameplay fish sprites. Camera fully submerged straight ahead. No figures, statues, people, fish, animals, text, UI, frame, watermark, land, sky, horizon, central temples or arch spanning the center. Serene mythological Mediterranean atmosphere.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a15cc2-64fa-74d2-a11e-4db4eab32eba\\exec-85667b30-d831-4780-a583-bca99cc86ef7.png"
+    }
+  ]
+}

@@ -125,3 +125,11 @@ it('uses the requested action durations for the new megalodon and ghost ship',()
   for(const time of [.1,1.1,3.7,4.8,5.8])expect(mythicSwimFrame(asset.path,time,0)).toBe(mythicSwimFrame(asset.path,time+6,0))
  }
 })
+
+it('gives the megalodon a reversible tail beat and avoids the distorted wide jaw',()=>{
+ const path='fish/mythic/extinction-defying-megalodon_swim8_sprite.png'
+ expect([0,.4,.8,1.2,1.6,2].map(t=>mythicSwimFrame(path,t+.001,0))).toEqual([0,1,2,3,2,1])
+ const frames=Array.from({length:600},(_,i)=>mythicSwimFrame(path,i/100,0))
+ expect(frames).not.toContain(5)
+ expect(new Set(frames)).toEqual(new Set([0,1,2,3,4,6,7]))
+})

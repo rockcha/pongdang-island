@@ -12,7 +12,6 @@ export class InhabitantMotion {
   private mirrored = false
   private placed = false
   private initialized = false
-  private mythicHolding = false
   pose = { x: 0, y: 0, size: 0, direction: 1, angle: 0, frame: 0 }
   item: OwnedCollectible
   private born: number
@@ -167,9 +166,15 @@ export class InhabitantMotion {
         x = Math.max(0, Math.min(w, x + this.offset.x))
         y = Math.max((this.placed?0:low) * h, Math.min((this.placed?1:high) * h, y + this.offset.y))
         const phase=((now+seed)%6+6)%6
-        const holding=s.id==='extinction-defying-megalodon'&&!reduced&&!this.escape&&phase>=4.2&&phase<5.55
-        if(holding&&this.mythicHolding){x=this.pose.x;y=this.pose.y;direction=this.pose.direction}
-        this.mythicHolding=holding
+        if(s.id==='extinction-defying-megalodon'&&!reduced&&!this.escape&&delta>0&&this.pose.size>0){
+          // Ease into the jaw action and recover gradually; a hard freeze
+          // makes this large body look like it hits an invisible wall.
+          const smooth=(t:number)=>{const p=Math.max(0,Math.min(1,t));return p*p*(3-2*p)}
+          const slowing=smooth((phase-3.8)/.65)*(1-smooth((phase-5.15)/.85))
+          const glide=1-.78*slowing
+          x=Math.max(0,Math.min(w,this.pose.x+(x-this.pose.x)*glide))
+          y=Math.max(0,Math.min(h,this.pose.y+(y-this.pose.y)*glide))
+        }
         if(s.id==='never-return-ghost-ship'&&!reduced&&!this.escape&&phase>=5.4){
           x=Math.max(0,Math.min(w,x+direction*Math.min(delta,.1)*18))
         }

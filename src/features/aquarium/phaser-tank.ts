@@ -49,6 +49,19 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
       this.input.dragDistanceThreshold=6*viewport.ratio
     }
     pointerPosition(pointer:Phaser.Input.Pointer){return this.cameras.main.getWorldPoint(pointer.x,pointer.y)}
+    setMythicGlow(sprite:Phaser.GameObjects.Sprite,rarity:string){
+      if(this.game.renderer.type!==Phaser.WEBGL)return
+      let glow=sprite.getData('mythicGlow') as Phaser.Filters.Glow|undefined
+      if(rarity==='mythic'&&!glow){
+        sprite.enableFilters()
+        // A restrained outer halo preserves the original colors and details.
+        // Automatic padding keeps the light from clipping at the sprite edge.
+        glow=sprite.filters!.external.addGlow(0xffd078,.8,0,1,false,6,6)
+        glow.setPaddingOverride(null)
+        sprite.setData('mythicGlow',glow)
+      }
+      glow?.setActive(rarity==='mythic')
+    }
     create() {
       if (disposed) return
       ready = true
@@ -135,6 +148,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         if(sheet)this.registerSheet(key,enhanced?4:2)
         const current = entries.get(item.id)
         if (current) {
+          this.setMythicGlow(current.sprite,item.species.rarity)
           if(current.sprite.input?.draggable!==draggable(item))this.input.setDraggable(current.sprite,draggable(item))
           if(movementSettings(current.motion.item.species).type!==movementSettings(item.species).type){
             this.input.setHitArea(current.sprite,{pixelPerfect:movementSettings(item.species).type!=='fixed',alphaTolerance:32,cursor:'grab'})
@@ -143,6 +157,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
           current.motion.setItem(item,clock,viewport.width,viewport.height,reduced); continue
         }
         const sprite = this.add.sprite(0, 0, key, sheet ? 'swim-0' : undefined)
+        this.setMythicGlow(sprite,item.species.rarity)
         sprite.setData('collectibleId',item.id)
         sprite.setDepth(glassAttachedSpecies.has(item.species.id)?100:0)
         // Fixed inhabitants must remain easy to grab, including transparent

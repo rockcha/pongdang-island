@@ -1,3 +1,4 @@
+import {BoardTime} from '@/features/board/board-time'
 import {Link} from 'react-router'
 import {Heart,MessageCircle} from 'lucide-react'
 import {GoldIcon} from '@/features/gold/gold-provider'
@@ -21,7 +22,7 @@ export function SaleListingRow({listing,owner}:{listing:ExchangeListing;owner:st
     </div>
    </div>
    <div className="flex min-w-0 items-center justify-between gap-3 text-[10px] text-muted-foreground">
-    <div className="flex min-w-0 items-center gap-1.5" aria-label="판매자"><PlayerAvatar nickname={listing.owner_name} path={listing.owner_avatar_path} className="size-5 shrink-0"/><span className="truncate">{listing.owner_name}</span><span aria-hidden="true" className="opacity-50">·</span><time dateTime={listing.created_at} className="shrink-0">{new Date(listing.created_at).toLocaleDateString('ko-KR',{month:'numeric',day:'numeric'})}</time></div>
+    <div className="flex min-w-0 items-center gap-1.5" aria-label="판매자"><PlayerAvatar nickname={listing.owner_name} path={listing.owner_avatar_path} className="size-5 shrink-0"/><span className="truncate">{listing.owner_name}</span><span aria-hidden="true" className="opacity-50">·</span><BoardTime value={listing.created_at} className="shrink-0"/></div>
     <div className="flex shrink-0 items-center gap-3 tabular-nums"><span aria-label={'좋아요 '+(listing.like_count??0)+'개'} className="inline-flex items-center gap-1"><Heart aria-hidden="true" className="size-3"/>{listing.like_count??0}</span><span aria-label={'댓글 '+(listing.comment_count??0)+'개'} className="inline-flex items-center gap-1"><MessageCircle aria-hidden="true" className="size-3"/>{listing.comment_count??0}</span></div>
    </div>
   </Link>

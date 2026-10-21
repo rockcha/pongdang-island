@@ -86,7 +86,14 @@ export class InhabitantMotion {
     const low=Number(s.swim_y_min??.2),high=Number(s.swim_y_max??.8),motion=this.swim(time)
     let x=(.2+seed*.6)*w,y=(low+(high-low)*motion.y)*h,direction=motion.direction
     if(settings.type==='fixed')return {x:(this.item.position_x??(.2+seed*.6))*w,y:(this.item.position_y??(s.kind==='fish'?(low+high)/2:.5))*h,direction:1}
-    if(settings.type==='crawl'){x=motion.x*w;y=(low+high)/2*h}
+    if(settings.type==='crawl'){
+      x=motion.x*w
+      // Crawlers stand on the lower habitat edge, rather than floating at the
+      // midpoint of a top-left travel box. Allow for transparent sprite margins
+      // while keeping the whole logical cell inside the glass.
+      const floor=Math.min(.98,Math.max(.94,high))
+      y=Math.max(0,Math.min(h,height*floor-size*.8))
+    }
     if(settings.type==='pulse'){
       // Gentle short vertical pulses, carried along an individual, slowly
       // changing horizontal current instead of traversing the full depth range.
@@ -145,9 +152,12 @@ export class InhabitantMotion {
       direction=this.mirrored?-motion.direction:motion.direction
       x = (this.mirrored?1-motion.x:motion.x) * w; y = baseY
       if (s.kind === 'fish' && settings.flip && !reduced) {
-        // A turn or pause must not pitch a large sprite up and down.
-        // Depth changes stay in the path; only a tap escape briefly tilts the body.
-        this.angle += (0 - this.angle) * (1 - Math.exp(-Math.min(delta, .1) * 3))
+        // Follow gentle diagonal depth changes. Fade the pitch near a turn or
+        // pause so a nearly stationary fish never tips steeply up or down.
+        const vx=Math.abs(motion.velocityX*w),vy=motion.velocityY*(high-low)*h
+        const slope=Math.atan2(vy,Math.max(vx,1))*180/Math.PI
+        const target=Math.max(-9,Math.min(9,slope))*direction*Math.min(1,vx/6)
+        this.angle += (target - this.angle) * (1 - Math.exp(-Math.min(delta, .1) * 3))
         angle = this.angle
       }
       if (['fish','trash'].includes(s.kind)) {

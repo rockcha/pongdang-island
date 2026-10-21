@@ -28,7 +28,7 @@ it('explores different heights with diagonal travel without rapid vertical movem
   const points = Array.from({ length: 121 }, (_, index) => motion(index))
   const heightRange=Math.max(...points.map(p => p.y)) - Math.min(...points.map(p => p.y))
   expect(heightRange).toBeGreaterThan(0.01)
-  expect(heightRange).toBeLessThanOrEqual(0.16)
+  expect(heightRange).toBeLessThanOrEqual(0.92)
   expect(points.some(p => Math.abs(p.velocityX) > 0.01 && Math.abs(p.velocityY) > 0.0001)).toBe(true)
   expect(points.every(p => Math.abs(p.velocityY) < 0.025)).toBe(true)
 })
@@ -63,11 +63,29 @@ it('stays inside the tank and remains continuous across route changes', () => {
   }
 })
 
-it('uses shallow depth changes with continuous position at course and behavior boundaries',()=>{
+it('changes depth gently with continuous position at course and behavior boundaries',()=>{
  for(const seed of [0,42,240000,999999]){
   const route=createSwimMotion('sea-crocodile',seed,.045)
   const points=Array.from({length:1801},(_,i)=>route(i*.1))
-  expect(Math.max(...points.map(p=>p.y))-Math.min(...points.map(p=>p.y))).toBeLessThan(.081)
-  for(let i=1;i<points.length;i++)expect(Math.abs(points[i].y-points[i-1].y)).toBeLessThan(.001)
+  for(let i=1;i<points.length;i++)expect(Math.abs(points[i].y-points[i-1].y)).toBeLessThan(.004)
  }
+})
+
+it('spreads a crowded tank across the available width and depth from the first frame',()=>{
+ const points=Array.from({length:200},(_,i)=>createSwimMotion(`crowded-${i}`,0,.05)(0))
+ const bins=Array.from({length:4},()=>Array(4).fill(0))
+ for(const p of points)bins[Math.min(3,Math.floor(p.y*4))][Math.min(3,Math.floor(p.x*4))]++
+ for(const row of bins)for(const count of row)expect(count).toBeGreaterThan(3)
+ expect(Math.min(...points.map(p=>p.y))).toBeLessThan(.1)
+ expect(Math.max(...points.map(p=>p.y))).toBeGreaterThan(.9)
+})
+
+it('lets individuals explore a wider depth range over time without vertical jumps',()=>{
+ const ranges=Array.from({length:40},(_,i)=>{
+  const motion=createSwimMotion(`explorer-${i}`,i,.05)
+  const points=Array.from({length:601},(_,t)=>motion(t))
+  expect(points.every(p=>p.y>=0&&p.y<=1&&Math.abs(p.velocityY)<.025)).toBe(true)
+  return Math.max(...points.map(p=>p.y))-Math.min(...points.map(p=>p.y))
+ })
+ expect(ranges.filter(range=>range>.3).length).toBeGreaterThan(30)
 })

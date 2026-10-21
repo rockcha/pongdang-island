@@ -1,0 +1,61 @@
+﻿{
+    "file":  "assets/storage-upload/new/20261021-155200/fish/mythic/extinction-defying-megalodon_swim8_v2_sprite.png",
+    "storage_path":  "fish/mythic/extinction-defying-megalodon_swim8_sprite.png",
+    "patch":  [
+                  250,
+                  240,
+                  48,
+                  38
+              ],
+    "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  0
+                   },
+                   {
+                       "frame":  1,
+                       "dx":  2,
+                       "dy":  -2,
+                       "rmse":  21.211163606423423
+                   },
+                   {
+                       "frame":  2,
+                       "dx":  -3,
+                       "dy":  -1,
+                       "rmse":  16.324238702946278
+                   },
+                   {
+                       "frame":  3,
+                       "dx":  -3,
+                       "dy":  -2,
+                       "rmse":  16.439501559915421
+                   },
+                   {
+                       "frame":  4,
+                       "dx":  0,
+                       "dy":  -19,
+                       "rmse":  15.562026946780026
+                   },
+                   {
+                       "frame":  5,
+                       "dx":  -8,
+                       "dy":  -20,
+                       "rmse":  16.087650543196169
+                   },
+                   {
+                       "frame":  6,
+                       "dx":  -6,
+                       "dy":  -19,
+                       "rmse":  18.483978249367123
+                   },
+                   {
+                       "frame":  7,
+                       "dx":  -7,
+                       "dy":  -18,
+                       "rmse":  17.459568679138052
+                   }
+               ]
+}

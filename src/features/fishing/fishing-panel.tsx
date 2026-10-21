@@ -14,6 +14,7 @@ import { practiceSpecies,plannedFailureMessages } from './fishing-practice'
 import { CatchReveal } from './catch-reveal'
 import { TensionFishingGame } from './tension-fishing-game'
 import { FishingLeaveGuard } from './fishing-leave-guard'
+import { usePwaUpdateBlock } from '@/features/pwa/update-blockers'
 import { useEffect, useRef, useState } from 'react'
 import { FishingResultCard } from './fishing-result-card'
 import { createFishingPresentation } from './fishing-presentation'
@@ -65,6 +66,8 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{reg
  const [result,setResult]=useState<FishingAttempt|null>(null)
  const [presentation,setPresentation]=useState<FishingPresentation|null>(null)
  const [castOpen,setCastOpen]=useState(false)
+ // Keep update prompts out of the catch reveal and failure/result screens too.
+ usePwaUpdateBlock(revealing||castOpen)
  const [castError,setCastError]=useState('')
  const active=useRef(true)
  const lock=useRef(false)

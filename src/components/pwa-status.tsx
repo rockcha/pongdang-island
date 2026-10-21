@@ -3,7 +3,7 @@ import { toast } from 'sonner'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 import {prepareLatestPwaUpdate,watchPwaUpdates} from '@/features/pwa/update-check'
 import {usePwaUpdateBlocked} from '@/features/pwa/update-blockers'
-import {openPwaUpdateMenu,requestPwaUpdate,setPwaUpdateAvailable,setPwaUpdateApplying,usePwaUpdate} from '@/features/pwa/update-state'
+import {requestPwaUpdate,setPwaUpdateAvailable,setPwaUpdateApplying,usePwaUpdate} from '@/features/pwa/update-state'
 import {beginPwaUpdateFeedback,clearPwaUpdateFeedback,completePwaUpdateFeedback,consumePwaUpdateCompletion} from '@/features/pwa/update-feedback'
 
 export function PwaStatus() {
@@ -42,13 +42,15 @@ export function PwaStatus() {
   }, [offlineReady])
 
   useEffect(() => {
-    if (!needRefresh||failedRequest.current===request) return
-    if(request===0){
-      toast.info(<button type="button" onClick={()=>{openPwaUpdateMenu();toast.dismiss('pwa-update')}} className="text-left outline-none after:absolute after:inset-0 after:rounded-[inherit] focus-visible:after:ring-2 focus-visible:after:ring-ring">퐁당섬에 새 업데이트가 있어요.</button>,{id:'pwa-update',description:'눌러서 아바타 메뉴를 열고 지금 업데이트를 선택해주세요.'})
+    // Detection continues during gameplay, but both prompts and activation wait
+    // until the game and its pending result have finished.
+    if(blocked){
+      toast.dismiss('pwa-update')
       return
     }
-    if(blocked){
-      toast.info('새 업데이트를 준비했어요.',{id:'pwa-update',description:'플레이가 끝나면 자동으로 적용해요.'})
+    if (!needRefresh||failedRequest.current===request) return
+    if(request===0){
+      toast.info('퐁당섬에 새 업데이트가 있어요.',{id:'pwa-update',description:'준비되면 새 버전으로 업데이트해 주세요.',action:{label:'업데이트 →',onClick:requestPwaUpdate},classNames:{actionButton:'!ml-auto shrink-0'}})
       return
     }
     toast.info('퐁당섬을 업데이트하고 있어요.',{id:'pwa-update',duration:Infinity,description:'잠시 후 새 버전으로 다시 열려요.'})

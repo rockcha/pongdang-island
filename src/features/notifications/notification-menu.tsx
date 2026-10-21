@@ -45,7 +45,7 @@ export function NotificationMenu({noticeOnly=false}:{noticeOnly?:boolean}) {
   return <Dialog open={open} onOpenChange={value => { setOpen(value); if (value){viewed.current.clear();setFilter('all');setNoticeFilter('all');setNow(Date.now())}else{void readItems([...viewed.current]);viewed.current.clear()} }}>
     <DialogTrigger aria-label={`${label}, 읽지 않은 ${label} ${count}개`} className="relative flex size-10 min-h-10 min-w-10 cursor-pointer items-center justify-center rounded-lg outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring">
       <HeaderIcon className="size-7" />
-      {count > 0 && <span className="header-indicator" aria-hidden="true">{count > 99 ? '99+' : count}</span>}
+      {count > 0 && <span className={noticeOnly?'header-indicator':'header-indicator !size-2.5 !bg-red-500'} aria-hidden="true">{noticeOnly?(count > 99 ? '99+' : count):null}</span>}
     </DialogTrigger>
     <DialogContent className="notification-sheet bg-popover text-popover-foreground inset-x-0 bottom-0 top-auto left-0 flex h-[82dvh] max-h-[44rem] w-full max-w-full translate-x-0 translate-y-0 flex-col gap-0 overflow-hidden rounded-t-2xl rounded-b-none p-0 pb-[env(safe-area-inset-bottom)] sm:left-1/2 sm:max-w-lg sm:-translate-x-1/2">
           <div aria-hidden="true" className="mx-auto mt-2 h-1 w-10 shrink-0 rounded-full bg-border"/><DialogHeader className="shrink-0 px-4 py-4 pr-12"><DialogTitle className="flex items-center gap-2"><HeaderIcon className="size-7 text-primary"/>{label}</DialogTitle><DialogDescription className="sr-only">{label} 목록</DialogDescription></DialogHeader>

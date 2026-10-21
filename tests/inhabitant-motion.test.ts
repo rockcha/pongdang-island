@@ -1,11 +1,51 @@
 import { expect, it } from 'vitest'
 import { InhabitantMotion } from '../src/features/aquarium/inhabitant-motion'
 import type { OwnedCollectible } from '../src/features/collection/api'
+import catalog from '../supabase/catalog/catalog.json'
 
 function item(kind='fish'): OwnedCollectible {
   return { id: kind, species_id: kind, tank_id: 'tank', animation_seed: 0, position_x: null, position_y: null, acquired_at: '',
     species: { id: kind, kind, name: kind, description: '', swim_y_min: .2, swim_y_max: .7, speed: .05, size: 72, rarity: 'common', sprite_sheet_path: 'fish.png', thumbnail_path: 'thumb.png', sell_price: 10 } } as OwnedCollectible
 }
+
+it('keeps every catalog crawler near the bottom at mobile and desktop sizes',()=>{
+ for(const species of catalog.collectible_species.filter(s=>s.movement_type==='crawl')){
+  for(const [width,height] of [[320,560],[768,800]]){
+   const crawler={...item(),species} as unknown as OwnedCollectible
+   const motion=new InhabitantMotion(crawler)
+   const first={...motion.update(0,0,width,height)}
+   expect(first.y+first.size*.8,species.id).toBeGreaterThanOrEqual(height*.9)
+   expect(first.y+first.size,species.id).toBeLessThanOrEqual(height)
+   expect(motion.update(30,.016,width,height).y,species.id).toBeCloseTo(first.y)
+  }
+ }
+})
+
+it('preserves a manually placed crawler height instead of snapping it to the floor',()=>{
+ const crawler=item()
+ crawler.species={...crawler.species,movement_type:'crawl',swim_y_min:.78,swim_y_max:.94}
+ const motion=new InhabitantMotion({...crawler,position_x:.4,position_y:.5})
+ expect(motion.update(0,0,400,600).y).toBeCloseTo(.5*(600-72))
+ expect(motion.update(30,.016,400,600).y).toBeCloseTo(.5*(600-72))
+})
+
+it('gently pitches swimmers along rising and falling diagonal routes without steep turns',()=>{
+ let rising=false,falling=false
+ for(let i=0;i<12;i++){
+  const fish={...item(),id:`diagonal-${i}`,animation_seed:i}
+  const motion=new InhabitantMotion(fish)
+  for(let t=0;t<180;t+=.1){
+   const pose=motion.update(t,.1,400,600)
+   expect(Math.abs(pose.angle)).toBeLessThanOrEqual(9)
+   const pitch=pose.angle*pose.direction
+   rising ||= pitch<-.3
+   falling ||= pitch>.3
+  }
+  expect(motion.update(180,.1,400,600,true).angle).toBe(0)
+ }
+ expect(rising).toBe(true)
+ expect(falling).toBe(true)
+})
 it('keeps mythics visibly larger on mobile in both swimming and placed poses',()=>{
  for(const movement_type of ['swim','fixed','crawl']){
   const mythic=item()

@@ -20,7 +20,7 @@ const sheetFor=(path:string)=>sheets.find(s=>path===`fish/mythic/${s.id}_swim8_s
 export function mythicSwimAsset(path:string,rarity:string){
  if(rarity!=='mythic')return null
  const sheet=sheets.find(s=>s.aliases.some(alias=>path===`fish/mythic/${alias}_sprite.png`))
- return sheet?{path:`fish/mythic/${sheet.id}_swim8_sprite.png`,url:`/aquarium/swim/${sheet.id}_swim8_sprite.png`}:null
+ return sheet?{path:`fish/mythic/${sheet.id}_swim8_sprite.png`,url:`/aquarium/swim/${sheet.id}${sheet.id==='extinction-defying-megalodon'?'_swim8_v2_sprite.png':'_swim8_sprite.png'}`}:null
 }
 export function mythicSwimFrame(path:string,time:number,seed:number,reduced=false){
  if(!sheetFor(path))return null
@@ -30,10 +30,9 @@ export function mythicSwimFrame(path:string,time:number,seed:number,reduced=fals
  if(path==='fish/mythic/extinction-defying-megalodon_swim8_sprite.png'){
   // Reverse the tail beat instead of snapping from its last pose to the first.
   if(phase<4.2)return [0,1,2,3,2,1][Math.floor(phase*2.5)%6]
-  // The old wide-open jaw pose distorts the silhouette. Use the clean bite
-  // poses, then settle back into a closed mouth before the next cruise.
+  // The rebuilt jaw stays anatomically hinged: open, threaten, close, recover.
   const bite=(phase-4.2)/1.8
-  return bite<.22?4:bite<.48?6:7
+  return bite<.2?4:bite<.43?5:bite<.68?6:7
  }
  const actionDuration=path==='fish/mythic/never-return-ghost-ship_swim8_sprite.png'?2.4:undefined
  if(actionDuration!==undefined){

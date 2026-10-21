@@ -1,0 +1,20 @@
+{
+  "generator": "built-in image_gen",
+  "referenceImages": [
+    "assets/references/collectible-style/epic-mythic-starlight.png",
+    "assets/references/shared-collectible-expansion/sources/fish/mythic/extinction-defying-megalodon_thumbnail.png"
+  ],
+  "items": [
+    {
+      "id": "extinction-defying-megalodon",
+      "file": "fish/mythic/extinction-defying-megalodon_swim8_v2_sprite.png",
+      "public_path": "public/aquarium/swim/extinction-defying-megalodon_swim8_v2_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a15cc2-64fa-74d2-a11e-4db4eab32eba\\exec-f5f1c6cc-5136-4d62-8079-fc30c2bf25fb.png",
+      "columns": 4,
+      "rows": 2,
+      "facing": "right",
+      "prompt": "Rebuild this megalodon as a production TRANSPARENT PNG animation sprite sheet. Image1 is MATERIAL/PAINTING STYLE ONLY: soft polished fantasy illustration; do not copy ray shape, wings, purple palette, stars or cute face. Image2 defines the megalodon identity: massive muscular slate-blue shark, pale ivory belly, subtle healed scars, sharp small amber eye, strong triangular dorsal fin, powerful crescent tail. Make it clean, majestic and intimidating, streamlined anatomy, no gore. EXACT GRID 4 columns x2 rows, 8 equal SQUARE cells, overall aspect2:1 preferably2048x1024. Every cell holds same shark at same scale, head/eye/chest coordinates fixed, body center fixed; transparent empty margins at least7% in every cell, full tail and fins never cropped. Face SCREEN RIGHT in a clear side or side-three-quarter profile. Head mouth snout right; body tail left. Keep right-facing orientation in ALL EIGHT frames, no front-facing, mirrored or alternating direction. First row frames0-3 a smooth four-phase tail-powered swimming loop: tail bends gently toward viewer, neutral, away, neutral; stable trunk, pectoral fins only subtle stabilization, never rowing an arm. Bottom row frames4-7 controlled threat action: jaw begins opening, medium intimidating open jaw (no more than30 degrees, anatomically hinged lower jaw, one coherent mouth with two neat triangular tooth rows), closes halfway, fully closed relaxed recovery identical to neutral. No detached jaw, no circular mouth, no huge fossil jaw flare, no extra teeth outside mouth. Consistent silhouette, body position and brightness across all8 cells, no zooming or vertical bobbing. Rich restrained ocean-blue rim highlights, readable mobile-game detail, no bloom cloud or particles. True transparent alpha background, NO black rectangle, checkerboard, cell borders, labels, text, water, UI. One complete8-frame grid only.",
+      "refinement": "Production game sprite atlas, WIDE2:1 transparent image,4columns2rows, eight equal square cells. This is a NEW composition. Reference1 ONLY soft fantasy painterly color/material style NOT ray shape. Reference2 ONLY shark identity NOT layout or size. Put ONE SMALL shark at the center of EACH cell. Sharks must be VERY SMALL relative to their cells: each body from tail to snout only60% of cell width, with20% EMPTY TRANSPARENT SPACE at BOTH sides of each cell. This intentional excess padding is the primary requirement, do NOT enlarge sharks to fill the grid. Same head eye torso coordinates and scale across cells. Majestic muscular slate-blue megalodon, ivory underside, subtle scars, amber eye, normal shark fins and crescent tail, no huge wings or ribbon. Screen-right facing all8. Row1 closed-mouth swim loop4 tail beat phases; row2 jaw slightly opens, opens moderately, closes halfway, fully closes. Stable trunk no bobbing or tilting; full tail/fin clearance. Clean solid cutout edges WITHOUT any neon blue halo, detached particles, checkerboard, black background, labels, text, cell lines or water. True transparent alpha. Smooth polished detailed fantasy game illustration, threatening yet anatomically sound, no gore or exaggerated detached jaws."
+    }
+  ]
+}

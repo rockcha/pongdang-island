@@ -1,7 +1,7 @@
-import {act,cleanup,fireEvent,render,screen} from '@testing-library/react'
+import {act,cleanup,render,screen} from '@testing-library/react'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {PwaStatus} from '../src/components/pwa-status'
-import {OPEN_PWA_UPDATE_MENU,requestPwaUpdate,usePwaUpdate} from '@/features/pwa/update-state'
+import {requestPwaUpdate,usePwaUpdate} from '@/features/pwa/update-state'
 const mocks=vi.hoisted(()=>({
  social:{owner:'user-a',unread:{notice:0},loading:false,error:null as string|null},
  ready:true,blocked:false,update:vi.fn().mockResolvedValue(undefined),info:vi.fn(),success:vi.fn(),dismiss:vi.fn(),error:vi.fn(),
@@ -13,14 +13,37 @@ vi.mock('virtual:pwa-register/react',()=>({useRegisterSW:(options:{onRegisteredS
 vi.mock('sonner',()=>({toast:{info:mocks.info,success:mocks.success,dismiss:mocks.dismiss,error:mocks.error}}))
 beforeEach(()=>{vi.clearAllMocks();sessionStorage.clear();vi.stubGlobal('navigator',{serviceWorker:new EventTarget()});vi.useFakeTimers();mocks.update.mockReset().mockResolvedValue(undefined);mocks.social={owner:'user-a',unread:{notice:0},loading:false,error:null};mocks.ready=true;mocks.blocked=false})
 afterEach(()=>{cleanup();vi.useRealTimers();vi.unstubAllGlobals()})
-it('opens the avatar menu when the available-update toast is clicked',()=>{
- const opened=vi.fn();window.addEventListener(OPEN_PWA_UPDATE_MENU,opened)
- try{
-  render(<PwaStatus/>);render(mocks.info.mock.calls[0][0])
-  fireEvent.click(screen.getByRole('button',{name:'퐁당섬에 새 업데이트가 있어요.'}))
-  expect(opened).toHaveBeenCalledOnce();expect(mocks.dismiss).toHaveBeenCalledWith('pwa-update')
-  expect(mocks.update).not.toHaveBeenCalled()
- }finally{window.removeEventListener(OPEN_PWA_UPDATE_MENU,opened)}
+it('offers a right-aligned update action that directly requests the update',async()=>{
+ render(<PwaStatus/>)
+ const options=mocks.info.mock.calls[0][1]
+ expect(options.action.label).toBe('업데이트 →')
+ expect(options.classNames.actionButton).toContain('ml-auto')
+ expect(mocks.update).not.toHaveBeenCalled()
+ act(()=>options.action.onClick())
+ await act(()=>vi.advanceTimersByTimeAsync(1500))
+ expect(mocks.update).toHaveBeenCalledExactlyOnceWith(true)
+})
+
+it('silently queues a detected update during fishing and prompts only after fishing ends',async()=>{
+ mocks.blocked=true
+ const view=render(<PwaStatus/>)
+ await act(()=>vi.advanceTimersByTimeAsync(6000))
+ expect(mocks.info).not.toHaveBeenCalled()
+ expect(mocks.update).not.toHaveBeenCalled()
+ mocks.blocked=false;view.rerender(<PwaStatus/>)
+ expect(mocks.info).toHaveBeenCalledExactlyOnceWith('퐁당섬에 새 업데이트가 있어요.',expect.objectContaining({action:expect.objectContaining({label:'업데이트 →'})}))
+ await act(()=>vi.advanceTimersByTimeAsync(5000))
+ expect(mocks.update).not.toHaveBeenCalled()
+})
+
+it('hides an existing prompt when fishing starts and shows it again afterward',()=>{
+ const view=render(<PwaStatus/>)
+ mocks.info.mockClear();mocks.dismiss.mockClear()
+ mocks.blocked=true;view.rerender(<PwaStatus/>)
+ expect(mocks.dismiss).toHaveBeenCalledWith('pwa-update')
+ expect(mocks.info).not.toHaveBeenCalled()
+ mocks.blocked=false;view.rerender(<PwaStatus/>)
+ expect(mocks.info).toHaveBeenCalledOnce()
 })
 it('shows success once after controller activation and reloading, never on request alone',async()=>{
  const view=render(<PwaStatus/>);act(()=>requestPwaUpdate())

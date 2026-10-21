@@ -1,0 +1,111 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261021-155200/fish/mythic/extinction-defying-megalodon_swim8_v2_sprite.png",
+                        "width":  1774,
+                        "height":  887,
+                        "cellWidth":  443.5,
+                        "cellHeight":  443.5,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  47,
+                                           "y":  148,
+                                           "width":  373,
+                                           "height":  200,
+                                           "widthRatio":  0.841,
+                                           "heightRatio":  0.451,
+                                           "alphaPixels":  34582,
+                                           "leftAnchorY":  234.41,
+                                           "rightAnchorY":  257.551
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  25,
+                                           "y":  145,
+                                           "width":  394,
+                                           "height":  202,
+                                           "widthRatio":  0.8884,
+                                           "heightRatio":  0.4555,
+                                           "alphaPixels":  34529,
+                                           "leftAnchorY":  243.939,
+                                           "rightAnchorY":  257.188
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  19,
+                                           "y":  144,
+                                           "width":  398,
+                                           "height":  204,
+                                           "widthRatio":  0.8974,
+                                           "heightRatio":  0.46,
+                                           "alphaPixels":  36520,
+                                           "leftAnchorY":  243.496,
+                                           "rightAnchorY":  257.376
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  35,
+                                           "y":  144,
+                                           "width":  380,
+                                           "height":  203,
+                                           "widthRatio":  0.8568,
+                                           "heightRatio":  0.4577,
+                                           "alphaPixels":  35033,
+                                           "leftAnchorY":  243.663,
+                                           "rightAnchorY":  256.419
+                                       },
+                                       {
+                                           "frame":  4,
+                                           "x":  41,
+                                           "y":  127,
+                                           "width":  380,
+                                           "height":  204,
+                                           "widthRatio":  0.8568,
+                                           "heightRatio":  0.46,
+                                           "alphaPixels":  36107,
+                                           "leftAnchorY":  224.769,
+                                           "rightAnchorY":  241.819
+                                       },
+                                       {
+                                           "frame":  5,
+                                           "x":  31,
+                                           "y":  126,
+                                           "width":  387,
+                                           "height":  205,
+                                           "widthRatio":  0.8726,
+                                           "heightRatio":  0.4622,
+                                           "alphaPixels":  37727,
+                                           "leftAnchorY":  227.412,
+                                           "rightAnchorY":  239.227
+                                       },
+                                       {
+                                           "frame":  6,
+                                           "x":  36,
+                                           "y":  124,
+                                           "width":  382,
+                                           "height":  208,
+                                           "widthRatio":  0.8613,
+                                           "heightRatio":  0.469,
+                                           "alphaPixels":  37739,
+                                           "leftAnchorY":  226.521,
+                                           "rightAnchorY":  241.741
+                                       },
+                                       {
+                                           "frame":  7,
+                                           "x":  33,
+                                           "y":  125,
+                                           "width":  382,
+                                           "height":  207,
+                                           "widthRatio":  0.8613,
+                                           "heightRatio":  0.4667,
+                                           "alphaPixels":  36497,
+                                           "leftAnchorY":  227.35,
+                                           "rightAnchorY":  241.198
+                                       }
+                                   ]
+                    }
+                ]
+}

@@ -126,10 +126,27 @@ it('uses the requested action durations for the new megalodon and ghost ship',()
  }
 })
 
-it('gives the megalodon a reversible tail beat and avoids the distorted wide jaw',()=>{
+it('gives the rebuilt megalodon a reversible tail beat and complete jaw recovery',()=>{
  const path='fish/mythic/extinction-defying-megalodon_swim8_sprite.png'
  expect([0,.4,.8,1.2,1.6,2].map(t=>mythicSwimFrame(path,t+.001,0))).toEqual([0,1,2,3,2,1])
  const frames=Array.from({length:600},(_,i)=>mythicSwimFrame(path,i/100,0))
- expect(frames).not.toContain(5)
- expect(new Set(frames)).toEqual(new Set([0,1,2,3,4,6,7]))
+ expect(new Set(frames)).toEqual(new Set([0,1,2,3,4,5,6,7]))
+ expect([4.21,4.7,5.1,5.8].map(t=>mythicSwimFrame(path,t,0))).toEqual([4,5,6,7])
+})
+
+it('keeps the rebuilt megalodon inside its cells and registers its body in all eight poses',()=>{
+ const root='assets/storage-upload/new/20261021-155200/'
+ const read=(file:string)=>JSON.parse(readFileSync(root+file,'utf8').replace(/^\uFEFF/,''))
+ const sheet=read('sprite-audit.json').sprites[0],registration=read('registration.json')
+ const asset=mythicSwimAsset('fish/mythic/extinction-defying-megalodon_sprite.png','mythic')!
+ expect(asset.url).toContain('_swim8_v2_sprite.png')
+ expect(sheet.frames).toHaveLength(8)
+ for(const f of sheet.frames){
+  expect(Math.min(f.x,f.y,sheet.cellWidth-f.x-f.width,sheet.cellHeight-f.y-f.height)).toBeGreaterThan(8)
+ }
+ const anchors=registration.frames.map((f:{frame:number;dx:number;dy:number})=>{
+  const layout=mythicSwimLayout(asset.path,f.frame)!
+  return [registration.patch[0]+f.dx-layout.originX*sheet.cellWidth,registration.patch[1]+f.dy-layout.originY*sheet.cellHeight]
+ })
+ for(const p of anchors){expect(p[0]).toBeCloseTo(anchors[0][0]);expect(p[1]).toBeCloseTo(anchors[0][1])}
 })

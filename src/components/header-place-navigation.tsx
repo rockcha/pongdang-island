@@ -1,4 +1,5 @@
 import { useSavingsStatus } from '@/features/savings/use-savings-status'
+import { useProductionMenuStatus } from '@/features/production/use-production-menu-status'
 import { useHarborStatus } from '@/features/port/use-harbor-status'
 import { useExpeditionStatus } from '@/features/expeditions/use-expedition-status'
 import { Fragment } from 'react'
@@ -58,6 +59,9 @@ export const headerPlaces = [
 
 export function HeaderPlaceNavigation() {
   const newContent = useNewContent()
+  const fuelProduction = useProductionMenuStatus('fuel')
+  const baitProduction = useProductionMenuStatus('bait')
+  const productionStatus = (to: string) => to === '/production' ? fuelProduction : to === '/bait-production' ? baitProduction : null
   const { pathname } = useLocation()
   const harbor = useHarborStatus(),
     expedition = useExpeditionStatus(),
@@ -94,7 +98,7 @@ export function HeaderPlaceNavigation() {
         const selected = items.find(
           (item) => current === item.to || current.startsWith(item.to + '/'),
         )
-        const hasActivity=items.some(item=>hasNewContent(item.to)||(item.to==='/port'&&!!harbor?.ready)||(item.to==='/expeditions'&&expedition==='returned')||(item.to==='/savings'&&!!savings))
+        const hasActivity=items.some(item=>hasNewContent(item.to)||!!productionStatus(item.to)?.ready||(item.to==='/port'&&!!harbor?.ready)||(item.to==='/expeditions'&&expedition==='returned')||(item.to==='/savings'&&!!savings))
         return (
           <Menu.Root key={pathname + group.label}>
             <Menu.Trigger
@@ -136,6 +140,12 @@ export function HeaderPlaceNavigation() {
                           <ItemIcon aria-hidden="true" className="size-7" />
                         </span>
                         <span className="flex-1 whitespace-nowrap">{label}</span>
+                        {!!productionStatus(to)?.total && (
+                          <span className={`flex shrink-0 items-center gap-1 rounded px-1.5 py-1 text-[10px] tabular-nums ${productionStatus(to)?.ready ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                            {!!productionStatus(to)?.ready && <span aria-hidden="true" className="category-activity-dot" />}
+                            완료 {productionStatus(to)!.ready}/{productionStatus(to)!.total}
+                          </span>
+                        )}
                         {hasNewContent(to) && (
                           <span
                             aria-label="새 글 있음"

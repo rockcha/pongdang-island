@@ -36,6 +36,8 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      bait_production_state:{Args:Record<string,never>;Returns:import('@/features/production/bait-production-api').BaitProductionState}
+      bait_production_action:{Args:import('@/features/production/bait-production-api').BaitProductionAction;Returns:import('@/features/production/bait-production-api').BaitProductionState}
       production_state:{Args:Record<string,never>;Returns:import('@/features/production/api').ProductionState}
       production_materials:{Args:{p_facility:string};Returns:import('@/features/production/api').ProductionMaterial[]}
       production_action:{Args:Omit<import('@/features/production/api').ProductionAction,'p_quantity'>;Returns:import('@/features/production/api').ProductionState}

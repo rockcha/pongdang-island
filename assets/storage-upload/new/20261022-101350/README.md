@@ -1,0 +1,9 @@
+# Common reusable material collectibles
+
+Generated with the built-in image_gen tool. Prompts, approved identity inputs and original PNG bytes (`sources/*.source`) are preserved in the manifest and this batch. The common/rare Pongi image provides style only; the approved fish thumbnails provide identity for four-pose swim sheets.
+
+These are deliberately inexpensive common species requested as potential fuel materials. Descriptions suggest reuse without promising a new recipe, badge or fuel mechanic. The catalog remains the authority for their current names, values and movement. All existing regions receive habitat rows; there is no primary region.
+
+Fish swim through mid-water. Trash stays fixed near the tank floor. Sprite preparation measures a rigid head patch, translates poses onto the same head anchor, then fits their union with one shared scale and canvas. It never fits or scales poses independently. Alignment is baked into the final v2 PNGs so existing deployed clients can use them immediately; the small residual runtime corrections are optional refinement. The initial v1 sheets remain as reproducible earlier output but the catalog references v2. Source-cell bounds must remain clear before resizing; a clipped source must be regenerated. Production images retain genuine alpha and are losslessly compressed by the uploader.
+
+Reproduce preparation with `scripts/prepare-common-fuel-art.ps1 -Root <this-folder>`. The source thumbnails are 512px in production, fish sheets 1024px with four equal cells. Run `tests/common-fuel-materials.test.ts`, the standard DB context/verification workflow and the application build. Inspect the actual tank preview as well as isolated pose playback before release. Upload via `npm run storage:upload -- <this-folder>` and verify public bytes using `scripts/verify-common-fuel-remote.mjs <this-folder> --catalog` after scoped catalog deployment.

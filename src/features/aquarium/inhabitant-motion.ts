@@ -86,7 +86,7 @@ export class InhabitantMotion {
     const size=inhabitantBaseSize(s,width)*Number(this.item.scale??1),w=Math.max(0,width-size),h=Math.max(0,height-size)
     const low=Number(s.swim_y_min??.2),high=Number(s.swim_y_max??.8),motion=this.swim(time)
     let x=(.2+seed*.6)*w,y=(low+(high-low)*motion.y)*h,direction=motion.direction
-    if(settings.type==='fixed')return {x:(this.item.position_x??(.2+seed*.6))*w,y:(this.item.position_y??(s.kind==='fish'?(low+high)/2:.5))*h,direction:1}
+    if(settings.type==='fixed')return {x:(this.item.position_x??(.2+seed*.6))*w,y:(this.item.position_y??(['fish','trash'].includes(s.kind)?(low+high)/2:.5))*h,direction:1}
     if(settings.type==='crawl'){
       x=motion.x*w
       // Crawlers stand on the lower habitat edge, rather than floating at the

@@ -17,11 +17,11 @@ beforeEach(async()=>{
 })
 it('sells exactly the three requested baits and keeps first greeting reward-only',async()=>{
  const rows=(await db.query('select id,price from public.fishing_baits where id=any($1) order by id',[newBaits])).rows
- expect(rows).toEqual([{id:'bait_first_greeting',price:null},{id:'bait_forbidden_star',price:115},{id:'bait_grubby_magnet',price:12},{id:'bait_sea_memory',price:50}])
+ expect(rows).toEqual([{id:'bait_first_greeting',price:null},{id:'bait_forbidden_star',price:115},{id:'bait_grubby_magnet',price:16},{id:'bait_sea_memory',price:50}])
  const operation=crypto.randomUUID()
  await db.query("select public.buy_fishing_bait('bait_grubby_magnet',$1)",[operation])
  await db.query("select public.buy_fishing_bait('bait_grubby_magnet',$1)",[operation])
- expect((await db.query('select gold,inventory from public.player_wallets where user_id=$1',[uid])).rows[0]).toMatchObject({gold:9988,inventory:{bait_grubby_magnet:101}})
+ expect((await db.query('select gold,inventory from public.player_wallets where user_id=$1',[uid])).rows[0]).toMatchObject({gold:9984,inventory:{bait_grubby_magnet:101}})
  await expect(db.query("select public.buy_fishing_bait('bait_first_greeting',$1)",[crypto.randomUUID()])).rejects.toThrow(/BAIT_NOT_FOR_SALE/)
 })
 it('sells safe bait and reopens decoration bait sales',async()=>{

@@ -1,0 +1,8 @@
+{
+  "id": "shipwreck-triple-distillation-tower",
+  "source": "sources/shipwreck-triple-distillation-tower.source",
+  "output": "public/production/shipwreck-triple-distillation-tower.png",
+  "prompt": "Create ONE beautiful isolated illustrated facility asset for a cozy Korean ocean island game. This is a NEW distinct fuel-producing machine, NOT a copy of the reference stove. Use the reference ONLY for the exact camera, direction, hand-painted style, dimensional rounded shapes, warm brown crisp edge lines and high finish. FIXED CAMERA: elevated 3/4 view, main FRONT faces LOWER-LEFT, RIGHT side recedes toward UPPER-RIGHT, verticals vertical, same upper-left lighting. Full object on compact integrated base, no people, no fish carcasses or gore, no scenery, no words, letters, numbers or labels. Genuine TRANSPARENT background. Square canvas, whole illustration contained within 10%-90% with generous padding; no clipping, base baseline about88%height. Distinct readable machine silhouette, beautiful cozy craftsmanship: wood, cream stone, brushed copper, seafoam enamel. Finished product is nautical FUEL in a closed METAL FUEL CANISTER, NOT cooking oil in a bottle. \nFACILITY: 난파선 삼단 증류탑.\nDESIGN: A salvaged little ship hull supporting THREE vertically stacked copper distillation chambers, dark aged timber braces, brass rivets, a tiny mast-like vent, neatly connected teal pipes and two closed metal fuel cans, ship-shaped base.",
+  "reference": "public/production/tin-grandpa-hearth.png",
+  "referenceRole": "camera, orientation and style only; each facility has a distinct identity"
+}

@@ -6,6 +6,7 @@ function artwork(name:string,folder='app-icons',extension='png'){
  }
 }
 export const appArt={
+ production:artwork('tin-grandpa-hearth','production'),
  showcase:artwork('showcase-fish-trophy'),
  download:artwork('download-orange'),
  backToList:artwork('back-to-list'),
@@ -32,6 +33,8 @@ export const appArt={
  notices:artwork('announcement','notification-icons'),suggestions:artwork('suggestion','notification-icons'),bugs:artwork('bug','notification-icons'),
 }
 const placeArt:Record<string,ReturnType<typeof artwork>>={
+ '/production':appArt.production,
+ '/production-shop':appArt.production,
  '/hall-of-fame':appArt.ranking,
  '/showcase':appArt.showcase,
  '/item-shop':appArt.itemShop,

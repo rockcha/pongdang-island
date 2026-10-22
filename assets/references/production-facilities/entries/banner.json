@@ -1,0 +1,9 @@
+{
+  "id": "banner",
+  "source": "sources/banner.source",
+  "output": "public/banners/production.png",
+  "tool": "built-in image_gen",
+  "prompt": "Use case stylized-concept. Create a wide 3:1 panoramic place banner for a cozy Korean island life game. Use attached warehouse image ONLY for painterly style, warm sunlight and wooden seaside atmosphere; create a new OUTDOOR scene. A tidy little coastal production yard: center-right a welcoming cream and weathered seafoam workshop with coral tile roof, a modest copper chimney, a small rounded kiln glowing warmly under an awning and neatly arranged barrels and bundled reclaimed wood. A little curved brass piping and glass vessels hint at future refining. Pale sandstone path and coastal grasses, sparkling turquoise sea and pastel island cottages in the distance, gentle morning sunlight. Beautiful polished hand-painted anime background, soft dimensional shading, peaceful detailed but uncluttered. Keep lower-left quiet for title overlay. Full bleed opaque landscape, intended final crop 3:1. No humans, animals, lettering, signs, logos, text, grids or frames. Not a grim dirty industrial factory.",
+  "reference": "public/banners/warehouse.png",
+  "referenceRole": "style only"
+}

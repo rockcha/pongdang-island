@@ -1,0 +1,39 @@
+.production-status-sprite {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  background-repeat: no-repeat;
+  background-size: 800% 100%;
+  animation: production-status-frames 1.4s steps(8, end) infinite;
+}
+.production-status-sprite--idle {
+  background-image: url('/production/status/idle-v1.png');
+  animation-duration: 2.8s;
+}
+.production-status-sprite--working {
+  background-image: url('/production/status/working-v1.png');
+  animation-duration: 1s;
+}
+.production-status-sprite--ready {
+  background-image: url('/production/status/ready-v1.png');
+  animation-duration: 1.8s;
+}
+.production-status-sprite--expired {
+  background-image: url('/production/status/expired-v1.png');
+  animation-duration: 2.4s;
+}
+@keyframes production-status-frames {
+  from {
+    background-position: 0% 0;
+  }
+  to {
+    background-position: 114.285714% 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .production-status-sprite {
+    animation: none;
+    background-position: 0% 0;
+  }
+}

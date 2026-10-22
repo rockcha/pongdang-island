@@ -74,7 +74,7 @@ it('charges the new catalog prices and uses the reduced rod price for resale',as
   expect(bought).toMatchObject({gold:4600,delta:-400});
   expect((await db.query("select public.trade_fishing_rod('bronze','buy',$1) s",[op])).rows[0].s.delta).toBe(0);
   expect((await db.query("select public.trade_fishing_rod('bronze','sell',gen_random_uuid()) s")).rows[0].s).toMatchObject({gold:4800,delta:200});
-  expect((await db.query("select public.buy_fishing_bait('bait_grubby_magnet',gen_random_uuid()) s")).rows[0].s).toMatchObject({gold:4760});
+  expect((await db.query("select public.buy_fishing_bait('bait_grubby_magnet',gen_random_uuid()) s")).rows[0].s).toMatchObject({gold:4784});
   expect((await db.query("select price from public.fishing_rods where id='lunea'")).rows[0].price).toBe(800);
   expect((await db.query("select price from public.fishing_rods where id='mistmoon'")).rows[0].price).toBe(550);
  }finally{await db.exec('rollback')}

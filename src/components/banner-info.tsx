@@ -138,6 +138,8 @@ export const fishingGuide = [
   '잡은 개체는 보관함에서 확인하고, 도감에서 발견 기록을 볼 수 있어요.',
 ]
 export function bannerGuide(pathname: string) {
+  if(pathname==='/production-shop')return ['시설을 눌러 필요한 재료와 생산 조건을 확인해요.','각 시설은 한 채씩 구매할 수 있어요. 구매한 시설은 내 섬의 연료 생산소에 나타나요.']
+  if(pathname==='/production')return ['가동 대기 중인 시설을 눌러 보관함의 재료를 넣어 주세요.','생산은 접속을 종료해도 진행돼요. 완료 후 보관시간 안에 눌러 연료를 받아요.','보관 만료 상태에서 누르면 생산물을 정리하고 다시 가동할 수 있어요.']
   if (pathname.startsWith('/board'))
     return [
       '섬에서 있었던 이야기를 자유롭게 나눠요.',

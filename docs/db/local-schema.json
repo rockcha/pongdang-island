@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "9316c90a5524913f60f2f5d3a2de88a69632f7cee0027b2c4093958b64d9fb9d",
+  "migrationHash": "08511144040252ab2126b3955ed7382a6c30ab2ce98036a3a71a5a541922916d",
   "structure": {
     "enums": [
       {
@@ -199,6 +199,18 @@
       {
         "rls": true,
         "name": "prepared_fishing_casts",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "production_operations",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "production_sites",
         "schema": "app_private",
         "force_rls": false
       },
@@ -553,6 +565,12 @@
       {
         "rls": true,
         "name": "player_wallets",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "production_facilities",
         "schema": "public",
         "force_rls": false
       },
@@ -1905,6 +1923,136 @@
         "table": "prepared_fishing_casts",
         "schema": "app_private",
         "default": "false",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "production_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "production_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "signature",
+        "type": "jsonb",
+        "table": "production_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "receipt",
+        "type": "jsonb",
+        "table": "production_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "production_operations",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "facility_id",
+        "type": "text",
+        "table": "production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "purchased_at",
+        "type": "timestamp with time zone",
+        "table": "production_sites",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "table": "production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "completes_at",
+        "type": "timestamp with time zone",
+        "table": "production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "expires_at",
+        "type": "timestamp with time zone",
+        "table": "production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "run_output",
+        "type": "integer",
+        "table": "production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "production_sites",
+        "schema": "app_private",
+        "default": "gen_random_uuid()",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -6020,6 +6168,16 @@
         "generated": ""
       },
       {
+        "name": "consumed_at",
+        "type": "timestamp with time zone",
+        "table": "player_collectibles",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
         "name": "user_id",
         "type": "uuid",
         "table": "player_discoveries",
@@ -6345,6 +6503,116 @@
         "table": "player_wallets",
         "schema": "public",
         "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "text",
+        "table": "production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "table": "production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "table": "production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "kind",
+        "type": "text",
+        "table": "production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "price",
+        "type": "integer",
+        "table": "production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "input_count",
+        "type": "integer",
+        "table": "production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "output_count",
+        "type": "integer",
+        "table": "production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "production_minutes",
+        "type": "integer",
+        "table": "production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "storage_minutes",
+        "type": "integer",
+        "table": "production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "image_path",
+        "type": "text",
+        "table": "production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "enabled",
+        "type": "boolean",
+        "table": "production_facilities",
+        "schema": "public",
+        "default": "true",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -7094,6 +7362,30 @@
         "table": "prepared_fishing_casts",
         "schema": "app_private",
         "definition": "CREATE UNIQUE INDEX prepared_fishing_one_active ON app_private.prepared_fishing_casts USING btree (user_id) WHERE (finished_at IS NULL)"
+      },
+      {
+        "name": "production_operations_pkey",
+        "table": "production_operations",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX production_operations_pkey ON app_private.production_operations USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "production_sites_facility_idx",
+        "table": "production_sites",
+        "schema": "app_private",
+        "definition": "CREATE INDEX production_sites_facility_idx ON app_private.production_sites USING btree (facility_id)"
+      },
+      {
+        "name": "production_sites_owner_facility_idx",
+        "table": "production_sites",
+        "schema": "app_private",
+        "definition": "CREATE INDEX production_sites_owner_facility_idx ON app_private.production_sites USING btree (user_id, facility_id, purchased_at, id)"
+      },
+      {
+        "name": "production_sites_pkey",
+        "table": "production_sites",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX production_sites_pkey ON app_private.production_sites USING btree (id)"
       },
       {
         "name": "quest_claims_pkey",
@@ -8116,6 +8408,12 @@
         "definition": "CREATE UNIQUE INDEX player_wallets_pkey ON public.player_wallets USING btree (user_id)"
       },
       {
+        "name": "production_facilities_pkey",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX production_facilities_pkey ON public.production_facilities USING btree (id)"
+      },
+      {
         "name": "region_maps_pkey",
         "table": "region_maps",
         "schema": "public",
@@ -8924,6 +9222,18 @@
         "tablename": "player_wallets",
         "permissive": "PERMISSIVE",
         "policyname": "wallet_owner_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "true",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "production_facilities",
+        "permissive": "PERMISSIVE",
+        "policyname": "production_facilities_read",
         "schemaname": "public",
         "with_check": null
       },
@@ -10734,6 +11044,76 @@
         "securityDefiner": true
       },
       {
+        "name": "production_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_materials jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.production_action(p_action text, p_operation_id uuid, p_facility text, p_materials jsonb DEFAULT '{}'::jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n return app_private.production_apply(p_action,p_operation_id,p_facility,p_materials,true);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "production_apply",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_materials jsonb, p_return_state boolean",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.production_apply(p_action text, p_operation_id uuid, p_facility text, p_materials jsonb, p_return_state boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;f public.production_facilities;s app_private.production_sites;\n prev app_private.production_operations;sig jsonb;receipt jsonb;ids uuid[];n integer;v_now timestamptz;fuel bigint;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('buy','start','claim','discard') or p_facility is null then raise exception 'INVALID_PRODUCTION';end if;\n if p_materials is null or jsonb_typeof(p_materials)<>'object' then raise exception 'INVALID_MATERIALS';end if;\n if p_action<>'start' and p_materials<>'{}'::jsonb then raise exception 'INVALID_MATERIALS';end if;\n sig:=jsonb_build_object('action',p_action,'facility',p_facility,'materials',p_materials);\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n select * into prev from app_private.production_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return (case when p_return_state then app_private.production_state() else '{}'::jsonb end)||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n if p_action='buy' then\n  select * into f from public.production_facilities where id=p_facility for share;\n  if not found then raise exception 'PRODUCTION_NOT_FOUND';end if;\n  if not f.enabled then raise exception 'PRODUCTION_UNAVAILABLE';end if;\n  if w.gold<f.price then raise exception 'INSUFFICIENT_GOLD';end if;\n  v_now:=clock_timestamp();\n  insert into app_private.production_sites(user_id,facility_id) values(u,f.id) returning * into s;\n  update public.player_wallets set gold=gold-f.price,updated_at=v_now where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','production:'||f.id,-f.price);\n  receipt:=jsonb_build_object('action','buy','facility',f.id,'siteId',s.id,'count',1);\n else\n  s:=app_private.production_site(p_facility);\n  select * into s from app_private.production_sites where id=s.id and user_id=u for update;\n  select * into f from public.production_facilities where id=s.facility_id for share;\n  v_now:=clock_timestamp();\n  if p_action='start' then\n   if not f.enabled then raise exception 'PRODUCTION_UNAVAILABLE';end if;\n   if s.started_at is not null then raise exception 'PRODUCTION_BUSY';end if;\n   if (select count(*) from jsonb_each(p_materials)) not between 1 and 100 then raise exception 'INVALID_MATERIALS';end if;\n   if exists(select 1 from jsonb_each(p_materials) e where jsonb_typeof(e.value)<>'number' or e.value::text !~ '^[1-9][0-9]{0,2}$') then raise exception 'INVALID_MATERIALS';end if;\n   if (select sum(value::integer) from jsonb_each_text(p_materials))<>f.input_count then raise exception 'INVALID_MATERIAL_COUNT';end if;\n   select array_agg(p.id order by p.id) into ids from jsonb_each_text(p_materials) e\n   cross join lateral(select c.id from public.player_collectibles c join public.collectible_species cs on cs.id=c.species_id\n    where c.user_id=u and c.species_id=e.key and cs.kind::text=f.kind and c.sold_at is null and c.consumed_at is null\n    and c.tank_id is null and c.escrow_gift_id is null order by c.id limit e.value::integer)p;\n   if coalesce(cardinality(ids),0)<>f.input_count then raise exception 'INSUFFICIENT_MATERIALS';end if;\n   perform 1 from public.player_collectibles where user_id=u and id=any(ids) order by id for update;\n   select count(*) into n from public.player_collectibles c join public.collectible_species cs on cs.id=c.species_id\n    where c.user_id=u and c.id=any(ids) and cs.kind::text=f.kind and c.sold_at is null and c.consumed_at is null and c.tank_id is null and c.escrow_gift_id is null;\n   if n<>f.input_count then raise exception 'INSUFFICIENT_MATERIALS';end if;\n   v_now:=clock_timestamp();\n   update public.player_collectibles set sold_at=v_now,consumed_at=v_now where user_id=u and id=any(ids);\n   update app_private.production_sites set started_at=v_now,completes_at=v_now+make_interval(mins=>f.production_minutes),\n    expires_at=v_now+make_interval(mins=>f.production_minutes+f.storage_minutes),run_output=f.output_count where user_id=u and id=s.id;\n   receipt:=jsonb_build_object('action','start','facility',f.id,'siteId',s.id,'consumedIds',ids);\n  else\n   if s.started_at is null then raise exception 'PRODUCTION_IDLE';end if;\n   if p_action='claim' then\n    if v_now<s.completes_at then raise exception 'PRODUCTION_NOT_READY';end if;\n    if v_now>=s.expires_at then raise exception 'PRODUCTION_EXPIRED';end if;\n    fuel:=coalesce((w.inventory->>'fuel')::bigint,0)+s.run_output;\n    if fuel>1000000000 then raise exception 'FUEL_LIMIT';end if;\n    update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel::integer)),updated_at=v_now where user_id=u;\n   elsif v_now<s.expires_at then raise exception 'PRODUCTION_NOT_EXPIRED';end if;\n   receipt:=jsonb_build_object('action',p_action,'facility',f.id,'siteId',s.id,'fuel',case when p_action='claim' then s.run_output else 0 end);\n   update app_private.production_sites set started_at=null,completes_at=null,expires_at=null,run_output=null where user_id=u and id=s.id;\n  end if;\n end if;\n insert into app_private.production_operations(user_id,operation_id,signature,receipt) values(u,p_operation_id,sig,receipt);\n return (case when p_return_state then app_private.production_state() else '{}'::jsonb end)||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "production_bulk_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_operation_id uuid, p_steps jsonb, p_allow_valuable boolean",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.production_bulk_action(p_action text, p_operation_id uuid, p_steps jsonb, p_allow_valuable boolean DEFAULT false)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();sig jsonb;prev app_private.production_operations;step jsonb;result jsonb;receipt jsonb;\n total_fuel integer:=0;n integer;site app_private.production_sites;normalized jsonb:='[]'::jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('start','claim','discard') then raise exception 'INVALID_PRODUCTION';end if;\n if p_steps is null or jsonb_typeof(p_steps)<>'array' then raise exception 'INVALID_PRODUCTION';end if;\n n:=jsonb_array_length(p_steps);\n if n not between 1 and 1000 then raise exception 'INVALID_PRODUCTION';end if;\n if exists(select 1 from jsonb_array_elements(p_steps) e where jsonb_typeof(e)<>'object'\n  or jsonb_typeof(e->'facility') is distinct from 'string' or jsonb_typeof(e->'materials') is distinct from 'object') then raise exception 'INVALID_PRODUCTION';end if;\n if (select count(distinct e->>'facility') from jsonb_array_elements(p_steps)e)<>n then raise exception 'INVALID_PRODUCTION';end if;\n sig:=jsonb_build_object('action','bulk_'||p_action,'steps',p_steps,'allowValuable',coalesce(p_allow_valuable,false));\n perform app_private.get_gold_wallet();\n perform 1 from public.player_wallets where user_id=u for update;\n select * into prev from app_private.production_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.production_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n for step in select e from jsonb_array_elements(p_steps)e loop\n  site:=app_private.production_site(step->>'facility');\n  normalized:=normalized||jsonb_build_array(step||jsonb_build_object('facility',site.id,'catalog',site.facility_id));\n end loop;\n if (select count(distinct e->>'facility') from jsonb_array_elements(normalized)e)<>n then raise exception 'INVALID_PRODUCTION';end if;\n if p_action='start' and not coalesce(p_allow_valuable,false) and exists(\n  select 1 from jsonb_array_elements(p_steps)e cross join lateral jsonb_object_keys(e->'materials') m(id)\n  join public.collectible_species cs on cs.id=m.id where cs.rarity in ('epic','mythic')\n ) then raise exception 'VALUABLE_MATERIAL_CONFIRM_REQUIRED';end if;\n for step in select e from jsonb_array_elements(normalized)e join public.production_facilities f on f.id=e->>'catalog' order by f.price,f.id,e->>'facility' loop\n  result:=app_private.production_apply(p_action,gen_random_uuid(),step->>'facility',step->'materials',false);\n  total_fuel:=total_fuel+coalesce((result->'receipt'->>'fuel')::integer,0);\n end loop;\n receipt:=jsonb_build_object('action','bulk_'||p_action,'count',n,'fuel',total_fuel);\n insert into app_private.production_operations(user_id,operation_id,signature,receipt) values(u,p_operation_id,sig,receipt);\n return app_private.production_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "production_materials",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_facility text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.production_materials(p_facility text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();k text;result jsonb;site app_private.production_sites;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n site:=app_private.production_site(p_facility);\n select kind into k from public.production_facilities where id=site.facility_id;\n select coalesce(jsonb_agg(to_jsonb(q) order by q.sell_price,q.name,q.id),'[]'::jsonb) into result from (\n  select s.id,s.name,s.thumbnail_path,s.rarity,s.sell_price,count(*)::integer available\n  from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n  where c.user_id=u and c.sold_at is null and c.consumed_at is null and c.escrow_gift_id is null and c.tank_id is null and s.kind::text=k\n  group by s.id\n )q;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "production_purchase",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_facility text, p_quantity integer, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.production_purchase(p_facility text, p_quantity integer, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;f public.production_facilities;prev app_private.production_operations;\n sig jsonb;receipt jsonb;ids uuid[];total bigint;v_now timestamptz;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_facility is null or p_quantity is null or p_quantity not between 1 and 100 then raise exception 'INVALID_PRODUCTION_QUANTITY';end if;\n sig:=jsonb_build_object('action','purchase','facility',p_facility,'quantity',p_quantity);\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n select * into prev from app_private.production_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.production_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n select * into f from public.production_facilities where id=p_facility for share;\n if not found then raise exception 'PRODUCTION_NOT_FOUND';end if;\n if not f.enabled then raise exception 'PRODUCTION_UNAVAILABLE';end if;\n total:=f.price::bigint*p_quantity;\n if w.gold<total then raise exception 'INSUFFICIENT_GOLD';end if;\n v_now:=clock_timestamp();\n with purchased as(insert into app_private.production_sites(user_id,facility_id)\n  select u,f.id from generate_series(1,p_quantity) returning id) select array_agg(id order by id) into ids from purchased;\n update public.player_wallets set gold=gold-total,updated_at=v_now where user_id=u;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','production:'||f.id,-total);\n receipt:=jsonb_build_object('action','purchase','facility',f.id,'siteIds',ids,'count',p_quantity);\n insert into app_private.production_operations(user_id,operation_id,signature,receipt) values(u,p_operation_id,sig,receipt);\n return app_private.production_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "production_site",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_reference text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.production_site(p_reference text)\n RETURNS app_private.production_sites\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();s app_private.production_sites;n integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_reference ~ '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$' then\n  select * into s from app_private.production_sites where id=p_reference::uuid and user_id=u;\n  if not found then raise exception 'PRODUCTION_NOT_OWNED';end if;\n else\n  -- Old clients may address a catalog kind only while it identifies one site.\n  select count(*) into n from app_private.production_sites where user_id=u and facility_id=p_reference;\n  if n=0 then raise exception 'PRODUCTION_NOT_OWNED';end if;\n  if n>1 then raise exception 'PRODUCTION_SITE_REQUIRED';end if;\n  select * into s from app_private.production_sites where user_id=u and facility_id=p_reference;\n end if;\n return s;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "production_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.production_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n with owned as materialized(select * from app_private.production_sites where user_id=u),\n first_site as(select distinct on(facility_id) * from owned order by facility_id,purchased_at,id),\n totals as(select facility_id,count(*) n from owned group by facility_id)\n select jsonb_build_object('serverNow',clock_timestamp(),'gold',w.gold,'fuel',coalesce((w.inventory->>'fuel')::integer,0),\n 'facilities',coalesce((select jsonb_agg(to_jsonb(f)||jsonb_build_object('owned',s.id is not null,'ownedCount',coalesce(t.n,0),\n 'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output) order by f.price,f.id)\n from public.production_facilities f left join first_site s on s.facility_id=f.id left join totals t on t.facility_id=f.id\n where f.enabled or s.id is not null),'[]'::jsonb),\n 'sites',coalesce((select jsonb_agg(to_jsonb(f)||jsonb_build_object('siteId',s.id,'owned',true,\n 'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output)\n order by f.price,f.id,s.purchased_at,s.id) from owned s join public.production_facilities f on f.id=s.facility_id),'[]'::jsonb))\n into result from public.player_wallets w where w.user_id=u;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "publish_fishing_showcase",
         "config": [
           "search_path=\"\""
@@ -12131,6 +12511,56 @@
         "schema": "public",
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION public.prepare_fishing(p_region_id text, p_bait_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.prepare_fishing(p_region_id,p_bait_id,p_operation_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "production_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_materials jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION public.production_action(p_action text, p_operation_id uuid, p_facility text, p_materials jsonb DEFAULT '{}'::jsonb)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.production_action(p_action,p_operation_id,p_facility,p_materials)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "production_bulk_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text, p_operation_id uuid, p_steps jsonb, p_allow_valuable boolean",
+        "definition": "CREATE OR REPLACE FUNCTION public.production_bulk_action(p_action text, p_operation_id uuid, p_steps jsonb, p_allow_valuable boolean DEFAULT false)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.production_bulk_action(p_action,p_operation_id,p_steps,p_allow_valuable)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "production_materials",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_facility text",
+        "definition": "CREATE OR REPLACE FUNCTION public.production_materials(p_facility text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.production_materials(p_facility)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "production_purchase",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_facility text, p_quantity integer, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.production_purchase(p_facility text, p_quantity integer, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.production_purchase(p_facility,p_quantity,p_operation_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "production_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.production_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.production_state()$function$\n",
         "securityDefiner": false
       },
       {
@@ -13721,6 +14151,96 @@
         "table": "prepared_fishing_casts",
         "schema": "app_private",
         "definition": "NOT NULL wait_seconds"
+      },
+      {
+        "name": "production_operations_created_at_not_null",
+        "table": "production_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "production_operations_operation_id_not_null",
+        "table": "production_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "production_operations_pkey",
+        "table": "production_operations",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "production_operations_receipt_not_null",
+        "table": "production_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL receipt"
+      },
+      {
+        "name": "production_operations_signature_not_null",
+        "table": "production_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL signature"
+      },
+      {
+        "name": "production_operations_user_id_fkey",
+        "table": "production_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "production_operations_user_id_not_null",
+        "table": "production_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "production_sites_check",
+        "table": "production_sites",
+        "schema": "app_private",
+        "definition": "CHECK ((((started_at IS NULL) AND (completes_at IS NULL) AND (expires_at IS NULL) AND (run_output IS NULL)) OR ((started_at IS NOT NULL) AND (completes_at IS NOT NULL) AND (expires_at IS NOT NULL) AND (run_output IS NOT NULL) AND (completes_at > started_at) AND (expires_at > completes_at) AND ((run_output >= 1) AND (run_output <= 1000)))))"
+      },
+      {
+        "name": "production_sites_facility_id_fkey",
+        "table": "production_sites",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (facility_id) REFERENCES production_facilities(id)"
+      },
+      {
+        "name": "production_sites_facility_id_not_null",
+        "table": "production_sites",
+        "schema": "app_private",
+        "definition": "NOT NULL facility_id"
+      },
+      {
+        "name": "production_sites_id_not_null",
+        "table": "production_sites",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "production_sites_pkey",
+        "table": "production_sites",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "production_sites_purchased_at_not_null",
+        "table": "production_sites",
+        "schema": "app_private",
+        "definition": "NOT NULL purchased_at"
+      },
+      {
+        "name": "production_sites_user_id_fkey",
+        "table": "production_sites",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "production_sites_user_id_not_null",
+        "table": "production_sites",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
       },
       {
         "name": "quest_claims_claimed_at_not_null",
@@ -17917,6 +18437,114 @@
         "definition": "NOT NULL user_id"
       },
       {
+        "name": "production_facilities_description_not_null",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL description"
+      },
+      {
+        "name": "production_facilities_enabled_not_null",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL enabled"
+      },
+      {
+        "name": "production_facilities_id_not_null",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "production_facilities_image_path_not_null",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL image_path"
+      },
+      {
+        "name": "production_facilities_input_count_check",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "CHECK (((input_count >= 1) AND (input_count <= 100)))"
+      },
+      {
+        "name": "production_facilities_input_count_not_null",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL input_count"
+      },
+      {
+        "name": "production_facilities_kind_check",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "CHECK ((kind = ANY (ARRAY['trash'::text, 'fish'::text])))"
+      },
+      {
+        "name": "production_facilities_kind_not_null",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL kind"
+      },
+      {
+        "name": "production_facilities_name_not_null",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL name"
+      },
+      {
+        "name": "production_facilities_output_count_check",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "CHECK (((output_count >= 1) AND (output_count <= 1000)))"
+      },
+      {
+        "name": "production_facilities_output_count_not_null",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL output_count"
+      },
+      {
+        "name": "production_facilities_pkey",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "production_facilities_price_check",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "CHECK (((price >= 1) AND (price <= 1000000)))"
+      },
+      {
+        "name": "production_facilities_price_not_null",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL price"
+      },
+      {
+        "name": "production_facilities_production_minutes_check",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "CHECK (((production_minutes >= 1) AND (production_minutes <= 10080)))"
+      },
+      {
+        "name": "production_facilities_production_minutes_not_null",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL production_minutes"
+      },
+      {
+        "name": "production_facilities_storage_minutes_check",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "CHECK (((storage_minutes >= 1) AND (storage_minutes <= 10080)))"
+      },
+      {
+        "name": "production_facilities_storage_minutes_not_null",
+        "table": "production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL storage_minutes"
+      },
+      {
         "name": "region_maps_pkey",
         "table": "region_maps",
         "schema": "public",
@@ -19010,6 +19638,13 @@
       {
         "role": "authenticated",
         "table": "player_wallets",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "production_facilities",
         "schema": "public",
         "grantable": "NO",
         "privilege": "SELECT"
@@ -22778,6 +23413,13 @@
       {
         "role": "authenticated",
         "table": "player_collectibles",
+        "column": "consumed_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_collectibles",
         "column": "escrow_gift_id",
         "schema": "public",
         "privilege": "SELECT"
@@ -23094,6 +23736,83 @@
         "role": "authenticated",
         "table": "player_wallets",
         "column": "user_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "production_facilities",
+        "column": "description",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "production_facilities",
+        "column": "enabled",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "production_facilities",
+        "column": "id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "production_facilities",
+        "column": "image_path",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "production_facilities",
+        "column": "input_count",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "production_facilities",
+        "column": "kind",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "production_facilities",
+        "column": "name",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "production_facilities",
+        "column": "output_count",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "production_facilities",
+        "column": "price",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "production_facilities",
+        "column": "production_minutes",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "production_facilities",
+        "column": "storage_minutes",
         "schema": "public",
         "privilege": "SELECT"
       },
@@ -26996,6 +27715,153 @@
         "arguments": ""
       },
       {
+        "name": "production_action",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_materials jsonb"
+      },
+      {
+        "name": "production_action",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_materials jsonb"
+      },
+      {
+        "name": "production_action",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_materials jsonb"
+      },
+      {
+        "name": "production_apply",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_materials jsonb, p_return_state boolean"
+      },
+      {
+        "name": "production_apply",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_materials jsonb, p_return_state boolean"
+      },
+      {
+        "name": "production_apply",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_materials jsonb, p_return_state boolean"
+      },
+      {
+        "name": "production_bulk_action",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_steps jsonb, p_allow_valuable boolean"
+      },
+      {
+        "name": "production_bulk_action",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_steps jsonb, p_allow_valuable boolean"
+      },
+      {
+        "name": "production_bulk_action",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_steps jsonb, p_allow_valuable boolean"
+      },
+      {
+        "name": "production_materials",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_facility text"
+      },
+      {
+        "name": "production_materials",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_facility text"
+      },
+      {
+        "name": "production_materials",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_facility text"
+      },
+      {
+        "name": "production_purchase",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_facility text, p_quantity integer, p_operation_id uuid"
+      },
+      {
+        "name": "production_purchase",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_facility text, p_quantity integer, p_operation_id uuid"
+      },
+      {
+        "name": "production_purchase",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_facility text, p_quantity integer, p_operation_id uuid"
+      },
+      {
+        "name": "production_site",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_reference text"
+      },
+      {
+        "name": "production_site",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_reference text"
+      },
+      {
+        "name": "production_site",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_reference text"
+      },
+      {
+        "name": "production_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "production_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "production_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "publish_fishing_showcase",
         "role": "anon",
         "schema": "app_private",
@@ -29934,6 +30800,111 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid"
+      },
+      {
+        "name": "production_action",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_materials jsonb"
+      },
+      {
+        "name": "production_action",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_materials jsonb"
+      },
+      {
+        "name": "production_action",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_materials jsonb"
+      },
+      {
+        "name": "production_bulk_action",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_steps jsonb, p_allow_valuable boolean"
+      },
+      {
+        "name": "production_bulk_action",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_steps jsonb, p_allow_valuable boolean"
+      },
+      {
+        "name": "production_bulk_action",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_steps jsonb, p_allow_valuable boolean"
+      },
+      {
+        "name": "production_materials",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_facility text"
+      },
+      {
+        "name": "production_materials",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_facility text"
+      },
+      {
+        "name": "production_materials",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_facility text"
+      },
+      {
+        "name": "production_purchase",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_facility text, p_quantity integer, p_operation_id uuid"
+      },
+      {
+        "name": "production_purchase",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_facility text, p_quantity integer, p_operation_id uuid"
+      },
+      {
+        "name": "production_purchase",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_facility text, p_quantity integer, p_operation_id uuid"
+      },
+      {
+        "name": "production_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "production_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "production_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "publish_fishing_showcase",

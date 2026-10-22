@@ -32,5 +32,7 @@ export function ladderError(cause: unknown) {
   const message = String((cause as { message?: string })?.message ?? '')
   if (message.includes('INSUFFICIENT_GOLD')) return '베팅할 골드가 부족해요. 금액을 줄여주세요.'
   if (message.includes('GOLD_LIMIT')) return '골드 보유 한도를 넘어요. 금액을 줄여주세요.'
+  if (message.includes('INVALID_LADDER_REQUEST'))
+    return '사다리 설정이 서버와 맞지 않아요. 새로고침 후 다시 시작해 주세요.'
   return '결과를 확인하지 못했어요. 다시 확인하면 같은 판의 결과를 가져와요.'
 }

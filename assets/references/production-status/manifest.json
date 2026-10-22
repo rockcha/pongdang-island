@@ -1,0 +1,47 @@
+{
+  "tool": "built-in image_gen",
+  "frames": 8,
+  "preparation": "scripts/prepare-production-status.ps1",
+  "entries": [
+    {
+      "id": "idle",
+      "source": "sources/idle.source",
+      "output": "public/production/status/idle-v1.png",
+      "prompt": "Use case: stylized-concept. Asset: polished cozy seaside game status icon ANIMATION SPRITE SHEET, true transparent background. Canvas 1536x768, EXACT 4 columns by 2 rows, 8 equal square cells 384x384, frames chronological left-to-right top-to-bottom. Each cell same camera and scale and center, base baseline y=292 local, entire icon fits within central 220x250 pixels with generous transparent margin, never touches adjacent frame. No panels, borders, text, labels, numbers, checkerboard, scenery, cast shadow or background. Soft shaded hand-painted cartoon game art, warm brass outlines, readable silhouette at 36px. Eight genuinely different sequential poses of a smooth seamless subtle loop, preserve object design and anchor across frames. A tiny unlit copper hearth bowl holding three dark charcoal chunks, no fire. Quiet warm brown and brass palette, a single tiny muted amber ember slowly brightens and dims across 8 frames, subtle pair of sleepy glowing dust motes rise then disappear; bowl stays completely still. Calm standby, no giant glow.",
+      "columns": 4,
+      "rows": 2,
+      "frames": 8,
+      "frameSize": 96
+    },
+    {
+      "id": "working",
+      "source": "sources/working.source",
+      "output": "public/production/status/working-v1.png",
+      "prompt": "Use case: stylized-concept. Asset: polished cozy seaside game status icon ANIMATION SPRITE SHEET, true transparent background. Canvas 1536x768, EXACT 4 columns by 2 rows, 8 equal square cells 384x384, frames chronological left-to-right top-to-bottom. Each cell same camera and scale and center, base baseline y=292 local, entire icon fits within central 220x250 pixels with generous transparent margin, never touches adjacent frame. No panels, borders, text, labels, numbers, checkerboard, scenery, cast shadow or background. Soft shaded hand-painted cartoon game art, warm brass outlines, readable silhouette at 36px. Eight genuinely different sequential poses of a smooth seamless subtle loop, preserve object design and anchor across frames. A vivid orange-gold FIRE burning in a very small shallow copper hearth bowl. Three rounded flame tongues flow, curl and lean through a smooth full 8-frame flicker loop, golden core and warm orange tips with soft shading, small sparks rising. Flame stays centered in same footprint; bowl perfectly stationary, fire tips never clipped. Beautiful lively warm fire, not flat vector.",
+      "columns": 4,
+      "rows": 2,
+      "frames": 8,
+      "frameSize": 96
+    },
+    {
+      "id": "ready",
+      "source": "sources/ready.source",
+      "output": "public/production/status/ready-v1.png",
+      "prompt": "Use case: stylized-concept. Asset: cozy seaside game STATUS ANIMATION SPRITE SHEET with true transparent background. 1536x768 canvas EXACT 4 columns and 2 rows, EIGHT equal square cells, 8 sequential animation frames left-to-right top-to-bottom. Every frame same camera same scale, same anchored baseline. Icon fully contained in central 65 percent of each cell, generous transparent padding. NO text, numbers, grid lines, panels, checkerboard, scenery, floor, background, letters. Beautiful polished softly shaded hand-painted game art, warm brass outlines, strong silhouette readable at 36px. Subject is SOLID METAL FUEL CANISTER, not an oil bottle, no glass. Compact warm ochre metal jerrycan with rounded square body, strong top handle, stubby capped spout and embossed small flame symbol. Can completely stationary through loop. Fresh fuel canister in honey-gold brass, emerald accent band. Two little mint green four-point sparkles gently orbit and fade over 8 unique sequential frames of a seamless loop; restrained warm glints on metal. Reward ready to collect. Keep can static aligned across allframes.",
+      "columns": 4,
+      "rows": 2,
+      "frames": 8,
+      "frameSize": 96
+    },
+    {
+      "id": "expired",
+      "source": "sources/expired.source",
+      "output": "public/production/status/expired-v1.png",
+      "prompt": "Use case: stylized-concept. Asset: cozy seaside game STATUS ANIMATION SPRITE SHEET with true transparent background. 1536x768 canvas EXACT 4 columns and 2 rows, EIGHT equal square cells, 8 sequential animation frames left-to-right top-to-bottom. Every frame same camera same scale, same anchored baseline. Icon fully contained in central 65 percent of each cell, generous transparent padding. NO text, numbers, grid lines, panels, checkerboard, scenery, floor, background, letters. Beautiful polished softly shaded hand-painted game art, warm brass outlines, strong silhouette readable at 36px. Subject is SOLID METAL FUEL CANISTER, not an oil bottle, no glass. Compact warm ochre metal jerrycan with rounded square body, strong top handle, stubby capped spout and embossed small flame symbol. Can completely stationary through loop. Spent fuel canister in desaturated weathered copper and gray-violet metal, faded dusty rose accent. Gentle wisps of muted mauve-gray stale smoke slowly curl from capped spout, dissipating and reforming over 8 unique sequential frames of a seamless loop. Expired production awaiting discard. No skulls or text. Keep can static aligned across allframes.",
+      "columns": 4,
+      "rows": 2,
+      "frames": 8,
+      "frameSize": 96
+    }
+  ]
+}

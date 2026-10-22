@@ -1,0 +1,9 @@
+{
+  "id": "tin-grandpa-hearth",
+  "source": "sources/tin-grandpa-hearth.source",
+  "output": "public/production/tin-grandpa-hearth.png",
+  "tool": "built-in image_gen",
+  "prompt": "Use case stylized-concept. Create one polished isometric game facility icon: A humble squat stove made from a reclaimed rusty teal tin can, little brick feet, tiny copper chimney, warm orange fire visible through a round door, one small wood basket. Charming old workshop tool, no person.. Style reference attached: same clean warm illustrated island-game asset language, carefully hand-painted shading, rounded forms, crisp brown line accents, restrained seafoam/copper/cream color palette, tactile wood metal and brick, charming and elegant. This reference is style only, not a boat. 3/4 isometric view from slightly above, front-right visible, entire building/tool and compact integrated base fully visible, centered, occupies 80% of square canvas, 10% clear margin. TRUE transparent alpha background. No text, label, UI, scenery, sky, characters, clutter, detached smoke or cast shadow beyond the compact base. This is an inexpensive starter facility but lovingly crafted, NOT photorealistic or flat vector.",
+  "reference": "public/app-icons/shipyard.png",
+  "referenceRole": "style only"
+}

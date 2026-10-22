@@ -1,0 +1,25 @@
+{
+  "tool": "built-in image_gen",
+  "cameraReference": "sources/tin-grandpa-hearth.source",
+  "camera": "Fixed elevated 3/4 isometric camera; front faces lower-left, right side recedes upper-right; upper-left lighting; no mirroring.",
+  "normalization": "Actual alpha bounds, preserve aspect ratio, 420px longest axis on 512px canvas, shared base bottom at y=462. Banner center-cropped to 1536x512.",
+  "entries": [
+    "entries/angry-puffer-compressor.json",
+    "entries/baby-puffer-pressure-vat.json",
+    "entries/banner.json",
+    "entries/bottle-sunlight-concentrator.json",
+    "entries/clockwork-compressor.json",
+    "entries/deep-pressure-aging-vat.json",
+    "entries/dock-express-furnace.json",
+    "entries/gurgling-deep-pressure-cooker.json",
+    "entries/lighthouse-heat-storage-kiln.json",
+    "entries/scrap-engine.json",
+    "entries/shell-coal-mini-kiln.json",
+    "entries/shell-compression-workshop.json",
+    "entries/shipwreck-incinerator.json",
+    "entries/sleepy-whale-kiln.json",
+    "entries/tin-grandpa-hearth.json",
+    "entries/trench-black-pearl-reactor.json",
+    "entries/twin-chimney-steamworks.json"
+  ]
+}

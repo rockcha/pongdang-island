@@ -1,0 +1,8 @@
+{
+  "id": "conch-spiral-distiller",
+  "source": "sources/conch-spiral-distiller.source",
+  "output": "public/production/conch-spiral-distiller.png",
+  "prompt": "Create ONE beautiful isolated illustrated facility asset for a cozy Korean ocean island game. This is a NEW distinct fuel-producing machine, NOT a copy of the reference stove. Use the reference ONLY for the exact camera, direction, hand-painted style, dimensional rounded shapes, warm brown crisp edge lines and high finish. FIXED CAMERA: elevated 3/4 view, main FRONT faces LOWER-LEFT, RIGHT side recedes toward UPPER-RIGHT, verticals vertical, same upper-left lighting. Full object on compact integrated base, no people, no fish carcasses or gore, no scenery, no words, letters, numbers or labels. Genuine TRANSPARENT background. Square canvas, whole illustration contained within 10%-90% with generous padding; no clipping, base baseline about88%height. Distinct readable machine silhouette, beautiful cozy craftsmanship: wood, cream stone, brushed copper, seafoam enamel. Finished product is nautical FUEL in a closed METAL FUEL CANISTER, NOT cooking oil in a bottle. \nFACILITY: 소라 나선 증류기.\nDESIGN: An elegant ivory conch-shaped copper distillation column with clearly visible spiral tubing, seafoam condensation chamber, short brass gauge and finished metal fuel can, pale stone base.",
+  "reference": "public/production/tin-grandpa-hearth.png",
+  "referenceRole": "camera, orientation and style only; each facility has a distinct identity"
+}

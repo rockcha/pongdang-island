@@ -11,9 +11,9 @@ vi.mock('@/features/gold/gold-provider', () => ({
   GoldIcon: () => null,
   useGold: () => ({ wallet: { gold: 1000 }, loading: false, refresh: server.refresh }),
 }))
-vi.mock('@/features/arcade/ladder-api', () => ({
+vi.mock('@/features/arcade/ladder-api', async (original) => ({
+  ...(await original<typeof import('@/features/arcade/ladder-api')>()),
   playLadder: server.play,
-  ladderError: () => '연결을 확인해주세요.',
 }))
 beforeEach(() => {
   vi.clearAllMocks()
@@ -123,6 +123,28 @@ it('retries uncertain real bets with the same operation and locks choices until 
   expect(server.play).toHaveBeenCalledTimes(2)
   expect(screen.getByRole('button', { name: '실전(무료)' })).toBeTruthy()
   expect(server.play).toHaveBeenCalledTimes(2)
+})
+it('explains a rejected server configuration and unlocks a six-lane mode without retaining an uncharged bet', async () => {
+  server.play
+    .mockRejectedValueOnce(new Error('INVALID_LADDER_REQUEST'))
+    .mockImplementationOnce(async (bet) => practiceLadder(bet, () => 0.4))
+  show()
+  fireEvent.click(screen.getByRole('button', { name: '실전(무료)' }))
+  fireEvent.click(screen.getByRole('button', { name: /풍어의 물결/ }))
+  fireEvent.click(screen.getByRole('button', { name: '여기로 떠날래요' }))
+  fireEvent.click(screen.getByRole('button', { name: '조개 고르기' }))
+  fireEvent.click(screen.getByRole('button', { name: '6번 사다리' }))
+  fireEvent.click(screen.getByRole('button', { name: '20 걸고 출발' }))
+  await act(async () => {})
+  expect(screen.getByRole('alert').textContent).toContain('사다리 설정이 서버와 맞지 않아요')
+  expect(localStorage.getItem('pongdang:ladder-pending:ladder-test')).toBeNull()
+  expect(screen.getByRole('button', { name: '5번 사다리' }).hasAttribute('disabled')).toBe(false)
+  fireEvent.click(screen.getByRole('button', { name: '5번 사다리' }))
+  fireEvent.click(screen.getByRole('button', { name: '20 걸고 출발' }))
+  await act(async () => {})
+  expect(server.play.mock.calls[1][0]).toMatchObject({ mode: 'lucky', stake: 20, choice: 4 })
+  expect(server.play.mock.calls[0][0].operation).not.toBe(server.play.mock.calls[1][0].operation)
+  expect(screen.getByRole('img', { name: '선택한 사다리를 따라 내려가는 중' })).toBeTruthy()
 })
 it('restores a pending real bet after remount without silently placing another bet', async () => {
   const bet = {

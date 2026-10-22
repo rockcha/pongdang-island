@@ -11,6 +11,15 @@ vi.mock('@/features/expeditions/use-expedition-status',()=>({useExpeditionStatus
 beforeEach(()=>{mock.newContent={board:false,exchange:false,suggestions:false,bugs:false};mock.status=null;mock.harbor=null;mock.operator=false;mock.savings=null})
 function View(){const {pathname}=useLocation();return <><HeaderPlaceNavigation/><output data-testid="path">{pathname}</output></>}
 afterEach(cleanup)
+it('opens production facilities from the island menu',async()=>{
+ render(<MemoryRouter><View/></MemoryRouter>)
+ fireEvent.click(screen.getByRole('button',{name:'내 섬'}))
+ const menu=await screen.findByRole('menu')
+ const production=within(menu).getByRole('menuitem',{name:'연료 생산소'})
+ expect(production.getAttribute('href')).toBe('/production')
+ fireEvent.click(production)
+ await waitFor(()=>expect(screen.getByTestId('path').textContent).toBe('/production'))
+})
 it('places storage directly above the collection in the island dropdown',async()=>{
  render(<MemoryRouter><View/></MemoryRouter>)
  fireEvent.click(screen.getByRole('button',{name:'내 섬'}))

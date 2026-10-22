@@ -724,7 +724,7 @@
       "id": "bait_grubby_magnet",
       "name": "꼬질 자석경단",
       "description": "해초와 작은 자석을 꾹꾹 뭉친 꼬질한 경단. 물고기 대신 바닷속 버려진 물건들이 달라붙어요.",
-      "price": 12,
+      "price": 16,
       "image_path": "/items/baits/grubby-magnet-dumpling.png",
       "sort_order": 103,
       "common_bp": 8320,
@@ -6393,6 +6393,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "shared-coal-crumbs",
+      "kind": "trash",
+      "name": "석탄 부스러기",
+      "description": "오래된 배에서 흘러나온 듯한 검은 석탄 조각. 부스러기뿐이지만, 모아 두면 다시 온기를 낼지도 모릅니다.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.98",
+      "speed": "0.001",
+      "size": 48,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/shared-coal-crumbs_v1_thumbnail.png",
+      "sell_price": 8,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "shared-crimson-vampire-squid",
       "kind": "fish",
       "name": "심홍 망토 흡혈오징어",
@@ -6426,6 +6444,24 @@
       "native_region_id": null,
       "movement_type": "pulse",
       "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-drift-scrap-wood",
+      "kind": "trash",
+      "name": "떠밀려온 폐목재",
+      "description": "소금기에 닳고 못이 휜 낡은 나무 조각. 바닷물을 충분히 말리면 마지막으로 따뜻한 쓸모가 생길지도 모릅니다.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.98",
+      "speed": "0.001",
+      "size": 48,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/shared-drift-scrap-wood_v1_thumbnail.png",
+      "sell_price": 2,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
       "travel_direction": "both"
     },
     {
@@ -6519,6 +6555,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "shared-industrial-wax-scraps",
+      "kind": "trash",
+      "name": "공업용 밀랍찌꺼기",
+      "description": "모래와 작은 조개가 달라붙은 누런 밀랍찌꺼기. 불순물을 걷어 내면 한 번쯤 더 빛과 열을 낼 수 있을 듯합니다.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.98",
+      "speed": "0.001",
+      "size": 48,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/shared-industrial-wax-scraps_v1_thumbnail.png",
+      "sell_price": 5,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "shared-island-hafgufa",
       "kind": "fish",
       "name": "잠든 섬을 등에 진 자, 하프구파",
@@ -6591,6 +6645,78 @@
       "travel_direction": "both"
     },
     {
+      "id": "shared-oily-anchovy",
+      "kind": "fish",
+      "name": "기름 멸치",
+      "description": "작고 가벼운 몸에 뜻밖의 기름기를 품은 멸치. 팔기에는 수수하지만, 잘 가공하면 항해에 보탬이 될 듯합니다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.022",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-oily-anchovy_v1_thumbnail.png",
+      "sell_price": 15,
+      "sprite_sheet_path": "fish/normal/shared-oily-anchovy_v2_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-oily-sardine",
+      "kind": "fish",
+      "name": "기름 정어리",
+      "description": "통통한 배에 기름이 밴 작은 정어리. 한 마리의 값은 소박해도, 모아 두면 오래 타는 무언가가 될지 모릅니다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.022",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-oily-sardine_v1_thumbnail.png",
+      "sell_price": 15,
+      "sprite_sheet_path": "fish/normal/shared-oily-sardine_v2_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-oily-saury",
+      "kind": "fish",
+      "name": "기름 꽁치",
+      "description": "푸른 등 아래로 은은한 기름빛이 흐르는 꽁치. 비싼 물고기는 아니어도, 그 속에 작은 동력이 숨어 있을지 모릅니다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.022",
+      "size": 76,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-oily-saury_v1_thumbnail.png",
+      "sell_price": 15,
+      "sprite_sheet_path": "fish/normal/shared-oily-saury_v2_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-old-kindling-rope",
+      "kind": "trash",
+      "name": "점화용 낡은 밧줄",
+      "description": "끝이 해지고 기름때가 밴 낡은 밧줄. 잘 말린 섬유에는 아직 작은 불씨를 붙잡을 힘이 남아 있을 듯합니다.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.98",
+      "speed": "0.001",
+      "size": 48,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/shared-old-kindling-rope_v1_thumbnail.png",
+      "sell_price": 3,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "shared-pink-sea-pig",
       "kind": "fish",
       "name": "분홍 말랑 바다돼지",
@@ -6621,6 +6747,60 @@
       "thumbnail_path": "fish/epic/shared-rainbow-blanket-octopus_thumbnail.png",
       "sell_price": 880,
       "sprite_sheet_path": "fish/epic/shared-rainbow-blanket-octopus_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-reclaimed-oil-can",
+      "kind": "trash",
+      "name": "재생 폐유통",
+      "description": "바닷물에 찌그러진 낡은 폐유통. 바닥에 남은 짙은 기름을 거르면 다시 쓸 곳이 있을지도 모릅니다.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.98",
+      "speed": "0.001",
+      "size": 48,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/shared-reclaimed-oil-can_v1_thumbnail.png",
+      "sell_price": 8,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-refining-herring",
+      "kind": "fish",
+      "name": "정제용 청어",
+      "description": "은빛 배에 묵직한 기름기를 품은 청어. 시장에서는 흔한 물고기지만, 항구에서는 다른 쓰임이 있을 듯합니다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.022",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-refining-herring_v1_thumbnail.png",
+      "sell_price": 15,
+      "sprite_sheet_path": "fish/normal/shared-refining-herring_v2_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-refining-smelt",
+      "kind": "fish",
+      "name": "정제용 빙어",
+      "description": "맑은 몸에 옅은 기름빛이 비치는 작은 빙어. 내다 팔 값은 낮지만, 잘 모으면 배를 움직일 무언가가 나올지도 모릅니다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.022",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-refining-smelt_v1_thumbnail.png",
+      "sell_price": 15,
+      "sprite_sheet_path": "fish/normal/shared-refining-smelt_v2_sprite.png",
       "native_region_id": null,
       "movement_type": "swim",
       "flip_with_direction": true,
@@ -13533,6 +13713,54 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "shared-coal-crumbs",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-coal-crumbs",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-coal-crumbs",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-coal-crumbs",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-coal-crumbs",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-coal-crumbs",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-coal-crumbs",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-coal-crumbs",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-coal-crumbs",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-coal-crumbs",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-coal-crumbs",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-coal-crumbs",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "shared-crimson-vampire-squid",
       "region_id": "bluegrove"
     },
@@ -13626,6 +13854,54 @@
     },
     {
       "species_id": "shared-crown-atolla",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-drift-scrap-wood",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-drift-scrap-wood",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-drift-scrap-wood",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-drift-scrap-wood",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-drift-scrap-wood",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-drift-scrap-wood",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-drift-scrap-wood",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-drift-scrap-wood",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-drift-scrap-wood",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-drift-scrap-wood",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-drift-scrap-wood",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-drift-scrap-wood",
       "region_id": "whitenight"
     },
     {
@@ -13869,6 +14145,54 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "shared-industrial-wax-scraps",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-industrial-wax-scraps",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-industrial-wax-scraps",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-industrial-wax-scraps",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-industrial-wax-scraps",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-industrial-wax-scraps",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-industrial-wax-scraps",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-industrial-wax-scraps",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-industrial-wax-scraps",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-industrial-wax-scraps",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-industrial-wax-scraps",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-industrial-wax-scraps",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "shared-island-hafgufa",
       "region_id": "bluegrove"
     },
@@ -14061,6 +14385,198 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "shared-oily-anchovy",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-oily-anchovy",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-oily-anchovy",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-oily-anchovy",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-oily-anchovy",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-oily-anchovy",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-oily-anchovy",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-oily-anchovy",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-oily-anchovy",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-oily-anchovy",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-oily-anchovy",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-oily-anchovy",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-oily-sardine",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-oily-sardine",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-oily-sardine",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-oily-sardine",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-oily-sardine",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-oily-sardine",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-oily-sardine",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-oily-sardine",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-oily-sardine",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-oily-sardine",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-oily-sardine",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-oily-sardine",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-oily-saury",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-oily-saury",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-oily-saury",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-oily-saury",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-oily-saury",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-oily-saury",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-oily-saury",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-oily-saury",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-oily-saury",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-oily-saury",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-oily-saury",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-oily-saury",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-old-kindling-rope",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-old-kindling-rope",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-old-kindling-rope",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-old-kindling-rope",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-old-kindling-rope",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-old-kindling-rope",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-old-kindling-rope",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-old-kindling-rope",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-old-kindling-rope",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-old-kindling-rope",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-old-kindling-rope",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-old-kindling-rope",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "shared-pink-sea-pig",
       "region_id": "bluegrove"
     },
@@ -14154,6 +14670,150 @@
     },
     {
       "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-reclaimed-oil-can",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-reclaimed-oil-can",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-reclaimed-oil-can",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-reclaimed-oil-can",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-reclaimed-oil-can",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-reclaimed-oil-can",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-reclaimed-oil-can",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-reclaimed-oil-can",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-reclaimed-oil-can",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-reclaimed-oil-can",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-reclaimed-oil-can",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-reclaimed-oil-can",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-refining-herring",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-refining-herring",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-refining-herring",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-refining-herring",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-refining-herring",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-refining-herring",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-refining-herring",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-refining-herring",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-refining-herring",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-refining-herring",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-refining-herring",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-refining-herring",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-refining-smelt",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-refining-smelt",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-refining-smelt",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-refining-smelt",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-refining-smelt",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-refining-smelt",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-refining-smelt",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-refining-smelt",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-refining-smelt",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-refining-smelt",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-refining-smelt",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-refining-smelt",
       "region_id": "whitenight"
     },
     {
@@ -18348,6 +19008,450 @@
       "id": "pongdang-native-whale",
       "name": "퐁당 고래 언니",
       "description": "퐁당섬 앞바다를 지키는 고래 자매의 언니. 주황빛 등과 포근한 크림색 배를 가진 듬직한 고래로, 동생이 물살에 밀리지 않도록 먼저 길을 내준다. 머리 위 불가사리를 반짝이며 동생의 속도에 맞춰 느긋하게 헤엄친다."
+    }
+  ],
+  "production_facilities": [
+    {
+      "id": "angry-puffer-compressor",
+      "name": "성난 복어 압축기",
+      "description": "통통한 압축기에 힘을 모아 한 번에",
+      "kind": "trash",
+      "price": 2200,
+      "input_count": 9,
+      "output_count": 3,
+      "production_minutes": 120,
+      "storage_minutes": 30,
+      "image_path": "/production/angry-puffer-compressor.png",
+      "enabled": true
+    },
+    {
+      "id": "baby-puffer-pressure-vat",
+      "name": "꼬마 복어 압력통",
+      "description": "작은 통 속에서 차곡차곡 쌓이는 압력",
+      "kind": "trash",
+      "price": 700,
+      "input_count": 6,
+      "output_count": 2,
+      "production_minutes": 240,
+      "storage_minutes": 30,
+      "image_path": "/production/baby-puffer-pressure-vat.png",
+      "enabled": true
+    },
+    {
+      "id": "baby-seal-press-vat",
+      "name": "꼬마 물범 압착통",
+      "description": "동그란 압착통에 힘을 모아 연료를 만들어요",
+      "kind": "fish",
+      "price": 800,
+      "input_count": 3,
+      "output_count": 4,
+      "production_minutes": 480,
+      "storage_minutes": 30,
+      "image_path": "/production/baby-seal-press-vat.png",
+      "enabled": true
+    },
+    {
+      "id": "black-current-deep-refining-tower",
+      "name": "검은 조류 심층 정유탑",
+      "description": "짙은 조류처럼 천천히 깊게 정제해요",
+      "kind": "fish",
+      "price": 4800,
+      "input_count": 6,
+      "output_count": 14,
+      "production_minutes": 1440,
+      "storage_minutes": 50,
+      "image_path": "/production/black-current-deep-refining-tower.png",
+      "enabled": true
+    },
+    {
+      "id": "bottle-sunlight-concentrator",
+      "name": "빈 병 햇볕농축기",
+      "description": "빈 병과 햇살로 천천히 모으는 온기",
+      "kind": "trash",
+      "price": 550,
+      "input_count": 3,
+      "output_count": 1,
+      "production_minutes": 180,
+      "storage_minutes": 60,
+      "image_path": "/production/bottle-sunlight-concentrator.png",
+      "enabled": true
+    },
+    {
+      "id": "brave-puffer-steam-vat",
+      "name": "씩씩한 복어 증기통",
+      "description": "증기를 꾹 눌러 한 번에 연료를 모아요",
+      "kind": "fish",
+      "price": 2400,
+      "input_count": 5,
+      "output_count": 6,
+      "production_minutes": 250,
+      "storage_minutes": 25,
+      "image_path": "/production/brave-puffer-steam-vat.png",
+      "enabled": true
+    },
+    {
+      "id": "clockwork-compressor",
+      "name": "똑딱 태엽 압축기",
+      "description": "태엽을 감아 움직이는 작은 압축기",
+      "kind": "trash",
+      "price": 450,
+      "input_count": 4,
+      "output_count": 1,
+      "production_minutes": 60,
+      "storage_minutes": 60,
+      "image_path": "/production/clockwork-compressor.png",
+      "enabled": true
+    },
+    {
+      "id": "conch-spiral-distiller",
+      "name": "소라 나선 증류기",
+      "description": "나선 관을 따라 천천히 연료를 걸러내요",
+      "kind": "fish",
+      "price": 1650,
+      "input_count": 2,
+      "output_count": 2,
+      "production_minutes": 85,
+      "storage_minutes": 120,
+      "image_path": "/production/conch-spiral-distiller.png",
+      "enabled": true
+    },
+    {
+      "id": "coral-honeycomb-thermal-refinery",
+      "name": "산호벌집 온열 정제소",
+      "description": "산호 모양 온열칸에서 고르게 열을 나눠요",
+      "kind": "fish",
+      "price": 2850,
+      "input_count": 5,
+      "output_count": 7,
+      "production_minutes": 480,
+      "storage_minutes": 60,
+      "image_path": "/production/coral-honeycomb-thermal-refinery.png",
+      "enabled": true
+    },
+    {
+      "id": "deep-pearl-pressure-refiner",
+      "name": "심해진주 압력 정제기",
+      "description": "깊은 압력을 모아 알차게 정제해요",
+      "kind": "fish",
+      "price": 3200,
+      "input_count": 6,
+      "output_count": 12,
+      "production_minutes": 750,
+      "storage_minutes": 25,
+      "image_path": "/production/deep-pearl-pressure-refiner.png",
+      "enabled": true
+    },
+    {
+      "id": "deep-pressure-aging-vat",
+      "name": "심해압 숙성통",
+      "description": "깊은 수압처럼 천천히 압축하는 숙성통",
+      "kind": "trash",
+      "price": 2600,
+      "input_count": 15,
+      "output_count": 6,
+      "production_minutes": 720,
+      "storage_minutes": 180,
+      "image_path": "/production/deep-pressure-aging-vat.png",
+      "enabled": true
+    },
+    {
+      "id": "dewdrop-glass-distiller",
+      "name": "물방울 유리 증류기",
+      "description": "작은 유리관에서 연료를 한 방울씩 모아요",
+      "kind": "fish",
+      "price": 400,
+      "input_count": 4,
+      "output_count": 3,
+      "production_minutes": 135,
+      "storage_minutes": 120,
+      "image_path": "/production/dewdrop-glass-distiller.png",
+      "enabled": true
+    },
+    {
+      "id": "dock-express-furnace",
+      "name": "부두 끝 급행화로",
+      "description": "부두 끝에서 빠르게 불을 지피는 화로",
+      "kind": "trash",
+      "price": 1800,
+      "input_count": 18,
+      "output_count": 4,
+      "production_minutes": 60,
+      "storage_minutes": 60,
+      "image_path": "/production/dock-express-furnace.png",
+      "enabled": true
+    },
+    {
+      "id": "dock-grandma-refining-pot",
+      "name": "부두 할머니의 정제솥",
+      "description": "부두의 작은 솥에서 자주 조금씩 정제해요",
+      "kind": "fish",
+      "price": 900,
+      "input_count": 1,
+      "output_count": 1,
+      "production_minutes": 30,
+      "storage_minutes": 20,
+      "image_path": "/production/dock-grandma-refining-pot.png",
+      "enabled": true
+    },
+    {
+      "id": "gurgling-deep-pressure-cooker",
+      "name": "꼬르륵 심해 압력솥",
+      "description": "묵직한 압력을 모으는 커다란 압력솥",
+      "kind": "trash",
+      "price": 3000,
+      "input_count": 24,
+      "output_count": 12,
+      "production_minutes": 720,
+      "storage_minutes": 30,
+      "image_path": "/production/gurgling-deep-pressure-cooker.png",
+      "enabled": true
+    },
+    {
+      "id": "lighthouse-heat-storage-kiln",
+      "name": "등대지기 축열가마",
+      "description": "등대 아래에 열을 오래 간직하는 가마",
+      "kind": "trash",
+      "price": 3700,
+      "input_count": 30,
+      "output_count": 12,
+      "production_minutes": 720,
+      "storage_minutes": 1440,
+      "image_path": "/production/lighthouse-heat-storage-kiln.png",
+      "enabled": true
+    },
+    {
+      "id": "lighthouse-thermal-distillery",
+      "name": "등대지기 축열 증류소",
+      "description": "등대의 온기를 모아 연료를 오래 보관해요",
+      "kind": "fish",
+      "price": 3900,
+      "input_count": 8,
+      "output_count": 12,
+      "production_minutes": 750,
+      "storage_minutes": 1320,
+      "image_path": "/production/lighthouse-thermal-distillery.png",
+      "enabled": true
+    },
+    {
+      "id": "manta-twin-wing-centrifuge",
+      "name": "가오리 양날개 원심분리기",
+      "description": "양날개 회전통이 고르게 연료를 분리해요",
+      "kind": "fish",
+      "price": 3500,
+      "input_count": 8,
+      "output_count": 10,
+      "production_minutes": 330,
+      "storage_minutes": 150,
+      "image_path": "/production/manta-twin-wing-centrifuge.png",
+      "enabled": true
+    },
+    {
+      "id": "moon-jelly-cooling-vat",
+      "name": "달해파리 냉각 정제통",
+      "description": "차가운 냉각관에서 천천히 연료를 모아요",
+      "kind": "fish",
+      "price": 2800,
+      "input_count": 4,
+      "output_count": 6,
+      "production_minutes": 720,
+      "storage_minutes": 180,
+      "image_path": "/production/moon-jelly-cooling-vat.png",
+      "enabled": true
+    },
+    {
+      "id": "otter-hand-press",
+      "name": "수달 아저씨의 손잡이 착유기",
+      "description": "나무 손잡이를 돌려 차근차근 짜내요",
+      "kind": "fish",
+      "price": 500,
+      "input_count": 2,
+      "output_count": 2,
+      "production_minutes": 120,
+      "storage_minutes": 60,
+      "image_path": "/production/otter-hand-press.png",
+      "enabled": true
+    },
+    {
+      "id": "otter-moon-maturation-tank",
+      "name": "해달 달맞이 숙성조",
+      "description": "달빛 아래 둥근 숙성조가 천천히 연료를 만들어요",
+      "kind": "fish",
+      "price": 3100,
+      "input_count": 6,
+      "output_count": 9,
+      "production_minutes": 600,
+      "storage_minutes": 150,
+      "image_path": "/production/otter-moon-maturation-tank.png",
+      "enabled": true
+    },
+    {
+      "id": "scrap-engine",
+      "name": "고철기관",
+      "description": "고철과 증기기관이 만난 든든한 설비",
+      "kind": "trash",
+      "price": 2000,
+      "input_count": 16,
+      "output_count": 5,
+      "production_minutes": 390,
+      "storage_minutes": 900,
+      "image_path": "/production/scrap-engine.png",
+      "enabled": true
+    },
+    {
+      "id": "seahorse-brass-separator",
+      "name": "해마 황동 분리기관",
+      "description": "황동 분리기관이 완성된 연료를 오래 지켜줘요",
+      "kind": "fish",
+      "price": 2200,
+      "input_count": 4,
+      "output_count": 5,
+      "production_minutes": 390,
+      "storage_minutes": 900,
+      "image_path": "/production/seahorse-brass-separator.png",
+      "enabled": true
+    },
+    {
+      "id": "shell-coal-mini-kiln",
+      "name": "조개탄 미니가마",
+      "description": "조개껍데기 아래 따뜻한 불씨를 모아요",
+      "kind": "trash",
+      "price": 350,
+      "input_count": 5,
+      "output_count": 1,
+      "production_minutes": 45,
+      "storage_minutes": 120,
+      "image_path": "/production/shell-coal-mini-kiln.png",
+      "enabled": true
+    },
+    {
+      "id": "shell-compression-workshop",
+      "name": "소라껍질 압축 공방",
+      "description": "소라 모양 압축기로 자원을 꾹꾹 눌러요",
+      "kind": "trash",
+      "price": 1500,
+      "input_count": 7,
+      "output_count": 2,
+      "production_minutes": 90,
+      "storage_minutes": 120,
+      "image_path": "/production/shell-compression-workshop.png",
+      "enabled": true
+    },
+    {
+      "id": "shipwreck-incinerator",
+      "name": "난파선 대형 소각로",
+      "description": "난파선 선체를 다시 쓴 넉넉한 소각로",
+      "kind": "trash",
+      "price": 2400,
+      "input_count": 35,
+      "output_count": 10,
+      "production_minutes": 480,
+      "storage_minutes": 480,
+      "image_path": "/production/shipwreck-incinerator.png",
+      "enabled": true
+    },
+    {
+      "id": "shipwreck-triple-distillation-tower",
+      "name": "난파선 삼단 증류탑",
+      "description": "되살린 선체 안에서 세 번 나누어 걸러요",
+      "kind": "fish",
+      "price": 2600,
+      "input_count": 9,
+      "output_count": 10,
+      "production_minutes": 510,
+      "storage_minutes": 420,
+      "image_path": "/production/shipwreck-triple-distillation-tower.png",
+      "enabled": true
+    },
+    {
+      "id": "sleepy-whale-kiln",
+      "name": "잠꾸러기 고래가마",
+      "description": "고래 모양 가마가 오래도록 열을 품어요",
+      "kind": "trash",
+      "price": 2800,
+      "input_count": 18,
+      "output_count": 8,
+      "production_minutes": 960,
+      "storage_minutes": 480,
+      "image_path": "/production/sleepy-whale-kiln.png",
+      "enabled": true
+    },
+    {
+      "id": "sunny-shell-infusion-jar",
+      "name": "햇살조개 냉침병",
+      "description": "조개 받침 위 유리병이 햇살을 천천히 품어요",
+      "kind": "fish",
+      "price": 600,
+      "input_count": 4,
+      "output_count": 5,
+      "production_minutes": 900,
+      "storage_minutes": 60,
+      "image_path": "/production/sunny-shell-infusion-jar.png",
+      "enabled": true
+    },
+    {
+      "id": "tin-grandpa-hearth",
+      "name": "깡통 할아범의 화덕",
+      "description": "낡은 깡통에 작은 불씨를 지피는 화덕",
+      "kind": "trash",
+      "price": 800,
+      "input_count": 4,
+      "output_count": 1,
+      "production_minutes": 30,
+      "storage_minutes": 90,
+      "image_path": "/production/tin-grandpa-hearth.png",
+      "enabled": true
+    },
+    {
+      "id": "trench-black-pearl-reactor",
+      "name": "해구의 검은 진주로",
+      "description": "해구의 압력을 닮은 깊고 묵직한 설비",
+      "kind": "trash",
+      "price": 4500,
+      "input_count": 21,
+      "output_count": 14,
+      "production_minutes": 1440,
+      "storage_minutes": 60,
+      "image_path": "/production/trench-black-pearl-reactor.png",
+      "enabled": true
+    },
+    {
+      "id": "twin-chimney-steamworks",
+      "name": "쌍둥이 굴뚝 증기공장",
+      "description": "두 화로를 번갈아 가동하는 증기공장",
+      "kind": "trash",
+      "price": 3300,
+      "input_count": 30,
+      "output_count": 10,
+      "production_minutes": 300,
+      "storage_minutes": 180,
+      "image_path": "/production/twin-chimney-steamworks.png",
+      "enabled": true
+    },
+    {
+      "id": "wavewheel-express-press",
+      "name": "파도물레 급행 착유기",
+      "description": "파도물레가 힘차게 돌아 빠르게 정제해요",
+      "kind": "fish",
+      "price": 2000,
+      "input_count": 5,
+      "output_count": 4,
+      "production_minutes": 75,
+      "storage_minutes": 40,
+      "image_path": "/production/wavewheel-express-press.png",
+      "enabled": true
+    },
+    {
+      "id": "whale-belly-maturation-refinery",
+      "name": "고래배 숙성 정제소",
+      "description": "고래를 닮은 큰 배 속에서 느긋하게 숙성해요",
+      "kind": "fish",
+      "price": 3000,
+      "input_count": 5,
+      "output_count": 8,
+      "production_minutes": 990,
+      "storage_minutes": 420,
+      "image_path": "/production/whale-belly-maturation-refinery.png",
+      "enabled": true
     }
   ]
 }

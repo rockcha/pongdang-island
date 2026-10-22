@@ -7,6 +7,7 @@ import { DownloadPage } from '@/pages/download-page'
 import { BoardPage, BoardDetailPage } from '@/features/board/board-page'
 import { CollectionPage } from '@/features/collection/collection-page'
 import { StoragePage } from '@/features/aquarium/storage-page'
+import { ProductionPage } from '@/features/production/production-page'
 import { OperatorGuard } from '@/components/operator-guard'
 import { TitlePicker } from '@/features/titles/title-picker'
 import { ExpeditionPage } from '@/features/expeditions/expedition-page'
@@ -61,6 +62,8 @@ export function AppRoutes() {
             <Route path="aquarium" element={<AquariumPage />} />
             <Route path="collection" element={<CollectionPage />} />
             <Route path="storage" element={<StoragePage />} />
+            <Route path="production" element={<ProductionPage />} />
+            <Route path="production-shop" element={<ProductionPage shop />} />
             <Route
               path="collection-animation"
               element={

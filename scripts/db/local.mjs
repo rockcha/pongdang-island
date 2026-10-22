@@ -54,6 +54,7 @@ export async function readCatalog(db) {
   if((await db.query("select to_regclass('public.fishing_rods') is not null as present")).rows[0].present)result.fishing_rods=(await db.query('select * from public.fishing_rods order by id')).rows
   if((await db.query("select to_regclass('public.harbor_vessels') is not null as present")).rows[0].present)result.harbor_vessels=(await db.query('select * from public.harbor_vessels order by id')).rows
   if(JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8')).title_catalog)result.title_catalog=(await db.query('select * from public.title_catalog order by id')).rows
+  if((await db.query("select to_regclass('public.production_facilities') is not null as present")).rows[0].present)result.production_facilities=(await db.query('select * from public.production_facilities order by id')).rows
   const retained=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8')).retained_species_prices
   if(retained){
     const ids=new Set(retained.map(p=>p.id))

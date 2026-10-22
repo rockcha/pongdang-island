@@ -12,6 +12,8 @@ export const placeBanners: Record<
   string,
   { title: string; image: string; description: string; subtitle: string }
 > = {
+  '/production': {title:'연료 생산소',image:'production',description:'바다를 바라보는 작은 재활용 공방과 따뜻한 가마',subtitle:'바다의 자원을 모아, 다음 항해의 힘으로'},
+  '/production-shop': {title:'연료 생산소 상점',image:'production-shop',description:'작은 화덕과 압축기가 가지런히 진열된 바닷가 설비 가게',subtitle:'나의 섬에 어울리는 작은 공방을 만나요'},
   '/hall-of-fame': {title:'명예의 전당',image:'lighthouse',description:'등대 곁에서 함께 기리는 퐁당섬의 기록',subtitle:'낚싯대 끝에 쌓인, 우리들의 이야기'},
   '/showcase': {title:'자랑하기',image:'community-board',description:'바다의 특별한 순간을 나누는 게시판',subtitle:'특급과 신화, 그 순간을 함께 나눠요'},
   '/board': {

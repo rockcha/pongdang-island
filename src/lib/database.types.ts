@@ -36,6 +36,11 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      production_state:{Args:Record<string,never>;Returns:import('@/features/production/api').ProductionState}
+      production_materials:{Args:{p_facility:string};Returns:import('@/features/production/api').ProductionMaterial[]}
+      production_action:{Args:Omit<import('@/features/production/api').ProductionAction,'p_quantity'>;Returns:import('@/features/production/api').ProductionState}
+      production_bulk_action:{Args:import('@/features/production/api').ProductionBulkAction;Returns:import('@/features/production/api').ProductionState}
+      production_purchase:{Args:import('@/features/production/api').ProductionPurchase;Returns:import('@/features/production/api').ProductionState}
       showcase_feed:{Args:{p_mine?:boolean;p_offset?:number};Returns:import('@/features/showcase/api').ShowcaseFeed}
       publish_fishing_showcase:{Args:{p_operation_id:string;p_caption:string};Returns:string}
       react_fishing_showcase:{Args:{p_post_id:string;p_reaction:import('@/features/showcase/api').ShowcaseReaction|null};Returns:import('@/features/showcase/api').ShowcasePost}

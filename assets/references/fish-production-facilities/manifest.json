@@ -1,0 +1,26 @@
+{
+  "tool": "built-in image_gen",
+  "cameraReference": "public/production/tin-grandpa-hearth.png",
+  "camera": "Fixed elevated 3/4 camera; front lower-left, right side receding upper-right; upper-left lighting; no mirroring.",
+  "normalization": "scripts/prepare-production-art.ps1 -Root assets/references/fish-production-facilities; real alpha bounds, 420px longest axis on 512px canvas, shared baseline y=462.",
+  "entries": [
+    "entries/dewdrop-glass-distiller.json",
+    "entries/otter-hand-press.json",
+    "entries/sunny-shell-infusion-jar.json",
+    "entries/baby-seal-press-vat.json",
+    "entries/dock-grandma-refining-pot.json",
+    "entries/conch-spiral-distiller.json",
+    "entries/wavewheel-express-press.json",
+    "entries/brave-puffer-steam-vat.json",
+    "entries/seahorse-brass-separator.json",
+    "entries/shipwreck-triple-distillation-tower.json",
+    "entries/moon-jelly-cooling-vat.json",
+    "entries/whale-belly-maturation-refinery.json",
+    "entries/deep-pearl-pressure-refiner.json",
+    "entries/manta-twin-wing-centrifuge.json",
+    "entries/lighthouse-thermal-distillery.json",
+    "entries/black-current-deep-refining-tower.json",
+    "entries/coral-honeycomb-thermal-refinery.json",
+    "entries/otter-moon-maturation-tank.json"
+  ]
+}

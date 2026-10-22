@@ -4,6 +4,17 @@ import {shouldFlipSpecies} from '@/features/aquarium/movement-settings'
 import type {OwnedCollectible,Species} from '@/features/collection/api'
 const base:OwnedCollectible={id:'example',species_id:'example',tank_id:'tank',animation_seed:240000,position_x:null,position_y:null,acquired_at:'',species:{id:'example',kind:'fish',name:'개체',description:'',swim_y_min:.2,swim_y_max:.8,speed:.05,size:60,rarity:'common',sprite_sheet_path:'sheet.png',thumbnail_path:'thumb.png',sell_price:30}}
 const item=(settings:Partial<Species>)=>({...base,species:{...base.species,...settings}})
+it('places fixed trash at its configured floor depth and preserves manual placement',()=>{
+ const entity=item({kind:'trash',movement_type:'fixed',swim_y_min:.9,swim_y_max:.98,sprite_sheet_path:null})
+ const motion=new InhabitantMotion(entity)
+ const first={...motion.update(0,0,400,600)}
+ expect(first.y).toBeGreaterThan(480)
+ expect(first.y+first.size).toBeLessThanOrEqual(600)
+ expect(motion.update(30,.1,400,600)).toEqual(first)
+ const position=motion.place(160,220,30,400,600)
+ const restored=new InhabitantMotion({...entity,position_x:position.x,position_y:position.y})
+ expect(restored.update(0,0,400,600)).toMatchObject({x:160,y:220})
+})
 it('drifts diagonally with slow shallow pulses, smooth turns and no rotation',()=>{
  const motion=new InhabitantMotion(item({movement_type:'pulse',flip_with_direction:false}))
  const poses=Array.from({length:1800},(_,i)=>({...motion.update(i*.1,.1,400,600)}))

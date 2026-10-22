@@ -1,0 +1,8 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Create one wide 3:1 panoramic banner for a cozy island game's production facility SHOP. Attached image is STYLE AND WORLD reference only. New composition: a lovely seaside artisan equipment storefront, warm ivory plaster and seafoam timber facade, curved coral tile roof and cream canvas awning. Center-right on orderly wooden display counters are a small brass hand-crank press, little shell-domed kiln, copper pressure pot and one glass condenser, clearly items displayed FOR SALE. Racks of neat brass gears and handles inside open shop doorway. Friendly tiny blank hanging wooden shop sign with NO lettering. Left third is calm pale stone walkway and turquoise bay, quiet lower-left for UI title. Warm golden morning light, flowering coastal plants, distant soft island houses. Beautiful polished painterly anime background matching reference, shaded detailed materials, uncluttered. Opaque full bleed, landscape exactly 3:1. NO text, letters, labels, logos, people, border or collage.",
+  "reference": "public/banners/production.png",
+  "referenceRole": "world and illustration style only",
+  "source": "production-facilities/sources/production-shop-banner.source",
+  "output": "public/banners/production-shop.png"
+}

@@ -19,6 +19,7 @@ it('always shows a disabled update action without a new version',async()=>{
  render(<MemoryRouter><AvatarMenu/><State/></MemoryRouter>)
  fireEvent.click(screen.getByRole('button',{name:'내 계정 메뉴'}))
  const action=await screen.findByRole('menuitem',{name:'지금 업데이트'})
+ expect(screen.getByRole('menuitem',{name:'설정'}).getAttribute('href')).toBe('/profile/settings')
  expect(action.getAttribute('aria-disabled')).toBe('true')
  fireEvent.click(action)
  expect(screen.getByLabelText('업데이트 요청').textContent).toBe('0')

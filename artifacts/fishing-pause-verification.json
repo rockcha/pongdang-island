@@ -1,0 +1,14 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "verifiedAt": "2026-10-22T11:53:18.848946+00:00",
+  "migration": "20261022113750_separate_bite_confirmation_deadline.sql",
+  "migrationSha256": "dc1f45467e6ab178be3b8942365016c9c09084d6b78cbda4d5a957f28d02d5f3",
+  "scope": "11 related fishing function definitions, cast timer columns, new RPC execution grants and this migration history only. Not a full remote schema comparison. No player data queried.",
+  "functionDefinitionsMatch": true,
+  "authenticatedOnlyRpcGrants": true,
+  "previousHistoryGapsUnchanged": [
+    "20261022101208",
+    "20261022102055"
+  ],
+  "newSecurityAdvisorIssues": []
+}

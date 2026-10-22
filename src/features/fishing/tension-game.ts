@@ -7,11 +7,14 @@ export function fishingBiteSeconds(seed:number){
 export const gaugeFailureSeconds=.8
 export const fishingPatterns:Record<Rarity,{pulls:number;min:number;max:number}>={common:{pulls:1,min:5,max:6},rare:{pulls:2,min:6,max:7},epic:{pulls:3,min:7,max:9},mythic:{pulls:4,min:9,max:10}}
 export type FishMood='calm'|'warning'|'surge'|'recover'
-export type TensionGame={wait:number;seed:number;time:number;tension:number;progress:number;danger:number;slack:number;phase:'waiting'|'playing'|'won'|'lost';rarity:Rarity;failureAt?:number;failureReason?:'bait'|'escape'|'wave';reason?:'snap'|'slack'|'timeout'|'bait'|'escape'|'wave'}
+export type TensionGame={wait:number;seed:number;time:number;tension:number;progress:number;danger:number;slack:number;phase:'waiting'|'ready'|'playing'|'won'|'lost';rarity:Rarity;confirmBite?:boolean;failureAt?:number;failureReason?:'bait'|'escape'|'wave';reason?:'snap'|'slack'|'timeout'|'bait'|'escape'|'wave'|'expired'}
 export const fishStrength:Record<Rarity,{pull:number;surge:number;release:number;pace:number;reel:number}>={common:{pull:22,surge:138,release:32,pace:1,reel:65},rare:{pull:28,surge:184,release:37,pace:1.05,reel:75},epic:{pull:35,surge:230,release:41,pace:1.1,reel:85},mythic:{pull:43,surge:276,release:46,pace:1.15,reel:95}}
-export type TensionOptions={rarity?:Rarity;wait?:number;failureAt?:number;failureReason?:'bait'|'escape'|'wave'}
+export type TensionOptions={rarity?:Rarity;wait?:number;confirmBite?:boolean;failureAt?:number;failureReason?:'bait'|'escape'|'wave'}
 export function newTensionGame(random=Math.random,options:TensionOptions={}):TensionGame{
- return {rarity:options.rarity??'common',failureAt:options.failureAt,failureReason:options.failureReason,seed:Math.floor(random()*100000),wait:options.wait??3+Math.max(0,Math.min(1,random()))*2,time:0,tension:38,progress:.12,danger:0,slack:0,phase:'waiting'}
+ return {rarity:options.rarity??'common',confirmBite:options.confirmBite??false,failureAt:options.failureAt,failureReason:options.failureReason,seed:Math.floor(random()*100000),wait:options.wait??3+Math.max(0,Math.min(1,random()))*2,time:0,tension:38,progress:.12,danger:0,slack:0,phase:'waiting'}
+}
+export function startTensionFight(state:TensionGame):TensionGame{
+ return state.phase==='ready'?{...state,phase:'playing'}:state
 }
 // Test controls may shorten only the waiting phase, never the fight or its input.
 export function reduceTensionWait(state:TensionGame,seconds:number):TensionGame{
@@ -55,12 +58,20 @@ export function fishForce(time:number,seed:number,rarity:Rarity):number{
  return behavior.mood==='warning'?strength.release*(.5+behavior.progress*.4):resting
 }
 export function stepTensionGame(state:TensionGame,seconds:number,pulling:boolean):TensionGame{
- if(state.phase==='won'||state.phase==='lost')return state
+ if(state.phase==='ready'||state.phase==='won'||state.phase==='lost')return state
+ if(!Number.isFinite(seconds)||seconds<=0)return state
+ let s={...state},remaining=seconds
+ // Waiting follows elapsed time even when rendering is slow. Skip it in one
+ // step, then carry any excess time into the fight without restarting its clock.
+ if(s.phase==='waiting'){
+  const waiting=Math.max(0,s.wait-s.time)
+  if(remaining<waiting)return {...s,time:s.time+remaining}
+  remaining-=waiting;s.phase='playing';s.time=0
+  if(s.confirmBite&&s.failureAt===undefined)return {...s,phase:'ready'}
+ }
  // Fixed small steps make threshold dwell time independent of display frame rate.
- let s={...state},remaining=Math.max(0,Math.min(seconds,.25))
  while(remaining>0){const dt=Math.min(remaining,1/120);remaining-=dt
   s.time+=dt
-  if(s.phase==='waiting'){if(s.time>=s.wait){s.phase='playing';s.time=0}continue}
   const duration=s.failureAt??fishingFightDuration(s.seed,s.rarity)
   s.progress=Math.min(1,.12+.88*s.time/duration)
   // A server-planned escape is independent of input. Keep the gauge stationary

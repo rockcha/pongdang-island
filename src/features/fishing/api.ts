@@ -2,10 +2,11 @@ import {questProgressChanged} from '@/features/quests/progress-events'
 import { createClient } from '@/lib/client'
 import type { Species } from '@/features/collection/api'
 import type { Rarity } from '@/lib/game/rarity'
+import {readBiteConfirmation} from './bite-confirmation-preference'
 export type FishingBait = { mechanicsVersion?:number;period?:'day'|'night';target_kinds?:string[];successChanceBp?:number;baseSuccessChanceBp?:number;success_chance_bp?:number|null;fish_only?:boolean;alternating?:boolean;nextRarity?:'common'|'rare';id:string; name:string; description:string; price:number|null; effect_kind:'fish'|'decoration'; effect_description:string; image_path:string; common_bp:number; rare_bp:number; epic_bp:number; mythic_bp:number; failure_bp:number }
 export type FishingAttempt = { firstDiscovery?:boolean; operation_id:string; region_id:string; bait_id:string; rarity:Rarity|null; created_at:string;collectible_id?:string|null;species?:Species|null }
 export type PreparedBaitProfile={common_bp:number;rare_bp:number;epic_bp:number;mythic_bp:number;effect_kind:string;target_kinds:string[];period?:'day'|'night'|null}
-export type PreparedFishing = {bait_profile?:PreparedBaitProfile|null;operation_id:string;region_id:string;bait_id:string;eligible:boolean;species:Species|null;rarity:Rarity;wait_seconds:number;failure_at:number;failure_reason:'bait'|'escape'|'wave';expires_at:string;finished:boolean;result:FishingResult|null}
+export type PreparedFishing = {confirm_bite?:boolean;fight_started_at?:string|null;server_now?:string;bait_profile?:PreparedBaitProfile|null;operation_id:string;region_id:string;bait_id:string;eligible:boolean;species:Species|null;rarity:Rarity;wait_seconds:number;failure_at:number;failure_reason:'bait'|'escape'|'wave';expires_at:string;finished:boolean;result:FishingResult|null}
 export type FishingState = {successChanceBp?:number;prepared?:PreparedFishing|null; baits:FishingBait[];regionId?:string;regionName?:string;mapChanceBp?:number }
 export type FishingResult = { attempt:FishingAttempt; replayed:boolean;failure_reason?:string|null }
 export async function loadFishing() {
@@ -26,7 +27,10 @@ export function fishingError(cause:unknown) {
 }
 
 export async function prepareFishing(regionId:string,baitId:string,operationId:string){
- const {data,error}=await createClient().rpc('prepare_fishing',{p_region_id:regionId,p_bait_id:baitId,p_operation_id:operationId});if(error)throw error;return data
+ const {data,error}=await createClient().rpc('prepare_fishing',{p_region_id:regionId,p_bait_id:baitId,p_operation_id:operationId,p_confirm_bite:readBiteConfirmation()});if(error)throw error;return data
+}
+export async function startFishingFight(operationId:string){
+ const {data,error}=await createClient().rpc('start_fishing_fight',{p_operation_id:operationId});if(error)throw error;return data
 }
 export async function finishFishing(operationId:string,won:boolean){
  const {data,error}=await createClient().rpc('finish_fishing',{p_operation_id:operationId,p_won:won});if(error)throw error

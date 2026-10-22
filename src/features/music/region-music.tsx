@@ -1,5 +1,5 @@
 import {useCallback, useEffect, useRef, useState} from 'react'
-import {ChevronDown, Music2, Volume2, VolumeX} from 'lucide-react'
+import {Music2,VolumeX} from 'lucide-react'
 import {claimPlayback, playbackEvent} from './playback-ownership'
 
 const enabledKey = 'pongdang:region-music-enabled'
@@ -34,14 +34,12 @@ export function RegionMusic({regionId}: {regionId: string}) {
   return track ? <MapMusic key={regionId} track={track}/> : null
 }
 function MapMusic({track}: {track: (typeof tracks)[string]}) {
-  const [enabled, setEnabled] = useState(savedEnabled)
-  const [volume, setVolume] = useState(savedVolume)
-  const [expanded, setExpanded] = useState(false)
   const [state, setState] = useState<'paused' | 'loading' | 'playing' | 'blocked' | 'error'>('paused')
   const audio = useRef<HTMLAudioElement | null>(null)
   const generation = useRef(0)
-  const initialEnabled = useRef(enabled)
-  const volumeRef = useRef(volume)
+  const initialEnabled = useRef(savedEnabled())
+  // A previously muted volume must still be audible now that only on/off is exposed.
+  const volumeRef = useRef(savedVolume() || 30)
   const pause = useCallback(() => {
     generation.current++
     audio.current?.pause()
@@ -85,35 +83,19 @@ function MapMusic({track}: {track: (typeof tracks)[string]}) {
   }, [pause, start, track.src])
   function toggle() {
     if (state === 'playing' || state === 'loading') {
-      setEnabled(false)
       save(enabledKey, 'false')
       pause()
     } else {
-      setEnabled(true)
       save(enabledKey, 'true')
       start()
     }
   }
-  const playing = state === 'playing'
-  return <div className="absolute top-2 left-2 z-30 max-w-[calc(100%-1rem)] text-[#725039]">
-    <div className="flex min-h-11 items-center rounded-full border border-white/70 bg-[#fff8eb]/90 shadow-sm backdrop-blur-md">
-      <button type="button" onClick={toggle} aria-label={playing || state === 'loading' ? '배경음악 끄기' : '배경음악 켜기'} aria-pressed={playing} className="flex min-h-10 items-center gap-2 rounded-full px-3 text-xs">
-        {playing ? <Music2 className="size-4"/> : <VolumeX className="size-4"/>}
-        <span>{state === 'loading' ? '음악 불러오는 중' : state === 'blocked' ? '눌러서 음악 시작' : state === 'error' ? '음악 다시 재생' : playing ? track.label : '배경음악 꺼짐'}</span>
-      </button>
-      <button type="button" aria-label="배경음악 볼륨 조절" aria-expanded={expanded} onClick={() => setExpanded(value => !value)} className="flex size-10 items-center justify-center rounded-full border-l border-[#725039]/10"><ChevronDown className={`size-3.5 transition-transform ${expanded ? 'rotate-180' : ''}`}/></button>
-    </div>
-    {expanded && <div className="mt-2 w-60 rounded-2xl border border-white/70 bg-[#fff8eb]/95 p-3 shadow-sm backdrop-blur-md">
-      <p className="text-xs">{track.title}</p>
-      <p className="mt-1 text-[10px] opacity-65">{track.artist}</p>
-      <label className="mt-3 flex items-center gap-2 text-xs"><Volume2 className="size-4"/><span className="sr-only">배경음악 볼륨</span><input type="range" min="0" max="100" value={volume} onChange={event => {
-        const next = Number(event.target.value)
-        volumeRef.current = next
-        setVolume(next)
-        save(volumeKey, String(next))
-        if (audio.current) audio.current.volume = next / 100
-      }} className="min-w-0 flex-1 accent-[#ad8056]"/><span className="w-8 text-right tabular-nums">{volume}%</span></label>
-      {!enabled && <p className="mt-2 text-[10px] opacity-65">음악을 켜면 이 볼륨으로 재생해요.</p>}
-    </div>}
-  </div>
+  const on=state==='playing'||state==='loading'
+  const status=state==='loading'?'음악 불러오는 중':state==='blocked'?'눌러서 음악 시작':state==='error'?'음악 다시 재생':state==='playing'?track.label:'배경음악 꺼짐'
+  return <>
+    <button type="button" onClick={toggle} aria-label={on?'배경음악 끄기':'배경음악 켜기'} aria-pressed={on} aria-busy={state==='loading'} title={`${status} · ${track.title} · ${track.artist}`} className={`flex size-9 shrink-0 items-center justify-center rounded-full border border-white/10 backdrop-blur-[2px] transition-colors hover:bg-slate-950/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 ${on?'bg-slate-950/25 text-white/85':'bg-slate-950/20 text-white/55'}`}>
+      {on?<Music2 aria-hidden="true" className="size-3.5"/>:<VolumeX aria-hidden="true" className="size-3.5"/>}
+    </button>
+    <span role="status" className="sr-only">{status}</span>
+  </>
 }

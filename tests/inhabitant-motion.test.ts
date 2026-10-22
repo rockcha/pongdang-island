@@ -8,6 +8,27 @@ function item(kind='fish'): OwnedCollectible {
     species: { id: kind, kind, name: kind, description: '', swim_y_min: .2, swim_y_max: .7, speed: .05, size: 72, rarity: 'common', sprite_sheet_path: 'fish.png', thumbnail_path: 'thumb.png', sell_price: 10 } } as OwnedCollectible
 }
 
+it('keeps salvaged treasure trash still near the floor and respects manual placement',()=>{
+ const ids=['soaked-banknote-bundle','soaked-money-pouch','pirate-gold-coin-sack','gold-dust-glass-bottle','salvaged-gold-fragment','pirate-coin-bundle','dragon-king-vault']
+ for(const id of ids){
+  const species=catalog.collectible_species.find(s=>s.id===id)
+  expect(species,id).toBeDefined()
+  for(const [width,height] of [[320,560],[768,800]]){
+   const owned={...item('trash'),species} as unknown as OwnedCollectible
+   const motion=new InhabitantMotion(owned)
+   const first={...motion.update(0,0,width,height)}
+   expect(first.y+first.size,id).toBeGreaterThan(height*.88)
+   expect(first.y+first.size,id).toBeLessThanOrEqual(height)
+   expect(motion.update(60,.1,width,height),id).toEqual(first)
+   motion.flee(first.x+first.size/2,first.y+first.size/2,60,120)
+   expect(motion.update(61,.1,width,height),id).toEqual(first)
+   const placed=new InhabitantMotion({...owned,position_x:.4,position_y:.3})
+   expect(placed.update(0,0,width,height).y,id).toBeCloseTo(.3*(height-first.size))
+   expect(placed.update(60,.1,width,height).y,id).toBeCloseTo(.3*(height-first.size))
+  }
+ }
+})
+
 it('keeps every catalog crawler near the bottom at mobile and desktop sizes',()=>{
  for(const species of catalog.collectible_species.filter(s=>s.movement_type==='crawl')){
   for(const [width,height] of [[320,560],[768,800]]){

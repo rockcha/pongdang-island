@@ -18,6 +18,7 @@ import { AquariumToolButton } from '@/features/aquarium/aquarium-tool-button'
 import { CollectibleThumbnail } from './collectible-thumbnail'
 import { CollectibleKindIcon } from './collectible-kind-icon'
 import { PrimaryHabitat } from './native-region-badge'
+import {TreasureTrashBadge} from './treasure-trash-badge'
 import {collectibleCardTones} from './collectible-card-tones'
 import { kindLabels, loadCollection } from './api'
 import type { CollectionState, CatalogEntry, Species } from './api'
@@ -95,6 +96,7 @@ export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='
      <article aria-label={s.name} className="collection-card relative h-full border-r border-b bg-background/80">
       <button type="button" aria-label={s.name+(s.discovered||previewAll?' 상세 보기':' 미발견')} onClick={()=>setDetail(s)} className="flex h-full w-full cursor-pointer flex-col items-center pb-2 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring">
        <div className={`relative flex w-full items-center justify-center bg-gradient-to-b px-1 pt-3 pb-2 ${collectibleCardTones[s.rarity]}`}><CollectibleThumbnail loading="lazy" fadeIn path={s.thumbnail_path} name={s.name} className={"aspect-square w-full max-w-24 "+(!s.discovered&&!previewAll?"opacity-80 [&_img]:brightness-[.25]":"")}/></div>
+       <span className={`pointer-events-none absolute left-2 ${onAddTemporary?'top-12':'top-2'}`}><TreasureTrashBadge speciesId={s.id}/></span>
        {s.is_native&&s.native_region_id&&regionIcons[s.native_region_id]&&<span aria-label={regionIcons[s.native_region_id].name+' 주 서식지'} title={regionIcons[s.native_region_id].name+' 주 서식지'} className="absolute right-2 top-2 inline-flex size-7 items-center justify-center rounded-full border border-border/60 bg-background/95 p-1 shadow-sm"><img src={regionIcons[s.native_region_id].src} alt="" className="size-5 object-contain"/></span>}
        <h3 title={s.name} className="mt-2 h-5 w-full truncate px-1 text-xs font-medium leading-5">{s.name}</h3>
 

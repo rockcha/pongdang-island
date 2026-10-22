@@ -7,6 +7,7 @@ import { collectibleUrl } from '@/features/collection/api'
 import type { Species } from '@/features/collection/api'
 import { useLayoutEffect, useId, useRef, useState } from 'react'
 import { fishBehavior, fishForce, fishStrength } from './tension-game'
+import {waitingFloatRipples} from './waiting-float-ripples'
 import type { FishMood,TensionGame } from './tension-game'
 
 const waters:Record<string,{top:string;bottom:string;light:string}>= {
@@ -113,6 +114,7 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
    {[-1,1].map(side=><path key={side} d={`M${bx+side*(24+tug*8)} ${by-20}q${side*12} -12 ${side*20} -30 M${bx+side*38} ${by-8}l${side*23} -12`} fill="none" stroke={palette.light} strokeWidth="2" strokeLinecap="round" opacity={tug*.55}/>)}
   </g>}
   {active&&!waiting&&!won&&[0,1,2].map(i=>{const ripple=(t*1.1+i/3)%1;return <ellipse key={i} cx={bx} cy={by+10} rx={12+ripple*(surge?62:35)} ry={3+ripple*10} stroke={palette.light} fill="none" opacity={reduced?0:(1-ripple)*(surge?.55:.25)} strokeWidth={surge?1.8:1}/>})}
+  {active&&waiting&&!reduced&&<g data-fishing-wait-ripples="true" transform={`translate(${bx} ${by+10})`} pointerEvents="none">{waitingFloatRipples(game.seed,game.time-2.65).map(ripple=><ellipse key={ripple.key} cx={ripple.dx} rx={ripple.rx} ry={ripple.ry} opacity={ripple.opacity} stroke={palette.light} strokeWidth=".8" fill="none"/>)}</g>}
   <ellipse cx={bx} cy={by+10} rx={(surge?28:18)*bobScale} ry="5" stroke={palette.light} fill="none" opacity={.5*(won?1-lift:1)}/>
   <ellipse cx={bx} cy={by+10} rx={(surge?40:28)*bobScale} ry="9" stroke={palette.light} fill="none" opacity={.2*(won?1-lift:1)}/>
   {/* SVG paint order keeps the gauge behind the line, float and rod. Anchor to calm water, not bobbing motion. */}
@@ -133,7 +135,7 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
   {rod?.id==='mukhyang'&&<g transform={`translate(${tip.x} ${tip.y})`}><path d="M-3 6Q-8-1 0-15Q7-3 3 6Z" fill="#293b35"/><path d="M0-13V4" stroke="#8eaaa0" strokeWidth=".7"/></g>}
   <path d="M299 382l-18-34" stroke={rod&&rod.id!=="basic"?rod.accent:"#c89c6e"} strokeWidth="7" strokeLinecap="round"/>
   {(hasRodSkin(rod?.id)||hasRodImages(rod?.id))?<><g transform="translate(283 344)"><RodSkinGrip id={rod!.id}/></g><g transform="translate(282 358) scale(.4)"><RodSkinFrame id={rod!.id}/><g transform={`rotate(${reduced?0:visual.reel})`}><RodSkinRotor id={rod!.id}/></g></g></>:<>  <g transform={`translate(282 358) rotate(${reduced?0:visual.reel})`}><circle r="12" fill={rod&&rod.id!=="basic"?rod.color:"#183b53"} stroke={rod&&rod.id!=="basic"?rod.accent:"#abc7ce"} strokeWidth="2"/><path d="M-8 0H8M0-8V8" stroke="#abc7ce" strokeWidth="2"/><circle r="4" fill={rod?.accent??"#d7b388"}/><circle cx="8" cy="0" r="3" fill="#d7b388"/></g></>}
-  </g>{active&&canBite&&!waiting&&game.time<.7&&<text x="200" y="72" textAnchor="middle" fill="#fff1d4" fontSize="18" fontWeight="bold" opacity={1-game.time/.7}>물었어요!</text>}
+  </g>{active&&canBite&&game.phase==='playing'&&game.time<.7&&<text x="200" y="72" textAnchor="middle" fill="#fff1d4" fontSize="18" fontWeight="bold" opacity={1-game.time/.7}>입질이 왔어요!</text>}
 
  </svg>{label&&<p role="status" className="pointer-events-none absolute -translate-x-1/2 whitespace-nowrap text-center text-sm font-semibold text-white drop-shadow-[0_2px_3px_#174575]" style={{left:bx/400*100+'%',top:(by+27)/sceneHeight*100+'%'}}>{label}</p>}</div>
 }

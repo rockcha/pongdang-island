@@ -1,10 +1,25 @@
 import { act,cleanup,fireEvent,render,screen } from '@testing-library/react'
-import { afterEach,expect,it,vi } from 'vitest'
+import { afterEach,beforeEach,expect,it,vi } from 'vitest'
 vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>'/collectibles/'+path}))
 import { TensionFishingGame } from '@/features/fishing/tension-fishing-game'
 import { fishingBiteSeconds } from '@/features/fishing/tension-game'
+import {saveBiteConfirmation} from '@/features/fishing/bite-confirmation-preference'
 
-afterEach(()=>{cleanup();vi.useRealTimers();vi.restoreAllMocks()})
+// These scenarios exercise automatic play after opting out of bite confirmation.
+beforeEach(()=>saveBiteConfirmation(false))
+afterEach(()=>{cleanup();vi.useRealTimers();vi.restoreAllMocks();localStorage.clear()})
+it('ends an eighty-second foreground wait after eighty real seconds at low FPS',()=>{
+ let next:FrameRequestCallback=()=>{}
+ vi.spyOn(window,'requestAnimationFrame').mockImplementation(callback=>{next=callback;return 1})
+ vi.spyOn(window,'cancelAnimationFrame').mockImplementation(()=>{})
+ render(<TensionFishingGame challenge={{wait:80}} onCaught={vi.fn()} onFailed={vi.fn()} onCancel={vi.fn()}/> )
+ act(()=>next(1))
+ for(let frame=1;frame<160;frame++)act(()=>next(1+frame*500))
+ expect((screen.getByRole('button',{name:'꾹 눌러 당기기'}) as HTMLButtonElement).disabled).toBe(true)
+ act(()=>next(80001))
+ expect((screen.getByRole('button',{name:'꾹 눌러 당기기'}) as HTMLButtonElement).disabled).toBe(false)
+ expect(screen.getByRole('meter')).toBeTruthy()
+})
 it('freezes the current cast for a leave dialog and resumes without resetting or holding the reel',async()=>{
  vi.useFakeTimers();vi.spyOn(Math,'random').mockReturnValue(0)
  const props={onCaught:vi.fn(),onCancel:vi.fn(),onFailed:vi.fn(),castId:'same-cast',challenge:{wait:.1}}
@@ -36,7 +51,7 @@ it('never enables the reel or shows bites and gauges for chance failures',async(
  expect(container.querySelector('[data-rod-gauge]')).toBeNull()
  expect(container.querySelector('[data-fishing-shadow]')).toBeTruthy()
  expect(container.querySelector('[data-fishing-resistance]')).toBeNull()
- expect(screen.queryByText('물었어요!')).toBeNull()
+ expect(screen.queryByText('입질이 왔어요!')).toBeNull()
  await act(async()=>{vi.advanceTimersByTime(1100)})
  expect(failed).toHaveBeenCalledExactlyOnceWith('escape')
  expect(caught).not.toHaveBeenCalled()

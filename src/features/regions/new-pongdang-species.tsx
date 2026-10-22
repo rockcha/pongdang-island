@@ -1,4 +1,5 @@
 import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
+import {TreasureTrashBadge} from '@/features/collection/treasure-trash-badge'
 import type {CatalogEntry} from '@/features/collection/api'
 import {Tabs,TabsList,TabsTrigger,TabsContent} from '@/components/ui/tabs'
 import {regionIcons} from './region-icons'
@@ -29,7 +30,8 @@ export function NewPongdangSpecies({catalog,now=Date.now()}:{catalog:CatalogEntr
     <h3 className="mb-3 flex items-center gap-2 text-sm"><span aria-hidden="true" className="size-2 rounded-full" style={{backgroundColor:rarities[grade].effectColor}}/>{rarities[grade].label}<span className="text-xs tabular-nums text-muted-foreground">{group.length}</span></h3>
     {!group.length&&<p className="py-8 text-center text-sm text-muted-foreground">새로 등록된 {rarities[grade].label} 개체가 없어요.</p>}
     <ul className="grid grid-cols-2 items-stretch gap-3">{group.map(item=>{const region=item.native_region_id?regionIcons[item.native_region_id]:undefined;return <li key={item.id} className="min-w-0">
-     <article className={`h-full overflow-hidden rounded-xl border border-border/60 bg-gradient-to-b ${tones[grade]}`}>
+     <article className={`relative h-full overflow-hidden rounded-xl border border-border/60 bg-gradient-to-b ${tones[grade]}`}>
+      <span className="pointer-events-none absolute left-2 top-2"><TreasureTrashBadge speciesId={item.id}/></span>
       <div className="flex justify-center px-3 pt-3"><CollectibleThumbnail path={item.thumbnail_path} name={item.name} className="h-32 w-full [&_img]:brightness-0" loading="lazy"/></div>
       <div className="px-3 pb-4 pt-3">{region&&<img src={region.src} alt={`주 서식지: ${region.name}`} title={region.name} className="mb-1 size-6 object-contain"/>}<h4 className="break-keep text-sm leading-5">{item.name} <span className="inline-block rounded-[2px] bg-red-600 px-1.5 py-0.5 align-middle text-[9px] font-semibold leading-3 text-white">NEW</span></h4><p className="mt-2 break-words text-xs leading-5 text-muted-foreground">{item.description}</p></div>
      </article>

@@ -1,0 +1,27 @@
+{
+  "tool": "image_gen.imagegen",
+  "transparentBackground": true,
+  "reference": "public/items/baits/halfmoon-honey-jelly.png",
+  "assets": [
+    {
+      "id": "bait_moonshade_dumpling",
+      "name": "달그늘 경단",
+      "storage_path": "items/baits/moonshade-dumpling-v1.png",
+      "source": "C:/Users/ojr55/.codex/generated_images/01a16307-94c0-7b32-b1e4-52d0b4b22fbe/exec-3895e5ae-38e0-4d38-9779-25ab454b730a.png",
+      "prompt": "Use case: stylized-concept. Create one standalone transparent inventory icon for a cozy fantasy fishing game: Moonshade Dumpling (달그늘 경단). A single plump round lavender rice-flour fishing dough dumpling with a midnight indigo marbled swirl, a small ivory crescent moon inset on its front, and a delicate polished golden fishing hook gracefully curving beside it, hook eye visible at top. Reference image is STYLE ONLY: match its beautiful hand-painted storybook shading, jewel-like highlights, warm gold metal and softly rounded readable silhouette, do not copy the reference crescent-shaped jelly subject. Dumpling must be round. Centered three-quarter view, object fills 75 percent of square canvas, ample margin around entire hook. A few restrained tiny silvery specks on dough, no floating scenery. True transparent alpha background. No text, letters, labels, watermark, border, floor or external cast shadow. Polished charming game item readable at 48 pixels.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "e7594048fe4500b580874f9808ac7333da777fc76d552829828eca595dcb713a"
+    },
+    {
+      "id": "bait_deep_sleep_sachet",
+      "name": "깊은잠 향낭",
+      "storage_path": "items/baits/deep-sleep-sachet-v1.png",
+      "source": "C:/Users/ojr55/.codex/generated_images/01a16307-94c0-7b32-b1e4-52d0b4b22fbe/exec-086b0420-9a13-4251-816b-20e975b417e9.png",
+      "prompt": "Use case: stylized-concept. Create one standalone transparent inventory icon for a cozy fantasy fishing game: Deep Sleep Sachet (깊은잠 향낭). A single plump little drawstring sachet of soft midnight-blue and dusky lavender fabric, gathered at the neck with a warm gold cord, an embroidered small ivory crescent moon and three tiny star stitches on its front, a small bundle of lavender herb peeking out at the opening, and a delicate curved polished golden fishing hook attached to the gold cord beside the pouch. Reference image is STYLE ONLY: match its beautiful hand-painted storybook shading, refined highlights, warm gold metal and rounded charming readable silhouette; replace the jelly subject completely with a soft textile herb pouch. A restrained wisp of pale lavender fragrance curls close to the opening. Centered three-quarter view, entire pouch and hook fill 75 percent of square canvas, generous clear margins, soft soothing magical bedtime mood. True transparent alpha background. No text, letters, labels, faces, watermark, frame, floor or external cast shadow. Distinctive polished item readable at 48 pixels.",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "6cedbb179898fec65b5cc157fc624e27e80077d2eeb4b0494907d05766e69203"
+    }
+  ]
+}

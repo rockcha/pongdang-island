@@ -1,7 +1,7 @@
 import {appArt} from '@/components/app-art'
 import { useEffect,useRef, useState } from 'react'
 import { Menu } from '@base-ui/react/menu'
-import {UserRound,Download,LogOut,RefreshCw} from 'lucide-react'
+import {UserRound,Settings,Download,LogOut,RefreshCw} from 'lucide-react'
 import {OPEN_PWA_UPDATE_MENU,requestPwaUpdate,usePwaUpdate} from '@/features/pwa/update-state'
 
 import { Link, useNavigate } from 'react-router'
@@ -54,6 +54,9 @@ export function AvatarMenu() {
           {profile?.equipped_title&&<p className="flex max-w-64 items-center gap-1.5 border-b px-3 py-2 text-[11px] text-primary"><appArt.title className="size-5"/><span className="truncate">{profile.equipped_title}</span></p>}
           <Menu.LinkItem onClick={()=>setOpen(false)} render={<Link to="/profile" />} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm outline-none data-highlighted:bg-accent">
             <UserRound aria-hidden="true" className="size-4 shrink-0" strokeWidth={1.75}/>마이페이지
+          </Menu.LinkItem>
+          <Menu.LinkItem onClick={()=>setOpen(false)} render={<Link to="/profile/settings" />} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm outline-none data-highlighted:bg-accent">
+            <Settings aria-hidden="true" className="size-4 shrink-0" strokeWidth={1.75}/>설정
           </Menu.LinkItem>
           <Menu.LinkItem onClick={()=>setOpen(false)} render={<Link to="/download" />} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm outline-none data-highlighted:bg-accent"><Download aria-hidden="true" className="size-4 shrink-0" strokeWidth={1.75}/>다운로드</Menu.LinkItem>
           <Menu.Item disabled={busy||update.applying||!update.available} onClick={()=>{requestPwaUpdate();setOpen(false)}} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 text-sm text-primary outline-none data-highlighted:bg-accent data-disabled:opacity-50"><RefreshCw aria-hidden="true" className={`size-4 shrink-0 ${update.applying?'motion-safe:animate-spin':''}`} strokeWidth={1.75}/>{update.applying?'업데이트 중…':'지금 업데이트'}{update.available&&<span aria-hidden="true" className="ml-auto size-1.5 rounded-full bg-primary"/>}</Menu.Item>

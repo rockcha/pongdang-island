@@ -1,0 +1,15 @@
+{
+  "project": "ewafafphiovbpjwogwzn.supabase.co",
+  "verifiedAt": "2026-10-22T10:13:58.598Z",
+  "scope": "Two bait image paths and two public Storage file hashes only; full schema and migration history not verified",
+  "rows": [
+    {
+      "id": "bait_moonshade_dumpling",
+      "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/moonshade-dumpling-v1.png"
+    },
+    {
+      "id": "bait_deep_sleep_sachet",
+      "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/deep-sleep-sachet-v1.png"
+    }
+  ]
+}

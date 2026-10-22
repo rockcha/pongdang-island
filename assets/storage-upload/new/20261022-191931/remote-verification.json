@@ -1,0 +1,71 @@
+{
+  "project": "ewafafphiovbpjwogwzn.supabase.co",
+  "verifiedAt": "2026-10-22T10:27:56.010Z",
+  "scope": "Seven species definitions, 84 shared habitats and seven public image hashes only; full schema and migration history not compared or changed",
+  "species": [
+    {
+      "id": "dragon-king-vault",
+      "name": "용왕의 금고",
+      "rarity": "epic",
+      "sell_price": 1500,
+      "movement_type": "fixed",
+      "swim_y_min": 0.88,
+      "swim_y_max": 0.94
+    },
+    {
+      "id": "gold-dust-glass-bottle",
+      "name": "금가루가 든 유리병",
+      "rarity": "rare",
+      "sell_price": 500,
+      "movement_type": "fixed",
+      "swim_y_min": 0.88,
+      "swim_y_max": 0.94
+    },
+    {
+      "id": "pirate-coin-bundle",
+      "name": "해적의 동전꾸러미",
+      "rarity": "rare",
+      "sell_price": 520,
+      "movement_type": "fixed",
+      "swim_y_min": 0.88,
+      "swim_y_max": 0.94
+    },
+    {
+      "id": "pirate-gold-coin-sack",
+      "name": "해적의 금화 자루",
+      "rarity": "common",
+      "sell_price": 200,
+      "movement_type": "fixed",
+      "swim_y_min": 0.88,
+      "swim_y_max": 0.94
+    },
+    {
+      "id": "salvaged-gold-fragment",
+      "name": "금 조각",
+      "rarity": "rare",
+      "sell_price": 510,
+      "movement_type": "fixed",
+      "swim_y_min": 0.88,
+      "swim_y_max": 0.94
+    },
+    {
+      "id": "soaked-banknote-bundle",
+      "name": "젖은 지폐 뭉치",
+      "rarity": "common",
+      "sell_price": 180,
+      "movement_type": "fixed",
+      "swim_y_min": 0.88,
+      "swim_y_max": 0.94
+    },
+    {
+      "id": "soaked-money-pouch",
+      "name": "젖은 돈주머니",
+      "rarity": "common",
+      "sell_price": 190,
+      "movement_type": "fixed",
+      "swim_y_min": 0.88,
+      "swim_y_max": 0.94
+    }
+  ],
+  "habitatCount": 84
+}

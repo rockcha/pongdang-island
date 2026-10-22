@@ -12,7 +12,6 @@ import { Button, buttonVariants } from '@/components/ui/button'
 import { loadRegionMap, regionImageUrl } from './api'
 import type { RegionMap } from './api'
 import {rememberRegion} from './remembered-region'
-import {RegionMusic} from '@/features/music/region-music'
 import {FishingDestinationMenu} from './fishing-destination-menu'
 export function RegionPage(){
  const {regionId}=useParams()
@@ -50,7 +49,6 @@ function Destination({regionId,userId}:{regionId:string;userId?:string}){
    <div ref={setToolbar} role="group" aria-label="낚시 게이지" className="absolute inset-x-0 top-0 z-30 flex flex-col overflow-hidden text-white"/>
    <FishingPanel regionId={region.id} toolbarTarget={toolbar} oddsTarget={oddsTarget}/>
    <div className="absolute right-2 top-2 z-30"><FishingDestinationMenu map={map}/></div>
-   <RegionMusic regionId={region.id}/>
   </div>
  </section>
 }

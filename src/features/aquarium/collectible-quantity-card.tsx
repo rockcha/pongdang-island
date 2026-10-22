@@ -1,4 +1,5 @@
 import {DailyOrderBadge} from '@/features/merchant/daily-order-badge'
+import {TreasureTrashBadge} from '@/features/collection/treasure-trash-badge'
 import {Check,Minus,Plus} from 'lucide-react'
 import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
 import {GoldIcon} from '@/features/gold/gold-provider'
@@ -10,7 +11,7 @@ export function CollectibleQuantityCard({species,count,value,disabled,dailyOrder
    <span aria-hidden="true" className={`absolute left-1.5 top-1.5 grid size-4 place-items-center rounded-full border ${value?'border-primary bg-primary text-primary-foreground':'border-border'}`}>{value>0&&<Check className="size-3"/>}</span>
    <span className="absolute right-1.5 top-1.5 rounded-full bg-secondary px-1.5 text-[10px] leading-4 tabular-nums text-primary">×{count}</span>
    {recent&&<span className="absolute inset-x-6 top-1.5 text-center text-[9px] font-medium leading-4 text-primary">🎣 이번 낚시</span>}
-   {dailyOrder&&<span className="absolute left-1 top-7"><DailyOrderBadge/></span>}
+   <span className="pointer-events-none absolute left-1 top-7 flex flex-col gap-0.5">{dailyOrder&&<DailyOrderBadge/>}<TreasureTrashBadge speciesId={species.id}/></span>
    <CollectibleThumbnail loading="lazy" species={species} path={species.thumbnail_path} name={species.name} className="size-14 shrink-0"/><span className="block h-4 w-full truncate text-[11px] leading-4" title={species.name}>{species.name}</span>
    <span className="flex items-center gap-1 text-[11px] tabular-nums text-primary" aria-label={`개당 ${species.sell_price??0} 골드`}><GoldIcon className="size-4"/>{(species.sell_price??0).toLocaleString('ko-KR')}</span>
   </button>

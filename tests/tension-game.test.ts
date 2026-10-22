@@ -4,6 +4,24 @@ import type { TensionGame } from '@/features/fishing/tension-game'
 import { fishingMessage } from '@/features/fishing/fishing-messages'
 
 const tiers=['common','rare','epic','mythic'] as const
+it('keeps long waits on real time at two frames per second',()=>{
+ let game=newTensionGame(()=>.5,{wait:80})
+ for(let frame=0;frame<159;frame++)game=stepTensionGame(game,.5,false)
+ expect(game.phase).toBe('waiting');expect(game.time).toBe(79.5)
+ game=stepTensionGame(game,.5,false)
+ expect(game.phase).toBe('playing');expect(game.time).toBe(0)
+})
+it('carries a delayed frame across the bite and preserves fixed-step fight outcomes',()=>{
+ const initial=newTensionGame(()=>.5,{wait:80})
+ const delayed=stepTensionGame(initial,81.5,false)
+ expect(delayed.phase).toBe('playing');expect(delayed.time).toBeCloseTo(1.5)
+ let regular=stepTensionGame(initial,80,false)
+ for(let frame=0;frame<90;frame++)regular=stepTensionGame(regular,1/60,false)
+ expect(delayed.tension).toBeCloseTo(regular.tension)
+ expect(delayed.progress).toBeCloseTo(regular.progress)
+ const stalled=stepTensionGame(initial,300,false)
+ expect(stalled).toMatchObject({phase:'lost',reason:'slack'})
+})
 function play(mode:'always'|'never'|'responsive',fps=60,rarity:typeof tiers[number]='common',seed=50000){
  let s={...newTensionGame(()=>.5,{rarity}),seed}
  let pulling=false

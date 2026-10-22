@@ -26,5 +26,5 @@ it('shows actual discovery and accepted friend counts with destination links',as
  render(<MemoryRouter><ProfilePage/></MemoryRouter>)
  await waitFor(()=>expect(screen.getByRole('link',{name:/발견한 개체/}).textContent).toContain('1'))
  expect(screen.getByRole('link',{name:/친구/}).textContent).toContain('1')
- expect(screen.getByRole('link',{name:'설정'}).getAttribute('href')).toBe('/profile/settings')
+ expect(screen.queryByRole('link',{name:'설정'})).toBeNull()
 })

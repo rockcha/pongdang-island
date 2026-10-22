@@ -1,28 +1,22 @@
 import { useState } from 'react'
-import { Link } from 'react-router'
-import { useAppTheme } from '@/components/theme-provider'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import {Fish,Hand} from 'lucide-react'
+import {readBiteConfirmation,saveBiteConfirmation} from '@/features/fishing/bite-confirmation-preference'
 
 export function SettingsPage() {
-  const { theme, setTheme } = useAppTheme()
+  const [confirmBite,setConfirmBite]=useState(readBiteConfirmation)
   const [saveError, setSaveError] = useState(false)
-  const dark = theme === 'dark'
-  return <section className="space-y-6 py-6">
-    <div><Link to="/profile" className="text-sm text-muted-foreground underline underline-offset-4">마이페이지</Link><h1 className="mt-3 text-2xl font-bold">설정</h1></div>
-    <Card><CardHeader><CardTitle>화면 설정</CardTitle></CardHeader><CardContent>
-      <div className="flex items-center justify-between gap-4">
-        <div><label id="dark-mode-label" htmlFor="dark-mode" className="font-medium">다크 모드</label><p id="dark-mode-description" className="mt-2 text-sm text-muted-foreground">어두운 배경으로 편안하게 이용해요.</p></div>
-        <button id="dark-mode" type="button" role="switch" aria-checked={dark} aria-labelledby="dark-mode-label" aria-describedby="dark-mode-description" onClick={() => setSaveError(!setTheme(dark ? 'light' : 'dark'))} className="flex min-h-11 min-w-14 shrink-0 cursor-pointer items-center rounded-lg p-1 outline-none focus-visible:ring-2 focus-visible:ring-ring">
-          <span className={'flex h-7 w-12 items-center rounded-full border p-0.5 transition-colors ' + (dark ? 'border-primary bg-primary' : 'border-input bg-secondary')}><span className={'size-5 rounded-full bg-background shadow-sm transition-transform motion-reduce:transition-none ' + (dark ? 'translate-x-5' : 'translate-x-0')} /></span>
+  return <section className="mx-auto w-full max-w-xl space-y-7 px-1 py-6">
+    <h1 className="text-xl font-medium">설정</h1>
+    <section aria-labelledby="fishing-settings-title" className="overflow-hidden rounded-2xl border border-border/60 bg-card/70">
+      <h2 id="fishing-settings-title" className="flex items-center gap-2 border-b border-border/50 px-5 py-4 text-xs font-medium text-muted-foreground"><Fish aria-hidden="true" className="size-4"/>낚시</h2>
+      <div className="flex items-center justify-between gap-5 px-5 py-5">
+        <div className="min-w-0"><label id="bite-confirm-label" htmlFor="bite-confirm" className="text-sm font-medium">입질 확인 후 시작</label><p id="bite-confirm-description" className="mt-2 text-xs leading-6 text-muted-foreground">입질이 오면 잠깐 멈춰요.<br/>화면을 터치하면 게이지 조작과 제한시간이 시작돼요.<br/>확인 대기는 최대 하루 동안 유지돼요.</p></div>
+        <button id="bite-confirm" type="button" role="switch" aria-checked={confirmBite} aria-labelledby="bite-confirm-label" aria-describedby="bite-confirm-description" onClick={() => {const next=!confirmBite;setConfirmBite(next);setSaveError(!saveBiteConfirmation(next))}} className="flex min-h-11 min-w-14 shrink-0 cursor-pointer items-center justify-center rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring">
+          <span className={'flex h-7 w-12 items-center rounded-full border p-0.5 transition-colors ' + (confirmBite ? 'border-primary bg-primary' : 'border-input bg-secondary')}><span className={'size-5 rounded-full bg-background shadow-sm transition-transform motion-reduce:transition-none ' + (confirmBite ? 'translate-x-5' : 'translate-x-0')} /></span>
         </button>
       </div>
-      <p className="mt-4 text-xs text-muted-foreground">선택한 화면 모드는 이 브라우저에 저장돼요.</p>
-      <aside className="mt-5 rounded-lg border bg-muted/50 p-4 text-sm leading-6">
-        <h2 className="font-medium">다크 모드를 껐는데도 화면이 어둡다면?</h2>
-        <p className="mt-2 text-muted-foreground">브라우저의 강제 다크 모드가 색상을 바꿀 수 있어요. 브라우저 설정에서 ‘웹페이지 다크 모드’ 또는 ‘웹 콘텐츠에 다크 모드 적용’을 꺼주세요. 휴대폰 전체의 다크 모드는 유지해도 괜찮아요.</p>
-        <p className="mt-2 text-xs text-muted-foreground">삼성 인터넷은 설정 → 웹페이지 보기 및 스크롤 → 다크 모드에서 확인해 주세요. 버전에 따라 메뉴 이름은 다를 수 있어요. 변경 후 페이지를 새로고침해 주세요.</p>
-      </aside>
-      {saveError && <p role="alert" className="mt-3 text-sm text-destructive">화면 모드는 적용했지만 저장하지 못했어요. 브라우저의 저장 공간 설정을 확인해 주세요.</p>}
-    </CardContent></Card>
+      <p className="flex items-center gap-2 border-t border-border/40 bg-secondary/20 px-5 py-3 text-[11px] leading-5 text-muted-foreground"><Hand aria-hidden="true" className="size-3.5 shrink-0"/>설정은 이 브라우저에 저장되며 다음 낚시부터 적용돼요.</p>
+      {saveError&&<p role="alert" className="px-5 pb-4 text-xs leading-5 text-destructive">설정은 적용했지만 저장하지 못했어요. 브라우저의 저장 공간 설정을 확인해 주세요.</p>}
+    </section>
   </section>
 }

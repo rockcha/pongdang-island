@@ -1,4 +1,5 @@
 import { Search } from 'lucide-react'
+import {IslandSelect} from '@/components/island-select'
 import type { ProductionFacility } from './api'
 
 export const shopSortOptions = [
@@ -41,18 +42,13 @@ export function ProductionShopFilters({
           className="h-10 min-w-0 flex-1 bg-transparent text-xs outline-none"
         />
       </div>
-      <select
-        aria-label="생산소 정렬"
+      <IslandSelect
+        label="생산소 정렬"
         value={value.sort}
-        onChange={(e) => onChange({ ...value, sort: e.target.value as Metric })}
-        className="min-h-10 w-32 shrink-0 rounded-xl border border-border/70 bg-card px-2 text-[11px] text-primary outline-none focus-visible:ring-2 focus-visible:ring-ring"
-      >
-        {shopSortOptions.map(({ key, label }) => (
-          <option key={key} value={key}>
-            {label}
-          </option>
-        ))}
-      </select>
+        onChange={(sort) => onChange({ ...value, sort })}
+        options={shopSortOptions.map(({key,label})=>({value:key,label}))}
+        className="w-36 shrink-0"
+      />
     </div>
   )
 }

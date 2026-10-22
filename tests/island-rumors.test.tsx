@@ -1,4 +1,4 @@
-import {act,cleanup,render,screen} from '@testing-library/react'
+import {act,cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
 import {islandRumors,islandRumorAt} from '@/features/fishing/island-rumors'
 import {TensionFishingGame} from '@/features/fishing/tension-fishing-game'
@@ -16,9 +16,9 @@ it('offers 100 distinct rumors and visits all of them before repeating',()=>{
 
 it('rotates rumors during the wait, freezes while paused, and removes them at the bite',async()=>{
  vi.useFakeTimers();vi.spyOn(Math,'random').mockReturnValue(0)
- const props={castId:'rumor-cast',challenge:{wait:30},onCaught:vi.fn(),onCancel:vi.fn()}
+ const props={castId:'rumor-cast',challenge:{wait:30,confirmBite:false},onCaught:vi.fn(),onCancel:vi.fn()}
  const {rerender}=render(<TensionFishingGame {...props}/>)
- const card=()=>screen.queryByRole('complementary',{name:'퐁당섬 소문 한 줄'})
+ const card=()=>screen.queryByRole('complementary',{name:'알고 계신가요?'})
  expect(card()?.textContent).toContain(islandRumorAt(0,0).text)
  await act(async()=>{vi.advanceTimersByTime(12500)})
  expect(card()?.textContent).toContain(islandRumorAt(0,1).text)
@@ -36,7 +36,27 @@ it('rotates rumors during the wait, freezes while paused, and removes them at th
 it('keeps rumors off the standby and reserved-failure screens',()=>{
  const props={onCaught:vi.fn(),onCancel:vi.fn()}
  const {rerender}=render(<TensionFishingGame {...props} active={false}/>)
- expect(screen.queryByRole('complementary',{name:'퐁당섬 소문 한 줄'})).toBeNull()
+ expect(screen.queryByRole('complementary',{name:'알고 계신가요?'})).toBeNull()
  rerender(<TensionFishingGame {...props} challenge={{failureAt:3}}/>)
- expect(screen.queryByRole('complementary',{name:'퐁당섬 소문 한 줄'})).toBeNull()
+ expect(screen.queryByRole('complementary',{name:'알고 계신가요?'})).toBeNull()
+})
+
+it('minimizes and reopens the story while preserving its state through pauses',async()=>{
+ vi.useFakeTimers()
+ vi.spyOn(Math,'random').mockReturnValue(0)
+ const props={castId:'first-cast',challenge:{wait:30},onCaught:vi.fn(),onCancel:vi.fn()}
+ const {rerender}=render(<TensionFishingGame {...props}/>)
+ fireEvent.click(screen.getByRole('button',{name:'알고 계신가요? 이야기 접기'}))
+ expect(document.activeElement).toBe(screen.getByRole('button',{name:'알고 계신가요? 이야기 펼치기'}))
+ await act(async()=>{vi.advanceTimersByTime(12500)})
+ expect(screen.queryByRole('complementary')).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'알고 계신가요? 이야기 펼치기'}))
+ expect(screen.getByRole('complementary').textContent).toContain(islandRumorAt(0,1).text)
+ expect(document.activeElement).toBe(screen.getByRole('button',{name:'알고 계신가요? 이야기 접기'}))
+ fireEvent.click(screen.getByRole('button',{name:'알고 계신가요? 이야기 접기'}))
+ rerender(<TensionFishingGame {...props} paused/>)
+ rerender(<TensionFishingGame {...props}/>)
+ expect(screen.queryByRole('complementary')).toBeNull()
+ rerender(<TensionFishingGame {...props} castId="next-cast"/>)
+ expect(screen.getByRole('complementary',{name:'알고 계신가요?'})).toBeTruthy()
 })

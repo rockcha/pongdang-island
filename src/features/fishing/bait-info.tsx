@@ -1,28 +1,20 @@
-import {Clock1,Clock3,Clock6,Clock9,Clock12,Hourglass} from 'lucide-react'
+import {appArt} from '@/components/app-art'
 import {rarities,type Rarity} from '@/lib/game/rarity'
 import type {FishingBait,PreparedFishing} from './api'
 import {baitDurationLevel} from './bait-wait-flavor'
 
-const waits={
- '낮음':{icon:Clock1,color:'border-emerald-200/70 bg-emerald-50 text-emerald-700'},
- '약간 낮음':{icon:Clock3,color:'border-emerald-200/70 bg-emerald-50 text-emerald-700'},
- '보통':{icon:Clock6,color:'border-sky-200/70 bg-sky-50 text-sky-700'},
- '약간 높음':{icon:Clock9,color:'border-amber-200/70 bg-amber-50 text-amber-800'},
- '높음':{icon:Clock12,color:'border-orange-200/70 bg-orange-50 text-orange-800'},
- '매우 높음':{icon:Hourglass,color:'border-violet-200/70 bg-violet-50 text-violet-700'},
+export function BaitWaitInfo({bait}:{bait:Pick<FishingBait,'id'|'period'>}){
+ return <span className="block text-[11px] leading-5 text-muted-foreground">대기시간: <span className="text-foreground/80">{baitDurationLevel(bait.id,bait.period)}</span></span>
 }
-export function BaitWaitTag({bait,iconOnly=false}:{bait:Pick<FishingBait,'id'|'period'>;iconOnly?:boolean}){
- const label=baitDurationLevel(bait.id,bait.period),style=waits[label as keyof typeof waits]??waits['보통'],Icon=style.icon
- return <span aria-label={`기다림 ${label}`} title={`기다림: ${label}`} className={`inline-flex shrink-0 items-center gap-1 rounded-full border px-1.5 py-0.5 text-[10px] font-medium leading-4 ${style.color}`}><Icon aria-hidden="true" className="size-3"/>{!iconOnly&&label}</span>
-}
-export function baitTargetText(bait:FishingBait){
- if(bait.id==='bait_shooting_star_tail')return '일반 쓰레기 · 신화 전체'
- const names:Record<string,string>={fish:'물고기',trash:'쓰레기',decoration:'장식물'}
- const kinds=bait.target_kinds??(bait.id==='bait_grubby_magnet'?['trash']:bait.effect_kind==='decoration'?['decoration']:bait.fish_only?['fish']:['fish','trash'])
- return kinds.map(kind=>names[kind]??kind).join(' · ')
+const targets={fish:{icon:appArt.fish,label:'물고기'},trash:{icon:appArt.trash,label:'쓰레기'},decoration:{icon:appArt.decoration,label:'장식물'}}
+export function baitTargetKinds(bait:FishingBait){
+ if(bait.id==='bait_shooting_star_tail')return ['fish','trash','decoration']
+ return bait.target_kinds??(bait.id==='bait_grubby_magnet'?['trash']:bait.effect_kind==='decoration'?['decoration']:bait.fish_only?['fish']:['fish','trash'])
 }
 export function BaitTarget({bait}:{bait:FishingBait}){
- return <p className="text-[11px] leading-5 text-muted-foreground"><span>대상: </span><span className="text-foreground/80">{baitTargetText(bait)}</span></p>
+ const kinds=baitTargetKinds(bait)
+ const entries=bait.id==='bait_shooting_star_tail'?[{icon:appArt.trash,label:'일반 쓰레기'},{icon:appArt.all,label:'신화 전체'}]:kinds.map(kind=>targets[kind as keyof typeof targets]??{icon:appArt.all,label:kind})
+ return <span aria-label="포획 대상" className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] leading-5 text-foreground/80">{entries.map(({icon:Icon,label})=><span key={label} className="inline-flex items-center gap-1"><Icon className="size-4"/>{label}</span>)}</span>
 }
 export function BaitOddsBars({bait,compact=false}:{bait:FishingBait;compact?:boolean}){
  const grades=(Object.keys(rarities) as Rarity[]).filter(key=>bait[`${key}_bp`]>0)

@@ -1,12 +1,12 @@
 import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'
 import { createMemoryRouter,Link,MemoryRouter,RouterProvider } from 'react-router'
-const {load,prepare,finish,refresh,transact,storage,aquarium}=vi.hoisted(()=>({load:vi.fn(),prepare:vi.fn(),finish:vi.fn(),refresh:vi.fn(),transact:vi.fn(),storage:vi.fn(),aquarium:vi.fn()}))
+const {load,prepare,begin,finish,refresh,transact,storage,aquarium}=vi.hoisted(()=>({load:vi.fn(),prepare:vi.fn(),begin:vi.fn(),finish:vi.fn(),refresh:vi.fn(),transact:vi.fn(),storage:vi.fn(),aquarium:vi.fn()}))
 vi.mock('@/features/aquarium/api',async original=>({...await original<typeof import('@/features/aquarium/api')>(),loadCollectibleStorage:storage,loadAquarium:aquarium}))
-vi.mock('@/features/fishing/tension-fishing-game',()=>({TensionFishingGame:({onCaught,onCancel,onFailed,active,challenge,outline,start}:{onCaught:()=>void;onCancel:()=>void;onFailed:(reason:string)=>void;active:boolean;challenge:{rarity:string;failureAt?:number};outline?:{name:string};start?:{label:string;disabled:boolean;onStart:()=>void}})=>active?<div data-testid="challenge" data-rarity={challenge.rarity} data-doomed={challenge.failureAt!==undefined} data-outline={outline?.name??'generic'}><button onClick={onCaught}>미니게임 성공</button><button onClick={onCancel}>미니게임 취소</button><button onClick={()=>onFailed('snap')}>미니게임 실패</button></div>:<div>낚싯대가 준비됐어요{start&&<button disabled={start.disabled} onClick={start.onStart}>{start.label}</button>}</div>}))
+vi.mock('@/features/fishing/tension-fishing-game',()=>({TensionFishingGame:({onCaught,onCancel,onFailed,active,challenge,outline,start,onStartFight,expiresAt}:{onStartFight?:()=>Promise<boolean>;expiresAt?:string;onCaught:()=>void;onCancel:()=>void;onFailed:(reason:string)=>void;active:boolean;challenge:{rarity:string;failureAt?:number};outline?:{name:string};start?:{label:string;disabled:boolean;onStart:()=>void}})=>active?<div data-testid="challenge" data-rarity={challenge.rarity} data-doomed={challenge.failureAt!==undefined} data-outline={outline?.name??'generic'} data-deadline={expiresAt}>{onStartFight&&<button onClick={()=>void onStartFight()}>입질 시작</button>}<button onClick={onCaught}>미니게임 성공</button><button onClick={onCancel}>미니게임 취소</button><button onClick={()=>onFailed('snap')}>미니게임 실패</button></div>:<div>낚싯대가 준비됐어요{start&&<button disabled={start.disabled} onClick={start.onStart}>{start.label}</button>}</div>}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:()=>null}))
 vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>'/collectibles/'+path}))
-vi.mock('@/features/fishing/api',()=>({loadFishing:load,prepareFishing:prepare,finishFishing:finish,fishingError:()=> '결과를 다시 확인해주세요.'}))
+vi.mock('@/features/fishing/api',()=>({loadFishing:load,prepareFishing:prepare,startFishingFight:begin,finishFishing:finish,fishingError:()=> '결과를 다시 확인해주세요.'}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wallet:{gold:1000,inventory:{bait:2}},transact,refresh,busy:false,loading:false,error:''})}))
 import { FishingPanel } from '@/features/fishing/fishing-panel'
 import { CatchReveal } from '@/features/fishing/catch-reveal'
@@ -186,4 +186,26 @@ it('starts real fishing on LAN HTTP without randomUUID',async()=>{
  const source=globalThis.crypto
  vi.stubGlobal('crypto',{getRandomValues:source.getRandomValues.bind(source)})
  try{setup();await start();expect(prepare).toHaveBeenCalledWith('pongdang','bait',expect.stringMatching(/^[0-9a-f-]{36}$/))}finally{vi.unstubAllGlobals()}
+})
+
+it('starts the reserved cast once and forwards the server-confirmed deadline without spending another bait',async()=>{
+ setup()
+ prepare.mockResolvedValue({...plan,confirm_bite:true})
+ begin.mockResolvedValue({...plan,confirm_bite:true,fight_started_at:'2026-10-22T12:00:00Z',expires_at:'2026-10-22T12:03:00Z',server_now:'2026-10-22T12:00:00Z'})
+ await start()
+ expect(begin).not.toHaveBeenCalled()
+ fireEvent.click(screen.getByRole('button',{name:'입질 시작'}))
+ await waitFor(()=>expect(screen.getByTestId('challenge').dataset.deadline).toBe('2026-10-22T12:03:00Z'))
+ expect(begin).toHaveBeenCalledExactlyOnceWith(plan.operation_id)
+ expect(prepare).toHaveBeenCalledOnce();expect(finish).not.toHaveBeenCalled();expect(transact).not.toHaveBeenCalled()
+})
+
+it('shows the server result if an abandoned confirmation is already expired when tapped',async()=>{
+ setup()
+ prepare.mockResolvedValue({...plan,confirm_bite:true})
+ begin.mockResolvedValue({...plan,confirm_bite:true,finished:true,result:{attempt:{operation_id:plan.operation_id,rarity:null,species:null},failure_reason:'expired'}})
+ await start()
+ fireEvent.click(screen.getByRole('button',{name:'입질 시작'}))
+ expect(await screen.findByText('낚시 시간이 지나 물고기가 떠났어요.')).toBeTruthy()
+ expect(prepare).toHaveBeenCalledOnce();expect(finish).not.toHaveBeenCalled()
 })

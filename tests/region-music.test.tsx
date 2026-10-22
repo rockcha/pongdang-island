@@ -1,6 +1,8 @@
 import {act, cleanup, fireEvent, render, screen, waitFor} from '@testing-library/react'
 import {afterEach, beforeEach, expect, it, vi} from 'vitest'
 import {RegionMusic} from '@/features/music/region-music'
+import {TensionFishingGame} from '@/features/fishing/tension-fishing-game'
+vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>'/collectibles/'+path}))
 import {claimPlayback, playbackEvent} from '@/features/music/playback-ownership'
 
 let players: FakeAudio[] = []
@@ -19,7 +21,7 @@ beforeEach(() => {
   players = []
   vi.stubGlobal('Audio', FakeAudio)
 })
-afterEach(() => { cleanup(); vi.unstubAllGlobals() })
+afterEach(() => { cleanup(); vi.useRealTimers(); vi.unstubAllGlobals() })
 it('starts only the supported map, loops, and stops on leaving', async () => {
   const view = render(<RegionMusic regionId="dreamabyss"/>)
   expect(players).toHaveLength(0)
@@ -43,9 +45,8 @@ it('switches from pongdang to coral, stopping the previous track and keeping vol
   expect(players[1].src).toBe('/music/coral.mp3')
   expect(players[1].volume).toBe(.45)
   expect(players[1].loop).toBe(true)
-  fireEvent.click(screen.getByLabelText('배경음악 볼륨 조절'))
-  expect(screen.getByText('모험')).toBeTruthy()
-  expect(screen.getByText('찬사')).toBeTruthy()
+  expect(screen.getByRole('button',{name:'배경음악 끄기'}).getAttribute('title')).toContain('모험')
+  expect(screen.getByRole('button',{name:'배경음악 끄기'}).getAttribute('title')).toContain('찬사')
 })
 it('switches to mistmoon and stops its music on leaving', async () => {
   const view = render(<RegionMusic regionId="coral"/>)
@@ -65,9 +66,8 @@ it('plays the ice sea track with its title and saved volume', async () => {
   expect(players[0].src).toBe('/music/whitenight.mp3')
   expect(players[0].loop).toBe(true)
   expect(players[0].volume).toBe(.4)
-  fireEvent.click(screen.getByLabelText('배경음악 볼륨 조절'))
-  expect(screen.getByText('얼음성')).toBeTruthy()
-  expect(screen.getByText('브금브금 BGMBGM')).toBeTruthy()
+  expect(screen.getByRole('button',{name:'배경음악 끄기'}).getAttribute('title')).toContain('얼음성')
+  expect(screen.getByRole('button',{name:'배경음악 끄기'}).getAttribute('title')).toContain('브금브금 BGMBGM')
 })
 it('switches from the Ghibli cloud harbor to the siren track without overlap', async () => {
   const view = render(<RegionMusic regionId="cloudferry"/>)
@@ -79,8 +79,7 @@ it('switches from the Ghibli cloud harbor to the siren track without overlap', a
   expect(players[0].removeAttribute).toHaveBeenCalledWith('src')
   expect(players[1].src).toBe('/music/siren.mp3')
   expect(players[1].loop).toBe(true)
-  fireEvent.click(screen.getByLabelText('배경음악 볼륨 조절'))
-  expect(screen.getByText('Down Below')).toBeTruthy()
+  expect(screen.getByRole('button',{name:'배경음악 끄기'}).getAttribute('title')).toContain('Down Below')
 })
 it('plays bluegrove with the saved volume and stops on leaving', async () => {
   localStorage.setItem('pongdang:region-music-volume', '35')
@@ -100,17 +99,15 @@ it('switches to mukhyang without overlapping the previous track', async () => {
   expect(players[0].pause).toHaveBeenCalled()
   expect(players[1].src).toBe('/music/mukhyang.mp3')
   expect(players[1].loop).toBe(true)
-  fireEvent.click(screen.getByLabelText('배경음악 볼륨 조절'))
-  expect(screen.getByText('아련한 동양풍 음악 모음')).toBeTruthy()
-  expect(screen.getByText('Tido Kang')).toBeTruthy()
+  expect(screen.getByRole('button',{name:'배경음악 끄기'}).getAttribute('title')).toContain('아련한 동양풍 음악 모음')
+  expect(screen.getByRole('button',{name:'배경음악 끄기'}).getAttribute('title')).toContain('Tido Kang')
 })
 it('plays the star ruins track and stops it when changing regions', async () => {
   const view = render(<RegionMusic regionId="starruins"/>)
   await screen.findByText('별잠 유적의 선율')
   expect(players[0].src).toBe('/music/starruins.mp3')
   expect(players[0].loop).toBe(true)
-  fireEvent.click(screen.getByLabelText('배경음악 볼륨 조절'))
-  expect(screen.getByText('The Fields of Ard Skellig')).toBeTruthy()
+  expect(screen.getByRole('button',{name:'배경음악 끄기'}).getAttribute('title')).toContain('The Fields of Ard Skellig')
   view.rerender(<RegionMusic regionId="pongdang"/>)
   await screen.findByText('퐁당섬의 선율')
   expect(players[0].pause).toHaveBeenCalled()
@@ -123,16 +120,16 @@ it('plays the dinosaur island track and keeps the saved volume', async () => {
   expect(players[0].src).toBe('/music/primal.mp3')
   expect(players[0].volume).toBe(.35)
   expect(players[0].loop).toBe(true)
-  fireEvent.click(screen.getByLabelText('배경음악 볼륨 조절'))
-  expect(screen.getByText('Jurassic Park · Soft Piano Version')).toBeTruthy()
+  expect(screen.getByRole('button',{name:'배경음악 끄기'}).getAttribute('title')).toContain('Jurassic Park · Soft Piano Version')
   view.unmount()
   expect(players[0].pause).toHaveBeenCalled()
 })
-it('remembers off and volume without restarting playback', async () => {
+it('remembers off and the saved volume with only one toggle button', async () => {
+  localStorage.setItem('pongdang:region-music-volume','55')
   const view = render(<RegionMusic regionId="pongdang"/>)
   await screen.findByText('퐁당섬의 선율')
-  fireEvent.click(screen.getByLabelText('배경음악 볼륨 조절'))
-  fireEvent.change(screen.getByRole('slider'), {target: {value: '55'}})
+  expect(screen.queryByRole('slider')).toBeNull()
+  expect(screen.getAllByRole('button')).toHaveLength(1)
   expect(players[0].volume).toBe(.55)
   expect(players[0].play).toHaveBeenCalledTimes(1)
   fireEvent.click(screen.getByLabelText('배경음악 끄기'))
@@ -162,4 +159,31 @@ it('offers a retry when autoplay is blocked', async () => {
   await screen.findByText('눌러서 음악 시작')
   fireEvent.click(screen.getByLabelText('배경음악 켜기'))
   await waitFor(() => expect(screen.getByLabelText('배경음악 끄기').getAttribute('aria-pressed')).toBe('true'))
+})
+
+it('uses an audible default when the old volume setting was zero',async()=>{
+ localStorage.setItem('pongdang:region-music-volume','0')
+ render(<RegionMusic regionId="pongdang"/>)
+ await screen.findByText('퐁당섬의 선율')
+ expect(players[0].volume).toBe(.3)
+})
+
+it('keeps music mounted beside the minimized story through reopening and new casts',async()=>{
+ vi.useFakeTimers()
+ const props={backgroundMusic:true,castId:'first',challenge:{wait:30},onCaught:vi.fn(),onCancel:vi.fn()}
+ const view=render(<TensionFishingGame {...props}/>)
+ await act(async()=>{})
+ const music=screen.getByRole('button',{name:'배경음악 끄기'})
+ fireEvent.click(screen.getByRole('button',{name:'알고 계신가요? 이야기 접기'}))
+ const story=screen.getByRole('button',{name:'알고 계신가요? 이야기 펼치기'})
+ expect(story.parentElement).toBe(music.parentElement)
+ fireEvent.click(story)
+ view.rerender(<TensionFishingGame {...props} castId="second"/>)
+ view.rerender(<TensionFishingGame {...props} active={false}/>)
+ expect(screen.getByRole('button',{name:'배경음악 끄기'})).toBe(music)
+ expect(players).toHaveLength(1)
+ expect(players[0].play).toHaveBeenCalledTimes(1)
+ expect(players[0].pause).not.toHaveBeenCalled()
+ view.unmount()
+ expect(players[0].pause).toHaveBeenCalledOnce()
 })

@@ -635,7 +635,7 @@
       "name": "깊은잠 향낭",
       "description": "아주 긴 기다림 끝에 깊은 곳의 손님을 만나요. 바다를 바라보며 충분히 여유를 가져 주세요.",
       "price": 380,
-      "image_path": "/app-icons/bait.png",
+      "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/deep-sleep-sachet-v1.png",
       "sort_order": 305,
       "common_bp": 0,
       "rare_bp": 8400,
@@ -851,7 +851,7 @@
       "name": "달그늘 경단",
       "description": "햇살 아래서는 차분하게, 밤에는 조금 더 오래 기다려 주세요. 달그늘이 짙어지면 희귀한 손님이 더 자주 찾아와요.",
       "price": 130,
-      "image_path": "/app-icons/bait.png",
+      "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/moonshade-dumpling-v1.png",
       "sort_order": 317,
       "common_bp": 5500,
       "rare_bp": 4500,
@@ -2703,6 +2703,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "dragon-king-vault",
+      "kind": "trash",
+      "name": "용왕의 금고",
+      "description": "깊은 바다에 가라앉았던 용왕의 금고. 용 비늘 무늬의 문과 산호가 붙은 잠금장치 사이로 오래된 금빛이 새어 나온다.",
+      "swim_y_min": "0.88",
+      "swim_y_max": "0.94",
+      "speed": "0.001",
+      "size": 104,
+      "rarity": "epic",
+      "thumbnail_path": "trash/epic/dragon-king-vault_thumbnail.png",
+      "sell_price": 1500,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "dreaming-dumbo-octopus",
       "kind": "fish",
       "name": "꿈꾸는 덤보문어",
@@ -3114,6 +3132,24 @@
       "native_region_id": null,
       "movement_type": "swim",
       "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "gold-dust-glass-bottle",
+      "kind": "trash",
+      "name": "금가루가 든 유리병",
+      "description": "흐릿해진 유리병 바닥에 고운 금가루가 쌓여 있다. 물결에 기울일 때마다 금빛 모래가 천천히 흘러내린다.",
+      "swim_y_min": "0.88",
+      "swim_y_max": "0.94",
+      "speed": "0.001",
+      "size": 64,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/gold-dust-glass-bottle_thumbnail.png",
+      "sell_price": 500,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
       "travel_direction": "both"
     },
     {
@@ -5007,6 +5043,42 @@
       "travel_direction": "both"
     },
     {
+      "id": "pirate-coin-bundle",
+      "kind": "trash",
+      "name": "해적의 동전꾸러미",
+      "description": "해적의 붉은 천에 단단히 싸인 오래된 동전꾸러미. 매듭 사이로 서로 다른 문양의 금화가 비친다.",
+      "swim_y_min": "0.88",
+      "swim_y_max": "0.94",
+      "speed": "0.001",
+      "size": 68,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/pirate-coin-bundle_thumbnail.png",
+      "sell_price": 520,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pirate-gold-coin-sack",
+      "kind": "trash",
+      "name": "해적의 금화 자루",
+      "description": "파도에 떠밀려온 해적의 낡은 금화 자루. 해진 삼베 틈으로 누런 금화가 반짝인다.",
+      "swim_y_min": "0.88",
+      "swim_y_max": "0.94",
+      "speed": "0.001",
+      "size": 74,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/pirate-gold-coin-sack_thumbnail.png",
+      "sell_price": 200,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "pleated-skirt-sea-squirt",
       "kind": "fish",
       "name": "주름치마 우렁쉥이",
@@ -5576,6 +5648,24 @@
       "rarity": "common",
       "thumbnail_path": "decorations/normal/rusty-mini-anchor_thumbnail.png",
       "sell_price": 55,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "salvaged-gold-fragment",
+      "kind": "trash",
+      "name": "금 조각",
+      "description": "오래된 장식에서 떨어져 나온 묵직한 금 조각. 바닷물이 씻어낸 거친 단면에서 금빛이 드러난다.",
+      "swim_y_min": "0.88",
+      "swim_y_max": "0.94",
+      "speed": "0.001",
+      "size": 58,
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/salvaged-gold-fragment_thumbnail.png",
+      "sell_price": 510,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "fixed",
@@ -8139,6 +8229,42 @@
       "travel_direction": "both"
     },
     {
+      "id": "soaked-banknote-bundle",
+      "kind": "trash",
+      "name": "젖은 지폐 뭉치",
+      "description": "바닷물에 퉁퉁 불어 가장자리가 너덜너덜해진 지폐 뭉치. 말라붙은 해초 사이로 아직 쓸 수 있는 지폐가 남아 있다.",
+      "swim_y_min": "0.88",
+      "swim_y_max": "0.94",
+      "speed": "0.001",
+      "size": 64,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/soaked-banknote-bundle_thumbnail.png",
+      "sell_price": 180,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "soaked-money-pouch",
+      "kind": "trash",
+      "name": "젖은 돈주머니",
+      "description": "물에 젖어 묵직해진 낡은 돈주머니. 풀린 입구 사이로 동전 몇 닢이 모습을 드러낸다.",
+      "swim_y_min": "0.88",
+      "swim_y_max": "0.94",
+      "speed": "0.001",
+      "size": 68,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/soaked-money-pouch_thumbnail.png",
+      "sell_price": 190,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "soaked-moonlight-postcard",
       "kind": "trash",
       "name": "젖은 달빛 엽서",
@@ -10277,6 +10403,54 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "dragon-king-vault",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "dragon-king-vault",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "dragon-king-vault",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "dragon-king-vault",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "dragon-king-vault",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "dragon-king-vault",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "dragon-king-vault",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "dragon-king-vault",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "dragon-king-vault",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "dragon-king-vault",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "dragon-king-vault",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "dragon-king-vault",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "dreaming-dumbo-octopus",
       "region_id": "bluegrove"
     },
@@ -10730,6 +10904,54 @@
     },
     {
       "species_id": "god-devouring-leviathan",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "gold-dust-glass-bottle",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "gold-dust-glass-bottle",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "gold-dust-glass-bottle",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "gold-dust-glass-bottle",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "gold-dust-glass-bottle",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "gold-dust-glass-bottle",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "gold-dust-glass-bottle",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "gold-dust-glass-bottle",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "gold-dust-glass-bottle",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "gold-dust-glass-bottle",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "gold-dust-glass-bottle",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "gold-dust-glass-bottle",
       "region_id": "whitenight"
     },
     {
@@ -12601,6 +12823,102 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "pirate-coin-bundle",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "pirate-coin-bundle",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "pirate-coin-bundle",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "pirate-coin-bundle",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "pirate-coin-bundle",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "pirate-coin-bundle",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "pirate-coin-bundle",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pirate-coin-bundle",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "pirate-coin-bundle",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "pirate-coin-bundle",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "pirate-coin-bundle",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "pirate-coin-bundle",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "pirate-gold-coin-sack",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "pirate-gold-coin-sack",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "pirate-gold-coin-sack",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "pirate-gold-coin-sack",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "pirate-gold-coin-sack",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "pirate-gold-coin-sack",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "pirate-gold-coin-sack",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pirate-gold-coin-sack",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "pirate-gold-coin-sack",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "pirate-gold-coin-sack",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "pirate-gold-coin-sack",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "pirate-gold-coin-sack",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "pleated-skirt-sea-squirt",
       "region_id": "bluegrove"
     },
@@ -13086,6 +13404,54 @@
     },
     {
       "species_id": "rusty-mini-anchor",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "salvaged-gold-fragment",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "salvaged-gold-fragment",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "salvaged-gold-fragment",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "salvaged-gold-fragment",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "salvaged-gold-fragment",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "salvaged-gold-fragment",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "salvaged-gold-fragment",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "salvaged-gold-fragment",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "salvaged-gold-fragment",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "salvaged-gold-fragment",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "salvaged-gold-fragment",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "salvaged-gold-fragment",
       "region_id": "whitenight"
     },
     {
@@ -15618,6 +15984,102 @@
     },
     {
       "species_id": "snowspot-capelin",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "soaked-banknote-bundle",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "soaked-banknote-bundle",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "soaked-banknote-bundle",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "soaked-banknote-bundle",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "soaked-banknote-bundle",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "soaked-banknote-bundle",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "soaked-banknote-bundle",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "soaked-banknote-bundle",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "soaked-banknote-bundle",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "soaked-banknote-bundle",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "soaked-banknote-bundle",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "soaked-banknote-bundle",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "soaked-money-pouch",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "soaked-money-pouch",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "soaked-money-pouch",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "soaked-money-pouch",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "soaked-money-pouch",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "soaked-money-pouch",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "soaked-money-pouch",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "soaked-money-pouch",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "soaked-money-pouch",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "soaked-money-pouch",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "soaked-money-pouch",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "soaked-money-pouch",
       "region_id": "whitenight"
     },
     {

@@ -14,6 +14,8 @@ export type AppNotification = {
   expedition_id?:string|null
   harbor_voyage_id?:string|null
   expedition_boost_id?:string|null
+  production_site_id?:string|null
+  production_started_at?:string|null
   notice_id?:string|null
   board_post_id?:string|null
   notice?:{category:'guide'|'update'|'maintenance'|'event'}|null

@@ -5,7 +5,7 @@ let db:any
 const user='00000000-0000-0000-0000-000000000893',other='00000000-0000-0000-0000-000000000894'
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db);for(const id of [user,other])await db.query('insert into auth.users(id) values($1)',[id])},60000)
 afterAll(async()=>{await db?.close()})
-beforeEach(async()=>{await db.exec('truncate app_private.production_sites,app_private.production_operations,public.gold_transactions');await db.query("insert into public.player_wallets(user_id,gold,inventory) values($1,100000,'{}') on conflict(user_id) do update set gold=100000,inventory='{}'",[user])})
+beforeEach(async()=>{await db.exec('truncate public.notifications,app_private.production_sites,app_private.production_operations,public.gold_transactions');await db.query("insert into public.player_wallets(user_id,gold,inventory) values($1,100000,'{}') on conflict(user_id) do update set gold=100000,inventory='{}'",[user])})
 async function rpc(sql:string,args:unknown[],owner=user){await db.exec('set role authenticated');try{await db.query("select set_config('request.jwt.claim.sub',$1,false)",[owner]);return (await db.query(sql,args)).rows[0].result}finally{await db.exec('reset role')}}
 const buy=(facility='tin-grandpa-hearth',quantity=1,op=crypto.randomUUID())=>rpc('select public.production_purchase($1,$2,$3) result',[facility,quantity,op])
 const act=(action:string,facility:string,op=crypto.randomUUID(),owner=user)=>rpc('select public.production_action($1,$2,$3) result',[action,op,facility],owner)

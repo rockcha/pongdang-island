@@ -29,11 +29,11 @@ export function useReturnNotifications(owner:string|undefined,refresh:()=>Promis
   const update=()=>void check(true)
   void check()
   const interval=setInterval(update,60000)
-  for(const event of ['focus','online','harbor-changed','expedition-changed'])window.addEventListener(event,update)
+  for(const event of ['focus','online','harbor-changed','expedition-changed','production-changed'])window.addEventListener(event,update)
   document.addEventListener('visibilitychange',update)
   return()=>{
    active=false;clearInterval(interval);clearTimeout(arrival)
-   for(const event of ['focus','online','harbor-changed','expedition-changed'])window.removeEventListener(event,update)
+   for(const event of ['focus','online','harbor-changed','expedition-changed','production-changed'])window.removeEventListener(event,update)
    document.removeEventListener('visibilitychange',update)
   }
  },[owner])

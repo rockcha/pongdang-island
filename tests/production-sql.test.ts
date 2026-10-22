@@ -8,7 +8,7 @@ async function asUser(id:string,sql:string,args:unknown[]=[]){await db.exec('set
 async function action(kind:string,id=crypto.randomUUID(),materials={}){return (await asUser(u,'select public.production_action($1,$2,$3,$4) result',[kind,id,facility,JSON.stringify(materials)]))[0].result}
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db);for(const id of [u,other])await db.query('insert into auth.users(id) values($1)',[id])},60000)
 afterAll(async()=>{await db?.close()})
-beforeEach(async()=>{await db.exec('truncate app_private.production_sites,app_private.production_operations');await db.query('delete from public.gold_transactions where user_id=$1',[u]);await db.query('delete from public.player_collectibles where user_id=$1',[u]);await db.query("insert into public.player_wallets(user_id,gold,inventory) values($1,10000,'{\"fuel\":3,\"bait\":2}') on conflict(user_id) do update set gold=10000,inventory=excluded.inventory",[u])})
+beforeEach(async()=>{await db.exec('truncate public.notifications,app_private.production_sites,app_private.production_operations');await db.query('delete from public.gold_transactions where user_id=$1',[u]);await db.query('delete from public.player_collectibles where user_id=$1',[u]);await db.query("insert into public.player_wallets(user_id,gold,inventory) values($1,10000,'{\"fuel\":3,\"bait\":2}') on conflict(user_id) do update set gold=10000,inventory=excluded.inventory",[u])})
 it('supports repeat purchases, replays without charging and protects private tables',async()=>{
  const op=crypto.randomUUID(),r=await action('buy',op)
  expect(r.gold).toBe(9200);expect(r.facilities.find((f:any)=>f.id===facility).owned).toBe(true)

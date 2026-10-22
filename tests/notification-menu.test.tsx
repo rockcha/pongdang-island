@@ -8,6 +8,13 @@ vi.mock('@/features/notifications/api',()=>({markRead:mock.opened}))
 vi.mock('@/features/social/social-provider',()=>({useSocial:()=>({owner:'me',notifications:mock.notifications,unread:mock.unread,loading:false,error:null,refresh:mock.refresh})}))
 beforeEach(()=>{vi.clearAllMocks();mock.notifications=[];mock.unread={friend:1,general:0,notice:2,gift:0};mock.opened.mockResolvedValue(undefined);mock.refresh.mockResolvedValue(undefined)})
 afterEach(cleanup)
+it('opens production from a completion notice even after its facility was sold',()=>{
+ mock.notifications=[{id:'fuel',category:'general',kind:'system',title:'연료 생산이 끝났어요!',production_site_id:null,production_started_at:'2026-10-22T00:00:00Z',read_at:null,created_at:new Date().toISOString()} as AppNotification]
+ render(<MemoryRouter><NotificationMenu/></MemoryRouter>)
+ fireEvent.click(screen.getByRole('button',{name:'알림, 읽지 않은 알림 1개'}))
+ expect(screen.getByRole('link',{name:/연료 생산이 끝났어요/}).getAttribute('href')).toBe('/production')
+ expect(document.querySelector('img[src="/app-icons/fuel-can.svg"]')).toBeTruthy()
+})
 it('opens the harbor for a returned fishing boat',()=>{
  mock.notifications=[{id:'boat',category:'general',kind:'system',title:'어선이 돌아왔어요!',harbor_voyage_id:'voyage',read_at:null,created_at:new Date().toISOString()} as AppNotification]
  render(<MemoryRouter><NotificationMenu/></MemoryRouter>)

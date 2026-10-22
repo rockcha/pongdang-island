@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "5028ecc21d3d9dd794575740d2653598349e4021ea80b8e9b2ff93e204a4f2e6",
+  "migrationHash": "66470468aa121cc43216c3768722ba7fe389b23c6fcdec4d8a2c5e364017bf36",
   "structure": {
     "enums": [
       {
@@ -2297,6 +2297,16 @@
         "default": "gen_random_uuid()",
         "identity": "",
         "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "ready_notified_at",
+        "type": "timestamp with time zone",
+        "table": "production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
         "generated": ""
       },
       {
@@ -6050,6 +6060,26 @@
         "generated": ""
       },
       {
+        "name": "production_site_id",
+        "type": "uuid",
+        "table": "notifications",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "production_started_at",
+        "type": "timestamp with time zone",
+        "table": "notifications",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
         "name": "id",
         "type": "uuid",
         "table": "odd_even_runs",
@@ -7634,6 +7664,12 @@
         "definition": "CREATE UNIQUE INDEX production_operations_pkey ON app_private.production_operations USING btree (user_id, operation_id)"
       },
       {
+        "name": "production_sites_due_notifications",
+        "table": "production_sites",
+        "schema": "app_private",
+        "definition": "CREATE INDEX production_sites_due_notifications ON app_private.production_sites USING btree (completes_at) WHERE ((started_at IS NOT NULL) AND (ready_notified_at IS NULL))"
+      },
+      {
         "name": "production_sites_facility_idx",
         "table": "production_sites",
         "schema": "app_private",
@@ -8502,6 +8538,12 @@
         "table": "notifications",
         "schema": "public",
         "definition": "CREATE UNIQUE INDEX notifications_pkey ON public.notifications USING btree (id)"
+      },
+      {
+        "name": "notifications_production_run_once",
+        "table": "notifications",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX notifications_production_run_once ON public.notifications USING btree (production_site_id, production_started_at) WHERE (production_site_id IS NOT NULL)"
       },
       {
         "name": "notifications_recipient_created",
@@ -9705,6 +9747,13 @@
         "schema": "app_private",
         "enabled": "O",
         "definition": "CREATE TRIGGER title_last_bait BEFORE INSERT ON app_private.prepared_fishing_casts FOR EACH ROW EXECUTE FUNCTION app_private.title_last_bait()"
+      },
+      {
+        "name": "production_ready_notice_reset",
+        "table": "production_sites",
+        "schema": "app_private",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER production_ready_notice_reset BEFORE UPDATE OF started_at ON app_private.production_sites FOR EACH ROW WHEN ((old.started_at IS DISTINCT FROM new.started_at)) EXECUTE FUNCTION app_private.reset_production_ready_notice()"
       },
       {
         "name": "title_daily_quest",
@@ -11281,6 +11330,16 @@
         "securityDefiner": true
       },
       {
+        "name": "notify_due_production_sites",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_site_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.notify_due_production_sites(p_site_id uuid DEFAULT NULL::uuid)\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare n integer;\nbegin\n with due as (\n  select id from app_private.production_sites\n  where started_at is not null and ready_notified_at is null\n   and completes_at<=clock_timestamp() and expires_at>clock_timestamp()\n   and (p_site_id is null or id=p_site_id)\n  order by completes_at,id limit 500 for update skip locked\n ), marked as (\n  update app_private.production_sites s set ready_notified_at=clock_timestamp()\n  from due where s.id=due.id returning s.*\n ) insert into public.notifications(recipient_id,category,kind,title,body,production_site_id,production_started_at)\n select s.user_id,'general','system','연료 생산이 끝났어요!',\n  f.name||'에서 연료 '||s.run_output||'개를 만들었어요. 생산소에서 수령해 주세요.',s.id,s.started_at\n from marked s join public.production_facilities f on f.id=s.facility_id\n on conflict(production_site_id,production_started_at) where production_site_id is not null do nothing;\n get diagnostics n=row_count;\n return n;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "odd_even_game",
         "config": [
           "search_path=\"\""
@@ -11597,7 +11656,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.refresh_return_notifications()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare actor uuid:=auth.uid(); trip uuid; n integer:=0; next_at timestamptz;\nbegin\n if actor is null then raise exception 'AUTH_REQUIRED'; end if;\n for trip in select id from public.fishing_expeditions where user_id=actor and claimed_at is null\n  and notified_at is null and returns_at<=clock_timestamp() order by returns_at,id limit 500\n loop n:=n+app_private.notify_due_expeditions(trip); end loop;\n for trip in select id from public.harbor_voyages where user_id=actor and claimed_at is null\n  and notified_at is null and returns_at<=clock_timestamp() order by returns_at,id limit 500\n loop n:=n+app_private.notify_due_harbor_voyages(trip); end loop;\n select min(returns_at) into next_at from (\n  select returns_at from public.fishing_expeditions where user_id=actor and claimed_at is null and notified_at is null\n  union all\n  select returns_at from public.harbor_voyages where user_id=actor and claimed_at is null and notified_at is null\n ) pending;\n return jsonb_build_object('created',n,'nextAt',next_at,'serverNow',clock_timestamp());\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.refresh_return_notifications()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare actor uuid:=auth.uid(); trip uuid; n integer:=0; next_at timestamptz;\nbegin\n if actor is null then raise exception 'AUTH_REQUIRED'; end if;\n for trip in select id from public.fishing_expeditions where user_id=actor and claimed_at is null\n  and notified_at is null and returns_at<=clock_timestamp() order by returns_at,id limit 500\n loop n:=n+app_private.notify_due_expeditions(trip); end loop;\n for trip in select id from public.harbor_voyages where user_id=actor and claimed_at is null\n  and notified_at is null and returns_at<=clock_timestamp() order by returns_at,id limit 500\n loop n:=n+app_private.notify_due_harbor_voyages(trip); end loop;\n for trip in select id from app_private.production_sites where user_id=actor\n  and started_at is not null and ready_notified_at is null\n  and completes_at<=clock_timestamp() and expires_at>clock_timestamp() order by completes_at,id limit 500\n loop n:=n+app_private.notify_due_production_sites(trip); end loop;\n select min(due_at) into next_at from (\n  select returns_at as due_at from public.fishing_expeditions where user_id=actor and claimed_at is null and notified_at is null\n  union all\n  select returns_at from public.harbor_voyages where user_id=actor and claimed_at is null and notified_at is null\n  union all\n  select completes_at from app_private.production_sites where user_id=actor and started_at is not null\n   and ready_notified_at is null and expires_at>clock_timestamp()\n ) pending;\n return jsonb_build_object('created',n,'nextAt',next_at,'serverNow',clock_timestamp());\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11648,6 +11707,16 @@
         "schema": "app_private",
         "arguments": "p_owner uuid",
         "definition": "CREATE OR REPLACE FUNCTION app_private.require_aquarium_friend(p_owner uuid)\n RETURNS void\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_owner is null or p_owner=auth.uid() then raise exception 'FRIENDSHIP_REQUIRED';end if;\n perform 1 from public.friend_requests where status='accepted' and\n ((sender_id=auth.uid() and recipient_id=p_owner) or (recipient_id=auth.uid() and sender_id=p_owner)) for share;\n if not found then raise exception 'FRIENDSHIP_REQUIRED';end if;\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "reset_production_ready_notice",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.reset_production_ready_notice()\n RETURNS trigger\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n new.ready_notified_at:=null;\n return new;\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -18374,6 +18443,12 @@
         "definition": "PRIMARY KEY (id)"
       },
       {
+        "name": "notifications_production_site_id_fkey",
+        "table": "notifications",
+        "schema": "public",
+        "definition": "FOREIGN KEY (production_site_id) REFERENCES app_private.production_sites(id) ON DELETE SET NULL"
+      },
+      {
         "name": "notifications_recipient_id_fkey",
         "table": "notifications",
         "schema": "public",
@@ -23928,6 +24003,62 @@
       {
         "role": "authenticated",
         "table": "notifications",
+        "column": "production_site_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "production_site_id",
+        "schema": "public",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "production_site_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "production_site_id",
+        "schema": "public",
+        "privilege": "UPDATE"
+      },
+      {
+        "role": "authenticated",
+        "table": "notifications",
+        "column": "production_started_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "production_started_at",
+        "schema": "public",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "production_started_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "production_started_at",
+        "schema": "public",
+        "privilege": "UPDATE"
+      },
+      {
+        "role": "authenticated",
+        "table": "notifications",
         "column": "read_at",
         "schema": "public",
         "privilege": "SELECT"
@@ -28244,6 +28375,27 @@
         "arguments": "p_voyage_id uuid"
       },
       {
+        "name": "notify_due_production_sites",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_site_id uuid"
+      },
+      {
+        "name": "notify_due_production_sites",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_site_id uuid"
+      },
+      {
+        "name": "notify_due_production_sites",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_site_id uuid"
+      },
+      {
         "name": "odd_even_game",
         "role": "anon",
         "schema": "app_private",
@@ -29019,6 +29171,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_owner uuid"
+      },
+      {
+        "name": "reset_production_ready_notice",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "reset_production_ready_notice",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "reset_production_ready_notice",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "resolve_fishing",

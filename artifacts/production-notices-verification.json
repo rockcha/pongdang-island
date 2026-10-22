@@ -1,0 +1,19 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "verifiedAt": "2026-10-22T12:14:44.758292+00:00",
+  "migration": "20261022120523_production_ready_notifications.sql",
+  "migrationSha256": "19426a5795d98571c7e1f6cf93b7ebf65ec2182313c77b7314c274c663182750",
+  "scope": "Related production notification functions, new columns, trigger, indexes, foreign key, execution grants, scheduler registration and migration history only. Not a full remote schema comparison. No player data queried.",
+  "functionDefinitionsMatch": true,
+  "scheduler": {
+    "name": "production-ready-notifications",
+    "schedule": "* * * * *",
+    "active": true
+  },
+  "emptyTargetWorkerResult": 0,
+  "newSecurityAdvisorIssues": [],
+  "previousHistoryGapsUnchanged": [
+    "20261022101208",
+    "20261022102055"
+  ]
+}

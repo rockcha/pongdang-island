@@ -10,6 +10,7 @@ vi.mock('@/features/notifications/api', () => ({ markRead }))
 vi.mock('@/features/gold/gold-provider',()=>({useGold:()=>({refresh}),GoldIcon:()=>null}))
 vi.mock('@/features/social/social-provider', () => ({ useSocial: () => ({
   notifications: [
+    { id:'fuel-1',production_site_id:'site',production_started_at:'2026-10-22T00:00:00Z',title:'연료 생산이 끝났어요!',body:'생산소에서 수령해 주세요.',category:'general',kind:'system',read_at:null,created_at:'2026-10-22T01:00:00Z' },
     { id:'notice-1',notice_id:'new-notice',title:'공지 도착',body:'새 공지',category:'notice',kind:'announcement',read_at:null,created_at:'2026-10-14T00:00:00Z' },
     { id: 'friend-1', title: '친구 요청 도착', body: '함께해요', category: 'friend', kind: 'friend_request', request: null, read_at: null, created_at: '2026-10-14T00:00:00Z' },
     { id: 'news-1', title: '새로운 섬 소식', body: '곧 만나요', category: 'general', kind: 'announcement', request: null, read_at: null, created_at: '2026-10-14T00:00:00Z' },
@@ -27,6 +28,7 @@ describe('notification categories and read state', () => {
     expect(screen.getByRole('heading', { name: '친구 요청 도착' })).toBeTruthy()
     expect(screen.queryByRole('heading', { name: '새로운 섬 소식' })).toBeNull()
     fireEvent.click(screen.getByRole('button', { name: '소식 (7)' }))
+    expect(screen.getByRole('link',{name:/연료 생산이 끝났어요/}).getAttribute('href')).toBe('/production')
     expect(screen.getByRole('heading', { name: '새로운 섬 소식' })).toBeTruthy()
     expect(screen.queryByRole('heading', { name: '친구 요청 도착' })).toBeNull()
   })

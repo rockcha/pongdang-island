@@ -174,7 +174,7 @@ it('keeps music mounted beside the minimized story through reopening and new cas
  const view=render(<TensionFishingGame {...props}/>)
  await act(async()=>{})
  const music=screen.getByRole('button',{name:'배경음악 끄기'})
- fireEvent.click(screen.getByRole('button',{name:'알고 계신가요? 이야기 접기'}))
+ fireEvent.click(screen.getByRole('button',{name:'알고 계신가요? 이야기 최소화'}))
  const story=screen.getByRole('button',{name:'알고 계신가요? 이야기 펼치기'})
  expect(story.parentElement).toBe(music.parentElement)
  fireEvent.click(story)

@@ -46,7 +46,7 @@ export function TensionFishingGame({onCaught,active=true,paused=false,regionId='
   startAttempt.current++;startInFlight.current=false;setStarting(false);setStartError('')
   current.current=next;holding.current=false;pointer.current=null;completed.current=false;failed.current=false
   animation.current={time:0,tension:38,reel:0,ending:0}
-  setGame(next);setVisual(animation.current);setPressed(false);setHelpOpen(false);setRumorCollapsed(false)
+  setGame(next);setVisual(animation.current);setPressed(false);setHelpOpen(false)
  },[active,castId,challenge?.rarity,challenge?.wait,challenge?.failureAt,challenge?.failureReason,challenge?.confirmBite])
  useLayoutEffect(()=>{
   const difference=waitReductionSeconds-appliedReduction.current
@@ -138,9 +138,9 @@ export function TensionFishingGame({onCaught,active=true,paused=false,regionId='
 
 
    {!toolbarTarget&&<FishingHelp open={helpOpen} onOpenChange={open=>{release();setHelpOpen(open)}}/>}
-   <div className="absolute inset-x-5 top-14 z-10 flex items-start gap-2">
-    {active&&waiting&&!plannedFailure&&!paused&&!helpOpen&&<FishingRumorCard seed={game.seed} page={Math.floor(game.time/12)} collapsed={rumorCollapsed} onCollapsedChange={setRumorCollapsed}/>}
+   <div data-fishing-story-controls className="absolute left-3 right-16 top-3 z-10 flex items-start gap-2">
     {backgroundMusic&&<RegionMusic regionId={regionId}/>}
+    {(!active||waiting&&!plannedFailure)&&!paused&&!helpOpen&&<FishingRumorCard seed={game.seed} page={Math.floor(game.time/12)} collapsed={rumorCollapsed} onCollapsedChange={setRumorCollapsed}/>}
    </div>
    {onAdvanceWait&&active&&waiting&&!paused&&!helpOpen&&<Button variant="outline" disabled={advancing} onClick={()=>void advanceWait()} className="absolute left-3 top-16 z-20 min-h-11 gap-2 rounded-full border-white/60 bg-background/95 px-3 text-xs shadow-sm"><TimerReset aria-hidden="true" className="size-4"/>{advancing?'당기는 중…':'대기 10초 당기기'}<span className="text-[9px] text-muted-foreground">테스트</span></Button>}
    {active&&!plannedFailure&&!waiting&&!biteReady&&!lost&&<span role="meter" aria-label="버티는 힘" aria-valuenow={Math.round(game.tension)} aria-valuemin={0} aria-valuemax={100} className="sr-only"/>}

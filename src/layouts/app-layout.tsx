@@ -39,7 +39,7 @@ export function AppLayout() {
   const memory=pathname==='/arcade'||pathname.startsWith('/arcade/')
   const { wallet, loading: goldLoading, error: goldError } = useGold()
   if(pathname==='/login'||pathname==='/nickname')return <main className="auth-shell"><Outlet/></main>
-  return <div style={port||expedition||memory||shop||friends||exchange||square||showcase||noticeList||mailbox||home||profile?{height:'100dvh',minHeight:0,overflow:'hidden'}:undefined} className={`app-shell mx-auto flex w-full max-w-md flex-col ${shipyard?'shipyard-shell ':''}${tankScreen||fishing||port?'aquarium-shell':harbor?'aquarium-shell px-4':warehouse?'warehouse-shell px-6':'px-6'}`}>
+  return <div style={port||expedition||memory||shop||friends||exchange||square||showcase||noticeList||mailbox||home||profile?{height:'100dvh',minHeight:0,overflow:'hidden'}:undefined} className={`app-shell mx-auto flex w-full max-w-md sm:max-w-[390px] flex-col ${shipyard?'shipyard-shell ':''}${tankScreen||fishing||port?'aquarium-shell':harbor?'aquarium-shell px-4':warehouse?'warehouse-shell px-6':'px-6'}`}>
     <header className={`pongi-header sticky top-0 z-40 shrink-0 px-3 py-2 ${tankScreen||harbor||fishing||port?'':'-mx-6'}`}>
       {session && <div className="flex min-h-10 items-center justify-between gap-2">
         <div className="flex shrink-0 items-center gap-0">

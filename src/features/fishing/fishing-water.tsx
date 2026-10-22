@@ -90,6 +90,10 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
   <defs>
    <linearGradient id={id} x2="0" y2="1"><stop stopColor={palette.top}/><stop offset="1" stopColor={palette.bottom}/></linearGradient>
    <radialGradient id={`${id}-light`}><stop stopColor={palette.light} stopOpacity=".19"/><stop offset="1" stopColor={palette.light} stopOpacity="0"/></radialGradient>
+   <radialGradient id={`${id}-surface-fade`}><stop stopColor="white" stopOpacity=".9"/><stop offset=".65" stopColor="white" stopOpacity=".45"/><stop offset="1" stopColor="white" stopOpacity="0"/></radialGradient>
+   <mask id={`${id}-surface-mask`} maskUnits="userSpaceOnUse" x="0" y={nearWater-110} width="400" height="210">
+    <ellipse cx="200" cy={nearWater-5} rx="195" ry="105" fill={`url(#${id}-surface-fade)`}/>
+   </mask>
    <filter id={`${id}-depth`} x="-40%" y="-50%" width="180%" height="200%"><feGaussianBlur stdDeviation={(1-approach)*2.8}/></filter>
    <filter id={`${id}-silhouette`} x="-40%" y="-50%" width="180%" height="200%"><feColorMatrix type="matrix" values="0 0 0 0 .035 0 0 0 0 .13 0 0 0 0 .2 0 0 0 1 0"/><feGaussianBlur stdDeviation={(1-approach)*2.8}/></filter>
   </defs>
@@ -101,6 +105,19 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
   {regionId==='mistmoon'&&<g fill="#e5e1ff" opacity=".065"><ellipse cx="50" cy="60" rx="150" ry="20"/><ellipse cx="350" cy="160" rx="140" ry="17"/></g>}
   {Array.from({length:12},(_,i)=><ellipse key={i} cx={(i*73+29)%400} cy={22+(i*47)%290} rx={i%3===0?5:2} ry=".8" fill={palette.light} opacity={reduced?.15:.12+Math.max(0,Math.sin(t+i))*.2}/>) }
   </>}
+  {/* Broad, broken wavelets give the central water depth behind the bite feedback. */}
+  <g data-fishing-sea-surface="true" pointerEvents="none" mask={`url(#${id}-surface-mask)`} opacity={fighting?.55:1}>
+   <ellipse cx={185+Math.sin(t*.2)*9} cy={nearWater-12} rx="130" ry="62" fill={`url(#${id}-light)`} opacity=".32"/>
+   {[-78,-54,-26,7,43,80].map((offset,i)=>{
+    const drift=Math.sin(t*(.32+i*.018)+i*1.7),swell=Math.sin(t*.44+i*1.3)
+    const y=nearWater+offset+swell*1.6,x=28+i%3*17+drift*(4+i*.6)
+    const crest=`M${x} ${y}q${22+i*2} ${-2.6-swell} ${46+i*4} 0 m${16+i%2*12} 1q${30+i*2} ${2.8+swell} ${60+i*4} 0 m18 -1q26 ${-2-swell} 52 0 m17 2q18 -2 36 0`
+    return <g key={offset} opacity={.62+Math.sin(t*.38+i*1.9)*.14}>
+     <path d={crest} transform="translate(0 2.5)" fill="none" stroke={palette.bottom} strokeWidth={2+i*.15} opacity=".15" strokeLinecap="round"/>
+     <path d={crest} fill="none" stroke={palette.light} strokeWidth={.8+i*.12} opacity=".32" strokeLinecap="round"/>
+    </g>
+   })}
+  </g>
   {active&&!waiting&&!won&&approach>0&&<g data-fishing-shadow="true" transform={`translate(${fx} ${fy}) rotate(${won?-65:warning?-35*Math.min(1,behavior.progress):surge?-15:10}) scale(${lost||escapeProgress>0?-fishScale:fishScale} ${fishScale})`} fill="#092b47" filter={`url(#${id}-depth)`} opacity={shadowOpacity}>{outline?<image href={collectibleUrl(outline.thumbnail_path)} x="-36" y="-32" width="72" height="64" preserveAspectRatio="xMidYMid meet" filter={`url(#${id}-silhouette)`}/>:<><path d="M-28 0Q-16-16 8-9L27-22 23-2 29 16 8 8Q-15 17-28 0Z"/><path d="M-5-8l12-14 4 16Z"/></>}</g>}
   {landingSplash&&<g data-fishing-catch-splash="true" transform={`translate(200 ${nearWater+32})`} pointerEvents="none">
    {[0,1,2].map(i=>{const spread=Math.max(0,(splashProgress-i*.12)/(1-i*.12));return <ellipse key={i} rx={18+spread*(78-i*10)} ry={5+spread*18} fill="none" stroke={i===0?'#efffff':palette.light} strokeWidth={2.5-i*.5} opacity={(1-spread)*.8}/>})}

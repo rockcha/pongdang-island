@@ -142,6 +142,7 @@ export type Database = {
       cast_fishing: { Args: { p_region_id: string; p_bait_id: string; p_operation_id: string }; Returns: import('@/features/fishing/api').FishingResult }
       set_region_test_lock: { Args: { p_region_id: string; p_locked: boolean }; Returns: import('@/features/regions/api').RegionMap }
       region_map: { Args: Record<string, never>; Returns: import('@/features/regions/api').RegionMap }
+      set_map_piece_test_count: { Args: {p_region_id:string;p_count:number}; Returns: import('@/features/regions/api').RegionMap }
       travel_region: { Args: { p_region_id: string }; Returns: import('@/features/regions/api').RegionMap }
       buy_aquarium_tank: { Args: { p_operation_id: string }; Returns: import('@/features/gold/api').GoldState & { delta: number } }
       manage_aquarium_tank: { Args: { p_tank_id: string; p_action: string; p_value: string }; Returns: import('@/features/aquarium/api').AquariumState }

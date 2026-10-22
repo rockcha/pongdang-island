@@ -103,7 +103,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{reg
   return createFishingPresentation().failure
  }
  function rememberCatch(attempt:FishingAttempt){
-  if(!attempt.species)return
+  if(!attempt.species||attempt.species.kind==='map')return
   setTrip(previous=>({userId,items:previous.userId===userId?previous.items.some(item=>item.operation_id===attempt.operation_id)?previous.items:[attempt,...previous.items]:[attempt]}))
  }
  function showResult(attempt:FishingAttempt,reason?:string|null){

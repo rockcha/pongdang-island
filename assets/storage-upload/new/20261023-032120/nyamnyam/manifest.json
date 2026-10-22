@@ -1,0 +1,33 @@
+{
+  "tool": "built-in image_gen",
+  "purpose": "Food geography fills more of the scenery; a separate nautical chart for four collected map pieces.",
+  "assets": [
+    {
+      "file": "scenery-v2.png",
+      "source": "C:/Users/user/.codex/generated_images/01a16489-9af2-7dd2-a175-1ef3b2b6e04d/exec-7b949d74-4920-4b03-b4e4-f6ee87397fa1.png",
+      "references": [
+        {
+          "path": "assets/storage-upload/new/20261023-025458/nyamnyam/fishing-background-v1.png",
+          "role": "edit target: environment identity and illustration style"
+        }
+      ],
+      "prompt": "Use case: stylized-concept. Edit target: first reference, the portrait background of Nyamnyam Feast Sea. Keep its warm hand painted gouache fantasy style, golden sunlight, turquoise sea, dumpling islands and gimbap cliffs, but REDESIGN COMPOSITION so the food theme is obvious throughout a tall mobile screen, not tiny islands at the far horizon. Portrait 2:3 full bleed environment illustration. Bring gigantic pleated steamed-dumpling hills with scallion trees CLOSE along the entire left border from upper left down to lower left, a noodle waterfall spilling beside them. Bring terraced gimbap cliffs with distinct rice/seaweed/carrot cross-sections CLOSE along the right middle and lower-right border, with a delicious golden toast island and a fried-egg lighthouse in the right midground. Tiny bun-roof harbor buildings, sesame rocks, warm appetizing orange/coral details. Large nearby food coastlines frame the center like a welcoming cove. Roughly 45 percent food terrain and village, 45 percent turquoise water, 10 percent peach sky. Horizon in upper fifth. The central vertical channel around x 35-65%, y 35-90% remains calm open water for fishing gameplay; DO NOT put big fish or boats or objects there. Some small coral and seaweed at very bottom edges. Food landforms must be big readable geographic features, not a distant panorama and not small decorations. Cozy sumptuous food world, no dining table, no utensils, no people, no text, no UI, no logo. Keep the full image attractive when used as a map-page background behind a centered small map card. No frame, no parchment."
+    },
+    {
+      "file": "map-v2.png",
+      "source": "C:/Users/user/.codex/generated_images/01a16489-9af2-7dd2-a175-1ef3b2b6e04d/exec-b1f674a1-7ab7-40be-b95c-b49b0fefb448.png",
+      "rarity": "rare",
+      "references": [
+        {
+          "path": "assets/storage-upload/new/20261023-025458/nyamnyam/map-v1.png",
+          "role": "food geography"
+        },
+        {
+          "path": "assets/references/collectible-style/common-rare-pongi.png",
+          "role": "rare cartoon style only"
+        }
+      ],
+      "prompt": "Use case: stylized-concept. Create a COMPLETELY REDESIGNED square 1:1 nautical treasure map for the food themed game region Nyamnyam Feast Sea. Reference 1 is only for the world's geography: dumpling island in northwest, gimbap island northeast, noodle coves southwest, toast island with egg lighthouse southeast. Reference 2 is only a style reference for warm brown clean outlines, round readable cartoon shapes and softly shaded colors; do not draw the otter, animals, faces, fishing hook, or reference background. IMPORTANT: this must look like a REAL HAND-DRAWN CARTOGRAPHIC CHART ON PARCHMENT, not a landscape painting framed by parchment. Strict straight-down orthographic 2D map, no horizon, no perspective, no tall cliffs rendered like a scenic poster, no photoreal ocean. Warm ivory aged parchment fills the entire square, subtly irregular worn paper edges, flat faded pale turquoise ink water with many tiny engraved wave dashes, fine sepia double-line coastlines, parallel coastal hatching, very faint nautical rhumb lines, elegant ink compass rose lower right without letters. Four distinct FOOD-SHAPED ISLAND GROUPS, each wholly in its own quadrant: NW large steamed dumpling shaped island with pinched pleat contour lines and tiny scallion-tree symbols; NE several gimbap cross-section round islands whose land is rice with seaweed ring coast and green orange filling; SW a curled noodle ribbon island with a little wooden bridge symbol; SE toast shaped island with a small fried egg lighthouse pictogram. Simple hand drawn cartographic symbols for small trees, hills, harbor piers and tiny buildings, tastefully colored ochre, green, warm orange and cream. Connecting fine brown dotted sailing routes curve across all four quadrants with small unnumbered circular waypoints. The food identity must read immediately even when the chart is small. Plenty of paper breathing space and coherent geographic map layout, land groups together around 50% of chart. Corners have small decorative wave flourishes. No text, no letters, no title, no numbers, no legend boxes, no UI, no puzzle seams or grid, no ships, no people, no fish. Crisp beautiful collectible cartography, soft cozy cartoon linework, limited flat watercolor washes on paper rather than highly detailed painted scenic art. Opaque square image."
+    }
+  ]
+}

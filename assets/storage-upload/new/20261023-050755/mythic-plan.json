@@ -1,0 +1,23 @@
+{
+  "id": "primal-nemerion-last-ocean-heir",
+  "name": "사라진 대양의 마지막 후예, 네메리온",
+  "kind": "fish",
+  "rarity": "mythic",
+  "sell_price": 3022,
+  "native_region_id": "primal",
+  "habitats": [
+    "primal"
+  ],
+  "movement_type": "swim",
+  "swim_y_min": 0.28,
+  "swim_y_max": 0.84,
+  "speed": 0.014,
+  "size": 178,
+  "frames": 8,
+  "travel_direction": "both",
+  "flip_with_direction": true,
+  "description": "사라진 대양의 기억을 품은 거대한 고대 실러캔스. 두꺼운 비늘과 육질 지느러미를 움직이다가, 턱과 아가미를 크게 펼쳐 태고의 숨을 내쉽니다.",
+  "design": "Nemerion, the last heir of a vanished ocean, a colossal ancient COELACANTH living fossil with unmistakable coelacanth anatomy: huge long thick cigar-shaped fish torso, massive bony blunt head at SCREEN RIGHT, a dignified luminous deep amber eye, heavy hinged lower jaw, broad overlapping ancient mineral-textured scales, six robust fleshy LOBED FINS with rounded ends and short frilled rays, characteristic three-lobed coelacanth tail at LEFT with central tail lobe. Dark deep ocean teal and weathered slate blue, pale silvery belly, restrained bronze scale edges, a faint cyan lateral line within skin only. An ancient majestic natural fish, NOT a dragon, whale, manta or sea serpent. No wings, horns, legs, ribbons, tentacles, jewelry or detached magic particles.",
+  "thumbnail_path": "fish/mythic/primal-nemerion-last-ocean-heir_v1_thumbnail.png",
+  "sprite_sheet_path": "fish/mythic/primal-nemerion-last-ocean-heir_swim8_v1_sprite.png"
+}

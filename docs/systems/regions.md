@@ -1,6 +1,6 @@
 ﻿# 지역 지도와 공통 등급
 
-현재 지도 획득 방식은 [지도 상점](map-shop.md)입니다. 지도에는 등급을 표시하지 않고, 상점 구매 즉시 해역을 해금합니다. 낚시에서는 지도를 추첨하지 않으며 도감에서도 제외합니다. 아래는 전환 이전 구현 기록으로, SQL 설치 순서는 [DB 관리](database-management.md)와 최신 migrations를 따릅니다.
+기존 해역은 지도 상점 구매 방식을 유지하고, 새 해역은 희귀 지도 조각을 직접 낚시로 수집해 해금합니다. 등록 절차와 조각의 보존 조건은 [지도 획득](map-shop.md)을 따릅니다. 지도 조각은 보관함·도감에 들어가지 않고 전체 지도에서 번호별로 맞춰집니다. 아래는 과거 구현 기록이며 SQL 설치 순서는 [DB 관리](database-management.md)와 최신 migrations를 따릅니다.
 
 ## 과거 적용 기록
 기존 01~10 다음에 `supabase/sql/11-regions/01-regions.sql` 실행. SQL이 public Storage 버킷 `regions`를 생성합니다. `assets/storage-upload/regions/`의 PNG 5개를 버킷 루트에 같은 이름으로 업로드합니다. 원격 SQL과 업로드는 이 작업에서 수행하지 않았습니다.

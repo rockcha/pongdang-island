@@ -15,11 +15,11 @@ it('preserves a paid cast and applies all new profiles with a uniform common wai
   await db.exec("select app_private.get_gold_wallet();insert into public.player_navigation(user_id,region_id) values(auth.uid(),'pongdang') on conflict(user_id) do update set region_id='pongdang'")
   await db.query('update public.player_wallets set inventory=$1 where user_id=$2',[Object.fromEntries(catalog.fishing_baits.map(b=>[b.id,1000])),uid])
   await db.query("select public.prepare_fishing('pongdang','bait_deep_sleep_sachet',$1,true)",[legacy])
-  const before=(await db.query('select to_jsonb(p) snapshot from app_private.prepared_fishing_casts p where operation_id=$1',[legacy])).rows[0]
+  const before=(await db.query('select to_jsonb(p)-\'map_piece_number\' snapshot from app_private.prepared_fishing_casts p where operation_id=$1',[legacy])).rows[0]
   for(const f of migrationFiles().filter(f=>f>=first))await db.exec(readFileSync('supabase/migrations/'+f,'utf8'))
-  expect((await db.query('select to_jsonb(p) snapshot from app_private.prepared_fishing_casts p where operation_id=$1',[legacy])).rows[0]).toEqual(before)
+  expect((await db.query('select to_jsonb(p)-\'map_piece_number\' snapshot from app_private.prepared_fishing_casts p where operation_id=$1',[legacy])).rows[0]).toEqual(before)
   await db.query("select public.prepare_fishing('pongdang','bait_deep_sleep_sachet',$1,true)",[legacy])
-  expect((await db.query('select to_jsonb(p) snapshot from app_private.prepared_fishing_casts p where operation_id=$1',[legacy])).rows[0]).toEqual(before)
+  expect((await db.query('select to_jsonb(p)-\'map_piece_number\' snapshot from app_private.prepared_fishing_casts p where operation_id=$1',[legacy])).rows[0]).toEqual(before)
   await db.exec("update app_private.prepared_fishing_casts set finished_at=clock_timestamp(),result='{}'")
   const profiles=(await db.query<{id:string;wait_min_seconds:number;wait_max_seconds:number}>('select * from app_private.fishing_bait_balance_profiles')).rows
   expect(profiles).toHaveLength(27)

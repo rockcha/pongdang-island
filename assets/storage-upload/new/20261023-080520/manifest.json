@@ -1,0 +1,62 @@
+{
+  "tool": "built-in image_gen",
+  "batch": "20261023-080520",
+  "referenceStyle": "assets/references/collectible-style/epic-mythic-starlight.png",
+  "replaces": "20261023-050755 Nemerion artwork after user selected ancient sea serpent",
+  "items": [
+    {
+      "id": "primal-nemerion-last-ocean-heir",
+      "name": "사라진 대양의 마지막 후예, 네메리온",
+      "kind": "fish",
+      "rarity": "mythic",
+      "sell_price": 3022,
+      "native_region_id": "primal",
+      "habitats": [
+        "primal"
+      ],
+      "movement_type": "swim",
+      "swim_y_min": 0.28,
+      "swim_y_max": 0.84,
+      "speed": 0.014,
+      "size": 178,
+      "frames": 8,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "description": "사라진 대양의 기억을 품은 거대한 고대 바다뱀. 길고 육중한 몸을 따라 파동을 흘려 유영하다가, 몸을 크게 굽혔다 펴며 태고의 물결을 일으킵니다.",
+      "design": "Giant ancient sea serpent: elongated limbless teal-scaled body, pale belly, amber eye, low weathered dorsal ridge, head right and long tapered tail left.",
+      "thumbnail_path": "fish/mythic/primal-nemerion-last-ocean-heir_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/primal-nemerion-last-ocean-heir_swim8_v2_sprite.png",
+      "status": "reviewed",
+      "catalog_sprite_sheet_path": "fish/mythic/primal-nemerion-last-ocean-heir_v2_sprite.png",
+      "facing_direction": "right",
+      "thumbnailSource": "C:\\Users\\user\\.codex\\generated_images\\01a16489-9af2-7dd2-a175-1ef3b2b6e04d\\exec-48138543-d8fe-4c19-aad3-c90cefa98adf.png",
+      "thumbnailGenerated": {
+        "width": 1254,
+        "height": 1254,
+        "sha256": "f9414d486bb105adc6793d9fc7afa48c609585d843315a4fe9039b380129ac18"
+      },
+      "spriteSource": "C:\\Users\\user\\.codex\\generated_images\\01a16489-9af2-7dd2-a175-1ef3b2b6e04d\\exec-cdb24082-17e2-4fb1-aae1-6dbe62c049ee.png",
+      "spriteGenerated": {
+        "width": 1774,
+        "height": 887,
+        "sha256": "cd817535871f96e9e5272be0640125057cfd5d64a19ceb21a8f2d5f69e2a1005"
+      },
+      "thumbnailPrompt": "Use case: precise-object-edit. Image1 is the Nemerion sea-serpent identity to preserve exactly: long limbless serpentine body, teal slate scales, cream belly, amber eye, low ancient dorsal ridge, head RIGHT and tail LEFT. Produce a SQUARE 1024x1024 production game thumbnail on genuine TRANSPARENT alpha. Fit the entire wide creature in the central 72% of the square, maintaining original body proportions, with at least 12% completely empty transparent margins everywhere. Remove all surrounding broad light haze, fog, shadow and aura; crisp delicate softly colored creature edges, no detached glow or environment. Same refined fantasy painted creature, not a short fish and not a coelacanth. Do not crop, stretch or change anatomy. No text or border.",
+      "spritePrompt": "Use case: stylized-concept. Production animated MYTHIC fishing-game sea serpent Nemerion. Output exactly EIGHT genuinely different poses, FOUR columns by TWO rows of equal SQUARE cells, wide 2:1 transparent PNG. Image1 is STRICT small scale and placement guide only; replace repeated guide drawings with real animation. Image2 is approved creature identity: long limbless prehistoric SEA SNAKE, teal overlapping scales, pale cream belly, amber eye, weathered low dorsal ridge and two small ivory fangs; head SCREEN RIGHT, very long body/tail trails LEFT. Preserve this exact anatomy and refined fantasy illustration, no legs, no fish fins, no wings, no horns. All eight poses at the SAME SCALE and fixed head/eye anchor. Important place the creature SMALL in central 55% of EACH cell as guide, minimum 15% totally clear transparent margin all sides including tail and dorsal ridge. No glow haze/particles, no scenery, no shadow, no text/grid/borders. Top row poses0-3: four gentle phases of muscular lateral S undulation traveling down long body to tapered tail, keep head steady. Bottom row4 anticipation: rear body curls more; 5 action: strong broad S bend pushes a physical wave through body, jaw slightly opens; 6 return: body uncoils and jaw closes; 7 recovery: matches top neutral pose ready to loop. Head, eye and neck rigid area position/size identical throughout; body and tail do motion, do NOT rotate or scale entire creature. Full tail visible inside each cell. All snouts point RIGHT. Maintain long snake proportions, do not shorten into bulky fish. Coherent fluid loop; eight unique hand-drawn physical poses, not blinking-only or identical copies. CRITICAL FRAMING CORRECTION: image1 is now a VERY SMALL placement guide. Follow its small footprint exactly: each creature occupies only central 35-45% of cell width, with huge blank transparent borders of at least 24% on left/right. Do not enlarge to fill cell. Keep all eight drawings centered and equal scale. Image2 approved identity only, not scale. Ensure head anchor about 63% across and 49% down each square. Actual motion still required, not copies."
+    }
+  ],
+  "entries": [
+    {
+      "id": "primal-nemerion-last-ocean-heir",
+      "frames": 8,
+      "columns": 4,
+      "source": "sources/primal-nemerion-last-ocean-heir-sprite.source",
+      "storage_path": "fish/mythic/primal-nemerion-last-ocean-heir_swim8_v2_sprite.png",
+      "prompt": "Use case: stylized-concept. Production animated MYTHIC fishing-game sea serpent Nemerion. Output exactly EIGHT genuinely different poses, FOUR columns by TWO rows of equal SQUARE cells, wide 2:1 transparent PNG. Image1 is STRICT small scale and placement guide only; replace repeated guide drawings with real animation. Image2 is approved creature identity: long limbless prehistoric SEA SNAKE, teal overlapping scales, pale cream belly, amber eye, weathered low dorsal ridge and two small ivory fangs; head SCREEN RIGHT, very long body/tail trails LEFT. Preserve this exact anatomy and refined fantasy illustration, no legs, no fish fins, no wings, no horns. All eight poses at the SAME SCALE and fixed head/eye anchor. Important place the creature SMALL in central 55% of EACH cell as guide, minimum 15% totally clear transparent margin all sides including tail and dorsal ridge. No glow haze/particles, no scenery, no shadow, no text/grid/borders. Top row poses0-3: four gentle phases of muscular lateral S undulation traveling down long body to tapered tail, keep head steady. Bottom row4 anticipation: rear body curls more; 5 action: strong broad S bend pushes a physical wave through body, jaw slightly opens; 6 return: body uncoils and jaw closes; 7 recovery: matches top neutral pose ready to loop. Head, eye and neck rigid area position/size identical throughout; body and tail do motion, do NOT rotate or scale entire creature. Full tail visible inside each cell. All snouts point RIGHT. Maintain long snake proportions, do not shorten into bulky fish. Coherent fluid loop; eight unique hand-drawn physical poses, not blinking-only or identical copies. CRITICAL FRAMING CORRECTION: image1 is now a VERY SMALL placement guide. Follow its small footprint exactly: each creature occupies only central 35-45% of cell width, with huge blank transparent borders of at least 24% on left/right. Do not enlarge to fill cell. Keep all eight drawings centered and equal scale. Image2 approved identity only, not scale. Ensure head anchor about 63% across and 49% down each square. Actual motion still required, not copies.",
+      "referenceRoles": {
+        "guide": "placement and scale only",
+        "thumbnail": "approved ancient sea-serpent identity"
+      }
+    }
+  ]
+}

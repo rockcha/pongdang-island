@@ -1,0 +1,61 @@
+﻿{
+    "file":  "assets\\storage-upload\\new\\20261023-050755\\fish\\mythic\\primal-nemerion-last-ocean-heir_swim8_v1_sprite.png",
+    "storage_path":  "fish/mythic/primal-nemerion-last-ocean-heir_swim8_v1_sprite.png",
+    "patch":  [
+                  258,
+                  191,
+                  40,
+                  40
+              ],
+    "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  0
+                   },
+                   {
+                       "frame":  1,
+                       "dx":  -1,
+                       "dy":  0,
+                       "rmse":  17.610070509039232
+                   },
+                   {
+                       "frame":  2,
+                       "dx":  -10,
+                       "dy":  -1,
+                       "rmse":  33.8528679238062
+                   },
+                   {
+                       "frame":  3,
+                       "dx":  -9,
+                       "dy":  -1,
+                       "rmse":  33.974806842718031
+                   },
+                   {
+                       "frame":  4,
+                       "dx":  -3,
+                       "dy":  -9,
+                       "rmse":  22.567075944097557
+                   },
+                   {
+                       "frame":  5,
+                       "dx":  -11,
+                       "dy":  -10,
+                       "rmse":  28.949812895192721
+                   },
+                   {
+                       "frame":  6,
+                       "dx":  3,
+                       "dy":  -10,
+                       "rmse":  18.209544200775593
+                   },
+                   {
+                       "frame":  7,
+                       "dx":  -2,
+                       "dy":  -10,
+                       "rmse":  24.915147668302779
+                   }
+               ]
+}

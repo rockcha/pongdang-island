@@ -1,9 +1,13 @@
 import additionalSheets from './mythic-action-layouts.json'
 import sharedMythicSheets from './shared-mythic-action-layouts.json'
+import nyamnyamMythicSheets from './nyamnyam-mythic-action-layouts.json'
+import primalMythicSheets from './primal-mythic-action-layouts.json'
 export function mythicSheetColumns(path:string){return mythicDetailedPaths.includes(path)?4:2}
 export const luneaDetailedSwimPath='fish/mythic/lunea-mistmoon-goddess_swim8_sprite.png'
-type MythicSheet={id:string;aliases:string[];scale:number;shifts:number[][];cell:number}
+type MythicSheet={id:string;aliases:string[];scale:number;shifts:number[][];cell:number;assetVersion?:number}
 const sheets:MythicSheet[]=[
+ ...primalMythicSheets,
+ ...nyamnyamMythicSheets,
  ...sharedMythicSheets,
  ...additionalSheets,
  {id:'scrap-greenark-last-collector',aliases:['scrap-greenark-last-collector'],scale:1,cell:444,shifts:[[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,-1],[0,-1]]},
@@ -24,14 +28,14 @@ export function mythicSwimAsset(path:string,rarity:string){
  if(rarity!=='mythic')return null
  const canonical=path.replace('_compat_sprite.png','_sprite.png')
  const sheet=sheets.find(s=>canonical===`fish/mythic/${s.id}_swim8_sprite.png`||s.aliases.some(alias=>canonical===`fish/mythic/${alias}_sprite.png`))
- return sheet?{path:`fish/mythic/${sheet.id}_swim8_sprite.png`,url:`/aquarium/swim/${sheet.id}${sheet.id==='extinction-defying-megalodon'||sharedMythicSheets.some(s=>s.id===sheet.id)?'_swim8_v2_sprite.png':'_swim8_sprite.png'}`}:null
+ return sheet?{path:`fish/mythic/${sheet.id}_swim8_sprite.png`,url:`/aquarium/swim/${sheet.id}${sheet.assetVersion?`_swim8_v${sheet.assetVersion}_sprite.png`:sheet.id==='extinction-defying-megalodon'||sharedMythicSheets.some(s=>s.id===sheet.id)?'_swim8_v2_sprite.png':'_swim8_sprite.png'}`}:null
 }
 export function mythicSwimFrame(path:string,time:number,seed:number,reduced=false){
  if(!sheetFor(path))return null
  // A short glance is part of the swim loop, independent of travel direction.
  if(reduced)return 0
  const phase=((time+seed/1000000)%6+6)%6
- if(sharedMythicSheets.some(s=>path===`fish/mythic/${s.id}_swim8_sprite.png`)){
+ if([...sharedMythicSheets,...nyamnyamMythicSheets,...primalMythicSheets].some(s=>path===`fish/mythic/${s.id}_swim8_sprite.png`)){
   // Reversible propulsion for four seconds, then anticipation, action, return,
   // recovery. The recovery drawing matches the next cycle's neutral pose.
   return phase<4?[0,1,2,3,2,1][Math.floor(phase*3)%6]:4+Math.min(3,Math.floor((phase-4)*2))

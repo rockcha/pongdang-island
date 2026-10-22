@@ -1,0 +1,61 @@
+﻿{
+    "file":  "assets\\storage-upload\\new\\20261023-080520\\fish\\mythic\\primal-nemerion-last-ocean-heir_swim8_v2_sprite.png",
+    "storage_path":  "fish/mythic/primal-nemerion-last-ocean-heir_swim8_v2_sprite.png",
+    "patch":  [
+                  330,
+                  214,
+                  28,
+                  25
+              ],
+    "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  0
+                   },
+                   {
+                       "frame":  1,
+                       "dx":  -12,
+                       "dy":  0,
+                       "rmse":  15.55563492043246
+                   },
+                   {
+                       "frame":  2,
+                       "dx":  -1,
+                       "dy":  0,
+                       "rmse":  14.47929556297543
+                   },
+                   {
+                       "frame":  3,
+                       "dx":  -11,
+                       "dy":  0,
+                       "rmse":  17.08849515512313
+                   },
+                   {
+                       "frame":  4,
+                       "dx":  0,
+                       "dy":  -2,
+                       "rmse":  12.734467663262043
+                   },
+                   {
+                       "frame":  5,
+                       "dx":  -11,
+                       "dy":  -3,
+                       "rmse":  54.601587278515389
+                   },
+                   {
+                       "frame":  6,
+                       "dx":  -2,
+                       "dy":  -2,
+                       "rmse":  15.596117750545771
+                   },
+                   {
+                       "frame":  7,
+                       "dx":  -11,
+                       "dy":  -2,
+                       "rmse":  18.923897296510802
+                   }
+               ]
+}

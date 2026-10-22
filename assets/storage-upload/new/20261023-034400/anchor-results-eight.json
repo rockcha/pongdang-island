@@ -1,0 +1,185 @@
+﻿[
+    {
+        "file":  "assets\\storage-upload\\new\\20261023-034400\\fish\\mythic\\nyamnyam-chocolate-kraken_swim8_v1_sprite.png",
+        "storage_path":  "fish/mythic/nyamnyam-chocolate-kraken_swim8_v1_sprite.png",
+        "patch":  [
+                      289,
+                      204,
+                      40,
+                      40
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  -1,
+                           "rmse":  22.033948760019928
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  2,
+                           "rmse":  16.253884935922368
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  1,
+                           "dy":  1,
+                           "rmse":  17.530549137469269
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  -13,
+                           "dy":  -13,
+                           "rmse":  37.168294860770018
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -7,
+                           "dy":  -12,
+                           "rmse":  47.952703101012744
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -6,
+                           "dy":  -15,
+                           "rmse":  28.201760330062477
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  1,
+                           "dy":  -15,
+                           "rmse":  30.79942518679098
+                       }
+                   ]
+    },
+    {
+        "file":  "assets\\storage-upload\\new\\20261023-034400\\fish\\mythic\\nyamnyam-spice-censer-qilin_swim8_v1_sprite.png",
+        "storage_path":  "fish/mythic/nyamnyam-spice-censer-qilin_swim8_v1_sprite.png",
+        "patch":  [
+                      213,
+                      213,
+                      40,
+                      40
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  19.951951211419328
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -2,
+                           "dy":  0,
+                           "rmse":  12.876968840942819
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  11.344669700447206
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  4,
+                           "dy":  1,
+                           "rmse":  28.328363409653367
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  1,
+                           "dy":  1,
+                           "rmse":  24.849983574913473
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  0,
+                           "dy":  2,
+                           "rmse":  26.710967135357013
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  19.957192708803674
+                       }
+                   ]
+    },
+    {
+        "file":  "assets\\storage-upload\\new\\20261023-034400\\fish\\mythic\\nyamnyam-endless-banquet-chef_swim8_v1_sprite.png",
+        "storage_path":  "fish/mythic/nyamnyam-endless-banquet-chef_swim8_v1_sprite.png",
+        "patch":  [
+                      266,
+                      173,
+                      40,
+                      40
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  5,
+                           "dy":  0,
+                           "rmse":  20.976733579095473
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  5,
+                           "dy":  4,
+                           "rmse":  22.300273491645743
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -6,
+                           "dy":  1,
+                           "rmse":  17.89276666424449
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  -1,
+                           "rmse":  22.127409535398687
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  12,
+                           "dy":  4,
+                           "rmse":  24.493579557925777
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  3,
+                           "dy":  2,
+                           "rmse":  20.196731592833704
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -5,
+                           "dy":  -1,
+                           "rmse":  21.571628701495047
+                       }
+                   ]
+    }
+]

@@ -1,0 +1,119 @@
+{
+  "tool": "built-in image_gen",
+  "batch": "20261023-045233",
+  "referenceStyle": {
+    "common": "assets/references/collectible-style/common-rare-pongi.png",
+    "epic": "assets/references/collectible-style/epic-mythic-starlight.png"
+  },
+  "items": [
+    {
+      "id": "nyamnyam-hotdog-sardine",
+      "name": "핫도그 정어리",
+      "rarity": "common",
+      "sell_price": 54,
+      "size": 70,
+      "speed": 0.029,
+      "movement_type": "swim",
+      "swim_y_min": 0.18,
+      "swim_y_max": 0.75,
+      "description": "폭신한 빵 지느러미와 케첩 줄무늬를 뽐내며 재빠르게 헤엄쳐요.",
+      "design": "A small streamlined living sardine shaped like a delicious hot dog: coral sausage fish torso nestled in soft golden bun flanks, neat tiny mustard and ketchup zigzag along back, small translucent golden fins and a proper forked sardine tail at LEFT, lively dark eye and smiling fish head at RIGHT. Clearly a fish, not a sausage on a plate; compact horizontal side profile",
+      "kind": "fish",
+      "frames": 4,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "native_region_id": "nyamnyam",
+      "thumbnail_path": "fish/normal/nyamnyam-hotdog-sardine_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/nyamnyam-hotdog-sardine_v1_sprite.png",
+      "thumbnailSource": "C:\\Users\\user\\.codex\\generated_images\\01a16489-9af2-7dd2-a175-1ef3b2b6e04d\\exec-24bd9bbb-7855-4fdb-b5f8-db7c1c03a78a.png",
+      "thumbnailGenerated": {
+        "width": 1254,
+        "height": 1254,
+        "sha256": "6dcdd6b9fcab0c859894c68e2884245d8e052ab4f0206bf4bfbc2f510bae520f"
+      },
+      "status": "reviewed",
+      "spriteSource": "C:\\Users\\user\\.codex\\generated_images\\01a16489-9af2-7dd2-a175-1ef3b2b6e04d\\exec-0001a423-93b6-4ba7-aec4-23317bd140ab.png",
+      "spriteGenerated": {
+        "width": 1254,
+        "height": 1254,
+        "sha256": "d95423189abe6b4e6e07a17b891e9b4b5d8085614295fdf9b582035d71f097d7"
+      },
+      "thumbnailPrompt": "Use case: stylized-concept. Production fishing game collectible thumbnail. One isolated full-body creature. A small streamlined living sardine shaped like a delicious hot dog: coral sausage fish torso nestled in soft golden bun flanks, neat tiny mustard and ketchup zigzag along back, small translucent golden fins and a proper forked sardine tail at LEFT, lively dark eye and smiling fish head at RIGHT. Clearly a fish, not a sausage on a plate; compact horizontal side profile. Warm rounded cozy cartoon, clean dark brown outlines, big friendly eye, softly shaded toasted bread and sausage. Image 1 is STYLE reference ONLY. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head and mouth point right; body and tail trail left; same right-facing design will be used for all animation frames. Entire creature including fins, antenna/lure, tentacles and steam fits with at least 9% clear transparent margin on every outer edge. Square PNG, genuinely TRANSPARENT BACKGROUND, no scene, no plate under creature, no label, no text, no checkerboard. Delicious and memorable food-themed sea creature, clear silhouette at small aquarium scale.",
+      "spritePrompt": "Use case: stylized-concept. Create a production transparent FOUR-FRAME aquarium animation sheet for 핫도그 정어리. Image 1 is mandatory 2x2 placement/scale guide (subjects modestly sized in middle of each cell), Image 2 is approved character identity and rendering reference. A small streamlined living sardine shaped like a delicious hot dog: coral sausage fish torso nestled in soft golden bun flanks, neat tiny mustard and ketchup zigzag along back, small translucent golden fins and a proper forked sardine tail at LEFT, lively dark eye and smiling fish head at RIGHT. Clearly a fish, not a sausage on a plate; compact horizontal side profile. Four gentle tail-beat phases and restrained fin ripples, long sausage/bun torso remains rigid and face fixed. Preserve all materials, colors, facial structure and body proportions from approved thumbnail. Exactly TWO columns by TWO rows of equal SQUARE cells; overall square PNG, row-major four different animation drawings. All heads face SCREEN RIGHT, bodies trail LEFT, same orientation in every frame. Keep fixed body anchor and one uniform body scale in all four cells. Critical safe framing: follow SMALL size of guide, all artwork including lure, steam, fins, tail and tentacles stays inside the middle 70% of each cell; 12% or more clear transparent margin on EACH side of EVERY cell. No clipping, overlapping cells, grid lines, labels, text, scenery, checkerboard or detached particles. Genuine alpha transparency. Seamless restrained anatomical motion, not four copies or eye-only changes.",
+      "facing_direction": "right"
+    },
+    {
+      "id": "nyamnyam-seafood-hotpot-angler",
+      "name": "해물전골 아귀",
+      "rarity": "epic",
+      "sell_price": 902,
+      "size": 125,
+      "speed": 0.016,
+      "movement_type": "swim",
+      "swim_y_min": 0.45,
+      "swim_y_max": 0.86,
+      "description": "해물 향이 피어나는 둥근 몸과 국자 모양 유인등으로 바다 친구들을 불러요.",
+      "design": "A magnificent fantasy monkfish-anglerfish made of a sumptuous Korean seafood hotpot. A very round broad dark glazed earthenware-like FISH BODY, massive gentle fish mouth and bright intelligent eye pointing RIGHT, short sturdy pectoral fins low at sides, small fish tail on LEFT. An integrated opening in its upper back holds glowing amber seafood broth, two clam shells, shrimp and green scallion garnish. A short curved angler stalk ends in a tiny glowing ladle above its forehead. This is one living fish, not a pot on legs, no human hands. Tasty ornate culinary fantasy with beautiful ceramic glaze and translucent warm broth, graceful contained steam wisps",
+      "kind": "fish",
+      "frames": 4,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "native_region_id": "nyamnyam",
+      "thumbnail_path": "fish/epic/nyamnyam-seafood-hotpot-angler_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/nyamnyam-seafood-hotpot-angler_v1_sprite.png",
+      "thumbnailSource": "C:\\Users\\user\\.codex\\generated_images\\01a16489-9af2-7dd2-a175-1ef3b2b6e04d\\exec-ae884bda-c1da-40d7-9917-cbb0a153c045.png",
+      "thumbnailGenerated": {
+        "width": 1254,
+        "height": 1254,
+        "sha256": "d93d3ad0de401c03f47253c3cd45ba6ded075108f038f2136cc723f93efa918b"
+      },
+      "status": "reviewed",
+      "spriteSource": "C:\\Users\\user\\.codex\\generated_images\\01a16489-9af2-7dd2-a175-1ef3b2b6e04d\\exec-01c912e4-6df7-4441-ab5e-7bb5e06b9b6b.png",
+      "spriteGenerated": {
+        "width": 1254,
+        "height": 1254,
+        "sha256": "3375678e2d1dcf03471b5f43d2d5c81fbdcacdd7fb2ba1ae2eb2e14c9f8b93c9"
+      },
+      "thumbnailPrompt": "Use case: stylized-concept. Production fishing game collectible thumbnail. One isolated full-body creature. A magnificent fantasy monkfish-anglerfish made of a sumptuous Korean seafood hotpot. A very round broad dark glazed earthenware-like FISH BODY, massive gentle fish mouth and bright intelligent eye pointing RIGHT, short sturdy pectoral fins low at sides, small fish tail on LEFT. An integrated opening in its upper back holds glowing amber seafood broth, two clam shells, shrimp and green scallion garnish. A short curved angler stalk ends in a tiny glowing ladle above its forehead. This is one living fish, not a pot on legs, no human hands. Tasty ornate culinary fantasy with beautiful ceramic glaze and translucent warm broth, graceful contained steam wisps. Soft sophisticated fantasy illustration, delicate colored edges, rich gradients, tactile pastry or glazed ceramic, restrained luminous highlights; avoid thick cartoon outlines. Reference only rendering and light: do NOT copy manta/ray anatomy, soaring wings, tiny torso or ribbon tail, purple star patterns. Image 1 is STYLE reference ONLY. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head and mouth point right; body and tail trail left; same right-facing design will be used for all animation frames. Entire creature including fins, antenna/lure, tentacles and steam fits with at least 9% clear transparent margin on every outer edge. Square PNG, genuinely TRANSPARENT BACKGROUND, no scene, no plate under creature, no label, no text, no checkerboard. Delicious and memorable food-themed sea creature, clear silhouette at small aquarium scale.",
+      "spritePrompt": "Use case: stylized-concept. Create a production transparent FOUR-FRAME aquarium animation sheet for 해물전골 아귀. Image 1 is mandatory 2x2 placement/scale guide (subjects modestly sized in middle of each cell), Image 2 is approved character identity and rendering reference. A magnificent fantasy monkfish-anglerfish made of a sumptuous Korean seafood hotpot. A very round broad dark glazed earthenware-like FISH BODY, massive gentle fish mouth and bright intelligent eye pointing RIGHT, short sturdy pectoral fins low at sides, small fish tail on LEFT. An integrated opening in its upper back holds glowing amber seafood broth, two clam shells, shrimp and green scallion garnish. A short curved angler stalk ends in a tiny glowing ladle above its forehead. This is one living fish, not a pot on legs, no human hands. Tasty ornate culinary fantasy with beautiful ceramic glaze and translucent warm broth, graceful contained steam wisps. Four continuous gentle swimming phases: small tail swishes, both short fins gently tilt, the short ladle-lure softly sways and two compact steam curls rise differently. Keep the ceramic belly, soup opening, eyes and mouth exactly stable in size and anchor. No arm-like fin waving. Preserve all materials, colors, facial structure and body proportions from approved thumbnail. Exactly TWO columns by TWO rows of equal SQUARE cells; overall square PNG, row-major four different animation drawings. All heads face SCREEN RIGHT, bodies trail LEFT, same orientation in every frame. Keep fixed body anchor and one uniform body scale in all four cells. Critical safe framing: follow SMALL size of guide, all artwork including lure, steam, fins, tail and tentacles stays inside the middle 70% of each cell; 12% or more clear transparent margin on EACH side of EVERY cell. No clipping, overlapping cells, grid lines, labels, text, scenery, checkerboard or detached particles. Genuine alpha transparency. Seamless restrained anatomical motion, not four copies or eye-only changes.",
+      "facing_direction": "right"
+    },
+    {
+      "id": "nyamnyam-layered-croissant-nautilus",
+      "name": "천겹 크루아상 앵무조개",
+      "rarity": "epic",
+      "sell_price": 872,
+      "size": 125,
+      "speed": 0.013,
+      "movement_type": "pulse",
+      "swim_y_min": 0.3,
+      "swim_y_max": 0.78,
+      "description": "겹겹이 말린 버터빛 껍데기 아래 부드러운 촉수를 펼쳐 천천히 나아가요.",
+      "design": "An elegant magical chambered nautilus whose large anatomically coiled spiral shell is baked from countless delicate laminated croissant pastry layers, warm butter gold with amber crispy edges and pearly cream inner chambers. The nautilus head and single expressive eye project from shell opening on RIGHT, a compact bouquet of soft cream-and-golden nautilus tentacles reaches forward RIGHT, small siphon beneath. Shell to LEFT, head to RIGHT; unmistakable nautilus with heavy coiled shell, no wings, no fish fins, no ribbon tail. Sophisticated cozy culinary fantasy, exquisite flaky pastry material, gentle butter sheen",
+      "kind": "fish",
+      "frames": 4,
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "native_region_id": "nyamnyam",
+      "thumbnail_path": "fish/epic/nyamnyam-layered-croissant-nautilus_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/nyamnyam-layered-croissant-nautilus_v1_sprite.png",
+      "thumbnailSource": "C:\\Users\\user\\.codex\\generated_images\\01a16489-9af2-7dd2-a175-1ef3b2b6e04d\\exec-7bd2ab6e-47c8-49bb-91ae-6b7c304b0df6.png",
+      "thumbnailGenerated": {
+        "width": 1254,
+        "height": 1254,
+        "sha256": "899c4d9df1db177b584babac0fe8031f57066775bc3253b2e78ca880fe0ebb50"
+      },
+      "status": "reviewed",
+      "spriteSource": "C:\\Users\\user\\.codex\\generated_images\\01a16489-9af2-7dd2-a175-1ef3b2b6e04d\\exec-f897e8a3-dd07-4af4-9c09-cb629ee338c8.png",
+      "spriteGenerated": {
+        "width": 1254,
+        "height": 1254,
+        "sha256": "bdffefdff5e17f45872ef780c23635fc1db905d3501efdf6de8721da5727850f"
+      },
+      "thumbnailPrompt": "Use case: stylized-concept. Production fishing game collectible thumbnail. One isolated full-body creature. An elegant magical chambered nautilus whose large anatomically coiled spiral shell is baked from countless delicate laminated croissant pastry layers, warm butter gold with amber crispy edges and pearly cream inner chambers. The nautilus head and single expressive eye project from shell opening on RIGHT, a compact bouquet of soft cream-and-golden nautilus tentacles reaches forward RIGHT, small siphon beneath. Shell to LEFT, head to RIGHT; unmistakable nautilus with heavy coiled shell, no wings, no fish fins, no ribbon tail. Sophisticated cozy culinary fantasy, exquisite flaky pastry material, gentle butter sheen. Soft sophisticated fantasy illustration, delicate colored edges, rich gradients, tactile pastry or glazed ceramic, restrained luminous highlights; avoid thick cartoon outlines. Reference only rendering and light: do NOT copy manta/ray anatomy, soaring wings, tiny torso or ribbon tail, purple star patterns. Image 1 is STYLE reference ONLY. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head and mouth point right; body and tail trail left; same right-facing design will be used for all animation frames. Entire creature including fins, antenna/lure, tentacles and steam fits with at least 9% clear transparent margin on every outer edge. Square PNG, genuinely TRANSPARENT BACKGROUND, no scene, no plate under creature, no label, no text, no checkerboard. Delicious and memorable food-themed sea creature, clear silhouette at small aquarium scale.",
+      "spritePrompt": "Use case: stylized-concept. Create a production transparent FOUR-FRAME aquarium animation sheet for 천겹 크루아상 앵무조개. Image 1 is mandatory 2x2 placement/scale guide (subjects modestly sized in middle of each cell), Image 2 is approved character identity and rendering reference. An elegant magical chambered nautilus whose large anatomically coiled spiral shell is baked from countless delicate laminated croissant pastry layers, warm butter gold with amber crispy edges and pearly cream inner chambers. The nautilus head and single expressive eye project from shell opening on RIGHT, a compact bouquet of soft cream-and-golden nautilus tentacles reaches forward RIGHT, small siphon beneath. Shell to LEFT, head to RIGHT; unmistakable nautilus with heavy coiled shell, no wings, no fish fins, no ribbon tail. Sophisticated cozy culinary fantasy, exquisite flaky pastry material, gentle butter sheen. Four continuous jet-pulse swimming phases: ivory nautilus tentacles curl inward, extend slightly, fan delicately, recover; siphon gently contracts/relaxes. Keep the heavy croissant spiral SHELL, head and eye perfectly rigid and anchored, no shell rotation or changing layers. Preserve all materials, colors, facial structure and body proportions from approved thumbnail. Exactly TWO columns by TWO rows of equal SQUARE cells; overall square PNG, row-major four different animation drawings. All heads face SCREEN RIGHT, bodies trail LEFT, same orientation in every frame. Keep fixed body anchor and one uniform body scale in all four cells. Critical safe framing: follow SMALL size of guide, all artwork including lure, steam, fins, tail and tentacles stays inside the middle 70% of each cell; 12% or more clear transparent margin on EACH side of EVERY cell. No clipping, overlapping cells, grid lines, labels, text, scenery, checkerboard or detached particles. Genuine alpha transparency. Seamless restrained anatomical motion, not four copies or eye-only changes.",
+      "facing_direction": "right"
+    }
+  ],
+  "icons": []
+}

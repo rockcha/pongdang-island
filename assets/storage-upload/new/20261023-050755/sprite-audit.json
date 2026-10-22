@@ -1,0 +1,202 @@
+﻿{
+    "alphaThreshold":  32,
+    "thumbnails":  3,
+    "missing":  [
+
+                ],
+    "sprites":  [
+                    {
+                        "id":  "shared-grimhowl-giant-wolf-eel",
+                        "file":  "fish/epic/shared-grimhowl-giant-wolf-eel_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  64,
+                                           "y":  261,
+                                           "width":  508,
+                                           "height":  270,
+                                           "margin":  55,
+                                           "marginRatio":  0.08771929824561403,
+                                           "alphaPixels":  62271
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  56,
+                                           "y":  298,
+                                           "width":  520,
+                                           "height":  230,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  60411
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  65,
+                                           "y":  210,
+                                           "width":  510,
+                                           "height":  207,
+                                           "margin":  52,
+                                           "marginRatio":  0.082934609250398722,
+                                           "alphaPixels":  58173
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  66,
+                                           "y":  167,
+                                           "width":  508,
+                                           "height":  254,
+                                           "margin":  53,
+                                           "marginRatio":  0.084529505582137163,
+                                           "alphaPixels":  61911
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "shared-golden-whale-shark",
+                        "file":  "fish/epic/shared-golden-whale-shark_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  96,
+                                           "y":  196,
+                                           "width":  469,
+                                           "height":  282,
+                                           "margin":  62,
+                                           "marginRatio":  0.098883572567783087,
+                                           "alphaPixels":  55811
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  77,
+                                           "y":  226,
+                                           "width":  482,
+                                           "height":  251,
+                                           "margin":  68,
+                                           "marginRatio":  0.10845295055821372,
+                                           "alphaPixels":  57221
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  90,
+                                           "y":  190,
+                                           "width":  477,
+                                           "height":  233,
+                                           "margin":  60,
+                                           "marginRatio":  0.09569377990430622,
+                                           "alphaPixels":  55442
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  68,
+                                           "y":  152,
+                                           "width":  492,
+                                           "height":  272,
+                                           "margin":  67,
+                                           "marginRatio":  0.10685805422647528,
+                                           "alphaPixels":  57989
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "primal-nemerion-last-ocean-heir",
+                        "file":  "fish/mythic/primal-nemerion-last-ocean-heir_swim8_v1_sprite.png",
+                        "width":  1776,
+                        "height":  888,
+                        "columns":  4,
+                        "cell":  444,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  110,
+                                           "y":  184,
+                                           "width":  241,
+                                           "height":  126,
+                                           "margin":  93,
+                                           "marginRatio":  0.20945945945945946,
+                                           "alphaPixels":  16595
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  108,
+                                           "y":  185,
+                                           "width":  242,
+                                           "height":  128,
+                                           "margin":  94,
+                                           "marginRatio":  0.21171171171171171,
+                                           "alphaPixels":  16952
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  113,
+                                           "y":  180,
+                                           "width":  236,
+                                           "height":  130,
+                                           "margin":  95,
+                                           "marginRatio":  0.21396396396396397,
+                                           "alphaPixels":  16706
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  112,
+                                           "y":  186,
+                                           "width":  238,
+                                           "height":  125,
+                                           "margin":  94,
+                                           "marginRatio":  0.21171171171171171,
+                                           "alphaPixels":  16505
+                                       },
+                                       {
+                                           "frame":  4,
+                                           "x":  103,
+                                           "y":  171,
+                                           "width":  248,
+                                           "height":  132,
+                                           "margin":  93,
+                                           "marginRatio":  0.20945945945945946,
+                                           "alphaPixels":  18021
+                                       },
+                                       {
+                                           "frame":  5,
+                                           "x":  100,
+                                           "y":  173,
+                                           "width":  251,
+                                           "height":  136,
+                                           "margin":  93,
+                                           "marginRatio":  0.20945945945945946,
+                                           "alphaPixels":  19610
+                                       },
+                                       {
+                                           "frame":  6,
+                                           "x":  105,
+                                           "y":  171,
+                                           "width":  251,
+                                           "height":  136,
+                                           "margin":  88,
+                                           "marginRatio":  0.1981981981981982,
+                                           "alphaPixels":  18629
+                                       },
+                                       {
+                                           "frame":  7,
+                                           "x":  109,
+                                           "y":  173,
+                                           "width":  240,
+                                           "height":  127,
+                                           "margin":  95,
+                                           "marginRatio":  0.21396396396396397,
+                                           "alphaPixels":  16817
+                                       }
+                                   ]
+                    }
+                ]
+}

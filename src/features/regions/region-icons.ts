@@ -1,5 +1,6 @@
 export const regionIcons:Record<string,{name:string;src:string}>={
- siren:{name:'세이렌의 해협',src:'/siren/map.png'},
+ nyamnyam:{name:'냠냠 한상바다',src:'/region-icons/nyamnyam-v2.png'},
+ siren:{name:'세이렌의 해협',src:'/region-icons/siren-v2.png'},
  mukhyang:{name:'묵향 해역',src:'/region-icons/mukhyang.png'},
  scrapisle:{name:'녹빛 고물섬',src:'/region-icons/scrapisle.png'},
  cloudferry:{name:'지브리의 구름나루',src:'/region-icons/cloudferry-totoro.png'},

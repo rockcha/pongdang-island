@@ -56,6 +56,7 @@ export async function readCatalog(db) {
     })
   }
   if((await db.query("select to_regclass('public.region_maps') is not null as present")).rows[0].present)result.region_maps=(await db.query('select * from public.region_maps order by region_id')).rows
+  if(JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8')).fishing_map_blueprints)result.fishing_map_blueprints=(await db.query('select * from public.fishing_map_blueprints order by region_id')).rows
   if((await db.query("select to_regclass('public.fishing_rods') is not null as present")).rows[0].present)result.fishing_rods=(await db.query('select * from public.fishing_rods order by id')).rows
   if((await db.query("select to_regclass('public.harbor_vessels') is not null as present")).rows[0].present)result.harbor_vessels=(await db.query('select * from public.harbor_vessels order by id')).rows
   if(JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8')).title_catalog)result.title_catalog=(await db.query('select * from public.title_catalog order by id')).rows

@@ -1,0 +1,100 @@
+﻿{
+    "alphaThreshold":  32,
+    "thumbnails":  1,
+    "missing":  [
+
+                ],
+    "sprites":  [
+                    {
+                        "id":  "primal-nemerion-last-ocean-heir",
+                        "file":  "fish/mythic/primal-nemerion-last-ocean-heir_swim8_v2_sprite.png",
+                        "width":  1776,
+                        "height":  888,
+                        "columns":  4,
+                        "cell":  444,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  101,
+                                           "y":  191,
+                                           "width":  280,
+                                           "height":  94,
+                                           "margin":  63,
+                                           "marginRatio":  0.14189189189189189,
+                                           "alphaPixels":  10636
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  113,
+                                           "y":  173,
+                                           "width":  255,
+                                           "height":  118,
+                                           "margin":  76,
+                                           "marginRatio":  0.17117117117117117,
+                                           "alphaPixels":  13704
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  88,
+                                           "y":  178,
+                                           "width":  292,
+                                           "height":  114,
+                                           "margin":  64,
+                                           "marginRatio":  0.14414414414414414,
+                                           "alphaPixels":  12019
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  80,
+                                           "y":  194,
+                                           "width":  289,
+                                           "height":  93,
+                                           "margin":  75,
+                                           "marginRatio":  0.16891891891891891,
+                                           "alphaPixels":  10915
+                                       },
+                                       {
+                                           "frame":  4,
+                                           "x":  111,
+                                           "y":  138,
+                                           "width":  270,
+                                           "height":  154,
+                                           "margin":  63,
+                                           "marginRatio":  0.14189189189189189,
+                                           "alphaPixels":  15913
+                                       },
+                                       {
+                                           "frame":  5,
+                                           "x":  122,
+                                           "y":  122,
+                                           "width":  251,
+                                           "height":  177,
+                                           "margin":  71,
+                                           "marginRatio":  0.15990990990990991,
+                                           "alphaPixels":  17814
+                                       },
+                                       {
+                                           "frame":  6,
+                                           "x":  117,
+                                           "y":  124,
+                                           "width":  263,
+                                           "height":  162,
+                                           "margin":  64,
+                                           "marginRatio":  0.14414414414414414,
+                                           "alphaPixels":  12682
+                                       },
+                                       {
+                                           "frame":  7,
+                                           "x":  87,
+                                           "y":  186,
+                                           "width":  282,
+                                           "height":  96,
+                                           "margin":  75,
+                                           "marginRatio":  0.16891891891891891,
+                                           "alphaPixels":  10573
+                                       }
+                                   ]
+                    }
+                ]
+}

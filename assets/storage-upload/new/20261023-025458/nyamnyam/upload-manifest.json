@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "file": "banner-v1.png",
+      "bucket": "regions",
+      "storage_path": "nyamnyam/banner-v1.png",
+      "sha256": "adf5b07b57505dcc780d8402f5ac8a97f714e1eb5b9336da6d7aced418681f6b",
+      "width": 2172,
+      "height": 724
+    },
+    {
+      "file": "fishing-background-v1.png",
+      "bucket": "regions",
+      "storage_path": "nyamnyam/scenery-v1.png",
+      "sha256": "41d036aaca8ff892197858b9345f9ec71efa5f405dd20f34dc7d57d1d798131d",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "file": "map-v1.png",
+      "bucket": "regions",
+      "storage_path": "nyamnyam/map-v1.png",
+      "sha256": "4445beae74e8432cec2fa853a94d7632543e6420bc09bf347f13fb0641670794",
+      "width": 1254,
+      "height": 1254
+    }
+  ]
+}

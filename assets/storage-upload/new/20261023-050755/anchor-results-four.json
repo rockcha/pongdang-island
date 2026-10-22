@@ -1,0 +1,76 @@
+﻿[
+    {
+        "file":  "assets\\storage-upload\\new\\20261023-050755\\fish\\epic\\shared-grimhowl-giant-wolf-eel_v1_sprite.png",
+        "storage_path":  "fish/epic/shared-grimhowl-giant-wolf-eel_v1_sprite.png",
+        "patch":  [
+                      364,
+                      270,
+                      56,
+                      56
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  1.3407807929942596E+154
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  1.3407807929942596E+154
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  1.3407807929942596E+154
+                       }
+                   ]
+    },
+    {
+        "file":  "assets\\storage-upload\\new\\20261023-050755\\fish\\epic\\shared-golden-whale-shark_v1_sprite.png",
+        "storage_path":  "fish/epic/shared-golden-whale-shark_v1_sprite.png",
+        "patch":  [
+                      364,
+                      270,
+                      56,
+                      56
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -11,
+                           "dy":  0,
+                           "rmse":  19.168380976709866
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  2,
+                           "dy":  -56,
+                           "rmse":  27.850756437596832
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -10,
+                           "dy":  -56,
+                           "rmse":  18.962961330947877
+                       }
+                   ]
+    }
+]

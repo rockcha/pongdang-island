@@ -1,0 +1,18 @@
+{
+  "name": "냠냠 한상바다",
+  "tool": "built-in image_gen",
+  "batch": "20261023-025458",
+  "assets": [
+    {
+      "file": "banner-v1.png",
+      "prompt": "Create a polished game environment BANNER illustration for a cozy Korean fishing game region named 냠냠 한상바다 (Yum-Yum Feast Sea). No text anywhere, no logos or UI. A beautiful wide panoramic landscape composition, aspect ratio 3:1. Warm hand-painted storybook animation background, delicate watercolor and gouache textures, clean readable forms, rich scenic depth, luminous turquoise sea and cream peach golden afternoon sunlight. A whimsical edible archipelago that still feels like a believable magical OCEAN, not a dining table: left a huge rounded steamed-dumpling island with pleated ivory cliffs and scallion green trees, right terraced gimbap seaweed-and-rice cliffs with tiny sesame flecks and carrot coral; a small fried-egg lighthouse on a distant toast-colored island, soft steam drifting like mist, tiny pastry-roof harbor houses. Islands form a welcoming horseshoe around glittering blue water. In the foreground margins only, a small shrimp-tempura fish and a round rice-ball puffer peek through the water, subtle charming food-fish fauna with fins and tails, no humans. Center remains serene open blue sea with distant sailing paths. Highly attractive premium casual-game key art, harmonious tasteful color palette, artistic natural scenery, not plastic 3D, not photoreal, not flat vector, no giant floating utensils, no letters or food labels."
+    },
+    {
+      "file": "fishing-background-v1.png",
+      "prompt": "Create a matching VERTICAL FISHING GAME BACKGROUND for the cozy Korean fantasy ocean region 냠냠 한상바다 (Yum-Yum Feast Sea). Portrait aspect ratio 2:3, full bleed illustration, no text, no UI, no logos. Warm hand-painted storybook animation landscape with delicate gouache and watercolor textures, exceptionally beautiful luminous turquoise and pale aquamarine water, buttery cream islands, peach golden afternoon sky. Viewpoint: looking gently down across the sea from a low fishing vantage, with horizon in the upper quarter. In the distant upper-left, pleated steamed-dumpling islands crowned with scallion green trees and tiny warm village windows; upper-right terraced gimbap seaweed-and-rice cliffs, small carrot coral and a toast-rock island carrying a little fried-egg-shaped lighthouse. These form the same magical edible archipelago as a premium landscape game banner. Important gameplay composition: bottom 65 percent is continuous serene clear blue water, NO deck, NO platform, NO fishing rod, NO bobber, NO foreground objects, NO big fish, NO fish silhouettes in the main water, NO boats in central water. Scenic food architecture only near distant upper shoreline and extreme upper corners. Small seaweed and soft underwater reef shadows at very far outer edges, delicate natural ripples. Warm sun from upper-right makes subtle glints, but lower center is evenly colored translucent turquoise with low contrast, ideal for overlaying a fishing line, moving fish and controls later. This is an inhabited sea where future food-inspired fish will live, NOT a table of prepared dishes, not a kitchen, not a candy pile. Wonderful inviting delicious fantasy, coherent geography and depth, no plastic 3D, no photo-realism, no hard vector outlines. Standalone polished portrait background asset."
+    }
+  ],
+  "status": "Uploaded to regions/nyamnyam; region nyamnyam registered with four fishing map pieces. Frontend changes pending deployment.",
+  "mapGeneration": "map-generation.json",
+  "remoteVerification": "upload-manifest.json"
+}

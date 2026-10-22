@@ -56,6 +56,15 @@
       "requires_map_fragment": true
     },
     {
+      "id": "nyamnyam",
+      "name": "냠냠 한상바다",
+      "description": "만두섬과 김밥 절벽, 계란 등대가 펼쳐진 맛있는 바다. 음식의 모습을 닮은 바다 친구들이 찾아올 따뜻한 한 상이에요.",
+      "rarity": "rare",
+      "sort_order": 13,
+      "image_path": "nyamnyam/scenery-v2.png",
+      "requires_map_fragment": true
+    },
+    {
       "id": "pongdang",
       "name": "퐁당섬 앞바다",
       "description": "햇살이 부서지는 잔잔한 바다. 작은 물고기들과 첫 낚시를 시작하는 곳이에요.",
@@ -4719,6 +4728,960 @@
       "travel_direction": "both"
     },
     {
+      "id": "nyamnyam-bread-crab",
+      "kind": "fish",
+      "name": "식빵게",
+      "description": "폭신한 등껍질을 지고 모래밭을 종종 걸어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.97",
+      "speed": "0.009",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/nyamnyam-bread-crab_v1_thumbnail.png",
+      "sell_price": 56,
+      "sprite_sheet_path": "fish/normal/nyamnyam-bread-crab_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-broken-chopstick",
+      "kind": "trash",
+      "name": "반쪽 나무젓가락",
+      "description": "짝을 잃은 젓가락에 꼬불한 면발이 감겨 있어요.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.97",
+      "speed": "0.001",
+      "size": 65,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/nyamnyam-broken-chopstick_v1_thumbnail.png",
+      "sell_price": 8,
+      "sprite_sheet_path": null,
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-bungeoppang-fish",
+      "kind": "fish",
+      "name": "붕어빵피쉬",
+      "description": "노릇한 붕어빵 몸속에 달콤한 팥앙금을 가득 품었어요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.78",
+      "speed": "0.025",
+      "size": 94,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/nyamnyam-bungeoppang-fish_v1_thumbnail.png",
+      "sell_price": 304,
+      "sprite_sheet_path": "fish/rare/nyamnyam-bungeoppang-fish_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-buried-golden-fork",
+      "kind": "decoration",
+      "name": "황금 포크",
+      "description": "바닥에 단단히 박힌 포크가 작은 황금 기둥처럼 서 있어요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 90,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/nyamnyam-buried-golden-fork_v1_thumbnail.png",
+      "sell_price": 224,
+      "sprite_sheet_path": null,
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-cake-turtle",
+      "kind": "fish",
+      "name": "케이크거북",
+      "description": "폭신한 케이크 등껍질 위에 딸기 한 알을 얹었어요.",
+      "swim_y_min": "0.3",
+      "swim_y_max": "0.8",
+      "speed": "0.025",
+      "size": 94,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/nyamnyam-cake-turtle_v1_thumbnail.png",
+      "sell_price": 318,
+      "sprite_sheet_path": "fish/rare/nyamnyam-cake-turtle_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-caramel-octopus",
+      "kind": "fish",
+      "name": "카라멜 문어",
+      "description": "호박빛 몸속에 달콤한 소용돌이가 고여 있어요.",
+      "swim_y_min": "0.35",
+      "swim_y_max": "0.82",
+      "speed": "0.025",
+      "size": 94,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/nyamnyam-caramel-octopus_v1_thumbnail.png",
+      "sell_price": 304,
+      "sprite_sheet_path": "fish/rare/nyamnyam-caramel-octopus_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-cheese-moray",
+      "kind": "fish",
+      "name": "치즈폭포 곰치",
+      "description": "입가의 치즈 리본이 물살을 따라 길게 늘어나요.",
+      "swim_y_min": "0.35",
+      "swim_y_max": "0.86",
+      "speed": "0.025",
+      "size": 94,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/nyamnyam-cheese-moray_v1_thumbnail.png",
+      "sell_price": 324,
+      "sprite_sheet_path": "fish/rare/nyamnyam-cheese-moray_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-chestnut-urchin",
+      "kind": "fish",
+      "name": "군밤 성게",
+      "description": "밤껍질 사이로 노릇한 속살이 살짝 보여요.",
+      "swim_y_min": "0.87",
+      "swim_y_max": "0.97",
+      "speed": "0.009",
+      "size": 94,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/nyamnyam-chestnut-urchin_v1_thumbnail.png",
+      "sell_price": 290,
+      "sprite_sheet_path": "fish/rare/nyamnyam-chestnut-urchin_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-chocolate-fountain",
+      "kind": "decoration",
+      "name": "초콜릿 분수",
+      "description": "세 겹의 그릇을 타고 윤기 나는 초콜릿이 끊임없이 흘러요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 120,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/nyamnyam-chocolate-fountain_v1_thumbnail.png",
+      "sell_price": 720,
+      "sprite_sheet_path": "decorations/epic/nyamnyam-chocolate-fountain_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-chocolate-kraken",
+      "kind": "fish",
+      "name": "심해 초콜릿 크라켄",
+      "description": "심해의 달콤한 어둠을 두른 크라켄. 여덟 촉수가 펼쳐지면 초콜릿 소용돌이가 피어나요.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.82",
+      "speed": "0.025",
+      "size": 155,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/nyamnyam-chocolate-kraken_v1_thumbnail.png",
+      "sell_price": 2420,
+      "sprite_sheet_path": "fish/mythic/nyamnyam-chocolate-kraken_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-chocolate-peacock",
+      "kind": "fish",
+      "name": "금박초콜릿 밤의 공작",
+      "description": "금박 꼬리깃 속 봉봉 보석들이 밤의 빛을 품고 있어요.",
+      "swim_y_min": "0.24",
+      "swim_y_max": "0.78",
+      "speed": "0.025",
+      "size": 125,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/nyamnyam-chocolate-peacock_v1_thumbnail.png",
+      "sell_price": 892,
+      "sprite_sheet_path": "fish/epic/nyamnyam-chocolate-peacock_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-cottoncandy-seahorse",
+      "kind": "fish",
+      "name": "솜사탕 해마",
+      "description": "솜사탕 갈기가 흩어질 듯 물속에서 가볍게 흔들려요.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.7",
+      "speed": "0.025",
+      "size": 94,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/nyamnyam-cottoncandy-seahorse_v1_thumbnail.png",
+      "sell_price": 298,
+      "sprite_sheet_path": "fish/rare/nyamnyam-cottoncandy-seahorse_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-cremebrulee-whale",
+      "kind": "fish",
+      "name": "황금뿔 크렘브륄레 고래",
+      "description": "황금뿔과 얇은 캐러멜 유리 등껍질이 노을처럼 빛나요.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.75",
+      "speed": "0.025",
+      "size": 125,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/nyamnyam-cremebrulee-whale_v1_thumbnail.png",
+      "sell_price": 926,
+      "sprite_sheet_path": "fish/epic/nyamnyam-cremebrulee-whale_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-crown-melon-turtle",
+      "kind": "fish",
+      "name": "왕관멜론 진주거북",
+      "description": "멜론 그물무늬 사이에 작은 진주가 맺히는 거북이에요.",
+      "swim_y_min": "0.28",
+      "swim_y_max": "0.8",
+      "speed": "0.025",
+      "size": 94,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/nyamnyam-crown-melon-turtle_v1_thumbnail.png",
+      "sell_price": 332,
+      "sprite_sheet_path": "fish/rare/nyamnyam-crown-melon-turtle_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-crumpled-sauce-bottle",
+      "kind": "trash",
+      "name": "찌그러진 소스통",
+      "description": "마지막 한 방울까지 짜낸 소스통이에요.",
+      "swim_y_min": "0.88",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 65,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/nyamnyam-crumpled-sauce-bottle_v1_thumbnail.png",
+      "sell_price": 12,
+      "sprite_sheet_path": null,
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-curly-noodle-eel",
+      "kind": "fish",
+      "name": "꼬불면 장어",
+      "description": "꼬불한 몸을 풀었다 말며 물살 사이를 지나가요.",
+      "swim_y_min": "0.25",
+      "swim_y_max": "0.8",
+      "speed": "0.025",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/nyamnyam-curly-noodle-eel_v1_thumbnail.png",
+      "sell_price": 51,
+      "sprite_sheet_path": "fish/normal/nyamnyam-curly-noodle-eel_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-dumpling-crucian",
+      "kind": "fish",
+      "name": "통통 만두붕어",
+      "description": "만두 주름 같은 등지느러미로 느긋하게 물을 저어요.",
+      "swim_y_min": "0.25",
+      "swim_y_max": "0.78",
+      "speed": "0.025",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/nyamnyam-dumpling-crucian_v1_thumbnail.png",
+      "sell_price": 55,
+      "sprite_sheet_path": "fish/normal/nyamnyam-dumpling-crucian_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-dumpling-steamer-house",
+      "kind": "decoration",
+      "name": "만두 찜기집",
+      "description": "찜기 뚜껑 아래 따뜻한 만두집이 숨어 있어요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 65,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/nyamnyam-dumpling-steamer-house_v1_thumbnail.png",
+      "sell_price": 36,
+      "sprite_sheet_path": "decorations/normal/nyamnyam-dumpling-steamer-house_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-empty-noodle-cup",
+      "kind": "trash",
+      "name": "국물 빠진 컵라면",
+      "description": "국물은 사라지고 면발 한 가닥만 가장자리에 남았어요.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 65,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/nyamnyam-empty-noodle-cup_v1_thumbnail.png",
+      "sell_price": 10,
+      "sprite_sheet_path": null,
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-empty-plate-ghost",
+      "kind": "fish",
+      "name": "빈 접시의 유령",
+      "description": "빈 접시 위를 헤엄치는 희미한 물고기 그림자예요.",
+      "swim_y_min": "0.25",
+      "swim_y_max": "0.75",
+      "speed": "0.025",
+      "size": 125,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/nyamnyam-empty-plate-ghost_v1_thumbnail.png",
+      "sell_price": 874,
+      "sprite_sheet_path": "fish/epic/nyamnyam-empty-plate-ghost_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-endless-banquet-chef",
+      "kind": "fish",
+      "name": "끝없는 연회의 주방장",
+      "description": "가면 뒤의 얼굴을 본 이는 없어요. 은국자를 들면 소매 속에서 작은 음식 정령들이 찾아와요.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.78",
+      "speed": "0.025",
+      "size": 155,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/nyamnyam-endless-banquet-chef_v1_thumbnail.png",
+      "sell_price": 2400,
+      "sprite_sheet_path": "fish/mythic/nyamnyam-endless-banquet-chef_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-first-spoon-spirit",
+      "kind": "fish",
+      "name": "첫술의 수호령",
+      "description": "맑은 국물 한 방울 안에 작은 바다를 품은 수호령이에요.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.72",
+      "speed": "0.025",
+      "size": 125,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/nyamnyam-first-spoon-spirit_v1_thumbnail.png",
+      "sell_price": 860,
+      "sprite_sheet_path": "fish/epic/nyamnyam-first-spoon-spirit_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-flower-dumpling-jelly",
+      "kind": "fish",
+      "name": "꽃만두 해파리",
+      "description": "꽃잎처럼 펼친 만두피 사이로 분홍빛이 비쳐요.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.73",
+      "speed": "0.013",
+      "size": 94,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/nyamnyam-flower-dumpling-jelly_v1_thumbnail.png",
+      "sell_price": 306,
+      "sprite_sheet_path": "fish/rare/nyamnyam-flower-dumpling-jelly_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-giant-lollipop",
+      "kind": "decoration",
+      "name": "거대 막대사탕",
+      "description": "커다란 사탕 소용돌이에 달콤한 빛이 맴돌아요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 120,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/nyamnyam-giant-lollipop_v1_thumbnail.png",
+      "sell_price": 680,
+      "sprite_sheet_path": null,
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-gimbap-anchovy",
+      "kind": "fish",
+      "name": "김밥말이 멸치",
+      "description": "한입 크기의 몸으로 옹기종기 모여 다녀요.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.7",
+      "speed": "0.025",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/nyamnyam-gimbap-anchovy_v1_thumbnail.png",
+      "sell_price": 50,
+      "sprite_sheet_path": "fish/normal/nyamnyam-gimbap-anchovy_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-gimbap-stone-wall",
+      "kind": "decoration",
+      "name": "김밥 돌담",
+      "description": "김밥 단면을 닮은 돌들이 아담한 담장을 이루었어요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 65,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/nyamnyam-gimbap-stone-wall_v1_thumbnail.png",
+      "sell_price": 32,
+      "sprite_sheet_path": null,
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-golden-cake",
+      "kind": "decoration",
+      "name": "황금 케이크",
+      "description": "금빛 크림과 작은 진주 장식이 층층이 빛나는 케이크예요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 90,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/nyamnyam-golden-cake_v1_thumbnail.png",
+      "sell_price": 236,
+      "sprite_sheet_path": null,
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-gorgonzola-oven",
+      "kind": "decoration",
+      "name": "고르곤졸라를 굽는 화덕",
+      "description": "고소한 치즈 향이 피어날 듯한 작은 돌화덕이에요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 90,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/nyamnyam-gorgonzola-oven_v1_thumbnail.png",
+      "sell_price": 248,
+      "sprite_sheet_path": null,
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-holey-strainer-ladle",
+      "kind": "trash",
+      "name": "구멍 난 뜰채국자",
+      "description": "건더기 대신 물살만 건져 올리는 낡은 국자예요.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.97",
+      "speed": "0.001",
+      "size": 65,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/nyamnyam-holey-strainer-ladle_v1_thumbnail.png",
+      "sell_price": 14,
+      "sprite_sheet_path": null,
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-honey-pot",
+      "kind": "decoration",
+      "name": "꿀단지",
+      "description": "입구에 맺힌 꿀방울이 호박빛으로 반짝여요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 65,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/nyamnyam-honey-pot_v1_thumbnail.png",
+      "sell_price": 34,
+      "sprite_sheet_path": null,
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-hotdog-sardine",
+      "kind": "fish",
+      "name": "핫도그 정어리",
+      "description": "폭신한 빵 지느러미와 케첩 줄무늬를 뽐내며 재빠르게 헤엄쳐요.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.75",
+      "speed": "0.029",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/nyamnyam-hotdog-sardine_v1_thumbnail.png",
+      "sell_price": 54,
+      "sprite_sheet_path": "fish/normal/nyamnyam-hotdog-sardine_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-jelly-shrimp",
+      "kind": "fish",
+      "name": "젤리새우",
+      "description": "젤리 같은 몸 안에서 작은 기포가 반짝여요.",
+      "swim_y_min": "0.3",
+      "swim_y_max": "0.82",
+      "speed": "0.025",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/nyamnyam-jelly-shrimp_v1_thumbnail.png",
+      "sell_price": 54,
+      "sprite_sheet_path": "fish/normal/nyamnyam-jelly-shrimp_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-layered-croissant-nautilus",
+      "kind": "fish",
+      "name": "천겹 크루아상 앵무조개",
+      "description": "겹겹이 말린 버터빛 껍데기 아래 부드러운 촉수를 펼쳐 천천히 나아가요.",
+      "swim_y_min": "0.3",
+      "swim_y_max": "0.78",
+      "speed": "0.013",
+      "size": 125,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/nyamnyam-layered-croissant-nautilus_v1_thumbnail.png",
+      "sell_price": 872,
+      "sprite_sheet_path": "fish/epic/nyamnyam-layered-croissant-nautilus_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-milk-jellyfish",
+      "kind": "fish",
+      "name": "우유해파리",
+      "description": "우유빛 갓을 오므릴 때마다 포근한 물결이 번져요.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.73",
+      "speed": "0.013",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/nyamnyam-milk-jellyfish_v1_thumbnail.png",
+      "sell_price": 59,
+      "sprite_sheet_path": "fish/normal/nyamnyam-milk-jellyfish_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-millennium-dragon-cauldron",
+      "kind": "decoration",
+      "name": "천 년을 끓인 용왕솥",
+      "description": "천 년의 온기를 품은 솥에서 작은 용 모양 김이 피어올라요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 120,
+      "rarity": "epic",
+      "thumbnail_path": "decorations/epic/nyamnyam-millennium-dragon-cauldron_v1_thumbnail.png",
+      "sell_price": 700,
+      "sprite_sheet_path": "decorations/epic/nyamnyam-millennium-dragon-cauldron_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-peach-phoenix-clam",
+      "kind": "fish",
+      "name": "천도복숭아 봉황조개",
+      "description": "복숭아빛 껍데기를 열면 금빛 깃털 촉수가 펼쳐져요.",
+      "swim_y_min": "0.45",
+      "swim_y_max": "0.82",
+      "speed": "0.013",
+      "size": 94,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/nyamnyam-peach-phoenix-clam_v1_thumbnail.png",
+      "sell_price": 326,
+      "sprite_sheet_path": "fish/rare/nyamnyam-peach-phoenix-clam_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-pudding-lighthouse",
+      "kind": "decoration",
+      "name": "푸딩 등대",
+      "description": "캐러멜 지붕 위 체리 등불이 길을 밝혀요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 90,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/nyamnyam-pudding-lighthouse_v1_thumbnail.png",
+      "sell_price": 220,
+      "sprite_sheet_path": "decorations/rare/nyamnyam-pudding-lighthouse_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-pudding-sea-cucumber",
+      "kind": "fish",
+      "name": "탱글 푸딩해삼",
+      "description": "캐러멜 모자를 쓰고 바닥에서 탱글하게 몸을 움직여요.",
+      "swim_y_min": "0.85",
+      "swim_y_max": "0.97",
+      "speed": "0.009",
+      "size": 94,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/nyamnyam-pudding-sea-cucumber_v1_thumbnail.png",
+      "sell_price": 296,
+      "sprite_sheet_path": "fish/rare/nyamnyam-pudding-sea-cucumber_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-rice-puffer",
+      "kind": "fish",
+      "name": "소금밥 주먹복어",
+      "description": "짭조름한 밥알을 꼭 뭉친 작은 복어예요.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.78",
+      "speed": "0.025",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/nyamnyam-rice-puffer_v1_thumbnail.png",
+      "sell_price": 52,
+      "sprite_sheet_path": "fish/normal/nyamnyam-rice-puffer_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-ricecake-skewer-minnow",
+      "kind": "fish",
+      "name": "떡꼬치 송사리",
+      "description": "달콤한 양념 지느러미로 재빠르게 방향을 바꿔요.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.68",
+      "speed": "0.025",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/nyamnyam-ricecake-skewer-minnow_v1_thumbnail.png",
+      "sell_price": 49,
+      "sprite_sheet_path": "fish/normal/nyamnyam-ricecake-skewer-minnow_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-rose-crab-queen",
+      "kind": "fish",
+      "name": "장밋빛 대게여왕",
+      "description": "은빛 왕관 등껍질과 장밋빛 다리를 지닌 바다 여왕이에요.",
+      "swim_y_min": "0.82",
+      "swim_y_max": "0.96",
+      "speed": "0.009",
+      "size": 125,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/nyamnyam-rose-crab-queen_v1_thumbnail.png",
+      "sell_price": 908,
+      "sprite_sheet_path": "fish/epic/nyamnyam-rose-crab-queen_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-royal-macaron-conch",
+      "kind": "fish",
+      "name": "왕실 마카롱 소라",
+      "description": "장밋빛 마카롱 껍데기 틈마다 크림 진주를 품었어요.",
+      "swim_y_min": "0.84",
+      "swim_y_max": "0.96",
+      "speed": "0.009",
+      "size": 125,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/nyamnyam-royal-macaron-conch_v1_thumbnail.png",
+      "sell_price": 862,
+      "sprite_sheet_path": "fish/epic/nyamnyam-royal-macaron-conch_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-salmon-sushi-seahorse",
+      "kind": "fish",
+      "name": "연어초밥 해마",
+      "description": "연어빛 망토 아래 하얀 밥알 배를 숨기고 있어요.",
+      "swim_y_min": "0.25",
+      "swim_y_max": "0.75",
+      "speed": "0.025",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/nyamnyam-salmon-sushi-seahorse_v1_thumbnail.png",
+      "sell_price": 58,
+      "sprite_sheet_path": "fish/normal/nyamnyam-salmon-sushi-seahorse_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-scallion-ribbon-eel",
+      "kind": "fish",
+      "name": "대파리본 리본장어",
+      "description": "대파 잎 같은 긴 꼬리가 초록 리본처럼 흘러요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.78",
+      "speed": "0.025",
+      "size": 94,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/nyamnyam-scallion-ribbon-eel_v1_thumbnail.png",
+      "sell_price": 302,
+      "sprite_sheet_path": "fish/rare/nyamnyam-scallion-ribbon-eel_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-seafood-hotpot-angler",
+      "kind": "fish",
+      "name": "해물전골 아귀",
+      "description": "해물 향이 피어나는 둥근 몸과 국자 모양 유인등으로 바다 친구들을 불러요.",
+      "swim_y_min": "0.45",
+      "swim_y_max": "0.86",
+      "speed": "0.016",
+      "size": 125,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/nyamnyam-seafood-hotpot-angler_v1_thumbnail.png",
+      "sell_price": 902,
+      "sprite_sheet_path": "fish/epic/nyamnyam-seafood-hotpot-angler_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-spice-censer-qilin",
+      "kind": "fish",
+      "name": "백 가지 향의 향로기린",
+      "description": "계피나무 뿔과 청자 향로 몸을 지닌 기린. 백 가지 향이 물속에 꽃처럼 번져요.",
+      "swim_y_min": "0.76",
+      "swim_y_max": "0.95",
+      "speed": "0.009",
+      "size": 155,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/nyamnyam-spice-censer-qilin_v1_thumbnail.png",
+      "sell_price": 2380,
+      "sprite_sheet_path": "fish/mythic/nyamnyam-spice-censer-qilin_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-sunken-cauldron",
+      "kind": "decoration",
+      "name": "가라앉은 가마솥",
+      "description": "오래된 솥뚜껑 틈으로 해초가 고개를 내밀어요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 65,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/nyamnyam-sunken-cauldron_v1_thumbnail.png",
+      "sell_price": 40,
+      "sprite_sheet_path": null,
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-tempura-goby",
+      "kind": "fish",
+      "name": "새우튀김 망둥어",
+      "description": "바삭한 옷자락을 팔랑이며 바닥 가까이 헤엄쳐요.",
+      "swim_y_min": "0.55",
+      "swim_y_max": "0.88",
+      "speed": "0.025",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/nyamnyam-tempura-goby_v1_thumbnail.png",
+      "sell_price": 56,
+      "sprite_sheet_path": "fish/normal/nyamnyam-tempura-goby_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-udon-octopus",
+      "kind": "fish",
+      "name": "돌돌 우동 문어",
+      "description": "굵은 우동 다리를 돌돌 말았다 천천히 펼쳐요.",
+      "swim_y_min": "0.35",
+      "swim_y_max": "0.82",
+      "speed": "0.025",
+      "size": 94,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/nyamnyam-udon-octopus_v1_thumbnail.png",
+      "sell_price": 314,
+      "sprite_sheet_path": "fish/rare/nyamnyam-udon-octopus_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-vanilla-cone-lobster",
+      "kind": "fish",
+      "name": "바닐라콘 랍스터",
+      "description": "바닐라 아이스크림콘에 쏙 들어가 집게와 작은 다리로 바닷바닥을 걸어요.",
+      "swim_y_min": "0.84",
+      "swim_y_max": "0.97",
+      "speed": "0.009",
+      "size": 94,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/nyamnyam-vanilla-cone-lobster_v1_thumbnail.png",
+      "sell_price": 316,
+      "sprite_sheet_path": "fish/rare/nyamnyam-vanilla-cone-lobster_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-wafer-column",
+      "kind": "decoration",
+      "name": "웨하스 기둥",
+      "description": "바삭한 웨하스 층이 쌓여 작은 신전 기둥이 되었어요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 90,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/nyamnyam-wafer-column_v1_thumbnail.png",
+      "sell_price": 220,
+      "sprite_sheet_path": null,
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-wine-glass",
+      "kind": "decoration",
+      "name": "와인잔",
+      "description": "붉은빛이 조금 남은 잔 안에서 진주 기포가 올라와요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 65,
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/nyamnyam-wine-glass_v1_thumbnail.png",
+      "sell_price": 38,
+      "sprite_sheet_path": null,
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-wish-lunchbox",
+      "kind": "decoration",
+      "name": "소원을 품은 도시락",
+      "description": "반쯤 열린 도시락 속 주먹밥 별들이 작은 소원을 품었어요.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 90,
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/nyamnyam-wish-lunchbox_v1_thumbnail.png",
+      "sell_price": 232,
+      "sprite_sheet_path": "decorations/rare/nyamnyam-wish-lunchbox_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "obel-sunken-crown",
       "kind": "fish",
       "name": "오벨, 가라앉은 왕관",
@@ -5416,6 +6379,24 @@
       "sell_price": 23,
       "sprite_sheet_path": "fish/normal/pongul_sprite.png",
       "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "primal-nemerion-last-ocean-heir",
+      "kind": "fish",
+      "name": "사라진 대양의 마지막 후예, 네메리온",
+      "description": "사라진 대양의 기억을 품은 거대한 고대 바다뱀. 길고 육중한 몸을 따라 파동을 흘려 유영하다가, 몸을 크게 굽혔다 펴며 태고의 물결을 일으킵니다.",
+      "swim_y_min": "0.28",
+      "swim_y_max": "0.84",
+      "speed": "0.014",
+      "size": 178,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/primal-nemerion-last-ocean-heir_v2_thumbnail.png",
+      "sell_price": 3022,
+      "sprite_sheet_path": "fish/mythic/primal-nemerion-last-ocean-heir_v2_sprite.png",
+      "native_region_id": "primal",
       "movement_type": "swim",
       "flip_with_direction": true,
       "travel_direction": "both"
@@ -6641,6 +7622,42 @@
       "sprite_sheet_path": "fish/mythic/shared-forgotten-star_compat_sprite.png",
       "native_region_id": null,
       "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-golden-whale-shark",
+      "kind": "fish",
+      "name": "황금 고래상어",
+      "description": "넓고 둥근 머리와 황금빛 별점 무늬를 지닌 거대한 고래상어. 느긋한 꼬리짓으로 모든 해역을 누빕니다.",
+      "swim_y_min": "0.18",
+      "swim_y_max": "0.8",
+      "speed": "0.016",
+      "size": 160,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/shared-golden-whale-shark_v1_thumbnail.png",
+      "sell_price": 900,
+      "sprite_sheet_path": "fish/epic/shared-golden-whale-shark_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-grimhowl-giant-wolf-eel",
+      "kind": "fish",
+      "name": "침묵을 찢는 송곳니, 그림하울",
+      "description": "육중한 턱과 우툴두툴한 피부를 지닌 거대 늑대장어. 긴 몸을 낮게 물결치며 조용한 바다를 가릅니다.",
+      "swim_y_min": "0.48",
+      "swim_y_max": "0.88",
+      "speed": "0.018",
+      "size": 145,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/shared-grimhowl-giant-wolf-eel_v1_thumbnail.png",
+      "sell_price": 874,
+      "sprite_sheet_path": "fish/epic/shared-grimhowl-giant-wolf-eel_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
       "flip_with_direction": true,
       "travel_direction": "both"
     },
@@ -12207,6 +13224,218 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "nyamnyam-bread-crab",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-broken-chopstick",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-bungeoppang-fish",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-buried-golden-fork",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-cake-turtle",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-caramel-octopus",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-cheese-moray",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-chestnut-urchin",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-chocolate-fountain",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-chocolate-kraken",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-chocolate-peacock",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-cottoncandy-seahorse",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-cremebrulee-whale",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-crown-melon-turtle",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-crumpled-sauce-bottle",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-curly-noodle-eel",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-dumpling-crucian",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-dumpling-steamer-house",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-empty-noodle-cup",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-empty-plate-ghost",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-endless-banquet-chef",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-first-spoon-spirit",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-flower-dumpling-jelly",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-giant-lollipop",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-gimbap-anchovy",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-gimbap-stone-wall",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-golden-cake",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-gorgonzola-oven",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-holey-strainer-ladle",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-honey-pot",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-hotdog-sardine",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-jelly-shrimp",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-layered-croissant-nautilus",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-milk-jellyfish",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-millennium-dragon-cauldron",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-peach-phoenix-clam",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-pudding-lighthouse",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-pudding-sea-cucumber",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-rice-puffer",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-ricecake-skewer-minnow",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-rose-crab-queen",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-royal-macaron-conch",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-salmon-sushi-seahorse",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-scallion-ribbon-eel",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-seafood-hotpot-angler",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-spice-censer-qilin",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-sunken-cauldron",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-tempura-goby",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-udon-octopus",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-vanilla-cone-lobster",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-wafer-column",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-wine-glass",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-wish-lunchbox",
+      "region_id": "nyamnyam"
+    },
+    {
       "species_id": "obel-sunken-crown",
       "region_id": "bluegrove"
     },
@@ -13137,6 +14366,10 @@
     {
       "species_id": "pongul",
       "region_id": "whitenight"
+    },
+    {
+      "species_id": "primal-nemerion-last-ocean-heir",
+      "region_id": "primal"
     },
     {
       "species_id": "primal-sea-eggshell",
@@ -14448,6 +15681,110 @@
     },
     {
       "species_id": "shared-forgotten-star",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-golden-whale-shark",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-golden-whale-shark",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-golden-whale-shark",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-golden-whale-shark",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-golden-whale-shark",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-golden-whale-shark",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-golden-whale-shark",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-golden-whale-shark",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-golden-whale-shark",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-golden-whale-shark",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-golden-whale-shark",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-golden-whale-shark",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-golden-whale-shark",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-grimhowl-giant-wolf-eel",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-grimhowl-giant-wolf-eel",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-grimhowl-giant-wolf-eel",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-grimhowl-giant-wolf-eel",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-grimhowl-giant-wolf-eel",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-grimhowl-giant-wolf-eel",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-grimhowl-giant-wolf-eel",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-grimhowl-giant-wolf-eel",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-grimhowl-giant-wolf-eel",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-grimhowl-giant-wolf-eel",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-grimhowl-giant-wolf-eel",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-grimhowl-giant-wolf-eel",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-grimhowl-giant-wolf-eel",
       "region_id": "whitenight"
     },
     {
@@ -20740,8 +22077,8 @@
       "description": "진주 거품방울을 정성껏 준비하는 작은 공방이에요.",
       "bait_id": "bait_pearl_bubble",
       "price": 3000,
-      "fuel_cost": 11,
-      "output_count": 8,
+      "fuel_cost": 10,
+      "output_count": 9,
       "production_minutes": 360,
       "storage_minutes": 480,
       "enabled": true
@@ -20752,10 +22089,10 @@
       "description": "산호 꽃가루을 정성껏 준비하는 작은 공방이에요.",
       "bait_id": "bait_coral_pollen",
       "price": 1100,
-      "fuel_cost": 7,
-      "output_count": 6,
+      "fuel_cost": 6,
+      "output_count": 7,
       "production_minutes": 240,
-      "storage_minutes": 20,
+      "storage_minutes": 30,
       "enabled": true
     },
     {
@@ -20764,8 +22101,8 @@
       "description": "깊은잠 향낭을 정성껏 준비하는 작은 공방이에요.",
       "bait_id": "bait_deep_sleep_sachet",
       "price": 4500,
-      "fuel_cost": 23,
-      "output_count": 3,
+      "fuel_cost": 20,
+      "output_count": 4,
       "production_minutes": 720,
       "storage_minutes": 360,
       "enabled": true
@@ -20776,10 +22113,10 @@
       "description": "퐁당 지렁이을 정성껏 준비하는 작은 공방이에요.",
       "bait_id": "bait",
       "price": 450,
-      "fuel_cost": 4,
-      "output_count": 5,
+      "fuel_cost": 3,
+      "output_count": 6,
       "production_minutes": 120,
-      "storage_minutes": 15,
+      "storage_minutes": 30,
       "enabled": true
     },
     {
@@ -20788,8 +22125,8 @@
       "description": "반딧불 번데기을 정성껏 준비하는 작은 공방이에요.",
       "bait_id": "bait_firefly_pupa",
       "price": 1200,
-      "fuel_cost": 6,
-      "output_count": 4,
+      "fuel_cost": 5,
+      "output_count": 5,
       "production_minutes": 180,
       "storage_minutes": 60,
       "enabled": true
@@ -20801,7 +22138,7 @@
       "bait_id": "bait_cloud_dough",
       "price": 650,
       "fuel_cost": 1,
-      "output_count": 1,
+      "output_count": 2,
       "production_minutes": 30,
       "storage_minutes": 120,
       "enabled": true
@@ -20812,8 +22149,8 @@
       "description": "퐁당 지렁이을 정성껏 준비하는 작은 공방이에요.",
       "bait_id": "bait",
       "price": 2800,
-      "fuel_cost": 12,
-      "output_count": 12,
+      "fuel_cost": 8,
+      "output_count": 16,
       "production_minutes": 480,
       "storage_minutes": 720,
       "enabled": true
@@ -20824,8 +22161,8 @@
       "description": "벼락 별가루을 정성껏 준비하는 작은 공방이에요.",
       "bait_id": "bait_lightning_stardust",
       "price": 1800,
-      "fuel_cost": 10,
-      "output_count": 2,
+      "fuel_cost": 9,
+      "output_count": 3,
       "production_minutes": 300,
       "storage_minutes": 30,
       "enabled": true
@@ -20836,10 +22173,10 @@
       "description": "퐁당 지렁이을 정성껏 준비하는 작은 공방이에요.",
       "bait_id": "bait",
       "price": 1200,
-      "fuel_cost": 14,
-      "output_count": 16,
+      "fuel_cost": 10,
+      "output_count": 20,
       "production_minutes": 480,
-      "storage_minutes": 60,
+      "storage_minutes": 90,
       "enabled": true
     },
     {
@@ -20849,9 +22186,9 @@
       "bait_id": "bait_grubby_magnet",
       "price": 450,
       "fuel_cost": 2,
-      "output_count": 3,
+      "output_count": 4,
       "production_minutes": 60,
-      "storage_minutes": 20,
+      "storage_minutes": 30,
       "enabled": true
     },
     {
@@ -20861,7 +22198,7 @@
       "bait_id": "bait_sea_memory",
       "price": 1200,
       "fuel_cost": 2,
-      "output_count": 1,
+      "output_count": 2,
       "production_minutes": 60,
       "storage_minutes": 180,
       "enabled": true
@@ -20873,9 +22210,9 @@
       "bait_id": "bait_honey_dumpling",
       "price": 350,
       "fuel_cost": 1,
-      "output_count": 1,
+      "output_count": 2,
       "production_minutes": 30,
-      "storage_minutes": 15,
+      "storage_minutes": 30,
       "enabled": true
     },
     {
@@ -20884,8 +22221,8 @@
       "description": "조개 부스러기을 정성껏 준비하는 작은 공방이에요.",
       "bait_id": "bait_shell_crumbs",
       "price": 1000,
-      "fuel_cost": 8,
-      "output_count": 8,
+      "fuel_cost": 7,
+      "output_count": 9,
       "production_minutes": 240,
       "storage_minutes": 120,
       "enabled": true
@@ -20896,10 +22233,18 @@
       "description": "퐁당 지렁이을 정성껏 준비하는 작은 공방이에요.",
       "bait_id": "bait",
       "price": 300,
-      "fuel_cost": 2,
+      "fuel_cost": 1,
       "output_count": 2,
-      "production_minutes": 60,
-      "storage_minutes": 40,
+      "production_minutes": 30,
+      "storage_minutes": 30,
+      "enabled": true
+    }
+  ],
+  "fishing_map_blueprints": [
+    {
+      "region_id": "nyamnyam",
+      "piece_count": 4,
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/regions/nyamnyam/map-v2.png",
       "enabled": true
     }
   ]

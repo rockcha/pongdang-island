@@ -1,0 +1,111 @@
+﻿{
+    "alphaThreshold":  32,
+    "thumbnails":  2,
+    "missing":  [
+
+                ],
+    "sprites":  [
+                    {
+                        "id":  "nyamnyam-bungeoppang-fish",
+                        "file":  "fish/rare/nyamnyam-bungeoppang-fish_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  148,
+                                           "y":  212,
+                                           "width":  414,
+                                           "height":  296,
+                                           "margin":  65,
+                                           "marginRatio":  0.10366826156299841,
+                                           "alphaPixels":  79639
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  91,
+                                           "y":  212,
+                                           "width":  444,
+                                           "height":  297,
+                                           "margin":  91,
+                                           "marginRatio":  0.14513556618819776,
+                                           "alphaPixels":  84302
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  170,
+                                           "y":  142,
+                                           "width":  390,
+                                           "height":  292,
+                                           "margin":  67,
+                                           "marginRatio":  0.10685805422647528,
+                                           "alphaPixels":  78105
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  93,
+                                           "y":  144,
+                                           "width":  442,
+                                           "height":  296,
+                                           "margin":  92,
+                                           "marginRatio":  0.14673046251993621,
+                                           "alphaPixels":  84866
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-vanilla-cone-lobster",
+                        "file":  "fish/rare/nyamnyam-vanilla-cone-lobster_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  123,
+                                           "y":  152,
+                                           "width":  428,
+                                           "height":  400,
+                                           "margin":  75,
+                                           "marginRatio":  0.11961722488038277,
+                                           "alphaPixels":  96156
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  89,
+                                           "y":  152,
+                                           "width":  433,
+                                           "height":  404,
+                                           "margin":  71,
+                                           "marginRatio":  0.11323763955342903,
+                                           "alphaPixels":  94470
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  122,
+                                           "y":  110,
+                                           "width":  454,
+                                           "height":  399,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  96318
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  93,
+                                           "y":  110,
+                                           "width":  432,
+                                           "height":  392,
+                                           "margin":  93,
+                                           "marginRatio":  0.14832535885167464,
+                                           "alphaPixels":  93355
+                                       }
+                                   ]
+                    }
+                ]
+}

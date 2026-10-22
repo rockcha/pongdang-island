@@ -728,5 +728,239 @@
   {
     "path": "fish/mythic/siren-skalla-six-shadows_sprite.png",
     "facing": "right"
+  },
+  {
+    "id": "nyamnyam-rice-puffer",
+    "path": "fish/normal/nyamnyam-rice-puffer_v1_sprite.png",
+    "facing": "right",
+    "sha256": "75f8cb0dc968f616aafadcdcb97b7bf44471bef5da29e3cc21c47654ef1d9cd3"
+  },
+  {
+    "id": "nyamnyam-curly-noodle-eel",
+    "path": "fish/normal/nyamnyam-curly-noodle-eel_v1_sprite.png",
+    "facing": "right",
+    "sha256": "7d6d4c0d09041afc5c00d997999c2eb26754fce6061306d3c5d70fd92b83b818"
+  },
+  {
+    "id": "nyamnyam-tempura-goby",
+    "path": "fish/normal/nyamnyam-tempura-goby_v1_sprite.png",
+    "facing": "right",
+    "sha256": "c8caed55c3aa09b710391ab890f352e9dddb227c680b47e38502e08ebfe03cb9"
+  },
+  {
+    "id": "nyamnyam-gimbap-anchovy",
+    "path": "fish/normal/nyamnyam-gimbap-anchovy_v1_sprite.png",
+    "facing": "right",
+    "sha256": "a0a73ed4fc435d9b54c620827d9340c31a57dcd1420aea1a5fcb8b8576b2670b"
+  },
+  {
+    "id": "nyamnyam-dumpling-crucian",
+    "path": "fish/normal/nyamnyam-dumpling-crucian_v1_sprite.png",
+    "facing": "right",
+    "sha256": "4079c47a5c83da4d47cbfc4cf6857508f1d3cd1c8e872137628905e8f9fd7d62"
+  },
+  {
+    "id": "nyamnyam-salmon-sushi-seahorse",
+    "path": "fish/normal/nyamnyam-salmon-sushi-seahorse_v1_sprite.png",
+    "facing": "right",
+    "sha256": "129febc388d3c45e7969ab85c69800ba5869df2b0a470b555249903777d8089b"
+  },
+  {
+    "id": "nyamnyam-ricecake-skewer-minnow",
+    "path": "fish/normal/nyamnyam-ricecake-skewer-minnow_v1_sprite.png",
+    "facing": "right",
+    "sha256": "08abc586962ce8fa9f2b37fa48d3f3632352402861cd4f6276cba7cd283be85a"
+  },
+  {
+    "id": "nyamnyam-bread-crab",
+    "path": "fish/normal/nyamnyam-bread-crab_v1_sprite.png",
+    "facing": "right",
+    "sha256": "5b21b393f6b6b9d578105724af9496bac89fcaad768d9dd2f20cf68da0ef0f88"
+  },
+  {
+    "id": "nyamnyam-jelly-shrimp",
+    "path": "fish/normal/nyamnyam-jelly-shrimp_v1_sprite.png",
+    "facing": "right",
+    "sha256": "99610521fdb5635fd4ae430e713cf0dbd1b554b7fab154cb0361371e2bec8190"
+  },
+  {
+    "id": "nyamnyam-milk-jellyfish",
+    "path": "fish/normal/nyamnyam-milk-jellyfish_v1_sprite.png",
+    "facing": "right",
+    "sha256": "146a0c9268fe4fa4651279c89ed5e58d47a8761178931e8fe8788dffaeee5ec0"
+  },
+  {
+    "id": "nyamnyam-udon-octopus",
+    "path": "fish/rare/nyamnyam-udon-octopus_v1_sprite.png",
+    "facing": "right",
+    "sha256": "c84a22e12f3b8201dbbb710f64db66f1299d866a47234634bee44595c5cf879d"
+  },
+  {
+    "id": "nyamnyam-flower-dumpling-jelly",
+    "path": "fish/rare/nyamnyam-flower-dumpling-jelly_v1_sprite.png",
+    "facing": "right",
+    "sha256": "8829f2a8601a9d9b1e53a4b1087dc3e854fa46af23a94f2513becc9ecde5c253"
+  },
+  {
+    "id": "nyamnyam-cheese-moray",
+    "path": "fish/rare/nyamnyam-cheese-moray_v1_sprite.png",
+    "facing": "right",
+    "sha256": "fd1c4044deade0c4b145ec5f57729e271b13b6c49527f8489e5744c3746e8027"
+  },
+  {
+    "id": "nyamnyam-pudding-sea-cucumber",
+    "path": "fish/rare/nyamnyam-pudding-sea-cucumber_v1_sprite.png",
+    "facing": "right",
+    "sha256": "c9fa1ca7c209fdce977e632f6ee4861c63ef6c7acdf29176d3619d7ab39d6504"
+  },
+  {
+    "id": "nyamnyam-scallion-ribbon-eel",
+    "path": "fish/rare/nyamnyam-scallion-ribbon-eel_v1_sprite.png",
+    "facing": "right",
+    "sha256": "f0e1c0431765cc5d917586a9365d67a104b7b5d28bced10943620a28270e0a46"
+  },
+  {
+    "id": "nyamnyam-chestnut-urchin",
+    "path": "fish/rare/nyamnyam-chestnut-urchin_v1_sprite.png",
+    "facing": "right",
+    "sha256": "39e4596fe8c827ba09a7fa8f74c88ede5d7de4a202909073309180b14a34a983"
+  },
+  {
+    "id": "nyamnyam-peach-phoenix-clam",
+    "path": "fish/rare/nyamnyam-peach-phoenix-clam_v1_sprite.png",
+    "facing": "right",
+    "sha256": "d56814c3cfa8c3e7d2a0c8f66ac55d4fe0aebfe149ba18dcf93a83be405f9d91"
+  },
+  {
+    "id": "nyamnyam-crown-melon-turtle",
+    "path": "fish/rare/nyamnyam-crown-melon-turtle_v1_sprite.png",
+    "facing": "right",
+    "sha256": "f2586ed42c2658e4e21098deb5d53f00045a7d6d748f5ef91aea50064e7dab2b"
+  },
+  {
+    "id": "nyamnyam-cottoncandy-seahorse",
+    "path": "fish/rare/nyamnyam-cottoncandy-seahorse_v1_sprite.png",
+    "facing": "right",
+    "sha256": "1aa5cd0a072b796e2aef6a7041672f17f67f37175625e3d5bea22b47469d2c5e"
+  },
+  {
+    "id": "nyamnyam-caramel-octopus",
+    "path": "fish/rare/nyamnyam-caramel-octopus_v1_sprite.png",
+    "facing": "right",
+    "sha256": "d71b749b2db9b721c802f02dc54834f6cecc90777b707a770e6de011a3e7a622"
+  },
+  {
+    "id": "nyamnyam-cake-turtle",
+    "path": "fish/rare/nyamnyam-cake-turtle_v1_sprite.png",
+    "facing": "right",
+    "sha256": "115b4efc7e337ffaf525e9a2f40fed40bca89c285934abc7b0bac95f56900abc"
+  },
+  {
+    "id": "nyamnyam-first-spoon-spirit",
+    "path": "fish/epic/nyamnyam-first-spoon-spirit_v1_sprite.png",
+    "facing": "right",
+    "sha256": "e2abde45517cdfddd68ebc60614e34d08fce92d58376796c9763acd4d122180f"
+  },
+  {
+    "id": "nyamnyam-empty-plate-ghost",
+    "path": "fish/epic/nyamnyam-empty-plate-ghost_v1_sprite.png",
+    "facing": "right",
+    "sha256": "6689f00932d1b88285bfe372609bcc048899507de5fdc1067a72a2e068fb974b"
+  },
+  {
+    "id": "nyamnyam-rose-crab-queen",
+    "path": "fish/epic/nyamnyam-rose-crab-queen_v1_sprite.png",
+    "facing": "right",
+    "sha256": "d8db239a67ebfc86bc232d37ef34d9731081516f7d43b169a2fb92eee54c44a4"
+  },
+  {
+    "id": "nyamnyam-cremebrulee-whale",
+    "path": "fish/epic/nyamnyam-cremebrulee-whale_v1_sprite.png",
+    "facing": "right",
+    "sha256": "1dcab9e60be73862ffdb3dcc831fb78b3840a4d9f5c4900e80c4a361d9750294"
+  },
+  {
+    "id": "nyamnyam-royal-macaron-conch",
+    "path": "fish/epic/nyamnyam-royal-macaron-conch_v1_sprite.png",
+    "facing": "right",
+    "sha256": "a4bc54d9799c7f8c3a43e1810517e9e503fd41b6298a8e2c6904a9581ddff24e"
+  },
+  {
+    "id": "nyamnyam-chocolate-peacock",
+    "path": "fish/epic/nyamnyam-chocolate-peacock_v1_sprite.png",
+    "facing": "right",
+    "sha256": "5bde742fac6af4bceb0705493d5aa58430ee28423adf15cd892b8638e7e7c5a9"
+  },
+  {
+    "id": "nyamnyam-chocolate-kraken",
+    "path": "fish/mythic/nyamnyam-chocolate-kraken_v1_sprite.png",
+    "facing": "right",
+    "sha256": "d66dd59bcf4d915eadeb053af35393cef295c564302e6ac1ca753914b5433687"
+  },
+  {
+    "id": "nyamnyam-spice-censer-qilin",
+    "path": "fish/mythic/nyamnyam-spice-censer-qilin_v1_sprite.png",
+    "facing": "right",
+    "sha256": "2992ca640d77318dbb261c8cdc7debbeec678921f03afddaf7f98aa54dd8c2e2"
+  },
+  {
+    "id": "nyamnyam-endless-banquet-chef",
+    "path": "fish/mythic/nyamnyam-endless-banquet-chef_v1_sprite.png",
+    "facing": "right",
+    "sha256": "134a8fc63524544674d37604389925efeab05d770fb6aef90a71c63ca14575d7"
+  },
+  {
+    "id": "nyamnyam-bungeoppang-fish",
+    "path": "fish/rare/nyamnyam-bungeoppang-fish_v1_sprite.png",
+    "facing": "right",
+    "sha256": "86e4d2ec92d65274a9444ef49b5061c6785834776865237fe602300a5b95c928"
+  },
+  {
+    "id": "nyamnyam-vanilla-cone-lobster",
+    "path": "fish/rare/nyamnyam-vanilla-cone-lobster_v1_sprite.png",
+    "facing": "right",
+    "sha256": "7a658d76e3da72ff2f55840eb506db2576c35b0d6783741a30cd5a0249b35a31"
+  },
+  {
+    "id": "nyamnyam-hotdog-sardine",
+    "path": "fish/normal/nyamnyam-hotdog-sardine_v1_sprite.png",
+    "facing": "right",
+    "sha256": "13b3a340ec5ee9b55362e6c2e9cd25295696b15ba644123d7a60d8c8ecf388d6"
+  },
+  {
+    "id": "nyamnyam-seafood-hotpot-angler",
+    "path": "fish/epic/nyamnyam-seafood-hotpot-angler_v1_sprite.png",
+    "facing": "right",
+    "sha256": "7d788ea0e52e8d52cf5c43fa0593d12bcc6eb3f09556accb6421ad6fbde945bf"
+  },
+  {
+    "id": "nyamnyam-layered-croissant-nautilus",
+    "path": "fish/epic/nyamnyam-layered-croissant-nautilus_v1_sprite.png",
+    "facing": "right",
+    "sha256": "02f646e437127177e9e09e18591064911c98a3c56eda7a017796039000fa8f14"
+  },
+  {
+    "id": "shared-grimhowl-giant-wolf-eel",
+    "path": "fish/epic/shared-grimhowl-giant-wolf-eel_v1_sprite.png",
+    "facing": "right",
+    "sha256": "4e570e131c95962aa13bc752c8eec0a53f112b60315e7ccf6e82dafb4296b3e8"
+  },
+  {
+    "id": "shared-golden-whale-shark",
+    "path": "fish/epic/shared-golden-whale-shark_v1_sprite.png",
+    "facing": "right",
+    "sha256": "2b66f3a7519380ecce49f13d165f40a5117a41789d8f7322d2e25648fb621f06"
+  },
+  {
+    "id": "primal-nemerion-last-ocean-heir",
+    "path": "fish/mythic/primal-nemerion-last-ocean-heir_v1_sprite.png",
+    "facing": "right",
+    "sha256": "fc6757c2126942701ca45b0f75a857023a0cc91f550fbd54082c695d2bec81fa"
+  },
+  {
+    "id": "primal-nemerion-last-ocean-heir",
+    "path": "fish/mythic/primal-nemerion-last-ocean-heir_v2_sprite.png",
+    "facing": "right",
+    "sha256": "84118dbb3881101a4cb7b5db492d1a8050a8f84ab72f5f6a3e632edee0755b7d"
   }
 ]

@@ -98,9 +98,10 @@ export function TensionFishingGame({onCaught,active=true,paused=false,regionId='
   return()=>{cancelAnimationFrame(raf);window.removeEventListener('blur',reset);document.removeEventListener('visibilitychange',visibility)}
  },[active,helpOpen,paused,expireIfNeeded])
  const waiting=game.phase==='waiting',biteReady=game.phase==='ready',lost=game.phase==='lost',won=game.phase==='won'
+ const biteArrived=!waiting&&game.failureAt===undefined&&game.reason!=='expired'
  useEffect(()=>{
-  if(!active||!won||outline?.kind!=='fish'||!readFishingSound())return
-  // Play with the landing splash, before the result screen covers the water.
+  if(!active||!biteArrived||!readFishingSound())return
+  // Keep the same playback through bite confirmation and the ensuing fight.
   const sound=new Audio('/sounds/fishing-catch.mp3')
   const timer=setTimeout(()=>{if(readFishingSound())void sound.play().catch(()=>{/* Playback restrictions must not interrupt fishing. */})},0)
   const mute=()=>{if(!readFishingSound())sound.pause()}
@@ -108,7 +109,7 @@ export function TensionFishingGame({onCaught,active=true,paused=false,regionId='
   window.addEventListener(fishingSoundChanged,mute)
   window.addEventListener('storage',storage)
   return()=>{clearTimeout(timer);sound.pause();window.removeEventListener(fishingSoundChanged,mute);window.removeEventListener('storage',storage)}
- },[active,won,castId,outline?.kind])
+ },[active,biteArrived,castId])
  const plannedFailure=game.failureAt!==undefined
  const label=!active?'낚싯대가 준비됐어요':biteReady?undefined:fishingMessage(game)
  const reduced=typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches

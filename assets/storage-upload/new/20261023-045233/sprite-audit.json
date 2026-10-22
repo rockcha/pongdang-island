@@ -1,0 +1,162 @@
+﻿{
+    "alphaThreshold":  32,
+    "thumbnails":  3,
+    "missing":  [
+
+                ],
+    "sprites":  [
+                    {
+                        "id":  "nyamnyam-hotdog-sardine",
+                        "file":  "fish/normal/nyamnyam-hotdog-sardine_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  73,
+                                           "y":  232,
+                                           "width":  503,
+                                           "height":  225,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  65763
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  83,
+                                           "y":  230,
+                                           "width":  480,
+                                           "height":  229,
+                                           "margin":  64,
+                                           "marginRatio":  0.10207336523125997,
+                                           "alphaPixels":  64844
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  66,
+                                           "y":  158,
+                                           "width":  510,
+                                           "height":  226,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  65938
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  72,
+                                           "y":  152,
+                                           "width":  493,
+                                           "height":  235,
+                                           "margin":  62,
+                                           "marginRatio":  0.098883572567783087,
+                                           "alphaPixels":  66095
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-seafood-hotpot-angler",
+                        "file":  "fish/epic/nyamnyam-seafood-hotpot-angler_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  95,
+                                           "y":  192,
+                                           "width":  460,
+                                           "height":  339,
+                                           "margin":  72,
+                                           "marginRatio":  0.11483253588516747,
+                                           "alphaPixels":  91556
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  50,
+                                           "y":  173,
+                                           "width":  492,
+                                           "height":  358,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  91947
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  106,
+                                           "y":  114,
+                                           "width":  467,
+                                           "height":  351,
+                                           "margin":  54,
+                                           "marginRatio":  0.0861244019138756,
+                                           "alphaPixels":  92205
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  72,
+                                           "y":  121,
+                                           "width":  480,
+                                           "height":  345,
+                                           "margin":  72,
+                                           "marginRatio":  0.11483253588516747,
+                                           "alphaPixels":  92861
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-layered-croissant-nautilus",
+                        "file":  "fish/epic/nyamnyam-layered-croissant-nautilus_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  107,
+                                           "y":  183,
+                                           "width":  404,
+                                           "height":  313,
+                                           "margin":  107,
+                                           "marginRatio":  0.17065390749601275,
+                                           "alphaPixels":  85587
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  87,
+                                           "y":  184,
+                                           "width":  446,
+                                           "height":  323,
+                                           "margin":  87,
+                                           "marginRatio":  0.13875598086124402,
+                                           "alphaPixels":  88022
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  105,
+                                           "y":  141,
+                                           "width":  472,
+                                           "height":  343,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  93795
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  87,
+                                           "y":  142,
+                                           "width":  422,
+                                           "height":  312,
+                                           "margin":  87,
+                                           "marginRatio":  0.13875598086124402,
+                                           "alphaPixels":  85239
+                                       }
+                                   ]
+                    }
+                ]
+}

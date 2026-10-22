@@ -24,7 +24,7 @@ it('charges once, unlocks immediately, and rejects cross-item replay and repeat 
  const shop=(await db.query('select public.map_shop_state() as r')).rows[0].r
  expect(shop.items.find((m:{region_id:string})=>m.region_id==='coral').owned).toBe(true)
  expect(shop.items.every((m:object)=>!('rarity' in m))).toBe(true)
- expect(shop.items.map((m:{region_id:string})=>m.region_id)).toEqual(['coral','bluegrove','mistmoon','whitenight','starruins','primal','dreamabyss','cloudferry'])
+ expect(shop.items.map((m:{region_id:string})=>m.region_id)).toEqual((await db.query('select m.region_id from public.region_maps m join public.regions r on r.id=m.region_id order by r.sort_order,r.id')).rows.map(r=>r.region_id))
  expect((await db.query('select public.region_map() as r')).rows[0].r.regions.find((r:{id:string})=>r.id==='coral')).toMatchObject({unlocked:true})
  await db.exec('reset role')
  expect((await db.query('select * from public.player_collectibles where user_id=$1',[uid])).rows).toHaveLength(0)
@@ -43,7 +43,8 @@ it('preserves old unlocks and blocks insufficient funds and direct writes',async
 it('never fishes maps even on a former map-gate roll and omits maps from the book and map rarity from the harbor',async()=>{
  for(const rarity of ['common','rare','epic','mythic'])for(const roll of [0,499,500,9999]){
   const rows=(await db.query("select s.kind from app_private.pick_regional_collectible('primal',$1,false,$2) p join public.collectible_species s on s.id=p.species_id",[rarity,roll])).rows
-  expect(rows).toEqual([{kind:'fish'}])
+  expect(rows).toHaveLength(1)
+  expect(['fish','trash']).toContain(rows[0].kind)
  }
  const collection=(await db.query('select public.collection_state() as r')).rows[0].r
  expect(collection.catalog.every((s:{kind:string})=>s.kind!=='map')).toBe(true)

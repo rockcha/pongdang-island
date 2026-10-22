@@ -1,0 +1,21 @@
+{
+  "tool": "built-in image_gen",
+  "icons": [
+    {
+      "id": "siren",
+      "path": "public/region-icons/siren-v2.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a16489-9af2-7dd2-a175-1ef3b2b6e04d\\exec-64844d19-a3ec-4fb9-a036-ac7d6f305e39.png",
+      "prompt": "Use case: stylized-concept. Asset: very clear small game region navigation icon. Replace the island concept with ONE GOLDEN HARP ONLY, viewed perfectly FRONT-ON, flat frontal plane with clear upright strings. A recognizable elegant classical harp with curved golden neck, a rounded left pillar and diagonal soundbox forming a simple open triangular silhouette, 6 or 7 clean parallel vertical strings. Warm gold with subtle bronze edge shading, one tasteful turquoise gem at base at most. Image 1 is warm painted rendering reference ONLY; discard ALL island, temple, trees, cliffs, sea and map elements. Sympathetic cozy fantasy game style, bold simple silhouette, sparse details readable at 20px. Large centered single isolated object, square canvas, about 80% height, generous 10% transparent margin. TRUE TRANSPARENT BACKGROUND. NO pedestal, scenery, circular badge, text, letters, musical notes or floating decorations. Not perspective or isometric: front face toward viewer.",
+      "reference": "public/region-icons/siren-v1.png",
+      "referenceRole": "paint style only; replace island with frontal single object"
+    },
+    {
+      "id": "nyamnyam",
+      "path": "public/region-icons/nyamnyam-v2.png",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a16489-9af2-7dd2-a175-1ef3b2b6e04d\\exec-ead18b49-2181-41d6-b3a2-f2ed1eb01060.png",
+      "prompt": "Use case: stylized-concept. Asset: instantly recognizable small game region navigation icon. ONE SINGLE GIMBAP SLICE, viewed PERFECTLY FRONT-ON straight at its flat round cut face, as a circular food medallion with NO badge surround. Dark almost-black seaweed outer ring, broad bright white rice ring, compact clearly separated colorful chunky filling in middle: yellow egg, orange carrot, green cucumber, pink ham. Only 4 or 5 big filling shapes so it reads at 20px. No tiny scattered rice grains; soft tasty hand-painted shading and clean warm outlines, cute cozy fantasy game rendering. Image 1 is PAINT STYLE ONLY; discard ALL island, dumplings, lighthouse, water, rocks and scenery. Centered large circular cross-section, fills about 80% of square canvas with 10% clear transparent margin all around. TRUE TRANSPARENT BACKGROUND. Not a whole roll, not multiple pieces, no perspective, no side wall visible, no plate, no chopsticks, no eyes or face, no garnish, no text or border.",
+      "reference": "public/region-icons/nyamnyam-v1.png",
+      "referenceRole": "paint style only; replace island with frontal single object"
+    }
+  ]
+}

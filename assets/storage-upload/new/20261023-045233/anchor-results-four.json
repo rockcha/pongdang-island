@@ -1,0 +1,113 @@
+﻿[
+    {
+        "file":  "assets\\storage-upload\\new\\20261023-045233\\fish\\normal\\nyamnyam-hotdog-sardine_v1_sprite.png",
+        "storage_path":  "fish/normal/nyamnyam-hotdog-sardine_v1_sprite.png",
+        "patch":  [
+                      364,
+                      270,
+                      56,
+                      56
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -18,
+                           "dy":  0,
+                           "rmse":  15.883884409473586
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -70,
+                           "rmse":  17.088473541479338
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -10,
+                           "dy":  -71,
+                           "rmse":  15.487484894767483
+                       }
+                   ]
+    },
+    {
+        "file":  "assets\\storage-upload\\new\\20261023-045233\\fish\\epic\\nyamnyam-seafood-hotpot-angler_v1_sprite.png",
+        "storage_path":  "fish/epic/nyamnyam-seafood-hotpot-angler_v1_sprite.png",
+        "patch":  [
+                      364,
+                      270,
+                      56,
+                      56
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -24,
+                           "dy":  0,
+                           "rmse":  24.61931009284892
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  9,
+                           "dy":  -68,
+                           "rmse":  32.343002106732044
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -9,
+                           "dy":  -68,
+                           "rmse":  29.445124170621405
+                       }
+                   ]
+    },
+    {
+        "file":  "assets\\storage-upload\\new\\20261023-045233\\fish\\epic\\nyamnyam-layered-croissant-nautilus_v1_sprite.png",
+        "storage_path":  "fish/epic/nyamnyam-layered-croissant-nautilus_v1_sprite.png",
+        "patch":  [
+                      364,
+                      270,
+                      56,
+                      56
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -22,
+                           "dy":  0,
+                           "rmse":  18.792996677963071
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -42,
+                           "rmse":  15.534916179035378
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -21,
+                           "dy":  -42,
+                           "rmse":  19.291614222515047
+                       }
+                   ]
+    }
+]

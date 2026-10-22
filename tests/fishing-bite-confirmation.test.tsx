@@ -1,13 +1,41 @@
 import {act,cleanup,fireEvent,render,screen} from '@testing-library/react'
-import {afterEach,expect,it,vi} from 'vitest'
+import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {TensionFishingGame} from '@/features/fishing/tension-fishing-game'
 import {saveBiteConfirmation} from '@/features/fishing/bite-confirmation-preference'
+import {saveFishingSound} from '@/features/fishing/sound-preference'
 import {newTensionGame,startTensionFight,stepTensionGame} from '@/features/fishing/tension-game'
 import {waitingFloatRipples} from '@/features/fishing/waiting-float-ripples'
 vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>'/collectibles/'+path}))
 
+beforeEach(()=>{
+ vi.spyOn(HTMLMediaElement.prototype,'play').mockResolvedValue()
+ vi.spyOn(HTMLMediaElement.prototype,'pause').mockImplementation(()=>{})
+})
 afterEach(()=>{cleanup();vi.useRealTimers();vi.restoreAllMocks();saveBiteConfirmation(false);localStorage.clear()})
 const overlay=()=>screen.queryByRole('button',{name:'입질이 왔어요. 터치해서 시작'})
+
+it.each([true,false])('plays once when the bite arrives with confirmation %s',async confirmBite=>{
+ vi.useFakeTimers()
+ const play=vi.spyOn(HTMLMediaElement.prototype,'play').mockResolvedValue()
+ const pause=vi.spyOn(HTMLMediaElement.prototype,'pause').mockImplementation(()=>{})
+ let frame:FrameRequestCallback=()=>{}
+ vi.spyOn(window,'requestAnimationFrame').mockImplementation(next=>{frame=next;return 1})
+ vi.spyOn(window,'cancelAnimationFrame').mockImplementation(()=>{})
+ render(<TensionFishingGame challenge={{wait:1,confirmBite}} onCaught={vi.fn()} onCancel={vi.fn()}/>)
+ act(()=>{frame(1);frame(501)})
+ await act(async()=>{vi.advanceTimersByTime(1)})
+ expect(play).not.toHaveBeenCalled()
+ act(()=>{frame(1001)})
+ await act(async()=>{vi.advanceTimersByTime(1)})
+ expect(play).toHaveBeenCalledOnce()
+ if(confirmBite)fireEvent.click(overlay()!)
+ act(()=>{frame(1101)})
+ await act(async()=>{vi.advanceTimersByTime(1)})
+ expect(play).toHaveBeenCalledOnce()
+ expect(pause).not.toHaveBeenCalled()
+ act(()=>{saveFishingSound(false)})
+ expect(pause).toHaveBeenCalledOnce()
+})
 
 it('stops even a delayed frame at the bite until explicitly started',()=>{
  const initial=newTensionGame(()=>.5,{wait:80,confirmBite:true})

@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "file": "scenery-v2.png",
+      "bucket": "regions",
+      "storage_path": "nyamnyam/scenery-v2.png",
+      "sha256": "d68962570b952c9fbce51a0db297dbff0630854fcf7e3ecb3e6555008d33cb45",
+      "width": 1024,
+      "height": 1536
+    },
+    {
+      "file": "map-v2.png",
+      "bucket": "regions",
+      "storage_path": "nyamnyam/map-v2.png",
+      "sha256": "cf304e20c6a83f8bbe5e4305073c565adc050b3cbf81a59e385f78cf197c9483",
+      "width": 1254,
+      "height": 1254
+    }
+  ]
+}

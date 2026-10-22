@@ -1,0 +1,76 @@
+﻿[
+    {
+        "file":  "assets\\storage-upload\\new\\20261023-043727\\fish\\rare\\nyamnyam-bungeoppang-fish_v1_sprite.png",
+        "storage_path":  "fish/rare/nyamnyam-bungeoppang-fish_v1_sprite.png",
+        "patch":  [
+                      364,
+                      270,
+                      56,
+                      56
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -25,
+                           "dy":  -1,
+                           "rmse":  15.516053700528145
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -2,
+                           "dy":  -69,
+                           "rmse":  14.562264823395557
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -26,
+                           "dy":  -70,
+                           "rmse":  16.549619004577593
+                       }
+                   ]
+    },
+    {
+        "file":  "assets\\storage-upload\\new\\20261023-043727\\fish\\rare\\nyamnyam-vanilla-cone-lobster_v1_sprite.png",
+        "storage_path":  "fish/rare/nyamnyam-vanilla-cone-lobster_v1_sprite.png",
+        "patch":  [
+                      364,
+                      270,
+                      56,
+                      56
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -36,
+                           "dy":  1,
+                           "rmse":  9.1943466913279064
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  4,
+                           "dy":  -43,
+                           "rmse":  10.839709750690947
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -31,
+                           "dy":  -46,
+                           "rmse":  10.601050488897034
+                       }
+                   ]
+    }
+]

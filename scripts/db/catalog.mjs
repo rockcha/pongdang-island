@@ -10,7 +10,7 @@ export function catalogSql(catalog, {tables,ids,pricesOnly=false} = {}) {
     return `"${value}"`
   }
   const statements = ['-- Generated from supabase/catalog/catalog.json. Review before migration deployment.', 'begin;', 'set constraints all deferred;']
-  const managed=[...(catalog.bait_production_facilities?['bait_production_facilities']:[]),'regions', 'aquarium_backgrounds', 'fishing_baits', 'collectible_species',...(catalog.region_maps?['region_maps']:[]),...(catalog.fishing_rods?['fishing_rods']:[]),...(catalog.harbor_vessels?['harbor_vessels']:[]),...(catalog.title_catalog?['title_catalog']:[]),...(catalog.production_facilities?['production_facilities']:[]),...(catalog.retained_species_details?['retained_species_details']:[]),...(catalog.fishing_bait_balance_profiles?['fishing_bait_balance_profiles']:[])]
+  const managed=[...(catalog.bait_production_facilities?['bait_production_facilities']:[]),'regions',...(catalog.fishing_map_blueprints?.length?['fishing_map_blueprints']:[]), 'aquarium_backgrounds', 'fishing_baits', 'collectible_species',...(catalog.region_maps?['region_maps']:[]),...(catalog.fishing_rods?['fishing_rods']:[]),...(catalog.harbor_vessels?['harbor_vessels']:[]),...(catalog.title_catalog?['title_catalog']:[]),...(catalog.production_facilities?['production_facilities']:[]),...(catalog.retained_species_details?['retained_species_details']:[]),...(catalog.fishing_bait_balance_profiles?['fishing_bait_balance_profiles']:[])]
   if(tables?.some(table=>!managed.includes(table)&&table!=='retained_species_prices'))throw new Error('Unsupported scoped catalog table')
   if(pricesOnly&&(!tables?.length||tables.some(table=>!['collectible_species','retained_species_prices'].includes(table))))throw new Error('Price-only generation requires explicit species tables')
   if(ids&&(!tables?.length||ids.some(id=>!tables.some(table=>catalog[table].some(row=>(row.id??row.region_id)===id)))))throw new Error('Unknown scoped catalog id')
@@ -35,7 +35,7 @@ export function catalogSql(catalog, {tables,ids,pricesOnly=false} = {}) {
     const columns = Object.keys(rows[0])
     if (columns.includes('is_native')) throw new Error('is_native is generated, omit it')
     for (const row of rows) if (Object.keys(row).join() !== columns.join()) throw new Error(`Inconsistent columns: ${table}`)
-    const key=table==='region_maps'?'region_id':'id'
+    const key=['region_maps','fishing_map_blueprints'].includes(table)?'region_id':'id'
     const schema=table==='fishing_bait_balance_profiles'?'app_private':'public'
     statements.push(`insert into ${schema}.${table} (${columns.map(identifier).join(',')}) values\n${rows.map(row => `(${columns.map(c => literal(row[c])).join(',')})`).join(',\n')}\non conflict(${key}) do update set ${columns.filter(c => c !== key).map(c => `${identifier(c)}=excluded.${identifier(c)}`).join(',')};`)
   }

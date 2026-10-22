@@ -1,0 +1,1914 @@
+﻿{
+    "alphaThreshold":  32,
+    "thumbnails":  48,
+    "missing":  [
+
+                ],
+    "sprites":  [
+                    {
+                        "id":  "nyamnyam-rice-puffer",
+                        "file":  "fish/normal/nyamnyam-rice-puffer_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  103,
+                                           "y":  159,
+                                           "width":  464,
+                                           "height":  340,
+                                           "margin":  60,
+                                           "marginRatio":  0.09569377990430622,
+                                           "alphaPixels":  102859
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  102,
+                                           "y":  159,
+                                           "width":  473,
+                                           "height":  341,
+                                           "margin":  52,
+                                           "marginRatio":  0.082934609250398722,
+                                           "alphaPixels":  103245
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  80,
+                                           "y":  117,
+                                           "width":  488,
+                                           "height":  341,
+                                           "margin":  59,
+                                           "marginRatio":  0.094098883572567779,
+                                           "alphaPixels":  108740
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  102,
+                                           "y":  117,
+                                           "width":  473,
+                                           "height":  342,
+                                           "margin":  52,
+                                           "marginRatio":  0.082934609250398722,
+                                           "alphaPixels":  103654
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-curly-noodle-eel",
+                        "file":  "fish/normal/nyamnyam-curly-noodle-eel_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  79,
+                                           "y":  205,
+                                           "width":  485,
+                                           "height":  285,
+                                           "margin":  63,
+                                           "marginRatio":  0.10047846889952153,
+                                           "alphaPixels":  72152
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  51,
+                                           "y":  244,
+                                           "width":  493,
+                                           "height":  247,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  68472
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  78,
+                                           "y":  178,
+                                           "width":  486,
+                                           "height":  244,
+                                           "margin":  63,
+                                           "marginRatio":  0.10047846889952153,
+                                           "alphaPixels":  67495
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  59,
+                                           "y":  111,
+                                           "width":  490,
+                                           "height":  315,
+                                           "margin":  59,
+                                           "marginRatio":  0.094098883572567779,
+                                           "alphaPixels":  76689
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-tempura-goby",
+                        "file":  "fish/normal/nyamnyam-tempura-goby_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  85,
+                                           "y":  197,
+                                           "width":  491,
+                                           "height":  313,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  92901
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  93,
+                                           "y":  197,
+                                           "width":  475,
+                                           "height":  318,
+                                           "margin":  59,
+                                           "marginRatio":  0.094098883572567779,
+                                           "alphaPixels":  91904
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  87,
+                                           "y":  158,
+                                           "width":  489,
+                                           "height":  303,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  88912
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  74,
+                                           "y":  153,
+                                           "width":  496,
+                                           "height":  314,
+                                           "margin":  57,
+                                           "marginRatio":  0.090909090909090912,
+                                           "alphaPixels":  90841
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-gimbap-anchovy",
+                        "file":  "fish/normal/nyamnyam-gimbap-anchovy_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  68,
+                                           "y":  251,
+                                           "width":  503,
+                                           "height":  235,
+                                           "margin":  56,
+                                           "marginRatio":  0.089314194577352471,
+                                           "alphaPixels":  65248
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  86,
+                                           "y":  265,
+                                           "width":  490,
+                                           "height":  218,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  62609
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  80,
+                                           "y":  177,
+                                           "width":  487,
+                                           "height":  222,
+                                           "margin":  60,
+                                           "marginRatio":  0.09569377990430622,
+                                           "alphaPixels":  62459
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  85,
+                                           "y":  186,
+                                           "width":  488,
+                                           "height":  213,
+                                           "margin":  54,
+                                           "marginRatio":  0.0861244019138756,
+                                           "alphaPixels":  62055
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-dumpling-crucian",
+                        "file":  "fish/normal/nyamnyam-dumpling-crucian_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  83,
+                                           "y":  155,
+                                           "width":  492,
+                                           "height":  363,
+                                           "margin":  52,
+                                           "marginRatio":  0.082934609250398722,
+                                           "alphaPixels":  114235
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  86,
+                                           "y":  155,
+                                           "width":  481,
+                                           "height":  361,
+                                           "margin":  60,
+                                           "marginRatio":  0.09569377990430622,
+                                           "alphaPixels":  108295
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  89,
+                                           "y":  94,
+                                           "width":  487,
+                                           "height":  395,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  118881
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  58,
+                                           "y":  132,
+                                           "width":  509,
+                                           "height":  357,
+                                           "margin":  58,
+                                           "marginRatio":  0.092503987240829352,
+                                           "alphaPixels":  114312
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-salmon-sushi-seahorse",
+                        "file":  "fish/normal/nyamnyam-salmon-sushi-seahorse_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  231,
+                                           "y":  67,
+                                           "width":  298,
+                                           "height":  499,
+                                           "margin":  61,
+                                           "marginRatio":  0.097288676236044661,
+                                           "alphaPixels":  84065
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  201,
+                                           "y":  67,
+                                           "width":  332,
+                                           "height":  510,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  86420
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  212,
+                                           "y":  64,
+                                           "width":  320,
+                                           "height":  468,
+                                           "margin":  64,
+                                           "marginRatio":  0.10207336523125997,
+                                           "alphaPixels":  80370
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  223,
+                                           "y":  64,
+                                           "width":  311,
+                                           "height":  501,
+                                           "margin":  62,
+                                           "marginRatio":  0.098883572567783087,
+                                           "alphaPixels":  84997
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-ricecake-skewer-minnow",
+                        "file":  "fish/normal/nyamnyam-ricecake-skewer-minnow_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  94,
+                                           "y":  231,
+                                           "width":  483,
+                                           "height":  255,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  71154
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  93,
+                                           "y":  228,
+                                           "width":  460,
+                                           "height":  260,
+                                           "margin":  74,
+                                           "marginRatio":  0.11802232854864433,
+                                           "alphaPixels":  66881
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  103,
+                                           "y":  151,
+                                           "width":  471,
+                                           "height":  259,
+                                           "margin":  53,
+                                           "marginRatio":  0.084529505582137163,
+                                           "alphaPixels":  71210
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  93,
+                                           "y":  155,
+                                           "width":  460,
+                                           "height":  249,
+                                           "margin":  74,
+                                           "marginRatio":  0.11802232854864433,
+                                           "alphaPixels":  67042
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-bread-crab",
+                        "file":  "fish/normal/nyamnyam-bread-crab_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  60,
+                                           "y":  139,
+                                           "width":  516,
+                                           "height":  389,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  123255
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  60,
+                                           "y":  139,
+                                           "width":  516,
+                                           "height":  389,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  125648
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  100,
+                                           "y":  118,
+                                           "width":  476,
+                                           "height":  389,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  122067
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  54,
+                                           "y":  118,
+                                           "width":  522,
+                                           "height":  389,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  124010
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-jelly-shrimp",
+                        "file":  "fish/normal/nyamnyam-jelly-shrimp_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  144,
+                                           "y":  179,
+                                           "width":  389,
+                                           "height":  349,
+                                           "margin":  94,
+                                           "marginRatio":  0.14992025518341306,
+                                           "alphaPixels":  64253
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  116,
+                                           "y":  179,
+                                           "width":  403,
+                                           "height":  349,
+                                           "margin":  99,
+                                           "marginRatio":  0.15789473684210525,
+                                           "alphaPixels":  68025
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  142,
+                                           "y":  124,
+                                           "width":  394,
+                                           "height":  355,
+                                           "margin":  91,
+                                           "marginRatio":  0.14513556618819776,
+                                           "alphaPixels":  66484
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  118,
+                                           "y":  137,
+                                           "width":  404,
+                                           "height":  344,
+                                           "margin":  105,
+                                           "marginRatio":  0.1674641148325359,
+                                           "alphaPixels":  68972
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-milk-jellyfish",
+                        "file":  "fish/normal/nyamnyam-milk-jellyfish_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  78,
+                                           "y":  131,
+                                           "width":  498,
+                                           "height":  428,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  107467
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  102,
+                                           "y":  131,
+                                           "width":  474,
+                                           "height":  419,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  108965
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  104,
+                                           "y":  130,
+                                           "width":  472,
+                                           "height":  417,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  102693
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  142,
+                                           "y":  130,
+                                           "width":  434,
+                                           "height":  431,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  104108
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-udon-octopus",
+                        "file":  "fish/rare/nyamnyam-udon-octopus_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  189,
+                                           "y":  219,
+                                           "width":  315,
+                                           "height":  297,
+                                           "margin":  111,
+                                           "marginRatio":  0.17703349282296652,
+                                           "alphaPixels":  66507
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  119,
+                                           "y":  218,
+                                           "width":  367,
+                                           "height":  317,
+                                           "margin":  92,
+                                           "marginRatio":  0.14673046251993621,
+                                           "alphaPixels":  77947
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  158,
+                                           "y":  165,
+                                           "width":  404,
+                                           "height":  327,
+                                           "margin":  65,
+                                           "marginRatio":  0.10366826156299841,
+                                           "alphaPixels":  85668
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  130,
+                                           "y":  166,
+                                           "width":  356,
+                                           "height":  317,
+                                           "margin":  130,
+                                           "marginRatio":  0.20733652312599682,
+                                           "alphaPixels":  76242
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-flower-dumpling-jelly",
+                        "file":  "fish/rare/nyamnyam-flower-dumpling-jelly_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  94,
+                                           "y":  120,
+                                           "width":  456,
+                                           "height":  433,
+                                           "margin":  74,
+                                           "marginRatio":  0.11802232854864433,
+                                           "alphaPixels":  108040
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  50,
+                                           "y":  119,
+                                           "width":  511,
+                                           "height":  400,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  114853
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  125,
+                                           "y":  94,
+                                           "width":  425,
+                                           "height":  413,
+                                           "margin":  77,
+                                           "marginRatio":  0.12280701754385964,
+                                           "alphaPixels":  103967
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  69,
+                                           "y":  94,
+                                           "width":  493,
+                                           "height":  444,
+                                           "margin":  65,
+                                           "marginRatio":  0.10366826156299841,
+                                           "alphaPixels":  117168
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-cheese-moray",
+                        "file":  "fish/rare/nyamnyam-cheese-moray_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  179,
+                                           "y":  227,
+                                           "width":  339,
+                                           "height":  285,
+                                           "margin":  109,
+                                           "marginRatio":  0.17384370015948963,
+                                           "alphaPixels":  55947
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  125,
+                                           "y":  196,
+                                           "width":  366,
+                                           "height":  330,
+                                           "margin":  101,
+                                           "marginRatio":  0.16108452950558214,
+                                           "alphaPixels":  61736
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  158,
+                                           "y":  193,
+                                           "width":  418,
+                                           "height":  239,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  55541
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  128,
+                                           "y":  148,
+                                           "width":  366,
+                                           "height":  286,
+                                           "margin":  128,
+                                           "marginRatio":  0.20414673046251994,
+                                           "alphaPixels":  57745
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-pudding-sea-cucumber",
+                        "file":  "fish/rare/nyamnyam-pudding-sea-cucumber_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  90,
+                                           "y":  223,
+                                           "width":  487,
+                                           "height":  276,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  88332
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  68,
+                                           "y":  223,
+                                           "width":  509,
+                                           "height":  278,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  88440
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  86,
+                                           "y":  189,
+                                           "width":  492,
+                                           "height":  279,
+                                           "margin":  49,
+                                           "marginRatio":  0.078149920255183414,
+                                           "alphaPixels":  86497
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  89,
+                                           "y":  189,
+                                           "width":  488,
+                                           "height":  277,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  87737
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-scallion-ribbon-eel",
+                        "file":  "fish/rare/nyamnyam-scallion-ribbon-eel_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  78,
+                                           "y":  164,
+                                           "width":  480,
+                                           "height":  360,
+                                           "margin":  69,
+                                           "marginRatio":  0.11004784688995216,
+                                           "alphaPixels":  79076
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  88,
+                                           "y":  164,
+                                           "width":  468,
+                                           "height":  362,
+                                           "margin":  71,
+                                           "marginRatio":  0.11323763955342903,
+                                           "alphaPixels":  79579
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  80,
+                                           "y":  152,
+                                           "width":  476,
+                                           "height":  332,
+                                           "margin":  71,
+                                           "marginRatio":  0.11323763955342903,
+                                           "alphaPixels":  76750
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  51,
+                                           "y":  152,
+                                           "width":  506,
+                                           "height":  348,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  73039
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-chestnut-urchin",
+                        "file":  "fish/rare/nyamnyam-chestnut-urchin_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  90,
+                                           "y":  111,
+                                           "width":  485,
+                                           "height":  440,
+                                           "margin":  52,
+                                           "marginRatio":  0.082934609250398722,
+                                           "alphaPixels":  139394
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  90,
+                                           "y":  111,
+                                           "width":  485,
+                                           "height":  451,
+                                           "margin":  52,
+                                           "marginRatio":  0.082934609250398722,
+                                           "alphaPixels":  138860
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  91,
+                                           "y":  87,
+                                           "width":  484,
+                                           "height":  430,
+                                           "margin":  52,
+                                           "marginRatio":  0.082934609250398722,
+                                           "alphaPixels":  136488
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  82,
+                                           "y":  87,
+                                           "width":  493,
+                                           "height":  445,
+                                           "margin":  52,
+                                           "marginRatio":  0.082934609250398722,
+                                           "alphaPixels":  140487
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-peach-phoenix-clam",
+                        "file":  "fish/rare/nyamnyam-peach-phoenix-clam_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  91,
+                                           "y":  136,
+                                           "width":  472,
+                                           "height":  440,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  126606
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  68,
+                                           "y":  136,
+                                           "width":  503,
+                                           "height":  440,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  132914
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  91,
+                                           "y":  87,
+                                           "width":  485,
+                                           "height":  441,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  128484
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  68,
+                                           "y":  87,
+                                           "width":  488,
+                                           "height":  441,
+                                           "margin":  68,
+                                           "marginRatio":  0.10845295055821372,
+                                           "alphaPixels":  130008
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-crown-melon-turtle",
+                        "file":  "fish/rare/nyamnyam-crown-melon-turtle_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  67,
+                                           "y":  139,
+                                           "width":  510,
+                                           "height":  398,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  115136
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  69,
+                                           "y":  139,
+                                           "width":  507,
+                                           "height":  400,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  114261
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  60,
+                                           "y":  112,
+                                           "width":  517,
+                                           "height":  358,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  110103
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  80,
+                                           "y":  112,
+                                           "width":  496,
+                                           "height":  405,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  116027
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-cottoncandy-seahorse",
+                        "file":  "fish/rare/nyamnyam-cottoncandy-seahorse_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  185,
+                                           "y":  51,
+                                           "width":  320,
+                                           "height":  499,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  97001
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  105,
+                                           "y":  51,
+                                           "width":  373,
+                                           "height":  498,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  95761
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  167,
+                                           "y":  51,
+                                           "width":  338,
+                                           "height":  501,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  97076
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  153,
+                                           "y":  51,
+                                           "width":  325,
+                                           "height":  488,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  98733
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-caramel-octopus",
+                        "file":  "fish/rare/nyamnyam-caramel-octopus_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  90,
+                                           "y":  134,
+                                           "width":  485,
+                                           "height":  379,
+                                           "margin":  52,
+                                           "marginRatio":  0.082934609250398722,
+                                           "alphaPixels":  110327
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  85,
+                                           "y":  133,
+                                           "width":  480,
+                                           "height":  379,
+                                           "margin":  62,
+                                           "marginRatio":  0.098883572567783087,
+                                           "alphaPixels":  107245
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  85,
+                                           "y":  134,
+                                           "width":  491,
+                                           "height":  378,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  111875
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  93,
+                                           "y":  134,
+                                           "width":  474,
+                                           "height":  375,
+                                           "margin":  60,
+                                           "marginRatio":  0.09569377990430622,
+                                           "alphaPixels":  109966
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-cake-turtle",
+                        "file":  "fish/rare/nyamnyam-cake-turtle_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  92,
+                                           "y":  137,
+                                           "width":  484,
+                                           "height":  404,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  104473
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  77,
+                                           "y":  137,
+                                           "width":  479,
+                                           "height":  368,
+                                           "margin":  71,
+                                           "marginRatio":  0.11323763955342903,
+                                           "alphaPixels":  99965
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  101,
+                                           "y":  111,
+                                           "width":  475,
+                                           "height":  386,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  101418
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  77,
+                                           "y":  110,
+                                           "width":  485,
+                                           "height":  403,
+                                           "margin":  65,
+                                           "marginRatio":  0.10366826156299841,
+                                           "alphaPixels":  104548
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-first-spoon-spirit",
+                        "file":  "fish/epic/nyamnyam-first-spoon-spirit_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  100,
+                                           "y":  175,
+                                           "width":  473,
+                                           "height":  350,
+                                           "margin":  54,
+                                           "marginRatio":  0.0861244019138756,
+                                           "alphaPixels":  80401
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  63,
+                                           "y":  171,
+                                           "width":  479,
+                                           "height":  337,
+                                           "margin":  63,
+                                           "marginRatio":  0.10047846889952153,
+                                           "alphaPixels":  83491
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  102,
+                                           "y":  109,
+                                           "width":  474,
+                                           "height":  357,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  79438
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  63,
+                                           "y":  112,
+                                           "width":  473,
+                                           "height":  349,
+                                           "margin":  63,
+                                           "marginRatio":  0.10047846889952153,
+                                           "alphaPixels":  79325
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-empty-plate-ghost",
+                        "file":  "fish/epic/nyamnyam-empty-plate-ghost_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  140,
+                                           "y":  187,
+                                           "width":  409,
+                                           "height":  323,
+                                           "margin":  78,
+                                           "marginRatio":  0.12440191387559808,
+                                           "alphaPixels":  70384
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  98,
+                                           "y":  168,
+                                           "width":  423,
+                                           "height":  354,
+                                           "margin":  98,
+                                           "marginRatio":  0.15629984051036683,
+                                           "alphaPixels":  74280
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  100,
+                                           "y":  108,
+                                           "width":  476,
+                                           "height":  368,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  86882
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  117,
+                                           "y":  151,
+                                           "width":  424,
+                                           "height":  333,
+                                           "margin":  86,
+                                           "marginRatio":  0.13716108452950559,
+                                           "alphaPixels":  75410
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-rose-crab-queen",
+                        "file":  "fish/epic/nyamnyam-rose-crab-queen_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  95,
+                                           "y":  144,
+                                           "width":  475,
+                                           "height":  378,
+                                           "margin":  57,
+                                           "marginRatio":  0.090909090909090912,
+                                           "alphaPixels":  83375
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  94,
+                                           "y":  146,
+                                           "width":  481,
+                                           "height":  376,
+                                           "margin":  52,
+                                           "marginRatio":  0.082934609250398722,
+                                           "alphaPixels":  82431
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  87,
+                                           "y":  122,
+                                           "width":  483,
+                                           "height":  374,
+                                           "margin":  57,
+                                           "marginRatio":  0.090909090909090912,
+                                           "alphaPixels":  76182
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  95,
+                                           "y":  122,
+                                           "width":  476,
+                                           "height":  380,
+                                           "margin":  56,
+                                           "marginRatio":  0.089314194577352471,
+                                           "alphaPixels":  82074
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-cremebrulee-whale",
+                        "file":  "fish/epic/nyamnyam-cremebrulee-whale_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  120,
+                                           "y":  146,
+                                           "width":  431,
+                                           "height":  348,
+                                           "margin":  76,
+                                           "marginRatio":  0.12121212121212122,
+                                           "alphaPixels":  64537
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  51,
+                                           "y":  187,
+                                           "width":  490,
+                                           "height":  303,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  61417
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  65,
+                                           "y":  184,
+                                           "width":  495,
+                                           "height":  306,
+                                           "margin":  65,
+                                           "marginRatio":  0.10366826156299841,
+                                           "alphaPixels":  58064
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  119,
+                                           "y":  125,
+                                           "width":  427,
+                                           "height":  365,
+                                           "margin":  81,
+                                           "marginRatio":  0.12918660287081341,
+                                           "alphaPixels":  69181
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-royal-macaron-conch",
+                        "file":  "fish/epic/nyamnyam-royal-macaron-conch_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  109,
+                                           "y":  166,
+                                           "width":  465,
+                                           "height":  324,
+                                           "margin":  53,
+                                           "marginRatio":  0.084529505582137163,
+                                           "alphaPixels":  91688
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  86,
+                                           "y":  174,
+                                           "width":  483,
+                                           "height":  313,
+                                           "margin":  58,
+                                           "marginRatio":  0.092503987240829352,
+                                           "alphaPixels":  89270
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  107,
+                                           "y":  128,
+                                           "width":  469,
+                                           "height":  320,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  93729
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  97,
+                                           "y":  128,
+                                           "width":  466,
+                                           "height":  322,
+                                           "margin":  64,
+                                           "marginRatio":  0.10207336523125997,
+                                           "alphaPixels":  90592
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-chocolate-peacock",
+                        "file":  "fish/epic/nyamnyam-chocolate-peacock_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  94,
+                                           "y":  133,
+                                           "width":  459,
+                                           "height":  432,
+                                           "margin":  62,
+                                           "marginRatio":  0.098883572567783087,
+                                           "alphaPixels":  94664
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  50,
+                                           "y":  133,
+                                           "width":  503,
+                                           "height":  434,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  105673
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  57,
+                                           "y":  108,
+                                           "width":  497,
+                                           "height":  426,
+                                           "margin":  57,
+                                           "marginRatio":  0.090909090909090912,
+                                           "alphaPixels":  106172
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  93,
+                                           "y":  108,
+                                           "width":  461,
+                                           "height":  426,
+                                           "margin":  73,
+                                           "marginRatio":  0.11642743221690591,
+                                           "alphaPixels":  93227
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-chocolate-kraken",
+                        "file":  "fish/mythic/nyamnyam-chocolate-kraken_swim8_v1_sprite.png",
+                        "width":  1776,
+                        "height":  888,
+                        "columns":  4,
+                        "cell":  444,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  84,
+                                           "y":  117,
+                                           "width":  298,
+                                           "height":  261,
+                                           "margin":  62,
+                                           "marginRatio":  0.13963963963963963,
+                                           "alphaPixels":  48143
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  71,
+                                           "y":  115,
+                                           "width":  307,
+                                           "height":  262,
+                                           "margin":  66,
+                                           "marginRatio":  0.14864864864864866,
+                                           "alphaPixels":  48769
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  78,
+                                           "y":  117,
+                                           "width":  307,
+                                           "height":  267,
+                                           "margin":  59,
+                                           "marginRatio":  0.13288288288288289,
+                                           "alphaPixels":  48419
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  71,
+                                           "y":  115,
+                                           "width":  310,
+                                           "height":  258,
+                                           "margin":  63,
+                                           "marginRatio":  0.14189189189189189,
+                                           "alphaPixels":  49978
+                                       },
+                                       {
+                                           "frame":  4,
+                                           "x":  116,
+                                           "y":  91,
+                                           "width":  242,
+                                           "height":  252,
+                                           "margin":  86,
+                                           "marginRatio":  0.19369369369369369,
+                                           "alphaPixels":  42711
+                                       },
+                                       {
+                                           "frame":  5,
+                                           "x":  100,
+                                           "y":  94,
+                                           "width":  255,
+                                           "height":  251,
+                                           "margin":  89,
+                                           "marginRatio":  0.20045045045045046,
+                                           "alphaPixels":  45438
+                                       },
+                                       {
+                                           "frame":  6,
+                                           "x":  74,
+                                           "y":  93,
+                                           "width":  293,
+                                           "height":  256,
+                                           "margin":  74,
+                                           "marginRatio":  0.16666666666666666,
+                                           "alphaPixels":  47421
+                                       },
+                                       {
+                                           "frame":  7,
+                                           "x":  84,
+                                           "y":  91,
+                                           "width":  293,
+                                           "height":  273,
+                                           "margin":  67,
+                                           "marginRatio":  0.15090090090090091,
+                                           "alphaPixels":  50177
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-spice-censer-qilin",
+                        "file":  "fish/mythic/nyamnyam-spice-censer-qilin_swim8_v1_sprite.png",
+                        "width":  1776,
+                        "height":  888,
+                        "columns":  4,
+                        "cell":  444,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  82,
+                                           "y":  103,
+                                           "width":  263,
+                                           "height":  252,
+                                           "margin":  82,
+                                           "marginRatio":  0.18468468468468469,
+                                           "alphaPixels":  39033
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  84,
+                                           "y":  102,
+                                           "width":  263,
+                                           "height":  253,
+                                           "margin":  84,
+                                           "marginRatio":  0.1891891891891892,
+                                           "alphaPixels":  39259
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  82,
+                                           "y":  103,
+                                           "width":  262,
+                                           "height":  252,
+                                           "margin":  82,
+                                           "marginRatio":  0.18468468468468469,
+                                           "alphaPixels":  38613
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  87,
+                                           "y":  102,
+                                           "width":  258,
+                                           "height":  253,
+                                           "margin":  87,
+                                           "marginRatio":  0.19594594594594594,
+                                           "alphaPixels":  38635
+                                       },
+                                       {
+                                           "frame":  4,
+                                           "x":  84,
+                                           "y":  68,
+                                           "width":  270,
+                                           "height":  289,
+                                           "margin":  68,
+                                           "marginRatio":  0.15315315315315314,
+                                           "alphaPixels":  45576
+                                       },
+                                       {
+                                           "frame":  5,
+                                           "x":  80,
+                                           "y":  63,
+                                           "width":  283,
+                                           "height":  294,
+                                           "margin":  63,
+                                           "marginRatio":  0.14189189189189189,
+                                           "alphaPixels":  53916
+                                       },
+                                       {
+                                           "frame":  6,
+                                           "x":  76,
+                                           "y":  95,
+                                           "width":  276,
+                                           "height":  262,
+                                           "margin":  76,
+                                           "marginRatio":  0.17117117117117117,
+                                           "alphaPixels":  43370
+                                       },
+                                       {
+                                           "frame":  7,
+                                           "x":  81,
+                                           "y":  101,
+                                           "width":  265,
+                                           "height":  256,
+                                           "margin":  81,
+                                           "marginRatio":  0.18243243243243243,
+                                           "alphaPixels":  40217
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-endless-banquet-chef",
+                        "file":  "fish/mythic/nyamnyam-endless-banquet-chef_swim8_v1_sprite.png",
+                        "width":  1776,
+                        "height":  888,
+                        "columns":  4,
+                        "cell":  444,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  91,
+                                           "y":  114,
+                                           "width":  279,
+                                           "height":  232,
+                                           "margin":  74,
+                                           "marginRatio":  0.16666666666666666,
+                                           "alphaPixels":  39498
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  78,
+                                           "y":  114,
+                                           "width":  307,
+                                           "height":  233,
+                                           "margin":  59,
+                                           "marginRatio":  0.13288288288288289,
+                                           "alphaPixels":  41648
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  67,
+                                           "y":  116,
+                                           "width":  317,
+                                           "height":  239,
+                                           "margin":  60,
+                                           "marginRatio":  0.13513513513513514,
+                                           "alphaPixels":  44420
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  84,
+                                           "y":  122,
+                                           "width":  286,
+                                           "height":  230,
+                                           "margin":  74,
+                                           "marginRatio":  0.16666666666666666,
+                                           "alphaPixels":  40536
+                                       },
+                                       {
+                                           "frame":  4,
+                                           "x":  82,
+                                           "y":  73,
+                                           "width":  306,
+                                           "height":  280,
+                                           "margin":  56,
+                                           "marginRatio":  0.12612612612612611,
+                                           "alphaPixels":  42839
+                                       },
+                                       {
+                                           "frame":  5,
+                                           "x":  62,
+                                           "y":  56,
+                                           "width":  323,
+                                           "height":  302,
+                                           "margin":  56,
+                                           "marginRatio":  0.12612612612612611,
+                                           "alphaPixels":  59826
+                                       },
+                                       {
+                                           "frame":  6,
+                                           "x":  67,
+                                           "y":  104,
+                                           "width":  333,
+                                           "height":  248,
+                                           "margin":  44,
+                                           "marginRatio":  0.0990990990990991,
+                                           "alphaPixels":  46552
+                                       },
+                                       {
+                                           "frame":  7,
+                                           "x":  80,
+                                           "y":  118,
+                                           "width":  288,
+                                           "height":  231,
+                                           "margin":  76,
+                                           "marginRatio":  0.17117117117117117,
+                                           "alphaPixels":  40714
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-dumpling-steamer-house",
+                        "file":  "decorations/normal/nyamnyam-dumpling-steamer-house_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  105,
+                                           "y":  109,
+                                           "width":  432,
+                                           "height":  444,
+                                           "margin":  74,
+                                           "marginRatio":  0.11802232854864433,
+                                           "alphaPixels":  145330
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  98,
+                                           "y":  55,
+                                           "width":  431,
+                                           "height":  498,
+                                           "margin":  55,
+                                           "marginRatio":  0.08771929824561403,
+                                           "alphaPixels":  146446
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  106,
+                                           "y":  52,
+                                           "width":  470,
+                                           "height":  494,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  152892
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  99,
+                                           "y":  103,
+                                           "width":  429,
+                                           "height":  443,
+                                           "margin":  81,
+                                           "marginRatio":  0.12918660287081341,
+                                           "alphaPixels":  144196
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-wish-lunchbox",
+                        "file":  "decorations/rare/nyamnyam-wish-lunchbox_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  95,
+                                           "y":  184,
+                                           "width":  439,
+                                           "height":  369,
+                                           "margin":  74,
+                                           "marginRatio":  0.11802232854864433,
+                                           "alphaPixels":  101020
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  51,
+                                           "y":  87,
+                                           "width":  437,
+                                           "height":  467,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  110803
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  96,
+                                           "y":  95,
+                                           "width":  438,
+                                           "height":  435,
+                                           "margin":  93,
+                                           "marginRatio":  0.14832535885167464,
+                                           "alphaPixels":  109700
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  50,
+                                           "y":  161,
+                                           "width":  438,
+                                           "height":  370,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  100556
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-pudding-lighthouse",
+                        "file":  "decorations/rare/nyamnyam-pudding-lighthouse_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  184,
+                                           "y":  74,
+                                           "width":  302,
+                                           "height":  494,
+                                           "margin":  59,
+                                           "marginRatio":  0.094098883572567779,
+                                           "alphaPixels":  90223
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  162,
+                                           "y":  75,
+                                           "width":  304,
+                                           "height":  493,
+                                           "margin":  59,
+                                           "marginRatio":  0.094098883572567779,
+                                           "alphaPixels":  90654
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  182,
+                                           "y":  51,
+                                           "width":  307,
+                                           "height":  493,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  91371
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  160,
+                                           "y":  51,
+                                           "width":  307,
+                                           "height":  493,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  91685
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-chocolate-fountain",
+                        "file":  "decorations/epic/nyamnyam-chocolate-fountain_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  140,
+                                           "y":  76,
+                                           "width":  366,
+                                           "height":  492,
+                                           "margin":  59,
+                                           "marginRatio":  0.094098883572567779,
+                                           "alphaPixels":  93839
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  126,
+                                           "y":  76,
+                                           "width":  366,
+                                           "height":  492,
+                                           "margin":  59,
+                                           "marginRatio":  0.094098883572567779,
+                                           "alphaPixels":  95648
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  140,
+                                           "y":  51,
+                                           "width":  366,
+                                           "height":  492,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  93364
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  128,
+                                           "y":  51,
+                                           "width":  370,
+                                           "height":  493,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  96943
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "nyamnyam-millennium-dragon-cauldron",
+                        "file":  "decorations/epic/nyamnyam-millennium-dragon-cauldron_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  153,
+                                           "y":  126,
+                                           "width":  359,
+                                           "height":  447,
+                                           "margin":  54,
+                                           "marginRatio":  0.0861244019138756,
+                                           "alphaPixels":  105046
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  105,
+                                           "y":  61,
+                                           "width":  391,
+                                           "height":  515,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  136438
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  153,
+                                           "y":  68,
+                                           "width":  385,
+                                           "height":  479,
+                                           "margin":  68,
+                                           "marginRatio":  0.10845295055821372,
+                                           "alphaPixels":  124168
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  120,
+                                           "y":  121,
+                                           "width":  351,
+                                           "height":  429,
+                                           "margin":  77,
+                                           "marginRatio":  0.12280701754385964,
+                                           "alphaPixels":  96684
+                                       }
+                                   ]
+                    }
+                ]
+}

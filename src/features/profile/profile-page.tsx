@@ -15,6 +15,7 @@ import { useSocial } from '@/features/social/social-provider'
 import { PlayerAvatar } from './player-avatar'
 import { prepareAvatar, saveAvatar } from './avatar-api'
 import { createClient } from '@/lib/client'
+import {MapPieceTestControls} from '@/features/regions/map-piece-test-controls'
 
 const {camera:Camera,logout:LogOut,collection:BookOpen,fish:Fish,mailFriend:Users}=appArt
 
@@ -69,6 +70,7 @@ export function ProfilePage() {
       <input ref={input} type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" aria-label="아바타 이미지 선택" disabled={busy||!profile} onChange={event=>void select(event)}/>
       <div className="grid grid-cols-3 divide-x border-y" aria-label="나의 활동">{[{label:'발견한 개체',value:stats?.discovered,icon:BookOpen,to:'/collection'},{label:'보유 개체',value:stats?.owned,icon:Fish,to:'/aquarium'},{label:'친구',value:loading?undefined:requests.filter(item=>item.status==='accepted').length,icon:Users,to:'/friends'}].map(item=><Link key={item.label} to={item.to} className="flex min-h-24 min-w-0 flex-col items-center justify-center gap-1 py-3 hover:bg-secondary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"><item.icon className="mb-1 size-8 text-primary"/><span className="text-base tabular-nums">{item.value??(statsError?'—':'…')}</span><span className="text-[11px] text-muted-foreground">{item.label}</span></Link>)}</div>
       <div className="border-b"><button className="flex min-h-14 w-full items-center gap-3 px-4 text-left text-sm text-destructive hover:bg-destructive/5 disabled:opacity-50" disabled={busy} onClick={async()=>{setBusy(true);try{const {error}=await createClient().auth.signOut({scope:'local'});if(error)throw error}catch{toast.error('로그아웃에 실패했어요. 다시 시도해주세요.')}finally{setBusy(false)}}}><LogOut className="size-7"/>로그아웃</button></div>
+      {session?.user.email?.toLowerCase()==='1@1.com'&&<MapPieceTestControls key={session.user.id} userId={session.user.id}/>}
       {(busy||loading)&&<p role="status" className="px-4 py-3 text-xs text-muted-foreground">{busy?'변경 사항을 처리하고 있어요…':'프로필을 불러오는 중…'}</p>}
       {(message||error)&&<p role="alert" className="px-4 py-3 text-sm text-destructive">{message||error}</p>}
     </div>

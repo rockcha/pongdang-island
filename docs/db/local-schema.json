@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "4a195f9f3bde5590c542ad6fa3a528780854ba594f417549ffbeed7ad40d7ecd",
+  "migrationHash": "9131cc95c0a141c4bcd6dd67e2f587abd0d1a1b20e1de223b12d21a925738348",
   "structure": {
     "enums": [
       {
@@ -222,6 +222,12 @@
       },
       {
         "rls": true,
+        "name": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
         "name": "prepared_fishing_casts",
         "schema": "app_private",
         "force_rls": false
@@ -415,6 +421,12 @@
       {
         "rls": true,
         "name": "fishing_expeditions",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "fishing_map_blueprints",
         "schema": "public",
         "force_rls": false
       },
@@ -2120,6 +2132,46 @@
       {
         "name": "user_id",
         "type": "uuid",
+        "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "region_id",
+        "type": "text",
+        "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "piece_number",
+        "type": "integer",
+        "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "acquired_at",
+        "type": "timestamp with time zone",
+        "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
         "default": null,
@@ -2310,6 +2362,16 @@
       {
         "name": "fight_started_at",
         "type": "timestamp with time zone",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "map_piece_number",
+        "type": "integer",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
         "default": null,
@@ -5045,6 +5107,46 @@
         "default": null,
         "identity": "",
         "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "region_id",
+        "type": "text",
+        "table": "fishing_map_blueprints",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "piece_count",
+        "type": "integer",
+        "table": "fishing_map_blueprints",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "thumbnail_path",
+        "type": "text",
+        "table": "fishing_map_blueprints",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "enabled",
+        "type": "boolean",
+        "table": "fishing_map_blueprints",
+        "schema": "public",
+        "default": "true",
+        "identity": "",
+        "nullable": false,
         "generated": ""
       },
       {
@@ -7922,6 +8024,12 @@
         "definition": "CREATE UNIQUE INDEX notice_operators_pkey ON app_private.notice_operators USING btree (user_id)"
       },
       {
+        "name": "player_fishing_map_pieces_pkey",
+        "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX player_fishing_map_pieces_pkey ON app_private.player_fishing_map_pieces USING btree (user_id, region_id, piece_number)"
+      },
+      {
         "name": "prepared_fishing_casts_pkey",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
@@ -8550,6 +8658,12 @@
         "table": "fishing_expeditions",
         "schema": "public",
         "definition": "CREATE INDEX quest_expedition_claims ON public.fishing_expeditions USING btree (user_id, claimed_at) WHERE (claimed_at IS NOT NULL)"
+      },
+      {
+        "name": "fishing_map_blueprints_pkey",
+        "table": "fishing_map_blueprints",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX fishing_map_blueprints_pkey ON public.fishing_map_blueprints USING btree (region_id)"
       },
       {
         "name": "fishing_rods_pkey",
@@ -9483,6 +9597,18 @@
         "roles": [
           "authenticated"
         ],
+        "tablename": "fishing_map_blueprints",
+        "permissive": "PERMISSIVE",
+        "policyname": "blueprint_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "true",
+        "roles": [
+          "authenticated"
+        ],
         "tablename": "fishing_rods",
         "permissive": "PERMISSIVE",
         "policyname": "rods_catalog_read",
@@ -10036,6 +10162,13 @@
         "definition": "CREATE TRIGGER fishing_maintenance_cast_start BEFORE INSERT ON app_private.prepared_fishing_casts FOR EACH ROW EXECUTE FUNCTION app_private.enforce_fishing_maintenance()"
       },
       {
+        "name": "prepare_map_piece",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER prepare_map_piece BEFORE INSERT ON app_private.prepared_fishing_casts FOR EACH ROW EXECUTE FUNCTION app_private.prepare_fishing_map_piece()"
+      },
+      {
         "name": "title_last_bait",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
@@ -10202,6 +10335,13 @@
         "schema": "public",
         "enabled": "O",
         "definition": "CREATE TRIGGER title_expedition_catch AFTER UPDATE OF claimed_at ON public.fishing_expeditions FOR EACH ROW EXECUTE FUNCTION app_private.title_catch_event()"
+      },
+      {
+        "name": "validate_map_blueprint",
+        "table": "fishing_map_blueprints",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER validate_map_blueprint BEFORE INSERT OR UPDATE ON public.fishing_map_blueprints FOR EACH ROW EXECUTE FUNCTION app_private.validate_fishing_map_blueprint()"
       },
       {
         "name": "title_friend",
@@ -10630,7 +10770,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region_id text, p_operation_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.buy_region_map(p_region_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();m public.region_maps;w public.player_wallets;t public.gold_transactions;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_region_id is null then raise exception 'INVALID_TRADE';end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n select * into t from public.gold_transactions where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if t.action<>'buy' or t.item_id is distinct from 'map:'||p_region_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.get_gold_wallet()||jsonb_build_object('delta',0);\n end if;\n select * into m from public.region_maps where region_id=p_region_id for share;\n if not found then raise exception 'INVALID_MAP';end if;\n if exists(select 1 from public.regions r where r.id=p_region_id and not r.requires_map_fragment)\n or exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'MAP_ALREADY_OWNED';end if;\n if w.gold<m.price then raise exception 'INSUFFICIENT_GOLD';end if;\n update public.player_wallets set gold=gold-m.price,updated_at=now() where user_id=v_uid;\n insert into public.player_map_fragments(user_id,region_id) values(v_uid,p_region_id);\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','map:'||p_region_id,-m.price);\n return app_private.get_gold_wallet()||jsonb_build_object('delta',-m.price);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.buy_region_map(p_region_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();m public.region_maps;w public.player_wallets;t public.gold_transactions;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if exists(select 1 from public.fishing_map_blueprints where region_id=p_region_id) then raise exception 'MAP_FOUND_BY_FISHING';end if;\n if p_operation_id is null or p_region_id is null then raise exception 'INVALID_TRADE';end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n select * into t from public.gold_transactions where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if t.action<>'buy' or t.item_id is distinct from 'map:'||p_region_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.get_gold_wallet()||jsonb_build_object('delta',0);\n end if;\n select * into m from public.region_maps where region_id=p_region_id for share;\n if not found then raise exception 'INVALID_MAP';end if;\n if exists(select 1 from public.regions r where r.id=p_region_id and not r.requires_map_fragment)\n or exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'MAP_ALREADY_OWNED';end if;\n if w.gold<m.price then raise exception 'INSUFFICIENT_GOLD';end if;\n update public.player_wallets set gold=gold-m.price,updated_at=now() where user_id=v_uid;\n insert into public.player_map_fragments(user_id,region_id) values(v_uid,p_region_id);\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','map:'||p_region_id,-m.price);\n return app_private.get_gold_wallet()||jsonb_build_object('delta',-m.price);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11110,7 +11250,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_operation_id uuid, p_won boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.finish_fishing(p_operation_id uuid, p_won boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;a public.fishing_attempts;\n v_item uuid;v_success boolean;v_result jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_won is null then raise exception 'INVALID_RESULT';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id for update;\n if not found then raise exception 'CAST_NOT_FOUND';end if;\n if p.finished_at is not null then return p.result||jsonb_build_object('replayed',true);end if;\n if p_won and p.confirm_bite and p.fight_started_at is null then raise exception 'CAST_NOT_STARTED';end if;\n if p_won and clock_timestamp()<(case when p.fight_started_at is null\n  then p.created_at+make_interval(secs=>p.wait_seconds::double precision+3)\n  else p.fight_started_at+interval '3 seconds' end) then raise exception 'CAST_TOO_EARLY';end if;\n v_success:=p_won and p.eligible and clock_timestamp()<=p.expires_at;\n if v_success then\n  if p.map_region_id is not null then\n   insert into public.player_map_fragments(user_id,region_id) values(v_uid,p.map_region_id) on conflict do nothing;\n  end if;\n  insert into public.player_collectibles(user_id,species_id,map_region_id) values(v_uid,p.species_id,p.map_region_id) returning id into v_item;\n  insert into public.player_discoveries(user_id,species_id) values(v_uid,p.species_id) on conflict do nothing;\n end if;\n insert into public.fishing_attempts(user_id,operation_id,region_id,bait_id,rarity,collectible_id)\n values(v_uid,p.operation_id,p.region_id,p.bait_id,case when v_success then p.rarity end,v_item) returning * into a;\n v_result:=jsonb_build_object('attempt',to_jsonb(a)||jsonb_build_object('species',case when v_success then p.snapshot end,'firstDiscovery',coalesce((select evidence.first_discovery from app_private.title_acquisition_evidence evidence where evidence.collectible_id=v_item and evidence.user_id=v_uid),false)),\n 'replayed',false,'failure_reason',case when v_success then null when clock_timestamp()>p.expires_at then 'expired' when not p.eligible then p.failure_reason else 'minigame' end);\n update app_private.prepared_fishing_casts set finished_at=clock_timestamp(),result=v_result where user_id=v_uid and operation_id=p_operation_id;\n return v_result;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.finish_fishing(p_operation_id uuid, p_won boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;a public.fishing_attempts;\n v_item uuid;v_success boolean;v_result jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_won is null then raise exception 'INVALID_RESULT';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id for update;\n if not found then raise exception 'CAST_NOT_FOUND';end if;\n if p.finished_at is not null then return p.result||jsonb_build_object('replayed',true);end if;\n if p_won and p.confirm_bite and p.fight_started_at is null then raise exception 'CAST_NOT_STARTED';end if;\n if p_won and clock_timestamp()<(case when p.fight_started_at is null\n  then p.created_at+make_interval(secs=>p.wait_seconds::double precision+3)\n  else p.fight_started_at+interval '3 seconds' end) then raise exception 'CAST_TOO_EARLY';end if;\n v_success:=p_won and p.eligible and clock_timestamp()<=p.expires_at;\n if v_success then\n  if p.map_piece_number is not null then\n   insert into app_private.player_fishing_map_pieces(user_id,region_id,piece_number) values(v_uid,p.map_region_id,p.map_piece_number) on conflict do nothing;\n   if not exists(select 1 from public.fishing_map_blueprints b cross join lateral generate_series(1,b.piece_count) n(piece_number) where b.region_id=p.map_region_id and not exists(select 1 from app_private.player_fishing_map_pieces f where f.user_id=v_uid and f.region_id=b.region_id and f.piece_number=n.piece_number)) then\n    insert into public.player_map_fragments(user_id,region_id) values(v_uid,p.map_region_id) on conflict do nothing;\n   end if;\n  else\n  if p.map_region_id is not null then\n   insert into public.player_map_fragments(user_id,region_id) values(v_uid,p.map_region_id) on conflict do nothing;\n  end if;\n  insert into public.player_collectibles(user_id,species_id,map_region_id) values(v_uid,p.species_id,p.map_region_id) returning id into v_item;\n  insert into public.player_discoveries(user_id,species_id) values(v_uid,p.species_id) on conflict do nothing;\n end if;\n end if;\n insert into public.fishing_attempts(user_id,operation_id,region_id,bait_id,rarity,collectible_id)\n values(v_uid,p.operation_id,p.region_id,p.bait_id,case when v_success then p.rarity end,v_item) returning * into a;\n v_result:=jsonb_build_object('attempt',to_jsonb(a)||jsonb_build_object('species',case when v_success then p.snapshot end,'firstDiscovery',coalesce((select evidence.first_discovery from app_private.title_acquisition_evidence evidence where evidence.collectible_id=v_item and evidence.user_id=v_uid),false)),\n 'replayed',false,'failure_reason',case when v_success then null when clock_timestamp()>p.expires_at then 'expired' when not p.eligible then p.failure_reason else 'minigame' end);\n update app_private.prepared_fishing_casts set finished_at=clock_timestamp(),result=v_result where user_id=v_uid and operation_id=p_operation_id;\n return v_result;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11440,7 +11580,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.map_shop_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('items',(select coalesce(jsonb_agg(jsonb_build_object(\n 'region_id',r.id,'name',r.name||' 지도','description',r.description,'price',m.price,'thumbnail_path',m.thumbnail_path,\n 'owned',not r.requires_map_fragment or exists(select 1 from public.player_map_fragments f where f.user_id=auth.uid() and f.region_id=r.id)\n ) order by r.sort_order,r.id),'[]'::jsonb) from public.region_maps m join public.regions r on r.id=m.region_id));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.map_shop_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('items',(select coalesce(jsonb_agg(jsonb_build_object(\n 'region_id',r.id,'name',r.name||' 지도','description',r.description,'price',m.price,'thumbnail_path',m.thumbnail_path,\n 'owned',not r.requires_map_fragment or exists(select 1 from public.player_map_fragments f where f.user_id=auth.uid() and f.region_id=r.id)\n ) order by r.sort_order,r.id),'[]'::jsonb) from public.region_maps m join public.regions r on r.id=m.region_id where not exists(select 1 from public.fishing_map_blueprints b where b.region_id=r.id)));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11784,6 +11924,16 @@
         "securityDefiner": true
       },
       {
+        "name": "prepare_fishing_map_piece",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.prepare_fishing_map_piece()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare chosen record;pieces integer;species integer;\nbegin\n if not new.eligible or new.rarity<>'rare' or not coalesce((new.bait_snapshot->'target_kinds') ? 'fish',false) then return new;end if;\n select count(*) into pieces from public.fishing_map_blueprints b join public.regions r on r.id=b.region_id\n cross join lateral generate_series(1,b.piece_count) n(piece_number)\n where b.enabled and r.requires_map_fragment\n and not exists(select 1 from public.player_map_fragments f where f.user_id=new.user_id and f.region_id=b.region_id)\n and not exists(select 1 from app_private.player_fishing_map_pieces f where f.user_id=new.user_id and f.region_id=b.region_id and f.piece_number=n.piece_number);\n if pieces=0 then return new;end if;\n select count(*) into species from public.collectible_species s where s.rarity='rare'\n and (new.bait_snapshot->'target_kinds') ? s.kind::text\n and (new.bait_snapshot->>'effect_kind'<>'common_only' or not s.is_native)\n and (new.bait_snapshot->>'effect_kind'<>'undiscovered' or not exists(select 1 from public.player_discoveries d where d.user_id=new.user_id and d.species_id=s.id));\n -- Each missing piece occupies one slot in the rare catch pool, never an extra rarity roll.\n if random()*(species+pieces)>=pieces then return new;end if;\n select b.region_id,b.piece_count,b.thumbnail_path,r.name,n.piece_number into chosen\n from public.fishing_map_blueprints b join public.regions r on r.id=b.region_id\n cross join lateral generate_series(1,b.piece_count) n(piece_number)\n where b.enabled and r.requires_map_fragment\n and not exists(select 1 from public.player_map_fragments f where f.user_id=new.user_id and f.region_id=b.region_id)\n and not exists(select 1 from app_private.player_fishing_map_pieces f where f.user_id=new.user_id and f.region_id=b.region_id and f.piece_number=n.piece_number)\n order by random() limit 1;\n if not found then return new;end if;\n new.map_region_id:=chosen.region_id;new.map_piece_number:=chosen.piece_number;\n new.species_id:=null;new.rarity:='rare';\n new.snapshot:=jsonb_build_object('id','map-piece-'||chosen.region_id||'-'||chosen.piece_number,\n 'kind','map','rarity','rare','name',chosen.name||'의 지도 조각 ( '||chosen.piece_number||'/'||chosen.piece_count||' )',\n 'description','모든 지도 조각을 모으면 해역이 열려요. 지도에서 수집 현황을 확인하세요.',\n 'thumbnail_path',chosen.thumbnail_path,'sell_price',0,'speed',0,'size',1,\n 'mapPiece',true,'mapRegionId',chosen.region_id,'pieceNumber',chosen.piece_number,'pieceCount',chosen.piece_count);\n return new;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "prepared_fishing_payload",
         "config": [
           "search_path=\"\""
@@ -11990,7 +12140,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.region_map()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n insert into public.player_navigation(user_id) values(v_uid) on conflict do nothing;\n return jsonb_build_object('currentRegion',(select region_id from public.player_navigation where user_id=v_uid),\n 'canTestLocks',coalesce((select test_lock_controls from app_private.region_settings where id),false),\n 'regions',(select jsonb_agg((to_jsonb(r)-'rarity')||jsonb_build_object('map_image_path',m.thumbnail_path,\n 'unlocked',not r.requires_map_fragment or f.region_id is not null,'hasFragment',f.region_id is not null) order by r.sort_order)\n from public.regions r left join public.player_map_fragments f on f.region_id=r.id and f.user_id=v_uid\n left join public.region_maps m on m.region_id=r.id));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.region_map()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n insert into public.player_navigation(user_id) values(v_uid) on conflict do nothing;\n return jsonb_build_object('currentRegion',(select region_id from public.player_navigation where user_id=v_uid),\n 'canTestLocks',coalesce((select test_lock_controls from app_private.region_settings where id),false),\n 'regions',(select jsonb_agg((to_jsonb(r)-'rarity')||jsonb_build_object('map_image_path',coalesce(b.thumbnail_path,m.thumbnail_path),\n 'unlocked',not r.requires_map_fragment or f.region_id is not null,'hasFragment',f.region_id is not null,'mapPieceCount',b.piece_count,'mapPieces',(select coalesce(jsonb_agg(p.piece_number order by p.piece_number),'[]'::jsonb) from app_private.player_fishing_map_pieces p where p.user_id=v_uid and p.region_id=r.id)) order by r.sort_order)\n from public.regions r left join public.player_map_fragments f on f.region_id=r.id and f.user_id=v_uid\n left join public.region_maps m on m.region_id=r.id left join public.fishing_map_blueprints b on b.region_id=r.id));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -12161,6 +12311,16 @@
         "schema": "app_private",
         "arguments": "p_listing_id uuid, p_liked boolean",
         "definition": "CREATE OR REPLACE FUNCTION app_private.set_exchange_listing_like(p_listing_id uuid, p_liked boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();l public.exchange_listings;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_liked is null then raise exception 'INVALID_EXCHANGE';end if;\n select * into l from public.exchange_listings where id=p_listing_id and side='sell' and status in ('active','completed') for share;\n if not found then raise exception 'EXCHANGE_UNAVAILABLE';end if;\n perform pg_advisory_xact_lock(hashtextextended('exchange-like:'||p_listing_id::text||':'||u::text,0));\n if p_liked then insert into public.exchange_listing_likes(listing_id,user_id) values(l.id,u) on conflict do nothing;\n else delete from public.exchange_listing_likes where listing_id=l.id and user_id=u;end if;\n return jsonb_build_object('liked',p_liked,'like_count',(select count(*) from public.exchange_listing_likes where listing_id=l.id));\nend;\n$function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "set_map_piece_test_count",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_region_id text, p_count integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.set_map_piece_test_count(p_region_id text, p_count integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();total integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if not exists(select 1 from auth.users where id=u and lower(email)='1@1.com') then raise exception 'TEST_ACCOUNT_REQUIRED';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||u::text,0));\n select b.piece_count into total from public.fishing_map_blueprints b join public.regions r on r.id=b.region_id\n where b.region_id=p_region_id and b.enabled and r.requires_map_fragment for share of b,r;\n if not found then raise exception 'MAP_BLUEPRINT_NOT_FOUND';end if;\n if p_count is null or p_count<0 or p_count>total then raise exception 'INVALID_MAP_PIECE_COUNT';end if;\n -- An entered count represents the first N fixed pieces, including resetting to zero.\n delete from app_private.player_fishing_map_pieces where user_id=u and region_id=p_region_id and piece_number>p_count;\n insert into app_private.player_fishing_map_pieces(user_id,region_id,piece_number)\n select u,p_region_id,n from generate_series(1,p_count) n on conflict do nothing;\n if p_count=total then\n  insert into public.player_map_fragments(user_id,region_id) values(u,p_region_id) on conflict do nothing;\n else\n  delete from public.player_map_fragments where user_id=u and region_id=p_region_id;\n  update public.player_navigation set region_id='pongdang' where user_id=u and region_id=p_region_id;\n end if;\n return app_private.region_map();\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -12491,6 +12651,16 @@
         "schema": "app_private",
         "arguments": "p_region_id text",
         "definition": "CREATE OR REPLACE FUNCTION app_private.travel_region(p_region_id text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid(); v_region public.regions;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into v_region from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND'; end if;\n if v_region.requires_map_fragment and not exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'REGION_LOCKED'; end if;\n insert into public.player_navigation(user_id,region_id) values(v_uid,p_region_id)\n on conflict(user_id) do update set region_id=excluded.region_id;\n return app_private.region_map();\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "validate_fishing_map_blueprint",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.validate_fishing_map_blueprint()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if exists(select 1 from public.region_maps where region_id=new.region_id) then raise exception 'MAP_ALREADY_SOLD';end if;\n if not exists(select 1 from public.regions where id=new.region_id and requires_map_fragment) then raise exception 'MAP_MUST_BE_LOCKED';end if;\n if tg_op='UPDATE' and (new.region_id<>old.region_id or new.piece_count<>old.piece_count) then raise exception 'MAP_PIECES_IMMUTABLE';end if;\n return new;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -13591,6 +13761,16 @@
         "schema": "public",
         "arguments": "p_kind text, p_id uuid, p_value integer",
         "definition": "CREATE OR REPLACE FUNCTION public.set_feedback_reaction(p_kind text, p_id uuid, p_value integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_value is null or p_value not in (-1,0,1) then raise exception 'INVALID_FEEDBACK_VALUE'; end if;\n if p_kind='suggestion' then\n if not exists(select 1 from public.suggestion_posts where id=p_id) then raise exception 'FEEDBACK_NOT_FOUND'; end if;\n if p_value=0 then\n  delete from app_private.feedback_suggestion_votes where post_id=p_id and user_id=auth.uid();\n else\n  insert into app_private.feedback_suggestion_votes(post_id,user_id,value) values(p_id,auth.uid(),p_value)\n  on conflict(post_id,user_id) do update set value=excluded.value;\n end if;\n elsif p_kind='bug' then\n if not exists(select 1 from public.bug_reports where id=p_id) then raise exception 'FEEDBACK_NOT_FOUND'; end if;\n if p_value=0 then\n  delete from app_private.feedback_bug_votes where post_id=p_id and user_id=auth.uid();\n else\n  insert into app_private.feedback_bug_votes(post_id,user_id,value) values(p_id,auth.uid(),p_value)\n  on conflict(post_id,user_id) do update set value=excluded.value;\n end if;\n else raise exception 'INVALID_FEEDBACK_KIND'; end if;\n return public.feedback_reactions(p_kind,array[p_id])->0;\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "set_map_piece_test_count",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_region_id text, p_count integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.set_map_piece_test_count(p_region_id text, p_count integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.set_map_piece_test_count(p_region_id,p_count)\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -15205,6 +15385,54 @@
         "definition": "NOT NULL user_id"
       },
       {
+        "name": "player_fishing_map_pieces_acquired_at_not_null",
+        "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "definition": "NOT NULL acquired_at"
+      },
+      {
+        "name": "player_fishing_map_pieces_piece_number_check",
+        "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "definition": "CHECK (((piece_number >= 1) AND (piece_number <= 32)))"
+      },
+      {
+        "name": "player_fishing_map_pieces_piece_number_not_null",
+        "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "definition": "NOT NULL piece_number"
+      },
+      {
+        "name": "player_fishing_map_pieces_pkey",
+        "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, region_id, piece_number)"
+      },
+      {
+        "name": "player_fishing_map_pieces_region_id_fkey",
+        "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (region_id) REFERENCES fishing_map_blueprints(region_id)"
+      },
+      {
+        "name": "player_fishing_map_pieces_region_id_not_null",
+        "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "definition": "NOT NULL region_id"
+      },
+      {
+        "name": "player_fishing_map_pieces_user_id_fkey",
+        "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "player_fishing_map_pieces_user_id_not_null",
+        "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
         "name": "prepared_bait_snapshot_object",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
@@ -15226,7 +15454,7 @@
         "name": "prepared_fishing_casts_check",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
-        "definition": "CHECK ((eligible = (species_id IS NOT NULL)))"
+        "definition": "CHECK ((eligible = ((species_id IS NOT NULL) OR (map_piece_number IS NOT NULL))))"
       },
       {
         "name": "prepared_fishing_casts_confirm_bite_not_null",
@@ -15281,6 +15509,12 @@
         "table": "prepared_fishing_casts",
         "schema": "app_private",
         "definition": "NOT NULL last_bait"
+      },
+      {
+        "name": "prepared_fishing_casts_map_piece_number_check",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "CHECK (((map_piece_number >= 1) AND (map_piece_number <= 32)))"
       },
       {
         "name": "prepared_fishing_casts_map_region_id_fkey",
@@ -15353,6 +15587,12 @@
         "table": "prepared_fishing_casts",
         "schema": "app_private",
         "definition": "CHECK (((fight_started_at IS NULL) OR (confirm_bite AND (fight_started_at >= created_at))))"
+      },
+      {
+        "name": "prepared_map_piece_shape",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "CHECK (((map_piece_number IS NULL) OR ((map_region_id IS NOT NULL) AND (species_id IS NULL) AND (rarity = 'rare'::game_rarity))))"
       },
       {
         "name": "production_operations_created_at_not_null",
@@ -17837,6 +18077,48 @@
         "table": "fishing_expeditions",
         "schema": "public",
         "definition": "NOT NULL vessel_snapshot"
+      },
+      {
+        "name": "fishing_map_blueprints_enabled_not_null",
+        "table": "fishing_map_blueprints",
+        "schema": "public",
+        "definition": "NOT NULL enabled"
+      },
+      {
+        "name": "fishing_map_blueprints_piece_count_check",
+        "table": "fishing_map_blueprints",
+        "schema": "public",
+        "definition": "CHECK (((piece_count >= 1) AND (piece_count <= 32)))"
+      },
+      {
+        "name": "fishing_map_blueprints_piece_count_not_null",
+        "table": "fishing_map_blueprints",
+        "schema": "public",
+        "definition": "NOT NULL piece_count"
+      },
+      {
+        "name": "fishing_map_blueprints_pkey",
+        "table": "fishing_map_blueprints",
+        "schema": "public",
+        "definition": "PRIMARY KEY (region_id)"
+      },
+      {
+        "name": "fishing_map_blueprints_region_id_fkey",
+        "table": "fishing_map_blueprints",
+        "schema": "public",
+        "definition": "FOREIGN KEY (region_id) REFERENCES regions(id)"
+      },
+      {
+        "name": "fishing_map_blueprints_region_id_not_null",
+        "table": "fishing_map_blueprints",
+        "schema": "public",
+        "definition": "NOT NULL region_id"
+      },
+      {
+        "name": "fishing_map_blueprints_thumbnail_path_not_null",
+        "table": "fishing_map_blueprints",
+        "schema": "public",
+        "definition": "NOT NULL thumbnail_path"
       },
       {
         "name": "fishing_rods_check",
@@ -20761,6 +21043,13 @@
       },
       {
         "role": "authenticated",
+        "table": "fishing_map_blueprints",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
         "table": "fishing_rods",
         "schema": "public",
         "grantable": "NO",
@@ -23558,6 +23847,34 @@
         "role": "authenticated",
         "table": "fishing_expeditions",
         "column": "vessel_snapshot",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_map_blueprints",
+        "column": "enabled",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_map_blueprints",
+        "column": "piece_count",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_map_blueprints",
+        "column": "region_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "fishing_map_blueprints",
+        "column": "thumbnail_path",
         "schema": "public",
         "privilege": "SELECT"
       },
@@ -29343,6 +29660,27 @@
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid, p_confirm_bite boolean"
       },
       {
+        "name": "prepare_fishing_map_piece",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "prepare_fishing_map_piece",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "prepare_fishing_map_piece",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "prepared_fishing_payload",
         "role": "anon",
         "schema": "app_private",
@@ -30141,6 +30479,27 @@
         "arguments": "p_listing_id uuid, p_liked boolean"
       },
       {
+        "name": "set_map_piece_test_count",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region_id text, p_count integer"
+      },
+      {
+        "name": "set_map_piece_test_count",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_region_id text, p_count integer"
+      },
+      {
+        "name": "set_map_piece_test_count",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region_id text, p_count integer"
+      },
+      {
         "name": "set_player_avatar",
         "role": "anon",
         "schema": "app_private",
@@ -30832,6 +31191,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_region_id text"
+      },
+      {
+        "name": "validate_fishing_map_blueprint",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "validate_fishing_map_blueprint",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "validate_fishing_map_blueprint",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "add_exchange_listing_comment",
@@ -33142,6 +33522,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_kind text, p_id uuid, p_value integer"
+      },
+      {
+        "name": "set_map_piece_test_count",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_region_id text, p_count integer"
+      },
+      {
+        "name": "set_map_piece_test_count",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_region_id text, p_count integer"
+      },
+      {
+        "name": "set_map_piece_test_count",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_region_id text, p_count integer"
       },
       {
         "name": "set_player_avatar",

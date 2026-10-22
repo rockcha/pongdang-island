@@ -1,6 +1,8 @@
+import {nyamnyamArt} from '@/features/regions/nyamnyam-art'
 ﻿import { useState } from 'react'
 
 export const fishingEnvironments={
+ nyamnyam:{name:'냠냠 한상바다',water:'#28bace',deck:'#deb97c',edge:'#966a39',waterEnd:1536,deckStart:1065},
  siren:{name:'세이렌의 해협',water:'#3bb9b0',deck:'#e9ddc4',edge:'#b39559',waterEnd:990,deckStart:1065},
  primal:{name:'태고의 원시섬',water:'#3f9f95',deck:'#a59470',edge:'#586c43',waterEnd:1048,deckStart:1058},
  mukhyang:{name:'묵향 해역',water:'#c8d6d2',deck:'#384644',edge:'#86978a',waterEnd:1170,deckStart:1260},
@@ -14,16 +16,16 @@ export const fishingEnvironments={
  starruins:{name:'별잠 유적',water:'#468ea5',deck:'#7b9495',edge:'#c4b88e',waterEnd:1078,deckStart:1128},
  dreamabyss:{name:'꿈먹는 심연',water:'#403f75',deck:'#292c43',edge:'#8072b8',waterEnd:1020,deckStart:1092},
 } as const
-const platformMaterials:Record<string,string>={siren:'marble',pongdang:'wood',whitenight:'ice',primal:'roots',coral:'limestone',mistmoon:'wet-stone',starruins:'ruins',dreamabyss:'basalt',bluegrove:'riverstone',cloudferry:'cloud-stone',scrapisle:'metal'}
+const platformMaterials:Record<string,string>={nyamnyam:'wood',siren:'marble',pongdang:'wood',whitenight:'ice',primal:'roots',coral:'limestone',mistmoon:'wet-stone',starruins:'ruins',dreamabyss:'basalt',bluegrove:'riverstone',cloudferry:'cloud-stone',scrapisle:'metal'}
 export function fishingEnvironment(regionId:string){
  const id=regionId in fishingEnvironments?regionId as keyof typeof fishingEnvironments:'pongdang'
  return {id,...fishingEnvironments[id],
-  src:id==='whitenight'?'/fishing/environments/whitenight.png':`/fishing/close-water/${id}.png`,
+  src:id==='nyamnyam'?nyamnyamArt.scenery:id==='whitenight'?'/fishing/environments/whitenight.png':`/fishing/close-water/${id}.png`,
   waterEnd:id==='whitenight'?fishingEnvironments[id].waterEnd:1536,
-  frontSrc:id==='mukhyang'?'/fishing/environments/mukhyang.png':`/fishing/scenery/${id}.png`,
+  frontSrc:id==='nyamnyam'?nyamnyamArt.scenery:id==='mukhyang'?'/fishing/environments/mukhyang.png':`/fishing/scenery/${id}.png`,
   frontWaterEnd:id==='mukhyang'?1170:1536,
-  platformFallbackSrc:`/fishing/environments/${id}.png`,
-  platformSrc:platformMaterials[id]?`/fishing/platforms/${id}.png`:null,material:platformMaterials[id]}
+  platformFallbackSrc:id==='nyamnyam'?'/fishing/environments/pongdang.png':`/fishing/environments/${id}.png`,
+  platformSrc:id==='nyamnyam'?'/fishing/platforms/pongdang.png':platformMaterials[id]?`/fishing/platforms/${id}.png`:null,material:platformMaterials[id]}
 }
 // Standby landscapes and close, oblique fishing views have independent source crops.
 // Platforms keep their own source so changing camera never changes the terrain.

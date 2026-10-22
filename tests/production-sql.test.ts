@@ -43,6 +43,7 @@ it('runs every fish refinery with exact fish consumption, timing, payout and ide
   const receipt=crypto.randomUUID();fuel+=f.output_count
   expect((await run('claim',receipt)).fuel).toBe(fuel)
   expect((await run('claim',receipt)).fuel).toBe(fuel)
+  await run('sell')
  }
  expect((await db.query('select count(*)::int n from public.player_collectibles where user_id=$1 and consumed_at is not null',[u])).rows[0].n).toBe(fish.reduce((n,f)=>n+f.input_count,0))
  expect((await db.query("select count(*)::int n from public.player_collectibles where user_id=$1 and species_id='shared-drift-scrap-wood' and consumed_at is null",[u])).rows[0].n).toBe(100)

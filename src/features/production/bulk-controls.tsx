@@ -144,7 +144,7 @@ export function BulkProductionControls({
               ? '아래 재료를 소모해 대기 중인 생산소를 가동해요.'
               : review?.action === 'claim'
                 ? '완성된 연료를 한 번에 수령해요.'
-                : '보관시간이 지난 연료를 모두 폐기해요. 폐기 후에는 되돌릴 수 없어요.'}
+                : '보관 기간이 지난 연료를 모두 폐기해요. 폐기 후에는 되돌릴 수 없어요.'}
           </DialogDescription>
           {review && (
             <>

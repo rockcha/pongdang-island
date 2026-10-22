@@ -44,7 +44,7 @@ export type ProductionMaterial = {
   available: number
 }
 export type ProductionAction = {
-  p_action: 'buy' | 'start' | 'claim' | 'discard'
+  p_action: 'buy' | 'sell' | 'start' | 'claim' | 'discard'
   p_operation_id: string
   p_facility: string
   p_materials?: Record<string, number>
@@ -104,6 +104,8 @@ export function productionError(cause: unknown) {
   if (text.includes('INVALID_PRODUCTION_QUANTITY')) return '구매 수량은 1~100곳으로 입력해 주세요.'
   const messages: Record<string, string> = {
     INSUFFICIENT_GOLD: '골드가 부족해요.',
+    PRODUCTION_OWNERSHIP_LIMIT: '생산소는 종류에 상관없이 총 4곳까지 보유할 수 있어요. 기존 생산소를 판매한 뒤 구매해 주세요.',
+    GOLD_LIMIT: '보유 골드 한도에 도달했어요.',
     PRODUCTION_ALREADY_OWNED: '이미 구매한 생산소예요.',
     PRODUCTION_NOT_OWNED: '먼저 연료 생산소 상점에서 구매해 주세요.',
     INSUFFICIENT_MATERIALS: '재료가 부족하거나 보관함에서 이동되었어요. 다시 골라주세요.',
@@ -111,7 +113,7 @@ export function productionError(cause: unknown) {
     INVALID_MATERIALS: '재료를 다시 확인해 주세요.',
     PRODUCTION_BUSY: '진행 중인 생산물을 먼저 수령하거나 정리해 주세요.',
     PRODUCTION_NOT_READY: '아직 생산 중이에요.',
-    PRODUCTION_EXPIRED: '보관시간이 지났어요. 생산물을 정리해 주세요.',
+    PRODUCTION_EXPIRED: '보관 기간이 지났어요. 생산물을 정리해 주세요.',
     PRODUCTION_NOT_EXPIRED: '아직 보관 중인 생산물이 있어요.',
     PRODUCTION_IDLE: '이미 처리되었어요. 상태를 다시 확인해 주세요.',
     PRODUCTION_UNAVAILABLE: '지금은 이용할 수 없는 시설이에요.',

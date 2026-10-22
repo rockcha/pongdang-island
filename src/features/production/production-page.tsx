@@ -77,7 +77,7 @@ function Details({ site, compact = false }: { site: ProductionFacility; compact?
         <dt
           className={`${compact ? 'w-12' : 'w-16'} shrink-0 whitespace-nowrap text-muted-foreground`}
         >
-          {compact ? '보관시간:' : '보관 시간'}
+          {compact ? '보관 기간:' : '보관 기간'}
         </dt>
         <dd className="tabular-nums">{productionDuration(site.storage_minutes)}</dd>
       </div>
@@ -93,14 +93,22 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
     [statusFilter, setStatusFilter] = useState<StatusFilter>('all'),
     [selected, setSelected] = useState<{
       id: string
-      mode: 'buy' | 'start' | 'working' | 'info'
+      mode: 'buy' | 'sell' | 'start' | 'working' | 'info'
     } | null>(null)
   const source = (shop ? state?.facilities : (state?.sites ?? state?.facilities)) ?? []
+  const ownedInKind = (kind: 'trash' | 'fish') =>
+    state?.sites
+      ? state.sites.filter((f) => f.kind === kind).length
+      : (state?.facilities ?? [])
+          .filter((f) => f.kind === kind)
+          .reduce((n, f) => n + (f.ownedCount ?? (f.owned ? 1 : 0)), 0)
   const active = source.find((f) => productionSiteKey(f) === selected?.id) ?? null,
-    categoryFacilities = source.filter((f) => f.kind === category && (shop ? f.enabled : f.owned))
+    categoryFacilities = source.filter((f) => (shop ? f.kind === category && f.enabled : f.owned))
   const facilities = shop
     ? filterProductionShop(categoryFacilities, shopFilters)
     : categoryFacilities.filter((f) => matchesStatus(f, statusFilter, now))
+  const ownedTotal = ownedInKind('trash') + ownedInKind('fish')
+  const purchaseLimit = Math.max(0, 4 - ownedTotal)
   async function operate(site: ProductionFacility) {
     const status = productionStatus(site, now)
     if (status === 'idle' || status === 'working') {
@@ -141,6 +149,28 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
       className="flex min-h-0 flex-1 flex-col overflow-hidden"
     >
       <div className="relative z-20 shrink-0 bg-background px-4 pb-2 pt-1">
+        {!shop && (
+          <BulkProductionControls
+            key="all-production"
+            sites={categoryFacilities}
+            now={now}
+            busy={busy}
+            error={error}
+            onAction={async (args) => {
+              const success = await bulkAction(args)
+              if (success)
+                toast.success(
+                  args.p_action === 'start'
+                    ? '생산소를 일괄 가동했어요.'
+                    : args.p_action === 'claim'
+                      ? '완성된 연료를 모두 받았어요.'
+                      : '만료된 연료를 모두 폐기했어요.',
+                )
+              return success
+            }}
+          />
+        )}
+
         <div className="mb-2 flex items-center justify-between text-xs">
           <span className="flex items-center gap-1.5 text-muted-foreground">
             <appArt.fuel className="size-5" />
@@ -157,54 +187,56 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
             <ArrowRight className="size-3.5" />
           </Link>
         </div>
-        <div
-          role="tablist"
-          aria-label="생산소 종류"
-          className="grid grid-cols-2 gap-1 rounded-xl bg-secondary/60 p-1"
-        >
-          {(
-            [
-              { id: 'trash', label: '쓰레기 재활용', Icon: appArt.trash },
-              { id: 'fish', label: '어유 정제', Icon: appArt.fish },
-            ] as const
-          ).map(({ id, label, Icon }) => (
-            <button
-              id={`production-${id}-tab`}
-              key={id}
-              role="tab"
-              type="button"
-              aria-selected={category === id}
-              aria-controls="production-panel"
-              tabIndex={category === id ? 0 : -1}
-              onClick={() => {
-                setCategory(id)
-                setStatusFilter('all')
-              }}
-              onKeyDown={(e) => {
-                if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) {
-                  e.preventDefault()
-                  const next =
-                    e.key === 'Home'
-                      ? 'trash'
-                      : e.key === 'End'
-                        ? 'fish'
-                        : category === 'trash'
-                          ? 'fish'
-                          : 'trash'
-                  setCategory(next)
+        {shop && (
+          <div
+            role="tablist"
+            aria-label="생산소 종류"
+            className="grid grid-cols-2 gap-1 rounded-xl bg-secondary/60 p-1"
+          >
+            {(
+              [
+                { id: 'trash', label: '쓰레기 재활용', Icon: appArt.trash },
+                { id: 'fish', label: '어유 정제', Icon: appArt.fish },
+              ] as const
+            ).map(({ id, label, Icon }) => (
+              <button
+                id={`production-${id}-tab`}
+                key={id}
+                role="tab"
+                type="button"
+                aria-selected={category === id}
+                aria-controls="production-panel"
+                tabIndex={category === id ? 0 : -1}
+                onClick={() => {
+                  setCategory(id)
                   setStatusFilter('all')
-                  document.getElementById(`production-${next}-tab`)?.focus()
-                }
-              }}
-              className={`flex min-h-12 items-center justify-center gap-1.5 rounded-lg px-1 text-xs outline-none focus-visible:ring-2 focus-visible:ring-ring ${category === id ? 'bg-background font-medium text-primary shadow-sm' : 'text-muted-foreground'}`}
-            >
-              <Icon className="size-7" />
-              {label}
-            </button>
-          ))}
-        </div>
+                }}
+                onKeyDown={(e) => {
+                  if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) {
+                    e.preventDefault()
+                    const next =
+                      e.key === 'Home'
+                        ? 'trash'
+                        : e.key === 'End'
+                          ? 'fish'
+                          : category === 'trash'
+                            ? 'fish'
+                            : 'trash'
+                    setCategory(next)
+                    setStatusFilter('all')
+                    document.getElementById(`production-${next}-tab`)?.focus()
+                  }
+                }}
+                className={`flex min-h-12 items-center justify-center gap-1.5 rounded-lg px-1 text-xs outline-none focus-visible:ring-2 focus-visible:ring-ring ${category === id ? 'bg-background font-medium text-primary shadow-sm' : 'text-muted-foreground'}`}
+              >
+                <Icon className="size-7" />
+                {label}
+              </button>
+            ))}
+          </div>
+        )}
         {shop && <ProductionShopFilters value={shopFilters} onChange={setShopFilters} />}
-        {!shop && categoryFacilities.length > 0 && (
+        {!shop && (
           <div
             role="tablist"
             aria-label="생산소 상태"
@@ -240,7 +272,9 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
               >
                 {label}{' '}
                 <span className="text-[10px] tabular-nums opacity-65">
-                  {categoryFacilities.filter((f) => matchesStatus(f, id, now)).length}
+                  {id === 'all'
+                    ? `${ownedTotal}/4`
+                    : categoryFacilities.filter((f) => matchesStatus(f, id, now)).length}
                 </span>
               </button>
             ))}
@@ -249,8 +283,8 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
       </div>
       <div
         id="production-panel"
-        role="tabpanel"
-        aria-labelledby={`production-${category}-tab`}
+        role={shop ? 'tabpanel' : undefined}
+        aria-labelledby={shop ? `production-${category}-tab` : undefined}
         tabIndex={0}
         className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-8 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
       >
@@ -268,7 +302,7 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
             <>
               {!categoryFacilities.length ? (
                 <div className="flex min-h-64 flex-col items-center justify-center py-10 text-center">
-                  {category === 'fish' ? (
+                  {shop && category === 'fish' ? (
                     <appArt.fish className="mb-4 size-16" />
                   ) : (
                     <Store className="mb-4 size-10 text-primary/40" />
@@ -296,27 +330,6 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                     role={shop ? undefined : 'tabpanel'}
                     aria-labelledby={shop ? undefined : `production-status-${statusFilter}-tab`}
                   >
-                    {!shop && (
-                      <BulkProductionControls
-                        key={`${category}:${statusFilter}`}
-                        sites={facilities}
-                        now={now}
-                        busy={busy}
-                        error={error}
-                        onAction={async (args) => {
-                          const success = await bulkAction(args)
-                          if (success)
-                            toast.success(
-                              args.p_action === 'start'
-                                ? '생산소를 일괄 가동했어요.'
-                                : args.p_action === 'claim'
-                                  ? '완성된 연료를 모두 받았어요.'
-                                  : '만료된 연료를 모두 폐기했어요.',
-                            )
-                          return success
-                        }}
-                      />
-                    )}
                     {!facilities.length && (
                       <p role="status" className="py-14 text-center text-xs text-muted-foreground">
                         {shop
@@ -503,7 +516,7 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                       ? remainingTime(active.completesAt!, now) + ' 후 완료'
                       : productionStatus(active, now) === 'ready'
                         ? `연료 ${active.runOutput}개를 받을 수 있어요.`
-                        : '보관시간이 지났어요.'}
+                        : '보관 기간이 지났어요.'}
                   </p>
                   <p className="mt-2 text-[11px] text-muted-foreground">
                     완료 후 {productionDuration(active.storage_minutes)} 안에 수령해 주세요.
@@ -512,8 +525,30 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
               ) : (
                 <Details site={active} />
               )}
-              {selected?.mode !== 'info' && issue}
-              {selected?.mode === 'buy' ? (
+              {issue}
+              {selected?.mode === 'sell' ? (
+                <>
+                  <p className="text-xs leading-6 text-muted-foreground">
+                    이 생산소를 상점 구매가의 50%인{' '}
+                    {Math.floor(active.price / 2).toLocaleString('ko-KR')}골드에 판매할까요?
+                    판매하면 보유 목록에서 사라져요.
+                  </p>
+                  <Button
+                    disabled={busy}
+                    variant="destructive"
+                    onClick={async () => {
+                      if (
+                        await action({ p_action: 'sell', p_facility: productionSiteKey(active) })
+                      ) {
+                        toast.success('생산소를 판매했어요.')
+                        setSelected(null)
+                      }
+                    }}
+                  >
+                    판매 확정
+                  </Button>
+                </>
+              ) : selected?.mode === 'buy' ? (
                 <>
                   <div className="flex items-center justify-between gap-2 rounded-xl bg-secondary/35 p-3">
                     <div>
@@ -521,7 +556,7 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                         구매 수량
                       </label>
                       <p className="mt-1 text-[10px] text-muted-foreground">
-                        현재 보유 {active.ownedCount ?? (active.owned ? 1 : 0)}곳
+                        전체 보유 {ownedTotal}/4곳 · 추가 구매 가능 {purchaseLimit}곳
                       </p>
                     </div>
                     <div className="flex items-center gap-1">
@@ -540,13 +575,16 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                         type="number"
                         inputMode="numeric"
                         min={1}
-                        max={100}
+                        max={Math.max(1, purchaseLimit)}
                         step={1}
                         disabled={busy}
                         value={quantity}
                         onChange={(e) =>
                           setQuantity(
-                            Math.min(100, Math.max(1, Math.floor(Number(e.target.value) || 1))),
+                            Math.min(
+                              Math.max(1, purchaseLimit),
+                              Math.max(1, Math.floor(Number(e.target.value) || 1)),
+                            ),
                           )
                         }
                         className="h-9 w-12 rounded-lg bg-transparent text-center text-sm tabular-nums outline-none focus-visible:ring-2 focus-visible:ring-ring"
@@ -554,7 +592,7 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                       <button
                         type="button"
                         aria-label="구매 수량 늘리기"
-                        disabled={busy || quantity >= 100}
+                        disabled={busy || quantity >= purchaseLimit}
                         onClick={() => setQuantity((n) => n + 1)}
                         className="grid size-9 place-items-center rounded-lg border border-border bg-background disabled:opacity-30"
                       >
@@ -567,11 +605,15 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                     aria-label={
                       busy
                         ? '구매 중…'
-                        : state!.gold < active.price * quantity
-                          ? '골드가 부족해요'
-                          : `${(active.price * quantity).toLocaleString('ko-KR')}골드로 구매하기`
+                        : quantity > purchaseLimit
+                          ? '총 4곳까지 보유할 수 있어요'
+                          : state!.gold < active.price * quantity
+                            ? '골드가 부족해요'
+                            : `${(active.price * quantity).toLocaleString('ko-KR')}골드로 구매하기`
                     }
-                    disabled={busy || state!.gold < active.price * quantity}
+                    disabled={
+                      busy || quantity > purchaseLimit || state!.gold < active.price * quantity
+                    }
                     onClick={async () => {
                       if (
                         await action({
@@ -587,6 +629,8 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                   >
                     {busy ? (
                       '구매 중…'
+                    ) : quantity > purchaseLimit ? (
+                      '총 4곳까지 보유할 수 있어요'
                     ) : state!.gold < active.price * quantity ? (
                       '골드가 부족해요'
                     ) : (
@@ -611,6 +655,26 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                     {productionStatus(active, now) === 'ready' ? '연료 받기' : '만료된 생산물 정리'}
                   </Button>
                 )
+              )}
+              {!shop && selected?.mode === 'info' && (
+                <Button
+                  variant="outline"
+                  disabled={busy || active.startedAt !== null}
+                  onClick={() => setSelected({ id: productionSiteKey(active), mode: 'sell' })}
+                >
+                  {active.startedAt !== null ? (
+                    '생산물을 수령·정리한 뒤 판매할 수 있어요'
+                  ) : (
+                    <>
+                      판매{' '}
+                      <span className="tabular-nums">
+                        {Math.floor(active.price / 2).toLocaleString('ko-KR')}
+                      </span>
+                      <GoldIcon className="size-5" />
+                      <span className="sr-only">골드</span>
+                    </>
+                  )}
+                </Button>
               )}
             </>
           )}

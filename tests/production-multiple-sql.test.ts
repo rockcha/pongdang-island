@@ -1,10 +1,12 @@
 // @vitest-environment node
 import {beforeAll,beforeEach,afterAll,it,expect} from 'vitest'
 import {readFileSync} from 'node:fs'
-import {createLocalDatabase,replayMigrations,migrationFiles} from '../scripts/db/local.mjs'
+import {createLocalDatabase,migrationFiles} from '../scripts/db/local.mjs'
 let db:any
 const user='00000000-0000-0000-0000-000000000881',other='00000000-0000-0000-0000-000000000882',catalog='tin-grandpa-hearth'
-beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db);for(const id of [user,other])await db.query('insert into auth.users(id) values($1)',[id])},60000)
+// Historical migration contract, including legacy excess ownership. Current limits
+// and the upgrade from these sites are covered in production-resale-sql.test.ts.
+beforeAll(async()=>{db=await createLocalDatabase();for(const file of migrationFiles().filter(f=>f<'20261022053008'))await db.exec(readFileSync('supabase/migrations/'+file,'utf8'));for(const id of [user,other])await db.query('insert into auth.users(id) values($1)',[id])},60000)
 afterAll(async()=>{await db?.close()})
 beforeEach(async()=>{await db.exec('truncate app_private.production_sites,app_private.production_operations');await db.query('delete from public.player_collectibles where user_id=$1',[user]);await db.query('delete from public.gold_transactions where user_id=$1',[user]);await db.query("insert into public.player_wallets(user_id,gold,inventory) values($1,100000,'{\"fuel\":3}') on conflict(user_id) do update set gold=100000,inventory=excluded.inventory",[user])})
 async function asUser(sql:string,args:unknown[]=[],owner=user){await db.exec('set role authenticated');try{await db.query("select set_config('request.jwt.claim.sub',$1,false)",[owner]);return (await db.query(sql,args)).rows[0]?.result}finally{await db.exec('reset role')}}

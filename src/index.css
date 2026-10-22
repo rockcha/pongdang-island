@@ -259,7 +259,9 @@
 
 /* Keep the shipyard viewport still while its boat list scrolls independently. */
 html:has(.shipyard-shell),
-body:has(.shipyard-shell) {
+body:has(.shipyard-shell),
+html:has(.bait-production-shop-shell),
+body:has(.bait-production-shop-shell) {
  overflow: hidden;
  overscroll-behavior: none;
 }

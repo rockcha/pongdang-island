@@ -1,6 +1,6 @@
 import {createClient} from '@/lib/client'
 import type {FishingBait} from './api'
-export type RodCatalogEntry={id:string;name:string;price:number;region_id:string|null;failure_reduction_bp:number;native_bonus_bp:number}
+export type RodCatalogEntry={id:string;name:string;price:number;region_id:string|null;failure_reduction_bp:number;native_bonus_bp:number;wait_reduction_seconds?:number}
 export type RodState={owned:string[];selected:string;catalog:RodCatalogEntry[];baits:FishingBait[]}
 export async function loadRods():Promise<RodState>{
  const {data,error}=await createClient().rpc('fishing_rod_state')

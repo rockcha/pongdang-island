@@ -11,14 +11,6 @@ import { regionIcons } from '@/features/regions/region-icons'
 type RevealProps={firstDiscovery?:boolean;onDismiss:()=>void;practice?:boolean;preview?:boolean;regionName?:string;caughtAt?:string;onShare?:()=>void;failureLabel?:string;failureReason?:string|null}&({species:Species;failure?:never}|{species?:never;failure:string})
 export function CatchReveal({species,failure,onDismiss,practice=false,onShare,failureReason,firstDiscovery=false}:RevealProps){
  const [ready,setReady]=useState(false)
- useEffect(()=>{
-  if(species?.kind!=='fish')return
-  const sound=new Audio('/sounds/fishing-catch.mp3')
-  sound.preload='auto'
-  // Defer playback so Strict Mode's setup/cleanup probe cannot play it twice.
-  const timer=setTimeout(()=>{void sound.play().catch(()=>{/* A blocked sound must not interrupt the catch reveal. */})},0)
-  return()=>{clearTimeout(timer);sound.pause()}
- },[species?.id,species?.kind])
  const shareable=!!species&&['epic','mythic'].includes(species.rarity)&&!practice&&!!onShare
  useEffect(()=>{const timer=setTimeout(()=>setReady(true),1300);return()=>clearTimeout(timer)},[])
  const nativeRegion=species?.is_native&&species.native_region_id?regionIcons[species.native_region_id]:undefined

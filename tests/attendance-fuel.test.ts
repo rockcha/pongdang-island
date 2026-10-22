@@ -10,7 +10,7 @@ async function claim(){await db.exec('set role authenticated');try{await db.quer
 async function seed(day:number){await db.query('insert into public.player_attendance(user_id,last_claim_date,streak) values($1,$2::date-1,$3)',[uid,today,day-1])}
 it.each([1,2,3,7,14,21,28])('alternates base rewards on sheet day %i and grants only bait on milestone days',async day=>{
  if(day>1)await seed(day)
- const reward={gold:day%7!==0&&day%2?50:0,fuel:day%7!==0&&day%2===0?1:0,bait_id:day===28?'bait_epic':day%7===0?'bait_first_greeting':null}
+ const reward={gold:day%7!==0&&day%2?200:0,fuel:day%7!==0&&day%2===0?3:0,bait_id:day===28?'bait_epic':day%7===0?'bait_first_greeting':null}
  expect(await claim()).toMatchObject({replayed:false,reward})
  expect(await claim()).toMatchObject({replayed:true,reward})
  const wallet=(await db.query<{gold:number;inventory:Record<string,number>}>('select gold,inventory from public.player_wallets where user_id=$1',[uid])).rows[0]
@@ -22,8 +22,8 @@ it('allows fuel at the gold cap and atomically rejects the fuel cap',async()=>{
  await seed(2);await db.query("insert into public.player_wallets(user_id,gold,inventory) values($1,1000000000,'{\"fuel\":100000}')",[uid])
  await expect(claim()).rejects.toThrow('FUEL_LIMIT')
  expect((await db.query('select * from public.attendance_claims')).rows).toHaveLength(0)
- await db.query("update public.player_wallets set inventory='{\"fuel\":99999}' where user_id=$1",[uid])
- expect(await claim()).toMatchObject({reward:{gold:0,fuel:1}})
+ await db.query("update public.player_wallets set inventory='{\"fuel\":99997}' where user_id=$1",[uid])
+ expect(await claim()).toMatchObject({reward:{gold:0,fuel:3}})
 })
 it('replays a historical even-day gold claim without granting fuel',async()=>{
  await seed(2)

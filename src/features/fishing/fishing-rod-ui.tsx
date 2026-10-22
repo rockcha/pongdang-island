@@ -22,7 +22,7 @@ export function RodPreview({rod}:{rod:FishingRod}){
 }
 export function RodEffect({rod}:{rod:FishingRod}){
  const region=rod.region?regionIcons[rod.region]:undefined
- return <div className="space-y-1 rounded-xl bg-secondary/60 px-4 py-3 text-xs leading-5 text-primary">{region&&rod.nativeBonusBp>0?<><p className="flex items-center gap-1.5"><img src={region.src} alt="" className="size-6 shrink-0 object-contain"/>{region.name}에 어울리는 낚싯대</p><p>해당 해역에서 주 서식지 개체를 만나기 쉬워져요.</p><p className="text-muted-foreground">다른 해역에서도 해당 주 서식지 개체를 만날 확률이 조금 높아져요.</p></>:rodSuccessBonusBp(rod)>0?<p>{rod.id==='calm'?'낚시 성공 확률이 조금 더 높아져요.':'낚시 성공 확률이 소폭 높아져요.'}</p>:<p>추가 효과 없는 기본 낚싯대예요.</p>}</div>
+ return <div className="space-y-1 rounded-xl bg-secondary/60 px-4 py-3 text-xs leading-5 text-primary">{!!rod.waitReductionSeconds&&<p>직접 낚시 대기시간 {rod.waitReductionSeconds}초 단축</p>}{region&&rod.nativeBonusBp>0?<><p className="flex items-center gap-1.5"><img src={region.src} alt="" className="size-6 shrink-0 object-contain"/>{region.name}에 어울리는 낚싯대</p><p>해당 해역에서 주 서식지 개체를 만나기 쉬워져요.</p><p className="text-muted-foreground">다른 해역에서도 해당 주 서식지 개체를 만날 확률이 조금 높아져요.</p></>:rodSuccessBonusBp(rod)>0?<p>낚시 성공 확률이 소폭 높아져요.</p>:!rod.waitReductionSeconds&&<p>추가 효과 없는 기본 낚싯대예요.</p>}</div>
 }
 export function RodInventoryStatus(){
  const {loading,error,refresh}=useRods()
@@ -88,7 +88,8 @@ export function FishingRodSelector({disabled=false,regionId,dock=false,compact=f
     <div className="px-4"><RodInventoryStatus/></div>
     {!loading&&!error&&<ul className="divide-y divide-border/60 border-y border-border/60">{available.map(item=>{
      const active=draft===item.id,region=item.region?regionIcons[item.region]:undefined
-     const effect=region&&item.nativeBonusBp>0?(item.region===regionId?'주 서식지 개체를 만나기 쉬워져요.':'해당 주 서식지 개체를 만날 확률이 조금 높아져요.'):rodSuccessBonusBp(item)>0?(item.id==='calm'?'성공 확률이 조금 더 높아져요.':'성공 확률이 소폭 높아져요.'):'추가 효과 없음'
+     const habitatEffect=region&&item.nativeBonusBp>0?(item.region===regionId?'주 서식지 개체를 만나기 쉬워져요.':'해당 주 서식지 개체를 만날 확률이 조금 높아져요.'):rodSuccessBonusBp(item)>0?'성공 확률이 소폭 높아져요.':''
+     const effect=[item.waitReductionSeconds?`대기시간 ${item.waitReductionSeconds}초 단축`:'',habitatEffect].filter(Boolean).join(' · ')||'추가 효과 없음'
      return <li key={item.id} className={active?'flex items-center bg-secondary/65':'flex items-center'}>
       <button type="button" disabled={unavailable} data-selection-icons aria-pressed={active} aria-label={item.name+' 선택'} onClick={()=>setDraft(item.id)} className="flex min-h-24 min-w-0 flex-1 items-center gap-3 px-4 py-3 text-left outline-none transition-colors hover:bg-secondary/40 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring disabled:opacity-50">
        <LandscapeImage src={rodThumbnailUrl(item.id)} alt="" className="size-16 shrink-0 object-contain"/>
@@ -103,7 +104,7 @@ export function FishingRodSelector({disabled=false,regionId,dock=false,compact=f
     <Link to="/shop?tab=rods" aria-label="낚싯대 상점으로" onClick={event=>{if(unavailable)event.preventDefault();else changeOpen(false)}} aria-disabled={unavailable} className="flex h-14 items-center justify-center gap-1 border-r bg-secondary/40 text-sm text-primary outline-none hover:bg-secondary focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring aria-disabled:opacity-50">상점<ChevronRight className="size-3"/></Link>
     <Button aria-label="이 낚싯대 사용하기" className="h-14 w-full rounded-none" disabled={unavailable||!pending} onClick={()=>void equip()}>{saving?'장착 중…':'사용'}</Button>
    </div>
-   <Dialog open={!!details} onOpenChange={value=>{if(!value)setDetails(null)}}><DialogContent className="rounded-2xl sm:max-w-sm"><DialogHeader><DialogTitle className="text-base font-normal">{details?.name}</DialogTitle><DialogDescription>해역 낚싯대는 고유종 추첨을, 청동·잔물결 낚싯대는 직접 낚시 성공 판정을 보정해요. 게이지 조작 실패와 통발 설치에는 적용되지 않아요.</DialogDescription></DialogHeader>{details&&<RodEffect rod={details}/>}</DialogContent></Dialog>
+   <Dialog open={!!details} onOpenChange={value=>{if(!value)setDetails(null)}}><DialogContent className="rounded-2xl sm:max-w-sm"><DialogHeader><DialogTitle className="text-base font-normal">{details?.name}</DialogTitle><DialogDescription>잔물결·테마 낚싯대는 직접 낚시 대기시간을 줄여요. 테마 낚싯대의 주 서식지 보정은 함께 적용되며, 대기시간 단축은 통발에 적용되지 않아요.</DialogDescription></DialogHeader>{details&&<RodEffect rod={details}/>}</DialogContent></Dialog>
   </DialogContent>
  </Dialog>
 }

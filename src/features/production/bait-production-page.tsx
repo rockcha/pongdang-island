@@ -65,7 +65,7 @@ function Details({ site }: { site: BaitFacility }) {
         <dd>{productionDuration(site.production_minutes)}</dd>
       </div>
       <div className="flex justify-between">
-        <dt className="text-muted-foreground">완료 후 보관</dt>
+        <dt className="text-muted-foreground">보관 대기</dt>
         <dd>{productionDuration(site.storage_minutes)}</dd>
       </div>
     </dl>
@@ -194,11 +194,11 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
             <ArrowRight className="size-3.5" />
           </Link>
         </div>
-        <p className="text-xs leading-5 text-muted-foreground">
+        {!shop && <p className="text-xs leading-5 text-muted-foreground">
           보유 {state?.sites.length ?? 0}곳 · 전체 가동 <b className="text-primary">{working}/4</b>
           <br />
           연료·미끼 생산소 합산 최대 4곳 가동. 완료 후에는 보관시간 안에 수령해 주세요.
-        </p>
+        </p>}
         {shop ? (
           <input
             type="search"

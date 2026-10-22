@@ -166,7 +166,7 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
             <ArrowRight className="size-3.5" />
           </Link>
         </div>
-        <p className="mb-2 text-xs text-muted-foreground">연료·미끼 전체 가동 {activeTotal}/4곳 · 보유 수 제한 없음</p>
+        {!shop && <p className="mb-2 text-xs text-muted-foreground">연료·미끼 전체 가동 {activeTotal}/4곳 · 보유 수 제한 없음</p>}
         {shop && (
           <div
             role="tablist"

@@ -3,7 +3,7 @@ import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {MemoryRouter} from 'react-router'
 import {ShopPage} from '@/features/gold/shop-page'
 import {PlaceBanner} from '@/components/place-banner'
-import {FishingRodSelector,FishingRodShop} from '@/features/fishing/fishing-rod-ui'
+import {FishingRodSelector,FishingRodShop,RodEffect} from '@/features/fishing/fishing-rod-ui'
 import {TensionFishingGame} from '@/features/fishing/tension-fishing-game'
 import {WarehousePage} from '@/features/fishing/warehouse-page'
 import {RodProvider} from '@/features/fishing/rod-provider'
@@ -25,6 +25,15 @@ beforeEach(()=>{
  })
 })
 afterEach(()=>{cleanup();vi.clearAllMocks()})
+it('shows the calm wait bonus instead of a success bonus and keeps themed habitat bonuses',()=>{
+ const calm=fishingRods.find(r=>r.id==='calm')!,theme=fishingRods.find(r=>r.id==='coral')!
+ const view=render(<RodEffect rod={calm}/>)
+ expect(screen.getByText('직접 낚시 대기시간 2초 단축')).toBeTruthy()
+ expect(screen.queryByText(/성공 확률/)).toBeNull()
+ view.rerender(<RodEffect rod={theme}/>)
+ expect(screen.getByText('직접 낚시 대기시간 1초 단축')).toBeTruthy()
+ expect(screen.getByText('해당 해역에서 주 서식지 개체를 만나기 쉬워져요.')).toBeTruthy()
+})
 it('uses real gold trades with confirmation and enables half-price sale only for owned rods',async()=>{
  render(<MemoryRouter><RodProvider><PlaceBanner pathname="/shop"/><ShopPage/></RodProvider></MemoryRouter>)
  expect(screen.getByRole('heading',{level:1,name:'낚시 상점'})).toBeTruthy()

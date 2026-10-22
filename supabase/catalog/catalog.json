@@ -17351,7 +17351,8 @@
       "price": 0,
       "region_id": null,
       "failure_reduction_bp": 0,
-      "native_bonus_bp": 0
+      "native_bonus_bp": 0,
+      "wait_reduction_seconds": 0
     },
     {
       "id": "bluegrove",
@@ -17359,23 +17360,26 @@
       "price": 500,
       "region_id": "bluegrove",
       "failure_reduction_bp": 200,
-      "native_bonus_bp": 200
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
     },
     {
       "id": "bronze",
       "name": "청동 낚싯대",
       "price": 400,
       "region_id": null,
-      "failure_reduction_bp": 100,
-      "native_bonus_bp": 0
+      "failure_reduction_bp": 0,
+      "native_bonus_bp": 0,
+      "wait_reduction_seconds": 1
     },
     {
       "id": "calm",
       "name": "잔물결 낚싯대",
       "price": 800,
       "region_id": null,
-      "failure_reduction_bp": 300,
-      "native_bonus_bp": 0
+      "failure_reduction_bp": 0,
+      "native_bonus_bp": 0,
+      "wait_reduction_seconds": 2
     },
     {
       "id": "cloudferry",
@@ -17383,7 +17387,8 @@
       "price": 800,
       "region_id": "cloudferry",
       "failure_reduction_bp": 200,
-      "native_bonus_bp": 200
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
     },
     {
       "id": "coral",
@@ -17391,7 +17396,8 @@
       "price": 450,
       "region_id": "coral",
       "failure_reduction_bp": 200,
-      "native_bonus_bp": 200
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
     },
     {
       "id": "dreamabyss",
@@ -17399,7 +17405,8 @@
       "price": 800,
       "region_id": "dreamabyss",
       "failure_reduction_bp": 200,
-      "native_bonus_bp": 200
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
     },
     {
       "id": "lunea",
@@ -17407,7 +17414,8 @@
       "price": 800,
       "region_id": "mistmoon",
       "failure_reduction_bp": 200,
-      "native_bonus_bp": 200
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
     },
     {
       "id": "mistmoon",
@@ -17415,7 +17423,8 @@
       "price": 550,
       "region_id": "mistmoon",
       "failure_reduction_bp": 200,
-      "native_bonus_bp": 200
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
     },
     {
       "id": "mukhyang",
@@ -17423,7 +17432,8 @@
       "price": 800,
       "region_id": "mukhyang",
       "failure_reduction_bp": 200,
-      "native_bonus_bp": 200
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
     },
     {
       "id": "pongdang",
@@ -17431,7 +17441,8 @@
       "price": 400,
       "region_id": "pongdang",
       "failure_reduction_bp": 200,
-      "native_bonus_bp": 200
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
     },
     {
       "id": "primal",
@@ -17439,7 +17450,8 @@
       "price": 800,
       "region_id": "primal",
       "failure_reduction_bp": 200,
-      "native_bonus_bp": 200
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
     },
     {
       "id": "scrapisle",
@@ -17447,7 +17459,8 @@
       "price": 800,
       "region_id": "scrapisle",
       "failure_reduction_bp": 200,
-      "native_bonus_bp": 200
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
     },
     {
       "id": "siren",
@@ -17455,7 +17468,8 @@
       "price": 800,
       "region_id": "siren",
       "failure_reduction_bp": 200,
-      "native_bonus_bp": 200
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
     },
     {
       "id": "starruins",
@@ -17463,7 +17477,8 @@
       "price": 800,
       "region_id": "starruins",
       "failure_reduction_bp": 200,
-      "native_bonus_bp": 200
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
     },
     {
       "id": "whitenight",
@@ -17471,7 +17486,8 @@
       "price": 800,
       "region_id": "whitenight",
       "failure_reduction_bp": 200,
-      "native_bonus_bp": 200
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
     }
   ],
   "harbor_vessels": [
@@ -19687,7 +19703,7 @@
       "description": "통통한 압축기에 힘을 모아 한 번에",
       "kind": "trash",
       "price": 2200,
-      "input_count": 9,
+      "input_count": 8,
       "output_count": 3,
       "production_minutes": 120,
       "storage_minutes": 30,
@@ -19817,7 +19833,7 @@
       "description": "깊은 수압처럼 천천히 압축하는 숙성통",
       "kind": "trash",
       "price": 2600,
-      "input_count": 15,
+      "input_count": 14,
       "output_count": 6,
       "production_minutes": 720,
       "storage_minutes": 180,
@@ -19843,7 +19859,7 @@
       "description": "부두 끝에서 빠르게 불을 지피는 화로",
       "kind": "trash",
       "price": 1800,
-      "input_count": 18,
+      "input_count": 17,
       "output_count": 4,
       "production_minutes": 60,
       "storage_minutes": 60,
@@ -19869,9 +19885,9 @@
       "description": "묵직한 압력을 모으는 커다란 압력솥",
       "kind": "trash",
       "price": 3000,
-      "input_count": 24,
-      "output_count": 12,
-      "production_minutes": 720,
+      "input_count": 19,
+      "output_count": 10,
+      "production_minutes": 660,
       "storage_minutes": 30,
       "image_path": "/production/gurgling-deep-pressure-cooker.png",
       "enabled": true
@@ -19882,8 +19898,8 @@
       "description": "등대 아래에 열을 오래 간직하는 가마",
       "kind": "trash",
       "price": 3700,
-      "input_count": 30,
-      "output_count": 12,
+      "input_count": 24,
+      "output_count": 10,
       "production_minutes": 720,
       "storage_minutes": 1440,
       "image_path": "/production/lighthouse-heat-storage-kiln.png",
@@ -19960,7 +19976,7 @@
       "description": "고철과 증기기관이 만난 든든한 설비",
       "kind": "trash",
       "price": 2000,
-      "input_count": 16,
+      "input_count": 15,
       "output_count": 5,
       "production_minutes": 390,
       "storage_minutes": 900,
@@ -20013,7 +20029,7 @@
       "kind": "trash",
       "price": 2400,
       "input_count": 35,
-      "output_count": 10,
+      "output_count": 13,
       "production_minutes": 480,
       "storage_minutes": 480,
       "image_path": "/production/shipwreck-incinerator.png",
@@ -20038,8 +20054,8 @@
       "description": "고래 모양 가마가 오래도록 열을 품어요",
       "kind": "trash",
       "price": 2800,
-      "input_count": 18,
-      "output_count": 8,
+      "input_count": 16,
+      "output_count": 7,
       "production_minutes": 960,
       "storage_minutes": 480,
       "image_path": "/production/sleepy-whale-kiln.png",
@@ -20090,9 +20106,9 @@
       "description": "두 화로를 번갈아 가동하는 증기공장",
       "kind": "trash",
       "price": 3300,
-      "input_count": 30,
-      "output_count": 10,
-      "production_minutes": 300,
+      "input_count": 25,
+      "output_count": 9,
+      "production_minutes": 390,
       "storage_minutes": 180,
       "image_path": "/production/twin-chimney-steamworks.png",
       "enabled": true

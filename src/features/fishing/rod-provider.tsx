@@ -38,7 +38,7 @@ function AccountRods({children,userId}:{children:ReactNode;userId?:string}){
  const rods=fishingRods.flatMap(art=>{
   const item=state.catalog.find(item=>item.id===art.id)
   if(!item)return []
-  return [{...art,name:item.name,price:item.price,region:item.region_id??undefined,failureReductionBp:item.failure_reduction_bp,nativeBonusBp:item.native_bonus_bp}]
+  return [{...art,name:item.name,price:item.price,region:item.region_id??undefined,failureReductionBp:item.failure_reduction_bp,nativeBonusBp:item.native_bonus_bp,waitReductionSeconds:item.wait_reduction_seconds??0}]
  })
  return <RodContext.Provider value={{...state,rods,loading,busy,error,refresh,select}}>{children}</RodContext.Provider>
 }

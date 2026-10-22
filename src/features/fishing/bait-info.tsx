@@ -1,11 +1,7 @@
 import {appArt} from '@/components/app-art'
 import {rarities,type Rarity} from '@/lib/game/rarity'
 import type {FishingBait,PreparedFishing} from './api'
-import {baitDurationLevel} from './bait-wait-flavor'
 
-export function BaitWaitInfo({bait}:{bait:Pick<FishingBait,'id'|'period'>}){
- return <span className="block text-[11px] leading-5 text-muted-foreground">대기시간: <span className="text-foreground/80">{baitDurationLevel(bait.id,bait.period)}</span></span>
-}
 const targets={fish:{icon:appArt.fish,label:'물고기'},trash:{icon:appArt.trash,label:'쓰레기'},decoration:{icon:appArt.decoration,label:'장식물'}}
 export function baitTargetKinds(bait:FishingBait){
  if(bait.id==='bait_shooting_star_tail')return ['fish','trash','decoration']

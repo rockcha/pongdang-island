@@ -1,5 +1,5 @@
 // Stable per-individual randomness: never generate new random values per frame.
-export function createSwimMotion(id: string, seed: number, speed: number, varied = true, start?:{x:number;direction:number}) {
+export function createSwimMotion(id: string, seed: number, speed: number, varied = true, start?:{x:number;direction:number;y?:number}, lively=false) {
   let hash = seed >>> 0
   for (let i = 0; i < id.length; i++) hash = Math.imul(hash ^ id.charCodeAt(i), 16777619) >>> 0
   function random(index: number) {
@@ -8,7 +8,7 @@ export function createSwimMotion(id: string, seed: number, speed: number, varied
     value = Math.imul(value ^ (value >>> 15), 0x735a2d97)
     return ((value ^ (value >>> 15)) >>> 0) / 4294967296
   }
-  const duration = Math.max(5, (0.45 + random(0) * 0.2) / Math.max(speed, 0.001))
+  const duration = Math.max(5, (0.45 + random(0) * 0.2) / Math.max(speed*(lively?1.1:1), 0.001))
   // Spawn uniformly instead of sampling an eased route, which concentrates
   // new fish near the same two turning zones.
   const spawnX=start?.x??(.04+random(1)*.92)
@@ -19,7 +19,7 @@ export function createSwimMotion(id: string, seed: number, speed: number, varied
   })
   // Decide behavior once per six-second interval, independently for each individual.
   const totals=[0],depthTotals=[0]
-  const depths=[.04+random(20000)*.92]
+  const depths=[start?.y??(.04+random(20000)*.92)]
   function depthAt(index:number){
     while(depths.length<=index){
       const previous=depths[depths.length-1],roll=random(depths.length+20000)
@@ -32,15 +32,15 @@ export function createSwimMotion(id: string, seed: number, speed: number, varied
   function interval(index:number, elapsed:number){
     const roll=random(index+30000)
     const cruising=.8+random(index+40000)*.3
-    if(roll<.3){
-      const pause=2+random(index+50000)*2
+    if(roll<(lively?.2:.3)&&(!lively||index>0)){
+      const pause=lively?1.5+random(index+50000)*1.5:2+random(index+50000)*2
       const moving=Math.max(0,elapsed-pause)
       const ramp=Math.min(1,moving/.8)
       const distance=cruising*(.8*(ramp**3-ramp**4/2)+Math.max(0,moving-.8))
       const rate=cruising*ramp*ramp*(3-2*ramp)
       return {distance,rate,depthDistance:distance,depthRate:rate,behavior:moving===0?'rest':'cruise'}
     }
-    if(roll>.92){
+    if(roll>.92&&(!lively||index>0)){
       const burst=1.2,part=Math.min(elapsed,burst)
       return {distance:cruising*elapsed+3*(part/2-burst*Math.sin(2*Math.PI*part/burst)/(4*Math.PI)),
         rate:cruising+(elapsed<burst?3*Math.sin(Math.PI*elapsed/burst)**2:0),depthDistance:cruising*elapsed,depthRate:cruising,behavior:elapsed<burst?'dart':'cruise'}

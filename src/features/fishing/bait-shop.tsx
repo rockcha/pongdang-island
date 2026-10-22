@@ -7,7 +7,7 @@ import {Minus,Plus} from 'lucide-react'
 import {Button} from '@/components/ui/button'
 import {GoldIcon,useGold} from '@/features/gold/gold-provider'
 import {loadFishing,type FishingBait} from './api'
-import {BaitTarget,BaitWaitInfo} from './bait-info'
+import {BaitTarget} from './bait-info'
 import {BaitShopFilters,filterBaitShop,initialBaitShopFilter} from './bait-shop-filters'
 
 export function BaitShop(){
@@ -46,7 +46,7 @@ export function BaitShop(){
     <div data-bait-detail-body className="min-h-0 w-full min-w-0 flex-1 overflow-y-auto overscroll-contain px-[var(--bait-detail-inset)] pb-3 [overflow-wrap:anywhere]">
      <div className="mb-3 flex min-w-0 items-center gap-3">
       <div className="relative size-[72px] shrink-0"><LandscapeImage src={detail.image_path} alt={detail.name} className="absolute inset-0 size-full object-contain"/></div>
-      <div className="min-w-0 flex-1">{detail.mechanicsVersion===2?<div className="space-y-1.5"><BaitTarget bait={detail}/><BaitWaitInfo bait={detail}/></div>:<><p className="text-xs text-muted-foreground">낚시 성공률</p><p className="mt-1 text-2xl font-semibold tabular-nums text-primary">{detailChance===undefined?'—':baitPercent(detailChance)}</p></>}</div>
+      <div className="min-w-0 flex-1">{detail.mechanicsVersion===2?<div className="space-y-1.5"><BaitTarget bait={detail}/></div>:<><p className="text-xs text-muted-foreground">낚시 성공률</p><p className="mt-1 text-2xl font-semibold tabular-nums text-primary">{detailChance===undefined?'—':baitPercent(detailChance)}</p></>}</div>
      </div>
      <BaitEffectDetails bait={detail} compact/>
      {purchaseError&&<p role="alert" className="mt-3 text-xs leading-5 text-destructive">{purchaseError}</p>}

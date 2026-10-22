@@ -9,12 +9,12 @@ vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>'/test/'
 const make=()=>({serverNow:new Date().toISOString(),gold:10000,fuel:3,facilities:catalog.production_facilities.map(f=>({...f,owned:false,startedAt:null,completesAt:null,expiresAt:null,runOutput:null}))})
 beforeEach(()=>{mock.load.mockReset().mockResolvedValue(make());mock.materials.mockReset().mockResolvedValue([{id:'wood',name:'폐목재',thumbnail_path:'wood.png',rarity:'common',sell_price:2,available:10}]);mock.action.mockReset().mockResolvedValue(make())})
 afterEach(cleanup)
-it('counts ownership across models and caps the remaining purchase quantity',async()=>{
+it('allows another purchase even when four facilities are already owned',async()=>{
  const data=make();Object.assign(data.facilities.find(f=>f.id==='tin-grandpa-hearth')!,{owned:true,ownedCount:4});mock.load.mockResolvedValue(data)
  render(<MemoryRouter><ProductionPage shop/></MemoryRouter>)
  fireEvent.click(await screen.findByRole('button',{name:'조개탄 미니가마 · 구매'}))
- expect(screen.getByRole('button',{name:'총 4곳까지 보유할 수 있어요'}).hasAttribute('disabled')).toBe(true)
- expect(screen.getByRole('button',{name:'구매 수량 늘리기'}).hasAttribute('disabled')).toBe(true)
+ expect(screen.getByRole('button',{name:'350골드로 구매하기'}).hasAttribute('disabled')).toBe(false)
+ expect(screen.getByRole('button',{name:'구매 수량 늘리기'}).hasAttribute('disabled')).toBe(false)
  expect(mock.action).not.toHaveBeenCalled()
 })
 it('requires confirmation to sell an idle facility for half its shop price',async()=>{
@@ -62,7 +62,7 @@ it('shows an empty production page without category tabs and links to the shop',
  render(<MemoryRouter><ProductionPage/></MemoryRouter>)
  expect(await screen.findByRole('heading',{name:'첫 생산소를 마련해 보세요'})).toBeTruthy()
  expect(screen.queryByRole('tablist',{name:'생산소 종류'})).toBeNull()
- expect(screen.getByRole('tab',{name:'전체 0/4'})).toBeTruthy()
+ expect(screen.getByRole('tab',{name:'전체 0'})).toBeTruthy()
  expect(screen.queryByText('준비 중')).toBeNull()
  expect(screen.getAllByRole('link',{name:'상점 둘러보기'}).every(link=>link.getAttribute('href')==='/production-shop')).toBe(true)
 })
@@ -119,7 +119,7 @@ it('separates working and ready production and shows an empty filter after dispo
  mock.load.mockResolvedValue({...data,facilities})
  mock.action.mockResolvedValue({...data,facilities:facilities.map(f=>({...f,startedAt:null,completesAt:null,expiresAt:null,runOutput:null}))})
  render(<MemoryRouter><ProductionPage/></MemoryRouter>)
- expect(await screen.findByRole('tab',{name:'전체 4/4'})).toBeTruthy()
+ expect(await screen.findByRole('tab',{name:'전체 4'})).toBeTruthy()
  expect(screen.getAllByRole('article')).toHaveLength(4)
  fireEvent.click(screen.getByRole('tab',{name:'대기 중 1'}))
  expect(screen.getAllByRole('article')).toHaveLength(1)

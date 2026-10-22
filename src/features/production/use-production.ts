@@ -50,12 +50,14 @@ export function useProduction() {
       if (!document.hidden) setNow(Date.now() + offset.current)
     }, 1000)
     window.addEventListener('focus', sync)
+    const refresh = setInterval(sync, 15000)
     window.addEventListener('online', sync)
     window.addEventListener('production-changed', sync)
     document.addEventListener('visibilitychange', sync)
     return () => {
       alive.current = false
       clearInterval(timer)
+      clearInterval(refresh)
       window.removeEventListener('focus', sync)
       window.removeEventListener('online', sync)
       window.removeEventListener('production-changed', sync)

@@ -8,8 +8,8 @@
   animation: production-status-frames 1.4s steps(8, end) infinite;
 }
 .production-status-sprite--idle {
-  background-image: url('/production/status/idle-v1.png');
-  animation-duration: 2.8s;
+  background-image: none;
+  animation: none;
 }
 .production-status-sprite--working {
   background-image: url('/production/status/working-v1.png');
@@ -20,9 +20,22 @@
   animation-duration: 1.8s;
 }
 .production-status-sprite--expired {
-  background-image: url('/production/status/expired-v1.png');
-  animation-duration: 2.4s;
+  background-image: none;
+  animation: none;
+  color: #b45309;
 }
+.production-sleep { position: relative; display: block; width: 40px; height: 40px; color: #78716c; }
+.production-sleep span { position: absolute; font-weight: 700; line-height: 1; animation: production-sleep-drift 3s ease-in-out infinite; }
+.production-sleep span:nth-child(1) { left: 5px; top: 23px; font-size: 13px; }
+.production-sleep span:nth-child(2) { left: 15px; top: 14px; font-size: 16px; animation-delay: .45s; }
+.production-sleep span:nth-child(3) { left: 25px; top: 4px; font-size: 19px; animation-delay: .9s; }
+.production-expired-mark { position: relative; display: grid; place-items: center; width: 40px; height: 40px; }
+.production-expired-hourglass { animation: production-expired-rock 3s ease-in-out infinite; transform-origin: center bottom; }
+.production-expired-dust { position: absolute; bottom: 0; right: 0; animation: production-dust-drift 3s ease-out infinite; }
+.production-expired-overlay-icon { animation: production-expired-rock 3s ease-in-out infinite; }
+@keyframes production-sleep-drift { 0%,100% { transform: translate(0,2px); opacity: .45; } 50% { transform: translate(2px,-4px); opacity: 1; } }
+@keyframes production-expired-rock { 0%,75%,100% { transform: rotate(0); } 80% { transform: rotate(-10deg); } 86% { transform: rotate(8deg); } 92% { transform: rotate(-4deg); } }
+@keyframes production-dust-drift { 0%,15% { opacity: 0; transform: translate(-4px,0); } 40% { opacity: .85; } 85%,100% { opacity: 0; transform: translate(5px,-5px); } }
 @keyframes production-status-frames {
   from {
     background-position: 0% 0;
@@ -36,4 +49,6 @@
     animation: none;
     background-position: 0% 0;
   }
+  .production-sleep span,.production-expired-hourglass,.production-expired-dust,.production-expired-overlay-icon { animation: none; }
+  .production-expired-dust { opacity: .65; }
 }

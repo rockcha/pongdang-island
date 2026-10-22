@@ -1,0 +1,13 @@
+-- Generated from supabase/catalog/catalog.json. Review before migration deployment.
+begin;
+set constraints all deferred;
+insert into public.fishing_baits ("id","name","description","price","image_path","sort_order","common_bp","rare_bp","epic_bp","mythic_bp","failure_bp","effect_kind","effect_description","success_chance_bp","fish_only","alternating") values
+('bait_safe','이슬잎 경단','맑은 이슬 향기로 물고기만 불러요. 지렁이보다 희귀·특급 물고기를 조금 더 자주 만나요.',60,'/items/baits/dewleaf-dumpling.png',102,8300,1500,180,20,0,'fish','맑은 이슬 향기로 물고기만 불러요. 지렁이보다 희귀·특급 물고기를 조금 더 자주 만나요.',10000,true,false),
+('bait_snowflake_salt','눈꽃 소금사탕','토착종을 제외한 공통종 물고기·쓰레기·장식물을 불러요. 희귀·특급 공통종에 집중하며 신화는 나오지 않아요.',55,'https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/snowflake-salt-candy.png',121,6800,3000,200,0,0,'fish','토착종을 제외한 공통종 물고기·쓰레기·장식물을 불러요. 희귀·특급 공통종에 집중하며 신화는 나오지 않아요.',10000,false,false)
+on conflict(id) do update set "name"=excluded."name","description"=excluded."description","price"=excluded."price","image_path"=excluded."image_path","sort_order"=excluded."sort_order","common_bp"=excluded."common_bp","rare_bp"=excluded."rare_bp","epic_bp"=excluded."epic_bp","mythic_bp"=excluded."mythic_bp","failure_bp"=excluded."failure_bp","effect_kind"=excluded."effect_kind","effect_description"=excluded."effect_description","success_chance_bp"=excluded."success_chance_bp","fish_only"=excluded."fish_only","alternating"=excluded."alternating";
+insert into app_private.fishing_bait_balance_profiles ("id","name","price","success_chance_bp","common_bp","rare_bp","epic_bp","mythic_bp","wait_min_seconds","wait_max_seconds","target_kinds","effect_kind","native_multiplier","night_common_bp","night_rare_bp","night_wait_min_seconds","night_wait_max_seconds") values
+('bait_safe','이슬잎 경단',60,10000,8300,1500,180,20,12,24,'["fish"]'::jsonb,'standard',1,null,null,null,null),
+('bait_snowflake_salt','눈꽃 소금사탕',55,10000,6800,3000,200,0,12,24,'["fish","trash","decoration"]'::jsonb,'common_only',1,null,null,null,null)
+on conflict(id) do update set "name"=excluded."name","price"=excluded."price","success_chance_bp"=excluded."success_chance_bp","common_bp"=excluded."common_bp","rare_bp"=excluded."rare_bp","epic_bp"=excluded."epic_bp","mythic_bp"=excluded."mythic_bp","wait_min_seconds"=excluded."wait_min_seconds","wait_max_seconds"=excluded."wait_max_seconds","target_kinds"=excluded."target_kinds","effect_kind"=excluded."effect_kind","native_multiplier"=excluded."native_multiplier","night_common_bp"=excluded."night_common_bp","night_rare_bp"=excluded."night_rare_bp","night_wait_min_seconds"=excluded."night_wait_min_seconds","night_wait_max_seconds"=excluded."night_wait_max_seconds";
+notify pgrst, 'reload schema';
+commit;

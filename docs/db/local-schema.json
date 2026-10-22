@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "879617036523efb110c77a75c6976f5b4d6df4791fccf82556876f43eb353c54",
+  "migrationHash": "8a1c4f06a902444fc8aad14f3b3e39f1c0983482c2ad1b45bf94bbc3512b9ae7",
   "structure": {
     "enums": [
       {
@@ -79,6 +79,18 @@
       {
         "rls": true,
         "name": "bait_cycles",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "bait_production_operations",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "bait_production_sites",
         "schema": "app_private",
         "force_rls": false
       },
@@ -307,6 +319,12 @@
       {
         "rls": true,
         "name": "auction_listings",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "bait_production_facilities",
         "schema": "public",
         "force_rls": false
       },
@@ -897,6 +915,136 @@
         "default": "'common'::game_rarity",
         "identity": "",
         "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "bait_production_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "bait_production_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "signature",
+        "type": "jsonb",
+        "table": "bait_production_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "receipt",
+        "type": "jsonb",
+        "table": "bait_production_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "facility_id",
+        "type": "text",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "purchased_at",
+        "type": "timestamp with time zone",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "completes_at",
+        "type": "timestamp with time zone",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "expires_at",
+        "type": "timestamp with time zone",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "run_output",
+        "type": "integer",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "run_bait_id",
+        "type": "text",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
         "generated": ""
       },
       {
@@ -3357,6 +3505,106 @@
         "default": null,
         "identity": "",
         "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "text",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "bait_id",
+        "type": "text",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "price",
+        "type": "integer",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "fuel_cost",
+        "type": "integer",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "output_count",
+        "type": "integer",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "production_minutes",
+        "type": "integer",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "storage_minutes",
+        "type": "integer",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "enabled",
+        "type": "boolean",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "default": "true",
+        "identity": "",
+        "nullable": false,
         "generated": ""
       },
       {
@@ -7424,6 +7672,24 @@
         "definition": "CREATE UNIQUE INDEX bait_cycles_pkey ON app_private.bait_cycles USING btree (user_id)"
       },
       {
+        "name": "bait_production_operations_pkey",
+        "table": "bait_production_operations",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX bait_production_operations_pkey ON app_private.bait_production_operations USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "bait_production_sites_pkey",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX bait_production_sites_pkey ON app_private.bait_production_sites USING btree (id)"
+      },
+      {
+        "name": "bait_production_sites_user",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "definition": "CREATE INDEX bait_production_sites_user ON app_private.bait_production_sites USING btree (user_id, purchased_at, id)"
+      },
+      {
         "name": "exchange_bundle_gifts_gift_id_key",
         "table": "exchange_bundle_gifts",
         "schema": "app_private",
@@ -7908,6 +8174,12 @@
         "table": "auction_listings",
         "schema": "public",
         "definition": "CREATE INDEX auction_owner ON public.auction_listings USING btree (owner_id, created_at DESC, id)"
+      },
+      {
+        "name": "bait_production_facilities_pkey",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX bait_production_facilities_pkey ON public.bait_production_facilities USING btree (id)"
       },
       {
         "name": "board_comments_author",
@@ -9012,6 +9284,18 @@
         "tablename": "auction_listings",
         "permissive": "PERMISSIVE",
         "policyname": "auction_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "true",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "bait_production_facilities",
+        "permissive": "PERMISSIVE",
+        "policyname": "bait_production_catalog_read",
         "schemaname": "public",
         "with_check": null
       },
@@ -10187,6 +10471,26 @@
         "schema": "app_private",
         "arguments": "p_user uuid, p_title text",
         "definition": "CREATE OR REPLACE FUNCTION app_private.award_title(p_user uuid, p_title text)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n insert into public.player_titles(user_id,title_id) values(p_user,p_title) on conflict do nothing;\n if found then\n  insert into public.notifications(recipient_id,category,kind,title,body,achievement_id)\n  select p_user,'general','system','새 칭호를 획득했어요!',name||' · 마이페이지에서 장착해 보세요.',id from public.title_catalog where id=p_title;\n end if;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "bait_production_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_quantity integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.bait_production_action(p_action text, p_operation_id uuid, p_facility text, p_quantity integer DEFAULT 1)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;f public.bait_production_facilities;s app_private.bait_production_sites;prev app_private.bait_production_operations;\n sig jsonb;receipt jsonb;v_now timestamptz;v_count bigint;v_cost bigint;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in('buy','start','claim','discard') or p_operation_id is null or p_facility is null or p_quantity is null or p_quantity not between 1 and 100 or (p_action<>'buy' and p_quantity<>1) then raise exception 'INVALID_PRODUCTION';end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n sig:=jsonb_build_object('action',p_action,'facility',p_facility,'quantity',p_quantity);\n select * into prev from app_private.bait_production_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.bait_production_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n v_now:=clock_timestamp();\n if p_action='buy' then\n  select * into f from public.bait_production_facilities where id=p_facility for share;\n  if not found or not f.enabled then raise exception 'PRODUCTION_UNAVAILABLE';end if;\n  v_cost:=f.price::bigint*p_quantity;\n  if w.gold<v_cost then raise exception 'INSUFFICIENT_GOLD';end if;\n  insert into app_private.bait_production_sites(user_id,facility_id) select u,f.id from generate_series(1,p_quantity);\n  update public.player_wallets set gold=gold-v_cost,updated_at=v_now where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','bait-production:'||f.id,-v_cost);\n  receipt:=jsonb_build_object('action','buy','count',p_quantity);\n else\n  select * into s from app_private.bait_production_sites where id=p_facility::uuid and user_id=u for update;\n  if not found then raise exception 'PRODUCTION_NOT_OWNED';end if;\n  select * into f from public.bait_production_facilities where id=s.facility_id for share;\n  if p_action='start' then\n   if not f.enabled then raise exception 'PRODUCTION_UNAVAILABLE';end if;\n   if s.started_at is not null then raise exception 'PRODUCTION_BUSY';end if;\n   if app_private.production_active_count()>=4 then raise exception 'PRODUCTION_ACTIVE_LIMIT';end if;\n   if coalesce((w.inventory->>'fuel')::bigint,0)<f.fuel_cost then raise exception 'INSUFFICIENT_FUEL';end if;\n   update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb((inventory->>'fuel')::integer-f.fuel_cost)),updated_at=v_now where user_id=u;\n   update app_private.bait_production_sites set started_at=v_now,completes_at=v_now+make_interval(mins=>f.production_minutes),expires_at=v_now+make_interval(mins=>f.production_minutes+f.storage_minutes),run_output=f.output_count,run_bait_id=f.bait_id where id=s.id;\n  else\n   if s.started_at is null then raise exception 'PRODUCTION_IDLE';end if;\n   if p_action='claim' then\n    if v_now<s.completes_at then raise exception 'PRODUCTION_NOT_READY';end if;\n    if v_now>=s.expires_at then raise exception 'PRODUCTION_EXPIRED';end if;\n    v_count:=coalesce((w.inventory->>s.run_bait_id)::bigint,0)+s.run_output;\n    if v_count>1000000000 then raise exception 'BAIT_LIMIT';end if;\n    update public.player_wallets set inventory=jsonb_set(inventory,array[s.run_bait_id],to_jsonb(v_count::integer)),updated_at=v_now where user_id=u;\n   elsif v_now<s.expires_at then raise exception 'PRODUCTION_NOT_EXPIRED';end if;\n   update app_private.bait_production_sites set started_at=null,completes_at=null,expires_at=null,run_output=null,run_bait_id=null where id=s.id;\n  end if;\n  receipt:=jsonb_build_object('action',p_action,'siteId',s.id,'count',case when p_action='claim' then s.run_output else 0 end);\n end if;\n insert into app_private.bait_production_operations values(u,p_operation_id,sig,receipt);\n return app_private.bait_production_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "bait_production_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.bait_production_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();r jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n select jsonb_build_object('activeTotal',app_private.production_active_count(),'serverNow',clock_timestamp(),'gold',w.gold,'fuel',coalesce((w.inventory->>'fuel')::integer,0),\n 'facilities',(select coalesce(jsonb_agg(to_jsonb(f)||jsonb_build_object('baitName',b.name,'image_path',b.image_path,'ownedCount',(select count(*) from app_private.bait_production_sites s where s.user_id=u and s.facility_id=f.id)) order by f.price,f.id),'[]'::jsonb) from public.bait_production_facilities f join public.fishing_baits b on b.id=f.bait_id where f.enabled),\n 'sites',(select coalesce(jsonb_agg(to_jsonb(f)||jsonb_build_object('siteId',s.id,'baitName',b.name,'image_path',b.image_path,'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output) order by s.purchased_at,s.id),'[]'::jsonb) from app_private.bait_production_sites s join public.bait_production_facilities f on f.id=s.facility_id join public.fishing_baits b on b.id=f.bait_id where s.user_id=u)) into r from public.player_wallets w where user_id=u;\n return r;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11406,7 +11710,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_ids text[], p_region text, p_rod_region text, p_home_multiplier numeric, p_rarity_fallback boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_habitat_group(p_ids text[], p_region text, p_rod_region text DEFAULT NULL::text, p_home_multiplier numeric DEFAULT 1, p_rarity_fallback boolean DEFAULT false)\n RETURNS text\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n with candidates as materialized (\n  select s.id,s.rarity,s.native_region_id,\n   case when not s.is_native then 'shared' when s.native_region_id=p_region then 'home' else 'away' end bucket\n  from public.collectible_species s where s.id=any(p_ids)\n ), groups as materialized (\n  select distinct bucket from candidates\n ), selected as materialized (\n  select bucket from groups\n  order by -ln(greatest(random(),1e-15))/case bucket\n   when 'home' then 35*greatest(p_home_multiplier,0.001)*case when p_rod_region=p_region then 1.1 else 1 end\n   when 'shared' then 60 else 5 end,bucket limit 1\n )\n select c.id from candidates c join selected g using(bucket)\n order by -ln(greatest(random(),1e-15))/(\n  case when c.bucket='away' and c.native_region_id=p_rod_region then 3 else 1 end\n  *case when p_rarity_fallback then case c.rarity when 'common' then 7700 when 'rare' then 2000 when 'epic' then 270 else 30 end else 1 end\n ),c.id limit 1\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_habitat_group(p_ids text[], p_region text, p_rod_region text DEFAULT NULL::text, p_home_multiplier numeric DEFAULT 1, p_rarity_fallback boolean DEFAULT false)\n RETURNS text\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n with candidates as materialized (\n  select s.id,s.rarity,s.native_region_id,\n   case when not s.is_native then 'shared' when s.native_region_id=p_region then 'home' else 'away' end bucket\n  from public.collectible_species s where s.id=any(p_ids)\n ), groups as materialized (\n  select distinct bucket from candidates\n ), selected as materialized (\n  select bucket from groups\n  order by -ln(greatest(random(),1e-15))/case bucket\n   when 'home' then 25*greatest(p_home_multiplier,0.001)*case when p_rod_region=p_region then 1.1 else 1 end\n   when 'shared' then 80 else 5 end,bucket limit 1\n )\n select c.id from candidates c join selected g using(bucket)\n order by -ln(greatest(random(),1e-15))/(\n  case when c.bucket='away' and c.native_region_id=p_rod_region then 3 else 1 end\n  *case when p_rarity_fallback then case c.rarity when 'common' then 7700 when 'rare' then 2000 when 'epic' then 270 else 30 end else 1 end\n ),c.id limit 1\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -11466,7 +11770,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid, p_confirm_bite boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.prepare_fishing(p_region_id text, p_bait_id text, p_operation_id uuid, p_confirm_bite boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;w public.player_wallets;\n v_current text;v_required boolean;v_count integer;v_profile jsonb;v_started timestamptz;v_wait numeric;\n v_rarity public.game_rarity;v_species text;v_snapshot jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_confirm_bite is null then raise exception 'INVALID_TRADE';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if p.region_id<>p_region_id or p.bait_id<>p_bait_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.prepared_fishing_payload(p);\n end if;\n if exists(select 1 from public.fishing_attempts where user_id=v_uid and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and finished_at is null;\n if found then\n  if p.expires_at<=clock_timestamp() then perform app_private.finish_fishing(p.operation_id,false);\n  else return app_private.prepared_fishing_payload(p);end if;\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n if not exists(select 1 from public.fishing_baits where id=p_bait_id) then raise exception 'INVALID_BAIT';end if;\n select requires_map_fragment into v_required from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND';end if;\n select region_id into v_current from public.player_navigation where user_id=v_uid;\n if v_current is distinct from p_region_id then raise exception 'NOT_IN_REGION';end if;\n if v_required and not exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'REGION_LOCKED';end if;\n v_count:=coalesce((w.inventory->>p_bait_id)::integer,0);\n if v_count<1 then raise exception 'NO_BAIT';end if;\n if p_bait_id='bait_first_greeting' and not exists(select 1 from public.collectible_species s where s.kind in ('fish','trash','decoration')\n and not exists(select 1 from public.player_discoveries d where d.user_id=v_uid and d.species_id=s.id)) then raise exception 'ALL_COLLECTIBLES_DISCOVERED';end if;\n v_started:=clock_timestamp();\n v_profile:=app_private.fishing_bait_balance_at(p_bait_id,v_started);\n v_rarity:=app_private.profile_fishing_rarity(v_profile);\n v_species:=app_private.pick_profile_collectible(p_region_id,v_rarity,v_profile,true);\n if v_species is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n select rarity into v_rarity from public.collectible_species where id=v_species;\n v_snapshot:=app_private.species_payload(v_species,null);\n v_wait:=(v_profile->>'wait_min_seconds')::numeric\n  +((v_profile->>'wait_max_seconds')::numeric-(v_profile->>'wait_min_seconds')::numeric)*(random()+random())/2;\n insert into app_private.prepared_fishing_casts(user_id,operation_id,region_id,bait_id,eligible,species_id,map_region_id,rarity,snapshot,wait_seconds,failure_at,failure_reason,created_at,expires_at,bait_snapshot,confirm_bite)\n values(v_uid,p_operation_id,p_region_id,p_bait_id,true,v_species,null,v_rarity,v_snapshot,v_wait,4.5,'bait',v_started,\n  case when p_confirm_bite then v_started+interval '24 hours'\n   else v_started+make_interval(secs=>v_wait::double precision)+interval '3 minutes' end,\n  v_profile,p_confirm_bite) returning * into p;\n update public.player_wallets set inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(v_count-1)),updated_at=now() where user_id=v_uid;\n return app_private.prepared_fishing_payload(p);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.prepare_fishing(p_region_id text, p_bait_id text, p_operation_id uuid, p_confirm_bite boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;w public.player_wallets;\n v_current text;v_required boolean;v_count integer;v_profile jsonb;v_started timestamptz;v_wait numeric;\n v_rarity public.game_rarity;v_species text;v_snapshot jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_confirm_bite is null then raise exception 'INVALID_TRADE';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if p.region_id<>p_region_id or p.bait_id<>p_bait_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.prepared_fishing_payload(p);\n end if;\n if exists(select 1 from public.fishing_attempts where user_id=v_uid and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and finished_at is null;\n if found then\n  if p.expires_at<=clock_timestamp() then perform app_private.finish_fishing(p.operation_id,false);\n  else return app_private.prepared_fishing_payload(p);end if;\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n if not exists(select 1 from public.fishing_baits where id=p_bait_id) then raise exception 'INVALID_BAIT';end if;\n select requires_map_fragment into v_required from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND';end if;\n select region_id into v_current from public.player_navigation where user_id=v_uid;\n if v_current is distinct from p_region_id then raise exception 'NOT_IN_REGION';end if;\n if v_required and not exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'REGION_LOCKED';end if;\n v_count:=coalesce((w.inventory->>p_bait_id)::integer,0);\n if v_count<1 then raise exception 'NO_BAIT';end if;\n if p_bait_id='bait_first_greeting' and not exists(select 1 from public.collectible_species s where s.kind in ('fish','trash','decoration')\n and not exists(select 1 from public.player_discoveries d where d.user_id=v_uid and d.species_id=s.id)) then raise exception 'ALL_COLLECTIBLES_DISCOVERED';end if;\n v_started:=clock_timestamp();\n v_profile:=app_private.fishing_bait_balance_at(p_bait_id,v_started);\n v_rarity:=app_private.profile_fishing_rarity(v_profile);\n v_species:=app_private.pick_profile_collectible(p_region_id,v_rarity,v_profile,true);\n if v_species is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n select rarity into v_rarity from public.collectible_species where id=v_species;\n v_snapshot:=app_private.species_payload(v_species,null);\n v_wait:=12+12*random();\n insert into app_private.prepared_fishing_casts(user_id,operation_id,region_id,bait_id,eligible,species_id,map_region_id,rarity,snapshot,wait_seconds,failure_at,failure_reason,created_at,expires_at,bait_snapshot,confirm_bite)\n values(v_uid,p_operation_id,p_region_id,p_bait_id,true,v_species,null,v_rarity,v_snapshot,v_wait,4.5,'bait',v_started,\n  case when p_confirm_bite then v_started+interval '24 hours'\n   else v_started+make_interval(secs=>v_wait::double precision)+interval '3 minutes' end,\n  v_profile,p_confirm_bite) returning * into p;\n update public.player_wallets set inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(v_count-1)),updated_at=now() where user_id=v_uid;\n return app_private.prepared_fishing_payload(p);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11500,13 +11804,23 @@
         "securityDefiner": true
       },
       {
+        "name": "production_active_count",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.production_active_count()\n RETURNS integer\n LANGUAGE sql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select ((select count(*) from app_private.production_sites where user_id=auth.uid() and completes_at>clock_timestamp())+(select count(*) from app_private.bait_production_sites where user_id=auth.uid() and completes_at>clock_timestamp()))::integer\n$function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "production_apply",
         "config": [
           "search_path=\"\""
         ],
         "schema": "app_private",
         "arguments": "p_action text, p_operation_id uuid, p_facility text, p_materials jsonb, p_return_state boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.production_apply(p_action text, p_operation_id uuid, p_facility text, p_materials jsonb, p_return_state boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;f public.production_facilities;s app_private.production_sites;\n prev app_private.production_operations;sig jsonb;receipt jsonb;ids uuid[];n integer;v_now timestamptz;fuel bigint;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('buy','sell','start','claim','discard') or p_facility is null then raise exception 'INVALID_PRODUCTION';end if;\n if p_materials is null or jsonb_typeof(p_materials)<>'object' then raise exception 'INVALID_MATERIALS';end if;\n if p_action<>'start' and p_materials<>'{}'::jsonb then raise exception 'INVALID_MATERIALS';end if;\n sig:=jsonb_build_object('action',p_action,'facility',p_facility,'materials',p_materials);\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n select * into prev from app_private.production_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return (case when p_return_state then app_private.production_state() else '{}'::jsonb end)||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n if p_action='buy' then\n  select * into f from public.production_facilities where id=p_facility for share;\n  if not found then raise exception 'PRODUCTION_NOT_FOUND';end if;\n  if not f.enabled then raise exception 'PRODUCTION_UNAVAILABLE';end if;\n if (select count(*) from app_private.production_sites owned_site where owned_site.user_id=u)+1>4 then raise exception 'PRODUCTION_OWNERSHIP_LIMIT';end if;\n if w.gold<f.price then raise exception 'INSUFFICIENT_GOLD';end if;\n  v_now:=clock_timestamp();\n  insert into app_private.production_sites(user_id,facility_id) values(u,f.id) returning * into s;\n  update public.player_wallets set gold=gold-f.price,updated_at=v_now where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','production:'||f.id,-f.price);\n  receipt:=jsonb_build_object('action','buy','facility',f.id,'siteId',s.id,'count',1);\n else\n  s:=app_private.production_site(p_facility);\n  select * into s from app_private.production_sites where id=s.id and user_id=u for update;\n  select * into f from public.production_facilities where id=s.facility_id for share;\n  v_now:=clock_timestamp();\n  if p_action='sell' then\n   if s.started_at is not null then raise exception 'PRODUCTION_BUSY';end if;\n   if w.gold::bigint+(f.price/2)>1000000000 then raise exception 'GOLD_LIMIT';end if;\n   delete from app_private.production_sites where id=s.id and user_id=u;\n   update public.player_wallets set gold=gold+(f.price/2),updated_at=v_now where user_id=u;\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n    values(u,p_operation_id,'sell','production:'||f.id,f.price/2);\n   receipt:=jsonb_build_object('action','sell','facility',f.id,'siteId',s.id,'gold',f.price/2,'count',1);\n  elsif p_action='start' then\n   if not f.enabled then raise exception 'PRODUCTION_UNAVAILABLE';end if;\n   if s.started_at is not null then raise exception 'PRODUCTION_BUSY';end if;\n   if (select count(*) from jsonb_each(p_materials)) not between 1 and 100 then raise exception 'INVALID_MATERIALS';end if;\n   if exists(select 1 from jsonb_each(p_materials) e where jsonb_typeof(e.value)<>'number' or e.value::text !~ '^[1-9][0-9]{0,2}$') then raise exception 'INVALID_MATERIALS';end if;\n   if (select sum(value::integer) from jsonb_each_text(p_materials))<>f.input_count then raise exception 'INVALID_MATERIAL_COUNT';end if;\n   select array_agg(p.id order by p.id) into ids from jsonb_each_text(p_materials) e\n   cross join lateral(select c.id from public.player_collectibles c join public.collectible_species cs on cs.id=c.species_id\n    where c.user_id=u and c.species_id=e.key and cs.kind::text=f.kind and c.sold_at is null and c.consumed_at is null\n    and c.tank_id is null and c.escrow_gift_id is null order by c.id limit e.value::integer)p;\n   if coalesce(cardinality(ids),0)<>f.input_count then raise exception 'INSUFFICIENT_MATERIALS';end if;\n   perform 1 from public.player_collectibles where user_id=u and id=any(ids) order by id for update;\n   select count(*) into n from public.player_collectibles c join public.collectible_species cs on cs.id=c.species_id\n    where c.user_id=u and c.id=any(ids) and cs.kind::text=f.kind and c.sold_at is null and c.consumed_at is null and c.tank_id is null and c.escrow_gift_id is null;\n   if n<>f.input_count then raise exception 'INSUFFICIENT_MATERIALS';end if;\n   v_now:=clock_timestamp();\n   update public.player_collectibles set sold_at=v_now,consumed_at=v_now where user_id=u and id=any(ids);\n   update app_private.production_sites set started_at=v_now,completes_at=v_now+make_interval(mins=>f.production_minutes),\n    expires_at=v_now+make_interval(mins=>f.production_minutes+f.storage_minutes),run_output=f.output_count where user_id=u and id=s.id;\n   receipt:=jsonb_build_object('action','start','facility',f.id,'siteId',s.id,'consumedIds',ids);\n  else\n   if s.started_at is null then raise exception 'PRODUCTION_IDLE';end if;\n   if p_action='claim' then\n    if v_now<s.completes_at then raise exception 'PRODUCTION_NOT_READY';end if;\n    if v_now>=s.expires_at then raise exception 'PRODUCTION_EXPIRED';end if;\n    fuel:=coalesce((w.inventory->>'fuel')::bigint,0)+s.run_output;\n    if fuel>1000000000 then raise exception 'FUEL_LIMIT';end if;\n    update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel::integer)),updated_at=v_now where user_id=u;\n   elsif v_now<s.expires_at then raise exception 'PRODUCTION_NOT_EXPIRED';end if;\n   receipt:=jsonb_build_object('action',p_action,'facility',f.id,'siteId',s.id,'fuel',case when p_action='claim' then s.run_output else 0 end);\n   update app_private.production_sites set started_at=null,completes_at=null,expires_at=null,run_output=null where user_id=u and id=s.id;\n  end if;\n end if;\n insert into app_private.production_operations(user_id,operation_id,signature,receipt) values(u,p_operation_id,sig,receipt);\n return (case when p_return_state then app_private.production_state() else '{}'::jsonb end)||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.production_apply(p_action text, p_operation_id uuid, p_facility text, p_materials jsonb, p_return_state boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;f public.production_facilities;s app_private.production_sites;\n prev app_private.production_operations;sig jsonb;receipt jsonb;ids uuid[];n integer;v_now timestamptz;fuel bigint;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('buy','sell','start','claim','discard') or p_facility is null then raise exception 'INVALID_PRODUCTION';end if;\n if p_materials is null or jsonb_typeof(p_materials)<>'object' then raise exception 'INVALID_MATERIALS';end if;\n if p_action<>'start' and p_materials<>'{}'::jsonb then raise exception 'INVALID_MATERIALS';end if;\n sig:=jsonb_build_object('action',p_action,'facility',p_facility,'materials',p_materials);\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n select * into prev from app_private.production_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return (case when p_return_state then app_private.production_state() else '{}'::jsonb end)||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n if p_action='buy' then\n  select * into f from public.production_facilities where id=p_facility for share;\n  if not found then raise exception 'PRODUCTION_NOT_FOUND';end if;\n  if not f.enabled then raise exception 'PRODUCTION_UNAVAILABLE';end if;\n if w.gold<f.price then raise exception 'INSUFFICIENT_GOLD';end if;\n  v_now:=clock_timestamp();\n  insert into app_private.production_sites(user_id,facility_id) values(u,f.id) returning * into s;\n  update public.player_wallets set gold=gold-f.price,updated_at=v_now where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','production:'||f.id,-f.price);\n  receipt:=jsonb_build_object('action','buy','facility',f.id,'siteId',s.id,'count',1);\n else\n  s:=app_private.production_site(p_facility);\n  select * into s from app_private.production_sites where id=s.id and user_id=u for update;\n  select * into f from public.production_facilities where id=s.facility_id for share;\n  v_now:=clock_timestamp();\n  if p_action='sell' then\n   if s.started_at is not null then raise exception 'PRODUCTION_BUSY';end if;\n   if w.gold::bigint+(f.price/2)>1000000000 then raise exception 'GOLD_LIMIT';end if;\n   delete from app_private.production_sites where id=s.id and user_id=u;\n   update public.player_wallets set gold=gold+(f.price/2),updated_at=v_now where user_id=u;\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n    values(u,p_operation_id,'sell','production:'||f.id,f.price/2);\n   receipt:=jsonb_build_object('action','sell','facility',f.id,'siteId',s.id,'gold',f.price/2,'count',1);\n  elsif p_action='start' then\n   if not f.enabled then raise exception 'PRODUCTION_UNAVAILABLE';end if;\n   if s.started_at is not null then raise exception 'PRODUCTION_BUSY';end if;\n   if app_private.production_active_count()>=4 then raise exception 'PRODUCTION_ACTIVE_LIMIT';end if;\n   if (select count(*) from jsonb_each(p_materials)) not between 1 and 100 then raise exception 'INVALID_MATERIALS';end if;\n   if exists(select 1 from jsonb_each(p_materials) e where jsonb_typeof(e.value)<>'number' or e.value::text !~ '^[1-9][0-9]{0,2}$') then raise exception 'INVALID_MATERIALS';end if;\n   if (select sum(value::integer) from jsonb_each_text(p_materials))<>f.input_count then raise exception 'INVALID_MATERIAL_COUNT';end if;\n   select array_agg(p.id order by p.id) into ids from jsonb_each_text(p_materials) e\n   cross join lateral(select c.id from public.player_collectibles c join public.collectible_species cs on cs.id=c.species_id\n    where c.user_id=u and c.species_id=e.key and cs.kind::text=f.kind and c.sold_at is null and c.consumed_at is null\n    and c.tank_id is null and c.escrow_gift_id is null order by c.id limit e.value::integer)p;\n   if coalesce(cardinality(ids),0)<>f.input_count then raise exception 'INSUFFICIENT_MATERIALS';end if;\n   perform 1 from public.player_collectibles where user_id=u and id=any(ids) order by id for update;\n   select count(*) into n from public.player_collectibles c join public.collectible_species cs on cs.id=c.species_id\n    where c.user_id=u and c.id=any(ids) and cs.kind::text=f.kind and c.sold_at is null and c.consumed_at is null and c.tank_id is null and c.escrow_gift_id is null;\n   if n<>f.input_count then raise exception 'INSUFFICIENT_MATERIALS';end if;\n   v_now:=clock_timestamp();\n   update public.player_collectibles set sold_at=v_now,consumed_at=v_now where user_id=u and id=any(ids);\n   update app_private.production_sites set started_at=v_now,completes_at=v_now+make_interval(mins=>f.production_minutes),\n    expires_at=v_now+make_interval(mins=>f.production_minutes+f.storage_minutes),run_output=f.output_count where user_id=u and id=s.id;\n   receipt:=jsonb_build_object('action','start','facility',f.id,'siteId',s.id,'consumedIds',ids);\n  else\n   if s.started_at is null then raise exception 'PRODUCTION_IDLE';end if;\n   if p_action='claim' then\n    if v_now<s.completes_at then raise exception 'PRODUCTION_NOT_READY';end if;\n    if v_now>=s.expires_at then raise exception 'PRODUCTION_EXPIRED';end if;\n    fuel:=coalesce((w.inventory->>'fuel')::bigint,0)+s.run_output;\n    if fuel>1000000000 then raise exception 'FUEL_LIMIT';end if;\n    update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel::integer)),updated_at=v_now where user_id=u;\n   elsif v_now<s.expires_at then raise exception 'PRODUCTION_NOT_EXPIRED';end if;\n   receipt:=jsonb_build_object('action',p_action,'facility',f.id,'siteId',s.id,'fuel',case when p_action='claim' then s.run_output else 0 end);\n   update app_private.production_sites set started_at=null,completes_at=null,expires_at=null,run_output=null where user_id=u and id=s.id;\n  end if;\n end if;\n insert into app_private.production_operations(user_id,operation_id,signature,receipt) values(u,p_operation_id,sig,receipt);\n return (case when p_return_state then app_private.production_state() else '{}'::jsonb end)||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11536,7 +11850,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_facility text, p_quantity integer, p_operation_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.production_purchase(p_facility text, p_quantity integer, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;f public.production_facilities;prev app_private.production_operations;\n sig jsonb;receipt jsonb;ids uuid[];total bigint;v_now timestamptz;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_facility is null or p_quantity is null or p_quantity not between 1 and 100 then raise exception 'INVALID_PRODUCTION_QUANTITY';end if;\n sig:=jsonb_build_object('action','purchase','facility',p_facility,'quantity',p_quantity);\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n select * into prev from app_private.production_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.production_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n select * into f from public.production_facilities where id=p_facility for share;\n if not found then raise exception 'PRODUCTION_NOT_FOUND';end if;\n if not f.enabled then raise exception 'PRODUCTION_UNAVAILABLE';end if;\n if (select count(*) from app_private.production_sites owned_site where owned_site.user_id=u)+p_quantity>4 then raise exception 'PRODUCTION_OWNERSHIP_LIMIT';end if;\n total:=f.price::bigint*p_quantity;\n if w.gold<total then raise exception 'INSUFFICIENT_GOLD';end if;\n v_now:=clock_timestamp();\n with purchased as(insert into app_private.production_sites(user_id,facility_id)\n  select u,f.id from generate_series(1,p_quantity) returning id) select array_agg(id order by id) into ids from purchased;\n update public.player_wallets set gold=gold-total,updated_at=v_now where user_id=u;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','production:'||f.id,-total);\n receipt:=jsonb_build_object('action','purchase','facility',f.id,'siteIds',ids,'count',p_quantity);\n insert into app_private.production_operations(user_id,operation_id,signature,receipt) values(u,p_operation_id,sig,receipt);\n return app_private.production_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.production_purchase(p_facility text, p_quantity integer, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;f public.production_facilities;prev app_private.production_operations;\n sig jsonb;receipt jsonb;ids uuid[];total bigint;v_now timestamptz;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_facility is null or p_quantity is null or p_quantity not between 1 and 100 then raise exception 'INVALID_PRODUCTION_QUANTITY';end if;\n sig:=jsonb_build_object('action','purchase','facility',p_facility,'quantity',p_quantity);\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n select * into prev from app_private.production_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.production_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n select * into f from public.production_facilities where id=p_facility for share;\n if not found then raise exception 'PRODUCTION_NOT_FOUND';end if;\n if not f.enabled then raise exception 'PRODUCTION_UNAVAILABLE';end if;\n total:=f.price::bigint*p_quantity;\n if w.gold<total then raise exception 'INSUFFICIENT_GOLD';end if;\n v_now:=clock_timestamp();\n with purchased as(insert into app_private.production_sites(user_id,facility_id)\n  select u,f.id from generate_series(1,p_quantity) returning id) select array_agg(id order by id) into ids from purchased;\n update public.player_wallets set gold=gold-total,updated_at=v_now where user_id=u;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','production:'||f.id,-total);\n receipt:=jsonb_build_object('action','purchase','facility',f.id,'siteIds',ids,'count',p_quantity);\n insert into app_private.production_operations(user_id,operation_id,signature,receipt) values(u,p_operation_id,sig,receipt);\n return app_private.production_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11556,7 +11870,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.production_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n with owned as materialized(select * from app_private.production_sites where user_id=u),\n first_site as(select distinct on(facility_id) * from owned order by facility_id,purchased_at,id),\n totals as(select facility_id,count(*) n from owned group by facility_id)\n select jsonb_build_object('serverNow',clock_timestamp(),'gold',w.gold,'fuel',coalesce((w.inventory->>'fuel')::integer,0),\n 'facilities',coalesce((select jsonb_agg(to_jsonb(f)||jsonb_build_object('owned',s.id is not null,'ownedCount',coalesce(t.n,0),\n 'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output) order by f.price,f.id)\n from public.production_facilities f left join first_site s on s.facility_id=f.id left join totals t on t.facility_id=f.id\n where f.enabled or s.id is not null),'[]'::jsonb),\n 'sites',coalesce((select jsonb_agg(to_jsonb(f)||jsonb_build_object('siteId',s.id,'owned',true,\n 'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output)\n order by f.price,f.id,s.purchased_at,s.id) from owned s join public.production_facilities f on f.id=s.facility_id),'[]'::jsonb))\n into result from public.player_wallets w where w.user_id=u;\n return result;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.production_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n with owned as materialized(select * from app_private.production_sites where user_id=u),\n first_site as(select distinct on(facility_id) * from owned order by facility_id,purchased_at,id),\n totals as(select facility_id,count(*) n from owned group by facility_id)\n select jsonb_build_object('activeTotal',app_private.production_active_count(),'serverNow',clock_timestamp(),'gold',w.gold,'fuel',coalesce((w.inventory->>'fuel')::integer,0),\n 'facilities',coalesce((select jsonb_agg(to_jsonb(f)||jsonb_build_object('owned',s.id is not null,'ownedCount',coalesce(t.n,0),\n 'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output) order by f.price,f.id)\n from public.production_facilities f left join first_site s on s.facility_id=f.id left join totals t on t.facility_id=f.id\n where f.enabled or s.id is not null),'[]'::jsonb),\n 'sites',coalesce((select jsonb_agg(to_jsonb(f)||jsonb_build_object('siteId',s.id,'owned',true,\n 'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output)\n order by f.price,f.id,s.purchased_at,s.id) from owned s join public.production_facilities f on f.id=s.facility_id),'[]'::jsonb))\n into result from public.player_wallets w where w.user_id=u;\n return result;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -12277,6 +12591,26 @@
         "schema": "public",
         "arguments": "p_tab text, p_query text, p_offset integer",
         "definition": "CREATE OR REPLACE FUNCTION public.auction_state(p_tab text DEFAULT 'all'::text, p_query text DEFAULT ''::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.auction_state(p_tab,p_query,p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "bait_production_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_quantity integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.bait_production_action(p_action text, p_operation_id uuid, p_facility text, p_quantity integer DEFAULT 1)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.bait_production_action(p_action,p_operation_id,p_facility,p_quantity)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "bait_production_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.bait_production_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.bait_production_state()$function$\n",
         "securityDefiner": false
       },
       {
@@ -13639,6 +13973,96 @@
       {
         "name": "bait_cycles_user_id_not_null",
         "table": "bait_cycles",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "bait_production_operations_operation_id_not_null",
+        "table": "bait_production_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "bait_production_operations_pkey",
+        "table": "bait_production_operations",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "bait_production_operations_receipt_not_null",
+        "table": "bait_production_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL receipt"
+      },
+      {
+        "name": "bait_production_operations_signature_not_null",
+        "table": "bait_production_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL signature"
+      },
+      {
+        "name": "bait_production_operations_user_id_fkey",
+        "table": "bait_production_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "bait_production_operations_user_id_not_null",
+        "table": "bait_production_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "bait_production_sites_check",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "definition": "CHECK ((((started_at IS NULL) AND (completes_at IS NULL) AND (expires_at IS NULL) AND (run_output IS NULL) AND (run_bait_id IS NULL)) OR ((started_at IS NOT NULL) AND (completes_at IS NOT NULL) AND (expires_at IS NOT NULL) AND (run_output IS NOT NULL) AND (completes_at > started_at) AND (expires_at > completes_at) AND (run_output > 0) AND (run_bait_id IS NOT NULL))))"
+      },
+      {
+        "name": "bait_production_sites_facility_id_fkey",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (facility_id) REFERENCES bait_production_facilities(id)"
+      },
+      {
+        "name": "bait_production_sites_facility_id_not_null",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "definition": "NOT NULL facility_id"
+      },
+      {
+        "name": "bait_production_sites_id_not_null",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "bait_production_sites_pkey",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "bait_production_sites_purchased_at_not_null",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "definition": "NOT NULL purchased_at"
+      },
+      {
+        "name": "bait_production_sites_run_bait_id_fkey",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (run_bait_id) REFERENCES fishing_baits(id)"
+      },
+      {
+        "name": "bait_production_sites_user_id_fkey",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "bait_production_sites_user_id_not_null",
+        "table": "bait_production_sites",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
       },
@@ -15969,6 +16393,108 @@
         "table": "auction_listings",
         "schema": "public",
         "definition": "NOT NULL title"
+      },
+      {
+        "name": "bait_production_facilities_bait_id_fkey",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "FOREIGN KEY (bait_id) REFERENCES fishing_baits(id)"
+      },
+      {
+        "name": "bait_production_facilities_bait_id_not_null",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL bait_id"
+      },
+      {
+        "name": "bait_production_facilities_description_not_null",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL description"
+      },
+      {
+        "name": "bait_production_facilities_enabled_not_null",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL enabled"
+      },
+      {
+        "name": "bait_production_facilities_fuel_cost_check",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "CHECK ((fuel_cost > 0))"
+      },
+      {
+        "name": "bait_production_facilities_fuel_cost_not_null",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL fuel_cost"
+      },
+      {
+        "name": "bait_production_facilities_id_not_null",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "bait_production_facilities_name_not_null",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL name"
+      },
+      {
+        "name": "bait_production_facilities_output_count_check",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "CHECK ((output_count > 0))"
+      },
+      {
+        "name": "bait_production_facilities_output_count_not_null",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL output_count"
+      },
+      {
+        "name": "bait_production_facilities_pkey",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "bait_production_facilities_price_check",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "CHECK ((price > 0))"
+      },
+      {
+        "name": "bait_production_facilities_price_not_null",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL price"
+      },
+      {
+        "name": "bait_production_facilities_production_minutes_check",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "CHECK ((production_minutes > 0))"
+      },
+      {
+        "name": "bait_production_facilities_production_minutes_not_null",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL production_minutes"
+      },
+      {
+        "name": "bait_production_facilities_storage_minutes_check",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "CHECK ((storage_minutes > 0))"
+      },
+      {
+        "name": "bait_production_facilities_storage_minutes_not_null",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "definition": "NOT NULL storage_minutes"
       },
       {
         "name": "board_comments_author_id_fkey",
@@ -20066,6 +20592,13 @@
       },
       {
         "role": "authenticated",
+        "table": "bait_production_facilities",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
         "table": "board_comments",
         "schema": "public",
         "grantable": "NO",
@@ -21666,6 +22199,76 @@
         "role": "authenticated",
         "table": "auction_listings",
         "column": "title",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "bait_production_facilities",
+        "column": "bait_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "bait_production_facilities",
+        "column": "description",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "bait_production_facilities",
+        "column": "enabled",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "bait_production_facilities",
+        "column": "fuel_cost",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "bait_production_facilities",
+        "column": "id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "bait_production_facilities",
+        "column": "name",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "bait_production_facilities",
+        "column": "output_count",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "bait_production_facilities",
+        "column": "price",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "bait_production_facilities",
+        "column": "production_minutes",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "bait_production_facilities",
+        "column": "storage_minutes",
         "schema": "public",
         "privilege": "SELECT"
       },
@@ -25981,6 +26584,48 @@
         "arguments": "p_user uuid, p_title text"
       },
       {
+        "name": "bait_production_action",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_quantity integer"
+      },
+      {
+        "name": "bait_production_action",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_quantity integer"
+      },
+      {
+        "name": "bait_production_action",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_quantity integer"
+      },
+      {
+        "name": "bait_production_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "bait_production_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "bait_production_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "base_quest_period",
         "role": "anon",
         "schema": "app_private",
@@ -28732,6 +29377,27 @@
         "arguments": "p_action text, p_operation_id uuid, p_facility text, p_materials jsonb"
       },
       {
+        "name": "production_active_count",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "production_active_count",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "production_active_count",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "production_apply",
         "role": "anon",
         "schema": "app_private",
@@ -30368,6 +31034,48 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_tab text, p_query text, p_offset integer"
+      },
+      {
+        "name": "bait_production_action",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_quantity integer"
+      },
+      {
+        "name": "bait_production_action",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_quantity integer"
+      },
+      {
+        "name": "bait_production_action",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_facility text, p_quantity integer"
+      },
+      {
+        "name": "bait_production_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "bait_production_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "bait_production_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "board_action",

@@ -5,6 +5,7 @@ import Phaser from 'phaser'
 import { collectibleUrl } from '@/features/collection/api'
 import type { OwnedCollectible } from '@/features/collection/api'
 import { InhabitantMotion } from './inhabitant-motion'
+import {swimSpawnLayout} from './swim-spawn'
 import {canArrangeSpecies,isPositionFixed,movementSettings,shouldFlipSpecies} from './movement-settings'
 import {premiumSwimFrame} from './premium-swim-frame'
 import {decorationGeometry} from './decoration-geometry'
@@ -135,6 +136,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
     sync() {
       if (!ready || disposed) return
       const ids = new Set(items.map(item => item.id))
+      const spawns=swimSpawnLayout(items,viewport.width,viewport.height)
       for (const [id, entry] of entries) if (!ids.has(id)) { dragging.delete(id);entry.sprite.destroy();entries.delete(id) }
       for (const item of items) {
         const base=asset(item), enhanced=mythicSwimAsset(base.path,item.species.rarity)
@@ -164,7 +166,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         // gaps in a small sponge or other stationary species.
         sprite.setInteractive({pixelPerfect:movementSettings(item.species).type!=='fixed',alphaTolerance:32,cursor:'grab'})
         this.input.setDraggable(sprite,draggable(item))
-        entries.set(item.id, { motion: new InhabitantMotion(item, clock), sprite, path, sheet })
+        entries.set(item.id, { motion: new InhabitantMotion(item, clock,spawns.get(item.id)), sprite, path, sheet })
       }
       if (!this.load.isLoading() && queued.size) this.load.start()
       this.draw(0)

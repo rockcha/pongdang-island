@@ -26,8 +26,8 @@ export function BaitEffectDetails({bait,compact=false}:{bait:FishingBait;compact
   :trash?{icon:Trash2,title:'쓰레기만 포획',text:'성공하면 쓰레기만 건져요. 물고기는 나오지 않아요.'}
   :discovery?{icon:BookOpen,title:'새로운 발견',text:'성공하면 아직 발견하지 못한 개체를 만나요.'}
   :bait.id==='bait_sea_memory'?{icon:MapPin,title:'이 해역 토착종 우대',text:'등급이 정해진 뒤, 토착종 선택 가중치가 높아져요.'}
-  :bait.id==='bait_snowflake_salt'?{icon:MapPin,title:'공통종만 포획',text:'기본 등급 확률로 공통종 물고기·쓰레기·장식물을 만나요. 토착종·외지종은 제외해요.'}
-  :tail?{icon:Trash2,title:'쓰레기 속 신화의 기회',text:'성공 시 일반 쓰레기 99% · 신화 등급 개체 1%예요. 신화는 물고기·쓰레기·장식물 중에서 포획해요.'}:null
+  :bait.id==='bait_snowflake_salt'?{icon:MapPin,title:'공통종만 포획',text:'희귀·특급에 집중해 공통종 물고기·쓰레기·장식물을 만나요. 토착종·외지종은 제외해요.'}
+  :tail?{icon:Trash2,title:'쓰레기 속 신화의 기회',text:`성공 시 일반 쓰레기 ${baitPercent(bait.common_bp)} · 신화 등급 개체 ${baitPercent(bait.mythic_bp)}예요. 신화는 물고기·쓰레기·장식물 중에서 포획해요.`}:null
  const bonus=bait.successChanceBp!==undefined&&bait.baseSuccessChanceBp!==undefined?Math.max(0,bait.successChanceBp-bait.baseSuccessChanceBp):0
  return <section aria-label="미끼 효과" className={compact?"min-w-0 space-y-3":"min-w-0 space-y-5 py-1"}>
   {compact&&bait.description&&<p className="rounded-xl border border-primary/10 bg-secondary/30 px-3 py-2.5 text-xs leading-6 text-foreground/80">{bait.description}</p>}

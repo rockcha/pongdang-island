@@ -34,8 +34,10 @@ export const headerPlaces = [
   { to: '/titles', label: '칭호', icon: appArt.title },
   { to: '/collection', label: '도감', icon: appArt.collection },
   { to: '/storage', label: '보관함', icon: appArt.storage },
+  { to: '/bait-production', label: '미끼 생산소', icon: appArt.baitProduction },
+  { to: '/bait-production-shop', label: '미끼 생산소 상점', icon: appArt.baitProductionShop },
   { to: '/production', label: '연료 생산소', icon: appArt.production },
-  { to: '/production-shop', label: '연료 생산소 상점', icon: appArt.production },
+  { to: '/production-shop', label: '연료 생산소 상점', icon: appArt.fuelProductionShop },
   { to: '/collection-animation', label: '애니메이션 도감', icon: appArt.collection },
   { to: '/harbor', label: '지도', icon: Map },
   { to: '/fishing', label: '낚시', icon: appArt.rod },
@@ -77,11 +79,11 @@ export function HeaderPlaceNavigation() {
   const groups = [
     {
       label: '내 섬',
-      paths: ['/', '/aquarium', '/warehouse', '/production', '/storage', '/collection', '/titles', '/collection-animation', '/savings'],
+      paths: ['/', '/aquarium', '/warehouse', '/bait-production', '/production', '/storage', '/collection', '/titles', '/collection-animation', '/savings'],
       separatorBefore: '/warehouse',
     },
     { label: '바다', paths: ['/harbor', '/fishing', '/expeditions', '/port', '/shipyard'], separatorBefore: '/port' },
-    { label: '장터', paths: ['/shop', '/production-shop', '/item-shop', '/exchange', '/merchant-orders'], separatorBefore: '/exchange' },
+    { label: '장터', paths: ['/shop', '/bait-production-shop', '/production-shop', '/item-shop', '/exchange', '/merchant-orders'], separatorBefore: '/exchange' },
     { label: '놀이터', paths: ['/arcade', '/farm', '/music-room'] },
     {
       label: '소셜',

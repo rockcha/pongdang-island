@@ -80,7 +80,7 @@ try{
   }else pool=species.filter(s=>s.rarity===grade&&(bait.effect_kind==='decoration'?s.kind==='decoration':['fish','trash'].includes(s.kind)))
   const groups=new Map()
   for(const s of pool){const bucket=!s.is_native?'shared':s.native_region_id===region.id?'home':'away';if(!groups.has(bucket))groups.set(bucket,[]);groups.get(bucket).push(s)}
-  const weights={home:35*(bait.id==='bait_sea_memory'?3:1),shared:60,away:5}
+  const weights={home:25*(bait.id==='bait_sea_memory'?3:1),shared:80,away:5}
   const total=[...groups.keys()].reduce((a,k)=>a+weights[k],0)
   if(!total)throw Error(`Empty theoretical pool ${bait.id}/${region.id}/${grade}`)
   let mean=0,second=0

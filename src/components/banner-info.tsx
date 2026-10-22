@@ -138,7 +138,9 @@ export const fishingGuide = [
   '잡은 개체는 보관함에서 확인하고, 도감에서 발견 기록을 볼 수 있어요.',
 ]
 export function bannerGuide(pathname: string) {
-  if(pathname==='/production-shop')return ['시설을 눌러 필요한 재료와 생산 조건을 확인해요.','각 시설은 한 채씩 구매할 수 있어요. 구매한 시설은 내 섬의 연료 생산소에 나타나요.']
+  if(pathname==='/bait-production')return ['연료를 넣어 미끼를 생산해요. 연료·미끼 생산소를 합쳐 동시에 최대 4곳 가동할 수 있어요.','완료 후 보관시간 안에 수령하세요. 만료된 생산물은 정리한 뒤 다시 가동할 수 있어요.']
+  if(pathname==='/bait-production-shop')return ['같은 시설을 여러 곳 구매할 수 있어요. 보유 수에는 제한이 없고 구매한 시설은 미끼 생산소에 나타나요.','생산량·투입 연료·생산 시간·완료 후 보관시간을 비교해서 골라 보세요.']
+  if(pathname==='/production-shop')return ['시설을 눌러 필요한 재료와 생산 조건을 확인해요.','같은 시설을 여러 곳 구매할 수 있고 보유 수에는 제한이 없어요. 구매한 시설은 연료 생산소에 나타나요.']
   if(pathname==='/production')return ['가동 대기 중인 시설을 눌러 보관함의 재료를 넣어 주세요.','생산은 접속을 종료해도 진행돼요. 완료 후 보관시간 안에 눌러 연료를 받아요.','보관 만료 상태에서 누르면 생산물을 정리하고 다시 가동할 수 있어요.']
   if (pathname.startsWith('/board'))
     return [

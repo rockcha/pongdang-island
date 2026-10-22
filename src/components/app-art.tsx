@@ -1,12 +1,23 @@
 import type {ComponentProps} from 'react'
+import {Cog,Store} from 'lucide-react'
 
 function artwork(name:string,folder='app-icons',extension='png'){
  return function Artwork({className='size-6',strokeWidth:_strokeWidth,...props}:Omit<ComponentProps<'img'>,'src'|'alt'>&{strokeWidth?:number}){
   return <img {...props} onError={event=>{if(event.currentTarget.dataset.fallback)return;event.currentTarget.dataset.fallback='true';event.currentTarget.src='/fallback-image.svg'}} src={`/${folder}/${name}.${extension}`} alt="" aria-hidden={props['aria-hidden']??true} width={128} height={128} decoding="async" draggable={false} className={`${className} shrink-0 object-contain`}/>
  }
 }
+function productionArtwork(kind:'bait'|'fuel',shop=false){
+ const Resource=kind==='bait'?artwork('bait'):artwork('fuel-can','app-icons','svg')
+ const Badge=shop?Store:Cog
+ return function ProductionArtwork({className='size-6'}:{className?:string;strokeWidth?:number}){
+  return <span aria-hidden="true" className={`relative inline-block shrink-0 ${className}`}><Resource className="size-full"/><Badge className="absolute -bottom-0.5 -right-0.5 size-[45%] rounded-full bg-background p-px text-primary" strokeWidth={2.3}/></span>
+ }
+}
 export const appArt={
- production:artwork('tin-grandpa-hearth','production'),
+ production:productionArtwork('fuel'),
+ baitProduction:productionArtwork('bait'),
+ baitProductionShop:productionArtwork('bait',true),
+ fuelProductionShop:productionArtwork('fuel',true),
  showcase:artwork('showcase-fish-trophy'),
  download:artwork('download-orange'),
  backToList:artwork('back-to-list'),
@@ -34,7 +45,9 @@ export const appArt={
 }
 const placeArt:Record<string,ReturnType<typeof artwork>>={
  '/production':appArt.production,
- '/production-shop':appArt.production,
+ '/bait-production':appArt.baitProduction,
+ '/bait-production-shop':appArt.baitProductionShop,
+ '/production-shop':appArt.fuelProductionShop,
  '/hall-of-fame':appArt.ranking,
  '/showcase':appArt.showcase,
  '/item-shop':appArt.itemShop,

@@ -6,7 +6,7 @@ export const baitEffects:Record<string,string>={
  bait_sea_memory:'현재 해역의 고유종을 만날 확률 증가',
  bait_first_greeting:'성공 확률 소폭 증가 · 낚시 성공 시 미발견 개체 확정 · 모두 발견했다면 소모되지 않아요.',
  bait:'기본 낚시 미끼 · 일반 개체를 주로 만나며, 희귀한 개체도 만날 수 있어요.',
- bait_safe:'무조건 낚시에 성공해요. 단, 게이지 조작은 직접 해야 해요.',
+ bait_safe:'물고기만 포획 · 희귀·특급 물고기 기회 증가 · 게이지 조작은 직접 해야 해요.',
  bait_special:'성공 확률 소폭 증가 · 낚시 성공 시 희귀 개체를 주로 만나요.',
  bait_epic:'성공 확률 소폭 증가 · 낚시 성공 시 특급 개체를 주로 만나요.',
  bait_magnet:'등급을 먼저 추첨한 뒤 해당 등급의 장식물만 인양해요.',

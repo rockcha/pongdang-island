@@ -1,4 +1,5 @@
 import type { ProductionFacility } from './api'
+import {Hourglass,Wind} from 'lucide-react'
 import { productionStatus, remainingTime } from './production-status'
 import './status-sprite.css'
 
@@ -30,7 +31,10 @@ export function ProductionStatusSprite({
       aria-hidden="true"
       data-production-sprite={status}
       className={`production-status-sprite production-status-sprite--${status} ${className}`}
-    />
+    >
+      {status==='idle'&&<span className="production-sleep"><span>z</span><span>z</span><span>Z</span></span>}
+      {status==='expired'&&<span className="production-expired-mark"><Hourglass className="production-expired-hourglass size-7"/><Wind className="production-expired-dust size-4"/></span>}
+    </span>
   )
 }
 

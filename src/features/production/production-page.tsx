@@ -107,9 +107,11 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
     ? filterProductionShop(categoryFacilities, shopFilters)
     : categoryFacilities.filter((f) => matchesStatus(f, statusFilter, now))
   const ownedTotal = ownedInKind('trash') + ownedInKind('fish')
-  const purchaseLimit = Math.max(0, 4 - ownedTotal)
+  const activeTotal = state?.activeTotal ?? state?.sites?.filter(s=>productionStatus(s,now)==='working').length ?? 0
+  const purchaseLimit = 100
   async function operate(site: ProductionFacility) {
     const status = productionStatus(site, now)
+    if (status === 'idle' && activeTotal >= 4) { toast.error('연료·미끼 생산소를 합쳐 동시에 4곳까지 가동할 수 있어요.'); return }
     if (status === 'idle' || status === 'working') {
       setSelected({ id: productionSiteKey(site), mode: status === 'idle' ? 'start' : 'working' })
       return
@@ -164,6 +166,7 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
             <ArrowRight className="size-3.5" />
           </Link>
         </div>
+        <p className="mb-2 text-xs text-muted-foreground">연료·미끼 전체 가동 {activeTotal}/4곳 · 보유 수 제한 없음</p>
         {shop && (
           <div
             role="tablist"
@@ -250,7 +253,7 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                 {label}{' '}
                 <span className="text-[10px] tabular-nums opacity-65">
                   {id === 'all'
-                    ? `${ownedTotal}/4`
+                    ? `${ownedTotal}`
                     : categoryFacilities.filter((f) => matchesStatus(f, id, now)).length}
                 </span>
               </button>
@@ -369,7 +372,7 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                                     data-production-expired-overlay
                                     className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-2 bg-zinc-950/65 px-3 pt-8 text-center text-white"
                                   >
-                                    <PackageX aria-hidden="true" className="size-8 text-amber-200" />
+                                    <PackageX aria-hidden="true" className="production-expired-overlay-icon size-8 text-amber-200" />
                                     <span className="text-xs font-medium">보관 기간 만료</span>
                                     <span className="text-[10px] text-white/85">눌러서 생산물 폐기</span>
                                   </div>
@@ -543,7 +546,7 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                         구매 수량
                       </label>
                       <p className="mt-1 text-[10px] text-muted-foreground">
-                        전체 보유 {ownedTotal}/4곳 · 추가 구매 가능 {purchaseLimit}곳
+                        전체 보유 {ownedTotal}곳 · 보유 수 제한 없음
                       </p>
                     </div>
                     <div className="flex items-center gap-1">
@@ -593,7 +596,7 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                       busy
                         ? '구매 중…'
                         : quantity > purchaseLimit
-                          ? '총 4곳까지 보유할 수 있어요'
+                          ? '한 번에 100곳까지 구매할 수 있어요'
                           : state!.gold < active.price * quantity
                             ? '골드가 부족해요'
                             : `${(active.price * quantity).toLocaleString('ko-KR')}골드로 구매하기`
@@ -617,7 +620,7 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                     {busy ? (
                       '구매 중…'
                     ) : quantity > purchaseLimit ? (
-                      '총 4곳까지 보유할 수 있어요'
+                      '한 번에 100곳까지 구매할 수 있어요'
                     ) : state!.gold < active.price * quantity ? (
                       '골드가 부족해요'
                     ) : (

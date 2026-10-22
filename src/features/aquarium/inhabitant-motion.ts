@@ -3,6 +3,7 @@ import { createSwimMotion } from './swim-motion'
 import { decorationGeometry } from './decoration-geometry'
 import { inhabitantBaseSize } from './inhabitant-size'
 import {isPositionFixed,movementSettings} from './movement-settings'
+import type {SwimSpawn} from './swim-spawn'
 
 export class InhabitantMotion {
   private swim: ReturnType<typeof createSwimMotion>
@@ -16,18 +17,20 @@ export class InhabitantMotion {
   item: OwnedCollectible
   private born: number
   private sourcePosition:{x:number|null;y:number|null}
-  constructor(item: OwnedCollectible, born = 0) {
+  constructor(item: OwnedCollectible, born = 0, spawn?:SwimSpawn) {
     this.item = item
     this.sourcePosition={x:item.position_x,y:item.position_y}
     this.born = born
-    this.swim = createSwimMotion(item.id, item.animation_seed, Number(item.species.speed), item.species.kind === 'fish')
+    const settings=movementSettings(item.species),lively=item.species.kind==='fish'&&settings.type==='swim'
+    this.swim = createSwimMotion(item.id, item.animation_seed, Number(item.species.speed), item.species.kind === 'fish',spawn,lively)
+    this.initialized=!!spawn
   }
   setItem(item:OwnedCollectible,now:number,width:number,height:number,reduced=false){
     const changed=item.position_x!==this.sourcePosition.x||item.position_y!==this.sourcePosition.y||item.position_locked!==this.item.position_locked||(!item.editing&&this.item.editing===true)
     this.sourcePosition={x:item.position_x,y:item.position_y}
     const before=this.item.species,after=item.species
     if(before.movement_type!==after.movement_type||before.travel_direction!==after.travel_direction||before.speed!==after.speed||before.kind!==after.kind){
-      this.swim=createSwimMotion(item.id,item.animation_seed,Number(after.speed),after.kind==='fish')
+      this.swim=createSwimMotion(item.id,item.animation_seed,Number(after.speed),after.kind==='fish',undefined,after.kind==='fish'&&movementSettings(after).type==='swim')
       this.offset={x:0,y:0};this.escape=null;this.initialized=false;this.born=now;this.angle=0;this.mirrored=false
     }
     this.item=item
@@ -60,7 +63,7 @@ export class InhabitantMotion {
     // A new local route starts where the user dropped the inhabitant.
     // Choose a target ahead of the drop, including drops inside the outer zones.
     const direction=px>=w*.94?-1:px<=w*.06?1:this.pose.direction
-    this.swim=createSwimMotion(this.item.id,this.item.animation_seed,Number(this.item.species.speed),this.item.species.kind==='fish',{x:w?px/w:0,direction})
+    this.swim=createSwimMotion(this.item.id,this.item.animation_seed,Number(this.item.species.speed),this.item.species.kind==='fish',{x:w?px/w:0,direction},this.item.species.kind==='fish')
     this.born=now;this.mirrored=false
     const motion=this.swim(0)
     this.escape=null;this.placed=true;this.initialized=true

@@ -14,7 +14,7 @@ it('shows the bait and rod success contributions and live rarity changes',()=>{
  view.rerender(<FishingOdds bait={{...bait,id:'bait_special',name:'초록 미끼',baseSuccessChanceBp:7000,successChanceBp:7100,common_bp:0,rare_bp:9700}} rod={{name:'청동 낚싯대',effect:'성공률 상승'} as FishingRod}/>)
  expect(screen.getByText('71%')).toBeTruthy()
  expect(screen.queryByLabelText('기본 대비 성공률 변화')).toBeNull()
- expect(screen.getByLabelText('희귀 기본 대비 변화').textContent).toBe('+82%p')
+ expect(screen.getByLabelText('희귀 기본 대비 변화').textContent).toBe('+85%p')
  expect(screen.getByText('성공률 +35%p')).toBeTruthy()
  expect(screen.getByText('성공률 +1%p')).toBeTruthy()
 })
@@ -29,6 +29,7 @@ it('separates the success chance from the conditional rarity distribution and up
  expect(screen.getByText('72%')).toBeTruthy()
  expect(within(screen.getByRole('dialog')).getByText('기본 성공률 · 지렁이')).toBeTruthy()
  expect(screen.getByText(/발견 확률이 상승/)).toBeTruthy()
+ expect(screen.getByText(/22\.73%.*72\.73%.*4\.55%/)).toBeTruthy()
 })
 it('does not invent a rarity distribution for decoration bait',()=>{
  render(<FishingOdds bait={{...bait,effect_kind:'decoration',common_bp:0,rare_bp:0,epic_bp:0,mythic_bp:0}}/>)

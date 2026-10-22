@@ -145,7 +145,7 @@ export function startLab(
     pool.filter((s) => s.native_region_id === regionId),
     pool.filter((s) => s.native_region_id && s.native_region_id !== regionId),
   ]
-  const weights = [60,35*bait.nativeMultiplier,5].map((w, i) =>
+  const weights = [80,25*bait.nativeMultiplier,5].map((w, i) =>
     groups[i].length ? w : 0,
   )
   let roll = random() * weights.reduce((a, b) => a + b, 0),
@@ -156,8 +156,7 @@ export function startLab(
   }
   const group = groups[index],
     item = group[Math.min(group.length - 1, Math.floor(random() * group.length))]
-  // Two draws concentrate waits near the midpoint, within a bounded range.
-  const wait = bait.waitMin + ((random() + random()) / 2) * (bait.waitMax - bait.waitMin)
+  const wait = bait.waitMin + random() * (bait.waitMax - bait.waitMin)
   return {
     ...state,
     nextRare: bait.alternating ? !state.nextRare : state.nextRare,

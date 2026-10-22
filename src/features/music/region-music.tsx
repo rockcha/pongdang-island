@@ -96,7 +96,7 @@ function MapMusic({track}: {track: (typeof tracks)[string]}) {
   }
   const playing = state === 'playing'
   return <div className="absolute top-2 left-2 z-30 max-w-[calc(100%-1rem)] text-[#725039]">
-    <div className="flex items-center rounded-full border border-white/70 bg-[#fff8eb]/90 shadow-sm backdrop-blur-md">
+    <div className="flex min-h-11 items-center rounded-full border border-white/70 bg-[#fff8eb]/90 shadow-sm backdrop-blur-md">
       <button type="button" onClick={toggle} aria-label={playing || state === 'loading' ? '배경음악 끄기' : '배경음악 켜기'} aria-pressed={playing} className="flex min-h-10 items-center gap-2 rounded-full px-3 text-xs">
         {playing ? <Music2 className="size-4"/> : <VolumeX className="size-4"/>}
         <span>{state === 'loading' ? '음악 불러오는 중' : state === 'blocked' ? '눌러서 음악 시작' : state === 'error' ? '음악 다시 재생' : playing ? track.label : '배경음악 꺼짐'}</span>

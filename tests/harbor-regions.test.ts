@@ -38,12 +38,11 @@ it('draws from the stored sea with normal bait and no rod effects, independently
  await action('depart','coral')
  await db.query("insert into public.player_navigation(user_id,region_id) values($1,'pongdang') on conflict(user_id) do update set region_id='pongdang'",[uid])
  await db.exec(`
- create or replace function app_private.expedition_pick(p_region text,p_bait text,p_native boolean,p_local_discovery boolean default false) returns text language plpgsql set search_path='' as $$
+ create or replace function app_private.harbor_draw(p_region text,p_rule jsonb) returns text language plpgsql set search_path='' as $$
  begin
-  if p_region<>'coral' or p_bait<>'bait' or p_native or p_local_discovery then raise exception 'WRONG_DRAW_PARAMETERS';end if;
+  if p_region<>'coral' or (p_rule->>'home_multiplier')::numeric<>1 then raise exception 'WRONG_DRAW_PARAMETERS';end if;
   return 'coral-bean-shrimp';
  end $$;
- create or replace function app_private.fishing_success_chance_bp(p_bait_id text) returns integer language sql as $$select 10000$$;
  create or replace function app_private.manual_fishing_success_chance_bp(p_bait_id text) returns integer language plpgsql as $$begin raise exception 'ROD_MUST_NOT_APPLY';end$$;
  update public.harbor_voyages set departed_at=clock_timestamp()-interval '1 hour',returns_at=clock_timestamp()-interval '1 second';
  `)

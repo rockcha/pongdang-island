@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "2e6da6c2b7447270081cd2d4886a559883554d42f1e52e2c6982f150f040a7b3",
+  "migrationHash": "fc64cb82df1063021b6ba3598718f403291357862289b7d9151deb86a77816bd",
   "structure": {
     "enums": [
       {
@@ -115,6 +115,18 @@
       {
         "rls": true,
         "name": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "fishing_maintenance",
         "schema": "app_private",
         "force_rls": false
       },
@@ -1099,6 +1111,206 @@
       },
       {
         "name": "id",
+        "type": "text",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "price",
+        "type": "integer",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "success_chance_bp",
+        "type": "integer",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "common_bp",
+        "type": "integer",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "rare_bp",
+        "type": "integer",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "epic_bp",
+        "type": "integer",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "mythic_bp",
+        "type": "integer",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "wait_min_seconds",
+        "type": "integer",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "wait_max_seconds",
+        "type": "integer",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "target_kinds",
+        "type": "jsonb",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "effect_kind",
+        "type": "text",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "native_multiplier",
+        "type": "numeric",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "night_common_bp",
+        "type": "integer",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "night_rare_bp",
+        "type": "integer",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "night_wait_min_seconds",
+        "type": "integer",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "night_wait_max_seconds",
+        "type": "integer",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "boolean",
+        "table": "fishing_maintenance",
+        "schema": "app_private",
+        "default": "true",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "starts_at",
+        "type": "timestamp with time zone",
+        "table": "fishing_maintenance",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "released_at",
+        "type": "timestamp with time zone",
+        "table": "fishing_maintenance",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
         "type": "boolean",
         "table": "gold_settings",
         "schema": "app_private",
@@ -1925,6 +2137,16 @@
         "default": "false",
         "identity": "",
         "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "bait_snapshot",
+        "type": "jsonb",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
         "generated": ""
       },
       {
@@ -5168,6 +5390,16 @@
         "generated": ""
       },
       {
+        "name": "catch_rule",
+        "type": "jsonb",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
         "name": "id",
         "type": "uuid",
         "table": "harbor_voyages",
@@ -7206,6 +7438,18 @@
         "table": "feedback_suggestion_votes",
         "schema": "app_private",
         "definition": "CREATE INDEX feedback_suggestion_votes_user_idx ON app_private.feedback_suggestion_votes USING btree (user_id)"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_pkey",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX fishing_bait_balance_profiles_pkey ON app_private.fishing_bait_balance_profiles USING btree (id)"
+      },
+      {
+        "name": "fishing_maintenance_pkey",
+        "table": "fishing_maintenance",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX fishing_maintenance_pkey ON app_private.fishing_maintenance USING btree (id)"
       },
       {
         "name": "gold_settings_pkey",
@@ -9408,6 +9652,13 @@
     ],
     "triggers": [
       {
+        "name": "fishing_maintenance_trap_boost",
+        "table": "expedition_boosts",
+        "schema": "app_private",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER fishing_maintenance_trap_boost BEFORE INSERT ON app_private.expedition_boosts FOR EACH ROW EXECUTE FUNCTION app_private.enforce_fishing_maintenance()"
+      },
+      {
         "name": "title_tailwind_activity",
         "table": "expedition_boosts",
         "schema": "app_private",
@@ -9420,6 +9671,13 @@
         "schema": "app_private",
         "enabled": "O",
         "definition": "CREATE TRIGGER merchant_titles_dirty AFTER INSERT ON app_private.merchant_deliveries FOR EACH ROW EXECUTE FUNCTION app_private.title_activity_event()"
+      },
+      {
+        "name": "fishing_maintenance_cast_start",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER fishing_maintenance_cast_start BEFORE INSERT ON app_private.prepared_fishing_casts FOR EACH ROW EXECUTE FUNCTION app_private.enforce_fishing_maintenance()"
       },
       {
         "name": "title_last_bait",
@@ -9548,11 +9806,32 @@
         "definition": "CREATE TRIGGER expedition_return_notice AFTER INSERT OR UPDATE OF returns_at ON public.fishing_expeditions FOR EACH ROW EXECUTE FUNCTION app_private.expedition_return_notice()"
       },
       {
+        "name": "fishing_maintenance_trap_claim",
+        "table": "fishing_expeditions",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER fishing_maintenance_trap_claim BEFORE UPDATE OF claimed_at ON public.fishing_expeditions FOR EACH ROW WHEN ((old.claimed_at IS DISTINCT FROM new.claimed_at)) EXECUTE FUNCTION app_private.enforce_fishing_maintenance()"
+      },
+      {
+        "name": "fishing_maintenance_trap_start",
+        "table": "fishing_expeditions",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER fishing_maintenance_trap_start BEFORE INSERT ON public.fishing_expeditions FOR EACH ROW EXECUTE FUNCTION app_private.enforce_fishing_maintenance()"
+      },
+      {
         "name": "giseong_trap_capture_reward",
         "table": "fishing_expeditions",
         "schema": "public",
         "enabled": "O",
         "definition": "CREATE TRIGGER giseong_trap_capture_reward AFTER UPDATE OF claimed_at, result ON public.fishing_expeditions FOR EACH ROW WHEN (((old.claimed_at IS NULL) AND (new.claimed_at IS NOT NULL))) EXECUTE FUNCTION app_private.giseong_settled_capture_event()"
+      },
+      {
+        "name": "snapshot_trap_bait_rules",
+        "table": "fishing_expeditions",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER snapshot_trap_bait_rules BEFORE INSERT ON public.fishing_expeditions FOR EACH ROW EXECUTE FUNCTION app_private.snapshot_trap_bait_rules()"
       },
       {
         "name": "title_expedition_catch",
@@ -9569,11 +9848,39 @@
         "definition": "CREATE TRIGGER title_friend AFTER INSERT OR UPDATE OF status ON public.friend_requests FOR EACH ROW EXECUTE FUNCTION app_private.title_activity_event()"
       },
       {
+        "name": "fishing_maintenance_bait_purchase",
+        "table": "gold_transactions",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER fishing_maintenance_bait_purchase BEFORE INSERT ON public.gold_transactions FOR EACH ROW WHEN (((new.action = 'buy'::text) AND ((new.item_id = 'bait'::text) OR (new.item_id ~~ 'fishing:%'::text)))) EXECUTE FUNCTION app_private.enforce_fishing_maintenance()"
+      },
+      {
+        "name": "fishing_maintenance_boat_claim",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER fishing_maintenance_boat_claim BEFORE UPDATE OF claimed_at ON public.harbor_voyages FOR EACH ROW WHEN ((old.claimed_at IS DISTINCT FROM new.claimed_at)) EXECUTE FUNCTION app_private.enforce_fishing_maintenance()"
+      },
+      {
+        "name": "fishing_maintenance_boat_start",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER fishing_maintenance_boat_start BEFORE INSERT ON public.harbor_voyages FOR EACH ROW EXECUTE FUNCTION app_private.enforce_fishing_maintenance()"
+      },
+      {
         "name": "giseong_vessel_capture_reward",
         "table": "harbor_voyages",
         "schema": "public",
         "enabled": "O",
         "definition": "CREATE TRIGGER giseong_vessel_capture_reward AFTER UPDATE OF claimed_at, result ON public.harbor_voyages FOR EACH ROW WHEN (((old.claimed_at IS NULL) AND (new.claimed_at IS NOT NULL))) EXECUTE FUNCTION app_private.giseong_settled_capture_event()"
+      },
+      {
+        "name": "harbor_catch_rule_snapshot",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER harbor_catch_rule_snapshot BEFORE INSERT ON public.harbor_voyages FOR EACH ROW EXECUTE FUNCTION app_private.snapshot_harbor_catch_rule()"
       },
       {
         "name": "harbor_titles_dirty",
@@ -10154,6 +10461,16 @@
         "securityDefiner": true
       },
       {
+        "name": "enforce_fishing_maintenance",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.enforce_fishing_maintenance()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if app_private.fishing_maintenance_active(clock_timestamp()) then\n  if tg_table_schema='app_private' and tg_table_name='prepared_fishing_casts' and tg_op='INSERT' then\n   if new.user_id=auth.uid() and (\n    app_private.notice_is_operator()\n    or exists(select 1 from auth.users u where u.id=auth.uid() and lower(u.email)='1@1.com')\n   ) then\n    return new;\n   end if;\n  end if;\n  raise exception using errcode='P0001',\n   message='FISHING_MAINTENANCE: 낚시·미끼·통발·어선 점검 중입니다. 완료 공지 후 다시 이용해 주세요.';\n end if;\n return new;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "ensure_merchant_orders",
         "config": [
           "search_path=\"\""
@@ -10290,7 +10607,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_region_id text, p_cargo jsonb, p_expedition_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_action(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_region_id text DEFAULT NULL::text, p_cargo jsonb DEFAULT NULL::jsonb, p_expedition_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();r jsonb;c record;total integer:=0;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action='buy' then raise exception 'VESSEL_RETIRED';end if;\n if p_action='depart' then\n  if p_vessel_id is distinct from 'dinghy' then raise exception 'VESSEL_RETIRED';end if;\n  if p_cargo is null or jsonb_typeof(p_cargo)<>'object' then raise exception 'INVALID_CARGO';end if;\n  for c in select value from jsonb_each_text(p_cargo) loop\n   if c.value !~ '^[1-9][0-9]{0,2}$' then raise exception 'INVALID_CARGO';end if;\n   total:=total+c.value::integer;\n  end loop;\n  if total<1 or total>30 then raise exception 'CARGO_LIMIT';end if;\n end if;\n r:=app_private.settle_legacy_expedition(p_action,p_operation_id,p_vessel_id,p_region_id,p_cargo,p_expedition_id);\n if p_action='depart' and not (r->>'replayed')::boolean then\n  update public.fishing_expeditions set returns_at=departed_at+make_interval(mins=>total*10),\n   vessel_snapshot=jsonb_set(vessel_snapshot,'{duration_minutes}',to_jsonb(total*10))\n   where id=(r->'receipt'->>'expeditionId')::uuid and user_id=u;\n  r:=app_private.expedition_state()||jsonb_build_object('receipt',r->'receipt','replayed',false);\n end if;\n return r;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_action(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_region_id text DEFAULT NULL::text, p_cargo jsonb DEFAULT NULL::jsonb, p_expedition_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();r jsonb;c record;total integer:=0;minutes integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action='buy' then raise exception 'VESSEL_RETIRED';end if;\n if p_action='depart' then\n  if p_vessel_id is distinct from 'dinghy' then raise exception 'VESSEL_RETIRED';end if;\n  if p_cargo is null or jsonb_typeof(p_cargo)<>'object' then raise exception 'INVALID_CARGO';end if;\n  for c in select value from jsonb_each_text(p_cargo) loop\n   if c.value !~ '^[1-9][0-9]{0,2}$' then raise exception 'INVALID_CARGO';end if;\n   total:=total+c.value::integer;\n  end loop;\n  if total<1 or total>30 then raise exception 'CARGO_LIMIT';end if;\n end if;\n r:=app_private.settle_legacy_expedition(p_action,p_operation_id,p_vessel_id,p_region_id,p_cargo,p_expedition_id);\n if p_action='depart' and not (r->>'replayed')::boolean then\n  minutes:=total*app_private.trap_minutes_per_bait();\n  update public.fishing_expeditions set returns_at=departed_at+make_interval(mins=>minutes),\n   vessel_snapshot=jsonb_set(vessel_snapshot,'{duration_minutes}',to_jsonb(minutes))\n   where id=(r->'receipt'->>'expeditionId')::uuid and user_id=u;\n  r:=app_private.expedition_state()||jsonb_build_object('receipt',r->'receipt','replayed',false);\n end if;\n return r;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -10330,7 +10647,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('serverNow',clock_timestamp(),'testEnabled',(select instant_return_enabled from app_private.expedition_settings where id),\n 'vessels',(select jsonb_agg(to_jsonb(v)||jsonb_build_object('owned',true)) from public.fishing_vessels v where id='dinghy'),\n 'active',(select (to_jsonb(e)-'result')||jsonb_build_object('boosts',app_private.expedition_boosts_payload(e.id)) from public.fishing_expeditions e where user_id=u and claimed_at is null),\n 'history',coalesce((select jsonb_agg(to_jsonb(h)||jsonb_build_object('boosts',app_private.expedition_boosts_payload(h.id)) order by departed_at desc) from (select * from public.fishing_expeditions where user_id=u and claimed_at is not null order by departed_at desc limit 5) h),'[]'::jsonb),\n 'baits',(select jsonb_agg(to_jsonb(b) order by sort_order) from public.fishing_baits b));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object('serverNow',clock_timestamp(),'testEnabled',(select instant_return_enabled from app_private.expedition_settings where id),\n 'minutesPerBait',app_private.trap_minutes_per_bait(),\n 'vessels',(select jsonb_agg(to_jsonb(v)||jsonb_build_object('owned',true)) from public.fishing_vessels v where id='dinghy'),\n 'active',(select (to_jsonb(e)-'result')||jsonb_build_object('boosts',app_private.expedition_boosts_payload(e.id)) from public.fishing_expeditions e where user_id=u and claimed_at is null),\n 'history',coalesce((select jsonb_agg(to_jsonb(h)||jsonb_build_object('boosts',app_private.expedition_boosts_payload(h.id)) order by departed_at desc) from (select * from public.fishing_expeditions where user_id=u and claimed_at is not null order by departed_at desc limit 5) h),'[]'::jsonb),\n 'baits',(select jsonb_agg(to_jsonb(b) order by sort_order) from public.fishing_baits b));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -10414,6 +10731,26 @@
         "securityDefiner": true
       },
       {
+        "name": "fishing_bait_balance_at",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_bait_id text, p_at timestamp with time zone",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_bait_balance_at(p_bait_id text, p_at timestamp with time zone DEFAULT clock_timestamp())\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n with chosen as (\n  select b.*,b.effect_kind = 'day_night'\n   and extract(hour from p_at at time zone 'Asia/Seoul') not between 6 and 17 as is_night\n  from app_private.fishing_bait_balance_profiles b where b.id = p_bait_id and p_at is not null\n )\n select (to_jsonb(b) - array['is_night','night_common_bp','night_rare_bp','night_wait_min_seconds','night_wait_max_seconds'])\n  || jsonb_build_object(\n   'period',case when b.effect_kind = 'day_night' then case when b.is_night then 'night' else 'day' end else null end,\n   'common_bp',case when b.is_night then b.night_common_bp else b.common_bp end,\n   'rare_bp',case when b.is_night then b.night_rare_bp else b.rare_bp end,\n   'wait_min_seconds',case when b.is_night then b.night_wait_min_seconds else b.wait_min_seconds end,\n   'wait_max_seconds',case when b.is_night then b.night_wait_max_seconds else b.wait_max_seconds end\n  ) from chosen b;\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "fishing_maintenance_active",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_at timestamp with time zone",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_maintenance_active(p_at timestamp with time zone DEFAULT clock_timestamp())\n RETURNS boolean\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select exists(select 1 from app_private.fishing_maintenance\n where id and p_at>=starts_at and (released_at is null or p_at<released_at))\n$function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "fishing_rod_state",
         "config": [
           "search_path=\"\""
@@ -10430,7 +10767,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_region text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select region_id into v_region from public.player_navigation where user_id=v_uid;\n v_region:=coalesce(v_region,'pongdang');\n return jsonb_build_object('regionId',v_region,'regionName',(select name from public.regions where id=v_region),\n 'successChanceBp',app_private.manual_fishing_success_chance_bp('bait'),\n 'prepared',(select app_private.prepared_fishing_payload(p) from app_private.prepared_fishing_casts p where user_id=v_uid and finished_at is null and expires_at>clock_timestamp()),\n 'baits',(select jsonb_agg(to_jsonb(b)||app_private.regional_bait_odds(b.id,v_region)||jsonb_build_object('baseSuccessChanceBp',app_private.fishing_success_chance_bp(b.id),'successChanceBp',app_private.manual_fishing_success_chance_bp(b.id)) order by b.sort_order) from public.fishing_baits b));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_region text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select region_id into v_region from public.player_navigation where user_id=v_uid;\n v_region:=coalesce(v_region,'pongdang');\n return jsonb_build_object('regionId',v_region,'regionName',(select name from public.regions where id=v_region),\n 'successChanceBp',10000,'mechanicsVersion',2,\n 'prepared',(select app_private.prepared_fishing_payload(p) from app_private.prepared_fishing_casts p where user_id=v_uid and finished_at is null and expires_at>clock_timestamp()),\n 'baits',(select jsonb_agg(to_jsonb(b)||app_private.regional_bait_odds(b.id,v_region)||jsonb_build_object('baseSuccessChanceBp',10000,'successChanceBp',10000,'mechanicsVersion',2) order by b.sort_order) from public.fishing_baits b));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -10632,6 +10969,16 @@
         "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer, p_boat_id uuid, p_slot integer, p_region_id text",
         "definition": "CREATE OR REPLACE FUNCTION app_private.harbor_action(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_voyage_id uuid DEFAULT NULL::uuid, p_quantity integer DEFAULT 1, p_boat_id uuid DEFAULT NULL::uuid, p_slot integer DEFAULT NULL::integer, p_region_id text DEFAULT 'pongdang'::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v public.harbor_vessels;b public.harbor_boats;occupant public.harbor_boats;w public.player_wallets;trip public.harbor_voyages;\n prev app_private.harbor_operations;sig jsonb;receipt jsonb;n integer;slot integer;fuel integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('buy','depart','dock','store','sell','fuel','arrive','claim','claim_all') then raise exception 'INVALID_HARBOR_ACTION';end if;\n if p_action in ('fuel','arrive','claim','claim_all') then return app_private.settle_legacy_harbor(p_action,p_operation_id,p_vessel_id,p_voyage_id,p_quantity);end if;\n sig:=jsonb_build_object('action',p_action,'vessel',p_vessel_id,'voyage',p_voyage_id,'quantity',p_quantity);\n if p_boat_id is not null or p_slot is not null then sig:=sig||jsonb_build_object('boat',p_boat_id,'slot',p_slot);end if;\n if p_action='depart' and p_region_id is distinct from 'pongdang' then sig:=sig||jsonb_build_object('region',p_region_id);end if;\n perform pg_advisory_xact_lock(hashtextextended('harbor:'||u::text,0));\n select * into prev from app_private.harbor_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.harbor_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n perform app_private.get_gold_wallet();select * into w from public.player_wallets where user_id=u for update;\n if p_action='buy' then\n  select * into v from public.harbor_vessels where id=p_vessel_id;\n  if not found then raise exception 'VESSEL_NOT_FOUND';end if;\n  select count(*) into n from public.harbor_boats where user_id=u and vessel_id=v.id and sold_at is null;\n  if n>=2 then raise exception 'VESSEL_OWNERSHIP_LIMIT';end if;\n  if w.gold<v.price then raise exception 'INSUFFICIENT_GOLD';end if;\n  select s into slot from generate_series(1,2) s where not exists(select 1 from public.harbor_boats where user_id=u and dock_slot=s) order by s limit 1;\n  insert into public.harbor_boats(user_id,vessel_id,instance_no,dock_slot) values(u,v.id,(select s from generate_series(1,2) s where not exists(select 1 from public.harbor_boats hb where hb.user_id=u and hb.vessel_id=v.id and hb.instance_no=s and hb.sold_at is null) order by s limit 1),slot) returning * into b;\n  insert into public.player_harbor_vessels(user_id,vessel_id) values(u,v.id) on conflict do nothing;\n  update public.player_wallets set gold=gold-v.price,updated_at=now() where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','harbor-vessel:'||v.id,-v.price);\n  receipt:=jsonb_build_object('action','buy','vesselId',v.id,'boatId',b.id);\n else\n  if p_boat_id is not null then select * into b from public.harbor_boats where id=p_boat_id and user_id=u and sold_at is null;\n  elsif p_action='depart' then\n   select * into b from public.harbor_boats b0 where b0.user_id=u and b0.vessel_id=p_vessel_id and b0.dock_slot is not null\n    order by exists(select 1 from public.harbor_voyages t where t.boat_id=b0.id and t.claimed_at is null),b0.dock_slot limit 1;\n  end if;\n  if b.id is null then raise exception 'VESSEL_NOT_OWNED';end if;\n  if p_vessel_id is not null and p_vessel_id<>b.vessel_id then raise exception 'INVALID_BOAT';end if;\n  if exists(select 1 from public.harbor_voyages where boat_id=b.id and claimed_at is null) then raise exception 'VOYAGE_ACTIVE';end if;\n  if p_action='sell' then\n   select * into strict v from public.harbor_vessels where id=b.vessel_id;\n   n:=v.price/2;\n   if w.gold::bigint+n>1000000000 then raise exception 'GOLD_LIMIT';end if;\n   update public.harbor_boats set sold_at=clock_timestamp(),dock_slot=null where id=b.id;\n   update public.player_wallets set gold=gold+n,updated_at=now() where user_id=u;\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'sell','harbor-boat:'||b.id,n);\n   receipt:=jsonb_build_object('action','sell','vesselId',v.id,'boatId',b.id,'gold',n);\n  elsif p_action='dock' then\n   if p_slot is null or p_slot not between 1 and 2 then raise exception 'INVALID_DOCK_SLOT';end if;\n   if b.dock_slot is not null and b.dock_slot<>p_slot then raise exception 'BOAT_ALREADY_DOCKED';end if;\n   select * into occupant from public.harbor_boats where user_id=u and dock_slot=p_slot and id<>b.id;\n   if occupant.id is not null then\n    if exists(select 1 from public.harbor_voyages where boat_id=occupant.id and claimed_at is null) then raise exception 'DOCK_RESERVED';end if;\n    update public.harbor_boats set dock_slot=null where id=occupant.id;\n   end if;\n   update public.harbor_boats set dock_slot=p_slot where id=b.id;\n   receipt:=jsonb_build_object('action','dock','boatId',b.id,'slot',p_slot);\n  elsif p_action='store' then\n   update public.harbor_boats set dock_slot=null where id=b.id;\n   receipt:=jsonb_build_object('action','store','boatId',b.id);\n  else\n   if not exists(select 1 from public.regions where id=p_region_id) then raise exception 'REGION_NOT_FOUND';end if;\n   if exists(select 1 from public.regions r where r.id=p_region_id and r.requires_map_fragment\n    and not exists(select 1 from public.player_map_fragments m where m.user_id=u and m.region_id=r.id)) then raise exception 'REGION_LOCKED';end if;\n   if b.dock_slot is null then raise exception 'DOCK_REQUIRED';end if;\n   select * into strict v from public.harbor_vessels where id=b.vessel_id;\n   fuel:=coalesce((w.inventory->>'fuel')::integer,0);\n   if fuel<v.fuel_cost then raise exception 'INSUFFICIENT_FUEL';end if;\n   update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel-v.fuel_cost)),updated_at=now() where user_id=u;\n   insert into public.harbor_voyages(user_id,vessel_id,boat_id,region_id,vessel_snapshot,returns_at) values(u,v.id,b.id,p_region_id,to_jsonb(v)||jsonb_build_object('fishing_count',v.fishing_count+floor(random()*(coalesce(v.fishing_count_max,v.fishing_count)-v.fishing_count+1))::integer),clock_timestamp()+make_interval(mins=>v.duration_minutes)) returning * into trip;\n   receipt:=jsonb_build_object('action','depart','voyageId',trip.id,'vesselId',v.id,'boatId',b.id);\n  end if;\n end if;\n insert into app_private.harbor_operations(user_id,operation_id,signature,receipt) values(u,p_operation_id,sig,receipt);\n return app_private.harbor_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
         "securityDefiner": true
+      },
+      {
+        "name": "harbor_draw",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_region text, p_rule jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.harbor_draw(p_region text, p_rule jsonb)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare r public.game_rarity;roll integer;v_kind text:=p_rule->>'kind';wanted text;ids text[];\n fallback boolean:=false;sid text;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if random()*10000>=(p_rule->>'success_bp')::integer then return null;end if;\n roll:=floor(random()*10000)::integer;\n r:=case when roll<(p_rule->>'mythic_bp')::integer then 'mythic'::public.game_rarity\n  when roll<(p_rule->>'mythic_bp')::integer+(p_rule->>'epic_bp')::integer then 'epic'::public.game_rarity\n  when roll<(p_rule->>'mythic_bp')::integer+(p_rule->>'epic_bp')::integer+(p_rule->>'rare_bp')::integer then 'rare'::public.game_rarity\n  else 'common'::public.game_rarity end;\n if v_kind='trash_weighted' then\n  wanted:=case when random()*10000<(p_rule->>'trash_bp')::integer then 'trash' else 'fish' end;\n end if;\n select array_agg(s.id order by s.id) into ids from public.collectible_species s\n where s.rarity=r and case v_kind\n  when 'decoration' then s.kind='decoration'\n  when 'trash_only' then s.kind='trash'\n  when 'trash_weighted' then s.kind::text=wanted\n  when 'discovery_only' then s.kind in('fish','trash','decoration') and not exists(\n   select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id)\n  when 'discovery_weighted' then s.kind in('fish','trash','decoration')\n  else s.kind in('fish','trash') end;\n -- Preserve legacy specialty fallback rules. New mixed-kind boats only\n -- renormalize a missing kind within the same grade, never upgrade the grade.\n if ids is null and v_kind='trash_weighted' then\n  select array_agg(s.id order by s.id) into ids from public.collectible_species s where s.rarity=r and s.kind in('fish','trash');\n elsif ids is null and v_kind in('trash_only','discovery_only') then\n  fallback:=true;\n  select array_agg(s.id order by s.id) into ids from public.collectible_species s where\n   case when v_kind='trash_only' then s.kind='trash' else s.kind in('fish','trash','decoration')\n    and not exists(select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id) end;\n end if;\n if ids is null then\n  if v_kind='discovery_only' then return null;end if;\n  raise exception 'NO_COLLECTIBLE_FOR_REGION';\n end if;\n -- Independent habitat picker: future bait/rod helper changes cannot leak in.\n with candidates as materialized(\n  select s.id,s.rarity,\n   case when not s.is_native then 'shared' when s.native_region_id=p_region then 'home' else 'away' end bucket,\n   case when v_kind='discovery_weighted' and not exists(select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id)\n    then (p_rule->>'discovery_weight')::numeric else 1 end discovery_weight\n  from public.collectible_species s where s.id=any(ids)\n ),groups as materialized(select distinct bucket from candidates),selected as materialized(\n  select bucket from groups order by -ln(greatest(random(),1e-15))/case bucket\n   when 'home' then 35*(p_rule->>'home_multiplier')::numeric when 'shared' then 60 else 5 end,bucket limit 1\n )select c.id into sid from candidates c join selected g using(bucket)\n order by -ln(greatest(random(),1e-15))/(c.discovery_weight*case when fallback then\n  case c.rarity when 'common' then 7700 when 'rare' then 2000 when 'epic' then 270 else 30 end else 1 end),c.id limit 1;\n return sid;\nend $function$\n",
+        "securityDefiner": false
       },
       {
         "name": "harbor_state",
@@ -10984,6 +11331,16 @@
         "securityDefiner": false
       },
       {
+        "name": "pick_profile_collectible",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_region text, p_rarity game_rarity, p_profile jsonb, p_manual boolean, p_native boolean, p_local_discovery boolean",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_profile_collectible(p_region text, p_rarity game_rarity, p_profile jsonb, p_manual boolean DEFAULT false, p_native boolean DEFAULT false, p_local_discovery boolean DEFAULT false)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare ids text[];rod_region text;fallback boolean;bid text:=p_profile->>'id';effect text:=p_profile->>'effect_kind';\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_profile is null then raise exception 'INVALID_BAIT';end if;\n if not exists(select 1 from public.regions where id=p_region) then raise exception 'REGION_NOT_FOUND';end if;\n if p_manual then\n  select r.region_id into rod_region from public.player_rod_loadouts l\n  join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n  join public.fishing_rods r on r.id=o.rod_id where l.user_id=auth.uid() and r.native_bonus_bp>0;\n end if;\n with candidates as materialized (\n  select s.id,s.rarity from public.collectible_species s where case\n   when effect='undiscovered' then s.kind in ('fish','trash','decoration')\n    and not exists(select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id)\n    and (not p_local_discovery or exists(select 1 from public.collectible_habitats h where h.species_id=s.id and h.region_id=p_region))\n   when bid='bait_grubby_magnet' then s.kind='trash'\n   when effect='shooting_star' then s.rarity=p_rarity and (p_rarity='mythic' or s.kind='trash')\n   when effect='common_only' then s.rarity=p_rarity and not s.is_native and s.kind in ('fish','trash')\n   else s.rarity=p_rarity and (p_profile->'target_kinds') ? s.kind::text end\n ), pool as (\n  select * from candidates c where c.rarity=p_rarity\n   or (effect='undiscovered' or bid='bait_grubby_magnet') and not exists(select 1 from candidates c2 where c2.rarity=p_rarity)\n )\n select array_agg(id order by id),not coalesce(bool_or(rarity=p_rarity),false) into ids,fallback from pool;\n return app_private.pick_habitat_group(ids,p_region,rod_region,\n  coalesce((p_profile->>'native_multiplier')::numeric,1)*(case when p_native then 1.5 else 1 end),fallback);\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "pick_regional_collectible",
         "config": [
           "search_path=\"\""
@@ -11020,7 +11377,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.prepare_fishing(p_region_id text, p_bait_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;w public.player_wallets;b public.fishing_baits;\n v_current text;v_required boolean;v_count integer;v_decoration boolean;v_eligible boolean;\n v_rarity public.game_rarity;v_species text;v_map text;v_snapshot jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null then raise exception 'INVALID_TRADE';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if p.region_id<>p_region_id or p.bait_id<>p_bait_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.prepared_fishing_payload(p);\n end if;\n if exists(select 1 from public.fishing_attempts where user_id=v_uid and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and finished_at is null;\n if found then\n  if p.expires_at<=clock_timestamp() then perform app_private.finish_fishing(p.operation_id,false);\n  else return app_private.prepared_fishing_payload(p);end if;\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n select * into b from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT';end if;\n v_decoration:=b.effect_kind='decoration';\n select requires_map_fragment into v_required from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND';end if;\n select region_id into v_current from public.player_navigation where user_id=v_uid;\n if v_current is distinct from p_region_id then raise exception 'NOT_IN_REGION';end if;\n if v_required and not exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'REGION_LOCKED';end if;\n v_count:=coalesce((w.inventory->>p_bait_id)::integer,0);\n if v_count<1 then raise exception 'NO_BAIT';end if;\n if p_bait_id='bait_first_greeting' and not exists(select 1 from public.collectible_species s where s.kind in ('fish','trash','decoration')\n and not exists(select 1 from public.player_discoveries d where d.user_id=v_uid and d.species_id=s.id)) then raise exception 'ALL_COLLECTIBLES_DISCOVERED';end if;\n v_rarity:=case when b.alternating then app_private.consume_bait_cycle() else 'common'::public.game_rarity end;\n v_eligible:=random()<app_private.manual_fishing_success_chance_bp(p_bait_id)::numeric/10000;\n if v_eligible then\n  -- Decorations use the same grade-first draw, then a strictly matching kind/grade pool.\n  if not b.alternating then v_rarity:=app_private.resolve_regional_fishing(p_bait_id,p_region_id,floor(random()*10000)::integer);end if;\n  if p_bait_id in ('bait_snowflake_salt','bait_shooting_star_tail') then v_species:=app_private.pick_balanced_bait_collectible(p_region_id,v_rarity,p_bait_id,false,true);\n  elsif b.fish_only then v_species:=app_private.pick_bait_fish(p_region_id,v_rarity,false,true);\n  elsif p_bait_id in ('bait_grubby_magnet','bait_sea_memory','bait_first_greeting') then v_species:=app_private.pick_special_bait_collectible(p_region_id,v_rarity,p_bait_id);\n  else select q.species_id,q.map_region_id into v_species,v_map from app_private.pick_regional_collectible(p_region_id,v_rarity,v_decoration,floor(random()*10000)::integer) q;\n  end if;\n  if v_species is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n  select rarity into v_rarity from public.collectible_species where id=v_species;\n  v_snapshot:=app_private.species_payload(v_species,v_map);\n end if;\n insert into app_private.prepared_fishing_casts(user_id,operation_id,region_id,bait_id,eligible,species_id,map_region_id,rarity,snapshot,wait_seconds,failure_at,failure_reason,expires_at)\n values(v_uid,p_operation_id,p_region_id,p_bait_id,v_eligible,v_species,v_map,v_rarity,v_snapshot,3+random()*2,4.5+random()*3,\n (array['bait','escape','wave'])[1+floor(random()*3)::integer],clock_timestamp()+interval '3 minutes') returning * into p;\n update public.player_wallets set inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(v_count-1)),updated_at=now() where user_id=v_uid;\n return app_private.prepared_fishing_payload(p);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.prepare_fishing(p_region_id text, p_bait_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;w public.player_wallets;\n v_current text;v_required boolean;v_count integer;v_profile jsonb;v_started timestamptz;v_wait numeric;\n v_rarity public.game_rarity;v_species text;v_snapshot jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null then raise exception 'INVALID_TRADE';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if p.region_id<>p_region_id or p.bait_id<>p_bait_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.prepared_fishing_payload(p);\n end if;\n if exists(select 1 from public.fishing_attempts where user_id=v_uid and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and finished_at is null;\n if found then\n  if p.expires_at<=clock_timestamp() then perform app_private.finish_fishing(p.operation_id,false);\n  else return app_private.prepared_fishing_payload(p);end if;\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n if not exists(select 1 from public.fishing_baits where id=p_bait_id) then raise exception 'INVALID_BAIT';end if;\n select requires_map_fragment into v_required from public.regions where id=p_region_id;\n if not found then raise exception 'REGION_NOT_FOUND';end if;\n select region_id into v_current from public.player_navigation where user_id=v_uid;\n if v_current is distinct from p_region_id then raise exception 'NOT_IN_REGION';end if;\n if v_required and not exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'REGION_LOCKED';end if;\n v_count:=coalesce((w.inventory->>p_bait_id)::integer,0);\n if v_count<1 then raise exception 'NO_BAIT';end if;\n if p_bait_id='bait_first_greeting' and not exists(select 1 from public.collectible_species s where s.kind in ('fish','trash','decoration')\n and not exists(select 1 from public.player_discoveries d where d.user_id=v_uid and d.species_id=s.id)) then raise exception 'ALL_COLLECTIBLES_DISCOVERED';end if;\n v_started:=clock_timestamp();\n v_profile:=app_private.fishing_bait_balance_at(p_bait_id,v_started);\n v_rarity:=app_private.profile_fishing_rarity(v_profile);\n v_species:=app_private.pick_profile_collectible(p_region_id,v_rarity,v_profile,true);\n if v_species is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n select rarity into v_rarity from public.collectible_species where id=v_species;\n v_snapshot:=app_private.species_payload(v_species,null);\n -- Triangular jitter favors the center instead of the extreme wait times.\n v_wait:=(v_profile->>'wait_min_seconds')::numeric\n  +((v_profile->>'wait_max_seconds')::numeric-(v_profile->>'wait_min_seconds')::numeric)*(random()+random())/2;\n insert into app_private.prepared_fishing_casts(user_id,operation_id,region_id,bait_id,eligible,species_id,map_region_id,rarity,snapshot,wait_seconds,failure_at,failure_reason,created_at,expires_at,bait_snapshot)\n values(v_uid,p_operation_id,p_region_id,p_bait_id,true,v_species,null,v_rarity,v_snapshot,v_wait,4.5,'bait',v_started,\n  v_started+make_interval(secs=>v_wait::double precision)+interval '3 minutes',v_profile) returning * into p;\n update public.player_wallets set inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(v_count-1)),updated_at=now() where user_id=v_uid;\n return app_private.prepared_fishing_payload(p);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11030,7 +11387,7 @@
         ],
         "schema": "app_private",
         "arguments": "p app_private.prepared_fishing_casts",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.prepared_fishing_payload(p app_private.prepared_fishing_casts)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select jsonb_build_object('operation_id',p.operation_id,'region_id',p.region_id,'bait_id',p.bait_id,\n 'eligible',p.eligible,'species',p.snapshot,'rarity',p.rarity,'wait_seconds',p.wait_seconds,\n 'failure_at',p.failure_at,'failure_reason',p.failure_reason,'expires_at',p.expires_at,\n 'finished',p.finished_at is not null,'result',p.result)\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.prepared_fishing_payload(p app_private.prepared_fishing_casts)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select jsonb_build_object('operation_id',p.operation_id,'region_id',p.region_id,'bait_id',p.bait_id,\n 'eligible',p.eligible,'species',p.snapshot,'rarity',p.rarity,'wait_seconds',p.wait_seconds,\n 'failure_at',p.failure_at,'failure_reason',p.failure_reason,'expires_at',p.expires_at,\n 'finished',p.finished_at is not null,'result',p.result,'bait_profile',p.bait_snapshot)\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -11112,6 +11469,16 @@
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.production_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n with owned as materialized(select * from app_private.production_sites where user_id=u),\n first_site as(select distinct on(facility_id) * from owned order by facility_id,purchased_at,id),\n totals as(select facility_id,count(*) n from owned group by facility_id)\n select jsonb_build_object('serverNow',clock_timestamp(),'gold',w.gold,'fuel',coalesce((w.inventory->>'fuel')::integer,0),\n 'facilities',coalesce((select jsonb_agg(to_jsonb(f)||jsonb_build_object('owned',s.id is not null,'ownedCount',coalesce(t.n,0),\n 'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output) order by f.price,f.id)\n from public.production_facilities f left join first_site s on s.facility_id=f.id left join totals t on t.facility_id=f.id\n where f.enabled or s.id is not null),'[]'::jsonb),\n 'sites',coalesce((select jsonb_agg(to_jsonb(f)||jsonb_build_object('siteId',s.id,'owned',true,\n 'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output)\n order by f.price,f.id,s.purchased_at,s.id) from owned s join public.production_facilities f on f.id=s.facility_id),'[]'::jsonb))\n into result from public.player_wallets w where w.user_id=u;\n return result;\nend $function$\n",
         "securityDefiner": true
+      },
+      {
+        "name": "profile_fishing_rarity",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_profile jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.profile_fishing_rarity(p_profile jsonb)\n RETURNS game_rarity\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare roll integer:=floor(random()*10000);\nbegin\n if p_profile is null then raise exception 'INVALID_BAIT';end if;\n if p_profile->>'effect_kind'='alternating' then return app_private.consume_bait_cycle();end if;\n if roll<(p_profile->>'mythic_bp')::integer then return 'mythic';end if;\n if roll<(p_profile->>'mythic_bp')::integer+(p_profile->>'epic_bp')::integer then return 'epic';end if;\n if roll<(p_profile->>'mythic_bp')::integer+(p_profile->>'epic_bp')::integer+(p_profile->>'rare_bp')::integer then return 'rare';end if;\n return 'common';\nend $function$\n",
+        "securityDefiner": false
       },
       {
         "name": "publish_fishing_showcase",
@@ -11220,7 +11587,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_bait_id text, p_region_id text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.regional_bait_odds(p_bait_id text, p_region_id text)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare b public.fishing_baits;r public.game_rarity;\nbegin\n select * into b from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT';end if;\n if not exists(select 1 from public.regions where id=p_region_id) then raise exception 'REGION_NOT_FOUND';end if;\n if b.alternating then\n  select next_rarity into r from app_private.bait_cycles where user_id=auth.uid();r:=coalesce(r,'common');\n  return jsonb_build_object('common_bp',case when r='common' then 10000 else 0 end,'rare_bp',case when r='rare' then 10000 else 0 end,'epic_bp',0,'mythic_bp',0,'failure_bp',0,'nextRarity',r);\n end if;\n return jsonb_build_object('common_bp',b.common_bp,'rare_bp',b.rare_bp,'epic_bp',b.epic_bp,'mythic_bp',b.mythic_bp,'failure_bp',b.failure_bp);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.regional_bait_odds(p_bait_id text, p_region_id text)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare b jsonb;r public.game_rarity;\nbegin\n if not exists(select 1 from public.fishing_baits where id=p_bait_id) then raise exception 'INVALID_BAIT';end if;\n if not exists(select 1 from public.regions where id=p_region_id) then raise exception 'REGION_NOT_FOUND';end if;\n b:=app_private.fishing_bait_balance_at(p_bait_id,statement_timestamp());\n if b is null then raise exception 'INVALID_BAIT';end if;\n if b->>'effect_kind'='alternating' then\n  select next_rarity into r from app_private.bait_cycles where user_id=auth.uid();r:=coalesce(r,'common');\n  return jsonb_build_object('common_bp',case when r='common' then 10000 else 0 end,'rare_bp',case when r='rare' then 10000 else 0 end,'epic_bp',0,'mythic_bp',0,'failure_bp',0,'nextRarity',r);\n end if;\n return jsonb_build_object('common_bp',b->'common_bp','rare_bp',b->'rare_bp','epic_bp',b->'epic_bp','mythic_bp',b->'mythic_bp','failure_bp',0,\n  'period',b->'period','target_kinds',b->'target_kinds');\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -11410,7 +11777,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_region_id text, p_cargo jsonb, p_expedition_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.settle_legacy_expedition(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_region_id text DEFAULT NULL::text, p_cargo jsonb DEFAULT NULL::jsonb, p_expedition_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v public.fishing_vessels;e public.fishing_expeditions;w public.player_wallets;\n sig jsonb;prev app_private.expedition_operations;receipt jsonb;cargo record;total integer:=0;count integer;sid text;bid text;\n bonus integer;bonus_bait text;draws text[]:=array[]::text[];i integer;item uuid;results jsonb:='[]';refunds jsonb:='{}';local_discovery boolean;failed integer:=0;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in ('buy','depart','claim','instant') or p_operation_id is null then raise exception 'INVALID_EXPEDITION';end if;\n sig:=jsonb_build_object('action',p_action,'vessel',p_vessel_id,'region',p_region_id,'cargo',p_cargo,'expedition',p_expedition_id);\n perform pg_advisory_xact_lock(hashtextextended('expedition:'||u::text,0));\n select * into prev from app_private.expedition_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.expedition_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n if p_action in ('buy','depart') then\n  select * into v from public.fishing_vessels where id=p_vessel_id;\n  if not found then raise exception 'VESSEL_NOT_FOUND';end if;\n end if;\n if p_action='buy' then\n  if v.price>0 and not exists(select 1 from public.player_fishing_vessels where user_id=u and vessel_id=v.id) then\n   if w.gold<v.price then raise exception 'INSUFFICIENT_GOLD';end if;\n   update public.player_wallets set gold=gold-v.price,updated_at=now() where user_id=u;\n   insert into public.player_fishing_vessels(user_id,vessel_id) values(u,v.id);\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','vessel:'||v.id,-v.price);\n  end if;\n  receipt:=jsonb_build_object('action','buy','vesselId',v.id);\n elsif p_action='depart' then\n  if v.price>0 and not exists(select 1 from public.player_fishing_vessels where user_id=u and vessel_id=v.id) then raise exception 'VESSEL_NOT_OWNED';end if;\n  if exists(select 1 from public.fishing_expeditions where user_id=u and claimed_at is null) then raise exception 'EXPEDITION_ACTIVE';end if;\n  if not exists(select 1 from public.regions r where r.id=p_region_id and (not r.requires_map_fragment or exists(select 1 from public.player_map_fragments f where f.user_id=u and f.region_id=r.id))) then raise exception 'REGION_LOCKED';end if;\n  if p_cargo is null or jsonb_typeof(p_cargo)<>'object' then raise exception 'INVALID_CARGO';end if;\n  for cargo in select key,value from jsonb_each_text(p_cargo) loop\n   if not exists(select 1 from public.fishing_baits where id=cargo.key) or cargo.value !~ '^[1-9][0-9]{0,2}$' then raise exception 'INVALID_CARGO';end if;\n   count:=cargo.value::integer;total:=total+count;\n   if coalesce((w.inventory->>cargo.key)::integer,0)<count then raise exception 'NO_BAIT';end if;\n   w.inventory:=jsonb_set(w.inventory,array[cargo.key],to_jsonb((w.inventory->>cargo.key)::integer-count));\n  end loop;\n  if total<v.min_baits or total>v.max_baits then raise exception 'CARGO_LIMIT';end if;\n  update public.player_wallets set inventory=w.inventory,updated_at=now() where user_id=u;\n  insert into public.fishing_expeditions(user_id,vessel_id,region_id,cargo,vessel_snapshot,returns_at)\n   values(u,v.id,p_region_id,p_cargo,to_jsonb(v),clock_timestamp()+make_interval(mins=>v.duration_minutes)) returning * into e;\n  receipt:=jsonb_build_object('action','depart','expeditionId',e.id);\n else\n  perform app_private.notify_due_expeditions(p_expedition_id);\n  select * into e from public.fishing_expeditions where id=p_expedition_id and user_id=u for update;\n  if not found then raise exception 'EXPEDITION_NOT_FOUND';end if;\n  if e.claimed_at is not null then\n   receipt:=jsonb_build_object('action','claim','expeditionId',e.id,'result',e.result);\n  elsif p_action='instant' then\n   if not coalesce((select instant_return_enabled from app_private.expedition_settings where id),false) then raise exception 'TEST_DISABLED';end if;\n   update public.fishing_expeditions set returns_at=least(returns_at,clock_timestamp()) where id=e.id;\n   receipt:=jsonb_build_object('action','instant','expeditionId',e.id);\n  else\n   if clock_timestamp()<e.returns_at then raise exception 'EXPEDITION_NOT_READY';end if;\n   v:=jsonb_populate_record(null::public.fishing_vessels,e.vessel_snapshot);\n   for cargo in select key,value from jsonb_each_text(e.cargo) loop\n    count:=cargo.value::integer;total:=total+count;\n    for i in 1..count loop draws:=array_append(draws,cargo.key);end loop;\n   end loop;\n   bonus:=case when v.bonus_kind='per_ten' then least(total/10,v.bonus_count) else v.bonus_count end;\n   bonus_bait:=case v.bonus_kind when 'special' then 'bait_special' when 'magnet' then 'bait_magnet' when 'candy' then 'bait_forbidden_star' when 'discovery' then 'bait_first_greeting' when 'epic' then 'bait_epic' else 'bait' end;\n   if v.bonus_kind='copy' then\n    select d into bonus_bait from unnest(draws) d where d not in ('bait_first_greeting','bait_epic','bait_magnet') order by random() limit 1;\n    bonus_bait:=coalesce(bonus_bait,'bait');\n   end if;\n   for i in 1..bonus loop draws:=array_append(draws,bonus_bait);end loop;\n   -- Snapshots from older departures have null for newly introduced fields.\n   for i in 1..coalesce(v.bonus_basic_count,0) loop draws:=array_append(draws,'bait');end loop;\n   for i in 1..cardinality(draws) loop\n    bid:=draws[i];local_discovery:=i>total and v.bonus_kind='discovery';\n    sid:=app_private.expedition_pick(e.region_id,bid,v.bonus_kind='native',local_discovery);\n    if sid is null and local_discovery then bid:='bait_special';sid:=app_private.expedition_pick(e.region_id,bid,false,false);end if;\n    if sid is null and bid='bait_first_greeting' and i<=total then\n     refunds:=jsonb_set(refunds,array[bid],to_jsonb(coalesce((refunds->>bid)::integer,0)+1));\n     w.inventory:=jsonb_set(w.inventory,array[bid],to_jsonb(coalesce((w.inventory->>bid)::integer,0)+1));\n    elsif sid is not null and random()>=app_private.expedition_success_chance_bp(bid,v.failure_reduction_bp)::numeric/10000 then\n     failed:=failed+1;\n    else\n     if sid is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n     insert into public.player_collectibles(user_id,species_id) values(u,sid) returning id into item;\n     insert into public.player_discoveries(user_id,species_id) values(u,sid) on conflict do nothing;\n     results:=results||jsonb_build_array(jsonb_build_object('id',item,'firstDiscovery',coalesce((select evidence.first_discovery from app_private.title_acquisition_evidence evidence where evidence.collectible_id=item and evidence.user_id=u),false),'species',app_private.species_payload(sid,null),'bonus',i>total,'baitId',bid));\n    end if;\n   end loop;\n   receipt:=jsonb_build_object('action','claim','expeditionId',e.id,'result',jsonb_build_object('items',results,'refunds',refunds,'failed',failed,'attempted',cardinality(draws),'succeeded',jsonb_array_length(results)));\n   update public.player_wallets set inventory=w.inventory,updated_at=now() where user_id=u;\n   update public.fishing_expeditions set claimed_at=clock_timestamp(),result=receipt->'result' where id=e.id;\n  end if;\n end if;\n insert into app_private.expedition_operations values(u,p_operation_id,sig,receipt);\n return app_private.expedition_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.settle_legacy_expedition(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_region_id text DEFAULT NULL::text, p_cargo jsonb DEFAULT NULL::jsonb, p_expedition_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v public.fishing_vessels;e public.fishing_expeditions;w public.player_wallets;\n sig jsonb;prev app_private.expedition_operations;receipt jsonb;cargo record;total integer:=0;count integer;sid text;bid text;\n bonus integer;bonus_bait text;draws text[]:=array[]::text[];i integer;item uuid;results jsonb:='[]';refunds jsonb:='{}';local_discovery boolean;failed integer:=0;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in ('buy','depart','claim','instant') or p_operation_id is null then raise exception 'INVALID_EXPEDITION';end if;\n sig:=jsonb_build_object('action',p_action,'vessel',p_vessel_id,'region',p_region_id,'cargo',p_cargo,'expedition',p_expedition_id);\n perform pg_advisory_xact_lock(hashtextextended('expedition:'||u::text,0));\n select * into prev from app_private.expedition_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.expedition_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n if p_action in ('buy','depart') then\n  select * into v from public.fishing_vessels where id=p_vessel_id;\n  if not found then raise exception 'VESSEL_NOT_FOUND';end if;\n end if;\n if p_action='buy' then\n  if v.price>0 and not exists(select 1 from public.player_fishing_vessels where user_id=u and vessel_id=v.id) then\n   if w.gold<v.price then raise exception 'INSUFFICIENT_GOLD';end if;\n   update public.player_wallets set gold=gold-v.price,updated_at=now() where user_id=u;\n   insert into public.player_fishing_vessels(user_id,vessel_id) values(u,v.id);\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','vessel:'||v.id,-v.price);\n  end if;\n  receipt:=jsonb_build_object('action','buy','vesselId',v.id);\n elsif p_action='depart' then\n  if v.price>0 and not exists(select 1 from public.player_fishing_vessels where user_id=u and vessel_id=v.id) then raise exception 'VESSEL_NOT_OWNED';end if;\n  if exists(select 1 from public.fishing_expeditions where user_id=u and claimed_at is null) then raise exception 'EXPEDITION_ACTIVE';end if;\n  if not exists(select 1 from public.regions r where r.id=p_region_id and (not r.requires_map_fragment or exists(select 1 from public.player_map_fragments f where f.user_id=u and f.region_id=r.id))) then raise exception 'REGION_LOCKED';end if;\n  if p_cargo is null or jsonb_typeof(p_cargo)<>'object' then raise exception 'INVALID_CARGO';end if;\n  for cargo in select key,value from jsonb_each_text(p_cargo) loop\n   if not exists(select 1 from public.fishing_baits where id=cargo.key) or cargo.value !~ '^[1-9][0-9]{0,2}$' then raise exception 'INVALID_CARGO';end if;\n   count:=cargo.value::integer;total:=total+count;\n   if coalesce((w.inventory->>cargo.key)::integer,0)<count then raise exception 'NO_BAIT';end if;\n   w.inventory:=jsonb_set(w.inventory,array[cargo.key],to_jsonb((w.inventory->>cargo.key)::integer-count));\n  end loop;\n  if total<v.min_baits or total>v.max_baits then raise exception 'CARGO_LIMIT';end if;\n  update public.player_wallets set inventory=w.inventory,updated_at=now() where user_id=u;\n  insert into public.fishing_expeditions(user_id,vessel_id,region_id,cargo,vessel_snapshot,returns_at)\n   values(u,v.id,p_region_id,p_cargo,to_jsonb(v),clock_timestamp()+make_interval(mins=>v.duration_minutes)) returning * into e;\n  receipt:=jsonb_build_object('action','depart','expeditionId',e.id);\n else\n  perform app_private.notify_due_expeditions(p_expedition_id);\n  select * into e from public.fishing_expeditions where id=p_expedition_id and user_id=u for update;\n  if not found then raise exception 'EXPEDITION_NOT_FOUND';end if;\n  if e.claimed_at is not null then\n   receipt:=jsonb_build_object('action','claim','expeditionId',e.id,'result',e.result);\n  elsif p_action='instant' then\n   if not coalesce((select instant_return_enabled from app_private.expedition_settings where id),false) then raise exception 'TEST_DISABLED';end if;\n   update public.fishing_expeditions set returns_at=least(returns_at,clock_timestamp()) where id=e.id;\n   receipt:=jsonb_build_object('action','instant','expeditionId',e.id);\n  else\n   if clock_timestamp()<e.returns_at then raise exception 'EXPEDITION_NOT_READY';end if;\n   v:=jsonb_populate_record(null::public.fishing_vessels,e.vessel_snapshot);\n   for cargo in select key,value from jsonb_each_text(e.cargo) loop\n    count:=cargo.value::integer;total:=total+count;\n    for i in 1..count loop draws:=array_append(draws,cargo.key);end loop;\n   end loop;\n   bonus:=case when v.bonus_kind='per_ten' then least(total/10,v.bonus_count) else v.bonus_count end;\n   bonus_bait:=case v.bonus_kind when 'special' then 'bait_special' when 'magnet' then 'bait_magnet' when 'candy' then 'bait_forbidden_star' when 'discovery' then 'bait_first_greeting' when 'epic' then 'bait_epic' else 'bait' end;\n   if v.bonus_kind='copy' then\n    select d into bonus_bait from unnest(draws) d where d not in ('bait_first_greeting','bait_epic','bait_magnet') order by random() limit 1;\n    bonus_bait:=coalesce(bonus_bait,'bait');\n   end if;\n   for i in 1..bonus loop draws:=array_append(draws,bonus_bait);end loop;\n   -- Snapshots from older departures have null for newly introduced fields.\n   for i in 1..coalesce(v.bonus_basic_count,0) loop draws:=array_append(draws,'bait');end loop;\n   for i in 1..cardinality(draws) loop\n    bid:=draws[i];local_discovery:=i>total and v.bonus_kind='discovery';\n    sid:=app_private.trap_pick(e.region_id,bid,v.bonus_kind='native',local_discovery,e.vessel_snapshot);\n    if sid is null and local_discovery then bid:='bait_special';sid:=app_private.trap_pick(e.region_id,bid,false,false,e.vessel_snapshot);end if;\n    if sid is null and bid='bait_first_greeting' and i<=total then\n     refunds:=jsonb_set(refunds,array[bid],to_jsonb(coalesce((refunds->>bid)::integer,0)+1));\n     w.inventory:=jsonb_set(w.inventory,array[bid],to_jsonb(coalesce((w.inventory->>bid)::integer,0)+1));\n    elsif sid is not null and random()>=app_private.trap_success_chance_bp(bid,v.failure_reduction_bp,e.vessel_snapshot)::numeric/10000 then\n     failed:=failed+1;\n    else\n     if sid is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n     insert into public.player_collectibles(user_id,species_id) values(u,sid) returning id into item;\n     insert into public.player_discoveries(user_id,species_id) values(u,sid) on conflict do nothing;\n     results:=results||jsonb_build_array(jsonb_build_object('id',item,'firstDiscovery',coalesce((select evidence.first_discovery from app_private.title_acquisition_evidence evidence where evidence.collectible_id=item and evidence.user_id=u),false),'species',app_private.species_payload(sid,null),'bonus',i>total,'baitId',bid));\n    end if;\n   end loop;\n   receipt:=jsonb_build_object('action','claim','expeditionId',e.id,'result',jsonb_build_object('items',results,'refunds',refunds,'failed',failed,'attempted',cardinality(draws),'succeeded',jsonb_array_length(results)));\n   update public.player_wallets set inventory=w.inventory,updated_at=now() where user_id=u;\n   update public.fishing_expeditions set claimed_at=clock_timestamp(),result=receipt->'result' where id=e.id;\n  end if;\n end if;\n insert into app_private.expedition_operations values(u,p_operation_id,sig,receipt);\n return app_private.expedition_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11420,7 +11787,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.settle_legacy_harbor(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_voyage_id uuid DEFAULT NULL::uuid, p_quantity integer DEFAULT 1)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v public.harbor_vessels;w public.player_wallets;trip public.harbor_voyages;\n prev app_private.harbor_operations;sig jsonb;receipt jsonb;fuel integer;cost integer;sid text;item uuid;i integer;purchase_at timestamptz;\n results jsonb:='[]'::jsonb;items jsonb;failed integer;attempts integer;claimed integer:=0;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('buy','fuel','depart','arrive','claim','claim_all') then raise exception 'INVALID_HARBOR_ACTION';end if;\n sig:=jsonb_build_object('action',p_action,'vessel',p_vessel_id,'voyage',p_voyage_id,'quantity',p_quantity);\n perform pg_advisory_xact_lock(hashtextextended('harbor:'||u::text,0));\n select * into prev from app_private.harbor_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.harbor_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n fuel:=coalesce((w.inventory->>'fuel')::integer,0);purchase_at:=clock_timestamp();\n if p_action in ('buy','depart') then\n  select * into v from public.harbor_vessels where id=p_vessel_id;\n  if not found then raise exception 'VESSEL_NOT_FOUND';end if;\n end if;\n if p_action='buy' then\n  if exists(select 1 from public.player_harbor_vessels where user_id=u and vessel_id=v.id) then raise exception 'VESSEL_ALREADY_OWNED';end if;\n  if w.gold<v.price then raise exception 'INSUFFICIENT_GOLD';end if;\n  insert into public.player_harbor_vessels(user_id,vessel_id) values(u,v.id);\n  update public.player_wallets set gold=gold-v.price,updated_at=now() where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','harbor-vessel:'||v.id,-v.price);\n  receipt:=jsonb_build_object('action','buy','vesselId',v.id);\n elsif p_action='fuel' then\n  if p_quantity is null or p_quantity<1 or p_quantity>5 or fuel>100000-p_quantity then raise exception 'INVALID_QUANTITY';end if;\n  if coalesce((select sum((op.receipt->>'quantity')::integer) from app_private.harbor_operations op\n   where op.user_id=u and op.receipt->>'action'='fuel' and op.created_at>=((purchase_at at time zone 'Asia/Seoul')::date::timestamp at time zone 'Asia/Seoul')),0)+p_quantity>5 then raise exception 'FUEL_DAILY_LIMIT';end if;\n  cost:=p_quantity*60;\n  if w.gold<cost then raise exception 'INSUFFICIENT_GOLD';end if;\n  update public.player_wallets set gold=gold-cost,inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel+p_quantity)),updated_at=now() where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','fuel:'||p_quantity,-cost);\n  receipt:=jsonb_build_object('action','fuel','quantity',p_quantity);\n elsif p_action='depart' then\n  if not exists(select 1 from public.player_harbor_vessels where user_id=u and vessel_id=v.id) then raise exception 'VESSEL_NOT_OWNED';end if;\n  if exists(select 1 from public.harbor_voyages where user_id=u and vessel_id=v.id and claimed_at is null) then raise exception 'VOYAGE_ACTIVE';end if;\n  if fuel<v.fuel_cost then raise exception 'INSUFFICIENT_FUEL';end if;\n  update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel-v.fuel_cost)),updated_at=now() where user_id=u;\n  insert into public.harbor_voyages(user_id,vessel_id,vessel_snapshot,returns_at)\n   values(u,v.id,to_jsonb(v),clock_timestamp()+make_interval(mins=>v.duration_minutes)) returning * into trip;\n  receipt:=jsonb_build_object('action','depart','voyageId',trip.id,'vesselId',v.id);\n elsif p_action='arrive' then\n  select * into trip from public.harbor_voyages where id=p_voyage_id and user_id=u for update;\n  if not found then raise exception 'VOYAGE_NOT_FOUND';end if;\n  if trip.returns_at>clock_timestamp() then raise exception 'VOYAGE_NOT_READY';end if;\n  update public.harbor_voyages set arrival_seen_at=coalesce(arrival_seen_at,clock_timestamp()) where id=trip.id;\n  receipt:=jsonb_build_object('action','arrive','voyageId',trip.id);\n else\n  if p_action='claim' then\n   select * into trip from public.harbor_voyages where id=p_voyage_id and user_id=u;\n   if not found then raise exception 'VOYAGE_NOT_FOUND';end if;\n   if trip.claimed_at is not null then\n    receipt:=jsonb_build_object('action','claim','results',jsonb_build_array(trip.result));\n   elsif trip.returns_at>clock_timestamp() then raise exception 'VOYAGE_NOT_READY';end if;\n  end if;\n  if receipt is null then\n   for trip in select * from public.harbor_voyages where user_id=u and claimed_at is null and returns_at<=clock_timestamp()\n    and (p_action='claim_all' or id=p_voyage_id) order by id for update loop\n    items:='[]'::jsonb;failed:=0;attempts:=(trip.vessel_snapshot->>'fishing_count')::integer;\n    for i in 1..attempts loop\n     -- Same draw and success rules as a normal-bait expedition, no bait inventory debit.\n     sid:=app_private.expedition_pick(trip.region_id,coalesce(trip.vessel_snapshot->>'catch_bait_id','bait'),coalesce((trip.vessel_snapshot->>'native_bonus')::boolean,false),false);\n     if sid is null then\n      if coalesce(trip.vessel_snapshot->>'catch_bait_id','bait')='bait_first_greeting' then failed:=failed+1;continue;end if;\n      raise exception 'NO_COLLECTIBLE_FOR_REGION';\n     end if;\n     if random()<app_private.expedition_success_chance_bp(coalesce(trip.vessel_snapshot->>'catch_bait_id','bait'),0)::numeric/10000 then\n      insert into public.player_collectibles(user_id,species_id) values(u,sid) returning id into item;\n      insert into public.player_discoveries(user_id,species_id) values(u,sid) on conflict do nothing;\n      items:=items||jsonb_build_array(jsonb_build_object('id',item,'firstDiscovery',coalesce((select evidence.first_discovery from app_private.title_acquisition_evidence evidence where evidence.collectible_id=item and evidence.user_id=u),false),'species',app_private.species_payload(sid,null),'bonus',false));\n     else failed:=failed+1;end if;\n    end loop;\n    update public.harbor_voyages set claimed_at=clock_timestamp(),arrival_seen_at=coalesce(arrival_seen_at,clock_timestamp()),\n     result=jsonb_build_object('voyageId',trip.id,'regionId',trip.region_id,'regionName',(select name from public.regions where id=trip.region_id),'vesselName',trip.vessel_snapshot->>'name','items',items,'attempted',attempts,'failed',failed,'succeeded',jsonb_array_length(items)) where id=trip.id returning result into receipt;\n    results:=results||jsonb_build_array(receipt);claimed:=claimed+1;\n   end loop;\n   receipt:=jsonb_build_object('action',p_action,'results',results,'claimed',claimed);\n  end if;\n end if;\n insert into app_private.harbor_operations(user_id,operation_id,signature,receipt,created_at) values(u,p_operation_id,sig,receipt,purchase_at);\n return app_private.harbor_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.settle_legacy_harbor(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_voyage_id uuid DEFAULT NULL::uuid, p_quantity integer DEFAULT 1)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v public.harbor_vessels;w public.player_wallets;trip public.harbor_voyages;\n prev app_private.harbor_operations;sig jsonb;receipt jsonb;fuel integer;cost integer;sid text;item uuid;i integer;purchase_at timestamptz;\n results jsonb:='[]'::jsonb;items jsonb;failed integer;attempts integer;claimed integer:=0;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('buy','fuel','depart','arrive','claim','claim_all') then raise exception 'INVALID_HARBOR_ACTION';end if;\n sig:=jsonb_build_object('action',p_action,'vessel',p_vessel_id,'voyage',p_voyage_id,'quantity',p_quantity);\n perform pg_advisory_xact_lock(hashtextextended('harbor:'||u::text,0));\n select * into prev from app_private.harbor_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.harbor_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n fuel:=coalesce((w.inventory->>'fuel')::integer,0);purchase_at:=clock_timestamp();\n if p_action in ('buy','depart') then\n  select * into v from public.harbor_vessels where id=p_vessel_id;\n  if not found then raise exception 'VESSEL_NOT_FOUND';end if;\n end if;\n if p_action='buy' then\n  if exists(select 1 from public.player_harbor_vessels where user_id=u and vessel_id=v.id) then raise exception 'VESSEL_ALREADY_OWNED';end if;\n  if w.gold<v.price then raise exception 'INSUFFICIENT_GOLD';end if;\n  insert into public.player_harbor_vessels(user_id,vessel_id) values(u,v.id);\n  update public.player_wallets set gold=gold-v.price,updated_at=now() where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','harbor-vessel:'||v.id,-v.price);\n  receipt:=jsonb_build_object('action','buy','vesselId',v.id);\n elsif p_action='fuel' then\n  if p_quantity is null or p_quantity<1 or p_quantity>5 or fuel>100000-p_quantity then raise exception 'INVALID_QUANTITY';end if;\n  if coalesce((select sum((op.receipt->>'quantity')::integer) from app_private.harbor_operations op\n   where op.user_id=u and op.receipt->>'action'='fuel' and op.created_at>=((purchase_at at time zone 'Asia/Seoul')::date::timestamp at time zone 'Asia/Seoul')),0)+p_quantity>5 then raise exception 'FUEL_DAILY_LIMIT';end if;\n  cost:=p_quantity*60;\n  if w.gold<cost then raise exception 'INSUFFICIENT_GOLD';end if;\n  update public.player_wallets set gold=gold-cost,inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel+p_quantity)),updated_at=now() where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','fuel:'||p_quantity,-cost);\n  receipt:=jsonb_build_object('action','fuel','quantity',p_quantity);\n elsif p_action='depart' then\n  if not exists(select 1 from public.player_harbor_vessels where user_id=u and vessel_id=v.id) then raise exception 'VESSEL_NOT_OWNED';end if;\n  if exists(select 1 from public.harbor_voyages where user_id=u and vessel_id=v.id and claimed_at is null) then raise exception 'VOYAGE_ACTIVE';end if;\n  if fuel<v.fuel_cost then raise exception 'INSUFFICIENT_FUEL';end if;\n  update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel-v.fuel_cost)),updated_at=now() where user_id=u;\n  insert into public.harbor_voyages(user_id,vessel_id,vessel_snapshot,returns_at)\n   values(u,v.id,to_jsonb(v),clock_timestamp()+make_interval(mins=>v.duration_minutes)) returning * into trip;\n  receipt:=jsonb_build_object('action','depart','voyageId',trip.id,'vesselId',v.id);\n elsif p_action='arrive' then\n  select * into trip from public.harbor_voyages where id=p_voyage_id and user_id=u for update;\n  if not found then raise exception 'VOYAGE_NOT_FOUND';end if;\n  if trip.returns_at>clock_timestamp() then raise exception 'VOYAGE_NOT_READY';end if;\n  update public.harbor_voyages set arrival_seen_at=coalesce(arrival_seen_at,clock_timestamp()) where id=trip.id;\n  receipt:=jsonb_build_object('action','arrive','voyageId',trip.id);\n else\n  if p_action='claim' then\n   select * into trip from public.harbor_voyages where id=p_voyage_id and user_id=u;\n   if not found then raise exception 'VOYAGE_NOT_FOUND';end if;\n   if trip.claimed_at is not null then\n    receipt:=jsonb_build_object('action','claim','results',jsonb_build_array(trip.result));\n   elsif trip.returns_at>clock_timestamp() then raise exception 'VOYAGE_NOT_READY';end if;\n  end if;\n  if receipt is null then\n   for trip in select * from public.harbor_voyages where user_id=u and claimed_at is null and returns_at<=clock_timestamp()\n    and (p_action='claim_all' or id=p_voyage_id) order by id for update loop\n    items:='[]'::jsonb;failed:=0;attempts:=(trip.vessel_snapshot->>'fishing_count')::integer;\n    for i in 1..attempts loop\n     sid:=app_private.harbor_draw(trip.region_id,trip.vessel_snapshot->'catch_rule');\n     if sid is not null then\n      insert into public.player_collectibles(user_id,species_id) values(u,sid) returning id into item;\n      insert into public.player_discoveries(user_id,species_id) values(u,sid) on conflict do nothing;\n      items:=items||jsonb_build_array(jsonb_build_object('id',item,'firstDiscovery',coalesce((select evidence.first_discovery from app_private.title_acquisition_evidence evidence where evidence.collectible_id=item and evidence.user_id=u),false),'species',app_private.species_payload(sid,null),'bonus',false));\n     else failed:=failed+1;end if;\n    end loop;\n    update public.harbor_voyages set claimed_at=clock_timestamp(),arrival_seen_at=coalesce(arrival_seen_at,clock_timestamp()),\n     result=jsonb_build_object('voyageId',trip.id,'regionId',trip.region_id,'regionName',(select name from public.regions where id=trip.region_id),'vesselName',trip.vessel_snapshot->>'name','items',items,'attempted',attempts,'failed',failed,'succeeded',jsonb_array_length(items)) where id=trip.id returning result into receipt;\n    results:=results||jsonb_build_array(receipt);claimed:=claimed+1;\n   end loop;\n   receipt:=jsonb_build_object('action',p_action,'results',results,'claimed',claimed);\n  end if;\n end if;\n insert into app_private.harbor_operations(user_id,operation_id,signature,receipt,created_at) values(u,p_operation_id,sig,receipt,purchase_at);\n return app_private.harbor_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11482,6 +11849,26 @@
         "arguments": "p fishing_showcase_posts",
         "definition": "CREATE OR REPLACE FUNCTION app_private.showcase_post_json(p fishing_showcase_posts)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select to_jsonb(p)||jsonb_build_object('author_name',a.nickname,'avatar_path',a.avatar_path,\n 'reactions',coalesce((select jsonb_object_agg(q.reaction,q.n) from\n (select reaction,count(*)::int n from public.fishing_showcase_reactions where post_id=p.id group by reaction) q),'{}'::jsonb),\n 'my_reaction',(select reaction from public.fishing_showcase_reactions where post_id=p.id and user_id=auth.uid()))\n from public.player_profiles a where a.id=p.author_id\n$function$\n",
         "securityDefiner": false
+      },
+      {
+        "name": "snapshot_harbor_catch_rule",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.snapshot_harbor_catch_rule()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare rule jsonb;\nbegin\n select catch_rule into strict rule from public.harbor_vessels where id=new.vessel_id;\n if rule is null then raise exception 'HARBOR_RULE_REQUIRED';end if;\n new.vessel_snapshot:=jsonb_set(new.vessel_snapshot,'{catch_rule}',rule);\n return new;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "snapshot_trap_bait_rules",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.snapshot_trap_bait_rules()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n new.vessel_snapshot:=new.vessel_snapshot||jsonb_build_object('bait_rules_version',2,\n  'bait_rules',(select jsonb_object_agg(b.id,app_private.fishing_bait_balance_at(b.id,new.departed_at)) from app_private.fishing_bait_balance_profiles b));\n return new;\nend $function$\n",
+        "securityDefiner": true
       },
       {
         "name": "species_payload",
@@ -11630,8 +12017,38 @@
         ],
         "schema": "app_private",
         "arguments": "p_operation_id uuid, p_action text, p_item_id text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.trade_gold(p_operation_id uuid, p_action text, p_item_id text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid(); v_wallet public.player_wallets; v_previous public.gold_transactions; v_delta integer; v_count integer; v_price integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_operation_id is null or p_action is null or p_action not in ('charge','buy','sell') then raise exception 'INVALID_TRADE'; end if;\n insert into public.player_wallets(user_id) values(v_uid) on conflict do nothing;\n select * into v_wallet from public.player_wallets where user_id=v_uid for update;\n select * into v_previous from public.gold_transactions where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if v_previous.action<>p_action or v_previous.item_id is distinct from p_item_id then raise exception 'OPERATION_CONFLICT'; end if;\n  return app_private.get_gold_wallet() || jsonb_build_object('delta',0);\n end if;\n if p_action='charge' then\n  if p_item_id is not null then raise exception 'INVALID_TRADE'; end if;\n  if not coalesce((select test_charge_enabled from app_private.gold_settings where id),false) then raise exception 'TEST_CHARGE_DISABLED'; end if;\n  if v_wallet.test_claimed then raise exception 'TEST_CHARGE_ALREADY_CLAIMED'; end if;\n  v_delta:=1000;\n else\n  if p_item_id is null or p_item_id not in ('bait','shell') then raise exception 'INVALID_ITEM'; end if;\n  v_count:=coalesce((v_wallet.inventory->>p_item_id)::integer,0);\n  v_price:=case p_item_id when 'bait' then 30 else 300 end;\n  if p_action='buy' then\n   if v_wallet.gold<v_price then raise exception 'INSUFFICIENT_GOLD'; end if;\n   v_delta:=-v_price; v_count:=v_count+1;\n  else\n   if v_count<1 then raise exception 'INSUFFICIENT_INVENTORY'; end if;\n   v_delta:=v_price*6/10; v_count:=v_count-1;\n  end if;\n  v_wallet.inventory:=jsonb_set(v_wallet.inventory,array[p_item_id],to_jsonb(v_count));\n end if;\n if v_wallet.gold+v_delta>1000000000 then raise exception 'GOLD_LIMIT'; end if;\n update public.player_wallets set gold=gold+v_delta,inventory=v_wallet.inventory,test_claimed=test_claimed or p_action='charge',updated_at=now() where user_id=v_uid;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,p_action,p_item_id,v_delta);\n return app_private.get_gold_wallet() || jsonb_build_object('delta',v_delta);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.trade_gold(p_operation_id uuid, p_action text, p_item_id text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_wallet public.player_wallets;v_previous public.gold_transactions;v_delta integer;v_count integer;v_price integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('charge','buy','sell') then raise exception 'INVALID_TRADE';end if;\n insert into public.player_wallets(user_id) values(v_uid) on conflict do nothing;\n select * into v_wallet from public.player_wallets where user_id=v_uid for update;\n select * into v_previous from public.gold_transactions where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if v_previous.action<>p_action or v_previous.item_id is distinct from p_item_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.get_gold_wallet()||jsonb_build_object('delta',0);\n end if;\n if p_action='charge' then\n  if p_item_id is not null then raise exception 'INVALID_TRADE';end if;\n  if not coalesce((select test_charge_enabled from app_private.gold_settings where id),false) then raise exception 'TEST_CHARGE_DISABLED';end if;\n  if v_wallet.test_claimed then raise exception 'TEST_CHARGE_ALREADY_CLAIMED';end if;\n  v_delta:=1000;\n else\n  if p_item_id is null or p_item_id not in ('bait','shell') then raise exception 'INVALID_ITEM';end if;\n  v_count:=coalesce((v_wallet.inventory->>p_item_id)::integer,0);\n  v_price:=case when p_item_id='bait' then (select price from public.fishing_baits where id='bait') else 300 end;\n  if v_price is null then raise exception 'INVALID_ITEM';end if;\n  if p_action='buy' then\n   if v_wallet.gold<v_price then raise exception 'INSUFFICIENT_GOLD';end if;\n   v_delta:=-v_price;v_count:=v_count+1;\n  else\n   if v_count<1 then raise exception 'INSUFFICIENT_INVENTORY';end if;\n   v_delta:=v_price*6/10;v_count:=v_count-1;\n  end if;\n  v_wallet.inventory:=jsonb_set(v_wallet.inventory,array[p_item_id],to_jsonb(v_count));\n end if;\n if v_wallet.gold+v_delta>1000000000 then raise exception 'GOLD_LIMIT';end if;\n update public.player_wallets set gold=gold+v_delta,inventory=v_wallet.inventory,test_claimed=test_claimed or p_action='charge',updated_at=now() where user_id=v_uid;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,p_action,p_item_id,v_delta);\n return app_private.get_gold_wallet()||jsonb_build_object('delta',v_delta);\nend $function$\n",
         "securityDefiner": true
+      },
+      {
+        "name": "trap_minutes_per_bait",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.trap_minutes_per_bait()\n RETURNS integer\n LANGUAGE sql\n IMMUTABLE\n SET search_path TO ''\nAS $function$select 15$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "trap_pick",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_region text, p_bait text, p_native boolean, p_local_discovery boolean, p_snapshot jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.trap_pick(p_region text, p_bait text, p_native boolean, p_local_discovery boolean, p_snapshot jsonb)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare b public.fishing_baits;r public.game_rarity;roll integer:=floor(random()*10000);ids text[];fallback boolean;profile jsonb:=p_snapshot->'bait_rules'->p_bait;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if profile is null then raise exception 'INVALID_BAIT_SNAPSHOT';end if;\n if p_snapshot->>'bait_rules_version'='2' then\n  r:=app_private.profile_fishing_rarity(profile);\n  return app_private.pick_profile_collectible(p_region,r,profile,false,p_native,p_local_discovery);\n end if;\n b:=jsonb_populate_record(null::public.fishing_baits,profile);\n r:=case when b.alternating then app_private.consume_bait_cycle()\n when roll<b.mythic_bp then 'mythic'::public.game_rarity when roll<b.mythic_bp+b.epic_bp then 'epic'::public.game_rarity\n when roll<b.mythic_bp+b.epic_bp+b.rare_bp then 'rare'::public.game_rarity else 'common'::public.game_rarity end;\n if p_bait in ('bait_snowflake_salt','bait_shooting_star_tail') then return app_private.pick_balanced_bait_collectible(p_region,r,p_bait,p_native,false);end if;\n if b.fish_only then return app_private.pick_bait_fish(p_region,r,p_native,false);end if;\n with candidates as materialized (\n select s.id,s.rarity from public.collectible_species s where case\n when p_bait='bait_first_greeting' then s.kind in ('fish','trash','decoration') and not exists(select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id)\n and (not p_local_discovery or exists(select 1 from public.collectible_habitats h where h.species_id=s.id and h.region_id=p_region))\n when p_bait='bait_grubby_magnet' then s.kind='trash'\n when b.effect_kind='decoration' then s.kind='decoration' and s.rarity=r else s.kind in ('fish','trash') and s.rarity=r end\n ),pool as(select * from candidates c where c.rarity=r or not exists(select 1 from candidates c2 where c2.rarity=r))\n select array_agg(id order by id),not coalesce(bool_or(rarity=r),false) into ids,fallback from pool;\n return app_private.pick_habitat_group(ids,p_region,null,(case when p_native then 1.5 else 1 end)*(case when p_bait='bait_sea_memory' then 3 else 1 end),fallback and b.effect_kind<>'decoration');\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "trap_success_chance_bp",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_bait text, p_reduction integer, p_snapshot jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.trap_success_chance_bp(p_bait text, p_reduction integer, p_snapshot jsonb)\n RETURNS integer\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare b jsonb:=p_snapshot->'bait_rules'->p_bait;chance integer;\nbegin\n if b is null then raise exception 'INVALID_BAIT_SNAPSHOT';end if;\n if p_snapshot->>'bait_rules_version'='2' then return 10000;end if;\n if b->>'success_chance_bp' is not null then return (b->>'success_chance_bp')::integer;end if;\n chance:=case when p_bait='bait_safe' then 10000\n when p_bait in ('bait_grubby_magnet','bait_first_greeting','bait_magnet','bait_forbidden_star','bait_epic','bait_special') then 7000\n when p_bait='bait' then 3500 else 4000 end;\n return least(10000,chance+greatest(0,coalesce(p_reduction,0)));\nend $function$\n",
+        "securityDefiner": false
       },
       {
         "name": "travel_region",
@@ -13343,6 +13760,210 @@
         "definition": "NOT NULL value"
       },
       {
+        "name": "bait_balance_grade_total",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK (((((common_bp + rare_bp) + epic_bp) + mythic_bp) = 10000))"
+      },
+      {
+        "name": "bait_balance_native_effect",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK (((effect_kind = 'native_boost'::text) OR (native_multiplier = (1)::numeric)))"
+      },
+      {
+        "name": "bait_balance_night_rules",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK ((((effect_kind <> 'day_night'::text) AND (night_common_bp IS NULL) AND (night_rare_bp IS NULL) AND (night_wait_min_seconds IS NULL) AND (night_wait_max_seconds IS NULL)) OR ((effect_kind = 'day_night'::text) AND (night_common_bp IS NOT NULL) AND (night_rare_bp IS NOT NULL) AND (night_wait_min_seconds IS NOT NULL) AND (night_wait_max_seconds IS NOT NULL) AND ((night_common_bp >= 0) AND (night_common_bp <= 10000)) AND ((night_rare_bp >= 0) AND (night_rare_bp <= 10000)) AND ((((night_common_bp + night_rare_bp) + epic_bp) + mythic_bp) = 10000) AND (night_wait_min_seconds > 0) AND (night_wait_max_seconds >= night_wait_min_seconds))))"
+      },
+      {
+        "name": "bait_balance_targets",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK (((jsonb_typeof(target_kinds) = 'array'::text) AND ((jsonb_array_length(target_kinds) >= 1) AND (jsonb_array_length(target_kinds) <= 3)) AND (target_kinds <@ '[\"fish\", \"trash\", \"decoration\"]'::jsonb)))"
+      },
+      {
+        "name": "bait_balance_wait_range",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK ((wait_max_seconds >= wait_min_seconds))"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_common_bp_check",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK (((common_bp >= 0) AND (common_bp <= 10000)))"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_common_bp_not_null",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "NOT NULL common_bp"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_effect_kind_check",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK ((effect_kind = ANY (ARRAY['standard'::text, 'alternating'::text, 'native_boost'::text, 'common_only'::text, 'undiscovered'::text, 'shooting_star'::text, 'day_night'::text])))"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_effect_kind_not_null",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "NOT NULL effect_kind"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_epic_bp_check",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK (((epic_bp >= 0) AND (epic_bp <= 10000)))"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_epic_bp_not_null",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "NOT NULL epic_bp"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_id_check",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK ((id ~ '^bait(_[a-z0-9]+)*$'::text))"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_id_not_null",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_mythic_bp_check",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK (((mythic_bp >= 0) AND (mythic_bp <= 10000)))"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_mythic_bp_not_null",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "NOT NULL mythic_bp"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_name_check",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK ((length(TRIM(BOTH FROM name)) > 0))"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_name_not_null",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "NOT NULL name"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_native_multiplier_check",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK ((native_multiplier >= (1)::numeric))"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_native_multiplier_not_null",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "NOT NULL native_multiplier"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_pkey",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_price_check",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK ((price >= 0))"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_rare_bp_check",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK (((rare_bp >= 0) AND (rare_bp <= 10000)))"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_rare_bp_not_null",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "NOT NULL rare_bp"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_success_chance_bp_check",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK ((success_chance_bp = 10000))"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_success_chance_bp_not_null",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "NOT NULL success_chance_bp"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_target_kinds_not_null",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "NOT NULL target_kinds"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_wait_max_seconds_not_null",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "NOT NULL wait_max_seconds"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_wait_min_seconds_check",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "CHECK ((wait_min_seconds > 0))"
+      },
+      {
+        "name": "fishing_bait_balance_profiles_wait_min_seconds_not_null",
+        "table": "fishing_bait_balance_profiles",
+        "schema": "app_private",
+        "definition": "NOT NULL wait_min_seconds"
+      },
+      {
+        "name": "fishing_maintenance_check",
+        "table": "fishing_maintenance",
+        "schema": "app_private",
+        "definition": "CHECK (((released_at IS NULL) OR (released_at >= starts_at)))"
+      },
+      {
+        "name": "fishing_maintenance_id_check",
+        "table": "fishing_maintenance",
+        "schema": "app_private",
+        "definition": "CHECK (id)"
+      },
+      {
+        "name": "fishing_maintenance_id_not_null",
+        "table": "fishing_maintenance",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "fishing_maintenance_pkey",
+        "table": "fishing_maintenance",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "fishing_maintenance_starts_at_not_null",
+        "table": "fishing_maintenance",
+        "schema": "app_private",
+        "definition": "NOT NULL starts_at"
+      },
+      {
         "name": "gold_settings_id_check",
         "table": "gold_settings",
         "schema": "app_private",
@@ -14021,6 +14642,12 @@
         "definition": "NOT NULL user_id"
       },
       {
+        "name": "prepared_bait_snapshot_object",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "CHECK (((bait_snapshot IS NULL) OR (jsonb_typeof(bait_snapshot) = 'object'::text)))"
+      },
+      {
         "name": "prepared_fishing_casts_bait_id_fkey",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
@@ -14144,7 +14771,7 @@
         "name": "prepared_fishing_casts_wait_seconds_check",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
-        "definition": "CHECK (((wait_seconds >= (3)::numeric) AND (wait_seconds <= (5)::numeric)))"
+        "definition": "CHECK (((wait_seconds >= (3)::numeric) AND (wait_seconds <= (90)::numeric)))"
       },
       {
         "name": "prepared_fishing_casts_wait_seconds_not_null",
@@ -17075,6 +17702,12 @@
         "definition": "NOT NULL vessel_id"
       },
       {
+        "name": "harbor_catch_rule_valid",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "CHECK (COALESCE(((jsonb_typeof(catch_rule) = 'object'::text) AND (catch_rule ?& ARRAY['version'::text, 'success_bp'::text, 'common_bp'::text, 'rare_bp'::text, 'epic_bp'::text, 'mythic_bp'::text, 'kind'::text, 'trash_bp'::text, 'discovery_weight'::text, 'home_multiplier'::text]) AND (((catch_rule ->> 'version'::text))::integer = 2) AND ((((catch_rule ->> 'success_bp'::text))::integer >= 0) AND (((catch_rule ->> 'success_bp'::text))::integer <= 10000)) AND ((((catch_rule ->> 'common_bp'::text))::integer >= 0) AND (((catch_rule ->> 'common_bp'::text))::integer <= 10000)) AND ((((catch_rule ->> 'rare_bp'::text))::integer >= 0) AND (((catch_rule ->> 'rare_bp'::text))::integer <= 10000)) AND ((((catch_rule ->> 'epic_bp'::text))::integer >= 0) AND (((catch_rule ->> 'epic_bp'::text))::integer <= 10000)) AND ((((catch_rule ->> 'mythic_bp'::text))::integer >= 0) AND (((catch_rule ->> 'mythic_bp'::text))::integer <= 10000)) AND ((((((catch_rule ->> 'common_bp'::text))::integer + ((catch_rule ->> 'rare_bp'::text))::integer) + ((catch_rule ->> 'epic_bp'::text))::integer) + ((catch_rule ->> 'mythic_bp'::text))::integer) = 10000) AND ((catch_rule ->> 'kind'::text) = ANY (ARRAY['mixed'::text, 'trash_weighted'::text, 'decoration'::text, 'discovery_weighted'::text])) AND ((((catch_rule ->> 'trash_bp'::text))::integer >= 0) AND (((catch_rule ->> 'trash_bp'::text))::integer <= 10000)) AND (((catch_rule ->> 'discovery_weight'::text))::numeric >= (1)::numeric) AND (((catch_rule ->> 'home_multiplier'::text))::numeric > (0)::numeric)), false))"
+      },
+      {
         "name": "harbor_vessels_catch_bait_check",
         "table": "harbor_vessels",
         "schema": "public",
@@ -17091,6 +17724,12 @@
         "table": "harbor_vessels",
         "schema": "public",
         "definition": "NOT NULL catch_bait_id"
+      },
+      {
+        "name": "harbor_vessels_catch_rule_not_null",
+        "table": "harbor_vessels",
+        "schema": "public",
+        "definition": "NOT NULL catch_rule"
       },
       {
         "name": "harbor_vessels_duration_minutes_check",
@@ -22517,6 +23156,13 @@
       {
         "role": "authenticated",
         "table": "harbor_vessels",
+        "column": "catch_rule",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "harbor_vessels",
         "column": "duration_minutes",
         "schema": "public",
         "privilege": "SELECT"
@@ -25846,6 +26492,27 @@
         "arguments": "p_listing_id uuid, p_title text"
       },
       {
+        "name": "enforce_fishing_maintenance",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "enforce_fishing_maintenance",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "enforce_fishing_maintenance",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "ensure_merchant_orders",
         "role": "anon",
         "schema": "app_private",
@@ -26392,6 +27059,48 @@
         "arguments": "p_operation_id uuid, p_won boolean"
       },
       {
+        "name": "fishing_bait_balance_at",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait_id text, p_at timestamp with time zone"
+      },
+      {
+        "name": "fishing_bait_balance_at",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait_id text, p_at timestamp with time zone"
+      },
+      {
+        "name": "fishing_bait_balance_at",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait_id text, p_at timestamp with time zone"
+      },
+      {
+        "name": "fishing_maintenance_active",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_at timestamp with time zone"
+      },
+      {
+        "name": "fishing_maintenance_active",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_at timestamp with time zone"
+      },
+      {
+        "name": "fishing_maintenance_active",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_at timestamp with time zone"
+      },
+      {
         "name": "fishing_rod_state",
         "role": "anon",
         "schema": "app_private",
@@ -26852,6 +27561,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer, p_boat_id uuid, p_slot integer, p_region_id text"
+      },
+      {
+        "name": "harbor_draw",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region text, p_rule jsonb"
+      },
+      {
+        "name": "harbor_draw",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region text, p_rule jsonb"
+      },
+      {
+        "name": "harbor_draw",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region text, p_rule jsonb"
       },
       {
         "name": "harbor_state",
@@ -27589,6 +28319,27 @@
         "arguments": "p_ids text[], p_region text, p_rod_region text, p_home_multiplier numeric, p_rarity_fallback boolean"
       },
       {
+        "name": "pick_profile_collectible",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region text, p_rarity game_rarity, p_profile jsonb, p_manual boolean, p_native boolean, p_local_discovery boolean"
+      },
+      {
+        "name": "pick_profile_collectible",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region text, p_rarity game_rarity, p_profile jsonb, p_manual boolean, p_native boolean, p_local_discovery boolean"
+      },
+      {
+        "name": "pick_profile_collectible",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region text, p_rarity game_rarity, p_profile jsonb, p_manual boolean, p_native boolean, p_local_discovery boolean"
+      },
+      {
         "name": "pick_regional_collectible",
         "role": "anon",
         "schema": "app_private",
@@ -27860,6 +28611,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "profile_fishing_rarity",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_profile jsonb"
+      },
+      {
+        "name": "profile_fishing_rarity",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_profile jsonb"
+      },
+      {
+        "name": "profile_fishing_rarity",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_profile jsonb"
       },
       {
         "name": "publish_fishing_showcase",
@@ -28639,6 +29411,48 @@
         "arguments": "p fishing_showcase_posts"
       },
       {
+        "name": "snapshot_harbor_catch_rule",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "snapshot_harbor_catch_rule",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "snapshot_harbor_catch_rule",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "snapshot_trap_bait_rules",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "snapshot_trap_bait_rules",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "snapshot_trap_bait_rules",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "species_payload",
         "role": "anon",
         "schema": "app_private",
@@ -28952,6 +29766,69 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_operation_id uuid, p_action text, p_item_id text"
+      },
+      {
+        "name": "trap_minutes_per_bait",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "trap_minutes_per_bait",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "trap_minutes_per_bait",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "trap_pick",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region text, p_bait text, p_native boolean, p_local_discovery boolean, p_snapshot jsonb"
+      },
+      {
+        "name": "trap_pick",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region text, p_bait text, p_native boolean, p_local_discovery boolean, p_snapshot jsonb"
+      },
+      {
+        "name": "trap_pick",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_region text, p_bait text, p_native boolean, p_local_discovery boolean, p_snapshot jsonb"
+      },
+      {
+        "name": "trap_success_chance_bp",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait text, p_reduction integer, p_snapshot jsonb"
+      },
+      {
+        "name": "trap_success_chance_bp",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait text, p_reduction integer, p_snapshot jsonb"
+      },
+      {
+        "name": "trap_success_chance_bp",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait text, p_reduction integer, p_snapshot jsonb"
       },
       {
         "name": "travel_region",

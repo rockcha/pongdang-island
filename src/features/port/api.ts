@@ -1,6 +1,7 @@
 import {createClient} from '@/lib/client'
 import type {ExpeditionOutcome} from '@/features/expeditions/api'
-export type HarborVessel={id:string;name:string;price:number;duration_minutes:number;fuel_cost:number;fishing_count:number;fishing_count_max?:number|null;catch_bait_id?:string;native_bonus?:boolean;sprite_path:string;owned:boolean;ownedCount:number}
+export type HarborCatchRule={version:number;success_bp:number;common_bp:number;rare_bp:number;epic_bp:number;mythic_bp:number;kind:'mixed'|'trash_weighted'|'decoration'|'discovery_weighted'|'trash_only'|'discovery_only';trash_bp:number;discovery_weight:number;home_multiplier:number}
+export type HarborVessel={id:string;name:string;price:number;duration_minutes:number;fuel_cost:number;fishing_count:number;fishing_count_max?:number|null;catch_bait_id?:string;native_bonus?:boolean;catch_rule?:HarborCatchRule;sprite_path:string;owned:boolean;ownedCount:number}
 export type HarborBoat=Omit<HarborVessel,'id'|'ownedCount'>&{id:string;vessel_id:string;instance_no:number;dock_slot:number|null}
 export type HarborRegion={id:string;name:string;unlocked:boolean}
 export type HarborVoyage={region_id?:string;region_name?:string;id:string;boat_id:string;vessel_id:string;vessel_snapshot:HarborVessel;departed_at:string;returns_at:string;arrival_seen_at:string|null;claimed_at:string|null}

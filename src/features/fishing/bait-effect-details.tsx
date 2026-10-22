@@ -1,10 +1,22 @@
 import {ArrowRight,BookOpen,Fish,MapPin,Repeat2,Shell,Trash2} from 'lucide-react'
 import type {FishingBait} from './api'
 import {rarities,type Rarity} from '@/lib/game/rarity'
+import {baitWaitFlavor} from './bait-wait-flavor'
+import {BaitOddsBars} from './bait-info'
 
 export const baitPercent=(bp:number)=>`${Number((bp/100).toFixed(2))}%`
 
 export function BaitEffectDetails({bait,compact=false}:{bait:FishingBait;compact?:boolean}){
+ if(bait.mechanicsVersion===2)return <section aria-label="미끼 효과" className="min-w-0 space-y-3">
+  <p className="text-xs leading-6 text-foreground/80">{baitWaitFlavor(bait.id)}</p>
+  <div className="rounded-xl border border-border/60 px-3 py-3">
+   <div className="mb-3 flex items-center justify-between gap-2"><h3 className="text-xs font-medium">등급 확률</h3>{bait.period&&<span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] text-muted-foreground">현재 {bait.period==='night'?'밤':'낮'} 기준</span>}{bait.alternating&&<span className="text-[10px] text-primary">다음 {bait.nextRarity==='rare'?'희귀':'일반'}</span>}</div>
+   <BaitOddsBars bait={bait}/>
+   {bait.alternating&&<p className="mt-3 text-[10px] leading-5 text-muted-foreground">사용할 때마다 일반·희귀가 교대하며, 다음 순서는 유지돼요.</p>}
+   {bait.id==='bait_first_greeting'&&<p className="mt-3 text-[10px] leading-5 text-muted-foreground">남은 미발견 개체에 따라 실제 등급 비율이 달라질 수 있어요. 모두 발견했다면 미끼를 소모하지 않아요.</p>}
+   {bait.id==='bait_grubby_magnet'&&<p className="mt-3 text-[10px] leading-5 text-muted-foreground">해당 등급에 쓰레기가 없으면 다른 등급의 쓰레기를 만나요.</p>}
+  </div>
+ </section>
  const chance=bait.successChanceBp??bait.success_chance_bp??bait.baseSuccessChanceBp
  const grades=(Object.keys(rarities) as Rarity[]).filter(key=>bait[`${key}_bp`]>0)
  const discovery=bait.id==='bait_first_greeting',trash=bait.id==='bait_grubby_magnet',decoration=bait.effect_kind==='decoration'

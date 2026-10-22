@@ -2,7 +2,7 @@ import {questProgressChanged} from '@/features/quests/progress-events'
 import {createClient} from '@/lib/client'
 import type {Rarity} from '@/lib/game/rarity'
 export type Vessel={id:string;name:string;price:number;duration_minutes:number;min_baits:number;max_baits:number;bonus_description:string;owned:boolean}
-export const fixedExpeditionVessel:Vessel={id:'dinghy',name:'꼬마 통발',price:0,duration_minutes:10,min_baits:1,max_baits:30,bonus_description:'미끼 1개당 10분 · 최대 30개',owned:true}
+export const fixedExpeditionVessel:Vessel={id:'dinghy',name:'꼬마 통발',price:0,duration_minutes:15,min_baits:1,max_baits:30,bonus_description:'미끼 1개당 15분 · 최대 30개',owned:true}
 export type Catch={firstDiscovery?:boolean;id:string;species:{id:string;name:string;thumbnail_path:string;rarity?:Rarity};bonus:boolean}
 export type ExpeditionOutcome={items:Catch[];failed?:number;attempted?:number;succeeded?:number;refunds?:Record<string,number>}
 export type ExpeditionBoost={id:string;nickname:string;avatar_path:string|null;minutes:number;created_at:string}
@@ -13,7 +13,7 @@ export type FriendExpeditionVisit={serverNow:string;owner:{id:string;nickname:st
 export async function loadFriendExpedition(owner:string){const {data,error}=await createClient().rpc('friend_expedition',{p_owner:owner});if(error)throw error;return data}
 export async function loadFriendExpeditions(){const {data,error}=await createClient().rpc('friend_expedition_status');if(error)throw error;return data}
 export async function boostFriendExpedition(id:string){const {data,error}=await createClient().rpc('boost_friend_expedition',{p_expedition_id:id});if(error)throw error;questProgressChanged();return data}
-export type ExpeditionState={serverNow:string;testEnabled:boolean;vessels:Vessel[];active:Expedition|null;history:Expedition[];baits:{id:string;name:string;image_path:string}[];receipt?:{result?:ExpeditionOutcome}}
+export type ExpeditionState={minutesPerBait?:number;serverNow:string;testEnabled:boolean;vessels:Vessel[];active:Expedition|null;history:Expedition[];baits:{id:string;name:string;image_path:string}[];receipt?:{result?:ExpeditionOutcome}}
 export type ExpeditionAction={p_action:'buy'|'depart'|'claim'|'instant';p_operation_id:string;p_vessel_id?:string;p_region_id?:string;p_cargo?:Record<string,number>;p_expedition_id?:string}
 export async function loadExpeditions(){const {data,error}=await createClient().rpc('expedition_state');if(error)throw error;return data}
 export async function changeExpedition(args:ExpeditionAction){const {data,error}=await createClient().rpc('expedition_action',args);if(error)throw error;if(args.p_action==='depart'||args.p_action==='claim')questProgressChanged();if(args.p_action!=='buy')window.dispatchEvent(new Event('expedition-changed'));return data}

@@ -16,7 +16,7 @@ export function AppLayout() {
   const {pathname:routePathname}=useLocation()
   // React Router also matches a trailing slash; keep these pages in the same
   // viewport layout and banner configuration for either URL spelling.
-  const pathname=/^\/production(?:-shop)?\/+$/.test(routePathname)?routePathname.replace(/\/+$/,''):routePathname
+  const pathname=/^\/(?:production(?:-shop)?|shipyard)\/+$/.test(routePathname)?routePathname.replace(/\/+$/,''):routePathname
   useFishingTripRoute(session?.user.id,pathname)
   const aquarium=pathname==='/aquarium'
   const friendAquarium=/^\/friends\/[^/]+\/aquarium\/?$/.test(pathname)
@@ -30,6 +30,7 @@ export function AppLayout() {
   const exchange=pathname==='/merchant-orders'||pathname==='/exchange'||pathname.startsWith('/exchange/')||pathname==='/savings'
   const friends=pathname==='/friends'||pathname==='/hall-of-fame'
   const shop=pathname==='/shop'||pathname==='/item-shop'||pathname==='/shipyard'
+  const shipyard=pathname==='/shipyard'
   const expedition=pathname==='/expeditions'||/^\/friends\/[^/]+\/expeditions\/?$/.test(pathname)
  const warehouse=pathname==='/warehouse'
   const harbor=pathname==='/harbor'
@@ -38,7 +39,7 @@ export function AppLayout() {
   const memory=pathname==='/arcade'||pathname.startsWith('/arcade/')
   const { wallet, loading: goldLoading, error: goldError } = useGold()
   if(pathname==='/login'||pathname==='/nickname')return <main className="auth-shell"><Outlet/></main>
-  return <div style={port||expedition||memory||shop||friends||exchange||square||showcase||noticeList||mailbox||home||profile?{height:'100dvh',minHeight:0,overflow:'hidden'}:undefined} className={`app-shell mx-auto flex w-full max-w-md flex-col ${tankScreen||fishing||port?'aquarium-shell':harbor?'aquarium-shell px-4':warehouse?'warehouse-shell px-6':'px-6'}`}>
+  return <div style={port||expedition||memory||shop||friends||exchange||square||showcase||noticeList||mailbox||home||profile?{height:'100dvh',minHeight:0,overflow:'hidden'}:undefined} className={`app-shell mx-auto flex w-full max-w-md flex-col ${shipyard?'shipyard-shell ':''}${tankScreen||fishing||port?'aquarium-shell':harbor?'aquarium-shell px-4':warehouse?'warehouse-shell px-6':'px-6'}`}>
     <header className={`pongi-header sticky top-0 z-40 shrink-0 px-3 py-2 ${tankScreen||harbor||fishing||port?'':'-mx-6'}`}>
       {session && <div className="flex min-h-10 items-center justify-between gap-2">
         <div className="flex shrink-0 items-center gap-0">

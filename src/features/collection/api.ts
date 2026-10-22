@@ -10,6 +10,8 @@ export type CollectionState = {items:OwnedCollectible[];catalog:CatalogEntry[]}
 export const kindLabels:Record<CollectibleKind,string>={fish:'물고기',trash:'쓰레기',decoration:'장식물',map:'지도'}
 const refreshedCloudArt=new Set(['map/routes/map-cloudferry_thumbnail.png','equipment/rods/cloudferry/thumbnail.png'])
 export function collectibleUrl(path:string){
+ // The isolated development lab loads public artwork without initializing account auth.
+ if(import.meta.env.DEV&&typeof window!=='undefined'&&window.location.pathname==='/bait-lab')return `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/collectibles/${path}`
  const url=createClient().storage.from('collectibles').getPublicUrl(path).data.publicUrl
  const revision=/^fish\/epic\/lunea-mirrorscale_(sprite|thumbnail)\.png$/.test(path)?'mirrorscale-lavender-v2':/^fish\/epic\/starpattern-manta_(sprite|thumbnail)\.png$/.test(path)?'starlight-20261019':path==='fish/mythic/god-devouring-leviathan_sprite.png'?'leviathan-padding-2':refreshedCloudArt.has(path)?'totoro-2':null
  return revision?`${url}${url.includes('?')?'&':'?'}v=${revision}`:url

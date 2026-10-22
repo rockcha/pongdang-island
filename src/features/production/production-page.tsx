@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router'
-import { ArrowRight, Minus, Plus, LoaderCircle, Store, Info } from 'lucide-react'
+import { ArrowRight, Minus, Plus, LoaderCircle, Store, Info, PackageX } from 'lucide-react'
 import { toast } from 'sonner'
 import { appArt } from '@/components/app-art'
 import { LandscapeImage } from '@/components/landscape-image'
@@ -19,7 +19,6 @@ import {
   productionLabels as labels,
   productionCardColors,
 } from './status-sprite'
-import { BulkProductionControls } from './bulk-controls'
 import { GoldIcon } from '@/features/gold/gold-provider'
 
 const statusFilters = [
@@ -86,7 +85,7 @@ function Details({ site, compact = false }: { site: ProductionFacility; compact?
 }
 
 export function ProductionPage({ shop = false }: { shop?: boolean }) {
-  const { state, error, busy, now, reload, action, bulkAction, retry } = useProduction()
+  const { state, error, busy, now, reload, action, retry } = useProduction()
   const [quantity, setQuantity] = useState(1),
     [shopFilters, setShopFilters] = useState(initialShopFilters)
   const [category, setCategory] = useState<'trash' | 'fish'>('trash'),
@@ -149,28 +148,6 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
       className="flex min-h-0 flex-1 flex-col overflow-hidden"
     >
       <div className="relative z-20 shrink-0 bg-background px-4 pb-2 pt-1">
-        {!shop && (
-          <BulkProductionControls
-            key="all-production"
-            sites={categoryFacilities}
-            now={now}
-            busy={busy}
-            error={error}
-            onAction={async (args) => {
-              const success = await bulkAction(args)
-              if (success)
-                toast.success(
-                  args.p_action === 'start'
-                    ? '생산소를 일괄 가동했어요.'
-                    : args.p_action === 'claim'
-                      ? '완성된 연료를 모두 받았어요.'
-                      : '만료된 연료를 모두 폐기했어요.',
-                )
-              return success
-            }}
-          />
-        )}
-
         <div className="mb-2 flex items-center justify-between text-xs">
           <span className="flex items-center gap-1.5 text-muted-foreground">
             <appArt.fuel className="size-5" />
@@ -385,6 +362,16 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                                       </p>
                                       <ProductionProgress site={site} now={now} />
                                     </div>
+                                  </div>
+                                )}
+                                {!shop && status === 'expired' && (
+                                  <div
+                                    data-production-expired-overlay
+                                    className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center gap-2 bg-zinc-950/65 px-3 pt-8 text-center text-white"
+                                  >
+                                    <PackageX aria-hidden="true" className="size-8 text-amber-200" />
+                                    <span className="text-xs font-medium">보관 기간 만료</span>
+                                    <span className="text-[10px] text-white/85">눌러서 생산물 폐기</span>
                                   </div>
                                 )}
                                 {!shop && <StatusCircle site={site} now={now} />}

@@ -1,5 +1,6 @@
 // @vitest-environment node
 import {afterAll,beforeAll,beforeEach,expect,it} from 'vitest'
+import catalog from '../supabase/catalog/catalog.json'
 import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
 let db
 const owner='00000000-0000-0000-0000-000000000901',other='00000000-0000-0000-0000-000000000902'
@@ -9,7 +10,7 @@ async function wallet(){return (await db.query('select gold,inventory from publi
 async function fleetAction(kind,boat,slot=null,uid=owner,op=crypto.randomUUID()){return (await asUser(uid,'select public.harbor_action($1,$2,null,null,1,$3,$4) s',[kind,op,boat,slot])).rows[0].s}
 async function ready(){await db.exec("update public.harbor_voyages set departed_at=clock_timestamp()-interval '4 hours',returns_at=clock_timestamp()-interval '1 minute'")}
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db);for(const id of [owner,other]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,id===owner?'항구선장':'다른선장']);await db.query('insert into public.player_wallets(user_id,gold) values($1,10000) on conflict(user_id) do update set gold=10000',[id])}},60000)
-beforeEach(async()=>{await db.exec(`truncate public.notifications,public.harbor_voyages,public.harbor_boats,public.player_harbor_vessels,app_private.harbor_operations;update public.player_wallets set gold=10000,inventory='{"bait":40,"fuel":10}'`)})
+beforeEach(async()=>{for(const v of catalog.harbor_vessels)await db.query('update public.harbor_vessels set catch_rule=$2 where id=$1',[v.id,JSON.stringify(v.catch_rule)]);await db.exec(`truncate public.notifications,public.harbor_voyages,public.harbor_boats,public.player_harbor_vessels,app_private.harbor_operations;update public.player_wallets set gold=10000,inventory='{"bait":40,"fuel":10}'`)})
 afterAll(async()=>{await db?.close()})
 it('sells at half price once, frees the slot, and reuses an available instance number',async()=>{
  const first=await action('buy','current-rider');await action('buy','current-rider')
@@ -48,22 +49,22 @@ it('sells stored boats and rejects a wallet overflow without losing the boat',as
  const raft=await action('buy','fishing-raft')
  expect((await fleetAction('sell',raft.receipt.boatId)).receipt.gold).toBe(200)
 })
-it('uses conch bait for unique discoveries and can finish when everything is discovered',async()=>{
+it('uses a weighted discovery profile and can finish when everything is discovered',async()=>{
  const chance=(await db.query("select pg_get_functiondef('app_private.expedition_success_chance_bp(text,integer)'::regprocedure) definition")).rows[0].definition
- await db.exec("create or replace function app_private.expedition_success_chance_bp(p_bait_id text,p_reduction integer) returns integer language sql as 'select 10000'")
+ await db.exec("update public.harbor_vessels set catch_rule=jsonb_set(catch_rule,'{success_bp}','10000')")
  try{
+  await db.exec("update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}','100')")
   await action('buy','conch-explorer')
   const departed=await action('depart','conch-explorer'),trip=departed.voyages[0]
-  expect(trip.vessel_snapshot).toMatchObject({price:2200,duration_minutes:390,fuel_cost:3,fishing_count:5,catch_bait_id:'bait_first_greeting'})
-  const known=(await db.query('select species_id from public.player_discoveries where user_id=$1',[owner])).rows.map(r=>r.species_id)
+  expect(trip.vessel_snapshot).toMatchObject({price:2200,duration_minutes:420,fuel_cost:6,fishing_count:5,catch_bait_id:'bait_first_greeting'})
   await ready();const result=(await action('claim',null,trip.id)).receipt.results[0]
   expect(result.items).toHaveLength(5)
-  expect(new Set(result.items.map(item=>item.species.id)).size).toBe(5)
-  expect(result.items.every(item=>!known.includes(item.species.id))).toBe(true)
+  expect(result.items.every(item=>['fish','trash','decoration'].includes(item.species.kind))).toBe(true)
+  expect(trip.vessel_snapshot.catch_rule).toMatchObject({kind:'discovery_weighted',discovery_weight:2})
   await db.query('insert into public.player_discoveries(user_id,species_id) select $1,id from public.collectible_species on conflict do nothing',[owner])
   const again=await action('depart','conch-explorer');await ready()
   const empty=(await action('claim',null,again.voyages[0].id)).receipt.results[0]
-  expect(empty).toMatchObject({attempted:5,failed:5,items:[]})
+  expect(empty).toMatchObject({attempted:5,failed:0})
   expect((await wallet()).inventory.bait).toBe(40)
  }finally{
   await db.exec(chance)
@@ -72,9 +73,10 @@ it('uses conch bait for unique discoveries and can finish when everything is dis
 })
 it('uses shrimp for luxury voyages and worms for quick boats without spending bait inventory',async()=>{
  const chance=(await db.query("select pg_get_functiondef('app_private.expedition_success_chance_bp(text,integer)'::regprocedure) definition")).rows[0].definition
- await db.exec("create or replace function app_private.expedition_success_chance_bp(p_bait_id text,p_reduction integer) returns integer language sql as 'select 10000'")
+ await db.exec("update public.harbor_vessels set catch_rule=jsonb_set(catch_rule,'{success_bp}','10000')")
  try{
-  for(const [id,price,minutes,fuel,count,bait] of [['moonpearl-luxury',3200,600,5,10,'bait_special'],['current-rider',700,15,1,4,'bait']]){
+  for(const [id,price,minutes,fuel,count,bait] of [['moonpearl-luxury',3200,630,10,10,'bait_special'],['current-rider',700,15,1,4,'bait']]){
+   await db.exec("update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}','100')")
    await action('buy',id)
    const departed=await action('depart',id),trip=departed.voyages.find(v=>v.vessel_id===id)
    expect(trip.vessel_snapshot).toMatchObject({price,duration_minutes:minutes,fuel_cost:fuel,fishing_count:count,catch_bait_id:bait})
@@ -87,7 +89,8 @@ it('uses shrimp for luxury voyages and worms for quick boats without spending ba
  }finally{await db.exec(chance)}
 })
 it('saves the two new boats with their requested random attempt ranges',async()=>{
- for(const [id,price,minutes,fuel,min,max] of [['billow-rider',1600,360,3,12,24],['golden-luck',2500,480,4,18,32]]){
+ for(const [id,price,minutes,fuel,min,max] of [['billow-rider',1600,360,5,12,24],['golden-luck',2500,480,7,18,32]]){
+  await db.exec("update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}','100')")
   await action('buy',id)
   const op=crypto.randomUUID(),state=await action('depart',id,null,1,op)
   const trip=state.voyages.find(v=>v.vessel_id===id)
@@ -101,7 +104,7 @@ it('saves the two new boats with their requested random attempt ranges',async()=
 it('snapshots specialized bait and native effects and settles their matching catch pools',async()=>{
  const pick=(await db.query("select pg_get_functiondef('app_private.expedition_pick(text,text,boolean,boolean)'::regprocedure) definition")).rows[0].definition
  const chance=(await db.query("select pg_get_functiondef('app_private.expedition_success_chance_bp(text,integer)'::regprocedure) definition")).rows[0].definition
- await db.exec("create or replace function app_private.expedition_success_chance_bp(p_bait_id text,p_reduction integer) returns integer language sql as 'select 10000'")
+ await db.exec("update public.harbor_vessels set catch_rule=jsonb_set(catch_rule,'{success_bp}','10000')")
  try{
   for(const [id,bait,native,count] of [['waterway-explorer','bait',true,10],['pearl-salvager','bait_magnet',false,8],['scrap-gobbler','bait_grubby_magnet',false,18],['starlit-cruiser','bait',false,null]]){
    await db.exec('update public.player_wallets set gold=10000,inventory=jsonb_build_object(\'fuel\',10)')
@@ -112,11 +115,12 @@ it('snapshots specialized bait and native effects and settles their matching cat
    if(count)expect(trip.vessel_snapshot.fishing_count).toBe(count)
    else expect(trip.vessel_snapshot.fishing_count).toBeGreaterThanOrEqual(30)
    expect(trip.vessel_snapshot.fishing_count).toBeLessThanOrEqual(40)
-   if(native)await db.exec("create or replace function app_private.expedition_pick(p_region text,p_bait text,p_native boolean,p_local_discovery boolean default false) returns text language plpgsql as $$begin if not p_native then raise exception 'NATIVE_BONUS_MISSING';end if;return 'sand-goby';end$$")
+   expect(trip.vessel_snapshot.catch_rule.home_multiplier).toBe(native?1.5:1)
    await ready();const claimed=await action('claim',null,trip.id),result=claimed.receipt.results[0]
    expect(result.attempted).toBe(trip.vessel_snapshot.fishing_count)
    expect(result.items).toHaveLength(result.attempted)
-   if(bait!=='bait')expect(result.items.every(item=>item.species.kind===(bait==='bait_magnet'?'decoration':'trash'))).toBe(true)
+   if(bait==='bait_magnet')expect(result.items.every(item=>item.species.kind==='decoration')).toBe(true)
+   if(bait==='bait_grubby_magnet')expect(result.items.every(item=>['fish','trash'].includes(item.species.kind))).toBe(true)
    await db.exec(pick)
    await fleetAction('store',boat.id)
   }
@@ -130,9 +134,9 @@ it('never counts harbor departures or claimed catches toward fishing quests',asy
  const before=await progress()
  await action('buy','fishing-raft');await action('depart','fishing-raft')
  expect(await progress()).toEqual(before)
- // Force a successful settlement so the exclusion cannot pass just because every attempt failed.
+ // Force a successful settlement in this fixture so quest exclusion is exercised.
  const original=(await db.query("select pg_get_functiondef('app_private.expedition_success_chance_bp(text,integer)'::regprocedure) definition")).rows[0].definition
- await db.exec("create or replace function app_private.expedition_success_chance_bp(p_bait_id text,p_reduction integer) returns integer language sql as 'select 10000'")
+ await db.exec("update public.harbor_voyages set vessel_snapshot=jsonb_set(vessel_snapshot,'{catch_rule,success_bp}','10000') where claimed_at is null")
  try{
   await ready();const claim=await action('claim_all')
   expect(claim.receipt.results[0].succeeded).toBe(2)
@@ -167,8 +171,8 @@ it('stores extra boats in the inventory and only replaces a dock after the occup
  const op=crypto.randomUUID(),departed=await fleetAction('depart',long.id,null,owner,op)
  await fleetAction('depart',long.id,null,owner,op)
  const trip=departed.voyages[0]
- expect(trip.vessel_snapshot).toMatchObject({price:1500,duration_minutes:480,fuel_cost:5,fishing_count:28})
- expect((await wallet()).inventory.fuel).toBe(5)
+ expect(trip.vessel_snapshot).toMatchObject({price:1500,duration_minutes:480,fuel_cost:9,fishing_count:28})
+ expect((await wallet()).inventory.fuel).toBe(1)
 })
 it('isolates physical boats and rejects invalid dock numbers and direct edits',async()=>{
  const state=await action('buy','fishing-raft'),boat=state.boats[0]
@@ -180,7 +184,7 @@ it('isolates physical boats and rejects invalid dock numbers and direct edits',a
 })
 it('lists all boat types and limits each type to two physical boats with an idempotent receipt',async()=>{
  const initial=(await asUser(owner,'select public.harbor_state() s')).rows[0].s
- expect(initial.vessels.slice(0,4).map(v=>[v.name,v.duration_minutes,v.fuel_cost,v.fishing_count])).toEqual([['낚시용 뗏목',40,0,2],['낚시용 드론',60,1,4],['너울 낚싯배',120,2,10],['해넘이 원양어선',480,5,28]])
+ expect(initial.vessels.slice(0,4).map(v=>[v.name,v.duration_minutes,v.fuel_cost,v.fishing_count])).toEqual([['낚시용 뗏목',40,0,2],['낚시용 드론',60,1,4],['너울 낚싯배',120,4,10],['해넘이 원양어선',480,9,28]])
  const op=crypto.randomUUID();await action('buy','fishing-raft',null,1,op);expect((await action('buy','fishing-raft',null,1,op)).replayed).toBe(true)
  expect((await wallet()).gold).toBe(9600)
  await action('buy','fishing-raft');await expect(action('buy','fishing-raft')).rejects.toThrow(/OWNERSHIP_LIMIT/)
@@ -216,7 +220,7 @@ it('requires ownership and fuel, schedules per-boat trips and consumes fuel only
  expect(Date.parse(a.voyages[0].returns_at)-Date.parse(a.voyages[0].departed_at)).toBeCloseTo(40*60000,-2)
  await expect(action('depart','fishing-raft')).rejects.toThrow(/ACTIVE/)
  const b=await action('depart','neoul-boat')
- expect(b.voyages).toHaveLength(2);expect((await wallet()).inventory).toEqual({bait:40,fuel:8})
+ expect(b.voyages).toHaveLength(2);expect((await wallet()).inventory).toEqual({bait:40,fuel:6})
  const second=b.voyages.find(v=>v.vessel_id==='neoul-boat')
  expect(Date.parse(second.returns_at)-Date.parse(second.departed_at)).toBeCloseTo(120*60000,-2)
  await expect(action('claim',null,second.id)).rejects.toThrow(/NOT_READY/)

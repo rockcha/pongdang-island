@@ -56,7 +56,7 @@ it('shows boat purchase stats visually and announces a confirmed purchase',async
  expect(effect.parentElement?.hasAttribute('open')).toBe(false)
  fireEvent.click(effect)
  expect(effect.parentElement?.hasAttribute('open')).toBe(true)
- expect(guard.textContent).toContain('토착종 가중치 +50%')
+ expect(guard.textContent).toContain('토착종 그룹 가중치 +50%')
  expect(mock.toast).not.toHaveBeenCalled()
  fireEvent.click(within(guard).getByRole('button',{name:'확인'}))
  await waitFor(()=>expect(mock.toast).toHaveBeenCalledExactlyOnceWith('물길잡이 탐사선 구매 완료'))

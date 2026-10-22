@@ -257,6 +257,13 @@
  overflow: hidden;
 }
 
+/* Keep the shipyard viewport still while its boat list scrolls independently. */
+html:has(.shipyard-shell),
+body:has(.shipyard-shell) {
+ overflow: hidden;
+ overscroll-behavior: none;
+}
+
 .app-shell.aquarium-shell {
  height: 100dvh;
  min-height: 0;
@@ -609,6 +616,11 @@ button, [role='button'] { cursor: pointer; }
 }
 
 @keyframes game-screen-enter { from { opacity: 0; } to { opacity: 1; } }
+
+@keyframes fishing-rumor-enter { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: no-preference) {
+ .fishing-rumor-enter { animation: fishing-rumor-enter 350ms ease-out both; }
+}
 
 @keyframes notification-sheet-in { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 @keyframes notification-sheet-out { to { transform: translateY(100%); opacity: 0; } }

@@ -13,6 +13,11 @@ export type TensionOptions={rarity?:Rarity;wait?:number;failureAt?:number;failur
 export function newTensionGame(random=Math.random,options:TensionOptions={}):TensionGame{
  return {rarity:options.rarity??'common',failureAt:options.failureAt,failureReason:options.failureReason,seed:Math.floor(random()*100000),wait:options.wait??3+Math.max(0,Math.min(1,random()))*2,time:0,tension:38,progress:.12,danger:0,slack:0,phase:'waiting'}
 }
+// Test controls may shorten only the waiting phase, never the fight or its input.
+export function reduceTensionWait(state:TensionGame,seconds:number):TensionGame{
+ if(state.phase!=='waiting'||!Number.isFinite(seconds)||seconds<=0)return state
+ return {...state,wait:Math.max(0,state.wait-seconds)}
+}
 // All durations are real seconds; rarity increases both pull length and count.
 export function fishingSchedule(seed:number,rarity:Rarity){
  const roll=(n:number)=>{const x=Math.sin(seed*1.37+n*78.233)*43758.5453;return x-Math.floor(x)}

@@ -13,7 +13,6 @@ import { useAuth } from '@/components/auth-provider'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription,DialogTrigger } from '@/components/ui/dialog'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import type { Rarity } from '@/lib/game/rarity'
 import { GoldIcon } from '@/features/gold/gold-provider'
 import { AquariumToolButton } from '@/features/aquarium/aquarium-tool-button'
 import { CollectibleThumbnail } from './collectible-thumbnail'
@@ -21,7 +20,8 @@ import { CollectibleKindIcon } from './collectible-kind-icon'
 import { PrimaryHabitat } from './native-region-badge'
 import {collectibleCardTones} from './collectible-card-tones'
 import { kindLabels, loadCollection } from './api'
-import type { CollectibleKind, CollectionState, CatalogEntry, Species } from './api'
+import type { CollectionState, CatalogEntry, Species } from './api'
+import {readCollectionFilters,saveCollectionFilters} from './filter-preference'
 
 const {collection:BookOpenText}=appArt
 
@@ -41,20 +41,20 @@ export function CollectionDialog({ onAddTemporary,fishing=false,disabled=false,d
     <DialogTitle className="flex items-center gap-2 text-lg"><BookOpenText aria-hidden="true" className="size-5 text-primary"/>바다 도감</DialogTitle>
     <DialogDescription className="text-xs">모든 해역에서 만날 수 있어요. 주 서식지에서는 더 자주 발견돼요.</DialogDescription>
    </DialogHeader>
-   {open && <CollectionBook key={session?.user.id} onAddTemporary={onAddTemporary}/>}
+   {open && <CollectionBook key={session?.user.id} onAddTemporary={onAddTemporary} rememberFiltersFor={fishing?(session?.user.id??'guest'):undefined}/>}
   </DialogContent>
  </Dialog>
 }
 
-export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='all' }: CollectionDialogProps & {previewAll?:boolean;initialRegion?:string}) {
+export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='all',rememberFiltersFor }: CollectionDialogProps & {previewAll?:boolean;initialRegion?:string;rememberFiltersFor?:string}) {
  const [state, setState] = useState<CollectionState | null>(null)
  const [error, setError] = useState('')
- const [tab, setTab] = useState<'all' | CollectibleKind>('all')
- const [rarity, setRarity] = useState<'all' | Rarity>('all')
- const [habitat, setHabitat] = useState(initialRegion)
+ const [filters,setFilters]=useState(()=>readCollectionFilters(rememberFiltersFor,initialRegion))
+ const {tab,rarity,habitat}=filters
  const [detail,setDetail] = useState<CatalogEntry|null>(null)
  const [attempt, setAttempt] = useState(0)
  const [mapPrices,setMapPrices]=useState<Record<string,number>>({})
+ useEffect(()=>{if(rememberFiltersFor)saveCollectionFilters(rememberFiltersFor,filters)},[rememberFiltersFor,filters])
  useEffect(()=>{let active=true;void loadMapShop().then(data=>{if(active)setMapPrices(Object.fromEntries(data.items.map(item=>[item.region_id,item.price])))}).catch(()=>{});return()=>{active=false}},[])
  useEffect(() => {
   let active = true
@@ -74,7 +74,7 @@ export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='
     <TooltipProvider><div role="group" aria-label="도감 분류" className="flex gap-1">
      {(['all', 'fish', 'trash', 'decoration'] as const).map(value => {
       const label = value === 'all' ? '전체' : kindLabels[value]
-      return <Tooltip key={value}><TooltipTrigger render={<Button type="button" size="icon" variant={tab === value ? 'secondary' : 'ghost'} aria-label={label} data-selection-icons aria-pressed={tab === value} className="size-10 rounded-xl" onClick={() => setTab(value)}/> }>
+      return <Tooltip key={value}><TooltipTrigger render={<Button type="button" size="icon" variant={tab === value ? 'secondary' : 'ghost'} aria-label={label} data-selection-icons aria-pressed={tab === value} className="size-10 rounded-xl" onClick={() => setFilters(previous=>({...previous,tab:value}))}/> }>
        {value === 'all' ? <LayoutGrid className="size-[18px]"/> : <CollectibleKindIcon kind={value} className="size-7"/>}
       </TooltipTrigger><TooltipContent>{label}</TooltipContent></Tooltip>
      })}
@@ -82,8 +82,8 @@ export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='
     <span className="text-[11px] tabular-nums text-muted-foreground">{previewAll?(state?`전체 ${entries.length}종`:'전체 —종'):state ? `발견 ${entries.filter(s=>s.discovered).length}/${entries.length}` : '발견 —/—'}</span>
    </div>
    <div className="flex gap-2">
-    <BookSelect region label="도감 주 서식지" value={habitat} onChange={setHabitat} items={[{value:'all',label:'전체 주 서식지'},...habitats.map(region=>({value:region.id,label:region.name}))]}/>
-    <RaritySelect value={rarity} onChange={setRarity}/>
+    <BookSelect region label="도감 주 서식지" value={habitat} onChange={habitat=>setFilters(previous=>({...previous,habitat}))} items={[{value:'all',label:'전체 주 서식지'},...habitats.map(region=>({value:region.id,label:region.name}))]}/>
+    <RaritySelect value={rarity} onChange={rarity=>setFilters(previous=>({...previous,rarity}))}/>
    </div>
   </div>
   <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">

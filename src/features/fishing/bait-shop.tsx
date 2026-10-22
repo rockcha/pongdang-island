@@ -7,6 +7,7 @@ import {Minus,Plus} from 'lucide-react'
 import {Button} from '@/components/ui/button'
 import {GoldIcon,useGold} from '@/features/gold/gold-provider'
 import {loadFishing,type FishingBait} from './api'
+import {BaitTarget,BaitWaitTag} from './bait-info'
 
 export function BaitShop(){
  const {wallet,transact,batchEffects,loading,busy,error:goldError}=useGold()
@@ -31,18 +32,18 @@ export function BaitShop(){
  }
  if(error)return <div role="alert" className="space-y-2 text-sm"><p>{error}</p><Button variant="outline" onClick={()=>setAttempt(a=>a+1)}>다시 불러오기</Button></div>
  if(!items)return <ProductSkeleton/>
- return <><ul className="grid grid-cols-3 border-t border-border/60">{items.map(item=><li key={item.id} className="min-w-0 overflow-hidden border-r border-b border-border/60 bg-card"><button type="button" aria-label={item.name+' 상세 보기'} disabled={purchasing} onClick={()=>{setDetail(item);setQuantity(1);setPurchaseError('')}} className="flex w-full flex-col items-center px-1 pt-2 pb-3 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring"><div className="relative aspect-square w-full"><LandscapeImage src={item.image_path} alt="" className="absolute inset-0 size-full object-contain"/></div><h2 className="mt-1 h-10 text-xs leading-5 line-clamp-2">{item.name}</h2><span className="flex items-center gap-1 text-xs text-primary">{item.price===null?'구매 불가':<><GoldIcon className="size-3"/>{item.price.toLocaleString('ko-KR')}</>}</span></button></li>)}</ul>
+ return <><ul className="grid grid-cols-3 border-t border-border/60">{items.map(item=><li key={item.id} className="min-w-0 overflow-hidden border-r border-b border-border/60 bg-card"><button type="button" aria-label={item.name+' 상세 보기'} disabled={purchasing} onClick={()=>{setDetail(item);setQuantity(1);setPurchaseError('')}} className="flex w-full flex-col items-center px-1 pt-2 pb-3 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring"><div className="relative aspect-square w-full"><LandscapeImage src={item.image_path} alt="" className="absolute inset-0 size-full object-contain"/>{item.mechanicsVersion===2&&<span className="absolute right-1 top-1"><BaitWaitTag bait={item} iconOnly/></span>}</div><h2 className="mt-1 h-10 text-xs leading-5 line-clamp-2">{item.name}</h2><span className="flex items-center gap-1 text-xs text-primary">{item.price===null?'구매 불가':<><GoldIcon className="size-3"/>{item.price.toLocaleString('ko-KR')}</>}</span></button></li>)}</ul>
  <Dialog open={!!detail} onOpenChange={value=>{if(!value&&!purchasing)setDetail(null)}}>
   <DialogContent className="notification-sheet bottom-0 top-auto left-0 flex max-h-[85dvh] max-w-full translate-x-0 translate-y-0 flex-col gap-0 overflow-hidden rounded-t-2xl rounded-b-none p-0 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2">
    <DialogHeader className="shrink-0 px-4 pt-5 pb-3">
-    <DialogTitle className="flex items-center gap-2 pr-7"><img src="/branding/pongi-starfish.png" alt="" aria-hidden="true" className="size-5 shrink-0 object-contain"/>{detail?.name}</DialogTitle>
+    <DialogTitle className="flex flex-wrap items-center gap-2 pr-7"><img src="/branding/pongi-starfish.png" alt="" aria-hidden="true" className="size-5 shrink-0 object-contain"/>{detail?.name}{detail?.mechanicsVersion===2&&<BaitWaitTag bait={detail}/>}</DialogTitle>
     <DialogDescription className="sr-only">미끼 효과를 확인하고 구매 수량을 선택하세요.</DialogDescription>
    </DialogHeader>
    {detail&&<>
     <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-3">
      <div className="mb-3 flex items-center gap-4">
       <div className="relative size-[72px] shrink-0"><LandscapeImage src={detail.image_path} alt={detail.name} className="absolute inset-0 size-full object-contain"/></div>
-      <div className="min-w-0 flex-1"><p className="text-xs text-muted-foreground">낚시 성공률</p><p className="mt-1 text-2xl font-semibold tabular-nums text-primary">{detailChance===undefined?'—':baitPercent(detailChance)}</p></div>
+      <div className="min-w-0 flex-1">{detail.mechanicsVersion===2?<BaitTarget bait={detail}/>:<><p className="text-xs text-muted-foreground">낚시 성공률</p><p className="mt-1 text-2xl font-semibold tabular-nums text-primary">{detailChance===undefined?'—':baitPercent(detailChance)}</p></>}</div>
      </div>
      <BaitEffectDetails bait={detail} compact/>
      {purchaseError&&<p role="alert" className="mt-3 text-xs leading-5 text-destructive">{purchaseError}</p>}

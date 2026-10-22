@@ -1,3 +1,5 @@
+import {baitWaitFlavor} from './bait-wait-flavor'
+
 export const baitEffects:Record<string,string>={
  bait_forbidden_star:'성공 확률 소폭 증가 · 특급·신화 개체를 만날 확률 증가',
  bait_grubby_magnet:'성공 확률 소폭 증가 · 낚시 성공 시 쓰레기 포획 100%',
@@ -17,6 +19,7 @@ export function fishingBaitEffect(id:string,fallback:string,success?:number,base
 }
 
 export function fishingBaitSummary(bait:import('./api').FishingBait){
+ if(bait.mechanicsVersion===2)return `${baitWaitFlavor(bait.id)}${bait.alternating?` · 다음: ${bait.nextRarity==='rare'?'희귀':'일반'} 전용`:''}`
  const chance=bait.successChanceBp??bait.success_chance_bp??bait.baseSuccessChanceBp
  const effect=fishingBaitEffect(bait.id,bait.effect_description,bait.successChanceBp,bait.baseSuccessChanceBp)
  const next=bait.alternating?` · 다음: ${bait.nextRarity==='rare'?'희귀':'일반'} 전용`:''

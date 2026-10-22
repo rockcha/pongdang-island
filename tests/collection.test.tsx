@@ -1,12 +1,13 @@
 ﻿import {cleanup,fireEvent,render,screen,within} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
+import {waitFor} from '@testing-library/react'
 import {CollectionBook,CollectionDialog} from '@/features/collection/collection-dialog'
 const {load}=vi.hoisted(()=>({load:vi.fn()}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name}:{name:string})=><span role="img" aria-label={name}/>}))
 vi.mock('@/features/collection/api',()=>({loadCollection:load,kindLabels:{fish:'물고기',trash:'쓰레기',decoration:'장식물',map:'지도'}}))
-afterEach(()=>{cleanup();vi.clearAllMocks()})
+afterEach(()=>{cleanup();vi.clearAllMocks();localStorage.clear()})
 const coral={id:'coral',name:'산호빛 여울'},moon={id:'mistmoon',name:'안개달 해역'}
 const base={description:'작은 바다 친구의 이야기',size:52,speed:.05,thumbnail_path:'preview.png',discovered:false}
 const shared={...base,id:'shared',discovered:true,name:'공통 물고기',kind:'fish',rarity:'common',sell_price:30,habitats:[coral,moon]}
@@ -93,4 +94,28 @@ it('allows repeated temporary insertion from cards without opening details',asyn
  expect(screen.getAllByRole('dialog')).toHaveLength(1)
  fireEvent.click(screen.getByRole('button',{name:'달빛 장식물 임시 넣기'}))
  expect(add).toHaveBeenLastCalledWith(decoration)
+})
+
+it('restores fishing collection filters after reopening and remounting the fishing page',async()=>{
+ load.mockResolvedValue({items:[],catalog:[decoration,native,shared,map]})
+ const view=render(<CollectionDialog fishing/>)
+ fireEvent.click(screen.getByRole('button',{name:'바다 도감'}))
+ await screen.findByRole('article',{name:'공통 물고기'})
+ fireEvent.click(screen.getByRole('button',{name:'물고기'}))
+ await choose('등급 선택','희귀 20%')
+ await choose('도감 주 서식지','산호빛 여울')
+ expect(cards()).toEqual(['산호 물고기'])
+ fireEvent.click(screen.getByRole('button',{name:'Close'}))
+ await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())
+ fireEvent.click(screen.getByRole('button',{name:'바다 도감'}))
+ await screen.findByRole('article',{name:'산호 물고기'})
+ expect(cards()).toEqual(['산호 물고기'])
+ expect(screen.getByRole('button',{name:'물고기'}).getAttribute('aria-pressed')).toBe('true')
+ expect(screen.getByRole('combobox',{name:'도감 주 서식지'}).textContent).toContain('산호빛 여울')
+ expect(screen.getByRole('combobox',{name:'등급 선택'}).textContent).toContain('희귀')
+ view.unmount()
+ render(<CollectionDialog fishing/>)
+ fireEvent.click(screen.getByRole('button',{name:'바다 도감'}))
+ await screen.findByRole('article',{name:'산호 물고기'})
+ expect(cards()).toEqual(['산호 물고기'])
 })

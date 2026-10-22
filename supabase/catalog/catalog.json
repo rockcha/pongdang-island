@@ -553,7 +553,7 @@
       "mythic_bp": 30,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "물고기·쓰레기 포획 미끼 확률로 인한 강제 실패 없이 마지막 게이지 조작으로 포획해요.",
+      "effect_description": "물고기·쓰레기·장식물 포획 미끼 확률로 인한 강제 실패 없이 마지막 게이지 조작으로 포획해요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -661,7 +661,7 @@
       "mythic_bp": 30,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "물고기·쓰레기 포획 미끼 확률로 인한 강제 실패 없이 마지막 게이지 조작으로 포획해요.",
+      "effect_description": "물고기·쓰레기·장식물 포획 미끼 확률로 인한 강제 실패 없이 마지막 게이지 조작으로 포획해요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -715,7 +715,7 @@
       "mythic_bp": 141,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "물고기·쓰레기 포획 미끼 확률로 인한 강제 실패 없이 마지막 게이지 조작으로 포획해요.",
+      "effect_description": "물고기·쓰레기·장식물 포획 미끼 확률로 인한 강제 실패 없이 마지막 게이지 조작으로 포획해요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -895,7 +895,7 @@
       "mythic_bp": 30,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "물고기·쓰레기 포획 미끼 확률로 인한 강제 실패 없이 마지막 게이지 조작으로 포획해요.",
+      "effect_description": "물고기·쓰레기·장식물 포획 미끼 확률로 인한 강제 실패 없이 마지막 게이지 조작으로 포획해요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -913,7 +913,7 @@
       "mythic_bp": 30,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "현재 해역 토착종 선택 가중치가 3배예요. 물고기·쓰레기 포획 미끼 확률로 인한 강제 실패 없이 마지막 게이지 조작으로 포획해요.",
+      "effect_description": "현재 해역 토착종 선택 가중치가 3배예요. 물고기·쓰레기·장식물 포획 미끼 확률로 인한 강제 실패 없이 마지막 게이지 조작으로 포획해요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -967,7 +967,7 @@
       "mythic_bp": 30,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "토착종을 제외한 공통종만 만나요. 물고기·쓰레기 포획 미끼 확률로 인한 강제 실패 없이 마지막 게이지 조작으로 포획해요.",
+      "effect_description": "토착종을 제외한 공통종만 만나요. 물고기·쓰레기·장식물 포획 미끼 확률로 인한 강제 실패 없이 마지막 게이지 조작으로 포획해요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -985,7 +985,7 @@
       "mythic_bp": 30,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "물고기·쓰레기 포획 미끼 확률로 인한 강제 실패 없이 마지막 게이지 조작으로 포획해요.",
+      "effect_description": "물고기·쓰레기·장식물 포획 미끼 확률로 인한 강제 실패 없이 마지막 게이지 조작으로 포획해요.",
       "success_chance_bp": 10000,
       "fish_only": false,
       "alternating": false
@@ -20138,7 +20138,8 @@
       "wait_max_seconds": 18,
       "target_kinds": [
         "fish",
-        "trash"
+        "trash",
+        "decoration"
       ],
       "effect_kind": "standard",
       "native_multiplier": 1,
@@ -20268,7 +20269,8 @@
       "wait_max_seconds": 18,
       "target_kinds": [
         "fish",
-        "trash"
+        "trash",
+        "decoration"
       ],
       "effect_kind": "standard",
       "native_multiplier": 1,
@@ -20334,7 +20336,8 @@
       "wait_max_seconds": 23,
       "target_kinds": [
         "fish",
-        "trash"
+        "trash",
+        "decoration"
       ],
       "effect_kind": "standard",
       "native_multiplier": 1,
@@ -20547,7 +20550,8 @@
       "wait_max_seconds": 13,
       "target_kinds": [
         "fish",
-        "trash"
+        "trash",
+        "decoration"
       ],
       "effect_kind": "standard",
       "native_multiplier": 1,
@@ -20569,7 +20573,8 @@
       "wait_max_seconds": 20,
       "target_kinds": [
         "fish",
-        "trash"
+        "trash",
+        "decoration"
       ],
       "effect_kind": "native_boost",
       "native_multiplier": 3,
@@ -20635,7 +20640,8 @@
       "wait_max_seconds": 18,
       "target_kinds": [
         "fish",
-        "trash"
+        "trash",
+        "decoration"
       ],
       "effect_kind": "common_only",
       "native_multiplier": 1,
@@ -20657,7 +20663,8 @@
       "wait_max_seconds": 15,
       "target_kinds": [
         "fish",
-        "trash"
+        "trash",
+        "decoration"
       ],
       "effect_kind": "standard",
       "native_multiplier": 1,

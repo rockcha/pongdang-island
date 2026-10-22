@@ -110,6 +110,17 @@ it('lets aurora catch both fish and decorations while excluding trash',()=>{
  expect([...kinds].sort()).toEqual(['decoration','fish'])
 })
 
+it.each(['bait','bait_epic','bait_forbidden_star','bait_safe','bait_sea_memory','bait_snowflake_salt','bait_special'])('allows all three kinds for universal bait %s',id=>{
+ expect(labBaits.find(b=>b.id===id)?.targetKinds).toEqual(['fish','trash','decoration'])
+ const kinds=new Set<string>()
+ for(let i=0;i<100;i++){
+  let calls=0
+  const state=startLab(freshLab(),id,'pongdang',()=>++calls===3?i/100:.5)
+  kinds.add(state.pending!.species.kind)
+ }
+ expect([...kinds].sort()).toEqual(['decoration','fish','trash'])
+})
+
 it('shortens only the pending wait without rerolling, spending bait or changing local gold',()=>{
  const original=startLab(freshLab(),'bait_deep_sleep_sachet','pongdang',()=>.5)
  let state=advanceLabWait(original)

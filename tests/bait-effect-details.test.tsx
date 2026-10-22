@@ -8,7 +8,7 @@ afterEach(cleanup)
 it('distinguishes shared species from common grade and mythic grade from fish-only',()=>{
  render(<BaitEffectDetails bait={catalog.fishing_baits.find(b=>b.id==='bait_snowflake_salt')}/> )
  expect(screen.getByText('공통종만 포획')).toBeTruthy()
- expect(screen.getByText(/토착종·외지종과 장식물은 제외/)).toBeTruthy()
+ expect(screen.getByText(/공통종 물고기·쓰레기·장식물을 만나요/)).toBeTruthy()
  expect(screen.getByText('0.3%')).toBeTruthy()
  cleanup()
  render(<BaitEffectDetails bait={catalog.fishing_baits.find(b=>b.id==='bait_shooting_star_tail')}/> )
@@ -57,7 +57,7 @@ it('keeps fallback-dependent trash and undiscovered pools out of fixed grade per
 it('keeps success compact and tiny mythic odds readable',()=>{
  const bait=catalog.fishing_baits.find(b=>b.id==='bait_starlight_wax')
  render(<BaitEffectDetails bait={bait}/>)
- expect(screen.getByText('낚시 성공률').nextElementSibling?.textContent).toBe('70%')
+ expect(screen.getByText('낚시 성공률').nextElementSibling?.textContent).toBe('100%')
  expect(screen.queryByRole('progressbar')).toBeNull()
  expect(screen.getByText('0.6%')).toBeTruthy()
 })

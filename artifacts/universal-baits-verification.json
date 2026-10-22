@@ -1,0 +1,23 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "verifiedAt": "2026-10-22T12:25:05.667795+00:00",
+  "migration": "20261022121911_universal_baits_include_decorations.sql",
+  "migrationSha256": "be8654436ba215531ed234fbde44fc4df4a4d364b26ca9416895fe1e71aa6a53",
+  "scope": "All current bait profile and bait rows compared to preflight; only 7 targets and matching descriptions changed. Related picker definition and execution grants checked. No player data queried. Not a full remote schema comparison.",
+  "updatedBaitIds": [
+    "bait",
+    "bait_epic",
+    "bait_forbidden_star",
+    "bait_safe",
+    "bait_sea_memory",
+    "bait_snowflake_salt",
+    "bait_special"
+  ],
+  "otherBaitsAndBalanceUnchanged": true,
+  "pickerMatchesLocalMigration": true,
+  "previousHistoryGapsUnchanged": [
+    "20261022101208",
+    "20261022102055"
+  ],
+  "newSecurityAdvisorIssues": []
+}

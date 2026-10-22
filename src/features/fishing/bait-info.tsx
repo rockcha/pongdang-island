@@ -9,7 +9,7 @@ export function BaitWaitInfo({bait}:{bait:Pick<FishingBait,'id'|'period'>}){
 const targets={fish:{icon:appArt.fish,label:'물고기'},trash:{icon:appArt.trash,label:'쓰레기'},decoration:{icon:appArt.decoration,label:'장식물'}}
 export function baitTargetKinds(bait:FishingBait){
  if(bait.id==='bait_shooting_star_tail')return ['fish','trash','decoration']
- return bait.target_kinds??(bait.id==='bait_grubby_magnet'?['trash']:bait.effect_kind==='decoration'?['decoration']:bait.fish_only?['fish']:['fish','trash'])
+ return bait.target_kinds??(bait.id==='bait_grubby_magnet'?['trash']:bait.effect_kind==='decoration'?['decoration']:bait.fish_only?['fish']:['fish','trash','decoration'])
 }
 export function BaitTarget({bait}:{bait:FishingBait}){
  const kinds=baitTargetKinds(bait)

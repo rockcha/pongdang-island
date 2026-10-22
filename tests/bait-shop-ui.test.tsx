@@ -1,11 +1,17 @@
-import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
+import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {BaitShop} from '@/features/fishing/bait-shop'
+import {BaitTarget} from '@/features/fishing/bait-info'
+import type {FishingBait} from '@/features/fishing/api'
 const mock=vi.hoisted(()=>({transact:vi.fn().mockResolvedValue(undefined),load:vi.fn()}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wallet:{gold:1000,inventory:{}},transact:mock.transact,batchEffects:async(work:()=>Promise<void>)=>work(),loading:false,busy:false,error:''})}))
 vi.mock('@/features/fishing/api',()=>({loadFishing:mock.load}))
 beforeEach(()=>mock.load.mockResolvedValue({baits:[{id:'bait',name:'테스트 미끼',description:'미끼',image_path:'/bait.png',price:10,effect_description:'효과'}]}))
 afterEach(()=>{cleanup();vi.clearAllMocks()})
+it('shows decorations alongside fish and trash for a universal bait without a server target field',()=>{
+ render(<BaitTarget bait={{id:'bait',effect_kind:'fish'} as FishingBait}/>)
+ expect(screen.getByLabelText('포획 대상').textContent).toBe('물고기쓰레기장식물')
+})
 it('lets users erase one and type thirty without restoring one mid-edit',async()=>{
  render(<BaitShop/>);fireEvent.click(await screen.findByRole('button',{name:'테스트 미끼 상세 보기'}))
  const input=screen.getByRole('spinbutton',{name:'구매 수량'}) as HTMLInputElement
@@ -45,7 +51,7 @@ it('combines search, target and waiting filters and resets an empty result befor
  expect(screen.getByRole('searchbox',{name:'미끼 검색'})).toHaveProperty('value','')
  fireEvent.click(screen.getByRole('button',{name:'꼬질 자석 상세 보기'}))
  expect(screen.getByLabelText('포획 대상').textContent).toBe('쓰레기')
- expect(screen.getByText('보통')).toBeTruthy()
+ expect(within(screen.getByRole('dialog')).getByText('보통')).toBeTruthy()
  fireEvent.click(screen.getByRole('button',{name:'꼬질 자석 1개 구매'}))
  await waitFor(()=>expect(mock.transact).toHaveBeenCalledWith({type:'buy',id:'fishing:bait_grubby_magnet',name:'꼬질 자석'}))
 })

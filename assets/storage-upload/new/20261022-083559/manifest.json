@@ -1,0 +1,130 @@
+{
+  "entries": [
+    {
+      "id": "shared-uncountable-colony",
+      "source": "generated/shared-uncountable-colony.source",
+      "storage_path": "fish/mythic/shared-uncountable-colony_swim8_sprite.png",
+      "frames": 8,
+      "columns": 4,
+      "anchor": [
+        0.8,
+        0.4
+      ],
+      "prompt": "Use case: identity-preserve. Edit the first image's creature into a PRODUCTION ANIMATION SPRITESHEET, entirely replace the old 3x2 layout with exactly 4 columns and 2 rows (EIGHT poses). Second image is STYLE ONLY: soft polished fantasy gradients, dimensional shaded forms, delicate colored edges; never copy ray anatomy. Preserve identity/colors of first creature. COLONY: many tiny luminous blue-violet fish form one right-facing leviathan. Top four: coordinated tail-to-head wave, fish maintain whale-shaped body. Bottom four: outer fish peel into a tight helical ring around stable leading head, ring opens, curls inward, reforms exact school. Individual fish change positions along arcs, not whole-body opacity.\nCanvas 2048x1024, 8 equal 512x512 square cells, row-major. Every cell has same scale, same head/body anchor at same local coordinates. Reserve 10% transparent margins around EVERY pose. Four top poses are successive basic swim phases. Four bottom poses are preparation, full action, returning, recovery. Last bottom pose close to first top pose for seamless loop. Draw genuinely distinct intermediate physical poses, not duplicates, opacity flicker, zoom, whole-body shifts or blinking-only. Head faces SCREEN RIGHT in every pose. Detailed elegant coherent anatomy, no clipped tips. TRUE TRANSPARENT BACKGROUND, alpha=0 across all gutters and broad empty areas. NO background fog, halo clouds, gradient panels, water, checkerboard, gridlines, labels, numbers or text. Only creature and tiny tightly contained attached accents.",
+      "references": [
+        "assets/references/shared-ocean-20261022/shared-uncountable-colony_cutout.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "tool": "built-in image_gen",
+      "output_hint": "Generated images are saved to C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c as C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c\\exec-4ee657b8-b849-412e-85fe-a07b3ee91bc8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "shared-forgotten-star",
+      "source": "generated/shared-forgotten-star.source",
+      "storage_path": "fish/mythic/shared-forgotten-star_swim8_sprite.png",
+      "frames": 8,
+      "columns": 4,
+      "anchor": [
+        0.5,
+        0.5
+      ],
+      "prompt": "Use case: identity-preserve. Edit the first image's creature into a PRODUCTION ANIMATION SPRITESHEET, entirely replace the old 3x2 layout with exactly 4 columns and 2 rows (EIGHT poses). Second image is STYLE ONLY: soft polished fantasy gradients, dimensional shaded forms, delicate colored edges; never copy ray anatomy. Preserve identity/colors of first creature. FORGOTTEN STAR: dark indigo five-armed cosmic sea-star with amber rim, luminous heart and short gold filaments. Keep central core fixed and same sized, in a slight side-three-quarter orientation leaning right. Top four: staggered soft bending of five tips. Bottom four: inner filaments physically unfurl, spiral around central heart, fold back, settle into initial pose. Not brightness-only.\nCanvas 2048x1024, 8 equal 512x512 square cells, row-major. Every cell has same scale, same head/body anchor at same local coordinates. Reserve 10% transparent margins around EVERY pose. Four top poses are successive basic swim phases. Four bottom poses are preparation, full action, returning, recovery. Last bottom pose close to first top pose for seamless loop. Draw genuinely distinct intermediate physical poses, not duplicates, opacity flicker, zoom, whole-body shifts or blinking-only. Head faces SCREEN RIGHT in every pose. Detailed elegant coherent anatomy, no clipped tips. TRUE TRANSPARENT BACKGROUND, alpha=0 across all gutters and broad empty areas. NO background fog, halo clouds, gradient panels, water, checkerboard, gridlines, labels, numbers or text. Only creature and tiny tightly contained attached accents.",
+      "references": [
+        "assets/references/shared-ocean-20261022/shared-forgotten-star_cutout.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "tool": "built-in image_gen",
+      "output_hint": "Generated images are saved to C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c as C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c\\exec-7e23de08-3a70-44ef-89ea-889a62855670.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "shared-weightless-skull-whale",
+      "source": "generated/shared-weightless-skull-whale.source",
+      "storage_path": "fish/mythic/shared-weightless-skull-whale_swim8_sprite.png",
+      "frames": 8,
+      "columns": 4,
+      "anchor": [
+        0.8,
+        0.4
+      ],
+      "prompt": "Use case: identity-preserve. Edit the first image's creature into a PRODUCTION ANIMATION SPRITESHEET, entirely replace the old 3x2 layout with exactly 4 columns and 2 rows (EIGHT poses). Second image is STYLE ONLY: soft polished fantasy gradients, dimensional shaded forms, delicate colored edges; never copy ray anatomy. Preserve identity/colors of first creature. SKULL WHALE: ivory skeletal whale with blue-violet ether fins and tail, a few floating bone fragments. Head points RIGHT, skull and ribcage absolutely fixed. Top four: four consecutive phases of gentle tail propulsion, paired fin trailing. Bottom four: small fragments lift into a halo around ribs, complete a graceful orbit, return to their original locations; jaw parts slightly then closes while skull remains fixed.\nCanvas 2048x1024, 8 equal 512x512 square cells, row-major. Every cell has same scale, same head/body anchor at same local coordinates. Reserve 10% transparent margins around EVERY pose. Four top poses are successive basic swim phases. Four bottom poses are preparation, full action, returning, recovery. Last bottom pose close to first top pose for seamless loop. Draw genuinely distinct intermediate physical poses, not duplicates, opacity flicker, zoom, whole-body shifts or blinking-only. Head faces SCREEN RIGHT in every pose. Detailed elegant coherent anatomy, no clipped tips. TRUE TRANSPARENT BACKGROUND, alpha=0 across all gutters and broad empty areas. NO background fog, halo clouds, gradient panels, water, checkerboard, gridlines, labels, numbers or text. Only creature and tiny tightly contained attached accents.",
+      "references": [
+        "assets/references/shared-ocean-20261022/shared-weightless-skull-whale_cutout.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "tool": "built-in image_gen",
+      "output_hint": "Generated images are saved to C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c as C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c\\exec-b030a0f5-df38-4bda-ac6d-be6491db9a49.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "shared-eclipse-eclion",
+      "source": "generated/shared-eclipse-eclion.source",
+      "storage_path": "fish/mythic/shared-eclipse-eclion_swim8_sprite.png",
+      "frames": 8,
+      "columns": 4,
+      "anchor": [
+        0.8,
+        0.4
+      ],
+      "prompt": "Use case: identity-preserve. Edit the first image's creature into a PRODUCTION ANIMATION SPRITESHEET, entirely replace the old 3x2 layout with exactly 4 columns and 2 rows (EIGHT poses). Second image is STYLE ONLY: soft polished fantasy gradients, dimensional shaded forms, delicate colored edges; never copy ray anatomy. Preserve identity/colors of first creature. ECLION: navy scaled slender sea dragon facing RIGHT, gold seam scales, teal fin mane and an eclipsed black sun attached behind shoulders. Head and torso anchored. Top four: smooth traveling tail wave, mane and fin rays follow with delay. Bottom four: eclipse corona crescents peel into a small curved arc above shoulder, fins spread then fold, corona reconnects, recover to initial swim shape. No drastic pose change.\nCanvas 2048x1024, 8 equal 512x512 square cells, row-major. Every cell has same scale, same head/body anchor at same local coordinates. Reserve 10% transparent margins around EVERY pose. Four top poses are successive basic swim phases. Four bottom poses are preparation, full action, returning, recovery. Last bottom pose close to first top pose for seamless loop. Draw genuinely distinct intermediate physical poses, not duplicates, opacity flicker, zoom, whole-body shifts or blinking-only. Head faces SCREEN RIGHT in every pose. Detailed elegant coherent anatomy, no clipped tips. TRUE TRANSPARENT BACKGROUND, alpha=0 across all gutters and broad empty areas. NO background fog, halo clouds, gradient panels, water, checkerboard, gridlines, labels, numbers or text. Only creature and tiny tightly contained attached accents.",
+      "references": [
+        "assets/references/shared-ocean-20261022/shared-eclipse-eclion_cutout.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "tool": "built-in image_gen",
+      "output_hint": "Generated images are saved to C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c as C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c\\exec-751b831b-5293-41fb-bd53-b3f9aa9687db.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "shared-horizon-jormungandr",
+      "source": "generated/shared-horizon-jormungandr.source",
+      "storage_path": "fish/mythic/shared-horizon-jormungandr_swim8_sprite.png",
+      "frames": 8,
+      "columns": 4,
+      "anchor": [
+        0.8,
+        0.4
+      ],
+      "prompt": "Use case: identity-preserve. Edit the first image's creature into a PRODUCTION ANIMATION SPRITESHEET, entirely replace the old 3x2 layout with exactly 4 columns and 2 rows (EIGHT poses). Second image is STYLE ONLY: soft polished fantasy gradients, dimensional shaded forms, delicate colored edges; never copy ray anatomy. Preserve identity/colors of first creature. JORMUNGANDR: long blue cosmic sea serpent facing RIGHT with pearly belly and lilac fin fringe, curved body framing a tiny sunset horizon within its lower loop. Fixed head and neck. Top four: continuous gentle S-wave along tail and rippling fin fringe. Bottom four: trailing loop tightens slightly around the sunset, tail-tip slides along loop, loop loosens, returns to original curve. Sunset stays inside loop. Keep readable long serpent, no upright posture switch.\nCanvas 2048x1024, 8 equal 512x512 square cells, row-major. Every cell has same scale, same head/body anchor at same local coordinates. Reserve 10% transparent margins around EVERY pose. Four top poses are successive basic swim phases. Four bottom poses are preparation, full action, returning, recovery. Last bottom pose close to first top pose for seamless loop. Draw genuinely distinct intermediate physical poses, not duplicates, opacity flicker, zoom, whole-body shifts or blinking-only. Head faces SCREEN RIGHT in every pose. Detailed elegant coherent anatomy, no clipped tips. TRUE TRANSPARENT BACKGROUND, alpha=0 across all gutters and broad empty areas. NO background fog, halo clouds, gradient panels, water, checkerboard, gridlines, labels, numbers or text. Only creature and tiny tightly contained attached accents.",
+      "references": [
+        "assets/references/shared-ocean-20261022/shared-horizon-jormungandr_cutout.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "tool": "built-in image_gen",
+      "output_hint": "Generated images are saved to C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c as C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c\\exec-c6c9ebdf-56b4-4c25-ad4c-1bd26c8f9fba.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "shared-island-hafgufa",
+      "source": "generated/shared-island-hafgufa.source",
+      "storage_path": "fish/mythic/shared-island-hafgufa_swim8_sprite.png",
+      "frames": 8,
+      "columns": 4,
+      "anchor": [
+        0.8,
+        0.4
+      ],
+      "prompt": "Use case: identity-preserve. Edit the first image's creature into a PRODUCTION ANIMATION SPRITESHEET, entirely replace the old 3x2 layout with exactly 4 columns and 2 rows (EIGHT poses). Second image is STYLE ONLY: soft polished fantasy gradients, dimensional shaded forms, delicate colored edges; never copy ray anatomy. Preserve identity/colors of first creature. HAFGUFA: massive gentle blue whale facing RIGHT with a small living moss/coral island on back and gold seed-lights. Head and shoulder and island ground fixed in place. Top four: natural shallow tail stroke, no arm-like flipper paddling. Bottom four: coral fronds gradually unfurl, gold seeds rise in a short spiral, fronds curl back, seeds return and settle. Same island details and whale anatomy in all frames.\nCanvas 2048x1024, 8 equal 512x512 square cells, row-major. Every cell has same scale, same head/body anchor at same local coordinates. Reserve 10% transparent margins around EVERY pose. Four top poses are successive basic swim phases. Four bottom poses are preparation, full action, returning, recovery. Last bottom pose close to first top pose for seamless loop. Draw genuinely distinct intermediate physical poses, not duplicates, opacity flicker, zoom, whole-body shifts or blinking-only. Head faces SCREEN RIGHT in every pose. Detailed elegant coherent anatomy, no clipped tips. TRUE TRANSPARENT BACKGROUND, alpha=0 across all gutters and broad empty areas. NO background fog, halo clouds, gradient panels, water, checkerboard, gridlines, labels, numbers or text. Only creature and tiny tightly contained attached accents.",
+      "references": [
+        "assets/references/shared-ocean-20261022/shared-island-hafgufa_cutout.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "tool": "built-in image_gen",
+      "output_hint": "Generated images are saved to C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c as C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c\\exec-176272c2-82ed-4679-85aa-9c0049718d34.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "shared-abyss-charybdis",
+      "source": "generated/shared-abyss-charybdis.source",
+      "storage_path": "fish/mythic/shared-abyss-charybdis_swim8_sprite.png",
+      "frames": 8,
+      "columns": 4,
+      "anchor": [
+        0.65,
+        0.5
+      ],
+      "prompt": "Use case: identity-preserve. Edit the first image's creature into a PRODUCTION ANIMATION SPRITESHEET, entirely replace the old 3x2 layout with exactly 4 columns and 2 rows (EIGHT poses). Second image is STYLE ONLY: soft polished fantasy gradients, dimensional shaded forms, delicate colored edges; never copy ray anatomy. Preserve identity/colors of first creature. CHARYBDIS: pearly nautilus-like cosmic creature facing RIGHT, scalloped opening at right containing a dark spiral, flowing indigo-lilac mantle ribbons trail LEFT. Shell body absolutely fixed. Top four: mantle ribbon propulsion wave, aperture normal. Bottom four: ribbon tips curl inward toward aperture, aperture rim gently flares with clearly drawn inward-spiraling filaments, tips unwind, aperture settles. No explosion, no giant vortex background.\nCanvas 2048x1024, 8 equal 512x512 square cells, row-major. Every cell has same scale, same head/body anchor at same local coordinates. Reserve 10% transparent margins around EVERY pose. Four top poses are successive basic swim phases. Four bottom poses are preparation, full action, returning, recovery. Last bottom pose close to first top pose for seamless loop. Draw genuinely distinct intermediate physical poses, not duplicates, opacity flicker, zoom, whole-body shifts or blinking-only. Head faces SCREEN RIGHT in every pose. Detailed elegant coherent anatomy, no clipped tips. TRUE TRANSPARENT BACKGROUND, alpha=0 across all gutters and broad empty areas. NO background fog, halo clouds, gradient panels, water, checkerboard, gridlines, labels, numbers or text. Only creature and tiny tightly contained attached accents.",
+      "references": [
+        "assets/references/shared-ocean-20261022/shared-abyss-charybdis_cutout.png",
+        "assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "tool": "built-in image_gen",
+      "output_hint": "Generated images are saved to C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c as C:\\Users\\user\\.codex\\generated_images\\01a15ee5-02b8-7d22-b644-c51686c54b7c\\exec-965b19f9-5d61-4977-b9eb-55a0f93b9d92.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    }
+  ]
+}

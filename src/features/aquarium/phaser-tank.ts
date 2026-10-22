@@ -10,7 +10,7 @@ import {premiumSwimFrame} from './premium-swim-frame'
 import {decorationGeometry} from './decoration-geometry'
 import {swimFrameLayout} from './swim-frame-layout'
 import {tankResolution} from './tank-resolution'
-import {mythicSwimAsset,mythicSwimFrame,mythicSwimLayout} from './mythic-swim'
+import {mythicSheetColumns,mythicSwimAsset,mythicSwimFrame,mythicSwimLayout} from './mythic-swim'
 import {primalPlantAsset,primalPlantFrame} from './primal-plants'
 import {whitenightFixedFrame} from './whitenight-animation'
 import {cloudferryFixedFrame} from './cloudferry-animation'
@@ -145,7 +145,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
           if (!queued.has(key) && !failed.has(key)) { queued.add(key); this.load.image(key, enhanced?.url??('url' in base?base.url:undefined)??collectibleUrl(path)) }
           continue
         }
-        if(sheet)this.registerSheet(key,enhanced?4:2)
+        if(sheet)this.registerSheet(key,mythicSheetColumns(path))
         const current = entries.get(item.id)
         if (current) {
           this.setMythicGlow(current.sprite,item.species.rarity)

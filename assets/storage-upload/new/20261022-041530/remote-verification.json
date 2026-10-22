@@ -1,0 +1,1382 @@
+{
+  "project": "ewafafphiovbpjwogwzn.supabase.co",
+  "verifiedAt": "2026-10-21T19:36:07.817Z",
+  "scope": "27 new identities, prices, movement settings and habitats; not complete schema parity or migration history",
+  "species": [
+    {
+      "id": "cloud-broken-broom",
+      "name": "부러진 빗자루",
+      "rarity": "epic",
+      "kind": "trash",
+      "sell_price": 100,
+      "native_region_id": "cloudferry",
+      "movement_type": "fixed",
+      "swim_y_min": 0.9,
+      "swim_y_max": 0.98
+    },
+    {
+      "id": "cloud-lost-magic-key",
+      "name": "주인 잃은 마법 열쇠",
+      "rarity": "epic",
+      "kind": "trash",
+      "sell_price": 110,
+      "native_region_id": "cloudferry",
+      "movement_type": "fixed",
+      "swim_y_min": 0.9,
+      "swim_y_max": 0.98
+    },
+    {
+      "id": "cloud-noface-mask",
+      "name": "가오나시의 가면",
+      "rarity": "common",
+      "kind": "trash",
+      "sell_price": 20,
+      "native_region_id": "cloudferry",
+      "movement_type": "fixed",
+      "swim_y_min": 0.9,
+      "swim_y_max": 0.98
+    },
+    {
+      "id": "cloud-old-red-shoe",
+      "name": "낡은 빨간 구두",
+      "rarity": "common",
+      "kind": "trash",
+      "sell_price": 15,
+      "native_region_id": "cloudferry",
+      "movement_type": "fixed",
+      "swim_y_min": 0.9,
+      "swim_y_max": 0.98
+    },
+    {
+      "id": "cloud-wet-train-ticket",
+      "name": "젖은 기차표",
+      "rarity": "common",
+      "kind": "trash",
+      "sell_price": 18,
+      "native_region_id": "cloudferry",
+      "movement_type": "fixed",
+      "swim_y_min": 0.9,
+      "swim_y_max": 0.98
+    },
+    {
+      "id": "shared-abyss-charybdis",
+      "name": "바다의 중심을 삼키는 자, 카리브디스",
+      "rarity": "mythic",
+      "kind": "fish",
+      "sell_price": 2650,
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.72
+    },
+    {
+      "id": "shared-apricot-tongue-snail",
+      "name": "살구무늬 혀고둥",
+      "rarity": "rare",
+      "kind": "fish",
+      "sell_price": 210,
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "swim_y_min": 0.86,
+      "swim_y_max": 0.96
+    },
+    {
+      "id": "shared-blue-leaf-sheep",
+      "name": "쪽빛 잎사귀 양달팽이",
+      "rarity": "common",
+      "kind": "fish",
+      "sell_price": 55,
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "swim_y_min": 0.86,
+      "swim_y_max": 0.96
+    },
+    {
+      "id": "shared-blue-wing-nudibranch",
+      "name": "푸른 날개 갯민숭달팽이",
+      "rarity": "rare",
+      "kind": "fish",
+      "sell_price": 230,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "swim_y_min": 0.15,
+      "swim_y_max": 0.8
+    },
+    {
+      "id": "shared-crimson-vampire-squid",
+      "name": "심홍 망토 흡혈오징어",
+      "rarity": "epic",
+      "kind": "fish",
+      "sell_price": 780,
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.72
+    },
+    {
+      "id": "shared-crown-atolla",
+      "name": "심해 왕관 아톨라",
+      "rarity": "epic",
+      "kind": "fish",
+      "sell_price": 820,
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.72
+    },
+    {
+      "id": "shared-eclipse-eclion",
+      "name": "일식을 두른 해룡, 에클리온",
+      "rarity": "mythic",
+      "kind": "fish",
+      "sell_price": 2700,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "swim_y_min": 0.15,
+      "swim_y_max": 0.8
+    },
+    {
+      "id": "shared-empty-bait-bag",
+      "name": "빈 미끼 봉지",
+      "rarity": "common",
+      "kind": "trash",
+      "sell_price": 18,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "swim_y_min": 0.9,
+      "swim_y_max": 0.98
+    },
+    {
+      "id": "shared-forgotten-star",
+      "name": "잊힌 별의 호흡, 허성",
+      "rarity": "mythic",
+      "kind": "fish",
+      "sell_price": 2300,
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.72
+    },
+    {
+      "id": "shared-holey-sock",
+      "name": "구멍 난 양말",
+      "rarity": "common",
+      "kind": "trash",
+      "sell_price": 18,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "swim_y_min": 0.9,
+      "swim_y_max": 0.98
+    },
+    {
+      "id": "shared-horizon-jormungandr",
+      "name": "수평선을 감은 뱀, 요르문간드",
+      "rarity": "mythic",
+      "kind": "fish",
+      "sell_price": 2800,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "swim_y_min": 0.15,
+      "swim_y_max": 0.8
+    },
+    {
+      "id": "shared-island-hafgufa",
+      "name": "잠든 섬을 등에 진 자, 하프구파",
+      "rarity": "mythic",
+      "kind": "fish",
+      "sell_price": 2600,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "swim_y_min": 0.15,
+      "swim_y_max": 0.8
+    },
+    {
+      "id": "shared-lapis-crown-jelly",
+      "name": "청금석 왕관해파리",
+      "rarity": "epic",
+      "kind": "fish",
+      "sell_price": 850,
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.72
+    },
+    {
+      "id": "shared-nacre-emperor-squid",
+      "name": "자개비단 황제오징어",
+      "rarity": "epic",
+      "kind": "fish",
+      "sell_price": 900,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "swim_y_min": 0.15,
+      "swim_y_max": 0.8
+    },
+    {
+      "id": "shared-pink-sea-pig",
+      "name": "분홍 말랑 바다돼지",
+      "rarity": "common",
+      "kind": "fish",
+      "sell_price": 50,
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "swim_y_min": 0.86,
+      "swim_y_max": 0.96
+    },
+    {
+      "id": "shared-rainbow-blanket-octopus",
+      "name": "오색 비단 담요문어",
+      "rarity": "epic",
+      "kind": "fish",
+      "sell_price": 880,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "swim_y_min": 0.15,
+      "swim_y_max": 0.8
+    },
+    {
+      "id": "shared-scarlet-skirt-dancer",
+      "name": "붉은 치맛자락 무희",
+      "rarity": "rare",
+      "kind": "fish",
+      "sell_price": 260,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "swim_y_min": 0.15,
+      "swim_y_max": 0.8
+    },
+    {
+      "id": "shared-silver-ghost-shark",
+      "name": "은빛 유령상어",
+      "rarity": "rare",
+      "kind": "fish",
+      "sell_price": 300,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "swim_y_min": 0.15,
+      "swim_y_max": 0.8
+    },
+    {
+      "id": "shared-silver-salmon",
+      "name": "은비늘 연어",
+      "rarity": "common",
+      "kind": "fish",
+      "sell_price": 60,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "swim_y_min": 0.15,
+      "swim_y_max": 0.8
+    },
+    {
+      "id": "shared-uncountable-colony",
+      "name": "아무도 세지 못한 무리, 군체",
+      "rarity": "mythic",
+      "kind": "fish",
+      "sell_price": 2400,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "swim_y_min": 0.15,
+      "swim_y_max": 0.8
+    },
+    {
+      "id": "shared-useless-key",
+      "name": "아무것도 안 열리는 열쇠",
+      "rarity": "common",
+      "kind": "trash",
+      "sell_price": 20,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "swim_y_min": 0.9,
+      "swim_y_max": 0.98
+    },
+    {
+      "id": "shared-weightless-skull-whale",
+      "name": "무중력 해골고래",
+      "rarity": "mythic",
+      "kind": "fish",
+      "sell_price": 2500,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "swim_y_min": 0.15,
+      "swim_y_max": 0.8
+    }
+  ],
+  "habitats": [
+    {
+      "species_id": "cloud-broken-broom",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-lost-magic-key",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-noface-mask",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-old-red-shoe",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-wet-train-ticket",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "whitenight"
+    }
+  ]
+}

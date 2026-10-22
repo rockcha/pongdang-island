@@ -4,7 +4,7 @@ import { glassAttachedSpecies } from '@/features/aquarium/glass-attached-species
 import { useEffect, useRef, useState } from 'react'
 import { collectibleUrl, type Species } from './api'
 import { CollectibleThumbnail } from './collectible-thumbnail'
-import { mythicDetailedPaths, mythicSwimAsset, mythicSwimFrame, mythicSwimLayout } from '@/features/aquarium/mythic-swim'
+import { mythicSheetColumns, mythicSwimAsset, mythicSwimFrame, mythicSwimLayout } from '@/features/aquarium/mythic-swim'
 import { premiumSwimFrame } from '@/features/aquarium/premium-swim-frame'
 import { swimFrameLayout } from '@/features/aquarium/swim-frame-layout'
 import { whitenightFixedFrame } from '@/features/aquarium/whitenight-animation'
@@ -25,7 +25,7 @@ function Preview({species,large=false}:{species:Species;large?:boolean}) {
     const element=canvas.current,context=element?.getContext('2d')
     if(!element||!context){setStatus('failed');return}
     const enhanced=mythicSwimAsset(species.sprite_sheet_path,species.rarity)
-    const path=enhanced?.path??species.sprite_sheet_path,columns=enhanced||mythicDetailedPaths.includes(path)?4:2
+    const path=enhanced?.path??species.sprite_sheet_path,columns=mythicSheetColumns(path)
     const media=window.matchMedia('(prefers-reduced-motion: reduce)')
     const image=new Image()
     let alive=true,frame=0,start=0

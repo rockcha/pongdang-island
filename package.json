@@ -9,6 +9,7 @@
     "db:remote": "node scripts/db/context.mjs remote",
     "db:catalog": "node scripts/db/catalog.mjs",
     "storage:upload": "node scripts/upload-collectibles.mjs",
+    "images:optimize": "node scripts/optimize-png-lossless.mjs",
     "test": "vitest run",
     "test:arcade:ui": "vitest run tests/arcade.test.tsx tests/game-layout.test.tsx tests/game-modal.test.tsx tests/brick-breaker-ui.test.tsx tests/brick-touch-controls.test.tsx tests/memory-game-ui.test.tsx tests/shadow-game-ui.test.tsx tests/odd-even-ui.test.tsx tests/ladder-ui.test.tsx",
     "format:arcade": "prettier --write \"src/features/arcade/**/*.{ts,tsx,css}\"",

@@ -12,7 +12,7 @@ export function CollectibleThumbnail({path,...props}:Props){
  const url=collectibleUrl(path)
  return <ThumbnailImage key={url} url={url} {...props}/>
 }
-function ThumbnailImage({url,name,className='size-16',species,fadeIn=true,loading='eager'}:Omit<Props,'path'>&{url:string}){
+function ThumbnailImage({url,name,className='size-16',species,fadeIn=true,loading='lazy'}:Omit<Props,'path'>&{url:string}){
  const [loaded,setLoaded]=useState(()=>loadedUrls.has(url))
  const [failed,setFailed]=useState(false)
  const [attempt,setAttempt]=useState(0)

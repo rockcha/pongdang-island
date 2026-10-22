@@ -41,12 +41,21 @@ function show() {
 it('explains how to depart and keeps adjusted stakes valid', () => {
   show()
   fireEvent.click(screen.getByRole('button', { name: '연습' }))
+  for (const name of [
+    '조개 줍는 해변',
+    '순풍의 뱃길',
+    '풍어의 물결',
+    '상어의 해협',
+    '용왕의 보물고',
+  ])
+    expect(screen.getByRole('button', { name: new RegExp(name) })).toBeTruthy()
   expect(screen.queryByRole('button', { name: '1번 사다리' })).toBeNull()
   expect(screen.queryByRole('spinbutton')).toBeNull()
-  fireEvent.click(screen.getByRole('button', { name: '금액 정하기' }))
+  fireEvent.click(screen.getByRole('button', { name: '여기로 떠날래요' }))
   fireEvent.click(screen.getByRole('button', { name: '베팅금 20골드 늘리기' }))
   expect((screen.getByRole('spinbutton') as HTMLInputElement).value).toBe('40')
   fireEvent.click(screen.getByRole('button', { name: '조개 고르기' }))
+  expect(screen.getAllByRole('button', { name: /^[1-6]번 사다리$/ })).toHaveLength(6)
   expect(screen.getByRole('button', { name: '조개를 선택해주세요' }).hasAttribute('disabled')).toBe(
     true,
   )
@@ -57,7 +66,7 @@ it('explains how to depart and keeps adjusted stakes valid', () => {
 it('plays practice without RPC and keeps result buttons and payouts hidden until arrival', async () => {
   show()
   fireEvent.click(screen.getByRole('button', { name: '연습' }))
-  fireEvent.click(screen.getByRole('button', { name: '금액 정하기' }))
+  fireEvent.click(screen.getByRole('button', { name: '여기로 떠날래요' }))
   fireEvent.click(screen.getByRole('button', { name: '조개 고르기' }))
   fireEvent.click(screen.getByRole('button', { name: '2번 사다리' }))
   fireEvent.click(screen.getByRole('button', { name: '연습으로 출발' }))
@@ -70,7 +79,7 @@ it('plays practice without RPC and keeps result buttons and payouts hidden until
   expect(document.querySelector('.ladder-wipe')).toBeNull()
   expect(document.querySelector('.ladder-route-revealing')).toBeTruthy()
   expect(document.querySelector('.ladder-board circle')).toBeNull()
-  expect(document.querySelector('.ladder-endpoints')?.textContent).toBe('×0.5×0.75×1.25×1.5')
+  expect(document.querySelector('.ladder-endpoints')?.textContent).toBe('×0.7×0.8×0.9×1×1.2×1.4')
   expect(screen.queryByText('골드 지급')).toBeNull()
   expect(document.querySelector('.ladder-shell-open')).toBeNull()
   expect(screen.queryByRole('button', { name: '나가기', exact: true })).toBeNull()
@@ -93,7 +102,7 @@ it('retries uncertain real bets with the same operation and locks choices until 
     .mockImplementationOnce(async (bet) => practiceLadder(bet, () => 0.4))
   show()
   fireEvent.click(screen.getByRole('button', { name: '실전(무료)' }))
-  fireEvent.click(screen.getByRole('button', { name: '금액 정하기' }))
+  fireEvent.click(screen.getByRole('button', { name: '여기로 떠날래요' }))
   fireEvent.click(screen.getByRole('button', { name: '조개 고르기' }))
   fireEvent.click(screen.getByRole('button', { name: '3번 사다리' }))
   fireEvent.click(screen.getByRole('button', { name: '20 걸고 출발' }))
@@ -136,7 +145,7 @@ it('keeps an unresolved bet recoverable after leaving the modal', async () => {
   server.play.mockRejectedValueOnce(new Error('network'))
   show()
   fireEvent.click(screen.getByRole('button', { name: '실전(무료)' }))
-  fireEvent.click(screen.getByRole('button', { name: '금액 정하기' }))
+  fireEvent.click(screen.getByRole('button', { name: '여기로 떠날래요' }))
   fireEvent.click(screen.getByRole('button', { name: '조개 고르기' }))
   fireEvent.click(screen.getByRole('button', { name: '1번 사다리' }))
   fireEvent.click(screen.getByRole('button', { name: '20 걸고 출발' }))

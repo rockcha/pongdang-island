@@ -29,6 +29,7 @@ export function showcaseError(cause:unknown){
  const message=String((cause as {message?:string})?.message??'')
  if(message.includes('CATCH_NOT_SHAREABLE'))return '직접 낚시로 포획한 특급·신화만 자랑할 수 있어요.'
  if(message.includes('SHOWCASE_NOT_FOUND'))return '삭제되었거나 찾을 수 없는 자랑이에요.'
+ if(message.includes('INVALID_SHOWCASE_REACTION'))return '이 반응을 저장하지 못했어요. 새로고침 후 다시 시도해주세요.'
  if(message.includes('INVALID_SHOWCASE'))return '캡션을 확인해주세요. 200자까지 작성할 수 있어요.'
  return '연결을 확인하고 다시 시도해주세요. 같은 포획은 중복으로 등록되지 않아요.'
 }

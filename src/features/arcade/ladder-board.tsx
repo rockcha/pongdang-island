@@ -36,14 +36,21 @@ export function LadderBoard({
     return () => clearTimeout(timer)
   }, [revealing, serverRun?.id]) // eslint-disable-line react-hooks/exhaustive-deps
   const run = serverRun ? ladderDisplayRun(serverRun) : null
-  const payouts = ladderModes[mode].payouts
-  const route = run ? ladderRoute(run.choice, run.bridges).path : null
+  const payouts = run?.payouts ?? ladderModes[mode].payouts
+  const lanes = Array.from({ length: payouts.length }, (_, i) => i)
+  const step = 360 / lanes.length
+  const route = run ? ladderRoute(run.choice, run.bridges, lanes.length).path : null
   return (
     <div
       className={`ladder-board ladder-board-picking ${revealing ? 'ladder-board-departing' : ''} ${finished && run ? (run.reward > run.stake ? 'ladder-board-won' : run.reward < run.stake ? 'ladder-board-lost' : '') : ''}`}
     >
-      <div role="group" aria-label="출발할 사다리 선택" className="ladder-choices">
-        {[0, 1, 2, 3].map((i) => (
+      <div
+        role="group"
+        aria-label="출발할 사다리 선택"
+        className="ladder-choices"
+        style={{ gridTemplateColumns: `repeat(${lanes.length}, minmax(0, 1fr))` }}
+      >
+        {lanes.map((i) => (
           <button
             key={i}
             type="button"
@@ -90,8 +97,8 @@ export function LadderBoard({
                 : '선택 후 공개되는 사다리'
           }
         >
-          {[0, 1, 2, 3].map((i) => (
-            <path key={i} d={`M${45 + i * 90},20 V202`} className="ladder-rope" />
+          {lanes.map((i) => (
+            <path key={i} d={`M${step * (i + 0.5)},20 V202`} className="ladder-rope" />
           ))}
           {!run && (
             <g aria-hidden="true">
@@ -105,7 +112,7 @@ export function LadderBoard({
             col < 0 ? null : (
               <path
                 key={row}
-                d={`M${45 + col * 90},${40 + row * (144 / Math.max(1, run.bridges.length))} h90`}
+                d={`M${step * (col + 0.5)},${40 + row * (144 / Math.max(1, run.bridges.length))} h${step}`}
                 className="ladder-rope"
               />
             ),
@@ -148,8 +155,12 @@ export function LadderBoard({
         </svg>
       )}
       {
-        <div className="ladder-endpoints" aria-label="도착 배당">
-          {[0, 1, 2, 3].map((i) => (
+        <div
+          className="ladder-endpoints"
+          aria-label="도착 배당"
+          style={{ gridTemplateColumns: `repeat(${lanes.length}, minmax(0, 1fr))` }}
+        >
+          {lanes.map((i) => (
             <div
               key={`${run?.id ?? 'waiting'}:${i}`}
               className={finished && run?.destination === i ? 'ladder-arrived' : ''}
@@ -158,7 +169,7 @@ export function LadderBoard({
                 aria-hidden="true"
                 className={`ladder-shell ${finished && run?.destination === i ? 'ladder-shell-open' : ''}`}
               />
-              <span>×{payouts[i] / 100}</span>
+              <span className={payouts[i] > 100 ? 'ladder-payout-profit' : payouts[i] < 100 ? 'ladder-payout-loss' : ''}>×{payouts[i] / 100}</span>
             </div>
           ))}
         </div>

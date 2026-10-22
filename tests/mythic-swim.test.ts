@@ -47,7 +47,7 @@ it('keeps new action sheets clear of frame edges with one scale and a registered
   for(const p of poses){expect(p[0]).toBeCloseTo(poses[0][0]);expect(p[1]).toBeCloseTo(poses[0][1]);expect(p[2]).toBe(poses[0][2])}
  }
 })
-it('provides an eight-frame action sheet for every catalog mythic creature',()=>{
+it('provides a reviewed action sheet with the requested frame grid for every catalog mythic creature',()=>{
  const catalog=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8'))
  const creatures=catalog.collectible_species.filter((s:{kind:string;rarity:string})=>s.kind==='fish'&&s.rarity==='mythic')
  for(const creature of creatures){

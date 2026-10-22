@@ -2,6 +2,11 @@
   background: var(--background);
   color: var(--foreground);
 }
+@media (min-width: 768px) {
+  .arcade-game-modal:has(.ladder-game) {
+    width: min(96dvw, 480px);
+  }
+}
 .ladder-scroll {
   scrollbar-width: thin;
 }
@@ -91,9 +96,9 @@
   background: var(--secondary);
   border-color: var(--primary);
 }
-.ladder-board-picking .ladder-shell {
-  width: 48px;
-  height: 48px;
+.ladder-board-picking .ladder-choices .ladder-shell {
+  width: clamp(28px, 8vw, 44px);
+  height: clamp(28px, 8vw, 44px);
 }
 .ladder-hidden-paths {
   position: relative;
@@ -263,7 +268,7 @@
 }
 .ladder-payout-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 6px;
 }
 .ladder-payout-grid > * {
@@ -287,12 +292,22 @@
   font-weight: 400;
 }
 .ladder-payout-grid .ladder-payout-profit {
-  color: var(--primary);
-  border-color: var(--primary);
+  color: #26794b;
+  border-color: #64ad7d;
+  background: #eaf7ee;
 }
-.ladder-payout-grid .ladder-payout-zero {
-  color: var(--muted-foreground);
-  background: var(--muted);
+.ladder-payout-grid .ladder-payout-loss {
+  color: #bb4444;
+  border-color: #dda1a1;
+  background: #fff0ee;
+}
+.ladder-game .ladder-payout-profit,
+.ladder-game .ladder-payout-profit > span {
+  color: #26794b;
+}
+.ladder-game .ladder-payout-loss,
+.ladder-game .ladder-payout-loss > span {
+  color: #bb4444;
 }
 .ladder-stake-payouts {
   margin-top: 28px;
@@ -311,7 +326,7 @@
 .ladder-mode-screen {
   display: flex;
   flex-direction: column;
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 .ladder-mode-screen .ladder-intro {
   flex-shrink: 0;
@@ -321,14 +336,14 @@
 .ladder-mode-screen .ladder-settings {
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 0 0 auto;
   min-height: 0;
   padding-bottom: 10px;
 }
 .ladder-mode-screen .ladder-modes {
   flex: 1;
   min-height: 0;
-  grid-template-rows: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(104px, auto));
   gap: 8px;
 }
 .ladder-mode-screen .ladder-modes button {
@@ -612,7 +627,7 @@
   justify-content: center;
   gap: 2px;
   min-height: 76px;
-  width: 64px;
+  width: 100%;
   margin: auto;
   border: 1px solid transparent;
   border-radius: 8px;

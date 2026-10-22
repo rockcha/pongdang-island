@@ -28,14 +28,14 @@ function readPending(key: string): LadderBet | null {
     const value = JSON.parse(localStorage.getItem(key) ?? 'null')
     return value &&
       typeof value.operation === 'string' &&
-      value.mode in ladderModes &&
+      Object.hasOwn(ladderModes, value.mode) &&
       Number.isInteger(value.stake) &&
       value.stake >= 20 &&
       value.stake <= 1000 &&
       value.stake % 20 === 0 &&
       Number.isInteger(value.choice) &&
       value.choice >= 0 &&
-      value.choice < 4
+      value.choice < 6
       ? value
       : null
   } catch {
@@ -183,7 +183,7 @@ function AccountLadder({ account }: { account: string }) {
             <GameStage>
               <GameStartOverlay
                 title="퐁이의 물결 사다리"
-                description="네 갈래 물결 중 하나를 골라, 조개 속 행운을 만나보세요."
+                description="다섯 바다 중 하나를 골라, 여섯 갈래 사다리로 떠나요."
                 poster="/arcade/ladder/thumbnail.jpg"
                 fee={0}
                 compactFreeLabel
@@ -203,8 +203,8 @@ function AccountLadder({ account }: { account: string }) {
                   ) : undefined
                 }
                 rules={[
-                  '물결과 금액을 고르고 네 사다리 중 하나를 선택해요.',
-                  '배당은 원금을 포함해요. 평균 지급률은 세 물결 모두 100%예요.',
+                  '다섯 모드 중 하나와 금액을 고른 뒤 여섯 사다리 중 하나를 선택해요.',
+                  '배당은 원금을 포함해요. 다섯 모드 모두 장기 평균 지급률이 100%예요.',
                   '연습에서는 실제 골드를 사용하거나 지급하지 않아요.',
                 ]}
               />
@@ -222,7 +222,7 @@ function AccountLadder({ account }: { account: string }) {
                 </div>
               )}
               <ol className="ladder-progress" aria-label="게임 진행 단계">
-                {['물결', '금액', '조개', '결과'].map((label, i) => {
+                {['바다', '금액', '조개', '결과'].map((label, i) => {
                   const current =
                     phase === 'setup' ? 0 : phase === 'stake' ? 1 : phase === 'result' ? 3 : 2
                   return (
@@ -257,7 +257,7 @@ function AccountLadder({ account }: { account: string }) {
                   )}
                   <span>
                     {phase === 'setup'
-                      ? '어떤 물결을 탈까요?'
+                      ? '어느 바다로 떠날까요?'
                       : phase === 'stake'
                         ? '얼마를 걸고 떠날까요?'
                         : phase === 'select'
@@ -268,7 +268,7 @@ function AccountLadder({ account }: { account: string }) {
                   </span>
                   <p hidden={phase === 'stake'}>
                     {phase === 'setup'
-                      ? '물결마다 보상의 크기가 달라요.'
+                      ? '다섯 바다, 서로 다른 행운. 배율을 보고 골라요.'
                       : phase === 'result'
                         ? config.name
                         : `${config.name} · ${stake}골드${practice ? ' · 연습' : ''}`}
@@ -276,8 +276,8 @@ function AccountLadder({ account }: { account: string }) {
                 </div>
                 {phase === 'setup' && (
                   <fieldset disabled={busy || !!pending} className="ladder-settings">
-                    <legend className="sr-only">물결 선택</legend>
-                    <div role="group" aria-label="물결 유형" className="ladder-modes">
+                    <legend className="sr-only">바다 선택</legend>
+                    <div role="group" aria-label="바다 유형" className="ladder-modes">
                       {(Object.keys(ladderModes) as LadderMode[]).map((id) => (
                         <button
                           key={id}
@@ -285,18 +285,9 @@ function AccountLadder({ account }: { account: string }) {
                           aria-pressed={mode === id}
                           onClick={() => setMode(id)}
                         >
-                          <img
-                            src={`/arcade/ladder/mode-${id}.png`}
-                            alt=""
-                            width="80"
-                            height="80"
-                          />
+                          <img src={ladderModes[id].image} alt="" width="80" height="80" />
                           <span>
-                            {id === 'calm'
-                              ? '잔잔한 물결'
-                              : id === 'wave'
-                                ? '출렁이는 파도'
-                                : '거친 폭풍'}
+                            {ladderModes[id].name}
                             <small>{ladderModes[id].detail}</small>
                           </span>
                           <span className="ladder-payout-preview">
@@ -305,8 +296,8 @@ function AccountLadder({ account }: { account: string }) {
                                 <span
                                   key={i}
                                   className={
-                                    p === 0
-                                      ? 'ladder-payout-zero'
+                                    p < 100
+                                      ? 'ladder-payout-loss'
                                       : p > 100
                                         ? 'ladder-payout-profit'
                                         : ''
@@ -329,7 +320,7 @@ function AccountLadder({ account }: { account: string }) {
                   >
                     <legend className="sr-only">베팅금 선택</legend>
                     <div className="ladder-selected-mode">
-                      <img src={`/arcade/ladder/mode-${mode}.png`} alt="" width="64" height="64" />
+                      <img src={config.image} alt="" width="64" height="64" />
                       <span>
                         {config.name}
                         <small>{config.detail}</small>
@@ -387,7 +378,7 @@ function AccountLadder({ account }: { account: string }) {
                           <div
                             key={i}
                             className={
-                              p === 0 ? 'ladder-payout-zero' : p > 100 ? 'ladder-payout-profit' : ''
+                              p < 100 ? 'ladder-payout-loss' : p > 100 ? 'ladder-payout-profit' : ''
                             }
                           >
                             <span>×{p / 100}</span>
@@ -424,7 +415,7 @@ function AccountLadder({ account }: { account: string }) {
                 {phase === 'select' && (
                   <p className="ladder-selection-summary">
                     {choice === null
-                      ? '위의 조개 네 개 중 하나를 눌러주세요'
+                      ? '위의 조개 여섯 개 중 하나를 눌러주세요'
                       : `${choice + 1}번 조개 · ${stake}골드${practice ? ' · 연습' : ''}`}
                   </p>
                 )}
@@ -437,7 +428,7 @@ function AccountLadder({ account }: { account: string }) {
                       setError('')
                     }}
                   >
-                    {phase === 'setup' ? '금액 정하기' : '조개 고르기'}
+                    {phase === 'setup' ? '여기로 떠날래요' : '조개 고르기'}
                     <ArrowRight className="size-4" />
                   </Button>
                 ) : phase === 'result' ? (

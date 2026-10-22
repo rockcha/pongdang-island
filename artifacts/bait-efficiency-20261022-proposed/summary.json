@@ -1,0 +1,386 @@
+[
+  {
+    "region": "푸른골 해역",
+    "top": [
+      {
+        "bait": "조개 부스러기",
+        "cost": 400,
+        "gross": 533,
+        "profit": 133,
+        "returnPct": 133.25,
+        "expectedProfit": 547.8151696914704,
+        "expectedReturnPct": 236.9537924228676
+      },
+      {
+        "bait": "반딧불 번데기",
+        "cost": 550,
+        "gross": 3272,
+        "profit": 2722,
+        "returnPct": 594.9090909090909,
+        "expectedProfit": 684.9814754440968,
+        "expectedReturnPct": 224.54208644438123
+      },
+      {
+        "bait": "꼬질 자석경단",
+        "cost": 600,
+        "gross": 1024,
+        "profit": 424,
+        "returnPct": 170.66666666666669,
+        "expectedProfit": 439.66535564710944,
+        "expectedReturnPct": 173.27755927451824
+      }
+    ]
+  },
+  {
+    "region": "지브리의 구름나루",
+    "top": [
+      {
+        "bait": "조개 부스러기",
+        "cost": 400,
+        "gross": 298,
+        "profit": -102,
+        "returnPct": 74.5,
+        "expectedProfit": 642.2781120342329,
+        "expectedReturnPct": 260.5695280085582
+      },
+      {
+        "bait": "반딧불 번데기",
+        "cost": 550,
+        "gross": 1292,
+        "profit": 742,
+        "returnPct": 234.9090909090909,
+        "expectedProfit": 797.8849763353614,
+        "expectedReturnPct": 245.0699956973384
+      },
+      {
+        "bait": "퐁당 지렁이",
+        "cost": 1000,
+        "gross": 1749,
+        "profit": 749,
+        "returnPct": 174.9,
+        "expectedProfit": 888.2909978663615,
+        "expectedReturnPct": 188.82909978663616
+      }
+    ]
+  },
+  {
+    "region": "산호빛 여울",
+    "top": [
+      {
+        "bait": "조개 부스러기",
+        "cost": 400,
+        "gross": 719,
+        "profit": 319,
+        "returnPct": 179.75,
+        "expectedProfit": 528.83651063289,
+        "expectedReturnPct": 232.2091276582225
+      },
+      {
+        "bait": "반딧불 번데기",
+        "cost": 550,
+        "gross": 416,
+        "profit": -134,
+        "returnPct": 75.63636363636364,
+        "expectedProfit": 662.3267698163907,
+        "expectedReturnPct": 220.4230490575256
+      },
+      {
+        "bait": "꼬질 자석경단",
+        "cost": 600,
+        "gross": 1227,
+        "profit": 627,
+        "returnPct": 204.5,
+        "expectedProfit": 480.04919603496,
+        "expectedReturnPct": 180.00819933916
+      }
+    ]
+  },
+  {
+    "region": "꿈먹는 심연",
+    "top": [
+      {
+        "bait": "조개 부스러기",
+        "cost": 400,
+        "gross": 1030,
+        "profit": 630,
+        "returnPct": 257.5,
+        "expectedProfit": 552.3136456233417,
+        "expectedReturnPct": 238.07841140583542
+      },
+      {
+        "bait": "반딧불 번데기",
+        "cost": 550,
+        "gross": 702,
+        "profit": 152,
+        "returnPct": 127.63636363636364,
+        "expectedProfit": 693.0841241772275,
+        "expectedReturnPct": 226.01529530495043
+      },
+      {
+        "bait": "꼬질 자석경단",
+        "cost": 600,
+        "gross": 1426,
+        "profit": 826,
+        "returnPct": 237.66666666666666,
+        "expectedProfit": 349.9972034522614,
+        "expectedReturnPct": 158.33286724204356
+      }
+    ]
+  },
+  {
+    "region": "안개달 해역",
+    "top": [
+      {
+        "bait": "조개 부스러기",
+        "cost": 400,
+        "gross": 1113,
+        "profit": 713,
+        "returnPct": 278.25,
+        "expectedProfit": 573.5674068124922,
+        "expectedReturnPct": 243.39185170312305
+      },
+      {
+        "bait": "반딧불 번데기",
+        "cost": 550,
+        "gross": 631,
+        "profit": 81,
+        "returnPct": 114.72727272727272,
+        "expectedProfit": 731.0615357138306,
+        "expectedReturnPct": 232.9202792206965
+      },
+      {
+        "bait": "퐁당 지렁이",
+        "cost": 1000,
+        "gross": 1999,
+        "profit": 999,
+        "returnPct": 199.9,
+        "expectedProfit": 681.7354920905323,
+        "expectedReturnPct": 168.17354920905322
+      }
+    ]
+  },
+  {
+    "region": "묵향 해역",
+    "top": [
+      {
+        "bait": "조개 부스러기",
+        "cost": 400,
+        "gross": 1424,
+        "profit": 1024,
+        "returnPct": 356,
+        "expectedProfit": 641.9154275862074,
+        "expectedReturnPct": 260.47885689655186
+      },
+      {
+        "bait": "반딧불 번데기",
+        "cost": 550,
+        "gross": 1583,
+        "profit": 1033,
+        "returnPct": 287.8181818181818,
+        "expectedProfit": 797.6173236958448,
+        "expectedReturnPct": 245.02133158106267
+      },
+      {
+        "bait": "퐁당 지렁이",
+        "cost": 1000,
+        "gross": 1668,
+        "profit": 668,
+        "returnPct": 166.79999999999998,
+        "expectedProfit": 927.0744503089982,
+        "expectedReturnPct": 192.70744503089983
+      }
+    ]
+  },
+  {
+    "region": "퐁당섬 앞바다",
+    "top": [
+      {
+        "bait": "조개 부스러기",
+        "cost": 400,
+        "gross": 815,
+        "profit": 415,
+        "returnPct": 203.75,
+        "expectedProfit": 446.856902147611,
+        "expectedReturnPct": 211.71422553690275
+      },
+      {
+        "bait": "반딧불 번데기",
+        "cost": 550,
+        "gross": 2479,
+        "profit": 1929,
+        "returnPct": 450.7272727272727,
+        "expectedProfit": 595.5901343469282,
+        "expectedReturnPct": 208.28911533580512
+      },
+      {
+        "bait": "꼬질 자석경단",
+        "cost": 600,
+        "gross": 763,
+        "profit": 163,
+        "returnPct": 127.16666666666667,
+        "expectedProfit": 399.38614391795363,
+        "expectedReturnPct": 166.56435731965894
+      }
+    ]
+  },
+  {
+    "region": "태고의 원시섬",
+    "top": [
+      {
+        "bait": "조개 부스러기",
+        "cost": 400,
+        "gross": 1894,
+        "profit": 1494,
+        "returnPct": 473.50000000000006,
+        "expectedProfit": 614.0055867698802,
+        "expectedReturnPct": 253.50139669247005
+      },
+      {
+        "bait": "반딧불 번데기",
+        "cost": 550,
+        "gross": 1683,
+        "profit": 1133,
+        "returnPct": 306,
+        "expectedProfit": 764.224888239746,
+        "expectedReturnPct": 238.94997967995383
+      },
+      {
+        "bait": "퐁당 지렁이",
+        "cost": 1000,
+        "gross": 1473,
+        "profit": 473,
+        "returnPct": 147.3,
+        "expectedProfit": 873.1315445155112,
+        "expectedReturnPct": 187.31315445155113
+      }
+    ]
+  },
+  {
+    "region": "녹빛 고물섬",
+    "top": [
+      {
+        "bait": "조개 부스러기",
+        "cost": 400,
+        "gross": 647,
+        "profit": 247,
+        "returnPct": 161.75,
+        "expectedProfit": 600.7029496722446,
+        "expectedReturnPct": 250.17573741806115
+      },
+      {
+        "bait": "반딧불 번데기",
+        "cost": 550,
+        "gross": 1230,
+        "profit": 680,
+        "returnPct": 223.63636363636363,
+        "expectedProfit": 748.3778946911848,
+        "expectedReturnPct": 236.06870812566996
+      },
+      {
+        "bait": "꼬질 자석경단",
+        "cost": 600,
+        "gross": 1602,
+        "profit": 1002,
+        "returnPct": 267,
+        "expectedProfit": 410.02919431348255,
+        "expectedReturnPct": 168.3381990522471
+      }
+    ]
+  },
+  {
+    "region": "세이렌의 해협",
+    "top": [
+      {
+        "bait": "조개 부스러기",
+        "cost": 400,
+        "gross": 1567,
+        "profit": 1167,
+        "returnPct": 391.75,
+        "expectedProfit": 660.4489767532893,
+        "expectedReturnPct": 265.11224418832234
+      },
+      {
+        "bait": "반딧불 번데기",
+        "cost": 550,
+        "gross": 455,
+        "profit": -95,
+        "returnPct": 82.72727272727273,
+        "expectedProfit": 821.1407747359995,
+        "expectedReturnPct": 249.29832267927262
+      },
+      {
+        "bait": "꼬질 자석경단",
+        "cost": 600,
+        "gross": 1695,
+        "profit": 1095,
+        "returnPct": 282.5,
+        "expectedProfit": 538.0118699267082,
+        "expectedReturnPct": 189.66864498778472
+      }
+    ]
+  },
+  {
+    "region": "별잠 유적",
+    "top": [
+      {
+        "bait": "조개 부스러기",
+        "cost": 400,
+        "gross": 1110,
+        "profit": 710,
+        "returnPct": 277.5,
+        "expectedProfit": 571.29707399769,
+        "expectedReturnPct": 242.8242684994225
+      },
+      {
+        "bait": "반딧불 번데기",
+        "cost": 550,
+        "gross": 1111,
+        "profit": 561,
+        "returnPct": 202,
+        "expectedProfit": 713.425657262278,
+        "expectedReturnPct": 229.71375586586876
+      },
+      {
+        "bait": "꼬질 자석경단",
+        "cost": 600,
+        "gross": 851,
+        "profit": 251,
+        "returnPct": 141.83333333333331,
+        "expectedProfit": 529.3559239512331,
+        "expectedReturnPct": 188.22598732520552
+      }
+    ]
+  },
+  {
+    "region": "백야의 빙해",
+    "top": [
+      {
+        "bait": "조개 부스러기",
+        "cost": 400,
+        "gross": 530,
+        "profit": 130,
+        "returnPct": 132.5,
+        "expectedProfit": 628.1190036136045,
+        "expectedReturnPct": 257.0297509034011
+      },
+      {
+        "bait": "반딧불 번데기",
+        "cost": 550,
+        "gross": 244,
+        "profit": -306,
+        "returnPct": 44.36363636363637,
+        "expectedProfit": 781.1289493368704,
+        "expectedReturnPct": 242.0234453339764
+      },
+      {
+        "bait": "퐁당 지렁이",
+        "cost": 1000,
+        "gross": 1633,
+        "profit": 633,
+        "returnPct": 163.3,
+        "expectedProfit": 900.4086650461484,
+        "expectedReturnPct": 190.04086650461485
+      }
+    ]
+  }
+]

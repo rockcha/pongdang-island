@@ -1,0 +1,31 @@
+{
+  "tool": "image_gen (built-in)",
+  "transparentBackground": true,
+  "items": [
+    {
+      "id": "calm",
+      "prompt": "Create ONE square isolated game UI inventory icon on a genuinely transparent background, no text, letters, border, badge frame or background scenery. Cozy ocean fantasy fishing game, richly shaded hand-painted storybook item art with warm amber-brown contours, turquoise ocean accents, cream and honey gold, slightly cartoonish but dimensional. Strong simple silhouette clear at 48px. Center the entire subject with generous 15 percent transparent padding, no clipping, no giant ground shadow. A small woven beach basket holding three pastel seashells and a single little pearl, a tiny starfish tucked against the basket, peaceful safe beachcombing.",
+      "path": "public/arcade/ladder/modes/calm.png"
+    },
+    {
+      "id": "wave",
+      "prompt": "Create ONE square isolated game UI inventory icon on a genuinely transparent background, no text, letters, border, badge frame or background scenery. Cozy ocean fantasy fishing game, richly shaded hand-painted storybook item art with warm amber-brown contours, turquoise ocean accents, cream and honey gold, slightly cartoonish but dimensional. Strong simple silhouette clear at 48px. Center the entire subject with generous 15 percent transparent padding, no clipping, no giant ground shadow. A tiny wooden sailboat with cream and turquoise sail carried by a gentle curling turquoise wave, a small ribbon of wind billowing the sail, balanced hopeful voyage.",
+      "path": "public/arcade/ladder/modes/wave.png"
+    },
+    {
+      "id": "lucky",
+      "prompt": "Create ONE square isolated game UI inventory icon on a genuinely transparent background, no text, letters, border, badge frame or background scenery. Cozy ocean fantasy fishing game, richly shaded hand-painted storybook item art with warm amber-brown contours, turquoise ocean accents, cream and honey gold, slightly cartoonish but dimensional. Strong simple silhouette clear at 48px. Center the entire subject with generous 15 percent transparent padding, no clipping, no giant ground shadow. A fisherman net pouch brimming with three gleaming happy fish, warm golden glints and a little turquoise wave underneath, abundant catch and frequent good fortune.",
+      "path": "public/arcade/ladder/modes/lucky.png"
+    },
+    {
+      "id": "shark",
+      "prompt": "Create ONE square isolated game UI inventory icon on a genuinely transparent background, no text, letters, border, badge frame or background scenery. Cozy ocean fantasy fishing game, richly shaded hand-painted storybook item art with warm amber-brown contours, turquoise ocean accents, cream and honey gold, slightly cartoonish but dimensional. Strong simple silhouette clear at 48px. Center the entire subject with generous 15 percent transparent padding, no clipping, no giant ground shadow. A sleek blue-gray shark leaping through a curling dark turquoise wave between two tiny rugged rocks, bold adventurous silhouette and playful determined expression, exciting dangerous sea strait.",
+      "path": "public/arcade/ladder/modes/shark.png"
+    },
+    {
+      "id": "storm",
+      "prompt": "Create ONE square isolated game UI inventory icon on a genuinely transparent background, no text, letters, border, badge frame or background scenery. Cozy ocean fantasy fishing game, richly shaded hand-painted storybook item art with warm amber-brown contours, turquoise ocean accents, cream and honey gold, slightly cartoonish but dimensional. Strong simple silhouette clear at 48px. Center the entire subject with generous 15 percent transparent padding, no clipping, no giant ground shadow. A magnificent open undersea treasure chest containing glowing gold coins and a luminous pearl, crowned with a tiny sea king crown and a golden trident leaning beside it, royal purple inner lining, lavish legendary sea king treasure.",
+      "path": "public/arcade/ladder/modes/storm.png"
+    }
+  ]
+}

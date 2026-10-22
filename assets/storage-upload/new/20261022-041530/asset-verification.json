@@ -1,0 +1,272 @@
+{
+  "project": "ewafafphiovbpjwogwzn.supabase.co",
+  "verifiedAt": "2026-10-21T19:37:06.171Z",
+  "scope": "Public Storage file existence and byte-for-byte SHA-256 equality only",
+  "files": [
+    {
+      "path": "fish/epic/shared-crimson-vampire-squid_sprite.png",
+      "bytes": 1507702,
+      "sha256": "5a6f93d9824acc26af3dac943a925520863db876dab5d1084501df7b8c5c8e9c"
+    },
+    {
+      "path": "fish/epic/shared-crimson-vampire-squid_thumbnail.png",
+      "bytes": 558823,
+      "sha256": "c880ccc7a1905b09d499c083aa8d1895922efa31afe348afa77c8b2ef2c46c72"
+    },
+    {
+      "path": "fish/epic/shared-crown-atolla_sprite.png",
+      "bytes": 2133367,
+      "sha256": "836a0f5129c7171eae771959741e5b741188b8a3afc93c2203453a6e67a4e4a0"
+    },
+    {
+      "path": "fish/epic/shared-crown-atolla_thumbnail.png",
+      "bytes": 629096,
+      "sha256": "1ed1ea208460d4ed9e021f83dc0b944d808160e1087345a7355e90aef3a3991c"
+    },
+    {
+      "path": "fish/epic/shared-lapis-crown-jelly_sprite.png",
+      "bytes": 1834844,
+      "sha256": "bbbdfad59231f249cf845b7760b9a5db25c89584844997aae7382d0913edc436"
+    },
+    {
+      "path": "fish/epic/shared-lapis-crown-jelly_thumbnail.png",
+      "bytes": 567058,
+      "sha256": "969db1e9ee32dc9080e6b941933412ba751f024b850a555bc4838cf0e354677a"
+    },
+    {
+      "path": "fish/epic/shared-nacre-emperor-squid_sprite.png",
+      "bytes": 1272724,
+      "sha256": "97b2f41fa50244dd258e0e8fc31843b00f0e83b7fec78e860c7624d6f516e214"
+    },
+    {
+      "path": "fish/epic/shared-nacre-emperor-squid_thumbnail.png",
+      "bytes": 372303,
+      "sha256": "77916e5e0b843d778235a67cf51f9c9688c2198fa6ad0804eb8010f2e82ab85a"
+    },
+    {
+      "path": "fish/epic/shared-rainbow-blanket-octopus_sprite.png",
+      "bytes": 1398679,
+      "sha256": "b72cf4c5b7cbd74ddb0f7f3333539f8ee423e87063c316a05fc275bf48170153"
+    },
+    {
+      "path": "fish/epic/shared-rainbow-blanket-octopus_thumbnail.png",
+      "bytes": 462725,
+      "sha256": "b656cafad2e34fdc283a29853656564c72c90f058113ea53264a90e61fc0be57"
+    },
+    {
+      "path": "fish/mythic/shared-abyss-charybdis_compat_sprite.png",
+      "bytes": 1473751,
+      "sha256": "94cc786fb7ee8a3600ed2a636c984e90de8a5bde19195da8feb7180f2b8a2433"
+    },
+    {
+      "path": "fish/mythic/shared-abyss-charybdis_sprite.png",
+      "bytes": 2303657,
+      "sha256": "2b0ec24c01f12221d83067db03ab7d5a34122d49565561478d3e4f8354a727f0"
+    },
+    {
+      "path": "fish/mythic/shared-abyss-charybdis_thumbnail.png",
+      "bytes": 630975,
+      "sha256": "14b43087b0a1673312c6c8dab0c46e82b4f4c59a0fc625cd0227ac2b74774bb7"
+    },
+    {
+      "path": "fish/mythic/shared-eclipse-eclion_compat_sprite.png",
+      "bytes": 1402352,
+      "sha256": "43191fe82048488348a2d88af7beab89849f48ccbcd3409b0c0b3104a7efffb3"
+    },
+    {
+      "path": "fish/mythic/shared-eclipse-eclion_sprite.png",
+      "bytes": 2404883,
+      "sha256": "ef4df0254b08a8b3660ee84d1d1ce38a493490494c7b31252d9bd8a02b41d4a0"
+    },
+    {
+      "path": "fish/mythic/shared-eclipse-eclion_thumbnail.png",
+      "bytes": 661259,
+      "sha256": "07f1b472cfc5cc78d186ee1a0c52112f514b9bfcce59b1b7c3e2d32f15577386"
+    },
+    {
+      "path": "fish/mythic/shared-forgotten-star_compat_sprite.png",
+      "bytes": 1237906,
+      "sha256": "c5db84df76f6d89d2ac549432c4c73a1c172f8964daf2dfe8d005e921b7f3462"
+    },
+    {
+      "path": "fish/mythic/shared-forgotten-star_sprite.png",
+      "bytes": 2307795,
+      "sha256": "c12c4e3835b70e6954f38569a68f2f428810890543888ae46bbf1ec633d643dd"
+    },
+    {
+      "path": "fish/mythic/shared-forgotten-star_thumbnail.png",
+      "bytes": 576078,
+      "sha256": "4643ea2efa3f49f9c22d09516d728d46371707cce1343396c3b63afde8884694"
+    },
+    {
+      "path": "fish/mythic/shared-horizon-jormungandr_compat_sprite.png",
+      "bytes": 1322456,
+      "sha256": "28b3b1ed76f40c5f6718cb447d6341faf6f2943e122cacd07d5e5317b88362b7"
+    },
+    {
+      "path": "fish/mythic/shared-horizon-jormungandr_sprite.png",
+      "bytes": 2318433,
+      "sha256": "31f575612a8c1161e7d17389ff405622d3cf62027a742fb0061372a49887fc2d"
+    },
+    {
+      "path": "fish/mythic/shared-horizon-jormungandr_thumbnail.png",
+      "bytes": 606510,
+      "sha256": "cac9e9c57776e4454877e40fdb18c4eeb8e67047980e667e410a74255bc6af37"
+    },
+    {
+      "path": "fish/mythic/shared-island-hafgufa_compat_sprite.png",
+      "bytes": 1070885,
+      "sha256": "ff0e519f72dd2523cb409c97c6a8b190ca33b592d1dd6718c0a461f6061074ae"
+    },
+    {
+      "path": "fish/mythic/shared-island-hafgufa_sprite.png",
+      "bytes": 2204750,
+      "sha256": "721df5a1aa764c4297446251c506d9ad22b2d1dc8aeb6f771c1ed32b6dea1a75"
+    },
+    {
+      "path": "fish/mythic/shared-island-hafgufa_thumbnail.png",
+      "bytes": 608529,
+      "sha256": "a62750f3dd4e53940d5a00904e4ca920f0bcac83113aa4a0b498783524162b86"
+    },
+    {
+      "path": "fish/mythic/shared-uncountable-colony_compat_sprite.png",
+      "bytes": 917275,
+      "sha256": "583456ec3160b3fbeb26c94e539ef45d062e2e476c639474d952a1b72330f391"
+    },
+    {
+      "path": "fish/mythic/shared-uncountable-colony_sprite.png",
+      "bytes": 2160695,
+      "sha256": "ef2dcbaf9fa7816bceeb6085ee03c8cc63182a8059c651a532aac08d4e39c78c"
+    },
+    {
+      "path": "fish/mythic/shared-uncountable-colony_thumbnail.png",
+      "bytes": 519011,
+      "sha256": "0e6756cac44b640c409c921f8f666da03fb41270285e1048df909426330ae734"
+    },
+    {
+      "path": "fish/mythic/shared-weightless-skull-whale_compat_sprite.png",
+      "bytes": 899770,
+      "sha256": "f0a9deef2df3d77f82d044612e2f4e5fac3ff9ace617e54e6a0eda51bbdf6cb7"
+    },
+    {
+      "path": "fish/mythic/shared-weightless-skull-whale_sprite.png",
+      "bytes": 2119242,
+      "sha256": "732fe2891a59a1993ab28e2f7f6404b5e4ae46d893ae06cd12b44d966c303a8f"
+    },
+    {
+      "path": "fish/mythic/shared-weightless-skull-whale_thumbnail.png",
+      "bytes": 531143,
+      "sha256": "564c159f7dc6e7177ba183c1bda8b43c50e8d5dc5345217528299cfae09faebe"
+    },
+    {
+      "path": "fish/normal/shared-blue-leaf-sheep_sprite.png",
+      "bytes": 1356619,
+      "sha256": "d72e1201d22c0d88a20c509065133d765873ad298daaaaac8ac7cb89be628c80"
+    },
+    {
+      "path": "fish/normal/shared-blue-leaf-sheep_thumbnail.png",
+      "bytes": 457898,
+      "sha256": "ca180b5be2e398255c3949ef048d298fc3b50d0e1eb370af7d69185b515392d4"
+    },
+    {
+      "path": "fish/normal/shared-pink-sea-pig_sprite.png",
+      "bytes": 1213670,
+      "sha256": "f0296553f4d66d19ece64c714daa2fef6e67d42274eb175f8db8860d5bed16eb"
+    },
+    {
+      "path": "fish/normal/shared-pink-sea-pig_thumbnail.png",
+      "bytes": 365998,
+      "sha256": "3482716184a85673119cc3784b595b21a3b7120c91f3117649244662b436b148"
+    },
+    {
+      "path": "fish/normal/shared-silver-salmon_sprite.png",
+      "bytes": 1014467,
+      "sha256": "293d5df40f1f23b34823bf8e17a5753596076d68af785586b4b59d0ca5b3b51f"
+    },
+    {
+      "path": "fish/normal/shared-silver-salmon_thumbnail.png",
+      "bytes": 328886,
+      "sha256": "02d0baa701d58b8837926d4d39b06da5cba720beac82a3e1c2d10e5fbfb71d61"
+    },
+    {
+      "path": "fish/rare/shared-apricot-tongue-snail_sprite.png",
+      "bytes": 1061288,
+      "sha256": "6724139fab7b5b8e0b716d22994953a18ae45772f54d87c1db2231d64cf3a8a7"
+    },
+    {
+      "path": "fish/rare/shared-apricot-tongue-snail_thumbnail.png",
+      "bytes": 335031,
+      "sha256": "38d379ee8418df7464d1a555e41a5aed957b5226ab604260c30bf7db33e8faba"
+    },
+    {
+      "path": "fish/rare/shared-blue-wing-nudibranch_sprite.png",
+      "bytes": 1518858,
+      "sha256": "884e876b6632b6614c7c4d767f57d7e0ed15af3deed8865bc8633282af7dae3b"
+    },
+    {
+      "path": "fish/rare/shared-blue-wing-nudibranch_thumbnail.png",
+      "bytes": 522265,
+      "sha256": "3e04648aef19d4cc44a1fa148a8084a38d2885d918b884c73bffb7765ce064bd"
+    },
+    {
+      "path": "fish/rare/shared-scarlet-skirt-dancer_sprite.png",
+      "bytes": 983124,
+      "sha256": "0b16bebcd70177e722c283ad6f1bf1fc5e5e375586e06eb44801f59abba2c8ca"
+    },
+    {
+      "path": "fish/rare/shared-scarlet-skirt-dancer_thumbnail.png",
+      "bytes": 342876,
+      "sha256": "0fa780c6e8699d943aa254ce501cc7fc1e4fefcdd266c6ea204c7c74cf0eb482"
+    },
+    {
+      "path": "fish/rare/shared-silver-ghost-shark_sprite.png",
+      "bytes": 914687,
+      "sha256": "898490c73b19f4112da8d7cb456ca1d7342347fe6648be64280305dfd4ea7857"
+    },
+    {
+      "path": "fish/rare/shared-silver-ghost-shark_thumbnail.png",
+      "bytes": 301855,
+      "sha256": "8b1799c86144b7b7ffcaadd553fa9b98bfff0abb9a4af2cb3fcdd334c02b0549"
+    },
+    {
+      "path": "trash/epic/cloud-broken-broom_thumbnail.png",
+      "bytes": 1416900,
+      "sha256": "86c600459fa4a04671f3be35263a314f9352bc22e025ad6641ace195f892d25b"
+    },
+    {
+      "path": "trash/epic/cloud-lost-magic-key_thumbnail.png",
+      "bytes": 1036926,
+      "sha256": "1e148141b5c81ef2c63f9f5baee98272a8a8fbd12f2589a19a4573809a2622c5"
+    },
+    {
+      "path": "trash/normal/cloud-noface-mask_thumbnail.png",
+      "bytes": 896232,
+      "sha256": "f5339246feffe881ddbcf6cbb3eea09043504fc6a1cd7ee165fa22151702f927"
+    },
+    {
+      "path": "trash/normal/cloud-old-red-shoe_thumbnail.png",
+      "bytes": 946710,
+      "sha256": "68adf9f49764f6570184c2090d2a1cc1c084bdac39884149b0d721aaa01b35e7"
+    },
+    {
+      "path": "trash/normal/cloud-wet-train-ticket_thumbnail.png",
+      "bytes": 943199,
+      "sha256": "43cec5e13e0a87c1f6ff76776bf04e42311d055d24a95cc8f6d15e57663f6d36"
+    },
+    {
+      "path": "trash/normal/shared-empty-bait-bag_thumbnail.png",
+      "bytes": 832366,
+      "sha256": "254c47ff70bb123cd37fa0a03f7837d0e1180f9e2759ab1a5649eaa0a2a8fe4f"
+    },
+    {
+      "path": "trash/normal/shared-holey-sock_thumbnail.png",
+      "bytes": 828872,
+      "sha256": "22dfd641997f8be51055715520f3250dd5af78ca3bc048386815593a6033f5bf"
+    },
+    {
+      "path": "trash/normal/shared-useless-key_thumbnail.png",
+      "bytes": 619292,
+      "sha256": "f4de744e1e1d23ed2eed2776053e8330d3c30abbd669994f4473c3e61ef8b12e"
+    }
+  ]
+}

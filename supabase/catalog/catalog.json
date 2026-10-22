@@ -655,13 +655,13 @@
       "price": 11,
       "image_path": "/items/baits/firefly-pupa.png",
       "sort_order": 112,
-      "common_bp": 9000,
+      "common_bp": 9200,
       "rare_bp": 0,
-      "epic_bp": 1000,
+      "epic_bp": 800,
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "성공 시 일반 90% · 특급 10%의 물고기를 포획해요.",
+      "effect_description": "성공 시 일반 92% · 특급 8%의 물고기를 포획해요.",
       "success_chance_bp": 2000,
       "fish_only": true,
       "alternating": false
@@ -724,7 +724,7 @@
       "id": "bait_grubby_magnet",
       "name": "꼬질 자석경단",
       "description": "해초와 작은 자석을 꾹꾹 뭉친 꼬질한 경단. 물고기 대신 바닷속 버려진 물건들이 달라붙어요.",
-      "price": 10,
+      "price": 12,
       "image_path": "/items/baits/grubby-magnet-dumpling.png",
       "sort_order": 103,
       "common_bp": 8320,
@@ -752,7 +752,7 @@
       "failure_bp": 0,
       "effect_kind": "fish",
       "effect_description": "성공 시 일반 50% · 희귀 50%의 물고기를 포획해요.",
-      "success_chance_bp": 8000,
+      "success_chance_bp": 7500,
       "fish_only": true,
       "alternating": false
     },
@@ -889,13 +889,13 @@
       "price": 8,
       "image_path": "/items/baits/shell-crumbs.png",
       "sort_order": 111,
-      "common_bp": 8000,
-      "rare_bp": 2000,
+      "common_bp": 8200,
+      "rare_bp": 1800,
       "epic_bp": 0,
       "mythic_bp": 0,
       "failure_bp": 0,
       "effect_kind": "fish",
-      "effect_description": "성공 시 일반 80% · 희귀 20%의 물고기를 포획해요.",
+      "effect_description": "성공 시 일반 82% · 희귀 18%의 물고기를 포획해요.",
       "success_chance_bp": 2000,
       "fish_only": true,
       "alternating": false
@@ -1839,6 +1839,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "cloud-broken-broom",
+      "kind": "trash",
+      "name": "부러진 빗자루",
+      "description": "하늘을 달렸을지도 모를 부러진 빗자루. 풀린 짚 사이에 아주 작은 마력이 남아 있습니다.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.98",
+      "speed": "0.001",
+      "size": 68,
+      "rarity": "rare",
+      "thumbnail_path": "trash/epic/cloud-broken-broom_thumbnail.png",
+      "sell_price": 100,
+      "sprite_sheet_path": null,
+      "native_region_id": "cloudferry",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "cloud-bucket-little-ponyo",
       "kind": "fish",
       "name": "양동이 꼬마 포뇨",
@@ -2073,6 +2091,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "cloud-lost-magic-key",
+      "kind": "trash",
+      "name": "주인 잃은 마법 열쇠",
+      "description": "푸른 유리 장식이 박힌 낡은 마법 열쇠. 주인을 잃었어도 희미한 빛은 꺼지지 않습니다.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.98",
+      "speed": "0.001",
+      "size": 68,
+      "rarity": "epic",
+      "thumbnail_path": "trash/epic/cloud-lost-magic-key_thumbnail.png",
+      "sell_price": 110,
+      "sprite_sheet_path": null,
+      "native_region_id": "cloudferry",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "cloud-lotus-umbrella-river-spirit",
       "kind": "fish",
       "name": "연꽃 우산의 오물신",
@@ -2103,6 +2139,42 @@
       "thumbnail_path": "fish/rare/cloud-masked-forest-san_thumbnail.png",
       "sell_price": 362,
       "sprite_sheet_path": "fish/rare/cloud-masked-forest-san_sprite.png",
+      "native_region_id": "cloudferry",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "cloud-noface-mask",
+      "kind": "trash",
+      "name": "가오나시의 가면",
+      "description": "구름나루 물밑에서 건진 하얀 가면. 보랏빛 자국 아래로 소금기가 희미하게 남아 있습니다.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.98",
+      "speed": "0.001",
+      "size": 52,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/cloud-noface-mask_thumbnail.png",
+      "sell_price": 20,
+      "sprite_sheet_path": null,
+      "native_region_id": "cloudferry",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "cloud-old-red-shoe",
+      "kind": "trash",
+      "name": "낡은 빨간 구두",
+      "description": "붉은 가죽이 군데군데 벗겨진 작은 구두. 주인이 지나간 길은 물결 속으로 사라졌습니다.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.98",
+      "speed": "0.001",
+      "size": 52,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/cloud-old-red-shoe_thumbnail.png",
+      "sell_price": 15,
+      "sprite_sheet_path": null,
       "native_region_id": "cloudferry",
       "movement_type": "fixed",
       "flip_with_direction": false,
@@ -2268,6 +2340,24 @@
       "native_region_id": "cloudferry",
       "movement_type": "swim",
       "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "cloud-wet-train-ticket",
+      "kind": "trash",
+      "name": "젖은 기차표",
+      "description": "어느 역으로 가는지 읽을 수 없는 기차표. 젖은 모서리가 바람 대신 물살에 접힙니다.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.98",
+      "speed": "0.001",
+      "size": 52,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/cloud-wet-train-ticket_thumbnail.png",
+      "sell_price": 18,
+      "sprite_sheet_path": null,
+      "native_region_id": "cloudferry",
+      "movement_type": "fixed",
+      "flip_with_direction": false,
       "travel_direction": "both"
     },
     {
@@ -6213,6 +6303,78 @@
       "travel_direction": "both"
     },
     {
+      "id": "shared-abyss-charybdis",
+      "kind": "fish",
+      "name": "바다의 중심을 삼키는 자, 카리브디스",
+      "description": "나선의 몸 한가운데 바다의 깊이를 품은 존재. 금빛 입자는 가장자리에서 중심으로 끝없이 흘러갑니다.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.72",
+      "speed": "0.009",
+      "size": 145,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/shared-abyss-charybdis_thumbnail.png",
+      "sell_price": 2650,
+      "sprite_sheet_path": "fish/mythic/shared-abyss-charybdis_compat_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-apricot-tongue-snail",
+      "kind": "fish",
+      "name": "살구무늬 혀고둥",
+      "description": "살구색 고리무늬 망토를 두른 작은 고둥. 조용한 걸음마다 더듬이가 먼저 길을 살핍니다.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.006",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/shared-apricot-tongue-snail_thumbnail.png",
+      "sell_price": 210,
+      "sprite_sheet_path": "fish/rare/shared-apricot-tongue-snail_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-blue-leaf-sheep",
+      "kind": "fish",
+      "name": "쪽빛 잎사귀 양달팽이",
+      "description": "등에 쪽빛 잎을 달고 다니는 작은 양달팽이. 잎사귀 사이로 바닷물이 조용히 흐릅니다.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.006",
+      "size": 64,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-blue-leaf-sheep_thumbnail.png",
+      "sell_price": 55,
+      "sprite_sheet_path": "fish/normal/shared-blue-leaf-sheep_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-blue-wing-nudibranch",
+      "kind": "fish",
+      "name": "푸른 날개 갯민숭달팽이",
+      "description": "푸른 가지 같은 날개를 펼치는 갯민숭달팽이. 은빛 몸이 물결 사이에서 작게 빛납니다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.8",
+      "speed": "0.022",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/shared-blue-wing-nudibranch_thumbnail.png",
+      "sell_price": 230,
+      "sprite_sheet_path": "fish/rare/shared-blue-wing-nudibranch_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "shared-cheolgak-sunken-harbor",
       "kind": "fish",
       "name": "가라앉은 항구의 주인, 철각",
@@ -6231,6 +6393,168 @@
       "travel_direction": "both"
     },
     {
+      "id": "shared-crimson-vampire-squid",
+      "kind": "fish",
+      "name": "심홍 망토 흡혈오징어",
+      "description": "심홍빛 팔막으로 몸을 감싸는 흡혈오징어. 망토를 펼치면 푸른 눈빛이 어둠 위로 떠오릅니다.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.72",
+      "speed": "0.009",
+      "size": 100,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/shared-crimson-vampire-squid_thumbnail.png",
+      "sell_price": 780,
+      "sprite_sheet_path": "fish/epic/shared-crimson-vampire-squid_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-crown-atolla",
+      "kind": "fish",
+      "name": "심해 왕관 아톨라",
+      "description": "붉은 유리 왕관 같은 심해 해파리. 맥동할 때마다 가장자리를 따라 푸른 빛이 돕니다.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.72",
+      "speed": "0.009",
+      "size": 100,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/shared-crown-atolla_thumbnail.png",
+      "sell_price": 820,
+      "sprite_sheet_path": "fish/epic/shared-crown-atolla_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-eclipse-eclion",
+      "kind": "fish",
+      "name": "일식을 두른 해룡, 에클리온",
+      "description": "일식의 고리를 두른 흑요석빛 해룡. 몸이 고리 안을 스칠 때 비늘 사이로 황금빛 새벽이 새어 나옵니다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.8",
+      "speed": "0.022",
+      "size": 145,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/shared-eclipse-eclion_thumbnail.png",
+      "sell_price": 2700,
+      "sprite_sheet_path": "fish/mythic/shared-eclipse-eclion_compat_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-empty-bait-bag",
+      "kind": "trash",
+      "name": "빈 미끼 봉지",
+      "description": "물고기 그림만 남은 빈 미끼 봉지. 내용물은 바다 친구들이 먼저 맛본 것 같습니다.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.98",
+      "speed": "0.001",
+      "size": 52,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/shared-empty-bait-bag_thumbnail.png",
+      "sell_price": 18,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-forgotten-star",
+      "kind": "fish",
+      "name": "잊힌 별의 호흡, 허성",
+      "description": "잊힌 별의 껍질을 닮은 심해 생물. 빛을 내뿜는 대신 중심의 공허로 천천히 들이쉽니다.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.72",
+      "speed": "0.009",
+      "size": 145,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/shared-forgotten-star_thumbnail.png",
+      "sell_price": 2300,
+      "sprite_sheet_path": "fish/mythic/shared-forgotten-star_compat_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-holey-sock",
+      "kind": "trash",
+      "name": "구멍 난 양말",
+      "description": "발끝에 구멍이 난 줄무늬 양말. 작은 해초가 새 주인처럼 고개를 내밀고 있습니다.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.98",
+      "speed": "0.001",
+      "size": 52,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/shared-holey-sock_thumbnail.png",
+      "sell_price": 18,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-horizon-jormungandr",
+      "kind": "fish",
+      "name": "수평선을 감은 뱀, 요르문간드",
+      "description": "긴 몸으로 수평선을 감아 품은 바다뱀. 고리 안쪽의 바다는 바깥 물살과 다른 방향으로 흐릅니다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.8",
+      "speed": "0.022",
+      "size": 145,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/shared-horizon-jormungandr_thumbnail.png",
+      "sell_price": 2800,
+      "sprite_sheet_path": "fish/mythic/shared-horizon-jormungandr_compat_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-island-hafgufa",
+      "kind": "fish",
+      "name": "잠든 섬을 등에 진 자, 하프구파",
+      "description": "등에 작은 산호 섬을 이고 잠든 듯 유영하는 거대한 존재. 숨결마다 섬의 불빛이 별처럼 떠오릅니다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.8",
+      "speed": "0.022",
+      "size": 145,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/shared-island-hafgufa_thumbnail.png",
+      "sell_price": 2600,
+      "sprite_sheet_path": "fish/mythic/shared-island-hafgufa_compat_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-lapis-crown-jelly",
+      "kind": "fish",
+      "name": "청금석 왕관해파리",
+      "description": "청금석빛 갓 안에 금빛 가지를 품은 해파리. 가느다란 촉수는 깊은 물속의 샹들리에처럼 흔들립니다.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.72",
+      "speed": "0.009",
+      "size": 100,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/shared-lapis-crown-jelly_thumbnail.png",
+      "sell_price": 850,
+      "sprite_sheet_path": "fish/epic/shared-lapis-crown-jelly_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "shared-maru-returning-wave",
       "kind": "fish",
       "name": "돌아오는 파도, 마루",
@@ -6243,6 +6567,168 @@
       "thumbnail_path": "fish/mythic/shared-maru-returning-wave_thumbnail.png",
       "sell_price": 2980,
       "sprite_sheet_path": "fish/mythic/shared-maru-returning-wave_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-nacre-emperor-squid",
+      "kind": "fish",
+      "name": "자개비단 황제오징어",
+      "description": "자개빛 팔과 유려한 지느러미를 지닌 황제오징어. 몸을 기울이면 진주색 광택이 흘러내립니다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.8",
+      "speed": "0.022",
+      "size": 100,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/shared-nacre-emperor-squid_thumbnail.png",
+      "sell_price": 900,
+      "sprite_sheet_path": "fish/epic/shared-nacre-emperor-squid_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-pink-sea-pig",
+      "kind": "fish",
+      "name": "분홍 말랑 바다돼지",
+      "description": "분홍빛 몸에 물을 가득 머금은 바다돼지. 짧은 발로 해저를 느릿하게 산책합니다.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.006",
+      "size": 64,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-pink-sea-pig_thumbnail.png",
+      "sell_price": 50,
+      "sprite_sheet_path": "fish/normal/shared-pink-sea-pig_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-rainbow-blanket-octopus",
+      "kind": "fish",
+      "name": "오색 비단 담요문어",
+      "description": "물속에 오색 비단을 펼치는 담요문어. 긴 팔막의 주름을 따라 빛이 느리게 번집니다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.8",
+      "speed": "0.022",
+      "size": 100,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/shared-rainbow-blanket-octopus_thumbnail.png",
+      "sell_price": 880,
+      "sprite_sheet_path": "fish/epic/shared-rainbow-blanket-octopus_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-scarlet-skirt-dancer",
+      "kind": "fish",
+      "name": "붉은 치맛자락 무희",
+      "description": "붉은 치맛자락을 너울거리며 헤엄치는 바다의 무희. 물살이 닿으면 가장자리부터 춤이 시작됩니다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.8",
+      "speed": "0.022",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/shared-scarlet-skirt-dancer_thumbnail.png",
+      "sell_price": 260,
+      "sprite_sheet_path": "fish/rare/shared-scarlet-skirt-dancer_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-silver-ghost-shark",
+      "kind": "fish",
+      "name": "은빛 유령상어",
+      "description": "긴 꼬리와 은빛 몸을 지닌 유령상어. 소리 없이 활공하며 어두운 물길을 건넙니다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.8",
+      "speed": "0.022",
+      "size": 76,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/shared-silver-ghost-shark_thumbnail.png",
+      "sell_price": 300,
+      "sprite_sheet_path": "fish/rare/shared-silver-ghost-shark_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-silver-salmon",
+      "kind": "fish",
+      "name": "은비늘 연어",
+      "description": "은빛 비늘과 옅은 분홍 옆줄을 지닌 연어. 꼬리가 지날 때마다 물결이 반짝입니다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.8",
+      "speed": "0.022",
+      "size": 64,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-silver-salmon_thumbnail.png",
+      "sell_price": 60,
+      "sprite_sheet_path": "fish/normal/shared-silver-salmon_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-uncountable-colony",
+      "kind": "fish",
+      "name": "아무도 세지 못한 무리, 군체",
+      "description": "작은 물고기들이 모여 하나의 거대한 존재를 이룹니다. 흩어진 뒤의 빈자리에도 같은 윤곽이 남습니다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.8",
+      "speed": "0.022",
+      "size": 145,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/shared-uncountable-colony_thumbnail.png",
+      "sell_price": 2400,
+      "sprite_sheet_path": "fish/mythic/shared-uncountable-colony_compat_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-useless-key",
+      "kind": "trash",
+      "name": "아무것도 안 열리는 열쇠",
+      "description": "어느 자물쇠에도 맞지 않는 낡은 열쇠. 무엇을 열었는지는 열쇠도 잊은 모양입니다.",
+      "swim_y_min": "0.9",
+      "swim_y_max": "0.98",
+      "speed": "0.001",
+      "size": 52,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/shared-useless-key_thumbnail.png",
+      "sell_price": 20,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-weightless-skull-whale",
+      "kind": "fish",
+      "name": "무중력 해골고래",
+      "description": "푸른 잔광이 오래된 뼈를 이어 놓은 고래. 떨어진 뼛조각은 가라앉지 않고 몸의 주위를 맴돕니다.",
+      "swim_y_min": "0.15",
+      "swim_y_max": "0.8",
+      "speed": "0.022",
+      "size": 145,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/shared-weightless-skull-whale_thumbnail.png",
+      "sell_price": 2500,
+      "sprite_sheet_path": "fish/mythic/shared-weightless-skull-whale_compat_sprite.png",
       "native_region_id": null,
       "movement_type": "swim",
       "flip_with_direction": true,
@@ -9159,6 +9645,10 @@
       "region_id": "cloudferry"
     },
     {
+      "species_id": "cloud-broken-broom",
+      "region_id": "cloudferry"
+    },
+    {
       "species_id": "cloud-bucket-little-ponyo",
       "region_id": "cloudferry"
     },
@@ -9247,11 +9737,23 @@
       "region_id": "cloudferry"
     },
     {
+      "species_id": "cloud-lost-magic-key",
+      "region_id": "cloudferry"
+    },
+    {
       "species_id": "cloud-lotus-umbrella-river-spirit",
       "region_id": "cloudferry"
     },
     {
       "species_id": "cloud-masked-forest-san",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-noface-mask",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-old-red-shoe",
       "region_id": "cloudferry"
     },
     {
@@ -9288,6 +9790,10 @@
     },
     {
       "species_id": "cloud-wave-calling-ponyo",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "cloud-wet-train-ticket",
       "region_id": "cloudferry"
     },
     {
@@ -12787,6 +13293,198 @@
       "region_id": "bluegrove"
     },
     {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-abyss-charybdis",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-apricot-tongue-snail",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-blue-leaf-sheep",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-blue-wing-nudibranch",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "shared-cheolgak-sunken-harbor",
       "region_id": "bluegrove"
     },
@@ -12835,6 +13533,438 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-crimson-vampire-squid",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-crown-atolla",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-eclipse-eclion",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-empty-bait-bag",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-forgotten-star",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-holey-sock",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-horizon-jormungandr",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-island-hafgufa",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-lapis-crown-jelly",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "shared-maru-returning-wave",
       "region_id": "bluegrove"
     },
@@ -12880,6 +14010,438 @@
     },
     {
       "species_id": "shared-maru-returning-wave",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-nacre-emperor-squid",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-pink-sea-pig",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-rainbow-blanket-octopus",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-silver-ghost-shark",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-silver-salmon",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-uncountable-colony",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-useless-key",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-weightless-skull-whale",
       "region_id": "whitenight"
     },
     {

@@ -17,7 +17,7 @@ it('charges approved prices once per operation and reports fixed success with ro
  await db.exec('select public.fishing_rod_state()')
  await db.query("insert into public.player_fishing_rods(user_id,rod_id) values($1,'calm')",[uid])
  await db.exec("select public.equip_fishing_rod('calm')")
- for(const [id,price,chance] of [[honey,100,8000],[snow,35,5000],[tail,40,8000]] as const){
+ for(const [id,price,chance] of [[honey,100,7500],[snow,35,5000],[tail,40,8000]] as const){
   const op=crypto.randomUUID()
   await db.exec('set role authenticated')
   try{

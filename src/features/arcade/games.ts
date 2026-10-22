@@ -28,7 +28,7 @@ export const arcadeGames: ArcadeGame[] = [
   {
     id: 'ladder',
     title: '퐁이의 물결 사다리',
-    description: '물결과 베팅금을 고르고 네 갈래 사다리에서 행운을 만나요.',
+    description: '다섯 바다와 베팅금을 고르고 여섯 갈래 사다리에서 행운을 만나요.',
     icon: Shell,
     entryFee: 0,
     dailyLimit: null,

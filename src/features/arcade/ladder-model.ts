@@ -3,9 +3,36 @@ export const LADDER_WIPE_MS = 1100
 export const LADDER_REVEAL_MS = LADDER_WIPE_MS + LADDER_TRAVEL_MS + 300
 
 export const ladderModes = {
-  calm: { name: '잔잔한 물결', detail: '안정형', payouts: [50, 75, 125, 150] },
-  wave: { name: '출렁이는 파도', detail: '균형형', payouts: [0, 50, 150, 200] },
-  storm: { name: '거친 폭풍', detail: '불방형', payouts: [0, 0, 0, 400] },
+  calm: {
+    name: '조개 줍는 해변',
+    detail: '꽝 없이 소소하게 챙겨요',
+    image: '/arcade/ladder/modes/calm.png',
+    payouts: [70, 80, 90, 100, 120, 140],
+  },
+  wave: {
+    name: '순풍의 뱃길',
+    detail: '손실·본전·당첨이 골고루',
+    image: '/arcade/ladder/modes/wave.png',
+    payouts: [0, 50, 80, 100, 150, 220],
+  },
+  lucky: {
+    name: '풍어의 물결',
+    detail: '여섯 길 중 네 길에서 이득',
+    image: '/arcade/ladder/modes/lucky.png',
+    payouts: [0, 20, 120, 130, 150, 180],
+  },
+  shark: {
+    name: '상어의 해협',
+    detail: '거친 물살 너머 최대 4배',
+    image: '/arcade/ladder/modes/shark.png',
+    payouts: [0, 0, 0, 50, 150, 400],
+  },
+  storm: {
+    name: '용왕의 보물고',
+    detail: '여섯 길 중 하나, 보물은 6배',
+    image: '/arcade/ladder/modes/storm.png',
+    payouts: [0, 0, 0, 0, 0, 600],
+  },
 } as const
 export type LadderMode = keyof typeof ladderModes
 export type LadderRun = {
@@ -20,19 +47,21 @@ export type LadderRun = {
   reward: number
 }
 export type LadderBet = { operation: string; mode: LadderMode; stake: number; choice: number }
-export function ladderRoute(choice: number, bridges: number[]) {
+export function ladderRoute(choice: number, bridges: number[], lanes = 6) {
   let col = choice
-  const points: [number, number][] = [[45 + col * 90, 20]]
+  const step = 360 / lanes,
+    x = (column: number) => step * (column + 0.5)
+  const points: [number, number][] = [[x(col), 20]]
   bridges.forEach((link, row) => {
     const y = 40 + row * (144 / Math.max(1, bridges.length))
-    points.push([45 + col * 90, y])
+    points.push([x(col), y])
     if (link >= 0) {
       if (link === col) col++
       else if (link === col - 1) col--
     }
-    points.push([45 + col * 90, y])
+    points.push([x(col), y])
   })
-  points.push([45 + col * 90, 202])
+  points.push([x(col), 202])
   return {
     destination: col,
     path: points.map(([x, y], i) => `${i ? 'L' : 'M'}${x},${y}`).join(' '),
@@ -43,7 +72,11 @@ export function ladderRoute(choice: number, bridges: number[]) {
 export function ladderDisplayRun(run: LadderRun): LadderRun {
   const payouts = [...run.payouts]
   const bridges = [...run.bridges]
-  const target = ladderModes[run.mode].payouts
+  // Previously settled four-lane bets keep their original endpoints and payout.
+  const target =
+    run.payouts.length === 4
+      ? [...run.payouts].sort((a, b) => a - b)
+      : ladderModes[run.mode].payouts
   for (let i = 0; i < target.length; i++) {
     let from = payouts.findIndex((p, index) => index >= i && p === target[i])
     while (from > i) {
@@ -53,7 +86,12 @@ export function ladderDisplayRun(run: LadderRun): LadderRun {
       from--
     }
   }
-  return { ...run, payouts, bridges, destination: ladderRoute(run.choice, bridges).destination }
+  return {
+    ...run,
+    payouts,
+    bridges,
+    destination: ladderRoute(run.choice, bridges, payouts.length).destination,
+  }
 }
 export function practiceLadder(bet: LadderBet, random = Math.random): LadderRun {
   const payouts: number[] = [...ladderModes[bet.mode].payouts]
@@ -61,7 +99,7 @@ export function practiceLadder(bet: LadderBet, random = Math.random): LadderRun 
     const j = Math.floor(random() * (i + 1))
     ;[payouts[i], payouts[j]] = [payouts[j], payouts[i]]
   }
-  const bridges = Array.from({ length: 12 }, () => Math.floor(random() * 4) - 1)
+  const bridges = Array.from({ length: 12 }, () => Math.floor(random() * payouts.length) - 1)
   const destination = ladderRoute(bet.choice, bridges).destination
   return {
     id: bet.operation,

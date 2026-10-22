@@ -1,7 +1,8 @@
 import { loadEnvFile } from 'node:process'
-import { readdir, readFile, realpath } from 'node:fs/promises'
+import { readdir, readFile, realpath, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { createClient } from '@supabase/supabase-js'
+import { optimizePng } from './optimize-png-lossless.mjs'
 
 // Node-only credentials. Never import this script into the application.
 async function main() {
@@ -42,8 +43,17 @@ async function main() {
   const client = createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } })
   let uploaded = 0, skipped = 0
   for (const file of files) {
-    const { error } = await client.storage.from('collectibles').upload(file.key, await readFile(file.local), {
+    const original = await readFile(file.local), optimized = optimizePng(original)
+    // Save exactly the uploaded bytes so manifests/hash checks remain reproducible.
+    if (optimized.length < original.length) {
+      await writeFile(file.local, optimized)
+      console.log(`Lossless PNG: ${file.key} (${original.length - optimized.length} bytes saved)`)
+    }
+    const { error } = await client.storage.from('collectibles').upload(file.key, optimized, {
       contentType: 'image/png', upsert: args.includes('--overwrite'),
+      // Versioned names are immutable. Replacements must increment the version;
+      // legacy unversioned art keeps a short TTL for existing update workflows.
+      cacheControl: /_v\d+_(sprite|thumbnail)\.png$/i.test(file.key) ? '31536000' : '3600',
     })
     if (error) {
       if (!args.includes('--overwrite') && (String(error.statusCode) === '409' || error.message === 'The resource already exists')) {

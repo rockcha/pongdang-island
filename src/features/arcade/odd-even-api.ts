@@ -19,7 +19,7 @@ export type OddEvenAction = {
 }
 export type OddEvenRank = {
   avatarPath?: string | null
-  level?: number
+  levelProgress?:number;level?: number
   rank: number
   id: string
   gold: number

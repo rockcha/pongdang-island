@@ -1,11 +1,15 @@
 import {createClient} from '@/lib/client'
+import {announceBaitReceived} from '@/features/fishing/bait-reward-effect'
 export type AttendanceState={today:string;checkedIn:boolean;streak:number;currentDay:number;completedDays:number;sheetNumber:number;completedSheets:number;reset:boolean}
 export type AttendanceClaim=AttendanceState&{replayed:boolean;reward:{claim_date:string;gold:number;fuel:number;bait_id:string|null;sheet_day:number}}
 export async function loadAttendance():Promise<AttendanceState>{
  const {data,error}=await createClient().rpc('attendance_state');if(error)throw error;return data
 }
 export async function claimAttendance(day:string):Promise<AttendanceClaim>{
- const {data,error}=await createClient().rpc('claim_attendance',{p_day:day});if(error)throw error;return data
+ const startedAt=performance.now()
+ const {data,error}=await createClient().rpc('claim_attendance',{p_day:day});if(error)throw error
+ if(data.reward.bait_id)announceBaitReceived('attendance:'+data.reward.claim_date,data.reward.bait_id,1,startedAt)
+ return data
 }
 export function attendanceError(cause:unknown){
  const message=cause&&typeof cause==='object'&&'message'in cause?String(cause.message):''

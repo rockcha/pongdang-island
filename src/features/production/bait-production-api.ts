@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/client'
+import {announceBaitReceived} from '@/features/fishing/bait-reward-effect'
 export type BaitFacility = {
   id: string
   name: string
@@ -19,6 +20,7 @@ export type BaitFacility = {
   runOutput: number | null
 }
 export type BaitProductionState = {
+  receipt?:{action:string;siteId?:string;count:number}
   activeTotal?: number
   serverNow: string
   gold: number
@@ -38,8 +40,13 @@ export async function loadBaitProduction() {
   return data
 }
 export async function actBaitProduction(args: BaitProductionAction) {
+  const startedAt=performance.now()
   const { data, error } = await createClient().rpc('bait_production_action', args)
   if (error) throw error
+  if(args.p_action==='claim'&&data.receipt?.action==='claim'){
+    const site=data.sites.find(site=>site.siteId===args.p_facility)
+    if(site)announceBaitReceived('production:'+args.p_operation_id,site.bait_id,data.receipt.count,startedAt)
+  }
   window.dispatchEvent(new Event('wallet-changed'))
   window.dispatchEvent(new Event('bait-production-changed'))
   return data

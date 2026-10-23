@@ -8,7 +8,7 @@ import { socialErrorMessage } from '@/features/social/types'
 
 export type RankingFriend = {
   avatarPath?: string | null
-  level?: number
+  levelProgress?:number;level?: number
   userId?: string
   friendCode?: string | null
   friendStatus?: 'pending' | 'accepted' | null

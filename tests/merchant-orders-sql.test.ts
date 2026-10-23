@@ -112,13 +112,13 @@ it('stores the deliverer identity and message as an immutable receipt snapshot',
  const o=(await state()).orders[0];await stock(o)
  const op=crypto.randomUUID(),args=[o.id,op,'첫 의뢰 완료!']
  const first=(await asUser(me,'select public.deliver_merchant_order($1,$2,$3) s',args)).rows[0].s
- expect(first.orders.find(x=>x.id===o.id).delivery).toEqual({nickname:'납품퐁이',avatarPath:null,message:'첫 의뢰 완료!',level:1})
+ expect(first.orders.find(x=>x.id===o.id).delivery).toEqual({nickname:'납품퐁이',avatarPath:null,message:'첫 의뢰 완료!',level:1,levelProgress:0})
  await db.query("update public.player_profiles set nickname='새이름' where id=$1",[me])
  const again=(await asUser(me,'select public.deliver_merchant_order($1,$2,$3) s',args)).rows[0].s
  expect(again.replayed).toBe(true)
  expect(again.orders.find(x=>x.id===o.id).delivery).toEqual(first.orders.find(x=>x.id===o.id).delivery)
  await db.query("update public.player_profiles set avatar_path=$2 where id=$1",[me,me+'/current.webp'])
- expect((await state()).orders.find(x=>x.id===o.id).delivery).toEqual({nickname:'납품퐁이',avatarPath:me+'/current.webp',message:'첫 의뢰 완료!',level:1})
+ expect((await state()).orders.find(x=>x.id===o.id).delivery).toEqual({nickname:'납품퐁이',avatarPath:me+'/current.webp',message:'첫 의뢰 완료!',level:1,levelProgress:0})
  await expect(asUser(me,'select public.deliver_merchant_order($1,$2,$3) s',[o.id,op,'다른 말'])).rejects.toThrow('OPERATION_CONFLICT')
 })
 it('rejects oversized messages before consuming items',async()=>{

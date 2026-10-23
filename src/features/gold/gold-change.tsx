@@ -2,9 +2,13 @@
 export function GoldChange({
   delta,
   resource = 'gold',
+  icon,
+  name,
 }: {
   delta: number
-  resource?: 'gold' | 'fuel' | 'experience'
+  resource?: 'gold' | 'fuel' | 'experience' | 'bait'
+  icon?:string
+  name?:string
 }) {
   if (!delta) return null
   return (
@@ -17,7 +21,7 @@ export function GoldChange({
         {resource === 'experience' && ' XP'}
       </span>
       {resource !== 'experience' && <img
-        src={resource === 'fuel' ? '/app-icons/fuel-can.svg' : '/currency/gold-coin-starfish.png'}
+        src={resource === 'bait' ? icon??'/app-icons/bait.png' : resource === 'fuel' ? '/app-icons/fuel-can.svg' : '/currency/gold-coin-starfish.png'}
         alt=""
         aria-hidden="true"
         className="gold-change-coin shrink-0 object-contain"
@@ -29,7 +33,7 @@ export function GoldChange({
           <i className="gold-change-sparkle" />
         </span>
       )}
-      <span className="sr-only">{resource === 'experience' ? '경험치' : resource === 'fuel' ? '연료' : '골드'}</span>
+      <span className="sr-only">{resource === 'bait' ? name??'미끼' : resource === 'experience' ? '경험치' : resource === 'fuel' ? '연료' : '골드'}</span>
     </div>
   )
 }

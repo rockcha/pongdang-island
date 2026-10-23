@@ -8,6 +8,7 @@ export function RankingRow({
   nickname,
   avatarPath,
   level,
+  levelProgress,
   mine,
   record,
   action,
@@ -16,6 +17,7 @@ export function RankingRow({
   nickname: string
   avatarPath?: string | null
   level?: number
+  levelProgress?: number
   mine: boolean
   record: ReactNode
   action?: ReactNode
@@ -34,7 +36,7 @@ export function RankingRow({
         )}
         <span>{rank}등</span>
       </span>
-      <PlayerAvatar nickname={nickname} path={avatarPath} level={level} className="size-9 border border-border/60" />
+      <PlayerAvatar nickname={nickname} path={avatarPath} level={level} levelProgress={levelProgress} className="size-9 border border-border/60" />
       <span className="min-w-0 flex-1">
         <span className="block truncate" title={nickname}>
           {nickname}

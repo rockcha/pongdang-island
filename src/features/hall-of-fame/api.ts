@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/client'
 
 export type HallPlayer = {
-  level?: number
+  levelProgress?:number;level?: number
   id: string
   nickname: string
   avatar_path: string | null

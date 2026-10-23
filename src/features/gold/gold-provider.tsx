@@ -9,6 +9,7 @@ import type { Trade, Wallet } from './wallet'
 import {toast} from 'sonner'
 import {purchaseMessage} from './purchase-message'
 import {GoldChange} from './gold-change'
+import {BAIT_RECEIVED,type BaitRewardEffect} from '@/features/fishing/bait-reward-effect'
 
 const GoldContext = createContext<{ wallet: Wallet; transact: (action: Trade) => Promise<void>; batchEffects: (work: () => Promise<void>) => Promise<void>; loading: boolean; busy: boolean; error: string; testClaimed: boolean; testEnabled: boolean; refresh: () => Promise<void> } | null>(null)
 export function GoldIcon({ className = 'size-6' }: { className?: string }) {
@@ -26,6 +27,7 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
   const [testClaimed, setTestClaimed] = useState(false)
   const [testEnabled, setTestEnabled] = useState(false)
   const active = useRef(true)
+  const mountedAt=useRef(performance.now()),receivedBaits=useRef(new Set<string>())
   const locked = useRef(false)
   const pending = useRef<{ signature: string; id: string } | null>(null)
   const previousGold=useRef<number|null>(null),previousFuel=useRef<number|null>(null),revision=useRef(0),refreshRequest=useRef(0)
@@ -51,14 +53,22 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
     const reload = () => { if (document.visibilityState === 'visible') void refresh() }
     window.addEventListener('focus', reload); window.addEventListener('online', reload);window.addEventListener('attendance-changed',reload)
     window.addEventListener('wallet-changed',reload)
-    return () => { active.current = false; window.removeEventListener('focus', reload); window.removeEventListener('online', reload);window.removeEventListener('attendance-changed',reload);window.removeEventListener('wallet-changed',reload) }
+    const receiveBait=(event:Event)=>{
+      const reward=(event as CustomEvent<BaitRewardEffect>).detail
+      if(!userId||!reward||reward.startedAt<mountedAt.current||!Number.isSafeInteger(reward.quantity)||reward.quantity<=0||receivedBaits.current.has(reward.key))return
+      receivedBaits.current.add(reward.key)
+      if(receivedBaits.current.size>500)receivedBaits.current.delete(receivedBaits.current.values().next().value!)
+      showDelta(reward.quantity,'bait',reward.icon,reward.name)
+    }
+    window.addEventListener(BAIT_RECEIVED,receiveBait)
+    return () => { active.current = false; window.removeEventListener('focus', reload); window.removeEventListener('online', reload);window.removeEventListener('attendance-changed',reload);window.removeEventListener('wallet-changed',reload);window.removeEventListener(BAIT_RECEIVED,receiveBait) }
     // AccountGold remounts when the authenticated user changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId])
   const [groupBusy,setGroupBusy]=useState(false)
   const effectBatch=useRef<{delta:number;message:string;purchases:number;purchaseName:string}|null>(null)
   const sequence = useRef(0)
-  const [effects, setEffects] = useState<{ id: number; delta: number; resource:'gold'|'fuel' }[]>([])
+  const [effects, setEffects] = useState<{ id: number; delta: number; resource:'gold'|'fuel'|'bait';icon?:string;name?:string }[]>([])
   const timers = useRef<ReturnType<typeof setTimeout>[]>([])
   useEffect(() => () => timers.current.forEach(clearTimeout), [])
   async function transact(action: Trade) {
@@ -87,10 +97,10 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
     if(message)toast.success(message)
     showDelta(result.delta)
   }
-  function showDelta(delta:number,resource:'gold'|'fuel'='gold'){
+  function showDelta(delta:number,resource:'gold'|'fuel'|'bait'='gold',icon?:string,name?:string){
     if(delta===0)return
     const id = ++sequence.current
-    setEffects(previous => [...previous.slice(-3), { id, delta, resource }])
+    setEffects(previous => [...previous.slice(-3), { id, delta, resource,icon,name }])
     const timer = setTimeout(() => {
       setEffects(previous => previous.filter(effect => effect.id !== id))
       timers.current = timers.current.filter(value => value !== timer)
@@ -105,7 +115,7 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
   return <GoldContext.Provider value={{ wallet, transact, batchEffects, loading, busy:busy||groupBusy, error, testClaimed, testEnabled, refresh }}>
     {children}
     {createPortal(<div data-gold-effects className="pointer-events-none fixed inset-0 z-[2147483000] flex items-center justify-center" aria-live="polite" aria-atomic="true">
-      <div className="flex flex-col items-center gap-2">{effects.map(effect => <GoldChange key={effect.id} delta={effect.delta} resource={effect.resource} />)}</div>
+      <div className="flex flex-col items-center gap-2">{effects.map(effect => <GoldChange key={effect.id} delta={effect.delta} resource={effect.resource} icon={effect.icon} name={effect.name} />)}</div>
     </div>,document.body)}
   </GoldContext.Provider>
 }

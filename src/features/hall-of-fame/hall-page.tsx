@@ -318,7 +318,7 @@ function RankingCard({
                       strokeWidth={1.5}
                     />
                   )}
-                  <PlayerAvatar level={player.level} userId={player.id}
+                  <PlayerAvatar level={player.level} levelProgress={player.levelProgress} userId={player.id}
                     nickname={player.nickname}
                     path={player.avatar_path}
                     className={`size-10 ring-2 ${player.rank === 1 ? 'ring-amber-300/80' : 'ring-secondary'}`}

@@ -27,11 +27,11 @@ export function ActiveExpeditionCard({expedition:e,baits,regionName,remaining,ch
   </div>
   {boosts.length>0&&<details className="group border-t border-border/70 pt-3">
    <summary className="flex min-h-11 cursor-pointer list-none items-center gap-2 text-xs [&::-webkit-details-marker]:hidden">
-    <div className="flex -space-x-2">{boosts.slice(0,3).map(b=><PlayerAvatar level={b.level} key={b.id} nickname={b.nickname} path={b.avatar_path} className="size-7 ring-2 ring-card"/>)}</div>
+    <div className="flex -space-x-2">{boosts.slice(0,3).map(b=><PlayerAvatar level={b.level} levelProgress={b.levelProgress} key={b.id} nickname={b.nickname} path={b.avatar_path} className="size-7 ring-2 ring-card"/>)}</div>
     <span className="min-w-0 flex-1"><span className="block text-foreground">친구의 물고기 유인</span><span className="mt-1 block truncate text-[10px] text-muted-foreground">{boosts[0].nickname}님{boosts.length>1?` 외 ${boosts.length-1}명`:''}</span></span>
     <span className="shrink-0 tabular-nums text-primary">−{boosts.reduce((sum,b)=>sum+b.minutes,0)}분</span><ChevronDown className="size-3.5 shrink-0 text-muted-foreground transition-transform group-open:rotate-180"/>
    </summary>
-   <ul aria-label="물고기를 유인해준 친구" className="mt-2 space-y-2 pb-1">{boosts.map(b=><li key={b.id} className="flex items-center gap-2 text-xs"><PlayerAvatar level={b.level} nickname={b.nickname} path={b.avatar_path} className="size-6"/><span className="min-w-0 flex-1 truncate">{b.nickname}</span><span className="text-[11px] text-muted-foreground">{b.minutes}분 가속</span></li>)}</ul>
+   <ul aria-label="물고기를 유인해준 친구" className="mt-2 space-y-2 pb-1">{boosts.map(b=><li key={b.id} className="flex items-center gap-2 text-xs"><PlayerAvatar level={b.level} levelProgress={b.levelProgress} nickname={b.nickname} path={b.avatar_path} className="size-6"/><span className="min-w-0 flex-1 truncate">{b.nickname}</span><span className="text-[11px] text-muted-foreground">{b.minutes}분 가속</span></li>)}</ul>
   </details>}
   {children}
  </article>

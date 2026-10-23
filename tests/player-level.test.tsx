@@ -2,12 +2,31 @@ import {StrictMode} from 'react'
 import {act,cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
 import {MemoryRouter,useLocation} from 'react-router'
 import {afterEach,expect,it,vi} from 'vitest'
-import {PlayerLevel,PlayerLevelsProvider} from '@/features/experience/player-level'
+import {AvatarLevelBadge,PlayerLevel,PlayerLevelsProvider} from '@/features/experience/player-level'
 import {PlayerIdentityLink} from '@/features/profile/player-identity-link'
 import {PlayerAvatar} from '@/features/profile/player-avatar'
 const api=vi.hoisted(()=>({loadPlayerLevels:vi.fn()}))
 vi.mock('@/features/experience/api',()=>api)
 afterEach(()=>{cleanup();vi.resetAllMocks()})
+it('fills half the perimeter at 100/200 XP and resets it on a level up without a stale batch replacing own progress',async()=>{
+ api.loadPlayerLevels.mockResolvedValue([{userId:'me',level:2,levelProgress:.9}])
+ const view=render(<PlayerLevelsProvider self={{userId:'me',level:3,levelProgress:100/200}}><PlayerLevel userId="me" avatar/></PlayerLevelsProvider>)
+ await waitFor(()=>expect(api.loadPlayerLevels).toHaveBeenCalledOnce())
+ const ring=()=>view.container.querySelector('[data-level-progress]')!
+ expect(ring().getAttribute('data-level-progress')).toBe('0.5')
+ expect(ring().querySelectorAll('circle')[1].getAttribute('stroke-dasharray')).toBe('50 100')
+ expect(screen.getByRole('button',{name:'레벨 3'})).toBeTruthy()
+ view.rerender(<PlayerLevelsProvider self={{userId:'me',level:4,levelProgress:0}}><PlayerLevel userId="me" avatar/></PlayerLevelsProvider>)
+ expect(ring().getAttribute('data-level-progress')).toBe('0')
+ expect(screen.getByRole('button',{name:'레벨 4'})).toBeTruthy()
+})
+it('clamps progress and leaves the badge available when the progress field is missing',()=>{
+ const view=render(<AvatarLevelBadge level={20} levelProgress={2}/>)
+ expect(view.container.querySelector('[data-level-progress]')?.getAttribute('data-level-progress')).toBe('1')
+ view.rerender(<AvatarLevelBadge level={20} levelProgress={NaN}/>)
+ expect(view.container.querySelector('[data-level-progress]')).toBeNull()
+ expect(screen.getByRole('button',{name:'레벨 20'})).toBeTruthy()
+})
 it('batches all visible identities, deduplicates users and survives StrictMode replay',async()=>{
  api.loadPlayerLevels.mockResolvedValue([{userId:'one',level:42},{userId:'two',level:1}])
  render(<StrictMode><PlayerLevelsProvider><PlayerLevel userId="one"/><PlayerLevel userId="one"/><PlayerLevel userId="two"/></PlayerLevelsProvider></StrictMode>)

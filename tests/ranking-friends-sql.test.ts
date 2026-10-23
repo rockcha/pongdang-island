@@ -11,7 +11,7 @@ beforeAll(async()=>{
  }
  await db.query("select set_config('request.jwt.claim.sub',$1,false)",[me])
  await db.query("update public.player_profiles set avatar_path='avatars/ranking.png' where id=$1",[other])
- await db.query("select app_private.award_experience($1,'manual',gen_random_uuid(),63700)",[other])
+ await db.query("select app_private.award_experience($1,'manual',gen_random_uuid(),98980)",[other])
  await db.query("insert into public.odd_even_runs(user_id,operation_id,stake,wins,stage,finished_at) values($1,gen_random_uuid(),40,2,'banked',now())",[other])
  await db.query("insert into public.brick_game_runs(user_id,operation_id,seed,engine_version,reward,paid_reward,finished_at) values($1,gen_random_uuid(),1,6,30,30,now())",[other])
  await db.query("insert into app_private.ladder_runs(user_id,operation_id,mode,stake,choice,bridges,payouts,destination,reward) values($1,gen_random_uuid(),'calm',20,0,array_fill(0,array[12]),array[10,15,25,30],0,10)",[other])

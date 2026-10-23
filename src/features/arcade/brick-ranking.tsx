@@ -71,6 +71,7 @@ export function BrickRanking() {
             nickname={row.nickname}
             avatarPath={row.avatarPath}
             level={row.level}
+            levelProgress={row.levelProgress}
             mine={row.mine}
             action={<RankingFriendAction player={row} />}
             record={

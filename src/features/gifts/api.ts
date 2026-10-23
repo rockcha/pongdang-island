@@ -1,6 +1,7 @@
 import {fuelDisplay} from '@/lib/fuel-display'
 import {questProgressChanged} from '@/features/quests/progress-events'
 import { createClient } from '@/lib/client'
+import {announceBaitReceived} from '@/features/fishing/bait-reward-effect'
 import type { Species } from '@/features/collection/api'
 import type {ExchangeAsset} from '@/features/exchange/api'
 export const giftReactions={thumbs_up:{emoji:'👍',label:'따봉',sent:'따봉을 보냈어요'},heart:{emoji:'❤️',label:'하트',sent:'하트를 보냈어요'},thanks:{emoji:'🥰',label:'고마움',sent:'고마움을 보냈어요'},laugh:{emoji:'😂',label:'웃음',sent:'웃음을 보냈어요'},celebrate:{emoji:'🎉',label:'축하',sent:'축하를 보냈어요'}} as const
@@ -15,5 +16,11 @@ export function giftError(cause:unknown){
 export async function sendGift(recipientId:string,ids:string[],message:string,operationId:string){const {data,error}=await createClient().rpc('send_collectible_gift',{p_recipient_id:recipientId,p_collectible_ids:ids,p_message:message,p_operation_id:operationId});if(error)throw error;questProgressChanged();return fuelDisplay(data)}
 export async function loadGifts(direction:'received'|'sent',offset=0){const {data,error}=await createClient().rpc('gift_mailbox',{p_direction:direction,p_offset:offset});if(error)throw error;return fuelDisplay(data)}
 export async function loadGift(id:string){const {data,error}=await createClient().rpc('gift_detail',{p_gift_id:id});if(error)throw error;return fuelDisplay(data)}
-export async function claimGift(id:string){const {data,error}=await createClient().rpc('claim_collectible_gift',{p_gift_id:id});if(error)throw error;if(typeof window!=='undefined')window.dispatchEvent(new Event('collectibles-changed'));return fuelDisplay(data)}
+export async function claimGift(id:string){
+ const startedAt=performance.now()
+ const {data,error}=await createClient().rpc('claim_collectible_gift',{p_gift_id:id});if(error)throw error
+ if(data.reward_kind==='bait'&&data.reward_id&&data.status==='claimed')announceBaitReceived('gift:'+id,data.reward_id,data.quantity,startedAt)
+ if(typeof window!=='undefined')window.dispatchEvent(new Event('collectibles-changed'))
+ return fuelDisplay(data)
+}
 export async function reactToGift(id:string,reaction:GiftReaction){const {data,error}=await createClient().rpc('react_to_collectible_gift',{p_gift_id:id,p_reaction:reaction});if(error)throw error;return fuelDisplay(data)}

@@ -9,7 +9,7 @@ import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle,DialogTr
 import {useSocial} from '@/features/social/social-provider'
 import {equipTitle,loadTitles,type TitleState} from './api'
 
-const categories=[['all','전체'],['growth','성장'],['moment','특별한 순간'],['collection','수집·꾸미기'],['social','소셜']] as const
+const categories=[['all','전체'],['growth','성장'],['moment','특별한 순간'],['collection','수집·꾸미기'],['arcade','미니게임'],['social','소셜']] as const
 export function TitlePicker({page=false}:{page?:boolean}){
  const {profile,refresh}=useSocial();const [params,setParams]=useSearchParams()
  const [open,setOpen]=useState(page),[data,setData]=useState<TitleState|null>(null),[category,setCategory]=useState('all'),[owned,setOwned]=useState(false),[loading,setLoading]=useState(false),[busy,setBusy]=useState(false),[error,setError]=useState(''),[retry,setRetry]=useState(0)
@@ -25,7 +25,7 @@ export function TitlePicker({page=false}:{page?:boolean}){
  const content=<>
    {!page&&<div aria-hidden="true" className="mx-auto mt-2 h-1 w-10 shrink-0 rounded-full bg-border"/>}
    <ContentHeader className="flex shrink-0 items-center justify-between gap-3 border-b px-4 py-3">{page?<p className="text-xs text-muted-foreground">나의 바다 이야기를 모아보세요.</p>:<div><ContentTitle className="flex items-center gap-2 text-lg font-normal"><appArt.title className="size-7"/>칭호</ContentTitle><ContentDescription className="sr-only">칭호를 확인하고 장착해요.</ContentDescription></div>}<p className="shrink-0 text-xs tabular-nums text-muted-foreground">획득 <span className="text-primary">{data?.titles.filter(t=>t.earnedAt).length??'…'}</span> / {data?.titles.length??'…'}</p></ContentHeader>
-   <div role="group" aria-label="칭호 분류" className="segmented-control grid shrink-0 grid-cols-5 border-b">{categories.map(([key,label])=><button key={key} aria-pressed={category===key} onClick={()=>setCategory(key)} className={`min-h-11 px-1 text-[11px] ${category===key?'bg-secondary text-primary':'text-muted-foreground'}`}>{label}</button>)}</div>
+   <div role="group" aria-label="칭호 분류" className="segmented-control grid shrink-0 grid-cols-6 border-b">{categories.map(([key,label])=><button key={key} aria-pressed={category===key} onClick={()=>setCategory(key)} className={`min-h-11 px-1 text-[11px] ${category===key?'bg-secondary text-primary':'text-muted-foreground'}`}>{label}</button>)}</div>
    <div className="flex shrink-0 items-center justify-between gap-3 border-b px-4 py-2"><div className="min-w-0"><p className="text-[10px] text-muted-foreground">현재 칭호</p><p className={`mt-1 flex min-w-0 items-center gap-1.5 text-xs ${equipped?titleTiers[equipped.tier].text:'text-muted-foreground'}`} title={data?.titles.find(t=>t.id===data.equipped)?.name??'장착한 칭호 없음'}><span className="truncate">{data?equipped?.name??'장착한 칭호 없음':'불러오는 중…'}</span>{equipped&&<TitleTierDot tier={equipped.tier}/>}</p></div><label className="flex min-h-10 shrink-0 items-center gap-2 text-[11px] text-muted-foreground"><input type="checkbox" checked={owned} onChange={e=>setOwned(e.target.checked)} className="size-4 accent-primary"/>획득한 칭호만</label></div>
    <TitleTierLegend/>
    {error&&<div role="alert" className="flex items-center justify-between border-b px-4 py-2 text-xs text-destructive"><p>{error}</p><Button variant="ghost" size="icon" aria-label="칭호 다시 확인" disabled={busy||loading} onClick={()=>setRetry(v=>v+1)}><RefreshCw className="size-4"/></Button></div>}

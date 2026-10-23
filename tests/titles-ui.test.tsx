@@ -9,6 +9,16 @@ const title={id:'fishing-1',name:'첫 물결의 낚시꾼',tier:1,category:'grow
 const base={equipped:null,titles:[title,{...title,id:'fishing-2',name:'물때를 읽는 사람',tier:2,target:200,description:'직접 낚시 누적 200회',earnedAt:null}]}
 beforeEach(()=>{vi.clearAllMocks();mock.load.mockResolvedValue(base);mock.refresh.mockResolvedValue(undefined)})
 afterEach(cleanup)
+it('filters minigame titles without revealing unearned conditions',async()=>{
+ mock.load.mockResolvedValue({...base,titles:[...base.titles,{...title,id:'arcade-ladder-4',name:'사다리의 왕',tier:4,category:'arcade',description:null,target:null,progress:null,earnedAt:null}]})
+ render(<MemoryRouter><TitlePicker page/></MemoryRouter>)
+ await screen.findByText('사다리의 왕')
+ fireEvent.click(screen.getByRole('button',{name:'미니게임'}))
+ expect(screen.getByText('사다리의 왕')).toBeTruthy()
+ expect(screen.queryByText('첫 물결의 낚시꾼')).toBeNull()
+ expect(screen.getByText('획득하면 조건이 공개돼요.')).toBeTruthy()
+ expect((screen.getByRole('button',{name:'사다리의 왕 장착'}) as HTMLButtonElement).disabled).toBe(true)
+})
 it('loads the standalone titles page directly without a dialog',async()=>{
  render(<MemoryRouter initialEntries={['/titles']}><TitlePicker page/></MemoryRouter>)
  expect(screen.getByText('현재 칭호')).toBeTruthy()

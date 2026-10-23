@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "e47a68f03cecd5917e047d24a59dd666ec4102bd7eb44e47ae62cbe3e869387d",
+  "migrationHash": "9ac07eef465a66c3bbf355301eba2887dd375b2c2a5dc2eed67d1146b33c98dc",
   "structure": {
     "enums": [
       {
@@ -10716,6 +10716,13 @@
         "definition": "CREATE TRIGGER title_tailwind_activity AFTER INSERT ON app_private.expedition_boosts FOR EACH ROW EXECUTE FUNCTION app_private.title_activity_event()"
       },
       {
+        "name": "arcade_title_started",
+        "table": "ladder_runs",
+        "schema": "app_private",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER arcade_title_started AFTER INSERT ON app_private.ladder_runs FOR EACH ROW EXECUTE FUNCTION app_private.title_activity_event()"
+      },
+      {
         "name": "merchant_titles_dirty",
         "table": "merchant_deliveries",
         "schema": "app_private",
@@ -10791,6 +10798,13 @@
         "schema": "public",
         "enabled": "O",
         "definition": "CREATE TRIGGER title_board_reactions AFTER INSERT OR DELETE OR UPDATE ON public.board_reactions FOR EACH ROW EXECUTE FUNCTION app_private.title_board_activity()"
+      },
+      {
+        "name": "arcade_title_started",
+        "table": "brick_game_runs",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER arcade_title_started AFTER INSERT ON public.brick_game_runs FOR EACH ROW EXECUTE FUNCTION app_private.title_activity_event()"
       },
       {
         "name": "stamp_bug_report",
@@ -10982,6 +10996,13 @@
         "definition": "CREATE TRIGGER level_harbor_claim AFTER INSERT OR UPDATE OF claimed_at ON public.harbor_voyages FOR EACH ROW EXECUTE FUNCTION app_private.automatic_experience_event()"
       },
       {
+        "name": "arcade_title_started",
+        "table": "memory_game_runs",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER arcade_title_started AFTER INSERT ON public.memory_game_runs FOR EACH ROW EXECUTE FUNCTION app_private.title_activity_event()"
+      },
+      {
         "name": "notice_publication",
         "table": "notices",
         "schema": "public",
@@ -10994,6 +11015,13 @@
         "schema": "public",
         "enabled": "O",
         "definition": "CREATE TRIGGER enqueue_web_push AFTER INSERT ON public.notifications FOR EACH ROW EXECUTE FUNCTION app_private.enqueue_web_push()"
+      },
+      {
+        "name": "arcade_title_started",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER arcade_title_started AFTER INSERT ON public.odd_even_runs FOR EACH ROW EXECUTE FUNCTION app_private.title_activity_event()"
       },
       {
         "name": "capture_title_acquisition",
@@ -11022,6 +11050,13 @@
         "schema": "public",
         "enabled": "O",
         "definition": "CREATE TRIGGER player_welcome AFTER INSERT ON public.player_profiles FOR EACH ROW EXECUTE FUNCTION app_private.initialize_player_welcome()"
+      },
+      {
+        "name": "arcade_title_started",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER arcade_title_started AFTER INSERT ON public.shadow_game_runs FOR EACH ROW EXECUTE FUNCTION app_private.title_activity_event()"
       },
       {
         "name": "stamp_suggestion_post",
@@ -13386,7 +13421,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_user uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.title_metrics(p_user uuid)\n RETURNS jsonb\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nwith logs as materialized (\n select *,(occurred_at at time zone 'Asia/Seoul')::date play_day,(occurred_at at time zone 'Asia/Seoul')::time local_time\n from app_private.title_fishing_log where user_id=p_user\n), manual as materialized (\n select *,row_number() over(partition by play_day order by occurred_at,id) day_rank,\n sum((species_id is null)::integer) over(order by occurred_at,id rows between 5 preceding and 1 preceding) failures,\n sum((kind='trash')::integer) over(order by occurred_at,id rows between 2 preceding and current row) trash_run,\n array_agg(species_id) over(order by occurred_at,id rows between 4 preceding and current row) last_species,\n array_agg(region_id) over(order by occurred_at,id rows between 4 preceding and current row) last_regions\n from logs where source='manual'\n), care as materialized (\n select visitor_id,owner_id,(completed_at at time zone 'Asia/Seoul')::date play_day,'feed' action from public.aquarium_feedings where completed_at is not null and (visitor_id=p_user or owner_id=p_user)\n union all\n select visitor_id,owner_id,(completed_at at time zone 'Asia/Seoul')::date,'clean' from public.aquarium_cleanings where completed_at is not null and (visitor_id=p_user or owner_id=p_user)\n), tanks as materialized (\n select c.tank_id,count(distinct s.native_region_id) filter(where s.is_native) natives,\n count(distinct s.id) filter(where s.kind='trash') trash,\n count(distinct s.id) filter(where s.kind='fish' and s.size<=45) small\n from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n where c.user_id=p_user and c.tank_id is not null and c.sold_at is null and c.escrow_gift_id is null group by c.tank_id\n), values_list(key,value) as (values\n ('tailwind',(select count(*) from app_private.expedition_boosts where helper_id=p_user)),\n ('manual',(select count(*) from manual)),\n ('dawn',(select count(*) from manual where local_time>=time '02:00' and local_time<time '05:00')),\n ('mythic',(select count(*) from logs where rarity='mythic')),\n ('mythic_unique',(select count(distinct species_id) from logs where rarity='mythic')),\n ('trash',(select count(*) from logs where kind='trash')),\n ('decor',(select count(*) from logs where kind='decoration')),\n ('voyage',(select count(*) from public.fishing_expeditions where user_id=p_user and claimed_at is not null)),\n ('care',(select count(distinct (owner_id,play_day)) from care where visitor_id=p_user and owner_id<>p_user)),\n ('trade',(select count(*) from public.exchange_listings where (owner_id=p_user or taker_id=p_user) and status='completed')),\n ('quest',(select count(*) from app_private.quest_claims where user_id=p_user and period_kind='daily' and quest_id='all')),\n ('first_mythic',(select count(*) from manual where day_rank=1 and rarity='mythic')),\n ('last_rare',(select count(*) from manual where last_bait and rarity in ('rare','epic','mythic'))),\n ('after_failure',(select count(*) from manual where failures=5 and rarity in ('epic','mythic'))),\n ('triple_trash',(select count(*) from manual where trash_run=3)),\n ('five_species',(select count(*) from manual where cardinality(last_species)=5 and (select count(distinct s) from unnest(last_species) s)=5 and (select count(distinct r) from unnest(last_regions) r)=1)),\n ('midnight',(select count(*) from (select case when local_time>=time '23:55' then play_day+1 else play_day end from manual where local_time>=time '23:55' or local_time<time '00:05' group by 1 having bool_or(local_time>=time '23:55') and bool_or(local_time<time '00:05')) x)),\n ('daily_kinds',(select count(*) from (select play_day from logs where species_id is not null group by play_day having count(distinct kind) filter(where kind in ('fish','trash','decoration'))=3) x)),\n ('daily_rarities',(select count(*) from (select play_day from logs where species_id is not null group by play_day having count(distinct rarity)>=4) x)),\n ('five_baits',(select count(*) from (select play_day from manual group by play_day having count(distinct bait_id)>=5) x)),\n ('dinghy_mythic',(select count(*) from logs where source='expedition' and vessel_id='dinghy' and rarity='mythic')),\n ('double_mythic',(select count(*) from (select batch_id from logs where source='expedition' and rarity='mythic' group by batch_id having count(*)>=2) x)),\n ('fresh_gift',(select count(*) from public.collectible_gifts g where g.sender_id=p_user and g.source='friend' and exists(select 1 from manual m where m.collectible_id=any(g.collectible_ids) and m.play_day=(g.created_at at time zone 'Asia/Seoul')::date and m.occurred_at<=g.created_at))),\n ('mutual_care',(select count(*) from care a where a.visitor_id=p_user and a.owner_id<>p_user and exists(select 1 from care b where b.visitor_id=a.owner_id and b.owner_id=p_user and a.play_day=b.play_day))),\n ('three_neighbors',(select count(*) from (select play_day from (select play_day,owner_id from care where visitor_id=p_user and owner_id<>p_user group by play_day,owner_id having count(distinct action)=2) a group by play_day having count(*)>=3) b)),\n ('tank_native',(select count(*) from tanks where natives>=5)),\n ('tank_trash',(select count(*) from tanks where trash>=5)),\n ('tank_small',(select count(*) from tanks where small>=10)),\n ('friend_day_gift',(select count(*) from public.collectible_gifts g join public.friend_requests f on ((f.sender_id=p_user and f.recipient_id=g.recipient_id) or(f.recipient_id=p_user and f.sender_id=g.recipient_id))\n where g.sender_id=p_user and g.source='friend' and f.status='accepted' and (f.updated_at at time zone 'Asia/Seoul')::date=(g.created_at at time zone 'Asia/Seoul')::date and exists(select 1 from public.collectible_gifts b where b.source='friend' and b.sender_id=g.recipient_id and b.recipient_id=p_user and (b.created_at at time zone 'Asia/Seoul')::date=(g.created_at at time zone 'Asia/Seoul')::date)))\n)\nselect jsonb_object_agg(key,value) from values_list\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.title_metrics(p_user uuid)\n RETURNS jsonb\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nwith logs as materialized (\n select *,(occurred_at at time zone 'Asia/Seoul')::date play_day,(occurred_at at time zone 'Asia/Seoul')::time local_time\n from app_private.title_fishing_log where user_id=p_user\n), manual as materialized (\n select *,row_number() over(partition by play_day order by occurred_at,id) day_rank,\n sum((species_id is null)::integer) over(order by occurred_at,id rows between 5 preceding and 1 preceding) failures,\n sum((kind='trash')::integer) over(order by occurred_at,id rows between 2 preceding and current row) trash_run,\n array_agg(species_id) over(order by occurred_at,id rows between 4 preceding and current row) last_species,\n array_agg(region_id) over(order by occurred_at,id rows between 4 preceding and current row) last_regions\n from logs where source='manual'\n), care as materialized (\n select visitor_id,owner_id,(completed_at at time zone 'Asia/Seoul')::date play_day,'feed' action from public.aquarium_feedings where completed_at is not null and (visitor_id=p_user or owner_id=p_user)\n union all\n select visitor_id,owner_id,(completed_at at time zone 'Asia/Seoul')::date,'clean' from public.aquarium_cleanings where completed_at is not null and (visitor_id=p_user or owner_id=p_user)\n), tanks as materialized (\n select c.tank_id,count(distinct s.native_region_id) filter(where s.is_native) natives,\n count(distinct s.id) filter(where s.kind='trash') trash,\n count(distinct s.id) filter(where s.kind='fish' and s.size<=45) small\n from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n where c.user_id=p_user and c.tank_id is not null and c.sold_at is null and c.escrow_gift_id is null group by c.tank_id\n), arcade_counts as materialized (\n select (select count(*) from app_private.ladder_runs where user_id=p_user) ladder,\n (select count(*) from public.odd_even_runs where user_id=p_user) odd_even,\n (select count(*) from public.brick_game_runs where user_id=p_user) brick,\n (select count(*) from public.shadow_game_runs where user_id=p_user) shadow,\n (select count(*) from public.memory_game_runs where user_id=p_user) memory\n), values_list(key,value) as (values\n ('arcade_ladder',(select ladder from arcade_counts)),\n ('arcade_odd_even',(select odd_even from arcade_counts)),\n ('arcade_brick',(select brick from arcade_counts)),\n ('arcade_shadow',(select shadow from arcade_counts)),\n ('arcade_memory',(select memory from arcade_counts)),\n ('arcade_total',(select ladder+odd_even+brick+shadow+memory from arcade_counts)),\n ('arcade_variety',(select (ladder>0)::int+(odd_even>0)::int+(brick>0)::int+(shadow>0)::int+(memory>0)::int from arcade_counts)),\n ('tailwind',(select count(*) from app_private.expedition_boosts where helper_id=p_user)),\n ('manual',(select count(*) from manual)),\n ('dawn',(select count(*) from manual where local_time>=time '02:00' and local_time<time '05:00')),\n ('mythic',(select count(*) from logs where rarity='mythic')),\n ('mythic_unique',(select count(distinct species_id) from logs where rarity='mythic')),\n ('trash',(select count(*) from logs where kind='trash')),\n ('decor',(select count(*) from logs where kind='decoration')),\n ('voyage',(select count(*) from public.fishing_expeditions where user_id=p_user and claimed_at is not null)),\n ('care',(select count(distinct (owner_id,play_day)) from care where visitor_id=p_user and owner_id<>p_user)),\n ('trade',(select count(*) from public.exchange_listings where (owner_id=p_user or taker_id=p_user) and status='completed')),\n ('quest',(select count(*) from app_private.quest_claims where user_id=p_user and period_kind='daily' and quest_id='all')),\n ('first_mythic',(select count(*) from manual where day_rank=1 and rarity='mythic')),\n ('last_rare',(select count(*) from manual where last_bait and rarity in ('rare','epic','mythic'))),\n ('after_failure',(select count(*) from manual where failures=5 and rarity in ('epic','mythic'))),\n ('triple_trash',(select count(*) from manual where trash_run=3)),\n ('five_species',(select count(*) from manual where cardinality(last_species)=5 and (select count(distinct s) from unnest(last_species) s)=5 and (select count(distinct r) from unnest(last_regions) r)=1)),\n ('midnight',(select count(*) from (select case when local_time>=time '23:55' then play_day+1 else play_day end from manual where local_time>=time '23:55' or local_time<time '00:05' group by 1 having bool_or(local_time>=time '23:55') and bool_or(local_time<time '00:05')) x)),\n ('daily_kinds',(select count(*) from (select play_day from logs where species_id is not null group by play_day having count(distinct kind) filter(where kind in ('fish','trash','decoration'))=3) x)),\n ('daily_rarities',(select count(*) from (select play_day from logs where species_id is not null group by play_day having count(distinct rarity)>=4) x)),\n ('five_baits',(select count(*) from (select play_day from manual group by play_day having count(distinct bait_id)>=5) x)),\n ('dinghy_mythic',(select count(*) from logs where source='expedition' and vessel_id='dinghy' and rarity='mythic')),\n ('double_mythic',(select count(*) from (select batch_id from logs where source='expedition' and rarity='mythic' group by batch_id having count(*)>=2) x)),\n ('fresh_gift',(select count(*) from public.collectible_gifts g where g.sender_id=p_user and g.source='friend' and exists(select 1 from manual m where m.collectible_id=any(g.collectible_ids) and m.play_day=(g.created_at at time zone 'Asia/Seoul')::date and m.occurred_at<=g.created_at))),\n ('mutual_care',(select count(*) from care a where a.visitor_id=p_user and a.owner_id<>p_user and exists(select 1 from care b where b.visitor_id=a.owner_id and b.owner_id=p_user and a.play_day=b.play_day))),\n ('three_neighbors',(select count(*) from (select play_day from (select play_day,owner_id from care where visitor_id=p_user and owner_id<>p_user group by play_day,owner_id having count(distinct action)=2) a group by play_day having count(*)>=3) b)),\n ('tank_native',(select count(*) from tanks where natives>=5)),\n ('tank_trash',(select count(*) from tanks where trash>=5)),\n ('tank_small',(select count(*) from tanks where small>=10)),\n ('friend_day_gift',(select count(*) from public.collectible_gifts g join public.friend_requests f on ((f.sender_id=p_user and f.recipient_id=g.recipient_id) or(f.recipient_id=p_user and f.sender_id=g.recipient_id))\n where g.sender_id=p_user and g.source='friend' and f.status='accepted' and (f.updated_at at time zone 'Asia/Seoul')::date=(g.created_at at time zone 'Asia/Seoul')::date and exists(select 1 from public.collectible_gifts b where b.source='friend' and b.sender_id=g.recipient_id and b.recipient_id=p_user and (b.created_at at time zone 'Asia/Seoul')::date=(g.created_at at time zone 'Asia/Seoul')::date)))\n)\nselect jsonb_object_agg(key,value) from values_list\n$function$\n",
         "securityDefiner": true
       },
       {

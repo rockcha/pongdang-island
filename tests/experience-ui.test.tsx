@@ -24,14 +24,15 @@ it('displays authoritative carryover and historical XP without announcing the in
  expect(mocked.toast).not.toHaveBeenCalled()
  expect(document.body.querySelectorAll('[data-experience-effect]')).toHaveLength(0)
 })
-it('announces a server-confirmed level gain once, even when an activity is retried',async()=>{
+it('updates a server-confirmed level without a level-up effect, even when an activity is retried',async()=>{
  const next={...first,level:4,totalXp:500,currentXp:50,nextLevelXp:250}
  mocked.rpc.mockResolvedValueOnce({data:first,error:null}).mockResolvedValue({data:next,error:null})
  const {container}=render(<View/>)
  await screen.findByRole('button',{name:'레벨 3 확인'})
  act(()=>experienceChanged())
  await screen.findByRole('button',{name:'레벨 4 확인'})
- expect(screen.getByText('Lv.4 달성!')).toBeTruthy()
+ expect(screen.queryByText(/달성!/)).toBeNull()
+ expect(screen.getByRole('progressbar').getAttribute('aria-valuenow')).toBe('50')
  expect(screen.getByText('+100 XP')).toBeTruthy()
  expect(container.querySelector('[data-experience-effects]')).toBeNull()
  expect(document.body.querySelector('[data-experience-effects]')?.className).toContain('pointer-events-none fixed inset-0')

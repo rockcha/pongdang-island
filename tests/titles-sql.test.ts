@@ -10,10 +10,56 @@ async function earned(){return (await state()).titles.filter(t=>t.earnedAt).map(
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},60000)
 beforeEach(async()=>{await db.exec('begin');for(const [id,name]of [[uid,'낚시꾼'],[other,'친구']]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,name]);await db.query('insert into public.player_wallets(user_id,gold) values($1,50000)',[id])}})
 afterEach(async()=>{await db.exec('rollback')});afterAll(async()=>{await db?.close()})
-it('lists all 160 titles and forbids equipping an unearned title',async()=>{
- const s=await state();expect(s.titles).toHaveLength(160);expect(s.titles.filter(t=>t.category==='growth')).toHaveLength(73)
+it('lists all 185 titles and forbids equipping an unearned title',async()=>{
+ const s=await state();expect(s.titles).toHaveLength(185);expect(s.titles.filter(t=>t.category==='growth')).toHaveLength(73)
  expect(s.equipped).toBe('beginner');expect(s.titles.filter(t=>t.earnedAt).map(t=>t.id)).toEqual(['beginner'])
  await expect(user("select public.equip_title('fishing-4')")).rejects.toThrow(/NOT_EARNED/)
+})
+
+async function arcadePlays(game:string,n:number){
+ if(!n)return
+ const selects={
+  ladder:`insert into app_private.ladder_runs(user_id,operation_id,mode,stake,choice,bridges,payouts,destination,reward) select $1,gen_random_uuid(),'calm',20,0,array_fill(0,array[12]),array[0,20,20,40],0,0 from generate_series(1,$2::int)`,
+  odd_even:`insert into public.odd_even_runs(user_id,operation_id,wins,round,stage,finished_at) select $1,gen_random_uuid(),5,6,'banked',now() from generate_series(1,$2::int)`,
+  brick:`insert into public.brick_game_runs(user_id,operation_id,seed,finished_at) select $1,gen_random_uuid(),i,now() from generate_series(1,$2::int)i`,
+  shadow:`insert into public.shadow_game_runs(user_id,operation_id,finished_at) select $1,gen_random_uuid(),now() from generate_series(1,$2::int)`,
+  memory:`insert into public.memory_game_runs(user_id,operation_id,finished_at) select $1,gen_random_uuid(),now() from generate_series(1,$2::int)`,
+ }
+ await db.query(selects[game],[uid,n])
+}
+it.each([
+ ['ladder',[1,100,500,2000]],['odd_even',[1,50,200,1000]],['brick',[1,10,50,200]],['shadow',[1,10,50,200]],['memory',[1,10,50,200]],
+])('awards %s play-count titles exactly at each boundary and isolates other players',async(game,targets)=>{
+ let count=0
+ for(const [i,target] of targets.entries()){
+  await arcadePlays(game,target-count-1);count=target-1
+  const id=`arcade-${game.replaceAll('_','-')}-${i+1}`
+  expect(await earned()).not.toContain(id)
+  await arcadePlays(game,1);count++
+  expect(await earned()).toContain(id)
+ }
+ const metrics=(await db.query('select app_private.title_metrics($1) m',[uid])).rows[0].m
+ expect(metrics['arcade_'+game]).toBe(count)
+ expect(metrics.arcade_total).toBe(count)
+ expect(metrics.arcade_variety).toBe(1)
+ expect((await user('select public.title_state() s',[],other)).rows[0].s.titles.filter(t=>t.category==='arcade'&&t.earnedAt)).toHaveLength(0)
+},30000)
+it('queues awards on game start, avoids duplicate notifications, and counts five-game variety',async()=>{
+ await state()
+ await db.query('delete from app_private.title_dirty where user_id=$1',[uid])
+ await arcadePlays('ladder',1)
+ expect((await db.query('select count(*)::int n from app_private.title_dirty where user_id=$1',[uid])).rows[0].n).toBe(1)
+ expect((await user('select public.sync_titles() n')).rows[0].n).toBeGreaterThan(0)
+ const before=(await db.query('select count(*)::int n from public.notifications where recipient_id=$1',[uid])).rows[0].n
+ expect((await user('select public.sync_titles() n')).rows[0].n).toBe(0)
+ await state()
+ expect((await db.query('select count(*)::int n from public.notifications where recipient_id=$1',[uid])).rows[0].n).toBe(before)
+ for(const game of ['odd_even','brick','shadow'])await arcadePlays(game,1)
+ expect(await earned()).not.toContain('arcade-all-tour')
+ await arcadePlays('memory',1)
+ expect(await earned()).toContain('arcade-all-tour')
+ await arcadePlays('ladder',5)
+ expect(await earned()).toContain('arcade-all-first')
 })
 it('adds ten titles per upper tier and awards prior manual records at the exact boundary',async()=>{
  const additions=(await db.query("select * from public.title_catalog where id like 'expansion-%'")).rows

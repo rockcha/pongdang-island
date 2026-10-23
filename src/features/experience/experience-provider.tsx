@@ -18,7 +18,7 @@ function AccountExperience({children,userId}:{children:ReactNode;userId?:string}
  const [state,setState]=useState<ExperienceState|null>(null)
  const [loading,setLoading]=useState(Boolean(userId)),[error,setError]=useState(false)
  const reload=useRef<()=>void>(()=>{})
- const [effects,setEffects]=useState<{id:number;amount:number;level:number|null}[]>([])
+ const [effects,setEffects]=useState<{id:number;amount:number}[]>([])
  const sequence=useRef(0),timers=useRef<ReturnType<typeof setTimeout>[]>([])
  useEffect(()=>()=>{timers.current.forEach(clearTimeout);timers.current=[]},[])
  useEffect(()=>{
@@ -31,9 +31,8 @@ function AccountExperience({children,userId}:{children:ReactNode;userId?:string}
     if(!active||version!==request)return
     if(notify&&previous&&data.totalXp>previous.totalXp){
      const amount=data.totalXp-previous.totalXp
-     const level=data.level>previous.level?data.level:null
      const id=++sequence.current
-     setEffects(items=>[...items.slice(-2),{id,amount,level}])
+     setEffects(items=>[...items.slice(-2),{id,amount}])
      const timer=setTimeout(()=>{
       setEffects(items=>items.filter(item=>item.id!==id))
       timers.current=timers.current.filter(item=>item!==timer)
@@ -57,7 +56,6 @@ function AccountExperience({children,userId}:{children:ReactNode;userId?:string}
   <PlayerLevelsProvider self={state&&userId?{userId,level:state.level,levelProgress:state.currentXp/state.nextLevelXp,currentXp:state.currentXp,nextLevelXp:state.nextLevelXp}:undefined}>{children}</PlayerLevelsProvider>
   {createPortal(<div data-experience-effects className="pointer-events-none fixed inset-0 z-[2147483000] flex items-center justify-center" aria-live="polite" aria-atomic="true">
    <div className="flex -translate-y-12 flex-col items-center gap-2">{effects.map(effect=><div key={effect.id} data-experience-effect className="flex flex-col items-center">
-    {effect.level!==null&&<div className="gold-change gold-change-gain experience-change"><span className="gold-change-number" style={{fontSize:'1.125rem'}}>Lv.{effect.level} 달성!</span></div>}
     <GoldChange delta={effect.amount} resource="experience"/>
    </div>)}</div>
   </div>,document.body)}

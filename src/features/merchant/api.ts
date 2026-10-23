@@ -20,7 +20,7 @@ export type MerchantOrder = {
   rewardGold: number
   completed: boolean
   mine: boolean
-  delivery?: { nickname: string; avatarPath: string | null; message: string } | null
+  delivery?: { level?: number|null; nickname: string; avatarPath: string | null; message: string } | null
 }
 export type MerchantState = {
   day: string

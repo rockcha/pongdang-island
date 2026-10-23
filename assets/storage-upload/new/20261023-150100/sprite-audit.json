@@ -1,0 +1,213 @@
+﻿{
+    "alphaThreshold":  32,
+    "thumbnails":  4,
+    "missing":  [
+
+                ],
+    "sprites":  [
+                    {
+                        "id":  "finescale-mullet",
+                        "file":  "fish/normal/finescale-mullet_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  75,
+                                           "y":  265,
+                                           "width":  499,
+                                           "height":  259,
+                                           "margin":  53,
+                                           "marginRatio":  0.084529505582137163,
+                                           "alphaPixels":  66462
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  50,
+                                           "y":  283,
+                                           "width":  524,
+                                           "height":  241,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  68014
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  69,
+                                           "y":  183,
+                                           "width":  505,
+                                           "height":  242,
+                                           "margin":  53,
+                                           "marginRatio":  0.084529505582137163,
+                                           "alphaPixels":  65510
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  51,
+                                           "y":  186,
+                                           "width":  522,
+                                           "height":  239,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  67960
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "current-seabass",
+                        "file":  "fish/normal/current-seabass_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  118,
+                                           "y":  230,
+                                           "width":  458,
+                                           "height":  253,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  63238
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  59,
+                                           "y":  231,
+                                           "width":  481,
+                                           "height":  252,
+                                           "margin":  59,
+                                           "marginRatio":  0.094098883572567779,
+                                           "alphaPixels":  65204
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  102,
+                                           "y":  181,
+                                           "width":  475,
+                                           "height":  260,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  63484
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  60,
+                                           "y":  181,
+                                           "width":  480,
+                                           "height":  248,
+                                           "margin":  60,
+                                           "marginRatio":  0.09569377990430622,
+                                           "alphaPixels":  64473
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "goldfin-croaker",
+                        "file":  "fish/normal/goldfin-croaker_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  90,
+                                           "y":  194,
+                                           "width":  486,
+                                           "height":  300,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  82925
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  61,
+                                           "y":  193,
+                                           "width":  498,
+                                           "height":  301,
+                                           "margin":  61,
+                                           "marginRatio":  0.097288676236044661,
+                                           "alphaPixels":  87122
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  81,
+                                           "y":  156,
+                                           "width":  496,
+                                           "height":  304,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  83304
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  61,
+                                           "y":  158,
+                                           "width":  498,
+                                           "height":  302,
+                                           "margin":  61,
+                                           "marginRatio":  0.097288676236044661,
+                                           "alphaPixels":  86738
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "pinkcheek-seabream",
+                        "file":  "fish/normal/pinkcheek-seabream_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  62,
+                                           "y":  163,
+                                           "width":  504,
+                                           "height":  348,
+                                           "margin":  61,
+                                           "marginRatio":  0.097288676236044661,
+                                           "alphaPixels":  97387
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  50,
+                                           "y":  165,
+                                           "width":  517,
+                                           "height":  345,
+                                           "margin":  50,
+                                           "marginRatio":  0.079744816586921854,
+                                           "alphaPixels":  97956
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  61,
+                                           "y":  131,
+                                           "width":  507,
+                                           "height":  341,
+                                           "margin":  59,
+                                           "marginRatio":  0.094098883572567779,
+                                           "alphaPixels":  95347
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  54,
+                                           "y":  133,
+                                           "width":  513,
+                                           "height":  344,
+                                           "margin":  54,
+                                           "marginRatio":  0.0861244019138756,
+                                           "alphaPixels":  97846
+                                       }
+                                   ]
+                    }
+                ]
+}

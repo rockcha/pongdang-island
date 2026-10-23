@@ -1,6 +1,7 @@
 import type {ComponentProps,ReactNode} from 'react'
 
 const charms:Record<string,ReactNode>={
+ swift:<><path d="m3 16 7-5-1-7 6 6 7-2-6 6-1 7-4-5-8 2Z" fill="#edaa57" stroke="#9f6533" strokeWidth="1.2"/><path d="m7 17 7-6" stroke="#fff2d7" strokeWidth="1.5" strokeLinecap="round"/></>,
  basic:<><path d="M12 2v5" stroke="#e7d6b6"/><path d="M12 6c-5 0-6 7-5 11h10c1-4 0-11-5-11Z" fill="#ef765d"/><path d="M7 17h10l-5 5Z" fill="#fff3d9"/></>,
  bronze:<><circle cx="12" cy="12" r="9" fill="#bd8c50"/><circle cx="12" cy="12" r="5" fill="#73aaa0"/><circle cx="12" cy="12" r="2" fill="#ffe1a3"/></>,
  pongdang:<><path d="M4 18V9l8-6 8 6v9Z" fill="#dba769"/><path d="m2 10 10-8 10 8" fill="none" stroke="#a46838" strokeWidth="3"/><path d="M10 18v-6h5v6" fill="#76503a"/><path d="M3 21q4-3 8 0t10 0" fill="none" stroke="#87c7bf" strokeWidth="2"/></>,

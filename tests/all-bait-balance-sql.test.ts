@@ -22,18 +22,18 @@ it('preserves a paid cast and applies all new profiles with a uniform common wai
   expect((await db.query('select to_jsonb(p)-\'map_piece_number\' snapshot from app_private.prepared_fishing_casts p where operation_id=$1',[legacy])).rows[0]).toEqual(before)
   await db.exec("update app_private.prepared_fishing_casts set finished_at=clock_timestamp(),result='{}'")
   const profiles=(await db.query<{id:string;wait_min_seconds:number;wait_max_seconds:number}>('select * from app_private.fishing_bait_balance_profiles')).rows
-  expect(profiles).toHaveLength(27)
+  expect(profiles).toHaveLength(catalog.fishing_bait_balance_profiles.length)
   await db.exec('select setseed(.42)')
   const waits:number[]=[]
-  for(let i=0;i<227;i++){
-   const bait=i<27?profiles[i].id:'bait',op=crypto.randomUUID()
+  for(let i=0;i<profiles.length+200;i++){
+   const bait=i<profiles.length?profiles[i].id:'bait',op=crypto.randomUUID()
    await db.query("select public.prepare_fishing('pongdang',$1,$2,true)",[bait,op])
    const row=(await db.query<{wait_seconds:number;bait_snapshot:any}>('select wait_seconds::float8 wait_seconds,bait_snapshot from app_private.prepared_fishing_casts where operation_id=$1',[op])).rows[0]
    expect(row.wait_seconds).toBeGreaterThanOrEqual(12)
    expect(row.wait_seconds).toBeLessThanOrEqual(24)
    expect(row.bait_snapshot.wait_min_seconds).toBe(12)
    expect(row.bait_snapshot.wait_max_seconds).toBe(24)
-   if(i>=27)waits.push(row.wait_seconds)
+   if(i>=profiles.length)waits.push(row.wait_seconds)
    await db.query("update app_private.prepared_fishing_casts set finished_at=clock_timestamp(),result='{}' where operation_id=$1",[op])
   }
   expect(waits.filter(w=>w<15).length/200).toBeGreaterThan(.17)

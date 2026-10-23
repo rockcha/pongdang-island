@@ -10,9 +10,10 @@ it('starts the first song, pauses playback, and resumes the selected song',()=>{
  fireEvent.click(screen.getByRole('button',{name:'음악 재생'}));expect(music.play).toHaveBeenCalledWith('first')
  music.activeId='current';music.playing=true;view.rerender(<MusicToggleButton/>)
  const playing=screen.getByRole('button',{name:'음악 일시정지'})
- expect(playing.getAttribute('aria-pressed')).toBe('true');expect(playing.querySelector('img')?.getAttribute('data-playing')).toBe('true')
+ expect(playing.getAttribute('aria-pressed')).toBe('true');expect(playing.querySelector('.wood-turntable')?.getAttribute('data-playing')).toBe('true')
  fireEvent.click(playing);expect(music.pause).toHaveBeenCalledOnce()
  music.playing=false;view.rerender(<MusicToggleButton/>)
+ expect(screen.getByRole('button',{name:'음악 재생'}).querySelector('.wood-turntable')?.getAttribute('data-playing')).toBe('false')
  fireEvent.click(screen.getByRole('button',{name:'음악 재생'}));expect(music.play).toHaveBeenLastCalledWith('current')
 })
 it('blocks new playback while loading but still allows an already playing song to pause',()=>{

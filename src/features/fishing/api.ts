@@ -1,4 +1,5 @@
 import {questProgressChanged} from '@/features/quests/progress-events'
+import {experienceChanged} from '@/features/experience/api'
 import { createClient } from '@/lib/client'
 import type { Species } from '@/features/collection/api'
 import type { Rarity } from '@/lib/game/rarity'
@@ -18,7 +19,7 @@ export async function castFishing(regionId:string,baitId:string,operationId:stri
  const {data,error}=await createClient().rpc('cast_fishing',{p_region_id:regionId,p_bait_id:baitId,p_operation_id:operationId})
  if(error)throw error
  if(typeof window!=='undefined')window.dispatchEvent(new Event('collectibles-changed'))
- questProgressChanged();return data
+ questProgressChanged();experienceChanged();return data
 }
 export function fishingError(cause:unknown) {
  const message=cause&&typeof cause==='object'?[('message' in cause?String(cause.message):''),('code' in cause?String(cause.code):'')].join(' '):''
@@ -34,5 +35,5 @@ export async function startFishingFight(operationId:string){
 }
 export async function finishFishing(operationId:string,won:boolean){
  const {data,error}=await createClient().rpc('finish_fishing',{p_operation_id:operationId,p_won:won});if(error)throw error
- if(typeof window!=='undefined'){window.dispatchEvent(new Event('collectibles-changed'));window.dispatchEvent(new Event('fishing-rods-changed'))}questProgressChanged();return data
+ if(typeof window!=='undefined'){window.dispatchEvent(new Event('collectibles-changed'));window.dispatchEvent(new Event('fishing-rods-changed'))}questProgressChanged();experienceChanged();return data
 }

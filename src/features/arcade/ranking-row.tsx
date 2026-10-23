@@ -1,16 +1,21 @@
 import type { ReactNode } from 'react'
 import { Medal } from 'lucide-react'
+import { PlayerAvatar } from '@/features/profile/player-avatar'
 export const rankingListClass =
   'overflow-hidden rounded-xl border border-border/60 bg-card divide-y divide-border/60'
 export function RankingRow({
   rank,
   nickname,
+  avatarPath,
+  level,
   mine,
   record,
   action,
 }: {
   rank: number
   nickname: string
+  avatarPath?: string | null
+  level?: number
   mine: boolean
   record: ReactNode
   action?: ReactNode
@@ -29,6 +34,7 @@ export function RankingRow({
         )}
         <span>{rank}등</span>
       </span>
+      <PlayerAvatar nickname={nickname} path={avatarPath} level={level} className="size-9 border border-border/60" />
       <span className="min-w-0 flex-1">
         <span className="block truncate" title={nickname}>
           {nickname}

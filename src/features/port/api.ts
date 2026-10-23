@@ -1,4 +1,5 @@
 import {createClient} from '@/lib/client'
+import {experienceChanged} from '@/features/experience/api'
 import type {ExpeditionOutcome} from '@/features/expeditions/api'
 export type HarborCatchRule={version:number;success_bp:number;common_bp:number;rare_bp:number;epic_bp:number;mythic_bp:number;kind:'mixed'|'trash_weighted'|'decoration'|'discovery_weighted'|'trash_only'|'discovery_only';trash_bp:number;discovery_weight:number;home_multiplier:number}
 export type HarborVessel={id:string;name:string;price:number;duration_minutes:number;fuel_cost:number;fishing_count:number;fishing_count_max?:number|null;catch_bait_id?:string;native_bonus?:boolean;catch_rule?:HarborCatchRule;sprite_path:string;owned:boolean;ownedCount:number}
@@ -9,7 +10,7 @@ export type HarborResult=ExpeditionOutcome&{voyageId:string;vesselName:string;re
 export type HarborState={serverNow:string;fuel:number;fuelPrice:number;fuelDailyLimit?:number;fuelPurchasedToday?:number;regions?:HarborRegion[];dockSlots:number;vessels:HarborVessel[];boats:HarborBoat[];voyages:HarborVoyage[];receipt?:{action:string;voyageId?:string;vesselId?:string;boatId?:string;results?:HarborResult[]};replayed?:boolean}
 export type HarborAction={p_action:'buy'|'fuel'|'depart'|'arrive'|'claim'|'claim_all'|'dock'|'store'|'sell';p_operation_id:string;p_vessel_id?:string;p_voyage_id?:string;p_quantity?:number;p_boat_id?:string;p_slot?:number;p_region_id?:string}
 export async function loadHarbor(){const {data,error}=await createClient().rpc('harbor_state');if(error)throw error;return data}
-export async function harborAction(args:HarborAction){const {data,error}=await createClient().rpc('harbor_action',args);if(error)throw error;window.dispatchEvent(new Event('harbor-changed'));if(args.p_action==='claim'||args.p_action==='claim_all')window.dispatchEvent(new Event('collectibles-changed'));return data}
+export async function harborAction(args:HarborAction){const {data,error}=await createClient().rpc('harbor_action',args);if(error)throw error;window.dispatchEvent(new Event('harbor-changed'));if(args.p_action==='claim'||args.p_action==='claim_all'){window.dispatchEvent(new Event('collectibles-changed'));experienceChanged()}return data}
 export function harborError(error:unknown){
  const message=String((error as {message?:string})?.message??'')
  if(message.includes('GOLD_LIMIT'))return '보유 골드 한도에 도달해 판매할 수 없어요.'

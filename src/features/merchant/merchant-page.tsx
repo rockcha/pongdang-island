@@ -361,7 +361,7 @@ function AccountMerchant({ owner }: { owner: string }) {
                 </div>
                 {order.completed && order.delivery && (
                   <div className="mx-4 flex items-start gap-2 border-t border-border/40 py-3">
-                    <PlayerAvatar
+                    <PlayerAvatar level={order.delivery.level}
                       nickname={order.delivery.nickname}
                       path={order.delivery.avatarPath}
                       className="size-6 shrink-0"

@@ -1,3 +1,4 @@
+import {PlayerIdentityLink} from '@/features/profile/player-identity-link'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router'
 import {HallCategoryIcon,HallTabIcon} from './hall-category-icon'
@@ -143,21 +144,21 @@ function SectionWall({
             <ul className="divide-y divide-border/50">
               {wall.comments.map((comment) => (
                 <li key={comment.id} className="flex gap-2.5 py-4">
-                  <Link
+                  <PlayerIdentityLink
                     to={
                       comment.author_id === session?.user.id
                         ? '/aquarium'
                         : `/friends/${comment.author_id}/aquarium`
                     }
-                    aria-label={`${comment.nickname} 아쿠아리움 방문`}
+                    label={`${comment.nickname} 아쿠아리움 방문`}
                     className="shrink-0 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
-                    <PlayerAvatar
+                    <PlayerAvatar userId={comment.author_id}
                       nickname={comment.nickname}
                       path={comment.avatar_path}
                       className="size-8 shrink-0"
                     />
-                  </Link>
+                  </PlayerIdentityLink>
                   <div className="min-w-0 flex-1">
                     <div className="flex items-center gap-2">
                       <Link
@@ -303,11 +304,11 @@ function RankingCard({
         <ol className="grid grid-cols-5 gap-1 pt-3">
           {players.map((player) => (
             <li key={player.id} className="min-w-0">
-              <Link
+              <PlayerIdentityLink
                 to={player.id === session?.user.id ? '/aquarium' : `/friends/${player.id}/aquarium`}
                 title={`${player.nickname} 아쿠아리움 방문`}
                 className="flex min-h-24 w-full min-w-0 flex-col items-center rounded-xl py-1 transition-colors hover:bg-secondary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                aria-label={`${player.rank}위 ${player.nickname}, ${formatHallValue(player.value, category.unit)}`}
+                label={`${player.rank}위 ${player.nickname}, ${formatHallValue(player.value, category.unit)}`}
               >
                 <span className="relative">
                   {player.rank === 1 && (
@@ -317,7 +318,7 @@ function RankingCard({
                       strokeWidth={1.5}
                     />
                   )}
-                  <PlayerAvatar
+                  <PlayerAvatar level={player.level} userId={player.id}
                     nickname={player.nickname}
                     path={player.avatar_path}
                     className={`size-10 ring-2 ${player.rank === 1 ? 'ring-amber-300/80' : 'ring-secondary'}`}
@@ -328,16 +329,16 @@ function RankingCard({
                     {player.rank}
                   </span>
                 </span>
-                <span className="mt-2 w-full truncate text-center text-[10px]">
+                <span className="mt-1 flex w-full min-w-0 items-center justify-center gap-0.5 text-[10px]"><span className="truncate">
                   {player.nickname}
-                </span>
+                </span></span>
                 <span
                   className="mt-0.5 w-full truncate text-center text-[10px] tabular-nums text-primary"
                   title={formatHallValue(player.value, category.unit)}
                 >
                   {formatHallValue(player.value, category.unit)}
                 </span>
-              </Link>
+              </PlayerIdentityLink>
             </li>
           ))}
         </ol>

@@ -586,6 +586,24 @@
       "alternating": false
     },
     {
+      "id": "bait_breadcrumbs",
+      "name": "보슬보슬 빵가루",
+      "description": "보슬보슬한 빵가루로 물고기부터 물밑의 작은 물건까지 두루 만나요.",
+      "price": 18,
+      "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/soft-breadcrumbs.png",
+      "sort_order": 99,
+      "common_bp": 9500,
+      "rare_bp": 500,
+      "epic_bp": 0,
+      "mythic_bp": 0,
+      "failure_bp": 0,
+      "effect_kind": "fish",
+      "effect_description": "보슬보슬한 빵가루로 물고기부터 물밑의 작은 물건까지 두루 만나요.",
+      "success_chance_bp": 10000,
+      "fish_only": false,
+      "alternating": false
+    },
+    {
       "id": "bait_cloud_dough",
       "name": "솜구름 반죽",
       "description": "폭신한 구름 향기로 일반 등급 물고기를 불러요.",
@@ -748,10 +766,28 @@
       "alternating": false
     },
     {
+      "id": "bait_grain_dumpling",
+      "name": "노릇노릇 곡물경단",
+      "description": "노릇하게 구운 곡물 향기로 다양한 바다 친구들과 물밑의 물건을 불러요.",
+      "price": 25,
+      "image_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/items/baits/toasted-grain-dumpling.png",
+      "sort_order": 100,
+      "common_bp": 9000,
+      "rare_bp": 1000,
+      "epic_bp": 0,
+      "mythic_bp": 0,
+      "failure_bp": 0,
+      "effect_kind": "fish",
+      "effect_description": "노릇하게 구운 곡물 향기로 다양한 바다 친구들과 물밑의 물건을 불러요.",
+      "success_chance_bp": 10000,
+      "fish_only": false,
+      "alternating": false
+    },
+    {
       "id": "bait_grubby_magnet",
       "name": "꼬질 자석경단",
       "description": "꼬질한 향기로 물밑에 버려진 쓰레기만 끌어모아요.",
-      "price": 15,
+      "price": 8,
       "image_path": "/items/baits/grubby-magnet-dumpling.png",
       "sort_order": 103,
       "common_bp": 9000,
@@ -2640,6 +2676,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "current-seabass",
+      "kind": "fish",
+      "name": "물살 농어",
+      "description": "넓은 입과 단단한 은회색 몸으로 물살을 가르며 헤엄치는 농어.",
+      "swim_y_min": "0.25",
+      "swim_y_max": "0.75",
+      "speed": "0.033",
+      "size": 70,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/current-seabass_thumbnail.png",
+      "sell_price": 58,
+      "sprite_sheet_path": "fish/normal/current-seabass_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "dented-diving-lamp",
       "kind": "trash",
       "name": "찌그러진 잠수등",
@@ -2799,6 +2853,24 @@
       "native_region_id": "primal",
       "movement_type": "fixed",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "finescale-mullet",
+      "kind": "fish",
+      "name": "잔비늘 숭어",
+      "description": "잔잔한 물살을 따라 은빛 잔비늘을 반짝이며 무리 지어 헤엄치는 숭어.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.72",
+      "speed": "0.035",
+      "size": 65,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/finescale-mullet_thumbnail.png",
+      "sell_price": 52,
+      "sprite_sheet_path": "fish/normal/finescale-mullet_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -3159,6 +3231,24 @@
       "native_region_id": null,
       "movement_type": "fixed",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "goldfin-croaker",
+      "kind": "fish",
+      "name": "금지느러미 조기",
+      "description": "노란 지느러미를 살랑이며 중층의 물길을 오가는 온순한 조기.",
+      "swim_y_min": "0.28",
+      "swim_y_max": "0.7",
+      "speed": "0.031",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/goldfin-croaker_thumbnail.png",
+      "sell_price": 50,
+      "sprite_sheet_path": "fish/normal/goldfin-croaker_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -5967,6 +6057,24 @@
       "native_region_id": null,
       "movement_type": "pulse",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pinkcheek-seabream",
+      "kind": "fish",
+      "name": "분홍볼 도미",
+      "description": "분홍빛 볼과 둥근 몸이 돋보이는 도미. 꼬리를 고르게 저으며 여유롭게 헤엄친다.",
+      "swim_y_min": "0.24",
+      "swim_y_max": "0.7",
+      "speed": "0.03",
+      "size": 65,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/pinkcheek-seabream_thumbnail.png",
+      "sell_price": 60,
+      "sprite_sheet_path": "fish/normal/pinkcheek-seabream_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -11360,6 +11468,58 @@
       "region_id": "mistmoon"
     },
     {
+      "species_id": "current-seabass",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "current-seabass",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "current-seabass",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "current-seabass",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "current-seabass",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "current-seabass",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "current-seabass",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "current-seabass",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "current-seabass",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "current-seabass",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "current-seabass",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "current-seabass",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "current-seabass",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "dented-diving-lamp",
       "region_id": "dreamabyss"
     },
@@ -11562,6 +11722,58 @@
     {
       "species_id": "fern-forest-fragment",
       "region_id": "primal"
+    },
+    {
+      "species_id": "finescale-mullet",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "finescale-mullet",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "finescale-mullet",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "finescale-mullet",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "finescale-mullet",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "finescale-mullet",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "finescale-mullet",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "finescale-mullet",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "finescale-mullet",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "finescale-mullet",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "finescale-mullet",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "finescale-mullet",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "finescale-mullet",
+      "region_id": "whitenight"
     },
     {
       "species_id": "flower-coral-seadragon",
@@ -11969,6 +12181,58 @@
     },
     {
       "species_id": "gold-dust-glass-bottle",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "goldfin-croaker",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "goldfin-croaker",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "goldfin-croaker",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "goldfin-croaker",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "goldfin-croaker",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "goldfin-croaker",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "goldfin-croaker",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "goldfin-croaker",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "goldfin-croaker",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "goldfin-croaker",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "goldfin-croaker",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "goldfin-croaker",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "goldfin-croaker",
       "region_id": "whitenight"
     },
     {
@@ -13997,6 +14261,58 @@
     },
     {
       "species_id": "pink-scallop",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "pinkcheek-seabream",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "pinkcheek-seabream",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "pinkcheek-seabream",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "pinkcheek-seabream",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "pinkcheek-seabream",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "pinkcheek-seabream",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "pinkcheek-seabream",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "pinkcheek-seabream",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pinkcheek-seabream",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "pinkcheek-seabream",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "pinkcheek-seabream",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "pinkcheek-seabream",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "pinkcheek-seabream",
       "region_id": "whitenight"
     },
     {
@@ -18818,6 +19134,15 @@
       "wait_reduction_seconds": 1
     },
     {
+      "id": "swift",
+      "name": "쏜살 낚싯대",
+      "price": 1800,
+      "region_id": null,
+      "failure_reduction_bp": 0,
+      "native_bonus_bp": 0,
+      "wait_reduction_seconds": 3
+    },
+    {
       "id": "whitenight",
       "name": "백야 서리 낚싯대",
       "price": 800,
@@ -21524,6 +21849,29 @@
       "night_wait_max_seconds": null
     },
     {
+      "id": "bait_breadcrumbs",
+      "name": "보슬보슬 빵가루",
+      "price": 18,
+      "success_chance_bp": 10000,
+      "common_bp": 9500,
+      "rare_bp": 500,
+      "epic_bp": 0,
+      "mythic_bp": 0,
+      "wait_min_seconds": 12,
+      "wait_max_seconds": 24,
+      "target_kinds": [
+        "fish",
+        "trash",
+        "decoration"
+      ],
+      "effect_kind": "standard",
+      "native_multiplier": 1,
+      "night_common_bp": null,
+      "night_rare_bp": null,
+      "night_wait_min_seconds": null,
+      "night_wait_max_seconds": null
+    },
+    {
       "id": "bait_cloud_dough",
       "name": "솜구름 반죽",
       "price": 33,
@@ -21722,9 +22070,32 @@
       "night_wait_max_seconds": null
     },
     {
+      "id": "bait_grain_dumpling",
+      "name": "노릇노릇 곡물경단",
+      "price": 25,
+      "success_chance_bp": 10000,
+      "common_bp": 9000,
+      "rare_bp": 1000,
+      "epic_bp": 0,
+      "mythic_bp": 0,
+      "wait_min_seconds": 12,
+      "wait_max_seconds": 24,
+      "target_kinds": [
+        "fish",
+        "trash",
+        "decoration"
+      ],
+      "effect_kind": "standard",
+      "native_multiplier": 1,
+      "night_common_bp": null,
+      "night_rare_bp": null,
+      "night_wait_min_seconds": null,
+      "night_wait_max_seconds": null
+    },
+    {
       "id": "bait_grubby_magnet",
       "name": "꼬질 자석경단",
-      "price": 15,
+      "price": 8,
       "success_chance_bp": 10000,
       "common_bp": 9000,
       "rare_bp": 950,

@@ -1,5 +1,5 @@
+import {PlayerIdentityLink} from '@/features/profile/player-identity-link'
 import {BoardTime} from '@/features/board/board-time'
-import {Link} from 'react-router'
 import {Heart,MessageCircle} from 'lucide-react'
 import {GoldIcon} from '@/features/gold/gold-provider'
 import {PlayerAvatar} from '@/features/profile/player-avatar'
@@ -11,7 +11,7 @@ export function SaleListingRow({listing,owner}:{listing:ExchangeListing;owner:st
  const mine=listing.owner_id===owner
  const items=exchangeOfferItems(listing.offer),bundle=items.length>1
  return <li className="min-w-0">
-  <Link to={'/exchange/'+listing.id} aria-label={(listing.title||listing.offer.name)+' 상세 보기'} className="block space-y-4 px-5 py-5 outline-none transition-colors hover:bg-secondary/20 focus-visible:bg-secondary/30 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring">
+  <PlayerIdentityLink to={'/exchange/'+listing.id} label={(listing.title||listing.offer.name)+' 상세 보기'} className="block space-y-4 px-5 py-5 outline-none transition-colors hover:bg-secondary/20 focus-visible:bg-secondary/30 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring">
    <div className="flex min-w-0 gap-4">
     <div className={bundle?'grid size-16 shrink-0 grid-cols-2 items-center justify-items-center self-center':'flex size-16 shrink-0 items-center justify-center self-center'}>
      {items.slice(0,4).map(item=>item.kind==='collectible'?<CollectibleThumbnail key={item.kind+item.id} path={item.thumbnail_path??''} name={item.name} className={bundle?'size-8':'size-16'}/>:<LandscapeImage key={item.kind+item.id} src={item.thumbnail_path??''} alt={item.name} className={bundle?'size-8 object-contain':'size-14 object-contain'}/>)}
@@ -23,9 +23,9 @@ export function SaleListingRow({listing,owner}:{listing:ExchangeListing;owner:st
     </div>
    </div>
    <div className="flex min-w-0 items-center justify-between gap-3 text-[10px] text-muted-foreground">
-    <div className="flex min-w-0 items-center gap-1.5" aria-label="판매자"><PlayerAvatar nickname={listing.owner_name} path={listing.owner_avatar_path} className="size-5 shrink-0"/><span className="truncate">{listing.owner_name}</span><span aria-hidden="true" className="opacity-50">·</span><BoardTime value={listing.created_at} className="shrink-0"/></div>
+    <div className="flex min-w-0 items-center gap-1.5" aria-label="판매자"><PlayerAvatar userId={listing.owner_id} nickname={listing.owner_name} path={listing.owner_avatar_path} className="size-5 shrink-0"/><span className="inline-flex max-w-full min-w-0 items-center gap-1 align-middle"><span className="truncate">{listing.owner_name}</span></span><span aria-hidden="true" className="opacity-50">·</span><BoardTime value={listing.created_at} className="shrink-0"/></div>
     <div className="flex shrink-0 items-center gap-3 tabular-nums"><span aria-label={'좋아요 '+(listing.like_count??0)+'개'} className="inline-flex items-center gap-1"><Heart aria-hidden="true" className="size-3"/>{listing.like_count??0}</span><span aria-label={'댓글 '+(listing.comment_count??0)+'개'} className="inline-flex items-center gap-1"><MessageCircle aria-hidden="true" className="size-3"/>{listing.comment_count??0}</span></div>
    </div>
-  </Link>
+  </PlayerIdentityLink>
  </li>
 }

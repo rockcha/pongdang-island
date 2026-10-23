@@ -104,7 +104,7 @@ export function productionError(cause: unknown) {
     return '같은 종류의 생산소가 여러 곳 있어요. 새로고침 후 가동할 생산소를 다시 골라 주세요.'
   if (text.includes('INVALID_PRODUCTION_QUANTITY')) return '구매 수량은 1~100곳으로 입력해 주세요.'
   const messages: Record<string, string> = {
-    PRODUCTION_ACTIVE_LIMIT: '연료·미끼 생산소를 합쳐 동시에 4곳까지 가동할 수 있어요.',
+    PRODUCTION_ACTIVE_LIMIT: '연료 생산소는 동시에 4곳까지 가동할 수 있어요.',
     INSUFFICIENT_GOLD: '골드가 부족해요.',
     GOLD_LIMIT: '보유 골드 한도에 도달했어요.',
     PRODUCTION_ALREADY_OWNED: '이미 구매한 생산소예요.',

@@ -1,5 +1,5 @@
 import {useEffect,useState} from 'react'
-import {Link} from 'react-router'
+import {PlayerIdentityLink} from '@/features/profile/player-identity-link'
 import {Dialog,DialogContent,DialogDescription,DialogTitle} from '@/components/ui/dialog'
 import {Button} from '@/components/ui/button'
 import {PlayerAvatar} from '@/features/profile/player-avatar'
@@ -21,7 +21,7 @@ export function ShowcaseReactionPeopleDialog({post,initialReaction,onClose}:{pos
   <div className="min-h-0 overflow-y-auto overscroll-contain px-4 py-2" style={{maxHeight:'45dvh'}}>
    {error?<div role="alert" className="space-y-2 py-6 text-center text-xs"><p>{error}</p><Button variant="outline" onClick={()=>setRetry(n=>n+1)}>다시 불러오기</Button></div>:!data?<p role="status" className="py-8 text-center text-xs text-muted-foreground">반응한 사람을 불러오는 중…</p>:!data.items.length?<p className="py-8 text-center text-xs text-muted-foreground">아직 이 반응을 남긴 사람이 없어요.</p>:<ul className="divide-y divide-border/50">{data.items.map(person=>{
     const reaction=showcaseReactions.find(r=>r.id===person.reaction)!
-    return <li key={person.user_id}><Link to={`/friends/${person.user_id}/aquarium`} onClick={onClose} className="flex min-h-16 items-center gap-3 rounded-lg px-2 py-3 outline-none hover:bg-secondary/40 focus-visible:ring-2 focus-visible:ring-ring"><PlayerAvatar nickname={person.nickname} path={person.avatar_path} className="size-9 shrink-0"/><span className="min-w-0 flex-1 truncate text-sm">{person.nickname}</span><span role="img" aria-label={reaction.label} className="text-xl">{reaction.emoji}</span></Link></li>
+    return <li key={person.user_id}><PlayerIdentityLink label={person.nickname+' 아쿠아리움 방문'} to={`/friends/${person.user_id}/aquarium`} onClick={onClose} className="flex min-h-16 items-center gap-3 rounded-lg px-2 py-3 outline-none hover:bg-secondary/40 focus-visible:ring-2 focus-visible:ring-ring"><PlayerAvatar userId={person.user_id} nickname={person.nickname} path={person.avatar_path} className="size-9 shrink-0"/><span className="min-w-0 flex-1 truncate text-sm">{person.nickname}</span><span role="img" aria-label={reaction.label} className="text-xl">{reaction.emoji}</span></PlayerIdentityLink></li>
    })}</ul>}
   </div>
   {data&&data.total>50&&<div className="flex items-center justify-between border-t px-4 py-2"><Button variant="ghost" disabled={!page} onClick={()=>setPage(n=>n-1)}>이전</Button><span className="text-xs tabular-nums">{page+1} / {Math.ceil(data.total/50)}</span><Button variant="ghost" disabled={(page+1)*50>=data.total} onClick={()=>setPage(n=>n+1)}>다음</Button></div>}

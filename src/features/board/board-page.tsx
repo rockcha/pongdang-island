@@ -1,5 +1,6 @@
+import {PlayerIdentityLink} from '@/features/profile/player-identity-link'
 import { useEffect, useRef, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { Menu } from '@base-ui/react/menu'
 import { MessageCircle, MoreHorizontal, Pencil, ThumbsDown, ThumbsUp, X } from 'lucide-react'
 import { toast } from 'sonner'
@@ -29,13 +30,13 @@ import { BoardTime } from './board-time'
 function Author({ author, time }: { author: BoardAuthor; time: string }) {
   return (
     <div className="flex min-w-0 items-center gap-2">
-      <PlayerAvatar
+      <PlayerAvatar userId={author.author_id}
         nickname={author.author_name}
         path={author.avatar_path}
         className="size-9 shrink-0 ring-1 ring-border bg-secondary"
       />
       <div className="min-w-0 flex-1">
-        <p className="truncate text-xs">{author.author_name}</p>
+        <div className="inline-flex max-w-full min-w-0 items-center gap-1 align-middle"><p className="truncate text-xs">{author.author_name}</p></div>
         {author.equipped_title && (
           <p className="mt-0.5 flex items-center gap-1 truncate text-[10px] text-primary">
             <appArt.title className="size-3.5" />
@@ -192,11 +193,11 @@ export function BoardPage() {
           <ul className="divide-y divide-border/70">
             {feed.items.map((post) => (
               <li key={post.id}>
-                <Link
+                <PlayerIdentityLink label={post.title}
                   to={`/board/${post.id}`}
                   className="group flex gap-3 py-5 outline-none transition-colors hover:bg-secondary/20 focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  <PlayerAvatar nickname={post.author_name} path={post.avatar_path} className="size-8 shrink-0 ring-1 ring-border bg-secondary" />
+                  <PlayerAvatar userId={post.author_id} nickname={post.author_name} path={post.avatar_path} className="size-8 shrink-0 ring-1 ring-border bg-secondary" />
                   <div className="min-w-0 flex-1">
                   <div className="mb-1.5 flex min-w-0 items-center gap-1.5 text-[11px] text-muted-foreground">
                     <span className="min-w-0 truncate font-medium text-foreground/80">{post.author_name}</span>
@@ -220,7 +221,7 @@ export function BoardPage() {
                     </span>
                   </div>
                   </div>
-                </Link>
+                </PlayerIdentityLink>
               </li>
             ))}
           </ul>

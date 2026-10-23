@@ -61,14 +61,14 @@ it('atomically grants exactly two special baits and one operator notification, o
  await db.query('insert into public.player_wallets(user_id,gold,inventory) values($1,123,$2)',[author,JSON.stringify({bait:9,bait_epic:5})])
  const adopted=(await asUser(operator,'select public.adopt_suggestion($1) as post',[privatePost])).rows[0].post
  expect(adopted.adopted_by).toBe(operator);expect(adopted.adopted_at).toBeTruthy()
- expect(Object.values(adopted.reward).reduce((n:number,v:number)=>n+v,0)).toBe(2)
- expect(Object.keys(adopted.reward).every(k=>['bait_safe','bait_special','bait_epic','bait_magnet','bait_forbidden_star','bait_grubby_magnet','bait_sea_memory','bait_first_greeting'].includes(k))).toBe(true)
+ expect(adopted.reward).toEqual({bait_special:2})
  const wallet=(await db.query('select gold,inventory from public.player_wallets where user_id=$1',[author])).rows[0]
  expect(wallet.gold).toBe(123);expect(wallet.inventory.bait).toBe(9)
  for(const id of ['bait_safe','bait_special','bait_epic','bait_magnet','bait_forbidden_star','bait_grubby_magnet','bait_sea_memory','bait_first_greeting'])expect(wallet.inventory[id]??0).toBe((id==='bait_epic'?5:0)+(adopted.reward[id]??0))
  const notification=(await db.query('select * from public.notifications where recipient_id=$1',[author])).rows
  expect(notification).toHaveLength(1);expect(notification[0]).toMatchObject({actor_id:operator,category:'general',kind:'reward'})
  expect(notification[0].title).toContain('[운영팀]')
+ expect(notification[0].body).toContain('달빛 진주새우 2개')
  const again=(await asUser(operator,'select public.adopt_suggestion($1) as post',[privatePost])).rows[0].post
  expect(again.reward).toEqual(adopted.reward)
  expect((await db.query('select inventory from public.player_wallets where user_id=$1',[author])).rows[0].inventory).toEqual(wallet.inventory)

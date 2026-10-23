@@ -81,6 +81,8 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
     [shopFilters, setShopFilters] = useState(initialBaitShopFilters),
     [selected, setSelected] = useState<BaitFacility | null>(null),
     [quantity, setQuantity] = useState(1)
+  const [selling,setSelling]=useState(false)
+  useEffect(()=>setSelling(false),[selected?.siteId,selected?.id])
   const offset = useRef(0),
     alive = useRef(true),
     lock = useRef(false),
@@ -148,7 +150,9 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
       setError('')
       setSelected(null)
       toast.success(
-        args.p_action === 'buy'
+        args.p_action === 'sell'
+          ? '미끼 생산소를 판매했어요.'
+          : args.p_action === 'buy'
           ? '미끼 생산소를 마련했어요.'
           : args.p_action === 'start'
             ? '미끼 생산을 시작했어요.'
@@ -193,9 +197,9 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
           </Link>
         </div>
         {!shop && <p className="text-xs leading-5 text-muted-foreground">
-          보유 {state?.sites.length ?? 0}곳 · 전체 가동 <b className="text-primary">{working}/4</b>
+          보유 {state?.sites.length ?? 0}곳 · 미끼 생산소 가동 <b className="text-primary">{working}/4</b>
           <br />
-          연료·미끼 생산소 합산 최대 4곳 가동. 완료 후에는 보관시간 안에 수령해 주세요.
+          미끼 생산소는 동시에 최대 4곳 가동. 완료 후에는 보관시간 안에 수령해 주세요.
         </p>}
         {shop ? (
           <BaitProductionShopFilters value={shopFilters} onChange={setShopFilters}/>
@@ -356,6 +360,14 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
                     {(active.price * quantity).toLocaleString()}골드로 구매
                   </Button>
                 </>
+              ) : selling ? (
+                <>
+                  <p className="text-xs leading-6 text-muted-foreground">
+                    이 생산소를 상점 구매가의 50%인 {Math.floor(active.price/2).toLocaleString('ko-KR')}골드에 판매할까요? 판매하면 보유 목록에서 사라져요.
+                  </p>
+                  <Button variant="destructive" disabled={busy||active.startedAt!==null} onClick={()=>void mutate({p_action:'sell',p_facility:active.siteId!,p_quantity:1})}>판매 확정</Button>
+                  <Button variant="outline" disabled={busy||!!pending.current} onClick={()=>setSelling(false)}>취소</Button>
+                </>
               ) : (
                 <>
                   <p className="flex items-center gap-1 text-xs text-muted-foreground">
@@ -389,13 +401,16 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
                   >
                     {status(active, now) === 'idle'
                       ? working >= 4
-                        ? '연료·미끼 생산소가 총 4곳 가동 중이에요'
+                        ? '미끼 생산소가 4곳 가동 중이에요'
                         : `연료 ${active.fuel_cost}개로 생산 시작`
                       : status(active, now) === 'working'
                         ? '생산 중'
                         : status(active, now) === 'ready'
                           ? `${active.baitName} ${active.runOutput}개 받기`
                           : '만료된 생산물 정리'}
+                  </Button>
+                  <Button variant="outline" disabled={busy||!!pending.current||active.startedAt!==null} onClick={()=>setSelling(true)}>
+                    {active.startedAt!==null?'생산물을 수령·정리한 뒤 판매할 수 있어요':<>판매 <GoldIcon className="size-4"/>{Math.floor(active.price/2).toLocaleString('ko-KR')}골드</>}
                   </Button>
                 </>
               )}

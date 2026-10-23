@@ -36,6 +36,9 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      experience_state:{Args:Record<string,never>;Returns:import('@/features/experience/api').ExperienceState}
+      friend_levels:{Args:Record<string,never>;Returns:import('@/features/experience/api').FriendLevel[]}
+      player_levels:{Args:{p_ids:string[];p_friend_codes?:string[]};Returns:import('@/features/experience/api').PlayerLevelState[]}
       bait_production_state:{Args:Record<string,never>;Returns:import('@/features/production/bait-production-api').BaitProductionState}
       bait_production_action:{Args:import('@/features/production/bait-production-api').BaitProductionAction;Returns:import('@/features/production/bait-production-api').BaitProductionState}
       production_state:{Args:Record<string,never>;Returns:import('@/features/production/api').ProductionState}

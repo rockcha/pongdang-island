@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "154d9ea0888653c2ff44f8660500d86f2c7d8fd4b46565b5518498c43cce8ca7",
+  "migrationHash": "5722cf32049854127ae5bffcb896eaae91a45edd17b8b2d90bd2787c58253991",
   "structure": {
     "enums": [
       {
@@ -120,6 +120,12 @@
       },
       {
         "rls": true,
+        "name": "experience_events",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
         "name": "feedback_bug_votes",
         "schema": "app_private",
         "force_rls": false
@@ -217,6 +223,12 @@
       {
         "rls": true,
         "name": "notice_operators",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "player_experience",
         "schema": "app_private",
         "force_rls": false
       },
@@ -1210,6 +1222,66 @@
         "generated": ""
       },
       {
+        "name": "source",
+        "type": "text",
+        "table": "experience_events",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "source_id",
+        "type": "uuid",
+        "table": "experience_events",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "experience_events",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "xp",
+        "type": "integer",
+        "table": "experience_events",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "legacy",
+        "type": "boolean",
+        "table": "experience_events",
+        "schema": "app_private",
+        "default": "false",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "experience_events",
+        "schema": "app_private",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
         "name": "post_id",
         "type": "uuid",
         "table": "feedback_bug_votes",
@@ -2125,6 +2197,46 @@
         "table": "notice_operators",
         "schema": "app_private",
         "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "player_experience",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "total_xp",
+        "type": "bigint",
+        "table": "player_experience",
+        "schema": "app_private",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "legacy_xp",
+        "type": "bigint",
+        "table": "player_experience",
+        "schema": "app_private",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "player_experience",
+        "schema": "app_private",
+        "default": "now()",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -7844,6 +7956,12 @@
         "definition": "CREATE UNIQUE INDEX expedition_settings_pkey ON app_private.expedition_settings USING btree (id)"
       },
       {
+        "name": "experience_events_pkey",
+        "table": "experience_events",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX experience_events_pkey ON app_private.experience_events USING btree (user_id, source, source_id)"
+      },
+      {
         "name": "feedback_bug_votes_pkey",
         "table": "feedback_bug_votes",
         "schema": "app_private",
@@ -8022,6 +8140,12 @@
         "table": "notice_operators",
         "schema": "app_private",
         "definition": "CREATE UNIQUE INDEX notice_operators_pkey ON app_private.notice_operators USING btree (user_id)"
+      },
+      {
+        "name": "player_experience_pkey",
+        "table": "player_experience",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX player_experience_pkey ON app_private.player_experience USING btree (user_id)"
       },
       {
         "name": "player_fishing_map_pieces_pkey",
@@ -8442,6 +8566,12 @@
         "table": "collectible_gifts",
         "schema": "public",
         "definition": "CREATE UNIQUE INDEX giseong_october_reward_once ON public.collectible_gifts USING btree (recipient_id, reward_id) WHERE ((source = 'system'::text) AND (reward_id = ANY (ARRAY['giseong-catch-202610:giseong-fish'::text, 'giseong-catch-202610:giseong-webfoot-octopus'::text])))"
+      },
+      {
+        "name": "one_nyamnyam_update_gold_per_player",
+        "table": "collectible_gifts",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX one_nyamnyam_update_gold_per_player ON public.collectible_gifts USING btree (recipient_id) WHERE ((source = 'system'::text) AND (reward_id = 'operator-update-20261023-nyamnyam'::text))"
       },
       {
         "name": "one_operator_gold_20261020_per_player",
@@ -10288,6 +10418,13 @@
         "definition": "CREATE TRIGGER giseong_manual_catch_reward AFTER INSERT ON public.fishing_attempts FOR EACH ROW EXECUTE FUNCTION app_private.giseong_catch_event()"
       },
       {
+        "name": "level_manual_catch",
+        "table": "fishing_attempts",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER level_manual_catch AFTER INSERT ON public.fishing_attempts FOR EACH ROW EXECUTE FUNCTION app_private.manual_experience_event()"
+      },
+      {
         "name": "title_manual_catch",
         "table": "fishing_attempts",
         "schema": "public",
@@ -10321,6 +10458,13 @@
         "schema": "public",
         "enabled": "O",
         "definition": "CREATE TRIGGER giseong_trap_capture_reward AFTER UPDATE OF claimed_at, result ON public.fishing_expeditions FOR EACH ROW WHEN (((old.claimed_at IS NULL) AND (new.claimed_at IS NOT NULL))) EXECUTE FUNCTION app_private.giseong_settled_capture_event()"
+      },
+      {
+        "name": "level_trap_claim",
+        "table": "fishing_expeditions",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER level_trap_claim AFTER INSERT OR UPDATE OF claimed_at ON public.fishing_expeditions FOR EACH ROW EXECUTE FUNCTION app_private.automatic_experience_event()"
       },
       {
         "name": "snapshot_trap_bait_rules",
@@ -10393,6 +10537,13 @@
         "definition": "CREATE TRIGGER harbor_titles_dirty AFTER UPDATE OF claimed_at ON public.harbor_voyages FOR EACH ROW EXECUTE FUNCTION app_private.mark_harbor_titles_dirty()"
       },
       {
+        "name": "level_harbor_claim",
+        "table": "harbor_voyages",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER level_harbor_claim AFTER INSERT OR UPDATE OF claimed_at ON public.harbor_voyages FOR EACH ROW EXECUTE FUNCTION app_private.automatic_experience_event()"
+      },
+      {
         "name": "notice_publication",
         "table": "notices",
         "schema": "public",
@@ -10460,7 +10611,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.adopt_suggestion(p_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_post public.suggestion_posts;v_rewards jsonb;\nbegin\n if auth.uid() is null or not app_private.notice_is_operator() then raise exception 'SUGGESTION_OPERATOR_REQUIRED';end if;\n select * into v_post from public.suggestion_posts where id=p_id for update;\n if not found then raise exception 'SUGGESTION_NOT_FOUND';end if;\n if v_post.adopted_at is not null then return to_jsonb(v_post);end if;\n v_rewards:=app_private.grant_special_bait_reward(v_post.author_id,2);\n update public.suggestion_posts set adopted_at=now(),adopted_by=auth.uid(),reward=v_rewards where id=p_id returning * into v_post;\n insert into public.notifications(recipient_id,actor_id,category,kind,title,body)\n values(v_post.author_id,auth.uid(),'general','reward','[운영팀] 아이디어가 채택됐어요!',\n  '「'||v_post.title||'」 건의가 채택되어 랜덤 특수미끼 2개를 지급했어요. 미끼통에서 확인해주세요.');\n return to_jsonb(v_post);\nend;\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.adopt_suggestion(p_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_post public.suggestion_posts;v_rewards jsonb;v_count bigint;\nbegin\n if auth.uid() is null or not app_private.notice_is_operator() then raise exception 'SUGGESTION_OPERATOR_REQUIRED';end if;\n select * into v_post from public.suggestion_posts where id=p_id for update;\n if not found then raise exception 'SUGGESTION_NOT_FOUND';end if;\n if v_post.adopted_at is not null then return to_jsonb(v_post);end if;\n if not exists(select 1 from public.fishing_baits where id='bait_special') then raise exception 'REWARD_UNAVAILABLE';end if;\n insert into public.player_wallets(user_id) values(v_post.author_id) on conflict do nothing;\n select coalesce((inventory->>'bait_special')::bigint,0) into v_count from public.player_wallets where user_id=v_post.author_id for update;\n if v_count>2147483645 then raise exception 'INVENTORY_LIMIT';end if;\n update public.player_wallets set inventory=jsonb_set(inventory,'{bait_special}',to_jsonb((v_count+2)::integer)),updated_at=now() where user_id=v_post.author_id;\n v_rewards:=jsonb_build_object('bait_special',2);\n update public.suggestion_posts set adopted_at=now(),adopted_by=auth.uid(),reward=v_rewards where id=p_id returning * into v_post;\n insert into public.notifications(recipient_id,actor_id,category,kind,title,body)\n values(v_post.author_id,auth.uid(),'general','reward','[운영팀] 아이디어가 채택됐어요!',\n  '「'||v_post.title||'」 건의가 채택되어 달빛 진주새우 2개를 지급했어요. 미끼통에서 확인해주세요.');\n return to_jsonb(v_post);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -10510,7 +10661,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_game text, p_offset integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.arcade_weekly_leaderboard(p_game text, p_offset integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare\n uid uuid:=auth.uid();\n week_start date:=date_trunc('week',clock_timestamp() at time zone 'Asia/Seoul')::date;\n rows jsonb;total bigint;\nbegin\n if uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_game is null or p_game not in('shadow','memory') or p_offset is null or p_offset<0 then raise exception 'INVALID_OFFSET';end if;\n select count(*) into total from app_private.arcade_weekly_rankings(p_game,week_start);\n select coalesce(jsonb_agg(jsonb_build_object('rank',r.rank,'id',r.run_id,'nickname',coalesce(p.nickname,'섬 여행자'),\n 'mine',r.user_id=uid,'userId',r.user_id,'friendCode',p.friend_code,'friendStatus',(select f.status from public.friend_requests f where f.status in ('pending','accepted') and ((f.sender_id=uid and f.recipient_id=r.user_id) or (f.recipient_id=uid and f.sender_id=r.user_id)) order by f.created_at desc limit 1),'score',r.score,'elapsedMs',r.elapsed_ms,'moves',r.moves,'finishedAt',r.finished_at,\n 'rewardGold',app_private.arcade_weekly_gold(r.rank)) order by r.rank),'[]'::jsonb) into rows\n from (select * from app_private.arcade_weekly_rankings(p_game,week_start) order by rank limit 20 offset p_offset) r\n left join public.player_profiles p on p.id=r.user_id;\n return jsonb_build_object('rows',rows,'total',total,'offset',p_offset,'pageSize',20,\n 'weekStart',week_start::timestamp at time zone 'Asia/Seoul','weekEnd',(week_start+7)::timestamp at time zone 'Asia/Seoul',\n 'rewards',jsonb_build_array(2000,1500,1000,650,400,200));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.arcade_weekly_leaderboard(p_game text, p_offset integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare\n uid uuid:=auth.uid();\n week_start date:=date_trunc('week',clock_timestamp() at time zone 'Asia/Seoul')::date;\n rows jsonb;total bigint;\nbegin\n if uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_game is null or p_game not in('shadow','memory') or p_offset is null or p_offset<0 then raise exception 'INVALID_OFFSET';end if;\n select count(*) into total from app_private.arcade_weekly_rankings(p_game,week_start);\n select coalesce(jsonb_agg(jsonb_build_object('rank',r.rank,'id',r.run_id,'nickname',coalesce(p.nickname,'섬 여행자'),\n 'avatarPath',p.avatar_path,'level',app_private.player_level(r.user_id),'mine',r.user_id=uid,'userId',r.user_id,'friendCode',p.friend_code,'friendStatus',(select f.status from public.friend_requests f where f.status in ('pending','accepted') and ((f.sender_id=uid and f.recipient_id=r.user_id) or (f.recipient_id=uid and f.sender_id=r.user_id)) order by f.created_at desc limit 1),'score',r.score,'elapsedMs',r.elapsed_ms,'moves',r.moves,'finishedAt',r.finished_at,\n 'rewardGold',app_private.arcade_weekly_gold(r.rank)) order by r.rank),'[]'::jsonb) into rows\n from (select * from app_private.arcade_weekly_rankings(p_game,week_start) order by rank limit 20 offset p_offset) r\n left join public.player_profiles p on p.id=r.user_id;\n return jsonb_build_object('rows',rows,'total',total,'offset',p_offset,'pageSize',20,\n 'weekStart',week_start::timestamp at time zone 'Asia/Seoul','weekEnd',(week_start+7)::timestamp at time zone 'Asia/Seoul',\n 'rewards',jsonb_build_array(2000,1500,1000,650,400,200));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -10614,6 +10765,26 @@
         "securityDefiner": true
       },
       {
+        "name": "automatic_experience_event",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.automatic_experience_event()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare amount integer;\nbegin\n if new.claimed_at is null then return new;end if;\n if tg_op='UPDATE' and old.claimed_at is not null then return new;end if;\n select coalesce(sum(app_private.catch_experience(item->'species'->>'kind',item->'species'->>'rarity',true)),0)::integer into amount\n from jsonb_array_elements(coalesce(new.result->'items','[]'::jsonb)) item;\n perform app_private.award_experience(new.user_id,case when tg_table_name='fishing_expeditions' then 'trap' else 'harbor' end,new.id,amount);\n return new;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "award_experience",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_user uuid, p_source text, p_source_id uuid, p_xp integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.award_experience(p_user uuid, p_source text, p_source_id uuid, p_xp integer)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n insert into app_private.experience_events(source,source_id,user_id,xp) values(p_source,p_source_id,p_user,p_xp) on conflict(user_id,source,source_id) do nothing;\n if not found then return;end if;\n insert into app_private.player_experience(user_id,total_xp) values(p_user,p_xp)\n on conflict(user_id) do update set total_xp=app_private.player_experience.total_xp+excluded.total_xp,updated_at=clock_timestamp();\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "award_title",
         "config": [
           "search_path=\"\""
@@ -10630,7 +10801,17 @@
         ],
         "schema": "app_private",
         "arguments": "p_action text, p_operation_id uuid, p_facility text, p_quantity integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.bait_production_action(p_action text, p_operation_id uuid, p_facility text, p_quantity integer DEFAULT 1)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;f public.bait_production_facilities;s app_private.bait_production_sites;prev app_private.bait_production_operations;\n sig jsonb;receipt jsonb;v_now timestamptz;v_count bigint;v_cost bigint;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in('buy','start','claim','discard') or p_operation_id is null or p_facility is null or p_quantity is null or p_quantity not between 1 and 100 or (p_action<>'buy' and p_quantity<>1) then raise exception 'INVALID_PRODUCTION';end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n sig:=jsonb_build_object('action',p_action,'facility',p_facility,'quantity',p_quantity);\n select * into prev from app_private.bait_production_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.bait_production_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n v_now:=clock_timestamp();\n if p_action='buy' then\n  select * into f from public.bait_production_facilities where id=p_facility for share;\n  if not found or not f.enabled then raise exception 'PRODUCTION_UNAVAILABLE';end if;\n  v_cost:=f.price::bigint*p_quantity;\n  if w.gold<v_cost then raise exception 'INSUFFICIENT_GOLD';end if;\n  insert into app_private.bait_production_sites(user_id,facility_id) select u,f.id from generate_series(1,p_quantity);\n  update public.player_wallets set gold=gold-v_cost,updated_at=v_now where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','bait-production:'||f.id,-v_cost);\n  receipt:=jsonb_build_object('action','buy','count',p_quantity);\n else\n  select * into s from app_private.bait_production_sites where id=p_facility::uuid and user_id=u for update;\n  if not found then raise exception 'PRODUCTION_NOT_OWNED';end if;\n  select * into f from public.bait_production_facilities where id=s.facility_id for share;\n  if p_action='start' then\n   if not f.enabled then raise exception 'PRODUCTION_UNAVAILABLE';end if;\n   if s.started_at is not null then raise exception 'PRODUCTION_BUSY';end if;\n   if app_private.production_active_count()>=4 then raise exception 'PRODUCTION_ACTIVE_LIMIT';end if;\n   if coalesce((w.inventory->>'fuel')::bigint,0)<f.fuel_cost then raise exception 'INSUFFICIENT_FUEL';end if;\n   update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb((inventory->>'fuel')::integer-f.fuel_cost)),updated_at=v_now where user_id=u;\n   update app_private.bait_production_sites set started_at=v_now,completes_at=v_now+make_interval(mins=>f.production_minutes),expires_at=v_now+make_interval(mins=>f.production_minutes+f.storage_minutes),run_output=f.output_count,run_bait_id=f.bait_id where id=s.id;\n  else\n   if s.started_at is null then raise exception 'PRODUCTION_IDLE';end if;\n   if p_action='claim' then\n    if v_now<s.completes_at then raise exception 'PRODUCTION_NOT_READY';end if;\n    if v_now>=s.expires_at then raise exception 'PRODUCTION_EXPIRED';end if;\n    v_count:=coalesce((w.inventory->>s.run_bait_id)::bigint,0)+s.run_output;\n    if v_count>1000000000 then raise exception 'BAIT_LIMIT';end if;\n    update public.player_wallets set inventory=jsonb_set(inventory,array[s.run_bait_id],to_jsonb(v_count::integer)),updated_at=v_now where user_id=u;\n   elsif v_now<s.expires_at then raise exception 'PRODUCTION_NOT_EXPIRED';end if;\n   update app_private.bait_production_sites set started_at=null,completes_at=null,expires_at=null,run_output=null,run_bait_id=null where id=s.id;\n  end if;\n  receipt:=jsonb_build_object('action',p_action,'siteId',s.id,'count',case when p_action='claim' then s.run_output else 0 end);\n end if;\n insert into app_private.bait_production_operations values(u,p_operation_id,sig,receipt);\n return app_private.bait_production_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.bait_production_action(p_action text, p_operation_id uuid, p_facility text, p_quantity integer DEFAULT 1)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;f public.bait_production_facilities;s app_private.bait_production_sites;prev app_private.bait_production_operations;\n sig jsonb;receipt jsonb;v_now timestamptz;v_count bigint;v_cost bigint;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in('buy','sell','start','claim','discard') or p_operation_id is null or p_facility is null or p_quantity is null or p_quantity not between 1 and 100 or (p_action<>'buy' and p_quantity<>1) then raise exception 'INVALID_PRODUCTION';end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n sig:=jsonb_build_object('action',p_action,'facility',p_facility,'quantity',p_quantity);\n select * into prev from app_private.bait_production_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.bait_production_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n v_now:=clock_timestamp();\n if p_action='buy' then\n  select * into f from public.bait_production_facilities where id=p_facility for share;\n  if not found or not f.enabled then raise exception 'PRODUCTION_UNAVAILABLE';end if;\n  v_cost:=f.price::bigint*p_quantity;\n  if w.gold<v_cost then raise exception 'INSUFFICIENT_GOLD';end if;\n  insert into app_private.bait_production_sites(user_id,facility_id) select u,f.id from generate_series(1,p_quantity);\n  update public.player_wallets set gold=gold-v_cost,updated_at=v_now where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','bait-production:'||f.id,-v_cost);\n  receipt:=jsonb_build_object('action','buy','count',p_quantity);\n else\n  select * into s from app_private.bait_production_sites where id=p_facility::uuid and user_id=u for update;\n  if not found then raise exception 'PRODUCTION_NOT_OWNED';end if;\n  select * into f from public.bait_production_facilities where id=s.facility_id for share;\n  if p_action='sell' then\n   if s.started_at is not null then raise exception 'PRODUCTION_BUSY';end if;\n   v_cost:=f.price/2;\n   if w.gold::bigint+v_cost>1000000000 then raise exception 'GOLD_LIMIT';end if;\n   delete from app_private.bait_production_sites where id=s.id and user_id=u;\n   update public.player_wallets set gold=gold+v_cost,updated_at=v_now where user_id=u;\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'sell','bait-production:'||f.id,v_cost);\n   receipt:=jsonb_build_object('action','sell','facility',f.id,'siteId',s.id,'gold',v_cost,'count',1);\n  elsif p_action='start' then\n   if not f.enabled then raise exception 'PRODUCTION_UNAVAILABLE';end if;\n   if s.started_at is not null then raise exception 'PRODUCTION_BUSY';end if;\n   if app_private.bait_production_active_count()>=4 then raise exception 'PRODUCTION_ACTIVE_LIMIT';end if;\n   if coalesce((w.inventory->>'fuel')::bigint,0)<f.fuel_cost then raise exception 'INSUFFICIENT_FUEL';end if;\n   update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb((inventory->>'fuel')::integer-f.fuel_cost)),updated_at=v_now where user_id=u;\n   update app_private.bait_production_sites set started_at=v_now,completes_at=v_now+make_interval(mins=>f.production_minutes),expires_at=v_now+make_interval(mins=>f.production_minutes+f.storage_minutes),run_output=f.output_count,run_bait_id=f.bait_id where id=s.id;\n  else\n   if s.started_at is null then raise exception 'PRODUCTION_IDLE';end if;\n   if p_action='claim' then\n    if v_now<s.completes_at then raise exception 'PRODUCTION_NOT_READY';end if;\n    if v_now>=s.expires_at then raise exception 'PRODUCTION_EXPIRED';end if;\n    v_count:=coalesce((w.inventory->>s.run_bait_id)::bigint,0)+s.run_output;\n    if v_count>1000000000 then raise exception 'BAIT_LIMIT';end if;\n    update public.player_wallets set inventory=jsonb_set(inventory,array[s.run_bait_id],to_jsonb(v_count::integer)),updated_at=v_now where user_id=u;\n   elsif v_now<s.expires_at then raise exception 'PRODUCTION_NOT_EXPIRED';end if;\n   update app_private.bait_production_sites set started_at=null,completes_at=null,expires_at=null,run_output=null,run_bait_id=null where id=s.id;\n  end if;\n  if p_action<>'sell' then\n   receipt:=jsonb_build_object('action',p_action,'siteId',s.id,'count',case when p_action='claim' then s.run_output else 0 end);\n  end if;\n end if;\n insert into app_private.bait_production_operations values(u,p_operation_id,sig,receipt);\n return app_private.bait_production_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "bait_production_active_count",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.bait_production_active_count()\n RETURNS integer\n LANGUAGE sql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select count(*)::integer from app_private.bait_production_sites where user_id=auth.uid() and completes_at>clock_timestamp()\n$function$\n",
         "securityDefiner": true
       },
       {
@@ -10640,7 +10821,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.bait_production_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();r jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n select jsonb_build_object('activeTotal',app_private.production_active_count(),'serverNow',clock_timestamp(),'gold',w.gold,'fuel',coalesce((w.inventory->>'fuel')::integer,0),\n 'facilities',(select coalesce(jsonb_agg(to_jsonb(f)||jsonb_build_object('baitName',b.name,'image_path',b.image_path,'ownedCount',(select count(*) from app_private.bait_production_sites s where s.user_id=u and s.facility_id=f.id)) order by f.price,f.id),'[]'::jsonb) from public.bait_production_facilities f join public.fishing_baits b on b.id=f.bait_id where f.enabled),\n 'sites',(select coalesce(jsonb_agg(to_jsonb(f)||jsonb_build_object('siteId',s.id,'baitName',b.name,'image_path',b.image_path,'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output) order by s.purchased_at,s.id),'[]'::jsonb) from app_private.bait_production_sites s join public.bait_production_facilities f on f.id=s.facility_id join public.fishing_baits b on b.id=f.bait_id where s.user_id=u)) into r from public.player_wallets w where user_id=u;\n return r;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.bait_production_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();r jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n select jsonb_build_object('activeTotal',app_private.bait_production_active_count(),'serverNow',clock_timestamp(),'gold',w.gold,'fuel',coalesce((w.inventory->>'fuel')::integer,0),\n 'facilities',(select coalesce(jsonb_agg(to_jsonb(f)||jsonb_build_object('baitName',b.name,'image_path',b.image_path,'ownedCount',(select count(*) from app_private.bait_production_sites s where s.user_id=u and s.facility_id=f.id)) order by f.price,f.id),'[]'::jsonb) from public.bait_production_facilities f join public.fishing_baits b on b.id=f.bait_id where f.enabled),\n 'sites',(select coalesce(jsonb_agg(to_jsonb(f)||jsonb_build_object('siteId',s.id,'baitName',b.name,'image_path',b.image_path,'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output) order by s.purchased_at,s.id),'[]'::jsonb) from app_private.bait_production_sites s join public.bait_production_facilities f on f.id=s.facility_id join public.fishing_baits b on b.id=f.bait_id where s.user_id=u)) into r from public.player_wallets w where user_id=u;\n return r;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -10740,7 +10921,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_offset integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.brick_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_offset integer:=greatest(0,least(coalesce(p_offset,0),10000));v_result jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n with personal as (\n  select r.*,row_number() over(partition by user_id order by reward desc,started_at,id) as personal_rank from public.brick_game_runs r where finished_at is not null and reward>0\n ), ranks as (\n  select p.*,row_number() over(order by reward desc,started_at,id) as rank from personal p where personal_rank=1\n ), page as (select * from ranks order by rank offset v_offset limit 30)\n select jsonb_build_object('total',(select count(*) from ranks),'offset',v_offset,'rows',coalesce((select jsonb_agg(jsonb_build_object('id',p.id,'rank',p.rank,'gold',p.reward,'nickname',coalesce(u.nickname,'퐁이'),'mine',p.user_id=v_uid,'userId',p.user_id,'friendCode',u.friend_code,'friendStatus',(select f.status from public.friend_requests f where f.status in ('pending','accepted') and ((f.sender_id=v_uid and f.recipient_id=p.user_id) or (f.recipient_id=v_uid and f.sender_id=p.user_id)) order by f.created_at desc limit 1)) order by p.rank) from page p left join public.player_profiles u on u.id=p.user_id),'[]'::jsonb)) into v_result;\n return v_result;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.brick_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_offset integer:=greatest(0,least(coalesce(p_offset,0),10000));v_result jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n with personal as (\n  select r.*,row_number() over(partition by user_id order by reward desc,started_at,id) as personal_rank from public.brick_game_runs r where finished_at is not null and reward>0\n ), ranks as (\n  select p.*,row_number() over(order by reward desc,started_at,id) as rank from personal p where personal_rank=1\n ), page as (select * from ranks order by rank offset v_offset limit 30)\n select jsonb_build_object('total',(select count(*) from ranks),'offset',v_offset,'rows',coalesce((select jsonb_agg(jsonb_build_object('id',p.id,'rank',p.rank,'gold',p.reward,'nickname',coalesce(u.nickname,'퐁이'),'mine',p.user_id=v_uid,'avatarPath',u.avatar_path,'level',app_private.player_level(p.user_id),'userId',p.user_id,'friendCode',u.friend_code,'friendStatus',(select f.status from public.friend_requests f where f.status in ('pending','accepted') and ((f.sender_id=v_uid and f.recipient_id=p.user_id) or (f.recipient_id=v_uid and f.sender_id=p.user_id)) order by f.created_at desc limit 1)) order by p.rank) from page p left join public.player_profiles u on u.id=p.user_id),'[]'::jsonb)) into v_result;\n return v_result;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -10792,6 +10973,16 @@
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION app_private.cast_fishing(p_region_id text, p_bait_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n raise exception 'FISHING_FLOW_UPDATED';\nend $function$\n",
         "securityDefiner": true
+      },
+      {
+        "name": "catch_experience",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_kind text, p_rarity text, p_automatic boolean",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.catch_experience(p_kind text, p_rarity text, p_automatic boolean DEFAULT false)\n RETURNS integer\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\ndeclare amount numeric;\nbegin\n if p_kind not in ('fish','trash','decoration','map') or p_kind is null or p_rarity not in ('common','rare','epic','mythic') or p_rarity is null or p_automatic is null then raise exception 'INVALID_EXPERIENCE_CATCH';end if;\n amount:=case when p_kind='map' then 30 else case p_rarity when 'common' then 10 when 'rare' then 30 when 'epic' then 100 else 400 end end;\n if p_kind='trash' then amount:=amount/2;end if;\n if p_automatic then amount:=amount*0.3;end if;\n return round(amount)::integer;\nend $function$\n",
+        "securityDefiner": false
       },
       {
         "name": "challenge_title_metrics",
@@ -11000,7 +11191,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.ensure_merchant_orders()\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare d date:=(clock_timestamp() at time zone 'Asia/Seoul')::date;\n i integer;j integer;n integer;shape integer[];eligible integer;high_position integer;rare_count integer;qroll integer;\n k public.collectible_kind;r public.game_rarity;highest public.game_rarity;\n s public.collectible_species;items jsonb;tier text;base integer;reward integer;used text[];\nbegin\n perform pg_advisory_xact_lock(hashtextextended('merchant-day:'||d::text,0));\n if exists(select 1 from app_private.merchant_days m where m.day=d and m.rules_version=6) then return;end if;\n insert into app_private.merchant_days(day,rules_version) values(d,6) on conflict(day) do update set rules_version=6;\n -- Rotate only open IDs on a composition change. Completed receipts remain replayable.\n delete from app_private.merchant_orders where day=d and completed_at is null;\n select coalesce(array_agg(a->>'speciesId'),'{}'::text[]) into used from app_private.merchant_orders o cross join lateral jsonb_array_elements(o.items) a where o.day=d;\n for i in 1..40 loop\n  if exists(select 1 from app_private.merchant_orders o where o.day=d and o.slot=i) then continue;end if;\n  shape:=app_private.merchant_order_shape(i);n:=cardinality(shape);\n  select count(*)::integer into eligible from unnest(shape) quantity where quantity=1;\n  qroll:=floor(random()*10000)::integer;\n  highest:=app_private.merchant_order_grade(qroll);\n  tier:=case highest when 'common' then 'small' when 'rare' then 'mixed' when 'epic' then 'special' else 'grand' end;\n  -- Two-unit slots are always common. Rare-only orders can use every single-unit slot.\n  high_position:=1+floor(random()*eligible)::integer;\n  rare_count:=case when highest='rare' then 1+floor(random()*eligible)::integer else 0 end;\n  items:='[]';base:=0;\n  for j in 1..n loop\n   r:=case when shape[j]=2 then 'common'::public.game_rarity when highest='rare' and ((j-high_position+eligible)%eligible)<rare_count then 'rare'::public.game_rarity when j=high_position then highest else 'common'::public.game_rarity end;\n   qroll:=floor(random()*10000)::integer;\n   k:=case when qroll<6000 then 'fish'::public.collectible_kind when qroll<8000 then 'trash'::public.collectible_kind else 'decoration'::public.collectible_kind end;\n   select x.* into s from public.collectible_species x where x.rarity=r and x.kind=k and x.sell_price>0\n    and (select count(*) from unnest(used) u(id) where u.id=x.id)<2\n    and not exists(select 1 from jsonb_array_elements(items) t where t->>'speciesId'=x.id)\n   order by random() limit 1;\n   if s.id is null then\n    select x.* into s from public.collectible_species x where x.rarity=r and x.kind in ('fish','trash','decoration') and x.sell_price>0\n     and (select count(*) from unnest(used) u(id) where u.id=x.id)<2\n     and not exists(select 1 from jsonb_array_elements(items) t where t->>'speciesId'=x.id)\n    order by random() limit 1;\n   end if;\n   if s.id is null then raise exception 'MERCHANT_POOL_EMPTY';end if;\n   used:=array_append(used,s.id);\n   items:=items||jsonb_build_array(jsonb_build_object('speciesId',s.id,'name',s.name,'thumbnailPath',s.thumbnail_path,'kind',s.kind,'rarity',s.rarity,'quantity',shape[j],'unitGold',s.sell_price));\n   base:=base+s.sell_price*shape[j];\n  end loop;\n  reward:=base+app_private.merchant_order_bonus(items);\n  insert into app_private.merchant_orders(day,slot,tier,region_id,items,base_gold,reward_gold) values(d,i,tier,null,items,base,reward);\n end loop;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.ensure_merchant_orders()\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare d date:=(clock_timestamp() at time zone 'Asia/Seoul')::date;\n i integer;j integer;n integer;shape integer[];eligible integer;high_position integer;rare_count integer;qroll integer;\n k public.collectible_kind;r public.game_rarity;highest public.game_rarity;\n s public.collectible_species;items jsonb;tier text;base integer;reward integer;used text[];\nbegin\n perform pg_advisory_xact_lock(hashtextextended('merchant-day:'||d::text,0));\n if exists(select 1 from app_private.merchant_days m where m.day=d and m.rules_version=8) then return;end if;\n insert into app_private.merchant_days(day,rules_version) values(d,8) on conflict(day) do update set rules_version=8;\n -- Rotate only open IDs on a composition change. Completed receipts remain replayable.\n delete from app_private.merchant_orders where day=d and completed_at is null;\n select coalesce(array_agg(a->>'speciesId'),'{}'::text[]) into used from app_private.merchant_orders o cross join lateral jsonb_array_elements(o.items) a where o.day=d;\n for i in 1..35 loop\n  if exists(select 1 from app_private.merchant_orders o where o.day=d and o.slot=i) then continue;end if;\n  shape:=app_private.merchant_order_shape(i);n:=cardinality(shape);\n  select count(*)::integer into eligible from unnest(shape) quantity where quantity=1;\n  qroll:=floor(random()*10000)::integer;\n  highest:=app_private.merchant_order_grade(qroll);\n  tier:=case highest when 'common' then 'small' when 'rare' then 'mixed' when 'epic' then 'special' else 'grand' end;\n  -- Two-unit slots are always common. Rare-only orders can use every single-unit slot.\n  high_position:=1+floor(random()*eligible)::integer;\n  rare_count:=case when highest='rare' then 1+floor(random()*eligible)::integer else 0 end;\n  items:='[]';base:=0;\n  for j in 1..n loop\n   r:=case when shape[j]=2 then 'common'::public.game_rarity when highest='rare' and ((j-high_position+eligible)%eligible)<rare_count then 'rare'::public.game_rarity when j=high_position then highest else 'common'::public.game_rarity end;\n   qroll:=floor(random()*10000)::integer;\n   k:=case when qroll<6000 then 'fish'::public.collectible_kind when qroll<8000 then 'trash'::public.collectible_kind else 'decoration'::public.collectible_kind end;\n   select x.* into s from public.collectible_species x where x.rarity=r and x.kind=k and x.sell_price>0\n    and (select count(*) from unnest(used) u(id) where u.id=x.id)<2\n    and not exists(select 1 from jsonb_array_elements(items) t where t->>'speciesId'=x.id)\n   order by random() limit 1;\n   if s.id is null then\n    select x.* into s from public.collectible_species x where x.rarity=r and x.kind in ('fish','trash','decoration') and x.sell_price>0\n     and (select count(*) from unnest(used) u(id) where u.id=x.id)<2\n     and not exists(select 1 from jsonb_array_elements(items) t where t->>'speciesId'=x.id)\n    order by random() limit 1;\n   end if;\n   if s.id is null then raise exception 'MERCHANT_POOL_EMPTY';end if;\n   used:=array_append(used,s.id);\n   items:=items||jsonb_build_array(jsonb_build_object('speciesId',s.id,'name',s.name,'thumbnailPath',s.thumbnail_path,'kind',s.kind,'rarity',s.rarity,'quantity',shape[j],'unitGold',s.sell_price));\n   base:=base+s.sell_price*shape[j];\n  end loop;\n  reward:=base+app_private.merchant_order_bonus(items);\n  insert into app_private.merchant_orders(day,slot,tier,region_id,items,base_gold,reward_gold) values(d,i,tier,null,items,base,reward);\n end loop;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11140,7 +11331,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_expedition uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_boosts_payload(p_expedition uuid)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select coalesce(jsonb_agg(jsonb_build_object('id',id,'nickname',nickname,'avatar_path',avatar_path,'minutes',minutes,'created_at',created_at) order by created_at,id),'[]'::jsonb)\n from app_private.expedition_boosts where expedition_id=p_expedition;\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_boosts_payload(p_expedition uuid)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select coalesce(jsonb_agg(jsonb_build_object('id',id,'nickname',nickname,'avatar_path',avatar_path,'minutes',minutes,'created_at',created_at,'level',app_private.player_level(helper_id)) order by created_at,id),'[]'::jsonb)\n from app_private.expedition_boosts where expedition_id=p_expedition;\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -11182,6 +11373,16 @@
         "arguments": "p_bait_id text, p_reduction integer",
         "definition": "CREATE OR REPLACE FUNCTION app_private.expedition_success_chance_bp(p_bait_id text, p_reduction integer)\n RETURNS integer\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select coalesce((select success_chance_bp from public.fishing_baits where id=p_bait_id),\n least(10000,app_private.fishing_success_chance_bp(p_bait_id)+greatest(0,coalesce(p_reduction,0))))\n$function$\n",
         "securityDefiner": false
+      },
+      {
+        "name": "experience_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.experience_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare uid uuid:=auth.uid();xp bigint:=0;legacy bigint:=0;lv integer;base bigint;needed bigint;\nbegin\n if uid is null then raise exception 'AUTH_REQUIRED';end if;\n select e.total_xp,e.legacy_xp into xp,legacy from app_private.player_experience e where e.user_id=uid;\n xp:=coalesce(xp,0);legacy:=coalesce(legacy,0);\n lv:=floor((-1+sqrt(9+4*xp::numeric/25))/2)::integer;\n base:=(25::numeric*(lv-1)*(lv+2))::bigint;\n needed:=50::bigint*lv+50;\n return jsonb_build_object('level',lv,'totalXp',xp,'currentXp',xp-base,'nextLevelXp',needed,'legacyXp',legacy);\nend $function$\n",
+        "securityDefiner": true
       },
       {
         "name": "feed_friend_aquarium",
@@ -11334,6 +11535,16 @@
         "securityDefiner": true
       },
       {
+        "name": "friend_levels",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.friend_levels()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare uid uuid:=auth.uid();result jsonb;\nbegin\n if uid is null then raise exception 'AUTH_REQUIRED';end if;\n with friends as (\n  select distinct case when sender_id=uid then recipient_id else sender_id end friend_id\n  from public.friend_requests where status='accepted' and (sender_id=uid or recipient_id=uid)\n )\n select coalesce(jsonb_agg(jsonb_build_object('friendId',f.friend_id,'level',floor((-1+sqrt(9+4*coalesce(e.total_xp,0)::numeric/25))/2)::integer) order by f.friend_id),'[]'::jsonb)\n into result from friends f left join app_private.player_experience e on e.user_id=f.friend_id;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "get_gold_wallet",
         "config": [
           "search_path=\"\""
@@ -11440,7 +11651,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.hall_of_fame()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n with participants as materialized (\n  select p.id,p.nickname,p.avatar_path,p.created_at from public.player_profiles p\n  join auth.users u on u.id=p.id where lower(coalesce(u.email,''))<>'1@1.com'\n ), logs as materialized (\n  select l.user_id,l.id,l.occurred_at,l.source,l.kind,l.rarity,l.species_id\n  from app_private.title_fishing_log l join participants p on p.id=l.user_id\n ), catches as materialized (\n  select user_id,kind,rarity from logs where species_id is not null\n  union all\n  select v.user_id,item->'species'->>'kind',item->'species'->>'rarity'\n  from public.harbor_voyages v join participants p on p.id=v.user_id\n  cross join lateral jsonb_array_elements(coalesce(v.result->'items','[]'::jsonb)) item\n  where v.claimed_at is not null\n ), manual as materialized (\n  select *, (occurred_at at time zone 'Asia/Seoul')::date play_day,\n   row_number() over(partition by user_id order by occurred_at,id)\n   -row_number() over(partition by user_id,(species_id is not null) order by occurred_at,id) run\n  from logs where source='manual'\n ), fishing as (\n  select user_id,count(*) attempts,count(*) filter(where species_id is null) failures,\n   count(*) filter(where species_id is not null and rarity='mythic') mythic\n  from manual group by user_id\n ), totals as (\n  select user_id,count(*) filter(where kind='fish') fish,\n   count(*) filter(where rarity='mythic') mythic,\n   count(*) filter(where kind='decoration') decorations from catches group by user_id\n ), daily as (\n  select user_id,play_day,count(*) n from manual group by user_id,play_day\n ), runs as (\n  select user_id,max(n) filter(where success) success,max(n) filter(where not success) failure\n  from (select user_id,species_id is not null success,run,count(*) n\n   from manual group by user_id,(species_id is not null),run) s group by user_id\n ), games as (\n  select user_id from public.brick_game_runs union all select user_id from public.shadow_game_runs\n  union all select user_id from public.memory_game_runs union all select user_id from public.odd_even_runs\n  union all select user_id from app_private.ladder_runs\n ), arcade as (\n  select user_id,sum(delta::bigint) filter(where delta>0) earned,\n   -sum(delta::bigint) filter(where delta<0) spent\n  from public.gold_transactions where item_id like 'arcade:%' group by user_id\n ), sales as (\n  select case when side='sell' then owner_id else taker_id end user_id\n  from public.exchange_listings where status='completed'\n ), purchases as (\n  select case when side='sell' then taker_id else owner_id end user_id\n  from public.exchange_listings where status='completed'\n ), reactions as materialized (\n  select c.author_id user_id,r.value from app_private.hall_section_comment_reactions r\n  join app_private.hall_section_comments c on c.id=r.comment_id where r.user_id<>c.author_id\n  union all\n  select target_id user_id,value from app_private.hall_reactions\n  union all\n  select coalesce(c.author_id,p.author_id),r.value from public.board_reactions r\n  join public.board_posts p on p.id=r.post_id left join public.board_comments c on c.id=r.comment_id\n  where r.user_id<>coalesce(c.author_id,p.author_id) and (r.comment_id is null or not c.deleted)\n ), helps as (\n  select visitor_id user_id from public.aquarium_feedings where completed_at is not null and visitor_id<>owner_id\n  union all select visitor_id from public.aquarium_cleanings where completed_at is not null and visitor_id<>owner_id\n  union all select helper_id from app_private.expedition_boosts\n ), metrics as (\n  select user_id,'casts' key,attempts::numeric value from fishing\n  union all select user_id,'fish',fish from totals\n  union all select d.user_id,'collection',100.0*count(*)/greatest((select count(*) from public.collectible_species where kind<>'map'),1)\n   from public.player_discoveries d join public.collectible_species s on s.id=d.species_id where s.kind<>'map' group by d.user_id\n  union all select user_id,'mythic',mythic from totals\n  union all select user_id,'mythic_rate',100.0*mythic/attempts from fishing where attempts>=100\n  union all select user_id,'failure_rate',100.0*failures/attempts from fishing where attempts>=100\n  union all select sender_id,'gifts',count(*) from public.collectible_gifts\n   where source='friend' and sender_id<>recipient_id group by sender_id\n  union all select user_id,'sales',count(*) from sales group by user_id\n  union all select user_id,'purchases',count(*) from purchases group by user_id\n  union all select user_id,'titles',count(*) from public.player_titles group by user_id\n  union all select visitor_id,'cleanings',count(*) from public.aquarium_cleanings\n   where completed_at is not null and visitor_id<>owner_id group by visitor_id\n  union all select visitor_id,'feedings',count(*) from public.aquarium_feedings\n   where completed_at is not null and visitor_id<>owner_id group by visitor_id\n  union all select user_id,'voyages',count(*) from public.harbor_voyages group by user_id\n  union all select user_id,'games',count(*) from games group by user_id\n  union all select user_id,'arcade_earned',earned from arcade\n  union all select user_id,'arcade_spent',spent from arcade\n  union all select user_id,'decorations',decorations from totals\n  union all select p.user_id,'control_miss',count(*) from app_private.prepared_fishing_casts p\n   where p.finished_at is not null and p.result->>'failure_reason'='minigame' group by p.user_id\n  union all select user_id,'daily',max(n) from daily group by user_id\n  union all select user_id,'failure_run',failure from runs\n  union all select user_id,'trash',count(*) from manual where kind='trash' group by user_id\n  union all select user_id,'likes',count(*) from reactions where value=1 group by user_id\n  union all select user_id,'dislikes',count(*) from reactions where value=-1 group by user_id\n  union all select user_id,'helps',count(*) from helps group by user_id\n ), ranked as (\n  select m.*,p.nickname,p.avatar_path,row_number() over(partition by key order by value desc,p.created_at,p.id) rank\n  from metrics m join participants p on p.id=m.user_id where m.value>0\n ), grouped as (\n  select key,jsonb_agg(jsonb_build_object('id',user_id,'nickname',nickname,'avatar_path',avatar_path,'value',value,'rank',rank) order by rank) rows\n  from ranked where rank<=5 group by key\n ) select coalesce(jsonb_object_agg(key,rows),'{}'::jsonb) into result from grouped;\n return jsonb_build_object('rankings',result,'generatedAt',statement_timestamp());\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.hall_of_fame()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n with participants as materialized (\n  select p.id,p.nickname,p.avatar_path,p.created_at from public.player_profiles p\n  join auth.users u on u.id=p.id where lower(coalesce(u.email,''))<>'1@1.com'\n ), logs as materialized (\n  select l.user_id,l.id,l.occurred_at,l.source,l.kind,l.rarity,l.species_id\n  from app_private.title_fishing_log l join participants p on p.id=l.user_id\n ), catches as materialized (\n  select user_id,kind,rarity from logs where species_id is not null\n  union all\n  select v.user_id,item->'species'->>'kind',item->'species'->>'rarity'\n  from public.harbor_voyages v join participants p on p.id=v.user_id\n  cross join lateral jsonb_array_elements(coalesce(v.result->'items','[]'::jsonb)) item\n  where v.claimed_at is not null\n ), manual as materialized (\n  select *, (occurred_at at time zone 'Asia/Seoul')::date play_day,\n   row_number() over(partition by user_id order by occurred_at,id)\n   -row_number() over(partition by user_id,(species_id is not null) order by occurred_at,id) run\n  from logs where source='manual'\n ), fishing as (\n  select user_id,count(*) attempts,count(*) filter(where species_id is null) failures,\n   count(*) filter(where species_id is not null and rarity='mythic') mythic\n  from manual group by user_id\n ), totals as (\n  select user_id,count(*) filter(where kind='fish') fish,\n   count(*) filter(where rarity='mythic') mythic,\n   count(*) filter(where kind='decoration') decorations from catches group by user_id\n ), daily as (\n  select user_id,play_day,count(*) n from manual group by user_id,play_day\n ), runs as (\n  select user_id,max(n) filter(where success) success,max(n) filter(where not success) failure\n  from (select user_id,species_id is not null success,run,count(*) n\n   from manual group by user_id,(species_id is not null),run) s group by user_id\n ), games as (\n  select user_id from public.brick_game_runs union all select user_id from public.shadow_game_runs\n  union all select user_id from public.memory_game_runs union all select user_id from public.odd_even_runs\n  union all select user_id from app_private.ladder_runs\n ), arcade as (\n  select user_id,sum(delta::bigint) filter(where delta>0) earned,\n   -sum(delta::bigint) filter(where delta<0) spent\n  from public.gold_transactions where item_id like 'arcade:%' group by user_id\n ), sales as (\n  select case when side='sell' then owner_id else taker_id end user_id\n  from public.exchange_listings where status='completed'\n ), purchases as (\n  select case when side='sell' then taker_id else owner_id end user_id\n  from public.exchange_listings where status='completed'\n ), reactions as materialized (\n  select c.author_id user_id,r.value from app_private.hall_section_comment_reactions r\n  join app_private.hall_section_comments c on c.id=r.comment_id where r.user_id<>c.author_id\n  union all\n  select target_id user_id,value from app_private.hall_reactions\n  union all\n  select coalesce(c.author_id,p.author_id),r.value from public.board_reactions r\n  join public.board_posts p on p.id=r.post_id left join public.board_comments c on c.id=r.comment_id\n  where r.user_id<>coalesce(c.author_id,p.author_id) and (r.comment_id is null or not c.deleted)\n ), helps as (\n  select visitor_id user_id from public.aquarium_feedings where completed_at is not null and visitor_id<>owner_id\n  union all select visitor_id from public.aquarium_cleanings where completed_at is not null and visitor_id<>owner_id\n  union all select helper_id from app_private.expedition_boosts\n ), metrics as (\n  select user_id,'casts' key,attempts::numeric value from fishing\n  union all select user_id,'fish',fish from totals\n  union all select d.user_id,'collection',100.0*count(*)/greatest((select count(*) from public.collectible_species where kind<>'map'),1)\n   from public.player_discoveries d join public.collectible_species s on s.id=d.species_id where s.kind<>'map' group by d.user_id\n  union all select user_id,'mythic',mythic from totals\n  union all select user_id,'mythic_rate',100.0*mythic/attempts from fishing where attempts>=100\n  union all select user_id,'failure_rate',100.0*failures/attempts from fishing where attempts>=100\n  union all select sender_id,'gifts',count(*) from public.collectible_gifts\n   where source='friend' and sender_id<>recipient_id group by sender_id\n  union all select user_id,'sales',count(*) from sales group by user_id\n  union all select user_id,'purchases',count(*) from purchases group by user_id\n  union all select user_id,'titles',count(*) from public.player_titles group by user_id\n  union all select visitor_id,'cleanings',count(*) from public.aquarium_cleanings\n   where completed_at is not null and visitor_id<>owner_id group by visitor_id\n  union all select visitor_id,'feedings',count(*) from public.aquarium_feedings\n   where completed_at is not null and visitor_id<>owner_id group by visitor_id\n  union all select user_id,'voyages',count(*) from public.harbor_voyages group by user_id\n  union all select user_id,'games',count(*) from games group by user_id\n  union all select user_id,'arcade_earned',earned from arcade\n  union all select user_id,'arcade_spent',spent from arcade\n  union all select user_id,'decorations',decorations from totals\n  union all select p.user_id,'control_miss',count(*) from app_private.prepared_fishing_casts p\n   where p.finished_at is not null and p.result->>'failure_reason'='minigame' group by p.user_id\n  union all select user_id,'daily',max(n) from daily group by user_id\n  union all select user_id,'failure_run',failure from runs\n  union all select user_id,'trash',count(*) from manual where kind='trash' group by user_id\n  union all select user_id,'likes',count(*) from reactions where value=1 group by user_id\n  union all select user_id,'dislikes',count(*) from reactions where value=-1 group by user_id\n  union all select user_id,'helps',count(*) from helps group by user_id\n ), ranked as (\n  select m.*,p.nickname,p.avatar_path,row_number() over(partition by key order by value desc,p.created_at,p.id) rank\n  from metrics m join participants p on p.id=m.user_id where m.value>0\n ), grouped as (\n  select key,jsonb_agg(jsonb_build_object('id',user_id,'level',app_private.player_level(user_id),'nickname',nickname,'avatar_path',avatar_path,'value',value,'rank',rank) order by rank) rows\n  from ranked where rank<=5 group by key\n ) select coalesce(jsonb_object_agg(key,rows),'{}'::jsonb) into result from grouped;\n return jsonb_build_object('rankings',result,'generatedAt',statement_timestamp());\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11540,7 +11751,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_offset integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.ladder_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_result jsonb;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>10000 then raise exception 'INVALID_OFFSET';end if;\n with personal as (\n  select r.*,row_number() over(partition by user_id order by reward desc,created_at,id) rn from app_private.ladder_runs r where reward>0\n ), ranked as (\n  select p.*,row_number() over(order by reward desc,created_at,id) rank from personal p where rn=1\n ), page as (select * from ranked order by rank offset p_offset limit 20)\n select jsonb_build_object('total',(select count(*) from ranked),'rows',coalesce((select jsonb_agg(jsonb_build_object('id',p.id,'rank',p.rank,'gold',p.reward,'nickname',coalesce(u.nickname,'섬 여행자'),'mine',p.user_id=auth.uid(),'userId',p.user_id,'friendCode',u.friend_code,'friendStatus',(select f.status from public.friend_requests f where f.status in ('pending','accepted') and ((f.sender_id=auth.uid() and f.recipient_id=p.user_id) or (f.recipient_id=auth.uid() and f.sender_id=p.user_id)) order by f.created_at desc limit 1)) order by p.rank) from page p left join public.player_profiles u on u.id=p.user_id),'[]'::jsonb)) into v_result;\n return v_result;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.ladder_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_result jsonb;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>10000 then raise exception 'INVALID_OFFSET';end if;\n with personal as (\n  select r.*,row_number() over(partition by user_id order by reward desc,created_at,id) rn from app_private.ladder_runs r where reward>0\n ), ranked as (\n  select p.*,row_number() over(order by reward desc,created_at,id) rank from personal p where rn=1\n ), page as (select * from ranked order by rank offset p_offset limit 20)\n select jsonb_build_object('total',(select count(*) from ranked),'rows',coalesce((select jsonb_agg(jsonb_build_object('id',p.id,'rank',p.rank,'gold',p.reward,'nickname',coalesce(u.nickname,'섬 여행자'),'mine',p.user_id=auth.uid(),'avatarPath',u.avatar_path,'level',app_private.player_level(p.user_id),'userId',p.user_id,'friendCode',u.friend_code,'friendStatus',(select f.status from public.friend_requests f where f.status in ('pending','accepted') and ((f.sender_id=auth.uid() and f.recipient_id=p.user_id) or (f.recipient_id=auth.uid() and f.sender_id=p.user_id)) order by f.created_at desc limit 1)) order by p.rank) from page p left join public.player_profiles u on u.id=p.user_id),'[]'::jsonb)) into v_result;\n return v_result;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11561,6 +11772,16 @@
         "schema": "app_private",
         "arguments": "p_tank_id uuid, p_action text, p_value text",
         "definition": "CREATE OR REPLACE FUNCTION app_private.manage_aquarium_tank(p_tank_id uuid, p_action text, p_value text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid(); v_tank public.aquarium_tanks; v_name text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n select * into v_tank from public.aquarium_tanks where id=p_tank_id and user_id=v_uid for update;\n if not found then raise exception 'TANK_NOT_FOUND'; end if;\n if p_action='rename' then\n  v_name:=btrim(p_value);\n  if v_name is null or char_length(v_name) not between 1 and 20 or v_name ~ '[[:cntrl:]]' then raise exception 'INVALID_TANK_NAME'; end if;\n  update public.aquarium_tanks set name=v_name where id=p_tank_id;\n elsif p_action='equip' then\n  if p_value is null or not exists(select 1 from public.aquarium_backgrounds where id=p_value) then raise exception 'INVALID_ITEM'; end if;\n  if p_value<>'default' and not exists(select 1 from public.owned_aquarium_backgrounds where user_id=v_uid and background_id=p_value) then raise exception 'BACKGROUND_NOT_OWNED'; end if;\n  update public.aquarium_tanks set background_id=p_value where id=p_tank_id;\n  if v_tank.is_default then update public.player_aquariums set background_id=p_value where user_id=v_uid; end if;\n else raise exception 'INVALID_TRADE';\n end if;\n return app_private.aquarium_state();\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "manual_experience_event",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.manual_experience_event()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare kind text;amount integer;\nbegin\n if new.rarity is null then amount:=2;\n else\n  select p.snapshot->>'kind' into kind from app_private.prepared_fishing_casts p where p.user_id=new.user_id and p.operation_id=new.operation_id;\n  if kind is null then select s.kind::text into kind from public.player_collectibles c join public.collectible_species s on s.id=c.species_id where c.id=new.collectible_id and c.user_id=new.user_id;end if;\n  amount:=app_private.catch_experience(kind,new.rarity::text);\n end if;\n perform app_private.award_experience(new.user_id,'manual',new.operation_id,amount);\n return new;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11640,7 +11861,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_items jsonb",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.merchant_order_bonus(p_items jsonb)\n RETURNS integer\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\ndeclare n integer;total integer;rare_units integer;rare_kinds integer;epics integer;mythics integer;bonus integer;\nbegin\n if jsonb_typeof(p_items) is distinct from 'array' then raise exception 'INVALID_MERCHANT_ITEMS';end if;\n n:=jsonb_array_length(p_items);\n if n not between 1 and 3 or exists(select 1 from jsonb_array_elements(p_items) a where (a->>'quantity') is null or (a->>'quantity')::integer not between 1 and 2 or coalesce(a->>'rarity','') not in ('common','rare','epic','mythic')) then raise exception 'INVALID_MERCHANT_ITEMS';end if;\n select sum((a->>'quantity')::integer),coalesce(sum((a->>'quantity')::integer) filter(where a->>'rarity'='rare'),0),count(*) filter(where a->>'rarity'='rare'),count(*) filter(where a->>'rarity'='epic'),count(*) filter(where a->>'rarity'='mythic')\n into total,rare_units,rare_kinds,epics,mythics from jsonb_array_elements(p_items) a;\n if n=1 and total=1 then\n  return case p_items->0->>'rarity' when 'common' then 80 when 'rare' then 100 when 'epic' then 250 else 600 end;\n elsif n=2 and total=2 then\n  bonus:=case rare_kinds when 0 then 120 when 1 then 200 else 250 end;\n elsif n=2 and total=3 then\n  bonus:=case rare_units when 0 then 200 when 1 then 300 when 2 then 380 else 500 end;\n elsif n=3 and total=4 and (select max((a->>'quantity')::integer) from jsonb_array_elements(p_items) a)=2 then\n  bonus:=case rare_kinds when 0 then 300 when 1 then 400 else 500 end;\n else raise exception 'INVALID_MERCHANT_ITEMS';end if;\n return bonus+epics*250+mythics*600;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.merchant_order_bonus(p_items jsonb)\n RETURNS integer\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\ndeclare n integer;total integer;rare_units integer;rare_kinds integer;epics integer;mythics integer;bonus integer;\nbegin\n if jsonb_typeof(p_items) is distinct from 'array' then raise exception 'INVALID_MERCHANT_ITEMS';end if;\n n:=jsonb_array_length(p_items);\n if n not between 1 and 3 or exists(select 1 from jsonb_array_elements(p_items) a where (a->>'quantity') is null or (a->>'quantity')::integer not between 1 and 2 or coalesce(a->>'rarity','') not in ('common','rare','epic','mythic')) then raise exception 'INVALID_MERCHANT_ITEMS';end if;\n select sum((a->>'quantity')::integer),coalesce(sum((a->>'quantity')::integer) filter(where a->>'rarity'='rare'),0),count(*) filter(where a->>'rarity'='rare'),count(*) filter(where a->>'rarity'='epic'),count(*) filter(where a->>'rarity'='mythic')\n into total,rare_units,rare_kinds,epics,mythics from jsonb_array_elements(p_items) a;\n if n=1 and total=1 then\n  return case p_items->0->>'rarity' when 'common' then 80 when 'rare' then 100 when 'epic' then 250 else 600 end;\n elsif n=2 and total=2 then\n  bonus:=case rare_kinds when 0 then 120 when 1 then 200 else 250 end;\n elsif n=2 and total=3 then\n  bonus:=case rare_units when 0 then 200 when 1 then 300 when 2 then 380 else 500 end;\n elsif n=3 and total=4 and (select max((a->>'quantity')::integer) from jsonb_array_elements(p_items) a)=2 then\n  bonus:=case rare_kinds when 0 then 600 when 1 then 800 else 1000 end;\n else raise exception 'INVALID_MERCHANT_ITEMS';end if;\n return bonus+epics*250+mythics*600;\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -11660,7 +11881,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_slot integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.merchant_order_shape(p_slot integer)\n RETURNS integer[]\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\nbegin\n if p_slot is null or p_slot not between 1 and 40 then raise exception 'INVALID_MERCHANT_SLOT';end if;\n return case when p_slot<=10 then array[1] when p_slot<=30 then array[1,1] when p_slot<=37 then array[1,2] else array[1,1,2] end;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.merchant_order_shape(p_slot integer)\n RETURNS integer[]\n LANGUAGE plpgsql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\nbegin\n if p_slot is null or p_slot not between 1 and 35 then raise exception 'INVALID_MERCHANT_SLOT';end if;\n return case when p_slot<=20 then array[1] when p_slot<=30 then array[1,1] else array[1,1,2] end;\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -11690,7 +11911,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.merchant_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare uid uuid:=auth.uid();d date;result jsonb;\nbegin\n if uid is null then raise exception 'AUTH_REQUIRED';end if;\n loop\n  perform app_private.ensure_merchant_orders();\n  d:=(clock_timestamp() at time zone 'Asia/Seoul')::date;\n  exit when exists(select 1 from app_private.merchant_days m where m.day=d);\n end loop;\n with stock as materialized (select c.species_id,count(*) n from public.player_collectibles c where c.user_id=uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is null group by c.species_id)\n select jsonb_build_object('day',d,'serverNow',clock_timestamp(),'resetsAt',(d+1)::timestamp at time zone 'Asia/Seoul','dailyLimit',null,\n 'deliveredToday',(select count(*) from app_private.merchant_deliveries x where x.user_id=uid and x.day=d),\n 'orders',coalesce(jsonb_agg(jsonb_build_object('id',o.id,'number',o.slot,'tier',o.tier,'regionName',r.name,\n 'baseGold',o.base_gold,'rewardGold',o.reward_gold,'completed',o.completed_at is not null,'mine',coalesce(o.completed_by=uid,false),\n 'delivery',case when o.completed_at is not null then jsonb_build_object('nickname',coalesce(o.completed_name,'섬 모험가'),'avatarPath',case when profile.id is not null then profile.avatar_path else o.completed_avatar_path end,'message',o.completed_message) end,\n 'items',(select jsonb_agg(item||jsonb_build_object('owned',coalesce(stock.n,0)) order by ord) from jsonb_array_elements(o.items) with ordinality a(item,ord)\n left join stock on stock.species_id=item->>'speciesId')) order by o.slot),'[]'::jsonb)) into result\n from app_private.merchant_orders o left join public.regions r on r.id=o.region_id left join public.player_profiles profile on profile.id=o.completed_by where o.day=d;\n return result;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.merchant_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare uid uuid:=auth.uid();d date;result jsonb;\nbegin\n if uid is null then raise exception 'AUTH_REQUIRED';end if;\n loop\n  perform app_private.ensure_merchant_orders();\n  d:=(clock_timestamp() at time zone 'Asia/Seoul')::date;\n  exit when exists(select 1 from app_private.merchant_days m where m.day=d);\n end loop;\n with stock as materialized (select c.species_id,count(*) n from public.player_collectibles c where c.user_id=uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is null group by c.species_id)\n select jsonb_build_object('day',d,'serverNow',clock_timestamp(),'resetsAt',(d+1)::timestamp at time zone 'Asia/Seoul','dailyLimit',null,\n 'deliveredToday',(select count(*) from app_private.merchant_deliveries x where x.user_id=uid and x.day=d),\n 'orders',coalesce(jsonb_agg(jsonb_build_object('id',o.id,'number',o.slot,'tier',o.tier,'regionName',r.name,\n 'baseGold',o.base_gold,'rewardGold',o.reward_gold,'completed',o.completed_at is not null,'mine',coalesce(o.completed_by=uid,false),\n 'delivery',case when o.completed_at is not null then jsonb_build_object('nickname',coalesce(o.completed_name,'섬 모험가'),'avatarPath',case when profile.id is not null then profile.avatar_path else o.completed_avatar_path end,'message',o.completed_message,'level',case when profile.id is not null then app_private.player_level(profile.id) end) end,\n 'items',(select jsonb_agg(item||jsonb_build_object('owned',coalesce(stock.n,0)) order by ord) from jsonb_array_elements(o.items) with ordinality a(item,ord)\n left join stock on stock.species_id=item->>'speciesId')) order by o.slot),'[]'::jsonb)) into result\n from app_private.merchant_orders o left join public.regions r on r.id=o.region_id left join public.player_profiles profile on profile.id=o.completed_by where o.day=d;\n return result;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11810,7 +12031,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_offset integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.odd_even_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_rows jsonb;v_total bigint;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 then raise exception 'INVALID_OFFSET';end if;\n select count(distinct user_id) into v_total from public.odd_even_runs where stage='banked';\n select coalesce(jsonb_agg(to_jsonb(t) order by t.rank),'[]'::jsonb) into v_rows from (\n  select row_number() over(order by r.stake desc,r.finished_at,r.id)+p_offset as rank,r.id,r.stake as gold,r.wins,\n   coalesce(p.nickname,'섬 여행자') as nickname,r.user_id=auth.uid() as mine,\n   r.user_id as \"userId\",p.friend_code as \"friendCode\",\n   (select f.status from public.friend_requests f where f.status in ('pending','accepted')\n    and ((f.sender_id=auth.uid() and f.recipient_id=r.user_id) or (f.recipient_id=auth.uid() and f.sender_id=r.user_id))\n    order by f.created_at desc limit 1) as \"friendStatus\"\n  from (select * from (select distinct on(user_id) * from public.odd_even_runs where stage='banked' order by user_id,stake desc,finished_at,id) best order by stake desc,finished_at,id limit 20 offset p_offset) r\n  left join public.player_profiles p on p.id=r.user_id\n ) t;\n return jsonb_build_object('rows',v_rows,'total',v_total);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.odd_even_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_rows jsonb;v_total bigint;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 then raise exception 'INVALID_OFFSET';end if;\n select count(distinct user_id) into v_total from public.odd_even_runs where stage='banked';\n select coalesce(jsonb_agg(to_jsonb(t) order by t.rank),'[]'::jsonb) into v_rows from (\n  select row_number() over(order by r.stake desc,r.finished_at,r.id)+p_offset as rank,r.id,r.stake as gold,r.wins,\n   coalesce(p.nickname,'섬 여행자') as nickname,r.user_id=auth.uid() as mine,\n   p.avatar_path as \"avatarPath\",app_private.player_level(r.user_id) as level,\n   r.user_id as \"userId\",p.friend_code as \"friendCode\",\n   (select f.status from public.friend_requests f where f.status in ('pending','accepted')\n    and ((f.sender_id=auth.uid() and f.recipient_id=r.user_id) or (f.recipient_id=auth.uid() and f.sender_id=r.user_id))\n    order by f.created_at desc limit 1) as \"friendStatus\"\n  from (select * from (select distinct on(user_id) * from public.odd_even_runs where stage='banked' order by user_id,stake desc,finished_at,id) best order by stake desc,finished_at,id limit 20 offset p_offset) r\n  left join public.player_profiles p on p.id=r.user_id\n ) t;\n return jsonb_build_object('rows',v_rows,'total',v_total);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11904,6 +12125,26 @@
         "securityDefiner": true
       },
       {
+        "name": "player_level",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_user uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.player_level(p_user uuid)\n RETURNS integer\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select floor((-1+sqrt(9+4*coalesce((select total_xp from app_private.player_experience where user_id=p_user),0)::numeric/25))/2)::integer\n$function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "player_levels",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_ids uuid[], p_friend_codes text[]",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.player_levels(p_ids uuid[], p_friend_codes text[] DEFAULT '{}'::text[])\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_ids is null or cardinality(p_ids)>100 or p_friend_codes is null or cardinality(p_friend_codes)>100 then raise exception 'INVALID_PLAYER_IDS';end if;\n -- Authorize the displayed identity before reading private progression. A\n -- profile UUID alone is never sufficient. Match existing display visibility.\n return coalesce((select jsonb_agg(jsonb_build_object('userId',p.id,'level',app_private.player_level(p.id)) order by p.id)\n from public.player_profiles p where p.id=any(p_ids) and (\n  p.id=auth.uid()\n  or p.friend_code=any(p_friend_codes)\n  or exists(select 1 from public.friend_requests f where f.status in ('pending','accepted') and ((f.sender_id=auth.uid() and f.recipient_id=p.id) or(f.recipient_id=auth.uid() and f.sender_id=p.id)))\n  or exists(select 1 from public.exchange_listings l where l.owner_id=p.id and l.side='sell' and (l.status in ('active','completed') or l.owner_id=auth.uid()))\n  or exists(select 1 from public.exchange_listing_comments c join public.exchange_listings l on l.id=c.listing_id where c.user_id=p.id and l.side='sell' and (l.status in ('active','completed') or l.owner_id=auth.uid()))\n  or exists(select 1 from public.board_posts b where b.author_id=p.id)\n  or exists(select 1 from public.board_comments c where c.author_id=p.id and not c.deleted)\n  or exists(select 1 from public.bug_reports b where b.author_id=p.id)\n  or exists(select 1 from public.suggestion_posts s where s.author_id=p.id and (not s.friends_only or s.author_id=auth.uid() or (select app_private.notice_is_operator()) or exists(select 1 from public.friend_requests f where f.status='accepted' and ((f.sender_id=auth.uid() and f.recipient_id=s.author_id) or(f.recipient_id=auth.uid() and f.sender_id=s.author_id)))))\n  or exists(select 1 from public.fishing_showcase_posts s where s.author_id=p.id)\n  or exists(select 1 from public.fishing_showcase_reactions r join public.fishing_showcase_posts s on s.id=r.post_id where r.user_id=p.id)\n  or exists(select 1 from public.collectible_gifts g where not g.exchange_hold and (g.sender_id=auth.uid() or g.recipient_id=auth.uid()) and p.id in (g.sender_id,g.recipient_id))\n  or exists(select 1 from app_private.hall_comments c where c.author_id=p.id)\n  or exists(select 1 from app_private.hall_section_comments c where c.author_id=p.id)\n )),'[]'::jsonb);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "prepare_fishing",
         "config": [
           "search_path=\"\""
@@ -11970,7 +12211,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.production_active_count()\n RETURNS integer\n LANGUAGE sql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select ((select count(*) from app_private.production_sites where user_id=auth.uid() and completes_at>clock_timestamp())+(select count(*) from app_private.bait_production_sites where user_id=auth.uid() and completes_at>clock_timestamp()))::integer\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.production_active_count()\n RETURNS integer\n LANGUAGE sql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select count(*)::integer from app_private.production_sites where user_id=auth.uid() and completes_at>clock_timestamp()\n$function$\n",
         "securityDefiner": true
       },
       {
@@ -13164,6 +13405,16 @@
         "securityDefiner": false
       },
       {
+        "name": "experience_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.experience_state()\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$ select app_private.experience_state() $function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "feed_friend_aquarium",
         "config": [
           "search_path=\"\""
@@ -13281,6 +13532,16 @@
         "schema": "public",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION public.friend_expedition_status()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$ select app_private.friend_expedition_status(); $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "friend_levels",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.friend_levels()\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$select app_private.friend_levels()$function$\n",
         "securityDefiner": false
       },
       {
@@ -13561,6 +13822,16 @@
         "schema": "public",
         "arguments": "p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric",
         "definition": "CREATE OR REPLACE FUNCTION public.place_collectible(p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.place_collectible(p_collectible_id,p_tank_id,p_x,p_y)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "player_levels",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_ids uuid[], p_friend_codes text[]",
+        "definition": "CREATE OR REPLACE FUNCTION public.player_levels(p_ids uuid[], p_friend_codes text[] DEFAULT '{}'::text[])\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$ select app_private.player_levels(p_ids,p_friend_codes) $function$\n",
         "securityDefiner": false
       },
       {
@@ -14457,6 +14728,66 @@
         "table": "expedition_settings",
         "schema": "app_private",
         "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "experience_events_created_at_not_null",
+        "table": "experience_events",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "experience_events_legacy_not_null",
+        "table": "experience_events",
+        "schema": "app_private",
+        "definition": "NOT NULL legacy"
+      },
+      {
+        "name": "experience_events_pkey",
+        "table": "experience_events",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, source, source_id)"
+      },
+      {
+        "name": "experience_events_source_check",
+        "table": "experience_events",
+        "schema": "app_private",
+        "definition": "CHECK ((source = ANY (ARRAY['manual'::text, 'trap'::text, 'harbor'::text])))"
+      },
+      {
+        "name": "experience_events_source_id_not_null",
+        "table": "experience_events",
+        "schema": "app_private",
+        "definition": "NOT NULL source_id"
+      },
+      {
+        "name": "experience_events_source_not_null",
+        "table": "experience_events",
+        "schema": "app_private",
+        "definition": "NOT NULL source"
+      },
+      {
+        "name": "experience_events_user_id_fkey",
+        "table": "experience_events",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "experience_events_user_id_not_null",
+        "table": "experience_events",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "experience_events_xp_check",
+        "table": "experience_events",
+        "schema": "app_private",
+        "definition": "CHECK ((xp >= 0))"
+      },
+      {
+        "name": "experience_events_xp_not_null",
+        "table": "experience_events",
+        "schema": "app_private",
+        "definition": "NOT NULL xp"
       },
       {
         "name": "feedback_bug_votes_pkey",
@@ -15421,6 +15752,54 @@
       {
         "name": "notice_operators_user_id_not_null",
         "table": "notice_operators",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "player_experience_check",
+        "table": "player_experience",
+        "schema": "app_private",
+        "definition": "CHECK (((legacy_xp >= 0) AND (legacy_xp <= total_xp)))"
+      },
+      {
+        "name": "player_experience_legacy_xp_not_null",
+        "table": "player_experience",
+        "schema": "app_private",
+        "definition": "NOT NULL legacy_xp"
+      },
+      {
+        "name": "player_experience_pkey",
+        "table": "player_experience",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "player_experience_total_xp_check",
+        "table": "player_experience",
+        "schema": "app_private",
+        "definition": "CHECK ((total_xp >= 0))"
+      },
+      {
+        "name": "player_experience_total_xp_not_null",
+        "table": "player_experience",
+        "schema": "app_private",
+        "definition": "NOT NULL total_xp"
+      },
+      {
+        "name": "player_experience_updated_at_not_null",
+        "table": "player_experience",
+        "schema": "app_private",
+        "definition": "NOT NULL updated_at"
+      },
+      {
+        "name": "player_experience_user_id_fkey",
+        "table": "player_experience",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "player_experience_user_id_not_null",
+        "table": "player_experience",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
       },
@@ -17342,7 +17721,7 @@
         "name": "gift_asset_shape",
         "table": "collectible_gifts",
         "schema": "public",
-        "definition": "CHECK ((((reward_kind = 'collectible'::text) AND ((quantity >= 1) AND (quantity <= 20)) AND (cardinality(collectible_ids) = quantity)) OR ((source = 'exchange'::text) AND (reward_kind = 'gold'::text) AND ((quantity >= 1) AND (quantity <= 1000000000)) AND (cardinality(collectible_ids) = 0)) OR ((source = 'exchange'::text) AND (reward_kind = 'bait'::text) AND ((quantity >= 1) AND (quantity <= 9999)) AND (cardinality(collectible_ids) = 0) AND (reward_id IS NOT NULL)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id = ANY (ARRAY['welcome'::text, 'operator-gold-20261020'::text, 'operator-gold-20261020-round2'::text, 'operator-gold-20261021-supply'::text])) AND (quantity = 500) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'exchange'::text) AND (reward_kind = 'fuel'::text) AND (reward_id = 'fuel'::text) AND ((quantity >= 1) AND (quantity <= 9999)) AND (cardinality(collectible_ids) = 0)) OR ((source = 'system'::text) AND (reward_kind = 'bait'::text) AND (reward_id = 'bait'::text) AND ((species ->> 'id'::text) = ANY (ARRAY['welcome-bait'::text, 'operator-worm-20261020'::text])) AND (quantity = 5) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id ~~ 'arcade-weekly:%'::text) AND (quantity = ANY (ARRAY[2000, 1500, 1000, 650, 400, 200])) AND ((species ->> 'game'::text) = ANY (ARRAY['shadow'::text, 'memory'::text])) AND (reward_id = ((('arcade-weekly:'::text || (species ->> 'game'::text)) || ':'::text) || (species ->> 'week_start'::text))) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id = ANY (ARRAY['giseong-catch-202610:giseong-fish'::text, 'giseong-catch-202610:giseong-webfoot-octopus'::text])) AND ((species ->> 'id'::text) = reward_id) AND (quantity = 300) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold))))"
+        "definition": "CHECK ((((reward_kind = 'collectible'::text) AND ((quantity >= 1) AND (quantity <= 20)) AND (cardinality(collectible_ids) = quantity)) OR ((source = 'exchange'::text) AND (reward_kind = 'gold'::text) AND ((quantity >= 1) AND (quantity <= 1000000000)) AND (cardinality(collectible_ids) = 0)) OR ((source = 'exchange'::text) AND (reward_kind = 'bait'::text) AND ((quantity >= 1) AND (quantity <= 9999)) AND (cardinality(collectible_ids) = 0) AND (reward_id IS NOT NULL)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id = ANY (ARRAY['welcome'::text, 'operator-gold-20261020'::text, 'operator-gold-20261020-round2'::text, 'operator-gold-20261021-supply'::text])) AND (quantity = 500) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'exchange'::text) AND (reward_kind = 'fuel'::text) AND (reward_id = 'fuel'::text) AND ((quantity >= 1) AND (quantity <= 9999)) AND (cardinality(collectible_ids) = 0)) OR ((source = 'system'::text) AND (reward_kind = 'bait'::text) AND (reward_id = 'bait'::text) AND ((species ->> 'id'::text) = ANY (ARRAY['welcome-bait'::text, 'operator-worm-20261020'::text])) AND (quantity = 5) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id ~~ 'arcade-weekly:%'::text) AND (quantity = ANY (ARRAY[2000, 1500, 1000, 650, 400, 200])) AND ((species ->> 'game'::text) = ANY (ARRAY['shadow'::text, 'memory'::text])) AND (reward_id = ((('arcade-weekly:'::text || (species ->> 'game'::text)) || ':'::text) || (species ->> 'week_start'::text))) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id = ANY (ARRAY['giseong-catch-202610:giseong-fish'::text, 'giseong-catch-202610:giseong-webfoot-octopus'::text])) AND ((species ->> 'id'::text) = reward_id) AND (quantity = 300) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold)) OR ((source = 'system'::text) AND (reward_kind = 'gold'::text) AND (reward_id = 'operator-update-20261023-nyamnyam'::text) AND ((species ->> 'id'::text) = reward_id) AND (quantity = 1000) AND (cardinality(collectible_ids) = 0) AND (sender_id IS NULL) AND (NOT exchange_hold))))"
       },
       {
         "name": "gift_hold_shape",
@@ -18236,7 +18615,7 @@
         "name": "fishing_rods_wait_reduction_seconds_check",
         "table": "fishing_rods",
         "schema": "public",
-        "definition": "CHECK (((wait_reduction_seconds >= 0) AND (wait_reduction_seconds <= 2)))"
+        "definition": "CHECK (((wait_reduction_seconds >= 0) AND (wait_reduction_seconds <= 3)))"
       },
       {
         "name": "fishing_rods_wait_reduction_seconds_not_null",
@@ -26949,6 +27328,48 @@
         "arguments": "p_tab text, p_query text, p_offset integer"
       },
       {
+        "name": "automatic_experience_event",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "automatic_experience_event",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "automatic_experience_event",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "award_experience",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid, p_source text, p_source_id uuid, p_xp integer"
+      },
+      {
+        "name": "award_experience",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid, p_source text, p_source_id uuid, p_xp integer"
+      },
+      {
+        "name": "award_experience",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid, p_source text, p_source_id uuid, p_xp integer"
+      },
+      {
         "name": "award_title",
         "role": "anon",
         "schema": "app_private",
@@ -26989,6 +27410,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_action text, p_operation_id uuid, p_facility text, p_quantity integer"
+      },
+      {
+        "name": "bait_production_active_count",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "bait_production_active_count",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "bait_production_active_count",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "bait_production_state",
@@ -27325,6 +27767,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_region_id text, p_bait_id text, p_operation_id uuid"
+      },
+      {
+        "name": "catch_experience",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_rarity text, p_automatic boolean"
+      },
+      {
+        "name": "catch_experience",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_rarity text, p_automatic boolean"
+      },
+      {
+        "name": "catch_experience",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_kind text, p_rarity text, p_automatic boolean"
       },
       {
         "name": "challenge_title_metrics",
@@ -28146,6 +28609,27 @@
         "arguments": "p_bait_id text, p_reduction integer"
       },
       {
+        "name": "experience_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "experience_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "experience_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "feed_friend_aquarium",
         "role": "anon",
         "schema": "app_private",
@@ -28455,6 +28939,27 @@
       },
       {
         "name": "friend_expedition_status",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "friend_levels",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "friend_levels",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "friend_levels",
         "role": "service_role",
         "schema": "app_private",
         "execute": false,
@@ -28942,6 +29447,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_tank_id uuid, p_action text, p_value text"
+      },
+      {
+        "name": "manual_experience_event",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "manual_experience_event",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "manual_experience_event",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "manual_fishing_success_chance_bp",
@@ -29656,6 +30182,48 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric"
+      },
+      {
+        "name": "player_level",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid"
+      },
+      {
+        "name": "player_level",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid"
+      },
+      {
+        "name": "player_level",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid"
+      },
+      {
+        "name": "player_levels",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_ids uuid[], p_friend_codes text[]"
+      },
+      {
+        "name": "player_levels",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_ids uuid[], p_friend_codes text[]"
+      },
+      {
+        "name": "player_levels",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_ids uuid[], p_friend_codes text[]"
       },
       {
         "name": "prepare_fishing",
@@ -32304,6 +32872,27 @@
         "arguments": ""
       },
       {
+        "name": "experience_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "experience_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "experience_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "feed_friend_aquarium",
         "role": "anon",
         "schema": "public",
@@ -32550,6 +33139,27 @@
       },
       {
         "name": "friend_expedition_status",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "friend_levels",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "friend_levels",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "friend_levels",
         "role": "service_role",
         "schema": "public",
         "execute": false,
@@ -33142,6 +33752,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric"
+      },
+      {
+        "name": "player_levels",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_ids uuid[], p_friend_codes text[]"
+      },
+      {
+        "name": "player_levels",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_ids uuid[], p_friend_codes text[]"
+      },
+      {
+        "name": "player_levels",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_ids uuid[], p_friend_codes text[]"
       },
       {
         "name": "prepare_fishing",

@@ -27,7 +27,7 @@ export type BaitProductionState = {
   sites: BaitFacility[]
 }
 export type BaitProductionAction = {
-  p_action: 'buy' | 'start' | 'claim' | 'discard'
+  p_action: 'buy' | 'sell' | 'start' | 'claim' | 'discard'
   p_operation_id: string
   p_facility: string
   p_quantity: number
@@ -48,10 +48,12 @@ export function baitProductionError(e: unknown) {
   const m = String((e as { message?: string })?.message ?? '')
   return (
     Object.entries({
-      PRODUCTION_ACTIVE_LIMIT: '연료·미끼 생산소를 합쳐 동시에 4곳까지 가동할 수 있어요.',
-      BAIT_PRODUCTION_ACTIVE_LIMIT: '동시에 가동할 수 있는 연료·미끼 생산소는 합쳐 4곳이에요.',
+      PRODUCTION_ACTIVE_LIMIT: '미끼 생산소는 동시에 4곳까지 가동할 수 있어요.',
+      BAIT_PRODUCTION_ACTIVE_LIMIT: '미끼 생산소는 동시에 4곳까지 가동할 수 있어요.',
       INSUFFICIENT_FUEL: '연료가 부족해요.',
       INSUFFICIENT_GOLD: '골드가 부족해요.',
+      GOLD_LIMIT: '보유 골드 한도를 초과해 판매할 수 없어요.',
+      PRODUCTION_NOT_OWNED: '이미 판매했거나 보유하지 않은 생산소예요.',
       PRODUCTION_NOT_READY: '아직 생산 중이에요.',
       PRODUCTION_EXPIRED: '보관 기간이 지났어요. 생산물을 정리해 주세요.',
       PRODUCTION_BUSY: '이 시설의 생산물을 먼저 수령하거나 정리해 주세요.',

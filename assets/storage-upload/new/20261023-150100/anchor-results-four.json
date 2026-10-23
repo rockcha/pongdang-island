@@ -1,0 +1,150 @@
+﻿[
+    {
+        "file":  "assets\\storage-upload\\new\\20261023-150100\\fish\\normal\\finescale-mullet_sprite.png",
+        "storage_path":  "fish/normal/finescale-mullet_sprite.png",
+        "patch":  [
+                      490,
+                      375,
+                      40,
+                      40
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  12.869983667116161
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -100,
+                           "rmse":  15.860360034001852
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -2,
+                           "dy":  -98,
+                           "rmse":  12.745597479209863
+                       }
+                   ]
+    },
+    {
+        "file":  "assets\\storage-upload\\new\\20261023-150100\\fish\\normal\\current-seabass_sprite.png",
+        "storage_path":  "fish/normal/current-seabass_sprite.png",
+        "patch":  [
+                      480,
+                      315,
+                      40,
+                      40
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -36,
+                           "dy":  0,
+                           "rmse":  8.8828113080653619
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  2,
+                           "dy":  -50,
+                           "rmse":  12.283066575159312
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -36,
+                           "dy":  -50,
+                           "rmse":  12.254892817123439
+                       }
+                   ]
+    },
+    {
+        "file":  "assets\\storage-upload\\new\\20261023-150100\\fish\\normal\\goldfin-croaker_sprite.png",
+        "storage_path":  "fish/normal/goldfin-croaker_sprite.png",
+        "patch":  [
+                      490,
+                      315,
+                      40,
+                      40
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -17,
+                           "dy":  0,
+                           "rmse":  10.17054821631598
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -36,
+                           "rmse":  13.757001927775409
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -17,
+                           "dy":  -35,
+                           "rmse":  16.572967908800237
+                       }
+                   ]
+    },
+    {
+        "file":  "assets\\storage-upload\\new\\20261023-150100\\fish\\normal\\pinkcheek-seabream_sprite.png",
+        "storage_path":  "fish/normal/pinkcheek-seabream_sprite.png",
+        "patch":  [
+                      470,
+                      310,
+                      40,
+                      40
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  4.5274108472273467
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -34,
+                           "rmse":  16.917378759182306
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  1,
+                           "dy":  -32,
+                           "rmse":  16.53613853204612
+                       }
+                   ]
+    }
+]

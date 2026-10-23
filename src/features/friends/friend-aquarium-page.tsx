@@ -80,7 +80,7 @@ function Visit({ owner }: { owner: string }) {
       ) : (
         <>
           <div className="flex h-14 shrink-0 items-center gap-1 border-b bg-background px-2">
-            <PlayerAvatar
+            <PlayerAvatar userId={data.owner.id}
               nickname={data.owner.nickname}
               path={data.owner.avatar_path}
               className="mr-1 size-10 shrink-0 ring-2 ring-secondary"

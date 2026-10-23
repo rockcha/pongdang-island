@@ -10,6 +10,9 @@ beforeAll(async()=>{
   await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,name])
  }
  await db.query("select set_config('request.jwt.claim.sub',$1,false)",[me])
+ await db.query("update public.player_profiles set avatar_path='avatars/ranking.png' where id=$1",[other])
+ await db.query("select app_private.award_experience($1,'manual',gen_random_uuid(),63700)",[other])
+ await db.query("insert into public.odd_even_runs(user_id,operation_id,stake,wins,stage,finished_at) values($1,gen_random_uuid(),40,2,'banked',now())",[other])
  await db.query("insert into public.brick_game_runs(user_id,operation_id,seed,engine_version,reward,paid_reward,finished_at) values($1,gen_random_uuid(),1,6,30,30,now())",[other])
  await db.query("insert into app_private.ladder_runs(user_id,operation_id,mode,stake,choice,bridges,payouts,destination,reward) values($1,gen_random_uuid(),'calm',20,0,array_fill(0,array[12]),array[10,15,25,30],0,10)",[other])
  await db.query("insert into public.shadow_game_runs(user_id,operation_id,score,finished_at) values($1,gen_random_uuid(),5,now())",[other])
@@ -21,12 +24,13 @@ it('returns friend identity and relationship in every ranking without altering r
  for(const status of [null,'pending','accepted']){
   if(status==='pending')await db.query("insert into public.friend_requests(sender_id,recipient_id,status) values($1,$2,'pending')",[other,me])
   if(status==='accepted')await db.exec("update public.friend_requests set status='accepted'")
-  for(const name of ['brick','ladder','memory','shadow']){
+  for(const name of ['brick','ladder','memory','shadow','odd_even']){
    await db.exec('set role authenticated')
    try{
     const result=(await db.query(`select public.${name}_leaderboard(0) data`)).rows[0].data
     expect(result.total).toBe(1)
-    expect(result.rows[0]).toMatchObject({rank:1,nickname:'친구후보',mine:false,userId:other,friendCode:code,friendStatus:status})
+    expect(result.rows[0]).toMatchObject({rank:1,nickname:'친구후보',mine:false,userId:other,friendCode:code,friendStatus:status,avatarPath:'avatars/ranking.png',level:50})
+    expect(result.rows[0]).not.toHaveProperty('totalXp')
    }finally{await db.exec('reset role')}
   }
  }

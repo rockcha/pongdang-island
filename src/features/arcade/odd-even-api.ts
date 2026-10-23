@@ -18,6 +18,8 @@ export type OddEvenAction = {
   p_choice?: 'odd' | 'even'
 }
 export type OddEvenRank = {
+  avatarPath?: string | null
+  level?: number
   rank: number
   id: string
   gold: number

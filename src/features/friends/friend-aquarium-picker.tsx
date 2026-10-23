@@ -1,5 +1,5 @@
+import {PlayerIdentityLink} from '@/features/profile/player-identity-link'
 import { useState } from 'react'
-import { Link } from 'react-router'
 import { ChevronRight } from 'lucide-react'
 import { appArt } from '@/components/app-art'
 import { useAuth } from '@/components/auth-provider'
@@ -93,19 +93,19 @@ export function FriendAquariumPicker() {
           className="min-h-0 max-h-[60dvh] flex-1 touch-pan-y overflow-y-auto overscroll-contain divide-y divide-border"
         >
           {friends.map((friend) => (
-            <Link
+            <PlayerIdentityLink label={(friend.profile?.nickname??'친구')+' 아쿠아리움 방문'}
               key={friend.id}
               to={`/friends/${friend.id}/aquarium`}
               onClick={() => visit(friend.id)}
               className="flex min-h-18 items-center gap-3 rounded-lg px-2 py-3 hover:bg-secondary focus-visible:outline-2 focus-visible:outline-ring"
             >
-              <PlayerAvatar
+              <PlayerAvatar userId={friend.id}
                 nickname={friend.profile?.nickname}
                 path={friend.profile?.avatar_path}
                 className="size-11 shrink-0"
               />
               <span className="min-w-0 flex-1">
-                <span className="block truncate text-sm">{friend.profile?.nickname ?? '친구'}</span>
+                <span className="inline-flex max-w-full min-w-0 items-center gap-1 align-middle"><span className="block truncate text-sm">{friend.profile?.nickname ?? '친구'}</span></span>
                 {friend.profile?.equipped_title && (
                   <span className="mt-1 flex items-center gap-1 truncate text-[11px] text-primary">
                     <appArt.title className="size-4" />
@@ -114,7 +114,7 @@ export function FriendAquariumPicker() {
                 )}
               </span>
               <ChevronRight className="size-4 text-muted-foreground" />
-            </Link>
+            </PlayerIdentityLink>
           ))}
         </div>
         {!loading && !error && !friends.length && (

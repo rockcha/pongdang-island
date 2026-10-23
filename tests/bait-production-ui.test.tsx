@@ -34,6 +34,23 @@ afterEach(() => {
   cleanup()
   vi.clearAllMocks()
 })
+it('confirms a half-price sale and retries an uncertain response using the same operation id',async()=>{
+ const state={serverNow:new Date().toISOString(),gold:10000,fuel:20,facilities:[site],sites:[{...site,siteId:'owned'}]}
+ mock.load.mockResolvedValue(state)
+ mock.act.mockRejectedValueOnce(new TypeError('network')).mockResolvedValueOnce({...state,gold:10150,sites:[]})
+ render(<MemoryRouter><BaitProductionPage/></MemoryRouter>)
+ fireEvent.click(await screen.findByRole('button',{name:/꼬물꼬물 흙상자/}))
+ fireEvent.click(screen.getByRole('button',{name:'판매 150골드'}))
+ expect(mock.act).not.toHaveBeenCalled()
+ fireEvent.click(screen.getByRole('button',{name:'판매 확정'}))
+ await screen.findByRole('alert')
+ const operation=mock.act.mock.calls[0][0]
+ expect(operation).toMatchObject({p_action:'sell',p_facility:'owned',p_quantity:1})
+ fireEvent.click(screen.getByRole('button',{name:'판매 확정'}))
+ await waitFor(()=>expect(mock.act).toHaveBeenCalledTimes(2))
+ expect(mock.act.mock.calls[1][0]).toEqual(operation)
+ await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())
+})
 it('offers the same shop sort select as fuel production and keeps bait search working',async()=>{
  mock.load.mockResolvedValue({serverNow:new Date().toISOString(),gold:10000,fuel:20,facilities:[site,{...site,id:'second',name:'별빛 공방',baitName:'진주새우',output_count:10,price:900}],sites:[]})
  render(<MemoryRouter><BaitProductionPage shop/></MemoryRouter>)
@@ -99,7 +116,7 @@ it('disables another start when four sites are working', async () => {
   fireEvent.click(screen.getByRole('button', { name: '대기 중' }))
   fireEvent.click(screen.getByRole('button', { name: /꼬물꼬물 흙상자/ }))
   expect(
-    (screen.getByRole('button', { name: '연료·미끼 생산소가 총 4곳 가동 중이에요' }) as HTMLButtonElement)
+    (screen.getByRole('button', { name: '미끼 생산소가 4곳 가동 중이에요' }) as HTMLButtonElement)
       .disabled,
   ).toBe(true)
   expect(mock.act).not.toHaveBeenCalled()

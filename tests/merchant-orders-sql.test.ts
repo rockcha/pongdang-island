@@ -17,9 +17,9 @@ beforeAll(async()=>{
 beforeEach(async()=>{await db.exec('begin')})
 afterEach(async()=>{await db.exec('rollback')})
 afterAll(async()=>{await db?.close()})
-it('generates exactly 40 shared daily orders with bounded recipes and stable snapshots',async()=>{
+it('generates exactly 35 shared daily orders with bounded recipes and stable snapshots',async()=>{
  const a=await state(),b=await state(other)
- expect(a.orders.map(o=>o.id)).toEqual(b.orders.map(o=>o.id));expect(a.orders).toHaveLength(40)
+ expect(a.orders.map(o=>o.id)).toEqual(b.orders.map(o=>o.id));expect(a.orders).toHaveLength(35)
  const uses=new Map()
  for(const order of a.orders){
   expect(order.items.length).toBeGreaterThanOrEqual(1)
@@ -59,11 +59,11 @@ it('rolls back incomplete stock without consuming anything or paying gold',async
  expect((await db.query('select count(*)::int n from public.player_collectibles where sold_at is not null')).rows[0].n).toBe(0)
  expect((await state()).deliveredToday).toBe(0)
 })
-it('allows one player to deliver all 40 orders without a personal cap',async()=>{
+it('allows one player to deliver all 35 orders without a personal cap',async()=>{
  const orders=(await state()).orders
  for(const o of orders){await stock(o);await deliver(o.id)}
  const final=await state()
- expect(final.deliveredToday).toBe(40);expect(final.dailyLimit).toBeNull()
+ expect(final.deliveredToday).toBe(35);expect(final.dailyLimit).toBeNull()
  expect(final.orders.every(o=>o.completed&&o.mine)).toBe(true)
 },30000)
 it('excludes displayed aquarium items and other players stock from delivery',async()=>{
@@ -101,10 +101,10 @@ it('denies anonymous access and direct writes or generation',async()=>{
 
 it('resolves the exact daily mix and highest-grade odds without multiplying chances by item count',async()=>{
  const shapes=(await state()).orders.map(o=>o.items.map(i=>i.quantity).join(','))
- expect(shapes.filter(s=>s==='1')).toHaveLength(10)
- expect(shapes.filter(s=>s==='1,1')).toHaveLength(20)
- expect(shapes.filter(s=>s==='1,2')).toHaveLength(7)
- expect(shapes.filter(s=>s==='1,1,2')).toHaveLength(3)
+ expect(shapes.filter(s=>s==='1')).toHaveLength(20)
+ expect(shapes.filter(s=>s==='1,1')).toHaveLength(10)
+ expect(shapes.filter(s=>s==='1,2')).toHaveLength(0)
+ expect(shapes.filter(s=>s==='1,1,2')).toHaveLength(5)
  const grades=(await db.query("select app_private.merchant_order_grade(n)::text rarity,count(*)::int count from generate_series(0,9999)n group by 1 order by 1")).rows
  expect(grades).toEqual([{rarity:'common',count:7600},{rarity:'epic',count:370},{rarity:'mythic',count:30},{rarity:'rare',count:2000}])
 })
@@ -112,13 +112,13 @@ it('stores the deliverer identity and message as an immutable receipt snapshot',
  const o=(await state()).orders[0];await stock(o)
  const op=crypto.randomUUID(),args=[o.id,op,'첫 의뢰 완료!']
  const first=(await asUser(me,'select public.deliver_merchant_order($1,$2,$3) s',args)).rows[0].s
- expect(first.orders.find(x=>x.id===o.id).delivery).toEqual({nickname:'납품퐁이',avatarPath:null,message:'첫 의뢰 완료!'})
+ expect(first.orders.find(x=>x.id===o.id).delivery).toEqual({nickname:'납품퐁이',avatarPath:null,message:'첫 의뢰 완료!',level:1})
  await db.query("update public.player_profiles set nickname='새이름' where id=$1",[me])
  const again=(await asUser(me,'select public.deliver_merchant_order($1,$2,$3) s',args)).rows[0].s
  expect(again.replayed).toBe(true)
  expect(again.orders.find(x=>x.id===o.id).delivery).toEqual(first.orders.find(x=>x.id===o.id).delivery)
  await db.query("update public.player_profiles set avatar_path=$2 where id=$1",[me,me+'/current.webp'])
- expect((await state()).orders.find(x=>x.id===o.id).delivery).toEqual({nickname:'납품퐁이',avatarPath:me+'/current.webp',message:'첫 의뢰 완료!'})
+ expect((await state()).orders.find(x=>x.id===o.id).delivery).toEqual({nickname:'납품퐁이',avatarPath:me+'/current.webp',message:'첫 의뢰 완료!',level:1})
  await expect(asUser(me,'select public.deliver_merchant_order($1,$2,$3) s',[o.id,op,'다른 말'])).rejects.toThrow('OPERATION_CONFLICT')
 })
 it('rejects oversized messages before consuming items',async()=>{
@@ -131,7 +131,7 @@ it('replaces unfinished old-rule orders while preserving completed orders and re
  const op=crypto.randomUUID(),first=await deliver(o.id,op)
  await db.exec("update app_private.merchant_days set rules_version=1 where day=(clock_timestamp() at time zone 'Asia/Seoul')::date")
  const upgraded=await state()
- expect(upgraded.orders).toHaveLength(40)
+ expect(upgraded.orders).toHaveLength(35)
  expect(upgraded.orders.find(x=>x.id===o.id)).toMatchObject({completed:true,rewardGold:o.rewardGold})
  expect(upgraded.orders.filter(x=>before.orders.some(p=>p.id===x.id))).toHaveLength(1)
  expect((await deliver(o.id,op)).receipt).toEqual(first.receipt)
@@ -144,19 +144,41 @@ it('computes every agreed bonus including multiple rares and epic or mythic supp
  for(const [grades,quantities,expected] of [
   [['common','common'],[1,1],120],[['rare','common'],[1,1],200],[['rare','rare'],[1,1],250],
   [['common','common'],[1,2],200],[['rare','common'],[1,2],300],[['common','rare'],[1,2],380],[['rare','rare'],[1,2],500],
-  [['common','common','common'],[1,1,2],300],[['rare','common','common'],[1,1,2],400],[['rare','rare','common'],[1,1,2],500],
-  [['epic','common'],[1,1],370],[['mythic','common'],[1,2],800],[['epic','common','common'],[1,1,2],550],
+  [['common','common','common'],[1,1,2],600],[['rare','common','common'],[1,1,2],800],[['rare','rare','common'],[1,1,2],1000],
+  [['epic','common'],[1,1],370],[['mythic','common'],[1,2],800],[['epic','common','common'],[1,1,2],850],
+  [['mythic','common','common'],[1,1,2],1200],
  ])expect(await bonus(grades,quantities)).toBe(expected)
  await expect(asUser(me,'select app_private.merchant_order_bonus($1::jsonb)',[JSON.stringify([{rarity:'common',quantity:1}])])).rejects.toThrow('permission denied')
 })
-it('preserves receipts but replaces outdated v5 orders when upgrading to the fixed daily mix',async()=>{
- const before=await state(),completed=before.orders[0];await stock(completed)
+it('preserves completed mixed orders and receipts when upgrading v6 to more single-item orders',async()=>{
+ const definition=(await db.query("select pg_get_functiondef('app_private.merchant_order_shape(integer)'::regprocedure) definition")).rows[0].definition
+ await db.exec(definition.replace('p_slot<=20','p_slot<=10'))
+ await db.exec("delete from app_private.merchant_orders where day=(clock_timestamp() at time zone 'Asia/Seoul')::date;delete from app_private.merchant_days where day=(clock_timestamp() at time zone 'Asia/Seoul')::date")
+ const before=await state(),completed=before.orders[10];await stock(completed)
+ await db.exec(definition)
  const op=crypto.randomUUID(),paid=await deliver(completed.id,op)
- await db.exec("update app_private.merchant_days set rules_version=5 where day=(clock_timestamp() at time zone 'Asia/Seoul')::date")
+ await db.exec("update app_private.merchant_days set rules_version=6 where day=(clock_timestamp() at time zone 'Asia/Seoul')::date")
  const after=await state()
- expect(after.orders).toHaveLength(40)
+ expect(after.orders).toHaveLength(35)
  expect(after.orders.find(o=>o.id===completed.id)).toMatchObject({completed:true,rewardGold:completed.rewardGold})
+ expect(after.orders.find(o=>o.id===completed.id).items).toHaveLength(2)
+ expect(after.orders.filter(o=>o.items.length===1)).toHaveLength(19)
  expect(after.orders.filter(o=>before.orders.some(p=>p.id===o.id))).toHaveLength(1)
  expect((await deliver(completed.id,op)).receipt).toEqual(paid.receipt)
  await expect(deliver(before.orders[1].id)).rejects.toThrow('MERCHANT_ORDER_NOT_FOUND')
+})
+
+it('preserves an already paid slot above 35 while reducing the board and pays the stronger three-kind reward once',async()=>{
+ const completed=(await state()).orders.find(o=>o.items.length===3)
+ await db.query('update app_private.merchant_orders set slot=40 where id=$1',[completed.id])
+ await stock(completed)
+ const op=crypto.randomUUID(),paid=await deliver(completed.id,op)
+ expect(paid.receipt.gold).toBe(completed.rewardGold)
+ await db.exec("update app_private.merchant_days set rules_version=7 where day=(clock_timestamp() at time zone 'Asia/Seoul')::date")
+ const after=await state()
+ expect(after.orders).toHaveLength(36)
+ expect(after.orders.find(o=>o.id===completed.id)).toMatchObject({completed:true,rewardGold:completed.rewardGold,number:40})
+ expect(after.orders.filter(o=>o.items.length===3&&!o.completed)).toHaveLength(5)
+ expect((await deliver(completed.id,op)).receipt).toEqual(paid.receipt)
+ expect((await db.query('select gold from public.player_wallets where user_id=$1',[me])).rows[0].gold).toBe(1000+completed.rewardGold)
 })

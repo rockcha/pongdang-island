@@ -7,13 +7,14 @@ import { PortraitOrientation } from '@/components/portrait-orientation'
 import { SocialProvider } from '@/features/social/social-provider'
 import {MusicProvider} from '@/features/music/music-provider'
 import {useAuth} from '@/components/auth-provider'
+import {ExperienceProvider} from '@/features/experience/experience-provider'
 
 export default function App() {
   const {session}=useAuth()
   const musicKey=`pongdang:music:${session?.user.id??'guest'}`
   return (
     <>
-      <MusicProvider key={musicKey} storageKey={musicKey} userId={session?.user.id}><SocialProvider><GoldProvider><RodProvider><AppRoutes /></RodProvider></GoldProvider><PwaStatus /></SocialProvider></MusicProvider>
+      <MusicProvider key={musicKey} storageKey={musicKey} userId={session?.user.id}><SocialProvider><GoldProvider><ExperienceProvider><RodProvider><AppRoutes /></RodProvider></ExperienceProvider></GoldProvider><PwaStatus /></SocialProvider></MusicProvider>
       <Toaster position="top-center" duration={3000} />
       <PortraitOrientation />
     </>

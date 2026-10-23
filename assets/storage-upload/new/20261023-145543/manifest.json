@@ -1,0 +1,23 @@
+{
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "reference": "public/items/baits/sunny-honey-dumpling.png",
+  "assets": [
+    {
+      "id": "bait_breadcrumbs",
+      "storage_path": "items/baits/soft-breadcrumbs.png",
+      "prompt": "Create ONE isolated fishing bait inventory icon for a cozy Korean seaside game, called Soft Breadcrumbs. Reference is STYLE ONLY: polished warm hand-painted 2.5D mobile RPG item, soft tactile shading, crisp rounded silhouette readable at 40px. Subject: one compact little mound of fluffy ivory bread crumbs with three larger irregular torn bread pieces, warm golden crust edges and visible airy porous crumb texture, a few small crumbs close around it. A single modest silver fishing hook with small eyelet tucked along the side shows it is bait. Distinct from a ball, no dumpling, no honey, no honeycomb. Three-quarter front view, centered complete item, 15 percent transparent safe margin. TRUE transparent background alpha. No plate, sack, packaging, scenery, water, text, labels, border, cast floor shadow, or checkerboard.",
+      "sha256": "0cc34de447779829ff81d62a47bc861fdc239aa834c356b35a08fc8a3fb579b1",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "bait_grain_dumpling",
+      "storage_path": "items/baits/toasted-grain-dumpling.png",
+      "prompt": "Create ONE isolated fishing bait inventory icon for a cozy Korean seaside game, called Toasted Grain Dumpling. Reference is STYLE ONLY: polished warm hand-painted 2.5D mobile RPG inventory art, soft tactile shading and crisp rounded silhouette readable at 40px. Subject: ONE plump round toasted multigrain dough bait ball, earthy golden brown, embedded clearly visible cream rice grains and a few tan oat flakes, subtle toasted patches. Small two oat grains resting against its base, a single modest silver fishing hook with eyelet tucked along the right side. Looks wholesome grain-rich, distinctly a round cohesive dough ball rather than scattered bread crumbs. No honey, no dripping sauce, no honeycomb, no leaf garnish. Three-quarter front view centered complete object, 15 percent transparent safe margin. TRUE transparent alpha background. No plate, packaging, scene, water, text, labels, border, floor shadow, or checkerboard.",
+      "sha256": "682c0c0962609e67c51df00c123a6bd0650cf0971e93b1abf7bca7d3709101b8",
+      "width": 1254,
+      "height": 1254
+    }
+  ]
+}

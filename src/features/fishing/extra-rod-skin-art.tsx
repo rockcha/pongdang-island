@@ -17,6 +17,7 @@ const materials:Record<string,{width:number;colors:string[];band:string;dash:str
  dreamabyss:{width:3.6,colors:['#302448','#a28ad4','#493775'],band:'#8cdbef',dash:'6 2 1 16'},
  lunea:{width:4.6,colors:['#b6acc3','#fff9ed','#dbcbe6'],band:'#ebcd91',dash:'.8 3 .8 20.4'},
  calm:{width:5,colors:['#356d70','#bce9d9','#5e9e98'],band:'#f0e8ca',dash:'3 22'},
+ swift:{width:4.8,colors:['#b97a3f','#fff0d6','#e69a50'],band:'#dd7b30',dash:'2 2 1 20'},
 }
 export const hasExtraRodSkin=(id:string)=>id in materials
 export const extraRodWidth=(id:string)=>materials[id]?.width

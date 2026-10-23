@@ -19,6 +19,7 @@ const themes:Record<string,{ink:string;light:string;pattern:string}>={
  mukhyang:{ink:'#293b37',light:'#d9e1c9',pattern:'linear-gradient(165deg,#e9e2cd14,transparent 40%,#111e181c)'},
  siren:{ink:'#24433f',light:'#8de0d2',pattern:'linear-gradient(155deg,transparent 25%,#ead9ab18 26%,transparent 28%,transparent 65%,#ead9ab10 66%,transparent 69%)'},
  calm:{ink:'#274247',light:'#a1ded5',pattern:'linear-gradient(170deg,#c1eadb15,transparent)'},
+ swift:{ink:'#513524',light:'#f3c58b',pattern:'linear-gradient(125deg,#ef9b3f25,transparent 65%)'},
 }
 
 // Native SVG avoids foreignObject rendering issues in mobile browsers.

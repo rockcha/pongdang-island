@@ -1,3 +1,4 @@
+import {PlayerLevel} from '@/features/experience/player-level'
 import {appArt} from '@/components/app-art'
 import { NicknamePage } from '@/pages/nickname-page'
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
@@ -16,6 +17,7 @@ import { PlayerAvatar } from './player-avatar'
 import { prepareAvatar, saveAvatar } from './avatar-api'
 import { createClient } from '@/lib/client'
 import {MapPieceTestControls} from '@/features/regions/map-piece-test-controls'
+import {ExperienceProgress} from '@/features/experience/experience-display'
 
 const {camera:Camera,logout:LogOut,collection:BookOpen,fish:Fish,mailFriend:Users}=appArt
 
@@ -63,10 +65,11 @@ export function ProfilePage() {
     <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
       <div className="relative isolate px-4 pb-5 pt-6 text-center">
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-28 overflow-hidden bg-secondary"><LandscapeImage retryable={false} src="/banners/profile-menu.png" alt="" className="absolute inset-0 size-full object-cover opacity-30"/><div className="absolute inset-0 bg-gradient-to-b from-background/30 to-background"/></div>
-        <button type="button" aria-label="아바타 편집" disabled={busy||!profile} onClick={()=>input.current?.click()} className="relative rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"><PlayerAvatar nickname={nickname} path={profile?.avatar_path} preview={preview} className="size-24 ring-4 ring-background"/><span className="absolute bottom-0 right-0 grid size-9 place-items-center rounded-full bg-background text-primary ring-2 ring-background"><Camera className="size-7"/></span></button>
+        <span className="relative inline-flex"><button type="button" aria-label="아바타 편집" disabled={busy||!profile} onClick={()=>input.current?.click()} className="relative rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"><PlayerAvatar nickname={nickname} path={profile?.avatar_path} preview={preview} className="size-24 ring-4 ring-background"/><span className="absolute bottom-0 right-0 grid size-9 place-items-center rounded-full bg-background text-primary ring-2 ring-background"><Camera className="size-7"/></span></button><PlayerLevel userId={session?.user.id} avatar/></span>
         <div className="mt-3 flex items-center justify-center gap-1"><p className="text-lg font-medium">{nickname}</p><button type="button" onClick={()=>setNameOpen(true)} aria-label="이름 바꾸기" className="grid size-9 place-items-center rounded-full text-muted-foreground outline-none hover:bg-secondary focus-visible:ring-2 focus-visible:ring-ring"><Pencil className="size-3.5"/></button></div>
         <Link to="/titles" className="mx-auto mt-1 inline-flex min-h-11 items-center gap-2 px-3 text-xs text-primary"><appArt.title className="size-6"/>{profile?.equipped_title||'칭호 선택하기'}<ChevronRight className="size-3.5"/></Link>
       </div>
+      <ExperienceProgress/>
       <input ref={input} type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" aria-label="아바타 이미지 선택" disabled={busy||!profile} onChange={event=>void select(event)}/>
       <div className="grid grid-cols-3 divide-x border-y" aria-label="나의 활동">{[{label:'발견한 개체',value:stats?.discovered,icon:BookOpen,to:'/collection'},{label:'보유 개체',value:stats?.owned,icon:Fish,to:'/aquarium'},{label:'친구',value:loading?undefined:requests.filter(item=>item.status==='accepted').length,icon:Users,to:'/friends'}].map(item=><Link key={item.label} to={item.to} className="flex min-h-24 min-w-0 flex-col items-center justify-center gap-1 py-3 hover:bg-secondary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"><item.icon className="mb-1 size-8 text-primary"/><span className="text-base tabular-nums">{item.value??(statsError?'—':'…')}</span><span className="text-[11px] text-muted-foreground">{item.label}</span></Link>)}</div>
       <div className="border-b"><button className="flex min-h-14 w-full items-center gap-3 px-4 text-left text-sm text-destructive hover:bg-destructive/5 disabled:opacity-50" disabled={busy} onClick={async()=>{setBusy(true);try{const {error}=await createClient().auth.signOut({scope:'local'});if(error)throw error}catch{toast.error('로그아웃에 실패했어요. 다시 시도해주세요.')}finally{setBusy(false)}}}><LogOut className="size-7"/>로그아웃</button></div>

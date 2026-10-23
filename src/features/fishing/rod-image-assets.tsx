@@ -16,6 +16,7 @@ const artwork:Record<string,{frame:number;rotor:number;float:number;rotorWidth:n
  coral:{frame:.52,rotor:.44,float:.43,rotorWidth:74},
  mistmoon:{frame:.51,rotor:.5,float:.58,rotorWidth:96},
  calm:{frame:.495,rotor:.495,float:.54,rotorWidth:62},
+ swift:{frame:.55,rotor:.475,float:.60,rotorWidth:70},
  starruins:{frame:.495,rotor:.49,float:.53,rotorWidth:62},
  dreamabyss:{frame:.5,rotor:.5,float:.49,rotorWidth:62},
  lunea:{frame:.5,rotor:.49,float:.44,rotorWidth:70},

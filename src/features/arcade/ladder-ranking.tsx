@@ -52,6 +52,8 @@ export function LadderRanking() {
             key={row.id}
             rank={row.rank}
             nickname={row.nickname}
+            avatarPath={row.avatarPath}
+            level={row.level}
             mine={row.mine}
             action={<RankingFriendAction player={row} />}
             record={

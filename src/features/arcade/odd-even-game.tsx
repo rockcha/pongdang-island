@@ -82,6 +82,8 @@ function Ranking() {
             key={row.id}
             rank={row.rank}
             nickname={row.nickname}
+            avatarPath={row.avatarPath}
+            level={row.level}
             mine={row.mine}
             record={
               <span className="flex items-center justify-end gap-1">

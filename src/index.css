@@ -74,10 +74,12 @@
 }
 
 .music-playing-dot { box-shadow: 0 0 6px #22c55e99; }
-.music-disc { animation: music-disc-spin 5s linear infinite; animation-play-state: paused; transform-origin: center; }
-.music-disc[data-playing="true"] { animation-play-state: running; }
-@keyframes music-disc-spin { to { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) { .music-disc { animation: none; } }
+.turntable-record { animation: turntable-spin 5s linear infinite; animation-play-state: paused; transform-origin: 25px 25px; }
+.wood-turntable[data-playing="true"] .turntable-record { animation-play-state: running; }
+.turntable-arm { transform-origin: 49px 14px; transform: rotate(-28deg); transition: transform 300ms ease; }
+.wood-turntable[data-playing="true"] .turntable-arm { transform: rotate(0deg); }
+@keyframes turntable-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .turntable-record { animation: none; } .turntable-arm { transition: none; } }
 .music-equalizer span { height: 45%; }
 @media (prefers-reduced-motion: no-preference) {
  .music-equalizer span { animation: music-equalizer 850ms ease-in-out infinite alternate; }
@@ -416,6 +418,8 @@ button, a { -webkit-tap-highlight-color: transparent; touch-action: manipulation
 .gold-change-coin { width: 2rem; height: 2rem; filter: drop-shadow(0 2px 2px rgb(44 25 13 / 25%)); }
 .gold-change-gain { color: #fff0b9; animation-name: gold-gain-pop; }
 .gold-change-loss { color: #fff4e5; animation-name: gold-loss-press; }
+.experience-change { color: #c8f7df; }
+.experience-change .gold-change-sparkle { background: #c8f7df; }
 .gold-change-sparkle {
   position: absolute;
   width: 9px; height: 9px;

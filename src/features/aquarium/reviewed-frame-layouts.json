@@ -304,5 +304,93 @@
         -41
       ]
     ]
+  },
+  "fish/normal/finescale-mullet_sprite.png": {
+    "cell": 627,
+    "scale": 1.0056677694924787,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        -100
+      ],
+      [
+        -2,
+        -98
+      ]
+    ]
+  },
+  "fish/normal/current-seabass_sprite.png": {
+    "cell": 627,
+    "scale": 1.094819828631793,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -36,
+        0
+      ],
+      [
+        2,
+        -50
+      ],
+      [
+        -36,
+        -50
+      ]
+    ]
+  },
+  "fish/normal/goldfin-croaker_sprite.png": {
+    "cell": 627,
+    "scale": 1.0568456710333844,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -17,
+        0
+      ],
+      [
+        0,
+        -36
+      ],
+      [
+        -17,
+        -35
+      ]
+    ]
+  },
+  "fish/normal/pinkcheek-seabream_sprite.png": {
+    "cell": 627,
+    "scale": 1.021332086706198,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        -34
+      ],
+      [
+        1,
+        -32
+      ]
+    ]
   }
 }

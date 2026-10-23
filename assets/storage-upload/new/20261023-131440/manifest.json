@@ -1,0 +1,43 @@
+{
+  "tool": "built-in image_gen",
+  "batch": "20261023-131440",
+  "id": "swift",
+  "referenceStyle": "assets/storage-upload/new/20261016-152733/equipment/rods/calm/thumbnail.png",
+  "alignment": {
+    "frame": [
+      0.5,
+      0.55
+    ],
+    "rotor": [
+      0.5,
+      0.475
+    ],
+    "float": [
+      0.5,
+      0.6
+    ],
+    "rotorWidth": 70
+  },
+  "items": [
+    {
+      "path": "equipment/rods/swift/thumbnail.png",
+      "prompt": "Use case: stylized-concept. Production equipment asset for cozy Korean fishing game. New 'Swift' fishing rod set: warm ivory enamel, polished golden brass, lively burnt-orange wraps, tiny swallow-wing motifs, elegant compact mechanical reel. Soft polished hand-painted storybook inventory art with crisp readable silhouette, matching the existing illustrated fishing equipment. Genuine transparent background. Square canvas, object fully inside central 78 percent, generous clean margins. No text, letters, numerals, UI, scenery, watermark or ground shadow. Complete fishing rod inventory thumbnail: one slender elegantly curved ivory rod from lower left to upper right, burnt-orange wrapped grip, brass circular reel with wing-shaped spokes attached near handle, fine line and a small matching orange-ivory teardrop bobber hanging on the right. ONE complete connected fishing rod only. No detached spare reels or duplicate objects.",
+      "sha256": "103ca1c93c32603dec622ab4c1db2da772010bbfe6e640da1a9a1c6502a60d47"
+    },
+    {
+      "path": "equipment/rods/swift/reel-frame.png",
+      "prompt": "Use case: stylized-concept. Production equipment asset for cozy Korean fishing game. New 'Swift' fishing rod set: warm ivory enamel, polished golden brass, lively burnt-orange wraps, tiny swallow-wing motifs, elegant compact mechanical reel. Soft polished hand-painted storybook inventory art with crisp readable silhouette, matching the existing illustrated fishing equipment. Genuine transparent background. Square canvas, object fully inside central 78 percent, generous clean margins. No text, letters, numerals, UI, scenery, watermark or ground shadow. Only the static reel housing. Frontal view, circular warm ivory and golden brass open horseshoe reel frame with a short top mounting foot, no spool disk, no crank or handle, no fishing rod. Mechanical axle center exactly at canvas center (50%,50%). Compact symmetrical outline.",
+      "sha256": "425474fef3288c6194a6832ebc259a7da4e14cfa2235d1c305099f0f03be4093"
+    },
+    {
+      "path": "equipment/rods/swift/reel-rotor.png",
+      "prompt": "Use case: stylized-concept. Production equipment asset for cozy Korean fishing game. New 'Swift' fishing rod set: warm ivory enamel, polished golden brass, lively burnt-orange wraps, tiny swallow-wing motifs, elegant compact mechanical reel. Soft polished hand-painted storybook inventory art with crisp readable silhouette, matching the existing illustrated fishing equipment. Genuine transparent background. Square canvas, object fully inside central 78 percent, generous clean margins. No text, letters, numerals, UI, scenery, watermark or ground shadow. Only the rotating reel spool and crank. Frontal view, circular golden brass spool disk, ivory face with three burnt-orange swallow-wing curved spokes, centered axle exactly at canvas center (50%,50%). A short ivory crank extends diagonally toward bottom-right to a rounded orange handle at (73%,70%). No outer housing, no rod. Compact cohesive mechanical rotor.",
+      "sha256": "336e4cc18a35b4ce2e097d413927e5f458f467cb1da063c9e0697ca526513cf7"
+    },
+    {
+      "path": "equipment/rods/swift/float.png",
+      "prompt": "Use case: stylized-concept. Production equipment asset for cozy Korean fishing game. New 'Swift' fishing rod set: warm ivory enamel, polished golden brass, lively burnt-orange wraps, tiny swallow-wing motifs, elegant compact mechanical reel. Soft polished hand-painted storybook inventory art with crisp readable silhouette, matching the existing illustrated fishing equipment. Genuine transparent background. Square canvas, object fully inside central 78 percent, generous clean margins. No text, letters, numerals, UI, scenery, watermark or ground shadow. Only one upright fishing bobber at canvas center. Warm ivory teardrop body with a bold burnt-orange band and tiny golden swallow-wing emblem, slim orange antenna above, short brass stem below. Entire bobber height 74 percent canvas, width 22 percent. Frontal view, no fishing line, water or additional objects.",
+      "sha256": "e2cfab8a476839c12a365968f0ec5aab3eed4f1c8125c8a90b149dd598b06cfe"
+    }
+  ]
+}

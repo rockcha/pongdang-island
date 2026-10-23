@@ -1,3 +1,4 @@
+import {playPurchaseSound,playSaleSound} from '@/features/gold/purchase-sound'
 import {useCallback,useEffect,useEffectEvent,useRef,useState} from 'react'
 import {useAuth} from '@/components/auth-provider'
 import {useGold} from '@/features/gold/gold-provider'
@@ -41,6 +42,8 @@ export function useHarbor(){
    try{localStorage.removeItem(key)}catch{}
    if(!alive.current)return true
    apply(data);setPending(null)
+   if(args.p_action==='buy'||args.p_action==='fuel')playPurchaseSound(args.p_operation_id)
+   if(args.p_action==='sell')playSaleSound(args.p_operation_id)
    if(args.p_action==='buy')toast.success(`${data.vessels.find(v=>v.id===args.p_vessel_id)?.name??'배'} 구매 완료`)
    if(args.p_action==='sell')toast.success('배 판매 완료')
    if(args.p_action==='depart'&&data.receipt?.voyageId)setDeparture(data.receipt.voyageId)

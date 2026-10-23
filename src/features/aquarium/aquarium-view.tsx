@@ -16,6 +16,7 @@ import { PrimaryHabitat } from '@/features/collection/native-region-badge'
 import { Button } from '@/components/ui/button'
 import type { DecorationPlacement, OwnedCollectible } from '@/features/collection/api'
 import { AquariumBackdrop } from './aquarium-backdrop'
+import {AquariumAmbience} from './aquarium-ambience'
 import { TankInhabitants } from './tank-inhabitants'
 import { TankBubbles } from './tank-bubbles'
 import { AquariumInventoryDialog } from './aquarium-inventory-dialog'
@@ -181,6 +182,7 @@ export function AquariumView(props: Props) {
   }
   return (
     <>
+      <AquariumAmbience/>
       <div
         ref={glass}
         data-testid="aquarium-glass"

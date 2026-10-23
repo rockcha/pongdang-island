@@ -38,7 +38,7 @@ export function ProductionStatusSprite({
   )
 }
 
-export function ProductionProgress({ site, now }: { site: ProductionFacility; now: number }) {
+export function ProductionProgress({ site, now }: { site: Pick<ProductionFacility,'name'|'startedAt'|'completesAt'>; now: number }) {
   const started = Date.parse(site.startedAt!)
   const duration = Date.parse(site.completesAt!) - started
   const progress = Math.min(100, Math.max(0, ((now - started) / Math.max(1, duration)) * 100))

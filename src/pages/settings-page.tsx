@@ -24,7 +24,7 @@ export function SettingsPage() {
     <section aria-labelledby="sound-settings-title" className="overflow-hidden rounded-2xl border border-border/60 bg-card/70">
       <h2 id="sound-settings-title" className="flex items-center gap-2 border-b border-border/50 px-5 py-4 text-xs font-medium text-muted-foreground"><Volume2 aria-hidden="true" className="size-4"/>사운드</h2>
       <div className="flex items-center justify-between gap-5 px-5 py-5">
-        <div className="min-w-0"><label id="fishing-sound-label" htmlFor="fishing-sound" className="text-sm font-medium">낚시 효과음</label><p id="fishing-sound-description" className="mt-2 text-xs leading-6 text-muted-foreground">입질이 오면 퐁당 소리가 나요.</p></div>
+        <div className="min-w-0"><label id="fishing-sound-label" htmlFor="fishing-sound" className="text-sm font-medium">효과음·환경음</label><p id="fishing-sound-description" className="mt-2 text-xs leading-6 text-muted-foreground">낚시·구매 효과음과 아쿠아리움 환경음을 켜고 꺼요.</p></div>
         <button id="fishing-sound" type="button" role="switch" aria-checked={soundEnabled} aria-labelledby="fishing-sound-label" aria-describedby="fishing-sound-description" onClick={()=>{const next=!soundEnabled;setSoundEnabled(next);setSoundSaveError(!saveFishingSound(next))}} className="flex min-h-11 min-w-14 shrink-0 cursor-pointer items-center justify-center rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring">
           <span className={'flex h-7 w-12 items-center rounded-full border p-0.5 transition-colors '+(soundEnabled?'border-primary bg-primary':'border-input bg-secondary')}><span className={'size-5 rounded-full bg-background shadow-sm transition-transform motion-reduce:transition-none '+(soundEnabled?'translate-x-5':'translate-x-0')}/></span>
         </button>

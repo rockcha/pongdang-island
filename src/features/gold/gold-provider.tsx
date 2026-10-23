@@ -8,6 +8,7 @@ import { goldError, loadGold, transactGold } from './api'
 import type { Trade, Wallet } from './wallet'
 import {toast} from 'sonner'
 import {purchaseMessage} from './purchase-message'
+import {playPurchaseSound,playSaleSound} from './purchase-sound'
 import {GoldChange} from './gold-change'
 import {BAIT_RECEIVED,type BaitRewardEffect} from '@/features/fishing/bait-reward-effect'
 
@@ -66,7 +67,7 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId])
   const [groupBusy,setGroupBusy]=useState(false)
-  const effectBatch=useRef<{delta:number;message:string;purchases:number;purchaseName:string}|null>(null)
+  const effectBatch=useRef<{delta:number;message:string;purchases:number;purchaseName:string;purchaseKey:string;saleKey:string}|null>(null)
   const sequence = useRef(0)
   const [effects, setEffects] = useState<{ id: number; delta: number; resource:'gold'|'fuel'|'bait';icon?:string;name?:string }[]>([])
   const timers = useRef<ReturnType<typeof setTimeout>[]>([])
@@ -81,9 +82,13 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
       throw new Error('이전 거래 결과를 확인하려면 같은 거래를 다시 눌러주세요.')
     }
     let result: Awaited<ReturnType<typeof transactGold>>
+    let purchaseKey=''
+    let saleKey=''
     try {
       pending.current ??= { signature, id: randomId() }
       result = await transactGold(action, pending.current.id)
+      if(action.type==='buy')purchaseKey=pending.current.id
+      if(action.type==='sell')saleKey=pending.current.id
       pending.current = null
       apply(result)
     } catch (cause) {
@@ -92,6 +97,8 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
       throw new Error(goldError(cause))
     } finally { locked.current = false; if (active.current) setBusy(false) }
     if (!active.current) return
+    if(purchaseKey){if(effectBatch.current)effectBatch.current.purchaseKey=purchaseKey;else playPurchaseSound(purchaseKey)}
+    if(saleKey){if(effectBatch.current)effectBatch.current.saleKey=saleKey;else playSaleSound(saleKey)}
     const message=purchaseMessage(action)
     if(effectBatch.current){effectBatch.current.delta+=result.delta;if(message)effectBatch.current.message=message;if(action.type==='buy'&&action.id.startsWith('fishing:')){effectBatch.current.purchases++;effectBatch.current.purchaseName=action.name||'미끼'}return}
     if(message)toast.success(message)
@@ -109,8 +116,8 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
   }
   async function batchEffects(work:()=>Promise<void>){
     if(effectBatch.current||locked.current||loading)throw new Error('다른 구매를 마친 뒤 다시 시도해주세요.')
-    const batch={delta:0,message:'',purchases:0,purchaseName:''};effectBatch.current=batch;setGroupBusy(true)
-    try{await work()}finally{effectBatch.current=null;if(active.current){setGroupBusy(false);if(batch.message)toast.success(batch.purchases?`${batch.purchaseName} ${batch.purchases}마리 구매했습니다.`:batch.message);showDelta(batch.delta)}}
+    const batch={delta:0,message:'',purchases:0,purchaseName:'',purchaseKey:'',saleKey:''};effectBatch.current=batch;setGroupBusy(true)
+    try{await work()}finally{effectBatch.current=null;if(active.current){setGroupBusy(false);if(batch.purchaseKey)playPurchaseSound(batch.purchaseKey);if(batch.saleKey)playSaleSound(batch.saleKey);if(batch.message)toast.success(batch.purchases?`${batch.purchaseName} ${batch.purchases}마리 구매했습니다.`:batch.message);showDelta(batch.delta)}}
   }
   return <GoldContext.Provider value={{ wallet, transact, batchEffects, loading, busy:busy||groupBusy, error, testClaimed, testEnabled, refresh }}>
     {children}

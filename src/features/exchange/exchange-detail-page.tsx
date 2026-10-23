@@ -1,3 +1,4 @@
+import {playPurchaseSound} from '@/features/gold/purchase-sound'
 import {BoardTime} from '@/features/board/board-time'
 import {useEffect,useRef,useState} from 'react'
 import {useParams,Link,useNavigate} from 'react-router'
@@ -59,6 +60,7 @@ function ListingDetail({id,owner}:{id:string;owner:string}){
     await reload()
    }else{
     await actExchange(id,listing.owner_id===owner?'cancel':'accept')
+    if(alive.current&&listing.owner_id!==owner)playPurchaseSound(`exchange:${id}`)
     exchangeChanged();void wallet.refresh();void social.refresh()
     if(alive.current){setConfirm(false);toast.success(listing.owner_id===owner?'판매글을 내리고 물품을 선물함으로 보냈어요.':'구매했어요. 선물함에서 물품을 받아주세요.')}
     if(listing.owner_id===owner){if(alive.current)navigate('/exchange');return}
@@ -93,4 +95,3 @@ function ListingDetail({id,owner}:{id:string;owner:string}){
   <ConfirmDialog open={!!deleting} onOpenChange={open=>{if(!open)setDeleting(null)}} title="댓글을 삭제할까요?" description="삭제한 댓글은 되돌릴 수 없어요." busy={busy} error={error} onConfirm={()=>void mutate('delete')}/>
  </section>
 }
-

@@ -1,3 +1,4 @@
+import {playPurchaseSound,playSaleSound} from '@/features/gold/purchase-sound'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { randomId } from '@/lib/random-id'
 import {
@@ -81,6 +82,8 @@ export function useProduction() {
         mutation.kind === 'single'
           ? await actProduction({ ...mutation.args, p_operation_id: pending.current.id })
           : await actProductionBulk({ ...mutation.args, p_operation_id: pending.current.id })
+      if(alive.current&&mutation.kind==='single'&&mutation.args.p_action==='buy')playPurchaseSound(pending.current.id)
+      if(alive.current&&mutation.kind==='single'&&mutation.args.p_action==='sell')playSaleSound(pending.current.id)
       pending.current = null
       apply(data)
       return true

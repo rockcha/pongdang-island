@@ -8,9 +8,11 @@ import type { Species } from '@/features/collection/api'
 import { chanceFailurePhrases } from './fishing-practice'
 import { rarities } from '@/lib/game/rarity'
 import { regionIcons } from '@/features/regions/region-icons'
+import {useFishingAudio} from './fishing-audio'
 type RevealProps={firstDiscovery?:boolean;onDismiss:()=>void;practice?:boolean;preview?:boolean;regionName?:string;caughtAt?:string;onShare?:()=>void;failureLabel?:string;failureReason?:string|null}&({species:Species;failure?:never}|{species?:never;failure:string})
-export function CatchReveal({species,failure,onDismiss,practice=false,onShare,failureReason,firstDiscovery=false}:RevealProps){
+export function CatchReveal({species,failure,onDismiss,practice=false,preview=false,onShare,failureReason,firstDiscovery=false}:RevealProps){
  const [ready,setReady]=useState(false)
+ useFishingAudio('/sounds/caught.mp3',!!species&&!preview,{trigger:species?.id,volume:.7})
  const shareable=!!species&&['epic','mythic'].includes(species.rarity)&&!practice&&!!onShare
  useEffect(()=>{const timer=setTimeout(()=>setReady(true),1300);return()=>clearTimeout(timer)},[])
  const nativeRegion=species?.is_native&&species.native_region_id?regionIcons[species.native_region_id]:undefined

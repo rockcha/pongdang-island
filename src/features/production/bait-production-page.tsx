@@ -1,3 +1,4 @@
+import {playPurchaseSound,playSaleSound} from '@/features/gold/purchase-sound'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router'
 import { ArrowRight, Info, LoaderCircle } from 'lucide-react'
@@ -15,7 +16,7 @@ import {
 import { GoldIcon } from '@/features/gold/gold-provider'
 import { productionDuration } from './facilities'
 import { baitProductionArt } from './bait-production-art'
-import {ProductionStatusSprite} from './status-sprite'
+import {ProductionStatusSprite,ProductionProgress} from './status-sprite'
 import { remainingTime } from './production-status'
 import {BaitProductionShopFilters,filterBaitProductionShop,initialBaitShopFilters} from './bait-shop-filters'
 import {
@@ -146,6 +147,8 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
     pending.current ??= { ...args, p_operation_id: crypto.randomUUID() }
     try {
       apply(await actBaitProduction(pending.current))
+      if(alive.current&&args.p_action==='buy')playPurchaseSound(pending.current.p_operation_id)
+      if(alive.current&&args.p_action==='sell')playSaleSound(pending.current.p_operation_id)
       pending.current = null
       setError('')
       setSelected(null)
@@ -277,8 +280,15 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
                       loading="lazy"
                       className={`size-full object-contain ${!shop&&st==='expired'?'grayscale opacity-45':''}`}
                     />
+                    {!shop&&st==='working'&&<div data-production-working-overlay className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center rounded-xl bg-stone-900/40 px-3 pt-8">
+                      <div className="w-full max-w-40 text-center text-white [text-shadow:0_1px_3px_rgb(0_0_0/35%)]">
+                        <p className="text-xs font-medium">가동 중</p>
+                        <p className="mt-1 text-[10px] tabular-nums text-white/90">{remainingTime(s.completesAt!,now)} 남음</p>
+                        <ProductionProgress site={s} now={now}/>
+                      </div>
+                    </div>}
                     {!shop&&<span className="absolute right-1 top-1 grid size-11 place-items-center rounded-full border bg-background/95 shadow-sm"><ProductionStatusSprite status={st}/></span>}
-                    {!shop && (
+                    {!shop && st!=='working' && (
                       <span className="absolute bottom-2 left-2 right-2 rounded-lg bg-background/90 p-1.5 text-center text-[11px] text-primary">
                         {labels[st]}
                       </span>
@@ -296,7 +306,7 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
                   ) : (
                     <p className="mt-3 min-h-9 text-center text-[11px] text-primary">
                       {st === 'working'
-                        ? `${remainingTime(s.completesAt!, now)} 남음`
+                        ? '생산이 완료되면 수령할 수 있어요.'
                         : st === 'ready'
                           ? `수령까지 ${remainingTime(s.expiresAt!, now)}`
                           : st === 'expired'

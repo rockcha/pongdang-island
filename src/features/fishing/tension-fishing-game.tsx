@@ -19,7 +19,7 @@ import { Hand,RotateCcw,TimerReset } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { fishBehavior, fishForce, fishStrength, newTensionGame, stepTensionGame,reduceTensionWait,startTensionFight } from './tension-game'
 import {readBiteConfirmation} from './bite-confirmation-preference'
-import {readFishingSound,fishingSoundChanged,fishingSoundKey} from './sound-preference'
+import {fishingSplash,useFishingAudio} from './fishing-audio'
 
 export function TensionFishingGame({onCaught,active=true,paused=false,regionId='pongdang',regionName,toolbarTarget,quiet=false,castId,challenge,outline,onFailed,practice=false,start,baitImage,onAdvanceWait,waitReductionSeconds=0,expiresAt,backgroundMusic=false,serverNow,onStartFight}:{serverNow?:string;onStartFight?:()=>Promise<boolean>;backgroundMusic?:boolean;expiresAt?:string;onAdvanceWait?:()=>void|Promise<void>;waitReductionSeconds?:number;baitImage?:string;regionName?:string;toolbarTarget?:HTMLElement|null;start?:FishingStart;practice?:boolean;challenge?:TensionOptions;outline?:Species|null;onFailed?:(reason:string)=>void;quiet?:boolean;castId?:string;regionId?:string;onCaught:()=>void;onCancel:()=>void;active?:boolean;paused?:boolean}){
  const fishingTools=useFishingTools()
@@ -101,17 +101,10 @@ export function TensionFishingGame({onCaught,active=true,paused=false,regionId='
  },[active,helpOpen,paused,expireIfNeeded])
  const waiting=game.phase==='waiting',biteReady=game.phase==='ready',lost=game.phase==='lost',won=game.phase==='won'
  const biteArrived=!waiting&&game.failureAt===undefined&&game.reason!=='expired'
- useEffect(()=>{
-  if(!active||!biteArrived||!readFishingSound())return
-  // Keep the same playback through bite confirmation and the ensuing fight.
-  const sound=new Audio('/sounds/fishing-catch.mp3')
-  const timer=setTimeout(()=>{if(readFishingSound())void sound.play().catch(()=>{/* Playback restrictions must not interrupt fishing. */})},0)
-  const mute=()=>{if(!readFishingSound())sound.pause()}
-  const storage=(event:StorageEvent)=>{if(event.key===fishingSoundKey||event.key===null)mute()}
-  window.addEventListener(fishingSoundChanged,mute)
-  window.addEventListener('storage',storage)
-  return()=>{clearTimeout(timer);sound.pause();window.removeEventListener(fishingSoundChanged,mute);window.removeEventListener('storage',storage)}
- },[active,biteArrived,castId])
+ useFishingAudio('/sounds/throwbait.mp3',active,{trigger:castId,volume:.55,delayMs:1000})
+ useFishingAudio(fishingSplash(game.rarity),active&&biteArrived,{trigger:castId,volume:.65})
+ useFishingAudio('/sounds/reel.mp3',active&&pressed&&game.phase==='playing'&&!paused&&!helpOpen,{loop:true,segmentSeconds:4,volume:.45,trigger:castId})
+ useFishingAudio('/sounds/fishing-bg.mp3',active&&!won&&!lost&&!paused&&!helpOpen,{loop:true,volume:.25,trigger:castId})
  const plannedFailure=game.failureAt!==undefined
  const label=!active?'낚싯대가 준비됐어요':biteReady?undefined:fishingMessage(game)
  const reduced=typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches

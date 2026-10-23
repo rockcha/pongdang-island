@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "e85c57dac11c18465e486d77dfa08417b61fdb84a6b6fd26e39ff9cd4e07a3e3",
+  "migrationHash": "ff4f6fab3e97e0b78af35f640421b1c37e7abaae41b36720fe10c6669867ca79",
   "structure": {
     "enums": [
       {
@@ -241,6 +241,12 @@
       {
         "rls": true,
         "name": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "player_presence_sessions",
         "schema": "app_private",
         "force_rls": false
       },
@@ -2363,6 +2369,56 @@
         "name": "acquired_at",
         "type": "timestamp with time zone",
         "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "player_presence_sessions",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "session_id",
+        "type": "uuid",
+        "table": "player_presence_sessions",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "state",
+        "type": "text",
+        "table": "player_presence_sessions",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "revision",
+        "type": "integer",
+        "table": "player_presence_sessions",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "last_seen_at",
+        "type": "timestamp with time zone",
+        "table": "player_presence_sessions",
         "schema": "app_private",
         "default": "clock_timestamp()",
         "identity": "",
@@ -8520,6 +8576,18 @@
         "definition": "CREATE UNIQUE INDEX player_fishing_map_pieces_pkey ON app_private.player_fishing_map_pieces USING btree (user_id, region_id, piece_number)"
       },
       {
+        "name": "player_presence_sessions_pkey",
+        "table": "player_presence_sessions",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX player_presence_sessions_pkey ON app_private.player_presence_sessions USING btree (user_id, session_id)"
+      },
+      {
+        "name": "player_presence_sessions_user_seen",
+        "table": "player_presence_sessions",
+        "schema": "app_private",
+        "definition": "CREATE INDEX player_presence_sessions_user_seen ON app_private.player_presence_sessions USING btree (user_id, last_seen_at)"
+      },
+      {
         "name": "prepared_fishing_casts_pkey",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
@@ -12105,6 +12173,16 @@
         "securityDefiner": true
       },
       {
+        "name": "friend_presence_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.friend_presence_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v_now timestamptz:=clock_timestamp();result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n select coalesce(jsonb_agg(jsonb_build_object('friend_id',f.friend_id,'state',coalesce(p.state,'offline')) order by f.friend_id),'[]'::jsonb)\n into result\n from (\n  select recipient_id friend_id from public.friend_requests where sender_id=u and status='accepted'\n  union\n  select sender_id from public.friend_requests where recipient_id=u and status='accepted'\n ) f\n left join lateral (\n  select case when bool_or(s.state='online') then 'online' when bool_or(s.state='away') then 'away' else 'offline' end state\n  from app_private.player_presence_sessions s\n  where s.user_id=f.friend_id and s.last_seen_at>v_now-interval '90 seconds'\n ) p on true;\n return jsonb_build_object('serverNow',v_now,'friends',result);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "get_gold_wallet",
         "config": [
           "search_path=\"\""
@@ -12722,6 +12800,16 @@
         "schema": "app_private",
         "arguments": "p_ids uuid[], p_friend_codes text[]",
         "definition": "CREATE OR REPLACE FUNCTION app_private.player_levels(p_ids uuid[], p_friend_codes text[] DEFAULT '{}'::text[])\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_ids is null or cardinality(p_ids)>100 or p_friend_codes is null or cardinality(p_friend_codes)>100 then raise exception 'INVALID_PLAYER_IDS';end if;\n -- Authorize the displayed identity before reading private progression. A\n -- profile UUID alone is never sufficient. Match existing display visibility.\n return coalesce((select jsonb_agg(jsonb_build_object('userId',p.id,'level',app_private.player_level(p.id),'levelProgress',app_private.player_level_progress(p.id)) order by p.id)\n from public.player_profiles p where p.id=any(p_ids) and (\n  p.id=auth.uid()\n  or p.friend_code=any(p_friend_codes)\n  or exists(select 1 from public.friend_requests f where f.status in ('pending','accepted') and ((f.sender_id=auth.uid() and f.recipient_id=p.id) or(f.recipient_id=auth.uid() and f.sender_id=p.id)))\n  or exists(select 1 from public.exchange_listings l where l.owner_id=p.id and l.side='sell' and (l.status in ('active','completed') or l.owner_id=auth.uid()))\n  or exists(select 1 from public.exchange_listing_comments c join public.exchange_listings l on l.id=c.listing_id where c.user_id=p.id and l.side='sell' and (l.status in ('active','completed') or l.owner_id=auth.uid()))\n  or exists(select 1 from public.board_posts b where b.author_id=p.id)\n  or exists(select 1 from public.board_comments c where c.author_id=p.id and not c.deleted)\n  or exists(select 1 from public.bug_reports b where b.author_id=p.id)\n  or exists(select 1 from public.suggestion_posts s where s.author_id=p.id and (not s.friends_only or s.author_id=auth.uid() or (select app_private.notice_is_operator()) or exists(select 1 from public.friend_requests f where f.status='accepted' and ((f.sender_id=auth.uid() and f.recipient_id=s.author_id) or(f.recipient_id=auth.uid() and f.sender_id=s.author_id)))))\n  or exists(select 1 from public.fishing_showcase_posts s where s.author_id=p.id)\n  or exists(select 1 from public.fishing_showcase_reactions r join public.fishing_showcase_posts s on s.id=r.post_id where r.user_id=p.id)\n  or exists(select 1 from public.collectible_gifts g where not g.exchange_hold and (g.sender_id=auth.uid() or g.recipient_id=auth.uid()) and p.id in (g.sender_id,g.recipient_id))\n  or exists(select 1 from app_private.hall_comments c where c.author_id=p.id)\n  or exists(select 1 from app_private.hall_section_comments c where c.author_id=p.id)\n )),'[]'::jsonb);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "player_presence_ping",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_session_id uuid, p_state text, p_revision integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.player_presence_ping(p_session_id uuid, p_state text, p_revision integer)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v_now timestamptz:=clock_timestamp();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_session_id is null or p_state is null or p_state not in ('online','away','offline')\n  or p_revision is null or p_revision<=0 then raise exception 'INVALID_PRESENCE';end if;\n -- Retain offline revisions briefly so delayed requests cannot resurrect a closed tab.\n delete from app_private.player_presence_sessions where user_id=u and last_seen_at<v_now-interval '1 day';\n insert into app_private.player_presence_sessions(user_id,session_id,state,revision,last_seen_at)\n values(u,p_session_id,p_state,p_revision,v_now)\n on conflict(user_id,session_id) do update\n set state=excluded.state,revision=excluded.revision,last_seen_at=excluded.last_seen_at\n where excluded.revision>player_presence_sessions.revision;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14185,6 +14273,16 @@
         "securityDefiner": false
       },
       {
+        "name": "friend_presence_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.friend_presence_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.friend_presence_state()$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "get_gold_wallet",
         "config": [
           "search_path=\"\""
@@ -14472,6 +14570,16 @@
         "schema": "public",
         "arguments": "p_ids uuid[], p_friend_codes text[]",
         "definition": "CREATE OR REPLACE FUNCTION public.player_levels(p_ids uuid[], p_friend_codes text[] DEFAULT '{}'::text[])\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$ select app_private.player_levels(p_ids,p_friend_codes) $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "player_presence_ping",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_session_id uuid, p_state text, p_revision integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.player_presence_ping(p_session_id uuid, p_state text, p_revision integer)\n RETURNS void\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.player_presence_ping(p_session_id,p_state,p_revision)\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -16591,6 +16699,60 @@
       {
         "name": "player_fishing_map_pieces_user_id_not_null",
         "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "player_presence_sessions_last_seen_at_not_null",
+        "table": "player_presence_sessions",
+        "schema": "app_private",
+        "definition": "NOT NULL last_seen_at"
+      },
+      {
+        "name": "player_presence_sessions_pkey",
+        "table": "player_presence_sessions",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, session_id)"
+      },
+      {
+        "name": "player_presence_sessions_revision_check",
+        "table": "player_presence_sessions",
+        "schema": "app_private",
+        "definition": "CHECK ((revision > 0))"
+      },
+      {
+        "name": "player_presence_sessions_revision_not_null",
+        "table": "player_presence_sessions",
+        "schema": "app_private",
+        "definition": "NOT NULL revision"
+      },
+      {
+        "name": "player_presence_sessions_session_id_not_null",
+        "table": "player_presence_sessions",
+        "schema": "app_private",
+        "definition": "NOT NULL session_id"
+      },
+      {
+        "name": "player_presence_sessions_state_check",
+        "table": "player_presence_sessions",
+        "schema": "app_private",
+        "definition": "CHECK ((state = ANY (ARRAY['online'::text, 'away'::text, 'offline'::text])))"
+      },
+      {
+        "name": "player_presence_sessions_state_not_null",
+        "table": "player_presence_sessions",
+        "schema": "app_private",
+        "definition": "NOT NULL state"
+      },
+      {
+        "name": "player_presence_sessions_user_id_fkey",
+        "table": "player_presence_sessions",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "player_presence_sessions_user_id_not_null",
+        "table": "player_presence_sessions",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
       },
@@ -30119,6 +30281,27 @@
         "arguments": ""
       },
       {
+        "name": "friend_presence_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "friend_presence_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "friend_presence_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "get_gold_wallet",
         "role": "anon",
         "schema": "app_private",
@@ -31419,6 +31602,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_ids uuid[], p_friend_codes text[]"
+      },
+      {
+        "name": "player_presence_ping",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_session_id uuid, p_state text, p_revision integer"
+      },
+      {
+        "name": "player_presence_ping",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_session_id uuid, p_state text, p_revision integer"
+      },
+      {
+        "name": "player_presence_ping",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_session_id uuid, p_state text, p_revision integer"
       },
       {
         "name": "prepare_fishing",
@@ -34487,6 +34691,27 @@
         "arguments": ""
       },
       {
+        "name": "friend_presence_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "friend_presence_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "friend_presence_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "get_gold_wallet",
         "role": "anon",
         "schema": "public",
@@ -35094,6 +35319,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_ids uuid[], p_friend_codes text[]"
+      },
+      {
+        "name": "player_presence_ping",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_session_id uuid, p_state text, p_revision integer"
+      },
+      {
+        "name": "player_presence_ping",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_session_id uuid, p_state text, p_revision integer"
+      },
+      {
+        "name": "player_presence_ping",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_session_id uuid, p_state text, p_revision integer"
       },
       {
         "name": "prepare_fishing",

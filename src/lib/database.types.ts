@@ -161,6 +161,8 @@ export type Database = {
       sync_player_profile: { Args: Record<string, never>; Returns: Profile }
       find_player_by_code: { Args: { p_code: string }; Returns: Profile[] }
       send_friend_request: { Args: { p_code: string }; Returns: string }
+      player_presence_ping: { Args: {p_session_id:string;p_state:import('@/features/friends/presence-api').PresenceStatus;p_revision:number}; Returns:undefined }
+      friend_presence_state: { Args:Record<string,never>; Returns:import('@/features/friends/presence-api').FriendPresenceState }
       respond_friend_request: { Args: { p_request_id: string; p_action: string }; Returns: undefined }
     }
     Enums: { game_rarity: import('@/lib/game/rarity').Rarity; collectible_kind: import('@/features/collection/api').CollectibleKind }

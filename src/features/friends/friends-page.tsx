@@ -20,6 +20,7 @@ import { RequestActions } from './request-actions'
 import { RemoveFriendButton } from './remove-friend-button'
 import { PlayerAvatar } from '@/features/profile/player-avatar'
 import {Link} from 'react-router'
+import {useFriendPresence} from './use-friend-presence'
 
 const {aquarium:AquariumIcon,lighthouse:TowerControl,friendInvite:UserPlus,mailFriend:Users}=appArt
 const Inbox=appArt.friendRequest
@@ -36,9 +37,15 @@ export function FriendsPage() {
   const [searched,setSearched]=useState(false)
   const [busy,setBusy]=useState(false)
   const [searchError,setSearchError]=useState('')
+  const [onlineOnly,setOnlineOnly]=useState(false)
   const incoming=requests.filter(r=>r.status==='pending' && r.recipient_id===session?.user.id)
   const outgoing=requests.filter(r=>r.status==='pending' && r.sender_id===session?.user.id)
   const friends=requests.filter(r=>r.status==='accepted')
+  const friendId=(request:typeof friends[number])=>request.sender_id===session?.user.id?request.recipient_id:request.sender_id
+  const presence=useFriendPresence(session?.user.id,friends.map(friendId).sort().join(','),tab==='friends')
+  const statuses=new Map(presence.friends.map(f=>[f.friend_id,f.state]))
+  const onlineCount=friends.filter(f=>statuses.get(friendId(f))==='online').length
+  const visibleFriends=onlineOnly?friends.filter(f=>statuses.get(friendId(f))==='online'):friends
   const tailwinds=useFriendExpeditions(session?.user.id,friends.map(r=>r.id).sort().join(','))
   const related=found && requests.find(r=>r.sender_id===found.id || r.recipient_id===found.id)
   async function search(event:FormEvent<HTMLFormElement>) {
@@ -60,7 +67,28 @@ export function FriendsPage() {
     {loading&&!requests.length&&<div role="status" aria-label="등대의 소식을 불러오는 중"><span className="sr-only">등대의 소식을 불러오는 중…</span><div aria-hidden="true" className="space-y-3">{Array.from({length:4},(_,i)=><div key={i} className="flex items-center gap-3 rounded-xl border border-border bg-card p-3 motion-safe:animate-pulse"><div className="size-12 shrink-0 rounded-full bg-secondary"/><div className="flex-1 space-y-2"><div className="h-4 w-24 rounded bg-secondary"/><div className="h-3 w-36 max-w-full rounded bg-secondary/60"/></div><div className="size-10 rounded-lg bg-secondary/60"/></div>)}</div></div>}
     {tailwinds.error&&tab==='friends'&&<p role="status" className="text-xs text-muted-foreground">물고기 유인 가능 여부를 확인하지 못했어요. 잠시 후 다시 확인해요.</p>}
     {error && <div role="alert" className="space-y-2 text-sm text-destructive"><p>{error}</p><Button variant="outline" onClick={()=>void refresh()}>다시 불러오기</Button></div>}
-    {tab==='friends' && <div><ul className="divide-y divide-border/70">{friends.map(request=>{const friend=request.sender_id===session?.user.id?request.recipient:request.sender;return <li key={request.id} className="flex min-w-0 items-center gap-3 py-4 first:pt-1 last:pb-1"><div className="flex min-w-0 flex-1 items-center gap-3"><PlayerAvatar userId={friend?.id??(request.sender_id===session?.user.id?request.recipient_id:request.sender_id)} nickname={friend?.nickname} path={friend?.avatar_path} className="size-12 shrink-0 ring-2 ring-secondary"/><div className="min-w-0 flex-1"><div className="flex min-w-0 items-center gap-1"><p className="min-w-0 truncate text-sm font-medium">{friend?.nickname??'친구'}</p></div>{friend?.equipped_title&&<p className="mt-1 flex items-center gap-1 truncate text-[11px] text-primary"><appArt.title className="size-4"/><EquippedTitleText name={friend.equipped_title}/></p>}</div></div><div className="flex shrink-0 items-center gap-1"><FriendExpeditionVisitButton owner={friend?.id??(request.sender_id===session?.user.id?request.recipient_id:request.sender_id)} key={`${session?.user.id}:${friend?.id??request.id}`} nickname={friend?.nickname??'친구'} status={tailwinds.friends.find(s=>s.friend_id===(friend?.id??(request.sender_id===session?.user.id?request.recipient_id:request.sender_id)))} statusError={tailwinds.error} now={tailwinds.now}/><Link to={`/friends/${friend?.id??(request.sender_id===session?.user.id?request.recipient_id:request.sender_id)}/aquarium`} className={buttonVariants({variant:'ghost',size:'icon',className:'h-auto min-h-12 min-w-11 flex-col gap-0 rounded-xl px-1 text-primary'})} aria-label={`${friend?.nickname??'친구'}의 아쿠아리움 방문`}><AquariumIcon className="size-7"/><span className="text-[9px] leading-4">방문</span></Link><RemoveFriendButton requestId={request.id} nickname={friend?.nickname??'친구'}/></div></li>})}</ul>{!loading&&!error&&!friends.length&&<div className="space-y-3 rounded-3xl border border-dashed border-border px-5 py-10 text-center dark:border-border"><TowerControl aria-hidden="true" className="mx-auto mb-5 size-16 rounded-2xl bg-secondary p-3 text-primary"/><h3>첫 친구를 기다리는 등대</h3><p className="text-sm text-muted-foreground">아직 함께하는 친구가 없어요.</p><Button variant="outline" className="min-h-11" onClick={()=>setInviteOpen(true)}>첫 친구 만나기</Button></div>}</div>}
+    {tab==='friends' && <div className="space-y-3">
+     {friends.length>0&&<div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 border-b border-border/70 pb-3">
+      <div className="min-w-0 text-xs text-muted-foreground"><p>친구 {friends.length}명 · {presence.ready?`접속 중 ${onlineCount}명`:presence.error?'접속 상태 확인 불가':'접속 상태 확인 중…'}</p>{presence.ready&&onlineCount>0&&<p className="mt-1 text-[11px] text-primary">지금 {onlineCount}명의 친구가 등대를 밝히고 있어요.</p>}</div>
+      <Button variant={onlineOnly?'secondary':'ghost'} size="sm" aria-pressed={onlineOnly} onClick={()=>setOnlineOnly(value=>!value)} className="min-h-11 shrink-0 text-xs">접속 중만 보기</Button>
+     </div>}
+     {presence.error&&friends.length>0&&<p role="status" className="text-xs text-muted-foreground">접속 상태를 확인하지 못했어요. 잠시 후 자동으로 다시 확인해요.</p>}
+     <ul className="divide-y divide-border/70">{visibleFriends.map(request=>{
+      const friend=request.sender_id===session?.user.id?request.recipient:request.sender
+      const id=friendId(request),nickname=friend?.nickname??'친구',status=presence.ready?statuses.get(id)??'offline':'unknown'
+      const statusLabel=status==='online'?'접속 중':status==='away'?'잠시 자리 비움':status==='offline'?'미접속':presence.error?'상태 확인 불가':'확인 중'
+      const dotColor=status==='online'?'bg-emerald-500':status==='away'?'bg-amber-400':status==='offline'?'bg-slate-400':'bg-muted-foreground/25'
+      return <li key={request.id} className="flex min-w-0 items-center gap-2 py-4 first:pt-1 last:pb-1">
+       <div className="flex min-w-0 flex-1 items-center gap-3">
+        <span className="relative inline-flex shrink-0"><PlayerAvatar userId={id} nickname={nickname} path={friend?.avatar_path} className="size-12 shrink-0 ring-2 ring-secondary"/><span aria-hidden="true" data-presence={status} className={`pointer-events-none absolute -bottom-0.5 -left-0.5 size-3 rounded-full ring-2 ring-background ${dotColor}`}/></span>
+        <div className="min-w-0 flex-1"><p className="truncate text-sm font-medium">{nickname}</p><p aria-label={`${nickname} ${statusLabel}`} className={`mt-0.5 text-[10px] ${status==='online'?'text-emerald-700 dark:text-emerald-400':status==='away'?'text-amber-700 dark:text-amber-400':'text-muted-foreground'}`}>{statusLabel}</p>{friend?.equipped_title&&<p className="mt-1 flex items-center gap-1 truncate text-[11px] text-primary"><appArt.title className="size-4 shrink-0"/><EquippedTitleText name={friend.equipped_title}/></p>}</div>
+       </div>
+       <div className="flex shrink-0 items-center gap-1"><FriendExpeditionVisitButton owner={id} key={`${session?.user.id}:${id}`} nickname={nickname} status={tailwinds.friends.find(s=>s.friend_id===id)} statusError={tailwinds.error} now={tailwinds.now}/><Link to={`/friends/${id}/aquarium`} className={buttonVariants({variant:'ghost',size:'icon',className:'h-auto min-h-12 min-w-11 flex-col gap-0 rounded-xl px-1 text-primary'})} aria-label={`${nickname}의 아쿠아리움 방문`}><AquariumIcon className="size-7"/><span className="text-[9px] leading-4">방문</span></Link><RemoveFriendButton requestId={request.id} nickname={nickname}/></div>
+      </li>
+     })}</ul>
+     {onlineOnly&&friends.length>0&&!visibleFriends.length&&<p className="py-8 text-center text-sm text-muted-foreground">{presence.ready?'지금 접속 중인 친구가 없어요.':presence.error?'접속 상태를 확인하면 친구를 표시할게요.':'접속 중인 친구를 확인하고 있어요.'}</p>}
+     {!loading&&!error&&!friends.length&&<div className="space-y-3 rounded-3xl border border-dashed border-border px-5 py-10 text-center dark:border-border"><TowerControl aria-hidden="true" className="mx-auto mb-5 size-16 rounded-2xl bg-secondary p-3 text-primary"/><h3>첫 친구를 기다리는 등대</h3><p className="text-sm text-muted-foreground">아직 함께하는 친구가 없어요.</p><Button variant="outline" className="min-h-11" onClick={()=>setInviteOpen(true)}>첫 친구 만나기</Button></div>}
+    </div>}
     {tab==='requests' && <div className="space-y-4"><section className="rounded-xl border border-border bg-card p-4"><h2 className="text-sm font-semibold">받은 요청 {incoming.length}</h2><ul className="mt-2 divide-y">{incoming.map(request=><li key={request.id} className="flex flex-col gap-3 py-4 first:pt-3 last:pb-0 sm:flex-row sm:items-center sm:justify-between"><div className="flex min-w-0 items-center gap-3"><PlayerAvatar userId={request.sender_id} nickname={request.sender?.nickname} path={request.sender?.avatar_path}/><div className="inline-flex max-w-full min-w-0 items-center gap-1 align-middle"><p className="min-w-0 truncate text-sm font-medium">{request.sender?.nickname??'친구'}</p></div></div><RequestActions request={request}/></li>)}</ul>{!incoming.length&&<p className="py-5 text-sm text-muted-foreground">받은 요청이 없어요.</p>}</section><details className="rounded-2xl border border-border bg-card p-4 dark:border-border"><summary className="min-h-11 cursor-pointer content-center text-sm text-muted-foreground">보낸 요청 {outgoing.length}</summary><ul className="mt-2 divide-y">{outgoing.map(request=><li key={request.id} className="flex flex-wrap items-center justify-between gap-3 py-4"><div className="flex items-center gap-3"><PlayerAvatar userId={request.recipient_id} nickname={request.recipient?.nickname} path={request.recipient?.avatar_path}/><div className="inline-flex max-w-full min-w-0 items-center gap-1 align-middle"><p className="min-w-0 truncate text-sm font-medium">{request.recipient?.nickname??'친구'}</p></div></div><RequestActions request={request}/></li>)}</ul>{!outgoing.length&&<p className="py-5 text-sm text-muted-foreground">보낸 요청이 없어요.</p>}</details></div>}
     </div>
     <Button onClick={()=>setInviteOpen(true)} className="min-h-14 w-full shrink-0 gap-2 rounded-none border-t border-border pb-[env(safe-area-inset-bottom)] text-base"><UserPlus className="size-7"/>친구 초대</Button>

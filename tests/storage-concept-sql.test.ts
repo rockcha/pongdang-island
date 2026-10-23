@@ -48,3 +48,22 @@ it('keeps storage scoped to the caller and denies anonymous execution',async()=>
  expect((await db.query("select has_function_privilege('anon','public.collectible_storage_filtered(integer,text,text,text,text)','execute') allowed")).rows[0].allowed).toBe(false)
  await expect(call(0,'','all','all','all','')).rejects.toThrow('AUTH_REQUIRED')
 })
+it('orders by rarity, price and Korean name ascending before splitting pages, with the same legacy order',async()=>{
+ await db.query('delete from public.player_collectibles where user_id=$1',[me])
+ const species=[['storage-sort-a','가시복어','common',10,50],['storage-sort-b','나무성게','common',10,1],['storage-sort-c','다람쥐','common',20,1],['storage-sort-d','라일락','rare',1,1],['storage-sort-e','마술','epic',0,1],['storage-sort-f','바다신','mythic',0,1]]
+ for(const [id,name,rarity,price,count] of species){
+  await db.query("insert into public.collectible_species(id,name,rarity,kind,sell_price,thumbnail_path,description,size,sprite_sheet_path,speed,swim_y_min,swim_y_max) values($1,$2,$3,'fish',$4,'test.png','Sorting fixture',50,'test-sheet.png',0.1,0.1,0.9)",[id,name,rarity,price])
+  await db.query('insert into public.player_collectibles(user_id,species_id) select $1,$2 from generate_series(1,$3)',[me,id,count])
+ }
+ const first=await call(),second=await call(50)
+ expect(first.total).toBe(55);expect(first.items).toHaveLength(50)
+ expect(first.items.every(i=>i.species.name==='가시복어')).toBe(true)
+ expect(second.items.map(i=>i.species.name)).toEqual(['나무성게','다람쥐','라일락','마술','바다신'])
+ expect(first.items[0]).not.toHaveProperty('storage_order')
+ await db.exec('set role authenticated')
+ try{
+  await db.query("select set_config('request.jwt.claim.sub',$1,false)",[me])
+  const legacy=(await db.query("select public.collectible_storage(50,'','all') s")).rows[0].s
+  expect(legacy.items.map(i=>i.id)).toEqual(second.items.map(i=>i.id))
+ }finally{await db.exec('reset role')}
+})

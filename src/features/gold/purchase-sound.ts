@@ -1,4 +1,5 @@
 import {fishingSoundChanged,fishingSoundKey,readFishingSound} from '@/features/fishing/sound-preference'
+import {createGameAudio} from '@/features/fishing/game-audio'
 
 const heard=new Set<string>()
 let stopPrevious:(()=>void)|undefined
@@ -13,7 +14,7 @@ function playTradeSound(action:'buy'|'sell'|'add',operationId:string){
  if(action==='add'&&stopPrevious)return
  stopPrevious?.()
  try{
-  const audio=new Audio(`/sounds/${action}.mp3`);audio.volume=.6
+  const audio=createGameAudio(`/sounds/${action}.mp3`);audio.volume=.6
   let stopped=false
   const mute=()=>{if(!readFishingSound())stop()}
   const storage=(event:StorageEvent)=>{if(event.key===fishingSoundKey||event.key===null)mute()}

@@ -1,6 +1,7 @@
 import {useEffect} from 'react'
 import type {Rarity} from '@/lib/game/rarity'
 import {fishingSoundChanged,fishingSoundKey,readFishingSound} from './sound-preference'
+import {createGameAudio} from './game-audio'
 
 export function fishingSplash(rarity:Rarity){
  return `/sounds/${rarity==='common'?'tiny-splash':rarity==='rare'?'small-splash':'big-splash'}.mp3`
@@ -10,7 +11,7 @@ export function fishingSplash(rarity:Rarity){
 export function useFishingAudio(src:string,enabled:boolean,{loop=false,volume=.65,segmentSeconds,trigger,delayMs=0}:{loop?:boolean;volume?:number;segmentSeconds?:number;trigger?:string;delayMs?:number}={}){
  useEffect(()=>{
   if(!enabled)return
-  const audio=new Audio(src)
+  const audio=createGameAudio(src)
   audio.preload='none';audio.volume=volume;audio.loop=loop&&!segmentSeconds
   let disposed=false,playing=false,played=false,generation=0
   let segmentTimer:ReturnType<typeof setTimeout>|undefined

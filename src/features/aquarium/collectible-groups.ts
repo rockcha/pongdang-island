@@ -1,4 +1,8 @@
 import type { OwnedCollectible, Species } from '@/features/collection/api'
+import {rarities} from '@/lib/game/rarity'
+export function compareStoredSpecies(a:Species,b:Species){
+ return (rarities[a.rarity]?.rank??0)-(rarities[b.rarity]?.rank??0)||a.sell_price-b.sell_price||a.name.localeCompare(b.name,'ko')
+}
 export type CollectibleGroup={species:Species;items:OwnedCollectible[];sellable:OwnedCollectible[]}
 export function groupCollectibles(items:OwnedCollectible[]):CollectibleGroup[]{
  const groups=new Map<string,CollectibleGroup>()

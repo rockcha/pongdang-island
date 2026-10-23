@@ -6,9 +6,8 @@ import { RaritySelect } from '@/components/rarity-select'
 import { RegionConceptSelect, matchesRegionConcept } from '@/components/region-concept-select'
 import type { RarityFilter } from '@/components/rarity-select'
 import { useEffect, useRef, useState } from 'react'
-import { groupCollectibles } from './collectible-groups'
+import { groupCollectibles,compareStoredSpecies } from './collectible-groups'
 import { CollectibleQuantityCard } from './collectible-quantity-card'
-import { rarities } from '@/lib/game/rarity'
 import { ChevronLeft, ChevronRight, RefreshCw } from 'lucide-react'
 import { GoldIcon } from '@/features/gold/gold-provider'
 import { ConfirmDialog } from '@/components/confirm-dialog'
@@ -95,7 +94,7 @@ export function CollectibleStorageDialog({
       (rarity === 'all' || item.species.rarity === rarity) &&
       matchesRegionConcept(item.species, concept) &&
       (!search || item.species.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
-    )
+    ).sort((a,b)=>compareStoredSpecies(a.species,b.species)||a.id.localeCompare(b.id))
     void (recentOnly
       ? Promise.resolve({ items: filteredRecent.slice(page * 50, (page + 1) * 50), total: filteredRecent.length, pageSize: 50 })
       : loadCollectibleStorage(page * 50, search, kind, rarity, concept))
@@ -137,7 +136,7 @@ export function CollectibleStorageDialog({
   const groups = [
     ...groupCollectibles((data?.items ?? []).filter(item => recentIds.has(item.id))).map(group => ({ ...group, recent: true })),
     ...groupCollectibles((data?.items ?? []).filter(item => !recentIds.has(item.id))).map(group => ({ ...group, recent: false })),
-  ].sort((a, b) => Number(b.recent) - Number(a.recent) || (rarities[a.species.rarity]?.rank ?? 0) - (rarities[b.species.rarity]?.rank ?? 0))
+  ].sort((a, b) => compareStoredSpecies(a.species,b.species)||Number(b.recent)-Number(a.recent))
   const selectedItems = [...selection].flatMap((id) =>
     cache.current.get(id) ? [cache.current.get(id)!] : [],
   )

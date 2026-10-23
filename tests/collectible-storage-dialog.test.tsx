@@ -11,6 +11,14 @@ const stored=[{id:'fish',species_id:'fish',species:{id:'fish',kind:'fish',sell_p
 const state={inhabitants:[],storageCount:2,tankCapacity:50,tanks:[{id:'tank-a',name:'첫 어항'},{id:'tank-b',name:'두 번째 어항'}]} as unknown as AquariumState
 beforeEach(()=>{mock.load.mockReset();mock.load.mockResolvedValue({items:stored,total:2,pageSize:50})})
 afterEach(cleanup)
+it('shows ascending rarity, price and name even when a newly caught mythic is present',async()=>{
+ const items=[['mythic','바다신','mythic',2400],['rare','별빛','rare',1],['b','나무성게','common',10],['c','다람쥐','common',20],['a','가시복어','common',10]].map(([id,name,rarity,price])=>({id,species_id:id,species:{id,name,rarity,kind:'fish',sell_price:price,thumbnail_path:'test.png'}})) as OwnedCollectible[]
+ mock.load.mockResolvedValue({items,total:items.length,pageSize:50})
+ render(<CollectibleStorageDialog page state={state} currentTankId="" busy={false} recentItems={[items[0]]}/>)
+ await screen.findByRole('button',{name:'가시복어 선택'})
+ const order=screen.getAllByRole('button').map(button=>button.getAttribute('aria-label')).filter(label=>items.some(item=>label===item.species.name+' 선택'))
+ expect(order).toEqual(['가시복어 선택','나무성게 선택','다람쥐 선택','별빛 선택','바다신 선택'])
+})
 it('separates this trip from older copies of the same species and filters without losing identity',async()=>{
  const fresh={...stored[0],id:'fresh'}
  mock.load.mockResolvedValue({items:[stored[0],fresh,stored[1]],total:3,pageSize:50})

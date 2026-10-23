@@ -9,8 +9,11 @@ import {MusicProvider} from '@/features/music/music-provider'
 import {useAuth} from '@/components/auth-provider'
 import {ExperienceProvider} from '@/features/experience/experience-provider'
 import {PushAccountSync} from '@/features/notifications/push-account-sync'
+import {useEffect} from 'react'
+import {installGameAudioLifecycle} from '@/features/fishing/game-audio'
 
 export default function App() {
+  useEffect(installGameAudioLifecycle,[])
   const {session}=useAuth()
   const musicKey=`pongdang:music:${session?.user.id??'guest'}`
   return (

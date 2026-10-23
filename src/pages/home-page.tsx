@@ -14,7 +14,7 @@ import {loadNotices,noticeProgress,type NoticeView} from '@/features/notices/api
 import {NewPongdangSpecies} from '@/features/regions/new-pongdang-species'
 
 function eventDescription(body:string){
- return body.split('\n').filter(line=>!line.trim().startsWith('![')).join(' ').replace(/\[([^\]]+)\]\([^)]+\)/g,'$1').replace(/[*#`]/g,'').replace(/\s+/g,' ').trim().slice(0,180)
+ return body.split('\n').filter(line=>!line.trim().startsWith('![')).join(' ').replace(/\[([^\]]+)\]\([^)]+\)/g,'$1').replace(/[*#`]/g,'').replace(/\s+/g,' ').trim()
 }
 export function HomePage(){
  const {session}=useAuth()

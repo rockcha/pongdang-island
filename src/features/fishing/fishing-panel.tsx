@@ -1,4 +1,5 @@
 import {FishingOdds} from './fishing-odds'
+import {FirstDayFishingGuide} from './first-day-fishing-guide'
 import {BaitTarget,fishingDisplayBait} from './bait-info'
 import {readLastBait,saveLastBait} from './bait-preference'
 import {useFishingTools,fishingToolButton} from './fishing-tools'
@@ -220,6 +221,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget,scene
    <CollectionDialog fishing dock iconOnly={!!fishingTools} disabled={gameOpen||busy||uncertain||revealing||castOpen}/>
   </>
  return <div className={regionId?"relative isolate min-h-0 flex-1 bg-[#123c68]":"space-y-5"}>
+  {regionId&&<FirstDayFishingGuide/>}
   {regionId&&sceneHeader}
   {regionId&&oddsTarget&&createPortal(<FishingOdds bait={displayBait??bait} successChanceBp={state?.successChanceBp} rod={rods.find(r=>r.id===equippedRod)} baseChanceBp={state?.baits.find(b=>b.id==='bait')?.baseSuccessChanceBp}/>,oddsTarget)}
   {regionId&&<FishingLeaveGuard active={gameOpen||uncertain||busy} practice={!!practice} busy={busy} onPause={setLeavePaused} onLeave={leaveFishing}/>}

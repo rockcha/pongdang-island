@@ -17,8 +17,8 @@ const bubbles = [
 
 export function TankBubbles() {
  return <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-  {bubbles.map(bubble => <div key={bubble.left} className="tank-bubble-lane" style={{animationDuration:`${bubble.duration}s`,animationDelay:`${bubble.delay}s`}}>
-   <span className="tank-bubble" style={{left:`${bubble.left}%`,width:bubble.size,height:bubble.size}}/>
+  {bubbles.map(bubble => <div key={bubble.left} className="tank-bubble-lane" style={{left:`${bubble.left}%`,width:bubble.size,animationDuration:`${bubble.duration}s`,animationDelay:`${bubble.delay}s`}}>
+   <span className="tank-bubble" style={{width:bubble.size,height:bubble.size}}/>
   </div>)}
  </div>
 }

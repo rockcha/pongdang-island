@@ -168,6 +168,15 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         this.input.setDraggable(sprite,draggable(item))
         entries.set(item.id, { motion: new InhabitantMotion(item, clock,spawns.get(item.id)), sprite, path, sheet })
       }
+      // A renderer survives tank switches. Release sheets from previous tanks,
+      // including late loads that finished after their tank was left.
+      const needed = new Set(items.map(item => {
+        const base=asset(item)
+        return textureKey(mythicSwimAsset(base.path,item.species.rarity)?.path??base.path)
+      }))
+      for(const key of this.textures.getTextureKeys()){
+        if(key.startsWith('collectible:')&&!needed.has(key)&&!queued.has(key))this.textures.remove(key)
+      }
       if (!this.load.isLoading() && queued.size) this.load.start()
       this.draw(0)
     }
@@ -206,10 +215,10 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
     scene: [scene], audio: { noAudio: true }, banner: false, render: { antialias: true }, fps: { target: 30, limit: 30 } })
   return {
     setItems(next) { items = next; if (ready) scene.sync() },
-    resize(width, height) { if (!disposed) {viewport=tankResolution(width,height,window.devicePixelRatio);game.scale.setZoom(1/viewport.ratio);game.scale.resize(viewport.pixelWidth,viewport.pixelHeight);game.canvas.style.width=`${viewport.width}px`;game.canvas.style.height=`${viewport.height}px`;game.scale.updateBounds();if (ready){scene.configureCamera();scene.draw(0)} } },
+    resize(width, height) { if (!disposed) {const next=tankResolution(width,height,window.devicePixelRatio);if(next.width===viewport.width&&next.height===viewport.height&&next.pixelWidth===viewport.pixelWidth&&next.pixelHeight===viewport.pixelHeight)return;viewport=next;game.scale.setZoom(1/viewport.ratio);game.scale.resize(viewport.pixelWidth,viewport.pixelHeight);game.canvas.style.width=`${viewport.width}px`;game.canvas.style.height=`${viewport.height}px`;game.scale.updateBounds();if (ready){scene.configureCamera();scene.draw(0)} } },
     setReduced(value) { reduced = value; if (ready) scene.draw(0) },
     setVisible(value) { if(visible===value)return;visible = value; if (value) game.loop.wake(); else game.loop.sleep() },
-    getStats() { return { count: entries.size, textures: new Set([...entries.values()].map(entry=>entry.path)).size, clock, renderer: game.renderer?.type === Phaser.WEBGL ? 'WebGL' : 'Canvas' } },
+    getStats() { return { count: entries.size, textures: ready?scene.textures.getTextureKeys().filter(key=>key.startsWith('collectible:')).length:0, clock, renderer: game.renderer?.type === Phaser.WEBGL ? 'WebGL' : 'Canvas' } },
     destroy() { disposed = true; ready = false; entries.clear(); game.destroy(true); if (game.isBooted) game.loop.wake() },
   }
 }

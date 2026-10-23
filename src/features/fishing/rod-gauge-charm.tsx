@@ -1,4 +1,5 @@
 import type {ComponentProps,ReactNode} from 'react'
+import {memo} from 'react'
 
 const charms:Record<string,ReactNode>={
  swift:<><path d="m3 16 7-5-1-7 6 6 7-2-6 6-1 7-4-5-8 2Z" fill="#edaa57" stroke="#9f6533" strokeWidth="1.2"/><path d="m7 17 7-6" stroke="#fff2d7" strokeWidth="1.5" strokeLinecap="round"/></>,
@@ -20,6 +21,6 @@ const charms:Record<string,ReactNode>={
  calm:<path d="M2 10q4-5 8 0t8 0 4 0M2 17q4-5 8 0t8 0 4 0" fill="none" stroke="#a5e4d8" strokeWidth="3" strokeLinecap="round"/>,
 }
 
-export function RodGaugeCharm({rodId,...props}:ComponentProps<'svg'>&{rodId:string}){
+export const RodGaugeCharm=memo(function RodGaugeCharm({rodId,...props}:ComponentProps<'svg'>&{rodId:string}){
  return <svg {...props} viewBox="0 0 24 24" fill="none" stroke="#584934" strokeWidth=".8" strokeLinejoin="round" aria-hidden="true" focusable="false" data-rod-charm={rodId}>{charms[rodId]??charms.basic}</svg>
-}
+})

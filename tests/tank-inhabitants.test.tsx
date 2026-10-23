@@ -21,8 +21,10 @@ it('sleeps behind an open modal and resumes after dismissal',async()=>{
  render(<View/>);await waitFor(()=>expect(mock.create).toHaveBeenCalledOnce())
  fireEvent.click(screen.getByRole('button',{name:'소식 보기'}))
  await waitFor(()=>expect(mock.setVisible).toHaveBeenLastCalledWith(false))
+ expect(document.querySelector('[data-tank-zoom-scene]')?.getAttribute('data-motion-paused')).toBe('true')
  fireEvent.click(screen.getByRole('button',{name:'닫기',exact:true}))
  await waitFor(()=>expect(mock.setVisible).toHaveBeenLastCalledWith(true))
+ expect(document.querySelector('[data-tank-zoom-scene]')?.getAttribute('data-motion-paused')).toBe('false')
 })
 it('creates one renderer and updates the collection without restarting it, then destroys it',async()=>{
  const first={id:'fish-a',species:{name:'멸치'}} as OwnedCollectible

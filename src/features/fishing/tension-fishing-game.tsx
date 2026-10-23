@@ -43,6 +43,13 @@ export function TensionFishingGame({onCaught,active=true,paused=false,regionId='
  const advancingLock=useRef(false),appliedReduction=useRef(0)
  const [visual,setVisual]=useState<FishingVisual>({time:0,tension:38,reel:0,ending:0})
  const animation=useRef(visual)
+ const [reduced,setReduced]=useState(()=>typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches)
+ useEffect(()=>{
+  if(typeof matchMedia!=='function')return
+  const media=matchMedia('(prefers-reduced-motion: reduce)'),change=()=>setReduced(media.matches)
+  media.addEventListener('change',change)
+  return()=>media.removeEventListener('change',change)
+ },[])
  useLayoutEffect(()=>{
   const next=newTensionGame(Math.random,{rarity:challenge?.rarity,wait:challenge?.wait,failureAt:challenge?.failureAt,failureReason:challenge?.failureReason,confirmBite:challenge?.confirmBite??readBiteConfirmation()})
   appliedReduction.current=0
@@ -77,9 +84,11 @@ export function TensionFishingGame({onCaught,active=true,paused=false,regionId='
  useEffect(()=>()=>{startAttempt.current++},[])
  useEffect(()=>{
   if(!active||helpOpen||paused){pointer.current=null;holding.current=false;setPressed(false);return}
+  // The bite prompt is static. Resume only when the player starts the fight.
+  if(game.phase==='ready')return
   let raf=0,last=0,lastPaint=0
   const reset=()=>{pointer.current=null;holding.current=false;setPressed(false);last=0}
-  const visibility=()=>{if(document.hidden)reset()}
+  const visibility=()=>{reset();cancelAnimationFrame(raf);if(!document.hidden)raf=requestAnimationFrame(draw)}
   const draw=(now:number)=>{
    if(expireIfNeeded())return
    if(!document.hidden){if(last){
@@ -96,12 +105,13 @@ export function TensionFishingGame({onCaught,active=true,paused=false,regionId='
    // Leave the surface splash visible before the catch result covers the water.
    if(current.current.phase==='won'&&animation.current.ending>=.65&&!completed.current){completed.current=true;caught.current();return}
    if(current.current.phase==='lost'&&animation.current.ending>=.65&&failure.current&&!failed.current){failed.current=true;failure.current(current.current.reason??'escape');return}
+   if(current.current.phase==='lost'&&animation.current.ending>=.65)return
    raf=requestAnimationFrame(draw)
   }
-  raf=requestAnimationFrame(draw)
+  if(!document.hidden)raf=requestAnimationFrame(draw)
   window.addEventListener('blur',reset);document.addEventListener('visibilitychange',visibility)
   return()=>{cancelAnimationFrame(raf);window.removeEventListener('blur',reset);document.removeEventListener('visibilitychange',visibility)}
- },[active,helpOpen,paused,expireIfNeeded])
+ },[active,helpOpen,paused,expireIfNeeded,game.phase])
  const waiting=game.phase==='waiting',biteReady=game.phase==='ready',lost=game.phase==='lost',won=game.phase==='won'
  const biteArrived=!waiting&&game.failureAt===undefined&&game.reason!=='expired'
  const fighting=active&&game.phase==='playing'&&game.failureAt===undefined&&!paused&&!helpOpen
@@ -113,7 +123,6 @@ export function TensionFishingGame({onCaught,active=true,paused=false,regionId='
  useFishingAudio('/sounds/fishing-bg.mp3',active&&!won&&!lost&&!paused&&!helpOpen,{loop:true,volume:.25,trigger:castId})
  const plannedFailure=game.failureAt!==undefined
  const label=!active?'낚싯대가 준비됐어요':biteReady?undefined:fishingMessage(game)
- const reduced=typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches
  const behavior=fishBehavior(game.time,game.seed,game.rarity)
  const tug=active&&!plannedFailure&&!helpOpen&&!paused&&!reduced&&game.phase==='playing'&&behavior.mood==='surge'?Math.min(1,fishForce(game.time,game.seed,game.rarity)/(fishStrength[game.rarity].surge*.48)):0
  // Only the crest of each effort wave gives the scenery a short, gentle jolt.
@@ -140,9 +149,9 @@ export function TensionFishingGame({onCaught,active=true,paused=false,regionId='
  }
  return <div role="group" aria-label="낚시터" className="relative h-full min-h-0 w-full">
    <div className="absolute inset-0 overflow-hidden bg-[#123c68]">
-    <div className="absolute -inset-1" style={{transform:sceneMotion}}>
+    <div className="absolute -inset-1">
      <div data-fishing-camera="front" className="absolute inset-0"><FishingStandby regionId={regionId}/></div>
-     <div data-fishing-effects="true" aria-hidden={!active} className="absolute inset-0 transition-opacity duration-300 motion-reduce:transition-none" style={{opacity:active?1:0}}>
+     <div data-fishing-effects="true" aria-hidden={!active} className="absolute inset-0 transition-opacity duration-300 motion-reduce:transition-none" style={{opacity:active?1:0,transform:sceneMotion}}>
      <FishingWater sceneryOverlay showGauge={active&&!plannedFailure&&game.phase==='playing'} baitImage={baitImage} rod={rod} game={game} visual={visual} mood={behavior.mood} active={active} reduced={reduced} regionId={regionId} regionName={regionName} pulling={pressed} label={quiet||(active&&plannedFailure)?undefined:label} outline={outline}/>
      </div>
     </div>

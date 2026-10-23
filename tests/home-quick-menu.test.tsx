@@ -41,6 +41,12 @@ it('shows published event titles descriptions and posters and excludes ended eve
  expect(screen.queryByText('지난 축제')).toBeNull()
  expect(mock.events).toHaveBeenCalledWith('event','',0,false)
 })
+it('keeps the end of long event announcements readable',async()=>{
+ const body='새로운 바다 친구들을 만나보세요. '.repeat(25)+'보상 수령은 일요일까지예요.'
+ mock.events.mockResolvedValue({items:[{...event,body}],total:1})
+ show();fireEvent.click(screen.getByRole('tab',{name:'이벤트'}))
+ expect(await screen.findByText(body)).toBeTruthy()
+})
 it('lets the sea feed retry independently of the event tab',async()=>{
  mock.map.mockRejectedValueOnce(new Error('offline'))
  show();await screen.findByRole('alert')

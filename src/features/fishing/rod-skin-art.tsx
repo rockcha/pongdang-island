@@ -1,7 +1,13 @@
 import {RodPartImage,hasRodImages} from './rod-image-assets'
 // Image decorations with SVG fallback. Movement, hit areas and gauges belong to the caller.
-import {useId} from 'react'
+import {memo,useId} from 'react'
 import {hasExtraRodSkin,extraRodWidth,ExtraShaft,ExtraFrame,ExtraRotor,ExtraFloat,ExtraGrip} from './extra-rod-skin-art'
+
+// Motion is applied by the parent SVG group. These drawings depend only on the rod.
+export const RodSkinFrame=memo(RodSkinFrameArt)
+export const RodSkinRotor=memo(RodSkinRotorArt)
+export const RodSkinFloat=memo(RodSkinFloatArt)
+export const RodSkinGrip=memo(RodSkinGripArt)
 
 export function RodSkinShaft({id,path}:{id:string;path:string}){
  const key='rod-material-'+useId().replaceAll(':','')
@@ -23,7 +29,7 @@ export function rodReelBackground(id:string){return ({siren:'#24574f',mukhyang:'
 function Star({fill='#f4a258'}:{fill?:string}){
  return <path d="m0-9 2.7 5.4 6-.8-3.8 4.8 2.6 5.5L1.7 3.6l-4.5 4-0.2-6-5.3-3 5.7-2Z" fill={fill} stroke="#a96a35" strokeWidth=".7"/>
 }
-export function RodSkinFrame({id}:{id:string}){
+function RodSkinFrameArt({id}:{id:string}){
  if(hasRodImages(id))return <RodPartImage key={id} id={id} part="frame" fallback={<VectorFrame id={id}/>}/>
  return <VectorFrame id={id}/>
 }
@@ -34,7 +40,7 @@ function VectorFrame({id}:{id:string}){
  if(id==='coral')return <g data-skin-frame={id}>{Array.from({length:12},(_,i)=><ellipse key={i} rx="8" ry="12" cy="-25" transform={`rotate(${i*30})`} fill="#fff0d9" stroke="#d8999b" strokeWidth="1"/>)}<circle r="29" fill="#a85d6b" stroke="#f5cf9d" strokeWidth="2"/></g>
  return <g data-skin-frame={id}><circle r="35" fill="#222c52" stroke="#bfc4df" strokeWidth="2.5"/><circle r="31" fill="#313b67" stroke="#e8dbb0" strokeWidth=".8"/>{Array.from({length:8},(_,i)=><circle key={i} cx={Math.cos(i*Math.PI/4)*33} cy={Math.sin(i*Math.PI/4)*33} r="1" fill="#fff7de"/>)}</g>
 }
-export function RodSkinRotor({id}:{id:string}){
+function RodSkinRotorArt({id}:{id:string}){
  if(hasRodImages(id))return <RodPartImage key={id} id={id} part="rotor" fallback={<VectorRotor id={id}/>}/>
  return <VectorRotor id={id}/>
 }
@@ -45,7 +51,7 @@ function VectorRotor({id}:{id:string}){
  if(id==='coral')return <g data-skin-rotor={id}>{Array.from({length:5},(_,i)=><path key={i} d="M0 0C-18-11-13-29 0-25C13-29 18-11 0 0Z" transform={`rotate(${i*72})`} fill={i%2?'#ed9a9b':'#f5b6aa'} stroke="#ffe8cb" strokeWidth="1.3"/>)}<circle r="6" fill="#ffdfb1" stroke="#c68c73"/><path d="M0 0 19 13" stroke="#e3b783" strokeWidth="3"/><circle cx="21" cy="15" r="5" fill="#ffdfce" stroke="#d9988c"/></g>
  return <g data-skin-rotor={id}><path d="M13-25A28 28 0 1 0 16 23A24 24 0 0 1 13-25Z" fill="#ded8f5" stroke="#fff1cb" strokeWidth="1.2"/><path d="m0-12 3 8 8 4-8 3-3 9-3-9-8-3 8-4Z" fill="#f5ddaa"/><circle r="4" fill="#cbc5f0"/><path d="M0 0 21 13" stroke="#d7c69b" strokeWidth="2.5"/><circle cx="23" cy="15" r="5" fill="#e6dcff" stroke="#fff0cc"/></g>
 }
-export function RodSkinFloat({id}:{id:string}){
+function RodSkinFloatArt({id}:{id:string}){
  if(hasRodImages(id))return <RodPartImage key={id} id={id} part="float" fallback={<VectorFloat id={id}/>}/>
  return <VectorFloat id={id}/>
 }
@@ -56,7 +62,7 @@ function VectorFloat({id}:{id:string}){
  if(id==='coral')return <g data-skin-float={id}><path d="M0-13C-10-6-7 7 0 9C7 7 10-6 0-13Z" fill="#f2a4a7" stroke="#ffe3cc"/><path d="M0-9Q-4 0 0 7Q4 0 0-9" fill="#ffd0bd"/><path d="m0 8-5 3 2 4h6l2-4Z" fill="#fff0db" stroke="#dfb393"/></g>
  return <g data-skin-float={id}><path d="M0-10C-3-6-8 2-4 8Q0 13 4 8C8 2 3-6 0-10Z" fill="#d4d5ec" stroke="#fbf5d9"/><path d="M0-7Q-4 3 0 8" fill="none" stroke="#fff" strokeWidth="1.1"/><path d="M3-21A5 5 0 1 0 4-12A4 4 0 0 1 3-21Z" fill="#f9df9d"/></g>
 }
-export function RodSkinGrip({id}:{id:string}){
+function RodSkinGripArt({id}:{id:string}){
  if(id==='basic'||id==='bronze')return null
  if(hasExtraRodSkin(id))return <ExtraGrip id={id}/>
  return <g data-skin-grip={id}>{id==='pongdang'?<><path d="M-4-18 0-3M2-19 5-7" stroke="#e2b781" strokeWidth="1.4"/><g transform="scale(.6)"><Star/></g></>:id==='coral'?<><path d="M0 7V-7m0 5-6-4m6 7 6-5" stroke="#f5a4a4" strokeWidth="3" strokeLinecap="round"/><path d="M-6 9Q0-3 6 9Z" fill="#fff0d7"/></>:<path d="M2-9A9 9 0 1 0 5 8A8 8 0 0 1 2-9Z" fill="#e7dcff" stroke="#f9dbaa"/>}</g>

@@ -1,5 +1,5 @@
 import {nyamnyamArt} from '@/features/regions/nyamnyam-art'
-﻿import { useState } from 'react'
+import { memo,useState } from 'react'
 
 export const fishingEnvironments={
  nyamnyam:{name:'냠냠 한상바다',water:'#28bace',deck:'#deb97c',edge:'#966a39',waterEnd:1536,deckStart:1065},
@@ -38,12 +38,12 @@ export function FishingSea({regionId,view='top'}:{regionId:string;view?:'front'|
   <rect width={width} height={height} fill={theme.water} />{failed!==src&&<image href={src} width={width} height={height} className="transition-opacity duration-300 motion-reduce:transition-none" opacity={loaded===src?opacity:0} onLoad={()=>setLoaded(src)} onError={()=>setFailed(src)}/>}
  </svg>
 }
-export function FishingStandby({regionId}:{regionId:string}){
+export const FishingStandby=memo(function FishingStandby({regionId}:{regionId:string}){
  return <div className="absolute inset-0">
   <FishingSea regionId={regionId} view="front"/>
   <svg viewBox="0 0 400 180" preserveAspectRatio="none" className="pointer-events-none absolute inset-x-0 bottom-0 w-full" style={{height:'clamp(160px,32%,220px)'}} aria-hidden="true"><FishingPlatform regionId={regionId} y={0} platformHeight={180}/></svg>
  </div>
-}
+})
 export function FishingPlatform({regionId,y,platformHeight=160}:{regionId:string;y:number;platformHeight?:number}){
  const theme=fishingEnvironment(regionId),[failed,setFailed]=useState<string|null>(null),[loaded,setLoaded]=useState<string|null>(null)
  if(theme.platformSrc)return <svg x={-4} y={y} width={408} height={platformHeight} viewBox="0 0 1200 480" preserveAspectRatio="xMidYMin slice" overflow="hidden" data-fishing-platform={theme.id} data-platform-material={theme.material}>

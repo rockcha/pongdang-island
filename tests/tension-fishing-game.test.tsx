@@ -7,6 +7,21 @@ import {saveBiteConfirmation} from '@/features/fishing/bite-confirmation-prefere
 
 // These scenarios exercise automatic play after opting out of bite confirmation.
 beforeEach(()=>saveBiteConfirmation(false))
+
+it('stops repainting at the bite prompt and resumes when the player starts',async()=>{
+ vi.useFakeTimers()
+ const raf=vi.spyOn(window,'requestAnimationFrame')
+ render(<TensionFishingGame onCaught={vi.fn()} onCancel={vi.fn()} challenge={{wait:.1,confirmBite:true}}/>)
+ await act(async()=>{vi.advanceTimersByTime(300)})
+ const prompt=screen.getByRole('button',{name:'입질이 왔어요. 터치해서 시작'})
+ const requests=raf.mock.calls.length
+ await act(async()=>{vi.advanceTimersByTime(5000)})
+ expect(raf.mock.calls.length).toBe(requests)
+ fireEvent.click(prompt)
+ await act(async()=>{vi.advanceTimersByTime(100)})
+ expect(raf.mock.calls.length).toBeGreaterThan(requests)
+ expect(screen.getByRole('meter')).toBeTruthy()
+})
 afterEach(()=>{cleanup();vi.useRealTimers();vi.restoreAllMocks();localStorage.clear()})
 it('ends an eighty-second foreground wait after eighty real seconds at low FPS',()=>{
  let next:FrameRequestCallback=()=>{}

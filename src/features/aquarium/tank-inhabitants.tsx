@@ -23,7 +23,12 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
   useEffect(()=>{navigation.current=onNavigate},[onNavigate])
   const pause=useRef(paused)
   const onScreen=useRef(true)
-  useEffect(()=>{pause.current=paused;renderer.current?.setVisible(!paused&&onScreen.current&&!document.hidden&&!hasOpenOverlay())},[paused])
+  const updateVisibility=()=>{
+    const visible=!pause.current&&onScreen.current&&!document.hidden&&!hasOpenOverlay()
+    renderer.current?.setVisible(visible)
+    if(scene.current)scene.current.dataset.motionPaused=String(!visible)
+  }
+  useEffect(()=>{pause.current=paused;updateVisibility()},[paused])
   useEffect(()=>{placement.current=onPlace},[onPlace])
   const [error, setError] = useState('')
   useEffect(() => { latest.current = items; renderer.current?.setItems(items) }, [items])
@@ -32,7 +37,7 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
     if (!parent) return
     let active = true
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const visibility = () => renderer.current?.setVisible(!pause.current&&onScreen.current && !document.hidden&&!hasOpenOverlay())
+    const visibility = updateVisibility
     const unsubscribeOverlay=subscribeOverlayActivity(visibility)
     const preference = () => renderer.current?.setReduced(reduced.matches)
     const resize=()=>renderer.current?.resize(parent.clientWidth,parent.clientHeight)

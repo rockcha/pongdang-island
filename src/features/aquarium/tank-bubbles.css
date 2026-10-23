@@ -1,8 +1,10 @@
 .tank-bubble-lane {
  position: absolute;
- inset: 0;
+ top: 0;
+ bottom: 0;
  animation: tank-bubble-rise linear infinite;
 }
+[data-motion-paused="true"] .tank-bubble-lane { animation-play-state: paused; }
 .tank-bubble {
  position: absolute;
  bottom: 0;

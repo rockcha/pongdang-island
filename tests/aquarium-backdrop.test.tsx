@@ -1,9 +1,9 @@
-import {cleanup,render,screen,act} from '@testing-library/react'
+import {cleanup,render,screen,act,waitFor} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
 import {AquariumBackdrop} from '@/features/aquarium/aquarium-backdrop'
 vi.mock('@/features/aquarium/api',()=>({backgroundUrl:(path:string)=>path}))
 afterEach(()=>{cleanup();vi.unstubAllGlobals()})
-it('keeps the previous background visible until the next image is ready',()=>{
+it('keeps the previous background visible until the next image is ready',async()=>{
  const images:{onload:()=>void;onerror:()=>void;src:string}[]=[]
  vi.stubGlobal('Image',class {onload=()=>{};onerror=()=>{};src='';constructor(){images.push(this)}})
  const {rerender}=render(<AquariumBackdrop background={{name:'First',image_path:'/first.png'}}/>)
@@ -16,6 +16,8 @@ it('keeps the previous background visible until the next image is ready',()=>{
  expect(screen.queryByAltText('Next')).toBeNull()
  act(()=>images[1].onload())
  expect(screen.getByAltText('Next')).toBeTruthy()
+ expect(document.querySelectorAll('img')).toHaveLength(2)
+ await waitFor(()=>expect(document.querySelectorAll('img')).toHaveLength(1))
 })
 it('ends initial loading when the background fails',()=>{
  let fail=()=>{}

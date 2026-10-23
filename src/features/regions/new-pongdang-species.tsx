@@ -23,7 +23,7 @@ export function NewPongdangSpecies({catalog,now=Date.now()}:{catalog:CatalogEntr
  const releaseIds=recentSpeciesIds(now)
  const items=catalog.filter(item=>releaseIds.has(item.id))
  if(!items.length)return <p className="px-6 py-12 text-center text-sm text-muted-foreground">새로운 개체를 준비하고 있어요.</p>
- return <Tabs defaultValue="common" className="pb-8">
+ return <Tabs defaultValue="common" className="news-species pb-8">
   <div className="sticky top-0 z-10 border-b border-border/60 bg-background px-4 pt-4 pb-3"><TabsList aria-label="신규 개체 등급" className="p-1">{grades.map(grade=><TabsTrigger key={grade} value={grade} className="min-h-11 gap-1 px-2 text-xs">{rarities[grade].label}<span className="text-[10px] tabular-nums opacity-60">{items.filter(item=>item.rarity===grade).length}</span></TabsTrigger>)}</TabsList></div>
   <div className="px-4 pt-5">{grades.map(grade=>{
    const group=items.filter(item=>item.rarity===grade).sort((a,b)=>a.name.localeCompare(b.name,'ko'))

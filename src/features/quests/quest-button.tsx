@@ -1,3 +1,4 @@
+import {playRewardSound} from '@/features/gold/purchase-sound'
 import {useCallback,useEffect,useRef,useState} from 'react'
 import {Link} from 'react-router'
 import {ArrowUpRight,Check,Clock3,RefreshCw} from 'lucide-react'
@@ -35,7 +36,7 @@ function Quests(){
   return()=>{clearTimeout(timer);for(const event of events)window.removeEventListener(event,changed)}
  },[reload])
  useEffect(()=>{if(!open)return;void reload();const timer=setInterval(()=>setNow(Date.now()+offset.current),1000);const poll=setInterval(()=>void reload(),30000);return()=>{clearInterval(timer);clearInterval(poll)}},[open,reload])
- async function claim(id:string){const selected=data?.[tab];if(!selected||locked.current)return;locked.current=true;request.current++;setLoading(false);setBusy(id);setError('');try{const state=await claimQuest(tab,selected.start,id);if(alive.current){apply(state);if(state.creditedFuel)toast.success(`연료 ${state.creditedFuel}통을 받았어요.`);else if(state.credited)toast.success(`${state.credited.toLocaleString('ko-KR')}골드를 받았어요.`);window.dispatchEvent(new Event('harbor-changed'))}await refresh()}catch(cause){if(alive.current)setError(questError(cause))}finally{locked.current=false;if(alive.current){setBusy(null)}}}
+ async function claim(id:string){const selected=data?.[tab];if(!selected||locked.current)return;locked.current=true;request.current++;setLoading(false);setBusy(id);setError('');try{const state=await claimQuest(tab,selected.start,id);if(alive.current){apply(state);if((state.credited??0)>0||(state.creditedFuel??0)>0)playRewardSound(`quest:${tab}:${selected.start}:${id}`);if(state.creditedFuel)toast.success(`연료 ${state.creditedFuel}통을 받았어요.`);else if(state.credited)toast.success(`${state.credited.toLocaleString('ko-KR')}골드를 받았어요.`);window.dispatchEvent(new Event('harbor-changed'))}await refresh()}catch(cause){if(alive.current)setError(questError(cause))}finally{locked.current=false;if(alive.current){setBusy(null)}}}
  const period=data?.[tab],completed=period?.quests.filter(q=>q.complete).length??0
  const readyByKind=Object.fromEntries(questTabs.map(kind=>{const p=data?.[kind];return [kind,p?p.quests.filter(q=>q.complete&&!q.claimed).length+(p.bonus>0&&p.bonusReady&&!p.bonusClaimed?1:0):0]})) as Record<QuestKind,number>
  const ready=questTabs.reduce((total,kind)=>total+readyByKind[kind],0)

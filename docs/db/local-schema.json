@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "0121aad09596e2c8d7148f6d787a50ff1f93c7bf5ee820ea3d8fd1825a583cf7",
+  "migrationHash": "f547708467a51bbb26f62047f33970e08cf121eed90014c24af5a4cc493ac39c",
   "structure": {
     "enums": [
       {
@@ -253,6 +253,18 @@
       {
         "rls": true,
         "name": "production_sites",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "push_deliveries",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "push_subscriptions",
         "schema": "app_private",
         "force_rls": false
       },
@@ -1064,6 +1076,16 @@
       {
         "name": "run_bait_id",
         "type": "text",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "notified_started_at",
+        "type": "timestamp with time zone",
         "table": "bait_production_sites",
         "schema": "app_private",
         "default": null,
@@ -2645,6 +2667,246 @@
         "name": "ready_notified_at",
         "type": "timestamp with time zone",
         "table": "production_sites",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "bigint",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "a",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "subscription_id",
+        "type": "uuid",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "notification_id",
+        "type": "uuid",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "category",
+        "type": "text",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "source_id",
+        "type": "uuid",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "source_started_at",
+        "type": "timestamp with time zone",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "payload",
+        "type": "jsonb",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "default": "'pending'::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "attempts",
+        "type": "integer",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "available_at",
+        "type": "timestamp with time zone",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "expires_at",
+        "type": "timestamp with time zone",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "default": "(now() + '01:00:00'::interval)",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "lease_token",
+        "type": "uuid",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "locked_until",
+        "type": "timestamp with time zone",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "finished_at",
+        "type": "timestamp with time zone",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "last_status",
+        "type": "integer",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "endpoint",
+        "type": "text",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "p256dh",
+        "type": "text",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "auth",
+        "type": "text",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "categories",
+        "type": "text[]",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "default": "ARRAY['production'::text, 'bait-production'::text, 'expedition'::text, 'harbor'::text]",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "last_test_at",
+        "type": "timestamp with time zone",
+        "table": "push_subscriptions",
         "schema": "app_private",
         "default": null,
         "identity": "",
@@ -6572,6 +6834,26 @@
         "generated": ""
       },
       {
+        "name": "bait_production_site_id",
+        "type": "uuid",
+        "table": "notifications",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "bait_production_started_at",
+        "type": "timestamp with time zone",
+        "table": "notifications",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
         "name": "id",
         "type": "uuid",
         "table": "odd_even_runs",
@@ -8216,6 +8498,48 @@
         "definition": "CREATE UNIQUE INDEX production_sites_pkey ON app_private.production_sites USING btree (id)"
       },
       {
+        "name": "push_deliveries_pkey",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX push_deliveries_pkey ON app_private.push_deliveries USING btree (id)"
+      },
+      {
+        "name": "push_deliveries_subscription_id_notification_id_key",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX push_deliveries_subscription_id_notification_id_key ON app_private.push_deliveries USING btree (subscription_id, notification_id)"
+      },
+      {
+        "name": "push_delivery_notice",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "CREATE INDEX push_delivery_notice ON app_private.push_deliveries USING btree (notification_id)"
+      },
+      {
+        "name": "push_delivery_pending",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "CREATE INDEX push_delivery_pending ON app_private.push_deliveries USING btree (available_at, id) WHERE (status = ANY (ARRAY['pending'::text, 'sending'::text]))"
+      },
+      {
+        "name": "push_subscriptions_endpoint_key",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX push_subscriptions_endpoint_key ON app_private.push_subscriptions USING btree (endpoint)"
+      },
+      {
+        "name": "push_subscriptions_pkey",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX push_subscriptions_pkey ON app_private.push_subscriptions USING btree (id)"
+      },
+      {
+        "name": "push_subscriptions_user",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "CREATE INDEX push_subscriptions_user ON app_private.push_subscriptions USING btree (user_id)"
+      },
+      {
         "name": "quest_claims_pkey",
         "table": "quest_claims",
         "schema": "app_private",
@@ -9048,6 +9372,12 @@
         "table": "notifications",
         "schema": "public",
         "definition": "CREATE UNIQUE INDEX gift_notification_once ON public.notifications USING btree (recipient_id, kind, gift_id) WHERE (gift_id IS NOT NULL)"
+      },
+      {
+        "name": "notifications_bait_production_run",
+        "table": "notifications",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX notifications_bait_production_run ON public.notifications USING btree (bait_production_site_id, bait_production_started_at) WHERE (bait_production_site_id IS NOT NULL)"
       },
       {
         "name": "notifications_board_post",
@@ -10577,6 +10907,13 @@
         "definition": "CREATE TRIGGER notice_publication AFTER INSERT OR UPDATE OF status ON public.notices FOR EACH ROW EXECUTE FUNCTION app_private.deliver_notice_publication()"
       },
       {
+        "name": "enqueue_web_push",
+        "table": "notifications",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER enqueue_web_push AFTER INSERT ON public.notifications FOR EACH ROW EXECUTE FUNCTION app_private.enqueue_web_push()"
+      },
+      {
         "name": "capture_title_acquisition",
         "table": "player_collectibles",
         "schema": "public",
@@ -11061,6 +11398,16 @@
         "securityDefiner": true
       },
       {
+        "name": "claim_web_push",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_limit integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.claim_web_push(p_limit integer DEFAULT 20)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;\nbegin\n update app_private.push_deliveries q set status='skipped',finished_at=clock_timestamp()\n from app_private.push_subscriptions s where s.id=q.subscription_id and q.status in ('pending','sending') and (q.locked_until is null or q.locked_until<clock_timestamp())\n and (q.expires_at<=clock_timestamp() or q.attempts>=5 or (q.category<>'test' and not(q.category=any(s.categories))) or not app_private.push_delivery_current(q,s.user_id));\n with due as (\n  select q.id from app_private.push_deliveries q where q.status in ('pending','sending') and q.attempts<5\n   and q.available_at<=clock_timestamp() and q.expires_at>clock_timestamp() and (q.locked_until is null or q.locked_until<clock_timestamp())\n  order by q.available_at,q.id limit greatest(1,least(coalesce(p_limit,20),20)) for update skip locked\n ), claimed as (\n  update app_private.push_deliveries q set status='sending',attempts=q.attempts+1,lease_token=gen_random_uuid(),locked_until=clock_timestamp()+interval '3 minutes'\n  from due where q.id=due.id returning q.*\n ) select coalesce(jsonb_agg(jsonb_build_object('id',q.id,'leaseToken',q.lease_token,'payload',q.payload,'subscription',jsonb_build_object('endpoint',s.endpoint,'keys',jsonb_build_object('p256dh',s.p256dh,'auth',s.auth)))),'[]'::jsonb)\n into result from claimed q join app_private.push_subscriptions s on s.id=q.subscription_id;\n -- Finished payloads are short-lived; never retain a growing delivery history.\n delete from app_private.push_deliveries where finished_at<clock_timestamp()-interval '7 days';\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "clean_friend_aquarium",
         "config": [
           "search_path=\"\""
@@ -11108,6 +11455,16 @@
         "schema": "app_private",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.collection_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_regions jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select coalesce(jsonb_agg(jsonb_build_object('id',r.id,'name',r.name) order by r.sort_order),'[]'::jsonb)\n into v_regions from public.regions r;\n return jsonb_build_object('items',app_private.owned_collectibles(),\n 'catalog',(select coalesce(jsonb_agg(to_jsonb(s)||jsonb_build_object(\n 'discovered',d.species_id is not null,'habitats',v_regions) order by s.kind,s.id),'[]'::jsonb)\n from public.collectible_species s left join public.player_discoveries d on d.species_id=s.id and d.user_id=v_uid\n where s.kind<>'map'));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "configure_web_push_worker",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_url text, p_secret text, p_keys jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.configure_web_push_worker(p_url text, p_secret text, p_keys jsonb DEFAULT NULL::jsonb)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare sid uuid; entry record;\nbegin\n if p_url !~ '^https://[a-z0-9]+\\.supabase\\.co/functions/v1/web-push$' or p_secret !~ '^[A-Za-z0-9_-]{43}$' then raise exception 'INVALID_PUSH_CONFIGURATION';end if;\n if to_regclass('vault.secrets') is null then raise exception 'VAULT_UNAVAILABLE';end if;\n execute 'select id from vault.secrets where name=$1 limit 1' into sid using 'web_push_worker_url';\n if sid is null then execute 'select vault.create_secret($1,$2)' using p_url,'web_push_worker_url';else execute 'select vault.update_secret($1,$2)' using sid,p_url;end if;\n execute 'select id from vault.secrets where name=$1 limit 1' into sid using 'web_push_cron_secret';\n if sid is null then execute 'select vault.create_secret($1,$2)' using p_secret,'web_push_cron_secret';else execute 'select vault.update_secret($1,$2)' using sid,p_secret;end if;\n if p_keys is not null then\n  if coalesce(p_keys->>'WEB_PUSH_PUBLIC_KEY','') !~ '^[A-Za-z0-9_-]{87}$' or coalesce(p_keys->>'WEB_PUSH_PRIVATE_KEY','') !~ '^[A-Za-z0-9_-]{43}$'\n   or coalesce(p_keys->>'WEB_PUSH_SUBJECT','') !~ '^(https://|mailto:)[^[:space:]]+$' then raise exception 'INVALID_PUSH_KEYS';end if;\n  for entry in select * from jsonb_each_text(p_keys) where key in ('WEB_PUSH_PUBLIC_KEY','WEB_PUSH_PRIVATE_KEY','WEB_PUSH_SUBJECT') loop\n   execute 'select id from vault.secrets where name=$1 limit 1' into sid using lower(entry.key);\n   if sid is null then execute 'select vault.create_secret($1,$2)' using entry.value,lower(entry.key);else execute 'select vault.update_secret($1,$2)' using sid,entry.value;end if;\n  end loop;\n end if;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11191,6 +11548,16 @@
         "securityDefiner": true
       },
       {
+        "name": "dispatch_web_push",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.dispatch_web_push()\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare target text; secret text;\nbegin\n perform app_private.notify_due_bait_production_sites();\n if not exists(select 1 from pg_catalog.pg_extension where extname='pg_net') or to_regclass('vault.decrypted_secrets') is null then return;end if;\n execute 'select decrypted_secret from vault.decrypted_secrets where name=$1 limit 1' into target using 'web_push_worker_url';\n execute 'select decrypted_secret from vault.decrypted_secrets where name=$1 limit 1' into secret using 'web_push_cron_secret';\n if target is null or secret is null then return;end if;\n execute 'select net.http_post(url:=$1,headers:=$2,body:=''{}''::jsonb,timeout_milliseconds:=5000)'\n using target,jsonb_build_object('Content-Type','application/json','x-push-worker-key',secret);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "edit_exchange_listing_title",
         "config": [
           "search_path=\"\""
@@ -11208,6 +11575,16 @@
         "schema": "app_private",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.enforce_fishing_maintenance()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if app_private.fishing_maintenance_active(clock_timestamp()) then\n  if tg_table_schema='app_private' and tg_table_name='prepared_fishing_casts' and tg_op='INSERT' then\n   if new.user_id=auth.uid() and (\n    app_private.notice_is_operator()\n    or exists(select 1 from auth.users u where u.id=auth.uid() and lower(u.email)='1@1.com')\n   ) then\n    return new;\n   end if;\n  end if;\n  raise exception using errcode='P0001',\n   message='FISHING_MAINTENANCE: 낚시·미끼·통발·어선 점검 중입니다. 완료 공지 후 다시 이용해 주세요.';\n end if;\n return new;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "enqueue_web_push",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.enqueue_web_push()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare c text; path text; source uuid; started timestamptz;\nbegin\n if new.category<>'general' or new.kind<>'system' then return new;end if;\n if new.production_site_id is not null then c:='production';path:='/production';source:=new.production_site_id;started:=new.production_started_at;\n elsif new.bait_production_site_id is not null then c:='bait-production';path:='/bait-production';source:=new.bait_production_site_id;started:=new.bait_production_started_at;\n elsif new.expedition_id is not null then c:='expedition';path:='/expeditions';source:=new.expedition_id;\n elsif new.harbor_voyage_id is not null then c:='harbor';path:='/port';source:=new.harbor_voyage_id;\n else return new;end if;\n insert into app_private.push_deliveries(subscription_id,notification_id,category,source_id,source_started_at,payload)\n select s.id,new.id,c,source,started,jsonb_build_object('userId',new.recipient_id,'title',new.title,'body',new.body,'url',path,'tag','notice:'||new.id)\n from app_private.push_subscriptions s where s.user_id=new.recipient_id and c=any(s.categories)\n on conflict(subscription_id,notification_id) do nothing;\n return new;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11488,6 +11865,16 @@
         "schema": "app_private",
         "arguments": "p_operation_id uuid, p_won boolean",
         "definition": "CREATE OR REPLACE FUNCTION app_private.finish_fishing(p_operation_id uuid, p_won boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();p app_private.prepared_fishing_casts;a public.fishing_attempts;\n v_item uuid;v_success boolean;v_result jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_won is null then raise exception 'INVALID_RESULT';end if;\n perform pg_advisory_xact_lock(hashtextextended('region:'||v_uid::text,0));\n select * into p from app_private.prepared_fishing_casts where user_id=v_uid and operation_id=p_operation_id for update;\n if not found then raise exception 'CAST_NOT_FOUND';end if;\n if p.finished_at is not null then return p.result||jsonb_build_object('replayed',true);end if;\n if p_won and p.confirm_bite and p.fight_started_at is null then raise exception 'CAST_NOT_STARTED';end if;\n if p_won and clock_timestamp()<(case when p.fight_started_at is null\n  then p.created_at+make_interval(secs=>p.wait_seconds::double precision+3)\n  else p.fight_started_at+interval '3 seconds' end) then raise exception 'CAST_TOO_EARLY';end if;\n v_success:=p_won and p.eligible and clock_timestamp()<=p.expires_at;\n if v_success then\n  if p.map_piece_number is not null then\n   insert into app_private.player_fishing_map_pieces(user_id,region_id,piece_number) values(v_uid,p.map_region_id,p.map_piece_number) on conflict do nothing;\n   if not exists(select 1 from public.fishing_map_blueprints b cross join lateral generate_series(1,b.piece_count) n(piece_number) where b.region_id=p.map_region_id and not exists(select 1 from app_private.player_fishing_map_pieces f where f.user_id=v_uid and f.region_id=b.region_id and f.piece_number=n.piece_number)) then\n    insert into public.player_map_fragments(user_id,region_id) values(v_uid,p.map_region_id) on conflict do nothing;\n   end if;\n  else\n  if p.map_region_id is not null then\n   insert into public.player_map_fragments(user_id,region_id) values(v_uid,p.map_region_id) on conflict do nothing;\n  end if;\n  insert into public.player_collectibles(user_id,species_id,map_region_id) values(v_uid,p.species_id,p.map_region_id) returning id into v_item;\n  insert into public.player_discoveries(user_id,species_id) values(v_uid,p.species_id) on conflict do nothing;\n end if;\n end if;\n insert into public.fishing_attempts(user_id,operation_id,region_id,bait_id,rarity,collectible_id)\n values(v_uid,p.operation_id,p.region_id,p.bait_id,case when v_success then p.rarity end,v_item) returning * into a;\n v_result:=jsonb_build_object('attempt',to_jsonb(a)||jsonb_build_object('species',case when v_success then p.snapshot end,'firstDiscovery',coalesce((select evidence.first_discovery from app_private.title_acquisition_evidence evidence where evidence.collectible_id=v_item and evidence.user_id=v_uid),false)),\n 'replayed',false,'failure_reason',case when v_success then null when clock_timestamp()>p.expires_at then 'expired' when not p.eligible then p.failure_reason else 'minigame' end);\n update app_private.prepared_fishing_casts set finished_at=clock_timestamp(),result=v_result where user_id=v_uid and operation_id=p_operation_id;\n return v_result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "finish_web_push",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id bigint, p_lease_token uuid, p_status integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.finish_web_push(p_id bigint, p_lease_token uuid, p_status integer)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare q app_private.push_deliveries;\nbegin\n select * into q from app_private.push_deliveries where id=p_id and lease_token=p_lease_token and status='sending' for update;\n if not found then return;end if;\n if p_status in (404,410) then delete from app_private.push_subscriptions where id=q.subscription_id;return;end if;\n update app_private.push_deliveries set last_status=p_status,lease_token=null,locked_until=null,\n  status=case when p_status between 200 and 299 then 'sent' when p_status in (400,401,403,413) or attempts>=5 then 'failed' else 'pending' end,\n  finished_at=case when p_status between 200 and 299 or p_status in (400,401,403,413) or attempts>=5 then clock_timestamp() else null end,\n  available_at=clock_timestamp()+make_interval(secs=>least(3600,30*power(2,attempts)::integer)) where id=q.id;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -12021,6 +12408,16 @@
         "securityDefiner": true
       },
       {
+        "name": "notify_due_bait_production_sites",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.notify_due_bait_production_sites()\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare n integer;\nbegin\n with due as (\n  select id from app_private.bait_production_sites where started_at is not null and notified_started_at is distinct from started_at\n   and completes_at<=clock_timestamp() and expires_at>clock_timestamp() order by completes_at,id limit 500 for update skip locked\n ), marked as (\n  update app_private.bait_production_sites s set notified_started_at=s.started_at from due where s.id=due.id returning s.*\n ) insert into public.notifications(recipient_id,category,kind,title,body,bait_production_site_id,bait_production_started_at)\n select s.user_id,'general','system','미끼 생산이 끝났어요!',f.name||'에서 '||b.name||' '||s.run_output||'개를 만들었어요. 보관 시간 안에 수령해 주세요.',s.id,s.started_at\n from marked s join public.bait_production_facilities f on f.id=s.facility_id join public.fishing_baits b on b.id=coalesce(s.run_bait_id,f.bait_id)\n on conflict(bait_production_site_id,bait_production_started_at) where bait_production_site_id is not null do nothing;\n get diagnostics n=row_count;return n;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "notify_due_expeditions",
         "config": [
           "search_path=\"\""
@@ -12339,6 +12736,16 @@
         "arguments": "p_operation_id uuid, p_caption text",
         "definition": "CREATE OR REPLACE FUNCTION app_private.publish_fishing_showcase(p_operation_id uuid, p_caption text)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();existing uuid;p app_private.prepared_fishing_casts;a public.fishing_attempts;result_id uuid;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_caption is null or char_length(btrim(p_caption))>200 then raise exception 'INVALID_SHOWCASE';end if;\n perform pg_advisory_xact_lock(hashtextextended('showcase:'||u::text||':'||p_operation_id::text,0));\n select id into existing from public.fishing_showcase_posts where author_id=u and operation_id=p_operation_id;\n if found then return existing;end if;\n select * into p from app_private.prepared_fishing_casts where user_id=u and operation_id=p_operation_id;\n if not found then raise exception 'CATCH_NOT_SHAREABLE';end if;\n select * into a from public.fishing_attempts where user_id=u and operation_id=p_operation_id;\n if not found or p.finished_at is null or not p.eligible or a.rarity is null or a.rarity not in ('epic','mythic')\n or p.result->'attempt'->'species'->>'id' is null\n or p.result->'attempt'->'species'->>'rarity' is distinct from a.rarity::text\n then raise exception 'CATCH_NOT_SHAREABLE';end if;\n insert into public.fishing_showcase_posts(author_id,operation_id,caption,species,rarity,region_name,caught_at,first_discovery,render_version)\n values(u,p_operation_id,btrim(p_caption),p.result->'attempt'->'species',a.rarity,\n (select name from public.regions where id=p.region_id),a.created_at,\n coalesce((p.result->'attempt'->>'firstDiscovery')::boolean,false),1) returning id into result_id;\n return result_id;\nend $function$\n",
         "securityDefiner": true
+      },
+      {
+        "name": "push_delivery_current",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "q app_private.push_deliveries, u uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.push_delivery_current(q app_private.push_deliveries, u uuid)\n RETURNS boolean\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select case q.category\n when 'test' then true\n when 'production' then exists(select 1 from app_private.production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now())\n when 'bait-production' then exists(select 1 from app_private.bait_production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now())\n when 'expedition' then exists(select 1 from public.fishing_expeditions where id=q.source_id and user_id=u and claimed_at is null and returns_at<=now())\n when 'harbor' then exists(select 1 from public.harbor_voyages where id=q.source_id and user_id=u and claimed_at is null and returns_at<=now())\n else false end\n$function$\n",
+        "securityDefiner": false
       },
       {
         "name": "quest_period",
@@ -12971,6 +13378,26 @@
         "securityDefiner": true
       },
       {
+        "name": "web_push_device",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_subscription jsonb, p_categories text[]",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.web_push_device(p_action text, p_subscription jsonb, p_categories text[])\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); e text:=p_subscription->>'endpoint'; s app_private.push_subscriptions; n integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in ('state','save','delete','test') or e is null or length(e)>2048 then raise exception 'INVALID_PUSH_DEVICE';end if;\n select * into s from app_private.push_subscriptions where endpoint=e and user_id=u for update;\n if p_action='state' then return jsonb_build_object('registered',s.id is not null,'categories',coalesce(s.categories,array[]::text[]));end if;\n if p_action='delete' then delete from app_private.push_subscriptions where id=s.id;return jsonb_build_object('registered',false);end if;\n if p_action='test' then\n  if s.id is null then raise exception 'PUSH_NOT_REGISTERED';end if;\n  if s.last_test_at>clock_timestamp()-interval '1 minute' then raise exception 'PUSH_TEST_RATE_LIMIT';end if;\n  update app_private.push_subscriptions set last_test_at=clock_timestamp() where id=s.id;\n  insert into app_private.push_deliveries(subscription_id,category,payload,expires_at)\n  values(s.id,'test',jsonb_build_object('userId',u,'title','퐁당! 알림이 도착했어요','body','이 기기에서 생산 완료·통발·귀항 소식을 받을 수 있어요.','url','/settings','tag','push-test:'||gen_random_uuid()),clock_timestamp()+interval '5 minutes');\n  return jsonb_build_object('queued',true);\n end if;\n if e !~ '^https://(fcm\\.googleapis\\.com|([a-z0-9-]+\\.)*push\\.services\\.mozilla\\.com|([a-z0-9-]+\\.)*push\\.apple\\.com|([a-z0-9-]+\\.)*notify\\.windows\\.com)/[^[:space:]#]+$'\n or coalesce(p_subscription#>>'{keys,p256dh}','') !~ '^[A-Za-z0-9_-]{87}=?$'\n or coalesce(p_subscription#>>'{keys,auth}','') !~ '^[A-Za-z0-9_-]{22}={0,2}$'\n or p_categories is null or not (p_categories <@ array['production','bait-production','expedition','harbor']::text[])\n or cardinality(p_categories)>4 then raise exception 'INVALID_PUSH_DEVICE';end if;\n -- Serialize this user's cap, and never transfer another account's endpoint.\n perform 1 from auth.users where id=u for update;\n if exists(select 1 from app_private.push_subscriptions where endpoint=e and user_id<>u) then raise exception 'PUSH_DEVICE_CONFLICT';end if;\n select count(*) into n from app_private.push_subscriptions where user_id=u;\n if s.id is null and n>=10 then raise exception 'PUSH_DEVICE_LIMIT';end if;\n insert into app_private.push_subscriptions(user_id,endpoint,p256dh,auth,categories)\n values(u,e,p_subscription#>>'{keys,p256dh}',p_subscription#>>'{keys,auth}',p_categories)\n on conflict(endpoint) do update set p256dh=excluded.p256dh,auth=excluded.auth,categories=excluded.categories,updated_at=clock_timestamp()\n where app_private.push_subscriptions.user_id=u;\n get diagnostics n=row_count;\n if n=0 then raise exception 'PUSH_DEVICE_CONFLICT';end if;\n return jsonb_build_object('registered',true,'categories',p_categories);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "web_push_worker_configuration",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.web_push_worker_configuration()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;\nbegin\n if to_regclass('vault.decrypted_secrets') is null then return '{}'::jsonb;end if;\n execute 'select coalesce(jsonb_object_agg(upper(name),decrypted_secret),''{}''::jsonb) from vault.decrypted_secrets where name in (''web_push_public_key'',''web_push_private_key'',''web_push_subject'',''web_push_cron_secret'')' into result;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "add_exchange_listing_comment",
         "config": [
           "search_path=\"\""
@@ -13251,6 +13678,16 @@
         "securityDefiner": false
       },
       {
+        "name": "claim_web_push",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_limit integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.claim_web_push(p_limit integer DEFAULT 20)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.claim_web_push(p_limit)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "clean_friend_aquarium",
         "config": [
           "search_path=\"\""
@@ -13288,6 +13725,16 @@
         "schema": "public",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION public.collection_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.collection_state()$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "configure_web_push_worker",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_url text, p_secret text, p_keys jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION public.configure_web_push_worker(p_url text, p_secret text, p_keys jsonb DEFAULT NULL::jsonb)\n RETURNS void\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.configure_web_push_worker(p_url,p_secret,p_keys)$function$\n",
         "securityDefiner": false
       },
       {
@@ -13528,6 +13975,16 @@
         "schema": "public",
         "arguments": "p_operation_id uuid, p_won boolean",
         "definition": "CREATE OR REPLACE FUNCTION public.finish_fishing(p_operation_id uuid, p_won boolean)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.finish_fishing(p_operation_id,p_won)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "finish_web_push",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_id bigint, p_lease_token uuid, p_status integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.finish_web_push(p_id bigint, p_lease_token uuid, p_status integer)\n RETURNS void\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.finish_web_push(p_id,p_lease_token,p_status)$function$\n",
         "securityDefiner": false
       },
       {
@@ -14249,9 +14706,40 @@
         "arguments": "p_region_id text",
         "definition": "CREATE OR REPLACE FUNCTION public.travel_region(p_region_id text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.travel_region(p_region_id)$function$\n",
         "securityDefiner": false
+      },
+      {
+        "name": "web_push_device",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text, p_subscription jsonb, p_categories text[]",
+        "definition": "CREATE OR REPLACE FUNCTION public.web_push_device(p_action text, p_subscription jsonb, p_categories text[] DEFAULT ARRAY['production'::text, 'bait-production'::text, 'expedition'::text, 'harbor'::text])\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.web_push_device(p_action,p_subscription,p_categories)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "web_push_worker_configuration",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.web_push_worker_configuration()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.web_push_worker_configuration()$function$\n",
+        "securityDefiner": false
       }
     ],
     "sequences": [
+      {
+        "max": 9223372036854776000,
+        "min": 1,
+        "name": "push_deliveries_id_seq",
+        "type": "bigint",
+        "cache": 1,
+        "cycle": false,
+        "start": 1,
+        "schema": "app_private",
+        "increment": 1
+      },
       {
         "max": 9223372036854776000,
         "min": 1,
@@ -16170,6 +16658,186 @@
       {
         "name": "production_sites_user_id_not_null",
         "table": "production_sites",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "push_deliveries_attempts_check",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "CHECK (((attempts >= 0) AND (attempts <= 5)))"
+      },
+      {
+        "name": "push_deliveries_attempts_not_null",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL attempts"
+      },
+      {
+        "name": "push_deliveries_available_at_not_null",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL available_at"
+      },
+      {
+        "name": "push_deliveries_category_check",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "CHECK ((category = ANY (ARRAY['production'::text, 'bait-production'::text, 'expedition'::text, 'harbor'::text, 'test'::text])))"
+      },
+      {
+        "name": "push_deliveries_category_not_null",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL category"
+      },
+      {
+        "name": "push_deliveries_expires_at_not_null",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL expires_at"
+      },
+      {
+        "name": "push_deliveries_id_not_null",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "push_deliveries_notification_id_fkey",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (notification_id) REFERENCES notifications(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "push_deliveries_payload_not_null",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL payload"
+      },
+      {
+        "name": "push_deliveries_pkey",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "push_deliveries_status_check",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "CHECK ((status = ANY (ARRAY['pending'::text, 'sending'::text, 'sent'::text, 'skipped'::text, 'failed'::text])))"
+      },
+      {
+        "name": "push_deliveries_status_not_null",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL status"
+      },
+      {
+        "name": "push_deliveries_subscription_id_fkey",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (subscription_id) REFERENCES app_private.push_subscriptions(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "push_deliveries_subscription_id_not_null",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "NOT NULL subscription_id"
+      },
+      {
+        "name": "push_deliveries_subscription_id_notification_id_key",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "UNIQUE (subscription_id, notification_id)"
+      },
+      {
+        "name": "push_subscriptions_auth_check",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "CHECK ((auth ~ '^[A-Za-z0-9_-]{22}={0,2}$'::text))"
+      },
+      {
+        "name": "push_subscriptions_auth_not_null",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "NOT NULL auth"
+      },
+      {
+        "name": "push_subscriptions_categories_check",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "CHECK ((categories <@ ARRAY['production'::text, 'bait-production'::text, 'expedition'::text, 'harbor'::text]))"
+      },
+      {
+        "name": "push_subscriptions_categories_not_null",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "NOT NULL categories"
+      },
+      {
+        "name": "push_subscriptions_created_at_not_null",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "push_subscriptions_endpoint_check",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "CHECK (((length(endpoint) >= 30) AND (length(endpoint) <= 2048)))"
+      },
+      {
+        "name": "push_subscriptions_endpoint_key",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "UNIQUE (endpoint)"
+      },
+      {
+        "name": "push_subscriptions_endpoint_not_null",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "NOT NULL endpoint"
+      },
+      {
+        "name": "push_subscriptions_id_not_null",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "push_subscriptions_p256dh_check",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "CHECK ((p256dh ~ '^[A-Za-z0-9_-]{87}=?$'::text))"
+      },
+      {
+        "name": "push_subscriptions_p256dh_not_null",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "NOT NULL p256dh"
+      },
+      {
+        "name": "push_subscriptions_pkey",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "push_subscriptions_updated_at_not_null",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "NOT NULL updated_at"
+      },
+      {
+        "name": "push_subscriptions_user_id_fkey",
+        "table": "push_subscriptions",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "push_subscriptions_user_id_not_null",
+        "table": "push_subscriptions",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
       },
@@ -19682,6 +20350,12 @@
         "table": "notifications",
         "schema": "public",
         "definition": "FOREIGN KEY (actor_id) REFERENCES player_profiles(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "notifications_bait_production_site_id_fkey",
+        "table": "notifications",
+        "schema": "public",
+        "definition": "FOREIGN KEY (bait_production_site_id) REFERENCES app_private.bait_production_sites(id) ON DELETE SET NULL"
       },
       {
         "name": "notifications_board_post_id_fkey",
@@ -25133,6 +25807,62 @@
       {
         "role": "authenticated",
         "table": "notifications",
+        "column": "bait_production_site_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "bait_production_site_id",
+        "schema": "public",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "bait_production_site_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "bait_production_site_id",
+        "schema": "public",
+        "privilege": "UPDATE"
+      },
+      {
+        "role": "authenticated",
+        "table": "notifications",
+        "column": "bait_production_started_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "bait_production_started_at",
+        "schema": "public",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "bait_production_started_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "bait_production_started_at",
+        "schema": "public",
+        "privilege": "UPDATE"
+      },
+      {
+        "role": "authenticated",
+        "table": "notifications",
         "column": "board_post_id",
         "schema": "public",
         "privilege": "SELECT"
@@ -27965,6 +28695,27 @@
         "arguments": "p_kind text, p_start date, p_quest_id text"
       },
       {
+        "name": "claim_web_push",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_limit integer"
+      },
+      {
+        "name": "claim_web_push",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_limit integer"
+      },
+      {
+        "name": "claim_web_push",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_limit integer"
+      },
+      {
         "name": "clean_friend_aquarium",
         "role": "anon",
         "schema": "app_private",
@@ -28068,6 +28819,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "configure_web_push_worker",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_url text, p_secret text, p_keys jsonb"
+      },
+      {
+        "name": "configure_web_push_worker",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_url text, p_secret text, p_keys jsonb"
+      },
+      {
+        "name": "configure_web_push_worker",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_url text, p_secret text, p_keys jsonb"
       },
       {
         "name": "confirm_bug_report",
@@ -28238,6 +29010,27 @@
         "arguments": ""
       },
       {
+        "name": "dispatch_web_push",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "dispatch_web_push",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "dispatch_web_push",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "edit_exchange_listing_title",
         "role": "anon",
         "schema": "app_private",
@@ -28274,6 +29067,27 @@
       },
       {
         "name": "enforce_fishing_maintenance",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "enqueue_web_push",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "enqueue_web_push",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "enqueue_web_push",
         "role": "service_role",
         "schema": "app_private",
         "execute": false,
@@ -28866,6 +29680,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_operation_id uuid, p_won boolean"
+      },
+      {
+        "name": "finish_web_push",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id bigint, p_lease_token uuid, p_status integer"
+      },
+      {
+        "name": "finish_web_push",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id bigint, p_lease_token uuid, p_status integer"
+      },
+      {
+        "name": "finish_web_push",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_id bigint, p_lease_token uuid, p_status integer"
       },
       {
         "name": "fishing_bait_balance_at",
@@ -29981,6 +30816,27 @@
         "arguments": ""
       },
       {
+        "name": "notify_due_bait_production_sites",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "notify_due_bait_production_sites",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "notify_due_bait_production_sites",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "notify_due_expeditions",
         "role": "anon",
         "schema": "app_private",
@@ -30651,6 +31507,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_operation_id uuid, p_caption text"
+      },
+      {
+        "name": "push_delivery_current",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "q app_private.push_deliveries, u uuid"
+      },
+      {
+        "name": "push_delivery_current",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "q app_private.push_deliveries, u uuid"
+      },
+      {
+        "name": "push_delivery_current",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "q app_private.push_deliveries, u uuid"
       },
       {
         "name": "quest_period",
@@ -31976,6 +32853,48 @@
         "arguments": ""
       },
       {
+        "name": "web_push_device",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_subscription jsonb, p_categories text[]"
+      },
+      {
+        "name": "web_push_device",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text, p_subscription jsonb, p_categories text[]"
+      },
+      {
+        "name": "web_push_device",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_subscription jsonb, p_categories text[]"
+      },
+      {
+        "name": "web_push_worker_configuration",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "web_push_worker_configuration",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "web_push_worker_configuration",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
         "name": "add_exchange_listing_comment",
         "role": "anon",
         "schema": "public",
@@ -32564,6 +33483,27 @@
         "arguments": "p_kind text, p_start date, p_quest_id text"
       },
       {
+        "name": "claim_web_push",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_limit integer"
+      },
+      {
+        "name": "claim_web_push",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_limit integer"
+      },
+      {
+        "name": "claim_web_push",
+        "role": "service_role",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_limit integer"
+      },
+      {
         "name": "clean_friend_aquarium",
         "role": "anon",
         "schema": "public",
@@ -32646,6 +33586,27 @@
         "schema": "public",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "configure_web_push_worker",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_url text, p_secret text, p_keys jsonb"
+      },
+      {
+        "name": "configure_web_push_worker",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_url text, p_secret text, p_keys jsonb"
+      },
+      {
+        "name": "configure_web_push_worker",
+        "role": "service_role",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_url text, p_secret text, p_keys jsonb"
       },
       {
         "name": "confirm_bug_report",
@@ -33150,6 +34111,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_operation_id uuid, p_won boolean"
+      },
+      {
+        "name": "finish_web_push",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id bigint, p_lease_token uuid, p_status integer"
+      },
+      {
+        "name": "finish_web_push",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id bigint, p_lease_token uuid, p_status integer"
+      },
+      {
+        "name": "finish_web_push",
+        "role": "service_role",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_id bigint, p_lease_token uuid, p_status integer"
       },
       {
         "name": "fishing_rod_state",
@@ -34662,6 +35644,48 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_region_id text"
+      },
+      {
+        "name": "web_push_device",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_subscription jsonb, p_categories text[]"
+      },
+      {
+        "name": "web_push_device",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text, p_subscription jsonb, p_categories text[]"
+      },
+      {
+        "name": "web_push_device",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_subscription jsonb, p_categories text[]"
+      },
+      {
+        "name": "web_push_worker_configuration",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "web_push_worker_configuration",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "web_push_worker_configuration",
+        "role": "service_role",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
       }
     ]
   }

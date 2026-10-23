@@ -9,7 +9,7 @@ async function call(action:string,facility:string,op=crypto.randomUUID(),owner=u
 }
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db);await db.query('insert into auth.users(id) values($1),($2)',[user,other])},60000)
 beforeEach(async()=>{
- await db.exec('truncate app_private.bait_production_sites,app_private.bait_production_operations')
+ await db.exec('truncate app_private.push_deliveries,public.notifications,app_private.bait_production_sites,app_private.bait_production_operations')
  await db.query('delete from public.gold_transactions where user_id=$1',[user])
  await db.query("insert into public.player_wallets(user_id,gold,inventory) values($1,10000,'{\"fuel\":100}') on conflict(user_id) do update set gold=10000,inventory=excluded.inventory",[user])
 })

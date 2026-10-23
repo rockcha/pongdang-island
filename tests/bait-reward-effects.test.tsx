@@ -1,6 +1,7 @@
 import {act,cleanup,render,screen,waitFor} from '@testing-library/react'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
-const mocks=vi.hoisted(()=>({rpc:vi.fn(),load:vi.fn()}))
+const mocks=vi.hoisted(()=>({rpc:vi.fn(),load:vi.fn(),rewardSound:vi.fn()}))
+vi.mock('@/features/gold/purchase-sound',()=>({playPurchaseSound:vi.fn(),playSaleSound:vi.fn(),playRewardSound:mocks.rewardSound}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'player'}}})}))
 vi.mock('@/features/gold/api',()=>({loadGold:mocks.load,transactGold:vi.fn(),goldError:()=>''}))
 vi.mock('@/lib/client',()=>({createClient:()=>({rpc:mocks.rpc})}))
@@ -20,6 +21,7 @@ it('uses the settled production count, not the current catalogue output, and ded
  await act(async()=>{await actBaitProduction(args);await actBaitProduction(args)})
  expect(screen.getByText('+3')).toBeTruthy()
  expect(document.body.querySelectorAll('.gold-change')).toHaveLength(1)
+ expect(mocks.rewardSound).toHaveBeenCalledExactlyOnceWith('production:operation')
  expect(document.body.querySelector('.gold-change img')?.getAttribute('src')).toContain('pongdang-worm')
 })
 it('shows the actual gifted bait icon and quantity, and leaves failed claims without an effect',async()=>{

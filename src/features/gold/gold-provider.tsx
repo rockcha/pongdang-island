@@ -8,7 +8,7 @@ import { goldError, loadGold, transactGold } from './api'
 import type { Trade, Wallet } from './wallet'
 import {toast} from 'sonner'
 import {purchaseMessage} from './purchase-message'
-import {playPurchaseSound,playSaleSound} from './purchase-sound'
+import {playPurchaseSound,playSaleSound,playRewardSound} from './purchase-sound'
 import {GoldChange} from './gold-change'
 import {BAIT_RECEIVED,type BaitRewardEffect} from '@/features/fishing/bait-reward-effect'
 
@@ -37,6 +37,7 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
     if(notifyChange&&previousGold.current!==null)showDelta(data.gold-previousGold.current)
     const fuel=data.inventory.fuel??0
     if(previousFuel.current!==null)showDelta(fuel-previousFuel.current,'fuel')
+    if(notifyChange&&previousFuel.current!==null&&fuel>previousFuel.current)playRewardSound(`fuel:${randomId()}`)
     previousFuel.current=fuel
     previousGold.current=data.gold;revision.current++
     setWallet({ gold: data.gold, inventory: data.inventory })
@@ -60,6 +61,7 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
       receivedBaits.current.add(reward.key)
       if(receivedBaits.current.size>500)receivedBaits.current.delete(receivedBaits.current.values().next().value!)
       showDelta(reward.quantity,'bait',reward.icon,reward.name)
+      playRewardSound(reward.key)
     }
     window.addEventListener(BAIT_RECEIVED,receiveBait)
     return () => { active.current = false; window.removeEventListener('focus', reload); window.removeEventListener('online', reload);window.removeEventListener('attendance-changed',reload);window.removeEventListener('wallet-changed',reload);window.removeEventListener(BAIT_RECEIVED,receiveBait) }

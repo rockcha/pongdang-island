@@ -18,6 +18,7 @@ import {BoatSprite} from './boat-sprite'
 import {useHarbor} from './use-harbor'
 import {FleetDialog} from './fleet-dialog'
 import {readDockRegion} from './dock-region'
+import {useFishingAudio} from '@/features/fishing/fishing-audio'
 
 export function PortPage({shipyard=false}:{shipyard?:boolean}){
  const {session}=useAuth()
@@ -31,6 +32,7 @@ function VesselStats({vessel}:{vessel:Pick<HarborVessel,'duration_minutes'|'fish
  return <><div className="grid grid-cols-2 justify-items-center gap-x-1 gap-y-2 text-[11px] text-muted-foreground"><span className="flex items-center gap-1"><img src="/app-icons/voyage-clock.png" alt="" className="size-5 object-contain"/>{voyageDuration(vessel.duration_minutes)}</span><span className="flex items-center gap-1"><img src="/app-icons/voyage-fishing.png" alt="" className="size-5 object-contain"/><span className="sr-only">낚시 </span>{vessel.fishing_count}{vessel.fishing_count_max&&vessel.fishing_count_max>vessel.fishing_count?`~${vessel.fishing_count_max}`:''}회</span><span className="col-span-2 flex items-center gap-1"><span className="sr-only">연료 </span><appArt.fuel className="size-5"/>× {vessel.fuel_cost}</span></div>{rule&&<p className="mt-2 text-center text-[11px] text-primary">회당 어획 성공률 {rule.success_bp/100}%</p>}{effect&&<details className="group mt-1 text-center"><summary aria-label="특수효과 보기" className="mx-auto flex min-h-11 w-fit cursor-pointer list-none items-center justify-center gap-1.5 rounded-full px-2 text-[11px] text-primary hover:bg-secondary [&::-webkit-details-marker]:hidden"><EffectIcon aria-hidden="true" className="size-4"/><span>특수 효과</span><ChevronDown aria-hidden="true" className="size-3 transition-transform group-open:rotate-180"/></summary><p className="pb-1 text-[11px] leading-5 text-primary">{effect}</p>{rule&&<p className="pb-2 text-[10px] leading-5 text-muted-foreground">어획 성공 시 · 일반 {rule.common_bp/100}% · 희귀 {rule.rare_bp/100}% · 특급 {rule.epic_bp/100}% · 신화 {rule.mythic_bp/100}%</p>}</details>}</>
 }
 function AccountPort({shipyard}:{shipyard:boolean}){
+ useFishingAudio('/sounds/fishing-bg.mp3',!shipyard,{loop:true,volume:.25})
  const {session}=useAuth()
  const harbor=useHarbor(),{wallet}=useGold()
  const [selected,setSelected]=useState<string|null>(null),[confirm,setConfirm]=useState<HarborAction|null>(null)

@@ -36,6 +36,7 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      web_push_device: {Args:{p_action:string;p_subscription:Record<string,unknown>;p_categories?:string[]};Returns:{registered:boolean;categories:import('@/features/notifications/push-device').PushCategory[]}}
       experience_state:{Args:Record<string,never>;Returns:import('@/features/experience/api').ExperienceState}
       friend_levels:{Args:Record<string,never>;Returns:import('@/features/experience/api').FriendLevel[]}
       player_levels:{Args:{p_ids:string[];p_friend_codes?:string[]};Returns:import('@/features/experience/api').PlayerLevelState[]}

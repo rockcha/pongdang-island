@@ -14,7 +14,7 @@ async function legacyDeparture(vessel,cargo){
 }
 
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db);successDefinition=(await db.query("select pg_get_functiondef('app_private.fishing_success_chance_bp(text)'::regprocedure) d")).rows[0].d;for(const u of [owner,other]){await db.query('insert into auth.users(id) values($1)',[u]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[u,u===owner?'선장':'친구']);await db.query('insert into public.player_wallets(user_id,gold) values($1,50000) on conflict(user_id) do update set gold=excluded.gold',[u])}},60000)
-beforeEach(async()=>{await db.exec(successDefinition);await db.exec(`truncate public.notifications,app_private.expedition_boosts,public.fishing_expeditions,public.player_fishing_vessels,app_private.expedition_operations;update public.player_wallets set gold=50000,inventory='{"bait":100,"bait_special":20}';update app_private.expedition_settings set instant_return_enabled=true`)})
+beforeEach(async()=>{await db.exec(successDefinition);await db.exec(`truncate app_private.push_deliveries,public.notifications,app_private.expedition_boosts,public.fishing_expeditions,public.player_fishing_vessels,app_private.expedition_operations;update public.player_wallets set gold=50000,inventory='{"bait":100,"bait_special":20}';update app_private.expedition_settings set instant_return_enabled=true`)})
 afterAll(async()=>{await db?.close()})
 it('enforces minimum, maximum, inventory, ownership and region access without consuming bait',async()=>{
  for(const cargo of [{bait:0},{bait:31},{unknown:3},{bait:-1},{bait:1.5}])await expect(action('depart','dinghy',cargo)).rejects.toThrow(/CARGO|BAIT/)

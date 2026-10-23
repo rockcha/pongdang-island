@@ -1,3 +1,4 @@
+import {disconnectPushForLogout} from '@/features/notifications/push-device'
 import {PlayerLevel} from '@/features/experience/player-level'
 import {appArt} from '@/components/app-art'
 import { NicknamePage } from '@/pages/nickname-page'
@@ -72,7 +73,7 @@ export function ProfilePage() {
       <ExperienceProgress/>
       <input ref={input} type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" aria-label="아바타 이미지 선택" disabled={busy||!profile} onChange={event=>void select(event)}/>
       <div className="grid grid-cols-3 divide-x border-y" aria-label="나의 활동">{[{label:'발견한 개체',value:stats?.discovered,icon:BookOpen,to:'/collection'},{label:'보유 개체',value:stats?.owned,icon:Fish,to:'/aquarium'},{label:'친구',value:loading?undefined:requests.filter(item=>item.status==='accepted').length,icon:Users,to:'/friends'}].map(item=><Link key={item.label} to={item.to} className="flex min-h-24 min-w-0 flex-col items-center justify-center gap-1 py-3 hover:bg-secondary/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"><item.icon className="mb-1 size-8 text-primary"/><span className="text-base tabular-nums">{item.value??(statsError?'—':'…')}</span><span className="text-[11px] text-muted-foreground">{item.label}</span></Link>)}</div>
-      <div className="border-b"><button className="flex min-h-14 w-full items-center gap-3 px-4 text-left text-sm text-destructive hover:bg-destructive/5 disabled:opacity-50" disabled={busy} onClick={async()=>{setBusy(true);try{const {error}=await createClient().auth.signOut({scope:'local'});if(error)throw error}catch{toast.error('로그아웃에 실패했어요. 다시 시도해주세요.')}finally{setBusy(false)}}}><LogOut className="size-7"/>로그아웃</button></div>
+      <div className="border-b"><button className="flex min-h-14 w-full items-center gap-3 px-4 text-left text-sm text-destructive hover:bg-destructive/5 disabled:opacity-50" disabled={busy} onClick={async()=>{setBusy(true);try{await disconnectPushForLogout();const {error}=await createClient().auth.signOut({scope:'local'});if(error)throw error}catch{toast.error('로그아웃에 실패했어요. 다시 시도해주세요.')}finally{setBusy(false)}}}><LogOut className="size-7"/>로그아웃</button></div>
       {session?.user.email?.toLowerCase()==='1@1.com'&&<MapPieceTestControls key={session.user.id} userId={session.user.id}/>}
       {(busy||loading)&&<p role="status" className="px-4 py-3 text-xs text-muted-foreground">{busy?'변경 사항을 처리하고 있어요…':'프로필을 불러오는 중…'}</p>}
       {(message||error)&&<p role="alert" className="px-4 py-3 text-sm text-destructive">{message||error}</p>}
@@ -81,4 +82,3 @@ export function ProfilePage() {
     <Dialog open={nameOpen} onOpenChange={setNameOpen}><DialogContent className="notification-sheet bottom-0 top-auto left-0 flex max-h-[88dvh] max-w-full translate-x-0 translate-y-0 flex-col overflow-hidden rounded-t-2xl rounded-b-none pb-0 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2"><DialogHeader className="shrink-0 pr-7"><DialogTitle className="flex items-center gap-2"><img src="/branding/pongi-starfish.png" alt="" aria-hidden="true" className="size-6 shrink-0 object-contain"/>이름 바꾸기</DialogTitle><DialogDescription>어떻게 불러드릴까요?</DialogDescription></DialogHeader>{nameOpen&&<NicknamePage onSaved={()=>setNameOpen(false)}/>}</DialogContent></Dialog>
   </section>
 }
-

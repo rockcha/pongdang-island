@@ -11,7 +11,7 @@ export default defineConfig({
   optimizeDeps: { entries: ['index.html'] },
   plugins: [react(), tailwindcss(), VitePWA({
     registerType: 'prompt',
-    workbox: { globPatterns: ['**/*.{js,css,html,woff2}'],runtimeCaching:imageRuntimeCaching },
+    workbox: { globPatterns: ['**/*.{js,css,html,woff2}'],runtimeCaching:imageRuntimeCaching,importScripts:['/push-worker.js'] },
       includeAssets: ['fallback-image.svg', 'favicon-32.png', 'favicon-64.png', 'apple-touch-icon.png', 'branding/pongi.png', 'branding/pongi-welcome.png', 'branding/pongi-startup.png', 'branding/pongi-aquarium-loading.png', 'branding/confirm/*.png', 'region-icons/*.svg', 'notification-icons/*.png', 'app-icons/*.png'],
     manifest: {
       id: '/', name: '퐁당섬', short_name: '퐁당섬', lang: 'ko',

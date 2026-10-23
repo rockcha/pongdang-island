@@ -1,3 +1,4 @@
+import {disconnectPushForLogout} from '@/features/notifications/push-device'
 import {appArt} from '@/components/app-art'
 import { useEffect,useRef, useState } from 'react'
 import { Menu } from '@base-ui/react/menu'
@@ -36,6 +37,7 @@ export function AvatarMenu() {
     pending.current = true
     setBusy(true)
     try {
+      await disconnectPushForLogout()
       const { error } = await createClient().auth.signOut({ scope: 'local' })
       if (error) throw error
       navigate('/login', { replace: true })
@@ -76,4 +78,3 @@ export function AvatarMenu() {
     </Menu.Portal>
   </Menu.Root>
 }
-

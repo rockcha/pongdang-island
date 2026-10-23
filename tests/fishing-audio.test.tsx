@@ -46,9 +46,16 @@ it.each(['common','rare','epic','mythic'] as const)('casts once and uses the %s 
  const splash=players.find(p=>p.src===fishingSplash(rarity))!;expect(splash.play).toHaveBeenCalledOnce()
  fireEvent.click(screen.getByRole('button',{name:'입질이 왔어요. 터치해서 시작'}));await tick()
  expect(players.filter(p=>p.src.includes('splash'))).toHaveLength(1)
+ const struggle=players.find(p=>p.src==='/sounds/fish-struggle.mp3')
+ if(rarity==='common'||rarity==='rare'){expect(struggle?.play).toHaveBeenCalledOnce();expect(struggle?.loop).toBe(true)}else expect(struggle).toBeUndefined()
+ const unheld=players.find(p=>p.src==='/sounds/reel-unheld.mp3')!
+ expect(unheld.play).toHaveBeenCalledOnce();expect(unheld.loop).toBe(true)
  fireEvent.keyDown(screen.getByRole('button',{name:'꾹 눌러 당기기'}),{code:'Space'});await tick()
+ expect(unheld.pause).toHaveBeenCalled()
  const reel=players.find(p=>p.src==='/sounds/reel.mp3')!;expect(reel.play).toHaveBeenCalledOnce()
  fireEvent.keyUp(screen.getByRole('button',{name:'꾹 눌러 당기기'}),{code:'Space'});expect(reel.pause).toHaveBeenCalled()
+ await tick();expect(players.filter(p=>p.src==='/sounds/reel-unheld.mp3')).toHaveLength(2)
+ view.rerender(<TensionFishingGame {...props} active castId="cast-1" paused/>);await tick()
  view.unmount();expect(players.every(p=>p.pause.mock.calls.length>0)).toBe(true)
 })
 it('delays casting audio by one second and cancels it when leaving before then',async()=>{

@@ -20,7 +20,7 @@ beforeAll(async()=>{
 },60000)
 afterAll(async()=>{await db?.close()})
 beforeEach(async()=>{
- await db.exec('truncate public.notifications,app_private.production_sites,app_private.production_operations')
+ await db.exec('truncate app_private.push_deliveries,public.notifications,app_private.production_sites,app_private.production_operations')
  sites.clear()
  for(const uid of [owner,other]){
   await db.query("insert into public.player_wallets(user_id,gold,inventory) values($1,50000,'{}') on conflict(user_id) do update set gold=50000,inventory='{}'",[uid])

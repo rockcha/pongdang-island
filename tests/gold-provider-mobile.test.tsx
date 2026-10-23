@@ -1,7 +1,7 @@
 ﻿import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
-const {load,trade,success,purchaseSound,saleSound}=vi.hoisted(()=>({load:vi.fn(),trade:vi.fn(),success:vi.fn(),purchaseSound:vi.fn(),saleSound:vi.fn()}))
-vi.mock('@/features/gold/purchase-sound',()=>({playPurchaseSound:purchaseSound,playSaleSound:saleSound}))
+const {load,trade,success,purchaseSound,saleSound,rewardSound}=vi.hoisted(()=>({load:vi.fn(),trade:vi.fn(),success:vi.fn(),purchaseSound:vi.fn(),saleSound:vi.fn(),rewardSound:vi.fn()}))
+vi.mock('@/features/gold/purchase-sound',()=>({playPurchaseSound:purchaseSound,playSaleSound:saleSound,playRewardSound:rewardSound}))
 vi.mock('sonner',()=>({toast:{success}}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'player'}}})}))
 vi.mock('@/features/gold/api',()=>({loadGold:load,transactGold:trade,goldError:()=> '오류'}))
@@ -42,6 +42,7 @@ it('shows fuel gains and usage once, without animating initial inventory',async(
  const button=screen.getByRole('button',{name:'잔액 갱신'}) as HTMLButtonElement
  await waitFor(()=>expect(button.disabled).toBe(false))
  expect(document.body.querySelectorAll('.gold-change')).toHaveLength(0)
+ expect(rewardSound).not.toHaveBeenCalled()
  load.mockResolvedValue({...wallet,inventory:{fuel:15}});fireEvent.click(button)
  expect(await screen.findByText('+5')).toBeTruthy()
  expect(document.body.querySelector('.gold-change img')?.getAttribute('src')).toBe('/app-icons/fuel-can.svg')
@@ -49,6 +50,7 @@ it('shows fuel gains and usage once, without animating initial inventory',async(
  expect(await screen.findByText('−3')).toBeTruthy()
  fireEvent.click(button);await waitFor(()=>expect(load).toHaveBeenCalledTimes(4))
  expect(document.body.querySelectorAll('.gold-change')).toHaveLength(2)
+ expect(rewardSound).toHaveBeenCalledOnce()
 })
 it('shows newly received gold above dialogs but skips initial balances and duplicate refreshes',async()=>{
  const wallet={gold:1000,inventory:{},delta:0,testClaimed:false,testEnabled:false}

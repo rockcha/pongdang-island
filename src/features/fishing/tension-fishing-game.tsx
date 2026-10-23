@@ -101,9 +101,12 @@ export function TensionFishingGame({onCaught,active=true,paused=false,regionId='
  },[active,helpOpen,paused,expireIfNeeded])
  const waiting=game.phase==='waiting',biteReady=game.phase==='ready',lost=game.phase==='lost',won=game.phase==='won'
  const biteArrived=!waiting&&game.failureAt===undefined&&game.reason!=='expired'
+ const fighting=active&&game.phase==='playing'&&game.failureAt===undefined&&!paused&&!helpOpen
  useFishingAudio('/sounds/throwbait.mp3',active,{trigger:castId,volume:.55,delayMs:1000})
  useFishingAudio(fishingSplash(game.rarity),active&&biteArrived,{trigger:castId,volume:.65})
  useFishingAudio('/sounds/reel.mp3',active&&pressed&&game.phase==='playing'&&!paused&&!helpOpen,{loop:true,segmentSeconds:4,volume:.45,trigger:castId})
+ useFishingAudio('/sounds/fish-struggle.mp3',fighting&&(game.rarity==='common'||game.rarity==='rare'),{loop:true,volume:.35,trigger:castId})
+ useFishingAudio('/sounds/reel-unheld.mp3',fighting&&!pressed,{loop:true,volume:.4,trigger:castId})
  useFishingAudio('/sounds/fishing-bg.mp3',active&&!won&&!lost&&!paused&&!helpOpen,{loop:true,volume:.25,trigger:castId})
  const plannedFailure=game.failureAt!==undefined
  const label=!active?'낚싯대가 준비됐어요':biteReady?undefined:fishingMessage(game)

@@ -63,7 +63,7 @@ export function LoginPage() {
   }
 
   if (loading) return <p role="status" className="py-16 text-center">잠시만 기다려주세요…</p>
-  if (session && !busy) return <Navigate to={recovery ? '/reset-password' : getNickname(session) ? '/' : '/nickname'} replace />
+  if (session && !busy) return <Navigate to={recovery ? '/reset-password' : getNickname(session) ? '/aquarium' : '/nickname'} replace />
   return <AuthFrame title={signup?'섬에서의 첫 하루':'다시 만나 반가워요'} description={signup?'계정을 만들고 나만의 낚시 여행을 시작해요.':'오늘도 퐁당섬에서 잠깐 쉬어가요.'}>
    <form onSubmit={submit} className="auth-form" aria-label={signup?'회원가입':'로그인'}>
     <div className="auth-field"><Label htmlFor="email">이메일</Label><Input id="email" type="email" inputMode="email" autoCapitalize="none" autoCorrect="off" spellCheck={false} autoComplete="username" required value={email} onChange={e=>setEmail(e.target.value)} disabled={busy} placeholder="hello@example.com"/></div>

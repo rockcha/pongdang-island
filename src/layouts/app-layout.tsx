@@ -1,3 +1,4 @@
+import {Suspense} from 'react'
 import { GoldIcon, useGold } from '@/features/gold/gold-provider'
 import { Link, Outlet, useLocation } from 'react-router'
 import { HeaderPlaceNavigation } from '@/components/header-place-navigation'
@@ -10,6 +11,7 @@ import {TitleSync} from '@/features/titles/title-sync'
 import { AvatarMenu } from '@/features/profile/avatar-menu'
 import { PlaceBanner } from '@/components/place-banner'
 import { useFishingTripRoute } from '@/features/fishing/fishing-trip'
+import {IslandNewsPopup} from '@/components/island-news-popup'
 
 export function AppLayout() {
   const { session } = useAuth()
@@ -21,7 +23,7 @@ export function AppLayout() {
   const aquarium=pathname==='/aquarium'
   const friendAquarium=/^\/friends\/[^/]+\/aquarium\/?$/.test(pathname)
   const tankScreen=aquarium||friendAquarium
-  const home=pathname==='/'
+  const home=pathname==='/island-news'
   const profile=pathname==='/bait-production'||pathname==='/bait-production-shop'||pathname==='/production-shop'||pathname==='/production'||pathname==='/storage'||pathname==='/download'||pathname==='/music-room'||pathname==='/farm'||pathname==='/profile'||pathname==='/titles'||pathname==='/collection'||pathname==='/collection-animation'
   const mailbox=pathname==='/notifications'
   const square=pathname==='/square'
@@ -39,8 +41,9 @@ export function AppLayout() {
   const fishing=pathname.startsWith('/region/')
   const memory=pathname==='/arcade'||pathname.startsWith('/arcade/')
   const { wallet, loading: goldLoading, error: goldError } = useGold()
-  if(pathname==='/login'||pathname==='/nickname')return <main className="auth-shell"><Outlet/></main>
+  if(pathname==='/login'||pathname==='/nickname')return <main className="auth-shell"><Suspense fallback={<p role="status" className="p-8 text-center text-xs text-muted-foreground">불러오는 중…</p>}><Outlet/></Suspense></main>
   return <div style={port||expedition||memory||shop||friends||exchange||square||showcase||noticeList||mailbox||home||profile?{height:'100dvh',minHeight:0,overflow:'hidden'}:undefined} className={`app-shell mx-auto flex w-full max-w-md sm:max-w-[390px] flex-col ${shipyard?'shipyard-shell ':''}${baitProductionShop?'bait-production-shop-shell ':''}${tankScreen||fishing||port?'aquarium-shell':harbor?'aquarium-shell px-4':warehouse?'warehouse-shell px-6':'px-6'}`}>
+    <IslandNewsPopup/>
     <header className={`pongi-header sticky top-0 z-40 shrink-0 px-3 py-2 ${tankScreen||harbor||fishing||port?'':'-mx-6'}`}>
       {session && <div className="flex min-h-10 items-center justify-between gap-2">
         <div className="flex shrink-0 items-center gap-0">
@@ -56,6 +59,6 @@ export function AppLayout() {
       </div>}
     </header>
     {!port&&!harbor&&!tankScreen&&<PlaceBanner pathname={pathname}/>}
-    <main className={`flex min-w-0 flex-1 flex-col ${shop||warehouse||memory||friends||exchange||showcase||noticeList||mailbox||home||profile?'-mx-6':expedition?'-mx-3':''} ${port||expedition||tankScreen||harbor||fishing||memory||warehouse||shop||friends||exchange||square||showcase||noticeList||mailbox||home||profile?'min-h-0 overflow-hidden':''}`}><Outlet /></main>
+    <main className={`flex min-w-0 flex-1 flex-col ${shop||warehouse||memory||friends||exchange||showcase||noticeList||mailbox||home||profile?'-mx-6':expedition?'-mx-3':''} ${port||expedition||tankScreen||harbor||fishing||memory||warehouse||shop||friends||exchange||square||showcase||noticeList||mailbox||home||profile?'min-h-0 overflow-hidden':''}`}><Suspense fallback={<p role="status" className="p-8 text-center text-xs text-muted-foreground">불러오는 중…</p>}><Outlet/></Suspense></main>
   </div>
 }

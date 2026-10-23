@@ -2,7 +2,7 @@ import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {PushSettings} from '@/features/notifications/push-settings'
 const api=vi.hoisted(()=>({supportsPush:vi.fn(),needsHomeScreen:vi.fn(),pushConfiguration:vi.fn(),currentPushDevice:vi.fn(),enablePush:vi.fn(),disablePush:vi.fn(),savePushCategories:vi.fn(),queuePushTest:vi.fn()}))
-vi.mock('@/features/notifications/push-device',()=>({...api,pushCategories:['production','bait-production','expedition','harbor']}))
+vi.mock('@/features/notifications/push-device',()=>({...api,pushCategories:['production','bait-production','expedition','harbor','bait-production-expiring','production-expiring'],defaultPushCategories:['production','bait-production','expedition','harbor']}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'owner'}}})}))
 beforeEach(()=>{api.supportsPush.mockReturnValue(true);api.needsHomeScreen.mockReturnValue(false);api.pushConfiguration.mockResolvedValue({configured:true,publicKey:'public-key'});api.currentPushDevice.mockResolvedValue({registered:false,categories:[]});api.enablePush.mockResolvedValue({registered:true});api.queuePushTest.mockResolvedValue(undefined)})
 afterEach(()=>{cleanup();vi.resetAllMocks()})
@@ -35,4 +35,17 @@ it('keeps registration unavailable while the server is not configured',async()=>
  api.pushConfiguration.mockResolvedValue({configured:false,publicKey:null});render(<PushSettings/>)
  await screen.findByText(/푸시 알림을 준비하고 있어요/)
  expect(screen.getByRole('switch').hasAttribute('disabled')).toBe(true)
+})
+it('leaves expiry reminders off by default and saves either one without enabling completion alerts',async()=>{
+ api.currentPushDevice.mockResolvedValue({registered:true,categories:[]})
+ render(<PushSettings/>)
+ const bait=await screen.findByRole('checkbox',{name:'미끼 만료 5분 전'}) as HTMLInputElement
+ const fuel=screen.getByRole('checkbox',{name:'연료 만료 5분 전'}) as HTMLInputElement
+ expect(bait.checked).toBe(false);expect(fuel.checked).toBe(false)
+ fireEvent.click(bait)
+ await waitFor(()=>expect(api.savePushCategories).toHaveBeenLastCalledWith(['bait-production-expiring']))
+ fireEvent.click(fuel)
+ await waitFor(()=>expect(api.savePushCategories).toHaveBeenLastCalledWith(['bait-production-expiring','production-expiring']))
+ fireEvent.click(bait)
+ await waitFor(()=>expect(api.savePushCategories).toHaveBeenLastCalledWith(['production-expiring']))
 })

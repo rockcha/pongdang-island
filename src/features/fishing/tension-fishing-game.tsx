@@ -77,17 +77,20 @@ export function TensionFishingGame({onCaught,active=true,paused=false,regionId='
  useEffect(()=>()=>{startAttempt.current++},[])
  useEffect(()=>{
   if(!active||helpOpen||paused){pointer.current=null;holding.current=false;setPressed(false);return}
-  let raf=0,last=0
+  let raf=0,last=0,lastPaint=0
   const reset=()=>{pointer.current=null;holding.current=false;setPressed(false);last=0}
   const visibility=()=>{if(document.hidden)reset()}
   const draw=(now:number)=>{
    if(expireIfNeeded())return
    if(!document.hidden){if(last){
     const elapsed=Math.max(0,(now-last)/1000)
-    current.current=stepTensionGame(current.current,elapsed,holding.current);setGame(current.current)
+    const previousPhase=current.current.phase
+    current.current=stepTensionGame(current.current,elapsed,holding.current)
     // Limit visual jumps only; gameplay must retain all elapsed foreground time.
     const dt=Math.min(elapsed,.1),v=animation.current,terminal=current.current.phase==='won'||current.current.phase==='lost'
-    v.time+=dt;const gaugeChange=(current.current.tension-v.tension)*(1-Math.exp(-dt*14));v.tension+=gaugeChange;v.reel+=gaugeChange*9;if(terminal)v.ending+=dt;setVisual({...v})
+    v.time+=dt;const gaugeChange=(current.current.tension-v.tension)*(1-Math.exp(-dt*14));v.tension+=gaugeChange;v.reel+=gaugeChange*9;if(terminal)v.ending+=dt
+    // Keep physics and input timing intact; only limit expensive React/SVG paints.
+    if(now-lastPaint>=1000/30||previousPhase!==current.current.phase){lastPaint=now;setGame(current.current);setVisual({...v})}
    }last=now}
    else last=0
    // Leave the surface splash visible before the catch result covers the water.

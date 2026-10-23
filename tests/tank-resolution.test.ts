@@ -8,7 +8,7 @@ it('increases render pixels without changing logical size, including fractional 
  for(const dpr of [1,1.25,1.5,2,3]){
   const r=tankResolution(400,600,dpr)
   expect([r.width,r.height]).toEqual([400,600])
-  expect(r.pixelWidth).toBe(400*Math.min(dpr,2));expect(r.pixelHeight).toBe(600*Math.min(dpr,2))
+  expect(r.pixelWidth).toBe(400*Math.min(dpr,1.5));expect(r.pixelHeight).toBe(600*Math.min(dpr,1.5))
  }
 })
 it('preserves world bounds, sprite screen size and pointer positions through the actual Phaser camera',()=>{
@@ -32,4 +32,6 @@ it('limits fill rate for large windows and handles an initially hidden container
  expect(r.pixelWidth*r.pixelHeight).toBeLessThanOrEqual(4005000)
  expect(r.width).toBe(2000);expect(r.ratio).toBeGreaterThanOrEqual(1)
  expect(tankResolution(0,0,NaN)).toMatchObject({width:1,height:1,pixelWidth:1,pixelHeight:1})
+ const mobile=tankResolution(400,800,3)
+ expect(mobile.pixelWidth*mobile.pixelHeight).toBe(720000)
 })

@@ -29,8 +29,8 @@ const {
 export const headerPlaces = [
   { to: '/port', label: '항구', icon: appArt.port },
   { to: '/music-room', label: '음악 감상', icon: appArt.music },
-  { to: '/', label: '내 퐁당섬', icon: IslandIcon },
   { to: '/aquarium', label: '아쿠아리움', icon: AquariumIcon },
+  { to: '/island-news', label: '퐁당섬 소식', icon: IslandIcon },
   { to: '/titles', label: '칭호', icon: appArt.title },
   { to: '/collection', label: '도감', icon: appArt.collection },
   { to: '/storage', label: '보관함', icon: appArt.storage },
@@ -83,8 +83,8 @@ export function HeaderPlaceNavigation() {
       {
         "label": "나의 공간",
         "paths": [
-          "/",
-          "/aquarium"
+          "/aquarium",
+          "/island-news"
         ]
       },
       {

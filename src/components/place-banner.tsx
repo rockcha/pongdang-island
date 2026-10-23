@@ -102,11 +102,11 @@ export const placeBanners: Record<
     description: '낚싯대와 미끼가 진열된 따뜻한 상점 내부',
     subtitle: '미끼부터 나만의 낚싯대까지',
   },
-  '/': {
-    title: '퐁당 섬',
+  '/island-news': {
+    title: '퐁당섬 소식',
     image: 'island',
     description: '잔잔한 바다와 작은 집들이 반기는 퐁당 섬',
-    subtitle: '섬에서의 하루가 시작되는 곳',
+    subtitle: '새로운 해역과 바다 친구들, 섬의 새로운 이야기',
   },
   '/harbor': {
     title: '지도',

@@ -1,7 +1,8 @@
 import {createClient} from '@/lib/client'
 
-export const pushCategories=['production','bait-production','expedition','harbor'] as const
+export const pushCategories=['production','bait-production','expedition','harbor','bait-production-expiring','production-expiring'] as const
 export type PushCategory=typeof pushCategories[number]
+export const defaultPushCategories:PushCategory[]=pushCategories.filter(category=>!category.endsWith('-expiring'))
 export type PushDeviceState={registered:boolean;categories:PushCategory[]}
 export const supportsPush=()=>typeof window!=='undefined'&&window.isSecureContext&&'serviceWorker' in navigator&&'PushManager' in window&&'Notification' in window
 export const needsHomeScreen=()=>/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.matchMedia('(display-mode: standalone)').matches&&!(navigator as Navigator&{standalone?:boolean}).standalone
@@ -15,7 +16,7 @@ export function pushAccount(userId?:string|null):Promise<void>{
   request.onsuccess=()=>{const db=request.result,tx=db.transaction('device','readwrite');tx.objectStore('device').put(userId??null,'account');tx.oncomplete=()=>{db.close();resolve()};tx.onerror=()=>{db.close();reject(tx.error)}}
  })
 }
-async function device(action:'state'|'save'|'delete'|'test',subscription:PushSubscription|{endpoint:string},categories:readonly PushCategory[]=pushCategories){
+async function device(action:'state'|'save'|'delete'|'test',subscription:PushSubscription|{endpoint:string},categories:readonly PushCategory[]=defaultPushCategories){
  const {data,error}=await createClient().rpc('web_push_device',{p_action:action,p_subscription:JSON.parse(JSON.stringify(subscription)),p_categories:[...categories]})
  if(error)throw error
  return data as unknown as PushDeviceState
@@ -44,7 +45,7 @@ function confirmWorker(worker:ServiceWorker,userId:string){
 }
 export async function currentPushDevice(){
  const reg=await navigator.serviceWorker.getRegistration(),sub=await reg?.pushManager.getSubscription()
- return sub?await device('state',sub):{registered:false,categories:[...pushCategories]}
+ return sub?await device('state',sub):{registered:false,categories:[...defaultPushCategories]}
 }
 export async function enablePush(userId:string,key:string,categories:PushCategory[]){
  // iOS requires the permission call directly inside the button interaction.
@@ -68,7 +69,7 @@ export async function savePushCategories(categories:PushCategory[]){
 export async function disablePush(){
  const reg=await navigator.serviceWorker.getRegistration(),sub=await reg?.pushManager.getSubscription()
  if(sub){await device('delete',sub);await sub.unsubscribe()}
- return {registered:false,categories:[...pushCategories]}
+ return {registered:false,categories:[...defaultPushCategories]}
 }
 export async function disconnectPushForLogout(){
  // Clear the local recipient first, even when offline or remote cleanup fails.

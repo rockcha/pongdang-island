@@ -51,7 +51,7 @@ const guides: Record<string, string[]> = {
     '연료를 채우고 배와 열린 해역을 선택해 출항해요. 앱을 꺼도 조업 시간은 계속 흘러요.',
     '귀항한 배를 누르거나 모두 수확 버튼으로 조업 결과를 받아요. 선택한 해역에서 일반 미끼 확률을 사용해요. 미끼 소모와 낚싯대 효과는 없어요.',
   ],
-  '/': [
+  '/island-news': [
     '장소 메뉴에서 아쿠아리움·지도·상점 등으로 이동해요.',
     '출석체크로 오늘의 보상을 받고, 알림에서 도착한 소식을 확인해요.',
   ],
@@ -170,5 +170,5 @@ export function bannerGuide(pathname: string) {
       '문제가 생긴 화면과 어떤 행동을 했는지 적어주세요.',
       '버그 제보를 남기고 답변이나 처리 소식을 확인해요.',
     ]
-  return guides[pathname] ?? guides['/' + pathname.split('/')[1]] ?? guides['/']
+  return guides[pathname] ?? guides['/' + pathname.split('/')[1]] ?? guides['/island-news']
 }

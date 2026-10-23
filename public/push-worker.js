@@ -28,6 +28,7 @@ self.addEventListener('push',event=>{
  event.waitUntil((async()=>{
   let payload;try{payload=event.data?.json()}catch{return}
   if(!payload||typeof payload.userId!=='string')return
+  if(payload.expiresAt&&(!Number.isFinite(Date.parse(payload.expiresAt))||Date.parse(payload.expiresAt)<=Date.now()))return
   // Fail closed on account mismatch, including delayed delivery after logout.
   try{if(await binding()!==payload.userId)return}catch{return}
   await self.registration.showNotification(String(payload.title||'퐁당섬').slice(0,100),{

@@ -1,51 +1,58 @@
-import { MerchantPage } from '@/features/merchant/merchant-page'
-import { HallPage } from '@/features/hall-of-fame/hall-page'
-import {ShowcasePage} from '@/features/showcase/showcase-page'
-import {ShowcaseEditor} from '@/features/showcase/showcase-editor'
-import {ShowcasePreview} from '@/features/showcase/showcase-preview'
-import { DownloadPage } from '@/pages/download-page'
-import { BoardPage, BoardDetailPage } from '@/features/board/board-page'
-import { CollectionPage } from '@/features/collection/collection-page'
-import { StoragePage } from '@/features/aquarium/storage-page'
-import {BaitProductionPage} from '@/features/production/bait-production-page'
-import { ProductionPage } from '@/features/production/production-page'
+import {lazy} from 'react'
 import { OperatorGuard } from '@/components/operator-guard'
-import { TitlePicker } from '@/features/titles/title-picker'
-import { ExpeditionPage } from '@/features/expeditions/expedition-page'
-import { PortPage } from '@/features/port/port-page'
-import { FriendExpeditionPage } from '@/features/expeditions/friend-expedition-page'
-import { SettingsPage } from '@/pages/settings-page'
-import { SavingsPage } from '@/features/savings/savings-page'
-import { SuggestionsPage, SuggestionDetail } from '@/features/suggestions/suggestions-page'
-import { BugReportsPage, BugReportDetail } from '@/features/bugs/bug-reports-page'
-import { RegionPage } from '@/features/regions/region-page'
-import { SailingPage } from '@/features/regions/sailing-page'
-import { FishingShortcutPage } from '@/features/regions/fishing-shortcut-page'
-import { ShopPage } from '@/features/gold/shop-page'
-import { ExchangePage } from '@/features/exchange/exchange-page'
-import { ExchangeDetailPage } from '@/features/exchange/exchange-detail-page'
-import { NoticePage, NoticeDetail } from '@/features/notices/notice-page'
-import { NoticeEditor } from '@/features/notices/notice-editor'
-import { WarehousePage } from '@/features/fishing/warehouse-page'
 import { Navigate, Route, Routes } from 'react-router'
 import { AppLayout } from '@/layouts/app-layout'
-import { ArcadePage, ArcadeGamePage } from '@/features/arcade/arcade-page'
-import { HomePage } from '@/pages/home-page'
-import { NotFoundPage } from '@/pages/not-found-page'
 import { AuthGuard } from '@/components/auth-guard'
-import { LoginPage } from '@/pages/login-page'
-import { NicknamePage } from '@/pages/nickname-page'
-import { EmailConfirmPage } from '@/pages/email-confirm-page'
-import { ForgotPasswordPage } from '@/pages/forgot-password-page'
-import { ResetPasswordPage } from '@/pages/reset-password-page'
-import { FriendsPage } from '@/features/friends/friends-page'
-import { FriendAquariumPage } from '@/features/friends/friend-aquarium-page'
-import { NotificationsPage } from '@/features/notifications/notifications-page'
-import { ProfilePage } from '@/features/profile/profile-page'
-import { AquariumPage } from '@/pages/aquarium-page'
-import { HarborPage } from '@/pages/harbor-page'
-import { FarmPage } from '@/pages/farm-page'
-import { MusicRoomPage } from '@/pages/music-room-page'
+
+const MerchantPage=lazy(()=>import('@/features/merchant/merchant-page').then(module=>({default:module.MerchantPage})))
+const HallPage=lazy(()=>import('@/features/hall-of-fame/hall-page').then(module=>({default:module.HallPage})))
+const ShowcasePage=lazy(()=>import('@/features/showcase/showcase-page').then(module=>({default:module.ShowcasePage})))
+const ShowcaseEditor=lazy(()=>import('@/features/showcase/showcase-editor').then(module=>({default:module.ShowcaseEditor})))
+const ShowcasePreview=lazy(()=>import('@/features/showcase/showcase-preview').then(module=>({default:module.ShowcasePreview})))
+const DownloadPage=lazy(()=>import('@/pages/download-page').then(module=>({default:module.DownloadPage})))
+const BoardPage=lazy(()=>import('@/features/board/board-page').then(module=>({default:module.BoardPage})))
+const BoardDetailPage=lazy(()=>import('@/features/board/board-page').then(module=>({default:module.BoardDetailPage})))
+const CollectionPage=lazy(()=>import('@/features/collection/collection-page').then(module=>({default:module.CollectionPage})))
+const StoragePage=lazy(()=>import('@/features/aquarium/storage-page').then(module=>({default:module.StoragePage})))
+const BaitProductionPage=lazy(()=>import('@/features/production/bait-production-page').then(module=>({default:module.BaitProductionPage})))
+const ProductionPage=lazy(()=>import('@/features/production/production-page').then(module=>({default:module.ProductionPage})))
+const TitlePicker=lazy(()=>import('@/features/titles/title-picker').then(module=>({default:module.TitlePicker})))
+const ExpeditionPage=lazy(()=>import('@/features/expeditions/expedition-page').then(module=>({default:module.ExpeditionPage})))
+const PortPage=lazy(()=>import('@/features/port/port-page').then(module=>({default:module.PortPage})))
+const FriendExpeditionPage=lazy(()=>import('@/features/expeditions/friend-expedition-page').then(module=>({default:module.FriendExpeditionPage})))
+const SettingsPage=lazy(()=>import('@/pages/settings-page').then(module=>({default:module.SettingsPage})))
+const SavingsPage=lazy(()=>import('@/features/savings/savings-page').then(module=>({default:module.SavingsPage})))
+const SuggestionsPage=lazy(()=>import('@/features/suggestions/suggestions-page').then(module=>({default:module.SuggestionsPage})))
+const SuggestionDetail=lazy(()=>import('@/features/suggestions/suggestions-page').then(module=>({default:module.SuggestionDetail})))
+const BugReportsPage=lazy(()=>import('@/features/bugs/bug-reports-page').then(module=>({default:module.BugReportsPage})))
+const BugReportDetail=lazy(()=>import('@/features/bugs/bug-reports-page').then(module=>({default:module.BugReportDetail})))
+const RegionPage=lazy(()=>import('@/features/regions/region-page').then(module=>({default:module.RegionPage})))
+const SailingPage=lazy(()=>import('@/features/regions/sailing-page').then(module=>({default:module.SailingPage})))
+const FishingShortcutPage=lazy(()=>import('@/features/regions/fishing-shortcut-page').then(module=>({default:module.FishingShortcutPage})))
+const ShopPage=lazy(()=>import('@/features/gold/shop-page').then(module=>({default:module.ShopPage})))
+const ExchangePage=lazy(()=>import('@/features/exchange/exchange-page').then(module=>({default:module.ExchangePage})))
+const ExchangeDetailPage=lazy(()=>import('@/features/exchange/exchange-detail-page').then(module=>({default:module.ExchangeDetailPage})))
+const NoticePage=lazy(()=>import('@/features/notices/notice-page').then(module=>({default:module.NoticePage})))
+const NoticeDetail=lazy(()=>import('@/features/notices/notice-page').then(module=>({default:module.NoticeDetail})))
+const NoticeEditor=lazy(()=>import('@/features/notices/notice-editor').then(module=>({default:module.NoticeEditor})))
+const WarehousePage=lazy(()=>import('@/features/fishing/warehouse-page').then(module=>({default:module.WarehousePage})))
+const ArcadePage=lazy(()=>import('@/features/arcade/arcade-page').then(module=>({default:module.ArcadePage})))
+const ArcadeGamePage=lazy(()=>import('@/features/arcade/arcade-page').then(module=>({default:module.ArcadeGamePage})))
+const HomePage=lazy(()=>import('@/pages/home-page').then(module=>({default:module.HomePage})))
+const NotFoundPage=lazy(()=>import('@/pages/not-found-page').then(module=>({default:module.NotFoundPage})))
+const LoginPage=lazy(()=>import('@/pages/login-page').then(module=>({default:module.LoginPage})))
+const NicknamePage=lazy(()=>import('@/pages/nickname-page').then(module=>({default:module.NicknamePage})))
+const EmailConfirmPage=lazy(()=>import('@/pages/email-confirm-page').then(module=>({default:module.EmailConfirmPage})))
+const ForgotPasswordPage=lazy(()=>import('@/pages/forgot-password-page').then(module=>({default:module.ForgotPasswordPage})))
+const ResetPasswordPage=lazy(()=>import('@/pages/reset-password-page').then(module=>({default:module.ResetPasswordPage})))
+const FriendsPage=lazy(()=>import('@/features/friends/friends-page').then(module=>({default:module.FriendsPage})))
+const FriendAquariumPage=lazy(()=>import('@/features/friends/friend-aquarium-page').then(module=>({default:module.FriendAquariumPage})))
+const NotificationsPage=lazy(()=>import('@/features/notifications/notifications-page').then(module=>({default:module.NotificationsPage})))
+const ProfilePage=lazy(()=>import('@/features/profile/profile-page').then(module=>({default:module.ProfilePage})))
+const AquariumPage=lazy(()=>import('@/pages/aquarium-page').then(module=>({default:module.AquariumPage})))
+const HarborPage=lazy(()=>import('@/pages/harbor-page').then(module=>({default:module.HarborPage})))
+const FarmPage=lazy(()=>import('@/pages/farm-page').then(module=>({default:module.FarmPage})))
+const MusicRoomPage=lazy(()=>import('@/pages/music-room-page').then(module=>({default:module.MusicRoomPage})))
 
 export function AppRoutes() {
   return (
@@ -59,7 +66,8 @@ export function AppRoutes() {
         <Route element={<AuthGuard />}>
           <Route path="nickname" element={<NicknamePage />} />
           <Route element={<AuthGuard requireNickname />}>
-            <Route index element={<HomePage />} />
+            <Route index element={<Navigate to="/aquarium" replace />} />
+            <Route path="island-news" element={<HomePage />} />
             <Route path="aquarium" element={<AquariumPage />} />
             <Route path="collection" element={<CollectionPage />} />
             <Route path="storage" element={<StoragePage />} />

@@ -7,6 +7,7 @@ import { imageRuntimeCaching } from './build/image-cache.ts'
 
 // https://vite.dev/config/
 export default defineConfig({
+  build:{manifest:true},
   // Temporary HTML previews and browser profiles are not application entries.
   optimizeDeps: { entries: ['index.html'] },
   plugins: [react(), tailwindcss(), VitePWA({

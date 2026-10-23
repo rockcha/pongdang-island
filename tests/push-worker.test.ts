@@ -33,3 +33,10 @@ it('does not reopen another account notification after logout',async()=>{
  await app.send('notificationclick',{notification:{close:vi.fn(),data:{userId:'owner',url:'/port'}}})
  expect(app.navigate).not.toHaveBeenCalled();expect(app.openWindow).not.toHaveBeenCalled()
 })
+it('suppresses expiry reminders delivered after the storage deadline',async()=>{
+ const app=setup()
+ await app.send('push',{data:{json:()=>({userId:'owner',expiresAt:new Date(Date.now()-1000).toISOString()})}})
+ expect(app.showNotification).not.toHaveBeenCalled()
+ await app.send('push',{data:{json:()=>({userId:'owner',expiresAt:new Date(Date.now()+60000).toISOString()})}})
+ expect(app.showNotification).toHaveBeenCalledOnce()
+})

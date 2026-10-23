@@ -24,7 +24,7 @@ export function NicknamePage({onSaved}:{onSaved?:()=>void} = {}) {
       const { error } = await createClient().auth.updateUser({ data: { game_nickname: name } })
       if (error) throw error
       toast.success(`${name}님, 환영해요!`)
-      if(onSaved)onSaved();else navigate('/', { replace: true })
+      if(onSaved)onSaved();else navigate('/aquarium', { replace: true })
     } catch (cause) { setError(cause instanceof Error ? cause.message : '닉네임을 저장하지 못했어요.') }
     finally { setBusy(false) }
   }

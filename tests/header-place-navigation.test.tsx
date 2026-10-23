@@ -130,12 +130,12 @@ it('lists fishing and traps directly below the map',async()=>{
  fireEvent.click(within(menu).getByRole('menuitem',{name:'통발'}))
  expect(screen.getByTestId('path').textContent).toBe('/expeditions')
 })
-it('opens my island from the life menu',async()=>{
+it('opens island news from the island menu',async()=>{
  render(<MemoryRouter initialEntries={['/aquarium']}><View/></MemoryRouter>)
  fireEvent.click(screen.getByRole('button',{name:'내 섬'}))
  const menu=await screen.findByRole('menu')
- fireEvent.click(within(menu).getByRole('menuitem',{name:'내 퐁당섬'}))
- expect(screen.getByTestId('path').textContent).toBe('/')
+ fireEvent.click(within(menu).getByRole('menuitem',{name:'퐁당섬 소식'}))
+ expect(screen.getByTestId('path').textContent).toBe('/island-news')
 })
 it('shows five category triggers and separates shop and exchange',async()=>{
  render(<MemoryRouter initialEntries={['/shop']}><View/></MemoryRouter>)

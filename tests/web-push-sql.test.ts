@@ -53,3 +53,35 @@ it('enqueues future completion notifications and suppresses claimed or expired b
  await device(owner,'delete');expect(await device(owner,'state')).toMatchObject({registered:false})
  expect(valid).toBeTruthy()
 })
+it('opts into each expiry reminder separately, sends once per run and rechecks collection and expiry',async()=>{
+ const all=['production','bait-production','expedition','harbor','production-expiring','bait-production-expiring']
+ await device(owner,'save')
+ const fuel=async(minutes=4,uid=owner)=>(await db.query("insert into app_private.production_sites(user_id,facility_id,started_at,completes_at,expires_at,run_output) select $1,id,now()-interval '1 hour',now()-interval '10 minutes',now()+make_interval(mins=>$2),2 from public.production_facilities limit 1 returning id",[uid,minutes])).rows[0].id
+ const bait=async(minutes=4)=>(await db.query("insert into app_private.bait_production_sites(user_id,facility_id,started_at,completes_at,expires_at,run_output,run_bait_id) select $1,id,now()-interval '1 hour',now()-interval '10 minutes',now()+make_interval(mins=>$2),3,bait_id from public.bait_production_facilities limit 1 returning id",[owner,minutes])).rows[0].id
+ const fuelId=await fuel(),baitId=await bait(5)
+ await fuel(6);await fuel(-1);await fuel(4,other)
+ expect((await db.query('select app_private.enqueue_expiring_production_push() n')).rows[0].n).toBe(0)
+ expect(await device(owner,'save',subscription,all)).toMatchObject({categories:all})
+ await expect(asUser(owner,'select app_private.enqueue_expiring_production_push()')).rejects.toThrow('permission denied')
+ expect((await db.query('select app_private.enqueue_expiring_production_push() n')).rows[0].n).toBe(2)
+ expect((await db.query('select app_private.enqueue_expiring_production_push() n')).rows[0].n).toBe(0)
+ const queued=(await db.query("select category,payload,expires_at from app_private.push_deliveries where category like '%-expiring' order by category")).rows
+ expect(queued.map(q=>q.payload.url)).toEqual(['/bait-production','/production'])
+ for(const q of queued)expect(Date.parse(q.payload.expiresAt)).toBe(new Date(q.expires_at).getTime())
+ await device(owner,'save',subscription,['production-expiring'])
+ const claimed=(await db.query('select public.claim_web_push() items')).rows[0].items
+ expect(claimed).toHaveLength(1);expect(claimed[0].payload.url).toBe('/production')
+ await db.query('select public.finish_web_push($1,$2,201)',[claimed[0].id,claimed[0].leaseToken])
+ await device(owner,'save',subscription,all)
+ expect((await db.query('select app_private.enqueue_expiring_production_push() n')).rows[0].n).toBe(0)
+ // A later run on the same site has its own reminder; collecting suppresses it.
+ await db.query("update app_private.production_sites set started_at=now()-interval '2 hours' where id=$1",[fuelId])
+ expect((await db.query('select app_private.enqueue_expiring_production_push() n')).rows[0].n).toBe(1)
+ await db.query('update app_private.production_sites set started_at=null,completes_at=null,expires_at=null,run_output=null where id=$1',[fuelId])
+ expect((await db.query('select public.claim_web_push() items')).rows[0].items).toEqual([])
+ // The reminder becomes stale at the actual expiry, rather than an hour later.
+ const expiring=await bait();await db.query('select app_private.enqueue_expiring_production_push()')
+ await db.query("update app_private.bait_production_sites set expires_at=now()-interval '1 second' where id=$1",[expiring])
+ expect((await db.query('select public.claim_web_push() items')).rows[0].items).toEqual([])
+ expect(baitId).toBeTruthy()
+})

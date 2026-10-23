@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import type { OwnedCollectible } from '@/features/collection/api'
 import type { TankRenderer } from './phaser-tank'
 import {bindTankPinchZoom} from './pinch-zoom'
+import {hasOpenOverlay,subscribeOverlayActivity} from '@/components/overlay-back'
 
 export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecoration,onBackgroundTap,onSelectionPosition,paused=false }: { items: OwnedCollectible[];scenery?:ReactNode;onPlace?:(id:string,x:number,y:number)=>void;onNavigate?:(direction:'previous'|'next')=>void;onSelectDecoration?:(id:string,x?:number,y?:number)=>void;onBackgroundTap?:()=>void;onSelectionPosition?:(id:string,x:number,y:number)=>void;paused?:boolean }) {
   const root = useRef<HTMLDivElement>(null)
@@ -22,7 +23,7 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
   useEffect(()=>{navigation.current=onNavigate},[onNavigate])
   const pause=useRef(paused)
   const onScreen=useRef(true)
-  useEffect(()=>{pause.current=paused;renderer.current?.setVisible(!paused&&onScreen.current&&!document.hidden)},[paused])
+  useEffect(()=>{pause.current=paused;renderer.current?.setVisible(!paused&&onScreen.current&&!document.hidden&&!hasOpenOverlay())},[paused])
   useEffect(()=>{placement.current=onPlace},[onPlace])
   const [error, setError] = useState('')
   useEffect(() => { latest.current = items; renderer.current?.setItems(items) }, [items])
@@ -31,7 +32,8 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
     if (!parent) return
     let active = true
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)')
-    const visibility = () => renderer.current?.setVisible(!pause.current&&onScreen.current && !document.hidden)
+    const visibility = () => renderer.current?.setVisible(!pause.current&&onScreen.current && !document.hidden&&!hasOpenOverlay())
+    const unsubscribeOverlay=subscribeOverlayActivity(visibility)
     const preference = () => renderer.current?.setReduced(reduced.matches)
     const resize=()=>renderer.current?.resize(parent.clientWidth,parent.clientHeight)
     let density=window.matchMedia(`(resolution: ${window.devicePixelRatio||1}dppx)`)
@@ -58,6 +60,7 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
     return () => {
       active = false
       observer.disconnect(); intersection.disconnect()
+      unsubscribeOverlay()
       density.removeEventListener('change',densityChanged)
       window.removeEventListener('resize',resize)
       document.removeEventListener('visibilitychange', visibility)

@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "f547708467a51bbb26f62047f33970e08cf121eed90014c24af5a4cc493ac39c",
+  "migrationHash": "9354fac2167d2b65d489f1e8e5b350089e195ca05bd56cf4cae4f97105523fd0",
   "structure": {
     "enums": [
       {
@@ -8216,6 +8216,12 @@
         "definition": "CREATE INDEX bait_production_sites_user ON app_private.bait_production_sites USING btree (user_id, purchased_at, id)"
       },
       {
+        "name": "bait_sites_expiring_push",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "definition": "CREATE INDEX bait_sites_expiring_push ON app_private.bait_production_sites USING btree (expires_at, user_id) WHERE (started_at IS NOT NULL)"
+      },
+      {
         "name": "exchange_bundle_gifts_gift_id_key",
         "table": "exchange_bundle_gifts",
         "schema": "app_private",
@@ -8480,6 +8486,12 @@
         "definition": "CREATE INDEX production_sites_due_notifications ON app_private.production_sites USING btree (completes_at) WHERE ((started_at IS NOT NULL) AND (ready_notified_at IS NULL))"
       },
       {
+        "name": "production_sites_expiring_push",
+        "table": "production_sites",
+        "schema": "app_private",
+        "definition": "CREATE INDEX production_sites_expiring_push ON app_private.production_sites USING btree (expires_at, user_id) WHERE (started_at IS NOT NULL)"
+      },
+      {
         "name": "production_sites_facility_idx",
         "table": "production_sites",
         "schema": "app_private",
@@ -8508,6 +8520,12 @@
         "table": "push_deliveries",
         "schema": "app_private",
         "definition": "CREATE UNIQUE INDEX push_deliveries_subscription_id_notification_id_key ON app_private.push_deliveries USING btree (subscription_id, notification_id)"
+      },
+      {
+        "name": "push_delivery_expiring_run",
+        "table": "push_deliveries",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX push_delivery_expiring_run ON app_private.push_deliveries USING btree (subscription_id, category, source_id, source_started_at) WHERE (category = ANY (ARRAY['production-expiring'::text, 'bait-production-expiring'::text]))"
       },
       {
         "name": "push_delivery_notice",
@@ -11554,7 +11572,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.dispatch_web_push()\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare target text; secret text;\nbegin\n perform app_private.notify_due_bait_production_sites();\n if not exists(select 1 from pg_catalog.pg_extension where extname='pg_net') or to_regclass('vault.decrypted_secrets') is null then return;end if;\n execute 'select decrypted_secret from vault.decrypted_secrets where name=$1 limit 1' into target using 'web_push_worker_url';\n execute 'select decrypted_secret from vault.decrypted_secrets where name=$1 limit 1' into secret using 'web_push_cron_secret';\n if target is null or secret is null then return;end if;\n execute 'select net.http_post(url:=$1,headers:=$2,body:=''{}''::jsonb,timeout_milliseconds:=5000)'\n using target,jsonb_build_object('Content-Type','application/json','x-push-worker-key',secret);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.dispatch_web_push()\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare target text; secret text;\nbegin\n perform app_private.notify_due_bait_production_sites();\n perform app_private.enqueue_expiring_production_push();\n if not exists(select 1 from pg_catalog.pg_extension where extname='pg_net') or to_regclass('vault.decrypted_secrets') is null then return;end if;\n execute 'select decrypted_secret from vault.decrypted_secrets where name=$1 limit 1' into target using 'web_push_worker_url';\n execute 'select decrypted_secret from vault.decrypted_secrets where name=$1 limit 1' into secret using 'web_push_cron_secret';\n if target is null or secret is null then return;end if;\n execute 'select net.http_post(url:=$1,headers:=$2,body:=''{}''::jsonb,timeout_milliseconds:=5000)'\n using target,jsonb_build_object('Content-Type','application/json','x-push-worker-key',secret);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11575,6 +11593,16 @@
         "schema": "app_private",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.enforce_fishing_maintenance()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if app_private.fishing_maintenance_active(clock_timestamp()) then\n  if tg_table_schema='app_private' and tg_table_name='prepared_fishing_casts' and tg_op='INSERT' then\n   if new.user_id=auth.uid() and (\n    app_private.notice_is_operator()\n    or exists(select 1 from auth.users u where u.id=auth.uid() and lower(u.email)='1@1.com')\n   ) then\n    return new;\n   end if;\n  end if;\n  raise exception using errcode='P0001',\n   message='FISHING_MAINTENANCE: 낚시·미끼·통발·어선 점검 중입니다. 완료 공지 후 다시 이용해 주세요.';\n end if;\n return new;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "enqueue_expiring_production_push",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.enqueue_expiring_production_push()\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare n integer; stamp timestamptz:=clock_timestamp();\nbegin\n with runs as (\n  select s.id,s.user_id,s.started_at,s.expires_at,'production-expiring'::text category,'/production'::text path,\n   '연료 보관 만료가 얼마 남지 않았어요!'::text title,\n   f.name||'의 연료 보관이 약 5분 뒤 끝나요. 만료 전에 수령해 주세요.' body\n  from app_private.production_sites s join public.production_facilities f on f.id=s.facility_id\n  where s.started_at is not null and s.completes_at<=stamp and s.expires_at>stamp and s.expires_at<=stamp+interval '5 minutes'\n  union all\n  select s.id,s.user_id,s.started_at,s.expires_at,'bait-production-expiring','/bait-production',\n   '미끼가 상하기 전에 받아 주세요!',f.name||'의 미끼 보관이 약 5분 뒤 끝나요. 상하기 전에 수령해 주세요.'\n  from app_private.bait_production_sites s join public.bait_production_facilities f on f.id=s.facility_id\n  where s.started_at is not null and s.completes_at<=stamp and s.expires_at>stamp and s.expires_at<=stamp+interval '5 minutes'\n )\n insert into app_private.push_deliveries(subscription_id,category,source_id,source_started_at,payload,expires_at)\n select d.id,r.category,r.id,r.started_at,\n  jsonb_build_object('userId',r.user_id,'title',r.title,'body',r.body,'url',r.path,'tag',r.category||':'||r.id||':'||r.started_at,'expiresAt',r.expires_at),r.expires_at\n from runs r join app_private.push_subscriptions d on d.user_id=r.user_id and r.category=any(d.categories)\n where not exists(select 1 from app_private.push_deliveries q where q.subscription_id=d.id and q.category=r.category and q.source_id=r.id and q.source_started_at=r.started_at)\n order by r.expires_at,r.id,d.id limit 500\n on conflict(subscription_id,category,source_id,source_started_at) where category in ('production-expiring','bait-production-expiring') do nothing;\n get diagnostics n=row_count;return n;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -12744,7 +12772,7 @@
         ],
         "schema": "app_private",
         "arguments": "q app_private.push_deliveries, u uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.push_delivery_current(q app_private.push_deliveries, u uuid)\n RETURNS boolean\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select case q.category\n when 'test' then true\n when 'production' then exists(select 1 from app_private.production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now())\n when 'bait-production' then exists(select 1 from app_private.bait_production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now())\n when 'expedition' then exists(select 1 from public.fishing_expeditions where id=q.source_id and user_id=u and claimed_at is null and returns_at<=now())\n when 'harbor' then exists(select 1 from public.harbor_voyages where id=q.source_id and user_id=u and claimed_at is null and returns_at<=now())\n else false end\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.push_delivery_current(q app_private.push_deliveries, u uuid)\n RETURNS boolean\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select case q.category\n when 'test' then true\n when 'production-expiring' then exists(select 1 from app_private.production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now() and expires_at<=now()+interval '5 minutes')\n when 'bait-production-expiring' then exists(select 1 from app_private.bait_production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now() and expires_at<=now()+interval '5 minutes')\n when 'production' then exists(select 1 from app_private.production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now())\n when 'bait-production' then exists(select 1 from app_private.bait_production_sites where id=q.source_id and user_id=u and started_at=q.source_started_at and completes_at<=now() and expires_at>now())\n when 'expedition' then exists(select 1 from public.fishing_expeditions where id=q.source_id and user_id=u and claimed_at is null and returns_at<=now())\n when 'harbor' then exists(select 1 from public.harbor_voyages where id=q.source_id and user_id=u and claimed_at is null and returns_at<=now())\n else false end\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -13384,7 +13412,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_action text, p_subscription jsonb, p_categories text[]",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.web_push_device(p_action text, p_subscription jsonb, p_categories text[])\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); e text:=p_subscription->>'endpoint'; s app_private.push_subscriptions; n integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in ('state','save','delete','test') or e is null or length(e)>2048 then raise exception 'INVALID_PUSH_DEVICE';end if;\n select * into s from app_private.push_subscriptions where endpoint=e and user_id=u for update;\n if p_action='state' then return jsonb_build_object('registered',s.id is not null,'categories',coalesce(s.categories,array[]::text[]));end if;\n if p_action='delete' then delete from app_private.push_subscriptions where id=s.id;return jsonb_build_object('registered',false);end if;\n if p_action='test' then\n  if s.id is null then raise exception 'PUSH_NOT_REGISTERED';end if;\n  if s.last_test_at>clock_timestamp()-interval '1 minute' then raise exception 'PUSH_TEST_RATE_LIMIT';end if;\n  update app_private.push_subscriptions set last_test_at=clock_timestamp() where id=s.id;\n  insert into app_private.push_deliveries(subscription_id,category,payload,expires_at)\n  values(s.id,'test',jsonb_build_object('userId',u,'title','퐁당! 알림이 도착했어요','body','이 기기에서 생산 완료·통발·귀항 소식을 받을 수 있어요.','url','/settings','tag','push-test:'||gen_random_uuid()),clock_timestamp()+interval '5 minutes');\n  return jsonb_build_object('queued',true);\n end if;\n if e !~ '^https://(fcm\\.googleapis\\.com|([a-z0-9-]+\\.)*push\\.services\\.mozilla\\.com|([a-z0-9-]+\\.)*push\\.apple\\.com|([a-z0-9-]+\\.)*notify\\.windows\\.com)/[^[:space:]#]+$'\n or coalesce(p_subscription#>>'{keys,p256dh}','') !~ '^[A-Za-z0-9_-]{87}=?$'\n or coalesce(p_subscription#>>'{keys,auth}','') !~ '^[A-Za-z0-9_-]{22}={0,2}$'\n or p_categories is null or not (p_categories <@ array['production','bait-production','expedition','harbor']::text[])\n or cardinality(p_categories)>4 then raise exception 'INVALID_PUSH_DEVICE';end if;\n -- Serialize this user's cap, and never transfer another account's endpoint.\n perform 1 from auth.users where id=u for update;\n if exists(select 1 from app_private.push_subscriptions where endpoint=e and user_id<>u) then raise exception 'PUSH_DEVICE_CONFLICT';end if;\n select count(*) into n from app_private.push_subscriptions where user_id=u;\n if s.id is null and n>=10 then raise exception 'PUSH_DEVICE_LIMIT';end if;\n insert into app_private.push_subscriptions(user_id,endpoint,p256dh,auth,categories)\n values(u,e,p_subscription#>>'{keys,p256dh}',p_subscription#>>'{keys,auth}',p_categories)\n on conflict(endpoint) do update set p256dh=excluded.p256dh,auth=excluded.auth,categories=excluded.categories,updated_at=clock_timestamp()\n where app_private.push_subscriptions.user_id=u;\n get diagnostics n=row_count;\n if n=0 then raise exception 'PUSH_DEVICE_CONFLICT';end if;\n return jsonb_build_object('registered',true,'categories',p_categories);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.web_push_device(p_action text, p_subscription jsonb, p_categories text[])\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); e text:=p_subscription->>'endpoint'; s app_private.push_subscriptions; n integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in ('state','save','delete','test') or e is null or length(e)>2048 then raise exception 'INVALID_PUSH_DEVICE';end if;\n select * into s from app_private.push_subscriptions where endpoint=e and user_id=u for update;\n if p_action='state' then return jsonb_build_object('registered',s.id is not null,'categories',coalesce(s.categories,array[]::text[]));end if;\n if p_action='delete' then delete from app_private.push_subscriptions where id=s.id;return jsonb_build_object('registered',false);end if;\n if p_action='test' then\n  if s.id is null then raise exception 'PUSH_NOT_REGISTERED';end if;\n  if s.last_test_at>clock_timestamp()-interval '1 minute' then raise exception 'PUSH_TEST_RATE_LIMIT';end if;\n  update app_private.push_subscriptions set last_test_at=clock_timestamp() where id=s.id;\n  insert into app_private.push_deliveries(subscription_id,category,payload,expires_at)\n  values(s.id,'test',jsonb_build_object('userId',u,'title','퐁당! 알림이 도착했어요','body','이 기기에서 생산 완료·통발·귀항 소식을 받을 수 있어요.','url','/settings','tag','push-test:'||gen_random_uuid()),clock_timestamp()+interval '5 minutes');\n  return jsonb_build_object('queued',true);\n end if;\n if e !~ '^https://(fcm\\.googleapis\\.com|([a-z0-9-]+\\.)*push\\.services\\.mozilla\\.com|([a-z0-9-]+\\.)*push\\.apple\\.com|([a-z0-9-]+\\.)*notify\\.windows\\.com)/[^[:space:]#]+$'\n or coalesce(p_subscription#>>'{keys,p256dh}','') !~ '^[A-Za-z0-9_-]{87}=?$'\n or coalesce(p_subscription#>>'{keys,auth}','') !~ '^[A-Za-z0-9_-]{22}={0,2}$'\n or p_categories is null or not (p_categories <@ array['production','bait-production','expedition','harbor','production-expiring','bait-production-expiring']::text[])\n or cardinality(p_categories)>6 then raise exception 'INVALID_PUSH_DEVICE';end if;\n -- Serialize this user's cap, and never transfer another account's endpoint.\n perform 1 from auth.users where id=u for update;\n if exists(select 1 from app_private.push_subscriptions where endpoint=e and user_id<>u) then raise exception 'PUSH_DEVICE_CONFLICT';end if;\n select count(*) into n from app_private.push_subscriptions where user_id=u;\n if s.id is null and n>=10 then raise exception 'PUSH_DEVICE_LIMIT';end if;\n insert into app_private.push_subscriptions(user_id,endpoint,p256dh,auth,categories)\n values(u,e,p_subscription#>>'{keys,p256dh}',p_subscription#>>'{keys,auth}',p_categories)\n on conflict(endpoint) do update set p256dh=excluded.p256dh,auth=excluded.auth,categories=excluded.categories,updated_at=clock_timestamp()\n where app_private.push_subscriptions.user_id=u;\n get diagnostics n=row_count;\n if n=0 then raise exception 'PUSH_DEVICE_CONFLICT';end if;\n return jsonb_build_object('registered',true,'categories',p_categories);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -16683,7 +16711,7 @@
         "name": "push_deliveries_category_check",
         "table": "push_deliveries",
         "schema": "app_private",
-        "definition": "CHECK ((category = ANY (ARRAY['production'::text, 'bait-production'::text, 'expedition'::text, 'harbor'::text, 'test'::text])))"
+        "definition": "CHECK ((category = ANY (ARRAY['production'::text, 'bait-production'::text, 'expedition'::text, 'harbor'::text, 'test'::text, 'production-expiring'::text, 'bait-production-expiring'::text])))"
       },
       {
         "name": "push_deliveries_category_not_null",
@@ -16767,7 +16795,7 @@
         "name": "push_subscriptions_categories_check",
         "table": "push_subscriptions",
         "schema": "app_private",
-        "definition": "CHECK ((categories <@ ARRAY['production'::text, 'bait-production'::text, 'expedition'::text, 'harbor'::text]))"
+        "definition": "CHECK ((categories <@ ARRAY['production'::text, 'bait-production'::text, 'expedition'::text, 'harbor'::text, 'production-expiring'::text, 'bait-production-expiring'::text]))"
       },
       {
         "name": "push_subscriptions_categories_not_null",
@@ -29067,6 +29095,27 @@
       },
       {
         "name": "enforce_fishing_maintenance",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "enqueue_expiring_production_push",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "enqueue_expiring_production_push",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "enqueue_expiring_production_push",
         "role": "service_role",
         "schema": "app_private",
         "execute": false,

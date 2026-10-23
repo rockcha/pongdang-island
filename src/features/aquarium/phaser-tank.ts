@@ -196,19 +196,19 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
       if(selectedId){const entry=entries.get(selectedId);if(entry){const bounds=entry.sprite.getBounds();onSelectionPosition?.(selectedId,bounds.centerX,bounds.top)}}
     }
     update(_time: number, delta: number) {
-      if (!visible) return
+      if (!visible) {this.game.loop.sleep();return}
       if (!reduced) clock += Math.min(delta, 100) / 1000
       this.draw(delta / 1000)
     }
   }
   const scene = new TankScene()
   const game = new Phaser.Game({ type: Phaser.AUTO, parent, transparent: true, width: viewport.pixelWidth, height: viewport.pixelHeight,scale:{mode:Phaser.Scale.NONE,zoom:1/viewport.ratio},
-    scene: [scene], audio: { noAudio: true }, banner: false, render: { antialias: true }, fps: { target: 60 } })
+    scene: [scene], audio: { noAudio: true }, banner: false, render: { antialias: true }, fps: { target: 30, limit: 30 } })
   return {
     setItems(next) { items = next; if (ready) scene.sync() },
     resize(width, height) { if (!disposed) {viewport=tankResolution(width,height,window.devicePixelRatio);game.scale.setZoom(1/viewport.ratio);game.scale.resize(viewport.pixelWidth,viewport.pixelHeight);game.canvas.style.width=`${viewport.width}px`;game.canvas.style.height=`${viewport.height}px`;game.scale.updateBounds();if (ready){scene.configureCamera();scene.draw(0)} } },
     setReduced(value) { reduced = value; if (ready) scene.draw(0) },
-    setVisible(value) { visible = value; if (value) game.loop.wake(); else game.loop.sleep() },
+    setVisible(value) { if(visible===value)return;visible = value; if (value) game.loop.wake(); else game.loop.sleep() },
     getStats() { return { count: entries.size, textures: new Set([...entries.values()].map(entry=>entry.path)).size, clock, renderer: game.renderer?.type === Phaser.WEBGL ? 'WebGL' : 'Canvas' } },
     destroy() { disposed = true; ready = false; entries.clear(); game.destroy(true); if (game.isBooted) game.loop.wake() },
   }

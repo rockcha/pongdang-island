@@ -67,7 +67,7 @@ it('uses dedicated district child banners and breadcrumbs, including nested noti
 
 })
 it('switches the landscape and title with the current place, without an aquarium banner',()=>{
- const view=render(<PlaceBanner pathname="/"/>)
+ const view=render(<PlaceBanner pathname="/island-news"/>)
  for(const [pathname,banner] of Object.entries(placeBanners)){
   view.rerender(<PlaceBanner pathname={pathname}/>)
   expect(screen.getByRole('heading',{level:1,name:new RegExp(banner.title)})).toBeTruthy()
@@ -78,9 +78,9 @@ it('switches the landscape and title with the current place, without an aquarium
  expect(screen.queryByRole('heading')).toBeNull()
 })
 it('keeps the place title readable if an image fails, then loads the next place',()=>{
- const view=render(<PlaceBanner pathname="/"/>)
+ const view=render(<PlaceBanner pathname="/island-news"/>)
  fireEvent.error(screen.getByRole('img'))
- expect(screen.getByRole('heading',{name:'퐁당 섬'})).toBeTruthy()
+ expect(screen.getByRole('heading',{name:'퐁당섬 소식'})).toBeTruthy()
  expect(screen.getByRole('img').getAttribute('src')).toBe('/fallback-image.svg')
  view.rerender(<PlaceBanner pathname="/harbor"/>)
  expect(screen.getByRole('img').getAttribute('src')).toBe('/banners/harbor.png')

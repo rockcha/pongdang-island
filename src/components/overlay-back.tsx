@@ -7,6 +7,10 @@ type Watcher=EventTarget&{destroy:()=>void}
 type WatcherConstructor=new()=>Watcher
 export const OverlayDepth=createContext(0)
 const layers:Layer[]=[]
+const overlayListeners=new Set<()=>void>()
+let overlayActive=false
+export const hasOpenOverlay=()=>layers.length>0
+export function subscribeOverlayActivity(listener:()=>void){overlayListeners.add(listener);return()=>{overlayListeners.delete(listener)}}
 const marker='pongdangOverlay'
 let watcher:Watcher|null=null
 let guard:{id:string;url:string;retiring:boolean}|null=null
@@ -40,6 +44,8 @@ function onPop(event:PopStateEvent){
  queueMicrotask(sync)
 }
 function sync(){
+ const active=hasOpenOverlay()
+ if(active!==overlayActive){overlayActive=active;for(const listener of overlayListeners)listener()}
  if(!layers.length){
   watcher?.destroy();watcher=null
   if(guard&&!guard.retiring){

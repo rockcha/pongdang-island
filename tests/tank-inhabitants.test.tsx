@@ -2,6 +2,10 @@ import { cleanup, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { TankInhabitants } from '../src/features/aquarium/tank-inhabitants'
 import type { OwnedCollectible } from '../src/features/collection/api'
+import {useState} from 'react'
+import {MemoryRouter} from 'react-router'
+import {Dialog,DialogContent,DialogTitle} from '@/components/ui/dialog'
+import {fireEvent} from '@testing-library/react'
 
 const mock=vi.hoisted(()=>({setItems:vi.fn(),resize:vi.fn(),setReduced:vi.fn(),setVisible:vi.fn(),destroy:vi.fn(),create:vi.fn()}))
 vi.mock('../src/features/aquarium/phaser-tank',()=>({createTankRenderer:mock.create}))
@@ -12,6 +16,14 @@ beforeEach(()=>{
  vi.stubGlobal('matchMedia',()=>({matches:false,addEventListener(){},removeEventListener(){}}))
 })
 afterEach(()=>{cleanup();vi.unstubAllGlobals()})
+it('sleeps behind an open modal and resumes after dismissal',async()=>{
+ function View(){const [open,setOpen]=useState(false);return <MemoryRouter><TankInhabitants items={[]}/><button onClick={()=>setOpen(true)}>소식 보기</button><Dialog open={open} onOpenChange={setOpen}><DialogContent><DialogTitle>소식</DialogTitle><button onClick={()=>setOpen(false)}>닫기</button></DialogContent></Dialog></MemoryRouter>}
+ render(<View/>);await waitFor(()=>expect(mock.create).toHaveBeenCalledOnce())
+ fireEvent.click(screen.getByRole('button',{name:'소식 보기'}))
+ await waitFor(()=>expect(mock.setVisible).toHaveBeenLastCalledWith(false))
+ fireEvent.click(screen.getByRole('button',{name:'닫기',exact:true}))
+ await waitFor(()=>expect(mock.setVisible).toHaveBeenLastCalledWith(true))
+})
 it('creates one renderer and updates the collection without restarting it, then destroys it',async()=>{
  const first={id:'fish-a',species:{name:'멸치'}} as OwnedCollectible
  const second={id:'fish-b',species:{name:'상어'}} as OwnedCollectible

@@ -29,12 +29,12 @@ it('replaces loading rows with requests and opens the invite dialog from the foo
 
 it('shows current levels beside accepted friends with a single batch request',async()=>{
  mock.social.loading=false
- mock.social.requests=[{id:'a',sender_id:'me',recipient_id:'friend',status:'accepted',recipient:{id:'friend',nickname:'바다친구',equipped_title:'바다 탐험가'}},{id:'b',sender_id:'new',recipient_id:'me',status:'accepted',sender:{id:'new',nickname:'새친구'}}]
+ mock.social.requests=[{id:'a',sender_id:'me',recipient_id:'friend',status:'accepted',recipient:{id:'friend',nickname:'바다친구',equipped_title:'바다를 잇는 다정함'}},{id:'b',sender_id:'new',recipient_id:'me',status:'accepted',sender:{id:'new',nickname:'새친구'}}]
  levelApi.loadPlayerLevels.mockResolvedValue([{userId:'friend',level:42},{userId:'new',level:1}])
  render(<MemoryRouter><PlayerLevelsProvider><FriendsPage/></PlayerLevelsProvider></MemoryRouter>)
  expect(await screen.findByLabelText('레벨 42')).toBeTruthy()
  expect(screen.getByLabelText('레벨 1')).toBeTruthy()
- expect(screen.getByText('바다 탐험가')).toBeTruthy()
+ expect(screen.getByText('바다를 잇는 다정함').className).toContain('text-violet-600')
  expect(levelApi.loadPlayerLevels).toHaveBeenCalledTimes(1)
 })
 it('keeps friend actions available when level lookup fails and retries on focus',async()=>{

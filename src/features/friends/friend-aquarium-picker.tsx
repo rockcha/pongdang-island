@@ -1,3 +1,4 @@
+import {EquippedTitleText} from '@/features/titles/equipped-title-text'
 import {PlayerIdentityLink} from '@/features/profile/player-identity-link'
 import { useState } from 'react'
 import { ChevronRight } from 'lucide-react'
@@ -109,7 +110,7 @@ export function FriendAquariumPicker() {
                 {friend.profile?.equipped_title && (
                   <span className="mt-1 flex items-center gap-1 truncate text-[11px] text-primary">
                     <appArt.title className="size-4" />
-                    {friend.profile.equipped_title}
+                    <EquippedTitleText name={friend.profile.equipped_title}/>
                   </span>
                 )}
               </span>

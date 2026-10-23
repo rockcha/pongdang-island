@@ -14,6 +14,9 @@ it('loads the standalone titles page directly without a dialog',async()=>{
  expect(screen.getByText('현재 칭호')).toBeTruthy()
  await screen.findByRole('button',{name:'첫 물결의 낚시꾼 장착'})
  expect(screen.queryByRole('dialog')).toBeNull()
+ expect(screen.getByLabelText('칭호 등급 색상 안내')).toBeTruthy()
+ expect(screen.getByRole('img',{name:'희귀 등급'})).toBeTruthy()
+ expect(screen.getByRole('heading',{name:/물때를 읽는 사람.*희귀 등급/}).className).toContain('text-blue-600')
 })
 it('shows earned and unearned titles and only equips earned titles',async()=>{
  mock.equip.mockResolvedValue({...base,equipped:'fishing-1'})

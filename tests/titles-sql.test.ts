@@ -10,10 +10,20 @@ async function earned(){return (await state()).titles.filter(t=>t.earnedAt).map(
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},60000)
 beforeEach(async()=>{await db.exec('begin');for(const [id,name]of [[uid,'낚시꾼'],[other,'친구']]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,name]);await db.query('insert into public.player_wallets(user_id,gold) values($1,50000)',[id])}})
 afterEach(async()=>{await db.exec('rollback')});afterAll(async()=>{await db?.close()})
-it('lists all 130 titles and forbids equipping an unearned title',async()=>{
- const s=await state();expect(s.titles).toHaveLength(130);expect(s.titles.filter(t=>t.category==='growth')).toHaveLength(55)
+it('lists all 160 titles and forbids equipping an unearned title',async()=>{
+ const s=await state();expect(s.titles).toHaveLength(160);expect(s.titles.filter(t=>t.category==='growth')).toHaveLength(73)
  expect(s.equipped).toBe('beginner');expect(s.titles.filter(t=>t.earnedAt).map(t=>t.id)).toEqual(['beginner'])
  await expect(user("select public.equip_title('fishing-4')")).rejects.toThrow(/NOT_EARNED/)
+})
+it('adds ten titles per upper tier and awards prior manual records at the exact boundary',async()=>{
+ const additions=(await db.query("select * from public.title_catalog where id like 'expansion-%'")).rows
+ for(const tier of [2,3,4])expect(additions.filter(t=>t.tier===tier)).toHaveLength(10)
+ for(let i=0;i<99;i++)await log()
+ expect(await earned()).not.toContain('expansion-2-manual')
+ await log()
+ expect(await earned()).toContain('expansion-2-manual')
+ expect((await state()).titles.find(t=>t.id==='expansion-3-manual')).toMatchObject({earnedAt:null,description:null,target:null})
+ expect((await user("select title_id from public.player_titles where title_id='expansion-2-manual'",[],other)).rows).toEqual([])
 })
 it('awards intermediate repeat catches at the boundary and keeps the achievement after selling',async()=>{
  const added=(await db.query("select * from public.title_catalog where id like 'intermediate-%' order by id")).rows
@@ -99,6 +109,11 @@ it('preserves rare tank achievements after removing their residents',async()=>{
  expect(await earned()).toEqual(expect.arrayContaining(['not-trash','ink-master','sleeping-stars']))
 })
 async function harborCatch(vessel,bait,region,items){
+ // Claimed voyage snapshots include kind/rarity for the experience trigger.
+ for(const item of items)if(!item.species.kind||!item.species.rarity){
+  const species=(await db.query('select id,kind,rarity from public.collectible_species where id=$1',[item.species.id])).rows[0]
+  item.species={...species,...item.species}
+ }
  let boat=(await db.query('select id from public.harbor_boats where user_id=$1 and vessel_id=$2',[uid,vessel])).rows[0]
  if(!boat)boat=(await db.query('insert into public.harbor_boats(user_id,vessel_id,instance_no) values($1,$2,1) returning id',[uid,vessel])).rows[0]
  await db.query("insert into public.harbor_voyages(user_id,vessel_id,boat_id,region_id,vessel_snapshot,departed_at,returns_at,claimed_at,result) values($1,$2,$3,$4,$5,now()-interval '2 hours',now()-interval '1 hour',now(),$6)",[uid,vessel,boat.id,region,{catch_bait_id:bait},{items}])

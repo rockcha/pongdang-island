@@ -1,3 +1,4 @@
+import {EquippedTitleText} from '@/features/titles/equipped-title-text'
 import {PlayerIdentityLink} from '@/features/profile/player-identity-link'
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
@@ -40,7 +41,7 @@ function Author({ author, time }: { author: BoardAuthor; time: string }) {
         {author.equipped_title && (
           <p className="mt-0.5 flex items-center gap-1 truncate text-[10px] text-primary">
             <appArt.title className="size-3.5" />
-            {author.equipped_title}
+            <EquippedTitleText name={author.equipped_title}/>
           </p>
         )}
       </div>

@@ -1,3 +1,4 @@
+import {EquippedTitleText} from '@/features/titles/equipped-title-text'
 import {disconnectPushForLogout} from '@/features/notifications/push-device'
 import {appArt} from '@/components/app-art'
 import { useEffect,useRef, useState } from 'react'
@@ -59,7 +60,7 @@ export function AvatarMenu() {
         <Menu.Popup className="w-60 max-w-[calc(100vw-1.5rem)] overflow-hidden rounded-2xl border border-border/60 bg-popover p-1.5 text-popover-foreground shadow-[0_12px_36px_-12px_rgba(70,42,21,0.25)] outline-none">
           <div className="mb-1.5 flex min-w-0 items-center gap-2 rounded-xl bg-secondary/35 px-2.5 py-3">
             <PlayerAvatar nickname={getNickname(session)} path={profile?.avatar_path} level={experience?.state?.level} levelProgress={experience?.state?experience.state.currentXp/experience.state.nextLevelXp:undefined} className="size-9 shrink-0"/>
-            <div className="min-w-0 flex-1"><p className="truncate text-[13px] font-medium">{getNickname(session)||profile?.nickname||'모험가'}</p>{profile?.equipped_title&&<p className="mt-1 flex min-w-0 items-center gap-1 text-[10px] text-primary"><appArt.title className="size-3.5 shrink-0"/><span className="truncate">{profile.equipped_title}</span></p>}</div>
+            <div className="min-w-0 flex-1"><p className="truncate text-[13px] font-medium">{getNickname(session)||profile?.nickname||'모험가'}</p>{profile?.equipped_title&&<p className="mt-1 flex min-w-0 items-center gap-1 text-[10px] text-primary"><appArt.title className="size-3.5 shrink-0"/><EquippedTitleText name={profile.equipped_title}/></p>}</div>
           </div>
           <Menu.LinkItem onClick={()=>setOpen(false)} render={<Link to="/profile" />} className={accountMenuItem}>
             <UserRound aria-hidden="true" className="size-4 shrink-0" strokeWidth={1.75}/>마이페이지

@@ -1,3 +1,4 @@
+import {EquippedTitleText} from '@/features/titles/equipped-title-text'
 import {disconnectPushForLogout} from '@/features/notifications/push-device'
 import {PlayerLevel} from '@/features/experience/player-level'
 import {appArt} from '@/components/app-art'
@@ -68,7 +69,7 @@ export function ProfilePage() {
         <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-28 overflow-hidden bg-secondary"><LandscapeImage retryable={false} src="/banners/profile-menu.png" alt="" className="absolute inset-0 size-full object-cover opacity-30"/><div className="absolute inset-0 bg-gradient-to-b from-background/30 to-background"/></div>
         <span className="relative inline-flex"><button type="button" aria-label="아바타 편집" disabled={busy||!profile} onClick={()=>input.current?.click()} className="relative rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"><PlayerAvatar nickname={nickname} path={profile?.avatar_path} preview={preview} className="size-24 ring-4 ring-background"/><span className="absolute bottom-0 right-0 grid size-9 place-items-center rounded-full bg-background text-primary ring-2 ring-background"><Camera className="size-7"/></span></button><PlayerLevel userId={session?.user.id} avatar/></span>
         <div className="mt-3 flex items-center justify-center gap-1"><p className="text-lg font-medium">{nickname}</p><button type="button" onClick={()=>setNameOpen(true)} aria-label="이름 바꾸기" className="grid size-9 place-items-center rounded-full text-muted-foreground outline-none hover:bg-secondary focus-visible:ring-2 focus-visible:ring-ring"><Pencil className="size-3.5"/></button></div>
-        <Link to="/titles" className="mx-auto mt-1 inline-flex min-h-11 items-center gap-2 px-3 text-xs text-primary"><appArt.title className="size-6"/>{profile?.equipped_title||'칭호 선택하기'}<ChevronRight className="size-3.5"/></Link>
+        <Link to="/titles" className="mx-auto mt-1 inline-flex min-h-11 items-center gap-2 px-3 text-xs text-primary"><appArt.title className="size-6"/><EquippedTitleText name={profile?.equipped_title||'칭호 선택하기'}/><ChevronRight className="size-3.5"/></Link>
       </div>
       <ExperienceProgress/>
       <input ref={input} type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" aria-label="아바타 이미지 선택" disabled={busy||!profile} onChange={event=>void select(event)}/>

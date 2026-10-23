@@ -58,7 +58,7 @@ it('resets on claim, notifies the next run once and preserves historical notices
  expect((await db.query('select ready_notified_at from app_private.production_sites where id=$1',[site])).rows[0].ready_notified_at).toBeNull()
  expect((await refresh(owner)).created).toBe(0)
  await db.query("insert into public.player_collectibles(user_id,species_id) select $1,'shared-drift-scrap-wood' from generate_series(1,4)",[owner])
- await asUser(owner,"select public.production_action('start',$1,$2,'{\"shared-drift-scrap-wood\":4}')",[crypto.randomUUID(),site])
+ await asUser(owner,"select public.production_action('start',$1,$2,'{\"shared-drift-scrap-wood\":3}')",[crypto.randomUUID(),site])
  await db.query("update app_private.production_sites set started_at=clock_timestamp()-interval '2 minutes',completes_at=clock_timestamp()-interval '1 second' where id=$1",[site])
  expect((await refresh(owner)).created).toBe(1)
  expect((await refresh(owner)).created).toBe(0)

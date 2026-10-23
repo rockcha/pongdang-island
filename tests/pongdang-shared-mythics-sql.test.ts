@@ -8,12 +8,13 @@ const mythics=['horizon-whale','name-eating-conch','star-swallowing-priest','orp
 const natives=['pongi-plush','pongdang-pufferfish','pongdang-octopus','pongdang-seahorse','pongdang-whale']
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},60000)
 afterAll(async()=>{await db?.close()})
-it('matches catalog source and places the five common mythics in every region',async()=>{
+it('matches catalog source and preserves the five common mythics and their declared habitat metadata',async()=>{
  const source=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8'))
  expect(canonical(await readCatalog(db))).toBe(canonical(source))
  for(const id of mythics){
   const {rows}=await db.query('select s.rarity,s.is_native,count(h.region_id)::int as habitats from public.collectible_species s join public.collectible_habitats h on h.species_id=s.id where s.id=$1 group by s.id',[id])
-  expect(rows).toEqual([{rarity:'mythic',is_native:false,habitats:source.regions.length}])
+  // Habitats are historical metadata; fishing candidates no longer use this table.
+  expect(rows).toEqual([{rarity:'mythic',is_native:false,habitats:source.collectible_habitats.filter(h=>h.species_id===id).length}])
  }
 })
 it('restricts all five island additions to pongdang and permits rare plush trash',async()=>{

@@ -36,7 +36,7 @@ it('allows repeated ownership, limits concurrent starts, snapshots output and se
     const running = started.sites.find((site: any) => site.siteId === s.sites[0].siteId)
     expect(running.runOutput).toBe(3)
     expect(Date.parse(running.completesAt) - Date.parse(running.startedAt)).toBe(30 * 60000)
-    expect(Date.parse(running.expiresAt) - Date.parse(running.completesAt)).toBe(30 * 60000)
+    expect(Date.parse(running.expiresAt) - Date.parse(running.completesAt)).toBe(120 * 60000)
     for (const site of s.sites.slice(1, 4)) await call('start', site.siteId)
     await expect(call('start', s.sites[4].siteId)).rejects.toThrow(/ACTIVE_LIMIT/)
     await expect(call('claim', s.sites[0].siteId)).rejects.toThrow(/NOT_READY/)

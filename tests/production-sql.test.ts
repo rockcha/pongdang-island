@@ -21,15 +21,15 @@ it('supports repeat purchases, replays without charging and protects private tab
  await db.exec('set role anon');try{await expect(db.query('select public.production_state()')).rejects.toThrow(/permission denied/)}finally{await db.exec('reset role')}
 })
 async function add(species='shared-drift-scrap-wood',count=4){await db.query('insert into public.player_collectibles(user_id,species_id) select $1,$2 from generate_series(1,$3)',[u,species,count])}
-it('starts the clockwork baseline with three trash for one fuel in thirty minutes',async()=>{
- await add('shared-drift-scrap-wood',3)
+it('starts the buffed clockwork with two trash for one fuel in thirty minutes',async()=>{
+ await add('shared-drift-scrap-wood',2)
  const run=async(kind:string,materials={})=>(await asUser(u,'select public.production_action($1,$2,$3,$4) result',[kind,crypto.randomUUID(),'clockwork-compressor',JSON.stringify(materials)]))[0].result
  await run('buy')
- await run('start',{'shared-drift-scrap-wood':3})
+ await run('start',{'shared-drift-scrap-wood':2})
  const site=(await db.query("select * from app_private.production_sites where user_id=$1 and facility_id='clockwork-compressor'",[u])).rows[0]
  expect(site.run_output).toBe(1)
  expect(new Date(site.completes_at).getTime()-new Date(site.started_at).getTime()).toBe(30*60000)
- expect((await db.query('select count(*)::int n from public.player_collectibles where user_id=$1 and consumed_at is not null',[u])).rows[0].n).toBe(3)
+ expect((await db.query('select count(*)::int n from public.player_collectibles where user_id=$1 and consumed_at is not null',[u])).rows[0].n).toBe(2)
 })
 it('runs every fish refinery with exact fish consumption, timing, payout and idempotent receipts',async()=>{
  const fish=catalog.production_facilities.filter(f=>f.kind==='fish')
@@ -60,10 +60,10 @@ it('runs every fish refinery with exact fish consumption, timing, payout and ide
 })
 it('consumes exactly the selected stored materials, snapshots output and cannot claim early',async()=>{
  await action('buy');await add();await add('shared-reclaimed-oil-can',2)
- const op=crypto.randomUUID();await action('start',op,{'shared-drift-scrap-wood':3,'shared-reclaimed-oil-can':1})
- expect((await action('start',op,{'shared-drift-scrap-wood':3,'shared-reclaimed-oil-can':1})).replayed).toBe(true)
+ const op=crypto.randomUUID();await action('start',op,{'shared-drift-scrap-wood':2,'shared-reclaimed-oil-can':1})
+ expect((await action('start',op,{'shared-drift-scrap-wood':2,'shared-reclaimed-oil-can':1})).replayed).toBe(true)
  const consumed=(await db.query('select count(*)::int n from public.player_collectibles where user_id=$1 and consumed_at is not null and sold_at is not null',[u])).rows[0].n
- expect(consumed).toBe(4)
+ expect(consumed).toBe(3)
  await expect(action('claim')).rejects.toThrow(/NOT_READY/)
  await expect(action('start',crypto.randomUUID(),{'shared-drift-scrap-wood':4})).rejects.toThrow(/BUSY/)
  const run=(await db.query('select * from app_private.production_sites where user_id=$1',[u])).rows[0]
@@ -71,22 +71,22 @@ it('consumes exactly the selected stored materials, snapshots output and cannot 
 })
 it('rejects invalid quantities, wrong-kind and unavailable materials atomically',async()=>{
  await action('buy');await add('shared-refining-smelt',4)
- await expect(action('start',crypto.randomUUID(),{'shared-refining-smelt':4})).rejects.toThrow(/INSUFFICIENT_MATERIALS/)
- await add();await expect(action('start',crypto.randomUUID(),{'shared-drift-scrap-wood':3})).rejects.toThrow(/INVALID_MATERIAL_COUNT/)
+ await expect(action('start',crypto.randomUUID(),{'shared-refining-smelt':3})).rejects.toThrow(/INSUFFICIENT_MATERIALS/)
+ await add();await expect(action('start',crypto.randomUUID(),{'shared-drift-scrap-wood':2})).rejects.toThrow(/INVALID_MATERIAL_COUNT/)
  await expect(action('start',crypto.randomUUID(),{'shared-drift-scrap-wood':-4})).rejects.toThrow(/INVALID_MATERIALS/)
  await db.query('update public.player_collectibles set sold_at=now() where user_id=$1 and species_id=$2',[u,'shared-drift-scrap-wood'])
- await expect(action('start',crypto.randomUUID(),{'shared-drift-scrap-wood':4})).rejects.toThrow(/INSUFFICIENT_MATERIALS/)
+ await expect(action('start',crypto.randomUUID(),{'shared-drift-scrap-wood':3})).rejects.toThrow(/INSUFFICIENT_MATERIALS/)
  expect((await db.query('select count(*)::int n from public.player_collectibles where consumed_at is not null')).rows[0].n).toBe(0)
 })
 async function shift(expired=false){await db.query("update app_private.production_sites set started_at=clock_timestamp()-interval '2 hours',completes_at=clock_timestamp()-interval '1 hour',expires_at=clock_timestamp()+case when $2 then interval '-1 minute' else interval '30 minutes' end where user_id=$1",[u,expired])}
 it('claims once, keeps other inventory and allows another cycle',async()=>{
- await action('buy');await add();await action('start',crypto.randomUUID(),{'shared-drift-scrap-wood':4});await shift()
+ await action('buy');await add();await action('start',crypto.randomUUID(),{'shared-drift-scrap-wood':3});await shift()
  const op=crypto.randomUUID();expect((await action('claim',op)).fuel).toBe(5);expect((await action('claim',op)).fuel).toBe(5)
  expect((await db.query('select inventory from public.player_wallets where user_id=$1',[u])).rows[0].inventory).toEqual({fuel:5,bait:2})
  await expect(action('claim')).rejects.toThrow(/IDLE/)
 })
 it('expires production without a cron job, blocks receipt and discards once without fuel',async()=>{
- await action('buy');await add();await action('start',crypto.randomUUID(),{'shared-drift-scrap-wood':4})
+ await action('buy');await add();await action('start',crypto.randomUUID(),{'shared-drift-scrap-wood':3})
  await expect(action('discard')).rejects.toThrow(/NOT_EXPIRED/)
  await shift(true);await expect(action('claim')).rejects.toThrow(/EXPIRED/)
  const op=crypto.randomUUID();expect((await action('discard',op)).fuel).toBe(3);expect((await action('discard',op)).replayed).toBe(true)
@@ -95,7 +95,7 @@ it('expires production without a cron job, blocks receipt and discards once with
 
 const secondFacility='shell-coal-mini-kiln'
 async function buyPair(){await action('buy');await asUser(u,'select public.production_action($1,$2,$3)', ['buy',crypto.randomUUID(),secondFacility])}
-const pairSteps=(species='shared-drift-scrap-wood')=>[{facility,materials:{[species]:4}},{facility:secondFacility,materials:{[species]:3}}]
+const pairSteps=(species='shared-drift-scrap-wood')=>[{facility,materials:{[species]:3}},{facility:secondFacility,materials:{[species]:2}}]
 async function bulk(kind:string,steps:any[],id=crypto.randomUUID(),allow=false,owner=u){return (await asUser(owner,'select public.production_bulk_action($1,$2,$3,$4) result',[kind,id,JSON.stringify(steps),allow]))[0].result}
 it('requires the valuable-material guard for fish batches too and never falls back to other stock',async()=>{
  const targets=['dock-grandma-refining-pot','conch-spiral-distiller']
@@ -111,7 +111,7 @@ it('requires the valuable-material guard for fish batches too and never falls ba
  expect((await db.query('select count(*)::int n from public.player_collectibles where user_id=$1 and consumed_at is not null and species_id<>$2',[u,species])).rows[0].n).toBe(0)
 })
 it('rolls back every site and material if a later site lacks materials',async()=>{
- await buyPair();await add('shared-drift-scrap-wood',6)
+ await buyPair();await add('shared-drift-scrap-wood',4)
  await expect(bulk('start',pairSteps())).rejects.toThrow(/INSUFFICIENT_MATERIALS/)
  expect((await db.query('select count(*)::int n from app_private.production_sites where user_id=$1 and started_at is not null',[u])).rows[0].n).toBe(0)
  expect((await db.query('select count(*)::int n from public.player_collectibles where user_id=$1 and consumed_at is not null',[u])).rows[0].n).toBe(0)
@@ -122,7 +122,7 @@ it('requires confirmation for valuable materials and consumes only the reviewed 
  await add(species,9);await add('shared-drift-scrap-wood',9)
  await expect(bulk('start',pairSteps(species))).rejects.toThrow(/VALUABLE_MATERIAL_CONFIRM_REQUIRED/)
  const op=crypto.randomUUID();await bulk('start',pairSteps(species),op,true);expect((await bulk('start',pairSteps(species),op,true)).replayed).toBe(true)
- expect((await db.query('select count(*)::int n from public.player_collectibles where user_id=$1 and consumed_at is not null and species_id=$2',[u,species])).rows[0].n).toBe(7)
+ expect((await db.query('select count(*)::int n from public.player_collectibles where user_id=$1 and consumed_at is not null and species_id=$2',[u,species])).rows[0].n).toBe(5)
  expect((await db.query('select count(*)::int n from public.player_collectibles where user_id=$1 and consumed_at is not null and species_id=$2',[u,'shared-drift-scrap-wood'])).rows[0].n).toBe(0)
 })
 it('claims and discards whole batches once, preserving fuel on discard',async()=>{

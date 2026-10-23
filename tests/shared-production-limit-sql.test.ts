@@ -15,11 +15,11 @@ it('allows four fuel and four bait runs independently, including bulk starts, re
   await db.query("insert into public.player_collectibles(user_id,species_id) select $1,'shared-drift-scrap-wood' from generate_series(1,18)",[u])
   await db.exec('set role authenticated')
   const start=async(id:string,op=crypto.randomUUID())=>(await db.query<{r:any}>("select public.bait_production_action('start',$1,$2) r",[op,id])).rows[0].r
-  const startFuel=async(id:string)=>db.query("select public.production_action('start',$1,$2,'{\"shared-drift-scrap-wood\":3}'::jsonb)",[crypto.randomUUID(),id])
+  const startFuel=async(id:string)=>db.query("select public.production_action('start',$1,$2,'{\"shared-drift-scrap-wood\":2}'::jsonb)",[crypto.randomUUID(),id])
   const first=crypto.randomUUID()
   await start(bait[0].siteId,first)
   for(const b of bait.slice(1,4))await start(b.siteId)
-  await db.query("select public.production_bulk_action('start',$1,$2::jsonb)",[crypto.randomUUID(),JSON.stringify(fuel.slice(0,4).map((f:any)=>({facility:f.siteId,materials:{'shared-drift-scrap-wood':3}})))])
+  await db.query("select public.production_bulk_action('start',$1,$2::jsonb)",[crypto.randomUUID(),JSON.stringify(fuel.slice(0,4).map((f:any)=>({facility:f.siteId,materials:{'shared-drift-scrap-wood':2}})))])
   for(const fn of ['production_state','bait_production_state'])expect((await db.query<{r:any}>(`select public.${fn}() r`)).rows[0].r.activeTotal).toBe(4)
   expect((await start(bait[0].siteId,first)).replayed).toBe(true)
   await expect(start(bait[4].siteId)).rejects.toThrow(/PRODUCTION_ACTIVE_LIMIT/)

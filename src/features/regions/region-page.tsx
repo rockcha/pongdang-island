@@ -3,7 +3,7 @@ import {BannerInfo,fishingGuide} from '@/components/banner-info'
 import { appArt } from '@/components/app-art'
 import {regionIcons} from '@/features/regions/region-icons'
 import { FishingPanel } from '@/features/fishing/fishing-panel'
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { useAuth } from '@/components/auth-provider'
 import { Button, buttonVariants } from '@/components/ui/button'
@@ -23,6 +23,16 @@ function Destination({regionId,userId}:{regionId:string;userId?:string}){
  const [attempt,setAttempt]=useState(0)
  const [oddsTarget,setOddsTarget]=useState<HTMLDivElement|null>(null)
  const [toolbar,setToolbar]=useState<HTMLDivElement|null>(null)
+ const [sceneHeader,setSceneHeader]=useState<HTMLElement|null>(null)
+ const [headerBottom,setHeaderBottom]=useState(100)
+ useLayoutEffect(()=>{
+  if(!sceneHeader)return
+  const measure=()=>setHeaderBottom(Math.max(84,Math.ceil(sceneHeader.getBoundingClientRect().height)+12))
+  measure()
+  if(typeof ResizeObserver==='undefined')return
+  const observer=new ResizeObserver(measure);observer.observe(sceneHeader)
+  return()=>observer.disconnect()
+ },[sceneHeader])
  useEffect(()=>{
   let active=true
   loadRegionMap().then(data=>{if(active){setMap(data);setError('')}}).catch(()=>{if(active)setError('지역을 불러오지 못했어요.')})
@@ -39,11 +49,11 @@ function Destination({regionId,userId}:{regionId:string;userId?:string}){
  return <section className="relative isolate flex min-h-0 w-full flex-1 flex-col">
   {!sceneReady&&<div role="status" aria-label="낚시터 준비 중" className="absolute inset-0 z-40 flex items-center justify-center bg-gradient-to-b from-[#e8dfce] via-[#b3d5d5] to-[#629ba7]"><div className="flex flex-col items-center gap-3 rounded-2xl bg-background/90 px-6 py-5 text-primary shadow-sm"><appArt.rod className="size-10 motion-safe:animate-pulse"/><span className="text-xs">낚시터를 준비하고 있어요.</span></div></div>}
   <div className="relative flex min-h-0 flex-1 flex-col">
-   <FishingTools map={map}>
+   <FishingTools map={map} toolsTop={headerBottom+12}>
    <div ref={setToolbar} role="group" aria-label="낚시 게이지" className="absolute inset-x-0 top-0 z-30 flex flex-col overflow-hidden text-white"/>
    <FishingPanel regionId={region.id} toolbarTarget={toolbar} oddsTarget={oddsTarget} sceneHeader={<>
-    <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-10 h-44 bg-gradient-to-b from-slate-950/45 via-slate-950/15 to-transparent"/>
-    <header data-fishing-region-overlay className="pointer-events-none absolute left-4 right-16 top-3 z-20 text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
+    <div aria-hidden="true" style={{height:headerBottom+48,background:'linear-gradient(180deg,rgba(9,35,54,0.78) 0%,rgba(9,35,54,0.48) 62%,rgba(9,35,54,0) 100%)'}} className="pointer-events-none absolute inset-x-0 top-0 z-10"/>
+    <header ref={setSceneHeader} data-fishing-region-overlay className="pointer-events-none absolute left-4 right-16 top-3 z-20 text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
      <div className="flex flex-wrap items-center gap-x-1 gap-y-0.5"><h1 className="flex min-w-0 items-center gap-1.5 text-lg font-normal tracking-tight sm:text-xl">{regionIcons[region.id]&&<img src={regionIcons[region.id].src} alt="" className="size-7 shrink-0 object-contain drop-shadow-sm"/>}{region.name}</h1><BannerInfo key={region.id} title={region.name} steps={fishingGuide}/><div ref={setOddsTarget} className="pointer-events-auto flex shrink-0 items-center"/></div>
      {region.description&&<p className="mt-1 line-clamp-2 max-w-sm text-xs leading-5 text-white/90">{region.description}</p>}
     </header>

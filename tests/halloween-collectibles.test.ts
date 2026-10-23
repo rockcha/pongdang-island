@@ -28,7 +28,7 @@ it('registers all 61 shared event species with explicit anatomy-based motion and
   if(s.kind==='fish')expect(s.flip_with_direction).toBe(true)
  }
  expect(counts).toEqual({'fish/common':15,'fish/rare':10,'fish/epic':11,'fish/mythic':5,'trash/common':4,'trash/rare':6,'decoration/common':3,'decoration/rare':4,'decoration/epic':3})
- expect(rows.find(s=>s.id==='halloween-little-ghost-puffer')?.sell_price).toBe(225)
+ expect(rows.find(s=>s.id==='halloween-little-ghost-puffer')?.sell_price).toBe(325)
 })
 
 it('gates every new species at both KST boundaries without affecting ordinary catches',async()=>{
@@ -50,11 +50,13 @@ it('keeps the requested Halloween prices and rarity swaps idempotent',async()=>{
  }
  for(const original of manifest.items){
   const extra=original.kind==='fish'?(increases[original.rarity]??0):0
-  expect(rows.find(s=>s.id===original.id),original.id).toMatchObject(swaps[original.id]??{rarity:original.rarity,sell_price:original.sell_price+extra+(original.rarity==='epic'?200:0)})
+  const expected=swaps[original.id]??{rarity:original.rarity,sell_price:original.sell_price+extra+(original.rarity==='epic'?200:0)}
+  expect(rows.find(s=>s.id===original.id),original.id).toMatchObject({...expected,sell_price:expected.sell_price+(expected.rarity==='rare'?100:0)})
  }
  for(const added of newSpecies)expect(rows.find(s=>s.id===added.id)?.sell_price,added.id).toBe(added.sell_price+(added.rarity==='epic'?200:0))
  const sql=readFileSync('supabase/migrations/20261023144733_halloween_values_rarities_and_grubby_magnet.sql','utf8')
- await db.exec(sql);await db.exec(sql)
+ const rareSql=readFileSync('supabase/migrations/20261023145940_halloween_rare_value_plus_100.sql','utf8')
+ await db.exec(sql);await db.exec(rareSql);await db.exec(sql);await db.exec(rareSql)
  expect((await db.query("select id,sell_price,rarity from public.collectible_species where starts_with(id,'halloween-') order by id")).rows).toEqual(rows)
 })
 

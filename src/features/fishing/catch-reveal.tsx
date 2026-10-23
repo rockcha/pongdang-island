@@ -32,7 +32,7 @@ export function CatchReveal({species,failure,onDismiss,practice=false,preview=fa
  const rarity=species?.rarity??'common',color=species?rarities[rarity].effectColor:'#9aafc9',dismiss=useRef<HTMLButtonElement>(null)
  useEffect(()=>{const previous=document.activeElement;dismiss.current?.focus({preventScroll:true});return()=>{if(previous instanceof HTMLElement&&previous.isConnected)previous.focus({preventScroll:true})}},[])
  return createPortal(<div className="fixed inset-0 z-[80] flex h-dvh w-screen items-center justify-center overflow-hidden bg-slate-950/65 p-6 text-center backdrop-blur-sm" style={{color,backgroundImage:species?`radial-gradient(ellipse at center,${color}25,transparent 65%)`:undefined}} onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();if(!event.repeat)tryDismiss()}}}>
-  <button ref={dismiss} type="button" aria-label={species?`${species.id.startsWith('halloween-')&&<span aria-label="??? ??" className="mr-1 inline-flex align-middle"><HalloweenIcon className="size-[1em]"/></span>}{species.name} 결과 닫기`:'낚시 실패 결과 닫기'} onClick={tryDismiss} className="absolute inset-0 size-full cursor-pointer focus-visible:outline-2 focus-visible:outline-white"/>
+  <button ref={dismiss} type="button" aria-label={species?`${species.name} 결과 닫기`:'낚시 실패 결과 닫기'} onClick={tryDismiss} className="absolute inset-0 size-full cursor-pointer focus-visible:outline-2 focus-visible:outline-white"/>
   <span className="pointer-events-none relative flex w-full max-w-sm flex-col items-center">
    {species&&<span className="catch-grade-rays pointer-events-none absolute left-1/2 top-24 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40" style={{background:`repeating-conic-gradient(from 10deg,transparent 0deg 24deg,${color}33 26deg 32deg,transparent 34deg 48deg)`,maskImage:"radial-gradient(circle,#000 15%,transparent 70%)"}}/>}
    <span className="catch-reveal-glow pointer-events-none absolute left-1/2 top-24 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full" style={{background:'radial-gradient(circle,'+color+'88,transparent 68%)'}}/>
@@ -41,7 +41,7 @@ export function CatchReveal({species,failure,onDismiss,practice=false,preview=fa
    <span role="status" className="relative mt-5 flex w-full flex-col items-center gap-3">
     {species?<span className="flex w-full flex-wrap items-center justify-center gap-x-2.5 gap-y-2">
      {nativeRegion&&<img src={nativeRegion.src} alt={`${nativeRegion.name} 고유종`} title={`${nativeRegion.name} 고유종`} className="size-8 shrink-0 object-contain drop-shadow-md sm:size-9"/>}
-     <span className="text-balance break-keep text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_2px_16px_#0005] sm:text-4xl">{species.name}</span>
+     <span className="text-balance break-keep text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_2px_16px_#0005] sm:text-4xl">{species.id.startsWith('halloween-')&&<span aria-label="할로윈 한정" className="mr-1.5 inline-flex align-middle"><HalloweenIcon className="size-[1em] shrink-0"/></span>}{species.name}</span>
      <span className="inline-flex shrink-0 items-center gap-2"><span className="inline-flex h-7 items-center rounded px-2 text-xs font-bold leading-5 text-white" style={{backgroundColor:color}}>{rarities[rarity].label}</span>{firstDiscovery&&!practice&&<NewDiscoveryBadge size="md"/>}</span>
     </span>:<>
      <span className="text-2xl font-bold tracking-tight text-white">낚시 실패</span>

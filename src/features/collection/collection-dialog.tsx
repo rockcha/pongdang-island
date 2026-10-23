@@ -99,7 +99,7 @@ export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='
        <span className={`pointer-events-none absolute left-2 ${onAddTemporary?'top-12':'top-2'}`}><TreasureTrashBadge speciesId={s.id}/></span>
        {s.is_native&&s.native_region_id&&regionIcons[s.native_region_id]&&<span aria-label={regionIcons[s.native_region_id].name+' 주 서식지'} title={regionIcons[s.native_region_id].name+' 주 서식지'} className="absolute right-2 top-2 inline-flex size-7 items-center justify-center rounded-full border border-border/60 bg-background/95 p-1 shadow-sm"><img src={regionIcons[s.native_region_id].src} alt="" className="size-5 object-contain"/></span>}
        <h3 title={s.name} className="mt-2 h-5 w-full truncate px-1 text-xs font-medium leading-5">{s.name}</h3>
-
+       <span aria-label={`가치 ${s.sell_price.toLocaleString('ko-KR')} 골드`} className="mt-0.5 inline-flex items-center justify-center gap-1 text-[11px] tabular-nums text-primary"><GoldIcon className="size-3.5"/>{s.sell_price.toLocaleString('ko-KR')}</span>
       </button>
       {onAddTemporary&&<TooltipProvider><Tooltip><TooltipTrigger render={<Button type="button" size="icon" variant="secondary" aria-label={s.name+' 임시 넣기'} className="absolute left-0.5 top-0.5 z-10 size-9 rounded-lg border border-border bg-background/95 shadow-sm" onClick={()=>onAddTemporary(s)}/> }><Plus className="size-4"/></TooltipTrigger><TooltipContent>어항에 임시 넣기</TooltipContent></Tooltip></TooltipProvider>}
      </article>

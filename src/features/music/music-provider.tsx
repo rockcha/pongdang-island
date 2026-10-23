@@ -4,7 +4,7 @@ import {readTracks,youtubeTitle,type MusicTrack} from './music-library'
 import {loadMusic,editMusic} from './api'
 import {claimPlayback,playbackEvent} from './playback-ownership'
 
-type Player={playVideo():void;pauseVideo():void;destroy():void;getVideoData():{title?:string}}
+type Player={playVideo():void;pauseVideo():void;setVolume(volume:number):void;destroy():void;getVideoData():{title?:string}}
 type PlayerEvent={target:Player;data:number}
 type YouTube={Player:new(element:HTMLElement,options:Record<string,unknown>)=>Player}
 declare global{interface Window{YT?:YouTube;onYouTubeIframeAPIReady?:()=>void}}
@@ -20,13 +20,16 @@ function loadYouTube(){
  })
  return apiPromise
 }
-type MusicContextValue={setPlayerSlot:(slot:HTMLDivElement|null)=>void;tracks:MusicTrack[];activeId:string|null;playing:boolean;loading:boolean;error:string;reload():void;add(track:MusicTrack):Promise<void>;remove(id:string):Promise<void>;rename(id:string,name:string):Promise<void>;play(id:string):void;pause():void;stop():void}
+type MusicContextValue={setPlayerSlot:(slot:HTMLDivElement|null)=>void;tracks:MusicTrack[];activeId:string|null;playing:boolean;volume:number;setVolume(volume:number):void;loading:boolean;error:string;reload():void;add(track:MusicTrack):Promise<void>;remove(id:string):Promise<void>;rename(id:string,name:string):Promise<void>;play(id:string):void;pause():void;stop():void}
 const MusicContext=createContext<MusicContextValue|null>(null)
 export function useMusic(){const value=useContext(MusicContext);if(!value)throw new Error('MusicProvider required');return value}
 export function MusicProvider({children,storageKey,userId}:{children:ReactNode;storageKey:string;userId?:string}){
  const [tracks,setTracks]=useState(()=>readTracks(storageKey))
  const [activeId,setActiveId]=useState<string|null>(null)
  const [playing,setPlaying]=useState(false)
+ const [volume,storeVolume]=useState(()=>{try{const saved=localStorage.getItem(storageKey+':volume');const value=saved===null?70:Number(saved);return Number.isFinite(value)?Math.max(0,Math.min(100,value)):70}catch{return 70}})
+ const volumeRef=useRef(volume)
+ const setVolume=(value:number)=>{if(!Number.isFinite(value))return;const next=Math.max(0,Math.min(100,Math.round(value)));volumeRef.current=next;storeVolume(next);player.current?.setVolume?.(next);try{localStorage.setItem(storageKey+':volume',String(next))}catch{/* Keep volume usable without storage. */}}
  const [attempt,setAttempt]=useState(0)
  const host=useRef<HTMLDivElement>(null),player=useRef<Player|null>(null)
  const wantsPlayback=useRef(true)
@@ -97,7 +100,7 @@ export function MusicProvider({children,storageKey,userId}:{children:ReactNode;s
   void loadYouTube().then(YT=>{
    if(cancelled)return
    player.current=new YT.Player(element,{width:'100%',height:'100%',videoId:activeId,playerVars:{autoplay:1,loop:1,playlist:activeId,playsinline:1,origin:window.location.origin},events:{
-    onReady:({target}:PlayerEvent)=>{if(cancelled)return;if(wantsPlayback.current)target.playVideo();else target.pauseVideo();const title=target.getVideoData().title;if(title)cacheTitle(activeId,title)},
+    onReady:({target}:PlayerEvent)=>{if(cancelled)return;target.setVolume?.(volumeRef.current);if(wantsPlayback.current)target.playVideo();else target.pauseVideo();const title=target.getVideoData().title;if(title)cacheTitle(activeId,title)},
     onStateChange:({data,target}:PlayerEvent)=>{if(cancelled)return;if(data===1&&!wantsPlayback.current){target.pauseVideo();setPlaying(false);return}setPlaying(data===1);const title=target.getVideoData().title;if(title)cacheTitle(activeId,title)},
     onAutoplayBlocked:()=>{if(!cancelled){setPlaying(false);toast.info('음악 재생 버튼을 다시 눌러 주세요.')}},
     onError:()=>{if(!cancelled){setPlaying(false);toast.error('이 영상은 재생할 수 없어요. 다른 곡을 선택해 주세요.')}}
@@ -108,7 +111,7 @@ export function MusicProvider({children,storageKey,userId}:{children:ReactNode;s
  const pause=()=>{wantsPlayback.current=false;player.current?.pauseVideo?.();setPlaying(false)}
  const stop=()=>{pause();setActiveId(null)}
  const play=(id:string)=>{claimPlayback('library');wantsPlayback.current=true;if(activeId===id&&player.current)player.current.playVideo?.();else{setActiveId(id);setAttempt(n=>n+1)}}
- return <MusicContext.Provider value={{setPlayerSlot,tracks,activeId,playing,play,pause,stop,loading:!ready&&!error,error,reload:()=>setReloadId(n=>n+1),add:track=>mutate('add',track.id,track.title,track.customName),remove:async id=>{await mutate('delete',id);if(id===activeId)stop()},rename:(id,name)=>mutate('rename',id,'',name)}}>
+ return <MusicContext.Provider value={{setPlayerSlot,tracks,activeId,playing,volume,setVolume,play,pause,stop,loading:!ready&&!error,error,reload:()=>setReloadId(n=>n+1),add:track=>mutate('add',track.id,track.title,track.customName),remove:async id=>{await mutate('delete',id);if(id===activeId)stop()},rename:(id,name)=>mutate('rename',id,'',name)}}>
   {children}
   {activeId&&<div ref={host} aria-label="음악 플레이어" aria-hidden={!bounds} className="fixed z-30 overflow-hidden rounded-xl bg-black" style={{top:bounds?.top??0,left:bounds?.left??0,width:bounds?.width??320,height:bounds?.height??224,clipPath:clip,visibility:bounds?'visible':'hidden',pointerEvents:bounds?'auto':'none'}}/>}
  </MusicContext.Provider>

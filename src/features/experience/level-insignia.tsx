@@ -55,7 +55,7 @@ export function LevelInsignia({level,className='size-5'}:{level:number;className
  </svg>
 }
 
-export function LevelTag({level,loading=false,className='',ariaLabel}:{level?:number;loading?:boolean;className?:string;ariaLabel?:string}){
+export function LevelTag({level,loading=false,className='',ariaLabel,xp}:{level?:number;loading?:boolean;className?:string;ariaLabel?:string;xp?:{currentXp:number;nextLevelXp:number}}){
  const valid=level!==undefined&&levelInsigniaTier(level)!==null
  if(!valid)return <span aria-label={ariaLabel??(loading?'레벨 확인 중':'레벨 확인 실패')} className={`inline-flex size-8 shrink-0 items-center justify-center text-xs text-muted-foreground ${className}`}>{loading?'…':'—'}</span>
  const tier=levelInsigniaTier(level)!,insignia=levelInsignias[tier]
@@ -67,8 +67,11 @@ export function LevelTag({level,loading=false,className='',ariaLabel}:{level?:nu
    <Popover.Popup className="flex min-w-44 max-w-64 items-center gap-3 rounded-2xl border border-primary/15 bg-popover px-4 py-3 text-left text-popover-foreground shadow-lg outline-none">
     <LevelInsignia level={level} className="size-11"/>
     <div className="min-w-0">
-     <Popover.Title className="text-base font-medium tabular-nums text-primary">Lv.{level}</Popover.Title>
-     <Popover.Description className="mt-1 text-[11px] leading-relaxed text-muted-foreground">{insignia.name} · {tier*10+1}–{(tier+1)*10}</Popover.Description>
+     <Popover.Title aria-label={`Lv.${level}`} className="flex flex-wrap items-baseline gap-x-1.5 text-base font-medium tabular-nums text-primary">Lv.{level}{xp&&xp.nextLevelXp>0&&<span className="text-xs font-normal text-muted-foreground">({xp.currentXp.toLocaleString('ko-KR')}/{xp.nextLevelXp.toLocaleString('ko-KR')})</span>}</Popover.Title>
+     <Popover.Description className="mt-0.5 text-[11px] leading-relaxed text-muted-foreground">{insignia.name}</Popover.Description>
+     {xp&&xp.nextLevelXp>0&&<div className="mt-2 min-w-32">
+      <div role="progressbar" aria-label="다음 레벨까지 경험치" aria-valuemin={0} aria-valuemax={xp.nextLevelXp} aria-valuenow={xp.currentXp} className="mt-1.5 h-1 overflow-hidden rounded-full bg-primary/10"><div className="h-full rounded-full bg-primary/65" style={{width:`${Math.max(0,Math.min(1,xp.currentXp/xp.nextLevelXp))*100}%`}}/></div>
+     </div>}
     </div>
    </Popover.Popup>
   </Popover.Positioner></Popover.Portal>

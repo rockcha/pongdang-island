@@ -1,15 +1,13 @@
 import {useFishingSceneImages} from '@/features/fishing/scene-images'
 import {BannerInfo,fishingGuide} from '@/components/banner-info'
-import { LandscapeImage } from '@/components/landscape-image'
 import { appArt } from '@/components/app-art'
-import { fishingBannerPath } from './fishing-banner'
 import {regionIcons} from '@/features/regions/region-icons'
 import { FishingPanel } from '@/features/fishing/fishing-panel'
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import { useAuth } from '@/components/auth-provider'
 import { Button, buttonVariants } from '@/components/ui/button'
-import { loadRegionMap, regionImageUrl } from './api'
+import { loadRegionMap } from './api'
 import type { RegionMap } from './api'
 import {rememberRegion} from './remembered-region'
 import {FishingTools} from '@/features/fishing/fishing-tools'
@@ -40,15 +38,16 @@ function Destination({regionId,userId}:{regionId:string;userId?:string}){
  if(!region.unlocked||map.currentRegion!==region.id)return <section className="space-y-4 py-8"><h1 className="text-xl font-bold">{regionIcons[region.id]&&<img src={regionIcons[region.id].src} alt="" className="mr-2 inline-block size-7 align-middle"/>}{region.name}</h1><p className="text-sm text-muted-foreground">{!region.unlocked?'지도가 필요한 잠긴 지역이에요.':'아직 도착하지 않은 지역이에요.'}</p>{region.unlocked&&<Link to={`/sailing/${region.id}`} className={buttonVariants()}>이 지역으로 출항</Link>}<Link to="/harbor" className={buttonVariants({variant:'outline'})}>지도로</Link></section>
  return <section className="relative isolate flex min-h-0 w-full flex-1 flex-col">
   {!sceneReady&&<div role="status" aria-label="낚시터 준비 중" className="absolute inset-0 z-40 flex items-center justify-center bg-gradient-to-b from-[#e8dfce] via-[#b3d5d5] to-[#629ba7]"><div className="flex flex-col items-center gap-3 rounded-2xl bg-background/90 px-6 py-5 text-primary shadow-sm"><appArt.rod className="size-10 motion-safe:animate-pulse"/><span className="text-xs">낚시터를 준비하고 있어요.</span></div></div>}
-  <div className="relative z-30 h-[120px] shrink-0 bg-muted">
-   <LandscapeImage src={fishingBannerPath(region.id)??regionImageUrl(region.image_path)} alt="" fetchPriority="high" decoding="async" placeholderClassName="bg-gradient-to-b from-[#a7c4c8] to-[#567f83]" className="absolute inset-0 size-full object-cover"/>
-   <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(45,28,20,0.88)_0%,rgba(45,28,20,0.50)_45%,rgba(45,28,20,0.04)_100%)]"/>
-   <div className="absolute inset-x-4 bottom-4 text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.55)]"><div className="flex items-center gap-1"><h1 className="min-w-0 text-xl font-normal tracking-tight">{region.name}</h1><BannerInfo key={region.id} title={region.name} steps={fishingGuide}/><div ref={setOddsTarget} className="flex shrink-0 items-center"/></div>{region.description&&<p className="mt-1 line-clamp-2 max-w-sm text-xs leading-5 text-white">{region.description}</p>}</div>
-  </div>
   <div className="relative flex min-h-0 flex-1 flex-col">
    <FishingTools map={map}>
    <div ref={setToolbar} role="group" aria-label="낚시 게이지" className="absolute inset-x-0 top-0 z-30 flex flex-col overflow-hidden text-white"/>
-   <FishingPanel regionId={region.id} toolbarTarget={toolbar} oddsTarget={oddsTarget}/>
+   <FishingPanel regionId={region.id} toolbarTarget={toolbar} oddsTarget={oddsTarget} sceneHeader={<>
+    <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 z-10 h-44 bg-gradient-to-b from-slate-950/45 via-slate-950/15 to-transparent"/>
+    <header data-fishing-region-overlay className="pointer-events-none absolute left-4 right-16 top-3 z-20 text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
+     <div className="flex flex-wrap items-center gap-x-1 gap-y-0.5"><h1 className="flex min-w-0 items-center gap-1.5 text-lg font-normal tracking-tight sm:text-xl">{regionIcons[region.id]&&<img src={regionIcons[region.id].src} alt="" className="size-7 shrink-0 object-contain drop-shadow-sm"/>}{region.name}</h1><BannerInfo key={region.id} title={region.name} steps={fishingGuide}/><div ref={setOddsTarget} className="pointer-events-auto flex shrink-0 items-center"/></div>
+     {region.description&&<p className="mt-1 line-clamp-2 max-w-sm text-xs leading-5 text-white/90">{region.description}</p>}
+    </header>
+   </>}/>
    </FishingTools>
   </div>
  </section>

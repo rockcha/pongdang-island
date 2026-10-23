@@ -8,6 +8,16 @@ import {PlayerAvatar} from '@/features/profile/player-avatar'
 const api=vi.hoisted(()=>({loadPlayerLevels:vi.fn()}))
 vi.mock('@/features/experience/api',()=>api)
 afterEach(()=>{cleanup();vi.resetAllMocks()})
+it('shows exact own XP in the avatar popup instead of the tier range',async()=>{
+ api.loadPlayerLevels.mockResolvedValue([])
+ render(<PlayerLevelsProvider self={{userId:'me',level:3,levelProgress:.5,currentXp:100,nextLevelXp:200}}><PlayerLevel userId="me" avatar/></PlayerLevelsProvider>)
+ fireEvent.click(screen.getByRole('button',{name:'레벨 3'}))
+ const popup=await screen.findByRole('dialog',{name:'Lv.3'})
+ expect(popup.textContent).toContain('Lv.3(100/200)')
+ expect(screen.queryByText('첫 물결 · 1–10')).toBeNull()
+ expect(popup.querySelector('[role="progressbar"]')?.getAttribute('aria-valuenow')).toBe('100')
+ expect(popup.querySelector('[role="progressbar"]>div')?.getAttribute('style')).toContain('50%')
+})
 it('fills half the perimeter at 100/200 XP and resets it on a level up without a stale batch replacing own progress',async()=>{
  api.loadPlayerLevels.mockResolvedValue([{userId:'me',level:2,levelProgress:.9}])
  const view=render(<PlayerLevelsProvider self={{userId:'me',level:3,levelProgress:100/200}}><PlayerLevel userId="me" avatar/></PlayerLevelsProvider>)

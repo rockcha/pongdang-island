@@ -77,24 +77,127 @@ export function HeaderPlaceNavigation() {
     (to==='/square/bugs'&&newContent.bugs)||
     (to==='/exchange'&&newContent.exchange)
   const groups = [
-    {
-      label: '내 섬',
-      paths: ['/', '/aquarium', '/warehouse', '/bait-production', '/production', '/storage', '/collection', '/titles', '/collection-animation', '/savings'],
-      separatorBefore: '/warehouse',
-    },
-    { label: '바다', paths: ['/harbor', '/fishing', '/expeditions', '/port', '/shipyard'], separatorBefore: '/port' },
-    { label: '장터', paths: ['/shop', '/bait-production-shop', '/production-shop', '/item-shop', '/exchange', '/merchant-orders'], separatorBefore: '/exchange' },
-    { label: '놀이터', paths: ['/arcade', '/farm', '/music-room'] },
-    {
-      label: '소셜',
-      paths: ['/friends', '/hall-of-fame', '/board', '/showcase', '/square/suggestions', '/square/bugs'],
-      separatorBefore: '/board',
-    },
-  ]
+  {
+    "label": "내 섬",
+    "sections": [
+      {
+        "label": "나의 공간",
+        "paths": [
+          "/",
+          "/aquarium"
+        ]
+      },
+      {
+        "label": "보관·수집",
+        "paths": [
+          "/storage",
+          "/collection",
+          "/titles",
+          "/collection-animation"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "바다",
+    "sections": [
+      {
+        "label": "직접 낚시",
+        "paths": [
+          "/harbor",
+          "/fishing"
+        ]
+      },
+      {
+        "label": "맡겨 두는 낚시",
+        "paths": [
+          "/expeditions",
+          "/port",
+          "/shipyard"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "생활",
+    "sections": [
+      {
+        "label": "생산·재배",
+        "paths": [
+          "/bait-production",
+          "/production",
+          "/farm"
+        ]
+      },
+      {
+        "label": "물품·골드 관리",
+        "paths": [
+          "/warehouse",
+          "/savings"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "장터",
+    "sections": [
+      {
+        "label": "물품 구매",
+        "paths": [
+          "/shop",
+          "/item-shop"
+        ]
+      },
+      {
+        "label": "시설 구매",
+        "paths": [
+          "/bait-production-shop",
+          "/production-shop"
+        ]
+      },
+      {
+        "label": "거래·의뢰",
+        "paths": [
+          "/exchange",
+          "/merchant-orders"
+        ]
+      }
+    ]
+  },
+  {
+    "label": "광장",
+    "sections": [
+      {
+        "label": "함께 이야기",
+        "paths": [
+          "/friends",
+          "/showcase",
+          "/board"
+        ]
+      },
+      {
+        "label": "즐길거리·기록",
+        "paths": [
+          "/arcade",
+          "/music-room",
+          "/hall-of-fame"
+        ]
+      },
+      {
+        "label": "운영팀에게",
+        "paths": [
+          "/square/suggestions",
+          "/square/bugs"
+        ]
+      }
+    ]
+  }
+]
+
   return (
     <nav aria-label="장소 바로가기" className="grid min-w-0 flex-1 grid-cols-5 gap-0">
       {groups.map((group) => {
-        const items = group.paths
+        const items = group.sections.flatMap(section=>section.paths)
           .filter((path) => path !== '/collection-animation' || operator)
           .map((path) => headerPlaces.find((item) => item.to === path)!)
         const selected = items.find(
@@ -126,13 +229,14 @@ export function HeaderPlaceNavigation() {
               >
                 <Menu.Popup
                   aria-label={`${group.label} 메뉴`}
-                  className="w-56 max-w-[calc(100vw-1.5rem)] origin-[var(--transform-origin)] overflow-hidden rounded-xl border border-border/60 bg-popover p-1.5 text-popover-foreground shadow-lg shadow-black/10 outline-none"
+                  className="w-56 max-w-[calc(100vw-1.5rem)] origin-[var(--transform-origin)] max-h-[var(--available-height)] overflow-y-auto overscroll-contain rounded-xl border border-border/60 bg-popover p-1.5 text-popover-foreground shadow-lg shadow-black/10 outline-none"
                 >
                   {items.map(({ to, label, icon: ItemIcon }) => {
                     const active = selected?.to === to
+                    const heading=group.sections.find(section=>section.paths[0]===to)?.label
                     return (
                      <Fragment key={to}>
-                      {group.separatorBefore===to&&<Menu.Separator className="mx-3 my-1 h-px bg-border/60"/>}
+                      {heading&&<>{to!==items[0].to&&<Menu.Separator className="mx-3 my-1.5 h-px bg-border/60"/>}<p className="px-3 pb-1 pt-2 text-[10px] font-medium tracking-wide text-muted-foreground/75">{heading}</p></>}
                       <Menu.LinkItem
                         key={to}
                         render={<Link to={to} aria-current={active ? 'page' : undefined} />}

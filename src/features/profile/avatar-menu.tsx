@@ -51,7 +51,7 @@ export function AvatarMenu() {
     <span className="relative inline-flex shrink-0"><Menu.Trigger ref={trigger} aria-label={update.available?'내 계정 메뉴, 새 업데이트 있음':'내 계정 메뉴'} disabled={busy} className="relative flex size-10 min-h-10 min-w-10 cursor-pointer items-center justify-center rounded-full outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50">
       <PlayerAvatar nickname={getNickname(session)} path={profile?.avatar_path} className="size-9" />
       {update.available&&<span aria-hidden="true" className="pointer-events-none absolute right-0 top-0 flex size-2.5"><span className="absolute size-full rounded-full bg-primary/40 motion-safe:animate-ping"/><span className="relative size-2.5 rounded-full border border-background bg-primary"/></span>}
-    </Menu.Trigger>{experience?.state&&<AvatarLevelBadge level={experience.state.level} levelProgress={experience.state.currentXp/experience.state.nextLevelXp}/>}</span>
+    </Menu.Trigger>{experience?.state&&<AvatarLevelBadge level={experience.state.level} xp={experience.state} levelProgress={experience.state.currentXp/experience.state.nextLevelXp}/>}</span>
     <Menu.Portal>
       <Menu.Positioner align="end" sideOffset={8} collisionPadding={12} className="z-50">
         <Menu.Popup className="w-60 max-w-[calc(100vw-1.5rem)] overflow-hidden rounded-2xl border border-border/60 bg-popover p-1.5 text-popover-foreground shadow-[0_12px_36px_-12px_rgba(70,42,21,0.25)] outline-none">

@@ -54,7 +54,7 @@ function AccountExperience({children,userId}:{children:ReactNode;userId?:string}
   return()=>{active=false;reload.current=()=>{};window.removeEventListener('experience-changed',activity);window.removeEventListener('focus',visible);window.removeEventListener('online',visible);document.removeEventListener('visibilitychange',visible)}
  },[userId])
  return <ExperienceContext.Provider value={{state,loading,error,refresh:()=>reload.current()}}>
-  <PlayerLevelsProvider self={state&&userId?{userId,level:state.level,levelProgress:state.currentXp/state.nextLevelXp}:undefined}>{children}</PlayerLevelsProvider>
+  <PlayerLevelsProvider self={state&&userId?{userId,level:state.level,levelProgress:state.currentXp/state.nextLevelXp,currentXp:state.currentXp,nextLevelXp:state.nextLevelXp}:undefined}>{children}</PlayerLevelsProvider>
   {createPortal(<div data-experience-effects className="pointer-events-none fixed inset-0 z-[2147483000] flex items-center justify-center" aria-live="polite" aria-atomic="true">
    <div className="flex -translate-y-12 flex-col items-center gap-2">{effects.map(effect=><div key={effect.id} data-experience-effect className="flex flex-col items-center">
     {effect.level!==null&&<div className="gold-change gold-change-gain experience-change"><span className="gold-change-number" style={{fontSize:'1.125rem'}}>Lv.{effect.level} 달성!</span></div>}

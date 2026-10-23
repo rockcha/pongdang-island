@@ -52,6 +52,8 @@ async function choose(label:string, option:string){
 it('opens undiscovered details, marks native species, and keeps filters after details close',async()=>{
  await open()
  expect(cards()).toEqual(['공통 물고기','산호 물고기','달빛 장식물'])
+ expect(within(screen.getByRole('article',{name:'공통 물고기'})).getByLabelText('가치 30 골드')).toBeTruthy()
+ expect(within(screen.getByRole('article',{name:'달빛 장식물'})).getByLabelText('가치 180 골드')).toBeTruthy()
  expect(screen.getByText('발견 2/3')).toBeTruthy()
  expect(screen.queryByText(/가치순/)).toBeNull()
  expect(screen.queryByRole('button',{name:'지도'})).toBeNull()

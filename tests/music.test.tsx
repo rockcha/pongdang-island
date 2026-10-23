@@ -18,6 +18,25 @@ it('restores an intentionally empty list and falls back safely for invalid stora
  localStorage.setItem('music','invalid');expect(readTracks('music')).toEqual(defaultTracks)
 })
 function Controls(){const m=useMusic(),{pathname}=useLocation();return <>{pathname==='/'&&<div ref={m.setPlayerSlot}/>}<span role="status">{m.playing?'playing':'paused'}</span><button onClick={()=>m.play(m.tracks[0].id)}>play</button><button onClick={()=>m.pause()}>pause</button><button onClick={()=>m.remove(m.tracks[0].id)}>remove</button><button onClick={()=>m.rename(m.tracks[0].id,'내 노래')}>rename</button><Link to="/other">move</Link></>}
+it('restores volume on player readiness and retains changes for subsequent songs',async()=>{
+ localStorage.setItem('volume-test:volume','35')
+ localStorage.setItem('volume-test',JSON.stringify(defaultTracks.map(t=>({...t,title:'Saved song'}))))
+ let ready:(event:unknown)=>void=()=>{}
+ const target={setVolume:vi.fn(),playVideo:vi.fn(),pauseVideo:vi.fn(),destroy:vi.fn(),getVideoData:()=>({title:'Saved song'})}
+ window.YT={Player:vi.fn(function(_element:HTMLElement,options:Record<string,unknown>){ready=(options.events as {onReady:typeof ready}).onReady;return target}) as unknown as NonNullable<typeof window.YT>['Player']}
+ function VolumeControls(){const m=useMusic();return <><button onClick={()=>m.play(m.tracks[0].id)}>first</button><button onClick={()=>m.play(m.tracks[1].id)}>next</button><input aria-label="volume" type="range" value={m.volume} onChange={e=>m.setVolume(Number(e.target.value))}/></>}
+ render(<MusicProvider storageKey="volume-test"><VolumeControls/></MusicProvider>)
+ expect((screen.getByLabelText('volume') as HTMLInputElement).value).toBe('35')
+ fireEvent.click(screen.getByText('first'))
+ await waitFor(()=>expect(window.YT!.Player).toHaveBeenCalledTimes(1))
+ act(()=>ready({target}));expect(target.setVolume).toHaveBeenLastCalledWith(35)
+ fireEvent.change(screen.getByLabelText('volume'),{target:{value:'20'}})
+ expect(target.setVolume).toHaveBeenLastCalledWith(20)
+ expect(localStorage.getItem('volume-test:volume')).toBe('20')
+ fireEvent.click(screen.getByText('next'))
+ await waitFor(()=>expect(window.YT!.Player).toHaveBeenCalledTimes(2))
+ act(()=>ready({target}));expect(target.setVolume).toHaveBeenLastCalledWith(20)
+})
 it('keeps one looping player across navigation, reflects actual playback, and stops on deletion',async()=>{
  vi.stubGlobal('fetch',vi.fn().mockResolvedValue({ok:true,json:async()=>({title:'YouTube title'})}))
  vi.stubGlobal('ResizeObserver',class{observe(){}disconnect(){}})

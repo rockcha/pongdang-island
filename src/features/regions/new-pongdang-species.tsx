@@ -6,6 +6,7 @@ import {regionIcons} from './region-icons'
 import {rarities} from '@/lib/game/rarity'
 import releases from './species-releases.json'
 import {collectibleCardTones as tones} from '@/features/collection/collectible-card-tones'
+import {GoldIcon} from '@/features/gold/gold-provider'
 
 const week=7*24*60*60*1000
 export function recentSpeciesIds(now:number){
@@ -33,7 +34,7 @@ export function NewPongdangSpecies({catalog,now=Date.now()}:{catalog:CatalogEntr
      <article className={`relative h-full overflow-hidden rounded-xl border border-border/60 bg-gradient-to-b ${tones[grade]}`}>
       <span className="pointer-events-none absolute left-2 top-2"><TreasureTrashBadge speciesId={item.id}/></span>
       <div className="flex justify-center px-3 pt-3"><CollectibleThumbnail path={item.thumbnail_path} name={item.name} className="h-32 w-full [&_img]:brightness-0" loading="lazy"/></div>
-      <div className="px-3 pb-4 pt-3">{region&&<img src={region.src} alt={`주 서식지: ${region.name}`} title={region.name} className="mb-1 size-6 object-contain"/>}<h4 className="break-keep text-sm leading-5">{item.name} <span className="inline-block rounded-[2px] bg-red-600 px-1.5 py-0.5 align-middle text-[9px] font-semibold leading-3 text-white">NEW</span></h4><p className="mt-2 break-words text-xs leading-5 text-muted-foreground">{item.description}</p></div>
+      <div className="px-3 pb-4 pt-3">{region&&<img src={region.src} alt={`주 서식지: ${region.name}`} title={region.name} className="mb-1 size-6 object-contain"/>}<h4 className="break-keep text-sm leading-5">{item.name} <span className="inline-block rounded-[2px] bg-red-600 px-1.5 py-0.5 align-middle text-[9px] font-semibold leading-3 text-white">NEW</span></h4><span aria-label={`가치 ${item.sell_price.toLocaleString('ko-KR')} 골드`} className="mt-1.5 inline-flex items-center gap-1 text-xs tabular-nums text-primary"><GoldIcon className="size-4"/>{item.sell_price.toLocaleString('ko-KR')}</span><p className="mt-2 break-words text-xs leading-5 text-muted-foreground">{item.description}</p></div>
      </article>
     </li>})}</ul>
    </TabsContent>

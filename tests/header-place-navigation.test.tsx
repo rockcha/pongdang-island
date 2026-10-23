@@ -11,9 +11,9 @@ vi.mock('@/features/expeditions/use-expedition-status',()=>({useExpeditionStatus
 beforeEach(()=>{mock.newContent={board:false,exchange:false,suggestions:false,bugs:false};mock.status=null;mock.harbor=null;mock.operator=false;mock.savings=null})
 function View(){const {pathname}=useLocation();return <><HeaderPlaceNavigation/><output data-testid="path">{pathname}</output></>}
 afterEach(cleanup)
-it('opens production facilities from the island menu',async()=>{
+it('opens production facilities from the life menu',async()=>{
  render(<MemoryRouter><View/></MemoryRouter>)
- fireEvent.click(screen.getByRole('button',{name:'내 섬'}))
+ fireEvent.click(screen.getByRole('button',{name:'생활'}))
  const menu=await screen.findByRole('menu')
  const production=within(menu).getByRole('menuitem',{name:'연료 생산소'})
  expect(production.getAttribute('href')).toBe('/production')
@@ -32,17 +32,17 @@ it('places storage directly above the collection in the island dropdown',async()
 it('summarizes child NEW and returned boats as category dots and clears resolved states',()=>{
  mock.newContent.bugs=true;mock.newContent.exchange=true;mock.harbor={ready:1,total:2}
  const view=render(<MemoryRouter><View/></MemoryRouter>)
- for(const label of ['소셜','장터','바다'])expect(screen.getByRole('button',{name:label}).querySelector('[data-category-activity]')).toBeTruthy()
+ for(const label of ['광장','장터','바다'])expect(screen.getByRole('button',{name:label}).querySelector('[data-category-activity]')).toBeTruthy()
  expect(screen.getByRole('button',{name:'내 섬'}).querySelector('[data-category-activity]')).toBeNull()
  mock.newContent.bugs=false;mock.newContent.exchange=false;mock.harbor={ready:0,total:2}
  view.rerender(<MemoryRouter><View/></MemoryRouter>)
  expect(view.container.querySelector('[data-category-activity]')).toBeNull()
 })
-it.each([['장터','거래소'],['소셜','자유게시판']])('keeps NEW inside the %s menu only beside %s',async(group,label)=>{
+it.each([['장터','거래소'],['광장','자유게시판']])('keeps NEW inside the %s menu only beside %s',async(group,label)=>{
  mock.newContent={board:true,exchange:true,suggestions:false,bugs:false}
  render(<MemoryRouter><View/></MemoryRouter>)
  expect(screen.getByRole('button',{name:'장터'}).textContent).not.toContain('NEW')
- expect(screen.getByRole('button',{name:'소셜'}).textContent).not.toContain('NEW')
+ expect(screen.getByRole('button',{name:'광장'}).textContent).not.toContain('NEW')
  fireEvent.click(screen.getByRole('button',{name:group}))
  const menu=await screen.findByRole('menu')
  expect(within(menu).getByRole('menuitem',{name:new RegExp('^'+label)}).textContent).toContain('NEW')
@@ -50,9 +50,9 @@ it.each([['장터','거래소'],['소셜','자유게시판']])('keeps NEW inside
 })
 it('lists community destinations directly under social without a mailbox or square',async()=>{
  render(<MemoryRouter initialEntries={['/board']}><View/></MemoryRouter>)
- fireEvent.click(screen.getByRole('button',{name:'소셜'}))
+ fireEvent.click(screen.getByRole('button',{name:'광장'}))
  const menu=await screen.findByRole('menu')
- expect(within(menu).getAllByRole('menuitem').map(item=>item.getAttribute('href'))).toEqual(['/friends','/hall-of-fame','/board','/showcase','/square/suggestions','/square/bugs'])
+ expect(within(menu).getAllByRole('menuitem').map(item=>item.getAttribute('href'))).toEqual(['/friends','/showcase','/board','/arcade','/music-room','/hall-of-fame','/square/suggestions','/square/bugs'])
  expect(within(menu).queryByRole('menuitem',{name:'공지'})).toBeNull()
  expect(within(menu).queryByRole('menuitem',{name:'우편함'})).toBeNull()
  expect(within(menu).queryByRole('menuitem',{name:'광장'})).toBeNull()
@@ -60,7 +60,7 @@ it('lists community destinations directly under social without a mailbox or squa
 it('shows unpaid or ready savings status beside the savings destination',async()=>{
  mock.savings='미납'
  const view=render(<MemoryRouter><View/></MemoryRouter>)
- fireEvent.click(screen.getByRole('button',{name:'내 섬'}))
+ fireEvent.click(screen.getByRole('button',{name:'생활'}))
  const menu=await screen.findByRole('menu')
  expect(within(menu).getByRole('menuitem',{name:/조개 적금.*미납/})).toBeTruthy()
  expect(within(menu).getAllByRole('menuitem').at(-1)?.getAttribute('href')).toBe('/savings')
@@ -78,18 +78,18 @@ it('shows the trap collection badge and sea dot only when traps return',async()=
  expect(within(menu).queryByText('수거 대기 중')).toBeNull()
  expect(screen.getByRole('button',{name:'바다'}).querySelector('[data-category-activity]')).toBeNull()
 })
-it.each([['내 섬','/aquarium','/warehouse'],['바다','/expeditions','/port'],['장터','/item-shop','/exchange'],['소셜','/hall-of-fame','/board']])('places one separator in %s between the requested destinations',async(group,before,after)=>{
+it.each([['내 섬','보관·수집',1],['바다','맡겨 두는 낚시',1],['생활','물품·골드 관리',1],['장터','시설 구매',2],['광장','운영팀에게',2]])('labels logical sections in %s',async(group,heading,separators)=>{
  render(<MemoryRouter><View/></MemoryRouter>)
- fireEvent.click(screen.getByRole('button',{name:group}))
- const menu=await screen.findByRole('menu'),separator=within(menu).getByRole('separator')
- expect(separator.previousElementSibling?.getAttribute('href')).toBe(before)
- expect(separator.nextElementSibling?.getAttribute('href')).toBe(after)
+ fireEvent.click(screen.getByRole('button',{name:group as string}))
+ const menu=await screen.findByRole('menu')
+ expect(within(menu).getByText(heading as string)).toBeTruthy()
+ expect(within(menu).getAllByRole('separator')).toHaveLength(separators as number)
 })
 it('puts farm before music in the playground and keeps savings out of the market',async()=>{
  render(<MemoryRouter><View/></MemoryRouter>)
- fireEvent.click(screen.getByRole('button',{name:'놀이터'}))
+ fireEvent.click(screen.getByRole('button',{name:'생활'}))
  const menu=await screen.findByRole('menu')
- expect(within(menu).getAllByRole('menuitem').map(item=>item.getAttribute('href'))).toEqual(['/arcade','/farm','/music-room'])
+ expect(within(menu).getAllByRole('menuitem').map(item=>item.getAttribute('href'))).toEqual(['/bait-production','/production','/farm','/warehouse','/savings'])
  fireEvent.keyDown(menu,{key:'Escape'})
  await waitFor(()=>expect(screen.queryByRole('menu')).toBeNull())
  fireEvent.click(screen.getByRole('button',{name:'장터'}))
@@ -141,7 +141,7 @@ it('shows five category triggers and separates shop and exchange',async()=>{
  render(<MemoryRouter initialEntries={['/shop']}><View/></MemoryRouter>)
  const nav=screen.getByRole('navigation',{name:'장소 바로가기'})
  expect(within(nav).getAllByRole('button')).toHaveLength(5)
- expect(within(nav).getAllByRole('button').map(button=>button.getAttribute('aria-label'))).toEqual(['내 섬','바다','장터','놀이터','소셜'])
+ expect(within(nav).getAllByRole('button').map(button=>button.getAttribute('aria-label'))).toEqual(['내 섬','바다','생활','장터','광장'])
  fireEvent.click(within(nav).getByRole('button',{name:'장터'}))
  const menu=await screen.findByRole('menu')
  const shop=within(menu).getByRole('menuitem',{name:/낚시 상점/})
@@ -153,10 +153,10 @@ it('shows five category triggers and separates shop and exchange',async()=>{
 })
 it('shows the current nested destination and supports escape to dismiss',async()=>{
  render(<MemoryRouter initialEntries={['/square/suggestions']}><View/></MemoryRouter>)
- expect(within(screen.getByRole('button',{name:'소셜'})).queryByText('광장')).toBeNull()
- fireEvent.click(screen.getByRole('button',{name:'소셜'}))
+ expect(screen.getByRole('button',{name:'광장'})).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'광장'}))
  const menu=await screen.findByRole('menu')
- expect(within(menu).getAllByRole('menuitem')).toHaveLength(6)
+ expect(within(menu).getAllByRole('menuitem')).toHaveLength(8)
  expect(within(menu).getByRole('menuitem',{name:/건의함/}).getAttribute('aria-current')).toBe('page')
  fireEvent.keyDown(menu,{key:'Escape'})
  await waitFor(()=>expect(screen.queryByRole('menu')).toBeNull())

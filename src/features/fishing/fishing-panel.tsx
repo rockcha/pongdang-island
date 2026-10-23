@@ -43,7 +43,7 @@ const {map:Map}=appArt
 export function BaitInventoryDialog(){
  return <Dialog><DialogTrigger render={<Button variant="outline" className="min-h-11 w-full"/>}><ShoppingBag className="size-4"/>미끼 상점 · 인벤토리</DialogTrigger><DialogContent className="max-h-[90dvh] overflow-y-auto sm:max-w-md"><DialogHeader><DialogTitle>미끼 상점 · 인벤토리</DialogTitle><DialogDescription>퐁당 지렁이를 구매하고, 획득한 미끼의 수량과 효과를 확인해요.</DialogDescription></DialogHeader><FishingPanel/></DialogContent></Dialog>
 }
-export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{regionId?:string;regionName?:string;toolbarTarget?:HTMLElement|null;oddsTarget?:HTMLElement|null}){
+export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget,sceneHeader}:{regionId?:string;regionName?:string;toolbarTarget?:HTMLElement|null;oddsTarget?:HTMLElement|null;sceneHeader?:React.ReactNode}){
  const fishingTools=useFishingTools()
  const navigate=useNavigate()
  const {selected:equippedRod,rods}=useRods()
@@ -205,8 +205,6 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{reg
  }
  const tools=(content:React.ReactNode)=>toolbarTarget?createPortal(content,toolbarTarget):content
  const bait=state?.baits.find(item=>item.id===selected)
- const reportEmpty=fishingTools?.setEmpty
- useEffect(()=>{reportEmpty?.(!goldLoading&&!(wallet.inventory[selected]>0))},[reportEmpty,goldLoading,wallet.inventory,selected])
  const baitControl=<button type="button" aria-label={`미끼통 열기 · ${bait?.name??'미끼'} ${wallet.inventory[selected]??0}개`} title={bait?.name??'미끼통'} className={fishingTools?fishingToolButton.replace('size-9','size-11').replace('border-white/70','border-[#D5B797]').replace('bg-[#fff8eb]/90','bg-[#fff8eb]')+" border-2 bg-[#fff8eb] ring-2 ring-[#fff8eb] shadow-[0_4px_10px_#34291f40] "+(!goldLoading&&!(wallet.inventory[selected]>0)?"border-amber-500":"border-[#D5B797]"):fishingToolButton} disabled={gameOpen||busy||uncertain||revealing||castOpen} onClick={()=>{setDraftBait(selected);setBaitOpen(true)}}>{bait?<img src={bait.image_path} alt="" className={fishingTools?"size-8 object-contain":"size-6 object-contain"}/>:<appArt.bait className={fishingTools?"size-8":"size-6"}/>}<span aria-hidden="true" className={"absolute -bottom-1 min-w-4 rounded-full border border-[#fff8eb] bg-[#725039] px-1 text-center text-[9px] leading-4 tabular-nums text-[#fff8eb] "+(fishingTools?"left-1/2 -translate-x-1/2":"-right-1")}>{goldLoading?'…':wallet.inventory[selected]??0}</span></button>
   const displayPrepared=gameOpen?prepared:state?.prepared
   const displayBaitSource=state?.baits.find(item=>item.id===(displayPrepared?.bait_id??selected))
@@ -222,6 +220,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{reg
    <CollectionDialog fishing dock iconOnly={!!fishingTools} disabled={gameOpen||busy||uncertain||revealing||castOpen}/>
   </>
  return <div className={regionId?"relative isolate min-h-0 flex-1 bg-[#123c68]":"space-y-5"}>
+  {regionId&&sceneHeader}
   {regionId&&oddsTarget&&createPortal(<FishingOdds bait={displayBait??bait} successChanceBp={state?.successChanceBp} rod={rods.find(r=>r.id===equippedRod)} baseChanceBp={state?.baits.find(b=>b.id==='bait')?.baseSuccessChanceBp}/>,oddsTarget)}
   {regionId&&<FishingLeaveGuard active={gameOpen||uncertain||busy} practice={!!practice} busy={busy} onPause={setLeavePaused} onLeave={leaveFishing}/>}
   {regionId?(fishingTools?<>

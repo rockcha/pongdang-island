@@ -22,6 +22,7 @@ it('shows the first 17 species with descriptions and region icons with collectib
   const name=article.querySelector('h4')!.textContent!.replace(/ NEW$/,'')
   const species=catalog.find(s=>s.name===name)!
   expect(article.textContent).toContain(species.description)
+  expect(within(article).getByLabelText(`가치 ${species.sell_price.toLocaleString('ko-KR')} 골드`)).toBeTruthy()
  }
  expect(screen.getByRole('heading',{name:'푸른볼 쥐치 NEW'})).toBeTruthy()
  expect(screen.getAllByRole('img',{name:/주 서식지:/})).toHaveLength(9)

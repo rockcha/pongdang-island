@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "reviewedAt": "2026-10-23T14:08:35.151Z",
+  "thumbnailCount": 6,
+  "sheets": 4,
+  "checks": [
+    "all right-facing source fish and train",
+    "ghost disguise details consistent in all four frames",
+    "goldfish continuously cradles little ghost",
+    "train has no eyes or mouth in thumbnail and all four frames",
+    "underwater ornament materials and attached marine growth",
+    "visible opaque eye and boiler anchor patches inspected; RMSE below 22",
+    "uniform sheet scale; no per-frame rescaling",
+    "actual Phaser tank and React collection preview full loops"
+  ],
+  "items": [
+    {
+      "id": "halloween-ghost-skirt-guppy",
+      "thumbnail": true,
+      "direction": "right",
+      "motion": true
+    },
+    {
+      "id": "halloween-soft-ghost-goldfish",
+      "thumbnail": true,
+      "direction": "right",
+      "motion": true
+    },
+    {
+      "id": "halloween-little-ghost-puffer",
+      "thumbnail": true,
+      "direction": "right",
+      "motion": true
+    },
+    {
+      "id": "halloween-little-ghost-gravestone",
+      "thumbnail": true,
+      "direction": "fixed ornament",
+      "motion": false
+    },
+    {
+      "id": "halloween-monster-under-bed",
+      "thumbnail": true,
+      "direction": "fixed ornament",
+      "motion": false
+    },
+    {
+      "id": "halloween-midnight-pumpkin-train",
+      "thumbnail": true,
+      "direction": "right",
+      "motion": true
+    }
+  ]
+}

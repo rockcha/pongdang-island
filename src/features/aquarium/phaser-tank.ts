@@ -16,14 +16,17 @@ import {primalPlantAsset,primalPlantFrame} from './primal-plants'
 import {whitenightFixedFrame} from './whitenight-animation'
 import {cloudferryFixedFrame} from './cloudferry-animation'
 import {scrapisleFixedFrame} from './scrapisle-animation'
+import {hasHalloweenSpirits} from './halloween-spirits'
+import {HalloweenSpiritRenderer} from './halloween-spirit-renderer'
 
 export type TankRenderer = { setItems: (items: OwnedCollectible[]) => void; resize: (width: number, height: number) => void; setReduced: (value: boolean) => void; setVisible: (value: boolean) => void; getStats: () => { count: number; textures: number; clock: number; renderer: string }; destroy: () => void }
 
 export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectible[], reduced: boolean, onError: (message: string) => void, onPlace?: (id:string,x:number,y:number)=>void,_onNavigate?:(direction:'previous'|'next')=>void,onSelectDecoration?:(id:string,x?:number,y?:number)=>void,onBackgroundTap?:()=>void,onSelectionPosition?:(id:string,x:number,y:number)=>void): TankRenderer {
   let items = initial, ready = false, disposed = false, clock = 0, visible = true
   let viewport=tankResolution(parent.clientWidth,parent.clientHeight,window.devicePixelRatio)
-  const entries = new Map<string, { motion: InhabitantMotion; sprite: Phaser.GameObjects.Sprite; path: string; sheet: boolean; previousX?:number }>()
+  const entries = new Map<string, { motion: InhabitantMotion; sprite: Phaser.GameObjects.Sprite; path: string; sheet: boolean; previousX?:number; spirits?:HalloweenSpiritRenderer }>()
   const queued = new Set<string>(), failed = new Set<string>()
+  let spiritsQueued=false
   let selectedId:string|null=null
   const dragging=new Set<string>()
   let swipe:{id:number;x:number;y:number;time:number}|null=null
@@ -135,14 +138,17 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
     }
     sync() {
       if (!ready || disposed) return
+      if(!spiritsQueued&&items.some(item=>hasHalloweenSpirits(item.species.id))){
+        spiritsQueued=true;HalloweenSpiritRenderer.queue(this)
+      }
       const ids = new Set(items.map(item => item.id))
       const spawns=swimSpawnLayout(items,viewport.width,viewport.height)
-      for (const [id, entry] of entries) if (!ids.has(id)) { dragging.delete(id);entry.sprite.destroy();entries.delete(id) }
+      for (const [id, entry] of entries) if (!ids.has(id)) { dragging.delete(id);entry.spirits?.destroy();entry.sprite.destroy();entries.delete(id) }
       for (const item of items) {
         const base=asset(item), enhanced=mythicSwimAsset(base.path,item.species.rarity)
         const path=enhanced?.path??base.path,sheet=base.sheet,key=textureKey(path)
         const old = entries.get(item.id)
-        if (old && old.path !== path) { old.sprite.destroy();entries.delete(item.id) }
+        if (old && old.path !== path) { old.spirits?.destroy();old.sprite.destroy();entries.delete(item.id) }
         if (!this.textures.exists(key)) {
           if (!queued.has(key) && !failed.has(key)) { queued.add(key); this.load.image(key, enhanced?.url??('url' in base?base.url:undefined)??collectibleUrl(path)) }
           continue
@@ -166,7 +172,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         // gaps in a small sponge or other stationary species.
         sprite.setInteractive({pixelPerfect:movementSettings(item.species).type!=='fixed',alphaTolerance:32,cursor:'grab'})
         this.input.setDraggable(sprite,draggable(item))
-        entries.set(item.id, { motion: new InhabitantMotion(item, clock,spawns.get(item.id)), sprite, path, sheet })
+        entries.set(item.id, { motion: new InhabitantMotion(item, clock,spawns.get(item.id)), sprite, path, sheet, spirits:hasHalloweenSpirits(item.species.id)?new HalloweenSpiritRenderer(this):undefined })
       }
       // A renderer survives tank switches. Release sheets from previous tanks,
       // including late loads that finished after their tank was left.
@@ -177,13 +183,16 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
       for(const key of this.textures.getTextureKeys()){
         if(key.startsWith('collectible:')&&!needed.has(key)&&!queued.has(key))this.textures.remove(key)
       }
-      if (!this.load.isLoading() && queued.size) this.load.start()
+      if (!this.load.isLoading() && (queued.size||this.load.list.size)) this.load.start()
       this.draw(0)
     }
     registerSheet(key:string,columns=2){const texture=this.textures.get(key);if(texture.has('swim-0'))return;const source=texture.getSourceImage() as HTMLImageElement;const w=source.width/columns,h=source.height/2;for(let f=0;f<columns*2;f++)texture.add(`swim-${f}`,0,(f%columns)*w,Math.floor(f/columns)*h,w,h)}
     draw(delta: number) {
       for (const entry of entries.values()) {
-        if(dragging.has(entry.motion.item.id))continue
+        if(dragging.has(entry.motion.item.id)){
+          entry.spirits?.draw(entry.motion.item.species.id,clock,entry.motion.item.animation_seed,reduced,entry.sprite,Number(entry.sprite.getData('logicalSize')??entry.sprite.displayWidth))
+          continue
+        }
         const pose = entry.motion.update(clock, delta, viewport.width, viewport.height, reduced)
         const dx = pose.x - (entry.previousX??pose.x)
         entry.previousX=pose.x
@@ -201,6 +210,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
           .setPosition(pose.x + pose.size / 2, pose.y + pose.size / 2)
           .setDisplaySize(pose.size*layout.scale, pose.size*layout.scale).setAngle(pose.angle+(isPositionFixed(entry.motion.item)||entry.motion.item.editing?0:Number(entry.motion.item.rotation??0)))
         entry.sprite.setFlipX(flipped)
+        entry.spirits?.draw(entry.motion.item.species.id,clock,entry.motion.item.animation_seed,reduced,entry.sprite,pose.size)
       }
       if(selectedId){const entry=entries.get(selectedId);if(entry){const bounds=entry.sprite.getBounds();onSelectionPosition?.(selectedId,bounds.centerX,bounds.top)}}
     }

@@ -1,0 +1,665 @@
+﻿{
+    "missing":  [
+
+                ],
+    "thumbnails":  [
+                       {
+                           "id":  "halloween-cute-ghost-jellyfish",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-chocolate-starfish",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-candy-corn-fish",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-will-o-wisp-jellyfish",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-spectral-tadpole",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-little-ghost-fish",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-echo-dolphin-echomor",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-bone-armored-shark-necras",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-witch-jellyfish-malefica",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-crimson-megalodon",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-patchwork-shark",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       }
+                   ],
+    "sprites":  [
+                    {
+                        "id":  "halloween-cute-ghost-jellyfish",
+                        "file":  "fish/normal/halloween-cute-ghost-jellyfish_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  133,
+                                           "y":  201,
+                                           "width":  435,
+                                           "height":  351,
+                                           "alphaPixels":  86665,
+                                           "margin":  59,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  82,
+                                           "y":  197,
+                                           "width":  447,
+                                           "height":  356,
+                                           "alphaPixels":  95287,
+                                           "margin":  74,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  136,
+                                           "y":  128,
+                                           "width":  440,
+                                           "height":  363,
+                                           "alphaPixels":  90051,
+                                           "margin":  51,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  89,
+                                           "y":  131,
+                                           "width":  446,
+                                           "height":  366,
+                                           "alphaPixels":  90648,
+                                           "margin":  89,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-chocolate-starfish",
+                        "file":  "fish/normal/halloween-chocolate-starfish_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  75,
+                                           "y":  192,
+                                           "width":  496,
+                                           "height":  332,
+                                           "alphaPixels":  75479,
+                                           "margin":  56,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  103,
+                                           "y":  192,
+                                           "width":  473,
+                                           "height":  326,
+                                           "alphaPixels":  74529,
+                                           "margin":  51,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  100,
+                                           "y":  138,
+                                           "width":  473,
+                                           "height":  325,
+                                           "alphaPixels":  74783,
+                                           "margin":  54,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  74,
+                                           "y":  136,
+                                           "width":  501,
+                                           "height":  340,
+                                           "alphaPixels":  80186,
+                                           "margin":  52,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-candy-corn-fish",
+                        "file":  "fish/normal/halloween-candy-corn-fish_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  131,
+                                           "y":  213,
+                                           "width":  446,
+                                           "height":  310,
+                                           "alphaPixels":  71598,
+                                           "margin":  50,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  105,
+                                           "y":  213,
+                                           "width":  413,
+                                           "height":  310,
+                                           "alphaPixels":  69543,
+                                           "margin":  104,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  111,
+                                           "y":  127,
+                                           "width":  466,
+                                           "height":  308,
+                                           "alphaPixels":  72837,
+                                           "margin":  50,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  70,
+                                           "y":  126,
+                                           "width":  448,
+                                           "height":  309,
+                                           "alphaPixels":  71005,
+                                           "margin":  70,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-will-o-wisp-jellyfish",
+                        "file":  "fish/normal/halloween-will-o-wisp-jellyfish_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  124,
+                                           "y":  148,
+                                           "width":  418,
+                                           "height":  422,
+                                           "alphaPixels":  90778,
+                                           "margin":  57,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  76,
+                                           "y":  144,
+                                           "width":  460,
+                                           "height":  431,
+                                           "alphaPixels":  101482,
+                                           "margin":  52,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  107,
+                                           "y":  102,
+                                           "width":  447,
+                                           "height":  440,
+                                           "alphaPixels":  99422,
+                                           "margin":  73,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  92,
+                                           "y":  97,
+                                           "width":  444,
+                                           "height":  440,
+                                           "alphaPixels":  98747,
+                                           "margin":  90,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-spectral-tadpole",
+                        "file":  "fish/normal/halloween-spectral-tadpole_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  90,
+                                           "y":  243,
+                                           "width":  486,
+                                           "height":  223,
+                                           "alphaPixels":  63387,
+                                           "margin":  51,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  53,
+                                           "y":  243,
+                                           "width":  489,
+                                           "height":  223,
+                                           "alphaPixels":  64337,
+                                           "margin":  53,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  88,
+                                           "y":  171,
+                                           "width":  488,
+                                           "height":  231,
+                                           "alphaPixels":  61947,
+                                           "margin":  51,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  55,
+                                           "y":  171,
+                                           "width":  487,
+                                           "height":  221,
+                                           "alphaPixels":  62980,
+                                           "margin":  55,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-little-ghost-fish",
+                        "file":  "fish/normal/halloween-little-ghost-fish_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  94,
+                                           "y":  202,
+                                           "width":  446,
+                                           "height":  291,
+                                           "alphaPixels":  76981,
+                                           "margin":  87,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  65,
+                                           "y":  202,
+                                           "width":  475,
+                                           "height":  293,
+                                           "alphaPixels":  79298,
+                                           "margin":  65,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  127,
+                                           "y":  149,
+                                           "width":  413,
+                                           "height":  292,
+                                           "alphaPixels":  74759,
+                                           "margin":  87,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  71,
+                                           "y":  149,
+                                           "width":  469,
+                                           "height":  292,
+                                           "alphaPixels":  78431,
+                                           "margin":  71,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-echo-dolphin-echomor",
+                        "file":  "fish/epic/halloween-echo-dolphin-echomor_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  115,
+                                           "y":  246,
+                                           "width":  450,
+                                           "height":  246,
+                                           "alphaPixels":  37073,
+                                           "margin":  62,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  60,
+                                           "y":  238,
+                                           "width":  450,
+                                           "height":  221,
+                                           "alphaPixels":  37458,
+                                           "margin":  60,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  120,
+                                           "y":  148,
+                                           "width":  448,
+                                           "height":  273,
+                                           "alphaPixels":  39567,
+                                           "margin":  59,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  65,
+                                           "y":  149,
+                                           "width":  446,
+                                           "height":  246,
+                                           "alphaPixels":  36486,
+                                           "margin":  65,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-bone-armored-shark-necras",
+                        "file":  "fish/epic/halloween-bone-armored-shark-necras_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  148,
+                                           "y":  240,
+                                           "width":  418,
+                                           "height":  251,
+                                           "alphaPixels":  39943,
+                                           "margin":  61,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  100,
+                                           "y":  240,
+                                           "width":  430,
+                                           "height":  257,
+                                           "alphaPixels":  41089,
+                                           "margin":  97,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  126,
+                                           "y":  165,
+                                           "width":  450,
+                                           "height":  242,
+                                           "alphaPixels":  43094,
+                                           "margin":  51,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  102,
+                                           "y":  128,
+                                           "width":  422,
+                                           "height":  286,
+                                           "alphaPixels":  43257,
+                                           "margin":  102,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-witch-jellyfish-malefica",
+                        "file":  "fish/epic/halloween-witch-jellyfish-malefica_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  115,
+                                           "y":  173,
+                                           "width":  450,
+                                           "height":  403,
+                                           "alphaPixels":  74746,
+                                           "margin":  51,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  78,
+                                           "y":  176,
+                                           "width":  456,
+                                           "height":  400,
+                                           "alphaPixels":  74337,
+                                           "margin":  51,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  117,
+                                           "y":  97,
+                                           "width":  456,
+                                           "height":  406,
+                                           "alphaPixels":  77668,
+                                           "margin":  54,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  78,
+                                           "y":  98,
+                                           "width":  465,
+                                           "height":  410,
+                                           "alphaPixels":  77080,
+                                           "margin":  78,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-crimson-megalodon",
+                        "file":  "fish/mythic/halloween-crimson-megalodon_swim8_v1_sprite.png",
+                        "width":  1776,
+                        "height":  888,
+                        "cell":  444,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  85,
+                                           "y":  170,
+                                           "width":  288,
+                                           "height":  159,
+                                           "alphaPixels":  21408,
+                                           "margin":  71,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  88,
+                                           "y":  168,
+                                           "width":  301,
+                                           "height":  164,
+                                           "alphaPixels":  22805,
+                                           "margin":  55,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  68,
+                                           "y":  168,
+                                           "width":  306,
+                                           "height":  169,
+                                           "alphaPixels":  22737,
+                                           "margin":  68,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  77,
+                                           "y":  172,
+                                           "width":  295,
+                                           "height":  158,
+                                           "alphaPixels":  21474,
+                                           "margin":  72,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  4,
+                                           "x":  84,
+                                           "y":  139,
+                                           "width":  295,
+                                           "height":  162,
+                                           "alphaPixels":  21917,
+                                           "margin":  65,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  5,
+                                           "x":  75,
+                                           "y":  138,
+                                           "width":  312,
+                                           "height":  165,
+                                           "alphaPixels":  24534,
+                                           "margin":  57,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  6,
+                                           "x":  73,
+                                           "y":  141,
+                                           "width":  303,
+                                           "height":  158,
+                                           "alphaPixels":  22125,
+                                           "margin":  68,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  7,
+                                           "x":  65,
+                                           "y":  140,
+                                           "width":  310,
+                                           "height":  158,
+                                           "alphaPixels":  22189,
+                                           "margin":  65,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-patchwork-shark",
+                        "file":  "fish/epic/halloween-patchwork-shark_v2_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  130,
+                                           "y":  261,
+                                           "width":  447,
+                                           "height":  229,
+                                           "alphaPixels":  41696,
+                                           "margin":  50,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  56,
+                                           "y":  265,
+                                           "width":  478,
+                                           "height":  228,
+                                           "alphaPixels":  42745,
+                                           "margin":  56,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  110,
+                                           "y":  150,
+                                           "width":  465,
+                                           "height":  223,
+                                           "alphaPixels":  40673,
+                                           "margin":  52,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  76,
+                                           "y":  153,
+                                           "width":  460,
+                                           "height":  219,
+                                           "alphaPixels":  41589,
+                                           "margin":  76,
+                                           "safe":  true
+                                       }
+                                   ]
+                    }
+                ]
+}

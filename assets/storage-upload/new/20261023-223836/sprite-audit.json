@@ -1,0 +1,393 @@
+﻿{
+    "missing":  [
+
+                ],
+    "thumbnails":  [
+                       {
+                           "id":  "halloween-dullahan-seahorse",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-moonwolf-shark-lugar",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-cathedral-ray-morne",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-tomb-dragon-sahet",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       }
+                   ],
+    "sprites":  [
+                    {
+                        "id":  "halloween-dullahan-seahorse",
+                        "file":  "fish/mythic/halloween-dullahan-seahorse_swim8_v2_sprite.png",
+                        "width":  1776,
+                        "height":  888,
+                        "cell":  444,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  84,
+                                           "y":  149,
+                                           "width":  293,
+                                           "height":  253,
+                                           "alphaPixels":  39990,
+                                           "margin":  42,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  83,
+                                           "y":  133,
+                                           "width":  298,
+                                           "height":  271,
+                                           "alphaPixels":  41628,
+                                           "margin":  40,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  59,
+                                           "y":  153,
+                                           "width":  324,
+                                           "height":  246,
+                                           "alphaPixels":  43289,
+                                           "margin":  45,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  88,
+                                           "y":  151,
+                                           "width":  285,
+                                           "height":  252,
+                                           "alphaPixels":  39241,
+                                           "margin":  41,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  4,
+                                           "x":  88,
+                                           "y":  105,
+                                           "width":  288,
+                                           "height":  256,
+                                           "alphaPixels":  41386,
+                                           "margin":  68,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  5,
+                                           "x":  69,
+                                           "y":  62,
+                                           "width":  311,
+                                           "height":  296,
+                                           "alphaPixels":  45807,
+                                           "margin":  62,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  6,
+                                           "x":  75,
+                                           "y":  106,
+                                           "width":  307,
+                                           "height":  253,
+                                           "alphaPixels":  43368,
+                                           "margin":  62,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  7,
+                                           "x":  83,
+                                           "y":  107,
+                                           "width":  293,
+                                           "height":  256,
+                                           "alphaPixels":  41083,
+                                           "margin":  68,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-moonwolf-shark-lugar",
+                        "file":  "fish/mythic/halloween-moonwolf-shark-lugar_swim8_v2_sprite.png",
+                        "width":  1776,
+                        "height":  888,
+                        "cell":  444,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  90,
+                                           "y":  174,
+                                           "width":  298,
+                                           "height":  193,
+                                           "alphaPixels":  30209,
+                                           "margin":  56,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  94,
+                                           "y":  171,
+                                           "width":  302,
+                                           "height":  200,
+                                           "alphaPixels":  31535,
+                                           "margin":  48,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  61,
+                                           "y":  183,
+                                           "width":  333,
+                                           "height":  188,
+                                           "alphaPixels":  32670,
+                                           "margin":  50,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  89,
+                                           "y":  173,
+                                           "width":  293,
+                                           "height":  197,
+                                           "alphaPixels":  29969,
+                                           "margin":  62,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  4,
+                                           "x":  87,
+                                           "y":  123,
+                                           "width":  302,
+                                           "height":  193,
+                                           "alphaPixels":  31416,
+                                           "margin":  55,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  5,
+                                           "x":  95,
+                                           "y":  114,
+                                           "width":  310,
+                                           "height":  202,
+                                           "alphaPixels":  34055,
+                                           "margin":  39,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  6,
+                                           "x":  68,
+                                           "y":  120,
+                                           "width":  329,
+                                           "height":  200,
+                                           "alphaPixels":  34669,
+                                           "margin":  47,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  7,
+                                           "x":  90,
+                                           "y":  118,
+                                           "width":  306,
+                                           "height":  197,
+                                           "alphaPixels":  31789,
+                                           "margin":  48,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-cathedral-ray-morne",
+                        "file":  "fish/mythic/halloween-cathedral-ray-morne_swim8_v2_sprite.png",
+                        "width":  1776,
+                        "height":  888,
+                        "cell":  444,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  56,
+                                           "y":  145,
+                                           "width":  347,
+                                           "height":  235,
+                                           "alphaPixels":  42260,
+                                           "margin":  41,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  61,
+                                           "y":  145,
+                                           "width":  339,
+                                           "height":  245,
+                                           "alphaPixels":  40391,
+                                           "margin":  44,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  56,
+                                           "y":  150,
+                                           "width":  342,
+                                           "height":  247,
+                                           "alphaPixels":  42271,
+                                           "margin":  46,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  55,
+                                           "y":  146,
+                                           "width":  342,
+                                           "height":  238,
+                                           "alphaPixels":  39555,
+                                           "margin":  47,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  4,
+                                           "x":  56,
+                                           "y":  92,
+                                           "width":  349,
+                                           "height":  230,
+                                           "alphaPixels":  41519,
+                                           "margin":  39,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  5,
+                                           "x":  56,
+                                           "y":  110,
+                                           "width":  350,
+                                           "height":  232,
+                                           "alphaPixels":  42821,
+                                           "margin":  38,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  6,
+                                           "x":  55,
+                                           "y":  115,
+                                           "width":  348,
+                                           "height":  216,
+                                           "alphaPixels":  43227,
+                                           "margin":  41,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  7,
+                                           "x":  54,
+                                           "y":  109,
+                                           "width":  352,
+                                           "height":  233,
+                                           "alphaPixels":  42727,
+                                           "margin":  38,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-tomb-dragon-sahet",
+                        "file":  "fish/mythic/halloween-tomb-dragon-sahet_swim8_v2_sprite.png",
+                        "width":  1776,
+                        "height":  888,
+                        "cell":  444,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  95,
+                                           "y":  176,
+                                           "width":  283,
+                                           "height":  188,
+                                           "alphaPixels":  29138,
+                                           "margin":  66,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  73,
+                                           "y":  162,
+                                           "width":  315,
+                                           "height":  202,
+                                           "alphaPixels":  36000,
+                                           "margin":  56,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  43,
+                                           "y":  175,
+                                           "width":  331,
+                                           "height":  186,
+                                           "alphaPixels":  31538,
+                                           "margin":  43,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  59,
+                                           "y":  169,
+                                           "width":  309,
+                                           "height":  194,
+                                           "alphaPixels":  31675,
+                                           "margin":  59,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  4,
+                                           "x":  87,
+                                           "y":  118,
+                                           "width":  297,
+                                           "height":  186,
+                                           "alphaPixels":  30554,
+                                           "margin":  60,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  5,
+                                           "x":  76,
+                                           "y":  102,
+                                           "width":  312,
+                                           "height":  199,
+                                           "alphaPixels":  35925,
+                                           "margin":  56,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  6,
+                                           "x":  59,
+                                           "y":  104,
+                                           "width":  314,
+                                           "height":  203,
+                                           "alphaPixels":  34644,
+                                           "margin":  59,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  7,
+                                           "x":  79,
+                                           "y":  113,
+                                           "width":  290,
+                                           "height":  190,
+                                           "alphaPixels":  30298,
+                                           "margin":  75,
+                                           "safe":  true
+                                       }
+                                   ]
+                    }
+                ]
+}

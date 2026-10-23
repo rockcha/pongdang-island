@@ -17,7 +17,7 @@ export function readCollectionFilters(userId?:string,initialRegion='all'):Collec
   return {
    tab:['all','fish','trash','decoration'].includes(saved.tab)?saved.tab:fallback.tab,
    rarity:['all','common','rare','epic','mythic'].includes(saved.rarity)?saved.rarity:fallback.rarity,
-   habitat:saved.habitat==='all'||typeof saved.habitat==='string'&&Object.hasOwn(regionIcons,saved.habitat)?saved.habitat:fallback.habitat,
+   habitat:saved.habitat==='all'||saved.habitat==='common'||typeof saved.habitat==='string'&&Object.hasOwn(regionIcons,saved.habitat)?saved.habitat:fallback.habitat,
   }
  }catch{return fallback}
 }

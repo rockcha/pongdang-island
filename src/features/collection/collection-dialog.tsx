@@ -23,13 +23,16 @@ import {collectibleCardTones} from './collectible-card-tones'
 import { kindLabels, loadCollection } from './api'
 import type { CollectionState, CatalogEntry, Species } from './api'
 import {readCollectionFilters,saveCollectionFilters} from './filter-preference'
+import { HabitatFilterIcon } from '@/components/habitat-filter-icon'
+import { HalloweenIcon } from '@/components/collection-filter-icons'
+import { limitedCollectionEvents } from './limited-events'
 
 const {collection:BookOpenText}=appArt
 
 
 type CollectionDialogProps = { onAddTemporary?: (species: Species) => void; fishing?:boolean;disabled?:boolean;dock?:boolean;iconOnly?:boolean }
 function BookSelect({ label, value, onChange, items, region = false }: {label:string;value:string;onChange:(value:string)=>void;items:{value:string;label:string}[];region?:boolean}) {
- return <Select.Root value={value} onValueChange={value=>{if(value!==null)onChange(value)}} items={items}><Select.Trigger aria-label={label} className="flex min-h-11 min-w-0 flex-1 items-center justify-between gap-2 rounded-xl border border-border bg-secondary/60 px-3 text-xs text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"><Select.Value className="min-w-0 truncate">{region?<span className="flex min-w-0 items-center gap-2">{regionIcons[value]?<img src={regionIcons[value].src} alt="" className="size-6 shrink-0 object-contain"/>:<LayoutGrid aria-hidden="true" className="size-4 shrink-0 text-primary"/>}<span className="truncate">{items.find(item=>item.value===value)?.label}</span></span>:undefined}</Select.Value><Select.Icon><ChevronDown className="size-4 text-primary"/></Select.Icon></Select.Trigger><Select.Portal><Select.Positioner sideOffset={5} className="z-[70]"><Select.Popup className="max-h-72 min-w-40 overflow-y-auto rounded-xl border border-border bg-popover p-1 text-foreground shadow-lg outline-none"><Select.List>{items.map(item=><Select.Item key={item.value} value={item.value} className="flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-lg px-3 text-sm outline-none data-highlighted:bg-secondary data-selected:bg-secondary/60 data-selected:text-primary"><Select.ItemText className="flex items-center gap-2">{region&&(regionIcons[item.value]?<img src={regionIcons[item.value].src} alt="" className="size-6 shrink-0 object-contain"/>:<LayoutGrid aria-hidden="true" className="size-4 shrink-0 text-primary"/>)}{item.label}</Select.ItemText><Select.ItemIndicator><Check className="size-4"/></Select.ItemIndicator></Select.Item>)}</Select.List></Select.Popup></Select.Positioner></Select.Portal></Select.Root>
+ return <Select.Root value={value} onValueChange={value=>{if(value!==null)onChange(value)}} items={items}><Select.Trigger aria-label={label} className="flex min-h-11 min-w-0 flex-1 items-center justify-between gap-2 rounded-xl border border-border bg-secondary/60 px-3 text-xs text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"><Select.Value className="min-w-0 truncate">{region?<span className="flex min-w-0 items-center gap-2"><HabitatFilterIcon value={value}/><span className="truncate">{items.find(item=>item.value===value)?.label}</span></span>:undefined}</Select.Value><Select.Icon><ChevronDown className="size-4 text-primary"/></Select.Icon></Select.Trigger><Select.Portal><Select.Positioner sideOffset={5} className="z-[70]"><Select.Popup className="max-h-72 min-w-40 overflow-y-auto rounded-xl border border-border bg-popover p-1 text-foreground shadow-lg outline-none"><Select.List>{items.map(item=><Select.Item key={item.value} value={item.value} className="flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-lg px-3 text-sm outline-none data-highlighted:bg-secondary data-selected:bg-secondary/60 data-selected:text-primary"><Select.ItemText className="flex items-center gap-2">{region&&<HabitatFilterIcon value={item.value}/>}{item.label}</Select.ItemText><Select.ItemIndicator><Check className="size-4"/></Select.ItemIndicator></Select.Item>)}</Select.List></Select.Popup></Select.Positioner></Select.Portal></Select.Root>
 }
 
 export function CollectionDialog({ onAddTemporary,fishing=false,disabled=false,dock=false,iconOnly=false }: CollectionDialogProps) {
@@ -52,6 +55,7 @@ export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='
  const [error, setError] = useState('')
  const [filters,setFilters]=useState(()=>readCollectionFilters(rememberFiltersFor,initialRegion))
  const {tab,rarity,habitat}=filters
+ const [limited,setLimited] = useState('all')
  const [detail,setDetail] = useState<CatalogEntry|null>(null)
  const [attempt, setAttempt] = useState(0)
  const [mapPrices,setMapPrices]=useState<Record<string,number>>({})
@@ -67,7 +71,8 @@ export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='
  const habitats = Array.from(new Map(catalog.flatMap(s => s.habitats).map(region => [region.id, region])).values()).sort((a, b) => (a.id==='pongdang'?-1:mapPrices[a.id]??(['coral','bluegrove','mistmoon'].includes(a.id)?['coral','bluegrove','mistmoon'].indexOf(a.id):Infinity))-(b.id==='pongdang'?-1:mapPrices[b.id]??(['coral','bluegrove','mistmoon'].includes(b.id)?['coral','bluegrove','mistmoon'].indexOf(b.id):Infinity)) || a.name.localeCompare(b.name,'ko'))
  const entries = catalog.filter(s =>
   (tab === 'all' || s.kind === tab) && (rarity === 'all' || s.rarity === rarity) &&
-  (habitat === 'all' || (s.is_native && s.native_region_id === habitat))
+  (habitat === 'all' || (habitat === 'common' ? s.native_region_id == null : s.is_native && s.native_region_id === habitat)) &&
+  (limited === 'all' || limitedCollectionEvents.some(event=>event.value===limited&&(event.speciesIds.includes(s.id)||s.id.startsWith(event.speciesPrefix))))
  ).sort((a, b) => a.sell_price - b.sell_price || a.name.localeCompare(b.name, 'ko') || a.id.localeCompare(b.id)) ?? []
  return <section className="flex min-h-0 flex-1 flex-col">
   <div className="shrink-0 space-y-3 border-b border-border/50 bg-popover px-4 py-3 sm:px-5">
@@ -79,11 +84,17 @@ export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='
        {value === 'all' ? <LayoutGrid className="size-[18px]"/> : <CollectibleKindIcon kind={value} className="size-7"/>}
       </TooltipTrigger><TooltipContent>{label}</TooltipContent></Tooltip>
      })}
+     <Select.Root value={limited} items={[{value:'all',label:'한정'},...limitedCollectionEvents]} onValueChange={value=>{if(value!==null)setLimited(value)}}>
+      <Select.Trigger aria-label="한정 이벤트 선택" className="flex h-10 items-center gap-1 rounded-xl border border-border bg-secondary/60 px-2 text-xs text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"><HalloweenIcon/><Select.Value/><Select.Icon><ChevronDown className="size-3"/></Select.Icon></Select.Trigger>
+      <Select.Portal><Select.Positioner sideOffset={5} className="z-[70]"><Select.Popup className="min-w-40 rounded-xl border border-border bg-popover p-1 text-foreground shadow-lg outline-none"><Select.List>
+       {[{value:'all',label:'전체 개체'},...limitedCollectionEvents].map(event=><Select.Item key={event.value} value={event.value} className="flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-lg px-3 text-xs outline-none data-highlighted:bg-secondary"><Select.ItemText className="flex items-center gap-2"><HalloweenIcon/>{event.label}</Select.ItemText><Select.ItemIndicator><Check className="size-4"/></Select.ItemIndicator></Select.Item>)}
+      </Select.List></Select.Popup></Select.Positioner></Select.Portal>
+     </Select.Root>
     </div></TooltipProvider>
     <span className="text-[11px] tabular-nums text-muted-foreground">{previewAll?(state?`전체 ${entries.length}종`:'전체 —종'):state ? `발견 ${entries.filter(s=>s.discovered).length}/${entries.length}` : '발견 —/—'}</span>
    </div>
    <div className="flex gap-2">
-    <BookSelect region label="도감 주 서식지" value={habitat} onChange={habitat=>setFilters(previous=>({...previous,habitat}))} items={[{value:'all',label:'전체 주 서식지'},...habitats.map(region=>({value:region.id,label:region.name}))]}/>
+    <BookSelect region label="도감 서식지" value={habitat} onChange={habitat=>setFilters(previous=>({...previous,habitat}))} items={[{value:'all',label:'전체 서식지'},{value:'common',label:'공통 개체'},...habitats.map(region=>({value:region.id,label:region.name}))]}/>
     <RaritySelect value={rarity} onChange={rarity=>setFilters(previous=>({...previous,rarity}))}/>
    </div>
   </div>
@@ -97,7 +108,7 @@ export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='
       <button type="button" aria-label={s.name+(s.discovered||previewAll?' 상세 보기':' 미발견')} onClick={()=>setDetail(s)} className="flex h-full w-full cursor-pointer flex-col items-center pb-2 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring">
        <div className={`relative flex w-full items-center justify-center bg-gradient-to-b px-1 pt-3 pb-2 ${collectibleCardTones[s.rarity]}`}><CollectibleThumbnail loading="lazy" fadeIn path={s.thumbnail_path} name={s.name} className={"aspect-square w-full max-w-24 "+(!s.discovered&&!previewAll?"opacity-80 [&_img]:brightness-[.25]":"")}/></div>
        <span className={`pointer-events-none absolute left-2 ${onAddTemporary?'top-12':'top-2'}`}><TreasureTrashBadge speciesId={s.id}/></span>
-       {s.is_native&&s.native_region_id&&regionIcons[s.native_region_id]&&<span aria-label={regionIcons[s.native_region_id].name+' 주 서식지'} title={regionIcons[s.native_region_id].name+' 주 서식지'} className="absolute right-2 top-2 inline-flex size-7 items-center justify-center rounded-full border border-border/60 bg-background/95 p-1 shadow-sm"><img src={regionIcons[s.native_region_id].src} alt="" className="size-5 object-contain"/></span>}
+       {s.id.startsWith('halloween-')?<span aria-label="할로윈 한정 개체" title="할로윈 한정 개체" className="pointer-events-none absolute right-2 top-2 inline-flex size-7 items-center justify-center rounded-full border border-border/60 bg-background/95 p-1 shadow-sm"><HalloweenIcon className="size-5 shrink-0"/></span>:s.is_native&&s.native_region_id&&regionIcons[s.native_region_id]&&<span aria-label={regionIcons[s.native_region_id].name+' 주 서식지'} title={regionIcons[s.native_region_id].name+' 주 서식지'} className="absolute right-2 top-2 inline-flex size-7 items-center justify-center rounded-full border border-border/60 bg-background/95 p-1 shadow-sm"><img src={regionIcons[s.native_region_id].src} alt="" className="size-5 object-contain"/></span>}
        <h3 title={s.name} className="mt-2 h-5 w-full truncate px-1 text-xs font-medium leading-5">{s.name}</h3>
        <span aria-label={`가치 ${s.sell_price.toLocaleString('ko-KR')} 골드`} className="mt-0.5 inline-flex items-center justify-center gap-1 text-[11px] tabular-nums text-primary"><GoldIcon className="size-3.5"/>{s.sell_price.toLocaleString('ko-KR')}</span>
       </button>

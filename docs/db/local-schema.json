@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "86ea37e6195ac4233b7e8888601b0639932928f547ba6fa2766ed651b89c0cbc",
+  "migrationHash": "b22b3059ab58f45f4941fc003b75ab51b81cde3f4af61a03233e661749729ed7",
   "structure": {
     "enums": [
       {
@@ -91,6 +91,12 @@
       {
         "rls": true,
         "name": "bait_production_sites",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "collectible_event_windows",
         "schema": "app_private",
         "force_rls": false
       },
@@ -1091,6 +1097,46 @@
         "default": null,
         "identity": "",
         "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "text",
+        "table": "collectible_event_windows",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "species_prefix",
+        "type": "text",
+        "table": "collectible_event_windows",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "starts_at",
+        "type": "timestamp with time zone",
+        "table": "collectible_event_windows",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "ends_at",
+        "type": "timestamp with time zone",
+        "table": "collectible_event_windows",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
         "generated": ""
       },
       {
@@ -8222,6 +8268,18 @@
         "definition": "CREATE INDEX bait_sites_expiring_push ON app_private.bait_production_sites USING btree (expires_at, user_id) WHERE (started_at IS NOT NULL)"
       },
       {
+        "name": "collectible_event_windows_pkey",
+        "table": "collectible_event_windows",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX collectible_event_windows_pkey ON app_private.collectible_event_windows USING btree (id)"
+      },
+      {
+        "name": "collectible_event_windows_species_prefix_key",
+        "table": "collectible_event_windows",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX collectible_event_windows_species_prefix_key ON app_private.collectible_event_windows USING btree (species_prefix)"
+      },
+      {
         "name": "exchange_bundle_gifts_gift_id_key",
         "table": "exchange_bundle_gifts",
         "schema": "app_private",
@@ -11436,6 +11494,16 @@
         "securityDefiner": true
       },
       {
+        "name": "collectible_available_at",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_species_id text, p_at timestamp with time zone",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.collectible_available_at(p_species_id text, p_at timestamp with time zone)\n RETURNS boolean\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select p_species_id is not null and p_at is not null and not exists (\n  select 1 from app_private.collectible_event_windows e\n  where starts_with(p_species_id,e.species_prefix)\n   and (p_at < e.starts_at or p_at >= e.ends_at)\n )\n$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "collectible_habitat_weight",
         "config": [
           "search_path=\"\""
@@ -12162,7 +12230,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region text, p_rule jsonb",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.harbor_draw(p_region text, p_rule jsonb)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare r public.game_rarity;roll integer;v_kind text:=p_rule->>'kind';wanted text;ids text[];\n fallback boolean:=false;sid text;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if random()*10000>=(p_rule->>'success_bp')::integer then return null;end if;\n roll:=floor(random()*10000)::integer;\n r:=case when roll<(p_rule->>'mythic_bp')::integer then 'mythic'::public.game_rarity\n  when roll<(p_rule->>'mythic_bp')::integer+(p_rule->>'epic_bp')::integer then 'epic'::public.game_rarity\n  when roll<(p_rule->>'mythic_bp')::integer+(p_rule->>'epic_bp')::integer+(p_rule->>'rare_bp')::integer then 'rare'::public.game_rarity\n  else 'common'::public.game_rarity end;\n if v_kind='trash_weighted' then\n  wanted:=case when random()*10000<(p_rule->>'trash_bp')::integer then 'trash' else 'fish' end;\n end if;\n select array_agg(s.id order by s.id) into ids from public.collectible_species s\n where s.rarity=r and case v_kind\n  when 'decoration' then s.kind='decoration'\n  when 'trash_only' then s.kind='trash'\n  when 'trash_weighted' then s.kind::text=wanted\n  when 'discovery_only' then s.kind in('fish','trash','decoration') and not exists(\n   select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id)\n  when 'discovery_weighted' then s.kind in('fish','trash','decoration')\n  else s.kind in('fish','trash') end;\n -- Preserve legacy specialty fallback rules. New mixed-kind boats only\n -- renormalize a missing kind within the same grade, never upgrade the grade.\n if ids is null and v_kind='trash_weighted' then\n  select array_agg(s.id order by s.id) into ids from public.collectible_species s where s.rarity=r and s.kind in('fish','trash');\n elsif ids is null and v_kind in('trash_only','discovery_only') then\n  fallback:=true;\n  select array_agg(s.id order by s.id) into ids from public.collectible_species s where\n   case when v_kind='trash_only' then s.kind='trash' else s.kind in('fish','trash','decoration')\n    and not exists(select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id) end;\n end if;\n if ids is null then\n  if v_kind='discovery_only' then return null;end if;\n  raise exception 'NO_COLLECTIBLE_FOR_REGION';\n end if;\n -- Independent habitat picker: future bait/rod helper changes cannot leak in.\n with candidates as materialized(\n  select s.id,s.rarity,\n   case when not s.is_native then 'shared' when s.native_region_id=p_region then 'home' else 'away' end bucket,\n   case when v_kind='discovery_weighted' and not exists(select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id)\n    then (p_rule->>'discovery_weight')::numeric else 1 end discovery_weight\n  from public.collectible_species s where s.id=any(ids)\n ),groups as materialized(select distinct bucket from candidates),selected as materialized(\n  select bucket from groups order by -ln(greatest(random(),1e-15))/case bucket\n   when 'home' then 35*(p_rule->>'home_multiplier')::numeric when 'shared' then 60 else 5 end,bucket limit 1\n )select c.id into sid from candidates c join selected g using(bucket)\n order by -ln(greatest(random(),1e-15))/(c.discovery_weight*case when fallback then\n  case c.rarity when 'common' then 7700 when 'rare' then 2000 when 'epic' then 270 else 30 end else 1 end),c.id limit 1;\n return sid;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.harbor_draw(p_region text, p_rule jsonb)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare r public.game_rarity;roll integer;v_kind text:=p_rule->>'kind';wanted text;ids text[];\n fallback boolean:=false;sid text;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if random()*10000>=(p_rule->>'success_bp')::integer then return null;end if;\n roll:=floor(random()*10000)::integer;\n r:=case when roll<(p_rule->>'mythic_bp')::integer then 'mythic'::public.game_rarity\n  when roll<(p_rule->>'mythic_bp')::integer+(p_rule->>'epic_bp')::integer then 'epic'::public.game_rarity\n  when roll<(p_rule->>'mythic_bp')::integer+(p_rule->>'epic_bp')::integer+(p_rule->>'rare_bp')::integer then 'rare'::public.game_rarity\n  else 'common'::public.game_rarity end;\n if v_kind='trash_weighted' then\n  wanted:=case when random()*10000<(p_rule->>'trash_bp')::integer then 'trash' else 'fish' end;\n end if;\n select array_agg(s.id order by s.id) into ids from public.collectible_species s where app_private.collectible_available_at(s.id,statement_timestamp()) and s.rarity=r and case v_kind\n  when 'decoration' then s.kind='decoration'\n  when 'trash_only' then s.kind='trash'\n  when 'trash_weighted' then s.kind::text=wanted\n  when 'discovery_only' then s.kind in('fish','trash','decoration') and not exists(\n   select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id)\n  when 'discovery_weighted' then s.kind in('fish','trash','decoration')\n  else s.kind in('fish','trash') end;\n -- Preserve legacy specialty fallback rules. New mixed-kind boats only\n -- renormalize a missing kind within the same grade, never upgrade the grade.\n if ids is null and v_kind='trash_weighted' then\n  select array_agg(s.id order by s.id) into ids from public.collectible_species s where app_private.collectible_available_at(s.id,statement_timestamp()) and s.rarity=r and s.kind in('fish','trash');\n elsif ids is null and v_kind in('trash_only','discovery_only') then\n  fallback:=true;\n  select array_agg(s.id order by s.id) into ids from public.collectible_species s where\n   case when v_kind='trash_only' then s.kind='trash' else s.kind in('fish','trash','decoration')\n    and not exists(select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id) end;\n end if;\n if ids is null then\n  if v_kind='discovery_only' then return null;end if;\n  raise exception 'NO_COLLECTIBLE_FOR_REGION';\n end if;\n -- Independent habitat picker: future bait/rod helper changes cannot leak in.\n with candidates as materialized(\n  select s.id,s.rarity,\n   case when not s.is_native then 'shared' when s.native_region_id=p_region then 'home' else 'away' end bucket,\n   case when v_kind='discovery_weighted' and not exists(select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id)\n    then (p_rule->>'discovery_weight')::numeric else 1 end discovery_weight\n  from public.collectible_species s where app_private.collectible_available_at(s.id,statement_timestamp()) and s.id=any(ids)\n ),groups as materialized(select distinct bucket from candidates),selected as materialized(\n  select bucket from groups order by -ln(greatest(random(),1e-15))/case bucket\n   when 'home' then 35*(p_rule->>'home_multiplier')::numeric when 'shared' then 60 else 5 end,bucket limit 1\n )select c.id into sid from candidates c join selected g using(bucket)\n order by -ln(greatest(random(),1e-15))/(c.discovery_weight*case when fallback then\n  case c.rarity when 'common' then 7700 when 'rare' then 2000 when 'epic' then 270 else 30 end else 1 end),c.id limit 1;\n return sid;\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -12522,7 +12590,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region text, p_rarity game_rarity, p_native boolean, p_manual boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_bait_fish(p_region text, p_rarity game_rarity, p_native boolean DEFAULT false, p_manual boolean DEFAULT false)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare ids text[];rod_region text;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if not exists(select 1 from public.regions where id=p_region) then raise exception 'REGION_NOT_FOUND';end if;\n if p_manual then\n  select r.region_id into rod_region from public.player_rod_loadouts l\n  join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n  join public.fishing_rods r on r.id=o.rod_id where l.user_id=auth.uid() and r.native_bonus_bp>0;\n end if;\n select array_agg(id order by id) into ids from public.collectible_species where kind='fish' and rarity=p_rarity;\n return app_private.pick_habitat_group(ids,p_region,rod_region,case when p_native then 1.5 else 1 end,false);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_bait_fish(p_region text, p_rarity game_rarity, p_native boolean DEFAULT false, p_manual boolean DEFAULT false)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare ids text[];rod_region text;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if not exists(select 1 from public.regions where id=p_region) then raise exception 'REGION_NOT_FOUND';end if;\n if p_manual then\n  select r.region_id into rod_region from public.player_rod_loadouts l\n  join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n  join public.fishing_rods r on r.id=o.rod_id where l.user_id=auth.uid() and r.native_bonus_bp>0;\n end if;\n select array_agg(id order by id) into ids from public.collectible_species where app_private.collectible_available_at(id,statement_timestamp()) and kind='fish' and rarity=p_rarity;\n return app_private.pick_habitat_group(ids,p_region,rod_region,case when p_native then 1.5 else 1 end,false);\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -12532,7 +12600,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region text, p_rarity game_rarity, p_bait text, p_native boolean, p_manual boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_balanced_bait_collectible(p_region text, p_rarity game_rarity, p_bait text, p_native boolean DEFAULT false, p_manual boolean DEFAULT false)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare ids text[];rod_region text;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_bait is null or p_bait not in ('bait_snowflake_salt','bait_shooting_star_tail') then raise exception 'INVALID_BAIT';end if;\n if not exists(select 1 from public.regions where id=p_region) then raise exception 'REGION_NOT_FOUND';end if;\n if p_rarity is null or (p_bait='bait_shooting_star_tail' and p_rarity not in ('common','mythic')) then raise exception 'INVALID_RARITY';end if;\n if p_manual then\n  select r.region_id into rod_region from public.player_rod_loadouts l\n  join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n  join public.fishing_rods r on r.id=o.rod_id where l.user_id=auth.uid() and r.native_bonus_bp>0;\n end if;\n select array_agg(s.id order by s.id) into ids from public.collectible_species s\n where s.rarity=p_rarity and case\n  when p_bait='bait_snowflake_salt' then not s.is_native and s.kind in ('fish','trash')\n  when p_rarity='mythic' then s.kind in ('fish','trash','decoration')\n  else s.kind='trash' end;\n if ids is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n return app_private.pick_habitat_group(ids,p_region,rod_region,case when p_native then 1.5 else 1 end,false);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_balanced_bait_collectible(p_region text, p_rarity game_rarity, p_bait text, p_native boolean DEFAULT false, p_manual boolean DEFAULT false)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare ids text[];rod_region text;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_bait is null or p_bait not in ('bait_snowflake_salt','bait_shooting_star_tail') then raise exception 'INVALID_BAIT';end if;\n if not exists(select 1 from public.regions where id=p_region) then raise exception 'REGION_NOT_FOUND';end if;\n if p_rarity is null or (p_bait='bait_shooting_star_tail' and p_rarity not in ('common','mythic')) then raise exception 'INVALID_RARITY';end if;\n if p_manual then\n  select r.region_id into rod_region from public.player_rod_loadouts l\n  join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n  join public.fishing_rods r on r.id=o.rod_id where l.user_id=auth.uid() and r.native_bonus_bp>0;\n end if;\n select array_agg(s.id order by s.id) into ids from public.collectible_species s where app_private.collectible_available_at(s.id,statement_timestamp()) and s.rarity=p_rarity and case\n  when p_bait='bait_snowflake_salt' then not s.is_native and s.kind in ('fish','trash')\n  when p_rarity='mythic' then s.kind in ('fish','trash','decoration')\n  else s.kind='trash' end;\n if ids is null then raise exception 'NO_COLLECTIBLE_FOR_REGION';end if;\n return app_private.pick_habitat_group(ids,p_region,rod_region,case when p_native then 1.5 else 1 end,false);\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -12542,7 +12610,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_ids text[], p_region text, p_rod_region text, p_home_multiplier numeric, p_rarity_fallback boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_habitat_group(p_ids text[], p_region text, p_rod_region text DEFAULT NULL::text, p_home_multiplier numeric DEFAULT 1, p_rarity_fallback boolean DEFAULT false)\n RETURNS text\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n with candidates as materialized (\n  select s.id,s.rarity,s.native_region_id,\n   case when not s.is_native then 'shared' when s.native_region_id=p_region then 'home' else 'away' end bucket\n  from public.collectible_species s where s.id=any(p_ids)\n ), groups as materialized (\n  select distinct bucket from candidates\n ), selected as materialized (\n  select bucket from groups\n  order by -ln(greatest(random(),1e-15))/case bucket\n   when 'home' then 25*greatest(p_home_multiplier,0.001)*case when p_rod_region=p_region then 1.1 else 1 end\n   when 'shared' then 80 else 5 end,bucket limit 1\n )\n select c.id from candidates c join selected g using(bucket)\n order by -ln(greatest(random(),1e-15))/(\n  case when c.bucket='away' and c.native_region_id=p_rod_region then 3 else 1 end\n  *case when p_rarity_fallback then case c.rarity when 'common' then 7700 when 'rare' then 2000 when 'epic' then 270 else 30 end else 1 end\n ),c.id limit 1\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_habitat_group(p_ids text[], p_region text, p_rod_region text DEFAULT NULL::text, p_home_multiplier numeric DEFAULT 1, p_rarity_fallback boolean DEFAULT false)\n RETURNS text\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n with candidates as materialized (\n  select s.id,s.rarity,s.native_region_id,\n   case when not s.is_native then 'shared' when s.native_region_id=p_region then 'home' else 'away' end bucket\n  from public.collectible_species s where app_private.collectible_available_at(s.id,statement_timestamp()) and s.id=any(p_ids)\n ), groups as materialized (\n  select distinct bucket from candidates\n ), selected as materialized (\n  select bucket from groups\n  order by -ln(greatest(random(),1e-15))/case bucket\n   when 'home' then 25*greatest(p_home_multiplier,0.001)*case when p_rod_region=p_region then 1.1 else 1 end\n   when 'shared' then 80 else 5 end,bucket limit 1\n )\n select c.id from candidates c join selected g using(bucket)\n order by -ln(greatest(random(),1e-15))/(\n  case when c.bucket='away' and c.native_region_id=p_rod_region then 3 else 1 end\n  *case when p_rarity_fallback then case c.rarity when 'common' then 7700 when 'rare' then 2000 when 'epic' then 270 else 30 end else 1 end\n ),c.id limit 1\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -12552,7 +12620,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region text, p_rarity game_rarity, p_profile jsonb, p_manual boolean, p_native boolean, p_local_discovery boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_profile_collectible(p_region text, p_rarity game_rarity, p_profile jsonb, p_manual boolean DEFAULT false, p_native boolean DEFAULT false, p_local_discovery boolean DEFAULT false)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare ids text[];rod_region text;fallback boolean;bid text:=p_profile->>'id';effect text:=p_profile->>'effect_kind';\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_profile is null then raise exception 'INVALID_BAIT';end if;\n if not exists(select 1 from public.regions where id=p_region) then raise exception 'REGION_NOT_FOUND';end if;\n if p_manual then\n  select r.region_id into rod_region from public.player_rod_loadouts l\n  join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n  join public.fishing_rods r on r.id=o.rod_id where l.user_id=auth.uid() and r.native_bonus_bp>0;\n end if;\n with candidates as materialized (\n  select s.id,s.rarity from public.collectible_species s where case\n   when effect='undiscovered' then s.kind in ('fish','trash','decoration')\n    and not exists(select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id)\n    and (not p_local_discovery or exists(select 1 from public.collectible_habitats h where h.species_id=s.id and h.region_id=p_region))\n   when bid='bait_grubby_magnet' then s.kind='trash'\n   when effect='shooting_star' then s.rarity=p_rarity and (p_rarity='mythic' or s.kind='trash')\n   when effect='common_only' then s.rarity=p_rarity and not s.is_native and (p_profile->'target_kinds') ? s.kind::text\n   else s.rarity=p_rarity and (p_profile->'target_kinds') ? s.kind::text end\n ), pool as (\n  select * from candidates c where c.rarity=p_rarity\n   or (effect='undiscovered' or bid='bait_grubby_magnet') and not exists(select 1 from candidates c2 where c2.rarity=p_rarity)\n )\n select array_agg(id order by id),not coalesce(bool_or(rarity=p_rarity),false) into ids,fallback from pool;\n return app_private.pick_habitat_group(ids,p_region,rod_region,\n  coalesce((p_profile->>'native_multiplier')::numeric,1)*(case when p_native then 1.5 else 1 end),fallback);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_profile_collectible(p_region text, p_rarity game_rarity, p_profile jsonb, p_manual boolean DEFAULT false, p_native boolean DEFAULT false, p_local_discovery boolean DEFAULT false)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare ids text[];rod_region text;fallback boolean;bid text:=p_profile->>'id';effect text:=p_profile->>'effect_kind';\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_profile is null then raise exception 'INVALID_BAIT';end if;\n if not exists(select 1 from public.regions where id=p_region) then raise exception 'REGION_NOT_FOUND';end if;\n if p_manual then\n  select r.region_id into rod_region from public.player_rod_loadouts l\n  join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n  join public.fishing_rods r on r.id=o.rod_id where l.user_id=auth.uid() and r.native_bonus_bp>0;\n end if;\n with candidates as materialized (\n  select s.id,s.rarity from public.collectible_species s where app_private.collectible_available_at(s.id,statement_timestamp()) and case\n   when effect='undiscovered' then s.kind in ('fish','trash','decoration')\n    and not exists(select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id)\n    and (not p_local_discovery or exists(select 1 from public.collectible_habitats h where h.species_id=s.id and h.region_id=p_region))\n   when bid='bait_grubby_magnet' then s.kind='trash'\n   when effect='shooting_star' then s.rarity=p_rarity and (p_rarity='mythic' or s.kind='trash')\n   when effect='common_only' then s.rarity=p_rarity and not s.is_native and (p_profile->'target_kinds') ? s.kind::text\n   else s.rarity=p_rarity and (p_profile->'target_kinds') ? s.kind::text end\n ), pool as (\n  select * from candidates c where c.rarity=p_rarity\n   or (effect='undiscovered' or bid='bait_grubby_magnet') and not exists(select 1 from candidates c2 where c2.rarity=p_rarity)\n )\n select array_agg(id order by id),not coalesce(bool_or(rarity=p_rarity),false) into ids,fallback from pool;\n return app_private.pick_habitat_group(ids,p_region,rod_region,\n  coalesce((p_profile->>'native_multiplier')::numeric,1)*(case when p_native then 1.5 else 1 end),fallback);\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -12562,7 +12630,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region_id text, p_rarity game_rarity, p_decoration boolean, p_map_roll integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_regional_collectible(p_region_id text, p_rarity game_rarity, p_decoration boolean, p_map_roll integer)\n RETURNS TABLE(species_id text, map_region_id text)\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare v_rod_region text;ids text[];sid text;\nbegin\n if p_map_roll is null or p_map_roll<0 or p_map_roll>=10000 then raise exception 'INVALID_ROLL';end if;\n if not exists(select 1 from public.regions where id=p_region_id) then raise exception 'REGION_NOT_FOUND';end if;\n select r.region_id into v_rod_region from public.player_rod_loadouts l\n join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n join public.fishing_rods r on r.id=o.rod_id where l.user_id=auth.uid() and r.native_bonus_bp>0;\n select array_agg(s.id order by s.id) into ids from public.collectible_species s\n where s.rarity=p_rarity and ((p_decoration and s.kind='decoration') or (not p_decoration and s.kind in ('fish','trash')));\n sid:=app_private.pick_habitat_group(ids,p_region_id,v_rod_region);\n if sid is not null then return query select sid,null::text;end if;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.pick_regional_collectible(p_region_id text, p_rarity game_rarity, p_decoration boolean, p_map_roll integer)\n RETURNS TABLE(species_id text, map_region_id text)\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare v_rod_region text;ids text[];sid text;\nbegin\n if p_map_roll is null or p_map_roll<0 or p_map_roll>=10000 then raise exception 'INVALID_ROLL';end if;\n if not exists(select 1 from public.regions where id=p_region_id) then raise exception 'REGION_NOT_FOUND';end if;\n select r.region_id into v_rod_region from public.player_rod_loadouts l\n join public.player_fishing_rods o on o.user_id=l.user_id and o.rod_id=l.equipped_rod_id\n join public.fishing_rods r on r.id=o.rod_id where l.user_id=auth.uid() and r.native_bonus_bp>0;\n select array_agg(s.id order by s.id) into ids from public.collectible_species s where app_private.collectible_available_at(s.id,statement_timestamp()) and s.rarity=p_rarity and ((p_decoration and s.kind='decoration') or (not p_decoration and s.kind in ('fish','trash')));\n sid:=app_private.pick_habitat_group(ids,p_region_id,v_rod_region);\n if sid is not null then return query select sid,null::text;end if;\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -13372,7 +13440,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_region text, p_bait text, p_native boolean, p_local_discovery boolean, p_snapshot jsonb",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.trap_pick(p_region text, p_bait text, p_native boolean, p_local_discovery boolean, p_snapshot jsonb)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare b public.fishing_baits;r public.game_rarity;roll integer:=floor(random()*10000);ids text[];fallback boolean;profile jsonb:=p_snapshot->'bait_rules'->p_bait;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if profile is null then raise exception 'INVALID_BAIT_SNAPSHOT';end if;\n if p_snapshot->>'bait_rules_version'='2' then\n  r:=app_private.profile_fishing_rarity(profile);\n  return app_private.pick_profile_collectible(p_region,r,profile,false,p_native,p_local_discovery);\n end if;\n b:=jsonb_populate_record(null::public.fishing_baits,profile);\n r:=case when b.alternating then app_private.consume_bait_cycle()\n when roll<b.mythic_bp then 'mythic'::public.game_rarity when roll<b.mythic_bp+b.epic_bp then 'epic'::public.game_rarity\n when roll<b.mythic_bp+b.epic_bp+b.rare_bp then 'rare'::public.game_rarity else 'common'::public.game_rarity end;\n if p_bait in ('bait_snowflake_salt','bait_shooting_star_tail') then return app_private.pick_balanced_bait_collectible(p_region,r,p_bait,p_native,false);end if;\n if b.fish_only then return app_private.pick_bait_fish(p_region,r,p_native,false);end if;\n with candidates as materialized (\n select s.id,s.rarity from public.collectible_species s where case\n when p_bait='bait_first_greeting' then s.kind in ('fish','trash','decoration') and not exists(select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id)\n and (not p_local_discovery or exists(select 1 from public.collectible_habitats h where h.species_id=s.id and h.region_id=p_region))\n when p_bait='bait_grubby_magnet' then s.kind='trash'\n when b.effect_kind='decoration' then s.kind='decoration' and s.rarity=r else s.kind in ('fish','trash') and s.rarity=r end\n ),pool as(select * from candidates c where c.rarity=r or not exists(select 1 from candidates c2 where c2.rarity=r))\n select array_agg(id order by id),not coalesce(bool_or(rarity=r),false) into ids,fallback from pool;\n return app_private.pick_habitat_group(ids,p_region,null,(case when p_native then 1.5 else 1 end)*(case when p_bait='bait_sea_memory' then 3 else 1 end),fallback and b.effect_kind<>'decoration');\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.trap_pick(p_region text, p_bait text, p_native boolean, p_local_discovery boolean, p_snapshot jsonb)\n RETURNS text\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare b public.fishing_baits;r public.game_rarity;roll integer:=floor(random()*10000);ids text[];fallback boolean;profile jsonb:=p_snapshot->'bait_rules'->p_bait;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if profile is null then raise exception 'INVALID_BAIT_SNAPSHOT';end if;\n if p_snapshot->>'bait_rules_version'='2' then\n  r:=app_private.profile_fishing_rarity(profile);\n  return app_private.pick_profile_collectible(p_region,r,profile,false,p_native,p_local_discovery);\n end if;\n b:=jsonb_populate_record(null::public.fishing_baits,profile);\n r:=case when b.alternating then app_private.consume_bait_cycle()\n when roll<b.mythic_bp then 'mythic'::public.game_rarity when roll<b.mythic_bp+b.epic_bp then 'epic'::public.game_rarity\n when roll<b.mythic_bp+b.epic_bp+b.rare_bp then 'rare'::public.game_rarity else 'common'::public.game_rarity end;\n if p_bait in ('bait_snowflake_salt','bait_shooting_star_tail') then return app_private.pick_balanced_bait_collectible(p_region,r,p_bait,p_native,false);end if;\n if b.fish_only then return app_private.pick_bait_fish(p_region,r,p_native,false);end if;\n with candidates as materialized (\n select s.id,s.rarity from public.collectible_species s where app_private.collectible_available_at(s.id,statement_timestamp()) and case\n when p_bait='bait_first_greeting' then s.kind in ('fish','trash','decoration') and not exists(select 1 from public.player_discoveries d where d.user_id=auth.uid() and d.species_id=s.id)\n and (not p_local_discovery or exists(select 1 from public.collectible_habitats h where h.species_id=s.id and h.region_id=p_region))\n when p_bait='bait_grubby_magnet' then s.kind='trash'\n when b.effect_kind='decoration' then s.kind='decoration' and s.rarity=r else s.kind in ('fish','trash') and s.rarity=r end\n ),pool as(select * from candidates c where c.rarity=r or not exists(select 1 from candidates c2 where c2.rarity=r))\n select array_agg(id order by id),not coalesce(bool_or(rarity=r),false) into ids,fallback from pool;\n return app_private.pick_habitat_group(ids,p_region,null,(case when p_native then 1.5 else 1 end)*(case when p_bait='bait_sea_memory' then 3 else 1 end),fallback and b.effect_kind<>'decoration');\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -15128,6 +15196,54 @@
         "table": "bait_production_sites",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "collectible_event_windows_check",
+        "table": "collectible_event_windows",
+        "schema": "app_private",
+        "definition": "CHECK ((starts_at < ends_at))"
+      },
+      {
+        "name": "collectible_event_windows_ends_at_not_null",
+        "table": "collectible_event_windows",
+        "schema": "app_private",
+        "definition": "NOT NULL ends_at"
+      },
+      {
+        "name": "collectible_event_windows_id_not_null",
+        "table": "collectible_event_windows",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "collectible_event_windows_pkey",
+        "table": "collectible_event_windows",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "collectible_event_windows_species_prefix_check",
+        "table": "collectible_event_windows",
+        "schema": "app_private",
+        "definition": "CHECK ((species_prefix <> ''::text))"
+      },
+      {
+        "name": "collectible_event_windows_species_prefix_key",
+        "table": "collectible_event_windows",
+        "schema": "app_private",
+        "definition": "UNIQUE (species_prefix)"
+      },
+      {
+        "name": "collectible_event_windows_species_prefix_not_null",
+        "table": "collectible_event_windows",
+        "schema": "app_private",
+        "definition": "NOT NULL species_prefix"
+      },
+      {
+        "name": "collectible_event_windows_starts_at_not_null",
+        "table": "collectible_event_windows",
+        "schema": "app_private",
+        "definition": "NOT NULL starts_at"
       },
       {
         "name": "exchange_bundle_gifts_gift_id_fkey",
@@ -28763,6 +28879,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_tank uuid, p_operation uuid, p_step integer"
+      },
+      {
+        "name": "collectible_available_at",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_species_id text, p_at timestamp with time zone"
+      },
+      {
+        "name": "collectible_available_at",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_species_id text, p_at timestamp with time zone"
+      },
+      {
+        "name": "collectible_available_at",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_species_id text, p_at timestamp with time zone"
       },
       {
         "name": "collectible_habitat_weight",

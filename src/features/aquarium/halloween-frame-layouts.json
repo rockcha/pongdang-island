@@ -1,0 +1,904 @@
+{
+  "fish/normal/halloween-little-ghost-puffer_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.0975745129599823,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -8,
+        -5
+      ],
+      [
+        7,
+        -46
+      ],
+      [
+        -3,
+        -48
+      ]
+    ]
+  },
+  "fish/normal/halloween-bandage-loach_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.2350835322195703,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -56,
+        0
+      ],
+      [
+        -1,
+        -80
+      ],
+      [
+        -56,
+        -74
+      ]
+    ]
+  },
+  "fish/normal/halloween-fang-candy-minnow_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1350862068965517,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -22,
+        0
+      ],
+      [
+        1,
+        -51
+      ],
+      [
+        -22,
+        -51
+      ]
+    ]
+  },
+  "fish/normal/halloween-sock-ghost-goby_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1575948879821385,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -34,
+        2
+      ],
+      [
+        0,
+        -81
+      ],
+      [
+        -32,
+        -78
+      ]
+    ]
+  },
+  "fish/normal/halloween-ghost-skirt-guppy_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1222799382282744,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -33,
+        0
+      ],
+      [
+        0,
+        -59
+      ],
+      [
+        -34,
+        -59
+      ]
+    ]
+  },
+  "fish/normal/halloween-pumpkin-hood-puffer_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1215663621300334,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -9,
+        0
+      ],
+      [
+        1,
+        -52
+      ],
+      [
+        -8,
+        -52
+      ]
+    ]
+  },
+  "fish/normal/halloween-chestnut-witch-puffer_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1600881057268722,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -9,
+        4
+      ],
+      [
+        4,
+        -44
+      ],
+      [
+        -6,
+        -41
+      ]
+    ]
+  },
+  "fish/normal/halloween-soft-ghost-goldfish_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1661624039238532,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -42,
+        1
+      ],
+      [
+        0,
+        -67
+      ],
+      [
+        -30,
+        -68
+      ]
+    ]
+  },
+  "fish/normal/halloween-witch-hat-ray_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.0847505716240802,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -14,
+        -2
+      ],
+      [
+        5,
+        -40
+      ],
+      [
+        -13,
+        -39
+      ]
+    ]
+  },
+  "fish/normal/halloween-skull-pattern-filefish_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1757159904534606,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -24,
+        0
+      ],
+      [
+        1,
+        -48
+      ],
+      [
+        -23,
+        -46
+      ]
+    ]
+  },
+  "fish/rare/halloween-pumpkin-lantern-angler_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1182086199634984,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -26,
+        0
+      ],
+      [
+        3,
+        -103
+      ],
+      [
+        -7,
+        -101
+      ]
+    ]
+  },
+  "fish/rare/halloween-masquerade-lionfish_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1070198952670889,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        2,
+        -26
+      ],
+      [
+        0,
+        -22
+      ]
+    ]
+  },
+  "fish/rare/halloween-necromancer-glass-catfish_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.037285976096721,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        2,
+        -60
+      ],
+      [
+        0,
+        -54
+      ]
+    ]
+  },
+  "fish/rare/halloween-count-cloak-betta_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1158254515454198,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -9,
+        6
+      ],
+      [
+        2,
+        -32
+      ],
+      [
+        0,
+        -39
+      ]
+    ]
+  },
+  "fish/rare/halloween-wisp-lantern-seahorse_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.2229116945107399,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        4,
+        -2
+      ],
+      [
+        20,
+        -49
+      ],
+      [
+        26,
+        -48
+      ]
+    ]
+  },
+  "fish/rare/halloween-coffin-hermit-crab_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.0964803994184291,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        -27
+      ],
+      [
+        0,
+        -27
+      ]
+    ]
+  },
+  "fish/rare/halloween-origami-phantom-koi_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.137064301714621,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -33,
+        1
+      ],
+      [
+        5,
+        -48
+      ],
+      [
+        -40,
+        -47
+      ]
+    ]
+  },
+  "fish/rare/halloween-sleepy-zombie-cory_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.0544066997270378,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -15,
+        -1
+      ],
+      [
+        -1,
+        -41
+      ],
+      [
+        -16,
+        -43
+      ]
+    ]
+  },
+  "fish/rare/halloween-one-horn-goblin-pleco_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.171695701766843,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -13,
+        1
+      ],
+      [
+        0,
+        -46
+      ],
+      [
+        -13,
+        -44
+      ]
+    ]
+  },
+  "fish/epic/halloween-inverted-moon-angler_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.0447669521269127,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -24,
+        1
+      ],
+      [
+        0,
+        -35
+      ],
+      [
+        -19,
+        -35
+      ]
+    ]
+  },
+  "fish/epic/halloween-patchwork-shark_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.0503732290661656,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -22,
+        0
+      ],
+      [
+        -4,
+        -33
+      ],
+      [
+        -21,
+        -34
+      ]
+    ]
+  },
+  "fish/epic/halloween-scarecrow-sailfish_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.0277388259985325,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        4,
+        -1
+      ],
+      [
+        3,
+        -53
+      ],
+      [
+        2,
+        -53
+      ]
+    ]
+  },
+  "fish/epic/halloween-haunted-house-turtle_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.104324258727398,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -1,
+        -1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        -1,
+        0
+      ]
+    ]
+  },
+  "fish/epic/halloween-midnight-pumpkin-train_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.0584768617044193,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -25,
+        0
+      ],
+      [
+        0,
+        -46
+      ],
+      [
+        -24,
+        -46
+      ]
+    ]
+  },
+  "fish/epic/halloween-glass-coffin-vampire-shark_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.0620955860179384,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        8,
+        -1
+      ],
+      [
+        3,
+        -45
+      ],
+      [
+        8,
+        -46
+      ]
+    ]
+  },
+  "fish/epic/halloween-thunder-sturgeon-volta_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.069836950460598,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        9,
+        -55
+      ],
+      [
+        1,
+        -51
+      ]
+    ]
+  },
+  "fish/epic/halloween-mourning-whale-nenia_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.0350140479139602,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        2,
+        8
+      ],
+      [
+        1,
+        -39
+      ],
+      [
+        -12,
+        -41
+      ]
+    ]
+  },
+  "fish/normal/halloween-ghost-skirt-guppy_v2_sprite.png": {
+    "cell": 627,
+    "scale": 1.0690816359891457,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -23,
+        4
+      ],
+      [
+        2,
+        -95
+      ],
+      [
+        -22,
+        -95
+      ]
+    ]
+  },
+  "fish/normal/halloween-soft-ghost-goldfish_v2_sprite.png": {
+    "cell": 627,
+    "scale": 1.1447601683928925,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -55,
+        -1
+      ],
+      [
+        0,
+        -78
+      ],
+      [
+        -56,
+        -79
+      ]
+    ]
+  },
+  "fish/normal/halloween-little-ghost-puffer_v2_sprite.png": {
+    "cell": 627,
+    "scale": 1.1222596757129149,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -44,
+        0
+      ],
+      [
+        0,
+        -62
+      ],
+      [
+        -44,
+        -62
+      ]
+    ]
+  },
+  "fish/epic/halloween-midnight-pumpkin-train_v2_sprite.png": {
+    "cell": 627,
+    "scale": 1.0618548387096776,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -8,
+        3
+      ],
+      [
+        1,
+        -63
+      ],
+      [
+        -3,
+        -62
+      ]
+    ]
+  },
+  "fish/normal/halloween-cute-ghost-jellyfish_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1762700306853051,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -36,
+        1
+      ],
+      [
+        3,
+        -69
+      ],
+      [
+        -35,
+        -67
+      ]
+    ]
+  },
+  "fish/normal/halloween-chocolate-starfish_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.0531403885079,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        5,
+        5
+      ],
+      [
+        0,
+        -48
+      ],
+      [
+        0,
+        -46
+      ]
+    ]
+  },
+  "fish/normal/halloween-candy-corn-fish_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1305267819796767,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -59,
+        0
+      ],
+      [
+        0,
+        -87
+      ],
+      [
+        -59,
+        -87
+      ]
+    ]
+  },
+  "fish/normal/halloween-will-o-wisp-jellyfish_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1449565217391304,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -9,
+        1
+      ],
+      [
+        10,
+        -40
+      ],
+      [
+        -9,
+        -41
+      ]
+    ]
+  },
+  "fish/normal/halloween-spectral-tadpole_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.0770552147239263,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -35,
+        0
+      ],
+      [
+        1,
+        -73
+      ],
+      [
+        -35,
+        -73
+      ]
+    ]
+  },
+  "fish/normal/halloween-little-ghost-fish_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1088,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        -52
+      ],
+      [
+        0,
+        -52
+      ]
+    ]
+  },
+  "fish/epic/halloween-echo-dolphin-echomor_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1704,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -56,
+        1
+      ],
+      [
+        1,
+        -93
+      ],
+      [
+        -56,
+        -95
+      ]
+    ]
+  },
+  "fish/epic/halloween-bone-armored-shark-necras_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1714399363564043,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -37,
+        2
+      ],
+      [
+        10,
+        -86
+      ],
+      [
+        -43,
+        -86
+      ]
+    ]
+  },
+  "fish/epic/halloween-witch-jellyfish-malefica_v1_sprite.png": {
+    "cell": 627,
+    "scale": 1.1348860176117193,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -33,
+        5
+      ],
+      [
+        7,
+        -66
+      ],
+      [
+        -24,
+        -69
+      ]
+    ]
+  },
+  "fish/epic/halloween-patchwork-shark_v2_sprite.png": {
+    "cell": 627,
+    "scale": 1.1033875695345607,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        -43,
+        0
+      ],
+      [
+        -1,
+        -112
+      ],
+      [
+        -41,
+        -112
+      ]
+    ]
+  }
+}

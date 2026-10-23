@@ -1,0 +1,195 @@
+{
+  "createdAt": "2026-10-23T13:42:38.124Z",
+  "tool": "built-in image_gen",
+  "styleReference": "assets/references/collectible-style/epic-mythic-starlight.png",
+  "status": "reviewed",
+  "items": [
+    {
+      "id": "halloween-dullahan-seahorse",
+      "thumbnail_path": "fish/mythic/halloween-dullahan-seahorse_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/halloween-dullahan-seahorse_swim8_v2_sprite.png",
+      "catalog_sprite_sheet_path": "fish/mythic/halloween-dullahan-seahorse_v2_sprite.png",
+      "frames": 8,
+      "rarity": "mythic",
+      "kind": "fish",
+      "thumbnailPrompt": "Use case: precise-object-edit. Asset: polished mythic Halloween collectible thumbnail. Image 1 is the edit target/identity; image 2 is STYLE ONLY (soft luminous fantasy painting, delicate shading and materials; do not copy anatomy). Redesign target to be prettier and unmistakably Halloween while retaining recognisable species: Headless spectral seahorse knight: detached elegant cyan horse-spirit head above an empty silver armor collar, smoky curled seahorse body, little bat-wing fin membranes, amethyst funerary gemstones, restrained jack-o-lantern orange soul light in chest. Beautiful silver, midnight violet, spectral mint. Keep seahorse anatomy, no legs. Face SCREEN RIGHT, head and muzzle right, body and tail left, clear side-three-quarter view. One complete creature only, no surrounding ghosts yet (those will be animated separately), no scenery, no text, no stars scattered outside body, no enormous hazy aura. Transparent alpha background. Confine complete creature to central 76% of square canvas with 12% empty alpha margins on ALL sides. Elegant precise silhouette and readable face at small game size.",
+      "thumbnailGenerated": "C:\\Users\\user\\.codex\\generated_images\\01a16879-8eaf-7942-a859-2ec93c57fde5\\exec-5170d186-87a1-47e9-80c9-220eebd204b3.png",
+      "spriteSource": "assets/storage-upload/new/20261023-223836/sources/halloween-dullahan-seahorse-sprite.source",
+      "spritePrompt": "Use case: precise-object-edit. EDIT THIS EXACT EXISTING 4-column x2-row transparent 8-frame sheet. Keep all eight current distinct poses and identity. Change ONLY size within cells and remove stray aura: uniformly shrink EACH creature drawing to 60% of its current dimensions about that SAME CELL CENTER. All eight drawings use same uniform scale. Canvas remains exactly 2:1, same four columns two rows of equal SQUARE cells. DO NOT zoom back in. Each complete creature should occupy only central 50-55% of its cell, with at least 20% completely EMPTY transparent alpha margins on EVERY side of EVERY cell. Eliminate detached speckles and broad colored glow clouds outside silhouettes, keep thin luminous edges inside silhouette. Preserve all complete anatomy, right-facing head, fin/tail motions, exact costume, details and original distinct eight poses. NO cropping, NO new ghosts, NO checkerboard, NO panel lines, NO text. Transparent alpha background.",
+      "originalSpritePrompt": "Use case: precise-object-edit. Asset: exactly EIGHT animation frames, FOUR columns by TWO rows, full sheet 2:1 aspect ratio. Input image1 is a COMPOSITION AND IDENTITY EDIT TARGET: a four-column two-row transparent guide. Input image2 is the same identity thumbnail. Preserve the guide's grid, centered registration and SMALL drawing size (central 42% each square). Render eight genuinely different consecutive poses of this SAME beautiful Halloween creature. fine tail curl propulsion and rippling spirit mane; extra action = the mane coils gently around the floating horse head and releases, reins sway. Rigid chest armor remains fixed, floating head stays same vertical location. Frames0,1,2,3 = continuous neutral/flex/extension/flex swimming; frames4,5,6,7 = gentle anticipation/action/return/recovery, recovery nearly matches neutral. Every frame same rigid head, chest, eye coordinate and body dimensions; never translate body vertically or change its scale between rows. Face SCREEN RIGHT in ALL eight frames: head/muzzle to right, body/tail behind left. Keep exact thumbnail colors, costume and details. All anatomy, fins and glow FULLY INSIDE EACH CELL with at least20% completely empty transparent alpha on all sides, no clipping. No ghosts baked into sheet: separate ghost sprites orbit in code. Transparent background, no opaque checkerboard, no panel lines or labels or text, no detached sparkles or dust, no large aura. Do not enlarge subjects to fill canvas. This is a production game sprite sheet, not a character lineup.",
+      "name": "잃어버린 새벽의 기수 — 두라한 해마",
+      "description": "잃어버린 새벽을 찾아 떠도는 머리 없는 해마. 목 위의 푸른 영혼등이 아직 돌아오지 않은 얼굴을 비춘다.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.78",
+      "speed": "0.016",
+      "size": 130,
+      "sell_price": 2650,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "hashes": {
+        "fish/mythic/halloween-dullahan-seahorse_v2_thumbnail.png": "622035086410fd4230e445b42f5ada843ab6e4bbef0289cf3076022260688ab4",
+        "fish/mythic/halloween-dullahan-seahorse_swim8_v2_sprite.png": "e09f878b321846a450a14f08bcbf6c7c42113ed9e8c3e5b6f55d1cdf83194390",
+        "fish/mythic/halloween-dullahan-seahorse_v2_sprite.png": "b1671e81924c1c8bf7138d273689ed0e65450136357fba4a9ee95d815f21abbd"
+      }
+    },
+    {
+      "id": "halloween-moonwolf-shark-lugar",
+      "thumbnail_path": "fish/mythic/halloween-moonwolf-shark-lugar_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/halloween-moonwolf-shark-lugar_swim8_v2_sprite.png",
+      "catalog_sprite_sheet_path": "fish/mythic/halloween-moonwolf-shark-lugar_v2_sprite.png",
+      "frames": 8,
+      "rarity": "mythic",
+      "kind": "fish",
+      "thumbnailPrompt": "Use case: precise-object-edit. Asset: polished mythic Halloween collectible thumbnail. Image 1 is the edit target/identity; image 2 is STYLE ONLY (soft luminous fantasy painting, delicate shading and materials; do not copy anatomy). Redesign target to be prettier and unmistakably Halloween while retaining recognisable species: Moonwolf shark: sleek muscular SHARK body with wolf muzzle and ears, deep midnight violet fur-mane, pearlescent silver underside, a warm amber eclipsed moon in chest, bat-shaped dorsal silhouette and flowing mist-like caudal fin. Enchanting Halloween moonlit beast, noble not goofy. Face SCREEN RIGHT, head and muzzle right, body and tail left, clear side-three-quarter view. One complete creature only, no surrounding ghosts yet (those will be animated separately), no scenery, no text, no stars scattered outside body, no enormous hazy aura. Transparent alpha background. Confine complete creature to central 76% of square canvas with 12% empty alpha margins on ALL sides. Elegant precise silhouette and readable face at small game size.",
+      "thumbnailGenerated": "C:\\Users\\user\\.codex\\generated_images\\01a16879-8eaf-7942-a859-2ec93c57fde5\\exec-9b999a63-bc68-4ae0-89aa-39282f3f9042.png",
+      "spriteSource": "assets/storage-upload/new/20261023-223836/sources/halloween-moonwolf-shark-lugar-sprite.source",
+      "spritePrompt": "Use case: precise-object-edit. EDIT THIS EXACT EXISTING 4-column x2-row transparent 8-frame sheet. Keep all eight current distinct poses and identity. Change ONLY size within cells and remove stray aura: uniformly shrink EACH creature drawing to 60% of its current dimensions about that SAME CELL CENTER. All eight drawings use same uniform scale. Canvas remains exactly 2:1, same four columns two rows of equal SQUARE cells. DO NOT zoom back in. Each complete creature should occupy only central 50-55% of its cell, with at least 20% completely EMPTY transparent alpha margins on EVERY side of EVERY cell. Eliminate detached speckles and broad colored glow clouds outside silhouettes, keep thin luminous edges inside silhouette. Preserve all complete anatomy, right-facing head, fin/tail motions, exact costume, details and original distinct eight poses. NO cropping, NO new ghosts, NO checkerboard, NO panel lines, NO text. Transparent alpha background.",
+      "originalSpritePrompt": "Use case: precise-object-edit. Asset: exactly EIGHT animation frames, FOUR columns by TWO rows, full sheet 2:1 aspect ratio. Input image1 is a COMPOSITION AND IDENTITY EDIT TARGET: a four-column two-row transparent guide. Input image2 is the same identity thumbnail. Preserve the guide's grid, centered registration and SMALL drawing size (central 42% each square). Render eight genuinely different consecutive poses of this SAME beautiful Halloween creature. gentle tail sweep, balanced pectoral fin motion, mane drifting; extra action = mouth opens gently in a quiet spectral howl then closes while muzzle position remains fixed. No head throwing upward. Frames0,1,2,3 = continuous neutral/flex/extension/flex swimming; frames4,5,6,7 = gentle anticipation/action/return/recovery, recovery nearly matches neutral. Every frame same rigid head, chest, eye coordinate and body dimensions; never translate body vertically or change its scale between rows. Face SCREEN RIGHT in ALL eight frames: head/muzzle to right, body/tail behind left. Keep exact thumbnail colors, costume and details. All anatomy, fins and glow FULLY INSIDE EACH CELL with at least20% completely empty transparent alpha on all sides, no clipping. No ghosts baked into sheet: separate ghost sprites orbit in code. Transparent background, no opaque checkerboard, no panel lines or labels or text, no detached sparkles or dust, no large aura. Do not enlarge subjects to fill canvas. This is a production game sprite sheet, not a character lineup.",
+      "name": "보름달을 삼킨 야수 — 월랑상어 루가르",
+      "description": "보름달을 가슴에 삼킨 은빛 야수. 달빛 갈기와 늑대의 주둥이를 지닌 상어가 소리 없이 밤을 가른다.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.78",
+      "speed": "0.016",
+      "size": 130,
+      "sell_price": 2850,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "hashes": {
+        "fish/mythic/halloween-moonwolf-shark-lugar_v2_thumbnail.png": "fd38eb58619fa63217f7495ae9873e06c0bd572efd623ddb4dae630503c4b651",
+        "fish/mythic/halloween-moonwolf-shark-lugar_swim8_v2_sprite.png": "4887304d69e4ecff1ef59bd15dd01079ee7d7a0f3482aa219666ffd2eb2ab9a1",
+        "fish/mythic/halloween-moonwolf-shark-lugar_v2_sprite.png": "778bde9dbf5f2e70c7011e41cbf735abeeb787699ed198a12402aeae506d6249"
+      }
+    },
+    {
+      "id": "halloween-cathedral-ray-morne",
+      "thumbnail_path": "fish/mythic/halloween-cathedral-ray-morne_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/halloween-cathedral-ray-morne_swim8_v2_sprite.png",
+      "catalog_sprite_sheet_path": "fish/mythic/halloween-cathedral-ray-morne_v2_sprite.png",
+      "frames": 8,
+      "rarity": "mythic",
+      "kind": "fish",
+      "thumbnailPrompt": "Use case: precise-object-edit. Asset: polished mythic Halloween collectible thumbnail. Image 1 is the edit target/identity; image 2 is STYLE ONLY (soft luminous fantasy painting, delicate shading and materials; do not copy anatomy). Redesign target to be prettier and unmistakably Halloween while retaining recognisable species: Haunted cathedral ray: BROAD FLAT diamond ray body with LOW lateral wings and SHORT STOUT tail, pearl ivory rim, dark violet stained-glass gothic lancet patterns, warm candle-orange window lights, a delicate broken moon halo above shoulders. Beautiful haunted chapel guardian, tiny bat motifs. Do not copy tall wing or ribbon tail reference silhouette. Face SCREEN RIGHT, head and muzzle right, body and tail left, clear side-three-quarter view. One complete creature only, no surrounding ghosts yet (those will be animated separately), no scenery, no text, no stars scattered outside body, no enormous hazy aura. Transparent alpha background. Confine complete creature to central 76% of square canvas with 12% empty alpha margins on ALL sides. Elegant precise silhouette and readable face at small game size.",
+      "thumbnailGenerated": "C:\\Users\\user\\.codex\\generated_images\\01a16879-8eaf-7942-a859-2ec93c57fde5\\exec-a308c07e-d3c6-4670-ae50-8b84d2034c62.png",
+      "spriteSource": "assets/storage-upload/new/20261023-223836/sources/halloween-cathedral-ray-morne-sprite.source",
+      "spritePrompt": "Use case: precise-object-edit. EDIT THIS EXACT EXISTING 4-column x2-row transparent 8-frame sheet. Keep all eight current distinct poses and identity. Change ONLY size within cells and remove stray aura: uniformly shrink EACH creature drawing to 60% of its current dimensions about that SAME CELL CENTER. All eight drawings use same uniform scale. Canvas remains exactly 2:1, same four columns two rows of equal SQUARE cells. DO NOT zoom back in. Each complete creature should occupy only central 50-55% of its cell, with at least 20% completely EMPTY transparent alpha margins on EVERY side of EVERY cell. Eliminate detached speckles and broad colored glow clouds outside silhouettes, keep thin luminous edges inside silhouette. Preserve all complete anatomy, right-facing head, fin/tail motions, exact costume, details and original distinct eight poses. NO cropping, NO new ghosts, NO checkerboard, NO panel lines, NO text. Transparent alpha background.",
+      "originalSpritePrompt": "Use case: precise-object-edit. Asset: exactly EIGHT animation frames, FOUR columns by TWO rows, full sheet 2:1 aspect ratio. Input image1 is a COMPOSITION AND IDENTITY EDIT TARGET: a four-column two-row transparent guide. Input image2 is the same identity thumbnail. Preserve the guide's grid, centered registration and SMALL drawing size (central 42% each square). Render eight genuinely different consecutive poses of this SAME beautiful Halloween creature. both low wings roll gently with soft water pressure; extra action = low wing edges curl inward like closing chapel doors then reopen. Broad flat body and face stay anchored, no towering wings. Frames0,1,2,3 = continuous neutral/flex/extension/flex swimming; frames4,5,6,7 = gentle anticipation/action/return/recovery, recovery nearly matches neutral. Every frame same rigid head, chest, eye coordinate and body dimensions; never translate body vertically or change its scale between rows. Face SCREEN RIGHT in ALL eight frames: head/muzzle to right, body/tail behind left. Keep exact thumbnail colors, costume and details. All anatomy, fins and glow FULLY INSIDE EACH CELL with at least20% completely empty transparent alpha on all sides, no clipping. No ghosts baked into sheet: separate ghost sprites orbit in code. Transparent background, no opaque checkerboard, no panel lines or labels or text, no detached sparkles or dust, no large aura. Do not enlarge subjects to fill canvas. This is a production game sprite sheet, not a character lineup.",
+      "name": "달빛 성당의 마지막 수호자 — 성상가오리 모르네",
+      "description": "달빛 성당의 마지막 창을 지키는 가오리. 날개를 펼치면 은청색 스테인드글라스 문양이 드러난다.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.78",
+      "speed": "0.016",
+      "size": 130,
+      "sell_price": 2750,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "hashes": {
+        "fish/mythic/halloween-cathedral-ray-morne_v2_thumbnail.png": "5656013bb38588cc2fab60e7050368a239a470272b0f5f010c042a4af60215c6",
+        "fish/mythic/halloween-cathedral-ray-morne_swim8_v2_sprite.png": "53310d000a059739105be6d2364faa8b4836148268559f68f80babb293e05f5e",
+        "fish/mythic/halloween-cathedral-ray-morne_v2_sprite.png": "d7321d0d80459b449c9c7a4f69a88d9f233ba020ca57ddf64366102eff9982e5"
+      }
+    },
+    {
+      "id": "halloween-tomb-dragon-sahet",
+      "thumbnail_path": "fish/mythic/halloween-tomb-dragon-sahet_v2_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/halloween-tomb-dragon-sahet_swim8_v2_sprite.png",
+      "catalog_sprite_sheet_path": "fish/mythic/halloween-tomb-dragon-sahet_v2_sprite.png",
+      "frames": 8,
+      "rarity": "mythic",
+      "kind": "fish",
+      "thumbnailPrompt": "Use case: precise-object-edit. Asset: polished mythic Halloween collectible thumbnail. Image 1 is the edit target/identity; image 2 is STYLE ONLY (soft luminous fantasy painting, delicate shading and materials; do not copy anatomy). Redesign target to be prettier and unmistakably Halloween while retaining recognisable species: Ancient sealed tomb dragonfish: elegant long sinuous FISH body, obsidian scales, aged champagne gold Egyptian funerary crown and collar, translucent mint winding-sheet fins, glowing turquoise soul seal, restrained amber burial lantern on collar. A beautiful mysterious mummy king, no legs, no ordinary dragon face. Face SCREEN RIGHT, head and muzzle right, body and tail left, clear side-three-quarter view. One complete creature only, no surrounding ghosts yet (those will be animated separately), no scenery, no text, no stars scattered outside body, no enormous hazy aura. Transparent alpha background. Confine complete creature to central 76% of square canvas with 12% empty alpha margins on ALL sides. Elegant precise silhouette and readable face at small game size.",
+      "thumbnailGenerated": "C:\\Users\\user\\.codex\\generated_images\\01a16879-8eaf-7942-a859-2ec93c57fde5\\exec-759af78c-d3dd-475e-b2ad-21962b4b023e.png",
+      "spriteSource": "assets/storage-upload/new/20261023-223836/sources/halloween-tomb-dragon-sahet-sprite.source",
+      "spritePrompt": "Use case: precise-object-edit. EDIT THIS EXACT EXISTING 4-column x2-row transparent 8-frame sheet. Keep all eight current distinct poses and identity. Change ONLY size within cells and remove stray aura: uniformly shrink EACH creature drawing to 60% of its current dimensions about that SAME CELL CENTER. All eight drawings use same uniform scale. Canvas remains exactly 2:1, same four columns two rows of equal SQUARE cells. DO NOT zoom back in. Each complete creature should occupy only central 50-55% of its cell, with at least 20% completely EMPTY transparent alpha margins on EVERY side of EVERY cell. Eliminate detached speckles and broad colored glow clouds outside silhouettes, keep thin luminous edges inside silhouette. Preserve all complete anatomy, right-facing head, fin/tail motions, exact costume, details and original distinct eight poses. NO cropping, NO new ghosts, NO checkerboard, NO panel lines, NO text. Transparent alpha background.",
+      "originalSpritePrompt": "Use case: precise-object-edit. Asset: exactly EIGHT animation frames, FOUR columns by TWO rows, full sheet 2:1 aspect ratio. Input image1 is a COMPOSITION AND IDENTITY EDIT TARGET: a four-column two-row transparent guide. Input image2 is the same identity thumbnail. Preserve the guide's grid, centered registration and SMALL drawing size (central 42% each square). Render eight genuinely different consecutive poses of this SAME beautiful Halloween creature. slow S-wave travelling along the long tail and translucent fins; extra action = winding sheet tips curl around the glowing chest seal then unfurl. Head, eye and rigid collar remain fixed. Frames0,1,2,3 = continuous neutral/flex/extension/flex swimming; frames4,5,6,7 = gentle anticipation/action/return/recovery, recovery nearly matches neutral. Every frame same rigid head, chest, eye coordinate and body dimensions; never translate body vertically or change its scale between rows. Face SCREEN RIGHT in ALL eight frames: head/muzzle to right, body/tail behind left. Keep exact thumbnail colors, costume and details. All anatomy, fins and glow FULLY INSIDE EACH CELL with at least20% completely empty transparent alpha on all sides, no clipping. No ghosts baked into sheet: separate ghost sprites orbit in code. Transparent background, no opaque checkerboard, no panel lines or labels or text, no detached sparkles or dust, no large aura. Do not enlarge subjects to fill canvas. This is a production game sprite sheet, not a character lineup.",
+      "name": "모래 없는 무덤의 왕 — 영면룡어 사헤트",
+      "description": "모래 한 알 없는 심해의 무덤을 다스리는 용어. 흑금 갑주 아래 잠든 영혼석이 오랜 왕의 숨을 밝힌다.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.78",
+      "speed": "0.016",
+      "size": 130,
+      "sell_price": 2950,
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "hashes": {
+        "fish/mythic/halloween-tomb-dragon-sahet_v2_thumbnail.png": "f362a2b939a84425f76c053955d33a211fee5693d76ae50e83da087c00b3af8c",
+        "fish/mythic/halloween-tomb-dragon-sahet_swim8_v2_sprite.png": "a19db617c9b57f531a4a8d69fe8a0678b48ed408500ac00d48f66f435539c5a5",
+        "fish/mythic/halloween-tomb-dragon-sahet_v2_sprite.png": "b8f29d6ccbc734ea6ec33ae39ff39070a02d75864ae8a2df0c6529419ce5c208"
+      }
+    }
+  ],
+  "entries": [
+    {
+      "id": "halloween-dullahan-seahorse",
+      "frames": 8,
+      "columns": 4,
+      "storage_path": "fish/mythic/halloween-dullahan-seahorse_swim8_v2_sprite.png",
+      "source": "sources/halloween-dullahan-seahorse-sprite.source",
+      "prompt": "Use case: precise-object-edit. EDIT THIS EXACT EXISTING 4-column x2-row transparent 8-frame sheet. Keep all eight current distinct poses and identity. Change ONLY size within cells and remove stray aura: uniformly shrink EACH creature drawing to 60% of its current dimensions about that SAME CELL CENTER. All eight drawings use same uniform scale. Canvas remains exactly 2:1, same four columns two rows of equal SQUARE cells. DO NOT zoom back in. Each complete creature should occupy only central 50-55% of its cell, with at least 20% completely EMPTY transparent alpha margins on EVERY side of EVERY cell. Eliminate detached speckles and broad colored glow clouds outside silhouettes, keep thin luminous edges inside silhouette. Preserve all complete anatomy, right-facing head, fin/tail motions, exact costume, details and original distinct eight poses. NO cropping, NO new ghosts, NO checkerboard, NO panel lines, NO text. Transparent alpha background.",
+      "referenceRoles": {
+        "guide": "identity and locked placement; small subject with safe alpha margins",
+        "thumbnail": "approved redesigned creature identity"
+      }
+    },
+    {
+      "id": "halloween-moonwolf-shark-lugar",
+      "frames": 8,
+      "columns": 4,
+      "storage_path": "fish/mythic/halloween-moonwolf-shark-lugar_swim8_v2_sprite.png",
+      "source": "sources/halloween-moonwolf-shark-lugar-sprite.source",
+      "prompt": "Use case: precise-object-edit. EDIT THIS EXACT EXISTING 4-column x2-row transparent 8-frame sheet. Keep all eight current distinct poses and identity. Change ONLY size within cells and remove stray aura: uniformly shrink EACH creature drawing to 60% of its current dimensions about that SAME CELL CENTER. All eight drawings use same uniform scale. Canvas remains exactly 2:1, same four columns two rows of equal SQUARE cells. DO NOT zoom back in. Each complete creature should occupy only central 50-55% of its cell, with at least 20% completely EMPTY transparent alpha margins on EVERY side of EVERY cell. Eliminate detached speckles and broad colored glow clouds outside silhouettes, keep thin luminous edges inside silhouette. Preserve all complete anatomy, right-facing head, fin/tail motions, exact costume, details and original distinct eight poses. NO cropping, NO new ghosts, NO checkerboard, NO panel lines, NO text. Transparent alpha background.",
+      "referenceRoles": {
+        "guide": "identity and locked placement; small subject with safe alpha margins",
+        "thumbnail": "approved redesigned creature identity"
+      }
+    },
+    {
+      "id": "halloween-cathedral-ray-morne",
+      "frames": 8,
+      "columns": 4,
+      "storage_path": "fish/mythic/halloween-cathedral-ray-morne_swim8_v2_sprite.png",
+      "source": "sources/halloween-cathedral-ray-morne-sprite.source",
+      "prompt": "Use case: precise-object-edit. EDIT THIS EXACT EXISTING 4-column x2-row transparent 8-frame sheet. Keep all eight current distinct poses and identity. Change ONLY size within cells and remove stray aura: uniformly shrink EACH creature drawing to 60% of its current dimensions about that SAME CELL CENTER. All eight drawings use same uniform scale. Canvas remains exactly 2:1, same four columns two rows of equal SQUARE cells. DO NOT zoom back in. Each complete creature should occupy only central 50-55% of its cell, with at least 20% completely EMPTY transparent alpha margins on EVERY side of EVERY cell. Eliminate detached speckles and broad colored glow clouds outside silhouettes, keep thin luminous edges inside silhouette. Preserve all complete anatomy, right-facing head, fin/tail motions, exact costume, details and original distinct eight poses. NO cropping, NO new ghosts, NO checkerboard, NO panel lines, NO text. Transparent alpha background.",
+      "referenceRoles": {
+        "guide": "identity and locked placement; small subject with safe alpha margins",
+        "thumbnail": "approved redesigned creature identity"
+      }
+    },
+    {
+      "id": "halloween-tomb-dragon-sahet",
+      "frames": 8,
+      "columns": 4,
+      "storage_path": "fish/mythic/halloween-tomb-dragon-sahet_swim8_v2_sprite.png",
+      "source": "sources/halloween-tomb-dragon-sahet-sprite.source",
+      "prompt": "Use case: precise-object-edit. EDIT THIS EXACT EXISTING 4-column x2-row transparent 8-frame sheet. Keep all eight current distinct poses and identity. Change ONLY size within cells and remove stray aura: uniformly shrink EACH creature drawing to 60% of its current dimensions about that SAME CELL CENTER. All eight drawings use same uniform scale. Canvas remains exactly 2:1, same four columns two rows of equal SQUARE cells. DO NOT zoom back in. Each complete creature should occupy only central 50-55% of its cell, with at least 20% completely EMPTY transparent alpha margins on EVERY side of EVERY cell. Eliminate detached speckles and broad colored glow clouds outside silhouettes, keep thin luminous edges inside silhouette. Preserve all complete anatomy, right-facing head, fin/tail motions, exact costume, details and original distinct eight poses. NO cropping, NO new ghosts, NO checkerboard, NO panel lines, NO text. Transparent alpha background.",
+      "referenceRoles": {
+        "guide": "identity and locked placement; small subject with safe alpha margins",
+        "thumbnail": "approved redesigned creature identity"
+      }
+    }
+  ],
+  "effect": {
+    "tool": "built-in image_gen",
+    "source": "sources/halloween-spirit.source",
+    "runtimePath": "public/aquarium/effects/halloween-spirit_v1.png",
+    "sha256": "1e6402040e12a7a078abb15aa7002521a7d57f1da2bc719337acc60023210cd7",
+    "export": "Uniform 256px downsample; preserved transparent alpha",
+    "prompt": "Use case: stylized-concept. Asset: a single small friendly but mysterious Halloween spirit companion for a polished fantasy aquarium game. One elegant pearlescent ivory ghost with rounded droplet head, two deep purple oval eyes and tiny surprised mouth, tapering translucent mint-lavender wisp tail that bends softly left, two very small sleeve-like arms. Beautiful soft shaded luminous fantasy painting, crisp clean readable silhouette, no thick cartoon outline. Subtle pale violet edge shading, pale mint interior light. Full ghost centered within central 65% of square canvas, generous completely transparent alpha margin at least15% all sides. No floor, no scene, no text, no checkerboard, no extra ghosts, no scattered sparkles, no large blurred aura. This bitmap will orbit several mythic fish continuously in code; draw ONE standalone ghost only."
+  },
+  "remoteDeployment": {
+    "project": "ewafafphiovbpjwogwzn",
+    "verifiedAt": "2026-10-23T13:55:03.307Z",
+    "migration": "20261023134706_halloween_mythic_ghost_refinement.sql",
+    "scope": "Four existing Halloween mythic species; v2 image paths, existing prices, 13 habitats each, movement settings and four event boundary results re-read after application",
+    "storage": "12 public downloads match local SHA-256; see upload-verification.json",
+    "frontendDeployed": false,
+    "unchecked": "Full remote schema equivalence and live frontend rendering"
+  }
+}

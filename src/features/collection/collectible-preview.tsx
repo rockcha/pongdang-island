@@ -11,6 +11,7 @@ import { whitenightFixedFrame } from '@/features/aquarium/whitenight-animation'
 import { cloudferryFixedFrame } from '@/features/aquarium/cloudferry-animation'
 import { scrapisleFixedFrame } from '@/features/aquarium/scrapisle-animation'
 import { dreamabyssFixedFrame } from '@/features/aquarium/dreamabyss-animation'
+import {hasHalloweenSpirits,halloweenSpirits,halloweenSpiritUrl} from '@/features/aquarium/halloween-spirits'
 
 export function CollectiblePreview({species,large=false}:{species:Species;large?:boolean}) {
   if(glassAttachedSpecies.has(species.id))return <CollectibleThumbnail fadeIn path={species.thumbnail_path} name={species.name} className={large?"aspect-square w-full max-w-64":"size-32"}/>
@@ -28,6 +29,7 @@ function Preview({species,large=false}:{species:Species;large?:boolean}) {
     const path=enhanced?.path??species.sprite_sheet_path,columns=mythicSheetColumns(path)
     const media=window.matchMedia('(prefers-reduced-motion: reduce)')
     const image=new Image()
+    const spirit=hasHalloweenSpirits(species.id)?new Image():null
     let alive=true,frame=0,start=0,loaded=false,onScreen=true,lastFrame=-1
     let timer:ReturnType<typeof setTimeout>|undefined
     const ratio=Math.min(window.devicePixelRatio||1,2)
@@ -41,15 +43,27 @@ function Preview({species,large=false}:{species:Species;large?:boolean}) {
       if(!start)start=now
       const time=(now-start)/1000,reduced=media.matches
       const index=sharedDecorationFrame(species.id,time,reduced,false)??dreamabyssFixedFrame(species.id,time,reduced,false)??scrapisleFixedFrame(species.id,time,reduced,false)??cloudferryFixedFrame(species.id,time,reduced,false)??whitenightFixedFrame(species.id,time,reduced,false)??mythicSwimFrame(path,time,0,reduced)??premiumSwimFrame(path,time,0,reduced?0:Math.floor(time*3)%4,reduced)
-      if(index!==lastFrame){
+      if(index!==lastFrame||spirit?.complete&&spirit.naturalWidth){
         lastFrame=index
         const layout=mythicSwimLayout(path,index)??swimFrameLayout(path,index)
         const cellWidth=image.width/columns,cellHeight=image.height/2,size=viewport*.8*layout.scale
         context!.setTransform(ratio,0,0,ratio,0,0);context!.clearRect(0,0,viewport,viewport)
+        const drawSpirits=(front:boolean)=>{
+          if(!spirit?.complete||!spirit.naturalWidth)return
+          for(const pose of halloweenSpirits(species.id,time,0,reduced)){
+            if(pose.front!==front)continue
+            const logical=viewport*.8,s=logical*pose.size
+            context!.save();context!.translate(viewport/2+pose.x*logical,viewport/2+pose.y*logical)
+            context!.rotate(pose.angle*Math.PI/180);context!.globalAlpha=.88
+            context!.drawImage(spirit,-s/2,-s/2,s,s);context!.restore()
+          }
+        }
+        drawSpirits(false)
         context!.drawImage(image,(index%columns)*cellWidth,Math.floor(index/columns)*cellHeight,cellWidth,cellHeight,viewport/2-layout.originX*size,viewport/2-layout.originY*size,size,size)
+        drawSpirits(true)
       }
-      // Sheets change only a few times per second; avoid repainting on every refresh.
-      if(!media.matches)timer=setTimeout(()=>{if(allowed())frame=requestAnimationFrame(draw)},1000/15)
+      // Companions orbit continuously; ordinary sheets repaint only on pose changes.
+      if(!media.matches)timer=setTimeout(()=>{if(allowed())frame=requestAnimationFrame(draw)},1000/(spirit?30:15))
     }
     const observer=typeof IntersectionObserver==='undefined'?null:new IntersectionObserver(entries=>{onScreen=entries[0]?.isIntersecting??true;sync()})
     observer?.observe(element)
@@ -57,7 +71,8 @@ function Preview({species,large=false}:{species:Species;large?:boolean}) {
     image.onload=()=>{if(alive){loaded=true;setStatus('ready');sync()}}
     image.onerror=()=>{if(alive)setStatus('failed')}
     image.src=enhanced?.url??collectibleUrl(path)
-    return()=>{alive=false;stop();observer?.disconnect();document.removeEventListener('visibilitychange',sync);media.removeEventListener?.('change',sync);image.onload=null;image.onerror=null}
+    if(spirit){spirit.onload=()=>{if(alive)sync()};spirit.src=halloweenSpiritUrl}
+    return()=>{alive=false;stop();observer?.disconnect();document.removeEventListener('visibilitychange',sync);media.removeEventListener?.('change',sync);image.onload=null;image.onerror=null;if(spirit)spirit.onload=null}
   },[species.id,species.sprite_sheet_path,species.rarity,viewport])
   if(!species.sprite_sheet_path||status==='failed')return <CollectibleThumbnail fadeIn path={species.thumbnail_path} name={species.name} className={large?"aspect-square w-full max-w-80":"size-40"}/>
   return <div className={large?'relative aspect-square':'relative size-40'} style={large?{width:viewport,maxWidth:'100%'}:undefined} aria-busy={status==='loading'}>{status==='loading'&&<ImageLoadingSpinner/>}<canvas ref={canvas} role="img" aria-label={species.name+' 움직이는 모습'} className={'size-full transition-opacity duration-150 motion-reduce:transition-none '+(status==='ready'?'opacity-100':'opacity-0')}/></div>

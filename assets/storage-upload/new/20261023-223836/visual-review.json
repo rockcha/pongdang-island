@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "reviewedAt": "2026-10-23T13:51:49.651Z",
+  "items": [
+    {
+      "id": "halloween-dullahan-seahorse",
+      "thumbnail": true,
+      "direction": "right in source; runtime flip follows travel",
+      "motion": true,
+      "anchor": "opaque rigid chest or eye patch inspected",
+      "ghostOrbit": "continuous separate sprite with front/back depth"
+    },
+    {
+      "id": "halloween-moonwolf-shark-lugar",
+      "thumbnail": true,
+      "direction": "right in source; runtime flip follows travel",
+      "motion": true,
+      "anchor": "opaque rigid chest or eye patch inspected",
+      "ghostOrbit": "continuous separate sprite with front/back depth"
+    },
+    {
+      "id": "halloween-cathedral-ray-morne",
+      "thumbnail": true,
+      "direction": "right in source; runtime flip follows travel",
+      "motion": true,
+      "anchor": "opaque rigid chest or eye patch inspected",
+      "ghostOrbit": "continuous separate sprite with front/back depth"
+    },
+    {
+      "id": "halloween-tomb-dragon-sahet",
+      "thumbnail": true,
+      "direction": "right in source; runtime flip follows travel",
+      "motion": true,
+      "anchor": "opaque rigid chest or eye patch inspected",
+      "ghostOrbit": "continuous separate sprite with front/back depth"
+    }
+  ],
+  "checks": [
+    "source margins >=8% at alpha32",
+    "all eight distinct poses",
+    "one scale per sheet",
+    "opaque rigid anchor template RMSE <=60",
+    "actual Phaser tank and React collection previews desktop/mobile DPR2",
+    "reduced motion remains static"
+  ]
+}

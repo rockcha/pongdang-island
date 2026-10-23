@@ -1,3 +1,4 @@
+import {HalloweenIcon} from '@/components/collection-filter-icons'
 import {Camera} from 'lucide-react'
 import {NewDiscoveryBadge} from '@/components/new-discovery-badge'
 import { useEffect, useRef, useState } from 'react'
@@ -31,7 +32,7 @@ export function CatchReveal({species,failure,onDismiss,practice=false,preview=fa
  const rarity=species?.rarity??'common',color=species?rarities[rarity].effectColor:'#9aafc9',dismiss=useRef<HTMLButtonElement>(null)
  useEffect(()=>{const previous=document.activeElement;dismiss.current?.focus({preventScroll:true});return()=>{if(previous instanceof HTMLElement&&previous.isConnected)previous.focus({preventScroll:true})}},[])
  return createPortal(<div className="fixed inset-0 z-[80] flex h-dvh w-screen items-center justify-center overflow-hidden bg-slate-950/65 p-6 text-center backdrop-blur-sm" style={{color,backgroundImage:species?`radial-gradient(ellipse at center,${color}25,transparent 65%)`:undefined}} onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();if(!event.repeat)tryDismiss()}}}>
-  <button ref={dismiss} type="button" aria-label={species?`${species.name} 결과 닫기`:'낚시 실패 결과 닫기'} onClick={tryDismiss} className="absolute inset-0 size-full cursor-pointer focus-visible:outline-2 focus-visible:outline-white"/>
+  <button ref={dismiss} type="button" aria-label={species?`${species.id.startsWith('halloween-')&&<span aria-label="??? ??" className="mr-1 inline-flex align-middle"><HalloweenIcon className="size-[1em]"/></span>}{species.name} 결과 닫기`:'낚시 실패 결과 닫기'} onClick={tryDismiss} className="absolute inset-0 size-full cursor-pointer focus-visible:outline-2 focus-visible:outline-white"/>
   <span className="pointer-events-none relative flex w-full max-w-sm flex-col items-center">
    {species&&<span className="catch-grade-rays pointer-events-none absolute left-1/2 top-24 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40" style={{background:`repeating-conic-gradient(from 10deg,transparent 0deg 24deg,${color}33 26deg 32deg,transparent 34deg 48deg)`,maskImage:"radial-gradient(circle,#000 15%,transparent 70%)"}}/>}
    <span className="catch-reveal-glow pointer-events-none absolute left-1/2 top-24 size-80 -translate-x-1/2 -translate-y-1/2 rounded-full" style={{background:'radial-gradient(circle,'+color+'88,transparent 68%)'}}/>

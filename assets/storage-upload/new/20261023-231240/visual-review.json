@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "reviewedAt": "2026-10-23T14:35:46.523Z",
+  "items": [
+    {
+      "id": "halloween-cute-ghost-jellyfish",
+      "thumbnail": true,
+      "direction": "right source; flips with travel",
+      "motion": true,
+      "anchor": "opaque rigid eye/brow patch",
+      "anatomy": true
+    },
+    {
+      "id": "halloween-chocolate-starfish",
+      "thumbnail": true,
+      "direction": "right source; flips with travel",
+      "motion": true,
+      "anchor": "opaque rigid eye/brow patch",
+      "anatomy": true
+    },
+    {
+      "id": "halloween-candy-corn-fish",
+      "thumbnail": true,
+      "direction": "right source; flips with travel",
+      "motion": true,
+      "anchor": "opaque rigid eye/brow patch",
+      "anatomy": true
+    },
+    {
+      "id": "halloween-will-o-wisp-jellyfish",
+      "thumbnail": true,
+      "direction": "right source; flips with travel",
+      "motion": true,
+      "anchor": "opaque rigid eye/brow patch",
+      "anatomy": true
+    },
+    {
+      "id": "halloween-spectral-tadpole",
+      "thumbnail": true,
+      "direction": "right source; flips with travel",
+      "motion": true,
+      "anchor": "opaque rigid eye/brow patch",
+      "anatomy": true
+    },
+    {
+      "id": "halloween-little-ghost-fish",
+      "thumbnail": true,
+      "direction": "right source; flips with travel",
+      "motion": true,
+      "anchor": "opaque rigid eye/brow patch",
+      "anatomy": true
+    },
+    {
+      "id": "halloween-echo-dolphin-echomor",
+      "thumbnail": true,
+      "direction": "right source; flips with travel",
+      "motion": true,
+      "anchor": "opaque rigid eye/brow patch",
+      "anatomy": true
+    },
+    {
+      "id": "halloween-bone-armored-shark-necras",
+      "thumbnail": true,
+      "direction": "right source; flips with travel",
+      "motion": true,
+      "anchor": "opaque rigid eye/brow patch",
+      "anatomy": true
+    },
+    {
+      "id": "halloween-witch-jellyfish-malefica",
+      "thumbnail": true,
+      "direction": "right source; flips with travel",
+      "motion": true,
+      "anchor": "opaque rigid eye/brow patch",
+      "anatomy": true
+    },
+    {
+      "id": "halloween-crimson-megalodon",
+      "thumbnail": true,
+      "direction": "right source; flips with travel",
+      "motion": true,
+      "anchor": "opaque rigid eye/brow patch",
+      "anatomy": true
+    },
+    {
+      "id": "halloween-patchwork-shark",
+      "thumbnail": true,
+      "direction": "right source; flips with travel",
+      "motion": true,
+      "anchor": "opaque rigid eye/brow patch",
+      "anatomy": true
+    }
+  ],
+  "checks": [
+    "11 complete thumbnails and 11 safe sheets",
+    "Crimson 8 original source cells with >=8% alpha32 margins",
+    "single export scale and measured rigid anchor translations; RMSE <30",
+    "three loops per ordinary collection preview",
+    "actual Phaser tanks verify pulse jellyfish and bottom-crawling starfish",
+    "desktop/mobile DPR2 and full Crimson six-second cycle",
+    "reduced-motion Crimson remains static",
+    "patchwork shark has living shark anatomy without stuffing/button joints"
+  ]
+}

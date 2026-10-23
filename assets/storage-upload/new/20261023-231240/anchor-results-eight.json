@@ -1,0 +1,61 @@
+﻿{
+    "file":  "assets/storage-upload/new/20261023-231240/fish/mythic/halloween-crimson-megalodon_swim8_v1_sprite.png",
+    "storage_path":  "fish/mythic/halloween-crimson-megalodon_swim8_v1_sprite.png",
+    "patch":  [
+                  320,
+                  235,
+                  24,
+                  24
+              ],
+    "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  0
+                   },
+                   {
+                       "frame":  1,
+                       "dx":  15,
+                       "dy":  -2,
+                       "rmse":  18.043242329193497
+                   },
+                   {
+                       "frame":  2,
+                       "dx":  6,
+                       "dy":  0,
+                       "rmse":  17.412280149365849
+                   },
+                   {
+                       "frame":  3,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  15.36216435760274
+                   },
+                   {
+                       "frame":  4,
+                       "dx":  6,
+                       "dy":  -29,
+                       "rmse":  20.548532490180413
+                   },
+                   {
+                       "frame":  5,
+                       "dx":  10,
+                       "dy":  -46,
+                       "rmse":  27.982137159266443
+                   },
+                   {
+                       "frame":  6,
+                       "dx":  3,
+                       "dy":  -28,
+                       "rmse":  15.56362947708535
+                   },
+                   {
+                       "frame":  7,
+                       "dx":  -1,
+                       "dy":  -30,
+                       "rmse":  16.199681709836153
+                   }
+               ]
+}

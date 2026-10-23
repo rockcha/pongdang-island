@@ -2,10 +2,13 @@ import additionalSheets from './mythic-action-layouts.json'
 import sharedMythicSheets from './shared-mythic-action-layouts.json'
 import nyamnyamMythicSheets from './nyamnyam-mythic-action-layouts.json'
 import primalMythicSheets from './primal-mythic-action-layouts.json'
+import halloweenMythicSheets from './halloween-mythic-action-layouts.json'
+import {halloweenMythicFrame} from './halloween-spirits'
 export function mythicSheetColumns(path:string){return mythicDetailedPaths.includes(path)?4:2}
 export const luneaDetailedSwimPath='fish/mythic/lunea-mistmoon-goddess_swim8_sprite.png'
 type MythicSheet={id:string;aliases:string[];scale:number;shifts:number[][];cell:number;assetVersion?:number}
 const sheets:MythicSheet[]=[
+ ...halloweenMythicSheets,
  ...primalMythicSheets,
  ...nyamnyamMythicSheets,
  ...sharedMythicSheets,
@@ -34,6 +37,8 @@ export function mythicSwimFrame(path:string,time:number,seed:number,reduced=fals
  if(!sheetFor(path))return null
  // A short glance is part of the swim loop, independent of travel direction.
  if(reduced)return 0
+ const halloweenFrame=halloweenMythicFrame(path,time,seed)
+ if(halloweenFrame!==null)return halloweenFrame
  const phase=((time+seed/1000000)%6+6)%6
  if([...sharedMythicSheets,...nyamnyamMythicSheets,...primalMythicSheets].some(s=>path===`fish/mythic/${s.id}_swim8_sprite.png`)){
   // Reversible propulsion for four seconds, then anticipation, action, return,

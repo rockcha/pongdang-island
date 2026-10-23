@@ -1,0 +1,150 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261023-225545/fish/normal/halloween-ghost-skirt-guppy_v2_sprite.png",
+        "storage_path":  "fish/normal/halloween-ghost-skirt-guppy_v2_sprite.png",
+        "patch":  [
+                      493,
+                      350,
+                      40,
+                      40
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -23,
+                           "dy":  4,
+                           "rmse":  14.309934824934652
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  2,
+                           "dy":  -95,
+                           "rmse":  14.162054071009759
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -22,
+                           "dy":  -95,
+                           "rmse":  14.508002717712142
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261023-225545/fish/normal/halloween-soft-ghost-goldfish_v2_sprite.png",
+        "storage_path":  "fish/normal/halloween-soft-ghost-goldfish_v2_sprite.png",
+        "patch":  [
+                      483,
+                      342,
+                      47,
+                      47
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -55,
+                           "dy":  -1,
+                           "rmse":  21.293750917229215
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -78,
+                           "rmse":  17.219458923700245
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -56,
+                           "dy":  -79,
+                           "rmse":  21.389523574638122
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261023-225545/fish/normal/halloween-little-ghost-puffer_v2_sprite.png",
+        "storage_path":  "fish/normal/halloween-little-ghost-puffer_v2_sprite.png",
+        "patch":  [
+                      453,
+                      307,
+                      47,
+                      47
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -44,
+                           "dy":  0,
+                           "rmse":  5.2742186921382013
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -62,
+                           "rmse":  10.71770220826274
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -44,
+                           "dy":  -62,
+                           "rmse":  10.065750639544971
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261023-225545/fish/epic/halloween-midnight-pumpkin-train_v2_sprite.png",
+        "storage_path":  "fish/epic/halloween-midnight-pumpkin-train_v2_sprite.png",
+        "patch":  [
+                      491,
+                      365,
+                      44,
+                      44
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -8,
+                           "dy":  3,
+                           "rmse":  14.086439499666968
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -63,
+                           "rmse":  15.293971215990815
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -3,
+                           "dy":  -62,
+                           "rmse":  12.53399820931498
+                       }
+                   ]
+    }
+]

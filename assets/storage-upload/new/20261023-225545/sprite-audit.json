@@ -1,0 +1,245 @@
+﻿{
+    "missing":  [
+
+                ],
+    "thumbnails":  [
+                       {
+                           "id":  "halloween-ghost-skirt-guppy",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-soft-ghost-goldfish",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-little-ghost-puffer",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-little-ghost-gravestone",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-monster-under-bed",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-midnight-pumpkin-train",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       }
+                   ],
+    "sprites":  [
+                    {
+                        "id":  "halloween-ghost-skirt-guppy",
+                        "file":  "fish/normal/halloween-ghost-skirt-guppy_v2_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  111,
+                                           "y":  229,
+                                           "width":  464,
+                                           "height":  314,
+                                           "alphaPixels":  89818,
+                                           "margin":  52,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  65,
+                                           "y":  253,
+                                           "width":  487,
+                                           "height":  293,
+                                           "alphaPixels":  87147,
+                                           "margin":  65,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  105,
+                                           "y":  154,
+                                           "width":  472,
+                                           "height":  265,
+                                           "alphaPixels":  76158,
+                                           "margin":  50,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  60,
+                                           "y":  125,
+                                           "width":  493,
+                                           "height":  315,
+                                           "alphaPixels":  93205,
+                                           "margin":  60,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-soft-ghost-goldfish",
+                        "file":  "fish/normal/halloween-soft-ghost-goldfish_v2_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  117,
+                                           "y":  189,
+                                           "width":  459,
+                                           "height":  336,
+                                           "alphaPixels":  98318,
+                                           "margin":  51,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  70,
+                                           "y":  221,
+                                           "width":  452,
+                                           "height":  296,
+                                           "alphaPixels":  88482,
+                                           "margin":  70,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  116,
+                                           "y":  151,
+                                           "width":  460,
+                                           "height":  297,
+                                           "alphaPixels":  91007,
+                                           "margin":  51,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  69,
+                                           "y":  97,
+                                           "width":  453,
+                                           "height":  347,
+                                           "alphaPixels":  99686,
+                                           "margin":  69,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-little-ghost-puffer",
+                        "file":  "fish/normal/halloween-little-ghost-puffer_v2_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  114,
+                                           "y":  180,
+                                           "width":  463,
+                                           "height":  340,
+                                           "alphaPixels":  96659,
+                                           "margin":  50,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  89,
+                                           "y":  180,
+                                           "width":  448,
+                                           "height":  342,
+                                           "alphaPixels":  95485,
+                                           "margin":  89,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  107,
+                                           "y":  118,
+                                           "width":  470,
+                                           "height":  340,
+                                           "alphaPixels":  97368,
+                                           "margin":  50,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  114,
+                                           "y":  118,
+                                           "width":  422,
+                                           "height":  340,
+                                           "alphaPixels":  94349,
+                                           "margin":  91,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-midnight-pumpkin-train",
+                        "file":  "fish/epic/halloween-midnight-pumpkin-train_v2_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  73,
+                                           "y":  202,
+                                           "width":  488,
+                                           "height":  278,
+                                           "alphaPixels":  69948,
+                                           "margin":  66,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  65,
+                                           "y":  200,
+                                           "width":  486,
+                                           "height":  282,
+                                           "alphaPixels":  70562,
+                                           "margin":  65,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  67,
+                                           "y":  140,
+                                           "width":  496,
+                                           "height":  277,
+                                           "alphaPixels":  67808,
+                                           "margin":  64,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  72,
+                                           "y":  141,
+                                           "width":  485,
+                                           "height":  277,
+                                           "alphaPixels":  69448,
+                                           "margin":  70,
+                                           "safe":  true
+                                       }
+                                   ]
+                    }
+                ]
+}

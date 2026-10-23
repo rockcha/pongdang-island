@@ -1,3 +1,4 @@
+import {HalloweenIcon} from '@/components/collection-filter-icons'
 import {useEffect,useState} from 'react'
 import {collectibleUrl} from './api'
 import type {Species} from './api'
@@ -7,7 +8,7 @@ import {ImageLoadingSpinner} from '@/components/image-loading-spinner'
 // Remember successes across filters and dialog reopening; retain no image objects.
 const loadedUrls=new Set<string>()
 function remember(url:string){loadedUrls.delete(url);loadedUrls.add(url);if(loadedUrls.size>256)loadedUrls.delete(loadedUrls.values().next().value!)}
-type Props={path:string;name:string;className?:string;fadeIn?:boolean;loading?:'lazy'|'eager';species?:Pick<Species,'is_native'|'native_region_id'>}
+type Props={path:string;name:string;className?:string;fadeIn?:boolean;loading?:'lazy'|'eager';species?:Pick<Species,'is_native'|'native_region_id'>&{id?:string}}
 export function CollectibleThumbnail({path,...props}:Props){
  const url=collectibleUrl(path)
  return <ThumbnailImage key={url} url={url} {...props}/>
@@ -27,6 +28,6 @@ function ThumbnailImage({url,name,className='size-16',species,fadeIn=true,loadin
  return <span className={`${className} relative inline-flex shrink-0`} aria-busy={!loaded&&!unavailable}>
   {!loaded&&!unavailable&&<ImageLoadingSpinner/>}
   {unavailable?<img src="/fallback-image.svg" alt={`${name} 이미지 없음`} className="size-full rounded-lg object-contain"/>:<img key={attempt} src={src} alt={name} loading={loading} decoding="async" draggable={false} className={`size-full object-contain ${fadeIn?'transition-opacity duration-150 motion-reduce:transition-none':''} ${loaded?'opacity-100':'opacity-0'}`} ref={image=>{if(image?.complete&&image.naturalWidth>0&&!loaded)ready()}} onLoad={ready} onError={()=>{loadedUrls.delete(url);setLoaded(false);setFailed(true)}}/>}
-  {species&&<NativeRegionBadge species={species}/>}
+  {species?.id?.startsWith('halloween-')?<span aria-label="??? ?? ??" title="??? ?? ??" className="absolute -bottom-0.5 -right-0.5 inline-flex size-6 items-center justify-center rounded-full border border-background bg-background p-0.5"><HalloweenIcon className="size-5"/></span>:species&&<NativeRegionBadge species={species}/>}
  </span>
 }

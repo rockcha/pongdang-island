@@ -21,6 +21,7 @@ import { TankBubbles } from './tank-bubbles'
 import { AquariumInventoryDialog } from './aquarium-inventory-dialog'
 import { canArrangeSpecies } from './movement-settings'
 import { DecorationEditor } from './decoration-editor'
+import { FishSizeEditor } from './fish-size-editor'
 import { decorationGeometry } from './decoration-geometry'
 import { GoldIcon } from '@/features/gold/gold-provider'
 import { FriendAquariumPicker } from '@/features/friends/friend-aquarium-picker'
@@ -76,7 +77,7 @@ export function AquariumView(props: Props) {
   const displayed =
     editing && decoration
       ? items.map((item) =>
-          item.id === editing.id ? { ...item, ...editing.value, editing: true } : item,
+          item.id === editing.id ? canArrangeSpecies(item.species)?{ ...item, ...editing.value, editing: true }:{...item,scale:editing.value.scale} : item,
         )
       : items
   function selectDecoration(id: string, x?: number, y?: number) {
@@ -128,7 +129,7 @@ export function AquariumView(props: Props) {
   async function changeDecoration(value: DecorationPlacement) {
     if (!editing || !props.onArrange) return
     const previous = editing
-    if (geometry && decoration) {
+    if (geometry && decoration && canArrangeSpecies(decoration.species)) {
       const next = decorationGeometry(
         { ...decoration, ...value },
         dimensions.width,
@@ -155,7 +156,7 @@ export function AquariumView(props: Props) {
     }
   }
   // Screen-space controls stay the same size regardless of decoration scale.
-  const toolbarWidth = decoration?.species.kind==='trash'?212:decoration && canArrangeSpecies(decoration.species) ? 176 : 112
+  const toolbarWidth = decoration?.species.kind==='trash'?212:decoration && canArrangeSpecies(decoration.species) ? 176 : decoration?.species.kind==='fish'?228:112
   const toolbarX =
     geometry && editing
       ? Math.max(
@@ -262,14 +263,17 @@ export function AquariumView(props: Props) {
             className="absolute z-20 flex -translate-x-1/2 -translate-y-full flex-col items-center gap-1.5"
             style={{ left: toolbarX, top: toolbarY, width: toolbarWidth }}
           >
+            <div className="order-2 flex items-center gap-1.5">
             <Button
               variant="secondary"
-              className="order-2 min-h-11 gap-1.5 rounded-lg border bg-background/95 px-3 text-xs shadow-sm"
+              className="min-h-11 gap-1.5 rounded-lg border bg-background/95 px-3 text-xs shadow-sm"
               onClick={() => setInfoId(decoration.id)}
             >
               <Info className="size-4" />
               정보 보기
             </Button>
+            {props.onArrange&&decoration.species.kind==='fish'&&!canArrangeSpecies(decoration.species)&&<FishSizeEditor scale={editing.value.scale} busy={busy} onChange={scale=>changeDecoration({...editing.value,scale})}/>}
+            </div>
             {props.onArrange && canArrangeSpecies(decoration.species) && (
               <DecorationEditor
                 key={editing.id}

@@ -190,19 +190,21 @@ export function AquariumPage() {
   async function arrange(id: string, value: DecorationPlacement) {
     if (!tank || locked.current) throw new Error('잠시 후 다시 시도해주세요.')
     const tankId = tank.id
+    const previous = state?.inhabitants.find((item) => item.id === id)??testFish.find(item=>item.id===id)
+    const scaleOnly=previous?.species.kind==='fish'&&previous.species.movement_type!=='fixed'
+    const changes=scaleOnly?{scale:value.scale}:value
     if (id.startsWith('test-')) {
       setTestFish((current) =>
-        current.map((item) => (item.id === id ? { ...item, ...value } : item)),
+        current.map((item) => (item.id === id ? { ...item, ...changes } : item)),
       )
       return
     }
-    const previous = state?.inhabitants.find((item) => item.id === id)
     setState((current) =>
       current
         ? {
             ...current,
             inhabitants: current.inhabitants.map((item) =>
-              item.id === id ? { ...item, ...value } : item,
+              item.id === id ? { ...item, ...changes } : item,
             ),
           }
         : current,
@@ -211,7 +213,7 @@ export function AquariumPage() {
     setBusy(true)
     try {
       await placementQueue.current.get(id)
-      const saved = await arrangeDecoration(id, tankId, value)
+      const saved = await arrangeDecoration(id, tankId, value,scaleOnly)
       if (active.current)
         setState((current) =>
           current

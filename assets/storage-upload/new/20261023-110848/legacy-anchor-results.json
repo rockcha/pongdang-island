@@ -1,0 +1,37 @@
+﻿{
+    "file":  "assets/storage-upload/new/20261023-050755/fish/epic/shared-grimhowl-giant-wolf-eel_v1_sprite.png",
+    "storage_path":  "fish/epic/shared-grimhowl-giant-wolf-eel_v1_sprite.png",
+    "patch":  [
+                  485,
+                  395,
+                  30,
+                  28
+              ],
+    "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  0
+                   },
+                   {
+                       "frame":  1,
+                       "dx":  2,
+                       "dy":  -2,
+                       "rmse":  15.408763740157742
+                   },
+                   {
+                       "frame":  2,
+                       "dx":  0,
+                       "dy":  -110,
+                       "rmse":  16.325593404222708
+                   },
+                   {
+                       "frame":  3,
+                       "dx":  -1,
+                       "dy":  -110,
+                       "rmse":  17.379010328554383
+                   }
+               ]
+}

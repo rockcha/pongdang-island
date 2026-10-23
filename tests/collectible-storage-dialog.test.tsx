@@ -32,7 +32,7 @@ it('sends sea concept and rarity together to one paginated storage request',asyn
  await waitFor(()=>expect(mock.load).toHaveBeenLastCalledWith(0,'','all','all','mukhyang'))
  await waitFor(()=>expect(screen.queryByRole('listbox')).toBeNull())
  fireEvent.click(screen.getByRole('combobox',{name:'등급 선택'}))
- fireEvent.keyDown(await screen.findByRole('option',{name:/^희귀\s/}),{key:'Enter'})
+ fireEvent.keyDown(await screen.findByRole('option',{name:'희귀'}),{key:'Enter'})
  await waitFor(()=>expect(mock.load).toHaveBeenLastCalledWith(0,'','all','rare','mukhyang'))
 })
 it('searches the entire storage through the existing paginated API',async()=>{

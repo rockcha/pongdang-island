@@ -17,6 +17,7 @@ import { productionDuration } from './facilities'
 import { baitProductionArt } from './bait-production-art'
 import {ProductionStatusSprite} from './status-sprite'
 import { remainingTime } from './production-status'
+import {BaitProductionShopFilters,filterBaitProductionShop,initialBaitShopFilters} from './bait-shop-filters'
 import {
   loadBaitProduction,
   actBaitProduction,
@@ -77,7 +78,7 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
     [busy, setBusy] = useState(false),
     [now, setNow] = useState(Date.now()),
     [filter, setFilter] = useState<keyof typeof labels>('all'),
-    [search, setSearch] = useState(''),
+    [shopFilters, setShopFilters] = useState(initialBaitShopFilters),
     [selected, setSelected] = useState<BaitFacility | null>(null),
     [quantity, setQuantity] = useState(1)
   const offset = useRef(0),
@@ -164,12 +165,9 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
     }
   }
   const working = state?.activeTotal ?? state?.sites.filter((s) => status(s, now) === 'working').length ?? 0
-  const items =
-    (shop ? state?.facilities : state?.sites)?.filter(
-      (s) =>
-        (shop || filter === 'all' || status(s, now) === filter) &&
-        (!search || `${s.name} ${s.baitName}`.includes(search)),
-    ) ?? []
+  const items = shop
+    ? filterBaitProductionShop(state?.facilities??[],shopFilters)
+    : state?.sites.filter(s=>filter==='all'||status(s,now)===filter)??[]
   const active = selected
     ? (shop ? state?.facilities : state?.sites)?.find(
         (s) => (s.siteId ?? s.id) === (selected.siteId ?? selected.id),
@@ -200,14 +198,7 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
           연료·미끼 생산소 합산 최대 4곳 가동. 완료 후에는 보관시간 안에 수령해 주세요.
         </p>}
         {shop ? (
-          <input
-            type="search"
-            aria-label="미끼 생산소 검색"
-            placeholder="생산소 또는 미끼 검색"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="h-11 w-full rounded-xl border bg-card px-3 text-xs"
-          />
+          <BaitProductionShopFilters value={shopFilters} onChange={setShopFilters}/>
         ) : (
           <div
             aria-label="생산소 상태"

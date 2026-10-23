@@ -1,0 +1,60 @@
+﻿{
+    "alphaThreshold":  32,
+    "thumbnails":  1,
+    "missing":  [
+
+                ],
+    "sprites":  [
+                    {
+                        "id":  "shared-grimhowl-giant-wolf-eel",
+                        "file":  "fish/epic/shared-grimhowl-giant-wolf-eel_v2_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "columns":  2,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  106,
+                                           "y":  265,
+                                           "width":  470,
+                                           "height":  265,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  51700
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  104,
+                                           "y":  264,
+                                           "width":  472,
+                                           "height":  288,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  52782
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  71,
+                                           "y":  149,
+                                           "width":  505,
+                                           "height":  256,
+                                           "margin":  51,
+                                           "marginRatio":  0.081339712918660281,
+                                           "alphaPixels":  52176
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  106,
+                                           "y":  149,
+                                           "width":  469,
+                                           "height":  275,
+                                           "margin":  52,
+                                           "marginRatio":  0.082934609250398722,
+                                           "alphaPixels":  52236
+                                       }
+                                   ]
+                    }
+                ]
+}

@@ -44,6 +44,7 @@ export type Database = {
       production_bulk_action:{Args:import('@/features/production/api').ProductionBulkAction;Returns:import('@/features/production/api').ProductionState}
       production_purchase:{Args:import('@/features/production/api').ProductionPurchase;Returns:import('@/features/production/api').ProductionState}
       showcase_feed:{Args:{p_mine?:boolean;p_offset?:number};Returns:import('@/features/showcase/api').ShowcaseFeed}
+      showcase_reaction_people:{Args:{p_post_id:string;p_reaction?:import('@/features/showcase/api').ShowcaseReaction|null;p_offset?:number};Returns:import('@/features/showcase/api').ShowcaseReactionPeople}
       publish_fishing_showcase:{Args:{p_operation_id:string;p_caption:string};Returns:string}
       react_fishing_showcase:{Args:{p_post_id:string;p_reaction:import('@/features/showcase/api').ShowcaseReaction|null};Returns:import('@/features/showcase/api').ShowcasePost}
       delete_fishing_showcase:{Args:{p_post_id:string};Returns:string}
@@ -123,6 +124,7 @@ export type Database = {
       prepare_fishing:{Args:{p_region_id:string;p_bait_id:string;p_operation_id:string;p_confirm_bite?:boolean};Returns:import('@/features/fishing/api').PreparedFishing}
       start_fishing_fight:{Args:{p_operation_id:string};Returns:import('@/features/fishing/api').PreparedFishing}
       finish_fishing:{Args:{p_operation_id:string;p_won:boolean};Returns:import('@/features/fishing/api').FishingResult}
+      resize_aquarium_fish:{Args:{p_collectible_id:string;p_tank_id:string;p_scale:number};Returns:{id:string;scale:number}}
       arrange_collectible:{Args:{p_collectible_id:string;p_tank_id:string;p_x:number;p_y:number;p_rotation:number;p_scale:number;p_flipped:boolean};Returns:import('@/features/collection/api').DecorationPlacement & {id:string}}
       collectible_storage:{Args:{p_offset?:number;p_query?:string;p_kind?:string};Returns:import('@/features/aquarium/api').CollectibleStorage}
       collectible_storage_filtered:{Args:{p_offset?:number;p_query?:string;p_kind?:string;p_rarity?:string;p_concept?:string};Returns:import('@/features/aquarium/api').CollectibleStorage}

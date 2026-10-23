@@ -2,9 +2,30 @@ import {act,cleanup,fireEvent,render,screen} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
 import {islandRumors,islandRumorAt} from '@/features/fishing/island-rumors'
 import {TensionFishingGame} from '@/features/fishing/tension-fishing-game'
+import {MemoryRouter} from 'react-router'
+import {FishingTools} from '@/features/fishing/fishing-tools'
+import type {RegionMap} from '@/features/regions/api'
 
 vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>'/collectibles/'+path}))
 afterEach(()=>{cleanup();vi.useRealTimers();vi.restoreAllMocks()})
+
+it('opens tips only from the icon at the end of the tools column and collapses them with the tools',()=>{
+ localStorage.removeItem('pongdang:fishing-tools-collapsed')
+ const map={currentRegion:'pongdang',regions:[{id:'pongdang',name:'퐁당섬',unlocked:true}]} as RegionMap
+ render(<MemoryRouter><FishingTools map={map}><TensionFishingGame active={false} onCaught={vi.fn()} onCancel={vi.fn()}/></FishingTools></MemoryRouter>)
+ const toggle=screen.getByRole('button',{name:'알고 계신가요? 이야기 펼치기'})
+ expect(screen.queryByRole('complementary',{name:'알고 계신가요?'})).toBeNull()
+ fireEvent.click(toggle)
+ expect(screen.getByRole('complementary',{name:'알고 계신가요?'})).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'이야기 닫기'}))
+ expect(screen.queryByRole('complementary')).toBeNull()
+ expect(document.activeElement).toBe(toggle)
+ fireEvent.click(toggle)
+ fireEvent.click(screen.getByRole('button',{name:'낚시 도구 접기'}))
+ expect(screen.queryByRole('complementary')).toBeNull()
+ expect(screen.queryByRole('button',{name:/알고 계신가요/})).toBeNull()
+ localStorage.removeItem('pongdang:fishing-tools-collapsed')
+})
 
 it('offers 100 distinct rumors and visits all of them before repeating',()=>{
  expect(islandRumors).toHaveLength(100)

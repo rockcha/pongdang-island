@@ -24,6 +24,7 @@ export const appArt={
  itemShop:artwork('item-shop'),
  port:artwork('port'),fuel:artwork('fuel-can','app-icons','svg'),
  music:artwork('music-disc-cartoon'),
+ fishingTips:artwork('fishing-tips','app-icons','svg'),
  farm:artwork('farm'),
  expeditionBoost:artwork('fish-trap'),
  noticeGuide:artwork('notice-guide'),noticeUpdate:artwork('notice-update'),noticeMaintenance:artwork('notice-maintenance'),noticeEvent:artwork('notice-event'),

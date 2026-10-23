@@ -34,7 +34,7 @@ it('allows repeated ownership, limits concurrent starts, snapshots output and se
     const started = await call('start', s.sites[0].siteId)
     expect(started.fuel).toBe(99)
     const running = started.sites.find((site: any) => site.siteId === s.sites[0].siteId)
-    expect(running.runOutput).toBe(2)
+    expect(running.runOutput).toBe(3)
     expect(Date.parse(running.completesAt) - Date.parse(running.startedAt)).toBe(30 * 60000)
     expect(Date.parse(running.expiresAt) - Date.parse(running.completesAt)).toBe(30 * 60000)
     for (const site of s.sites.slice(1, 4)) await call('start', site.siteId)
@@ -60,7 +60,7 @@ it('allows repeated ownership, limits concurrent starts, snapshots output and se
         [u],
       )
     ).rows[0].inventory
-    expect(w.bait).toBe(2)
+    expect(w.bait).toBe(3)
     expect(w.fuel).toBe(95)
     await db.query("select set_config('request.jwt.claim.sub',$1,false)", [other])
     await db.exec('set role authenticated')

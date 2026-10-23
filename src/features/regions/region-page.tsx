@@ -12,7 +12,7 @@ import { Button, buttonVariants } from '@/components/ui/button'
 import { loadRegionMap, regionImageUrl } from './api'
 import type { RegionMap } from './api'
 import {rememberRegion} from './remembered-region'
-import {FishingDestinationMenu} from './fishing-destination-menu'
+import {FishingTools} from '@/features/fishing/fishing-tools'
 export function RegionPage(){
  const {regionId}=useParams()
  const {session}=useAuth()
@@ -46,9 +46,10 @@ function Destination({regionId,userId}:{regionId:string;userId?:string}){
    <div className="absolute inset-x-4 bottom-4 text-white [text-shadow:0_1px_3px_rgba(0,0,0,0.55)]"><div className="flex items-center gap-1"><h1 className="min-w-0 text-xl font-normal tracking-tight">{region.name}</h1><BannerInfo key={region.id} title={region.name} steps={fishingGuide}/><div ref={setOddsTarget} className="flex shrink-0 items-center"/></div>{region.description&&<p className="mt-1 line-clamp-2 max-w-sm text-xs leading-5 text-white">{region.description}</p>}</div>
   </div>
   <div className="relative flex min-h-0 flex-1 flex-col">
+   <FishingTools map={map}>
    <div ref={setToolbar} role="group" aria-label="낚시 게이지" className="absolute inset-x-0 top-0 z-30 flex flex-col overflow-hidden text-white"/>
    <FishingPanel regionId={region.id} toolbarTarget={toolbar} oddsTarget={oddsTarget}/>
-   <div className="absolute right-2 top-2 z-30"><FishingDestinationMenu map={map}/></div>
+   </FishingTools>
   </div>
  </section>
 }

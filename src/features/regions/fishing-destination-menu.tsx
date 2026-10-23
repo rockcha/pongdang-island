@@ -1,5 +1,5 @@
 import {Menu} from '@base-ui/react/menu'
-import {Check,ChevronDown,LockKeyhole} from 'lucide-react'
+import {Check,LockKeyhole} from 'lucide-react'
 import {Link} from 'react-router'
 import {appArt} from '@/components/app-art'
 import {regionIcons} from './region-icons'
@@ -7,13 +7,11 @@ import type {RegionMap} from './api'
 
 export function FishingDestinationMenu({map}:{map:RegionMap}){
  return <Menu.Root>
-  <Menu.Trigger aria-label="지도" className="group flex min-h-11 items-center gap-2 rounded-full border border-white/70 bg-[#fff8eb]/90 px-3 text-[#725039] shadow-sm backdrop-blur-md outline-none transition-colors hover:bg-[#fff8eb] focus-visible:ring-2 focus-visible:ring-ring data-popup-open:bg-[#fff8eb]">
-   <appArt.map aria-hidden="true" className="size-7 transition-transform motion-safe:group-hover:-rotate-6"/>
-   <span className="text-xs">지도</span>
-   <ChevronDown aria-hidden="true" className="size-3.5 transition-transform group-data-popup-open:rotate-180"/>
+  <Menu.Trigger aria-label="지도" className="group flex size-9 items-center justify-center rounded-full border border-white/70 bg-[#fff8eb]/90 text-[#725039] shadow-sm backdrop-blur-md outline-none transition-colors hover:bg-[#fff8eb] focus-visible:ring-2 focus-visible:ring-ring data-popup-open:bg-[#fff8eb]">
+   <appArt.map aria-hidden="true" className="size-6 transition-transform motion-safe:group-hover:-rotate-6"/>
   </Menu.Trigger>
   <Menu.Portal>
-   <Menu.Positioner sideOffset={6} align="end" collisionPadding={12} className="z-[60]">
+   <Menu.Positioner sideOffset={6} align="start" collisionPadding={12} className="z-[60]">
     <Menu.Popup aria-label="낚시터 선택" className="flex max-h-[min(28rem,var(--available-height))] w-64 max-w-[calc(100vw-1.5rem)] flex-col overflow-hidden rounded-2xl border border-border/70 bg-popover text-popover-foreground shadow-xl outline-none">
      <div className="shrink-0 border-b px-4 py-3"><p className="text-sm text-primary">어디로 떠나볼까요?</p><p className="mt-1 text-[10px] text-muted-foreground">열린 해역을 골라 출항하세요.</p></div>
      <div className="min-h-0 overflow-y-auto overscroll-contain p-1.5">

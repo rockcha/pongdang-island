@@ -56,11 +56,26 @@ const decoration: OwnedCollectible = {
   },
 }
 afterEach(cleanup)
+it('resizes a swimming fish between half and double size without freezing or moving it and rolls back failed saves',async()=>{
+ const fish={...decoration,id:'fish',scale:.5,species:{...decoration.species,kind:'fish' as const,movement_type:'swim' as const,speed:.05}}
+ const arrange=vi.fn(async()=>{})
+ render(<AquariumView name="어항" items={[fish]} busy={false} onPlace={()=>{}} onArrange={arrange} onSell={async()=>{}}/>)
+ fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
+ expect(screen.getByRole('button',{name:'물고기 크기 줄이기'}).hasAttribute('disabled')).toBe(true)
+ fireEvent.click(screen.getByRole('button',{name:'물고기 크기 키우기'}))
+ await waitFor(()=>expect(arrange).toHaveBeenCalledWith('fish',expect.objectContaining({scale:.6})))
+ expect(mock.items[0]).toMatchObject({scale:.6,position_x:.2,position_y:.3})
+ expect((mock.items[0] as OwnedCollectible&{editing?:boolean}).editing).not.toBe(true)
+ await waitFor(()=>expect(screen.getByRole('button',{name:'물고기 크기 키우기'}).hasAttribute('disabled')).toBe(false))
+ arrange.mockRejectedValueOnce(new Error('offline'))
+ fireEvent.click(screen.getByRole('button',{name:'물고기 크기 키우기'}))
+ await waitFor(()=>expect(screen.getByLabelText('현재 크기').textContent).toBe('0.6×'))
+})
 it('keeps fish info near the initial selection without following subsequent swim positions',()=>{
  const fish={...decoration,id:'fish',species:{...decoration.species,kind:'fish' as const,movement_type:'swim' as const,speed:.05}}
  render(<AquariumView name="어항" items={[fish]} busy={false} onPlace={()=>{}} onArrange={async()=>{}} onSell={async()=>{}}/>)
  fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
- const toolbar=screen.getByRole('button',{name:'정보 보기'}).parentElement!
+ const toolbar=screen.getByRole('button',{name:'정보 보기'}).parentElement!.parentElement!
  const glass=screen.getByTestId('aquarium-glass')
  Object.defineProperties(glass,{clientWidth:{value:320},clientHeight:{value:560}})
  mock.position?.('fish',150,250)
@@ -71,7 +86,7 @@ it('keeps fish info near the initial selection without following subsequent swim
  expect(toolbar.style.top).toBe('244px')
  fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
  mock.position?.('fish',220,400)
- expect(toolbar.style.left).toBe('220px')
+ expect(toolbar.style.left).toBe('198px')
  expect(toolbar.style.top).toBe('394px')
 })
 it('shows trash transform controls and saves the position lock from its toolbar',async()=>{

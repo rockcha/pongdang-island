@@ -12,6 +12,7 @@ async function asUser(user:string|null,sql:string,args:unknown[]=[]){
 async function catchFish(grade:'common'|'rare'|'epic'|'mythic',won=true){
  const operation=crypto.randomUUID()
  await db.query("update public.fishing_baits set common_bp=$1,rare_bp=$2,epic_bp=$3,mythic_bp=$4,success_chance_bp=10000 where id='bait_epic'",['common','rare','epic','mythic'].map(r=>r===grade?10000:0))
+ await db.query("update app_private.fishing_bait_balance_profiles set common_bp=$1,rare_bp=$2,epic_bp=$3,mythic_bp=$4,success_chance_bp=10000,night_common_bp=null,night_rare_bp=null where id='bait_epic'",['common','rare','epic','mythic'].map(r=>r===grade?10000:0))
  await asUser(owner,"select public.prepare_fishing('pongdang','bait_epic',$1)",[operation])
  await db.query("update app_private.prepared_fishing_casts set created_at=clock_timestamp()-interval '1 minute' where user_id=$1 and operation_id=$2",[owner,operation])
  const result=(await asUser(owner,'select public.finish_fishing($1,$2) r',[operation,won])).rows[0].r
@@ -29,6 +30,26 @@ beforeAll(async()=>{
  }
 },60000)
 afterAll(async()=>await db?.close())
+it('lists public reaction identities with filters and pagination without exposing account details',async()=>{
+ const id=await publish((await catchFish('epic')).operation)
+ await asUser(owner,"select public.react_fishing_showcase($1,'love')",[id])
+ await asUser(other,"select public.react_fishing_showcase($1,'sad')",[id])
+ const all=(await asUser(other,'select public.showcase_reaction_people($1) r',[id])).rows[0].r
+ expect(all.counts).toEqual({love:1,sad:1});expect(all.total).toBe(2)
+ expect(all.items.map((p:any)=>p.user_id)).toEqual([owner,other])
+ expect(Object.keys(all.items[0]).sort()).toEqual(['avatar_path','nickname','reaction','user_id'])
+ const filtered=(await asUser(owner,"select public.showcase_reaction_people($1,'sad') r",[id])).rows[0].r
+ expect(filtered.total).toBe(1);expect(filtered.items[0].user_id).toBe(other)
+ expect(filtered.counts).toEqual(all.counts)
+ expect((await asUser(owner,'select public.showcase_reaction_people($1,null,1) r',[id])).rows[0].r.items).toHaveLength(1)
+ await asUser(other,'select public.react_fishing_showcase($1,null)',[id])
+ expect((await asUser(owner,"select public.showcase_reaction_people($1,'sad') r",[id])).rows[0].r.total).toBe(0)
+ await expect(asUser(null,'select public.showcase_reaction_people($1)',[id])).rejects.toThrow(/permission denied/)
+ await expect(asUser(owner,"select public.showcase_reaction_people($1,'fake')",[id])).rejects.toThrow(/INVALID_SHOWCASE/)
+ await expect(asUser(owner,'select public.showcase_reaction_people($1,null,-1)',[id])).rejects.toThrow(/INVALID_SHOWCASE/)
+ await asUser(owner,'select public.delete_fishing_showcase($1)',[id])
+ await expect(asUser(other,'select public.showcase_reaction_people($1)',[id])).rejects.toThrow(/SHOWCASE_NOT_FOUND/)
+})
 it('publishes verified epic/mythic snapshots without files, preserves first discovery and deduplicates retries',async()=>{
  for(const grade of ['epic','mythic'] as const){
   const {operation,result}=await catchFish(grade),id=await publish(operation)
@@ -98,7 +119,9 @@ it('preserves existing post metadata and refuses to delete unexpected legacy ima
  try{
   for(const file of migrationFiles()){if(file===migration)break;await legacy.exec(readFileSync('supabase/migrations/'+file,'utf8'))}
   await legacy.query('insert into auth.users(id) values($1)',[owner])
-  const source=(await db.query('select * from app_private.prepared_fishing_casts where user_id=$1 and result is not null limit 1',[owner])).rows[0]
+  const source=(await db.query("select * from app_private.prepared_fishing_casts where user_id=$1 and rarity='epic' and result #>> '{attempt,species,id}' is not null order by created_at limit 1",[owner])).rows[0]
+  // This historical schema still requires the original 3–5 second waits.
+  source.wait_seconds=4
   await legacy.query('insert into app_private.prepared_fishing_casts select (jsonb_populate_record(null::app_private.prepared_fishing_casts,$1::jsonb)).*',[source])
   const id=crypto.randomUUID()
   await legacy.query("insert into public.fishing_showcase_posts(id,author_id,operation_id,image_path,caption,species,rarity,region_name,caught_at) values($1,$2,$3,'legacy.png','남겨둔 순간',$4,'epic','퐁당섬',now())",[id,owner,source.operation_id,source.result.attempt.species])

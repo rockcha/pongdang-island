@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { toast } from 'sonner'
 import { appArt } from '@/components/app-art'
 import { Button } from '@/components/ui/button'
-import { fishingDockButton } from '@/components/fishing-dock-style'
+import { fishingDockButton, fishingToolButton } from '@/components/fishing-dock-style'
 import { CollectibleStorageDialog } from '@/features/aquarium/collectible-storage-dialog'
 import { loadAquarium, moveCollectibles, type AquariumState } from '@/features/aquarium/api'
 import type { OwnedCollectible } from '@/features/collection/api'
@@ -10,7 +10,8 @@ import { useGold } from '@/features/gold/gold-provider'
 import { loadTripStorage } from './fishing-trip-storage'
 import type { FishingAttempt } from './api'
 
-export function FishingStorageDialog({ catches, disabled, onSold }: {
+export function FishingStorageDialog({ catches, disabled, onSold, iconOnly=false }: {
+  iconOnly?: boolean
   catches: FishingAttempt[]
   disabled: boolean
   onSold: (ids: string[]) => void
@@ -45,9 +46,9 @@ export function FishingStorageDialog({ catches, disabled, onSold }: {
     void loadAquarium().then(data => { if (alive.current) setState(data) }).catch(() => {})
   }
   return <>
-    <Button variant="ghost" className={fishingDockButton} aria-label="보관함" disabled={disabled || loading} onClick={() => void show()}>
+    <Button variant="ghost" className={iconOnly?fishingToolButton:fishingDockButton} aria-label="보관함" title="보관함" aria-busy={loading} disabled={disabled || loading} onClick={() => void show()}>
       <appArt.storage className="size-6" />
-      <span className="text-[11px]">{loading ? '불러오는 중…' : '보관함'}</span>
+      <span className={iconOnly?"sr-only":"text-[11px]"}>{loading ? '불러오는 중…' : '보관함'}</span>
     </Button>
     {state && <CollectibleStorageDialog
       state={state}

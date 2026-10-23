@@ -9,9 +9,9 @@ import {ShowcaseCard} from '@/features/showcase/showcase-card'
 import {ShowcasePreview} from '@/features/showcase/showcase-preview'
 import {startShowcaseDraft,getShowcaseDraft} from '@/features/showcase/draft'
 const owner='00000000-0000-0000-0000-000000007201'
-const mock=vi.hoisted(()=>({paint:vi.fn(),publish:vi.fn(),feed:vi.fn(),react:vi.fn()}))
+const mock=vi.hoisted(()=>({paint:vi.fn(),publish:vi.fn(),feed:vi.fn(),react:vi.fn(),people:vi.fn()}))
 vi.mock('@/features/showcase/moment-art',()=>({paintCatchMoment:mock.paint}))
-vi.mock('@/features/showcase/api',async original=>({...await original<typeof import('@/features/showcase/api')>(),publishShowcase:mock.publish,loadShowcase:mock.feed,reactToShowcase:mock.react}))
+vi.mock('@/features/showcase/api',async original=>({...await original<typeof import('@/features/showcase/api')>(),publishShowcase:mock.publish,loadShowcase:mock.feed,reactToShowcase:mock.react,loadShowcaseReactionPeople:mock.people}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'00000000-0000-0000-0000-000000007201'}}}),getNickname:()=> '퐁당낚시꾼'}))
 vi.mock('@/features/notices/use-operator',()=>({useOperator:()=>({operator:false,loading:false})}))
 vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>'/collectibles/'+path}))
@@ -95,4 +95,28 @@ it('sends explicit emoji cancellation rather than toggling blindly on retries',(
  fireEvent.click(screen.getByRole('button',{name:'행운 나눠요'}));expect(onReact).toHaveBeenLastCalledWith('luck')
  fireEvent.click(screen.getByRole('button',{name:'슬퍼요'}));expect(onReact).toHaveBeenLastCalledWith('sad')
  fireEvent.click(screen.getByRole('button',{name:'화나요'}));expect(onReact).toHaveBeenLastCalledWith('angry')
+})
+it('opens reaction identities from the count without changing a reaction, filters and visits aquariums',async()=>{
+ const onReact=vi.fn(),post={id:'post',author_id:owner,author_name:'낚시꾼',avatar_path:null,operation_id:'op',first_discovery:true,render_version:1 as const,caption:'자랑',species:practiceSpecies('mythic'),rarity:'mythic' as const,region_name:'퐁당섬',caught_at:new Date().toISOString(),created_at:new Date().toISOString(),my_reaction:'celebrate' as const,reactions:{celebrate:1,love:1}}
+ mock.people.mockResolvedValueOnce({counts:post.reactions,total:1,items:[{user_id:'visitor',nickname:'바다친구',avatar_path:null,reaction:'celebrate'}]}).mockResolvedValueOnce({counts:post.reactions,total:2,items:[{user_id:'visitor',nickname:'바다친구',avatar_path:null,reaction:'celebrate'}]})
+ const router=createMemoryRouter([{path:'/',element:<ShowcaseCard post={post} onReact={onReact}/>},{path:'/friends/:ownerId/aquarium',element:<p>친구 수족관</p>}])
+ render(<RouterProvider router={router}/>)
+ fireEvent.click(screen.getByRole('button',{name:'축하해요 1명 보기'}))
+ await screen.findByText('바다친구')
+ expect(onReact).not.toHaveBeenCalled();expect(mock.people).toHaveBeenLastCalledWith('post','celebrate',0)
+ fireEvent.click(screen.getByRole('button',{name:'전체 반응 보기'}))
+ await waitFor(()=>expect(mock.people).toHaveBeenLastCalledWith('post',null,0))
+ fireEvent.click(await screen.findByRole('link',{name:/바다친구/}))
+ await screen.findByText('친구 수족관')
+ expect(router.state.location.pathname).toBe('/friends/visitor/aquarium')
+})
+it('retries reaction list failures without changing the selected reaction',async()=>{
+ mock.people.mockRejectedValueOnce(new Error('offline')).mockResolvedValueOnce({counts:{},total:0,items:[]})
+ const {ShowcaseReactionPeopleDialog}=await import('@/features/showcase/showcase-reaction-people')
+ const post={id:'post',author_id:owner,author_name:'낚시꾼',avatar_path:null,operation_id:'op',first_discovery:true,render_version:1 as const,caption:'자랑',species:practiceSpecies('mythic'),rarity:'mythic' as const,region_name:'퐁당섬',caught_at:new Date().toISOString(),created_at:new Date().toISOString(),my_reaction:null,reactions:{}}
+ const router=createMemoryRouter([{path:'/',element:<ShowcaseReactionPeopleDialog post={post} initialReaction="love" onClose={()=>{}}/>}])
+ render(<RouterProvider router={router}/>)
+ await screen.findByRole('alert');fireEvent.click(screen.getByRole('button',{name:'다시 불러오기'}))
+ await screen.findByText('아직 이 반응을 남긴 사람이 없어요.')
+ expect(mock.people).toHaveBeenLastCalledWith('post','love',0)
 })

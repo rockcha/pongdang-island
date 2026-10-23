@@ -11,7 +11,7 @@ const layouts=read('src/features/aquarium/ocean-creature-frame-layouts.json'),my
 if(manifest.items.length!==3||audit.missing.length||audit.sprites.some(s=>!s.safe))throw Error('Incomplete artwork')
 for(const p of manifest.items){
  const r=registration.find(a=>a.id===p.id),a=anchors.find(a=>a.storage_path===p.sprite_sheet_path)
- if(!a||a.frames.length!==p.frames||a.frames.some(f=>![f.dx,f.dy,f.rmse].every(Number.isFinite)))throw Error('Unusable rigid-body anchor '+p.id)
+ if(!a||a.frames.length!==p.frames||a.frames.some(f=>![f.dx,f.dy,f.rmse].every(Number.isFinite)||f.rmse>60))throw Error('Unusable rigid-body anchor '+p.id)
  r.frames=a.frames;r.shifts=a.frames.map(f=>[f.dx,f.dy])
  const catalogSheet=p.frames===8?p.sprite_sheet_path.replace('_swim8_v1_sprite.png','_v1_sprite.png'):p.sprite_sheet_path
  if(!existsSync(root+'/'+catalogSheet))throw Error('Missing catalog sheet')

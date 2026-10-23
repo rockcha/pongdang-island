@@ -192,7 +192,7 @@ it('lists all boat types and limits each type to two physical boats with an idem
 })
 it('buys fuel atomically, validates bounds and never double charges a retry',async()=>{
  const op=crypto.randomUUID();await action('fuel',null,null,5,op);await action('fuel',null,null,5,op)
- expect(await wallet()).toMatchObject({gold:9700,inventory:{fuel:15,bait:40}})
+ expect(await wallet()).toMatchObject({gold:9715,inventory:{fuel:15,bait:40}})
  for(const count of [0,-1,101,null])await expect(action('fuel',null,null,count)).rejects.toThrow(/QUANTITY/)
  await db.exec('update public.player_wallets set gold=0')
  await expect(action('fuel')).rejects.toThrow(/FUEL_DAILY_LIMIT/)
@@ -204,7 +204,7 @@ it('enforces the cumulative Korean-day fuel allowance, isolates accounts and res
  await expect(action('fuel',null,null,4)).rejects.toThrow(/FUEL_DAILY_LIMIT/)
  expect(await wallet()).toEqual(before)
  const full=await action('fuel',null,null,3)
- expect(full).toMatchObject({fuelPrice:60,fuelDailyLimit:5,fuelPurchasedToday:5})
+ expect(full).toMatchObject({fuelPrice:57,fuelDailyLimit:5,fuelPurchasedToday:5})
  await expect(action('fuel')).rejects.toThrow(/FUEL_DAILY_LIMIT/)
  expect((await action('fuel',null,null,5,crypto.randomUUID(),other)).fuelPurchasedToday).toBe(5)
  await db.query("update app_private.harbor_operations set created_at=((clock_timestamp() at time zone 'Asia/Seoul')::date::timestamp at time zone 'Asia/Seoul')-interval '1 second' where user_id=$1",[owner])
@@ -260,14 +260,14 @@ it('isolates owners and denies anonymous, direct writes and legacy settlement by
  await expect(asUser(owner,'update public.player_wallets set gold=999999')).rejects.toThrow(/permission denied/)
  await expect(asUser(owner,"select app_private.settle_legacy_expedition('buy',gen_random_uuid(),'starlit')")).rejects.toThrow(/permission denied/)
 })
-it('fixes new expeditions to dinghy, caps cargo at 30 and schedules 10 minutes per loaded bait',async()=>{
+it('fixes new expeditions to dinghy, caps cargo at 30 and schedules 15 minutes per loaded bait',async()=>{
  const run=async(vessel,cargo,op=crypto.randomUUID())=>(await asUser(owner,"select public.expedition_action('depart',$1,$2,'pongdang',$3,null) s",[op,vessel,cargo])).rows[0].s
  for(const cargo of [{bait:0},{bait:31},{bait:-1},{bait:1.5}])await expect(run('dinghy',cargo)).rejects.toThrow(/CARGO/)
  await expect(run('starlit',{bait:12})).rejects.toThrow(/RETIRED/)
  await expect(asUser(owner,"select public.expedition_action('buy',gen_random_uuid(),'starlit')")).rejects.toThrow(/RETIRED/)
  const op=crypto.randomUUID(),s=await run('dinghy',{bait:30},op)
- expect(s.vessels).toHaveLength(1);expect(s.active.vessel_snapshot.duration_minutes).toBe(300)
- expect(Date.parse(s.active.returns_at)-Date.parse(s.active.departed_at)).toBe(300*60000)
+ expect(s.vessels).toHaveLength(1);expect(s.active.vessel_snapshot.duration_minutes).toBe(450)
+ expect(Date.parse(s.active.returns_at)-Date.parse(s.active.departed_at)).toBe(450*60000)
  const replay=await run('dinghy',{bait:30},op)
  expect(replay.active.returns_at).toBe(s.active.returns_at);expect((await wallet()).inventory.bait).toBe(10)
 })

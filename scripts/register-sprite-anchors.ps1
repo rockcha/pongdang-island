@@ -1,4 +1,5 @@
 param([Parameter(Mandatory=$true)][string]$Config,[Parameter(Mandatory=$true)][string]$Output,[ValidateRange(20,200)][int]$SearchRange=80,[ValidateSet(2,4)][int]$Columns=2)
+$ErrorActionPreference='Stop'
 # Read-only RGB template registration. PNGs remain unchanged.
 Add-Type -AssemblyName System.Drawing
 Add-Type -ReferencedAssemblies System.Drawing -TypeDefinition @'
@@ -14,6 +15,10 @@ public static class SpriteRegistration {
    var data=b.LockBits(new Rectangle(0,0,b.Width,b.Height),ImageLockMode.ReadOnly,PixelFormat.Format32bppArgb);
    try {
     var p=new byte[data.Stride*b.Height];Marshal.Copy(data.Scan0,p,0,p.Length);
+    if(x<0||y<0||w<=0||h<=0||x+w>=cw||y+h>=ch)throw new InvalidOperationException("Anchor patch is outside frame 0.");
+    int samples=0,opaque=0;
+    for(int py=y;py<y+h;py+=3)for(int px=x;px<x+w;px+=3){samples++;if(p[py*data.Stride+px*4+3]>=128)opaque++;}
+    if(opaque<20||opaque<samples*.5)throw new InvalidOperationException("Anchor patch has insufficient opaque artwork. Choose a visible rigid head/body patch; transparent patches cannot register motion.");
     var result=new double[columns*2][];result[0]=new double[]{0,0,0};
     for(int frame=1;frame<columns*2;frame++) {
      int ox=(int)Math.Round((frame%columns)*(b.Width/(double)columns)),oy=(int)Math.Round((frame/columns)*(b.Height/2.0)),bx=0,by=0;double best=double.MaxValue;
@@ -31,7 +36,10 @@ public static class SpriteRegistration {
        if(error<best){best=error;bx=dx;by=dy;}
       }
      }
-     result[frame]=new double[]{bx,by,Math.Sqrt(best)};
+     if(best==double.MaxValue||double.IsNaN(best)||double.IsInfinity(best))throw new InvalidOperationException("No usable anchor match for frame "+frame);
+     double rmse=Math.Sqrt(best);
+     if(rmse>60)throw new InvalidOperationException("Anchor mismatch for frame "+frame+": RMSE "+rmse+". Inspect patch and anatomy before registration.");
+     result[frame]=new double[]{bx,by,rmse};
     }
     return result;
    }finally{b.UnlockBits(data);}

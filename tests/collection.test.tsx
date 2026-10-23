@@ -1,4 +1,4 @@
-﻿import {cleanup,fireEvent,render,screen,within} from '@testing-library/react'
+import {cleanup,fireEvent,render,screen,within} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
 import {waitFor} from '@testing-library/react'
 import {CollectionBook,CollectionDialog} from '@/features/collection/collection-dialog'
@@ -66,7 +66,7 @@ it('opens undiscovered details, marks native species, and keeps filters after de
  fireEvent.click(screen.getAllByRole('button',{name:'Close'}).at(-1)!)
  expect(screen.queryByText('미발견')).toBeNull()
  expect(screen.getByLabelText('산호빛 여울 주 서식지')).toBeTruthy()
- await choose('등급 선택','희귀 20%')
+ await choose('등급 선택','희귀')
  fireEvent.click(screen.getByRole('button',{name:'산호 물고기 상세 보기'}))
  expect(await screen.findByText('작은 바다 친구의 이야기')).toBeTruthy()
  fireEvent.click(screen.getAllByRole('button',{name:'Close'}).at(-1)!)
@@ -81,7 +81,7 @@ it('replaces the selected habitat and combines it with category and rarity',asyn
  expect(cards()).toEqual(['달빛 장식물'])
  fireEvent.click(screen.getByRole('button',{name:'물고기'}))
  expect(cards()).toEqual([])
- await choose('등급 선택','희귀 20%')
+ await choose('등급 선택','희귀')
  expect(cards()).toEqual([])
 })
 it('allows repeated temporary insertion from cards without opening details',async()=>{
@@ -102,7 +102,7 @@ it('restores fishing collection filters after reopening and remounting the fishi
  fireEvent.click(screen.getByRole('button',{name:'바다 도감'}))
  await screen.findByRole('article',{name:'공통 물고기'})
  fireEvent.click(screen.getByRole('button',{name:'물고기'}))
- await choose('등급 선택','희귀 20%')
+ await choose('등급 선택','희귀')
  await choose('도감 주 서식지','산호빛 여울')
  expect(cards()).toEqual(['산호 물고기'])
  fireEvent.click(screen.getByRole('button',{name:'Close'}))

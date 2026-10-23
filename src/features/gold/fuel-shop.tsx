@@ -12,7 +12,7 @@ export function FuelShop(){
  const harbor=useHarbor(),{wallet}=useGold()
  const {state,busy,pending,error}=harbor
  const [quantity,setQuantity]=useState(1),[confirm,setConfirm]=useState<HarborAction|null>(null)
- const remaining=Math.max(0,(state?.fuelDailyLimit??5)-(state?.fuelPurchasedToday??0)),price=state?.fuelPrice??60
+ const remaining=Math.max(0,(state?.fuelDailyLimit??5)-(state?.fuelPurchasedToday??0)),price=state?.fuelPrice??57
  async function purchase(args:HarborAction){if(await harbor.run(args))setConfirm(null)}
  return <div className="space-y-5 p-5">
   <div className="flex items-center gap-4"><appArt.fuel className="size-20"/><div><h2 className="text-base">연료</h2><p className="mt-1 text-xs text-muted-foreground">배를 출항할 때 사용해요.</p><p className="mt-2 text-sm text-primary">보유 {state?.fuel??'…'}통</p></div></div>

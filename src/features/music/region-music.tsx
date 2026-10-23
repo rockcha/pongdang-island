@@ -93,7 +93,7 @@ function MapMusic({track}: {track: (typeof tracks)[string]}) {
   const on=state==='playing'||state==='loading'
   const status=state==='loading'?'음악 불러오는 중':state==='blocked'?'눌러서 음악 시작':state==='error'?'음악 다시 재생':state==='playing'?track.label:'배경음악 꺼짐'
   return <>
-    <button type="button" onClick={toggle} aria-label={on?'배경음악 끄기':'배경음악 켜기'} aria-pressed={on} aria-busy={state==='loading'} title={`${status} · ${track.title} · ${track.artist}`} className={`flex size-9 shrink-0 items-center justify-center rounded-full border border-white/10 backdrop-blur-[2px] transition-colors hover:bg-slate-950/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 ${on?'bg-slate-950/25 text-white/85':'bg-slate-950/20 text-white/55'}`}>
+    <button type="button" onClick={toggle} aria-label={on?'배경음악 끄기':'배경음악 켜기'} aria-pressed={on} aria-busy={state==='loading'} title={`${status} · ${track.title} · ${track.artist}`} className={`flex size-9 shrink-0 items-center justify-center rounded-full border border-white/70 bg-[#fff8eb]/90 text-[#725039] shadow-sm backdrop-blur-md transition-colors hover:bg-[#fff8eb] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 `}>
       {on?<Music2 aria-hidden="true" className="size-3.5"/>:<VolumeX aria-hidden="true" className="size-3.5"/>}
     </button>
     <span role="status" className="sr-only">{status}</span>

@@ -1,0 +1,42 @@
+{
+  "tool": "built-in image_gen",
+  "batch": "20261023-110848",
+  "referenceStyle": "assets/references/collectible-style/epic-mythic-starlight.png",
+  "items": [
+    {
+      "id": "shared-grimhowl-giant-wolf-eel",
+      "kind": "fish",
+      "name": "침묵을 찢는 송곳니, 그림하울",
+      "description": "은빛 물결무늬와 차가운 눈빛을 지닌 거대 늑대장어. 긴 몸을 낮게 물결치며, 날카로운 송곳니로 심해의 침묵을 가릅니다.",
+      "swim_y_min": "0.48",
+      "swim_y_max": "0.88",
+      "speed": "0.018",
+      "size": 145,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/shared-grimhowl-giant-wolf-eel_v2_thumbnail.png",
+      "sell_price": 874,
+      "sprite_sheet_path": "fish/epic/shared-grimhowl-giant-wolf-eel_v2_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both",
+      "frames": 4,
+      "status": "reviewed",
+      "thumbnailSource": "C:\\Users\\user\\.codex\\generated_images\\01a16489-9af2-7dd2-a175-1ef3b2b6e04d\\exec-c1aa367b-06f1-48d3-bde0-de84e62530c3.png",
+      "thumbnailGenerated": {
+        "width": 1254,
+        "height": 1254,
+        "sha256": "5f8816ec3f3bec59612e8955f7a2cecd626f91adacda2b37d2e6448d8c17e18c"
+      },
+      "spriteSource": "C:\\Users\\user\\.codex\\generated_images\\01a16489-9af2-7dd2-a175-1ef3b2b6e04d\\exec-51dd2d17-6bc0-4303-a2d2-325cc863d57c.png",
+      "spriteGenerated": {
+        "width": 1254,
+        "height": 1254,
+        "sha256": "c84a40bb782c3a1391163fe0f9819ee4623a66589a9739a5d1ff0c60bd8c5570"
+      },
+      "thumbnailPrompt": "Use case: stylized-concept. Design a completely NEW EPIC fantasy fishing-game creature, Grimhowl, an elegant giant wolf-eel with predatory grace. A long streamlined muscular eel with a broad angular wedge-shaped head and narrowed icy cyan eye. Mouth mostly closed in a proud fierce expression, showing TWO long clean curved ivory canine fangs. Smooth flowing charcoal-navy skin with large simple silver-blue color planes, pale throat and restrained natural marbled bands. A continuous LOW silvery blue dorsal fin, compact sleek pectoral fins and tapered eel tail. Long body in a shallow horizontal S, head RIGHT, tail LEFT. Handsome mature majestic creature, graceful predator. NOT a round cute fat fish, NOT a photoreal wildlife image; no bumpy skin, no warts, no wrinkles, no dense little scales/spots, no heavy hanging lips, no huge smile, no large round baby eyes. This is the species wolf-eel, NOT a furry wolf head and no legs/horns/wings. Image1 is rendering STYLE ONLY: smooth soft luminous colored outlines, crisp simple layered fantasy forms, polished subtle gradients and delicate translucency. Do NOT copy manta anatomy/ribbon fins/purple stars. Clear confident shape design with clean negative spaces and strong silhouette, very readable at 100px. One isolated full-body SQUARE TRANSPARENT PNG. Keep the entire creature SMALL in central 70% of square, at least 14% totally empty transparent border everywhere. No background, haze, fog, light cloud, sparkles, shadow, scene, text, labels or badges.",
+      "spritePrompt": "Use case: stylized-concept. Production EPIC game sprite, EXACT FOUR swimming frames, TWO columns x TWO rows of EQUAL SQUARE cells on square TRANSPARENT PNG. Image1 is STRICT placement and scale guide ONLY, image2 is approved Grimhowl identity. Preserve this new elegant midnight/silver wolf-eel illustration, sleek body, icy cyan narrow eye, two ivory fangs, streamlined forehead, low blue dorsal membrane, compact pectoral fins, long eel tail. Same silhouette identity/color proportions all4. Draw FOUR distinct small-amplitude continuous swimming phases: a wave moves down posterior half of body and tail, low dorsal edge softly flexes, paired pectorals subtly stabilize. The HEAD, EYE and CHEEK must stay at EXACTLY SAME local x/y coordinates and SAME SCALE in ALL FOUR cells, INCLUDING across top and bottom rows. Mouth stays mostly closed with fangs visible. No whole-body bobbing, rotation, zoom or re-centering per pose. A head anchor about x65%,y46% of every cell; small figure like guide occupying central55-60%, full tail and fins within at least15% empty alpha borders on every side. Stable front half, only posterior body wave and fin edge motion; cycle0->1->2->3->0 continuous, frame3 close to frame0. ALL heads point RIGHT, all tails LEFT. Keep the long body readable, not a ball or short fat fish. Crisp soft polished fantasy gradients, no warts/photoreal texture. No text, numbers, grid lines, background, scene, fog, detached glow, cast shadow or checkerboard. Real alpha transparency.",
+      "facing_direction": "right"
+    }
+  ]
+}

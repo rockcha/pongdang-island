@@ -1,4 +1,4 @@
-import {fishingDockButton} from '@/components/fishing-dock-style'
+import {fishingDockButton,fishingToolButton} from '@/components/fishing-dock-style'
 import {EmptyState} from '@/components/empty-state'
 import {appArt} from '@/components/app-art'
 import { RarityBadge } from '@/components/rarity-badge'
@@ -27,16 +27,16 @@ import {readCollectionFilters,saveCollectionFilters} from './filter-preference'
 const {collection:BookOpenText}=appArt
 
 
-type CollectionDialogProps = { onAddTemporary?: (species: Species) => void; fishing?:boolean;disabled?:boolean;dock?:boolean }
+type CollectionDialogProps = { onAddTemporary?: (species: Species) => void; fishing?:boolean;disabled?:boolean;dock?:boolean;iconOnly?:boolean }
 function BookSelect({ label, value, onChange, items, region = false }: {label:string;value:string;onChange:(value:string)=>void;items:{value:string;label:string}[];region?:boolean}) {
  return <Select.Root value={value} onValueChange={value=>{if(value!==null)onChange(value)}} items={items}><Select.Trigger aria-label={label} className="flex min-h-11 min-w-0 flex-1 items-center justify-between gap-2 rounded-xl border border-border bg-secondary/60 px-3 text-xs text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring"><Select.Value className="min-w-0 truncate">{region?<span className="flex min-w-0 items-center gap-2">{regionIcons[value]?<img src={regionIcons[value].src} alt="" className="size-6 shrink-0 object-contain"/>:<LayoutGrid aria-hidden="true" className="size-4 shrink-0 text-primary"/>}<span className="truncate">{items.find(item=>item.value===value)?.label}</span></span>:undefined}</Select.Value><Select.Icon><ChevronDown className="size-4 text-primary"/></Select.Icon></Select.Trigger><Select.Portal><Select.Positioner sideOffset={5} className="z-[70]"><Select.Popup className="max-h-72 min-w-40 overflow-y-auto rounded-xl border border-border bg-popover p-1 text-foreground shadow-lg outline-none"><Select.List>{items.map(item=><Select.Item key={item.value} value={item.value} className="flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-lg px-3 text-sm outline-none data-highlighted:bg-secondary data-selected:bg-secondary/60 data-selected:text-primary"><Select.ItemText className="flex items-center gap-2">{region&&(regionIcons[item.value]?<img src={regionIcons[item.value].src} alt="" className="size-6 shrink-0 object-contain"/>:<LayoutGrid aria-hidden="true" className="size-4 shrink-0 text-primary"/>)}{item.label}</Select.ItemText><Select.ItemIndicator><Check className="size-4"/></Select.ItemIndicator></Select.Item>)}</Select.List></Select.Popup></Select.Positioner></Select.Portal></Select.Root>
 }
 
-export function CollectionDialog({ onAddTemporary,fishing=false,disabled=false,dock=false }: CollectionDialogProps) {
+export function CollectionDialog({ onAddTemporary,fishing=false,disabled=false,dock=false,iconOnly=false }: CollectionDialogProps) {
  const { session } = useAuth()
  const [open, setOpen] = useState(false)
  return <Dialog open={open} onOpenChange={setOpen}>
-  {fishing?<TooltipProvider><Tooltip><TooltipTrigger render={<DialogTrigger render={<Button variant="ghost" size="icon" disabled={disabled} aria-label="바다 도감" className={dock?fishingDockButton:"size-11 rounded-full border border-white/20 bg-slate-950/20 text-white backdrop-blur-sm hover:bg-slate-950/35 hover:text-white"}/>}/> }><BookOpenText className="size-8"/>{dock&&<span className="text-[11px]">도감</span>}</TooltipTrigger><TooltipContent>바다 도감</TooltipContent></Tooltip></TooltipProvider>:<AquariumToolButton label="바다 도감" icon={<BookOpenText className="size-8"/>}/>}
+  {fishing?<TooltipProvider><Tooltip><TooltipTrigger render={<DialogTrigger render={<Button variant="ghost" size="icon" disabled={disabled} aria-label="바다 도감" className={iconOnly?fishingToolButton:dock?fishingDockButton:"size-11 rounded-full border border-white/20 bg-slate-950/20 text-white backdrop-blur-sm hover:bg-slate-950/35 hover:text-white"}/>}/> }><BookOpenText className={iconOnly?"size-6":"size-8"}/>{dock&&!iconOnly&&<span className="text-[11px]">도감</span>}</TooltipTrigger><TooltipContent>바다 도감</TooltipContent></Tooltip></TooltipProvider>:<AquariumToolButton label="바다 도감" icon={<BookOpenText className="size-8"/>}/>}
   <DialogContent className="notification-sheet inset-x-0 bottom-0 top-auto left-0 flex h-[92dvh] max-h-[92dvh] w-full max-w-full translate-x-0 translate-y-0 flex-col gap-0 overflow-hidden rounded-t-2xl rounded-b-none p-0 pb-[env(safe-area-inset-bottom)] sm:left-1/2 sm:max-w-2xl sm:-translate-x-1/2">
    <DialogHeader className="shrink-0 border-b border-border/50 px-4 pb-3 pt-4 pr-12">
     <DialogTitle className="flex items-center gap-2 text-lg"><BookOpenText aria-hidden="true" className="size-5 text-primary"/>바다 도감</DialogTitle>

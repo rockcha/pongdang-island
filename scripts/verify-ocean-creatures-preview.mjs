@@ -17,14 +17,15 @@ try{
  await page.goto('http://127.0.0.1:5174/'+root+'/review.html')
  await page.waitForFunction(expected=>document.querySelectorAll('canvas').length===expected&&document.querySelector('[data-tank] canvas').height>=300&&Array.from(document.images).every(i=>i.complete&&i.naturalWidth>0)&&document.querySelectorAll('[aria-busy="true"]').length===0,manifest.items.length+1)
  await page.screenshot({path:'artifacts/previews/ocean-creatures-desktop.png',fullPage:true})
- const detail=page.locator('[data-preview="primal-nemerion-last-ocean-heir"] canvas'),hashes=[]
+ const detail=page.locator(`[data-preview="${manifest.items.length===1?manifest.items[0].id:'primal-nemerion-last-ocean-heir'}"] canvas`),hashes=[]
  await detail.scrollIntoViewIfNeeded()
- for(let n=0;n<8;n++){
-  await page.waitForTimeout(800)
+ const fourPoses=manifest.items.length===1&&manifest.items[0].frames===4
+ for(let n=0;n<(fourPoses?16:8);n++){
+  await page.waitForTimeout(fourPoses?137:800)
   const bytes=await detail.screenshot({path:`artifacts/previews/nemerion-action-${n}.png`})
   hashes.push(createHash('sha256').update(bytes).digest('hex'))
  }
- if(new Set(hashes).size<4)throw Error('Nemerion preview does not animate')
+ if(new Set(hashes).size<4)throw Error('Creature preview did not expose four distinct animated poses')
  await page.emulateMedia({reducedMotion:'reduce'});await page.waitForTimeout(250)
  const reduced1=await detail.screenshot();await page.waitForTimeout(450);const reduced2=await detail.screenshot()
  if(!reduced1.equals(reduced2))throw Error('Reduced-motion preview is moving')

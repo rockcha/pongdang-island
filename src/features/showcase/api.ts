@@ -4,6 +4,12 @@ export const showcaseReactions=[{id:'celebrate',emoji:'🎉',label:'축하해요
 export type ShowcaseReaction=typeof showcaseReactions[number]['id']
 export type ShowcasePost={id:string;author_id:string;author_name:string;avatar_path:string|null;operation_id:string;caption:string;species:Species;rarity:'epic'|'mythic';region_name:string;caught_at:string;created_at:string;first_discovery:boolean;render_version:1;reactions:Partial<Record<ShowcaseReaction,number>>;my_reaction:ShowcaseReaction|null}
 export type ShowcaseFeed={items:ShowcasePost[];total:number}
+export type ShowcaseReactionPeople={items:{user_id:string;nickname:string;avatar_path:string|null;reaction:ShowcaseReaction}[];counts:Partial<Record<ShowcaseReaction,number>>;total:number}
+export async function loadShowcaseReactionPeople(post:string,reaction:ShowcaseReaction|null,offset=0):Promise<ShowcaseReactionPeople>{
+ const {data,error}=await createClient().rpc('showcase_reaction_people',{p_post_id:post,p_reaction:reaction,p_offset:offset})
+ if(error)throw error
+ return data
+}
 export async function loadShowcase(mine:boolean,offset:number):Promise<ShowcaseFeed>{
  const client=createClient(),{data,error}=await client.rpc('showcase_feed',{p_mine:mine,p_offset:offset})
  if(error)throw error

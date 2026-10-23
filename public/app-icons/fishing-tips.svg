@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="glow" x1="22" y1="12" x2="43" y2="45" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF2A0"/>
+      <stop offset="1" stop-color="#FFB347"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="32" cy="59" rx="12" ry="3" fill="#725039" opacity=".12"/>
+  <g stroke="#89542D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 3v4M9 13l4 3M3 31h5M55 13l-4 3M61 31h-5" stroke="#E5A13B"/>
+    <path d="M22 44c0-5-8-8-8-18a18 18 0 0 1 36 0c0 10-8 13-8 18v3H22v-3Z" fill="url(#glow)"/>
+    <path d="M20 24c.6-4 3-7 6-8" stroke="#FFFCDE"/>
+    <path d="M23 46h18v7a4 4 0 0 1-4 4H27a4 4 0 0 1-4-4v-7Z" fill="#67BFB6"/>
+    <path d="M24 51h16M29 58h6"/>
+    <path d="M26.5 24a5.5 5.5 0 0 1 11 0c0 4-5.5 4-5.5 8" stroke="#754A30" stroke-width="3.5"/>
+  </g>
+  <circle cx="32" cy="38" r="2" fill="#754A30"/>
+</svg>

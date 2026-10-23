@@ -29,16 +29,20 @@ export function ProductionShopFilters({
   value: ShopFilters
   onChange: (value: ShopFilters) => void
 }) {
+  return <ShopSearchAndSort value={value} onChange={onChange} options={shopSortOptions.map(({key,label})=>({value:key,label}))}/>
+}
+
+export function ShopSearchAndSort<T extends string>({value,onChange,options,searchLabel='생산소 이름 검색',placeholder=searchLabel}:{value:{search:string;sort:T};onChange:(value:{search:string;sort:T})=>void;options:readonly {value:T;label:string}[];searchLabel?:string;placeholder?:string}) {
   return (
     <div className="mt-2 flex gap-2">
       <div className="flex min-w-0 flex-1 items-center gap-2 rounded-xl border border-border/70 bg-card px-3">
         <Search className="size-3.5 shrink-0 text-muted-foreground" />
         <input
-          aria-label="생산소 이름 검색"
+          aria-label={searchLabel}
           type="search"
           value={value.search}
           onChange={(e) => onChange({ ...value, search: e.target.value })}
-          placeholder="생산소 이름 검색"
+          placeholder={placeholder}
           className="h-10 min-w-0 flex-1 bg-transparent text-xs outline-none"
         />
       </div>
@@ -46,7 +50,7 @@ export function ProductionShopFilters({
         label="생산소 정렬"
         value={value.sort}
         onChange={(sort) => onChange({ ...value, sort })}
-        options={shopSortOptions.map(({key,label})=>({value:key,label}))}
+        options={options}
         className="w-36 shrink-0"
       />
     </div>

@@ -34,6 +34,17 @@ afterEach(() => {
   cleanup()
   vi.clearAllMocks()
 })
+it('offers the same shop sort select as fuel production and keeps bait search working',async()=>{
+ mock.load.mockResolvedValue({serverNow:new Date().toISOString(),gold:10000,fuel:20,facilities:[site,{...site,id:'second',name:'별빛 공방',baitName:'진주새우',output_count:10,price:900}],sites:[]})
+ render(<MemoryRouter><BaitProductionPage shop/></MemoryRouter>)
+ await screen.findByRole('button',{name:/꼬물꼬물 흙상자/})
+ fireEvent.click(screen.getByRole('combobox',{name:'생산소 정렬'}))
+ fireEvent.keyDown(await screen.findByRole('option',{name:'생산량 많은 순'}),{key:'Enter'})
+ await waitFor(()=>expect(screen.getAllByRole('button',{name:/꼬물꼬물 흙상자|별빛 공방/})[0].textContent).toContain('별빛 공방'))
+ fireEvent.change(screen.getByRole('searchbox',{name:'미끼 생산소 검색'}),{target:{value:'진주새우'}})
+ expect(screen.queryByRole('button',{name:/꼬물꼬물 흙상자/})).toBeNull()
+ expect(screen.getByRole('button',{name:/별빛 공방/})).toBeTruthy()
+})
 it('shows repeat ownership without a four-site purchase cap and submits the selected quantity', async () => {
   const state = {
     serverNow: new Date().toISOString(),

@@ -1,11 +1,11 @@
 import {Link} from 'react-router'
 import {appArt} from '@/components/app-art'
-import {fishingDockButton} from '@/components/fishing-dock-style'
+import {fishingDockButton,fishingToolButton} from '@/components/fishing-dock-style'
 import {ProductSkeleton} from '@/components/product-skeleton'
 import {LandscapeImage} from '@/components/landscape-image'
 import {useRef,useState} from 'react'
 import {toast} from 'sonner'
-import {Check,LockKeyhole,Info,ChevronRight,FishingRod as RodIcon} from 'lucide-react'
+import {Check,LockKeyhole,ChevronRight,FishingRod as RodIcon} from 'lucide-react'
 import {Button} from '@/components/ui/button'
 import {ConfirmDialog} from '@/components/confirm-dialog'
 import {TradeQuestion} from '@/components/trade-question'
@@ -64,15 +64,15 @@ function RodCards({inventory=false,query=''}:{inventory?:boolean;query?:string})
   <ConfirmDialog illustration={pending?.action==='sell'?'sale':'purchase'} open={!!pending} onOpenChange={open=>{if(!open){setPending(null);setTradeError('')}}} title={pending?<TradeQuestion name={pending.rod.name} price={pending.action==='buy'?pending.rod.price:pending.rod.price/2} selling={pending.action==='sell'}/>:''} description={pending?.action==='sell'&&selected===pending.rod.id?'장착 장비는 입문용으로 바뀝니다.':pending?.action==='buy'?'구매한 낚싯대는 창고에 보관됩니다.':'판매한 낚싯대는 창고에서 사라집니다.'} busy={busy} confirmDisabled={unavailable} error={tradeError} onConfirm={()=>void confirm()}/>
  </div>
 }
-export function FishingRodSelector({disabled=false,regionId,dock=false,compact=false}:{disabled?:boolean;regionId:string;dock?:boolean;compact?:boolean}){
+export function FishingRodSelector({disabled=false,regionId,dock=false,compact=false,iconOnly=false,equipment=false}:{disabled?:boolean;regionId:string;dock?:boolean;compact?:boolean;iconOnly?:boolean;equipment?:boolean}){
  const {selected,owned,rods,loading,busy,error,select}=useRods()
- const [open,setOpen]=useState(false),[draft,setDraft]=useState(selected),[details,setDetails]=useState<FishingRod|null>(null),[saving,setSaving]=useState(false)
+ const [open,setOpen]=useState(false),[draft,setDraft]=useState(selected),[saving,setSaving]=useState(false)
  const lock=useRef(false)
  const rod=fishingRods.find(r=>r.id===selected)??fishingRods[0]
  const available=rods.filter(item=>owned.includes(item.id)).sort((a,b)=>a.price-b.price)
  const pending=available.find(item=>item.id===draft)
  const unavailable=busy||saving||loading||!!error
- function changeOpen(value:boolean){if(lock.current||busy)return;if(value)setDraft(selected);else setDetails(null);setOpen(value)}
+ function changeOpen(value:boolean){if(lock.current||busy)return;if(value)setDraft(selected);setOpen(value)}
  async function equip(){
   if(lock.current||unavailable||!pending)return
   if(draft===selected){setOpen(false);return}
@@ -80,7 +80,7 @@ export function FishingRodSelector({disabled=false,regionId,dock=false,compact=f
   try{await select(draft);setOpen(false)}catch(cause){toast.error(cause instanceof Error?cause.message:'장착하지 못했어요.')}finally{lock.current=false;setSaving(false)}
  }
  return <Dialog open={open} onOpenChange={changeOpen}>
-  <TooltipProvider><Tooltip><TooltipTrigger render={<DialogTrigger render={<Button variant="ghost" size="icon" disabled={disabled} aria-label={'낚싯대 선택 · '+rod.name} className={compact?"flex h-11 min-w-0 flex-1 justify-start gap-1.5 rounded-md px-1 text-white/85 hover:bg-white/10 hover:text-white":dock?fishingDockButton:"size-11 rounded-full bg-slate-950/20 text-white hover:bg-slate-950/35 hover:text-white"}/>}/> }>{compact?<><img src={rodThumbnailUrl(rod.id)} alt="" className="size-6 shrink-0 object-contain"/><span className="truncate text-[11px]">{rod.name}</span></>:dock?<><img src={rodThumbnailUrl(rod.id)} alt=""/><span className="text-[11px]">낚싯대 선택</span></>:<RodIcon className="size-5"/>}</TooltipTrigger><TooltipContent>낚싯대 선택 · {rod.name}</TooltipContent></Tooltip></TooltipProvider>
+  <TooltipProvider><Tooltip><TooltipTrigger render={<DialogTrigger render={<Button variant="ghost" size="icon" disabled={disabled} aria-label={'낚싯대 선택 · '+rod.name} className={equipment?fishingToolButton.replace('size-9','size-[72px]').replace('border-white/70','border-[#D5B797]').replace('bg-[#fff8eb]/90','bg-[#fff8eb]')+" border-2 border-[#D5B797] bg-[#fff8eb] shadow-[0_4px_14px_#34291f33] hover:bg-[#fff3dc]":iconOnly?fishingToolButton:compact?"flex h-11 min-w-0 flex-1 justify-start gap-1.5 rounded-md px-1 text-white/85 hover:bg-white/10 hover:text-white":dock?fishingDockButton:"size-11 rounded-full bg-slate-950/20 text-white hover:bg-slate-950/35 hover:text-white"}/>}/> } >{equipment?<img src={rodThumbnailUrl(rod.id)} alt="" className="size-16 -translate-x-0.5 -translate-y-0.5 object-contain drop-shadow-sm"/>:iconOnly?<img src={rodThumbnailUrl(rod.id)} alt="" className="size-6 object-contain"/>:compact?<><img src={rodThumbnailUrl(rod.id)} alt="" className="size-6 shrink-0 object-contain"/><span className="truncate text-[11px]">{rod.name}</span></>:dock?<><img src={rodThumbnailUrl(rod.id)} alt=""/><span className="text-[11px]">낚싯대 선택</span></>:<RodIcon className="size-5"/>}</TooltipTrigger><TooltipContent>낚싯대 선택 · {rod.name}</TooltipContent></Tooltip></TooltipProvider>
   <DialogContent showCloseButton={!saving&&!busy} className="notification-sheet inset-x-0 bottom-0 top-auto left-0 flex max-h-[84dvh] w-full max-w-full translate-x-0 translate-y-0 flex-col gap-0 overflow-hidden rounded-t-2xl rounded-b-none p-0 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2">
    <div aria-hidden="true" className="mx-auto mt-2 h-1 w-10 shrink-0 rounded-full bg-border"/>
    <DialogHeader className="shrink-0 px-4 py-4 pr-12"><DialogTitle className="flex items-center gap-2 font-normal"><appArt.rod className="size-7"/>낚싯대 선택</DialogTitle><DialogDescription className="text-xs leading-5">낚시할 해역에 맞는 낚싯대를 골라보세요.</DialogDescription></DialogHeader>
@@ -96,7 +96,6 @@ export function FishingRodSelector({disabled=false,regionId,dock=false,compact=f
        <span className="min-w-0 flex-1"><span className="flex flex-wrap items-center gap-2 text-sm"><span>{item.name}</span>{selected===item.id&&<span className="text-[10px] text-primary">장착 중</span>}</span><span className="mt-1 flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-[11px] leading-5 text-muted-foreground">{region&&item.nativeBonusBp>0&&<span className="flex items-center gap-1"><img src={region.src} alt={region.name} className="size-6 shrink-0 object-contain"/><span>{region.name}</span></span>}<span>{effect}</span></span></span>
        <span aria-hidden="true" className={`grid size-5 shrink-0 place-items-center rounded-full border ${active?'border-primary bg-primary text-primary-foreground':'border-border'}`}>{active&&<Check className="size-3"/>}</span>
       </button>
-      <Button variant="ghost" size="icon" className="mr-2 size-11 shrink-0 text-muted-foreground" disabled={unavailable} aria-label={item.name+' 효과 안내'} onClick={()=>setDetails(item)}><Info className="size-4"/></Button>
      </li>
     })}</ul>}
    </div>
@@ -104,7 +103,6 @@ export function FishingRodSelector({disabled=false,regionId,dock=false,compact=f
     <Link to="/shop?tab=rods" aria-label="낚싯대 상점으로" onClick={event=>{if(unavailable)event.preventDefault();else changeOpen(false)}} aria-disabled={unavailable} className="flex h-14 items-center justify-center gap-1 border-r bg-secondary/40 text-sm text-primary outline-none hover:bg-secondary focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring aria-disabled:opacity-50">상점<ChevronRight className="size-3"/></Link>
     <Button aria-label="이 낚싯대 사용하기" className="h-14 w-full rounded-none" disabled={unavailable||!pending} onClick={()=>void equip()}>{saving?'장착 중…':'사용'}</Button>
    </div>
-   <Dialog open={!!details} onOpenChange={value=>{if(!value)setDetails(null)}}><DialogContent className="rounded-2xl sm:max-w-sm"><DialogHeader><DialogTitle className="text-base font-normal">{details?.name}</DialogTitle><DialogDescription>잔물결·테마 낚싯대는 직접 낚시 대기시간을 줄여요. 테마 낚싯대의 주 서식지 보정은 함께 적용되며, 대기시간 단축은 통발에 적용되지 않아요.</DialogDescription></DialogHeader>{details&&<RodEffect rod={details}/>}</DialogContent></Dialog>
   </DialogContent>
  </Dialog>
 }

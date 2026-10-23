@@ -1,7 +1,7 @@
 import {FishingOdds} from './fishing-odds'
 import {BaitTarget,fishingDisplayBait} from './bait-info'
 import {readLastBait,saveLastBait} from './bait-preference'
-import {fishingDockButton} from '@/components/fishing-dock-style'
+import {useFishingTools,fishingToolButton} from './fishing-tools'
 import {useRods} from './rod-provider'
 import {appArt} from '@/components/app-art'
 import { fishingBaitSummary } from './bait-effects'
@@ -44,6 +44,7 @@ export function BaitInventoryDialog(){
  return <Dialog><DialogTrigger render={<Button variant="outline" className="min-h-11 w-full"/>}><ShoppingBag className="size-4"/>미끼 상점 · 인벤토리</DialogTrigger><DialogContent className="max-h-[90dvh] overflow-y-auto sm:max-w-md"><DialogHeader><DialogTitle>미끼 상점 · 인벤토리</DialogTitle><DialogDescription>퐁당 지렁이를 구매하고, 획득한 미끼의 수량과 효과를 확인해요.</DialogDescription></DialogHeader><FishingPanel/></DialogContent></Dialog>
 }
 export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{regionId?:string;regionName?:string;toolbarTarget?:HTMLElement|null;oddsTarget?:HTMLElement|null}){
+ const fishingTools=useFishingTools()
  const navigate=useNavigate()
  const {selected:equippedRod,rods}=useRods()
  const {session}=useAuth()
@@ -204,6 +205,9 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{reg
  }
  const tools=(content:React.ReactNode)=>toolbarTarget?createPortal(content,toolbarTarget):content
  const bait=state?.baits.find(item=>item.id===selected)
+ const reportEmpty=fishingTools?.setEmpty
+ useEffect(()=>{reportEmpty?.(!goldLoading&&!(wallet.inventory[selected]>0))},[reportEmpty,goldLoading,wallet.inventory,selected])
+ const baitControl=<button type="button" aria-label={`미끼통 열기 · ${bait?.name??'미끼'} ${wallet.inventory[selected]??0}개`} title={bait?.name??'미끼통'} className={fishingTools?fishingToolButton.replace('size-9','size-11').replace('border-white/70','border-[#D5B797]').replace('bg-[#fff8eb]/90','bg-[#fff8eb]')+" border-2 bg-[#fff8eb] ring-2 ring-[#fff8eb] shadow-[0_4px_10px_#34291f40] "+(!goldLoading&&!(wallet.inventory[selected]>0)?"border-amber-500":"border-[#D5B797]"):fishingToolButton} disabled={gameOpen||busy||uncertain||revealing||castOpen} onClick={()=>{setDraftBait(selected);setBaitOpen(true)}}>{bait?<img src={bait.image_path} alt="" className={fishingTools?"size-8 object-contain":"size-6 object-contain"}/>:<appArt.bait className={fishingTools?"size-8":"size-6"}/>}<span aria-hidden="true" className={"absolute -bottom-1 min-w-4 rounded-full border border-[#fff8eb] bg-[#725039] px-1 text-center text-[9px] leading-4 tabular-nums text-[#fff8eb] "+(fishingTools?"left-1/2 -translate-x-1/2":"-right-1")}>{goldLoading?'…':wallet.inventory[selected]??0}</span></button>
   const displayPrepared=gameOpen?prepared:state?.prepared
   const displayBaitSource=state?.baits.find(item=>item.id===(displayPrepared?.bait_id??selected))
   const displayBait=displayBaitSource?fishingDisplayBait(displayBaitSource,displayPrepared):undefined
@@ -211,15 +215,20 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget}:{reg
  const castDisabled=busy||castOpen||revealing||(!practice&&(goldBusy||goldLoading||!!goldError||(!uncertain&&!state?.prepared&&!(wallet.inventory[selected]>0))))
  const castCaption=busy?'준비 중…':practice?`${rarities[practice].label} 테스트 시작`:uncertain?'결과 확인':state?.prepared?'이어하기':'낚시 시작'
  const baitList=(<ul className="space-y-3">{state?.baits.map(item=><li key={item.id} className={`rounded-xl border p-3 ${regionId&&selected===item.id?'border-primary/40 bg-primary/5':''}`}><div className="flex gap-3"><img src={item.image_path} alt="" className="size-12 shrink-0 object-contain"/><div className="min-w-0 flex-1"><div className="flex justify-between gap-2"><h3 className="text-sm font-semibold">{item.name}</h3><span className="text-xs tabular-nums text-muted-foreground">보유 {goldLoading?'…':wallet.inventory[item.id]??0}개</span></div><p className="mt-2 text-xs leading-6 text-muted-foreground">{item.description}</p><p className="mt-2 text-xs leading-5 text-primary">{item.effect_description}</p></div></div><div className="mt-3 flex gap-2">{regionId&&<Button variant={selected===item.id?'default':'outline'} data-selection-icons aria-pressed={selected===item.id} className="min-h-11 flex-1" disabled={busy||goldBusy||uncertain} onClick={()=>setSelected(item.id)}>{selected===item.id?'선택됨':'선택'}</Button>}{item.price!==null?<Button variant="outline" className="min-h-11 flex-1" disabled={busy||goldBusy||goldLoading||!!goldError||uncertain||wallet.gold<item.price} onClick={()=>void buy(item.id)} aria-label={`${item.name} 1개 구매 ${item.price} 골드`}><GoldIcon className="size-5"/>{item.price} · 1개 구매</Button>:<span className="flex min-h-11 flex-1 items-center justify-center text-xs text-muted-foreground">획득 전용 · 획득처 준비 중</span>}</div></li>)}</ul>)
+ const rodControl=<FishingRodSelector dock equipment={!!fishingTools} regionId={regionId!} disabled={gameOpen||busy||uncertain||revealing||castOpen}/>
+ const equipmentControls=<>
+   <FishingStorageDialog iconOnly={!!fishingTools} catches={catches} disabled={gameOpen||busy||uncertain||revealing||castOpen} onSold={ids=>setTrip(previous=>({userId,items:previous.items.filter(item=>!item.collectible_id||!ids.includes(item.collectible_id))}))}/>
+   {!fishingTools&&rodControl}
+   <CollectionDialog fishing dock iconOnly={!!fishingTools} disabled={gameOpen||busy||uncertain||revealing||castOpen}/>
+  </>
  return <div className={regionId?"relative isolate min-h-0 flex-1 bg-[#123c68]":"space-y-5"}>
   {regionId&&oddsTarget&&createPortal(<FishingOdds bait={displayBait??bait} successChanceBp={state?.successChanceBp} rod={rods.find(r=>r.id===equippedRod)} baseChanceBp={state?.baits.find(b=>b.id==='bait')?.baseSuccessChanceBp}/>,oddsTarget)}
   {regionId&&<FishingLeaveGuard active={gameOpen||uncertain||busy} practice={!!practice} busy={busy} onPause={setLeavePaused} onLeave={leaveFishing}/>}
-  {regionId?<div role="group" aria-label="낚시 준비 도구" className="absolute bottom-[max(0.5rem,env(safe-area-inset-bottom))] left-2 z-20 grid w-40 grid-cols-2 gap-px overflow-hidden rounded-xl border border-[#D5B797] bg-[#D5B797] shadow-sm">
-   <Button variant="ghost" aria-label={`미끼통 열기 · ${bait?.name??'미끼'} ${wallet.inventory[selected]??0}개`} className={fishingDockButton} disabled={gameOpen||busy||uncertain||revealing||castOpen} onClick={()=>{setDraftBait(selected);setBaitOpen(true)}}>{bait?<img src={bait.image_path} alt=""/>:<appArt.bait/>}<span className="text-[11px] tabular-nums">미끼 ×{goldLoading?'…':wallet.inventory[selected]??0}</span></Button>
-   <FishingStorageDialog catches={catches} disabled={gameOpen||busy||uncertain||revealing||castOpen} onSold={ids=>setTrip(previous=>({userId,items:previous.items.filter(item=>!item.collectible_id||!ids.includes(item.collectible_id))}))}/>
-   <FishingRodSelector dock regionId={regionId} disabled={gameOpen||busy||uncertain||revealing||castOpen}/>
-   <CollectionDialog fishing dock disabled={gameOpen||busy||uncertain||revealing||castOpen}/>
-  </div>:<div className="flex items-center justify-between"><h2 className="font-semibold">미끼 인벤토리</h2><span className="flex items-center gap-1 text-sm"><GoldIcon/>{wallet.gold.toLocaleString('ko-KR')}</span></div>}
+  {regionId?(fishingTools?<>
+   {fishingTools.rodTarget&&createPortal(rodControl,fishingTools.rodTarget)}
+   {fishingTools.baitTarget&&createPortal(baitControl,fishingTools.baitTarget)}
+   {fishingTools.equipmentTarget&&createPortal(equipmentControls,fishingTools.equipmentTarget)}
+  </>:<div role="group" aria-label="낚시 준비 도구" className="absolute bottom-[max(0.5rem,env(safe-area-inset-bottom))] left-2 z-20 grid w-40 grid-cols-2 gap-px overflow-hidden rounded-xl border border-[#D5B797] bg-[#D5B797] shadow-sm">{baitControl}{equipmentControls}</div>):<div className="flex items-center justify-between"><h2 className="font-semibold">미끼 인벤토리</h2><span className="flex items-center gap-1 text-sm"><GoldIcon/>{wallet.gold.toLocaleString('ko-KR')}</span></div>}
   {!state&&!error&&<p role="status" className={regionId?"sr-only":"text-sm"}>미끼를 불러오는 중…</p>}
   {error&&<div role="alert" className={regionId?"absolute inset-x-4 top-28 z-20 space-y-2 rounded-xl bg-background/95 p-3 text-sm text-destructive":"space-y-2 text-sm text-destructive"}><p>{error}</p>{!uncertain&&<Button variant="outline" onClick={()=>void Promise.all([reload(),refresh()])}>다시 불러오기</Button>}</div>}
   {goldError&&<p role="alert" className={regionId?"absolute inset-x-4 top-28 z-20 rounded-xl bg-background/95 p-3 text-sm text-destructive":"text-sm text-destructive"}>{goldError}</p>}

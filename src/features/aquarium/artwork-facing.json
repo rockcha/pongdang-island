@@ -1292,5 +1292,35 @@
     "path": "fish/epic/halloween-patchwork-shark_v2_sprite.png",
     "facing": "right",
     "sha256": "2fba9ee62bc2ea03adb7548297e4d440371f8f056cd6cb9f5e17874e687c958f"
+  },
+  {
+    "id": "halloween-witch-octopus",
+    "path": "fish/normal/halloween-witch-octopus_v1_sprite.png",
+    "facing": "right",
+    "sha256": "e349e6986340a448915baeb6e932db491fdd39dc30bdcedb1a844be7becc4b9a"
+  },
+  {
+    "id": "halloween-black-cat-shark",
+    "path": "fish/rare/halloween-black-cat-shark_v1_sprite.png",
+    "facing": "right",
+    "sha256": "4a4e71ad4d20a4a9928623c661c715f8afd625295e1d6a2ac0894ba733d3ec6f"
+  },
+  {
+    "id": "halloween-spiderweb-starfish",
+    "path": "fish/normal/halloween-spiderweb-starfish_v1_sprite.png",
+    "facing": "right",
+    "sha256": "6d3d3038fd619c5a1ef29c3712e01f6d85bc31a026ecbc9d5dc9d36aed1b04e9"
+  },
+  {
+    "id": "halloween-bat-squid",
+    "path": "fish/rare/halloween-bat-squid_v1_sprite.png",
+    "facing": "right",
+    "sha256": "d45b79cea898ef562f696bfc374e70bcc8d5431fda0559e9bf5ef12d20b65194"
+  },
+  {
+    "id": "halloween-magic-circle-urchin",
+    "path": "fish/normal/halloween-magic-circle-urchin_v1_sprite.png",
+    "facing": "right",
+    "sha256": "f808cff80b61c4f94ccad5f270495519f08f7994f215fcc6bb861e4b23d1af72"
   }
 ]

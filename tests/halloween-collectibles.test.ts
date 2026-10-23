@@ -8,14 +8,15 @@ const root='assets/storage-upload/new/20261023-212823'
 const manifest=JSON.parse(readFileSync(root+'/manifest.json','utf8'))
 const expansionRoot='assets/storage-upload/new/20261023-231240'
 const expansion=JSON.parse(readFileSync(expansionRoot+'/manifest.json','utf8'))
-const newSpecies=expansion.items.filter((s:{revision?:boolean})=>!s.revision)
+const five=JSON.parse(readFileSync('assets/storage-upload/new/20261024-005427/manifest.json','utf8'))
+const newSpecies=[...expansion.items.filter((s:{revision?:boolean})=>!s.revision),...five.items]
 let db:Awaited<ReturnType<typeof createLocalDatabase>>
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},60000)
 afterAll(async()=>{await db.close()})
 
-it('registers all 61 shared event species with explicit anatomy-based motion and prices',async()=>{
+it('registers all 66 shared event species with explicit anatomy-based motion and prices',async()=>{
  const {rows}=await db.query("select * from public.collectible_species where starts_with(id,'halloween-') order by id")
- expect(rows).toHaveLength(61)
+ expect(rows).toHaveLength(66)
  expect(rows.map(s=>s.id)).toEqual([...manifest.items,...newSpecies].map(s=>s.id).sort())
  const counts:Record<string,number>={}
  for(const s of rows){
@@ -27,14 +28,14 @@ it('registers all 61 shared event species with explicit anatomy-based motion and
   expect(s.movement_type).toBe(added?.movement_type??(s.kind==='fish'?['halloween-coffin-hermit-crab','halloween-sleepy-zombie-cory','halloween-one-horn-goblin-pleco'].includes(s.id)?'crawl':'swim':'fixed'))
   if(s.kind==='fish')expect(s.flip_with_direction).toBe(true)
  }
- expect(counts).toEqual({'fish/common':15,'fish/rare':10,'fish/epic':11,'fish/mythic':5,'trash/common':4,'trash/rare':6,'decoration/common':3,'decoration/rare':4,'decoration/epic':3})
+ expect(counts).toEqual({'fish/common':18,'fish/rare':12,'fish/epic':11,'fish/mythic':5,'trash/common':4,'trash/rare':6,'decoration/common':3,'decoration/rare':4,'decoration/epic':3})
  expect(rows.find(s=>s.id==='halloween-little-ghost-puffer')?.sell_price).toBe(325)
 })
 
 it('gates every new species at both KST boundaries without affecting ordinary catches',async()=>{
  for(const [at,available] of [['2026-10-23T23:59:59.999+09:00',false],['2026-10-24T00:00:00+09:00',true],['2026-10-31T23:59:59.999+09:00',true],['2026-11-01T00:00:00+09:00',false]] as const){
   const {rows}=await db.query("select count(*)::int n,bool_and(app_private.collectible_available_at(id,$1::timestamptz)=$2) correct from public.collectible_species where starts_with(id,'halloween-')",[at,available])
-  expect(rows[0]).toEqual({n:61,correct:true})
+  expect(rows[0]).toEqual({n:66,correct:true})
  }
 })
 
@@ -51,12 +52,13 @@ it('keeps the requested Halloween prices and rarity swaps idempotent',async()=>{
  for(const original of manifest.items){
   const extra=original.kind==='fish'?(increases[original.rarity]??0):0
   const expected=swaps[original.id]??{rarity:original.rarity,sell_price:original.sell_price+extra+(original.rarity==='epic'?200:0)}
-  expect(rows.find(s=>s.id===original.id),original.id).toMatchObject({...expected,sell_price:expected.sell_price+(expected.rarity==='rare'?100:0)})
+  expect(rows.find(s=>s.id===original.id),original.id).toMatchObject({...expected,sell_price:expected.sell_price+(expected.rarity==='rare'?100:0)+(original.kind==='trash'&&expected.rarity==='rare'?20:0)})
  }
  for(const added of newSpecies)expect(rows.find(s=>s.id===added.id)?.sell_price,added.id).toBe(added.sell_price+(added.rarity==='epic'?200:0))
  const sql=readFileSync('supabase/migrations/20261023144733_halloween_values_rarities_and_grubby_magnet.sql','utf8')
  const rareSql=readFileSync('supabase/migrations/20261023145940_halloween_rare_value_plus_100.sql','utf8')
- await db.exec(sql);await db.exec(rareSql);await db.exec(sql);await db.exec(rareSql)
+ const trashSql=readFileSync('supabase/migrations/20261023160642_rare_trash_value_plus_20.sql','utf8')
+ await db.exec(sql);await db.exec(rareSql);await db.exec(trashSql);await db.exec(sql);await db.exec(rareSql);await db.exec(trashSql)
  expect((await db.query("select id,sell_price,rarity from public.collectible_species where starts_with(id,'halloween-') order by id")).rows).toEqual(rows)
 })
 

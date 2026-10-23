@@ -9,6 +9,10 @@ export function HallTabIcon({kind}: {kind: 'honor' | 'fun'}) {
 }
 
 export function HallCategoryIcon({category}: {category: HallCategory}) {
+  if (category.id.endsWith('_plays')) {
+    const Icon = category.icon
+    return <span aria-hidden="true" className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-primary/5 text-primary"><Icon className="size-7" strokeWidth={1.7}/></span>
+  }
   const index = funCategories.findIndex(item => item.id === category.id)
   const honorIndex = hallCategories.findIndex(item => item.id === category.id)
   const cell = index < 0 ? honorIndex : index

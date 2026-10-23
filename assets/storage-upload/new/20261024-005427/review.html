@@ -1,0 +1,6 @@
+<!doctype html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local Halloween creature drafts</title></head><body><div id="root"></div><script type="module">
+import layouts from '/src/features/aquarium/halloween-frame-layouts.json'
+import manifest from './manifest.json'
+for(const item of manifest.items)layouts[new URL('./'+item.sprite_sheet_path,location.href).href]=layouts[item.sprite_sheet_path]
+await import('./review.tsx')
+</script></body></html>

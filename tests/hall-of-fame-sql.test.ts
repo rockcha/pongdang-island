@@ -131,6 +131,30 @@ afterAll(async () => {
 })
 
 describe('hall of fame rankings', () => {
+  it('splits arcade starts by game, counts each run once, and preserves top-five exclusion rules',async()=>{
+    await db.exec('begin')
+    try{
+      for(const [i,user] of ids.entries())await db.query(`insert into app_private.ladder_runs(user_id,operation_id,mode,stake,choice,bridges,payouts,destination,reward)
+       select $1,gen_random_uuid(),'calm',20,0,array_fill(0,array[12]),array[0,20,20,40],0,0 from generate_series(1,$2::int)`,[user,i+1])
+      await db.query(`insert into public.odd_even_runs(user_id,operation_id,wins,round,stage) values($1,gen_random_uuid(),5,6,'decision')`,[ids[0]])
+      await db.query(`insert into public.brick_game_runs(user_id,operation_id,seed,finished_at) select $1,gen_random_uuid(),i,case when i<3 then now() else null end from generate_series(1,3)i`,[ids[0]])
+      let rankings=(await feed()).rankings
+      expect(rankings.ladder_plays).toHaveLength(5)
+      expect(rankings.ladder_plays[0]).toMatchObject({id:ids[6],value:7,rank:1})
+      expect(rankings.odd_even_plays[0]).toMatchObject({id:ids[0],value:1})
+      expect(rankings.brick_plays[0]).toMatchObject({id:ids[0],value:3})
+      expect(rankings.shadow_plays[0]).toMatchObject({id:ids[0],value:1})
+      expect(rankings.memory_plays[0]).toMatchObject({id:ids[0],value:1})
+      expect(rankings.games[0]).toMatchObject({id:ids[0],value:7})
+      const sections=await asUser<Record<string,number>>(ids[0],'select public.hall_section_counts() data')
+      for(const key of ['ladder_plays','odd_even_plays','brick_plays','shadow_plays','memory_plays'])expect(sections[key]).toBe(0)
+      await db.query('update auth.users set email=$1 where id=$2',['1@1.com',ids[6]])
+      rankings=(await feed()).rankings
+      expect(rankings.ladder_plays[0]).toMatchObject({id:ids[5],value:6,rank:1})
+      expect(rankings.ladder_plays).toHaveLength(5)
+      expect(rankings.ladder_plays.some(p=>p.id===ids[6])).toBe(false)
+    }finally{await db.exec('rollback')}
+  })
   it('combines catch sources, excludes gifts and non-fish, and limits every category to five', async () => {
     const { rankings } = await feed()
     expect(rankings.casts).toHaveLength(5)

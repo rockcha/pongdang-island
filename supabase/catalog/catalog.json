@@ -275,6 +275,13 @@
       "tier": "mood"
     },
     {
+      "id": "halloween-pumpkin-garden",
+      "name": "유령들이 밝힌 호박 정원",
+      "price": 1000,
+      "image_path": "halloween-pumpkin-garden.png",
+      "tier": "special"
+    },
+    {
       "id": "icebubbles",
       "name": "빙하 속 기포",
       "price": 750,
@@ -1822,7 +1829,7 @@
       "size": 52,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/bukangi-shark-plush_thumbnail.png",
-      "sell_price": 20,
+      "sell_price": 40,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "swim",
@@ -1930,7 +1937,7 @@
       "size": 68,
       "rarity": "rare",
       "thumbnail_path": "trash/epic/cloud-broken-broom_thumbnail.png",
-      "sell_price": 90,
+      "sell_price": 110,
       "sprite_sheet_path": null,
       "native_region_id": "cloudferry",
       "movement_type": "fixed",
@@ -2650,7 +2657,7 @@
       "size": 52,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/cracked-pressure-gauge_thumbnail.png",
-      "sell_price": 9,
+      "sell_price": 29,
       "sprite_sheet_path": null,
       "native_region_id": "dreamabyss",
       "movement_type": "fixed",
@@ -2704,7 +2711,7 @@
       "size": 52,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/dented-diving-lamp_thumbnail.png",
-      "sell_price": 9,
+      "sell_price": 29,
       "sprite_sheet_path": null,
       "native_region_id": "dreamabyss",
       "movement_type": "fixed",
@@ -2758,7 +2765,7 @@
       "size": 48,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/dolphin-plush_thumbnail.png",
-      "sell_price": 20,
+      "sell_price": 40,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "swim",
@@ -3226,7 +3233,7 @@
       "size": 64,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/gold-dust-glass-bottle_thumbnail.png",
-      "sell_price": 414,
+      "sell_price": 434,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "fixed",
@@ -3280,7 +3287,7 @@
       "size": 54,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/half-magic-box_thumbnail.png",
-      "sell_price": 55,
+      "sell_price": 75,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "swim",
@@ -3321,6 +3328,42 @@
       "native_region_id": null,
       "movement_type": "fixed",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "halloween-bat-squid",
+      "kind": "fish",
+      "name": "박쥐오징어",
+      "description": "검은 망토 같은 지느러미를 펼치는 작은 오징어. 보랏빛 막이 물결처럼 흔들린다.",
+      "swim_y_min": "0.23",
+      "swim_y_max": "0.77",
+      "speed": "0.024",
+      "size": 60,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/halloween-bat-squid_v1_thumbnail.png",
+      "sell_price": 290,
+      "sprite_sheet_path": "fish/rare/halloween-bat-squid_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "halloween-black-cat-shark",
+      "kind": "fish",
+      "name": "검은고양이상어",
+      "description": "노란 고양이 눈을 가진 새까만 상어. 꼬리를 살랑이며 어둠 속을 조용히 헤엄친다.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.76",
+      "speed": "0.028",
+      "size": 60,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/halloween-black-cat-shark_v1_thumbnail.png",
+      "sell_price": 330,
+      "sprite_sheet_path": "fish/rare/halloween-black-cat-shark_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -3514,7 +3557,7 @@
       "size": 55,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/halloween-discarded-resurrection-manual_v1_thumbnail.png",
-      "sell_price": 138,
+      "sell_price": 158,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "fixed",
@@ -3658,7 +3701,7 @@
       "size": 55,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/halloween-ghost-ship-compass_v1_thumbnail.png",
-      "sell_price": 142,
+      "sell_price": 162,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "fixed",
@@ -3748,7 +3791,7 @@
       "size": 55,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/halloween-headless-portrait_v1_thumbnail.png",
-      "sell_price": 140,
+      "sell_price": 160,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "fixed",
@@ -3824,6 +3867,24 @@
       "sprite_sheet_path": "fish/normal/halloween-little-ghost-puffer_v2_sprite.png",
       "native_region_id": null,
       "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "halloween-magic-circle-urchin",
+      "kind": "fish",
+      "name": "마법진 성게",
+      "description": "가시 사이에 작은 마법진이 빛나는 성게. 바닷바닥을 천천히 걸으며 은은한 마력을 흘린다.",
+      "swim_y_min": "0.85",
+      "swim_y_max": "0.95",
+      "speed": "0.006",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/halloween-magic-circle-urchin_v1_thumbnail.png",
+      "sell_price": 310,
+      "sprite_sheet_path": "fish/normal/halloween-magic-circle-urchin_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
       "flip_with_direction": true,
       "travel_direction": "both"
     },
@@ -4072,7 +4133,7 @@
       "size": 55,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/halloween-returned-cursed-doll_v1_thumbnail.png",
-      "sell_price": 135,
+      "sell_price": 155,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "fixed",
@@ -4224,6 +4285,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "halloween-spiderweb-starfish",
+      "kind": "fish",
+      "name": "거미줄 불가사리",
+      "description": "자줏빛 몸 위에 하얀 거미줄 무늬가 펼쳐진 불가사리. 작은 팔로 모랫바닥을 느긋하게 걷는다.",
+      "swim_y_min": "0.85",
+      "swim_y_max": "0.95",
+      "speed": "0.007",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/halloween-spiderweb-starfish_v1_thumbnail.png",
+      "sell_price": 56,
+      "sprite_sheet_path": "fish/normal/halloween-spiderweb-starfish_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "halloween-thirteenth-invitation",
       "kind": "trash",
       "name": "열세 번째 초대장",
@@ -4234,7 +4313,7 @@
       "size": 55,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/halloween-thirteenth-invitation_v1_thumbnail.png",
-      "sell_price": 128,
+      "sell_price": 148,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "fixed",
@@ -4288,7 +4367,7 @@
       "size": 55,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/halloween-vampire-coffin_v1_thumbnail.png",
-      "sell_price": 150,
+      "sell_price": 170,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "fixed",
@@ -4382,6 +4461,24 @@
       "sprite_sheet_path": "fish/epic/halloween-witch-jellyfish-malefica_v1_sprite.png",
       "native_region_id": null,
       "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "halloween-witch-octopus",
+      "kind": "fish",
+      "name": "마녀 문어",
+      "description": "뾰족한 마녀 모자를 쓰고 바닷바닥을 산책하는 문어. 모자 끝이 물살을 따라 살랑인다.",
+      "swim_y_min": "0.84",
+      "swim_y_max": "0.95",
+      "speed": "0.009",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/halloween-witch-octopus_v1_thumbnail.png",
+      "sell_price": 64,
+      "sprite_sheet_path": "fish/normal/halloween-witch-octopus_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
       "flip_with_direction": true,
       "travel_direction": "both"
     },
@@ -6898,7 +6995,7 @@
       "size": 46,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/octopus-plush_thumbnail.png",
-      "sell_price": 20,
+      "sell_price": 40,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "swim",
@@ -7222,7 +7319,7 @@
       "size": 68,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/pirate-coin-bundle_thumbnail.png",
-      "sell_price": 430,
+      "sell_price": 450,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "fixed",
@@ -7348,7 +7445,7 @@
       "size": 56,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/pongdang-merch-set_thumbnail.png",
-      "sell_price": 30,
+      "sell_price": 50,
       "sprite_sheet_path": null,
       "native_region_id": "pongdang",
       "movement_type": "swim",
@@ -7510,7 +7607,7 @@
       "size": 44,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/pongi-plush_thumbnail.png",
-      "sell_price": 20,
+      "sell_price": 40,
       "sprite_sheet_path": null,
       "native_region_id": "pongdang",
       "movement_type": "swim",
@@ -7546,7 +7643,7 @@
       "size": 44,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/pongi-snack-wrapper_thumbnail.png",
-      "sell_price": 10,
+      "sell_price": 30,
       "sprite_sheet_path": null,
       "native_region_id": "pongdang",
       "movement_type": "swim",
@@ -7852,7 +7949,7 @@
       "size": 58,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/salvaged-gold-fragment_thumbnail.png",
-      "sell_price": 422,
+      "sell_price": 442,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "fixed",
@@ -9922,7 +10019,7 @@
       "size": 90,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/siren-odysseus-helmet_thumbnail.png",
-      "sell_price": 30,
+      "sell_price": 50,
       "sprite_sheet_path": null,
       "native_region_id": "siren",
       "movement_type": "fixed",
@@ -9976,7 +10073,7 @@
       "size": 80,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/siren-perseus-shield_thumbnail.png",
-      "sell_price": 70,
+      "sell_price": 90,
       "sprite_sheet_path": null,
       "native_region_id": "siren",
       "movement_type": "fixed",
@@ -10264,7 +10361,7 @@
       "size": 72,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/siren-zeus-lightning_thumbnail.png",
-      "sell_price": 90,
+      "sell_price": 110,
       "sprite_sheet_path": null,
       "native_region_id": "siren",
       "movement_type": "fixed",
@@ -11290,7 +11387,7 @@
       "size": 54,
       "rarity": "rare",
       "thumbnail_path": "trash/rare/whale-plush_thumbnail.png",
-      "sell_price": 20,
+      "sell_price": 40,
       "sprite_sheet_path": null,
       "native_region_id": null,
       "movement_type": "swim",
@@ -13526,6 +13623,110 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "halloween-bat-squid",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-bat-squid",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-bat-squid",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-bat-squid",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-bat-squid",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-bat-squid",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-bat-squid",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-bat-squid",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-bat-squid",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-bat-squid",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-bat-squid",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-bat-squid",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-bat-squid",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "halloween-black-cat-shark",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-black-cat-shark",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-black-cat-shark",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-black-cat-shark",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-black-cat-shark",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-black-cat-shark",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-black-cat-shark",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-black-cat-shark",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-black-cat-shark",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-black-cat-shark",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-black-cat-shark",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-black-cat-shark",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-black-cat-shark",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "halloween-bone-armored-shark-necras",
       "region_id": "bluegrove"
     },
@@ -14982,6 +15183,58 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "halloween-magic-circle-urchin",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-magic-circle-urchin",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-magic-circle-urchin",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-magic-circle-urchin",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-magic-circle-urchin",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-magic-circle-urchin",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-magic-circle-urchin",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-magic-circle-urchin",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-magic-circle-urchin",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-magic-circle-urchin",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-magic-circle-urchin",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-magic-circle-urchin",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-magic-circle-urchin",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "halloween-masquerade-lionfish",
       "region_id": "bluegrove"
     },
@@ -16126,6 +16379,58 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "halloween-spiderweb-starfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-spiderweb-starfish",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-spiderweb-starfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-spiderweb-starfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-spiderweb-starfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-spiderweb-starfish",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-spiderweb-starfish",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-spiderweb-starfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-spiderweb-starfish",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-spiderweb-starfish",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-spiderweb-starfish",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-spiderweb-starfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-spiderweb-starfish",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "halloween-thirteenth-invitation",
       "region_id": "bluegrove"
     },
@@ -16591,6 +16896,58 @@
     },
     {
       "species_id": "halloween-witch-jellyfish-malefica",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "halloween-witch-octopus",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-witch-octopus",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-witch-octopus",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-witch-octopus",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-witch-octopus",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-witch-octopus",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-witch-octopus",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-witch-octopus",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-witch-octopus",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-witch-octopus",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-witch-octopus",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-witch-octopus",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-witch-octopus",
       "region_id": "whitenight"
     },
     {
@@ -23784,7 +24141,7 @@
     },
     {
       "id": "broken-kingdom-tile",
-      "sell_price": 25
+      "sell_price": 45
     },
     {
       "id": "chipped-lucky-die",
@@ -23876,7 +24233,7 @@
     },
     {
       "id": "hourglass-bottle",
-      "sell_price": 20
+      "sell_price": 40
     },
     {
       "id": "jetblack-orca",
@@ -23992,7 +24349,7 @@
     },
     {
       "id": "stopped-moon-watch",
-      "sell_price": 15
+      "sell_price": 35
     },
     {
       "id": "sunken-kingdom-fountain",
@@ -24032,7 +24389,7 @@
     },
     {
       "id": "wandering-pocket-compass",
-      "sell_price": 25
+      "sell_price": 45
     },
     {
       "id": "waterdrop-comb-jelly",

@@ -12,6 +12,11 @@ import {
   TrendingUp,
   Trophy,
   Waves,
+  Route,
+  Dices,
+  BrickWall,
+  ScanSearch,
+  Brain,
 } from 'lucide-react'
 
 export const hallCategories = [
@@ -222,6 +227,46 @@ export const funCategories = [
     unit: '회',
     icon: HandHeart,
     description: '친구 먹이 주기·어항 청소를 완료한 횟수와 통발에 순풍을 보낸 횟수를 합산해요.',
+  },
+  {
+    id: 'ladder_plays',
+    title: '사다리를 플레이한 누적 횟수 · 무료 연습 제외',
+    label: '사다리의 왕',
+    unit: '회',
+    icon: Route,
+    description: '서버에 기록된 사다리 플레이 횟수예요. 한 판을 한 번으로 세며 무료 연습은 제외해요.',
+  },
+  {
+    id: 'odd_even_plays',
+    title: '홀짝을 시작한 누적 횟수 · 무료 연습 제외',
+    label: '홀짝의 왕',
+    unit: '회',
+    icon: Dices,
+    description: '서버에 기록된 홀짝 시작 횟수예요. 한 판의 여러 라운드는 한 번으로 세며 무료 연습은 제외해요.',
+  },
+  {
+    id: 'brick_plays',
+    title: '벽돌깨기를 시작한 누적 횟수 · 무료 연습 제외',
+    label: '벽돌깨기의 왕',
+    unit: '회',
+    icon: BrickWall,
+    description: '서버에 기록된 벽돌깨기 시작 횟수예요. 진행 중인 판도 포함하며 무료 연습은 제외해요.',
+  },
+  {
+    id: 'shadow_plays',
+    title: '그림자 맞히기를 시작한 누적 횟수 · 무료 연습 제외',
+    label: '그림자 맞히기의 왕',
+    unit: '회',
+    icon: ScanSearch,
+    description: '서버에 기록된 그림자 맞히기 시작 횟수예요. 한 판을 한 번으로 세며 무료 연습은 제외해요.',
+  },
+  {
+    id: 'memory_plays',
+    title: '기억력 게임을 시작한 누적 횟수 · 무료 연습 제외',
+    label: '기억력 게임의 왕',
+    unit: '회',
+    icon: Brain,
+    description: '서버에 기록된 기억력 게임 시작 횟수예요. 한 판을 한 번으로 세며 무료 연습은 제외해요.',
   },
 ] as const
 export type HallCategory = (typeof hallCategories)[number] | (typeof funCategories)[number]

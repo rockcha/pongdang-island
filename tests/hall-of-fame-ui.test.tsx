@@ -127,7 +127,8 @@ it('orders both tabs and opens section discussions', async () => {
       .slice(0, 4)
       .map((h) => h.textContent),
   ).toEqual(['바다 전세 낸 퐁이', '손이 미끄러웠을 뿐', '어항 인테리어 장인', '바닷가 청소부'])
-  expect(screen.getAllByText('집계 기준')).toHaveLength(10)
+  expect(screen.getAllByText('집계 기준')).toHaveLength(15)
+  for(const label of ['사다리의 왕','홀짝의 왕','벽돌깨기의 왕','그림자 맞히기의 왕','기억력 게임의 왕'])expect(screen.getByRole('heading',{name:label})).toBeTruthy()
   expect(screen.getByText('직접 낚시로 건져 올린 쓰레기의 누적 개수')).toBeTruthy()
   expect(document.querySelectorAll('[style*="fun-records.png"]')).toHaveLength(10)
   expect(screen.queryByText('최다 연속 성공')).toBeNull()

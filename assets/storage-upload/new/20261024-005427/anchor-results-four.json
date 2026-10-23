@@ -1,0 +1,187 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261024-005427/fish/normal/halloween-witch-octopus_v1_sprite.png",
+        "storage_path":  "fish/normal/halloween-witch-octopus_v1_sprite.png",
+        "patch":  [
+                      368,
+                      277,
+                      47,
+                      47
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -7,
+                           "dy":  3,
+                           "rmse":  8.3628059547917282
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  3,
+                           "dy":  -44,
+                           "rmse":  12.44923284534031
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -6,
+                           "dy":  -41,
+                           "rmse":  11.699651103238079
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261024-005427/fish/rare/halloween-black-cat-shark_v1_sprite.png",
+        "storage_path":  "fish/rare/halloween-black-cat-shark_v1_sprite.png",
+        "patch":  [
+                      438,
+                      312,
+                      47,
+                      47
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  1,
+                           "dy":  0,
+                           "rmse":  14.052600682347022
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -37,
+                           "rmse":  16.904719200566451
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  1,
+                           "dy":  -37,
+                           "rmse":  17.243006961156745
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261024-005427/fish/normal/halloween-spiderweb-starfish_v1_sprite.png",
+        "storage_path":  "fish/normal/halloween-spiderweb-starfish_v1_sprite.png",
+        "patch":  [
+                      470,
+                      412,
+                      40,
+                      40
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  9.2817986249587268
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -39,
+                           "rmse":  7.6223858014484183
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -39,
+                           "rmse":  10.196037645745987
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261024-005427/fish/rare/halloween-bat-squid_v1_sprite.png",
+        "storage_path":  "fish/rare/halloween-bat-squid_v1_sprite.png",
+        "patch":  [
+                      368,
+                      317,
+                      47,
+                      47
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -39,
+                           "dy":  0,
+                           "rmse":  12.188501561410245
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -71,
+                           "rmse":  16.108367148395271
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -39,
+                           "dy":  -71,
+                           "rmse":  16.765646842949426
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261024-005427/fish/normal/halloween-magic-circle-urchin_v1_sprite.png",
+        "storage_path":  "fish/normal/halloween-magic-circle-urchin_v1_sprite.png",
+        "patch":  [
+                      444,
+                      389,
+                      40,
+                      40
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -28,
+                           "dy":  0,
+                           "rmse":  15.55884976861879
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -56,
+                           "rmse":  9.9285071940368166
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -26,
+                           "dy":  -56,
+                           "rmse":  14.331177657862751
+                       }
+                   ]
+    }
+]

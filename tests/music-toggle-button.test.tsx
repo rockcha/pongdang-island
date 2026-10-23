@@ -3,10 +3,16 @@ import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
 import {MemoryRouter} from 'react-router'
 import {MusicToggleButton} from '@/features/music/music-toggle-button'
 
-const music=vi.hoisted(()=>({tracks:[{id:'first',title:'첫 곡',customName:''},{id:'current',title:'현재 곡',customName:''}],activeId:null as string|null,playing:false,loading:false,error:'',volume:70,setVolume:vi.fn(),reload:vi.fn(),play:vi.fn(),pause:vi.fn()}))
+const music=vi.hoisted(()=>({tracks:[{id:'first',title:'첫 곡',customName:''},{id:'current',title:'현재 곡',customName:''}],activeId:null as string|null,playing:false,loading:false,error:'',volume:70,setVolume:vi.fn(),reload:vi.fn(),play:vi.fn(),pause:vi.fn(),stop:vi.fn()}))
 vi.mock('@/features/music/music-provider',()=>({useMusic:()=>music}))
 afterEach(()=>{cleanup();vi.clearAllMocks();vi.unstubAllGlobals();music.activeId=null;music.playing=false;music.loading=false;music.error='';music.tracks=[{id:'first',title:'첫 곡',customName:''},{id:'current',title:'현재 곡',customName:''}]})
 const view=()=> <MemoryRouter><MusicToggleButton/></MemoryRouter>
+it('offers explicit playback termination independently of dismissing the music panel',async()=>{
+ music.activeId='current';music.playing=true;render(view());await open()
+ fireEvent.click(screen.getByRole('button',{name:'재생 종료'}));expect(music.stop).toHaveBeenCalledOnce()
+ expect(music.pause).not.toHaveBeenCalled()
+ expect(screen.getByRole('dialog',{name:'내 음악'})).toBeTruthy()
+})
 async function open(){fireEvent.click(screen.getByRole('button',{name:'내 음악 열기'}));return screen.findByRole('dialog',{name:'내 음악'})}
 it('opens without changing playback, selects songs, controls playback and keeps playing when dismissed',async()=>{
  const rendered=render(view());await open()

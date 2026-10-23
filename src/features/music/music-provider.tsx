@@ -32,7 +32,7 @@ export function MusicProvider({children,storageKey,userId}:{children:ReactNode;s
  const setVolume=(value:number)=>{if(!Number.isFinite(value))return;const next=Math.max(0,Math.min(100,Math.round(value)));volumeRef.current=next;storeVolume(next);player.current?.setVolume?.(next);try{localStorage.setItem(storageKey+':volume',String(next))}catch{/* Keep volume usable without storage. */}}
  const [attempt,setAttempt]=useState(0)
  const host=useRef<HTMLDivElement>(null),player=useRef<Player|null>(null)
- const wantsPlayback=useRef(true)
+ const wantsPlayback=useRef(false)
  useEffect(()=>{
   const relinquish=(event:Event)=>{if((event as CustomEvent).detail!=='library'){wantsPlayback.current=false;player.current?.pauseVideo();setPlaying(false)}}
   window.addEventListener(playbackEvent,relinquish)
@@ -68,11 +68,12 @@ export function MusicProvider({children,storageKey,userId}:{children:ReactNode;s
  const [bounds,setBounds]=useState<DOMRect|null>(null)
  const [clip,setClip]=useState('inset(0px)')
  useEffect(()=>{
-  // Browser/player interruptions must not replace an explicit playback choice.
-  const resume=()=>{if(document.visibilityState==='visible'&&wantsPlayback.current)player.current?.playVideo()}
-  window.addEventListener('focus',resume)
-  document.addEventListener('visibilitychange',resume)
-  return()=>{window.removeEventListener('focus',resume);document.removeEventListener('visibilitychange',resume)}
+  // Leaving the app revokes playback intent; returning requires a fresh gesture.
+  const suspend=()=>{wantsPlayback.current=false;player.current?.pauseVideo();setPlaying(false)}
+  const visibility=()=>{if(document.visibilityState==='hidden')suspend()}
+  window.addEventListener('pagehide',suspend)
+  document.addEventListener('visibilitychange',visibility)
+  return()=>{window.removeEventListener('pagehide',suspend);document.removeEventListener('visibilitychange',visibility)}
  },[])
  useEffect(()=>{
   if(!slot){setBounds(null);return}
@@ -99,7 +100,7 @@ export function MusicProvider({children,storageKey,userId}:{children:ReactNode;s
   const element=document.createElement('div');host.current.append(element)
   void loadYouTube().then(YT=>{
    if(cancelled)return
-   player.current=new YT.Player(element,{width:'100%',height:'100%',videoId:activeId,playerVars:{autoplay:1,loop:1,playlist:activeId,playsinline:1,origin:window.location.origin},events:{
+   player.current=new YT.Player(element,{width:'100%',height:'100%',videoId:activeId,playerVars:{autoplay:0,loop:1,playlist:activeId,playsinline:1,origin:window.location.origin},events:{
     onReady:({target}:PlayerEvent)=>{if(cancelled)return;target.setVolume?.(volumeRef.current);if(wantsPlayback.current)target.playVideo();else target.pauseVideo();const title=target.getVideoData().title;if(title)cacheTitle(activeId,title)},
     onStateChange:({data,target}:PlayerEvent)=>{if(cancelled)return;if(data===1&&!wantsPlayback.current){target.pauseVideo();setPlaying(false);return}setPlaying(data===1);const title=target.getVideoData().title;if(title)cacheTitle(activeId,title)},
     onAutoplayBlocked:()=>{if(!cancelled){setPlaying(false);toast.info('음악 재생 버튼을 다시 눌러 주세요.')}},
@@ -110,7 +111,7 @@ export function MusicProvider({children,storageKey,userId}:{children:ReactNode;s
  },[activeId,attempt])
  const pause=()=>{wantsPlayback.current=false;player.current?.pauseVideo?.();setPlaying(false)}
  const stop=()=>{pause();setActiveId(null)}
- const play=(id:string)=>{claimPlayback('library');wantsPlayback.current=true;if(activeId===id&&player.current)player.current.playVideo?.();else{setActiveId(id);setAttempt(n=>n+1)}}
+ const play=(id:string)=>{if(document.visibilityState==='hidden')return;claimPlayback('library');wantsPlayback.current=true;if(activeId===id&&player.current)player.current.playVideo?.();else{setActiveId(id);setAttempt(n=>n+1)}}
  return <MusicContext.Provider value={{setPlayerSlot,tracks,activeId,playing,volume,setVolume,play,pause,stop,loading:!ready&&!error,error,reload:()=>setReloadId(n=>n+1),add:track=>mutate('add',track.id,track.title,track.customName),remove:async id=>{await mutate('delete',id);if(id===activeId)stop()},rename:(id,name)=>mutate('rename',id,'',name)}}>
   {children}
   {activeId&&<div ref={host} aria-label="음악 플레이어" aria-hidden={!bounds} className="fixed z-30 overflow-hidden rounded-xl bg-black" style={{top:bounds?.top??0,left:bounds?.left??0,width:bounds?.width??320,height:bounds?.height??224,clipPath:clip,visibility:bounds?'visible':'hidden',pointerEvents:bounds?'auto':'none'}}/>}

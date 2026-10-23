@@ -54,10 +54,11 @@ it('keeps one looping player across navigation, reflects actual playback, and st
  expect(screen.getByLabelText('음악 플레이어')).toBe(playerElement)
  expect(playerElement.style.visibility).toBe('hidden')
  expect(screen.getByText('playing')).toBeTruthy()
- Object.defineProperty(document,'visibilityState',{configurable:true,value:'hidden'})
- fireEvent(document,new Event('visibilitychange'));expect(pauseVideo).not.toHaveBeenCalled()
- Object.defineProperty(document,'visibilityState',{configurable:true,value:'visible'})
- fireEvent(window,new Event('focus'));expect(playVideo).toHaveBeenCalledTimes(1)
+ const visibility=vi.spyOn(document,'visibilityState','get').mockReturnValue('hidden')
+ fireEvent(document,new Event('visibilitychange'));expect(pauseVideo).toHaveBeenCalledOnce()
+ expect(screen.getByText('paused')).toBeTruthy()
+ visibility.mockReturnValue('visible')
+ fireEvent(document,new Event('visibilitychange'));fireEvent(window,new Event('focus'));expect(playVideo).not.toHaveBeenCalled()
  fireEvent.click(screen.getByText('pause'));playVideo.mockClear()
  fireEvent(document,new Event('visibilitychange'));fireEvent(window,new Event('focus'));expect(playVideo).not.toHaveBeenCalled()
  fireEvent.click(screen.getByText('play'))
@@ -65,6 +66,27 @@ it('keeps one looping player across navigation, reflects actual playback, and st
  fireEvent.click(screen.getByText('rename'));await waitFor(()=>expect(JSON.parse(localStorage.getItem('music')!)[0].customName).toBe('내 노래'))
  fireEvent.click(screen.getByText('remove'));await waitFor(()=>expect(destroy).toHaveBeenCalled());expect(pauseVideo).toHaveBeenCalled();expect(screen.queryByLabelText('음악 플레이어')).toBeNull()
  await waitFor(()=>expect(readTracks('music')).toHaveLength(2));view.unmount()
+})
+
+it('revokes pending playback on pagehide and destroys the player on explicit stop',async()=>{
+ localStorage.setItem('stop-test',JSON.stringify(defaultTracks.map(t=>({...t,title:'Saved song'}))))
+ let events:Record<string,(e:unknown)=>void>={}
+ const target={setVolume:vi.fn(),playVideo:vi.fn(),pauseVideo:vi.fn(),destroy:vi.fn(),getVideoData:()=>({title:'Saved song'})}
+ window.YT={Player:vi.fn(function(_element:HTMLElement,options:Record<string,unknown>){events=options.events as typeof events;expect(options.playerVars).toMatchObject({autoplay:0,playsinline:1});return target}) as unknown as NonNullable<typeof window.YT>['Player']}
+ function StopControls(){const m=useMusic();return <><button onClick={()=>m.play(m.tracks[0].id)}>start</button><button onClick={m.stop}>stop</button></>}
+ render(<MusicProvider storageKey="stop-test"><StopControls/></MusicProvider>)
+ fireEvent.click(screen.getByText('start'))
+ await waitFor(()=>expect(events.onReady).toBeTruthy())
+ fireEvent(window,new Event('pagehide'))
+ act(()=>events.onReady({target}))
+ act(()=>events.onStateChange({data:1,target}))
+ expect(target.playVideo).not.toHaveBeenCalled()
+ expect(target.pauseVideo).toHaveBeenCalled()
+ fireEvent.click(screen.getByText('start'));expect(target.playVideo).toHaveBeenCalledOnce()
+ fireEvent.click(screen.getByText('stop'))
+ expect(target.destroy).toHaveBeenCalledOnce()
+ expect(screen.queryByLabelText('음악 플레이어')).toBeNull()
+ fireEvent(window,new Event('focus'));expect(target.playVideo).toHaveBeenCalledOnce()
 })
 
 it('pauses library music for a region and prevents focus and late player events from resuming it',async()=>{

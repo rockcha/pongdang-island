@@ -1,0 +1,23 @@
+{
+  "generator": "built-in image_gen",
+  "items": [
+    {
+      "id": "halloween-pumpkin-garden",
+      "name": "유령들이 밝힌 호박 정원",
+      "tier": "special",
+      "price": 1000,
+      "file": "aquarium-backgrounds/halloween-pumpkin-garden.png",
+      "ref": "assets/storage-upload/new/20261019-090840/aquarium-backgrounds/undersea-teahouse.png",
+      "referenceRole": "Painterly underwater style and open central space; distinct Halloween architecture and props",
+      "prompt": "Use case: stylized-concept. Asset: production background for a portrait mobile AQUARIUM game, vertical 9:16 composition. Reference is STYLE and OPEN CENTRAL PLAY SPACE only: painterly polished fantasy underwater illustration with warm lamps and deep aquatic blue depth; do not copy Japanese architecture or tea props. Create 'The Ghosts' Pumpkin Garden', a beautiful cute-spooky HALLOWEEN garden entirely SUBMERGED UNDERWATER. Upper left/right borders: sunken wrought iron gothic garden arch fragments covered in teal kelp, purple coral and tiny softly glowing pumpkin lanterns hung by chains. Lower side terraces: three or four carved amber jack-o-lanterns with cozy light, violet anemones, small old stone garden gate and broken mossy steps. Two tiny friendly translucent sheet ghosts at far side edges only, not center. A very distant softened haunted conservatory on the FAR RIGHT background. Subtle bubbles, top rippling water caustics and soft lavender-blue underwater shafts; unmistakably underwater, no land sky, open air moon, dry forest or human room. Main central 60% width from top to lower quarter is calm unobstructed low contrast deep turquoise-indigo water fading into distance for live fish overlay. Keep high contrast decoration at perimeter and lower corners. Bottommost 15% a gently lit clean sandy seabed, no big foreground centerpiece. Elegant rich warm amber vs cool violet-teal palette, detailed built structures of a special premium theme, magical and cozy instead of frightening. High-quality cohesive full-bleed painting, no fish or large characters baked in, no text, letters, UI, watermark, border or logos. Opaque complete background.",
+      "source": "halloween-pumpkin-garden.source",
+      "sha256": "afd4ec1b7ffdb1fc984b12442a57eb3d79a24a9413b88affec959e52667e803e"
+    }
+  ],
+  "deployment": {
+    "project": "ewafafphiovbpjwogwzn",
+    "verifiedAt": "2026-10-23T15:41:33.890Z",
+    "scope": "single aquarium background row and public image hash",
+    "migration": "20261023153807_halloween_pumpkin_garden_theme.sql"
+  }
+}

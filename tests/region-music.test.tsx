@@ -21,7 +21,7 @@ beforeEach(() => {
   players = []
   vi.stubGlobal('Audio', FakeAudio)
 })
-afterEach(() => { cleanup(); vi.useRealTimers(); vi.unstubAllGlobals() })
+afterEach(() => { cleanup(); vi.useRealTimers(); vi.restoreAllMocks(); vi.unstubAllGlobals() })
 it('starts only the supported map, loops, and stops on leaving', async () => {
   const view = render(<RegionMusic regionId="dreamabyss"/>)
   expect(players).toHaveLength(0)
@@ -124,6 +124,31 @@ it('plays the dinosaur island track and keeps the saved volume', async () => {
   view.unmount()
   expect(players[0].pause).toHaveBeenCalled()
 })
+it('pauses when hidden and waits for a manual restart after returning',async()=>{
+ const visibility=vi.spyOn(document,'visibilityState','get').mockReturnValue('visible')
+ render(<RegionMusic regionId="pongdang"/>)
+ await screen.findByText('퐁당섬의 선율')
+ visibility.mockReturnValue('hidden')
+ fireEvent(document,new Event('visibilitychange'))
+ expect(players[0].pause).toHaveBeenCalledOnce()
+ expect(screen.getByText('배경음악 꺼짐')).toBeTruthy()
+ visibility.mockReturnValue('visible')
+ fireEvent(document,new Event('visibilitychange'));fireEvent(window,new Event('focus'))
+ expect(players[0].play).toHaveBeenCalledOnce()
+ fireEvent.click(screen.getByLabelText('배경음악 켜기'))
+ await screen.findByText('퐁당섬의 선율')
+ expect(players[0].play).toHaveBeenCalledTimes(2)
+ fireEvent(window,new Event('pagehide'))
+ expect(players[0].pause).toHaveBeenCalledTimes(2)
+})
+
+it('does not start region music while initially hidden',()=>{
+ vi.spyOn(document,'visibilityState','get').mockReturnValue('hidden')
+ render(<RegionMusic regionId="pongdang"/>)
+ expect(players[0].play).not.toHaveBeenCalled()
+ expect(screen.getByText('배경음악 꺼짐')).toBeTruthy()
+})
+
 it('remembers off and the saved volume with only one toggle button', async () => {
   localStorage.setItem('pongdang:region-music-volume','55')
   const view = render(<RegionMusic regionId="pongdang"/>)

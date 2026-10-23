@@ -47,7 +47,7 @@ function MapMusic({track}: {track: (typeof tracks)[string]}) {
   }, [])
   const start = useCallback(() => {
     const player = audio.current
-    if (!player) return
+    if (!player || document.visibilityState==='hidden') return
     claimPlayback('region')
     const attempt = ++generation.current
     setState('loading')
@@ -70,11 +70,16 @@ function MapMusic({track}: {track: (typeof tracks)[string]}) {
     }
     player.addEventListener('error', onError)
     window.addEventListener(playbackEvent, onOwnership)
+    const visibility = () => { if (document.visibilityState==='hidden') pause() }
+    document.addEventListener('visibilitychange', visibility)
+    window.addEventListener('pagehide', pause)
     if (initialEnabled.current) start()
     return () => {
       generation.current++
       player.removeEventListener('error', onError)
       window.removeEventListener(playbackEvent, onOwnership)
+      document.removeEventListener('visibilitychange', visibility)
+      window.removeEventListener('pagehide', pause)
       player.pause()
       player.removeAttribute('src')
       player.load()

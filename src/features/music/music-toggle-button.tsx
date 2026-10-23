@@ -1,7 +1,7 @@
 import {useEffect,useState} from 'react'
 import {Popover} from '@base-ui/react/popover'
 import {Link} from 'react-router'
-import {Music2,Pause,Play,SkipBack,SkipForward,Volume2,X,ChevronRight} from 'lucide-react'
+import {Music2,Pause,Play,SkipBack,SkipForward,Volume2,X,ChevronRight,Square} from 'lucide-react'
 import {Dialog,DialogContent,DialogTitle,DialogDescription,DialogTrigger} from '@/components/ui/dialog'
 import {WoodTurntableIcon} from './wood-turntable-icon'
 import {useMusic} from './music-provider'
@@ -12,7 +12,7 @@ export function MusicToggleButton(){
  const [open,setOpen]=useState(false)
  const [mobile,setMobile]=useState(()=>typeof window.matchMedia==='function'&&window.matchMedia('(max-width: 639px)').matches)
  useEffect(()=>{if(typeof window.matchMedia!=='function')return;const media=window.matchMedia('(max-width: 639px)');const change=()=>setMobile(media.matches);media.addEventListener('change',change);return()=>media.removeEventListener('change',change)},[])
- const {tracks,activeId,playing,loading,error,volume,setVolume,play,pause,reload}=music
+ const {tracks,activeId,playing,loading,error,volume,setVolume,play,pause,stop,reload}=music
  const selected=tracks.findIndex(track=>track.id===activeId)
  const track=tracks[selected]??tracks[0]
  const title=track?.customName||track?.title||'제목을 불러오는 중…'
@@ -32,6 +32,7 @@ export function MusicToggleButton(){
   </div>
   <div className="shrink-0 border-t border-primary/10 px-5 pb-4 pt-3">
    <div className="mb-3 flex items-center justify-center gap-4"><button type="button" aria-label="이전 곡" className={control} disabled={unavailable} onClick={()=>skip(-1)}><SkipBack className="size-4"/></button><button type="button" aria-label={playing?'음악 일시정지':'음악 재생'} className={control+' size-11 bg-primary text-primary-foreground shadow-sm hover:bg-primary/90'} disabled={!playing&&unavailable} onClick={()=>{if(playing)pause();else if(track)play(track.id)}}>{playing?<Pause className="size-4"/>:<Play className="ml-0.5 size-4"/>}</button><button type="button" aria-label="다음 곡" className={control} disabled={unavailable} onClick={()=>skip(1)}><SkipForward className="size-4"/></button></div>
+   <button type="button" onClick={stop} disabled={!activeId} className="mb-3 flex min-h-11 w-full items-center justify-center gap-2 rounded-lg text-xs text-muted-foreground hover:bg-secondary/50 disabled:opacity-35"><Square aria-hidden="true" className="size-3.5"/>재생 종료</button>
    <label className="flex items-center gap-3 text-muted-foreground"><Volume2 aria-hidden="true" className="size-4 shrink-0"/><span className="sr-only">음악 볼륨</span><input type="range" min="0" max="100" value={volume} onChange={event=>setVolume(Number(event.target.value))} className="h-5 min-w-0 flex-1 cursor-pointer accent-primary"/><span aria-hidden="true" className="w-6 text-right text-[10px] tabular-nums">{volume}</span></label>
    <Link to="/music-room" onClick={()=>setOpen(false)} className="mt-3 flex min-h-8 items-center justify-center gap-1 text-[11px] text-muted-foreground hover:text-primary">음악실에서 곡 추가<ChevronRight className="size-3"/></Link>
   </div>

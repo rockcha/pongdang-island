@@ -15,11 +15,22 @@ vi.mock('@/features/expeditions/api',()=>({loadFriendExpedition:visitApi.load,bo
 vi.mock('@/features/expeditions/active-expedition-card',()=>({ActiveExpeditionCard:()=> <p>친구 통발</p>}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
 vi.mock('@/features/social/social-provider',()=>({useSocial:()=>mock.social}))
-vi.mock('@/features/friends/api',()=>({findPlayer:vi.fn(),sendFriendRequest:vi.fn()}))
+vi.mock('@/features/friends/api',()=>({findPlayer:vi.fn(),sendFriendRequest:vi.fn(),loadPlayerDirectory:vi.fn(async()=>({players:[],hasMore:false})),sendPlayerFriendRequest:vi.fn()}))
 vi.mock('@/features/friends/use-friend-presence',()=>({useFriendPresence:()=>mock.presence}))
 vi.mock('@/features/friends/request-actions',()=>({RequestActions:()=> <button>수락</button>}))
 vi.mock('@/features/friends/remove-friend-button',()=>({RemoveFriendButton:()=>null}))
 afterEach(()=>{cleanup();mock.social.requests=[];mock.social.loading=true;mock.presence={friends:[],ready:true,error:false};visitApi.friends=[];vi.clearAllMocks()})
+it('places the all-users tab after received requests without presence or visit actions',async()=>{
+ mock.social.loading=false
+ render(<MemoryRouter><FriendsPage/></MemoryRouter>)
+ const menu=screen.getByRole('group',{name:'등대 메뉴'})
+ expect(within(menu).getAllByRole('button').map(b=>b.getAttribute('aria-label'))).toEqual(['친구 0','받은 요청 0','전체 유저'])
+ fireEvent.click(screen.getByRole('button',{name:'전체 유저',exact:true}))
+ await screen.findByText('표시할 유저가 없어요.')
+ expect(screen.queryByText(/접속 중/)).toBeNull()
+ expect(screen.queryByRole('link',{name:/아쿠아리움 방문/})).toBeNull()
+ expect(screen.queryByRole('button',{name:'친구 초대'})).toBeNull()
+})
 it.each(['‹ 친구 목록','등대'])('restores scroll and filters after helping a trap and returning through %s',async(returnLabel)=>{
  mock.social.loading=false
  mock.social.requests=['live','off'].map(id=>({id,sender_id:'me',recipient_id:id,status:'accepted',recipient:{id,nickname:id}}))

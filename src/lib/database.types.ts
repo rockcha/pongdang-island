@@ -154,6 +154,7 @@ export type Database = {
       buy_aquarium_tank: { Args: { p_operation_id: string }; Returns: import('@/features/gold/api').GoldState & { delta: number } }
       manage_aquarium_tank: { Args: { p_tank_id: string; p_action: string; p_value: string }; Returns: import('@/features/aquarium/api').AquariumState }
       aquarium_state: { Args: Record<string, never>; Returns: import('@/features/aquarium/api').AquariumState }
+      expand_aquarium_capacity:{Args:{p_target_capacity:number;p_operation_id:string};Returns:import('@/features/aquarium/api').AquariumState}
       reorder_aquarium_tanks: { Args: {p_tank_ids:string[];p_expected_ids:string[]}; Returns: import('@/features/aquarium/api').AquariumState }
       aquarium_background: { Args: { p_id: string; p_action: string; p_operation_id?: string }; Returns: import('@/features/gold/api').GoldState & { delta: number } }
       get_gold_wallet: { Args: Record<string, never>; Returns: import('@/features/gold/api').GoldState }
@@ -163,6 +164,8 @@ export type Database = {
       sync_player_profile: { Args: Record<string, never>; Returns: Profile }
       find_player_by_code: { Args: { p_code: string }; Returns: Profile[] }
       send_friend_request: { Args: { p_code: string }; Returns: string }
+      player_directory: { Args: {p_offset?:number;p_limit?:number}; Returns: import('@/features/friends/api').PlayerDirectory }
+      send_player_friend_request: { Args: {p_player:string}; Returns:string }
       player_presence_ping: { Args: {p_session_id:string;p_state:import('@/features/friends/presence-api').PresenceStatus;p_revision:number}; Returns:undefined }
       friend_presence_state: { Args:Record<string,never>; Returns:import('@/features/friends/presence-api').FriendPresenceState }
       respond_friend_request: { Args: { p_request_id: string; p_action: string }; Returns: undefined }

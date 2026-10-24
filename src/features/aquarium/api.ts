@@ -2,7 +2,7 @@ import type { DecorationPlacement, OwnedCollectible } from '@/features/collectio
 import { createClient } from '@/lib/client'
 import type {ThemeTier} from './theme-tiers'
 export type AquariumTank = { id: string; name: string; background_id: string; is_default: boolean; created_at: string }
-export type AquariumState = { inhabitants:OwnedCollectible[]; storageCount:number; tankCapacity:number; tanks: AquariumTank[]; tankPrice: number; background: string; owned: string[]; catalog: { id: string; name: string; price: number; image_path: string; tier?:ThemeTier }[] }
+export type AquariumState = { inhabitants:OwnedCollectible[]; storageCount:number; tankCapacity:number; nextCapacityExpansion?:{capacity:number;price:number}|null; tanks: AquariumTank[]; tankPrice: number; background: string; owned: string[]; catalog: { id: string; name: string; price: number; image_path: string; tier?:ThemeTier }[] }
 export type CollectibleStorage={items:OwnedCollectible[];total:number;pageSize:number}
 export async function loadCollectibleStorage(offset=0,query='',kind='all',rarity='all',concept='all'){
  const {data,error}=await createClient().rpc('collectible_storage_filtered',{p_offset:offset,p_query:query,p_kind:kind,p_rarity:rarity,p_concept:concept})
@@ -16,7 +16,7 @@ export async function moveCollectibles(ids:string[],tankId:string|null){
 }
 export function storageError(cause:unknown){
  const message=String((cause as {message?:string})?.message??'')
- if(message.includes('TANK_FULL'))return '어항당 50개까지 넣을 수 있어요. 선택 수량을 줄이거나 다른 어항을 골라주세요.'
+ if(message.includes('TANK_FULL'))return '어항의 남은 자리가 부족해요. 수용량을 확장하거나 선택 수량을 줄여주세요.'
  if(message.includes('COLLECTIBLE_NOT_FOUND')||message.includes('STORAGE_REQUIRED'))return '이미 이동·판매·선물한 개체가 있어요. 목록을 새로고침해주세요.'
  if(message.includes('TANK_NOT_FOUND'))return '어항을 찾지 못했어요. 다른 어항을 골라주세요.'
  return '개체를 옮기지 못했어요. 26번 SQL 적용과 연결을 확인해주세요.'
@@ -25,6 +25,19 @@ export async function loadAquarium() {
  const {data,error}=await createClient().rpc('aquarium_state')
  if(error)throw error
  return data
+}
+export async function expandAquariumCapacity(capacity:number,operation:string){
+ const {data,error}=await createClient().rpc('expand_aquarium_capacity',{p_target_capacity:capacity,p_operation_id:operation})
+ if(error)throw error
+ return data
+}
+export function capacityExpansionError(cause:unknown){
+ const message=String((cause as {message?:string})?.message??'')
+ if(message.includes('INSUFFICIENT_GOLD'))return '골드가 부족해요.'
+ if(message.includes('AQUARIUM_FULLY_EXPANDED'))return '이미 최대 수용량으로 확장했어요.'
+ if(message.includes('CAPACITY_CHANGED'))return '다른 창에서 수용량이 변경됐어요. 현재 단계를 다시 확인해 주세요.'
+ if(message.includes('OPERATION_CONFLICT'))return '이전 요청과 정보가 달라요. 어항을 다시 열어 주세요.'
+ return '확장 결과를 확인하지 못했어요. 같은 요청으로 다시 확인해 주세요.'
 }
 export async function reorderAquariumTanks(ids:string[],expectedIds:string[]) {
  const {data,error}=await createClient().rpc('reorder_aquarium_tanks',{p_tank_ids:ids,p_expected_ids:expectedIds})

@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "727a4d7fb91226860e428b80c91b8a6c01455040051f290d95e98bb751c9a9f4",
+  "migrationHash": "fb2d67da78a117d0255db8f880e339b032bfa09ad3bc8111fbf9eed78bd4a959",
   "structure": {
     "enums": [
       {
@@ -234,6 +234,12 @@
       },
       {
         "rls": true,
+        "name": "player_aquarium_capacity",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
         "name": "player_experience",
         "schema": "app_private",
         "force_rls": false
@@ -241,6 +247,12 @@
       {
         "rls": true,
         "name": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "player_harbor_capacity",
         "schema": "app_private",
         "force_rls": false
       },
@@ -2278,6 +2290,26 @@
       {
         "name": "user_id",
         "type": "uuid",
+        "table": "player_aquarium_capacity",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "capacity",
+        "type": "integer",
+        "table": "player_aquarium_capacity",
+        "schema": "app_private",
+        "default": "50",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
         "table": "player_experience",
         "schema": "app_private",
         "default": null,
@@ -2371,6 +2403,26 @@
         "table": "player_fishing_map_pieces",
         "schema": "app_private",
         "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "player_harbor_capacity",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "dock_slots",
+        "type": "integer",
+        "table": "player_harbor_capacity",
+        "schema": "app_private",
+        "default": "2",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -8584,6 +8636,12 @@
         "definition": "CREATE UNIQUE INDEX notice_operators_pkey ON app_private.notice_operators USING btree (user_id)"
       },
       {
+        "name": "player_aquarium_capacity_pkey",
+        "table": "player_aquarium_capacity",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX player_aquarium_capacity_pkey ON app_private.player_aquarium_capacity USING btree (user_id)"
+      },
+      {
         "name": "player_experience_pkey",
         "table": "player_experience",
         "schema": "app_private",
@@ -8594,6 +8652,12 @@
         "table": "player_fishing_map_pieces",
         "schema": "app_private",
         "definition": "CREATE UNIQUE INDEX player_fishing_map_pieces_pkey ON app_private.player_fishing_map_pieces USING btree (user_id, region_id, piece_number)"
+      },
+      {
+        "name": "player_harbor_capacity_pkey",
+        "table": "player_harbor_capacity",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX player_harbor_capacity_pkey ON app_private.player_harbor_capacity USING btree (user_id)"
       },
       {
         "name": "player_presence_sessions_pkey",
@@ -9742,6 +9806,12 @@
         "definition": "CREATE UNIQUE INDEX player_navigation_pkey ON public.player_navigation USING btree (user_id)"
       },
       {
+        "name": "player_profiles_directory_order",
+        "table": "player_profiles",
+        "schema": "public",
+        "definition": "CREATE INDEX player_profiles_directory_order ON public.player_profiles USING btree (nickname, id)"
+      },
+      {
         "name": "player_profiles_friend_code_key",
         "table": "player_profiles",
         "schema": "public",
@@ -10796,6 +10866,27 @@
     ],
     "triggers": [
       {
+        "name": "experience_friend_cleaning",
+        "table": "aquarium_clean_notices",
+        "schema": "app_private",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER experience_friend_cleaning AFTER INSERT ON app_private.aquarium_clean_notices FOR EACH ROW EXECUTE FUNCTION app_private.friend_help_experience_event()"
+      },
+      {
+        "name": "experience_friend_feeding",
+        "table": "aquarium_feed_notices",
+        "schema": "app_private",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER experience_friend_feeding AFTER INSERT ON app_private.aquarium_feed_notices FOR EACH ROW EXECUTE FUNCTION app_private.friend_help_experience_event()"
+      },
+      {
+        "name": "experience_friend_lure",
+        "table": "expedition_boosts",
+        "schema": "app_private",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER experience_friend_lure AFTER INSERT ON app_private.expedition_boosts FOR EACH ROW EXECUTE FUNCTION app_private.friend_help_experience_event()"
+      },
+      {
         "name": "fishing_maintenance_trap_boost",
         "table": "expedition_boosts",
         "schema": "app_private",
@@ -11215,7 +11306,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.aquarium_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n insert into public.player_aquariums(user_id) values(v_uid) on conflict do nothing;\n insert into public.aquarium_tanks(user_id,background_id,is_default)\n select v_uid,background_id,true from public.player_aquariums where user_id=v_uid\n on conflict(user_id) where is_default do nothing;\n return jsonb_build_object(\n 'background',(select background_id from public.aquarium_tanks where user_id=v_uid order by display_order,created_at,id limit 1),\n 'tanks',coalesce((select jsonb_agg(to_jsonb(t) order by t.display_order,t.created_at,t.id) from public.aquarium_tanks t where user_id=v_uid),'[]'::jsonb),\n 'inhabitants',coalesce((select jsonb_agg(to_jsonb(c)||jsonb_build_object('species',app_private.species_payload(c.species_id,c.map_region_id)) order by c.acquired_at,c.id)\n   from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n   where c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is not null and s.kind in ('fish','trash','decoration')),'[]'::jsonb),\n 'storageCount',(select count(*) from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n   where c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is null and s.kind in ('fish','trash','decoration')),\n 'tankCapacity',50,'tankPrice',350,\n 'owned',coalesce((select jsonb_agg(background_id) from public.owned_aquarium_backgrounds where user_id=v_uid),'[]'::jsonb),\n 'catalog',(select jsonb_agg(to_jsonb(b) order by b.price) from public.aquarium_backgrounds b));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.aquarium_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n insert into public.player_aquariums(user_id) values(v_uid) on conflict do nothing;\n insert into public.aquarium_tanks(user_id,background_id,is_default)\n select v_uid,background_id,true from public.player_aquariums where user_id=v_uid\n on conflict(user_id) where is_default do nothing;\n return jsonb_build_object(\n 'background',(select background_id from public.aquarium_tanks where user_id=v_uid order by display_order,created_at,id limit 1),\n 'tanks',coalesce((select jsonb_agg(to_jsonb(t) order by t.display_order,t.created_at,t.id) from public.aquarium_tanks t where user_id=v_uid),'[]'::jsonb),\n 'inhabitants',coalesce((select jsonb_agg(to_jsonb(c)||jsonb_build_object('species',app_private.species_payload(c.species_id,c.map_region_id)) order by c.acquired_at,c.id)\n   from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n   where c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is not null and s.kind in ('fish','trash','decoration')),'[]'::jsonb),\n 'storageCount',(select count(*) from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n   where c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is null and s.kind in ('fish','trash','decoration')),\n 'tankCapacity',coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50),\n 'nextCapacityExpansion',(select case c when 50 then jsonb_build_object('capacity',70,'price',5000) when 70 then jsonb_build_object('capacity',100,'price',10000) else null end from (select coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50) c) q),'tankPrice',350,\n 'owned',coalesce((select jsonb_agg(background_id) from public.owned_aquarium_backgrounds where user_id=v_uid),'[]'::jsonb),\n 'catalog',(select jsonb_agg(to_jsonb(b) order by b.price) from public.aquarium_backgrounds b));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -11949,6 +12040,16 @@
         "securityDefiner": true
       },
       {
+        "name": "expand_aquarium_capacity",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_target_capacity integer, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.expand_aquarium_capacity(p_target_capacity integer, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;previous public.gold_transactions;current_capacity integer;price integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_target_capacity is null or p_target_capacity not in (70,100) then raise exception 'INVALID_CAPACITY';end if;\n perform app_private.get_gold_wallet();\n select * into strict w from public.player_wallets where user_id=u for update;\n select * into previous from public.gold_transactions where user_id=u and operation_id=p_operation_id;\n if found then\n  if previous.action<>'buy' or previous.item_id is distinct from 'aquarium-capacity:'||p_target_capacity::text then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.aquarium_state();\n end if;\n select coalesce((select capacity from app_private.player_aquarium_capacity where user_id=u),50) into current_capacity;\n if current_capacity=100 then raise exception 'AQUARIUM_FULLY_EXPANDED';end if;\n if p_target_capacity<>(case current_capacity when 50 then 70 else 100 end) then raise exception 'CAPACITY_CHANGED';end if;\n price:=case current_capacity when 50 then 5000 else 10000 end;\n if w.gold<price then raise exception 'INSUFFICIENT_GOLD';end if;\n insert into app_private.player_aquarium_capacity(user_id,capacity) values(u,p_target_capacity)\n  on conflict(user_id) do update set capacity=excluded.capacity;\n update public.player_wallets set gold=gold-price,updated_at=clock_timestamp() where user_id=u;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n  values(u,p_operation_id,'buy','aquarium-capacity:'||p_target_capacity::text,-price);\n return app_private.aquarium_state();\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "expedition_action",
         "config": [
           "search_path=\"\""
@@ -12189,6 +12290,16 @@
         "securityDefiner": true
       },
       {
+        "name": "friend_help_experience_event",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.friend_help_experience_event()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if tg_table_schema <> 'app_private' then raise exception 'INVALID_HELP_SOURCE'; end if;\n if tg_table_name = 'expedition_boosts' then\n  perform app_private.award_experience(new.helper_id,'friend_lure',new.id,1);\n elsif tg_table_name in ('aquarium_feed_notices','aquarium_clean_notices') then\n  perform app_private.award_experience(new.visitor_id,\n   case when tg_table_name='aquarium_feed_notices' then 'friend_feeding' else 'friend_cleaning' end,\n   pg_catalog.md5(new.visitor_id::text || ':' || new.owner_id::text || ':' || new.notice_day::text)::uuid,1);\n else raise exception 'INVALID_HELP_SOURCE';\n end if;\n return new;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "friend_levels",
         "config": [
           "search_path=\"\""
@@ -12365,7 +12476,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer, p_boat_id uuid, p_slot integer, p_region_id text, p_secondary_region_id text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.harbor_action(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_voyage_id uuid DEFAULT NULL::uuid, p_quantity integer DEFAULT 1, p_boat_id uuid DEFAULT NULL::uuid, p_slot integer DEFAULT NULL::integer, p_region_id text DEFAULT 'pongdang'::text, p_secondary_region_id text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v public.harbor_vessels;b public.harbor_boats;occupant public.harbor_boats;w public.player_wallets;trip public.harbor_voyages;\n prev app_private.harbor_operations;sig jsonb;receipt jsonb;n integer;slot integer;fuel integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('buy','depart','dock','store','sell','fuel','arrive','claim','claim_all') then raise exception 'INVALID_HARBOR_ACTION';end if;\n if p_action in ('fuel','arrive','claim','claim_all') then return app_private.settle_legacy_harbor(p_action,p_operation_id,p_vessel_id,p_voyage_id,p_quantity);end if;\n sig:=jsonb_build_object('action',p_action,'vessel',p_vessel_id,'voyage',p_voyage_id,'quantity',p_quantity);\n if p_boat_id is not null or p_slot is not null then sig:=sig||jsonb_build_object('boat',p_boat_id,'slot',p_slot);end if;\n if p_action='depart' and p_region_id is distinct from 'pongdang' then sig:=sig||jsonb_build_object('region',p_region_id);end if;\n if p_secondary_region_id is not null then sig:=sig||jsonb_build_object('secondaryRegion',p_secondary_region_id);end if;\n perform pg_advisory_xact_lock(hashtextextended('harbor:'||u::text,0));\n select * into prev from app_private.harbor_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.harbor_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n perform app_private.get_gold_wallet();select * into w from public.player_wallets where user_id=u for update;\n if p_action='buy' then\n  select * into v from public.harbor_vessels where id=p_vessel_id;\n  if not found then raise exception 'VESSEL_NOT_FOUND';end if;\n  select count(*) into n from public.harbor_boats where user_id=u and vessel_id=v.id and sold_at is null;\n  if n>=2 then raise exception 'VESSEL_OWNERSHIP_LIMIT';end if;\n  if w.gold<v.price then raise exception 'INSUFFICIENT_GOLD';end if;\n  select s into slot from generate_series(1,2) s where not exists(select 1 from public.harbor_boats where user_id=u and dock_slot=s) order by s limit 1;\n  insert into public.harbor_boats(user_id,vessel_id,instance_no,dock_slot) values(u,v.id,(select s from generate_series(1,2) s where not exists(select 1 from public.harbor_boats hb where hb.user_id=u and hb.vessel_id=v.id and hb.instance_no=s and hb.sold_at is null) order by s limit 1),slot) returning * into b;\n  insert into public.player_harbor_vessels(user_id,vessel_id) values(u,v.id) on conflict do nothing;\n  update public.player_wallets set gold=gold-v.price,updated_at=now() where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','harbor-vessel:'||v.id,-v.price);\n  receipt:=jsonb_build_object('action','buy','vesselId',v.id,'boatId',b.id);\n else\n  if p_boat_id is not null then select * into b from public.harbor_boats where id=p_boat_id and user_id=u and sold_at is null;\n  elsif p_action='depart' then\n   select * into b from public.harbor_boats b0 where b0.user_id=u and b0.vessel_id=p_vessel_id and b0.dock_slot is not null\n    order by exists(select 1 from public.harbor_voyages t where t.boat_id=b0.id and t.claimed_at is null),b0.dock_slot limit 1;\n  end if;\n  if b.id is null then raise exception 'VESSEL_NOT_OWNED';end if;\n  if p_vessel_id is not null and p_vessel_id<>b.vessel_id then raise exception 'INVALID_BOAT';end if;\n  if exists(select 1 from public.harbor_voyages where boat_id=b.id and claimed_at is null) then raise exception 'VOYAGE_ACTIVE';end if;\n  if p_action='sell' then\n   select * into strict v from public.harbor_vessels where id=b.vessel_id;\n   n:=v.price/2;\n   if w.gold::bigint+n>1000000000 then raise exception 'GOLD_LIMIT';end if;\n   update public.harbor_boats set sold_at=clock_timestamp(),dock_slot=null where id=b.id;\n   update public.player_wallets set gold=gold+n,updated_at=now() where user_id=u;\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'sell','harbor-boat:'||b.id,n);\n   receipt:=jsonb_build_object('action','sell','vesselId',v.id,'boatId',b.id,'gold',n);\n  elsif p_action='dock' then\n   if p_slot is null or p_slot not between 1 and 2 then raise exception 'INVALID_DOCK_SLOT';end if;\n   if b.dock_slot is not null and b.dock_slot<>p_slot then raise exception 'BOAT_ALREADY_DOCKED';end if;\n   select * into occupant from public.harbor_boats where user_id=u and dock_slot=p_slot and id<>b.id;\n   if occupant.id is not null then\n    if exists(select 1 from public.harbor_voyages where boat_id=occupant.id and claimed_at is null) then raise exception 'DOCK_RESERVED';end if;\n    update public.harbor_boats set dock_slot=null where id=occupant.id;\n   end if;\n   update public.harbor_boats set dock_slot=p_slot where id=b.id;\n   receipt:=jsonb_build_object('action','dock','boatId',b.id,'slot',p_slot);\n  elsif p_action='store' then\n   update public.harbor_boats set dock_slot=null where id=b.id;\n   receipt:=jsonb_build_object('action','store','boatId',b.id);\n  else\n   if not exists(select 1 from public.regions where id=p_region_id) then raise exception 'REGION_NOT_FOUND';end if;\n   if exists(select 1 from public.regions r where r.id=p_region_id and r.requires_map_fragment\n    and not exists(select 1 from public.player_map_fragments m where m.user_id=u and m.region_id=r.id)) then raise exception 'REGION_LOCKED';end if;\n   if b.dock_slot is null then raise exception 'DOCK_REQUIRED';end if;\n   select * into strict v from public.harbor_vessels where id=b.vessel_id;\n   if coalesce((v.catch_rule->>'region_count')::integer,1)=2 then\n    if p_secondary_region_id is null or p_secondary_region_id=p_region_id then raise exception 'SECOND_REGION_REQUIRED';end if;\n    if not exists(select 1 from public.regions where id=p_secondary_region_id) then raise exception 'REGION_NOT_FOUND';end if;\n    if exists(select 1 from public.regions r where r.id=p_secondary_region_id and r.requires_map_fragment\n     and not exists(select 1 from public.player_map_fragments m where m.user_id=u and m.region_id=r.id)) then raise exception 'REGION_LOCKED';end if;\n   elsif p_secondary_region_id is not null then raise exception 'SECOND_REGION_NOT_ALLOWED';end if;\n   fuel:=coalesce((w.inventory->>'fuel')::integer,0);\n   if fuel<v.fuel_cost then raise exception 'INSUFFICIENT_FUEL';end if;\n   update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel-v.fuel_cost)),updated_at=now() where user_id=u;\n   insert into public.harbor_voyages(user_id,vessel_id,boat_id,region_id,vessel_snapshot,returns_at) values(u,v.id,b.id,p_region_id,to_jsonb(v)||case when p_secondary_region_id is not null then jsonb_build_object('secondary_region_id',p_secondary_region_id,'secondary_region_name',(select name from public.regions where id=p_secondary_region_id)) else '{}'::jsonb end||jsonb_build_object('fishing_count',v.fishing_count+floor(random()*(coalesce(v.fishing_count_max,v.fishing_count)-v.fishing_count+1))::integer),clock_timestamp()+make_interval(mins=>v.duration_minutes)) returning * into trip;\n   receipt:=jsonb_build_object('action','depart','voyageId',trip.id,'vesselId',v.id,'boatId',b.id);\n  end if;\n end if;\n insert into app_private.harbor_operations(user_id,operation_id,signature,receipt) values(u,p_operation_id,sig,receipt);\n return app_private.harbor_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.harbor_action(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_voyage_id uuid DEFAULT NULL::uuid, p_quantity integer DEFAULT 1, p_boat_id uuid DEFAULT NULL::uuid, p_slot integer DEFAULT NULL::integer, p_region_id text DEFAULT 'pongdang'::text, p_secondary_region_id text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v public.harbor_vessels;b public.harbor_boats;occupant public.harbor_boats;w public.player_wallets;trip public.harbor_voyages;\n prev app_private.harbor_operations;sig jsonb;receipt jsonb;n integer;slot integer;fuel integer;capacity integer;expansion_price integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('buy','depart','dock','store','sell','fuel','arrive','claim','claim_all','expand') then raise exception 'INVALID_HARBOR_ACTION';end if;\n if p_action in ('fuel','arrive','claim','claim_all') then return app_private.settle_legacy_harbor(p_action,p_operation_id,p_vessel_id,p_voyage_id,p_quantity);end if;\n sig:=jsonb_build_object('action',p_action,'vessel',p_vessel_id,'voyage',p_voyage_id,'quantity',p_quantity);\n if p_boat_id is not null or p_slot is not null then sig:=sig||jsonb_build_object('boat',p_boat_id,'slot',p_slot);end if;\n if p_action='depart' and p_region_id is distinct from 'pongdang' then sig:=sig||jsonb_build_object('region',p_region_id);end if;\n if p_secondary_region_id is not null then sig:=sig||jsonb_build_object('secondaryRegion',p_secondary_region_id);end if;\n perform pg_advisory_xact_lock(hashtextextended('harbor:'||u::text,0));\n select * into prev from app_private.harbor_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.harbor_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n perform app_private.get_gold_wallet();select * into w from public.player_wallets where user_id=u for update;\n select coalesce((select dock_slots from app_private.player_harbor_capacity where user_id=u),2) into capacity;\n if p_action='expand' then\n  if capacity>=4 then raise exception 'HARBOR_FULLY_EXPANDED';end if;\n  if p_slot is distinct from capacity+1 then raise exception 'HARBOR_EXPANSION_CHANGED';end if;\n  expansion_price:=case capacity when 2 then 10000 else 30000 end;\n  if w.gold<expansion_price then raise exception 'INSUFFICIENT_GOLD';end if;\n  insert into app_private.player_harbor_capacity(user_id,dock_slots) values(u,capacity+1)\n   on conflict(user_id) do update set dock_slots=excluded.dock_slots;\n  update public.player_wallets set gold=gold-expansion_price,updated_at=now() where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n   values(u,p_operation_id,'buy','harbor-dock:'||(capacity+1)::text,-expansion_price);\n  receipt:=jsonb_build_object('action','expand','dockSlots',capacity+1,'gold',expansion_price);\n elsif p_action='buy' then\n  select * into v from public.harbor_vessels where id=p_vessel_id;\n  if not found then raise exception 'VESSEL_NOT_FOUND';end if;\n  select count(*) into n from public.harbor_boats where user_id=u and vessel_id=v.id and sold_at is null;\n  if n>=2 then raise exception 'VESSEL_OWNERSHIP_LIMIT';end if;\n  if w.gold<v.price then raise exception 'INSUFFICIENT_GOLD';end if;\n  select s into slot from generate_series(1,capacity) s where not exists(select 1 from public.harbor_boats where user_id=u and dock_slot=s) order by s limit 1;\n  insert into public.harbor_boats(user_id,vessel_id,instance_no,dock_slot) values(u,v.id,(select s from generate_series(1,2) s where not exists(select 1 from public.harbor_boats hb where hb.user_id=u and hb.vessel_id=v.id and hb.instance_no=s and hb.sold_at is null) order by s limit 1),slot) returning * into b;\n  insert into public.player_harbor_vessels(user_id,vessel_id) values(u,v.id) on conflict do nothing;\n  update public.player_wallets set gold=gold-v.price,updated_at=now() where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','harbor-vessel:'||v.id,-v.price);\n  receipt:=jsonb_build_object('action','buy','vesselId',v.id,'boatId',b.id);\n else\n  if p_boat_id is not null then select * into b from public.harbor_boats where id=p_boat_id and user_id=u and sold_at is null;\n  elsif p_action='depart' then\n   select * into b from public.harbor_boats b0 where b0.user_id=u and b0.vessel_id=p_vessel_id and b0.dock_slot is not null\n    order by exists(select 1 from public.harbor_voyages t where t.boat_id=b0.id and t.claimed_at is null),b0.dock_slot limit 1;\n  end if;\n  if b.id is null then raise exception 'VESSEL_NOT_OWNED';end if;\n  if p_vessel_id is not null and p_vessel_id<>b.vessel_id then raise exception 'INVALID_BOAT';end if;\n  if exists(select 1 from public.harbor_voyages where boat_id=b.id and claimed_at is null) then raise exception 'VOYAGE_ACTIVE';end if;\n  if p_action='sell' then\n   select * into strict v from public.harbor_vessels where id=b.vessel_id;\n   n:=v.price/2;\n   if w.gold::bigint+n>1000000000 then raise exception 'GOLD_LIMIT';end if;\n   update public.harbor_boats set sold_at=clock_timestamp(),dock_slot=null where id=b.id;\n   update public.player_wallets set gold=gold+n,updated_at=now() where user_id=u;\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'sell','harbor-boat:'||b.id,n);\n   receipt:=jsonb_build_object('action','sell','vesselId',v.id,'boatId',b.id,'gold',n);\n  elsif p_action='dock' then\n   if p_slot is null or p_slot not between 1 and capacity then raise exception 'INVALID_DOCK_SLOT';end if;\n   if b.dock_slot is not null and b.dock_slot<>p_slot then raise exception 'BOAT_ALREADY_DOCKED';end if;\n   select * into occupant from public.harbor_boats where user_id=u and dock_slot=p_slot and id<>b.id;\n   if occupant.id is not null then\n    if exists(select 1 from public.harbor_voyages where boat_id=occupant.id and claimed_at is null) then raise exception 'DOCK_RESERVED';end if;\n    update public.harbor_boats set dock_slot=null where id=occupant.id;\n   end if;\n   update public.harbor_boats set dock_slot=p_slot where id=b.id;\n   receipt:=jsonb_build_object('action','dock','boatId',b.id,'slot',p_slot);\n  elsif p_action='store' then\n   update public.harbor_boats set dock_slot=null where id=b.id;\n   receipt:=jsonb_build_object('action','store','boatId',b.id);\n  else\n   if not exists(select 1 from public.regions where id=p_region_id) then raise exception 'REGION_NOT_FOUND';end if;\n   if exists(select 1 from public.regions r where r.id=p_region_id and r.requires_map_fragment\n    and not exists(select 1 from public.player_map_fragments m where m.user_id=u and m.region_id=r.id)) then raise exception 'REGION_LOCKED';end if;\n   if b.dock_slot is null or b.dock_slot>capacity then raise exception 'DOCK_REQUIRED';end if;\n   select * into strict v from public.harbor_vessels where id=b.vessel_id;\n   if coalesce((v.catch_rule->>'region_count')::integer,1)=2 then\n    if p_secondary_region_id is null or p_secondary_region_id=p_region_id then raise exception 'SECOND_REGION_REQUIRED';end if;\n    if not exists(select 1 from public.regions where id=p_secondary_region_id) then raise exception 'REGION_NOT_FOUND';end if;\n    if exists(select 1 from public.regions r where r.id=p_secondary_region_id and r.requires_map_fragment\n     and not exists(select 1 from public.player_map_fragments m where m.user_id=u and m.region_id=r.id)) then raise exception 'REGION_LOCKED';end if;\n   elsif p_secondary_region_id is not null then raise exception 'SECOND_REGION_NOT_ALLOWED';end if;\n   fuel:=coalesce((w.inventory->>'fuel')::integer,0);\n   if fuel<v.fuel_cost then raise exception 'INSUFFICIENT_FUEL';end if;\n   update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel-v.fuel_cost)),updated_at=now() where user_id=u;\n   insert into public.harbor_voyages(user_id,vessel_id,boat_id,region_id,vessel_snapshot,returns_at) values(u,v.id,b.id,p_region_id,to_jsonb(v)||case when p_secondary_region_id is not null then jsonb_build_object('secondary_region_id',p_secondary_region_id,'secondary_region_name',(select name from public.regions where id=p_secondary_region_id)) else '{}'::jsonb end||jsonb_build_object('fishing_count',v.fishing_count+floor(random()*(coalesce(v.fishing_count_max,v.fishing_count)-v.fishing_count+1))::integer),clock_timestamp()+make_interval(mins=>v.duration_minutes)) returning * into trip;\n   receipt:=jsonb_build_object('action','depart','voyageId',trip.id,'vesselId',v.id,'boatId',b.id);\n  end if;\n end if;\n insert into app_private.harbor_operations(user_id,operation_id,signature,receipt) values(u,p_operation_id,sig,receipt);\n return app_private.harbor_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -12385,7 +12496,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.harbor_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n w:=app_private.get_gold_wallet();\n return jsonb_build_object('serverNow',clock_timestamp(),'fuel',coalesce((w->'inventory'->>'fuel')::integer,0),'fuelPrice',57,'fuelDailyLimit',5,'fuelPurchasedToday',coalesce((select sum((op.receipt->>'quantity')::integer) from app_private.harbor_operations op where op.user_id=u and op.receipt->>'action'='fuel' and op.created_at>=((clock_timestamp() at time zone 'Asia/Seoul')::date::timestamp at time zone 'Asia/Seoul')),0),'dockSlots',2,\n 'regions',(select jsonb_agg(jsonb_build_object('id',r.id,'name',r.name,'unlocked',not r.requires_map_fragment or exists(select 1 from public.player_map_fragments m where m.user_id=u and m.region_id=r.id)) order by r.sort_order) from public.regions r),\n 'vessels',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('owned',o.n>0,'ownedCount',o.n) order by v.sort_order)\n  from public.harbor_vessels v cross join lateral(select count(*)::integer n from public.harbor_boats b where b.user_id=u and b.vessel_id=v.id and b.sold_at is null)o),'[]'::jsonb),\n 'boats',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('id',b.id,'vessel_id',b.vessel_id,'instance_no',b.instance_no,'dock_slot',b.dock_slot,'owned',true) order by b.purchased_at,b.id)\n  from public.harbor_boats b join public.harbor_vessels v on v.id=b.vessel_id where b.user_id=u and b.sold_at is null),'[]'::jsonb),\n 'voyages',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('region_name',(select name from public.regions where id=v.region_id)) order by v.departed_at) from public.harbor_voyages v where v.user_id=u and v.claimed_at is null),'[]'::jsonb));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.harbor_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w jsonb;capacity integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n w:=app_private.get_gold_wallet();\n select coalesce((select dock_slots from app_private.player_harbor_capacity where user_id=u),2) into capacity;\n return jsonb_build_object('serverNow',clock_timestamp(),'fuel',coalesce((w->'inventory'->>'fuel')::integer,0),'fuelPrice',57,'fuelDailyLimit',5,'fuelPurchasedToday',coalesce((select sum((op.receipt->>'quantity')::integer) from app_private.harbor_operations op where op.user_id=u and op.receipt->>'action'='fuel' and op.created_at>=((clock_timestamp() at time zone 'Asia/Seoul')::date::timestamp at time zone 'Asia/Seoul')),0),'dockSlots',capacity,'nextDockExpansion',case when capacity<4 then jsonb_build_object('slot',capacity+1,'price',case capacity when 2 then 10000 else 30000 end) else null end,\n 'regions',(select jsonb_agg(jsonb_build_object('id',r.id,'name',r.name,'unlocked',not r.requires_map_fragment or exists(select 1 from public.player_map_fragments m where m.user_id=u and m.region_id=r.id)) order by r.sort_order) from public.regions r),\n 'vessels',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('owned',o.n>0,'ownedCount',o.n) order by v.sort_order)\n  from public.harbor_vessels v cross join lateral(select count(*)::integer n from public.harbor_boats b where b.user_id=u and b.vessel_id=v.id and b.sold_at is null)o),'[]'::jsonb),\n 'boats',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('id',b.id,'vessel_id',b.vessel_id,'instance_no',b.instance_no,'dock_slot',b.dock_slot,'owned',true) order by b.purchased_at,b.id)\n  from public.harbor_boats b join public.harbor_vessels v on v.id=b.vessel_id where b.user_id=u and b.sold_at is null),'[]'::jsonb),\n 'voyages',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('region_name',(select name from public.regions where id=v.region_id)) order by v.departed_at) from public.harbor_voyages v where v.user_id=u and v.claimed_at is null),'[]'::jsonb));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -12585,7 +12696,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_collectible_ids uuid[], p_tank_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.move_collectibles(p_collectible_ids uuid[], p_tank_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_ids uuid[];v_count integer;v_occupancy integer;v_added integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if coalesce(cardinality(p_collectible_ids),0) not between 1 and 50 then raise exception 'INVALID_SELECTION'; end if;\n select array_agg(id order by id) into v_ids from(select distinct unnest(p_collectible_ids) as id) q;\n if cardinality(v_ids)<>cardinality(p_collectible_ids) or array_position(v_ids,null) is not null then raise exception 'INVALID_SELECTION'; end if;\n -- Serialize admissions to the same tank before locking individuals in ID order.\n if p_tank_id is not null then\n  perform 1 from public.aquarium_tanks where id=p_tank_id and user_id=v_uid for update;\n  if not found then raise exception 'TANK_NOT_FOUND'; end if;\n end if;\n perform 1 from public.player_collectibles where id=any(v_ids) and user_id=v_uid order by id for update;\n select count(*) into v_count from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n where c.id=any(v_ids) and c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and s.kind in ('fish','trash','decoration');\n if v_count<>cardinality(v_ids) then raise exception 'COLLECTIBLE_NOT_FOUND'; end if;\n if p_tank_id is not null then\n  if exists(select 1 from public.player_collectibles where id=any(v_ids) and tank_id is not null and tank_id<>p_tank_id) then raise exception 'STORAGE_REQUIRED'; end if;\n  select count(*) into v_added from public.player_collectibles where id=any(v_ids) and tank_id is null;\n  select count(*) into v_occupancy from public.player_collectibles where tank_id=p_tank_id and user_id=v_uid and sold_at is null and escrow_gift_id is null;\n  if v_added>0 and v_occupancy+v_added>50 then raise exception 'TANK_FULL'; end if;\n end if;\n update public.player_collectibles set tank_id=p_tank_id,position_x=null,position_y=null\n where id=any(v_ids) and tank_id is distinct from p_tank_id;\n return app_private.aquarium_state();\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.move_collectibles(p_collectible_ids uuid[], p_tank_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_ids uuid[];v_count integer;v_occupancy integer;v_added integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if coalesce(cardinality(p_collectible_ids),0) not between 1 and 100 then raise exception 'INVALID_SELECTION'; end if;\n select array_agg(id order by id) into v_ids from(select distinct unnest(p_collectible_ids) as id) q;\n if cardinality(v_ids)<>cardinality(p_collectible_ids) or array_position(v_ids,null) is not null then raise exception 'INVALID_SELECTION'; end if;\n -- Serialize admissions to the same tank before locking individuals in ID order.\n if p_tank_id is not null then\n  perform 1 from public.aquarium_tanks where id=p_tank_id and user_id=v_uid for update;\n  if not found then raise exception 'TANK_NOT_FOUND'; end if;\n end if;\n perform 1 from public.player_collectibles where id=any(v_ids) and user_id=v_uid order by id for update;\n select count(*) into v_count from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n where c.id=any(v_ids) and c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and s.kind in ('fish','trash','decoration');\n if v_count<>cardinality(v_ids) then raise exception 'COLLECTIBLE_NOT_FOUND'; end if;\n if p_tank_id is not null then\n  if exists(select 1 from public.player_collectibles where id=any(v_ids) and tank_id is not null and tank_id<>p_tank_id) then raise exception 'STORAGE_REQUIRED'; end if;\n  select count(*) into v_added from public.player_collectibles where id=any(v_ids) and tank_id is null;\n  select count(*) into v_occupancy from public.player_collectibles where tank_id=p_tank_id and user_id=v_uid and sold_at is null and escrow_gift_id is null;\n  if v_added>0 and v_occupancy+v_added>coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50) then raise exception 'TANK_FULL'; end if;\n end if;\n update public.player_collectibles set tank_id=p_tank_id,position_x=null,position_y=null\n where id=any(v_ids) and tank_id is distinct from p_tank_id;\n return app_private.aquarium_state();\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -12796,6 +12907,16 @@
         "schema": "app_private",
         "arguments": "p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric",
         "definition": "CREATE OR REPLACE FUNCTION app_private.place_collectible(p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();item public.player_collectibles;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_x is null or p_y is null or not(p_x between 0 and 1) or not(p_y between 0 and 1) then raise exception 'INVALID_POSITION';end if;\n if not exists(select 1 from public.aquarium_tanks where id=p_tank_id and user_id=u) then raise exception 'TANK_NOT_FOUND';end if;\n select * into item from public.player_collectibles where id=p_collectible_id and user_id=u and sold_at is null and escrow_gift_id is null for update;\n if not found or item.tank_id is distinct from p_tank_id then raise exception 'COLLECTIBLE_NOT_FOUND';end if;\n if not exists(select 1 from public.collectible_species where id=item.species_id and (kind in ('decoration','trash') or (kind='fish' and movement_type='fixed'))) then raise exception 'INVALID_ITEM';end if;\n -- Dragging changes coordinates only: retain the lock and manual transform.\n update public.player_collectibles set position_x=p_x,position_y=p_y where id=item.id;\n return jsonb_build_object('id',item.id,'position_x',p_x,'position_y',p_y);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "player_directory",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_offset integer, p_limit integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.player_directory(p_offset integer DEFAULT 0, p_limit integer DEFAULT 20)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_user uuid:=auth.uid();v_result jsonb;\nbegin\n if v_user is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>100000 or p_limit is null or p_limit<1 or p_limit>50 then raise exception 'INVALID_DIRECTORY_PAGE';end if;\n with candidates as materialized (\n  select p.id,p.nickname,p.avatar_path,p.equipped_title from public.player_profiles p\n  where p.id<>v_user order by p.nickname,p.id limit p_limit+1 offset p_offset\n ), page as (select * from candidates order by nickname,id limit p_limit)\n select jsonb_build_object('players',coalesce((\n  select jsonb_agg(jsonb_build_object('id',p.id,'nickname',p.nickname,'avatar_path',p.avatar_path,\n   'equipped_title',p.equipped_title,'level',app_private.player_level(p.id),\n   'relationship',case when r.status='accepted' then 'friend' when r.status='pending' and r.sender_id=v_user then 'outgoing' when r.status='pending' then 'incoming' else 'none' end)\n   order by p.nickname,p.id)\n  from page p left join lateral (\n   select f.status,f.sender_id from public.friend_requests f where f.status in ('pending','accepted') and\n    ((f.sender_id=v_user and f.recipient_id=p.id) or (f.recipient_id=v_user and f.sender_id=p.id))\n   order by f.updated_at desc,f.id limit 1\n  ) r on true\n ),'[]'::jsonb),'hasMore',(select count(*)>p_limit from candidates)) into v_result;\n return v_result;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -13256,6 +13377,16 @@
         "schema": "app_private",
         "arguments": "p_code text",
         "definition": "CREATE OR REPLACE FUNCTION app_private.send_friend_request(p_code text)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid := auth.uid(); v_target uuid; v_id uuid; v_name text;\nbegin\n  if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n  if upper(trim(p_code)) !~ '^[A-F0-9]{12}$' then raise exception 'INVALID_FRIEND_CODE'; end if;\n  select id into v_target from public.player_profiles where friend_code = upper(trim(p_code));\n  if v_target is null then raise exception 'PLAYER_NOT_FOUND'; end if;\n  if v_target = v_uid then raise exception 'CANNOT_FRIEND_SELF'; end if;\n  select nickname into v_name from public.player_profiles where id = v_uid;\n  if v_name is null then raise exception 'NICKNAME_REQUIRED'; end if;\n  -- Serialize a sender's rate limit checks and opposite-direction operations for a pair.\n  perform pg_advisory_xact_lock(hashtextextended('sender:' || v_uid::text, 0));\n  perform pg_advisory_xact_lock(hashtextextended(least(v_uid, v_target)::text || greatest(v_uid, v_target)::text, 1));\n  if exists(select 1 from public.friend_requests where least(sender_id,recipient_id) = least(v_uid,v_target)\n    and greatest(sender_id,recipient_id) = greatest(v_uid,v_target) and status in ('pending','accepted')) then\n    raise exception 'RELATIONSHIP_EXISTS';\n  end if;\n  if (select count(*) from public.friend_requests where sender_id = v_uid and created_at > now() - interval '1 minute') >= 5\n    or (select count(*) from public.friend_requests where sender_id = v_uid and status = 'pending') >= 30\n    or exists(select 1 from public.friend_requests where least(sender_id,recipient_id) = least(v_uid,v_target)\n      and greatest(sender_id,recipient_id) = greatest(v_uid,v_target) and updated_at > now() - interval '1 minute') then\n    raise exception 'FRIEND_RATE_LIMIT';\n  end if;\n  insert into public.friend_requests(sender_id,recipient_id) values(v_uid,v_target) returning id into v_id;\n  insert into public.notifications(recipient_id,actor_id,category,kind,title,body,request_id)\n    values(v_target,v_uid,'friend','friend_request',v_name || '님의 친구 요청','함께 퐁당섬에서 낚시해요.',v_id);\n  return v_id;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "send_player_friend_request",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_player uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.send_player_friend_request(p_player uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_code text;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n select friend_code into v_code from public.player_profiles where id=p_player;\n if v_code is null then raise exception 'PLAYER_NOT_FOUND';end if;\n return app_private.send_friend_request(v_code);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14149,6 +14280,16 @@
         "securityDefiner": false
       },
       {
+        "name": "expand_aquarium_capacity",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_target_capacity integer, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.expand_aquarium_capacity(p_target_capacity integer, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.expand_aquarium_capacity(p_target_capacity,p_operation_id);\n$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "expedition_action",
         "config": [
           "search_path=\"\""
@@ -14609,6 +14750,16 @@
         "securityDefiner": false
       },
       {
+        "name": "player_directory",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_offset integer, p_limit integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.player_directory(p_offset integer DEFAULT 0, p_limit integer DEFAULT 20)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$ select app_private.player_directory(p_offset,p_limit) $function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "player_levels",
         "config": [
           "search_path=\"\""
@@ -14846,6 +14997,16 @@
         "schema": "public",
         "arguments": "p_code text",
         "definition": "CREATE OR REPLACE FUNCTION public.send_friend_request(p_code text)\n RETURNS uuid\n LANGUAGE sql\n SET search_path TO ''\nAS $function$ select app_private.send_friend_request(p_code) $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "send_player_friend_request",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_player uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.send_player_friend_request(p_player uuid)\n RETURNS uuid\n LANGUAGE sql\n SET search_path TO ''\nAS $function$ select app_private.send_player_friend_request(p_player) $function$\n",
         "securityDefiner": false
       },
       {
@@ -15644,7 +15805,7 @@
         "name": "experience_events_source_check",
         "table": "experience_events",
         "schema": "app_private",
-        "definition": "CHECK ((source = ANY (ARRAY['manual'::text, 'trap'::text, 'harbor'::text])))"
+        "definition": "CHECK ((source = ANY (ARRAY['manual'::text, 'trap'::text, 'harbor'::text, 'friend_lure'::text, 'friend_feeding'::text, 'friend_cleaning'::text])))"
       },
       {
         "name": "experience_events_source_id_not_null",
@@ -16649,6 +16810,36 @@
         "definition": "NOT NULL user_id"
       },
       {
+        "name": "player_aquarium_capacity_capacity_check",
+        "table": "player_aquarium_capacity",
+        "schema": "app_private",
+        "definition": "CHECK ((capacity = ANY (ARRAY[50, 70, 100])))"
+      },
+      {
+        "name": "player_aquarium_capacity_capacity_not_null",
+        "table": "player_aquarium_capacity",
+        "schema": "app_private",
+        "definition": "NOT NULL capacity"
+      },
+      {
+        "name": "player_aquarium_capacity_pkey",
+        "table": "player_aquarium_capacity",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "player_aquarium_capacity_user_id_fkey",
+        "table": "player_aquarium_capacity",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "player_aquarium_capacity_user_id_not_null",
+        "table": "player_aquarium_capacity",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
         "name": "player_experience_check",
         "table": "player_experience",
         "schema": "app_private",
@@ -16765,6 +16956,36 @@
       {
         "name": "player_fishing_map_pieces_user_id_not_null",
         "table": "player_fishing_map_pieces",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "player_harbor_capacity_dock_slots_check",
+        "table": "player_harbor_capacity",
+        "schema": "app_private",
+        "definition": "CHECK (((dock_slots >= 2) AND (dock_slots <= 4)))"
+      },
+      {
+        "name": "player_harbor_capacity_dock_slots_not_null",
+        "table": "player_harbor_capacity",
+        "schema": "app_private",
+        "definition": "NOT NULL dock_slots"
+      },
+      {
+        "name": "player_harbor_capacity_pkey",
+        "table": "player_harbor_capacity",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "player_harbor_capacity_user_id_fkey",
+        "table": "player_harbor_capacity",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "player_harbor_capacity_user_id_not_null",
+        "table": "player_harbor_capacity",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
       },
@@ -20180,7 +20401,7 @@
         "name": "harbor_boats_dock_slot_check",
         "table": "harbor_boats",
         "schema": "public",
-        "definition": "CHECK (((dock_slot >= 1) AND (dock_slot <= 2)))"
+        "definition": "CHECK (((dock_slot >= 1) AND (dock_slot <= 4)))"
       },
       {
         "name": "harbor_boats_id_not_null",
@@ -29860,6 +30081,27 @@
         "arguments": "p_tab text, p_query text, p_offset integer"
       },
       {
+        "name": "expand_aquarium_capacity",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_target_capacity integer, p_operation_id uuid"
+      },
+      {
+        "name": "expand_aquarium_capacity",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_target_capacity integer, p_operation_id uuid"
+      },
+      {
+        "name": "expand_aquarium_capacity",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_target_capacity integer, p_operation_id uuid"
+      },
+      {
         "name": "expedition_action",
         "role": "anon",
         "schema": "app_private",
@@ -30358,6 +30600,27 @@
       },
       {
         "name": "friend_expedition_status",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "friend_help_experience_event",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "friend_help_experience_event",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "friend_help_experience_event",
         "role": "service_role",
         "schema": "app_private",
         "execute": false,
@@ -31645,6 +31908,27 @@
         "arguments": "p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric"
       },
       {
+        "name": "player_directory",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer, p_limit integer"
+      },
+      {
+        "name": "player_directory",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_offset integer, p_limit integer"
+      },
+      {
+        "name": "player_directory",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer, p_limit integer"
+      },
+      {
         "name": "player_level",
         "role": "anon",
         "schema": "app_private",
@@ -32609,6 +32893,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_code text"
+      },
+      {
+        "name": "send_player_friend_request",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_player uuid"
+      },
+      {
+        "name": "send_player_friend_request",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_player uuid"
+      },
+      {
+        "name": "send_player_friend_request",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_player uuid"
       },
       {
         "name": "send_welcome_gift",
@@ -34480,6 +34785,27 @@
         "arguments": "p_tab text, p_query text, p_offset integer"
       },
       {
+        "name": "expand_aquarium_capacity",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_target_capacity integer, p_operation_id uuid"
+      },
+      {
+        "name": "expand_aquarium_capacity",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_target_capacity integer, p_operation_id uuid"
+      },
+      {
+        "name": "expand_aquarium_capacity",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_target_capacity integer, p_operation_id uuid"
+      },
+      {
         "name": "expedition_action",
         "role": "anon",
         "schema": "public",
@@ -35446,6 +35772,27 @@
         "arguments": "p_collectible_id uuid, p_tank_id uuid, p_x numeric, p_y numeric"
       },
       {
+        "name": "player_directory",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer, p_limit integer"
+      },
+      {
+        "name": "player_directory",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_offset integer, p_limit integer"
+      },
+      {
+        "name": "player_directory",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer, p_limit integer"
+      },
+      {
         "name": "player_levels",
         "role": "anon",
         "schema": "public",
@@ -35948,6 +36295,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_code text"
+      },
+      {
+        "name": "send_player_friend_request",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_player uuid"
+      },
+      {
+        "name": "send_player_friend_request",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_player uuid"
+      },
+      {
+        "name": "send_player_friend_request",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_player uuid"
       },
       {
         "name": "set_collectible_display_layer",

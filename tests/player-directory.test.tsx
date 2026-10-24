@@ -1,0 +1,42 @@
+import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
+import {afterEach,expect,it,vi} from 'vitest'
+import {PlayerDirectoryList} from '@/features/friends/player-directory'
+const api=vi.hoisted(()=>({load:vi.fn(),send:vi.fn()}))
+vi.mock('@/features/friends/api',()=>({loadPlayerDirectory:api.load,sendPlayerFriendRequest:api.send}))
+vi.mock('@/features/profile/player-avatar',()=>({PlayerAvatar:({nickname}:{nickname:string})=><img alt={nickname+' 아바타'}/>}))
+const row={id:'other',nickname:'바다퐁이',avatar_path:null,equipped_title:'초보 낚시꾼',level:7,relationship:'none'}
+afterEach(()=>{cleanup();vi.resetAllMocks()})
+it('shows public identity and request status only, then requests a friend directly once',async()=>{
+ api.load.mockResolvedValue({players:[row,{...row,id:'friend',nickname:'친구퐁이',relationship:'friend'},{...row,id:'sent',nickname:'보낸퐁이',relationship:'outgoing'},{...row,id:'received',nickname:'받은퐁이',relationship:'incoming'}],hasMore:false})
+ let finish!:()=>void
+ api.send.mockImplementation(()=>new Promise<void>(resolve=>{finish=resolve}))
+ const refresh=vi.fn(async()=>{})
+ render(<PlayerDirectoryList onRequestSent={refresh}/>)
+ const add=await screen.findByRole('button',{name:'바다퐁이 친구 추가'})
+ expect(screen.getAllByLabelText('레벨 7')).toHaveLength(4)
+ expect(screen.getAllByText('초보 낚시꾼')).toHaveLength(4)
+ expect(screen.getByRole('img',{name:'바다퐁이 아바타'})).toBeTruthy()
+ expect(screen.queryByText(/접속|미접속/)).toBeNull()
+ expect(screen.queryByRole('link')).toBeNull()
+ expect(screen.getByRole('button',{name:'친구퐁이 이미 친구'})).toHaveProperty('disabled',true)
+ expect(screen.getByRole('button',{name:'받은퐁이 받은 요청'})).toHaveProperty('disabled',true)
+ fireEvent.click(add);fireEvent.click(add)
+ expect(api.send).toHaveBeenCalledTimes(1)
+ expect(api.send).toHaveBeenCalledWith('other')
+ finish()
+ await waitFor(()=>expect(screen.getByRole('button',{name:'바다퐁이 요청 중'})).toHaveProperty('disabled',true))
+ expect(refresh).toHaveBeenCalledTimes(1)
+ expect(api.load).toHaveBeenCalledWith(0,20)
+})
+it('paginates and lets a failed page be retried',async()=>{
+ api.load.mockResolvedValueOnce({players:[row],hasMore:true}).mockRejectedValueOnce(new Error('offline')).mockResolvedValueOnce({players:[{...row,id:'second',nickname:'다음퐁이'}],hasMore:false})
+ render(<PlayerDirectoryList onRequestSent={async()=>{}}/>)
+ await screen.findByRole('button',{name:'바다퐁이 친구 추가'})
+ fireEvent.click(screen.getByRole('button',{name:'다음',exact:true}))
+ await screen.findByRole('alert')
+ expect(api.load).toHaveBeenLastCalledWith(20,20)
+ fireEvent.click(screen.getByRole('button',{name:'다시 불러오기'}))
+ await screen.findByRole('button',{name:'다음퐁이 친구 추가'})
+ expect(screen.getByText('2페이지')).toBeTruthy()
+ expect(screen.getByRole('button',{name:'다음',exact:true})).toHaveProperty('disabled',true)
+})

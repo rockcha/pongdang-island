@@ -18,6 +18,39 @@ const trip={boat_id:'raft-1',id:'voyage1',vessel_id:vessel.id,vessel_snapshot:ve
 beforeEach(()=>{mock.load.mockResolvedValue(base);mock.refresh.mockResolvedValue(undefined)})
 afterEach(()=>{cleanup();localStorage.clear();vi.resetAllMocks();vi.useRealTimers()})
 function show(shipyard=false){return render(<MemoryRouter><PortPage shipyard={shipyard}/></MemoryRouter>)}
+it('shows the next permanent dock expansion and confirms before charging',async()=>{
+ mock.load.mockResolvedValue({...base,nextDockExpansion:{slot:3,price:10000}})
+ mock.action.mockResolvedValue({...base,dockSlots:3,nextDockExpansion:{slot:4,price:30000},receipt:{action:'expand'}})
+ show()
+ fireEvent.click(await screen.findByRole('button',{name:'3번 선착장 확장 10000 골드'}))
+ const guard=screen.getByRole('alertdialog')
+ expect(guard.textContent).toContain('10,000');expect(guard.textContent).toContain('영구적으로')
+ expect(mock.action).not.toHaveBeenCalled()
+ fireEvent.click(within(guard).getByRole('button',{name:'확인'}))
+ await waitFor(()=>expect(mock.action).toHaveBeenCalledWith(expect.objectContaining({p_action:'expand',p_slot:3})))
+ expect(await screen.findByRole('button',{name:'4번 선착장 확장 30000 골드'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'3번 선착장 배 배치'})).toBeTruthy()
+})
+it('renders all four unlocked docks and prevents unaffordable expansion confirmation',async()=>{
+ mock.load.mockResolvedValue({...base,dockSlots:4,nextDockExpansion:null})
+ const view=show()
+ expect(await screen.findByRole('button',{name:'4번 선착장 배 배치'})).toBeTruthy()
+ expect(screen.queryByRole('button',{name:/선착장 확장/})).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'항구 관리'}))
+ expect(screen.getByRole('button',{name:'4번 선착장 배 선택'})).toBeTruthy()
+ view.unmount();mock.load.mockResolvedValue({...base,dockSlots:3,nextDockExpansion:{slot:4,price:30000}})
+ show();fireEvent.click(await screen.findByRole('button',{name:'4번 선착장 확장 30000 골드'}))
+ expect(screen.getByRole('alertdialog').textContent).toContain('골드가 부족해요.')
+ expect(within(screen.getByRole('alertdialog')).getByRole('button',{name:'확인'}).hasAttribute('disabled')).toBe(true)
+})
+it('restores a pending expansion with the same operation and target',async()=>{
+ const pending={p_action:'expand',p_operation_id:'pending-dock',p_slot:3}
+ localStorage.setItem('pongdang:harbor-request:captain',JSON.stringify(pending))
+ mock.action.mockResolvedValue({...base,dockSlots:3,nextDockExpansion:{slot:4,price:30000},replayed:true})
+ show();fireEvent.click(await screen.findByRole('button',{name:'요청 결과 다시 확인'}))
+ await waitFor(()=>expect(mock.action).toHaveBeenCalledWith(pending))
+ await waitFor(()=>expect(localStorage.getItem('pongdang:harbor-request:captain')).toBeNull())
+})
 it('confirms both unlocked twin-net destinations and sends them in the departure request',async()=>{
  const twin={...vessel,id:'twin-net',name:'쌍그물 쌍동선',fuel_cost:15,fishing_count:22,catch_rule:{version:2,success_bp:9000,common_bp:8320,rare_bp:1500,epic_bp:150,mythic_bp:30,kind:'mixed',trash_bp:7000,discovery_weight:1,home_multiplier:1,region_count:2}}
  const boat={...twin,id:'twin-1',vessel_id:twin.id,instance_no:1,dock_slot:1}

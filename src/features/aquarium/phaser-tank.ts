@@ -121,7 +121,8 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         swipe=null
         const id=sprite.getData('collectibleId') as string
         if(decorationPress?.id===id)decorationPress.dragged=true
-        selectedId=id
+        selectedId=null
+        onBackgroundTap?.()
         dragging.add(id);sprite.setDepth(900)
         const point=this.pointerPosition(pointer)
         dragPointer={pointer,sprite,offsetX:sprite.x-point.x,offsetY:sprite.y-point.y}
@@ -145,7 +146,6 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         entry.previousX=entry.motion.pose.x
         if(canArrangeSpecies(entry.motion.item.species)){
           onPlace?.(id,position.x,position.y)
-          onSelectDecoration?.(id,position.x,position.y)
         }
       })
       this.load.on('loaderror', (file: Phaser.Loader.File) => {

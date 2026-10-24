@@ -2,6 +2,7 @@ import type {Species} from '@/features/collection/api'
 import {collectibleUrl} from '@/features/collection/api'
 import {rarities} from '@/lib/game/rarity'
 import {regionIcons} from '@/features/regions/region-icons'
+import {limitedCollectionEvent} from '@/features/collection/limited-events'
 
 export type CatchMomentArt={species:Species;firstDiscovery?:boolean;practice?:boolean;preview?:boolean;regionName?:string;caughtAt?:string;renderVersion?:1}
 export const catchImageSize=1080
@@ -43,10 +44,11 @@ function badge(ctx:CanvasRenderingContext2D,text:string,x:number,y:number,width:
 export async function paintCatchMoment(canvas:HTMLCanvasElement,input:CatchMomentArt,size=catchImageSize){
  const {species,firstDiscovery,practice,preview,regionName,caughtAt}=input
  const native=species.is_native&&species.native_region_id?regionIcons[species.native_region_id]:undefined
+ const titleIcon=limitedCollectionEvent(species.id)?.iconPath??native?.src
  const region=Object.values(regionIcons).find(item=>item.name===regionName)
- const [creature,nativeImage,regionImage]=await Promise.all([
+ const [creature,titleImage,regionImage]=await Promise.all([
   loadImage(collectibleUrl(species.thumbnail_path)),
-  native?loadImage(native.src).catch(()=>null):Promise.resolve(null),
+  titleIcon?loadImage(titleIcon).catch(()=>null):Promise.resolve(null),
   region?loadImage(region.src).catch(()=>null):Promise.resolve(null),
   document.fonts.load('400 33px "Gowun Dodum"',`${species.name} ${species.description} ${regionName??''} ${rarities[species.rarity].label} 미리보기 실제 포획 기록이 아니에요 NEW 0123456789`),
  ])
@@ -76,10 +78,10 @@ export async function paintCatchMoment(canvas:HTMLCanvasElement,input:CatchMomen
  badge(ctx,rarities[species.rarity].label,540-total/2,690,gradeWidth,color)
  if(isNew)badge(ctx,'NEW',540-total/2+gradeWidth+gap,690,newWidth,'#dc2626',25)
  ctx.font=`700 58px ${font}`;ctx.fillStyle='#ffffff'
- const nameLines=wrapMomentText(species.name,t=>ctx.measureText(t).width,nativeImage?800:920,2)
+ const nameLines=wrapMomentText(species.name,t=>ctx.measureText(t).width,titleImage?800:920,2)
  nameLines.forEach((line,index)=>{
   const y=802+index*70
-  if(nativeImage&&index===0){const width=ctx.measureText(line).width;fitImage(ctx,nativeImage,540-(width+68)/2,y-45,50,50);ctx.fillText(line,574,y)}else ctx.fillText(line,540,y)
+  if(titleImage&&index===0){const width=ctx.measureText(line).width;fitImage(ctx,titleImage,540-(width+68)/2,y-45,50,50);ctx.fillText(line,574,y)}else ctx.fillText(line,540,y)
  })
  const descriptionY=802+(nameLines.length-1)*70+57
  ctx.font=`400 33px ${font}`;ctx.fillStyle='#ffffffbf'

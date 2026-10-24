@@ -8,7 +8,7 @@ import type {HarborAction,HarborState} from './api'
 import {rememberDockRegion} from './dock-region'
 
 function readPending(key:string):HarborAction|null{
- try{const value=JSON.parse(localStorage.getItem(key)??'null');return value&&['buy','fuel','depart','claim','claim_all','dock','store','sell'].includes(value.p_action)&&typeof value.p_operation_id==='string'?value:null}catch{return null}
+ try{const value=JSON.parse(localStorage.getItem(key)??'null');return value&&['expand','buy','fuel','depart','claim','claim_all','dock','store','sell'].includes(value.p_action)&&typeof value.p_operation_id==='string'?value:null}catch{return null}
 }
 export function useHarbor(){
  const {session}=useAuth(),{refresh}=useGold()
@@ -41,7 +41,7 @@ export function useHarbor(){
    try{localStorage.removeItem(key)}catch{}
    if(!alive.current)return true
    apply(data);setPending(null)
-   if(args.p_action==='buy'||args.p_action==='fuel')playPurchaseSound(args.p_operation_id)
+   if(args.p_action==='expand'||args.p_action==='buy'||args.p_action==='fuel')playPurchaseSound(args.p_operation_id)
    if(args.p_action==='sell')playSaleSound(args.p_operation_id)
    if((args.p_action==='claim'||args.p_action==='claim_all')&&data.receipt?.results?.some(result=>result.items.length>0))playRewardSound(`harbor:${args.p_operation_id}`)
    if(args.p_action==='depart'&&data.receipt?.voyageId)setDeparture(data.receipt.voyageId)

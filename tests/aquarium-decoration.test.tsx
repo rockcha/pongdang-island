@@ -63,11 +63,11 @@ const decoration: OwnedCollectible = {
 afterEach(cleanup)
 function selectCustomize(){fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}));fireEvent.click(screen.getByRole('button',{name:'꾸미기',exact:true}))}
 function selectMore(){fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}));fireEvent.click(screen.getByRole('button',{name:'개체 추가 메뉴'}))}
-it('starts with a compact fixed bottom bar and reveals one tool panel at a time',()=>{
+it('starts with a compact top bar and reveals one tool panel at a time',()=>{
  render(<AquariumView name="어항" items={[decoration]} busy={false} onPlace={()=>{}} onArrange={async()=>{}} onSell={async()=>{}} onLayerChange={async()=>{}}/>)
  fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
  const toolbar=screen.getByRole('region',{name:'살구 불가사리 선택 도구'})
- expect(toolbar.className).toContain('bottom-2')
+ expect(toolbar.className).toContain('top-16')
  expect(toolbar.getAttribute('style')).toBeNull()
  expect(screen.queryByRole('button',{name:'시계 방향 15도 회전'})).toBeNull()
  expect(screen.queryByRole('button',{name:'정보 보기'})).toBeNull()
@@ -152,7 +152,7 @@ it('shows trash transform controls and saves the position lock from its toolbar'
  await waitFor(()=>expect(arrange).toHaveBeenCalledWith('bottle',expect.objectContaining({position_locked:true,rotation:45,scale:.5})))
  expect(await screen.findByRole('button',{name:'위치 고정 해제'})).toBeTruthy()
 })
-it('allows circular navigation with arrows and keyboard at both ends', () => {
+it('removes header arrows and keeps keyboard navigation at both ends', () => {
   const buy = vi.fn(),
     navigate = vi.fn()
   const { rerender } = render(
@@ -167,10 +167,11 @@ it('allows circular navigation with arrows and keyboard at both ends', () => {
     />,
   )
   expect(screen.getByLabelText('현재 어항').textContent?.replace(/\s/g, '')).toBe('1/2')
-  expect(screen.getByRole('button', { name: '이전 어항' }).hasAttribute('disabled')).toBe(false)
-  fireEvent.click(screen.getByRole('button', { name: '이전 어항' }))
+  expect(screen.queryByRole('button', { name: '이전 어항' })).toBeNull()
+  expect(screen.queryByRole('button', { name: '다음 어항' })).toBeNull()
+  fireEvent.keyDown(screen.getByTestId('aquarium-glass'), { key: 'ArrowLeft' })
   expect(navigate).toHaveBeenLastCalledWith('previous')
-  fireEvent.click(screen.getByRole('button', { name: '다음 어항' }))
+  fireEvent.keyDown(screen.getByTestId('aquarium-glass'), { key: 'ArrowRight' })
   expect(navigate).toHaveBeenCalledWith('next')
   expect(screen.queryByRole('button', { name: '어항 추가' })).toBeNull()
   expect(screen.getByRole('button', { name: '친구 어항' })).toBeTruthy()
@@ -187,10 +188,10 @@ it('allows circular navigation with arrows and keyboard at both ends', () => {
       navigation={{ index: 1, count: 2, onChange: navigate }}
     />,
   )
-  expect(screen.getByRole('button', { name: '다음 어항' }).hasAttribute('disabled')).toBe(false)
-  fireEvent.click(screen.getByRole('button', { name: '다음 어항' }))
+  expect(screen.getByLabelText('현재 어항').textContent?.replace(/\s/g, '')).toBe('2/2')
+  fireEvent.keyDown(screen.getByTestId('aquarium-glass'), { key: 'ArrowRight' })
   expect(navigate).toHaveBeenLastCalledWith('next')
-  fireEvent.click(screen.getByRole('button', { name: '이전 어항' }))
+  fireEvent.keyDown(screen.getByTestId('aquarium-glass'), { key: 'ArrowLeft' })
   expect(navigate).toHaveBeenLastCalledWith('previous')
 })
 it('auto-saves edits and dismisses the toolbar on background tap without cancelling the save', async () => {

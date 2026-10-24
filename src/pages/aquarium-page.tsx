@@ -2,6 +2,7 @@ import { appArt } from '@/components/app-art'
 import { randomId } from '@/lib/random-id'
 import { AquariumView } from '@/features/aquarium/aquarium-view'
 import { AquariumTankPicker } from '@/features/aquarium/aquarium-tank-picker'
+import {AquariumCapacityExpansion} from '@/features/aquarium/capacity-expansion'
 import { AquariumBackgroundDialog } from '@/features/aquarium/aquarium-background-dialog'
 import type { DecorationPlacement, OwnedCollectible, Species } from '@/features/collection/api'
 import { useEffect, useRef, useState } from 'react'
@@ -16,6 +17,7 @@ import {
   arrangeDecoration,
   manageTank,
   loadAquarium,
+  expandAquariumCapacity,
   reorderAquariumTanks,
   tankOrderError,
   moveCollectibles,
@@ -43,7 +45,7 @@ const { map: MapIcon } = appArt
 
 export function AquariumPage() {
   const { operator } = useOperator()
-  const { wallet, transact, busy: goldBusy, loading: goldLoading, error: goldLoadError } = useGold()
+  const { wallet, transact, refresh:refreshGold, busy: goldBusy, loading: goldLoading, error: goldLoadError } = useGold()
   const [state, setState] = useState<AquariumState | null>(null)
   const [testFish, setTestFish] = useState<OwnedCollectible[]>([])
   const { id: returningTankId, save: saveReturningTank } = useReturningTank()
@@ -365,6 +367,15 @@ export function AquariumPage() {
         tanks={state?.tanks}
         inhabitants={state?.inhabitants}
         tankCapacity={state?.tankCapacity}
+        capacityControls={state&&tank?<AquariumCapacityExpansion state={state} count={state.inhabitants.filter(item=>item.tank_id===tank.id).length} gold={wallet.gold} busy={busy||goldBusy||goldLoading||!!goldLoadError} onExpand={async(capacity,operation)=>{
+          if(locked.current)throw new Error('BUSY')
+          locked.current=true;setBusy(true)
+          try{
+            const data=await expandAquariumCapacity(capacity,operation)
+            if(active.current)setState(data)
+            await Promise.allSettled([refreshGold()])
+          }finally{locked.current=false;if(active.current)setBusy(false)}
+        }}/>:undefined}
         onStore={(ids) => move(ids, null)}
         purchase={
           state

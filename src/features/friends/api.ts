@@ -1,6 +1,18 @@
 import { createClient } from '@/lib/client'
 import type { FriendRequest, Profile, RequestAction } from '@/features/social/types'
 
+export type DirectoryPlayer={id:string;nickname:string;avatar_path:string|null;equipped_title:string|null;level:number;relationship:'none'|'friend'|'outgoing'|'incoming'}
+export type PlayerDirectory={players:DirectoryPlayer[];hasMore:boolean}
+export async function loadPlayerDirectory(offset=0,limit=20):Promise<PlayerDirectory>{
+ const {data,error}=await createClient().rpc('player_directory',{p_offset:offset,p_limit:limit})
+ if(error)throw error
+ return data
+}
+export async function sendPlayerFriendRequest(player:string){
+ const {error}=await createClient().rpc('send_player_friend_request',{p_player:player})
+ if(error)throw error
+}
+
 export async function syncProfile(): Promise<Profile> {
   const { data, error } = await createClient().rpc('sync_player_profile')
   if (error) throw error

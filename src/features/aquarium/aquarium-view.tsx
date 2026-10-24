@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
-import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Info } from 'lucide-react'
+import { ChevronDown, ChevronUp, Info } from 'lucide-react'
 import {
   Dialog,
   DialogContent,
@@ -44,6 +44,7 @@ type Props = {
   tankId?: string
   background?: { name: string; image_path: string }
   selectorControls?: ReactNode
+  capacityControls?: ReactNode
   nameControls?: ReactNode
   backgroundControls?: ReactNode
   managementControls?: ReactNode
@@ -190,47 +191,14 @@ export function AquariumView(props: Props) {
           }
         }}
       >
-        <div className="absolute inset-x-0 top-0 z-20 flex items-center justify-center gap-2 border-b border-white/15 bg-background/25 backdrop-blur-sm px-3 py-0.5">
-          <div
-            role="group"
-            aria-label="어항 이동"
-            className="flex w-full min-w-0 max-w-full items-center justify-center gap-1"
-          >
-            <Button
-              variant="ghost"
-              size="icon"
-              className="min-h-11 min-w-11 shrink-0"
-              aria-label="이전 어항"
-              disabled={busy || !props.navigation || props.navigation.count < 2}
-              onClick={() => navigate('previous')}
-            >
-              <ChevronLeft className="size-4" />
-            </Button>
-            <div className="flex w-40 min-w-0 items-center justify-center gap-1">
-              <div className="min-w-0">
-                {props.selectorControls ?? <p className="truncate text-sm">{name}</p>}
-                <p
-                  className="text-center text-[10px] tabular-nums text-muted-foreground"
-                  aria-live="polite"
-                  aria-label="현재 어항"
-                >
-                  {(props.navigation?.index ?? 0) + 1} / {props.navigation?.count ?? 1}
-                </p>
-              </div>
-            </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="min-h-11 min-w-11 shrink-0"
-              aria-label="다음 어항"
-              disabled={
-                busy || !props.navigation || props.navigation.count < 2
-              }
-              onClick={() => navigate('next')}
-            >
-              <ChevronRight className="size-4" />
-            </Button>
+        <div className="absolute inset-x-0 top-0 z-20 grid min-h-14 grid-cols-[4rem_minmax(0,1fr)_4rem] items-center border-b border-white/15 bg-background/25 px-3 py-0.5 backdrop-blur-sm">
+          <p className="pl-1 text-left text-[11px] tabular-nums text-muted-foreground" aria-live="polite" aria-label="현재 어항">
+            {(props.navigation?.index ?? 0) + 1} / {props.navigation?.count ?? 1}
+          </p>
+          <div className="flex min-w-0 items-center justify-center text-center">
+            {props.selectorControls ?? <p className="truncate text-sm">{name}</p>}
           </div>
+          <div className="flex min-w-0 justify-end">{props.capacityControls}</div>
         </div>
         <TankInhabitants
           key={panorama?`wide:${props.tankId??name}`:'normal'}

@@ -50,6 +50,11 @@ export async function placeCollectible(id:string,tankId:string,x:number,y:number
  if(error)throw error
  return data
 }
+export async function setCollectibleDisplayLayer(id:string,tankId:string,layer:number|null){
+ const {data,error}=await createClient().rpc('set_collectible_display_layer',{p_collectible_id:id,p_tank_id:tankId,p_layer:layer})
+ if(error)throw error
+ return data
+}
 export async function arrangeDecoration(id:string,tankId:string,placement:DecorationPlacement,scaleOnly=false){
  if(scaleOnly){
   const {data,error}=await createClient().rpc('resize_aquarium_fish',{p_collectible_id:id,p_tank_id:tankId,p_scale:placement.scale})

@@ -14,6 +14,7 @@ export function CollectibleSaleDialog({
   error,
   onConfirm,
   children,
+  allowBatch = false,
 }: {
   open: boolean
   onOpenChange: (open: boolean) => void
@@ -23,11 +24,12 @@ export function CollectibleSaleDialog({
   error?: string
   onConfirm: () => void
   children?: ReactNode
+  allowBatch?: boolean
 }) {
   const groups = groupCollectibles(items)
   const valid =
     items.length > 0 &&
-    items.length <= 100 &&
+    (allowBatch || items.length <= 100) &&
     new Set(items.map((item) => item.id)).size === items.length &&
     groups.every((group) => group.sellable.length === group.items.length)
   const total = items.reduce((sum, item) => sum + item.species.sell_price, 0)

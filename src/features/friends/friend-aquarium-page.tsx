@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link, useParams } from 'react-router'
+import { Link, useParams, useNavigate, useLocation } from 'react-router'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { PlayerAvatar } from '@/features/profile/player-avatar'
@@ -16,6 +16,9 @@ export function FriendAquariumPage() {
   return <Visit key={ownerId} owner={ownerId ?? ''} />
 }
 function Visit({ owner }: { owner: string }) {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const back = () => location.state?.aquariumVisit ? navigate(-1) : navigate('/friends')
   const [data, setData] = useState<FriendAquarium | null>(null),
     [error, setError] = useState(''),
     [attempt, setAttempt] = useState(0),
@@ -68,6 +71,7 @@ function Visit({ owner }: { owner: string }) {
   }
   return (
     <section className="flex min-h-0 w-full flex-1 flex-col" aria-label="친구 아쿠아리움">
+      <Button variant="ghost" className="min-h-11 shrink-0 self-start gap-1 px-3 text-xs" onClick={back}><ChevronLeft className="size-4"/>돌아가기</Button>
       {!tank ? (
         <div className="p-4">
           <Link to="/friends" className="text-sm underline">

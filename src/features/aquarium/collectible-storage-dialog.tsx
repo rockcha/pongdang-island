@@ -8,12 +8,11 @@ import type { RarityFilter } from '@/components/rarity-select'
 import { useEffect, useRef, useState } from 'react'
 import { groupCollectibles,compareStoredSpecies } from './collectible-groups'
 import { CollectibleQuantityCard } from './collectible-quantity-card'
-import { ChevronLeft, ChevronRight, RefreshCw } from 'lucide-react'
+import { ChevronLeft, ChevronRight, RefreshCw, SlidersHorizontal } from 'lucide-react'
 import { GoldIcon } from '@/features/gold/gold-provider'
 import { ConfirmDialog } from '@/components/confirm-dialog'
 import { CollectibleSaleDialog } from './collectible-sale-dialog'
 import { SendGiftDialog } from '@/features/gifts/send-gift-dialog'
-import { CollectibleThumbnail } from '@/features/collection/collectible-thumbnail'
 import type { OwnedCollectible } from '@/features/collection/api'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
@@ -54,6 +53,7 @@ export function CollectibleStorageDialog({
   const open = pageMode || (controlledOpen ?? internalOpen)
   const setOpen = (value: boolean) => { setInternalOpen(value); onOpenChange?.(value) }
   const [recentOnly, setRecentOnly] = useState(false)
+  const [filtersOpen, setFiltersOpen] = useState(false)
   const recentIds = new Set(recentItems?.map(item => item.id) ?? [])
   const dailyOrderSpecies = useDailyOrderSpecies(open)
   const [rarity, setRarity] = useState<RarityFilter>('all')
@@ -77,8 +77,13 @@ export function CollectibleStorageDialog({
     [saving, setSaving] = useState(false)
   const [assignIds, setAssignIds] = useState<string[] | null>(null)
   const [sale, setSale] = useState<OwnedCollectible[] | null>(null)
+  const [saleError, setSaleError] = useState('')
   const cache = useRef(new Map<string, OwnedCollectible>())
   const locked = useRef(false)
+  const [selectingAll, setSelectingAll] = useState(false)
+  const selectionRequest = useRef(0)
+  const [saleProgress, setSaleProgress] = useState('')
+  useEffect(() => () => { selectionRequest.current++ }, [])
   const capacity = state.tankCapacity ?? 50
   const targetId = currentTankId
   const occupancy = (id: string) => state.inhabitants.filter((item) => item.tank_id === id).length
@@ -153,7 +158,40 @@ export function CollectibleStorageDialog({
   }
   const pageIds = (data?.items ?? []).map((item) => item.id)
   const allSelected = pageIds.length > 0 && pageIds.every((id) => selection.has(id))
-  const disabled = busy || saving
+  const allPagesSelected = Boolean(data?.total && selection.size === data.total)
+  const searchPending = query.trim() !== search
+  const disabled = busy || saving || selectingAll
+  async function selectAllPages() {
+    if (disabled || loading || searchPending || !data?.total) return
+    if (allPagesSelected) { setSelection(new Set()); return }
+    const request = ++selectionRequest.current
+    setSelectingAll(true)
+    setError('')
+    try {
+      const fetched = new Map<string, OwnedCollectible>()
+      if (recentOnly) {
+        for (const item of recentItems ?? []) {
+          if ((kind === 'all' || item.species.kind === kind) && (rarity === 'all' || item.species.rarity === rarity) && matchesRegionConcept(item.species, concept) && (!search || item.species.name.toLocaleLowerCase().includes(search.toLocaleLowerCase()))) fetched.set(item.id, item)
+        }
+      } else {
+        const total = data.total
+        for (let offset = 0; offset < total; offset += 50) {
+          const result = await loadCollectibleStorage(offset, search, kind, rarity, concept)
+          if (request !== selectionRequest.current) return
+          if (result.total !== total || !result.items.length) throw new Error('STORAGE_CHANGED')
+          for (const item of result.items) fetched.set(item.id, item)
+        }
+        if (fetched.size !== total) throw new Error('STORAGE_CHANGED')
+      }
+      if (request !== selectionRequest.current) return
+      for (const [id, item] of fetched) cache.current.set(id, item)
+      setSelection(new Set(fetched.keys()))
+    } catch {
+      if (request === selectionRequest.current) setError('전체 목록을 선택하지 못했어요. 목록이 바뀌었거나 연결이 불안정해요. 다시 시도해주세요.')
+    } finally {
+      if (request === selectionRequest.current) setSelectingAll(false)
+    }
+  }
   const Content = pageMode ? 'div' : DialogContent
   return (
     <Dialog
@@ -174,7 +212,7 @@ export function CollectibleStorageDialog({
         icon={<Archive className="size-8" />}
         count={state.storageCount ?? 0}
       />}
-      <Content className={pageMode ? 'relative flex min-h-0 flex-1 flex-col gap-3 overflow-hidden px-4 pt-3 pb-4' : 'bottom-0 top-auto left-0 flex h-[88dvh] max-h-[88dvh] max-w-full translate-x-0 translate-y-0 flex-col gap-3 overflow-hidden rounded-t-2xl rounded-b-none pb-4 sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-xl'}>
+      <Content className={pageMode ? 'relative flex min-h-0 flex-1 flex-col gap-2 overflow-hidden px-4 pt-3 pb-4' : 'bottom-0 top-auto left-0 flex h-[96dvh] max-h-[96dvh] max-w-full translate-x-0 translate-y-0 flex-col gap-2 overflow-hidden rounded-t-2xl rounded-b-none pb-4 sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-xl'}>
         {!pageMode && <DialogHeader className="shrink-0">
           <DialogTitle className="flex items-center gap-2">
             <Archive aria-hidden="true" className="size-5 shrink-0 text-primary" />
@@ -190,7 +228,7 @@ export function CollectibleStorageDialog({
         <div
           role="group"
           aria-label="보관함 분류"
-          className="segmented-control grid shrink-0 grid-cols-4 gap-1 p-2"
+          className="segmented-control grid shrink-0 grid-cols-4 gap-1 p-1"
         >
           {[
             { id: 'all', name: '전체' },
@@ -202,23 +240,15 @@ export function CollectibleStorageDialog({
               key={item.id}
               variant={kind === item.id ? 'secondary' : 'ghost'}
               size="sm"
-              className="min-h-16 min-w-0 flex-col gap-1 px-1 py-2 text-[11px]"
+              className="min-h-11 min-w-0 px-1 text-xs"
               aria-pressed={kind === item.id}
               disabled={disabled}
               onClick={() => {
                 setKind(item.id)
+                setSelection(new Set())
                 setPage(0)
               }}
             >
-              {item.id === 'all' ? (
-                <appArt.list className="size-7" />
-              ) : item.id === 'fish' ? (
-                <appArt.fish className="size-7" />
-              ) : item.id === 'decoration' ? (
-                <appArt.decoration className="size-7" />
-              ) : (
-                <appArt.trash className="size-7" />
-              )}
               <span>{item.name}</span>
             </Button>
           ))}
@@ -232,8 +262,9 @@ export function CollectibleStorageDialog({
               setSelection(new Set())
             }}
           />
+          <Button variant="outline" className="min-h-11 shrink-0 gap-1 text-xs" aria-label="필터" aria-expanded={filtersOpen} onClick={() => setFiltersOpen(value => !value)}><SlidersHorizontal className="size-4" />필터{(concept !== "all" || rarity !== "all") && ` (${Number(concept !== "all") + Number(rarity !== "all")})`}</Button>
         </div>
-        <div className="flex min-w-0 shrink-0 items-center gap-2">
+        <div hidden={!filtersOpen} className={filtersOpen ? "flex min-w-0 shrink-0 items-center gap-2" : "hidden"}>
           <RegionConceptSelect
             value={concept}
             disabled={disabled}
@@ -253,18 +284,23 @@ export function CollectibleStorageDialog({
             }}
           />
         </div>
-        <div className="flex shrink-0 items-center justify-between gap-2">
+        <div className="flex shrink-0 flex-wrap items-center justify-between gap-1">
           <Button
             variant="ghost"
             size="sm"
             aria-pressed={allSelected}
-            disabled={disabled || loading || !pageIds.length}
-            onClick={() => setSelection(allSelected ? new Set() : new Set(pageIds.slice(0, 50)))}
+            disabled={disabled || loading || searchPending || !pageIds.length}
+            onClick={() => setSelection(current => {
+              const next = new Set(current)
+              for (const id of pageIds) { if (allSelected) next.delete(id); else next.add(id) }
+              return next
+            })}
           >
-            {allSelected ? '전체 해제' : '전체 선택'}
+            {allSelected ? '이 페이지 해제' : '이 페이지 선택'}
           </Button>
-          <span className="text-xs text-muted-foreground">
-            현재 페이지 · {selection.size}/50개 선택
+          <Button variant="ghost" size="sm" className="text-xs" aria-pressed={allPagesSelected} disabled={disabled || loading || searchPending || !data?.total} onClick={() => void selectAllPages()}>{selectingAll ? '선택 중…' : allPagesSelected ? '전체 해제' : '모든 페이지 선택'}</Button>
+          <span className="text-[11px] text-muted-foreground" role="status">
+            {selection.size}개 선택
           </span>
         </div>
         <div className="-mx-4 flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain">
@@ -276,7 +312,7 @@ export function CollectibleStorageDialog({
             <ul className="grid grid-cols-3 border-t border-border/60">
               {groups.map((group) => {
                 const value = group.items.filter((item) => selection.has(item.id)).length
-                const max = Math.min(group.items.length, Math.max(0, 50 - selection.size + value))
+                const max = group.items.length
                 return (
                   <li key={group.species.id + ':' + group.recent} className="min-w-0">
                     <CollectibleQuantityCard
@@ -356,26 +392,7 @@ export function CollectibleStorageDialog({
             </Button>
           </div>
         )}
-        {selectedGroups.length > 0 && (
-          <div
-            className="flex min-h-12 shrink-0 items-center gap-3 overflow-x-auto border-t pt-2"
-            aria-label="선택한 개체"
-          >
-            {selectedGroups.map((group) => (
-              <div key={group.species.id} className="relative shrink-0 px-1 pt-3">
-                <span className="absolute inset-x-0 top-0 text-center text-[10px] text-primary">
-                  ×{group.items.length}
-                </span>
-                <CollectibleThumbnail
-                  path={group.species.thumbnail_path}
-                  name={group.species.name}
-                  className="size-9"
-                />
-              </div>
-            ))}
-          </div>
-        )}
-        <div className={`-mx-4 -mb-4 -mt-3 grid shrink-0 ${pageMode ? 'grid-cols-2' : 'grid-cols-3'} border-t pb-[env(safe-area-inset-bottom)]`}>
+        {selection.size > 0 && <div className={`-mx-4 -mb-4 grid shrink-0 ${pageMode ? 'grid-cols-2' : 'grid-cols-3'} border-t pb-[env(safe-area-inset-bottom)]`}>
           {!pageMode && <Button
             variant="secondary"
             aria-label={selection.size + '개 어항에 넣기'}
@@ -386,7 +403,7 @@ export function CollectibleStorageDialog({
               setAssignIds([...selection])
             }}
           >
-            <Aquarium className="size-9" />
+            <Aquarium className="size-5" /><span className="text-xs">어항에 넣기</span>
           </Button>}
           {selectedGroups.length === 1 ? (
             <SendGiftDialog
@@ -415,13 +432,14 @@ export function CollectibleStorageDialog({
             onClick={() => {
               setError('')
               setSale([...sellable])
+              setSaleError('')
             }}
           >
             <span className="text-xs">판매</span>
             <GoldIcon className="size-8" />
             <span className="text-xs tabular-nums">{price.toLocaleString('ko-KR')}</span>
           </Button>
-        </div>
+        </div>}
         <ConfirmDialog
           illustration="aquarium"
           open={assignIds !== null}
@@ -436,33 +454,47 @@ export function CollectibleStorageDialog({
           onConfirm={() => void assign()}
         />
         <CollectibleSaleDialog
+          allowBatch
           items={sale ?? []}
           open={sale !== null}
           onOpenChange={(value) => {
             if (!value) setSale(null)
           }}
           busy={saving}
-          error={error}
+          error={saleError}
           disabled={busy || !sale?.length}
           onConfirm={async () => {
             if (locked.current || busy || !onSell || !sale?.length) return
             locked.current = true
             setSaving(true)
-            setError('')
+            setSaleError('')
+            let completed = 0
             try {
-              await onSell(sale.map((item) => item.id))
+              for (let start = 0; start < sale.length; start += 100) {
+                setSaleProgress(`${completed}/${sale.length}개 판매 중…`)
+                const batch = sale.slice(start, start + 100)
+                await onSell(batch.map(item => item.id))
+                completed += batch.length
+                const sold = new Set(batch.map(item => item.id))
+                setSelection(current => new Set([...current].filter(id => !sold.has(id))))
+              }
               setSale(null)
               refreshStorage()
             } catch (cause) {
-              setError(
-                cause instanceof Error ? cause.message : '판매하지 못했어요. 다시 시도해주세요.',
+              setSale(sale.slice(completed))
+              if (completed > 0) { setPage(0); setRetry(value => value + 1) }
+              setSaleError(
+                `${completed > 0 ? `${completed}개는 판매했어요. 나머지는 선택을 유지했어요. ` : ''}${cause instanceof Error ? cause.message : '판매하지 못했어요. 다시 시도해주세요.'}`,
               )
             } finally {
               locked.current = false
               setSaving(false)
+              setSaleProgress('')
             }
           }}
-        />
+        >
+          {saleProgress && <p role="status" className="text-center text-xs text-primary">{saleProgress}</p>}
+        </CollectibleSaleDialog>
       </Content>
     </Dialog>
   )

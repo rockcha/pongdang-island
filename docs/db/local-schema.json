@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "abee028c19d265abce9b4238804c0a9f5a8571bdbf7e89c8951edc366751511a",
+  "migrationHash": "0b104c6a93c4e1af3572f9d95b2992e680c04809bcfca9b53dc758c0e23ecccf",
   "structure": {
     "enums": [
       {
@@ -7346,6 +7346,16 @@
         "generated": ""
       },
       {
+        "name": "display_layer",
+        "type": "smallint",
+        "table": "player_collectibles",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
         "name": "user_id",
         "type": "uuid",
         "table": "player_discoveries",
@@ -13259,6 +13269,16 @@
         "securityDefiner": true
       },
       {
+        "name": "set_collectible_display_layer",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_collectible_id uuid, p_tank_id uuid, p_layer integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.set_collectible_display_layer(p_collectible_id uuid, p_tank_id uuid, p_layer integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();item public.player_collectibles;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_layer is not null and not(p_layer between 0 and 800) then raise exception 'INVALID_LAYER';end if;\n if not exists(select 1 from public.aquarium_tanks where id=p_tank_id and user_id=u) then raise exception 'TANK_NOT_FOUND';end if;\n select * into item from public.player_collectibles\n where id=p_collectible_id and user_id=u and tank_id=p_tank_id\n and sold_at is null and consumed_at is null and escrow_gift_id is null for update;\n if not found then raise exception 'COLLECTIBLE_NOT_FOUND';end if;\n if not exists(select 1 from public.collectible_species where id=item.species_id and kind in ('fish','trash','decoration')) then raise exception 'INVALID_ITEM';end if;\n update public.player_collectibles set display_layer=p_layer where id=item.id;\n return jsonb_build_object('id',item.id,'display_layer',p_layer);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "set_exchange_listing_like",
         "config": [
           "search_path=\"\""
@@ -14826,6 +14846,16 @@
         "schema": "public",
         "arguments": "p_code text",
         "definition": "CREATE OR REPLACE FUNCTION public.send_friend_request(p_code text)\n RETURNS uuid\n LANGUAGE sql\n SET search_path TO ''\nAS $function$ select app_private.send_friend_request(p_code) $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "set_collectible_display_layer",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_collectible_id uuid, p_tank_id uuid, p_layer integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.set_collectible_display_layer(p_collectible_id uuid, p_tank_id uuid, p_layer integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.set_collectible_display_layer(p_collectible_id,p_tank_id,p_layer)\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -21137,6 +21167,12 @@
         "definition": "NOT NULL animation_seed"
       },
       {
+        "name": "player_collectibles_display_layer_range",
+        "table": "player_collectibles",
+        "schema": "public",
+        "definition": "CHECK (((display_layer >= 0) AND (display_layer <= 800)))"
+      },
+      {
         "name": "player_collectibles_escrow_gift_id_fkey",
         "table": "player_collectibles",
         "schema": "public",
@@ -26839,6 +26875,13 @@
         "role": "authenticated",
         "table": "player_collectibles",
         "column": "consumed_at",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "player_collectibles",
+        "column": "display_layer",
         "schema": "public",
         "privilege": "SELECT"
       },
@@ -32589,6 +32632,27 @@
         "arguments": "p_user_id uuid"
       },
       {
+        "name": "set_collectible_display_layer",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_collectible_id uuid, p_tank_id uuid, p_layer integer"
+      },
+      {
+        "name": "set_collectible_display_layer",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_collectible_id uuid, p_tank_id uuid, p_layer integer"
+      },
+      {
+        "name": "set_collectible_display_layer",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_collectible_id uuid, p_tank_id uuid, p_layer integer"
+      },
+      {
         "name": "set_exchange_listing_like",
         "role": "anon",
         "schema": "app_private",
@@ -35884,6 +35948,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_code text"
+      },
+      {
+        "name": "set_collectible_display_layer",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_collectible_id uuid, p_tank_id uuid, p_layer integer"
+      },
+      {
+        "name": "set_collectible_display_layer",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_collectible_id uuid, p_tank_id uuid, p_layer integer"
+      },
+      {
+        "name": "set_collectible_display_layer",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_collectible_id uuid, p_tank_id uuid, p_layer integer"
       },
       {
         "name": "set_exchange_listing_like",

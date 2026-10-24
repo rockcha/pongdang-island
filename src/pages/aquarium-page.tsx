@@ -20,12 +20,14 @@ import {
   tankOrderError,
   moveCollectibles,
   placeCollectible,
+  setCollectibleDisplayLayer,
 } from '@/features/aquarium/api'
 import { CollectibleStorageDialog } from '@/features/aquarium/collectible-storage-dialog'
 import type { AquariumState } from '@/features/aquarium/api'
 import { CollectionDialog } from '@/features/collection/collection-dialog'
 import { useOperator } from '@/features/notices/use-operator'
 import { Link } from 'react-router'
+import { useReturningTank } from '@/features/friends/visit-return'
 
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import {
@@ -44,7 +46,8 @@ export function AquariumPage() {
   const { wallet, transact, busy: goldBusy, loading: goldLoading, error: goldLoadError } = useGold()
   const [state, setState] = useState<AquariumState | null>(null)
   const [testFish, setTestFish] = useState<OwnedCollectible[]>([])
-  const [selectedId, setSelectedId] = useState('')
+  const { id: returningTankId, save: saveReturningTank } = useReturningTank()
+  const [selectedId, setSelectedId] = useState(returningTankId)
   const [name, setName] = useState('')
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
@@ -111,6 +114,8 @@ export function AquariumPage() {
     }
   }
   const tank = state?.tanks.find((item) => item.id === selectedId) ?? state?.tanks[0]
+  const tankId = tank?.id
+  useEffect(() => { if (tankId) saveReturningTank(tankId) }, [tankId, saveReturningTank])
   const selected = state?.catalog.find((item) => item.id === tank?.background_id)
   const tankIndex = state?.tanks.findIndex((item) => item.id === tank?.id) ?? 0
   function changeTank(direction: 'previous' | 'next') {
@@ -243,6 +248,23 @@ export function AquariumPage() {
       if (active.current) setBusy(false)
     }
   }
+  async function changeLayer(id: string, layer: number | null) {
+    if (!tank || locked.current) throw new Error('BUSY')
+    if (id.startsWith('test-')) {
+      setTestFish(current => current.map(item => item.id === id ? {...item, display_layer: layer} : item))
+      return
+    }
+    locked.current = true
+    setBusy(true)
+    try {
+      await placementQueue.current.get(id)
+      const saved = await setCollectibleDisplayLayer(id, tank.id, layer)
+      if (active.current) setState(current => current ? {...current, inhabitants: current.inhabitants.map(item => item.id === id ? {...item, display_layer: saved.display_layer} : item)} : current)
+    } finally {
+      locked.current = false
+      if (active.current) setBusy(false)
+    }
+  }
   async function sell(ids: string[]) {
     if (locked.current || goldBusy) throw new Error('다른 작업을 마친 뒤 다시 판매해주세요.')
     locked.current = true
@@ -336,7 +358,12 @@ export function AquariumPage() {
         busy={busy || goldBusy || goldLoading || !!goldLoadError}
         onPlace={place}
         onArrange={arrange}
+        onLayerChange={changeLayer}
         onSell={sell}
+        onMove={move}
+        tanks={state?.tanks}
+        inhabitants={state?.inhabitants}
+        tankCapacity={state?.tankCapacity}
         onStore={(ids) => move(ids, null)}
         purchase={
           state

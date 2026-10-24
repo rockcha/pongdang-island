@@ -1,5 +1,5 @@
 import {useRef,useState} from 'react'
-import {Check,ChevronDown,Plus,Pencil,GripVertical,ArrowUp,ArrowDown} from 'lucide-react'
+import {Check,ChevronDown,ChevronRight,Plus,Pencil,GripVertical,ArrowUp,ArrowDown} from 'lucide-react'
 import {Button} from '@/components/ui/button'
 import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle,DialogTrigger} from '@/components/ui/dialog'
 import {backgroundUrl} from './api'
@@ -57,7 +57,7 @@ export function AquariumTankPicker({tanks,selectedId,backgrounds,busy,onSelect,o
        {image}<div className="min-w-0 flex-1 pl-1">{label}{i>0&&<button type="button" disabled={disabled} onClick={()=>move(tank.id,0)} className="mt-1 min-h-9 text-[11px] text-primary underline underline-offset-4" aria-label={`${tank.name} 맨 앞으로`}>맨 앞으로</button>}</div>
        <div className="flex shrink-0 flex-col"><Button variant="ghost" size="icon" className="min-h-11 min-w-11" disabled={disabled||i===0} aria-label={`${tank.name} 위로`} onClick={()=>move(tank.id,i-1)}><ArrowUp aria-hidden="true" className="size-4"/></Button><Button variant="ghost" size="icon" className="min-h-11 min-w-11" disabled={disabled||i===shown.length-1} aria-label={`${tank.name} 아래로`} onClick={()=>move(tank.id,i+1)}><ArrowDown aria-hidden="true" className="size-4"/></Button></div>
       </div>:<div className="flex items-center">
-       <button type="button" disabled={disabled} aria-pressed={tank.id===selectedId} onClick={()=>{onSelect(tank.id);close(false)}} className="flex min-h-18 min-w-0 flex-1 items-center gap-3 rounded-lg p-2 text-left">{image}{label}{tank.id===selectedId&&<Check aria-hidden="true" className="mr-2 size-4 shrink-0 text-primary"/>}</button>
+       <button type="button" disabled={disabled} aria-label={`${tank.name} 어항으로 들어가기`} aria-pressed={tank.id===selectedId} onClick={()=>{onSelect(tank.id);close(false)}} className="flex min-h-18 min-w-0 flex-1 items-center gap-3 rounded-lg p-2 text-left hover:bg-secondary/60 focus-visible:outline-2 focus-visible:outline-ring">{image}{label}<span className="flex shrink-0 items-center gap-1 text-[11px] text-primary">{tank.id===selectedId&&<Check aria-hidden="true" className="size-3.5"/>}들어가기<ChevronRight aria-hidden="true" className="size-3.5"/></span></button>
        {onRename&&<Button variant="ghost" size="icon" className="mr-1 min-h-11 min-w-11 shrink-0" disabled={disabled} aria-label={`${tank.name} 이름 변경`} onClick={()=>{close(false);onRename(tank.id)}}><Pencil className="size-4"/></Button>}
       </div>}
      </div>

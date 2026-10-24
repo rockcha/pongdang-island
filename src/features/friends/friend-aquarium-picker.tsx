@@ -1,6 +1,7 @@
 import {EquippedTitleText} from '@/features/titles/equipped-title-text'
 import {PlayerIdentityLink} from '@/features/profile/player-identity-link'
-import { useState } from 'react'
+import { useState, useRef, useLayoutEffect } from 'react'
+import { useReturningPicker } from './visit-return'
 import { ChevronRight } from 'lucide-react'
 import { appArt } from '@/components/app-art'
 import { useAuth } from '@/components/auth-provider'
@@ -19,8 +20,11 @@ import {
 export function FriendAquariumPicker() {
   const { session } = useAuth()
   const { requests, loading, error, refresh, owner } = useSocial()
-  const [open, setOpen] = useState(false)
   const userId = session?.user.id
+  const returning = useReturningPicker(userId)
+  const [open, setOpen] = useState(Boolean(returning.initial))
+  const list = useRef<HTMLDivElement>(null)
+  const restored = useRef(false)
   const storageKey = `pongdang:recent-aquariums:${userId ?? 'guest'}`
   function recentIds(): string[] {
     try {
@@ -30,7 +34,7 @@ export function FriendAquariumPicker() {
       return []
     }
   }
-  const recent = recentIds()
+  const recent = returning.initial?.order ?? recentIds()
   const friends =
     owner === userId
       ? requests
@@ -51,6 +55,7 @@ export function FriendAquariumPicker() {
           })
       : []
   function visit(id: string) {
+    returning.save({ top: list.current?.scrollTop ?? 0, order: friends.map(friend => friend.id) })
     try {
       localStorage.setItem(
         storageKey,
@@ -61,8 +66,14 @@ export function FriendAquariumPicker() {
     }
     setOpen(false)
   }
+  useLayoutEffect(() => {
+    if (open && !loading && list.current && !restored.current) {
+      list.current.scrollTop = returning.initial?.top ?? 0
+      restored.current = true
+    }
+  })
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={value => {setOpen(value); if (!value) returning.save(null)}}>
       <DialogTrigger
         render={<Button variant="ghost" className="min-h-12 flex-1 rounded-none text-xs" />}
       >
@@ -90,12 +101,14 @@ export function FriendAquariumPicker() {
           </div>
         )}
         <div
+          ref={list}
           aria-label="방문할 친구 목록"
           className="min-h-0 max-h-[60dvh] flex-1 touch-pan-y overflow-y-auto overscroll-contain divide-y divide-border"
         >
           {friends.map((friend) => (
             <PlayerIdentityLink label={(friend.profile?.nickname??'친구')+' 아쿠아리움 방문'}
               key={friend.id}
+              state={{ aquariumVisit: true }}
               to={`/friends/${friend.id}/aquarium`}
               onClick={() => visit(friend.id)}
               className="flex min-h-18 items-center gap-3 rounded-lg px-2 py-3 hover:bg-secondary focus-visible:outline-2 focus-visible:outline-ring"

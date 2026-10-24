@@ -3,7 +3,8 @@ import {useFriendExpeditions} from '@/features/expeditions/use-friend-expedition
 import {FriendExpeditionVisitButton} from '@/features/expeditions/friend-expedition-visit-button'
 import {appArt} from '@/components/app-art'
 
-import { useState } from 'react'
+import { useState, useLayoutEffect } from 'react'
+import { useFriendListReturn } from './visit-return'
 import type { FormEvent } from 'react'
 import {Copy} from 'lucide-react'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
@@ -30,14 +31,15 @@ type Tab='friends'|'requests'
 export function FriendsPage() {
   const {session}=useAuth()
   const {profile,requests,loading,error,refresh}=useSocial()
-  const [tab,setTab]=useState<Tab>('friends')
+  const returning = useFriendListReturn(session?.user.id)
+  const [tab,setTab]=useState<Tab>(returning.initial?.tab === 'requests' ? 'requests' : 'friends')
   const [inviteOpen,setInviteOpen]=useState(false)
   const [code,setCode]=useState('')
   const [found,setFound]=useState<Profile|null>(null)
   const [searched,setSearched]=useState(false)
   const [busy,setBusy]=useState(false)
   const [searchError,setSearchError]=useState('')
-  const [onlineOnly,setOnlineOnly]=useState(false)
+  const [onlineOnly,setOnlineOnly]=useState(returning.initial?.onlineOnly ?? false)
   const incoming=requests.filter(r=>r.status==='pending' && r.recipient_id===session?.user.id)
   const outgoing=requests.filter(r=>r.status==='pending' && r.sender_id===session?.user.id)
   const friends=requests.filter(r=>r.status==='accepted')
@@ -48,6 +50,7 @@ export function FriendsPage() {
   const visibleFriends=onlineOnly?friends.filter(f=>statuses.get(friendId(f))==='online'):friends
   const tailwinds=useFriendExpeditions(session?.user.id,friends.map(r=>r.id).sort().join(','))
   const related=found && requests.find(r=>r.sender_id===found.id || r.recipient_id===found.id)
+  useLayoutEffect(() => { returning.restore(!loading && (!onlineOnly || presence.ready || Boolean(presence.error))) })
   async function search(event:FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const normalized=code.replace(/\s/g,'').toUpperCase()
@@ -63,7 +66,7 @@ export function FriendsPage() {
   }
   return <section className="flex min-h-0 min-w-0 w-full flex-1 flex-col bg-background text-foreground">
     <div role="group" aria-label="등대 메뉴" className="segmented-control grid shrink-0 grid-cols-2 border-b border-border">{([{key:'friends',label:'친구',count:friends.length,icon:Users},{key:'requests',label:'받은 요청',count:incoming.length,icon:Inbox}] as const).map(item=><Button key={item.key} variant="ghost" aria-label={item.label+' '+item.count} aria-pressed={tab===item.key} onClick={()=>setTab(item.key)} className={`min-h-12 min-w-0 gap-2 rounded-none border-r border-border text-sm ${tab===item.key?'bg-secondary text-primary hover:bg-secondary':'text-muted-foreground'}`}><item.icon className="size-7"/>{item.label}<span className="text-xs tabular-nums opacity-70">{item.count}</span>{item.key==='requests'&&incoming.length>0&&<span aria-hidden="true" className="size-1.5 rounded-full bg-primary"/>}</Button>)}</div>
-    <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain px-4 py-4">
+    <div ref={returning.scroll} onScroll={() => returning.save(tab, onlineOnly)} className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-contain px-4 py-4">
     {loading&&!requests.length&&<div role="status" aria-label="등대의 소식을 불러오는 중"><span className="sr-only">등대의 소식을 불러오는 중…</span><div aria-hidden="true" className="space-y-3">{Array.from({length:4},(_,i)=><div key={i} className="flex items-center gap-3 rounded-xl border border-border bg-card p-3 motion-safe:animate-pulse"><div className="size-12 shrink-0 rounded-full bg-secondary"/><div className="flex-1 space-y-2"><div className="h-4 w-24 rounded bg-secondary"/><div className="h-3 w-36 max-w-full rounded bg-secondary/60"/></div><div className="size-10 rounded-lg bg-secondary/60"/></div>)}</div></div>}
     {tailwinds.error&&tab==='friends'&&<p role="status" className="text-xs text-muted-foreground">물고기 유인 가능 여부를 확인하지 못했어요. 잠시 후 다시 확인해요.</p>}
     {error && <div role="alert" className="space-y-2 text-sm text-destructive"><p>{error}</p><Button variant="outline" onClick={()=>void refresh()}>다시 불러오기</Button></div>}
@@ -83,7 +86,7 @@ export function FriendsPage() {
         <span className="relative inline-flex shrink-0"><PlayerAvatar userId={id} nickname={nickname} path={friend?.avatar_path} className="size-12 shrink-0 ring-2 ring-secondary"/><span aria-hidden="true" data-presence={status} className={`pointer-events-none absolute -bottom-0.5 -left-0.5 size-3 rounded-full ring-2 ring-background ${dotColor}`}/></span>
         <div className="min-w-0 flex-1"><p className="truncate text-sm font-medium">{nickname}</p><p aria-label={`${nickname} ${statusLabel}`} className={`mt-0.5 text-[10px] ${status==='online'?'text-emerald-700 dark:text-emerald-400':status==='away'?'text-amber-700 dark:text-amber-400':'text-muted-foreground'}`}>{statusLabel}</p>{friend?.equipped_title&&<p className="mt-1 flex items-center gap-1 truncate text-[11px] text-primary"><appArt.title className="size-4 shrink-0"/><EquippedTitleText name={friend.equipped_title}/></p>}</div>
        </div>
-       <div className="flex shrink-0 items-center gap-1"><FriendExpeditionVisitButton owner={id} key={`${session?.user.id}:${id}`} nickname={nickname} status={tailwinds.friends.find(s=>s.friend_id===id)} statusError={tailwinds.error} now={tailwinds.now}/><Link to={`/friends/${id}/aquarium`} className={buttonVariants({variant:'ghost',size:'icon',className:'h-auto min-h-12 min-w-11 flex-col gap-0 rounded-xl px-1 text-primary'})} aria-label={`${nickname}의 아쿠아리움 방문`}><AquariumIcon className="size-7"/><span className="text-[9px] leading-4">방문</span></Link><RemoveFriendButton requestId={request.id} nickname={nickname}/></div>
+       <div className="flex shrink-0 items-center gap-1"><FriendExpeditionVisitButton onVisit={() => returning.save(tab, onlineOnly)} owner={id} key={`${session?.user.id}:${id}`} nickname={nickname} status={tailwinds.friends.find(s=>s.friend_id===id)} statusError={tailwinds.error} now={tailwinds.now}/><Link state={{ aquariumVisit: true }} onClick={() => returning.save(tab, onlineOnly)} to={`/friends/${id}/aquarium`} className={buttonVariants({variant:'ghost',size:'icon',className:'h-auto min-h-12 min-w-11 flex-col gap-0 rounded-xl px-1 text-primary'})} aria-label={`${nickname}의 아쿠아리움 방문`}><AquariumIcon className="size-7"/><span className="text-[9px] leading-4">방문</span></Link><RemoveFriendButton requestId={request.id} nickname={nickname}/></div>
       </li>
      })}</ul>
      {onlineOnly&&friends.length>0&&!visibleFriends.length&&<p className="py-8 text-center text-sm text-muted-foreground">{presence.ready?'지금 접속 중인 친구가 없어요.':presence.error?'접속 상태를 확인하면 친구를 표시할게요.':'접속 중인 친구를 확인하고 있어요.'}</p>}

@@ -2,6 +2,7 @@ import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/re
 import { afterEach, expect, it, vi } from 'vitest'
 import { AquariumView } from '../src/features/aquarium/aquarium-view'
 import type { OwnedCollectible } from '../src/features/collection/api'
+vi.mock('../src/features/friends/friend-aquarium-picker', () => ({ FriendAquariumPicker: () => <button>친구 어항</button> }))
 
 const mock = vi.hoisted(() => ({ items: [] as unknown[],position:undefined as undefined|((id:string,x:number,y:number)=>void) }))
 vi.mock('../src/features/aquarium/tank-inhabitants', () => ({
@@ -29,7 +30,8 @@ vi.mock('../src/features/aquarium/tank-inhabitants', () => ({
 vi.mock('../src/features/aquarium/aquarium-inventory-dialog', () => ({
   AquariumInventoryDialog: () => null,
 }))
-vi.mock('../src/features/aquarium/api', () => ({ backgroundUrl: (path: string) => path }))
+vi.mock('../src/features/aquarium/api', () => ({ backgroundUrl: (path: string) => path, storageError: () => '이동하지 못했어요.' }))
+vi.mock('../src/features/collection/collectible-thumbnail', () => ({ CollectibleThumbnail: () => null }))
 const decoration: OwnedCollectible = {
   id: 'starfish',
   species_id: 'starfish',
@@ -56,6 +58,35 @@ const decoration: OwnedCollectible = {
   },
 }
 afterEach(cleanup)
+it('moves the selected individual to another tank and blocks full tanks', async () => {
+ const move = vi.fn(async () => {})
+ render(<AquariumView name="어항" items={[decoration]} busy={false} onPlace={() => {}} onArrange={async () => {}} onSell={async () => {}} onMove={move} tanks={[{id:'other',name:'빈 어항'}, {id:'full',name:'가득 찬 어항'}] as never} inhabitants={[{...decoration,tank_id:'full'}]} tankCapacity={1}/>)
+ fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
+ fireEvent.click(screen.getByRole('button',{name:'이동'}))
+ expect(screen.getByRole('button',{name:/가득 찬 어항/})).toHaveProperty('disabled',true)
+ fireEvent.click(screen.getByRole('button',{name:/빈 어항/}))
+ await waitFor(() => expect(move).toHaveBeenCalledWith(['starfish'],'other'))
+ await waitFor(() => expect(screen.queryByRole('button',{name:'정보 보기'})).toBeNull())
+})
+it('stores a selected individual and keeps failed operations available to retry', async () => {
+ const store = vi.fn().mockRejectedValueOnce(new Error('offline')).mockResolvedValue(undefined)
+ render(<AquariumView name="어항" items={[decoration]} busy={false} onPlace={() => {}} onArrange={async () => {}} onSell={async () => {}} onStore={store}/>)
+ fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
+ fireEvent.click(screen.getByRole('button',{name:'보관함'}))
+ await screen.findByRole('alert')
+ fireEvent.click(screen.getByRole('button',{name:'보관함'}))
+ await waitFor(() => expect(store).toHaveBeenCalledTimes(2))
+ expect(store).toHaveBeenLastCalledWith(['starfish'])
+})
+it('requires confirmation before selling the clicked individual', async () => {
+ const sell = vi.fn(async () => {})
+ render(<AquariumView name="어항" items={[decoration]} busy={false} onPlace={() => {}} onArrange={async () => {}} onSell={sell}/>)
+ fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
+ fireEvent.click(screen.getByRole('button',{name:'판매 35 골드'}))
+ expect(sell).not.toHaveBeenCalled()
+ fireEvent.click(screen.getByRole('button',{name:'판매하기'}))
+ await waitFor(() => expect(sell).toHaveBeenCalledWith(['starfish']))
+})
 it('resizes a swimming fish between half and double size without freezing or moving it and rolls back failed saves',async()=>{
  const fish={...decoration,id:'fish',scale:.5,species:{...decoration.species,kind:'fish' as const,movement_type:'swim' as const,speed:.05}}
  const arrange=vi.fn(async()=>{})
@@ -79,15 +110,15 @@ it('keeps fish info near the initial selection without following subsequent swim
  const glass=screen.getByTestId('aquarium-glass')
  Object.defineProperties(glass,{clientWidth:{value:320},clientHeight:{value:560}})
  mock.position?.('fish',150,250)
- expect(toolbar.style.left).toBe('150px')
- expect(toolbar.style.top).toBe('244px')
+ expect(toolbar.style.getPropertyValue('--toolbar-x')).toBe('158px')
+ expect(toolbar.style.getPropertyValue('--toolbar-y')).toBe('244px')
  mock.position?.('fish',220,400)
- expect(toolbar.style.left).toBe('150px')
- expect(toolbar.style.top).toBe('244px')
+ expect(toolbar.style.getPropertyValue('--toolbar-x')).toBe('158px')
+ expect(toolbar.style.getPropertyValue('--toolbar-y')).toBe('244px')
  fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
  mock.position?.('fish',220,400)
- expect(toolbar.style.left).toBe('198px')
- expect(toolbar.style.top).toBe('394px')
+ expect(toolbar.style.getPropertyValue('--toolbar-x')).toBe('162px')
+ expect(toolbar.style.getPropertyValue('--toolbar-y')).toBe('394px')
 })
 it('shows trash transform controls and saves the position lock from its toolbar',async()=>{
  const trash={...decoration,id:'bottle',species:{...decoration.species,kind:'trash' as const,movement_type:'swim' as const,speed:.03}},arrange=vi.fn(async()=>{})

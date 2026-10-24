@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
-import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Info } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Info, X } from 'lucide-react'
 import {
   Dialog,
   DialogContent,
@@ -28,6 +28,10 @@ import { GoldIcon } from '@/features/gold/gold-provider'
 import { FriendAquariumPicker } from '@/features/friends/friend-aquarium-picker'
 import { appArt } from '@/components/app-art'
 import { TooltipProvider } from '@/components/ui/tooltip'
+import { CollectibleActions } from './collectible-actions'
+import type { AquariumTank } from './api'
+import { InhabitantLayerEditor } from './inhabitant-layer-editor'
+import { automaticInhabitantDepth } from './inhabitant-depth'
 
 type Props = {
   loading?: boolean
@@ -47,6 +51,11 @@ type Props = {
   onSell: (ids: string[]) => Promise<void>
   onGiftSent?: (ids: string[]) => void
   onStore?: (ids: string[]) => Promise<void>
+  onMove?: (ids: string[], tankId: string | null) => Promise<void>
+  tanks?: AquariumTank[]
+  inhabitants?: OwnedCollectible[]
+  tankCapacity?: number
+  onLayerChange?: (id: string, layer: number | null) => Promise<void>
   navigation?: { index: number; count: number; onChange: (direction: 'previous' | 'next') => void }
 }
 export function AquariumView(props: Props) {
@@ -157,7 +166,7 @@ export function AquariumView(props: Props) {
     }
   }
   // Screen-space controls stay the same size regardless of decoration scale.
-  const toolbarWidth = decoration?.species.kind==='trash'?212:decoration && canArrangeSpecies(decoration.species) ? 176 : decoration?.species.kind==='fish'?228:112
+  const toolbarWidth = 300
   const toolbarX =
     geometry && editing
       ? Math.max(
@@ -245,7 +254,7 @@ export function AquariumView(props: Props) {
           onPlace={place}
           onSelectDecoration={selectDecoration}
           onSelectionPosition={(id, x, y) => {
-            if (id !== selectedId.current || !toolbar.current) return
+            if (id !== selectedId.current || !toolbar.current || window.innerWidth < 640) return
             if (decoration && !canArrangeSpecies(decoration.species)) {
               infoAnchor.current ??= {id,x,y}
               x = infoAnchor.current.x
@@ -253,8 +262,8 @@ export function AquariumView(props: Props) {
             }
             const element = toolbar.current
             const width = glass.current?.clientWidth ?? dimensions.width
-            element.style.left = `${Math.max(toolbarWidth / 2 + 8, Math.min(width - toolbarWidth / 2 - 8, x))}px`
-            element.style.top = `${Math.max(element.offsetHeight + 8, Math.min((glass.current?.clientHeight || dimensions.height) - 8, y - 6))}px`
+            element.style.setProperty('--toolbar-x', `${Math.max(toolbarWidth / 2 + 8, Math.min(width - toolbarWidth / 2 - 8, x))}px`)
+            element.style.setProperty('--toolbar-y', `${Math.max(element.offsetHeight + 8, Math.min((glass.current?.clientHeight || dimensions.height) - 8, y - 6))}px`)
           }}
           onBackgroundTap={() => setEditing(null)}
           onNavigate={navigate}
@@ -262,10 +271,14 @@ export function AquariumView(props: Props) {
         {editing && decoration && (
           <div
             ref={toolbar}
-            className="absolute z-20 flex -translate-x-1/2 -translate-y-full flex-col items-center gap-1.5"
-            style={{ left: toolbarX, top: toolbarY, width: toolbarWidth }}
+            className="absolute inset-x-2 bottom-2 z-20 flex flex-col items-center gap-1.5 rounded-xl border bg-background/95 p-2 shadow-lg sm:inset-x-auto sm:bottom-auto sm:-translate-x-1/2 sm:-translate-y-full sm:w-[var(--toolbar-width)] sm:left-[var(--toolbar-x)] sm:top-[var(--toolbar-y)]"
+            style={{ '--toolbar-x': `${toolbarX}px`, '--toolbar-y': `${toolbarY}px`, '--toolbar-width': `${Math.max(300, toolbarWidth)}px` } as import('react').CSSProperties}
           >
-            <div className="order-2 flex items-center gap-1.5">
+            <div className="flex w-full items-center gap-2 pl-1">
+              <div className="min-w-0 flex-1"><p className="truncate text-xs font-medium">{decoration.species.name}</p></div>
+              <Button variant="ghost" size="icon" className="min-h-11 min-w-11" aria-label="개체 선택 닫기" disabled={busy} onClick={() => setEditing(null)}><X className="size-4"/></Button>
+            </div>
+            <div className="flex items-center gap-1.5">
             <Button
               variant="secondary"
               className="min-h-11 gap-1.5 rounded-lg border bg-background/95 px-3 text-xs shadow-sm"
@@ -286,6 +299,8 @@ export function AquariumView(props: Props) {
                 onChange={changeDecoration}
               />
             )}
+            {props.onLayerChange && <InhabitantLayerEditor key={`${decoration.id}:${decoration.display_layer ?? 'auto'}`} value={decoration.display_layer ?? null} automatic={automaticInhabitantDepth(decoration)} busy={busy} onChange={layer => props.onLayerChange!(decoration.id, layer)}/>}
+            <CollectibleActions key={decoration.id} item={decoration} tanks={props.tanks} inhabitants={props.inhabitants} capacity={props.tankCapacity} busy={busy} onMove={props.onMove} onStore={props.onStore} onSell={onSell} onDone={() => setEditing(null)}/>
           </div>
         )}
       </div>

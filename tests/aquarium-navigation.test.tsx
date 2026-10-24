@@ -73,6 +73,14 @@ it('selects a tank from its title and keeps adding tanks available in the picker
   expect(select).toHaveBeenCalledTimes(1)
 })
 
+it('enters the current tank and closes the picker even when it is already selected',async()=>{
+ const select=vi.fn()
+ render(<AquariumTankPicker tanks={[{id:'one',name:'내 첫 어항',background_id:'default'}]} selectedId="one" backgrounds={[]} busy={false} onSelect={select} onAdd={()=>{}}/>)
+ fireEvent.click(screen.getByRole('button',{name:'어항 선택'}))
+ fireEvent.click(screen.getByRole('button',{name:'내 첫 어항 어항으로 들어가기'}))
+ expect(select).toHaveBeenCalledWith('one')
+})
+
 it('shows accepted friends in recent visit order and links directly to their aquariums', () => {
   localStorage.setItem('pongdang:recent-aquariums:me', JSON.stringify(['friend-two']))
   render(

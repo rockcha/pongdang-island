@@ -1,4 +1,5 @@
 import {sharedDecorationFrame} from './shared-decoration-animation'
+import { inhabitantDepth } from './inhabitant-depth'
 import { glassAttachedSpecies } from './glass-attached-species'
 import {dreamabyssFixedFrame} from './dreamabyss-animation'
 import Phaser from 'phaser'
@@ -33,7 +34,6 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
   let decorationPress:{id:string;pointerId:number;x:number;y:number;dragged:boolean}|null=null
   const textureKey = (path: string) => `collectible:${path}`
   const draggable=(item:OwnedCollectible)=>item.species.kind!=='map'&&!item.interaction_locked
-  const inhabitantDepth=(item:OwnedCollectible)=>(item.species.kind==='fish'?200:0)+(glassAttachedSpecies.has(item.species.id)?100:0)
   const asset = (item: OwnedCollectible) => {
     if(glassAttachedSpecies.has(item.species.id))return {path:item.species.thumbnail_path,sheet:false}
     const plant=primalPlantAsset(item.species.id,item.species.kind)

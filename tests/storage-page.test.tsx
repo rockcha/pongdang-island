@@ -21,7 +21,7 @@ it('shows storage without duplicate title or aquarium placement and keeps sellin
   expect(screen.queryByRole('button', { name: /보관함/ })).toBeNull()
   expect(screen.queryByRole('heading', { name: '보관함' })).toBeNull()
   expect(screen.queryByRole('combobox', { name: '개체를 넣을 어항' })).toBeNull()
-  expect(screen.getByRole('group', { name: '보관함 분류' }).className).toContain('p-2')
+  expect(screen.getByRole('group', { name: '보관함 분류' }).className).toContain('p-1')
   fireEvent.click(screen.getByRole('button', { name: '멸치 선택' }))
   expect(screen.queryByRole('button', { name: '1개 어항에 넣기' })).toBeNull()
   fireEvent.click(screen.getByRole('button', { name: '선택한 개체 판매 40 골드' }))

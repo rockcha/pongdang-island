@@ -129,6 +129,7 @@ export type Database = {
       start_fishing_fight:{Args:{p_operation_id:string};Returns:import('@/features/fishing/api').PreparedFishing}
       finish_fishing:{Args:{p_operation_id:string;p_won:boolean};Returns:import('@/features/fishing/api').FishingResult}
       resize_aquarium_fish:{Args:{p_collectible_id:string;p_tank_id:string;p_scale:number};Returns:{id:string;scale:number}}
+      set_collectible_display_layer:{Args:{p_collectible_id:string;p_tank_id:string;p_layer:number|null};Returns:{id:string;display_layer:number|null}}
       arrange_collectible:{Args:{p_collectible_id:string;p_tank_id:string;p_x:number;p_y:number;p_rotation:number;p_scale:number;p_flipped:boolean};Returns:import('@/features/collection/api').DecorationPlacement & {id:string}}
       collectible_storage:{Args:{p_offset?:number;p_query?:string;p_kind?:string};Returns:import('@/features/aquarium/api').CollectibleStorage}
       collectible_storage_filtered:{Args:{p_offset?:number;p_query?:string;p_kind?:string;p_rarity?:string;p_concept?:string};Returns:import('@/features/aquarium/api').CollectibleStorage}

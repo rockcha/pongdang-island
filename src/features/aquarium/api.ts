@@ -43,6 +43,7 @@ export async function manageTank(tankId:string, action:'rename'|'equip', value:s
  return data
 }
 export function backgroundUrl(path:string) {
+ if(import.meta.env.DEV&&path.startsWith('/assets/storage-upload/'))return path
  return createClient().storage.from('aquarium-backgrounds').getPublicUrl(path).data.publicUrl+'?v=20261016-minimal'
 }
 export async function placeCollectible(id:string,tankId:string,x:number,y:number){

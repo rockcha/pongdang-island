@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Info, X } from 'lucide-react'
 import {
@@ -32,11 +32,13 @@ import { CollectibleActions } from './collectible-actions'
 import type { AquariumTank } from './api'
 import { InhabitantLayerEditor } from './inhabitant-layer-editor'
 import { automaticInhabitantDepth } from './inhabitant-depth'
+import { themePanoramaUrl } from './theme-panorama'
 
 type Props = {
   loading?: boolean
   items: OwnedCollectible[]
   name: string
+  tankId?: string
   background?: { name: string; image_path: string }
   selectorControls?: ReactNode
   nameControls?: ReactNode
@@ -63,6 +65,11 @@ export function AquariumView(props: Props) {
   const glass = useRef<HTMLDivElement>(null)
   const [dimensions, setDimensions] = useState({ width: 320, height: 560 })
   const [managementOpen, setManagementOpen] = useState(false)
+  const panoramaSrc=themePanoramaUrl(background?.image_path)
+  const panorama=Boolean(panoramaSrc)
+  const [view,setView]=useState(1)
+  const [viewRequest,setViewRequest]=useState({position:1})
+  const [panControlsCollapsed,setPanControlsCollapsed]=useState(false)
   useEffect(() => {
     const element = glass.current
     if (!element || typeof ResizeObserver === 'undefined') return
@@ -82,18 +89,22 @@ export function AquariumView(props: Props) {
   const selectedId = useRef<string | null>(null)
   selectedId.current = editing?.id ?? null
   const [infoId, setInfoId] = useState<string | null>(null)
+  const panAllowed=useRef(true)
+  panAllowed.current=!busy&&!editing
   const infoItem = items.find((item) => item.id === infoId)
   const decoration = items.find((item) => item.id === editing?.id)
-  const displayed =
+  const displayed = useMemo(() =>
     editing && decoration
       ? items.map((item) =>
           item.id === editing.id ? canArrangeSpecies(item.species)?{ ...item, ...editing.value, editing: true }:{...item,scale:editing.value.scale} : item,
         )
-      : items
+      : items, [items, editing, decoration])
+  const renderedItems=useMemo(()=>displayed.map(item=>({...item,interaction_locked:busy})),[displayed,busy])
   function selectDecoration(id: string, x?: number, y?: number) {
     if (busy || !props.onArrange) return
     const item = items.find((item) => item.id === id)
     if (item) {
+      if(panorama&&canArrangeSpecies(item.species))setViewRequest({position:1})
       infoAnchor.current = null
       const current = editing?.id === id ? { ...item, ...editing.value } : item
       const g = decorationGeometry(current, dimensions.width, dimensions.height)
@@ -195,6 +206,8 @@ export function AquariumView(props: Props) {
       <div
         ref={glass}
         data-testid="aquarium-glass"
+        data-panorama={panorama}
+        data-view={panorama?view.toFixed(4):undefined}
         className="relative min-h-0 w-full flex-1 overflow-hidden bg-gradient-to-b from-blue-100 to-blue-200"
         tabIndex={0}
         aria-label={name}
@@ -249,8 +262,11 @@ export function AquariumView(props: Props) {
           </div>
         </div>
         <TankInhabitants
-          scenery={<><AquariumBackdrop background={background} loading={props.loading} /><TankBubbles /></>}
-          items={displayed.map((item) => ({ ...item, interaction_locked: busy }))}
+          key={panorama?`wide:${props.tankId??name}`:'normal'}
+          world={panorama?{columns:3,initialView:1,preserveArrangement:true,onViewChange:setView,canPan:()=>panAllowed.current}:undefined}
+          viewRequest={panorama?viewRequest:undefined}
+          scenery={<><AquariumBackdrop key={panorama?'wide':'normal'} background={background} loading={props.loading} panorama={panoramaSrc?{src:panoramaSrc,view}:undefined} /><TankBubbles /></>}
+          items={renderedItems}
           onPlace={place}
           onSelectDecoration={selectDecoration}
           onSelectionPosition={(id, x, y) => {
@@ -268,20 +284,24 @@ export function AquariumView(props: Props) {
           onBackgroundTap={() => setEditing(null)}
           onNavigate={navigate}
         />
+        {panorama&&!editing&&(panControlsCollapsed?
+          <Button variant="ghost" aria-label="수조 이동 메뉴 펼치기" aria-expanded={false} title={`수조 이동 메뉴 펼치기 · ${Math.round(view)+1}/3`} className="absolute bottom-3 right-3 z-10 min-h-11 w-11 flex-col gap-0 rounded-xl border border-white/30 bg-background/85 px-1 shadow-sm backdrop-blur-sm" onClick={()=>setPanControlsCollapsed(false)}><ChevronUp className="size-3.5"/><span className="text-[9px] leading-3 tabular-nums">{Math.round(view)+1}/3</span></Button>:
+          <div role="group" aria-label="수조 둘러보기" className="absolute inset-x-3 bottom-3 z-10 mx-auto flex w-fit max-w-[calc(100%-1.5rem)] overflow-hidden rounded-xl border border-white/30 bg-background/85 shadow-sm backdrop-blur-sm">{['왼쪽','가운데','오른쪽'].map((label,index)=><Button key={label} variant={Math.round(view)===index?'secondary':'ghost'} className="min-h-11 gap-1 rounded-none px-3 text-[11px]" aria-label={`${label} 수조 보기`} aria-pressed={Math.round(view)===index} disabled={busy} onClick={()=>setViewRequest({position:index})}>{index===0&&<ChevronLeft className="size-3"/>}{label}{index===2&&<ChevronRight className="size-3"/>}</Button>)}<Button variant="ghost" size="icon" aria-label="수조 이동 메뉴 최소화" aria-expanded={true} className="min-h-11 min-w-11 rounded-none border-l border-border/50" onClick={()=>setPanControlsCollapsed(true)}><ChevronDown className="size-3.5"/></Button></div>
+        )}
         {editing && decoration && (
           <div
             ref={toolbar}
-            className="absolute inset-x-2 bottom-2 z-20 flex flex-col items-center gap-1.5 rounded-xl border bg-background/95 p-2 shadow-lg sm:inset-x-auto sm:bottom-auto sm:-translate-x-1/2 sm:-translate-y-full sm:w-[var(--toolbar-width)] sm:left-[var(--toolbar-x)] sm:top-[var(--toolbar-y)]"
+            className="absolute inset-x-2 bottom-2 z-20 flex flex-col items-center gap-1.5 rounded-xl border border-white/45 bg-background/20 p-2 shadow-sm sm:inset-x-auto sm:bottom-auto sm:-translate-x-1/2 sm:-translate-y-full sm:w-[var(--toolbar-width)] sm:left-[var(--toolbar-x)] sm:top-[var(--toolbar-y)]"
             style={{ '--toolbar-x': `${toolbarX}px`, '--toolbar-y': `${toolbarY}px`, '--toolbar-width': `${Math.max(300, toolbarWidth)}px` } as import('react').CSSProperties}
           >
             <div className="flex w-full items-center gap-2 pl-1">
-              <div className="min-w-0 flex-1"><p className="truncate text-xs font-medium">{decoration.species.name}</p></div>
-              <Button variant="ghost" size="icon" className="min-h-11 min-w-11" aria-label="개체 선택 닫기" disabled={busy} onClick={() => setEditing(null)}><X className="size-4"/></Button>
+              <div className="min-w-0 flex-1"><p className="w-fit max-w-full truncate rounded-lg bg-background/75 px-2 py-1 text-xs font-medium">{decoration.species.name}</p></div>
+              <Button variant="ghost" size="icon" className="min-h-11 min-w-11 rounded-full bg-background/75" aria-label="개체 선택 닫기" disabled={busy} onClick={() => setEditing(null)}><X className="size-4"/></Button>
             </div>
             <div className="flex items-center gap-1.5">
             <Button
               variant="secondary"
-              className="min-h-11 gap-1.5 rounded-lg border bg-background/95 px-3 text-xs shadow-sm"
+              className="min-h-11 gap-1.5 rounded-lg border bg-background/75 px-3 text-xs shadow-sm"
               onClick={() => setInfoId(decoration.id)}
             >
               <Info className="size-4" />

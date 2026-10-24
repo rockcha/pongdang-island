@@ -27,9 +27,9 @@ export function CollectibleActions({ item, tanks = [], inhabitants = [], capacit
   }
   return <>
     <div className="grid w-full grid-cols-3 gap-1.5 border-t pt-2">
-      <Button variant="secondary" className="min-h-11 gap-1 px-2 text-xs" disabled={disabled || !onMove} onClick={() => {setError(''); setMode('move')}}><ArrowRightLeft className="size-4"/>이동</Button>
-      <Button variant="secondary" className="min-h-11 gap-1 px-2 text-xs" disabled={disabled || !onStore} onClick={() => void run(() => onStore!([item.id]))}><Archive className="size-4"/>보관함</Button>
-      <Button variant="outline" className="min-h-11 min-w-0 gap-1 px-1 text-xs" aria-label={`판매 ${item.species.sell_price.toLocaleString('ko-KR')} 골드`} disabled={disabled || item.species.sell_price <= 0} onClick={() => {setError(''); setMode('sell')}}><span>판매</span><GoldIcon className="size-4"/><span className="tabular-nums">{item.species.sell_price.toLocaleString('ko-KR')}</span></Button>
+      <Button variant="secondary" className="min-h-11 gap-1 bg-secondary/75 px-2 text-xs" disabled={disabled || !onMove} onClick={() => {setError(''); setMode('move')}}><ArrowRightLeft className="size-4"/>이동</Button>
+      <Button variant="secondary" className="min-h-11 gap-1 bg-secondary/75 px-2 text-xs" disabled={disabled || !onStore} onClick={() => void run(() => onStore!([item.id]))}><Archive className="size-4"/>보관함</Button>
+      <Button variant="outline" className="min-h-11 min-w-0 gap-1 bg-background/75 px-1 text-xs" aria-label={`판매 ${item.species.sell_price.toLocaleString('ko-KR')} 골드`} disabled={disabled || item.species.sell_price <= 0} onClick={() => {setError(''); setMode('sell')}}><span>판매</span><GoldIcon className="size-4"/><span className="tabular-nums">{item.species.sell_price.toLocaleString('ko-KR')}</span></Button>
     </div>
     {error && mode === null && <p role="alert" className="text-xs text-destructive">{error}</p>}
     <Dialog open={mode === 'move'} onOpenChange={open => {if (!open && !saving) setMode(null)}}>

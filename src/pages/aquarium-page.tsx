@@ -351,6 +351,7 @@ export function AquariumPage() {
       className="relative flex min-h-0 flex-1 flex-col overflow-hidden"
     >
       <AquariumView
+        tankId={tank?.id}
         loading={!state && !error}
         items={inhabitants}
         name={tank?.name ?? '어항을 불러오는 중…'}

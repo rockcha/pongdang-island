@@ -7,7 +7,7 @@ import {MemoryRouter} from 'react-router'
 import {Dialog,DialogContent,DialogTitle} from '@/components/ui/dialog'
 import {fireEvent} from '@testing-library/react'
 
-const mock=vi.hoisted(()=>({setItems:vi.fn(),resize:vi.fn(),setReduced:vi.fn(),setVisible:vi.fn(),destroy:vi.fn(),create:vi.fn()}))
+const mock=vi.hoisted(()=>({setItems:vi.fn(),setView:vi.fn(),resize:vi.fn(),setReduced:vi.fn(),setVisible:vi.fn(),destroy:vi.fn(),create:vi.fn()}))
 vi.mock('../src/features/aquarium/phaser-tank',()=>({createTankRenderer:mock.create}))
 beforeEach(()=>{
  vi.clearAllMocks();mock.create.mockReturnValue(mock)
@@ -16,6 +16,19 @@ beforeEach(()=>{
  vi.stubGlobal('matchMedia',()=>({matches:false,addEventListener(){},removeEventListener(){}}))
 })
 afterEach(()=>{cleanup();vi.unstubAllGlobals()})
+it('keeps the renderer during camera moves and preserves the old mode for other themes',async()=>{
+ const world={columns:3 as const,preserveArrangement:true}
+ const view=render(<TankInhabitants items={[]} world={world} viewRequest={{position:1}}/>)
+ await waitFor(()=>expect(mock.create).toHaveBeenCalledOnce())
+ expect(mock.create.mock.calls[0][9]).toMatchObject({columns:3,preserveArrangement:true})
+ view.rerender(<TankInhabitants items={[]} world={world} viewRequest={{position:2}}/>)
+ expect(mock.setView).toHaveBeenLastCalledWith(2)
+ expect(mock.create).toHaveBeenCalledOnce()
+ view.rerender(<TankInhabitants items={[]}/>)
+ await waitFor(()=>expect(mock.create).toHaveBeenCalledTimes(2))
+ expect(mock.create.mock.calls[1][9]).toBeUndefined()
+ expect(mock.destroy).toHaveBeenCalledOnce()
+})
 it('sleeps behind an open modal and resumes after dismissal',async()=>{
  function View(){const [open,setOpen]=useState(false);return <MemoryRouter><TankInhabitants items={[]}/><button onClick={()=>setOpen(true)}>소식 보기</button><Dialog open={open} onOpenChange={setOpen}><DialogContent><DialogTitle>소식</DialogTitle><button onClick={()=>setOpen(false)}>닫기</button></DialogContent></Dialog></MemoryRouter>}
  render(<View/>);await waitFor(()=>expect(mock.create).toHaveBeenCalledOnce())

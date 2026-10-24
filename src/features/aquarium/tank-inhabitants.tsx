@@ -2,10 +2,15 @@ import { useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import type { OwnedCollectible } from '@/features/collection/api'
 import type { TankRenderer } from './phaser-tank'
+import type {TankWorldOptions} from './tank-world'
 import {bindTankPinchZoom} from './pinch-zoom'
 import {hasOpenOverlay,subscribeOverlayActivity} from '@/components/overlay-back'
 
-export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecoration,onBackgroundTap,onSelectionPosition,paused=false }: { items: OwnedCollectible[];scenery?:ReactNode;onPlace?:(id:string,x:number,y:number)=>void;onNavigate?:(direction:'previous'|'next')=>void;onSelectDecoration?:(id:string,x?:number,y?:number)=>void;onBackgroundTap?:()=>void;onSelectionPosition?:(id:string,x:number,y:number)=>void;paused?:boolean }) {
+export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecoration,onBackgroundTap,onSelectionPosition,paused=false,world,viewRequest }: { items: OwnedCollectible[];scenery?:ReactNode;onPlace?:(id:string,x:number,y:number)=>void;onNavigate?:(direction:'previous'|'next')=>void;onSelectDecoration?:(id:string,x?:number,y?:number)=>void;onBackgroundTap?:()=>void;onSelectionPosition?:(id:string,x:number,y:number)=>void;paused?:boolean;world?:TankWorldOptions;viewRequest?:{position:number} }) {
+  const columns=world?.columns??1
+  const preserveArrangement=world?.preserveArrangement??false
+  const latestWorld=useRef(world)
+  useEffect(()=>{latestWorld.current=world},[world])
   const root = useRef<HTMLDivElement>(null)
   const zoomViewport=useRef<HTMLDivElement>(null)
   const scene=useRef<HTMLDivElement>(null)
@@ -31,6 +36,7 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
   useEffect(()=>{pause.current=paused;updateVisibility()},[paused])
   useEffect(()=>{placement.current=onPlace},[onPlace])
   const [error, setError] = useState('')
+  useEffect(()=>{if(viewRequest)renderer.current?.setView(viewRequest.position)},[viewRequest,columns])
   useEffect(() => { latest.current = items; renderer.current?.setItems(items) }, [items])
   useEffect(() => {
     const parent = root.current
@@ -58,7 +64,7 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
           const bounds=parent.getBoundingClientRect(),viewport=zoomViewport.current?.getBoundingClientRect()
           const scaleX=parent.clientWidth?bounds.width/parent.clientWidth:1,scaleY=parent.clientHeight?bounds.height/parent.clientHeight:1
           position.current?.(id,bounds.left-(viewport?.left??bounds.left)+x*scaleX,bounds.top-(viewport?.top??bounds.top)+y*scaleY)
-        })
+        },columns>1?{...latestWorld.current,columns:3,preserveArrangement,onViewChange:view=>latestWorld.current?.onViewChange?.(view),canPan:()=>latestWorld.current?.canPan?.()??true}:undefined)
         visibility()
       } catch { setError('어항 화면을 시작하지 못했어요. 새로고침해주세요.') }
     }).catch(() => { if (active) setError('어항 화면을 불러오지 못했어요. 새로고침해주세요.') })
@@ -72,7 +78,7 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
       reduced.removeEventListener('change', preference)
       renderer.current?.destroy(); renderer.current = null
     }
-  }, [])
+  }, [columns,preserveArrangement])
   return <div ref={zoomViewport} className="absolute inset-0 touch-none cursor-pointer overflow-hidden" aria-label={`어항 속 개체 ${items.length}개`}>
     <div ref={scene} data-tank-zoom-scene className="absolute inset-0">
       {scenery}

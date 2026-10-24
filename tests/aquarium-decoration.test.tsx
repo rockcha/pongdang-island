@@ -4,20 +4,23 @@ import { AquariumView } from '../src/features/aquarium/aquarium-view'
 import type { OwnedCollectible } from '../src/features/collection/api'
 vi.mock('../src/features/friends/friend-aquarium-picker', () => ({ FriendAquariumPicker: () => <button>친구 어항</button> }))
 
-const mock = vi.hoisted(() => ({ items: [] as unknown[],position:undefined as undefined|((id:string,x:number,y:number)=>void) }))
+const mock = vi.hoisted(() => ({ items: [] as unknown[],world:undefined as undefined|{columns:number;preserveArrangement?:boolean},position:undefined as undefined|((id:string,x:number,y:number)=>void) }))
 vi.mock('../src/features/aquarium/tank-inhabitants', () => ({
   TankInhabitants: ({
     items,
     onSelectDecoration,
     onBackgroundTap,
     onSelectionPosition,
+    world,
   }: {
     items: OwnedCollectible[]
     onSelectDecoration: (id: string) => void
     onBackgroundTap: () => void
     onSelectionPosition?: (id:string,x:number,y:number)=>void
+    world?: {columns:number;preserveArrangement?:boolean}
   }) => {
     mock.items = items
+    mock.world = world
     mock.position = onSelectionPosition
     return (
       <>
@@ -58,6 +61,20 @@ const decoration: OwnedCollectible = {
   },
 }
 afterEach(cleanup)
+it('enables three panes for registered local themes and keeps the original decoration payload',()=>{
+ const arrange=vi.fn(async()=>{})
+ const view=render(<AquariumView name="어항" items={[decoration]} background={{name:'맑은 물빛',image_path:'default.png'}} busy={false} onPlace={()=>{}} onArrange={arrange} onSell={async()=>{}}/>)
+ expect(mock.world).toMatchObject({columns:3,preserveArrangement:true})
+ expect(screen.getByRole('button',{name:'왼쪽 수조 보기'})).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
+ expect(screen.queryByRole('button',{name:'왼쪽 수조 보기'})).toBeNull()
+ expect(mock.items[0]).toMatchObject({position_x:decoration.position_x,position_y:decoration.position_y,rotation:decoration.rotation,scale:decoration.scale})
+ view.rerender(<AquariumView name="어항" items={[decoration]} background={{name:'산호 정원',image_path:'coral.png'}} busy={false} onPlace={()=>{}} onArrange={arrange} onSell={async()=>{}}/>)
+ expect(mock.world).toMatchObject({columns:3,preserveArrangement:true})
+ view.rerender(<AquariumView name="어항" items={[decoration]} background={{name:'사용자 테마',image_path:'custom.png'}} busy={false} onPlace={()=>{}} onArrange={arrange} onSell={async()=>{}}/>)
+ expect(mock.world).toBeUndefined()
+ expect(arrange).not.toHaveBeenCalled()
+})
 it('moves the selected individual to another tank and blocks full tanks', async () => {
  const move = vi.fn(async () => {})
  render(<AquariumView name="어항" items={[decoration]} busy={false} onPlace={() => {}} onArrange={async () => {}} onSell={async () => {}} onMove={move} tanks={[{id:'other',name:'빈 어항'}, {id:'full',name:'가득 찬 어항'}] as never} inhabitants={[{...decoration,tank_id:'full'}]} tankCapacity={1}/>)

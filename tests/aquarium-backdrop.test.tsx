@@ -3,6 +3,17 @@ import {afterEach,expect,it,vi} from 'vitest'
 import {AquariumBackdrop} from '@/features/aquarium/aquarium-backdrop'
 vi.mock('@/features/aquarium/api',()=>({backgroundUrl:(path:string)=>path}))
 afterEach(()=>{cleanup();vi.unstubAllGlobals()})
+it('pans the local wide background without reloading it on camera updates',()=>{
+ const images:{onload:()=>void;onerror:()=>void;src:string}[]=[]
+ vi.stubGlobal('Image',class {onload=()=>{};onerror=()=>{};src='';constructor(){images.push(this)}})
+ const view=render(<AquariumBackdrop background={{name:'기본 어항',image_path:'default.png'}} panorama={{src:'/local-panorama.png',view:1}}/>)
+ expect(images[0].src).toBe('/local-panorama.png')
+ act(()=>images[0].onload())
+ const before=screen.getByAltText('기본 어항').getAttribute('style')
+ view.rerender(<AquariumBackdrop background={{name:'기본 어항',image_path:'default.png'}} panorama={{src:'/local-panorama.png',view:2}}/>)
+ expect(images).toHaveLength(1)
+ expect(screen.getByAltText('기본 어항').getAttribute('style')).not.toBe(before)
+})
 it('keeps the previous background visible until the next image is ready',async()=>{
  const images:{onload:()=>void;onerror:()=>void;src:string}[]=[]
  vi.stubGlobal('Image',class {onload=()=>{};onerror=()=>{};src='';constructor(){images.push(this)}})

@@ -12,8 +12,10 @@ initializePwaInstall()
 
 // This development route mounts without account providers or reward RPCs.
 const BaitLab = import.meta.env.DEV ? lazy(() => import('@/features/fishing/bait-lab-page')) : null
+const AquariumLab = import.meta.env.DEV ? lazy(() => import('@/features/aquarium/aquarium-lab-page')) : null
 const router=createBrowserRouter([
  ...(BaitLab ? [{path:'/bait-lab',element:<Suspense fallback={<p>로컬 미끼 테스트 준비 중…</p>}><BaitLab/></Suspense>}] : []),
+ ...(AquariumLab ? [{path:'/aquarium-lab',element:<Suspense fallback={<p>넓은 어항을 준비하고 있어요…</p>}><AquariumLab/><AppReady/></Suspense>}] : []),
  {path:'*',element:<AuthProvider><OverlayHistoryTracker/><App /><AppReady/></AuthProvider>,errorElement:<AppRecovery/>},
 ])
 

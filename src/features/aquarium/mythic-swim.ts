@@ -4,7 +4,8 @@ import nyamnyamMythicSheets from './nyamnyam-mythic-action-layouts.json'
 import primalMythicSheets from './primal-mythic-action-layouts.json'
 import halloweenMythicSheets from './halloween-mythic-action-layouts.json'
 import {halloweenMythicFrame} from './halloween-spirits'
-export function mythicSheetColumns(path:string){return mythicDetailedPaths.includes(path)?4:2}
+import {sharedDecorationColumns,sharedDecorationAsset} from './shared-decoration-animation'
+export function mythicSheetColumns(path:string){return sharedDecorationColumns(path)??(mythicDetailedPaths.includes(path)?4:2)}
 export const luneaDetailedSwimPath='fish/mythic/lunea-mistmoon-goddess_swim8_sprite.png'
 type MythicSheet={id:string;aliases:string[];scale:number;shifts:number[][];cell:number;assetVersion?:number}
 const sheets:MythicSheet[]=[
@@ -29,6 +30,8 @@ export const mythicDetailedPaths=sheets.map(s=>`fish/mythic/${s.id}_swim8_sprite
 const sheetFor=(path:string)=>sheets.find(s=>path===`fish/mythic/${s.id}_swim8_sprite.png`)
 export function mythicSwimAsset(path:string,rarity:string){
  if(rarity!=='mythic')return null
+ const decoration=sharedDecorationAsset(path)
+ if(decoration)return decoration
  const canonical=path.replace('_compat_sprite.png','_sprite.png')
  const sheet=sheets.find(s=>canonical===`fish/mythic/${s.id}_swim8_sprite.png`||s.aliases.some(alias=>canonical===`fish/mythic/${alias}_sprite.png`))
  return sheet?{path:`fish/mythic/${sheet.id}_swim8_sprite.png`,url:`/aquarium/swim/${sheet.id}${sheet.assetVersion?`_swim8_v${sheet.assetVersion}_sprite.png`:sheet.id==='extinction-defying-megalodon'||sharedMythicSheets.some(s=>s.id===sheet.id)?'_swim8_v2_sprite.png':'_swim8_sprite.png'}`}:null

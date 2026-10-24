@@ -1,9 +1,30 @@
 import {expect,it} from 'vitest'
 import {readFileSync} from 'node:fs'
-import {sharedDecorationFrame} from '@/features/aquarium/shared-decoration-animation'
+import {sharedDecorationFrame,platformWorkSpritePath,platformCompatSpritePath} from '@/features/aquarium/shared-decoration-animation'
+import {mythicSheetColumns,mythicSwimAsset} from '@/features/aquarium/mythic-swim'
 import {swimFrameLayout} from '@/features/aquarium/swim-frame-layout'
 
 const ids=['surface-seeking-beanstalk','upward-sinking-waterfall']
+it('registers the platform as an all-region fixed mythical decoration and plays all eight packed frames',()=>{
+ const catalog=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8')),id='pongi-subsea-drilling-platform'
+ const species=catalog.collectible_species.find(s=>s.id===id)
+ expect(species).toMatchObject({kind:'decoration',rarity:'mythic',sell_price:3500,movement_type:'fixed',speed:'0',flip_with_direction:false,travel_direction:'both',swim_y_min:null,swim_y_max:null,native_region_id:null,sprite_sheet_path:platformCompatSpritePath})
+ expect(catalog.collectible_habitats.filter(h=>h.species_id===id).map(h=>h.region_id).sort()).toEqual(catalog.regions.map(r=>r.id).sort())
+ expect(mythicSheetColumns(platformWorkSpritePath)).toBe(4)
+ expect(mythicSheetColumns(platformCompatSpritePath)).toBe(2)
+ expect(mythicSwimAsset(platformCompatSpritePath,'mythic')?.path).toBe(platformWorkSpritePath)
+ expect(readFileSync('public/aquarium/swim/pongi-subsea-drilling-platform_work8_v1_sprite.png').equals(readFileSync('assets/storage-upload/new/20261025-044359/'+platformWorkSpritePath))).toBe(true)
+ expect(Array.from({length:8},(_,i)=>sharedDecorationFrame(id,(i+.1)/3))).toEqual([0,1,2,3,4,5,6,7])
+ expect(sharedDecorationFrame(id,8/3)).toBe(0)
+ expect(sharedDecorationFrame(id,1,true)).toBe(0);expect(sharedDecorationFrame(id,1,false,true)).toBe(0)
+ const root='assets/storage-upload/new/20261025-044359',png=readFileSync(root+'/'+platformWorkSpritePath),reg=JSON.parse(readFileSync(root+'/registration.json','utf8'))
+ expect([png.readUInt32BE(16),png.readUInt32BE(20)]).toEqual([2048,1024])
+ expect(reg.shifts).toHaveLength(8);expect(reg.anchor.samples).toBeGreaterThan(100)
+ for(const b of reg.rawBounds)expect(b.margin).toBeGreaterThanOrEqual(.08)
+ for(const b of reg.finalBounds)expect(b.margin).toBeGreaterThanOrEqual(.08)
+ for(const s of reg.shifts)expect(s.error).toBeLessThan(30)
+ for(let frame=0;frame<8;frame++)expect(swimFrameLayout(platformWorkSpritePath,frame)).toEqual({originX:.5,originY:.5,scale:1})
+})
 it('plays all three new decoration sheets and keeps their registered anchors stable',()=>{
  const catalog=JSON.parse(readFileSync('supabase/catalog/catalog.json','utf8'))
  const root='assets/storage-upload/new/20261021-134600'

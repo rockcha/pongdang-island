@@ -24,7 +24,7 @@ import type {TankWorldOptions} from './tank-world'
 
 export type TankRenderer = { setItems: (items: OwnedCollectible[]) => void; setView: (view: number) => void; selectItem: (id: string) => void; resize: (width: number, height: number) => void; setReduced: (value: boolean) => void; setVisible: (value: boolean) => void; getStats: () => { count: number; textures: number; clock: number; renderer: string }; destroy: () => void }
 
-export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectible[], reduced: boolean, onError: (message: string) => void, onPlace?: (id:string,x:number,y:number)=>void,_onNavigate?:(direction:'previous'|'next')=>void,onSelectDecoration?:(id:string,x?:number,y?:number)=>void,onBackgroundTap?:()=>void,onSelectionPosition?:(id:string,x:number,y:number)=>void,world?:TankWorldOptions): TankRenderer {
+export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectible[], reduced: boolean, onError: (message: string) => void, onPlace?: (id:string,x:number,y:number)=>void,_onNavigate?:(direction:'previous'|'next')=>void,onSelectDecoration?:(id:string,x?:number,y?:number)=>void,onBackgroundTap?:()=>void,onSelectionPosition?:(id:string,x:number,y:number)=>void,world?:TankWorldOptions,onReadyChange?:(ready:boolean)=>void): TankRenderer {
   let items = initial, ready = false, disposed = false, clock = 0, visible = true
   let viewport=tankResolution(parent.clientWidth,parent.clientHeight,window.devicePixelRatio)
   const columns=world?.columns??1
@@ -52,6 +52,11 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
     const sheet = item.species.kind !== 'map' && !!item.species.sprite_sheet_path
     return { path: sheet ? item.species.sprite_sheet_path! : item.species.thumbnail_path, sheet }
   }
+  const itemPath=(item:OwnedCollectible)=>{const base=asset(item);return mythicSwimAsset(base.path,item.species.rarity)?.path??base.path}
+  const requiredTextures=()=>{const keys=new Set(items.map(item=>textureKey(itemPath(item))));if(items.some(item=>hasHalloweenSpirits(item.species.id)))keys.add('effect:halloween-spirit');return keys}
+  const signature=()=>items.map(item=>`${item.id}:${itemPath(item)}`).sort().join('|')
+  let preparedSignature:string|null=null,reportedReady=false,syncRevision=0
+  const reportReady=(value:boolean)=>{if(reportedReady!==value){reportedReady=value;onReadyChange?.(value)}}
   class TankScene extends Phaser.Scene {
     constructor() { super('aquarium') }
     configureCamera(){
@@ -150,7 +155,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
       })
       this.load.on('loaderror', (file: Phaser.Loader.File) => {
         queued.delete(file.key); failed.add(file.key)
-        onError('일부 개체 이미지를 불러오지 못했어요. Storage 업로드 경로를 확인해주세요.')
+        if(requiredTextures().has(file.key)){reportReady(false);onError('일부 개체 이미지를 불러오지 못했어요. 다시 준비해 주세요.')}
       })
       this.load.on('complete', () => { queued.clear(); if (!disposed) this.sync() })
       this.sync()
@@ -165,6 +170,8 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
     }
     sync() {
       if (!ready || disposed) return
+      const currentSignature=signature(),revision=++syncRevision
+      if(preparedSignature!==currentSignature||[...requiredTextures()].some(key=>!this.textures.exists(key))||items.some(item=>entries.get(item.id)?.path!==itemPath(item)))reportReady(false)
       if(!spiritsQueued&&items.some(item=>hasHalloweenSpirits(item.species.id))){
         spiritsQueued=true;HalloweenSpiritRenderer.queue(this)
       }
@@ -213,6 +220,11 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
       }
       if (!this.load.isLoading() && (queued.size||this.load.list.size)) this.load.start()
       this.draw(0)
+      if([...requiredTextures()].every(key=>this.textures.exists(key))&&items.every(item=>entries.get(item.id)?.path===itemPath(item))){
+        if(preparedSignature!==currentSignature||!reportedReady)this.game.events.once(Phaser.Core.Events.POST_RENDER,()=>{
+          if(!disposed&&revision===syncRevision&&signature()===currentSignature){preparedSignature=currentSignature;reportReady(true)}
+        })
+      }
     }
     registerSheet(key:string,columns=2){const texture=this.textures.get(key);if(texture.has('swim-0'))return;const source=texture.getSourceImage() as HTMLImageElement;const w=source.width/columns,h=source.height/2;for(let f=0;f<columns*2;f++)texture.add(`swim-${f}`,0,(f%columns)*w,Math.floor(f/columns)*h,w,h)}
     selectItem(id:string){

@@ -10,7 +10,7 @@
 
 `src/pages/aquarium-page.tsx`가 상태와 작업을 연결하고 `src/features/aquarium/aquarium-view.tsx`가 수조를 표시합니다. aquarium_state는 어항, 배경 카탈로그·보유 목록, 배치 개체, 보관 수와 정원을 반환합니다. 실제 개체와 임시 추가는 [개체 문서](collectibles.md)를 확인합니다.
 
-배경은 공개 aquarium-backgrounds 버킷에서 읽고 수조 전체에 object-cover로 표시합니다. 이미지 로딩 실패 시 대체 배경을 사용합니다. 세로 배경 원본은 [배경 이미지 안내](../../assets/storage-upload/aquarium-backgrounds-portrait/README.md)에 있습니다. 파일 존재 여부는 원격 업로드를 뜻하지 않습니다.
+배경은 공개 aquarium-backgrounds 버킷에서 읽고 수조 전체에 object-cover로 표시합니다. 내 어항과 친구 어항은 배경 디코딩·현재 개체의 텍스처와 효과 로딩·스프라이트 등록·첫 실제 렌더가 모두 끝날 때까지 장면 전체를 숨깁니다. 준비 중에는 수중색 준비 화면을 표시하며, 로딩 순서에 따라 일부 물고기만 먼저 노출하지 않습니다. 실패나 제한 시간 초과에는 장면을 계속 가리고 재시도를 제공합니다. 재시도·어항 전환 후 이전 요청의 늦은 완료 신호로 새 장면을 열지 않아야 합니다. 세로 배경 원본은 [배경 이미지 안내](../../assets/storage-upload/aquarium-backgrounds-portrait/README.md)에 있습니다. 파일 존재 여부는 원격 업로드를 뜻하지 않습니다.
 
 배경 구매는 aquarium_background, 어항별 장착은 manage_aquarium_tank를 사용합니다. 서버가 가격·보유 여부를 검증하고 구매 operation_id 재시도로 중복 차감하지 않습니다. 초기 구조는 SQL 09·10이 진입점입니다.
 

@@ -219,12 +219,25 @@ it('isolates physical boats and rejects invalid dock numbers and direct edits',a
  await expect(asUser(owner,'update public.harbor_boats set dock_slot=null')).rejects.toThrow(/permission denied/)
  await expect(asUser(owner,"select app_private.settle_legacy_harbor('buy',gen_random_uuid(),'fishing-raft')")).rejects.toThrow(/permission denied/)
 })
-it('lists all boat types and limits each type to two physical boats with an idempotent receipt',async()=>{
+it('buys more than two boats of one type, stores overflow, and never double charges retries',async()=>{
  const initial=(await asUser(owner,'select public.harbor_state() s')).rows[0].s
  expect(initial.vessels.slice(0,4).map(v=>[v.name,v.duration_minutes,v.fuel_cost,v.fishing_count])).toEqual([['낚시용 뗏목',40,0,2],['낚시용 드론',60,1,4],['너울 낚싯배',120,4,10],['해넘이 원양어선',480,9,28]])
  const op=crypto.randomUUID();await action('buy','fishing-raft',null,1,op);expect((await action('buy','fishing-raft',null,1,op)).replayed).toBe(true)
  expect((await wallet()).gold).toBe(9600)
- await action('buy','fishing-raft');await expect(action('buy','fishing-raft')).rejects.toThrow(/OWNERSHIP_LIMIT/)
+ let purchased
+ for(let i=0;i<5;i++)purchased=await action('buy','fishing-raft')
+ expect(purchased.boats.map(b=>b.instance_no).sort((a,b)=>a-b)).toEqual([1,2,3,4,5,6])
+ expect(purchased.boats.filter(b=>b.dock_slot!==null)).toHaveLength(2)
+ expect(purchased.boats.filter(b=>b.dock_slot===null)).toHaveLength(4)
+ expect(purchased.vessels.find(v=>v.id==='fishing-raft').ownedCount).toBe(6)
+ expect((await wallet()).gold).toBe(7600)
+ expect((await action('buy','fishing-raft',null,1,op)).replayed).toBe(true)
+ expect((await wallet()).gold).toBe(7600)
+ const third=purchased.boats.find(b=>b.instance_no===3)
+ await fleetAction('sell',third.id)
+ const replacement=await action('buy','fishing-raft')
+ expect(replacement.boats.find(b=>b.id===replacement.receipt.boatId).instance_no).toBe(3)
+ expect(new Set(replacement.boats.map(b=>b.instance_no)).size).toBe(6)
  await expect(action('buy','neoul-boat',null,1,op)).rejects.toThrow(/CONFLICT/)
 })
 it('buys fuel atomically, validates bounds and never double charges a retry',async()=>{

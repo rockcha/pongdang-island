@@ -1,4 +1,4 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react'
+import { act, cleanup, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { TankInhabitants } from '../src/features/aquarium/tank-inhabitants'
 import type { OwnedCollectible } from '../src/features/collection/api'
@@ -6,11 +6,12 @@ import {useState} from 'react'
 import {MemoryRouter} from 'react-router'
 import {Dialog,DialogContent,DialogTitle} from '@/components/ui/dialog'
 import {fireEvent} from '@testing-library/react'
+import {AquariumBackdrop} from '@/features/aquarium/aquarium-backdrop'
 
 const mock=vi.hoisted(()=>({setItems:vi.fn(),setView:vi.fn(),resize:vi.fn(),setReduced:vi.fn(),setVisible:vi.fn(),destroy:vi.fn(),create:vi.fn()}))
 vi.mock('../src/features/aquarium/phaser-tank',()=>({createTankRenderer:mock.create}))
 beforeEach(()=>{
- vi.clearAllMocks();mock.create.mockReturnValue(mock)
+ vi.clearAllMocks();mock.create.mockImplementation((...args)=>{args[10]?.(true);return mock})
  vi.stubGlobal('ResizeObserver',class{observe(){}disconnect(){}})
  vi.stubGlobal('IntersectionObserver',class{observe(){}disconnect(){}})
  vi.stubGlobal('matchMedia',()=>({matches:false,addEventListener(){},removeEventListener(){}}))
@@ -47,6 +48,7 @@ it('creates one renderer and updates the collection without restarting it, then 
  view.rerender(<TankInhabitants items={[first,second]}/> )
  expect(mock.setItems).toHaveBeenLastCalledWith([first,second])
  expect(mock.create).toHaveBeenCalledOnce()
+ act(()=>mock.create.mock.calls[0][10](true))
  expect(screen.getByText('상어')).toBeTruthy()
  expect(view.container.firstElementChild?.className).toContain('cursor-pointer')
  view.unmount()
@@ -76,7 +78,60 @@ it('zooms the background and renderer together while leaving accessible controls
 it('shows a helpful error when the renderer cannot start',async()=>{
  mock.create.mockImplementation(()=>{throw new Error('renderer unavailable')})
  render(<TankInhabitants items={[]}/> )
- expect(await screen.findByRole('alert')).toHaveProperty('textContent','어항 화면을 시작하지 못했어요. 새로고침해주세요.')
+ expect(await screen.findByRole('alert')).toHaveProperty('textContent',expect.stringContaining('어항 화면을 시작하지 못했어요. 새로고침해주세요.'))
+})
+it('hides the entire tank until both the background and the rendered inhabitants are ready',async()=>{
+ mock.create.mockImplementation(()=>mock)
+ const images:{onload:()=>void;onerror:()=>void;src:string}[]=[]
+ vi.stubGlobal('Image',class {onload=()=>{};onerror=()=>{};src='';constructor(){images.push(this)}})
+ const view=render(<TankInhabitants items={[]} scenery={<AquariumBackdrop background={{name:'Sea',image_path:'sea.png',url:'/sea.png'}}/>}/> )
+ await waitFor(()=>expect(mock.create).toHaveBeenCalledOnce())
+ const scene=view.container.querySelector('[data-tank-zoom-scene]') as HTMLElement
+ expect(scene.style.visibility).toBe('hidden');expect(screen.getByRole('status').textContent).toContain('어항을 준비')
+ act(()=>mock.create.mock.calls[0][10](true))
+ expect(scene.style.visibility).toBe('hidden')
+ act(()=>images[0].onload())
+ expect(scene.style.visibility).toBe('visible');expect(screen.queryByRole('status')).toBeNull()
+})
+it('keeps an already loaded background covered until the first rendered frame is ready',async()=>{
+ mock.create.mockImplementation(()=>mock)
+ let loaded=()=>{}
+ vi.stubGlobal('Image',class {set onload(value:()=>void){loaded=value}onerror=()=>{};src=''})
+ const view=render(<TankInhabitants items={[]} scenery={<AquariumBackdrop background={{name:'Sea',image_path:'sea.png',url:'/sea.png'}}/>}/> )
+ await waitFor(()=>expect(mock.create).toHaveBeenCalledOnce())
+ act(()=>loaded());expect(screen.getByRole('status')).toBeTruthy()
+ act(()=>mock.create.mock.calls[0][10](true))
+ expect(view.container.firstElementChild?.getAttribute('data-tank-ready')).toBe('true')
+})
+it('never reveals a partial tank after failure and rebuilds the assets on retry',async()=>{
+ mock.create.mockImplementation(()=>mock)
+ const view=render(<TankInhabitants items={[]}/> )
+ await waitFor(()=>expect(mock.create).toHaveBeenCalledOnce())
+ act(()=>mock.create.mock.calls[0][3]('일부 개체 이미지를 불러오지 못했어요.'))
+ expect(view.container.querySelector<HTMLElement>('[data-tank-zoom-scene]')?.style.visibility).toBe('hidden')
+ expect(screen.getByRole('alert')).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'다시 준비하기'}))
+ await waitFor(()=>expect(mock.create).toHaveBeenCalledTimes(2))
+ expect(mock.destroy).toHaveBeenCalledOnce()
+ act(()=>mock.create.mock.calls[0][10](true))
+ expect(view.container.firstElementChild?.getAttribute('data-tank-ready')).toBe('false')
+ act(()=>mock.create.mock.calls[1][10](true))
+ expect(view.container.firstElementChild?.getAttribute('data-tank-ready')).toBe('true')
+})
+it('keeps a failed background covered and ignores late signals from before a retry',async()=>{
+ const images:{onload:()=>void;onerror:()=>void;src:string}[]=[]
+ vi.stubGlobal('Image',class {onload=()=>{};onerror=()=>{};src='';constructor(){images.push(this)}})
+ const view=render(<TankInhabitants items={[]} scenery={<AquariumBackdrop background={{name:'Sea',image_path:'sea.png',url:'/sea.png'}}/>}/> )
+ await waitFor(()=>expect(mock.create).toHaveBeenCalledOnce())
+ const stale=images[0].onload
+ act(()=>images[0].onerror())
+ expect(screen.getByRole('alert').textContent).toContain('어항 배경')
+ fireEvent.click(screen.getByRole('button',{name:'다시 준비하기'}))
+ await waitFor(()=>expect(mock.create).toHaveBeenCalledTimes(2))
+ act(()=>stale())
+ expect(view.container.firstElementChild?.getAttribute('data-tank-ready')).toBe('false')
+ act(()=>images[1].onload())
+ expect(view.container.firstElementChild?.getAttribute('data-tank-ready')).toBe('true')
 })
 it('places selection controls in screen coordinates after the tank has been zoomed',async()=>{
  const position=vi.fn()

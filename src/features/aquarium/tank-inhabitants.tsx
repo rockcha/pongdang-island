@@ -1,10 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import type { OwnedCollectible } from '@/features/collection/api'
 import type { TankRenderer } from './phaser-tank'
 import type {TankWorldOptions} from './tank-world'
 import {bindTankPinchZoom} from './pinch-zoom'
 import {hasOpenOverlay,subscribeOverlayActivity} from '@/components/overlay-back'
+import {AquariumLoading} from './aquarium-loading'
+import {TankLoadingContext,type TankAssetState} from './tank-loading-context'
 
 export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecoration,onBackgroundTap,onSelectionPosition,paused=false,world,viewRequest }: { items: OwnedCollectible[];scenery?:ReactNode;onPlace?:(id:string,x:number,y:number)=>void;onNavigate?:(direction:'previous'|'next')=>void;onSelectDecoration?:(id:string,x?:number,y?:number)=>void;onBackgroundTap?:()=>void;onSelectionPosition?:(id:string,x:number,y:number)=>void;paused?:boolean;world?:TankWorldOptions;viewRequest?:{position:number} }) {
   const columns=world?.columns??1
@@ -14,6 +16,11 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
   const root = useRef<HTMLDivElement>(null)
   const zoomViewport=useRef<HTMLDivElement>(null)
   const scene=useRef<HTMLDivElement>(null)
+  const [rendererReady,setRendererReady]=useState(false),[backgroundState,setBackgroundState]=useState<TankAssetState>('ready'),[retry,setRetry]=useState(0)
+  const [error,setError]=useState('')
+  const assetSignature=items.map(item=>`${item.id}:${item.species.thumbnail_path}:${item.species.sprite_sheet_path??''}`).sort().join('|')
+  const isReady=rendererReady&&backgroundState==='ready'&&!error
+  const loadingError=error||(backgroundState==='failed'?'어항 배경을 불러오지 못했어요. 다시 준비해 주세요.':'')
   useEffect(()=>{if(zoomViewport.current&&scene.current)return bindTankPinchZoom(zoomViewport.current,scene.current)},[])
   const renderer = useRef<TankRenderer | null>(null)
   const latest = useRef(items)
@@ -35,9 +42,14 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
   }
   useEffect(()=>{pause.current=paused;updateVisibility()},[paused])
   useEffect(()=>{placement.current=onPlace},[onPlace])
-  const [error, setError] = useState('')
+  useLayoutEffect(()=>{setRendererReady(false);setError('')},[assetSignature,retry,columns,preserveArrangement])
+  useEffect(()=>{
+    if(isReady||loadingError)return
+    const timer=setTimeout(()=>setError('어항 준비에 시간이 오래 걸리고 있어요. 연결을 확인하고 다시 준비해 주세요.'),25000)
+    return()=>clearTimeout(timer)
+  },[isReady,loadingError,assetSignature,retry])
   useEffect(()=>{if(viewRequest)renderer.current?.setView(viewRequest.position)},[viewRequest,columns])
-  useEffect(() => { latest.current = items; renderer.current?.setItems(items) }, [items])
+  useLayoutEffect(() => { latest.current = items; renderer.current?.setItems(items) }, [items])
   useEffect(() => {
     const parent = root.current
     if (!parent) return
@@ -64,7 +76,7 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
           const bounds=parent.getBoundingClientRect(),viewport=zoomViewport.current?.getBoundingClientRect()
           const scaleX=parent.clientWidth?bounds.width/parent.clientWidth:1,scaleY=parent.clientHeight?bounds.height/parent.clientHeight:1
           position.current?.(id,bounds.left-(viewport?.left??bounds.left)+x*scaleX,bounds.top-(viewport?.top??bounds.top)+y*scaleY)
-        },columns>1?{...latestWorld.current,columns:3,preserveArrangement,onViewChange:view=>latestWorld.current?.onViewChange?.(view),canPan:()=>latestWorld.current?.canPan?.()??true}:undefined)
+        },columns>1?{...latestWorld.current,columns:3,preserveArrangement,onViewChange:view=>latestWorld.current?.onViewChange?.(view),canPan:()=>latestWorld.current?.canPan?.()??true}:undefined,value=>{if(active)setRendererReady(value)})
         visibility()
       } catch { setError('어항 화면을 시작하지 못했어요. 새로고침해주세요.') }
     }).catch(() => { if (active) setError('어항 화면을 불러오지 못했어요. 새로고침해주세요.') })
@@ -78,13 +90,13 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
       reduced.removeEventListener('change', preference)
       renderer.current?.destroy(); renderer.current = null
     }
-  }, [columns,preserveArrangement])
-  return <div ref={zoomViewport} className="absolute inset-0 touch-none cursor-pointer overflow-hidden" aria-label={`어항 속 개체 ${items.length}개`}>
-    <div ref={scene} data-tank-zoom-scene className="absolute inset-0">
-      {scenery}
+  }, [columns,preserveArrangement,retry])
+  return <div ref={zoomViewport} className="absolute inset-0 touch-none cursor-pointer overflow-hidden" aria-busy={!isReady} data-tank-ready={isReady} aria-label={`어항 속 개체 ${items.length}개`}>
+    <div ref={scene} data-tank-zoom-scene aria-hidden={!isReady} className={`absolute inset-0 ${isReady?'aquarium-scene-enter':''}`} style={{visibility:isReady?'visible':'hidden',pointerEvents:isReady?undefined:'none'}}>
+      <TankLoadingContext.Provider value={setBackgroundState}><Fragment key={retry}>{scenery}</Fragment></TankLoadingContext.Provider>
       <div ref={root} className="absolute inset-0" aria-hidden="true"/>
     </div>
-    <ul className="sr-only focus-within:not-sr-only focus-within:absolute focus-within:inset-x-2 focus-within:top-16 focus-within:z-20 focus-within:rounded focus-within:bg-background focus-within:p-3">{items.map(item => <li key={item.id}>{onSelectDecoration?<button onClick={()=>{if(renderer.current?.selectItem)renderer.current.selectItem(item.id);else onSelectDecoration(item.id)}}>{item.species.name} 선택</button>:item.species.name}</li>)}</ul>
-    {error && <p role="alert" className="pointer-events-none absolute inset-x-2 top-2 rounded bg-background/90 p-2 text-xs text-destructive">{error}</p>}
+    {isReady&&<ul className="sr-only focus-within:not-sr-only focus-within:absolute focus-within:inset-x-2 focus-within:top-16 focus-within:z-20 focus-within:rounded focus-within:bg-background focus-within:p-3">{items.map(item => <li key={item.id}>{onSelectDecoration?<button onClick={()=>{if(renderer.current?.selectItem)renderer.current.selectItem(item.id);else onSelectDecoration(item.id)}}>{item.species.name} 선택</button>:item.species.name}</li>)}</ul>}
+    {!isReady&&<AquariumLoading error={loadingError} onRetry={()=>{setRendererReady(false);setError('');setBackgroundState('ready');setRetry(value=>value+1)}}/>}
   </div>
 }

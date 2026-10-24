@@ -7687,6 +7687,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "pongi-subsea-drilling-platform",
+      "kind": "decoration",
+      "name": "퐁이 해저 시추 플랫폼",
+      "description": "깊은 바다에서도 퐁이들의 작업등은 꺼지지 않는다. 안전모를 쓴 여섯 퐁이가 크레인과 시추기를 움직이며 해저의 비밀을 조금씩 끌어올린다.",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "speed": "0",
+      "size": 200,
+      "rarity": "mythic",
+      "thumbnail_path": "decorations/mythic/pongi-subsea-drilling-platform_v1_thumbnail.png",
+      "sell_price": 3500,
+      "sprite_sheet_path": "decorations/mythic/pongi-subsea-drilling-platform_compat_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "pongul",
       "kind": "fish",
       "name": "퐁울복",
@@ -19326,6 +19344,58 @@
     },
     {
       "species_id": "pongi-statue",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "pongi-subsea-drilling-platform",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "pongi-subsea-drilling-platform",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "pongi-subsea-drilling-platform",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "pongi-subsea-drilling-platform",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "pongi-subsea-drilling-platform",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "pongi-subsea-drilling-platform",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "pongi-subsea-drilling-platform",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "pongi-subsea-drilling-platform",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pongi-subsea-drilling-platform",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "pongi-subsea-drilling-platform",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "pongi-subsea-drilling-platform",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "pongi-subsea-drilling-platform",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "pongi-subsea-drilling-platform",
       "region_id": "whitenight"
     },
     {

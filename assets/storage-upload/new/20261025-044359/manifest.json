@@ -1,0 +1,73 @@
+{
+  "status": "approved-production",
+  "name": "퐁이 해저 시추 플랫폼",
+  "id": "pongi-subsea-drilling-platform",
+  "kind": "decoration",
+  "rarity": "mythic",
+  "movementPlan": {
+    "movement_type": "fixed",
+    "swim_y_min": null,
+    "swim_y_max": null,
+    "travel_direction": "both",
+    "flip_with_direction": false
+  },
+  "price": 3500,
+  "generator": "built-in image_gen",
+  "references": [
+    "public/branding/pongi.png",
+    "assets/references/collectible-style/epic-mythic-starlight.png"
+  ],
+  "prompt": "Create exactly ONE square thumbnail concept for the mythical aquarium decoration \"Pongi Subsea Drilling Platform\". Transparent background, a single complete isolated object with comfortable clear margins, no text, no card, no frame, no checkerboard, no scenery or ocean backdrop, no sprite sheet.\n\nReference image 1 is the Pongi character identity: an adorable plump warm golden-brown otter with creamy muzzle and tummy, round dark bright eyes, little whiskers, soft ears, short paws, and a peach starfish hair ornament. Depict SIX distinct small Pongi workers, all recognizably the same otter species, wearing small yellow/copper safety helmets, work vests and occasional clear diving goggles, each visibly doing a different believable job. Keep the characters expressive and readable, not tiny specks. Do not reproduce the fishing hook/line from the reference.\n\nReference image 2 is ONLY for premium mythical rendering: softly colored outlines, luminous translucent highlights, nuanced gradients, rich painted materials and dimensional shading. Do not borrow the ray animal, fins, stars pattern, or purple silhouette.\n\nDesign an elegant whimsical but mechanically recognizable OFFSHORE/SUBSEA DRILLING PLATFORM as a compact isometric three-quarter-view collectible diorama. Wide teal/navy industrial deck with burnished copper and warm ivory details, one central triangular lattice drilling derrick, visible drill pipe descending through the deck to a compact seabed footing, stout four-legged support structure, rails, stairs, bundled pipelines, valve wheels, one small working crane, warm lit control cabin. All parts form ONE coherent freestanding aquarium decoration. Balance the tall derrick with the broad deck. Show six workers: one operating crane controls, one turning a valve, one using a wrench at the drill base, one watching the cabin console, two moving a pipe together on the front deck. Cute cooperative busy workshop feeling. Industrial machinery should look solid and functional, not a castle, not a toy pile, no giant gemstones. Mythical prestige comes from luxurious crafted detail, beautiful turquoise reflections, a restrained soft cyan glow from energy pipes, polished copper, and warm cabin light, without excessive sparkles. The small worker faces must still read at thumbnail size. Fully visible silhouette, nothing cropped, sharp polished high-quality fantasy game item illustration. Genuine alpha transparency surrounding the platform.",
+  "files": [
+    {
+      "local_path": "decorations/mythic/pongi-subsea-drilling-platform_v1_thumbnail.png",
+      "storage_path": "decorations/mythic/pongi-subsea-drilling-platform_v1_thumbnail.png"
+    },
+    {
+      "local_path": "decorations/mythic/pongi-subsea-drilling-platform_work8_v1_sprite.png",
+      "storage_path": "decorations/mythic/pongi-subsea-drilling-platform_work8_v1_sprite.png"
+    },
+    {
+      "local_path": "decorations/mythic/pongi-subsea-drilling-platform_compat_v1_sprite.png",
+      "storage_path": "decorations/mythic/pongi-subsea-drilling-platform_compat_v1_sprite.png"
+    }
+  ],
+  "approved": true,
+  "uploaded": true,
+  "catalogRegistered": true,
+  "habitats": [
+    "bluegrove",
+    "cloudferry",
+    "coral",
+    "dreamabyss",
+    "mistmoon",
+    "mukhyang",
+    "nyamnyam",
+    "pongdang",
+    "primal",
+    "scrapisle",
+    "siren",
+    "starruins",
+    "whitenight"
+  ],
+  "release": "2026-10-25T04:58:35+09:00",
+  "animation": {
+    "columns": 4,
+    "rows": 2,
+    "frames": 8,
+    "framesPerSecond": 3,
+    "registration": "registration.json",
+    "source": "source-work8-v3.png",
+    "compatibilitySheet": "decorations/mythic/pongi-subsea-drilling-platform_compat_v1_sprite.png",
+    "runtimeAsset": "public/aquarium/swim/pongi-subsea-drilling-platform_work8_v1_sprite.png"
+  },
+  "priceDecision": "User explicitly set 3500 gold for this mythical decoration.",
+  "review": {
+    "rawCellMinMargin": 0.179,
+    "packedCellMinMargin": 0.097,
+    "anchorSamples": 1003,
+    "registrationMethod": "Opaque upper-derrick patch; uniform scale and per-frame translation only. No independently trimmed or resized silhouettes."
+  },
+  "spriteGeneration": "sprite-generation.json",
+  "remoteMigration": "20261024195835_add_pongi_subsea_drilling_platform"
+}

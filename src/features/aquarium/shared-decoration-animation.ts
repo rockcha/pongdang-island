@@ -5,10 +5,15 @@ const rates:Record<string,number>={
  'waterwheel-cascade-tower':4,
  'levitating-stone-spire':1,
 }
+export const platformWorkSpritePath='decorations/mythic/pongi-subsea-drilling-platform_work8_v1_sprite.png'
+export const platformCompatSpritePath='decorations/mythic/pongi-subsea-drilling-platform_compat_v1_sprite.png'
+export function sharedDecorationAsset(path:string){return path===platformCompatSpritePath||path===platformWorkSpritePath?{path:platformWorkSpritePath,url:'/aquarium/swim/pongi-subsea-drilling-platform_work8_v1_sprite.png'}:null}
+export function sharedDecorationColumns(path:string){return path===platformWorkSpritePath?4:null}
 
 
 // Animate local details while registered solid anchors and editing stay still.
 export function sharedDecorationFrame(id:string,time:number,reduced=false,editing=false){
+ if(id==='pongi-subsea-drilling-platform')return reduced||editing?0:Math.floor(Math.max(0,time)*3)%8
  const rate=rates[id]
  return rate===undefined?null:reduced||editing?0:Math.floor(Math.max(0,time)*rate)%4
 }

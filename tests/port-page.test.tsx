@@ -170,12 +170,17 @@ it('keeps a returned but unharvested boat slot reserved and blocks replacement i
  expect(screen.queryByRole('button',{name:'낚시용 뗏목 1호 보관'})).toBeNull()
  expect(mock.action).not.toHaveBeenCalled()
 })
-it('allows a second purchase but disables purchasing more than two of one type',async()=>{
+it('keeps purchasing available after owning two boats of the same type',async()=>{
  mock.load.mockResolvedValue({...base,vessels:[{...vessel,ownedCount:2},second,{...longVessel,ownedCount:0,owned:false}]})
  show(true)
- expect(await screen.findByRole('button',{name:'낚시용 뗏목 보유 한도 2척'})).toHaveProperty('disabled',true)
+ expect(await screen.findByRole('button',{name:'낚시용 뗏목 구매 300 골드'})).toHaveProperty('disabled',false)
+ expect(screen.getByText('보유 2척')).toBeTruthy()
  expect(screen.getByRole('button',{name:'너울 낚싯배 구매 900 골드'})).toHaveProperty('disabled',false)
  expect(screen.getByRole('button',{name:'해넘이 원양어선 구매 2400 골드'})).toHaveProperty('disabled',false)
+ mock.action.mockResolvedValue({...base,vessels:[{...vessel,ownedCount:3},second]})
+ fireEvent.click(screen.getByRole('button',{name:'낚시용 뗏목 구매 300 골드'}))
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'확인'}))
+ await waitFor(()=>expect(mock.action).toHaveBeenCalledWith(expect.objectContaining({p_action:'buy',p_vessel_id:'fishing-raft'})))
 })
 it('shows owned boats at the dock and the shipyard only offers the two new boats',async()=>{
  const view=show()

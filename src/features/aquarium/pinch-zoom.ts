@@ -7,8 +7,8 @@ export function bindTankPinchZoom(viewport:HTMLElement,content:HTMLElement){
   return {cx:(a.clientX+b.clientX)/2-rect.left,cy:(a.clientY+b.clientY)/2-rect.top,distance:Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY)}
  }
  const paint=()=>{
-  x=Math.max(viewport.clientWidth*(1-scale),Math.min(0,x))
-  y=Math.max(viewport.clientHeight*(1-scale),Math.min(0,y))
+  x=scale<1?viewport.clientWidth*(1-scale)/2:Math.max(viewport.clientWidth*(1-scale),Math.min(0,x))
+  y=scale<1?viewport.clientHeight*(1-scale)/2:Math.max(viewport.clientHeight*(1-scale),Math.min(0,y))
   content.style.transformOrigin='0 0'
   content.style.transform=`translate(${x}px,${y}px) scale(${scale})`
  }
@@ -22,7 +22,7 @@ export function bindTankPinchZoom(viewport:HTMLElement,content:HTMLElement){
   if(!gesture||!start)return
   event.preventDefault();event.stopImmediatePropagation()
   const point=position(event.touches)
-  scale=event.touches.length>=2&&start.distance>0?Math.max(1,Math.min(3,start.scale*point.distance/start.distance)):start.scale
+  scale=event.touches.length>=2&&start.distance>0?Math.max(.5,Math.min(3,start.scale*point.distance/start.distance)):start.scale
   const ratio=scale/start.scale
   x=point.cx-(start.cx-start.x)*ratio;y=point.cy-(start.cy-start.y)*ratio
   paint()

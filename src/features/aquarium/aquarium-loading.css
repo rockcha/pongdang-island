@@ -2,5 +2,10 @@
 @keyframes aquarium-background-enter { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .aquarium-background-enter { animation: none; } }
 
-.aquarium-loading .tank-bubble { border-color: color-mix(in srgb, var(--primary) 45%, transparent); background: color-mix(in srgb, var(--primary) 8%, transparent); }
+.aquarium-loading { background: radial-gradient(ellipse at 50% -15%, #c0fbec88, transparent 60%), linear-gradient(180deg, #50cbce 0%, #168eaf 52%, #125f88 100%); }
+.aquarium-loading-light { position:absolute;inset:-15% -35%;pointer-events:none;background:conic-gradient(from 150deg at 50% 0%,transparent 0deg,#e0fff62e 9deg,transparent 18deg,#e0fff620 30deg,transparent 42deg,#e0fff630 55deg,transparent 64deg);filter:blur(9px);animation:aquarium-water-light 6s ease-in-out infinite alternate; }
+@keyframes aquarium-water-light { from { opacity:.45;transform:translateX(-2%); } to { opacity:.85;transform:translateX(2%); } }
+.aquarium-scene-enter { animation:aquarium-background-enter 280ms ease-out both; }
+.aquarium-loading .tank-bubble { border-color:#e1fffa70; background:#dbfff710; }
 .aquarium-loading .tank-bubble-lane { animation-duration: 4s !important; }
+@media (prefers-reduced-motion: reduce) { .aquarium-loading-light,.aquarium-scene-enter { animation:none; } }

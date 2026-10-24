@@ -37,3 +37,12 @@ it('ends initial loading when the background fails',()=>{
  act(()=>fail())
  expect(screen.queryByRole('status')).toBeNull()
 })
+it('waits for background decoding before reporting it as prepared',async()=>{
+ let loaded=()=>{},decoded=()=>{}
+ vi.stubGlobal('Image',class {onerror=()=>{};src='';set onload(handler:()=>void){loaded=handler}decode(){return new Promise<void>(resolve=>{decoded=resolve})}})
+ render(<AquariumBackdrop background={{name:'Decoded sea',image_path:'/sea.png'}}/> )
+ act(()=>loaded())
+ expect(screen.getByRole('status')).toBeTruthy();expect(screen.queryByAltText('Decoded sea')).toBeNull()
+ await act(async()=>decoded())
+ expect(screen.queryByRole('status')).toBeNull();expect(screen.getByAltText('Decoded sea')).toBeTruthy()
+})

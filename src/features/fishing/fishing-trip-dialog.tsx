@@ -1,6 +1,5 @@
 import { useDailyOrderSpecies } from '@/features/merchant/use-daily-order-species'
 import { useEffect, useRef, useState } from 'react'
-import { toast } from 'sonner'
 import { fishingDockButton } from '@/components/fishing-dock-style'
 import { appArt } from '@/components/app-art'
 import { RaritySelect } from '@/components/rarity-select'
@@ -102,7 +101,6 @@ export function FishingTripDialog({
       setSale(null)
       onSold(ids)
       window.dispatchEvent(new Event('collectibles-changed'))
-      toast.success(`${ids.length}개를 판매했어요.`)
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : '판매하지 못했어요. 다시 시도해주세요.')
     } finally {

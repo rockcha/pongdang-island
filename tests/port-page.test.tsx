@@ -18,6 +18,21 @@ const trip={boat_id:'raft-1',id:'voyage1',vessel_id:vessel.id,vessel_snapshot:ve
 beforeEach(()=>{mock.load.mockResolvedValue(base);mock.refresh.mockResolvedValue(undefined)})
 afterEach(()=>{cleanup();localStorage.clear();vi.resetAllMocks();vi.useRealTimers()})
 function show(shipyard=false){return render(<MemoryRouter><PortPage shipyard={shipyard}/></MemoryRouter>)}
+it('confirms both unlocked twin-net destinations and sends them in the departure request',async()=>{
+ const twin={...vessel,id:'twin-net',name:'쌍그물 쌍동선',fuel_cost:15,fishing_count:22,catch_rule:{version:2,success_bp:9000,common_bp:8320,rare_bp:1500,epic_bp:150,mythic_bp:30,kind:'mixed',trash_bp:7000,discovery_weight:1,home_multiplier:1,region_count:2}}
+ const boat={...twin,id:'twin-1',vessel_id:twin.id,instance_no:1,dock_slot:1}
+ const state={...base,fuel:30,boats:[boat],vessels:[twin],regions:[{id:'pongdang',name:'퐁당섬 앞바다',unlocked:true},{id:'bluegrove',name:'푸른숲 바다',unlocked:true},{id:'locked',name:'잠긴 바다',unlocked:false}]}
+ mock.load.mockResolvedValue(state);mock.action.mockResolvedValue(state)
+ show()
+ fireEvent.click(await screen.findByRole('button',{name:/쌍그물 쌍동선 1호/}))
+ expect(screen.getByLabelText('두 번째 조업 해역 · 각 11회')).toBeTruthy()
+ expect(screen.queryByRole('option',{name:'잠긴 바다'})).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:/출항$/}))
+ const confirm=screen.getByRole('alertdialog')
+ expect(confirm.textContent).toContain('퐁당섬 앞바다 · 푸른숲 바다')
+ fireEvent.click(within(confirm).getByRole('button',{name:'확인'}))
+ await waitFor(()=>expect(mock.action).toHaveBeenCalledWith(expect.objectContaining({p_action:'depart',p_region_id:'pongdang',p_secondary_region_id:'bluegrove'})))
+})
 const longVessel={...vessel,id:'haeneomi-trawler',name:'해넘이 원양어선',price:2400,duration_minutes:360,fuel_cost:5,fishing_count:15,sprite_path:'/port/haeneomi-trawler-sprite.png',ownedCount:1}
 const storedBoat={...longVessel,id:'trawler-1',vessel_id:longVessel.id,instance_no:1,dock_slot:null}
 it('confirms the half-price sale of a docked boat before sending the request',async()=>{
@@ -31,7 +46,7 @@ it('confirms the half-price sale of a docked boat before sending the request',as
  expect(mock.action).not.toHaveBeenCalled()
  fireEvent.click(within(guard).getByRole('button',{name:'확인'}))
  await waitFor(()=>expect(mock.action).toHaveBeenCalledWith(expect.objectContaining({p_action:'sell',p_boat_id:'raft-1'})))
- await waitFor(()=>expect(mock.toast).toHaveBeenCalledWith('배 판매 완료'))
+ expect(mock.toast).not.toHaveBeenCalled()
  expect(mock.refresh).toHaveBeenCalledTimes(1)
 })
 it('offers stored boat sales and hides sales for boats awaiting a catch',async()=>{
@@ -59,7 +74,8 @@ it('shows boat purchase stats visually and announces a confirmed purchase',async
  expect(guard.textContent).toContain('토착종 그룹 가중치 +50%')
  expect(mock.toast).not.toHaveBeenCalled()
  fireEvent.click(within(guard).getByRole('button',{name:'확인'}))
- await waitFor(()=>expect(mock.toast).toHaveBeenCalledExactlyOnceWith('물길잡이 탐사선 구매 완료'))
+ await waitFor(()=>expect(mock.action).toHaveBeenCalledTimes(1))
+ expect(mock.toast).not.toHaveBeenCalled()
  expect(mock.refresh).toHaveBeenCalledTimes(1)
 })
 it('sorts shipyard cards by price and keeps fuel purchases outside the shipyard',async()=>{

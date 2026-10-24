@@ -18,14 +18,15 @@ it('formats specific product names and Korean object particles across purchase t
  expect(purchaseMessage({type:'buy',id:'fishing:bait_safe',name:'안전 미끼'})).toBe('안전 미끼를 구매했습니다.')
  expect(purchaseMessage({type:'sell',id:'rod:bronze'})).toBe('청동 낚싯대를 판매했습니다.')
 })
-it('announces only after a successful server purchase',async()=>{
+it('shows the gold deduction without a successful purchase toast',async()=>{
  render(<GoldProvider><Shop/></GoldProvider>)
  await waitFor(()=>expect((screen.getByRole('button') as HTMLButtonElement).disabled).toBe(false))
  fireEvent.click(screen.getByRole('button'));fireEvent.click(screen.getByRole('button'))
- await waitFor(()=>expect(success).toHaveBeenCalledExactlyOnceWith('청동 낚싯대를 구매했습니다.'))
+ expect(await screen.findByText('−800')).toBeTruthy()
+ expect(success).not.toHaveBeenCalled()
  expect(trade).toHaveBeenCalledTimes(1)
 })
-it('does not announce failed purchases, but announces a confirmed ambiguous retry once',async()=>{
+it('keeps ambiguous retry identity without purchase toasts',async()=>{
  trade.mockRejectedValueOnce(new Error('network'))
  render(<GoldProvider><Shop/></GoldProvider>)
  await waitFor(()=>expect((screen.getByRole('button') as HTMLButtonElement).disabled).toBe(false))
@@ -34,6 +35,7 @@ it('does not announce failed purchases, but announces a confirmed ambiguous retr
  expect(success).not.toHaveBeenCalled()
  trade.mockResolvedValueOnce({...wallet,delta:0})
  fireEvent.click(screen.getByRole('button'))
- await waitFor(()=>expect(success).toHaveBeenCalledTimes(1))
+ await waitFor(()=>expect(trade).toHaveBeenCalledTimes(2))
+ expect(success).not.toHaveBeenCalled()
  expect(trade.mock.calls[1][1]).toBe(trade.mock.calls[0][1])
 })

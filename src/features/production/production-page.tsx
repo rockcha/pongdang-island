@@ -530,7 +530,6 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                       if (
                         await action({ p_action: 'sell', p_facility: productionSiteKey(active) })
                       ) {
-                        toast.success('생산소를 판매했어요.')
                         setSelected(null)
                       }
                     }}
@@ -612,7 +611,6 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
                           p_quantity: quantity,
                         })
                       ) {
-                        toast.success(`생산소 ${quantity}곳을 마련했어요.`)
                         setSelected(null)
                       }
                     }}

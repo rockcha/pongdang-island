@@ -152,12 +152,8 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
       pending.current = null
       setError('')
       setSelected(null)
-      toast.success(
-        args.p_action === 'sell'
-          ? '미끼 생산소를 판매했어요.'
-          : args.p_action === 'buy'
-          ? '미끼 생산소를 마련했어요.'
-          : args.p_action === 'start'
+      if(args.p_action!=='buy'&&args.p_action!=='sell')toast.success(
+        args.p_action === 'start'
             ? '미끼 생산을 시작했어요.'
             : args.p_action === 'claim'
               ? '생산한 미끼를 받았어요.'

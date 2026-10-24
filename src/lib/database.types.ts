@@ -153,6 +153,7 @@ export type Database = {
       buy_aquarium_tank: { Args: { p_operation_id: string }; Returns: import('@/features/gold/api').GoldState & { delta: number } }
       manage_aquarium_tank: { Args: { p_tank_id: string; p_action: string; p_value: string }; Returns: import('@/features/aquarium/api').AquariumState }
       aquarium_state: { Args: Record<string, never>; Returns: import('@/features/aquarium/api').AquariumState }
+      reorder_aquarium_tanks: { Args: {p_tank_ids:string[];p_expected_ids:string[]}; Returns: import('@/features/aquarium/api').AquariumState }
       aquarium_background: { Args: { p_id: string; p_action: string; p_operation_id?: string }; Returns: import('@/features/gold/api').GoldState & { delta: number } }
       get_gold_wallet: { Args: Record<string, never>; Returns: import('@/features/gold/api').GoldState }
       trade_gold: { Args: { p_operation_id: string; p_action: string; p_item_id?: string }; Returns: import('@/features/gold/api').GoldState & { delta: number } }

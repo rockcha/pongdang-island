@@ -12,6 +12,43 @@ async function ready(){await db.exec("update public.harbor_voyages set departed_
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db);for(const id of [owner,other]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,id===owner?'항구선장':'다른선장']);await db.query('insert into public.player_wallets(user_id,gold) values($1,10000) on conflict(user_id) do update set gold=10000',[id])}},60000)
 beforeEach(async()=>{for(const v of catalog.harbor_vessels)await db.query('update public.harbor_vessels set catch_rule=$2 where id=$1',[v.id,JSON.stringify(v.catch_rule)]);await db.exec(`truncate app_private.push_deliveries,public.notifications,public.harbor_voyages,public.harbor_boats,public.player_harbor_vessels,app_private.harbor_operations;update public.player_wallets set gold=10000,inventory='{"bait":40,"fuel":10}'`)})
 afterAll(async()=>{await db?.close()})
+it('guarantees twelve catches for the full-catch boat and charges fuel only once',async()=>{
+ await action('buy','full-catch')
+ const op=crypto.randomUUID(),departed=await action('depart','full-catch',null,1,op)
+ expect((await wallet()).inventory.fuel).toBe(0)
+ expect((await action('depart','full-catch',null,1,op)).replayed).toBe(true)
+ await ready()
+ const claimOp=crypto.randomUUID(),result=await action('claim',null,departed.receipt.voyageId,1,claimOp)
+ expect(result.receipt.results[0]).toMatchObject({attempted:12,succeeded:12,failed:0})
+ expect((await action('claim',null,departed.receipt.voyageId,1,claimOp)).receipt).toEqual(result.receipt)
+})
+it('validates both twin-net destinations, snapshots them, and settles eleven attempts per region',async()=>{
+ await db.exec("update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}','30')")
+ const region=(await db.query("select id from public.regions where id<>'pongdang' order by id limit 1")).rows[0].id
+ await action('buy','twin-net')
+ const op=crypto.randomUUID()
+ const depart=(second,operation=op)=>(asUser(owner,'select public.harbor_action($1,$2,$3,null,1,null,null,$4,$5) s',['depart',operation,'twin-net','pongdang',second])).then(r=>r.rows[0].s)
+ await expect(depart(null)).rejects.toThrow('SECOND_REGION_REQUIRED')
+ await expect(depart('pongdang')).rejects.toThrow('SECOND_REGION_REQUIRED')
+ await expect(depart('missing-region')).rejects.toThrow('REGION_NOT_FOUND')
+ await db.query('update public.regions set requires_map_fragment=true where id=$1',[region])
+ await expect(depart(region)).rejects.toThrow('REGION_LOCKED')
+ expect((await wallet()).inventory.fuel).toBe(30)
+ await db.query('update public.regions set requires_map_fragment=false where id=$1',[region])
+ const original=(await db.query("select pg_get_functiondef('app_private.harbor_draw(text,jsonb)'::regprocedure) definition")).rows[0].definition
+ try{
+  const departed=await depart(region),trip=departed.voyages[0]
+  expect(trip.vessel_snapshot).toMatchObject({secondary_region_id:region,fishing_count:22,catch_rule:{region_count:2,success_bp:9000}})
+  expect((await wallet()).inventory.fuel).toBe(15)
+  expect((await depart(region)).replayed).toBe(true)
+  await expect(depart('missing-region')).rejects.toThrow('OPERATION_CONFLICT')
+  await db.exec("create temporary table harbor_test_regions(region text);create or replace function app_private.harbor_draw(p_region text,p_rule jsonb) returns text language plpgsql set search_path='' as $$begin insert into pg_temp.harbor_test_regions values(p_region);return (select id from public.collectible_species where kind='fish' limit 1);end$$")
+  await ready();const result=await action('claim',null,trip.id)
+  expect(result.receipt.results[0]).toMatchObject({attempted:22,succeeded:22})
+  const counts=(await db.query('select region,count(*)::integer n from harbor_test_regions group by region')).rows
+  expect(counts).toEqual(expect.arrayContaining([{region:'pongdang',n:11},{region,n:11}]))
+ }finally{await db.exec(original);await db.exec('drop table if exists pg_temp.harbor_test_regions');await db.query('update public.regions set requires_map_fragment=$2 where id=$1',[region,catalog.regions.find(r=>r.id===region).requires_map_fragment])}
+})
 it('sells at half price once, frees the slot, and reuses an available instance number',async()=>{
  const first=await action('buy','current-rider');await action('buy','current-rider')
  const boat=first.receipt.boatId,op=crypto.randomUUID()
@@ -235,7 +272,7 @@ it('marks arrival without claiming and harvests all ready boats exactly once usi
  expect(arrival.voyages.find(v=>v.id===s.voyages[0].id).arrival_seen_at).toBeTruthy()
  // Catalog edits after departure must not increase or decrease reserved attempts.
  const catalog=(await db.query('select id,fishing_count,fishing_count_max from public.harbor_vessels')).rows
- await db.exec('update public.harbor_vessels set fishing_count=99,fishing_count_max=null')
+ await db.exec("update public.harbor_vessels set fishing_count=99,fishing_count_max=null where coalesce((catch_rule->>'region_count')::integer,1)=1")
  const op=crypto.randomUUID(),claim=await action('claim_all',null,null,1,op)
  for(const v of catalog)await db.query('update public.harbor_vessels set fishing_count=$2,fishing_count_max=$3 where id=$1',[v.id,v.fishing_count,v.fishing_count_max])
  expect(claim.voyages).toEqual([])

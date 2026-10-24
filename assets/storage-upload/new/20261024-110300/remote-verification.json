@@ -1,0 +1,348 @@
+{
+  "projectRef": "ewafafphiovbpjwogwzn",
+  "verifiedAt": "2026-10-24T02:17:16.822Z",
+  "scope": "24 boat catalog rows, five relevant function definitions, new RPC execute grants, two new migration records and 11 public image hashes; not full remote structure parity or production frontend deployment",
+  "migrations": [
+    {
+      "version": "20261024020327",
+      "name": "add_harbor_vessel_routes"
+    },
+    {
+      "version": "20261024020746",
+      "name": "add_eleven_harbor_vessels"
+    }
+  ],
+  "images": [
+    {
+      "id": "tiny-puffer",
+      "sha256": "9b893312805cab8062d4fd03970b167f7477ebc4bea836cf0c88437d293175d6"
+    },
+    {
+      "id": "yellow-buoy",
+      "sha256": "0f06f9a4fd6820a06b8939c7fd51a1d3fba0ac4be26ebf59ffe372191697cb7b"
+    },
+    {
+      "id": "tin-dinghy",
+      "sha256": "7b54823d6b57aea6e4bae91941803260eb605c8ca657f009af07f942ff9291f4"
+    },
+    {
+      "id": "paper-sail",
+      "sha256": "3a530db91d1814d69e4123e93b447f155e3ec3814f96dd2bac69e884b8f19444"
+    },
+    {
+      "id": "log-canoe",
+      "sha256": "1d384d612164698814aecb8055878acb4548a69ff914a02d5ee27efdd243a142"
+    },
+    {
+      "id": "duck-float",
+      "sha256": "b07fc4ac65c5f50cd43c600673f4f571c30a4b37402974df9dd2f14c8738be1b"
+    },
+    {
+      "id": "full-catch",
+      "sha256": "1073779ffe6ae91ee026512e677bc788a75d2482f67e9a45198a6b9db2f319ee"
+    },
+    {
+      "id": "whaleback-trawler",
+      "sha256": "a33efdf9e192354e674809c2edbaf85fe21d59bfbfc7d230b4c2a52e9902934f"
+    },
+    {
+      "id": "red-lantern",
+      "sha256": "3fa30fdcd262fcba03d92d22210d5189577d641829c29c755551125be1737cfa"
+    },
+    {
+      "id": "storm-breaker",
+      "sha256": "aaa03e07b040667efa06121bc1b7d6e676d127562d64407a3775d6c0dec544bd"
+    },
+    {
+      "id": "twin-net",
+      "sha256": "e4029c31c6103f43cd02a1f1b07dd76dd042c5ea6a248e9a3bbd89e0aa65e21e"
+    }
+  ],
+  "newVessels": [
+    {
+      "id": "duck-float",
+      "name": "둥실 오리배",
+      "price": 400,
+      "duration_minutes": 80,
+      "fuel_cost": 0,
+      "fishing_count": 2,
+      "sprite_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/vessels/duck-float.png",
+      "sort_order": 19,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait",
+      "native_bonus": false,
+      "catch_rule": {
+        "kind": "mixed",
+        "epic_bp": 150,
+        "rare_bp": 1500,
+        "version": 2,
+        "trash_bp": 7000,
+        "common_bp": 8320,
+        "mythic_bp": 30,
+        "success_bp": 7000,
+        "home_multiplier": 1,
+        "discovery_weight": 1
+      }
+    },
+    {
+      "id": "full-catch",
+      "name": "만선 보장선",
+      "price": 2800,
+      "duration_minutes": 600,
+      "fuel_cost": 10,
+      "fishing_count": 12,
+      "sprite_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/vessels/full-catch.png",
+      "sort_order": 20,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait",
+      "native_bonus": false,
+      "catch_rule": {
+        "kind": "mixed",
+        "epic_bp": 150,
+        "rare_bp": 1500,
+        "version": 2,
+        "trash_bp": 7000,
+        "common_bp": 8320,
+        "mythic_bp": 30,
+        "success_bp": 10000,
+        "home_multiplier": 1,
+        "discovery_weight": 1
+      }
+    },
+    {
+      "id": "log-canoe",
+      "name": "통나무 카누",
+      "price": 400,
+      "duration_minutes": 60,
+      "fuel_cost": 0,
+      "fishing_count": 2,
+      "sprite_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/vessels/log-canoe.png",
+      "sort_order": 18,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait",
+      "native_bonus": false,
+      "catch_rule": {
+        "kind": "mixed",
+        "epic_bp": 150,
+        "rare_bp": 1500,
+        "version": 2,
+        "trash_bp": 7000,
+        "common_bp": 8320,
+        "mythic_bp": 30,
+        "success_bp": 5250,
+        "home_multiplier": 1,
+        "discovery_weight": 1
+      }
+    },
+    {
+      "id": "paper-sail",
+      "name": "종이돛 보트",
+      "price": 400,
+      "duration_minutes": 20,
+      "fuel_cost": 0,
+      "fishing_count": 1,
+      "sprite_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/vessels/paper-sail.png",
+      "sort_order": 17,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait",
+      "native_bonus": false,
+      "catch_rule": {
+        "kind": "mixed",
+        "epic_bp": 150,
+        "rare_bp": 1500,
+        "version": 2,
+        "trash_bp": 7000,
+        "common_bp": 8320,
+        "mythic_bp": 30,
+        "success_bp": 3500,
+        "home_multiplier": 1,
+        "discovery_weight": 1
+      }
+    },
+    {
+      "id": "red-lantern",
+      "name": "홍등 야간어선",
+      "price": 3400,
+      "duration_minutes": 600,
+      "fuel_cost": 10,
+      "fishing_count": 9,
+      "sprite_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/vessels/red-lantern.png",
+      "sort_order": 22,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait_special",
+      "native_bonus": false,
+      "catch_rule": {
+        "kind": "mixed",
+        "epic_bp": 100,
+        "rare_bp": 9870,
+        "version": 2,
+        "trash_bp": 7000,
+        "common_bp": 0,
+        "mythic_bp": 30,
+        "success_bp": 8000,
+        "home_multiplier": 1,
+        "discovery_weight": 1
+      }
+    },
+    {
+      "id": "storm-breaker",
+      "name": "폭풍돌파 쾌속선",
+      "price": 2600,
+      "duration_minutes": 120,
+      "fuel_cost": 12,
+      "fishing_count": 21,
+      "sprite_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/vessels/storm-breaker.png",
+      "sort_order": 23,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait",
+      "native_bonus": false,
+      "catch_rule": {
+        "kind": "mixed",
+        "epic_bp": 150,
+        "rare_bp": 1500,
+        "version": 2,
+        "trash_bp": 7000,
+        "common_bp": 8320,
+        "mythic_bp": 30,
+        "success_bp": 6000,
+        "home_multiplier": 1,
+        "discovery_weight": 1
+      }
+    },
+    {
+      "id": "tin-dinghy",
+      "name": "깡통 낚싯배",
+      "price": 200,
+      "duration_minutes": 60,
+      "fuel_cost": 0,
+      "fishing_count": 1,
+      "sprite_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/vessels/tin-dinghy.png",
+      "sort_order": 16,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait",
+      "native_bonus": false,
+      "catch_rule": {
+        "kind": "mixed",
+        "epic_bp": 150,
+        "rare_bp": 1500,
+        "version": 2,
+        "trash_bp": 7000,
+        "common_bp": 8320,
+        "mythic_bp": 30,
+        "success_bp": 6000,
+        "home_multiplier": 1,
+        "discovery_weight": 1
+      }
+    },
+    {
+      "id": "tiny-puffer",
+      "name": "꼬마 통통배",
+      "price": 500,
+      "duration_minutes": 40,
+      "fuel_cost": 1,
+      "fishing_count": 2,
+      "sprite_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/vessels/tiny-puffer.png",
+      "sort_order": 14,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait",
+      "native_bonus": false,
+      "catch_rule": {
+        "kind": "mixed",
+        "epic_bp": 150,
+        "rare_bp": 1500,
+        "version": 2,
+        "trash_bp": 7000,
+        "common_bp": 8320,
+        "mythic_bp": 30,
+        "success_bp": 6000,
+        "home_multiplier": 1,
+        "discovery_weight": 1
+      }
+    },
+    {
+      "id": "twin-net",
+      "name": "쌍그물 쌍동선",
+      "price": 3200,
+      "duration_minutes": 720,
+      "fuel_cost": 15,
+      "fishing_count": 22,
+      "sprite_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/vessels/twin-net.png",
+      "sort_order": 24,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait",
+      "native_bonus": false,
+      "catch_rule": {
+        "kind": "mixed",
+        "epic_bp": 150,
+        "rare_bp": 1500,
+        "version": 2,
+        "trash_bp": 7000,
+        "common_bp": 8320,
+        "mythic_bp": 30,
+        "success_bp": 9000,
+        "region_count": 2,
+        "home_multiplier": 1,
+        "discovery_weight": 1
+      }
+    },
+    {
+      "id": "whaleback-trawler",
+      "name": "고래등 대형어선",
+      "price": 2600,
+      "duration_minutes": 480,
+      "fuel_cost": 10,
+      "fishing_count": 20,
+      "sprite_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/vessels/whaleback-trawler.png",
+      "sort_order": 21,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait",
+      "native_bonus": false,
+      "catch_rule": {
+        "kind": "mixed",
+        "epic_bp": 150,
+        "rare_bp": 1500,
+        "version": 2,
+        "trash_bp": 7000,
+        "common_bp": 8320,
+        "mythic_bp": 30,
+        "success_bp": 6500,
+        "home_multiplier": 1,
+        "discovery_weight": 1
+      }
+    },
+    {
+      "id": "yellow-buoy",
+      "name": "노란 부표선",
+      "price": 650,
+      "duration_minutes": 120,
+      "fuel_cost": 2,
+      "fishing_count": 4,
+      "sprite_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/vessels/yellow-buoy.png",
+      "sort_order": 15,
+      "fishing_count_max": null,
+      "catch_bait_id": "bait",
+      "native_bonus": false,
+      "catch_rule": {
+        "kind": "mixed",
+        "epic_bp": 150,
+        "rare_bp": 1500,
+        "version": 2,
+        "trash_bp": 7000,
+        "common_bp": 8320,
+        "mythic_bp": 30,
+        "success_bp": 6500,
+        "home_multiplier": 1,
+        "discovery_weight": 1
+      }
+    }
+  ],
+  "rollbackSmoke": {
+    "verifiedAt": "2026-10-24T02:18:29.839Z",
+    "authenticatedPurchases": true,
+    "twoRegionDeparture": true,
+    "fuelIdempotency": true,
+    "fullCatchTwelveRewards": true,
+    "claimRetry": true,
+    "temporaryAccountRolledBack": true
+  }
+}

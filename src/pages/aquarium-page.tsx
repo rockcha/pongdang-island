@@ -16,6 +16,8 @@ import {
   arrangeDecoration,
   manageTank,
   loadAquarium,
+  reorderAquariumTanks,
+  tankOrderError,
   moveCollectibles,
   placeCollectible,
 } from '@/features/aquarium/api'
@@ -425,6 +427,18 @@ export function AquariumPage() {
               selectedId={tank.id}
               backgrounds={state.catalog}
               busy={busy || goldBusy}
+              onReorder={async(ids,expectedIds)=>{
+                if(locked.current)throw new Error('다른 작업을 마친 뒤 다시 시도해 주세요.')
+                locked.current=true;setBusy(true)
+                const currentTankId=tank.id
+                try{
+                  const next=await reorderAquariumTanks(ids,expectedIds)
+                  if(active.current){setState(next);setSelectedId(currentTankId)}
+                }catch(cause){
+                  if(/TANK_ORDER_CHANGED|INVALID_TANK_ORDER/.test(String((cause as {message?:string})?.message??'')))await reload()
+                  throw new Error(tankOrderError(cause))
+                }finally{locked.current=false;if(active.current)setBusy(false)}
+              }}
               onSelect={(id) => {
                 navigationRequest.current++
                 setSelectedId(id)

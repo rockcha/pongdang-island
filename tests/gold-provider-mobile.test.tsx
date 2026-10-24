@@ -107,7 +107,7 @@ it('aggregates only confirmed deductions when the third purchase fails',async()=
  expect(trade).toHaveBeenCalledTimes(3)
 })
 
-it('includes the confirmed bait quantity in a single purchase toast',async()=>{
+it('keeps the combined gold effect without a purchase toast',async()=>{
  const wallet={gold:1000,inventory:{bait:0},delta:0,testClaimed:false,testEnabled:false}
  load.mockResolvedValue(wallet);trade.mockResolvedValue({...wallet,delta:-30})
  render(<GoldProvider><BuyMany quantity={5}/></GoldProvider>)
@@ -115,6 +115,5 @@ it('includes the confirmed bait quantity in a single purchase toast',async()=>{
  await waitFor(()=>expect(button.disabled).toBe(false))
  fireEvent.click(button)
  expect(await screen.findByText('−150')).toBeTruthy()
- expect(success).toHaveBeenCalledTimes(1)
- expect(success).toHaveBeenCalledWith('지렁이 5마리 구매했습니다.')
+ expect(success).not.toHaveBeenCalled()
 })

@@ -33,6 +33,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
   let decorationPress:{id:string;pointerId:number;x:number;y:number;dragged:boolean}|null=null
   const textureKey = (path: string) => `collectible:${path}`
   const draggable=(item:OwnedCollectible)=>item.species.kind!=='map'&&!item.interaction_locked
+  const inhabitantDepth=(item:OwnedCollectible)=>(item.species.kind==='fish'?200:0)+(glassAttachedSpecies.has(item.species.id)?100:0)
   const asset = (item: OwnedCollectible) => {
     if(glassAttachedSpecies.has(item.species.id))return {path:item.species.thumbnail_path,sheet:false}
     const plant=primalPlantAsset(item.species.id,item.species.kind)
@@ -111,7 +112,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
       })
       this.input.on('dragend',(_pointer:Phaser.Input.Pointer,sprite:Phaser.GameObjects.Sprite)=>{
         const id=sprite.getData('collectibleId') as string,entry=entries.get(id)
-        dragging.delete(id);sprite.setDepth(entry&&glassAttachedSpecies.has(entry.motion.item.species.id)?100:0);this.input.setDefaultCursor('pointer')
+        dragging.delete(id);sprite.setDepth(entry?inhabitantDepth(entry.motion.item):0);this.input.setDefaultCursor('pointer')
         if(!entry)return
         const size=Number(sprite.getData('logicalSize')??sprite.displayWidth)
         const position=entry.motion.place(sprite.x-size/2,sprite.y-size/2,clock,viewport.width,viewport.height,reduced)
@@ -156,6 +157,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         if(sheet)this.registerSheet(key,mythicSheetColumns(path))
         const current = entries.get(item.id)
         if (current) {
+          if(!dragging.has(item.id))current.sprite.setDepth(inhabitantDepth(item))
           this.setMythicGlow(current.sprite,item.species.rarity)
           if(current.sprite.input?.draggable!==draggable(item))this.input.setDraggable(current.sprite,draggable(item))
           if(movementSettings(current.motion.item.species).type!==movementSettings(item.species).type){
@@ -167,7 +169,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         const sprite = this.add.sprite(0, 0, key, sheet ? 'swim-0' : undefined)
         this.setMythicGlow(sprite,item.species.rarity)
         sprite.setData('collectibleId',item.id)
-        sprite.setDepth(glassAttachedSpecies.has(item.species.id)?100:0)
+        sprite.setDepth(inhabitantDepth(item))
         // Fixed inhabitants must remain easy to grab, including transparent
         // gaps in a small sponge or other stationary species.
         sprite.setInteractive({pixelPerfect:movementSettings(item.species).type!=='fixed',alphaTolerance:32,cursor:'grab'})

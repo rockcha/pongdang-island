@@ -3,7 +3,6 @@ import {useCallback,useEffect,useEffectEvent,useRef,useState} from 'react'
 import {useAuth} from '@/components/auth-provider'
 import {useGold} from '@/features/gold/gold-provider'
 import {randomId} from '@/lib/random-id'
-import {toast} from 'sonner'
 import {harborAction,harborError,loadHarbor} from './api'
 import type {HarborAction,HarborState} from './api'
 import {rememberDockRegion} from './dock-region'
@@ -45,8 +44,6 @@ export function useHarbor(){
    if(args.p_action==='buy'||args.p_action==='fuel')playPurchaseSound(args.p_operation_id)
    if(args.p_action==='sell')playSaleSound(args.p_operation_id)
    if((args.p_action==='claim'||args.p_action==='claim_all')&&data.receipt?.results?.some(result=>result.items.length>0))playRewardSound(`harbor:${args.p_operation_id}`)
-   if(args.p_action==='buy')toast.success(`${data.vessels.find(v=>v.id===args.p_vessel_id)?.name??'배'} 구매 완료`)
-   if(args.p_action==='sell')toast.success('배 판매 완료')
    if(args.p_action==='depart'&&data.receipt?.voyageId)setDeparture(data.receipt.voyageId)
    await Promise.allSettled([refresh()]);return true
   }catch(e){if(alive.current){setError(harborError(e));if((e as {code?:string}).code)remember(null)}return false}

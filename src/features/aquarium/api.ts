@@ -26,6 +26,17 @@ export async function loadAquarium() {
  if(error)throw error
  return data
 }
+export async function reorderAquariumTanks(ids:string[],expectedIds:string[]) {
+ const {data,error}=await createClient().rpc('reorder_aquarium_tanks',{p_tank_ids:ids,p_expected_ids:expectedIds})
+ if(error)throw error
+ return data
+}
+export function tankOrderError(cause:unknown){
+ const message=String((cause as {message?:string})?.message??'')
+ if(message.includes('TANK_ORDER_CHANGED'))return '다른 곳에서 어항 목록이 변경됐어요. 창을 닫았다가 다시 열어 순서를 확인해 주세요.'
+ if(message.includes('INVALID_TANK_ORDER'))return '어항 목록이 달라졌어요. 창을 닫았다가 다시 열어 주세요.'
+ return '순서를 저장하지 못했어요. 같은 순서로 다시 저장해 주세요.'
+}
 export async function manageTank(tankId:string, action:'rename'|'equip', value:string) {
  const {data,error}=await createClient().rpc('manage_aquarium_tank',{p_tank_id:tankId,p_action:action,p_value:value})
  if(error)throw error

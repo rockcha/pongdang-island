@@ -62,7 +62,7 @@ function ListingDetail({id,owner}:{id:string;owner:string}){
     await actExchange(id,listing.owner_id===owner?'cancel':'accept')
     if(alive.current&&listing.owner_id!==owner)playPurchaseSound(`exchange:${id}`)
     exchangeChanged();void wallet.refresh();void social.refresh()
-    if(alive.current){setConfirm(false);toast.success(listing.owner_id===owner?'판매글을 내리고 물품을 선물함으로 보냈어요.':'구매했어요. 선물함에서 물품을 받아주세요.')}
+    if(alive.current){setConfirm(false);if(listing.owner_id===owner)toast.success('판매글을 내리고 물품을 선물함으로 보냈어요.')}
     if(listing.owner_id===owner){if(alive.current)navigate('/exchange');return}
     await reload()
    }

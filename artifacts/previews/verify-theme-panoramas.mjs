@@ -1,4 +1,5 @@
 import { chromium } from 'file:///C:/Users/user/Desktop/holoseogi-counsel/node_modules/playwright-core/index.mjs'
+import {panCamera} from './pan-camera.mjs'
 import { readFileSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 const manifest=JSON.parse(readFileSync('assets/storage-upload/new/20261025-014955/manifest.json','utf8'))
@@ -28,8 +29,7 @@ try {
   await page.getByLabel('어항 테마',{exact:true}).selectOption(file.theme_id)
   await page.waitForFunction(id=>{const img=document.querySelector('[data-testid="panorama-background"] img');return img?.getAttribute('src')?.includes('/'+id+'-panorama-v2.png')&&img.complete&&img.naturalWidth>1200},file.theme_id)
   for(const label of ['왼쪽','가운데','오른쪽']){
-   await page.getByRole('button',{name:label+' 보기',exact:true}).click()
-   await page.waitForFunction(index=>Math.abs(+document.querySelector('[data-testid="panorama-glass"]').dataset.view-index)<.001,['왼쪽','가운데','오른쪽'].indexOf(label))
+   await panCamera(page,['왼쪽','가운데','오른쪽'].indexOf(label))
   }
  }
  if(errors.length||remote.length)throw Error(JSON.stringify({errors,remote}))

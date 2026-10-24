@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
-import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Info, X } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, MoveHorizontal, Info, X } from 'lucide-react'
 import {
   Dialog,
   DialogContent,
@@ -33,6 +33,8 @@ import type { AquariumTank } from './api'
 import { InhabitantLayerEditor } from './inhabitant-layer-editor'
 import { automaticInhabitantDepth } from './inhabitant-depth'
 import { themePanoramaUrl } from './theme-panorama'
+import { clampTankView, tankWorldItem } from './tank-world'
+import { TankPanControls } from './tank-pan-controls'
 
 type Props = {
   loading?: boolean
@@ -90,7 +92,7 @@ export function AquariumView(props: Props) {
   selectedId.current = editing?.id ?? null
   const [infoId, setInfoId] = useState<string | null>(null)
   const panAllowed=useRef(true)
-  panAllowed.current=!busy&&!editing
+  panAllowed.current=!busy
   const infoItem = items.find((item) => item.id === infoId)
   const decoration = items.find((item) => item.id === editing?.id)
   const displayed = useMemo(() =>
@@ -100,14 +102,16 @@ export function AquariumView(props: Props) {
         )
       : items, [items, editing, decoration])
   const renderedItems=useMemo(()=>displayed.map(item=>({...item,interaction_locked:busy})),[displayed,busy])
+  function arrangementGeometry(item:OwnedCollectible) {
+    return decorationGeometry(panorama?tankWorldItem(item,dimensions.width,3):item,dimensions.width*(panorama?3:1),dimensions.height)
+  }
   function selectDecoration(id: string, x?: number, y?: number) {
     if (busy || !props.onArrange) return
     const item = items.find((item) => item.id === id)
     if (item) {
-      if(panorama&&canArrangeSpecies(item.species))setViewRequest({position:1})
       infoAnchor.current = null
       const current = editing?.id === id ? { ...item, ...editing.value } : item
-      const g = decorationGeometry(current, dimensions.width, dimensions.height)
+      const g = arrangementGeometry(current)
       const value = {
         position_x: x ?? item.position_x ?? 0.2 + (item.animation_seed / 1000000) * 0.6,
         position_y: y ?? item.position_y ?? 0.86,
@@ -116,11 +120,13 @@ export function AquariumView(props: Props) {
         flipped: current.flipped ?? false,
         ...(item.species.kind==='trash'?{position_locked:current.position_locked??false}:{}),
       }
+      const center=g.margin+value.position_x*g.w+g.size/2
+      if(panorama&&x===undefined&&canArrangeSpecies(item.species))setViewRequest({position:clampTankView(center/dimensions.width-.5)})
       setEditing({
         id,
         value,
         anchor: {
-          x: g.margin + value.position_x * g.w + g.size / 2,
+          x: center-(panorama?view*dimensions.width:0),
           y: g.margin + value.position_y * g.h,
         },
       })
@@ -130,32 +136,24 @@ export function AquariumView(props: Props) {
     if (!canArrangeSpecies(items.find((item) => item.id === id)!.species)) return
     if (busy) return
     if (editing?.id === id) {
-      const g = decorationGeometry(
-        { ...decoration!, ...editing.value },
-        dimensions.width,
-        dimensions.height,
-      )
+      const g = arrangementGeometry({ ...decoration!, ...editing.value })
       setEditing({
         ...editing,
         value: { ...editing.value, position_x: x, position_y: y },
-        anchor: { x: g.margin + x * g.w + g.size / 2, y: g.margin + y * g.h },
+        anchor: { x: g.margin + x * g.w + g.size / 2-(panorama?view*dimensions.width:0), y: g.margin + y * g.h },
       })
     }
     onPlace(id, x, y)
   }
   const geometry =
     decoration && editing
-      ? decorationGeometry({ ...decoration, ...editing.value }, dimensions.width, dimensions.height)
+      ? arrangementGeometry({ ...decoration, ...editing.value })
       : null
   async function changeDecoration(value: DecorationPlacement) {
     if (!editing || !props.onArrange) return
     const previous = editing
     if (geometry && decoration && canArrangeSpecies(decoration.species)) {
-      const next = decorationGeometry(
-        { ...decoration, ...value },
-        dimensions.width,
-        dimensions.height,
-      )
+      const next = arrangementGeometry({ ...decoration, ...value })
       const cx = geometry.margin + previous.value.position_x * geometry.w + geometry.size / 2
       const cy = geometry.margin + previous.value.position_y * geometry.h + geometry.size / 2
       value = {
@@ -215,7 +213,8 @@ export function AquariumView(props: Props) {
           if (event.target !== event.currentTarget) return
           if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
             event.preventDefault()
-            navigate(event.key === 'ArrowLeft' ? 'previous' : 'next')
+            if(panorama&&!busy)setViewRequest({position:clampTankView(view+(event.key==='ArrowLeft'?-.15:.15))})
+            else navigate(event.key === 'ArrowLeft' ? 'previous' : 'next')
           }
         }}
       >
@@ -263,7 +262,7 @@ export function AquariumView(props: Props) {
         </div>
         <TankInhabitants
           key={panorama?`wide:${props.tankId??name}`:'normal'}
-          world={panorama?{columns:3,initialView:1,preserveArrangement:true,onViewChange:setView,canPan:()=>panAllowed.current}:undefined}
+          world={panorama?{columns:3,initialView:1,preserveArrangement:false,onViewChange:setView,canPan:()=>panAllowed.current}:undefined}
           viewRequest={panorama?viewRequest:undefined}
           scenery={<><AquariumBackdrop key={panorama?'wide':'normal'} background={background} loading={props.loading} panorama={panoramaSrc?{src:panoramaSrc,view}:undefined} /><TankBubbles /></>}
           items={renderedItems}
@@ -284,10 +283,9 @@ export function AquariumView(props: Props) {
           onBackgroundTap={() => setEditing(null)}
           onNavigate={navigate}
         />
-        {panorama&&!editing&&(panControlsCollapsed?
-          <Button variant="ghost" aria-label="수조 이동 메뉴 펼치기" aria-expanded={false} title={`수조 이동 메뉴 펼치기 · ${Math.round(view)+1}/3`} className="absolute bottom-3 right-3 z-10 min-h-11 w-11 flex-col gap-0 rounded-xl border border-white/30 bg-background/85 px-1 shadow-sm backdrop-blur-sm" onClick={()=>setPanControlsCollapsed(false)}><ChevronUp className="size-3.5"/><span className="text-[9px] leading-3 tabular-nums">{Math.round(view)+1}/3</span></Button>:
-          <div role="group" aria-label="수조 둘러보기" className="absolute inset-x-3 bottom-3 z-10 mx-auto flex w-fit max-w-[calc(100%-1.5rem)] overflow-hidden rounded-xl border border-white/30 bg-background/85 shadow-sm backdrop-blur-sm">{['왼쪽','가운데','오른쪽'].map((label,index)=><Button key={label} variant={Math.round(view)===index?'secondary':'ghost'} className="min-h-11 gap-1 rounded-none px-3 text-[11px]" aria-label={`${label} 수조 보기`} aria-pressed={Math.round(view)===index} disabled={busy} onClick={()=>setViewRequest({position:index})}>{index===0&&<ChevronLeft className="size-3"/>}{label}{index===2&&<ChevronRight className="size-3"/>}</Button>)}<Button variant="ghost" size="icon" aria-label="수조 이동 메뉴 최소화" aria-expanded={true} className="min-h-11 min-w-11 rounded-none border-l border-border/50" onClick={()=>setPanControlsCollapsed(true)}><ChevronDown className="size-3.5"/></Button></div>
-        )}
+        {panorama&&<div className={`absolute inset-x-3 z-20 mx-auto ${editing?'top-12':'bottom-3'} ${panControlsCollapsed?'flex justify-end':'max-w-sm'}`}>
+          {panControlsCollapsed?<Button variant="ghost" aria-label="수조 이동 메뉴 펼치기" aria-expanded={false} className="min-h-11 w-11 flex-col gap-0 rounded-xl border border-white/30 bg-background/85 px-1 shadow-sm" onClick={()=>setPanControlsCollapsed(false)}><ChevronUp className="size-3"/><MoveHorizontal className="size-4"/></Button>:<TankPanControls view={view} busy={busy} onMove={position=>setViewRequest({position})} onCollapse={()=>setPanControlsCollapsed(true)}/>}
+        </div>}
         {editing && decoration && (
           <div
             ref={toolbar}

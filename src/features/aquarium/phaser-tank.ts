@@ -19,7 +19,7 @@ import {cloudferryFixedFrame} from './cloudferry-animation'
 import {scrapisleFixedFrame} from './scrapisle-animation'
 import {hasHalloweenSpirits} from './halloween-spirits'
 import {HalloweenSpiritRenderer} from './halloween-spirit-renderer'
-import {clampTankView,tankWorldItem,tankItemSpace} from './tank-world'
+import {clampTankView,draggedTankView,tankWorldItem,tankItemSpace} from './tank-world'
 import type {TankWorldOptions} from './tank-world'
 
 export type TankRenderer = { setItems: (items: OwnedCollectible[]) => void; setView: (view: number) => void; resize: (width: number, height: number) => void; setReduced: (value: boolean) => void; setVisible: (value: boolean) => void; getStats: () => { count: number; textures: number; clock: number; renderer: string }; destroy: () => void }
@@ -40,6 +40,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
   let spiritsQueued=false
   let selectedId:string|null=null
   const dragging=new Set<string>()
+  let dragPointer: {pointer:Phaser.Input.Pointer;sprite:Phaser.GameObjects.Sprite;offsetX:number;offsetY:number}|null=null
   let swipe:{id:number;x:number;y:number;time:number;view:number}|null=null
   let decorationPress:{id:string;pointerId:number;x:number;y:number;dragged:boolean}|null=null
   const textureKey = (path: string) => `collectible:${path}`
@@ -100,7 +101,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         if(columns===1||world?.canPan?.()===false||!swipe||swipe.id!==pointer.id||!pointer.isDown)return
         const point=this.pointerPosition(pointer),dx=(point.x-cameraOffset())-swipe.x,dy=point.y-swipe.y
         if(Math.abs(dx)<8||Math.abs(dx)<Math.abs(dy))return
-        view=targetView=clampTankView(swipe.view-dx/viewport.width,columns)
+        view=targetView=clampTankView(swipe.view-dx/viewport.width*.7,columns)
         this.configureCamera();world?.onViewChange?.(view)
       })
       this.input.on('pointerup',(pointer:Phaser.Input.Pointer)=>{
@@ -112,16 +113,18 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         if(!swipe||swipe.id!==pointer.id)return
         const start=swipe;swipe=null
         const dx=point.x-cameraOffset()-start.x,dy=point.y-start.y
-        if(columns>1&&Math.abs(dx)>=15){targetView=clampTankView(Math.round(view),columns);return}
+        if(columns>1&&Math.abs(dx)>=8)return
         if(Math.hypot(dx,dy)<15){onBackgroundTap?.();this.tap(pointer)}
       })
-      this.input.on('gameout',()=>{if(columns>1&&swipe)targetView=clampTankView(Math.round(view),columns);swipe=null;decorationPress=null})
-      this.input.on('dragstart',(_pointer:Phaser.Input.Pointer,sprite:Phaser.GameObjects.Sprite)=>{
+      this.input.on('gameout',()=>{swipe=null;decorationPress=null;dragPointer=null})
+      this.input.on('dragstart',(pointer:Phaser.Input.Pointer,sprite:Phaser.GameObjects.Sprite)=>{
         swipe=null
         const id=sprite.getData('collectibleId') as string
         if(decorationPress?.id===id)decorationPress.dragged=true
         selectedId=id
         dragging.add(id);sprite.setDepth(900)
+        const point=this.pointerPosition(pointer)
+        dragPointer={pointer,sprite,offsetX:sprite.x-point.x,offsetY:sprite.y-point.y}
         this.input.setDefaultCursor('grabbing')
       })
       this.input.on('drag',(_pointer:Phaser.Input.Pointer,sprite:Phaser.GameObjects.Sprite,x:number,y:number)=>{
@@ -132,6 +135,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         sprite.setPosition(Math.max(space.offset+half,Math.min(space.offset+space.width-half,x)),Math.max(half,Math.min(viewport.height-half,y)))
       })
       this.input.on('dragend',(_pointer:Phaser.Input.Pointer,sprite:Phaser.GameObjects.Sprite)=>{
+        dragPointer=null
         const id=sprite.getData('collectibleId') as string,entry=entries.get(id)
         dragging.delete(id);sprite.setDepth(entry?inhabitantDepth(entry.motion.item):0);this.input.setDefaultCursor('pointer')
         if(!entry)return
@@ -243,9 +247,21 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
       if (!visible) {this.game.loop.sleep();return}
       if (!reduced&&!world?.motionPaused?.()) clock += Math.min(delta, 100) / 1000
       if(view!==targetView){
-        view=reduced?targetView:view+(targetView-view)*(1-Math.exp(-Math.min(delta,100)/75))
+        view=reduced?targetView:view+(targetView-view)*(1-Math.exp(-Math.min(delta,100)/180))
         if(Math.abs(view-targetView)<.0005)view=targetView
         this.configureCamera();world?.onViewChange?.(view)
+      }
+      if(columns>1&&dragPointer?.pointer.isDown&&world?.canPan?.()!==false){
+        const {pointer,sprite,offsetX,offsetY}=dragPointer
+        const point=this.pointerPosition(pointer)
+        const next=draggedTankView(view,point.x-cameraOffset(),viewport.width,delta/1000,columns)
+        if(next!==view){
+          view=targetView=next;this.configureCamera();world?.onViewChange?.(view)
+          const moved=this.pointerPosition(pointer),entry=entries.get(sprite.getData('collectibleId') as string)
+          const space=entry?itemSpace(entry.motion.item):{width:worldWidth(),offset:0}
+          const radians=sprite.angle*Math.PI/180,half=sprite.displayWidth*(Math.abs(Math.cos(radians))+Math.abs(Math.sin(radians)))/2
+          sprite.setPosition(Math.max(space.offset+half,Math.min(space.offset+space.width-half,moved.x+offsetX)),Math.max(half,Math.min(viewport.height-half,moved.y+offsetY)))
+        }
       }
       this.draw(delta / 1000)
       if(world?.onFrame&&(clock-lastWorldFrame>=.1||entries.size!==lastWorldCount||Math.abs(view-lastWorldView)>.001)){

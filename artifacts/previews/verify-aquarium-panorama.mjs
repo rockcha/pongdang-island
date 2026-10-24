@@ -1,4 +1,5 @@
 import { chromium } from 'file:///C:/Users/user/Desktop/holoseogi-counsel/node_modules/playwright-core/index.mjs'
+import {panCamera} from './pan-camera.mjs'
 const browser = await chromium.launch({headless:true,executablePath:'C:/Users/user/AppData/Local/ms-playwright/chromium-1243/chrome-win64/chrome.exe'})
 const url='http://127.0.0.1:5186/aquarium-lab'
 try {
@@ -8,6 +9,7 @@ try {
   page.on('pageerror',error=>errors.push(error.message))
   await page.route('**/*.supabase.co/**',route=>{remote.push(route.request().url());return route.abort()})
   await page.goto(url)
+  const move=value=>panCamera(page,value)
   const glass=page.getByTestId('panorama-glass')
   await page.waitForFunction(()=>document.querySelector('[data-testid="panorama-glass"]')?.dataset.ready==='true')
   if(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth))throw Error('Page overflow '+width)
@@ -15,18 +17,18 @@ try {
   if(initial.view!==1||initial.world!==initial.width*3)throw Error('Wrong initial world '+JSON.stringify(initial))
   await page.screenshot({path:`artifacts/previews/aquarium-panorama-${width}-center.png`})
   const before=await page.locator('[data-fish-id]').evaluateAll(items=>items.map(item=>({id:item.dataset.fishId,x:+item.dataset.worldX})))
-  await page.getByRole('button',{name:'왼쪽 보기'}).click()
+  await move(0)
   await page.waitForFunction(()=>+document.querySelector('[data-testid="panorama-glass"]').dataset.view<.001)
   await page.screenshot({path:`artifacts/previews/aquarium-panorama-${width}-left.png`})
-  await page.getByRole('button',{name:'오른쪽 보기'}).click()
+  await move(2)
   await page.waitForFunction(()=>+document.querySelector('[data-testid="panorama-glass"]').dataset.view>1.999)
   await page.screenshot({path:`artifacts/previews/aquarium-panorama-${width}-right.png`})
   const bounds=await glass.boundingBox(),background=await page.getByTestId('panorama-background').boundingBox()
   if(Math.abs(background.width-bounds.width*3)>1||Math.abs(background.x-(bounds.x-bounds.width*2))>1)throw Error('Background and camera do not match')
   const canvas=await glass.locator('canvas').evaluate(canvas=>({width:canvas.width,cssWidth:canvas.getBoundingClientRect().width}))
   if(canvas.width>Math.ceil(bounds.width*1.5)+1||Math.abs(canvas.cssWidth-bounds.width)>1)throw Error('Canvas grew with world size')
-  await page.getByRole('button',{name:'가운데 보기'}).click()
-  await page.waitForFunction(()=>Math.abs(+document.querySelector('[data-testid="panorama-glass"]').dataset.view-1)<.001)
+  await move(1)
+  await page.waitForFunction(()=>Math.abs(+document.querySelector('[data-testid="panorama-glass"]').dataset.view-1.05)<.001)
   const cdp=await page.context().newCDPSession(page)
   const y=bounds.y+bounds.height*.10
   await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:bounds.x+bounds.width*.15,y}]})
@@ -35,7 +37,7 @@ try {
    await page.waitForTimeout(25)
   }
   await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]})
-  await page.waitForFunction(()=>+document.querySelector('[data-testid="panorama-glass"]').dataset.view<.001)
+  await page.waitForFunction(()=>{const view=+document.querySelector('[data-testid="panorama-glass"]').dataset.view;return view>.4&&view<.6})
   const after=await page.locator('[data-fish-id]').evaluateAll(items=>items.map(item=>({id:item.dataset.fishId,x:+item.dataset.worldX})))
   if(after.length!==24||after.some((item,i)=>item.id!==before[i].id)||after.every((item,i)=>Math.abs(item.x-before[i].x)<1))throw Error('Fish stopped or were recreated')
   if(width===390){
@@ -50,8 +52,8 @@ try {
    await page.getByRole('button',{name:'잠깐 멈추기'}).click()
    const paused=await glass.getAttribute('data-clock');await page.waitForTimeout(400)
    if(await glass.getAttribute('data-clock')!==paused)throw Error('Pause failed')
-   await page.getByRole('button',{name:'가운데 보기'}).click()
-   await page.waitForFunction(()=>Math.abs(+document.querySelector('[data-testid="panorama-glass"]').dataset.view-1)<.001)
+   await move(2)
+   await page.waitForFunction(()=>+document.querySelector('[data-testid="panorama-glass"]').dataset.view>1.999,undefined,{timeout:5000}).catch(async error=>{console.log(await glass.evaluate(el=>({...el.dataset,hidden:document.hidden,range:document.querySelector('input[type="range"]').value})));throw error})
    if(await glass.getAttribute('data-clock')===null)throw Error('Missing paused world')
    await page.getByRole('button',{name:'다시 헤엄치기'}).click()
   }
@@ -63,7 +65,7 @@ try {
  await reduced.goto(url)
  await reduced.waitForFunction(()=>document.querySelector('[data-testid="panorama-glass"]')?.dataset.ready==='true')
  if(+(await reduced.getByTestId('panorama-glass').getAttribute('data-clock'))!==0)throw Error('Reduced motion advanced simulation')
- await reduced.getByRole('button',{name:'오른쪽 보기'}).click()
+ await panCamera(reduced,2)
  await reduced.waitForFunction(()=>+document.querySelector('[data-testid="panorama-glass"]').dataset.view===2)
  await reduced.close()
  console.log({reducedMotion:true})

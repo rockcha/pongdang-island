@@ -34,6 +34,40 @@ afterEach(() => {
   cleanup()
   vi.clearAllMocks()
 })
+it('claims a ready site directly without a dialog and blocks repeated taps while receiving', async () => {
+  const now = Date.now()
+  const ready = {...site,siteId:'ready-site',startedAt:new Date(now-120000).toISOString(),completesAt:new Date(now-60000).toISOString(),expiresAt:new Date(now+60000).toISOString()}
+  const state = {serverNow:new Date(now).toISOString(),gold:10000,fuel:20,facilities:[site],sites:[ready]}
+  mock.load.mockResolvedValue(state)
+  let finish!: (value: unknown) => void
+  mock.act.mockImplementationOnce(() => new Promise(resolve => {finish=resolve}))
+  render(<MemoryRouter><BaitProductionPage/></MemoryRouter>)
+  const card=await screen.findByRole('button',{name:/꼬물꼬물 흙상자/})
+  fireEvent.click(card)
+  fireEvent.click(card)
+  expect(mock.act).toHaveBeenCalledTimes(1)
+  expect(mock.act).toHaveBeenCalledWith(expect.objectContaining({p_action:'claim',p_facility:'ready-site',p_quantity:1,p_operation_id:expect.any(String)}))
+  expect(screen.queryByRole('dialog')).toBeNull()
+  finish({...state,sites:[{...site,siteId:'ready-site'}]})
+  await waitFor(()=>expect(card.hasAttribute('disabled')).toBe(false))
+  expect(card.textContent).toContain('대기 중')
+})
+
+it('retries an uncertain direct claim with the original operation id', async () => {
+  const now=Date.now()
+  const state={serverNow:new Date(now).toISOString(),gold:10000,fuel:20,facilities:[site],sites:[{...site,siteId:'ready-site',startedAt:new Date(now-120000).toISOString(),completesAt:new Date(now-60000).toISOString(),expiresAt:new Date(now+60000).toISOString()}]}
+  mock.load.mockResolvedValue(state)
+  mock.act.mockRejectedValueOnce(new TypeError('network')).mockResolvedValueOnce({...state,sites:[{...site,siteId:'ready-site'}]})
+  render(<MemoryRouter><BaitProductionPage/></MemoryRouter>)
+  fireEvent.click(await screen.findByRole('button',{name:/꼬물꼬물 흙상자/}))
+  await screen.findByRole('alert')
+  const operation=mock.act.mock.calls[0][0]
+  fireEvent.click(screen.getByRole('button',{name:'다시 확인'}))
+  await waitFor(()=>expect(mock.act).toHaveBeenCalledTimes(2))
+  expect(mock.act.mock.calls[1][0]).toEqual(operation)
+  expect(screen.queryByRole('dialog')).toBeNull()
+})
+
 it('confirms a half-price sale and retries an uncertain response using the same operation id',async()=>{
  const state={serverNow:new Date().toISOString(),gold:10000,fuel:20,facilities:[site],sites:[{...site,siteId:'owned'}]}
  mock.load.mockResolvedValue(state)

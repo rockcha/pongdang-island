@@ -5,6 +5,12 @@ export const aquariumWorldColumns = 3
 export function clampTankView(view: number, columns = aquariumWorldColumns) {
   return Math.max(0, Math.min(columns - 1, Number.isFinite(view) ? view : 0))
 }
+export function draggedTankView(view: number, pointerX: number, viewportWidth: number, seconds: number, columns = aquariumWorldColumns) {
+  const edge = Math.min(56, viewportWidth * .18)
+  const direction = pointerX < edge ? -(1 - Math.max(0, pointerX) / edge)
+    : pointerX > viewportWidth - edge ? 1 - Math.max(0, viewportWidth - pointerX) / edge : 0
+  return clampTankView(view + direction * .6 * Math.min(.1, seconds), columns)
+}
 export function tankWorldItem(item: OwnedCollectible, viewportWidth: number, columns: number): OwnedCollectible {
   if (columns === 1) return item
   // A wider habitat does not enlarge fish or multiply their pixel speed.

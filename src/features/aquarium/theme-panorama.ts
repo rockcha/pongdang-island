@@ -1,7 +1,7 @@
 import panoramas from './theme-panoramas.json'
 import { backgroundUrl } from './api'
 
-// Keep catalog IDs and saved decoration coordinates intact across the art update.
+// Resolve artwork without changing catalog IDs; wide tanks use full-width placement.
 export function themePanoramaUrl(imagePath: string | undefined): string | undefined {
   if (!imagePath) return undefined
   const filename = (panoramas as Record<string, string>)[imagePath]

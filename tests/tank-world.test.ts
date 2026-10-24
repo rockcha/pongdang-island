@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import { clampTankView, tankWorldItem, tankItemSpace } from '@/features/aquarium/tank-world'
+import { clampTankView, draggedTankView, tankWorldItem, tankItemSpace } from '@/features/aquarium/tank-world'
 import { InhabitantMotion } from '@/features/aquarium/inhabitant-motion'
 import type { OwnedCollectible } from '@/features/collection/api'
 
@@ -37,6 +37,28 @@ it('keeps fish size and pixel cruising speed independent of the number of panes'
   const whale = { ...fish, species: { ...fish.species, size: 600 } }
   expect(tankWorldItem(whale, 320, 3).species.size).toBeCloseTo(320 * .48)
   expect(whale.species.size).toBe(600)
+})
+it('moves continuously at drag edges and retains fractional positions within the aquarium', () => {
+  expect(draggedTankView(.73,160,320,1/30)).toBe(.73)
+  expect(draggedTankView(.73,0,320,1/30)).toBeCloseTo(.71)
+  expect(draggedTankView(.73,320,320,1/30)).toBeCloseTo(.75)
+  expect(draggedTankView(0,0,320,1/30)).toBe(0)
+  expect(draggedTankView(2,320,320,1/30)).toBe(2)
+})
+it('saves decoration positions across the full aquarium and restores them without changing size', () => {
+  const original={...fish,scale:1.2,rotation:30,species:{...fish.species,kind:'decoration' as const,movement_type:'fixed' as const}}
+  const space=tankItemSpace(original,320,3,false)
+  expect(space).toEqual({width:960,offset:0,local:false})
+  for (const x of [.02,.5,.98]) {
+    const item=tankWorldItem({...original,position_x:x,position_y:.7},320,3)
+    const first=new InhabitantMotion(item).update(0,0,space.width,560)
+    const motion=new InhabitantMotion(item)
+    const saved=motion.place(first.x,first.y,0,space.width,560)
+    const restored=new InhabitantMotion({...item,position_x:saved.x,position_y:saved.y}).update(0,0,space.width,560)
+    expect(saved.x).toBeCloseTo(x)
+    expect(restored.x).toBeCloseTo(first.x)
+    expect(restored.size).toBeCloseTo(first.size)
+  }
 })
 it('lets the same fish cross both pane boundaries smoothly in both directions', () => {
   const motion = new InhabitantMotion(tankWorldItem(fish, 390, 3), 0, { x: .15, y: .5, direction: 1 })

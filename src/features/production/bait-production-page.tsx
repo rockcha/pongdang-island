@@ -197,8 +197,6 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
         </div>
         {!shop && <p className="text-xs leading-5 text-muted-foreground">
           보유 {state?.sites.length ?? 0}곳 · 미끼 생산소 가동 <b className="text-primary">{working}/4</b>
-          <br />
-          미끼 생산소는 동시에 최대 4곳 가동. 완료 후에는 보관시간 안에 수령해 주세요.
         </p>}
         {shop ? (
           <BaitProductionShopFilters value={shopFilters} onChange={setShopFilters}/>
@@ -264,6 +262,10 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
                   disabled={busy || !!pending.current}
                   className="block w-full p-3 text-left outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
                   onClick={() => {
+                    if (!shop && status(s, Date.now() + offset.current) === 'ready') {
+                      void mutate({p_action:'claim',p_facility:s.siteId!,p_quantity:1})
+                      return
+                    }
                     setQuantity(1)
                     setSelected(s)
                   }}

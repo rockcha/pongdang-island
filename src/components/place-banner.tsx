@@ -12,6 +12,7 @@ export const placeBanners: Record<
   string,
   { title: string; image: string; description: string; subtitle: string }
 > = {
+  '/my-bait-production': {title:'나만의 미끼 생산소',image:'my-bait-production',description:'바다가 보이는 작은 공방에서 미끼를 빚는 퐁이',subtitle:'나의 낚시를 위한, 나만의 작은 공방'},
   '/bait-production': {title:'미끼 생산소',image:'production',description:'연료의 온기로 낚시 미끼를 준비하는 바닷가 공방',subtitle:'작은 온기를 담아, 다음 낚시를 준비해요'},
   '/bait-production-shop': {title:'미끼 생산소 상점',image:'production-shop',description:'나만의 미끼 공방을 마련하는 따뜻한 시설 상점',subtitle:'나의 낚시에 어울리는 공방을 만나요'},
   '/production': {title:'연료 생산소',image:'production',description:'바다를 바라보는 작은 재활용 공방과 따뜻한 가마',subtitle:'바다의 자원을 모아, 다음 항해의 힘으로'},
@@ -188,7 +189,7 @@ export function PlaceBanner({ pathname }: { pathname: string }) {
     <div
       role="region"
       onDragStart={(event) => event.preventDefault()}
-      className={`relative ${pathname === '/aquarium' ? '' : '-mx-6'} ${pathname.startsWith('/arcade/') ? 'aspect-[15/4]' : pathname === '/expeditions' ? 'h-[clamp(72px,10dvh,80px)]' : boardList ? 'h-[96px]' : compact ? 'h-[clamp(68px,13dvh,104px)]' : 'h-[96px]'} shrink-0 select-none overflow-hidden bg-secondary`}
+      className={`relative ${pathname === '/aquarium' ? '' : '-mx-6'} ${pathname.startsWith('/arcade/') ? 'aspect-[15/4]' : pathname === '/expeditions' ? 'h-[clamp(72px,10dvh,80px)]' : pathname === '/my-bait-production' ? 'h-[clamp(64px,11dvh,96px)]' : boardList ? 'h-[96px]' : compact ? 'h-[clamp(68px,13dvh,104px)]' : 'h-[96px]'} shrink-0 select-none overflow-hidden bg-secondary`}
       aria-labelledby="place-banner-title"
     >
       <LandscapeImage

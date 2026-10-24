@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "a9b082544d3203b58b78372350889122847e9d21a8ca9352143dec8f80d39a4c",
+  "migrationHash": "b4d62e5ba8a8909555314435bd1f7aaeb0b2f2f400f007a6d03a712348cdd4f3",
   "structure": {
     "enums": [
       {
@@ -229,6 +229,18 @@
       {
         "rls": true,
         "name": "notice_operators",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "personal_bait_jobs",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "personal_bait_operations",
         "schema": "app_private",
         "force_rls": false
       },
@@ -2283,6 +2295,176 @@
         "table": "notice_operators",
         "schema": "app_private",
         "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "bait_id",
+        "type": "text",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "bait_name",
+        "type": "text",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "image_path",
+        "type": "text",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "quantity",
+        "type": "integer",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "production_minutes",
+        "type": "integer",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "unit_value",
+        "type": "integer",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "fuel_cost",
+        "type": "integer",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "completes_at",
+        "type": "timestamp with time zone",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "claimed_at",
+        "type": "timestamp with time zone",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "personal_bait_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "personal_bait_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "signature",
+        "type": "jsonb",
+        "table": "personal_bait_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "receipt",
+        "type": "jsonb",
+        "table": "personal_bait_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "personal_bait_operations",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -8636,6 +8818,30 @@
         "definition": "CREATE UNIQUE INDEX notice_operators_pkey ON app_private.notice_operators USING btree (user_id)"
       },
       {
+        "name": "personal_bait_jobs_owner",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "CREATE INDEX personal_bait_jobs_owner ON app_private.personal_bait_jobs USING btree (user_id)"
+      },
+      {
+        "name": "personal_bait_jobs_pkey",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX personal_bait_jobs_pkey ON app_private.personal_bait_jobs USING btree (id)"
+      },
+      {
+        "name": "personal_bait_one_open_job",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX personal_bait_one_open_job ON app_private.personal_bait_jobs USING btree (user_id) WHERE (claimed_at IS NULL)"
+      },
+      {
+        "name": "personal_bait_operations_pkey",
+        "table": "personal_bait_operations",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX personal_bait_operations_pkey ON app_private.personal_bait_operations USING btree (user_id, operation_id)"
+      },
+      {
         "name": "player_aquarium_capacity_pkey",
         "table": "player_aquarium_capacity",
         "schema": "app_private",
@@ -12840,6 +13046,26 @@
         "securityDefiner": true
       },
       {
+        "name": "personal_bait_workshop_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_operation_id uuid, p_bait_id text, p_quantity integer, p_minutes integer, p_job_id uuid, p_expected_fuel integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.personal_bait_workshop_action(p_action text, p_operation_id uuid, p_bait_id text DEFAULT NULL::text, p_quantity integer DEFAULT NULL::integer, p_minutes integer DEFAULT NULL::integer, p_job_id uuid DEFAULT NULL::uuid, p_expected_fuel integer DEFAULT NULL::integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;b public.fishing_baits;j app_private.personal_bait_jobs;\n previous app_private.personal_bait_operations;sig jsonb;receipt jsonb;unit_value integer;cost integer;stock bigint;v_now timestamptz;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('start','claim') then raise exception 'INVALID_WORKSHOP_ACTION';end if;\n sig:=jsonb_build_object('action',p_action,'bait',p_bait_id,'quantity',p_quantity,'minutes',p_minutes,'job',p_job_id,'expectedFuel',p_expected_fuel);\n perform app_private.get_gold_wallet();\n -- Shares the wallet lock with all other fuel spenders and reward claims.\n select * into strict w from public.player_wallets where user_id=u for update;\n select * into previous from app_private.personal_bait_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if previous.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.personal_bait_workshop_state()||jsonb_build_object('receipt',previous.receipt,'replayed',true);\n end if;\n v_now:=clock_timestamp();\n if p_action='start' then\n  if p_quantity is null or p_quantity not between 1 and 100 then raise exception 'INVALID_WORKSHOP_QUANTITY';end if;\n  if p_minutes is null or p_minutes not between 30 and 720 or p_minutes%30<>0 then raise exception 'INVALID_WORKSHOP_TIME';end if;\n  if p_job_id is not null then raise exception 'INVALID_WORKSHOP_ACTION';end if;\n  select * into b from public.fishing_baits where id=p_bait_id and price>0 for share;\n  if not found then raise exception 'BAIT_NOT_AVAILABLE';end if;\n  if exists(select 1 from app_private.personal_bait_jobs where user_id=u and claimed_at is null) then raise exception 'PERSONAL_PRODUCTION_BUSY';end if;\n  unit_value:=case when b.id='bait' then 50 else b.price end;\n  -- 20% less fuel before rounding; preserve the existing linear time bonus.\n  cost:=ceil(p_quantity::numeric*unit_value*92/(5750+100*(p_minutes/30-1)))::integer;\n  if p_expected_fuel is distinct from cost then raise exception 'FUEL_QUOTE_CHANGED';end if;\n  if coalesce((w.inventory->>'fuel')::bigint,0)<cost then raise exception 'INSUFFICIENT_FUEL';end if;\n  update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb((inventory->>'fuel')::integer-cost)),updated_at=v_now where user_id=u;\n  insert into app_private.personal_bait_jobs(user_id,bait_id,bait_name,image_path,quantity,production_minutes,unit_value,fuel_cost,started_at,completes_at)\n   values(u,b.id,b.name,b.image_path,p_quantity,p_minutes,unit_value,cost,v_now,v_now+make_interval(mins=>p_minutes)) returning * into j;\n  receipt:=jsonb_build_object('action','start','jobId',j.id,'baitId',b.id,'baitName',b.name,'quantity',j.quantity,'fuelCost',cost,'minutes',p_minutes);\n else\n  if p_job_id is null or p_bait_id is not null or p_quantity is not null or p_minutes is not null or p_expected_fuel is not null then raise exception 'INVALID_WORKSHOP_ACTION';end if;\n  select * into j from app_private.personal_bait_jobs where id=p_job_id and user_id=u for update;\n  if not found or j.claimed_at is not null then raise exception 'WORKSHOP_JOB_NOT_FOUND';end if;\n  if v_now<j.completes_at then raise exception 'PRODUCTION_NOT_READY';end if;\n  stock:=coalesce((w.inventory->>j.bait_id)::bigint,0)+j.quantity;\n  if stock>1000000000 then raise exception 'BAIT_LIMIT';end if;\n  update public.player_wallets set inventory=jsonb_set(inventory,array[j.bait_id],to_jsonb(stock::integer)),updated_at=v_now where user_id=u;\n  update app_private.personal_bait_jobs set claimed_at=v_now where id=j.id;\n  receipt:=jsonb_build_object('action','claim','jobId',j.id,'baitId',j.bait_id,'baitName',j.bait_name,'quantity',j.quantity,'fuelCost',j.fuel_cost,'minutes',j.production_minutes);\n end if;\n insert into app_private.personal_bait_operations(user_id,operation_id,signature,receipt) values(u,p_operation_id,sig,receipt);\n return app_private.personal_bait_workshop_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "personal_bait_workshop_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.personal_bait_workshop_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n w:=app_private.get_gold_wallet();\n return jsonb_build_object('serverNow',clock_timestamp(),'fuel',coalesce((w->'inventory'->>'fuel')::integer,0),\n  'limits',jsonb_build_object('maxQuantity',100,'minMinutes',30,'maxMinutes',720,'stepMinutes',30,'maxActive',1),\n  'baits',coalesce((select jsonb_agg(jsonb_build_object('id',b.id,'name',b.name,'imagePath',b.image_path,\n   'unitValue',case when b.id='bait' then 50 else b.price end,'owned',coalesce((w->'inventory'->>b.id)::integer,0)) order by b.sort_order,b.id)\n   from public.fishing_baits b where b.price>0),'[]'::jsonb),\n  'job',(select jsonb_build_object('id',j.id,'baitId',j.bait_id,'baitName',j.bait_name,'imagePath',j.image_path,\n   'quantity',j.quantity,'minutes',j.production_minutes,'unitValue',j.unit_value,'fuelCost',j.fuel_cost,\n   'startedAt',j.started_at,'completesAt',j.completes_at)\n   from app_private.personal_bait_jobs j where j.user_id=u and j.claimed_at is null));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "pick_bait_fish",
         "config": [
           "search_path=\"\""
@@ -14737,6 +14963,26 @@
         "schema": "public",
         "arguments": "p_offset integer",
         "definition": "CREATE OR REPLACE FUNCTION public.odd_even_leaderboard(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.odd_even_leaderboard(p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "personal_bait_workshop_action",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text, p_operation_id uuid, p_bait_id text, p_quantity integer, p_minutes integer, p_job_id uuid, p_expected_fuel integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.personal_bait_workshop_action(p_action text, p_operation_id uuid, p_bait_id text DEFAULT NULL::text, p_quantity integer DEFAULT NULL::integer, p_minutes integer DEFAULT NULL::integer, p_job_id uuid DEFAULT NULL::uuid, p_expected_fuel integer DEFAULT NULL::integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.personal_bait_workshop_action(p_action,p_operation_id,p_bait_id,p_quantity,p_minutes,p_job_id,p_expected_fuel);\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "personal_bait_workshop_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.personal_bait_workshop_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.personal_bait_workshop_state();$function$\n",
         "securityDefiner": false
       },
       {
@@ -16806,6 +17052,168 @@
       {
         "name": "notice_operators_user_id_not_null",
         "table": "notice_operators",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "personal_bait_jobs_bait_id_fkey",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (bait_id) REFERENCES fishing_baits(id)"
+      },
+      {
+        "name": "personal_bait_jobs_bait_id_not_null",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "NOT NULL bait_id"
+      },
+      {
+        "name": "personal_bait_jobs_bait_name_not_null",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "NOT NULL bait_name"
+      },
+      {
+        "name": "personal_bait_jobs_check",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "CHECK ((completes_at = (started_at + make_interval(mins => production_minutes))))"
+      },
+      {
+        "name": "personal_bait_jobs_check1",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "CHECK (((claimed_at IS NULL) OR (claimed_at >= completes_at)))"
+      },
+      {
+        "name": "personal_bait_jobs_completes_at_not_null",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "NOT NULL completes_at"
+      },
+      {
+        "name": "personal_bait_jobs_fuel_cost_check",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "CHECK ((fuel_cost > 0))"
+      },
+      {
+        "name": "personal_bait_jobs_fuel_cost_not_null",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "NOT NULL fuel_cost"
+      },
+      {
+        "name": "personal_bait_jobs_id_not_null",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "personal_bait_jobs_image_path_not_null",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "NOT NULL image_path"
+      },
+      {
+        "name": "personal_bait_jobs_pkey",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "personal_bait_jobs_production_minutes_check",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "CHECK ((((production_minutes >= 30) AND (production_minutes <= 720)) AND ((production_minutes % 30) = 0)))"
+      },
+      {
+        "name": "personal_bait_jobs_production_minutes_not_null",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "NOT NULL production_minutes"
+      },
+      {
+        "name": "personal_bait_jobs_quantity_check",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "CHECK (((quantity >= 1) AND (quantity <= 100)))"
+      },
+      {
+        "name": "personal_bait_jobs_quantity_not_null",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "NOT NULL quantity"
+      },
+      {
+        "name": "personal_bait_jobs_started_at_not_null",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "NOT NULL started_at"
+      },
+      {
+        "name": "personal_bait_jobs_unit_value_check",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "CHECK ((unit_value > 0))"
+      },
+      {
+        "name": "personal_bait_jobs_unit_value_not_null",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "NOT NULL unit_value"
+      },
+      {
+        "name": "personal_bait_jobs_user_id_fkey",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "personal_bait_jobs_user_id_not_null",
+        "table": "personal_bait_jobs",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "personal_bait_operations_created_at_not_null",
+        "table": "personal_bait_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "personal_bait_operations_operation_id_not_null",
+        "table": "personal_bait_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "personal_bait_operations_pkey",
+        "table": "personal_bait_operations",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "personal_bait_operations_receipt_not_null",
+        "table": "personal_bait_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL receipt"
+      },
+      {
+        "name": "personal_bait_operations_signature_not_null",
+        "table": "personal_bait_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL signature"
+      },
+      {
+        "name": "personal_bait_operations_user_id_fkey",
+        "table": "personal_bait_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "personal_bait_operations_user_id_not_null",
+        "table": "personal_bait_operations",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
       },
@@ -31761,6 +32169,48 @@
         "arguments": ""
       },
       {
+        "name": "personal_bait_workshop_action",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_bait_id text, p_quantity integer, p_minutes integer, p_job_id uuid, p_expected_fuel integer"
+      },
+      {
+        "name": "personal_bait_workshop_action",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_bait_id text, p_quantity integer, p_minutes integer, p_job_id uuid, p_expected_fuel integer"
+      },
+      {
+        "name": "personal_bait_workshop_action",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_bait_id text, p_quantity integer, p_minutes integer, p_job_id uuid, p_expected_fuel integer"
+      },
+      {
+        "name": "personal_bait_workshop_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "personal_bait_workshop_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "personal_bait_workshop_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "pick_bait_fish",
         "role": "anon",
         "schema": "app_private",
@@ -35749,6 +36199,48 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_offset integer"
+      },
+      {
+        "name": "personal_bait_workshop_action",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_bait_id text, p_quantity integer, p_minutes integer, p_job_id uuid, p_expected_fuel integer"
+      },
+      {
+        "name": "personal_bait_workshop_action",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text, p_operation_id uuid, p_bait_id text, p_quantity integer, p_minutes integer, p_job_id uuid, p_expected_fuel integer"
+      },
+      {
+        "name": "personal_bait_workshop_action",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_operation_id uuid, p_bait_id text, p_quantity integer, p_minutes integer, p_job_id uuid, p_expected_fuel integer"
+      },
+      {
+        "name": "personal_bait_workshop_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "personal_bait_workshop_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "personal_bait_workshop_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "place_collectible",

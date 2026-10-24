@@ -1,0 +1,10 @@
+{
+  "generator": "built-in image_gen",
+  "prompt": "Create a beautiful WIDE PANORAMIC 3:1 header banner for the cozy Korean fishing island game Pongdang Island, for a new page called \"My Own Bait Workshop\". Opaque illustrated background, NO text, NO letters, NO labels, NO UI. Reference 1 is the established game's seaside banner style and warm sunny painterly atmosphere. Reference 2 is Pongi's character identity: a cute golden-brown otter with cream cheeks and belly, round dark eyes, little whiskers and a peach starfish hair ornament. Keep it recognizably Pongi, not a bear or cat.\n\nScene: a personal little mint-green and honey-wood bait-making workshop beside a bright blue harbor. A cozy open wooden workbench, small glass nursery jars, dew-covered leaves, a few round green bait dumplings, bowls of flour and honey, a small warm copper steamer, neatly stored fishing tools. One adorable Pongi with a light linen apron gently rolling bait dumplings at the bench on the RIGHT half. A small window and open terrace reveal calm turquoise water, distant island houses and soft clouds. Hand-painted storybook game illustration, soft watercolor/gouache textures, refined warm highlights, teal mint cream honey palette, calm and tidy rather than cluttered.\n\nComposition: panoramic horizontal 3:1 frame, essential character head and workbench centered vertically in the middle horizontal band so it also crops nicely as a short mobile header. LEFT third is mostly gentle sea and soft uncluttered shading to leave space for overlaid UI title. Main readable workshop objects on right and middle. No huge factory, no heavy industrial plant, no floating isolated item, no frame.",
+  "references": [
+    "public/banners/production.png",
+    "public/branding/pongi.png"
+  ],
+  "asset": "public/banners/my-bait-production.png",
+  "purpose": "나만의 미끼 생산소 페이지 배너"
+}

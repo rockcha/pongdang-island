@@ -35,6 +35,7 @@ export const headerPlaces = [
   { to: '/collection', label: '도감', icon: appArt.collection },
   { to: '/storage', label: '보관함', icon: appArt.storage },
   { to: '/bait-production', label: '미끼 생산소', icon: appArt.baitProduction },
+  { to: '/my-bait-production', label: '나만의 미끼 생산소', icon: appArt.baitProduction },
   { to: '/bait-production-shop', label: '미끼 생산소 상점', icon: appArt.baitProductionShop },
   { to: '/production', label: '연료 생산소', icon: appArt.production },
   { to: '/production-shop', label: '연료 생산소 상점', icon: appArt.fuelProductionShop },
@@ -124,8 +125,9 @@ export function HeaderPlaceNavigation() {
       {
         "label": "생산·재배",
         "paths": [
-          "/bait-production",
           "/production",
+          "/bait-production",
+          "/my-bait-production",
           "/farm"
         ]
       },

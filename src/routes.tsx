@@ -15,6 +15,7 @@ const BoardDetailPage=lazy(()=>import('@/features/board/board-page').then(module
 const CollectionPage=lazy(()=>import('@/features/collection/collection-page').then(module=>({default:module.CollectionPage})))
 const StoragePage=lazy(()=>import('@/features/aquarium/storage-page').then(module=>({default:module.StoragePage})))
 const BaitProductionPage=lazy(()=>import('@/features/production/bait-production-page').then(module=>({default:module.BaitProductionPage})))
+const PersonalBaitWorkshopPage=lazy(()=>import('@/features/production/personal-bait-workshop-page').then(module=>({default:module.PersonalBaitWorkshopPage})))
 const ProductionPage=lazy(()=>import('@/features/production/production-page').then(module=>({default:module.ProductionPage})))
 const TitlePicker=lazy(()=>import('@/features/titles/title-picker').then(module=>({default:module.TitlePicker})))
 const ExpeditionPage=lazy(()=>import('@/features/expeditions/expedition-page').then(module=>({default:module.ExpeditionPage})))
@@ -72,6 +73,7 @@ export function AppRoutes() {
             <Route path="collection" element={<CollectionPage />} />
             <Route path="storage" element={<StoragePage />} />
             <Route path="bait-production" element={<BaitProductionPage />} />
+            <Route path="my-bait-production" element={<PersonalBaitWorkshopPage />} />
             <Route path="bait-production-shop" element={<BaitProductionPage shop />} />
             <Route path="production" element={<ProductionPage />} />
             <Route path="production-shop" element={<ProductionPage shop />} />

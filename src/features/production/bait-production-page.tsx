@@ -1,6 +1,7 @@
 import {playPurchaseSound,playSaleSound} from '@/features/gold/purchase-sound'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router'
+import {PersonalBaitWorkshopLink} from './personal-bait-workshop-page'
 import { ArrowRight, Info, LoaderCircle } from 'lucide-react'
 import { toast } from 'sonner'
 import { appArt } from '@/components/app-art'
@@ -219,6 +220,7 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
         )}
       </div>
       <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-8">
+        {!shop&&<PersonalBaitWorkshopLink/>}
         {error && (
           <div
             role="alert"

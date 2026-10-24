@@ -89,7 +89,7 @@ it('puts farm before music in the playground and keeps savings out of the market
  render(<MemoryRouter><View/></MemoryRouter>)
  fireEvent.click(screen.getByRole('button',{name:'생활'}))
  const menu=await screen.findByRole('menu')
- expect(within(menu).getAllByRole('menuitem').map(item=>item.getAttribute('href'))).toEqual(['/bait-production','/production','/farm','/warehouse','/savings'])
+ expect(within(menu).getAllByRole('menuitem').map(item=>item.getAttribute('href'))).toEqual(['/production','/bait-production','/my-bait-production','/farm','/warehouse','/savings'])
  fireEvent.keyDown(menu,{key:'Escape'})
  await waitFor(()=>expect(screen.queryByRole('menu')).toBeNull())
  fireEvent.click(screen.getByRole('button',{name:'장터'}))

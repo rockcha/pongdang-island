@@ -68,6 +68,8 @@ export type Database = {
       brick_game_start:{Args:{p_operation_id:string;p_engine_version?:number};Returns:import('@/features/arcade/brick-breaker-api').BrickRun}
       brick_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/brick-breaker-api').BrickRanks}
       harbor_state:{Args:Record<string,never>;Returns:import('@/features/port/api').HarborState}
+      personal_bait_workshop_state:{Args:Record<string,never>;Returns:import('@/features/production/personal-bait-api').PersonalBaitState}
+      personal_bait_workshop_action:{Args:import('@/features/production/personal-bait-api').PersonalBaitAction;Returns:import('@/features/production/personal-bait-api').PersonalBaitState}
       harbor_action:{Args:import('@/features/port/api').HarborAction;Returns:import('@/features/port/api').HarborState}
       music_library:{Args:{p_import:import('@/features/music/music-library').MusicTrack[]|null};Returns:import('@/features/music/music-library').MusicTrack[]}
       music_edit:{Args:{p_action:string;p_id:string;p_title:string;p_name:string};Returns:import('@/features/music/music-library').MusicTrack[]}

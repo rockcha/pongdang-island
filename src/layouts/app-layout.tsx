@@ -18,13 +18,13 @@ export function AppLayout() {
   const {pathname:routePathname}=useLocation()
   // React Router also matches a trailing slash; keep these pages in the same
   // viewport layout and banner configuration for either URL spelling.
-  const pathname=/^\/(?:(?:bait-)?production(?:-shop)?|shipyard)\/+$/.test(routePathname)?routePathname.replace(/\/+$/,''):routePathname
+  const pathname=/^\/(?:(?:(?:my-)?bait-)?production(?:-shop)?|shipyard)\/+$/.test(routePathname)?routePathname.replace(/\/+$/,''):routePathname
   useFishingTripRoute(session?.user.id,pathname)
   const aquarium=pathname==='/aquarium'
   const friendAquarium=/^\/friends\/[^/]+\/aquarium\/?$/.test(pathname)
   const tankScreen=aquarium||friendAquarium
   const home=pathname==='/island-news'
-  const profile=pathname==='/bait-production'||pathname==='/bait-production-shop'||pathname==='/production-shop'||pathname==='/production'||pathname==='/storage'||pathname==='/download'||pathname==='/music-room'||pathname==='/farm'||pathname==='/profile'||pathname==='/titles'||pathname==='/collection'||pathname==='/collection-animation'
+  const profile=pathname==='/my-bait-production'||pathname==='/bait-production'||pathname==='/bait-production-shop'||pathname==='/production-shop'||pathname==='/production'||pathname==='/storage'||pathname==='/download'||pathname==='/music-room'||pathname==='/farm'||pathname==='/profile'||pathname==='/titles'||pathname==='/collection'||pathname==='/collection-animation'
   const mailbox=pathname==='/notifications'
   const square=pathname==='/square'
   const showcase=pathname==='/showcase'||pathname.startsWith('/showcase/')

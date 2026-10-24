@@ -138,6 +138,7 @@ export const fishingGuide = [
   '잡은 개체는 보관함에서 확인하고, 도감에서 발견 기록을 볼 수 있어요.',
 ]
 export function bannerGuide(pathname: string) {
+  if(pathname==='/my-bait-production')return ['미끼·수량·시간을 정하면 필요한 연료를 확인할 수 있어요.','생산 시간이 길수록 연료를 절약해요. 완성된 미끼는 수령할 때까지 보관해요.']
   if(pathname==='/bait-production')return ['연료를 넣어 미끼를 생산해요. 연료·미끼 생산소를 합쳐 동시에 최대 4곳 가동할 수 있어요.','완료 후 보관시간 안에 수령하세요. 만료된 생산물은 정리한 뒤 다시 가동할 수 있어요.']
   if(pathname==='/bait-production-shop')return ['같은 시설을 여러 곳 구매할 수 있어요. 보유 수에는 제한이 없고 구매한 시설은 미끼 생산소에 나타나요.','생산량·투입 연료·생산 시간·완료 후 보관시간을 비교해서 골라 보세요.']
   if(pathname==='/production-shop')return ['시설을 눌러 필요한 재료와 생산 조건을 확인해요.','같은 시설을 여러 곳 구매할 수 있고 보유 수에는 제한이 없어요. 구매한 시설은 연료 생산소에 나타나요.']

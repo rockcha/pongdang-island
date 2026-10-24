@@ -16,6 +16,7 @@ it('saves priority changes and restores automatic ordering',async()=>{
  const view=render(<InhabitantLayerEditor value={null} automatic={200} busy={false} onChange={change}/>)
  fireEvent.click(screen.getByRole('button',{name:'개체 앞으로'}))
  await waitFor(()=>expect(change).toHaveBeenCalledWith(201))
+ fireEvent.click(screen.getByRole('button',{name:'직접 입력'}))
  await waitFor(()=>expect(screen.getByRole('textbox',{name:'개체 표시 우선순위'})).toHaveProperty('value','201'))
  view.rerender(<InhabitantLayerEditor value={201} automatic={200} busy={false} onChange={change}/>)
  fireEvent.click(screen.getByRole('button',{name:'개체 앞뒤 순서 자동'}))
@@ -24,6 +25,7 @@ it('saves priority changes and restores automatic ordering',async()=>{
 it('validates typed priorities and leaves failed saves retryable',async()=>{
  const change=vi.fn().mockRejectedValueOnce(new Error('offline')).mockResolvedValue(undefined)
  render(<InhabitantLayerEditor value={null} automatic={200} busy={false} onChange={change}/>)
+ fireEvent.click(screen.getByRole('button',{name:'직접 입력'}))
  const input=screen.getByRole('textbox',{name:'개체 표시 우선순위'})
  for(const value of ['801','-1','1.5','oops']){
   fireEvent.change(input,{target:{value}});fireEvent.blur(input)

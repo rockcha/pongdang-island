@@ -3,6 +3,7 @@ import { afterEach, expect, it, vi } from 'vitest'
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { MemoryRouter } from 'react-router'
 import { BaitProductionPage } from '../src/features/production/bait-production-page'
+import {toast} from 'sonner'
 const mock = vi.hoisted(() => ({ load: vi.fn(), act: vi.fn() }))
 vi.mock('../src/features/production/bait-production-api', async (original) => ({
   ...(await original<object>()),
@@ -33,6 +34,30 @@ const site = {
 afterEach(() => {
   cleanup()
   vi.clearAllMocks()
+})
+it('starts an idle site with one tap and prevents duplicate starts',async()=>{
+ const state={serverNow:new Date().toISOString(),gold:10000,fuel:20,facilities:[site],sites:[{...site,siteId:'idle'}]}
+ mock.load.mockResolvedValue(state)
+ let finish!:(value:unknown)=>void
+ mock.act.mockImplementationOnce(()=>new Promise(resolve=>{finish=resolve}))
+ render(<MemoryRouter><BaitProductionPage/></MemoryRouter>)
+ const card=await screen.findByRole('button',{name:/꼬물꼬물 흙상자/})
+ fireEvent.click(card);fireEvent.click(card)
+ expect(mock.act).toHaveBeenCalledTimes(1)
+ expect(mock.act).toHaveBeenCalledWith(expect.objectContaining({p_action:'start',p_facility:'idle',p_quantity:1,p_operation_id:expect.any(String)}))
+ expect(screen.queryByRole('dialog')).toBeNull()
+ const now=Date.now()
+ finish({...state,fuel:18,sites:[{...site,siteId:'idle',startedAt:new Date(now).toISOString(),completesAt:new Date(now+60000).toISOString(),expiresAt:new Date(now+120000).toISOString()}]})
+ await waitFor(()=>expect(card.textContent).toContain('가동 중'))
+})
+it('does not start when fuel is insufficient',async()=>{
+ const error=vi.spyOn(toast,'error')
+ mock.load.mockResolvedValue({serverNow:new Date().toISOString(),gold:10000,fuel:1,facilities:[site],sites:[{...site,siteId:'idle'}]})
+ render(<MemoryRouter><BaitProductionPage/></MemoryRouter>)
+ fireEvent.click(await screen.findByRole('button',{name:/꼬물꼬물 흙상자/}))
+ expect(mock.act).not.toHaveBeenCalled()
+ expect(error).toHaveBeenCalledWith('연료가 부족해요.')
+ expect(screen.queryByRole('dialog')).toBeNull()
 })
 it('claims a ready site directly without a dialog and blocks repeated taps while receiving', async () => {
   const now = Date.now()
@@ -73,7 +98,7 @@ it('confirms a half-price sale and retries an uncertain response using the same 
  mock.load.mockResolvedValue(state)
  mock.act.mockRejectedValueOnce(new TypeError('network')).mockResolvedValueOnce({...state,gold:10150,sites:[]})
  render(<MemoryRouter><BaitProductionPage/></MemoryRouter>)
- fireEvent.click(await screen.findByRole('button',{name:/꼬물꼬물 흙상자/}))
+ fireEvent.click(await screen.findByRole('button',{name:'생산소 정보 및 판매'}))
  fireEvent.click(screen.getByRole('button',{name:'판매 150골드'}))
  expect(mock.act).not.toHaveBeenCalled()
  fireEvent.click(screen.getByRole('button',{name:'판매 확정'}))
@@ -122,7 +147,8 @@ it('shows repeat ownership without a four-site purchase cap and submits the sele
     ),
   )
 })
-it('disables another start when four sites are working', async () => {
+it('blocks direct starting when four sites are working', async () => {
+  const error=vi.spyOn(toast,'error')
   const now = Date.now(),
     state = {
       serverNow: new Date(now).toISOString(),
@@ -149,10 +175,8 @@ it('disables another start when four sites are working', async () => {
   await screen.findAllByRole('button', { name: /꼬물꼬물 흙상자/ })
   fireEvent.click(screen.getByRole('button', { name: '대기 중' }))
   fireEvent.click(screen.getByRole('button', { name: /꼬물꼬물 흙상자/ }))
-  expect(
-    (screen.getByRole('button', { name: '미끼 생산소가 4곳 가동 중이에요' }) as HTMLButtonElement)
-      .disabled,
-  ).toBe(true)
+  expect(error).toHaveBeenCalledWith('연료·미끼 생산소를 합쳐 동시에 4곳까지 가동할 수 있어요.')
+  expect(screen.queryByRole('dialog')).toBeNull()
   expect(mock.act).not.toHaveBeenCalled()
 })
 it('shows the fuel-production progress bar for running bait sites only',async()=>{

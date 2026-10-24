@@ -1,0 +1,30 @@
+{
+  "tool": "built-in image_gen",
+  "reference_image": "assets/references/collectible-style/common-rare-pongi.png",
+  "reference_role": "style only",
+  "prompt": "Use case: stylized-concept. Asset: single common-rarity trash collectible thumbnail for a cozy Korean fishing game, named 'a bottle containing the developer's tears'. Reference image is STYLE ONLY: warm cute cartoon proportions, crisp dark-brown outlines, soft warm cel shading and readable small-game-icon silhouette. Do not copy the otter, fishing line, hook, fur or starfish. Draw one small squat worn clear turquoise glass bottle with a simple cork stopper, half filled with pale blue tears. A tiny curled blank paper note is tied at its neck with plain twine; a single blue teardrop pictogram on the paper, NO letters or writing. A few subtle glass scuffs and tiny sediment grains show this is a cheap discarded bottle, not a magical treasure. Clear thick outline and simplified forms, attractive restrained aqua and cream palette. No face, no eyes, no characters, no glow, no jewels, no sparkles, no scenery, no surrounding water, no UI, no text, no labels with words, no shadow backdrop. Center full bottle with safe transparent margins on every side; single static object, not a sprite sheet. True transparent alpha background.",
+  "generated_source": "C:\\Users\\user\\.codex\\generated_images\\01a16e8e-3f48-7971-b592-5b6efdd9161d\\exec-593bf0e5-b353-49cc-8f0b-126fc65ed085.png",
+  "items": [
+    {
+      "id": "developer-tears-bottle",
+      "kind": "trash",
+      "rarity": "common",
+      "sell_price": 5,
+      "movement_type": "fixed",
+      "swim_y_min": 0.84,
+      "swim_y_max": 0.94,
+      "travel_direction": "both",
+      "flip_with_direction": false,
+      "thumbnail": "trash/normal/developer-tears-bottle_thumbnail.png",
+      "sha256": "81c7b88e757e7a7adf41950ce10513cff46871c1ea45bd9e4e38251eac272b24",
+      "width": 1254,
+      "height": 1254,
+      "generated_sha256": "fad2a37d1e6d525c5305029a5597774c64eb6de7f1114676fb10e4274d1b6f79",
+      "uploaded": true,
+      "verified_at": "2026-10-24T18:23:53.351Z"
+    }
+  ],
+  "project_ref": "ewafafphiovbpjwogwzn",
+  "migration": "20261024182416_add_developer_tears_bottle.sql",
+  "database_verified": true
+}

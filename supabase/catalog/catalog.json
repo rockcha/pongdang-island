@@ -2719,6 +2719,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "developer-tears-bottle",
+      "kind": "trash",
+      "name": "개발자의 눈물이 담긴 병",
+      "description": "밤샘 디버깅 끝에 한 방울씩 모인 개발자의 눈물. 병은 제법 묵직하지만, 감정 노동은 판매가에 포함되지 않았다.",
+      "swim_y_min": "0.84",
+      "swim_y_max": "0.94",
+      "speed": "0.001",
+      "size": 36,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/developer-tears-bottle_thumbnail.png",
+      "sell_price": 5,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "discarded-oxygen-tank",
       "kind": "trash",
       "name": "버려진 산소통",
@@ -12717,6 +12735,46 @@
     {
       "species_id": "dented-diving-lamp",
       "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "developer-tears-bottle",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "developer-tears-bottle",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "developer-tears-bottle",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "developer-tears-bottle",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "developer-tears-bottle",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "developer-tears-bottle",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "developer-tears-bottle",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "developer-tears-bottle",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "developer-tears-bottle",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "developer-tears-bottle",
+      "region_id": "whitenight"
     },
     {
       "species_id": "discarded-oxygen-tank",

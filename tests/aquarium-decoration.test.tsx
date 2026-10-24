@@ -61,13 +61,35 @@ const decoration: OwnedCollectible = {
   },
 }
 afterEach(cleanup)
+function selectCustomize(){fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}));fireEvent.click(screen.getByRole('button',{name:'꾸미기',exact:true}))}
+function selectMore(){fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}));fireEvent.click(screen.getByRole('button',{name:'개체 추가 메뉴'}))}
+it('starts with a compact fixed bottom bar and reveals one tool panel at a time',()=>{
+ render(<AquariumView name="어항" items={[decoration]} busy={false} onPlace={()=>{}} onArrange={async()=>{}} onSell={async()=>{}} onLayerChange={async()=>{}}/>)
+ fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
+ const toolbar=screen.getByRole('region',{name:'살구 불가사리 선택 도구'})
+ expect(toolbar.className).toContain('bottom-2')
+ expect(toolbar.getAttribute('style')).toBeNull()
+ expect(screen.queryByRole('button',{name:'시계 방향 15도 회전'})).toBeNull()
+ expect(screen.queryByRole('button',{name:'정보 보기'})).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'꾸미기',exact:true}))
+ expect(screen.getByRole('button',{name:'시계 방향 15도 회전'})).toBeTruthy()
+ expect(screen.queryByRole('textbox',{name:'개체 표시 우선순위'})).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'겹침 순서'}))
+ expect(screen.getByRole('button',{name:'개체 앞으로'})).toBeTruthy()
+ expect(screen.queryByRole('textbox',{name:'개체 표시 우선순위'})).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'직접 입력'}))
+ expect(screen.getByRole('textbox',{name:'개체 표시 우선순위'})).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'개체 추가 메뉴'}))
+ expect(screen.getByRole('button',{name:'정보 보기'})).toBeTruthy()
+ expect(screen.queryByRole('button',{name:'시계 방향 15도 회전'})).toBeNull()
+})
 it('enables three panes for registered local themes and keeps the original decoration payload',()=>{
  const arrange=vi.fn(async()=>{})
  const view=render(<AquariumView name="어항" items={[decoration]} background={{name:'맑은 물빛',image_path:'default.png'}} busy={false} onPlace={()=>{}} onArrange={arrange} onSell={async()=>{}}/>)
  expect(mock.world).toMatchObject({columns:3,preserveArrangement:false})
- expect(screen.getByRole('button',{name:'어항 왼쪽으로 조금 이동'})).toBeTruthy()
- fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
- expect(screen.getByRole('button',{name:'어항 왼쪽으로 조금 이동'})).toBeTruthy()
+ expect(screen.queryByRole('button',{name:'어항 왼쪽으로 조금 이동'})).toBeNull()
+ selectCustomize()
+ expect(screen.queryByRole('button',{name:'어항 왼쪽으로 조금 이동'})).toBeNull()
  expect(mock.items[0]).toMatchObject({position_x:decoration.position_x,position_y:decoration.position_y,rotation:decoration.rotation,scale:decoration.scale})
  view.rerender(<AquariumView name="어항" items={[decoration]} background={{name:'산호 정원',image_path:'coral.png'}} busy={false} onPlace={()=>{}} onArrange={arrange} onSell={async()=>{}}/>)
  expect(mock.world).toMatchObject({columns:3,preserveArrangement:false})
@@ -78,7 +100,7 @@ it('enables three panes for registered local themes and keeps the original decor
 it('moves the selected individual to another tank and blocks full tanks', async () => {
  const move = vi.fn(async () => {})
  render(<AquariumView name="어항" items={[decoration]} busy={false} onPlace={() => {}} onArrange={async () => {}} onSell={async () => {}} onMove={move} tanks={[{id:'other',name:'빈 어항'}, {id:'full',name:'가득 찬 어항'}] as never} inhabitants={[{...decoration,tank_id:'full'}]} tankCapacity={1}/>)
- fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
+ selectMore()
  fireEvent.click(screen.getByRole('button',{name:'이동'}))
  expect(screen.getByRole('button',{name:/가득 찬 어항/})).toHaveProperty('disabled',true)
  fireEvent.click(screen.getByRole('button',{name:/빈 어항/}))
@@ -88,7 +110,7 @@ it('moves the selected individual to another tank and blocks full tanks', async 
 it('stores a selected individual and keeps failed operations available to retry', async () => {
  const store = vi.fn().mockRejectedValueOnce(new Error('offline')).mockResolvedValue(undefined)
  render(<AquariumView name="어항" items={[decoration]} busy={false} onPlace={() => {}} onArrange={async () => {}} onSell={async () => {}} onStore={store}/>)
- fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
+ selectMore()
  fireEvent.click(screen.getByRole('button',{name:'보관함'}))
  await screen.findByRole('alert')
  fireEvent.click(screen.getByRole('button',{name:'보관함'}))
@@ -98,50 +120,32 @@ it('stores a selected individual and keeps failed operations available to retry'
 it('requires confirmation before selling the clicked individual', async () => {
  const sell = vi.fn(async () => {})
  render(<AquariumView name="어항" items={[decoration]} busy={false} onPlace={() => {}} onArrange={async () => {}} onSell={sell}/>)
- fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
+ selectMore()
  fireEvent.click(screen.getByRole('button',{name:'판매 35 골드'}))
  expect(sell).not.toHaveBeenCalled()
  fireEvent.click(screen.getByRole('button',{name:'판매하기'}))
  await waitFor(() => expect(sell).toHaveBeenCalledWith(['starfish']))
 })
-it('resizes a swimming fish between half and double size without freezing or moving it and rolls back failed saves',async()=>{
+it('resizes a paused swimming fish between half and double size and rolls back failed saves',async()=>{
  const fish={...decoration,id:'fish',scale:.5,species:{...decoration.species,kind:'fish' as const,movement_type:'swim' as const,speed:.05}}
  const arrange=vi.fn(async()=>{})
  render(<AquariumView name="어항" items={[fish]} busy={false} onPlace={()=>{}} onArrange={arrange} onSell={async()=>{}}/>)
- fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
+ selectCustomize()
  expect(screen.getByRole('button',{name:'물고기 크기 줄이기'}).hasAttribute('disabled')).toBe(true)
  fireEvent.click(screen.getByRole('button',{name:'물고기 크기 키우기'}))
  await waitFor(()=>expect(arrange).toHaveBeenCalledWith('fish',expect.objectContaining({scale:.6})))
- expect(mock.items[0]).toMatchObject({scale:.6,position_x:.2,position_y:.3})
- expect((mock.items[0] as OwnedCollectible&{editing?:boolean}).editing).not.toBe(true)
+ expect(mock.items[0]).toMatchObject({scale:.6,editing:true})
+ expect((mock.items[0] as OwnedCollectible&{editing?:boolean}).editing).toBe(true)
  await waitFor(()=>expect(screen.getByRole('button',{name:'물고기 크기 키우기'}).hasAttribute('disabled')).toBe(false))
  arrange.mockRejectedValueOnce(new Error('offline'))
  fireEvent.click(screen.getByRole('button',{name:'물고기 크기 키우기'}))
  await waitFor(()=>expect(screen.getByLabelText('현재 크기').textContent).toBe('0.6×'))
 })
-it('keeps fish info near the initial selection without following subsequent swim positions',()=>{
- const fish={...decoration,id:'fish',species:{...decoration.species,kind:'fish' as const,movement_type:'swim' as const,speed:.05}}
- render(<AquariumView name="어항" items={[fish]} busy={false} onPlace={()=>{}} onArrange={async()=>{}} onSell={async()=>{}}/>)
- fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
- const toolbar=screen.getByRole('button',{name:'정보 보기'}).parentElement!.parentElement!
- const glass=screen.getByTestId('aquarium-glass')
- Object.defineProperties(glass,{clientWidth:{value:320},clientHeight:{value:560}})
- mock.position?.('fish',150,250)
- expect(toolbar.style.getPropertyValue('--toolbar-x')).toBe('158px')
- expect(toolbar.style.getPropertyValue('--toolbar-y')).toBe('244px')
- mock.position?.('fish',220,400)
- expect(toolbar.style.getPropertyValue('--toolbar-x')).toBe('158px')
- expect(toolbar.style.getPropertyValue('--toolbar-y')).toBe('244px')
- fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
- mock.position?.('fish',220,400)
- expect(toolbar.style.getPropertyValue('--toolbar-x')).toBe('162px')
- expect(toolbar.style.getPropertyValue('--toolbar-y')).toBe('394px')
-})
 it('shows trash transform controls and saves the position lock from its toolbar',async()=>{
  const trash={...decoration,id:'bottle',species:{...decoration.species,kind:'trash' as const,movement_type:'swim' as const,speed:.03}},arrange=vi.fn(async()=>{})
  render(<AquariumView name="어항" items={[trash]} busy={false} onPlace={()=>{}} onArrange={arrange} onSell={async()=>{}}/>)
- fireEvent.click(screen.getByRole('button',{name:'수조 장식물 클릭'}))
- expect(screen.getByRole('button',{name:'정보 보기'})).toBeTruthy()
+ selectCustomize()
+ expect(screen.queryByRole('button',{name:'정보 보기'})).toBeNull()
  expect(screen.getByRole('button',{name:'시계 방향 15도 회전'})).toBeTruthy()
  expect(screen.getByRole('button',{name:'크기 키우기'})).toBeTruthy()
  fireEvent.click(screen.getByRole('button',{name:'위치 고정'}))
@@ -207,7 +211,7 @@ it('auto-saves edits and dismisses the toolbar on background tap without cancell
       onSell={async () => {}}
     />,
   )
-  fireEvent.click(screen.getByRole('button', { name: '수조 장식물 클릭' }))
+  selectCustomize()
   fireEvent.click(screen.getByRole('button', { name: '크기 키우기' }))
   expect(mock.items[0]).toMatchObject({ scale: 0.6 })
   expect(arrange).toHaveBeenCalledWith(
@@ -233,7 +237,7 @@ it('restores the last position and size when automatic saving fails', async () =
       onSell={async () => {}}
     />,
   )
-  fireEvent.click(screen.getByRole('button', { name: '수조 장식물 클릭' }))
+  selectCustomize()
   fireEvent.click(screen.getByRole('button', { name: '크기 키우기' }))
   await waitFor(() => expect(mock.items[0]).toMatchObject({ scale: 0.5 }))
 })
@@ -250,7 +254,7 @@ it('preserves the center and toolbar anchor while scaling', async () => {
       onSell={async () => {}}
     />,
   )
-  fireEvent.click(screen.getByRole('button', { name: '수조 장식물 클릭' }))
+  selectCustomize()
   const toolbar = screen.getByRole('region', { name: '살구 불가사리 꾸미기' }).parentElement!
   const before = toolbar.getAttribute('style')
   fireEvent.click(screen.getByRole('button', { name: '크기 키우기' }))

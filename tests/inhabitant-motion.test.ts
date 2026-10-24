@@ -7,6 +7,29 @@ function item(kind='fish'): OwnedCollectible {
   return { id: kind, species_id: kind, tank_id: 'tank', animation_seed: 0, position_x: null, position_y: null, acquired_at: '',
     species: { id: kind, kind, name: kind, description: '', swim_y_min: .2, swim_y_max: .7, speed: .05, size: 72, rarity: 'common', sprite_sheet_path: 'fish.png', thumbnail_path: 'thumb.png', sell_price: 10 } } as OwnedCollectible
 }
+it('holds the selected inhabitant at its current center through rotation and scaling, then resumes there',()=>{
+ for(const kind of ['fish','trash']) {
+  const owned={...item(kind),animation_seed:300000}
+  const motion=new InhabitantMotion(owned,0,{x:.5,y:.5,direction:1})
+  const initial={...motion.update(4,.03,960,560)}
+  const center={x:initial.x+initial.size/2,y:initial.y+initial.size/2}
+  motion.setItem({...owned,editing:true},4,960,560)
+  for(const rotation of [15,90,180,270]) {
+   motion.setItem({...owned,editing:true,rotation,scale:1.3},5,960,560)
+   const pose=motion.update(40,.03,960,560)
+   expect(pose.x+pose.size/2).toBeCloseTo(center.x)
+   expect(pose.y+pose.size/2).toBeCloseTo(center.y)
+   expect(pose.angle).toBe(rotation)
+   expect(pose.direction).toBe(initial.direction)
+  }
+  motion.setItem({...owned,editing:false,scale:1.3,rotation:270},40,960,560)
+  const resumed={...motion.update(40,0,960,560)}
+  expect(resumed.x+resumed.size/2).toBeCloseTo(center.x)
+  expect(resumed.y+resumed.size/2).toBeCloseTo(center.y)
+  const later=motion.update(42,.03,960,560)
+  expect(Math.hypot(later.x-resumed.x,later.y-resumed.y)).toBeGreaterThan(0)
+ }
+})
 
 it('keeps salvaged treasure trash still near the floor and respects manual placement',()=>{
  const ids=['soaked-banknote-bundle','soaked-money-pouch','pirate-gold-coin-sack','gold-dust-glass-bottle','salvaged-gold-fragment','pirate-coin-bundle','dragon-king-vault']

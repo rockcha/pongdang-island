@@ -256,13 +256,22 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
             return (
               <article
                 key={s.siteId ?? s.id}
-                className={`overflow-hidden rounded-2xl border ${!shop && st === 'ready' ? 'border-primary/40 bg-secondary/50' : 'border-border/80 bg-card'}`}
+                aria-label={s.name}
+                className={`relative overflow-hidden rounded-2xl border ${!shop && st === 'ready' ? 'border-primary/40 bg-secondary/50' : 'border-border/80 bg-card'}`}
               >
+                {!shop&&<Button variant="ghost" size="icon" className="absolute left-4 top-4 z-10 min-h-11 min-w-11 rounded-full bg-background/90" aria-label="생산소 정보 및 판매" title={`${s.name} 정보 및 판매`} disabled={busy||!!pending.current} onClick={()=>{setQuantity(1);setSelected(s)}}><Info className="size-4"/></Button>}
                 <button
                   disabled={busy || !!pending.current}
                   className="block w-full p-3 text-left outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
                   onClick={() => {
-                    if (!shop && status(s, Date.now() + offset.current) === 'ready') {
+                    const current=status(s,Date.now()+offset.current)
+                    if(!shop&&current==='idle'){
+                      if(working>=4){toast.error('연료·미끼 생산소를 합쳐 동시에 4곳까지 가동할 수 있어요.');return}
+                      if((state?.fuel??0)<s.fuel_cost){toast.error('연료가 부족해요.');return}
+                      void mutate({p_action:'start',p_facility:s.siteId!,p_quantity:1})
+                      return
+                    }
+                    if (!shop && current === 'ready') {
                       void mutate({p_action:'claim',p_facility:s.siteId!,p_quantity:1})
                       return
                     }

@@ -5,7 +5,10 @@ import { Button, buttonVariants } from '@/components/ui/button'
 import { PlayerAvatar } from '@/features/profile/player-avatar'
 import { TankInhabitants } from '@/features/aquarium/tank-inhabitants'
 import { TankBubbles } from '@/features/aquarium/tank-bubbles'
-import { backgroundUrl } from '@/features/aquarium/api'
+import { AquariumBackdrop } from '@/features/aquarium/aquarium-backdrop'
+import { themePanoramaUrl } from '@/features/aquarium/theme-panorama'
+import { clampTankView } from '@/features/aquarium/tank-world'
+import type { OwnedCollectible } from '@/features/collection/api'
 import { loadFriendAquarium, visitError } from './aquarium-api'
 import type { FriendAquarium } from './aquarium-api'
 import { AquariumCare } from './aquarium-care'
@@ -130,15 +133,7 @@ function Visit({ owner }: { owner: string }) {
             className="relative min-h-0 w-full flex-1 overflow-hidden bg-gradient-to-b from-blue-100 to-blue-200"
             aria-label={tank.name}
           >
-            {background && (
-              <img
-                src={backgroundUrl(background.image_path)}
-                alt={background.name}
-                className="absolute inset-0 size-full object-cover"
-              />
-            )}
-            <TankBubbles />
-            <TankInhabitants key={tank.id} items={items} />
+            <FriendTankScene key={tank.id} items={items} background={background}/>
             <AquariumCare key={'care:' + tank.id} tank={tank.id} />
           </div>
           <div className="flex shrink-0 divide-x divide-border border-t bg-background pb-[env(safe-area-inset-bottom)]">
@@ -154,4 +149,18 @@ function Visit({ owner }: { owner: string }) {
       )}
     </section>
   )
+}
+
+function FriendTankScene({items,background}:{items:OwnedCollectible[];background?:{name:string;image_path:string}}){
+  const [view,setView]=useState(1)
+  const [viewRequest,setViewRequest]=useState({position:1})
+  const src=themePanoramaUrl(background?.image_path)
+  return <div className="absolute inset-0" tabIndex={0} aria-label="친구 어항 둘러보기" onKeyDown={event=>{
+    if(event.target!==event.currentTarget||!src)return
+    if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();setViewRequest({position:clampTankView(view+(event.key==='ArrowLeft'?-.15:.15))})}
+  }}><TankInhabitants items={items}
+    world={src?{columns:3,initialView:1,preserveArrangement:false,onViewChange:setView}:undefined}
+    viewRequest={src?viewRequest:undefined}
+    scenery={<><AquariumBackdrop background={background} panorama={src?{src,view}:undefined}/><TankBubbles/></>}
+  /></div>
 }

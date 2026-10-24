@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
-import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, MoveHorizontal, Info, X } from 'lucide-react'
+import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Info } from 'lucide-react'
 import {
   Dialog,
   DialogContent,
@@ -34,7 +34,8 @@ import { InhabitantLayerEditor } from './inhabitant-layer-editor'
 import { automaticInhabitantDepth } from './inhabitant-depth'
 import { themePanoramaUrl } from './theme-panorama'
 import { clampTankView, tankWorldItem } from './tank-world'
-import { TankPanControls } from './tank-pan-controls'
+import { SelectionToolbar } from './selection-toolbar'
+import type { SelectionPanel } from './selection-toolbar'
 
 type Props = {
   loading?: boolean
@@ -71,7 +72,6 @@ export function AquariumView(props: Props) {
   const panorama=Boolean(panoramaSrc)
   const [view,setView]=useState(1)
   const [viewRequest,setViewRequest]=useState({position:1})
-  const [panControlsCollapsed,setPanControlsCollapsed]=useState(false)
   useEffect(() => {
     const element = glass.current
     if (!element || typeof ResizeObserver === 'undefined') return
@@ -84,12 +84,9 @@ export function AquariumView(props: Props) {
   const [editing, setEditing] = useState<{
     id: string
     value: DecorationPlacement
-    anchor: { x: number; y: number }
   } | null>(null)
-  const toolbar = useRef<HTMLDivElement>(null)
-  const infoAnchor = useRef<{id:string;x:number;y:number}|null>(null)
-  const selectedId = useRef<string | null>(null)
-  selectedId.current = editing?.id ?? null
+  const [panel,setPanel]=useState<SelectionPanel>(null)
+  useEffect(()=>setPanel(null),[editing?.id])
   const [infoId, setInfoId] = useState<string | null>(null)
   const panAllowed=useRef(true)
   panAllowed.current=!busy
@@ -98,7 +95,7 @@ export function AquariumView(props: Props) {
   const displayed = useMemo(() =>
     editing && decoration
       ? items.map((item) =>
-          item.id === editing.id ? canArrangeSpecies(item.species)?{ ...item, ...editing.value, editing: true }:{...item,scale:editing.value.scale} : item,
+          item.id === editing.id ? { ...item, ...editing.value, editing: true } : item,
         )
       : items, [items, editing, decoration])
   const renderedItems=useMemo(()=>displayed.map(item=>({...item,interaction_locked:busy})),[displayed,busy])
@@ -109,7 +106,6 @@ export function AquariumView(props: Props) {
     if (busy || !props.onArrange) return
     const item = items.find((item) => item.id === id)
     if (item) {
-      infoAnchor.current = null
       const current = editing?.id === id ? { ...item, ...editing.value } : item
       const g = arrangementGeometry(current)
       const value = {
@@ -125,10 +121,6 @@ export function AquariumView(props: Props) {
       setEditing({
         id,
         value,
-        anchor: {
-          x: center-(panorama?view*dimensions.width:0),
-          y: g.margin + value.position_y * g.h,
-        },
       })
     }
   }
@@ -136,11 +128,9 @@ export function AquariumView(props: Props) {
     if (!canArrangeSpecies(items.find((item) => item.id === id)!.species)) return
     if (busy) return
     if (editing?.id === id) {
-      const g = arrangementGeometry({ ...decoration!, ...editing.value })
       setEditing({
         ...editing,
         value: { ...editing.value, position_x: x, position_y: y },
-        anchor: { x: g.margin + x * g.w + g.size / 2-(panorama?view*dimensions.width:0), y: g.margin + y * g.h },
       })
     }
     onPlace(id, x, y)
@@ -151,8 +141,9 @@ export function AquariumView(props: Props) {
       : null
   async function changeDecoration(value: DecorationPlacement) {
     if (!editing || !props.onArrange) return
+    if(panorama)setViewRequest({position:view})
     const previous = editing
-    if (geometry && decoration && canArrangeSpecies(decoration.species)) {
+    if (geometry && decoration) {
       const next = arrangementGeometry({ ...decoration, ...value })
       const cx = geometry.margin + previous.value.position_x * geometry.w + geometry.size / 2
       const cy = geometry.margin + previous.value.position_y * geometry.h + geometry.size / 2
@@ -174,25 +165,6 @@ export function AquariumView(props: Props) {
       throw cause
     }
   }
-  // Screen-space controls stay the same size regardless of decoration scale.
-  const toolbarWidth = 300
-  const toolbarX =
-    geometry && editing
-      ? Math.max(
-          toolbarWidth / 2 + 8,
-          Math.min(dimensions.width - toolbarWidth / 2 - 8, editing.anchor.x),
-        )
-      : 0
-  const toolbarY =
-    geometry && editing
-      ? Math.max(
-          (toolbar.current?.offsetHeight || 44) + 8,
-          Math.min(
-            dimensions.height - 8,
-            editing.anchor.y - 6,
-          ),
-        )
-      : 8
   function navigate(direction: 'previous' | 'next') {
     if (busy || !props.navigation || props.navigation.count < 2) return
     setEditing(null)
@@ -268,45 +240,13 @@ export function AquariumView(props: Props) {
           items={renderedItems}
           onPlace={place}
           onSelectDecoration={selectDecoration}
-          onSelectionPosition={(id, x, y) => {
-            if (id !== selectedId.current || !toolbar.current || window.innerWidth < 640) return
-            if (decoration && !canArrangeSpecies(decoration.species)) {
-              infoAnchor.current ??= {id,x,y}
-              x = infoAnchor.current.x
-              y = infoAnchor.current.y
-            }
-            const element = toolbar.current
-            const width = glass.current?.clientWidth ?? dimensions.width
-            element.style.setProperty('--toolbar-x', `${Math.max(toolbarWidth / 2 + 8, Math.min(width - toolbarWidth / 2 - 8, x))}px`)
-            element.style.setProperty('--toolbar-y', `${Math.max(element.offsetHeight + 8, Math.min((glass.current?.clientHeight || dimensions.height) - 8, y - 6))}px`)
-          }}
           onBackgroundTap={() => setEditing(null)}
           onNavigate={navigate}
         />
-        {panorama&&<div className={`absolute inset-x-3 z-20 mx-auto ${editing?'top-12':'bottom-3'} ${panControlsCollapsed?'flex justify-end':'max-w-sm'}`}>
-          {panControlsCollapsed?<Button variant="ghost" aria-label="수조 이동 메뉴 펼치기" aria-expanded={false} className="min-h-11 w-11 flex-col gap-0 rounded-xl border border-white/30 bg-background/85 px-1 shadow-sm" onClick={()=>setPanControlsCollapsed(false)}><ChevronUp className="size-3"/><MoveHorizontal className="size-4"/></Button>:<TankPanControls view={view} busy={busy} onMove={position=>setViewRequest({position})} onCollapse={()=>setPanControlsCollapsed(true)}/>}
-        </div>}
         {editing && decoration && (
-          <div
-            ref={toolbar}
-            className="absolute inset-x-2 bottom-2 z-20 flex flex-col items-center gap-1.5 rounded-xl border border-white/45 bg-background/20 p-2 shadow-sm sm:inset-x-auto sm:bottom-auto sm:-translate-x-1/2 sm:-translate-y-full sm:w-[var(--toolbar-width)] sm:left-[var(--toolbar-x)] sm:top-[var(--toolbar-y)]"
-            style={{ '--toolbar-x': `${toolbarX}px`, '--toolbar-y': `${toolbarY}px`, '--toolbar-width': `${Math.max(300, toolbarWidth)}px` } as import('react').CSSProperties}
-          >
-            <div className="flex w-full items-center gap-2 pl-1">
-              <div className="min-w-0 flex-1"><p className="w-fit max-w-full truncate rounded-lg bg-background/75 px-2 py-1 text-xs font-medium">{decoration.species.name}</p></div>
-              <Button variant="ghost" size="icon" className="min-h-11 min-w-11 rounded-full bg-background/75" aria-label="개체 선택 닫기" disabled={busy} onClick={() => setEditing(null)}><X className="size-4"/></Button>
-            </div>
-            <div className="flex items-center gap-1.5">
-            <Button
-              variant="secondary"
-              className="min-h-11 gap-1.5 rounded-lg border bg-background/75 px-3 text-xs shadow-sm"
-              onClick={() => setInfoId(decoration.id)}
-            >
-              <Info className="size-4" />
-              정보 보기
-            </Button>
+          <SelectionToolbar name={decoration.species.name} busy={busy} panel={panel} onPanel={setPanel} onClose={()=>setEditing(null)}>
+            {panel==='customize'&&<>
             {props.onArrange&&decoration.species.kind==='fish'&&!canArrangeSpecies(decoration.species)&&<FishSizeEditor scale={editing.value.scale} busy={busy} onChange={scale=>changeDecoration({...editing.value,scale})}/>}
-            </div>
             {props.onArrange && canArrangeSpecies(decoration.species) && (
               <DecorationEditor
                 key={editing.id}
@@ -317,9 +257,14 @@ export function AquariumView(props: Props) {
                 onChange={changeDecoration}
               />
             )}
-            {props.onLayerChange && <InhabitantLayerEditor key={`${decoration.id}:${decoration.display_layer ?? 'auto'}`} value={decoration.display_layer ?? null} automatic={automaticInhabitantDepth(decoration)} busy={busy} onChange={layer => props.onLayerChange!(decoration.id, layer)}/>}
+            {props.onLayerChange&&<Button variant="ghost" className="min-h-8 rounded-lg bg-background/75 px-3 text-[11px]" onClick={()=>setPanel('order')}>겹침 순서</Button>}
+            </>}
+            {panel==='order'&&props.onLayerChange&&<><InhabitantLayerEditor key={decoration.id} value={decoration.display_layer ?? null} automatic={automaticInhabitantDepth(decoration)} busy={busy} onChange={layer => props.onLayerChange!(decoration.id, layer)}/><Button variant="ghost" className="min-h-8 rounded-lg bg-background/75 px-3 text-[11px]" onClick={()=>setPanel('customize')}>꾸미기로 돌아가기</Button></>}
+            {panel==='more'&&<>
+            <Button variant="ghost" className="min-h-11 w-full justify-start gap-2 rounded-lg bg-background/75 text-xs" onClick={()=>setInfoId(decoration.id)}><Info className="size-4"/>정보 보기</Button>
             <CollectibleActions key={decoration.id} item={decoration} tanks={props.tanks} inhabitants={props.inhabitants} capacity={props.tankCapacity} busy={busy} onMove={props.onMove} onStore={props.onStore} onSell={onSell} onDone={() => setEditing(null)}/>
-          </div>
+            </>}
+          </SelectionToolbar>
         )}
       </div>
       {props.nameControls}

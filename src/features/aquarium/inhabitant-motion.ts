@@ -17,6 +17,8 @@ export class InhabitantMotion {
   item: OwnedCollectible
   private born: number
   private sourcePosition:{x:number|null;y:number|null}
+  private editingCenter:{x:number;y:number}|null=null
+  private editingDirection=1
   constructor(item: OwnedCollectible, born = 0, spawn?:SwimSpawn) {
     this.item = item
     this.sourcePosition={x:item.position_x,y:item.position_y}
@@ -26,6 +28,8 @@ export class InhabitantMotion {
     this.initialized=!!spawn
   }
   setItem(item:OwnedCollectible,now:number,width:number,height:number,reduced=false){
+    const wasEditing=!!this.item.editing
+    if(item.editing&&!wasEditing&&this.pose.size>0){this.editingCenter={x:this.pose.x+this.pose.size/2,y:this.pose.y+this.pose.size/2};this.editingDirection=this.pose.direction}
     const changed=item.position_x!==this.sourcePosition.x||item.position_y!==this.sourcePosition.y||item.position_locked!==this.item.position_locked||(!item.editing&&this.item.editing===true)
     this.sourcePosition={x:item.position_x,y:item.position_y}
     const before=this.item.species,after=item.species
@@ -34,6 +38,12 @@ export class InhabitantMotion {
       this.offset={x:0,y:0};this.escape=null;this.initialized=false;this.born=now;this.angle=0;this.mirrored=false
     }
     this.item=item
+    if(wasEditing&&!item.editing&&this.editingCenter){
+      const center=this.editingCenter;this.editingCenter=null
+      const size=isPositionFixed(item)?decorationGeometry(item,width,height).size:inhabitantBaseSize(item.species,width)*Number(item.scale??1)
+      this.place(center.x-size/2,center.y-size/2,now,width,height,reduced)
+      return
+    }
     if(isPositionFixed(item)||item.editing)return
     if(changed&&item.position_x!==null&&item.position_y!==null){
       const size=inhabitantBaseSize(item.species,width)*Number(item.scale??1)
@@ -46,6 +56,7 @@ export class InhabitantMotion {
       const px=Math.max(0,Math.min(w,x-margin)),py=Math.max(0,Math.min(h,y-margin))
       this.item={...this.item,position_x:w?px/w:0,position_y:h?py/h:0}
       this.pose={...this.pose,x:px+margin,y:py+margin,size}
+      if(this.item.editing)this.editingCenter={x:this.pose.x+size/2,y:this.pose.y+size/2}
       return {x:this.item.position_x!,y:this.item.position_y!}
     }
     const size=inhabitantBaseSize(this.item.species,width)*Number(this.item.scale??1),w=Math.max(0,width-size),h=Math.max(0,height-size)
@@ -73,7 +84,7 @@ export class InhabitantMotion {
     return {x:this.item.position_x!,y:this.item.position_y!}
   }
   flee(x: number, y: number, now: number, radius: number) {
-    if(isPositionFixed(this.item))return
+    if(isPositionFixed(this.item)||this.item.editing)return
     if (!['fish','trash'].includes(this.item.species.kind)) return
     const settings=movementSettings(this.item.species)
     if(settings.type!=='swim'||settings.travel!=='both')return
@@ -132,6 +143,13 @@ export class InhabitantMotion {
     let x: number, y: number, direction = motion.direction, angle = 0
     if (isPositionFixed(this.item)||this.item.editing) {
       const geometry=decorationGeometry(this.item,width,height)
+      if(this.item.editing&&this.editingCenter){
+        const half=(geometry.size+2*geometry.margin)/2
+        const cx=Math.max(half,Math.min(width-half,this.editingCenter.x)),cy=Math.max(half,Math.min(height-half,this.editingCenter.y))
+        this.editingCenter={x:cx,y:cy}
+        this.pose={x:cx-geometry.size/2,y:cy-geometry.size/2,size:geometry.size,direction:this.editingDirection,angle:geometry.angle,frame:0}
+        return this.pose
+      }
       x = geometry.margin+(this.item.position_x ?? (.2 + seed * .6))*geometry.w
       y = geometry.margin+(this.item.position_y ?? (s.id==='siren-scylla-tentacle'?.32:s.kind==='fish'?(Number(s.swim_y_min??.2)+Number(s.swim_y_max??.8))/2:.86))*geometry.h
       this.pose={x,y,size:geometry.size,direction:1,angle:geometry.angle,frame:!reduced&&!this.item.editing&&(s.idle_animated||s.id==='pleated-skirt-sea-squirt'||s.id==='scrap-thimble-barnacle'||s.id==='muk-inkstone-clam'||s.id==='muk-inkstone-home-octopus')?Math.floor(time*1.2)%4:0}

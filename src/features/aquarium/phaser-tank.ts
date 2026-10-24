@@ -22,7 +22,7 @@ import {HalloweenSpiritRenderer} from './halloween-spirit-renderer'
 import {clampTankView,draggedTankView,tankWorldItem,tankItemSpace} from './tank-world'
 import type {TankWorldOptions} from './tank-world'
 
-export type TankRenderer = { setItems: (items: OwnedCollectible[]) => void; setView: (view: number) => void; resize: (width: number, height: number) => void; setReduced: (value: boolean) => void; setVisible: (value: boolean) => void; getStats: () => { count: number; textures: number; clock: number; renderer: string }; destroy: () => void }
+export type TankRenderer = { setItems: (items: OwnedCollectible[]) => void; setView: (view: number) => void; selectItem: (id: string) => void; resize: (width: number, height: number) => void; setReduced: (value: boolean) => void; setVisible: (value: boolean) => void; getStats: () => { count: number; textures: number; clock: number; renderer: string }; destroy: () => void }
 
 export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectible[], reduced: boolean, onError: (message: string) => void, onPlace?: (id:string,x:number,y:number)=>void,_onNavigate?:(direction:'previous'|'next')=>void,onSelectDecoration?:(id:string,x?:number,y?:number)=>void,onBackgroundTap?:()=>void,onSelectionPosition?:(id:string,x:number,y:number)=>void,world?:TankWorldOptions): TankRenderer {
   let items = initial, ready = false, disposed = false, clock = 0, visible = true
@@ -35,7 +35,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
   const cameraOffset=()=>viewport.width*view
   const itemSpace=(item:OwnedCollectible)=>tankItemSpace(item,viewport.width,columns,world?.preserveArrangement)
   const motionItem=(item:OwnedCollectible)=>itemSpace(item).local?item:tankWorldItem(item,viewport.width,columns)
-  const entries = new Map<string, { motion: InhabitantMotion; sprite: Phaser.GameObjects.Sprite; path: string; sheet: boolean; previousX?:number; spirits?:HalloweenSpiritRenderer }>()
+  const entries = new Map<string, { motion: InhabitantMotion; sprite: Phaser.GameObjects.Sprite; path: string; sheet: boolean; previousX?:number; editingFrame?:number; spirits?:HalloweenSpiritRenderer }>()
   const queued = new Set<string>(), failed = new Set<string>()
   let spiritsQueued=false
   let selectedId:string|null=null
@@ -215,10 +215,22 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
       this.draw(0)
     }
     registerSheet(key:string,columns=2){const texture=this.textures.get(key);if(texture.has('swim-0'))return;const source=texture.getSourceImage() as HTMLImageElement;const w=source.width/columns,h=source.height/2;for(let f=0;f<columns*2;f++)texture.add(`swim-${f}`,0,(f%columns)*w,Math.floor(f/columns)*h,w,h)}
+    selectItem(id:string){
+      const entry=entries.get(id)
+      if(!entry||entry.motion.item.interaction_locked)return
+      selectedId=id
+      const space=itemSpace(entry.motion.item),g=decorationGeometry(entry.motion.item,space.width,viewport.height)
+      const x=g.w?(entry.sprite.x-space.offset-g.size/2-g.margin)/g.w:.5,y=g.h?(entry.sprite.y-g.size/2-g.margin)/g.h:.5
+      if(columns>1&&(entry.sprite.x<cameraOffset()||entry.sprite.x>cameraOffset()+viewport.width)){
+        view=targetView=clampTankView(entry.sprite.x/viewport.width-.5,columns);this.configureCamera();world?.onViewChange?.(view)
+      }
+      onSelectDecoration?.(id,Math.max(0,Math.min(1,x)),Math.max(0,Math.min(1,y)))
+    }
     draw(delta: number) {
       for (const entry of entries.values()) {
+        const frozen=reduced||!!entry.motion.item.editing
         if(dragging.has(entry.motion.item.id)){
-          entry.spirits?.draw(entry.motion.item.species.id,clock,entry.motion.item.animation_seed,reduced,entry.sprite,Number(entry.sprite.getData('logicalSize')??entry.sprite.displayWidth))
+          entry.spirits?.draw(entry.motion.item.species.id,clock,entry.motion.item.animation_seed,frozen,entry.sprite,Number(entry.sprite.getData('logicalSize')??entry.sprite.displayWidth))
           continue
         }
         const space=itemSpace(entry.motion.item)
@@ -229,7 +241,8 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         const direction = Math.abs(dx) > .001 && Math.abs(dx) < space.width / 2 ? Math.sign(dx) : pose.direction
         let layout=swimFrameLayout('',0),index=0
         if (entry.sheet) {
-          index=sharedDecorationFrame(entry.motion.item.species.id,clock,reduced,entry.motion.item.editing)??dreamabyssFixedFrame(entry.motion.item.species.id,clock,reduced,entry.motion.item.editing)??scrapisleFixedFrame(entry.motion.item.species.id,clock,reduced,entry.motion.item.editing)??cloudferryFixedFrame(entry.motion.item.species.id,clock,reduced,entry.motion.item.editing)??whitenightFixedFrame(entry.motion.item.species.id,clock,reduced,entry.motion.item.editing)??primalPlantFrame(entry.motion.item.species.id,clock,reduced,entry.motion.item.editing)??mythicSwimFrame(entry.path,clock,entry.motion.item.animation_seed,reduced)??premiumSwimFrame(entry.path,clock,entry.motion.item.animation_seed,pose.frame,reduced)
+          index=sharedDecorationFrame(entry.motion.item.species.id,clock,frozen,entry.motion.item.editing)??dreamabyssFixedFrame(entry.motion.item.species.id,clock,frozen,entry.motion.item.editing)??scrapisleFixedFrame(entry.motion.item.species.id,clock,frozen,entry.motion.item.editing)??cloudferryFixedFrame(entry.motion.item.species.id,clock,frozen,entry.motion.item.editing)??whitenightFixedFrame(entry.motion.item.species.id,clock,frozen,entry.motion.item.editing)??primalPlantFrame(entry.motion.item.species.id,clock,frozen,entry.motion.item.editing)??mythicSwimFrame(entry.path,clock,entry.motion.item.animation_seed,frozen)??premiumSwimFrame(entry.path,clock,entry.motion.item.animation_seed,pose.frame,frozen)
+          if(entry.motion.item.editing){entry.editingFrame??=Number(String(entry.sprite.frame.name).replace('swim-',''))||0;index=entry.editingFrame}else entry.editingFrame=undefined
           layout=mythicSwimLayout(entry.path,index)??swimFrameLayout(entry.path,index)
           entry.sprite.setTexture(textureKey(entry.path),`swim-${index}`)
         }
@@ -239,7 +252,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
           .setPosition(space.offset + pose.x + pose.size / 2, pose.y + pose.size / 2)
           .setDisplaySize(pose.size*layout.scale, pose.size*layout.scale).setAngle(pose.angle+(isPositionFixed(entry.motion.item)||entry.motion.item.editing?0:Number(entry.motion.item.rotation??0)))
         entry.sprite.setFlipX(flipped)
-        entry.spirits?.draw(entry.motion.item.species.id,clock,entry.motion.item.animation_seed,reduced,entry.sprite,pose.size)
+        entry.spirits?.draw(entry.motion.item.species.id,clock,entry.motion.item.animation_seed,frozen,entry.sprite,pose.size)
       }
       if(selectedId){const entry=entries.get(selectedId);if(entry){const bounds=entry.sprite.getBounds();onSelectionPosition?.(selectedId,bounds.centerX-cameraOffset(),bounds.top)}}
     }
@@ -274,6 +287,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
   const game = new Phaser.Game({ type: Phaser.AUTO, parent, transparent: true, width: viewport.pixelWidth, height: viewport.pixelHeight,scale:{mode:Phaser.Scale.NONE,zoom:1/viewport.ratio},
     scene: [scene], audio: { noAudio: true }, banner: false, render: { antialias: true }, fps: { target: 30, limit: 30 } })
   return {
+    selectItem(id) { if(ready)scene.selectItem(id) },
     setItems(next) { items = next; if (ready) scene.sync() },
     setView(next) { targetView=clampTankView(next,columns);if(reduced){view=targetView;if(ready)scene.configureCamera();world?.onViewChange?.(view)} },
     resize(width, height) { if (!disposed) {const next=tankResolution(width,height,window.devicePixelRatio);if(next.width===viewport.width&&next.height===viewport.height&&next.pixelWidth===viewport.pixelWidth&&next.pixelHeight===viewport.pixelHeight)return;viewport=next;game.scale.setZoom(1/viewport.ratio);game.scale.resize(viewport.pixelWidth,viewport.pixelHeight);game.canvas.style.width=`${viewport.width}px`;game.canvas.style.height=`${viewport.height}px`;game.scale.updateBounds();if (ready){scene.configureCamera();if(columns>1)scene.sync();scene.draw(0)} } },

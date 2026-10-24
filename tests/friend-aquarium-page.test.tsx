@@ -2,6 +2,8 @@
 import { afterEach, expect, it, vi } from 'vitest'
 import { MemoryRouter, Route, Routes } from 'react-router'
 import { FriendAquariumPage } from '@/features/friends/friend-aquarium-page'
+import type {ReactNode} from 'react'
+const mock=vi.hoisted(()=>({world:undefined as undefined|{columns:number;initialView?:number;preserveArrangement?:boolean;onViewChange?:(view:number)=>void},items:[] as {id:string;interaction_locked?:boolean;position_x?:number}[]}))
 vi.mock('@/features/friends/aquarium-api', () => ({
   loadFriendAquarium: async () => ({
     owner: { id: 'friend', nickname: '친구퐁이', avatar_path: null },
@@ -9,14 +11,15 @@ vi.mock('@/features/friends/aquarium-api', () => ({
       { id: 'one', name: '첫 어항', background_id: 'default' },
       { id: 'two', name: '두 번째 어항', background_id: 'default' },
     ],
-    inhabitants: [],
-    backgrounds: [],
+    inhabitants: [{id:'one-fish',tank_id:'one',position_x:.25}],
+    backgrounds: [{id:'default',name:'맑은 물빛',image_path:'default.png'}],
   }),
   visitError: () => '오류',
 }))
 vi.mock('@/features/aquarium/tank-inhabitants', () => ({
-  TankInhabitants: () => <div data-testid="inhabitants" />,
+  TankInhabitants: ({items,world,scenery}:{items:typeof mock.items;world:typeof mock.world;scenery:ReactNode}) => {mock.items=items;mock.world=world;return <div data-testid="inhabitants">{scenery}<button onClick={()=>world?.onViewChange?.(.637)}>친구 어항 화면 이동</button></div>},
 }))
+vi.mock('@/features/aquarium/aquarium-backdrop',()=>({AquariumBackdrop:({panorama}:{panorama?:{src:string;view:number}})=><div data-testid="friend-backdrop" data-view={panorama?.view} data-src={panorama?.src}/>}))
 vi.mock('@/features/friends/aquarium-care', () => ({
   AquariumCare: ({ tank }: { tank: string }) => <div>돌보기 {tank}</div>,
 }))
@@ -30,6 +33,12 @@ it('shows the owner and browses friend tanks without a collectible list', async 
     </MemoryRouter>,
   )
   await screen.findByLabelText('첫 어항')
+  expect(mock.world).toMatchObject({columns:3,initialView:1,preserveArrangement:false})
+  expect(mock.items).toEqual([expect.objectContaining({id:'one-fish',interaction_locked:true,position_x:.25})])
+  expect(screen.getByTestId('friend-backdrop').dataset.src).toContain('default-panorama-v2.png')
+  fireEvent.click(screen.getByRole('button',{name:'친구 어항 화면 이동'}))
+  expect(screen.getByTestId('friend-backdrop').dataset.view).toBe('0.637')
+  expect(mock.items[0].position_x).toBe(.25)
   const tank = screen.getByLabelText('첫 어항')
   expect(tank.className).toContain('w-full')
   expect(tank.className).toContain('flex-1')
@@ -39,6 +48,7 @@ it('shows the owner and browses friend tanks without a collectible list', async 
   expect(screen.getByRole('button', { name: '친구 어항' })).toBeTruthy()
   fireEvent.click(screen.getByRole('button', { name: '다음 어항' }))
   expect(screen.getByLabelText('두 번째 어항')).toBeTruthy()
+  expect(screen.getByTestId('friend-backdrop').dataset.view).toBe('1')
   expect(screen.getByText('돌보기 two')).toBeTruthy()
   fireEvent.click(screen.getByRole('button', { name: '다음 어항' }))
   expect(screen.getByLabelText('첫 어항')).toBeTruthy()

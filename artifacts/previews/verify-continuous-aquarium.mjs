@@ -50,6 +50,7 @@ try {
   await page.mouse.move(bounds.x+bounds.width*.5,bounds.y+bounds.height*.4,{steps:12})
   await page.mouse.up()
   await page.getByRole('button',{name:'살구 불가사리 선택'}).press('Enter')
+  await page.getByRole('button',{name:'꾸미기',exact:true}).click()
   await page.waitForTimeout(1400)
   const centerBefore=await geometry()
   await page.getByRole('button',{name:'시계 방향 15도 회전',exact:true}).click()

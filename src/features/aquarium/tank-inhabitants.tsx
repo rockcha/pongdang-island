@@ -84,7 +84,7 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
       {scenery}
       <div ref={root} className="absolute inset-0" aria-hidden="true"/>
     </div>
-    <ul className="sr-only focus-within:not-sr-only focus-within:absolute focus-within:inset-x-2 focus-within:top-16 focus-within:z-20 focus-within:rounded focus-within:bg-background focus-within:p-3">{items.map(item => <li key={item.id}>{onSelectDecoration?<button onClick={()=>onSelectDecoration(item.id)}>{item.species.name} 선택</button>:item.species.name}</li>)}</ul>
+    <ul className="sr-only focus-within:not-sr-only focus-within:absolute focus-within:inset-x-2 focus-within:top-16 focus-within:z-20 focus-within:rounded focus-within:bg-background focus-within:p-3">{items.map(item => <li key={item.id}>{onSelectDecoration?<button onClick={()=>{if(renderer.current?.selectItem)renderer.current.selectItem(item.id);else onSelectDecoration(item.id)}}>{item.species.name} 선택</button>:item.species.name}</li>)}</ul>
     {error && <p role="alert" className="pointer-events-none absolute inset-x-2 top-2 rounded bg-background/90 p-2 text-xs text-destructive">{error}</p>}
   </div>
 }

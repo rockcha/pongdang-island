@@ -28,7 +28,7 @@ export function relicError(cause:unknown){
  if(message.includes('RELIC_PRICE_CHANGED'))return '판매 가격이 바뀌었어요. 현재 가격을 다시 확인해 주세요.'
  if(message.includes('RELIC_NOT_SELLABLE'))return '지금은 판매할 수 없는 유물이에요.'
  if(message.includes('GOLD_LIMIT'))return '보유 가능한 골드를 초과해 판매할 수 없어요.'
- if(message.includes('RELIC_LOADOUT_CHANGED'))return '다른 곳에서 장착 상태가 바뀌었어요. 현재 상태와 비용을 다시 확인해 주세요.'
+ if(message.includes('RELIC_LOADOUT_CHANGED'))return '현재 장착 상태와 비용을 새로 확인해 주세요.'
  if(message.includes('INSUFFICIENT_GOLD'))return '골드가 부족해요.'
  if(message.includes('RELIC_NOT_OWNED'))return '발견한 유물만 장착할 수 있어요.'
  if(message.includes('RELIC_ALREADY_EQUIPPED'))return '이미 같은 장착 상태예요. 다시 확인해 주세요.'

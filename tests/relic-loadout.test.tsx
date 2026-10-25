@@ -1,4 +1,4 @@
-import {cleanup,fireEvent,render,screen,within,waitFor} from '@testing-library/react'
+import {act,cleanup,fireEvent,render,screen,within,waitFor} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
 import {RelicLoadout,RelicPage} from '@/features/relics/relic-loadout'
 const {load,equip,sell,equipSound,unequipSound}=vi.hoisted(()=>({load:vi.fn(),equip:vi.fn(),sell:vi.fn(),equipSound:vi.fn(),unequipSound:vi.fn()}))
@@ -11,6 +11,56 @@ const a={id:'a',name:'조개 모래시계',description:'최대 제작 시간 +2�
 const b={...a,id:'b',name:'영원의 물시계',rarity:'mythic',owned:false,effect_value:8}
 const state={equippedId:null,changeFee:500,equipFee:0,unequipFee:500,relics:[a,b]}
 afterEach(()=>{cleanup();localStorage.clear();vi.clearAllMocks()})
+it('recovers a saved stale quote without keeping the old error or automatically charging a new fee',async()=>{
+ localStorage.setItem('pongdang:relic-loadout:relic-test',JSON.stringify({id:'a',name:a.name,operation:'old-quote',fee:500}))
+ load.mockResolvedValue(state)
+ equip.mockRejectedValueOnce({code:'P0001',message:'RELIC_LOADOUT_CHANGED'}).mockResolvedValue({...state,equippedId:'a'})
+ render(<RelicPage/>)
+ fireEvent.click(await screen.findByRole('button',{name:'장착 결과 다시 확인'}))
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'결과 다시 확인'}))
+ await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
+ expect(await screen.findByText('유물 상태를 새로 확인했어요. 현재 상태에서 다시 선택해 주세요.')).toBeTruthy()
+ expect(screen.queryByRole('alert')).toBeNull();expect(equip).toHaveBeenCalledTimes(1)
+ expect(localStorage.getItem('pongdang:relic-loadout:relic-test')).toBeNull()
+ fireEvent.click(within(screen.getByRole('article',{name:a.name})).getByRole('button',{name:'장착'}))
+ expect(screen.getByRole('alertdialog').textContent).toContain('무료')
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'확인'}))
+ await waitFor(()=>expect(equip).toHaveBeenCalledTimes(2))
+ expect(equip.mock.calls[0]).toEqual(['a','old-quote',500])
+ expect(equip.mock.calls[1]).toEqual(['a',expect.any(String),0]);expect(equip.mock.calls[1][1]).not.toBe('old-quote')
+ await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
+})
+it('refreshes equipment after returning to the page',async()=>{
+ load.mockResolvedValueOnce(state).mockResolvedValue({...state,equippedId:'a'})
+ render(<RelicPage/>);await screen.findByText('장착 중인 유물이 없어요.')
+ fireEvent(window,new Event('focus'))
+ expect(await within(screen.getByRole('region',{name:'장착 슬롯'})).findByText(a.name)).toBeTruthy()
+ expect(screen.getByRole('button',{name:'해제'})).toBeTruthy()
+})
+it('ignores an old refresh response arriving after a confirmed equip',async()=>{
+ let resolve!:(value:typeof state)=>void
+ load.mockResolvedValueOnce(state).mockImplementationOnce(()=>new Promise(done=>{resolve=done}))
+ equip.mockResolvedValue({...state,equippedId:'a'})
+ render(<RelicPage/>);await screen.findByRole('article',{name:a.name})
+ fireEvent(window,new Event('focus'));await waitFor(()=>expect(load).toHaveBeenCalledTimes(2))
+ fireEvent.click(within(screen.getByRole('article',{name:a.name})).getByRole('button',{name:'장착'}))
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'확인'}))
+ await screen.findByRole('button',{name:'해제'})
+ await act(async()=>resolve(state))
+ expect(within(screen.getByRole('region',{name:'장착 슬롯'})).getByText(a.name)).toBeTruthy()
+ expect(screen.queryByText('장착 중인 유물이 없어요.')).toBeNull()
+})
+it('clears a dismissed confirmation error while preserving an uncertain operation for retry',async()=>{
+ load.mockResolvedValue(state);equip.mockRejectedValue(new Error('network'))
+ render(<RelicPage/>);fireEvent.click(within(await screen.findByRole('article',{name:a.name})).getByRole('button',{name:'장착'}))
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'확인'}))
+ await screen.findByRole('alert')
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'취소'}))
+ await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
+ expect(screen.queryByRole('alert')).toBeNull()
+ expect(screen.getByRole('button',{name:'장착 결과 다시 확인'})).toBeTruthy()
+ expect(localStorage.getItem('pongdang:relic-loadout:relic-test')).not.toBeNull()
+})
 it('filters relics through the shared ownership tabs',async()=>{
  load.mockResolvedValue(state);render(<RelicPage/>)
  await screen.findByRole('article',{name:a.name})

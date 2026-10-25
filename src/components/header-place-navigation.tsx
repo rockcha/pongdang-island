@@ -47,7 +47,7 @@ export const headerPlaces = [
   { to: '/harbor', label: '지도', icon: Map },
   { to: '/fishing', label: '낚시', icon: appArt.rod },
   { to: '/shop', label: '낚시 상점', icon: Store },
-  { to: '/decoration-shop', label: '어항 장식물 상점', icon: appArt.itemShop },
+  { to: '/decoration-shop', label: '어항 장식물 상점', icon: appArt.decorationShop },
   { to: '/item-shop', label: '아이템 상점', icon: appArt.itemShop },
   { to: '/shipyard', label: '조선소', icon: Ship },
   { to: '/expeditions', label: '통발', icon: appArt.expeditions },

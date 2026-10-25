@@ -13,7 +13,12 @@ function productionArtwork(kind:'bait'|'fuel',shop=false){
   return <span aria-hidden="true" className={`relative inline-block shrink-0 ${className}`}><Resource className="size-full"/><Badge className="absolute -bottom-0.5 -right-0.5 size-[45%] rounded-full bg-background p-px text-primary" strokeWidth={2.3}/></span>
  }
 }
+const Decoration=artwork('kind-decoration')
+function decorationShopArtwork({className='size-6'}:{className?:string;strokeWidth?:number}){
+ return <span aria-hidden="true" className={`relative inline-block shrink-0 ${className}`}><Decoration className="size-full"/><Store className="absolute -bottom-0.5 -right-0.5 size-[45%] rounded-full bg-background p-px text-primary" strokeWidth={2.3}/></span>
+}
 export const appArt={
+ decorationShop:decorationShopArtwork,
  production:productionArtwork('fuel'),
  baitProduction:productionArtwork('bait'),
  baitProductionShop:productionArtwork('bait',true),
@@ -53,7 +58,7 @@ const placeArt:Record<string,ReturnType<typeof artwork>>={
  '/production-shop':appArt.fuelProductionShop,
  '/hall-of-fame':appArt.ranking,
  '/showcase':appArt.showcase,
- '/decoration-shop':appArt.itemShop,
+ '/decoration-shop':appArt.decorationShop,
  '/item-shop':appArt.itemShop,
  '/merchant-orders':appArt.merchantOrders,
  '/port':appArt.port,

@@ -37,3 +37,27 @@ it('keeps a usable wide view if native fullscreen refuses and closes on Escape',
  expect(screen.queryByText('exit')).toBeNull()
  expect(document.body.style.overflow).not.toBe('hidden')
 })
+
+it('does not trap a portrait Fold viewport when the screen reports stale landscape, and offers escape for real landscape',()=>{
+ vi.stubGlobal('matchMedia',()=>({matches:true}));vi.stubGlobal('screen',{orientation:{type:'landscape-primary',unlock:vi.fn()}})
+ vi.stubGlobal('innerWidth',390);vi.stubGlobal('innerHeight',844)
+ render(<PortraitOrientation/>);expect(screen.queryByText('계속하기')).toBeNull()
+ vi.stubGlobal('innerWidth',844);vi.stubGlobal('innerHeight',390);fireEvent(window,new Event('resize'))
+ fireEvent.click(screen.getByRole('button',{name:'계속하기'}));expect(screen.queryByText('계속하기')).toBeNull()
+})
+
+it('releases a landscape lock that finishes after the user has already exited',async()=>{
+ vi.stubGlobal('matchMedia',()=>({matches:true}))
+ let finish!:()=>void
+ const lock=vi.fn((mode:string)=>mode==='landscape'?new Promise<void>(resolve=>{finish=resolve}):Promise.resolve()),unlock=vi.fn()
+ vi.stubGlobal('screen',{orientation:{lock,unlock}})
+ document.documentElement.requestFullscreen=vi.fn(async()=>{Object.defineProperty(document,'fullscreenElement',{configurable:true,value:document.documentElement})})
+ document.exitFullscreen=vi.fn(async()=>{Object.defineProperty(document,'fullscreenElement',{configurable:true,value:null})})
+ render(<><PortraitOrientation/><Harness/></>);fireEvent.click(screen.getByText('enter'))
+ await waitFor(()=>expect(lock).toHaveBeenCalledWith('landscape'))
+ fireEvent.click(screen.getByText('exit'));unlock.mockClear()
+ await act(async()=>{finish()})
+ expect(unlock).toHaveBeenCalled();expect(lock).toHaveBeenLastCalledWith('portrait-primary')
+ expect(document.documentElement.hasAttribute('data-aquarium-wide')).toBe(false)
+ expect(document.body.style.overflow).not.toBe('hidden')
+})

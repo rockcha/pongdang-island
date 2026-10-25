@@ -1,3 +1,4 @@
+import {audioVolume,audioVolumeChanged} from '@/features/audio/audio-preferences'
 import {createContext,useContext,useEffect,useRef,useState,type ReactNode} from 'react'
 import {toast} from 'sonner'
 import {readTracks,youtubeTitle,type MusicTrack} from './music-library'
@@ -29,7 +30,8 @@ export function MusicProvider({children,storageKey,userId}:{children:ReactNode;s
  const [playing,setPlaying]=useState(false)
  const [volume,storeVolume]=useState(()=>{try{const saved=localStorage.getItem(storageKey+':volume');const value=saved===null?70:Number(saved);return Number.isFinite(value)?Math.max(0,Math.min(100,value)):70}catch{return 70}})
  const volumeRef=useRef(volume)
- const setVolume=(value:number)=>{if(!Number.isFinite(value))return;const next=Math.max(0,Math.min(100,Math.round(value)));volumeRef.current=next;storeVolume(next);player.current?.setVolume?.(next);try{localStorage.setItem(storageKey+':volume',String(next))}catch{/* Keep volume usable without storage. */}}
+ useEffect(()=>{const update=()=>player.current?.setVolume(volumeRef.current*audioVolume('music')/100);window.addEventListener(audioVolumeChanged,update);return()=>window.removeEventListener(audioVolumeChanged,update)},[])
+ const setVolume=(value:number)=>{if(!Number.isFinite(value))return;const next=Math.max(0,Math.min(100,Math.round(value)));volumeRef.current=next;storeVolume(next);player.current?.setVolume?.(next*audioVolume('music')/100);try{localStorage.setItem(storageKey+':volume',String(next))}catch{/* Keep volume usable without storage. */}}
  const [attempt,setAttempt]=useState(0)
  const host=useRef<HTMLDivElement>(null),player=useRef<Player|null>(null)
  const wantsPlayback=useRef(false)
@@ -101,7 +103,7 @@ export function MusicProvider({children,storageKey,userId}:{children:ReactNode;s
   void loadYouTube().then(YT=>{
    if(cancelled)return
    player.current=new YT.Player(element,{width:'100%',height:'100%',videoId:activeId,playerVars:{autoplay:0,loop:1,playlist:activeId,playsinline:1,origin:window.location.origin},events:{
-    onReady:({target}:PlayerEvent)=>{if(cancelled)return;target.setVolume?.(volumeRef.current);if(wantsPlayback.current)target.playVideo();else target.pauseVideo();const title=target.getVideoData().title;if(title)cacheTitle(activeId,title)},
+    onReady:({target}:PlayerEvent)=>{if(cancelled)return;target.setVolume?.(volumeRef.current*audioVolume('music')/100);if(wantsPlayback.current)target.playVideo();else target.pauseVideo();const title=target.getVideoData().title;if(title)cacheTitle(activeId,title)},
     onStateChange:({data,target}:PlayerEvent)=>{if(cancelled)return;if(data===1&&!wantsPlayback.current){target.pauseVideo();setPlaying(false);return}setPlaying(data===1);const title=target.getVideoData().title;if(title)cacheTitle(activeId,title)},
     onAutoplayBlocked:()=>{if(!cancelled){setPlaying(false);toast.info('음악 재생 버튼을 다시 눌러 주세요.')}},
     onError:()=>{if(!cancelled){setPlaying(false);toast.error('이 영상은 재생할 수 없어요. 다른 곡을 선택해 주세요.')}}

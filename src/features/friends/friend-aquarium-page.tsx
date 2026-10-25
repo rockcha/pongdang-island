@@ -1,7 +1,10 @@
+import {createPortal} from 'react-dom'
+import {useAquariumWideMode} from '@/features/aquarium/use-aquarium-wide-mode'
+import {AquariumLike} from './aquarium-like'
 import { useEffect, useMemo, useState,useRef } from 'react'
 import type {ReactNode} from 'react'
 import { Link, useParams } from 'react-router'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight,Maximize2,Minimize2,Minus,Plus } from 'lucide-react'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { PlayerAvatar } from '@/features/profile/player-avatar'
 import { TankInhabitants } from '@/features/aquarium/tank-inhabitants'
@@ -98,11 +101,12 @@ function Visit({ owner }: { owner: string }) {
               className={buttonVariants({
                 variant: 'ghost',
                 size: 'sm',
-                className: 'min-h-11 shrink-0 px-2 text-xs',
+                className: 'min-h-11 min-w-0 max-w-24 truncate px-2 text-xs',
               })}
             >
               {data.owner.nickname}
             </Link>
+            <AquariumLike owner={owner}/>
             {expanded&&<><Button
               variant="ghost"
               size="icon"
@@ -151,17 +155,22 @@ function Visit({ owner }: { owner: string }) {
 }
 
 function FriendTankScene({name,items,background,children}:{name:string;items:OwnedCollectible[];background?:{name:string;image_path:string};children:ReactNode}){
+  const wide=useAquariumWideMode()
   const [view,setView]=useState(1)
   const [zoom,setZoom]=useState(1),[verticalView,setVerticalView]=useState(0)
-  const fitted=useFittedTankViewport(0)
-  const [viewRequest,setViewRequest]=useState({position:1})
+  const fitted=useFittedTankViewport(0,!wide.active)
+  const [viewRequest,setViewRequest]=useState<{position:number;zoom?:number;y?:number}>({position:1})
   const src=themePanoramaUrl(background?.image_path)
-  return <div ref={fitted.ref} aria-label={name} data-testid="friend-aquarium-viewport" className="flex min-h-0 w-full flex-1 items-start justify-center overflow-hidden"><div className="aquarium-fitted-glass friend-aquarium-scene relative shrink-0 overflow-hidden bg-gradient-to-b from-blue-100 to-blue-200" style={{width:fitted.width,height:fitted.height}} tabIndex={0} aria-label="친구 어항 둘러보기" onKeyDown={event=>{
+  const scene=<div ref={fitted.ref} aria-label={name} data-testid="friend-aquarium-viewport" className="flex min-h-0 w-full flex-1 items-start justify-center overflow-hidden"><div className="aquarium-fitted-glass friend-aquarium-scene relative shrink-0 overflow-hidden bg-gradient-to-b from-blue-100 to-blue-200" style={{width:wide.active?'100%':fitted.width,height:wide.active?'100%':fitted.height}} tabIndex={0} aria-label="친구 어항 둘러보기" onKeyDown={event=>{
     if(event.target!==event.currentTarget||!src)return
     if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();setViewRequest({position:clampTankCameraView(view+(event.key==='ArrowLeft'?-.15:.15),3,zoom)})}
-  }}><TankInhabitants items={items} fitView={!!src}
-    world={src?{columns:3,overview:true,fixedViewport:true,minZoom:1,maxZoom:2,initialZoom:1,initialView:1,preserveArrangement:false,onZoomChange:setZoom,onViewChange:setView,onVerticalViewChange:setVerticalView}:undefined}
+  }}><TankInhabitants items={items} fitView={!wide.active&&!!src}
+    world={src?{columns:3,overview:true,fixedViewport:true,minZoom:wide.active?1/3:1,maxZoom:2,initialZoom:wide.active?1/3:1,initialView:wide.active?0:1,preserveArrangement:false,onZoomChange:setZoom,onViewChange:setView,onVerticalViewChange:setVerticalView}:undefined}
     viewRequest={src?viewRequest:undefined}
     scenery={<><AquariumBackdrop background={background} panorama={src?{src,view,zoom,fixedViewport:true,heightRatio:1.6,y:verticalView}:undefined}/><TankBubbles/></>}
-  />{children}</div></div>
+  />{!wide.active&&children}
+  <Button variant="ghost" data-wide-trigger={!wide.active?'':undefined} aria-label={wide.active?'가로 화면 종료':'친구 아쿠아리움 가로 보기'} onClick={wide.active?wide.exit:wide.enter} className="absolute right-2 top-2 z-40 min-h-10 rounded-full bg-background/85 text-xs shadow-sm">{wide.active?<Minimize2 className="size-4"/>:<Maximize2 className="size-4"/>}{wide.active?'가로 화면 종료':'가로 보기'}</Button>
+  {wide.active&&<div className="absolute bottom-3 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 rounded-xl bg-background/90 p-1"><Button variant="ghost" size="icon" aria-label="친구 어항 축소" onClick={()=>setViewRequest({position:view,zoom:Math.max(1/3,zoom-.15),y:verticalView})}><Minus className="size-4"/></Button><Button variant="ghost" className="text-xs" onClick={()=>setViewRequest({position:0,zoom:1/3,y:0})}>전체 맞춤</Button><Button variant="ghost" size="icon" aria-label="친구 어항 확대" onClick={()=>setViewRequest({position:view,zoom:Math.min(2,zoom+.15),y:verticalView})}><Plus className="size-4"/></Button></div>}
+  </div></div>
+  return wide.active?createPortal(<div role="region" aria-label="친구 아쿠아리움 가로 화면" className="fixed inset-0 z-40 flex h-dvh w-screen bg-cyan-950">{scene}</div>,document.body):scene
 }

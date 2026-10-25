@@ -195,3 +195,10 @@ it('selects and clears every individual on the current storage page',async()=>{
  fireEvent.click(screen.getByRole('button',{name:'전체 해제'}))
  expect(screen.queryByRole('button',{name:'0개 어항에 넣기'})).toBeNull()
 })
+
+it('opens storage descriptions separately from multi-selection',async()=>{
+ mock.load.mockResolvedValue({items:[{...stored[0],species:{...stored[0].species,rarity:'rare',description:'은빛 비늘을 가진 작은 물고기예요.'}}],total:1,pageSize:50})
+ render(<CollectibleStorageDialog page state={state} currentTankId="" busy={false}/>)
+ fireEvent.click(await screen.findByRole('button',{name:'멸치 상세 보기'}))
+ expect(await screen.findByText('은빛 비늘을 가진 작은 물고기예요.')).toBeTruthy();expect(screen.queryByText('1개 선택')).toBeNull()
+})

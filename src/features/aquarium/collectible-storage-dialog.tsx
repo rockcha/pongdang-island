@@ -1,3 +1,6 @@
+import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
+import type {Species} from '@/features/collection/api'
+import {RarityBadge} from '@/components/rarity-badge'
 import { useDailyOrderSpecies } from '@/features/merchant/use-daily-order-species'
 import { EmptyState } from '@/components/empty-state'
 import { appArt } from '@/components/app-art'
@@ -21,7 +24,7 @@ import { loadCollectibleStorage, storageError } from './api'
 import type { AquariumState, CollectibleStorage } from './api'
 import {AquariumSearchToggle,AquariumSelectionMenu} from './aquarium-panel-controls'
 
-const { storage: Archive, aquarium: Aquarium, mailGift: Gift } = appArt
+const { storage: Archive, aquarium: Aquarium } = appArt
 
 export function CollectibleStorageDialog({
   state,
@@ -48,6 +51,8 @@ export function CollectibleStorageDialog({
   recentItems?: OwnedCollectible[]
   page?: boolean
 }) {
+  const recipientId=new URLSearchParams(window.location.search).get('giftTo')??undefined
+  const [detail,setDetail]=useState<Species|null>(null)
   const [internalOpen, setInternalOpen] = useState(false),
     [page, setPage] = useState(0),
     [kind, setKind] = useState('all')
@@ -348,6 +353,7 @@ export function CollectibleStorageDialog({
                   <li key={group.species.id + ':' + group.recent} className="min-w-0">
                     <CollectibleQuantityCard
                       species={group.species}
+                      onDetail={()=>setDetail(group.species)}
                       recent={group.recent}
                       dailyOrder={dailyOrderSpecies.has(group.species.id)}
                       count={group.items.length}
@@ -411,27 +417,8 @@ export function CollectibleStorageDialog({
           >
             <Aquarium className="size-5" /><span className="text-xs">어항에 넣기</span>
           </Button>}
-          {selectedGroups.length === 1 ? (
-            <SendGiftDialog
-              species={selectedGroups[0].species}
-              items={selectedGroups[0].items}
-              disabled={disabled || loading || (selectedGroups[0].species.kind==='map'||selectedGroups[0].species.kind==='relic')}
-              onSent={(ids) => {
-                onGiftSent?.(ids)
-                refreshStorage()
-              }}
-            />
-          ) : (
-            <Button
-              variant="secondary"
-              className="h-16 rounded-none border-r"
-              aria-label="선물할 종류 하나를 선택해주세요"
-              disabled
-            >
-              <Gift className="size-9" />
-              <span className="aquarium-action-label hidden text-xs">선물</span>
-            </Button>
-          )}
+          {selectedGroups.length>0&&<SendGiftDialog species={selectedGroups[0].species} items={selectedItems} recipientId={recipientId} disabled={disabled||loading||selectedItems.some(i=>['map','relic'].includes(i.species.kind))} onSent={ids=>{onGiftSent?.(ids);refreshStorage()}}/>}
+
           <Button
             aria-label={'선택한 개체 판매 ' + price + ' 골드'}
             className="h-16 min-w-0 gap-1.5 rounded-none"
@@ -460,6 +447,7 @@ export function CollectibleStorageDialog({
           confirmDisabled={busy || !assignIds?.length || (assignIds?.length ?? 0) > free}
           onConfirm={() => void assign()}
         />
+        <Dialog open={!!detail} onOpenChange={v=>{if(!v)setDetail(null)}}><DialogContent className="aquarium-work-panel max-h-[85dvh] overflow-y-auto sm:max-w-sm"><DialogHeader><DialogTitle>{detail?.name}</DialogTitle></DialogHeader>{detail&&<><CollectibleThumbnail species={detail} path={detail.thumbnail_path} name={detail.name} className="mx-auto size-36"/><RarityBadge rarity={detail.rarity}/><p className="whitespace-pre-wrap text-sm leading-7">{detail.description}</p><p className="text-xs text-muted-foreground">판매가 {(detail.sell_price??0).toLocaleString()} 골드</p></>}</DialogContent></Dialog>
         <CollectibleSaleDialog
           allowBatch
           items={sale ?? []}

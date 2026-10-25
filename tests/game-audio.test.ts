@@ -69,3 +69,17 @@ it('evicts old decoded audio when the PCM cache exceeds its memory budget',async
  const again=audio.createGameAudio('/sounds/cache-a.mp3');await again.play();again.pause()
  expect(fetch).toHaveBeenCalledTimes(4)
 })
+
+it('applies independent master volumes to playing music and effects immediately',async()=>{
+ const prefs=await import('@/features/audio/audio-preferences')
+ prefs.saveAudioVolume('effects',50);prefs.saveAudioVolume('music',20)
+ const cleanup=audio.installGameAudioLifecycle(),effect=audio.createGameAudio('/sounds/buy.mp3'),music=audio.createGameAudio('/sounds/fishing-bg.mp3')
+ effect.volume=.6;music.volume=.5;await effect.play();await music.play()
+ const gains=contexts[0].createGain.mock.results.map(r=>r.value.gain)
+ expect(gains[0].linearRampToValueAtTime).toHaveBeenCalledWith(.3,expect.any(Number))
+ expect(gains[1].linearRampToValueAtTime).toHaveBeenCalledWith(.1,expect.any(Number))
+ prefs.saveAudioVolume('effects',0)
+ expect(gains[0].setValueAtTime).toHaveBeenLastCalledWith(0,expect.any(Number))
+ expect(gains[1].setValueAtTime).toHaveBeenLastCalledWith(.1,expect.any(Number))
+ effect.pause();music.pause();cleanup();prefs.saveAudioVolume('effects',100);prefs.saveAudioVolume('music',100)
+})

@@ -1,3 +1,4 @@
+import {AudioSettings} from '@/features/audio/audio-settings'
 import {PushSettings} from '@/features/notifications/push-settings'
 import { useState } from 'react'
 import {Fish,Hand,Volume2} from 'lucide-react'
@@ -12,6 +13,7 @@ export function SettingsPage() {
   return <section className="mx-auto w-full max-w-xl space-y-7 px-1 py-6">
     <h1 className="text-xl font-medium">설정</h1>
     <PushSettings/>
+    <AudioSettings/>
     <section aria-labelledby="fishing-settings-title" className="overflow-hidden rounded-2xl border border-border/60 bg-card/70">
       <h2 id="fishing-settings-title" className="flex items-center gap-2 border-b border-border/50 px-5 py-4 text-xs font-medium text-muted-foreground"><Fish aria-hidden="true" className="size-4"/>낚시</h2>
       <div className="flex items-center justify-between gap-5 px-5 py-5">

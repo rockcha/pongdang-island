@@ -123,3 +123,13 @@ it('does not give an official badge to a matching player nickname',async()=>{
  await screen.findByText('잘 키워줘!')
  expect(screen.queryByText('공식')).toBeNull()
 })
+
+it('preselects the lighthouse friend and sends different species in a single request',async()=>{
+ const another={...species,id:'star',kind:'decoration',name:'불가사리'} as Species
+ mock.send.mockResolvedValue(gift)
+ render(<SendGiftDialog species={species} items={[{id:'one',species},{id:'two',species:another}] as OwnedCollectible[]} recipientId="friend" disabled={false} onSent={()=>{}}/>)
+ fireEvent.click(screen.getByRole('button',{name:'2종 선물'}))
+ expect(await screen.findByText('친구 선택됨')).toBeTruthy();expect(screen.getByText('불가사리')).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'선물 보내기'}))
+ await waitFor(()=>expect(mock.send).toHaveBeenCalledWith('friend',['one','two'],'',expect.any(String)))
+})

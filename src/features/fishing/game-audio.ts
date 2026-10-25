@@ -1,3 +1,4 @@
+import {audioVolume,audioVolumeChanged} from '@/features/audio/audio-preferences'
 import {readFishingSound} from './sound-preference'
 
 export type GameAudio=EventTarget&{preload:string;volume:number;loop:boolean;currentTime:number;play:()=>Promise<void>;pause:()=>void;removeAttribute:(name:string)=>void;load:()=>void}
@@ -47,7 +48,10 @@ function bufferFor(src:string,audioContext:AudioContext){
 
 /** One shared ambient Web Audio context; no media element or Now Playing owner. */
 class BufferedAudio extends EventTarget implements GameAudio{
- preload='none';loop=false;volume=.65
+ preload='none';loop=false;private baseVolume=.65
+ get volume(){return this.baseVolume}
+ set volume(value:number){this.baseVolume=Math.max(0,Math.min(1,value));this.refreshVolume()}
+ refreshVolume(){if(this.gain&&context)this.gain.gain.setValueAtTime(this.baseVolume*audioVolume(/ambience|fishing-bg/.test(this.src)?'music':'effects')/100,context.currentTime)}
  private offset=0;private began=0;private epoch=0
  private source?:AudioBufferSourceNode;private gain?:GainNode;private duration=0
  private src:string
@@ -69,7 +73,7 @@ class BufferedAudio extends EventTarget implements GameAudio{
    this.duration=buffer.duration;source.buffer=buffer;source.loop=this.loop
    source.connect(gain);gain.connect(audioContext.destination)
    gain.gain.setValueAtTime(0,audioContext.currentTime)
-   gain.gain.linearRampToValueAtTime(Math.max(0,Math.min(1,this.volume)),audioContext.currentTime+.015)
+   gain.gain.linearRampToValueAtTime(Math.max(0,Math.min(1,this.volume))*audioVolume(/ambience|fishing-bg/.test(this.src)?'music':'effects')/100,audioContext.currentTime+.015)
    source.onended=()=>{
     if(this.source!==source)return
     this.source=undefined;source.disconnect();gain.disconnect();this.gain=undefined;this.offset=0;active.delete(this);idle();this.dispatchEvent(new Event('ended'))
@@ -89,7 +93,10 @@ class BufferedAudio extends EventTarget implements GameAudio{
  load(){}
 }
 export function createGameAudio(src:string):GameAudio{
- return constructor()?new BufferedAudio(src):new Audio(src)
+ if(constructor())return new BufferedAudio(src)
+ const audio=new Audio(src);let volume=audio.volume;const descriptor=Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype,'volume')
+ if(audio instanceof HTMLMediaElement&&descriptor?.set){const apply=()=>descriptor.set!.call(audio,volume*audioVolume(/ambience|fishing-bg/.test(src)?'music':'effects')/100);Object.defineProperty(audio,'volume',{get:()=>volume,set:(v:number)=>{volume=Math.max(0,Math.min(1,v));apply()}});const stop=()=>window.removeEventListener(audioVolumeChanged,apply);audio.addEventListener('ended',stop,{once:true});const remove=audio.removeAttribute.bind(audio);audio.removeAttribute=(name:string)=>{if(name==='src')stop();remove(name)};window.addEventListener(audioVolumeChanged,apply);apply()}
+ return audio
 }
 
 /** Prime once on a real gesture; never run an inaudible keep-alive loop. */
@@ -98,8 +105,10 @@ export function installGameAudioLifecycle(){
   if(!readFishingSound()||document.hidden||primed&&!active.size)return
   try{const audioContext=engine();primed=true;if(audioContext.state!=='running')void audioContext.resume().catch(()=>{});idle()}catch{}
  }
+ const volume=()=>{for(const sound of active)sound.refreshVolume()}
+ window.addEventListener(audioVolumeChanged,volume)
  const visibility=()=>{if(document.hidden){for(const sound of [...active])sound.pause();if(context?.state==='running')void context.suspend().catch(()=>{})}}
  window.addEventListener('pointerdown',unlock,{capture:true,passive:true});window.addEventListener('keydown',unlock,true)
  document.addEventListener('visibilitychange',visibility)
- return()=>{window.removeEventListener('pointerdown',unlock,true);window.removeEventListener('keydown',unlock,true);document.removeEventListener('visibilitychange',visibility)}
+ return()=>{window.removeEventListener(audioVolumeChanged,volume);window.removeEventListener('pointerdown',unlock,true);window.removeEventListener('keydown',unlock,true);document.removeEventListener('visibilitychange',visibility)}
 }

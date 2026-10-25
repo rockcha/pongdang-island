@@ -444,6 +444,7 @@ export function AquariumPage() {
                 <AquariumBackgroundDialog
                   state={state}
                   selectedId={tank.background_id}
+                  previewItems={state.inhabitants.filter(i=>i.tank_id===tank.id)}
                   gold={wallet.gold}
                   busy={busy || goldBusy}
                   loading={goldLoading}

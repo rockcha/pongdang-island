@@ -37,3 +37,5 @@ collectible_habitats는 기존 카탈로그 및 제약 호환을 위해 유지�
 ## 사전 추첨 낚시 (62)
 
 [62 적용 및 API](../../supabase/sql/62-prepared-fishing/README.md). 61의 추가 실패 제거 정책을 성공 예정40%+미니게임 확정 정책으로 대체합니다. app_private.prepared_fishing_casts는 예약·미끼 소모·개체 스냅샷을 보존하며, 계정당 진행 중 예약은 하나입니다. public.prepare_fishing에서 소모/예약하고 public.finish_fishing에서 결과와 획득을 확정합니다. 단일 cast_fishing API는 차단합니다.
+
+배경음악과 효과음의 마스터 음량은 설정 화면에서 각각 조절하며 브라우저에 저장한다. 곡·효과별 기본 음량에 마스터 음량을 곱하고 재생 중인 루프·효과음에도 즉시 반영한다. 음량 변경만으로 재생을 시작하거나 기존 음소거를 해제하지 않는다. 해역 음악·음악 보관함·환경음·일회성 효과음 모두 해당 설정을 따라야 한다.

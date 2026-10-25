@@ -1,3 +1,4 @@
+import {audioVolume,audioVolumeChanged} from '@/features/audio/audio-preferences'
 import {useCallback, useEffect, useRef, useState} from 'react'
 import {Music2,VolumeX} from 'lucide-react'
 import {claimPlayback, playbackEvent} from './playback-ownership'
@@ -62,7 +63,9 @@ function MapMusic({track}: {track: (typeof tracks)[string]}) {
     const player = new Audio(track.src)
     player.loop = true
     player.preload = 'none'
-    player.volume = volumeRef.current / 100
+    player.volume = volumeRef.current / 100*audioVolume('music')/100
+    const volume=()=>{player.volume=volumeRef.current/100*audioVolume('music')/100}
+    window.addEventListener(audioVolumeChanged,volume)
     audio.current = player
     const onError = () => setState('error')
     const onOwnership = (event: Event) => {
@@ -75,6 +78,7 @@ function MapMusic({track}: {track: (typeof tracks)[string]}) {
     window.addEventListener('pagehide', pause)
     if (initialEnabled.current) start()
     return () => {
+      window.removeEventListener(audioVolumeChanged,volume)
       generation.current++
       player.removeEventListener('error', onError)
       window.removeEventListener(playbackEvent, onOwnership)

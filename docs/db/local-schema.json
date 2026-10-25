@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "d4beb3d7c4ed0e8d9d941edff13d3113c6e6192d1514e875a3263c2705445bae",
+  "migrationHash": "c25c59fdeb6499cb6ea2e3f92574ed846385b36af7ccbe156d2a6b67097a89ca",
   "structure": {
     "enums": [
       {
@@ -55,6 +55,12 @@
       {
         "rls": true,
         "name": "aquarium_feed_notices",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "aquarium_likes",
         "schema": "app_private",
         "force_rls": false
       },
@@ -867,6 +873,36 @@
         "table": "aquarium_feed_notices",
         "schema": "app_private",
         "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "owner_id",
+        "type": "uuid",
+        "table": "aquarium_likes",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "visitor_id",
+        "type": "uuid",
+        "table": "aquarium_likes",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "aquarium_likes",
+        "schema": "app_private",
+        "default": "now()",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -8896,6 +8932,18 @@
         "definition": "CREATE UNIQUE INDEX aquarium_feed_notices_pkey ON app_private.aquarium_feed_notices USING btree (visitor_id, owner_id, notice_day)"
       },
       {
+        "name": "aquarium_likes_pkey",
+        "table": "aquarium_likes",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX aquarium_likes_pkey ON app_private.aquarium_likes USING btree (owner_id, visitor_id)"
+      },
+      {
+        "name": "aquarium_likes_visitor",
+        "table": "aquarium_likes",
+        "schema": "app_private",
+        "definition": "CREATE INDEX aquarium_likes_visitor ON app_private.aquarium_likes USING btree (visitor_id)"
+      },
+      {
         "name": "arcade_reward_settings_pkey",
         "table": "arcade_reward_settings",
         "schema": "app_private",
@@ -11989,6 +12037,16 @@
         "securityDefiner": true
       },
       {
+        "name": "aquarium_like_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_owner uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.aquarium_like_state(p_owner uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n perform app_private.require_aquarium_friend(p_owner);\n return jsonb_build_object('count',(select count(*) from app_private.aquarium_likes where owner_id=p_owner),\n 'liked',exists(select 1 from app_private.aquarium_likes where owner_id=p_owner and visitor_id=auth.uid()));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "aquarium_state",
         "config": [
           "search_path=\"\""
@@ -14245,7 +14303,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_recipient_id uuid, p_collectible_ids uuid[], p_message text, p_operation_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.send_collectible_gift(p_recipient_id uuid, p_collectible_ids uuid[], p_message text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid(); v_ids uuid[]; g public.collectible_gifts; v_count integer; v_species text; v_name text; v_recipient text; v_message text:=btrim(coalesce(p_message,''));\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_recipient_id is null or p_recipient_id=v_uid then raise exception 'INVALID_RECIPIENT'; end if;\n if p_operation_id is null or coalesce(cardinality(p_collectible_ids),0) not between 1 and 20 or char_length(v_message)>300 then raise exception 'INVALID_GIFT'; end if;\n select array_agg(id order by id) into v_ids from(select distinct unnest(p_collectible_ids) as id) q;\n if cardinality(v_ids)<>cardinality(p_collectible_ids) or array_position(v_ids,null) is not null then raise exception 'INVALID_GIFT'; end if;\n perform pg_advisory_xact_lock(hashtextextended('gift-send:'||v_uid::text,0));\n select * into g from public.collectible_gifts where sender_id=v_uid and operation_id=p_operation_id;\n if found then\n  if g.recipient_id is distinct from p_recipient_id or g.collectible_ids<>v_ids or g.message<>v_message then raise exception 'OPERATION_CONFLICT'; end if;\n  return to_jsonb(g);\n end if;\n perform 1 from public.friend_requests where status='accepted' and ((sender_id=v_uid and recipient_id=p_recipient_id) or(sender_id=p_recipient_id and recipient_id=v_uid)) for share;\n if not found then raise exception 'GIFT_FRIEND_REQUIRED'; end if;\n if (select count(*) from public.collectible_gifts where sender_id=v_uid and created_at>now()-interval '1 minute')>=5 then raise exception 'GIFT_RATE_LIMIT'; end if;\n select nickname into v_name from public.player_profiles where id=v_uid;\n select nickname into v_recipient from public.player_profiles where id=p_recipient_id;\n if v_name is null or v_recipient is null then raise exception 'INVALID_RECIPIENT'; end if;\n perform 1 from public.player_collectibles where user_id=v_uid and id=any(v_ids) order by id for update;\n select count(*),min(c.species_id) into v_count,v_species from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n where c.user_id=v_uid and c.id=any(v_ids) and c.sold_at is null and c.escrow_gift_id is null and s.kind in ('fish','trash','decoration');\n if v_count<>cardinality(v_ids) or (select count(distinct species_id) from public.player_collectibles where id=any(v_ids))<>1 then raise exception 'COLLECTIBLE_NOT_FOUND'; end if;\n insert into public.collectible_gifts(sender_id,recipient_id,sender_name,recipient_name,operation_id,collectible_ids,species,quantity,message)\n values(v_uid,p_recipient_id,v_name,v_recipient,p_operation_id,v_ids,app_private.species_payload(v_species),v_count,v_message) returning * into g;\n -- Recipient owns reserved items, so deletion of the sender cannot destroy the gift.\n update public.player_collectibles set tank_id=null,user_id=p_recipient_id,escrow_gift_id=g.id,position_x=null,position_y=null where id=any(v_ids);\n insert into public.notifications(recipient_id,actor_id,category,kind,title,body,gift_id)\n values(p_recipient_id,v_uid,'gift','gift_received','선물을 받았습니다',v_name||'님이 '||(g.species->>'name')||' ×'||v_count||'를 보냈어요.',g.id);\n return to_jsonb(g);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.send_collectible_gift(p_recipient_id uuid, p_collectible_ids uuid[], p_message text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid(); v_ids uuid[]; g public.collectible_gifts; v_count integer; v_species text; v_bundle jsonb; v_payload jsonb; v_name text; v_recipient text; v_message text:=btrim(coalesce(p_message,''));\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_recipient_id is null or p_recipient_id=v_uid then raise exception 'INVALID_RECIPIENT'; end if;\n if p_operation_id is null or coalesce(cardinality(p_collectible_ids),0) not between 1 and 20 or char_length(v_message)>300 then raise exception 'INVALID_GIFT'; end if;\n select array_agg(id order by id) into v_ids from(select distinct unnest(p_collectible_ids) as id) q;\n if cardinality(v_ids)<>cardinality(p_collectible_ids) or array_position(v_ids,null) is not null then raise exception 'INVALID_GIFT'; end if;\n perform pg_advisory_xact_lock(hashtextextended('gift-send:'||v_uid::text,0));\n select * into g from public.collectible_gifts where sender_id=v_uid and operation_id=p_operation_id;\n if found then\n  if g.recipient_id is distinct from p_recipient_id or g.collectible_ids<>v_ids or g.message<>v_message then raise exception 'OPERATION_CONFLICT'; end if;\n  return to_jsonb(g);\n end if;\n perform 1 from public.friend_requests where status='accepted' and ((sender_id=v_uid and recipient_id=p_recipient_id) or(sender_id=p_recipient_id and recipient_id=v_uid)) for share;\n if not found then raise exception 'GIFT_FRIEND_REQUIRED'; end if;\n if (select count(*) from public.collectible_gifts where sender_id=v_uid and created_at>now()-interval '1 minute')>=5 then raise exception 'GIFT_RATE_LIMIT'; end if;\n select nickname into v_name from public.player_profiles where id=v_uid;\n select nickname into v_recipient from public.player_profiles where id=p_recipient_id;\n if v_name is null or v_recipient is null then raise exception 'INVALID_RECIPIENT'; end if;\n perform 1 from public.player_collectibles where user_id=v_uid and id=any(v_ids) order by id for update;\n select count(*),min(c.species_id) into v_count,v_species from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n where c.user_id=v_uid and c.id=any(v_ids) and c.sold_at is null and c.escrow_gift_id is null and s.kind in ('fish','trash','decoration');\n if v_count<>cardinality(v_ids) then raise exception 'COLLECTIBLE_NOT_FOUND'; end if;\n select jsonb_agg(app_private.species_payload(q.species_id)||jsonb_build_object('quantity',q.quantity) order by q.species_id)\n into v_bundle from (select species_id,count(*) quantity from public.player_collectibles where user_id=v_uid and id=any(v_ids) group by species_id) q;\n v_payload:=app_private.species_payload(v_species);\n if jsonb_array_length(v_bundle)>1 then v_payload:=v_payload||jsonb_build_object('name',jsonb_array_length(v_bundle)||'종 선물','bundle_items',v_bundle);end if;\n insert into public.collectible_gifts(sender_id,recipient_id,sender_name,recipient_name,operation_id,collectible_ids,species,quantity,message)\n values(v_uid,p_recipient_id,v_name,v_recipient,p_operation_id,v_ids,v_payload,v_count,v_message) returning * into g;\n -- Recipient owns reserved items, so deletion of the sender cannot destroy the gift.\n update public.player_collectibles set tank_id=null,user_id=p_recipient_id,escrow_gift_id=g.id,position_x=null,position_y=null where id=any(v_ids);\n insert into public.notifications(recipient_id,actor_id,category,kind,title,body,gift_id)\n values(p_recipient_id,v_uid,'gift','gift_received','선물을 받았습니다',v_name||'님이 '||(g.species->>'name')||' ×'||v_count||'를 보냈어요.',g.id);\n return to_jsonb(g);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14276,6 +14334,16 @@
         "schema": "app_private",
         "arguments": "p_user_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION app_private.send_welcome_gift(p_user_id uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare gift uuid; bait_receipt uuid; player_name text;\nbegin\n if exists(select 1 from public.gold_transactions where user_id=p_user_id and item_id='welcome:500')\n and not exists(select 1 from public.gold_transactions where user_id=p_user_id and item_id='welcome:500:reversal' and delta=-500)\n then raise exception 'WELCOME_DIRECT_CREDIT_REQUIRES_REVERSAL';end if;\n select nickname into strict player_name from public.player_profiles where id=p_user_id;\n insert into public.collectible_gifts(sender_name,recipient_id,recipient_name,operation_id,collectible_ids,species,quantity,message,source,reward_kind,reward_id)\n values('퐁당섬 운영자',p_user_id,player_name,gen_random_uuid(),'{}'::uuid[],\n jsonb_build_object('id','welcome-gold','name','모험 응원 골드'),500,\n '첫 모험을 응원하는 500골드 선물이에요. 원하실 때 받아주세요!','system','gold','welcome')\n on conflict do nothing returning id into gift;\n if gift is not null then\n  insert into public.notifications(recipient_id,category,kind,title,body,gift_id)\n  values(p_user_id,'gift','gift_received','운영자의 선물이 도착했어요!','500골드 선물이에요. 선물함에서 원하실 때 받아주세요.',gift);\n end if;\n insert into app_private.starter_bait_receipts(user_id,quantity) values(p_user_id,10)\n on conflict do nothing returning user_id into bait_receipt;\n if bait_receipt is not null then\n  insert into public.player_wallets(user_id,inventory) values(p_user_id,jsonb_build_object('bait',10))\n  on conflict(user_id) do update set\n   inventory=jsonb_set(player_wallets.inventory,'{bait}',to_jsonb(coalesce((player_wallets.inventory->>'bait')::integer,0)+10)),\n   updated_at=clock_timestamp();\n end if;\n return gift;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "set_aquarium_like",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_owner uuid, p_liked boolean",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.set_aquarium_like(p_owner uuid, p_liked boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n perform app_private.require_aquarium_friend(p_owner);\n if p_liked is null or p_owner=auth.uid() then raise exception 'INVALID_LIKE';end if;\n perform pg_advisory_xact_lock(hashtextextended('aquarium-like:'||p_owner::text,0));\n if p_liked then insert into app_private.aquarium_likes(owner_id,visitor_id) values(p_owner,auth.uid()) on conflict do nothing;\n else delete from app_private.aquarium_likes where owner_id=p_owner and visitor_id=auth.uid();end if;\n return app_private.aquarium_like_state(p_owner);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14706,6 +14774,16 @@
         "schema": "public",
         "arguments": "p_id text, p_action text, p_operation_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION public.aquarium_background(p_id text, p_action text, p_operation_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\nbegin\n if p_action='equip' then raise exception 'TANK_REQUIRED'; end if;\n return app_private.aquarium_background(p_id,p_action,p_operation_id);\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "aquarium_like_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_owner uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.aquarium_like_state(p_owner uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.aquarium_like_state(p_owner)$function$\n",
         "securityDefiner": false
       },
       {
@@ -15989,6 +16067,16 @@
         "securityDefiner": false
       },
       {
+        "name": "set_aquarium_like",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_owner uuid, p_liked boolean",
+        "definition": "CREATE OR REPLACE FUNCTION public.set_aquarium_like(p_owner uuid, p_liked boolean)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.set_aquarium_like(p_owner,p_liked)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "set_collectible_display_layer",
         "config": [
           "search_path=\"\""
@@ -16273,6 +16361,48 @@
       {
         "name": "aquarium_feed_notices_visitor_id_not_null",
         "table": "aquarium_feed_notices",
+        "schema": "app_private",
+        "definition": "NOT NULL visitor_id"
+      },
+      {
+        "name": "aquarium_likes_check",
+        "table": "aquarium_likes",
+        "schema": "app_private",
+        "definition": "CHECK ((owner_id <> visitor_id))"
+      },
+      {
+        "name": "aquarium_likes_created_at_not_null",
+        "table": "aquarium_likes",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "aquarium_likes_owner_id_fkey",
+        "table": "aquarium_likes",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (owner_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "aquarium_likes_owner_id_not_null",
+        "table": "aquarium_likes",
+        "schema": "app_private",
+        "definition": "NOT NULL owner_id"
+      },
+      {
+        "name": "aquarium_likes_pkey",
+        "table": "aquarium_likes",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (owner_id, visitor_id)"
+      },
+      {
+        "name": "aquarium_likes_visitor_id_fkey",
+        "table": "aquarium_likes",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (visitor_id) REFERENCES player_profiles(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "aquarium_likes_visitor_id_not_null",
+        "table": "aquarium_likes",
         "schema": "app_private",
         "definition": "NOT NULL visitor_id"
       },
@@ -30133,6 +30263,27 @@
         "arguments": "p_id text, p_action text, p_operation_id uuid"
       },
       {
+        "name": "aquarium_like_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_owner uuid"
+      },
+      {
+        "name": "aquarium_like_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_owner uuid"
+      },
+      {
+        "name": "aquarium_like_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_owner uuid"
+      },
+      {
         "name": "aquarium_state",
         "role": "anon",
         "schema": "app_private",
@@ -34942,6 +35093,27 @@
         "arguments": "p_user_id uuid"
       },
       {
+        "name": "set_aquarium_like",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_owner uuid, p_liked boolean"
+      },
+      {
+        "name": "set_aquarium_like",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_owner uuid, p_liked boolean"
+      },
+      {
+        "name": "set_aquarium_like",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_owner uuid, p_liked boolean"
+      },
+      {
         "name": "set_collectible_display_layer",
         "role": "anon",
         "schema": "app_private",
@@ -35843,6 +36015,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_id text, p_action text, p_operation_id uuid"
+      },
+      {
+        "name": "aquarium_like_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_owner uuid"
+      },
+      {
+        "name": "aquarium_like_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_owner uuid"
+      },
+      {
+        "name": "aquarium_like_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_owner uuid"
       },
       {
         "name": "aquarium_state",
@@ -38531,6 +38724,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_player uuid"
+      },
+      {
+        "name": "set_aquarium_like",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_owner uuid, p_liked boolean"
+      },
+      {
+        "name": "set_aquarium_like",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_owner uuid, p_liked boolean"
+      },
+      {
+        "name": "set_aquarium_like",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_owner uuid, p_liked boolean"
       },
       {
         "name": "set_collectible_display_layer",

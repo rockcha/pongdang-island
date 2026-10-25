@@ -36,6 +36,8 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      aquarium_like_state: { Args: {p_owner:string}; Returns: {count:number;liked:boolean} }
+      set_aquarium_like: { Args: {p_owner:string;p_liked:boolean}; Returns: {count:number;liked:boolean} }
       web_push_device: {Args:{p_action:string;p_subscription:Record<string,unknown>;p_categories?:string[]};Returns:{registered:boolean;categories:import('@/features/notifications/push-device').PushCategory[]}}
       experience_state:{Args:Record<string,never>;Returns:import('@/features/experience/api').ExperienceState}
       friend_levels:{Args:Record<string,never>;Returns:import('@/features/experience/api').FriendLevel[]}

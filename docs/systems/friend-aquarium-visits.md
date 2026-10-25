@@ -21,3 +21,5 @@
 검증: `tests/friend-feeding-sql.test.ts`, `tests/friend-feeding.test.tsx`, `tests/tank-inhabitants.test.tsx`.
 
 청소 추가 설치: 기존 친구 방문 설치 후 `artifacts/friend-aquarium-cleaning-install.sql`을 한 번 적용한다. 원본 migration은 `20261017080527_friend_aquarium_cleaning.sql`이다. 기존 방문 설치 SQL을 다시 실행하지 않는다. 청소 검증은 `tests/friend-cleaning-sql.test.ts`, `tests/friend-cleaning.test.tsx`; 방문 레이아웃은 `tests/friend-aquarium-page.test.tsx`.
+
+아쿠아리움 좋아요는 방문자·소유자 조합당 하나이며 원하는 상태를 서버에 보내 재시도로 반전되지 않게 한다. 현재 친구만 조회·변경할 수 있고 자체 좋아요·직접 테이블 쓰기는 허용하지 않는다. 좋아요는 어항별이 아닌 아쿠아리움 전체에 귀속된다. 친구 어항의 가로 보기는 본인 어항과 같은 전체화면 정리 절차를 사용하되 편집은 제공하지 않는다.

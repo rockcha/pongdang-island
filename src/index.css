@@ -34,15 +34,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-.portrait-orientation-notice { display: none; }
-[data-aquarium-wide] .portrait-orientation-notice { display: none !important; }
-/* Physical screen orientation avoids showing the notice when a keyboard shortens the viewport. */
-@media (pointer: coarse) and (max-device-width: 1024px) {
- @media (device-aspect-ratio > 1/1) {
-  .portrait-orientation-notice { position: fixed; inset: 0; z-index: 2147483647; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 2rem; background: var(--background); color: var(--foreground); text-align: center; touch-action: none; }
-  body { overflow: hidden; }
- }
-}
+.portrait-orientation-notice { position: fixed; inset: 0; z-index: 2147483647; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 2rem; background: var(--background); color: var(--foreground); text-align: center; }
 
 /* Shared full-width segmented navigation, including tabs and category filters. */
 /* Keep inactive choice artwork quiet without fading labels or counts. */

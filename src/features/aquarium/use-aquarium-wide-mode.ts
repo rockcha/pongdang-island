@@ -22,6 +22,7 @@ export function useAquariumWideMode(){
      if(document.documentElement.requestFullscreen){await document.documentElement.requestFullscreen();ownsFullscreen.current=true}
      if(!wanted.current){if(ownsFullscreen.current&&document.fullscreenElement)await document.exitFullscreen();return}
      await (screen.orientation as Orientation)?.lock?.('landscape')
+     if(!wanted.current){screen.orientation?.unlock?.();window.dispatchEvent(new Event('aquarium-wide-change'))}
     }catch{/* Keep the usable browser layout and manual rotation hint. */}
    })()
   }

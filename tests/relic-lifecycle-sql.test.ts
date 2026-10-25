@@ -21,7 +21,7 @@ async function finish(op:string,won=true){
  return user('select public.finish_fishing($1,$2) s',[op,won])
 }
 async function gold(){return (await db.query('select gold from public.player_wallets where user_id=$1',[uid])).rows[0].gold}
-async function equip(id:string|null,op=crypto.randomUUID(),fee=500){return user('select public.equip_relic($1,$2,$3) s',[id,op,fee])}
+async function equip(id:string|null,op=crypto.randomUUID(),fee=id===null?500:0){return user('select public.equip_relic($1,$2,$3) s',[id,op,fee])}
 async function enableOnly(id:string,rarity:string){
  await db.query('update public.fishing_relics set enabled=(id=$1)',[id])
  await db.query("update app_private.fishing_bait_balance_profiles set common_bp=0,rare_bp=case when $1='rare' then 10000 else 0 end,epic_bp=case when $1='epic' then 10000 else 0 end,mythic_bp=case when $1='mythic' then 10000 else 0 end where id='bait_grubby_magnet'",[rarity])
@@ -95,11 +95,11 @@ it('runs acquisition, paid equip, paid unequip and permanent duplicate exclusion
   expect((await user('select public.collection_state() s')).catalog.find(r=>r.id==='relic-'+relic.id).discovered).toBe(true)
   const equipOp=crypto.randomUUID(),unequipOp=crypto.randomUUID(),balance=await gold()
   expect((await equip(relic.id,equipOp)).equippedId).toBe(relic.id)
-  await equip(relic.id,equipOp);expect(await gold()).toBe(balance-500)
+  await equip(relic.id,equipOp);expect(await gold()).toBe(balance)
   const loadouts=(await db.query('select relic_id from app_private.player_relic_loadouts where user_id=$1',[uid])).rows
   expect(loadouts).toEqual([{relic_id:relic.id}])
   expect((await equip(null,unequipOp)).equippedId).toBeNull()
-  await equip(null,unequipOp);expect(await gold()).toBe(balance-1000)
+  await equip(null,unequipOp);expect(await gold()).toBe(balance-500)
   expect((await db.query('select count(*)::int n from app_private.player_fishing_relics where user_id=$1',[uid])).rows[0].n).toBe(index+1)
   expect((await db.query("select count(*)::int n from app_private.fishing_discovery_candidates($1) where category='relic'",[relic.rarity])).rows[0].n).toBe(0)
   // Unequipping never restores the relic to the reward pool.

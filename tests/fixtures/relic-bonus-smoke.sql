@@ -14,7 +14,7 @@ begin
  insert into app_private.player_fishing_relics(user_id,relic_id) select u,id from public.fishing_relics;
  for r in select * from public.fishing_relics order by effect_kind,effect_value loop
   set local role authenticated;
-  state:=public.equip_relic(r.id,gen_random_uuid(),500);
+  state:=public.equip_relic(r.id,gen_random_uuid(),0);
   if state->>'equippedId'<>r.id then raise exception 'EQUIP_FAILED %',r.id;end if;
   reset role;
   if r.effect_kind in ('fuel_active_slots','bait_active_slots') then

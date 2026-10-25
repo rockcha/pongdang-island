@@ -19,21 +19,21 @@ beforeEach(async()=>{
  await db.query('insert into app_private.player_fishing_relics(user_id,relic_id) select $1,id from public.fishing_relics',[uid])
 })
 afterEach(async()=>{await db.exec('rollback;reset role')})
-it('registers sixteen relics and charges equip/unequip once, with two fees for replacement',async()=>{
+it('registers sixteen relics and equips for free and charges only removal once, including replacement',async()=>{
  expect((await user('select public.relic_state() s')).relics).toHaveLength(16)
- const op=crypto.randomUUID();await equip('shell-hourglass',op);expect(await gold()).toBe(999500)
- await equip('shell-hourglass',op);expect(await gold()).toBe(999500)
+ const op=crypto.randomUUID();await equip('shell-hourglass',op);expect(await gold()).toBe(1000000)
+ await equip('shell-hourglass',op);expect(await gold()).toBe(1000000)
  await reject(()=>equip('eternal-water-clock',op),'OPERATION_CONFLICT')
- expect((await equip('eternal-water-clock')).equippedId).toBe('eternal-water-clock');expect(await gold()).toBe(998500)
+ expect((await equip('eternal-water-clock')).equippedId).toBe('eternal-water-clock');expect(await gold()).toBe(999500)
  await reject(()=>equip('eternal-water-clock'),'RELIC_ALREADY_EQUIPPED')
- expect((await equip(null)).equippedId).toBeNull();expect(await gold()).toBe(998000)
+ expect((await equip(null)).equippedId).toBeNull();expect(await gold()).toBe(999000)
 })
 it('denies unowned relics, direct edits, anonymous actions and unaffordable fees atomically',async()=>{
  await db.query("delete from app_private.player_fishing_relics where user_id=$1 and relic_id='shell-hourglass'",[uid])
  await reject(()=>equip('shell-hourglass'),'RELIC_NOT_OWNED')
  await reject(()=>user('select * from app_private.player_relic_loadouts'),'permission denied')
- await db.query('update public.player_wallets set gold=499 where user_id=$1',[uid]);await reject(()=>equip('primordial-ember'),'INSUFFICIENT_GOLD')
- expect((await user('select public.relic_state() s')).equippedId).toBeNull();expect(await gold()).toBe(499)
+ await db.query('update public.player_wallets set gold=0 where user_id=$1',[uid]);await equip('primordial-ember');await reject(()=>equip(null),'INSUFFICIENT_GOLD')
+ expect((await user('select public.relic_state() s')).equippedId).toBe('primordial-ember');expect(await gold()).toBe(0)
  await db.exec('savepoint anonymous;set role anon');await expect(db.query('select public.equip_relic(null,gen_random_uuid())')).rejects.toThrow('permission denied');await db.exec('rollback to anonymous;reset role')
 })
 it('applies only the selected production bonus and increases the personal workshop by hours',async()=>{
@@ -90,10 +90,14 @@ it('enforces the extra fuel slot at actual start and preserves running jobs when
 
 it('rejects a stale fee quote without changing equipment or gold',async()=>{
  await equip('shell-hourglass');const balance=await gold()
- await reject(()=>user('select public.equip_relic($1,$2,500) s',['eternal-water-clock',crypto.randomUUID()]),'RELIC_LOADOUT_CHANGED')
+ await reject(()=>user('select public.equip_relic($1,$2,1000) s',['eternal-water-clock',crypto.randomUUID()]),'RELIC_LOADOUT_CHANGED')
  expect(await gold()).toBe(balance);expect((await user('select public.relic_state() s')).equippedId).toBe('shell-hourglass')
 })
 
 it('applies every real relic to authenticated actions and removes bonuses on unequip',async()=>{
  await db.exec(readFileSync('tests/fixtures/relic-bonus-smoke.sql','utf8'))
+})
+
+it('keeps free equips idempotent and charges only one removal fee during replacement',async()=>{
+ await db.exec(readFileSync('tests/fixtures/relic-equipment-fee-smoke.sql','utf8'))
 })

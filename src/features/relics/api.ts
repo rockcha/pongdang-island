@@ -2,7 +2,7 @@ import {createClient} from '@/lib/client'
 import type {Rarity} from '@/lib/game/rarity'
 
 export type Relic={id:string;name:string;description:string;rarity:Rarity;thumbnail_path:string;owned:boolean;discovered?:boolean;sell_price:number;effect_kind:string;effect_value:number}
-export type RelicState={equippedId:string|null;changeFee:number;relics:Relic[];replayed?:boolean}
+export type RelicState={equippedId:string|null;changeFee:number;equipFee:number;unequipFee:number;relics:Relic[];replayed?:boolean}
 export async function loadRelics(){
  const {data,error}=await createClient().rpc('relic_state')
  if(error)throw error

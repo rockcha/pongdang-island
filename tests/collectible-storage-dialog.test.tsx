@@ -19,6 +19,7 @@ it('waits for the current search before selecting all matching pages',async()=>{
  fireEvent.change(screen.getByRole('searchbox',{name:'이름 검색'}),{target:{value:'멸치'}})
  expect(screen.getByRole('button',{name:'모든 페이지 선택'})).toHaveProperty('disabled',true)
  await waitFor(()=>expect(screen.queryByRole('button',{name:'불가사리 선택'})).toBeNull())
+ await waitFor(()=>expect(screen.getByRole('button',{name:'모든 페이지 선택'})).toHaveProperty('disabled',false))
  fireEvent.click(screen.getByRole('button',{name:'모든 페이지 선택'}))
  await screen.findByText('1개 선택')
  expect(mock.load).toHaveBeenLastCalledWith(0,'멸치','all','all','all')

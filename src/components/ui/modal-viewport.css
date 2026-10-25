@@ -1,0 +1,44 @@
+[data-slot='modal-viewport'] { display: contents; }
+
+/* In the wide aquarium the frame owns centering, not each sheet's offsets. */
+html[data-aquarium-wide] [data-slot='modal-viewport'] {
+ --modal-edge-x: max(.5rem,env(safe-area-inset-left),env(safe-area-inset-right));
+ --modal-edge-y: max(.5rem,env(safe-area-inset-top),env(safe-area-inset-bottom));
+ position: fixed; inset: 0; z-index: 50;
+ display: grid; place-items: center; box-sizing: border-box;
+ width: 100dvw; height: 100dvh;
+ padding: var(--modal-edge-y) var(--modal-edge-x);
+ pointer-events: none;
+}
+html[data-aquarium-wide] [data-slot='modal-viewport'] > :is([data-slot='dialog-content'],[data-slot='alert-dialog-content']) {
+ /* Reset both legacy transforms and Tailwind's independent translate values. */
+ position: relative !important; inset: auto !important; margin: 0;
+ --tw-translate-x: 0px; --tw-translate-y: 0px;
+ translate: 0px 0px !important; transform: none !important; animation: none;
+ min-height: 0;
+ max-width: min(var(--modal-max-width,440px),calc(100dvw - 2 * var(--modal-edge-x)));
+ max-height: calc(100dvh - 2 * var(--modal-edge-y));
+ overflow-y: auto; overscroll-behavior: contain;
+ border-radius: 1rem; pointer-events: auto;
+}
+@media (orientation: landscape) {
+ html[data-aquarium-wide] [data-slot='modal-viewport'] > .aquarium-work-panel {
+  --modal-max-width: 720px;
+  width: min(720px,calc(100dvw - 2 * var(--modal-edge-x)));
+  height: min(680px,calc(100dvh - 2 * var(--modal-edge-y)));
+  overflow: hidden;
+ }
+ html[data-aquarium-wide] [data-slot='modal-viewport'] > .aquarium-detail-panel { height: auto; overflow-y: auto; }
+ html[data-aquarium-wide] [data-slot='modal-viewport'] > .pongi-confirm { display: flex; flex-direction: column; gap: 0; padding: 1rem; overflow: hidden; }
+ html[data-aquarium-wide] .pongi-confirm > img { width: 3rem; height: 3rem; margin-bottom: .5rem; }
+ html[data-aquarium-wide] .pongi-confirm > [data-slot='alert-dialog-header'],
+ html[data-aquarium-wide] .pongi-confirm > [role='alert'],
+ html[data-aquarium-wide] .pongi-confirm > [data-slot='confirm-actions'] { flex-shrink: 0; }
+ html[data-aquarium-wide] .pongi-confirm > [data-slot='confirm-body'] { min-height: 0; margin-top: .75rem; overflow-y: auto; overscroll-behavior: contain; }
+ html[data-aquarium-wide] .pongi-confirm > [data-slot='confirm-actions'] { margin-top: .75rem; }
+ html[data-aquarium-wide] .pongi-confirm > [data-slot='confirm-body']:has(.collectible-sale-summary) { display: flex; flex-direction: column; }
+ html[data-aquarium-wide] .collectible-sale-summary { display: flex; min-height: 0; flex-direction: column; gap: .5rem; }
+ html[data-aquarium-wide] .collectible-sale-summary > * { margin-block: 0; }
+ html[data-aquarium-wide] .collectible-sale-summary > ul { min-height: 0; flex-shrink: 1; }
+ html[data-aquarium-wide] .collectible-sale-summary > div:last-child { flex-shrink: 0; }
+}

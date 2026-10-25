@@ -51,7 +51,7 @@ export function CollectibleSaleDialog({
       confirmLabel="판매하기"
       cancelLabel="돌아가기"
     >
-      <div className="space-y-4">
+      <div className="collectible-sale-summary space-y-4">
         {children}
         <ul
           aria-label="판매할 개체"

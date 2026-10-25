@@ -5,6 +5,7 @@ import { cn } from "cn"
 import { Button } from "@/components/ui/button"
 import { XIcon } from "lucide-react"
 import {OverlayDepth,useOverlayBack} from '@/components/overlay-back'
+import './modal-viewport.css'
 
 function Dialog({open,defaultOpen=false,onOpenChange,actionsRef,...props}: DialogPrimitive.Root.Props) {
   const [uncontrolled,setUncontrolled]=React.useState(defaultOpen)
@@ -65,6 +66,7 @@ function DialogContent({
   return (
     <DialogPortal>
       <DialogOverlay />
+      <div data-slot="modal-viewport">
       <DialogPrimitive.Popup
         data-slot="dialog-content"
         className={cn(
@@ -119,6 +121,7 @@ function DialogContent({
           </DialogPrimitive.Close>
         )}
       </DialogPrimitive.Popup>
+      </div>
     </DialogPortal>
   )
 }

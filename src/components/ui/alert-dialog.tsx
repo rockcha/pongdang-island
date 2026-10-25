@@ -4,6 +4,7 @@ import { cn } from "cn"
 
 import { Button } from "@/components/ui/button"
 import {OverlayDepth,useOverlayBack} from '@/components/overlay-back'
+import './modal-viewport.css'
 
 function AlertDialog({open,defaultOpen=false,onOpenChange,actionsRef,...props}: AlertDialogPrimitive.Root.Props) {
   const [uncontrolled,setUncontrolled]=React.useState(defaultOpen)
@@ -53,6 +54,7 @@ function AlertDialogContent({
   return (
     <AlertDialogPortal container={portalContainer}>
       <AlertDialogOverlay />
+      <div data-slot="modal-viewport">
       <AlertDialogPrimitive.Popup
         data-slot="alert-dialog-content"
         data-size={size}
@@ -62,6 +64,7 @@ function AlertDialogContent({
         )}
         {...props}
       />
+      </div>
     </AlertDialogPortal>
   )
 }

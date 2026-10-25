@@ -9,11 +9,6 @@
 @media (orientation: landscape) {
  html[data-aquarium-wide] [data-slot='tooltip-positioner'] { pointer-events: none; }
  html[data-aquarium-wide] .aquarium-work-panel {
-  top: max(.5rem, env(safe-area-inset-top));
-  right: max(.5rem, env(safe-area-inset-right)); bottom: auto; left: auto;
-  width: clamp(320px, 48vw, 480px); max-width: calc(100vw - 100px);
-  height: calc(100dvh - max(.5rem, env(safe-area-inset-top)) - max(.5rem, env(safe-area-inset-bottom)));
-  max-height: calc(100dvh - 1rem); translate: none; transform: none;
   display: flex; flex-direction: column; gap: .375rem; overflow: hidden;
   border-radius: 1rem; background: var(--popover); box-shadow: 0 12px 40px #102c3438;
   animation: none;
@@ -29,6 +24,7 @@
  html[data-aquarium-wide] .aquarium-selected-preview { display: none; }
  html[data-aquarium-wide] .aquarium-inventory-count { display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; font-size: .6875rem; }
  html[data-aquarium-wide] .aquarium-detail-panel { height: auto; overflow-y: auto; }
+ html[data-aquarium-wide] .aquarium-panel-grid { grid-template-columns: repeat(auto-fill,minmax(112px,1fr)); }
 
  html[data-aquarium-wide] .aquarium-wide-dock { width: 4.5rem; left: max(.5rem, env(safe-area-inset-left)); top: calc(max(.5rem,env(safe-area-inset-top)) + 3rem); max-height: calc(100dvh - max(.5rem,env(safe-area-inset-top)) - 3rem - max(.5rem,env(safe-area-inset-bottom))); padding: .25rem; border-radius: 1rem; }
  html[data-aquarium-wide] .aquarium-wide-dock > p,
@@ -58,7 +54,4 @@
  html[data-aquarium-wide] .aquarium-catalog-panel { padding: 0; gap: 0; }
  html[data-aquarium-wide] .aquarium-catalog-panel [aria-label='도감 개체'] { grid-template-columns: repeat(3,minmax(0,1fr)); }
  html[data-aquarium-wide] .aquarium-catalog-panel [aria-label='도감 개체'] button > div > span { max-width: 3.5rem; }
-}
-@media (orientation: landscape) and (min-width: 1200px) {
- html[data-aquarium-wide] .aquarium-panel-grid { grid-template-columns: repeat(4,minmax(0,1fr)); }
 }

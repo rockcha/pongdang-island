@@ -32,9 +32,9 @@ export function ConfirmDialog({open,onOpenChange,title,description,onConfirm,tri
     <AlertDialogTitle className="text-base font-normal leading-7 text-balance">{title}</AlertDialogTitle>
     <AlertDialogDescription className="text-xs leading-5 text-pretty">{description}</AlertDialogDescription>
    </AlertDialogHeader>
-   {children&&<div className="mt-5 text-left">{children}</div>}
+   {children&&<div data-slot="confirm-body" className="mt-5 text-left">{children}</div>}
    {error&&<p role="alert" className="mt-3 text-xs leading-5 text-destructive">{error}</p>}
-   <div className="mt-6 grid grid-cols-2 gap-2.5">
+   <div data-slot="confirm-actions" className="mt-6 grid grid-cols-2 gap-2.5">
     <AlertDialogCancel ref={cancel} variant="secondary" className="min-h-11 rounded-xl border-0" disabled={busy}>{cancelLabel}</AlertDialogCancel>
     <Button className="min-h-11 rounded-xl" disabled={busy||confirmDisabled} aria-busy={busy} onClick={()=>{if(!busy&&!confirmDisabled)onConfirm()}}>{busy?'처리 중…':confirmLabel}</Button>
    </div>

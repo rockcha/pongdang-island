@@ -24,30 +24,43 @@
   font-weight: 600;
 }
 
+.relic-slot { --relic-light: 212 170 81; }
+.relic-slot[data-relic-rarity='rare'] { --relic-light: 107 169 207; }
+.relic-slot[data-relic-rarity='epic'] { --relic-light: 174 123 215; }
+.relic-slot[data-relic-rarity='mythic'] { --relic-light: 225 165 58; }
+
 .relic-equipped-art::before {
   content: '';
   position: absolute;
   z-index: -1;
   inset: -0.5rem;
   border-radius: 50%;
-  background: radial-gradient(circle, #dfb55170 0%, #edce8525 42%, transparent 72%);
+  background: radial-gradient(circle, rgb(var(--relic-light) / .45) 0%, rgb(var(--relic-light) / .14) 42%, transparent 72%);
   opacity: 0.35;
   pointer-events: none;
 }
 
-.relic-equip-pulse {
-  border: 1px solid #d5a74c99;
-  box-shadow: 0 0 12px #dfba6240;
-  opacity: 0;
-}
+.relic-transition-ring { border: 1px solid rgb(var(--relic-light) / .7); box-shadow: 0 0 14px rgb(var(--relic-light) / .2); }
+.relic-transition-flash { background: radial-gradient(circle, rgb(var(--relic-light) / .5), transparent 68%); }
+.relic-transition-sparks { background: radial-gradient(circle at 50% 3%, #fff5d6 0 1px, transparent 2px), radial-gradient(circle at 85% 18%, rgb(var(--relic-light)) 0 1.5px, transparent 2.5px), radial-gradient(circle at 97% 55%, #fff5d6 0 1px, transparent 2px), radial-gradient(circle at 72% 91%, rgb(var(--relic-light)) 0 1.5px, transparent 2.5px), radial-gradient(circle at 25% 88%, #fff5d6 0 1px, transparent 2px), radial-gradient(circle at 4% 42%, rgb(var(--relic-light)) 0 1.5px, transparent 2.5px); }
+.relic-transition-ring, .relic-transition-flash, .relic-transition-sparks, .relic-departing-art { opacity: 0; }
 
 @media (prefers-reduced-motion: no-preference) {
   .relic-equipped-art::before {
     animation: relic-idle-glow 4.8s ease-in-out infinite alternate;
   }
-  .relic-equip-pulse {
-    animation: relic-equip-bloom 560ms ease-out both;
-  }
+  .relic-transition-ring { animation: relic-equip-bloom 760ms 120ms cubic-bezier(.16,.7,.3,1) both; }
+  .relic-transition-ring:nth-of-type(3) { animation-delay: 200ms; }
+  .relic-transition-ring:nth-of-type(4) { animation-delay: 280ms; }
+  .relic-transition-flash { animation: relic-flash 650ms 120ms ease-out both; }
+  .relic-transition-sparks { animation: relic-sparks 900ms 120ms ease-out both; }
+  .relic-transition[data-transition='unequip'] .relic-transition-ring { animation-name: relic-release-ring; animation-duration: 650ms; }
+  .relic-transition[data-transition='unequip'] .relic-transition-sparks { animation-name: relic-release-sparks; }
+  .relic-departing-art { animation: relic-depart 650ms 120ms ease-out both; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+ .relic-transition-flash { animation: relic-reduced-flash 450ms ease-out both; }
 }
 
 @keyframes relic-idle-glow {
@@ -56,7 +69,13 @@
 }
 
 @keyframes relic-equip-bloom {
-  0% { opacity: 0; transform: scale(0.6); }
-  18% { opacity: 0.6; }
-  100% { opacity: 0; transform: scale(1.9); }
+  0% { opacity: 0; transform: scale(.45); }
+  16% { opacity: .8; }
+  100% { opacity: 0; transform: scale(2.35); }
 }
+@keyframes relic-flash { 0% { opacity: 0; transform: scale(.6); } 20% { opacity: .75; } 100% { opacity: 0; transform: scale(1.6); } }
+@keyframes relic-sparks { 0% { opacity: 0; transform: scale(.35) rotate(-12deg); } 22% { opacity: .9; } 100% { opacity: 0; transform: scale(1.3) rotate(14deg); } }
+@keyframes relic-release-ring { 0% { opacity: 0; transform: scale(1.7); } 18% { opacity: .5; } 100% { opacity: 0; transform: scale(.35); } }
+@keyframes relic-release-sparks { 0% { opacity: .7; transform: scale(1); } 100% { opacity: 0; transform: translateY(-16px) scale(.55); } }
+@keyframes relic-depart { 0% { opacity: .75; transform: scale(1); filter: brightness(1.2); } 100% { opacity: 0; transform: translateY(-12px) scale(.7); filter: brightness(1.5); } }
+@keyframes relic-reduced-flash { from { opacity: .35; } to { opacity: 0; } }

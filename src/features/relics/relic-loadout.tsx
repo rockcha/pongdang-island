@@ -6,7 +6,7 @@ import {RelicIcon} from '@/components/collection-filter-icons'
 import {useAuth} from '@/components/auth-provider'
 import {randomId} from '@/lib/random-id'
 import {equipRelic,sellRelic,loadRelics,relicError,type RelicState} from './api'
-import {RelicEquipmentSlot} from './relic-equipment-slot'
+import {RelicEquipmentSlot,type RelicTransition} from './relic-equipment-slot'
 import {playRelicEquipSound,playRelicUnequipSound} from '@/features/gold/purchase-sound'
 
 import {RelicCatalogTabs} from './relic-catalog-tabs'
@@ -26,7 +26,18 @@ export function RelicLoadout({page=false}:{page?:boolean}){
 function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
  const [open,setOpen]=useState(page),[state,setState]=useState<RelicState|null>(null),[error,setError]=useState(''),[attempt,setAttempt]=useState(0)
  const [notice,setNotice]=useState('')
- const [equipEffect,setEquipEffect]=useState<string|null>(null)
+ const [equipEffect,setEquipEffect]=useState<RelicTransition|null>(null)
+ const scene=useRef<HTMLDivElement>(null)
+ useEffect(()=>{
+  if(!equipEffect)return
+  const timer=window.setTimeout(()=>setEquipEffect(null),1100)
+  let animation:Animation|undefined
+  if(!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches){
+   const strength=({common:0.5,rare:1,epic:2,mythic:3}[equipEffect.relic.rarity])*(equipEffect.kind==='unequip'?0.55:1)
+   animation=scene.current?.animate?.([0,-1,0.8,-0.55,0.3,0].map((x,i)=>({transform:`translate(${x*strength}px,${i%2?strength*0.3:0}px) rotate(${x*strength*0.035}deg)`})),{duration:equipEffect.kind==='unequip'?260:380,delay:120,easing:'ease-out'})
+  }
+  return()=>{window.clearTimeout(timer);animation?.cancel()}
+ },[equipEffect])
  const [purchase,setPurchase]=useState<Purchase|null>(null),[pending,setPending]=useState<Purchase|null>(()=>restore(storageKey)),[saving,setSaving]=useState(false)
  const lock=useRef(false)
  const alive=useRef(false),revision=useRef(0)
@@ -55,7 +66,8 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
    if(purchase.action!=='sell'&&next.equippedId===purchase.id){
     if(purchase.id)playRelicEquipSound(purchase.operation)
     else playRelicUnequipSound(purchase.operation)
-    setEquipEffect(purchase.id?purchase.operation:null)
+    const effectRelic=purchase.id?next.relics.find(r=>r.id===purchase.id):state?.relics.find(r=>r.id===state.equippedId)
+    if(effectRelic)setEquipEffect({id:purchase.operation,kind:purchase.id?'equip':'unequip',relic:effectRelic})
    }
    setState(next);remember(null);setPurchase(null)
   }
@@ -84,19 +96,19 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
    {pending&&<Button disabled={saving} onClick={()=>{setError('');setPurchase(pending)}}>{pending.action==='sell'?'판매':'장착'} 결과 다시 확인</Button>}
    {!state&&!error&&<p role="status" className="py-6 text-center text-sm">유물을 불러오는 중…</p>}
    {state&&<>
-    <RelicEquipmentSlot relic={state.relics.find(r=>r.id===state.equippedId)} effectKey={equipEffect} disabled={saving||!!pending} canChoose={state.relics.some(r=>r.owned)} onChoose={()=>list.current?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus()} onUnequip={()=>select(null,'유물 해제')}/>
+    <RelicEquipmentSlot relic={state.relics.find(r=>r.id===state.equippedId)} transition={equipEffect} disabled={saving||!!pending} canChoose={state.relics.some(r=>r.owned)} onChoose={()=>list.current?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus()} onUnequip={()=>select(null,'유물 해제')}/>
     <RelicCatalogTabs state={state} disabled={saving||!!pending} listRef={list} onEquip={r=>select(r.id,r.name)} onSell={r=>{setError('');setNotice('');setPurchase({id:r.id,name:r.name,operation:randomId(),fee:r.sell_price,action:'sell'})}}/>
    </>}
  </>
  return <>
   {page?<section aria-label="유물" className="flex min-h-0 flex-1 flex-col">
    <h2 className="sr-only">유물</h2>
-   <div className="flex min-h-0 flex-1 flex-col gap-4 px-5 pb-4 pt-5">{content}</div>
+   <div ref={scene} className="flex min-h-0 flex-1 flex-col gap-4 px-5 pb-4 pt-5">{content}</div>
   </section>:<>
    <Button type="button" size="sm" variant="outline" onClick={()=>{setError('');setOpen(true)}}><RelicIcon className="size-5"/>유물 장착</Button>
    <Dialog open={open} onOpenChange={value=>{if(!saving)setOpen(value)}}><DialogContent className="flex max-h-[85dvh] flex-col overflow-hidden sm:max-w-lg">
     <DialogHeader><DialogTitle>유물 장착</DialogTitle><DialogDescription>장착은 무료이며 한 번에 하나만 장착할 수 있어요. 해제와 교체에는 해제 비용만 들어요.</DialogDescription></DialogHeader>
-    {content}
+    <div ref={scene} className="flex min-h-0 flex-col gap-4">{content}</div>
    </DialogContent></Dialog>
   </>}
   <ConfirmDialog open={!!purchase} onOpenChange={value=>{if(!value&&!saving){setPurchase(null);setError('')}}} title={purchase?.action==='sell'?`${purchase.name} 판매할까요?`:purchase?.id?`${purchase.name} 장착할까요?`:'유물을 해제할까요?'} description={<span className="block space-y-2"><span className="flex items-center justify-center gap-1">{purchase?.fee===0?'무료':<><RelicGold amount={purchase?.fee??0}/>{purchase?.action==='sell'?'를 받아요':''}</>}</span><span className="block">{purchase?.action==='sell'?'도감 기록은 남으며, 판매한 유물은 낚시에서 다시 만날 수 있어요.':purchase?.fee===0?'비용 없이 유물을 장착해요.':purchase?.id?'기존 유물의 해제 비용만 지불해요. 새 유물 장착은 무료예요.':'유물 해제 비용이에요.'}</span></span>} busy={saving} error={error} confirmLabel={pending?'결과 다시 확인':purchase?.action==='sell'?'판매하기':'확인'} onConfirm={()=>void confirm()}/>

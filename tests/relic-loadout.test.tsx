@@ -1,7 +1,9 @@
 import {act,cleanup,fireEvent,render,screen,within,waitFor} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
 import {RelicLoadout,RelicPage} from '@/features/relics/relic-loadout'
-const {load,equip,sell,equipSound,unequipSound}=vi.hoisted(()=>({load:vi.fn(),equip:vi.fn(),sell:vi.fn(),equipSound:vi.fn(),unequipSound:vi.fn()}))
+const {load,equip,sell,equipSound,unequipSound,navigate,shareCatch}=vi.hoisted(()=>({load:vi.fn(),equip:vi.fn(),sell:vi.fn(),equipSound:vi.fn(),unequipSound:vi.fn(),navigate:vi.fn(),shareCatch:vi.fn()}))
+vi.mock('react-router',async original=>({...await original<typeof import('react-router')>(),useNavigate:()=>navigate}))
+vi.mock('@/features/showcase/api',async original=>({...await original<typeof import('@/features/showcase/api')>(),loadRelicShowcaseCatch:shareCatch}))
 vi.mock('@/features/gold/purchase-sound',()=>({playRelicEquipSound:equipSound,playRelicUnequipSound:unequipSound}))
 vi.mock('@/features/relics/api',async original=>({...await original<typeof import('@/features/relics/api')>(),loadRelics:load,equipRelic:equip,sellRelic:sell}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'relic-test'}}})}))
@@ -11,6 +13,18 @@ const a={id:'a',name:'조개 모래시계',description:'최대 제작 시간 +2�
 const b={...a,id:'b',name:'영원의 물시계',rarity:'mythic',owned:false,effect_value:8}
 const state={equippedId:null,changeFee:500,equipFee:0,unequipFee:500,relics:[a,b]}
 afterEach(()=>{cleanup();localStorage.clear();vi.clearAllMocks()})
+it('shares an owned mythic from its verified catch without selling or changing equipment',async()=>{
+ const relic={...b,owned:true}
+ const caught={operationId:'real-relic-catch',species:{...relic,id:'relic-'+relic.id,kind:'relic'},firstDiscovery:true,regionName:'퐁당섬 앞바다',caughtAt:'2026-10-25T14:00:00Z'}
+ load.mockResolvedValue({...state,relics:[a,relic],equippedId:relic.id})
+ shareCatch.mockResolvedValue(caught)
+ render(<RelicPage/>)
+ fireEvent.click(await screen.findByRole('button',{name:`${relic.name} 더보기`}))
+ fireEvent.click(await screen.findByRole('menuitem',{name:'자랑하기'}))
+ await waitFor(()=>expect(navigate).toHaveBeenCalledWith('/showcase/new',expect.objectContaining({state:{showcaseDraft:expect.any(String)}})))
+ expect(shareCatch).toHaveBeenCalledWith(relic.id)
+ expect(equip).not.toHaveBeenCalled();expect(sell).not.toHaveBeenCalled()
+})
 it('shows a production capacity rejection without changing equipment or playing equip effects',async()=>{
  load.mockResolvedValue({...state,equippedId:'a'})
  equip.mockRejectedValueOnce({code:'P0001',message:'RELIC_FUEL_PRODUCTION_ACTIVE:4'})

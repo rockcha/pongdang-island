@@ -1,7 +1,7 @@
 import {createPortal} from 'react-dom'
 import {useAquariumWideMode} from '@/features/aquarium/use-aquarium-wide-mode'
 import {AquariumLike} from './aquarium-like'
-import { useEffect, useMemo, useState,useRef } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useState,useRef } from 'react'
 import type {ReactNode} from 'react'
 import { Link, useParams } from 'react-router'
 import { ChevronLeft, ChevronRight,Maximize2,Minimize2,Minus,Plus } from 'lucide-react'
@@ -160,14 +160,19 @@ function FriendTankScene({name,items,background,children}:{name:string;items:Own
   const [zoom,setZoom]=useState(1),[verticalView,setVerticalView]=useState(0)
   const fitted=useFittedTankViewport(0,!wide.active)
   const [viewRequest,setViewRequest]=useState<{position:number;zoom?:number;y?:number}>({position:1})
+  useLayoutEffect(()=>{
+    const zoom=wide.active?1/3:1,position=wide.active?0:1
+    setZoom(zoom);setView(position);setVerticalView(0)
+    setViewRequest({position,zoom,y:0})
+  },[wide.active])
   const src=themePanoramaUrl(background?.image_path)
-  const scene=<div ref={fitted.ref} aria-label={name} data-testid="friend-aquarium-viewport" className="flex min-h-0 w-full flex-1 items-start justify-center overflow-hidden"><div className="aquarium-fitted-glass friend-aquarium-scene relative shrink-0 overflow-hidden bg-gradient-to-b from-blue-100 to-blue-200" style={{width:wide.active?'100%':fitted.width,height:wide.active?'100%':fitted.height}} tabIndex={0} aria-label="친구 어항 둘러보기" onKeyDown={event=>{
+  const scene=<div ref={fitted.ref} aria-label={name} data-testid="friend-aquarium-viewport" className={`flex min-h-0 w-full flex-1 justify-center overflow-hidden ${wide.active?'items-center':'items-start'}`}><div className="aquarium-fitted-glass friend-aquarium-scene relative shrink-0 overflow-hidden bg-gradient-to-b from-blue-100 to-blue-200" style={wide.active?{width:'min(100vw, calc(100dvh * 1.875))',height:'min(calc(100vw / 1.875), 100dvh)'}:{width:fitted.width,height:fitted.height}} tabIndex={0} aria-label="친구 어항 둘러보기" onKeyDown={event=>{
     if(event.target!==event.currentTarget||!src)return
     if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();setViewRequest({position:clampTankCameraView(view+(event.key==='ArrowLeft'?-.15:.15),3,zoom)})}
-  }}><TankInhabitants items={items} fitView={!wide.active&&!!src}
+  }}><TankInhabitants key={String(wide.active)} items={items} preview={wide.active} fitView={!wide.active&&!!src}
     world={src?{columns:3,overview:true,fixedViewport:true,minZoom:wide.active?1/3:1,maxZoom:2,initialZoom:wide.active?1/3:1,initialView:wide.active?0:1,preserveArrangement:false,onZoomChange:setZoom,onViewChange:setView,onVerticalViewChange:setVerticalView}:undefined}
     viewRequest={src?viewRequest:undefined}
-    scenery={<><AquariumBackdrop background={background} panorama={src?{src,view,zoom,fixedViewport:true,heightRatio:1.6,y:verticalView}:undefined}/><TankBubbles/></>}
+    scenery={<><AquariumBackdrop background={background} panorama={src?{src,view,zoom,fixedViewport:true,heightRatio:wide.active?1.6/3:1.6,y:verticalView}:undefined}/><TankBubbles/></>}
   />{!wide.active&&children}
   <Button variant="ghost" data-wide-trigger={!wide.active?'':undefined} aria-label={wide.active?'가로 화면 종료':'친구 아쿠아리움 가로 보기'} onClick={wide.active?wide.exit:wide.enter} className="absolute right-2 top-2 z-40 min-h-10 rounded-full bg-background/85 text-xs shadow-sm">{wide.active?<Minimize2 className="size-4"/>:<Maximize2 className="size-4"/>}{wide.active?'가로 화면 종료':'가로 보기'}</Button>
   {wide.active&&<div className="absolute bottom-3 left-1/2 z-40 flex -translate-x-1/2 items-center gap-2 rounded-xl bg-background/90 p-1"><Button variant="ghost" size="icon" aria-label="친구 어항 축소" onClick={()=>setViewRequest({position:view,zoom:Math.max(1/3,zoom-.15),y:verticalView})}><Minus className="size-4"/></Button><Button variant="ghost" className="text-xs" onClick={()=>setViewRequest({position:0,zoom:1/3,y:0})}>전체 맞춤</Button><Button variant="ghost" size="icon" aria-label="친구 어항 확대" onClick={()=>setViewRequest({position:view,zoom:Math.min(2,zoom+.15),y:verticalView})}><Plus className="size-4"/></Button></div>}

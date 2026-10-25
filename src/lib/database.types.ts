@@ -74,6 +74,8 @@ export type Database = {
       personal_bait_workshop_state:{Args:Record<string,never>;Returns:import('@/features/production/personal-bait-api').PersonalBaitState}
       personal_bait_workshop_action:{Args:import('@/features/production/personal-bait-api').PersonalBaitAction;Returns:import('@/features/production/personal-bait-api').PersonalBaitState}
       harbor_action:{Args:import('@/features/port/api').HarborAction;Returns:import('@/features/port/api').HarborState}
+      cancel_harbor_voyage:{Args:{p_voyage_id:string;p_operation_id:string;p_refund_expected:boolean};Returns:import('@/features/port/api').HarborState}
+      relic_showcase_catch:{Args:{p_relic_id:string};Returns:{operationId:string;species:import('@/features/collection/api').Species;regionName:string;caughtAt:string;firstDiscovery:boolean}}
       music_library:{Args:{p_import:import('@/features/music/music-library').MusicTrack[]|null};Returns:import('@/features/music/music-library').MusicTrack[]}
       music_edit:{Args:{p_action:string;p_id:string;p_title:string;p_name:string};Returns:import('@/features/music/music-library').MusicTrack[]}
       friend_expedition:{Args:{p_owner:string};Returns:import('@/features/expeditions/api').FriendExpeditionVisit}
@@ -161,6 +163,7 @@ export type Database = {
       buy_aquarium_tank: { Args: { p_operation_id: string }; Returns: import('@/features/gold/api').GoldState & { delta: number } }
       manage_aquarium_tank: { Args: { p_tank_id: string; p_action: string; p_value: string }; Returns: import('@/features/aquarium/api').AquariumState }
       relic_state:{Args:Record<string,never>;Returns:import('@/features/relics/api').RelicState}
+      buy_fishing_bait_bulk:{Args:{p_bait_id:string;p_quantity:number;p_operation_id:string;p_expected_price:number};Returns:import('@/features/gold/wallet').Wallet&{delta:number;replayed:boolean;quantity?:number;testClaimed:boolean;testEnabled:boolean}}
       equip_relic:{Args:{p_relic_id:string|null;p_operation_id:string;p_expected_fee?:number};Returns:import('@/features/relics/api').RelicState}
       sell_relic:{Args:{p_relic_id:string;p_operation_id:string;p_expected_price:number};Returns:import('@/features/relics/api').RelicState}
       aquarium_state: { Args: Record<string, never>; Returns: import('@/features/aquarium/api').AquariumState }

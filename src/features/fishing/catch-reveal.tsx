@@ -7,14 +7,14 @@ import { createPortal } from 'react-dom'
 import { collectibleUrl } from '@/features/collection/api'
 import type { Species } from '@/features/collection/api'
 import { chanceFailurePhrases } from './fishing-practice'
-import { rarities } from '@/lib/game/rarity'
+import { rarities,catchBadgeColors } from '@/lib/game/rarity'
 import { regionIcons } from '@/features/regions/region-icons'
 import {useFishingAudio} from './fishing-audio'
 type RevealProps={firstDiscovery?:boolean;onDismiss:()=>void;practice?:boolean;preview?:boolean;regionName?:string;caughtAt?:string;onShare?:()=>void;failureLabel?:string;failureReason?:string|null}&({species:Species;failure?:never}|{species?:never;failure:string})
 export function CatchReveal({species,failure,onDismiss,practice=false,preview=false,onShare,failureReason,firstDiscovery=false}:RevealProps){
  const [ready,setReady]=useState(false)
  useFishingAudio('/sounds/caught.mp3',!!species&&!preview,{trigger:species?.id,volume:.7})
- const shareable=!!species&&species.kind!=='map'&&species.kind!=='relic'&&['epic','mythic'].includes(species.rarity)&&!practice&&!!onShare
+ const shareable=!!species&&species.kind!=='map'&&(species.kind==='relic'?species.rarity==='mythic':['epic','mythic'].includes(species.rarity))&&!practice&&!!onShare
  useEffect(()=>{const timer=setTimeout(()=>setReady(true),1300);return()=>clearTimeout(timer)},[])
  const nativeRegion=species?.is_native&&species.native_region_id?regionIcons[species.native_region_id]:undefined
  const chanceFailure=['bait','escape','wave'].includes(failureReason??'')
@@ -30,6 +30,7 @@ export function CatchReveal({species,failure,onDismiss,practice=false,preview=fa
  const failureImage=failureReason==='snap'?'/branding/pongi-fishing-snap.png':failureReason==='slack'?'/branding/pongi-fishing-slack.png':'/branding/pongi-fishing-fail.png'
  const failureAlt=failureReason==='snap'?'끊어진 낚싯줄을 보고 놀란 퐁이':failureReason==='slack'?'느슨해진 낚싯줄을 보고 당황한 퐁이':'낚시에 실패해 시무룩한 퐁이'
  const rarity=species?.rarity??'common',color=species?rarities[rarity].effectColor:'#9aafc9',dismiss=useRef<HTMLButtonElement>(null)
+ const badge=catchBadgeColors(rarity)
  useEffect(()=>{const previous=document.activeElement;dismiss.current?.focus({preventScroll:true});return()=>{if(previous instanceof HTMLElement&&previous.isConnected)previous.focus({preventScroll:true})}},[])
  return createPortal(<div className="fixed inset-0 z-[80] flex h-dvh w-screen items-center justify-center overflow-hidden bg-slate-950/65 p-6 text-center backdrop-blur-sm" style={{color,backgroundImage:species?`radial-gradient(ellipse at center,${color}25,transparent 65%)`:undefined}} onKeyDown={event=>{if(event.key==='Escape'){event.preventDefault();if(!event.repeat)tryDismiss()}}}>
   <button ref={dismiss} type="button" aria-label={species?`${species.name} 결과 닫기`:'낚시 실패 결과 닫기'} onClick={tryDismiss} className="absolute inset-0 size-full cursor-pointer focus-visible:outline-2 focus-visible:outline-white"/>
@@ -42,7 +43,7 @@ export function CatchReveal({species,failure,onDismiss,practice=false,preview=fa
     {species?<span className="flex w-full flex-wrap items-center justify-center gap-x-2.5 gap-y-2">
      {nativeRegion&&<img src={nativeRegion.src} alt={`${nativeRegion.name} 고유종`} title={`${nativeRegion.name} 고유종`} className="size-8 shrink-0 object-contain drop-shadow-md sm:size-9"/>}
      <span className="text-balance break-keep text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_2px_16px_#0005] sm:text-4xl">{species.kind==='relic'&&<span role="img" aria-label="유물" className="mr-1.5 inline-flex align-middle"><RelicIcon className="size-[1em] shrink-0"/></span>}{species.id.startsWith('halloween-')&&<span aria-label="할로윈 한정" className="mr-1.5 inline-flex align-middle"><HalloweenIcon className="size-[1em] shrink-0"/></span>}{species.name}</span>
-     <span className="inline-flex shrink-0 items-center gap-2"><span className="inline-flex h-7 items-center rounded px-2 text-xs font-bold leading-5 text-white" style={{backgroundColor:color}}>{rarities[rarity].label}</span>{firstDiscovery&&!practice&&<NewDiscoveryBadge size="md"/>}</span>
+     <span className="inline-flex shrink-0 items-center gap-2"><span className="inline-flex h-7 items-center rounded px-2 text-xs font-bold leading-5" style={{backgroundColor:badge.background,color:badge.text,colorScheme:'only light'}}>{rarities[rarity].label}</span>{firstDiscovery&&!practice&&<NewDiscoveryBadge size="md"/>}</span>
     </span>:<>
      <span className="text-2xl font-bold tracking-tight text-white">낚시 실패</span>
     </>}

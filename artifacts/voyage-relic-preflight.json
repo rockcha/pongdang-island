@@ -1,0 +1,261 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "capturedAt": "2026-10-25T14:47:32.807Z",
+  "data": [
+    {
+      "preflight": {
+        "relics": [
+          {
+            "id": "abundant-conch",
+            "name": "풍요의 소라고둥",
+            "rarity": "epic",
+            "enabled": true,
+            "sell_price": 1300,
+            "description": "미끼생산소 동시 가동 가능 횟수 +1 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "bait_active_slots",
+            "effect_value": 1,
+            "thumbnail_path": "relics/epic/abundant-conch_thumbnail.png"
+          },
+          {
+            "id": "current-piercing-needle",
+            "name": "물살을 가르는 바늘",
+            "rarity": "epic",
+            "enabled": true,
+            "sell_price": 1300,
+            "description": "낚시 대기 시간 1초 단축 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "fishing_wait_seconds",
+            "effect_value": 1,
+            "thumbnail_path": "relics/epic/current-piercing-needle_thumbnail.png"
+          },
+          {
+            "id": "eternal-water-clock",
+            "name": "영원의 물시계",
+            "rarity": "mythic",
+            "enabled": true,
+            "sell_price": 3000,
+            "description": "나만의 미끼 생산소 최대 제작 시간 +8시간 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "personal_bait_hours",
+            "effect_value": 8,
+            "thumbnail_path": "relics/mythic/eternal-water-clock_thumbnail.png"
+          },
+          {
+            "id": "fish-calling-bell",
+            "name": "물고기를 부르는 방울",
+            "rarity": "rare",
+            "enabled": true,
+            "sell_price": 200,
+            "description": "통발 미끼당 대기 시간 30초 단축 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "trap_seconds_per_bait",
+            "effect_value": 30,
+            "thumbnail_path": "relics/rare/fish-calling-bell_thumbnail.png"
+          },
+          {
+            "id": "golden-anchor-seal",
+            "name": "황금 닻 인장",
+            "rarity": "epic",
+            "enabled": true,
+            "sell_price": 1300,
+            "description": "배 구매 가격 150골드 할인 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "boat_discount_gold",
+            "effect_value": 150,
+            "thumbnail_path": "relics/epic/golden-anchor-seal_thumbnail.png"
+          },
+          {
+            "id": "instant-fishing-hook",
+            "name": "찰나를 낚는 낚싯바늘",
+            "rarity": "mythic",
+            "enabled": true,
+            "sell_price": 3000,
+            "description": "낚시 대기 시간 2초 단축 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "fishing_wait_seconds",
+            "effect_value": 2,
+            "thumbnail_path": "relics/mythic/instant-fishing-hook_thumbnail.png"
+          },
+          {
+            "id": "ocean-seed",
+            "name": "바다가 품은 씨앗",
+            "rarity": "mythic",
+            "enabled": true,
+            "sell_price": 3000,
+            "description": "미끼생산소 동시 가동 가능 횟수 +2 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "bait_active_slots",
+            "effect_value": 2,
+            "thumbnail_path": "relics/mythic/ocean-seed_thumbnail.png"
+          },
+          {
+            "id": "old-captain-seal",
+            "name": "낡은 선장의 인장",
+            "rarity": "rare",
+            "enabled": true,
+            "sell_price": 200,
+            "description": "배 구매 가격 50골드 할인 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "boat_discount_gold",
+            "effect_value": 50,
+            "thumbnail_path": "relics/rare/old-captain-seal_thumbnail.png"
+          },
+          {
+            "id": "primordial-ember",
+            "name": "태초의 불씨",
+            "rarity": "mythic",
+            "enabled": true,
+            "sell_price": 3000,
+            "description": "연료생산소 동시 가동 가능 횟수 +2 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "fuel_active_slots",
+            "effect_value": 2,
+            "thumbnail_path": "relics/mythic/primordial-ember_thumbnail.png"
+          },
+          {
+            "id": "sea-king-shipwright-edict",
+            "name": "해왕의 조선 칙서",
+            "rarity": "mythic",
+            "enabled": true,
+            "sell_price": 3000,
+            "description": "배 구매 가격 400골드 할인 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "boat_discount_gold",
+            "effect_value": 400,
+            "thumbnail_path": "relics/mythic/sea-king-shipwright-edict_thumbnail.png"
+          },
+          {
+            "id": "sea-king-summoning-bell",
+            "name": "해왕의 부름종",
+            "rarity": "mythic",
+            "enabled": true,
+            "sell_price": 3000,
+            "description": "통발 미끼당 대기 시간 3분 단축 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "trap_seconds_per_bait",
+            "effect_value": 180,
+            "thumbnail_path": "relics/mythic/sea-king-summoning-bell_thumbnail.png"
+          },
+          {
+            "id": "sea-king-trade-ledger",
+            "name": "해왕의 거래 장부",
+            "rarity": "mythic",
+            "enabled": true,
+            "sell_price": 3000,
+            "description": "미끼 구매 가격 2골드 할인",
+            "effect_kind": "bait_discount_gold",
+            "effect_value": 2,
+            "thumbnail_path": "relics/mythic/sea-king-trade-ledger_thumbnail.png"
+          },
+          {
+            "id": "sea-merchant-shell-token",
+            "name": "바다상인의 조개패",
+            "rarity": "epic",
+            "enabled": true,
+            "sell_price": 1300,
+            "description": "미끼 구매 가격 1골드 할인",
+            "effect_kind": "bait_discount_gold",
+            "effect_value": 1,
+            "thumbnail_path": "relics/epic/sea-merchant-shell-token_thumbnail.png"
+          },
+          {
+            "id": "shell-hourglass",
+            "name": "조개 모래시계",
+            "rarity": "rare",
+            "enabled": true,
+            "sell_price": 200,
+            "description": "나만의 미끼 생산소 최대 제작 시간 +2시간 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "personal_bait_hours",
+            "effect_value": 2,
+            "thumbnail_path": "relics/rare/shell-hourglass_thumbnail.png"
+          },
+          {
+            "id": "silver-osprey-feather",
+            "name": "은빛 물수리 깃털",
+            "rarity": "rare",
+            "enabled": true,
+            "sell_price": 200,
+            "description": "낚시 대기 시간 0.5초 단축 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "fishing_wait_seconds",
+            "effect_value": 0.5,
+            "thumbnail_path": "relics/rare/silver-osprey-feather_thumbnail.png"
+          },
+          {
+            "id": "still-wave-clock",
+            "name": "멈춘 파도의 시계",
+            "rarity": "epic",
+            "enabled": true,
+            "sell_price": 1300,
+            "description": "나만의 미끼 생산소 최대 제작 시간 +4시간 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "personal_bait_hours",
+            "effect_value": 4,
+            "thumbnail_path": "relics/epic/still-wave-clock_thumbnail.png"
+          },
+          {
+            "id": "tide-bell",
+            "name": "밀물의 종",
+            "rarity": "epic",
+            "enabled": true,
+            "sell_price": 1300,
+            "description": "통발 미끼당 대기 시간 1분 30초 단축 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "trap_seconds_per_bait",
+            "effect_value": 90,
+            "thumbnail_path": "relics/epic/tide-bell_thumbnail.png"
+          },
+          {
+            "id": "undying-furnace-heart",
+            "name": "꺼지지 않는 화로심장",
+            "rarity": "epic",
+            "enabled": true,
+            "sell_price": 1300,
+            "description": "연료생산소 동시 가동 가능 횟수 +1 · 장착 중에만 효과가 적용돼요.",
+            "effect_kind": "fuel_active_slots",
+            "effect_value": 1,
+            "thumbnail_path": "relics/epic/undying-furnace-heart_thumbnail.png"
+          }
+        ],
+        "functions": [
+          {
+            "name": "equip_relic",
+            "definition": "CREATE OR REPLACE FUNCTION app_private.equip_relic(p_relic_id text, p_operation_id uuid, p_expected_fee integer DEFAULT NULL::integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;prev public.gold_transactions;current_id text;fee integer;item text;fuel_limit integer:=4;bait_limit integer:=4;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null then raise exception 'INVALID_OPERATION';end if;\n perform app_private.get_gold_wallet();select * into strict w from public.player_wallets where user_id=u for update;\n item:='relic-loadout:'||coalesce(p_relic_id,'unequip');\n select * into prev from public.gold_transactions where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.action<>'buy' or prev.item_id is distinct from item or (p_expected_fee is not null and prev.delta<>-p_expected_fee) then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.relic_state()||jsonb_build_object('replayed',true);\n end if;\n select relic_id into current_id from app_private.player_relic_loadouts where user_id=u;\n if current_id is not distinct from p_relic_id then raise exception 'RELIC_ALREADY_EQUIPPED';end if;\n if p_relic_id is not null and not exists(select 1 from app_private.player_fishing_relics d join public.fishing_relics r on r.id=d.relic_id where d.user_id=u and d.relic_id=p_relic_id and r.enabled) then raise exception 'RELIC_NOT_OWNED';end if;\n -- Production starts share this wallet lock, so a concurrent start cannot\n -- exceed the capacity of the equipment committed by this transaction.\n if p_relic_id is not null then\n  select 4+case when effect_kind='fuel_active_slots' then effect_value::integer else 0 end,\n         4+case when effect_kind='bait_active_slots' then effect_value::integer else 0 end\n   into fuel_limit,bait_limit from public.fishing_relics where id=p_relic_id and enabled;\n  if not found then raise exception 'RELIC_NOT_OWNED';end if;\n end if;\n if app_private.production_active_count()>fuel_limit then raise exception 'RELIC_FUEL_PRODUCTION_ACTIVE:%',fuel_limit;end if;\n if app_private.bait_production_active_count()>bait_limit then raise exception 'RELIC_BAIT_PRODUCTION_ACTIVE:%',bait_limit;end if;\n -- Only removing the existing relic costs gold; the new equip itself is free.\n fee:=case when current_id is not null then 500 else 0 end;\n if p_expected_fee is not null and p_expected_fee<>fee then raise exception 'RELIC_LOADOUT_CHANGED';end if;\n if w.gold<fee then raise exception 'INSUFFICIENT_GOLD';end if;\n if p_relic_id is null then delete from app_private.player_relic_loadouts where user_id=u;\n else insert into app_private.player_relic_loadouts(user_id,relic_id) values(u,p_relic_id) on conflict(user_id) do update set relic_id=excluded.relic_id;end if;\n update public.player_wallets set gold=gold-fee,updated_at=clock_timestamp() where user_id=u;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy',item,-fee);\n return app_private.relic_state()||jsonb_build_object('replayed',false);\nend$function$\n"
+          },
+          {
+            "name": "harbor_action",
+            "definition": "CREATE OR REPLACE FUNCTION app_private.harbor_action(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_voyage_id uuid DEFAULT NULL::uuid, p_quantity integer DEFAULT 1, p_boat_id uuid DEFAULT NULL::uuid, p_slot integer DEFAULT NULL::integer, p_region_id text DEFAULT 'pongdang'::text, p_secondary_region_id text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v public.harbor_vessels;b public.harbor_boats;occupant public.harbor_boats;w public.player_wallets;trip public.harbor_voyages;\n prev app_private.harbor_operations;sig jsonb;receipt jsonb;n integer;slot integer;fuel integer;capacity integer;expansion_price integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('buy','depart','dock','store','sell','fuel','arrive','claim','claim_all','expand') then raise exception 'INVALID_HARBOR_ACTION';end if;\n if p_action in ('fuel','arrive','claim','claim_all') then return app_private.settle_legacy_harbor(p_action,p_operation_id,p_vessel_id,p_voyage_id,p_quantity);end if;\n sig:=jsonb_build_object('action',p_action,'vessel',p_vessel_id,'voyage',p_voyage_id,'quantity',p_quantity);\n if p_boat_id is not null or p_slot is not null then sig:=sig||jsonb_build_object('boat',p_boat_id,'slot',p_slot);end if;\n if p_action='depart' and p_region_id is distinct from 'pongdang' then sig:=sig||jsonb_build_object('region',p_region_id);end if;\n if p_secondary_region_id is not null then sig:=sig||jsonb_build_object('secondaryRegion',p_secondary_region_id);end if;\n perform pg_advisory_xact_lock(hashtextextended('harbor:'||u::text,0));\n select * into prev from app_private.harbor_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.harbor_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n perform app_private.get_gold_wallet();select * into w from public.player_wallets where user_id=u for update;\n select coalesce((select dock_slots from app_private.player_harbor_capacity where user_id=u),2) into capacity;\n if p_action='expand' then\n  if capacity>=4 then raise exception 'HARBOR_FULLY_EXPANDED';end if;\n  if p_slot is distinct from capacity+1 then raise exception 'HARBOR_EXPANSION_CHANGED';end if;\n  expansion_price:=case capacity when 2 then 10000 else 30000 end;\n  if w.gold<expansion_price then raise exception 'INSUFFICIENT_GOLD';end if;\n  insert into app_private.player_harbor_capacity(user_id,dock_slots) values(u,capacity+1)\n   on conflict(user_id) do update set dock_slots=excluded.dock_slots;\n  update public.player_wallets set gold=gold-expansion_price,updated_at=now() where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n   values(u,p_operation_id,'buy','harbor-dock:'||(capacity+1)::text,-expansion_price);\n  receipt:=jsonb_build_object('action','expand','dockSlots',capacity+1,'gold',expansion_price);\n elsif p_action='buy' then\n  select * into v from public.harbor_vessels where id=p_vessel_id;\n  if not found then raise exception 'VESSEL_NOT_FOUND';end if;\n  select count(*) into n from public.harbor_boats where user_id=u and vessel_id=v.id and sold_at is null;\n  v.price:=greatest(0,v.price-app_private.relic_bonus('boat_discount_gold')::integer);\n  if w.gold<v.price then raise exception 'INSUFFICIENT_GOLD';end if;\n  select s into slot from generate_series(1,capacity) s where not exists(select 1 from public.harbor_boats where user_id=u and dock_slot=s) order by s limit 1;\n  insert into public.harbor_boats(user_id,vessel_id,paid_price,instance_no,dock_slot) values(u,v.id,v.price,(select s from generate_series(1,n+1) s where not exists(select 1 from public.harbor_boats hb where hb.user_id=u and hb.vessel_id=v.id and hb.instance_no=s and hb.sold_at is null) order by s limit 1),slot) returning * into b;\n  insert into public.player_harbor_vessels(user_id,vessel_id) values(u,v.id) on conflict do nothing;\n  update public.player_wallets set gold=gold-v.price,updated_at=now() where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','harbor-vessel:'||v.id,-v.price);\n  receipt:=jsonb_build_object('action','buy','vesselId',v.id,'boatId',b.id);\n else\n  if p_boat_id is not null then select * into b from public.harbor_boats where id=p_boat_id and user_id=u and sold_at is null;\n  elsif p_action='depart' then\n   select * into b from public.harbor_boats b0 where b0.user_id=u and b0.vessel_id=p_vessel_id and b0.dock_slot is not null\n    order by exists(select 1 from public.harbor_voyages t where t.boat_id=b0.id and t.claimed_at is null),b0.dock_slot limit 1;\n  end if;\n  if b.id is null then raise exception 'VESSEL_NOT_OWNED';end if;\n  if p_vessel_id is not null and p_vessel_id<>b.vessel_id then raise exception 'INVALID_BOAT';end if;\n  if exists(select 1 from public.harbor_voyages where boat_id=b.id and claimed_at is null) then raise exception 'VOYAGE_ACTIVE';end if;\n  if p_action='sell' then\n   select * into strict v from public.harbor_vessels where id=b.vessel_id;\n   n:=coalesce(b.paid_price,v.price)/2;\n   if w.gold::bigint+n>1000000000 then raise exception 'GOLD_LIMIT';end if;\n   update public.harbor_boats set sold_at=clock_timestamp(),dock_slot=null where id=b.id;\n   update public.player_wallets set gold=gold+n,updated_at=now() where user_id=u;\n   insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'sell','harbor-boat:'||b.id,n);\n   receipt:=jsonb_build_object('action','sell','vesselId',v.id,'boatId',b.id,'gold',n);\n  elsif p_action='dock' then\n   if p_slot is null or p_slot not between 1 and capacity then raise exception 'INVALID_DOCK_SLOT';end if;\n   if b.dock_slot is not null and b.dock_slot<>p_slot then raise exception 'BOAT_ALREADY_DOCKED';end if;\n   select * into occupant from public.harbor_boats where user_id=u and dock_slot=p_slot and id<>b.id;\n   if occupant.id is not null then\n    if exists(select 1 from public.harbor_voyages where boat_id=occupant.id and claimed_at is null) then raise exception 'DOCK_RESERVED';end if;\n    update public.harbor_boats set dock_slot=null where id=occupant.id;\n   end if;\n   update public.harbor_boats set dock_slot=p_slot where id=b.id;\n   receipt:=jsonb_build_object('action','dock','boatId',b.id,'slot',p_slot);\n  elsif p_action='store' then\n   update public.harbor_boats set dock_slot=null where id=b.id;\n   receipt:=jsonb_build_object('action','store','boatId',b.id);\n  else\n   if not exists(select 1 from public.regions where id=p_region_id) then raise exception 'REGION_NOT_FOUND';end if;\n   if exists(select 1 from public.regions r where r.id=p_region_id and r.requires_map_fragment\n    and not exists(select 1 from public.player_map_fragments m where m.user_id=u and m.region_id=r.id)) then raise exception 'REGION_LOCKED';end if;\n   if b.dock_slot is null or b.dock_slot>capacity then raise exception 'DOCK_REQUIRED';end if;\n   select * into strict v from public.harbor_vessels where id=b.vessel_id;\n   if coalesce((v.catch_rule->>'region_count')::integer,1)=2 then\n    if p_secondary_region_id is null or p_secondary_region_id=p_region_id then raise exception 'SECOND_REGION_REQUIRED';end if;\n    if not exists(select 1 from public.regions where id=p_secondary_region_id) then raise exception 'REGION_NOT_FOUND';end if;\n    if exists(select 1 from public.regions r where r.id=p_secondary_region_id and r.requires_map_fragment\n     and not exists(select 1 from public.player_map_fragments m where m.user_id=u and m.region_id=r.id)) then raise exception 'REGION_LOCKED';end if;\n   elsif p_secondary_region_id is not null then raise exception 'SECOND_REGION_NOT_ALLOWED';end if;\n   fuel:=coalesce((w.inventory->>'fuel')::integer,0);\n   if fuel<v.fuel_cost then raise exception 'INSUFFICIENT_FUEL';end if;\n   update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel-v.fuel_cost)),updated_at=now() where user_id=u;\n   insert into public.harbor_voyages(user_id,vessel_id,boat_id,region_id,vessel_snapshot,returns_at) values(u,v.id,b.id,p_region_id,to_jsonb(v)||case when p_secondary_region_id is not null then jsonb_build_object('secondary_region_id',p_secondary_region_id,'secondary_region_name',(select name from public.regions where id=p_secondary_region_id)) else '{}'::jsonb end||jsonb_build_object('fishing_count',v.fishing_count+floor(random()*(coalesce(v.fishing_count_max,v.fishing_count)-v.fishing_count+1))::integer),clock_timestamp()+make_interval(mins=>v.duration_minutes)) returning * into trip;\n   receipt:=jsonb_build_object('action','depart','voyageId',trip.id,'vesselId',v.id,'boatId',b.id);\n  end if;\n end if;\n insert into app_private.harbor_operations(user_id,operation_id,signature,receipt) values(u,p_operation_id,sig,receipt);\n return app_private.harbor_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n"
+          },
+          {
+            "name": "harbor_state",
+            "definition": "CREATE OR REPLACE FUNCTION app_private.harbor_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w jsonb;capacity integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n w:=app_private.get_gold_wallet();\n select coalesce((select dock_slots from app_private.player_harbor_capacity where user_id=u),2) into capacity;\n return jsonb_build_object('serverNow',clock_timestamp(),'fuel',coalesce((w->'inventory'->>'fuel')::integer,0),'fuelPrice',57,'fuelDailyLimit',5,'fuelPurchasedToday',coalesce((select sum((op.receipt->>'quantity')::integer) from app_private.harbor_operations op where op.user_id=u and op.receipt->>'action'='fuel' and op.created_at>=((clock_timestamp() at time zone 'Asia/Seoul')::date::timestamp at time zone 'Asia/Seoul')),0),'dockSlots',capacity,'nextDockExpansion',case when capacity<4 then jsonb_build_object('slot',capacity+1,'price',case capacity when 2 then 10000 else 30000 end) else null end,\n 'regions',(select jsonb_agg(jsonb_build_object('id',r.id,'name',r.name,'unlocked',not r.requires_map_fragment or exists(select 1 from public.player_map_fragments m where m.user_id=u and m.region_id=r.id)) order by r.sort_order) from public.regions r),\n 'vessels',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('price',greatest(0,v.price-app_private.relic_bonus('boat_discount_gold')::integer),'basePrice',v.price,'owned',o.n>0,'ownedCount',o.n) order by v.sort_order)\n  from public.harbor_vessels v cross join lateral(select count(*)::integer n from public.harbor_boats b where b.user_id=u and b.vessel_id=v.id and b.sold_at is null)o),'[]'::jsonb),\n 'boats',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('price',coalesce(b.paid_price,v.price),'id',b.id,'vessel_id',b.vessel_id,'instance_no',b.instance_no,'dock_slot',b.dock_slot,'owned',true) order by b.purchased_at,b.id)\n  from public.harbor_boats b join public.harbor_vessels v on v.id=b.vessel_id where b.user_id=u and b.sold_at is null),'[]'::jsonb),\n 'voyages',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('region_name',(select name from public.regions where id=v.region_id)) order by v.departed_at) from public.harbor_voyages v where v.user_id=u and v.claimed_at is null),'[]'::jsonb));\nend $function$\n"
+          },
+          {
+            "name": "relic_bonus",
+            "definition": "CREATE OR REPLACE FUNCTION app_private.relic_bonus(p_effect text)\n RETURNS numeric\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select coalesce((select r.effect_value from app_private.player_relic_loadouts l join public.fishing_relics r on r.id=l.relic_id\n where l.user_id=(select auth.uid()) and r.enabled and r.effect_kind=p_effect),0)\n$function$\n"
+          },
+          {
+            "name": "snapshot_harbor_catch_rule",
+            "definition": "CREATE OR REPLACE FUNCTION app_private.snapshot_harbor_catch_rule()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare rule jsonb;\nbegin\n select catch_rule into strict rule from public.harbor_vessels where id=new.vessel_id;\n if rule is null then raise exception 'HARBOR_RULE_REQUIRED';end if;\n new.vessel_snapshot:=jsonb_set(new.vessel_snapshot,'{catch_rule}',rule);\n return new;\nend $function$\n"
+          }
+        ],
+        "capturedAt": "2026-10-25T14:47:29.921592+00:00",
+        "constraints": [
+          {
+            "name": "fishing_relics_id_check",
+            "definition": "CHECK ((id ~ '^[a-z0-9][a-z0-9-]*$'::text))"
+          },
+          {
+            "name": "fishing_relics_name_check",
+            "definition": "CHECK (((char_length(btrim(name)) >= 1) AND (char_length(btrim(name)) <= 100)))"
+          },
+          {
+            "name": "fishing_relics_pkey",
+            "definition": "PRIMARY KEY (id)"
+          },
+          {
+            "name": "fishing_relics_sell_price_check",
+            "definition": "CHECK ((sell_price >= 0))"
+          },
+          {
+            "name": "fishing_relics_thumbnail_path_check",
+            "definition": "CHECK ((btrim(thumbnail_path) <> ''::text))"
+          },
+          {
+            "name": "relic_effect_shape",
+            "definition": "CHECK ((((effect_kind = 'none'::text) AND (effect_value = (0)::numeric)) OR ((effect_kind = ANY (ARRAY['fuel_active_slots'::text, 'bait_active_slots'::text])) AND (((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'personal_bait_hours'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (2)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (4)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (8)::numeric)))) OR ((effect_kind = 'fishing_wait_seconds'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = 0.5)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'trap_seconds_per_bait'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (30)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (90)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (180)::numeric)))) OR ((effect_kind = 'boat_discount_gold'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (50)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (150)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (400)::numeric)))) OR ((effect_kind = 'bait_discount_gold'::text) AND (((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric))))))"
+          }
+        ],
+        "pendingVoyages": 34
+      }
+    }
+  ],
+  "scope": "Partial read-only deployment preflight at capturedAt; historical migration lists omitted. Not current remote state or a full-schema comparison."
+}

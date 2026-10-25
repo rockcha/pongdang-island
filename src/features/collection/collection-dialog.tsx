@@ -20,6 +20,7 @@ import { CollectibleKindIcon } from './collectible-kind-icon'
 import { PrimaryHabitat } from './native-region-badge'
 import {TreasureTrashBadge} from './treasure-trash-badge'
 import {collectibleCardTones} from './collectible-card-tones'
+import {RelicEffectText} from '@/features/relics/relic-equipment-slot'
 import { kindLabels, loadCollection } from './api'
 import type { CollectionState, CatalogEntry, Species } from './api'
 import {readCollectionFilters,saveCollectionFilters} from './filter-preference'
@@ -132,8 +133,15 @@ export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='
    </ul>
   </div>
   <Dialog open={!!detail} onOpenChange={open=>{if(!open)setDetail(null)}}><DialogContent className="aquarium-work-panel aquarium-detail-panel top-auto bottom-0 max-h-[85dvh] max-w-full translate-y-0 overflow-y-auto rounded-b-none rounded-t-2xl pb-[max(1rem,env(safe-area-inset-bottom))] sm:bottom-auto sm:top-1/2 sm:max-w-sm sm:-translate-y-1/2 sm:rounded-xl">
-   <DialogHeader className="pr-7"><DialogTitle className="flex items-center gap-2">{detail&&<CollectibleKindIcon kind={detail.kind} className="size-6 shrink-0 text-primary"/>}{detail&&entryLabel(detail)}</DialogTitle><DialogDescription>{detail&&<RarityBadge rarity={detail.rarity}/>} · {detail&&kindLabels[detail.kind]}</DialogDescription></DialogHeader>
-   {detail&&<><div className="flex justify-center rounded-xl bg-secondary/40 p-4"><div className={"w-full min-w-0 flex justify-center "+(!detail.discovered&&(!previewAll||detail.kind==='map')?(detail.kind==='map'?"grayscale opacity-70":"[&_canvas]:brightness-[.25] [&_img]:brightness-0"):"")}><CollectiblePreview species={detail} large/></div></div><p className="text-sm leading-6 text-muted-foreground">{detail.description}</p>{detail.kind!=='map'&&detail.kind!=='relic'&&<PrimaryHabitat species={detail}/>}<div className="flex items-center justify-between text-sm">{detail.kind==='map'||detail.kind==='relic'?<span className="text-xs text-muted-foreground">최초 1회 발견 · 어항 배치·판매·선물·거래 불가</span>:<><span>가치</span><span className="flex items-center gap-1"><GoldIcon className="size-4"/>{detail.sell_price.toLocaleString()}</span></>}</div></>}
+   <DialogHeader className="pr-7"><DialogTitle className="flex items-center gap-2">{detail&&<CollectibleKindIcon kind={detail.kind} className="size-6 shrink-0 text-primary"/>}{detail&&entryLabel(detail)}</DialogTitle><DialogDescription>{detail&&<RarityBadge rarity={detail.rarity} filled/>} · {detail&&kindLabels[detail.kind]}</DialogDescription></DialogHeader>
+   {detail&&<>
+    <div className={`flex justify-center rounded-xl bg-gradient-to-b p-4 ${collectibleCardTones[detail.rarity]}`}>
+     <div className={"w-full min-w-0 flex justify-center "+(!detail.discovered&&(!previewAll||detail.kind==='map')?(detail.kind==='map'?"grayscale opacity-70":"[&_canvas]:brightness-[.25] [&_img]:brightness-0"):"")}><CollectiblePreview species={detail} large/></div>
+    </div>
+    <p className="text-sm leading-6 text-muted-foreground">{detail.kind==='relic'?<RelicEffectText description={detail.description}/>:detail.description}</p>
+    {detail.kind!=='map'&&detail.kind!=='relic'&&<PrimaryHabitat species={detail}/>}
+    {detail.kind!=='relic'&&<div className="flex items-center justify-between text-sm">{detail.kind==='map'?<span className="text-xs text-muted-foreground">최초 1회 발견 · 어항 배치·판매·선물·거래 불가</span>:<><span>가치</span><span className="flex items-center gap-1"><GoldIcon className="size-4"/>{detail.sell_price.toLocaleString()}</span></>}</div>}
+   </>}
   </DialogContent></Dialog>
  </section>
 }

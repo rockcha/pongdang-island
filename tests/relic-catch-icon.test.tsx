@@ -8,6 +8,15 @@ vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>path}))
 vi.mock('@/features/fishing/fishing-audio',()=>({useFishingAudio:()=>{}}))
 const species={id:'relic-shell-hourglass',kind:'relic',name:'조개 모래시계',description:'최대 제작 시간 +2시간',rarity:'rare',thumbnail_path:'relic.png'} as Species
 afterEach(cleanup)
+it('offers sharing only for mythic relic catches and excludes practice results',()=>{
+ const share=vi.fn()
+ const {rerender}=render(<CatchReveal species={{...species,rarity:'mythic'}} onShare={share} onDismiss={()=>{}}/>)
+ expect(screen.getByRole('button',{name:'자랑하기'})).toBeTruthy()
+ rerender(<CatchReveal species={{...species,rarity:'epic'}} onShare={share} onDismiss={()=>{}}/>)
+ expect(screen.queryByRole('button',{name:'자랑하기'})).toBeNull()
+ rerender(<CatchReveal species={{...species,rarity:'mythic'}} practice onShare={share} onDismiss={()=>{}}/>)
+ expect(screen.queryByRole('button',{name:'자랑하기'})).toBeNull()
+})
 it('puts the relic icon before the title in the full catch reveal',()=>{
  render(<CatchReveal species={species} onDismiss={()=>{}}/>)
  const icon=screen.getByRole('img',{name:'유물'})

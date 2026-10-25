@@ -1,6 +1,6 @@
 import type {Species} from '@/features/collection/api'
 import {collectibleUrl} from '@/features/collection/api'
-import {rarities} from '@/lib/game/rarity'
+import {rarities,catchBadgeColors} from '@/lib/game/rarity'
 import {regionIcons} from '@/features/regions/region-icons'
 import {limitedCollectionEvent} from '@/features/collection/limited-events'
 
@@ -35,9 +35,9 @@ function fitImage(ctx:CanvasRenderingContext2D,image:HTMLImageElement,x:number,y
  const scale=Math.min(width/image.naturalWidth,height/image.naturalHeight),w=image.naturalWidth*scale,h=image.naturalHeight*scale
  ctx.drawImage(image,x+(width-w)/2,y+(height-h)/2,w,h)
 }
-function badge(ctx:CanvasRenderingContext2D,text:string,x:number,y:number,width:number,color:string,size=30){
+function badge(ctx:CanvasRenderingContext2D,text:string,x:number,y:number,width:number,color:string,size=30,textColor='#ffffff'){
  ctx.fillStyle=color;ctx.beginPath();ctx.roundRect(x,y,width,44,7);ctx.fill()
- ctx.font=`700 ${size}px ${font}`;ctx.fillStyle='#ffffff';ctx.fillText(text,x+width/2,y+31)
+ ctx.font=`700 ${size}px ${font}`;ctx.fillStyle=textColor;ctx.fillText(text,x+width/2,y+31)
 }
 
 // Reveal, editor and feed share this painter, independent of viewport and animation timing.
@@ -75,7 +75,8 @@ export async function paintCatchMoment(canvas:HTMLCanvasElement,input:CatchMomen
  ctx.textAlign='center';ctx.textBaseline='alphabetic';ctx.font=`500 28px ${font}`;ctx.fillStyle='#ffffffa6'
  ctx.save();ctx.shadowColor=color+'99';ctx.shadowBlur=55;fitImage(ctx,creature,230,145,620,510);ctx.restore()
  const isNew=firstDiscovery&&!practice,gradeWidth=104,newWidth=90,gap=16,total=gradeWidth+(isNew?newWidth+gap:0)
- badge(ctx,rarities[species.rarity].label,540-total/2,690,gradeWidth,color)
+ const gradeBadge=catchBadgeColors(species.rarity)
+ badge(ctx,rarities[species.rarity].label,540-total/2,690,gradeWidth,gradeBadge.background,30,gradeBadge.text)
  if(isNew)badge(ctx,'NEW',540-total/2+gradeWidth+gap,690,newWidth,'#dc2626',25)
  ctx.font=`700 58px ${font}`;ctx.fillStyle='#ffffff'
  const nameLines=wrapMomentText(species.name,t=>ctx.measureText(t).width,titleImage?800:920,2)

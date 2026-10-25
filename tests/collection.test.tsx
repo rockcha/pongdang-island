@@ -22,7 +22,7 @@ async function open(add?:()=>void){
 }
 const cards=()=>within(screen.getByRole('list',{name:'도감 개체'})).queryAllByRole('article').map(card=>card.getAttribute('aria-label'))
 it('shows map pieces and relics in their own categories without placement or sale controls',async()=>{
- const relic={...base,id:'relic-test',kind:'relic',name:'작은 유물',rarity:'rare',sell_price:0,discovered:true,habitats:[]}
+ const relic={...base,id:'relic-test',kind:'relic',name:'작은 유물',description:'통발 미끼당 대기 시간 30초 단축 · 장착 중에만 효과가 적용돼요.',rarity:'rare',sell_price:0,discovered:true,habitats:[]}
  load.mockResolvedValue({items:[],catalog:[shared,map,relic]})
  const add=vi.fn()
  render(<CollectionBook onAddTemporary={add}/>)
@@ -36,7 +36,9 @@ it('shows map pieces and relics in their own categories without placement or sal
  expect(screen.getByText('발견 1/1')).toBeTruthy()
  expect(screen.queryByRole('button',{name:'작은 유물 임시 넣기'})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'작은 유물 상세 보기'}))
- expect(await screen.findByText('최초 1회 발견 · 어항 배치·판매·선물·거래 불가')).toBeTruthy()
+ expect(await screen.findByText('통발 미끼당 대기 시간 30초 단축')).toBeTruthy()
+ expect(screen.queryByText('최초 1회 발견 · 어항 배치·판매·선물·거래 불가')).toBeNull()
+ expect(screen.queryByText(/장착 중에만 효과가 적용돼요/)).toBeNull()
  expect(add).not.toHaveBeenCalled()
 })
 

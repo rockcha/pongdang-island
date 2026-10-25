@@ -1,4 +1,8 @@
 import {useEffect,useRef,useState} from 'react'
+import {useNavigate} from 'react-router'
+import {startShowcaseDraft} from '@/features/showcase/draft'
+import {loadRelicShowcaseCatch,showcaseError} from '@/features/showcase/api'
+import type {Relic} from './api'
 import {Button} from '@/components/ui/button'
 import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription} from '@/components/ui/dialog'
 import {ConfirmDialog} from '@/components/confirm-dialog'
@@ -24,6 +28,7 @@ export function RelicLoadout({page=false}:{page?:boolean}){
  return <Loadout page={page} key={session?.user.id??'guest'} storageKey={`pongdang:relic-loadout:${session?.user.id??'guest'}`}/>
 }
 function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
+ const navigate=useNavigate(),{session}=useAuth()
  const [open,setOpen]=useState(page),[state,setState]=useState<RelicState|null>(null),[error,setError]=useState(''),[attempt,setAttempt]=useState(0)
  const [notice,setNotice]=useState('')
  const [equipEffect,setEquipEffect]=useState<RelicTransition|null>(null)
@@ -57,6 +62,17 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
  },[open,attempt])
  function remember(p:Purchase|null){setPending(p);try{if(p)localStorage.setItem(storageKey,JSON.stringify(p));else localStorage.removeItem(storageKey)}catch{/* Retain the same operation in memory. */}}
  function select(id:string|null,name:string){if(!state||pending)return;setError('');setNotice('');setPurchase({id,name,operation:randomId(),fee:state.equippedId?(state.unequipFee??state.changeFee):(state.equipFee??0)})}
+ async function share(relic:Relic){
+  if(!session||lock.current||pending)return
+  lock.current=true;setSaving(true);setError('')
+  try{
+   const caught=await loadRelicShowcaseCatch(relic.id)
+   if(!alive.current)return
+   const id=startShowcaseDraft({...caught,owner:session.user.id,renderVersion:1,preview:false})
+   setOpen(false);navigate('/showcase/new',{state:{showcaseDraft:id}})
+  }catch(cause){if(alive.current)setError(showcaseError(cause))}
+  finally{lock.current=false;if(alive.current)setSaving(false)}
+ }
  async function confirm(){
   if(!purchase||lock.current)return
   lock.current=true;const request=++revision.current;setSaving(true);setError('');setNotice('');remember(purchase)
@@ -97,7 +113,7 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
    {!state&&!error&&<p role="status" className="py-6 text-center text-sm">유물을 불러오는 중…</p>}
    {state&&<>
     <RelicEquipmentSlot relic={state.relics.find(r=>r.id===state.equippedId)} transition={equipEffect} disabled={saving||!!pending} canChoose={state.relics.some(r=>r.owned)} onChoose={()=>list.current?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus()} onUnequip={()=>select(null,'유물 해제')}/>
-    <RelicCatalogTabs state={state} disabled={saving||!!pending} listRef={list} onEquip={r=>select(r.id,r.name)} onSell={r=>{setError('');setNotice('');setPurchase({id:r.id,name:r.name,operation:randomId(),fee:r.sell_price,action:'sell'})}}/>
+    <RelicCatalogTabs state={state} disabled={saving||!!pending} listRef={list} onEquip={r=>select(r.id,r.name)} onShare={r=>void share(r)} onSell={r=>{setError('');setNotice('');setPurchase({id:r.id,name:r.name,operation:randomId(),fee:r.sell_price,action:'sell'})}}/>
    </>}
  </>
  return <>

@@ -29047,6 +29047,17 @@
       "sell_price": 200
     },
     {
+      "id": "forgotten-route-compass",
+      "name": "잊힌 항로의 나침반",
+      "description": "장착한 상태로 출항하는 어선의 항해 시간이 3% 줄어들어요. 진행 중인 항해와 통발에는 적용되지 않아요.",
+      "rarity": "rare",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/rare/forgotten-route-compass_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "harbor_duration_percent",
+      "effect_value": 3,
+      "sell_price": 200
+    },
+    {
       "id": "golden-anchor-seal",
       "name": "황금 닻 인장",
       "description": "배 구매 가격 150골드 할인 · 장착 중에만 효과가 적용돼요.",
@@ -29056,6 +29067,17 @@
       "effect_kind": "boat_discount_gold",
       "effect_value": 150,
       "sell_price": 1300
+    },
+    {
+      "id": "horizon-ark",
+      "name": "수평선의 성궤",
+      "description": "장착한 상태로 출항하는 어선의 항해 시간이 10% 줄어들어요. 진행 중인 항해와 통발에는 적용되지 않아요.",
+      "rarity": "mythic",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/mythic/horizon-ark_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "harbor_duration_percent",
+      "effect_value": 10,
+      "sell_price": 3000
     },
     {
       "id": "instant-fishing-hook",
@@ -29143,6 +29165,17 @@
       "enabled": true,
       "effect_kind": "bait_discount_gold",
       "effect_value": 1,
+      "sell_price": 1300
+    },
+    {
+      "id": "sealed-fairwind-reliquary",
+      "name": "순풍을 봉인한 성유물",
+      "description": "장착한 상태로 출항하는 어선의 항해 시간이 6% 줄어들어요. 진행 중인 항해와 통발에는 적용되지 않아요.",
+      "rarity": "epic",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/epic/sealed-fairwind-reliquary_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "harbor_duration_percent",
+      "effect_value": 6,
       "sell_price": 1300
     },
     {

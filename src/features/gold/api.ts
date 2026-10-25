@@ -12,7 +12,9 @@ export function goldError(cause: unknown): string {
   if(message.includes('ROD_NOT_OWNED'))return '판매할 낚싯대가 없어요. 목록을 다시 불러와주세요.'
   if(message.includes('INVALID_ROD'))return '낚싯대를 찾지 못했어요. 목록을 다시 불러와주세요.'
   if(message.includes('COLLECTIBLE_NOT_FOUND'))return '이미 판매됐거나 판매할 수 없는 개체예요. 목록을 다시 불러와주세요.'
-  if(message.includes('OPERATION_CONFLICT'))return '이전 거래 결과와 요청이 달라요. 이전 판매 수량으로 다시 시도해주세요.'
+  if(message.includes('OPERATION_CONFLICT'))return '이전 거래 결과와 요청이 달라요. 이전 거래 수량으로 다시 시도해주세요.'
+  if(message.includes('INVENTORY_LIMIT'))return '미끼 보유 한도를 초과해 구매할 수 없어요.'
+  if(message.includes('INVALID_QUANTITY'))return '구매 수량은 1~99개로 선택해 주세요.'
   const errors: Record<string,string> = { BAIT_NOT_FOR_SALE: '현재 구매할 수 없는 미끼예요.', INVALID_TANK_NAME: '어항 이름은 공백 없이 1~20자로 입력해주세요.', TANK_NOT_FOUND: '어항을 찾지 못했어요. 다시 불러와주세요.', BACKGROUND_ALREADY_OWNED: '이미 보유한 배경이에요.', BACKGROUND_NOT_OWNED: '먼저 배경을 구매해주세요.', INSUFFICIENT_GOLD: '골드가 부족해요.', INSUFFICIENT_INVENTORY: '판매할 아이템이 없어요.', TEST_CHARGE_ALREADY_CLAIMED: '테스트 골드는 계정당 한 번만 받을 수 있어요.', TEST_CHARGE_DISABLED: '테스트 충전이 종료됐어요.', GOLD_LIMIT: '골드 보유 한도에 도달했어요.' }
   return Object.entries(errors).find(([key]) => message.includes(key))?.[1] ?? '골드 데이터를 확인하지 못했어요. SQL 적용과 연결을 확인해주세요.'
 }
@@ -40,6 +42,12 @@ export async function transactGold(action: Trade, operationId: string) {
     return data
   }
   if (action.type === 'buy' && action.id.startsWith('fishing:')) {
+    if(action.quantity!==undefined){
+      if(action.expectedPrice===undefined)throw new Error('미끼 구매 가격을 다시 확인해 주세요.')
+      const {data,error}=await createClient().rpc('buy_fishing_bait_bulk',{p_bait_id:action.id.slice(8),p_quantity:action.quantity,p_operation_id:operationId,p_expected_price:action.expectedPrice})
+      if(error)throw error
+      return data
+    }
     if(action.expectedPrice!==undefined){
       const {data,error}=await createClient().rpc('buy_fishing_bait_at_price',{p_bait_id:action.id.slice(8),p_operation_id:operationId,p_expected_price:action.expectedPrice})
       if(error)throw error

@@ -11,14 +11,14 @@ import {BaitTarget} from './bait-info'
 import {BaitShopFilters,filterBaitShop,initialBaitShopFilter} from './bait-shop-filters'
 
 export function BaitShop(){
- const {wallet,transact,batchEffects,loading,busy,error:goldError}=useGold()
+ const {wallet,transact,loading,busy,error:goldError}=useGold()
  const [detail,setDetail]=useState<FishingBait|null>(null),[purchasing,setPurchasing]=useState(false)
  const [quantity,setQuantity]=useState<number|''>(1)
  const count=quantity===''?0:quantity
  const detailChance=detail?.successChanceBp??detail?.success_chance_bp??detail?.baseSuccessChanceBp
  const [purchaseError,setPurchaseError]=useState('')
  const lock=useRef(false)
- const quotes=useRef(new Map<string,FishingBait>())
+ const quotes=useRef(new Map<string,{item:FishingBait;quantity:number}>())
  const maxQuantity=detail?.price?Math.min(99,Math.floor(wallet.gold/detail.price)):0
  const [items,setItems]=useState<FishingBait[]|null>(null),[error,setError]=useState(''),[attempt,setAttempt]=useState(0)
  const [filter,setFilter]=useState(initialBaitShopFilter)
@@ -30,14 +30,13 @@ export function BaitShop(){
  },[attempt])
  async function buy(item:FishingBait){
   if(lock.current||busy||loading||goldError||item.price===null||!Number.isInteger(count)||count<1||count>99||wallet.gold<item.price*count)return
-  lock.current=true;quotes.current.set(item.id,item);setPurchasing(true);setPurchaseError('')
-  let completed=0
+  lock.current=true;quotes.current.set(item.id,{item,quantity:count});setPurchasing(true);setPurchaseError('')
   try{
-   await batchEffects(async()=>{for(let i=0;i<count;i++){await transact({type:'buy',id:'fishing:'+item.id,name:item.name,expectedPrice:item.price!});completed++}})
+   await transact({type:'buy',id:'fishing:'+item.id,name:item.name,expectedPrice:item.price!,quantity:count})
    quotes.current.delete(item.id)
    setQuantity(1)
   }catch(cause){
-   setQuantity(Math.max(1,count-completed));setPurchaseError((completed?completed+'개 구매됐어요. 남은 수량을 다시 구매할 수 있어요. ':'')+(cause instanceof Error?cause.message:'구매하지 못했어요.'))
+   setPurchaseError(cause instanceof Error?cause.message:'구매하지 못했어요.')
    if(cause instanceof Error&&cause.message.includes('미끼 구매 가격이 바뀌었어요')){
     quotes.current.delete(item.id)
     try{const latest=await loadFishing();setItems([...latest.baits].sort((a,b)=>(a.price??Number.MAX_SAFE_INTEGER)-(b.price??Number.MAX_SAFE_INTEGER)));setDetail(latest.baits.find(b=>b.id===item.id)??null)}catch{/* Keep the confirmed quote until prices can be reloaded. */}
@@ -48,7 +47,7 @@ export function BaitShop(){
  if(error)return <div role="alert" className="space-y-2 text-sm"><p>{error}</p><Button variant="outline" onClick={()=>setAttempt(a=>a+1)}>다시 불러오기</Button></div>
  if(!items)return <ProductSkeleton/>
  const visibleItems=filterBaitShop(items,filter)
- return <><BaitShopFilters value={filter} onChange={setFilter}/>{visibleItems.length===0&&<div className="space-y-3 px-4 py-10 text-center"><p className="text-xs text-muted-foreground">조건에 맞는 미끼가 없어요.</p><Button variant="outline" className="min-h-11 text-xs" onClick={()=>setFilter(initialBaitShopFilter)}>검색·필터 초기화</Button></div>}<ul className="grid grid-cols-3 border-border/60">{visibleItems.map(item=><li key={item.id} className="min-w-0 overflow-hidden border-r border-b border-border/60 bg-card"><button type="button" aria-label={item.name+' 상세 보기'} disabled={purchasing} onClick={()=>{setDetail(quotes.current.get(item.id)??item);setQuantity(1);setPurchaseError('')}} className="flex w-full flex-col items-center px-1 pt-2 pb-3 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring"><div className="relative aspect-square w-full"><LandscapeImage src={item.image_path} alt="" className="absolute inset-0 size-full object-contain"/></div><h2 className="mt-1 h-10 text-xs leading-5 line-clamp-2">{item.name}</h2><span className="flex items-center gap-1 text-xs text-primary">{item.price===null?'구매 불가':<><GoldIcon className="size-3"/>{item.price.toLocaleString('ko-KR')}</>}</span></button></li>)}</ul>
+ return <><BaitShopFilters value={filter} onChange={setFilter}/>{visibleItems.length===0&&<div className="space-y-3 px-4 py-10 text-center"><p className="text-xs text-muted-foreground">조건에 맞는 미끼가 없어요.</p><Button variant="outline" className="min-h-11 text-xs" onClick={()=>setFilter(initialBaitShopFilter)}>검색·필터 초기화</Button></div>}<ul className="grid grid-cols-3 border-border/60">{visibleItems.map(item=><li key={item.id} className="min-w-0 overflow-hidden border-r border-b border-border/60 bg-card"><button type="button" aria-label={item.name+' 상세 보기'} disabled={purchasing} onClick={()=>{setDetail(quotes.current.get(item.id)?.item??item);setQuantity(quotes.current.get(item.id)?.quantity??1);setPurchaseError('')}} className="flex w-full flex-col items-center px-1 pt-2 pb-3 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring"><div className="relative aspect-square w-full"><LandscapeImage src={item.image_path} alt="" className="absolute inset-0 size-full object-contain"/></div><h2 className="mt-1 h-10 text-xs leading-5 line-clamp-2">{item.name}</h2><span className="flex items-center gap-1 text-xs text-primary">{item.price===null?'구매 불가':<><GoldIcon className="size-3"/>{item.price.toLocaleString('ko-KR')}</>}</span></button></li>)}</ul>
  <Dialog open={!!detail} onOpenChange={value=>{if(!value&&!purchasing)setDetail(null)}}>
   <DialogContent className="notification-sheet bottom-0 top-auto left-1/2 flex max-h-[85dvh] w-full min-w-0 max-w-[min(100dvw,28rem)] -translate-x-1/2 translate-y-0 flex-col gap-0 overflow-hidden rounded-t-2xl rounded-b-none p-0 [--bait-detail-inset:max(1rem,env(safe-area-inset-left,0px),env(safe-area-inset-right,0px))] sm:max-w-[min(100dvw,28rem)]">
    <DialogHeader className="min-w-0 shrink-0 px-[var(--bait-detail-inset)] pt-5 pb-3">

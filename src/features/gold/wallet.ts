@@ -3,7 +3,7 @@ export const products = [
   { id: 'shell', name: '진주 조개', description: '바다에서 건져 올린 반짝임', icon: '🐚', buy: 300, sell: 180 },
 ] as const
 export type Wallet = { gold: number; inventory: Record<string, number> }
-export type Trade = { type: 'charge' } | { type: 'buy' | 'sell'; id: string; name?: string; expectedPrice?:number }
+export type Trade = { type: 'charge' } | { type: 'buy' | 'sell'; id: string; name?: string; expectedPrice?:number;quantity?:number }
 export const emptyWallet = (): Wallet => ({ gold: 0, inventory: {} })
 export function trade(wallet: Wallet, action: Trade): { wallet: Wallet; delta: number } {
   if (action.type === 'charge') {

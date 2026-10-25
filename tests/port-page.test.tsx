@@ -18,6 +18,20 @@ const trip={boat_id:'raft-1',id:'voyage1',vessel_id:vessel.id,vessel_snapshot:ve
 beforeEach(()=>{mock.load.mockResolvedValue(base);mock.refresh.mockResolvedValue(undefined)})
 afterEach(()=>{cleanup();localStorage.clear();vi.resetAllMocks();vi.useRealTimers()})
 function show(shipyard=false){return render(<MemoryRouter><PortPage shipyard={shipyard}/></MemoryRouter>)}
+it.each([{seconds:10,refund:true,label:'출항 취소 · 연료 반환',confirm:'출항 취소'},{seconds:40,refund:false,label:'긴급 귀항',confirm:'귀항시키기'}])('confirms cancellation at $seconds seconds with the exact refund quote',async scenario=>{
+ mock.load.mockResolvedValue({...base,serverNow:`2026-10-19T10:00:${scenario.seconds}Z`,voyages:[trip]})
+ mock.action.mockResolvedValue({...base,receipt:{action:'cancel',refundedFuel:scenario.refund?1:0}})
+ show()
+ fireEvent.click(await screen.findByRole('button',{name:'낚시용 뗏목 1호 · 조업 중'}))
+ fireEvent.click(screen.getByRole('button',{name:scenario.label}))
+ const guard=screen.getByRole('alertdialog')
+ expect(guard.textContent).toContain('이번 어획물은 받을 수 없어요.')
+ if(!scenario.refund)expect(guard.textContent).toContain('사용한 연료는 돌려받지 못해요.')
+ expect(mock.action).not.toHaveBeenCalled()
+ fireEvent.click(within(guard).getByRole('button',{name:scenario.confirm}))
+ await waitFor(()=>expect(mock.action).toHaveBeenCalledWith(expect.objectContaining({p_action:'cancel',p_voyage_id:trip.id,p_refund_expected:scenario.refund})))
+ expect(await screen.findByRole('button',{name:'낚시용 뗏목 1호 · 출항 준비'})).toBeTruthy()
+})
 it('updates shipyard prices on relic equip and restores them on unequip',async()=>{
  show(true)
  await screen.findByRole('button',{name:'낚시용 뗏목 구매 300 골드'})

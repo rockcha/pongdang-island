@@ -8,15 +8,15 @@ vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wa
 vi.mock('@/features/fishing/api',()=>({loadFishing:mock.load}))
 beforeEach(()=>mock.load.mockResolvedValue({baits:[{id:'bait',name:'테스트 미끼',description:'미끼',image_path:'/bait.png',price:10,effect_description:'효과'}]}))
 afterEach(()=>{cleanup();vi.clearAllMocks()})
-it('shows relic-discounted unit prices and confirms each item at that price',async()=>{
+it('buys the entire quantity in one transaction at the relic-discounted unit price',async()=>{
  mock.load.mockResolvedValue({baits:[{id:'bait',name:'테스트 미끼',description:'미끼',image_path:'/bait.png',price:8,base_price:10,priceDiscountGold:2,effect_description:'효과'}]})
  render(<BaitShop/>);fireEvent.click(await screen.findByRole('button',{name:'테스트 미끼 상세 보기'}))
  expect(screen.getByText(/유물 할인/)).toBeTruthy()
  fireEvent.change(screen.getByRole('spinbutton',{name:'구매 수량'}),{target:{value:'3'}})
  expect(within(screen.getByLabelText('미끼 구매')).getByText('24')).toBeTruthy()
  fireEvent.click(screen.getByRole('button',{name:'테스트 미끼 3개 구매'}))
- await waitFor(()=>expect(mock.transact).toHaveBeenCalledTimes(3))
- expect(mock.transact).toHaveBeenCalledWith({type:'buy',id:'fishing:bait',name:'테스트 미끼',expectedPrice:8})
+ await waitFor(()=>expect(mock.transact).toHaveBeenCalledTimes(1))
+ expect(mock.transact).toHaveBeenCalledWith({type:'buy',id:'fishing:bait',name:'테스트 미끼',expectedPrice:8,quantity:3})
 })
 it('reloads a changed price without buying automatically at the higher price',async()=>{
  const bait={id:'bait',name:'테스트 미끼',description:'미끼',image_path:'/bait.png',effect_description:'효과'}
@@ -42,7 +42,8 @@ it('lets users erase one and type thirty without restoring one mid-edit',async()
  expect(screen.getByRole('button',{name:'테스트 미끼 0개 구매'})).toHaveProperty('disabled',true)
  fireEvent.change(input,{target:{value:'30'}});expect(input.value).toBe('30')
  fireEvent.click(screen.getByRole('button',{name:'테스트 미끼 30개 구매'}))
- await waitFor(()=>expect(mock.transact).toHaveBeenCalledTimes(30))
+ await waitFor(()=>expect(mock.transact).toHaveBeenCalledTimes(1))
+ expect(mock.transact).toHaveBeenCalledWith(expect.objectContaining({quantity:30}))
 })
 it('restores the minimum only when an empty field loses focus',async()=>{
  render(<BaitShop/>);fireEvent.click(await screen.findByRole('button',{name:'테스트 미끼 상세 보기'}))
@@ -75,5 +76,5 @@ it('combines search, target and waiting filters and resets an empty result befor
  expect(screen.getByLabelText('포획 대상').textContent).toBe('쓰레기')
  expect(within(screen.getByRole('dialog')).queryByText('모든 미끼 공통 대기시간: 12~24초')).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'꼬질 자석 1개 구매'}))
- await waitFor(()=>expect(mock.transact).toHaveBeenCalledWith({type:'buy',id:'fishing:bait_grubby_magnet',name:'꼬질 자석',expectedPrice:10}))
+ await waitFor(()=>expect(mock.transact).toHaveBeenCalledWith({type:'buy',id:'fishing:bait_grubby_magnet',name:'꼬질 자석',expectedPrice:10,quantity:1}))
 })

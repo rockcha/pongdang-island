@@ -9,7 +9,7 @@ import type {CatchBatch} from '@/features/expeditions/use-catch-celebration'
 import {rememberDockRegion} from './dock-region'
 
 function readPending(key:string):HarborAction|null{
- try{const value=JSON.parse(localStorage.getItem(key)??'null');return value&&['expand','buy','fuel','depart','claim','claim_all','dock','store','sell'].includes(value.p_action)&&typeof value.p_operation_id==='string'?value:null}catch{return null}
+ try{const value=JSON.parse(localStorage.getItem(key)??'null');return value&&['expand','buy','fuel','depart','claim','claim_all','dock','store','sell','cancel'].includes(value.p_action)&&typeof value.p_operation_id==='string'&&(value.p_action!=='cancel'||typeof value.p_refund_expected==='boolean'&&typeof value.p_voyage_id==='string')?value:null}catch{return null}
 }
 export function useHarbor(onClaim?:(batches:CatchBatch[])=>void){
  const {session}=useAuth(),{refresh}=useGold()

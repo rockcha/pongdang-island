@@ -2,17 +2,29 @@ import {createClient} from '@/lib/client'
 import {experienceChanged} from '@/features/experience/api'
 import type {ExpeditionOutcome} from '@/features/expeditions/api'
 export type HarborCatchRule={version:number;success_bp:number;common_bp:number;rare_bp:number;epic_bp:number;mythic_bp:number;kind:'mixed'|'trash_weighted'|'decoration'|'discovery_weighted'|'trash_only'|'discovery_only';trash_bp:number;discovery_weight:number;home_multiplier:number;region_count?:1|2}
-export type HarborVessel={id:string;name:string;price:number;duration_minutes:number;fuel_cost:number;fishing_count:number;fishing_count_max?:number|null;catch_bait_id?:string;native_bonus?:boolean;catch_rule?:HarborCatchRule;sprite_path:string;owned:boolean;ownedCount:number}
+export type HarborVessel={id:string;name:string;price:number;duration_minutes:number;base_duration_minutes?:number;harbor_duration_percent?:number;fuel_cost:number;fishing_count:number;fishing_count_max?:number|null;catch_bait_id?:string;native_bonus?:boolean;catch_rule?:HarborCatchRule;sprite_path:string;owned:boolean;ownedCount:number}
 export type HarborBoat=Omit<HarborVessel,'id'|'ownedCount'>&{id:string;vessel_id:string;instance_no:number;dock_slot:number|null}
 export type HarborRegion={id:string;name:string;unlocked:boolean}
 export type HarborVoyage={region_id?:string;region_name?:string;id:string;boat_id:string;vessel_id:string;vessel_snapshot:HarborVessel&{secondary_region_id?:string;secondary_region_name?:string};departed_at:string;returns_at:string;arrival_seen_at:string|null;claimed_at:string|null}
 export type HarborResult=ExpeditionOutcome&{voyageId:string;vesselName:string;regionId?:string;regionName?:string}
 export type HarborState={serverNow:string;fuel:number;fuelPrice:number;fuelDailyLimit?:number;fuelPurchasedToday?:number;regions?:HarborRegion[];dockSlots:number;nextDockExpansion?:{slot:number;price:number}|null;vessels:HarborVessel[];boats:HarborBoat[];voyages:HarborVoyage[];receipt?:{action:string;voyageId?:string;vesselId?:string;boatId?:string;dockSlots?:number;gold?:number;results?:HarborResult[]};replayed?:boolean}
-export type HarborAction={p_action:'buy'|'fuel'|'depart'|'arrive'|'claim'|'claim_all'|'dock'|'store'|'sell'|'expand';p_operation_id:string;p_vessel_id?:string;p_voyage_id?:string;p_quantity?:number;p_boat_id?:string;p_slot?:number;p_region_id?:string;p_secondary_region_id?:string}
+export type HarborAction={p_action:'buy'|'fuel'|'depart'|'arrive'|'claim'|'claim_all'|'dock'|'store'|'sell'|'expand'|'cancel';p_refund_expected?:boolean;p_operation_id:string;p_vessel_id?:string;p_voyage_id?:string;p_quantity?:number;p_boat_id?:string;p_slot?:number;p_region_id?:string;p_secondary_region_id?:string}
 export async function loadHarbor(){const {data,error}=await createClient().rpc('harbor_state');if(error)throw error;return data}
-export async function harborAction(args:HarborAction){const {data,error}=await createClient().rpc('harbor_action',args);if(error)throw error;window.dispatchEvent(new Event('harbor-changed'));if(args.p_action==='claim'||args.p_action==='claim_all'){window.dispatchEvent(new Event('collectibles-changed'));experienceChanged()}return data}
+export async function harborAction(args:HarborAction){
+ const client=createClient()
+ const {data,error}=args.p_action==='cancel'
+  ?await client.rpc('cancel_harbor_voyage',{p_voyage_id:args.p_voyage_id!,p_operation_id:args.p_operation_id,p_refund_expected:args.p_refund_expected!})
+  :await client.rpc('harbor_action',args as HarborAction&{p_action:Exclude<HarborAction['p_action'],'cancel'>})
+ if(error)throw error
+ window.dispatchEvent(new Event('harbor-changed'))
+ if(args.p_action==='claim'||args.p_action==='claim_all'){window.dispatchEvent(new Event('collectibles-changed'));experienceChanged()}
+ return data
+}
 export function harborError(error:unknown){
  const message=String((error as {message?:string})?.message??'')
+ if(message.includes('CANCELLATION_QUOTE_CHANGED'))return '연료를 돌려받을 수 있는 30초가 지났어요. 닫고 긴급 귀항 조건을 다시 확인해 주세요.'
+ if(message.includes('VOYAGE_ALREADY_RETURNED'))return '이미 항구에 돌아왔어요. 취소 대신 어획물을 수령해 주세요.'
+ if(message.includes('FUEL_LIMIT'))return '연료 보유 한도를 초과해 반환할 수 없어요. 연료를 사용한 뒤 다시 확인해 주세요.'
  if(message.includes('SECOND_REGION_REQUIRED'))return '서로 다른 조업 해역 두 곳을 선택해 주세요.'
  if(message.includes('SECOND_REGION_NOT_ALLOWED'))return '이 배는 한 해역에서 조업해요.'
  if(message.includes('GOLD_LIMIT'))return '보유 골드 한도에 도달해 판매할 수 없어요.'

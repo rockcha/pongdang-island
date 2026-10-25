@@ -1,0 +1,41 @@
+{
+  "tool": "built-in image_gen",
+  "entries": [
+    {
+      "id": "forgotten-route-compass",
+      "name": "잊힌 항로의 나침반",
+      "rarity": "rare",
+      "reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "reference_role": "style-only",
+      "prompt": "Use case: stylized-concept. Asset: one square inventory thumbnail for a cozy fishing game, new rare relic 잊힌 항로의 나침반. Single ancient bronze nautical compass relic, rounded weathered bronze housing tilted in three-quarter view, cracked glass lid, turquoise needle pointing into a faint curled turquoise breeze, faded engraved navigation markings without letters. A small archaeological treasure from a sunken ship. Cozy rounded cartoon proportions, crisp dark brown contour lines and warm soft cel shading. No face, no animal. Reference only establishes rendering style, never copy otter, hook or starfish. Entire object centered, at least 12 percent transparent margin on every side, readable at 64px. Actual transparent alpha PNG. No text, no labels, no UI, no background scenery, no floor, no checkerboard, no border, no watermark. Do not draw a rarity badge.",
+      "storage_path": "relics/rare/forgotten-route-compass_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "c5fa7e423152426de5b1b8cd6d7d32de1ee5a209aa2985517ea0ea70874df003"
+    },
+    {
+      "id": "sealed-fairwind-reliquary",
+      "name": "순풍을 봉인한 성유물",
+      "rarity": "epic",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "reference_role": "style-only",
+      "prompt": "Use case: stylized-concept. Asset: one square inventory thumbnail for a cozy fishing game, new epic relic 순풍을 봉인한 성유물. Single ancient nautical reliquary: an aged silver ring frame standing at a diagonal with a tiny torn ivory sail fragment floating magically inside the ring, held taut by a visible spiral of pale turquoise wind. Corroded silver engravings, sea-glass accents, antique sacred artifact, beautifully dimensional painterly fantasy rendering, soft colored contours and delicate gradients. Compact collectible item silhouette. Reference ONLY for shading lighting and material softness, no stingray silhouette, wings, tail or face. Entire object centered, at least 12 percent transparent margin on every side, readable at 64px. Actual transparent alpha PNG. No text, no labels, no UI, no background scenery, no floor, no checkerboard, no border, no watermark. Do not draw a rarity badge.",
+      "storage_path": "relics/epic/sealed-fairwind-reliquary_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "c652493443548eebabd4d53d0b716658dc6204762fa44cd69f33e006cad2489e"
+    },
+    {
+      "id": "horizon-ark",
+      "name": "수평선의 성궤",
+      "rarity": "mythic",
+      "reference": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "reference_role": "style-only",
+      "prompt": "Use case: stylized-concept. Asset: one square inventory thumbnail for a cozy fishing game, new mythic relic 수평선의 성궤. Single mythical ancient nautical ark reliquary: a small antique gold and dark teal rectangular treasure casket in three-quarter view, its lid slightly open. An impossible miniature turquoise ocean and thin luminous golden horizon are contained inside the gap; a small ribbon of seawater flows upward into it. Weathered ceremonial gold edging with restrained exquisite engravings, softly glowing ocean light from within. The casket is the dominant readable silhouette, not a landscape scene. Rich painterly fantasy game illustration, delicate gradients, soft colored outlines. Reference ONLY for light and material rendering, no ray body, face, wings, fins or tail. Entire object centered, at least 12 percent transparent margin on every side, readable at 64px. Actual transparent alpha PNG. No text, no labels, no UI, no background scenery, no floor, no checkerboard, no border, no watermark. Do not draw a rarity badge.",
+      "storage_path": "relics/mythic/horizon-ark_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "0d73ab029aa7fe851f8a23a458c3a34d79ae0bad8f09512bd400cd0b693ef01c"
+    }
+  ]
+}

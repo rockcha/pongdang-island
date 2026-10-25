@@ -1,0 +1,39 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "capturedAt": "2026-10-25T15:19:16.508Z",
+  "data": [
+    {
+      "preflight": {
+        "baitCount": 29,
+        "functions": [
+          {
+            "name": "buy_fishing_bait",
+            "arguments": "p_bait_id text, p_operation_id uuid",
+            "definition": "CREATE OR REPLACE FUNCTION app_private.buy_fishing_bait(p_bait_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$ select app_private.buy_fishing_bait(p_bait_id,p_operation_id,null::integer) $function$\n"
+          },
+          {
+            "name": "buy_fishing_bait",
+            "arguments": "p_bait_id text, p_operation_id uuid, p_expected_price integer",
+            "definition": "CREATE OR REPLACE FUNCTION app_private.buy_fishing_bait(p_bait_id text, p_operation_id uuid, p_expected_price integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid(); b public.fishing_baits; w public.player_wallets; prev public.gold_transactions; v_price integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_operation_id is null then raise exception 'INVALID_TRADE'; end if;\n select * into b from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT'; end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n select * into prev from public.gold_transactions where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if prev.action<>'buy' or prev.item_id is distinct from ('fishing:'||p_bait_id) then raise exception 'OPERATION_CONFLICT'; end if;\n  return app_private.get_gold_wallet()||jsonb_build_object('delta',0);\n end if;\n if b.price is null then raise exception 'BAIT_NOT_FOR_SALE'; end if;\n v_price:=greatest(1,b.price-app_private.relic_bonus('bait_discount_gold')::integer);\n if p_expected_price is not null and p_expected_price<>v_price then raise exception 'BAIT_PRICE_CHANGED';end if;\n if w.gold<v_price then raise exception 'INSUFFICIENT_GOLD';end if;\n update public.player_wallets set gold=gold-v_price,\n inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(coalesce((inventory->>p_bait_id)::integer,0)+1)),updated_at=now() where user_id=v_uid;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','fishing:'||p_bait_id,-v_price);\n return app_private.get_gold_wallet()||jsonb_build_object('delta',-v_price);\nend $function$\n"
+          },
+          {
+            "name": "get_gold_wallet",
+            "arguments": "",
+            "definition": "CREATE OR REPLACE FUNCTION app_private.get_gold_wallet()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\r\ndeclare v_uid uuid:=auth.uid(); v_wallet public.player_wallets;\r\nbegin\r\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\r\n insert into public.player_wallets(user_id) values(v_uid) on conflict do nothing;\r\n select * into v_wallet from public.player_wallets where user_id=v_uid;\r\n return jsonb_build_object('gold',v_wallet.gold,'inventory',v_wallet.inventory,'testClaimed',v_wallet.test_claimed,'testEnabled',(select test_charge_enabled from app_private.gold_settings where id));\r\nend $function$\n"
+          },
+          {
+            "name": "relic_bonus",
+            "arguments": "p_effect text",
+            "definition": "CREATE OR REPLACE FUNCTION app_private.relic_bonus(p_effect text)\n RETURNS numeric\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select coalesce((select r.effect_value from app_private.player_relic_loadouts l join public.fishing_relics r on r.id=l.relic_id\n where l.user_id=(select auth.uid()) and r.enabled and r.effect_kind=p_effect),0)\n$function$\n"
+          }
+        ],
+        "capturedAt": "2026-10-25T15:19:13.721391+00:00",
+        "newObjects": {
+          "rpc": null,
+          "receipts": null
+        }
+      }
+    }
+  ],
+  "scope": "Partial read-only deployment preflight at capturedAt; historical migration lists omitted. Not current remote state or a full-schema comparison."
+}

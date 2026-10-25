@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "c25c59fdeb6499cb6ea2e3f92574ed846385b36af7ccbe156d2a6b67097a89ca",
+  "migrationHash": "4e747346675a57b6f6eb92e419ed5f721c10b58a13a3142e69b69804f0aa665e",
   "structure": {
     "enums": [
       {
@@ -97,6 +97,18 @@
       {
         "rls": true,
         "name": "bait_production_sites",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "bait_purchase_operations",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "cancelled_harbor_voyages",
         "schema": "app_private",
         "force_rls": false
       },
@@ -1205,6 +1217,126 @@
         "default": null,
         "identity": "",
         "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "bait_id",
+        "type": "text",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "quantity",
+        "type": "integer",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "unit_price",
+        "type": "integer",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "voyage_id",
+        "type": "uuid",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "voyage",
+        "type": "jsonb",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "cancelled_at",
+        "type": "timestamp with time zone",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "free_cancellation",
+        "type": "boolean",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "refunded_fuel",
+        "type": "integer",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
         "generated": ""
       },
       {
@@ -8998,6 +9130,30 @@
         "definition": "CREATE INDEX bait_sites_expiring_push ON app_private.bait_production_sites USING btree (expires_at, user_id) WHERE (started_at IS NOT NULL)"
       },
       {
+        "name": "bait_purchase_operations_pkey",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX bait_purchase_operations_pkey ON app_private.bait_purchase_operations USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "cancelled_harbor_boat",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "definition": "CREATE INDEX cancelled_harbor_boat ON app_private.cancelled_harbor_voyages USING btree (user_id, ((voyage ->> 'boat_id'::text)), cancelled_at DESC)"
+      },
+      {
+        "name": "cancelled_harbor_owner",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "definition": "CREATE INDEX cancelled_harbor_owner ON app_private.cancelled_harbor_voyages USING btree (user_id)"
+      },
+      {
+        "name": "cancelled_harbor_voyages_pkey",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX cancelled_harbor_voyages_pkey ON app_private.cancelled_harbor_voyages USING btree (voyage_id)"
+      },
+      {
         "name": "collectible_event_windows_pkey",
         "table": "collectible_event_windows",
         "schema": "app_private",
@@ -9344,6 +9500,12 @@
         "table": "prepared_fishing_casts",
         "schema": "app_private",
         "definition": "CREATE UNIQUE INDEX prepared_fishing_one_active ON app_private.prepared_fishing_casts USING btree (user_id) WHERE (finished_at IS NULL)"
+      },
+      {
+        "name": "prepared_relic_showcase_history",
+        "table": "prepared_fishing_casts",
+        "schema": "app_private",
+        "definition": "CREATE INDEX prepared_relic_showcase_history ON app_private.prepared_fishing_casts USING btree (user_id, relic_id, finished_at DESC) WHERE ((relic_id IS NOT NULL) AND (finished_at IS NOT NULL))"
       },
       {
         "name": "production_operations_pkey",
@@ -12367,6 +12529,16 @@
         "securityDefiner": true
       },
       {
+        "name": "buy_fishing_bait_bulk",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_bait_id text, p_quantity integer, p_operation_id uuid, p_expected_price integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.buy_fishing_bait_bulk(p_bait_id text, p_quantity integer, p_operation_id uuid, p_expected_price integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();b public.fishing_baits;w public.player_wallets;\n previous app_private.bait_purchase_operations;price integer;total bigint;stock bigint;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_bait_id is null or p_expected_price is null or p_expected_price<1 then raise exception 'INVALID_TRADE';end if;\n if p_quantity is null or p_quantity not between 1 and 99 then raise exception 'INVALID_QUANTITY';end if;\n perform app_private.get_gold_wallet();\n select * into strict w from public.player_wallets where user_id=u for update;\n select * into previous from app_private.bait_purchase_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if previous.bait_id is distinct from p_bait_id or previous.quantity<>p_quantity or previous.unit_price<>p_expected_price then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.get_gold_wallet()||jsonb_build_object('delta',0,'replayed',true);\n end if;\n if exists(select 1 from public.gold_transactions where user_id=u and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n select * into b from public.fishing_baits where id=p_bait_id for share;\n if not found then raise exception 'INVALID_BAIT';end if;\n if b.price is null then raise exception 'BAIT_NOT_FOR_SALE';end if;\n price:=greatest(1,b.price-app_private.relic_bonus('bait_discount_gold')::integer);\n if p_expected_price<>price then raise exception 'BAIT_PRICE_CHANGED';end if;\n total:=price::bigint*p_quantity;\n if w.gold<total then raise exception 'INSUFFICIENT_GOLD';end if;\n stock:=coalesce((w.inventory->>p_bait_id)::bigint,0)+p_quantity;\n if stock>1000000000 then raise exception 'INVENTORY_LIMIT';end if;\n update public.player_wallets set gold=gold-total::integer,\n  inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(stock::integer)),updated_at=clock_timestamp() where user_id=u;\n -- Keep the existing item identity so maintenance and accounting hooks apply.\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','fishing:'||p_bait_id,-total::integer);\n insert into app_private.bait_purchase_operations(user_id,operation_id,bait_id,quantity,unit_price) values(u,p_operation_id,p_bait_id,p_quantity,price);\n return app_private.get_gold_wallet()||jsonb_build_object('delta',-total::integer,'replayed',false,'quantity',p_quantity);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "buy_region_map",
         "config": [
           "search_path=\"\""
@@ -12374,6 +12546,16 @@
         "schema": "app_private",
         "arguments": "p_region_id text, p_operation_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION app_private.buy_region_map(p_region_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();m public.region_maps;w public.player_wallets;t public.gold_transactions;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if exists(select 1 from public.fishing_map_blueprints where region_id=p_region_id) then raise exception 'MAP_FOUND_BY_FISHING';end if;\n if p_operation_id is null or p_region_id is null then raise exception 'INVALID_TRADE';end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n select * into t from public.gold_transactions where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if t.action<>'buy' or t.item_id is distinct from 'map:'||p_region_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.get_gold_wallet()||jsonb_build_object('delta',0);\n end if;\n select * into m from public.region_maps where region_id=p_region_id for share;\n if not found then raise exception 'INVALID_MAP';end if;\n if exists(select 1 from public.regions r where r.id=p_region_id and not r.requires_map_fragment)\n or exists(select 1 from public.player_map_fragments where user_id=v_uid and region_id=p_region_id) then raise exception 'MAP_ALREADY_OWNED';end if;\n if w.gold<m.price then raise exception 'INSUFFICIENT_GOLD';end if;\n update public.player_wallets set gold=gold-m.price,updated_at=now() where user_id=v_uid;\n insert into public.player_map_fragments(user_id,region_id) values(v_uid,p_region_id);\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','map:'||p_region_id,-m.price);\n return app_private.get_gold_wallet()||jsonb_build_object('delta',-m.price);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "cancel_harbor_voyage",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_voyage_id uuid, p_operation_id uuid, p_refund_expected boolean",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.cancel_harbor_voyage(p_voyage_id uuid, p_operation_id uuid, p_refund_expected boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();trip public.harbor_voyages;w public.player_wallets;\n prev app_private.harbor_operations;sig jsonb;receipt jsonb;at_time timestamptz;free_cancel boolean;refund integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_voyage_id is null or p_operation_id is null or p_refund_expected is null then raise exception 'INVALID_HARBOR_ACTION';end if;\n sig:=jsonb_build_object('action','cancel','voyage',p_voyage_id,'refundExpected',p_refund_expected);\n -- Serialize with departure, collection and arrival acknowledgement.\n perform pg_advisory_xact_lock(hashtextextended('harbor:'||u::text,0));\n select * into prev from app_private.harbor_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature is distinct from sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.harbor_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n perform app_private.get_gold_wallet();\n select * into strict w from public.player_wallets where user_id=u for update;\n select * into trip from public.harbor_voyages where id=p_voyage_id and user_id=u for update;\n if not found then raise exception 'VOYAGE_NOT_FOUND';end if;\n at_time:=clock_timestamp();\n if trip.claimed_at is not null or trip.returns_at<=at_time then raise exception 'VOYAGE_ALREADY_RETURNED';end if;\n free_cancel:=at_time<=trip.departed_at+interval '30 seconds';\n if free_cancel is distinct from p_refund_expected then raise exception 'CANCELLATION_QUOTE_CHANGED';end if;\n refund:=case when free_cancel then (trip.vessel_snapshot->>'fuel_cost')::integer else 0 end;\n if refund is null or refund<0 then raise exception 'INVALID_VOYAGE_SNAPSHOT';end if;\n if coalesce((w.inventory->>'fuel')::bigint,0)+refund>1000000000 then raise exception 'FUEL_LIMIT';end if;\n insert into app_private.cancelled_harbor_voyages(voyage_id,user_id,voyage,cancelled_at,free_cancellation,refunded_fuel)\n values(trip.id,u,to_jsonb(trip),at_time,free_cancel,refund);\n delete from public.harbor_voyages where id=trip.id and user_id=u;\n if refund>0 then\n  update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb(coalesce((inventory->>'fuel')::integer,0)+refund)),updated_at=at_time where user_id=u;\n end if;\n receipt:=jsonb_build_object('action','cancel','voyageId',trip.id,'boatId',trip.boat_id,'refundedFuel',refund,'freeCancellation',free_cancel);\n insert into app_private.harbor_operations(user_id,operation_id,signature,receipt,created_at) values(u,p_operation_id,sig,receipt,at_time);\n return app_private.harbor_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -13353,7 +13535,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.harbor_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w jsonb;capacity integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n w:=app_private.get_gold_wallet();\n select coalesce((select dock_slots from app_private.player_harbor_capacity where user_id=u),2) into capacity;\n return jsonb_build_object('serverNow',clock_timestamp(),'fuel',coalesce((w->'inventory'->>'fuel')::integer,0),'fuelPrice',57,'fuelDailyLimit',5,'fuelPurchasedToday',coalesce((select sum((op.receipt->>'quantity')::integer) from app_private.harbor_operations op where op.user_id=u and op.receipt->>'action'='fuel' and op.created_at>=((clock_timestamp() at time zone 'Asia/Seoul')::date::timestamp at time zone 'Asia/Seoul')),0),'dockSlots',capacity,'nextDockExpansion',case when capacity<4 then jsonb_build_object('slot',capacity+1,'price',case capacity when 2 then 10000 else 30000 end) else null end,\n 'regions',(select jsonb_agg(jsonb_build_object('id',r.id,'name',r.name,'unlocked',not r.requires_map_fragment or exists(select 1 from public.player_map_fragments m where m.user_id=u and m.region_id=r.id)) order by r.sort_order) from public.regions r),\n 'vessels',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('price',greatest(0,v.price-app_private.relic_bonus('boat_discount_gold')::integer),'basePrice',v.price,'owned',o.n>0,'ownedCount',o.n) order by v.sort_order)\n  from public.harbor_vessels v cross join lateral(select count(*)::integer n from public.harbor_boats b where b.user_id=u and b.vessel_id=v.id and b.sold_at is null)o),'[]'::jsonb),\n 'boats',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('price',coalesce(b.paid_price,v.price),'id',b.id,'vessel_id',b.vessel_id,'instance_no',b.instance_no,'dock_slot',b.dock_slot,'owned',true) order by b.purchased_at,b.id)\n  from public.harbor_boats b join public.harbor_vessels v on v.id=b.vessel_id where b.user_id=u and b.sold_at is null),'[]'::jsonb),\n 'voyages',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('region_name',(select name from public.regions where id=v.region_id)) order by v.departed_at) from public.harbor_voyages v where v.user_id=u and v.claimed_at is null),'[]'::jsonb));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.harbor_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w jsonb;capacity integer;reduction numeric;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n w:=app_private.get_gold_wallet();\n reduction:=app_private.relic_bonus('harbor_duration_percent');\n select coalesce((select dock_slots from app_private.player_harbor_capacity where user_id=u),2) into capacity;\n return jsonb_build_object('serverNow',clock_timestamp(),'fuel',coalesce((w->'inventory'->>'fuel')::integer,0),'fuelPrice',57,'fuelDailyLimit',5,'fuelPurchasedToday',coalesce((select sum((op.receipt->>'quantity')::integer) from app_private.harbor_operations op where op.user_id=u and op.receipt->>'action'='fuel' and op.created_at>=((clock_timestamp() at time zone 'Asia/Seoul')::date::timestamp at time zone 'Asia/Seoul')),0),'dockSlots',capacity,'nextDockExpansion',case when capacity<4 then jsonb_build_object('slot',capacity+1,'price',case capacity when 2 then 10000 else 30000 end) else null end,\n 'regions',(select jsonb_agg(jsonb_build_object('id',r.id,'name',r.name,'unlocked',not r.requires_map_fragment or exists(select 1 from public.player_map_fragments m where m.user_id=u and m.region_id=r.id)) order by r.sort_order) from public.regions r),\n 'vessels',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('price',greatest(0,v.price-app_private.relic_bonus('boat_discount_gold')::integer),'basePrice',v.price,'duration_minutes',v.duration_minutes*(100-reduction)/100,'base_duration_minutes',v.duration_minutes,'harbor_duration_percent',reduction,'owned',o.n>0,'ownedCount',o.n) order by v.sort_order)\n  from public.harbor_vessels v cross join lateral(select count(*)::integer n from public.harbor_boats b where b.user_id=u and b.vessel_id=v.id and b.sold_at is null)o),'[]'::jsonb),\n 'boats',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('price',coalesce(b.paid_price,v.price),'duration_minutes',v.duration_minutes*(100-reduction)/100,'base_duration_minutes',v.duration_minutes,'harbor_duration_percent',reduction,'id',b.id,'vessel_id',b.vessel_id,'instance_no',b.instance_no,'dock_slot',b.dock_slot,'owned',true) order by b.purchased_at,b.id)\n  from public.harbor_boats b join public.harbor_vessels v on v.id=b.vessel_id where b.user_id=u and b.sold_at is null),'[]'::jsonb),\n 'voyages',coalesce((select jsonb_agg(to_jsonb(v)||jsonb_build_object('region_name',(select name from public.regions where id=v.region_id)) order by v.departed_at) from public.harbor_voyages v where v.user_id=u and v.claimed_at is null),'[]'::jsonb));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14003,7 +14185,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_operation_id uuid, p_caption text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.publish_fishing_showcase(p_operation_id uuid, p_caption text)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();existing uuid;p app_private.prepared_fishing_casts;a public.fishing_attempts;result_id uuid;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_caption is null or char_length(btrim(p_caption))>200 then raise exception 'INVALID_SHOWCASE';end if;\n perform pg_advisory_xact_lock(hashtextextended('showcase:'||u::text||':'||p_operation_id::text,0));\n select id into existing from public.fishing_showcase_posts where author_id=u and operation_id=p_operation_id;\n if found then return existing;end if;\n select * into p from app_private.prepared_fishing_casts where user_id=u and operation_id=p_operation_id;\n if not found then raise exception 'CATCH_NOT_SHAREABLE';end if;\n select * into a from public.fishing_attempts where user_id=u and operation_id=p_operation_id;\n if not found or p.finished_at is null or not p.eligible or a.rarity is null or a.rarity not in ('epic','mythic')\n or p.result->'attempt'->'species'->>'id' is null\n or p.result->'attempt'->'species'->>'rarity' is distinct from a.rarity::text\n then raise exception 'CATCH_NOT_SHAREABLE';end if;\n insert into public.fishing_showcase_posts(author_id,operation_id,caption,species,rarity,region_name,caught_at,first_discovery,render_version)\n values(u,p_operation_id,btrim(p_caption),p.result->'attempt'->'species',a.rarity,\n (select name from public.regions where id=p.region_id),a.created_at,\n coalesce((p.result->'attempt'->>'firstDiscovery')::boolean,false),1) returning id into result_id;\n return result_id;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.publish_fishing_showcase(p_operation_id uuid, p_caption text)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();existing uuid;p app_private.prepared_fishing_casts;a public.fishing_attempts;result_id uuid;species jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_caption is null or char_length(btrim(p_caption))>200 then raise exception 'INVALID_SHOWCASE';end if;\n perform pg_advisory_xact_lock(hashtextextended('showcase:'||u::text||':'||p_operation_id::text,0));\n select id into existing from public.fishing_showcase_posts where author_id=u and operation_id=p_operation_id;\n if found then return existing;end if;\n select * into p from app_private.prepared_fishing_casts where user_id=u and operation_id=p_operation_id;\n if not found then raise exception 'CATCH_NOT_SHAREABLE';end if;\n select * into a from public.fishing_attempts where user_id=u and operation_id=p_operation_id;\n species:=p.result->'attempt'->'species';\n if not found or p.finished_at is null or not p.eligible or a.rarity is null or a.rarity not in ('epic','mythic')\n or species->>'id' is null or species->>'rarity' is distinct from a.rarity::text\n or coalesce(species->>'kind','') not in ('fish','trash','decoration','relic')\n then raise exception 'CATCH_NOT_SHAREABLE';end if;\n if species->>'kind'='relic' and (a.rarity<>'mythic' or p.relic_id is null\n  or species->>'id' is distinct from 'relic-'||p.relic_id\n  or p.snapshot->>'id' is distinct from species->>'id') then raise exception 'CATCH_NOT_SHAREABLE';end if;\n insert into public.fishing_showcase_posts(author_id,operation_id,caption,species,rarity,region_name,caught_at,first_discovery,render_version)\n values(u,p_operation_id,btrim(p_caption),species,a.rarity,\n (select name from public.regions where id=p.region_id),a.created_at,\n coalesce((p.result->'attempt'->>'firstDiscovery')::boolean,false),1) returning id into result_id;\n return result_id;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14134,6 +14316,16 @@
         "schema": "app_private",
         "arguments": "p_effect text",
         "definition": "CREATE OR REPLACE FUNCTION app_private.relic_bonus(p_effect text)\n RETURNS numeric\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select coalesce((select r.effect_value from app_private.player_relic_loadouts l join public.fishing_relics r on r.id=l.relic_id\n where l.user_id=(select auth.uid()) and r.enabled and r.effect_kind=p_effect),0)\n$function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "relic_showcase_catch",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_relic_id text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_showcase_catch(p_relic_id text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();p app_private.prepared_fishing_casts;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n select c.* into p from app_private.prepared_fishing_casts c\n join public.fishing_attempts a on a.user_id=c.user_id and a.operation_id=c.operation_id\n where c.user_id=u and c.relic_id=p_relic_id and c.finished_at is not null and c.eligible\n  and a.rarity='mythic' and c.result#>>'{attempt,species,kind}'='relic'\n  and c.result#>>'{attempt,species,rarity}'='mythic'\n  and c.result#>>'{attempt,species,id}'='relic-'||p_relic_id\n order by c.finished_at desc,c.operation_id limit 1;\n if not found then raise exception 'CATCH_NOT_SHAREABLE';end if;\n return jsonb_build_object('operationId',p.operation_id,'species',p.result#>'{attempt,species}',\n  'firstDiscovery',coalesce((p.result#>>'{attempt,firstDiscovery}')::boolean,false),\n  'regionName',(select name from public.regions where id=p.region_id),'caughtAt',p.created_at);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14503,7 +14695,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.snapshot_harbor_catch_rule()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare rule jsonb;\nbegin\n select catch_rule into strict rule from public.harbor_vessels where id=new.vessel_id;\n if rule is null then raise exception 'HARBOR_RULE_REQUIRED';end if;\n new.vessel_snapshot:=jsonb_set(new.vessel_snapshot,'{catch_rule}',rule);\n return new;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.snapshot_harbor_catch_rule()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare rule jsonb;base_minutes integer;minimum_count integer;maximum_count integer;\n reduction numeric:=0;seconds numeric;previous app_private.cancelled_harbor_voyages;previous_count integer;\nbegin\n select catch_rule,duration_minutes,fishing_count,coalesce(fishing_count_max,fishing_count)\n into strict rule,base_minutes,minimum_count,maximum_count from public.harbor_vessels where id=new.vessel_id;\n if rule is null then raise exception 'HARBOR_RULE_REQUIRED';end if;\n new.vessel_snapshot:=jsonb_set(new.vessel_snapshot,'{catch_rule}',rule);\n -- An undo must not become a free way to reroll a boat's attempt count.\n select * into previous from app_private.cancelled_harbor_voyages\n where user_id=new.user_id and voyage->>'boat_id'=new.boat_id::text order by cancelled_at desc limit 1;\n if found and previous.free_cancellation and previous.voyage#>'{vessel_snapshot,catch_rule}'=rule\n  and not exists(select 1 from public.harbor_voyages where boat_id=new.boat_id and departed_at>=previous.cancelled_at) then\n  previous_count:=(previous.voyage#>>'{vessel_snapshot,fishing_count}')::integer;\n  if previous_count between minimum_count and maximum_count then\n   new.vessel_snapshot:=jsonb_set(new.vessel_snapshot,'{fishing_count}',to_jsonb(previous_count));\n  end if;\n end if;\n if new.user_id=auth.uid() then reduction:=app_private.relic_bonus('harbor_duration_percent');end if;\n seconds:=base_minutes*60*(100-reduction)/100;\n new.returns_at:=new.departed_at+make_interval(secs=>seconds::double precision);\n new.vessel_snapshot:=new.vessel_snapshot||jsonb_build_object('base_duration_minutes',base_minutes,\n  'duration_minutes',seconds/60,'duration_seconds',seconds,'harbor_duration_percent',reduction);\n return new;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14997,6 +15189,16 @@
         "securityDefiner": false
       },
       {
+        "name": "buy_fishing_bait_bulk",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_bait_id text, p_quantity integer, p_operation_id uuid, p_expected_price integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.buy_fishing_bait_bulk(p_bait_id text, p_quantity integer, p_operation_id uuid, p_expected_price integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.buy_fishing_bait_bulk(p_bait_id,p_quantity,p_operation_id,p_expected_price)\n$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "buy_region_map",
         "config": [
           "search_path=\"\""
@@ -15004,6 +15206,16 @@
         "schema": "public",
         "arguments": "p_region_id text, p_operation_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION public.buy_region_map(p_region_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.buy_region_map(p_region_id,p_operation_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "cancel_harbor_voyage",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_voyage_id uuid, p_operation_id uuid, p_refund_expected boolean",
+        "definition": "CREATE OR REPLACE FUNCTION public.cancel_harbor_voyage(p_voyage_id uuid, p_operation_id uuid, p_refund_expected boolean)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.cancel_harbor_voyage(p_voyage_id,p_operation_id,p_refund_expected)\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -15947,6 +16159,16 @@
         "securityDefiner": false
       },
       {
+        "name": "relic_showcase_catch",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_relic_id text",
+        "definition": "CREATE OR REPLACE FUNCTION public.relic_showcase_catch(p_relic_id text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.relic_showcase_catch(p_relic_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "relic_state",
         "config": [
           "search_path=\"\""
@@ -16681,6 +16903,126 @@
         "table": "bait_production_sites",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "bait_purchase_operations_bait_id_not_null",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL bait_id"
+      },
+      {
+        "name": "bait_purchase_operations_created_at_not_null",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "bait_purchase_operations_operation_id_not_null",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "bait_purchase_operations_pkey",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "bait_purchase_operations_quantity_check",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "definition": "CHECK (((quantity >= 1) AND (quantity <= 99)))"
+      },
+      {
+        "name": "bait_purchase_operations_quantity_not_null",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL quantity"
+      },
+      {
+        "name": "bait_purchase_operations_unit_price_check",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "definition": "CHECK ((unit_price > 0))"
+      },
+      {
+        "name": "bait_purchase_operations_unit_price_not_null",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL unit_price"
+      },
+      {
+        "name": "bait_purchase_operations_user_id_fkey",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "bait_purchase_operations_user_id_not_null",
+        "table": "bait_purchase_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "cancelled_harbor_voyages_cancelled_at_not_null",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "definition": "NOT NULL cancelled_at"
+      },
+      {
+        "name": "cancelled_harbor_voyages_free_cancellation_not_null",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "definition": "NOT NULL free_cancellation"
+      },
+      {
+        "name": "cancelled_harbor_voyages_pkey",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (voyage_id)"
+      },
+      {
+        "name": "cancelled_harbor_voyages_refunded_fuel_check",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "definition": "CHECK ((refunded_fuel >= 0))"
+      },
+      {
+        "name": "cancelled_harbor_voyages_refunded_fuel_not_null",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "definition": "NOT NULL refunded_fuel"
+      },
+      {
+        "name": "cancelled_harbor_voyages_user_id_fkey",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "cancelled_harbor_voyages_user_id_not_null",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "cancelled_harbor_voyages_voyage_check",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "definition": "CHECK ((jsonb_typeof(voyage) = 'object'::text))"
+      },
+      {
+        "name": "cancelled_harbor_voyages_voyage_id_not_null",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "definition": "NOT NULL voyage_id"
+      },
+      {
+        "name": "cancelled_harbor_voyages_voyage_not_null",
+        "table": "cancelled_harbor_voyages",
+        "schema": "app_private",
+        "definition": "NOT NULL voyage"
       },
       {
         "name": "collectible_event_windows_check",
@@ -21504,7 +21846,7 @@
         "name": "relic_effect_shape",
         "table": "fishing_relics",
         "schema": "public",
-        "definition": "CHECK ((((effect_kind = 'none'::text) AND (effect_value = (0)::numeric)) OR ((effect_kind = ANY (ARRAY['fuel_active_slots'::text, 'bait_active_slots'::text])) AND (((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'personal_bait_hours'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (2)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (4)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (8)::numeric)))) OR ((effect_kind = 'fishing_wait_seconds'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = 0.5)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'trap_seconds_per_bait'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (30)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (90)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (180)::numeric)))) OR ((effect_kind = 'boat_discount_gold'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (50)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (150)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (400)::numeric)))) OR ((effect_kind = 'bait_discount_gold'::text) AND (((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric))))))"
+        "definition": "CHECK ((((effect_kind = 'none'::text) AND (effect_value = (0)::numeric)) OR ((effect_kind = ANY (ARRAY['fuel_active_slots'::text, 'bait_active_slots'::text])) AND (((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'personal_bait_hours'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (2)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (4)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (8)::numeric)))) OR ((effect_kind = 'fishing_wait_seconds'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = 0.5)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'trap_seconds_per_bait'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (30)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (90)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (180)::numeric)))) OR ((effect_kind = 'boat_discount_gold'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (50)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (150)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (400)::numeric)))) OR ((effect_kind = 'bait_discount_gold'::text) AND (((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'harbor_duration_percent'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (3)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (6)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (10)::numeric))))))"
       },
       {
         "name": "fishing_rods_check",
@@ -30956,6 +31298,27 @@
         "arguments": "p_bait_id text, p_operation_id uuid, p_expected_price integer"
       },
       {
+        "name": "buy_fishing_bait_bulk",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait_id text, p_quantity integer, p_operation_id uuid, p_expected_price integer"
+      },
+      {
+        "name": "buy_fishing_bait_bulk",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_bait_id text, p_quantity integer, p_operation_id uuid, p_expected_price integer"
+      },
+      {
+        "name": "buy_fishing_bait_bulk",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait_id text, p_quantity integer, p_operation_id uuid, p_expected_price integer"
+      },
+      {
         "name": "buy_region_map",
         "role": "anon",
         "schema": "app_private",
@@ -30975,6 +31338,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_region_id text, p_operation_id uuid"
+      },
+      {
+        "name": "cancel_harbor_voyage",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_voyage_id uuid, p_operation_id uuid, p_refund_expected boolean"
+      },
+      {
+        "name": "cancel_harbor_voyage",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_voyage_id uuid, p_operation_id uuid, p_refund_expected boolean"
+      },
+      {
+        "name": "cancel_harbor_voyage",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_voyage_id uuid, p_operation_id uuid, p_refund_expected boolean"
       },
       {
         "name": "capture_title_acquisition",
@@ -34673,6 +35057,27 @@
         "arguments": "p_effect text"
       },
       {
+        "name": "relic_showcase_catch",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_relic_id text"
+      },
+      {
+        "name": "relic_showcase_catch",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_relic_id text"
+      },
+      {
+        "name": "relic_showcase_catch",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_relic_id text"
+      },
+      {
         "name": "relic_state",
         "role": "anon",
         "schema": "app_private",
@@ -36479,6 +36884,27 @@
         "arguments": "p_bait_id text, p_operation_id uuid, p_expected_price integer"
       },
       {
+        "name": "buy_fishing_bait_bulk",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_bait_id text, p_quantity integer, p_operation_id uuid, p_expected_price integer"
+      },
+      {
+        "name": "buy_fishing_bait_bulk",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_bait_id text, p_quantity integer, p_operation_id uuid, p_expected_price integer"
+      },
+      {
+        "name": "buy_fishing_bait_bulk",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_bait_id text, p_quantity integer, p_operation_id uuid, p_expected_price integer"
+      },
+      {
         "name": "buy_region_map",
         "role": "anon",
         "schema": "public",
@@ -36498,6 +36924,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_region_id text, p_operation_id uuid"
+      },
+      {
+        "name": "cancel_harbor_voyage",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_voyage_id uuid, p_operation_id uuid, p_refund_expected boolean"
+      },
+      {
+        "name": "cancel_harbor_voyage",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_voyage_id uuid, p_operation_id uuid, p_refund_expected boolean"
+      },
+      {
+        "name": "cancel_harbor_voyage",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_voyage_id uuid, p_operation_id uuid, p_refund_expected boolean"
       },
       {
         "name": "cast_fishing",
@@ -38472,6 +38919,27 @@
         "schema": "public",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "relic_showcase_catch",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_relic_id text"
+      },
+      {
+        "name": "relic_showcase_catch",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_relic_id text"
+      },
+      {
+        "name": "relic_showcase_catch",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_relic_id text"
       },
       {
         "name": "relic_state",

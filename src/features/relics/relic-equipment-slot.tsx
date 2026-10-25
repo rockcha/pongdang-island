@@ -7,7 +7,9 @@ import type {Relic} from './api'
 export type RelicTransition={id:string;kind:'equip'|'unequip';relic:Relic}
 
 export function relicEffectDescription(description:string){
- return description.replace(/\s*·?\s*장착 중에만 (?:효과가 적용돼요|발동됩니다)\.?\s*$/,'').trim()
+ return description
+  .replace(/^장착한 상태로 출항하는 어선의 항해 시간이 (\d+)% 줄어들어요\. 진행 중인 항해와 통발에는 적용되지 않아요\.$/,'어선 항해 시간 $1% 단축')
+  .replace(/\s*·?\s*장착 중에만 (?:효과가 적용돼요|발동됩니다)\.?\s*$/,'').trim()
 }
 
 export function RelicEffectText({description}:{description:string}){

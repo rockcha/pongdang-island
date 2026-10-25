@@ -149,6 +149,12 @@ begin
    state:=public.harbor_action('sell',gen_random_uuid(),null,null,1,boat);
    if (state#>>'{receipt,gold}')::integer<>floor((list_price-r.effect_value)/2) then raise exception 'BOAT_RESALE_WRONG';end if;
    reset role;continue;
+  elsif r.effect_kind='harbor_duration_percent' then
+   set local role authenticated;
+   state:=public.harbor_state();
+   if not exists(select 1 from jsonb_array_elements(state->'vessels') v where (v->>'harbor_duration_percent')::numeric=r.effect_value) then raise exception 'HARBOR_DURATION_PREVIEW_WRONG';end if;
+   perform public.equip_relic(null,gen_random_uuid(),500);
+   reset role;continue;
   else raise exception 'UNKNOWN_EFFECT %',r.effect_kind;
   end if;
  end loop;

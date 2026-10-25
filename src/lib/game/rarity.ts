@@ -6,3 +6,11 @@ export const rarities = {
  mythic: { label: '신화', effectColor:'#f59e0b', rank: 3, className: 'rarity-mythic' },
 } as const
 export type Rarity = keyof typeof rarities
+
+// Catch reveals and rendered showcase cards use their own high-contrast badge.
+// Keep these colors separate from catalog filters and their dot indicators.
+export function catchBadgeColors(rarity:Rarity){
+ return rarity==='mythic'
+  ?{background:'#facc15',text:'#713f12'}
+  :{background:rarities[rarity].effectColor,text:'#ffffff'}
+}

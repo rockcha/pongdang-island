@@ -30,7 +30,7 @@ afterEach(async()=>{await db.exec('rollback')})
 // Replace only the random category decision inside a rolled-back fixture; the
 // actual prepare/finish, rarity sampler, ownership checks and grants still run.
 async function category(value:'map'|'relic'|'ordinary'){
- await db.exec(`create or replace function app_private.fishing_reward_category(p_roll double precision) returns text
+ await db.exec(`create or replace function app_private.fishing_reward_category(p_roll double precision,p_rarity public.game_rarity) returns text
   language sql immutable set search_path='' as $$select '${value}'::text$$`)
 }
 async function prepare(id=crypto.randomUUID(),bid=bait){
@@ -51,6 +51,36 @@ it('uses exact 94/3/3 category boundaries after grade selection',async()=>{
   expect((await db.query('select app_private.fishing_reward_category($1) c',[roll])).rows[0].c).toBe(expected)
  }
  for(const roll of [-.1,1,null])await rejected(()=>db.query('select app_private.fishing_reward_category($1)',[roll]),'INVALID_REWARD_ROLL')
+})
+
+it('uses exact grade-specific boundaries and keeps maps at three percent',async()=>{
+ for(const [grade,mapStart,relicStart,ordinary,relic] of [
+  ['common',.94,.97,9400,300],['rare',.94,.97,9400,300],
+  ['epic',.92,.95,9200,500],['mythic',.87,.90,8700,1000],
+ ] as const){
+  for(const [roll,expected] of [[0,'ordinary'],[mapStart-.000001,'ordinary'],[mapStart,'map'],[relicStart-.000001,'map'],[relicStart,'relic'],[.999999,'relic']] as const){
+   expect((await db.query('select app_private.fishing_reward_category($1,$2::public.game_rarity) c',[roll,grade])).rows[0].c).toBe(expected)
+  }
+  const counts=(await db.query(`select app_private.fishing_reward_category((n+.5)/10000.0,$1::public.game_rarity) category,count(*)::int n
+   from generate_series(0,9999) n group by 1`,[grade])).rows
+  expect(Object.fromEntries(counts.map(r=>[r.category,r.n]))).toEqual({ordinary,map:300,relic})
+ }
+ for(const roll of [-.1,1,null])await rejected(()=>db.query("select app_private.fishing_reward_category($1,'epic')",[roll]),'INVALID_REWARD_ROLL')
+ await rejected(()=>db.query('select app_private.fishing_reward_category(.5,null)'),'INVALID_REWARD_RARITY')
+})
+
+it('passes the bait-selected grade into the real category thresholds',async()=>{
+ const definition=(await db.query("select pg_get_functiondef('app_private.fishing_reward_category(double precision,public.game_rarity)'::regprocedure) d")).rows[0].d
+ // Pin just the random input. Keep the real grade-specific category decision.
+ await db.exec(definition.replace('begin\n','begin\n p_roll:=0.96;\n'))
+ for(const grade of ['rare','epic','mythic']){
+  await db.exec(`update app_private.fishing_bait_balance_profiles set common_bp=0,rare_bp=${grade==='rare'?10000:0},epic_bp=${grade==='epic'?10000:0},mythic_bp=${grade==='mythic'?10000:0} where id='${bait}';
+   update public.fishing_relics set rarity='${grade}' where id='test-relic';`)
+  const p=await prepare()
+  expect(p.rarity).toBe(grade)
+  expect(p.species.kind).toBe(grade==='rare'?'map':'relic')
+  await finish(p.operation_id,false)
+ }
 })
 
 it('keeps legacy fishing ordinary and scopes discovery opt-in to the new RPC',async()=>{

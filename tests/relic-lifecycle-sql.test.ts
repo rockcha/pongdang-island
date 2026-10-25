@@ -38,7 +38,7 @@ beforeEach(async()=>{
  await db.query("insert into public.player_navigation(user_id,region_id) values($1,'pongdang') on conflict(user_id) do update set region_id='pongdang'",[uid])
  // Only the category roll is fixed. Real rarity, reservation, finalization,
  // ownership, payment and public authorization paths remain in use.
- await db.exec("create or replace function app_private.fishing_reward_category(p_roll double precision) returns text language sql immutable set search_path='' as $$select 'relic'::text$$")
+ await db.exec("create or replace function app_private.fishing_reward_category(p_roll double precision,p_rarity public.game_rarity) returns text language sql immutable set search_path='' as $$select 'relic'::text$$")
 })
 afterEach(async()=>{await db.exec('rollback;reset role')})
 

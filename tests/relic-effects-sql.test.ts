@@ -75,15 +75,18 @@ it('subtracts half a second from new fishing waits without changing pending cast
  await equip(null);expect((await db.query('select wait_seconds from app_private.prepared_fishing_casts where user_id=$1 order by created_at,operation_id',[uid])).rows).toEqual(stored.rows)
 })
 
-it('enforces the extra fuel slot at actual start and preserves running jobs when unequipped',async()=>{
+it('blocks removing the extra fuel slot until active production returns to the base limit',async()=>{
  const working=await db.query("insert into app_private.production_sites(user_id,facility_id,started_at,completes_at,expires_at,run_output) select $1,'clockwork-compressor',now(),now()+interval '1 hour',now()+interval '2 hours',1 from generate_series(1,4) returning id",[uid])
  const idle=(await db.query("insert into app_private.production_sites(user_id,facility_id) select $1,'clockwork-compressor' from generate_series(1,2) returning id",[uid])).rows
  await db.query("insert into public.player_collectibles(user_id,species_id) select $1,'shared-drift-scrap-wood' from generate_series(1,4)",[uid])
  const start=(id:string)=>user("select public.production_action('start',$1,$2,'{\"shared-drift-scrap-wood\":2}') s",[crypto.randomUUID(),id])
  await reject(()=>start(idle[0].id),'PRODUCTION_ACTIVE_LIMIT')
  await equip('undying-furnace-heart');await start(idle[0].id)
- await reject(()=>start(idle[1].id),'PRODUCTION_ACTIVE_LIMIT');await equip(null)
+ await reject(()=>start(idle[1].id),'PRODUCTION_ACTIVE_LIMIT');const balance=await gold()
+ await reject(()=>equip(null),'RELIC_FUEL_PRODUCTION_ACTIVE:4');expect(await gold()).toBe(balance)
  expect((await user('select public.production_state() s')).activeTotal).toBe(5)
+ await db.query("update app_private.production_sites set started_at=clock_timestamp()-interval '1 hour',completes_at=clock_timestamp()-interval '1 second' where id=$1",[working.rows[0].id])
+ await equip(null);expect((await user('select public.production_state() s')).activeTotal).toBe(4)
  await reject(()=>start(idle[1].id),'PRODUCTION_ACTIVE_LIMIT')
  expect(working.rows).toHaveLength(4)
 })
@@ -100,4 +103,8 @@ it('applies every real relic to authenticated actions and removes bonuses on une
 
 it('keeps free equips idempotent and charges only one removal fee during replacement',async()=>{
  await db.exec(readFileSync('tests/fixtures/relic-equipment-fee-smoke.sql','utf8'))
+})
+
+it('protects fuel and bait production capacity on removal, downgrades and unrelated replacements',async()=>{
+ await db.exec(readFileSync('tests/fixtures/relic-production-lock-smoke.sql','utf8'))
 })

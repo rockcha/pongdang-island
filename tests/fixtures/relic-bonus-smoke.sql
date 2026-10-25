@@ -40,6 +40,20 @@ begin
    if (state->>'activeTotal')::integer<>limit_count then raise exception 'ACTIVE_LIMIT_WRONG %',r.id;end if;
    idle:=site;
    set local role authenticated;
+   begin
+    perform public.equip_relic(null,gen_random_uuid(),500);raise exception 'OVER_CAPACITY_REMOVAL_ALLOWED';
+   exception when others then
+    if sqlerrm<>(case when r.effect_kind='fuel_active_slots' then 'RELIC_FUEL_PRODUCTION_ACTIVE:4' else 'RELIC_BAIT_PRODUCTION_ACTIVE:4' end) then raise;end if;
+   end;
+   reset role;
+   if r.effect_kind='fuel_active_slots' then
+    update app_private.production_sites set started_at=clock_timestamp()-interval '1 hour',completes_at=clock_timestamp()-interval '1 second'
+     where id in(select id from app_private.production_sites where user_id=u and completes_at>clock_timestamp() order by id limit limit_count-4);
+   else
+    update app_private.bait_production_sites set started_at=clock_timestamp()-interval '1 hour',completes_at=clock_timestamp()-interval '1 second'
+     where id in(select id from app_private.bait_production_sites where user_id=u and completes_at>clock_timestamp() order by id limit limit_count-4);
+   end if;
+   set local role authenticated;
    perform public.equip_relic(null,gen_random_uuid(),500);
    begin
     if r.effect_kind='fuel_active_slots' then

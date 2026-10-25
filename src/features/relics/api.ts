@@ -24,6 +24,8 @@ export async function sellRelic(id:string,operation:string,price:number){
 }
 export function relicError(cause:unknown){
  const message=String((cause as {message?:string})?.message??'')
+ const production=message.match(/RELIC_(FUEL|BAIT)_PRODUCTION_ACTIVE:(\d+)/)
+ if(production)return `${production[1]==='FUEL'?'연료':'미끼'} 생산소의 생산이 끝나 가동 수가 ${production[2]}곳 이하가 된 뒤 변경할 수 있어요.`
  if(message.includes('RELIC_EQUIPPED'))return '장착 중인 유물은 먼저 해제한 뒤 판매해 주세요.'
  if(message.includes('RELIC_PRICE_CHANGED'))return '판매 가격이 바뀌었어요. 현재 가격을 다시 확인해 주세요.'
  if(message.includes('RELIC_NOT_SELLABLE'))return '지금은 판매할 수 없는 유물이에요.'

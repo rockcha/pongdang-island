@@ -149,7 +149,6 @@ export const placeBanners: Record<
 }
 
 export function PlaceBanner({ pathname }: { pathname: string }) {
-  if (/^\/relics\/?$/.test(pathname)) return null
   const section = Object.values(placeSections).find(
     (place) => pathname === place.path || pathname.startsWith(`${place.path}/`),
   )

@@ -23,3 +23,40 @@
   color: var(--primary);
   font-weight: 600;
 }
+
+.relic-equipped-art::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -0.5rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, #dfb55170 0%, #edce8525 42%, transparent 72%);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.relic-equip-pulse {
+  border: 1px solid #d5a74c99;
+  box-shadow: 0 0 12px #dfba6240;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .relic-equipped-art::before {
+    animation: relic-idle-glow 4.8s ease-in-out infinite alternate;
+  }
+  .relic-equip-pulse {
+    animation: relic-equip-bloom 560ms ease-out both;
+  }
+}
+
+@keyframes relic-idle-glow {
+  from { opacity: 0.25; transform: scale(0.98); }
+  to { opacity: 0.45; transform: scale(1.08); }
+}
+
+@keyframes relic-equip-bloom {
+  0% { opacity: 0; transform: scale(0.6); }
+  18% { opacity: 0.6; }
+  100% { opacity: 0; transform: scale(1.9); }
+}

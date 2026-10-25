@@ -3,7 +3,7 @@ import {afterEach,expect,it,vi} from 'vitest'
 import {RelicLoadout,RelicPage} from '@/features/relics/relic-loadout'
 const {load,equip,sell,equipSound,unequipSound}=vi.hoisted(()=>({load:vi.fn(),equip:vi.fn(),sell:vi.fn(),equipSound:vi.fn(),unequipSound:vi.fn()}))
 vi.mock('@/features/gold/purchase-sound',()=>({playRelicEquipSound:equipSound,playRelicUnequipSound:unequipSound}))
-vi.mock('@/features/relics/api',()=>({loadRelics:load,equipRelic:equip,sellRelic:sell,relicError:()=> '다시 확인해 주세요.'}))
+vi.mock('@/features/relics/api',async original=>({...await original<typeof import('@/features/relics/api')>(),loadRelics:load,equipRelic:equip,sellRelic:sell}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'relic-test'}}})}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name}:{name:string})=><span role="img" aria-label={name}/>}))
@@ -11,6 +11,19 @@ const a={id:'a',name:'조개 모래시계',description:'최대 제작 시간 +2�
 const b={...a,id:'b',name:'영원의 물시계',rarity:'mythic',owned:false,effect_value:8}
 const state={equippedId:null,changeFee:500,equipFee:0,unequipFee:500,relics:[a,b]}
 afterEach(()=>{cleanup();localStorage.clear();vi.clearAllMocks()})
+it('shows a production capacity rejection without changing equipment or playing equip effects',async()=>{
+ load.mockResolvedValue({...state,equippedId:'a'})
+ equip.mockRejectedValueOnce({code:'P0001',message:'RELIC_FUEL_PRODUCTION_ACTIVE:4'})
+ const {container}=render(<RelicPage/>)
+ fireEvent.click(await screen.findByRole('button',{name:'해제'}))
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'확인'}))
+ expect(await screen.findByRole('alert')).toHaveProperty('textContent','연료 생산소의 생산이 끝나 가동 수가 4곳 이하가 된 뒤 변경할 수 있어요.')
+ expect(equipSound).not.toHaveBeenCalled();expect(unequipSound).not.toHaveBeenCalled()
+ expect(container.querySelector('.relic-equip-pulse')).toBeNull()
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'취소'}))
+ await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
+ expect(within(screen.getByRole('region',{name:'장착 슬롯'})).getByText(a.name)).toBeTruthy()
+})
 it('offers the full collection when nothing is owned',async()=>{
  load.mockResolvedValue({...state,relics:[{...a,owned:false},b]});render(<RelicPage/>)
  await screen.findByText('아직 보유한 유물이 없어요.')

@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "a9b46e90660fbc7e5f6154610e994f5c6dbb2045ec9c6d373bdc7c147c2f5c4e",
+  "migrationHash": "9e7494dcf9cfdfbf0fac7f194ca46e2c9021c12f940f5417c0e7e24a46d95615",
   "structure": {
     "enums": [
       {
@@ -12288,7 +12288,17 @@
         ],
         "schema": "app_private",
         "arguments": "p_bait_id text, p_operation_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.buy_fishing_bait(p_bait_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid(); b public.fishing_baits; w public.player_wallets; prev public.gold_transactions;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_operation_id is null then raise exception 'INVALID_TRADE'; end if;\n select * into b from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT'; end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n select * into prev from public.gold_transactions where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if prev.action<>'buy' or prev.item_id is distinct from ('fishing:'||p_bait_id) then raise exception 'OPERATION_CONFLICT'; end if;\n  return app_private.get_gold_wallet()||jsonb_build_object('delta',0);\n end if;\n if b.price is null then raise exception 'BAIT_NOT_FOR_SALE'; end if;\n if w.gold<b.price then raise exception 'INSUFFICIENT_GOLD'; end if;\n update public.player_wallets set gold=gold-b.price,\n inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(coalesce((inventory->>p_bait_id)::integer,0)+1)),updated_at=now() where user_id=v_uid;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','fishing:'||p_bait_id,-b.price);\n return app_private.get_gold_wallet()||jsonb_build_object('delta',-b.price);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.buy_fishing_bait(p_bait_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$ select app_private.buy_fishing_bait(p_bait_id,p_operation_id,null::integer) $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "buy_fishing_bait",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_bait_id text, p_operation_id uuid, p_expected_price integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.buy_fishing_bait(p_bait_id text, p_operation_id uuid, p_expected_price integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid(); b public.fishing_baits; w public.player_wallets; prev public.gold_transactions; v_price integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_operation_id is null then raise exception 'INVALID_TRADE'; end if;\n select * into b from public.fishing_baits where id=p_bait_id;\n if not found then raise exception 'INVALID_BAIT'; end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=v_uid for update;\n select * into prev from public.gold_transactions where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if prev.action<>'buy' or prev.item_id is distinct from ('fishing:'||p_bait_id) then raise exception 'OPERATION_CONFLICT'; end if;\n  return app_private.get_gold_wallet()||jsonb_build_object('delta',0);\n end if;\n if b.price is null then raise exception 'BAIT_NOT_FOR_SALE'; end if;\n v_price:=greatest(1,b.price-app_private.relic_bonus('bait_discount_gold')::integer);\n if p_expected_price is not null and p_expected_price<>v_price then raise exception 'BAIT_PRICE_CHANGED';end if;\n if w.gold<v_price then raise exception 'INSUFFICIENT_GOLD';end if;\n update public.player_wallets set gold=gold-v_price,\n inventory=jsonb_set(inventory,array[p_bait_id],to_jsonb(coalesce((inventory->>p_bait_id)::integer,0)+1)),updated_at=now() where user_id=v_uid;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','fishing:'||p_bait_id,-v_price);\n return app_private.get_gold_wallet()||jsonb_build_object('delta',-v_price);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -13018,7 +13028,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_region text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select region_id into v_region from public.player_navigation where user_id=v_uid;\n v_region:=coalesce(v_region,'pongdang');\n return jsonb_build_object('regionId',v_region,'regionName',(select name from public.regions where id=v_region),\n 'successChanceBp',10000,'mechanicsVersion',2,\n 'prepared',(select app_private.prepared_fishing_payload(p) from app_private.prepared_fishing_casts p where user_id=v_uid and finished_at is null and expires_at>clock_timestamp()),\n 'baits',(select jsonb_agg(to_jsonb(b)||app_private.regional_bait_odds(b.id,v_region)||jsonb_build_object('baseSuccessChanceBp',10000,'successChanceBp',10000,'mechanicsVersion',2) order by b.sort_order) from public.fishing_baits b));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.fishing_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_region text;v_discount integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n select region_id into v_region from public.player_navigation where user_id=v_uid;\n v_region:=coalesce(v_region,'pongdang');\n v_discount:=app_private.relic_bonus('bait_discount_gold')::integer;\n return jsonb_build_object('regionId',v_region,'regionName',(select name from public.regions where id=v_region),\n 'successChanceBp',10000,'mechanicsVersion',2,\n 'prepared',(select app_private.prepared_fishing_payload(p) from app_private.prepared_fishing_casts p where user_id=v_uid and finished_at is null and expires_at>clock_timestamp()),\n 'baits',(select jsonb_agg(to_jsonb(b)||app_private.regional_bait_odds(b.id,v_region)||jsonb_build_object('base_price',b.price,'price',case when b.price is null then null else greatest(1,b.price-v_discount) end,'priceDiscountGold',case when b.price is null then 0 else b.price-greatest(1,b.price-v_discount) end,'baseSuccessChanceBp',10000,'successChanceBp',10000,'mechanicsVersion',2) order by b.sort_order) from public.fishing_baits b));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14568,7 +14578,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_operation_id uuid, p_action text, p_item_id text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.trade_gold(p_operation_id uuid, p_action text, p_item_id text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_wallet public.player_wallets;v_previous public.gold_transactions;v_delta integer;v_count integer;v_price integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('charge','buy','sell') then raise exception 'INVALID_TRADE';end if;\n insert into public.player_wallets(user_id) values(v_uid) on conflict do nothing;\n select * into v_wallet from public.player_wallets where user_id=v_uid for update;\n select * into v_previous from public.gold_transactions where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if v_previous.action<>p_action or v_previous.item_id is distinct from p_item_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.get_gold_wallet()||jsonb_build_object('delta',0);\n end if;\n if p_action='charge' then\n  if p_item_id is not null then raise exception 'INVALID_TRADE';end if;\n  if not coalesce((select test_charge_enabled from app_private.gold_settings where id),false) then raise exception 'TEST_CHARGE_DISABLED';end if;\n  if v_wallet.test_claimed then raise exception 'TEST_CHARGE_ALREADY_CLAIMED';end if;\n  v_delta:=1000;\n else\n  if p_item_id is null or p_item_id not in ('bait','shell') then raise exception 'INVALID_ITEM';end if;\n  v_count:=coalesce((v_wallet.inventory->>p_item_id)::integer,0);\n  v_price:=case when p_item_id='bait' then (select price from public.fishing_baits where id='bait') else 300 end;\n  if v_price is null then raise exception 'INVALID_ITEM';end if;\n  if p_action='buy' then\n   if v_wallet.gold<v_price then raise exception 'INSUFFICIENT_GOLD';end if;\n   v_delta:=-v_price;v_count:=v_count+1;\n  else\n   if v_count<1 then raise exception 'INSUFFICIENT_INVENTORY';end if;\n   v_delta:=v_price*6/10;v_count:=v_count-1;\n  end if;\n  v_wallet.inventory:=jsonb_set(v_wallet.inventory,array[p_item_id],to_jsonb(v_count));\n end if;\n if v_wallet.gold+v_delta>1000000000 then raise exception 'GOLD_LIMIT';end if;\n update public.player_wallets set gold=gold+v_delta,inventory=v_wallet.inventory,test_claimed=test_claimed or p_action='charge',updated_at=now() where user_id=v_uid;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,p_action,p_item_id,v_delta);\n return app_private.get_gold_wallet()||jsonb_build_object('delta',v_delta);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.trade_gold(p_operation_id uuid, p_action text, p_item_id text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_wallet public.player_wallets;v_previous public.gold_transactions;v_delta integer;v_count integer;v_price integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('charge','buy','sell') then raise exception 'INVALID_TRADE';end if;\n insert into public.player_wallets(user_id) values(v_uid) on conflict do nothing;\n select * into v_wallet from public.player_wallets where user_id=v_uid for update;\n select * into v_previous from public.gold_transactions where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if v_previous.action<>p_action or v_previous.item_id is distinct from p_item_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.get_gold_wallet()||jsonb_build_object('delta',0);\n end if;\n if p_action='charge' then\n  if p_item_id is not null then raise exception 'INVALID_TRADE';end if;\n  if not coalesce((select test_charge_enabled from app_private.gold_settings where id),false) then raise exception 'TEST_CHARGE_DISABLED';end if;\n  if v_wallet.test_claimed then raise exception 'TEST_CHARGE_ALREADY_CLAIMED';end if;\n  v_delta:=1000;\n else\n  if p_item_id is null or p_item_id not in ('bait','shell') then raise exception 'INVALID_ITEM';end if;\n  v_count:=coalesce((v_wallet.inventory->>p_item_id)::integer,0);\n  v_price:=case when p_item_id='bait' then (select price from public.fishing_baits where id='bait') else 300 end;\n  if v_price is null then raise exception 'INVALID_ITEM';end if;\n  if p_action='buy' then\n   if p_item_id='bait' then v_price:=greatest(1,v_price-app_private.relic_bonus('bait_discount_gold')::integer);end if;\n   if v_wallet.gold<v_price then raise exception 'INSUFFICIENT_GOLD';end if;\n   v_delta:=-v_price;v_count:=v_count+1;\n  else\n   if v_count<1 then raise exception 'INSUFFICIENT_INVENTORY';end if;\n   v_delta:=v_price*6/10;v_count:=v_count-1;\n  end if;\n  v_wallet.inventory:=jsonb_set(v_wallet.inventory,array[p_item_id],to_jsonb(v_count));\n end if;\n if v_wallet.gold+v_delta>1000000000 then raise exception 'GOLD_LIMIT';end if;\n update public.player_wallets set gold=gold+v_delta,inventory=v_wallet.inventory,test_claimed=test_claimed or p_action='charge',updated_at=now() where user_id=v_uid;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,p_action,p_item_id,v_delta);\n return app_private.get_gold_wallet()||jsonb_build_object('delta',v_delta);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14869,6 +14879,16 @@
         "schema": "public",
         "arguments": "p_bait_id text, p_operation_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION public.buy_fishing_bait(p_bait_id text, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.buy_fishing_bait(p_bait_id,p_operation_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "buy_fishing_bait_at_price",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_bait_id text, p_operation_id uuid, p_expected_price integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.buy_fishing_bait_at_price(p_bait_id text, p_operation_id uuid, p_expected_price integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$ select app_private.buy_fishing_bait(p_bait_id,p_operation_id,p_expected_price) $function$\n",
         "securityDefiner": false
       },
       {
@@ -21327,7 +21347,7 @@
         "name": "relic_effect_shape",
         "table": "fishing_relics",
         "schema": "public",
-        "definition": "CHECK ((((effect_kind = 'none'::text) AND (effect_value = (0)::numeric)) OR ((effect_kind = ANY (ARRAY['fuel_active_slots'::text, 'bait_active_slots'::text])) AND (((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'personal_bait_hours'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (2)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (4)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (8)::numeric)))) OR ((effect_kind = 'fishing_wait_seconds'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = 0.5)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'trap_seconds_per_bait'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (30)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (90)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (180)::numeric)))) OR ((effect_kind = 'boat_discount_gold'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (50)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (150)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (400)::numeric))))))"
+        "definition": "CHECK ((((effect_kind = 'none'::text) AND (effect_value = (0)::numeric)) OR ((effect_kind = ANY (ARRAY['fuel_active_slots'::text, 'bait_active_slots'::text])) AND (((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'personal_bait_hours'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (2)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (4)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (8)::numeric)))) OR ((effect_kind = 'fishing_wait_seconds'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = 0.5)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'trap_seconds_per_bait'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (30)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (90)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (180)::numeric)))) OR ((effect_kind = 'boat_discount_gold'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (50)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (150)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (400)::numeric)))) OR ((effect_kind = 'bait_discount_gold'::text) AND (((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric))))))"
       },
       {
         "name": "fishing_rods_check",
@@ -30737,6 +30757,27 @@
         "arguments": "p_bait_id text, p_operation_id uuid"
       },
       {
+        "name": "buy_fishing_bait",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait_id text, p_operation_id uuid, p_expected_price integer"
+      },
+      {
+        "name": "buy_fishing_bait",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_bait_id text, p_operation_id uuid, p_expected_price integer"
+      },
+      {
+        "name": "buy_fishing_bait",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_bait_id text, p_operation_id uuid, p_expected_price integer"
+      },
+      {
         "name": "buy_region_map",
         "role": "anon",
         "schema": "app_private",
@@ -36153,6 +36194,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_bait_id text, p_operation_id uuid"
+      },
+      {
+        "name": "buy_fishing_bait_at_price",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_bait_id text, p_operation_id uuid, p_expected_price integer"
+      },
+      {
+        "name": "buy_fishing_bait_at_price",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_bait_id text, p_operation_id uuid, p_expected_price integer"
+      },
+      {
+        "name": "buy_fishing_bait_at_price",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_bait_id text, p_operation_id uuid, p_expected_price integer"
       },
       {
         "name": "buy_region_map",

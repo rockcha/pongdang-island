@@ -150,6 +150,7 @@ export type Database = {
       collection_state: { Args: Record<string, never>; Returns: import('@/features/collection/api').CollectionState }
       fishing_state: { Args: Record<string, never>; Returns: import('@/features/fishing/api').FishingState }
       buy_fishing_bait: { Args: { p_bait_id: string; p_operation_id: string }; Returns: import('@/features/gold/api').GoldState & { delta: number } }
+      buy_fishing_bait_at_price:{Args:{p_bait_id:string;p_operation_id:string;p_expected_price:number};Returns:import('@/features/gold/api').GoldState&{delta:number}}
       cast_fishing: { Args: { p_region_id: string; p_bait_id: string; p_operation_id: string }; Returns: import('@/features/fishing/api').FishingResult }
       set_region_test_lock: { Args: { p_region_id: string; p_locked: boolean }; Returns: import('@/features/regions/api').RegionMap }
       region_map: { Args: Record<string, never>; Returns: import('@/features/regions/api').RegionMap }

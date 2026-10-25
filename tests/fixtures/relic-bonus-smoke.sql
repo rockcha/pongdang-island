@@ -125,6 +125,16 @@ begin
    if not exists(select 1 from public.fishing_expeditions where user_id=u and claimed_at is null and extract(epoch from returns_at-departed_at)=seconds) then raise exception 'RUNNING_TRAP_CHANGED';end if;
    delete from public.fishing_expeditions where user_id=u;
    continue;
+  elsif r.effect_kind='bait_discount_gold' then
+   select price into list_price from public.fishing_baits where id='bait';
+   select gold into before_gold from public.player_wallets where user_id=u;
+   set local role authenticated;
+   state:=public.fishing_state();
+   if not exists(select 1 from jsonb_array_elements(state->'baits') b where b->>'id'='bait' and (b->>'price')::integer=greatest(1,list_price-r.effect_value)) then raise exception 'BAIT_PRICE_DISPLAY_WRONG';end if;
+   perform public.buy_fishing_bait_at_price('bait',gen_random_uuid(),greatest(1,list_price-r.effect_value)::integer);
+   reset role;
+   if (select gold from public.player_wallets where user_id=u)<>before_gold-greatest(1,list_price-r.effect_value) then raise exception 'BAIT_PAYMENT_WRONG';end if;
+   set local role authenticated;perform public.equip_relic(null,gen_random_uuid(),500);reset role;continue;
   elsif r.effect_kind='boat_discount_gold' then
    select id,price into vessel,list_price from public.harbor_vessels where price>=1000 order by price,id limit 1;
    select gold into before_gold from public.player_wallets where user_id=u;
@@ -142,5 +152,5 @@ begin
   else raise exception 'UNKNOWN_EFFECT %',r.effect_kind;
   end if;
  end loop;
- if (select count(*) from public.fishing_relics)<>16 then raise exception 'EXPECTED_SIXTEEN_RELICS';end if;
+ if (select count(*) from app_private.player_fishing_relics where user_id=u)<>(select count(*) from public.fishing_relics) then raise exception 'CATALOG_OWNERSHIP_INCOMPLETE';end if;
 end $test$;

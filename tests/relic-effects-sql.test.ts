@@ -1,4 +1,5 @@
 // @vitest-environment node
+import catalog from '../supabase/catalog/catalog.json'
 import {afterAll,afterEach,beforeAll,beforeEach,expect,it} from 'vitest'
 import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
 import {readFileSync} from 'node:fs'
@@ -19,8 +20,8 @@ beforeEach(async()=>{
  await db.query('insert into app_private.player_fishing_relics(user_id,relic_id) select $1,id from public.fishing_relics',[uid])
 })
 afterEach(async()=>{await db.exec('rollback;reset role')})
-it('registers sixteen relics and equips for free and charges only removal once, including replacement',async()=>{
- expect((await user('select public.relic_state() s')).relics).toHaveLength(16)
+it('registers catalog relics and equips for free and charges only removal once, including replacement',async()=>{
+ expect((await user('select public.relic_state() s')).relics).toHaveLength(catalog.fishing_relics.length)
  const op=crypto.randomUUID();await equip('shell-hourglass',op);expect(await gold()).toBe(1000000)
  await equip('shell-hourglass',op);expect(await gold()).toBe(1000000)
  await reject(()=>equip('eternal-water-clock',op),'OPERATION_CONFLICT')

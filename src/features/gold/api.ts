@@ -4,6 +4,7 @@ import type { Trade, Wallet } from './wallet'
 export type GoldState = Wallet & { testClaimed: boolean; testEnabled: boolean }
 export function goldError(cause: unknown): string {
   const message = cause && typeof cause === 'object' && 'message' in cause ? String(cause.message) : ''
+  if(message.includes('BAIT_PRICE_CHANGED'))return '미끼 구매 가격이 바뀌었어요. 현재 가격을 다시 확인해 주세요.'
   if(message.includes('MAP_ALREADY_OWNED'))return '이미 해금한 해역이에요. 지도 목록을 다시 확인해주세요.'
   if(message.includes('INVALID_MAP'))return '판매 중인 지도를 찾지 못했어요.'
   if(message.includes('STARTER_ROD_NOT_TRADEABLE'))return '기본 지급 낚싯대는 구매하거나 판매할 수 없어요.'
@@ -39,6 +40,11 @@ export async function transactGold(action: Trade, operationId: string) {
     return data
   }
   if (action.type === 'buy' && action.id.startsWith('fishing:')) {
+    if(action.expectedPrice!==undefined){
+      const {data,error}=await createClient().rpc('buy_fishing_bait_at_price',{p_bait_id:action.id.slice(8),p_operation_id:operationId,p_expected_price:action.expectedPrice})
+      if(error)throw error
+      return data
+    }
     const { data, error } = await createClient().rpc('buy_fishing_bait', { p_bait_id: action.id.slice(8), p_operation_id: operationId })
     if (error) throw error
     return data

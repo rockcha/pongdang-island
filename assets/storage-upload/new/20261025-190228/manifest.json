@@ -1,0 +1,55 @@
+{
+  "generator": "built-in image_gen",
+  "entries": [
+    {
+      "kind": "epic",
+      "id": "sea-merchant-shell-token",
+      "name": "바다상인의 조개패",
+      "prompt": "Use case: stylized-concept. Create ONE standalone epic inventory relic icon for a cozy Korean fishing game: 'Sea Merchant Shell Token' (바다상인의 조개패). Subject: a thick scallop-shell shaped jade and warm brass merchant bargaining token, a small embossed fishing hook motif, a knotted sandy silk cord threaded through its top and two tiny copper beads attached to the cord; translucent sea green enamel and gently worn gold edging. Object, no animal, no face. Reference is STYLE ONLY: soft colored outlines, painterly gradients, softly luminous materials and polished fantasy illustration. Do NOT copy the ray, animal silhouette, stars, purple palette, or checkerboard. Chunky readable object at 48px, complete silhouette, centered three-quarter front view with 15 percent clear margins. Genuine transparent alpha background. No text, letters, numbers, UI, badge, border, frame, ground, cast shadow, scene or scattered debris.",
+      "rarity": "epic",
+      "effect_kind": "bait_discount_gold",
+      "effect_value": 1,
+      "sell_price": 1300,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "travel_direction": "both",
+      "flip_with_direction": false,
+      "storage_path": "relics/epic/sea-merchant-shell-token_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261025-190228/relics/epic/sea-merchant-shell-token_thumbnail.png",
+      "public_path": "public/relics/epic/sea-merchant-shell-token_thumbnail.png",
+      "sha256": "441f10fdedf3b317e338bf6b320b80aeb0d72d43c5e921f86d6c9a6ca01d6523",
+      "dimensions": [
+        512,
+        512
+      ],
+      "alphaValidated": true,
+      "reference_image": "assets/references/collectible-style/epic-mythic-starlight.png"
+    },
+    {
+      "kind": "mythic",
+      "id": "sea-king-trade-ledger",
+      "name": "해왕의 거래 장부",
+      "prompt": "Use case: stylized-concept. Create ONE standalone mythic inventory relic icon for a cozy Korean fishing game: 'Sea King Trade Ledger' (해왕의 거래 장부). Subject: a small majestic closed maritime merchant ledger, thick ivory page edges, midnight teal leather cover with flowing pearl and gold filigree, a central luminous aquamarine shell clasp shaped around a fishing hook, short golden bookmark ribbon, a tiny crown ornament integrated into the book's top edge. Rich layered craftsmanship and restrained ocean magic; a compact solid rectangular book silhouette, not a creature. Reference is STYLE ONLY: soft colored outlines, painterly gradients, luminous translucent materials, polished fantasy illustration. Do NOT copy the ray silhouette, face, stars, purple palette or checkerboard. Clearly readable at 48px, complete object in three-quarter front view, centered with 15 percent clear margins. Genuine transparent alpha background. No text, writing, letters, numbers, UI, badge, surrounding frame, ground, cast shadow, scene or scattered debris.",
+      "rarity": "mythic",
+      "effect_kind": "bait_discount_gold",
+      "effect_value": 2,
+      "sell_price": 3000,
+      "movement_type": "fixed",
+      "swim_y_min": null,
+      "swim_y_max": null,
+      "travel_direction": "both",
+      "flip_with_direction": false,
+      "storage_path": "relics/mythic/sea-king-trade-ledger_thumbnail.png",
+      "local_path": "assets/storage-upload/new/20261025-190228/relics/mythic/sea-king-trade-ledger_thumbnail.png",
+      "public_path": "public/relics/mythic/sea-king-trade-ledger_thumbnail.png",
+      "sha256": "0c0f0b6fd8332558af038d4654df02ff48b1f742c1132aa1becc73caabb1b52f",
+      "dimensions": [
+        512,
+        512
+      ],
+      "alphaValidated": true,
+      "reference_image": "assets/references/collectible-style/epic-mythic-starlight.png"
+    }
+  ]
+}

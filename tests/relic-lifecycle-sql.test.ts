@@ -1,4 +1,5 @@
 // @vitest-environment node
+import catalog from '../supabase/catalog/catalog.json'
 import {afterAll,afterEach,beforeAll,beforeEach,expect,it} from 'vitest'
 import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
 
@@ -41,7 +42,7 @@ beforeEach(async()=>{
 })
 afterEach(async()=>{await db.exec('rollback;reset role')})
 
-it('sells all sixteen relics once, preserves discovery and allows catching them again',async()=>{
+it('sells all catalog relics once, preserves discovery and allows catching them again',async()=>{
  const relics=(await db.query('select id,rarity,sell_price from public.fishing_relics order by id')).rows
  for(const relic of relics){
   expect(relic.sell_price).toBe({rare:200,epic:1300,mythic:3000}[relic.rarity])
@@ -78,9 +79,9 @@ it('blocks equipped, unowned, stale-price and unaffordable wallet-limit sales at
  await rejected(()=>user("insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) values(auth.uid(),'shell-hourglass')"),'permission denied')
 })
 
-it('runs acquisition, paid equip, paid unequip and permanent duplicate exclusion for all sixteen real relics',async()=>{
+it('runs acquisition, paid equip, paid unequip and permanent duplicate exclusion for all catalog real relics',async()=>{
  const relics=(await db.query('select id,rarity from public.fishing_relics order by id')).rows
- expect(relics).toHaveLength(16)
+ expect(relics).toHaveLength(catalog.fishing_relics.length)
  for(const [index,relic] of relics.entries()){
   await enableOnly(relic.id,relic.rarity)
   await rejected(()=>equip(relic.id),'RELIC_NOT_OWNED')
@@ -106,7 +107,7 @@ it('runs acquisition, paid equip, paid unequip and permanent duplicate exclusion
   const next=await prepare();expect(next.species.kind).not.toBe('relic');await finish(next.operation_id,false)
  }
  expect((await db.query('select count(*)::int n from public.player_collectibles where user_id=$1',[uid])).rows[0].n).toBe(0)
- expect((await db.query("select count(*)::int n from public.gold_transactions where user_id=$1 and item_id like 'relic-loadout:%'",[uid])).rows[0].n).toBe(32)
+ expect((await db.query("select count(*)::int n from public.gold_transactions where user_id=$1 and item_id like 'relic-loadout:%'",[uid])).rows[0].n).toBe(relics.length*2)
 },30000)
 
 it('does not award failed or expired casts and leaves their relic available for another attempt',async()=>{

@@ -29064,6 +29064,28 @@
       "sell_price": 3000
     },
     {
+      "id": "sea-king-trade-ledger",
+      "name": "해왕의 거래 장부",
+      "description": "미끼 구매 가격 2골드 할인",
+      "rarity": "mythic",
+      "thumbnail_path": "relics/mythic/sea-king-trade-ledger_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "bait_discount_gold",
+      "effect_value": 2,
+      "sell_price": 3000
+    },
+    {
+      "id": "sea-merchant-shell-token",
+      "name": "바다상인의 조개패",
+      "description": "미끼 구매 가격 1골드 할인",
+      "rarity": "epic",
+      "thumbnail_path": "relics/epic/sea-merchant-shell-token_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "bait_discount_gold",
+      "effect_value": 1,
+      "sell_price": 1300
+    },
+    {
       "id": "shell-hourglass",
       "name": "조개 모래시계",
       "description": "나만의 미끼 생산소 최대 제작 시간 +2시간 · 장착 중에만 효과가 적용돼요.",

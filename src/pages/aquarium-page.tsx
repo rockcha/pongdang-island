@@ -154,7 +154,7 @@ export function AquariumPage() {
     }
   }, [state, tankIndex])
   function addTemporary(species: Species) {
-    if (!operator || !tank || species.kind === 'map') return
+    if (!operator || !tank || (species.kind==='map'||species.kind==='relic')) return
     setTestFish((current) => [
       ...current,
       {

@@ -21,6 +21,7 @@ export type BaitFacility = {
 }
 export type BaitProductionState = {
   receipt?:{action:string;siteId?:string;count:number}
+  activeLimit?: number
   activeTotal?: number
   serverNow: string
   gold: number
@@ -55,8 +56,8 @@ export function baitProductionError(e: unknown) {
   const m = String((e as { message?: string })?.message ?? '')
   return (
     Object.entries({
-      PRODUCTION_ACTIVE_LIMIT: '미끼 생산소는 동시에 4곳까지 가동할 수 있어요.',
-      BAIT_PRODUCTION_ACTIVE_LIMIT: '미끼 생산소는 동시에 4곳까지 가동할 수 있어요.',
+      PRODUCTION_ACTIVE_LIMIT: '미끼 생산소의 현재 동시 가동 한도에 도달했어요.',
+      BAIT_PRODUCTION_ACTIVE_LIMIT: '미끼 생산소의 현재 동시 가동 한도에 도달했어요.',
       INSUFFICIENT_FUEL: '연료가 부족해요.',
       INSUFFICIENT_GOLD: '골드가 부족해요.',
       GOLD_LIMIT: '보유 골드 한도를 초과해 판매할 수 없어요.',

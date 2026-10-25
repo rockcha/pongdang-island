@@ -20,6 +20,18 @@ it('opens production facilities from the life menu',async()=>{
  fireEvent.click(production)
  await waitFor(()=>expect(screen.getByTestId('path').textContent).toBe('/production'))
 })
+it('places relics directly below titles and navigates to the relic page',async()=>{
+ render(<MemoryRouter><View/></MemoryRouter>)
+ fireEvent.click(screen.getByRole('button',{name:'내 섬'}))
+ const menu=await screen.findByRole('menu')
+ const items=within(menu).getAllByRole('menuitem')
+ const titleIndex=items.findIndex(item=>item.getAttribute('href')==='/titles')
+ expect(items[titleIndex+1].getAttribute('href')).toBe('/relics')
+ expect(items[titleIndex+1].textContent).toContain('유물')
+ fireEvent.click(items[titleIndex+1])
+ await waitFor(()=>expect(screen.getByTestId('path').textContent).toBe('/relics'))
+ expect(screen.getByRole('button',{name:'내 섬'}).getAttribute('aria-current')).toBe('location')
+})
 it('places storage directly above the collection in the island dropdown',async()=>{
  render(<MemoryRouter><View/></MemoryRouter>)
  fireEvent.click(screen.getByRole('button',{name:'내 섬'}))

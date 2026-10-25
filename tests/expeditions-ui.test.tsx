@@ -13,6 +13,16 @@ const base={serverNow:'2026-10-18T12:00:00Z',testEnabled:true,vessels:[vessel],a
 beforeEach(()=>{vi.clearAllMocks();mock.inventory={bait:10};mock.load.mockResolvedValue(base);mock.refresh.mockResolvedValue(undefined)})
 afterEach(cleanup)
 function show(){render(<MemoryRouter><ExpeditionPage/></MemoryRouter>)}
+it('refreshes the selected cargo duration when relic equipment changes',async()=>{
+ show();await openCargo();fireEvent.change(await screen.findByRole('spinbutton'),{target:{value:'2'}});await closeCargo()
+ expect(screen.getByText('예상 유인 시간 30분')).toBeTruthy()
+ mock.load.mockResolvedValue({...base,minutesPerBait:14.5})
+ fireEvent(window,new Event('relic-loadout-changed'))
+ expect(await screen.findByText('예상 유인 시간 29분')).toBeTruthy()
+ mock.load.mockResolvedValue({...base,minutesPerBait:15})
+ fireEvent(window,new Event('relic-loadout-changed'))
+ expect(await screen.findByText('예상 유인 시간 30분')).toBeTruthy()
+})
 async function openCargo(){fireEvent.click(await screen.findByRole('button',{name:screen.queryByRole('button',{name:'미끼 변경'})?'미끼 변경':'미끼 넣기'}));await screen.findByRole('dialog',{name:'미끼 넣기'})}
 async function closeCargo(){fireEvent.click(screen.getByRole('button',{name:/미끼 넣기 완료/}));await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())}
 it('enforces the departure minimum and confirms the chosen cargo',async()=>{

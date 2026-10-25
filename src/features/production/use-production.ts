@@ -54,6 +54,7 @@ export function useProduction() {
     const refresh = setInterval(sync, 15000)
     window.addEventListener('online', sync)
     window.addEventListener('production-changed', sync)
+    window.addEventListener('relic-loadout-changed', sync)
     document.addEventListener('visibilitychange', sync)
     return () => {
       alive.current = false
@@ -62,6 +63,7 @@ export function useProduction() {
       window.removeEventListener('focus', sync)
       window.removeEventListener('online', sync)
       window.removeEventListener('production-changed', sync)
+    window.removeEventListener('relic-loadout-changed', sync)
       document.removeEventListener('visibilitychange', sync)
     }
   }, [reload])

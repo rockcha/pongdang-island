@@ -9,7 +9,7 @@ export function regionalMythics(catalog:CatalogEntry[],regionId:string){
   const robot=catalog.find(item=>item.id==='pongi-exploration-robot'&&item.rarity==='mythic'&&item.kind==='fish'&&item.native_region_id===regionId&&item.habitats?.some(h=>h.id===regionId))
   if(robot)return [robot]
  }
- return catalog.filter(item=>item.rarity==='mythic'&&item.kind!=='map'&&
+ return catalog.filter(item=>item.rarity==='mythic'&&(item.kind!=='map'&&item.kind!=='relic')&&
   (regionId==='pongdang'?!item.is_native&&item.native_region_id==null:item.is_native&&item.native_region_id===regionId)&&
   item.habitats?.some(h=>h.id===regionId))
   .sort((a,b)=>a.name.localeCompare(b.name,'ko'))

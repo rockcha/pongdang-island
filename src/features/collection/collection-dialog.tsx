@@ -29,6 +29,17 @@ import { limitedCollectionEvents } from './limited-events'
 
 const {collection:BookOpenText}=appArt
 
+function entryName(entry:CatalogEntry){
+ return entry.kind==='map'&&entry.pieceNumber?`${entry.pieceNumber}번째 지도`:entry.name
+}
+function mapRegionName(entry:CatalogEntry){
+ return entry.kind==='map'?entry.habitats.find(region=>region.id===entry.mapRegionId)?.name:undefined
+}
+function entryLabel(entry:CatalogEntry){
+ const region=mapRegionName(entry)
+ return region?`${region} ${entryName(entry)}`:entryName(entry)
+}
+
 
 type CollectionDialogProps = { onAddTemporary?: (species: Species) => void; fishing?:boolean;disabled?:boolean;dock?:boolean;iconOnly?:boolean }
 function BookSelect({ label, value, onChange, items, region = false }: {label:string;value:string;onChange:(value:string)=>void;items:{value:string;label:string}[];region?:boolean}) {
@@ -67,18 +78,20 @@ export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='
    .catch(() => { if (active) setError('도감을 불러오지 못했어요. 잠시 후 다시 시도해주세요.') })
   return () => { active = false }
  }, [attempt])
- const catalog=state?.catalog.filter(s=>s.kind!=='map')??[]
+ const catalog=state?.catalog??[]
  const habitats = Array.from(new Map(catalog.flatMap(s => s.habitats).map(region => [region.id, region])).values()).sort((a, b) => (a.id==='pongdang'?-1:mapPrices[a.id]??(['coral','bluegrove','mistmoon'].includes(a.id)?['coral','bluegrove','mistmoon'].indexOf(a.id):Infinity))-(b.id==='pongdang'?-1:mapPrices[b.id]??(['coral','bluegrove','mistmoon'].includes(b.id)?['coral','bluegrove','mistmoon'].indexOf(b.id):Infinity)) || a.name.localeCompare(b.name,'ko'))
  const entries = catalog.filter(s =>
   (tab === 'all' || s.kind === tab) && (rarity === 'all' || s.rarity === rarity) &&
   (habitat === 'all' || (habitat === 'common' ? s.native_region_id == null : s.is_native && s.native_region_id === habitat)) &&
   (limited === 'all' || limitedCollectionEvents.some(event=>event.value===limited&&(event.speciesIds.includes(s.id)||s.id.startsWith(event.speciesPrefix))))
- ).sort((a, b) => a.sell_price - b.sell_price || a.name.localeCompare(b.name, 'ko') || a.id.localeCompare(b.id)) ?? []
+ ).sort((a, b) => a.kind==='map'&&b.kind==='map'
+  ? a.mapRegionId===b.mapRegionId?(a.pieceNumber??0)-(b.pieceNumber??0):catalog.indexOf(a)-catalog.indexOf(b)
+  : a.kind==='map'?-1:b.kind==='map'?1:a.sell_price - b.sell_price || a.name.localeCompare(b.name, 'ko') || a.id.localeCompare(b.id)) ?? []
  return <section className="flex min-h-0 flex-1 flex-col">
   <div className="shrink-0 space-y-3 border-b border-border/50 bg-popover px-4 py-3 sm:px-5">
    <div className="flex flex-wrap items-center justify-between gap-3">
-    <TooltipProvider><div role="group" aria-label="도감 분류" className="flex gap-1">
-     {(['all', 'fish', 'trash', 'decoration'] as const).map(value => {
+    <TooltipProvider><div role="group" aria-label="도감 분류" className="flex flex-wrap gap-1">
+     {(['all', 'fish', 'trash', 'decoration', 'map', 'relic'] as const).map(value => {
       const label = value === 'all' ? '전체' : kindLabels[value]
       return <Tooltip key={value}><TooltipTrigger render={<Button type="button" size="icon" variant={tab === value ? 'secondary' : 'ghost'} aria-label={label} data-selection-icons aria-pressed={tab === value} className="size-10 rounded-xl" onClick={() => setFilters(previous=>({...previous,tab:value}))}/> }>
        {value === 'all' ? <LayoutGrid className="size-[18px]"/> : <CollectibleKindIcon kind={value} className="size-7"/>}
@@ -104,22 +117,23 @@ export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='
    {state && entries.length === 0 && <EmptyState className="py-12">조건에 맞는 개체가 없어요.</EmptyState>}
    <ul aria-label="도감 개체" className="grid grid-cols-3 border-t border-border sm:grid-cols-4">
     {entries.map(s => <li key={s.id}>
-     <article aria-label={s.name} className="collection-card relative h-full border-r border-b bg-background/80">
-      <button type="button" aria-label={s.name+(s.discovered||previewAll?' 상세 보기':' 미발견')} onClick={()=>setDetail(s)} className="flex h-full w-full cursor-pointer flex-col items-center pb-2 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring">
-       <div className={`relative flex w-full items-center justify-center bg-gradient-to-b px-1 pt-3 pb-2 ${collectibleCardTones[s.rarity]}`}><CollectibleThumbnail loading="lazy" fadeIn path={s.thumbnail_path} name={s.name} className={"aspect-square w-full max-w-24 "+(!s.discovered&&!previewAll?"opacity-80 [&_img]:brightness-[.25]":"")}/></div>
+     <article aria-label={entryLabel(s)} className="collection-card relative h-full border-r border-b bg-background/80">
+      <button type="button" aria-label={entryLabel(s)+(s.discovered||previewAll&&s.kind!=='map'?' 상세 보기':s.kind==='map'?' 미획득':' 미발견')} onClick={()=>setDetail(s)} className="flex h-full w-full cursor-pointer flex-col items-center pb-2 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring">
+       <div className={`relative flex w-full items-center justify-center bg-gradient-to-b px-1 pt-3 pb-2 ${collectibleCardTones[s.rarity]}`}><CollectibleThumbnail loading="lazy" fadeIn path={s.thumbnail_path} name={entryLabel(s)} className={"aspect-square w-full max-w-24 "+(!s.discovered&&(!previewAll||s.kind==='map')?(s.kind==='map'?"grayscale opacity-70":"opacity-80 [&_img]:brightness-[.25]"):"")}/></div>
        <span className={`pointer-events-none absolute left-2 ${onAddTemporary?'top-12':'top-2'}`}><TreasureTrashBadge speciesId={s.id}/></span>
        {s.id.startsWith('halloween-')?<span aria-label="할로윈 한정 개체" title="할로윈 한정 개체" className="pointer-events-none absolute right-2 top-2 inline-flex size-7 items-center justify-center rounded-full border border-border/60 bg-background/95 p-1 shadow-sm"><HalloweenIcon className="size-5 shrink-0"/></span>:s.is_native&&s.native_region_id&&regionIcons[s.native_region_id]&&<span aria-label={regionIcons[s.native_region_id].name+' 주 서식지'} title={regionIcons[s.native_region_id].name+' 주 서식지'} className="absolute right-2 top-2 inline-flex size-7 items-center justify-center rounded-full border border-border/60 bg-background/95 p-1 shadow-sm"><img src={regionIcons[s.native_region_id].src} alt="" className="size-5 object-contain"/></span>}
-       <h3 title={s.name} className="mt-2 h-5 w-full truncate px-1 text-xs font-medium leading-5">{s.name}</h3>
-       <span aria-label={`가치 ${s.sell_price.toLocaleString('ko-KR')} 골드`} className="mt-0.5 inline-flex items-center justify-center gap-1 text-[11px] tabular-nums text-primary"><GoldIcon className="size-3.5"/>{s.sell_price.toLocaleString('ko-KR')}</span>
+       <h3 title={s.name} className="mt-2 h-5 w-full truncate px-1 text-xs font-medium leading-5">{entryName(s)}</h3>
+       {mapRegionName(s)&&<span className="w-full truncate px-1 text-[10px] text-muted-foreground">{mapRegionName(s)}</span>}
+       {s.kind==='map'||s.kind==='relic'?<span className="mt-0.5 text-[11px] text-muted-foreground">{s.kind==='map'?(s.discovered?'획득 완료':'미획득'):(s.discovered?'발견 완료':'미발견')}</span>:<span aria-label={`가치 ${s.sell_price.toLocaleString('ko-KR')} 골드`} className="mt-0.5 inline-flex items-center justify-center gap-1 text-[11px] tabular-nums text-primary"><GoldIcon className="size-3.5"/>{s.sell_price.toLocaleString('ko-KR')}</span>}
       </button>
-      {onAddTemporary&&<TooltipProvider><Tooltip><TooltipTrigger render={<Button type="button" size="icon" variant="secondary" aria-label={s.name+' 임시 넣기'} className="absolute left-0.5 top-0.5 z-10 size-9 rounded-lg border border-border bg-background/95 shadow-sm" onClick={()=>onAddTemporary(s)}/> }><Plus className="size-4"/></TooltipTrigger><TooltipContent>어항에 임시 넣기</TooltipContent></Tooltip></TooltipProvider>}
+      {onAddTemporary&&s.kind!=='map'&&s.kind!=='relic'&&<TooltipProvider><Tooltip><TooltipTrigger render={<Button type="button" size="icon" variant="secondary" aria-label={s.name+' 임시 넣기'} className="absolute left-0.5 top-0.5 z-10 size-9 rounded-lg border border-border bg-background/95 shadow-sm" onClick={()=>onAddTemporary(s)}/> }><Plus className="size-4"/></TooltipTrigger><TooltipContent>어항에 임시 넣기</TooltipContent></Tooltip></TooltipProvider>}
      </article>
     </li>)}
    </ul>
   </div>
   <Dialog open={!!detail} onOpenChange={open=>{if(!open)setDetail(null)}}><DialogContent className="aquarium-work-panel aquarium-detail-panel top-auto bottom-0 max-h-[85dvh] max-w-full translate-y-0 overflow-y-auto rounded-b-none rounded-t-2xl pb-[max(1rem,env(safe-area-inset-bottom))] sm:bottom-auto sm:top-1/2 sm:max-w-sm sm:-translate-y-1/2 sm:rounded-xl">
-   <DialogHeader className="pr-7"><DialogTitle className="flex items-center gap-2">{detail&&<CollectibleKindIcon kind={detail.kind} className="size-6 shrink-0 text-primary"/>}{detail?.name}</DialogTitle><DialogDescription>{detail&&<RarityBadge rarity={detail.rarity}/>} · {detail&&kindLabels[detail.kind]}</DialogDescription></DialogHeader>
-   {detail&&<><div className="flex justify-center rounded-xl bg-secondary/40 p-4"><div className={detail.discovered||previewAll?"w-full min-w-0 flex justify-center":"w-full min-w-0 flex justify-center [&_canvas]:brightness-[.25] [&_img]:brightness-0"}><CollectiblePreview species={detail} large/></div></div><p className="text-sm leading-6 text-muted-foreground">{detail.description}</p><PrimaryHabitat species={detail}/><div className="flex items-center justify-between text-sm"><span>가치</span><span className="flex items-center gap-1"><GoldIcon className="size-4"/>{detail.sell_price.toLocaleString()}</span></div></>}
+   <DialogHeader className="pr-7"><DialogTitle className="flex items-center gap-2">{detail&&<CollectibleKindIcon kind={detail.kind} className="size-6 shrink-0 text-primary"/>}{detail&&entryLabel(detail)}</DialogTitle><DialogDescription>{detail&&<RarityBadge rarity={detail.rarity}/>} · {detail&&kindLabels[detail.kind]}</DialogDescription></DialogHeader>
+   {detail&&<><div className="flex justify-center rounded-xl bg-secondary/40 p-4"><div className={"w-full min-w-0 flex justify-center "+(!detail.discovered&&(!previewAll||detail.kind==='map')?(detail.kind==='map'?"grayscale opacity-70":"[&_canvas]:brightness-[.25] [&_img]:brightness-0"):"")}><CollectiblePreview species={detail} large/></div></div><p className="text-sm leading-6 text-muted-foreground">{detail.description}</p>{detail.kind!=='map'&&detail.kind!=='relic'&&<PrimaryHabitat species={detail}/>}<div className="flex items-center justify-between text-sm">{detail.kind==='map'||detail.kind==='relic'?<span className="text-xs text-muted-foreground">최초 1회 발견 · 어항 배치·판매·선물·거래 불가</span>:<><span>가치</span><span className="flex items-center gap-1"><GoldIcon className="size-4"/>{detail.sell_price.toLocaleString()}</span></>}</div></>}
   </DialogContent></Dialog>
  </section>
 }

@@ -175,7 +175,7 @@ it('blocks direct starting when four sites are working', async () => {
   await screen.findAllByRole('button', { name: /꼬물꼬물 흙상자/ })
   fireEvent.click(screen.getByRole('button', { name: '대기 중' }))
   fireEvent.click(screen.getByRole('button', { name: /꼬물꼬물 흙상자/ }))
-  expect(error).toHaveBeenCalledWith('연료·미끼 생산소를 합쳐 동시에 4곳까지 가동할 수 있어요.')
+  expect(error).toHaveBeenCalledWith('미끼 생산소는 동시에 4곳까지 가동할 수 있어요.')
   expect(screen.queryByRole('dialog')).toBeNull()
   expect(mock.act).not.toHaveBeenCalled()
 })

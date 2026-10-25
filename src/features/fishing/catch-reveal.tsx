@@ -14,7 +14,7 @@ type RevealProps={firstDiscovery?:boolean;onDismiss:()=>void;practice?:boolean;p
 export function CatchReveal({species,failure,onDismiss,practice=false,preview=false,onShare,failureReason,firstDiscovery=false}:RevealProps){
  const [ready,setReady]=useState(false)
  useFishingAudio('/sounds/caught.mp3',!!species&&!preview,{trigger:species?.id,volume:.7})
- const shareable=!!species&&['epic','mythic'].includes(species.rarity)&&!practice&&!!onShare
+ const shareable=!!species&&species.kind!=='map'&&species.kind!=='relic'&&['epic','mythic'].includes(species.rarity)&&!practice&&!!onShare
  useEffect(()=>{const timer=setTimeout(()=>setReady(true),1300);return()=>clearTimeout(timer)},[])
  const nativeRegion=species?.is_native&&species.native_region_id?regionIcons[species.native_region_id]:undefined
  const chanceFailure=['bait','escape','wave'].includes(failureReason??'')

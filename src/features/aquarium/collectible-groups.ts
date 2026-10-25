@@ -10,7 +10,7 @@ export function groupCollectibles(items:OwnedCollectible[]):CollectibleGroup[]{
   let group=groups.get(item.species_id)
   if(!group){group={species:item.species,items:[],sellable:[]};groups.set(item.species_id,group)}
   group.items.push(item)
-  if(!item.id.startsWith('test-')&&item.species.kind!=='map'&&item.species.sell_price>0)group.sellable.push(item)
+  if(!item.id.startsWith('test-')&&(item.species.kind!=='map'&&item.species.kind!=='relic')&&item.species.sell_price>0)group.sellable.push(item)
  }
  return [...groups.values()].sort((a,b)=>a.species.name.localeCompare(b.species.name,'ko'))
 }

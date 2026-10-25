@@ -20,6 +20,6 @@ export async function loadTripStorage(catches: FishingAttempt[], active = () => 
     if (oldest < earliest) break
   }
   return [...found.values()].filter(
-    (item) => !sellableOnly || (item.species.kind !== 'map' && item.species.sell_price > 0),
+    (item) => !sellableOnly || ((item.species.kind!=='map'&&item.species.kind!=='relic') && item.species.sell_price > 0),
   )
 }

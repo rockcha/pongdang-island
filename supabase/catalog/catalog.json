@@ -28937,7 +28937,170 @@
       "region_id": "nyamnyam",
       "piece_count": 4,
       "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/regions/nyamnyam/map-v2.png",
-      "enabled": true
+      "enabled": true,
+      "rarity": "rare"
+    }
+  ],
+  "fishing_relics": [
+    {
+      "id": "abundant-conch",
+      "name": "풍요의 소라고둥",
+      "description": "미끼생산소 동시 가동 가능 횟수 +1 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "epic",
+      "thumbnail_path": "relics/epic/abundant-conch_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "bait_active_slots",
+      "effect_value": 1
+    },
+    {
+      "id": "current-piercing-needle",
+      "name": "물살을 가르는 바늘",
+      "description": "낚시 대기 시간 1초 단축 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "epic",
+      "thumbnail_path": "relics/epic/current-piercing-needle_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "fishing_wait_seconds",
+      "effect_value": 1
+    },
+    {
+      "id": "eternal-water-clock",
+      "name": "영원의 물시계",
+      "description": "나만의 미끼 생산소 최대 제작 시간 +8시간 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "mythic",
+      "thumbnail_path": "relics/mythic/eternal-water-clock_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "personal_bait_hours",
+      "effect_value": 8
+    },
+    {
+      "id": "fish-calling-bell",
+      "name": "물고기를 부르는 방울",
+      "description": "통발 미끼당 대기 시간 30초 단축 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "rare",
+      "thumbnail_path": "relics/rare/fish-calling-bell_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "trap_seconds_per_bait",
+      "effect_value": 30
+    },
+    {
+      "id": "golden-anchor-seal",
+      "name": "황금 닻 인장",
+      "description": "배 구매 가격 150골드 할인 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "epic",
+      "thumbnail_path": "relics/epic/golden-anchor-seal_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "boat_discount_gold",
+      "effect_value": 150
+    },
+    {
+      "id": "instant-fishing-hook",
+      "name": "찰나를 낚는 낚싯바늘",
+      "description": "낚시 대기 시간 2초 단축 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "mythic",
+      "thumbnail_path": "relics/mythic/instant-fishing-hook_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "fishing_wait_seconds",
+      "effect_value": 2
+    },
+    {
+      "id": "ocean-seed",
+      "name": "바다가 품은 씨앗",
+      "description": "미끼생산소 동시 가동 가능 횟수 +2 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "mythic",
+      "thumbnail_path": "relics/mythic/ocean-seed_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "bait_active_slots",
+      "effect_value": 2
+    },
+    {
+      "id": "old-captain-seal",
+      "name": "낡은 선장의 인장",
+      "description": "배 구매 가격 50골드 할인 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "rare",
+      "thumbnail_path": "relics/rare/old-captain-seal_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "boat_discount_gold",
+      "effect_value": 50
+    },
+    {
+      "id": "primordial-ember",
+      "name": "태초의 불씨",
+      "description": "연료생산소 동시 가동 가능 횟수 +2 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "mythic",
+      "thumbnail_path": "relics/mythic/primordial-ember_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "fuel_active_slots",
+      "effect_value": 2
+    },
+    {
+      "id": "sea-king-shipwright-edict",
+      "name": "해왕의 조선 칙서",
+      "description": "배 구매 가격 400골드 할인 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "mythic",
+      "thumbnail_path": "relics/mythic/sea-king-shipwright-edict_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "boat_discount_gold",
+      "effect_value": 400
+    },
+    {
+      "id": "sea-king-summoning-bell",
+      "name": "해왕의 부름종",
+      "description": "통발 미끼당 대기 시간 3분 단축 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "mythic",
+      "thumbnail_path": "relics/mythic/sea-king-summoning-bell_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "trap_seconds_per_bait",
+      "effect_value": 180
+    },
+    {
+      "id": "shell-hourglass",
+      "name": "조개 모래시계",
+      "description": "나만의 미끼 생산소 최대 제작 시간 +2시간 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "rare",
+      "thumbnail_path": "relics/rare/shell-hourglass_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "personal_bait_hours",
+      "effect_value": 2
+    },
+    {
+      "id": "silver-osprey-feather",
+      "name": "은빛 물수리 깃털",
+      "description": "낚시 대기 시간 0.5초 단축 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "rare",
+      "thumbnail_path": "relics/rare/silver-osprey-feather_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "fishing_wait_seconds",
+      "effect_value": 0.5
+    },
+    {
+      "id": "still-wave-clock",
+      "name": "멈춘 파도의 시계",
+      "description": "나만의 미끼 생산소 최대 제작 시간 +4시간 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "epic",
+      "thumbnail_path": "relics/epic/still-wave-clock_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "personal_bait_hours",
+      "effect_value": 4
+    },
+    {
+      "id": "tide-bell",
+      "name": "밀물의 종",
+      "description": "통발 미끼당 대기 시간 1분 30초 단축 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "epic",
+      "thumbnail_path": "relics/epic/tide-bell_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "trap_seconds_per_bait",
+      "effect_value": 90
+    },
+    {
+      "id": "undying-furnace-heart",
+      "name": "꺼지지 않는 화로심장",
+      "description": "연료생산소 동시 가동 가능 횟수 +1 · 장착 중에만 효과가 적용돼요.",
+      "rarity": "epic",
+      "thumbnail_path": "relics/epic/undying-furnace-heart_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "fuel_active_slots",
+      "effect_value": 1
     }
   ]
 }

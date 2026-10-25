@@ -1,7 +1,9 @@
-﻿// @vitest-environment node
+// @vitest-environment node
 import {afterAll,beforeAll,beforeEach,expect,it} from 'vitest'
 import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
-let db,successDefinition
+import catalog from '../supabase/catalog/catalog.json'
+const basicChance=catalog.fishing_bait_balance_profiles.find(b=>b.id==='bait')!.success_chance_bp
+let db,successDefinition,trapSuccessDefinition
 const owner='00000000-0000-0000-0000-000000000701',other='00000000-0000-0000-0000-000000000702'
 async function asUser(uid,sql,args=[]){await db.exec(uid?'set role authenticated':'set role anon');try{await db.query("select set_config('request.jwt.claim.sub',$1,false)",[uid??'']);return await db.query(sql,args)}finally{await db.exec('reset role');await db.query("select set_config('request.jwt.claim.sub','',false)")}}
 async function action(kind,vessel=null,cargo=null,id=null,op=crypto.randomUUID(),uid=owner,region='pongdang'){return (await asUser(uid,'select public.expedition_action($1,$2,$3,$4,$5,$6) s',[kind,op,vessel,region,cargo,id])).rows[0].s}
@@ -13,8 +15,8 @@ async function legacyDeparture(vessel,cargo){
  return {active:row}
 }
 
-beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db);successDefinition=(await db.query("select pg_get_functiondef('app_private.fishing_success_chance_bp(text)'::regprocedure) d")).rows[0].d;for(const u of [owner,other]){await db.query('insert into auth.users(id) values($1)',[u]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[u,u===owner?'선장':'친구']);await db.query('insert into public.player_wallets(user_id,gold) values($1,50000) on conflict(user_id) do update set gold=excluded.gold',[u])}},60000)
-beforeEach(async()=>{await db.exec(successDefinition);await db.exec(`truncate app_private.push_deliveries,public.notifications,app_private.expedition_boosts,public.fishing_expeditions,public.player_fishing_vessels,app_private.expedition_operations;update public.player_wallets set gold=50000,inventory='{"bait":100,"bait_special":20}';update app_private.expedition_settings set instant_return_enabled=true`)})
+beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db);trapSuccessDefinition=(await db.query("select pg_get_functiondef('app_private.trap_success_chance_bp(text,integer,jsonb)'::regprocedure) d")).rows[0].d;successDefinition=(await db.query("select pg_get_functiondef('app_private.fishing_success_chance_bp(text)'::regprocedure) d")).rows[0].d;for(const u of [owner,other]){await db.query('insert into auth.users(id) values($1)',[u]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[u,u===owner?'선장':'친구']);await db.query('insert into public.player_wallets(user_id,gold) values($1,50000) on conflict(user_id) do update set gold=excluded.gold',[u])}},60000)
+beforeEach(async()=>{await db.exec(successDefinition);await db.exec(trapSuccessDefinition);await db.exec(`truncate app_private.push_deliveries,public.notifications,app_private.expedition_boosts,public.fishing_expeditions,public.player_fishing_vessels,app_private.expedition_operations;update public.player_wallets set gold=50000,inventory='{"bait":100,"bait_special":20}';update app_private.expedition_settings set instant_return_enabled=true`)})
 afterAll(async()=>{await db?.close()})
 it('enforces minimum, maximum, inventory, ownership and region access without consuming bait',async()=>{
  for(const cargo of [{bait:0},{bait:31},{unknown:3},{bait:-1},{bait:1.5}])await expect(action('depart','dinghy',cargo)).rejects.toThrow(/CARGO|BAIT/)
@@ -68,7 +70,7 @@ it('applies every vessel bonus and supports a fresh trip after collection',async
  }
 })
 it('consumes failed attempts including bonuses, stores the failure total, and never rerolls a retry',async()=>{
- await db.exec(successDefinition.replace(/AS \$function\$[\s\S]*?\$function\$/,()=> 'AS $function$ begin return 0; end; $function$'))
+ await db.exec(trapSuccessDefinition.replace(/AS \$function\$[\s\S]*?\$function\$/,()=> 'AS $function$ begin return 0; end; $function$'))
  const s=await action('depart','dinghy',{bait:3});await action('instant',null,null,s.active.id)
  const c=await action('claim',null,null,s.active.id)
  expect(c.receipt.result).toMatchObject({attempted:3,failed:3,succeeded:0,items:[]})
@@ -76,7 +78,7 @@ it('consumes failed attempts including bonuses, stores the failure total, and ne
  expect((await db.query('select inventory from public.player_wallets where user_id=$1',[owner])).rows[0].inventory.bait).toBe(97)
 })
 it('keeps the safe bait guaranteed while applying the same success rule as direct fishing',async()=>{
- expect((await db.query("select app_private.fishing_success_chance_bp('bait') basic,app_private.fishing_success_chance_bp('bait_safe') safe")).rows[0]).toEqual({basic:3500,safe:10000})
+ expect((await db.query("select app_private.fishing_success_chance_bp('bait') basic,app_private.fishing_success_chance_bp('bait_safe') safe")).rows[0]).toEqual({basic:basicChance,safe:10000})
  await db.query(`update public.player_wallets set inventory='{"bait_safe":3}' where user_id=$1`,[owner])
  const s=await action('depart','dinghy',{bait_safe:3});await action('instant',null,null,s.active.id)
  const c=await action('claim',null,null,s.active.id)
@@ -115,7 +117,7 @@ it('enforces the revised durations, prices and compound bonus cargo',async()=>{
  }
 });
 it('uses the fullcatch reduction in each draw and caps safe bait success at 100%',async()=>{
- expect((await db.query("select app_private.expedition_success_chance_bp('bait',200) normal,app_private.expedition_success_chance_bp('bait_safe',200) safe")).rows[0]).toEqual({normal:3700,safe:10000});
+ expect((await db.query("select app_private.expedition_success_chance_bp('bait',200) normal,app_private.expedition_success_chance_bp('bait_safe',200) safe")).rows[0]).toEqual({normal:Math.min(10000,basicChance+200),safe:10000});
  await db.exec(successDefinition.replace(/AS \$function\$[\s\S]*?\$function\$/,()=> 'AS $function$ begin return 9800; end; $function$'));
  const trip=await legacyDeparture('fullcatch',{bait:15});
  expect(trip.active.vessel_snapshot).toMatchObject({failure_reduction_bp:200,bonus_count:0,price:1800});

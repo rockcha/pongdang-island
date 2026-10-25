@@ -18,6 +18,17 @@ const trip={boat_id:'raft-1',id:'voyage1',vessel_id:vessel.id,vessel_snapshot:ve
 beforeEach(()=>{mock.load.mockResolvedValue(base);mock.refresh.mockResolvedValue(undefined)})
 afterEach(()=>{cleanup();localStorage.clear();vi.resetAllMocks();vi.useRealTimers()})
 function show(shipyard=false){return render(<MemoryRouter><PortPage shipyard={shipyard}/></MemoryRouter>)}
+it('updates shipyard prices on relic equip and restores them on unequip',async()=>{
+ show(true)
+ await screen.findByRole('button',{name:'낚시용 뗏목 구매 300 골드'})
+ mock.load.mockResolvedValue({...base,vessels:[{...vessel,price:250},second]})
+ fireEvent(window,new Event('relic-loadout-changed'))
+ await screen.findByRole('button',{name:'낚시용 뗏목 구매 250 골드'})
+ mock.load.mockResolvedValue(base)
+ fireEvent(window,new Event('relic-loadout-changed'))
+ await screen.findByRole('button',{name:'낚시용 뗏목 구매 300 골드'})
+ expect(mock.action).not.toHaveBeenCalled()
+})
 it('shows the next permanent dock expansion and confirms before charging',async()=>{
  mock.load.mockResolvedValue({...base,nextDockExpansion:{slot:3,price:10000}})
  mock.action.mockResolvedValue({...base,dockSlots:3,nextDockExpansion:{slot:4,price:30000},receipt:{action:'expand'}})

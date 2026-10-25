@@ -115,7 +115,8 @@ function AccountWorkshop() {
   const filteredBaits = state?.baits.filter((b) => b.name.includes(search.trim())) ?? []
   const pickerPages = Math.max(1, Math.ceil(filteredBaits.length / 4)),
     currentPage = Math.min(pickerPage, pickerPages - 1)
-  const cost = bait ? personalBaitFuel(bait.unitValue, q, minutes) : null
+  const maxMinutes=state?.limits.maxMinutes??720
+  const cost = bait ? personalBaitFuel(bait.unitValue, q, minutes,maxMinutes) : null
   const job = state?.job,
     ready = Boolean(job && now >= Date.parse(job.completesAt))
   const remaining = job ? Math.max(0, Math.ceil((Date.parse(job.completesAt) - now) / 1000)) : 0
@@ -317,7 +318,7 @@ function AccountWorkshop() {
                 >
                   <div
                     className="h-full rounded-full bg-primary/65"
-                    style={{ width: `${((minutes - 30) / 690) * 100}%` }}
+                    style={{ width: `${((minutes - 30) / (maxMinutes-30)) * 100}%` }}
                   />
                 </div>
                 <input
@@ -325,7 +326,7 @@ function AccountWorkshop() {
                   aria-valuetext={workshopDuration(minutes)}
                   type="range"
                   min={30}
-                  max={720}
+                  max={maxMinutes}
                   step={30}
                   value={minutes}
                   onChange={(e) => setMinutes(Number(e.target.value))}
@@ -334,7 +335,7 @@ function AccountWorkshop() {
               </div>
               <div className="flex justify-between text-[10px] text-muted-foreground">
                 <span>30분</span>
-                <span>12시간</span>
+                <span>{workshopDuration(maxMinutes)}</span>
               </div>
             </fieldset>
           </div>

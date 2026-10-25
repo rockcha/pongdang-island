@@ -10,7 +10,7 @@ export function baitTargetKinds(bait:FishingBait){
 export function BaitTarget({bait}:{bait:FishingBait}){
  const kinds=baitTargetKinds(bait)
  const entries=bait.id==='bait_shooting_star_tail'?[{icon:appArt.trash,label:'일반 쓰레기'},{icon:appArt.all,label:'신화 전체'}]:kinds.map(kind=>targets[kind as keyof typeof targets]??{icon:appArt.all,label:kind})
- return <span aria-label="포획 대상" className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] leading-5 text-foreground/80">{entries.map(({icon:Icon,label})=><span key={label} className="inline-flex items-center gap-1"><Icon className="size-4"/>{label}</span>)}</span>
+ return <span className="space-y-1"><span aria-label="포획 대상" className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] leading-5 text-foreground/80">{entries.map(({icon:Icon,label})=><span key={label} className="inline-flex items-center gap-1"><Icon className="size-4"/>{label}</span>)}</span><span className="block text-[10px] leading-5 text-muted-foreground">직접 낚시는 등급 결정 후 기존 포획물 94% · 지도 조각 3% · 유물 3%예요. 해당 등급의 미획득 후보가 없는 분류는 기존 포획물로 돌아가요.</span></span>
 }
 export function BaitOddsBars({bait,compact=false}:{bait:FishingBait;compact?:boolean}){
  const grades=(Object.keys(rarities) as Rarity[]).filter(key=>bait[`${key}_bp`]>0)

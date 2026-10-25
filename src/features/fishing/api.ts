@@ -28,7 +28,7 @@ export function fishingError(cause:unknown) {
 }
 
 export async function prepareFishing(regionId:string,baitId:string,operationId:string){
- const {data,error}=await createClient().rpc('prepare_fishing',{p_region_id:regionId,p_bait_id:baitId,p_operation_id:operationId,p_confirm_bite:readBiteConfirmation()});if(error)throw error;return data
+ const {data,error}=await createClient().rpc('prepare_discovery_fishing',{p_region_id:regionId,p_bait_id:baitId,p_operation_id:operationId,p_confirm_bite:readBiteConfirmation()});if(error)throw error;return data
 }
 export async function startFishingFight(operationId:string){
  const {data,error}=await createClient().rpc('start_fishing_fight',{p_operation_id:operationId});if(error)throw error;return data

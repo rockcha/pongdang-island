@@ -121,6 +121,7 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
     const refresh = setInterval(sync, 15000)
     window.addEventListener('online', sync)
     window.addEventListener('bait-production-changed', sync)
+    window.addEventListener('relic-loadout-changed', sync)
     document.addEventListener('visibilitychange', sync)
     return () => {
       alive.current = false
@@ -129,6 +130,7 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
       window.removeEventListener('focus', sync)
       window.removeEventListener('online', sync)
       window.removeEventListener('bait-production-changed', sync)
+    window.removeEventListener('relic-loadout-changed', sync)
       document.removeEventListener('visibilitychange', sync)
     }
   }, [reload])
@@ -168,6 +170,7 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
       if (alive.current) setBusy(false)
     }
   }
+  const activeLimit=state?.activeLimit??4
   const working = state?.activeTotal ?? state?.sites.filter((s) => status(s, now) === 'working').length ?? 0
   const items = shop
     ? filterBaitProductionShop(state?.facilities??[],shopFilters)
@@ -197,7 +200,7 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
           </Link>
         </div>
         {!shop && <p className="text-xs leading-5 text-muted-foreground">
-          보유 {state?.sites.length ?? 0}곳 · 미끼 생산소 가동 <b className="text-primary">{working}/4</b>
+          보유 {state?.sites.length ?? 0}곳 · 미끼 생산소 가동 <b className="text-primary">{working}/{activeLimit}</b>
         </p>}
         {shop ? (
           <BaitProductionShopFilters value={shopFilters} onChange={setShopFilters}/>
@@ -268,7 +271,7 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
                   onClick={() => {
                     const current=status(s,Date.now()+offset.current)
                     if(!shop&&current==='idle'){
-                      if(working>=4){toast.error('연료·미끼 생산소를 합쳐 동시에 4곳까지 가동할 수 있어요.');return}
+                      if(working>=activeLimit){toast.error(`미끼 생산소는 동시에 ${activeLimit}곳까지 가동할 수 있어요.`);return}
                       if((state?.fuel??0)<s.fuel_cost){toast.error('연료가 부족해요.');return}
                       void mutate({p_action:'start',p_facility:s.siteId!,p_quantity:1})
                       return
@@ -403,7 +406,7 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
                       !!pending.current ||
                       status(active, now) === 'working' ||
                       (status(active, now) === 'idle' &&
-                        (working >= 4 || (state?.fuel ?? 0) < active.fuel_cost))
+                        (working >= activeLimit || (state?.fuel ?? 0) < active.fuel_cost))
                     }
                     onClick={() =>
                       void mutate({
@@ -419,8 +422,8 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
                     }
                   >
                     {status(active, now) === 'idle'
-                      ? working >= 4
-                        ? '미끼 생산소가 4곳 가동 중이에요'
+                      ? working >= activeLimit
+                        ? `미끼 생산소가 ${activeLimit}곳 가동 중이에요`
                         : `연료 ${active.fuel_cost}개로 생산 시작`
                       : status(active, now) === 'working'
                         ? '생산 중'

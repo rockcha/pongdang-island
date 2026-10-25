@@ -19,6 +19,7 @@ const StoragePage=lazy(()=>import('@/features/aquarium/storage-page').then(modul
 const BaitProductionPage=lazy(()=>import('@/features/production/bait-production-page').then(module=>({default:module.BaitProductionPage})))
 const PersonalBaitWorkshopPage=lazy(()=>import('@/features/production/personal-bait-workshop-page').then(module=>({default:module.PersonalBaitWorkshopPage})))
 const ProductionPage=lazy(()=>import('@/features/production/production-page').then(module=>({default:module.ProductionPage})))
+const RelicPage=lazy(()=>import('@/features/relics/relic-loadout').then(module=>({default:module.RelicPage})))
 const TitlePicker=lazy(()=>import('@/features/titles/title-picker').then(module=>({default:module.TitlePicker})))
 const ExpeditionPage=lazy(()=>import('@/features/expeditions/expedition-page').then(module=>({default:module.ExpeditionPage})))
 const PortPage=lazy(()=>import('@/features/port/port-page').then(module=>({default:module.PortPage})))
@@ -90,6 +91,7 @@ export function AppRoutes() {
               }
             />
             <Route path="titles" element={<TitlePicker page />} />
+            <Route path="relics" element={<RelicPage />} />
             <Route path="harbor" element={<HarborPage />} />
             <Route path="fishing" element={<FishingShortcutPage />} />
             <Route path="farm" element={<FarmPage />} />

@@ -40,14 +40,16 @@ it('preserves old unlocks and blocks insufficient funds and direct writes',async
  await db.exec('set local role authenticated')
  await expect(db.exec("update public.region_maps set price=1")).rejects.toThrow('permission denied')
 })
-it('never fishes maps even on a former map-gate roll and omits maps from the book and map rarity from the harbor',async()=>{
+it('keeps ordinary catch selection separate from numbered discovery maps in the book',async()=>{
  for(const rarity of ['common','rare','epic','mythic'])for(const roll of [0,499,500,9999]){
   const rows=(await db.query("select s.kind from app_private.pick_regional_collectible('primal',$1,false,$2) p join public.collectible_species s on s.id=p.species_id",[rarity,roll])).rows
   expect(rows).toHaveLength(1)
   expect(['fish','trash']).toContain(rows[0].kind)
  }
  const collection=(await db.query('select public.collection_state() as r')).rows[0].r
- expect(collection.catalog.every((s:{kind:string})=>s.kind!=='map')).toBe(true)
+ const pieces=collection.catalog.filter((s:{kind:string})=>s.kind==='map')
+ expect(pieces.length).toBeGreaterThan(0)
+ expect(pieces.every((s:{mapPiece:boolean;pieceNumber:number;discovered:boolean})=>s.mapPiece&&Number.isSafeInteger(s.pieceNumber)&&s.pieceNumber>0&&typeof s.discovered==='boolean')).toBe(true)
  const regions=(await db.query('select public.region_map() as r')).rows[0].r.regions
  expect(regions.every((s:object)=>!('rarity' in s))).toBe(true)
  expect('mapChanceBp' in (await db.query('select public.fishing_state() as r')).rows[0].r).toBe(false)

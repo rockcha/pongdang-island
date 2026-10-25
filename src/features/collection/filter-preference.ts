@@ -2,7 +2,7 @@ import {regionIcons} from '@/features/regions/region-icons'
 import type {Rarity} from '@/lib/game/rarity'
 
 export type CollectionFilters={
- tab:'all'|'fish'|'trash'|'decoration'
+ tab:'all'|'fish'|'trash'|'decoration'|'map'|'relic'
  rarity:'all'|Rarity
  habitat:string
 }
@@ -15,7 +15,7 @@ export function readCollectionFilters(userId?:string,initialRegion='all'):Collec
   const saved=JSON.parse(localStorage.getItem(key(userId))??'null')
   if(!saved||typeof saved!=='object'||Array.isArray(saved))return fallback
   return {
-   tab:['all','fish','trash','decoration'].includes(saved.tab)?saved.tab:fallback.tab,
+   tab:['all','fish','trash','decoration','map','relic'].includes(saved.tab)?saved.tab:fallback.tab,
    rarity:['all','common','rare','epic','mythic'].includes(saved.rarity)?saved.rarity:fallback.rarity,
    habitat:saved.habitat==='all'||saved.habitat==='common'||typeof saved.habitat==='string'&&Object.hasOwn(regionIcons,saved.habitat)?saved.habitat:fallback.habitat,
   }

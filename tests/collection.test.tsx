@@ -5,8 +5,8 @@ import {CollectionBook,CollectionDialog} from '@/features/collection/collection-
 const {load}=vi.hoisted(()=>({load:vi.fn()}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null}))
-vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name}:{name:string})=><span role="img" aria-label={name}/>}))
-vi.mock('@/features/collection/api',()=>({loadCollection:load,kindLabels:{fish:'물고기',trash:'쓰레기',decoration:'장식물',map:'지도'}}))
+vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name,className}:{name:string;className?:string})=><span role="img" aria-label={name} className={className}/>}))
+vi.mock('@/features/collection/api',()=>({loadCollection:load,kindLabels:{fish:'물고기',trash:'쓰레기',decoration:'장식물',map:'지도 조각',relic:'유물'}}))
 afterEach(()=>{cleanup();vi.clearAllMocks();localStorage.clear()})
 const coral={id:'coral',name:'산호빛 여울'},moon={id:'mistmoon',name:'안개달 해역'}
 const base={description:'작은 바다 친구의 이야기',size:52,speed:.05,thumbnail_path:'preview.png',discovered:false}
@@ -15,14 +15,41 @@ const native={...base,id:'native',discovered:true,native_region_id:'coral',name:
 const decoration={...base,id:'decoration',is_native:true,native_region_id:'mistmoon',name:'달빛 장식물',kind:'decoration',rarity:'rare',sell_price:180,habitats:[moon]}
 const map={...base,id:'map',name:'지도 조각',kind:'map',rarity:'common',sell_price:0,habitats:[coral]}
 async function open(add?:()=>void){
- load.mockResolvedValue({items:[],catalog:[decoration,native,shared,map]})
+ load.mockResolvedValue({items:[],catalog:[decoration,native,shared]})
  render(<CollectionDialog onAddTemporary={add}/>)
  fireEvent.click(screen.getByRole('button',{name:'바다 도감'}))
  await screen.findByRole('article',{name:'공통 물고기'})
 }
 const cards=()=>within(screen.getByRole('list',{name:'도감 개체'})).queryAllByRole('article').map(card=>card.getAttribute('aria-label'))
+it('shows map pieces and relics in their own categories without placement or sale controls',async()=>{
+ const relic={...base,id:'relic-test',kind:'relic',name:'작은 유물',rarity:'rare',sell_price:0,discovered:true,habitats:[]}
+ load.mockResolvedValue({items:[],catalog:[shared,map,relic]})
+ const add=vi.fn()
+ render(<CollectionBook onAddTemporary={add}/>)
+ await screen.findByRole('article',{name:'공통 물고기'})
+ fireEvent.click(screen.getByRole('button',{name:'지도 조각'}))
+ expect(cards()).toEqual(['지도 조각'])
+ expect(screen.queryByRole('button',{name:'지도 조각 임시 넣기'})).toBeNull()
+ expect(within(screen.getByRole('article',{name:'지도 조각'})).queryByLabelText(/가치/)).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'유물'}))
+ expect(cards()).toEqual(['작은 유물'])
+ expect(screen.getByText('발견 1/1')).toBeTruthy()
+ expect(screen.queryByRole('button',{name:'작은 유물 임시 넣기'})).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'작은 유물 상세 보기'}))
+ expect(await screen.findByText('최초 1회 발견 · 어항 배치·판매·선물·거래 불가')).toBeTruthy()
+ expect(add).not.toHaveBeenCalled()
+})
+
+it('leaves the relic category empty when no relics have been registered',async()=>{
+ load.mockResolvedValue({items:[],catalog:[shared,map]})
+ render(<CollectionBook/>)
+ await screen.findByRole('article',{name:'공통 물고기'})
+ fireEvent.click(screen.getByRole('button',{name:'유물'}))
+ expect(cards()).toEqual([])
+ expect(screen.getByText('발견 0/0')).toBeTruthy()
+})
 it('opens the region requested by a collection growth quest',async()=>{
- load.mockResolvedValue({items:[],catalog:[decoration,native,shared,map]})
+ load.mockResolvedValue({items:[],catalog:[decoration,native,shared]})
  render(<CollectionBook initialRegion="coral"/>)
  await screen.findByRole('article',{name:'산호 물고기'})
  expect(cards()).toEqual(['산호 물고기'])
@@ -30,7 +57,7 @@ it('opens the region requested by a collection growth quest',async()=>{
 })
 
 it('previews undiscovered creatures in color without changing discovery records',async()=>{
- load.mockResolvedValue({items:[],catalog:[decoration,native,shared,map]})
+ load.mockResolvedValue({items:[],catalog:[decoration,native,shared]})
  const view=render(<CollectionBook previewAll/>)
  fireEvent.click(await screen.findByRole('button',{name:'달빛 장식물 상세 보기'}))
  expect(await screen.findByRole('dialog')).toBeTruthy()
@@ -108,7 +135,7 @@ it('allows repeated temporary insertion from cards without opening details',asyn
 })
 
 it('restores fishing collection filters after reopening and remounting the fishing page',async()=>{
- load.mockResolvedValue({items:[],catalog:[decoration,native,shared,map]})
+ load.mockResolvedValue({items:[],catalog:[decoration,native,shared]})
  const view=render(<CollectionDialog fishing/>)
  fireEvent.click(screen.getByRole('button',{name:'바다 도감'}))
  await screen.findByRole('article',{name:'공통 물고기'})
@@ -129,4 +156,23 @@ it('restores fishing collection filters after reopening and remounting the fishi
  fireEvent.click(screen.getByRole('button',{name:'바다 도감'}))
  await screen.findByRole('article',{name:'산호 물고기'})
  expect(cards()).toEqual(['산호 물고기'])
+})
+
+it('orders map pieces numerically, shows numbered names and keeps uncollected artwork grayscale',async()=>{
+ const piece=(pieceNumber:number,discovered=false)=>({...map,id:'map-piece-coral-'+pieceNumber,mapRegionId:'coral',pieceNumber,name:('산호빛 여울의 '+pieceNumber+'번째 조각'),discovered})
+ load.mockResolvedValue({items:[],catalog:[piece(10),piece(2),piece(1,true)]})
+ render(<CollectionBook previewAll/>)
+ await screen.findByRole('article',{name:'산호빛 여울 1번째 지도'})
+ fireEvent.click(screen.getByRole('button',{name:'지도 조각'}))
+ expect(cards()).toEqual(['산호빛 여울 1번째 지도','산호빛 여울 2번째 지도','산호빛 여울 10번째 지도'])
+ const unlocked=screen.getByRole('article',{name:'산호빛 여울 1번째 지도'}),locked=screen.getByRole('article',{name:'산호빛 여울 2번째 지도'})
+ expect(within(locked).getByRole('heading',{name:'2번째 지도'})).toBeTruthy()
+ expect(within(locked).getByText('미획득')).toBeTruthy()
+ expect(within(locked).getByRole('img').classList.contains('grayscale')).toBe(true)
+ expect(within(unlocked).getByText('획득 완료')).toBeTruthy()
+ expect(within(unlocked).getByRole('img').classList.contains('grayscale')).toBe(false)
+ fireEvent.click(within(locked).getByRole('button',{name:'산호빛 여울 2번째 지도 미획득'}))
+ const detail=await screen.findByRole('dialog')
+ expect(within(detail).getByRole('heading',{name:'산호빛 여울 2번째 지도'})).toBeTruthy()
+ expect(detail.querySelector('.grayscale')).toBeTruthy()
 })

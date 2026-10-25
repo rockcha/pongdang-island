@@ -1,5 +1,14 @@
 type IconProps = { className?: string }
 
+export function RelicIcon({className='size-6 shrink-0'}:IconProps){
+ return <svg aria-hidden="true" viewBox="0 0 32 32" fill="none" className={className}>
+  <path d="M10 4h12v5l-2 3c6 3 8 7 6 12-1 4-5 5-10 5S7 28 6 24c-2-5 0-9 6-12l-2-3Z" fill="#c79b65" stroke="#795c3d" strokeWidth="1.5" strokeLinejoin="round"/>
+  <path d="M10 8h12M10 17c4 3 8 3 12 0M9 24h14" stroke="#f3d8a5" strokeWidth="2" strokeLinecap="round"/>
+  <path d="m17 11-2 5 3 4-2 6" stroke="#886645" strokeWidth="1.2" strokeLinecap="round"/>
+  <path d="m26 2 .7 2.3L29 5l-2.3.7L26 8l-.7-2.3L23 5l2.3-.7Z" fill="#e3bc65"/>
+ </svg>
+}
+
 export function CommonSpeciesIcon({ className = 'size-6 shrink-0' }: IconProps) {
   return <svg aria-hidden="true" viewBox="0 0 32 32" fill="none" className={className}>
     <circle cx="16" cy="16" r="12.5" fill="#78C6DA" stroke="#377D91" strokeWidth="1.4"/>

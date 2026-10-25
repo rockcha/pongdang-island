@@ -1,3 +1,4 @@
+import {RelicIcon} from '@/components/collection-filter-icons'
 import { useSavingsStatus } from '@/features/savings/use-savings-status'
 import { useProductionMenuStatus } from '@/features/production/use-production-menu-status'
 import { useHarborStatus } from '@/features/port/use-harbor-status'
@@ -32,6 +33,7 @@ export const headerPlaces = [
   { to: '/aquarium', label: '아쿠아리움', icon: AquariumIcon },
   { to: '/island-news', label: '퐁당섬 소식', icon: IslandIcon },
   { to: '/titles', label: '칭호', icon: appArt.title },
+  { to: '/relics', label: '유물', icon: RelicIcon },
   { to: '/collection', label: '도감', icon: appArt.collection },
   { to: '/storage', label: '보관함', icon: appArt.storage },
   { to: '/bait-production', label: '미끼 생산소', icon: appArt.baitProduction },
@@ -94,6 +96,7 @@ export function HeaderPlaceNavigation() {
           "/storage",
           "/collection",
           "/titles",
+          "/relics",
           "/collection-animation"
         ]
       }
@@ -252,7 +255,7 @@ export function HeaderPlaceNavigation() {
                         {!!productionStatus(to)?.total && (
                           <span className={`flex shrink-0 items-center gap-1 rounded px-1.5 py-1 text-[10px] tabular-nums ${productionStatus(to)?.ready ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
                             {!!productionStatus(to)?.ready && <span aria-hidden="true" className="category-activity-dot" />}
-                            완료 {productionStatus(to)!.ready}/4
+                            완료 {productionStatus(to)!.ready}곳
                           </span>
                         )}
                         {hasNewContent(to) && (

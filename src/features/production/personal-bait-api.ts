@@ -53,7 +53,7 @@ export type PersonalBaitAction = {
   p_expected_fuel?: number
 }
 /** Keep the interpolation rational and round only once, like the authoritative RPC. */
-export function personalBaitFuel(unitValue: number, quantity: number, minutes: number) {
+export function personalBaitFuel(unitValue: number, quantity: number, minutes: number, maxMinutes=720) {
   if (
     !Number.isSafeInteger(unitValue) ||
     unitValue <= 0 ||
@@ -62,7 +62,7 @@ export function personalBaitFuel(unitValue: number, quantity: number, minutes: n
     quantity > 100 ||
     !Number.isSafeInteger(minutes) ||
     minutes < 30 ||
-    minutes > 720 ||
+    minutes > maxMinutes ||
     minutes % 30
   )
     return null
@@ -99,7 +99,7 @@ export function personalBaitError(cause: unknown) {
     BAIT_NOT_AVAILABLE: '현재 생산할 수 없는 미끼예요.',
     BAIT_LIMIT: '미끼 보유 한도에 도달했어요.',
     INVALID_WORKSHOP_QUANTITY: '생산 수량은 1~100개로 선택해 주세요.',
-    INVALID_WORKSHOP_TIME: '시간은 30분부터 12시간까지, 30분 단위로 선택해 주세요.',
+    INVALID_WORKSHOP_TIME: '현재 제작 가능한 시간 안에서 30분 단위로 선택해 주세요.',
     OPERATION_CONFLICT: '이전 요청과 정보가 달라요. 같은 요청으로 다시 확인해 주세요.',
   }
   return (

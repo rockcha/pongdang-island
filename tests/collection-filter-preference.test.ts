@@ -15,7 +15,7 @@ it('falls back safely for corrupt or unsupported stored selections',()=>{
  const key='pongdang:fishing-collection-filters:v1:one'
  localStorage.setItem(key,'{broken')
  expect(readCollectionFilters('one')).toEqual({tab:'all',rarity:'all',habitat:'all'})
- localStorage.setItem(key,JSON.stringify({tab:'map',rarity:'rare',habitat:'unknown'}))
+ localStorage.setItem(key,JSON.stringify({tab:'unsupported',rarity:'rare',habitat:'unknown'}))
  expect(readCollectionFilters('one')).toEqual({tab:'all',rarity:'rare',habitat:'all'})
 })
 

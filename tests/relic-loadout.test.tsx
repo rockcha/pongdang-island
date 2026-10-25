@@ -1,0 +1,53 @@
+import {cleanup,fireEvent,render,screen,within,waitFor} from '@testing-library/react'
+import {afterEach,expect,it,vi} from 'vitest'
+import {RelicLoadout,RelicPage} from '@/features/relics/relic-loadout'
+const {load,equip}=vi.hoisted(()=>({load:vi.fn(),equip:vi.fn()}))
+vi.mock('@/features/relics/api',()=>({loadRelics:load,equipRelic:equip,relicError:()=> '다시 확인해 주세요.'}))
+vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'relic-test'}}})}))
+vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null}))
+vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name}:{name:string})=><span role="img" aria-label={name}/>}))
+const a={id:'a',name:'조개 모래시계',description:'최대 제작 시간 +2시간',rarity:'rare',thumbnail_path:'a.png',owned:true,effect_kind:'personal_bait_hours',effect_value:2}
+const b={...a,id:'b',name:'영원의 물시계',rarity:'mythic',owned:false,effect_value:8}
+const state={equippedId:null,changeFee:500,relics:[a,b]}
+afterEach(()=>{cleanup();localStorage.clear();vi.clearAllMocks()})
+it('loads the relic page directly and charges 500 separately for equipping and unequipping',async()=>{
+ load.mockResolvedValue(state)
+ equip.mockResolvedValueOnce({...state,equippedId:'a'}).mockResolvedValueOnce(state)
+ render(<RelicPage/>)
+ expect(screen.getByRole('region',{name:'유물'})).toBeTruthy()
+ expect(screen.queryByRole('dialog')).toBeNull()
+ fireEvent.click(within(await screen.findByRole('article',{name:a.name})).getByRole('button',{name:'장착'}))
+ let confirm=screen.getByRole('alertdialog')
+ expect(confirm.textContent).toContain('500골드')
+ fireEvent.click(within(confirm).getByRole('button',{name:'확인'}))
+ await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
+ expect(equip).toHaveBeenNthCalledWith(1,'a',expect.any(String),500)
+ fireEvent.click(screen.getByRole('button',{name:'해제'}))
+ confirm=screen.getByRole('alertdialog')
+ expect(confirm.textContent).toContain('500골드')
+ fireEvent.click(within(confirm).getByRole('button',{name:'확인'}))
+ await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
+ expect(equip).toHaveBeenNthCalledWith(2,null,expect.any(String),500)
+ expect(screen.getByText('장착 중인 유물이 없어요.')).toBeTruthy()
+})
+it('quotes 500 for equip, prevents unowned equipment and confirms before sending',async()=>{
+ load.mockResolvedValue(state);equip.mockResolvedValue({...state,equippedId:'a'})
+ render(<RelicLoadout/>);fireEvent.click(screen.getByRole('button',{name:'유물 장착'}))
+ const owned=await screen.findByRole('article',{name:a.name}),locked=screen.getByRole('article',{name:b.name})
+ expect(within(locked).getByRole('button',{name:'미발견'}).hasAttribute('disabled')).toBe(true)
+ fireEvent.click(within(owned).getByRole('button',{name:'장착'}));expect(screen.getByRole('alertdialog').textContent).toContain('500골드');expect(equip).not.toHaveBeenCalled()
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'확인'}))
+ await waitFor(()=>expect(equip).toHaveBeenCalledWith('a',expect.any(String),500))
+ await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
+ expect(within(screen.getByRole('article',{name:a.name})).getByRole('button',{name:'장착 중'})).toBeTruthy()
+})
+it('quotes both fees for replacement and persists one operation across uncertain retries',async()=>{
+ load.mockResolvedValue({...state,equippedId:'a',relics:[a,{...b,owned:true}]});equip.mockRejectedValueOnce(new Error('offline')).mockResolvedValue({...state,equippedId:'b'})
+ render(<RelicLoadout/>);fireEvent.click(screen.getByRole('button',{name:'유물 장착'}))
+ fireEvent.click(within(await screen.findByRole('article',{name:b.name})).getByRole('button',{name:'장착'}))
+ expect(screen.getByRole('alertdialog').textContent).toContain('1,000골드')
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'확인'}))
+ await screen.findByRole('alert');fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'결과 다시 확인'}))
+ await waitFor(()=>expect(equip).toHaveBeenCalledTimes(2));expect(equip.mock.calls[0]).toEqual(equip.mock.calls[1]);expect(equip.mock.calls[0][2]).toBe(1000)
+ await waitFor(()=>expect(localStorage.getItem('pongdang:relic-loadout:relic-test')).toBeNull())
+})

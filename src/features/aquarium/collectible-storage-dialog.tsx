@@ -150,7 +150,7 @@ export function CollectibleStorageDialog({
   const selectedGroups = groupCollectibles(selectedItems)
   const sellable = selectedItems.filter(
     (item) =>
-      !item.id.startsWith('test-') && item.species.kind !== 'map' && item.species.sell_price > 0,
+      !item.id.startsWith('test-') && (item.species.kind!=='map'&&item.species.kind!=='relic') && item.species.sell_price > 0,
   )
   const price = sellable.reduce((sum, item) => sum + item.species.sell_price, 0)
   function refreshStorage() {
@@ -415,7 +415,7 @@ export function CollectibleStorageDialog({
             <SendGiftDialog
               species={selectedGroups[0].species}
               items={selectedGroups[0].items}
-              disabled={disabled || loading || selectedGroups[0].species.kind === 'map'}
+              disabled={disabled || loading || (selectedGroups[0].species.kind==='map'||selectedGroups[0].species.kind==='relic')}
               onSent={(ids) => {
                 onGiftSent?.(ids)
                 refreshStorage()

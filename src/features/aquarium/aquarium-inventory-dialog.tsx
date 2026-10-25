@@ -64,7 +64,7 @@ export function AquariumInventoryDialog({
   )
   const movableIds = (group: CollectibleGroup) =>
     group.items
-      .filter((item) => !item.id.startsWith('test-') && item.species.kind !== 'map')
+      .filter((item) => !item.id.startsWith('test-') && (item.species.kind!=='map'&&item.species.kind!=='relic'))
       .slice(0, 50)
       .map((item) => item.id)
   const filtered = groups.filter(
@@ -204,7 +204,7 @@ export function AquariumInventoryDialog({
               <ul className="aquarium-panel-grid grid grid-cols-3 border-t border-border/60">
                 {filtered.map((group) => {
                   const eligible = group.items.filter(
-                    (item) => !item.id.startsWith('test-') && item.species.kind !== 'map',
+                    (item) => !item.id.startsWith('test-') && (item.species.kind!=='map'&&item.species.kind!=='relic'),
                   )
                   const value = eligible.filter((item) => selection.has(item.id)).length
                   return (
@@ -270,7 +270,7 @@ export function AquariumInventoryDialog({
               <SendGiftDialog
                 species={selected[0].species}
                 items={selected[0].items}
-                disabled={busy || selling || selected[0].species.kind === 'map'}
+                disabled={busy || selling || (selected[0].species.kind==='map'||selected[0].species.kind==='relic')}
                 onSent={(ids) => {
                   onGiftSent?.(ids)
                   setSelection(new Set())

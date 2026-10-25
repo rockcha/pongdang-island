@@ -26,8 +26,8 @@ export function useHarbor(onClaim?:(batches:CatchBatch[])=>void){
   alive.current=true;onRefresh()
   const tick=setInterval(()=>setNow(Date.now()+offset.current),1000),poll=setInterval(()=>onRefresh(),30000)
   const focus=()=>{if(!document.hidden)onRefresh()}
-  window.addEventListener('harbor-changed',focus);window.addEventListener('focus',focus);window.addEventListener('online',focus);document.addEventListener('visibilitychange',focus)
-  return()=>{alive.current=false;revision.current++;clearInterval(tick);clearInterval(poll);window.removeEventListener('harbor-changed',focus);window.removeEventListener('focus',focus);window.removeEventListener('online',focus);document.removeEventListener('visibilitychange',focus)}
+  window.addEventListener('harbor-changed',focus);window.addEventListener('relic-loadout-changed',focus);window.addEventListener('focus',focus);window.addEventListener('online',focus);document.addEventListener('visibilitychange',focus)
+  return()=>{alive.current=false;revision.current++;clearInterval(tick);clearInterval(poll);window.removeEventListener('harbor-changed',focus);window.removeEventListener('relic-loadout-changed',focus);window.removeEventListener('focus',focus);window.removeEventListener('online',focus);document.removeEventListener('visibilitychange',focus)}
  },[])
  async function run(args:HarborAction){
   if(lock.current||pending&&pending.p_operation_id!==args.p_operation_id)return false

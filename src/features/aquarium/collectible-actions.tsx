@@ -17,7 +17,7 @@ export function CollectibleActions({ item, tanks = [], inhabitants = [], capacit
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
   const lock = useRef(false)
-  const disabled = busy || saving || item.id.startsWith('test-') || item.species.kind === 'map'
+  const disabled = busy || saving || item.id.startsWith('test-') || (item.species.kind==='map'||item.species.kind==='relic')
   async function run(action: () => Promise<void>, selling = false) {
     if (disabled || lock.current) return
     lock.current = true; setSaving(true); setError('')

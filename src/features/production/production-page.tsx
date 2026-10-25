@@ -108,10 +108,11 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
     : categoryFacilities.filter((f) => matchesStatus(f, statusFilter, now))
   const ownedTotal = ownedInKind('trash') + ownedInKind('fish')
   const activeTotal = state?.activeTotal ?? state?.sites?.filter(s=>productionStatus(s,now)==='working').length ?? 0
+  const activeLimit=state?.activeLimit??4
   const purchaseLimit = 100
   async function operate(site: ProductionFacility) {
     const status = productionStatus(site, now)
-    if (status === 'idle' && activeTotal >= 4) { toast.error('연료 생산소는 동시에 4곳까지 가동할 수 있어요.'); return }
+    if (status === 'idle' && activeTotal >= activeLimit) { toast.error(`연료 생산소는 동시에 ${activeLimit}곳까지 가동할 수 있어요.`); return }
     if (status === 'idle' || status === 'working') {
       setSelected({ id: productionSiteKey(site), mode: status === 'idle' ? 'start' : 'working' })
       return
@@ -166,7 +167,7 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
             <ArrowRight className="size-3.5" />
           </Link>
         </div>
-        {!shop && <p className="mb-2 text-xs text-muted-foreground">연료 생산소 가동 {activeTotal}/4곳 · 보유 수 제한 없음</p>}
+        {!shop && <p className="mb-2 text-xs text-muted-foreground">연료 생산소 가동 {activeTotal}/{activeLimit}곳 · 보유 수 제한 없음</p>}
         {shop && (
           <div
             role="tablist"

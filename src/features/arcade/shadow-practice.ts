@@ -5,7 +5,7 @@ export function createShadowPractice(catalog: Item[]) {
   const pool = [
     ...new Map(
       catalog
-        .filter((item) => item.kind !== 'map' && item.thumbnail_path)
+        .filter((item) => (item.kind!=='map'&&item.kind!=='relic') && item.thumbnail_path)
         .map((item) => [item.name, item]),
     ).values(),
   ]

@@ -10,7 +10,7 @@ export function speciesFacing(species:Species){
 }
 
 export function movementSettings(species:Species){
- const fixedKind=species.kind==='decoration'||species.kind==='map'
+ const fixedKind=species.kind==='decoration'||(species.kind==='map'||species.kind==='relic')
  const type=fixedKind?'fixed':species.movement_type??'swim'
  return {type,travel:fixedKind?'both':species.travel_direction??'both',
   flip:!fixedKind&&type!=='fixed'&&(species.kind==='fish'||species.flip_with_direction===true)}

@@ -129,6 +129,7 @@ export type Database = {
       equip_fishing_rod:{Args:{p_rod_id:string};Returns:import('@/features/fishing/rod-api').RodState}
       trade_fishing_rod:{Args:{p_rod_id:string;p_action:string;p_operation_id:string};Returns:import('@/features/gold/api').GoldState & import('@/features/fishing/rod-api').RodState & {delta:number}}
       prepare_fishing:{Args:{p_region_id:string;p_bait_id:string;p_operation_id:string;p_confirm_bite?:boolean};Returns:import('@/features/fishing/api').PreparedFishing}
+      prepare_discovery_fishing:{Args:{p_region_id:string;p_bait_id:string;p_operation_id:string;p_confirm_bite?:boolean};Returns:import('@/features/fishing/api').PreparedFishing}
       start_fishing_fight:{Args:{p_operation_id:string};Returns:import('@/features/fishing/api').PreparedFishing}
       finish_fishing:{Args:{p_operation_id:string;p_won:boolean};Returns:import('@/features/fishing/api').FishingResult}
       resize_aquarium_fish:{Args:{p_collectible_id:string;p_tank_id:string;p_scale:number};Returns:{id:string;scale:number}}
@@ -156,6 +157,8 @@ export type Database = {
       travel_region: { Args: { p_region_id: string }; Returns: import('@/features/regions/api').RegionMap }
       buy_aquarium_tank: { Args: { p_operation_id: string }; Returns: import('@/features/gold/api').GoldState & { delta: number } }
       manage_aquarium_tank: { Args: { p_tank_id: string; p_action: string; p_value: string }; Returns: import('@/features/aquarium/api').AquariumState }
+      relic_state:{Args:Record<string,never>;Returns:import('@/features/relics/api').RelicState}
+      equip_relic:{Args:{p_relic_id:string|null;p_operation_id:string;p_expected_fee?:number};Returns:import('@/features/relics/api').RelicState}
       aquarium_state: { Args: Record<string, never>; Returns: import('@/features/aquarium/api').AquariumState }
       expand_aquarium_tank:{Args:{p_tank_id:string;p_target_capacity:number;p_operation_id:string};Returns:import('@/features/aquarium/api').AquariumState}
       expand_aquarium_capacity:{Args:{p_target_capacity:number;p_operation_id:string};Returns:import('@/features/aquarium/api').AquariumState}

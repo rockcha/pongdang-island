@@ -73,6 +73,7 @@ export function usePersonalBaitWorkshop() {
     window.addEventListener('focus', focus)
     window.addEventListener('online', focus)
     window.addEventListener('personal-bait-changed', focus)
+    window.addEventListener('relic-loadout-changed', focus)
     document.addEventListener('visibilitychange', focus)
     return () => {
       alive.current = false
@@ -82,6 +83,7 @@ export function usePersonalBaitWorkshop() {
       window.removeEventListener('focus', focus)
       window.removeEventListener('online', focus)
       window.removeEventListener('personal-bait-changed', focus)
+    window.removeEventListener('relic-loadout-changed', focus)
       document.removeEventListener('visibilitychange', focus)
     }
   }, [])

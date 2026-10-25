@@ -87,7 +87,7 @@ export function labTarget(bait: LabBait) {
   if (bait.id === 'bait_grubby_magnet') return '쓰레기 전용'
   if (bait.id === 'bait_snowflake_salt') return '공통종 물고기·쓰레기·장식물'
   if (bait.id === 'bait_sea_memory') return '현재 해역 고유종 우대'
-  const labels={fish:'물고기',trash:'쓰레기',decoration:'장식물',map:'지도'}
+  const labels={fish:'물고기',trash:'쓰레기',decoration:'장식물',map:'지도 조각',relic:'유물'}
   return bait.targetKinds.map(kind=>labels[kind]).join('·')+(bait.targetKinds.length===1?' 전용':'')
 }
 export function buyLab(state: LabState, id: string): LabState {

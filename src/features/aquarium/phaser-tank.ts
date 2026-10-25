@@ -54,12 +54,12 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
   let swipe:{id:number;x:number;y:number;time:number;view:number;vertical:number}|null=null
   let decorationPress:{id:string;pointerId:number;x:number;y:number;dragged:boolean}|null=null
   const textureKey = (path: string) => `collectible:${path}`
-  const draggable=(item:OwnedCollectible)=>item.species.kind!=='map'&&!item.interaction_locked
+  const draggable=(item:OwnedCollectible)=>(item.species.kind!=='map'&&item.species.kind!=='relic')&&!item.interaction_locked
   const asset = (item: OwnedCollectible) => {
     if(glassAttachedSpecies.has(item.species.id))return {path:item.species.thumbnail_path,sheet:false}
     const plant=primalPlantAsset(item.species.id,item.species.kind)
     if(plant)return {...plant,sheet:true}
-    const sheet = item.species.kind !== 'map' && !!item.species.sprite_sheet_path
+    const sheet = (item.species.kind!=='map'&&item.species.kind!=='relic') && !!item.species.sprite_sheet_path
     return { path: sheet ? item.species.sprite_sheet_path! : item.species.thumbnail_path, sheet }
   }
   const itemPath=(item:OwnedCollectible)=>{const base=asset(item);return mythicSwimAsset(base.path,item.species.rarity)?.path??base.path}

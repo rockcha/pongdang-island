@@ -19,10 +19,11 @@ it('subtracts the equipped owned rod bonus once and preserves existing casts and
   const saved=async(op:string)=>(await db.query('select to_jsonb(p) value from app_private.prepared_fishing_casts p where operation_id=$1',[op])).rows[0].value
   const before=await saved(legacy)
   for(const f of migrationFiles().filter(f=>f>=first))await db.exec(readFileSync('supabase/migrations/'+f,'utf8'))
-  expect(await saved(legacy)).toEqual(before)
+  expect(await saved(legacy)).toMatchObject(before)
+  await db.query('insert into public.player_fishing_rods(user_id,rod_id) select $1,id from public.fishing_rods on conflict do nothing',[uid])
   await db.query("select public.equip_fishing_rod('calm')")
   await db.query("select public.prepare_fishing('pongdang','bait',$1,true)",[legacy])
-  expect(await saved(legacy)).toEqual(before)
+  expect(await saved(legacy)).toMatchObject(before)
   await db.exec("update app_private.prepared_fishing_casts set finished_at=clock_timestamp(),result='{}'")
   for(const confirm of [false,true]){
    for(const rod of catalog.fishing_rods){

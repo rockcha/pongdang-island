@@ -1,0 +1,25 @@
+.relic-tabs[role='tablist'] {
+  justify-content: flex-start;
+  gap: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+}
+
+.relic-tabs[role='tablist'] > [role='tab'] {
+  flex: 0 0 auto;
+  min-height: 2.5rem;
+  padding: 0 0.125rem;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  box-shadow: none;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.relic-tabs[role='tablist'] > [aria-selected='true'] {
+  border-bottom-color: var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-weight: 600;
+}

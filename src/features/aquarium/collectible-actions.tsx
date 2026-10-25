@@ -37,7 +37,8 @@ export function CollectibleActions({ item, tanks = [], inhabitants = [], capacit
         <DialogHeader><DialogTitle>다른 어항으로 이동</DialogTitle><DialogDescription>{item.species.name}를 옮길 어항을 골라주세요.</DialogDescription></DialogHeader>
         <div className="min-h-0 space-y-2 overflow-y-auto">{tanks.filter(tank => tank.id !== item.tank_id).map(tank => {
           const count = inhabitants.filter(other => other.tank_id === tank.id).length
-          return <Button key={tank.id} variant="secondary" className="min-h-12 w-full justify-between" disabled={disabled || count >= capacity} onClick={() => void run(() => onMove!([item.id], tank.id))}><span className="truncate">{tank.name}</span><span className="ml-2 shrink-0 text-xs">{count}/{capacity}{count >= capacity ? ' · 가득 참' : ''}</span></Button>
+          const tankCapacity=tank.capacity??capacity
+          return <Button key={tank.id} variant="secondary" className="min-h-12 w-full justify-between" disabled={disabled || count >= tankCapacity} onClick={() => void run(() => onMove!([item.id], tank.id))}><span className="truncate">{tank.name}</span><span className="ml-2 shrink-0 text-xs">{count}/{tankCapacity}{count >= tankCapacity ? ' · 가득 참' : ''}</span></Button>
         })}{tanks.filter(tank => tank.id !== item.tank_id).length === 0 && <p className="py-4 text-sm text-muted-foreground">이동할 다른 어항이 없어요. 보관함으로 옮길 수 있어요.</p>}</div>
         {error && <p role="alert" className="text-xs text-destructive">{error}</p>}
       </DialogContent>

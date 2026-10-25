@@ -377,12 +377,12 @@ export function AquariumPage() {
         onMove={move}
         tanks={state?.tanks}
         inhabitants={state?.inhabitants}
-        tankCapacity={state?.tankCapacity}
-        capacityControls={state&&tank?<AquariumCapacityExpansion state={state} count={state.inhabitants.filter(item=>item.tank_id===tank.id).length} gold={wallet.gold} busy={busy||goldBusy||goldLoading||!!goldLoadError} onExpand={async(capacity,operation)=>{
+        tankCapacity={tank?.capacity??state?.tankCapacity}
+        capacityControls={state&&tank?<AquariumCapacityExpansion tank={tank} count={state.inhabitants.filter(item=>item.tank_id===tank.id).length} gold={wallet.gold} busy={busy||goldBusy||goldLoading||!!goldLoadError} onExpand={async(capacity,operation)=>{
           if(locked.current)throw new Error('BUSY')
           locked.current=true;setBusy(true)
           try{
-            const data=await expandAquariumCapacity(capacity,operation)
+            const data=await expandAquariumCapacity(tank.id,capacity,operation)
             if(active.current)setState(data)
             await Promise.allSettled([refreshGold()])
           }finally{locked.current=false;if(active.current)setBusy(false)}

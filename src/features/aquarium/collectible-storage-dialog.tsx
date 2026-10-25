@@ -86,7 +86,7 @@ export function CollectibleStorageDialog({
   const selectionRequest = useRef(0)
   const [saleProgress, setSaleProgress] = useState('')
   useEffect(() => () => { selectionRequest.current++ }, [])
-  const capacity = state.tankCapacity ?? 50
+  const capacity = state.tanks.find(tank=>tank.id===currentTankId)?.capacity ?? state.tankCapacity ?? 50
   const targetId = currentTankId
   const occupancy = (id: string) => state.inhabitants.filter((item) => item.tank_id === id).length
   const free = Math.max(0, capacity - occupancy(targetId))

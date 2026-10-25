@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "030f1397f7fb04b2d264c968e6ac258d163c4404669dbbad6431da59bd44bd46",
+  "migrationHash": "b5dad3c2f46c8326dfe7d98f7801a6042ad044fa9a4eb68eb6180ce62e70e9fe",
   "structure": {
     "enums": [
       {
@@ -4129,6 +4129,16 @@
       },
       {
         "name": "display_order",
+        "type": "integer",
+        "table": "aquarium_tanks",
+        "schema": "public",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "capacity_bonus",
         "type": "integer",
         "table": "aquarium_tanks",
         "schema": "public",
@@ -11701,7 +11711,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.aquarium_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n insert into public.player_aquariums(user_id) values(v_uid) on conflict do nothing;\n insert into public.aquarium_tanks(user_id,background_id,is_default)\n select v_uid,background_id,true from public.player_aquariums where user_id=v_uid\n on conflict(user_id) where is_default do nothing;\n return jsonb_build_object(\n 'background',(select background_id from public.aquarium_tanks where user_id=v_uid order by display_order,created_at,id limit 1),\n 'tanks',coalesce((select jsonb_agg(to_jsonb(t) order by t.display_order,t.created_at,t.id) from public.aquarium_tanks t where user_id=v_uid),'[]'::jsonb),\n 'inhabitants',coalesce((select jsonb_agg(to_jsonb(c)||jsonb_build_object('species',app_private.species_payload(c.species_id,c.map_region_id)) order by c.acquired_at,c.id)\n   from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n   where c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is not null and s.kind in ('fish','trash','decoration')),'[]'::jsonb),\n 'storageCount',(select count(*) from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n   where c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is null and s.kind in ('fish','trash','decoration')),\n 'tankCapacity',coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50),\n 'nextCapacityExpansion',(select case c when 50 then jsonb_build_object('capacity',70,'price',5000) when 70 then jsonb_build_object('capacity',100,'price',10000) else null end from (select coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50) c) q),'tankPrice',350,\n 'owned',coalesce((select jsonb_agg(background_id) from public.owned_aquarium_backgrounds where user_id=v_uid),'[]'::jsonb),\n 'catalog',(select jsonb_agg(to_jsonb(b) order by b.price) from public.aquarium_backgrounds b));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.aquarium_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n insert into public.player_aquariums(user_id) values(v_uid) on conflict do nothing;\n insert into public.aquarium_tanks(user_id,background_id,is_default)\n select v_uid,background_id,true from public.player_aquariums where user_id=v_uid\n on conflict(user_id) where is_default do nothing;\n return jsonb_build_object(\n 'background',(select background_id from public.aquarium_tanks where user_id=v_uid order by display_order,created_at,id limit 1),\n 'tanks',coalesce((select jsonb_agg(to_jsonb(t)||jsonb_build_object('capacity',coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50)+t.capacity_bonus,'nextCapacityExpansion',jsonb_build_object('capacity',coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50)+t.capacity_bonus+20,'price',1000)) order by t.display_order,t.created_at,t.id) from public.aquarium_tanks t where user_id=v_uid),'[]'::jsonb),\n 'inhabitants',coalesce((select jsonb_agg(to_jsonb(c)||jsonb_build_object('species',app_private.species_payload(c.species_id,c.map_region_id)) order by c.acquired_at,c.id)\n   from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n   where c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is not null and s.kind in ('fish','trash','decoration')),'[]'::jsonb),\n 'storageCount',(select count(*) from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n   where c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and c.tank_id is null and s.kind in ('fish','trash','decoration')),\n 'tankCapacity',coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50),\n 'nextCapacityExpansion',null,'tankPrice',350,\n 'owned',coalesce((select jsonb_agg(background_id) from public.owned_aquarium_backgrounds where user_id=v_uid),'[]'::jsonb),\n 'catalog',(select jsonb_agg(to_jsonb(b) order by b.price) from public.aquarium_backgrounds b));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -12461,7 +12471,17 @@
         ],
         "schema": "app_private",
         "arguments": "p_target_capacity integer, p_operation_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.expand_aquarium_capacity(p_target_capacity integer, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;previous public.gold_transactions;current_capacity integer;price integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_target_capacity is null or p_target_capacity not in (70,100) then raise exception 'INVALID_CAPACITY';end if;\n perform app_private.get_gold_wallet();\n select * into strict w from public.player_wallets where user_id=u for update;\n select * into previous from public.gold_transactions where user_id=u and operation_id=p_operation_id;\n if found then\n  if previous.action<>'buy' or previous.item_id is distinct from 'aquarium-capacity:'||p_target_capacity::text then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.aquarium_state();\n end if;\n select coalesce((select capacity from app_private.player_aquarium_capacity where user_id=u),50) into current_capacity;\n if current_capacity=100 then raise exception 'AQUARIUM_FULLY_EXPANDED';end if;\n if p_target_capacity<>(case current_capacity when 50 then 70 else 100 end) then raise exception 'CAPACITY_CHANGED';end if;\n price:=case current_capacity when 50 then 5000 else 10000 end;\n if w.gold<price then raise exception 'INSUFFICIENT_GOLD';end if;\n insert into app_private.player_aquarium_capacity(user_id,capacity) values(u,p_target_capacity)\n  on conflict(user_id) do update set capacity=excluded.capacity;\n update public.player_wallets set gold=gold-price,updated_at=clock_timestamp() where user_id=u;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta)\n  values(u,p_operation_id,'buy','aquarium-capacity:'||p_target_capacity::text,-price);\n return app_private.aquarium_state();\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.expand_aquarium_capacity(p_target_capacity integer, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();previous public.gold_transactions;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n select * into previous from public.gold_transactions where user_id=u and operation_id=p_operation_id;\n if found then\n  if previous.action<>'buy' or previous.item_id is distinct from 'aquarium-capacity:'||p_target_capacity::text then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.aquarium_state();\n end if;\n raise exception 'AQUARIUM_EXPANSION_CHANGED';\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "expand_aquarium_tank",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_tank_id uuid, p_target_capacity integer, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.expand_aquarium_tank(p_tank_id uuid, p_target_capacity integer, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;previous public.gold_transactions;bonus integer;base integer;item text;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_tank_id is null or p_operation_id is null or p_target_capacity is null then raise exception 'INVALID_CAPACITY';end if;\n perform app_private.get_gold_wallet();\n -- Match the wallet-before-tank lock order used by tank purchases and management.\n select * into strict w from public.player_wallets where user_id=u for update;\n select capacity_bonus into bonus from public.aquarium_tanks where id=p_tank_id and user_id=u for update;\n if not found then raise exception 'TANK_NOT_FOUND';end if;\n item:='aquarium-tank-capacity:'||p_tank_id::text||':'||p_target_capacity::text;\n select * into previous from public.gold_transactions where user_id=u and operation_id=p_operation_id;\n if found then\n  if previous.action<>'buy' or previous.item_id is distinct from item then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.aquarium_state();\n end if;\n base:=coalesce((select capacity from app_private.player_aquarium_capacity where user_id=u),50);\n if bonus>2147483480 then raise exception 'AQUARIUM_FULLY_EXPANDED';end if;\n if p_target_capacity<>base+bonus+20 then raise exception 'CAPACITY_CHANGED';end if;\n if w.gold<1000 then raise exception 'INSUFFICIENT_GOLD';end if;\n update public.aquarium_tanks set capacity_bonus=capacity_bonus+20 where id=p_tank_id;\n update public.player_wallets set gold=gold-1000,updated_at=clock_timestamp() where user_id=u;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy',item,-1000);\n return app_private.aquarium_state();\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -13121,7 +13141,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_collectible_ids uuid[], p_tank_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.move_collectibles(p_collectible_ids uuid[], p_tank_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_ids uuid[];v_count integer;v_occupancy integer;v_added integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if coalesce(cardinality(p_collectible_ids),0) not between 1 and 100 then raise exception 'INVALID_SELECTION'; end if;\n select array_agg(id order by id) into v_ids from(select distinct unnest(p_collectible_ids) as id) q;\n if cardinality(v_ids)<>cardinality(p_collectible_ids) or array_position(v_ids,null) is not null then raise exception 'INVALID_SELECTION'; end if;\n -- Serialize admissions to the same tank before locking individuals in ID order.\n if p_tank_id is not null then\n  perform 1 from public.aquarium_tanks where id=p_tank_id and user_id=v_uid for update;\n  if not found then raise exception 'TANK_NOT_FOUND'; end if;\n end if;\n perform 1 from public.player_collectibles where id=any(v_ids) and user_id=v_uid order by id for update;\n select count(*) into v_count from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n where c.id=any(v_ids) and c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and s.kind in ('fish','trash','decoration');\n if v_count<>cardinality(v_ids) then raise exception 'COLLECTIBLE_NOT_FOUND'; end if;\n if p_tank_id is not null then\n  if exists(select 1 from public.player_collectibles where id=any(v_ids) and tank_id is not null and tank_id<>p_tank_id) then raise exception 'STORAGE_REQUIRED'; end if;\n  select count(*) into v_added from public.player_collectibles where id=any(v_ids) and tank_id is null;\n  select count(*) into v_occupancy from public.player_collectibles where tank_id=p_tank_id and user_id=v_uid and sold_at is null and escrow_gift_id is null;\n  if v_added>0 and v_occupancy+v_added>coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50) then raise exception 'TANK_FULL'; end if;\n end if;\n update public.player_collectibles set tank_id=p_tank_id,position_x=null,position_y=null\n where id=any(v_ids) and tank_id is distinct from p_tank_id;\n return app_private.aquarium_state();\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.move_collectibles(p_collectible_ids uuid[], p_tank_id uuid DEFAULT NULL::uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_ids uuid[];v_count integer;v_occupancy integer;v_added integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if coalesce(cardinality(p_collectible_ids),0) not between 1 and 100 then raise exception 'INVALID_SELECTION'; end if;\n select array_agg(id order by id) into v_ids from(select distinct unnest(p_collectible_ids) as id) q;\n if cardinality(v_ids)<>cardinality(p_collectible_ids) or array_position(v_ids,null) is not null then raise exception 'INVALID_SELECTION'; end if;\n -- Serialize admissions to the same tank before locking individuals in ID order.\n if p_tank_id is not null then\n  perform 1 from public.aquarium_tanks where id=p_tank_id and user_id=v_uid for update;\n  if not found then raise exception 'TANK_NOT_FOUND'; end if;\n end if;\n perform 1 from public.player_collectibles where id=any(v_ids) and user_id=v_uid order by id for update;\n select count(*) into v_count from public.player_collectibles c join public.collectible_species s on s.id=c.species_id\n where c.id=any(v_ids) and c.user_id=v_uid and c.sold_at is null and c.escrow_gift_id is null and s.kind in ('fish','trash','decoration');\n if v_count<>cardinality(v_ids) then raise exception 'COLLECTIBLE_NOT_FOUND'; end if;\n if p_tank_id is not null then\n  if exists(select 1 from public.player_collectibles where id=any(v_ids) and tank_id is not null and tank_id<>p_tank_id) then raise exception 'STORAGE_REQUIRED'; end if;\n  select count(*) into v_added from public.player_collectibles where id=any(v_ids) and tank_id is null;\n  select count(*) into v_occupancy from public.player_collectibles where tank_id=p_tank_id and user_id=v_uid and sold_at is null and escrow_gift_id is null;\n  if v_added>0 and v_occupancy+v_added>coalesce((select capacity from app_private.player_aquarium_capacity where user_id=v_uid),50)+(select capacity_bonus from public.aquarium_tanks where id=p_tank_id and user_id=v_uid) then raise exception 'TANK_FULL'; end if;\n end if;\n update public.player_collectibles set tank_id=p_tank_id,position_x=null,position_y=null\n where id=any(v_ids) and tank_id is distinct from p_tank_id;\n return app_private.aquarium_state();\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14752,6 +14772,16 @@
         "schema": "public",
         "arguments": "p_target_capacity integer, p_operation_id uuid",
         "definition": "CREATE OR REPLACE FUNCTION public.expand_aquarium_capacity(p_target_capacity integer, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.expand_aquarium_capacity(p_target_capacity,p_operation_id);\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "expand_aquarium_tank",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_tank_id uuid, p_target_capacity integer, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.expand_aquarium_tank(p_tank_id uuid, p_target_capacity integer, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.expand_aquarium_tank(p_tank_id,p_target_capacity,p_operation_id);\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -18825,6 +18855,18 @@
         "table": "aquarium_tanks",
         "schema": "public",
         "definition": "NOT NULL background_id"
+      },
+      {
+        "name": "aquarium_tanks_capacity_bonus_check",
+        "table": "aquarium_tanks",
+        "schema": "public",
+        "definition": "CHECK (((capacity_bonus >= 0) AND ((capacity_bonus % 20) = 0) AND (capacity_bonus <= 2147483500)))"
+      },
+      {
+        "name": "aquarium_tanks_capacity_bonus_not_null",
+        "table": "aquarium_tanks",
+        "schema": "public",
+        "definition": "NOT NULL capacity_bonus"
       },
       {
         "name": "aquarium_tanks_created_at_not_null",
@@ -24848,6 +24890,13 @@
         "role": "authenticated",
         "table": "aquarium_tanks",
         "column": "background_id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "aquarium_tanks",
+        "column": "capacity_bonus",
         "schema": "public",
         "privilege": "SELECT"
       },
@@ -30913,6 +30962,27 @@
         "arguments": "p_target_capacity integer, p_operation_id uuid"
       },
       {
+        "name": "expand_aquarium_tank",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_tank_id uuid, p_target_capacity integer, p_operation_id uuid"
+      },
+      {
+        "name": "expand_aquarium_tank",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_tank_id uuid, p_target_capacity integer, p_operation_id uuid"
+      },
+      {
+        "name": "expand_aquarium_tank",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_tank_id uuid, p_target_capacity integer, p_operation_id uuid"
+      },
+      {
         "name": "expedition_action",
         "role": "anon",
         "schema": "app_private",
@@ -35720,6 +35790,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_target_capacity integer, p_operation_id uuid"
+      },
+      {
+        "name": "expand_aquarium_tank",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_tank_id uuid, p_target_capacity integer, p_operation_id uuid"
+      },
+      {
+        "name": "expand_aquarium_tank",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_tank_id uuid, p_target_capacity integer, p_operation_id uuid"
+      },
+      {
+        "name": "expand_aquarium_tank",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_tank_id uuid, p_target_capacity integer, p_operation_id uuid"
       },
       {
         "name": "expedition_action",

@@ -1,7 +1,7 @@
 import type { DecorationPlacement, OwnedCollectible } from '@/features/collection/api'
 import { createClient } from '@/lib/client'
 import type {ThemeTier} from './theme-tiers'
-export type AquariumTank = { id: string; name: string; background_id: string; is_default: boolean; created_at: string }
+export type AquariumTank = { id: string; name: string; background_id: string; is_default: boolean; created_at: string; capacity?:number; nextCapacityExpansion?:{capacity:number;price:number}|null }
 export type AquariumState = { inhabitants:OwnedCollectible[]; storageCount:number; tankCapacity:number; nextCapacityExpansion?:{capacity:number;price:number}|null; tanks: AquariumTank[]; tankPrice: number; background: string; owned: string[]; catalog: { id: string; name: string; price: number; image_path: string; tier?:ThemeTier }[] }
 export type CollectibleStorage={items:OwnedCollectible[];total:number;pageSize:number}
 export async function loadCollectibleStorage(offset=0,query='',kind='all',rarity='all',concept='all'){
@@ -26,13 +26,15 @@ export async function loadAquarium() {
  if(error)throw error
  return data
 }
-export async function expandAquariumCapacity(capacity:number,operation:string){
- const {data,error}=await createClient().rpc('expand_aquarium_capacity',{p_target_capacity:capacity,p_operation_id:operation})
+export async function expandAquariumCapacity(tankId:string,capacity:number,operation:string){
+ const {data,error}=await createClient().rpc('expand_aquarium_tank',{p_tank_id:tankId,p_target_capacity:capacity,p_operation_id:operation})
  if(error)throw error
  return data
 }
 export function capacityExpansionError(cause:unknown){
  const message=String((cause as {message?:string})?.message??'')
+ if(message.includes('TANK_NOT_FOUND'))return '어항을 찾지 못했어요. 다시 열어 주세요.'
+ if(message.includes('AQUARIUM_EXPANSION_CHANGED'))return '확장 방식이 변경됐어요. 새로고침해 주세요.'
  if(message.includes('INSUFFICIENT_GOLD'))return '골드가 부족해요.'
  if(message.includes('AQUARIUM_FULLY_EXPANDED'))return '이미 최대 수용량으로 확장했어요.'
  if(message.includes('CAPACITY_CHANGED'))return '다른 창에서 수용량이 변경됐어요. 현재 단계를 다시 확인해 주세요.'

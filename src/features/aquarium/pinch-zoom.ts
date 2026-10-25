@@ -3,8 +3,8 @@ export type TankCamera={zoom:number;view:number;y?:number}
 
 // Zoom the camera, not an already-clipped canvas. Single-finger object dragging
 // continues through Phaser; only a two-finger gesture belongs to this handler.
-export function bindTankPinchZoom(viewport:HTMLElement,options:{columns:number;getState:()=>TankCamera;onChange:(camera:TankCamera)=>void;onBegin?:()=>void;onEnd?:()=>void}){
- const minimum=1/options.columns
+export function bindTankPinchZoom(viewport:HTMLElement,options:{columns:number;minZoom?:number;maxZoom?:number;getState:()=>TankCamera;onChange:(camera:TankCamera)=>void;onBegin?:()=>void;onEnd?:()=>void}){
+ const minimum=options.minZoom??1/options.columns,maximum=options.maxZoom??1
  let start:{distance:number;zoom:number;anchor:number;anchorY?:number}|null=null,gesture=false
  const position=(touches:TouchList)=>{
   const rect=viewport.getBoundingClientRect(),a=touches[0],b=touches[1]??a
@@ -22,7 +22,7 @@ export function bindTankPinchZoom(viewport:HTMLElement,options:{columns:number;g
   consume(event)
   if(!start||event.touches.length<2)return
   const point=position(event.touches)
-  const zoom=Math.max(minimum,Math.min(1,start.zoom*point.distance/Math.max(1,start.distance)))
+  const zoom=Math.max(minimum,Math.min(maximum,start.zoom*point.distance/Math.max(1,start.distance)))
   options.onChange({zoom,view:clampTankCameraView((start.anchor-point.cx/zoom)/Math.max(1,viewport.clientWidth),options.columns,zoom),...(start.anchorY===undefined?{}:{y:(start.anchorY-point.cy/zoom)/Math.max(1,viewport.clientWidth)})})
  }
  const end=(event:TouchEvent)=>{

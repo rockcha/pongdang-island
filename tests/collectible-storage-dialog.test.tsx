@@ -151,7 +151,7 @@ it('keeps selection and displays an actionable error when assignment fails',asyn
  fireEvent.click(screen.getByRole('button',{name:/멸치 선택/}))
  fireEvent.click(screen.getByRole('button',{name:'1개 어항에 넣기'}))
  fireEvent.click(screen.getByRole('button',{name:'확인'}))
- expect((await screen.findByRole('alert')).textContent).toContain('50개')
+ expect((await screen.findByRole('alert')).textContent).toContain('남은 자리가 부족해요')
  fireEvent.click(screen.getByRole('button',{name:'취소'}))
  await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
  expect(screen.getByRole('button',{name:/멸치 선택/})).toHaveProperty('ariaPressed','true')

@@ -36,6 +36,8 @@ export type TankWorldOptions = {
   columns: 1 | 3
   overview?:boolean
   initialZoom?:number
+  minZoom?:number
+  maxZoom?:number
   fixedViewport?:boolean
   onVerticalViewChange?:(view:number)=>void
   onZoomChange?:(zoom:number)=>void

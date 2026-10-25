@@ -19,6 +19,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { AquariumToolButton } from './aquarium-tool-button'
 import { loadCollectibleStorage, storageError } from './api'
 import type { AquariumState, CollectibleStorage } from './api'
+import {AquariumSearchToggle,AquariumSelectionMenu} from './aquarium-panel-controls'
 
 const { storage: Archive, aquarium: Aquarium, mailGift: Gift } = appArt
 
@@ -54,6 +55,7 @@ export function CollectibleStorageDialog({
   const setOpen = (value: boolean) => { setInternalOpen(value); onOpenChange?.(value) }
   const [recentOnly, setRecentOnly] = useState(false)
   const [filtersOpen, setFiltersOpen] = useState(false)
+  const [searchOpen,setSearchOpen]=useState(false)
   const recentIds = new Set(recentItems?.map(item => item.id) ?? [])
   const dailyOrderSpecies = useDailyOrderSpecies(open)
   const [rarity, setRarity] = useState<RarityFilter>('all')
@@ -212,7 +214,7 @@ export function CollectibleStorageDialog({
         icon={<Archive className="size-8" />}
         count={state.storageCount ?? 0}
       />}
-      <Content className={pageMode ? 'relative flex min-h-0 flex-1 flex-col gap-2 overflow-hidden px-4 pt-3 pb-4' : 'bottom-0 top-auto left-0 flex h-[96dvh] max-h-[96dvh] max-w-full translate-x-0 translate-y-0 flex-col gap-2 overflow-hidden rounded-t-2xl rounded-b-none pb-4 sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-xl'}>
+      <Content data-storage-page={pageMode} className={pageMode ? 'aquarium-storage-panel relative flex min-h-0 flex-1 flex-col gap-2 overflow-hidden px-4 pt-3 pb-4' : 'aquarium-storage-panel aquarium-work-panel aquarium-item-panel bottom-0 top-auto left-0 flex h-[96dvh] max-h-[96dvh] max-w-full translate-x-0 translate-y-0 flex-col gap-2 overflow-hidden rounded-t-2xl rounded-b-none pb-4 sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-xl'}>
         {!pageMode && <DialogHeader className="shrink-0">
           <DialogTitle className="flex items-center gap-2">
             <Archive aria-hidden="true" className="size-5 shrink-0 text-primary" />
@@ -221,6 +223,7 @@ export function CollectibleStorageDialog({
               {state.storageCount ?? 0}개
             </span>
           </DialogTitle>
+          <AquariumSearchToggle open={searchOpen} onChange={setSearchOpen} active={!!query}/>
         </DialogHeader>}
         {recentItems !== undefined && <div role="group" aria-label="이번 낚시 구분" className="flex shrink-0 gap-1 rounded-xl bg-secondary/40 p-1">
           {[false, true].map(value => <Button key={String(value)} variant={recentOnly === value ? 'secondary' : 'ghost'} size="sm" className="flex-1 rounded-lg text-xs" aria-pressed={recentOnly === value} disabled={disabled} onClick={() => { setRecentOnly(value); setPage(0); setSelection(new Set()) }}>{value ? `이번 낚시 · ${recentItems.length}` : '전체 보관함'}</Button>)}
@@ -228,7 +231,7 @@ export function CollectibleStorageDialog({
         <div
           role="group"
           aria-label="보관함 분류"
-          className="segmented-control grid shrink-0 grid-cols-4 gap-1 p-1"
+          className="aquarium-panel-categories segmented-control grid shrink-0 grid-cols-4 gap-1 p-1"
         >
           {[
             { id: 'all', name: '전체' },
@@ -253,7 +256,7 @@ export function CollectibleStorageDialog({
             </Button>
           ))}
         </div>
-        <div className="flex min-w-0 shrink-0 items-center gap-2">
+        <div className="aquarium-panel-search flex min-w-0 shrink-0 items-center gap-2" data-expanded={searchOpen}>
           <CollectibleSearchInput
             value={query}
             disabled={disabled}
@@ -262,7 +265,7 @@ export function CollectibleStorageDialog({
               setSelection(new Set())
             }}
           />
-          <Button variant="outline" className="min-h-11 shrink-0 gap-1 text-xs" aria-label="필터" aria-expanded={filtersOpen} onClick={() => setFiltersOpen(value => !value)}><SlidersHorizontal className="size-4" />필터{(concept !== "all" || rarity !== "all") && ` (${Number(concept !== "all") + Number(rarity !== "all")})`}</Button>
+          <Button variant="outline" className="aquarium-filter-toggle min-h-11 shrink-0 gap-1 text-xs" aria-label="필터" aria-expanded={filtersOpen} data-active={concept!=='all'||rarity!=='all'} onClick={() => setFiltersOpen(value => !value)}><SlidersHorizontal className="size-4" /><span>필터{(concept !== "all" || rarity !== "all") && ` (${Number(concept !== "all") + Number(rarity !== "all")})`}</span></Button>
         </div>
         <div hidden={!filtersOpen} className={filtersOpen ? "flex min-w-0 shrink-0 items-center gap-2" : "hidden"}>
           <RegionConceptSelect
@@ -284,7 +287,8 @@ export function CollectibleStorageDialog({
             }}
           />
         </div>
-        <div className="flex shrink-0 flex-wrap items-center justify-between gap-1">
+        <div className="aquarium-panel-selection flex shrink-0 flex-wrap items-center justify-between gap-1">
+          <AquariumSelectionMenu>
           <Button
             variant="ghost"
             size="sm"
@@ -299,9 +303,36 @@ export function CollectibleStorageDialog({
             {allSelected ? '이 페이지 해제' : '이 페이지 선택'}
           </Button>
           <Button variant="ghost" size="sm" className="text-xs" aria-pressed={allPagesSelected} disabled={disabled || loading || searchPending || !data?.total} onClick={() => void selectAllPages()}>{selectingAll ? '선택 중…' : allPagesSelected ? '전체 해제' : '모든 페이지 선택'}</Button>
+          </AquariumSelectionMenu>
           <span className="text-[11px] text-muted-foreground" role="status">
             {selection.size}개 선택
           </span>
+          {data && data.total > 50 && (
+            <div className="aquarium-panel-pagination flex shrink-0 items-center justify-center gap-4">
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="보관함 이전 페이지"
+                disabled={disabled || loading || page === 0}
+                onClick={() => setPage((v) => v - 1)}
+              >
+                <ChevronLeft />
+              </Button>
+              <span className="text-xs tabular-nums">
+                {page + 1}/{Math.ceil(data.total / 50)}
+              </span>
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="보관함 다음 페이지"
+                disabled={disabled || loading || (page + 1) * 50 >= data.total}
+                onClick={() => setPage((v) => v + 1)}
+              >
+                <ChevronRight />
+              </Button>
+            </div>
+          )}
+
         </div>
         <div className="-mx-4 flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain">
           {loading ? (
@@ -309,7 +340,7 @@ export function CollectibleStorageDialog({
               보관함을 여는 중…
             </p>
           ) : data?.items.length ? (
-            <ul className="grid grid-cols-3 border-t border-border/60">
+            <ul className="aquarium-panel-grid grid grid-cols-3 border-t border-border/60">
               {groups.map((group) => {
                 const value = group.items.filter((item) => selection.has(item.id)).length
                 const max = group.items.length
@@ -318,7 +349,7 @@ export function CollectibleStorageDialog({
                     <CollectibleQuantityCard
                       species={group.species}
                       recent={group.recent}
-                    dailyOrder={dailyOrderSpecies.has(group.species.id)}
+                      dailyOrder={dailyOrderSpecies.has(group.species.id)}
                       count={group.items.length}
                       value={value}
                       max={max}
@@ -347,31 +378,6 @@ export function CollectibleStorageDialog({
             )
           )}
         </div>
-        {data && data.total > 50 && (
-          <div className="flex shrink-0 items-center justify-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              aria-label="보관함 이전 페이지"
-              disabled={disabled || loading || page === 0}
-              onClick={() => setPage((v) => v - 1)}
-            >
-              <ChevronLeft />
-            </Button>
-            <span className="text-xs tabular-nums">
-              {page + 1}/{Math.ceil(data.total / 50)}
-            </span>
-            <Button
-              variant="ghost"
-              size="icon"
-              aria-label="보관함 다음 페이지"
-              disabled={disabled || loading || (page + 1) * 50 >= data.total}
-              onClick={() => setPage((v) => v + 1)}
-            >
-              <ChevronRight />
-            </Button>
-          </div>
-        )}
         {error && (
           <div
             role="alert"
@@ -392,7 +398,7 @@ export function CollectibleStorageDialog({
             </Button>
           </div>
         )}
-        {selection.size > 0 && <div className={`-mx-4 -mb-4 grid shrink-0 ${pageMode ? 'grid-cols-2' : 'grid-cols-3'} border-t pb-[env(safe-area-inset-bottom)]`}>
+        {selection.size > 0 && <div className={`aquarium-panel-actions -mx-4 -mb-4 grid shrink-0 ${pageMode ? 'grid-cols-2' : 'grid-cols-3'} border-t pb-[env(safe-area-inset-bottom)]`}>
           {!pageMode && <Button
             variant="secondary"
             aria-label={selection.size + '개 어항에 넣기'}
@@ -423,6 +429,7 @@ export function CollectibleStorageDialog({
               disabled
             >
               <Gift className="size-9" />
+              <span className="aquarium-action-label hidden text-xs">선물</span>
             </Button>
           )}
           <Button

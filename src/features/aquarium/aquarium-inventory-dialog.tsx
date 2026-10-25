@@ -5,7 +5,7 @@ import { RaritySelect } from '@/components/rarity-select'
 import { RegionConceptSelect, matchesRegionConcept } from '@/components/region-concept-select'
 import { Label } from '@/components/ui/label'
 import { useRef, useState } from 'react'
-import { Minus, Plus } from 'lucide-react'
+import { Minus, Plus,SlidersHorizontal } from 'lucide-react'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -24,6 +24,7 @@ import { CollectibleThumbnail } from '@/features/collection/collectible-thumbnai
 import { SendGiftDialog } from '@/features/gifts/send-gift-dialog'
 import { AquariumToolButton } from './aquarium-tool-button'
 import { storageError } from './api'
+import {AquariumSearchToggle} from './aquarium-panel-controls'
 
 const { list: ListFilter, storage: Archive, mailGift: Gift } = appArt
 
@@ -47,6 +48,8 @@ export function AquariumInventoryDialog({
     [rarity, setRarity] = useState<Rarity | 'all'>('all')
   const [query, setQuery] = useState('')
   const [concept, setConcept] = useState('all')
+  const [searchOpen,setSearchOpen]=useState(false)
+  const [filtersOpen,setFiltersOpen]=useState(false)
   const [selection, setSelection] = useState<Set<string>>(new Set())
   const [storeIds, setStoreIds] = useState<string[] | null>(null),
     [storeError, setStoreError] = useState('')
@@ -122,18 +125,19 @@ export function AquariumInventoryDialog({
           label="목록"
           icon={<ListFilter className="size-8" />}
         />
-        <DialogContent className="bottom-0 top-auto left-0 flex h-[88dvh] max-h-[88dvh] max-w-full translate-x-0 translate-y-0 flex-col gap-3 overflow-hidden rounded-t-2xl rounded-b-none pb-4 sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-xl">
+        <DialogContent className="aquarium-work-panel aquarium-item-panel bottom-0 top-auto left-0 flex h-[88dvh] max-h-[88dvh] max-w-full translate-x-0 translate-y-0 flex-col gap-3 overflow-hidden rounded-t-2xl rounded-b-none pb-4 sm:bottom-auto sm:top-1/2 sm:left-1/2 sm:max-w-md sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-xl">
           <DialogHeader className="shrink-0 pr-7">
             <DialogTitle className="flex items-center gap-2">
               <ListFilter aria-hidden="true" className="size-5 shrink-0 text-primary" />
-              {name}{' '}
+              <span className="aquarium-panel-name min-w-0 truncate">{name}</span>{' '}
               <span className="ml-1 text-sm font-normal text-muted-foreground">
                 {items.length}개
               </span>
             </DialogTitle>
+            <AquariumSearchToggle open={searchOpen} onChange={setSearchOpen} active={!!query}/>
           </DialogHeader>
           <div
-            className="segmented-control grid shrink-0 grid-cols-4 gap-1"
+            className="aquarium-panel-categories segmented-control grid shrink-0 grid-cols-4 gap-1"
             role="group"
             aria-label="개체 카테고리"
           >
@@ -166,7 +170,7 @@ export function AquariumInventoryDialog({
               </Button>
             ))}
           </div>
-          <div className="flex min-w-0 shrink-0 items-center gap-2">
+          <div className="aquarium-panel-search flex min-w-0 shrink-0 items-center gap-2" data-expanded={searchOpen}>
             <CollectibleSearchInput
               value={query}
               disabled={busy || selling}
@@ -175,8 +179,9 @@ export function AquariumInventoryDialog({
                 setSelection(new Set())
               }}
             />
+            <Button variant="outline" className="aquarium-filter-toggle aquarium-inventory-filter-toggle min-h-11 shrink-0 gap-1 text-xs" aria-label="필터" aria-expanded={filtersOpen} data-active={concept!=='all'||rarity!=='all'} onClick={()=>setFiltersOpen(value=>!value)}><SlidersHorizontal className="size-4"/><span>필터</span></Button>
           </div>
-          <div className="flex min-w-0 shrink-0 items-center gap-2">
+          <div className="aquarium-inventory-filters flex min-w-0 shrink-0 items-center gap-2" data-expanded={filtersOpen}>
             <RegionConceptSelect
               value={concept}
               disabled={busy || selling}
@@ -196,7 +201,7 @@ export function AquariumInventoryDialog({
           </div>
           <div className="-mx-4 flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain">
             {filtered.length ? (
-              <ul className="grid grid-cols-3 border-t border-border/60">
+              <ul className="aquarium-panel-grid grid grid-cols-3 border-t border-border/60">
                 {filtered.map((group) => {
                   const eligible = group.items.filter(
                     (item) => !item.id.startsWith('test-') && item.species.kind !== 'map',
@@ -229,7 +234,7 @@ export function AquariumInventoryDialog({
           </div>
           {selected.length > 0 && (
             <div
-              className="flex min-h-12 shrink-0 items-center gap-3 overflow-x-auto border-t pt-2"
+              className="aquarium-selected-preview flex min-h-12 shrink-0 items-center gap-3 overflow-x-auto border-t pt-2"
               aria-label="선택한 개체"
             >
               {selected.map((group) => (
@@ -246,7 +251,8 @@ export function AquariumInventoryDialog({
               ))}
             </div>
           )}
-          <div className="-mx-4 -mb-4 -mt-3 grid shrink-0 grid-cols-3 border-t pb-[env(safe-area-inset-bottom)]">
+          {selection.size>0&&<div className="aquarium-inventory-count"><span>{selection.size}개 선택</span><Button variant="ghost" size="sm" disabled={busy||selling} onClick={()=>setSelection(new Set())}>선택 해제</Button></div>}
+          <div className="aquarium-panel-actions -mx-4 -mb-4 -mt-3 grid shrink-0 grid-cols-3 border-t pb-[env(safe-area-inset-bottom)]">
             <Button
               variant="secondary"
               aria-label={movable.length + '개 보관함으로'}
@@ -258,6 +264,7 @@ export function AquariumInventoryDialog({
               }}
             >
               <Archive className="size-9" />
+              <span className="aquarium-action-label hidden text-xs">보관함</span>
             </Button>
             {selected.length === 1 ? (
               <SendGiftDialog
@@ -277,6 +284,7 @@ export function AquariumInventoryDialog({
                 disabled
               >
                 <Gift className="size-9" />
+                <span className="aquarium-action-label hidden text-xs">선물</span>
               </Button>
             )}
             <Button

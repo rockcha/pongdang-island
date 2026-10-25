@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState,useRef } from 'react'
+import type {ReactNode} from 'react'
 import { Link, useParams } from 'react-router'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button, buttonVariants } from '@/components/ui/button'
@@ -8,7 +9,8 @@ import { TankBubbles } from '@/features/aquarium/tank-bubbles'
 import { AquariumBackdrop } from '@/features/aquarium/aquarium-backdrop'
 import {AquariumLoading} from '@/features/aquarium/aquarium-loading'
 import { themePanoramaUrl } from '@/features/aquarium/theme-panorama'
-import { clampTankView,panoramaTankHeight } from '@/features/aquarium/tank-world'
+import { clampTankCameraView } from '@/features/aquarium/tank-world'
+import {useFittedTankViewport} from '@/features/aquarium/use-fitted-tank-viewport'
 import type { OwnedCollectible } from '@/features/collection/api'
 import { loadFriendAquarium, visitError } from './aquarium-api'
 import type { FriendAquarium } from './aquarium-api'
@@ -129,16 +131,10 @@ function Visit({ owner }: { owner: string }) {
             </Button>
             </>}
           </div>
-          {expanded?<div className="min-h-0 flex-1 overflow-y-auto overscroll-contain">
-          <div
-            className="relative min-h-0 w-full shrink-0 overflow-hidden bg-gradient-to-b from-blue-100 to-blue-200"
-            aria-label={tank.name}
-          >
-            <FriendTankScene key={tank.id} items={items} background={background}/>
-            <button type="button" onClick={()=>setExpanded(false)} className="absolute left-2 top-2 z-20 inline-flex min-h-9 items-center gap-1 rounded-full border border-white/40 bg-background/75 px-3 text-[11px] text-primary shadow-sm backdrop-blur-sm"><ChevronLeft aria-hidden="true" className="size-3.5"/>친구 어항 목록</button>
+          {expanded?<FriendTankScene key={tank.id} name={tank.name} items={items} background={background}>
+            <button type="button" aria-label="친구 어항 목록" data-aquarium-list onClick={()=>setExpanded(false)} className="absolute left-2 top-2 z-20 inline-flex min-h-9 items-center gap-1 rounded-full border border-white/40 bg-background/75 px-3 text-[11px] text-primary shadow-sm backdrop-blur-sm"><ChevronLeft aria-hidden="true" className="size-3.5"/><span className="aquarium-label-full">친구 어항 목록</span><span className="aquarium-label-short">목록</span></button>
             <AquariumCare key={'care:' + tank.id} tank={tank.id} />
-          </div>
-          </div>:<AquariumOverview label="친구 어항 목록" state={{tanks:data.tanks,catalog:data.backgrounds}} items={allItems} busy={false} scrollTop={overviewScroll.current} onScroll={value=>{overviewScroll.current=value}} onSelect={id=>{setIndex(data.tanks.findIndex(t=>t.id===id));setExpanded(true)}}/>}
+          </FriendTankScene>:<AquariumOverview label="친구 어항 목록" state={{tanks:data.tanks,catalog:data.backgrounds}} items={allItems} busy={false} scrollTop={overviewScroll.current} onScroll={value=>{overviewScroll.current=value}} onSelect={id=>{setIndex(data.tanks.findIndex(t=>t.id===id));setExpanded(true)}}/>}
           <div className="flex shrink-0 divide-x divide-border border-t bg-background pb-[env(safe-area-inset-bottom)]">
             <Link
               to="/aquarium"
@@ -154,19 +150,18 @@ function Visit({ owner }: { owner: string }) {
   )
 }
 
-function FriendTankScene({items,background}:{items:OwnedCollectible[];background?:{name:string;image_path:string}}){
+function FriendTankScene({name,items,background,children}:{name:string;items:OwnedCollectible[];background?:{name:string;image_path:string};children:ReactNode}){
   const [view,setView]=useState(1)
-  const [zoom,setZoom]=useState(1),[width,setWidth]=useState(320)
-  const root=useRef<HTMLDivElement>(null)
-  useEffect(()=>{const element=root.current;if(!element)return;setWidth(element.clientWidth||320);if(typeof ResizeObserver==='undefined')return;const observer=new ResizeObserver(()=>setWidth(element.clientWidth||320));observer.observe(element);return()=>observer.disconnect()},[])
+  const [zoom,setZoom]=useState(1),[verticalView,setVerticalView]=useState(0)
+  const fitted=useFittedTankViewport(0)
   const [viewRequest,setViewRequest]=useState({position:1})
   const src=themePanoramaUrl(background?.image_path)
-  return <div ref={root} className="relative w-full" style={{height:panoramaTankHeight(width)*(src?zoom:1)}} tabIndex={0} aria-label="친구 어항 둘러보기" onKeyDown={event=>{
+  return <div ref={fitted.ref} aria-label={name} data-testid="friend-aquarium-viewport" className="flex min-h-0 w-full flex-1 items-start justify-center overflow-hidden"><div className="aquarium-fitted-glass friend-aquarium-scene relative shrink-0 overflow-hidden bg-gradient-to-b from-blue-100 to-blue-200" style={{width:fitted.width,height:fitted.height}} tabIndex={0} aria-label="친구 어항 둘러보기" onKeyDown={event=>{
     if(event.target!==event.currentTarget||!src)return
-    if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();setViewRequest({position:clampTankView(view+(event.key==='ArrowLeft'?-.15:.15))})}
-  }}><TankInhabitants items={items}
-    world={src?{columns:3,overview:true,initialZoom:1,initialView:1,preserveArrangement:false,onZoomChange:setZoom,onViewChange:setView}:undefined}
+    if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();setViewRequest({position:clampTankCameraView(view+(event.key==='ArrowLeft'?-.15:.15),3,zoom)})}
+  }}><TankInhabitants items={items} fitView={!!src}
+    world={src?{columns:3,overview:true,fixedViewport:true,minZoom:1,maxZoom:2,initialZoom:1,initialView:1,preserveArrangement:false,onZoomChange:setZoom,onViewChange:setView,onVerticalViewChange:setVerticalView}:undefined}
     viewRequest={src?viewRequest:undefined}
-    scenery={<><AquariumBackdrop background={background} panorama={src?{src,view,zoom}:undefined}/><TankBubbles/></>}
-  /></div>
+    scenery={<><AquariumBackdrop background={background} panorama={src?{src,view,zoom,fixedViewport:true,heightRatio:1.6,y:verticalView}:undefined}/><TankBubbles/></>}
+  />{children}</div></div>
 }

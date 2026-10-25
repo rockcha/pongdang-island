@@ -1,0 +1,13 @@
+.aquarium-fitted-glass { container: aquarium-scene / inline-size; }
+.aquarium-label-short { display: none; }
+.friend-aquarium-scene [data-tank-fit] { bottom: 40px; }
+.friend-aquarium-scene:has(> button[aria-expanded='true']) [data-tank-fit] { bottom: 104px; }
+@container aquarium-scene (max-width: 280px) {
+ .aquarium-label-full { display: none; }
+ .aquarium-label-short { display: inline; }
+ [data-aquarium-list], [data-wide-trigger] { padding-inline: .5rem; }
+}
+@container aquarium-scene (max-width: 180px) {
+ [data-wide-trigger] { top: 3rem; left: .5rem; right: auto; }
+ [data-tank-fit] { max-width: calc(100% - 1rem); padding-inline: .375rem; font-size: 9px; }
+}

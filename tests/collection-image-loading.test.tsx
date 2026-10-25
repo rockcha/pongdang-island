@@ -1,6 +1,7 @@
 import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'
 import { CollectibleThumbnail } from '@/features/collection/collectible-thumbnail'
+import thumbnailAssets from '@/features/collection/thumbnail-assets.json'
 
 vi.mock('@/features/collection/api', () => ({ collectibleUrl: (path: string) => '/'+path }))
 afterEach(()=>{cleanup();vi.useRealTimers()})
@@ -42,4 +43,14 @@ it('cancels a failed image retry when the path changes',()=>{
  expect(screen.getByRole('img').getAttribute('src')).toBe('/new.png')
  fireEvent.load(screen.getByRole('img'))
  expect(screen.getByRole('img').className).toContain('opacity-100')
+})
+it('uses a lightweight derivative, falls back to its original on failure and keeps large previews separate',()=>{
+ const [path,asset]=Object.entries(thumbnailAssets)[0]
+ const view=render(<CollectibleThumbnail path={path} name="optimized fish"/>)
+ expect(screen.getByRole('img').getAttribute('src')).toBe(asset.small)
+ fireEvent.error(screen.getByRole('img'))
+ expect(screen.getByRole('img').getAttribute('src')).toBe('/'+path)
+ fireEvent.load(screen.getByRole('img'))
+ view.rerender(<CollectibleThumbnail path={path} name="optimized fish" resolution="large"/>)
+ expect(screen.getByRole('img').getAttribute('src')).toBe(asset.large)
 })

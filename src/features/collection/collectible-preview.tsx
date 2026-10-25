@@ -15,7 +15,7 @@ import { dreamabyssFixedFrame } from '@/features/aquarium/dreamabyss-animation'
 import {hasHalloweenSpirits,halloweenSpirits,halloweenSpiritUrl} from '@/features/aquarium/halloween-spirits'
 
 export function CollectiblePreview({species,large=false}:{species:Species;large?:boolean}) {
-  if(glassAttachedSpecies.has(species.id))return <CollectibleThumbnail fadeIn path={species.thumbnail_path} name={species.name} className={large?"aspect-square w-full max-w-64":"size-32"}/>
+  if(glassAttachedSpecies.has(species.id))return <CollectibleThumbnail resolution={large?'large':'small'} fadeIn path={species.thumbnail_path} name={species.name} className={large?"aspect-square w-full max-w-64":"size-32"}/>
   return <Preview key={species.id+species.sprite_sheet_path} species={species} large={large}/>
 }
 function Preview({species,large=false}:{species:Species;large?:boolean}) {
@@ -78,6 +78,6 @@ function Preview({species,large=false}:{species:Species;large?:boolean}) {
     if(spirit){spirit.onload=()=>{if(alive)sync()};spirit.src=halloweenSpiritUrl}
     return()=>{alive=false;stop();observer?.disconnect();document.removeEventListener('visibilitychange',sync);media.removeEventListener?.('change',sync);image.onload=null;image.onerror=null;if(spirit)spirit.onload=null}
   },[species.id,species.sprite_sheet_path,species.rarity,viewport])
-  if(!species.sprite_sheet_path||status==='failed')return <CollectibleThumbnail fadeIn path={species.thumbnail_path} name={species.name} className={large?"aspect-square w-full max-w-80":"size-40"}/>
+  if(!species.sprite_sheet_path||status==='failed')return <CollectibleThumbnail resolution={large?'large':'small'} fadeIn path={species.thumbnail_path} name={species.name} className={large?"aspect-square w-full max-w-80":"size-40"}/>
   return <div className={large?'relative aspect-square':'relative size-40'} style={large?{width:viewport,maxWidth:'100%'}:undefined} aria-busy={status==='loading'}>{status==='loading'&&<ImageLoadingSpinner/>}<canvas ref={canvas} role="img" aria-label={species.name+' 움직이는 모습'} className={'size-full transition-opacity duration-150 motion-reduce:transition-none '+(status==='ready'?'opacity-100':'opacity-0')}/></div>
 }

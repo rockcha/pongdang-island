@@ -49,7 +49,7 @@ it('shows the owner and browses friend tanks without a collectible list', async 
   expect(mock.items[0].position_x).toBe(.25)
   const tank = screen.getByLabelText('첫 어항')
   expect(tank.className).toContain('w-full')
-  expect(tank.className).toContain('shrink-0')
+  expect(tank.className).toContain('flex-1')
   expect(tank.className).toContain('min-h-0')
   expect(screen.getByRole('link', { name: '친구퐁이' }).parentElement?.className).toContain('h-14')
   expect(screen.getByRole('link', { name: '내 어항' }).getAttribute('href')).toBe('/aquarium')

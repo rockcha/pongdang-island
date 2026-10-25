@@ -3,9 +3,9 @@ import {MoreHorizontal,SlidersHorizontal,X} from 'lucide-react'
 import {Button} from '@/components/ui/button'
 
 export type SelectionPanel='customize'|'order'|'more'|null
-export function SelectionToolbar({name,busy,panel,onPanel,onClose,children,topOffset}:{name:string;busy:boolean;panel:SelectionPanel;onPanel:(panel:SelectionPanel)=>void;onClose:()=>void;children:ReactNode;topOffset?:number}){
-  return <section aria-label={`${name} 선택 도구`} style={topOffset===undefined?undefined:{top:topOffset}} className="absolute inset-x-2 top-16 z-30 mx-auto flex w-auto max-w-sm flex-col-reverse overflow-hidden rounded-xl border border-white/50 bg-background/15 shadow-md">
-    {panel&&<div className="flex flex-col items-center gap-1 border-t border-border/50 px-2 py-1.5">{children}</div>}
+export function SelectionToolbar({name,busy,panel,onPanel,onClose,children,topOffset,wide=false}:{name:string;busy:boolean;panel:SelectionPanel;onPanel:(panel:SelectionPanel)=>void;onClose:()=>void;children:ReactNode;topOffset?:number;wide?:boolean}){
+  return <section aria-label={`${name} 선택 도구`} style={topOffset===undefined?undefined:{top:topOffset}} className={`${wide?'aquarium-wide-selection ':''}absolute inset-x-2 top-16 z-30 mx-auto flex w-auto max-w-sm flex-col-reverse overflow-hidden rounded-xl border border-white/50 bg-background/15 shadow-md`}>
+    {panel&&<div className="aquarium-selection-body flex flex-col items-center gap-1 border-t border-border/50 px-2 py-1.5">{children}</div>}
     <div className="flex min-h-12 items-center gap-1 bg-background/90 px-2">
       <span className="min-w-0 flex-1 truncate pl-1 text-xs font-medium" title={name}>{name}</span>
       <Button variant={panel==='customize'||panel==='order'?'secondary':'ghost'} className="min-h-11 gap-1 px-2 text-xs" aria-expanded={panel==='customize'||panel==='order'} disabled={busy} onClick={()=>onPanel(panel==='customize'||panel==='order'?null:'customize')}><SlidersHorizontal className="size-3.5"/>꾸미기</Button>

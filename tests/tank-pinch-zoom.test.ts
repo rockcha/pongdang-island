@@ -45,6 +45,23 @@ it('keeps both world edges visible at minimum zoom and clamps panning at every i
   expect(left).toBe(0);expect(right+1/zoom).toBeCloseTo(3)
  }
 })
+it('zooms inside a fitted portrait viewport and pinches back to fit without shrinking the scene below it',()=>{
+ const viewport=document.createElement('div')
+ Object.defineProperty(viewport,'clientWidth',{value:300})
+ let state:TankCamera={zoom:1,view:1,y:0}
+ const stop=bindTankPinchZoom(viewport,{columns:3,minZoom:1,maxZoom:2,getState:()=>state,onChange:value=>{state=value}})
+ const touch=(type:string,points:number[][])=>{const e=new Event(type,{bubbles:true,cancelable:true});Object.defineProperty(e,'touches',{value:points.map(([clientX,clientY])=>({clientX,clientY}))});viewport.dispatchEvent(e)}
+ touch('touchstart',[[100,150],[200,150]])
+ touch('touchmove',[[0,150],[300,150]])
+ expect(state.zoom).toBe(2)
+ expect(state.view).toBeCloseTo(1.25)
+ expect(state.y).toBeCloseTo(.25)
+ touch('touchmove',[[145,150],[155,150]])
+ expect(state.zoom).toBe(1)
+ expect(state.view).toBeCloseTo(1)
+ expect(state.y).toBeCloseTo(0)
+ stop()
+})
 it('keeps the vertical pinch anchor when a fixed landscape viewport is zoomed',()=>{
  const viewport=document.createElement('div')
  Object.defineProperty(viewport,'clientWidth',{value:300})

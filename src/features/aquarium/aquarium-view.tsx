@@ -35,9 +35,11 @@ import type { AquariumTank } from './api'
 import { InhabitantLayerEditor } from './inhabitant-layer-editor'
 import { automaticInhabitantDepth } from './inhabitant-depth'
 import { themePanoramaUrl } from './theme-panorama'
-import { clampTankView,clampTankCameraView, tankWorldItem,panoramaTankHeight,aquariumLayoutWidth } from './tank-world'
+import { clampTankCameraView, tankWorldItem,panoramaTankHeight,aquariumLayoutWidth } from './tank-world'
 import { SelectionToolbar } from './selection-toolbar'
 import type { SelectionPanel } from './selection-toolbar'
+import './aquarium-wide.css'
+import {useFittedTankViewport} from './use-fitted-tank-viewport'
 
 type Props = {
   overviewContent?:ReactNode
@@ -78,7 +80,8 @@ export function AquariumView(props: Props) {
   const panoramaSrc=themePanoramaUrl(background?.image_path)
   const panorama=Boolean(panoramaSrc)
   const [view,setView]=useState(0)
-  const [zoom,setZoom]=useState(props.onOverview?1:1/3)
+  const [zoom,setZoom]=useState(1)
+  const fitted=useFittedTankViewport(56,!wide.active&&!props.overviewContent)
   const [verticalView,setVerticalView]=useState(0)
   const [viewRequest,setViewRequest]=useState<{position:number;zoom?:number;y?:number}>({position:1})
   useEffect(() => {
@@ -98,7 +101,7 @@ export function AquariumView(props: Props) {
   useLayoutEffect(()=>{
     setEditing(null)
     if(wide.active){setZoom(1/3);setView(0);setVerticalView(0);setViewRequest({position:0});setManagementOpen(false);setWideMenu(false)}
-    else if(props.onOverview&&!props.overviewContent){setZoom(1);setView(1);setViewRequest({position:1})}
+    else if(!props.overviewContent){setZoom(1);setView(1);setVerticalView(0);setViewRequest({position:1,zoom:1,y:0})}
   },[!!props.overviewContent,props.tankId,wide.active])
   useEffect(()=>setPanel(null),[editing?.id])
   const [infoId, setInfoId] = useState<string | null>(null)
@@ -131,7 +134,7 @@ export function AquariumView(props: Props) {
         ...(item.species.kind==='trash'?{position_locked:current.position_locked??false}:{}),
       }
       const center=g.margin+value.position_x*g.w+g.size/2
-      if(panorama&&x===undefined&&canArrangeSpecies(item.species))setViewRequest({position:clampTankView(center/aquariumLayoutWidth-.5)})
+      if(panorama&&x===undefined&&canArrangeSpecies(item.species))setViewRequest({position:clampTankCameraView(center/aquariumLayoutWidth-1/(2*zoom),3,zoom)})
       setEditing({
         id,
         value,
@@ -187,52 +190,49 @@ export function AquariumView(props: Props) {
   const content=(
     <>
       <AquariumAmbience/>
-      {props.overviewContent??<div className={wide.active?'flex min-h-0 flex-1 items-center justify-center overflow-hidden':'min-h-0 flex-1 overflow-y-auto overscroll-contain'}>
+      {props.overviewContent??<div ref={fitted.ref} data-testid="aquarium-viewport" className={`relative flex min-h-0 flex-1 flex-col items-center overflow-hidden ${wide.active?'justify-center':'justify-start'}`}>
+      {!wide.active&&<div className="relative z-20 grid h-14 w-full shrink-0 grid-cols-[4rem_minmax(0,1fr)_4rem] items-center border-b border-white/15 bg-blue-100/60 px-3 py-0.5">
+        <p className="pl-1 text-left text-[11px] tabular-nums text-muted-foreground" aria-live="polite" aria-label="현재 어항">{(props.navigation?.index??0)+1} / {props.navigation?.count??1}</p>
+        <div className="flex min-w-0 items-center justify-center text-center">{props.selectorControls??<p className="truncate text-sm">{name}</p>}</div>
+        <div className="flex min-w-0 justify-end">{props.capacityControls}</div>
+      </div>}
       <div
         ref={glass}
         data-testid="aquarium-glass"
         data-panorama={panorama}
         data-view={panorama?view.toFixed(4):undefined}
-        className={`relative min-h-0 w-full overflow-hidden bg-gradient-to-b from-blue-100 to-blue-200 ${panorama?'shrink-0':'flex-1'}`}
-        style={wide.active?{width:'min(100vw, calc(100dvh * 1.875))',height:'min(calc(100vw / 1.875), 100dvh)'}:panorama?{height:56+panoramaTankHeight(dimensions.width)*zoom}:undefined}
+        className="aquarium-fitted-glass relative min-h-0 shrink-0 overflow-hidden bg-gradient-to-b from-blue-100 to-blue-200"
+        style={wide.active?{width:'min(100vw, calc(100dvh * 1.875))',height:'min(calc(100vw / 1.875), 100dvh)'}:{width:fitted.width,height:fitted.height-56}}
         tabIndex={0}
         aria-label={name}
         onKeyDown={(event) => {
           if (event.target !== event.currentTarget) return
           if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
             event.preventDefault()
-            if(panorama&&!busy)setViewRequest({position:clampTankView(view+(event.key==='ArrowLeft'?-.15:.15))})
+            if(panorama&&!busy)setViewRequest({position:clampTankCameraView(view+(event.key==='ArrowLeft'?-.15:.15),3,zoom)})
             else navigate(event.key === 'ArrowLeft' ? 'previous' : 'next')
           }
         }}
       >
-        {!wide.active&&<div className="absolute inset-x-0 top-0 z-20 grid min-h-14 grid-cols-[4rem_minmax(0,1fr)_4rem] items-center border-b border-white/15 bg-background/25 px-3 py-0.5 backdrop-blur-sm">
-          <p className="pl-1 text-left text-[11px] tabular-nums text-muted-foreground" aria-live="polite" aria-label="현재 어항">
-            {(props.navigation?.index ?? 0) + 1} / {props.navigation?.count ?? 1}
-          </p>
-          <div className="flex min-w-0 items-center justify-center text-center">
-            {props.selectorControls ?? <p className="truncate text-sm">{name}</p>}
-          </div>
-          <div className="flex min-w-0 justify-end">{props.capacityControls}</div>
-        </div>}
-        <div className={`absolute inset-x-0 bottom-0 ${wide.active?'top-0':'top-14'}`}>
+        <div className="absolute inset-0">
         <TankInhabitants
           key={(panorama?`wide:${props.tankId??name}`:'normal')+':'+wide.active}
           preview={wide.active}
+          fitView={!wide.active&&panorama}
           onWideView={wide.enter}
-          world={panorama?{columns:3,overview:true,fixedViewport:wide.active,onVerticalViewChange:setVerticalView,initialZoom:wide.active?1/3:props.onOverview?1:1/3,initialView:wide.active?0:props.onOverview?1:0,preserveArrangement:false,onZoomChange:setZoom,onViewChange:setView,canPan:()=>panAllowed.current}:undefined}
+          world={panorama?{columns:3,overview:true,fixedViewport:true,minZoom:wide.active?1/3:1,maxZoom:wide.active?1:2,onVerticalViewChange:setVerticalView,initialZoom:wide.active?1/3:1,initialView:wide.active?0:1,preserveArrangement:false,onZoomChange:setZoom,onViewChange:setView,canPan:()=>panAllowed.current}:undefined}
           viewRequest={panorama?viewRequest:undefined}
-          scenery={<><AquariumBackdrop key={panorama?'wide':'normal'} background={background} loading={props.loading} panorama={panoramaSrc?{src:panoramaSrc,view,zoom,fixedViewport:wide.active,y:verticalView}:undefined} /><TankBubbles /></>}
+          scenery={<><AquariumBackdrop key={panorama?'wide':'normal'} background={background} loading={props.loading} panorama={panoramaSrc?{src:panoramaSrc,view,zoom,fixedViewport:true,heightRatio:wide.active?1.6/3:1.6,y:verticalView}:undefined} /><TankBubbles /></>}
           items={renderedItems}
           onPlace={place}
           onSelectDecoration={selectDecoration}
           onBackgroundTap={() => setEditing(null)}
           onNavigate={navigate}
         />
-        {props.onOverview&&!wide.active&&<button type="button" onClick={props.onOverview} className="absolute left-2 top-2 z-20 inline-flex min-h-9 items-center gap-1 rounded-full border border-white/40 bg-background/75 px-3 text-[11px] text-primary shadow-sm backdrop-blur-sm"><ChevronUp aria-hidden="true" className="size-3.5 rotate-[-90deg]"/>내 어항 목록</button>}
+        {props.onOverview&&!wide.active&&<button type="button" aria-label="내 어항 목록" data-aquarium-list onClick={props.onOverview} className="absolute left-2 top-2 z-20 inline-flex min-h-9 items-center gap-1 rounded-full border border-white/40 bg-background/75 px-3 text-[11px] text-primary shadow-sm backdrop-blur-sm"><ChevronUp aria-hidden="true" className="size-3.5 rotate-[-90deg]"/><span className="aquarium-label-full">내 어항 목록</span><span className="aquarium-label-short">목록</span></button>}
         </div>
         {editing && decoration && (
-          <SelectionToolbar topOffset={wide.active?56:props.onOverview?112:undefined} name={decoration.species.name} busy={busy} panel={panel} onPanel={setPanel} onClose={()=>setEditing(null)}>
+          <SelectionToolbar wide={wide.active} topOffset={56} name={decoration.species.name} busy={busy} panel={panel} onPanel={setPanel} onClose={()=>setEditing(null)}>
             {panel==='customize'&&<>
             {props.onArrange&&decoration.species.kind==='fish'&&!canArrangeSpecies(decoration.species)&&<FishSizeEditor scale={editing.value.scale} busy={busy} onChange={scale=>changeDecoration({...editing.value,scale})}/>}
             {props.onArrange && canArrangeSpecies(decoration.species) && (
@@ -259,13 +259,14 @@ export function AquariumView(props: Props) {
       {wide.active&&<>
         <div className="absolute left-[max(.5rem,env(safe-area-inset-left))] top-[max(.5rem,env(safe-area-inset-top))] z-40"><button type="button" aria-expanded={wideMenu} aria-controls="wide-aquarium-menu" onClick={()=>setWideMenu(value=>!value)} className="inline-flex min-h-10 items-center gap-1.5 rounded-full border border-white/40 bg-background/85 px-4 text-xs text-primary shadow-sm backdrop-blur-sm"><Menu aria-hidden="true" className="size-4"/>메뉴</button></div>
         <button type="button" onClick={wide.exit} className="absolute right-[max(.5rem,env(safe-area-inset-right))] top-[max(.5rem,env(safe-area-inset-top))] z-40 inline-flex min-h-10 items-center gap-1.5 rounded-full border border-white/40 bg-background/85 px-4 text-xs text-primary shadow-sm backdrop-blur-sm"><Minimize2 aria-hidden="true" className="size-4"/>가로 화면 종료</button>
-        {wideMenu&&<nav id="wide-aquarium-menu" aria-label="가로 어항 메뉴" className="absolute left-2 top-14 z-40 max-h-[calc(100dvh-4rem)] w-64 overflow-y-auto overscroll-contain rounded-2xl border border-white/50 bg-background/95 p-3 shadow-lg backdrop-blur-sm">
+        {wideMenu&&<nav id="wide-aquarium-menu" aria-label="가로 어항 메뉴" className="aquarium-wide-dock absolute left-2 top-14 z-40 max-h-[calc(100dvh-4rem)] w-64 overflow-y-auto overscroll-contain rounded-2xl border border-white/50 bg-background/95 p-3 shadow-lg backdrop-blur-sm">
           <p className="mb-2 truncate text-center text-xs text-muted-foreground">{name}</p>
-          <div className="mb-2 flex items-center justify-between gap-2 rounded-lg bg-secondary/50 p-1"><Button variant="ghost" size="icon" className="min-h-10 min-w-10" aria-label="어항 축소" disabled={zoom<=1/3+.001} onClick={()=>{const next=Math.max(1/3,zoom-.15);setViewRequest({zoom:next,position:clampTankCameraView(view+1/(2*zoom)-1/(2*next),3,next),y:verticalView+1.6/(6*zoom)-1.6/(6*next)})}}><Minus className="size-4"/></Button><button type="button" className="min-h-10 text-xs text-primary" onClick={()=>setViewRequest({position:0,zoom:1/3,y:0})}>전체 맞춤</button><Button variant="ghost" size="icon" className="min-h-10 min-w-10" aria-label="어항 확대" disabled={zoom>=.999} onClick={()=>{const next=Math.min(1,zoom+.15);setViewRequest({zoom:next,position:clampTankCameraView(view+1/(2*zoom)-1/(2*next),3,next),y:verticalView+1.6/(6*zoom)-1.6/(6*next)})}}><Plus className="size-4"/></Button></div>
-          {props.onOverview&&<button type="button" className="min-h-11 w-full rounded-lg border border-border text-xs text-primary" onClick={()=>{wide.exit();props.onOverview?.()}}>내 어항 목록</button>}
-          <TooltipProvider><div className="aquarium-manager mt-2 grid grid-cols-2 items-center gap-2 [&_button]:w-full [&_a]:mx-auto">{props.storageControls}{props.managementControls}</div></TooltipProvider>
-          <Button variant="ghost" className="mt-2 min-h-10 w-full text-xs" onClick={()=>setWideMenu(false)}>메뉴 접기</Button>
+          <TooltipProvider><div className="aquarium-manager mt-2 grid grid-cols-2 items-center gap-2 [&_button]:w-full [&_a]:mx-auto"><AquariumInventoryDialog items={items} name={name} busy={busy} onSell={onSell} onGiftSent={props.onGiftSent} onStore={props.onStore}/>{props.storageControls}{props.managementControls}</div></TooltipProvider>
+
+          {props.onOverview&&<button type="button" className="aquarium-overview-shortcut min-h-11 w-full rounded-lg border border-border text-xs text-primary" onClick={()=>{wide.exit();props.onOverview?.()}}>내 어항 목록</button>}
+          <Button variant="ghost" className="aquarium-menu-collapse mt-2 min-h-10 w-full text-xs" onClick={()=>setWideMenu(false)}>메뉴 접기</Button>
         </nav>}
+        {wideMenu&&<div role="group" aria-label="어항 화면 배율" className="aquarium-wide-camera absolute bottom-2 left-24 z-40 hidden landscape:flex items-center justify-between gap-2 rounded-lg bg-secondary/50 p-1"><Button variant="ghost" size="icon" className="min-h-10 min-w-10" aria-label="어항 축소" disabled={zoom<=1/3+.001} onClick={()=>{const next=Math.max(1/3,zoom-.15);setViewRequest({zoom:next,position:clampTankCameraView(view+1/(2*zoom)-1/(2*next),3,next),y:verticalView+1.6/(6*zoom)-1.6/(6*next)})}}><Minus className="size-4"/></Button><button type="button" className="min-h-10 text-xs text-primary" onClick={()=>setViewRequest({position:0,zoom:1/3,y:0})}>전체 맞춤</button><Button variant="ghost" size="icon" className="min-h-10 min-w-10" aria-label="어항 확대" disabled={zoom>=.999} onClick={()=>{const next=Math.min(1,zoom+.15);setViewRequest({zoom:next,position:clampTankCameraView(view+1/(2*zoom)-1/(2*next),3,next),y:verticalView+1.6/(6*zoom)-1.6/(6*next)})}}><Plus className="size-4"/></Button></div>}
         <p role="status" className="pointer-events-none absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-background/85 px-4 py-2 text-xs text-primary landscape:hidden"><Smartphone aria-hidden="true" className="size-4 rotate-90"/>휴대폰을 가로로 돌려주세요</p>
       </>}
       {props.nameControls}
@@ -275,7 +276,7 @@ export function AquariumView(props: Props) {
           if (!open) setInfoId(null)
         }}
       >
-        <DialogContent className="gap-4 rounded-xl sm:max-w-sm">
+        <DialogContent className="aquarium-work-panel aquarium-detail-panel gap-4 overflow-y-auto rounded-xl sm:max-w-sm">
           <DialogHeader className="pr-7">
             <DialogTitle className="flex items-center gap-2">
               {infoItem && (

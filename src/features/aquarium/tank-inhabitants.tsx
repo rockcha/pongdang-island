@@ -52,7 +52,7 @@ export function TankInhabitants({ items,scenery,onPlace,onNavigate,onSelectDecor
     return()=>clearTimeout(timer)
   },[isReady,loadingError,assetSignature,retry])
   useEffect(()=>{if(viewRequest){if(viewRequest.zoom!==undefined)renderer.current?.setZoom(viewRequest.zoom,viewRequest.position,viewRequest.y);else renderer.current?.setView(viewRequest.position)}},[viewRequest,columns])
-  useLayoutEffect(() => { latest.current = items; renderer.current?.setItems(items) }, [items])
+  useLayoutEffect(() => { if(items.some(item=>item.placement_locked)&&!latest.current.some(item=>item.placement_locked))renderer.current?.cancelGesture();latest.current = items; renderer.current?.setItems(items) }, [items])
   useEffect(() => {
     const parent = root.current
     if (!parent) return

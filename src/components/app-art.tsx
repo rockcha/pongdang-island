@@ -53,6 +53,7 @@ const placeArt:Record<string,ReturnType<typeof artwork>>={
  '/production-shop':appArt.fuelProductionShop,
  '/hall-of-fame':appArt.ranking,
  '/showcase':appArt.showcase,
+ '/decoration-shop':appArt.itemShop,
  '/item-shop':appArt.itemShop,
  '/merchant-orders':appArt.merchantOrders,
  '/port':appArt.port,

@@ -54,7 +54,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
   let swipe:{id:number;x:number;y:number;time:number;view:number;vertical:number}|null=null
   let decorationPress:{id:string;pointerId:number;x:number;y:number;dragged:boolean}|null=null
   const textureKey = (path: string) => `collectible:${path}`
-  const draggable=(item:OwnedCollectible)=>(item.species.kind!=='map'&&item.species.kind!=='relic')&&!item.interaction_locked
+  const draggable=(item:OwnedCollectible)=>(item.species.kind!=='map'&&item.species.kind!=='relic')&&!item.interaction_locked&&!item.placement_locked&&(item.placement_locked===undefined||!!item.editing)
   const asset = (item: OwnedCollectible) => {
     if(glassAttachedSpecies.has(item.species.id))return {path:item.species.thumbnail_path,sheet:false}
     const plant=primalPlantAsset(item.species.id,item.species.kind)
@@ -107,11 +107,11 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         decorationPress=null
         const target=targets[0] as Phaser.GameObjects.Sprite|undefined
         const id=target?.getData('collectibleId') as string|undefined
-        if(id&&entries.has(id)&&!entries.get(id)!.motion.item.interaction_locked){
+        if(id&&entries.has(id)&&!entries.get(id)!.motion.item.interaction_locked&&!entries.get(id)!.motion.item.placement_locked){
           decorationPress={id,pointerId:pointer.id,x:point.x,y:point.y,dragged:false}
           return
         }
-        if(targets.length)return
+        if(targets.length&&!(id&&entries.get(id)?.motion.item.placement_locked&&!entries.get(id)!.motion.item.interaction_locked))return
         swipe={id:pointer.id,x:point.x-cameraOffset(),y:point.y-cameraY(),time:performance.now(),view,vertical:verticalView}
       })
       this.input.on('pointermove',(pointer:Phaser.Input.Pointer)=>{
@@ -136,17 +136,20 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
       })
       this.input.on('gameout',()=>{swipe=null;decorationPress=null;dragPointer=null})
       this.input.on('dragstart',(pointer:Phaser.Input.Pointer,sprite:Phaser.GameObjects.Sprite)=>{
-        swipe=null
         const id=sprite.getData('collectibleId') as string
+        const item=entries.get(id)?.motion.item
+        if(!item||!draggable(item))return
+        swipe=null
         if(decorationPress?.id===id)decorationPress.dragged=true
-        selectedId=null
-        onBackgroundTap?.()
+        if(item.placement_locked!==false){selectedId=null;onBackgroundTap?.()}
         dragging.add(id);sprite.setDepth(900)
         const point=this.pointerPosition(pointer)
         dragPointer={pointer,sprite,offsetX:sprite.x-point.x,offsetY:sprite.y-point.y}
         this.input.setDefaultCursor('grabbing')
       })
       this.input.on('drag',(_pointer:Phaser.Input.Pointer,sprite:Phaser.GameObjects.Sprite,x:number,y:number)=>{
+        const draggingItem=entries.get(sprite.getData('collectibleId') as string)?.motion.item
+        if(!draggingItem||!draggable(draggingItem))return
         const radians=sprite.angle*Math.PI/180
         const half=sprite.displayWidth*(Math.abs(Math.cos(radians))+Math.abs(Math.sin(radians)))/2
         const entry=entries.get(sprite.getData('collectibleId') as string)
@@ -157,7 +160,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         dragPointer=null
         const id=sprite.getData('collectibleId') as string,entry=entries.get(id)
         dragging.delete(id);sprite.setDepth(entry?inhabitantDepth(entry.motion.item):0);this.input.setDefaultCursor('pointer')
-        if(!entry)return
+        if(!entry||!draggable(entry.motion.item))return
         const size=Number(sprite.getData('logicalSize')??sprite.displayWidth)
         const space=itemSpace(entry.motion.item)
         const position=entry.motion.place(sprite.x-space.offset-size/2,sprite.y-size/2,clock,space.width,worldHeight(),reduced)
@@ -203,11 +206,13 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         if(sheet)this.registerSheet(key,mythicSheetColumns(path))
         const current = entries.get(item.id)
         if (current) {
+          if(current.sprite.input)current.sprite.input.cursor=draggable(item)?'grab':'pointer'
+          if(item.placement_locked&&selectedId===item.id)selectedId=null
           if(!dragging.has(item.id))current.sprite.setDepth(inhabitantDepth(item))
           this.setMythicGlow(current.sprite,item.species.rarity)
           if(current.sprite.input?.draggable!==draggable(item))this.input.setDraggable(current.sprite,draggable(item))
           if(movementSettings(current.motion.item.species).type!==movementSettings(item.species).type){
-            this.input.setHitArea(current.sprite,{pixelPerfect:movementSettings(item.species).type!=='fixed',alphaTolerance:32,cursor:'grab'})
+            this.input.setHitArea(current.sprite,{pixelPerfect:movementSettings(item.species).type!=='fixed',alphaTolerance:32,cursor:draggable(item)?'grab':'pointer'})
             if(current.sprite.input?.draggable!==draggable(item))this.input.setDraggable(current.sprite,draggable(item))
           }
           current.motion.setItem(motionItem(item),clock,itemSpace(item).width,worldHeight(),reduced); continue
@@ -218,7 +223,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
         sprite.setDepth(inhabitantDepth(item))
         // Fixed inhabitants must remain easy to grab, including transparent
         // gaps in a small sponge or other stationary species.
-        sprite.setInteractive({pixelPerfect:movementSettings(item.species).type!=='fixed',alphaTolerance:32,cursor:'grab'})
+        sprite.setInteractive({pixelPerfect:movementSettings(item.species).type!=='fixed',alphaTolerance:32,cursor:draggable(item)?'grab':'pointer'})
         this.input.setDraggable(sprite,draggable(item))
         entries.set(item.id, { motion: new InhabitantMotion(motionItem(item), clock,spawns.get(item.id)), sprite, path, sheet, emission:hasCrimsonEmission(item.species.id)?new CrimsonEmissionRenderer(this):undefined, spirits:hasHalloweenSpirits(item.species.id)?new HalloweenSpiritRenderer(this):undefined })
       }
@@ -242,7 +247,7 @@ export function createTankRenderer(parent: HTMLElement, initial: OwnedCollectibl
     registerSheet(key:string,columns=2){const texture=this.textures.get(key);if(texture.has('swim-0'))return;const source=texture.getSourceImage() as HTMLImageElement;const w=source.width/columns,h=source.height/2;for(let f=0;f<columns*2;f++)texture.add(`swim-${f}`,0,(f%columns)*w,Math.floor(f/columns)*h,w,h)}
     selectItem(id:string){
       const entry=entries.get(id)
-      if(!entry||entry.motion.item.interaction_locked)return
+      if(!entry||entry.motion.item.interaction_locked||entry.motion.item.placement_locked)return
       selectedId=id
       const space=itemSpace(entry.motion.item),g=decorationGeometry(entry.motion.item,space.width,worldHeight())
       const x=g.w?(entry.sprite.x-space.offset-g.size/2-g.margin)/g.w:.5,y=g.h?(entry.sprite.y-g.size/2-g.margin)/g.h:.5

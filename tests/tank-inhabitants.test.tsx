@@ -8,7 +8,7 @@ import {Dialog,DialogContent,DialogTitle} from '@/components/ui/dialog'
 import {fireEvent} from '@testing-library/react'
 import {AquariumBackdrop} from '@/features/aquarium/aquarium-backdrop'
 
-const mock=vi.hoisted(()=>({setItems:vi.fn(),setView:vi.fn(),resize:vi.fn(),setReduced:vi.fn(),setVisible:vi.fn(),destroy:vi.fn(),create:vi.fn()}))
+const mock=vi.hoisted(()=>({setItems:vi.fn(),setView:vi.fn(),setZoom:vi.fn(),cancelGesture:vi.fn(),resize:vi.fn(),setReduced:vi.fn(),setVisible:vi.fn(),destroy:vi.fn(),create:vi.fn()}))
 vi.mock('../src/features/aquarium/phaser-tank',()=>({createTankRenderer:mock.create}))
 beforeEach(()=>{
  vi.clearAllMocks();mock.create.mockImplementation((...args)=>{args[10]?.(true);return mock})
@@ -56,7 +56,7 @@ it('creates one renderer and updates the collection without restarting it, then 
 })
 
 it('zooms the background and renderer together while leaving accessible controls outside',async()=>{
- const view=render(<TankInhabitants items={[]} scenery={<img data-testid="tank-map" alt="배경" src="/map.png"/>}/>)
+ const view=render(<TankInhabitants items={[]} world={{columns:3,overview:true,initialZoom:1,initialView:1,minZoom:1,maxZoom:2}} scenery={<img data-testid="tank-map" alt="배경" src="/map.png"/>}/>)
  await waitFor(()=>expect(mock.create).toHaveBeenCalledOnce())
  const viewport=view.container.firstElementChild as HTMLElement
  Object.defineProperties(viewport,{clientWidth:{value:300},clientHeight:{value:500}})
@@ -71,7 +71,8 @@ it('zooms the background and renderer together while leaving accessible controls
  const canvasParent=mock.create.mock.calls[0][0] as HTMLElement
  expect(scene.contains(screen.getByTestId('tank-map'))).toBe(true)
  expect(scene.contains(canvasParent)).toBe(true)
- expect(scene.style.transform).toBe('translate(-150px,-200px) scale(2)')
+ expect(scene.style.transform).toBe('')
+ expect(mock.setZoom).toHaveBeenCalledWith(2,expect.any(Number),undefined)
  expect(scene.contains(view.container.querySelector('ul'))).toBe(false)
  expect(canvasParent.style.transform).toBe('')
 })

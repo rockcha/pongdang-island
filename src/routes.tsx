@@ -1,3 +1,4 @@
+import {DecorationShopPage} from '@/features/gold/decoration-shop-page'
 import {lazy} from 'react'
 import { OperatorGuard } from '@/components/operator-guard'
 import { Navigate, Route, Routes } from 'react-router'
@@ -102,6 +103,7 @@ export function AppRoutes() {
             <Route path="shipyard" element={<PortPage shipyard />} />
             <Route path="port" element={<PortPage />} />
             <Route path="shop" element={<ShopPage key="fishing-shop" />} />
+            <Route path="decoration-shop" element={<DecorationShopPage />} />
             <Route path="item-shop" element={<ShopPage key="item-shop" items />} />
             <Route path="savings" element={<SavingsPage />} />
             <Route path="warehouse" element={<WarehousePage />} />

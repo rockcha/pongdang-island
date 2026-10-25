@@ -12,6 +12,14 @@ vi.mock('@/features/expeditions/use-expedition-status',()=>({useExpeditionStatus
 beforeEach(()=>{mock.relic=null;mock.newContent={board:false,exchange:false,suggestions:false,bugs:false};mock.status=null;mock.harbor=null;mock.operator=false;mock.savings=null})
 function View(){const {pathname}=useLocation();return <><HeaderPlaceNavigation/><output data-testid="path">{pathname}</output></>}
 afterEach(cleanup)
+it('lists the separate decoration shop under the marketplace',async()=>{
+ render(<MemoryRouter><View/></MemoryRouter>)
+ fireEvent.click(screen.getByRole('button',{name:'장터'}))
+ const entry=within(await screen.findByRole('menu')).getByRole('menuitem',{name:'어항 장식물 상점'})
+ expect(entry.getAttribute('href')).toBe('/decoration-shop')
+ fireEvent.click(entry)
+ await waitFor(()=>expect(screen.getByTestId('path').textContent).toBe('/decoration-shop'))
+})
 it('shows equipped relic artwork and its name beside the relic menu entry',async()=>{
  mock.relic={name:'조개 모래시계',thumbnail_path:'relics/rare/shell-hourglass_thumbnail.png'}
  render(<MemoryRouter><View/></MemoryRouter>)

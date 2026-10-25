@@ -64,11 +64,10 @@ export function AquariumBackgroundDialog({state,selectedId,gold,busy,loading,err
    <DialogHeader><DialogTitle className="flex items-center gap-2"><Image aria-hidden="true" className="size-8 text-primary"/>배경 꾸미기</DialogTitle><DialogDescription>배경을 골라 지금 어항에 적용해보세요.</DialogDescription></DialogHeader>
    {actionError&&<p role="alert" className="text-sm text-destructive">{actionError}</p>}
    <Tabs value={tab} onValueChange={value=>setTab(String(value))} className="flex min-h-0 flex-1 flex-col">
-    <TabsList aria-label="배경 목록"><TabsTrigger value="owned" className="min-h-14 gap-2"><Image className="size-8"/>내 배경 <span className="text-xs opacity-60">{ownedItems.length}</span></TabsTrigger><TabsTrigger value="decorations" className="min-h-14">장식물</TabsTrigger><TabsTrigger value="shop" className="min-h-14 gap-2"><ShoppingBag className="size-8"/>구매</TabsTrigger></TabsList>
-    {tab!=='decorations'&&<div className="shrink-0 space-y-2 pt-3">
+    <TabsList aria-label="배경 목록"><TabsTrigger value="owned" className="min-h-14 gap-2"><Image className="size-8"/>내 배경 <span className="text-xs opacity-60">{ownedItems.length}</span></TabsTrigger><TabsTrigger value="shop" className="min-h-14 gap-2"><ShoppingBag className="size-8"/>구매</TabsTrigger></TabsList>
+    <div className="shrink-0 space-y-2 pt-3">
      <div role="group" aria-label="테마 등급" className="grid grid-cols-4 gap-1.5">{(['all','simple','mood','special'] as const).map(value=><button key={value} type="button" aria-pressed={tier===value} onClick={()=>setTier(value)} className={`min-h-11 rounded-lg px-1 text-xs outline-none focus-visible:ring-2 focus-visible:ring-ring ${tier===value?'bg-secondary font-semibold text-primary':'bg-muted/40 text-muted-foreground'}`}>{value==='all'?'전체':themeTiers[value].label} <span className="tabular-nums opacity-70">{currentItems.filter(item=>value==='all'||(item.tier??'simple')===value).length}</span></button>)}</div>
-    </div>}
-    <TabsContent value="decorations" className="py-12 text-center"><p className="text-sm">어항 장식물 상점을 준비하고 있어요.</p></TabsContent>
+    </div>
     <TabsContent value="owned" className="mt-3 min-h-0 flex-1 overflow-y-auto overscroll-contain">{cards(ownedItems,true)}</TabsContent>
     <TabsContent value="shop" className="min-h-0 flex-1 overflow-y-auto overscroll-contain"><div className="mb-3 flex items-center justify-between text-xs"><span className="text-muted-foreground">새로운 분위기를 만나보세요.</span><span className="flex items-center gap-1 tabular-nums"><GoldIcon className="size-4"/>{loading?'…':error?'—':gold.toLocaleString('ko-KR')}</span></div>{cards(shopItems,false)}</TabsContent>
    </Tabs>

@@ -92,6 +92,7 @@ export const placeBanners: Record<
     description: '낚싯대와 미끼가 가지런히 보관된 따뜻한 해변 창고 내부',
     subtitle: '다음 항해를 위한 작은 준비',
   },
+  '/decoration-shop': {title:'어항 장식물 상점',image:'item-shop',description:'어항을 꾸밀 소품을 준비하는 바닷가 장식물 상점',subtitle:'나만의 바다를 꾸밀 소품을 준비하고 있어요'},
   '/item-shop': {
     title: '아이템 상점',
     image: 'item-shop',

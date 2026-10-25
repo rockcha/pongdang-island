@@ -3,14 +3,17 @@ import {Fish,Hand,MousePointer2} from 'lucide-react'
 import {useAuth} from '@/components/auth-provider'
 import {Dialog,DialogContent,DialogDescription,DialogTitle} from '@/components/ui/dialog'
 import {Button} from '@/components/ui/button'
+import {useFirstFishingCompleted} from '@/features/onboarding/first-fishing-gate'
 
 export function fishingGuideDay(date:Date){return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(date)}
 export function FirstDayFishingGuide(){
+ const tutorialCompleted=useFirstFishingCompleted()
  const {session}=useAuth()
  const id=session?.user.id,created=session?.user.created_at
  const [open,setOpen]=useState(false),[hide,setHide]=useState(false)
  const key=`pongdang:fishing-guide-hidden:${id}`
  useEffect(()=>{
+  if(tutorialCompleted){setOpen(false);return}
   const date=new Date(created??'')
   if(!id||!Number.isFinite(date.getTime())||fishingGuideDay(date)!==fishingGuideDay(new Date())){setOpen(false);return}
   try{if(localStorage.getItem(key)===fishingGuideDay(new Date()))return}catch{}
@@ -18,7 +21,7 @@ export function FirstDayFishingGuide(){
   const tomorrow=new Date();tomorrow.setTime(Date.parse(fishingGuideDay(tomorrow)+'T00:00:00+09:00')+86400000)
   const timer=setTimeout(()=>setOpen(false),Math.max(0,tomorrow.getTime()-Date.now()))
   return()=>clearTimeout(timer)
- },[id,created,key])
+ },[id,created,key,tutorialCompleted])
  function close(){if(hide){try{localStorage.setItem(key,fishingGuideDay(new Date()))}catch{}}setOpen(false)}
  return <Dialog open={open} disablePointerDismissal onOpenChange={(_open,details)=>details.cancel()}><DialogContent showCloseButton={false} className="flex max-h-[85dvh] flex-col gap-0 overflow-hidden rounded-3xl p-0 sm:max-w-sm">
   <header className="shrink-0 bg-secondary/50 px-5 py-4"><DialogTitle className="text-base">첫 낚시, 이렇게 해요</DialogTitle><DialogDescription className="mt-1 text-xs">누르고, 떼고! 가운데를 지키면 돼요.</DialogDescription></header>

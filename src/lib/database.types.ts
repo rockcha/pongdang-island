@@ -165,6 +165,7 @@ export type Database = {
       remove_friend: { Args: { p_request_id: string }; Returns: undefined }
       set_player_avatar: { Args: { p_path: string | null }; Returns: Profile }
       sync_player_profile: { Args: Record<string, never>; Returns: Profile }
+      first_fishing_tutorial:{Args:{p_action?:import('@/features/onboarding/api').TutorialAction};Returns:import('@/features/onboarding/api').FirstFishingState}
       find_player_by_code: { Args: { p_code: string }; Returns: Profile[] }
       send_friend_request: { Args: { p_code: string }; Returns: string }
       player_directory: { Args: {p_offset?:number;p_limit?:number}; Returns: import('@/features/friends/api').PlayerDirectory }

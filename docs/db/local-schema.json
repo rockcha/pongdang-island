@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "c0b1e8914292b0889fd1f6ff5bad6a6482edc3f6834656b0bc4b1e80625a68b1",
+  "migrationHash": "030f1397f7fb04b2d264c968e6ac258d163c4404669dbbad6431da59bd44bd46",
   "structure": {
     "enums": [
       {
@@ -139,6 +139,18 @@
       {
         "rls": true,
         "name": "feedback_suggestion_votes",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "first_fishing_settings",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "first_fishing_tutorials",
         "schema": "app_private",
         "force_rls": false
       },
@@ -325,6 +337,12 @@
       {
         "rls": true,
         "name": "shadow_game_rounds",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "starter_bait_receipts",
         "schema": "app_private",
         "force_rls": false
       },
@@ -1437,6 +1455,96 @@
         "default": null,
         "identity": "",
         "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "boolean",
+        "table": "first_fishing_settings",
+        "schema": "app_private",
+        "default": "true",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "eligible_from",
+        "type": "timestamp with time zone",
+        "table": "first_fishing_settings",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "step",
+        "type": "text",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "default": "'ready'::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "collectible_id",
+        "type": "uuid",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "ready_at",
+        "type": "timestamp with time zone",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "caught_at",
+        "type": "timestamp with time zone",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "completed_at",
+        "type": "timestamp with time zone",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
         "generated": ""
       },
       {
@@ -3507,6 +3615,36 @@
         "default": null,
         "identity": "",
         "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "starter_bait_receipts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "quantity",
+        "type": "smallint",
+        "table": "starter_bait_receipts",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "starter_bait_receipts",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
         "generated": ""
       },
       {
@@ -8662,6 +8800,24 @@
         "definition": "CREATE INDEX feedback_suggestion_votes_user_idx ON app_private.feedback_suggestion_votes USING btree (user_id)"
       },
       {
+        "name": "first_fishing_settings_pkey",
+        "table": "first_fishing_settings",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX first_fishing_settings_pkey ON app_private.first_fishing_settings USING btree (id)"
+      },
+      {
+        "name": "first_fishing_tutorials_collectible_id_key",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX first_fishing_tutorials_collectible_id_key ON app_private.first_fishing_tutorials USING btree (collectible_id)"
+      },
+      {
+        "name": "first_fishing_tutorials_pkey",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX first_fishing_tutorials_pkey ON app_private.first_fishing_tutorials USING btree (user_id)"
+      },
+      {
         "name": "fishing_bait_balance_profiles_pkey",
         "table": "fishing_bait_balance_profiles",
         "schema": "app_private",
@@ -9008,6 +9164,12 @@
         "table": "shadow_game_rounds",
         "schema": "app_private",
         "definition": "CREATE UNIQUE INDEX shadow_game_rounds_run_id_number_key ON app_private.shadow_game_rounds USING btree (run_id, number)"
+      },
+      {
+        "name": "starter_bait_receipts_pkey",
+        "table": "starter_bait_receipts",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX starter_bait_receipts_pkey ON app_private.starter_bait_receipts USING btree (user_id)"
       },
       {
         "name": "title_acquisition_evidence_pkey",
@@ -11428,6 +11590,20 @@
         "definition": "CREATE TRIGGER capture_title_acquisition AFTER INSERT ON public.player_collectibles FOR EACH ROW EXECUTE FUNCTION app_private.capture_title_acquisition()"
       },
       {
+        "name": "complete_first_fishing_placement",
+        "table": "player_collectibles",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER complete_first_fishing_placement AFTER UPDATE OF tank_id ON public.player_collectibles FOR EACH ROW EXECUTE FUNCTION app_private.complete_first_fishing_placement()"
+      },
+      {
+        "name": "protect_first_fishing_catch",
+        "table": "player_collectibles",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER protect_first_fishing_catch BEFORE DELETE OR UPDATE ON public.player_collectibles FOR EACH ROW EXECUTE FUNCTION app_private.protect_first_fishing_catch()"
+      },
+      {
         "name": "rare_title_tank",
         "table": "player_collectibles",
         "schema": "public",
@@ -11440,6 +11616,13 @@
         "schema": "public",
         "enabled": "O",
         "definition": "CREATE TRIGGER title_tank AFTER INSERT OR UPDATE OF tank_id ON public.player_collectibles FOR EACH ROW EXECUTE FUNCTION app_private.title_tank_event()"
+      },
+      {
+        "name": "enroll_first_fishing_tutorial",
+        "table": "player_profiles",
+        "schema": "public",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER enroll_first_fishing_tutorial AFTER INSERT ON public.player_profiles FOR EACH ROW EXECUTE FUNCTION app_private.enroll_first_fishing_tutorial()"
       },
       {
         "name": "player_welcome",
@@ -11982,6 +12165,16 @@
         "securityDefiner": true
       },
       {
+        "name": "complete_first_fishing_placement",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.complete_first_fishing_placement()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if new.tank_id is not null and new.sold_at is null and new.escrow_gift_id is null and new.consumed_at is null then\n  update app_private.first_fishing_tutorials set step='completed',completed_at=clock_timestamp()\n  where collectible_id=new.id and user_id=new.user_id and step='caught';\n end if;\n return new;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "configure_web_push_worker",
         "config": [
           "search_path=\"\""
@@ -12119,6 +12312,16 @@
         "schema": "app_private",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.enqueue_web_push()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare c text; path text; source uuid; started timestamptz;\nbegin\n if new.category<>'general' or new.kind<>'system' then return new;end if;\n if new.production_site_id is not null then c:='production';path:='/production';source:=new.production_site_id;started:=new.production_started_at;\n elsif new.bait_production_site_id is not null then c:='bait-production';path:='/bait-production';source:=new.bait_production_site_id;started:=new.bait_production_started_at;\n elsif new.expedition_id is not null then c:='expedition';path:='/expeditions';source:=new.expedition_id;\n elsif new.harbor_voyage_id is not null then c:='harbor';path:='/port';source:=new.harbor_voyage_id;\n else return new;end if;\n insert into app_private.push_deliveries(subscription_id,notification_id,category,source_id,source_started_at,payload)\n select s.id,new.id,c,source,started,jsonb_build_object('userId',new.recipient_id,'title',new.title,'body',new.body,'url',path,'tag','notice:'||new.id)\n from app_private.push_subscriptions s where s.user_id=new.recipient_id and c=any(s.categories)\n on conflict(subscription_id,notification_id) do nothing;\n return new;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "enroll_first_fishing_tutorial",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.enroll_first_fishing_tutorial()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if exists(select 1 from auth.users u cross join app_private.first_fishing_settings s\n  where u.id=new.id and s.id and u.created_at>=s.eligible_from) then\n  insert into app_private.first_fishing_tutorials(user_id) values(new.id) on conflict do nothing;\n end if;\n return new;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -12419,6 +12622,16 @@
         "schema": "app_private",
         "arguments": "p_id bigint, p_lease_token uuid, p_status integer",
         "definition": "CREATE OR REPLACE FUNCTION app_private.finish_web_push(p_id bigint, p_lease_token uuid, p_status integer)\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare q app_private.push_deliveries;\nbegin\n select * into q from app_private.push_deliveries where id=p_id and lease_token=p_lease_token and status='sending' for update;\n if not found then return;end if;\n if p_status in (404,410) then delete from app_private.push_subscriptions where id=q.subscription_id;return;end if;\n update app_private.push_deliveries set last_status=p_status,lease_token=null,locked_until=null,\n  status=case when p_status between 200 and 299 then 'sent' when p_status in (400,401,403,413) or attempts>=5 then 'failed' else 'pending' end,\n  finished_at=case when p_status between 200 and 299 or p_status in (400,401,403,413) or attempts>=5 then clock_timestamp() else null end,\n  available_at=clock_timestamp()+make_interval(secs=>least(3600,30*power(2,attempts)::integer)) where id=q.id;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "first_fishing_tutorial",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.first_fishing_tutorial(p_action text DEFAULT 'state'::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();t app_private.first_fishing_tutorials;v_item uuid;v_aquarium jsonb;v_tank uuid;v_species text:='pongdang-pufferfish';\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in('state','start','catch','place') then raise exception 'INVALID_TUTORIAL_ACTION';end if;\n perform app_private.sync_player_profile();\n if p_action in('start','catch') then perform pg_advisory_xact_lock(hashtextextended('first-fishing:'||u::text,0));end if;\n select * into t from app_private.first_fishing_tutorials where user_id=u;\n if not found then\n  if p_action<>'state' then raise exception 'TUTORIAL_NOT_REQUIRED';end if;\n  return jsonb_build_object('required',false,'step','inactive','species',null,'item',null,'tank',null,'aquarium',null,'readyAt',null,'serverNow',clock_timestamp());\n end if;\n if p_action='start' and t.step='ready' then\n  update app_private.first_fishing_tutorials set step='fishing',started_at=clock_timestamp(),ready_at=clock_timestamp()+interval '2 seconds' where user_id=u returning * into t;\n elsif p_action='catch' and t.step not in('caught','completed') then\n  if t.step<>'fishing' then raise exception 'TUTORIAL_CAST_REQUIRED';end if;\n  if clock_timestamp()<t.ready_at then raise exception 'TUTORIAL_TOO_EARLY';end if;\n  insert into public.player_collectibles(user_id,species_id) values(u,v_species) returning id into v_item;\n  insert into public.player_discoveries(user_id,species_id) values(u,v_species) on conflict do nothing;\n  update app_private.first_fishing_tutorials set step='caught',collectible_id=v_item,caught_at=clock_timestamp() where user_id=u returning * into t;\n elsif p_action='place' and t.step<>'completed' then\n  if t.step<>'caught' then raise exception 'TUTORIAL_CATCH_REQUIRED';end if;\n  v_aquarium:=app_private.aquarium_state();\n  select id into v_tank from public.aquarium_tanks where user_id=u order by is_default desc,created_at,id limit 1;\n  perform app_private.move_collectibles(array[t.collectible_id],v_tank);\n  select * into t from app_private.first_fishing_tutorials where user_id=u;\n  if t.step<>'completed' then raise exception 'TUTORIAL_PLACEMENT_REQUIRED';end if;\n end if;\n if t.collectible_id is not null then\n  v_species:=coalesce((select species_id from public.player_collectibles where id=t.collectible_id and user_id=u),v_species);\n end if;\n v_aquarium:=app_private.aquarium_state();\n select id into v_tank from public.aquarium_tanks where user_id=u order by is_default desc,created_at,id limit 1;\n return jsonb_build_object('required',t.completed_at is null,'step',t.step,\n  'species',app_private.species_payload(v_species,null),\n  'item',(select to_jsonb(c)||jsonb_build_object('species',app_private.species_payload(c.species_id,c.map_region_id)) from public.player_collectibles c where id=t.collectible_id and user_id=u),\n  'tank',(select to_jsonb(a) from public.aquarium_tanks a where id=v_tank),\n  'aquarium',case when t.step='completed' then v_aquarium else null end,\n  'readyAt',t.ready_at,'serverNow',clock_timestamp());\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -13332,6 +13545,16 @@
         "securityDefiner": false
       },
       {
+        "name": "protect_first_fishing_catch",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.protect_first_fishing_catch()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if exists(select 1 from app_private.first_fishing_tutorials t\n  where t.collectible_id=old.id and t.completed_at is null) then\n  if tg_op='DELETE' then\n   -- Permit Auth's account-deletion cascade without permitting reward recycling.\n   if exists(select 1 from auth.users where id=old.user_id) then raise exception 'FIRST_FRIEND_PLACE_REQUIRED';end if;\n   return old;\n  end if;\n  if new.id is distinct from old.id or new.user_id is distinct from old.user_id\n   or new.species_id is distinct from old.species_id or new.sold_at is not null\n   or new.consumed_at is not null or new.escrow_gift_id is not null\n   then raise exception 'FIRST_FRIEND_PLACE_REQUIRED';end if;\n  if new.tank_id is not null and not exists(select 1 from public.aquarium_tanks where id=new.tank_id and user_id=old.user_id)\n   then raise exception 'TANK_NOT_FOUND';end if;\n end if;\n if tg_op='DELETE' then return old;end if;\n return new;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "publish_expedition_showcase",
         "config": [
           "search_path=\"\""
@@ -13638,7 +13861,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_user_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.send_welcome_gift(p_user_id uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare gift uuid; bait_gift uuid; player_name text;\nbegin\n -- Do not turn an uncorrected direct credit into a second payment.\n if exists(select 1 from public.gold_transactions where user_id=p_user_id and item_id='welcome:500')\n and not exists(select 1 from public.gold_transactions where user_id=p_user_id and item_id='welcome:500:reversal' and delta=-500)\n then raise exception 'WELCOME_DIRECT_CREDIT_REQUIRES_REVERSAL';end if;\n select nickname into strict player_name from public.player_profiles where id=p_user_id;\n insert into public.collectible_gifts(sender_name,recipient_id,recipient_name,operation_id,collectible_ids,species,quantity,message,source,reward_kind,reward_id)\n values('퐁당섬 운영자',p_user_id,player_name,gen_random_uuid(),'{}'::uuid[],\n jsonb_build_object('id','welcome-gold','name','모험 응원 골드'),500,\n '첫 모험을 응원하는 500골드 선물이에요. 원하실 때 받아주세요!','system','gold','welcome')\n on conflict do nothing returning id into gift;\n if gift is not null then\n  insert into public.notifications(recipient_id,category,kind,title,body,gift_id)\n  values(p_user_id,'gift','gift_received','운영자의 선물이 도착했어요!','500골드 선물이에요. 선물함에서 원하실 때 받아주세요.',gift);\n end if;\n insert into public.collectible_gifts(sender_name,recipient_id,recipient_name,operation_id,collectible_ids,species,quantity,message,source,reward_kind,reward_id)\n select '퐁당섬 운영자',p_user_id,player_name,gen_random_uuid(),'{}'::uuid[],\n jsonb_build_object('id','welcome-bait','name',b.name,'thumbnail_path',b.image_path),5,\n '첫 낚시를 위한 지렁이 미끼 5개를 준비했어요. 선물함에서 받아주세요!','system','bait','bait'\n from public.fishing_baits b where b.id='bait'\n on conflict do nothing returning id into bait_gift;\n if bait_gift is not null then\n  insert into public.notifications(recipient_id,category,kind,title,body,gift_id)\n  values(p_user_id,'gift','gift_received','첫 낚시를 위한 미끼가 도착했어요!','환영 미끼 5개를 선물함에서 받아주세요.',bait_gift);\n end if;\n return gift;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.send_welcome_gift(p_user_id uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare gift uuid; bait_receipt uuid; player_name text;\nbegin\n if exists(select 1 from public.gold_transactions where user_id=p_user_id and item_id='welcome:500')\n and not exists(select 1 from public.gold_transactions where user_id=p_user_id and item_id='welcome:500:reversal' and delta=-500)\n then raise exception 'WELCOME_DIRECT_CREDIT_REQUIRES_REVERSAL';end if;\n select nickname into strict player_name from public.player_profiles where id=p_user_id;\n insert into public.collectible_gifts(sender_name,recipient_id,recipient_name,operation_id,collectible_ids,species,quantity,message,source,reward_kind,reward_id)\n values('퐁당섬 운영자',p_user_id,player_name,gen_random_uuid(),'{}'::uuid[],\n jsonb_build_object('id','welcome-gold','name','모험 응원 골드'),500,\n '첫 모험을 응원하는 500골드 선물이에요. 원하실 때 받아주세요!','system','gold','welcome')\n on conflict do nothing returning id into gift;\n if gift is not null then\n  insert into public.notifications(recipient_id,category,kind,title,body,gift_id)\n  values(p_user_id,'gift','gift_received','운영자의 선물이 도착했어요!','500골드 선물이에요. 선물함에서 원하실 때 받아주세요.',gift);\n end if;\n insert into app_private.starter_bait_receipts(user_id,quantity) values(p_user_id,10)\n on conflict do nothing returning user_id into bait_receipt;\n if bait_receipt is not null then\n  insert into public.player_wallets(user_id,inventory) values(p_user_id,jsonb_build_object('bait',10))\n  on conflict(user_id) do update set\n   inventory=jsonb_set(player_wallets.inventory,'{bait}',to_jsonb(coalesce((player_wallets.inventory->>'bait')::integer,0)+10)),\n   updated_at=clock_timestamp();\n end if;\n return gift;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14639,6 +14862,16 @@
         "schema": "public",
         "arguments": "p_id bigint, p_lease_token uuid, p_status integer",
         "definition": "CREATE OR REPLACE FUNCTION public.finish_web_push(p_id bigint, p_lease_token uuid, p_status integer)\n RETURNS void\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.finish_web_push(p_id,p_lease_token,p_status)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "first_fishing_tutorial",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text",
+        "definition": "CREATE OR REPLACE FUNCTION public.first_fishing_tutorial(p_action text DEFAULT 'state'::text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.first_fishing_tutorial(p_action)$function$\n",
         "securityDefiner": false
       },
       {
@@ -16198,6 +16431,72 @@
         "table": "feedback_suggestion_votes",
         "schema": "app_private",
         "definition": "NOT NULL value"
+      },
+      {
+        "name": "first_fishing_settings_eligible_from_not_null",
+        "table": "first_fishing_settings",
+        "schema": "app_private",
+        "definition": "NOT NULL eligible_from"
+      },
+      {
+        "name": "first_fishing_settings_id_check",
+        "table": "first_fishing_settings",
+        "schema": "app_private",
+        "definition": "CHECK (id)"
+      },
+      {
+        "name": "first_fishing_settings_id_not_null",
+        "table": "first_fishing_settings",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "first_fishing_settings_pkey",
+        "table": "first_fishing_settings",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "first_fishing_tutorials_check",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "definition": "CHECK ((((step = 'ready'::text) AND (collectible_id IS NULL) AND (started_at IS NULL) AND (ready_at IS NULL) AND (caught_at IS NULL) AND (completed_at IS NULL)) OR ((step = 'fishing'::text) AND (collectible_id IS NULL) AND (started_at IS NOT NULL) AND (ready_at IS NOT NULL) AND (caught_at IS NULL) AND (completed_at IS NULL)) OR ((step = 'caught'::text) AND (collectible_id IS NOT NULL) AND (caught_at IS NOT NULL) AND (completed_at IS NULL)) OR ((step = 'completed'::text) AND (collectible_id IS NOT NULL) AND (caught_at IS NOT NULL) AND (completed_at IS NOT NULL))))"
+      },
+      {
+        "name": "first_fishing_tutorials_collectible_id_key",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "definition": "UNIQUE (collectible_id)"
+      },
+      {
+        "name": "first_fishing_tutorials_pkey",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "first_fishing_tutorials_step_check",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "definition": "CHECK ((step = ANY (ARRAY['ready'::text, 'fishing'::text, 'caught'::text, 'completed'::text])))"
+      },
+      {
+        "name": "first_fishing_tutorials_step_not_null",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "definition": "NOT NULL step"
+      },
+      {
+        "name": "first_fishing_tutorials_user_id_fkey",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "first_fishing_tutorials_user_id_not_null",
+        "table": "first_fishing_tutorials",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
       },
       {
         "name": "bait_balance_grade_total",
@@ -18136,6 +18435,42 @@
         "table": "shadow_game_rounds",
         "schema": "app_private",
         "definition": "NOT NULL target_name"
+      },
+      {
+        "name": "starter_bait_receipts_created_at_not_null",
+        "table": "starter_bait_receipts",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "starter_bait_receipts_pkey",
+        "table": "starter_bait_receipts",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "starter_bait_receipts_quantity_check",
+        "table": "starter_bait_receipts",
+        "schema": "app_private",
+        "definition": "CHECK ((quantity = ANY (ARRAY[0, 10])))"
+      },
+      {
+        "name": "starter_bait_receipts_quantity_not_null",
+        "table": "starter_bait_receipts",
+        "schema": "app_private",
+        "definition": "NOT NULL quantity"
+      },
+      {
+        "name": "starter_bait_receipts_user_id_fkey",
+        "table": "starter_bait_receipts",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "starter_bait_receipts_user_id_not_null",
+        "table": "starter_bait_receipts",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
       },
       {
         "name": "title_acquisition_evidence_collectible_id_not_null",
@@ -29948,6 +30283,27 @@
         "arguments": ""
       },
       {
+        "name": "complete_first_fishing_placement",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "complete_first_fishing_placement",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "complete_first_fishing_placement",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "configure_web_push_worker",
         "role": "anon",
         "schema": "app_private",
@@ -30236,6 +30592,27 @@
       },
       {
         "name": "enqueue_web_push",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "enroll_first_fishing_tutorial",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "enroll_first_fishing_tutorial",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "enroll_first_fishing_tutorial",
         "role": "service_role",
         "schema": "app_private",
         "execute": false,
@@ -30870,6 +31247,27 @@
         "schema": "app_private",
         "execute": true,
         "arguments": "p_id bigint, p_lease_token uuid, p_status integer"
+      },
+      {
+        "name": "first_fishing_tutorial",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text"
+      },
+      {
+        "name": "first_fishing_tutorial",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text"
+      },
+      {
+        "name": "first_fishing_tutorial",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text"
       },
       {
         "name": "fishing_bait_balance_at",
@@ -32781,6 +33179,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_profile jsonb"
+      },
+      {
+        "name": "protect_first_fishing_catch",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "protect_first_fishing_catch",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "protect_first_fishing_catch",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "publish_expedition_showcase",
@@ -35532,6 +35951,27 @@
         "schema": "public",
         "execute": true,
         "arguments": "p_id bigint, p_lease_token uuid, p_status integer"
+      },
+      {
+        "name": "first_fishing_tutorial",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text"
+      },
+      {
+        "name": "first_fishing_tutorial",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text"
+      },
+      {
+        "name": "first_fishing_tutorial",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text"
       },
       {
         "name": "fishing_rod_state",

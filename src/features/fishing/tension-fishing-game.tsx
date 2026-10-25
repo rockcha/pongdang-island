@@ -21,7 +21,7 @@ import { fishBehavior, fishForce, fishStrength, newTensionGame, stepTensionGame,
 import {readBiteConfirmation} from './bite-confirmation-preference'
 import {fishingSplash,useFishingAudio} from './fishing-audio'
 
-export function TensionFishingGame({onCaught,active=true,paused=false,regionId='pongdang',regionName,toolbarTarget,quiet=false,castId,challenge,outline,onFailed,practice=false,start,baitImage,onAdvanceWait,waitReductionSeconds=0,expiresAt,backgroundMusic=false,serverNow,onStartFight}:{serverNow?:string;onStartFight?:()=>Promise<boolean>;backgroundMusic?:boolean;expiresAt?:string;onAdvanceWait?:()=>void|Promise<void>;waitReductionSeconds?:number;baitImage?:string;regionName?:string;toolbarTarget?:HTMLElement|null;start?:FishingStart;practice?:boolean;challenge?:TensionOptions;outline?:Species|null;onFailed?:(reason:string)=>void;quiet?:boolean;castId?:string;regionId?:string;onCaught:()=>void;onCancel:()=>void;active?:boolean;paused?:boolean}){
+export function TensionFishingGame({onCaught,active=true,paused=false,regionId='pongdang',regionName,toolbarTarget,quiet=false,guided=false,castId,challenge,outline,onFailed,practice=false,start,baitImage,onAdvanceWait,waitReductionSeconds=0,expiresAt,backgroundMusic=false,serverNow,onStartFight}:{serverNow?:string;onStartFight?:()=>Promise<boolean>;backgroundMusic?:boolean;expiresAt?:string;onAdvanceWait?:()=>void|Promise<void>;waitReductionSeconds?:number;baitImage?:string;regionName?:string;toolbarTarget?:HTMLElement|null;start?:FishingStart;practice?:boolean;challenge?:TensionOptions;outline?:Species|null;onFailed?:(reason:string)=>void;quiet?:boolean;guided?:boolean;castId?:string;regionId?:string;onCaught:()=>void;onCancel:()=>void;active?:boolean;paused?:boolean}){
  const fishingTools=useFishingTools()
  const {selected}=useRods()
  const rod=fishingRods.find(r=>r.id===selected)??fishingRods[0]
@@ -160,12 +160,12 @@ export function TensionFishingGame({onCaught,active=true,paused=false,regionId='
    {tug>0&&createPortal(<div aria-hidden="true" className="pointer-events-none fixed inset-0 z-40" style={{opacity:tug*.32,background:'radial-gradient(ellipse at center, transparent 52%, #81e6df55 78%, #a6f4ef 100%)',boxShadow:'inset 0 0 42px #a6f4ef55'}}/>,document.body)}
 
 
-   {!toolbarTarget&&<FishingHelp open={helpOpen} onOpenChange={open=>{release();setHelpOpen(open)}}/>}
+   {!guided&&!toolbarTarget&&<FishingHelp open={helpOpen} onOpenChange={open=>{release();setHelpOpen(open)}}/>}
    {backgroundMusic&&fishingTools?.soundTarget&&createPortal(<RegionMusic regionId={regionId}/>,fishingTools.soundTarget)}
    {fishingTools?.rumorTarget&&(!active||waiting&&!plannedFailure)&&!paused&&!helpOpen&&createPortal(<FishingRumorCard iconOnly seed={game.seed} page={Math.floor(game.time/12)} collapsed={rumorCollapsed} onCollapsedChange={setRumorCollapsed}/>,fishingTools.rumorTarget)}
    <div data-fishing-story-controls hidden={fishingTools?.collapsed} style={{display:fishingTools?.collapsed?'none':undefined}} className={fishingTools?'absolute left-14 right-3 top-3 z-10 flex items-start gap-2':'absolute left-3 right-16 top-3 z-10 flex items-start gap-2'}>
     {backgroundMusic&&!fishingTools&&<RegionMusic regionId={regionId}/>}
-    {!fishingTools&&(!active||waiting&&!plannedFailure)&&!paused&&!helpOpen&&<FishingRumorCard seed={game.seed} page={Math.floor(game.time/12)} collapsed={rumorCollapsed} onCollapsedChange={setRumorCollapsed}/>}
+    {!guided&&!fishingTools&&(!active||waiting&&!plannedFailure)&&!paused&&!helpOpen&&<FishingRumorCard seed={game.seed} page={Math.floor(game.time/12)} collapsed={rumorCollapsed} onCollapsedChange={setRumorCollapsed}/>}
    </div>
    {onAdvanceWait&&active&&waiting&&!paused&&!helpOpen&&<Button variant="outline" disabled={advancing} onClick={()=>void advanceWait()} className="absolute left-3 top-16 z-20 min-h-11 gap-2 rounded-full border-white/60 bg-background/95 px-3 text-xs shadow-sm"><TimerReset aria-hidden="true" className="size-4"/>{advancing?'당기는 중…':'대기 10초 당기기'}<span className="text-[9px] text-muted-foreground">테스트</span></Button>}
    {active&&!plannedFailure&&!waiting&&!biteReady&&!lost&&<span role="meter" aria-label="버티는 힘" aria-valuenow={Math.round(game.tension)} aria-valuemin={0} aria-valuemax={100} className="sr-only"/>}

@@ -3,6 +3,8 @@ import { OperatorGuard } from '@/components/operator-guard'
 import { Navigate, Route, Routes } from 'react-router'
 import { AppLayout } from '@/layouts/app-layout'
 import { AuthGuard } from '@/components/auth-guard'
+import {FirstFishingGate} from '@/features/onboarding/first-fishing-gate'
+const FirstFishingPage=lazy(()=>import('@/features/onboarding/first-fishing-page').then(module=>({default:module.FirstFishingPage})))
 
 const MerchantPage=lazy(()=>import('@/features/merchant/merchant-page').then(module=>({default:module.MerchantPage})))
 const HallPage=lazy(()=>import('@/features/hall-of-fame/hall-page').then(module=>({default:module.HallPage})))
@@ -67,6 +69,8 @@ export function AppRoutes() {
         <Route element={<AuthGuard />}>
           <Route path="nickname" element={<NicknamePage />} />
           <Route element={<AuthGuard requireNickname />}>
+          <Route element={<FirstFishingGate/>}>
+            <Route path="first-fishing" element={<FirstFishingPage/>}/>
             <Route index element={<Navigate to="/aquarium" replace />} />
             <Route path="island-news" element={<HomePage />} />
             <Route path="aquarium" element={<AquariumPage />} />
@@ -128,6 +132,7 @@ export function AppRoutes() {
             <Route path="exchange/:listingId" element={<ExchangeDetailPage />} />
             <Route path="merchant-street/exchange" element={<Navigate to="/exchange" replace />} />
             <Route path="merchant-street/auctions" element={<Navigate to="/exchange" replace />} />
+          </Route>
           </Route>
         </Route>
         <Route path="*" element={<NotFoundPage />} />

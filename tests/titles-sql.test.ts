@@ -261,7 +261,7 @@ it('captures last-bait evidence at preparation before inventory changes',async()
  await db.query("insert into public.player_navigation(user_id,region_id) values($1,'pongdang')",[uid])
  const op=crypto.randomUUID();await user("select public.prepare_fishing('pongdang','bait_safe',$1)",[op])
  expect((await db.query('select last_bait from app_private.prepared_fishing_casts where operation_id=$1',[op])).rows[0].last_bait).toBe(true)
- await db.query("update app_private.prepared_fishing_casts set eligible=true,species_id='god-devouring-leviathan',rarity='mythic',snapshot=app_private.species_payload('god-devouring-leviathan',null),created_at=clock_timestamp()-interval '20 seconds' where operation_id=$1",[op])
+ await db.query("update app_private.prepared_fishing_casts set eligible=true,species_id='god-devouring-leviathan',rarity='mythic',snapshot=app_private.species_payload('god-devouring-leviathan',null),created_at=clock_timestamp()-make_interval(secs=>wait_seconds::double precision+5) where operation_id=$1",[op])
  await user('select public.finish_fishing($1,true)',[op]);expect(await earned()).toContain('last-bite')
 })
 it('recognizes reciprocal friendship gifts, fresh catches and different neighbors',async()=>{

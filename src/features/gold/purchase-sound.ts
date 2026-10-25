@@ -4,7 +4,7 @@ import {createGameAudio} from '@/features/fishing/game-audio'
 const heard=new Set<string>()
 let stopPrevious:(()=>void)|undefined
 /** Call after a confirmed result, with its stable operation ID. */
-function playTradeSound(action:'buy'|'sell'|'add',operationId:string){
+function playTradeSound(action:'buy'|'sell'|'add'|'relic-equip'|'relic-unequip',operationId:string){
  const key=`${action}:${operationId}`
  if(typeof window==='undefined'||heard.has(key))return
  heard.add(key)
@@ -14,7 +14,7 @@ function playTradeSound(action:'buy'|'sell'|'add',operationId:string){
  if(action==='add'&&stopPrevious)return
  stopPrevious?.()
  try{
-  const audio=createGameAudio(`/sounds/${action}.mp3`);audio.volume=.6
+  const audio=createGameAudio(`/sounds/${action}.${action.startsWith('relic-')?'wav':'mp3'}`);audio.volume=.6
   let stopped=false
   const mute=()=>{if(!readFishingSound())stop()}
   const storage=(event:StorageEvent)=>{if(event.key===fishingSoundKey||event.key===null)mute()}
@@ -38,3 +38,5 @@ function playTradeSound(action:'buy'|'sell'|'add',operationId:string){
 export const playPurchaseSound=(operationId:string)=>playTradeSound('buy',operationId)
 export const playSaleSound=(operationId:string)=>playTradeSound('sell',operationId)
 export const playRewardSound=(operationId:string)=>playTradeSound('add',operationId)
+export const playRelicEquipSound=(operationId:string)=>playTradeSound('relic-equip',operationId)
+export const playRelicUnequipSound=(operationId:string)=>playTradeSound('relic-unequip',operationId)

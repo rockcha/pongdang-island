@@ -1,5 +1,5 @@
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
-import {playPurchaseSound,playSaleSound,playRewardSound} from '@/features/gold/purchase-sound'
+import {playPurchaseSound,playSaleSound,playRewardSound,playRelicEquipSound,playRelicUnequipSound} from '@/features/gold/purchase-sound'
 import {saveFishingSound} from '@/features/fishing/sound-preference'
 let players:FakeAudio[]=[]
 class FakeAudio extends EventTarget{
@@ -8,6 +8,16 @@ class FakeAudio extends EventTarget{
 }
 beforeEach(()=>{players=[];localStorage.clear();vi.useFakeTimers();vi.stubGlobal('Audio',FakeAudio)})
 afterEach(()=>{vi.runOnlyPendingTimers();vi.useRealTimers();vi.unstubAllGlobals();localStorage.clear()})
+it('uses distinct relic chimes, deduplicates retries and obeys mute',()=>{
+ playRelicEquipSound('relic-confirmed-equip')
+ expect(players[0].src).toBe('/sounds/relic-equip.wav')
+ playRelicEquipSound('relic-confirmed-equip');expect(players).toHaveLength(1)
+ playRelicUnequipSound('relic-confirmed-release')
+ expect(players[1].src).toBe('/sounds/relic-unequip.wav')
+ expect(players[0].pause).toHaveBeenCalled()
+ saveFishingSound(false);expect(players[1].pause).toHaveBeenCalled()
+ playRelicEquipSound('muted-relic');expect(players).toHaveLength(2)
+})
 it('plays the uploaded sound only once for each confirmed operation',async()=>{
  playPurchaseSound('purchase-1');await Promise.resolve()
  expect(players[0].src).toBe('/sounds/buy.mp3');expect(players[0].play).toHaveBeenCalledOnce()

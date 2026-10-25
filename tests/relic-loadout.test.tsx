@@ -1,7 +1,8 @@
 import {cleanup,fireEvent,render,screen,within,waitFor} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
 import {RelicLoadout,RelicPage} from '@/features/relics/relic-loadout'
-const {load,equip,sell}=vi.hoisted(()=>({load:vi.fn(),equip:vi.fn(),sell:vi.fn()}))
+const {load,equip,sell,equipSound,unequipSound}=vi.hoisted(()=>({load:vi.fn(),equip:vi.fn(),sell:vi.fn(),equipSound:vi.fn(),unequipSound:vi.fn()}))
+vi.mock('@/features/gold/purchase-sound',()=>({playRelicEquipSound:equipSound,playRelicUnequipSound:unequipSound}))
 vi.mock('@/features/relics/api',()=>({loadRelics:load,equipRelic:equip,sellRelic:sell,relicError:()=> '다시 확인해 주세요.'}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'relic-test'}}})}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null}))
@@ -10,6 +11,17 @@ const a={id:'a',name:'조개 모래시계',description:'최대 제작 시간 +2�
 const b={...a,id:'b',name:'영원의 물시계',rarity:'mythic',owned:false,effect_value:8}
 const state={equippedId:null,changeFee:500,relics:[a,b]}
 afterEach(()=>{cleanup();localStorage.clear();vi.clearAllMocks()})
+it('pins the equipped artwork and clean effect above the relic collection',async()=>{
+ load.mockResolvedValue({...state,equippedId:'a',relics:[{...a,description:'최대 제작 시간 +2시간 · 장착 중에만 효과가 적용돼요.'},b]})
+ render(<RelicPage/>)
+ const slot=await screen.findByRole('region',{name:'장착 슬롯'})
+ await within(slot).findByText(a.name)
+ expect(within(slot).getByRole('img',{name:`장착 중: ${a.name}`})).toBeTruthy()
+ expect(within(slot).getByText(/최대 제작 시간 \+2시간/)).toBeTruthy()
+ expect(screen.queryByText(/장착 중에만/)).toBeNull()
+ expect(within(slot).getByRole('button',{name:'해제'})).toBeTruthy()
+ expect(screen.getByRole('heading',{name:'유물 보관함 1'})).toBeTruthy()
+})
 it('confirms sale proceeds and retries an uncertain sale with the same operation',async()=>{
  load.mockResolvedValue(state)
  sell.mockRejectedValueOnce(new Error('network')).mockResolvedValue({...state,relics:[{...a,owned:false,discovered:true},b]})
@@ -36,12 +48,14 @@ it('loads the relic page directly and charges 500 separately for equipping and u
  fireEvent.click(within(confirm).getByRole('button',{name:'확인'}))
  await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
  expect(equip).toHaveBeenNthCalledWith(1,'a',expect.any(String),500)
+ expect(equipSound).toHaveBeenCalledWith(equip.mock.calls[0][1]);expect(unequipSound).not.toHaveBeenCalled()
  fireEvent.click(screen.getByRole('button',{name:'해제'}))
  confirm=screen.getByRole('alertdialog')
  expect(confirm.textContent).toContain('500골드')
  fireEvent.click(within(confirm).getByRole('button',{name:'확인'}))
  await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
  expect(equip).toHaveBeenNthCalledWith(2,null,expect.any(String),500)
+ expect(unequipSound).toHaveBeenCalledWith(equip.mock.calls[1][1])
  expect(screen.getByText('장착 중인 유물이 없어요.')).toBeTruthy()
 })
 it('quotes 500 for equip, prevents unowned equipment and confirms before sending',async()=>{
@@ -62,6 +76,7 @@ it('quotes both fees for replacement and persists one operation across uncertain
  expect(screen.getByRole('alertdialog').textContent).toContain('1,000골드')
  fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'확인'}))
  await screen.findByRole('alert');fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'결과 다시 확인'}))
+ expect(equipSound).not.toHaveBeenCalled()
  await waitFor(()=>expect(equip).toHaveBeenCalledTimes(2));expect(equip.mock.calls[0]).toEqual(equip.mock.calls[1]);expect(equip.mock.calls[0][2]).toBe(1000)
  await waitFor(()=>expect(localStorage.getItem('pongdang:relic-loadout:relic-test')).toBeNull())
 })

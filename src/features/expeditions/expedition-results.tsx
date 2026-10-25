@@ -14,10 +14,11 @@ function ResultSummary({outcome}:{outcome:ExpeditionOutcome}){
  </dl>
 }
 
-export function ExpeditionResults({outcome,compact=false,preview=false}:{outcome:ExpeditionOutcome;compact?:boolean;preview?:boolean}){
+export function ExpeditionResults({outcome,compact=false,preview=false,onCelebrate}:{outcome:ExpeditionOutcome;compact?:boolean;preview?:boolean;onCelebrate?:(item:Catch)=>void}){
  const {items,refunds={}}=outcome
  const refunded=Object.values(refunds).reduce((sum,n)=>sum+n,0)
  const bonus=items.filter(item=>item.bonus).length
+ const shareButtons=onCelebrate&&!preview?<div className="flex flex-wrap justify-center gap-2">{items.filter((item,index)=>['epic','mythic'].includes(item.species.rarity??'')&&items.findIndex(other=>other.species.id===item.species.id)===index).map(item=><button key={item.id} type="button" onClick={()=>onCelebrate(item)} className="min-h-11 rounded-xl border border-primary/20 px-3 text-xs text-primary">{item.species.name} · 자랑하기</button>)}</div>:null
  const groups=new Map<string,{species:Catch['species'];count:number;bonus:number;firstDiscovery:boolean}>()
  for(const item of items){
   const group=groups.get(item.species.id)??{species:item.species,count:0,bonus:0,firstDiscovery:false}
@@ -26,6 +27,7 @@ export function ExpeditionResults({outcome,compact=false,preview=false}:{outcome
  }
  if(compact)return <div className="space-y-3">
   <ResultSummary outcome={outcome}/>
+  {shareButtons}
   {groups.size>0?<ul aria-label="획득한 개체" className="divide-y divide-border/50">{[...groups.values()].map(group=><li key={group.species.id} className="flex items-center gap-3 py-2"><CollectibleThumbnail path={group.species.thumbnail_path} name={group.species.name} className="size-14 shrink-0"/><div className="min-w-0 flex-1">{group.firstDiscovery&&!preview&&<NewDiscoveryBadge className="mb-1.5"/>}<p className="break-words text-sm">{group.species.name}</p>{group.species.rarity&&<div className="mt-1"><RarityBadge rarity={group.species.rarity}/></div>}</div><span className="text-sm tabular-nums text-primary">×{group.count}</span></li>)}</ul>:<div className="py-3 text-center"><p className="text-sm">아쉽게도 빈손으로 돌아왔어요</p><p className="mt-1.5 text-[11px] text-muted-foreground">이번에는 낚은 개체가 없어요.</p></div>}
  </div>
  return <div className="space-y-4 pb-2">
@@ -34,6 +36,7 @@ export function ExpeditionResults({outcome,compact=false,preview=false}:{outcome
    <p className="mt-2 text-[11px] text-muted-foreground">{preview?'예시 결과예요. 보관함에 추가되지 않아요.':items.length?'잡은 개체는 보관함에 보냈어요.':'이번에는 잡힌 개체가 없어요.'}</p>
   </header>
   <ResultSummary outcome={outcome}/>
+  {shareButtons}
   {(bonus>0||refunded>0)&&<dl className="flex flex-wrap justify-center gap-x-5 gap-y-2 border-y border-border/60 py-3 text-xs">
    {bonus>0&&<div className="flex items-center gap-2"><dt className="text-muted-foreground">보너스 포함</dt><dd className="tabular-nums text-primary">{bonus}개</dd></div>}
    {refunded>0&&<div className="flex items-center gap-2"><dt className="text-muted-foreground">미끼 반환</dt><dd className="tabular-nums">{refunded}개</dd></div>}

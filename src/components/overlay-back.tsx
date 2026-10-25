@@ -2,14 +2,14 @@ import {createContext,useContext,useEffect,useLayoutEffect,useRef} from 'react'
 import {flushSync} from 'react-dom'
 import {useLocation} from 'react-router'
 
-type Layer={close:()=>void;depth:number;historyEntry:boolean}
+type Layer={close:()=>void;depth:number;historyEntry:boolean;pauseBackground:boolean}
 type Watcher=EventTarget&{destroy:()=>void}
 type WatcherConstructor=new()=>Watcher
 export const OverlayDepth=createContext(0)
 const layers:Layer[]=[]
 const overlayListeners=new Set<()=>void>()
 let overlayActive=false
-export const hasOpenOverlay=()=>layers.length>0
+export const hasOpenOverlay=()=>layers.some(layer=>layer.pauseBackground)
 export function subscribeOverlayActivity(listener:()=>void){overlayListeners.add(listener);return()=>{overlayListeners.delete(listener)}}
 const marker='pongdangOverlay'
 let watcher:Watcher|null=null
@@ -81,12 +81,12 @@ function sync(){
  }
 }
 
-export function useOverlayBack(open:boolean,close:()=>void,historyEntry=true){
+export function useOverlayBack(open:boolean,close:()=>void,historyEntry=true,pauseBackground=true){
  const depth=useContext(OverlayDepth),latest=useRef(close)
  latest.current=close
  useEffect(()=>{
   if(!open)return
-  const layer={depth,historyEntry,close:()=>latest.current()}
+  const layer={depth,historyEntry,pauseBackground,close:()=>latest.current()}
   layers.push(layer);sync()
   return()=>{
    const index=layers.indexOf(layer)
@@ -94,7 +94,7 @@ export function useOverlayBack(open:boolean,close:()=>void,historyEntry=true){
    // StrictMode's cleanup/setup and replacing one sheet with another share a guard.
    queueMicrotask(sync)
   }
- },[open,depth,historyEntry])
+ },[open,depth,historyEntry,pauseBackground])
  return depth
 }
 

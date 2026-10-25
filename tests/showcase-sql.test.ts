@@ -119,7 +119,9 @@ it('preserves existing post metadata and refuses to delete unexpected legacy ima
  try{
   for(const file of migrationFiles()){if(file===migration)break;await legacy.exec(readFileSync('supabase/migrations/'+file,'utf8'))}
   await legacy.query('insert into auth.users(id) values($1)',[owner])
-  const source=(await db.query("select * from app_private.prepared_fishing_casts where user_id=$1 and rarity='epic' and result #>> '{attempt,species,id}' is not null order by created_at limit 1",[owner])).rows[0]
+  // Current event species may not exist in the historical schema being upgraded.
+  const oldSpecies=(await legacy.query('select id from public.collectible_species')).rows.map(row=>row.id)
+  const source=(await db.query("select * from app_private.prepared_fishing_casts where user_id=$1 and rarity='epic' and species_id=any($2::text[]) and result #>> '{attempt,species,id}' is not null order by created_at limit 1",[owner,oldSpecies])).rows[0]
   // This historical schema still requires the original 3–5 second waits.
   source.wait_seconds=4
   await legacy.query('insert into app_private.prepared_fishing_casts select (jsonb_populate_record(null::app_private.prepared_fishing_casts,$1::jsonb)).*',[source])

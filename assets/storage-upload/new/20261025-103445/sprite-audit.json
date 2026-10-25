@@ -1,0 +1,201 @@
+﻿{
+    "missing":  [
+
+                ],
+    "thumbnails":  [
+                       {
+                           "id":  "pongi-mobile-treasure-salvager",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "pongi-turtle-expedition",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       }
+                   ],
+    "sprites":  [
+                    {
+                        "id":  "pongi-mobile-treasure-salvager",
+                        "file":  "fish/mythic/pongi-mobile-treasure-salvager_swim8_v1_sprite.png",
+                        "width":  1776,
+                        "height":  888,
+                        "cell":  444,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  85,
+                                           "y":  105,
+                                           "width":  303,
+                                           "height":  232,
+                                           "alphaPixels":  46030,
+                                           "margin":  56,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  83,
+                                           "y":  104,
+                                           "width":  303,
+                                           "height":  234,
+                                           "alphaPixels":  45997,
+                                           "margin":  58,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  83,
+                                           "y":  104,
+                                           "width":  304,
+                                           "height":  233,
+                                           "alphaPixels":  46146,
+                                           "margin":  57,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  84,
+                                           "y":  104,
+                                           "width":  303,
+                                           "height":  233,
+                                           "alphaPixels":  46121,
+                                           "margin":  57,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  4,
+                                           "x":  84,
+                                           "y":  92,
+                                           "width":  304,
+                                           "height":  236,
+                                           "alphaPixels":  46740,
+                                           "margin":  56,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  5,
+                                           "x":  82,
+                                           "y":  92,
+                                           "width":  304,
+                                           "height":  295,
+                                           "alphaPixels":  50563,
+                                           "margin":  57,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  6,
+                                           "x":  81,
+                                           "y":  92,
+                                           "width":  306,
+                                           "height":  239,
+                                           "alphaPixels":  47389,
+                                           "margin":  57,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  7,
+                                           "x":  83,
+                                           "y":  92,
+                                           "width":  304,
+                                           "height":  233,
+                                           "alphaPixels":  46066,
+                                           "margin":  57,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "pongi-turtle-expedition",
+                        "file":  "fish/mythic/pongi-turtle-expedition_swim8_v1_sprite.png",
+                        "width":  1776,
+                        "height":  888,
+                        "cell":  444,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  71,
+                                           "y":  113,
+                                           "width":  317,
+                                           "height":  284,
+                                           "alphaPixels":  55981,
+                                           "margin":  47,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  73,
+                                           "y":  113,
+                                           "width":  325,
+                                           "height":  290,
+                                           "alphaPixels":  55239,
+                                           "margin":  41,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  65,
+                                           "y":  113,
+                                           "width":  330,
+                                           "height":  279,
+                                           "alphaPixels":  56154,
+                                           "margin":  49,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  75,
+                                           "y":  114,
+                                           "width":  322,
+                                           "height":  271,
+                                           "alphaPixels":  52037,
+                                           "margin":  47,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  4,
+                                           "x":  70,
+                                           "y":  75,
+                                           "width":  322,
+                                           "height":  287,
+                                           "alphaPixels":  57555,
+                                           "margin":  52,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  5,
+                                           "x":  77,
+                                           "y":  76,
+                                           "width":  326,
+                                           "height":  292,
+                                           "alphaPixels":  57995,
+                                           "margin":  41,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  6,
+                                           "x":  67,
+                                           "y":  77,
+                                           "width":  330,
+                                           "height":  284,
+                                           "alphaPixels":  56836,
+                                           "margin":  47,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  7,
+                                           "x":  80,
+                                           "y":  77,
+                                           "width":  315,
+                                           "height":  278,
+                                           "alphaPixels":  56344,
+                                           "margin":  49,
+                                           "safe":  true
+                                       }
+                                   ]
+                    }
+                ]
+}

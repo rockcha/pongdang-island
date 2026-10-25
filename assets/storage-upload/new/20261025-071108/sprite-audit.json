@@ -1,0 +1,301 @@
+﻿{
+    "missing":  [
+
+                ],
+    "thumbnails":  [
+                       {
+                           "id":  "halloween-skeleton-fish",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-cursed-sailor-souls",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-soul-lantern-angler",
+                           "width":  1536,
+                           "height":  1024,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-zombie-puffer",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-infected-turtle",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-cobweb-bundle",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       },
+                       {
+                           "id":  "halloween-torn-black-cloak",
+                           "width":  1254,
+                           "height":  1254,
+                           "edgePixels":  0
+                       }
+                   ],
+    "sprites":  [
+                    {
+                        "id":  "halloween-skeleton-fish",
+                        "file":  "fish/normal/halloween-skeleton-fish_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  84,
+                                           "y":  175,
+                                           "width":  490,
+                                           "height":  338,
+                                           "alphaPixels":  88158,
+                                           "margin":  53,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  89,
+                                           "y":  174,
+                                           "width":  462,
+                                           "height":  340,
+                                           "alphaPixels":  83683,
+                                           "margin":  76,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  83,
+                                           "y":  148,
+                                           "width":  493,
+                                           "height":  335,
+                                           "alphaPixels":  89136,
+                                           "margin":  51,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  70,
+                                           "y":  147,
+                                           "width":  482,
+                                           "height":  338,
+                                           "alphaPixels":  88195,
+                                           "margin":  70,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-cursed-sailor-souls",
+                        "file":  "fish/rare/halloween-cursed-sailor-souls_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  134,
+                                           "y":  230,
+                                           "width":  381,
+                                           "height":  255,
+                                           "alphaPixels":  64327,
+                                           "margin":  112,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  125,
+                                           "y":  230,
+                                           "width":  390,
+                                           "height":  252,
+                                           "alphaPixels":  64582,
+                                           "margin":  112,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  136,
+                                           "y":  193,
+                                           "width":  380,
+                                           "height":  253,
+                                           "alphaPixels":  63360,
+                                           "margin":  111,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  133,
+                                           "y":  193,
+                                           "width":  382,
+                                           "height":  252,
+                                           "alphaPixels":  64533,
+                                           "margin":  112,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-soul-lantern-angler",
+                        "file":  "fish/epic/halloween-soul-lantern-angler_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  124,
+                                           "y":  228,
+                                           "width":  410,
+                                           "height":  205,
+                                           "alphaPixels":  42184,
+                                           "margin":  93,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  110,
+                                           "y":  229,
+                                           "width":  419,
+                                           "height":  206,
+                                           "alphaPixels":  42012,
+                                           "margin":  98,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  129,
+                                           "y":  195,
+                                           "width":  417,
+                                           "height":  202,
+                                           "alphaPixels":  41361,
+                                           "margin":  81,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  126,
+                                           "y":  193,
+                                           "width":  395,
+                                           "height":  204,
+                                           "alphaPixels":  41047,
+                                           "margin":  106,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-zombie-puffer",
+                        "file":  "fish/rare/halloween-zombie-puffer_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  132,
+                                           "y":  199,
+                                           "width":  377,
+                                           "height":  268,
+                                           "alphaPixels":  60279,
+                                           "margin":  118,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  153,
+                                           "y":  198,
+                                           "width":  350,
+                                           "height":  269,
+                                           "alphaPixels":  57787,
+                                           "margin":  124,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  125,
+                                           "y":  157,
+                                           "width":  384,
+                                           "height":  267,
+                                           "alphaPixels":  60979,
+                                           "margin":  118,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  144,
+                                           "y":  157,
+                                           "width":  359,
+                                           "height":  267,
+                                           "alphaPixels":  58835,
+                                           "margin":  124,
+                                           "safe":  true
+                                       }
+                                   ]
+                    },
+                    {
+                        "id":  "halloween-infected-turtle",
+                        "file":  "fish/rare/halloween-infected-turtle_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cell":  627,
+                        "safe":  true,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  73,
+                                           "y":  182,
+                                           "width":  503,
+                                           "height":  353,
+                                           "alphaPixels":  101518,
+                                           "margin":  51,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  84,
+                                           "y":  179,
+                                           "width":  482,
+                                           "height":  289,
+                                           "alphaPixels":  92256,
+                                           "margin":  61,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  76,
+                                           "y":  147,
+                                           "width":  500,
+                                           "height":  348,
+                                           "alphaPixels":  100635,
+                                           "margin":  51,
+                                           "safe":  true
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  81,
+                                           "y":  145,
+                                           "width":  485,
+                                           "height":  289,
+                                           "alphaPixels":  92547,
+                                           "margin":  61,
+                                           "safe":  true
+                                       }
+                                   ]
+                    }
+                ]
+}

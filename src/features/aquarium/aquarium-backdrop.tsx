@@ -5,7 +5,7 @@ import {TankLoadingContext} from './tank-loading-context'
 import './aquarium-loading.css'
 
 type Background={name:string;image_path:string;url?:string}
-export function AquariumBackdrop({background,loading=false,panorama}:{background?:Background;loading?:boolean;panorama?:{src:string;view:number}}){
+export function AquariumBackdrop({background,loading=false,panorama}:{background?:Background;loading?:boolean;panorama?:{src:string;view:number;zoom?:number;fixedViewport?:boolean;y?:number}}){
  const report=useContext(TankLoadingContext)
  const name=background?.name,path=panorama?.src??background?.image_path,url=panorama?.src??background?.url
  const desired=useMemo(()=>name!==undefined&&path!==undefined?{name,image_path:path,url}:undefined,[name,path,url])
@@ -31,8 +31,8 @@ export function AquariumBackdrop({background,loading=false,panorama}:{background
  },[desired])
  useLayoutEffect(()=>{report?.(loading?'loading':desired&&failed===desired.image_path?'failed':desired&&shown?.current.image_path!==desired.image_path?'loading':'ready')},[loading,desired,failed,shown?.current.image_path,report])
  const preparing=loading||Boolean(desired&&!shown&&failed!==desired.image_path)
- const imageClass=(image:Background)=>image.url?'absolute inset-y-0 left-0 h-full w-[300%] max-w-none object-cover':'absolute inset-0 size-full object-cover'
- const imageStyle=(image:Background)=>image.url?{transform:`translateX(${-(panorama?.view??1)*100/3}%)`}:undefined
+ const imageClass=(image:Background)=>image.url?'absolute inset-y-0 left-0 h-full w-[300%] max-w-none object-fill':'absolute inset-0 size-full object-cover'
+ const imageStyle=(image:Background)=>image.url?{width:`${300*(panorama?.zoom??1)}%`,...(panorama?.fixedViewport?{height:`${300*(panorama.zoom??1/3)}%`}:{}),transform:`translate(${-(panorama?.view??1)*100/3}%,${panorama?.fixedViewport?-(panorama.y??0)/1.6*100:0}%)`}:undefined
  return <>
   {shown?.previous&&<img src={shown.previous.url??backgroundUrl(shown.previous.image_path)} alt="" className={imageClass(shown.previous)} style={imageStyle(shown.previous)}/>}
   {shown&&<img key={shown.current.image_path} src={shown.current.url??backgroundUrl(shown.current.image_path)} alt={shown.current.name} className={`${report?'':'aquarium-background-enter'} ${imageClass(shown.current)}`} style={imageStyle(shown.current)} onAnimationEnd={()=>setShown(old=>old?.previous?{current:old.current}:old)}/>}

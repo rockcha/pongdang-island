@@ -8,7 +8,7 @@ import {ConfirmDialog} from '@/components/confirm-dialog'
 import {usePwaUpdateBlock} from '@/features/pwa/update-blockers'
 import {CatchMoment} from './catch-moment'
 import {getShowcaseDraft,clearShowcaseDraft,savePreviewShowcase} from './draft'
-import {publishShowcase,showcaseError} from './api'
+import {publishShowcase,publishExpeditionShowcase,showcaseError} from './api'
 
 export function ShowcaseEditor(){
  const {session}=useAuth(),location=useLocation(),navigate=useNavigate()
@@ -28,7 +28,8 @@ export function ShowcaseEditor(){
   try{
    draft.caption=caption.trim()
    if(draft.preview){savePreviewShowcase(draft);done.current=true;clearShowcaseDraft(draft.id);navigate('/showcase',{replace:true,state:{showcasePreview:true}});return}
-   await publishShowcase(draft.operationId,draft.caption)
+   if(draft.source&&draft.tripId)await publishExpeditionShowcase(draft.source,draft.tripId,draft.operationId,draft.caption)
+   else await publishShowcase(draft.operationId,draft.caption)
    done.current=true;clearShowcaseDraft(draft.id);toast.success('특별한 순간을 자랑했어요.');navigate('/showcase',{replace:true})
   }catch(cause){setError(showcaseError(cause))}finally{lock.current=false;setBusy(false)}
  }

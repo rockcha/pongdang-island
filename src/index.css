@@ -35,6 +35,7 @@
 @custom-variant dark (&:is(.dark *));
 
 .portrait-orientation-notice { display: none; }
+[data-aquarium-wide] .portrait-orientation-notice { display: none !important; }
 /* Physical screen orientation avoids showing the notice when a keyboard shortens the viewport. */
 @media (pointer: coarse) and (max-device-width: 1024px) {
  @media (device-aspect-ratio > 1/1) {

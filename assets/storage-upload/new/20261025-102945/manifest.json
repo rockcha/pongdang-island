@@ -1,0 +1,57 @@
+{
+  "status": "thumbnail-concepts-only",
+  "generator": "built-in image_gen",
+  "references": [
+    "public/branding/pongi.png",
+    "assets/references/collectible-style/epic-mythic-starlight.png",
+    "assets/storage-upload/new/20261025-044359/decorations/mythic/pongi-subsea-drilling-platform_v1_thumbnail.png"
+  ],
+  "referenceRoles": {
+    "pongi": "character identity",
+    "starlight": "rendering and materials only",
+    "platform": "same-game finish and cooperative crew"
+  },
+  "registration": false,
+  "items": [
+    {
+      "id": "pongi-mobile-treasure-salvager",
+      "name": "퐁이 이동식 보물 인양선",
+      "path": "fish/mythic/pongi-mobile-treasure-salvager_v1_thumbnail.png",
+      "movement": {
+        "movement_type": "swim",
+        "swim_y_min": 0.25,
+        "swim_y_max": 0.75,
+        "travel_direction": "both",
+        "flip_with_direction": true
+      },
+      "prompt": "Use case: stylized-concept. Asset type: ONE beautiful premium aquarium-game collectible THUMBNAIL CONCEPT, a single complete isolated subject on genuine TRANSPARENT alpha background. Square composition. NOT a sprite sheet, not a card, no text or UI. Input 1 is PONGI CHARACTER IDENTITY: adorable golden-brown otters with cream cheeks and bellies, short rounded ears, bright dark eyes, tiny whiskers, little paws; keep them recognizable as otters, not bears or cats. Do not copy its fishing hook or line. Input 2 is MATERIAL AND PAINT STYLE ONLY: softly colored outlines, refined luminous gradients, dimensional fantasy illustration and gentle translucent highlights. Never borrow the ray's silhouette, wings, ribbon tail or star pattern. Input 3 is SAME-GAME QUALITY AND COOPERATIVE CREW REFERENCE: polished teal, ivory and copper materials, expressive little Pongi workers and charming believable tasks. Do not copy the drilling tower or stationary platform. Elegant cozy high-end game art, richly crafted but readable at small size, appealing expressive character faces, purposeful details, controlled highlights, no excessive sparkles or enormous gemstones. Fully contain the entire silhouette, ropes, flippers and all characters inside the canvas with comfortable 10% clear margins on EVERY side. No background, seabed, floor slab, water rectangle, scenery, checkerboard, frame, labels, letters or external cast shadow.\n\nPrimary request: a MOVING UNDERWATER TREASURE SALVAGE VESSEL operated by FOUR distinct Pongi otters. A compact rounded teal-and-deep-petrol submarine workboat, warm ivory cabin roof, burnished copper rails and brass fittings, one rounded glass cockpit at the BOW on SCREEN RIGHT, a visible small propulsion unit and solid copper propeller at the STERN on SCREEN LEFT. Clear side-three-quarter isometric profile, the vessel heading right. It must look like a self-propelled underwater craft rather than a surface ship or a fixed industrial plant. A small articulated brass deck crane on the rear half has lifted one old rounded wood-and-brass treasure chest in a rope sling just beneath the hull; a few gold coins and pearls inside the open chest glow warmly. Keep the chest and tether close to the hull so the whole object forms a cohesive readable mobile collectible. FOUR Pongi roles: (1) a proud pilot clearly visible through the curved cockpit window steering, (2) a helmeted crane operator on the compact upper work deck pulling a lever, (3) an excited treasure sorter at an open small deck tray, and (4) a tiny swimming diver Pongi with clear goggles, holding the sling rope beside the suspended chest, safely connected by a short curved tether. Distinct small outfits, amber safety caps and muted orange life vests, same otter identity. Show the lovely instant when the chest is being lifted and the diver is guiding it. Restrained soft cyan cockpit reflections, copper edge highlights and warm treasure light, beautiful harmonious aqua-copper-cream palette. Mechanically coherent crane cable, propeller shaft and tether, no random disconnected machinery. Forward toward SCREEN RIGHT; bow and cockpit right, propeller left. No motion blur; clean sharp finished thumbnail illustration.",
+      "thumbnail_path": "fish/mythic/pongi-mobile-treasure-salvager_v1_thumbnail.png",
+      "frames": 1,
+      "price": null,
+      "priceStatus": "Not assigned for thumbnail previews",
+      "generatedSource": "C:\\Users\\user\\.codex\\generated_images\\01a16e8e-3f48-7971-b592-5b6efdd9161d\\exec-e4a9a428-84d5-4888-bbf8-076f8d47802d.png",
+      "source": "assets/storage-upload/new/20261025-102945/sources/pongi-mobile-treasure-salvager-thumbnail.source",
+      "sha256": "f04474865603cd8688f32ce2f11b5a28ace26bc35d3f2072b91d8b35772dfd63"
+    },
+    {
+      "id": "pongi-turtle-expedition",
+      "name": "퐁이 거북이 탐험대",
+      "path": "fish/mythic/pongi-turtle-expedition_v1_thumbnail.png",
+      "movement": {
+        "movement_type": "swim",
+        "swim_y_min": 0.2,
+        "swim_y_max": 0.78,
+        "travel_direction": "both",
+        "flip_with_direction": true
+      },
+      "prompt": "Use case: stylized-concept. Asset type: ONE beautiful premium aquarium-game collectible THUMBNAIL CONCEPT, a single complete isolated subject on genuine TRANSPARENT alpha background. Square composition. NOT a sprite sheet, not a card, no text or UI. Input 1 is PONGI CHARACTER IDENTITY: adorable golden-brown otters with cream cheeks and bellies, short rounded ears, bright dark eyes, tiny whiskers, little paws; keep them recognizable as otters, not bears or cats. Do not copy its fishing hook or line. Input 2 is MATERIAL AND PAINT STYLE ONLY: softly colored outlines, refined luminous gradients, dimensional fantasy illustration and gentle translucent highlights. Never borrow the ray's silhouette, wings, ribbon tail or star pattern. Input 3 is SAME-GAME QUALITY AND COOPERATIVE CREW REFERENCE: polished teal, ivory and copper materials, expressive little Pongi workers and charming believable tasks. Do not copy the drilling tower or stationary platform. Elegant cozy high-end game art, richly crafted but readable at small size, appealing expressive character faces, purposeful details, controlled highlights, no excessive sparkles or enormous gemstones. Fully contain the entire silhouette, ropes, flippers and all characters inside the canvas with comfortable 10% clear margins on EVERY side. No background, seabed, floor slab, water rectangle, scenery, checkerboard, frame, labels, letters or external cast shadow.\n\nPrimary request: a magnificent gentle SEA TURTLE carrying a tiny cozy Pongi EXPEDITION OUTPOST and FOUR distinct Pongi explorers. The living turtle is the main silhouette: rounded jade-and-turquoise head on SCREEN RIGHT, large warm friendly amber eyes, soft cream throat and belly, broad domed emerald shell with elegant subtle golden scute seams, FOUR unmistakable streamlined sea-turtle flippers in a graceful mid-swim stroke, small tail trailing LEFT. Whole turtle moves naturally forward right. Do not turn it into a walking tortoise, mechanical vehicle, ray, dragon, island or giant castle. The shell carries a LIGHTWEIGHT snug honey-wood observation deck fitted around its curvature with a tasteful teal-and-copper harness; one petite round glass-roofed navigation cabin, low brass railings, rolled maps, two neatly secured travel bags, a small brass telescope and a soft peach expedition pennant. The structures are small enough that the turtle's beautiful shell remains visible and the creature looks comfortable and unburdened. FOUR Pongi explorers, all visible and expressive: (1) a cheerful captain at the front rail with a rolled sea chart, (2) a curious navigator at the brass telescope, (3) one inside the little glass cabin reading a map table, and (4) a relaxed companion sitting safely at the rear sharing a friendly wave. Tiny explorer scarves and simple sea-green caps; keep recognizable round otter faces and occasional small peach starfish hair ornaments. A tender adventurous miniature world, premium painterly detail, soft sunlit aqua highlights, warm wooden cabin glow, harmonious jade-teal-honey-cream palette with restrained peach accents. Give the turtle's face and flowing flippers as much attention as the tiny outpost. Clear side-three-quarter isometric view heading SCREEN RIGHT. No whole scene, no floor, no bubbles covering faces, no excessive coral or flowers, no clutter. Clean sharp finished thumbnail.",
+      "thumbnail_path": "fish/mythic/pongi-turtle-expedition_v1_thumbnail.png",
+      "frames": 1,
+      "price": null,
+      "priceStatus": "Not assigned for thumbnail previews",
+      "generatedSource": "C:\\Users\\user\\.codex\\generated_images\\01a16e8e-3f48-7971-b592-5b6efdd9161d\\exec-46210d3b-111e-44ec-aefc-cafbdebcbe27.png",
+      "source": "assets/storage-upload/new/20261025-102945/sources/pongi-turtle-expedition-thumbnail.source",
+      "sha256": "f24c4feb5cfd3112638fc1bc274b2bba1f534940b5b3f9dd024276a1ee979e06"
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "tool": "built-in image_gen",
+  "project_ref": "ewafafphiovbpjwogwzn",
+  "approvedThumbnailManifest": "assets/storage-upload/new/20261025-102945/manifest.json",
+  "referenceRoles": {
+    "thumbnail": "approved identity, anatomy, crew and material",
+    "guide": "authoritative 4x2 grid, locked body centers and safe margins",
+    "style": "inherited from approved thumbnail: Pongi identity and premium platform finish"
+  },
+  "items": [
+    {
+      "id": "pongi-mobile-treasure-salvager",
+      "name": "퐁이 이동식 보물 인양선",
+      "description": "작은 크레인으로 바닷속 보물을 건지는 퐁이들의 인양선. 잠수한 퐁이가 줄을 붙잡고 보물상자의 길을 안내한다.",
+      "kind": "fish",
+      "rarity": "mythic",
+      "sell_price": 3400,
+      "swim_y_min": 0.22,
+      "swim_y_max": 0.74,
+      "speed": "0.013",
+      "size": 145,
+      "movement_type": "swim",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "native_region_id": null,
+      "frames": 8,
+      "columns": 4,
+      "requiredMotions": [
+        "propeller rotation",
+        "treasure chest lowered and raised on visibly changing cable length",
+        "pilot steering wheel rotation with hands following",
+        "amber lights on, dim, off and on"
+      ],
+      "poses": [
+        "cruise: chest high, wheel neutral, lights on, propeller phase A",
+        "cruise: chest high, wheel +25 degrees, lights dim, propeller phase B",
+        "cruise: chest high, wheel neutral, lights off, propeller phase C",
+        "cruise: chest high, wheel -25 degrees, lights on, propeller phase D",
+        "action anticipation: chest lowered halfway, cable longer, diver follows down",
+        "action peak: chest at lowest point, cable fully extended, diver lower, lights off",
+        "action return: chest raised halfway, cable shorter, diver follows up, lights dim",
+        "recovery: chest high again matching frame 0, cable retracted, wheel neutral, lights on"
+      ],
+      "facing": "right",
+      "thumbnail_path": "fish/mythic/pongi-mobile-treasure-salvager_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/pongi-mobile-treasure-salvager_swim8_v1_sprite.png",
+      "catalog_sprite_sheet_path": "fish/mythic/pongi-mobile-treasure-salvager_v1_sprite.png",
+      "spriteSource": "assets/storage-upload/new/20261025-103445/sources/pongi-mobile-treasure-salvager-sprite.source",
+      "thumbnailSource": "assets/storage-upload/new/20261025-102945/fish/mythic/pongi-mobile-treasure-salvager_v1_thumbnail.png",
+      "generatedSprite": "C:\\Users\\user\\.codex\\generated_images\\01a16e8e-3f48-7971-b592-5b6efdd9161d\\exec-6c7c2ecd-07a6-4605-95f1-fe67583ccfc8.png",
+      "spritePrompt": "Edit ONLY the pilot's STEERING WHEEL AND ATTACHED PAWS and the stern propeller rotation in this finished transparent 4x2 eight-frame submarine sprite sheet. Preserve every hull, crew head, window, material, cell size, safe margins, camera, rigid hull anchor and EXACT existing treasure-chest lifting/lowering and lamp on/off sequence. Do not enlarge the sprites, do not move the hull.\nMANDATORY clear steering animation: inside the RIGHT glass cockpit, make the pilot's small wooden/brass THREE-SPOKE STEERING WHEEL easy to read just in front of its belly, with one visible small SCARLET RED KNOB on the rim so its rotation is unmistakable. This is a real steering wheel with spokes and a hub, not an unchanging U-shaped brown arc. Both small otter paws stay on the rim and follow its rotation; the otter face and body remain stable. Wheel center and circular size remain fixed. In top-row frame 0 put the red knob at 12 o'clock, frame 1 at 2 o'clock, frame 2 at 4 o'clock, frame 3 at 6 o'clock. Lower-row frames 4 knob at 2 o'clock, frame 5 at 10 o'clock, frame 6 at 11 o'clock, frame 7 at 12 o'clock (recover toward frame 0). Rotate ALL THREE SPOKES together with the red rim knob. Do not just move the knob on an otherwise frozen wheel. Keep wheel and paws fully behind the existing glass window, no giant new external wheel.\nAt the LEFT stern, preserve the same copper propeller housing and blade anatomy but turn its blades through distinct rotational angles across all eight frames; keep the shaft and housing anchored. A tiny ivory paint mark on ONE propeller blade can indicate rotation. Do not change any other component.\nPreserve all eight distinct original chest/cable/diver positions and amber light states precisely: chest high 0-3; halfway lowered 4; lowest and longest cable 5; halfway raised 6; high 7. Lights bright/dim/off/bright in 0/1/2/3. The main hull, four crew members and treasure identity must stay the same. True transparent alpha, FOUR columns by TWO rows of equal square cells, full canvas exactly 2:1. Existing wide clear cell margins must remain. No background, text, numbers, grid lines or labels.",
+      "spriteAttempts": [
+        {
+          "source": "sources/pongi-mobile-treasure-salvager-sprite-attempt1.source",
+          "prompt": "Use case: stylized-concept. Asset: one high-quality production animation SPRITE SHEET for \"퐁이 이동식 보물 인양선\", exactly EIGHT distinct full-body animation poses arranged FOUR COLUMNS by TWO ROWS of EQUAL SQUARE cells. Full canvas aspect ratio exactly 2:1, like the guide (for example 2048x1024). Read frames left-to-right in top row 0-3 then left-to-right bottom row 4-7. Real TRANSPARENT alpha background.\n\nInput 1 is the AUTHORITATIVE GRID, SCALE AND SPACING guide: preserve its small subject size, fixed cell centers, huge clear margins, 4x2 aspect ratio and repeated structure. Input 2 is APPROVED CHARACTER IDENTITY, proportions, crew, materials and detailed drawing style. Recreate this exact subject with actual moving parts, do NOT output eight copies of the guide. Maximum subject size including all action extents is the central 64% of each square cell. At least 15% empty TRANSPARENT margin on EVERY cell edge including internal seams; no glow/flag/flipper/rope/treasure touches a seam. Stable body center, eye position, hull/shell dimensions and camera throughout. Never recenter or rescale individual poses. Crisp premium fantasy-game painterly shading, accurate small expressive Pongi otters. Face SCREEN RIGHT in EVERY frame, head/bow right, rear/propeller/tail left; no front or left views.\n\nMUST visibly animate the suspended chest and attached diver down then back up: keep crane tip and hull stationary, pay out a visibly LONGER cable to lower the chest, retract cable to lift it. Chest position must change RELATIVE TO HULL, not with the entire boat. Keep chest horizontally below crane tip. Lowest chest pose remains fully inside cell with bottom margin. Do not replace chest with a different object. Rotate stern propeller through distinguishable blade angles in all eight poses. The pilot's steering wheel MUST turn and both paws follow its rim; make one ivory/brass asymmetric spoke or small colored knob visibly rotate to make direction readable. Amber deck/cockpit lamps MUST be visibly ON (bright yellow glass plus small contained glow), DIM, and OFF (dark amber unlit glass with absolutely no glow) as specified; keep vessel body lighting, colors and opacity unchanged. Keep all four Pongi workers and exact boat structure from the thumbnail. In top row the chest stays hoisted for cruise; in bottom row it goes down then up.\n\nEXACT POSE PLAN, ALL EIGHT ARE REQUIRED:\nFrame 0: cruise: chest high, wheel neutral, lights on, propeller phase A.\nFrame 1: cruise: chest high, wheel +25 degrees, lights dim, propeller phase B.\nFrame 2: cruise: chest high, wheel neutral, lights off, propeller phase C.\nFrame 3: cruise: chest high, wheel -25 degrees, lights on, propeller phase D.\nFrame 4: action anticipation: chest lowered halfway, cable longer, diver follows down.\nFrame 5: action peak: chest at lowest point, cable fully extended, diver lower, lights off.\nFrame 6: action return: chest raised halfway, cable shorter, diver follows up, lights dim.\nFrame 7: recovery: chest high again matching frame 0, cable retracted, wheel neutral, lights on.\n\nFrame 7 should recover toward frame 0 for a seamless six-second repeated cycle. Physical moving parts are mandatory; do not substitute whole-object translation, zoom, opacity changes, glow-only changes, eye-only blinking, fake motion blur, or identical copies. The rigid body and main head stay perfectly stable while requested components move. Preserve all body parts and crew across frames. No grid lines, no labels, no frame numbers, no UI, no words, no water, no floor, no background, no checkerboard. Output a true transparent PNG, 4x2 square cells, exact full-sheet aspect 2:1.",
+          "reason": "Raw pose margins below the eight-frame safety threshold"
+        },
+        {
+          "source": "sources/pongi-mobile-treasure-salvager-sprite-attempt2.source",
+          "prompt": "EDIT the provided EIGHT-FRAME ANIMATION SHEET. Input 1 is the edit target: preserve its exact character identity, camera, colors, crew, rigid body structure, frame order and EIGHT DISTINCT POSES. Input 2 is a SPACING GUIDE ONLY. The subjects in input 1 are too big for their cells. Recreate EACH pose at ONLY 65% of its current subject width and height, centered on its SAME rigid hull/shell anchor inside the SAME cell. Do not zoom in. Do not just add a border around the whole sheet: reduce every subject inside its own cell. Keep the final canvas aspect ratio 2:1, FOUR COLUMNS by TWO ROWS of EQUAL SQUARE cells, no gaps or visible grid lines. Every entire subject including actions must lie within the central 62% of its own cell, at least 18% empty transparent margin to ALL four cell boundaries. No alpha fragments along cell borders or canvas borders. Preserve genuine transparent background. No text, no numbers, no water, no scenery.\n\nRequired animation content must remain CLEARLY DIFFERENT in the eight cells:\n0: cruise: chest high, wheel neutral, lights on, propeller phase A\n1: cruise: chest high, wheel +25 degrees, lights dim, propeller phase B\n2: cruise: chest high, wheel neutral, lights off, propeller phase C\n3: cruise: chest high, wheel -25 degrees, lights on, propeller phase D\n4: action anticipation: chest lowered halfway, cable longer, diver follows down\n5: action peak: chest at lowest point, cable fully extended, diver lower, lights off\n6: action return: chest raised halfway, cable shorter, diver follows up, lights dim\n7: recovery: chest high again matching frame 0, cable retracted, wheel neutral, lights on\n\nEspecially make the suspended treasure chest visibly descend and rise on a changing cable length in frames 4,5,6,7; pilot wheel and paws turn with one asymmetric ivory spoke visibly rotating 25 degrees each way in frames 0-3; deck lamps are ON, DIM, OFF, ON across frames 0-3. Lens is dark with no glow when OFF. Keep the propeller rotating and all four otters. Main hull stays perfectly steady.\n\nKeep exactly the same RIGHT-FACING orientation in all eight poses. Preserve detailed premium painted finish and sharpness, no overall opacity changes, no motion blur, no missing parts. Frame 7 recovers toward frame 0. The requested SHRINKING and SAFE CLEAR MARGINS are the main edit. Do not keep the old large scale.",
+          "reason": "Clarify steering wheel spoke rotation and propeller angles"
+        }
+      ],
+      "hashes": {
+        "fish/mythic/pongi-mobile-treasure-salvager_v1_thumbnail.png": "132cdfb68a02e9c4763ef39cddc1f2f9ee0703d2ae04e0364824ce2e197b285b",
+        "fish/mythic/pongi-mobile-treasure-salvager_swim8_v1_sprite.png": "326bfec9b912e22488a0253271d2faf9bb57693f9c37b7f0d23028ec041aa22a",
+        "fish/mythic/pongi-mobile-treasure-salvager_v1_sprite.png": "686572b73e93383fcc23a87565d36fbbe6a7729e89a53233b7fb3f45ae77352d"
+      }
+    },
+    {
+      "id": "pongi-turtle-expedition",
+      "name": "퐁이 거북이 탐험대",
+      "description": "커다란 바다거북과 함께 바다를 누비는 퐁이 탐험대. 지도를 펴고 망원경을 살피며 아직 모르는 항로를 찾아간다.",
+      "kind": "fish",
+      "rarity": "mythic",
+      "sell_price": 3300,
+      "swim_y_min": 0.2,
+      "swim_y_max": 0.78,
+      "speed": "0.011",
+      "size": 155,
+      "movement_type": "swim",
+      "travel_direction": "both",
+      "flip_with_direction": true,
+      "native_region_id": null,
+      "frames": 8,
+      "columns": 4,
+      "requiredMotions": [
+        "all four turtle flippers coordinated swimming stroke",
+        "peach flag flutter",
+        "telescope tilts up and down on its mount",
+        "rear-left Pongi visibly waves its raised paw"
+      ],
+      "poses": [
+        "cruise: all four flippers start coordinated downstroke, flag left curve",
+        "cruise: all four flippers mid downstroke, flag curls right",
+        "cruise: all four flippers extended through stroke, flag flowing left",
+        "cruise: all four flippers recovering upward, flag curls right",
+        "action anticipation: turtle swimming continues; telescope tilts upward; rear Pongi raises its paw",
+        "action peak: four flippers change stroke; telescope at highest tilt; rear Pongi waves paw outward; flag flowing",
+        "action return: four flippers recover; telescope tilts downward; rear Pongi waves paw inward",
+        "recovery: flippers return near frame 0; telescope neutral, rear Pongi paw neutral ready to repeat, flag relaxed"
+      ],
+      "facing": "right",
+      "thumbnail_path": "fish/mythic/pongi-turtle-expedition_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/pongi-turtle-expedition_swim8_v1_sprite.png",
+      "catalog_sprite_sheet_path": "fish/mythic/pongi-turtle-expedition_v1_sprite.png",
+      "spriteSource": "assets/storage-upload/new/20261025-103445/sources/pongi-turtle-expedition-sprite.source",
+      "thumbnailSource": "assets/storage-upload/new/20261025-102945/fish/mythic/pongi-turtle-expedition_v1_thumbnail.png",
+      "generatedSprite": "C:\\Users\\user\\.codex\\generated_images\\01a16e8e-3f48-7971-b592-5b6efdd9161d\\exec-8395bd2e-4291-4147-b8a6-6b8a55c7d13b.png",
+      "spritePrompt": "Edit ONLY the turtle flippers in this finished transparent 4-column by 2-row EIGHT-FRAME animation sheet, and make the existing rear LEFT otter's waving gesture more distinct. Preserve the approved face, shell, four otters, cabin, all rigid body anchors, identical overall scale, flag flutter, telescope up/down poses, wide transparent margins and exact 2:1 sheet grid. Do not enlarge any subject. Do not move or rescale the turtle body.\nCRITICAL ANATOMY CORRECTION: each turtle MUST have FOUR separately readable and animated sea-turtle flippers. The TWO long front paddles near the head on the RIGHT already swim; retain their coordinated stroke. The TWO smaller REAR paddles attach at the stern on the LEFT. The far-side rear paddle is currently mostly hidden as a small pale triangle at the UPPER-LEFT of the shell, just below the rear deck. Expose this fourth paddle clearly: make it a distinct short tapered TURQUOISE PATTERNED FLIPPER protruding behind the upper-left shell, not an ivory shell horn, rail, finless tail or static wedge. Keep it visibly attached at its shoulder behind the shell. It MUST change its angle and silhouette from frame to frame: frames 0 and 4 swept backward at -20 degrees, 1 and 5 downward at +15 degrees, 2 and 6 extended sideways at +35 degrees, 3 and 7 recovering near horizontal. The other LEFT rear paddle also sweeps through a coordinated stroke, slightly offset from the front pair. All four flippers swim in EVERY frame, none stays rigid. Keep four limbs total, no extra legs. Do not wave flippers like human arms.\nThe seated Pongi at the far LEFT rear of the deck waves its ONE free paw distinctly during bottom row: frame 4 raised next to head, frame 5 extended outward-left, frame 6 bent inward near cheek, frame 7 lowered toward resting. Keep the paw attached to a small otter arm; do not change its face or body.\nPreserve all other details, object identity and premium painterly style. All eight poses stay right-facing. Maintain at least 12% clear alpha margin on every cell edge and no visible grid, labels, numbers, background, water or scenery. True transparent PNG, eight equal square cells in 4 columns and 2 rows.",
+      "spriteAttempts": [
+        {
+          "source": "sources/pongi-turtle-expedition-sprite-attempt1.source",
+          "prompt": "Use case: stylized-concept. Asset: one high-quality production animation SPRITE SHEET for \"퐁이 거북이 탐험대\", exactly EIGHT distinct full-body animation poses arranged FOUR COLUMNS by TWO ROWS of EQUAL SQUARE cells. Full canvas aspect ratio exactly 2:1, like the guide (for example 2048x1024). Read frames left-to-right in top row 0-3 then left-to-right bottom row 4-7. Real TRANSPARENT alpha background.\n\nInput 1 is the AUTHORITATIVE GRID, SCALE AND SPACING guide: preserve its small subject size, fixed cell centers, huge clear margins, 4x2 aspect ratio and repeated structure. Input 2 is APPROVED CHARACTER IDENTITY, proportions, crew, materials and detailed drawing style. Recreate this exact subject with actual moving parts, do NOT output eight copies of the guide. Maximum subject size including all action extents is the central 64% of each square cell. At least 15% empty TRANSPARENT margin on EVERY cell edge including internal seams; no glow/flag/flipper/rope/treasure touches a seam. Stable body center, eye position, hull/shell dimensions and camera throughout. Never recenter or rescale individual poses. Crisp premium fantasy-game painterly shading, accurate small expressive Pongi otters. Face SCREEN RIGHT in EVERY frame, head/bow right, rear/propeller/tail left; no front or left views.\n\nMUST show and animate ALL FOUR SEA TURTLE FLIPPERS, including both rear flippers: expose the far rear paddle clearly enough to see it swim; preserve one fixed slightly elevated side-three-quarter right-facing camera. Both front flippers and both rear flippers perform a coordinated continuous forward-swimming stroke, changing real joint angles and paddle silhouettes in EVERY pose, not waving like human arms. Keep head, eyes, heavy shell, deck and glass cabin fixed. The peach flag cloth curls left/right through the water in every frame while its pole remains rigid. The brass telescope pivots UP and DOWN on the SAME small mount and the observing Pongi follows it gently, without moving the cabin. The Pongi seated at the rear LEFT must visibly WAVE its raised paw outward/inward/up/down during the lower row, paw attached correctly to its arm; do not just blink eyes. Keep all four otter explorers, turtle anatomy, deck, bags, cabin and palette from the thumbnail.\n\nEXACT POSE PLAN, ALL EIGHT ARE REQUIRED:\nFrame 0: cruise: all four flippers start coordinated downstroke, flag left curve.\nFrame 1: cruise: all four flippers mid downstroke, flag curls right.\nFrame 2: cruise: all four flippers extended through stroke, flag flowing left.\nFrame 3: cruise: all four flippers recovering upward, flag curls right.\nFrame 4: action anticipation: turtle swimming continues; telescope tilts upward; rear Pongi raises its paw.\nFrame 5: action peak: four flippers change stroke; telescope at highest tilt; rear Pongi waves paw outward; flag flowing.\nFrame 6: action return: four flippers recover; telescope tilts downward; rear Pongi waves paw inward.\nFrame 7: recovery: flippers return near frame 0; telescope neutral, rear Pongi paw neutral ready to repeat, flag relaxed.\n\nFrame 7 should recover toward frame 0 for a seamless six-second repeated cycle. Physical moving parts are mandatory; do not substitute whole-object translation, zoom, opacity changes, glow-only changes, eye-only blinking, fake motion blur, or identical copies. The rigid body and main head stay perfectly stable while requested components move. Preserve all body parts and crew across frames. No grid lines, no labels, no frame numbers, no UI, no words, no water, no floor, no background, no checkerboard. Output a true transparent PNG, 4x2 square cells, exact full-sheet aspect 2:1.",
+          "reason": "Raw pose margins below the eight-frame safety threshold"
+        },
+        {
+          "source": "sources/pongi-turtle-expedition-sprite-attempt2.source",
+          "prompt": "EDIT the provided EIGHT-FRAME ANIMATION SHEET. Input 1 is the edit target: preserve its exact character identity, camera, colors, crew, rigid body structure, frame order and EIGHT DISTINCT POSES. Input 2 is a SPACING GUIDE ONLY. The subjects in input 1 are too big for their cells. Recreate EACH pose at ONLY 65% of its current subject width and height, centered on its SAME rigid hull/shell anchor inside the SAME cell. Do not zoom in. Do not just add a border around the whole sheet: reduce every subject inside its own cell. Keep the final canvas aspect ratio 2:1, FOUR COLUMNS by TWO ROWS of EQUAL SQUARE cells, no gaps or visible grid lines. Every entire subject including actions must lie within the central 62% of its own cell, at least 18% empty transparent margin to ALL four cell boundaries. No alpha fragments along cell borders or canvas borders. Preserve genuine transparent background. No text, no numbers, no water, no scenery.\n\nRequired animation content must remain CLEARLY DIFFERENT in the eight cells:\n0: cruise: all four flippers start coordinated downstroke, flag left curve\n1: cruise: all four flippers mid downstroke, flag curls right\n2: cruise: all four flippers extended through stroke, flag flowing left\n3: cruise: all four flippers recovering upward, flag curls right\n4: action anticipation: turtle swimming continues; telescope tilts upward; rear Pongi raises its paw\n5: action peak: four flippers change stroke; telescope at highest tilt; rear Pongi waves paw outward; flag flowing\n6: action return: four flippers recover; telescope tilts downward; rear Pongi waves paw inward\n7: recovery: flippers return near frame 0; telescope neutral, rear Pongi paw neutral ready to repeat, flag relaxed\n\nAll FOUR flippers must visibly change angle through swimming, including the two smaller REAR flippers at the left. Keep four separate flippers readable. Preserve the changing flag shapes; telescope pivots clearly up then down in 4-7. Rear LEFT otter's raised paw must visibly wave through distinct positions in 4,5,6,7. Head and shell stay steady.\n\nKeep exactly the same RIGHT-FACING orientation in all eight poses. Preserve detailed premium painted finish and sharpness, no overall opacity changes, no motion blur, no missing parts. Frame 7 recovers toward frame 0. The requested SHRINKING and SAFE CLEAR MARGINS are the main edit. Do not keep the old large scale.",
+          "reason": "Clarify far-side rear paddle and rear Pongi wave"
+        }
+      ],
+      "hashes": {
+        "fish/mythic/pongi-turtle-expedition_v1_thumbnail.png": "3f5518e06547fe286a7e21216252e3956fd0346d898c67739675221cc33a835e",
+        "fish/mythic/pongi-turtle-expedition_swim8_v1_sprite.png": "2e29487117cc7db090dfcb81f76b02c895df6dbca988d4a605c4debdd8c41cf0",
+        "fish/mythic/pongi-turtle-expedition_v1_sprite.png": "f4cf9c99f00aee5efd66864b7bda2bd4ad202813e3a14664e32daff728c70b9c"
+      }
+    }
+  ],
+  "entries": [
+    {
+      "id": "pongi-mobile-treasure-salvager",
+      "frames": 8,
+      "columns": 4,
+      "storage_path": "fish/mythic/pongi-mobile-treasure-salvager_swim8_v1_sprite.png",
+      "source": "sources/pongi-mobile-treasure-salvager-sprite.source",
+      "prompt": "Edit ONLY the pilot's STEERING WHEEL AND ATTACHED PAWS and the stern propeller rotation in this finished transparent 4x2 eight-frame submarine sprite sheet. Preserve every hull, crew head, window, material, cell size, safe margins, camera, rigid hull anchor and EXACT existing treasure-chest lifting/lowering and lamp on/off sequence. Do not enlarge the sprites, do not move the hull.\nMANDATORY clear steering animation: inside the RIGHT glass cockpit, make the pilot's small wooden/brass THREE-SPOKE STEERING WHEEL easy to read just in front of its belly, with one visible small SCARLET RED KNOB on the rim so its rotation is unmistakable. This is a real steering wheel with spokes and a hub, not an unchanging U-shaped brown arc. Both small otter paws stay on the rim and follow its rotation; the otter face and body remain stable. Wheel center and circular size remain fixed. In top-row frame 0 put the red knob at 12 o'clock, frame 1 at 2 o'clock, frame 2 at 4 o'clock, frame 3 at 6 o'clock. Lower-row frames 4 knob at 2 o'clock, frame 5 at 10 o'clock, frame 6 at 11 o'clock, frame 7 at 12 o'clock (recover toward frame 0). Rotate ALL THREE SPOKES together with the red rim knob. Do not just move the knob on an otherwise frozen wheel. Keep wheel and paws fully behind the existing glass window, no giant new external wheel.\nAt the LEFT stern, preserve the same copper propeller housing and blade anatomy but turn its blades through distinct rotational angles across all eight frames; keep the shaft and housing anchored. A tiny ivory paint mark on ONE propeller blade can indicate rotation. Do not change any other component.\nPreserve all eight distinct original chest/cable/diver positions and amber light states precisely: chest high 0-3; halfway lowered 4; lowest and longest cable 5; halfway raised 6; high 7. Lights bright/dim/off/bright in 0/1/2/3. The main hull, four crew members and treasure identity must stay the same. True transparent alpha, FOUR columns by TWO rows of equal square cells, full canvas exactly 2:1. Existing wide clear cell margins must remain. No background, text, numbers, grid lines or labels."
+    },
+    {
+      "id": "pongi-turtle-expedition",
+      "frames": 8,
+      "columns": 4,
+      "storage_path": "fish/mythic/pongi-turtle-expedition_swim8_v1_sprite.png",
+      "source": "sources/pongi-turtle-expedition-sprite.source",
+      "prompt": "Edit ONLY the turtle flippers in this finished transparent 4-column by 2-row EIGHT-FRAME animation sheet, and make the existing rear LEFT otter's waving gesture more distinct. Preserve the approved face, shell, four otters, cabin, all rigid body anchors, identical overall scale, flag flutter, telescope up/down poses, wide transparent margins and exact 2:1 sheet grid. Do not enlarge any subject. Do not move or rescale the turtle body.\nCRITICAL ANATOMY CORRECTION: each turtle MUST have FOUR separately readable and animated sea-turtle flippers. The TWO long front paddles near the head on the RIGHT already swim; retain their coordinated stroke. The TWO smaller REAR paddles attach at the stern on the LEFT. The far-side rear paddle is currently mostly hidden as a small pale triangle at the UPPER-LEFT of the shell, just below the rear deck. Expose this fourth paddle clearly: make it a distinct short tapered TURQUOISE PATTERNED FLIPPER protruding behind the upper-left shell, not an ivory shell horn, rail, finless tail or static wedge. Keep it visibly attached at its shoulder behind the shell. It MUST change its angle and silhouette from frame to frame: frames 0 and 4 swept backward at -20 degrees, 1 and 5 downward at +15 degrees, 2 and 6 extended sideways at +35 degrees, 3 and 7 recovering near horizontal. The other LEFT rear paddle also sweeps through a coordinated stroke, slightly offset from the front pair. All four flippers swim in EVERY frame, none stays rigid. Keep four limbs total, no extra legs. Do not wave flippers like human arms.\nThe seated Pongi at the far LEFT rear of the deck waves its ONE free paw distinctly during bottom row: frame 4 raised next to head, frame 5 extended outward-left, frame 6 bent inward near cheek, frame 7 lowered toward resting. Keep the paw attached to a small otter arm; do not change its face or body.\nPreserve all other details, object identity and premium painterly style. All eight poses stay right-facing. Maintain at least 12% clear alpha margin on every cell edge and no visible grid, labels, numbers, background, water or scenery. True transparent PNG, eight equal square cells in 4 columns and 2 rows."
+    }
+  ],
+  "releaseAt": "2026-10-25T01:48:34.304Z",
+  "storageVerification": {
+    "projectRef": "ewafafphiovbpjwogwzn",
+    "files": 6,
+    "verifiedAt": "2026-10-25T01:51:08.601Z",
+    "publicHashesMatch": true
+  },
+  "databaseVerification": {
+    "projectRef": "ewafafphiovbpjwogwzn",
+    "verifiedAt": "2026-10-25T01:54:01.251Z",
+    "transport": "server-only Data API; MCP and CLI credentials expired",
+    "speciesCount": 2,
+    "habitatsPerSpecies": 13,
+    "catalogDataApplied": true,
+    "remoteMigrationRecorded": false,
+    "pendingMigration": "20261025013752_add_pongi_mobile_expeditions.sql",
+    "scope": "Exact catalog columns and all-region habitats of these two IDs only; remote migration history remains pending"
+  }
+}

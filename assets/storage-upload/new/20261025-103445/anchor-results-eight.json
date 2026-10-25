@@ -1,0 +1,124 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261025-103445/fish/mythic/pongi-mobile-treasure-salvager_swim8_v1_sprite.png",
+        "storage_path":  "fish/mythic/pongi-mobile-treasure-salvager_swim8_v1_sprite.png",
+        "patch":  [
+                      282,
+                      179,
+                      33,
+                      33
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  21.268356194276311
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -1,
+                           "rmse":  21.310960203458418
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  21.663705031745593
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  -1,
+                           "dy":  -14,
+                           "rmse":  19.775600627169059
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -1,
+                           "dy":  -14,
+                           "rmse":  45.55078448218152
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -1,
+                           "dy":  -14,
+                           "rmse":  23.987729301140476
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -1,
+                           "dy":  -14,
+                           "rmse":  22.287240169661324
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261025-103445/fish/mythic/pongi-turtle-expedition_swim8_v1_sprite.png",
+        "storage_path":  "fish/mythic/pongi-turtle-expedition_swim8_v1_sprite.png",
+        "patch":  [
+                      322,
+                      259,
+                      33,
+                      33
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  11,
+                           "dy":  -1,
+                           "rmse":  20.592514486884841
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  1,
+                           "rmse":  19.604403704986773
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  9,
+                           "dy":  0,
+                           "rmse":  22.078934277790111
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  4,
+                           "dy":  -32,
+                           "rmse":  17.261778826773988
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  15,
+                           "dy":  -28,
+                           "rmse":  22.588942661809394
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  5,
+                           "dy":  -32,
+                           "rmse":  18.570782615230538
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  5,
+                           "dy":  -31,
+                           "rmse":  21.135092825921785
+                       }
+                   ]
+    }
+]

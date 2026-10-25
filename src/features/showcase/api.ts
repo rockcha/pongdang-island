@@ -21,6 +21,12 @@ export async function publishShowcase(operation:string,caption:string){
  window.dispatchEvent(new Event('showcase-changed'))
  return data
 }
+export async function publishExpeditionShowcase(source:'trap'|'harbor',trip:string,collectible:string,caption:string){
+ const {data,error}=await createClient().rpc('publish_expedition_showcase',{p_source:source,p_trip_id:trip,p_collectible_id:collectible,p_caption:caption})
+ if(error)throw error
+ window.dispatchEvent(new Event('showcase-changed'))
+ return data
+}
 export async function reactToShowcase(post:string,reaction:ShowcaseReaction|null){
  const {data,error}=await createClient().rpc('react_fishing_showcase',{p_post_id:post,p_reaction:reaction})
  if(error)throw error
@@ -33,7 +39,7 @@ export async function deleteShowcase(id:string){
 }
 export function showcaseError(cause:unknown){
  const message=String((cause as {message?:string})?.message??'')
- if(message.includes('CATCH_NOT_SHAREABLE'))return '직접 낚시로 포획한 특급·신화만 자랑할 수 있어요.'
+ if(message.includes('CATCH_NOT_SHAREABLE'))return '낚시·통발·어선으로 획득한 특급·신화만 자랑할 수 있어요.'
  if(message.includes('SHOWCASE_NOT_FOUND'))return '삭제되었거나 찾을 수 없는 자랑이에요.'
  if(message.includes('INVALID_SHOWCASE_REACTION'))return '이 반응을 저장하지 못했어요. 새로고침 후 다시 시도해주세요.'
  if(message.includes('INVALID_SHOWCASE'))return '캡션을 확인해주세요. 200자까지 작성할 수 있어요.'

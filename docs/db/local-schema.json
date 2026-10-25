@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "b4d62e5ba8a8909555314435bd1f7aaeb0b2f2f400f007a6d03a712348cdd4f3",
+  "migrationHash": "6f1cec12f173fb1f336cd77c1a1fe25cff9f4ec70f212af723cbd28665fd918a",
   "structure": {
     "enums": [
       {
@@ -13326,6 +13326,16 @@
         "securityDefiner": false
       },
       {
+        "name": "publish_expedition_showcase",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_source text, p_trip_id uuid, p_collectible_id uuid, p_caption text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.publish_expedition_showcase(p_source text, p_trip_id uuid, p_collectible_id uuid, p_caption text)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); outcome jsonb; caught timestamptz; region_name text;\n item jsonb; existing uuid; result_id uuid;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_source is null or p_source not in ('trap','harbor') or p_trip_id is null\n or p_collectible_id is null or p_caption is null or char_length(btrim(p_caption))>200\n then raise exception 'INVALID_SHOWCASE';end if;\n if p_source='trap' then\n  select t.result,t.claimed_at,r.name into outcome,caught,region_name\n  from public.fishing_expeditions t join public.regions r on r.id=t.region_id\n  where t.id=p_trip_id and t.user_id=u and t.claimed_at is not null;\n else\n  select t.result,t.claimed_at,coalesce(t.result->>'regionName',r.name) into outcome,caught,region_name\n  from public.harbor_voyages t join public.regions r on r.id=t.region_id\n  where t.id=p_trip_id and t.user_id=u and t.claimed_at is not null;\n end if;\n if outcome is null or caught is null then raise exception 'CATCH_NOT_SHAREABLE';end if;\n select value into item from jsonb_array_elements(outcome->'items')\n where value->>'id'=p_collectible_id::text limit 1;\n if item is null or item->'species'->>'id' is null\n or coalesce(item->'species'->>'rarity','') not in ('epic','mythic')\n then raise exception 'CATCH_NOT_SHAREABLE';end if;\n perform pg_advisory_xact_lock(hashtextextended('showcase:'||u::text||':'||p_collectible_id::text,0));\n select id into existing from public.fishing_showcase_posts where author_id=u and operation_id=p_collectible_id;\n if found then return existing;end if;\n insert into public.fishing_showcase_posts(author_id,operation_id,caption,species,rarity,region_name,caught_at,first_discovery,render_version)\n values(u,p_collectible_id,btrim(p_caption),item->'species',(item->'species'->>'rarity')::public.game_rarity,\n region_name,caught,coalesce((item->>'firstDiscovery')::boolean,false),1) returning id into result_id;\n return result_id;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "publish_fishing_showcase",
         "config": [
           "search_path=\"\""
@@ -15093,6 +15103,16 @@
         "schema": "public",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION public.production_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.production_state()$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "publish_expedition_showcase",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_source text, p_trip_id uuid, p_collectible_id uuid, p_caption text",
+        "definition": "CREATE OR REPLACE FUNCTION public.publish_expedition_showcase(p_source text, p_trip_id uuid, p_collectible_id uuid, p_caption text)\n RETURNS uuid\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select app_private.publish_expedition_showcase(p_source,p_trip_id,p_collectible_id,p_caption)\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -32757,6 +32777,27 @@
         "arguments": "p_profile jsonb"
       },
       {
+        "name": "publish_expedition_showcase",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_source text, p_trip_id uuid, p_collectible_id uuid, p_caption text"
+      },
+      {
+        "name": "publish_expedition_showcase",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_source text, p_trip_id uuid, p_collectible_id uuid, p_caption text"
+      },
+      {
+        "name": "publish_expedition_showcase",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_source text, p_trip_id uuid, p_collectible_id uuid, p_caption text"
+      },
+      {
         "name": "publish_fishing_showcase",
         "role": "anon",
         "schema": "app_private",
@@ -36472,6 +36513,27 @@
         "schema": "public",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "publish_expedition_showcase",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_source text, p_trip_id uuid, p_collectible_id uuid, p_caption text"
+      },
+      {
+        "name": "publish_expedition_showcase",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_source text, p_trip_id uuid, p_collectible_id uuid, p_caption text"
+      },
+      {
+        "name": "publish_expedition_showcase",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_source text, p_trip_id uuid, p_collectible_id uuid, p_caption text"
       },
       {
         "name": "publish_fishing_showcase",

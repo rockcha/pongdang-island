@@ -72,7 +72,7 @@ it('always dispatches the little boat and does not offer a vessel picker',async(
  expect(screen.queryByLabelText('통발 선택')).toBeNull()
  expect(screen.queryByRole('heading',{name:'바람돛 낚싯배'})).toBeNull()
  await openCargo();fireEvent.change(screen.getByRole('spinbutton'),{target:{value:'7'}});await closeCargo()
- expect(screen.getByText('예상 유인 시간 1시간 10분')).toBeTruthy()
+ expect(screen.getByText('예상 유인 시간 1시간 45분')).toBeTruthy()
 })
 it('preserves mixed cargo across bait selection and keeps the visible capacity meter in sync',async()=>{
  mock.inventory={bait:10,bait_safe:10}

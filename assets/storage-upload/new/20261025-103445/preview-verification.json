@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "testedAt": "2026-10-25T01:47:56.659Z",
+  "viewports": [
+    1000,
+    390,
+    320
+  ],
+  "dpr": 2,
+  "canvases": 3,
+  "enhancedSheets": [
+    "pongi-mobile-treasure-salvager_swim8_v1_sprite.png",
+    "pongi-turtle-expedition_swim8_v1_sprite.png"
+  ],
+  "fullSixSecondLoops": true,
+  "reducedMotionStatic": true,
+  "errors": [],
+  "missing": [],
+  "scope": "Actual tank and collection previews using local textures; no player writes"
+}

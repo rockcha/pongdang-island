@@ -50,6 +50,7 @@ export type Database = {
       showcase_feed:{Args:{p_mine?:boolean;p_offset?:number};Returns:import('@/features/showcase/api').ShowcaseFeed}
       showcase_reaction_people:{Args:{p_post_id:string;p_reaction?:import('@/features/showcase/api').ShowcaseReaction|null;p_offset?:number};Returns:import('@/features/showcase/api').ShowcaseReactionPeople}
       publish_fishing_showcase:{Args:{p_operation_id:string;p_caption:string};Returns:string}
+      publish_expedition_showcase:{Args:{p_source:'trap'|'harbor';p_trip_id:string;p_collectible_id:string;p_caption:string};Returns:string}
       react_fishing_showcase:{Args:{p_post_id:string;p_reaction:import('@/features/showcase/api').ShowcaseReaction|null};Returns:import('@/features/showcase/api').ShowcasePost}
       delete_fishing_showcase:{Args:{p_post_id:string};Returns:string}
       refresh_return_notifications:{Args:Record<string,never>;Returns:import('@/features/notifications/api').ReturnNotificationStatus}

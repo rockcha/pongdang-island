@@ -210,10 +210,11 @@ export function HeaderPlaceNavigation() {
           <Menu.Root key={pathname + group.label}>
             <Menu.Trigger
               aria-label={group.label}
+              aria-current={selected?'location':undefined}
               aria-description={hasActivity?'새 소식 또는 확인할 항목이 있어요':undefined}
-              className={`group flex min-h-9 min-w-0 items-center justify-center px-1 py-1 outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring data-popup-open:text-primary ${selected ? 'text-primary' : 'text-muted-foreground hover:text-foreground'}`}
+              className={`group relative my-1 mx-0.5 flex min-h-9 min-w-0 items-center justify-center rounded-lg px-1 py-1 outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring data-popup-open:text-primary ${selected ? 'bg-primary/10 text-primary after:absolute after:bottom-0 after:h-0.5 after:w-5 after:rounded-full after:bg-primary' : 'text-muted-foreground hover:bg-secondary/50 hover:text-foreground'}`}
             >
-              <span className="flex items-center gap-1 text-xs font-medium">
+              <span className={`flex items-center gap-1 text-xs ${selected?'font-semibold':'font-medium'}`}>
                 {hasActivity&&<span aria-hidden="true" data-category-activity={group.label} className="category-activity-dot"/>}
                 {group.label}
                 <ChevronDown
@@ -251,7 +252,7 @@ export function HeaderPlaceNavigation() {
                         {!!productionStatus(to)?.total && (
                           <span className={`flex shrink-0 items-center gap-1 rounded px-1.5 py-1 text-[10px] tabular-nums ${productionStatus(to)?.ready ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
                             {!!productionStatus(to)?.ready && <span aria-hidden="true" className="category-activity-dot" />}
-                            완료 {productionStatus(to)!.ready}/{productionStatus(to)!.total}
+                            완료 {productionStatus(to)!.ready}/4
                           </span>
                         )}
                         {hasNewContent(to) && (

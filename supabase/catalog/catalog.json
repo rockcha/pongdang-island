@@ -3475,6 +3475,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "halloween-cobweb-bundle",
+      "kind": "trash",
+      "name": "거미줄 뭉치",
+      "description": "유령선 구석에서 떨어져 나온 낡은 거미줄 뭉치. 잔가지와 먼지가 실 사이에 엉켜 있다.",
+      "swim_y_min": "0.84",
+      "swim_y_max": "0.95",
+      "speed": "0.001",
+      "size": 56,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/halloween-cobweb-bundle_v1_thumbnail.png",
+      "sell_price": 12,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "halloween-coffin-hermit-crab",
       "kind": "fish",
       "name": "관짝 소라게",
@@ -3525,6 +3543,24 @@
       "sprite_sheet_path": "fish/mythic/halloween-crimson-megalodon_v1_sprite.png",
       "native_region_id": null,
       "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "halloween-cursed-sailor-souls",
+      "kind": "fish",
+      "name": "저주받은 선원들의 영혼",
+      "description": "돌아갈 항구를 잊은 세 선원의 영혼. 찢어진 옷깃과 푸른 잔상을 끌며 함께 바다를 떠돈다.",
+      "swim_y_min": "0.16",
+      "swim_y_max": "0.7",
+      "speed": "0.013",
+      "size": 92,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/halloween-cursed-sailor-souls_v1_thumbnail.png",
+      "sell_price": 350,
+      "sprite_sheet_path": "fish/rare/halloween-cursed-sailor-souls_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "pulse",
       "flip_with_direction": true,
       "travel_direction": "both"
     },
@@ -3814,6 +3850,24 @@
       "native_region_id": null,
       "movement_type": "fixed",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "halloween-infected-turtle",
+      "kind": "fish",
+      "name": "감염된 거북이",
+      "description": "보랏빛 등껍질의 틈에서 연두색 빛이 새는 거북이. 등에 붙은 해초를 흔들며 느긋하게 유영한다.",
+      "swim_y_min": "0.28",
+      "swim_y_max": "0.82",
+      "speed": "0.015",
+      "size": 82,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/halloween-infected-turtle_v1_thumbnail.png",
+      "sell_price": 340,
+      "sprite_sheet_path": "fish/rare/halloween-infected-turtle_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -4195,6 +4249,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "halloween-skeleton-fish",
+      "kind": "fish",
+      "name": "해골물고기",
+      "description": "뼈마디 사이로 작은 영혼빛이 새어 나오는 물고기. 달빛이 들면 앙상한 꼬리로 물살을 가른다.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.78",
+      "speed": "0.024",
+      "size": 64,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/halloween-skeleton-fish_v1_thumbnail.png",
+      "sell_price": 60,
+      "sprite_sheet_path": "fish/normal/halloween-skeleton-fish_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "halloween-skull-pattern-filefish",
       "kind": "fish",
       "name": "해골무늬 쥐치",
@@ -4279,6 +4351,24 @@
       "thumbnail_path": "fish/normal/halloween-soft-ghost-goldfish_v2_thumbnail.png",
       "sell_price": 56,
       "sprite_sheet_path": "fish/normal/halloween-soft-ghost-goldfish_v2_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "halloween-soul-lantern-angler",
+      "kind": "fish",
+      "name": "영혼등불 아귀",
+      "description": "이마의 낡은 등불에 길 잃은 영혼의 불꽃을 품은 아귀. 깊은 바닷속에서 푸른빛으로 조용히 길을 비춘다.",
+      "swim_y_min": "0.3",
+      "swim_y_max": "0.84",
+      "speed": "0.017",
+      "size": 92,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/halloween-soul-lantern-angler_v1_thumbnail.png",
+      "sell_price": 1260,
+      "sprite_sheet_path": "fish/epic/halloween-soul-lantern-angler_v1_sprite.png",
       "native_region_id": null,
       "movement_type": "swim",
       "flip_with_direction": true,
@@ -4372,6 +4462,24 @@
       "native_region_id": null,
       "movement_type": "swim",
       "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "halloween-torn-black-cloak",
+      "kind": "trash",
+      "name": "찢어진 검은 망토",
+      "description": "누군가 버리고 간 검은 망토. 해진 끝자락과 찢어진 구멍 사이로 바닷물이 스며든다.",
+      "swim_y_min": "0.85",
+      "swim_y_max": "0.96",
+      "speed": "0.001",
+      "size": 64,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/halloween-torn-black-cloak_v1_thumbnail.png",
+      "sell_price": 16,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
       "travel_direction": "both"
     },
     {
@@ -4497,6 +4605,24 @@
       "sprite_sheet_path": "fish/normal/halloween-witch-octopus_v1_sprite.png",
       "native_region_id": null,
       "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "halloween-zombie-puffer",
+      "kind": "fish",
+      "name": "좀비복어",
+      "description": "초록빛 몸에 작은 꿰맨 자국이 남은 복어. 졸린 눈으로 헤엄치다가 지느러미를 바쁘게 파닥인다.",
+      "swim_y_min": "0.25",
+      "swim_y_max": "0.78",
+      "speed": "0.019",
+      "size": 70,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/halloween-zombie-puffer_v1_thumbnail.png",
+      "sell_price": 335,
+      "sprite_sheet_path": "fish/rare/halloween-zombie-puffer_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
       "flip_with_direction": true,
       "travel_direction": "both"
     },
@@ -7615,6 +7741,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "pongi-mobile-treasure-salvager",
+      "kind": "fish",
+      "name": "퐁이 이동식 보물 인양선",
+      "description": "작은 크레인으로 바닷속 보물을 건지는 퐁이들의 인양선. 잠수한 퐁이가 줄을 붙잡고 보물상자의 길을 안내한다.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.74",
+      "speed": "0.013",
+      "size": 145,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/pongi-mobile-treasure-salvager_v1_thumbnail.png",
+      "sell_price": 3400,
+      "sprite_sheet_path": "fish/mythic/pongi-mobile-treasure-salvager_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "pongi-plush",
       "kind": "trash",
       "name": "퐁이 인형",
@@ -7702,6 +7846,24 @@
       "native_region_id": null,
       "movement_type": "fixed",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "pongi-turtle-expedition",
+      "kind": "fish",
+      "name": "퐁이 거북이 탐험대",
+      "description": "커다란 바다거북과 함께 바다를 누비는 퐁이 탐험대. 지도를 펴고 망원경을 살피며 아직 모르는 항로를 찾아간다.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.78",
+      "speed": "0.011",
+      "size": 155,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/pongi-turtle-expedition_v1_thumbnail.png",
+      "sell_price": 3300,
+      "sprite_sheet_path": "fish/mythic/pongi-turtle-expedition_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -14063,6 +14225,58 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "halloween-cobweb-bundle",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-cobweb-bundle",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-cobweb-bundle",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-cobweb-bundle",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-cobweb-bundle",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-cobweb-bundle",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-cobweb-bundle",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-cobweb-bundle",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-cobweb-bundle",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-cobweb-bundle",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-cobweb-bundle",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-cobweb-bundle",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-cobweb-bundle",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "halloween-coffin-hermit-crab",
       "region_id": "bluegrove"
     },
@@ -14216,6 +14430,58 @@
     },
     {
       "species_id": "halloween-crimson-megalodon",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "halloween-cursed-sailor-souls",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-cursed-sailor-souls",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-cursed-sailor-souls",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-cursed-sailor-souls",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-cursed-sailor-souls",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-cursed-sailor-souls",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-cursed-sailor-souls",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-cursed-sailor-souls",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-cursed-sailor-souls",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-cursed-sailor-souls",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-cursed-sailor-souls",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-cursed-sailor-souls",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-cursed-sailor-souls",
       "region_id": "whitenight"
     },
     {
@@ -15048,6 +15314,58 @@
     },
     {
       "species_id": "halloween-headless-portrait",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "halloween-infected-turtle",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-infected-turtle",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-infected-turtle",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-infected-turtle",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-infected-turtle",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-infected-turtle",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-infected-turtle",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-infected-turtle",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-infected-turtle",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-infected-turtle",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-infected-turtle",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-infected-turtle",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-infected-turtle",
       "region_id": "whitenight"
     },
     {
@@ -16143,6 +16461,58 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "halloween-skeleton-fish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-skeleton-fish",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-skeleton-fish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-skeleton-fish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-skeleton-fish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-skeleton-fish",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-skeleton-fish",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-skeleton-fish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-skeleton-fish",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-skeleton-fish",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-skeleton-fish",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-skeleton-fish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-skeleton-fish",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "halloween-skull-pattern-filefish",
       "region_id": "bluegrove"
     },
@@ -16403,6 +16773,58 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "halloween-soul-lantern-angler",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-soul-lantern-angler",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-soul-lantern-angler",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-soul-lantern-angler",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-soul-lantern-angler",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-soul-lantern-angler",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-soul-lantern-angler",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-soul-lantern-angler",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-soul-lantern-angler",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-soul-lantern-angler",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-soul-lantern-angler",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-soul-lantern-angler",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-soul-lantern-angler",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "halloween-spectral-tadpole",
       "region_id": "bluegrove"
     },
@@ -16660,6 +17082,58 @@
     },
     {
       "species_id": "halloween-tomb-dragon-sahet",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "halloween-torn-black-cloak",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-torn-black-cloak",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-torn-black-cloak",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-torn-black-cloak",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-torn-black-cloak",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-torn-black-cloak",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-torn-black-cloak",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-torn-black-cloak",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-torn-black-cloak",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-torn-black-cloak",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-torn-black-cloak",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-torn-black-cloak",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-torn-black-cloak",
       "region_id": "whitenight"
     },
     {
@@ -17024,6 +17498,58 @@
     },
     {
       "species_id": "halloween-witch-octopus",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "halloween-zombie-puffer",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "halloween-zombie-puffer",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "halloween-zombie-puffer",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "halloween-zombie-puffer",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "halloween-zombie-puffer",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "halloween-zombie-puffer",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "halloween-zombie-puffer",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "halloween-zombie-puffer",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "halloween-zombie-puffer",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "halloween-zombie-puffer",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "halloween-zombie-puffer",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "halloween-zombie-puffer",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "halloween-zombie-puffer",
       "region_id": "whitenight"
     },
     {
@@ -19295,6 +19821,58 @@
       "region_id": "pongdang"
     },
     {
+      "species_id": "pongi-mobile-treasure-salvager",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "pongi-mobile-treasure-salvager",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "pongi-mobile-treasure-salvager",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "pongi-mobile-treasure-salvager",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "pongi-mobile-treasure-salvager",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "pongi-mobile-treasure-salvager",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "pongi-mobile-treasure-salvager",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "pongi-mobile-treasure-salvager",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pongi-mobile-treasure-salvager",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "pongi-mobile-treasure-salvager",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "pongi-mobile-treasure-salvager",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "pongi-mobile-treasure-salvager",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "pongi-mobile-treasure-salvager",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "pongi-plush",
       "region_id": "pongdang"
     },
@@ -19396,6 +19974,58 @@
     },
     {
       "species_id": "pongi-subsea-drilling-platform",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "pongi-turtle-expedition",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "pongi-turtle-expedition",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "pongi-turtle-expedition",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "pongi-turtle-expedition",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "pongi-turtle-expedition",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "pongi-turtle-expedition",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "pongi-turtle-expedition",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "pongi-turtle-expedition",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "pongi-turtle-expedition",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "pongi-turtle-expedition",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "pongi-turtle-expedition",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "pongi-turtle-expedition",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "pongi-turtle-expedition",
       "region_id": "whitenight"
     },
     {

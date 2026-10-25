@@ -1,6 +1,7 @@
 import { appArt } from '@/components/app-art'
 import { randomId } from '@/lib/random-id'
 import { AquariumView } from '@/features/aquarium/aquarium-view'
+import {AquariumOverview} from '@/features/aquarium/aquarium-overview'
 import { AquariumTankPicker } from '@/features/aquarium/aquarium-tank-picker'
 import {AquariumCapacityExpansion} from '@/features/aquarium/capacity-expansion'
 import { AquariumBackgroundDialog } from '@/features/aquarium/aquarium-background-dialog'
@@ -50,6 +51,8 @@ export function AquariumPage() {
   const [testFish, setTestFish] = useState<OwnedCollectible[]>([])
   const { id: returningTankId, save: saveReturningTank } = useReturningTank()
   const [selectedId, setSelectedId] = useState(returningTankId)
+  const [expanded,setExpanded]=useState(false)
+  const overviewScroll=useRef(0)
   const [name, setName] = useState('')
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
@@ -320,6 +323,12 @@ export function AquariumPage() {
       if (active.current) setBusy(false)
     }
   }
+  function openRename(id:string){
+    const target=state?.tanks.find(item=>item.id===id)
+    if(!target||busy||goldBusy)return
+    navigationRequest.current++
+    setSelectedId(id);setName(target.name);setRenameError('');setRenameOpen(true)
+  }
   async function rename() {
     if (
       !tank ||
@@ -353,6 +362,8 @@ export function AquariumPage() {
       className="relative flex min-h-0 flex-1 flex-col overflow-hidden"
     >
       <AquariumView
+        overviewContent={!expanded?(state?<AquariumOverview onRename={openRename} state={state} items={[...state.inhabitants,...(operator?testFish:[])]} busy={busy||goldBusy} scrollTop={overviewScroll.current} onScroll={value=>{overviewScroll.current=value}} onSelect={id=>{navigationRequest.current++;setSelectedId(id);setExpanded(true)}} onAdd={()=>{setPurchaseError('');setPurchaseOpen(true)}}/>:<div role="status" className="min-h-0 flex-1 space-y-4 overflow-hidden p-4"><p className="text-xs text-muted-foreground">어항을 준비하고 있어요.</p>{[0,1].map(i=><div key={i} className="h-48 animate-pulse rounded-2xl bg-secondary/50 motion-reduce:animate-none"/>)}</div>):undefined}
+        onOverview={expanded?()=>setExpanded(false):undefined}
         tankId={tank?.id}
         loading={!state && !error}
         items={inhabitants}
@@ -481,20 +492,13 @@ export function AquariumPage() {
               onSelect={(id) => {
                 navigationRequest.current++
                 setSelectedId(id)
+                setExpanded(true)
               }}
               onAdd={() => {
                 setPurchaseError('')
                 setPurchaseOpen(true)
               }}
-              onRename={(id) => {
-                const target = state.tanks.find((item) => item.id === id)
-                if (!target) return
-                navigationRequest.current++
-                setSelectedId(id)
-                setName(target.name)
-                setRenameError('')
-                setRenameOpen(true)
-              }}
+              onRename={openRename}
             />
           ) : undefined
         }

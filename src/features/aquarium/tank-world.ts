@@ -2,6 +2,13 @@ import type { OwnedCollectible } from '@/features/collection/api'
 import { canArrangeSpecies } from './movement-settings'
 
 export const aquariumWorldColumns = 3
+// All thumbnails and detail cameras look into the same world. Resizing a card
+// must never change decoration size, available floor space or placement math.
+export const aquariumLayoutWidth=390
+export const panoramaTankHeight=(width:number)=>width*1.6
+export function clampTankCameraView(view:number,columns:number,zoom:number){
+  return Math.max(0,Math.min(Math.max(0,columns-1/zoom),Number.isFinite(view)?view:0))
+}
 export function clampTankView(view: number, columns = aquariumWorldColumns) {
   return Math.max(0, Math.min(columns - 1, Number.isFinite(view) ? view : 0))
 }
@@ -27,6 +34,11 @@ export type TankWorldFrame = {
 }
 export type TankWorldOptions = {
   columns: 1 | 3
+  overview?:boolean
+  initialZoom?:number
+  fixedViewport?:boolean
+  onVerticalViewChange?:(view:number)=>void
+  onZoomChange?:(zoom:number)=>void
   initialView?: number
   onViewChange?: (view: number) => void
   onFrame?: (frame: TankWorldFrame) => void

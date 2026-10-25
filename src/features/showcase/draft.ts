@@ -1,7 +1,7 @@
 import type {Species} from '@/features/collection/api'
 import {randomId} from '@/lib/random-id'
 
-export type ShowcaseDraft={id:string;owner:string;operationId:string;species:Species;regionName:string;caughtAt:string;firstDiscovery:boolean;renderVersion:1;preview:boolean;caption:string}
+export type ShowcaseDraft={id:string;owner:string;operationId:string;source?:'trap'|'harbor';tripId?:string;species:Species;regionName:string;caughtAt:string;firstDiscovery:boolean;renderVersion:1;preview:boolean;caption:string}
 let current:ShowcaseDraft|null=null
 let preview:ShowcaseDraft|null=null
 export function savePreviewShowcase(value:ShowcaseDraft){preview=value}

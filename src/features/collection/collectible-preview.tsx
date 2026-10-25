@@ -1,4 +1,5 @@
 import {ImageLoadingSpinner} from '@/components/image-loading-spinner'
+import {createCrimsonCanvasLight,crimsonEmission,hasCrimsonEmission} from '@/features/aquarium/crimson-emission'
 import {sharedDecorationFrame} from '@/features/aquarium/shared-decoration-animation'
 import { glassAttachedSpecies } from '@/features/aquarium/glass-attached-species'
 import { useEffect, useRef, useState } from 'react'
@@ -29,6 +30,8 @@ function Preview({species,large=false}:{species:Species;large?:boolean}) {
     const path=enhanced?.path??species.sprite_sheet_path,columns=mythicSheetColumns(path)
     const media=window.matchMedia('(prefers-reduced-motion: reduce)')
     const image=new Image()
+    const crimson=hasCrimsonEmission(species.id)
+    const drawCrimson=crimson?createCrimsonCanvasLight(image,columns):null
     const spirit=hasHalloweenSpirits(species.id)?new Image():null
     let alive=true,frame=0,start=0,loaded=false,onScreen=true,lastFrame=-1
     let timer:ReturnType<typeof setTimeout>|undefined
@@ -43,7 +46,7 @@ function Preview({species,large=false}:{species:Species;large?:boolean}) {
       if(!start)start=now
       const time=(now-start)/1000,reduced=media.matches
       const index=sharedDecorationFrame(species.id,time,reduced,false)??dreamabyssFixedFrame(species.id,time,reduced,false)??scrapisleFixedFrame(species.id,time,reduced,false)??cloudferryFixedFrame(species.id,time,reduced,false)??whitenightFixedFrame(species.id,time,reduced,false)??mythicSwimFrame(path,time,0,reduced)??premiumSwimFrame(path,time,0,reduced?0:Math.floor(time*3)%4,reduced)
-      if(index!==lastFrame||spirit?.complete&&spirit.naturalWidth){
+      if(index!==lastFrame||crimson||spirit?.complete&&spirit.naturalWidth){
         lastFrame=index
         const layout=mythicSwimLayout(path,index)??swimFrameLayout(path,index)
         const cellWidth=image.width/columns,cellHeight=image.height/2,size=viewport*.8*layout.scale
@@ -60,6 +63,7 @@ function Preview({species,large=false}:{species:Species;large?:boolean}) {
         }
         drawSpirits(false)
         context!.drawImage(image,(index%columns)*cellWidth,Math.floor(index/columns)*cellHeight,cellWidth,cellHeight,viewport/2-layout.originX*size,viewport/2-layout.originY*size,size,size)
+        drawCrimson?.(context!,index,viewport/2-layout.originX*size,viewport/2-layout.originY*size,size,crimsonEmission(time,0,reduced))
         drawSpirits(true)
       }
       // Companions orbit continuously; ordinary sheets repaint only on pose changes.

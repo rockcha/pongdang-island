@@ -1,0 +1,187 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261025-071108/fish/normal/halloween-skeleton-fish_v1_sprite.png",
+        "storage_path":  "fish/normal/halloween-skeleton-fish_v1_sprite.png",
+        "patch":  [
+                      458,
+                      262,
+                      47,
+                      47
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -23,
+                           "dy":  2,
+                           "rmse":  5.1659945799429563
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -26,
+                           "rmse":  6.1343200774413456
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -22,
+                           "dy":  -26,
+                           "rmse":  9.1235551082075457
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261025-071108/fish/rare/halloween-cursed-sailor-souls_v1_sprite.png",
+        "storage_path":  "fish/rare/halloween-cursed-sailor-souls_v1_sprite.png",
+        "patch":  [
+                      428,
+                      322,
+                      47,
+                      47
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  4.7198881077839125
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  1,
+                           "dy":  -38,
+                           "rmse":  14.873292969278861
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  -38,
+                           "rmse":  19.459166983391142
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261025-071108/fish/epic/halloween-soul-lantern-angler_v1_sprite.png",
+        "storage_path":  "fish/epic/halloween-soul-lantern-angler_v1_sprite.png",
+        "patch":  [
+                      403,
+                      312,
+                      47,
+                      47
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -12,
+                           "dy":  3,
+                           "rmse":  19.7768557520527
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  5,
+                           "dy":  -34,
+                           "rmse":  18.63550982834921
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -10,
+                           "dy":  -35,
+                           "rmse":  15.59926004855679
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261025-071108/fish/rare/halloween-zombie-puffer_v1_sprite.png",
+        "storage_path":  "fish/rare/halloween-zombie-puffer_v1_sprite.png",
+        "patch":  [
+                      413,
+                      307,
+                      47,
+                      47
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -6,
+                           "dy":  0,
+                           "rmse":  7.2964567599623313
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -43,
+                           "rmse":  17.061899027877875
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -6,
+                           "dy":  -43,
+                           "rmse":  16.790383920193726
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261025-071108/fish/rare/halloween-infected-turtle_v1_sprite.png",
+        "storage_path":  "fish/rare/halloween-infected-turtle_v1_sprite.png",
+        "patch":  [
+                      453,
+                      297,
+                      47,
+                      47
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -9,
+                           "dy":  0,
+                           "rmse":  21.396872946180711
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -34,
+                           "rmse":  16.405505935508359
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -9,
+                           "dy":  -33,
+                           "rmse":  23.61569757333033
+                       }
+                   ]
+    }
+]

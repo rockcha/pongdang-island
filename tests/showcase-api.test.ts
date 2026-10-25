@@ -1,8 +1,13 @@
 import {beforeEach,expect,it,vi} from 'vitest'
 const mock=vi.hoisted(()=>({rpc:vi.fn(),storage:vi.fn()}))
 vi.mock('@/lib/client',()=>({createClient:()=>({rpc:mock.rpc,get storage(){mock.storage();throw new Error('Showcase must not access Storage')}})}))
-import {loadShowcase,publishShowcase,reactToShowcase,deleteShowcase,showcaseError} from '@/features/showcase/api'
+import {loadShowcase,publishShowcase,publishExpeditionShowcase,reactToShowcase,deleteShowcase,showcaseError} from '@/features/showcase/api'
 beforeEach(()=>{vi.clearAllMocks();mock.rpc.mockResolvedValue({data:{items:[],total:0},error:null})})
+it('publishes an automatic catch using its source, trip and individual collectible identity',async()=>{
+ await publishExpeditionShowcase('harbor','voyage','collectible','A great catch')
+ expect(mock.rpc).toHaveBeenCalledWith('publish_expedition_showcase',{p_source:'harbor',p_trip_id:'voyage',p_collectible_id:'collectible',p_caption:'A great catch'})
+ expect(mock.storage).not.toHaveBeenCalled()
+})
 it('distinguishes an invalid reaction from a caption validation error',()=>{
  expect(showcaseError({message:'INVALID_SHOWCASE_REACTION'})).toBe('이 반응을 저장하지 못했어요. 새로고침 후 다시 시도해주세요.')
  expect(showcaseError({message:'INVALID_SHOWCASE'})).toContain('200자')

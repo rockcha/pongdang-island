@@ -1,34 +1,60 @@
-import {expect,it} from 'vitest'
-import {bindTankPinchZoom} from '../src/features/aquarium/pinch-zoom'
+import {expect,it,vi} from 'vitest'
+import {bindTankPinchZoom,type TankCamera} from '../src/features/aquarium/pinch-zoom'
+import {clampTankCameraView} from '../src/features/aquarium/tank-world'
 
-it('zooms at the pinch midpoint, pans within the tank, and shrinks below the original size',()=>{
- const viewport=document.createElement('div'),content=document.createElement('div')
- Object.defineProperties(viewport,{clientWidth:{value:300},clientHeight:{value:500}})
- viewport.append(content)
- const stop=bindTankPinchZoom(viewport,content)
+function setup(){
+ const viewport=document.createElement('div')
+ Object.defineProperty(viewport,'clientWidth',{value:300})
+ let state:TankCamera={zoom:1/3,view:0}
+ const begin=vi.fn(),end=vi.fn()
+ const stop=bindTankPinchZoom(viewport,{columns:3,getState:()=>state,onChange:value=>{state=value},onBegin:begin,onEnd:end})
  const touch=(type:string,points:number[][])=>{
   const event=new Event(type,{bubbles:true,cancelable:true})
   Object.defineProperty(event,'touches',{value:points.map(([clientX,clientY])=>({clientX,clientY}))})
-  viewport.dispatchEvent(event)
-  return event
+  viewport.dispatchEvent(event);return event
  }
- expect(touch('touchstart',[[100,200],[200,200]]).defaultPrevented).toBe(true)
- touch('touchmove',[[50,200],[250,200]])
- expect(content.style.transform).toBe('translate(-150px,-200px) scale(2)')
- touch('touchend',[[50,200]])
- touch('touchmove',[[2000,2000]])
- expect(content.style.transform).toBe('translate(0px,0px) scale(2)')
- touch('touchend',[])
- touch('touchstart',[[50,200],[250,200]])
- touch('touchmove',[[149,200],[151,200]])
- expect(content.style.transform).toBe('translate(75px,125px) scale(0.5)')
- touch('touchend',[])
- touch('touchstart',[[100,200],[200,200]])
- touch('touchmove',[[50,200],[250,200]])
- expect(content.style.transform).toBe('translate(0px,0px) scale(1)')
- touch('touchmove',[[0,200],[300,200]])
- expect(content.style.transform).toContain('scale(1.5)')
- touch('touchmove',[[125,200],[175,200]])
- expect(content.style.transform).toBe('translate(75px,125px) scale(0.5)')
- stop();expect(content.style.transform).toBe('')
+ return {viewport,touch,stop,begin,end,state:()=>state}
+}
+it('starts with the entire world and zooms at the pinch midpoint up to the original viewing size',()=>{
+ const t=setup()
+ expect(t.touch('touchstart',[[100,150],[200,150]]).defaultPrevented).toBe(true)
+ t.touch('touchmove',[[0,150],[300,150]])
+ expect(t.state()).toEqual({zoom:1,view:1})
+ t.touch('touchmove',[[-200,150],[500,150]])
+ expect(t.state().zoom).toBe(1)
+ t.touch('touchend',[]);expect(t.end).toHaveBeenCalledOnce()
+ t.touch('touchstart',[[0,150],[300,150]])
+ t.touch('touchmove',[[149,150],[151,150]])
+ expect(t.state()).toEqual({zoom:1/3,view:0})
+ expect(t.viewport.style.transform).toBe('')
+ t.stop()
+})
+it('leaves object dragging to Phaser and consumes the rest of a pinch without accidental placement',()=>{
+ const t=setup()
+ expect(t.touch('touchstart',[[100,100]]).defaultPrevented).toBe(false)
+ t.touch('touchstart',[[100,100],[200,100]])
+ t.touch('touchend',[[100,100]])
+ expect(t.touch('touchmove',[[200,100]]).defaultPrevented).toBe(true)
+ t.touch('touchend',[])
+ expect(t.touch('touchmove',[[210,100]]).defaultPrevented).toBe(false)
+ t.stop();expect(t.touch('touchstart',[[100,100],[200,100]]).defaultPrevented).toBe(false)
+})
+it('keeps both world edges visible at minimum zoom and clamps panning at every intermediate zoom',()=>{
+ for(const zoom of [1/3,.4,.6,.8,1]){
+  const left=clampTankCameraView(-100,3,zoom),right=clampTankCameraView(100,3,zoom)
+  expect(left).toBe(0);expect(right+1/zoom).toBeCloseTo(3)
+ }
+})
+it('keeps the vertical pinch anchor when a fixed landscape viewport is zoomed',()=>{
+ const viewport=document.createElement('div')
+ Object.defineProperty(viewport,'clientWidth',{value:300})
+ let state:TankCamera={zoom:1/3,view:0,y:0}
+ const stop=bindTankPinchZoom(viewport,{columns:3,getState:()=>state,onChange:value=>{state=value}})
+ const touch=(type:string,points:number[][])=>{const e=new Event(type,{bubbles:true,cancelable:true});Object.defineProperty(e,'touches',{value:points.map(([clientX,clientY])=>({clientX,clientY}))});viewport.dispatchEvent(e)}
+ touch('touchstart',[[100,150],[200,150]])
+ touch('touchmove',[[0,150],[300,150]])
+ expect(state).toEqual({zoom:1,view:1,y:1})
+ touch('touchmove',[[100,150],[200,150]])
+ expect(state.y).toBeCloseTo(0)
+ stop()
 })

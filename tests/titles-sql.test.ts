@@ -1,5 +1,7 @@
 // @vitest-environment node
 import {beforeAll,beforeEach,afterEach,afterAll,expect,it} from 'vitest'
+import {readFileSync} from 'node:fs'
+import catalog from '../supabase/catalog/catalog.json'
 import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
 let db
 const uid='00000000-0000-0000-0000-000000000901',other='00000000-0000-0000-0000-000000000902'
@@ -7,13 +9,55 @@ async function user(sql,args=[],who=uid){await db.exec('savepoint request;set ro
 async function state(){return (await user('select public.title_state() s')).rows[0].s}
 async function log({at='2026-10-19T12:00:00Z',kind=null,rarity=null,species=null,source='manual',bait='bait',region='pongdang',last=false,vessel=null,batch=null,item=null}={}){await db.query('insert into app_private.title_fishing_log(user_id,event_key,occurred_at,source,kind,rarity,species_id,collectible_id,bait_id,region_id,last_bait,vessel_id,batch_id) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)',[uid,crypto.randomUUID(),at,source,kind,rarity,species,item,bait,region,last,vessel,batch])}
 async function earned(){return (await state()).titles.filter(t=>t.earnedAt).map(t=>t.id)}
+async function relicDiscovery(id:string){
+ await db.query('insert into app_private.player_fishing_relics(user_id,relic_id) values($1,$2) on conflict do nothing',[uid,id])
+ await db.query('insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) values($1,$2) on conflict do nothing',[uid,id])
+}
 beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},60000)
-beforeEach(async()=>{await db.exec('begin');for(const [id,name]of [[uid,'낚시꾼'],[other,'친구']]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,name]);await db.query('insert into public.player_wallets(user_id,gold) values($1,50000)',[id])}})
+beforeEach(async()=>{await db.exec('begin');for(const [id,name]of [[uid,'낚시꾼'],[other,'친구']]){await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,name]);await db.query('insert into public.player_wallets(user_id,gold) values($1,50000) on conflict(user_id) do update set gold=excluded.gold',[id])}})
 afterEach(async()=>{await db.exec('rollback')});afterAll(async()=>{await db?.close()})
-it('lists all 185 titles and forbids equipping an unearned title',async()=>{
- const s=await state();expect(s.titles).toHaveLength(185);expect(s.titles.filter(t=>t.category==='growth')).toHaveLength(73)
+it('lists all catalog titles and forbids equipping an unearned title',async()=>{
+ const s=await state();expect(s.titles).toHaveLength(catalog.title_catalog.length);expect(s.titles.filter(t=>t.category==='growth')).toHaveLength(73)
  expect(s.equipped).toBe('beginner');expect(s.titles.filter(t=>t.earnedAt).map(t=>t.id)).toEqual(['beginner'])
  await expect(user("select public.equip_title('fishing-4')")).rejects.toThrow(/NOT_EARNED/)
+})
+
+it('awards relic collection titles at distinct discovery boundaries and queues new discoveries',async()=>{
+ const relics=(await db.query("select id from public.fishing_relics order by (rarity='mythic'),id limit 15")).rows
+ const thresholds={1:'relic-first',5:'relic-five',10:'relic-ten',15:'relic-fifteen'}
+ const hidden=(await state()).titles.find(t=>t.id==='relic-fifteen')
+ expect(hidden).toMatchObject({earnedAt:null,description:null,target:null,progress:null})
+ for(let i=0;i<relics.length;i++){
+  await db.query('delete from app_private.title_dirty where user_id=$1',[uid])
+  await relicDiscovery(relics[i].id)
+  expect((await db.query('select * from app_private.title_dirty where user_id=$1',[uid])).rows).toHaveLength(1)
+  const got=await earned()
+  for(const [target,id] of Object.entries(thresholds))expect(got.includes(id)).toBe(i+1>=Number(target))
+ }
+ const otherState=(await user('select public.title_state() s',[],other)).rows[0].s
+ expect(otherState.titles.filter(t=>t.id.startsWith('relic-')&&t.earnedAt)).toHaveLength(0)
+ await expect(user('select app_private.relic_title_metrics($1)',[uid])).rejects.toThrow(/permission denied/)
+})
+
+it('recognizes prior relic discoveries without current ownership',async()=>{
+ const id=(await db.query("select id from public.fishing_relics where rarity='mythic' limit 1")).rows[0].id
+ await db.query('insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) values($1,$2)',[uid,id])
+ expect(await earned()).toEqual(expect.arrayContaining(['relic-first','relic-mythic']))
+ expect((await db.query('select * from app_private.player_fishing_relics where user_id=$1',[uid])).rows).toHaveLength(0)
+})
+
+it('preserves equipped relic titles after sale and does not count a reacquired relic twice or notify twice',async()=>{
+ const relic=(await db.query("select id,sell_price from public.fishing_relics where rarity='mythic' limit 1")).rows[0]
+ await relicDiscovery(relic.id)
+ expect(await earned()).toEqual(expect.arrayContaining(['relic-first','relic-mythic']))
+ await user("select public.equip_title('relic-mythic')")
+ const before=(await db.query('select count(*)::int n from public.notifications where recipient_id=$1',[uid])).rows[0].n
+ await user('select public.sell_relic($1,$2,$3)',[relic.id,crypto.randomUUID(),relic.sell_price])
+ expect((await state()).equipped).toBe('relic-mythic')
+ await relicDiscovery(relic.id)
+ await state();await user('select public.sync_titles()')
+ expect((await db.query('select app_private.relic_title_metrics($1) m',[uid])).rows[0].m).toEqual({relic_discoveries:1,relic_mythic_discoveries:1})
+ expect((await db.query('select count(*)::int n from public.notifications where recipient_id=$1',[uid])).rows[0].n).toBe(before)
 })
 
 async function arcadePlays(game:string,n:number){
@@ -451,3 +495,5 @@ it('unlocks the three merchant titles only from completed delivery records',asyn
  expect(await earned()).not.toContain('merchant-solver')
  await delivery(99);expect(await earned()).toContain('merchant-solver')
 })
+
+it('validates the production relic-title smoke fixture',async()=>{await db.exec(readFileSync('tests/fixtures/relic-title-smoke.sql','utf8'))})

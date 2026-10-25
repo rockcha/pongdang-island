@@ -27384,6 +27384,66 @@
       "sort_order": 36
     },
     {
+      "id": "relic-fifteen",
+      "name": "바다 유산의 계승자",
+      "tier": 4,
+      "category": "collection",
+      "description": "서로 다른 유물 15종 발견",
+      "metric": "relic_discoveries",
+      "target": 15,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 4605
+    },
+    {
+      "id": "relic-first",
+      "name": "바다가 건넨 유산",
+      "tier": 1,
+      "category": "collection",
+      "description": "서로 다른 유물 1종 발견",
+      "metric": "relic_discoveries",
+      "target": 1,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 4601
+    },
+    {
+      "id": "relic-five",
+      "name": "잠든 보물의 수집가",
+      "tier": 2,
+      "category": "collection",
+      "description": "서로 다른 유물 5종 발견",
+      "metric": "relic_discoveries",
+      "target": 5,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 4602
+    },
+    {
+      "id": "relic-mythic",
+      "name": "신화를 건져 올린 자",
+      "tier": 3,
+      "category": "collection",
+      "description": "신화 등급 유물 1종 발견",
+      "metric": "relic_mythic_discoveries",
+      "target": 1,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 4604
+    },
+    {
+      "id": "relic-ten",
+      "name": "잊힌 시대의 탐구자",
+      "tier": 3,
+      "category": "collection",
+      "description": "서로 다른 유물 10종 발견",
+      "metric": "relic_discoveries",
+      "target": 10,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 4603
+    },
+    {
       "id": "sea-recognized",
       "name": "바다가 먼저 알아본 사람",
       "tier": 4,

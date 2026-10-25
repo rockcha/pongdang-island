@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "2ad5e0463495ceee702a70b30efc87ed4b0eee2691cd2e8acd230fdebcd3995d",
+  "migrationHash": "d4beb3d7c4ed0e8d9d941edff13d3113c6e6192d1514e875a3263c2705445bae",
   "structure": {
     "enums": [
       {
@@ -11583,6 +11583,13 @@
         "definition": "CREATE TRIGGER merchant_titles_dirty AFTER INSERT ON app_private.merchant_deliveries FOR EACH ROW EXECUTE FUNCTION app_private.title_activity_event()"
       },
       {
+        "name": "relic_titles_dirty",
+        "table": "player_fishing_relic_discoveries",
+        "schema": "app_private",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER relic_titles_dirty AFTER INSERT ON app_private.player_fishing_relic_discoveries FOR EACH ROW EXECUTE FUNCTION app_private.title_activity_event()"
+      },
+      {
         "name": "fishing_maintenance_cast_start",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
@@ -14082,6 +14089,16 @@
         "securityDefiner": true
       },
       {
+        "name": "relic_title_metrics",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_user uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.relic_title_metrics(p_user uuid)\n RETURNS jsonb\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select jsonb_build_object('relic_discoveries',count(*),'relic_mythic_discoveries',count(*) filter(where r.rarity='mythic'))\n from app_private.player_fishing_relic_discoveries d join public.fishing_relics r on r.id=d.relic_id\n where d.user_id=p_user\n$function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "remove_friend",
         "config": [
           "search_path=\"\""
@@ -14488,7 +14505,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_user uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.sync_player_titles(p_user uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare metrics jsonb;t record;\nbegin\n perform pg_advisory_xact_lock(hashtextextended('titles:'||p_user::text,0));\n metrics:=app_private.title_metrics(p_user)||app_private.rare_title_metrics(p_user)||app_private.challenge_title_metrics(p_user)||app_private.everyday_title_metrics(p_user);\n for t in select * from public.title_catalog c where coalesce((metrics->>c.metric)::bigint,0)>=c.target\n and (c.extra_metric is null or coalesce((metrics->>c.extra_metric)::bigint,0)>=c.extra_target)\n and not exists(select 1 from public.player_titles o where o.user_id=p_user and o.title_id=c.id) order by sort_order\n loop perform app_private.award_title(p_user,t.id);end loop;\n return metrics;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.sync_player_titles(p_user uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare metrics jsonb;t record;\nbegin\n perform pg_advisory_xact_lock(hashtextextended('titles:'||p_user::text,0));\n metrics:=app_private.title_metrics(p_user)||app_private.rare_title_metrics(p_user)||app_private.challenge_title_metrics(p_user)||app_private.everyday_title_metrics(p_user)||app_private.relic_title_metrics(p_user);\n for t in select * from public.title_catalog c where coalesce((metrics->>c.metric)::bigint,0)>=c.target\n and (c.extra_metric is null or coalesce((metrics->>c.extra_metric)::bigint,0)>=c.extra_target)\n and not exists(select 1 from public.player_titles o where o.user_id=p_user and o.title_id=c.id) order by sort_order\n loop perform app_private.award_title(p_user,t.id);end loop;\n return metrics;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -34524,6 +34541,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "relic_title_metrics",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid"
+      },
+      {
+        "name": "relic_title_metrics",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid"
+      },
+      {
+        "name": "relic_title_metrics",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid"
       },
       {
         "name": "remove_friend",

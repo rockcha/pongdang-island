@@ -1,4 +1,6 @@
 import {RelicIcon} from '@/components/collection-filter-icons'
+import {useEquippedRelic} from '@/features/relics/use-equipped-relic'
+import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
 import { useSavingsStatus } from '@/features/savings/use-savings-status'
 import { useProductionMenuStatus } from '@/features/production/use-production-menu-status'
 import { useHarborStatus } from '@/features/port/use-harbor-status'
@@ -63,6 +65,7 @@ export const headerPlaces = [
 ]
 
 export function HeaderPlaceNavigation() {
+  const equippedRelic=useEquippedRelic()
   const newContent = useNewContent()
   const fuelProduction = useProductionMenuStatus('fuel')
   const baitProduction = useProductionMenuStatus('bait')
@@ -246,12 +249,13 @@ export function HeaderPlaceNavigation() {
                       <Menu.LinkItem
                         key={to}
                         render={<Link to={to} aria-current={active ? 'page' : undefined} />}
-                        className={`flex min-h-11 items-center gap-3 rounded-lg px-3 py-2 text-sm outline-none transition-colors data-highlighted:bg-secondary ${active ? 'bg-primary/10 text-primary' : 'text-foreground'}`}
+                        className={`flex min-h-11 items-center ${to==='/relics'?'gap-2':'gap-3'} rounded-lg px-3 py-2 text-sm outline-none transition-colors data-highlighted:bg-secondary ${active ? 'bg-primary/10 text-primary' : 'text-foreground'}`}
                       >
                         <span className="grid size-8 shrink-0 place-items-center">
                           <ItemIcon aria-hidden="true" className="size-7" />
                         </span>
                         <span className="flex-1 whitespace-nowrap">{label}</span>
+                        {to==='/relics'&&equippedRelic&&<span className="flex max-w-20 shrink-0 items-center gap-1" title={`장착 중: ${equippedRelic.name}`}><CollectibleThumbnail path={equippedRelic.thumbnail_path} name={`장착 중: ${equippedRelic.name}`} className="size-6 shrink-0"/><span className="min-w-0 truncate text-[10px]">{equippedRelic.name}</span></span>}
                         {!!productionStatus(to)?.total && (
                           <span className={`flex shrink-0 items-center gap-1 rounded px-1.5 py-1 text-[10px] tabular-nums ${productionStatus(to)?.ready ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
                             {!!productionStatus(to)?.ready && <span aria-hidden="true" className="category-activity-dot" />}

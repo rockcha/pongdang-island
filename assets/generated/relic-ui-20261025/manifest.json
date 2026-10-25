@@ -1,0 +1,23 @@
+{
+  "generator": "built-in image_gen",
+  "assets": [
+    {
+      "path": "public/banners/relics.png",
+      "reference": "public/banners/collection.png",
+      "transparent": false,
+      "prompt": "Create a new panoramic game page banner, 3:1 aspect ratio. Cozy hand painted storybook illustration matching the provided reference coastal workshop atmosphere: warm honey wood, gentle painterly shading, turquoise sea through a broad window, island village and lighthouse in distance. This is a dedicated ancient fishing relic atelier: on the central wooden display table arrange a softly glowing blue shell hourglass, a bronze ancient anchor seal, a silver fishing hook and a small sea conch, old navigation sketches, scattered modest gold coins, glass cabinets of maritime relics at left. A peaceful magical seaside treasure appraisal room, no characters required. Wide cinematic composition readable in a shallow crop, treasured artifacts in central and right area, muted warm brown lower left suitable for overlay title. No text, no labels, no lettering, no watermark. Use supplied image for art style only, create a distinct room and composition.",
+      "sha256": "4cb357c9d5d6d5d7f442d852ab738f18e910b80598ff5a6a0cc062e550967f69",
+      "width": 2172,
+      "height": 724
+    },
+    {
+      "path": "public/app-icons/relic.png",
+      "reference": "public/app-icons/collection-v2.png",
+      "transparent": true,
+      "prompt": "Create a single dedicated fishing relic UI icon, square canvas with genuinely transparent background. Cozy hand drawn game inventory icon matching the supplied storybook menu icon style: thick warm dark brown contour, simple clean silhouette, creamy golden highlights, soft watercolor shading. Subject is an ancient round bronze anchor medallion with a turquoise glowing shell gem embedded in the center, a small curl of seaweed and one tiny four pointed golden sparkle. One iconic object only, centered, large readable silhouette at 24px, generous transparent margin, no enclosing tile, no white background, no checkerboard, no letters, no text, no watermark. This icon means magical maritime relics. Match only the provided reference icon's warm outlines and shading, do not include its fish book.",
+      "sha256": "441be436959e2682bffdf82b287e3b934ebd68237f93188480239248dcaa845e",
+      "width": 1254,
+      "height": 1254
+    }
+  ]
+}

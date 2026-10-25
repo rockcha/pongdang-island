@@ -1,4 +1,4 @@
-import {HalloweenIcon} from '@/components/collection-filter-icons'
+import {HalloweenIcon,RelicIcon} from '@/components/collection-filter-icons'
 import {Camera} from 'lucide-react'
 import {NewDiscoveryBadge} from '@/components/new-discovery-badge'
 import { useEffect, useRef, useState } from 'react'
@@ -41,7 +41,7 @@ export function CatchReveal({species,failure,onDismiss,practice=false,preview=fa
    <span role="status" className="relative mt-5 flex w-full flex-col items-center gap-3">
     {species?<span className="flex w-full flex-wrap items-center justify-center gap-x-2.5 gap-y-2">
      {nativeRegion&&<img src={nativeRegion.src} alt={`${nativeRegion.name} 고유종`} title={`${nativeRegion.name} 고유종`} className="size-8 shrink-0 object-contain drop-shadow-md sm:size-9"/>}
-     <span className="text-balance break-keep text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_2px_16px_#0005] sm:text-4xl">{species.id.startsWith('halloween-')&&<span aria-label="할로윈 한정" className="mr-1.5 inline-flex align-middle"><HalloweenIcon className="size-[1em] shrink-0"/></span>}{species.name}</span>
+     <span className="text-balance break-keep text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_2px_16px_#0005] sm:text-4xl">{species.kind==='relic'&&<span role="img" aria-label="유물" className="mr-1.5 inline-flex align-middle"><RelicIcon className="size-[1em] shrink-0"/></span>}{species.id.startsWith('halloween-')&&<span aria-label="할로윈 한정" className="mr-1.5 inline-flex align-middle"><HalloweenIcon className="size-[1em] shrink-0"/></span>}{species.name}</span>
      <span className="inline-flex shrink-0 items-center gap-2"><span className="inline-flex h-7 items-center rounded px-2 text-xs font-bold leading-5 text-white" style={{backgroundColor:color}}>{rarities[rarity].label}</span>{firstDiscovery&&!practice&&<NewDiscoveryBadge size="md"/>}</span>
     </span>:<>
      <span className="text-2xl font-bold tracking-tight text-white">낚시 실패</span>

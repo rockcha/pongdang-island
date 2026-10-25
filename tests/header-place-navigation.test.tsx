@@ -1,16 +1,25 @@
 vi.mock('@/features/savings/use-savings-status',()=>({useSavingsStatus:()=>mock.savings}))
 vi.mock('@/components/use-new-content',()=>({useNewContent:()=>mock.newContent}))
+vi.mock('@/features/relics/use-equipped-relic',()=>({useEquippedRelic:()=>mock.relic}))
 import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
 import {MemoryRouter,useLocation} from 'react-router'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {HeaderPlaceNavigation} from '@/components/header-place-navigation'
-const mock=vi.hoisted(()=>({newContent:{board:false,exchange:false,suggestions:false,bugs:false},status:null as 'sailing'|'returned'|null,harbor:null as {ready:number;total:number}|null,operator:false,savings:null as '미납'|'수령 가능'|null}))
+const mock=vi.hoisted(()=>({relic:null as {name:string;thumbnail_path:string}|null,newContent:{board:false,exchange:false,suggestions:false,bugs:false},status:null as 'sailing'|'returned'|null,harbor:null as {ready:number;total:number}|null,operator:false,savings:null as '미납'|'수령 가능'|null}))
 vi.mock('@/features/port/use-harbor-status',()=>({useHarborStatus:()=>mock.harbor}))
 vi.mock('@/features/notices/use-operator',()=>({useOperator:()=>({operator:mock.operator,loading:false})}))
 vi.mock('@/features/expeditions/use-expedition-status',()=>({useExpeditionStatus:()=>mock.status}))
-beforeEach(()=>{mock.newContent={board:false,exchange:false,suggestions:false,bugs:false};mock.status=null;mock.harbor=null;mock.operator=false;mock.savings=null})
+beforeEach(()=>{mock.relic=null;mock.newContent={board:false,exchange:false,suggestions:false,bugs:false};mock.status=null;mock.harbor=null;mock.operator=false;mock.savings=null})
 function View(){const {pathname}=useLocation();return <><HeaderPlaceNavigation/><output data-testid="path">{pathname}</output></>}
 afterEach(cleanup)
+it('shows equipped relic artwork and its name beside the relic menu entry',async()=>{
+ mock.relic={name:'조개 모래시계',thumbnail_path:'relics/rare/shell-hourglass_thumbnail.png'}
+ render(<MemoryRouter><View/></MemoryRouter>)
+ fireEvent.click(screen.getByRole('button',{name:'내 섬'}))
+ const menu=await screen.findByRole('menu')
+ expect(within(menu).getByText('조개 모래시계')).toBeTruthy()
+ expect(within(menu).getByRole('img',{name:'장착 중: 조개 모래시계'})).toBeTruthy()
+})
 it('opens production facilities from the life menu',async()=>{
  render(<MemoryRouter><View/></MemoryRouter>)
  fireEvent.click(screen.getByRole('button',{name:'생활'}))

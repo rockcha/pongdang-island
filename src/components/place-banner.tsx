@@ -55,7 +55,7 @@ export const placeBanners: Record<
     description: '바다 생물을 기록하는 햇살 가득한 해양 관찰실',
     subtitle: '개체를 눌러 움직이는 모습을 확인해요',
   },
-  '/relics': {title:'유물',image:'collection',description:'바다의 발견을 간직하는 해양 관찰실',subtitle:'발견한 유물로 나의 낚시를 준비해요'},
+  '/relics': {title:'유물',image:'relics',description:'조개 모래시계와 오래된 닻 인장이 놓인 바닷가 유물 공방',subtitle:'바다가 남긴 보물로, 나의 낚시를 특별하게'},
   '/titles': {
     title: '칭호',
     image: 'titles',

@@ -30,6 +30,7 @@ export const appArt={
  noticeGuide:artwork('notice-guide'),noticeUpdate:artwork('notice-update'),noticeMaintenance:artwork('notice-maintenance'),noticeEvent:artwork('notice-event'),
  all:artwork('all'),
  title:artwork('title'),
+ relic:artwork('relic'),
  empty:artwork('empty'),
  camera:artwork('camera'),logout:artwork('logout'),
  gameplay:artwork('gameplay'),ranking:artwork('ranking'),
@@ -45,6 +46,7 @@ export const appArt={
  notices:artwork('announcement','notification-icons'),suggestions:artwork('suggestion','notification-icons'),bugs:artwork('bug','notification-icons'),
 }
 const placeArt:Record<string,ReturnType<typeof artwork>>={
+ '/relics':appArt.relic,
  '/production':appArt.production,
  '/bait-production':appArt.baitProduction,
  '/bait-production-shop':appArt.baitProductionShop,

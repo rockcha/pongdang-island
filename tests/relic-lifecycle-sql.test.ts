@@ -41,6 +41,43 @@ beforeEach(async()=>{
 })
 afterEach(async()=>{await db.exec('rollback;reset role')})
 
+it('sells all sixteen relics once, preserves discovery and allows catching them again',async()=>{
+ const relics=(await db.query('select id,rarity,sell_price from public.fishing_relics order by id')).rows
+ for(const relic of relics){
+  expect(relic.sell_price).toBe({rare:200,epic:1300,mythic:3000}[relic.rarity])
+  await enableOnly(relic.id,relic.rarity)
+  const caught=await prepare();expect((await finish(caught.operation_id)).attempt.firstDiscovery).toBe(true)
+  const balance=await gold(),op=crypto.randomUUID()
+  const sell=()=>user('select public.sell_relic($1,$2,$3) s',[relic.id,op,relic.sell_price])
+  await sell();await sell();expect(await gold()).toBe(balance+relic.sell_price)
+  expect((await user('select public.relic_state() s')).relics.find(r=>r.id===relic.id)).toMatchObject({owned:false,discovered:true})
+  expect((await user('select public.collection_state() s')).catalog.find(r=>r.id==='relic-'+relic.id).discovered).toBe(true)
+  const again=await prepare();expect(again.species.id).toBe('relic-'+relic.id)
+  expect((await finish(again.operation_id)).attempt.firstDiscovery).toBe(false)
+  // An old sale retry cannot sell newly acquired ownership a second time.
+  await sell();expect(await gold()).toBe(balance+relic.sell_price)
+  expect((await user('select public.relic_state() s')).relics.find(r=>r.id===relic.id).owned).toBe(true)
+  await rejected(()=>user('select public.sell_relic($1,$2,$3) s',[relic.id,op,relic.sell_price+1]),'OPERATION_CONFLICT')
+ }
+},30000)
+
+it('blocks equipped, unowned, stale-price and unaffordable wallet-limit sales atomically',async()=>{
+ await enableOnly('shell-hourglass','rare');const p=await prepare();await finish(p.operation_id)
+ const sell=(price=200)=>user('select public.sell_relic($1,$2,$3) s',['shell-hourglass',crypto.randomUUID(),price])
+ await equip('shell-hourglass')
+ await rejected(()=>sell(),'RELIC_EQUIPPED')
+ await equip(null)
+ await rejected(()=>sell(201),'RELIC_PRICE_CHANGED')
+ await db.query('update public.player_wallets set gold=1000000000 where user_id=$1',[uid])
+ await rejected(()=>sell(),'GOLD_LIMIT')
+ expect((await user('select public.relic_state() s')).relics.find(r=>r.id==='shell-hourglass').owned).toBe(true)
+ await db.query('update public.player_wallets set gold=0 where user_id=$1',[uid]);await sell()
+ expect(await gold()).toBe(200);await rejected(()=>sell(),'RELIC_NOT_OWNED')
+ await db.exec('set role anon')
+ await rejected(()=>db.exec("select public.sell_relic('shell-hourglass',gen_random_uuid(),200)"),'permission denied')
+ await rejected(()=>user("insert into app_private.player_fishing_relic_discoveries(user_id,relic_id) values(auth.uid(),'shell-hourglass')"),'permission denied')
+})
+
 it('runs acquisition, paid equip, paid unequip and permanent duplicate exclusion for all sixteen real relics',async()=>{
  const relics=(await db.query('select id,rarity from public.fishing_relics order by id')).rows
  expect(relics).toHaveLength(16)

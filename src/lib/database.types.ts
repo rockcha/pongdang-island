@@ -159,6 +159,7 @@ export type Database = {
       manage_aquarium_tank: { Args: { p_tank_id: string; p_action: string; p_value: string }; Returns: import('@/features/aquarium/api').AquariumState }
       relic_state:{Args:Record<string,never>;Returns:import('@/features/relics/api').RelicState}
       equip_relic:{Args:{p_relic_id:string|null;p_operation_id:string;p_expected_fee?:number};Returns:import('@/features/relics/api').RelicState}
+      sell_relic:{Args:{p_relic_id:string;p_operation_id:string;p_expected_price:number};Returns:import('@/features/relics/api').RelicState}
       aquarium_state: { Args: Record<string, never>; Returns: import('@/features/aquarium/api').AquariumState }
       expand_aquarium_tank:{Args:{p_tank_id:string;p_target_capacity:number;p_operation_id:string};Returns:import('@/features/aquarium/api').AquariumState}
       expand_aquarium_capacity:{Args:{p_target_capacity:number;p_operation_id:string};Returns:import('@/features/aquarium/api').AquariumState}

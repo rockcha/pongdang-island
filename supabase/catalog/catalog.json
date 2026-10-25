@@ -28950,7 +28950,8 @@
       "thumbnail_path": "relics/epic/abundant-conch_thumbnail.png",
       "enabled": true,
       "effect_kind": "bait_active_slots",
-      "effect_value": 1
+      "effect_value": 1,
+      "sell_price": 1300
     },
     {
       "id": "current-piercing-needle",
@@ -28960,7 +28961,8 @@
       "thumbnail_path": "relics/epic/current-piercing-needle_thumbnail.png",
       "enabled": true,
       "effect_kind": "fishing_wait_seconds",
-      "effect_value": 1
+      "effect_value": 1,
+      "sell_price": 1300
     },
     {
       "id": "eternal-water-clock",
@@ -28970,7 +28972,8 @@
       "thumbnail_path": "relics/mythic/eternal-water-clock_thumbnail.png",
       "enabled": true,
       "effect_kind": "personal_bait_hours",
-      "effect_value": 8
+      "effect_value": 8,
+      "sell_price": 3000
     },
     {
       "id": "fish-calling-bell",
@@ -28980,7 +28983,8 @@
       "thumbnail_path": "relics/rare/fish-calling-bell_thumbnail.png",
       "enabled": true,
       "effect_kind": "trap_seconds_per_bait",
-      "effect_value": 30
+      "effect_value": 30,
+      "sell_price": 200
     },
     {
       "id": "golden-anchor-seal",
@@ -28990,7 +28994,8 @@
       "thumbnail_path": "relics/epic/golden-anchor-seal_thumbnail.png",
       "enabled": true,
       "effect_kind": "boat_discount_gold",
-      "effect_value": 150
+      "effect_value": 150,
+      "sell_price": 1300
     },
     {
       "id": "instant-fishing-hook",
@@ -29000,7 +29005,8 @@
       "thumbnail_path": "relics/mythic/instant-fishing-hook_thumbnail.png",
       "enabled": true,
       "effect_kind": "fishing_wait_seconds",
-      "effect_value": 2
+      "effect_value": 2,
+      "sell_price": 3000
     },
     {
       "id": "ocean-seed",
@@ -29010,7 +29016,8 @@
       "thumbnail_path": "relics/mythic/ocean-seed_thumbnail.png",
       "enabled": true,
       "effect_kind": "bait_active_slots",
-      "effect_value": 2
+      "effect_value": 2,
+      "sell_price": 3000
     },
     {
       "id": "old-captain-seal",
@@ -29020,7 +29027,8 @@
       "thumbnail_path": "relics/rare/old-captain-seal_thumbnail.png",
       "enabled": true,
       "effect_kind": "boat_discount_gold",
-      "effect_value": 50
+      "effect_value": 50,
+      "sell_price": 200
     },
     {
       "id": "primordial-ember",
@@ -29030,7 +29038,8 @@
       "thumbnail_path": "relics/mythic/primordial-ember_thumbnail.png",
       "enabled": true,
       "effect_kind": "fuel_active_slots",
-      "effect_value": 2
+      "effect_value": 2,
+      "sell_price": 3000
     },
     {
       "id": "sea-king-shipwright-edict",
@@ -29040,7 +29049,8 @@
       "thumbnail_path": "relics/mythic/sea-king-shipwright-edict_thumbnail.png",
       "enabled": true,
       "effect_kind": "boat_discount_gold",
-      "effect_value": 400
+      "effect_value": 400,
+      "sell_price": 3000
     },
     {
       "id": "sea-king-summoning-bell",
@@ -29050,7 +29060,8 @@
       "thumbnail_path": "relics/mythic/sea-king-summoning-bell_thumbnail.png",
       "enabled": true,
       "effect_kind": "trap_seconds_per_bait",
-      "effect_value": 180
+      "effect_value": 180,
+      "sell_price": 3000
     },
     {
       "id": "shell-hourglass",
@@ -29060,7 +29071,8 @@
       "thumbnail_path": "relics/rare/shell-hourglass_thumbnail.png",
       "enabled": true,
       "effect_kind": "personal_bait_hours",
-      "effect_value": 2
+      "effect_value": 2,
+      "sell_price": 200
     },
     {
       "id": "silver-osprey-feather",
@@ -29070,7 +29082,8 @@
       "thumbnail_path": "relics/rare/silver-osprey-feather_thumbnail.png",
       "enabled": true,
       "effect_kind": "fishing_wait_seconds",
-      "effect_value": 0.5
+      "effect_value": 0.5,
+      "sell_price": 200
     },
     {
       "id": "still-wave-clock",
@@ -29080,7 +29093,8 @@
       "thumbnail_path": "relics/epic/still-wave-clock_thumbnail.png",
       "enabled": true,
       "effect_kind": "personal_bait_hours",
-      "effect_value": 4
+      "effect_value": 4,
+      "sell_price": 1300
     },
     {
       "id": "tide-bell",
@@ -29090,7 +29104,8 @@
       "thumbnail_path": "relics/epic/tide-bell_thumbnail.png",
       "enabled": true,
       "effect_kind": "trap_seconds_per_bait",
-      "effect_value": 90
+      "effect_value": 90,
+      "sell_price": 1300
     },
     {
       "id": "undying-furnace-heart",
@@ -29100,7 +29115,8 @@
       "thumbnail_path": "relics/epic/undying-furnace-heart_thumbnail.png",
       "enabled": true,
       "effect_kind": "fuel_active_slots",
-      "effect_value": 1
+      "effect_value": 1,
+      "sell_price": 1300
     }
   ]
 }

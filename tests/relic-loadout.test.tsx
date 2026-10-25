@@ -1,15 +1,29 @@
 import {cleanup,fireEvent,render,screen,within,waitFor} from '@testing-library/react'
 import {afterEach,expect,it,vi} from 'vitest'
 import {RelicLoadout,RelicPage} from '@/features/relics/relic-loadout'
-const {load,equip}=vi.hoisted(()=>({load:vi.fn(),equip:vi.fn()}))
-vi.mock('@/features/relics/api',()=>({loadRelics:load,equipRelic:equip,relicError:()=> '다시 확인해 주세요.'}))
+const {load,equip,sell}=vi.hoisted(()=>({load:vi.fn(),equip:vi.fn(),sell:vi.fn()}))
+vi.mock('@/features/relics/api',()=>({loadRelics:load,equipRelic:equip,sellRelic:sell,relicError:()=> '다시 확인해 주세요.'}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'relic-test'}}})}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name}:{name:string})=><span role="img" aria-label={name}/>}))
-const a={id:'a',name:'조개 모래시계',description:'최대 제작 시간 +2시간',rarity:'rare',thumbnail_path:'a.png',owned:true,effect_kind:'personal_bait_hours',effect_value:2}
+const a={id:'a',name:'조개 모래시계',description:'최대 제작 시간 +2시간',rarity:'rare',thumbnail_path:'a.png',owned:true,sell_price:200,effect_kind:'personal_bait_hours',effect_value:2}
 const b={...a,id:'b',name:'영원의 물시계',rarity:'mythic',owned:false,effect_value:8}
 const state={equippedId:null,changeFee:500,relics:[a,b]}
 afterEach(()=>{cleanup();localStorage.clear();vi.clearAllMocks()})
+it('confirms sale proceeds and retries an uncertain sale with the same operation',async()=>{
+ load.mockResolvedValue(state)
+ sell.mockRejectedValueOnce(new Error('network')).mockResolvedValue({...state,relics:[{...a,owned:false,discovered:true},b]})
+ render(<RelicPage/>)
+ fireEvent.click(within(await screen.findByRole('article',{name:a.name})).getByRole('button',{name:'판매 200'}))
+ expect(sell).not.toHaveBeenCalled();expect(screen.getByRole('alertdialog').textContent).toContain('다시 만날 수 있어요')
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'판매하기'}))
+ await screen.findByRole('alert')
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'결과 다시 확인'}))
+ await waitFor(()=>expect(sell).toHaveBeenCalledTimes(2));expect(sell.mock.calls[0]).toEqual(sell.mock.calls[1])
+ expect(sell.mock.calls[0]).toEqual(['a',expect.any(String),200])
+ await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
+ expect(within(screen.getByRole('article',{name:a.name})).getByRole('button',{name:'미보유'})).toHaveProperty('disabled',true)
+})
 it('loads the relic page directly and charges 500 separately for equipping and unequipping',async()=>{
  load.mockResolvedValue(state)
  equip.mockResolvedValueOnce({...state,equippedId:'a'}).mockResolvedValueOnce(state)

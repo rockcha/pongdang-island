@@ -156,13 +156,8 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
       pending.current = null
       setError('')
       setSelected(null)
-      if(args.p_action!=='buy'&&args.p_action!=='sell')toast.success(
-        args.p_action === 'start'
-            ? '미끼 생산을 시작했어요.'
-            : args.p_action === 'claim'
-              ? '생산한 미끼를 받았어요.'
-              : '만료된 생산물을 정리했어요.',
-      )
+      if(args.p_action==='start')toast.success('미끼 생산을 시작했어요.')
+      else if(args.p_action==='discard')toast.success('만료된 생산물을 정리했어요.')
     } catch (e) {
       if (/^[0-9A-Z]{5}$/.test(String((e as { code?: string })?.code))) pending.current = null
       setError(baitProductionError(e))

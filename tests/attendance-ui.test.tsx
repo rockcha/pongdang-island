@@ -9,7 +9,7 @@ vi.mock('sonner',()=>({toast:{success}}))
 const pending={today:'2026-10-16',checkedIn:false,streak:6,currentDay:7,completedDays:6,sheetNumber:1,completedSheets:0,reset:false}
 beforeEach(()=>{load.mockResolvedValue(pending);refresh.mockResolvedValue(undefined);claim.mockResolvedValue({...pending,checkedIn:true,streak:7,completedDays:7,replayed:false,reward:{gold:0,fuel:0,bait_id:'bait_first_greeting'}})})
 afterEach(()=>{cleanup();vi.clearAllMocks()})
-it('shows alternating fuel rewards and announces the actual fuel claim',async()=>{
+it('shows alternating fuel rewards and claims without a resource toast',async()=>{
  load.mockResolvedValue({...pending,currentDay:2,streak:1,completedDays:1})
  claim.mockResolvedValue({...pending,currentDay:2,checkedIn:true,streak:2,completedDays:2,replayed:false,reward:{gold:0,fuel:3,bait_id:null}})
  render(<AttendanceButton/>)
@@ -18,7 +18,8 @@ it('shows alternating fuel rewards and announces the actual fuel claim',async()=
  await waitFor(()=>expect((button as HTMLButtonElement).disabled).toBe(false))
  expect(button.querySelector('img')?.getAttribute('src')).toBe('/app-icons/fuel-can.svg')
  fireEvent.click(button)
- await waitFor(()=>expect(success).toHaveBeenCalledWith('출석 완료! 연료 3통 획득'))
+ await screen.findByRole('button',{name:'2일차 출석 완료 · 연료 3통'})
+ expect(success).not.toHaveBeenCalled()
 })
 it('shows a brown pending dot, stamps today once and refreshes earned gold',async()=>{
  const view=render(<AttendanceButton/>)
@@ -36,8 +37,7 @@ it('shows a brown pending dot, stamps today once and refreshes earned gold',asyn
  fireEvent.click(attend);fireEvent.click(attend)
  await screen.findByRole('button',{name:'7일차 출석 완료 · 소라의 첫인사'})
  expect(claim).toHaveBeenCalledExactlyOnceWith('2026-10-16')
- expect(success).toHaveBeenCalledTimes(1)
- expect(success).toHaveBeenCalledWith('출석 완료! 소라의 첫인사 1개 획득')
+ expect(success).not.toHaveBeenCalled()
  expect(attend.querySelector('img')?.getAttribute('src')).toBe('/items/baits/conch-first-greeting.png')
  expect(attend.querySelector('img[src="/gold.png"],img[src="/app-icons/fuel.png"]')).toBeNull()
  expect(refresh).toHaveBeenCalled()

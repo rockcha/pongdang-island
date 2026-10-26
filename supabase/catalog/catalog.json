@@ -9541,6 +9541,42 @@
       "travel_direction": "both"
     },
     {
+      "id": "shared-oily-eel",
+      "kind": "fish",
+      "name": "기름 장어",
+      "description": "매끈한 몸에 기름기가 도는 장어. 바다 아래를 부드러운 물결처럼 헤엄쳐요.",
+      "swim_y_min": "0.32",
+      "swim_y_max": "0.84",
+      "speed": "0.018",
+      "size": 88,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-oily-eel_v1_thumbnail.png",
+      "sell_price": 19,
+      "sprite_sheet_path": "fish/normal/shared-oily-eel_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-oily-horse-mackerel",
+      "kind": "fish",
+      "name": "기름 전갱이",
+      "description": "은빛 비늘과 노란 지느러미에 기름기가 반짝이는 전갱이. 작은 몸에 바다의 든든한 힘을 품고 있어요.",
+      "swim_y_min": "0.20",
+      "swim_y_max": "0.74",
+      "speed": "0.024",
+      "size": 68,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-oily-horse-mackerel_v1_thumbnail.png",
+      "sell_price": 10,
+      "sprite_sheet_path": "fish/normal/shared-oily-horse-mackerel_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "shared-oily-sardine",
       "kind": "fish",
       "name": "기름 정어리",
@@ -9571,6 +9607,24 @@
       "thumbnail_path": "fish/normal/shared-oily-saury_v1_thumbnail.png",
       "sell_price": 10,
       "sprite_sheet_path": "fish/normal/shared-oily-saury_v2_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-oily-spanish-mackerel",
+      "kind": "fish",
+      "name": "기름 삼치",
+      "description": "날렵한 은빛 몸에 기름이 밴 삼치. 물살을 가르는 꼬리마다 윤기가 반짝여요.",
+      "swim_y_min": "0.16",
+      "swim_y_max": "0.72",
+      "speed": "0.032",
+      "size": 82,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-oily-spanish-mackerel_v1_thumbnail.png",
+      "sell_price": 15,
+      "sprite_sheet_path": "fish/normal/shared-oily-spanish-mackerel_v1_sprite.png",
       "native_region_id": null,
       "movement_type": "swim",
       "flip_with_direction": true,
@@ -22303,6 +22357,110 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "shared-oily-eel",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-oily-eel",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-oily-eel",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-oily-eel",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-oily-eel",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-oily-eel",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-oily-eel",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-oily-eel",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-oily-eel",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-oily-eel",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-oily-eel",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-oily-eel",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-oily-eel",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-oily-horse-mackerel",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-oily-horse-mackerel",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-oily-horse-mackerel",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-oily-horse-mackerel",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-oily-horse-mackerel",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-oily-horse-mackerel",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-oily-horse-mackerel",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-oily-horse-mackerel",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-oily-horse-mackerel",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-oily-horse-mackerel",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-oily-horse-mackerel",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-oily-horse-mackerel",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-oily-horse-mackerel",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "shared-oily-sardine",
       "region_id": "bluegrove"
     },
@@ -22396,6 +22554,58 @@
     },
     {
       "species_id": "shared-oily-saury",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-oily-spanish-mackerel",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-oily-spanish-mackerel",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-oily-spanish-mackerel",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-oily-spanish-mackerel",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-oily-spanish-mackerel",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-oily-spanish-mackerel",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-oily-spanish-mackerel",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-oily-spanish-mackerel",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-oily-spanish-mackerel",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-oily-spanish-mackerel",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-oily-spanish-mackerel",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-oily-spanish-mackerel",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-oily-spanish-mackerel",
       "region_id": "whitenight"
     },
     {
@@ -24899,6 +25109,15 @@
       "name": "여백을 긋는 붓",
       "price": 800,
       "region_id": "mukhyang",
+      "failure_reduction_bp": 200,
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
+    },
+    {
+      "id": "nyamnyam",
+      "name": "한상 대나무 낚싯대",
+      "price": 800,
+      "region_id": "nyamnyam",
       "failure_reduction_bp": 200,
       "native_bonus_bp": 200,
       "wait_reduction_seconds": 1
@@ -28176,10 +28395,10 @@
       "description": "통통한 압축기에 힘을 모아 한 번에",
       "kind": "trash",
       "price": 2200,
-      "input_count": 5,
+      "input_count": 6,
       "output_count": 4,
       "production_minutes": 75,
-      "storage_minutes": 30,
+      "storage_minutes": 90,
       "image_path": "/production/angry-puffer-compressor.png",
       "enabled": true
     },
@@ -28189,10 +28408,10 @@
       "description": "작은 통 속에서 차곡차곡 쌓이는 압력",
       "kind": "trash",
       "price": 700,
-      "input_count": 3,
+      "input_count": 4,
       "output_count": 2,
       "production_minutes": 60,
-      "storage_minutes": 30,
+      "storage_minutes": 90,
       "image_path": "/production/baby-puffer-pressure-vat.png",
       "enabled": true
     },
@@ -28205,7 +28424,7 @@
       "input_count": 3,
       "output_count": 5,
       "production_minutes": 150,
-      "storage_minutes": 30,
+      "storage_minutes": 180,
       "image_path": "/production/baby-seal-press-vat.png",
       "enabled": true
     },
@@ -28218,7 +28437,7 @@
       "input_count": 6,
       "output_count": 20,
       "production_minutes": 720,
-      "storage_minutes": 50,
+      "storage_minutes": 480,
       "image_path": "/production/black-current-deep-refining-tower.png",
       "enabled": true
     },
@@ -28244,7 +28463,7 @@
       "input_count": 5,
       "output_count": 9,
       "production_minutes": 180,
-      "storage_minutes": 25,
+      "storage_minutes": 120,
       "image_path": "/production/brave-puffer-steam-vat.png",
       "enabled": true
     },
@@ -28268,7 +28487,7 @@
       "kind": "fish",
       "price": 1650,
       "input_count": 2,
-      "output_count": 4,
+      "output_count": 5,
       "production_minutes": 75,
       "storage_minutes": 120,
       "image_path": "/production/conch-spiral-distiller.png",
@@ -28283,7 +28502,7 @@
       "input_count": 5,
       "output_count": 10,
       "production_minutes": 240,
-      "storage_minutes": 60,
+      "storage_minutes": 180,
       "image_path": "/production/coral-honeycomb-thermal-refinery.png",
       "enabled": true
     },
@@ -28296,7 +28515,7 @@
       "input_count": 6,
       "output_count": 16,
       "production_minutes": 480,
-      "storage_minutes": 25,
+      "storage_minutes": 360,
       "image_path": "/production/deep-pearl-pressure-refiner.png",
       "enabled": true
     },
@@ -28320,7 +28539,7 @@
       "kind": "fish",
       "price": 400,
       "input_count": 3,
-      "output_count": 4,
+      "output_count": 5,
       "production_minutes": 120,
       "storage_minutes": 120,
       "image_path": "/production/dewdrop-glass-distiller.png",
@@ -28348,7 +28567,7 @@
       "input_count": 1,
       "output_count": 1,
       "production_minutes": 20,
-      "storage_minutes": 20,
+      "storage_minutes": 90,
       "image_path": "/production/dock-grandma-refining-pot.png",
       "enabled": true
     },
@@ -28358,10 +28577,10 @@
       "description": "묵직한 압력을 모으는 커다란 압력솥",
       "kind": "trash",
       "price": 3000,
-      "input_count": 12,
+      "input_count": 15,
       "output_count": 12,
       "production_minutes": 360,
-      "storage_minutes": 30,
+      "storage_minutes": 90,
       "image_path": "/production/gurgling-deep-pressure-cooker.png",
       "enabled": true
     },
@@ -28385,7 +28604,7 @@
       "kind": "fish",
       "price": 3900,
       "input_count": 8,
-      "output_count": 18,
+      "output_count": 22,
       "production_minutes": 600,
       "storage_minutes": 1320,
       "image_path": "/production/lighthouse-thermal-distillery.png",
@@ -28398,7 +28617,7 @@
       "kind": "fish",
       "price": 3500,
       "input_count": 8,
-      "output_count": 14,
+      "output_count": 17,
       "production_minutes": 210,
       "storage_minutes": 150,
       "image_path": "/production/manta-twin-wing-centrifuge.png",
@@ -28411,7 +28630,7 @@
       "kind": "fish",
       "price": 2800,
       "input_count": 4,
-      "output_count": 9,
+      "output_count": 11,
       "production_minutes": 360,
       "storage_minutes": 180,
       "image_path": "/production/moon-jelly-cooling-vat.png",
@@ -28426,7 +28645,7 @@
       "input_count": 2,
       "output_count": 3,
       "production_minutes": 90,
-      "storage_minutes": 60,
+      "storage_minutes": 120,
       "image_path": "/production/otter-hand-press.png",
       "enabled": true
     },
@@ -28437,7 +28656,7 @@
       "kind": "fish",
       "price": 3100,
       "input_count": 6,
-      "output_count": 12,
+      "output_count": 15,
       "production_minutes": 300,
       "storage_minutes": 150,
       "image_path": "/production/otter-moon-maturation-tank.png",
@@ -28463,7 +28682,7 @@
       "kind": "fish",
       "price": 2200,
       "input_count": 4,
-      "output_count": 8,
+      "output_count": 10,
       "production_minutes": 240,
       "storage_minutes": 900,
       "image_path": "/production/seahorse-brass-separator.png",
@@ -28515,7 +28734,7 @@
       "kind": "fish",
       "price": 2600,
       "input_count": 9,
-      "output_count": 16,
+      "output_count": 20,
       "production_minutes": 360,
       "storage_minutes": 420,
       "image_path": "/production/shipwreck-triple-distillation-tower.png",
@@ -28543,7 +28762,7 @@
       "input_count": 4,
       "output_count": 7,
       "production_minutes": 300,
-      "storage_minutes": 60,
+      "storage_minutes": 240,
       "image_path": "/production/sunny-shell-infusion-jar.png",
       "enabled": true
     },
@@ -28595,7 +28814,7 @@
       "input_count": 5,
       "output_count": 6,
       "production_minutes": 60,
-      "storage_minutes": 40,
+      "storage_minutes": 90,
       "image_path": "/production/wavewheel-express-press.png",
       "enabled": true
     },
@@ -28606,7 +28825,7 @@
       "kind": "fish",
       "price": 3000,
       "input_count": 5,
-      "output_count": 12,
+      "output_count": 15,
       "production_minutes": 480,
       "storage_minutes": 420,
       "image_path": "/production/whale-belly-maturation-refinery.png",
@@ -29497,6 +29716,39 @@
       "effect_kind": "boat_discount_gold",
       "effect_value": 150,
       "sell_price": 1300
+    },
+    {
+      "id": "golden-parade-crown",
+      "name": "황금 행진의 왕관",
+      "description": "장착한 상태로 퐁이 잡기를 시작하면 한 판에 황금 퐁이가 총 10마리 등장해요. 진행 중인 판에는 적용되지 않아요.",
+      "rarity": "mythic",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/mythic/golden-parade-crown_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "pongi_whack_golden_count",
+      "effect_value": 10,
+      "sell_price": 3000
+    },
+    {
+      "id": "golden-pongi-invitation-bell",
+      "name": "황금 퐁이의 초대종",
+      "description": "장착한 상태로 퐁이 잡기를 시작하면 한 판에 황금 퐁이가 총 4마리 등장해요. 진행 중인 판에는 적용되지 않아요.",
+      "rarity": "epic",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/epic/golden-pongi-invitation-bell_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "pongi_whack_golden_count",
+      "effect_value": 4,
+      "sell_price": 1300
+    },
+    {
+      "id": "golden-pongi-whistle",
+      "name": "금빛 퐁이 호루라기",
+      "description": "장착한 상태로 퐁이 잡기를 시작하면 한 판에 황금 퐁이가 총 2마리 등장해요. 진행 중인 판에는 적용되지 않아요.",
+      "rarity": "rare",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/rare/golden-pongi-whistle_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "pongi_whack_golden_count",
+      "effect_value": 2,
+      "sell_price": 200
     },
     {
       "id": "horizon-ark",

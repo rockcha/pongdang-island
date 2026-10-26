@@ -24,7 +24,7 @@ it('shows the fuel icon and credits a fuel quest without announcing gold',async(
  expect(button.querySelector('img')?.getAttribute('src')).toBe('/app-icons/fuel-can.svg')
  fireEvent.click(button)
  await screen.findByRole('button',{name:'판매글 올리기 보상 수령 완료'})
- expect(mock.success).toHaveBeenCalledWith('연료 1통을 받았어요.')
+ expect(mock.success).not.toHaveBeenCalled()
 })
 beforeEach(()=>{vi.clearAllMocks();mock.load.mockResolvedValue(state());mock.refresh.mockResolvedValue(undefined)})
 afterEach(cleanup)
@@ -48,7 +48,7 @@ it('claims a completed reward once and refreshes the wallet',async()=>{
  const next=state(true);next.daily.quests[0].claimed=true;next.credited=30;resolve(next)
  await screen.findByRole('button',{name:'낚시 5회 보상 수령 완료'})
  await waitFor(()=>expect(mock.refresh).toHaveBeenCalledTimes(1))
- expect(mock.success).toHaveBeenCalledWith('30골드를 받았어요.')
+ expect(mock.success).not.toHaveBeenCalled()
 })
 it('links directly to the quest activity and closes the sheet',async()=>{
  setup();fireEvent.click(screen.getByRole('button',{name:'퀘스트'}))

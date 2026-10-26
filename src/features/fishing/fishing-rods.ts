@@ -15,7 +15,8 @@ export const fishingRods:FishingRod[]=[
  {id:'dreamabyss',name:'꿈실 낚싯대',description:'오로라 빛 실과 남보라 릴이 고요히 빛나요.',effect:'해당 해역에서 주 서식지 개체를 만나기 쉬워져요.',price:800,color:'#7661ad',accent:'#9ae4f2',region:'dreamabyss',failureReductionBp:200,nativeBonusBp:200,waitReductionSeconds:1},
  {id:'lunea',name:'루네아의 축복',description:'진주빛 낚싯대와 달무리 릴로 완성한 특별한 외형이에요.',effect:'해당 해역에서 주 서식지 개체를 만나기 쉬워져요.',price:750,color:'#b8abd8',accent:'#fff1c9',region:'mistmoon',failureReductionBp:200,nativeBonusBp:200,waitReductionSeconds:1},
  {id:'calm',name:'잔물결 낚싯대',description:'어느 바다에서든 든든한 차분한 물빛 장비예요.',effect:'직접 낚시 대기시간 2초 단축',price:750,color:'#4d9291',accent:'#c1eadb',failureReductionBp:0,nativeBonusBp:0,waitReductionSeconds:2},
- {id:'swift',name:'쏜살 낚싯대',description:'제비 날개를 닮은 황동 릴과 주황빛 손잡이로 빠른 입질을 기다리는 낚싯대예요.',effect:'직접 낚시 대기시간 3초 단축',price:1800,color:'#c3783e',accent:'#fff0d6',failureReductionBp:0,nativeBonusBp:0,waitReductionSeconds:3},
+ {id:'swift',name:'쏜살 낚싯대',description:'짙은 남빛 대와 샴페인 골드 제비 날개 릴, 호박 보석으로 완성한 정교한 낚싯대예요.',effect:'직접 낚시 대기시간 3초 단축',price:1800,color:'#26364f',accent:'#e8c981',failureReductionBp:0,nativeBonusBp:0,waitReductionSeconds:3},
+ {id:'nyamnyam',name:'한상 대나무 낚싯대',description:'김빛 대나무 대와 도시락 릴, 연어초밥 찌에 한상바다의 맛있는 풍경을 담았어요.',effect:'해당 해역에서 주 서식지 개체를 만나기 쉬워져요.',price:800,color:'#4d674b',accent:'#f2ad86',region:'nyamnyam',failureReductionBp:200,nativeBonusBp:200,waitReductionSeconds:1},
  {id:'primal',name:'호박화석 낚싯대',description:'태고의 나무와 화석 마디에 호박빛 릴을 더한 원시섬 장비예요.',effect:'해당 해역에서 주 서식지 개체를 만나기 쉬워져요.',price:700,color:'#596b3d',accent:'#e8b45c',region:'primal',failureReductionBp:200,nativeBonusBp:200,waitReductionSeconds:1},
 ]
 

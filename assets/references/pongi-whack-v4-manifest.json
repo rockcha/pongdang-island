@@ -1,0 +1,21 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-26",
+  "processing": "Same square canvas and padding preserved for registered idle/hit sprite swaps",
+  "entries": [
+    {
+      "id": "sandcastle",
+      "prompt": "Approved Pongi-shaped sandcastle decoy preview: golden sand, ear turrets, pebble eyes, shell mouth and orange starfish. Match existing Pongi silhouette and warm cartoon style; transparent background.",
+      "reference": "public/arcade/pongi-whack/pongi.webp",
+      "preservedSource": "assets/arcade/pongi-whack/v4-sources/sandcastle.source",
+      "output": "public/arcade/pongi-whack/sandcastle.webp"
+    },
+    {
+      "id": "sandcastle-hit",
+      "prompt": "Use case: precise-object-edit. Edit this exact sandcastle Pongi game decoy into its tapped reaction sprite. Keep same frontal pose, size, center, silhouette, golden sand material, pebble eyes, shell mouth, orange starfish and all identity. Small cute dent on the crown, one ear turret slightly crumbled, a few tiny sand clumps slipping down against body, eyes become squeezed curved lines with surprised little open shell mouth. Charming inanimate sand sculpture knocked by a toy game tap, not a living animal. Maintain warm brown cartoon outlines and transparent background, no hammer, no text, no stars or detached effects, no scenery. Fully contained, preserve padding and body registration for instant sprite swap.",
+      "reference": "sandcastle.source",
+      "preservedSource": "assets/arcade/pongi-whack/v4-sources/sandcastle-hit.source",
+      "output": "public/arcade/pongi-whack/sandcastle-hit.webp"
+    }
+  ]
+}

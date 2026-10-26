@@ -1,0 +1,88 @@
+{
+  "formatVersion": 1,
+  "tool": "built-in image_gen",
+  "createdAt": "2026-10-26T06:49:14.549Z",
+  "entries": [
+    {
+      "key": "horse",
+      "id": "shared-oily-horse-mackerel",
+      "name": "기름 전갱이",
+      "sell_price": 10,
+      "thumbnailSource": "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-7a1fd89f-43c0-4ea8-a5c5-e489dafd982d.png",
+      "spriteSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-3814fd43-6511-47fe-979b-ba0a7da9e296.png",
+      "thumbnailPrompt": "Edit the provided horse mackerel illustration. Preserve this exact cute fish identity, colors, fins, head and right-facing pose. Remove ALL of the broad brown/golden halo, drop shadow, glow, haze and any background residue outside the dark-brown contour; the exterior must be fully transparent, with crisp antialiased silhouette. Do not erase real fins. Fit the complete fish inside a square thumbnail canvas with at least 8% clear transparent padding on every side. Keep the pearly highlights strictly on its skin. No other changes.",
+      "spritePrompt": "Create a production-ready transparent RGBA swimming animation SPRITE SHEET of exactly the fish in the reference. Preserve identity, colors and right-facing head. Square canvas, exact 2 by 2 equal square cells, four complete fish in row-major order, one in each cell. Each fish spans 82 percent of its cell width, with fully clear padding on every side; no clipping or grid lines. Match the same scale in every cell and precisely lock the eye and head at the same relative cell coordinates; no vertical head bob or camera movement. Four genuinely different successive swimming poses: tailbeat cycle with tail bending toward, neutral, away, neutral, and naturally changing rear body and fin contours; front head stays steady. Seamless loop from frame4 to1. Clean dark brown outlines and warm cartoon cel shading identical to reference. No duplicated static frames. Head and mouth always on RIGHT. No text, background, shadow, halo, glow, fog or debris. Every pixel outside the fish silhouettes fully transparent. Keep all oily highlights strictly inside skin.",
+      "description": "은빛 비늘과 노란 지느러미에 기름기가 반짝이는 전갱이. 작은 몸에 바다의 든든한 힘을 품고 있어요.",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "frames": 4,
+      "columns": 2,
+      "thumbnail_source": "sources/shared-oily-horse-mackerel-thumbnail.source",
+      "sprite_source": "sources/shared-oily-horse-mackerel-sprite.source",
+      "thumbnail_path": "fish/normal/shared-oily-horse-mackerel_v1_thumbnail.png",
+      "storage_path": "fish/normal/shared-oily-horse-mackerel_v1_sprite.png",
+      "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "reference_roles": {
+        "style": "Pongi cartoon rendering only",
+        "series": "Existing oily sardine rendering only",
+        "sprite": "Final species thumbnail identity"
+      }
+    },
+    {
+      "key": "spanish",
+      "id": "shared-oily-spanish-mackerel",
+      "name": "기름 삼치",
+      "sell_price": 15,
+      "thumbnailSource": "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-fb8bf33f-6d6f-48e8-8001-dc99df7a1b96.png",
+      "spriteSource": "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-ecd4b344-6bf3-49a5-9a3d-0e9a03adab39.png",
+      "thumbnailPrompt": "Asset: ONE common-rarity cartoon fish collectible thumbnail, actual transparent alpha PNG. Reference 1 is ONLY the warm friendly Pongi cartoon style: clean dark-brown outlines, big glossy eye, soft cozy cel shading. Reference 2 is ONLY the existing oily-fish-series rendering style; do not copy its animal anatomy. Face SCREEN RIGHT in clear side profile: head/mouth/snout RIGHT, tail behind LEFT, swimming forward. Full body fits inside the canvas with generous transparent padding. Absolutely NO background, outer shadow, aura, bloom, fog, stray pixels, checkerboard, text, bubbles or decorations. Every pixel outside the clean brown fish outline must be fully transparent. Any oily sheen is painted ONLY inside the body. Keep shapes simple and readable at 64px. Subject: OILY SPANISH MACKEREL (기름 삼치). A friendly sleek, elongated spindle-shaped silver fish, narrow pointed snout, blue-green upper back, cream-silver belly, small subtle dark oblong spots along the upper flank, two low triangular dorsal fins, small natural pectoral fin, strong deeply forked tail. Warm restrained golden pearly oily sheen on the silver flank. Head slightly rounded for a cute common fish, one expressive shiny black eye and a small friendly mouth. It must look clearly longer and more streamlined than the sardine reference, NOT a tuna, shark, round jack or eel.",
+      "spritePrompt": "Create a production-ready transparent RGBA swimming animation SPRITE SHEET of exactly the fish in the reference. Preserve identity, colors and right-facing head. Square canvas, exact 2 by 2 equal square cells, four complete fish in row-major order, one in each cell. Each fish spans 82 percent of its cell width, with fully clear padding on every side; no clipping or grid lines. Match the same scale in every cell and precisely lock the eye and head at the same relative cell coordinates; no vertical head bob or camera movement. Four genuinely different successive swimming poses: tailbeat cycle with tail bending toward, neutral, away, neutral, and naturally changing rear body and fin contours; front head stays steady. Seamless loop from frame4 to1. Clean dark brown outlines and warm cartoon cel shading identical to reference. No duplicated static frames. Head and mouth always on RIGHT. No text, background, shadow, halo, glow, fog or debris. Every pixel outside the fish silhouettes fully transparent. Keep all oily highlights strictly inside skin. CRITICAL REVISION: much more padding. Each fish including tail fits within the central 78 percent of its cell. Absolutely clear 10 percent margin on ALL FOUR sides of EACH cell. No single opaque pixel may touch a cell edge. Keep all four fish the same size. Square 2x2 sheet.",
+      "description": "날렵한 은빛 몸에 기름이 밴 삼치. 물살을 가르는 꼬리마다 윤기가 반짝여요.",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "frames": 4,
+      "columns": 2,
+      "thumbnail_source": "sources/shared-oily-spanish-mackerel-thumbnail.source",
+      "sprite_source": "sources/shared-oily-spanish-mackerel-sprite.source",
+      "thumbnail_path": "fish/normal/shared-oily-spanish-mackerel_v1_thumbnail.png",
+      "storage_path": "fish/normal/shared-oily-spanish-mackerel_v1_sprite.png",
+      "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "reference_roles": {
+        "style": "Pongi cartoon rendering only",
+        "series": "Existing oily sardine rendering only",
+        "sprite": "Final species thumbnail identity"
+      }
+    },
+    {
+      "key": "eel",
+      "id": "shared-oily-eel",
+      "name": "기름 장어",
+      "sell_price": 19,
+      "thumbnailSource": "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-22fa673a-b05f-498b-9c8b-f9e116c984c4.png",
+      "spriteSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-28cca39a-6d01-486b-845a-9f55ece1adac.png",
+      "thumbnailPrompt": "Asset: ONE common-rarity cartoon fish collectible thumbnail, actual transparent alpha PNG. Reference 1 is ONLY the warm friendly Pongi cartoon style: clean dark-brown outlines, big glossy eye, soft cozy cel shading. Reference 2 is ONLY the existing oily-fish-series rendering style; do not copy its animal anatomy. Face SCREEN RIGHT in clear side profile: head/mouth/snout RIGHT, tail behind LEFT, swimming forward. Full body fits inside the canvas with generous transparent padding. Absolutely NO background, outer shadow, aura, bloom, fog, stray pixels, checkerboard, text, bubbles or decorations. Every pixel outside the clean brown fish outline must be fully transparent. Any oily sheen is painted ONLY inside the body. Keep shapes simple and readable at 64px. Subject: OILY EEL (기름 장어). A friendly long smooth cylindrical eel with a rounded slightly broad head at the RIGHT, soft olive-brown back and creamy beige belly, one glossy black eye and tiny friendly smile. A continuous thin low ribbon fin along the back and tail, tiny natural pectoral fins near the head; NO forked fish tail and no fish scales. Long body trails LEFT in a gentle shallow S wave, not a vertical coil or upright snake, keeping the long slender silhouette easy to recognize. A few restrained amber oily highlights are INSIDE the body only, no glow outside. Common cozy cartoon style, not realistic.",
+      "spritePrompt": "Create a production-ready transparent RGBA swimming animation SPRITE SHEET of exactly the fish in the reference. Preserve identity, colors and right-facing head. Square canvas, exact 2 by 2 equal square cells, four complete fish in row-major order, one in each cell. Each fish spans 82 percent of its cell width, with fully clear padding on every side; no clipping or grid lines. Match the same scale in every cell and precisely lock the eye and head at the same relative cell coordinates; no vertical head bob or camera movement. Four genuinely different successive swimming poses: a smooth traveling S wave along the long tail/body while the front head stays steady; alternate tail up, neutral, down, neutral with subtle fin movement. Seamless loop from frame4 to1. Clean dark brown outlines and warm cartoon cel shading identical to reference. No duplicated static frames. Head and mouth always on RIGHT. No text, background, shadow, halo, glow, fog or debris. Every pixel outside the fish silhouettes fully transparent. Keep all oily highlights strictly inside skin.",
+      "description": "매끈한 몸에 기름기가 도는 장어. 바다 아래를 부드러운 물결처럼 헤엄쳐요.",
+      "kind": "fish",
+      "rarity": "common",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "frames": 4,
+      "columns": 2,
+      "thumbnail_source": "sources/shared-oily-eel-thumbnail.source",
+      "sprite_source": "sources/shared-oily-eel-sprite.source",
+      "thumbnail_path": "fish/normal/shared-oily-eel_v1_thumbnail.png",
+      "storage_path": "fish/normal/shared-oily-eel_v1_sprite.png",
+      "style_reference": "assets/references/collectible-style/common-rare-pongi.png",
+      "reference_roles": {
+        "style": "Pongi cartoon rendering only",
+        "series": "Existing oily sardine rendering only",
+        "sprite": "Final species thumbnail identity"
+      }
+    }
+  ]
+}

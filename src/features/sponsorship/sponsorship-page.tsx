@@ -57,14 +57,14 @@ export function SponsorshipScreen({owner,gold,service=api}:{owner:string;gold:nu
  async function receive(post:Sponsorship){
   if(locked.current)return
   locked.current=true;setBusy(post.id)
-  try{const value=await service.claimSponsorship(post.id);if(active.current){replace(value);toast.success(value.replayed?'이미 받은 후원이에요.':`${number(value.goldEach)}골드를 받았어요!`)}}
+  try{const value=await service.claimSponsorship(post.id);if(active.current){replace(value)}}
   catch(cause){if(active.current){toast.error(api.sponsorshipError(cause));setRevision(value=>value+1)}}
   finally{locked.current=false;if(active.current)setBusy(null)}
  }
  async function cancel(){
   if(!cancelling||locked.current)return
   locked.current=true;setBusy(cancelling.id)
-  try{const value=await service.cancelSponsorship(cancelling.id);if(active.current){replace(value);setCancelling(null);toast.success('후원을 취소하고 골드를 돌려받았어요.')}}
+  try{const value=await service.cancelSponsorship(cancelling.id);if(active.current){replace(value);setCancelling(null);toast.success('후원을 취소했어요.')}}
   catch(cause){if(active.current)toast.error(api.sponsorshipError(cause))}
   finally{locked.current=false;if(active.current)setBusy(null)}
  }

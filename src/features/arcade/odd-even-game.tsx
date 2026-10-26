@@ -4,7 +4,6 @@ import { RankingRow, rankingListClass } from './ranking-row'
 import { randomId } from '@/lib/random-id'
 import { useEffect, useRef, useState } from 'react'
 import { RotateCcw } from 'lucide-react'
-import { toast } from 'sonner'
 import { useAuth } from '@/components/auth-provider'
 import { Button } from '@/components/ui/button'
 import { ConfirmDialog } from '@/components/confirm-dialog'
@@ -207,12 +206,6 @@ function AccountGame() {
       }
       if (!practice.current && (args.p_action === 'start' || args.p_action === 'cashout'))
         void gold.refresh()
-      if (args.p_action === 'cashout' && next.run?.stage === 'banked')
-        toast.success(
-          practice.current
-            ? '연습 보상을 받았어요.'
-            : `${next.run.stake.toLocaleString('ko-KR')}골드를 받았습니다.`,
-        )
     } catch (cause) {
       if (alive.current) {
         setError(oddEvenError(cause))

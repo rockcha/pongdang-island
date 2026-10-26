@@ -16,13 +16,14 @@ const artwork:Record<string,{frame:number;rotor:number;float:number;rotorWidth:n
  coral:{frame:.52,rotor:.44,float:.43,rotorWidth:74},
  mistmoon:{frame:.51,rotor:.5,float:.58,rotorWidth:96},
  calm:{frame:.495,rotor:.495,float:.54,rotorWidth:62},
- swift:{frame:.55,rotor:.475,float:.60,rotorWidth:70},
+ swift:{frame:.55,rotor:.45,float:.65,rotorWidth:70},
+ nyamnyam:{frame:.55,rotor:.45,float:.65,rotorWidth:70,rotorX:.47},
  starruins:{frame:.495,rotor:.49,float:.53,rotorWidth:62},
  dreamabyss:{frame:.5,rotor:.5,float:.49,rotorWidth:62},
  lunea:{frame:.5,rotor:.49,float:.44,rotorWidth:70},
 }
 export function hasRodImages(id?:string){return !!id&&Object.hasOwn(artwork,id)}
-export function rodImagePath(id:string,file:string){return `equipment/rods/${id==='basic'?'starter':id}/${file}.png`}
+export function rodImagePath(id:string,file:string){return `equipment/rods/${id==='basic'?'starter':id==='swift'?'swift-v2':id}/${file}.png`}
 export function rodThumbnailUrl(id:string){return collectibleUrl(rodImagePath(id,'thumbnail'))}
 export function RodPartImage({id,part,fallback}:{id:string;part:'frame'|'rotor'|'float';fallback:ReactNode}){
  const [failed,setFailed]=useState(false)

@@ -1,0 +1,43 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "referenceRole": "Pongi identity and warm cartoon rendering",
+  "entries": [
+    {
+      "id": "pongi",
+      "prompt": "Cozy mobile island arcade game asset. Match reference Pongi otter mascot identity: warm caramel brown fur, cream muzzle and belly, rounded ears, big glossy black eyes, small dark brown nose, pink cheeks, small coral starfish on its forehead. Clean dark brown outlines, warm soft cel shading, readable simple shapes. NO fishing rod, fishing line, hook or text. Single front-facing Pongi upper body popping up with both paws raised, happy smile, full ears and paws visible, square transparent RGBA, generous clear padding, no background or shadow outside silhouette.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-d7088b89-b9e7-4dfc-8689-e6a14f998831.png",
+      "output": "public/arcade/pongi-whack/pongi.webp",
+      "preservedSource": "assets/arcade/pongi-whack/sources/pongi.source"
+    },
+    {
+      "id": "golden",
+      "prompt": "Cozy mobile island arcade game asset. Match reference Pongi otter mascot identity: warm caramel brown fur, cream muzzle and belly, rounded ears, big glossy black eyes, small dark brown nose, pink cheeks, small coral starfish on its forehead. Clean dark brown outlines, warm soft cel shading, readable simple shapes. NO fishing rod, fishing line, hook or text. Single front-facing GOLDEN Pongi upper body popping up with both paws raised. Same mascot rendered in warm metallic gold and cream, clearly golden at small size, small star-shaped gleams contained close to the body. Square transparent RGBA, generous clear padding, no background or cast shadow.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-fc083b58-7e00-447d-b789-d8840d2c15f8.png",
+      "output": "public/arcade/pongi-whack/golden.webp",
+      "preservedSource": "assets/arcade/pongi-whack/sources/golden.source"
+    },
+    {
+      "id": "impostor",
+      "prompt": "Cozy mobile island arcade game asset. Match reference Pongi otter mascot identity: warm caramel brown fur, cream muzzle and belly, rounded ears, big glossy black eyes, small dark brown nose, pink cheeks, small coral starfish on its forehead. Clean dark brown outlines, warm soft cel shading, readable simple shapes. NO fishing rod, fishing line, hook or text. Single deceptive impostor cousin of Pongi, front-facing upper body with paws raised. Similar caramel brown otter and cream muzzle, but clearly POINTED CAT-LIKE EARS, a large BLUE SEASHELL on forehead instead of starfish, tiny triangular nose. Friendly mischievous smile. Recognizably different from true Pongi using silhouette and accessory, no villain mask. Square transparent RGBA, generous clear padding, no background or shadow.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-59de992b-cd11-4bbc-800a-a37f631fe443.png",
+      "output": "public/arcade/pongi-whack/impostor.webp",
+      "preservedSource": "assets/arcade/pongi-whack/sources/impostor.source"
+    },
+    {
+      "id": "bomb",
+      "prompt": "Single cute round charcoal-black cartoon bomb with short curled rope fuse and small orange spark, cozy mobile island game, clean dark brown outlines, warm soft cel shading. Bold readable silhouette, square actual transparent RGBA, generous padding, no text or background, no cast shadow.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-9a6d397a-fe31-4615-848f-dbbc10892547.png",
+      "output": "public/arcade/pongi-whack/bomb.webp",
+      "preservedSource": "assets/arcade/pongi-whack/sources/bomb.source"
+    },
+    {
+      "id": "thumbnail",
+      "prompt": "Cozy mobile island arcade game asset. Match reference Pongi otter mascot identity: warm caramel brown fur, cream muzzle and belly, rounded ears, big glossy black eyes, small dark brown nose, pink cheeks, small coral starfish on its forehead. Clean dark brown outlines, warm soft cel shading, readable simple shapes. NO fishing rod, fishing line, hook or text. Landscape 4:3 opaque full-bleed game thumbnail: playful whack-a-mole board in a sunny coastal garden, Pongi popping up in foreground from a round dark burrow, one golden Pongi peeking from a back burrow, a cute black bomb in another and the similar pointed-ear blue-shell impostor. Nine burrows suggested in warm sandy grass board. Dynamic joyful composition with Pongi big and readable, teal sea and warm golden light background. NO text, letters, numerals, UI badges or borders.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-e0c193d1-0f67-4c85-97a7-7361f7130d2d.png",
+      "output": "public/arcade/pongi-whack/thumbnail.webp",
+      "preservedSource": "assets/arcade/pongi-whack/sources/thumbnail.source"
+    }
+  ],
+  "processing": "Originals preserved; proportional resize with transparent padding, WebP quality 90. Mobile 390x844 browser verified game images and reward badges."
+}

@@ -1,0 +1,55 @@
+{
+  "tool": "built-in image_gen",
+  "purpose": "Hay impostor and distinct hit reactions",
+  "referenceRole": "Existing species identity, warm cartoon style and matching pose",
+  "processing": "Originals preserved, proportional 256px transparent padding and WebP quality 90",
+  "entries": [
+    {
+      "id": "hay",
+      "prompt": "Create a deceptive orange HAY DUMMY shaped like this Pongi otter's head and upper body, front-facing with round ears and raised little straw paws. Entire body is visibly bundles of dry orange straw, not fur. Orange starfish attached to forehead, two dark button eyes and a stitched crooked smile. Similar warm orange silhouette to Pongi, but readable straw texture and stray short straw tips. Cute cozy cartoon, clean dark-brown outlines, no stand or ground. Square transparent RGBA, clear padding, no shadows/background/text.",
+      "ref": "pongi",
+      "path": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-59c5f827-bf24-4b32-981b-0a35309ab403.png",
+      "output": "public/arcade/pongi-whack/hay.webp",
+      "preservedSource": "assets/arcade/pongi-whack/v2-sources/hay.source"
+    },
+    {
+      "id": "pongi-hit",
+      "prompt": "Edit this exact Pongi sprite into its just-bonked reaction. Preserve exact canvas, position, body proportions, brown/cream colors, paws and orange starfish. Eyes squeezed shut into cute curved arcs, tiny surprised mouth, ONE small rounded peach cartoon bump on top of head. Harmless playful reaction, no injury marks, blood or tears. No surrounding effects; code will add stars. Full transparent alpha background, clean contour.",
+      "ref": "pongi",
+      "path": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-b684f072-c40f-448e-86af-814762f66992.png",
+      "output": "public/arcade/pongi-whack/pongi-hit.webp",
+      "preservedSource": "assets/arcade/pongi-whack/v2-sources/pongi-hit.source"
+    },
+    {
+      "id": "golden-hit",
+      "prompt": "Edit this exact golden Pongi sprite into its just-bonked reaction. Preserve canvas position, golden body proportions and starfish. Eyes squeezed shut, tiny surprised mouth, small rounded golden cartoon bump on top of head. Cute harmless playful expression, no injuries, blood, tears. Keep the gold skin and cream muzzle. No external effects, clean transparent alpha.",
+      "ref": "golden",
+      "path": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-2d1cd289-1b98-49d0-9d9d-1f38e1345b81.png",
+      "output": "public/arcade/pongi-whack/golden-hit.webp",
+      "preservedSource": "assets/arcade/pongi-whack/v2-sources/golden-hit.source"
+    },
+    {
+      "id": "impostor-hit",
+      "prompt": "Edit this exact blue-shell impostor sprite into a cheeky caught-you reaction. Preserve canvas, size, pointed ears, body and blue shell. Eyes narrow into happy mischievous arcs, tongue sticks out slightly, blue shell tilted a little. Front-facing, paws unchanged. No effects or text, clean transparent alpha.",
+      "ref": "impostor",
+      "path": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-cb458528-30f3-46e6-9955-bf5e0df64b31.png",
+      "output": "public/arcade/pongi-whack/impostor-hit.webp",
+      "preservedSource": "assets/arcade/pongi-whack/v2-sources/impostor-hit.source"
+    },
+    {
+      "id": "hay-hit",
+      "prompt": "Create a just-bonked version of an orange HAY DUMMY shaped like this Pongi otter upper body, rounded straw ears and straw paws, orange starfish on forehead, black button eyes and stitched mouth. Clearly made of bundled orange hay, NOT fur. The top of its hay head is slightly squashed inward, orange starfish crooked, one button eye askew. Cute harmless funny reaction. Entire object with transparent padding, cozy cartoon brown outlines, no ground, shadow, external particles or text.",
+      "ref": "pongi",
+      "path": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-d4906c09-4495-483a-a68e-7a7e7aae78c2.png",
+      "output": "public/arcade/pongi-whack/hay-hit.webp",
+      "preservedSource": "assets/arcade/pongi-whack/v2-sources/hay-hit.source"
+    },
+    {
+      "id": "thumbnail-clean",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-b3c761b4-e8c1-4556-9619-710d40605488.png",
+      "output": "public/arcade/pongi-whack/thumbnail-clean.webp",
+      "preservedSource": "assets/arcade/pongi-whack/v2-sources/thumbnail-clean.source",
+      "prompt": "Edit this exact cozy Pongi arcade thumbnail. Remove ONLY the black bomb character and its entire fuse, spark and explosion glow in the left foreground burrow. Restore that burrow as a naturally empty dark brown round hole consistent with the other empty burrows. Preserve all other characters, sea scenery, composition, camera, warm colors and cartoon style unchanged. No replacement objects, no text, no UI. Keep the full opaque landscape image."
+    }
+  ]
+}

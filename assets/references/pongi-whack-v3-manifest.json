@@ -1,0 +1,22 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "referenceRole": "Warm cartoon rendering only",
+  "processing": "Originals preserved; transparent outer padding trimmed, proportional WebP output",
+  "entries": [
+    {
+      "id": "clock",
+      "prompt": "A single cute small round alarm clock game UI icon, warm brass and cream face, dark-brown clean outlines, two tiny rounded bells, short little feet, large readable dark clock hands and simple tick marks, restrained coral-orange accent, cozy cartoon cel shading matching the reference rendering style ONLY. No mascot, no text, no numerals required. Front-facing, centered square transparent RGBA, generous padding, no shadow or glow outside the object. Designed to remain recognizable at 28 pixels.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-9d487abc-e118-4190-9fe1-d7de001aa828.png",
+      "output": "public/arcade/pongi-whack/clock.webp",
+      "preservedSource": "assets/arcade/pongi-whack/v3-sources/clock.source"
+    },
+    {
+      "id": "hole",
+      "prompt": "Single empty cute cartoon burrow hole game asset, viewed from a gently elevated front angle. A wide oval dark warm-brown opening with a chunky rounded tan earthen rim, a little soft green grass on either side and two tiny cream daisies near the sides. The hole is completely EMPTY, no creature, no face, no text. Warm cozy island cartoon style with crisp dark-brown outlines and gentle cel shading matching reference rendering ONLY. Horizontal oval full object with generous transparent padding in a square RGBA canvas, every pixel outside the earth/grass silhouette fully transparent, no outer cast shadow. The opening should occupy most of the oval and remain readable at 90 pixels. Do not add a sign, mound, sky or ground plane.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-222e52c3-5207-467e-a6c4-b288f8add518.png",
+      "output": "public/arcade/pongi-whack/hole.webp",
+      "preservedSource": "assets/arcade/pongi-whack/v3-sources/hole.source"
+    }
+  ]
+}

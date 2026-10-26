@@ -1,4 +1,4 @@
-﻿{
+{
     "fish/normal/shared-oily-saury_v2_sprite.png":  {
                                                         "cell":  512,
                                                         "scale":  1,
@@ -108,5 +108,71 @@
                                                                              0
                                                                          ]
                                                                      ]
-                                                      }
+                                                      },
+    "fish/normal/shared-oily-spanish-mackerel_v1_sprite.png": {
+        "cell": 512,
+        "scale": 1,
+        "shifts": [
+            [
+                0,
+                0
+            ],
+            [
+                0,
+                0
+            ],
+            [
+                0,
+                0
+            ],
+            [
+                0,
+                0
+            ]
+        ]
+    },
+    "fish/normal/shared-oily-eel_v1_sprite.png": {
+        "cell": 512,
+        "scale": 1,
+        "shifts": [
+            [
+                0,
+                0
+            ],
+            [
+                0,
+                0
+            ],
+            [
+                -2,
+                0
+            ],
+            [
+                0,
+                0
+            ]
+        ]
+    },
+    "fish/normal/shared-oily-horse-mackerel_v1_sprite.png": {
+        "cell": 512,
+        "scale": 1,
+        "shifts": [
+            [
+                0,
+                0
+            ],
+            [
+                0,
+                0
+            ],
+            [
+                -2,
+                0
+            ],
+            [
+                0,
+                0
+            ]
+        ]
+    }
 }

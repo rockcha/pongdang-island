@@ -22,11 +22,13 @@ it('loads each image part from Storage and falls back when an image fails',()=>{
 })
 it('keeps the starter equipment ID and uses Storage thumbnails for every rod',()=>{
  expect(fishingRods[0]).toMatchObject({id:'basic',name:'입문용 낚싯대',price:0,failureReductionBp:0,nativeBonusBp:0})
- expect(fishingRods.find(r=>r.id==='bronze')).toMatchObject({name:'청동 낚싯대',failureReductionBp:100,nativeBonusBp:0})
+ expect(fishingRods.find(r=>r.id==='bronze')).toMatchObject({name:'청동 낚싯대',failureReductionBp:0,nativeBonusBp:0,waitReductionSeconds:1})
  for(const rod of fishingRods){
   expect(rodThumbnailUrl(rod.id)).toContain(rodImagePath(rod.id,'thumbnail'))
   if(rod.region)expect(rod).toMatchObject({failureReductionBp:200,nativeBonusBp:200})
  }
- expect(fishingRods.find(r=>r.id==='calm')?.failureReductionBp).toBe(300)
+ expect(fishingRods.find(r=>r.id==='calm')).toMatchObject({failureReductionBp:0,waitReductionSeconds:2})
+ expect(rodImagePath('swift','thumbnail')).toBe('equipment/rods/swift-v2/thumbnail.png')
+ expect(fishingRods.find(r=>r.id==='nyamnyam')).toMatchObject({region:'nyamnyam',price:800,waitReductionSeconds:1})
  expect(hasRodImages('missing')).toBe(false)
 })

@@ -1,7 +1,6 @@
 import {appArt} from '@/components/app-art'
 import {useEffect,useRef,useState} from 'react'
 import {Check} from 'lucide-react'
-import {toast} from 'sonner'
 import {useAuth} from '@/components/auth-provider'
 import {Button} from '@/components/ui/button'
 import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle,DialogTrigger} from '@/components/ui/dialog'
@@ -49,9 +48,6 @@ function Attendance(){
    setState(data)
    if(!data.replayed){
     setCelebrate(value=>value+1)
-    const bait=data.reward.bait_id==='bait_epic'?'별잠의 유혹 1개':data.reward.bait_id==='bait_first_greeting'?'소라의 첫인사 1개':data.reward.bait_id==='bait_special'?'달빛 진주새우 1개':''
-    const reward=[data.reward.gold?`${data.reward.gold}골드`:'',data.reward.fuel?`연료 ${data.reward.fuel}통`:'',bait].filter(Boolean).join(' · ')
-    toast.success(`출석 완료! ${reward} 획득`)
    }
    window.dispatchEvent(new Event('attendance-changed'))
    window.dispatchEvent(new Event('harbor-changed'))

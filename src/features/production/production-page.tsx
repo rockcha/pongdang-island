@@ -124,9 +124,7 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
         p_facility: productionSiteKey(site),
       })
     ) {
-      toast.success(
-        status === 'ready' ? `연료 ${site.runOutput}개를 받았어요.` : '만료된 생산물을 정리했어요.',
-      )
+      if(status !== 'ready')toast.success('만료된 생산물을 정리했어요.')
       setSelected(null)
     } else void reload()
   }

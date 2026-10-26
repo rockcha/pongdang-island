@@ -1,0 +1,93 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-26",
+  "items": [
+    {
+      "id": "swift",
+      "path": "equipment/rods/swift-v2/thumbnail.png",
+      "source": "sources/swift-thumbnail.source",
+      "prompt": "Use case: stylized-concept. Create one premium fishing rod equipment thumbnail, true transparent background. Reference image is old swift rod EDIT TARGET: redesign it with a much more luxurious master-crafted silhouette, deep midnight navy lacquer shaft, champagne gold engraved swallow-wing fittings, ivory leather grip, small warm amber gemstone accents, refined gold open-frame reel with wing-shaped spokes and amber crank, matching slender ivory/gold/navy teardrop fishing float. Keep full usable fishing rod diagonal bottom left to top right, reel attached near handle and float hanging from tip, fully contained with 8 percent margins. Cozy fantasy fishing RPG painterly inventory art, polished material shading, crisp clean alpha outline, readable at 100px. No detached sparkles, no text, no backdrop, no ground shadow. Not photoreal. Preserve identity as fast swallow-themed rod but premium navy/gold rather than plain orange.",
+      "reference": "assets/storage-upload/new/20261023-131440/equipment/rods/swift/thumbnail.png",
+      "referenceRole": "existing equipment style; swift redesign target",
+      "sha256": "a7be1476cdc207ffdf8e1e3472ddd136ca17e2609d6af276a6d83aead2219635"
+    },
+    {
+      "id": "nyamnyam",
+      "path": "equipment/rods/nyamnyam/thumbnail.png",
+      "source": "sources/nyamnyam-thumbnail.source",
+      "prompt": "Use case: stylized-concept. Create one fishing rod equipment thumbnail for a cozy fantasy food-island sea called Nyamnyam. Reference is illustration/composition STYLE ONLY. One complete elegant rod diagonal bottom left to top right, bamboo shaft with dark nori-green lacquer and warm honey bamboo joints, ivory rice-grain-shaped handle with salmon-orange wrapping, circular miniature lacquered bamboo lunchbox reel with gold rim and salmon/ivory rice-grain rotor motif, a small matching salmon sushi bobber hanging from tip. Charming carefully crafted equipment, warm painterly fantasy game inventory illustration, readable at 100px, cohesive material and food motifs without a giant food platter. Complete reel attached at handle and float hanging from tip, all contained in 84 percent of square. True transparent background, crisp clean alpha, no scenery, no text, no shadow or particles.",
+      "reference": "assets/storage-upload/new/20261023-131440/equipment/rods/swift/thumbnail.png",
+      "referenceRole": "existing equipment style; swift redesign target",
+      "sha256": "9809a4822c6b00c4b61590c3ec067478ec1468a6096bdefa995712444b3dc508"
+    },
+    {
+      "id": "swift",
+      "path": "equipment/rods/swift-v2/reel-frame.png",
+      "source": "sources/swift-reel-frame.source",
+      "prompt": "Use case: stylized-concept. Production transparent equipment part for a cozy fantasy fishing game. Reference image is design/material/style reference for ONE part, do not reproduce full rod. midnight navy enamel, champagne gold metal, engraved ivory swallow wings, small amber gemstones. ONLY static circular open horseshoe fishing reel housing, front orthographic view, hollow opening, NO rotor disk, NO crank, NO rod. Short mounting foot at top, symmetric frame, mechanical axle precisely at image center 50%,50%. Outer housing fills central 78% of square. Polished painterly inventory game art, crisp silhouette, genuine transparent alpha background. No labels, letters, scenery, ground shadow, glow haze or detached particles. Full object inside canvas.",
+      "reference": "sources/swift-thumbnail.source",
+      "referenceRole": "matching new rod material/design",
+      "sha256": "e28a2fdefa63d979c1a05c98ced006bceab02740d1b7743eeff7488cde0c2e0a"
+    },
+    {
+      "id": "swift",
+      "path": "equipment/rods/swift-v2/reel-rotor.png",
+      "source": "sources/swift-reel-rotor.source",
+      "prompt": "Use case: stylized-concept. Production transparent equipment part for a cozy fantasy fishing game. Reference image is design/material/style reference for ONE part, do not reproduce full rod. midnight navy enamel, champagne gold metal, engraved ivory swallow wings, small amber gemstones. ONLY rotating circular spool disk and short crank pointing bottom right. Front orthographic view, spool axle precisely at canvas center 50%,50%. Three ivory swallow-wing spokes for navy design OR alternating salmon and ivory rice petal spokes for green design, based on reference theme. Crank knob at 74%,70%. No outer housing, no rod. Disk diameter 58% canvas, all crank fits central84%. Polished painterly inventory game art, crisp silhouette, genuine transparent alpha background. No labels, letters, scenery, ground shadow, glow haze or detached particles. Full object inside canvas.",
+      "reference": "sources/swift-thumbnail.source",
+      "referenceRole": "matching new rod material/design",
+      "sha256": "923d7756b8836bbc5d379e23492714464adf5c66da713d9409dcdddb674b4237"
+    },
+    {
+      "id": "swift",
+      "path": "equipment/rods/swift-v2/float.png",
+      "source": "sources/swift-float.source",
+      "prompt": "Use case: stylized-concept. Production transparent equipment part for a cozy fantasy fishing game. Reference image is design/material/style reference for ONE part, do not reproduce full rod. midnight navy enamel, champagne gold metal, engraved ivory swallow wings, small amber gemstones. ONLY one upright fishing bobber, exactly matching reference rod's teardrop float colors and motifs. Slender central body width24%canvas height65%, thin antenna above, small stem below. Body center 50%,52%, complete height80%. No fishing line, no water, no rod. Polished painterly inventory game art, crisp silhouette, genuine transparent alpha background. No labels, letters, scenery, ground shadow, glow haze or detached particles. Full object inside canvas.",
+      "reference": "sources/swift-thumbnail.source",
+      "referenceRole": "matching new rod material/design",
+      "sha256": "e4f691c4246da0243cb49b1c97ba01059adc35478acadb4815de71eb1580bcc2"
+    },
+    {
+      "id": "nyamnyam",
+      "path": "equipment/rods/nyamnyam/reel-frame.png",
+      "source": "sources/nyamnyam-reel-frame.source",
+      "prompt": "Use case: stylized-concept. Production transparent equipment part for a cozy fantasy fishing game. Reference image is design/material/style reference for ONE part, do not reproduce full rod. nori dark green lacquer, honey bamboo and gold rims, salmon-orange and ivory rice-grain petal motifs. ONLY static circular open horseshoe fishing reel housing, front orthographic view, hollow opening, NO rotor disk, NO crank, NO rod. Short mounting foot at top, symmetric frame, mechanical axle precisely at image center 50%,50%. Outer housing fills central 78% of square. Polished painterly inventory game art, crisp silhouette, genuine transparent alpha background. No labels, letters, scenery, ground shadow, glow haze or detached particles. Full object inside canvas.",
+      "reference": "sources/nyamnyam-thumbnail.source",
+      "referenceRole": "matching new rod material/design",
+      "sha256": "3d644f3d9ba6303873a665faefc8d90da4479ffa6ff447fd6db77aa5a94c6cf5"
+    },
+    {
+      "id": "nyamnyam",
+      "path": "equipment/rods/nyamnyam/reel-rotor.png",
+      "source": "sources/nyamnyam-reel-rotor.source",
+      "prompt": "Use case: stylized-concept. Production transparent equipment part for a cozy fantasy fishing game. Reference image is design/material/style reference for ONE part, do not reproduce full rod. nori dark green lacquer, honey bamboo and gold rims, salmon-orange and ivory rice-grain petal motifs. ONLY rotating circular spool disk and short crank pointing bottom right. Front orthographic view, spool axle precisely at canvas center 50%,50%. Three ivory swallow-wing spokes for navy design OR alternating salmon and ivory rice petal spokes for green design, based on reference theme. Crank knob at 74%,70%. No outer housing, no rod. Disk diameter 58% canvas, all crank fits central84%. Polished painterly inventory game art, crisp silhouette, genuine transparent alpha background. No labels, letters, scenery, ground shadow, glow haze or detached particles. Full object inside canvas.",
+      "reference": "sources/nyamnyam-thumbnail.source",
+      "referenceRole": "matching new rod material/design",
+      "sha256": "2c07afe9fa34492c86aa7be28c40bb2587eb4fa4a2b62e21cedaddb7850e29b4"
+    },
+    {
+      "id": "nyamnyam",
+      "path": "equipment/rods/nyamnyam/float.png",
+      "source": "sources/nyamnyam-float.source",
+      "prompt": "Use case: stylized-concept. Production transparent equipment part for a cozy fantasy fishing game. Reference image is design/material/style reference for ONE part, do not reproduce full rod. nori dark green lacquer, honey bamboo and gold rims, salmon-orange and ivory rice-grain petal motifs. ONLY one upright fishing bobber, exactly matching reference rod's teardrop float colors and motifs. Slender central body width24%canvas height65%, thin antenna above, small stem below. Body center 50%,52%, complete height80%. No fishing line, no water, no rod. Polished painterly inventory game art, crisp silhouette, genuine transparent alpha background. No labels, letters, scenery, ground shadow, glow haze or detached particles. Full object inside canvas.",
+      "reference": "sources/nyamnyam-thumbnail.source",
+      "referenceRole": "matching new rod material/design",
+      "sha256": "08f94f84ebeba41ae883e714cc62845fe88dc03452068167250fae75905e668a"
+    }
+  ],
+  "alignment": {
+    "swift": {
+      "frame": 0.55,
+      "rotor": 0.45,
+      "float": 0.65,
+      "rotorWidth": 70
+    },
+    "nyamnyam": {
+      "frame": 0.55,
+      "rotor": 0.45,
+      "float": 0.65,
+      "rotorWidth": 70,
+      "rotorX": 0.47
+    }
+  }
+}

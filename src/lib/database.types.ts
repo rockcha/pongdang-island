@@ -143,6 +143,8 @@ export type Database = {
       hall_action:{Args:import('@/features/hall-of-fame/api').HallAction;Returns:import('@/features/hall-of-fame/api').HallWall}
       odd_even_game:{Args:import('@/features/arcade/odd-even-api').OddEvenAction;Returns:import('@/features/arcade/odd-even-api').OddEvenState}
       odd_even_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/odd-even-api').OddEvenRanks}
+      pongi_whack_action:{Args:import('@/features/arcade/pongi-whack-api').WhackAction;Returns:import('@/features/arcade/pongi-whack-api').WhackState}
+      pongi_whack_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/memory-api').MemoryLeaderboard}
       memory_game:{Args:import('@/features/arcade/memory-api').MemoryAction;Returns:import('@/features/arcade/memory-api').MemoryState}
       memory_leaderboard:{Args:{p_offset?:number};Returns:import('@/features/arcade/memory-api').MemoryLeaderboard}
       shadow_game:{Args:import('@/features/arcade/shadow-api').ShadowAction;Returns:import('@/features/arcade/shadow-api').ShadowState}

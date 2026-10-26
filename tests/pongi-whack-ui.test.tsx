@@ -1,0 +1,45 @@
+import {act,cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
+import {afterEach,beforeEach,expect,it,vi} from 'vitest'
+import PongiWhackGame from '@/features/arcade/pongi-whack-game'
+const mocks=vi.hoisted(()=>({command:vi.fn(),account:{data:{serverNow:'',gold:100,run:null},refetch:vi.fn()}}))
+vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
+vi.mock('@/features/relics/use-equipped-relic',()=>({useEquippedRelic:()=>null}))
+vi.mock('@/lib/account-query',()=>({useAccountResource:()=>mocks.account}))
+vi.mock('@/features/arcade/pongi-whack-api',async original=>({...await original<typeof import('@/features/arcade/pongi-whack-api')>(),actWhack:mocks.command}))
+let frames:Map<number,FrameRequestCallback>,frameId:number,now:number
+beforeEach(()=>{now=0;frames=new Map();frameId=0;vi.clearAllMocks();vi.spyOn(performance,'now').mockImplementation(()=>now);vi.spyOn(window,'requestAnimationFrame').mockImplementation(cb=>{frames.set(++frameId,cb);return frameId});vi.spyOn(window,'cancelAnimationFrame').mockImplementation(id=>{frames.delete(id)});mocks.account.data={serverNow:new Date().toISOString(),gold:100,run:null}})
+afterEach(()=>{cleanup();vi.restoreAllMocks()})
+const advance=async(ms:number)=>{now=ms;await act(async()=>{const current=[...frames.values()];frames.clear();current.forEach(cb=>cb(ms))})}
+it('plays a complete free round without paid commands and excludes practice from ranking',async()=>{
+ vi.spyOn(Math,'random').mockReturnValue(.9)
+ render(<PongiWhackGame/>);fireEvent.click(screen.getByRole('button',{name:'연습'}))
+ await advance(3700)
+ const target=screen.getByRole('button',{name:'11번 구멍 퐁이'})
+ fireEvent.pointerDown(target,{button:0});fireEvent.click(target,{detail:0})
+ expect(screen.getByLabelText('현재 점수').textContent).toContain('1')
+ expect(screen.getByRole('progressbar',{name:'남은 시간'}).getAttribute('aria-valuenow')).toBe('29.3')
+ await advance(18000)
+ expect(screen.getByRole('progressbar',{name:'남은 시간'}).getAttribute('aria-valuenow')).toBe('15')
+ expect(screen.getByRole('progressbar',{name:'남은 시간'}).querySelector('i')?.style.transform).toBe('scaleX(0.5)')
+ expect(screen.queryByText('퐁이 +1 · 황금 +10 · 폭탄·조개 가짜·건초 −2')).toBeNull()
+ await advance(34000)
+ expect(screen.getByText('연습 완료!')).toBeTruthy();expect(mocks.command).not.toHaveBeenCalled()
+ fireEvent.click(screen.getByRole('button',{name:'시작 화면으로'}))
+ expect(screen.getByRole('button',{name:'연습'})).toBeTruthy()
+})
+it('starts paid play once, retains the operation id after a network failure and submits a verified result',async()=>{
+ const start={id:'run-1',startedAt:new Date(Date.now()+3000).toISOString(),targets:[{id:0,hole:0,at:500,until:1500,kind:'pongi'}],finishedAt:null,abandoned:false,score:0,mistakes:0}
+ mocks.command.mockRejectedValueOnce(new Error('NETWORK')).mockResolvedValueOnce({serverNow:new Date().toISOString(),gold:90,run:start}).mockResolvedValue({serverNow:new Date().toISOString(),gold:90,run:{...start,score:1,rewardGold:1,finishedAt:new Date().toISOString()}})
+ render(<PongiWhackGame/>);fireEvent.click(screen.getByRole('button',{name:'실전 (골드 10)'}))
+ expect(mocks.command).not.toHaveBeenCalled()
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'확인'}))
+ await waitFor(()=>expect(screen.getByRole('alert')).toBeTruthy())
+ fireEvent.click(within(screen.getByRole('alertdialog')).getByRole('button',{name:'확인'}))
+ await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
+ expect(mocks.command.mock.calls[0][0].p_operation_id).toBe(mocks.command.mock.calls[1][0].p_operation_id)
+ await advance(3700);fireEvent.click(screen.getByRole('button',{name:'1번 구멍 퐁이'}),{detail:0})
+ await advance(34000)
+ await waitFor(()=>expect(screen.getByText('도전 완료!')).toBeTruthy())
+ expect(screen.getByLabelText('골드 1 획득')).toBeTruthy()
+ expect(mocks.command.mock.calls.at(-1)?.[0]).toMatchObject({p_action:'finish',p_run_id:'run-1',p_hits:[{id:0,ms:expect.any(Number)}]})
+})

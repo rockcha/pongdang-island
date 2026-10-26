@@ -1,0 +1,45 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-10-26",
+  "entries": [
+    {
+      "id": "golden-pongi-whistle",
+      "rarity": "rare",
+      "name": "금빛 퐁이 호루라기",
+      "count": 2,
+      "subject": "one small honey-gold brass whistle shaped subtly like a rounded otter head with two circular ears, tiny engraved paw emblem, short teal cord tied neatly; an inanimate usable whistle, no living creature",
+      "style": "Warm rounded cartoon with bold clean dark brown outline and soft cel shading",
+      "ref": "assets/references/collectible-style/common-rare-pongi.png",
+      "prompt": "Use case: stylized-concept. One isolated inventory relic icon for cozy ocean fishing RPG. Subject: one small honey-gold brass whistle shaped subtly like a rounded otter head with two circular ears, tiny engraved paw emblem, short teal cord tied neatly; an inanimate usable whistle, no living creature. Style: Warm rounded cartoon with bold clean dark brown outline and soft cel shading. Reference image is rendering style ONLY, do not copy its creature, anatomy, silhouette or background. Center whole object within 78% square with clean transparent padding. Genuine transparent background, no scene, no floor or cast shadow, no text, no numerals, no floating particles, no wide haze, no checkerboard. Clear clean alpha silhouette, legible at 64px.",
+      "path": "relics/rare/golden-pongi-whistle_thumbnail.png",
+      "preservedSource": "sources/golden-pongi-whistle.source",
+      "sha256": "1aa0382004422965e8b8483a69cd223776ca1d3f516e44fc0a59a618e71d6932"
+    },
+    {
+      "id": "golden-pongi-invitation-bell",
+      "rarity": "epic",
+      "name": "황금 퐁이의 초대종",
+      "count": 4,
+      "subject": "one elegant golden summoning handbell with ivory handle, amber gemstone in a rounded otter-ear-shaped crest, delicate engraved paw and ocean-wave filigree, a short crimson bow; inanimate treasured handbell",
+      "style": "Soft polished fantasy relic illustration, delicate colored edges, rich dimensional brushed gold and luminous amber, finely shaded materials, no thick cartoon outlines",
+      "ref": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "Use case: stylized-concept. One isolated inventory relic icon for cozy ocean fishing RPG. Subject: one elegant golden summoning handbell with ivory handle, amber gemstone in a rounded otter-ear-shaped crest, delicate engraved paw and ocean-wave filigree, a short crimson bow; inanimate treasured handbell. Style: Soft polished fantasy relic illustration, delicate colored edges, rich dimensional brushed gold and luminous amber, finely shaded materials, no thick cartoon outlines. Reference image is rendering style ONLY, do not copy its creature, anatomy, silhouette or background. Center whole object within 78% square with clean transparent padding. Genuine transparent background, no scene, no floor or cast shadow, no text, no numerals, no floating particles, no wide haze, no checkerboard. Clear clean alpha silhouette, legible at 64px.",
+      "path": "relics/epic/golden-pongi-invitation-bell_thumbnail.png",
+      "preservedSource": "sources/golden-pongi-invitation-bell.source",
+      "sha256": "d8d857edf6c5b0f4cf0ca6390db0a2564d1112f295918dfd91fb971866b67575"
+    },
+    {
+      "id": "golden-parade-crown",
+      "rarity": "mythic",
+      "name": "황금 행진의 왕관",
+      "count": 10,
+      "subject": "one majestic compact ancient golden crown resting at a slight three-quarter tilt, five sculpted otter-paw-shaped golden peaks, glowing warm sunstone centerpiece, small ivory pearls and delicate wing-shaped scrollwork, deep amber enamel; inanimate regal relic, no animal wearing it",
+      "style": "Exquisite high detail fantasy illustration, soft colored edges, carefully modeled gold, amber and pearl materials, restrained warm luminous highlights close to object, graceful ornate silhouette",
+      "ref": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "prompt": "Use case: stylized-concept. One isolated inventory relic icon for cozy ocean fishing RPG. Subject: one majestic compact ancient golden crown resting at a slight three-quarter tilt, five sculpted otter-paw-shaped golden peaks, glowing warm sunstone centerpiece, small ivory pearls and delicate wing-shaped scrollwork, deep amber enamel; inanimate regal relic, no animal wearing it. Style: Exquisite high detail fantasy illustration, soft colored edges, carefully modeled gold, amber and pearl materials, restrained warm luminous highlights close to object, graceful ornate silhouette. Reference image is rendering style ONLY, do not copy its creature, anatomy, silhouette or background. Center whole object within 78% square with clean transparent padding. Genuine transparent background, no scene, no floor or cast shadow, no text, no numerals, no floating particles, no wide haze, no checkerboard. Clear clean alpha silhouette, legible at 64px.",
+      "path": "relics/mythic/golden-parade-crown_thumbnail.png",
+      "preservedSource": "sources/golden-parade-crown.source",
+      "sha256": "8697ac8b758a91ea4041072e7c56174bd6da07a354a0b74662fba3a900143522"
+    }
+  ]
+}

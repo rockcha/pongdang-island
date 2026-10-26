@@ -34,7 +34,7 @@ function GameRules({ game }: { game: ArcadeGame }) {
 
 export function ArcadePage() {
   const [category, setCategory] = useState<keyof typeof arcadeTagLabels | null>(null)
-  const [reward, setReward] = useState<'instant' | 'settlement'>('instant')
+  const [reward, setReward] = useState<'all' | 'instant' | 'settlement'>('all')
   const filters = [
     { id: null, image: '/app-icons/all.png' },
     { id: 'luck', image: '/app-icons/arcade-luck.png' },
@@ -44,7 +44,10 @@ export function ArcadePage() {
   const games = arcadeGames.filter(
     (game) =>
       (!category || game.tags?.includes(category)) &&
-      (game.rewardMode === reward || game.status === 'coming-soon'),
+      (reward === 'all' ||
+        game.rewardMode === 'both' ||
+        game.rewardMode === reward ||
+        game.status === 'coming-soon'),
   )
   return (
     <section className="flex min-h-0 min-w-0 flex-1 flex-col" aria-label="오락실 게임 목록">
@@ -70,9 +73,9 @@ export function ArcadePage() {
         <div
           role="group"
           aria-label="보상 방식"
-          className="grid min-w-0 flex-1 grid-cols-2 rounded-lg bg-secondary/50 p-1"
+          className="grid min-w-0 flex-1 grid-cols-3 rounded-lg bg-secondary/50 p-1"
         >
-          {(['instant', 'settlement'] as const).map((value) => (
+          {(['all', 'instant', 'settlement'] as const).map((value) => (
             <button
               key={value}
               type="button"
@@ -80,12 +83,14 @@ export function ArcadePage() {
               onClick={() => setReward(value)}
               className={`flex min-h-9 items-center justify-center gap-1.5 rounded-md px-2 text-xs outline-none focus-visible:ring-2 focus-visible:ring-ring ${reward === value ? 'bg-background text-primary shadow-sm' : 'text-muted-foreground'}`}
             >
-              {value === 'instant' ? (
+              {value === 'all' ? (
+                <Gamepad2 aria-hidden="true" className="size-3.5" />
+              ) : value === 'instant' ? (
                 <Gift aria-hidden="true" className="size-3.5" />
               ) : (
                 <CalendarDays aria-hidden="true" className="size-3.5" />
               )}
-              {value === 'instant' ? '즉시 보상' : '주간 보상'}
+              {value === 'all' ? '전체' : value === 'instant' ? '즉시 보상' : '주간 보상'}
             </button>
           ))}
         </div>
@@ -107,6 +112,26 @@ export function ArcadePage() {
                     />
                   ) : (
                     <game.icon className="size-10 opacity-50" />
+                  )}
+                  {game.rewardMode && game.status === 'ready' && (
+                    <div className="absolute left-2 top-2 flex flex-wrap gap-1 pr-2">
+                      {(game.rewardMode === 'both'
+                        ? (['instant', 'settlement'] as const)
+                        : [game.rewardMode]
+                      ).map((mode) => (
+                        <span
+                          key={mode}
+                          className={`inline-flex items-center gap-1 rounded-full border border-white/50 px-2 py-1 text-[10px] shadow-sm backdrop-blur-sm ${mode === 'settlement' ? 'bg-[#f7edda]/95 text-[#725633]' : 'bg-[#e7f3ea]/95 text-[#376347]'}`}
+                        >
+                          {mode === 'settlement' ? (
+                            <CalendarDays className="size-3" aria-hidden="true" />
+                          ) : (
+                            <Gift className="size-3" aria-hidden="true" />
+                          )}
+                          {mode === 'settlement' ? '주간 보상' : '즉시 보상'}
+                        </span>
+                      ))}
+                    </div>
                   )}
                   {game.status === 'coming-soon' && (
                     <span className="absolute right-2 top-2 rounded bg-background/95 px-1.5 py-0.5 text-[9px] text-muted-foreground">

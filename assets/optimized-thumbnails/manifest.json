@@ -5,11 +5,11 @@
     640
   ],
   "summary": {
-    "count": 602,
-    "sourceBytes": 665702152,
-    "smallBytes": 16185538,
-    "largeBytes": 43418684,
-    "smallReductionPercent": 97.57
+    "count": 605,
+    "sourceBytes": 666140050,
+    "smallBytes": 16229516,
+    "largeBytes": 43490672,
+    "smallReductionPercent": 97.56
   },
   "items": [
     {
@@ -7013,6 +7013,46 @@
       }
     },
     {
+      "key": "fish/normal/shared-oily-eel_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-154418/fish/normal/shared-oily-eel_v1_thumbnail.png",
+      "sourceHash": "8b77b140d75c4988a6fe561b8fa34ad038d888e7c722a838699249b0f3bebab9",
+      "sourceBytes": 98902,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/ec3fea0ee2698f97c48c2f30-320.webp",
+        "bytes": 10850,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6233aec270b9d68d9ec19aa8-640.webp",
+        "bytes": 16920,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/normal/shared-oily-horse-mackerel_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-154418/fish/normal/shared-oily-horse-mackerel_v1_thumbnail.png",
+      "sourceHash": "83f5e2150ba6361d7f3b253223bc467d91a3c42cd0373e9ae1fdd7cb5310a90d",
+      "sourceBytes": 217981,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/febaf8fbb1423ec41e3d106b-320.webp",
+        "bytes": 19684,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/61d1bfd5e802fdb8707d327b-640.webp",
+        "bytes": 33940,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
       "key": "fish/normal/shared-oily-sardine_v1_thumbnail.png",
       "source": "assets/storage-upload/new/20261022-101350/fish/normal/shared-oily-sardine_v1_thumbnail.png",
       "sourceHash": "b109821ecb293635f86905ee5b94ade1d33de6f3ee82c5a1babc0a5734ed12fa",
@@ -7048,6 +7088,26 @@
       "large": {
         "url": "/game-art/thumbnails/4ddae0643e3aaf20378bb3c8-640.webp",
         "bytes": 16936,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/normal/shared-oily-spanish-mackerel_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-154418/fish/normal/shared-oily-spanish-mackerel_v1_thumbnail.png",
+      "sourceHash": "3597cf44336b0a84b620e6421795561c6759a0a2549473ea42d899e3d3707ba3",
+      "sourceBytes": 121015,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/b934af947c8d6dff76ba1916-320.webp",
+        "bytes": 13444,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2952d45b4f32a6325aef0bf3-640.webp",
+        "bytes": 21128,
         "width": 512,
         "height": 512
       }

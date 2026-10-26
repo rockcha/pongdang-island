@@ -6,6 +6,7 @@ const MemoryGame = lazy(() => import('./memory-game'))
 const OddEvenGame = lazy(() => import('./odd-even-game'))
 const BrickBreakerGame = lazy(() => import('./brick-breaker-game'))
 const LadderGame = lazy(() => import('./ladder-game'))
+const PongiWhackGame = lazy(() => import('./pongi-whack-game'))
 
 export type ArcadeGame = {
   id: string
@@ -19,12 +20,25 @@ export type ArcadeGame = {
   component?: ComponentType
   thumbnail?: string
   tags?: ('brain' | 'physical' | 'luck')[]
-  rewardMode?: 'settlement' | 'instant'
+  rewardMode?: 'settlement' | 'instant' | 'both'
 }
 export const arcadeTagLabels = { luck: '운빨', brain: '뇌지컬', physical: '피지컬' } as const
 
 // Placeholder concepts: replace or extend these entries when games are approved.
 export const arcadeGames: ArcadeGame[] = [
+  {
+    id: 'pongi-whack',
+    title: '퐁이 잡기',
+    description: '30초 동안 진짜 퐁이를 찾아요. 두 종류의 가짜를 조심하세요!',
+    icon: Pickaxe,
+    entryFee: 10,
+    dailyLimit: null,
+    status: 'ready',
+    component: PongiWhackGame,
+    thumbnail: '/arcade/pongi-whack/thumbnail-clean.webp',
+    tags: ['physical'],
+    rewardMode: 'both',
+  },
   {
     id: 'ladder',
     title: '퐁이의 물결 사다리',

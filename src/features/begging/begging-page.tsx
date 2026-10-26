@@ -214,15 +214,15 @@ export function BeggingScreen({
   }
   const current = tab === 'history' ? history : feed
   return (
-    <section aria-label="구걸하기" className="flex min-h-0 flex-1 flex-col">
+    <section aria-label="사연함" className="flex min-h-0 flex-1 flex-col">
       <div
         role="group"
-        aria-label="구걸하기 목록 분류"
+        aria-label="사연함 목록 분류"
         className="grid shrink-0 grid-cols-3 border-b border-border/60"
       >
         {(
           [
-            ['active', '사연들'],
+            ['active', '이웃 사연'],
             ['mine', '내 사연'],
             ['history', '송금 기록'],
           ] as const
@@ -296,12 +296,12 @@ export function BeggingScreen({
                   ? '아직 주고받은 골드가 없어요.'
                   : tab === 'mine'
                     ? '아직 남긴 사연이 없어요.'
-                    : '아직 기다리는 사연이 없어요.'}
+                    : '아직 올라온 사연이 없어요.'}
               </p>
               <p className="mt-2 text-xs leading-6 text-muted-foreground">
                 {tab === 'history'
                   ? '골드와 마음을 나눈 기록이 여기에 남아요.'
-                  : '필요한 골드와 사연을 들려주세요.'}
+                  : '나누고 싶은 사연을 남기고, 이웃의 사연에 골드로 응원해요.'}
               </p>
             </div>
           )
@@ -363,11 +363,11 @@ export function BeggingScreen({
       >
         <DialogContent className="max-h-[80dvh] max-w-sm overflow-y-auto rounded-2xl">
           <DialogHeader>
-            <DialogTitle>도와준 사람들</DialogTitle>
+            <DialogTitle>응원해 준 사람들</DialogTitle>
             <DialogDescription>
               {detail
                 ? `${detail.request.transferCount}번의 따뜻한 마음이 모였어요.`
-                : '골드를 보내준 이웃의 기록이에요.'}
+                : '골드로 응원해 준 이웃의 기록이에요.'}
             </DialogDescription>
           </DialogHeader>
           {detailError ? (

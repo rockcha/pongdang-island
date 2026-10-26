@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/client'
-import { getQueryAccount, readAccountResource, resourceChanged } from '@/lib/account-cache'
+import {readAccountResource} from '@/lib/account-cache'
+import {accountCommand} from '@/lib/account-command'
 import {announceBaitReceived} from '@/features/fishing/bait-reward-effect'
 export type BaitFacility = {
   id: string
@@ -44,17 +45,30 @@ export async function readBaitProduction(signal: AbortSignal) {
   return data
 }
 export async function actBaitProduction(args: BaitProductionAction) {
-  const scope = getQueryAccount()
-  const startedAt=performance.now()
-  const { data, error } = await createClient().rpc('bait_production_action', args)
-  if (error) throw error
-  if(args.p_action==='claim'&&data.receipt?.action==='claim'){
-    const site=data.sites.find(site=>site.siteId===args.p_facility)
-    if(site)announceBaitReceived('production:'+args.p_operation_id,site.bait_id,data.receipt.count,startedAt)
-  }
-  window.dispatchEvent(new Event('wallet-changed'))
-  resourceChanged('bait-production', 'bait-production-changed', data, scope)
-  return data
+  const startedAt = performance.now()
+  return accountCommand(
+    async () => {
+      const { data, error } = await createClient().rpc('bait_production_action', args)
+      if (error) throw error
+      return data
+    },
+    {
+      resource: 'bait-production',
+      event: 'bait-production-changed',
+      after: (data) => {
+        if (args.p_action === 'claim' && data.receipt?.action === 'claim') {
+          const site = data.sites.find((site) => site.siteId === args.p_facility)
+          if (site)
+            announceBaitReceived(
+              'production:' + args.p_operation_id,
+              site.bait_id,
+              data.receipt.count,
+              startedAt,
+            )
+        }
+      },
+    },
+  )
 }
 export function baitProductionError(e: unknown) {
   const m = String((e as { message?: string })?.message ?? '')

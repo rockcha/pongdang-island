@@ -4,6 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "client-data:check": "node scripts/check-client-data.mjs",
+    "test:client-data": "vitest run --maxWorkers=1 --testTimeout=15000 tests/client-data-boundaries.test.ts tests/account-command.test.tsx tests/aquarium-like.test.tsx tests/friend-aquarium-actions.test.tsx tests/friend-aquarium-page.test.tsx tests/account-cache.test.tsx tests/menu-status-cache.test.tsx tests/news-supporters.test.tsx tests/home-quick-menu.test.tsx tests/island-news-popup.test.tsx tests/relic-loadout.test.tsx tests/aquarium-gallery.test.tsx tests/aquarium-temporary.test.tsx tests/storage-page.test.tsx tests/collectible-storage-dialog.test.tsx tests/collection.test.tsx tests/production-page.test.tsx tests/production-bulk.test.tsx tests/bait-production-ui.test.tsx tests/harbor-status.test.tsx tests/expeditions-ui.test.tsx tests/savings-ui.test.tsx tests/development-fund-ui.test.tsx tests/development-fund-story.test.tsx tests/collection-filter-preference.test.ts tests/gold-provider-mobile.test.tsx tests/fishing-panel.test.tsx",
     "db:verify": "node scripts/db/verify.mjs && node scripts/db/context.mjs check",
     "db:context": "node scripts/db/context.mjs write",
     "db:remote": "node scripts/db/context.mjs remote",

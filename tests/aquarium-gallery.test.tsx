@@ -5,7 +5,7 @@ import {AquariumPage} from '@/pages/aquarium-page'
 const mock=vi.hoisted(()=>({load:vi.fn(),transact:vi.fn(),manage:vi.fn(),world:undefined as any,items:[] as any[]}))
 vi.mock('@/features/notices/use-operator',()=>({useOperator:()=>({operator:false})}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wallet:{gold:5000,inventory:{}},transact:mock.transact,refresh:vi.fn(),busy:false,loading:false,error:''})}))
-vi.mock('@/features/aquarium/api',async original=>({...await original<typeof import('@/features/aquarium/api')>(),loadAquarium:mock.load,manageTank:mock.manage,backgroundUrl:(path:string)=>path}))
+vi.mock('@/features/aquarium/api',async original=>({...await original<typeof import('@/features/aquarium/api')>(),loadAquarium:mock.load,readAquarium:mock.load,manageTank:mock.manage,backgroundUrl:(path:string)=>path}))
 vi.mock('@/features/aquarium/aquarium-ambience',()=>({AquariumAmbience:()=>null}))
 vi.mock('@/features/aquarium/aquarium-inventory-dialog',()=>({AquariumInventoryDialog:()=> <button>목록</button>}))
 vi.mock('@/features/friends/friend-aquarium-picker',()=>({FriendAquariumPicker:()=> <button>친구 어항</button>}))

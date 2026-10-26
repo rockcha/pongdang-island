@@ -2,7 +2,8 @@ import {NewDiscoveryBadge} from '@/components/new-discovery-badge'
 import {appArt} from '@/components/app-art'
 import {RarityBadge} from '@/components/rarity-badge'
 import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
-import type {Catch,ExpeditionOutcome} from './api'
+import type {Catch,ExpeditionOutcome,ExpeditionState} from './api'
+import {ExpeditionBaitSummary} from './expedition-bait-summary'
 import './expedition-results.css'
 
 function ResultSummary({outcome}:{outcome:ExpeditionOutcome}){
@@ -14,7 +15,7 @@ function ResultSummary({outcome}:{outcome:ExpeditionOutcome}){
  </dl>
 }
 
-export function ExpeditionResults({outcome,compact=false,preview=false,onCelebrate}:{outcome:ExpeditionOutcome;compact?:boolean;preview?:boolean;onCelebrate?:(item:Catch)=>void}){
+export function ExpeditionResults({outcome,compact=false,preview=false,onCelebrate,cargo,baits=[]}:{outcome:ExpeditionOutcome;compact?:boolean;preview?:boolean;onCelebrate?:(item:Catch)=>void;cargo?:Record<string,number>;baits?:ExpeditionState['baits']}){
  const {items,refunds={}}=outcome
  const refunded=Object.values(refunds).reduce((sum,n)=>sum+n,0)
  const bonus=items.filter(item=>item.bonus).length
@@ -35,6 +36,7 @@ export function ExpeditionResults({outcome,compact=false,preview=false,onCelebra
    <h2 className="text-lg">통발 결과</h2>
    <p className="mt-2 text-[11px] text-muted-foreground">{preview?'예시 결과예요. 보관함에 추가되지 않아요.':items.length?'잡은 개체는 보관함에 보냈어요.':'이번에는 잡힌 개체가 없어요.'}</p>
   </header>
+  <ExpeditionBaitSummary cargo={cargo} baits={baits}/>
   <ResultSummary outcome={outcome}/>
   {shareButtons}
   {(bonus>0||refunded>0)&&<dl className="flex flex-wrap justify-center gap-x-5 gap-y-2 border-y border-border/60 py-3 text-xs">

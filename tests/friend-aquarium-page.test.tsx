@@ -33,6 +33,9 @@ it('shows the owner and browses friend tanks without a collectible list', async 
     </MemoryRouter>,
   )
   const first=await screen.findByRole('button',{name:'첫 어항 어항 열기'})
+  expect(screen.getByRole('button',{name:'통발 유인'})).toBeTruthy()
+  expect(screen.getByRole('link',{name:'친구퐁이에게 선물하기'}).getAttribute('href')).toBe('/storage?giftTo=friend')
+  expect(screen.getByRole('navigation',{name:'친구에게 마음 전하기'}).className).toContain('grid-cols-2')
   const list=screen.getByLabelText('친구 어항 목록')
   list.scrollTop=140;fireEvent.scroll(list)
   expect(screen.getAllByTestId('friend-preview')).toHaveLength(2)

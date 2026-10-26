@@ -1,4 +1,4 @@
-import {Suspense} from 'react'
+import {Suspense,useState} from 'react'
 import { GoldIcon, useGold } from '@/features/gold/gold-provider'
 import { Link, Outlet, useLocation } from 'react-router'
 import { HeaderPlaceNavigation } from '@/components/header-place-navigation'
@@ -16,6 +16,7 @@ import {IslandNewsPopup} from '@/components/island-news-popup'
 export function AppLayout() {
   const { session } = useAuth()
   const {pathname:routePathname}=useLocation()
+  const [noticeBanner,setNoticeBanner]=useState<{pathname:string;category:string}|null>(null)
   // React Router also matches a trailing slash; keep these pages in the same
   // viewport layout and banner configuration for either URL spelling.
   const pathname=/^\/(?:(?:(?:my-)?bait-)?production(?:-shop)?|shipyard)\/+$/.test(routePathname)?routePathname.replace(/\/+$/,''):routePathname
@@ -59,7 +60,7 @@ export function AppLayout() {
         <HeaderPlaceNavigation />
       </div>}
     </header>
-    {!port&&!harbor&&!tankScreen&&<PlaceBanner pathname={pathname}/>}
-    <main className={`flex min-w-0 flex-1 flex-col ${shop||warehouse||memory||friends||exchange||showcase||noticeList||mailbox||home||profile?'-mx-6':expedition?'-mx-3':''} ${port||expedition||tankScreen||harbor||fishing||memory||warehouse||shop||friends||exchange||square||showcase||noticeList||mailbox||home||profile?'min-h-0 overflow-hidden':''}`}><Suspense fallback={<p role="status" className="p-8 text-center text-xs text-muted-foreground">불러오는 중…</p>}><Outlet/></Suspense></main>
+    {!port&&!harbor&&!tankScreen&&<PlaceBanner pathname={pathname} noticeCategory={noticeBanner?.pathname===routePathname?noticeBanner.category:undefined}/>}
+    <main className={`flex min-w-0 flex-1 flex-col ${shop||warehouse||memory||friends||exchange||showcase||noticeList||mailbox||home||profile?'-mx-6':expedition?'-mx-3':''} ${port||expedition||tankScreen||harbor||fishing||memory||warehouse||shop||friends||exchange||square||showcase||noticeList||mailbox||home||profile?'min-h-0 overflow-hidden':''}`}><Suspense fallback={<p role="status" className="p-8 text-center text-xs text-muted-foreground">불러오는 중…</p>}><Outlet context={{setNoticeBanner}}/></Suspense></main>
   </div>
 }

@@ -1,26 +1,42 @@
+import {readAccountResource} from '@/lib/account-cache'
+import {accountCommand} from '@/lib/account-command'
 import {createClient} from '@/lib/client'
 import type {Rarity} from '@/lib/game/rarity'
 
 export type Relic={id:string;name:string;description:string;rarity:Rarity;thumbnail_path:string;owned:boolean;discovered?:boolean;sell_price:number;effect_kind:string;effect_value:number}
 export type RelicState={equippedId:string|null;changeFee:number;equipFee:number;unequipFee:number;relics:Relic[];replayed?:boolean}
-export async function loadRelics(){
- const {data,error}=await createClient().rpc('relic_state')
- if(error)throw error
- return data
+export async function loadRelics(fresh = false) {
+  return readAccountResource('relics', readRelics, { fresh })
 }
-export async function equipRelic(id:string|null,operation:string,fee:number){
- const {data,error}=await createClient().rpc('equip_relic',{p_relic_id:id,p_operation_id:operation,p_expected_fee:fee})
- if(error)throw error
- window.dispatchEvent(new Event('wallet-changed'))
- window.dispatchEvent(new Event('relic-loadout-changed'))
- return data
+export async function equipRelic(id: string | null, operation: string, fee: number) {
+  return accountCommand(
+    async () => {
+      const { data, error } = await createClient().rpc('equip_relic', {
+        p_relic_id: id,
+        p_operation_id: operation,
+        p_expected_fee: fee,
+      })
+      if (error) throw error
+
+      return data
+    },
+    { resource: 'relics', event: 'relic-loadout-changed' },
+  )
 }
-export async function sellRelic(id:string,operation:string,price:number){
- const {data,error}=await createClient().rpc('sell_relic',{p_relic_id:id,p_operation_id:operation,p_expected_price:price})
- if(error)throw error
- window.dispatchEvent(new Event('wallet-changed'))
- window.dispatchEvent(new Event('relic-loadout-changed'))
- return data
+export async function sellRelic(id: string, operation: string, price: number) {
+  return accountCommand(
+    async () => {
+      const { data, error } = await createClient().rpc('sell_relic', {
+        p_relic_id: id,
+        p_operation_id: operation,
+        p_expected_price: price,
+      })
+      if (error) throw error
+
+      return data
+    },
+    { resource: 'relics', invalidate: ['collection'], event: 'relic-loadout-changed' },
+  )
 }
 export function relicError(cause:unknown){
  const message=String((cause as {message?:string})?.message??'')
@@ -36,4 +52,10 @@ export function relicError(cause:unknown){
  if(message.includes('RELIC_ALREADY_EQUIPPED'))return '이미 같은 장착 상태예요. 다시 확인해 주세요.'
  if(message.includes('OPERATION_CONFLICT'))return '이전 요청과 내용이 달라요. 장착 상태를 다시 확인해 주세요.'
  return '장착 결과를 확인하지 못했어요. 같은 요청으로 다시 확인해 주세요.'
+}
+
+export async function readRelics(signal: AbortSignal) {
+  const { data, error } = await createClient().rpc('relic_state').abortSignal(signal)
+  if (error) throw error
+  return data
 }

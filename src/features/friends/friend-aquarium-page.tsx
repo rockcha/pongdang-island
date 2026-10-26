@@ -1,6 +1,7 @@
 import {createPortal} from 'react-dom'
 import {useAquariumWideMode} from '@/features/aquarium/use-aquarium-wide-mode'
 import {AquariumLike} from './aquarium-like'
+import {FriendAquariumActions} from './friend-aquarium-actions'
 import { useEffect, useLayoutEffect, useMemo, useState,useRef } from 'react'
 import type {ReactNode} from 'react'
 import { Link, useParams } from 'react-router'
@@ -135,6 +136,7 @@ function Visit({ owner }: { owner: string }) {
             </Button>
             </>}
           </div>
+          <FriendAquariumActions owner={owner} nickname={data.owner.nickname}/>
           {expanded?<FriendTankScene key={tank.id} name={tank.name} items={items} background={background}>
             <button type="button" aria-label="친구 어항 목록" data-aquarium-list onClick={()=>setExpanded(false)} className="absolute left-2 top-2 z-20 inline-flex min-h-9 items-center gap-1 rounded-full border border-white/40 bg-background/75 px-3 text-[11px] text-primary shadow-sm backdrop-blur-sm"><ChevronLeft aria-hidden="true" className="size-3.5"/><span className="aquarium-label-full">친구 어항 목록</span><span className="aquarium-label-short">목록</span></button>
             <AquariumCare key={'care:' + tank.id} tank={tank.id} />

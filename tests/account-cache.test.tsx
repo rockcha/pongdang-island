@@ -26,10 +26,10 @@ afterEach(() => {
 })
 it('shares one request between two observers and imperative screen loads', async () => {
   const read = vi.fn().mockResolvedValue({ gold: 100 })
-  const first = renderHook(() => useAccountResource('wallet', read), { wrapper: AppQueryProvider })
-  const second = renderHook(() => useAccountResource('wallet', read))
+  const first = renderHook(() => ({data:useAccountResource('wallet', read).data}), { wrapper: AppQueryProvider })
+  const second = renderHook(() => ({data:useAccountResource('wallet', read).data}))
   await waitFor(() => expect(first.result.current.data).toEqual({ gold: 100 }))
-  expect(second.result.current.data).toEqual({ gold: 100 })
+  await waitFor(() => expect(second.result.current.data).toEqual({ gold: 100 }))
   await readAccountResource('wallet', read)
   expect(read).toHaveBeenCalledOnce()
 })

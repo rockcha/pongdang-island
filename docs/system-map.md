@@ -6,6 +6,7 @@
 | --- | --- | --- |
 | 앱·라우팅 | `src/main.tsx`, `src/App.tsx`, `src/routes.tsx`, `src/layouts/app-layout.tsx` | [메뉴](systems/navigation.md) |
 | 인증·계정 | `src/components/auth-provider.tsx`, `src/lib/auth-storage.ts`, `src/pages/login-page.tsx` | [인증](systems/auth.md) |
+| 서버 캐시·클라이언트 상태 | `src/lib/account-cache.ts`, `account-command.ts`, `account-query.tsx` | [상태관리 기준](systems/client-data.md) |
 | Supabase 연결·타입 | `src/lib/client.ts`, `src/lib/database.types.ts` | [DB 관리](systems/database-management.md) |
 | 프로필·아바타 | `src/features/profile/` | [아바타](systems/avatar.md) |
 | 친구·실시간 알림 | `src/features/friends/`, `src/features/notifications/`, `src/features/social/` | [친구·알림](systems/realtime-social.md) |

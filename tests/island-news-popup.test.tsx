@@ -4,7 +4,7 @@ import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {IslandNewsPopup,islandNewsDay} from '@/components/island-news-popup'
 const auth=vi.hoisted(()=>({user:'islander'}))
 vi.mock('@/components/auth-provider',()=>({getNickname:()=> '섬주민',useAuth:()=>({session:auth.user?{user:{id:auth.user}}:null,loading:false,recovery:false})}))
-vi.mock('@/pages/home-page',()=>({HomePage:()=> <div><p>새로운 해역 · 신규 어종 · 이벤트</p><Link to="/island-news">소식 페이지 열기</Link></div>}))
+vi.mock('@/pages/home-page',()=>({HomePage:()=> <div><p>새로운 해역 · 신규 어종 · 주주명단 · 이벤트</p><Link to="/island-news">소식 페이지 열기</Link></div>}))
 function show(path='/aquarium'){return render(<MemoryRouter initialEntries={[path]}><IslandNewsPopup/><Link to="/aquarium">아쿠아리움</Link><Link to="/island-news">메뉴에서 소식 보기</Link></MemoryRouter>)}
 beforeEach(()=>{auth.user='islander';localStorage.clear();vi.useFakeTimers({toFake:['Date']});vi.setSystemTime(new Date('2026-10-23T03:00:00Z'))})
 afterEach(()=>{cleanup();vi.useRealTimers();localStorage.clear()})

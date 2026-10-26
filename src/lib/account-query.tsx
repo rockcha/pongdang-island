@@ -1,7 +1,23 @@
-import { useEffect, useState, type ReactNode } from 'react'
+import {
+  useEffect,
+  useState,
+  useCallback,
+  useMemo,
+  useId,
+  type ReactNode,
+  type SetStateAction,
+} from 'react'
 import { QueryClientProvider, useQuery } from '@tanstack/react-query'
 import { useAuth } from '@/components/auth-provider'
-import { accountOptions, appQueryClient, subscribeResourceEvents } from './account-cache'
+import {
+  accountOptions,
+  accountQueryKey,
+  appQueryClient,
+  subscribeResourceEvents,
+  getQueryAccount,
+  isCurrentAccount,
+  type AccountResource,
+} from './account-cache'
 
 export function AppQueryProvider({ children }: { children: ReactNode }) {
   useEffect(subscribeResourceEvents, [])
@@ -18,20 +34,72 @@ export function AppQueryProvider({ children }: { children: ReactNode }) {
   return <QueryClientProvider client={appQueryClient}>{children}</QueryClientProvider>
 }
 
-export function useAccountResource<T>(resource: string, read: (signal: AbortSignal) => Promise<T>) {
+export function useAccountResource<T>(
+  resource: AccountResource,
+  read: (signal: AbortSignal) => Promise<T>,
+  options: { enabled?: boolean; standalone?: boolean; previewId?: string } = {},
+) {
   const { session, recovery } = useAuth()
   const owner = session?.user.id
+  const instance = useId()
+  const standalone = import.meta.env.DEV && !!options.standalone && !getQueryAccount()
   useEffect(subscribeResourceEvents, [])
   const result = useQuery(
     {
-      ...accountOptions(owner ?? 'guest', resource, read),
-      enabled: !!owner && !recovery,
+      ...accountOptions(
+        standalone ? `preview:${options.previewId ?? instance}` : (owner ?? 'guest'),
+        resource,
+        read,
+      ),
+      enabled: options.enabled !== false && (!!owner || standalone) && !recovery,
+      ...(standalone ? { gcTime: 0, staleTime: 0 } : {}),
     },
     appQueryClient,
   )
   // Preserve Query's tracked properties so a balance consumer need not render
   // for unrelated observer flags such as a background fetch starting.
-  return owner && !recovery ? result : { ...result, data: undefined }
+  const refetch = result.refetch
+  useEffect(() => {
+    if (!standalone || options.enabled === false) return
+    const refresh = () => {
+      if (!document.hidden) void refetch({ cancelRefetch: false })
+    }
+    window.addEventListener('focus', refresh)
+    return () => window.removeEventListener('focus', refresh)
+  }, [standalone, options.enabled, refetch])
+  return (owner || standalone) && !recovery ? result : { ...result, data: undefined }
+}
+
+/** Cache-backed compatibility for screens that patch confirmed partial entity responses. */
+export function useAccountState<T>(
+  resource: AccountResource,
+  read: (signal: AbortSignal) => Promise<T>,
+  options: { enabled?: boolean } = {},
+) {
+  const instance = useId(),
+    { session } = useAuth(),
+    started = getQueryAccount()
+  const query = useAccountResource(resource, read, {
+    ...options,
+    standalone: true,
+    previewId: instance,
+  })
+  const owner = started ? session?.user.id : `preview:${instance}`
+  const key = useMemo(() => accountQueryKey(owner ?? 'guest', resource), [owner, resource])
+  const setValue = useCallback(
+    (action: SetStateAction<T | null>) => {
+      if (!isCurrentAccount(started)) return
+      if (!owner) return
+      void appQueryClient.cancelQueries({ queryKey: key })
+      appQueryClient.setQueryData<T | null>(key, (current) =>
+        typeof action === 'function'
+          ? (action as (current: T | null) => T | null)(current ?? null)
+          : action,
+      )
+    },
+    [started, owner, key],
+  )
+  return [query.data ?? null, setValue, query] as const
 }
 
 /** Re-evaluate known deadlines without making another request. Preserve the original server clock. */

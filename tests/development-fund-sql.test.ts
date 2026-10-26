@@ -65,6 +65,17 @@ it('ranks cumulative confirmed public donations instead of reported amounts and 
  expect((await state()).summary.donationCount).toBe(3)
  const q=await user(admin,"select public.development_fund_reports('confirmed',0) r");expect(q.items).toHaveLength(3);expect((await state(admin)).operator).toBe(true);expect((await state(other)).operator).toBe(false)
 })
+it('gives equal confirmed cumulative amounts the same honor tier without skipping the next title',async()=>{
+ await review(await submit(owner,1000),'confirm',1000)
+ await review(await submit(other,1000),'confirm',1000)
+ await review(await submit(admin,500),'confirm',500)
+ const rows=(await state()).supporters
+ expect(rows.filter((s:any)=>s.totalWon==='1000').map((s:any)=>s.rank)).toEqual([1,1])
+ expect(rows.find((s:any)=>s.userId===admin).rank).toBe(2)
+})
+it('keeps equal honors across the page boundary in the production smoke fixture',async()=>{
+ await db.exec(readFileSync('tests/fixtures/equal-supporter-honors-smoke.sql','utf8'))
+})
 it('enforces amount, text, time, pagination and anonymous/direct-write boundaries',async()=>{
  for(const amount of [0,-1,1000000001])await rejected(()=>submit(owner,amount),'INVALID_FUND_REPORT')
  await rejected(()=>submit(owner,5000,true,crypto.randomUUID(),'x'.repeat(41)),'INVALID_FUND_REPORT')

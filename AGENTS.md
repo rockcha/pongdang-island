@@ -1,5 +1,7 @@
 # Repository context
 
+- 클라이언트 API·상태관리 작업은 먼저 `docs/systems/client-data.md`를 읽는다. 서버 캐시는 TanStack Query, 공유 UI 선호는 Zustand, 일시적인 화면 상태는 React로 분리한다. 새 RPC는 공통 계정 조회·명령 경계를 사용하고 `npm run client-data:check`와 관련 회귀 테스트를 실행한다. 기존 예외 목록을 늘려 검사를 우회하지 않는다.
+
 - DB 작업: 먼저 `docs/systems/database-management.md`, `docs/db/CONTEXT.md`를 읽는다. 필요한 최종 함수·컬럼·RLS·권한은 `docs/db/local-schema.json`에서 찾는다. 전체 과거 SQL을 매번 읽지 않는다.
 - 과거 원격 검토는 `docs/db/REMOTE_REVIEW.md`에서 확인하되 현재 상태는 해당 작업에서 새로 조회한다. 날짜가 있는 캡처나 로컬 검증 성공을 현재 원격 상태·전체 호환성의 증거로 해석하지 않는다.
 - `docs/db/CONTEXT.md`, `docs/db/local-schema.json`은 migrations를 로컬 PGlite로 재생한 **기대 상태**다. 원격 조회 기록과 구분한다. `supabase/inspection/remote/comparison.json`이 없으면 전체 구조 비교는 미확인이다. 부분 조회로 확인한 범위는 구분해 설명한다. 비교 파일이 있어도 프로젝트·캡처 시각·migrationHash·검사 범위를 확인한다.

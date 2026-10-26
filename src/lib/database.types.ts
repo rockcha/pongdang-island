@@ -44,8 +44,8 @@ export type Database = {
       development_fund_review:{Args:{p_operation_id:string;p_id:string;p_action:string;p_revision:number;p_confirmed_won?:number|null;p_reason?:string;p_bank_reference?:string|null};Returns:import('@/features/development-fund/api').FundReport}
       menu_status:{Args:Record<string,never>;Returns:import('@/lib/menu-status').MenuStatus}
       notification_inbox:{Args:Record<string,never>;Returns:import('@/features/notifications/api').NotificationInbox}
-      aquarium_like_state: { Args: {p_owner:string}; Returns: {count:number;liked:boolean} }
-      set_aquarium_like: { Args: {p_owner:string;p_liked:boolean}; Returns: {count:number;liked:boolean} }
+      aquarium_like_state: { Args: {p_owner:string}; Returns: {count:number;liked:boolean;nextLikeAt:string;serverNow:string} }
+      set_aquarium_like: { Args: {p_owner:string;p_liked:boolean}; Returns: {count:number;liked:boolean;nextLikeAt:string;serverNow:string} }
       web_push_device: {Args:{p_action:string;p_subscription:Record<string,unknown>;p_categories?:string[]};Returns:{registered:boolean;categories:import('@/features/notifications/push-device').PushCategory[]}}
       experience_state:{Args:Record<string,never>;Returns:import('@/features/experience/api').ExperienceState}
       friend_levels:{Args:Record<string,never>;Returns:import('@/features/experience/api').FriendLevel[]}

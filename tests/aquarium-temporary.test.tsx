@@ -8,7 +8,7 @@ vi.mock('@/features/notices/use-operator',()=>({useOperator:()=>({operator:mock.
 const species:Species={id:'starfish',name:'불가사리',kind:'decoration',description:'',size:52,speed:0,swim_y_min:null,swim_y_max:null,rarity:'common',sprite_sheet_path:null,thumbnail_path:'starfish.png',sell_price:35}
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wallet:{gold:1000},transact:vi.fn(),busy:false,loading:false,error:null})}))
 vi.mock('@/features/gold/api',()=>({goldError:()=>''}))
-vi.mock('@/features/aquarium/api',()=>({loadAquarium:mock.load,placeCollectible:mock.place,arrangeDecoration:mock.arrange,manageTank:vi.fn(),moveCollectibles:vi.fn()}))
+vi.mock('@/features/aquarium/api',()=>({loadAquarium:mock.load,readAquarium:mock.load,placeCollectible:mock.place,arrangeDecoration:mock.arrange,manageTank:vi.fn(),moveCollectibles:vi.fn()}))
 vi.mock('@/features/aquarium/aquarium-background-dialog',()=>({AquariumBackgroundDialog:()=>null}))
 vi.mock('@/features/aquarium/collectible-storage-dialog',()=>({CollectibleStorageDialog:()=>null}))
 vi.mock('@/components/confirm-dialog',()=>({ConfirmDialog:()=>null}))

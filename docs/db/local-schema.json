@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "dfef0c2b69352abdce2bd1b639c684dd92e49d9d915e7e55e2548509fdb97496",
+  "migrationHash": "de8f7b46c1fde4e7f000947f77a17d602cd596dcc4f4c3baa6cd5e97a05cb2b0",
   "structure": {
     "enums": [
       {
@@ -963,6 +963,16 @@
         "table": "aquarium_likes",
         "schema": "app_private",
         "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "like_day",
+        "type": "date",
+        "table": "aquarium_likes",
+        "schema": "app_private",
+        "default": "((statement_timestamp() AT TIME ZONE 'Asia/Seoul'::text))::date",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -9935,7 +9945,7 @@
         "name": "aquarium_likes_pkey",
         "table": "aquarium_likes",
         "schema": "app_private",
-        "definition": "CREATE UNIQUE INDEX aquarium_likes_pkey ON app_private.aquarium_likes USING btree (owner_id, visitor_id)"
+        "definition": "CREATE UNIQUE INDEX aquarium_likes_pkey ON app_private.aquarium_likes USING btree (owner_id, visitor_id, like_day)"
       },
       {
         "name": "aquarium_likes_visitor",
@@ -13273,7 +13283,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_owner uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.aquarium_like_state(p_owner uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n perform app_private.require_aquarium_friend(p_owner);\n return jsonb_build_object('count',(select count(*) from app_private.aquarium_likes where owner_id=p_owner),\n 'liked',exists(select 1 from app_private.aquarium_likes where owner_id=p_owner and visitor_id=auth.uid()));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.aquarium_like_state(p_owner uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_day date := (statement_timestamp() at time zone 'Asia/Seoul')::date;\nbegin\n  perform app_private.require_aquarium_friend(p_owner);\n  return jsonb_build_object(\n    'count', (select count(*) from app_private.aquarium_likes where owner_id = p_owner),\n    'liked', exists (select 1 from app_private.aquarium_likes\n      where owner_id = p_owner and visitor_id = auth.uid() and like_day = v_day),\n    'nextLikeAt', ((v_day + 1)::timestamp at time zone 'Asia/Seoul'),\n    'serverNow', statement_timestamp()\n  );\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14023,7 +14033,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_offset integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.development_fund_state(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>10000 then raise exception 'INVALID_FUND_PAGE';end if;\n with supporters as materialized (\n  select r.user_id,sum(r.confirmed_won)::bigint total,min(r.confirmed_at) first_at\n  from app_private.island_fund_reports r join public.player_profiles p on p.id=r.user_id\n  where r.status='confirmed' and r.public_profile group by r.user_id\n ), ranked as (\n  select s.*,row_number() over(order by total desc,first_at,user_id) position from supporters s\n ), page as (\n  select jsonb_build_object('userId',s.user_id,'nickname',p.nickname,'avatarPath',p.avatar_path,\n   'totalWon',s.total::text,'rank',s.position) value,s.position\n  from ranked s join public.player_profiles p on p.id=s.user_id order by s.position offset p_offset limit 20\n ) select jsonb_build_object('operator',app_private.notice_is_operator(),\n  'summary',jsonb_build_object('donationCount',(select count(*) from app_private.island_fund_reports where status='confirmed'),'totalWon',(select coalesce(sum(confirmed_won),0)::text from app_private.island_fund_reports where status='confirmed'),\n    'supporterCount',(select count(distinct user_id) from app_private.island_fund_reports where status='confirmed')),\n  'myPendingCount',(select count(*) from app_private.island_fund_reports where user_id=u and status='pending'),\n  'supporters',coalesce((select jsonb_agg(value order by position) from page),'[]'::jsonb),\n  'hasMore',(select count(*)>p_offset+20 from supporters)) into result;\n return result || jsonb_build_object('cheers',app_private.development_fund_cheers(0));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.development_fund_state(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>10000 then raise exception 'INVALID_FUND_PAGE';end if;\n with supporters as materialized (\n  select r.user_id,sum(r.confirmed_won)::bigint total,min(r.confirmed_at) first_at\n  from app_private.island_fund_reports r join public.player_profiles p on p.id=r.user_id\n  where r.status='confirmed' and r.public_profile group by r.user_id\n ), ranked as (\n  select s.*,\n   row_number() over(order by total desc,first_at,user_id) position,\n   dense_rank() over(order by total desc) honor_rank\n  from supporters s\n ), page as (\n  select jsonb_build_object('userId',s.user_id,'nickname',p.nickname,'avatarPath',p.avatar_path,\n   'totalWon',s.total::text,'rank',s.honor_rank) value,s.position\n  from ranked s join public.player_profiles p on p.id=s.user_id order by s.position offset p_offset limit 20\n ) select jsonb_build_object('operator',app_private.notice_is_operator(),\n  'summary',jsonb_build_object('donationCount',(select count(*) from app_private.island_fund_reports where status='confirmed'),'totalWon',(select coalesce(sum(confirmed_won),0)::text from app_private.island_fund_reports where status='confirmed'),\n    'supporterCount',(select count(distinct user_id) from app_private.island_fund_reports where status='confirmed')),\n  'myPendingCount',(select count(*) from app_private.island_fund_reports where user_id=u and status='pending'),\n  'supporters',coalesce((select jsonb_agg(value order by position) from page),'[]'::jsonb),\n  'hasMore',(select count(*)>p_offset+20 from supporters)) into result;\n return result || jsonb_build_object('cheers',app_private.development_fund_cheers(0));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -15773,7 +15783,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_owner uuid, p_liked boolean",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.set_aquarium_like(p_owner uuid, p_liked boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n perform app_private.require_aquarium_friend(p_owner);\n if p_liked is null or p_owner=auth.uid() then raise exception 'INVALID_LIKE';end if;\n perform pg_advisory_xact_lock(hashtextextended('aquarium-like:'||p_owner::text,0));\n if p_liked then insert into app_private.aquarium_likes(owner_id,visitor_id) values(p_owner,auth.uid()) on conflict do nothing;\n else delete from app_private.aquarium_likes where owner_id=p_owner and visitor_id=auth.uid();end if;\n return app_private.aquarium_like_state(p_owner);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.set_aquarium_like(p_owner uuid, p_liked boolean)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n  perform app_private.require_aquarium_friend(p_owner);\n  if p_liked is null or p_owner = auth.uid() then raise exception 'INVALID_LIKE'; end if;\n  perform pg_advisory_xact_lock(hashtextextended('aquarium-like:' || p_owner::text, 0));\n  if p_liked then\n    insert into app_private.aquarium_likes(owner_id, visitor_id, like_day)\n    values (p_owner, auth.uid(), (statement_timestamp() at time zone 'Asia/Seoul')::date)\n    on conflict (owner_id, visitor_id, like_day) do nothing;\n  end if;\n  -- Older clients may still send false. Cumulative likes cannot be removed.\n  return app_private.aquarium_like_state(p_owner);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -18117,6 +18127,12 @@
         "definition": "NOT NULL created_at"
       },
       {
+        "name": "aquarium_likes_like_day_not_null",
+        "table": "aquarium_likes",
+        "schema": "app_private",
+        "definition": "NOT NULL like_day"
+      },
+      {
         "name": "aquarium_likes_owner_id_fkey",
         "table": "aquarium_likes",
         "schema": "app_private",
@@ -18132,7 +18148,7 @@
         "name": "aquarium_likes_pkey",
         "table": "aquarium_likes",
         "schema": "app_private",
-        "definition": "PRIMARY KEY (owner_id, visitor_id)"
+        "definition": "PRIMARY KEY (owner_id, visitor_id, like_day)"
       },
       {
         "name": "aquarium_likes_visitor_id_fkey",

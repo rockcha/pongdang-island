@@ -46,6 +46,10 @@ it('shows the destination, individual baits and expandable helper history withou
  const expedition={id:'trip',region_id:'pongdang',departed_at:'2026-10-19T01:00:00Z',returns_at:'2026-10-19T01:10:00Z',vessel_snapshot:{id:'dinghy',name:'꼬마 통발',price:0,duration_minutes:30,min_baits:3,max_baits:5,bonus_description:'',owned:true},cargo:{bait:2,safe:1},boosts:[{id:'1',nickname:'민지',avatar_path:null,minutes:10,created_at:''},{id:'2',nickname:'바다친구',avatar_path:null,minutes:10,created_at:''}]}
  render(<ActiveExpeditionCard expedition={expedition} regionName="퐁당섬 앞바다" remaining={600000} baits={[{id:'bait',name:'퐁당 지렁이',image_path:'/worm.png'},{id:'safe',name:'이슬잎 경단',image_path:'/safe.png'}]}><button>결과 수령하기</button></ActiveExpeditionCard>)
  expect(screen.getByText('퐁당섬 앞바다')).toBeTruthy()
+ const sea=screen.getByRole('region',{name:'통발 해역'})
+ expect(within(sea).getByText('조업 해역')).toBeTruthy()
+ expect(within(sea).queryByText('이슬잎 경단')).toBeNull()
+ expect(within(screen.getByRole('region',{name:'넣은 미끼'})).getByText('총 3개')).toBeTruthy()
  expect(within(screen.getByRole('list',{name:'통발에 넣은 미끼'})).getByText('이슬잎 경단')).toBeTruthy()
  expect(screen.getByRole('timer').textContent).toBe('00:10:00')
  expect(screen.queryByText('바다에서 조업 중')).toBeNull()
@@ -53,6 +57,9 @@ it('shows the destination, individual baits and expandable helper history withou
  expect(screen.getByText('−20분')).toBeTruthy()
  const summary=screen.getByText('친구의 물고기 유인').closest('summary')!
  expect(summary.textContent).toContain('민지님 외 1명')
+ expect(summary.closest('details')?.open).toBe(false)
+ fireEvent.click(summary)
+ expect(summary.closest('details')?.open).toBe(true)
  expect(screen.getByRole('list',{name:'물고기를 유인해준 친구',hidden:true}).children).toHaveLength(2)
 })
 it('ignores stale availability from another account',async()=>{

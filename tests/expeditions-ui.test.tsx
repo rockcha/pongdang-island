@@ -49,7 +49,9 @@ it('hides the instant return test button and offers collection only after arriva
  expect(screen.queryByRole('button',{name:'결과 수령하기'})).toBeNull()
  expect(mock.change).not.toHaveBeenCalled()
  cleanup();mock.load.mockResolvedValue({...base,active:{...active,returns_at:base.serverNow}});show()
- expect(await screen.findByRole('button',{name:'결과 수령하기'})).toBeTruthy()
+ const claim=await screen.findByRole('button',{name:'결과 수령하기'})
+ expect(claim.closest('[data-trap-claim-footer]')).toBeTruthy()
+ expect(screen.getByRole('article',{name:'통발 현황'}).contains(claim)).toBe(false)
 })
 it('shows failed trips clearly even when no collectibles were caught',async()=>{
  const active={id:'trip',region_id:'pongdang',vessel_snapshot:vessel,cargo:{bait:3},departed_at:'2026-10-18T11:00:00Z',returns_at:base.serverNow}
@@ -59,9 +61,26 @@ it('shows failed trips clearly even when no collectibles were caught',async()=>{
  expect(screen.getByText('실패').parentElement?.textContent).toBe('실패4')
  expect(screen.getByText('성공').parentElement?.textContent).toBe('성공0')
  expect(screen.getByText('이번에는 잡힌 개체가 없어요.')).toBeTruthy()
+ const used=screen.getByRole('region',{name:'사용한 미끼'})
+ expect(within(used).getByText('퐁당 지렁이')).toBeTruthy()
+ expect(within(used).getByText('×3')).toBeTruthy()
+ expect(within(used).getByText('총 3개')).toBeTruthy()
  expect(screen.getByRole('link',{name:'보관함 보기'}).getAttribute('href')).toBe('/aquarium')
  fireEvent.click(screen.getByRole('button',{name:'다시 설치하기'}))
  expect(await screen.findByRole('button',{name:'미끼 넣기'})).toBeTruthy()
+})
+it('shows each bait and quantity from the claimed trip history in the results',async()=>{
+ const baits=[...base.baits,{id:'special',name:'통통 새우',image_path:'/items/baits/shrimp.png'}]
+ const active={id:'trip',region_id:'pongdang',vessel_snapshot:vessel,cargo:{bait:1},departed_at:'2026-10-18T11:00:00Z',returns_at:base.serverNow}
+ mock.load.mockResolvedValue({...base,baits,active})
+ mock.change.mockResolvedValue({...base,baits,history:[{...active,cargo:{bait:2,special:3}}],receipt:{result:{items:[],failed:5,attempted:5,succeeded:0}}})
+ show();fireEvent.click(await screen.findByRole('button',{name:'결과 수령하기'}))
+ await screen.findByRole('heading',{name:'통발 결과'})
+ const used=screen.getByRole('region',{name:'사용한 미끼'})
+ expect(within(used).getByText('총 5개')).toBeTruthy()
+ expect(within(used).getByText('퐁당 지렁이').closest('li')?.textContent).toContain('×2')
+ expect(within(used).getByText('통통 새우').closest('li')?.textContent).toContain('×3')
+ expect(used.querySelectorAll('img')).toHaveLength(2)
 })
 it('fills the selected bait without exceeding cargo capacity and supports one-tap adjustments',async()=>{
  show();await openCargo();const amount=await screen.findByRole('spinbutton',{name:'퐁당 지렁이 미끼 수량'}) as HTMLInputElement

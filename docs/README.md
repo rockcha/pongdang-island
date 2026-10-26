@@ -14,6 +14,7 @@ DB 작업은 [DB 관리](systems/database-management.md) → [로컬 컨텍스�
 
 - [시스템 지도](system-map.md)
 - [공통 UI 규칙](ui-conventions.md)
+- [클라이언트 데이터·상태관리 기준](systems/client-data.md)
 
 ## 기능별 문서
 

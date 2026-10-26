@@ -6,9 +6,10 @@ export async function pingPlayerPresence(sessionId:string,state:PresenceStatus,r
  const {error}=await createClient().rpc('player_presence_ping',{p_session_id:sessionId,p_state:state,p_revision:revision})
  if(error)throw error
 }
-export async function loadFriendPresence(signal?:AbortSignal):Promise<FriendPresenceState>{
- const query=createClient().rpc('friend_presence_state',{})
- const {data,error}=await (signal?query.abortSignal(signal):query)
- if(error)throw error
- return data
+export async function loadFriendPresence(signal?: AbortSignal): Promise<FriendPresenceState> {
+  const { data, error } = await createClient()
+    .rpc('friend_presence_state', {})
+    .abortSignal(signal ?? new AbortController().signal)
+  if (error) throw error
+  return data
 }

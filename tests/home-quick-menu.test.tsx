@@ -19,9 +19,9 @@ beforeEach(()=>{
 })
 afterEach(cleanup)
 const show=()=>render(<MemoryRouter><HomePage/></MemoryRouter>)
-it('shows three news tabs and the latest sea with its mythic animation',async()=>{
+it('shows four news tabs with supporters between species and events',async()=>{
  show()
- expect(screen.getAllByRole('tab').map(t=>t.textContent)).toEqual(['새로운 해역','신규 어종','이벤트'])
+ expect(screen.getAllByRole('tab').map(t=>t.textContent)).toEqual(['새로운 해역','신규 어종','주주명단','이벤트'])
  expect(await screen.findByRole('heading',{name:'세이렌의 해협'})).toBeTruthy()
  expect(screen.getByText(newest.description)).toBeTruthy()
  expect(screen.getByRole('img',{name:'세이렌의 해협 풍경'}).getAttribute('src')).toBe('/regions/siren.png')

@@ -96,7 +96,7 @@ export function BeggingCard({
           <div className="flex items-center justify-between gap-2">
             <p className="inline-flex items-center gap-1 text-[10px] text-muted-foreground">
               <HeartHandshake className="size-3" />
-              따뜻한 손길 {post.transferCount}회
+              따뜻한 응원 {post.transferCount}회
             </p>
             <button
               type="button"
@@ -127,7 +127,7 @@ export function BeggingCard({
             </div>
           ) : (
             <p className="py-2 text-[11px] text-muted-foreground">
-              첫 번째 따뜻한 손길을 기다리고 있어요.
+              이 사연에 첫 번째 응원을 보내보세요.
             </p>
           )}
         </div>

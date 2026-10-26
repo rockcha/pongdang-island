@@ -1,5 +1,6 @@
 import {createClient} from '@/lib/client'
-import {getQueryAccount,readAccountResource,resourceChanged} from '@/lib/account-cache'
+import {readAccountResource} from '@/lib/account-cache'
+import {accountCommand} from '@/lib/account-command'
 import {experienceChanged} from '@/features/experience/api'
 import type {ExpeditionOutcome} from '@/features/expeditions/api'
 export type HarborCatchRule={version:number;success_bp:number;common_bp:number;rare_bp:number;epic_bp:number;mythic_bp:number;kind:'mixed'|'trash_weighted'|'decoration'|'discovery_weighted'|'trash_only'|'discovery_only';trash_bp:number;discovery_weight:number;home_multiplier:number;region_count?:1|2}
@@ -12,16 +13,35 @@ export type HarborState={serverNow:string;fuel:number;fuelPrice:number;fuelDaily
 export type HarborAction={p_action:'buy'|'fuel'|'depart'|'arrive'|'claim'|'claim_all'|'dock'|'store'|'sell'|'expand'|'cancel';p_refund_expected?:boolean;p_operation_id:string;p_vessel_id?:string;p_voyage_id?:string;p_quantity?:number;p_boat_id?:string;p_slot?:number;p_region_id?:string;p_secondary_region_id?:string}
 export const loadHarbor=()=>readAccountResource('harbor',readHarbor)
 export async function readHarbor(signal:AbortSignal){const {data,error}=await createClient().rpc('harbor_state').abortSignal(signal);if(error)throw error;return data}
-export async function harborAction(args:HarborAction){
- const scope=getQueryAccount()
- const client=createClient()
- const {data,error}=args.p_action==='cancel'
-  ?await client.rpc('cancel_harbor_voyage',{p_voyage_id:args.p_voyage_id!,p_operation_id:args.p_operation_id,p_refund_expected:args.p_refund_expected!})
-  :await client.rpc('harbor_action',args as HarborAction&{p_action:Exclude<HarborAction['p_action'],'cancel'>})
- if(error)throw error
- resourceChanged('harbor','harbor-changed',data,scope)
- if(args.p_action==='claim'||args.p_action==='claim_all'){window.dispatchEvent(new Event('collectibles-changed'));experienceChanged()}
- return data
+export async function harborAction(args: HarborAction) {
+  return accountCommand(
+    async () => {
+      const client = createClient()
+      const { data, error } =
+        args.p_action === 'cancel'
+          ? await client.rpc('cancel_harbor_voyage', {
+              p_voyage_id: args.p_voyage_id!,
+              p_operation_id: args.p_operation_id,
+              p_refund_expected: args.p_refund_expected!,
+            })
+          : await client.rpc(
+              'harbor_action',
+              args as HarborAction & { p_action: Exclude<HarborAction['p_action'], 'cancel'> },
+            )
+      if (error) throw error
+      return data
+    },
+    {
+      resource: 'harbor',
+      event: 'harbor-changed',
+      after: () => {
+        if (args.p_action === 'claim' || args.p_action === 'claim_all') {
+          window.dispatchEvent(new Event('collectibles-changed'))
+          experienceChanged()
+        }
+      },
+    },
+  )
 }
 export function harborError(error:unknown){
  const message=String((error as {message?:string})?.message??'')

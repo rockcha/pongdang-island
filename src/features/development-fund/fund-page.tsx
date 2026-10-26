@@ -12,19 +12,8 @@ import type {FundDraft,FundState} from './api'
 import {FundReportsDialog,FundSubmitDialog} from './fund-dialogs'
 import {FundCheerWall} from './fund-cheers'
 import {FundStory} from './fund-story'
+import {supporterHonor} from './supporter-honors'
 const emptyCheers={items:[],hasMore:false}
-const supporterHonors=[
- {emoji:'👑',title:'퐁당섬 대주주'},
- {emoji:'💎',title:'퐁당섬 명예이사'},
- {emoji:'🏛️',title:'퐁당섬 수석고문'},
- {emoji:'⚓',title:'퐁당섬 운영위원'},
- {emoji:'🧭',title:'퐁당섬 개척단장'},
- {emoji:'🌟',title:'퐁당섬 특별고문'},
- {emoji:'🐚',title:'퐁당섬 명예위원'},
- {emoji:'🦀',title:'퐁당섬 발전위원'},
- {emoji:'🐟',title:'퐁당섬 협력위원'},
- {emoji:'🪙',title:'퐁당섬 명예주주'},
-] as const
 export type FundService=Pick<typeof api,'loadFund'|'loadFundReports'|'submitFund'|'reviewFund'|'loadCheers'|'writeCheer'>
 
 export function DevelopmentFund(){const {session}=useAuth();return <DevelopmentFundScreen key={session?.user.id??'guest'} owner={session?.user.id??''}/>}
@@ -66,9 +55,8 @@ export function DevelopmentFundScreen({owner,service=api}:{owner:string;service?
    <div className="mb-4 flex items-center justify-between gap-2"><p className="text-[11px] leading-6 text-muted-foreground">보내주신 마음, 소중히 간직할게요 💛</p><Button variant="ghost" size="icon" aria-label="후원 내역 새로고침" disabled={loading} onClick={()=>{if(service===api)invalidateAccountResource('development-fund',owner);void reload()}} className="size-7 shrink-0 text-muted-foreground"><RefreshCw className={`size-3 ${loading?'animate-spin':''}`}/></Button></div>
    {supporters.length>0?<ul aria-label="후원자" className="space-y-2">{supporters.map(s=>{
     const border=s.rank===1?'border-amber-300/45':s.rank===2?'border-slate-300/55':s.rank===3?'border-orange-300/40':'border-primary/10'
-    const honor=supporterHonors[s.rank-1]??{emoji:'💛',title:'퐁당섬 숨은 공신'}
+    const honor=supporterHonor(s.rank)
     return <li key={s.userId} aria-label={s.nickname} className={`flex min-w-0 items-center gap-3 rounded-xl border ${border} bg-secondary/15 px-3.5 py-3`}>
-     <span aria-label={`${s.rank}번째 후원자`} className="w-4 shrink-0 text-center text-[11px] tabular-nums text-muted-foreground">{s.rank}</span>
      <PlayerAvatar userId={s.userId} nickname={s.nickname} path={s.avatarPath} className="size-11 shrink-0"/>
      <div className="min-w-0 flex-1"><p className="truncate text-xs font-medium">{s.nickname}</p><p className="mt-1 flex items-center gap-1.5 text-[10px] leading-5 text-primary/75"><span aria-hidden="true">{honor.emoji}</span><span className="truncate">{honor.title}</span></p></div>
     </li>

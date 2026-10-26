@@ -149,7 +149,9 @@ export const placeBanners: Record<
   },
 }
 
-export function PlaceBanner({ pathname }: { pathname: string }) {
+export type NoticeBannerContext = {setNoticeBanner?: (value: {pathname:string;category:string}|null) => void}
+
+export function PlaceBanner({ pathname, noticeCategory }: { pathname: string; noticeCategory?: string }) {
   const section = Object.values(placeSections).find(
     (place) => pathname === place.path || pathname.startsWith(`${place.path}/`),
   )
@@ -222,7 +224,7 @@ export function PlaceBanner({ pathname }: { pathname: string }) {
                 title={expeditionVisit ? '친구 통발 설치' : '친구 아쿠아리움'}
               />
             ) : square ? (
-              square.bannerTitle
+              noticeCategory && square.path === '/square/notices' ? <BannerBreadcrumb parent="공지" to="/square/notices" title={noticeCategory}/> : square.bannerTitle
             ) : game ? (
               <BannerBreadcrumb
                 parent={placeBanners['/arcade'].title}

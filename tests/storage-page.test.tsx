@@ -3,7 +3,7 @@ import { afterEach, expect, it, vi } from 'vitest'
 import { StoragePage } from '@/features/aquarium/storage-page'
 
 const mock = vi.hoisted(() => ({ load: vi.fn(), storage: vi.fn(), move: vi.fn(), transact: vi.fn() }))
-vi.mock('@/features/aquarium/api', () => ({ loadAquarium: mock.load, loadCollectibleStorage: mock.storage, moveCollectibles: mock.move, storageError: () => '이동 실패' }))
+vi.mock('@/features/aquarium/api', () => ({ readAquarium: mock.load, loadAquarium: mock.load, loadCollectibleStorage: mock.storage, moveCollectibles: mock.move, storageError: () => '이동 실패' }))
 vi.mock('@/features/gold/gold-provider', () => ({ useGold: () => ({ busy: false, loading: false, transact: mock.transact }), GoldIcon: () => null }))
 vi.mock('@/features/collection/collectible-thumbnail', () => ({ CollectibleThumbnail: () => null }))
 vi.mock('@/features/merchant/use-daily-order-species', () => ({ useDailyOrderSpecies: () => new Set() }))

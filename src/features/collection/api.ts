@@ -1,3 +1,4 @@
+import {readAccountResource} from '@/lib/account-cache'
 import { createClient } from '@/lib/client'
 import type { Rarity } from '@/lib/game/rarity'
 export type CollectibleKind = 'fish'|'trash'|'decoration'|'map'|'relic'
@@ -18,4 +19,10 @@ export function collectibleUrl(path:string){
  const revision=/^fish\/epic\/lunea-mirrorscale_(sprite|thumbnail)\.png$/.test(path)?'mirrorscale-lavender-v2':/^fish\/epic\/starpattern-manta_(sprite|thumbnail)\.png$/.test(path)?'starlight-20261019':path==='fish/mythic/god-devouring-leviathan_sprite.png'?'leviathan-padding-2':refreshedCloudArt.has(path)?'totoro-2':null
  return revision?`${url}${url.includes('?')?'&':'?'}v=${revision}`:url
 }
-export async function loadCollection(){const {data,error}=await createClient().rpc('collection_state');if(error)throw error;return data}
+export async function loadCollection() {
+  return readAccountResource('collection', async (signal) => {
+    const { data, error } = await createClient().rpc('collection_state').abortSignal(signal)
+    if (error) throw error
+    return data
+  })
+}

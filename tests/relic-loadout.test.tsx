@@ -5,7 +5,7 @@ const {load,equip,sell,equipSound,unequipSound,navigate,shareCatch}=vi.hoisted((
 vi.mock('react-router',async original=>({...await original<typeof import('react-router')>(),useNavigate:()=>navigate}))
 vi.mock('@/features/showcase/api',async original=>({...await original<typeof import('@/features/showcase/api')>(),loadRelicShowcaseCatch:shareCatch}))
 vi.mock('@/features/gold/purchase-sound',()=>({playRelicEquipSound:equipSound,playRelicUnequipSound:unequipSound}))
-vi.mock('@/features/relics/api',async original=>({...await original<typeof import('@/features/relics/api')>(),loadRelics:load,equipRelic:equip,sellRelic:sell}))
+vi.mock('@/features/relics/api',async original=>({...await original<typeof import('@/features/relics/api')>(),loadRelics:load,readRelics:load,equipRelic:equip,sellRelic:sell}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'relic-test'}}})}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name}:{name:string})=><span role="img" aria-label={name}/>}))

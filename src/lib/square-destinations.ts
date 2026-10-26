@@ -1,7 +1,7 @@
 import {placeSections} from './place-sections'
 
 const artwork:Record<string,{thumbnail:string;banner:string;bannerTitle:string;description:string;upcoming?:boolean}>={
- '/square/begging':{thumbnail:'notice-thumbnail',banner:'square',bannerTitle:'구걸하기',description:'사연을 나누고, 필요한 골드를 모아요'},
+ '/square/begging':{thumbnail:'notice-thumbnail',banner:'square',bannerTitle:'사연함',description:'이웃의 사연을 읽고, 골드로 응원해요'},
  '/square/sponsorship':{thumbnail:'notice-thumbnail',banner:'square',bannerTitle:'후원소',description:'작은 마음이 모이는 퐁당섬 후원소'},
  '/square/notices':{thumbnail:'notice-thumbnail',banner:'square-notices',bannerTitle:'공지',description:'게시판에서 만나는 퐁당 섬의 새 소식'},
  '/square/suggestions':{thumbnail:'suggestion-thumbnail',banner:'square-suggestions',bannerTitle:'건의함',description:'더 좋은 섬을 위한 생각을 들려주세요.'},

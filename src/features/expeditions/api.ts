@@ -1,7 +1,8 @@
 import {questProgressChanged} from '@/features/quests/progress-events'
 import {experienceChanged} from '@/features/experience/api'
 import {createClient} from '@/lib/client'
-import {getQueryAccount,readAccountResource,resourceChanged} from '@/lib/account-cache'
+import {readAccountResource} from '@/lib/account-cache'
+import {accountCommand} from '@/lib/account-command'
 import type {Rarity} from '@/lib/game/rarity'
 import type {Species} from '@/features/collection/api'
 export type Vessel={id:string;name:string;price:number;duration_minutes:number;min_baits:number;max_baits:number;bonus_description:string;owned:boolean}
@@ -20,6 +21,23 @@ export type ExpeditionState={minutesPerBait?:number;serverNow:string;testEnabled
 export type ExpeditionAction={p_action:'buy'|'depart'|'claim'|'instant';p_operation_id:string;p_vessel_id?:string;p_region_id?:string;p_cargo?:Record<string,number>;p_expedition_id?:string}
 export const loadExpeditions=()=>readAccountResource('expedition',readExpeditions)
 export async function readExpeditions(signal:AbortSignal){const {data,error}=await createClient().rpc('expedition_state').abortSignal(signal);if(error)throw error;return data}
-export async function changeExpedition(args:ExpeditionAction){const scope=getQueryAccount();const {data,error}=await createClient().rpc('expedition_action',args);if(error)throw error;if(args.p_action==='depart'||args.p_action==='claim')questProgressChanged();if(args.p_action==='claim')experienceChanged();resourceChanged('expedition','expedition-changed',data,scope);return data}
+export async function changeExpedition(args: ExpeditionAction) {
+  return accountCommand(
+    async () => {
+      const { data, error } = await createClient().rpc('expedition_action', args)
+      if (error) throw error
+      return data
+    },
+    {
+      resource: 'expedition',
+      event: 'expedition-changed',
+      after: () => {
+        if (args.p_action === 'depart' || args.p_action === 'claim') questProgressChanged()
+        if (args.p_action === 'claim') experienceChanged()
+        if (args.p_action === 'claim') window.dispatchEvent(new Event('collectibles-changed'))
+      },
+    },
+  )
+}
 export function expeditionError(cause:unknown){const message=String((cause as {message?:string})?.message??'');const messages:Record<string,string>={INSUFFICIENT_GOLD:'보유 골드가 부족해요.',EXPEDITION_ACTIVE:'진행 중인 통발 결과를 먼저 수령해주세요.',EXPEDITION_NOT_READY:'아직 물고기를 유인하는 중이에요.',REGION_LOCKED:'잠긴 해역이에요. 지도에서 해역을 열어주세요.',VESSEL_RETIRED:'새 통발 설치에는 꼬마 통발만 사용할 수 있어요.',VESSEL_NOT_OWNED:'통발 정보를 다시 불러와 주세요.',TEST_DISABLED:'즉시 수확 준비 테스트가 종료되었어요.',OPERATION_CONFLICT:'이전 요청의 결과를 먼저 확인해주세요.',PGRST202:'통발 설치 업데이트가 아직 서버에 반영되지 않았어요.'};return Object.entries(messages).find(([key])=>message.includes(key))?.[1]??(message.includes('BAIT')||message.includes('CARGO')?'통발에는 보유한 미끼를 1~30개 넣을 수 있어요.':'처리 결과를 확인하지 못했어요. 다시 시도해주세요.')}
 export function duration(minutes:number){return minutes>=60?`${Math.floor(minutes/60)}시간${minutes%60?` ${minutes%60}분`:''}`:`${minutes}분`}

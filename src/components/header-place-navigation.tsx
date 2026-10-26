@@ -63,7 +63,7 @@ export const headerPlaces = [
   { to: '/board', label: '자유게시판', icon: PlazaIcon },
   { to: '/showcase', label: '자랑하기', icon: appArt.showcase },
   { to: '/square/sponsorship', label: '후원소', icon: appArt.mailGift },
-  { to: '/square/begging', label: '구걸하기', icon: appArt.friendInvite },
+  { to: '/square/begging', label: '사연함', icon: appArt.friendInvite },
   { to: '/square/suggestions', label: '건의함', icon: appArt.suggestions },
   { to: '/square/bugs', label: '버그 제보', icon: appArt.bugs },
 ]

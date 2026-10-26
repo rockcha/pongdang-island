@@ -256,6 +256,12 @@ it('harvests all returns in one action and shows the persisted results',async()=
  expect(mock.action).toHaveBeenCalledExactlyOnceWith(expect.objectContaining({p_action:'claim_all'}))
  expect(screen.getByText('이번에는 낚은 개체가 없어요.')).toBeTruthy()
  expect(screen.queryByText('통발 결과')).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'다시 한번 파견하기'}))
+ expect(await screen.findByRole('dialog',{name:vessel.name})).toBeTruthy()
+ expect(screen.queryByRole('dialog',{name:'조업 결과'})).toBeNull()
+ expect(screen.queryByRole('link',{name:'보관함 보기'})).toBeNull()
+ expect(screen.getByRole('group',{name:'조업 해역'})).toBeTruthy()
+ expect(mock.action).toHaveBeenCalledTimes(1)
 })
 it('restores an uncertain request after leaving the page and retries with the same operation ID',async()=>{
  mock.action.mockRejectedValueOnce(new Error('offline')).mockResolvedValueOnce({...base,fuel:11,receipt:{action:'fuel'}})

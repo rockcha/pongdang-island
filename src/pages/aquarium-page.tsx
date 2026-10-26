@@ -1,3 +1,4 @@
+import {useAccountState} from '@/lib/account-query'
 import { appArt } from '@/components/app-art'
 import { randomId } from '@/lib/random-id'
 import { AquariumView } from '@/features/aquarium/aquarium-view'
@@ -17,7 +18,7 @@ import {
   backgroundUrl,
   arrangeDecoration,
   manageTank,
-  loadAquarium,
+  readAquarium,
   expandAquariumCapacity,
   reorderAquariumTanks,
   tankOrderError,
@@ -47,7 +48,7 @@ const { map: MapIcon } = appArt
 export function AquariumPage() {
   const { operator } = useOperator()
   const { wallet, transact, refresh:refreshGold, busy: goldBusy, loading: goldLoading, error: goldLoadError } = useGold()
-  const [state, setState] = useState<AquariumState | null>(null)
+  const [state,setState,query]=useAccountState<AquariumState>('aquarium',readAquarium)
   const [testFish, setTestFish] = useState<OwnedCollectible[]>([])
   const { id: returningTankId, save: saveReturningTank } = useReturningTank()
   const [selectedId, setSelectedId] = useState(returningTankId)
@@ -66,34 +67,18 @@ export function AquariumPage() {
   const placementQueue = useRef(new Map<string, Promise<void>>())
   async function reload() {
     try {
-      const data = await loadAquarium()
+      const {data}=await query.refetch({throwOnError:true,cancelRefetch:false})
       if (active.current) {
-        setState(data)
+        if(data)setState(data)
         setError('')
       }
     } catch {
       if (active.current)
-        setError('배경을 불러오지 못했어요. 09·10·15·16 SQL 적용과 연결을 확인해주세요.')
+        setError('어항 정보를 불러오지 못했어요. 다시 시도해주세요.')
     }
   }
-  useEffect(() => {
-    active.current = true
-    void reload()
-    let timer: ReturnType<typeof setTimeout> | undefined
-    const refresh = () => {
-      clearTimeout(timer)
-      if (locked.current) timer = setTimeout(refresh, 300)
-      else void reload()
-    }
-    window.addEventListener('focus', refresh)
-    window.addEventListener('collectibles-changed', refresh)
-    return () => {
-      active.current = false
-      clearTimeout(timer)
-      window.removeEventListener('focus', refresh)
-      window.removeEventListener('collectibles-changed', refresh)
-    }
-  }, [])
+  useEffect(()=>{active.current=true;return()=>{active.current=false}},[])
+  useEffect(()=>{setError(query.error?'어항 정보를 불러오지 못했어요. 다시 시도해주세요.':'')},[query.error])
   async function act(id: string, owned: boolean) {
     if (locked.current) return
     locked.current = true

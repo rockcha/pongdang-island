@@ -75,7 +75,7 @@ export function BeggingCreateDialog({
       <DialogContent className="max-h-[90dvh] max-w-sm overflow-y-auto rounded-2xl">
         <DialogHeader>
           <DialogTitle>사연 쓰기</DialogTitle>
-          <DialogDescription>필요한 골드와 사연을 이웃에게 들려주세요.</DialogDescription>
+          <DialogDescription>나누고 싶은 사연과 이루고 싶은 목표를 들려주세요.</DialogDescription>
         </DialogHeader>
         <form onSubmit={(event) => void submit(event)} className="space-y-4">
           <div className="space-y-2">
@@ -89,7 +89,7 @@ export function BeggingCreateDialog({
               disabled={busy || uncertain}
               value={story}
               onChange={(event) => setStory(event.target.value)}
-              placeholder="어떤 일에 골드가 필요한가요?"
+              placeholder="이웃에게 나누고 싶은 이야기나 이루고 싶은 목표가 있나요?"
               required
               className="w-full resize-none rounded-xl border border-input bg-transparent px-3 py-2 text-sm leading-6 outline-none focus-visible:ring-2 focus-visible:ring-ring"
             />
@@ -206,7 +206,7 @@ export function BeggingSendDialog({
       <DialogContent className="max-h-[90dvh] max-w-sm overflow-y-auto rounded-2xl">
         <DialogHeader>
           <DialogTitle>골드 보내기</DialogTitle>
-          <DialogDescription>마음을 전하면 경험치 2를 얻어요.</DialogDescription>
+            <DialogDescription>사연에 골드로 응원을 전하면 경험치 2를 얻어요.</DialogDescription>
         </DialogHeader>
         {post && (
           <form onSubmit={(event) => void submit(event)} className="space-y-4">

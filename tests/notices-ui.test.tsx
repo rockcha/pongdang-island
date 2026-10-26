@@ -1,5 +1,7 @@
 import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
-import {MemoryRouter,Route,Routes} from 'react-router'
+import {MemoryRouter,Route,Routes,Outlet,useLocation} from 'react-router'
+import {useState} from 'react'
+import {PlaceBanner} from '@/components/place-banner'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {NoticePage,NoticeDetail} from '@/features/notices/notice-page'
 import {NoticeEditor} from '@/features/notices/notice-editor'
@@ -11,12 +13,15 @@ vi.mock('@/features/notices/api',async original=>({...await original<typeof impo
 const notice={id:'notice',category:'update' as const,title:'푸른골 업데이트',body:'새 해역이 열렸어요.',images:[],urls:{},status:'published' as const,pinned:true,starts_at:null,ends_at:null,author_id:null,created_at:'2026-10-17T00:00:00Z',updated_at:'2026-10-17T00:00:00Z',published_at:'2026-10-17T00:00:00Z',revision:1}
 beforeEach(()=>{vi.clearAllMocks();mock.operator.mockResolvedValue(false);mock.feed.mockResolvedValue({items:[notice],total:1});mock.detail.mockResolvedValue(notice);mock.save.mockResolvedValue(notice);mock.upload.mockResolvedValue({path:'image.png',url:'/image.png'});mock.remove.mockResolvedValue(undefined);mock.read.mockResolvedValue(undefined);mock.refresh.mockResolvedValue(undefined)})
 afterEach(cleanup)
-it('keeps the category title and date outside the scrolling body and separates attachments',async()=>{
+it('moves the category into the banner and keeps the title and date outside the scrolling body',async()=>{
  mock.detail.mockResolvedValue({...notice,images:['picture.png'],urls:{'picture.png':'/picture.png'}})
- const {container}=render(<MemoryRouter initialEntries={['/square/notices/notice']}><Routes><Route path="/square/notices/:noticeId" element={<NoticeDetail/>}/></Routes></MemoryRouter>)
+ function DetailLayout(){const [banner,setNoticeBanner]=useState<{pathname:string;category:string}|null>(null),{pathname}=useLocation();return <><PlaceBanner pathname={pathname} noticeCategory={banner?.pathname===pathname?banner.category:undefined}/><Outlet context={{setNoticeBanner}}/></>}
+ const {container}=render(<MemoryRouter initialEntries={['/square/notices/notice']}><Routes><Route element={<DetailLayout/>}><Route path="/square/notices/:noticeId" element={<NoticeDetail/>}/></Route></Routes></MemoryRouter>)
  await screen.findByRole('heading',{name:notice.title})
  const header=container.querySelector('[data-notice-header]')!,body=container.querySelector('[data-notice-body]')!
- expect(within(header as HTMLElement).getByText('업데이트')).toBeTruthy()
+ expect(await screen.findByRole('heading',{name:/공지.*업데이트/})).toBeTruthy()
+ expect(within(header as HTMLElement).queryByText('업데이트')).toBeNull()
+ expect(mock.detail).toHaveBeenCalledExactlyOnceWith('notice')
  expect(header.querySelector('time')).toBeTruthy()
  expect(body.contains(header)).toBe(false)
  expect(screen.queryByText(/운영팀/)).toBeNull()
@@ -27,7 +32,9 @@ it('keeps the category title and date outside the scrolling body and separates a
 it('marks the original notice read and lets an operator delete only after confirmation',async()=>{
  mock.operator.mockResolvedValue(true)
  render(<MemoryRouter initialEntries={['/square/notices/notice']}><Routes><Route path="/square/notices/:noticeId" element={<NoticeDetail/>}/><Route path="/square/notices" element={<p>공지 목록으로 이동</p>}/></Routes></MemoryRouter>)
- fireEvent.click(await screen.findByRole('button',{name:'공지 관리'}))
+ const manage=await screen.findByRole('button',{name:'공지 관리'})
+ expect(manage.closest('[data-notice-meta]')?.querySelector('time')).toBeTruthy()
+ fireEvent.click(manage)
  fireEvent.click(await screen.findByRole('menuitem',{name:'삭제'}))
  await waitFor(()=>expect(mock.read).toHaveBeenCalledWith('me','notice_id','notice'))
  expect(mock.remove).not.toHaveBeenCalled()

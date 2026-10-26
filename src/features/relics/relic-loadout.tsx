@@ -1,3 +1,4 @@
+import {useAccountState} from '@/lib/account-query'
 import {useEffect,useRef,useState} from 'react'
 import {useNavigate} from 'react-router'
 import {startShowcaseDraft} from '@/features/showcase/draft'
@@ -9,7 +10,7 @@ import {ConfirmDialog} from '@/components/confirm-dialog'
 import {RelicIcon} from '@/components/collection-filter-icons'
 import {useAuth} from '@/components/auth-provider'
 import {randomId} from '@/lib/random-id'
-import {equipRelic,sellRelic,loadRelics,relicError,type RelicState} from './api'
+import {equipRelic,sellRelic,loadRelics,readRelics,relicError,type RelicState} from './api'
 import {RelicEquipmentSlot,type RelicTransition} from './relic-equipment-slot'
 import {playRelicEquipSound,playRelicUnequipSound} from '@/features/gold/purchase-sound'
 
@@ -29,7 +30,8 @@ export function RelicLoadout({page=false}:{page?:boolean}){
 }
 function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
  const navigate=useNavigate(),{session}=useAuth()
- const [open,setOpen]=useState(page),[state,setState]=useState<RelicState|null>(null),[error,setError]=useState(''),[attempt,setAttempt]=useState(0)
+ const [open,setOpen]=useState(page),[error,setError]=useState(''),[attempt,setAttempt]=useState(0)
+ const [state,setState,query]=useAccountState<RelicState>('relics',readRelics,{enabled:open})
  const [notice,setNotice]=useState('')
  const [equipEffect,setEquipEffect]=useState<RelicTransition|null>(null)
  const scene=useRef<HTMLDivElement>(null)
@@ -47,19 +49,9 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
  const lock=useRef(false)
  const alive=useRef(false),revision=useRef(0)
  const list=useRef<HTMLDivElement>(null)
- useEffect(()=>{
-  if(!open)return
-  alive.current=true
-  const refresh=async()=>{
-   if(lock.current||document.hidden)return
-   const request=++revision.current
-   try{const next=await loadRelics();if(alive.current&&request===revision.current&&!lock.current){setState(next);setError('')}}
-   catch{if(alive.current&&request===revision.current&&!lock.current)setError('유물을 불러오지 못했어요. 다시 시도해 주세요.')}
-  }
-  const sync=()=>{void refresh()}
-  sync();window.addEventListener('focus',sync);window.addEventListener('online',sync);window.addEventListener('relic-loadout-changed',sync);document.addEventListener('visibilitychange',sync)
-  return()=>{alive.current=false;revision.current++;window.removeEventListener('focus',sync);window.removeEventListener('online',sync);window.removeEventListener('relic-loadout-changed',sync);document.removeEventListener('visibilitychange',sync)}
- },[open,attempt])
+ useEffect(()=>{if(!open)return;alive.current=true;return()=>{alive.current=false;revision.current++}},[open])
+ useEffect(()=>{if(query.error&&!purchase)setError('유물을 불러오지 못했어요. 다시 시도해 주세요.')},[query.error,purchase])
+ useEffect(()=>{if(attempt>0)void query.refetch({cancelRefetch:false}).then(result=>{if(!result.error)setError('')})},[attempt])
  function remember(p:Purchase|null){setPending(p);try{if(p)localStorage.setItem(storageKey,JSON.stringify(p));else localStorage.removeItem(storageKey)}catch{/* Retain the same operation in memory. */}}
  function select(id:string|null,name:string){if(!state||pending)return;setError('');setNotice('');setPurchase({id,name,operation:randomId(),fee:state.equippedId?(state.unequipFee??state.changeFee):(state.equipFee??0)})}
  async function share(relic:Relic){
@@ -95,7 +87,7 @@ function Loadout({storageKey,page}:{storageKey:string;page:boolean}){
     // quote; a newly charged action still requires a fresh confirmation.
     remember(null);setPurchase(null)
     try{
-     const latest=await loadRelics()
+     const latest=await loadRelics(true)
      if(alive.current&&request===revision.current){setState(latest);setError('');setNotice('유물 상태를 새로 확인했어요. 현재 상태에서 다시 선택해 주세요.')}
     }catch{if(alive.current&&request===revision.current)setError('최신 유물 상태를 불러오지 못했어요. 다시 불러와 주세요.')}
    }else{

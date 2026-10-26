@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/client'
-import { getQueryAccount, readAccountResource, resourceChanged } from '@/lib/account-cache'
+import {readAccountResource} from '@/lib/account-cache'
+import {accountCommand} from '@/lib/account-command'
 export type ProductionFacility = {
   id: string
   siteId?: string
@@ -76,29 +77,43 @@ export async function loadProductionMaterials(id: string) {
   return data
 }
 export async function actProduction({ p_quantity, ...args }: ProductionAction) {
-  const scope = getQueryAccount()
-  const { data, error } =
-    args.p_action === 'buy' && (p_quantity ?? 1) !== 1
-      ? await createClient().rpc('production_purchase', {
-          p_facility: args.p_facility,
-          p_quantity: p_quantity!,
-          p_operation_id: args.p_operation_id,
-        })
-      : await createClient().rpc('production_action', args)
-  if (error) throw error
-  window.dispatchEvent(new Event('wallet-changed'))
-  resourceChanged('production', 'production-changed', data, scope)
-  if (args.p_action === 'start') window.dispatchEvent(new Event('collectibles-changed'))
-  return data
+  return accountCommand(
+    async () => {
+      const { data, error } =
+        args.p_action === 'buy' && (p_quantity ?? 1) !== 1
+          ? await createClient().rpc('production_purchase', {
+              p_facility: args.p_facility,
+              p_quantity: p_quantity!,
+              p_operation_id: args.p_operation_id,
+            })
+          : await createClient().rpc('production_action', args)
+      if (error) throw error
+      return data
+    },
+    {
+      resource: 'production',
+      event: 'production-changed',
+      after: () => {
+        if (args.p_action === 'start') window.dispatchEvent(new Event('collectibles-changed'))
+      },
+    },
+  )
 }
 export async function actProductionBulk(args: ProductionBulkAction) {
-  const scope = getQueryAccount()
-  const { data, error } = await createClient().rpc('production_bulk_action', args)
-  if (error) throw error
-  window.dispatchEvent(new Event('wallet-changed'))
-  resourceChanged('production', 'production-changed', data, scope)
-  if (args.p_action === 'start') window.dispatchEvent(new Event('collectibles-changed'))
-  return data
+  return accountCommand(
+    async () => {
+      const { data, error } = await createClient().rpc('production_bulk_action', args)
+      if (error) throw error
+      return data
+    },
+    {
+      resource: 'production',
+      event: 'production-changed',
+      after: () => {
+        if (args.p_action === 'start') window.dispatchEvent(new Event('collectibles-changed'))
+      },
+    },
+  )
 }
 export function productionError(cause: unknown) {
   const text = String((cause as { message?: string })?.message ?? '')

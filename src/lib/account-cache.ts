@@ -1,7 +1,10 @@
-import { QueryClient, queryOptions } from '@tanstack/react-query'
+import { QueryClient, queryOptions, hashKey } from '@tanstack/react-query'
 
-export const accountQueryKey = (owner: string, resource: string) =>
-  ['account', owner, resource] as const
+export type AccountResource = string | readonly [string, ...unknown[]]
+export const resourceParts = (resource: AccountResource) =>
+  typeof resource === 'string' ? [resource] : resource
+export const accountQueryKey = (owner: string, resource: AccountResource) =>
+  ['account', owner, ...resourceParts(resource)] as const
 export const appQueryClient = new QueryClient({
   defaultOptions: {
     queries: { staleTime: 30_000, gcTime: 300_000, retry: false, refetchOnWindowFocus: true },
@@ -14,6 +17,13 @@ type Scope = { owner: string; generation: number }
 let scope: Scope | null = null
 let generation = 0
 export const getQueryAccount = () => scope
+export class AccountChangedError extends Error {
+  constructor() {
+    super('ACCOUNT_CHANGED')
+    this.name = 'AccountChangedError'
+  }
+}
+export const isCurrentAccount = (started: Scope | null) => started === scope
 
 /** Called synchronously by Auth before publishing the next session to React. */
 export function setQueryAccount(owner: string | null) {
@@ -25,7 +35,7 @@ export function setQueryAccount(owner: string | null) {
 
 export function accountOptions<T>(
   owner: string,
-  resource: string,
+  resource: AccountResource,
   read: (signal: AbortSignal) => Promise<T>,
 ) {
   return queryOptions({
@@ -36,14 +46,23 @@ export function accountOptions<T>(
 
 /** Imperative screens and query observers share the same key and in-flight request. */
 export async function readAccountResource<T>(
-  resource: string,
+  resource: AccountResource,
   read: (signal: AbortSignal) => Promise<T>,
+  refresh: { fresh?: boolean } = {},
 ): Promise<T> {
   const current = scope
   // Standalone development screens can mount outside the authenticated app shell.
-  if (!current) return read(new AbortController().signal)
+  if (!current) {
+    const data = await read(new AbortController().signal)
+    if (!isCurrentAccount(current)) throw new AccountChangedError()
+    return data
+  }
   const options = accountOptions(current.owner, resource, read)
-  const data = await appQueryClient.fetchQuery(options)
+  const data = await appQueryClient.fetchQuery({
+    ...options,
+    ...(refresh.fresh ? { staleTime: 0 } : {}),
+  })
+  if (!isCurrentAccount(current)) throw new AccountChangedError()
   // Legacy imperative screens sample serverNow when applying a snapshot. A cache
   // hit must advance that sample, otherwise their countdown would restart.
   if (
@@ -63,18 +82,24 @@ export async function readAccountResource<T>(
   return data
 }
 
-export function invalidateAccountResource(resource: string, owner = scope?.owner) {
+export function invalidateAccountResource(
+  resource: AccountResource,
+  owner = scope?.owner,
+  except?: AccountResource,
+) {
   if (!owner) return
-  void appQueryClient.cancelQueries({ queryKey: accountQueryKey(owner, resource) })
-  void appQueryClient.invalidateQueries(
-    { queryKey: accountQueryKey(owner, resource) },
-    { cancelRefetch: false },
-  )
+  const excluded = except ? hashKey(accountQueryKey(owner, except)) : undefined
+  const filters = {
+    queryKey: accountQueryKey(owner, resource),
+    predicate: (query: { queryHash: string }) => query.queryHash !== excluded,
+  }
+  void appQueryClient.cancelQueries(filters)
+  void appQueryClient.invalidateQueries(filters, { cancelRefetch: false })
 }
 
 /** Only a confirmed response from the current account may replace private cached data. */
 export function publishAccountResource<T>(
-  resource: string,
+  resource: AccountResource,
   data: T,
   started: Scope | null,
   standaloneOwner?: string,
@@ -93,28 +118,55 @@ export function resourceChanged<T>(
   data: T,
   started: Scope | null,
 ) {
+  if (!isCurrentAccount(started)) return
   const updated = publishAccountResource(resource, data, started)
   window.dispatchEvent(
     new CustomEvent(event, { detail: { owner: started?.owner, resource, updated } }),
   )
 }
 
-const resourceEvents: Record<string, string[]> = {
+export const resourceEvents: Record<string, string[]> = {
   'wallet-changed': ['wallet'],
   'attendance-changed': ['wallet'],
   'experience-changed': ['experience'],
-  'production-changed': ['production', 'menu-status'],
-  'bait-production-changed': ['bait-production', 'menu-status'],
-  'harbor-changed': ['harbor', 'menu-status'],
-  'expedition-changed': ['expedition', 'menu-status'],
-  'savings-changed': ['savings', 'menu-status'],
-  'relic-loadout-changed': ['relics', 'production', 'bait-production', 'harbor', 'menu-status'],
+  'production-changed': ['production', 'wallet', 'menu-status'],
+  'bait-production-changed': ['bait-production', 'wallet', 'menu-status'],
+  'harbor-changed': ['harbor', 'wallet', 'menu-status'],
+  'expedition-changed': ['expedition', 'wallet', 'menu-status'],
+  'savings-changed': ['savings', 'wallet', 'menu-status'],
+  'relic-loadout-changed': [
+    'relics',
+    'wallet',
+    'fishing',
+    'production',
+    'bait-production',
+    'harbor',
+    'menu-status',
+  ],
+  'collectibles-changed': [
+    'aquarium',
+    'storage',
+    'collection',
+    'relics',
+    'exchange-inventory',
+    'titles',
+  ],
+  'aquarium-changed': ['aquarium', 'storage', 'collection'],
+  'gifts-changed': ['gifts', 'gift', 'aquarium', 'storage', 'collection', 'inbox'],
+  'friends-changed': ['friend-aquarium', 'aquarium-likes', 'friend-expedition'],
 }
 let subscribers = 0
 function onResourceEvent(event: Event) {
-  const detail = (event as CustomEvent<{ owner?: string; resource?: string; updated?: boolean }>)
-    .detail
+  const detail = (
+    event as CustomEvent<{
+      owner?: string
+      resource?: string
+      updated?: boolean
+      invalidated?: boolean
+    }>
+  ).detail
   if (detail?.owner && detail.owner !== scope?.owner) return
+  if (detail?.invalidated) return
   for (const resource of resourceEvents[event.type] ?? []) {
     if (detail?.updated && detail.resource === resource) continue
     // Include explicitly mounted observers in standalone previews, too.

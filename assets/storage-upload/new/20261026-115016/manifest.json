@@ -1,0 +1,96 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "public/branding/pongi-grateful-v1.webp",
+  "source": "branding/pongi-heart-v1.source",
+  "finalPath": "public/branding/pongi-heart-v1-sprite.webp",
+  "prompt": "Create an animation sprite sheet of the EXACT cute caramel otter Pongi in the reference, holding a coral pink plush heart in both paws. Transparent background. STRICT LAYOUT: 4 columns by 2 rows, EIGHT equal rectangular cells, no grid lines, no labels. All eight cells contain the SAME full-body sitting front-facing Pongi at the SAME scale, SAME center, SAME feet baseline, SAME head position, SAME starfish clip on viewer-right ear. Warm cream cheeks/belly, round glossy dark eyes, peach blush, fluffy caramel fur, reference's polished friendly cartoon drawing. Every cell has comfortable transparent padding and no neighboring cell overlap. Draw a progressive smooth action, reading left-to-right then next row: frame1 heart held close against chest with bent elbows; frame2 paws begin extending toward viewer and heart comes slightly forward; frame3 elbows gently extend, heart slightly larger by perspective; frame4 heart presented proudly nearer viewer, paws visible around sides; frame5 fullest forward presentation, heart about 25% larger than frame1, smiling; frame6 holds near-viewer heart with gentle proud tiny head tilt (head stays anchored); frame7 holds heart proudly, subtle happy eyes; frame8 almost identical to frame7, still forward presentation. Body and feet MUST NOT translate, bounce or change scale across frames. Only paws/forearms, heart perspective size, subtle facial expression change. Maintain perfectly consistent heart shape, character anatomy, accessory, lighting and proportions. Clean transparent alpha with no glow, no checkerboard, no ground shadow. No text, numbers, captions, extra hearts, coins or props. This sprite will play forward then reverse, so each successive pose is a SMALL step along one continuous movement. This is an actual game animation asset, NOT eight different drawings/poses.",
+  "layout": {
+    "columns": 8,
+    "rows": 1,
+    "cellWidth": 256,
+    "cellHeight": 256
+  },
+  "processing": "Uniform whole-sheet resampling; identical cell scale and padding. No per-frame auto-crop or zoom.",
+  "metrics": [
+    {
+      "frame": 0,
+      "bounds": [
+        46,
+        18,
+        221,
+        230
+      ],
+      "opaqueSamples": 27189
+    },
+    {
+      "frame": 1,
+      "bounds": [
+        46,
+        18,
+        221,
+        230
+      ],
+      "opaqueSamples": 27228
+    },
+    {
+      "frame": 2,
+      "bounds": [
+        47,
+        18,
+        221,
+        230
+      ],
+      "opaqueSamples": 27390
+    },
+    {
+      "frame": 3,
+      "bounds": [
+        46,
+        18,
+        221,
+        230
+      ],
+      "opaqueSamples": 27639
+    },
+    {
+      "frame": 4,
+      "bounds": [
+        45,
+        18,
+        221,
+        230
+      ],
+      "opaqueSamples": 28290
+    },
+    {
+      "frame": 5,
+      "bounds": [
+        45,
+        16,
+        221,
+        230
+      ],
+      "opaqueSamples": 28482
+    },
+    {
+      "frame": 6,
+      "bounds": [
+        45,
+        18,
+        221,
+        230
+      ],
+      "opaqueSamples": 28159
+    },
+    {
+      "frame": 7,
+      "bounds": [
+        45,
+        18,
+        221,
+        229
+      ],
+      "opaqueSamples": 28127
+    }
+  ]
+}

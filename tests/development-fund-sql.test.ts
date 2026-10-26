@@ -1,0 +1,108 @@
+// @vitest-environment node
+import {afterAll,afterEach,beforeAll,beforeEach,expect,it} from 'vitest'
+import {readFileSync} from 'node:fs'
+import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
+let db:any,owner:string,other:string,admin:string
+const at='2026-10-20T12:00:00.000Z'
+async function user(u:string,sql:string,args:unknown[]=[]){await db.query("select set_config('request.jwt.claim.sub',$1,true)",[u]);await db.exec('set role authenticated');try{return (await db.query(sql,args)).rows[0]?.r}finally{await db.exec('reset role').catch(()=>{})}}
+const state=(u=owner,offset=0)=>user(u,'select public.development_fund_state($1) r',[offset])
+const submit=(u=owner,amount=5000,publish=true,id=crypto.randomUUID(),name='입금자',message='섬의 내일을 응원해요')=>user(u,'select public.development_fund_submit($1,$2,$3,$4,$5,$6) r',[id,name,amount,at,message,publish])
+const review=(r:any,action='confirm',amount:number|null=5000,op=crypto.randomUUID(),actor=admin,reference:string|null=null)=>user(actor,'select public.development_fund_review($1,$2,$3,$4,$5,$6,$7) r',[op,r.id,action,r.revision,amount,'',reference])
+async function rejected(work:()=>Promise<unknown>,message:string){await db.exec('savepoint rejected');await expect(work()).rejects.toThrow(message);await db.exec('rollback to rejected;reset role')}
+beforeAll(async()=>{db=await createLocalDatabase();await replayMigrations(db)},60000)
+afterAll(async()=>{await db?.close()})
+beforeEach(async()=>{await db.exec('begin');[owner,other,admin]=[crypto.randomUUID(),crypto.randomUUID(),crypto.randomUUID()];for(const u of [owner,other,admin]){await db.query('insert into auth.users(id) values($1)',[u]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[u,'F'+u.slice(0,7)]);await db.query("insert into public.player_wallets(user_id,gold,inventory) values($1,12345,'{\"fuel\":7}') on conflict(user_id) do update set gold=12345,inventory=excluded.inventory",[u])}await db.query('insert into app_private.notice_operators(user_id) values($1)',[admin])})
+afterEach(async()=>{await db.exec('rollback;reset role')})
+it('passes the same synthetic rollback fixture used for scoped remote verification',async()=>{
+ await db.exec(readFileSync('tests/fixtures/development-fund-smoke.sql','utf8'))
+ await db.exec(readFileSync('tests/fixtures/development-fund-cheers-smoke.sql','utf8'))
+})
+it('keeps submissions pending, records no public credit, and allows only operators to confirm actual money',async()=>{
+ const r=await submit();expect(r.status).toBe('pending');expect(r.confirmedWon).toBeNull();expect((await state()).summary.totalWon).toBe('0');expect((await state()).supporters).toEqual([])
+ await rejected(()=>review(r,'confirm',5000,crypto.randomUUID(),owner),'FUND_FORBIDDEN')
+ const confirmed=await review(r,'confirm',4500);expect(confirmed).toMatchObject({status:'confirmed',reportedWon:5000,confirmedWon:4500,revision:1})
+ const fund=await state();expect(fund.summary).toEqual({totalWon:'4500',supporterCount:1,donationCount:1});expect(fund.supporters[0]).toMatchObject({userId:owner,totalWon:'4500',rank:1})
+ expect((await db.query('select gold,inventory from public.player_wallets where user_id=$1',[owner])).rows[0]).toEqual({gold:12345,inventory:{fuel:7}})
+})
+it('keeps bank names, transfer times, messages and private profiles out of the public leaderboard',async()=>{
+ const r=await submit(owner,5000,false,crypto.randomUUID(),'개인입금자명','비공개 응원 문구')
+ expect(r.publicProfile).toBe(true)
+ // Legacy opt-out records are not retroactively exposed by the new policy.
+ await db.query('update app_private.island_fund_reports set public_profile=false where id=$1',[r.id]);await review(r)
+ const publicState=await state(other);expect(publicState.summary.totalWon).toBe('5000');expect(publicState.supporters).toEqual([])
+ expect(JSON.stringify(publicState)).not.toContain('개인입금자명');expect(JSON.stringify(publicState)).not.toContain('비공개 응원 문구');expect(JSON.stringify(publicState)).not.toContain(at)
+ expect((await user(other,"select public.development_fund_reports('mine',0) r")).items).toEqual([])
+ expect((await user(owner,"select public.development_fund_reports('mine',0) r")).items[0].depositorName).toBe('개인입금자명')
+ await rejected(()=>user(other,"select public.development_fund_reports('pending',0) r"),'FUND_FORBIDDEN')
+ const published=await submit(other,10,true);await review(published,'confirm',10)
+ const row=(await state()).supporters[0];expect(Object.keys(row).sort()).toEqual(['avatarPath','nickname','rank','totalWon','userId'].sort())
+})
+it('deduplicates a submission ID, rejects altered or foreign replays, and preserves status on retry',async()=>{
+ const id=crypto.randomUUID(),r=await submit(owner,5000,true,id);expect((await submit(owner,5000,true,id)).id).toBe(id)
+ await rejected(()=>submit(owner,6000,true,id),'OPERATION_CONFLICT');await rejected(()=>submit(other,5000,true,id),'OPERATION_CONFLICT')
+ await review(r);expect((await submit(owner,5000,true,id)).status).toBe('confirmed')
+ expect((await db.query('select count(*)::int n from app_private.island_fund_reports where user_id=$1',[owner])).rows[0].n).toBe(1)
+})
+it('makes review retries idempotent, blocks stale decisions and prevents duplicate bank references',async()=>{
+ const r=await submit(),op=crypto.randomUUID();await review(r,'confirm',5000,op,admin,'transfer-001');await review(r,'confirm',5000,op,admin,'transfer-001')
+ expect((await state()).summary.totalWon).toBe('5000');expect((await db.query('select count(*)::int n from app_private.island_fund_reviews where report_id=$1',[r.id])).rows[0].n).toBe(1)
+ await rejected(()=>review(r,'confirm',6000,op,admin,'transfer-001'),'OPERATION_CONFLICT')
+ await rejected(()=>review(r,'reject',null),'FUND_REPORT_CHANGED')
+ const duplicate=await submit(other);await rejected(()=>review(duplicate,'confirm',5000,crypto.randomUUID(),admin,'transfer-001'),'FUND_DUPLICATE_TRANSFER')
+ expect((await state()).summary.totalWon).toBe('5000')
+})
+it('reopens and rejects reports with an audit trail and removes their ranking credit immediately',async()=>{
+ const r=await submit(),confirmed=await review(r);expect((await state()).supporters).toHaveLength(1)
+ const pending=await review(confirmed,'reopen',null);expect(pending.status).toBe('pending');expect((await state()).summary.totalWon).toBe('0')
+ const declined=await review(pending,'reject',null);expect(declined.status).toBe('rejected');expect((await state()).supporters).toEqual([])
+ const corrected=await review(declined,'confirm',3000);expect(corrected.confirmedWon).toBe(3000);expect((await state()).summary.totalWon).toBe('3000')
+ expect((await db.query('select count(*)::int n from app_private.island_fund_reviews where report_id=$1',[r.id])).rows[0].n).toBe(4)
+})
+it('ranks cumulative confirmed public donations instead of reported amounts and returns operator-only queues',async()=>{
+ const a=await submit(owner,10000),b=await submit(owner,2000),c=await submit(other,900000)
+ await review(a,'confirm',1000);await review(b,'confirm',2000);await review(c,'confirm',2500)
+ const rank=(await state()).supporters;expect(rank.map((s:any)=>[s.userId,s.totalWon,s.rank])).toEqual([[owner,'3000',1],[other,'2500',2]])
+ expect((await state()).summary.donationCount).toBe(3)
+ const q=await user(admin,"select public.development_fund_reports('confirmed',0) r");expect(q.items).toHaveLength(3);expect((await state(admin)).operator).toBe(true);expect((await state(other)).operator).toBe(false)
+})
+it('enforces amount, text, time, pagination and anonymous/direct-write boundaries',async()=>{
+ for(const amount of [0,-1,1000000001])await rejected(()=>submit(owner,amount),'INVALID_FUND_REPORT')
+ await rejected(()=>submit(owner,5000,true,crypto.randomUUID(),'x'.repeat(41)),'INVALID_FUND_REPORT')
+ await rejected(()=>user(owner,'select public.development_fund_submit($1,$2,$3,$4) r',[crypto.randomUUID(),'입금자',5000,'infinity']),'INVALID_FUND_REPORT')
+ await rejected(()=>state(owner,-1),'INVALID_FUND_PAGE')
+ await rejected(()=>user(owner,'select * from app_private.island_fund_reports'),'permission denied')
+ await rejected(()=>user(owner,'select * from app_private.island_fund_reviews'),'permission denied')
+ await rejected(async()=>{await db.exec('set role anon');return db.query('select public.development_fund_state()')},'permission denied')
+ await rejected(()=>user('',"select public.development_fund_reports('mine',0) r"),'AUTH_REQUIRED')
+})
+it('limits new submissions while permitting retries and rejects a revoked operator',async()=>{
+ let r:any;for(let i=0;i<20;i++)r=await submit()
+ await rejected(()=>submit(),'FUND_REPORT_LIMIT')
+ expect((await submit(owner,5000,true,r.id)).id).toBe(r.id)
+ const first=(await user(owner,"select public.development_fund_reports('mine',0) r"));expect(first.items).toHaveLength(20)
+ await db.query('delete from app_private.notice_operators where user_id=$1',[admin]);await rejected(()=>review(r),'FUND_FORBIDDEN')
+})
+it('allows encouragement without donating, deduplicates retries and guards rate limits and deletion',async()=>{
+ const id=crypto.randomUUID(),write=(actor:string,id:string,body:string|null,remove=false)=>user(actor,'select public.development_fund_cheer($1,$2,$3) r',[id,body,remove])
+ await write(owner,id,'응원해요');await write(owner,id,'응원해요')
+ expect((await state()).cheers.items).toHaveLength(1)
+ expect((await state(other)).cheers.items[0]).toMatchObject({body:'응원해요',canDelete:false})
+ expect((await state(admin)).cheers.items[0].canDelete).toBe(true)
+ expect((await state()).summary.donationCount).toBe(0)
+ await rejected(()=>write(other,id,null,true),'FUND_FORBIDDEN')
+ await rejected(()=>write(owner,id,'변경'),'OPERATION_CONFLICT')
+ await rejected(()=>write(owner,crypto.randomUUID(),'두 번째'),'FUND_CHEER_LIMIT')
+ await write(owner,id,null,true);await write(owner,id,null,true)
+ expect((await state()).cheers.items).toHaveLength(0)
+ await rejected(()=>write(owner,crypto.randomUUID(),'삭제 후 재시도'),'FUND_CHEER_LIMIT')
+ await rejected(()=>write(other,crypto.randomUUID(),'x'.repeat(101)),'INVALID_FUND_CHEER')
+ await rejected(()=>user(other,'select * from app_private.island_fund_cheers'),'permission denied')
+ const second=crypto.randomUUID();await write(other,second,'함께해요');await write(admin,second,null,true)
+ expect((await state()).cheers.items).toHaveLength(0)
+})
+it('pages the cheer wall in groups of three and keeps hidden messages out of all pages',async()=>{
+ for(let i=0;i<5;i++)await db.query("insert into app_private.island_fund_cheers(id,user_id,body,created_at) values($1,$2,$3,clock_timestamp()+$4::int*interval '1 second')",[crypto.randomUUID(),owner,'응원'+i,i])
+ const first=await user(other,'select public.development_fund_cheers(0) r'),second=await user(other,'select public.development_fund_cheers(3) r')
+ expect(first.items.map((x:any)=>x.body)).toEqual(['응원4','응원3','응원2']);expect(first.hasMore).toBe(true)
+ expect(second.items.map((x:any)=>x.body)).toEqual(['응원1','응원0']);expect(second.hasMore).toBe(false)
+})

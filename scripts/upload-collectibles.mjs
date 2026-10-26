@@ -21,7 +21,7 @@ async function main() {
       if (entry.isDirectory()) await walk(local)
       else if (entry.isFile() && entry.name.toLowerCase().endsWith('.png')) {
         const key = path.relative(root, local).split(path.sep).join('/')
-        if (!/^(fish|trash|decorations|map)\/(normal|rare|epic|mythic)\/[^/]+\.png$/i.test(key) && !/^equipment\/rods\/[a-z0-9-]+\/(thumbnail|reel-frame|reel-rotor|float)\.png$/.test(key) && !/^vessels\/[a-z0-9-]+\.png$/.test(key) && !/^items\/baits\/[a-z0-9-]+\.png$/.test(key)) {
+        if (!/^(fish|trash|decorations|map)\/(normal|rare|epic|mythic)\/[^/]+\.png$/i.test(key) && !/^relics\/(rare|epic|mythic)\/[^/]+\.png$/.test(key) && !/^equipment\/rods\/[a-z0-9-]+\/(thumbnail|reel-frame|reel-rotor|float)\.png$/.test(key) && !/^vessels\/[a-z0-9-]+\.png$/.test(key) && !/^items\/baits\/[a-z0-9-]+\.png$/.test(key)) {
           throw new Error(`Unexpected image path: ${key}. Select the batch folder containing fish/, decorations/, etc.`)
         }
         files.push({ local, key })

@@ -1,0 +1,27 @@
+.fund-pongi-heart-frames {
+ background-image: url('/branding/pongi-heart-v1-sprite.webp');
+ background-repeat: no-repeat;
+ background-size: 800% 100%;
+ background-position: 0% 0%;
+ animation: fund-pongi-heart 4s steps(1, end) infinite;
+}
+@keyframes fund-pongi-heart {
+ 0%, 20% { background-position-x: 0%; }
+ 22% { background-position-x: 14.285714%; }
+ 24% { background-position-x: 28.571429%; }
+ 26% { background-position-x: 42.857143%; }
+ 28% { background-position-x: 57.142857%; }
+ 30% { background-position-x: 71.428571%; }
+ 32% { background-position-x: 85.714286%; }
+ 34%, 52% { background-position-x: 100%; }
+ 54% { background-position-x: 85.714286%; }
+ 56% { background-position-x: 71.428571%; }
+ 58% { background-position-x: 57.142857%; }
+ 60% { background-position-x: 42.857143%; }
+ 62% { background-position-x: 28.571429%; }
+ 64% { background-position-x: 14.285714%; }
+ 66%, 100% { background-position-x: 0%; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .fund-pongi-heart-frames { animation: none; background-position: 0% 0%; }
+}

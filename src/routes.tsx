@@ -46,6 +46,7 @@ const WarehousePage=lazy(()=>import('@/features/fishing/warehouse-page').then(mo
 const ArcadePage=lazy(()=>import('@/features/arcade/arcade-page').then(module=>({default:module.ArcadePage})))
 const ArcadeGamePage=lazy(()=>import('@/features/arcade/arcade-page').then(module=>({default:module.ArcadeGamePage})))
 const HomePage=lazy(()=>import('@/pages/home-page').then(module=>({default:module.HomePage})))
+const DevelopmentFund=lazy(()=>import('@/features/development-fund/fund-page').then(module=>({default:module.DevelopmentFund})))
 const NotFoundPage=lazy(()=>import('@/pages/not-found-page').then(module=>({default:module.NotFoundPage})))
 const LoginPage=lazy(()=>import('@/pages/login-page').then(module=>({default:module.LoginPage})))
 const NicknamePage=lazy(()=>import('@/pages/nickname-page').then(module=>({default:module.NicknamePage})))
@@ -79,6 +80,7 @@ export function AppRoutes() {
             <Route path="first-fishing" element={<FirstFishingPage/>}/>
             <Route index element={<Navigate to="/aquarium" replace />} />
             <Route path="island-news" element={<HomePage />} />
+            <Route path="development-fund" element={<div className="flex min-h-0 flex-1 flex-col overflow-hidden"><DevelopmentFund/></div>} />
             <Route path="aquarium" element={<AquariumPage />} />
             <Route path="collection" element={<CollectionPage />} />
             <Route path="storage" element={<StoragePage />} />

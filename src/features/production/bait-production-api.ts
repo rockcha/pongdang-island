@@ -21,6 +21,7 @@ export type BaitFacility = {
   runOutput: number | null
 }
 export type BaitProductionState = {
+  autoClaim?: boolean
   receipt?:{action:string;siteId?:string;count:number}
   activeLimit?: number
   activeTotal?: number

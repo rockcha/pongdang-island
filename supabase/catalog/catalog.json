@@ -29631,6 +29631,17 @@
       "sell_price": 200
     },
     {
+      "id": "sleepless-harvest-bell",
+      "name": "잠들지 않는 수확종",
+      "description": "장착 중 연료·미끼 생산소의 완성물을 자동 수령해요. 미접속 중에도 작동하며, 이미 상했거나 보유 한도를 넘는 생산물은 제외돼요.",
+      "rarity": "epic",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/epic/sleepless-harvest-bell_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "production_auto_claim",
+      "effect_value": 1,
+      "sell_price": 1300
+    },
+    {
       "id": "still-wave-clock",
       "name": "멈춘 파도의 시계",
       "description": "나만의 미끼 생산소 최대 제작 시간 +4시간 · 장착 중에만 효과가 적용돼요.",

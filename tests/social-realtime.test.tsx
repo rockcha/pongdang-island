@@ -47,6 +47,22 @@ beforeEach(() => {
 afterEach(cleanup)
 
 describe('realtime social lifecycle', () => {
+  it('reconciles automatic production rewards once per snapshot and ignores duplicate or foreign receipts',async()=>{
+    const callbacks=[vi.fn(),vi.fn(),vi.fn()],events=['wallet-changed','production-changed','bait-production-changed']
+    events.forEach((event,i)=>window.addEventListener(event,callbacks[i]))
+    try{
+      const notice={id:'auto-claim-1',recipient_id:'user-a',category:'general',kind:'system',title:'수확종이 생산물을 챙겼어요',body:'연료 12개를 받았어요.',production_auto_claim:true,read_at:null} as AppNotification
+      vi.mocked(loadNotifications).mockResolvedValue({notifications:[notice,{...notice,id:'auto-claim-2'}],unread:{friend:0,general:2}})
+      render(<SocialProvider><Probe/></SocialProvider>)
+      await waitFor(()=>expect(screen.getByTestId('count').textContent).toBe('2'))
+      for(const callback of callbacks)expect(callback).toHaveBeenCalledTimes(1)
+      const insert=socialChannel().handlers.find(h=>h.options.table==='notifications'&&h.options.event==='INSERT')!
+      act(()=>{insert.callback({new:notice});insert.callback({new:{...notice,id:'other-claim',recipient_id:'user-b'}})})
+      for(const callback of callbacks)expect(callback).toHaveBeenCalledTimes(1)
+      act(()=>insert.callback({new:{...notice,id:'auto-claim-3'}}))
+      for(const callback of callbacks)expect(callback).toHaveBeenCalledTimes(2)
+    }finally{events.forEach((event,i)=>window.removeEventListener(event,callbacks[i]))}
+  })
   it('keeps voyage returns in the inbox and announces trap returns only once',async()=>{
     const boat={id:'boat-return',recipient_id:'user-a',category:'general',kind:'system',title:'어선이 돌아왔어요!',body:'어획물을 받아주세요.',harbor_voyage_id:'voyage',read_at:null} as AppNotification
     const trap={...boat,id:'trap-return',harbor_voyage_id:null,expedition_id:'trap',title:'통발 수확을 준비했어요!'} as AppNotification

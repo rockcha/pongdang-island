@@ -1,0 +1,16 @@
+{
+  "tool": "built-in image_gen",
+  "id": "sleepless-harvest-bell",
+  "name": "잠들지 않는 수확종",
+  "rarity": "epic",
+  "purpose": "Static equipped relic inventory artwork; no swimming or world placement",
+  "styleReference": "assets/references/collectible-style/epic-mythic-starlight.png",
+  "referenceRole": "Coloring, material and soft fantasy rendering only; independent solid bronze bell anatomy",
+  "source": "generated/sleepless-harvest-bell.source",
+  "prompt": "Create ONE epic-tier game relic inventory icon, 'Sleepless Harvest Bell'. A REAL ANCIENT OBJECT, no animal, character or face. Upright compact antique bronze harvesting bell, broad solid flared bronze bell skirt with a thick softly worn lip, short arched ivory ceramic handle shaped as a rounded gear loop, a small warm amber pearl clapper visible underneath. Teal enamel channels inset into the bronze body suggest a tiny looping conveyor and delicately etched ripened grain; one small crescent-shaped brass winding key on the upper left. This bell quietly collects completed factory fuel and fishing bait before spoilage, awake night and day. A restrained warm inner light lives INSIDE the bell mouth, no outer halo. Three-quarter front view, slight tilt, full silhouette including handle and clapper well within square canvas, about80% long-axis occupancy and generous transparent margins. Reference image is STYLE ONLY: sophisticated soft fantasy game illustration, fine naturally colored contours, smoothly dimensional shading and rich polished material detail. DO NOT copy ray anatomy, wings, ribbons, eyes or purple star pattern. Main color antique brass bronze, cream ceramic, muted teal, warm amber interior. Different from a transparent turquoise sea-wave bell: this is a sturdy bronze mechanical harvest artifact, compact readable broad solid silhouette. TRUE ALPHA TRANSPARENT background, clean antialiased edges, no black or white matte fringes, no stray pixels, no backdrop, no glow cloud, no floating particles, no cast shadow, no floor, no frame, no text, no UI, no labels or watermark. One static beautiful relic thumbnail only, not a spritesheet.",
+  "storage_path": "relics/epic/sleepless-harvest-bell_v1_thumbnail.png",
+  "width": 512,
+  "height": 512,
+  "hasAlpha": true,
+  "sha256": "3ac15b841e8a42bc5518e2ecb854220d356a40026011cd9ad9c24d52d5b164bc"
+}

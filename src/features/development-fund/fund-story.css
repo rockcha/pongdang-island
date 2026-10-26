@@ -1,0 +1,27 @@
+.fund-story-slide { opacity: 0; pointer-events: none; transition: opacity 400ms ease; }
+.fund-story-slide[data-visible="true"] { opacity: 1; pointer-events: auto; }
+.fund-pongi-developer {
+ background: url('/branding/pongi-developer-v1-sprite.webp') 0% 0% / 800% 100% no-repeat;
+ animation: fund-pongi-developer 1.2s steps(1, end) infinite;
+}
+@keyframes fund-pongi-developer {
+ 0%, 100% { background-position-x: 0%; }
+ 12.5% { background-position-x: 14.285714%; }
+ 25% { background-position-x: 28.571429%; }
+ 37.5% { background-position-x: 42.857143%; }
+ 50% { background-position-x: 57.142857%; }
+ 62.5% { background-position-x: 71.428571%; }
+ 75% { background-position-x: 85.714286%; }
+ 87.5% { background-position-x: 100%; }
+}
+.fund-story-sun { animation: fund-story-day 4s ease-in-out infinite; }
+.fund-story-moon { animation: fund-story-night 4s ease-in-out infinite; }
+@keyframes fund-story-day { 0%, 38%, 100% { opacity: 1; } 50%, 88% { opacity: 0; } }
+@keyframes fund-story-night { 0%, 38%, 100% { opacity: 0; } 50%, 88% { opacity: 1; } }
+.fund-story-slide[aria-hidden="true"] *, .fund-story[data-active="false"] * { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+ .fund-story-slide { transition: none; }
+ .fund-pongi-developer { animation: none; background-position-x: 0%; }
+ .fund-story-sun { animation: none; }
+ .fund-story-moon { animation: none; opacity: 0; }
+}

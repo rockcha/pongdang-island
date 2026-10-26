@@ -36,6 +36,12 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      development_fund_state:{Args:{p_offset?:number};Returns:import('@/features/development-fund/api').FundState}
+      development_fund_cheers:{Args:{p_offset?:number};Returns:import('@/features/development-fund/api').FundCheers}
+      development_fund_cheer:{Args:{p_id:string;p_body?:string|null;p_delete?:boolean};Returns:{ok:boolean}}
+      development_fund_reports:{Args:{p_status?:string;p_offset?:number};Returns:import('@/features/development-fund/api').FundReports}
+      development_fund_submit:{Args:{p_id:string;p_depositor_name:string;p_reported_won:number;p_remitted_at:string;p_message?:string;p_public_profile?:boolean};Returns:import('@/features/development-fund/api').FundReport}
+      development_fund_review:{Args:{p_operation_id:string;p_id:string;p_action:string;p_revision:number;p_confirmed_won?:number|null;p_reason?:string;p_bank_reference?:string|null};Returns:import('@/features/development-fund/api').FundReport}
       menu_status:{Args:Record<string,never>;Returns:import('@/lib/menu-status').MenuStatus}
       notification_inbox:{Args:Record<string,never>;Returns:import('@/features/notifications/api').NotificationInbox}
       aquarium_like_state: { Args: {p_owner:string}; Returns: {count:number;liked:boolean} }

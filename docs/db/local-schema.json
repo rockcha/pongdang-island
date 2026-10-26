@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "5dd1f927efbeb57e30b86566703b96df91f08509e0e57e63e7387ff09df7395c",
+  "migrationHash": "dfef0c2b69352abdce2bd1b639c684dd92e49d9d915e7e55e2548509fdb97496",
   "structure": {
     "enums": [
       {
@@ -240,6 +240,24 @@
       },
       {
         "rls": true,
+        "name": "island_fund_cheers",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "island_fund_reports",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "island_fund_reviews",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
         "name": "ladder_runs",
         "schema": "app_private",
         "force_rls": false
@@ -337,6 +355,12 @@
       {
         "rls": true,
         "name": "prepared_fishing_casts",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "production_auto_claims",
         "schema": "app_private",
         "force_rls": false
       },
@@ -2416,6 +2440,306 @@
       {
         "name": "id",
         "type": "uuid",
+        "table": "island_fund_cheers",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "island_fund_cheers",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "body",
+        "type": "text",
+        "table": "island_fund_cheers",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "island_fund_cheers",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "deleted_at",
+        "type": "timestamp with time zone",
+        "table": "island_fund_cheers",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "depositor_name",
+        "type": "text",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "reported_won",
+        "type": "integer",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "remitted_at",
+        "type": "timestamp with time zone",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "message",
+        "type": "text",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": "''::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "public_profile",
+        "type": "boolean",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": "false",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": "'pending'::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "confirmed_won",
+        "type": "integer",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "confirmed_at",
+        "type": "timestamp with time zone",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "reviewed_by",
+        "type": "uuid",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "review_reason",
+        "type": "text",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": "''::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "bank_reference",
+        "type": "text",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "revision",
+        "type": "integer",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "report_id",
+        "type": "uuid",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "reviewer_id",
+        "type": "uuid",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "signature",
+        "type": "jsonb",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "before_status",
+        "type": "text",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "after_status",
+        "type": "text",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "before_won",
+        "type": "integer",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "after_won",
+        "type": "integer",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
         "table": "ladder_runs",
         "schema": "app_private",
         "default": "gen_random_uuid()",
@@ -3491,6 +3815,96 @@
         "default": null,
         "identity": "",
         "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "kind",
+        "type": "text",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "site_id",
+        "type": "uuid",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "started_at",
+        "type": "timestamp with time zone",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "completed_at",
+        "type": "timestamp with time zone",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "claimed_at",
+        "type": "timestamp with time zone",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "item_id",
+        "type": "text",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "amount",
+        "type": "integer",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "relic_id",
+        "type": "text",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
         "generated": ""
       },
       {
@@ -8164,6 +8578,16 @@
         "generated": ""
       },
       {
+        "name": "production_auto_claim",
+        "type": "boolean",
+        "table": "notifications",
+        "schema": "public",
+        "default": "false",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
         "name": "id",
         "type": "uuid",
         "table": "odd_even_runs",
@@ -9568,6 +9992,12 @@
         "definition": "CREATE INDEX bait_production_sites_user ON app_private.bait_production_sites USING btree (user_id, purchased_at, id)"
       },
       {
+        "name": "bait_sites_auto_claim_due",
+        "table": "bait_production_sites",
+        "schema": "app_private",
+        "definition": "CREATE INDEX bait_sites_auto_claim_due ON app_private.bait_production_sites USING btree (user_id, completes_at, id) WHERE (started_at IS NOT NULL)"
+      },
+      {
         "name": "bait_sites_expiring_push",
         "table": "bait_production_sites",
         "schema": "app_private",
@@ -9838,6 +10268,66 @@
         "definition": "CREATE UNIQUE INDEX harbor_operations_pkey ON app_private.harbor_operations USING btree (user_id, operation_id)"
       },
       {
+        "name": "island_fund_cheers_feed",
+        "table": "island_fund_cheers",
+        "schema": "app_private",
+        "definition": "CREATE INDEX island_fund_cheers_feed ON app_private.island_fund_cheers USING btree (created_at DESC, id) WHERE (deleted_at IS NULL)"
+      },
+      {
+        "name": "island_fund_cheers_owner",
+        "table": "island_fund_cheers",
+        "schema": "app_private",
+        "definition": "CREATE INDEX island_fund_cheers_owner ON app_private.island_fund_cheers USING btree (user_id, created_at DESC)"
+      },
+      {
+        "name": "island_fund_cheers_pkey",
+        "table": "island_fund_cheers",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX island_fund_cheers_pkey ON app_private.island_fund_cheers USING btree (id)"
+      },
+      {
+        "name": "island_fund_bank_reference",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX island_fund_bank_reference ON app_private.island_fund_reports USING btree (bank_reference) WHERE ((status = 'confirmed'::text) AND (bank_reference IS NOT NULL))"
+      },
+      {
+        "name": "island_fund_owner_history",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "CREATE INDEX island_fund_owner_history ON app_private.island_fund_reports USING btree (user_id, created_at DESC, id)"
+      },
+      {
+        "name": "island_fund_public_confirmed",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "CREATE INDEX island_fund_public_confirmed ON app_private.island_fund_reports USING btree (user_id, confirmed_at) WHERE ((status = 'confirmed'::text) AND public_profile)"
+      },
+      {
+        "name": "island_fund_reports_pkey",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX island_fund_reports_pkey ON app_private.island_fund_reports USING btree (id)"
+      },
+      {
+        "name": "island_fund_review_queue",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "CREATE INDEX island_fund_review_queue ON app_private.island_fund_reports USING btree (status, created_at DESC, id)"
+      },
+      {
+        "name": "island_fund_reviews_pkey",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX island_fund_reviews_pkey ON app_private.island_fund_reviews USING btree (operation_id)"
+      },
+      {
+        "name": "island_fund_reviews_report",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "definition": "CREATE INDEX island_fund_reviews_report ON app_private.island_fund_reviews USING btree (report_id, created_at)"
+      },
+      {
         "name": "ladder_runs_latest",
         "table": "ladder_runs",
         "schema": "app_private",
@@ -9982,6 +10472,12 @@
         "definition": "CREATE UNIQUE INDEX player_relic_loadouts_pkey ON app_private.player_relic_loadouts USING btree (user_id)"
       },
       {
+        "name": "relic_loadouts_relic_owner",
+        "table": "player_relic_loadouts",
+        "schema": "app_private",
+        "definition": "CREATE INDEX relic_loadouts_relic_owner ON app_private.player_relic_loadouts USING btree (relic_id, user_id)"
+      },
+      {
         "name": "prepared_fishing_casts_pkey",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
@@ -10000,10 +10496,28 @@
         "definition": "CREATE INDEX prepared_relic_showcase_history ON app_private.prepared_fishing_casts USING btree (user_id, relic_id, finished_at DESC) WHERE ((relic_id IS NOT NULL) AND (finished_at IS NOT NULL))"
       },
       {
+        "name": "production_auto_claims_owner_time",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "CREATE INDEX production_auto_claims_owner_time ON app_private.production_auto_claims USING btree (user_id, claimed_at DESC)"
+      },
+      {
+        "name": "production_auto_claims_pkey",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX production_auto_claims_pkey ON app_private.production_auto_claims USING btree (kind, site_id, started_at)"
+      },
+      {
         "name": "production_operations_pkey",
         "table": "production_operations",
         "schema": "app_private",
         "definition": "CREATE UNIQUE INDEX production_operations_pkey ON app_private.production_operations USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "production_sites_auto_claim_due",
+        "table": "production_sites",
+        "schema": "app_private",
+        "definition": "CREATE INDEX production_sites_auto_claim_due ON app_private.production_sites USING btree (user_id, completes_at, id) WHERE (started_at IS NOT NULL)"
       },
       {
         "name": "production_sites_due_notifications",
@@ -12340,6 +12854,20 @@
         "definition": "CREATE TRIGGER relic_titles_dirty AFTER INSERT ON app_private.player_fishing_relic_discoveries FOR EACH ROW EXECUTE FUNCTION app_private.title_activity_event()"
       },
       {
+        "name": "production_auto_claim_after_loadout",
+        "table": "player_relic_loadouts",
+        "schema": "app_private",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER production_auto_claim_after_loadout AFTER INSERT OR UPDATE ON app_private.player_relic_loadouts FOR EACH ROW EXECUTE FUNCTION app_private.settle_production_auto_claim_loadout()"
+      },
+      {
+        "name": "production_auto_claim_before_loadout",
+        "table": "player_relic_loadouts",
+        "schema": "app_private",
+        "enabled": "O",
+        "definition": "CREATE TRIGGER production_auto_claim_before_loadout BEFORE DELETE OR UPDATE ON app_private.player_relic_loadouts FOR EACH ROW EXECUTE FUNCTION app_private.settle_production_auto_claim_loadout()"
+      },
+      {
         "name": "fishing_maintenance_cast_start",
         "table": "prepared_fishing_casts",
         "schema": "app_private",
@@ -12879,6 +13407,26 @@
         "securityDefiner": true
       },
       {
+        "name": "auto_claim_due_production",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.auto_claim_due_production()\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare owner_id uuid; n integer:=0; stamp timestamptz:=clock_timestamp();\nbegin\n for owner_id in\n  select w.user_id from public.player_wallets w\n  join app_private.player_relic_loadouts l on l.user_id=w.user_id\n  join public.fishing_relics r on r.id=l.relic_id and r.enabled and r.effect_kind='production_auto_claim' and r.effect_value=1\n  where exists(select 1 from app_private.production_sites s where s.user_id=w.user_id and s.started_at is not null and s.completes_at<=stamp and s.expires_at>stamp\n   and coalesce((w.inventory->>'fuel')::bigint,0)+s.run_output<=1000000000)\n   or exists(select 1 from app_private.bait_production_sites s where s.user_id=w.user_id and s.started_at is not null and s.completes_at<=stamp and s.expires_at>stamp\n   and coalesce((w.inventory->>s.run_bait_id)::bigint,0)+s.run_output<=1000000000)\n  order by w.user_id limit 200 for update of w skip locked\n loop\n  n:=n+app_private.auto_claim_production(owner_id);\n end loop;\n return n;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "auto_claim_production",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_user uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.auto_claim_production(p_user uuid)\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare w public.player_wallets; run record; equipped text; items jsonb;\n stamp timestamptz; claim_time timestamptz; count_claimed integer:=0; next_count bigint;\n fuel_count bigint:=0; bait_count bigint:=0; summary text;\nbegin\n if p_user is null or not exists (\n  select 1 from app_private.player_relic_loadouts l join public.fishing_relics r on r.id=l.relic_id\n  where l.user_id=p_user and r.enabled and r.effect_kind='production_auto_claim' and r.effect_value=1\n ) then return 0; end if;\n select * into w from public.player_wallets where user_id=p_user for update skip locked;\n if not found then return 0; end if;\n select l.relic_id into equipped from app_private.player_relic_loadouts l join public.fishing_relics r on r.id=l.relic_id\n where l.user_id=p_user and r.enabled and r.effect_kind='production_auto_claim' and r.effect_value=1;\n if equipped is null then return 0; end if;\n stamp:=clock_timestamp(); items:=w.inventory;\n for run in\n  select 'fuel'::text kind,s.id,s.started_at,s.completes_at,s.expires_at,s.run_output,'fuel'::text item_id\n  from app_private.production_sites s where s.user_id=p_user and s.started_at is not null\n   and s.completes_at<=stamp and s.expires_at>stamp\n  union all\n  select 'bait',s.id,s.started_at,s.completes_at,s.expires_at,s.run_output,s.run_bait_id\n  from app_private.bait_production_sites s where s.user_id=p_user and s.started_at is not null\n   and s.completes_at<=stamp and s.expires_at>stamp\n  order by completes_at,kind,id limit 500\n loop\n  next_count:=coalesce((items->>run.item_id)::bigint,0)+run.run_output;\n  if next_count>1000000000 then continue; end if;\n  if run.kind='fuel' then\n   perform 1 from app_private.production_sites where id=run.id and user_id=p_user\n    and started_at=run.started_at and expires_at>clock_timestamp() for update skip locked;\n  else\n   perform 1 from app_private.bait_production_sites where id=run.id and user_id=p_user\n    and started_at=run.started_at and expires_at>clock_timestamp() for update skip locked;\n  end if;\n  if not found then continue; end if;\n  claim_time:=clock_timestamp();\n  if claim_time>=run.expires_at then continue; end if;\n  insert into app_private.production_auto_claims(user_id,kind,site_id,started_at,completed_at,claimed_at,item_id,amount,relic_id)\n  values(p_user,run.kind,run.id,run.started_at,run.completes_at,claim_time,run.item_id,run.run_output,equipped)\n  on conflict(kind,site_id,started_at) do nothing;\n  if not found then continue; end if;\n  items:=jsonb_set(items,array[run.item_id],to_jsonb(next_count::integer));\n  if run.kind='fuel' then\n   update app_private.production_sites set started_at=null,completes_at=null,expires_at=null,run_output=null where id=run.id and user_id=p_user;\n   fuel_count:=fuel_count+run.run_output;\n   update public.notifications set read_at=coalesce(read_at,stamp) where recipient_id=p_user\n    and production_site_id=run.id and production_started_at=run.started_at;\n  else\n   update app_private.bait_production_sites set started_at=null,completes_at=null,expires_at=null,run_output=null,run_bait_id=null,notified_started_at=null\n    where id=run.id and user_id=p_user;\n   bait_count:=bait_count+run.run_output;\n   update public.notifications set read_at=coalesce(read_at,stamp) where recipient_id=p_user\n    and bait_production_site_id=run.id and bait_production_started_at=run.started_at;\n  end if;\n  count_claimed:=count_claimed+1;\n end loop;\n if count_claimed>0 then\n  update public.player_wallets set inventory=items,updated_at=clock_timestamp() where user_id=p_user;\n  summary:=concat_ws(' · ',case when fuel_count>0 then '연료 '||fuel_count||'개' end,case when bait_count>0 then '미끼 '||bait_count||'개' end);\n  insert into public.notifications(recipient_id,category,kind,title,body,production_auto_claim)\n  values(p_user,'general','system','수확종이 생산물을 챙겼어요',summary||'를 자동으로 수령했어요. 생산소에서 다음 생산을 시작할 수 있어요.',true);\n end if;\n return count_claimed;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "automatic_experience_event",
         "config": [
           "search_path=\"\""
@@ -12935,7 +13483,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.bait_production_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();r jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n select jsonb_build_object('activeLimit',4+app_private.relic_bonus('bait_active_slots'),'activeTotal',app_private.bait_production_active_count(),'serverNow',clock_timestamp(),'gold',w.gold,'fuel',coalesce((w.inventory->>'fuel')::integer,0),\n 'facilities',(select coalesce(jsonb_agg(to_jsonb(f)||jsonb_build_object('baitName',b.name,'image_path',b.image_path,'ownedCount',(select count(*) from app_private.bait_production_sites s where s.user_id=u and s.facility_id=f.id)) order by f.price,f.id),'[]'::jsonb) from public.bait_production_facilities f join public.fishing_baits b on b.id=f.bait_id where f.enabled),\n 'sites',(select coalesce(jsonb_agg(to_jsonb(f)||jsonb_build_object('siteId',s.id,'baitName',b.name,'image_path',b.image_path,'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output) order by s.purchased_at,s.id),'[]'::jsonb) from app_private.bait_production_sites s join public.bait_production_facilities f on f.id=s.facility_id join public.fishing_baits b on b.id=f.bait_id where s.user_id=u)) into r from public.player_wallets w where user_id=u;\n return r;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.bait_production_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();r jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n perform app_private.auto_claim_production(u);\n select jsonb_build_object('autoClaim',app_private.relic_bonus('production_auto_claim')>0,'activeLimit',4+app_private.relic_bonus('bait_active_slots'),'activeTotal',app_private.bait_production_active_count(),'serverNow',clock_timestamp(),'gold',w.gold,'fuel',coalesce((w.inventory->>'fuel')::integer,0),\n 'facilities',(select coalesce(jsonb_agg(to_jsonb(f)||jsonb_build_object('baitName',b.name,'image_path',b.image_path,'ownedCount',(select count(*) from app_private.bait_production_sites s where s.user_id=u and s.facility_id=f.id)) order by f.price,f.id),'[]'::jsonb) from public.bait_production_facilities f join public.fishing_baits b on b.id=f.bait_id where f.enabled),\n 'sites',(select coalesce(jsonb_agg(to_jsonb(f)||jsonb_build_object('siteId',s.id,'baitName',b.name,'image_path',b.image_path,'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output) order by s.purchased_at,s.id),'[]'::jsonb) from app_private.bait_production_sites s join public.bait_production_facilities f on f.id=s.facility_id join public.fishing_baits b on b.id=f.bait_id where s.user_id=u)) into r from public.player_wallets w where user_id=u;\n return r;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -13416,6 +13964,76 @@
         "schema": "app_private",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION app_private.deliver_notice_publication()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if new.status='published' and new.notified_at is null then\n  insert into public.notifications(recipient_id,category,kind,title,body,notice_id)\n  select id,'notice','announcement',new.title,'새 공지가 등록됐어요.',new.id from public.player_profiles\n  on conflict(recipient_id,notice_id) where notice_id is not null do nothing;\n  update public.notices set notified_at=clock_timestamp() where id=new.id;\n end if;\n return null;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "development_fund_cheer",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id uuid, p_body text, p_delete boolean",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.development_fund_cheer(p_id uuid, p_body text DEFAULT NULL::text, p_delete boolean DEFAULT false)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); r app_private.island_fund_cheers;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_id is null or p_delete is null then raise exception 'INVALID_FUND_CHEER';end if;\n -- Serialize each author's rate limit without touching gold or donation records.\n perform 1 from public.player_profiles where id=u for update;\n if not found then raise exception 'FUND_PROFILE_REQUIRED';end if;\n select * into r from app_private.island_fund_cheers where id=p_id for update;\n if p_delete then\n  if not found then return jsonb_build_object('ok',true);end if;\n  if r.user_id<>u and not app_private.notice_is_operator() then raise exception 'FUND_FORBIDDEN';end if;\n  update app_private.island_fund_cheers set deleted_at=coalesce(deleted_at,clock_timestamp()) where id=p_id;\n  return jsonb_build_object('ok',true);\n end if;\n if p_body is null or char_length(btrim(p_body)) not between 1 and 100 then raise exception 'INVALID_FUND_CHEER';end if;\n if found then\n  if r.user_id<>u or r.body<>btrim(p_body) then raise exception 'OPERATION_CONFLICT';end if;\n  return jsonb_build_object('ok',true);\n end if;\n if exists(select 1 from app_private.island_fund_cheers where user_id=u and created_at>clock_timestamp()-interval '30 seconds')\n  or (select count(*) from app_private.island_fund_cheers where user_id=u and created_at>clock_timestamp()-interval '1 day')>=30\n then raise exception 'FUND_CHEER_LIMIT';end if;\n insert into app_private.island_fund_cheers(id,user_id,body) values(p_id,u,btrim(p_body));\n return jsonb_build_object('ok',true);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "development_fund_cheers",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.development_fund_cheers(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>10000 then raise exception 'INVALID_FUND_PAGE';end if;\n with page as (\n  select c.id,c.user_id,c.body,c.created_at,p.nickname,p.avatar_path\n  from app_private.island_fund_cheers c join public.player_profiles p on p.id=c.user_id\n  where c.deleted_at is null order by c.created_at desc,c.id offset p_offset limit 4\n ) select jsonb_build_object('items',coalesce((select jsonb_agg(jsonb_build_object('id',r.id,'nickname',r.nickname,\n  'avatarPath',r.avatar_path,'body',r.body,'createdAt',r.created_at,'canDelete',r.user_id=u or app_private.notice_is_operator()) order by r.created_at desc,r.id)\n  from(select * from page order by created_at desc,id limit 3)r),'[]'::jsonb),'hasMore',(select count(*)>3 from page)) into result;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "development_fund_report_payload",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "r app_private.island_fund_reports",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.development_fund_report_payload(r app_private.island_fund_reports)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select jsonb_build_object('id',r.id,'userId',r.user_id,'depositorName',r.depositor_name,'reportedWon',r.reported_won,\n  'remittedAt',r.remitted_at,'message',r.message,'publicProfile',r.public_profile,'status',r.status,\n  'confirmedWon',r.confirmed_won,'confirmedAt',r.confirmed_at,'reviewReason',r.review_reason,\n  'revision',r.revision,'createdAt',r.created_at,'updatedAt',r.updated_at,\n  'nickname',(select nickname from public.player_profiles where id=r.user_id),\n  'avatarPath',(select avatar_path from public.player_profiles where id=r.user_id))\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "development_fund_reports",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_status text, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.development_fund_reports(p_status text DEFAULT 'mine'::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_status is null or p_status not in('mine','pending','confirmed','rejected') or p_offset is null or p_offset<0 or p_offset>10000 then raise exception 'INVALID_FUND_PAGE';end if;\n if p_status<>'mine' and not app_private.notice_is_operator() then raise exception 'FUND_FORBIDDEN';end if;\n with page as (\n  select r.* from app_private.island_fund_reports r\n  where (p_status='mine' and user_id=u) or(p_status<>'mine' and status=p_status)\n  order by created_at desc,id offset p_offset limit 21\n ) select jsonb_build_object('items',coalesce((select jsonb_agg(app_private.development_fund_report_payload(r) order by r.created_at desc,r.id)\n  from(select * from page order by created_at desc,id limit 20)r),'[]'::jsonb),'hasMore',(select count(*)>20 from page)) into result;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "development_fund_review",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_operation_id uuid, p_id uuid, p_action text, p_revision integer, p_confirmed_won integer, p_reason text, p_bank_reference text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.development_fund_review(p_operation_id uuid, p_id uuid, p_action text, p_revision integer, p_confirmed_won integer DEFAULT NULL::integer, p_reason text DEFAULT ''::text, p_bank_reference text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); r app_private.island_fund_reports; prior app_private.island_fund_reviews; sig jsonb; amount integer; reference text; old_status text; old_won integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if not app_private.notice_is_operator() then raise exception 'FUND_FORBIDDEN';end if;\n if p_operation_id is null or p_id is null or p_action is null or p_action not in('confirm','reject','reopen') or p_revision is null or p_revision<0\n  or p_reason is null or char_length(p_reason)>200 or (p_bank_reference is not null and char_length(btrim(p_bank_reference))>100)\n  or (p_action='confirm' and (p_confirmed_won is null or p_confirmed_won not between 1 and 1000000000))\n then raise exception 'INVALID_FUND_REVIEW';end if;\n reference:=nullif(btrim(p_bank_reference),'');\n sig:=jsonb_build_object('id',p_id,'action',p_action,'revision',p_revision,'amount',p_confirmed_won,'reason',btrim(p_reason),'bankReference',reference);\n select * into r from app_private.island_fund_reports where id=p_id for update;\n if not found then raise exception 'FUND_NOT_FOUND';end if;\n select * into prior from app_private.island_fund_reviews where operation_id=p_operation_id;\n if found then\n  if prior.reviewer_id is distinct from u or prior.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.development_fund_report_payload(r);\n end if;\n if r.revision<>p_revision then raise exception 'FUND_REPORT_CHANGED';end if;\n if (p_action='confirm' and r.status='confirmed') or(p_action='reject' and r.status='rejected') or(p_action='reopen' and r.status='pending') then raise exception 'FUND_REPORT_CHANGED';end if;\n if p_action='confirm' and reference is not null and exists(select 1 from app_private.island_fund_reports where bank_reference=reference and status='confirmed' and id<>p_id) then raise exception 'FUND_DUPLICATE_TRANSFER';end if;\n old_status:=r.status;old_won:=r.confirmed_won;amount:=case when p_action='confirm' then p_confirmed_won else null end;\n update app_private.island_fund_reports set status=case p_action when 'confirm' then 'confirmed' when 'reject' then 'rejected' else 'pending' end,\n  confirmed_won=amount,confirmed_at=case when p_action='confirm' then clock_timestamp() else null end,\n  reviewed_by=u,review_reason=btrim(p_reason),bank_reference=reference,revision=revision+1,updated_at=clock_timestamp()\n where id=p_id returning * into r;\n insert into app_private.island_fund_reviews(operation_id,report_id,reviewer_id,signature,before_status,after_status,before_won,after_won)\n values(p_operation_id,p_id,u,sig,old_status,r.status,old_won,amount);\n if r.user_id is not null then\n  insert into public.notifications(recipient_id,category,kind,title,body)\n  values(r.user_id,'general','system',case p_action when 'confirm' then '발전기금 후원을 확인했어요' when 'reject' then '발전기금 신고를 확인해주세요' else '발전기금 후원을 다시 확인하고 있어요' end,\n   case when p_action='confirm' then amount||'원 후원을 확인했어요. 퐁당섬의 내일을 응원해주셔서 고맙습니다.'\n    when p_action='reject' then coalesce(nullif(btrim(p_reason),''),'입금 내역과 신고 정보가 일치하지 않아 확인을 보류했어요. 입금 정보를 확인해주세요.')\n    else '후원 내역을 확인 대기로 변경했어요. 운영자가 다시 확인할 예정이에요.' end);\n end if;\n return app_private.development_fund_report_payload(r);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "development_fund_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.development_fund_state(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>10000 then raise exception 'INVALID_FUND_PAGE';end if;\n with supporters as materialized (\n  select r.user_id,sum(r.confirmed_won)::bigint total,min(r.confirmed_at) first_at\n  from app_private.island_fund_reports r join public.player_profiles p on p.id=r.user_id\n  where r.status='confirmed' and r.public_profile group by r.user_id\n ), ranked as (\n  select s.*,row_number() over(order by total desc,first_at,user_id) position from supporters s\n ), page as (\n  select jsonb_build_object('userId',s.user_id,'nickname',p.nickname,'avatarPath',p.avatar_path,\n   'totalWon',s.total::text,'rank',s.position) value,s.position\n  from ranked s join public.player_profiles p on p.id=s.user_id order by s.position offset p_offset limit 20\n ) select jsonb_build_object('operator',app_private.notice_is_operator(),\n  'summary',jsonb_build_object('donationCount',(select count(*) from app_private.island_fund_reports where status='confirmed'),'totalWon',(select coalesce(sum(confirmed_won),0)::text from app_private.island_fund_reports where status='confirmed'),\n    'supporterCount',(select count(distinct user_id) from app_private.island_fund_reports where status='confirmed')),\n  'myPendingCount',(select count(*) from app_private.island_fund_reports where user_id=u and status='pending'),\n  'supporters',coalesce((select jsonb_agg(value order by position) from page),'[]'::jsonb),\n  'hasMore',(select count(*)>p_offset+20 from supporters)) into result;\n return result || jsonb_build_object('cheers',app_private.development_fund_cheers(0));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "development_fund_submit",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id uuid, p_depositor_name text, p_reported_won integer, p_remitted_at timestamp with time zone, p_message text, p_public_profile boolean",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.development_fund_submit(p_id uuid, p_depositor_name text, p_reported_won integer, p_remitted_at timestamp with time zone, p_message text DEFAULT ''::text, p_public_profile boolean DEFAULT false)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid(); r app_private.island_fund_reports;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_id is null or p_depositor_name is null or char_length(btrim(p_depositor_name)) not between 1 and 40\n  or p_reported_won is null or p_reported_won not between 1 and 1000000000 or p_remitted_at is null or not isfinite(p_remitted_at)\n  or p_remitted_at>clock_timestamp()+interval '10 minutes' or p_message is null or char_length(p_message)>200 or p_public_profile is null\n then raise exception 'INVALID_FUND_REPORT';end if;\n -- Serialize an owner's submissions without touching a game wallet or granting\n -- any game currency. Replayed IDs remain stable after operator review too.\n perform 1 from public.player_profiles where id=u for update;\n if not found then raise exception 'FUND_PROFILE_REQUIRED';end if;\n select * into r from app_private.island_fund_reports where id=p_id;\n if found then\n  if r.user_id is distinct from u or r.depositor_name<>btrim(p_depositor_name) or r.reported_won<>p_reported_won\n   or r.remitted_at<>p_remitted_at or r.message<>btrim(p_message) then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.development_fund_report_payload(r);\n end if;\n if (select count(*) from app_private.island_fund_reports where user_id=u and created_at>clock_timestamp()-interval '1 day')>=20 then raise exception 'FUND_REPORT_LIMIT';end if;\n insert into app_private.island_fund_reports(id,user_id,depositor_name,reported_won,remitted_at,message,public_profile)\n values(p_id,u,btrim(p_depositor_name),p_reported_won,p_remitted_at,btrim(p_message),true) returning * into r;\n return app_private.development_fund_report_payload(r);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14765,7 +15383,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.production_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n with owned as materialized(select * from app_private.production_sites where user_id=u),\n first_site as(select distinct on(facility_id) * from owned order by facility_id,purchased_at,id),\n totals as(select facility_id,count(*) n from owned group by facility_id)\n select jsonb_build_object('activeLimit',4+app_private.relic_bonus('fuel_active_slots'),'activeTotal',app_private.production_active_count(),'serverNow',clock_timestamp(),'gold',w.gold,'fuel',coalesce((w.inventory->>'fuel')::integer,0),\n 'facilities',coalesce((select jsonb_agg(to_jsonb(f)||jsonb_build_object('owned',s.id is not null,'ownedCount',coalesce(t.n,0),\n 'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output) order by f.price,f.id)\n from public.production_facilities f left join first_site s on s.facility_id=f.id left join totals t on t.facility_id=f.id\n where f.enabled or s.id is not null),'[]'::jsonb),\n 'sites',coalesce((select jsonb_agg(to_jsonb(f)||jsonb_build_object('siteId',s.id,'owned',true,\n 'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output)\n order by f.price,f.id,s.purchased_at,s.id) from owned s join public.production_facilities f on f.id=s.facility_id),'[]'::jsonb))\n into result from public.player_wallets w where w.user_id=u;\n return result;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.production_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();result jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.get_gold_wallet();\n perform app_private.auto_claim_production(u);\n with owned as materialized(select * from app_private.production_sites where user_id=u),\n first_site as(select distinct on(facility_id) * from owned order by facility_id,purchased_at,id),\n totals as(select facility_id,count(*) n from owned group by facility_id)\n select jsonb_build_object('autoClaim',app_private.relic_bonus('production_auto_claim')>0,'activeLimit',4+app_private.relic_bonus('fuel_active_slots'),'activeTotal',app_private.production_active_count(),'serverNow',clock_timestamp(),'gold',w.gold,'fuel',coalesce((w.inventory->>'fuel')::integer,0),\n 'facilities',coalesce((select jsonb_agg(to_jsonb(f)||jsonb_build_object('owned',s.id is not null,'ownedCount',coalesce(t.n,0),\n 'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output) order by f.price,f.id)\n from public.production_facilities f left join first_site s on s.facility_id=f.id left join totals t on t.facility_id=f.id\n where f.enabled or s.id is not null),'[]'::jsonb),\n 'sites',coalesce((select jsonb_agg(to_jsonb(f)||jsonb_build_object('siteId',s.id,'owned',true,\n 'startedAt',s.started_at,'completesAt',s.completes_at,'expiresAt',s.expires_at,'runOutput',s.run_output)\n order by f.price,f.id,s.purchased_at,s.id) from owned s join public.production_facilities f on f.id=s.facility_id),'[]'::jsonb))\n into result from public.player_wallets w where w.user_id=u;\n return result;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -15236,6 +15854,16 @@
         "schema": "app_private",
         "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer",
         "definition": "CREATE OR REPLACE FUNCTION app_private.settle_legacy_harbor(p_action text, p_operation_id uuid, p_vessel_id text DEFAULT NULL::text, p_voyage_id uuid DEFAULT NULL::uuid, p_quantity integer DEFAULT 1)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();v public.harbor_vessels;w public.player_wallets;trip public.harbor_voyages;\n prev app_private.harbor_operations;sig jsonb;receipt jsonb;fuel integer;cost integer;sid text;item uuid;i integer;purchase_at timestamptz;\n results jsonb:='[]'::jsonb;items jsonb;failed integer;attempts integer;claimed integer:=0;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('buy','fuel','depart','arrive','claim','claim_all') then raise exception 'INVALID_HARBOR_ACTION';end if;\n sig:=jsonb_build_object('action',p_action,'vessel',p_vessel_id,'voyage',p_voyage_id,'quantity',p_quantity);\n perform pg_advisory_xact_lock(hashtextextended('harbor:'||u::text,0));\n select * into prev from app_private.harbor_operations where user_id=u and operation_id=p_operation_id;\n if found then\n  if prev.signature<>sig then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.harbor_state()||jsonb_build_object('receipt',prev.receipt,'replayed',true);\n end if;\n perform app_private.get_gold_wallet();\n select * into w from public.player_wallets where user_id=u for update;\n fuel:=coalesce((w.inventory->>'fuel')::integer,0);purchase_at:=clock_timestamp();\n if p_action in ('buy','depart') then\n  select * into v from public.harbor_vessels where id=p_vessel_id;\n  if not found then raise exception 'VESSEL_NOT_FOUND';end if;\n end if;\n if p_action='buy' then\n  if exists(select 1 from public.player_harbor_vessels where user_id=u and vessel_id=v.id) then raise exception 'VESSEL_ALREADY_OWNED';end if;\n  if w.gold<v.price then raise exception 'INSUFFICIENT_GOLD';end if;\n  insert into public.player_harbor_vessels(user_id,vessel_id) values(u,v.id);\n  update public.player_wallets set gold=gold-v.price,updated_at=now() where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','harbor-vessel:'||v.id,-v.price);\n  receipt:=jsonb_build_object('action','buy','vesselId',v.id);\n elsif p_action='fuel' then\n  if p_quantity is null or p_quantity<1 or p_quantity>5 or fuel>100000-p_quantity then raise exception 'INVALID_QUANTITY';end if;\n  if coalesce((select sum((op.receipt->>'quantity')::integer) from app_private.harbor_operations op\n   where op.user_id=u and op.receipt->>'action'='fuel' and op.created_at>=((purchase_at at time zone 'Asia/Seoul')::date::timestamp at time zone 'Asia/Seoul')),0)+p_quantity>5 then raise exception 'FUEL_DAILY_LIMIT';end if;\n  cost:=p_quantity*57;\n  if w.gold<cost then raise exception 'INSUFFICIENT_GOLD';end if;\n  update public.player_wallets set gold=gold-cost,inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel+p_quantity)),updated_at=now() where user_id=u;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(u,p_operation_id,'buy','fuel:'||p_quantity,-cost);\n  receipt:=jsonb_build_object('action','fuel','quantity',p_quantity);\n elsif p_action='depart' then\n  if not exists(select 1 from public.player_harbor_vessels where user_id=u and vessel_id=v.id) then raise exception 'VESSEL_NOT_OWNED';end if;\n  if exists(select 1 from public.harbor_voyages where user_id=u and vessel_id=v.id and claimed_at is null) then raise exception 'VOYAGE_ACTIVE';end if;\n  if fuel<v.fuel_cost then raise exception 'INSUFFICIENT_FUEL';end if;\n  update public.player_wallets set inventory=jsonb_set(inventory,'{fuel}',to_jsonb(fuel-v.fuel_cost)),updated_at=now() where user_id=u;\n  insert into public.harbor_voyages(user_id,vessel_id,vessel_snapshot,returns_at)\n   values(u,v.id,to_jsonb(v),clock_timestamp()+make_interval(mins=>v.duration_minutes)) returning * into trip;\n  receipt:=jsonb_build_object('action','depart','voyageId',trip.id,'vesselId',v.id);\n elsif p_action='arrive' then\n  select * into trip from public.harbor_voyages where id=p_voyage_id and user_id=u for update;\n  if not found then raise exception 'VOYAGE_NOT_FOUND';end if;\n  if trip.returns_at>clock_timestamp() then raise exception 'VOYAGE_NOT_READY';end if;\n  update public.harbor_voyages set arrival_seen_at=coalesce(arrival_seen_at,clock_timestamp()) where id=trip.id;\n  receipt:=jsonb_build_object('action','arrive','voyageId',trip.id);\n else\n  if p_action='claim' then\n   select * into trip from public.harbor_voyages where id=p_voyage_id and user_id=u;\n   if not found then raise exception 'VOYAGE_NOT_FOUND';end if;\n   if trip.claimed_at is not null then\n    receipt:=jsonb_build_object('action','claim','results',jsonb_build_array(trip.result));\n   elsif trip.returns_at>clock_timestamp() then raise exception 'VOYAGE_NOT_READY';end if;\n  end if;\n  if receipt is null then\n   for trip in select * from public.harbor_voyages where user_id=u and claimed_at is null and returns_at<=clock_timestamp()\n    and (p_action='claim_all' or id=p_voyage_id) order by id for update loop\n    items:='[]'::jsonb;failed:=0;attempts:=(trip.vessel_snapshot->>'fishing_count')::integer;\n    for i in 1..attempts loop\n     sid:=app_private.harbor_draw(case when trip.vessel_snapshot->>'secondary_region_id' is not null and i>attempts/2 then trip.vessel_snapshot->>'secondary_region_id' else trip.region_id end,trip.vessel_snapshot->'catch_rule');\n     if sid is not null then\n      insert into public.player_collectibles(user_id,species_id) values(u,sid) returning id into item;\n      insert into public.player_discoveries(user_id,species_id) values(u,sid) on conflict do nothing;\n      items:=items||jsonb_build_array(jsonb_build_object('id',item,'firstDiscovery',coalesce((select evidence.first_discovery from app_private.title_acquisition_evidence evidence where evidence.collectible_id=item and evidence.user_id=u),false),'species',app_private.species_payload(sid,null),'bonus',false));\n     else failed:=failed+1;end if;\n    end loop;\n    update public.harbor_voyages set claimed_at=clock_timestamp(),arrival_seen_at=coalesce(arrival_seen_at,clock_timestamp()),\n     result=jsonb_build_object('voyageId',trip.id,'regionId',trip.region_id,'regionName',(select name from public.regions where id=trip.region_id)||case when trip.vessel_snapshot->>'secondary_region_id' is not null then ' · '||(trip.vessel_snapshot->>'secondary_region_name') else '' end,'vesselName',trip.vessel_snapshot->>'name','items',items,'attempted',attempts,'failed',failed,'succeeded',jsonb_array_length(items)) where id=trip.id returning result into receipt;\n    results:=results||jsonb_build_array(receipt);claimed:=claimed+1;\n   end loop;\n   receipt:=jsonb_build_object('action',p_action,'results',results,'claimed',claimed);\n  end if;\n end if;\n insert into app_private.harbor_operations(user_id,operation_id,signature,receipt,created_at) values(u,p_operation_id,sig,receipt,purchase_at);\n return app_private.harbor_state()||jsonb_build_object('receipt',receipt,'replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "settle_production_auto_claim_loadout",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.settle_production_auto_claim_loadout()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if tg_when='BEFORE' then\n  perform app_private.auto_claim_production(old.user_id);\n  if tg_op='DELETE' then return old; end if;\n else\n  perform app_private.auto_claim_production(new.user_id);\n end if;\n return new;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -16116,6 +16744,66 @@
         "schema": "public",
         "arguments": "p_order_id uuid, p_operation_id uuid, p_message text",
         "definition": "CREATE OR REPLACE FUNCTION public.deliver_merchant_order(p_order_id uuid, p_operation_id uuid, p_message text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.deliver_merchant_order(p_order_id,p_operation_id,p_message)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "development_fund_cheer",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_id uuid, p_body text, p_delete boolean",
+        "definition": "CREATE OR REPLACE FUNCTION public.development_fund_cheer(p_id uuid, p_body text DEFAULT NULL::text, p_delete boolean DEFAULT false)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.development_fund_cheer(p_id,p_body,p_delete)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "development_fund_cheers",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.development_fund_cheers(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$select app_private.development_fund_cheers(p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "development_fund_reports",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_status text, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.development_fund_reports(p_status text DEFAULT 'mine'::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$select app_private.development_fund_reports(p_status,p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "development_fund_review",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_operation_id uuid, p_id uuid, p_action text, p_revision integer, p_confirmed_won integer, p_reason text, p_bank_reference text",
+        "definition": "CREATE OR REPLACE FUNCTION public.development_fund_review(p_operation_id uuid, p_id uuid, p_action text, p_revision integer, p_confirmed_won integer DEFAULT NULL::integer, p_reason text DEFAULT ''::text, p_bank_reference text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.development_fund_review(p_operation_id,p_id,p_action,p_revision,p_confirmed_won,p_reason,p_bank_reference)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "development_fund_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.development_fund_state(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$select app_private.development_fund_state(p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "development_fund_submit",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_id uuid, p_depositor_name text, p_reported_won integer, p_remitted_at timestamp with time zone, p_message text, p_public_profile boolean",
+        "definition": "CREATE OR REPLACE FUNCTION public.development_fund_submit(p_id uuid, p_depositor_name text, p_reported_won integer, p_remitted_at timestamp with time zone, p_message text DEFAULT ''::text, p_public_profile boolean DEFAULT false)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.development_fund_submit(p_id,p_depositor_name,p_reported_won,p_remitted_at,p_message,p_public_profile)$function$\n",
         "securityDefiner": false
       },
       {
@@ -18923,6 +19611,246 @@
         "definition": "NOT NULL user_id"
       },
       {
+        "name": "island_fund_cheers_body_check",
+        "table": "island_fund_cheers",
+        "schema": "app_private",
+        "definition": "CHECK (((char_length(btrim(body)) >= 1) AND (char_length(btrim(body)) <= 100)))"
+      },
+      {
+        "name": "island_fund_cheers_body_not_null",
+        "table": "island_fund_cheers",
+        "schema": "app_private",
+        "definition": "NOT NULL body"
+      },
+      {
+        "name": "island_fund_cheers_created_at_not_null",
+        "table": "island_fund_cheers",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "island_fund_cheers_id_not_null",
+        "table": "island_fund_cheers",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "island_fund_cheers_pkey",
+        "table": "island_fund_cheers",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "island_fund_cheers_user_id_fkey",
+        "table": "island_fund_cheers",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "island_fund_cheers_user_id_not_null",
+        "table": "island_fund_cheers",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "island_fund_reports_bank_reference_check",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "CHECK (((char_length(bank_reference) >= 1) AND (char_length(bank_reference) <= 100)))"
+      },
+      {
+        "name": "island_fund_reports_check",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "CHECK ((((status = 'confirmed'::text) AND (confirmed_won IS NOT NULL) AND (confirmed_at IS NOT NULL)) OR ((status <> 'confirmed'::text) AND (confirmed_won IS NULL) AND (confirmed_at IS NULL))))"
+      },
+      {
+        "name": "island_fund_reports_confirmed_won_check",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "CHECK (((confirmed_won >= 1) AND (confirmed_won <= 1000000000)))"
+      },
+      {
+        "name": "island_fund_reports_created_at_not_null",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "island_fund_reports_depositor_name_check",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "CHECK (((char_length(btrim(depositor_name)) >= 1) AND (char_length(btrim(depositor_name)) <= 40)))"
+      },
+      {
+        "name": "island_fund_reports_depositor_name_not_null",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "NOT NULL depositor_name"
+      },
+      {
+        "name": "island_fund_reports_id_not_null",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "island_fund_reports_message_check",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "CHECK ((char_length(message) <= 200))"
+      },
+      {
+        "name": "island_fund_reports_message_not_null",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "NOT NULL message"
+      },
+      {
+        "name": "island_fund_reports_pkey",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "island_fund_reports_public_profile_not_null",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "NOT NULL public_profile"
+      },
+      {
+        "name": "island_fund_reports_remitted_at_check",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "CHECK (isfinite(remitted_at))"
+      },
+      {
+        "name": "island_fund_reports_remitted_at_not_null",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "NOT NULL remitted_at"
+      },
+      {
+        "name": "island_fund_reports_reported_won_check",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "CHECK (((reported_won >= 1) AND (reported_won <= 1000000000)))"
+      },
+      {
+        "name": "island_fund_reports_reported_won_not_null",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "NOT NULL reported_won"
+      },
+      {
+        "name": "island_fund_reports_review_reason_check",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "CHECK ((char_length(review_reason) <= 200))"
+      },
+      {
+        "name": "island_fund_reports_review_reason_not_null",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "NOT NULL review_reason"
+      },
+      {
+        "name": "island_fund_reports_reviewed_by_fkey",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (reviewed_by) REFERENCES auth.users(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "island_fund_reports_revision_check",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "CHECK ((revision >= 0))"
+      },
+      {
+        "name": "island_fund_reports_revision_not_null",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "NOT NULL revision"
+      },
+      {
+        "name": "island_fund_reports_status_check",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "CHECK ((status = ANY (ARRAY['pending'::text, 'confirmed'::text, 'rejected'::text])))"
+      },
+      {
+        "name": "island_fund_reports_status_not_null",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "NOT NULL status"
+      },
+      {
+        "name": "island_fund_reports_updated_at_not_null",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "NOT NULL updated_at"
+      },
+      {
+        "name": "island_fund_reports_user_id_fkey",
+        "table": "island_fund_reports",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "island_fund_reviews_after_status_not_null",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "definition": "NOT NULL after_status"
+      },
+      {
+        "name": "island_fund_reviews_before_status_not_null",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "definition": "NOT NULL before_status"
+      },
+      {
+        "name": "island_fund_reviews_created_at_not_null",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "island_fund_reviews_operation_id_not_null",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "island_fund_reviews_pkey",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (operation_id)"
+      },
+      {
+        "name": "island_fund_reviews_report_id_fkey",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (report_id) REFERENCES app_private.island_fund_reports(id)"
+      },
+      {
+        "name": "island_fund_reviews_report_id_not_null",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "definition": "NOT NULL report_id"
+      },
+      {
+        "name": "island_fund_reviews_reviewer_id_fkey",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (reviewer_id) REFERENCES auth.users(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "island_fund_reviews_signature_not_null",
+        "table": "island_fund_reviews",
+        "schema": "app_private",
+        "definition": "NOT NULL signature"
+      },
+      {
         "name": "ladder_runs_bridges_check",
         "table": "ladder_runs",
         "schema": "app_private",
@@ -19983,6 +20911,102 @@
         "table": "prepared_fishing_casts",
         "schema": "app_private",
         "definition": "CHECK (((eligible = (num_nonnulls(species_id, map_piece_number, relic_id) = 1)) AND (num_nonnulls(species_id, map_piece_number, relic_id) <= 1) AND ((map_piece_number IS NULL) OR ((map_region_id IS NOT NULL) AND (species_id IS NULL)))))"
+      },
+      {
+        "name": "production_auto_claims_amount_check",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "CHECK (((amount >= 1) AND (amount <= 1000000000)))"
+      },
+      {
+        "name": "production_auto_claims_amount_not_null",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL amount"
+      },
+      {
+        "name": "production_auto_claims_check",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "CHECK (((completed_at > started_at) AND (claimed_at >= completed_at)))"
+      },
+      {
+        "name": "production_auto_claims_claimed_at_not_null",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL claimed_at"
+      },
+      {
+        "name": "production_auto_claims_completed_at_not_null",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL completed_at"
+      },
+      {
+        "name": "production_auto_claims_item_id_check",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "CHECK ((btrim(item_id) <> ''::text))"
+      },
+      {
+        "name": "production_auto_claims_item_id_not_null",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL item_id"
+      },
+      {
+        "name": "production_auto_claims_kind_check",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "CHECK ((kind = ANY (ARRAY['fuel'::text, 'bait'::text])))"
+      },
+      {
+        "name": "production_auto_claims_kind_not_null",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL kind"
+      },
+      {
+        "name": "production_auto_claims_pkey",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (kind, site_id, started_at)"
+      },
+      {
+        "name": "production_auto_claims_relic_id_fkey",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (relic_id) REFERENCES fishing_relics(id)"
+      },
+      {
+        "name": "production_auto_claims_relic_id_not_null",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL relic_id"
+      },
+      {
+        "name": "production_auto_claims_site_id_not_null",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL site_id"
+      },
+      {
+        "name": "production_auto_claims_started_at_not_null",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL started_at"
+      },
+      {
+        "name": "production_auto_claims_user_id_fkey",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "production_auto_claims_user_id_not_null",
+        "table": "production_auto_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
       },
       {
         "name": "production_operations_created_at_not_null",
@@ -23024,7 +24048,7 @@
         "name": "relic_effect_shape",
         "table": "fishing_relics",
         "schema": "public",
-        "definition": "CHECK ((((effect_kind = 'none'::text) AND (effect_value = (0)::numeric)) OR ((effect_kind = ANY (ARRAY['fuel_active_slots'::text, 'bait_active_slots'::text])) AND (((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'personal_bait_hours'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (2)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (4)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (8)::numeric)))) OR ((effect_kind = 'fishing_wait_seconds'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = 0.5)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'trap_seconds_per_bait'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (30)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (90)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (180)::numeric)))) OR ((effect_kind = 'boat_discount_gold'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (50)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (150)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (400)::numeric)))) OR ((effect_kind = 'bait_discount_gold'::text) AND (((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'harbor_duration_percent'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (3)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (6)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (10)::numeric))))))"
+        "definition": "CHECK ((((effect_kind = 'none'::text) AND (effect_value = (0)::numeric)) OR ((effect_kind = ANY (ARRAY['fuel_active_slots'::text, 'bait_active_slots'::text])) AND (((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'personal_bait_hours'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (2)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (4)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (8)::numeric)))) OR ((effect_kind = 'fishing_wait_seconds'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = 0.5)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'trap_seconds_per_bait'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (30)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (90)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (180)::numeric)))) OR ((effect_kind = 'boat_discount_gold'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (50)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (150)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (400)::numeric)))) OR ((effect_kind = 'bait_discount_gold'::text) AND (((rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (2)::numeric)))) OR ((effect_kind = 'harbor_duration_percent'::text) AND (((rarity = 'rare'::game_rarity) AND (effect_value = (3)::numeric)) OR ((rarity = 'epic'::game_rarity) AND (effect_value = (6)::numeric)) OR ((rarity = 'mythic'::game_rarity) AND (effect_value = (10)::numeric)))) OR ((effect_kind = 'production_auto_claim'::text) AND (rarity = 'epic'::game_rarity) AND (effect_value = (1)::numeric))))"
       },
       {
         "name": "fishing_rods_check",
@@ -24195,6 +25219,12 @@
         "table": "notifications",
         "schema": "public",
         "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "notifications_production_auto_claim_not_null",
+        "table": "notifications",
+        "schema": "public",
+        "definition": "NOT NULL production_auto_claim"
       },
       {
         "name": "notifications_production_site_id_fkey",
@@ -30110,6 +31140,34 @@
       {
         "role": "authenticated",
         "table": "notifications",
+        "column": "production_auto_claim",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "production_auto_claim",
+        "schema": "public",
+        "privilege": "INSERT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "production_auto_claim",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "service_role",
+        "table": "notifications",
+        "column": "production_auto_claim",
+        "schema": "public",
+        "privilege": "UPDATE"
+      },
+      {
+        "role": "authenticated",
+        "table": "notifications",
         "column": "production_site_id",
         "schema": "public",
         "privilege": "SELECT"
@@ -32095,6 +33153,48 @@
         "arguments": "p_tab text, p_query text, p_offset integer"
       },
       {
+        "name": "auto_claim_due_production",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "auto_claim_due_production",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "auto_claim_due_production",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "auto_claim_production",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid"
+      },
+      {
+        "name": "auto_claim_production",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid"
+      },
+      {
+        "name": "auto_claim_production",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_user uuid"
+      },
+      {
         "name": "automatic_experience_event",
         "role": "anon",
         "schema": "app_private",
@@ -33227,6 +34327,153 @@
         "schema": "app_private",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "development_fund_cheer",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid, p_body text, p_delete boolean"
+      },
+      {
+        "name": "development_fund_cheer",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_id uuid, p_body text, p_delete boolean"
+      },
+      {
+        "name": "development_fund_cheer",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid, p_body text, p_delete boolean"
+      },
+      {
+        "name": "development_fund_cheers",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "development_fund_cheers",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "development_fund_cheers",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "development_fund_report_payload",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "r app_private.island_fund_reports"
+      },
+      {
+        "name": "development_fund_report_payload",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "r app_private.island_fund_reports"
+      },
+      {
+        "name": "development_fund_report_payload",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "r app_private.island_fund_reports"
+      },
+      {
+        "name": "development_fund_reports",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_status text, p_offset integer"
+      },
+      {
+        "name": "development_fund_reports",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_status text, p_offset integer"
+      },
+      {
+        "name": "development_fund_reports",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_status text, p_offset integer"
+      },
+      {
+        "name": "development_fund_review",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_id uuid, p_action text, p_revision integer, p_confirmed_won integer, p_reason text, p_bank_reference text"
+      },
+      {
+        "name": "development_fund_review",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_id uuid, p_action text, p_revision integer, p_confirmed_won integer, p_reason text, p_bank_reference text"
+      },
+      {
+        "name": "development_fund_review",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_id uuid, p_action text, p_revision integer, p_confirmed_won integer, p_reason text, p_bank_reference text"
+      },
+      {
+        "name": "development_fund_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "development_fund_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "development_fund_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "development_fund_submit",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid, p_depositor_name text, p_reported_won integer, p_remitted_at timestamp with time zone, p_message text, p_public_profile boolean"
+      },
+      {
+        "name": "development_fund_submit",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_id uuid, p_depositor_name text, p_reported_won integer, p_remitted_at timestamp with time zone, p_message text, p_public_profile boolean"
+      },
+      {
+        "name": "development_fund_submit",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid, p_depositor_name text, p_reported_won integer, p_remitted_at timestamp with time zone, p_message text, p_public_profile boolean"
       },
       {
         "name": "dispatch_web_push",
@@ -37051,6 +38298,27 @@
         "arguments": "p_action text, p_operation_id uuid, p_vessel_id text, p_voyage_id uuid, p_quantity integer"
       },
       {
+        "name": "settle_production_auto_claim_loadout",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "settle_production_auto_claim_loadout",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "settle_production_auto_claim_loadout",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "shadow_game",
         "role": "anon",
         "schema": "app_private",
@@ -38897,6 +40165,132 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_order_id uuid, p_operation_id uuid, p_message text"
+      },
+      {
+        "name": "development_fund_cheer",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid, p_body text, p_delete boolean"
+      },
+      {
+        "name": "development_fund_cheer",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_id uuid, p_body text, p_delete boolean"
+      },
+      {
+        "name": "development_fund_cheer",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid, p_body text, p_delete boolean"
+      },
+      {
+        "name": "development_fund_cheers",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "development_fund_cheers",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "development_fund_cheers",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "development_fund_reports",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_status text, p_offset integer"
+      },
+      {
+        "name": "development_fund_reports",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_status text, p_offset integer"
+      },
+      {
+        "name": "development_fund_reports",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_status text, p_offset integer"
+      },
+      {
+        "name": "development_fund_review",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_id uuid, p_action text, p_revision integer, p_confirmed_won integer, p_reason text, p_bank_reference text"
+      },
+      {
+        "name": "development_fund_review",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_id uuid, p_action text, p_revision integer, p_confirmed_won integer, p_reason text, p_bank_reference text"
+      },
+      {
+        "name": "development_fund_review",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_id uuid, p_action text, p_revision integer, p_confirmed_won integer, p_reason text, p_bank_reference text"
+      },
+      {
+        "name": "development_fund_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "development_fund_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "development_fund_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "development_fund_submit",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid, p_depositor_name text, p_reported_won integer, p_remitted_at timestamp with time zone, p_message text, p_public_profile boolean"
+      },
+      {
+        "name": "development_fund_submit",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_id uuid, p_depositor_name text, p_reported_won integer, p_remitted_at timestamp with time zone, p_message text, p_public_profile boolean"
+      },
+      {
+        "name": "development_fund_submit",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid, p_depositor_name text, p_reported_won integer, p_remitted_at timestamp with time zone, p_message text, p_public_profile boolean"
       },
       {
         "name": "edit_exchange_listing_title",

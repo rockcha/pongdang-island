@@ -149,6 +149,22 @@ begin
    state:=public.harbor_action('sell',gen_random_uuid(),null,null,1,boat);
    if (state#>>'{receipt,gold}')::integer<>floor((list_price-r.effect_value)/2) then raise exception 'BOAT_RESALE_WRONG';end if;
    reset role;continue;
+  elsif r.effect_kind='production_auto_claim' then
+   select coalesce((inventory->>'fuel')::integer,0) into base from public.player_wallets where user_id=u;
+   insert into app_private.production_sites(user_id,facility_id,started_at,completes_at,expires_at,run_output)
+   values(u,'tin-grandpa-hearth',clock_timestamp()-interval '1 hour',clock_timestamp()-interval '1 minute',clock_timestamp()+interval '1 hour',7) returning id into site;
+   set local role authenticated;
+   state:=public.production_state();
+   if not (state->>'autoClaim')::boolean or (state->>'fuel')::integer<>base+7 then raise exception 'PRODUCTION_AUTO_CLAIM_FAILED';end if;
+   perform public.equip_relic(null,gen_random_uuid(),500);
+   reset role;
+   update app_private.production_sites set started_at=clock_timestamp()-interval '1 hour',completes_at=clock_timestamp()-interval '1 minute',expires_at=clock_timestamp()+interval '1 hour',run_output=7 where id=site;
+   set local role authenticated;
+   state:=public.production_state();
+   if (state->>'autoClaim')::boolean or (state->>'fuel')::integer<>base+7 then raise exception 'UNEQUIPPED_AUTO_CLAIM_ALLOWED';end if;
+   reset role;
+   delete from app_private.production_sites where user_id=u;
+   continue;
   elsif r.effect_kind='harbor_duration_percent' then
    set local role authenticated;
    state:=public.harbor_state();

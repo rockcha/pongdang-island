@@ -48,6 +48,16 @@ export function SocialProvider({ children }: { children: ReactNode }) {
     let reloadPending = false
     let authBlocked = false
     const seen = new Set<string>()
+    const reconciledHarvests = new Set<string>()
+    function reconcileHarvests(notifications:AppNotification[]){
+      let changed=false
+      for(const notification of notifications){
+        if(notification.recipient_id!==userId||!notification.production_auto_claim||reconciledHarvests.has(notification.id))continue
+        reconciledHarvests.add(notification.id);changed=true
+        if(reconciledHarvests.size>500)reconciledHarvests.delete(reconciledHarvests.values().next().value!)
+      }
+      if(changed)for(const event of ['wallet-changed','production-changed','bait-production-changed'])window.dispatchEvent(new Event(event))
+    }
     function announce(notification:AppNotification){
       if(seen.has(notification.id))return
       seen.add(notification.id)
@@ -70,6 +80,7 @@ export function SocialProvider({ children }: { children: ReactNode }) {
         if (!active || version !== revision) return
         profile = latestProfile
         setState(previous => ({ ...previous, profile, requests, ...inbox, loading: false, error: null }))
+        reconcileHarvests(inbox.notifications)
         for(const notification of inbox.notifications){
           if(!notification.read_at&&(notification.expedition_id||notification.harbor_voyage_id))announce(notification)
         }
@@ -107,6 +118,7 @@ export function SocialProvider({ children }: { children: ReactNode }) {
             .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'notifications', filter: `recipient_id=eq.${userId}` }, payload => {
               if (!active) return
               const notification = payload.new as AppNotification
+              reconcileHarvests([notification])
               if(notification.expedition_id||notification.expedition_boost_id)window.dispatchEvent(new Event('expedition-changed'))
               if(notification.harbor_voyage_id)window.dispatchEvent(new Event('harbor-changed'))
               if(notification.kind==='reward')window.dispatchEvent(new Event('wallet-changed'))

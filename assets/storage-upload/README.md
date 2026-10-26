@@ -35,6 +35,7 @@ assets/storage-upload/new/20261015-113000/
 - 생성시간 폴더 안에 `collectibles/`를 더 만들지 않습니다. `fish/`, `trash/`, `decorations/`, `map/`부터 배치합니다.
 - 등급 폴더는 일반 `normal`, 희귀 `rare`, 특급 `epic`, 신화 `mythic`입니다. DB 일반 등급 값 `common`과 폴더명 `normal`을 구분합니다.
 - 실제 이미지가 들어가는 폴더만 만듭니다. 생성 단계에서 분류해 사용자가 다시 정리하지 않도록 합니다.
+- 유물의 정적 아이콘은 `relics/rare/`, `relics/epic/`, `relics/mythic/` 아래에 저장합니다. 카탈로그는 기존 정적 public 경로나 공개 Storage URL을 사용하며, 새 버전 이미지의 URL과 공개 바이트 해시를 확인합니다.
 - 파일명은 `개체-id_thumbnail.png`, 유영 시트는 `개체-id_sprite.png`입니다. 교체 파일명을 바꾸면 SQL과 manifest에도 반영합니다.
 - SQL 이미지 경로와 manifest의 `storage_path`는 생성시간 폴더 아래 상대 경로와 일치시킵니다. 예: `fish/epic/example-diver_sprite.png`.
 - 생성 도구·최종 프롬프트·로컬 상대 경로·버킷 경로는 해당 폴더의 `manifest.json`에, 업로드 순서·적용 SQL은 `README.md`에 기록합니다.

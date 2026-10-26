@@ -34,6 +34,7 @@ export const headerPlaces = [
   { to: '/music-room', label: '음악 감상', icon: appArt.music },
   { to: '/aquarium', label: '아쿠아리움', icon: AquariumIcon },
   { to: '/island-news', label: '퐁당섬 소식', icon: IslandIcon },
+  { to: '/development-fund', label: '퐁당섬 발전기금', icon: appArt.developmentFund },
   { to: '/titles', label: '칭호', icon: appArt.title },
   { to: '/relics', label: '유물', icon: RelicIcon },
   { to: '/collection', label: '도감', icon: appArt.collection },
@@ -93,7 +94,8 @@ export function HeaderPlaceNavigation() {
         "label": "나의 공간",
         "paths": [
           "/aquarium",
-          "/island-news"
+          "/island-news",
+          "/development-fund"
         ]
       },
       {
@@ -104,6 +106,13 @@ export function HeaderPlaceNavigation() {
           "/titles",
           "/relics",
           "/collection-animation"
+        ]
+      },
+      {
+        "label": "쉼터",
+        "paths": [
+          "/music-room",
+          "/arcade"
         ]
       }
     ]
@@ -183,18 +192,16 @@ export function HeaderPlaceNavigation() {
         "label": "함께 이야기",
         "paths": [
           "/friends",
+          "/board",
           "/showcase",
-          "/square/sponsorship",
-          "/square/begging",
-          "/board"
+          "/hall-of-fame"
         ]
       },
       {
-        "label": "즐길거리·기록",
+        "label": "마음 나누기",
         "paths": [
-          "/arcade",
-          "/music-room",
-          "/hall-of-fame"
+          "/square/sponsorship",
+          "/square/begging"
         ]
       },
       {

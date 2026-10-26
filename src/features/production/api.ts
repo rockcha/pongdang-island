@@ -21,6 +21,7 @@ export type ProductionFacility = {
   runOutput: number | null
 }
 export type ProductionState = {
+  autoClaim?: boolean
   activeLimit?: number
   activeTotal?: number
   serverNow: string

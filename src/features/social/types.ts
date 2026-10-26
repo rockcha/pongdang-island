@@ -18,6 +18,7 @@ export type AppNotification = {
   production_started_at?:string|null
   bait_production_site_id?:string|null
   bait_production_started_at?:string|null
+  production_auto_claim?:boolean
   notice_id?:string|null
   board_post_id?:string|null
   notice?:{category:'guide'|'update'|'maintenance'|'event'}|null

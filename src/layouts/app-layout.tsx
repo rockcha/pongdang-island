@@ -23,7 +23,7 @@ export function AppLayout() {
   const aquarium=pathname==='/aquarium'
   const friendAquarium=/^\/friends\/[^/]+\/aquarium\/?$/.test(pathname)
   const tankScreen=aquarium||friendAquarium
-  const home=pathname==='/island-news'
+  const home=pathname==='/island-news'||/^\/development-fund\/?$/.test(pathname)
   const profile=pathname==='/my-bait-production'||pathname==='/bait-production'||pathname==='/bait-production-shop'||pathname==='/production-shop'||pathname==='/production'||pathname==='/storage'||pathname==='/download'||pathname==='/music-room'||pathname==='/farm'||pathname==='/profile'||pathname==='/titles'||/^\/relics\/?$/.test(pathname)||pathname==='/collection'||pathname==='/collection-animation'
   const mailbox=pathname==='/notifications'
   const square=pathname==='/square'

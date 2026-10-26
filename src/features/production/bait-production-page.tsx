@@ -15,6 +15,7 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog'
 import { GoldIcon } from '@/features/gold/gold-provider'
+import {ProductionAutoClaimNotice} from './production-auto-claim-notice'
 import { productionDuration } from './facilities'
 import { baitProductionArt } from './bait-production-art'
 import {ProductionStatusSprite,ProductionProgress} from './status-sprite'
@@ -202,6 +203,7 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
         {!shop && <p className="text-xs leading-5 text-muted-foreground">
           보유 {state?.sites.length ?? 0}곳 · 미끼 생산소 가동 <b className="text-primary">{working}/{activeLimit}</b>
         </p>}
+        {!shop && state?.autoClaim && <ProductionAutoClaimNotice/>}
         {shop ? (
           <BaitProductionShopFilters value={shopFilters} onChange={setShopFilters}/>
         ) : (

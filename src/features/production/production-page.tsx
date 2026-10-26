@@ -20,6 +20,7 @@ import {
   productionCardColors,
 } from './status-sprite'
 import { GoldIcon } from '@/features/gold/gold-provider'
+import {ProductionAutoClaimNotice} from './production-auto-claim-notice'
 
 const statusFilters = [
   { id: 'all', label: '전체' },
@@ -168,6 +169,7 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
           </Link>
         </div>
         {!shop && <p className="mb-2 text-xs text-muted-foreground">연료 생산소 가동 {activeTotal}/{activeLimit}곳 · 보유 수 제한 없음</p>}
+        {!shop && state?.autoClaim && <ProductionAutoClaimNotice/>}
         {shop && (
           <div
             role="tablist"

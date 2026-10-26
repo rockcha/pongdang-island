@@ -1,0 +1,96 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "public/branding/pongi-grateful-v1.webp",
+  "source": "branding/pongi-developer-v1.source",
+  "finalPath": "public/branding/pongi-developer-v1-sprite.webp",
+  "prompt": "Create a TRUE animation sprite sheet for this exact Pongi otter mascot, working diligently developing a cozy island game on a laptop. Transparent background, STRICT 4 columns x 2 rows, EIGHT equal square cells. Same adorable caramel brown fluffy otter, cream cheeks/belly, glossy black eyes, coral starfish clip by viewer-right ear, same polished soft cartoon shading as reference. Full body seated behind a small open warm-cream laptop, paws typing on keyboard, tail curled to viewer right, cheerful focused face. No written words, logos, numbers or readable code; just a simple tiny teal island symbol on laptop lid facing viewer. Laptop, head, ears, feet, torso remain the SAME POSITION and SCALE in every frame; no camera movement or bouncing. Animation sequence row-major: 1 paws resting near keyboard and focused eyes; 2 left paw makes a small typing motion while right stays; 3 right paw types while left lowers; 4 both paws return near keyboard; 5 left paw lightly types, tiny blink; 6 right paw types, eyes reopen; 7 alternating typing, soft pleased smile; 8 smoothly returns toward frame1. Make paw movements small and genuinely animate typing, not just eight blinking portraits. We will overlay sun and moon icons in HTML, so do NOT add sun/moon, halos, background scenery or light discs to the sprite sheet. Keep lighting and character coloring fully consistent through all frames. Each character and laptop must stay within its cell with at least 10% transparent padding on EVERY edge, no overlap or cropping. Clean alpha edges, no ground shadow, haze, sparkles, framing or checkerboard. A production sprite asset for a minimal cream/brown webpage. No extra accessories, hearts or props.",
+  "layout": {
+    "columns": 8,
+    "rows": 1,
+    "cellWidth": 256,
+    "cellHeight": 256
+  },
+  "processing": "Uniform whole-sheet resampling; identical cell scale and padding. No per-frame auto-crop or zoom.",
+  "metrics": [
+    {
+      "frame": 0,
+      "bounds": [
+        36,
+        24,
+        228,
+        230
+      ],
+      "opaqueSamples": 28937
+    },
+    {
+      "frame": 1,
+      "bounds": [
+        37,
+        25,
+        227,
+        230
+      ],
+      "opaqueSamples": 28930
+    },
+    {
+      "frame": 2,
+      "bounds": [
+        37,
+        25,
+        227,
+        230
+      ],
+      "opaqueSamples": 28796
+    },
+    {
+      "frame": 3,
+      "bounds": [
+        36,
+        25,
+        227,
+        230
+      ],
+      "opaqueSamples": 28858
+    },
+    {
+      "frame": 4,
+      "bounds": [
+        36,
+        24,
+        228,
+        230
+      ],
+      "opaqueSamples": 28992
+    },
+    {
+      "frame": 5,
+      "bounds": [
+        37,
+        25,
+        227,
+        230
+      ],
+      "opaqueSamples": 28816
+    },
+    {
+      "frame": 6,
+      "bounds": [
+        37,
+        25,
+        228,
+        230
+      ],
+      "opaqueSamples": 28910
+    },
+    {
+      "frame": 7,
+      "bounds": [
+        36,
+        25,
+        227,
+        230
+      ],
+      "opaqueSamples": 28838
+    }
+  ]
+}

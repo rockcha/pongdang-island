@@ -1,5 +1,5 @@
 import {NoticeCategoryIcon} from '@/features/notices/notice-category-icon'
-export type NotificationIconSource={achievement_id?:string|null;kind?:string;category?:string;title?:string;expedition_id?:string|null;harbor_voyage_id?:string|null;production_site_id?:string|null;production_started_at?:string|null;bait_production_site_id?:string|null;bait_production_started_at?:string|null;expedition_boost_id?:string|null;notice_id?:string|null;notice?:{category:'guide'|'update'|'maintenance'|'event'}|null}
+export type NotificationIconSource={achievement_id?:string|null;kind?:string;category?:string;title?:string;expedition_id?:string|null;harbor_voyage_id?:string|null;production_site_id?:string|null;production_started_at?:string|null;bait_production_site_id?:string|null;bait_production_started_at?:string|null;production_auto_claim?:boolean;expedition_boost_id?:string|null;notice_id?:string|null;notice?:{category:'guide'|'update'|'maintenance'|'event'}|null}
 
 export function notificationIconName(item:NotificationIconSource){
  if(item.achievement_id)return 'title'
@@ -26,6 +26,7 @@ export function notificationIconName(item:NotificationIconSource){
 
 /** Decorative artwork: the adjacent notification text supplies the accessible name. */
 export function NotificationIcon({notification,className='size-11'}:{notification:NotificationIconSource;className?:string}){
+ if(notification.production_auto_claim)return <img src="/relics/epic/sleepless-harvest-bell_v1_thumbnail.png" alt="" aria-hidden="true" className={`${className} shrink-0 object-contain`}/>
  if(notification.category==='notice'||notification.notice_id)return <NoticeCategoryIcon category={notification.notice?.category??'guide'} className={className}/>
  if(notification.bait_production_site_id||notification.bait_production_started_at)return <img src="/app-icons/bait.png" alt="" aria-hidden="true" className={`${className} shrink-0 object-contain`}/>
  if(notification.production_site_id||notification.production_started_at)return <img src="/app-icons/fuel-can.svg" alt="" aria-hidden="true" className={`${className} shrink-0 object-contain`}/>

@@ -18,6 +18,7 @@ function decorationShopArtwork({className='size-6'}:{className?:string;strokeWid
  return <span aria-hidden="true" className={`relative inline-block shrink-0 ${className}`}><Decoration className="size-full"/><Store className="absolute -bottom-0.5 -right-0.5 size-[45%] rounded-full bg-background p-px text-primary" strokeWidth={2.3}/></span>
 }
 export const appArt={
+ developmentFund:artwork('development-fund','app-icons','svg'),
  decorationShop:decorationShopArtwork,
  production:productionArtwork('fuel'),
  baitProduction:productionArtwork('bait'),
@@ -63,6 +64,7 @@ const placeArt:Record<string,ReturnType<typeof artwork>>={
  '/merchant-orders':appArt.merchantOrders,
  '/port':appArt.port,
  '/music-room':appArt.music,
+ '/development-fund':appArt.developmentFund,
  '/island-news':appArt.island,'/aquarium':appArt.aquarium,'/harbor':appArt.map,'/shop':appArt.shop,'/farm':appArt.farm,
  '/shipyard':appArt.shipyard,'/expeditions':appArt.expeditions,'/exchange':appArt.exchange,
  '/storage':appArt.storage,'/savings':appArt.savings,'/warehouse':appArt.warehouse,'/arcade':appArt.arcade,'/friends':appArt.lighthouse,

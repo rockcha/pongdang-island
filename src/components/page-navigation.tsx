@@ -53,11 +53,13 @@ export function PageNavigation({noticeCategory}:{noticeCategory?:string}){
   if(typeof index==='number'&&index>0)navigate(-1)
   else navigate(page.fallback)
  }
- return <div className="flex min-h-12 min-w-0 items-center gap-0.5 border-t border-border/60" data-page-navigation>
-  <div className="flex min-w-0 flex-1 items-center gap-0.5">
-  <button type="button" onClick={back} aria-label="뒤로 가기" title="뒤로 가기" className="inline-flex h-11 w-6 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><ChevronLeft aria-hidden="true" className="size-4"/></button>
-  <div className="flex min-w-0 flex-1 items-center pr-0.5"><h1 className="min-w-0 truncate text-xs font-medium text-primary" title={page.label}>{page.label}</h1></div>
-  </div>
+ return <div className="flex min-h-12 min-w-0 items-center gap-2 border-t border-border/60 py-1" data-page-navigation>
+  <h1 className="min-w-0 flex-1 text-xs font-medium text-primary">
+   <button type="button" onClick={back} aria-label="뒤로 가기" title={`${page.label} · 뒤로 가기`} className="inline-flex min-h-11 max-w-full items-center gap-1 rounded-lg px-2 py-2 text-left transition-colors hover:bg-secondary active:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+    <ChevronLeft aria-hidden="true" className="size-4 shrink-0"/>
+    <span className="min-w-0 truncate">{page.label}</span>
+   </button>
+  </h1>
   <HeaderPlaceNavigation/>
  </div>
 }

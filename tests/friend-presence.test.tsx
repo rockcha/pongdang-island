@@ -16,6 +16,17 @@ function Reader({owner='me',friends='friend'}:{owner?:string;friends?:string}){
  const state=useFriendPresence(owner,friends)
  return <p>{state.ready?state.friends.map(f=>f.friend_id+':'+f.state).join(','):state.error?'unknown':'loading'}</p>
 }
+it('mounts signed-in presence on LAN HTTP without crypto.randomUUID',()=>{
+ const descriptor=Object.getOwnPropertyDescriptor(globalThis.crypto,'randomUUID')
+ Object.defineProperty(globalThis.crypto,'randomUUID',{configurable:true,value:undefined})
+ try{
+  expect(()=>render(<PresenceReporter/>)).not.toThrow()
+  expect(mock.ping.mock.calls[0][0]).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-4/)
+ }finally{
+  if(descriptor)Object.defineProperty(globalThis.crypto,'randomUUID',descriptor)
+  else Reflect.deleteProperty(globalThis.crypto,'randomUUID')
+ }
+})
 it('reports the whole app, stops hidden heartbeats and sends ordered away/close transitions',async()=>{
  const view=render(<PresenceReporter/>)
  const id=mock.ping.mock.calls[0][0]

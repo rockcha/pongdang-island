@@ -18,6 +18,12 @@ const trip={boat_id:'raft-1',id:'voyage1',vessel_id:vessel.id,vessel_snapshot:ve
 beforeEach(()=>{mock.load.mockResolvedValue(base);mock.refresh.mockResolvedValue(undefined)})
 afterEach(()=>{cleanup();localStorage.clear();vi.resetAllMocks();vi.useRealTimers()})
 function show(shipyard=false){return render(<MemoryRouter><PortPage shipyard={shipyard}/></MemoryRouter>)}
+it('opens the specific dock slot linked from the island without dispatching a boat',async()=>{
+ render(<MemoryRouter initialEntries={['/port?slot=2']}><PortPage/></MemoryRouter>)
+ const dialog=await screen.findByRole('dialog')
+ expect(dialog.textContent).toContain('너울 낚싯배')
+ expect(mock.action).not.toHaveBeenCalled()
+})
 it.each([{seconds:10,refund:true,label:'출항 취소 · 연료 반환',confirm:'출항 취소'},{seconds:40,refund:false,label:'긴급 귀항',confirm:'귀항시키기'}])('confirms cancellation at $seconds seconds with the exact refund quote',async scenario=>{
  mock.load.mockResolvedValue({...base,serverNow:`2026-10-19T10:00:${scenario.seconds}Z`,voyages:[trip]})
  mock.action.mockResolvedValue({...base,receipt:{action:'cancel',refundedFuel:scenario.refund?1:0}})

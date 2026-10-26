@@ -12,7 +12,7 @@ begin
  on conflict(user_id) do update set gold=1000000,inventory=excluded.inventory;
  insert into public.player_navigation(user_id,region_id) values(u,'pongdang') on conflict(user_id) do update set region_id='pongdang';
  insert into app_private.player_fishing_relics(user_id,relic_id) select u,id from public.fishing_relics;
- for r in select * from public.fishing_relics order by effect_kind,effect_value loop
+ for r in select * from public.fishing_relics where enabled order by effect_kind,effect_value loop
   set local role authenticated;
   state:=public.equip_relic(r.id,gen_random_uuid(),0);
   if state->>'equippedId'<>r.id then raise exception 'EQUIP_FAILED %',r.id;end if;

@@ -21,7 +21,7 @@ beforeEach(async()=>{
 })
 afterEach(async()=>{await db.exec('rollback;reset role')})
 it('registers catalog relics and equips for free and charges only removal once, including replacement',async()=>{
- expect((await user('select public.relic_state() s')).relics).toHaveLength(catalog.fishing_relics.length)
+ expect((await user('select public.relic_state() s')).relics).toHaveLength(catalog.fishing_relics.filter(r=>r.enabled).length)
  const op=crypto.randomUUID();await equip('shell-hourglass',op);expect(await gold()).toBe(1000000)
  await equip('shell-hourglass',op);expect(await gold()).toBe(1000000)
  await reject(()=>equip('eternal-water-clock',op),'OPERATION_CONFLICT')
@@ -56,13 +56,13 @@ it('keeps fractional trap reductions and the saved departure duration after uneq
 })
 it('discounts the boat purchase and bases resale on actual payment after loadout changes',async()=>{
  const vessel=(await db.query('select id,price from public.harbor_vessels where price>=1000 order by price limit 1')).rows[0]
- await equip('sea-king-shipwright-edict')
- expect((await user('select public.harbor_state() s')).vessels.find(v=>v.id===vessel.id).price).toBe(vessel.price-400)
+ await equip('old-captain-seal')
+ expect((await user('select public.harbor_state() s')).vessels.find(v=>v.id===vessel.id).price).toBe(vessel.price-50)
  const purchase=await user("select public.harbor_action('buy',$1,$2) s",[crypto.randomUUID(),vessel.id])
  const boat=purchase.boats.find(b=>b.vessel_id===vessel.id)
  await equip(null)
  const sale=await user("select public.harbor_action('sell',$1,null,null,1,$2) s",[crypto.randomUUID(),boat.id])
- expect(sale.receipt.gold).toBe(Math.floor((vessel.price-400)/2))
+ expect(sale.receipt.gold).toBe(Math.floor((vessel.price-50)/2))
 })
 it('subtracts half a second from new fishing waits without changing pending casts',async()=>{
  const prepare=async()=>user("select public.prepare_fishing('pongdang','bait',$1,false) s",[crypto.randomUUID()])

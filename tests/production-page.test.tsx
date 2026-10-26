@@ -9,6 +9,14 @@ vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>'/test/'
 const make=()=>({serverNow:new Date().toISOString(),gold:10000,fuel:3,facilities:catalog.production_facilities.map(f=>({...f,owned:false,startedAt:null,completesAt:null,expiresAt:null,runOutput:null}))})
 beforeEach(()=>{mock.load.mockReset().mockResolvedValue(make());mock.materials.mockReset().mockResolvedValue([{id:'wood',name:'폐목재',thumbnail_path:'wood.png',rarity:'common',sell_price:2,available:10}]);mock.action.mockReset().mockResolvedValue(make())})
 afterEach(cleanup)
+it('opens the exact owned facility linked from the island without starting production',async()=>{
+ const data=make(),facility={...data.facilities[0],owned:true,siteId:'island-fuel-site'}
+ mock.load.mockResolvedValue({...data,sites:[facility]})
+ render(<MemoryRouter initialEntries={['/production?site=island-fuel-site']}><ProductionPage/></MemoryRouter>)
+ const dialog=await screen.findByRole('dialog')
+ expect(dialog.textContent).toContain(facility.name)
+ expect(mock.action).not.toHaveBeenCalled()
+})
 it('allows another purchase even when four facilities are already owned',async()=>{
  const data=make();Object.assign(data.facilities.find(f=>f.id==='tin-grandpa-hearth')!,{owned:true,ownedCount:4});mock.load.mockResolvedValue(data)
  render(<MemoryRouter><ProductionPage shop/></MemoryRouter>)

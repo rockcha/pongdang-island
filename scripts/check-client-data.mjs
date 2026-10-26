@@ -6,6 +6,8 @@ import { pathToFileURL } from 'node:url'
 // This ratchet covers RPC placement, not the semantic correctness of query keys
 // or responses. Existing exceptions are fingerprinted: editing one requires migration.
 export function inspectSource(file, text) {
+  // JSX text retains source newlines; checkout line endings are not behavior changes.
+  text = text.replace(/\r\n?/g, '\n')
   const source = ts.createSourceFile(file, text, ts.ScriptTarget.Latest, true)
   const violations = new Map()
   function visit(node) {

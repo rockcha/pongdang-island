@@ -35,6 +35,14 @@ afterEach(() => {
   cleanup()
   vi.clearAllMocks()
 })
+it('opens the exact bait site linked from the island without starting it',async()=>{
+ const state={serverNow:new Date().toISOString(),gold:10000,fuel:20,facilities:[site],sites:[{...site,siteId:'island-bait-site'}]}
+ mock.load.mockResolvedValue(state)
+ render(<MemoryRouter initialEntries={['/bait-production?site=island-bait-site']}><BaitProductionPage/></MemoryRouter>)
+ const dialog=await screen.findByRole('dialog')
+ expect(dialog.textContent).toContain(site.name)
+ expect(mock.act).not.toHaveBeenCalled()
+})
 it('starts an idle site with one tap and prevents duplicate starts',async()=>{
  const state={serverNow:new Date().toISOString(),gold:10000,fuel:20,facilities:[site],sites:[{...site,siteId:'idle'}]}
  mock.load.mockResolvedValue(state)

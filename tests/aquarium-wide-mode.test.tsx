@@ -45,6 +45,16 @@ it('does not trap a portrait Fold viewport when the screen reports stale landsca
  vi.stubGlobal('innerWidth',844);vi.stubGlobal('innerHeight',390);fireEvent(window,new Event('resize'))
  fireEvent.click(screen.getByRole('button',{name:'계속하기'}));expect(screen.queryByText('계속하기')).toBeNull()
 })
+it('allows the island to stay in mobile landscape and restores the notice elsewhere',()=>{
+ const unlock=vi.fn()
+ vi.stubGlobal('matchMedia',()=>({matches:true}));vi.stubGlobal('screen',{orientation:{type:'landscape-primary',unlock}})
+ vi.stubGlobal('innerWidth',844);vi.stubGlobal('innerHeight',390)
+ const view=render(<PortraitOrientation allowLandscape/> )
+ expect(screen.queryByText('세로 화면을 권장해요')).toBeNull()
+ expect(unlock).toHaveBeenCalled()
+ view.rerender(<PortraitOrientation/>)
+ expect(screen.getByText('세로 화면을 권장해요')).toBeTruthy()
+})
 
 it('releases a landscape lock that finishes after the user has already exited',async()=>{
  vi.stubGlobal('matchMedia',()=>({matches:true}))

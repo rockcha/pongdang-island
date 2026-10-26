@@ -1,0 +1,134 @@
+[
+  {
+    "id": "plunder-bloodsail",
+    "aliases": [
+      "plunder-bloodsail",
+      "plunder-bloodsail_swim8_v1"
+    ],
+    "cell": 444,
+    "scale": 1.2174509803921567,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        5,
+        0
+      ],
+      [
+        8,
+        0
+      ],
+      [
+        -14,
+        0
+      ],
+      [
+        2,
+        -28
+      ],
+      [
+        3,
+        -34
+      ],
+      [
+        5,
+        -27
+      ],
+      [
+        -11,
+        -28
+      ]
+    ],
+    "assetVersion": 1
+  },
+  {
+    "id": "plunder-barca",
+    "aliases": [
+      "plunder-barca",
+      "plunder-barca_swim8_v1"
+    ],
+    "cell": 444,
+    "scale": 1.2254605263157894,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        4,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        -4
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        -1
+      ]
+    ],
+    "assetVersion": 1
+  },
+  {
+    "id": "plunder-morgar",
+    "aliases": [
+      "plunder-morgar",
+      "plunder-morgar_swim8_v1"
+    ],
+    "cell": 444,
+    "scale": 1.2671428571428571,
+    "shifts": [
+      [
+        0,
+        0
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        6,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        9,
+        -61
+      ],
+      [
+        -14,
+        -53
+      ],
+      [
+        11,
+        -58
+      ],
+      [
+        10,
+        -58
+      ]
+    ],
+    "assetVersion": 1
+  }
+]

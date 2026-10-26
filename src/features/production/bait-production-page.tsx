@@ -1,6 +1,6 @@
 import {playPurchaseSound,playSaleSound} from '@/features/gold/purchase-sound'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router'
+import { Link,useSearchParams } from 'react-router'
 import {PersonalBaitWorkshopLink} from './personal-bait-workshop-page'
 import { ArrowRight, Info, LoaderCircle } from 'lucide-react'
 import { toast } from 'sonner'
@@ -76,6 +76,7 @@ function Details({ site }: { site: BaitFacility }) {
   )
 }
 export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
+  const [searchParams,setSearchParams]=useSearchParams()
   const [state, setState] = useState<BaitProductionState | null>(null),
     [error, setError] = useState(''),
     [busy, setBusy] = useState(false),
@@ -85,6 +86,13 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
     [selected, setSelected] = useState<BaitFacility | null>(null),
     [quantity, setQuantity] = useState(1)
   const [selling,setSelling]=useState(false)
+  useEffect(()=>{
+    const id=searchParams.get('site')
+    if(shop||!id||!state)return
+    const site=state.sites.find(s=>s.siteId===id)
+    if(site){setFilter('all');setSelected(site)}
+    const next=new URLSearchParams(searchParams);next.delete('site');setSearchParams(next,{replace:true})
+  },[searchParams,setSearchParams,state,shop])
   useEffect(()=>setSelling(false),[selected?.siteId,selected?.id])
   const offset = useRef(0),
     alive = useRef(true),

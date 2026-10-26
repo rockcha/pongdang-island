@@ -15,7 +15,8 @@ import mukhyangLayouts from './mukhyang-frame-layouts.json'
 import sirenLayouts from './siren-frame-layouts.json'
 import reviewedLayouts from './reviewed-frame-layouts.json'
 import halloweenLayouts from './halloween-frame-layouts.json'
-const registeredLayouts:Record<string,{cell:number;scale?:number;shifts:number[][]}>={...oceanCreatureLayouts,...nyamnyamLayouts,...dreamabyssLayouts,...sharedCreatureLayouts,...sharedCollectibleLayouts,...sharedExpansionLayouts,...commonFuelLayouts,...pongdangLayouts,...bluegroveLayouts,...primalLayouts,...whitenightLayouts,...cloudferryLayouts,...scrapisleLayouts,...mukhyangLayouts,...sirenLayouts,...halloweenLayouts}
+import plunderLayouts from './plunder-frame-layouts.json'
+const registeredLayouts:Record<string,{cell:number;scale?:number;shifts:number[][]}>={...plunderLayouts,...oceanCreatureLayouts,...nyamnyamLayouts,...dreamabyssLayouts,...sharedCreatureLayouts,...sharedCollectibleLayouts,...sharedExpansionLayouts,...commonFuelLayouts,...pongdangLayouts,...bluegroveLayouts,...primalLayouts,...whitenightLayouts,...cloudferryLayouts,...scrapisleLayouts,...mukhyangLayouts,...sirenLayouts,...halloweenLayouts}
 // Frame registration measured from each sheet's rigid head/body (or nautilus shell).
 // Coordinates are in a 96x96 sampling grid, relative to each frame's center.
 const layouts:Record<string,readonly (readonly [number,number,number])[]>={

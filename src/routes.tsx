@@ -57,6 +57,7 @@ const FriendsPage=lazy(()=>import('@/features/friends/friends-page').then(module
 const FriendAquariumPage=lazy(()=>import('@/features/friends/friend-aquarium-page').then(module=>({default:module.FriendAquariumPage})))
 const NotificationsPage=lazy(()=>import('@/features/notifications/notifications-page').then(module=>({default:module.NotificationsPage})))
 const ProfilePage=lazy(()=>import('@/features/profile/profile-page').then(module=>({default:module.ProfilePage})))
+const MyIslandPage=lazy(()=>import('@/features/my-island/my-island-coming-soon').then(module=>({default:module.MyIslandPage})))
 const AquariumPage=lazy(()=>import('@/pages/aquarium-page').then(module=>({default:module.AquariumPage})))
 const HarborPage=lazy(()=>import('@/pages/harbor-page').then(module=>({default:module.HarborPage})))
 const FarmPage=lazy(()=>import('@/pages/farm-page').then(module=>({default:module.FarmPage})))
@@ -81,6 +82,7 @@ export function AppRoutes() {
             <Route index element={<Navigate to="/aquarium" replace />} />
             <Route path="island-news" element={<HomePage />} />
             <Route path="development-fund" element={<div className="flex min-h-0 flex-1 flex-col overflow-hidden"><DevelopmentFund/></div>} />
+            <Route path="my-island" element={<MyIslandPage />} />
             <Route path="aquarium/:tankId?" element={<AquariumPage />} />
             <Route path="collection" element={<CollectionPage />} />
             <Route path="storage" element={<StoragePage />} />

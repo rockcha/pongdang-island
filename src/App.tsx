@@ -12,8 +12,10 @@ import {PushAccountSync} from '@/features/notifications/push-account-sync'
 import {PresenceReporter} from '@/features/friends/presence-reporter'
 import {useEffect} from 'react'
 import {installGameAudioLifecycle} from '@/features/fishing/game-audio'
+import {useLocation} from 'react-router'
 
 export default function App() {
+  const {pathname}=useLocation()
   useEffect(installGameAudioLifecycle,[])
   const {session}=useAuth()
   const musicKey=`pongdang:music:${session?.user.id??'guest'}`
@@ -23,7 +25,7 @@ export default function App() {
       <PresenceReporter/>
       <MusicProvider key={musicKey} storageKey={musicKey} userId={session?.user.id}><SocialProvider><GoldProvider><ExperienceProvider><RodProvider><AppRoutes /></RodProvider></ExperienceProvider></GoldProvider><PwaStatus /></SocialProvider></MusicProvider>
       <Toaster position="top-center" duration={3000} />
-      <PortraitOrientation />
+      <PortraitOrientation allowLandscape={/^\/my-island\/?$/.test(pathname)} />
     </>
   )
 }

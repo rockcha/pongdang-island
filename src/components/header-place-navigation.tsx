@@ -30,6 +30,7 @@ const {
 } = appArt
 
 export const headerPlaces = [
+  { to: '/my-island', label: '나의 퐁당섬', icon: appArt.island },
   { to: '/profile', label: '내 정보', icon: appArt.profile },
   { to: '/square/notices', label: '공지', icon: appArt.notices },
   { to: '/port', label: '어선 파견', icon: appArt.port },
@@ -71,6 +72,7 @@ export const headerPlaces = [
 ]
 
 export const menuIcons:Record<string,typeof House>={
+ '/my-island':House,
  '/profile':UserRound,'/aquarium':Fish,'/music-room':AudioLines,'/decoration-shop':Shapes,
  '/harbor':MapOutline,'/fishing':FishingRod,'/expeditions':ShoppingBasket,'/shop':FishingRod,'/item-shop':ShoppingBag,
  '/port':Anchor,'/shipyard':ShipOutline,'/production':Flame,'/bait-production':Factory,'/my-bait-production':FlaskConical,'/farm':Sprout,'/production-shop':Factory,'/bait-production-shop':ShoppingBag,
@@ -93,7 +95,7 @@ export function HeaderPlaceNavigation() {
     (to==='/square/bugs'&&newContent.bugs)||
     (to==='/exchange'&&newContent.exchange)
   const groups = [
-    {label:'내 섬',icon:House,sections:[{label:'나의 공간',paths:['/aquarium','/profile']},{label:'꾸미기',paths:['/decoration-shop']},{label:'쉬어가기',paths:['/music-room','/arcade']}]},
+    {label:'내 섬',icon:House,sections:[{label:'나의 공간',paths:['/my-island','/aquarium','/profile']},{label:'꾸미기',paths:['/decoration-shop']},{label:'쉬어가기',paths:['/music-room','/arcade']}]},
     {label:'낚시',icon:FishingRod,sections:[{label:'직접 낚시',paths:['/harbor','/fishing']},{label:'자동 낚시',paths:['/expeditions','/port']},{label:'낚시 준비',paths:['/shop','/item-shop','/shipyard']}]},
     {label:'생산',icon:Factory,sections:[{label:'가동·재배',paths:['/production','/bait-production','/my-bait-production','/farm']},{label:'시설 구매',paths:['/production-shop','/bait-production-shop']}]},
     {label:'장터',icon:MarketIcon,sections:[{label:'거래·의뢰',paths:['/exchange','/merchant-orders']},{label:'골드 관리',paths:['/savings']}]},
@@ -102,7 +104,7 @@ export function HeaderPlaceNavigation() {
     {label:'광장',icon:TradeIcon,sections:[{label:'교류',paths:['/friends','/board','/showcase']},{label:'명예로운 기록',paths:['/hall-of-fame']},{label:'함께하는 섬',paths:['/development-fund','/square/sponsorship','/square/begging']}]},
   ]
   return (
-    <nav aria-label="장소 바로가기" className="grid w-[196px] shrink-0 grid-cols-7 gap-0 sm:w-[224px]">
+    <nav aria-label="장소 바로가기" className="grid w-[224px] shrink-0 grid-cols-7 gap-1 sm:w-[252px]">
       {groups.map((group) => {
         const items = group.sections.flatMap(section=>section.paths)
           .filter((path) => path !== '/collection-animation' || operator)
@@ -119,7 +121,7 @@ export function HeaderPlaceNavigation() {
               title={group.label}
               aria-current={selected?'location':undefined}
               aria-description={hasActivity?'새 소식 또는 확인할 항목이 있어요':undefined}
-              className={`relative flex h-11 min-w-0 items-center justify-center rounded-lg px-0 py-1 outline-none transition-colors hover:bg-secondary/60 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${selected?'bg-primary/10 text-primary after:absolute after:bottom-0 after:h-0.5 after:w-4 after:rounded-full after:bg-primary':'text-muted-foreground'}`}
+              className={`relative flex h-11 min-w-0 items-center justify-center rounded-lg px-1 py-2 outline-none transition-colors hover:bg-secondary/60 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${selected?'bg-primary/10 text-primary after:absolute after:bottom-0 after:h-0.5 after:w-4 after:rounded-full after:bg-primary':'text-muted-foreground'}`}
             >
               <CategoryIcon aria-hidden="true" className="size-5 shrink-0" strokeWidth={1.7}/>
               <span className="sr-only">{group.label}</span>

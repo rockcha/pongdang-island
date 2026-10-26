@@ -1,3 +1,4 @@
+import {randomId} from '@/lib/random-id'
 import {useEffect} from 'react'
 import {getNickname,useAuth} from '@/components/auth-provider'
 import {pingPlayerPresence} from './presence-api'
@@ -8,7 +9,7 @@ export function PresenceReporter(){
  const owner=!recovery&&getNickname(session)?session?.user.id:undefined
  useEffect(()=>{
   if(!owner)return
-  const sessionId=crypto.randomUUID()
+  const sessionId=randomId()
   let revision=0,lastState:PresenceStatus|undefined,lastSent=0
   const send=(state:PresenceStatus,force=false)=>{
    if(!force&&state===lastState&&Date.now()-lastSent<25000)return

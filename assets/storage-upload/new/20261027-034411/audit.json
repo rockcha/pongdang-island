@@ -1,0 +1,3223 @@
+{
+  "results": [
+    {
+      "id": "plunder-rum-barrel-puffer",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-rum-barrel-puffer-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            73,
+            239,
+            1128,
+            804
+          ],
+          "margin": 53,
+          "occupancy": 0.8995215311004785,
+          "opaque": 608035,
+          "transparent": 955202,
+          "soft": 615897
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-rum-barrel-puffer",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-rum-barrel-puffer-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            170,
+            225,
+            335,
+            232
+          ],
+          "margin": 122,
+          "occupancy": 0.5342902711323764,
+          "opaque": 52656,
+          "transparent": 334665,
+          "soft": 58325
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            149,
+            224,
+            319,
+            235
+          ],
+          "margin": 149,
+          "occupancy": 0.5087719298245614,
+          "opaque": 52076,
+          "transparent": 334889,
+          "soft": 58160
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            180,
+            163,
+            322,
+            234
+          ],
+          "margin": 125,
+          "occupancy": 0.5135566188197768,
+          "opaque": 50781,
+          "transparent": 336311,
+          "soft": 56683
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            128,
+            163,
+            340,
+            234
+          ],
+          "margin": 128,
+          "occupancy": 0.5422647527910686,
+          "opaque": 52415,
+          "transparent": 334328,
+          "soft": 58678
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-rope-tail-pipefish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-rope-tail-pipefish-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            26,
+            370,
+            1213,
+            538
+          ],
+          "margin": 15,
+          "occupancy": 0.967304625199362,
+          "opaque": 182995,
+          "transparent": 1380635,
+          "soft": 191345
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-rope-tail-pipefish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-rope-tail-pipefish-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            56,
+            213,
+            546,
+            258
+          ],
+          "margin": 25,
+          "occupancy": 0.8708133971291866,
+          "opaque": 40894,
+          "transparent": 345201,
+          "soft": 47457
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            41,
+            214,
+            561,
+            248
+          ],
+          "margin": 25,
+          "occupancy": 0.8947368421052632,
+          "opaque": 41552,
+          "transparent": 345782,
+          "soft": 46915
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            60,
+            210,
+            542,
+            240
+          ],
+          "margin": 25,
+          "occupancy": 0.8644338118022329,
+          "opaque": 39585,
+          "transparent": 346468,
+          "soft": 46214
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            53,
+            213,
+            549,
+            235
+          ],
+          "margin": 25,
+          "occupancy": 0.8755980861244019,
+          "opaque": 40069,
+          "transparent": 346253,
+          "soft": 46394
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-deck-cleaner-shrimp",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-deck-cleaner-shrimp-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            15,
+            173,
+            1224,
+            908
+          ],
+          "margin": 15,
+          "occupancy": 0.9760765550239234,
+          "opaque": 377984,
+          "transparent": 1162908,
+          "soft": 407553
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-deck-cleaner-shrimp",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-deck-cleaner-shrimp-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            39,
+            157,
+            582,
+            420
+          ],
+          "margin": 6,
+          "occupancy": 0.9282296650717703,
+          "opaque": 88105,
+          "transparent": 288009,
+          "soft": 104628
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            33,
+            157,
+            567,
+            423
+          ],
+          "margin": 27,
+          "occupancy": 0.9043062200956937,
+          "opaque": 85162,
+          "transparent": 290904,
+          "soft": 101815
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            40,
+            113,
+            582,
+            425
+          ],
+          "margin": 5,
+          "occupancy": 0.9282296650717703,
+          "opaque": 87591,
+          "transparent": 288249,
+          "soft": 104384
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            35,
+            113,
+            566,
+            413
+          ],
+          "margin": 26,
+          "occupancy": 0.9027113237639554,
+          "opaque": 87214,
+          "transparent": 288028,
+          "soft": 104649
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-lookout-goby",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-lookout-goby-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            49,
+            292,
+            1159,
+            690
+          ],
+          "margin": 46,
+          "occupancy": 0.9242424242424242,
+          "opaque": 467941,
+          "transparent": 1094869,
+          "soft": 476168
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-lookout-goby",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-lookout-goby-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            59,
+            196,
+            533,
+            314
+          ],
+          "margin": 35,
+          "occupancy": 0.8500797448165869,
+          "opaque": 97458,
+          "transparent": 289173,
+          "soft": 103630
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            48,
+            196,
+            527,
+            313
+          ],
+          "margin": 48,
+          "occupancy": 0.8405103668261563,
+          "opaque": 96218,
+          "transparent": 290101,
+          "soft": 102657
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            69,
+            158,
+            524,
+            311
+          ],
+          "margin": 34,
+          "occupancy": 0.835725677830941,
+          "opaque": 95165,
+          "transparent": 290529,
+          "soft": 102331
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            48,
+            158,
+            527,
+            312
+          ],
+          "margin": 48,
+          "occupancy": 0.8405103668261563,
+          "opaque": 96783,
+          "transparent": 288499,
+          "soft": 104281
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-smuggler-pouch-puffer",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-smuggler-pouch-puffer-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            39,
+            252,
+            1184,
+            790
+          ],
+          "margin": 31,
+          "occupancy": 0.9441786283891547,
+          "opaque": 608346,
+          "transparent": 954774,
+          "soft": 616495
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-smuggler-pouch-puffer",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-smuggler-pouch-puffer-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            51,
+            181,
+            573,
+            361
+          ],
+          "margin": 3,
+          "occupancy": 0.9138755980861244,
+          "opaque": 132753,
+          "transparent": 251915,
+          "soft": 140919
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            79,
+            180,
+            538,
+            362
+          ],
+          "margin": 10,
+          "occupancy": 0.8580542264752791,
+          "opaque": 126878,
+          "transparent": 260349,
+          "soft": 132399
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            40,
+            96,
+            584,
+            370
+          ],
+          "margin": 3,
+          "occupancy": 0.9314194577352473,
+          "opaque": 138039,
+          "transparent": 246611,
+          "soft": 146219
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            67,
+            105,
+            550,
+            362
+          ],
+          "margin": 10,
+          "occupancy": 0.8771929824561403,
+          "opaque": 127466,
+          "transparent": 257900,
+          "soft": 134980
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-wanted-bandit-crab",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-wanted-bandit-crab-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            18,
+            254,
+            1226,
+            747
+          ],
+          "margin": 10,
+          "occupancy": 0.9776714513556619,
+          "opaque": 501463,
+          "transparent": 1055925,
+          "soft": 514858
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-wanted-bandit-crab",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-wanted-bandit-crab-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            154,
+            232,
+            393,
+            248
+          ],
+          "margin": 80,
+          "occupancy": 0.6267942583732058,
+          "opaque": 53194,
+          "transparent": 323856,
+          "soft": 69071
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            108,
+            232,
+            381,
+            249
+          ],
+          "margin": 108,
+          "occupancy": 0.6076555023923444,
+          "opaque": 51970,
+          "transparent": 327209,
+          "soft": 65793
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            137,
+            154,
+            410,
+            240
+          ],
+          "margin": 80,
+          "occupancy": 0.6539074960127592,
+          "opaque": 51503,
+          "transparent": 324954,
+          "soft": 67892
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            109,
+            154,
+            387,
+            248
+          ],
+          "margin": 109,
+          "occupancy": 0.6172248803827751,
+          "opaque": 49884,
+          "transparent": 327705,
+          "soft": 65251
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-peg-leg-crab",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-peg-leg-crab-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            40,
+            290,
+            1200,
+            729
+          ],
+          "margin": 14,
+          "occupancy": 0.9569377990430622,
+          "opaque": 448589,
+          "transparent": 1111933,
+          "soft": 458582
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-peg-leg-crab",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-peg-leg-crab-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            15,
+            171,
+            608,
+            381
+          ],
+          "margin": 4,
+          "occupancy": 0.9696969696969697,
+          "opaque": 121868,
+          "transparent": 256009,
+          "soft": 136823
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            31,
+            171,
+            585,
+            392
+          ],
+          "margin": 11,
+          "occupancy": 0.9330143540669856,
+          "opaque": 117989,
+          "transparent": 263666,
+          "soft": 129222
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            26,
+            133,
+            594,
+            377
+          ],
+          "margin": 7,
+          "occupancy": 0.9473684210526315,
+          "opaque": 116065,
+          "transparent": 260510,
+          "soft": 132397
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            9,
+            133,
+            609,
+            380
+          ],
+          "margin": 9,
+          "occupancy": 0.9712918660287081,
+          "opaque": 120517,
+          "transparent": 258356,
+          "soft": 134516
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-jewel-appraiser-shrimp",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-jewel-appraiser-shrimp-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            22,
+            170,
+            1213,
+            908
+          ],
+          "margin": 19,
+          "occupancy": 0.967304625199362,
+          "opaque": 446586,
+          "transparent": 1100903,
+          "soft": 470077
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-jewel-appraiser-shrimp",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-jewel-appraiser-shrimp-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            140,
+            213,
+            402,
+            297
+          ],
+          "margin": 85,
+          "occupancy": 0.6411483253588517,
+          "opaque": 54081,
+          "transparent": 325894,
+          "soft": 67093
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            117,
+            213,
+            406,
+            298
+          ],
+          "margin": 104,
+          "occupancy": 0.6475279106858054,
+          "opaque": 54485,
+          "transparent": 320561,
+          "soft": 72414
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            144,
+            132,
+            402,
+            293
+          ],
+          "margin": 81,
+          "occupancy": 0.6411483253588517,
+          "opaque": 53538,
+          "transparent": 323885,
+          "soft": 69089
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            118,
+            132,
+            408,
+            298
+          ],
+          "margin": 101,
+          "occupancy": 0.6507177033492823,
+          "opaque": 54057,
+          "transparent": 318272,
+          "soft": 74647
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-one-eyed-carp",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-one-eyed-carp-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            59,
+            206,
+            1130,
+            835
+          ],
+          "margin": 59,
+          "occupancy": 0.9011164274322169,
+          "opaque": 555032,
+          "transparent": 1008803,
+          "soft": 562158
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-one-eyed-carp",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-one-eyed-carp-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            60,
+            146,
+            535,
+            381
+          ],
+          "margin": 32,
+          "occupancy": 0.8532695374800638,
+          "opaque": 120058,
+          "transparent": 265242,
+          "soft": 127515
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            40,
+            145,
+            553,
+            363
+          ],
+          "margin": 34,
+          "occupancy": 0.8819776714513556,
+          "opaque": 113218,
+          "transparent": 270983,
+          "soft": 121875
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            42,
+            119,
+            552,
+            378
+          ],
+          "margin": 33,
+          "occupancy": 0.8803827751196173,
+          "opaque": 121128,
+          "transparent": 262722,
+          "soft": 130082
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            57,
+            118,
+            537,
+            382
+          ],
+          "margin": 33,
+          "occupancy": 0.8564593301435407,
+          "opaque": 117919,
+          "transparent": 264922,
+          "soft": 127916
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-bandana-octopus",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-bandana-octopus-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            87,
+            179,
+            1108,
+            938
+          ],
+          "margin": 59,
+          "occupancy": 0.8835725677830941,
+          "opaque": 694641,
+          "transparent": 864320,
+          "soft": 706412
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-bandana-octopus",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-bandana-octopus-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            58,
+            144,
+            555,
+            438
+          ],
+          "margin": 14,
+          "occupancy": 0.8851674641148325,
+          "opaque": 159332,
+          "transparent": 219458,
+          "soft": 172824
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            64,
+            144,
+            533,
+            442
+          ],
+          "margin": 30,
+          "occupancy": 0.8500797448165869,
+          "opaque": 155282,
+          "transparent": 227704,
+          "soft": 164574
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            63,
+            103,
+            535,
+            440
+          ],
+          "margin": 29,
+          "occupancy": 0.8532695374800638,
+          "opaque": 155113,
+          "transparent": 220434,
+          "soft": 171700
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            66,
+            103,
+            532,
+            431
+          ],
+          "margin": 29,
+          "occupancy": 0.8484848484848485,
+          "opaque": 153422,
+          "transparent": 224604,
+          "soft": 167662
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-striped-piratefish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-striped-piratefish-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            47,
+            158,
+            1171,
+            919
+          ],
+          "margin": 36,
+          "occupancy": 0.9338118022328549,
+          "opaque": 679720,
+          "transparent": 883206,
+          "soft": 687617
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-striped-piratefish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-striped-piratefish-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            43,
+            128,
+            563,
+            414
+          ],
+          "margin": 21,
+          "occupancy": 0.89792663476874,
+          "opaque": 144249,
+          "transparent": 240709,
+          "soft": 152000
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            41,
+            129,
+            553,
+            411
+          ],
+          "margin": 33,
+          "occupancy": 0.8819776714513556,
+          "opaque": 138251,
+          "transparent": 244816,
+          "soft": 147813
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            67,
+            95,
+            538,
+            411
+          ],
+          "margin": 22,
+          "occupancy": 0.8580542264752791,
+          "opaque": 136548,
+          "transparent": 247267,
+          "soft": 145488
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            40,
+            93,
+            554,
+            413
+          ],
+          "margin": 33,
+          "occupancy": 0.8835725677830941,
+          "opaque": 143706,
+          "transparent": 240762,
+          "soft": 151945
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-triangle-sail-jelly",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-triangle-sail-jelly-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            43,
+            143,
+            1208,
+            999
+          ],
+          "margin": 3,
+          "occupancy": 0.9633173843700159,
+          "opaque": 537527,
+          "transparent": 1008932,
+          "soft": 561321
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-triangle-sail-jelly",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-triangle-sail-jelly-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            52,
+            144,
+            551,
+            436
+          ],
+          "margin": 24,
+          "occupancy": 0.8787878787878788,
+          "opaque": 111455,
+          "transparent": 255174,
+          "soft": 137214
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            51,
+            142,
+            547,
+            431
+          ],
+          "margin": 29,
+          "occupancy": 0.8724082934609251,
+          "opaque": 113883,
+          "transparent": 255650,
+          "soft": 136753
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            73,
+            82,
+            525,
+            428
+          ],
+          "margin": 29,
+          "occupancy": 0.8373205741626795,
+          "opaque": 106995,
+          "transparent": 250035,
+          "soft": 142404
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            49,
+            80,
+            549,
+            432
+          ],
+          "margin": 29,
+          "occupancy": 0.8755980861244019,
+          "opaque": 110306,
+          "transparent": 250144,
+          "soft": 142284
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-sailor-sock-moray",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-sailor-sock-moray-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            23,
+            349,
+            1220,
+            641
+          ],
+          "margin": 11,
+          "occupancy": 0.9728867623604466,
+          "opaque": 408369,
+          "transparent": 1156893,
+          "soft": 414355
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-sailor-sock-moray",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-sailor-sock-moray-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            57,
+            221,
+            565,
+            301
+          ],
+          "margin": 5,
+          "occupancy": 0.9011164274322169,
+          "opaque": 89472,
+          "transparent": 299115,
+          "soft": 93437
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            21,
+            220,
+            581,
+            302
+          ],
+          "margin": 21,
+          "occupancy": 0.9266347687400319,
+          "opaque": 86957,
+          "transparent": 301750,
+          "soft": 90785
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            41,
+            159,
+            582,
+            289
+          ],
+          "margin": 4,
+          "occupancy": 0.9282296650717703,
+          "opaque": 83972,
+          "transparent": 303943,
+          "soft": 88787
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            27,
+            141,
+            575,
+            313
+          ],
+          "margin": 25,
+          "occupancy": 0.9170653907496013,
+          "opaque": 89749,
+          "transparent": 297962,
+          "soft": 94680
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-cannon-ink-squid",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-cannon-ink-squid-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            55,
+            183,
+            1158,
+            896
+          ],
+          "margin": 41,
+          "occupancy": 0.9234449760765551,
+          "opaque": 572687,
+          "transparent": 987075,
+          "soft": 583480
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-cannon-ink-squid",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-cannon-ink-squid-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            67,
+            149,
+            537,
+            400
+          ],
+          "margin": 23,
+          "occupancy": 0.8564593301435407,
+          "opaque": 118846,
+          "transparent": 254925,
+          "soft": 138056
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            64,
+            144,
+            538,
+            405
+          ],
+          "margin": 25,
+          "occupancy": 0.8580542264752791,
+          "opaque": 119024,
+          "transparent": 253645,
+          "soft": 139298
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            54,
+            119,
+            549,
+            402
+          ],
+          "margin": 24,
+          "occupancy": 0.8755980861244019,
+          "opaque": 118350,
+          "transparent": 259773,
+          "soft": 133208
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            57,
+            119,
+            544,
+            402
+          ],
+          "margin": 26,
+          "occupancy": 0.8676236044657097,
+          "opaque": 117714,
+          "transparent": 260927,
+          "soft": 132070
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-tattered-chart-ray",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-tattered-chart-ray-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            14,
+            277,
+            1227,
+            721
+          ],
+          "margin": 13,
+          "occupancy": 0.9784688995215312,
+          "opaque": 415728,
+          "transparent": 1148967,
+          "soft": 422361
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-tattered-chart-ray",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-tattered-chart-ray-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            51,
+            201,
+            560,
+            324
+          ],
+          "margin": 16,
+          "occupancy": 0.8931419457735247,
+          "opaque": 86501,
+          "transparent": 301792,
+          "soft": 90790
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            65,
+            160,
+            521,
+            371
+          ],
+          "margin": 41,
+          "occupancy": 0.8309409888357256,
+          "opaque": 87603,
+          "transparent": 300661,
+          "soft": 91908
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            41,
+            200,
+            570,
+            277
+          ],
+          "margin": 16,
+          "occupancy": 0.9090909090909091,
+          "opaque": 78854,
+          "transparent": 309355,
+          "soft": 83429
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            29,
+            142,
+            558,
+            326
+          ],
+          "margin": 29,
+          "occupancy": 0.8899521531100478,
+          "opaque": 85167,
+          "transparent": 303278,
+          "soft": 89382
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-smuggler-vault-turtle",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-smuggler-vault-turtle-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            35,
+            282,
+            1181,
+            720
+          ],
+          "margin": 35,
+          "occupancy": 0.9417862838915471,
+          "opaque": 515602,
+          "transparent": 1048091,
+          "soft": 522815
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-smuggler-vault-turtle",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-smuggler-vault-turtle-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            56,
+            202,
+            539,
+            316
+          ],
+          "margin": 32,
+          "occupancy": 0.8596491228070176,
+          "opaque": 102112,
+          "transparent": 284388,
+          "soft": 108492
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            60,
+            202,
+            535,
+            307
+          ],
+          "margin": 32,
+          "occupancy": 0.8532695374800638,
+          "opaque": 101625,
+          "transparent": 285237,
+          "soft": 107662
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            50,
+            176,
+            549,
+            303
+          ],
+          "margin": 28,
+          "occupancy": 0.8755980861244019,
+          "opaque": 101865,
+          "transparent": 283031,
+          "soft": 109904
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            53,
+            176,
+            542,
+            312
+          ],
+          "margin": 32,
+          "occupancy": 0.8644338118022329,
+          "opaque": 102082,
+          "transparent": 282796,
+          "soft": 110132
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-twin-pistol-shrimp",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-twin-pistol-shrimp-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            19,
+            215,
+            1219,
+            827
+          ],
+          "margin": 16,
+          "occupancy": 0.9720893141945773,
+          "opaque": 414956,
+          "transparent": 1129944,
+          "soft": 440736
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-twin-pistol-shrimp",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-twin-pistol-shrimp-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            16,
+            163,
+            601,
+            397
+          ],
+          "margin": 10,
+          "occupancy": 0.9585326953748007,
+          "opaque": 101590,
+          "transparent": 276931,
+          "soft": 115350
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            13,
+            163,
+            604,
+            403
+          ],
+          "margin": 10,
+          "occupancy": 0.9633173843700159,
+          "opaque": 100877,
+          "transparent": 278625,
+          "soft": 113715
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            17,
+            136,
+            601,
+            387
+          ],
+          "margin": 9,
+          "occupancy": 0.9585326953748007,
+          "opaque": 100617,
+          "transparent": 277350,
+          "soft": 114952
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            12,
+            137,
+            605,
+            396
+          ],
+          "margin": 10,
+          "occupancy": 0.9649122807017544,
+          "opaque": 102476,
+          "transparent": 274748,
+          "soft": 117557
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-pirate-captain-horseshoe",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-pirate-captain-horseshoe-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            147,
+            426,
+            962,
+            470
+          ],
+          "margin": 145,
+          "occupancy": 0.7671451355661882,
+          "opaque": 164174,
+          "transparent": 1397360,
+          "soft": 174427
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-pirate-captain-horseshoe",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-pirate-captain-horseshoe-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            85,
+            241,
+            464,
+            216
+          ],
+          "margin": 78,
+          "occupancy": 0.7400318979266348,
+          "opaque": 39510,
+          "transparent": 336396,
+          "soft": 56499
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            83,
+            239,
+            449,
+            217
+          ],
+          "margin": 83,
+          "occupancy": 0.7161084529505582,
+          "opaque": 38787,
+          "transparent": 339446,
+          "soft": 53423
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            86,
+            222,
+            463,
+            215
+          ],
+          "margin": 78,
+          "occupancy": 0.7384370015948963,
+          "opaque": 38513,
+          "transparent": 342252,
+          "soft": 50687
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            83,
+            222,
+            449,
+            214
+          ],
+          "margin": 83,
+          "occupancy": 0.7161084529505582,
+          "opaque": 38410,
+          "transparent": 337982,
+          "soft": 54996
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-bounty-gold-puffer",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-bounty-gold-puffer-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            50,
+            189,
+            1169,
+            909
+          ],
+          "margin": 35,
+          "occupancy": 0.9322169059011164,
+          "opaque": 655704,
+          "transparent": 907195,
+          "soft": 664460
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-bounty-gold-puffer",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-bounty-gold-puffer-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            52,
+            121,
+            551,
+            429
+          ],
+          "margin": 24,
+          "occupancy": 0.8787878787878788,
+          "opaque": 145475,
+          "transparent": 237013,
+          "soft": 155866
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            37,
+            121,
+            562,
+            429
+          ],
+          "margin": 28,
+          "occupancy": 0.8963317384370016,
+          "opaque": 145309,
+          "transparent": 237016,
+          "soft": 155852
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            62,
+            87,
+            541,
+            428
+          ],
+          "margin": 24,
+          "occupancy": 0.8628389154704944,
+          "opaque": 141876,
+          "transparent": 241286,
+          "soft": 151607
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            45,
+            88,
+            555,
+            429
+          ],
+          "margin": 27,
+          "occupancy": 0.8851674641148325,
+          "opaque": 146577,
+          "transparent": 237390,
+          "soft": 155501
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-plunder-crown-urchin",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-plunder-crown-urchin-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            70,
+            165,
+            1126,
+            942
+          ],
+          "margin": 58,
+          "occupancy": 0.89792663476874,
+          "opaque": 649832,
+          "transparent": 911022,
+          "soft": 660060
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-plunder-crown-urchin",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-plunder-crown-urchin-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            41,
+            117,
+            530,
+            435
+          ],
+          "margin": 41,
+          "occupancy": 0.8452950558213717,
+          "opaque": 143545,
+          "transparent": 240025,
+          "soft": 152895
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            30,
+            117,
+            541,
+            438
+          ],
+          "margin": 30,
+          "occupancy": 0.8628389154704944,
+          "opaque": 143107,
+          "transparent": 241677,
+          "soft": 151236
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            29,
+            76,
+            542,
+            433
+          ],
+          "margin": 29,
+          "occupancy": 0.8644338118022329,
+          "opaque": 145237,
+          "transparent": 238518,
+          "soft": 154391
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            31,
+            78,
+            540,
+            437
+          ],
+          "margin": 31,
+          "occupancy": 0.861244019138756,
+          "opaque": 144869,
+          "transparent": 238643,
+          "soft": 154277
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-wreckback-turtle",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-wreckback-turtle-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            34,
+            128,
+            1201,
+            1009
+          ],
+          "margin": 19,
+          "occupancy": 0.9577352472089314,
+          "opaque": 557944,
+          "transparent": 942127,
+          "soft": 630309
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-wreckback-turtle",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-wreckback-turtle-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            114,
+            165,
+            433,
+            346
+          ],
+          "margin": 80,
+          "occupancy": 0.6905901116427432,
+          "opaque": 71533,
+          "transparent": 309575,
+          "soft": 83373
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            87,
+            165,
+            427,
+            370
+          ],
+          "margin": 87,
+          "occupancy": 0.6810207336523126,
+          "opaque": 71874,
+          "transparent": 308517,
+          "soft": 84456
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            117,
+            130,
+            424,
+            326
+          ],
+          "margin": 86,
+          "occupancy": 0.6762360446570973,
+          "opaque": 69237,
+          "transparent": 309636,
+          "soft": 83341
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            89,
+            129,
+            449,
+            336
+          ],
+          "margin": 89,
+          "occupancy": 0.7161084529505582,
+          "opaque": 69783,
+          "transparent": 310435,
+          "soft": 82532
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-twin-cannon-lobster",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-twin-cannon-lobster-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            15,
+            207,
+            1234,
+            866
+          ],
+          "margin": 5,
+          "occupancy": 0.9840510366826156,
+          "opaque": 429861,
+          "transparent": 1065414,
+          "soft": 506925
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-twin-cannon-lobster",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-twin-cannon-lobster-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            12,
+            126,
+            603,
+            427
+          ],
+          "margin": 12,
+          "occupancy": 0.9617224880382775,
+          "opaque": 106026,
+          "transparent": 259540,
+          "soft": 133439
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            10,
+            127,
+            605,
+            425
+          ],
+          "margin": 10,
+          "occupancy": 0.9649122807017544,
+          "opaque": 103015,
+          "transparent": 265901,
+          "soft": 127014
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            15,
+            104,
+            601,
+            426
+          ],
+          "margin": 11,
+          "occupancy": 0.9585326953748007,
+          "opaque": 103423,
+          "transparent": 262006,
+          "soft": 130931
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            16,
+            102,
+            599,
+            427
+          ],
+          "margin": 12,
+          "occupancy": 0.9553429027113237,
+          "opaque": 102179,
+          "transparent": 265099,
+          "soft": 127849
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-loot-king-hermit",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-loot-king-hermit-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            22,
+            98,
+            1221,
+            1061
+          ],
+          "margin": 11,
+          "occupancy": 0.9736842105263158,
+          "opaque": 629136,
+          "transparent": 883059,
+          "soft": 689344
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-loot-king-hermit",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-loot-king-hermit-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            143,
+            183,
+            406,
+            338
+          ],
+          "margin": 78,
+          "occupancy": 0.6475279106858054,
+          "opaque": 71068,
+          "transparent": 307583,
+          "soft": 85486
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            134,
+            182,
+            410,
+            339
+          ],
+          "margin": 83,
+          "occupancy": 0.6539074960127592,
+          "opaque": 71147,
+          "transparent": 306275,
+          "soft": 86778
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            142,
+            133,
+            416,
+            334
+          ],
+          "margin": 69,
+          "occupancy": 0.6634768740031898,
+          "opaque": 67869,
+          "transparent": 311020,
+          "soft": 82037
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            134,
+            133,
+            415,
+            329
+          ],
+          "margin": 78,
+          "occupancy": 0.6618819776714514,
+          "opaque": 67707,
+          "transparent": 311685,
+          "soft": 81345
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-anchor-whisker-sealion",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-anchor-whisker-sealion-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            6,
+            247,
+            1240,
+            781
+          ],
+          "margin": 6,
+          "occupancy": 0.988835725677831,
+          "opaque": 384272,
+          "transparent": 1161961,
+          "soft": 410154
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-anchor-whisker-sealion",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-anchor-whisker-sealion-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            18,
+            174,
+            581,
+            341
+          ],
+          "margin": 18,
+          "occupancy": 0.9266347687400319,
+          "opaque": 85169,
+          "transparent": 290901,
+          "soft": 102081
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            40,
+            176,
+            564,
+            332
+          ],
+          "margin": 23,
+          "occupancy": 0.8995215311004785,
+          "opaque": 79589,
+          "transparent": 295890,
+          "soft": 97023
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            33,
+            128,
+            568,
+            364
+          ],
+          "margin": 26,
+          "occupancy": 0.9059011164274322,
+          "opaque": 84294,
+          "transparent": 286641,
+          "soft": 106245
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            35,
+            128,
+            567,
+            339
+          ],
+          "margin": 25,
+          "occupancy": 0.9043062200956937,
+          "opaque": 75422,
+          "transparent": 290159,
+          "soft": 102786
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-treasure-chart-eel",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-treasure-chart-eel-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            21,
+            258,
+            1218,
+            770
+          ],
+          "margin": 15,
+          "occupancy": 0.9712918660287081,
+          "opaque": 416423,
+          "transparent": 1097604,
+          "soft": 474615
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-treasure-chart-eel",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-treasure-chart-eel-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            26,
+            169,
+            595,
+            391
+          ],
+          "margin": 6,
+          "occupancy": 0.94896331738437,
+          "opaque": 100709,
+          "transparent": 267661,
+          "soft": 125129
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            40,
+            179,
+            576,
+            381
+          ],
+          "margin": 11,
+          "occupancy": 0.9186602870813397,
+          "opaque": 95009,
+          "transparent": 272166,
+          "soft": 120628
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            62,
+            161,
+            555,
+            343
+          ],
+          "margin": 10,
+          "occupancy": 0.8851674641148325,
+          "opaque": 90224,
+          "transparent": 276789,
+          "soft": 116056
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            21,
+            134,
+            596,
+            380
+          ],
+          "margin": 10,
+          "occupancy": 0.9505582137161085,
+          "opaque": 97185,
+          "transparent": 266192,
+          "soft": 126657
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-bloodsail",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-bloodsail-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            49,
+            73,
+            1174,
+            1140
+          ],
+          "margin": 31,
+          "occupancy": 0.9362041467304625,
+          "opaque": 540901,
+          "transparent": 993918,
+          "soft": 576910
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-bloodsail",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-bloodsail-sprite.source",
+      "width": 1774,
+      "height": 887,
+      "cell": 443.5,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            100,
+            128,
+            280,
+            252
+          ],
+          "margin": 63.5,
+          "occupancy": 0.6313416009019166,
+          "opaque": 32678,
+          "transparent": 154781,
+          "soft": 41413
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            99,
+            123,
+            287,
+            256
+          ],
+          "margin": 57.5,
+          "occupancy": 0.6471251409244645,
+          "opaque": 32875,
+          "transparent": 152901,
+          "soft": 43315
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            87,
+            126,
+            301,
+            259
+          ],
+          "margin": 55.5,
+          "occupancy": 0.6786922209695603,
+          "opaque": 33524,
+          "transparent": 151668,
+          "soft": 44538
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            101,
+            125,
+            266,
+            259
+          ],
+          "margin": 59.5,
+          "occupancy": 0.5997745208568207,
+          "opaque": 31750,
+          "transparent": 154728,
+          "soft": 41471
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            114,
+            98,
+            270,
+            250
+          ],
+          "margin": 59.5,
+          "occupancy": 0.608793686583991,
+          "opaque": 31452,
+          "transparent": 154383,
+          "soft": 41828
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            80,
+            78,
+            306,
+            282
+          ],
+          "margin": 57.5,
+          "occupancy": 0.6899661781285231,
+          "opaque": 36597,
+          "transparent": 146114,
+          "soft": 50079
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            110,
+            98,
+            277,
+            250
+          ],
+          "margin": 56.5,
+          "occupancy": 0.6245772266065389,
+          "opaque": 32722,
+          "transparent": 153409,
+          "soft": 42809
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            99,
+            98,
+            268,
+            251
+          ],
+          "margin": 76.5,
+          "occupancy": 0.6042841037204059,
+          "opaque": 31624,
+          "transparent": 155706,
+          "soft": 40499
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-barca",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-barca-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            35,
+            66,
+            1196,
+            1081
+          ],
+          "margin": 23,
+          "occupancy": 0.9537480063795853,
+          "opaque": 648801,
+          "transparent": 876037,
+          "soft": 695423
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-barca",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-barca-sprite.source",
+      "width": 1774,
+      "height": 887,
+      "cell": 443.5,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            87,
+            121,
+            286,
+            246
+          ],
+          "margin": 70.5,
+          "occupancy": 0.644870349492672,
+          "opaque": 36787,
+          "transparent": 147433,
+          "soft": 48758
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            85,
+            121,
+            289,
+            245
+          ],
+          "margin": 69.5,
+          "occupancy": 0.6516347237880497,
+          "opaque": 37439,
+          "transparent": 148129,
+          "soft": 48046
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            87,
+            121,
+            296,
+            245
+          ],
+          "margin": 60.5,
+          "occupancy": 0.6674182638105975,
+          "opaque": 37404,
+          "transparent": 147400,
+          "soft": 48789
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            87,
+            121,
+            286,
+            245
+          ],
+          "margin": 70.5,
+          "occupancy": 0.644870349492672,
+          "opaque": 36803,
+          "transparent": 147551,
+          "soft": 48625
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            83,
+            121,
+            304,
+            248
+          ],
+          "margin": 56.5,
+          "occupancy": 0.685456595264938,
+          "opaque": 37262,
+          "transparent": 146175,
+          "soft": 49997
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            83,
+            121,
+            291,
+            243
+          ],
+          "margin": 69.5,
+          "occupancy": 0.6561443066516347,
+          "opaque": 36923,
+          "transparent": 148658,
+          "soft": 47512
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            85,
+            121,
+            292,
+            247
+          ],
+          "margin": 66.5,
+          "occupancy": 0.6583990980834273,
+          "opaque": 36493,
+          "transparent": 149266,
+          "soft": 46914
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            83,
+            121,
+            287,
+            244
+          ],
+          "margin": 73.5,
+          "occupancy": 0.6471251409244645,
+          "opaque": 36872,
+          "transparent": 147964,
+          "soft": 48217
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-morgar",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-morgar-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            30,
+            198,
+            1218,
+            872
+          ],
+          "margin": 6,
+          "occupancy": 0.9712918660287081,
+          "opaque": 532683,
+          "transparent": 1010458,
+          "soft": 561415
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-morgar",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-morgar-sprite.source",
+      "width": 1774,
+      "height": 887,
+      "cell": 443.5,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            80,
+            143,
+            273,
+            202
+          ],
+          "margin": 80,
+          "occupancy": 0.6155580608793687,
+          "opaque": 29543,
+          "transparent": 159827,
+          "soft": 36317
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            62,
+            143,
+            294,
+            233
+          ],
+          "margin": 62,
+          "occupancy": 0.6629086809470124,
+          "opaque": 33547,
+          "transparent": 154916,
+          "soft": 41245
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            66,
+            142,
+            294,
+            221
+          ],
+          "margin": 66,
+          "occupancy": 0.6629086809470124,
+          "opaque": 32476,
+          "transparent": 157170,
+          "soft": 38972
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            104,
+            142,
+            250,
+            206
+          ],
+          "margin": 89.5,
+          "occupancy": 0.5636978579481398,
+          "opaque": 28416,
+          "transparent": 161867,
+          "soft": 34324
+        },
+        {
+          "frame": 4,
+          "bounds": [
+            68,
+            82,
+            293,
+            219
+          ],
+          "margin": 68,
+          "occupancy": 0.6606538895152199,
+          "opaque": 35346,
+          "transparent": 154057,
+          "soft": 42090
+        },
+        {
+          "frame": 5,
+          "bounds": [
+            83,
+            84,
+            280,
+            204
+          ],
+          "margin": 80.5,
+          "occupancy": 0.6313416009019166,
+          "opaque": 31364,
+          "transparent": 157961,
+          "soft": 38229
+        },
+        {
+          "frame": 6,
+          "bounds": [
+            85,
+            84,
+            279,
+            210
+          ],
+          "margin": 79.5,
+          "occupancy": 0.629086809470124,
+          "opaque": 30961,
+          "transparent": 158035,
+          "soft": 38114
+        },
+        {
+          "frame": 7,
+          "bounds": [
+            86,
+            84,
+            278,
+            204
+          ],
+          "margin": 79.5,
+          "occupancy": 0.6268320180383314,
+          "opaque": 30446,
+          "transparent": 159331,
+          "soft": 36827
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-captains-single-boot",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-captains-single-boot-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            95,
+            34,
+            1102,
+            1184
+          ],
+          "margin": 34,
+          "occupancy": 0.9441786283891547,
+          "opaque": 754396,
+          "transparent": 809268,
+          "soft": 762319
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-dud-salute-shell",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-dud-salute-shell-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            165,
+            169,
+            941,
+            947
+          ],
+          "margin": 138,
+          "occupancy": 0.75518341307815,
+          "opaque": 612667,
+          "transparent": 952655,
+          "soft": 618869
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-half-eaten-hard-tack",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-half-eaten-hard-tack-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            53,
+            66,
+            1144,
+            1141
+          ],
+          "margin": 47,
+          "occupancy": 0.9122807017543859,
+          "opaque": 969930,
+          "transparent": 591963,
+          "soft": 979762
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-rum-bottle-neck",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-rum-bottle-neck-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            282,
+            116,
+            739,
+            1054
+          ],
+          "margin": 84,
+          "occupancy": 0.8405103668261563,
+          "opaque": 420001,
+          "transparent": 1144308,
+          "soft": 427445
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-erased-sailor-tag",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-erased-sailor-tag-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            54,
+            149,
+            1167,
+            964
+          ],
+          "margin": 33,
+          "occupancy": 0.930622009569378,
+          "opaque": 426306,
+          "transparent": 1131942,
+          "soft": 439707
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-hollow-gold-crown",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-hollow-gold-crown-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            67,
+            114,
+            1164,
+            1046
+          ],
+          "margin": 23,
+          "occupancy": 0.9282296650717703,
+          "opaque": 712976,
+          "transparent": 846719,
+          "soft": 723657
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-washed-bounty-poster",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-washed-bounty-poster-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            127,
+            63,
+            1001,
+            1164
+          ],
+          "margin": 27,
+          "occupancy": 0.9282296650717703,
+          "opaque": 747706,
+          "transparent": 814464,
+          "soft": 756615
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-wrong-treasure-map",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-wrong-treasure-map-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            57,
+            116,
+            1164,
+            1026
+          ],
+          "margin": 33,
+          "occupancy": 0.9282296650717703,
+          "opaque": 691247,
+          "transparent": 870964,
+          "soft": 699965
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-rope-mooring-post",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-rope-mooring-post-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            300,
+            66,
+            810,
+            1138
+          ],
+          "margin": 50,
+          "occupancy": 0.9074960127591707,
+          "opaque": 623639,
+          "transparent": 941041,
+          "soft": 630285
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-barnacle-sailor-chair",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-barnacle-sailor-chair-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            206,
+            64,
+            893,
+            1137
+          ],
+          "margin": 53,
+          "occupancy": 0.9066985645933014,
+          "opaque": 561364,
+          "transparent": 996106,
+          "soft": 574330
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-empty-supply-barrel",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-empty-supply-barrel-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            90,
+            137,
+            1110,
+            1016
+          ],
+          "margin": 54,
+          "occupancy": 0.8851674641148325,
+          "opaque": 894327,
+          "transparent": 671192,
+          "soft": 899619
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-folded-pirate-flag",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-folded-pirate-flag-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            32,
+            231,
+            1202,
+            832
+          ],
+          "margin": 20,
+          "occupancy": 0.9585326953748007,
+          "opaque": 741064,
+          "transparent": 822903,
+          "soft": 748927
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-sand-cannonball-pile",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-sand-cannonball-pile-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            79,
+            198,
+            1097,
+            886
+          ],
+          "margin": 78,
+          "occupancy": 0.8748006379585327,
+          "opaque": 599794,
+          "transparent": 961509,
+          "soft": 610457
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-wet-card-table",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-wet-card-table-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            98,
+            145,
+            1060,
+            1004
+          ],
+          "margin": 96,
+          "occupancy": 0.8452950558213717,
+          "opaque": 688931,
+          "transparent": 872959,
+          "soft": 698251
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-blue-flame-stern-lantern",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-blue-flame-stern-lantern-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            347,
+            37,
+            612,
+            1183
+          ],
+          "margin": 34,
+          "occupancy": 0.9433811802232854,
+          "opaque": 429799,
+          "transparent": 1127893,
+          "soft": 442882
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-captains-red-armchair",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-captains-red-armchair-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            161,
+            63,
+            964,
+            1128
+          ],
+          "margin": 63,
+          "occupancy": 0.8995215311004785,
+          "opaque": 686888,
+          "transparent": 869476,
+          "soft": 701797
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-secret-trading-desk",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-secret-trading-desk-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            23,
+            98,
+            1213,
+            1092
+          ],
+          "margin": 18,
+          "occupancy": 0.967304625199362,
+          "opaque": 815735,
+          "transparent": 740817,
+          "soft": 830621
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-wreck-figurehead",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-wreck-figurehead-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            249,
+            53,
+            927,
+            1163
+          ],
+          "margin": 38,
+          "occupancy": 0.9274322169059012,
+          "opaque": 669751,
+          "transparent": 889958,
+          "soft": 681255
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "plunder-skull-weapon-rack",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-034411\\sources\\plunder-skull-weapon-rack-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            28,
+            183,
+            1204,
+            943
+          ],
+          "margin": 22,
+          "occupancy": 0.960127591706539,
+          "opaque": 649745,
+          "transparent": 904216,
+          "soft": 665897
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

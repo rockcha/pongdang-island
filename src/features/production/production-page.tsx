@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link } from 'react-router'
+import { useEffect, useState } from 'react'
+import { Link,useSearchParams } from 'react-router'
 import { ArrowRight, Minus, Plus, LoaderCircle, Store, Info, PackageX } from 'lucide-react'
 import { toast } from 'sonner'
 import { appArt } from '@/components/app-art'
@@ -86,6 +86,7 @@ function Details({ site, compact = false }: { site: ProductionFacility; compact?
 }
 
 export function ProductionPage({ shop = false }: { shop?: boolean }) {
+  const [searchParams,setSearchParams]=useSearchParams()
   const { state, error, busy, now, reload, action, retry } = useProduction()
   const [quantity, setQuantity] = useState(1),
     [shopFilters, setShopFilters] = useState(initialShopFilters)
@@ -96,6 +97,13 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
       mode: 'buy' | 'sell' | 'start' | 'working' | 'info'
     } | null>(null)
   const source = (shop ? state?.facilities : (state?.sites ?? state?.facilities)) ?? []
+  useEffect(()=>{
+    const id=searchParams.get('site')
+    if(shop||!id||!state)return
+    const site=state.sites?.find(s=>s.siteId===id)
+    if(site){setCategory(site.kind);setStatusFilter('all');setSelected({id:productionSiteKey(site),mode:'info'})}
+    const next=new URLSearchParams(searchParams);next.delete('site');setSearchParams(next,{replace:true})
+  },[searchParams,setSearchParams,state,shop])
   const ownedInKind = (kind: 'trash' | 'fish') =>
     state?.sites
       ? state.sites.filter((f) => f.kind === kind).length

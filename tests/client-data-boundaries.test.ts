@@ -46,3 +46,9 @@ it('fingerprints legacy behavior changes but tolerates comments and formatting',
     inspect(`function old(){return client.rpc('new_state')}`),
   )
 })
+it('keeps legacy JSX fingerprints stable across Windows checkout line endings', () => {
+  const lf = "function Legacy(){client.rpc('state');return <button>\n  Vote\n</button>}"
+  expect(inspectSource('page.tsx', lf.replaceAll('\n', '\r\n'))).toEqual(
+    inspectSource('page.tsx', lf),
+  )
+})

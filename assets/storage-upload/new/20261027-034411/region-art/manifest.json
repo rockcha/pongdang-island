@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "bucket": "regions",
+      "file": "map-v1.png",
+      "storage_path": "plunder/map-v1.png",
+      "sha256": "019166646c440e832826f4c8bc4713dc19cba51d8e9a8c604e973450e40b95e2",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "bucket": "regions",
+      "file": "scenery-v1.png",
+      "storage_path": "plunder/scenery-v1.png",
+      "sha256": "a46a7822b301e9215b5f5dd99dc623126ebb4e645f697ba5f8b19b5068b8bc9f",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "bucket": "regions",
+      "file": "banner-v1.png",
+      "storage_path": "plunder/banner-v1.png",
+      "sha256": "a46a7822b301e9215b5f5dd99dc623126ebb4e645f697ba5f8b19b5068b8bc9f",
+      "width": 1536,
+      "height": 1024
+    }
+  ]
+}

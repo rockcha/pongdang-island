@@ -1,3 +1,4 @@
+import {randomId} from '@/lib/random-id'
 import {createContext,useContext,useEffect,useLayoutEffect,useRef} from 'react'
 import {flushSync} from 'react-dom'
 import {useLocation} from 'react-router'
@@ -75,7 +76,7 @@ function sync(){
   // Wait for that restoration rather than truncating its forward history entry.
   if(routeUrl&&location.href!==routeUrl)return
   routeIndex=history.state?.idx??0
-  guard={id:crypto.randomUUID(),url:location.href,retiring:false}
+  guard={id:randomId(),url:location.href,retiring:false}
   // Preserve React Router's usr/key/idx. This is a close step, not a new route.
   history.pushState({...history.state,[marker]:guard.id},'',location.href)
  }

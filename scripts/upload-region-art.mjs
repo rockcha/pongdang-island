@@ -15,7 +15,7 @@ const client=createClient(endpoint.origin,process.env.SUPABASE_SECRET_KEY||proce
 const root=resolve(manifestPath,'..')
 for(const item of manifest.items){
  const path=resolve(root,item.file),rel=relative(root,path)
- if(rel.startsWith('..')||item.bucket!=='regions'||!/^nyamnyam\/(banner|scenery|map)-v\d+\.png$/.test(item.storage_path))throw Error('Invalid artwork path')
+ if(rel.startsWith('..')||item.bucket!=='regions'||!/^(nyamnyam|plunder)\/(banner|scenery|map)-v\d+\.png$/.test(item.storage_path))throw Error('Invalid artwork path')
  const original=await readFile(path),bytes=optimizePng(original)
  if(bytes.toString('hex',0,8)!=='89504e470d0a1a0a')throw Error('Invalid PNG')
  if(mode==='--dry-run'){console.log(`${item.bucket}/${item.storage_path}: ${bytes.length} bytes`);continue}

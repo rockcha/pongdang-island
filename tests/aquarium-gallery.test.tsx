@@ -1,6 +1,6 @@
 import {cleanup,render,screen,fireEvent,waitFor,within} from '@testing-library/react'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
-import {MemoryRouter} from 'react-router'
+import {MemoryRouter,Routes,Route,useLocation,useNavigate} from 'react-router'
 import {AquariumPage} from '@/pages/aquarium-page'
 const mock=vi.hoisted(()=>({load:vi.fn(),transact:vi.fn(),manage:vi.fn(),world:undefined as any,items:[] as any[]}))
 vi.mock('@/features/notices/use-operator',()=>({useOperator:()=>({operator:false})}))
@@ -12,11 +12,12 @@ vi.mock('@/features/friends/friend-aquarium-picker',()=>({FriendAquariumPicker:(
 vi.mock('@/features/aquarium/collectible-storage-dialog',()=>({CollectibleStorageDialog:()=> <button>보관함</button>}))
 vi.mock('@/features/aquarium/aquarium-background-dialog',()=>({AquariumBackgroundDialog:()=> <button>배경</button>}))
 vi.mock('@/features/collection/collection-dialog',()=>({CollectionDialog:()=> <button>도감</button>}))
-vi.mock('@/features/aquarium/tank-inhabitants',()=>({TankInhabitants:({world,items,preview,onWideView}:any)=>{mock.world=world;mock.items=items;return <div data-testid={preview?'miniature':'detail'} data-zoom={world?.initialZoom} data-item-count={items.length}>{!preview&&onWideView&&<button onClick={onWideView}>전체보기(가로 화면)</button>}</div>}}))
+vi.mock('@/features/aquarium/tank-inhabitants',()=>({TankInhabitants:({world,items,preview}:any)=>{mock.world=world;mock.items=items;return <div data-testid={preview?'miniature':'detail'} data-zoom={world?.initialZoom} data-item-count={items.length}></div>}}))
 const state={tanks:[{id:'one',name:'첫 어항',background_id:'default'},{id:'two',name:'둘째 어항',background_id:'default'}],inhabitants:[{id:'coral',tank_id:'two',position_x:.5,position_y:1}],catalog:[{id:'default',name:'맑은 물빛',image_path:'default.png'}],owned:['default'],storageCount:0,tankCapacity:50,tankPrice:350}
 beforeEach(()=>{mock.load.mockResolvedValue(state);mock.transact.mockResolvedValue(undefined)})
 afterEach(()=>{cleanup();vi.clearAllMocks();vi.unstubAllGlobals();sessionStorage.clear()})
-function show(){render(<MemoryRouter><AquariumPage/></MemoryRouter>)}
+function Navigation(){const navigate=useNavigate(),location=useLocation();return <><output data-testid="route">{location.pathname}</output><button onClick={()=>navigate(-1)}>브라우저 뒤로</button></>}
+function show(){render(<MemoryRouter initialEntries={['/aquarium']}><Navigation/><Routes><Route path="/aquarium/:tankId?" element={<AquariumPage/>}/></Routes></MemoryRouter>)}
 it('opens with a scrollable list, selects a full-size tank and restores the previous list position',async()=>{
  show();const card=await screen.findByRole('button',{name:'둘째 어항 어항 열기'})
  expect(screen.queryByRole('heading',{name:'내 어항'})).toBeNull()
@@ -24,10 +25,14 @@ it('opens with a scrollable list, selects a full-size tank and restores the prev
  expect(screen.getAllByTestId('miniature')).toHaveLength(2)
  const list=screen.getByLabelText('내 어항 목록');list.scrollTop=163;fireEvent.scroll(list)
  fireEvent.click(card)
- expect(screen.getByTestId('detail').dataset.zoom).toBe('1')
+ expect((await screen.findByTestId('detail')).dataset.itemCount).toBe('1')
+ expect(screen.getByTestId('route').textContent).toBe('/aquarium/two')
+ const glass=screen.getByTestId('aquarium-glass')
+ expect(Number(screen.getByTestId('detail').dataset.zoom)).toBeCloseTo(parseFloat(glass.style.height)/(parseFloat(glass.style.width)*1.6))
  expect(mock.items).toEqual([expect.objectContaining({id:'coral',position_y:1})])
- expect(mock.world).toMatchObject({columns:3,overview:true,initialZoom:1})
- fireEvent.click(screen.getByRole('button',{name:'내 어항 목록'}))
+ expect(mock.world).toMatchObject({columns:3,overview:true})
+ expect(screen.queryByRole('button',{name:'내 어항 목록'})).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'브라우저 뒤로'}))
  expect(screen.getByLabelText('내 어항 목록').scrollTop).toBe(163)
  expect(screen.getByRole('button',{name:'친구 어항'})).toBeTruthy()
  expect(screen.getByRole('button',{name:'어항 관리'})).toBeTruthy()
@@ -59,7 +64,8 @@ it('renames a tank directly from its card without opening it or showing a picker
 it('opens a full-width editing view, restores its menu and returns without changing saved positions',async()=>{
  vi.stubGlobal('matchMedia',()=>({matches:false}))
  show();fireEvent.click(await screen.findByRole('button',{name:'둘째 어항 어항 열기'}))
- fireEvent.click(screen.getByRole('button',{name:'전체보기(가로 화면)'}))
+ fireEvent.click(screen.getByRole('button',{name:'어항 더보기'}))
+ fireEvent.click(await screen.findByRole('menuitem',{name:'가로로 보기'}))
  expect(screen.getByRole('region',{name:'가로 어항 꾸미기'})).toBeTruthy()
  expect(mock.world).toMatchObject({fixedViewport:true,initialZoom:1/3,initialView:0})
  expect(document.documentElement.hasAttribute('data-aquarium-wide')).toBe(true)

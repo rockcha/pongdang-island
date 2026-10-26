@@ -5,6 +5,8 @@ import type { RealtimeChannel } from '@supabase/supabase-js'
 import { toast } from 'sonner'
 import { getNickname, useAuth } from '@/components/auth-provider'
 import { createClient } from '@/lib/client'
+import { hasBackgroundSession, isAuthFailure } from '@/lib/background-session'
+import { accountOptions, appQueryClient, accountQueryKey } from '@/lib/account-cache'
 import { loadFriendRequests, loadProfile, syncProfile } from '@/features/friends/api'
 import { loadNotifications } from '@/features/notifications/api'
 import {useReturnNotifications} from '@/features/notifications/use-return-notifications'
@@ -42,6 +44,9 @@ export function SocialProvider({ children }: { children: ReactNode }) {
     let timer: ReturnType<typeof setTimeout> | undefined
     let profile: Profile | null = null
     let starting: Promise<void> | null = null
+    let loading: Promise<void> | null = null
+    let reloadPending = false
+    let authBlocked = false
     const seen = new Set<string>()
     function announce(notification:AppNotification){
       if(seen.has(notification.id))return
@@ -53,10 +58,15 @@ export function SocialProvider({ children }: { children: ReactNode }) {
     const client = createClient()
     setState({ ...initial, owner: userId, loading: true })
 
-    async function load() {
+    async function loadOnce() {
       const version = ++revision
       try {
-        const [requests, inbox, latestProfile] = await Promise.all([loadFriendRequests(), loadNotifications(userId!), loadProfile(userId!)])
+        if (authBlocked || !await hasBackgroundSession(userId!) || !active) return
+        const [requests, inbox, latestProfile] = await Promise.all([
+          appQueryClient.fetchQuery(accountOptions(userId!, 'friend-requests', () => loadFriendRequests())),
+          loadNotifications(userId!),
+          appQueryClient.fetchQuery(accountOptions(userId!, 'profile', () => loadProfile(userId!))),
+        ])
         if (!active || version !== revision) return
         profile = latestProfile
         setState(previous => ({ ...previous, profile, requests, ...inbox, loading: false, error: null }))
@@ -64,11 +74,22 @@ export function SocialProvider({ children }: { children: ReactNode }) {
           if(!notification.read_at&&(notification.expedition_id||notification.harbor_voyage_id))announce(notification)
         }
       } catch (cause) {
+        authBlocked = isAuthFailure(cause)
         if (active && version === revision) setState(previous => ({ ...previous, loading: false, error: socialErrorMessage(cause) }))
+      }
+    }
+    async function load(): Promise<void> {
+      if (!active || authBlocked) return
+      if (loading) { reloadPending = true; return loading }
+      loading = loadOnce()
+      try { await loading } finally {
+        loading = null
+        if (reloadPending && active) { reloadPending = false; schedule() }
       }
     }
     const schedule = () => {
       if (!active) return
+      for (const resource of ['inbox', 'friend-requests']) void appQueryClient.invalidateQueries({ queryKey: accountQueryKey(userId, resource), refetchType: 'none' })
       clearTimeout(timer)
       timer = setTimeout(() => { void load() }, 120)
     }
@@ -78,6 +99,7 @@ export function SocialProvider({ children }: { children: ReactNode }) {
       if (starting) return starting
       starting = (async () => {
         try {
+          if (authBlocked || !await hasBackgroundSession(userId!) || !active) return
           profile = await syncProfile()
           if (!active) return
           setState(previous => ({ ...previous, profile }))
@@ -98,14 +120,14 @@ export function SocialProvider({ children }: { children: ReactNode }) {
             }
           }
           channel.on('postgres_changes', { event: '*', schema: 'public', table: 'collectible_gifts', filter: `recipient_id=eq.${userId}` }, schedule)
-          channel.on('postgres_changes', { event: 'UPDATE', schema: 'public', table: 'player_profiles' }, schedule)
           channel.subscribe(status => {
             if (!active) return
             setState(previous => ({ ...previous, connection: status === 'SUBSCRIBED' ? 'live' : 'offline' }))
-            if (status === 'SUBSCRIBED') schedule()
+            if (status === 'SUBSCRIBED') { clearTimeout(timer); timer = setTimeout(() => { void load() }, 120) }
           })
           await load()
         } catch (cause) {
+          authBlocked = isAuthFailure(cause)
           if (active) setState(previous => ({ ...previous, loading: false, error: socialErrorMessage(cause), connection: 'offline' }))
         } finally { starting = null }
       })()
@@ -113,7 +135,11 @@ export function SocialProvider({ children }: { children: ReactNode }) {
     }
     const catchUp = () => { if (document.visibilityState !== 'hidden') void start() }
     const offline = () => { if (active) setState(previous => ({ ...previous, connection: 'offline' })) }
-    refreshRef.current = start
+    const {data:{subscription}} = client.auth.onAuthStateChange(() => { authBlocked = false })
+    refreshRef.current = async () => {
+      for (const resource of ['inbox', 'friend-requests']) void appQueryClient.invalidateQueries({ queryKey: accountQueryKey(userId, resource), refetchType: 'none' })
+      await start()
+    }
     void start()
     window.addEventListener('focus', catchUp)
     window.addEventListener('online', catchUp)
@@ -121,6 +147,7 @@ export function SocialProvider({ children }: { children: ReactNode }) {
     document.addEventListener('visibilitychange', catchUp)
     return () => {
       active = false
+      subscription.unsubscribe()
       clearTimeout(timer)
       if (channel) void client.removeChannel(channel)
       window.removeEventListener('focus', catchUp)
@@ -130,6 +157,42 @@ export function SocialProvider({ children }: { children: ReactNode }) {
       refreshRef.current = async () => {}
     }
   }, [userId, nickname, recovery])
+  const profileIds = state.owner === userId && userId
+    ? [...new Set([userId, ...state.requests.flatMap(request => [request.sender_id, request.recipient_id])])].sort().join(',')
+    : ''
+  useEffect(() => {
+    if (!profileIds || recovery) return
+    const client = createClient(), ids = profileIds.split(',')
+    let active = true
+    const channels: RealtimeChannel[] = []
+    for (let start = 0; start < ids.length; start += 100) {
+      const chunk = ids.slice(start, start + 100)
+      const channel = client.channel(`social-profiles:${userId}:${start}`)
+        .on('postgres_changes', {event:'UPDATE',schema:'public',table:'player_profiles',filter:`id=in.(${chunk.join(',')})`}, payload => {
+          if (!active) return
+          const changed = payload.new as Profile
+          appQueryClient.setQueryData<Profile>(accountQueryKey(userId!, 'profile'), previous =>
+            previous?.id === changed.id ? { ...previous, ...changed } : previous)
+          appQueryClient.setQueryData<FriendRequest[]>(accountQueryKey(userId!, 'friend-requests'), previous => previous?.map(request => ({
+            ...request,
+            sender: request.sender.id === changed.id ? { ...request.sender, ...changed } : request.sender,
+            recipient: request.recipient.id === changed.id ? { ...request.recipient, ...changed } : request.recipient,
+          })))
+          setState(previous => {
+            if (previous.owner !== userId) return previous
+            return {...previous,
+              profile: previous.profile?.id === changed.id ? {...previous.profile,...changed} : previous.profile,
+              requests: previous.requests.map(request => ({...request,
+                sender: request.sender.id === changed.id ? {...request.sender,...changed} : request.sender,
+                recipient: request.recipient.id === changed.id ? {...request.recipient,...changed} : request.recipient,
+              })),
+            }
+          })
+        }).subscribe()
+      channels.push(channel)
+    }
+    return () => { active = false; for (const channel of channels) void client.removeChannel(channel) }
+  }, [profileIds, userId, recovery])
   // Avoid displaying an earlier account's private data during an account switch.
   const current = state.owner === userId && !recovery ? state : initial
   return <SocialContext.Provider value={{ ...current, refresh }}>{children}</SocialContext.Provider>

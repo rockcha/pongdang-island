@@ -5,11 +5,11 @@
     640
   ],
   "summary": {
-    "count": 589,
-    "sourceBytes": 662471003,
-    "smallBytes": 15857268,
-    "largeBytes": 42781530,
-    "smallReductionPercent": 97.61
+    "count": 602,
+    "sourceBytes": 665702152,
+    "smallBytes": 16185538,
+    "largeBytes": 43418684,
+    "smallReductionPercent": 97.57
   },
   "items": [
     {
@@ -2793,6 +2793,86 @@
       }
     },
     {
+      "key": "fish/epic/dreamabyss-moon-dream-wings_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-033245/fish/epic/dreamabyss-moon-dream-wings_thumbnail.png",
+      "sourceHash": "e7844b34a31ab92474cfeff89ed7eee0c3f43f0c6c9cc8f1237fbc9392d4e755",
+      "sourceBytes": 182046,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/a2028b64a3b124125c09e3df-320.webp",
+        "bytes": 20484,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/0f7aaf01c5c373e206979803-640.webp",
+        "bytes": 39070,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/epic/dreamabyss-reverie-seadragon_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-033245/fish/epic/dreamabyss-reverie-seadragon_thumbnail.png",
+      "sourceHash": "6a9824863061155a5dd55b7afca8e6e6b5cdc2f1a9db68b63b2ced1f49dfcb67",
+      "sourceBytes": 215812,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/f732265d767b1827b83b15e7-320.webp",
+        "bytes": 36504,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/ee94dab96658ea3ab4789664-640.webp",
+        "bytes": 74374,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/epic/dreamabyss-slumber-curtain_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-033245/fish/epic/dreamabyss-slumber-curtain_thumbnail.png",
+      "sourceHash": "e0616df7df93f381d130d3118a4028dd50c5e9c55fa8acfb38f07ce3c75b541a",
+      "sourceBytes": 384483,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/df399ceba02e6606017274e6-320.webp",
+        "bytes": 57248,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2687d834551064a0852453c7-640.webp",
+        "bytes": 119066,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/epic/dreamabyss-violet-ghost-shark_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-033245/fish/epic/dreamabyss-violet-ghost-shark_thumbnail.png",
+      "sourceHash": "7297be4ec86e93377aa902578705892a755610c1e1ebfed3dbc40eb33c3ffbb9",
+      "sourceBytes": 118463,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/cfca621b4c63c3be395e3f34-320.webp",
+        "bytes": 16646,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/abc5eed60fe8951d0f6cf3e9-640.webp",
+        "bytes": 31108,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
       "key": "fish/epic/dreaming-dumbo-octopus_thumbnail.png",
       "source": "assets/storage-upload/new/20261015-124837/fish/epic/dreaming-dumbo-octopus_thumbnail.png",
       "sourceHash": "6cda3da317d240fdf43915017146e4af7c9965d09c1b2e182908e674173f8df3",
@@ -4253,6 +4333,26 @@
       }
     },
     {
+      "key": "fish/mythic/dreamabyss-ancient-sleeper_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-033245/fish/mythic/dreamabyss-ancient-sleeper_thumbnail.png",
+      "sourceHash": "d481925b631e86e4d39a6eee5d0dbe982735312122a15c774b5c51d595970907",
+      "sourceBytes": 189953,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/1d198136024e2f15027d2f1d-320.webp",
+        "bytes": 20468,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/abea9d2cf0c23452915931f6-640.webp",
+        "bytes": 41532,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
       "key": "fish/mythic/extinction-defying-megalodon_thumbnail.png",
       "source": "assets/storage-upload/new/20261021-115454/fish/mythic/extinction-defying-megalodon_thumbnail.png",
       "sourceHash": "97a86221572e8499177112e1d2ad46ba7402672e280af478657508cdb47b607b",
@@ -5450,6 +5550,86 @@
         "bytes": 47386,
         "width": 640,
         "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/dreamabyss-dream-clam_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-033245/fish/normal/dreamabyss-dream-clam_thumbnail.png",
+      "sourceHash": "cb2057e3e980d7245632a9b296269559bc5b0388ea5f324b5c1c390caef8a325",
+      "sourceBytes": 280352,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/e9cc513bb4205aa6f212dfce-320.webp",
+        "bytes": 21496,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/54269cad85ac515cf5fb4696-640.webp",
+        "bytes": 38212,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/normal/dreamabyss-hallucination-coral-crab_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-033245/fish/normal/dreamabyss-hallucination-coral-crab_thumbnail.png",
+      "sourceHash": "5bc7d5b1a4ed412f1f8eac326287c25584526ad1eb87c7661be141dd79626b18",
+      "sourceBytes": 234884,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/2012a766d5d2ab6532ea0e7b-320.webp",
+        "bytes": 24922,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/a66832decf830691ba47e8b9-640.webp",
+        "bytes": 46144,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/normal/dreamabyss-lilac-sea-cucumber_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-033245/fish/normal/dreamabyss-lilac-sea-cucumber_thumbnail.png",
+      "sourceHash": "7e69143529201f85e16525fb0a5d733e37978a4260b5660b2ca690571c7686b1",
+      "sourceBytes": 156896,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/ac12078d8963f26ee2b148aa-320.webp",
+        "bytes": 13946,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f721b7e03e1ebb80bb4f14cc-640.webp",
+        "bytes": 25188,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/normal/dreamabyss-reverie-whelk_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-033245/fish/normal/dreamabyss-reverie-whelk_thumbnail.png",
+      "sourceHash": "e92cf1120d43fb5a843de687d785d35f33ac683acb673b487f9a328afad07daa",
+      "sourceBytes": 227783,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/be4751c50f04ca6ea6234581-320.webp",
+        "bytes": 18982,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5bee7f2ca87f2a827457259e-640.webp",
+        "bytes": 33984,
+        "width": 512,
+        "height": 512
       }
     },
     {
@@ -7830,6 +8010,26 @@
         "bytes": 44454,
         "width": 640,
         "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/dreamabyss-somnambulist_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-033245/fish/rare/dreamabyss-somnambulist_thumbnail.png",
+      "sourceHash": "1394bc2d755a53a8d2eeac7a9f1df572967ed4909e0cd79ee007f7edc0de7033",
+      "sourceBytes": 119467,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/ef72de82149ecbc7c7d66761-320.webp",
+        "bytes": 12142,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7ca63c1e28a669a2233aac4e-640.webp",
+        "bytes": 21130,
+        "width": 512,
+        "height": 512
       }
     },
     {
@@ -10313,6 +10513,26 @@
       }
     },
     {
+      "key": "trash/normal/broken-generator_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-032115/trash/normal/broken-generator_thumbnail.png",
+      "sourceHash": "4d66667113475395f6673dca435792e7f31ab78e1e085ad3a17c5e23cd62a219",
+      "sourceBytes": 407178,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/974637e3fc9e46d4cdf0bd88-320.webp",
+        "bytes": 32768,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/cfe5e8bcbe376babf1bfe457-640.webp",
+        "bytes": 63232,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
       "key": "trash/normal/broken-survey-cable_thumbnail.png",
       "source": "assets/storage-upload/new/20261018-183000/trash/normal/broken-survey-cable_thumbnail.png",
       "sourceHash": "b66b80387b4a679e010d3bf9f8c8acbc97db6c97d46281e29f73c9d7ad3102ed",
@@ -10450,6 +10670,26 @@
         "bytes": 52730,
         "width": 640,
         "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/discarded-battery_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-032115/trash/normal/discarded-battery_thumbnail.png",
+      "sourceHash": "8b3d3fb8adaf11fcfe62a98212ecea90987ad89f6ac30ec04118952204e864f9",
+      "sourceBytes": 322606,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/b62986a4b3f6d4cd92e65f1d-320.webp",
+        "bytes": 24460,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1f37446dfee273c5be73c88e-640.webp",
+        "bytes": 46446,
+        "width": 512,
+        "height": 512
       }
     },
     {
@@ -10790,6 +11030,26 @@
         "bytes": 54724,
         "width": 640,
         "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/rusty-cogwheel_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-032115/trash/normal/rusty-cogwheel_thumbnail.png",
+      "sourceHash": "d14fdd979b07c5e70f12329fe362576d2b571e54ff40fd43f55b5f50b621c523",
+      "sourceBytes": 391226,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/28e93076073fb1a6df7a3be4-320.webp",
+        "bytes": 28204,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/0ebfc446bcde132a67e3b5d4-640.webp",
+        "bytes": 57668,
+        "width": 512,
+        "height": 512
       }
     },
     {

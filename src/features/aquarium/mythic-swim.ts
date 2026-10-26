@@ -4,12 +4,14 @@ import nyamnyamMythicSheets from './nyamnyam-mythic-action-layouts.json'
 import primalMythicSheets from './primal-mythic-action-layouts.json'
 import halloweenMythicSheets from './halloween-mythic-action-layouts.json'
 import pongiMythicSheets from './pongi-mythic-action-layouts.json'
+import dreamabyssMythicSheets from './dreamabyss-mythic-action-layouts.json'
 import {halloweenMythicFrame} from './halloween-spirits'
 import {sharedDecorationColumns,sharedDecorationAsset} from './shared-decoration-animation'
 export function mythicSheetColumns(path:string){return sharedDecorationColumns(path)??(mythicDetailedPaths.includes(path)?4:2)}
 export const luneaDetailedSwimPath='fish/mythic/lunea-mistmoon-goddess_swim8_sprite.png'
 type MythicSheet={id:string;aliases:string[];scale:number;shifts:number[][];cell:number;assetVersion?:number}
 const sheets:MythicSheet[]=[
+ ...dreamabyssMythicSheets,
  ...pongiMythicSheets,
  ...halloweenMythicSheets,
  ...primalMythicSheets,
@@ -45,7 +47,7 @@ export function mythicSwimFrame(path:string,time:number,seed:number,reduced=fals
  const halloweenFrame=halloweenMythicFrame(path,time,seed)
  if(halloweenFrame!==null)return halloweenFrame
  const phase=((time+seed/1000000)%6+6)%6
- if([...sharedMythicSheets,...nyamnyamMythicSheets,...primalMythicSheets,...pongiMythicSheets].some(s=>path===`fish/mythic/${s.id}_swim8_sprite.png`)){
+ if([...sharedMythicSheets,...nyamnyamMythicSheets,...primalMythicSheets,...pongiMythicSheets,...dreamabyssMythicSheets].some(s=>path===`fish/mythic/${s.id}_swim8_sprite.png`)){
   // Reversible propulsion for four seconds, then anticipation, action, return,
   // recovery. The recovery drawing matches the next cycle's neutral pose.
   return phase<4?[0,1,2,3,2,1][Math.floor(phase*3)%6]:4+Math.min(3,Math.floor((phase-4)*2))

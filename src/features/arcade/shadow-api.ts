@@ -16,6 +16,7 @@ export type ShadowRound = {
 export type ShadowRun = {
   id: string
   score: number
+  totalQuestions?: number | null
   lives: number
   finished: boolean
   round: ShadowRound

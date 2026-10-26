@@ -1,0 +1,61 @@
+﻿{
+    "file":  "assets/storage-upload/new/20261026-033245/generated/dreamabyss-ancient-sleeper_sheet.source",
+    "storage_path":  "fish/mythic/dreamabyss-ancient-sleeper_swim8_v1_sprite.png",
+    "patch":  [
+                  358,
+                  265,
+                  24,
+                  24
+              ],
+    "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  0
+                   },
+                   {
+                       "frame":  1,
+                       "dx":  -8,
+                       "dy":  -1,
+                       "rmse":  10.055121518410406
+                   },
+                   {
+                       "frame":  2,
+                       "dx":  -12,
+                       "dy":  0,
+                       "rmse":  8.0729099462337626
+                   },
+                   {
+                       "frame":  3,
+                       "dx":  -13,
+                       "dy":  -1,
+                       "rmse":  10.146004447564568
+                   },
+                   {
+                       "frame":  4,
+                       "dx":  0,
+                       "dy":  -49,
+                       "rmse":  10.772686816667418
+                   },
+                   {
+                       "frame":  5,
+                       "dx":  -1,
+                       "dy":  -47,
+                       "rmse":  14.973283499286321
+                   },
+                   {
+                       "frame":  6,
+                       "dx":  -9,
+                       "dy":  -48,
+                       "rmse":  11.597076679060116
+                   },
+                   {
+                       "frame":  7,
+                       "dx":  -9,
+                       "dy":  -48,
+                       "rmse":  11.293838198327441
+                   }
+               ]
+}

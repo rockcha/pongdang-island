@@ -1,5 +1,6 @@
 import {questProgressChanged} from '@/features/quests/progress-events'
 import { createClient } from '@/lib/client'
+import { readAccountResource } from '@/lib/account-cache'
 import type { Trade, Wallet } from './wallet'
 export type GoldState = Wallet & { testClaimed: boolean; testEnabled: boolean }
 export function goldError(cause: unknown): string {
@@ -18,8 +19,9 @@ export function goldError(cause: unknown): string {
   const errors: Record<string,string> = { BAIT_NOT_FOR_SALE: '현재 구매할 수 없는 미끼예요.', INVALID_TANK_NAME: '어항 이름은 공백 없이 1~20자로 입력해주세요.', TANK_NOT_FOUND: '어항을 찾지 못했어요. 다시 불러와주세요.', BACKGROUND_ALREADY_OWNED: '이미 보유한 배경이에요.', BACKGROUND_NOT_OWNED: '먼저 배경을 구매해주세요.', INSUFFICIENT_GOLD: '골드가 부족해요.', INSUFFICIENT_INVENTORY: '판매할 아이템이 없어요.', TEST_CHARGE_ALREADY_CLAIMED: '테스트 골드는 계정당 한 번만 받을 수 있어요.', TEST_CHARGE_DISABLED: '테스트 충전이 종료됐어요.', GOLD_LIMIT: '골드 보유 한도에 도달했어요.' }
   return Object.entries(errors).find(([key]) => message.includes(key))?.[1] ?? '골드 데이터를 확인하지 못했어요. SQL 적용과 연결을 확인해주세요.'
 }
-export async function loadGold() {
-  const { data, error } = await createClient().rpc('get_gold_wallet')
+export const loadGold = () => readAccountResource('wallet', readGold)
+export async function readGold(signal: AbortSignal) {
+  const { data, error } = await createClient().rpc('get_gold_wallet').abortSignal(signal)
   if (error) throw error
   return data
 }

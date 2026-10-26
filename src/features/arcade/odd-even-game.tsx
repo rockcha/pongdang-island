@@ -150,7 +150,7 @@ function AccountGame() {
     run && scene !== 'result' && run.stage === 'decision'
       ? run.stake / 2
       : run && scene !== 'result' && run.stage === 'lost'
-        ? 10 * 2 ** run.wins
+        ? (run.initialStake ?? 10) * 2 ** run.wins
         : (run?.stake ?? 0)
   useEffect(() => {
     for (const name of ['mix', 'open']) {
@@ -305,7 +305,7 @@ function AccountGame() {
                   setConfirm(true)
                 }}
                 onPractice={startPractice}
-                paidDisabled={!loaded || busy || gold.loading || gold.wallet.gold < 10}
+                paidDisabled={!loaded || busy || gold.loading || gold.wallet.gold < 30}
                 practiceDisabled={busy || !!operation.current}
               />
             ) : (
@@ -461,8 +461,8 @@ function AccountGame() {
           setConfirm(open)
           if (!open) setGameOpen(false)
         }}
-        title="10골드로 시작하시겠습니까?"
-        description="별도 참가비 없이 10골드를 베팅해요. 틀리면 이번 판의 베팅금은 사라져요."
+        title="30골드로 시작하시겠습니까?"
+        description="별도 참가비 없이 30골드를 베팅해요. 틀리면 이번 판의 베팅금은 사라져요."
         busy={busy}
         onConfirm={startPaid}
       />

@@ -3,6 +3,7 @@ import { createClient } from '@/lib/client'
 export type OddEvenRun = {
   id: string
   stake: number
+  initialStake?: number
   wins: number
   round: number
   stage: 'choose' | 'decision' | 'lost' | 'banked'
@@ -19,7 +20,8 @@ export type OddEvenAction = {
 }
 export type OddEvenRank = {
   avatarPath?: string | null
-  levelProgress?:number;level?: number
+  levelProgress?: number
+  level?: number
   rank: number
   id: string
   gold: number
@@ -46,7 +48,7 @@ export function oddEvenError(cause: unknown) {
   const e = cause as { code?: string; message?: string }
   if (e.code === 'PGRST202' || e.code === '42883')
     return '게임 서버 설정이 필요해요. 무료 연습은 이용할 수 있어요.'
-  if (e.message?.includes('INSUFFICIENT_GOLD')) return '첫 베팅금 10골드가 부족해요.'
+  if (e.message?.includes('INSUFFICIENT_GOLD')) return '첫 베팅금 30골드가 부족해요.'
   if (e.message?.includes('GOLD_LIMIT'))
     return '골드 보유 한도에 도달했어요. 확보 금액은 보관되어 있어요.'
   return '연결을 확인하고 다시 시도해주세요. 실전 진행과 확보 금액은 유지돼요.'

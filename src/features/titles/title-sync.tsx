@@ -1,14 +1,56 @@
-import {useEffect} from 'react'
-import {useAuth} from '@/components/auth-provider'
-import {useSocial} from '@/features/social/social-provider'
-import {syncTitles} from './api'
+import { useEffect } from 'react'
+import { useAuth } from '@/components/auth-provider'
+import { useSocial } from '@/features/social/social-provider'
+import { createClient } from '@/lib/client'
+import { hasBackgroundSession, isAuthFailure } from '@/lib/background-session'
+import { syncTitles } from './api'
 
-export function TitleSync(){
- const {session}=useAuth();const {refresh}=useSocial()
- useEffect(()=>{if(!session)return;let active=true,running=false;
-  const sync=async()=>{if(running||document.visibilityState==='hidden')return;running=true;try{const n=await syncTitles();if(active&&n>0)await refresh()}catch{/* The drawer exposes connection failures; background checks retry later. */}finally{running=false}}
-  void sync();const timer=setInterval(()=>void sync(),30000);window.addEventListener('focus',sync);window.addEventListener('quest-progress-changed',sync);document.addEventListener('visibilitychange',sync)
-  return()=>{active=false;clearInterval(timer);window.removeEventListener('focus',sync);window.removeEventListener('quest-progress-changed',sync);document.removeEventListener('visibilitychange',sync)}
- },[session?.user.id,refresh])
- return null
+export function TitleSync() {
+  const { session, recovery } = useAuth()
+  const { refresh } = useSocial()
+  const owner = !recovery ? session?.user.id : undefined
+  useEffect(() => {
+    if (!owner) return
+    let active = true, running = false, pending = false, blocked = false, lastRun = 0
+    let timer: ReturnType<typeof setTimeout> | undefined
+    const schedule = () => {
+      pending = true
+      if (!active || blocked || running || document.hidden) return
+      clearTimeout(timer)
+      timer = setTimeout(() => void sync(), Math.max(1000, lastRun + 60000 - Date.now()))
+    }
+    const sync = async () => {
+      if (!active || running || blocked || document.hidden) return
+      running = true
+      pending = false
+      lastRun = Date.now()
+      try {
+        if (!await hasBackgroundSession(owner) || !active) return
+        const count = await syncTitles()
+        if (active && count > 0) await refresh()
+      } catch (cause) {
+        blocked = isAuthFailure(cause)
+      } finally {
+        running = false
+        if (pending && active) schedule()
+      }
+    }
+    const resume = () => { schedule() }
+    const { data: { subscription } } = createClient().auth.onAuthStateChange(() => { blocked = false; schedule() })
+    schedule()
+    window.addEventListener('quest-progress-changed', schedule)
+    window.addEventListener('focus', resume)
+    window.addEventListener('online', resume)
+    document.addEventListener('visibilitychange', resume)
+    return () => {
+      active = false
+      clearTimeout(timer)
+      subscription.unsubscribe()
+      window.removeEventListener('quest-progress-changed', schedule)
+      window.removeEventListener('focus', resume)
+      window.removeEventListener('online', resume)
+      document.removeEventListener('visibilitychange', resume)
+    }
+  }, [owner, refresh])
+  return null
 }

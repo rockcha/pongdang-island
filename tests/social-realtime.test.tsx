@@ -2,7 +2,7 @@ import { act, cleanup, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { SocialProvider, useSocial } from '@/features/social/social-provider'
 import { useAuth } from '@/components/auth-provider'
-import { syncProfile } from '@/features/friends/api'
+import { loadFriendRequests, syncProfile } from '@/features/friends/api'
 import { loadNotifications } from '@/features/notifications/api'
 import type { Session } from '@supabase/supabase-js'
 import type {AppNotification} from '@/features/social/types'
@@ -11,22 +11,25 @@ const mocks = vi.hoisted(() => ({
   channels: [] as { handlers: { options: Record<string, string>; callback: (payload: unknown) => void }[]; status?: (value: string) => void }[],
   removeChannel: vi.fn(), toast: vi.fn(),
 }))
+vi.mock('@/lib/background-session', () => ({hasBackgroundSession: async () => true,isAuthFailure: () => false}))
 vi.mock('@/components/auth-provider', () => ({ useAuth: vi.fn(), getNickname: (session: Session | null) => session?.user.user_metadata.game_nickname ?? '' }))
 vi.mock('@/features/friends/api', () => ({ syncProfile: vi.fn(), loadProfile: vi.fn().mockResolvedValue({id: 'user-a', nickname:'낚시꾼',friend_code:'ABCDEF123456',avatar_path:null}), loadFriendRequests: vi.fn().mockResolvedValue([]) }))
 vi.mock('@/features/notifications/api', () => ({ loadNotifications: vi.fn(),refreshReturnNotifications:vi.fn().mockResolvedValue({created:0,nextAt:null,serverNow:'2026-10-21T00:00:00Z'}) }))
 vi.mock('sonner', () => ({ toast: { info: mocks.toast } }))
 vi.mock('@/lib/client', () => ({ createClient: () => ({
   removeChannel: mocks.removeChannel,
+  auth:{onAuthStateChange:()=>({data:{subscription:{unsubscribe:vi.fn()}}})},
   channel: () => {
     const entry: typeof mocks.channels[number] = { handlers: [] }
     mocks.channels.push(entry)
     const chain = {
       on: (_type: string, options: Record<string, string>, callback: (payload: unknown) => void) => { entry.handlers.push({ options, callback }); return chain },
-      subscribe: (callback: (value: string) => void) => { entry.status = callback; return chain },
+      subscribe: (callback?: (value: string) => void) => { entry.status = callback; return chain },
     }
     return chain
   },
 }) }))
+function socialChannel() { return mocks.channels.find(c=>c.handlers.some(h=>h.options.table==='notifications'))! }
 function identity(id: string) {
   return { session: { user: { id, user_metadata: { game_nickname: '낚시꾼' } } } as Session, loading: false, recovery: false, error: null }
 }
@@ -36,6 +39,7 @@ function Probe() {
 }
 beforeEach(() => {
   mocks.channels.length = 0
+  vi.mocked(loadFriendRequests).mockResolvedValue([])
   vi.mocked(useAuth).mockReturnValue(identity('user-a'))
   vi.mocked(syncProfile).mockResolvedValue({ id: 'user-a', nickname: '낚시꾼', friend_code: 'ABCDEF123456', created_at: '' })
   vi.mocked(loadNotifications).mockResolvedValue({ notifications: [], unread: { friend: 1, general: 2 } })
@@ -51,7 +55,7 @@ describe('realtime social lifecycle', () => {
     await waitFor(()=>expect(mocks.toast).toHaveBeenCalledTimes(1))
     expect(mocks.toast.mock.calls.some(call=>call[0]===boat.title)).toBe(false)
     expect(mocks.toast.mock.calls.find(call=>call[0]===trap.title)?.[1].action.label).toBe('통발 보기')
-    const insert=mocks.channels[0].handlers.find(h=>h.options.table==='notifications'&&h.options.event==='INSERT')!
+    const insert=socialChannel().handlers.find(h=>h.options.table==='notifications'&&h.options.event==='INSERT')!
     act(()=>{insert.callback({new:boat});insert.callback({new:trap})})
     expect(mocks.toast).toHaveBeenCalledTimes(1)
   })
@@ -59,12 +63,12 @@ describe('realtime social lifecycle', () => {
     render(<SocialProvider><Probe /></SocialProvider>)
     await waitFor(() => expect(screen.getByTestId('count').textContent).toBe('3'))
     expect(mocks.toast).not.toHaveBeenCalled()
-    expect(mocks.channels[0].handlers.filter(h => h.options.table === 'notifications').every(h => h.options.filter === 'recipient_id=eq.user-a')).toBe(true)
+    expect(socialChannel().handlers.filter(h => h.options.table === 'notifications').every(h => h.options.filter === 'recipient_id=eq.user-a')).toBe(true)
   })
   it('deduplicates insertion toasts and refreshes stored data for updates', async () => {
     render(<SocialProvider><Probe /></SocialProvider>)
     await waitFor(() => expect(screen.getByTestId('count').textContent).toBe('3'))
-    const insert = mocks.channels[0].handlers.find(h => h.options.table === 'notifications' && h.options.event === 'INSERT')!
+    const insert = socialChannel().handlers.find(h => h.options.table === 'notifications' && h.options.event === 'INSERT')!
     const event = { new: { id: 'notification-1', title: '친구 요청', body: '함께해요', category: 'friend' } }
     act(() => { insert.callback(event); insert.callback(event) })
     expect(mocks.toast).toHaveBeenCalledTimes(1)
@@ -74,24 +78,36 @@ describe('realtime social lifecycle', () => {
   it('catches up on reconnect and removes the channel on unmount', async () => {
     const view = render(<SocialProvider><Probe /></SocialProvider>)
     await waitFor(() => expect(screen.getByTestId('count').textContent).toBe('3'))
-    act(() => mocks.channels[0].status?.('CHANNEL_ERROR'))
+    act(() => socialChannel().status?.('CHANNEL_ERROR'))
     expect(screen.getByTestId('connection').textContent).toBe('offline')
     vi.mocked(loadNotifications).mockResolvedValue({ notifications: [], unread: { friend: 0, general: 1 } })
-    act(() => mocks.channels[0].status?.('SUBSCRIBED'))
+    act(() => socialChannel().status?.('SUBSCRIBED'))
     await waitFor(() => expect(screen.getByTestId('count').textContent).toBe('1'))
     view.unmount()
-    expect(mocks.removeChannel).toHaveBeenCalledOnce()
+    expect(mocks.removeChannel).toHaveBeenCalledTimes(mocks.channels.length)
   })
   it('clears account data and ignores an old channel after logout', async () => {
     const view = render(<SocialProvider><Probe /></SocialProvider>)
     await waitFor(() => expect(screen.getByTestId('profile').textContent).toBe('user-a'))
-    const old = mocks.channels[0]
+    const old = socialChannel()
     vi.mocked(useAuth).mockReturnValue({ session: null, loading: false, recovery: false, error: null })
     view.rerender(<SocialProvider><Probe /></SocialProvider>)
     expect(screen.getByTestId('profile').textContent).toBe('none')
     expect(screen.getByTestId('count').textContent).toBe('0')
     act(() => old.handlers[0].callback({ new: { id: 'old', category: 'friend', title: 'old' } }))
     expect(mocks.toast).not.toHaveBeenCalled()
-    expect(mocks.removeChannel).toHaveBeenCalledOnce()
+    expect(mocks.removeChannel).toHaveBeenCalledTimes(mocks.channels.length)
   })
+})
+
+it('filters profile subscriptions and applies profile updates without inbox refetches', async () => {
+ render(<SocialProvider><Probe /></SocialProvider>)
+ await waitFor(()=>expect(screen.getByTestId('count').textContent).toBe('3'))
+ const subscriptions=mocks.channels.flatMap(channel=>channel.handlers).filter(h=>h.options.table==='player_profiles')
+ expect(subscriptions).toHaveLength(1)
+ expect(subscriptions[0].options.filter).toBe('id=in.(user-a)')
+ const before=vi.mocked(loadNotifications).mock.calls.length
+ act(()=>subscriptions[0].callback({new:{id:'user-a',nickname:'Updated'}}))
+ await act(async()=>{})
+ expect(vi.mocked(loadNotifications).mock.calls.length).toBe(before)
 })

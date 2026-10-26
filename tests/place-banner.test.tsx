@@ -7,6 +7,11 @@ import { PlaceBanner,placeBanners } from '../src/components/place-banner'
 
 const render=(ui:ReactElement)=>baseRender(ui,{wrapper:MemoryRouter})
 afterEach(cleanup)
+it('renders the sponsorship introduction beneath its compact banner title',()=>{
+ render(<PlaceBanner pathname="/square/sponsorship"/>)
+ expect(screen.getByRole('heading',{name:'후원소'})).toBeTruthy()
+ expect(screen.getByText('골드를 후원하고, 이웃의 마음을 받아요')).toBeTruthy()
+})
 it('gives storage its own banner',()=>{
  render(<PlaceBanner pathname="/storage"/>)
  expect(screen.getByRole('heading',{name:'보관함'})).toBeTruthy()

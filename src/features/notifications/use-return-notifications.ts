@@ -9,6 +9,7 @@ export function useReturnNotifications(owner:string|undefined,refresh:()=>Promis
   if(!owner)return
   let active=true,loading=false
   let arrival:ReturnType<typeof setTimeout>|undefined
+  let debounce:ReturnType<typeof setTimeout>|undefined
   async function check(reload=false){
    if(!active||loading||document.visibilityState==='hidden')return
    loading=true
@@ -26,13 +27,13 @@ export function useReturnNotifications(owner:string|undefined,refresh:()=>Promis
     if(active&&reload)await latestRefresh.current().catch(()=>{})
    }finally{loading=false}
   }
-  const update=()=>void check(true)
+  const update=()=>{clearTimeout(debounce);debounce=setTimeout(()=>void check(true),120)}
   void check()
-  const interval=setInterval(update,60000)
+  const interval=setInterval(update,300000)
   for(const event of ['focus','online','harbor-changed','expedition-changed','production-changed'])window.addEventListener(event,update)
   document.addEventListener('visibilitychange',update)
   return()=>{
-   active=false;clearInterval(interval);clearTimeout(arrival)
+   active=false;clearInterval(interval);clearTimeout(arrival);clearTimeout(debounce)
    for(const event of ['focus','online','harbor-changed','expedition-changed','production-changed'])window.removeEventListener(event,update)
    document.removeEventListener('visibilitychange',update)
   }

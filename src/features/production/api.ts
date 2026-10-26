@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/client'
+import { getQueryAccount, readAccountResource, resourceChanged } from '@/lib/account-cache'
 export type ProductionFacility = {
   id: string
   siteId?: string
@@ -62,8 +63,9 @@ export type ProductionBulkAction = {
   p_steps: import('./bulk-plan').BulkStep[]
   p_allow_valuable: boolean
 }
-export async function loadProduction() {
-  const { data, error } = await createClient().rpc('production_state', {})
+export const loadProduction = () => readAccountResource('production', readProduction)
+export async function readProduction(signal: AbortSignal) {
+  const { data, error } = await createClient().rpc('production_state', {}).abortSignal(signal)
   if (error) throw error
   return data
 }
@@ -73,6 +75,7 @@ export async function loadProductionMaterials(id: string) {
   return data
 }
 export async function actProduction({ p_quantity, ...args }: ProductionAction) {
+  const scope = getQueryAccount()
   const { data, error } =
     args.p_action === 'buy' && (p_quantity ?? 1) !== 1
       ? await createClient().rpc('production_purchase', {
@@ -83,15 +86,16 @@ export async function actProduction({ p_quantity, ...args }: ProductionAction) {
       : await createClient().rpc('production_action', args)
   if (error) throw error
   window.dispatchEvent(new Event('wallet-changed'))
-  window.dispatchEvent(new Event('production-changed'))
+  resourceChanged('production', 'production-changed', data, scope)
   if (args.p_action === 'start') window.dispatchEvent(new Event('collectibles-changed'))
   return data
 }
 export async function actProductionBulk(args: ProductionBulkAction) {
+  const scope = getQueryAccount()
   const { data, error } = await createClient().rpc('production_bulk_action', args)
   if (error) throw error
   window.dispatchEvent(new Event('wallet-changed'))
-  window.dispatchEvent(new Event('production-changed'))
+  resourceChanged('production', 'production-changed', data, scope)
   if (args.p_action === 'start') window.dispatchEvent(new Event('collectibles-changed'))
   return data
 }

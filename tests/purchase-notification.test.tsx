@@ -4,7 +4,7 @@ import {GoldProvider,useGold} from '@/features/gold/gold-provider'
 import {purchaseMessage} from '@/features/gold/purchase-message'
 const {load,trade,success}=vi.hoisted(()=>({load:vi.fn(),trade:vi.fn(),success:vi.fn()}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'buyer'}}})}))
-vi.mock('@/features/gold/api',()=>({loadGold:load,transactGold:trade,goldError:()=> '구매 실패'}))
+vi.mock('@/features/gold/api',()=>({loadGold:load,readGold:load,transactGold:trade,goldError:()=> '구매 실패'}))
 vi.mock('sonner',()=>({toast:{success}}))
 const wallet={gold:5000,inventory:{},testClaimed:false,testEnabled:false}
 beforeEach(()=>{load.mockResolvedValue(wallet);trade.mockResolvedValue({...wallet,gold:4200,delta:-800})})

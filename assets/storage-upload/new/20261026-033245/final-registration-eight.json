@@ -1,0 +1,61 @@
+﻿{
+    "file":  "assets\\storage-upload\\new\\20261026-033245\\fish\\mythic\\dreamabyss-ancient-sleeper_swim8_v1_sprite.png",
+    "storage_path":  "fish/mythic/dreamabyss-ancient-sleeper_swim8_v1_sprite.png",
+    "patch":  [
+                  411,
+                  242,
+                  30,
+                  30
+              ],
+    "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames":  [
+                   {
+                       "frame":  0,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  0
+                   },
+                   {
+                       "frame":  1,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  10.871982339941507
+                   },
+                   {
+                       "frame":  2,
+                       "dx":  1,
+                       "dy":  0,
+                       "rmse":  7.7467735219251121
+                   },
+                   {
+                       "frame":  3,
+                       "dx":  -2,
+                       "dy":  0,
+                       "rmse":  8.92370438775288
+                   },
+                   {
+                       "frame":  4,
+                       "dx":  0,
+                       "dy":  0,
+                       "rmse":  11.591699616535964
+                   },
+                   {
+                       "frame":  5,
+                       "dx":  -1,
+                       "dy":  -1,
+                       "rmse":  13.164440740115017
+                   },
+                   {
+                       "frame":  6,
+                       "dx":  0,
+                       "dy":  -1,
+                       "rmse":  12.613881242504227
+                   },
+                   {
+                       "frame":  7,
+                       "dx":  -2,
+                       "dy":  -1,
+                       "rmse":  10.315643460298539
+                   }
+               ]
+}

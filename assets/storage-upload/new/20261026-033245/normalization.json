@@ -1,0 +1,366 @@
+[
+  {
+    "id": "dreamabyss-hallucination-coral-crab",
+    "method": "One scale and common centering for all poses; measured rigid-body translations baked into cells",
+    "cell": 512,
+    "scale": 0.7551079136690647,
+    "translateX": 3.793956834532395,
+    "translateY": -12.440863309352494,
+    "rawOffsets": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -5,
+        "dy": 0,
+        "rmse": 3.8841558499456053
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -52,
+        "rmse": 3.6933874845609025
+      },
+      {
+        "frame": 3,
+        "dx": -4,
+        "dy": -52,
+        "rmse": 3.3891985286593447
+      }
+    ]
+  },
+  {
+    "id": "dreamabyss-reverie-whelk",
+    "method": "One scale and common centering for all poses; measured rigid-body translations baked into cells",
+    "cell": 512,
+    "scale": 0.7760443622920518,
+    "translateX": -8.243105360443622,
+    "translateY": -39.2848798521257,
+    "rawOffsets": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -7,
+        "dy": 1,
+        "rmse": 1.93362066830309
+      },
+      {
+        "frame": 2,
+        "dx": 5,
+        "dy": -77,
+        "rmse": 3.3068951533962423
+      },
+      {
+        "frame": 3,
+        "dx": -10,
+        "dy": -75,
+        "rmse": 3.352113760997181
+      }
+    ]
+  },
+  {
+    "id": "dreamabyss-dream-clam",
+    "method": "One scale and common centering for all poses; measured rigid-body translations baked into cells",
+    "cell": 512,
+    "scale": 0.8248330058939096,
+    "translateX": -19.906640471512787,
+    "translateY": -47.53854616895876,
+    "rawOffsets": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -19,
+        "dy": -2,
+        "rmse": 16.789960624664303
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": -56,
+        "rmse": 11.11016489026553
+      },
+      {
+        "frame": 3,
+        "dx": -18,
+        "dy": -55,
+        "rmse": 12.691108545399457
+      }
+    ]
+  },
+  {
+    "id": "dreamabyss-violet-ghost-shark",
+    "method": "One scale and common centering for all poses; measured rigid-body translations baked into cells",
+    "cell": 512,
+    "scale": 0.7201372212692967,
+    "translateX": 15.834236706689552,
+    "translateY": -11.17090909090905,
+    "rawOffsets": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -26,
+        "dy": 0,
+        "rmse": 17.61236117822336
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": -82,
+        "rmse": 14.725546372760888
+      },
+      {
+        "frame": 3,
+        "dx": -27,
+        "dy": -81,
+        "rmse": 21.65982292157724
+      }
+    ]
+  },
+  {
+    "id": "dreamabyss-slumber-curtain",
+    "method": "One scale and common centering for all poses; measured rigid-body translations baked into cells",
+    "cell": 512,
+    "scale": 0.7689377289377289,
+    "translateX": 0.7126739926739845,
+    "translateY": -21.970989010989,
+    "rawOffsets": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -23,
+        "dy": 20,
+        "rmse": 20.150992531386635
+      },
+      {
+        "frame": 2,
+        "dx": -13,
+        "dy": -33,
+        "rmse": 18.628312607755028
+      },
+      {
+        "frame": 3,
+        "dx": -8,
+        "dy": -33,
+        "rmse": 10.840918328448085
+      }
+    ]
+  },
+  {
+    "id": "dreamabyss-moon-dream-wings",
+    "method": "One scale and common centering for all poses; measured rigid-body translations baked into cells",
+    "cell": 512,
+    "scale": 0.7213745704467354,
+    "translateX": 20.110515463917523,
+    "translateY": 3.5189003436426276,
+    "rawOffsets": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -19,
+        "dy": 3,
+        "rmse": 30.906190351462218
+      },
+      {
+        "frame": 2,
+        "dx": -4,
+        "dy": -84,
+        "rmse": 26.214018099062173
+      },
+      {
+        "frame": 3,
+        "dx": -19,
+        "dy": -62,
+        "rmse": 25.83063953477556
+      }
+    ]
+  },
+  {
+    "id": "dreamabyss-reverie-seadragon",
+    "method": "One scale and common centering for all poses; measured rigid-body translations baked into cells",
+    "cell": 512,
+    "scale": 0.7213745704467354,
+    "translateX": 17.225017182130586,
+    "translateY": -3.3341580756013514,
+    "rawOffsets": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -23,
+        "dy": 3,
+        "rmse": 25.492213344009002
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -50,
+        "rmse": 23.676345320405606
+      },
+      {
+        "frame": 3,
+        "dx": -21,
+        "dy": -47,
+        "rmse": 32.083628904746405
+      }
+    ]
+  },
+  {
+    "id": "dreamabyss-somnambulist",
+    "method": "One scale and common centering for all poses; measured rigid-body translations baked into cells",
+    "cell": 512,
+    "scale": 0.844748490945674,
+    "translateX": -18.120885311871177,
+    "translateY": -50.221327967806815,
+    "rawOffsets": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -12,
+        "dy": 0,
+        "rmse": 20.79405821726142
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -88,
+        "rmse": 16.474392621426077
+      },
+      {
+        "frame": 3,
+        "dx": -11,
+        "dy": -88,
+        "rmse": 13.968532419663266
+      }
+    ]
+  },
+  {
+    "id": "dreamabyss-lilac-sea-cucumber",
+    "method": "One scale and common centering for all poses; measured rigid-body translations baked into cells",
+    "cell": 512,
+    "scale": 0.7789239332096475,
+    "translateX": -10.00252319109461,
+    "translateY": -41.159480519480496,
+    "rawOffsets": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -27,
+        "dy": 6,
+        "rmse": 4.479830080596853
+      },
+      {
+        "frame": 2,
+        "dx": -10,
+        "dy": -71,
+        "rmse": 8.0377775129036
+      },
+      {
+        "frame": 3,
+        "dx": -14,
+        "dy": -68,
+        "rmse": 6.178261759374309
+      }
+    ]
+  },
+  {
+    "id": "dreamabyss-ancient-sleeper",
+    "method": "One scale and common centering for all poses; measured rigid-body translations baked into cells",
+    "cell": 512,
+    "scale": 1.2458160237388722,
+    "translateX": -34.89804154302669,
+    "translateY": -88.46813056379818,
+    "rawOffsets": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -8,
+        "dy": -1,
+        "rmse": 10.055121518410406
+      },
+      {
+        "frame": 2,
+        "dx": -12,
+        "dy": 0,
+        "rmse": 8.072909946233763
+      },
+      {
+        "frame": 3,
+        "dx": -13,
+        "dy": -1,
+        "rmse": 10.146004447564568
+      },
+      {
+        "frame": 4,
+        "dx": 0,
+        "dy": -49,
+        "rmse": 10.772686816667418
+      },
+      {
+        "frame": 5,
+        "dx": -1,
+        "dy": -47,
+        "rmse": 14.973283499286321
+      },
+      {
+        "frame": 6,
+        "dx": -9,
+        "dy": -48,
+        "rmse": 11.597076679060116
+      },
+      {
+        "frame": 7,
+        "dx": -9,
+        "dy": -48,
+        "rmse": 11.29383819832744
+      }
+    ]
+  }
+]

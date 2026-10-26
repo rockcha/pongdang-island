@@ -178,7 +178,7 @@ export function PlaceBanner({ pathname }: { pathname: string }) {
         title: square.bannerTitle,
         image: square.banner,
         description: square.description,
-        subtitle: boardList ? square.description : '',
+        subtitle: pathname.replace(/\/$/,'') === '/square/begging' ? square.description : pathname.replace(/\/$/,'') === '/square/sponsorship' ? '골드를 후원하고, 이웃의 마음을 받아요' : boardList ? square.description : '',
       }
     : base
   const game = pathname.startsWith('/arcade/')
@@ -245,7 +245,7 @@ export function PlaceBanner({ pathname }: { pathname: string }) {
             steps={bannerGuide(pathname)}
           />
         </div>
-        {(!compact || boardList) && (
+        {banner.subtitle && (
           <p className="text-xs leading-5 text-white">{banner.subtitle}</p>
         )}
       </div>

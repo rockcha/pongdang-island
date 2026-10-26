@@ -1,4 +1,5 @@
 import {createClient} from '@/lib/client'
+import {readAccountResource} from '@/lib/account-cache'
 
 export type ExperienceState={level:number;totalXp:number;currentXp:number;nextLevelXp:number;legacyXp:number}
 export type FriendLevel={friendId:string;level:number}
@@ -15,8 +16,9 @@ export async function loadFriendLevels():Promise<FriendLevel[]>{
  return data
 }
 
-export async function loadExperience():Promise<ExperienceState>{
- const {data,error}=await createClient().rpc('experience_state')
+export const loadExperience=():Promise<ExperienceState>=>readAccountResource('experience',readExperience)
+export async function readExperience(signal:AbortSignal):Promise<ExperienceState>{
+ const {data,error}=await createClient().rpc('experience_state').abortSignal(signal)
  if(error)throw error
  return data
 }

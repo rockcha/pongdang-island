@@ -1,0 +1,181 @@
+[
+  {
+    "id": "dreamabyss-ancient-sleeper",
+    "rawAudit": {
+      "cell": 443.5,
+      "bounds": [
+        [
+          74,
+          190,
+          327,
+          169
+        ],
+        [
+          64,
+          196,
+          329,
+          168
+        ],
+        [
+          63,
+          183,
+          327,
+          175
+        ],
+        [
+          60,
+          198,
+          327,
+          164
+        ],
+        [
+          69,
+          140,
+          332,
+          165
+        ],
+        [
+          64,
+          137,
+          336,
+          186
+        ],
+        [
+          61,
+          137,
+          332,
+          174
+        ],
+        [
+          59,
+          138,
+          332,
+          176
+        ]
+      ]
+    },
+    "rawAnchor": {
+      "file": "assets/storage-upload/new/20261026-033245/generated/dreamabyss-ancient-sleeper_sheet.source",
+      "storage_path": "fish/mythic/dreamabyss-ancient-sleeper_swim8_v1_sprite.png",
+      "patch": [
+        358,
+        265,
+        24,
+        24
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -8,
+          "dy": -1,
+          "rmse": 10.055121518410406
+        },
+        {
+          "frame": 2,
+          "dx": -12,
+          "dy": 0,
+          "rmse": 8.072909946233763
+        },
+        {
+          "frame": 3,
+          "dx": -13,
+          "dy": -1,
+          "rmse": 10.146004447564568
+        },
+        {
+          "frame": 4,
+          "dx": 0,
+          "dy": -49,
+          "rmse": 10.772686816667418
+        },
+        {
+          "frame": 5,
+          "dx": -1,
+          "dy": -47,
+          "rmse": 14.973283499286321
+        },
+        {
+          "frame": 6,
+          "dx": -9,
+          "dy": -48,
+          "rmse": 11.597076679060116
+        },
+        {
+          "frame": 7,
+          "dx": -9,
+          "dy": -48,
+          "rmse": 11.29383819832744
+        }
+      ]
+    },
+    "finalAnchor": {
+      "file": "assets\\storage-upload\\new\\20261026-033245\\fish\\mythic\\dreamabyss-ancient-sleeper_swim8_v1_sprite.png",
+      "storage_path": "fish/mythic/dreamabyss-ancient-sleeper_swim8_v1_sprite.png",
+      "patch": [
+        411,
+        242,
+        30,
+        30
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 10.871982339941507
+        },
+        {
+          "frame": 2,
+          "dx": 1,
+          "dy": 0,
+          "rmse": 7.746773521925112
+        },
+        {
+          "frame": 3,
+          "dx": -2,
+          "dy": 0,
+          "rmse": 8.92370438775288
+        },
+        {
+          "frame": 4,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 11.591699616535964
+        },
+        {
+          "frame": 5,
+          "dx": -1,
+          "dy": -1,
+          "rmse": 13.164440740115017
+        },
+        {
+          "frame": 6,
+          "dx": 0,
+          "dy": -1,
+          "rmse": 12.613881242504227
+        },
+        {
+          "frame": 7,
+          "dx": -2,
+          "dy": -1,
+          "rmse": 10.315643460298539
+        }
+      ]
+    },
+    "scope": "Raw alpha>=32 margins >=8%; uniform scale across poses; measured rigid-head registration before and after normalization"
+  }
+]

@@ -1,5 +1,6 @@
 // @vitest-environment node
 import {beforeAll,afterAll,beforeEach,afterEach,expect,it} from 'vitest'
+import {readFileSync} from 'node:fs'
 import {createLocalDatabase,replayMigrations} from '../scripts/db/local.mjs'
 let db:Awaited<ReturnType<typeof createLocalDatabase>>
 const seller='00000000-0000-0000-0000-000000001401',buyer='00000000-0000-0000-0000-000000001402',other='00000000-0000-0000-0000-000000001403'
@@ -82,11 +83,27 @@ it('paginates comments, rejects empty/oversized comments and prevents direct cli
  await expect(value(buyer,'select public.add_exchange_listing_comment($1,$2,$3) value',[l.id,'   ',crypto.randomUUID()])).rejects.toThrow('INVALID_EXCHANGE_COMMENT')
  await expect(value(buyer,'select public.add_exchange_listing_comment($1,$2,$3) value',[l.id,'x'.repeat(501),crypto.randomUUID()])).rejects.toThrow('INVALID_EXCHANGE_COMMENT')
  for(let i=0;i<32;i++)await value(buyer,'select public.add_exchange_listing_comment($1,$2,$3) value',[l.id,'댓글 '+i,crypto.randomUUID()])
+ const ids=(await db.query('select id from public.exchange_listing_comments where listing_id=$1 order by created_at,id',[l.id])).rows.map(c=>c.id)
  const a=await value(buyer,'select public.exchange_listing_detail($1,0) value',[l.id]),b=await value(buyer,'select public.exchange_listing_detail($1,30) value',[l.id])
  expect(a.comments).toHaveLength(30);expect(b.comments).toHaveLength(2)
  expect(new Set([...a.comments,...b.comments].map(c=>c.id)).size).toBe(32)
+ expect([...a.comments,...b.comments].map(c=>c.id)).toEqual(ids)
  expect(a.listing.comment_count).toBe(32)
  await expect(asUser(buyer,'insert into public.exchange_listing_likes(listing_id,user_id) values($1,$2)',[l.id,other])).rejects.toThrow('permission denied')
+})
+it('shows older comments before newer ones, using IDs to break timestamp ties',async()=>{
+ const l=await post()
+ for(const [id,at,body] of [
+  ['30000000-0000-0000-0000-000000000003','2026-10-25T12:02:00Z','newest'],
+  ['30000000-0000-0000-0000-000000000002','2026-10-25T12:01:00Z','same-time-second'],
+  ['30000000-0000-0000-0000-000000000001','2026-10-25T12:01:00Z','same-time-first'],
+  ['30000000-0000-0000-0000-000000000004','2026-10-25T12:00:00Z','oldest'],
+ ])await db.query('insert into public.exchange_listing_comments(id,listing_id,user_id,body,created_at,operation_id) values($1,$2,$3,$4,$5,gen_random_uuid())',[id,l.id,buyer,body,at])
+ const detail=await value(buyer,'select public.exchange_listing_detail($1,0) value',[l.id])
+ expect(detail.comments.map(c=>c.body)).toEqual(['oldest','same-time-first','same-time-second','newest'])
+})
+it('runs the remote oldest-first pagination smoke against synthetic accounts',async()=>{
+ await db.exec(readFileSync('tests/fixtures/exchange-comments-order-smoke.sql','utf8'))
 })
 it('keeps completed details visible and hides cancelled listings from other users',async()=>{
  const l=await post()

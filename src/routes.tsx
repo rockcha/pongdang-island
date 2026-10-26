@@ -10,6 +10,8 @@ const FirstFishingPage=lazy(()=>import('@/features/onboarding/first-fishing-page
 const MerchantPage=lazy(()=>import('@/features/merchant/merchant-page').then(module=>({default:module.MerchantPage})))
 const HallPage=lazy(()=>import('@/features/hall-of-fame/hall-page').then(module=>({default:module.HallPage})))
 const ShowcasePage=lazy(()=>import('@/features/showcase/showcase-page').then(module=>({default:module.ShowcasePage})))
+const SponsorshipPage=lazy(()=>import('@/features/sponsorship/sponsorship-page').then(module=>({default:module.SponsorshipPage})))
+const BeggingPage=lazy(()=>import('@/features/begging/begging-page').then(module=>({default:module.BeggingPage})))
 const ShowcaseEditor=lazy(()=>import('@/features/showcase/showcase-editor').then(module=>({default:module.ShowcaseEditor})))
 const ShowcasePreview=lazy(()=>import('@/features/showcase/showcase-preview').then(module=>({default:module.ShowcasePreview})))
 const DownloadPage=lazy(()=>import('@/pages/download-page').then(module=>({default:module.DownloadPage})))
@@ -71,6 +73,8 @@ export function AppRoutes() {
         <Route element={<AuthGuard />}>
           <Route path="nickname" element={<NicknamePage />} />
           <Route element={<AuthGuard requireNickname />}>
+            <Route path="square/sponsorship" element={<SponsorshipPage />} />
+            <Route path="square/begging" element={<BeggingPage />} />
           <Route element={<FirstFishingGate/>}>
             <Route path="first-fishing" element={<FirstFishingPage/>}/>
             <Route index element={<Navigate to="/aquarium" replace />} />

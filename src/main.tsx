@@ -7,6 +7,7 @@ import App from './App.tsx'
 import {initializePwaInstall} from '@/features/pwa/install'
 import {AppReady,AppRecovery,AppRecoveryBoundary} from '@/components/app-recovery'
 import {OverlayHistoryTracker} from '@/components/overlay-back'
+import {AppQueryProvider} from '@/lib/account-query'
 
 initializePwaInstall()
 
@@ -16,7 +17,7 @@ const AquariumLab = import.meta.env.DEV ? lazy(() => import('@/features/aquarium
 const router=createBrowserRouter([
  ...(BaitLab ? [{path:'/bait-lab',element:<Suspense fallback={<p>로컬 미끼 테스트 준비 중…</p>}><BaitLab/></Suspense>}] : []),
  ...(AquariumLab ? [{path:'/aquarium-lab',element:<Suspense fallback={<p>넓은 어항을 준비하고 있어요…</p>}><AquariumLab/><AppReady/></Suspense>}] : []),
- {path:'*',element:<AuthProvider><OverlayHistoryTracker/><App /><AppReady/></AuthProvider>,errorElement:<AppRecovery/>},
+ {path:'*',element:<AuthProvider><AppQueryProvider><OverlayHistoryTracker/><App /><AppReady/></AppQueryProvider></AuthProvider>,errorElement:<AppRecovery/>},
 ])
 
 createRoot(document.getElementById('root')!).render(

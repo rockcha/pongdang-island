@@ -1747,6 +1747,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "broken-generator",
+      "kind": "trash",
+      "name": "고장 난 발전기",
+      "description": "시동줄을 당겨도 조용한 작은 발전기. 끊어진 전선과 금이 간 계기판만 남았다.",
+      "swim_y_min": "0.84",
+      "swim_y_max": "0.92",
+      "speed": "0.001",
+      "size": 66,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/broken-generator_thumbnail.png",
+      "sell_price": 3,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "broken-survey-cable",
       "kind": "trash",
       "name": "끊어진 탐사 케이블",
@@ -2737,6 +2755,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "discarded-battery",
+      "kind": "trash",
+      "name": "폐기된 배터리",
+      "description": "충전도 불빛도 멈춘 낡은 배터리. 벗겨진 외장에 하얀 소금 자국이 남아 있다.",
+      "swim_y_min": "0.88",
+      "swim_y_max": "0.94",
+      "speed": "0.001",
+      "size": 48,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/discarded-battery_thumbnail.png",
+      "sell_price": 3,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "discarded-oxygen-tank",
       "kind": "trash",
       "name": "버려진 산소통",
@@ -2806,6 +2842,186 @@
       "native_region_id": null,
       "movement_type": "fixed",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "dreamabyss-ancient-sleeper",
+      "kind": "fish",
+      "name": "잠든 고대 생명체",
+      "description": "아득한 옛 바다에서부터 잠든 고대 생명체예요. 눈을 감은 채 심해를 배회하며 조용히 숨을 쉬어요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.76",
+      "speed": "0.010",
+      "size": 150,
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/dreamabyss-ancient-sleeper_thumbnail.png",
+      "sell_price": 2960,
+      "sprite_sheet_path": "fish/mythic/dreamabyss-ancient-sleeper_compat_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "dreamabyss-dream-clam",
+      "kind": "fish",
+      "name": "꿈조개",
+      "description": "보랏빛 껍데기를 여닫으며 꿈결처럼 부드럽게 헤엄쳐요.",
+      "swim_y_min": "0.46",
+      "swim_y_max": "0.80",
+      "speed": "0.007",
+      "size": 42,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/dreamabyss-dream-clam_thumbnail.png",
+      "sell_price": 55,
+      "sprite_sheet_path": "fish/normal/dreamabyss-dream-clam_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "dreamabyss-hallucination-coral-crab",
+      "kind": "fish",
+      "name": "환각산호게",
+      "description": "보랏빛 산호가 자란 등껍질을 지고 심연의 바닥을 사뿐사뿐 걸어요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.96",
+      "speed": "0.007",
+      "size": 48,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/dreamabyss-hallucination-coral-crab_thumbnail.png",
+      "sell_price": 58,
+      "sprite_sheet_path": "fish/normal/dreamabyss-hallucination-coral-crab_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "dreamabyss-lilac-sea-cucumber",
+      "kind": "fish",
+      "name": "라일락 해삼",
+      "description": "라일락빛 작은 돌기가 돋은 해삼이에요. 작은 관족으로 심연의 바닥을 느릿느릿 걸어요.",
+      "swim_y_min": "0.87",
+      "swim_y_max": "0.97",
+      "speed": "0.004",
+      "size": 50,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/dreamabyss-lilac-sea-cucumber_thumbnail.png",
+      "sell_price": 50,
+      "sprite_sheet_path": "fish/normal/dreamabyss-lilac-sea-cucumber_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "dreamabyss-moon-dream-wings",
+      "kind": "fish",
+      "name": "월몽의 날개",
+      "description": "달빛을 머금은 거대한 가오리예요. 날갯짓할 때마다 꿈의 파편이 흩날려요.",
+      "swim_y_min": "0.20",
+      "swim_y_max": "0.72",
+      "speed": "0.016",
+      "size": 120,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/dreamabyss-moon-dream-wings_thumbnail.png",
+      "sell_price": 960,
+      "sprite_sheet_path": "fish/epic/dreamabyss-moon-dream-wings_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "dreamabyss-reverie-seadragon",
+      "kind": "fish",
+      "name": "몽환 해룡",
+      "description": "은은한 보랏빛 갈기와 긴 꼬리를 흔들며 꿈먹는 심연을 유영해요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.78",
+      "speed": "0.013",
+      "size": 116,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/dreamabyss-reverie-seadragon_thumbnail.png",
+      "sell_price": 1000,
+      "sprite_sheet_path": "fish/epic/dreamabyss-reverie-seadragon_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "dreamabyss-reverie-whelk",
+      "kind": "fish",
+      "name": "몽환 고둥",
+      "description": "라벤더빛 나선 껍데기에 고요한 꿈을 품고 천천히 기어가요.",
+      "swim_y_min": "0.88",
+      "swim_y_max": "0.97",
+      "speed": "0.004",
+      "size": 44,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/dreamabyss-reverie-whelk_thumbnail.png",
+      "sell_price": 52,
+      "sprite_sheet_path": "fish/normal/dreamabyss-reverie-whelk_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "dreamabyss-slumber-curtain",
+      "kind": "fish",
+      "name": "영면의 장막",
+      "description": "수많은 촉수로 보랏빛 장막을 펼쳐 주변을 깊은 잠에 빠뜨리는 해파리예요.",
+      "swim_y_min": "0.12",
+      "swim_y_max": "0.65",
+      "speed": "0.007",
+      "size": 106,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/dreamabyss-slumber-curtain_thumbnail.png",
+      "sell_price": 880,
+      "sprite_sheet_path": "fish/epic/dreamabyss-slumber-curtain_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "pulse",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "dreamabyss-somnambulist",
+      "kind": "fish",
+      "name": "심연의 몽유자",
+      "description": "반쯤 감긴 눈으로 꿈과 현실 사이를 떠돌며 부드러운 꼬리를 흔들어요.",
+      "swim_y_min": "0.28",
+      "swim_y_max": "0.78",
+      "speed": "0.012",
+      "size": 70,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/dreamabyss-somnambulist_thumbnail.png",
+      "sell_price": 225,
+      "sprite_sheet_path": "fish/rare/dreamabyss-somnambulist_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "dreamabyss-violet-ghost-shark",
+      "kind": "fish",
+      "name": "보랏빛 유령상어",
+      "description": "유령처럼 고요히 미끄러지는 상어예요. 보랏빛 몸 위로 별 같은 무늬가 반짝여요.",
+      "swim_y_min": "0.24",
+      "swim_y_max": "0.78",
+      "speed": "0.017",
+      "size": 112,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/dreamabyss-violet-ghost-shark_thumbnail.png",
+      "sell_price": 930,
+      "sprite_sheet_path": "fish/epic/dreamabyss-violet-ghost-shark_sprite.png",
+      "native_region_id": "dreamabyss",
+      "movement_type": "swim",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -8119,6 +8335,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "rusty-cogwheel",
+      "kind": "trash",
+      "name": "녹슨 톱니바퀴",
+      "description": "바닷물에 오래 잠겨 붉게 녹슨 톱니바퀴. 닳아 버린 이빨 사이로 모래가 끼어 있다.",
+      "swim_y_min": "0.90",
+      "swim_y_max": "0.95",
+      "speed": "0.001",
+      "size": 44,
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/rusty-cogwheel_thumbnail.png",
+      "sell_price": 3,
+      "sprite_sheet_path": null,
+      "native_region_id": null,
+      "movement_type": "fixed",
+      "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
       "id": "rusty-mini-anchor",
       "kind": "decoration",
       "name": "녹슨 꼬마 닻",
@@ -12261,6 +12495,58 @@
       "region_id": "primal"
     },
     {
+      "species_id": "broken-generator",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "broken-generator",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "broken-generator",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "broken-generator",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "broken-generator",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "broken-generator",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "broken-generator",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "broken-generator",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "broken-generator",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "broken-generator",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "broken-generator",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "broken-generator",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "broken-generator",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "broken-survey-cable",
       "region_id": "dreamabyss"
     },
@@ -12957,6 +13243,58 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "discarded-battery",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "discarded-battery",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "discarded-battery",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "discarded-battery",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "discarded-battery",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "discarded-battery",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "discarded-battery",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "discarded-battery",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "discarded-battery",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "discarded-battery",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "discarded-battery",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "discarded-battery",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "discarded-battery",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "discarded-oxygen-tank",
       "region_id": "dreamabyss"
     },
@@ -13059,6 +13397,46 @@
     {
       "species_id": "dragon-king-vault",
       "region_id": "whitenight"
+    },
+    {
+      "species_id": "dreamabyss-ancient-sleeper",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "dreamabyss-dream-clam",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "dreamabyss-hallucination-coral-crab",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "dreamabyss-lilac-sea-cucumber",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "dreamabyss-moon-dream-wings",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "dreamabyss-reverie-seadragon",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "dreamabyss-reverie-whelk",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "dreamabyss-slumber-curtain",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "dreamabyss-somnambulist",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "dreamabyss-violet-ghost-shark",
+      "region_id": "dreamabyss"
     },
     {
       "species_id": "dreaming-dumbo-octopus",
@@ -20299,6 +20677,58 @@
     {
       "species_id": "round-triassurus",
       "region_id": "primal"
+    },
+    {
+      "species_id": "rusty-cogwheel",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "rusty-cogwheel",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "rusty-cogwheel",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "rusty-cogwheel",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "rusty-cogwheel",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "rusty-cogwheel",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "rusty-cogwheel",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "rusty-cogwheel",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "rusty-cogwheel",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "rusty-cogwheel",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "rusty-cogwheel",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "rusty-cogwheel",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "rusty-cogwheel",
+      "region_id": "whitenight"
     },
     {
       "species_id": "rusty-mini-anchor",

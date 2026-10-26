@@ -36,6 +36,8 @@ export type Database = {
     }
     Views: Record<string, never>
     Functions: {
+      menu_status:{Args:Record<string,never>;Returns:import('@/lib/menu-status').MenuStatus}
+      notification_inbox:{Args:Record<string,never>;Returns:import('@/features/notifications/api').NotificationInbox}
       aquarium_like_state: { Args: {p_owner:string}; Returns: {count:number;liked:boolean} }
       set_aquarium_like: { Args: {p_owner:string;p_liked:boolean}; Returns: {count:number;liked:boolean} }
       web_push_device: {Args:{p_action:string;p_subscription:Record<string,unknown>;p_categories?:string[]};Returns:{registered:boolean;categories:import('@/features/notifications/push-device').PushCategory[]}}
@@ -83,6 +85,18 @@ export type Database = {
       boost_friend_expedition:{Args:{p_expedition_id:string};Returns:import('@/features/expeditions/api').FriendExpeditionState}
       title_state:{Args:Record<string,never>;Returns:import('@/features/titles/api').TitleState}
       equip_title:{Args:{p_title:string|null};Returns:import('@/features/titles/api').TitleState}
+      begging_state:{Args:{p_tab?:'active'|'mine';p_offset?:number};Returns:import('@/features/begging/api').BeggingFeed}
+      begging_detail:{Args:{p_id:string;p_offset?:number};Returns:import('@/features/begging/api').BeggingDetail}
+      begging_history:{Args:{p_offset?:number};Returns:import('@/features/begging/api').BeggingHistory}
+      begging_create:{Args:{p_operation_id:string;p_story:string;p_goal_gold:number};Returns:import('@/features/begging/api').BeggingRequest}
+      begging_give:{Args:{p_id:string;p_gold:number;p_operation_id:string};Returns:import('@/features/begging/api').BeggingResult}
+      begging_close:{Args:{p_id:string};Returns:import('@/features/begging/api').BeggingRequest}
+      sponsorship_state:{Args:{p_tab?:import('@/features/sponsorship/api').SponsorshipTab;p_offset?:number};Returns:import('@/features/sponsorship/api').SponsorshipFeed}
+      sponsorship_detail:{Args:{p_id:string};Returns:import('@/features/sponsorship/api').Sponsorship}
+      sponsorship_create:{Args:{p_operation_id:string;p_gold_each:number;p_slots:number;p_message?:string};Returns:import('@/features/sponsorship/api').Sponsorship}
+      sponsorship_claim:{Args:{p_id:string};Returns:import('@/features/sponsorship/api').Sponsorship}
+      sponsorship_cancel:{Args:{p_id:string};Returns:import('@/features/sponsorship/api').Sponsorship}
+      new_content_state:{Args:Record<string,never>;Returns:Record<'board'|'exchange'|'suggestions'|'bugs'|'showcase',string|null>}
       sync_titles:{Args:Record<string,never>;Returns:number}
       quest_state:{Args:Record<string,never>;Returns:import('@/features/quests/api').QuestState}
       claim_quest:{Args:{p_kind:import('@/features/quests/api').QuestKind;p_start:string;p_quest_id:string};Returns:import('@/features/quests/api').QuestState}

@@ -307,7 +307,7 @@ function AccountShadowGame() {
                 >
                   <div className="flex shrink-0 items-center justify-between px-3 py-2 text-sm">
                     <span className="tabular-nums">
-                      {run.score}/100점{' '}
+                      {run.score}{run.totalQuestions ? `/${run.totalQuestions}` : ''}점{' '}
                       <span className="ml-2 text-xs text-muted-foreground">
                         {round.number}번째 문제
                       </span>
@@ -447,13 +447,13 @@ function AccountShadowGame() {
                     rules={[
                       '문제마다 8초 안에 그림자의 이름을 고르세요.',
                       '틀리거나 시간이 지나면 찬스가 하나 줄어요.',
-                      '찬스 3회를 모두 쓰거나 100점을 달성하면 종료돼요.',
+                      '찬스 3회를 모두 쓰거나 도감 문제를 모두 풀면 종료돼요.',
                     ]}
                     poster="/arcade/shadow-thumbnail.png"
                     title={
                       run?.finished
-                        ? run.score >= 100
-                          ? '100점 달성!'
+                        ? run.totalQuestions && run.score >= run.totalQuestions
+                          ? '도감 모두 정답!'
                           : `${run.score}개 정답!`
                         : '그림자 맞추기'
                     }
@@ -462,7 +462,7 @@ function AccountShadowGame() {
                         ? practiceMode
                           ? '연습 기록은 저장되지 않아요.'
                           : '기록이 서버 전체 순위에 등록됐어요.'
-                        : '지도 외 개체의 이름을 골라주세요. 문제당 8초 · 찬스 3회'
+                        : '같은 개체는 한 번씩 출제돼요. 문제당 8초 · 찬스 3회'
                     }
                     paidDisabled={
                       !ready ||

@@ -1,0 +1,396 @@
+[
+  {
+    "file": "assets\\storage-upload\\new\\20261026-033245\\fish\\normal\\dreamabyss-hallucination-coral-crab_sprite.png",
+    "storage_path": "fish/normal/dreamabyss-hallucination-coral-crab_sprite.png",
+    "patch": [
+      230,
+      214,
+      34,
+      34
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 4.20606374443163
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 4.262644588619709
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 3.801041523933495
+      }
+    ]
+  },
+  {
+    "file": "assets\\storage-upload\\new\\20261026-033245\\fish\\normal\\dreamabyss-reverie-whelk_sprite.png",
+    "storage_path": "fish/normal/dreamabyss-reverie-whelk_sprite.png",
+    "patch": [
+      221,
+      205,
+      35,
+      35
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 2.6299556396765835
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 3.3870669054835956
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 2.8096436112472025
+      }
+    ]
+  },
+  {
+    "file": "assets\\storage-upload\\new\\20261026-033245\\fish\\normal\\dreamabyss-dream-clam_sprite.png",
+    "storage_path": "fish/normal/dreamabyss-dream-clam_sprite.png",
+    "patch": [
+      66,
+      278,
+      30,
+      30
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 1,
+        "rmse": 14.875483185429642
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 1,
+        "rmse": 10.753487806288712
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 1,
+        "rmse": 15.309964075725325
+      }
+    ]
+  },
+  {
+    "file": "assets\\storage-upload\\new\\20261026-033245\\fish\\epic\\dreamabyss-violet-ghost-shark_sprite.png",
+    "storage_path": "fish/epic/dreamabyss-violet-ghost-shark_sprite.png",
+    "patch": [
+      412,
+      273,
+      27,
+      27
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 10.957690799357362
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 15.499402616923064
+      },
+      {
+        "frame": 3,
+        "dx": -1,
+        "dy": -1,
+        "rmse": 14.530406603030167
+      }
+    ]
+  },
+  {
+    "file": "assets\\storage-upload\\new\\20261026-033245\\fish\\epic\\dreamabyss-slumber-curtain_sprite.png",
+    "storage_path": "fish/epic/dreamabyss-slumber-curtain_sprite.png",
+    "patch": [
+      362,
+      151,
+      31,
+      31
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 20.775064519397382
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 19.338011213306046
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 12.235380887187185
+      }
+    ]
+  },
+  {
+    "file": "assets\\storage-upload\\new\\20261026-033245\\fish\\epic\\dreamabyss-moon-dream-wings_sprite.png",
+    "storage_path": "fish/epic/dreamabyss-moon-dream-wings_sprite.png",
+    "patch": [
+      395,
+      279,
+      29,
+      29
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 23.87917502762606
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 29.404166371451513
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 24.48121728999602
+      }
+    ]
+  },
+  {
+    "file": "assets\\storage-upload\\new\\20261026-033245\\fish\\epic\\dreamabyss-reverie-seadragon_sprite.png",
+    "storage_path": "fish/epic/dreamabyss-reverie-seadragon_sprite.png",
+    "patch": [
+      412,
+      209,
+      25,
+      25
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 1,
+        "dy": 0,
+        "rmse": 26.3475460302887
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 25.630459507107055
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 24.613604885399162
+      }
+    ]
+  },
+  {
+    "file": "assets\\storage-upload\\new\\20261026-033245\\fish\\rare\\dreamabyss-somnambulist_sprite.png",
+    "storage_path": "fish/rare/dreamabyss-somnambulist_sprite.png",
+    "patch": [
+      404,
+      245,
+      34,
+      34
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 19.87604819038902
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 8.436033823229176
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 15.638105614882585
+      }
+    ]
+  },
+  {
+    "file": "assets\\storage-upload\\new\\20261026-033245\\fish\\normal\\dreamabyss-lilac-sea-cucumber_sprite.png",
+    "storage_path": "fish/normal/dreamabyss-lilac-sea-cucumber_sprite.png",
+    "patch": [
+      212,
+      228,
+      33,
+      33
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 4.678728018144311
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 8.105579141748017
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 5.642042593609089
+      }
+    ]
+  },
+  {
+    "file": "assets\\storage-upload\\new\\20261026-033245\\fish\\mythic\\dreamabyss-ancient-sleeper_swim8_v1_sprite.png",
+    "storage_path": "fish/mythic/dreamabyss-ancient-sleeper_swim8_v1_sprite.png",
+    "patch": [
+      411,
+      242,
+      30,
+      30
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 10.871982339941507
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": 0,
+        "rmse": 7.746773521925112
+      },
+      {
+        "frame": 3,
+        "dx": -2,
+        "dy": 0,
+        "rmse": 8.92370438775288
+      },
+      {
+        "frame": 4,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 11.591699616535964
+      },
+      {
+        "frame": 5,
+        "dx": -1,
+        "dy": -1,
+        "rmse": 13.164440740115017
+      },
+      {
+        "frame": 6,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 12.613881242504227
+      },
+      {
+        "frame": 7,
+        "dx": -2,
+        "dy": -1,
+        "rmse": 10.315643460298539
+      }
+    ]
+  }
+]

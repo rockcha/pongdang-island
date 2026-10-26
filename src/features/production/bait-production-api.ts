@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/client'
+import { getQueryAccount, readAccountResource, resourceChanged } from '@/lib/account-cache'
 import {announceBaitReceived} from '@/features/fishing/bait-reward-effect'
 export type BaitFacility = {
   id: string
@@ -35,12 +36,14 @@ export type BaitProductionAction = {
   p_facility: string
   p_quantity: number
 }
-export async function loadBaitProduction() {
-  const { data, error } = await createClient().rpc('bait_production_state', {})
+export const loadBaitProduction = () => readAccountResource('bait-production', readBaitProduction)
+export async function readBaitProduction(signal: AbortSignal) {
+  const { data, error } = await createClient().rpc('bait_production_state', {}).abortSignal(signal)
   if (error) throw error
   return data
 }
 export async function actBaitProduction(args: BaitProductionAction) {
+  const scope = getQueryAccount()
   const startedAt=performance.now()
   const { data, error } = await createClient().rpc('bait_production_action', args)
   if (error) throw error
@@ -49,7 +52,7 @@ export async function actBaitProduction(args: BaitProductionAction) {
     if(site)announceBaitReceived('production:'+args.p_operation_id,site.bait_id,data.receipt.count,startedAt)
   }
   window.dispatchEvent(new Event('wallet-changed'))
-  window.dispatchEvent(new Event('bait-production-changed'))
+  resourceChanged('bait-production', 'bait-production-changed', data, scope)
   return data
 }
 export function baitProductionError(e: unknown) {

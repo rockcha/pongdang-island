@@ -4,10 +4,14 @@ import {afterEach,expect,it,vi} from 'vitest'
 import {ExperienceProvider} from '@/features/experience/experience-provider'
 import {ExperienceProgress,LevelBadge} from '@/features/experience/experience-display'
 import {experienceChanged} from '@/features/experience/api'
+import {appQueryClient} from '@/lib/account-cache'
 
 const mocked=vi.hoisted(()=>({userId:'first',rpc:vi.fn(),toast:vi.fn()}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:mocked.userId}}})}))
-vi.mock('@/lib/client',()=>({createClient:()=>({rpc:mocked.rpc})}))
+vi.mock('@/lib/client',()=>({createClient:()=>({rpc:(...args:unknown[])=>{
+ const result=mocked.rpc(...args)
+ return Object.assign(result,{abortSignal:()=>result})
+}})}))
 vi.mock('sonner',()=>({toast:{success:mocked.toast}}))
 const first={level:3,totalXp:400,currentXp:150,nextLevelXp:200,legacyXp:300}
 function View(){return <MemoryRouter><ExperienceProvider><LevelBadge/><ExperienceProgress/></ExperienceProvider></MemoryRouter>}
@@ -79,16 +83,18 @@ it('removes the central effect after the shared gold animation duration and clea
  const view=render(<View/>)
  await screen.findByRole('button',{name:'레벨 3 확인'})
  vi.useFakeTimers()
- await act(async()=>experienceChanged())
+ await act(async()=>{experienceChanged();await vi.advanceTimersByTimeAsync(1)})
  expect(screen.getByText('+30 XP')).toBeTruthy()
  act(()=>vi.advanceTimersByTime(1400))
  expect(document.body.querySelectorAll('[data-experience-effect]')).toHaveLength(0)
  mocked.rpc.mockResolvedValue({data:{...first,totalXp:440,currentXp:190},error:null})
- await act(async()=>experienceChanged())
+ await act(async()=>{experienceChanged();await vi.advanceTimersByTimeAsync(1)})
  expect(screen.getByText('+10 XP')).toBeTruthy()
  mocked.userId='second'
  await act(async()=>view.rerender(<View/>))
  expect(document.body.querySelectorAll('[data-experience-effect]')).toHaveLength(0)
  view.unmount()
+ appQueryClient.clear()
+ await act(async()=>{await vi.advanceTimersByTimeAsync(1)})
  expect(vi.getTimerCount()).toBe(0)
 })

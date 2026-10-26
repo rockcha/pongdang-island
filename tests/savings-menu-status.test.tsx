@@ -3,7 +3,7 @@ import {afterEach,expect,it,vi} from 'vitest'
 import {useSavingsStatus} from '@/features/savings/use-savings-status'
 const mock=vi.hoisted(()=>({load:vi.fn()}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'captain'}},recovery:false})}))
-vi.mock('@/features/savings/api',()=>({loadSavings:mock.load}))
+vi.mock('@/lib/menu-status',async original=>({...await original<typeof import('@/lib/menu-status')>(),readMenuStatus:()=>mock.load().then(data=>({serverNow:data.serverNow,savings:data}))}))
 afterEach(()=>{cleanup();vi.resetAllMocks()})
 it('updates unpaid, mature and collected labels from confirmed account state',async()=>{
  const account={closed_at:null,paid_count:1,term_days:3,maturesAt:'2026-10-22T00:00:00Z',nextOpenAt:'2026-10-19T09:00:00Z',depositDeadline:'2026-10-20T09:00:00Z'}

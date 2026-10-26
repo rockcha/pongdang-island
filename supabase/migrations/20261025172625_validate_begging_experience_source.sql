@@ -1,0 +1,1 @@
+alter table app_private.experience_events validate constraint experience_events_source_check;

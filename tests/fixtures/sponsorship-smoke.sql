@@ -1,0 +1,85 @@
+-- Execute in a transaction and roll back. Every account and gold balance is synthetic.
+do $test$
+declare donor uuid:=gen_random_uuid();a uuid:=gen_random_uuid();b uuid:=gen_random_uuid();late uuid:=gen_random_uuid();
+ post uuid:=gen_random_uuid();cancelled uuid:=gen_random_uuid();cap_post uuid:=gen_random_uuid();r jsonb;before_inventory jsonb;
+begin
+ insert into auth.users(id) values(donor),(a),(b),(late);
+ insert into public.player_profiles(id,nickname) values(donor,'후원'||left(donor::text,6)),(a,'수령'||left(a::text,6)),(b,'수령'||left(b::text,6)),(late,'마감'||left(late::text,6));
+ insert into public.player_wallets(user_id,gold,inventory) values(donor,20000,'{"bait":2,"fuel":3}'),(a,100,'{}'),(b,100,'{}'),(late,100,'{}')
+ on conflict(user_id) do update set gold=excluded.gold,inventory=excluded.inventory;
+ select inventory into before_inventory from public.player_wallets where user_id=donor;
+ perform set_config('request.jwt.claim.sub',donor::text,true);set local role authenticated;
+ r:=public.sponsorship_create(post,100,2,'같이 나눠요');
+ if r->>'status'<>'active' or (r->>'claimedCount')::integer<>0 then raise exception 'OPEN_FAILED';end if;
+ r:=public.sponsorship_create(post,100,2,'같이 나눠요');
+ if not (r->>'replayed')::boolean then raise exception 'CREATE_RETRY_FAILED';end if;
+ begin perform public.sponsorship_create(post,101,2,'같이 나눠요');raise exception 'CONFLICT_ALLOWED';exception when others then if sqlerrm<>'OPERATION_CONFLICT' then raise;end if;end;
+ begin perform public.sponsorship_create(gen_random_uuid(),100,2,'');raise exception 'MULTIPLE_ACTIVE_ALLOWED';exception when others then if sqlerrm<>'SPONSORSHIP_ALREADY_ACTIVE' then raise;end if;end;
+ begin perform public.sponsorship_claim(post);raise exception 'SELF_ALLOWED';exception when others then if sqlerrm<>'SPONSORSHIP_SELF_CLAIM' then raise;end if;end;
+ reset role;
+ if (select gold from public.player_wallets where user_id=donor)<>19800 then raise exception 'ESCROW_NOT_EXACT';end if;
+ perform set_config('request.jwt.claim.sub',a::text,true);set local role authenticated;
+ r:=public.sponsorship_claim(post);
+ if not (r->>'received')::boolean or (r->>'claimedCount')::integer<>1 then raise exception 'CLAIM_FAILED';end if;
+ r:=public.sponsorship_claim(post);
+ if not (r->>'replayed')::boolean then raise exception 'CLAIM_RETRY_FAILED';end if;
+ reset role;
+ perform set_config('request.jwt.claim.sub',donor::text,true);set local role authenticated;
+ begin perform public.sponsorship_cancel(post);raise exception 'PARTIAL_CANCEL_ALLOWED';exception when others then if sqlerrm<>'SPONSORSHIP_CANNOT_CANCEL' then raise;end if;end;
+ reset role;
+ perform set_config('request.jwt.claim.sub',b::text,true);set local role authenticated;
+ r:=public.sponsorship_claim(post);
+ if r->>'status'<>'completed' or (r->>'claimedCount')::integer<>2 or r->>'closedAt' is null then raise exception 'FINAL_SLOT_NOT_CLOSED';end if;
+ r:=public.sponsorship_claim(post);
+ if not (r->>'replayed')::boolean then raise exception 'FINAL_RETRY_FAILED';end if;
+ reset role;
+ perform set_config('request.jwt.claim.sub',late::text,true);set local role authenticated;
+ begin perform public.sponsorship_claim(post);raise exception 'OVERSUBSCRIBED';exception when others then if sqlerrm<>'SPONSORSHIP_CLOSED' then raise;end if;end;
+ r:=public.sponsorship_detail(post);
+ if jsonb_array_length(r->'recipients')<>2 or r#>>'{recipients,0,nickname}' is null then raise exception 'PEOPLE_MISSING';end if;
+ begin perform public.sponsorship_cancel(post);raise exception 'OTHER_CANCEL_ALLOWED';exception when others then if sqlerrm<>'SPONSORSHIP_FORBIDDEN' then raise;end if;end;
+ reset role;
+ if (select count(*) from app_private.sponsorship_claims where sponsorship_id=post)<>2 then raise exception 'RECEIPT_COUNT';end if;
+ if (select sum(gold) from public.player_wallets where user_id in(donor,a,b,late))<>20300 then raise exception 'GOLD_NOT_CONSERVED';end if;
+ if (select gold from public.player_wallets where user_id=a)<>200 or (select gold from public.player_wallets where user_id=b)<>200 then raise exception 'UNEQUAL_PAYOUT';end if;
+ perform set_config('request.jwt.claim.sub',donor::text,true);set local role authenticated;
+ r:=public.sponsorship_create(cancelled,550,1,'취소 검증');
+ r:=public.sponsorship_cancel(cancelled);r:=public.sponsorship_cancel(cancelled);
+ if r->>'status'<>'cancelled' or not (r->>'replayed')::boolean then raise exception 'CANCEL_RETRY_FAILED';end if;
+ begin perform public.sponsorship_create(gen_random_uuid(),30000,1,'');raise exception 'OVERDRAW_ALLOWED';exception when others then if sqlerrm<>'INSUFFICIENT_GOLD' then raise;end if;end;
+ begin perform public.sponsorship_create(gen_random_uuid(),1,101,'');raise exception 'BAD_SLOTS_ALLOWED';exception when others then if sqlerrm<>'INVALID_SPONSORSHIP' then raise;end if;end;
+ begin perform public.sponsorship_create(gen_random_uuid(),1000000000,100,'');raise exception 'OVERFLOW_ALLOWED';exception when others then if sqlerrm<>'INVALID_SPONSORSHIP' then raise;end if;end;
+ r:=public.sponsorship_create(cap_post,50,1,'한도 검증');reset role;
+ update public.player_wallets set gold=1000000000 where user_id=a;
+ perform set_config('request.jwt.claim.sub',a::text,true);set local role authenticated;
+ begin perform public.sponsorship_claim(cap_post);raise exception 'CAP_ALLOWED';exception when others then if sqlerrm<>'GOLD_LIMIT' then raise;end if;end;
+ reset role;
+ if (select claimed_count from app_private.sponsorships where id=cap_post)<>0 or exists(select 1 from app_private.sponsorship_claims where sponsorship_id=cap_post) then raise exception 'FAILED_CLAIM_USED_SLOT';end if;
+ perform set_config('request.jwt.claim.sub',donor::text,true);set local role authenticated;
+ perform public.sponsorship_cancel(cap_post);reset role;
+ if (select gold from public.player_wallets where user_id=donor)<>19800 then raise exception 'REFUND_DUPLICATED';end if;
+ if (select inventory from public.player_wallets where user_id=donor) is distinct from before_inventory then raise exception 'INVENTORY_CHANGED';end if;
+ if has_table_privilege('authenticated','app_private.sponsorships','SELECT') or has_table_privilege('authenticated','app_private.sponsorship_claims','INSERT') then raise exception 'DIRECT_ACCESS';end if;
+ if has_function_privilege('authenticated','app_private.sponsorship_payload(uuid,boolean)','EXECUTE') then raise exception 'SERIALIZER_EXPOSED';end if;
+ if has_function_privilege('anon','public.sponsorship_claim(uuid)','EXECUTE') then raise exception 'ANON_ALLOWED';end if;
+ perform set_config('request.jwt.claim.sub','',true);
+ begin perform app_private.sponsorship_claim(post);raise exception 'MISSING_AUTH_ALLOWED';exception when others then if sqlerrm<>'AUTH_REQUIRED' then raise;end if;end;
+end $test$;
+
+do $newcomer$
+declare donor uuid:=gen_random_uuid();receiver uuid:=gen_random_uuid();post uuid:=gen_random_uuid();r jsonb;
+begin
+ insert into auth.users(id,created_at,raw_user_meta_data) values(donor,clock_timestamp(),jsonb_build_object('game_nickname','Give'||left(donor::text,6))),(receiver,clock_timestamp(),jsonb_build_object('game_nickname','New'||left(receiver::text,6)));
+ perform set_config('request.jwt.claim.sub',donor::text,true);
+ perform app_private.sync_player_profile();
+ update public.player_wallets set gold=1000 where user_id=donor;
+ set local role authenticated;
+ perform public.sponsorship_create(post,10,1,'');reset role;
+ perform set_config('request.jwt.claim.sub',receiver::text,true);
+ set local role authenticated;
+ r:=public.sponsorship_claim(post);
+ if not (r->>'received')::boolean then raise exception 'NEWCOMER_REJECTED';end if;
+ r:=public.first_fishing_tutorial('state');
+ if not (r->>'required')::boolean then raise exception 'NEWCOMER_FIXTURE_NOT_NEW';end if;
+ reset role;
+end $newcomer$;

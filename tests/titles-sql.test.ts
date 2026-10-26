@@ -206,7 +206,8 @@ async function harborCatch(vessel,bait,region,items){
  }
  let boat=(await db.query('select id from public.harbor_boats where user_id=$1 and vessel_id=$2',[uid,vessel])).rows[0]
  if(!boat)boat=(await db.query('insert into public.harbor_boats(user_id,vessel_id,instance_no) values($1,$2,1) returning id',[uid,vessel])).rows[0]
- await db.query("insert into public.harbor_voyages(user_id,vessel_id,boat_id,region_id,vessel_snapshot,departed_at,returns_at,claimed_at,result) values($1,$2,$3,$4,$5,now()-interval '2 hours',now()-interval '1 hour',now(),$6)",[uid,vessel,boat.id,region,{catch_bait_id:bait},{items}])
+ // The snapshot trigger derives returns_at from the vessel's actual duration.
+ await db.query("insert into public.harbor_voyages(user_id,vessel_id,boat_id,region_id,vessel_snapshot,departed_at,returns_at,claimed_at,result) values($1,$2,$3,$4,$5,now()-(select duration_minutes from public.harbor_vessels where id=$2)*interval '1 minute'-interval '1 hour',now()-interval '1 hour',now(),$6)",[uid,vessel,boat.id,region,{catch_bait_id:bait},{items}])
 }
 it('counts only new conch discoveries and new raft discoveries across claimed voyages',async()=>{
  const species=(await db.query("select id,kind,rarity from public.collectible_species where kind='fish' order by id limit 150")).rows

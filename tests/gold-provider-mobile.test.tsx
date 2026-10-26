@@ -4,7 +4,7 @@ const {load,trade,success,purchaseSound,saleSound,rewardSound}=vi.hoisted(()=>({
 vi.mock('@/features/gold/purchase-sound',()=>({playPurchaseSound:purchaseSound,playSaleSound:saleSound,playRewardSound:rewardSound}))
 vi.mock('sonner',()=>({toast:{success}}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'player'}}})}))
-vi.mock('@/features/gold/api',()=>({loadGold:load,transactGold:trade,goldError:()=> '오류'}))
+vi.mock('@/features/gold/api',()=>({loadGold:load,readGold:load,transactGold:trade,goldError:()=> '오류'}))
 import {GoldProvider,useGold} from '@/features/gold/gold-provider'
 import {useState} from 'react'
 function Buy(){const {transact,loading,busy}=useGold();return <button disabled={loading||busy} onClick={()=>void transact({type:'buy',id:'fishing:bait'})}>구매</button>}

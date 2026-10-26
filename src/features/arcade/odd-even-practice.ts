@@ -9,7 +9,8 @@ export function createOddEvenPractice(random = Math.random) {
         maxWins: 20,
         run: {
           id: randomId(),
-          stake: 10,
+          stake: 30,
+          initialStake: 30,
           wins: 0,
           round: 1,
           stage: 'choose',

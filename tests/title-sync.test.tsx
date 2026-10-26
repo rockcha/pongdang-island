@@ -1,0 +1,40 @@
+import { act, cleanup, render } from '@testing-library/react'
+import { afterEach, beforeEach, expect, it, vi } from 'vitest'
+import { TitleSync } from '@/features/titles/title-sync'
+const mock=vi.hoisted(()=>({sync:vi.fn(),refresh:vi.fn(),allowed:true,auth:undefined as undefined|(()=>void)}))
+vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}},recovery:false})}))
+vi.mock('@/features/social/social-provider',()=>({useSocial:()=>({refresh:mock.refresh})}))
+vi.mock('@/features/titles/api',()=>({syncTitles:mock.sync}))
+vi.mock('@/lib/background-session',()=>({hasBackgroundSession:async()=>mock.allowed,isAuthFailure:(e:{code?:string})=>e.code==='42501'}))
+vi.mock('@/lib/client',()=>({createClient:()=>({auth:{onAuthStateChange:(callback:()=>void)=>{mock.auth=callback;return {data:{subscription:{unsubscribe:vi.fn()}}}}}})}))
+beforeEach(()=>{vi.useFakeTimers();vi.clearAllMocks();mock.allowed=true;mock.sync.mockResolvedValue(0)})
+afterEach(()=>{cleanup();vi.useRealTimers()})
+it('has no periodic idle requests and coalesces gameplay events into one later sync',async()=>{
+ render(<TitleSync/>);
+ await act(async()=>{await vi.advanceTimersByTimeAsync(1000)})
+ expect(mock.sync).toHaveBeenCalledTimes(1)
+ await act(async()=>{await vi.advanceTimersByTimeAsync(180000)})
+ expect(mock.sync).toHaveBeenCalledTimes(1)
+ act(()=>{for(let i=0;i<10;i++)window.dispatchEvent(new Event('quest-progress-changed'))})
+ await act(async()=>{await vi.advanceTimersByTimeAsync(1000)})
+ expect(mock.sync).toHaveBeenCalledTimes(2)
+ act(()=>{for(let i=0;i<10;i++)window.dispatchEvent(new Event('quest-progress-changed'))})
+ await act(async()=>{await vi.advanceTimersByTimeAsync(59000)})
+ expect(mock.sync).toHaveBeenCalledTimes(2)
+ await act(async()=>{await vi.advanceTimersByTimeAsync(1000)})
+ expect(mock.sync).toHaveBeenCalledTimes(3)
+})
+it('blocks auth failures until a session event and does not run without SDK auth',async()=>{
+ mock.sync.mockRejectedValue({code:'42501'});render(<TitleSync/>);
+ await act(async()=>{await vi.advanceTimersByTimeAsync(1000)})
+ act(()=>window.dispatchEvent(new Event('focus')))
+ await act(async()=>{await vi.advanceTimersByTimeAsync(120000)})
+ expect(mock.sync).toHaveBeenCalledTimes(1)
+ mock.allowed=false;act(()=>mock.auth?.())
+ await act(async()=>{await vi.advanceTimersByTimeAsync(1000)})
+ expect(mock.sync).toHaveBeenCalledTimes(1)
+ mock.allowed=true;mock.sync.mockResolvedValue(1);act(()=>mock.auth?.())
+ await act(async()=>{await vi.advanceTimersByTimeAsync(60000)})
+ expect(mock.sync).toHaveBeenCalledTimes(2)
+ expect(mock.refresh).toHaveBeenCalledTimes(1)
+})

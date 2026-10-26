@@ -5,11 +5,12 @@ export function createShadowPractice(catalog: Item[]) {
   const pool = [
     ...new Map(
       catalog
-        .filter((item) => (item.kind!=='map'&&item.kind!=='relic') && item.thumbnail_path)
+        .filter((item) => item.kind !== 'map' && item.kind !== 'relic' && item.thumbnail_path)
         .map((item) => [item.name, item]),
     ).values(),
   ]
   if (pool.length < 4) throw new Error('SHADOW_POOL_UNAVAILABLE')
+  const used = new Set<string>()
   let current: ShadowState['run'] = null,
     target: Item
   const response = (): ShadowState => ({
@@ -17,13 +18,19 @@ export function createShadowPractice(catalog: Item[]) {
     run: current ? { ...current, round: { ...current.round } } : null,
   })
   function question() {
-    const shuffled = [...pool]
+    const remaining = pool.filter((item) => !used.has(item.id))
+    target = remaining[Math.floor(Math.random() * remaining.length)]
+    used.add(target.id)
+    const shuffled = pool.filter((item) => item.id !== target.id)
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1))
       ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
     }
-    const choices = shuffled.slice(0, 4)
-    target = choices[Math.floor(Math.random() * 4)]
+    const choices = [target, ...shuffled.slice(0, 3)]
+    for (let i = choices.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[choices[i], choices[j]] = [choices[j], choices[i]]
+    }
     return {
       id: randomId(),
       number: (current?.round.number ?? 0) + 1,
@@ -39,7 +46,15 @@ export function createShadowPractice(catalog: Item[]) {
   return (action: ShadowAction): ShadowState => {
     if (action.p_action === 'start') {
       current = null
-      current = { id: randomId(), score: 0, lives: 3, finished: false, round: question() }
+      used.clear()
+      current = {
+        id: randomId(),
+        score: 0,
+        totalQuestions: pool.length,
+        lives: 3,
+        finished: false,
+        round: question(),
+      }
     }
     if (!current || current.finished || action.p_action === 'state' || action.p_action === 'start')
       return response()
@@ -52,11 +67,11 @@ export function createShadowPractice(catalog: Item[]) {
       if (!action.p_choice_id && !timedOut) return response()
       current = {
         ...current,
-        score: Math.min(100, current.score + (correct ? 1 : 0)),
+        score: current.score + (correct ? 1 : 0),
         lives: current.lives - (correct ? 0 : 1),
         round: { ...current.round, answered: true, correct, timedOut, answerName: target.name },
       }
-      current.finished = current.score === 100 || current.lives === 0
+      current.finished = current.round.number >= pool.length || current.lives === 0
     }
     return response()
   }

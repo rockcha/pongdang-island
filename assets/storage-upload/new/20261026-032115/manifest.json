@@ -1,0 +1,38 @@
+{
+  "generator": "Built-in image_gen",
+  "styleReference": "assets/references/collectible-style/common-rare-pongi.png",
+  "referenceRole": "Common-rarity cartoon outline and cel shading only; no characters or faces",
+  "catalogSource": "supabase/catalog/catalog.json",
+  "items": [
+    {
+      "id": "discarded-battery",
+      "name": "폐기된 배터리",
+      "sourcePath": "C:\\Users\\user\\.codex\\generated_images\\01a173c8-71a4-7460-be52-0aafa2b2a1b0\\exec-c2708b10-7919-4a8c-8b65-62f86e2392d4.png",
+      "storagePath": "trash/normal/discarded-battery_thumbnail.png",
+      "prompt": "Use case: stylized-concept, production inventory thumbnail for Pongdang Island cozy underwater collecting game. Use attached otter ONLY as style reference: thick crisp dark brown rounded outlines, warm soft cel shading, friendly rounded cartoon volumes. Do NOT draw any otter, faces, eyes, characters, text, logos, UI, checkerboard, scenery, or decorative companion objects. Draw exactly ONE isolated inanimate scrap item, full object visible in three-quarter view, centered on a true alpha TRANSPARENT square background. Clear readable silhouette at 48px. Occupy about 82% of the square along the long axis, ample transparent margin; no cast shadow detached from object. Common rarity, modest worn materials, simple controlled detail. Not photorealistic, not glowy fantasy treasure. A discarded old squat rectangular lead-acid battery. Worn desaturated mustard-yellow casing with dark charcoal base and lid, two short dull metal terminals on top, a slightly bent carry handle, chipped corners and a few pale salt stains. No symbols, no labels, no liquid leaks. Heavy stationary underwater scrap, not a character.",
+      "width": 512,
+      "height": 512,
+      "sha256": "8b3d3fb8adaf11fcfe62a98212ecea90987ad89f6ac30ec04118952204e864f9"
+    },
+    {
+      "id": "broken-generator",
+      "name": "고장 난 발전기",
+      "sourcePath": "C:\\Users\\user\\.codex\\generated_images\\01a173c8-71a4-7460-be52-0aafa2b2a1b0\\exec-8e48c1a8-7eb6-4bc5-a9df-19a98b0e33f0.png",
+      "storagePath": "trash/normal/broken-generator_thumbnail.png",
+      "prompt": "Use case: stylized-concept, production inventory thumbnail for Pongdang Island cozy underwater collecting game. Use attached otter ONLY as style reference: thick crisp dark brown rounded outlines, warm soft cel shading, friendly rounded cartoon volumes. Do NOT draw any otter, faces, eyes, characters, text, logos, UI, checkerboard, scenery, or decorative companion objects. Draw exactly ONE isolated inanimate scrap item, full object visible in three-quarter view, centered on a true alpha TRANSPARENT square background. Clear readable silhouette at 48px. Occupy about 82% of the square along the long axis, ample transparent margin; no cast shadow detached from object. Common rarity, modest worn materials, simple controlled detail. Not photorealistic, not glowy fantasy treasure. A broken compact portable electricity generator. Rounded rectangular muted teal metal frame enclosing a dull orange-red engine casing with a ribbed gray metal side, dented carrying handle and one short disconnected cable hanging against its body. Small cracked unlit gauge, chipped paint and sparse rust spots. No lettering, no smoke, no fire, no lights. Heavy inert scrap, not an animated machine.",
+      "width": 512,
+      "height": 512,
+      "sha256": "4d66667113475395f6673dca435792e7f31ab78e1e085ad3a17c5e23cd62a219"
+    },
+    {
+      "id": "rusty-cogwheel",
+      "name": "녹슨 톱니바퀴",
+      "sourcePath": "C:\\Users\\user\\.codex\\generated_images\\01a173c8-71a4-7460-be52-0aafa2b2a1b0\\exec-27306600-5253-4ed9-93a2-395879f5725d.png",
+      "storagePath": "trash/normal/rusty-cogwheel_thumbnail.png",
+      "prompt": "Use case: stylized-concept, production inventory thumbnail for Pongdang Island cozy underwater collecting game. Use attached otter ONLY as style reference: thick crisp dark brown rounded outlines, warm soft cel shading, friendly rounded cartoon volumes. Do NOT draw any otter, faces, eyes, characters, text, logos, UI, checkerboard, scenery, or decorative companion objects. Draw exactly ONE isolated inanimate scrap item, full object visible in three-quarter view, centered on a true alpha TRANSPARENT square background. Clear readable silhouette at 48px. Occupy about 82% of the square along the long axis, ample transparent margin; no cast shadow detached from object. Common rarity, modest worn materials, simple controlled detail. Not photorealistic, not glowy fantasy treasure. One thick heavy rusty iron cogwheel lying slightly tilted in three-quarter perspective. About ten broad blunt teeth, clearly visible round center hole, warm reddish-brown rust patches over dull blue-gray steel and a couple chipped tooth corners. Simple chunky rounded cartoon shape, solid recognizable silhouette. No other gears, bolts, plants or debris.",
+      "width": 512,
+      "height": 512,
+      "sha256": "d14fdd979b07c5e70f12329fe362576d2b571e54ff40fd43f55b5f50b621c523"
+    }
+  ]
+}

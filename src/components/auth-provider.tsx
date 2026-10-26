@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import type { Session } from '@supabase/supabase-js'
 import { createClient } from '@/lib/client'
 import { RECOVERY_KEY } from '@/lib/auth-storage'
+import { setQueryAccount } from '@/lib/account-cache'
 
 const AuthContext = createContext<{ session: Session | null; loading: boolean; error: string | null; recovery: boolean }>({ session: null, loading: true, error: null, recovery: false })
 
@@ -28,11 +29,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           setRecovery(Boolean(next && marker?.user === next.user.id && marker?.until > Date.now()))
         } catch { setRecovery(false) }
       }
+      setQueryAccount(event === 'PASSWORD_RECOVERY' ? null : next?.user.id ?? null)
       setSession(next); setError(null)
     })
     void auth.initialize().then(async ({ error: initError }) => {
       const { data, error } = await auth.getSession()
-      if (active) { setSession(data.session); setError((initError ?? error)?.message ?? null); setLoading(false) }
+      if (active) { setQueryAccount(data.session?.user.id ?? null); setSession(data.session); setError((initError ?? error)?.message ?? null); setLoading(false) }
     }).catch(() => {
       if (active) { setError('로그인 상태를 확인하지 못했어요. 다시 시도해주세요.'); setLoading(false) }
     })

@@ -5,7 +5,7 @@ import {BaitShop} from '@/features/fishing/bait-shop'
 import {GoldProvider,useGold} from '@/features/gold/gold-provider'
 const mock=vi.hoisted(()=>({load:vi.fn(),buy:vi.fn(),sound:vi.fn()}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'buyer'}}})}))
-vi.mock('@/features/gold/api',()=>({loadGold:mock.load,transactGold:mock.buy,goldError:()=> '연결을 다시 확인해주세요.'}))
+vi.mock('@/features/gold/api',()=>({loadGold:mock.load,readGold:mock.load,transactGold:mock.buy,goldError:()=> '연결을 다시 확인해주세요.'}))
 vi.mock('@/features/gold/purchase-sound',()=>({playPurchaseSound:mock.sound,playSaleSound:vi.fn(),playRewardSound:vi.fn()}))
 vi.mock('@/features/fishing/api',()=>({loadFishing:async()=>({baits:[{id:'bait',name:'테스트 미끼',description:'미끼',image_path:'/bait.png',price:10,effect_description:'효과'}]})}))
 afterEach(()=>{cleanup();vi.resetAllMocks()})

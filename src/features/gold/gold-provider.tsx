@@ -4,7 +4,9 @@ import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import { useAuth } from '@/components/auth-provider'
 import { emptyWallet } from './wallet'
-import { goldError, loadGold, transactGold } from './api'
+import { goldError, readGold, transactGold } from './api'
+import { useAccountResource } from '@/lib/account-query'
+import { accountQueryKey, appQueryClient, getQueryAccount, publishAccountResource } from '@/lib/account-cache'
 import type { Trade, Wallet } from './wallet'
 import {playPurchaseSound,playSaleSound,playRewardSound} from './purchase-sound'
 import {GoldChange} from './gold-change'
@@ -19,40 +21,38 @@ export function GoldProvider({ children }: { children: ReactNode }) {
   return <AccountGold key={session?.user.id ?? 'guest'} userId={session?.user.id}>{children}</AccountGold>
 }
 function AccountGold({ children, userId }: { children: ReactNode; userId?: string }) {
-  const [wallet, setWallet] = useState<Wallet>(emptyWallet)
-  const [loading, setLoading] = useState(Boolean(userId))
+  const query = useAccountResource('wallet', readGold)
+  const wallet: Wallet = query.data ?? emptyWallet()
+  const loading = Boolean(userId) && query.isPending
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
-  const [testClaimed, setTestClaimed] = useState(false)
-  const [testEnabled, setTestEnabled] = useState(false)
+  const testClaimed = query.data?.testClaimed ?? false
+  const testEnabled = query.data?.testEnabled ?? false
   const active = useRef(true)
   const mountedAt=useRef(performance.now()),receivedBaits=useRef(new Set<string>())
   const locked = useRef(false)
   const pending = useRef<{ signature: string; id: string } | null>(null)
-  const previousGold=useRef<number|null>(null),previousFuel=useRef<number|null>(null),revision=useRef(0),refreshRequest=useRef(0)
-  function apply(data: Awaited<ReturnType<typeof loadGold>>,notifyChange=false) {
+  const previousGold=useRef<number|null>(null),previousFuel=useRef<number|null>(null)
+  function apply(data: Awaited<ReturnType<typeof readGold>>,notifyChange=false) {
     if (!active.current) return
     if(notifyChange&&previousGold.current!==null)showDelta(data.gold-previousGold.current)
     const fuel=data.inventory.fuel??0
     if(previousFuel.current!==null)showDelta(fuel-previousFuel.current,'fuel')
     if(notifyChange&&previousFuel.current!==null&&fuel>previousFuel.current)playRewardSound(`fuel:${randomId()}`)
     previousFuel.current=fuel
-    previousGold.current=data.gold;revision.current++
-    setWallet({ gold: data.gold, inventory: data.inventory })
-    setTestClaimed(data.testClaimed); setTestEnabled(data.testEnabled); setError('')
+    previousGold.current=data.gold
+    setError('')
   }
   async function refresh() {
     if (!userId || locked.current) return
-    const version=revision.current,request=++refreshRequest.current
-    try {const data=await loadGold();if(!locked.current&&version===revision.current&&request===refreshRequest.current)apply(data,true)} catch (cause) { if (active.current) setError(goldError(cause)) }
-    finally { if (active.current) setLoading(false) }
+    const result = await query.refetch({ cancelRefetch: false })
+    if (result.error && active.current) setError(goldError(result.error))
   }
   useEffect(() => {
+    if (query.data && !locked.current) apply(query.data, true)
+  }, [query.data])
+  useEffect(() => {
     active.current = true
-    void refresh()
-    const reload = () => { if (document.visibilityState === 'visible') void refresh() }
-    window.addEventListener('focus', reload); window.addEventListener('online', reload);window.addEventListener('attendance-changed',reload)
-    window.addEventListener('wallet-changed',reload)
     const receiveBait=(event:Event)=>{
       const reward=(event as CustomEvent<BaitRewardEffect>).detail
       if(!userId||!reward||reward.startedAt<mountedAt.current||!Number.isSafeInteger(reward.quantity)||reward.quantity<=0||receivedBaits.current.has(reward.key))return
@@ -62,7 +62,7 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
       playRewardSound(reward.key)
     }
     window.addEventListener(BAIT_RECEIVED,receiveBait)
-    return () => { active.current = false; window.removeEventListener('focus', reload); window.removeEventListener('online', reload);window.removeEventListener('attendance-changed',reload);window.removeEventListener('wallet-changed',reload);window.removeEventListener(BAIT_RECEIVED,receiveBait) }
+    return () => { active.current = false; window.removeEventListener(BAIT_RECEIVED,receiveBait) }
     // AccountGold remounts when the authenticated user changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId])
@@ -75,6 +75,8 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
   async function transact(action: Trade) {
     if (!userId) throw new Error('로그인이 필요해요.')
     if (locked.current || loading) return
+    const scope = getQueryAccount()
+    void appQueryClient.cancelQueries({ queryKey: accountQueryKey(userId, 'wallet') })
     locked.current = true; setBusy(true)
     const signature = JSON.stringify(action)
     if (pending.current && pending.current.signature !== signature) {
@@ -91,6 +93,7 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
       if(action.type==='sell')saleKey=pending.current.id
       pending.current = null
       apply(result)
+      if(active.current)publishAccountResource('wallet', result, scope, userId)
     } catch (cause) {
       // Keep the operation ID on transport failure; retry cannot charge twice.
       if (cause && typeof cause === 'object' && 'code' in cause && /^[0-9A-Z]{5}$/.test(String(cause.code))) pending.current = null
@@ -117,7 +120,7 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
     const batch={delta:0,purchaseKey:'',saleKey:''};effectBatch.current=batch;setGroupBusy(true)
     try{await work()}finally{effectBatch.current=null;if(active.current){setGroupBusy(false);if(batch.purchaseKey)playPurchaseSound(batch.purchaseKey);if(batch.saleKey)playSaleSound(batch.saleKey);showDelta(batch.delta)}}
   }
-  return <GoldContext.Provider value={{ wallet, transact, batchEffects, loading, busy:busy||groupBusy, error, testClaimed, testEnabled, refresh }}>
+  return <GoldContext.Provider value={{ wallet, transact, batchEffects, loading, busy:busy||groupBusy, error: error || (query.error ? goldError(query.error) : ''), testClaimed, testEnabled, refresh }}>
     {children}
     {createPortal(<div data-gold-effects className="pointer-events-none fixed inset-0 z-[2147483000] flex items-center justify-center" aria-live="polite" aria-atomic="true">
       <div className="flex flex-col items-center gap-2">{effects.map(effect => <GoldChange key={effect.id} delta={effect.delta} resource={effect.resource} icon={effect.icon} name={effect.name} />)}</div>

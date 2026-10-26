@@ -3,7 +3,7 @@ import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 const mocks=vi.hoisted(()=>({rpc:vi.fn(),load:vi.fn(),rewardSound:vi.fn()}))
 vi.mock('@/features/gold/purchase-sound',()=>({playPurchaseSound:vi.fn(),playSaleSound:vi.fn(),playRewardSound:mocks.rewardSound}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'player'}}})}))
-vi.mock('@/features/gold/api',()=>({loadGold:mocks.load,transactGold:vi.fn(),goldError:()=>''}))
+vi.mock('@/features/gold/api',()=>({loadGold:mocks.load,readGold:mocks.load,transactGold:vi.fn(),goldError:()=>''}))
 vi.mock('@/lib/client',()=>({createClient:()=>({rpc:mocks.rpc})}))
 import {GoldProvider} from '@/features/gold/gold-provider'
 import {actBaitProduction} from '@/features/production/bait-production-api'

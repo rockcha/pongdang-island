@@ -23,7 +23,7 @@ import {collectibleCardTones} from './collectible-card-tones'
 import {RelicEffectText} from '@/features/relics/relic-equipment-slot'
 import { kindLabels, loadCollection } from './api'
 import type { CollectionState, CatalogEntry, Species } from './api'
-import {readCollectionFilters,saveCollectionFilters} from './filter-preference'
+import {useCollectionFilters} from './use-collection-filters'
 import { HabitatFilterIcon } from '@/components/habitat-filter-icon'
 import { HalloweenIcon } from '@/components/collection-filter-icons'
 import { limitedCollectionEvents } from './limited-events'
@@ -65,13 +65,12 @@ export function CollectionDialog({ onAddTemporary,fishing=false,disabled=false,d
 export function CollectionBook({ onAddTemporary,previewAll=false,initialRegion='all',rememberFiltersFor }: CollectionDialogProps & {previewAll?:boolean;initialRegion?:string;rememberFiltersFor?:string}) {
  const [state, setState] = useState<CollectionState | null>(null)
  const [error, setError] = useState('')
- const [filters,setFilters]=useState(()=>readCollectionFilters(rememberFiltersFor,initialRegion))
+ const [filters,setFilters]=useCollectionFilters(rememberFiltersFor,initialRegion)
  const {tab,rarity,habitat}=filters
  const [limited,setLimited] = useState('all')
  const [detail,setDetail] = useState<CatalogEntry|null>(null)
  const [attempt, setAttempt] = useState(0)
  const [mapPrices,setMapPrices]=useState<Record<string,number>>({})
- useEffect(()=>{if(rememberFiltersFor)saveCollectionFilters(rememberFiltersFor,filters)},[rememberFiltersFor,filters])
  useEffect(()=>{let active=true;void loadMapShop().then(data=>{if(active)setMapPrices(Object.fromEntries(data.items.map(item=>[item.region_id,item.price])))}).catch(()=>{});return()=>{active=false}},[])
  useEffect(() => {
   let active = true

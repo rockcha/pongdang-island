@@ -5,7 +5,7 @@ import {GoldProvider,useGold} from '@/features/gold/gold-provider'
 import {FirstFishingGate} from '@/features/onboarding/first-fishing-gate'
 const mock=vi.hoisted(()=>({wallet:vi.fn(),tutorial:vi.fn()}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'new-player'}}})}))
-vi.mock('@/features/gold/api',()=>({loadGold:mock.wallet,transactGold:vi.fn(),goldError:()=> '연결 오류'}))
+vi.mock('@/features/gold/api',()=>({loadGold:mock.wallet,readGold:mock.wallet,transactGold:vi.fn(),goldError:()=> '연결 오류'}))
 vi.mock('@/features/onboarding/api',async original=>({...await original<typeof import('@/features/onboarding/api')>(),firstFishingTutorial:mock.tutorial}))
 afterEach(()=>{cleanup();vi.resetAllMocks()})
 function Inventory(){const {wallet}=useGold();return <p>보유 지렁이 {wallet.inventory.bait??0}개</p>}

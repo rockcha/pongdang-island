@@ -41,9 +41,9 @@ export const arcadeGames: ArcadeGame[] = [
   {
     id: 'odd-even',
     title: '퐁이의 홀짝 조개',
-    description: '10골드로 시작해 홀짝을 맞히세요. 보상을 받거나 두 배에 도전해요.',
+    description: '30골드로 시작해 홀짝을 맞히세요. 보상을 받거나 두 배에 도전해요.',
     icon: Shell,
-    entryFee: 10,
+    entryFee: 30,
     dailyLimit: null,
     status: 'ready',
     component: OddEvenGame,

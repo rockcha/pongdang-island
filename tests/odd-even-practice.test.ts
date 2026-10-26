@@ -1,4 +1,24 @@
-import {expect,it} from 'vitest'
-import {createOddEvenPractice} from '@/features/arcade/odd-even-practice'
-it('uses virtual stakes, doubles winnings, preserves snapshots and cashes out',()=>{const game=createOddEvenPractice(()=>0),initial=game({p_action:'start'});const id=initial.run!.id;let s=game({p_action:'answer',p_run_id:id,p_round:1,p_choice:'odd'});expect(s.run).toMatchObject({stake:20,stage:'decision'});expect(initial.run!.stake).toBe(10);s=game({p_action:'double',p_run_id:id,p_round:1});expect(s.run!.round).toBe(2);s=game({p_action:'answer',p_run_id:id,p_round:2,p_choice:'odd'});expect(s.run!.stake).toBe(40);expect(game({p_action:'cashout',p_run_id:id,p_round:2}).run!.stage).toBe('banked')})
-it('loses the current stake and ignores repeated or stale actions',()=>{const game=createOddEvenPractice(()=>.1),r=game({p_action:'start'}).run!;const args={p_action:'answer' as const,p_run_id:r.id,p_round:1,p_choice:'odd' as const};const s=game(args);expect(s.run).toMatchObject({pearls:2,stage:'lost',stake:0});expect(game(args)).toEqual(s);expect(game({p_action:'cashout',p_run_id:r.id,p_round:1})).toEqual(s)})
+import { expect, it } from 'vitest'
+import { createOddEvenPractice } from '@/features/arcade/odd-even-practice'
+it('uses virtual stakes, doubles winnings, preserves snapshots and cashes out', () => {
+  const game = createOddEvenPractice(() => 0),
+    initial = game({ p_action: 'start' })
+  const id = initial.run!.id
+  let s = game({ p_action: 'answer', p_run_id: id, p_round: 1, p_choice: 'odd' })
+  expect(s.run).toMatchObject({ stake: 60, stage: 'decision' })
+  expect(initial.run!.stake).toBe(30)
+  s = game({ p_action: 'double', p_run_id: id, p_round: 1 })
+  expect(s.run!.round).toBe(2)
+  s = game({ p_action: 'answer', p_run_id: id, p_round: 2, p_choice: 'odd' })
+  expect(s.run!.stake).toBe(120)
+  expect(game({ p_action: 'cashout', p_run_id: id, p_round: 2 }).run!.stage).toBe('banked')
+})
+it('loses the current stake and ignores repeated or stale actions', () => {
+  const game = createOddEvenPractice(() => 0.1),
+    r = game({ p_action: 'start' }).run!
+  const args = { p_action: 'answer' as const, p_run_id: r.id, p_round: 1, p_choice: 'odd' as const }
+  const s = game(args)
+  expect(s.run).toMatchObject({ pearls: 2, stage: 'lost', stake: 0 })
+  expect(game(args)).toEqual(s)
+  expect(game({ p_action: 'cashout', p_run_id: r.id, p_round: 1 })).toEqual(s)
+})

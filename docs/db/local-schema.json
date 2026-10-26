@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "4e747346675a57b6f6eb92e419ed5f721c10b58a13a3142e69b69804f0aa665e",
+  "migrationHash": "5dd1f927efbeb57e30b86566703b96df91f08509e0e57e63e7387ff09df7395c",
   "structure": {
     "enums": [
       {
@@ -103,6 +103,18 @@
       {
         "rls": true,
         "name": "bait_purchase_operations",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "begging_requests",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "begging_transfers",
         "schema": "app_private",
         "force_rls": false
       },
@@ -373,6 +385,18 @@
       {
         "rls": true,
         "name": "shadow_game_rounds",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "sponsorship_claims",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "sponsorships",
         "schema": "app_private",
         "force_rls": false
       },
@@ -1275,6 +1299,216 @@
         "table": "bait_purchase_operations",
         "schema": "app_private",
         "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "creator_id",
+        "type": "uuid",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "creator_name",
+        "type": "text",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "creator_avatar",
+        "type": "text",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "story",
+        "type": "text",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "goal_gold",
+        "type": "integer",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "received_gold",
+        "type": "bigint",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "default": "'active'::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "closed_at",
+        "type": "timestamp with time zone",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "request_id",
+        "type": "uuid",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "sender_id",
+        "type": "uuid",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "recipient_id",
+        "type": "uuid",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "sender_name",
+        "type": "text",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "sender_avatar",
+        "type": "text",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "recipient_name",
+        "type": "text",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "recipient_avatar",
+        "type": "text",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "gold",
+        "type": "integer",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "xp",
+        "type": "integer",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "default": "2",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -3893,6 +4127,196 @@
         "name": "timed_out",
         "type": "boolean",
         "table": "shadow_game_rounds",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "default": "gen_random_uuid()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "sponsorship_id",
+        "type": "uuid",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "nickname",
+        "type": "text",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "avatar_path",
+        "type": "text",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "gold",
+        "type": "integer",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "slot",
+        "type": "integer",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "claimed_at",
+        "type": "timestamp with time zone",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "uuid",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "creator_id",
+        "type": "uuid",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "creator_name",
+        "type": "text",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "creator_avatar",
+        "type": "text",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "gold_each",
+        "type": "integer",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "slots",
+        "type": "integer",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "claimed_count",
+        "type": "integer",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "message",
+        "type": "text",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "default": "''::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "status",
+        "type": "text",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "default": "'active'::text",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "default": "clock_timestamp()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "closed_at",
+        "type": "timestamp with time zone",
+        "table": "sponsorships",
         "schema": "app_private",
         "default": null,
         "identity": "",
@@ -7784,7 +8208,7 @@
         "type": "integer",
         "table": "odd_even_runs",
         "schema": "public",
-        "default": "10",
+        "default": "30",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -7857,6 +8281,16 @@
         "default": null,
         "identity": "",
         "nullable": true,
+        "generated": ""
+      },
+      {
+        "name": "initial_stake",
+        "type": "integer",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "default": "30",
+        "identity": "",
+        "nullable": false,
         "generated": ""
       },
       {
@@ -8750,6 +9184,16 @@
         "generated": ""
       },
       {
+        "name": "question_pool",
+        "type": "jsonb",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": true,
+        "generated": ""
+      },
+      {
         "name": "id",
         "type": "uuid",
         "table": "shell_savings",
@@ -9134,6 +9578,54 @@
         "table": "bait_purchase_operations",
         "schema": "app_private",
         "definition": "CREATE UNIQUE INDEX bait_purchase_operations_pkey ON app_private.bait_purchase_operations USING btree (user_id, operation_id)"
+      },
+      {
+        "name": "begging_active_feed",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "CREATE INDEX begging_active_feed ON app_private.begging_requests USING btree (created_at DESC, id) WHERE ((status = 'active'::text) AND (creator_id IS NOT NULL))"
+      },
+      {
+        "name": "begging_creator_feed",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "CREATE INDEX begging_creator_feed ON app_private.begging_requests USING btree (creator_id, created_at DESC, id)"
+      },
+      {
+        "name": "begging_one_active",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX begging_one_active ON app_private.begging_requests USING btree (creator_id) WHERE (status = 'active'::text)"
+      },
+      {
+        "name": "begging_requests_pkey",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX begging_requests_pkey ON app_private.begging_requests USING btree (id)"
+      },
+      {
+        "name": "begging_transfers_pkey",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX begging_transfers_pkey ON app_private.begging_transfers USING btree (id)"
+      },
+      {
+        "name": "begging_transfers_recipient",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "CREATE INDEX begging_transfers_recipient ON app_private.begging_transfers USING btree (recipient_id, created_at DESC, id)"
+      },
+      {
+        "name": "begging_transfers_request",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "CREATE INDEX begging_transfers_request ON app_private.begging_transfers USING btree (request_id, created_at, id)"
+      },
+      {
+        "name": "begging_transfers_sender",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "CREATE INDEX begging_transfers_sender ON app_private.begging_transfers USING btree (sender_id, created_at DESC, id)"
       },
       {
         "name": "cancelled_harbor_boat",
@@ -9626,6 +10118,54 @@
         "table": "shadow_game_rounds",
         "schema": "app_private",
         "definition": "CREATE UNIQUE INDEX shadow_game_rounds_run_id_number_key ON app_private.shadow_game_rounds USING btree (run_id, number)"
+      },
+      {
+        "name": "sponsorship_claims_pkey",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX sponsorship_claims_pkey ON app_private.sponsorship_claims USING btree (id)"
+      },
+      {
+        "name": "sponsorship_claims_sponsorship_id_slot_key",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX sponsorship_claims_sponsorship_id_slot_key ON app_private.sponsorship_claims USING btree (sponsorship_id, slot)"
+      },
+      {
+        "name": "sponsorship_claims_sponsorship_id_user_id_key",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX sponsorship_claims_sponsorship_id_user_id_key ON app_private.sponsorship_claims USING btree (sponsorship_id, user_id)"
+      },
+      {
+        "name": "sponsorship_claims_user",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "CREATE INDEX sponsorship_claims_user ON app_private.sponsorship_claims USING btree (user_id, sponsorship_id)"
+      },
+      {
+        "name": "sponsorship_creator",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "CREATE INDEX sponsorship_creator ON app_private.sponsorships USING btree (creator_id, created_at DESC, id)"
+      },
+      {
+        "name": "sponsorship_feed",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "CREATE INDEX sponsorship_feed ON app_private.sponsorships USING btree (status, created_at DESC, id)"
+      },
+      {
+        "name": "sponsorship_one_active",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX sponsorship_one_active ON app_private.sponsorships USING btree (creator_id) WHERE (status = 'active'::text)"
+      },
+      {
+        "name": "sponsorships_pkey",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX sponsorships_pkey ON app_private.sponsorships USING btree (id)"
       },
       {
         "name": "starter_bait_receipts_pkey",
@@ -12409,6 +12949,76 @@
         "securityDefiner": true
       },
       {
+        "name": "begging_close",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.begging_close(p_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();r app_private.begging_requests;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n select * into r from app_private.begging_requests where id=p_id for update;\n if not found then raise exception 'BEGGING_NOT_FOUND';end if;\n if r.creator_id is distinct from u then raise exception 'BEGGING_FORBIDDEN';end if;\n if r.status='active' then update app_private.begging_requests set status='closed',closed_at=clock_timestamp() where id=p_id;end if;\n return app_private.begging_payload(p_id);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "begging_create",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_operation_id uuid, p_story text, p_goal_gold integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.begging_create(p_operation_id uuid, p_story text, p_goal_gold integer)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();p public.player_profiles;r app_private.begging_requests;body text:=btrim(p_story);\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or body is null or char_length(body) not between 1 and 500 or body !~ '[^[:space:]]' or p_goal_gold is null or p_goal_gold not between 100 and 1000000000 then raise exception 'INVALID_BEGGING';end if;\n select * into p from public.player_profiles where id=u;\n if not found then p:=app_private.sync_player_profile();end if;\n perform app_private.get_gold_wallet();\n perform 1 from public.player_wallets where user_id=u for update;\n select * into r from app_private.begging_requests where id=p_operation_id;\n if found then\n  if r.creator_id is distinct from u or r.story<>body or r.goal_gold<>p_goal_gold then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.begging_payload(r.id);\n end if;\n if exists(select 1 from app_private.begging_requests where creator_id=u and status='active') then raise exception 'BEGGING_ALREADY_ACTIVE';end if;\n insert into app_private.begging_requests(id,creator_id,creator_name,creator_avatar,story,goal_gold)\n values(p_operation_id,u,p.nickname,p.avatar_path,body,p_goal_gold);\n return app_private.begging_payload(p_operation_id);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "begging_detail",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id uuid, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.begging_detail(p_id uuid, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare r jsonb;items jsonb;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>10000000 then raise exception 'INVALID_BEGGING';end if;\n r:=app_private.begging_payload(p_id);if r is null then raise exception 'BEGGING_NOT_FOUND';end if;\n select coalesce(jsonb_agg(q.person order by q.created_at,q.id),'[]'::jsonb) into items from (\n  select t.id,t.created_at,jsonb_build_object('id',t.id,'nickname',coalesce(p.nickname,t.sender_name),\n   'avatarPath',case when p.id is not null then p.avatar_path else t.sender_avatar end,'gold',t.gold,'createdAt',t.created_at) person\n  from app_private.begging_transfers t left join public.player_profiles p on p.id=t.sender_id\n  where t.request_id=p_id order by t.created_at,t.id limit 21 offset p_offset\n )q;\n return jsonb_build_object('request',r,'items',case when jsonb_array_length(items)>20 then items-20 else items end,'hasMore',jsonb_array_length(items)>20);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "begging_give",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id uuid, p_gold integer, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.begging_give(p_id uuid, p_gold integer, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();recipient uuid;sender public.player_profiles;receiver public.player_profiles;\n sender_gold integer;receiver_gold integer;r app_private.begging_requests;previous app_private.begging_transfers;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_id is null or p_operation_id is null or p_gold is null or p_gold not between 100 and 1000000000 then raise exception 'INVALID_BEGGING_AMOUNT';end if;\n -- Completed receipts remain replayable even if the recipient later leaves.\n select * into previous from app_private.begging_transfers where id=p_operation_id;\n if found then\n  if previous.sender_id is distinct from u or previous.request_id<>p_id or previous.gold<>p_gold then raise exception 'OPERATION_CONFLICT';end if;\n  return jsonb_build_object('request',app_private.begging_payload(p_id),'receipt',jsonb_build_object('id',previous.id,'gold',previous.gold,'xp',previous.xp,'replayed',true));\n end if;\n select * into sender from public.player_profiles where id=u;\n if not found then sender:=app_private.sync_player_profile();end if;\n select creator_id into recipient from app_private.begging_requests where id=p_id;\n if not found then raise exception 'BEGGING_NOT_FOUND';end if;\n if recipient=u then raise exception 'BEGGING_SELF_GIVE';end if;\n if recipient is null then raise exception 'BEGGING_CLOSED';end if;\n perform app_private.get_gold_wallet();\n -- Lock both wallets in UUID order BEFORE the request and XP rows. Opposite\n -- donations between the same accounts therefore use the same lock order.\n insert into public.player_wallets(user_id) values(recipient) on conflict do nothing;\n perform 1 from public.player_wallets where user_id in(u,recipient) order by user_id for update;\n select * into previous from app_private.begging_transfers where id=p_operation_id;\n if found then\n  if previous.sender_id is distinct from u or previous.request_id<>p_id or previous.gold<>p_gold then raise exception 'OPERATION_CONFLICT';end if;\n  return jsonb_build_object('request',app_private.begging_payload(p_id),'receipt',jsonb_build_object('id',previous.id,'gold',previous.gold,'xp',previous.xp,'replayed',true));\n end if;\n select * into r from app_private.begging_requests where id=p_id for update;\n if r.status<>'active' or r.creator_id is distinct from recipient then raise exception 'BEGGING_CLOSED';end if;\n select gold into strict sender_gold from public.player_wallets where user_id=u;\n select gold into strict receiver_gold from public.player_wallets where user_id=recipient;\n if sender_gold<p_gold then raise exception 'INSUFFICIENT_GOLD';end if;\n if receiver_gold::bigint+p_gold>1000000000 then raise exception 'RECIPIENT_GOLD_LIMIT';end if;\n select * into strict receiver from public.player_profiles where id=recipient;\n insert into app_private.begging_transfers(id,request_id,sender_id,recipient_id,sender_name,sender_avatar,recipient_name,recipient_avatar,gold)\n values(p_operation_id,p_id,u,recipient,sender.nickname,sender.avatar_path,receiver.nickname,receiver.avatar_path,p_gold);\n update public.player_wallets set gold=gold+case when user_id=u then -p_gold else p_gold end,updated_at=clock_timestamp() where user_id in(u,recipient);\n update app_private.begging_requests set received_gold=received_gold+p_gold,\n  status=case when received_gold+p_gold>=goal_gold then 'completed' else 'active' end,\n  closed_at=case when received_gold+p_gold>=goal_gold then clock_timestamp() else null end where id=p_id;\n perform app_private.award_experience(u,'begging',p_operation_id,2);\n return jsonb_build_object('request',app_private.begging_payload(p_id),'receipt',jsonb_build_object('id',p_operation_id,'gold',p_gold,'xp',2,'replayed',false));\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "begging_history",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.begging_history(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();items jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 or p_offset>10000000 then raise exception 'INVALID_BEGGING';end if;\n select coalesce(jsonb_agg(q.item order by q.created_at desc,q.id desc),'[]'::jsonb) into items from (\n  select t.id,t.created_at,jsonb_build_object('id',t.id,'requestId',t.request_id,'story',left(r.story,80),\n   'gold',t.gold,'xp',case when t.sender_id=u then t.xp else 0 end,'direction',case when t.sender_id=u then 'sent' else 'received' end,\n   'createdAt',t.created_at,'person',case when t.sender_id=u then\n    jsonb_build_object('nickname',coalesce(b.nickname,t.recipient_name),'avatarPath',case when b.id is not null then b.avatar_path else t.recipient_avatar end)\n    else jsonb_build_object('nickname',coalesce(a.nickname,t.sender_name),'avatarPath',case when a.id is not null then a.avatar_path else t.sender_avatar end) end) item\n  from app_private.begging_transfers t join app_private.begging_requests r on r.id=t.request_id\n  left join public.player_profiles a on a.id=t.sender_id left join public.player_profiles b on b.id=t.recipient_id\n  where t.sender_id=u or t.recipient_id=u order by t.created_at desc,t.id desc limit 21 offset p_offset\n )q;\n return jsonb_build_object('items',case when jsonb_array_length(items)>20 then items-20 else items end,'hasMore',jsonb_array_length(items)>20);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "begging_payload",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.begging_payload(p_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select jsonb_build_object('id',r.id,'story',r.story,'goalGold',r.goal_gold,'receivedGold',r.received_gold,\n  'status',case when r.creator_id is null and r.status='active' then 'closed' else r.status end,\n  'createdAt',r.created_at,'closedAt',r.closed_at,'mine',coalesce(r.creator_id=auth.uid(),false),\n  'owner',jsonb_build_object('id',r.creator_id,'nickname',coalesce(p.nickname,r.creator_name),'avatarPath',case when p.id is not null then p.avatar_path else r.creator_avatar end),\n  'transferCount',(select count(*) from app_private.begging_transfers t where t.request_id=r.id),\n  'donors',coalesce((select jsonb_agg(q.person order by q.created_at,q.id) from (\n   select t.id,t.created_at,jsonb_build_object('id',t.id,'nickname',coalesce(p.nickname,t.sender_name),\n    'avatarPath',case when p.id is not null then p.avatar_path else t.sender_avatar end,'gold',t.gold) person\n   from app_private.begging_transfers t left join public.player_profiles p on p.id=t.sender_id\n   where t.request_id=r.id order by t.created_at,t.id limit 4\n  )q),'[]'::jsonb)\n ) from app_private.begging_requests r left join public.player_profiles p on p.id=r.creator_id where r.id=p_id\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "begging_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_tab text, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.begging_state(p_tab text DEFAULT 'active'::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();items jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_tab is null or p_tab not in ('active','mine') or p_offset is null or p_offset<0 or p_offset>10000 then raise exception 'INVALID_BEGGING';end if;\n select coalesce(jsonb_agg(app_private.begging_payload(q.id) order by q.created_at desc,q.id),'[]'::jsonb) into items from (\n  select r.id,r.created_at from app_private.begging_requests r where\n  (p_tab='active' and r.status='active' and r.creator_id is not null) or(p_tab='mine' and r.creator_id=u)\n  order by r.created_at desc,r.id limit 11 offset p_offset\n )q;\n return jsonb_build_object('items',case when jsonb_array_length(items)>10 then items-10 else items end,'hasMore',jsonb_array_length(items)>10);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "board_action",
         "config": [
           "search_path=\"\""
@@ -12965,7 +13575,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_listing_id uuid, p_offset integer",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.exchange_listing_detail(p_listing_id uuid, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();l public.exchange_listings;v_listing jsonb;v_comments jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 then raise exception 'INVALID_EXCHANGE';end if;\n select * into l from public.exchange_listings where id=p_listing_id and side='sell'\n  and (status in ('active','completed') or owner_id=u);\n if not found then raise exception 'EXCHANGE_NOT_FOUND';end if;\n select (to_jsonb(l)-'operation_id'-'escrow_gift_id')||jsonb_build_object(\n  'owner_avatar_path',(select avatar_path from public.player_profiles where id=l.owner_id),\n  'like_count',(select count(*) from public.exchange_listing_likes where listing_id=l.id),\n  'comment_count',(select count(*) from public.exchange_listing_comments where listing_id=l.id),\n  'liked',exists(select 1 from public.exchange_listing_likes where listing_id=l.id and user_id=u)\n ) into v_listing;\n select coalesce(jsonb_agg(to_jsonb(q) order by q.created_at desc,q.id desc),'[]'::jsonb) into v_comments from(\n  select c.id,c.user_id,c.body,c.created_at,p.nickname as author_name,p.avatar_path as author_avatar_path\n  from public.exchange_listing_comments c join public.player_profiles p on p.id=c.user_id\n  where c.listing_id=l.id order by c.created_at desc,c.id desc limit 30 offset p_offset\n ) q;\n return jsonb_build_object('listing',v_listing,'comments',v_comments,'pageSize',30);\nend;\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.exchange_listing_detail(p_listing_id uuid, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();l public.exchange_listings;v_listing jsonb;v_comments jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_offset is null or p_offset<0 then raise exception 'INVALID_EXCHANGE';end if;\n select * into l from public.exchange_listings where id=p_listing_id and side='sell'\n  and (status in ('active','completed') or owner_id=u);\n if not found then raise exception 'EXCHANGE_NOT_FOUND';end if;\n select (to_jsonb(l)-'operation_id'-'escrow_gift_id')||jsonb_build_object(\n  'owner_avatar_path',(select avatar_path from public.player_profiles where id=l.owner_id),\n  'like_count',(select count(*) from public.exchange_listing_likes where listing_id=l.id),\n  'comment_count',(select count(*) from public.exchange_listing_comments where listing_id=l.id),\n  'liked',exists(select 1 from public.exchange_listing_likes where listing_id=l.id and user_id=u)\n ) into v_listing;\n select coalesce(jsonb_agg(to_jsonb(q) order by q.created_at asc,q.id asc),'[]'::jsonb) into v_comments from(\n  select c.id,c.user_id,c.body,c.created_at,p.nickname as author_name,p.avatar_path as author_avatar_path\n  from public.exchange_listing_comments c join public.player_profiles p on p.id=c.user_id\n  where c.listing_id=l.id order by c.created_at asc,c.id asc limit 30 offset p_offset\n ) q;\n return jsonb_build_object('listing',v_listing,'comments',v_comments,'pageSize',30);\nend;\n$function$\n",
         "securityDefiner": true
       },
       {
@@ -13659,6 +14269,16 @@
         "securityDefiner": false
       },
       {
+        "name": "menu_status",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.menu_status()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare caller uuid := auth.uid(); sampled_at timestamptz := now();\nbegin\n  if caller is null then raise exception 'AUTH_REQUIRED' using errcode='42501'; end if;\n  return jsonb_build_object(\n    'serverNow', sampled_at,\n    'production', (select jsonb_build_object('total',count(*),'sites',coalesce(jsonb_agg(\n      jsonb_build_object('completesAt',completes_at,'expiresAt',expires_at)\n    ) filter(where started_at is not null),'[]'::jsonb)) from app_private.production_sites where user_id=caller),\n    'baitProduction', (select jsonb_build_object('total',count(*),'sites',coalesce(jsonb_agg(\n      jsonb_build_object('completesAt',completes_at,'expiresAt',expires_at)\n    ) filter(where started_at is not null),'[]'::jsonb)) from app_private.bait_production_sites where user_id=caller),\n    'harbor', jsonb_build_object(\n      'dockSlots',coalesce((select dock_slots from app_private.player_harbor_capacity where user_id=caller),2),\n      'returnsAt',coalesce((select jsonb_agg(returns_at) from public.harbor_voyages where user_id=caller and claimed_at is null),'[]'::jsonb)),\n    'expedition', jsonb_build_object('returnsAt',(select returns_at from public.fishing_expeditions where user_id=caller and claimed_at is null)),\n    'savings', jsonb_build_object('account',(select app_private.savings_payload(a,sampled_at) from public.shell_savings a where a.user_id=caller and a.closed_at is null))\n  );\nend;\n$function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "merchant_easy_items",
         "config": [
           "search_path=\"\""
@@ -13845,7 +14465,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round integer, p_choice text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.odd_even_game(p_action text, p_operation_id uuid DEFAULT NULL::uuid, p_run_id uuid DEFAULT NULL::uuid, p_round integer DEFAULT NULL::integer, p_choice text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();r public.odd_even_runs;v_gold integer;v_pearls integer;v_win boolean;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in ('state','start','answer','double','cashout') then raise exception 'INVALID_ODD_EVEN_ACTION';end if;\n if p_action='state' then\n  select * into r from public.odd_even_runs where user_id=v_uid and finished_at is null;\n  return app_private.odd_even_response(r.id);\n end if;\n perform app_private.get_gold_wallet();\n select gold into v_gold from public.player_wallets where user_id=v_uid for update;\n if p_action='start' then\n  if p_operation_id is null then raise exception 'INVALID_OPERATION';end if;\n  select * into r from public.odd_even_runs where user_id=v_uid and operation_id=p_operation_id;\n  if found then return app_private.odd_even_response(r.id);end if;\n  select * into r from public.odd_even_runs where user_id=v_uid and finished_at is null;\n  if found then return app_private.odd_even_response(r.id);end if;\n  if v_gold<10 then raise exception 'INSUFFICIENT_GOLD';end if;\n  insert into public.odd_even_runs(user_id,operation_id) values(v_uid,p_operation_id) returning * into r;\n  update public.player_wallets set gold=gold-10,updated_at=clock_timestamp() where user_id=v_uid;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','arcade:odd-even',-10);\n  return app_private.odd_even_response(r.id);\n end if;\n select * into r from public.odd_even_runs where id=p_run_id and user_id=v_uid for update;\n if not found then raise exception 'ODD_EVEN_RUN_NOT_FOUND';end if;\n if r.finished_at is not null then return app_private.odd_even_response(r.id);end if;\n if p_round is null then raise exception 'INVALID_ROUND';end if;\n if p_round<r.round then return app_private.odd_even_response(r.id);end if;\n if p_round<>r.round then raise exception 'INVALID_ROUND';end if;\n if p_action='answer' then\n  if r.stage<>'choose' then return app_private.odd_even_response(r.id);end if;\n  if p_choice is null or p_choice not in ('odd','even') then raise exception 'INVALID_CHOICE';end if;\n  v_pearls:=1+floor(random()*10)::integer;\n  v_win:=(v_pearls%2=1)=(p_choice='odd');\n  update public.odd_even_runs set pearls=v_pearls,choice=p_choice,stake=case when v_win then stake*2 else 0 end,\n   wins=wins+case when v_win then 1 else 0 end,stage=case when v_win then 'decision' else 'lost' end,\n   finished_at=case when v_win then null else clock_timestamp() end where id=r.id;\n elsif p_action='double' then\n  if r.stage='choose' then return app_private.odd_even_response(r.id);end if;\n  if r.wins>=20 then raise exception 'ODD_EVEN_LIMIT';end if;\n  update public.odd_even_runs set stage='choose',round=round+1,pearls=null,choice=null where id=r.id;\n else\n  if r.stage<>'decision' then raise exception 'ODD_EVEN_WIN_REQUIRED';end if;\n  if v_gold>1000000000-r.stake then raise exception 'GOLD_LIMIT';end if;\n  update public.player_wallets set gold=gold+r.stake,updated_at=clock_timestamp() where user_id=v_uid;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,r.payout_operation_id,'charge','arcade:odd-even:'||r.id::text,r.stake);\n  update public.odd_even_runs set stage='banked',finished_at=clock_timestamp() where id=r.id;\n end if;\n return app_private.odd_even_response(r.id);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.odd_even_game(p_action text, p_operation_id uuid DEFAULT NULL::uuid, p_run_id uuid DEFAULT NULL::uuid, p_round integer DEFAULT NULL::integer, p_choice text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();r public.odd_even_runs;v_gold integer;v_pearls integer;v_win boolean;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_action is null or p_action not in ('state','start','answer','double','cashout') then raise exception 'INVALID_ODD_EVEN_ACTION';end if;\n if p_action='state' then\n  select * into r from public.odd_even_runs where user_id=v_uid and finished_at is null;\n  return app_private.odd_even_response(r.id);\n end if;\n perform app_private.get_gold_wallet();\n select gold into v_gold from public.player_wallets where user_id=v_uid for update;\n if p_action='start' then\n  if p_operation_id is null then raise exception 'INVALID_OPERATION';end if;\n  select * into r from public.odd_even_runs where user_id=v_uid and operation_id=p_operation_id;\n  if found then return app_private.odd_even_response(r.id);end if;\n  select * into r from public.odd_even_runs where user_id=v_uid and finished_at is null;\n  if found then return app_private.odd_even_response(r.id);end if;\n  if v_gold<30 then raise exception 'INSUFFICIENT_GOLD';end if;\n  insert into public.odd_even_runs(user_id,operation_id,stake,initial_stake) values(v_uid,p_operation_id,30,30) returning * into r;\n  update public.player_wallets set gold=gold-30,updated_at=clock_timestamp() where user_id=v_uid;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','arcade:odd-even',-30);\n  return app_private.odd_even_response(r.id);\n end if;\n select * into r from public.odd_even_runs where id=p_run_id and user_id=v_uid for update;\n if not found then raise exception 'ODD_EVEN_RUN_NOT_FOUND';end if;\n if r.finished_at is not null then return app_private.odd_even_response(r.id);end if;\n if p_round is null then raise exception 'INVALID_ROUND';end if;\n if p_round<r.round then return app_private.odd_even_response(r.id);end if;\n if p_round<>r.round then raise exception 'INVALID_ROUND';end if;\n if p_action='answer' then\n  if r.stage<>'choose' then return app_private.odd_even_response(r.id);end if;\n  if p_choice is null or p_choice not in ('odd','even') then raise exception 'INVALID_CHOICE';end if;\n  v_pearls:=1+floor(random()*10)::integer;\n  v_win:=(v_pearls%2=1)=(p_choice='odd');\n  update public.odd_even_runs set pearls=v_pearls,choice=p_choice,stake=case when v_win then stake*2 else 0 end,\n   wins=wins+case when v_win then 1 else 0 end,stage=case when v_win then 'decision' else 'lost' end,\n   finished_at=case when v_win then null else clock_timestamp() end where id=r.id;\n elsif p_action='double' then\n  if r.stage='choose' then return app_private.odd_even_response(r.id);end if;\n  if r.wins>=20 then raise exception 'ODD_EVEN_LIMIT';end if;\n  update public.odd_even_runs set stage='choose',round=round+1,pearls=null,choice=null where id=r.id;\n else\n  if r.stage<>'decision' then raise exception 'ODD_EVEN_WIN_REQUIRED';end if;\n  if v_gold>1000000000-r.stake then raise exception 'GOLD_LIMIT';end if;\n  update public.player_wallets set gold=gold+r.stake,updated_at=clock_timestamp() where user_id=v_uid;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,r.payout_operation_id,'charge','arcade:odd-even:'||r.id::text,r.stake);\n  update public.odd_even_runs set stage='banked',finished_at=clock_timestamp() where id=r.id;\n end if;\n return app_private.odd_even_response(r.id);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -13865,7 +14485,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_id uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.odd_even_response(p_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select jsonb_build_object('run',(select jsonb_build_object('id',r.id,'stake',r.stake,'wins',r.wins,'round',r.round,'stage',r.stage,'pearls',r.pearls,'choice',r.choice) from public.odd_even_runs r where r.id=p_id),'maxWins',20)\n$function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.odd_even_response(p_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n select jsonb_build_object('run',(select jsonb_build_object('id',r.id,'stake',r.stake,'initialStake',r.initial_stake,'wins',r.wins,'round',r.round,'stage',r.stage,'pearls',r.pearls,'choice',r.choice) from public.odd_even_runs r where r.id=p_id),'maxWins',20)\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -14065,7 +14685,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.process_title_queue()\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare r record;n integer:=0;\nbegin\n for r in select user_id from app_private.title_dirty order by user_id limit 100 for update skip locked loop\n  perform app_private.sync_player_titles(r.user_id);\n  delete from app_private.title_dirty where user_id=r.user_id;n:=n+1;\n end loop;return n;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.process_title_queue()\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare r record;n integer:=0;started timestamptz:=clock_timestamp();\nbegin\n for r in select user_id from app_private.title_dirty order by user_id limit 10 for update skip locked loop\n  exit when clock_timestamp()-started>interval '1 second';\n  if not pg_try_advisory_xact_lock(hashtextextended('titles:'||r.user_id::text,0)) then continue;end if;\n  perform app_private.sync_player_titles(r.user_id);\n  delete from app_private.title_dirty where user_id=r.user_id;n:=n+1;\n end loop;\n return n;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14625,7 +15245,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_action text, p_operation_id uuid, p_run_id uuid, p_round_id uuid, p_choice_id text",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.shadow_game(p_action text, p_operation_id uuid DEFAULT NULL::uuid, p_run_id uuid DEFAULT NULL::uuid, p_round_id uuid DEFAULT NULL::uuid, p_choice_id text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();r public.shadow_game_runs;q app_private.shadow_game_rounds;v_gold integer;v_correct boolean;v_timeout boolean;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_action is null or p_action not in ('state','start','answer','next') then raise exception 'INVALID_SHADOW_ACTION'; end if;\n if p_action='state' then\n  if p_run_id is not null then\n   select * into r from public.shadow_game_runs where id=p_run_id and user_id=v_uid;\n   if not found then raise exception 'SHADOW_RUN_NOT_FOUND'; end if;\n  else select * into r from public.shadow_game_runs where user_id=v_uid and finished_at is null;\n  end if;\n  return app_private.shadow_run_response(r.id);\n end if;\n perform app_private.get_gold_wallet();\n select gold into v_gold from public.player_wallets where user_id=v_uid for update;\n if p_action='start' then\n  if p_operation_id is null then raise exception 'INVALID_OPERATION'; end if;\n  select * into r from public.shadow_game_runs where user_id=v_uid and operation_id=p_operation_id;\n  if found then return app_private.shadow_run_response(r.id); end if;\n  select * into r from public.shadow_game_runs where user_id=v_uid and finished_at is null;\n  if found then return app_private.shadow_run_response(r.id); end if;\n  if v_gold<10 then raise exception 'INSUFFICIENT_GOLD'; end if;\n  insert into public.shadow_game_runs(user_id,operation_id) values(v_uid,p_operation_id) returning * into r;\n  perform app_private.shadow_new_round(r.id);\n  update public.player_wallets set gold=gold-10,updated_at=clock_timestamp() where user_id=v_uid;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','arcade:shadow',-10);\n  return app_private.shadow_run_response(r.id);\n end if;\n select * into r from public.shadow_game_runs where id=p_run_id and user_id=v_uid for update;\n if not found then raise exception 'SHADOW_RUN_NOT_FOUND'; end if;\n select * into q from app_private.shadow_game_rounds where id=p_round_id and run_id=r.id;\n if not found then raise exception 'SHADOW_ROUND_NOT_FOUND'; end if;\n if r.finished_at is not null then return app_private.shadow_run_response(r.id); end if;\n if r.score>=100 then\n  update public.shadow_game_runs set finished_at=clock_timestamp() where id=r.id;\n  return app_private.shadow_run_response(r.id);\n end if;\n if p_action='answer' then\n  if q.answered_at is not null then return app_private.shadow_run_response(r.id); end if;\n  v_timeout:=clock_timestamp()>=q.deadline;\n  if p_choice_id is null and not v_timeout then raise exception 'SHADOW_NOT_EXPIRED'; end if;\n  if p_choice_id is not null and not exists(select 1 from jsonb_array_elements(q.options) o where o->>'id'=p_choice_id) then raise exception 'INVALID_SHADOW_CHOICE'; end if;\n  v_correct:=not v_timeout and coalesce(p_choice_id=q.target_id,false);\n  update app_private.shadow_game_rounds set answered_at=clock_timestamp(),correct=v_correct,timed_out=v_timeout where id=q.id;\n  update public.shadow_game_runs set score=least(100,score+case when v_correct then 1 else 0 end),\n   lives=lives-case when v_correct then 0 else 1 end,\n   finished_at=case when (not v_correct and lives=1) or (v_correct and score>=99) then clock_timestamp() else null end where id=r.id;\n else\n  if q.answered_at is null then raise exception 'SHADOW_ANSWER_REQUIRED'; end if;\n  if q.number=(select max(number) from app_private.shadow_game_rounds where run_id=r.id) then perform app_private.shadow_new_round(r.id); end if;\n end if;\n return app_private.shadow_run_response(r.id);\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.shadow_game(p_action text, p_operation_id uuid DEFAULT NULL::uuid, p_run_id uuid DEFAULT NULL::uuid, p_round_id uuid DEFAULT NULL::uuid, p_choice_id text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();r public.shadow_game_runs;q app_private.shadow_game_rounds;v_gold integer;v_correct boolean;v_timeout boolean;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_action is null or p_action not in ('state','start','answer','next') then raise exception 'INVALID_SHADOW_ACTION'; end if;\n if p_action='state' then\n  if p_run_id is not null then\n   select * into r from public.shadow_game_runs where id=p_run_id and user_id=v_uid;\n   if not found then raise exception 'SHADOW_RUN_NOT_FOUND'; end if;\n  else select * into r from public.shadow_game_runs where user_id=v_uid and finished_at is null;\n  end if;\n  return app_private.shadow_run_response(r.id);\n end if;\n perform app_private.get_gold_wallet();\n select gold into v_gold from public.player_wallets where user_id=v_uid for update;\n if p_action='start' then\n  if p_operation_id is null then raise exception 'INVALID_OPERATION'; end if;\n  select * into r from public.shadow_game_runs where user_id=v_uid and operation_id=p_operation_id;\n  if found then return app_private.shadow_run_response(r.id); end if;\n  select * into r from public.shadow_game_runs where user_id=v_uid and finished_at is null;\n  if found then return app_private.shadow_run_response(r.id); end if;\n  if v_gold<10 then raise exception 'INSUFFICIENT_GOLD'; end if;\n  insert into public.shadow_game_runs(user_id,operation_id,question_pool) values(v_uid,p_operation_id,app_private.shadow_question_pool()) returning * into r;\n  perform app_private.shadow_new_round(r.id);\n  update public.player_wallets set gold=gold-10,updated_at=clock_timestamp() where user_id=v_uid;\n  insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,'buy','arcade:shadow',-10);\n  return app_private.shadow_run_response(r.id);\n end if;\n select * into r from public.shadow_game_runs where id=p_run_id and user_id=v_uid for update;\n if not found then raise exception 'SHADOW_RUN_NOT_FOUND'; end if;\n select * into q from app_private.shadow_game_rounds where id=p_round_id and run_id=r.id;\n if not found then raise exception 'SHADOW_ROUND_NOT_FOUND'; end if;\n if r.finished_at is not null then return app_private.shadow_run_response(r.id); end if;\n if r.question_pool is null then\n  update public.shadow_game_runs set question_pool=app_private.shadow_question_pool() where id=r.id returning * into r;\n end if;\n if p_action='answer' then\n  if q.answered_at is not null then return app_private.shadow_run_response(r.id); end if;\n  v_timeout:=clock_timestamp()>=q.deadline;\n  if p_choice_id is null and not v_timeout then raise exception 'SHADOW_NOT_EXPIRED'; end if;\n  if p_choice_id is not null and not exists(select 1 from jsonb_array_elements(q.options) o where o->>'id'=p_choice_id) then raise exception 'INVALID_SHADOW_CHOICE'; end if;\n  v_correct:=not v_timeout and coalesce(p_choice_id=q.target_id,false);\n  update app_private.shadow_game_rounds set answered_at=clock_timestamp(),correct=v_correct,timed_out=v_timeout where id=q.id;\n  update public.shadow_game_runs set score=score+case when v_correct then 1 else 0 end,\n   lives=lives-case when v_correct then 0 else 1 end,\n   finished_at=case when (not v_correct and lives=1) or (q.number>=jsonb_array_length(r.question_pool)) then clock_timestamp() else null end where id=r.id;\n else\n  if q.answered_at is null then raise exception 'SHADOW_ANSWER_REQUIRED'; end if;\n  if q.number=(select max(number) from app_private.shadow_game_rounds where run_id=r.id) then perform app_private.shadow_new_round(r.id); end if;\n end if;\n return app_private.shadow_run_response(r.id);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -14645,7 +15265,17 @@
         ],
         "schema": "app_private",
         "arguments": "p_run uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.shadow_new_round(p_run uuid)\n RETURNS void\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare v_options jsonb;v_target jsonb;v_number integer;\nbegin\n select jsonb_agg(jsonb_build_object('id',id,'name',name,'path',thumbnail_path)) into v_options\n from (select * from (select distinct on(name) id,name,thumbnail_path from public.collectible_species\n where kind<>'map' and thumbnail_path is not null and thumbnail_path<>'' order by name,id) pool order by random() limit 4) chosen;\n if jsonb_array_length(coalesce(v_options,'[]'::jsonb))<>4 then raise exception 'SHADOW_POOL_UNAVAILABLE'; end if;\n v_target:=v_options->floor(random()*4)::integer;\n select coalesce(max(number),0)+1 into v_number from app_private.shadow_game_rounds where run_id=p_run;\n insert into app_private.shadow_game_rounds(run_id,number,target_id,target_name,image_path,options,deadline)\n values(p_run,v_number,v_target->>'id',v_target->>'name',v_target->>'path',\n (select jsonb_agg(jsonb_build_object('id',o->>'id','name',o->>'name')) from jsonb_array_elements(v_options) o),clock_timestamp()+interval '8 seconds');\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.shadow_new_round(p_run uuid)\n RETURNS void\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare v_pool jsonb;v_options jsonb;v_target jsonb;v_number integer;\nbegin\n select question_pool into strict v_pool from public.shadow_game_runs where id=p_run;\n if v_pool is null then\n   v_pool:=app_private.shadow_question_pool();\n   update public.shadow_game_runs set question_pool=v_pool where id=p_run;\n end if;\n if jsonb_array_length(v_pool)<4 then raise exception 'SHADOW_POOL_UNAVAILABLE';end if;\n select item into v_target from jsonb_array_elements(v_pool) item\n where not exists(select 1 from app_private.shadow_game_rounds q where q.run_id=p_run and q.target_id=item->>'id')\n order by random() limit 1;\n if not found then\n   update public.shadow_game_runs set finished_at=coalesce(finished_at,clock_timestamp()) where id=p_run;\n   return;\n end if;\n select jsonb_agg(item order by random()) into v_options from (\n   select v_target item union all\n   (select item from jsonb_array_elements(v_pool) item where item->>'id'<>v_target->>'id' order by random() limit 3)\n ) choices;\n select coalesce(max(number),0)+1 into v_number from app_private.shadow_game_rounds where run_id=p_run;\n insert into app_private.shadow_game_rounds(run_id,number,target_id,target_name,image_path,options,deadline)\n values(p_run,v_number,v_target->>'id',v_target->>'name',v_target->>'path',\n   (select jsonb_agg(jsonb_build_object('id',o->>'id','name',o->>'name')) from jsonb_array_elements(v_options) o),clock_timestamp()+interval '8 seconds');\nend;\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "shadow_question_pool",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.shadow_question_pool()\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select coalesce(jsonb_agg(jsonb_build_object('id',id,'name',name,'path',thumbnail_path) order by name,id),'[]'::jsonb)\n from (select distinct on(name) id,name,thumbnail_path from public.collectible_species\n   where kind<>'map' and thumbnail_path is not null and thumbnail_path<>'' order by name,id) pool;\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -14655,7 +15285,7 @@
         ],
         "schema": "app_private",
         "arguments": "p_run uuid",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.shadow_run_response(p_run uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare r public.shadow_game_runs;q app_private.shadow_game_rounds;\nbegin\n if p_run is null then return jsonb_build_object('run',null,'serverNow',clock_timestamp()); end if;\n select * into strict r from public.shadow_game_runs where id=p_run;\n select * into q from app_private.shadow_game_rounds where run_id=r.id order by number desc limit 1;\n return jsonb_build_object('serverNow',clock_timestamp(),'run',jsonb_build_object(\n 'id',r.id,'score',r.score,'lives',r.lives,'finished',r.finished_at is not null,\n 'round',jsonb_build_object('id',q.id,'number',q.number,'imagePath',q.image_path,'options',q.options,'deadline',q.deadline,\n 'answered',q.answered_at is not null,'correct',q.correct,'timedOut',q.timed_out,\n 'answerName',case when q.answered_at is not null then q.target_name else null end)));\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.shadow_run_response(p_run uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare r public.shadow_game_runs;q app_private.shadow_game_rounds;\nbegin\n if p_run is null then return jsonb_build_object('run',null,'serverNow',clock_timestamp()); end if;\n select * into strict r from public.shadow_game_runs where id=p_run;\n select * into q from app_private.shadow_game_rounds where run_id=r.id order by number desc limit 1;\n return jsonb_build_object('serverNow',clock_timestamp(),'run',jsonb_build_object(\n 'id',r.id,'score',r.score,'totalQuestions',jsonb_array_length(r.question_pool),'lives',r.lives,'finished',r.finished_at is not null,\n 'round',jsonb_build_object('id',q.id,'number',q.number,'imagePath',q.image_path,'options',q.options,'deadline',q.deadline,\n 'answered',q.answered_at is not null,'correct',q.correct,'timedOut',q.timed_out,\n 'answerName',case when q.answered_at is not null then q.target_name else null end)));\nend $function$\n",
         "securityDefiner": false
       },
       {
@@ -14719,6 +15349,66 @@
         "securityDefiner": false
       },
       {
+        "name": "sponsorship_cancel",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.sponsorship_cancel(p_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;s app_private.sponsorships;total bigint;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_id is null then raise exception 'INVALID_SPONSORSHIP';end if;\n perform app_private.get_gold_wallet();\n select * into strict w from public.player_wallets where user_id=u for update;\n select * into s from app_private.sponsorships where id=p_id for update;\n if not found then raise exception 'SPONSORSHIP_NOT_FOUND';end if;\n if s.creator_id is distinct from u then raise exception 'SPONSORSHIP_FORBIDDEN';end if;\n if s.status='cancelled' then return app_private.sponsorship_payload(p_id)||jsonb_build_object('replayed',true);end if;\n if s.status<>'active' or s.claimed_count<>0 then raise exception 'SPONSORSHIP_CANNOT_CANCEL';end if;\n total:=s.gold_each::bigint*s.slots;\n if w.gold::bigint+total>1000000000 then raise exception 'GOLD_LIMIT';end if;\n update public.player_wallets set gold=gold+total::integer,updated_at=clock_timestamp() where user_id=u;\n update app_private.sponsorships set status='cancelled',closed_at=clock_timestamp() where id=p_id;\n return app_private.sponsorship_payload(p_id)||jsonb_build_object('replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "sponsorship_claim",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.sponsorship_claim(p_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;s app_private.sponsorships;p public.player_profiles;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_id is null then raise exception 'INVALID_SPONSORSHIP';end if;\n -- Initialize a newcomer before locking the wallet: profile signup hooks may\n -- credit that wallet too. All cap checks must use the resulting balance.\n select * into p from public.player_profiles where id=u;\n if not found then p:=app_private.sync_player_profile();end if;\n perform app_private.get_gold_wallet();\n select * into strict w from public.player_wallets where user_id=u for update;\n select * into s from app_private.sponsorships where id=p_id for update;\n if not found then raise exception 'SPONSORSHIP_NOT_FOUND';end if;\n -- A lost response can be retried even after the final slot has closed.\n if exists(select 1 from app_private.sponsorship_claims where sponsorship_id=p_id and user_id=u) then\n  return app_private.sponsorship_payload(p_id)||jsonb_build_object('replayed',true);\n end if;\n if s.creator_id=u then raise exception 'SPONSORSHIP_SELF_CLAIM';end if;\n if s.status<>'active' then raise exception 'SPONSORSHIP_CLOSED';end if;\n if w.gold::bigint+s.gold_each>1000000000 then raise exception 'GOLD_LIMIT';end if;\n insert into app_private.sponsorship_claims(sponsorship_id,user_id,nickname,avatar_path,gold,slot)\n values(p_id,u,p.nickname,p.avatar_path,s.gold_each,s.claimed_count+1);\n update public.player_wallets set gold=gold+s.gold_each,updated_at=clock_timestamp() where user_id=u;\n update app_private.sponsorships set claimed_count=claimed_count+1,\n  status=case when claimed_count+1=slots then 'completed' else 'active' end,\n  closed_at=case when claimed_count+1=slots then clock_timestamp() else null end where id=p_id;\n return app_private.sponsorship_payload(p_id)||jsonb_build_object('replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "sponsorship_create",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_operation_id uuid, p_gold_each integer, p_slots integer, p_message text",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.sponsorship_create(p_operation_id uuid, p_gold_each integer, p_slots integer, p_message text DEFAULT ''::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();w public.player_wallets;p public.player_profiles;s app_private.sponsorships;\n total bigint;body text:=btrim(coalesce(p_message,''));\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_gold_each is null or p_gold_each<1 or p_slots is null or p_slots not between 1 and 100 or char_length(body)>120 then raise exception 'INVALID_SPONSORSHIP';end if;\n total:=p_gold_each::bigint*p_slots;\n if total>1000000000 then raise exception 'INVALID_SPONSORSHIP';end if;\n select * into p from public.player_profiles where id=u;\n if not found then p:=app_private.sync_player_profile();end if;\n -- Every mutation takes only the caller's wallet, then the sponsorship row.\n -- Receiving never locks the donor's wallet, avoiding cross-player lock cycles.\n perform app_private.get_gold_wallet();\n select * into strict w from public.player_wallets where user_id=u for update;\n select * into s from app_private.sponsorships where id=p_operation_id;\n if found then\n  if s.creator_id is distinct from u or s.gold_each<>p_gold_each or s.slots<>p_slots or s.message<>body then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.sponsorship_payload(s.id)||jsonb_build_object('replayed',true);\n end if;\n if exists(select 1 from app_private.sponsorships where creator_id=u and status='active') then raise exception 'SPONSORSHIP_ALREADY_ACTIVE';end if;\n if w.gold<total then raise exception 'INSUFFICIENT_GOLD';end if;\n insert into app_private.sponsorships(id,creator_id,creator_name,creator_avatar,gold_each,slots,message)\n values(p_operation_id,u,p.nickname,p.avatar_path,p_gold_each,p_slots,body);\n update public.player_wallets set gold=gold-total::integer,updated_at=clock_timestamp() where user_id=u;\n return app_private.sponsorship_payload(p_operation_id)||jsonb_build_object('replayed',false);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "sponsorship_detail",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.sponsorship_detail(p_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result jsonb;\nbegin\n if auth.uid() is null then raise exception 'AUTH_REQUIRED';end if;\n result:=app_private.sponsorship_payload(p_id,true);\n if result is null then raise exception 'SPONSORSHIP_NOT_FOUND';end if;\n return result;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "sponsorship_payload",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_id uuid, p_full boolean",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.sponsorship_payload(p_id uuid, p_full boolean DEFAULT false)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select jsonb_build_object(\n  'id',s.id,'goldEach',s.gold_each,'slots',s.slots,'claimedCount',s.claimed_count,\n  'totalGold',s.gold_each::bigint*s.slots,'message',s.message,'status',s.status,\n  'createdAt',s.created_at,'closedAt',s.closed_at,\n  'owner',jsonb_build_object('id',s.creator_id,'nickname',coalesce(p.nickname,s.creator_name),'avatarPath',case when p.id is not null then p.avatar_path else s.creator_avatar end),\n  'mine',coalesce(s.creator_id=auth.uid(),false),\n  'received',exists(select 1 from app_private.sponsorship_claims c where c.sponsorship_id=s.id and c.user_id=auth.uid()),\n  'recipients',coalesce((select jsonb_agg(q.person order by q.slot) from (\n   select c.slot,jsonb_build_object('id',c.user_id,'nickname',coalesce(r.nickname,c.nickname),\n    'avatarPath',case when r.id is not null then r.avatar_path else c.avatar_path end,'slot',c.slot,'claimedAt',c.claimed_at) person\n   from app_private.sponsorship_claims c left join public.player_profiles r on r.id=c.user_id\n   where c.sponsorship_id=s.id order by c.slot limit case when p_full then 100 else 8 end\n  )q),'[]'::jsonb)\n ) from app_private.sponsorships s left join public.player_profiles p on p.id=s.creator_id where s.id=p_id\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "sponsorship_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_tab text, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.sponsorship_state(p_tab text DEFAULT 'active'::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();items jsonb;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n if p_tab is null or p_tab not in ('active','completed','mine') or p_offset is null or p_offset<0 or p_offset>10000 then raise exception 'INVALID_SPONSORSHIP';end if;\n select coalesce(jsonb_agg(app_private.sponsorship_payload(q.id) order by q.created_at desc,q.id),'[]'::jsonb) into items from (\n  select s.id,s.created_at from app_private.sponsorships s\n  where (p_tab='active' and s.status='active') or (p_tab='completed' and s.status<>'active')\n   or (p_tab='mine' and (s.creator_id=u or exists(select 1 from app_private.sponsorship_claims c where c.sponsorship_id=s.id and c.user_id=u)))\n  order by s.created_at desc,s.id limit 11 offset p_offset\n )q;\n return jsonb_build_object('items',case when jsonb_array_length(items)>10 then items-10 else items end,\n  'hasMore',jsonb_array_length(items)>10);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "stamp_bug_report_author",
         "config": [
           "search_path=\"\""
@@ -14775,7 +15465,7 @@
         ],
         "schema": "app_private",
         "arguments": "",
-        "definition": "CREATE OR REPLACE FUNCTION app_private.sync_titles()\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();before_count integer;after_count integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n delete from app_private.title_dirty where user_id=u;\n if not found then return 0;end if;\n select count(*) into before_count from public.player_titles where user_id=u;\n perform app_private.sync_player_titles(u);\n select count(*) into after_count from public.player_titles where user_id=u;\n return after_count-before_count;\nend $function$\n",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.sync_titles()\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();before_count integer;after_count integer;\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n perform 1 from app_private.title_dirty where user_id=u for update skip locked;\n if not found then return 0;end if;\n if not pg_try_advisory_xact_lock(hashtextextended('titles:'||u::text,0)) then return 0;end if;\n delete from app_private.title_dirty where user_id=u;\n select count(*) into before_count from public.player_titles where user_id=u;\n perform app_private.sync_player_titles(u);\n select count(*) into after_count from public.player_titles where user_id=u;\n return after_count-before_count;\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -15076,6 +15766,66 @@
         "schema": "public",
         "arguments": "",
         "definition": "CREATE OR REPLACE FUNCTION public.bait_production_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.bait_production_state()$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "begging_close",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.begging_close(p_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.begging_close(p_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "begging_create",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_operation_id uuid, p_story text, p_goal_gold integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.begging_create(p_operation_id uuid, p_story text, p_goal_gold integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.begging_create(p_operation_id,p_story,p_goal_gold)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "begging_detail",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_id uuid, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.begging_detail(p_id uuid, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.begging_detail(p_id,p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "begging_give",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_id uuid, p_gold integer, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.begging_give(p_id uuid, p_gold integer, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.begging_give(p_id,p_gold,p_operation_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "begging_history",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.begging_history(p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.begging_history(p_offset)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "begging_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_tab text, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.begging_state(p_tab text DEFAULT 'active'::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.begging_state(p_tab,p_offset)$function$\n",
         "securityDefiner": false
       },
       {
@@ -15849,6 +16599,16 @@
         "securityDefiner": false
       },
       {
+        "name": "menu_status",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.menu_status()\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$ select app_private.menu_status(); $function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "merchant_state",
         "config": [
           "search_path=\"\""
@@ -15889,6 +16649,16 @@
         "securityDefiner": false
       },
       {
+        "name": "new_content_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.new_content_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare u uuid:=auth.uid();\nbegin\n if u is null then raise exception 'AUTH_REQUIRED';end if;\n return jsonb_build_object(\n  'board',(select created_at from public.board_posts where author_id<>u order by created_at desc,id desc limit 1),\n  'exchange',(select created_at from public.exchange_listings where owner_id<>u and status='active' and side='sell'\n   and offer->>'kind' in ('collectible','bait','fuel') and wanted->>'kind'='gold' and wanted->>'id'='gold'\n   order by created_at desc,id limit 1),\n  'suggestions',(select created_at from public.suggestion_posts where author_id<>u order by created_at desc,id desc limit 1),\n  'bugs',(select created_at from public.bug_reports where author_id<>u order by created_at desc,id desc limit 1),\n  'showcase',(select created_at from public.fishing_showcase_posts where author_id<>u order by created_at desc,id desc limit 1)\n );\nend $function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "notice_delete",
         "config": [
           "search_path=\"\""
@@ -15916,6 +16686,16 @@
         "schema": "public",
         "arguments": "p_id uuid, p_category text, p_title text, p_body text, p_images text[], p_status text, p_pinned boolean, p_starts_at timestamp with time zone, p_ends_at timestamp with time zone, p_revision integer",
         "definition": "CREATE OR REPLACE FUNCTION public.notice_save(p_id uuid, p_category text, p_title text, p_body text, p_images text[], p_status text, p_pinned boolean, p_starts_at timestamp with time zone, p_ends_at timestamp with time zone, p_revision integer)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.notice_save(p_id,p_category,p_title,p_body,p_images,p_status,p_pinned,p_starts_at,p_ends_at,p_revision)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "notification_inbox",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.notification_inbox()\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare\n  caller uuid := auth.uid();\n  result jsonb;\nbegin\n  if caller is null then\n    raise exception 'AUTH_REQUIRED' using errcode = '42501';\n  end if;\n  with recent as (\n    select n.* from public.notifications n\n    where n.recipient_id = caller\n    order by n.created_at desc, n.id desc limit 100\n  ), items as (\n    select coalesce(jsonb_agg(\n      to_jsonb(n) || jsonb_build_object(\n        'request', case when r.id is null then null else jsonb_build_object(\n          'id', r.id, 'sender_id', r.sender_id, 'recipient_id', r.recipient_id, 'status', r.status) end,\n        'notice', case when notice.id is null then null else jsonb_build_object('category', notice.category) end\n      ) order by n.created_at desc, n.id desc\n    ), '[]'::jsonb) as value\n    from recent n\n    left join public.friend_requests r on r.id = n.request_id\n    left join public.notices notice on notice.id = n.notice_id\n  ), unread as (\n    select count(*) filter (where category = 'friend') as friend,\n      count(*) filter (where category = 'general') as general,\n      count(*) filter (where category = 'gift' and kind <> 'gift_received') as gift,\n      count(*) filter (where category = 'notice') as notice\n    from public.notifications where recipient_id = caller and read_at is null\n  ), gifts as (\n    select count(*) as pending from public.collectible_gifts\n    where recipient_id = caller and status = 'pending' and exchange_hold = false\n  )\n  select jsonb_build_object('notifications', items.value, 'unread', jsonb_build_object(\n    'friend', unread.friend, 'general', unread.general,\n    'gift', unread.gift + gifts.pending, 'notice', unread.notice\n  )) into result from items cross join unread cross join gifts;\n  return result;\nend;\n$function$\n",
         "securityDefiner": false
       },
       {
@@ -16396,6 +17176,56 @@
         "schema": "public",
         "arguments": "p_post_id uuid, p_reaction text, p_offset integer",
         "definition": "CREATE OR REPLACE FUNCTION public.showcase_reaction_people(p_post_id uuid, p_reaction text DEFAULT NULL::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n STABLE\n SET search_path TO ''\nAS $function$\n select app_private.showcase_reaction_people(p_post_id,p_reaction,p_offset)\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "sponsorship_cancel",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.sponsorship_cancel(p_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.sponsorship_cancel(p_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "sponsorship_claim",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.sponsorship_claim(p_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.sponsorship_claim(p_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "sponsorship_create",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_operation_id uuid, p_gold_each integer, p_slots integer, p_message text",
+        "definition": "CREATE OR REPLACE FUNCTION public.sponsorship_create(p_operation_id uuid, p_gold_each integer, p_slots integer, p_message text DEFAULT ''::text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.sponsorship_create(p_operation_id,p_gold_each,p_slots,p_message)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "sponsorship_detail",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.sponsorship_detail(p_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.sponsorship_detail(p_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "sponsorship_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_tab text, p_offset integer",
+        "definition": "CREATE OR REPLACE FUNCTION public.sponsorship_state(p_tab text DEFAULT 'active'::text, p_offset integer DEFAULT 0)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.sponsorship_state(p_tab,p_offset)$function$\n",
         "securityDefiner": false
       },
       {
@@ -16965,6 +17795,174 @@
         "definition": "NOT NULL user_id"
       },
       {
+        "name": "begging_requests_check",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "CHECK ((((status = 'active'::text) AND (received_gold < goal_gold) AND (closed_at IS NULL)) OR ((status = 'completed'::text) AND (received_gold >= goal_gold) AND (closed_at IS NOT NULL)) OR ((status = 'closed'::text) AND (closed_at IS NOT NULL))))"
+      },
+      {
+        "name": "begging_requests_created_at_not_null",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "begging_requests_creator_id_fkey",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (creator_id) REFERENCES auth.users(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "begging_requests_creator_name_not_null",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "NOT NULL creator_name"
+      },
+      {
+        "name": "begging_requests_goal_gold_check",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "CHECK (((goal_gold >= 100) AND (goal_gold <= 1000000000)))"
+      },
+      {
+        "name": "begging_requests_goal_gold_not_null",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "NOT NULL goal_gold"
+      },
+      {
+        "name": "begging_requests_id_not_null",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "begging_requests_pkey",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "begging_requests_received_gold_check",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "CHECK ((received_gold >= 0))"
+      },
+      {
+        "name": "begging_requests_received_gold_not_null",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "NOT NULL received_gold"
+      },
+      {
+        "name": "begging_requests_status_check",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "CHECK ((status = ANY (ARRAY['active'::text, 'completed'::text, 'closed'::text])))"
+      },
+      {
+        "name": "begging_requests_status_not_null",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "NOT NULL status"
+      },
+      {
+        "name": "begging_requests_story_check",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "CHECK ((((char_length(btrim(story)) >= 1) AND (char_length(btrim(story)) <= 500)) AND (story ~ '[^[:space:]]'::text)))"
+      },
+      {
+        "name": "begging_requests_story_not_null",
+        "table": "begging_requests",
+        "schema": "app_private",
+        "definition": "NOT NULL story"
+      },
+      {
+        "name": "begging_transfers_check",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "CHECK (((sender_id IS DISTINCT FROM recipient_id) OR (sender_id IS NULL)))"
+      },
+      {
+        "name": "begging_transfers_created_at_not_null",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "begging_transfers_gold_check",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "CHECK (((gold >= 100) AND (gold <= 1000000000)))"
+      },
+      {
+        "name": "begging_transfers_gold_not_null",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "NOT NULL gold"
+      },
+      {
+        "name": "begging_transfers_id_not_null",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "begging_transfers_pkey",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "begging_transfers_recipient_id_fkey",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (recipient_id) REFERENCES auth.users(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "begging_transfers_recipient_name_not_null",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "NOT NULL recipient_name"
+      },
+      {
+        "name": "begging_transfers_request_id_fkey",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (request_id) REFERENCES app_private.begging_requests(id)"
+      },
+      {
+        "name": "begging_transfers_request_id_not_null",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "NOT NULL request_id"
+      },
+      {
+        "name": "begging_transfers_sender_id_fkey",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (sender_id) REFERENCES auth.users(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "begging_transfers_sender_name_not_null",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "NOT NULL sender_name"
+      },
+      {
+        "name": "begging_transfers_xp_check",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "CHECK ((xp = 2))"
+      },
+      {
+        "name": "begging_transfers_xp_not_null",
+        "table": "begging_transfers",
+        "schema": "app_private",
+        "definition": "NOT NULL xp"
+      },
+      {
         "name": "cancelled_harbor_voyages_cancelled_at_not_null",
         "table": "cancelled_harbor_voyages",
         "schema": "app_private",
@@ -17256,7 +18254,7 @@
         "name": "experience_events_source_check",
         "table": "experience_events",
         "schema": "app_private",
-        "definition": "CHECK ((source = ANY (ARRAY['manual'::text, 'trap'::text, 'harbor'::text, 'friend_lure'::text, 'friend_feeding'::text, 'friend_cleaning'::text])))"
+        "definition": "CHECK ((source = ANY (ARRAY['manual'::text, 'trap'::text, 'harbor'::text, 'friend_lure'::text, 'friend_feeding'::text, 'friend_cleaning'::text, 'begging'::text])))"
       },
       {
         "name": "experience_events_source_id_not_null",
@@ -19483,6 +20481,186 @@
         "table": "shadow_game_rounds",
         "schema": "app_private",
         "definition": "NOT NULL target_name"
+      },
+      {
+        "name": "sponsorship_claims_claimed_at_not_null",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL claimed_at"
+      },
+      {
+        "name": "sponsorship_claims_gold_check",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "CHECK ((gold > 0))"
+      },
+      {
+        "name": "sponsorship_claims_gold_not_null",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL gold"
+      },
+      {
+        "name": "sponsorship_claims_id_not_null",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "sponsorship_claims_nickname_not_null",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL nickname"
+      },
+      {
+        "name": "sponsorship_claims_pkey",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "sponsorship_claims_slot_check",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "CHECK (((slot >= 1) AND (slot <= 100)))"
+      },
+      {
+        "name": "sponsorship_claims_slot_not_null",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL slot"
+      },
+      {
+        "name": "sponsorship_claims_sponsorship_id_fkey",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (sponsorship_id) REFERENCES app_private.sponsorships(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "sponsorship_claims_sponsorship_id_not_null",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "NOT NULL sponsorship_id"
+      },
+      {
+        "name": "sponsorship_claims_sponsorship_id_slot_key",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "UNIQUE (sponsorship_id, slot)"
+      },
+      {
+        "name": "sponsorship_claims_sponsorship_id_user_id_key",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "UNIQUE (sponsorship_id, user_id)"
+      },
+      {
+        "name": "sponsorship_claims_user_id_fkey",
+        "table": "sponsorship_claims",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "sponsorships_check",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "CHECK (((claimed_count >= 0) AND (claimed_count <= slots)))"
+      },
+      {
+        "name": "sponsorships_check1",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "CHECK ((((gold_each)::bigint * slots) <= 1000000000))"
+      },
+      {
+        "name": "sponsorships_check2",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "CHECK ((((status = 'active'::text) AND (claimed_count < slots) AND (closed_at IS NULL)) OR ((status = 'completed'::text) AND (claimed_count = slots) AND (closed_at IS NOT NULL)) OR ((status = 'cancelled'::text) AND (claimed_count = 0) AND (closed_at IS NOT NULL))))"
+      },
+      {
+        "name": "sponsorships_claimed_count_not_null",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "NOT NULL claimed_count"
+      },
+      {
+        "name": "sponsorships_created_at_not_null",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "sponsorships_creator_id_fkey",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (creator_id) REFERENCES auth.users(id) ON DELETE SET NULL"
+      },
+      {
+        "name": "sponsorships_creator_name_not_null",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "NOT NULL creator_name"
+      },
+      {
+        "name": "sponsorships_gold_each_check",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "CHECK (((gold_each >= 1) AND (gold_each <= 1000000000)))"
+      },
+      {
+        "name": "sponsorships_gold_each_not_null",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "NOT NULL gold_each"
+      },
+      {
+        "name": "sponsorships_id_not_null",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "sponsorships_message_check",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "CHECK ((char_length(message) <= 120))"
+      },
+      {
+        "name": "sponsorships_message_not_null",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "NOT NULL message"
+      },
+      {
+        "name": "sponsorships_pkey",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "sponsorships_slots_check",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "CHECK (((slots >= 1) AND (slots <= 100)))"
+      },
+      {
+        "name": "sponsorships_slots_not_null",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "NOT NULL slots"
+      },
+      {
+        "name": "sponsorships_status_check",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "CHECK ((status = ANY (ARRAY['active'::text, 'completed'::text, 'cancelled'::text])))"
+      },
+      {
+        "name": "sponsorships_status_not_null",
+        "table": "sponsorships",
+        "schema": "app_private",
+        "definition": "NOT NULL status"
       },
       {
         "name": "starter_bait_receipts_created_at_not_null",
@@ -23073,6 +24251,18 @@
         "definition": "NOT NULL id"
       },
       {
+        "name": "odd_even_runs_initial_stake_check",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "CHECK ((initial_stake = ANY (ARRAY[10, 30])))"
+      },
+      {
+        "name": "odd_even_runs_initial_stake_not_null",
+        "table": "odd_even_runs",
+        "schema": "public",
+        "definition": "NOT NULL initial_stake"
+      },
+      {
         "name": "odd_even_runs_operation_id_not_null",
         "table": "odd_even_runs",
         "schema": "public",
@@ -23124,7 +24314,7 @@
         "name": "odd_even_runs_stake_check",
         "table": "odd_even_runs",
         "schema": "public",
-        "definition": "CHECK (((stake >= 0) AND (stake <= 10485760)))"
+        "definition": "CHECK (((stake >= 0) AND (stake <= 31457280)))"
       },
       {
         "name": "odd_even_runs_stake_not_null",
@@ -24049,6 +25239,12 @@
         "table": "shadow_game_runs",
         "schema": "public",
         "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "shadow_game_runs_question_pool_check",
+        "table": "shadow_game_runs",
+        "schema": "public",
+        "definition": "CHECK (((question_pool IS NULL) OR (jsonb_typeof(question_pool) = 'array'::text)))"
       },
       {
         "name": "shadow_game_runs_score_check",
@@ -31046,6 +32242,153 @@
         "arguments": "p_kind text, p_now timestamp with time zone"
       },
       {
+        "name": "begging_close",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "begging_close",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "begging_close",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "begging_create",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_story text, p_goal_gold integer"
+      },
+      {
+        "name": "begging_create",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_story text, p_goal_gold integer"
+      },
+      {
+        "name": "begging_create",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_story text, p_goal_gold integer"
+      },
+      {
+        "name": "begging_detail",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid, p_offset integer"
+      },
+      {
+        "name": "begging_detail",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_id uuid, p_offset integer"
+      },
+      {
+        "name": "begging_detail",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid, p_offset integer"
+      },
+      {
+        "name": "begging_give",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid, p_gold integer, p_operation_id uuid"
+      },
+      {
+        "name": "begging_give",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_id uuid, p_gold integer, p_operation_id uuid"
+      },
+      {
+        "name": "begging_give",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid, p_gold integer, p_operation_id uuid"
+      },
+      {
+        "name": "begging_history",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "begging_history",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "begging_history",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "begging_payload",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "begging_payload",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "begging_payload",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "begging_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_tab text, p_offset integer"
+      },
+      {
+        "name": "begging_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_tab text, p_offset integer"
+      },
+      {
+        "name": "begging_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_tab text, p_offset integer"
+      },
+      {
         "name": "board_action",
         "role": "anon",
         "schema": "app_private",
@@ -33671,6 +35014,27 @@
         "arguments": "p_id uuid"
       },
       {
+        "name": "menu_status",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "menu_status",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "menu_status",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "merchant_easy_items",
         "role": "anon",
         "schema": "app_private",
@@ -35750,6 +37114,27 @@
         "arguments": "p_run uuid"
       },
       {
+        "name": "shadow_question_pool",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "shadow_question_pool",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "shadow_question_pool",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "shadow_run_response",
         "role": "anon",
         "schema": "app_private",
@@ -35895,6 +37280,132 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_species_id text, p_map_region_id text"
+      },
+      {
+        "name": "sponsorship_cancel",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_cancel",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_cancel",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_claim",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_claim",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_claim",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_create",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_gold_each integer, p_slots integer, p_message text"
+      },
+      {
+        "name": "sponsorship_create",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_gold_each integer, p_slots integer, p_message text"
+      },
+      {
+        "name": "sponsorship_create",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_gold_each integer, p_slots integer, p_message text"
+      },
+      {
+        "name": "sponsorship_detail",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_detail",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_detail",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_payload",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid, p_full boolean"
+      },
+      {
+        "name": "sponsorship_payload",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid, p_full boolean"
+      },
+      {
+        "name": "sponsorship_payload",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_id uuid, p_full boolean"
+      },
+      {
+        "name": "sponsorship_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_tab text, p_offset integer"
+      },
+      {
+        "name": "sponsorship_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_tab text, p_offset integer"
+      },
+      {
+        "name": "sponsorship_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_tab text, p_offset integer"
       },
       {
         "name": "stamp_bug_report_author",
@@ -36651,6 +38162,132 @@
         "schema": "public",
         "execute": false,
         "arguments": ""
+      },
+      {
+        "name": "begging_close",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "begging_close",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "begging_close",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "begging_create",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_story text, p_goal_gold integer"
+      },
+      {
+        "name": "begging_create",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_story text, p_goal_gold integer"
+      },
+      {
+        "name": "begging_create",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_story text, p_goal_gold integer"
+      },
+      {
+        "name": "begging_detail",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid, p_offset integer"
+      },
+      {
+        "name": "begging_detail",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_id uuid, p_offset integer"
+      },
+      {
+        "name": "begging_detail",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid, p_offset integer"
+      },
+      {
+        "name": "begging_give",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid, p_gold integer, p_operation_id uuid"
+      },
+      {
+        "name": "begging_give",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_id uuid, p_gold integer, p_operation_id uuid"
+      },
+      {
+        "name": "begging_give",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid, p_gold integer, p_operation_id uuid"
+      },
+      {
+        "name": "begging_history",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "begging_history",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "begging_history",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_offset integer"
+      },
+      {
+        "name": "begging_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_tab text, p_offset integer"
+      },
+      {
+        "name": "begging_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_tab text, p_offset integer"
+      },
+      {
+        "name": "begging_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_tab text, p_offset integer"
       },
       {
         "name": "board_action",
@@ -38270,6 +39907,27 @@
         "arguments": "p_offset integer"
       },
       {
+        "name": "menu_status",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "menu_status",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "menu_status",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "merchant_state",
         "role": "anon",
         "schema": "public",
@@ -38354,6 +40012,27 @@
         "arguments": "p_import jsonb"
       },
       {
+        "name": "new_content_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "new_content_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "new_content_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "notice_delete",
         "role": "anon",
         "schema": "public",
@@ -38415,6 +40094,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_id uuid, p_category text, p_title text, p_body text, p_images text[], p_status text, p_pinned boolean, p_starts_at timestamp with time zone, p_ends_at timestamp with time zone, p_revision integer"
+      },
+      {
+        "name": "notification_inbox",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "notification_inbox",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "notification_inbox",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "notifications_opened",
@@ -39423,6 +41123,111 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_post_id uuid, p_reaction text, p_offset integer"
+      },
+      {
+        "name": "sponsorship_cancel",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_cancel",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_cancel",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_claim",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_claim",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_claim",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_create",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_gold_each integer, p_slots integer, p_message text"
+      },
+      {
+        "name": "sponsorship_create",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_operation_id uuid, p_gold_each integer, p_slots integer, p_message text"
+      },
+      {
+        "name": "sponsorship_create",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_operation_id uuid, p_gold_each integer, p_slots integer, p_message text"
+      },
+      {
+        "name": "sponsorship_detail",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_detail",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_detail",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_id uuid"
+      },
+      {
+        "name": "sponsorship_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_tab text, p_offset integer"
+      },
+      {
+        "name": "sponsorship_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_tab text, p_offset integer"
+      },
+      {
+        "name": "sponsorship_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_tab text, p_offset integer"
       },
       {
         "name": "start_fishing_fight",

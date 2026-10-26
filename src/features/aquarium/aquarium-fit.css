@@ -11,3 +11,4 @@
  [data-wide-trigger] { top: 3rem; left: .5rem; right: auto; }
  [data-tank-fit] { max-width: calc(100% - 1rem); padding-inline: .375rem; font-size: 9px; }
 }
+.aquarium-fitted-glass[data-portrait='true'] [data-wide-trigger] { top: 4rem; }

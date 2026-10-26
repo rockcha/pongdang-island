@@ -1,7 +1,7 @@
 import {useState,type RefObject} from 'react'
 import {Menu} from '@base-ui/react/menu'
-import {Ellipsis} from 'lucide-react'
-import {Tabs,TabsList,TabsTrigger,TabsContent} from '@/components/ui/tabs'
+import {BookOpen,Ellipsis} from 'lucide-react'
+import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription} from '@/components/ui/dialog'
 import {Button} from '@/components/ui/button'
 import {RarityBadge} from '@/components/rarity-badge'
 import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
@@ -9,7 +9,7 @@ import {RelicEffectText} from './relic-equipment-slot'
 import {RelicGold} from './relic-gold'
 import type {Relic,RelicState} from './api'
 
-const filters=[{value:'owned',label:'보유'},{value:'all',label:'전체'}] as const
+
 
 function RelicMenu({relic,equipped,disabled,onSell,onShare}:{relic:Relic;equipped:boolean;disabled:boolean;onSell:()=>void;onShare?:()=>void}){
  return <Menu.Root>
@@ -23,22 +23,32 @@ function RelicMenu({relic,equipped,disabled,onSell,onShare}:{relic:Relic;equippe
 }
 
 export function RelicCatalogTabs({state,disabled,listRef,onEquip,onSell,onShare}:{state:RelicState;disabled:boolean;listRef:RefObject<HTMLDivElement|null>;onEquip:(relic:Relic)=>void;onSell:(relic:Relic)=>void;onShare?:(relic:Relic)=>void}){
- const [tab,setTab]=useState('owned')
- const items=(filter:string)=>state.relics.filter(r=>filter==='all'||r.owned)
- return <Tabs value={tab} onValueChange={value=>setTab(String(value))} className="flex min-h-0 flex-1 flex-col">
-  <TabsList aria-label="유물 목록" className="relic-tabs shrink-0">{filters.map(f=><TabsTrigger key={f.value} value={f.value}>{f.label}</TabsTrigger>)}</TabsList>
-  {filters.map(f=><TabsContent key={f.value} value={f.value} aria-label={`${f.label} 유물`} ref={tab===f.value?listRef:undefined} className="mt-0 min-h-0 flex-1 divide-y divide-border/45 overflow-y-auto overscroll-contain">
-   {items(f.value).length===0&&<div className="py-10 text-center"><p className="text-xs text-muted-foreground">아직 보유한 유물이 없어요.</p><Button variant="ghost" size="sm" className="mt-2 text-xs" onClick={()=>setTab('all')}>전체 보기</Button></div>}
-   {items(f.value).map(r=>{
+ const [catalogOpen,setCatalogOpen]=useState(false)
+ const owned=state.relics.filter(r=>r.owned)
+ const renderItems=(items:Relic[],catalog=false)=><>
+   {items.map(r=>{
     const equipped=state.equippedId===r.id
     return <article key={r.id} aria-label={r.name} className={`flex items-center gap-3 px-1 py-4 ${equipped?'bg-primary/[0.035]':''}`}>
-     <CollectibleThumbnail path={r.thumbnail_path} name={r.name} className={`size-11 shrink-0 ${r.owned?'':'grayscale opacity-45'}`}/>
-     <div className="min-w-0 flex-1"><div className="flex flex-wrap items-center gap-x-2 gap-y-0.5"><h3 className="text-[13px] font-medium leading-5">{r.name}</h3><RarityBadge rarity={r.rarity}/></div><p className="mt-0.5 text-[11px] leading-[1.65] text-muted-foreground"><RelicEffectText description={r.description}/></p></div>
-     <div className="flex shrink-0 items-center gap-0.5"><Button size="sm" variant="ghost" className={`h-9 px-2 text-[11px] ${equipped?'text-primary disabled:opacity-100':'text-muted-foreground'}`} disabled={disabled||!r.owned||equipped} onClick={()=>onEquip(r)}>{equipped?'장착 중':r.owned?(state.equippedId?'교체':'장착'):r.discovered?'미보유':'미발견'}</Button>
+     <CollectibleThumbnail path={r.thumbnail_path} name={r.name} className={`size-11 shrink-0 ${r.discovered||r.owned?'':'[&_img]:grayscale [&_img]:brightness-[.08]'}`}/>
+     <div className="min-w-0 flex-1"><div className="flex flex-wrap items-center gap-x-2 gap-y-0.5"><h3 className="text-[13px] font-medium leading-5">{r.name}</h3><RarityBadge rarity={r.rarity}/>{catalog&&<span className="text-[10px] text-muted-foreground">{r.owned?'보유':r.discovered?'미보유':'미발견'}</span>}</div><p className="mt-0.5 text-[11px] leading-[1.65] text-muted-foreground"><RelicEffectText description={r.description}/></p></div>
+     {!catalog&&<div className="flex shrink-0 items-center gap-0.5"><Button size="sm" variant="ghost" className={`h-9 px-2 text-[11px] ${equipped?'text-primary disabled:opacity-100':'text-muted-foreground'}`} disabled={disabled||!r.owned||equipped} onClick={()=>onEquip(r)}>{equipped?'장착 중':r.owned?(state.equippedId?'교체':'장착'):r.discovered?'미보유':'미발견'}</Button>
       {r.owned&&r.sell_price>0&&<RelicMenu relic={r} equipped={equipped} disabled={disabled} onSell={()=>onSell(r)} onShare={onShare?()=>onShare(r):undefined}/>}
-     </div>
+     </div>}
     </article>
    })}
-  </TabsContent>)}
- </Tabs>
+ </>
+ return <section className="flex min-h-0 flex-1 flex-col">
+  <div className="flex shrink-0 items-center justify-between border-b border-border/45 pb-2">
+   <h3 className="text-sm font-medium">나의 유물 <span className="ml-1 text-xs text-muted-foreground">{owned.length}</span></h3>
+   <Button variant="ghost" size="sm" className="gap-1.5 text-xs text-primary" onClick={()=>setCatalogOpen(true)}><BookOpen className="size-4"/>유물 도감</Button>
+  </div>
+  <div ref={listRef} aria-label="보유 유물" className="min-h-0 flex-1 divide-y divide-border/45 overflow-y-auto overscroll-contain">
+   {owned.length===0&&<p className="py-10 text-center text-xs text-muted-foreground">아직 보유한 유물이 없어요.</p>}
+   {renderItems(owned)}
+  </div>
+  <Dialog open={catalogOpen} onOpenChange={setCatalogOpen}><DialogContent className="flex max-h-[85dvh] flex-col overflow-hidden sm:max-w-lg">
+   <DialogHeader><DialogTitle>유물 도감</DialogTitle><DialogDescription>발견한 유물과 아직 만나지 못한 유물을 확인해요.</DialogDescription></DialogHeader>
+   <div aria-label="유물 도감 목록" className="min-h-0 flex-1 divide-y divide-border/45 overflow-y-auto overscroll-contain">{renderItems(state.relics,true)}</div>
+  </DialogContent></Dialog>
+ </section>
 }

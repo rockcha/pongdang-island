@@ -1,0 +1,278 @@
+{
+  "tool": "built-in image_gen",
+  "styleReference": "assets/references/collectible-style/common-rare-pongi.png",
+  "items": [
+    {
+      "id": "nyamnyam-eggroll-medaka",
+      "name": "계란말이 송사리",
+      "rarity": "common",
+      "price": 30,
+      "subject": "A tiny slender Japanese medaka fish transformed into rolled omelet: rounded rectangular golden-yellow tamagoyaki body with a visible curled egg-layer pattern near the gill, small green scallion-like dorsal and pectoral fins, delicate translucent yellow forked tail trailing left, single cute round black eye near snout at right. Still clearly a living fish shape, not food on a plate.",
+      "movement": "swim",
+      "min": 0.2,
+      "max": 0.62,
+      "speed": 0.025,
+      "size": 60,
+      "thumbnailPrompt": "Use case: stylized-concept. Production fish inventory thumbnail for cozy Korean food-themed ocean game. A tiny slender Japanese medaka fish transformed into rolled omelet: rounded rectangular golden-yellow tamagoyaki body with a visible curled egg-layer pattern near the gill, small green scallion-like dorsal and pectoral fins, delicate translucent yellow forked tail trailing left, single cute round black eye near snout at right. Still clearly a living fish shape, not food on a plate. Warm cute cartoon style matching reference rendering ONLY: dark brown clean outlines, rounded clear silhouette, soft warm cel shading. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point right, body and tail trail behind left, forward swimming right. No left-facing or front-facing view. Entire fish centered within 82% square canvas with transparent padding. Genuine transparent background, every pixel outside silhouette transparent; no scenery, text, plate, water, ground shadow, particles or glow haze. No otter features copied from reference.",
+      "thumbnail_path": "fish/normal/nyamnyam-eggroll-medaka_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/nyamnyam-eggroll-medaka_v1_sprite.png",
+      "description": "노란 계란말이 몸통에 파잎 같은 지느러미가 달린 작은 송사리예요. 물살을 가르면 포근한 달걀빛이 반짝여요.",
+      "spriteSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-0b77637f-4337-4115-b2ac-8f9f7346a816.png",
+      "thumbnailSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-ab049556-2810-49ec-87ba-56868d383161.png",
+      "spritePrompt": "Edit the provided FOUR-CELL sprite layout guide. KEEP its exact 2 columns x 2 rows composition, same fish scale and the generous empty transparent margins and exact head locations. Do not enlarge the fish. The guide is the layout and identity target, not a scene. Change only tail and fins into four distinct consecutive small swimming poses: frame1 neutral, frame2 tail slightly toward viewer, frame3 tail slightly away, frame4 recovery. Keep each head and main body completely fixed at the same relative coordinates in its cell. ALL FOUR fish face RIGHT. Keep the maximum silhouette width under 82 percent of each cell. No drawing can come within 6 percent of any cell edge. Do not center the top row lower or bottom row higher. Preserve clean warm cartoon style, food markings and colors. A tiny slender Japanese medaka fish transformed into rolled omelet: rounded rectangular golden-yellow tamagoyaki body with a visible curled egg-layer pattern near the gill, small green scallion-like dorsal and pectoral fins, delicate translucent yellow forked tail trailing left, single cute round black eye near snout at right. Still clearly a living fish shape, not food on a plate. True alpha-transparent background, no border, labels, grid, shadows or particles. Animate natural fin and tail bending, no eye-only changes and no identical copies.",
+      "frames": 4,
+      "kind": "fish",
+      "layoutReference": "sources/nyamnyam-eggroll-medaka-layout.guide",
+      "thumbnail_source": "sources/nyamnyam-eggroll-medaka-thumbnail.source",
+      "sprite_source": "sources/nyamnyam-eggroll-medaka-sprite.source",
+      "referenceRoles": {
+        "thumbnail": "Pongi rendering style only",
+        "sprite": "Final thumbnail identity; redo layout guide fixes scale and position"
+      },
+      "registration": {
+        "patch": [
+          477,
+          276,
+          53,
+          69
+        ],
+        "headMatching": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 6.625825989890557
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 3.9819944993980987
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 7.554991631413277
+          }
+        ],
+        "cell": 627,
+        "scale": 1.0770552147239263
+      },
+      "hashes": {
+        "thumbnail_path": "5967d8a347f64244d7be7206b712ec73bd51fdbcc47a7246125eb96028f8bba4",
+        "sprite_sheet_path": "ebfb9e2638778fba8f70533167cdae228916d1aa6c70d1981d417ab3199a1feb"
+      }
+    },
+    {
+      "id": "nyamnyam-sausage-puffer",
+      "name": "소시지 문어복",
+      "rarity": "common",
+      "price": 33,
+      "subject": "A small round cheerful pufferfish made of reddish-orange glossy grilled sausage, cream tiny belly, fish face and snout at right with single round black eye, two little fish pectoral fins, the tail at LEFT split into four short curled sausage strips like an octopus-cut sausage. A real fish character, not an actual octopus, no eight arms around head, no utensil or plate.",
+      "movement": "swim",
+      "min": 0.35,
+      "max": 0.78,
+      "speed": 0.018,
+      "size": 67,
+      "thumbnailPrompt": "Use case: stylized-concept. Production fish inventory thumbnail for cozy Korean food-themed ocean game. A small round cheerful pufferfish made of reddish-orange glossy grilled sausage, cream tiny belly, fish face and snout at right with single round black eye, two little fish pectoral fins, the tail at LEFT split into four short curled sausage strips like an octopus-cut sausage. A real fish character, not an actual octopus, no eight arms around head, no utensil or plate. Warm cute cartoon style matching reference rendering ONLY: dark brown clean outlines, rounded clear silhouette, soft warm cel shading. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point right, body and tail trail behind left, forward swimming right. No left-facing or front-facing view. Entire fish centered within 82% square canvas with transparent padding. Genuine transparent background, every pixel outside silhouette transparent; no scenery, text, plate, water, ground shadow, particles or glow haze. No otter features copied from reference.",
+      "thumbnail_path": "fish/normal/nyamnyam-sausage-puffer_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/nyamnyam-sausage-puffer_v1_sprite.png",
+      "description": "탱글한 소시지 몸에 문어 모양으로 갈라진 꼬리를 달고 헤엄쳐요. 통통한 배에는 작은 복어의 용기가 가득해요.",
+      "spriteSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-8cf23f2e-d8a6-4c6e-8c0e-69052b433c02.png",
+      "thumbnailSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-1e84f70e-772d-4d22-821d-deb2fdefce96.png",
+      "spritePrompt": "Use case: stylized-concept. Make ONE production 2 by 2 four-frame swimming SPRITE SHEET of the exact fish in the reference. Reference is SPECIES IDENTITY, colors, materials, shape and warm cartoon rendering. A small round cheerful pufferfish made of reddish-orange glossy grilled sausage, cream tiny belly, fish face and snout at right with single round black eye, two little fish pectoral fins, the tail at LEFT split into four short curled sausage strips like an octopus-cut sausage. A real fish character, not an actual octopus, no eight arms around head, no utensil or plate. Transparent square canvas divided conceptually into FOUR equal square cells, no visible grid. Each cell contains exactly one complete fish, same body scale and head position in all four cells. Fish long axis occupies 80-84% cell width, at least 7% clear padding on ALL sides, never cross cell edges. Face SCREEN RIGHT, mouth and head at right, tail trailing left, ALL FOUR frames stay right facing. Keep eye/head registration locked at same relative coordinates. Four distinct successive swimming poses with actual tailbeat and fin contour changes, frame1 neutral, frame2 tail flexes toward viewer, frame3 tail flexes away, frame4 recovery; smooth 1-2-3-4-1 loop. The four sausage-cut tail lobes gently sweep side to side as a coherent tail, fish body remains steady. No body bobbing, no camera shift, no eye-only animation, no duplicated still poses. Exact same identity in every frame. Crisp dark brown outlines, soft clean cel shading. True transparent RGBA, no background, no text, no water, no particles, shadow or detached decoration. All four full fish safely inside separate cells.",
+      "frames": 4,
+      "kind": "fish",
+      "thumbnail_source": "sources/nyamnyam-sausage-puffer-thumbnail.source",
+      "sprite_source": "sources/nyamnyam-sausage-puffer-sprite.source",
+      "referenceRoles": {
+        "thumbnail": "Pongi rendering style only",
+        "sprite": "Final thumbnail identity; redo layout guide fixes scale and position"
+      },
+      "registration": {
+        "patch": [
+          477,
+          276,
+          53,
+          69
+        ],
+        "headMatching": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 10.612777141132428
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 8.723302957753653
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 13.879789289633964
+          }
+        ],
+        "cell": 627,
+        "scale": 1.0661122456511578
+      },
+      "hashes": {
+        "thumbnail_path": "5d6abd4c00a555314e530346b37b9a1a88ef8a4e64b274bee0fd8455ef922a27",
+        "sprite_sheet_path": "94a17a49e0fdeb40a739fbcf9e7ceceb642e0ac8289e510a584a89c87444ed63"
+      }
+    },
+    {
+      "id": "nyamnyam-omurice-goldfish",
+      "name": "오므라이스 금붕어",
+      "rarity": "rare",
+      "price": 220,
+      "subject": "A beautiful plump fancy goldfish with a smooth golden-yellow omelette cloak body, a neat red ketchup zigzag over the back, a glimpse of orange fried-rice grain pattern at the belly, large flowing translucent peach-gold double tail streaming to LEFT, delicate egg-yellow ruffled fins, large friendly shiny black eye near face on RIGHT. Rich readable food-inspired fish design, no plate, no spoon, no food pile.",
+      "movement": "swim",
+      "min": 0.22,
+      "max": 0.72,
+      "speed": 0.017,
+      "size": 85,
+      "thumbnailPrompt": "Use case: stylized-concept. Production fish inventory thumbnail for cozy Korean food-themed ocean game. A beautiful plump fancy goldfish with a smooth golden-yellow omelette cloak body, a neat red ketchup zigzag over the back, a glimpse of orange fried-rice grain pattern at the belly, large flowing translucent peach-gold double tail streaming to LEFT, delicate egg-yellow ruffled fins, large friendly shiny black eye near face on RIGHT. Rich readable food-inspired fish design, no plate, no spoon, no food pile. Warm cute cartoon style matching reference rendering ONLY: dark brown clean outlines, rounded clear silhouette, soft warm cel shading. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point right, body and tail trail behind left, forward swimming right. No left-facing or front-facing view. Entire fish centered within 82% square canvas with transparent padding. Genuine transparent background, every pixel outside silhouette transparent; no scenery, text, plate, water, ground shadow, particles or glow haze. No otter features copied from reference.",
+      "thumbnail_path": "fish/rare/nyamnyam-omurice-goldfish_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/nyamnyam-omurice-goldfish_v1_sprite.png",
+      "description": "노란 달걀옷에 케첩 무늬를 두른 금붕어예요. 볶음밥빛 비늘과 풍성한 꼬리가 한상바다를 환하게 물들여요.",
+      "spriteSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-040328a1-d1a4-4b2e-bb4d-d38adbec4590.png",
+      "thumbnailSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-1381c7c1-e925-4865-8464-da1b190c2366.png",
+      "spritePrompt": "Edit the provided FOUR-CELL sprite layout guide. KEEP its exact 2 columns x 2 rows composition, same fish scale and the generous empty transparent margins and exact head locations. Do not enlarge the fish. The guide is the layout and identity target, not a scene. Change only tail and fins into four distinct consecutive small swimming poses: frame1 neutral, frame2 tail slightly toward viewer, frame3 tail slightly away, frame4 recovery. Keep each head and main body completely fixed at the same relative coordinates in its cell. ALL FOUR fish face RIGHT. Keep the maximum silhouette width under 82 percent of each cell. No drawing can come within 6 percent of any cell edge. Do not center the top row lower or bottom row higher. Preserve clean warm cartoon style, food markings and colors. A beautiful plump fancy goldfish with a smooth golden-yellow omelette cloak body, a neat red ketchup zigzag over the back, a glimpse of orange fried-rice grain pattern at the belly, large flowing translucent peach-gold double tail streaming to LEFT, delicate egg-yellow ruffled fins, large friendly shiny black eye near face on RIGHT. Rich readable food-inspired fish design, no plate, no spoon, no food pile. True alpha-transparent background, no border, labels, grid, shadows or particles. Animate natural fin and tail bending, no eye-only changes and no identical copies.",
+      "frames": 4,
+      "kind": "fish",
+      "layoutReference": "sources/nyamnyam-omurice-goldfish-layout.guide",
+      "thumbnail_source": "sources/nyamnyam-omurice-goldfish-thumbnail.source",
+      "sprite_source": "sources/nyamnyam-omurice-goldfish-sprite.source",
+      "referenceRoles": {
+        "thumbnail": "Pongi rendering style only",
+        "sprite": "Final thumbnail identity; redo layout guide fixes scale and position"
+      },
+      "registration": {
+        "patch": [
+          477,
+          288,
+          53,
+          69
+        ],
+        "headMatching": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 9.203352151322692
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 5.7755941618767945
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 10.258612500469184
+          }
+        ],
+        "cell": 627,
+        "scale": 1.017719508800431
+      },
+      "hashes": {
+        "thumbnail_path": "5dff40bf7deb2ae00136242f6070f61710e43efee7091cb128ee5f9e0b48fe89",
+        "sprite_sheet_path": "5e682f0b142726bdc084d259f0520af9155209187309752137e88a5c6de7e46f"
+      }
+    },
+    {
+      "id": "nyamnyam-pancake-flounder",
+      "name": "팬케이크 가자미",
+      "rarity": "rare",
+      "price": 240,
+      "subject": "A charming flat oval flounder fish inspired by fluffy golden pancakes: one flattened pancake-shaped fish body with subtle two-layer pancake edge, golden toasted top, thin ruffled fin fringe around body, small fish tail on LEFT and recognizable fish snout pointing RIGHT; both cute eyes sit together near upper-right head as flounder anatomy. Small square butter pat perched on back and a restrained amber maple syrup stripe on skin, syrup stays attached. Side three-quarter slightly top-down view so the flat fish and right-facing head are readable. No plate, utensils, extra food, no pancake stack separate from fish.",
+      "movement": "swim",
+      "min": 0.68,
+      "max": 0.88,
+      "speed": 0.013,
+      "size": 83,
+      "thumbnailPrompt": "Use case: stylized-concept. Production fish inventory thumbnail for cozy Korean food-themed ocean game. A charming flat oval flounder fish inspired by fluffy golden pancakes: one flattened pancake-shaped fish body with subtle two-layer pancake edge, golden toasted top, thin ruffled fin fringe around body, small fish tail on LEFT and recognizable fish snout pointing RIGHT; both cute eyes sit together near upper-right head as flounder anatomy. Small square butter pat perched on back and a restrained amber maple syrup stripe on skin, syrup stays attached. Side three-quarter slightly top-down view so the flat fish and right-facing head are readable. No plate, utensils, extra food, no pancake stack separate from fish. Warm cute cartoon style matching reference rendering ONLY: dark brown clean outlines, rounded clear silhouette, soft warm cel shading. Face SCREEN RIGHT in clear side or side-three-quarter profile. Head, mouth and snout point right, body and tail trail behind left, forward swimming right. No left-facing or front-facing view. Entire fish centered within 82% square canvas with transparent padding. Genuine transparent background, every pixel outside silhouette transparent; no scenery, text, plate, water, ground shadow, particles or glow haze. No otter features copied from reference.",
+      "thumbnail_path": "fish/rare/nyamnyam-pancake-flounder_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/nyamnyam-pancake-flounder_v1_sprite.png",
+      "description": "노릇한 팬케이크 몸 위에 버터 한 조각을 얹은 가자미예요. 메이플 시럽빛 무늬를 반짝이며 바닥 가까이 느긋하게 헤엄쳐요.",
+      "spriteSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-e5b65b1d-de78-4d60-be55-31b6d624fe84.png",
+      "thumbnailSource": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-92fac74b-9832-44bf-b104-f55497c16876.png",
+      "spritePrompt": "Edit the provided FOUR-CELL sprite layout guide. KEEP its exact 2 columns x 2 rows composition, same fish scale and the generous empty transparent margins and exact head locations. Do not enlarge the fish. The guide is the layout and identity target, not a scene. Change only tail and fins into four distinct consecutive small swimming poses: frame1 neutral, frame2 tail slightly toward viewer, frame3 tail slightly away, frame4 recovery. Keep each head and main body completely fixed at the same relative coordinates in its cell. ALL FOUR fish face RIGHT. Keep the maximum silhouette width under 82 percent of each cell. No drawing can come within 6 percent of any cell edge. Do not center the top row lower or bottom row higher. Preserve clean warm cartoon style, food markings and colors. A charming flat oval flounder fish inspired by fluffy golden pancakes: one flattened pancake-shaped fish body with subtle two-layer pancake edge, golden toasted top, thin ruffled fin fringe around body, small fish tail on LEFT and recognizable fish snout pointing RIGHT; both cute eyes sit together near upper-right head as flounder anatomy. Small square butter pat perched on back and a restrained amber maple syrup stripe on skin, syrup stays attached. Side three-quarter slightly top-down view so the flat fish and right-facing head are readable. No plate, utensils, extra food, no pancake stack separate from fish. True alpha-transparent background, no border, labels, grid, shadows or particles. Animate natural fin and tail bending, no eye-only changes and no identical copies.",
+      "frames": 4,
+      "kind": "fish",
+      "layoutReference": "sources/nyamnyam-pancake-flounder-layout.guide",
+      "thumbnail_source": "sources/nyamnyam-pancake-flounder-thumbnail.source",
+      "sprite_source": "sources/nyamnyam-pancake-flounder-sprite.source",
+      "referenceRoles": {
+        "thumbnail": "Pongi rendering style only",
+        "sprite": "Final thumbnail identity; redo layout guide fixes scale and position"
+      },
+      "registration": {
+        "patch": [
+          477,
+          251,
+          53,
+          69
+        ],
+        "headMatching": [
+          {
+            "frame": 0,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 0
+          },
+          {
+            "frame": 1,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 6.036123143930684
+          },
+          {
+            "frame": 2,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 6.72353462654846
+          },
+          {
+            "frame": 3,
+            "dx": 0,
+            "dy": 0,
+            "rmse": 8.372841130645787
+          }
+        ],
+        "cell": 627,
+        "scale": 1.05125748502994
+      },
+      "hashes": {
+        "thumbnail_path": "7959e2a3a3c1ccdf88fc627e8d97e8866adde6ea1094c5dcaf04554d701acb47",
+        "sprite_sheet_path": "f0a72021834ad6104dabefa1c5582fef3e20e8d6aa5ad831368e0a7fd8cdcf71"
+      }
+    }
+  ],
+  "processing": "Four genuine generated swim poses per species. Common export scale across each sheet. Sausage sheet alone translated by measured rigid-head offsets during export; no per-frame scaling. Final independent matching verifies zero shifts. Source images retained."
+}

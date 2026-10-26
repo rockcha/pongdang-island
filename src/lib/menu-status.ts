@@ -8,8 +8,9 @@ export type MenuStatus = {
   serverNow: string
   production: Production
   baitProduction: Production
-  harbor: { dockSlots: number; returnsAt: string[] }
+  harbor: { total?: number; dockSlots: number; returnsAt: string[] }
   expedition: { returnsAt: string | null }
+  personalBait?: { completesAt: string | null }
   savings: { account: SavingsAccount | null }
 }
 export async function readMenuStatus(signal: AbortSignal): Promise<MenuStatus> {

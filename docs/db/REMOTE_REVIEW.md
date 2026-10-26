@@ -546,3 +546,32 @@ Storage가 직접 DELETE를 차단해 최초 적용 시도는 롤백됐다. 비�
 # 2026-10-26 한상바다 낚싯대
 
 대상 `ewafafphiovbpjwogwzn`에서 해역과 낚싯대 카탈로그를 읽어 기존 로컬 정의와 일치하고 전용 장비가 없음을 확인했다. `20261026090454_nyamnyam_fishing_rod.sql`만 CLI 연결 쿼리로 적용한 뒤 새 장비와 쏜살 행을 다시 조회해 카탈로그와 대조했다. 합성 계정의 구매·판매 재시도, 장착, 서식지 보너스를 트랜잭션 안에서 검사하고 전체 롤백했다. 실제 대기시간 차감은 로컬 전체 migration 재생 테스트로 확인했다. 생성 이미지 8개는 Storage 공개 다운로드와 로컬 해시를 대조했다. CLI 쿼리 적용이므로 원격 migration history는 변경하지 않았고, 전체 원격 스키마 비교를 수행한 것은 아니다.
+
+## 2026-10-26 황금 퐁이 유물 운영 적용
+
+대상 프로젝트는 ewafafphiovbpjwogwzn. 커밋 1c1ba62 배포와 모래성 이미지 제공을 확인한 뒤, 모래성 보드 및 황금 퐁이 유물 효과·카탈로그 migration 세 개만 단일 트랜잭션으로 적용했다. 보드·정산 함수, 유물 제약·카탈로그 행과 공개 이미지 해시를 대조했다. 합성 계정 롤백 검사에서 2·4·10마리 등장, 기존 보드 유지, 계정 격리, 비활성·미보유 제외와 보상 재시도를 확인했다. 기존 공지도 적용 완료로 수정했다. 부분 증거는 supabase/inspection/remote/pongi-whack/golden-relic-verification.json에 있다.
+
+이후 20261026095326_shorten_golden_pongi_relic_descriptions.sql로 유물 3종의 설명을 간결하게 변경하고 원격 문구를 재조회했다. CLI 연결 쿼리 적용으로 원격 migration history는 변경하지 않았다. 전체 구조·과거 이력 동등성은 미확인이다.
+
+## 2026-10-26 퐁이 잡기 점수 칭호
+
+프로젝트 ewafafphiovbpjwogwzn의 기존 칭호 지표·동기화·활동 큐 함수와 신규 칭호 부재를 확인한 뒤, 20261026101114_pongi_whack_score_title_metrics.sql과 20261026101116_pongi_whack_score_title_catalog.sql만 단일 트랜잭션으로 적용했다. 정상 종료된 실전 최고 점수를 사용하며 기존 기록도 인정한다. 원격 지표 함수·완료 트리거·카탈로그 3행을 로컬 정의와 대조하고 합성 계정 트랜잭션으로 경계 점수, 미완료·포기 제외, 중복 지급 방지와 완료 큐 갱신을 검사한 뒤 롤백했다. CLI 쿼리 적용으로 migration history는 변경하지 않았다. 전체 구조·과거 이력 동등성은 미확인이다. 부분 결과는 supabase/inspection/remote/pongi-whack/score-titles-verification.json에 있다.
+
+## 2026-10-26 한상바다 음식 어종 4종
+
+프로젝트 ewafafphiovbpjwogwzn에서 대상 해역과 신규 ID 부재를 확인하고 20261026102435_add_nyamnyam_four_food_fish.sql만 적용했다. 신규 4종의 이름·등급·가격·이동 설정·이미지 경로와 한상바다 토착 서식 행을 다시 조회해 카탈로그와 대조했다. 공개 이미지 8개는 업로드 후 로컬 바이트 해시와 일치했다. 로컬 서버 추첨, 원본 셀 경계·최종 머리 정렬, 실제 어항·도감 표시와 빌드를 검증했다. 원격 migration history는 변경하지 않았으며 전체 구조·이력 동등성은 미확인이다. 부분 결과는 supabase/inspection/remote/nyamnyam-food-fish/verification.json에 있다.
+
+## 2026-10-26 황금 퐁이 유물 임시 비활성화
+
+- 대상 프로젝트: `ewafafphiovbpjwogwzn`. 2026-10-26 20:43 KST 관련 범위만 운영 조회·적용·재조회했다.
+- `20261026114120_disable_golden_pongi_relics.sql`만 CLI SQL로 적용했다. 원격 migration history를 등록하거나 repair하지 않았다. 전체 구조·이력 일치는 이번 작업 범위가 아니다.
+- 황금 퐁이 유물 3종 `enabled=false`, 해당 장착 기록 0건을 재확인했다. 보유·발견 기록과 이미 시작한 게임 스냅샷은 변경하지 않았다. 비활성 유물의 기존 장착만 비용 없이 해제했다.
+- 서버 보드 생성의 활성 조건을 확인했고 기본 황금 퐁이 1마리 생성도 재조회했다. 사용자 기기의 캐시 갱신 및 진행 중인 판에는 소급 적용하지 않는다.
+- 안내 공지 `8be4435b-e669-47b8-bd38-32e52cc179df`의 `guide`·`published`·`notified_at`을 재확인했다. 실제 단말 알림 수신은 미검증이다.
+- 로컬 `db:context`, `db:verify` 통과. 재활성화는 문제 수정·검증 후 별도 카탈로그 migration으로 진행한다.
+
+## 2026-10-26 메뉴 활동 요약 확장
+
+- 프로젝트 `ewafafphiovbpjwogwzn`, 2026-10-26 21:08 KST. 기존 `app_private.menu_status()` 정의와 어선·개인 생산 작업 컬럼을 읽기 전용으로 확인한 뒤 `20261026120522_detailed_menu_activity.sql`만 CLI SQL로 적용했다. 원격 migration history 등록·repair는 하지 않았다.
+- 기존 요약·인증 조건을 유지하고 호출자 소유의 미판매 어선 수와 개인 생산 미수령 작업 완료시각만 추가했다. 적용 뒤 함수 정의, 공개 invoker·내부 definer, anon 실행 불가·authenticated 실행 가능을 재확인했다. 전체 원격 구조 비교와 실제 단말 UI는 확인 범위가 아니다.
+- 로컬 migration 재생, 카탈로그·권한·문서 검증 통과. 계정별 집계·비인증 차단·공용 캐시·기한 전환은 테스트로 검증한다. 프런트엔드 변경은 로컬이며 별도 커밋·배포가 필요하다.

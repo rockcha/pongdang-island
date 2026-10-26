@@ -1,7 +1,8 @@
+import {Menu as ActionMenu} from '@base-ui/react/menu'
 import { useEffect, useLayoutEffect,useMemo, useRef, useState } from 'react'
 import type { ReactNode } from 'react'
 import {createPortal} from 'react-dom'
-import { ChevronDown, ChevronUp, Info,Menu,Minimize2,Smartphone,Minus,Plus,Pencil,Check } from 'lucide-react'
+import { ChevronDown, ChevronUp, Info,Menu,Minimize2,Smartphone,Minus,Plus,Paintbrush,Check,Ellipsis,Maximize2,ZoomIn } from 'lucide-react'
 import {useAquariumWideMode} from './use-aquarium-wide-mode'
 import {
   Dialog,
@@ -75,6 +76,7 @@ export function AquariumView(props: Props) {
   const [wideMenu,setWideMenu]=useState(false)
   const { items, name, background, busy, onPlace, onSell } = props
   const glass = useRef<HTMLDivElement>(null)
+  const capacityAction=useRef<HTMLDivElement>(null)
   const [dimensions, setDimensions] = useState({ width: 320, height: 560 })
   const [decorating,setDecorating]=useState(false)
   const decoratingRef=useRef(false)
@@ -84,7 +86,8 @@ export function AquariumView(props: Props) {
   const panorama=Boolean(panoramaSrc)
   const [view,setView]=useState(0)
   const [zoom,setZoom]=useState(1)
-  const fitted=useFittedTankViewport(56,!wide.active&&!props.overviewContent)
+  const fitted=useFittedTankViewport(0,!wide.active&&!props.overviewContent,true)
+  const portraitZoom=fitted.height/(fitted.width*1.6)
   const [verticalView,setVerticalView]=useState(0)
   const [viewRequest,setViewRequest]=useState<{position:number;zoom?:number;y?:number}>({position:1})
   useEffect(() => {
@@ -104,8 +107,8 @@ export function AquariumView(props: Props) {
   useLayoutEffect(()=>{
     setEditing(null);setDecorating(false)
     if(wide.active){setZoom(1/3);setView(0);setVerticalView(0);setViewRequest({position:0});setManagementOpen(false);setWideMenu(false)}
-    else if(!props.overviewContent){setZoom(1);setView(1);setVerticalView(0);setViewRequest({position:1,zoom:1,y:0})}
-  },[!!props.overviewContent,props.tankId,wide.active])
+    else if(!props.overviewContent){setZoom(portraitZoom);setView(1.5-1/(2*portraitZoom));setVerticalView(0);setViewRequest({position:1.5-1/(2*portraitZoom),zoom:portraitZoom,y:0})}
+  },[!!props.overviewContent,props.tankId,wide.active,portraitZoom])
   useEffect(()=>setPanel(null),[editing?.id])
   const [infoId, setInfoId] = useState<string | null>(null)
   const panAllowed=useRef(true)
@@ -196,18 +199,26 @@ export function AquariumView(props: Props) {
     <>
       <AquariumAmbience/>
       {props.overviewContent??<div ref={fitted.ref} data-testid="aquarium-viewport" className={`relative flex min-h-0 flex-1 flex-col items-center overflow-hidden ${wide.active?'justify-center':'justify-start'}`}>
-      {!wide.active&&<div className="relative z-20 grid h-14 w-full shrink-0 grid-cols-[4rem_minmax(0,1fr)_4rem] items-center border-b border-white/15 bg-blue-100/60 px-3 py-0.5">
+      {!wide.active&&<div className="absolute inset-x-0 top-0 z-20 grid h-14 w-full shrink-0 grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center border-b border-white/15 bg-blue-100/75 px-3 py-0.5 backdrop-blur-sm">
         <p className="pl-1 text-left text-[11px] tabular-nums text-muted-foreground" aria-live="polite" aria-label="현재 어항">{(props.navigation?.index??0)+1} / {props.navigation?.count??1}</p>
         <div className="flex min-w-0 items-center justify-center text-center">{props.selectorControls??<p className="truncate text-sm">{name}</p>}</div>
-        <div className="flex min-w-0 justify-end">{props.capacityControls}</div>
+        <div className="flex items-center gap-0.5">
+          <span className="mr-1 whitespace-nowrap text-[10px] tabular-nums text-primary">{items.length} / {props.tankCapacity??50}</span>
+          <ActionMenu.Root><ActionMenu.Trigger render={<Button variant="ghost" size="icon" aria-label="어항 더보기" className="size-9 min-h-11 rounded-lg text-primary"/>}><Ellipsis className="size-4"/></ActionMenu.Trigger><ActionMenu.Portal><ActionMenu.Positioner align="end" sideOffset={6} collisionPadding={12} className="z-50"><ActionMenu.Popup className="min-w-44 rounded-xl border border-border/60 bg-popover p-1.5 text-xs shadow-lg outline-none">
+           <ActionMenu.Item onClick={wide.enter} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 outline-none data-highlighted:bg-secondary"><Maximize2 className="size-4"/>가로로 보기</ActionMenu.Item>
+           {panorama&&<ActionMenu.Item onClick={()=>{const next=zoom>portraitZoom+.001?portraitZoom:portraitZoom*1.5;setViewRequest({position:1.5-1/(2*next),zoom:next,y:0})}} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 outline-none data-highlighted:bg-secondary"><ZoomIn className="size-4"/>{zoom>portraitZoom+.001?'화면 맞춤':'화면 확대'}</ActionMenu.Item>}
+           {props.capacityControls&&<><ActionMenu.Separator className="my-1 h-px bg-border/60"/><ActionMenu.Item onClick={()=>capacityAction.current?.querySelector<HTMLButtonElement>('button:not(:disabled)')?.click()} className="flex min-h-11 cursor-pointer items-center gap-2 rounded-lg px-3 outline-none data-highlighted:bg-secondary"><Plus className="size-4"/>수용량 확장</ActionMenu.Item></>}
+          </ActionMenu.Popup></ActionMenu.Positioner></ActionMenu.Portal></ActionMenu.Root>
+        </div>
       </div>}
       <div
         ref={glass}
         data-testid="aquarium-glass"
         data-panorama={panorama}
         data-view={panorama?view.toFixed(4):undefined}
+        data-portrait={!wide.active}
         className="aquarium-fitted-glass relative min-h-0 shrink-0 overflow-hidden bg-gradient-to-b from-blue-100 to-blue-200"
-        style={wide.active?{width:'min(100vw, calc(100dvh * 1.875))',height:'min(calc(100vw / 1.875), 100dvh)'}:{width:fitted.width,height:fitted.height-56}}
+        style={wide.active?{width:'min(100vw, calc(100dvh * 1.875))',height:'min(calc(100vw / 1.875), 100dvh)'}:{width:fitted.width,height:fitted.height}}
         tabIndex={0}
         aria-label={name}
         onKeyDown={(event) => {
@@ -221,13 +232,14 @@ export function AquariumView(props: Props) {
       >
         <div className="absolute inset-0">
         <TankInhabitants
-          key={(panorama?`wide:${props.tankId??name}`:'normal')+':'+wide.active}
+          key={(panorama?`wide:${props.tankId??name}`:'normal')+':'+wide.active+(!wide.active?':'+portraitZoom.toFixed(4):'')}
+          showControls={wide.active}
           preview={wide.active}
           fitView={!wide.active&&panorama}
           onWideView={wide.enter}
-          world={panorama?{columns:3,overview:true,fixedViewport:true,minZoom:wide.active?1/3:1,maxZoom:wide.active?1:2,onVerticalViewChange:setVerticalView,initialZoom:wide.active?1/3:1,initialView:wide.active?0:1,preserveArrangement:false,onZoomChange:setZoom,onViewChange:setView,canPan:()=>panAllowed.current}:undefined}
+          world={panorama?{columns:3,overview:true,fixedViewport:true,minZoom:wide.active?1/3:portraitZoom,maxZoom:wide.active?1:portraitZoom*2,onVerticalViewChange:setVerticalView,initialZoom:wide.active?1/3:portraitZoom,initialView:wide.active?0:1.5-1/(2*portraitZoom),preserveArrangement:false,onZoomChange:setZoom,onViewChange:setView,canPan:()=>panAllowed.current}:undefined}
           viewRequest={panorama?viewRequest:undefined}
-          scenery={<><AquariumBackdrop key={panorama?'wide':'normal'} background={background} loading={props.loading} panorama={panoramaSrc?{src:panoramaSrc,view,zoom,fixedViewport:true,heightRatio:wide.active?1.6/3:1.6,y:verticalView}:undefined} /><TankBubbles /></>}
+          scenery={<><AquariumBackdrop key={panorama?'wide':'normal'} background={background} loading={props.loading} panorama={panoramaSrc?{src:panoramaSrc,view,zoom,fixedViewport:true,heightRatio:wide.active?1.6/3:fitted.height/fitted.width,y:verticalView}:undefined} /><TankBubbles /></>}
           items={renderedItems}
           onPlace={place}
           onSelectDecoration={selectDecoration}
@@ -236,7 +248,7 @@ export function AquariumView(props: Props) {
         />
         {props.onOverview&&!wide.active&&<button type="button" aria-label="내 어항 목록" data-aquarium-list onClick={props.onOverview} className="absolute left-2 top-2 z-20 inline-flex min-h-9 items-center gap-1 rounded-full border border-white/40 bg-background/75 px-3 text-[11px] text-primary shadow-sm backdrop-blur-sm"><ChevronUp aria-hidden="true" className="size-3.5 rotate-[-90deg]"/><span className="aquarium-label-full">내 어항 목록</span><span className="aquarium-label-short">목록</span></button>}
         </div>
-        {props.onArrange&&<Button variant={decorating?'default':'secondary'} disabled={busy} aria-label={decorating?'꾸미기 모드 완료':'꾸미기 모드 시작'} aria-pressed={decorating} onClick={()=>{setEditing(null);setDecorating(value=>!value)}} className="absolute bottom-3 right-3 z-40 min-h-11 gap-1.5 rounded-full px-4 text-xs shadow-sm">{decorating?<Check className="size-4"/>:<Pencil className="size-4"/>}{decorating?'완료':'꾸미기'}</Button>}
+        {props.onArrange&&<Button variant={decorating?'default':'secondary'} disabled={busy} aria-label={decorating?'꾸미기 모드 완료':'꾸미기 모드 시작'} aria-pressed={decorating} onClick={()=>{setEditing(null);setDecorating(value=>!value)}} className="absolute bottom-3 right-3 z-40 min-h-11 gap-1.5 rounded-full border border-white/50 px-3 text-xs shadow-sm backdrop-blur-sm">{decorating?<Check className="size-4"/>:<Paintbrush className="size-4"/>}{decorating?'완료':'꾸미기'}</Button>}
         {decorating&&<p role="status" className="pointer-events-none absolute bottom-16 right-3 z-20 max-w-56 rounded-xl bg-background/90 px-3 py-2 text-[10px] leading-5 text-primary">개체를 선택한 뒤 드래그해서 옮겨요.</p>}
         {decorating && editing && decoration && (
           <SelectionToolbar wide={wide.active} topOffset={56} name={decoration.species.name} busy={busy} panel={panel} onPanel={setPanel} onClose={()=>setEditing(null)}>
@@ -276,6 +288,7 @@ export function AquariumView(props: Props) {
         {wideMenu&&<div role="group" aria-label="어항 화면 배율" className="aquarium-wide-camera absolute bottom-2 left-24 z-40 hidden landscape:flex items-center justify-between gap-2 rounded-lg bg-secondary/50 p-1"><Button variant="ghost" size="icon" className="min-h-10 min-w-10" aria-label="어항 축소" disabled={zoom<=1/3+.001} onClick={()=>{const next=Math.max(1/3,zoom-.15);setViewRequest({zoom:next,position:clampTankCameraView(view+1/(2*zoom)-1/(2*next),3,next),y:verticalView+1.6/(6*zoom)-1.6/(6*next)})}}><Minus className="size-4"/></Button><button type="button" className="min-h-10 text-xs text-primary" onClick={()=>setViewRequest({position:0,zoom:1/3,y:0})}>전체 맞춤</button><Button variant="ghost" size="icon" className="min-h-10 min-w-10" aria-label="어항 확대" disabled={zoom>=.999} onClick={()=>{const next=Math.min(1,zoom+.15);setViewRequest({zoom:next,position:clampTankCameraView(view+1/(2*zoom)-1/(2*next),3,next),y:verticalView+1.6/(6*zoom)-1.6/(6*next)})}}><Plus className="size-4"/></Button></div>}
         <p role="status" className="pointer-events-none absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 z-30 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-background/85 px-4 py-2 text-xs text-primary landscape:hidden"><Smartphone aria-hidden="true" className="size-4 rotate-90"/>휴대폰을 가로로 돌려주세요</p>
       </>}
+      <div hidden ref={capacityAction}>{props.capacityControls}</div>
       {props.nameControls}
       <Dialog
         open={!!infoItem}

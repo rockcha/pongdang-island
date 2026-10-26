@@ -1,0 +1,150 @@
+﻿[
+    {
+        "file":  "assets\\storage-upload\\new\\20261026-192400\\fish\\normal\\nyamnyam-eggroll-medaka_v1_sprite.png",
+        "storage_path":  "fish/normal/nyamnyam-eggroll-medaka_v1_sprite.png",
+        "patch":  [
+                      477,
+                      276,
+                      53,
+                      69
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  6.6258259898905569
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  3.9819944993980987
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  7.5549916314132766
+                       }
+                   ]
+    },
+    {
+        "file":  "assets\\storage-upload\\new\\20261026-192400\\fish\\normal\\nyamnyam-sausage-puffer_v1_sprite.png",
+        "storage_path":  "fish/normal/nyamnyam-sausage-puffer_v1_sprite.png",
+        "patch":  [
+                      477,
+                      276,
+                      53,
+                      69
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -24,
+                           "dy":  0,
+                           "rmse":  10.612777141132428
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -66,
+                           "rmse":  8.7233029577536527
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -23,
+                           "dy":  -66,
+                           "rmse":  13.879789289633964
+                       }
+                   ]
+    },
+    {
+        "file":  "assets\\storage-upload\\new\\20261026-192400\\fish\\rare\\nyamnyam-omurice-goldfish_v1_sprite.png",
+        "storage_path":  "fish/rare/nyamnyam-omurice-goldfish_v1_sprite.png",
+        "patch":  [
+                      477,
+                      288,
+                      53,
+                      69
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  9.2033521513226919
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  5.7755941618767945
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  10.258612500469184
+                       }
+                   ]
+    },
+    {
+        "file":  "assets\\storage-upload\\new\\20261026-192400\\fish\\rare\\nyamnyam-pancake-flounder_v1_sprite.png",
+        "storage_path":  "fish/rare/nyamnyam-pancake-flounder_v1_sprite.png",
+        "patch":  [
+                      477,
+                      251,
+                      53,
+                      69
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  6.0361231439306842
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  6.72353462654846
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  8.3728411306457868
+                       }
+                   ]
+    }
+]

@@ -129,6 +129,7 @@ export const resourceEvents: Record<string, string[]> = {
   'wallet-changed': ['wallet'],
   'attendance-changed': ['wallet'],
   'experience-changed': ['experience'],
+  'personal-bait-changed': ['menu-status'],
   'production-changed': ['production', 'wallet', 'menu-status'],
   'bait-production-changed': ['bait-production', 'wallet', 'menu-status'],
   'harbor-changed': ['harbor', 'wallet', 'menu-status'],

@@ -8,12 +8,12 @@ import {
   DialogTrigger,
 } from './ui/dialog'
 
-export function BannerInfo({ title, steps }: { title: string; steps: string[] }) {
+export function BannerInfo({ title, steps, compact=false }: { title: string; steps: string[];compact?:boolean }) {
   return (
     <Dialog>
       <DialogTrigger
         aria-label={`${title} 안내`}
-        className="pointer-events-auto inline-flex size-9 shrink-0 items-center justify-center rounded-lg text-white/90 outline-none transition-colors hover:bg-white/15 hover:text-white focus-visible:ring-2 focus-visible:ring-white"
+        className={compact?'pointer-events-auto inline-flex size-8 shrink-0 items-center justify-center rounded-lg text-muted-foreground/65 outline-none hover:bg-secondary hover:text-primary focus-visible:ring-2 focus-visible:ring-ring':'pointer-events-auto inline-flex size-9 shrink-0 items-center justify-center rounded-lg text-white/90 outline-none transition-colors hover:bg-white/15 hover:text-white focus-visible:ring-2 focus-visible:ring-white'}
       >
         <Info aria-hidden="true" className="size-4" />
       </DialogTrigger>
@@ -53,7 +53,7 @@ const guides: Record<string, string[]> = {
   ],
   '/hall-of-fame': [
     '낚시와 수집, 친구 돕기 등 각 부문의 상위 5명을 만나요.',
-    '아바타를 누르면 좋아요·싫어요와 댓글을 남길 수 있어요. 반응은 같은 퐁이에게 한 번만 집계하고 다시 누르면 취소해요.',
+    '아바타를 누르면 해당 퐁이의 아쿠아리움을 방문해요.',
     '각 항목의 집계 기준에서 포함되는 기록을 확인하고, 새로고침으로 최신 순위를 불러와요.',
   ],
   '/port': [

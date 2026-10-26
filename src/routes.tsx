@@ -81,7 +81,7 @@ export function AppRoutes() {
             <Route index element={<Navigate to="/aquarium" replace />} />
             <Route path="island-news" element={<HomePage />} />
             <Route path="development-fund" element={<div className="flex min-h-0 flex-1 flex-col overflow-hidden"><DevelopmentFund/></div>} />
-            <Route path="aquarium" element={<AquariumPage />} />
+            <Route path="aquarium/:tankId?" element={<AquariumPage />} />
             <Route path="collection" element={<CollectionPage />} />
             <Route path="storage" element={<StoragePage />} />
             <Route path="bait-production" element={<BaitProductionPage />} />

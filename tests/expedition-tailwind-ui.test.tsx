@@ -26,18 +26,15 @@ it('disables help while not sailing, after helping, and once the return time pas
  view.rerender(<FriendTailwindButton {...props} status={{...sailing,returns_at:'2026-10-19T00:59:00Z'}}/>)
  expect(screen.getByRole('button',{name:'바다친구님 통발 없음'})).toHaveProperty('disabled',true)
 })
-it('confirms before helping and retries the exact original trip after an uncertain response',async()=>{
+it('helps immediately and retries the exact original trip after an uncertain response',async()=>{
  const apply=vi.fn(),reply={serverNow:'2026-10-19T01:00:00Z',friends:[{...sailing,boosted:true}]}
  mock.boost.mockRejectedValueOnce(new Error('network')).mockResolvedValueOnce(reply)
  const view=render(<FriendTailwindButton nickname="바다친구" now={now} status={sailing} onBoost={apply}/>)
  fireEvent.click(screen.getByRole('button',{name:'바다친구님 물고기 유인하기'}))
- const dialog=await screen.findByRole('alertdialog')
- expect(mock.boost).not.toHaveBeenCalled()
- expect(dialog.querySelector('img')?.getAttribute('src')).toBe('/app-icons/fish-trap.png')
- fireEvent.click(within(dialog).getByRole('button',{name:'확인'}))
- await screen.findByRole('alert')
+ expect(screen.queryByRole('alertdialog')).toBeNull()
+ await waitFor(()=>expect(screen.getByRole('button',{name:'바다친구님 물고기 유인하기'})).toHaveProperty('disabled',false))
  view.rerender(<FriendTailwindButton nickname="바다친구" now={now} status={{...sailing,expedition_id:'next-trip'}} onBoost={apply}/>)
- fireEvent.click(within(dialog).getByRole('button',{name:'확인'}))
+ fireEvent.click(screen.getByRole('button',{name:'바다친구님 물고기 유인하기'}))
  await waitFor(()=>expect(apply).toHaveBeenCalledWith(reply))
  expect(mock.boost.mock.calls).toEqual([['trip'],['trip']])
  await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())

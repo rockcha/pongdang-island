@@ -1,9 +1,9 @@
 ﻿import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'
-import { MemoryRouter, Route, Routes } from 'react-router'
+import { MemoryRouter, Route, Routes,useNavigate } from 'react-router'
 import { FriendAquariumPage } from '@/features/friends/friend-aquarium-page'
 import type {ReactNode} from 'react'
-const mock=vi.hoisted(()=>({world:undefined as undefined|{columns:number;initialView?:number;preserveArrangement?:boolean;onViewChange?:(view:number)=>void},items:[] as {id:string;interaction_locked?:boolean;position_x?:number}[]}))
+const mock=vi.hoisted(()=>({world:undefined as undefined|{columns:number;initialView?:number;initialZoom?:number;preserveArrangement?:boolean;onViewChange?:(view:number)=>void},items:[] as {id:string;interaction_locked?:boolean;position_x?:number}[]}))
 vi.mock('@/features/friends/aquarium-api', () => ({
   loadFriendAquarium: async () => ({
     owner: { id: 'friend', nickname: '친구퐁이', avatar_path: null },
@@ -23,11 +23,12 @@ vi.mock('@/features/aquarium/aquarium-backdrop',()=>({AquariumBackdrop:({panoram
 vi.mock('@/features/friends/aquarium-care', () => ({
   AquariumCare: ({ tank }: { tank: string }) => <div>돌보기 {tank}</div>,
 }))
+function Back(){const navigate=useNavigate();return <button onClick={()=>navigate(-1)}>브라우저 뒤로</button>}
 afterEach(cleanup)
 it('shows the owner and browses friend tanks without a collectible list', async () => {
   render(
     <MemoryRouter initialEntries={['/friends/friend/aquarium']}>
-      <Routes>
+      <Back/><Routes>
         <Route path="/friends/:ownerId/aquarium" element={<FriendAquariumPage />} />
       </Routes>
     </MemoryRouter>,
@@ -44,7 +45,7 @@ it('shows the owner and browses friend tanks without a collectible list', async 
   expect(screen.queryByText(/개의 작은 바다/)).toBeNull()
   expect(screen.queryByText('돌보기 one')).toBeNull()
   fireEvent.click(first)
-  expect(mock.world).toMatchObject({columns:3,overview:true,initialZoom:1,initialView:1,preserveArrangement:false})
+  expect(mock.world).toMatchObject({columns:3,overview:true,initialZoom:568/(320*1.6),initialView:1.5-320*1.6/(2*568),preserveArrangement:false})
   expect(mock.items).toEqual([expect.objectContaining({id:'one-fish',interaction_locked:true,position_x:.25})])
   expect(screen.getByTestId('friend-backdrop').dataset.src).toContain('default-panorama-v2.png')
   fireEvent.click(screen.getByRole('button',{name:'친구 어항 화면 이동'}))
@@ -59,7 +60,7 @@ it('shows the owner and browses friend tanks without a collectible list', async 
   expect(screen.getByRole('button', { name: '친구 어항' })).toBeTruthy()
   fireEvent.click(screen.getByRole('button', { name: '다음 어항' }))
   expect(screen.getByLabelText('두 번째 어항')).toBeTruthy()
-  expect(screen.getByTestId('friend-backdrop').dataset.view).toBe('1')
+  expect(Number(screen.getByTestId('friend-backdrop').dataset.view)).toBeCloseTo(mock.world!.initialView!)
   expect(screen.getByText('돌보기 two')).toBeTruthy()
   fireEvent.click(screen.getByRole('button', { name: '다음 어항' }))
   expect(screen.getByLabelText('첫 어항')).toBeTruthy()
@@ -68,7 +69,12 @@ it('shows the owner and browses friend tanks without a collectible list', async 
   fireEvent.click(screen.getByRole('button', { name: '이전 어항' }))
   expect(screen.queryByRole('button', { name: '개체 목록' })).toBeNull()
   expect(screen.queryByRole('dialog')).toBeNull()
-  fireEvent.click(screen.getByRole('button',{name:'친구 어항 목록'}))
+  expect(screen.queryByRole('button',{name:'친구 어항 목록'})).toBeNull()
+  fireEvent.click(screen.getByRole('button',{name:'친구 어항 더보기'}))
+  expect(await screen.findByRole('menuitem',{name:'가로로 보기'})).toBeTruthy()
+  expect(screen.getByRole('menuitem',{name:'화면 확대'})).toBeTruthy()
+  fireEvent.keyDown(screen.getByRole('menu'),{key:'Escape'})
+  fireEvent.click(screen.getByRole('button',{name:'브라우저 뒤로'}))
   expect(screen.getByLabelText('친구 어항 목록').scrollTop).toBe(140)
   expect(screen.getAllByTestId('friend-preview')).toHaveLength(2)
 })

@@ -20,3 +20,11 @@ it('keeps a single world scale when browser chrome or the desktop window changes
  expect(friend.height).toBe(550)
  expect(friend.height/friend.width).toBeCloseTo(1.6)
 })
+it('fills the available width and height for an overlay-header aquarium',()=>{
+ for(const width of [320,390,480])for(const height of [300,550,800]){
+  const frame=fittedTankViewport(width,height,0,true)
+  expect(frame).toEqual({width,height})
+  const zoom=frame.height/(frame.width*1.6)
+  expect(frame.height/(frame.width*zoom)).toBeCloseTo(1.6)
+ }
+})

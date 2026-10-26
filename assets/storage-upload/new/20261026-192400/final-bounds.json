@@ -1,0 +1,234 @@
+﻿{
+    "alphaThreshold":  32,
+    "note":  "Local files only; alpha bounds measure occupancy, not perceptual sharpness or current Storage contents.",
+    "sprites":  [
+                    {
+                        "file":  "assets/storage-upload/new/20261026-192400/fish/normal/nyamnyam-eggroll-medaka_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  75,
+                                           "y":  186,
+                                           "width":  489,
+                                           "height":  224,
+                                           "widthRatio":  0.7799,
+                                           "heightRatio":  0.3573,
+                                           "alphaPixels":  66864,
+                                           "leftAnchorY":  312.37,
+                                           "rightAnchorY":  319.833
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  89,
+                                           "y":  186,
+                                           "width":  474,
+                                           "height":  224,
+                                           "widthRatio":  0.756,
+                                           "heightRatio":  0.3573,
+                                           "alphaPixels":  65424,
+                                           "leftAnchorY":  316.032,
+                                           "rightAnchorY":  319.961
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  76,
+                                           "y":  185,
+                                           "width":  488,
+                                           "height":  225,
+                                           "widthRatio":  0.7783,
+                                           "heightRatio":  0.3589,
+                                           "alphaPixels":  66046,
+                                           "leftAnchorY":  307.256,
+                                           "rightAnchorY":  319.706
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  76,
+                                           "y":  185,
+                                           "width":  487,
+                                           "height":  225,
+                                           "widthRatio":  0.7767,
+                                           "heightRatio":  0.3589,
+                                           "alphaPixels":  66203,
+                                           "leftAnchorY":  310.583,
+                                           "rightAnchorY":  319.707
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261026-192400/fish/normal/nyamnyam-sausage-puffer_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  82,
+                                           "y":  190,
+                                           "width":  493,
+                                           "height":  317,
+                                           "widthRatio":  0.7863,
+                                           "heightRatio":  0.5056,
+                                           "alphaPixels":  108385,
+                                           "leftAnchorY":  351.55,
+                                           "rightAnchorY":  349.498
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  96,
+                                           "y":  189,
+                                           "width":  480,
+                                           "height":  318,
+                                           "widthRatio":  0.7656,
+                                           "heightRatio":  0.5072,
+                                           "alphaPixels":  108683,
+                                           "leftAnchorY":  341.879,
+                                           "rightAnchorY":  350.457
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  82,
+                                           "y":  189,
+                                           "width":  495,
+                                           "height":  317,
+                                           "widthRatio":  0.7895,
+                                           "heightRatio":  0.5056,
+                                           "alphaPixels":  107269,
+                                           "leftAnchorY":  360.39,
+                                           "rightAnchorY":  349.745
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  92,
+                                           "y":  189,
+                                           "width":  485,
+                                           "height":  318,
+                                           "widthRatio":  0.7735,
+                                           "heightRatio":  0.5072,
+                                           "alphaPixels":  107195,
+                                           "leftAnchorY":  359.041,
+                                           "rightAnchorY":  351.095
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261026-192400/fish/rare/nyamnyam-omurice-goldfish_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  71,
+                                           "y":  139,
+                                           "width":  505,
+                                           "height":  362,
+                                           "widthRatio":  0.8054,
+                                           "heightRatio":  0.5774,
+                                           "alphaPixels":  113212,
+                                           "leftAnchorY":  320.412,
+                                           "rightAnchorY":  327.625
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  72,
+                                           "y":  130,
+                                           "width":  504,
+                                           "height":  378,
+                                           "widthRatio":  0.8038,
+                                           "heightRatio":  0.6029,
+                                           "alphaPixels":  102305,
+                                           "leftAnchorY":  296.482,
+                                           "rightAnchorY":  327.692
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  59,
+                                           "y":  146,
+                                           "width":  517,
+                                           "height":  345,
+                                           "widthRatio":  0.8246,
+                                           "heightRatio":  0.5502,
+                                           "alphaPixels":  100032,
+                                           "leftAnchorY":  326.247,
+                                           "rightAnchorY":  326.764
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  59,
+                                           "y":  131,
+                                           "width":  517,
+                                           "height":  370,
+                                           "widthRatio":  0.8246,
+                                           "heightRatio":  0.5901,
+                                           "alphaPixels":  112212,
+                                           "leftAnchorY":  310.204,
+                                           "rightAnchorY":  326.972
+                                       }
+                                   ]
+                    },
+                    {
+                        "file":  "assets/storage-upload/new/20261026-192400/fish/rare/nyamnyam-pancake-flounder_v1_sprite.png",
+                        "width":  1254,
+                        "height":  1254,
+                        "cellWidth":  627,
+                        "cellHeight":  627,
+                        "frames":  [
+                                       {
+                                           "frame":  0,
+                                           "x":  63,
+                                           "y":  158,
+                                           "width":  500,
+                                           "height":  316,
+                                           "widthRatio":  0.7974,
+                                           "heightRatio":  0.504,
+                                           "alphaPixels":  98721,
+                                           "leftAnchorY":  316.31,
+                                           "rightAnchorY":  314.957
+                                       },
+                                       {
+                                           "frame":  1,
+                                           "x":  87,
+                                           "y":  159,
+                                           "width":  476,
+                                           "height":  315,
+                                           "widthRatio":  0.7592,
+                                           "heightRatio":  0.5024,
+                                           "alphaPixels":  96613,
+                                           "leftAnchorY":  318.018,
+                                           "rightAnchorY":  314.853
+                                       },
+                                       {
+                                           "frame":  2,
+                                           "x":  88,
+                                           "y":  159,
+                                           "width":  475,
+                                           "height":  316,
+                                           "widthRatio":  0.7576,
+                                           "heightRatio":  0.504,
+                                           "alphaPixels":  94392,
+                                           "leftAnchorY":  315.343,
+                                           "rightAnchorY":  314.837
+                                       },
+                                       {
+                                           "frame":  3,
+                                           "x":  62,
+                                           "y":  158,
+                                           "width":  501,
+                                           "height":  316,
+                                           "widthRatio":  0.799,
+                                           "heightRatio":  0.504,
+                                           "alphaPixels":  97972,
+                                           "leftAnchorY":  315.421,
+                                           "rightAnchorY":  315.029
+                                       }
+                                   ]
+                    }
+                ]
+}

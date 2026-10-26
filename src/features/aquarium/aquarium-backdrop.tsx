@@ -31,7 +31,7 @@ export function AquariumBackdrop({background,loading=false,panorama}:{background
  },[desired])
  useLayoutEffect(()=>{report?.(loading?'loading':desired&&failed===desired.image_path?'failed':desired&&shown?.current.image_path!==desired.image_path?'loading':'ready')},[loading,desired,failed,shown?.current.image_path,report])
  const preparing=loading||Boolean(desired&&!shown&&failed!==desired.image_path)
- const imageClass=(image:Background)=>image.url?'absolute inset-y-0 left-0 h-full w-[300%] max-w-none object-fill':'absolute inset-0 size-full object-cover'
+ const imageClass=(image:Background)=>image.url?'absolute inset-y-0 left-0 h-full w-[300%] max-w-none object-fill':'absolute inset-0 size-full object-cover object-bottom'
  const imageStyle=(image:Background)=>image.url?{width:`${300*(panorama?.zoom??1)}%`,...(panorama?.fixedViewport?{height:`${100*1.6*(panorama.zoom??1/3)/(panorama.heightRatio??1.6/3)}%`}:{}),transform:`translate(${-(panorama?.view??1)*100/3}%,${panorama?.fixedViewport?-(panorama.y??0)/1.6*100:0}%)`}:undefined
  return <>
   {shown?.previous&&<img src={shown.previous.url??backgroundUrl(shown.previous.image_path)} alt="" className={imageClass(shown.previous)} style={imageStyle(shown.previous)}/>}

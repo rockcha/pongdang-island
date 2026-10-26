@@ -30,7 +30,7 @@ import { CollectibleStorageDialog } from '@/features/aquarium/collectible-storag
 import type { AquariumState } from '@/features/aquarium/api'
 import { CollectionDialog } from '@/features/collection/collection-dialog'
 import { useOperator } from '@/features/notices/use-operator'
-import { Link } from 'react-router'
+import { Link,useNavigate,useParams } from 'react-router'
 import { useReturningTank } from '@/features/friends/visit-return'
 
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
@@ -46,13 +46,15 @@ import { ConfirmDialog } from '@/components/confirm-dialog'
 const { map: MapIcon } = appArt
 
 export function AquariumPage() {
+  const {tankId:routeTankId}=useParams<{tankId:string}>()
+  const navigate=useNavigate()
   const { operator } = useOperator()
   const { wallet, transact, refresh:refreshGold, busy: goldBusy, loading: goldLoading, error: goldLoadError } = useGold()
   const [state,setState,query]=useAccountState<AquariumState>('aquarium',readAquarium)
   const [testFish, setTestFish] = useState<OwnedCollectible[]>([])
   const { id: returningTankId, save: saveReturningTank } = useReturningTank()
   const [selectedId, setSelectedId] = useState(returningTankId)
-  const [expanded,setExpanded]=useState(false)
+  const expanded=!!routeTankId
   const overviewScroll=useRef(0)
   const [name, setName] = useState('')
   const [error, setError] = useState('')
@@ -103,9 +105,13 @@ export function AquariumPage() {
       if (active.current) setBusy(false)
     }
   }
-  const tank = state?.tanks.find((item) => item.id === selectedId) ?? state?.tanks[0]
+  const tank = state?.tanks.find((item) => item.id === (routeTankId??selectedId)) ?? state?.tanks[0]
   const tankId = tank?.id
   useEffect(() => { if (tankId) saveReturningTank(tankId) }, [tankId, saveReturningTank])
+  useEffect(()=>{
+    navigationRequest.current++
+    if(routeTankId&&state&&!state.tanks.some(item=>item.id===routeTankId))navigate('/aquarium',{replace:true})
+  },[routeTankId,state,navigate])
   const selected = state?.catalog.find((item) => item.id === tank?.background_id)
   const tankIndex = state?.tanks.findIndex((item) => item.id === tank?.id) ?? 0
   function changeTank(direction: 'previous' | 'next') {
@@ -115,7 +121,7 @@ export function AquariumPage() {
       const request = ++navigationRequest.current
       const background = state.catalog.find((item) => item.id === next.background_id)
       const commit = () => {
-        if (active.current && request === navigationRequest.current) setSelectedId(next.id)
+        if (active.current && request === navigationRequest.current) navigate('/aquarium/'+encodeURIComponent(next.id),{replace:true})
       }
       if (!background) {
         commit()
@@ -347,8 +353,7 @@ export function AquariumPage() {
       className="relative flex min-h-0 flex-1 flex-col overflow-hidden"
     >
       <AquariumView
-        overviewContent={!expanded?(state?<AquariumOverview onRename={openRename} state={state} items={[...state.inhabitants,...(operator?testFish:[])]} busy={busy||goldBusy} scrollTop={overviewScroll.current} onScroll={value=>{overviewScroll.current=value}} onSelect={id=>{navigationRequest.current++;setSelectedId(id);setExpanded(true)}} onAdd={()=>{setPurchaseError('');setPurchaseOpen(true)}}/>:<div role="status" className="min-h-0 flex-1 space-y-4 overflow-hidden p-4"><p className="text-xs text-muted-foreground">어항을 준비하고 있어요.</p>{[0,1].map(i=><div key={i} className="h-48 animate-pulse rounded-2xl bg-secondary/50 motion-reduce:animate-none"/>)}</div>):undefined}
-        onOverview={expanded?()=>setExpanded(false):undefined}
+        overviewContent={!expanded?(state?<AquariumOverview onRename={openRename} state={state} items={[...state.inhabitants,...(operator?testFish:[])]} busy={busy||goldBusy} scrollTop={overviewScroll.current} onScroll={value=>{overviewScroll.current=value}} onSelect={id=>{navigationRequest.current++;navigate('/aquarium/'+encodeURIComponent(id))}} onAdd={()=>{setPurchaseError('');setPurchaseOpen(true)}}/>:<div role="status" className="min-h-0 flex-1 space-y-4 overflow-hidden p-4"><p className="text-xs text-muted-foreground">어항을 준비하고 있어요.</p>{[0,1].map(i=><div key={i} className="h-48 animate-pulse rounded-2xl bg-secondary/50 motion-reduce:animate-none"/>)}</div>):undefined}
         tankId={tank?.id}
         loading={!state && !error}
         items={inhabitants}
@@ -363,7 +368,7 @@ export function AquariumPage() {
         tanks={state?.tanks}
         inhabitants={state?.inhabitants}
         tankCapacity={tank?.capacity??state?.tankCapacity}
-        capacityControls={state&&tank?<AquariumCapacityExpansion tank={tank} count={state.inhabitants.filter(item=>item.tank_id===tank.id).length} gold={wallet.gold} busy={busy||goldBusy||goldLoading||!!goldLoadError} onExpand={async(capacity,operation)=>{
+        capacityControls={state&&tank?<AquariumCapacityExpansion menu tank={tank} count={state.inhabitants.filter(item=>item.tank_id===tank.id).length} gold={wallet.gold} busy={busy||goldBusy||goldLoading||!!goldLoadError} onExpand={async(capacity,operation)=>{
           if(locked.current)throw new Error('BUSY')
           locked.current=true;setBusy(true)
           try{
@@ -477,8 +482,7 @@ export function AquariumPage() {
               }}
               onSelect={(id) => {
                 navigationRequest.current++
-                setSelectedId(id)
-                setExpanded(true)
+                navigate('/aquarium/'+encodeURIComponent(id),{replace:expanded})
               }}
               onAdd={() => {
                 setPurchaseError('')

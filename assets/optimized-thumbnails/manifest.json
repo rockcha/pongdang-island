@@ -5,11 +5,11 @@
     640
   ],
   "summary": {
-    "count": 605,
-    "sourceBytes": 666140050,
-    "smallBytes": 16229516,
-    "largeBytes": 43490672,
-    "smallReductionPercent": 97.56
+    "count": 609,
+    "sourceBytes": 667100837,
+    "smallBytes": 16315308,
+    "largeBytes": 43654058,
+    "smallReductionPercent": 97.55
   },
   "items": [
     {
@@ -6493,6 +6493,26 @@
       }
     },
     {
+      "key": "fish/normal/nyamnyam-eggroll-medaka_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-192400/fish/normal/nyamnyam-eggroll-medaka_v1_thumbnail.png",
+      "sourceHash": "5967d8a347f64244d7be7206b712ec73bd51fdbcc47a7246125eb96028f8bba4",
+      "sourceBytes": 166048,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/eddc20cd2f68325413654b63-320.webp",
+        "bytes": 15544,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/ae92809d3f4e3178bded2c22-640.webp",
+        "bytes": 28794,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
       "key": "fish/normal/nyamnyam-gimbap-anchovy_v1_thumbnail.png",
       "source": "assets/storage-upload/new/20261023-034400/fish/normal/nyamnyam-gimbap-anchovy_v1_thumbnail.png",
       "sourceHash": "0f9d9d17e5ea138a7af4c727d7ec3aa16984d6272a6155109bb1a07e0c59493d",
@@ -6630,6 +6650,26 @@
         "bytes": 55294,
         "width": 640,
         "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/nyamnyam-sausage-puffer_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-192400/fish/normal/nyamnyam-sausage-puffer_v1_thumbnail.png",
+      "sourceHash": "5d6abd4c00a555314e530346b37b9a1a88ef8a4e64b274bee0fd8455ef922a27",
+      "sourceBytes": 210967,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/ce1f01e539931a87d2307922-320.webp",
+        "bytes": 18352,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d1f1f99a62158e1800bdbd13-640.webp",
+        "bytes": 35666,
+        "width": 512,
+        "height": 512
       }
     },
     {
@@ -9050,6 +9090,46 @@
         "bytes": 102376,
         "width": 640,
         "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/nyamnyam-omurice-goldfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-192400/fish/rare/nyamnyam-omurice-goldfish_v1_thumbnail.png",
+      "sourceHash": "5dff40bf7deb2ae00136242f6070f61710e43efee7091cb128ee5f9e0b48fe89",
+      "sourceBytes": 320299,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/2196f280b7a96ad1cb21c0b0-320.webp",
+        "bytes": 29316,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3ecf563777756e4dfa1069e5-640.webp",
+        "bytes": 55670,
+        "width": 512,
+        "height": 512
+      }
+    },
+    {
+      "key": "fish/rare/nyamnyam-pancake-flounder_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261026-192400/fish/rare/nyamnyam-pancake-flounder_v1_thumbnail.png",
+      "sourceHash": "7959e2a3a3c1ccdf88fc627e8d97e8866adde6ea1094c5dcaf04554d701acb47",
+      "sourceBytes": 263473,
+      "sourceWidth": 512,
+      "sourceHeight": 512,
+      "small": {
+        "url": "/game-art/thumbnails/11f3e67865182414f78d539f-320.webp",
+        "bytes": 22580,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/016411d7ac2387b48733faca-640.webp",
+        "bytes": 43256,
+        "width": 512,
+        "height": 512
       }
     },
     {

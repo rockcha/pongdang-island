@@ -1,3 +1,4 @@
+import {useMenuActivity} from '@/components/menu-activity'
 import { act, cleanup, renderHook } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'
 import { AppQueryProvider } from '@/lib/account-query'
@@ -29,6 +30,7 @@ it('shares one summary across all five badges, advances deadlines locally and re
   }))
   const view = renderHook(
     () => ({
+      activity:useMenuActivity(),
       fuel: useProductionMenuStatus('fuel'),
       bait: useProductionMenuStatus('bait'),
       harbor: useHarborStatus(),
@@ -49,6 +51,7 @@ it('shares one summary across all five badges, advances deadlines locally and re
   expect(view.result.current.fuel).toEqual({ ready: 1, total: 2 })
   expect(view.result.current.harbor).toEqual({ ready: 1, total: 2 })
   expect(view.result.current.expedition).toBe('returned')
+  expect(view.result.current.activity['/production'].ready).toBe(1)
   expect(read).toHaveBeenCalledOnce()
   await act(async () => {
     await vi.advanceTimersByTimeAsync(300000)

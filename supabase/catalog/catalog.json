@@ -6697,6 +6697,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "nyamnyam-eggroll-medaka",
+      "kind": "fish",
+      "name": "계란말이 송사리",
+      "description": "노란 계란말이 몸통에 파잎 같은 지느러미가 달린 작은 송사리예요. 물살을 가르면 포근한 달걀빛이 반짝여요.",
+      "swim_y_min": "0.20",
+      "swim_y_max": "0.62",
+      "speed": "0.025",
+      "size": 60,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/nyamnyam-eggroll-medaka_v1_thumbnail.png",
+      "sell_price": 30,
+      "sprite_sheet_path": "fish/normal/nyamnyam-eggroll-medaka_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "nyamnyam-empty-noodle-cup",
       "kind": "trash",
       "name": "국물 빠진 컵라면",
@@ -7003,6 +7021,42 @@
       "travel_direction": "both"
     },
     {
+      "id": "nyamnyam-omurice-goldfish",
+      "kind": "fish",
+      "name": "오므라이스 금붕어",
+      "description": "노란 달걀옷에 케첩 무늬를 두른 금붕어예요. 볶음밥빛 비늘과 풍성한 꼬리가 한상바다를 환하게 물들여요.",
+      "swim_y_min": "0.22",
+      "swim_y_max": "0.72",
+      "speed": "0.017",
+      "size": 85,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/nyamnyam-omurice-goldfish_v1_thumbnail.png",
+      "sell_price": 220,
+      "sprite_sheet_path": "fish/rare/nyamnyam-omurice-goldfish_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-pancake-flounder",
+      "kind": "fish",
+      "name": "팬케이크 가자미",
+      "description": "노릇한 팬케이크 몸 위에 버터 한 조각을 얹은 가자미예요. 메이플 시럽빛 무늬를 반짝이며 바닥 가까이 느긋하게 헤엄쳐요.",
+      "swim_y_min": "0.68",
+      "swim_y_max": "0.88",
+      "speed": "0.013",
+      "size": 83,
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/nyamnyam-pancake-flounder_v1_thumbnail.png",
+      "sell_price": 240,
+      "sprite_sheet_path": "fish/rare/nyamnyam-pancake-flounder_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "nyamnyam-peach-phoenix-clam",
       "kind": "fish",
       "name": "천도복숭아 봉황조개",
@@ -7141,6 +7195,24 @@
       "thumbnail_path": "fish/normal/nyamnyam-salmon-sushi-seahorse_v1_thumbnail.png",
       "sell_price": 63,
       "sprite_sheet_path": "fish/normal/nyamnyam-salmon-sushi-seahorse_v1_sprite.png",
+      "native_region_id": "nyamnyam",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "nyamnyam-sausage-puffer",
+      "kind": "fish",
+      "name": "소시지 문어복",
+      "description": "탱글한 소시지 몸에 문어 모양으로 갈라진 꼬리를 달고 헤엄쳐요. 통통한 배에는 작은 복어의 용기가 가득해요.",
+      "swim_y_min": "0.35",
+      "swim_y_max": "0.78",
+      "speed": "0.018",
+      "size": 67,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/nyamnyam-sausage-puffer_v1_thumbnail.png",
+      "sell_price": 33,
+      "sprite_sheet_path": "fish/normal/nyamnyam-sausage-puffer_v1_sprite.png",
       "native_region_id": "nyamnyam",
       "movement_type": "swim",
       "flip_with_direction": true,
@@ -19221,6 +19293,10 @@
       "region_id": "nyamnyam"
     },
     {
+      "species_id": "nyamnyam-eggroll-medaka",
+      "region_id": "nyamnyam"
+    },
+    {
       "species_id": "nyamnyam-empty-noodle-cup",
       "region_id": "nyamnyam"
     },
@@ -19289,6 +19365,14 @@
       "region_id": "nyamnyam"
     },
     {
+      "species_id": "nyamnyam-omurice-goldfish",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-pancake-flounder",
+      "region_id": "nyamnyam"
+    },
+    {
       "species_id": "nyamnyam-peach-phoenix-clam",
       "region_id": "nyamnyam"
     },
@@ -19318,6 +19402,10 @@
     },
     {
       "species_id": "nyamnyam-salmon-sushi-seahorse",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "nyamnyam-sausage-puffer",
       "region_id": "nyamnyam"
     },
     {
@@ -26425,6 +26513,42 @@
       "sort_order": 4515
     },
     {
+      "id": "arcade-whack-score-50",
+      "name": "퐁이 감별사",
+      "tier": 2,
+      "category": "arcade",
+      "description": "퐁이 잡기 실전 한 판에서 50점 이상 달성 · 무료 연습 제외",
+      "metric": "arcade_whack_best",
+      "target": 50,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 4525
+    },
+    {
+      "id": "arcade-whack-score-60",
+      "name": "퐁이를 읽는 손끝",
+      "tier": 3,
+      "category": "arcade",
+      "description": "퐁이 잡기 실전 한 판에서 60점 이상 달성 · 무료 연습 제외",
+      "metric": "arcade_whack_best",
+      "target": 60,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 4526
+    },
+    {
+      "id": "arcade-whack-score-70",
+      "name": "퐁이 잡기의 신",
+      "tier": 4,
+      "category": "arcade",
+      "description": "퐁이 잡기 실전 한 판에서 70점 이상 달성 · 무료 연습 제외",
+      "metric": "arcade_whack_best",
+      "target": 70,
+      "extra_metric": null,
+      "extra_target": null,
+      "sort_order": 4527
+    },
+    {
       "id": "beginner",
       "name": "초보 낚시꾼",
       "tier": 1,
@@ -29720,10 +29844,10 @@
     {
       "id": "golden-parade-crown",
       "name": "황금 행진의 왕관",
-      "description": "장착한 상태로 퐁이 잡기를 시작하면 한 판에 황금 퐁이가 총 10마리 등장해요. 진행 중인 판에는 적용되지 않아요.",
+      "description": "미니게임 \"퐁이 잡기\" 황금 퐁이 10마리 등장",
       "rarity": "mythic",
       "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/mythic/golden-parade-crown_thumbnail.png",
-      "enabled": true,
+      "enabled": false,
       "effect_kind": "pongi_whack_golden_count",
       "effect_value": 10,
       "sell_price": 3000
@@ -29731,10 +29855,10 @@
     {
       "id": "golden-pongi-invitation-bell",
       "name": "황금 퐁이의 초대종",
-      "description": "장착한 상태로 퐁이 잡기를 시작하면 한 판에 황금 퐁이가 총 4마리 등장해요. 진행 중인 판에는 적용되지 않아요.",
+      "description": "미니게임 \"퐁이 잡기\" 황금 퐁이 4마리 등장",
       "rarity": "epic",
       "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/epic/golden-pongi-invitation-bell_thumbnail.png",
-      "enabled": true,
+      "enabled": false,
       "effect_kind": "pongi_whack_golden_count",
       "effect_value": 4,
       "sell_price": 1300
@@ -29742,10 +29866,10 @@
     {
       "id": "golden-pongi-whistle",
       "name": "금빛 퐁이 호루라기",
-      "description": "장착한 상태로 퐁이 잡기를 시작하면 한 판에 황금 퐁이가 총 2마리 등장해요. 진행 중인 판에는 적용되지 않아요.",
+      "description": "미니게임 \"퐁이 잡기\" 황금 퐁이 2마리 등장",
       "rarity": "rare",
       "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/rare/golden-pongi-whistle_thumbnail.png",
-      "enabled": true,
+      "enabled": false,
       "effect_kind": "pongi_whack_golden_count",
       "effect_value": 2,
       "sell_price": 200
@@ -29885,7 +30009,7 @@
     {
       "id": "sleepless-harvest-bell",
       "name": "잠들지 않는 수확종",
-      "description": "장착 중 연료·미끼 생산소의 완성물을 자동 수령해요. 미접속 중에도 작동하며, 이미 상했거나 보유 한도를 넘는 생산물은 제외돼요.",
+      "description": "연료 & 미끼 생산소의 완성물을 자동 수령",
       "rarity": "epic",
       "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/epic/sleepless-harvest-bell_v1_thumbnail.png",
       "enabled": true,

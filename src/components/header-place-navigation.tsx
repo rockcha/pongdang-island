@@ -1,17 +1,17 @@
+import {useMenuActivity,MenuActivityLine} from './menu-activity'
 import {RelicIcon} from '@/components/collection-filter-icons'
 import {useEquippedRelic} from '@/features/relics/use-equipped-relic'
 import {CollectibleThumbnail} from '@/features/collection/collectible-thumbnail'
 import { useSavingsStatus } from '@/features/savings/use-savings-status'
-import { useProductionMenuStatus } from '@/features/production/use-production-menu-status'
-import { useHarborStatus } from '@/features/port/use-harbor-status'
-import { useExpeditionStatus } from '@/features/expeditions/use-expedition-status'
 import { Fragment } from 'react'
 import { useOperator } from '@/features/notices/use-operator'
 import { appArt } from '@/components/app-art'
 import { useNewContent } from './use-new-content'
 
 import { Link, useLocation } from 'react-router'
-import { ChevronDown, Check } from 'lucide-react'
+import { Check, House, FishingRod, Factory, Store as MarketIcon, BookOpen } from 'lucide-react'
+
+import {UserRound,AudioLines,Fish,Shapes,Package,Warehouse as WarehouseOutline,Medal,Gem,Map as MapOutline,ShoppingBasket,ShoppingBag,Flame,Sprout,FlaskConical,Anchor,Ship as ShipOutline,Handshake as TradeIcon,ClipboardList,Landmark,Gamepad2 as GameIcon,TowerControl as LighthouseOutline,MessageSquare,Images,Trophy,Newspaper,Megaphone,Heart,Gift,Mail,Lightbulb,Bug} from 'lucide-react'
 
 import { Menu } from '@base-ui/react/menu'
 
@@ -30,7 +30,9 @@ const {
 } = appArt
 
 export const headerPlaces = [
-  { to: '/port', label: '항구', icon: appArt.port },
+  { to: '/profile', label: '내 정보', icon: appArt.profile },
+  { to: '/square/notices', label: '공지', icon: appArt.notices },
+  { to: '/port', label: '어선 파견', icon: appArt.port },
   { to: '/music-room', label: '음악 감상', icon: appArt.music },
   { to: '/aquarium', label: '아쿠아리움', icon: AquariumIcon },
   { to: '/island-news', label: '퐁당섬 소식', icon: IslandIcon },
@@ -57,7 +59,7 @@ export const headerPlaces = [
   { to: '/merchant-orders', label: '바다 상인의 의뢰', icon: appArt.merchantOrders },
   { to: '/savings', label: '조개 적금', icon: Shell },
   { to: '/warehouse', label: '창고', icon: Warehouse },
-  { to: '/arcade', label: '게임', icon: Gamepad2 },
+  { to: '/arcade', label: '미니게임', icon: Gamepad2 },
   { to: '/friends', label: '등대', icon: TowerControl },
   { to: '/hall-of-fame', label: '명예의 전당', icon: appArt.ranking },
   { to: '/board', label: '자유게시판', icon: PlazaIcon },
@@ -68,16 +70,20 @@ export const headerPlaces = [
   { to: '/square/bugs', label: '버그 제보', icon: appArt.bugs },
 ]
 
+export const menuIcons:Record<string,typeof House>={
+ '/profile':UserRound,'/aquarium':Fish,'/music-room':AudioLines,'/decoration-shop':Shapes,
+ '/harbor':MapOutline,'/fishing':FishingRod,'/expeditions':ShoppingBasket,'/shop':FishingRod,'/item-shop':ShoppingBag,
+ '/port':Anchor,'/shipyard':ShipOutline,'/production':Flame,'/bait-production':Factory,'/my-bait-production':FlaskConical,'/farm':Sprout,'/production-shop':Factory,'/bait-production-shop':ShoppingBag,
+ '/exchange':TradeIcon,'/merchant-orders':ClipboardList,'/savings':Landmark,'/storage':Package,'/warehouse':WarehouseOutline,'/collection':BookOpen,'/titles':Medal,'/relics':Gem,'/collection-animation':BookOpen,
+ '/friends':LighthouseOutline,'/board':MessageSquare,'/showcase':Images,'/hall-of-fame':Trophy,'/arcade':GameIcon,'/island-news':Newspaper,'/square/notices':Megaphone,'/development-fund':Heart,'/square/sponsorship':Gift,'/square/begging':Mail,'/square/suggestions':Lightbulb,'/square/bugs':Bug,
+}
+
 export function HeaderPlaceNavigation() {
   const equippedRelic=useEquippedRelic()
   const newContent = useNewContent()
-  const fuelProduction = useProductionMenuStatus('fuel')
-  const baitProduction = useProductionMenuStatus('bait')
-  const productionStatus = (to: string) => to === '/production' ? fuelProduction : to === '/bait-production' ? baitProduction : null
+  const activity=useMenuActivity()
   const { pathname } = useLocation()
-  const harbor = useHarborStatus(),
-    expedition = useExpeditionStatus(),
-    savings = useSavingsStatus(),
+  const savings = useSavingsStatus(),
     { operator } = useOperator()
   const current = /^\/(region|sailing)\//.test(pathname) ? '/fishing' : pathname
   const hasNewContent=(to:string)=>
@@ -87,136 +93,16 @@ export function HeaderPlaceNavigation() {
     (to==='/square/bugs'&&newContent.bugs)||
     (to==='/exchange'&&newContent.exchange)
   const groups = [
-  {
-    "label": "내 섬",
-    "sections": [
-      {
-        "label": "나의 공간",
-        "paths": [
-          "/aquarium",
-          "/island-news",
-          "/development-fund"
-        ]
-      },
-      {
-        "label": "보관·수집",
-        "paths": [
-          "/storage",
-          "/collection",
-          "/titles",
-          "/relics",
-          "/collection-animation"
-        ]
-      },
-      {
-        "label": "쉼터",
-        "paths": [
-          "/music-room",
-          "/arcade"
-        ]
-      }
-    ]
-  },
-  {
-    "label": "바다",
-    "sections": [
-      {
-        "label": "직접 낚시",
-        "paths": [
-          "/harbor",
-          "/fishing"
-        ]
-      },
-      {
-        "label": "맡겨 두는 낚시",
-        "paths": [
-          "/expeditions",
-          "/port",
-          "/shipyard"
-        ]
-      }
-    ]
-  },
-  {
-    "label": "생활",
-    "sections": [
-      {
-        "label": "생산·재배",
-        "paths": [
-          "/production",
-          "/bait-production",
-          "/my-bait-production",
-          "/farm"
-        ]
-      },
-      {
-        "label": "물품·골드 관리",
-        "paths": [
-          "/warehouse",
-          "/savings"
-        ]
-      }
-    ]
-  },
-  {
-    "label": "장터",
-    "sections": [
-      {
-        "label": "물품 구매",
-        "paths": [
-          "/shop",
-          "/item-shop",
-          "/decoration-shop"
-        ]
-      },
-      {
-        "label": "시설 구매",
-        "paths": [
-          "/bait-production-shop",
-          "/production-shop"
-        ]
-      },
-      {
-        "label": "거래·의뢰",
-        "paths": [
-          "/exchange",
-          "/merchant-orders"
-        ]
-      }
-    ]
-  },
-  {
-    "label": "광장",
-    "sections": [
-      {
-        "label": "함께 이야기",
-        "paths": [
-          "/friends",
-          "/board",
-          "/showcase",
-          "/hall-of-fame"
-        ]
-      },
-      {
-        "label": "마음 나누기",
-        "paths": [
-          "/square/sponsorship",
-          "/square/begging"
-        ]
-      },
-      {
-        "label": "운영팀에게",
-        "paths": [
-          "/square/suggestions",
-          "/square/bugs"
-        ]
-      }
-    ]
-  }
-]
-
+    {label:'내 섬',icon:House,sections:[{label:'나의 공간',paths:['/aquarium','/profile']},{label:'꾸미기',paths:['/decoration-shop']},{label:'쉬어가기',paths:['/music-room','/arcade']}]},
+    {label:'낚시',icon:FishingRod,sections:[{label:'직접 낚시',paths:['/harbor','/fishing']},{label:'자동 낚시',paths:['/expeditions','/port']},{label:'낚시 준비',paths:['/shop','/item-shop','/shipyard']}]},
+    {label:'생산',icon:Factory,sections:[{label:'가동·재배',paths:['/production','/bait-production','/my-bait-production','/farm']},{label:'시설 구매',paths:['/production-shop','/bait-production-shop']}]},
+    {label:'장터',icon:MarketIcon,sections:[{label:'거래·의뢰',paths:['/exchange','/merchant-orders']},{label:'골드 관리',paths:['/savings']}]},
+    {label:'수집',icon:BookOpen,sections:[{label:'보관',paths:['/storage','/warehouse']},{label:'수집 기록',paths:['/collection','/titles','/relics','/collection-animation']}]},
+    {label:'소식',icon:Newspaper,sections:[{label:'섬 소식',paths:['/island-news','/square/notices']},{label:'섬에 전하기',paths:['/square/suggestions','/square/bugs']}]},
+    {label:'광장',icon:TradeIcon,sections:[{label:'교류',paths:['/friends','/board','/showcase']},{label:'명예로운 기록',paths:['/hall-of-fame']},{label:'함께하는 섬',paths:['/development-fund','/square/sponsorship','/square/begging']}]},
+  ]
   return (
-    <nav aria-label="장소 바로가기" className="grid min-w-0 flex-1 grid-cols-5 gap-0">
+    <nav aria-label="장소 바로가기" className="grid w-[196px] shrink-0 grid-cols-7 gap-0 sm:w-[224px]">
       {groups.map((group) => {
         const items = group.sections.flatMap(section=>section.paths)
           .filter((path) => path !== '/collection-animation' || operator)
@@ -224,23 +110,20 @@ export function HeaderPlaceNavigation() {
         const selected = items.find(
           (item) => current === item.to || current.startsWith(item.to + '/'),
         )
-        const hasActivity=items.some(item=>hasNewContent(item.to)||!!productionStatus(item.to)?.ready||(item.to==='/port'&&!!harbor?.ready)||(item.to==='/expeditions'&&expedition==='returned')||(item.to==='/savings'&&!!savings))
+        const hasActivity=items.some(item=>hasNewContent(item.to)||!!activity[item.to]?.ready||(item.to==='/savings'&&!!savings))
+        const CategoryIcon=group.icon
         return (
           <Menu.Root key={pathname + group.label}>
             <Menu.Trigger
               aria-label={group.label}
+              title={group.label}
               aria-current={selected?'location':undefined}
               aria-description={hasActivity?'새 소식 또는 확인할 항목이 있어요':undefined}
-              className={`group relative my-1 mx-0.5 flex min-h-9 min-w-0 items-center justify-center rounded-lg px-1 py-1 outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring data-popup-open:text-primary ${selected ? 'bg-primary/10 text-primary after:absolute after:bottom-0 after:h-0.5 after:w-5 after:rounded-full after:bg-primary' : 'text-muted-foreground hover:bg-secondary/50 hover:text-foreground'}`}
+              className={`relative flex h-11 min-w-0 items-center justify-center rounded-lg px-0 py-1 outline-none transition-colors hover:bg-secondary/60 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${selected?'bg-primary/10 text-primary after:absolute after:bottom-0 after:h-0.5 after:w-4 after:rounded-full after:bg-primary':'text-muted-foreground'}`}
             >
-              <span className={`flex items-center gap-1 text-xs ${selected?'font-semibold':'font-medium'}`}>
-                {hasActivity&&<span aria-hidden="true" data-category-activity={group.label} className="category-activity-dot"/>}
-                {group.label}
-                <ChevronDown
-                  aria-hidden="true"
-                  className="size-3 shrink-0 opacity-40 transition-transform group-data-popup-open:rotate-180"
-                />
-              </span>
+              <CategoryIcon aria-hidden="true" className="size-5 shrink-0" strokeWidth={1.7}/>
+              <span className="sr-only">{group.label}</span>
+              {hasActivity&&<span aria-hidden="true" data-category-activity={group.label} className="category-activity-dot absolute right-1 top-1"/>}
             </Menu.Trigger>
             <Menu.Portal>
               <Menu.Positioner
@@ -251,9 +134,10 @@ export function HeaderPlaceNavigation() {
               >
                 <Menu.Popup
                   aria-label={`${group.label} 메뉴`}
-                  className="w-56 max-w-[calc(100vw-1.5rem)] origin-[var(--transform-origin)] max-h-[var(--available-height)] overflow-y-auto overscroll-contain rounded-xl border border-border/60 bg-popover p-1.5 text-popover-foreground shadow-lg shadow-black/10 outline-none"
+                  className="w-64 max-w-[calc(100vw-1.5rem)] origin-[var(--transform-origin)] max-h-[var(--available-height)] overflow-y-auto overscroll-contain rounded-xl border border-border/60 bg-popover p-1.5 text-popover-foreground shadow-lg shadow-black/10 outline-none"
                 >
                   {items.map(({ to, label, icon: ItemIcon }) => {
+                    const ItemOutline=menuIcons[to]??ItemIcon
                     const active = selected?.to === to
                     const heading=group.sections.find(section=>section.paths[0]===to)?.label
                     return (
@@ -265,16 +149,10 @@ export function HeaderPlaceNavigation() {
                         className={`flex min-h-11 items-center ${to==='/relics'?'gap-2':'gap-3'} rounded-lg px-3 py-2 text-sm outline-none transition-colors data-highlighted:bg-secondary ${active ? 'bg-primary/10 text-primary' : 'text-foreground'}`}
                       >
                         <span className="grid size-8 shrink-0 place-items-center">
-                          <ItemIcon aria-hidden="true" className="size-7" />
+                          <ItemOutline aria-hidden="true" className="size-5 text-primary/80" strokeWidth={1.7}/>
                         </span>
-                        <span className="flex-1 whitespace-nowrap">{label}</span>
+                        <span className="min-w-0 flex-1"><span className="block truncate">{label}</span>{activity[to]&&<MenuActivityLine activity={activity[to]}/>}</span>
                         {to==='/relics'&&equippedRelic&&<span className="flex max-w-20 shrink-0 items-center gap-1" title={`장착 중: ${equippedRelic.name}`}><CollectibleThumbnail path={equippedRelic.thumbnail_path} name={`장착 중: ${equippedRelic.name}`} className="size-6 shrink-0"/><span className="min-w-0 truncate text-[10px]">{equippedRelic.name}</span></span>}
-                        {!!productionStatus(to)?.total && (
-                          <span className={`flex shrink-0 items-center gap-1 rounded px-1.5 py-1 text-[10px] tabular-nums ${productionStatus(to)?.ready ? 'bg-primary/10 text-primary' : 'bg-muted text-muted-foreground'}`}>
-                            {!!productionStatus(to)?.ready && <span aria-hidden="true" className="category-activity-dot" />}
-                            완료 {productionStatus(to)!.ready}곳
-                          </span>
-                        )}
                         {hasNewContent(to) && (
                           <span
                             aria-label="새 글 있음"
@@ -292,14 +170,6 @@ export function HeaderPlaceNavigation() {
                           <span className="shrink-0 text-[10px] text-muted-foreground">
                             준비 중
                           </span>
-                        )}
-                        {to === '/port' && !!harbor?.ready && (
-                          <span className="shrink-0 rounded bg-primary/10 px-1.5 py-1 text-[10px] tabular-nums text-primary">
-                            수령 가능 ({harbor.ready}/{harbor.total})
-                          </span>
-                        )}
-                        {to === '/expeditions' && expedition === 'returned' && (
-                          <span className="shrink-0 rounded bg-primary/10 px-1.5 py-1 text-[10px] text-primary">수거 대기 중</span>
                         )}
                         {to === '/savings' && savings && (
                           <span className="shrink-0 rounded bg-primary/10 px-1.5 py-1 text-[10px] text-primary">

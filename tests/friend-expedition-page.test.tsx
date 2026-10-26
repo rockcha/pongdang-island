@@ -1,4 +1,4 @@
-import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
+import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
 import {MemoryRouter,Route,Routes,useLocation} from 'react-router'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {FriendExpeditionPage} from '@/features/expeditions/friend-expedition-page'
@@ -20,14 +20,14 @@ it('visits the friend departure from the list without sending help or opening a 
  expect(screen.getByLabelText('현재 경로').textContent).toBe('/friends/friend/expeditions')
  expect(mock.boost).not.toHaveBeenCalled();expect(screen.queryByRole('alertdialog')).toBeNull()
 })
-it('shows the friend trip and confirms help only from its visit page',async()=>{
+it('shows the friend trip and helps immediately from its visit page',async()=>{
+ mock.boost.mockResolvedValue({serverNow:base.serverNow,friends:[{friend_id:'friend',expedition_id:'trip',returns_at:'2026-10-19T02:20:00Z',boosted:true}]})
  show()
  expect(await screen.findByText('퐁당섬 앞바다')).toBeTruthy()
  fireEvent.click(screen.getByRole('button',{name:'바다친구님 물고기 유인하기'}))
- expect(mock.boost).not.toHaveBeenCalled()
+ expect(screen.queryByRole('alertdialog')).toBeNull()
  mock.boost.mockResolvedValue({serverNow:base.serverNow,friends:[{friend_id:'friend',expedition_id:'trip',returns_at:'2026-10-19T02:20:00Z',boosted:true}]})
  mock.load.mockResolvedValue({...base,boosted:true})
- fireEvent.click(within(await screen.findByRole('alertdialog')).getByRole('button',{name:'확인'}))
  await waitFor(()=>expect(mock.boost).toHaveBeenCalledWith('trip'))
  expect(await screen.findByRole('button',{name:'바다친구님 도움 완료'})).toHaveProperty('disabled',true)
 })

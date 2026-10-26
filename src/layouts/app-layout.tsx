@@ -1,7 +1,7 @@
 import {Suspense,useState} from 'react'
 import { GoldIcon, useGold } from '@/features/gold/gold-provider'
 import { Link, Outlet, useLocation } from 'react-router'
-import { HeaderPlaceNavigation } from '@/components/header-place-navigation'
+import { PageNavigation } from '@/components/page-navigation'
 import { useAuth } from '@/components/auth-provider'
 import { NotificationMenu } from '@/features/notifications/notification-menu'
 import { AttendanceButton } from '@/features/attendance/attendance-button'
@@ -9,7 +9,6 @@ import { QuestButton } from '@/features/quests/quest-button'
 import {MusicToggleButton} from '@/features/music/music-toggle-button'
 import {TitleSync} from '@/features/titles/title-sync'
 import { AvatarMenu } from '@/features/profile/avatar-menu'
-import { PlaceBanner } from '@/components/place-banner'
 import { useFishingTripRoute } from '@/features/fishing/fishing-trip'
 import {IslandNewsPopup} from '@/components/island-news-popup'
 
@@ -21,7 +20,7 @@ export function AppLayout() {
   // viewport layout and banner configuration for either URL spelling.
   const pathname=/^\/(?:(?:(?:my-)?bait-)?production(?:-shop)?|shipyard)\/+$/.test(routePathname)?routePathname.replace(/\/+$/,''):routePathname
   useFishingTripRoute(session?.user.id,pathname)
-  const aquarium=pathname==='/aquarium'
+  const aquarium=/^\/aquarium(?:\/[^/]+)?\/?$/.test(pathname)
   const friendAquarium=/^\/friends\/[^/]+\/aquarium\/?$/.test(pathname)
   const tankScreen=aquarium||friendAquarium
   const home=pathname==='/island-news'||/^\/development-fund\/?$/.test(pathname)
@@ -56,11 +55,8 @@ export function AppLayout() {
         <AvatarMenu />
         </div>
       </div>}
-      {session && <div className="mt-1 flex items-center gap-2 border-t border-border/70 pt-0.5">
-        <HeaderPlaceNavigation />
-      </div>}
+      {session && <PageNavigation noticeCategory={noticeBanner?.pathname===routePathname?noticeBanner.category:undefined}/>}
     </header>
-    {!port&&!harbor&&!tankScreen&&<PlaceBanner pathname={pathname} noticeCategory={noticeBanner?.pathname===routePathname?noticeBanner.category:undefined}/>}
     <main className={`flex min-w-0 flex-1 flex-col ${shop||warehouse||memory||friends||exchange||showcase||noticeList||mailbox||home||profile?'-mx-6':expedition?'-mx-3':''} ${port||expedition||tankScreen||harbor||fishing||memory||warehouse||shop||friends||exchange||square||showcase||noticeList||mailbox||home||profile?'min-h-0 overflow-hidden':''}`}><Suspense fallback={<p role="status" className="p-8 text-center text-xs text-muted-foreground">불러오는 중…</p>}><Outlet context={{setNoticeBanner}}/></Suspense></main>
   </div>
 }

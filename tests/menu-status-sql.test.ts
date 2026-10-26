@@ -34,7 +34,8 @@ it('returns caller-only counts and deadlines without initializing a wallet or re
   expect(data.production.total).toBe(2)
   expect(data.production.sites).toHaveLength(1)
   expect(Object.keys(data.production.sites[0]).sort()).toEqual(['completesAt', 'expiresAt'])
-  expect(data.harbor).toEqual({ dockSlots: 2, returnsAt: [] })
+  expect(data.harbor).toEqual({total:0, dockSlots: 2, returnsAt: [] })
+  expect(data.personalBait.completesAt).toBeNull()
   expect(data.expedition.returnsAt).toBeNull()
   expect(data.savings.account).toBeNull()
   expect((await menu(other)).production).toEqual({ total: 0, sites: [] })
@@ -58,4 +59,11 @@ it('blocks anonymous and missing-user access on the public wrapper and private h
   } finally {
     await db.exec('reset role')
   }
+})
+it('counts unsold boat instances and only the caller unclaimed personal job',async()=>{
+ await db.query("insert into public.harbor_boats(user_id,vessel_id,instance_no) select $1,id,1 from public.harbor_vessels order by id limit 1",[owner])
+ await db.query("insert into app_private.personal_bait_jobs(user_id,bait_id,bait_name,image_path,quantity,production_minutes,unit_value,fuel_cost,started_at,completes_at) select $1,id,name,image_path,1,60,1,1,now(),now()+interval '60 minutes' from public.fishing_baits order by id limit 1",[owner])
+ const data=await menu(owner),foreign=await menu(other)
+ expect(data.harbor.total).toBe(1);expect(foreign.harbor.total).toBe(0)
+ expect(data.personalBait.completesAt).toBeTruthy();expect(foreign.personalBait.completesAt).toBeNull()
 })

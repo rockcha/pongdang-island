@@ -21,6 +21,12 @@ import {
 
 export function AppQueryProvider({ children }: { children: ReactNode }) {
   useEffect(subscribeResourceEvents, [])
+  useEffect(()=>{
+    const timer=setInterval(()=>{
+      if(!document.hidden)void appQueryClient.refetchQueries({type:'active',predicate:q=>['merchant','menu-status'].includes(String(q.queryKey[2]))},{cancelRefetch:false})
+    },30_000)
+    return()=>clearInterval(timer)
+  },[])
   useEffect(() => {
     const poll = setInterval(() => {
       if (!document.hidden)

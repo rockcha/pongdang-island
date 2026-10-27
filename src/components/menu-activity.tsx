@@ -1,12 +1,13 @@
 ﻿import {useEffect,useState} from 'react'
 import {useAccountResource,useServerDeadlines} from '@/lib/account-query'
 import {readMenuStatus,type MenuStatus} from '@/lib/menu-status'
-export type MenuActivity={total?:number;running:number;ready:number;expired?:number;remaining?:number;single?:'유인'|'제작';unit?:string}
+export type MenuActivity={total?:number;running:number;ready:number;expired?:number;remaining?:number;single?:'유인'|'제작';unit?:string;kind?:'merchant'}
 export function summarizeMenuActivity(summary:MenuStatus|undefined,now:number):Record<string,MenuActivity>{
  if(!summary)return {}
  const production=(data:MenuStatus['production']):MenuActivity=>({total:data.total,unit:'곳',running:data.sites.filter(s=>s.completesAt&&Date.parse(s.completesAt)>now).length,ready:data.sites.filter(s=>s.completesAt&&s.expiresAt&&Date.parse(s.completesAt)<=now&&Date.parse(s.expiresAt)>now).length,expired:data.sites.filter(s=>s.expiresAt&&Date.parse(s.expiresAt)<=now).length})
  const single=(date:string|null|undefined,label:'유인'|'제작'):MenuActivity=>({single:label,running:date&&Date.parse(date)>now?1:0,ready:date&&Date.parse(date)<=now?1:0,remaining:date?Math.max(0,Date.parse(date)-now):undefined})
  return {
+ ...(summary.merchant?{'/merchant-orders':{kind:'merchant' as const,running:0,ready:Date.parse(summary.merchant.resetsAt)>now?summary.merchant.ready:0}}:{}),
  '/production':production(summary.production),'/bait-production':production(summary.baitProduction),
  '/port':{total:summary.harbor.total,unit:'척',running:summary.harbor.returnsAt.filter(t=>Date.parse(t)>now).length,ready:summary.harbor.returnsAt.filter(t=>Date.parse(t)<=now).length},
  '/expeditions':single(summary.expedition.returnsAt,'유인'),
@@ -17,13 +18,14 @@ export function activityRemaining(ms:number){const minutes=Math.ceil(ms/60000);r
 export function useMenuActivity(){
  const {data,dataUpdatedAt}=useAccountResource('menu-status',readMenuStatus)
  const [,tick]=useState(0)
- const deadlines=[...(data?.production.sites??[]).flatMap(s=>[s.completesAt,s.expiresAt]),...(data?.baitProduction.sites??[]).flatMap(s=>[s.completesAt,s.expiresAt]),...(data?.harbor.returnsAt??[]),data?.expedition.returnsAt,data?.personalBait?.completesAt]
+ const deadlines=[...(data?.production.sites??[]).flatMap(s=>[s.completesAt,s.expiresAt]),...(data?.baitProduction.sites??[]).flatMap(s=>[s.completesAt,s.expiresAt]),...(data?.harbor.returnsAt??[]),data?.expedition.returnsAt,data?.personalBait?.completesAt,data?.merchant?.resetsAt]
  const now=useServerDeadlines(data?.serverNow,dataUpdatedAt,deadlines)
  const running=deadlines.some(d=>d&&Date.parse(d)>now)
  useEffect(()=>{if(!running)return;const timer=setInterval(()=>tick(n=>n+1),30000);return()=>clearInterval(timer)},[running])
  return summarizeMenuActivity(data,now)
 }
 export function MenuActivityLine({activity}:{activity:MenuActivity}){
+ if(activity.kind==='merchant')return <span className="mt-0.5 block text-[10px] font-normal leading-4 text-muted-foreground">{activity.ready>0?`${activity.ready}건 바로 납품 가능`:'진행 중인 의뢰 보기'}</span>
  const {total,running,ready,expired=0,single,unit}=activity
  const parts:string[]=[]
  if(total!==undefined)parts.push(`총 ${total}${unit??''}`)

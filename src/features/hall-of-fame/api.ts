@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/client'
+import {readAccountResource} from '@/lib/account-cache'
 
 export type HallPlayer = {
   levelProgress?:number;level?: number
@@ -8,7 +9,8 @@ export type HallPlayer = {
   value: number
   rank: number
 }
-export type HallFeed = { rankings: Record<string, HallPlayer[]>; generatedAt: string }
+export type PersonalHallRank={rank:number|null;value:number|null;neighbors:HallPlayer[]}
+export type HallFeed = { rankings: Record<string, HallPlayer[]>; personal?:Record<string,PersonalHallRank>; generatedAt: string }
 export type HallComment = {
   id: string
   author_id: string
@@ -66,11 +68,12 @@ export async function loadSectionCounts(): Promise<Record<string, number>> {
   return data
 }
 
-export async function loadHall(): Promise<HallFeed> {
-  const { data, error } = await createClient().rpc('hall_of_fame', {})
+export async function readHall(signal:AbortSignal): Promise<HallFeed> {
+  const { data, error } = await createClient().rpc('hall_of_fame', {}).abortSignal(signal)
   if (error) throw error
   return data
 }
+export function loadHall():Promise<HallFeed>{return readAccountResource('hall',readHall)}
 export async function loadWall(target: string, offset = 0): Promise<HallWall> {
   const { data, error } = await createClient().rpc('hall_wall', {
     p_target: target,

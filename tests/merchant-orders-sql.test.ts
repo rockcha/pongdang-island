@@ -17,6 +17,31 @@ beforeAll(async()=>{
 beforeEach(async()=>{await db.exec('begin')})
 afterEach(async()=>{await db.exec('rollback')})
 afterAll(async()=>{await db?.close()})
+const summary=async(user=me)=>(await asUser(user,'select public.menu_status() s')).rows[0].s.merchant
+it('keeps readiness independent from NEW and excludes unavailable storage until actual delivery',async()=>{
+ await db.exec('savepoint empty_board;delete from app_private.merchant_orders')
+ expect((await summary()).total).toBe(0)
+ expect((await db.query('select count(*)::int n from app_private.merchant_orders')).rows[0].n).toBe(0)
+ await db.exec('rollback to empty_board;release empty_board')
+ const o=(await state()).orders[0]
+ await stock(o,other)
+ expect((await summary()).ready).toBe(0)
+ await stock(o)
+ const ready=await summary()
+ expect(ready.ready).toBeGreaterThan(0)
+ const news=async()=>(await asUser(me,'select public.new_content_state() s')).rows[0].s.merchant
+ expect(await news()).toBe(ready.availableAt)
+ await state()
+ expect((await summary()).ready).toBe(ready.ready)
+ await asUser(me,'select public.aquarium_state()')
+ await db.query('update public.player_collectibles set tank_id=(select id from public.aquarium_tanks where user_id=$1 limit 1) where user_id=$1',[me])
+ expect((await summary()).ready).toBe(0)
+ await db.query('update public.player_collectibles set tank_id=null where user_id=$1',[me])
+ expect((await summary()).ready).toBe(ready.ready)
+ await deliver(o.id)
+ expect((await summary()).ready).toBe(0)
+ expect(await news()).toBe(ready.availableAt)
+})
 it('generates exactly 35 shared daily orders with bounded recipes and stable snapshots',async()=>{
  const a=await state(),b=await state(other)
  expect(a.orders.map(o=>o.id)).toEqual(b.orders.map(o=>o.id));expect(a.orders).toHaveLength(35)

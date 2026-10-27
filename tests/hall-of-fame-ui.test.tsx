@@ -1,10 +1,12 @@
 import { MemoryRouter } from 'react-router'
+import {appQueryClient} from '@/lib/account-cache'
 import type { ReactNode } from 'react'
 import {
   cleanup,
   fireEvent,
   render as renderBase,
   screen,
+  within,
 } from '@testing-library/react'
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { HallPage } from '@/features/hall-of-fame/hall-page'
@@ -18,6 +20,7 @@ vi.mock('@/components/auth-provider', () => ({
 vi.mock('@/features/hall-of-fame/api', async (importOriginal) => ({
   ...(await importOriginal<typeof import('@/features/hall-of-fame/api')>()),
   loadHall: api.feed,
+  readHall: api.feed,
   loadSectionWall: api.wall,
   actOnSection: api.action,
   loadSectionCounts: api.counts,
@@ -26,12 +29,31 @@ const player = { id: 'friend', nickname: '바다퐁', avatar_path: null, value: 
 const wall = { total: 0, comments: [] }
 beforeEach(() => {
   vi.clearAllMocks()
+  appQueryClient.clear()
   api.feed.mockResolvedValue({ rankings: { casts: [player] }, generatedAt: '2026-10-21T10:00:00Z' })
   api.wall.mockResolvedValue(wall)
   api.action.mockResolvedValue(wall)
   api.counts.mockResolvedValue({ casts: 0 })
 })
 afterEach(cleanup)
+it('pins an exact rank outside TOP 5 and highlights the caller among two neighbors on each side',async()=>{
+ const neighbors=Array.from({length:5},(_,i)=>({...player,id:i===2?'me':`near-${i}`,nickname:i===2?'내퐁이':`이웃${i}`,rank:126+i,value:12452-i}))
+ api.feed.mockResolvedValue({rankings:{casts:[player]},personal:{casts:{rank:128,value:12450,neighbors},fish:{rank:null,value:42,neighbors:[]}},generatedAt:new Date().toISOString()})
+ render(<HallPage/>)
+ const card=screen.getByRole('region',{name:'내 순위'})
+ expect(await within(card).findByText('내 순위 128위 · 내 기록 12,450회')).toBeTruthy()
+ expect(screen.getByLabelText('기록 목록').contains(card)).toBe(false)
+ fireEvent.click(within(card).getByRole('button',{name:'내 주변 보기'}))
+ const dialog=screen.getByRole('dialog')
+ expect(within(dialog).getAllByRole('listitem')).toHaveLength(5)
+ expect(dialog.querySelector('[aria-current="true"]')?.textContent).toContain('내퐁이 · 나')
+ fireEvent.keyDown(dialog,{key:'Escape'})
+ fireEvent.change(screen.getByRole('combobox',{name:'내 순위 종목'}),{target:{value:'fish'}})
+ expect(screen.getByText('집계 범위 밖 · 내 기록 42마리')).toBeTruthy()
+ expect(screen.getByRole('button',{name:'내 주변 보기'}).hasAttribute('disabled')).toBe(true)
+ fireEvent.click(screen.getByRole('tab',{name:'별별 기록'}))
+ expect(screen.getByText('아직 기록이 없어요')).toBeTruthy()
+})
 it('orders both tabs and opens section discussions', async () => {
   render(<HallPage />)
   await screen.findByLabelText('1위 바다퐁, 1,200회')
@@ -45,8 +67,8 @@ it('orders both tabs and opens section discussions', async () => {
   expect(screen.getAllByText('집계 기준')).toHaveLength(14)
   expect(screen.getByText('성공·실패를 합산한 직접 낚시 완료 횟수')).toBeTruthy()
   expect(document.querySelectorAll('[style*="honor-records.png"]')).toHaveLength(16)
-  expect(screen.getByText('지갑은 얇고 창고는 빵빵')).toBeTruthy()
-  expect(screen.getByText('바다 장사의 신')).toBeTruthy()
+  expect(screen.getByRole('heading',{name:'지갑은 얇고 창고는 빵빵'})).toBeTruthy()
+  expect(screen.getByRole('heading',{name:'바다 장사의 신'})).toBeTruthy()
   expect(screen.queryByRole('button', { name: /1위 바다퐁/ })).toBeNull()
   fireEvent.click(screen.getByRole('tab', { name: '별별 기록' }))
   expect(

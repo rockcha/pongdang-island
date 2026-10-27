@@ -1,5 +1,5 @@
 import { PlayerAvatar } from '@/features/profile/player-avatar'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   Check,
   ChevronRight,
@@ -17,11 +17,12 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog'
 import { CollectibleThumbnail } from '@/features/collection/collectible-thumbnail'
-import { GoldIcon, useGold } from '@/features/gold/gold-provider'
+import { GoldIcon } from '@/features/gold/gold-provider'
+import { useAccountResource, useServerDeadlines } from '@/lib/account-query'
 import { rarities } from '@/lib/game/rarity'
 import { randomId } from '@/lib/random-id'
-import { canDeliver, deliverMerchant, loadMerchant, merchantError } from './api'
-import type { MerchantItem, MerchantOrder, MerchantState } from './api'
+import { canDeliver, deliverMerchant, readMerchant, merchantError } from './api'
+import type { MerchantItem, MerchantOrder } from './api'
 
 type Pending = { order: string; operation: string; message: string }
 function readPending(key: string): Pending | null {
@@ -80,63 +81,27 @@ export function MerchantPage() {
   return <AccountMerchant key={session?.user.id ?? 'guest'} owner={session?.user.id ?? 'guest'} />
 }
 function AccountMerchant({ owner }: { owner: string }) {
-  const gold = useGold(),
-    key = `pongdang:merchant:${owner}`
-  const [data, setData] = useState<MerchantState | null>(null),
-    [error, setError] = useState(''),
-    [loading, setLoading] = useState(true),
+  const key = `pongdang:merchant:${owner}`
+  const query = useAccountResource('merchant', readMerchant)
+  const data = query.data
+  const loading = query.isFetching
+  const [error, setError] = useState(''),
     [busy, setBusy] = useState(false)
   const [filter, setFilter] = useState<'open' | 'ready' | 'done'>('open'),
     [selected, setSelected] = useState<MerchantOrder | null>(null)
   const [message, setMessage] = useState('')
   const [itemCount, setItemCount] = useState<0 | 1 | 2 | 3>(0)
-  const [pending, setPending] = useState<Pending | null>(() => readPending(key)),
-    [now, setNow] = useState(Date.now)
+  const [pending, setPending] = useState<Pending | null>(() => readPending(key))
+  const now = useServerDeadlines(data?.serverNow, query.dataUpdatedAt, [data?.resetsAt])
   const alive = useRef(true),
-    lock = useRef(false),
-    version = useRef(0),
-    offset = useRef(0)
-  function apply(next: MerchantState) {
-    offset.current = Date.parse(next.serverNow) - Date.now()
-    setNow(Date.now() + offset.current)
-    setData(next)
-    setError('')
-  }
-  const reload = useCallback(async () => {
-    if (lock.current) return
-    const request = ++version.current
-    try {
-      const next = await loadMerchant()
-      if (alive.current && request === version.current && !lock.current) apply(next)
-    } catch (cause) {
-      if (alive.current && request === version.current) setError(merchantError(cause))
-    } finally {
-      if (alive.current && request === version.current) setLoading(false)
-    }
-  }, [])
+    lock = useRef(false)
+  const reload = query.refetch
   useEffect(() => {
     alive.current = true
-    void reload()
-    const refresh = () => {
-      if (!document.hidden) void reload()
-    }
-    const timer = setInterval(refresh, 30000),
-      clock = setInterval(() => setNow(Date.now() + offset.current), 1000)
-    window.addEventListener('focus', refresh)
-    window.addEventListener('online', refresh)
-    window.addEventListener('collectibles-changed', refresh)
-    document.addEventListener('visibilitychange', refresh)
     return () => {
       alive.current = false
-      version.current++
-      clearInterval(timer)
-      clearInterval(clock)
-      window.removeEventListener('focus', refresh)
-      window.removeEventListener('online', refresh)
-      window.removeEventListener('collectibles-changed', refresh)
-      document.removeEventListener('visibilitychange', refresh)
     }
-  }, [reload])
+  }, [])
   const expired = !!data && now >= Date.parse(data.resetsAt)
   useEffect(() => {
     if (expired && !busy) void reload()
@@ -157,7 +122,6 @@ function AccountMerchant({ owner }: { owner: string }) {
       (order ? { order: order.id, operation: randomId(), message: message.trim() } : null)
     if (!request) return
     lock.current = true
-    version.current++
     setBusy(true)
     setError('')
     remember(request)
@@ -169,12 +133,10 @@ function AccountMerchant({ owner }: { owner: string }) {
       } catch {}
       if (alive.current) {
         remember(null)
-        apply(next)
         setSelected(null)
         setMessage('')
         setFilter('done')
         toast.success(`납품 완료 · ${next.receipt?.gold.toLocaleString('ko-KR') ?? ''}골드`)
-        void gold.refresh()
       }
     } catch (cause) {
       if (alive.current) {
@@ -184,6 +146,7 @@ function AccountMerchant({ owner }: { owner: string }) {
           setSelected(null)
         }
         setSelected(null)
+        void reload()
         setError(merchantError(cause))
         toast.error(merchantError(cause))
       }
@@ -191,8 +154,6 @@ function AccountMerchant({ owner }: { owner: string }) {
       lock.current = false
       if (alive.current) {
         setBusy(false)
-        setLoading(false)
-        void reload()
       }
     }
   }
@@ -203,7 +164,7 @@ function AccountMerchant({ owner }: { owner: string }) {
         : filter === 'ready'
           ? canDeliver(order)
           : !order.completed && (itemCount === 0 || order.items.length === itemCount),
-    ) ?? []
+    ).sort((a,b)=>Number(canDeliver(b))-Number(canDeliver(a))||a.number-b.number) ?? []
   const counts = {
     open: data?.orders.filter(order => !order.completed).length,
     ready: data?.orders.filter(canDeliver).length,
@@ -278,19 +239,19 @@ function AccountMerchant({ owner }: { owner: string }) {
             size="icon"
             aria-label="주문 새로고침"
             disabled={loading || busy}
-            onClick={() => void reload()}
+            onClick={() => {setError('');void reload()}}
           >
             <RefreshCw className={`size-3.5 ${loading ? 'animate-spin' : ''}`} />
           </Button>
         </div>
-        {error && (
+        {(error || query.error) && (
           <div
             role="alert"
             className="space-y-2 rounded-xl border border-border bg-card p-3 text-xs leading-5"
           >
-            <p>{error}</p>
+            <p>{error || merchantError(query.error)}</p>
             {!pending && (
-              <Button size="sm" variant="outline" onClick={() => void reload()}>
+              <Button size="sm" variant="outline" onClick={() => {setError('');void reload()}}>
                 목록 새로고침
               </Button>
             )}
@@ -333,6 +294,7 @@ function AccountMerchant({ owner }: { owner: string }) {
                 >
                   <ChevronRight aria-hidden className="size-3.5 opacity-50" />
                 </button>
+                {canDeliver(order) && !expired && <p className="pointer-events-none relative px-4 pt-3 text-[11px] font-medium text-orange-600">바로 납품 가능</p>}
                 <ul className="pointer-events-none relative space-y-1 py-3 pr-9 pl-4">
                   {order.items.map((item) => (
                     <ItemRow key={item.speciesId} item={item} completed={order.completed}/>

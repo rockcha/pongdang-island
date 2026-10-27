@@ -145,6 +145,8 @@ export const resourceEvents: Record<string, string[]> = {
     'menu-status',
   ],
   'collectibles-changed': [
+    'merchant',
+    'menu-status',
     'aquarium',
     'storage',
     'collection',
@@ -152,8 +154,8 @@ export const resourceEvents: Record<string, string[]> = {
     'exchange-inventory',
     'titles',
   ],
-  'aquarium-changed': ['aquarium', 'storage', 'collection'],
-  'gifts-changed': ['gifts', 'gift', 'aquarium', 'storage', 'collection', 'inbox'],
+  'aquarium-changed': ['aquarium', 'storage', 'collection', 'merchant', 'menu-status'],
+  'gifts-changed': ['gifts', 'gift', 'aquarium', 'storage', 'collection', 'inbox', 'merchant', 'menu-status'],
   'friends-changed': ['friend-aquarium', 'aquarium-likes', 'friend-expedition'],
 }
 let subscribers = 0

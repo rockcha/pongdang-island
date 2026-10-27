@@ -10,6 +10,18 @@ const timestamp = '2026-10-21T01:00:00Z'
 const latest = { board: timestamp, exchange: timestamp, suggestions: null, bugs: null, showcase: timestamp }
 beforeEach(() => { localStorage.clear(); vi.clearAllMocks(); mock.owner='me';mock.path='/';mock.allowed=true;mock.rpc.mockResolvedValue({data:{...latest},error:null}) })
 afterEach(() => {cleanup();vi.useRealTimers()})
+it('clears only the NEW order timestamp on visiting and shows a new day separately',async()=>{
+ mock.rpc.mockResolvedValue({data:{...latest,merchant:timestamp},error:null})
+ const view=renderHook(()=>useNewContent())
+ await waitFor(()=>expect(view.result.current.merchant).toBe(true))
+ mock.path='/merchant-orders';view.rerender()
+ expect(view.result.current.merchant).toBe(false)
+ mock.path='/';view.rerender()
+ expect(view.result.current.merchant).toBe(false)
+ mock.rpc.mockResolvedValue({data:{...latest,merchant:'2026-10-22T01:00:00Z'},error:null})
+ act(()=>window.dispatchEvent(new Event('focus')))
+ await waitFor(()=>expect(view.result.current.merchant).toBe(true))
+})
 it('uses one timestamp request and marks visited feeds without refetching on navigation', async () => {
  const view=renderHook(()=>useNewContent())
  await waitFor(()=>expect(view.result.current.board).toBe(true))

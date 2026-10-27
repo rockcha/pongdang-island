@@ -284,10 +284,6 @@
     "fingerprint": "0c53279658901cab54ebf6f1330c92c9632d4447f6c7bab426daf5a6af9b1666"
   },
   {
-    "id": "src/features/hall-of-fame/api.ts#loadHall",
-    "fingerprint": "7c81d86dfe1da6dccd0a4ab1f51224b096247adbf46ae00922fc0c4e6129a282"
-  },
-  {
     "id": "src/features/hall-of-fame/api.ts#loadSectionCounts",
     "fingerprint": "0f2c67b5447bd41cf2f127c91f9504f232a1ba5a5bf194e39dfb2e5ebe2d9bff"
   },
@@ -298,14 +294,6 @@
   {
     "id": "src/features/hall-of-fame/api.ts#loadWall",
     "fingerprint": "000496f3654d6498cf546f83f062d5a37e20d78b1f3a91761da498fd7e2c78df"
-  },
-  {
-    "id": "src/features/merchant/api.ts#deliverMerchant",
-    "fingerprint": "bf0ef9254024185dc9b76c624b7ffe76e5692a2aeb69f1bbffe633559d461088"
-  },
-  {
-    "id": "src/features/merchant/api.ts#loadMerchant",
-    "fingerprint": "53a691f3e34ec98e07c9c49473ba1bfd3ba31158e2f0227317edfcf86ac1b4c2"
   },
   {
     "id": "src/features/music/api.ts#editMusic",

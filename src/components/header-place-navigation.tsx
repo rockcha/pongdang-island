@@ -94,6 +94,7 @@ export function HeaderPlaceNavigation() {
     (to==='/square/suggestions'&&newContent.suggestions)||
     (to==='/square/bugs'&&newContent.bugs)||
     (to==='/exchange'&&newContent.exchange)
+    ||(to==='/merchant-orders'&&newContent.merchant)
   const groups = [
     {label:'내 섬',icon:House,sections:[{label:'나의 공간',paths:['/my-island','/aquarium','/profile']},{label:'꾸미기',paths:['/decoration-shop']},{label:'쉬어가기',paths:['/music-room','/arcade']}]},
     {label:'낚시',icon:FishingRod,sections:[{label:'직접 낚시',paths:['/harbor','/fishing']},{label:'자동 낚시',paths:['/expeditions','/port']},{label:'낚시 준비',paths:['/shop','/item-shop','/shipyard']}]},
@@ -112,7 +113,8 @@ export function HeaderPlaceNavigation() {
         const selected = items.find(
           (item) => current === item.to || current.startsWith(item.to + '/'),
         )
-        const hasActivity=items.some(item=>hasNewContent(item.to)||!!activity[item.to]?.ready||(item.to==='/savings'&&!!savings))
+        const merchantReady=(activity['/merchant-orders']?.ready??0)>0
+        const hasActivity=items.some(item=>(item.to!=='/merchant-orders'&&hasNewContent(item.to))||!!activity[item.to]?.ready||(item.to==='/savings'&&!!savings))
         const CategoryIcon=group.icon
         return (
           <Menu.Root key={pathname + group.label}>
@@ -125,7 +127,7 @@ export function HeaderPlaceNavigation() {
             >
               <CategoryIcon aria-hidden="true" className="size-5 shrink-0" strokeWidth={1.7}/>
               <span className="sr-only">{group.label}</span>
-              {hasActivity&&<span aria-hidden="true" data-category-activity={group.label} className="category-activity-dot absolute right-1 top-1"/>}
+              {hasActivity&&<span aria-hidden="true" data-category-activity={group.label} style={group.label==='장터'&&merchantReady?{backgroundColor:'#f97316'}:undefined} className="category-activity-dot absolute right-1 top-1"/>}
             </Menu.Trigger>
             <Menu.Portal>
               <Menu.Positioner
@@ -150,14 +152,15 @@ export function HeaderPlaceNavigation() {
                         render={<Link to={to} aria-current={active ? 'page' : undefined} />}
                         className={`flex min-h-11 items-center ${to==='/relics'?'gap-2':'gap-3'} rounded-lg px-3 py-2 text-sm outline-none transition-colors data-highlighted:bg-secondary ${active ? 'bg-primary/10 text-primary' : 'text-foreground'}`}
                       >
-                        <span className="grid size-8 shrink-0 place-items-center">
+                        <span className="relative grid size-8 shrink-0 place-items-center">
                           <ItemOutline aria-hidden="true" className="size-5 text-primary/80" strokeWidth={1.7}/>
+                          {to==='/merchant-orders'&&merchantReady&&<span role="img" aria-label="납품 가능한 의뢰 있음" className="absolute right-0 top-0 size-1.5 rounded-full bg-orange-500"/>}
                         </span>
                         <span className="min-w-0 flex-1"><span className="block truncate">{label}</span>{activity[to]&&<MenuActivityLine activity={activity[to]}/>}</span>
                         {to==='/relics'&&equippedRelic&&<span className="flex max-w-20 shrink-0 items-center gap-1" title={`장착 중: ${equippedRelic.name}`}><CollectibleThumbnail path={equippedRelic.thumbnail_path} name={`장착 중: ${equippedRelic.name}`} className="size-6 shrink-0"/><span className="min-w-0 truncate text-[10px]">{equippedRelic.name}</span></span>}
                         {hasNewContent(to) && (
                           <span
-                            aria-label="새 글 있음"
+                            aria-label={to==='/merchant-orders'?'새 의뢰 있음':'새 글 있음'}
                             className="text-[9px] font-bold tracking-wider text-rose-600 dark:text-rose-400"
                           >
                             NEW

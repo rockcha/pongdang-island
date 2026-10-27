@@ -102,7 +102,7 @@ export type Database = {
       sponsorship_create:{Args:{p_operation_id:string;p_gold_each:number;p_slots:number;p_message?:string};Returns:import('@/features/sponsorship/api').Sponsorship}
       sponsorship_claim:{Args:{p_id:string};Returns:import('@/features/sponsorship/api').Sponsorship}
       sponsorship_cancel:{Args:{p_id:string};Returns:import('@/features/sponsorship/api').Sponsorship}
-      new_content_state:{Args:Record<string,never>;Returns:Record<'board'|'exchange'|'suggestions'|'bugs'|'showcase',string|null>}
+      new_content_state:{Args:Record<string,never>;Returns:Record<'board'|'exchange'|'suggestions'|'bugs'|'showcase'|'merchant',string|null>}
       sync_titles:{Args:Record<string,never>;Returns:number}
       quest_state:{Args:Record<string,never>;Returns:import('@/features/quests/api').QuestState}
       claim_quest:{Args:{p_kind:import('@/features/quests/api').QuestKind;p_start:string;p_quest_id:string};Returns:import('@/features/quests/api').QuestState}

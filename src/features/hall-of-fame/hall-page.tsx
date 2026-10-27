@@ -1,4 +1,4 @@
-import {useEffect,useRef,useState} from 'react'
+import {useRef,useState} from 'react'
 import {PlayerIdentityLink} from '@/features/profile/player-identity-link'
 import {HallCategoryIcon,HallTabIcon} from './hall-category-icon'
 import {Crown,RefreshCw} from 'lucide-react'
@@ -6,7 +6,9 @@ import { useAuth } from '@/components/auth-provider'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { PlayerAvatar } from '@/features/profile/player-avatar'
-import {hallError,loadHall,type HallFeed,type HallPlayer} from './api'
+import {hallError,readHall,type HallPlayer,type PersonalHallRank} from './api'
+import {useAccountResource} from '@/lib/account-query'
+import {Dialog,DialogContent,DialogHeader,DialogTitle,DialogDescription} from '@/components/ui/dialog'
 import { formatHallValue, funCategories, hallCategories, type HallCategory } from './categories'
 
 function RankingCard({category,players}:{category:HallCategory;players:HallPlayer[]}) {
@@ -76,38 +78,22 @@ function RankingCard({category,players}:{category:HallCategory;players:HallPlaye
 }
 
 export function HallPage() {
-  const [feed, setFeed] = useState<HallFeed | null>(null)
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(true)
-  const [retry, setRetry] = useState(0)
+  const query = useAccountResource('hall',readHall)
+  const feed=query.data, error=query.error?hallError(query.error):'', loading=query.isFetching
+  const [tab,setTab]=useState('honor')
+  const [categoryId,setCategoryId]=useState<string>(hallCategories[0].id)
+  const categories=tab==='honor'?hallCategories:funCategories
+  const category=categories.find(item=>item.id===categoryId)??categories[0]
   const list = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    let active = true
-    void loadHall()
-      .then((data) => {
-        if (active) {
-          setFeed(data)
-          setError('')
-        }
-      })
-      .catch((cause) => {
-        if (active) setError(hallError(cause))
-      })
-      .finally(() => {
-        if (active) setLoading(false)
-      })
-    return () => {
-      active = false
-    }
-  }, [retry])
   function refresh() {
-    setLoading(true)
-    setRetry((n) => n + 1)
+    void query.refetch()
   }
   return (
     <Tabs
       defaultValue="honor"
-      onValueChange={() => {
+      onValueChange={(value) => {
+        setTab(value)
+        setCategoryId((value==='honor'?hallCategories:funCategories)[0].id)
         if (list.current) list.current.scrollTop = 0
       }}
       className="flex min-h-0 flex-1 flex-col overflow-hidden"
@@ -141,6 +127,9 @@ export function HallPage() {
             />
           </Button>
         </div>
+      </div>
+      <div className="shrink-0 border-b border-border/60 px-4 py-3">
+        <PersonalRank key={category.id} category={category} categories={categories} onCategory={setCategoryId} record={feed?.personal?.[category.id]} loading={!feed&&loading} failed={!feed&&!!error}/>
       </div>
       <div
         ref={list}
@@ -200,4 +189,30 @@ export function HallPage() {
       </div>
     </Tabs>
   )
+}
+
+function PersonalRank({category,categories,onCategory,record,loading,failed}:{category:HallCategory;categories:readonly HallCategory[];onCategory:(id:string)=>void;record?:PersonalHallRank;loading:boolean;failed:boolean}) {
+  const {session}=useAuth()
+  const [open,setOpen]=useState(false)
+  const hasRecord=(record?.value??0)>0
+  return <section aria-label="내 순위" className="rounded-2xl border border-primary/20 bg-primary/5 p-3">
+    <div className="flex items-center justify-between gap-2">
+      <label className="min-w-0 flex-1 text-xs text-muted-foreground">내 순위 · 누적
+        <select aria-label="내 순위 종목" value={category.id} onChange={event=>onCategory(event.target.value)} className="mt-1 block min-h-10 w-full rounded-lg border border-border bg-background px-2 text-sm text-foreground">
+          {categories.map(item=><option key={item.id} value={item.id}>{item.label}</option>)}
+        </select>
+      </label>
+      <Button variant="outline" size="sm" className="mt-4 shrink-0" disabled={!record?.rank||!record.neighbors.length} onClick={()=>setOpen(true)}>내 주변 보기</Button>
+    </div>
+    <p className="mt-2 text-sm font-medium" aria-live="polite">{loading?'내 순위를 불러오는 중…':failed?'내 순위를 불러오지 못했어요':!hasRecord?'아직 기록이 없어요':record?.rank?`내 순위 ${record.rank.toLocaleString('ko-KR')}위 · 내 기록 ${formatHallValue(record.value!,category.unit)}`:`집계 범위 밖 · 내 기록 ${formatHallValue(record!.value!,category.unit)}`}</p>
+    <Dialog open={open} onOpenChange={setOpen}><DialogContent className="max-h-[80dvh] overflow-y-auto sm:max-w-md">
+      <DialogHeader><DialogTitle>내 주변 순위</DialogTitle><DialogDescription>{category.label} · 누적 기록 기준</DialogDescription></DialogHeader>
+      <ol className="space-y-2">{record?.neighbors.map(player=><li key={player.id} aria-current={player.id===session?.user.id?'true':undefined} className={`rounded-xl p-3 ${player.id===session?.user.id?'bg-primary/10 ring-1 ring-primary/30':'bg-secondary/30'}`}>
+        <PlayerIdentityLink to={player.id===session?.user.id?'/aquarium':`/friends/${player.id}/aquarium`} title={`${player.nickname} 어항 방문`} label={`${player.rank}위 ${player.nickname}, ${formatHallValue(player.value,category.unit)}`} className="flex items-center gap-3">
+          <span className="w-10 shrink-0 text-xs tabular-nums">{player.rank}위</span><PlayerAvatar userId={player.id} nickname={player.nickname} path={player.avatar_path} level={player.level} levelProgress={player.levelProgress} className="size-9"/>
+          <span className="min-w-0 flex-1 truncate text-sm">{player.nickname}{player.id===session?.user.id?' · 나':''}</span><span className="shrink-0 text-xs tabular-nums text-primary">{formatHallValue(player.value,category.unit)}</span>
+        </PlayerIdentityLink>
+      </li>)}</ol>
+    </DialogContent></Dialog>
+  </section>
 }

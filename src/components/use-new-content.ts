@@ -4,11 +4,11 @@ import { useAuth } from './auth-provider'
 import { createClient } from '@/lib/client'
 import { hasBackgroundSession, isAuthFailure } from '@/lib/background-session'
 
-type Source = 'board' | 'exchange' | 'suggestions' | 'bugs' | 'showcase'
+type Source = 'board' | 'exchange' | 'suggestions' | 'bugs' | 'showcase' | 'merchant'
 type Latest = Record<Source, string | null>
-const sources: Source[] = ['board', 'exchange', 'suggestions', 'bugs', 'showcase']
-const sourcePaths: Record<Source, string> = { board: '/board', exchange: '/exchange', suggestions: '/square/suggestions', bugs: '/square/bugs', showcase: '/showcase' }
-const emptyState = { board: false, exchange: false, suggestions: false, bugs: false, showcase: false }
+const sources: Source[] = ['board', 'exchange', 'suggestions', 'bugs', 'showcase', 'merchant']
+const sourcePaths: Record<Source, string> = { board: '/board', exchange: '/exchange', suggestions: '/square/suggestions', bugs: '/square/bugs', showcase: '/showcase', merchant: '/merchant-orders' }
+const emptyState = { board: false, exchange: false, suggestions: false, bugs: false, showcase: false, merchant: false }
 const seenKey = (owner: string, source: Source) => `pongdang:content-seen:${owner}:${source}`
 function seen(owner: string, source: Source) {
   try { return Number(localStorage.getItem(seenKey(owner, source))) || 0 } catch { return 0 }

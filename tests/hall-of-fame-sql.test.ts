@@ -71,7 +71,7 @@ beforeAll(async () => {
   ).rows[0].id
   await db.query(
     `insert into public.harbor_voyages(user_id,vessel_id,boat_id,vessel_snapshot,departed_at,returns_at,claimed_at,result)
-    values($1,$2,$3,'{}',now()-interval '2 hours',now()-interval '1 hour',now(),$4)`,
+    values($1,$2,$3,'{}',now()-interval '30 days',now()-interval '1 hour',now(),$4)`,
     [
       ids[0],
       vessel,
@@ -131,6 +131,30 @@ afterAll(async () => {
 })
 
 describe('hall of fame rankings', () => {
+  it('uses the same signup-time and UUID tie order for TOP 5, personal rank and neighbors',async()=>{
+    await db.exec('begin')
+    try{
+      await db.query('update public.player_profiles set created_at=$1 where id=any($2::uuid[])',['2026-01-02T00:00:00Z',ids])
+      await db.query('update public.player_profiles set created_at=$1 where id=$2',['2026-01-01T00:00:00Z',ids[6]])
+      for(const user of ids)await db.query(`insert into app_private.ladder_runs(user_id,operation_id,mode,stake,choice,bridges,payouts,destination,reward) values($1,gen_random_uuid(),'calm',20,0,array_fill(0,array[12]),array[0,20,20,40],0,0)`,[user])
+      const result=await asUser<HallFeed>(ids[3],'select public.hall_of_fame() data')
+      expect(result.rankings.ladder_plays.map(p=>p.id)).toEqual([ids[6],ids[0],ids[1],ids[2],ids[3]])
+      expect(result.personal?.ladder_plays.rank).toBe(5)
+      expect(result.personal?.ladder_plays.neighbors.map(p=>p.id)).toEqual(ids.slice(1,6))
+      expect(result.personal?.ladder_plays.neighbors.map(p=>p.rank)).toEqual([3,4,5,6,7])
+    }finally{await db.exec('rollback')}
+  })
+  it('returns exact personal rank beyond TOP 5 and neighbors from the same ordered snapshot',async()=>{
+    const result=await asUser<HallFeed>(ids[1],'select public.hall_of_fame() data')
+    expect(result.rankings.casts.some(p=>p.id===ids[1])).toBe(false)
+    expect(result.personal?.casts).toMatchObject({rank:7,value:1})
+    expect(result.personal?.casts.neighbors.map(p=>p.rank)).toEqual([5,6,7])
+    const middle=await asUser<HallFeed>(ids[4],'select public.hall_of_fame() data')
+    expect(middle.personal?.casts.rank).toBe(4)
+    expect(middle.personal?.casts.neighbors.map(p=>p.rank)).toEqual([2,3,4,5,6])
+    expect(middle.personal?.mythic_rate).toMatchObject({rank:null,value:0,neighbors:[]})
+    expect(middle.personal?.cleanings).toBeUndefined()
+  })
   it('splits arcade starts by game, counts each run once, and preserves top-five exclusion rules',async()=>{
     await db.exec('begin')
     try{

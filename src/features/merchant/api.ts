@@ -1,5 +1,7 @@
 import { createClient } from '@/lib/client'
 import type { Rarity } from '@/lib/game/rarity'
+import {readAccountResource} from '@/lib/account-cache'
+import {accountCommand} from '@/lib/account-command'
 export type MerchantItem = {
   speciesId: string
   name: string
@@ -33,21 +35,25 @@ export type MerchantState = {
   receipt?: { orderId: string; gold: number }
 }
 export const canDeliver = (order: MerchantOrder) =>
-  !order.completed && order.items.every((item) => item.owned >= item.quantity)
-export async function loadMerchant() {
-  const { data, error } = await createClient().rpc('merchant_state')
+  !order.completed && order.items.length>0 && order.items.every((item) => item.owned >= item.quantity)
+// Daily-board initialization is idempotent and serialized server-side. This read
+// never submits a delivery or spends the caller's inventory.
+export async function readMerchant(signal:AbortSignal):Promise<MerchantState> {
+  const { data, error } = await createClient().rpc('merchant_state').abortSignal(signal)
   if (error) throw error
   return data
 }
+export function loadMerchant(refresh:{fresh?:boolean}={}){return readAccountResource('merchant',readMerchant,refresh)}
 export async function deliverMerchant(order: string, operation: string, message = '') {
+ return accountCommand(async()=>{
   const { data, error } = await createClient().rpc('deliver_merchant_order', {
     p_order_id: order,
     p_operation_id: operation,
     p_message: message,
   })
   if (error) throw error
-  window.dispatchEvent(new Event('collectibles-changed'))
   return data
+ },{resource:'merchant',event:'collectibles-changed',invalidate:['wallet','hall']})
 }
 export function merchantError(cause: unknown) {
   const message = String((cause as { message?: string })?.message ?? '')

@@ -1,16 +1,24 @@
 import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {MerchantPage} from '@/features/merchant/merchant-page'
+import {appQueryClient} from '@/lib/account-cache'
 const mocks=vi.hoisted(()=>({load:vi.fn(),deliver:vi.fn(),refresh:vi.fn()}))
-vi.mock('@/features/merchant/api',async original=>({...await original<typeof import('@/features/merchant/api')>(),loadMerchant:mocks.load,deliverMerchant:mocks.deliver}))
+vi.mock('@/features/merchant/api',async original=>({...await original<typeof import('@/features/merchant/api')>(),readMerchant:mocks.load,loadMerchant:mocks.load,deliverMerchant:mocks.deliver}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'merchant-ui'}}})}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({refresh:mocks.refresh})}))
 vi.mock('@/features/collection/collectible-thumbnail',()=>({CollectibleThumbnail:({name}:{name:string})=><span>{name} 그림</span>}))
 vi.mock('@/features/profile/player-avatar',()=>({PlayerAvatar:({nickname,path}:{nickname:string;path?:string})=><img alt={`${nickname}의 아바타`} src={path??'/avatar.png'}/>}))
 const order=(id:string,owned=5,completed=false)=>({id,number:Number(id),tier:'small',regionName:'퐁당섬',items:[{speciesId:'fish-'+id,name:'퐁이 게 '+id,thumbnailPath:'/fish.png',kind:'fish',rarity:'common',quantity:3,owned,unitGold:35},{speciesId:'trash-'+id,name:'조개껍데기 '+id,thumbnailPath:'/trash.png',kind:'trash',rarity:'common',quantity:2,owned,unitGold:5}],baseGold:395,rewardGold:595,completed,mine:false})
 const sample=()=>({day:'2026-10-21',serverNow:new Date().toISOString(),resetsAt:new Date(Date.now()+3600000).toISOString(),dailyLimit:3,deliveredToday:0,orders:[order('1'),order('2',0),order('3',5,true)]})
-beforeEach(()=>{vi.clearAllMocks();localStorage.clear();mocks.load.mockResolvedValue(sample())})
+beforeEach(()=>{appQueryClient.clear();vi.clearAllMocks();localStorage.clear();mocks.load.mockResolvedValue(sample())})
 afterEach(cleanup)
+it('sorts currently deliverable orders first and labels them without clearing on opening',async()=>{
+ mocks.load.mockResolvedValue({...sample(),orders:[order('1',0),order('2')]})
+ render(<MerchantPage/>);await screen.findByText('바로 납품 가능')
+ expect(screen.getAllByRole('button',{name:/주문 \d+ 상세 보기/}).map(b=>b.getAttribute('aria-label'))).toEqual(['주문 02 상세 보기','주문 01 상세 보기'])
+ fireEvent.click(screen.getByRole('button',{name:'주문 02 상세 보기'}))
+ expect(screen.getByText('바로 납품 가능')).toBeTruthy()
+})
 it('shows storage progress and filters deliverable or completed orders',async()=>{
  render(<MerchantPage/>);await screen.findByText('퐁이 게 1')
  expect(screen.getByLabelText('퐁이 게 1 보유 5개, 필요 3개')).toBeTruthy()
@@ -53,7 +61,7 @@ it('confirms consumption and sends one operation despite repeated taps',async()=
  finish({...sample(),receipt:{orderId:'1',gold:595},deliveredToday:1} as ReturnType<typeof sample>)
  await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())
  expect(localStorage.getItem('pongdang:merchant:merchant-ui')).toBeNull()
- expect(mocks.refresh).toHaveBeenCalledOnce()
+ expect(mocks.refresh).not.toHaveBeenCalled()
 })
 it('opens an insufficient order for comparison without offering delivery',async()=>{
  render(<MerchantPage/>);fireEvent.click(await screen.findByRole('button',{name:'주문 02 상세 보기'}))

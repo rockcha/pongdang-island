@@ -12,6 +12,7 @@ export type MenuStatus = {
   expedition: { returnsAt: string | null }
   personalBait?: { completesAt: string | null }
   savings: { account: SavingsAccount | null }
+  merchant?: { ready: number; total: number; availableAt: string | null; resetsAt: string }
 }
 export async function readMenuStatus(signal: AbortSignal): Promise<MenuStatus> {
   const { data, error } = await createClient().rpc('menu_status').abortSignal(signal)

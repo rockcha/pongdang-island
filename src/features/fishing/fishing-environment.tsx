@@ -1,7 +1,9 @@
 import {nyamnyamArt} from '@/features/regions/nyamnyam-art'
+import {plunderArt} from '@/features/regions/plunder-art'
 import { memo,useState } from 'react'
 
 export const fishingEnvironments={
+ plunder:{name:'약탈자의 항로',water:'#125965',deck:'#51372a',edge:'#c39450',waterEnd:1536,deckStart:1065},
  nyamnyam:{name:'냠냠 한상바다',water:'#28bace',deck:'#deb97c',edge:'#966a39',waterEnd:1536,deckStart:1065},
  siren:{name:'세이렌의 해협',water:'#3bb9b0',deck:'#e9ddc4',edge:'#b39559',waterEnd:990,deckStart:1065},
  primal:{name:'태고의 원시섬',water:'#3f9f95',deck:'#a59470',edge:'#586c43',waterEnd:1048,deckStart:1058},
@@ -16,16 +18,16 @@ export const fishingEnvironments={
  starruins:{name:'별잠 유적',water:'#468ea5',deck:'#7b9495',edge:'#c4b88e',waterEnd:1078,deckStart:1128},
  dreamabyss:{name:'꿈먹는 심연',water:'#403f75',deck:'#292c43',edge:'#8072b8',waterEnd:1020,deckStart:1092},
 } as const
-const platformMaterials:Record<string,string>={nyamnyam:'wood',siren:'marble',pongdang:'wood',whitenight:'ice',primal:'roots',coral:'limestone',mistmoon:'wet-stone',starruins:'ruins',dreamabyss:'basalt',bluegrove:'riverstone',cloudferry:'cloud-stone',scrapisle:'metal'}
+const platformMaterials:Record<string,string>={plunder:'wood',nyamnyam:'wood',siren:'marble',pongdang:'wood',whitenight:'ice',primal:'roots',coral:'limestone',mistmoon:'wet-stone',starruins:'ruins',dreamabyss:'basalt',bluegrove:'riverstone',cloudferry:'cloud-stone',scrapisle:'metal'}
 export function fishingEnvironment(regionId:string){
  const id=regionId in fishingEnvironments?regionId as keyof typeof fishingEnvironments:'pongdang'
  return {id,...fishingEnvironments[id],
-  src:id==='nyamnyam'?nyamnyamArt.scenery:id==='whitenight'?'/fishing/environments/whitenight.png':`/fishing/close-water/${id}.png`,
+  src:id==='plunder'?plunderArt.fishing.water:id==='nyamnyam'?nyamnyamArt.scenery:id==='whitenight'?'/fishing/environments/whitenight.png':`/fishing/close-water/${id}.png`,
   waterEnd:id==='whitenight'?fishingEnvironments[id].waterEnd:1536,
-  frontSrc:id==='nyamnyam'?nyamnyamArt.scenery:id==='mukhyang'?'/fishing/environments/mukhyang.png':`/fishing/scenery/${id}.png`,
+  frontSrc:id==='plunder'?plunderArt.fishing.scenery:id==='nyamnyam'?nyamnyamArt.scenery:id==='mukhyang'?'/fishing/environments/mukhyang.png':`/fishing/scenery/${id}.png`,
   frontWaterEnd:id==='mukhyang'?1170:1536,
-  platformFallbackSrc:id==='nyamnyam'?'/fishing/environments/pongdang.png':`/fishing/environments/${id}.png`,
-  platformSrc:id==='nyamnyam'?'/fishing/platforms/pongdang.png':platformMaterials[id]?`/fishing/platforms/${id}.png`:null,material:platformMaterials[id]}
+  platformFallbackSrc:id==='plunder'?plunderArt.fishing.scenery:id==='nyamnyam'?'/fishing/environments/pongdang.png':`/fishing/environments/${id}.png`,
+  platformSrc:id==='plunder'?plunderArt.fishing.platform:id==='nyamnyam'?'/fishing/platforms/pongdang.png':platformMaterials[id]?`/fishing/platforms/${id}.png`:null,material:platformMaterials[id]}
 }
 // Standby landscapes and close, oblique fishing views have independent source crops.
 // Platforms keep their own source so changing camera never changes the terrain.
@@ -46,8 +48,8 @@ export const FishingStandby=memo(function FishingStandby({regionId}:{regionId:st
 })
 export function FishingPlatform({regionId,y,platformHeight=160}:{regionId:string;y:number;platformHeight?:number}){
  const theme=fishingEnvironment(regionId),[failed,setFailed]=useState<string|null>(null),[loaded,setLoaded]=useState<string|null>(null)
- if(theme.platformSrc)return <svg x={-4} y={y} width={408} height={platformHeight} viewBox="0 0 1200 480" preserveAspectRatio="xMidYMin slice" overflow="hidden" data-fishing-platform={theme.id} data-platform-material={theme.material}>
-  {failed!==theme.platformSrc?<image className="transition-opacity duration-300 motion-reduce:transition-none" opacity={loaded===theme.platformSrc?1:0} onLoad={()=>setLoaded(theme.platformSrc)} href={theme.platformSrc} width="1200" height="480" preserveAspectRatio="xMidYMax slice" onError={()=>setFailed(theme.platformSrc)}/>:<>
+ if(theme.platformSrc)return <svg x={-4} y={y} width={408} height={platformHeight} viewBox="0 0 1200 480" preserveAspectRatio={theme.id==='plunder'?'none':'xMidYMin slice'} overflow="hidden" data-fishing-platform={theme.id} data-platform-material={theme.material}>
+  {failed!==theme.platformSrc?<image className="transition-opacity duration-300 motion-reduce:transition-none" opacity={loaded===theme.platformSrc?1:0} onLoad={()=>setLoaded(theme.platformSrc)} href={theme.platformSrc} width="1200" height="480" preserveAspectRatio={theme.id==='plunder'?'xMidYMax meet':'xMidYMax slice'} onError={()=>setFailed(theme.platformSrc)}/>:<>
    <path d="M0 75 140 55 265 80 430 58 615 82 780 50 980 77 1200 58V480H0Z" fill={theme.deck}/>
    <path d={theme.material==='wood'?'M0 160H1200M0 280H1200M0 400H1200':theme.material==='roots'?'M0 100Q170 180 110 480M1200 85Q1030 200 1100 480':theme.material==='metal'||theme.material==='ruins'?'M0 190H1200M0 350H1200M240 75V190M780 190V350M410 350V480':'M130 95 230 160 195 245M230 160 380 185M840 80 770 160 875 220'} fill="none" stroke={theme.edge} strokeWidth={theme.material==='roots'?24:4} opacity=".5"/>
   </>}

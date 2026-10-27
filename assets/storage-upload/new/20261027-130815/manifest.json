@@ -1,0 +1,47 @@
+{
+  "tool": "image_gen",
+  "purpose": "plunder-fishing-scene",
+  "styleReferences": [
+    "public/banners/plunder-horizon-v1.png",
+    "public/fishing/platforms/pongdang.png",
+    "public/fishing/close-water/pongdang.png"
+  ],
+  "entries": [
+    {
+      "id": "scenery",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: production mobile fishing-game standby background, PORTRAIT 2:3, ideally 1024x1536. Create a beautiful painterly fantasy hidden PIRATE HARBOR, viewed from just above water on the bow of a ruined pirate ship. Warm golden late afternoon, weathered limestone cliffs, small pirate port tucked on far upper-left shore, black sails and faded crimson pirate flags, a distant wreck and brass harbor lamps. Horizon in the top 25 percent. Lower 70 percent is rich calm deep teal seawater with restrained gold reflections. The middle and lower-middle 60 percent must be clear uninterrupted readable water for a fishing bobber and fishing line. Detailed objects concentrate on distant top/side edges. High quality painted RPG environment, natural proportions and subtle brushwork, matching the attached warm pirate harbor reference in mood/materials. NO foreground deck: the game overlays a separate ship-bow platform. No fish, no people, no boat covering central water, no UI, no letters, no text, no border, no vignette.",
+      "source": "sources/scenery.source",
+      "path": "fishing/scenery/plunder-v1.png",
+      "publicPath": "/fishing/scenery/plunder-v1.png",
+      "width": 1024,
+      "height": 1536,
+      "alpha": false,
+      "sha256": "25127b7c7c794ecaff5238c464d1e9c83dc18bf61f2faf0287975bd51aef916f"
+    },
+    {
+      "id": "water",
+      "transparent": false,
+      "prompt": "Use case: stylized-concept. Asset type: production mobile fishing-game close-water background, PORTRAIT 2:3 ideally 1024x1536. Downward oblique camera looking into a hidden pirate harbor's DEEP TEAL seawater, no sky or horizon. Painterly high-quality fantasy RPG environment. Warm golden afternoon sun makes SMALL SUBTLE ripples and sparse glints, not a busy white sparkle field. Upper and central 70 percent mostly clear darker teal water, excellent contrast for white fishing line, red bobber and fish shadows. Only far lower-left and lower-right edge corners show a few submerged weathered ship ribs, an old broken anchor or rope, algae-covered rocks on seabed, hints of pirate ship wreckage under water. Those objects stay near the edges, center remains usable clear water. Muted brass and warm wood tones harmonize with a pirate harbor. Natural painterly detail, serene water with depth, no living creatures, no fish, no people, no text, no logos, no interface, no foreground deck, no frame.",
+      "source": "sources/water.source",
+      "path": "fishing/close-water/plunder-v1.png",
+      "publicPath": "/fishing/close-water/plunder-v1.png",
+      "width": 1024,
+      "height": 1536,
+      "alpha": false,
+      "sha256": "222463fbc4347e8d7f155d37af50e97a7ed6a0653c17b54527fff37be920924e"
+    },
+    {
+      "id": "platform",
+      "transparent": true,
+      "prompt": "Use case: stylized-concept. Asset type: transparent foreground overlay for mobile fishing game. WIDE landscape 3:1 canvas. A single richly illustrated weathered PIRATE SHIP BOW DECK platform viewed looking slightly down from the rear toward its curved prow. It must behave as a BOTTOM-ANCHORED game layer: deck fills the entire bottom edge with no gap, spans the entire width edge-to-edge, front water-facing rim is a shallow graceful curve across upper-middle of canvas, upper 25 percent completely transparent. Dark warm weathered timber, curved aged brass-trimmed gunwales, subtle muted crimson trim, a small carved nautical compass medallion in the central foreground floor. LEFT extreme corner only: low coiled rope and a compact closed rum barrel; RIGHT extreme corner only: low old anchor and a SHORT warm brass lantern. The CENTER 70 percent is broad clear low deck without tall poles, no bow spike in center, no flagpole, no mast, no vertical object obscuring water or controls. Pirate ship identity through sweeping curved framing and hull rib structure rather than a flat dock. All wood/grain, objects and metallic trim in refined painterly fantasy RPG style with warm late-afternoon highlights and teal reflected light. Clean silhouette and natural true alpha TRANSPARENT background above the rim and between objects. No sea, no sky, no background, no white fringe, no black matte, no shadow outside the cutout, no text, no letters, no people, no border.",
+      "source": "sources/platform.source",
+      "path": "fishing/platforms/plunder-v1.png",
+      "publicPath": "/fishing/platforms/plunder-v1.png",
+      "width": 2172,
+      "height": 724,
+      "alpha": true,
+      "sha256": "08fdfb57599083c7b620ed72f67524540e147e4f75e4bac725e7ae81c5d40c86"
+    }
+  ]
+}

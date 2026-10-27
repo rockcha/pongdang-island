@@ -10,6 +10,13 @@ beforeEach(()=>{
  })
 })
 afterEach(()=>{cleanup();vi.unstubAllGlobals();vi.useRealTimers()})
+it('prepares the dedicated pirate harbor, close water and ship bow without starting-sea fallbacks',async()=>{
+ const {prepareFishingScene}=await import('@/features/fishing/scene-images')
+ const prepared=prepareFishingScene('plunder')
+ expect(images.map(image=>image.src).sort()).toEqual(['/banners/plunder-horizon-v1.png','/fishing/close-water/plunder-v1.png','/fishing/platforms/plunder-v1.png','/fishing/scenery/plunder-v1.png'].sort())
+ images.forEach(image=>image.onload())
+ await prepared
+})
 it('shares completed sailing preparation with the destination without a second loading screen',async()=>{
  const {prepareFishingScene,useFishingSceneImages}=await import('@/features/fishing/scene-images')
  const progress:number[]=[]

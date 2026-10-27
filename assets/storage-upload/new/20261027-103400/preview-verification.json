@@ -1,0 +1,23 @@
+{
+  "testedAt": "2026-10-27T01:41:20.045Z",
+  "checks": [
+    {
+      "width": 1000,
+      "dpr": 2,
+      "bothPrices1500": true,
+      "flagIcon": true,
+      "rotatingReel": true,
+      "pirateShaftAndFloat": true,
+      "errors": []
+    },
+    {
+      "width": 390,
+      "dpr": 2,
+      "bothPrices1500": true,
+      "flagIcon": true,
+      "rotatingReel": true,
+      "pirateShaftAndFloat": true,
+      "errors": []
+    }
+  ]
+}

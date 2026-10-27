@@ -29,6 +29,7 @@ it('keeps the starter equipment ID and uses Storage thumbnails for every rod',()
  }
  expect(fishingRods.find(r=>r.id==='calm')).toMatchObject({failureReductionBp:0,waitReductionSeconds:2})
  expect(rodImagePath('swift','thumbnail')).toBe('equipment/rods/swift-v2/thumbnail.png')
- expect(fishingRods.find(r=>r.id==='nyamnyam')).toMatchObject({region:'nyamnyam',price:800,waitReductionSeconds:1})
+ expect(fishingRods.find(r=>r.id==='nyamnyam')).toMatchObject({region:'nyamnyam',price:1500,waitReductionSeconds:1})
+ expect(fishingRods.find(r=>r.id==='plunder')).toMatchObject({region:'plunder',price:1500,waitReductionSeconds:1})
  expect(hasRodImages('missing')).toBe(false)
 })

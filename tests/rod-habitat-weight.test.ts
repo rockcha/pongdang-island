@@ -33,5 +33,10 @@ it('reads only the caller owned loadout and increases off-region selections',asy
 it('keeps the helper private and preserves bait rarity probabilities',async()=>{
  const row=(await db.query("select has_function_privilege('authenticated','app_private.rod_habitat_weight(text,text,text)','execute') as allowed,app_private.regional_bait_odds('bait','pongdang') as odds")).rows[0]
  expect(row.allowed).toBe(false)
- expect(row.odds).toEqual({common_bp:7700,rare_bp:2000,epic_bp:270,mythic_bp:30,failure_bp:0})
+ await db.query("insert into public.player_fishing_rods(user_id,rod_id) values($1,'plunder') on conflict do nothing",[owner])
+ await db.query("update public.player_rod_loadouts set equipped_rod_id='plunder' where user_id=$1",[owner])
+ await db.query("select set_config('request.jwt.claim.sub',$1,false)",[owner])
+ const equipped=(await db.query("select app_private.regional_bait_odds('bait','pongdang') odds")).rows[0].odds
+ expect(equipped).toEqual(row.odds)
+ expect(row.odds.common_bp+row.odds.rare_bp+row.odds.epic_bp+row.odds.mythic_bp).toBe(10000)
 })

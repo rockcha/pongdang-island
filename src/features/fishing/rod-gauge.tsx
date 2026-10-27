@@ -21,6 +21,7 @@ const themes:Record<string,{ink:string;light:string;pattern:string}>={
  calm:{ink:'#274247',light:'#a1ded5',pattern:'linear-gradient(170deg,#c1eadb15,transparent)'},
  swift:{ink:'#26364f',light:'#e8c981',pattern:'linear-gradient(125deg,#d9b66f25,transparent 65%)'},
  nyamnyam:{ink:'#34472e',light:'#f2c29b',pattern:'linear-gradient(125deg,#e2c28a25,transparent 65%)'},
+ plunder:{ink:'#34272a',light:'#e5bd79',pattern:'linear-gradient(125deg,#ad43472b,transparent 65%)'},
 }
 
 // Native SVG avoids foreignObject rendering issues in mobile browsers.

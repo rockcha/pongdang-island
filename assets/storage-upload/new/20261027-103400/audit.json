@@ -1,0 +1,77 @@
+[
+  {
+    "id": "plunder-icon",
+    "file": "region-icons/plunder-v1.png",
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      172,
+      87,
+      1031,
+      1082
+    ],
+    "margin": 51,
+    "transparentPixels": 1010501,
+    "sha256": "1266ecf88c5c3776a1e2889c505a874aa4af48075decb2bbe982690ce4bb61fc"
+  },
+  {
+    "id": "plunder-thumbnail",
+    "file": "equipment/rods/plunder/thumbnail.png",
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      69,
+      56,
+      1155,
+      1144
+    ],
+    "margin": 30,
+    "transparentPixels": 1292497,
+    "sha256": "21e65b75b5bd13b277a1226407ea80f4da2ba3c0537208db9ce5321b27f13fe7"
+  },
+  {
+    "id": "plunder-reel-frame",
+    "file": "equipment/rods/plunder/reel-frame.png",
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      71,
+      50,
+      1111,
+      1076
+    ],
+    "margin": 50,
+    "transparentPixels": 1022729,
+    "sha256": "ec9b3aec81527fdc86b4e4dfc64a5637795f8da6bf51f2557cd95e31233e3e37"
+  },
+  {
+    "id": "plunder-reel-rotor",
+    "file": "equipment/rods/plunder/reel-rotor.png",
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      238,
+      199,
+      918,
+      879
+    ],
+    "margin": 98,
+    "transparentPixels": 1098376,
+    "sha256": "063e54a57b3d53a369b8e06fc3fa0ddcf29f09178c3d6ae580f4120f499bf6eb"
+  },
+  {
+    "id": "plunder-float",
+    "file": "equipment/rods/plunder/float.png",
+    "width": 1254,
+    "height": 1254,
+    "bounds": [
+      470,
+      49,
+      314,
+      1112
+    ],
+    "margin": 49,
+    "transparentPixels": 1414339,
+    "sha256": "d2a77fbee3088fecd092af0b7682622501d871706b7c0a10b3230adf0f05b0f6"
+  }
+]

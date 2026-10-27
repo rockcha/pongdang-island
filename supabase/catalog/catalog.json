@@ -26765,8 +26765,17 @@
     {
       "id": "nyamnyam",
       "name": "한상 대나무 낚싯대",
-      "price": 800,
+      "price": 1500,
       "region_id": "nyamnyam",
+      "failure_reduction_bp": 200,
+      "native_bonus_bp": 200,
+      "wait_reduction_seconds": 1
+    },
+    {
+      "id": "plunder",
+      "name": "검은 돛 해적 낚싯대",
+      "price": 1500,
+      "region_id": "plunder",
       "failure_reduction_bp": 200,
       "native_bonus_bp": 200,
       "wait_reduction_seconds": 1

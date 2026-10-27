@@ -1,0 +1,118 @@
+{
+  "tool": "built-in image_gen",
+  "reason": "User requested dedicated pirate flag region icon and pirate rod, pirate/nyamnyam prices 1500.",
+  "items": [
+    {
+      "id": "plunder-icon",
+      "type": "region-icon",
+      "path": "region-icons/plunder-v1.png",
+      "publicPath": "public/region-icons/plunder-v1.png",
+      "references": [
+        "public/region-icons/nyamnyam-v2.png"
+      ],
+      "prompt": "Game region icon for a PIRATE SEA ROUTE: one fluttering CHARCOAL BLACK PIRATE FLAG on a short diagonal weathered wooden mast with a brass pointed finial. Large simple IVORY SKULL AND CROSSED BONES clearly legible on black fabric, a small crimson ribbon tied below the flag. Flag fills most of the compact silhouette, complete short mast fits inside canvas. Soft hand-painted dimensional illustration matching the reference icon's warm rendering ONLY, not its circular sushi shape or food. Strong readable shapes at 32px, minimal tiny details, no boat or background. One complete isolated object on a genuinely transparent SQUARE canvas. At least 12% clear padding every edge; every piece intact. No background, checkerboard, labels, border/frame panel, loose particles, scenery, cast shadow or outer glow. Clean antialiased alpha without white/black fringe or detached pixels.",
+      "export": {
+        "width": 384,
+        "height": 384,
+        "method": "Uniform resolution optimization; original generated transparent PNG preserved in sources."
+      }
+    },
+    {
+      "id": "plunder-thumbnail",
+      "type": "thumbnail",
+      "path": "equipment/rods/plunder/thumbnail.png",
+      "references": [
+        "assets/storage-upload/new/20261026-181300/equipment/rods/nyamnyam/thumbnail.png"
+      ],
+      "prompt": "Game shop equipment thumbnail of ONE PIRATE CAPTAIN FISHING ROD. Full diagonal rod from bottom-left carved dark walnut grip to upper-right gently bent charcoal shaft, antique brass bands and line guides, crimson leather wrap at grip and small ivory skull medallion. Distinct black pirate flag ribbon with ivory skull near grip, brass circular reel with a red-and-black compass rotor and warm ivory center axle; crank extends lower-right. Thin fishing line from tip down to a compact black-red oval float with a brass cap on right. No fish hook point. The attached rod is construction/rendering reference ONLY; replace all floral/food/green-bamboo motifs with pirate materials. Polished hand-painted fantasy fishing-game equipment, warm dark-brown colored contours, softly shaded brass metal, believable dimensional materials, clean readable compact design. Palette: charcoal black, weathered walnut wood, antique brass/gold, crimson red, ivory skull motif. Not photorealistic, not plastic 3D, no flowers, leaves, food or green bamboo from reference. One complete isolated object on a genuinely transparent SQUARE canvas. At least 12% clear padding every edge; every piece intact. No background, checkerboard, labels, border/frame panel, loose particles, scenery, cast shadow or outer glow. Clean antialiased alpha without white/black fringe or detached pixels."
+    },
+    {
+      "id": "plunder-reel-frame",
+      "type": "reel-frame",
+      "path": "equipment/rods/plunder/reel-frame.png",
+      "references": [
+        "assets/storage-upload/new/20261027-103400/equipment/rods/plunder/thumbnail.png",
+        "assets/storage-upload/new/20261026-181300/equipment/rods/nyamnyam/reel-frame.png"
+      ],
+      "prompt": "The STATIONARY outer REEL FRAME ONLY: a thick circular charcoal-and-brass ring housing with small brass rivets and crimson leather lashings, top rod mounting foot, a small ivory skull badge on upper rim. Transparent interior negative space, except a slim brass horizontal support bridge with small ROUND AXLE HUB. No rotor disc, no compass rose, no moving crank or handle, no rod or fishing line. Main circular ring and axle hub center must be at exact canvas center x=50%,y=50%, with room above for mounting foot. Ring outer diameter about 62% of canvas. First reference is the APPROVED PIRATE ROD identity: charcoal black, dark walnut, crimson leather/ribbon and antique warm brass, ivory skull details, red/ivory compass rose. Second reference shows the required PART CONSTRUCTION and warm hand-painted dimensional rendering ONLY: do not copy its green, flowers or food. Front orthographic view, not perspective, centered rotation-ready game equipment. One complete isolated object on square genuinely transparent canvas, at least 12% clear padding every edge, no clipped pieces, no shadow, scenery, text, checkerboard, exterior glow, matte fringe or detached pixels."
+    },
+    {
+      "id": "plunder-reel-rotor",
+      "type": "reel-rotor",
+      "path": "equipment/rods/plunder/reel-rotor.png",
+      "references": [
+        "assets/storage-upload/new/20261027-103400/equipment/rods/plunder/thumbnail.png",
+        "assets/storage-upload/new/20261026-181300/equipment/rods/nyamnyam/reel-rotor.png"
+      ],
+      "prompt": "The moving REEL ROTOR AND CRANK ONLY. One circular black rotor face with a brass outer rim, elegant eight-point red-and-ivory COMPASS ROSE, round gold axle hub. A brass crank arm extends diagonally DOWN RIGHT from the axle to a compact crimson leather handle knob, fully inside canvas. No stationary mounting foot/frame, no rod or fishing line. Rotor axle center fixed at exact canvas x=50%,y=50%; disc diameter about 50% of canvas, crank endpoint no farther than 84% x and 84% y. Axle is the rotation pivot, not center of the combined silhouette. First reference is the APPROVED PIRATE ROD identity: charcoal black, dark walnut, crimson leather/ribbon and antique warm brass, ivory skull details, red/ivory compass rose. Second reference shows the required PART CONSTRUCTION and warm hand-painted dimensional rendering ONLY: do not copy its green, flowers or food. Front orthographic view, not perspective, centered rotation-ready game equipment. One complete isolated object on square genuinely transparent canvas, at least 12% clear padding every edge, no clipped pieces, no shadow, scenery, text, checkerboard, exterior glow, matte fringe or detached pixels."
+    },
+    {
+      "id": "plunder-float",
+      "type": "float",
+      "path": "equipment/rods/plunder/float.png",
+      "references": [
+        "assets/storage-upload/new/20261027-103400/equipment/rods/plunder/thumbnail.png",
+        "assets/storage-upload/new/20261026-181300/equipment/rods/nyamnyam/float.png"
+      ],
+      "prompt": "The PIRATE FISHING FLOAT ONLY, one compact vertical oval bobber, charcoal BLACK upper/mid body, crimson RED pointed lower body and cap, antique BRASS separators, small simple ivory SKULL AND CROSSBONES on front. Slender short upright stem above body and a small brass line eyelet below. No rod, reel, dangling fishing line, flag or extra props. OVAL BODY CENTER at exact canvas center x=50%,y=50%; body about 30% canvas width and 40% height, stem reaches y=20%, bottom eyelet ends y=82%. Entire vertical bobber intact. First reference is the APPROVED PIRATE ROD identity: charcoal black, dark walnut, crimson leather/ribbon and antique warm brass, ivory skull details, red/ivory compass rose. Second reference shows the required PART CONSTRUCTION and warm hand-painted dimensional rendering ONLY: do not copy its green, flowers or food. Front orthographic view, not perspective, centered rotation-ready game equipment. One complete isolated object on square genuinely transparent canvas, at least 12% clear padding every edge, no clipped pieces, no shadow, scenery, text, checkerboard, exterior glow, matte fringe or detached pixels."
+    }
+  ],
+  "files": [
+    {
+      "id": "plunder-icon",
+      "kind": "region-icon",
+      "local_path": "region-icons/plunder-v1.png",
+      "storage_path": null,
+      "public_path": "public/region-icons/plunder-v1.png",
+      "raw_source": "sources/plunder-icon.source",
+      "sha256": "1266ecf88c5c3776a1e2889c505a874aa4af48075decb2bbe982690ce4bb61fc"
+    },
+    {
+      "id": "plunder-thumbnail",
+      "kind": "thumbnail",
+      "local_path": "equipment/rods/plunder/thumbnail.png",
+      "storage_path": "equipment/rods/plunder/thumbnail.png",
+      "public_path": null,
+      "raw_source": "sources/plunder-thumbnail.source",
+      "sha256": "e689ca28360e6148f0e670c5091e8e29b2c987663f8e65b173a42dd1a8e90c74"
+    },
+    {
+      "id": "plunder-reel-frame",
+      "kind": "reel-frame",
+      "local_path": "equipment/rods/plunder/reel-frame.png",
+      "storage_path": "equipment/rods/plunder/reel-frame.png",
+      "public_path": null,
+      "raw_source": "sources/plunder-reel-frame.source",
+      "sha256": "343ef529bf1402a72f68bb8b9b70e027be229e586ba068e9d4ec461fab451bcf"
+    },
+    {
+      "id": "plunder-reel-rotor",
+      "kind": "reel-rotor",
+      "local_path": "equipment/rods/plunder/reel-rotor.png",
+      "storage_path": "equipment/rods/plunder/reel-rotor.png",
+      "public_path": null,
+      "raw_source": "sources/plunder-reel-rotor.source",
+      "sha256": "adcd4554b738855a1994df871e9d321367636d1d4b65339dcc7935241739e8f4"
+    },
+    {
+      "id": "plunder-float",
+      "kind": "float",
+      "local_path": "equipment/rods/plunder/float.png",
+      "storage_path": "equipment/rods/plunder/float.png",
+      "public_path": null,
+      "raw_source": "sources/plunder-float.source",
+      "sha256": "58b9f770c0acc46b3b0af350504ecf9f20d536913b07b02895615b51709e3e94"
+    }
+  ],
+  "runtimeOrigins": {
+    "frame": 0.54,
+    "rotor": 0.45,
+    "rotorX": 0.478,
+    "float": 0.61,
+    "rotorWidth": 74,
+    "reason": "Visually inspected axle centers and float body; rotation and hit-area transforms remain owned by existing fishing components."
+  },
+  "edgeAudit": "audit.json",
+  "storageVerification": "storage-verification.json",
+  "previewVerification": "preview-verification.json"
+}

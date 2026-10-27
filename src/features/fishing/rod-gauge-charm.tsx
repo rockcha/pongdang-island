@@ -2,6 +2,7 @@ import type {ComponentProps,ReactNode} from 'react'
 import {memo} from 'react'
 
 const charms:Record<string,ReactNode>={
+ plunder:<image href="/region-icons/plunder-v1.png" x="1" y="1" width="22" height="22" preserveAspectRatio="xMidYMid meet"/>,
  swift:<><path d="m3 16 7-5-1-7 6 6 7-2-6 6-1 7-4-5-8 2Z" fill="#e8c981" stroke="#26364f" strokeWidth="1.2"/><path d="m7 17 7-6" stroke="#fff2d7" strokeWidth="1.5" strokeLinecap="round"/></>,
  nyamnyam:<><rect x="3" y="8" width="18" height="12" rx="5" fill="#fff0d5"/><path d="M3 11Q3 4 12 4t9 7Z" fill="#ed9975"/><path d="m7 5 3 6m3-7 3 7" stroke="#ffe3c3" strokeWidth="1.5"/><path d="M10 5h4v15h-4Z" fill="#435c3b"/></>,
  basic:<><path d="M12 2v5" stroke="#e7d6b6"/><path d="M12 6c-5 0-6 7-5 11h10c1-4 0-11-5-11Z" fill="#ef765d"/><path d="M7 17h10l-5 5Z" fill="#fff3d9"/></>,

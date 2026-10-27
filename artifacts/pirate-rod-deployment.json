@@ -1,0 +1,26 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "migration": "20261027013420",
+  "verifiedAt": "2026-10-27 01:42:10.27252+00",
+  "scope": "Two rod catalog rows only: add pirate rod and change existing food-sea rod price. No ownership, loadout, wallet or other player data writes. Existing migration history drift remains unmodified; full remote/local structure equivalence is unverified.",
+  "rows": [
+    {
+      "id": "nyamnyam",
+      "name": "한상 대나무 낚싯대",
+      "price": 1500,
+      "region_id": "nyamnyam",
+      "native_bonus_bp": 200,
+      "failure_reduction_bp": 200,
+      "wait_reduction_seconds": 1
+    },
+    {
+      "id": "plunder",
+      "name": "검은 돛 해적 낚싯대",
+      "price": 1500,
+      "region_id": "plunder",
+      "native_bonus_bp": 200,
+      "failure_reduction_bp": 200,
+      "wait_reduction_seconds": 1
+    }
+  ]
+}

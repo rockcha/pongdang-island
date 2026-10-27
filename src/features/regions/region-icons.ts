@@ -1,5 +1,5 @@
 export const regionIcons:Record<string,{name:string;src:string}>={
- plunder:{name:'약탈자의 항로',src:'/region-icons/plunder.svg'},
+ plunder:{name:'약탈자의 항로',src:'/region-icons/plunder-v1.png'},
  nyamnyam:{name:'냠냠 한상바다',src:'/region-icons/nyamnyam-v2.png'},
  siren:{name:'세이렌의 해협',src:'/region-icons/siren-v2.png'},
  mukhyang:{name:'묵향 해역',src:'/region-icons/mukhyang.png'},

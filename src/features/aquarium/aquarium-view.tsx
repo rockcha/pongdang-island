@@ -195,9 +195,15 @@ export function AquariumView(props: Props) {
     setDecorating(false)
     props.navigation.onChange(direction)
   }
+  const arrangeButton=props.onArrange&&<Button variant={decorating?'default':'secondary'} disabled={busy} aria-label={decorating?'꾸미기 모드 완료':'꾸미기 모드 시작'} aria-pressed={decorating} onClick={()=>{setEditing(null);setWideMenu(false);setDecorating(value=>!value)}} className={`${wide.active?'w-[5.5rem]':'absolute bottom-3 right-3 z-40'} min-h-11 shrink-0 gap-1.5 rounded-full border border-white/50 px-3 text-xs shadow-sm backdrop-blur-sm`}>{decorating?<Check className="size-4"/>:<Paintbrush className="size-4"/>}{decorating?'완료':'꾸미기'}</Button>
   const content=(
     <>
       <AquariumAmbience/>
+      {wide.active&&<div role="group" aria-label="가로 어항 도구" className="aquarium-wide-topbar relative z-40 flex shrink-0 items-center justify-between gap-2">
+        <button type="button" aria-expanded={wideMenu} aria-controls="wide-aquarium-menu" onClick={()=>setWideMenu(value=>!value)} className="inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-full border border-white/40 bg-background/85 px-4 text-xs text-primary shadow-sm backdrop-blur-sm"><Menu aria-hidden="true" className="size-4"/>메뉴</button>
+        {decorating&&<p role="status" className="hidden min-w-0 flex-1 truncate text-center text-xs text-white/85 min-[900px]:block">장식물을 선택하고 끌어서 옮겨요.</p>}
+        <div className="ml-auto flex shrink-0 items-center gap-2">{arrangeButton}<button type="button" onClick={wide.exit} className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-white/40 bg-background/85 px-4 text-xs text-primary shadow-sm backdrop-blur-sm"><Minimize2 aria-hidden="true" className="size-4"/><span className="max-[359px]:sr-only">가로 화면 종료</span></button></div>
+      </div>}
       {props.overviewContent??<div ref={fitted.ref} data-testid="aquarium-viewport" className={`relative flex min-h-0 flex-1 flex-col items-center overflow-hidden ${wide.active?'justify-center':'justify-start'}`}>
       {!wide.active&&<div className="absolute inset-x-0 top-0 z-20 grid h-14 w-full shrink-0 grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center border-b border-white/15 bg-blue-100/75 px-3 py-0.5 backdrop-blur-sm">
         <p className="pl-1 text-left text-[11px] tabular-nums text-muted-foreground" aria-live="polite" aria-label="현재 어항">{(props.navigation?.index??0)+1} / {props.navigation?.count??1}</p>
@@ -218,7 +224,7 @@ export function AquariumView(props: Props) {
         data-view={panorama?view.toFixed(4):undefined}
         data-portrait={!wide.active}
         className="aquarium-fitted-glass relative min-h-0 shrink-0 overflow-hidden bg-gradient-to-b from-blue-100 to-blue-200"
-        style={wide.active?{width:'min(100vw, calc(100dvh * 1.875))',height:'min(calc(100vw / 1.875), 100dvh)'}:{width:fitted.width,height:fitted.height}}
+        style={wide.active?{width:'min(100%, calc(var(--aquarium-wide-stage-height) * 1.875))',height:'min(calc(100vw / 1.875), var(--aquarium-wide-stage-height))'}:{width:fitted.width,height:fitted.height}}
         tabIndex={0}
         aria-label={name}
         onKeyDown={(event) => {
@@ -248,8 +254,8 @@ export function AquariumView(props: Props) {
         />
         {props.onOverview&&!wide.active&&<button type="button" aria-label="내 어항 목록" data-aquarium-list onClick={props.onOverview} className="absolute left-2 top-2 z-20 inline-flex min-h-9 items-center gap-1 rounded-full border border-white/40 bg-background/75 px-3 text-[11px] text-primary shadow-sm backdrop-blur-sm"><ChevronUp aria-hidden="true" className="size-3.5 rotate-[-90deg]"/><span className="aquarium-label-full">내 어항 목록</span><span className="aquarium-label-short">목록</span></button>}
         </div>
-        {props.onArrange&&<Button variant={decorating?'default':'secondary'} disabled={busy} aria-label={decorating?'꾸미기 모드 완료':'꾸미기 모드 시작'} aria-pressed={decorating} onClick={()=>{setEditing(null);setDecorating(value=>!value)}} className="absolute bottom-3 right-3 z-40 min-h-11 gap-1.5 rounded-full border border-white/50 px-3 text-xs shadow-sm backdrop-blur-sm">{decorating?<Check className="size-4"/>:<Paintbrush className="size-4"/>}{decorating?'완료':'꾸미기'}</Button>}
-        {decorating&&<p role="status" className="pointer-events-none absolute bottom-16 right-3 z-20 max-w-56 rounded-xl bg-background/90 px-3 py-2 text-[10px] leading-5 text-primary">개체를 선택한 뒤 드래그해서 옮겨요.</p>}
+        {!wide.active&&arrangeButton}
+        {decorating&&!wide.active&&<p role="status" className="pointer-events-none absolute bottom-16 right-3 z-20 max-w-56 rounded-xl bg-background/90 px-3 py-2 text-[10px] leading-5 text-primary">개체를 선택한 뒤 드래그해서 옮겨요.</p>}
         {decorating && editing && decoration && (
           <SelectionToolbar wide={wide.active} topOffset={56} name={decoration.species.name} busy={busy} panel={panel} onPanel={setPanel} onClose={()=>setEditing(null)}>
             {panel==='customize'&&<>
@@ -276,8 +282,6 @@ export function AquariumView(props: Props) {
       </div>
       </div>}
       {wide.active&&<>
-        <div className="absolute left-[max(.5rem,env(safe-area-inset-left))] top-[max(.5rem,env(safe-area-inset-top))] z-40"><button type="button" aria-expanded={wideMenu} aria-controls="wide-aquarium-menu" onClick={()=>setWideMenu(value=>!value)} className="inline-flex min-h-10 items-center gap-1.5 rounded-full border border-white/40 bg-background/85 px-4 text-xs text-primary shadow-sm backdrop-blur-sm"><Menu aria-hidden="true" className="size-4"/>메뉴</button></div>
-        <button type="button" onClick={wide.exit} className="absolute right-[max(.5rem,env(safe-area-inset-right))] top-[max(.5rem,env(safe-area-inset-top))] z-40 inline-flex min-h-10 items-center gap-1.5 rounded-full border border-white/40 bg-background/85 px-4 text-xs text-primary shadow-sm backdrop-blur-sm"><Minimize2 aria-hidden="true" className="size-4"/>가로 화면 종료</button>
         {wideMenu&&<nav id="wide-aquarium-menu" aria-label="가로 어항 메뉴" className="aquarium-wide-dock absolute left-2 top-14 z-40 max-h-[calc(100dvh-4rem)] w-64 overflow-y-auto overscroll-contain rounded-2xl border border-white/50 bg-background/95 p-3 shadow-lg backdrop-blur-sm">
           <p className="mb-2 truncate text-center text-xs text-muted-foreground">{name}</p>
           <TooltipProvider><div className="aquarium-manager mt-2 grid grid-cols-2 items-center gap-2 [&_button]:w-full [&_a]:mx-auto"><AquariumInventoryDialog items={items} name={name} busy={busy} onSell={onSell} onGiftSent={props.onGiftSent} onStore={props.onStore}/>{props.storageControls}{props.managementControls}</div></TooltipProvider>
@@ -375,5 +379,5 @@ export function AquariumView(props: Props) {
       </section>}
     </>
   )
-  return wide.active?createPortal(<div role="region" aria-label="가로 어항 꾸미기" className="fixed inset-0 z-40 flex h-dvh w-screen flex-col overflow-hidden bg-cyan-950">{content}</div>,document.body):content
+  return wide.active?createPortal(<div role="region" aria-label="가로 어항 꾸미기" className="aquarium-wide-shell fixed inset-0 z-40 flex h-dvh w-screen flex-col overflow-hidden bg-cyan-950 pb-[env(safe-area-inset-bottom)]">{content}</div>,document.body):content
 }

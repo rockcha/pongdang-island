@@ -1,0 +1,8 @@
+-- Generated from supabase/catalog/catalog.json. Review before migration deployment.
+begin;
+set constraints all deferred;
+insert into public.aquarium_backgrounds ("id","name","price","image_path","tier") values
+('sunlit-tropical-aquascape','햇살이 머무는 열대 수초항',650,'sunlit-tropical-aquascape-v1.png','mood')
+on conflict(id) do update set "name"=excluded."name","price"=excluded."price","image_path"=excluded."image_path","tier"=excluded."tier";
+notify pgrst, 'reload schema';
+commit;

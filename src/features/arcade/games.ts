@@ -7,6 +7,7 @@ const OddEvenGame = lazy(() => import('./odd-even-game'))
 const BrickBreakerGame = lazy(() => import('./brick-breaker-game'))
 const LadderGame = lazy(() => import('./ladder-game'))
 const PongiWhackGame = lazy(() => import('./pongi-whack-game'))
+const TideDefenseGame = lazy(() => import('./tide-defense-game'))
 
 export type ArcadeGame = {
   id: string
@@ -21,6 +22,7 @@ export type ArcadeGame = {
   thumbnail?: string
   tags?: ('brain' | 'physical' | 'luck')[]
   rewardMode?: 'settlement' | 'instant' | 'both'
+  operatorOnly?: boolean
 }
 export const arcadeTagLabels = { luck: '운빨', brain: '뇌지컬', physical: '피지컬' } as const
 
@@ -114,11 +116,15 @@ export const arcadeGames: ArcadeGame[] = [
   },
   {
     id: 'tower-defense',
-    title: '타워 디펜스',
-    description: '타워를 세우고 전략을 짜서 섬을 지켜요.',
+    operatorOnly: true,
+    title: '바닷길 방어전 · 연습',
+    description: '바닷길 주변에 타워를 설치하고 강화해 5번의 파도를 막아요. 무료 연습판 · 보상 없음.',
     icon: Castle,
     tags: ['brain'],
-    status: 'coming-soon',
+    entryFee: 0,
+    dailyLimit: null,
+    status: 'ready',
+    component: TideDefenseGame,
   },
 ]
 

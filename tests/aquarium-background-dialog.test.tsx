@@ -99,11 +99,18 @@ it('keeps the background sheet open when applying fails',async()=>{
  expect(screen.getByRole('dialog')).toBeTruthy()
 })
 
-it('previews a background without charging and keeps decoration shops out of theme tabs',async()=>{
- const onAct=vi.fn(),state={owned:[],catalog:[{id:'night',name:'달밤',price:500,image_path:'night.png'}]} as AquariumState
+it('shows the complete panorama at its natural ratio directly in the list without charging',async()=>{
+ const onAct=vi.fn(),state={owned:[],catalog:[{id:'coral',name:'산호 정원',price:500,image_path:'coral.png'}]} as AquariumState
  render(<AquariumBackgroundDialog state={state} selectedId="default" gold={1000} busy={false} loading={false} error={false} onAct={onAct}/>)
  fireEvent.click(screen.getByRole('button',{name:'배경 바꾸기',exact:true}));expect(screen.queryByRole('tab',{name:'장식물'})).toBeNull()
- fireEvent.click(screen.getByRole('tab',{name:'구매'}));fireEvent.click(screen.getByRole('button',{name:'큰 화면으로 보기'}))
- expect(await screen.findByRole('heading',{name:'달밤 · 큰 화면으로 보기'})).toBeTruthy();expect(onAct).not.toHaveBeenCalled()
- fireEvent.click(screen.getByRole('button',{name:'돌아가기'}));expect(onAct).not.toHaveBeenCalled()
+ fireEvent.click(screen.getByRole('tab',{name:'구매'}))
+ const image=screen.getByRole('img',{name:'산호 정원'}) as HTMLImageElement
+ expect(image.getAttribute('src')).toContain('coral-panorama-v2.png')
+ Object.defineProperties(image,{naturalWidth:{value:1800},naturalHeight:{value:1000}})
+ fireEvent.load(image)
+ expect(parseFloat(image.parentElement!.style.aspectRatio)).toBe(1.8)
+ expect(image.className).toContain('object-contain')
+ expect(screen.queryByRole('button',{name:'큰 화면으로 보기'})).toBeNull()
+ expect(screen.getAllByRole('dialog')).toHaveLength(1)
+ expect(onAct).not.toHaveBeenCalled()
 })

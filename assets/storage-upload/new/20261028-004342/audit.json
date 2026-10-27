@@ -1,0 +1,154 @@
+{
+  "results": [
+    {
+      "id": "trace-seeking-compass",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-004342\\relics\\rare\\trace-seeking-compass_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            249,
+            145,
+            808,
+            938
+          ],
+          "margin": 145,
+          "occupancy": 0.748006379585327,
+          "opaque": 538396,
+          "transparent": 1025998,
+          "soft": 545920
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "forgotten-era-compass",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-004342\\relics\\epic\\forgotten-era-compass_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            219,
+            59,
+            833,
+            1132
+          ],
+          "margin": 59,
+          "occupancy": 0.9027113237639554,
+          "opaque": 490975,
+          "transparent": 1066899,
+          "soft": 504997
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "ocean-memory-compass",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-004342\\relics\\mythic\\ocean-memory-compass_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            197,
+            77,
+            1000,
+            1033
+          ],
+          "margin": 57,
+          "occupancy": 0.8237639553429027,
+          "opaque": 626181,
+          "transparent": 926289,
+          "soft": 645675
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "waterway-reading-lens",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-004342\\relics\\rare\\waterway-reading-lens_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            179,
+            122,
+            922,
+            1020
+          ],
+          "margin": 112,
+          "occupancy": 0.8133971291866029,
+          "opaque": 423718,
+          "transparent": 1141992,
+          "soft": 429946
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "hidden-route-lens",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-004342\\relics\\epic\\hidden-route-lens_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            148,
+            94,
+            977,
+            1048
+          ],
+          "margin": 94,
+          "occupancy": 0.835725677830941,
+          "opaque": 392853,
+          "transparent": 1164547,
+          "soft": 407688
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "worlds-end-lens",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261028-004342\\relics\\mythic\\worlds-end-lens_v1_thumbnail.png",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            135,
+            80,
+            986,
+            1056
+          ],
+          "margin": 80,
+          "occupancy": 0.8421052631578947,
+          "opaque": 412589,
+          "transparent": 1134195,
+          "soft": 438108
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

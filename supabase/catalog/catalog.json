@@ -538,6 +538,13 @@
       "tier": "special"
     },
     {
+      "id": "sunlit-tropical-aquascape",
+      "name": "햇살이 머무는 열대 수초항",
+      "price": 650,
+      "image_path": "sunlit-tropical-aquascape-v1.png",
+      "tier": "mood"
+    },
+    {
       "id": "sunset",
       "name": "노을빛 바다",
       "price": 250,
@@ -32720,6 +32727,17 @@
       "sell_price": 200
     },
     {
+      "id": "forgotten-era-compass",
+      "name": "잊힌 시대의 나침반",
+      "description": "유물 발견 확률 +3%p",
+      "rarity": "epic",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/epic/forgotten-era-compass_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "direct_relic_chance_percent",
+      "effect_value": 3,
+      "sell_price": 1300
+    },
+    {
       "id": "forgotten-route-compass",
       "name": "잊힌 항로의 나침반",
       "description": "장착한 상태로 출항하는 어선의 항해 시간이 3% 줄어들어요. 진행 중인 항해와 통발에는 적용되지 않아요.",
@@ -32775,6 +32793,17 @@
       "sell_price": 200
     },
     {
+      "id": "hidden-route-lens",
+      "name": "숨은 항로의 렌즈",
+      "description": "지도 조각 발견 확률 +2%p",
+      "rarity": "epic",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/epic/hidden-route-lens_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "direct_map_chance_percent",
+      "effect_value": 2,
+      "sell_price": 1300
+    },
+    {
       "id": "horizon-ark",
       "name": "수평선의 성궤",
       "description": "장착한 상태로 출항하는 어선의 항해 시간이 10% 줄어들어요. 진행 중인 항해와 통발에는 적용되지 않아요.",
@@ -32794,6 +32823,17 @@
       "enabled": true,
       "effect_kind": "fishing_wait_seconds",
       "effect_value": 2,
+      "sell_price": 3000
+    },
+    {
+      "id": "ocean-memory-compass",
+      "name": "바다의 기억을 가리키는 나침반",
+      "description": "유물 발견 확률 +6%p",
+      "rarity": "mythic",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/mythic/ocean-memory-compass_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "direct_relic_chance_percent",
+      "effect_value": 6,
       "sell_price": 3000
     },
     {
@@ -32940,6 +32980,17 @@
       "sell_price": 1300
     },
     {
+      "id": "trace-seeking-compass",
+      "name": "흔적을 찾는 나침반",
+      "description": "유물 발견 확률 +1%p",
+      "rarity": "rare",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/rare/trace-seeking-compass_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "direct_relic_chance_percent",
+      "effect_value": 1,
+      "sell_price": 200
+    },
+    {
       "id": "undying-furnace-heart",
       "name": "꺼지지 않는 화로심장",
       "description": "연료생산소 동시 가동 가능 횟수 +1 · 장착 중에만 효과가 적용돼요.",
@@ -32949,6 +33000,28 @@
       "effect_kind": "fuel_active_slots",
       "effect_value": 1,
       "sell_price": 1300
+    },
+    {
+      "id": "waterway-reading-lens",
+      "name": "물길을 읽는 렌즈",
+      "description": "지도 조각 발견 확률 +0.5%p",
+      "rarity": "rare",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/rare/waterway-reading-lens_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "direct_map_chance_percent",
+      "effect_value": 0.5,
+      "sell_price": 200
+    },
+    {
+      "id": "worlds-end-lens",
+      "name": "세상 끝을 비추는 렌즈",
+      "description": "지도 조각 발견 확률 +5%p",
+      "rarity": "mythic",
+      "thumbnail_path": "https://ewafafphiovbpjwogwzn.supabase.co/storage/v1/object/public/collectibles/relics/mythic/worlds-end-lens_v1_thumbnail.png",
+      "enabled": true,
+      "effect_kind": "direct_map_chance_percent",
+      "effect_value": 5,
+      "sell_price": 3000
     }
   ]
 }

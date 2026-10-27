@@ -83,6 +83,54 @@ it('passes the bait-selected grade into the real category thresholds',async()=>{
  }
 })
 
+it('adds each equipped discovery relic bonus in percentage points without changing the other category',async()=>{
+ await db.query('update public.player_wallets set gold=100000 where user_id=$1',[uid])
+ const relics=[['trace-seeking-compass',0,1],['forgotten-era-compass',0,3],['ocean-memory-compass',0,6],
+  ['waterway-reading-lens',.5,0],['hidden-route-lens',2,0],['worlds-end-lens',5,0]] as const
+ for(const [id,mapBonus,relicBonus] of relics){
+  await db.query('update public.fishing_relics set enabled=true where id=$1',[id])
+  await db.query('insert into app_private.player_fishing_relics(user_id,relic_id) values($1,$2)',[uid,id])
+  await db.query('select public.equip_relic($1,$2,null)',[id,crypto.randomUUID()])
+  for(const [grade,baseRelic] of [['common',3],['rare',3],['epic',5],['mythic',10]] as const){
+   const counts=(await db.query(`select app_private.fishing_reward_category((n+.5)/2000.0,$1::public.game_rarity) category,count(*)::int n
+    from generate_series(0,1999) n group by 1`,[grade])).rows
+   expect(Object.fromEntries(counts.map(r=>[r.category,r.n]))).toEqual({
+    ordinary:2000-(3+mapBonus+baseRelic+relicBonus)*20,map:(3+mapBonus)*20,relic:(baseRelic+relicBonus)*20,
+   })
+   const mapStart=(100-3-mapBonus-baseRelic-relicBonus)/100,relicStart=(100-baseRelic-relicBonus)/100
+   for(const [roll,expected] of [[mapStart-.000001,'ordinary'],[mapStart,'map'],[relicStart-.000001,'map'],[relicStart,'relic']] as const){
+    expect((await db.query('select app_private.fishing_reward_category($1,$2::public.game_rarity) c',[roll,grade])).rows[0].c).toBe(expected)
+   }
+  }
+ }
+ // The selected player's equipment cannot change another player's probabilities.
+ await db.query("select set_config('request.jwt.claim.sub',$1,false)",[crypto.randomUUID()])
+ expect((await db.query("select app_private.fishing_reward_category(.93,'rare') c")).rows[0].c).toBe('ordinary')
+ await db.query("select set_config('request.jwt.claim.sub',$1,false)",[uid])
+ await db.exec("update public.fishing_relics set enabled=false where id='worlds-end-lens'")
+ expect((await db.query("select app_private.fishing_reward_category(.93,'rare') c")).rows[0].c).toBe('ordinary')
+})
+
+it('applies the bonus to new direct casts and preserves reservations when equipment changes',async()=>{
+ const definition=(await db.query("select pg_get_functiondef('app_private.fishing_reward_category(double precision,public.game_rarity)'::regprocedure) d")).rows[0].d
+ await db.exec(definition.replace('begin\n','begin\n p_roll:=0.95;\n'))
+ await db.exec("update public.fishing_relics set enabled=true where id='ocean-memory-compass';insert into app_private.player_fishing_relics(user_id,relic_id) values(auth.uid(),'ocean-memory-compass')")
+ const first=await prepare()
+ expect(first.species.kind).toBe('map')
+ await db.query("select public.equip_relic('ocean-memory-compass',$1,0)",[crypto.randomUUID()])
+ const replay=await prepare(first.operation_id)
+ expect(replay.species).toEqual(first.species)
+ await finish(first.operation_id,false)
+ const next=await prepare()
+ expect(next.species.kind).toBe('relic')
+ expect(next.species.id).toBe('relic-test-relic')
+ await finish(next.operation_id,false)
+ const legacy=(await db.query("select public.prepare_fishing('pongdang',$1,$2,false) p",[bait,crypto.randomUUID()])).rows[0].p
+ expect(legacy.species.kind).toBe('trash')
+ await rejected(()=>db.exec("update public.fishing_relics set effect_value=7 where id='ocean-memory-compass'"),'relic_effect_shape')
+ await rejected(()=>db.exec("update public.fishing_relics set effect_value=1 where id='waterway-reading-lens'"),'relic_effect_shape')
+})
+
 it('keeps legacy fishing ordinary and scopes discovery opt-in to the new RPC',async()=>{
  await category('relic')
  const legacy=(await db.query("select public.prepare_fishing('pongdang',$1,$2,false) p",[bait,crypto.randomUUID()])).rows[0].p

@@ -21,3 +21,11 @@ it('uses uploaded panoramas in production and preserves unregistered theme rende
   vi.stubEnv('DEV', false)
   for (const theme of catalog.aquarium_backgrounds) expect(themePanoramaUrl(theme.image_path)).toMatch(/^https:\/\/art\.example\/.*-panorama-v2\.png$/)
 })
+
+it('resolves a new theme from its own generation batch and the same uploaded panorama', () => {
+  const path='sunlit-tropical-aquascape-v1.png'
+  vi.stubEnv('DEV',true)
+  expect(themePanoramaUrl(path)).toBe('/'+panoramas[path].localPath)
+  vi.stubEnv('DEV',false)
+  expect(themePanoramaUrl(path)).toBe('https://art.example/'+panoramas[path].file)
+})

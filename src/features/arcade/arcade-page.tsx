@@ -5,6 +5,8 @@ import { Link, useParams } from 'react-router'
 import { arcadeGames, arcadeGamePath, arcadeTagLabels, type ArcadeGame } from './games'
 import { GoldIcon } from '@/features/gold/gold-provider'
 import { Suspense, useState } from 'react'
+import { useOperator } from '@/features/notices/use-operator'
+import { OperatorGuard } from '@/components/operator-guard'
 
 function GameRules({ game }: { game: ArcadeGame }) {
   return (
@@ -33,6 +35,7 @@ function GameRules({ game }: { game: ArcadeGame }) {
 }
 
 export function ArcadePage() {
+  const { operator } = useOperator()
   const [category, setCategory] = useState<keyof typeof arcadeTagLabels | null>(null)
   const [reward, setReward] = useState<'all' | 'instant' | 'settlement'>('all')
   const filters = [
@@ -43,6 +46,7 @@ export function ArcadePage() {
   ] as const
   const games = arcadeGames.filter(
     (game) =>
+      (!game.operatorOnly || operator) &&
       (!category || game.tags?.includes(category)) &&
       (reward === 'all' ||
         game.rewardMode === 'both' ||
@@ -177,8 +181,8 @@ export function ArcadeGamePage() {
   const { gameId } = useParams()
   const game = arcadeGames.find((item) => item.id === gameId)
   const Game = game?.status === 'ready' ? game.component : undefined
-  if (game)
-    return (
+  if (game) {
+    const content = (
       <section className="flex min-h-0 min-w-0 w-full flex-1 flex-col gap-2">
         {Game ? (
           <GameLoadBoundary key={game.id}>
@@ -197,6 +201,8 @@ export function ArcadeGamePage() {
         )}
       </section>
     )
+    return game.operatorOnly ? <OperatorGuard>{content}</OperatorGuard> : content
+  }
   return (
     <section className="flex min-h-0 flex-1 flex-col items-center justify-center gap-3">
       <Gamepad2 className="size-9 text-muted-foreground" />

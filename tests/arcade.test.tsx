@@ -5,7 +5,10 @@ import { ArcadePage, ArcadeGamePage } from '@/features/arcade/arcade-page'
 
 import { PlaceBanner } from '@/components/place-banner'
 vi.mock('@/features/gold/gold-provider', () => ({ GoldIcon: () => <span>골드</span> }))
-afterEach(cleanup)
+const access=vi.hoisted(()=>({operator:false,loading:false}))
+vi.mock('@/features/notices/use-operator',()=>({useOperator:()=>access}))
+vi.mock('@/features/arcade/tide-defense-game',()=>({default:()=> <p>디펜스 연습 화면</p>}))
+afterEach(()=>{cleanup();access.operator=false;access.loading=false})
 it('filters two-column cards by category and reward timing without descriptions',()=>{
  setup()
  expect(screen.getByRole('button',{name:'전체'}).getAttribute('aria-pressed')).toBe('true')
@@ -44,7 +47,7 @@ it('lists hybrid rewards in both reward filters',()=>{
  expect(screen.getByRole('link',{name:/그림자 맞추기/})).toBeTruthy()
 })
 function Banner(){const {pathname}=useLocation();return <PlaceBanner pathname={pathname}/>}
-function setup(path='/arcade') { render(<MemoryRouter initialEntries={[path]}><Banner/><Routes><Route path="/arcade" element={<ArcadePage />} /><Route path="/arcade/:gameId" element={<ArcadeGamePage />} /></Routes></MemoryRouter>) }
+function setup(path='/arcade') { render(<MemoryRouter initialEntries={[path]}><Banner/><Routes><Route path="/arcade" element={<ArcadePage />} /><Route path="/arcade/:gameId" element={<ArcadeGamePage />} /><Route path="/collection" element={<p>일반 도감</p>}/></Routes></MemoryRouter>) }
 it('opens a listed game and returns to the lobby without charging admission', () => {
  setup()
  fireEvent.click(screen.getByRole('link', { name: /지하 탐험하기/ }))
@@ -57,4 +60,22 @@ it('handles an unknown game with a route back to the lobby', () => {
  setup('/arcade/missing')
  expect(screen.getByText('게임을 찾을 수 없어요.')).toBeTruthy()
  expect(screen.getByRole('link',{name:'목록으로'}).getAttribute('href')).toBe('/arcade')
+})
+
+it('hides defense from nonoperators and blocks direct access',()=>{
+ setup()
+ expect(screen.queryByRole('link',{name:/바닷길 방어전/})).toBeNull()
+ cleanup();setup('/arcade/tower-defense')
+ expect(screen.getByText('일반 도감')).toBeTruthy()
+ expect(screen.queryByText('디펜스 연습 화면')).toBeNull()
+})
+it('does not mount defense while permission is pending',()=>{
+ access.loading=true;setup('/arcade/tower-defense')
+ expect(screen.getByText('운영자 권한 확인 중…').getAttribute('role')).toBe('status')
+ expect(screen.queryByText('디펜스 연습 화면')).toBeNull()
+})
+it('lists and opens defense for a verified operator',async()=>{
+ access.operator=true;setup()
+ fireEvent.click(screen.getByRole('link',{name:/바닷길 방어전/}))
+ expect(await screen.findByText('디펜스 연습 화면')).toBeTruthy()
 })

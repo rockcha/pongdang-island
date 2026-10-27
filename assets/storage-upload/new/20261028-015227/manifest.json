@@ -1,0 +1,51 @@
+{
+  "tool": "built-in image_gen",
+  "project_ref": "ewafafphiovbpjwogwzn",
+  "createdAt": "2026-10-27T16:56:48.549Z",
+  "theme": {
+    "id": "sunlit-tropical-aquascape",
+    "name": "햇살이 머무는 열대 수초항",
+    "price": 650,
+    "image_path": "sunlit-tropical-aquascape-v1.png",
+    "tier": "mood"
+  },
+  "items": [
+    {
+      "id": "sunlit-tropical-aquascape-v1",
+      "theme_id": "sunlit-tropical-aquascape",
+      "file": "aquarium-backgrounds/sunlit-tropical-aquascape-v1.png",
+      "storage_path": "sunlit-tropical-aquascape-v1.png",
+      "role": "portrait",
+      "width": 941,
+      "height": 1672,
+      "sha256": "9405ba585ded3b719d02e9a9754f0b033e1f64deec5caff5a5c22280b19a0924",
+      "prompt": "Use case: stylized-concept. Create ONE opaque full-bleed PORTRAIT 9:16 scenic background for a cozy Korean aquarium game, theme '햇살이 머무는 열대 수초항' (Sunlit Tropical Planted Aquarium). Camera completely underwater, straight-on interior view at fish swimming height. Soft polished painterly storybook illustration with graceful natural plant shapes and gently dimensional shading; the supplied image is a rendering-style and quiet-swimming-space reference ONLY, not a content template. Freshwater aquascape: clear pale jade-turquoise water, warm soft sunlight entering upper LEFT, subtle gold caustics on cream sand. At lower LEFT, one elegantly curved weathered brown driftwood root with lush broad-leaf Anubias-like green plants and moss, small shaded shelter underneath; at lower RIGHT, slender ribbon aquatic plants and a few low smooth rounded stones. Atmospheric muted deeper green plant silhouettes recede at the sides. Keep center 60% width and middle 65% height mostly OPEN, low-contrast clear water for independently rendered live fish, with only delicate water lighting. Plants framing the lower sides should be lush and recognizable but not swallow the image; sandy floor bottom 18%, no central obstruction. Restrained jade, fresh leaf green, ivory sand and pale sunlight gold palette. Tiny sparse bubbles near a side only. No fish or any animals, no coral, no starfish, no people, no equipment, no buildings, no text, no UI, no aquarium glass edges, no black border, no collage, no watermark. Scenic wallpaper, not a photograph.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a17df4-0715-7532-8ead-20b19285ec60\\exec-429f07f1-02b9-462a-8187-e931cc92396e.png",
+      "reference": "assets/storage-upload/new/20261019-092750/aquarium-backgrounds/morning-eelgrass.png"
+    },
+    {
+      "id": "sunlit-tropical-aquascape-panorama-v2",
+      "theme_id": "sunlit-tropical-aquascape",
+      "file": "aquarium-backgrounds/sunlit-tropical-aquascape-panorama-v2.png",
+      "storage_path": "sunlit-tropical-aquascape-panorama-v2.png",
+      "role": "panorama",
+      "width": 1717,
+      "height": 916,
+      "sha256": "924250b6a752bddb19ddeee5e3cd8c1ae3b9ce7c6dc7f061e416150b38c50e79",
+      "prompt": "Edit the supplied aquarium scenery for the game's canvas format. Output one landscape image with STRICT aspect ratio 15:8 (1.875:1), e.g. 1920 wide by 1024 tall. The supplied scene is too wide and shallow. Expand its vertical composition, adding calm turquoise water above and a little more cream sandy bottom below, so the ENTIRE existing horizontal aquascape remains visible without squeezing or cropping. Preserve the exact scene identity: the big left driftwood shelter and broad aquatic leaves, low center-left moss stones, right ribbon plants, golden upper-left sunshine, turquoise-jade freshwater and painterly illustration. Keep ALL of the original scene's left and right ends; no stretching or mirroring. Broad uncluttered swimming room in the upper-middle, lush lower corners, gently continuous sandy floor. One coherent full-bleed opaque background. No fish, animals, characters, coral, text, glass frame, panels, seams, equipment or watermark. This must be a normal 15:8 landscape canvas, NOT an ultrawide 2.4:1 strip.",
+      "source": "C:/Users/user/.codex/generated_images/01a17df4-0715-7532-8ead-20b19285ec60/exec-958d939c-5f81-4450-8404-4dc896b5ed94.png",
+      "reference": "C:\\Users\\user\\.codex\\generated_images\\01a17df4-0715-7532-8ead-20b19285ec60\\exec-9da82c59-cd2e-42c2-8209-e3428eb05f3e.png"
+    }
+  ],
+  "validation": {
+    "publicBytesVerifiedAt": "2026-10-27T16:57:12.236Z",
+    "browser": "artifacts/previews/sunlit-aquascape/verification.json",
+    "screenshots": [
+      "left.png",
+      "center.png",
+      "right.png"
+    ],
+    "localTestsPassed": 105,
+    "frontendPanoramaDeployed": false
+  }
+}

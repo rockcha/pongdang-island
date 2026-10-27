@@ -1,0 +1,63 @@
+{
+  "id": "mechsanctum-deus-zero",
+  "kind": "decoration",
+  "rarity": "mythic",
+  "generator": "built-in image_gen",
+  "movementPlan": {
+    "movement_type": "fixed",
+    "swim_y_min": null,
+    "swim_y_max": null,
+    "flip_with_direction": false,
+    "travel_direction": "both"
+  },
+  "references": [
+    {
+      "path": "assets/storage-upload/new/20261027-154009/decorations/mythic/mechsanctum-deus-zero_v1_thumbnail.png",
+      "role": "identity edit target"
+    },
+    {
+      "path": "assets/references/collectible-style/epic-mythic-starlight.png",
+      "role": "style reference inspected and supplied on initial attempt; final correction uses identity only"
+    }
+  ],
+  "prompt": "Create a transparent 4-column 2-row EIGHT FRAME sprite sheet for this exact seated god statue. Critical: each whole statue MUST occupy only 65% of its square cell height and width, centered with very large empty alpha transparent padding of 17% on ALL FOUR SIDES in EACH CELL. Eight small isolated statues, NOT oversized touching borders. All statues identical scale, same fixed head, chest, seat coordinates. Keep exact white marble bronze turquoise body design and EMPTY chest cavity. Subtle changes only: broken halo fragments floating 2-3 pixels, very dim cyan seam light fading and weakly flickering, tiny lavender fish gently swimming WITHIN THE CHEST CAVITY ONLY, never outside the statue silhouette. Frame 0 neutral dim, 1 faint light, 2 weak peak, 3 dim, 4 faint flicker, 5 fading, 6 dark, 7 neutral matching 0. Fish stay in the cavity with gentle tail and position movement returning to starting positions by frame 7. No body movement. Keep painterly original detail. No background, no grid, no labels, no shadows outside the statue, no new anatomy. Exactly four equal square cells per row two rows. Canvas 2048x1024 or same 2:1 aspect ratio. Absolutely generous empty space around every statue including below base and above halo, minimum 15% on each side. Do not crop ANY halo, base or fish. Actual alpha transparency.",
+  "source": "sources/deus-zero-raw.source",
+  "processing": "Whole sheet normalized from 1774x887 to 1776x888, then equal 34px transparent padding on each cell. No per-frame scaling or content centering. Lossless DEFLATE optimization.",
+  "animation": {
+    "columns": 4,
+    "frames": 8,
+    "seconds": 8,
+    "compatFrames": [
+      0,
+      2,
+      4,
+      6
+    ],
+    "reducedMotionFrame": 0
+  },
+  "files": [
+    {
+      "local_path": "decorations/mythic/mechsanctum-deus-zero_idle8_v1_sprite.png",
+      "storage_path": "decorations/mythic/mechsanctum-deus-zero_idle8_v1_sprite.png",
+      "sha256": "6b0f14675d87dc42179c4bd6adfe42c2b2d6f04f8c6f732cae57d32481976623",
+      "bytes": 2684621
+    },
+    {
+      "local_path": "decorations/mythic/mechsanctum-deus-zero_compat_v1_sprite.png",
+      "storage_path": "decorations/mythic/mechsanctum-deus-zero_compat_v1_sprite.png",
+      "sha256": "56b08825e5f396b3b6f9885dc957da7289ab0299399fd2c5320fa71dc3e31fb6",
+      "bytes": 1349197
+    }
+  ],
+  "registration": "registration.json",
+  "bounds": "bounds.json",
+  "remote": {
+    "project": "ewafafphiovbpjwogwzn",
+    "capturedAt": "2026-10-27T09:52:27.240Z",
+    "scope": "one species, its habitat, two public PNG hashes and this migration record",
+    "fullSchemaParity": false,
+    "catalogRegistered": true,
+    "uploaded": true,
+    "frontendDeployed": false
+  }
+}

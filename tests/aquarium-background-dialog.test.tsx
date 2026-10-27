@@ -4,7 +4,7 @@ import { AquariumBackgroundDialog } from '../src/features/aquarium/aquarium-back
 import type { AquariumState } from '../src/features/aquarium/api'
 vi.mock('@/features/aquarium/api',()=>({backgroundUrl:(path:string)=>`/backgrounds/${path}`}))
 vi.mock('@/features/aquarium/tank-inhabitants',()=>({TankInhabitants:()=> <div aria-label="어항 미리보기 장면"/>}))
-afterEach(cleanup)
+afterEach(()=>{cleanup();vi.unstubAllGlobals()})
 it('requires purchase confirmation, supports cancellation and prevents duplicate purchases',async()=>{
  let finish!:()=>void
  const onAct=vi.fn(()=>new Promise<void>(resolve=>{finish=resolve}))
@@ -103,7 +103,7 @@ it('previews a background without charging and keeps decoration shops out of the
  const onAct=vi.fn(),state={owned:[],catalog:[{id:'night',name:'달밤',price:500,image_path:'night.png'}]} as AquariumState
  render(<AquariumBackgroundDialog state={state} selectedId="default" gold={1000} busy={false} loading={false} error={false} onAct={onAct}/>)
  fireEvent.click(screen.getByRole('button',{name:'배경 바꾸기',exact:true}));expect(screen.queryByRole('tab',{name:'장식물'})).toBeNull()
- fireEvent.click(screen.getByRole('tab',{name:'구매'}));fireEvent.click(screen.getByRole('button',{name:'내 어항에 미리보기'}))
- expect(await screen.findByText(/미리보기 중/)).toBeTruthy();expect(onAct).not.toHaveBeenCalled()
+ fireEvent.click(screen.getByRole('tab',{name:'구매'}));fireEvent.click(screen.getByRole('button',{name:'큰 화면으로 보기'}))
+ expect(await screen.findByRole('heading',{name:'달밤 · 큰 화면으로 보기'})).toBeTruthy();expect(onAct).not.toHaveBeenCalled()
  fireEvent.click(screen.getByRole('button',{name:'돌아가기'}));expect(onAct).not.toHaveBeenCalled()
 })

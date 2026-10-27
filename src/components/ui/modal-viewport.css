@@ -1,5 +1,15 @@
 [data-slot='modal-viewport'] { display: contents; }
 
+/* Keep the whole artwork visible; portrait phones use a landscape viewer. */
+[data-slot='dialog-content'].aquarium-large-background { animation: none; }
+
+/* Background inspection uses the viewport even when opened from a wide tank. */
+html[data-aquarium-wide] [data-slot='modal-viewport'] > [data-slot='dialog-content'].aquarium-large-background {
+ position: fixed !important; inset: 0 !important;
+ width: 100dvw; height: 100dvh; max-width: 100dvw; max-height: 100dvh;
+ border-radius: 0; overflow: hidden;
+}
+
 /* In the wide aquarium the frame owns centering, not each sheet's offsets. */
 html[data-aquarium-wide] [data-slot='modal-viewport'] {
  --modal-edge-x: max(.5rem,env(safe-area-inset-left),env(safe-area-inset-right));
@@ -41,4 +51,15 @@ html[data-aquarium-wide] [data-slot='modal-viewport'] > :is([data-slot='dialog-c
  html[data-aquarium-wide] .collectible-sale-summary > * { margin-block: 0; }
  html[data-aquarium-wide] .collectible-sale-summary > ul { min-height: 0; flex-shrink: 1; }
  html[data-aquarium-wide] .collectible-sale-summary > div:last-child { flex-shrink: 0; }
+}
+
+@media (max-width: 767px) and (orientation: portrait) {
+ html [data-slot='modal-viewport'] > [data-slot='dialog-content'].aquarium-large-background,
+ html[data-aquarium-wide] [data-slot='modal-viewport'] > [data-slot='dialog-content'].aquarium-large-background {
+  position: fixed !important; inset: 50% auto auto 50% !important;
+  width: 100dvh !important; height: 100dvw !important;
+  max-width: none !important; max-height: none !important;
+  translate: -50% -50% !important; transform: rotate(90deg) !important;
+  animation: none !important;
+ }
 }

@@ -22,7 +22,7 @@ export function useCatchCelebration(){
   if(next.length)setQueue(previous=>[...previous,...next])
  }
  function open(batch:CatchBatch,item:Catch){setQueue(celebratedCatches([{...batch,items:[item]}]))}
- const reveal=current?<CatchReveal key={current.item.id} species={current.item.species as Species} firstDiscovery={current.item.firstDiscovery} onDismiss={()=>setQueue(previous=>previous.slice(1))} onShare={session?.user.id?()=>{
+ const reveal=current?<CatchReveal key={current.item.id} species={current.item.species as Species} firstDiscovery={current.item.firstDiscovery} regionName={current.batch.regionName} onDismiss={()=>setQueue(previous=>previous.slice(1))} onShare={session?.user.id?()=>{
   const {batch,item}=current
   const id=startShowcaseDraft({owner:session.user.id,operationId:item.id,source:batch.source,tripId:batch.tripId,species:item.species as Species,regionName:batch.regionName,caughtAt:batch.caughtAt,firstDiscovery:!!item.firstDiscovery,renderVersion:1,preview:false})
   setQueue([]);navigate('/showcase/new',{state:{showcaseDraft:id}})

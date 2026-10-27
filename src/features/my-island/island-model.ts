@@ -1,5 +1,7 @@
+import {gardenDecorations} from './garden-decoration-catalog'
 export type Cell = { x: number; y: number }
 export const floorTiles = [
+  { id: 'grass', name: '잔디 타일', price: 10 },
   { id: 'dirt', name: '흙길', price: 10 },
   { id: 'gravel', name: '자갈길', price: 10 },
   { id: 'sand', name: '모래 바닥', price: 10 },
@@ -9,7 +11,7 @@ export const floorTiles = [
 ] as const
 export type FloorKind = (typeof floorTiles)[number]['id']
 export type FloorPlacement = Cell & { type: FloorKind }
-export type Placement = { id: string; x: number; y: number; rotation?: number }
+export type Placement = { id: string; x: number; y: number; rotation?: number; label?:string }
 export const LAND_PRICE = 50
 export const canRotate = (id: string) => {
   const f = facilityFor(id)
@@ -30,9 +32,13 @@ export type Facility = {
   price: number
   category: 'building' | 'decoration'
   rotatable?: boolean
-  placementTerrain?: 'land' | 'any'
+  placementTerrain?: 'land' | 'any' | 'water'
 }
 export const facilities: Facility[] = [
+  ...gardenDecorations,
+  ...[1,2,3].map(length=>({id:'wood-bridge-'+length,name:length===1?'짧은 나무다리':length===2?'나무다리':'긴 나무다리',kind:'bridge',w:1,h:length,color:'#bd996d',price:length*100,category:'decoration' as const,rotatable:true,placementTerrain:'water' as const})),
+  {id:'stepping-stones',name:'물길 징검돌',kind:'stepping-stones',w:1,h:1,color:'#b8b9a6',price:80,category:'decoration',rotatable:false,placementTerrain:'water'},
+  {id:'reeds',name:'물가 갈대',kind:'reeds',w:1,h:1,color:'#97af78',price:60,category:'decoration',rotatable:false,placementTerrain:'any'},
   {
     id: 'title-flag',
     name: '칭호',
@@ -427,6 +433,8 @@ export function canPlace(
         }
       }
     if (!anchored || !waterfront) return false
+  } else if(f.placementTerrain==='water'){
+    for(let x=item.x;x<item.x+w;x++)for(let y=item.y;y<item.y+h;y++)if(isLand(x,y,land,removedLand))return false
   } else if (f.placementTerrain !== 'any')
     for (let x = item.x; x < item.x + w; x++)
       for (let y = item.y; y < item.y + h; y++) if (!isLand(x, y, land, removedLand)) return false
@@ -443,6 +451,7 @@ export function canPlace(
   })
 }
 export type IslandState = {
+  signLabels?:Record<string,string>
   layout: Placement[]
   owned: string[]
   coins: number
@@ -532,6 +541,7 @@ export function parseState(value: unknown): IslandState {
         x: item.x,
         y: item.y,
         ...(item.rotation ? { rotation: item.rotation } : {}),
+        ...((facilityFor(item.id)?.kind==='arrow-sign'||facilityFor(item.id)?.kind==='name-sign')&&typeof item.label==='string'?{label:item.label.trim().slice(0,16)}:{}),
       })
   }
   const tileStock: Record<string, number> = {}
@@ -557,7 +567,10 @@ export function parseState(value: unknown): IslandState {
       )
         paving.push({ x: p.x, y: p.y, type: p.type })
     }
+  const signLabels:Record<string,string>={}
+  if(data.signLabels&&typeof data.signLabels==='object')for(const id of owned){const label=data.signLabels[id],kind=facilityFor(id)?.kind;if((kind==='arrow-sign'||kind==='name-sign')&&typeof label==='string')signLabels[id]=label.trim().slice(0,16)}
   return {
+    ...(Object.keys(signLabels).length?{signLabels}:{}),
     owned,
     layout,
     land,
@@ -631,6 +644,10 @@ export function buyItem(state: IslandState, type: string, id: string): IslandSta
     return null
   return { ...state, coins: state.coins - f.price, owned: [...state.owned, id] }
 }
+export function buyLand(state:IslandState):IslandState|null{
+ if(state.coins<LAND_PRICE||state.landStock>=10000)return null
+ return {...state,coins:state.coins-LAND_PRICE,landStock:state.landStock+1}
+}
 export function addLand(state: IslandState, cell: Cell): IslandState | null {
   if (
     !Number.isInteger(cell.x) ||
@@ -640,7 +657,7 @@ export function addLand(state: IslandState, cell: Cell): IslandState | null {
     cell.y < 0 ||
     cell.y >= 36 ||
     isLand(cell.x, cell.y, state.land, state.removedLand) ||
-    (state.landStock === 0 && state.coins < LAND_PRICE)
+    state.landStock < 1
   )
     return null
   if (
@@ -652,7 +669,7 @@ export function addLand(state: IslandState, cell: Cell): IslandState | null {
     return null
   const next = {
     ...state,
-    coins: state.coins - (state.landStock > 0 ? 0 : LAND_PRICE),
+    coins: state.coins,
     landStock: Math.max(0, state.landStock - 1),
     removedLand: state.removedLand.filter((p) => p.x !== cell.x || p.y !== cell.y),
     land: isBaseLand(cell.x, cell.y) ? state.land : [...state.land, { x: cell.x, y: cell.y }],
@@ -697,6 +714,16 @@ export function storeLand(state: IslandState, cell: Cell): IslandState | null {
     ? next
     : null
 }
+/** Move terrain and its surface atomically without changing inventory or charging coins. */
+export function moveLand(state:IslandState,from:Cell,to:Cell):IslandState|null{
+ if(from.x===to.x&&from.y===to.y)return null
+ const tile=state.paving.find(p=>p.x===from.x&&p.y===from.y)
+ const lifted=storeLand({...state,landStock:0},from)
+ if(!lifted)return null
+ const placed=addLand(lifted,to)
+ if(!placed)return null
+ return {...placed,landStock:state.landStock,tileStock:state.tileStock,paving:tile?[...placed.paving,{...to,type:tile.type}]:placed.paving}
+}
 export function decorationSellPrice(id: string) {
   const f = facilityFor(id)
   return f?.category === 'decoration' ? Math.floor(f.price / 2) : 0
@@ -723,7 +750,7 @@ export function buyFloor(state: IslandState, type: FloorKind): IslandState | nul
 export function paintFloor(
   state: IslandState,
   cell: Cell,
-  type: FloorKind | 'grass',
+  type: FloorKind | 'bare',
 ): IslandState | null {
   if (
     !Number.isInteger(cell.x) ||
@@ -736,9 +763,9 @@ export function paintFloor(
   )
     return null
   const old = state.paving.find((p) => p.x === cell.x && p.y === cell.y)
-  if (type === old?.type || (type === 'grass' && !old)) return null
+  if (type === old?.type || (type === 'bare' && !old)) return null
   const tileStock = { ...state.tileStock }
-  if (type !== 'grass') {
+  if (type !== 'bare') {
     if (!floorTiles.some((t) => t.id === type) || (tileStock[type] ?? 0) < 1) return null
     tileStock[type]--
   }
@@ -748,7 +775,13 @@ export function paintFloor(
     tileStock,
     paving: [
       ...state.paving.filter((p) => p.x !== cell.x || p.y !== cell.y),
-      ...(type === 'grass' ? [] : [{ ...cell, type }]),
+      ...(type === 'bare' ? [] : [{ ...cell, type }]),
     ],
   }
+}
+
+export function decorationConnections(layout:Placement[],item:Placement){
+ const kind=facilityFor(item.id)?.kind
+ const linked=(dx:number,dy:number)=>layout.some(p=>p.id!==item.id&&p.x===item.x+dx&&p.y===item.y+dy&&facilityFor(p.id)?.kind===kind)
+ return {north:linked(0,-1),east:linked(1,0),south:linked(0,1),west:linked(-1,0)}
 }

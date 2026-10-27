@@ -1,3 +1,4 @@
+import {gardenKinds} from './garden-decoration-catalog'
 import type { Facility } from './island-model'
 import { canRotate } from './island-model'
 
@@ -38,6 +39,8 @@ export function artGeometry(f: Facility) {
 }
 export function buildingViewBox(f: Facility, rotation = 0) {
   rotation = canRotate(f.id) ? rotation : 0
+  if(gardenKinds.has(f.kind)){const side=rotation%180===90,w=(side?f.h:f.w)*32,h=(side?f.w:f.h)*32;return `-6 -40 ${w+12} ${h+48}`}
+  if(['bridge','stepping-stones','reeds'].includes(f.kind)){const side=rotation%180===90,w=(side?f.h:f.w)*32,h=(side?f.w:f.h)*32;return `-5 -14 ${w+10} ${h+23}`}
   if (f.kind === 'rubber-duck') return '-5 -4 46 40'
   if (rotation) {
     const side = rotation % 180 === 90

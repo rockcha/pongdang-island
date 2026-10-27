@@ -3,6 +3,8 @@ import {collectibleUrl} from '@/features/collection/api'
 import {rarities,catchBadgeColors} from '@/lib/game/rarity'
 import {regionIcons} from '@/features/regions/region-icons'
 import {limitedCollectionEvent} from '@/features/collection/limited-events'
+import {optimizedThumbnailUrl} from '@/features/collection/thumbnail-art'
+import {catchMomentTheme} from './moment-theme'
 
 export type CatchMomentArt={species:Species;firstDiscovery?:boolean;practice?:boolean;preview?:boolean;regionName?:string;caughtAt?:string;renderVersion?:1}
 export const catchImageSize=1080
@@ -20,9 +22,9 @@ function loadImage(url:string){
  images.set(url,pending);pending.catch(()=>{if(images.get(url)===pending)images.delete(url)})
  return pending
 }
-export function wrapMomentText(text:string,measure:(text:string)=>number,maxWidth:number,maxLines:number){
+export function wrapMomentText(text:string|null|undefined,measure:(text:string)=>number,maxWidth:number,maxLines:number){
  const lines:string[]=[];let current=''
- for(const char of Array.from(text.trim().replace(/\s+/g,' '))){
+ for(const char of Array.from((text??'').trim().replace(/\s+/g,' '))){
   if(current&&measure(current+char)>maxWidth){lines.push(current.trim());current=char.trimStart()}else current+=char
  }
  if(current)lines.push(current.trim())
@@ -43,22 +45,23 @@ function badge(ctx:CanvasRenderingContext2D,text:string,x:number,y:number,width:
 // Reveal, editor and feed share this painter, independent of viewport and animation timing.
 export async function paintCatchMoment(canvas:HTMLCanvasElement,input:CatchMomentArt,size=catchImageSize){
  const {species,firstDiscovery,practice,preview,regionName,caughtAt}=input
+ const theme=catchMomentTheme(species,regionName)
  const native=species.is_native&&species.native_region_id?regionIcons[species.native_region_id]:undefined
  const titleIcon=limitedCollectionEvent(species.id)?.iconPath??native?.src
  const region=Object.values(regionIcons).find(item=>item.name===regionName)
  const [creature,titleImage,regionImage]=await Promise.all([
-  loadImage(collectibleUrl(species.thumbnail_path)),
+  loadMomentCreature(species.thumbnail_path),
   titleIcon?loadImage(titleIcon).catch(()=>null):Promise.resolve(null),
   region?loadImage(region.src).catch(()=>null):Promise.resolve(null),
-  document.fonts.load('400 33px "Gowun Dodum"',`${species.name} ${species.description} ${regionName??''} ${rarities[species.rarity].label} 미리보기 실제 포획 기록이 아니에요 NEW 0123456789`),
+  loadMomentFont(`${species.name} ${species.description??''} ${regionName??''} ${rarities[species.rarity].label} 미리보기 실제 포획 기록이 아니에요 NEW 0123456789`),
  ])
  canvas.width=canvas.height=size
  const ctx=canvas.getContext('2d');if(!ctx)throw new Error('MOMENT_CANVAS_UNAVAILABLE')
  ctx.setTransform(size/catchImageSize,0,0,size/catchImageSize,0,0)
  const color=rarities[species.rarity].effectColor,cx=540,cy=430
- ctx.fillStyle='#101b2a';ctx.fillRect(0,0,1080,1080)
+ ctx.fillStyle=theme.background;ctx.fillRect(0,0,1080,1080)
  const glow=ctx.createRadialGradient(cx,cy,20,cx,cy,650)
- glow.addColorStop(0,color+'65');glow.addColorStop(.5,color+'20');glow.addColorStop(1,'#101b2a00')
+ glow.addColorStop(0,color+theme.glowAlpha);glow.addColorStop(.5,color+'20');glow.addColorStop(1,theme.glowEnd)
  ctx.fillStyle=glow;ctx.fillRect(0,0,1080,1080)
  ctx.save()
  ctx.fillStyle=color+'10'
@@ -78,23 +81,37 @@ export async function paintCatchMoment(canvas:HTMLCanvasElement,input:CatchMomen
  const gradeBadge=catchBadgeColors(species.rarity)
  badge(ctx,rarities[species.rarity].label,540-total/2,690,gradeWidth,gradeBadge.background,30,gradeBadge.text)
  if(isNew)badge(ctx,'NEW',540-total/2+gradeWidth+gap,690,newWidth,'#dc2626',25)
- ctx.font=`700 58px ${font}`;ctx.fillStyle='#ffffff'
+ ctx.font=`700 58px ${font}`;ctx.fillStyle=theme.text
  const nameLines=wrapMomentText(species.name,t=>ctx.measureText(t).width,titleImage?800:920,2)
  nameLines.forEach((line,index)=>{
   const y=802+index*70
   if(titleImage&&index===0){const width=ctx.measureText(line).width;fitImage(ctx,titleImage,540-(width+68)/2,y-45,50,50);ctx.fillText(line,574,y)}else ctx.fillText(line,540,y)
  })
  const descriptionY=802+(nameLines.length-1)*70+57
- ctx.font=`400 33px ${font}`;ctx.fillStyle='#ffffffbf'
+ ctx.font=`400 33px ${font}`;ctx.fillStyle=theme.muted
  wrapMomentText(species.description,t=>ctx.measureText(t).width,900,2).forEach((line,index)=>ctx.fillText(line,540,descriptionY+index*43))
  const date=caughtAt&&!Number.isNaN(Date.parse(caughtAt))?new Date(caughtAt).toLocaleDateString('ko-KR',{timeZone:'Asia/Seoul'}):''
  const metadata=[regionImage?undefined:regionName,date].filter(Boolean).join(' · ')
- ctx.font=`400 26px ${font}`;ctx.fillStyle='#ffffff80'
+ ctx.font=`400 26px ${font}`;ctx.fillStyle=theme.metadata
  const metadataText=wrapMomentText(metadata,t=>ctx.measureText(t).width,850,1)[0]??''
  if(regionImage){
   const total=44+(metadataText?16+ctx.measureText(metadataText).width:0),left=540-total/2
   fitImage(ctx,regionImage,left,986,44,44)
   if(metadataText){ctx.textAlign='left';ctx.fillText(metadataText,left+60,1020);ctx.textAlign='center'}
  }else if(metadataText)ctx.fillText(metadataText,540,1020)
- if(preview){ctx.font=`400 20px ${font}`;ctx.fillStyle='#ffffff99';ctx.fillText('미리보기 · 실제 포획 기록이 아니에요',540,1060)}
+ if(preview){ctx.font=`400 20px ${font}`;ctx.fillStyle=theme.metadata;ctx.fillText('미리보기 · 실제 포획 기록이 아니에요',540,1060)}
+}
+
+async function loadMomentCreature(path:string){
+ const optimized=optimizedThumbnailUrl(path,'large'),original=collectibleUrl(path)
+ if(optimized&&optimized!==original){try{return await loadImage(optimized)}catch{/* Retry using the public original. */}}
+ return loadImage(original)
+}
+
+async function loadMomentFont(text:string){
+ let timer:ReturnType<typeof setTimeout>|undefined
+ try{
+  await Promise.race([document.fonts?.load('400 33px "Gowun Dodum"',text),new Promise<void>(resolve=>{timer=setTimeout(resolve,1500)})])
+ }catch{/* System fonts keep the catch visible if the web font is unavailable. */}
+ finally{clearTimeout(timer)}
 }

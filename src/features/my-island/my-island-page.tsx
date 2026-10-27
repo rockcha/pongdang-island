@@ -1,3 +1,4 @@
+import {storedDecorationIds,supportsLinePlacement,planDecorationPlacement,applyDecorationPlacement} from './island-batch-placement'
 import { landOutlinePath } from './terrain-outline'
 import { randomId } from '@/lib/random-id'
 import { memo, useEffect, useMemo, useRef, useState } from 'react'
@@ -10,7 +11,6 @@ import {
   Check,
   Coins,
   Maximize,
-  Move,
   Plus,
   ShoppingBag,
   Undo2,
@@ -25,6 +25,9 @@ import {
 import { useAuth } from '@/components/auth-provider'
 import {
   addLand,
+  decorationConnections,
+  moveLand,
+  buyLand,
   storeLand,
   LAND_PRICE,
   isLand,
@@ -60,21 +63,21 @@ import {
 function LandThumbnail() {
   return (
     <svg viewBox="0 0 72 72" aria-hidden="true">
-      <rect x="8" y="16" width="56" height="45" rx="9" fill="#c8b184" />
+      <rect x="8" y="16" width="56" height="45" rx="9" fill="#d4bf9d" />
       <rect
         x="8"
         y="10"
         width="56"
         height="44"
         rx="9"
-        fill="#acc88c"
-        stroke="#96b578"
+        fill="#e7d2b5"
+        stroke="#cfb794"
         strokeWidth="1.5"
       />
       <path
-        d="m20 29 3-5 3 5m18 13 3-5 3 5M42 20l4-2"
+        d="M19 29h4m19 13h3M42 20h4"
         fill="none"
-        stroke="#81a367"
+        stroke="#cbb18e"
         strokeWidth="2"
         strokeLinecap="round"
       />
@@ -105,9 +108,9 @@ const Terrain = memo(function Terrain({
             strokeWidth="2"
           />
         </pattern>
-        <pattern id="island-grass" width="48" height="48" patternUnits="userSpaceOnUse">
-          <rect width="48" height="48" fill="#acc88c" />
-          <path d="M10 30l2-3 2 3m22-20 3-2" stroke="#8bac72" opacity=".5" fill="none" />
+        <pattern id="island-ground" width="48" height="48" patternUnits="userSpaceOnUse">
+          <rect width="48" height="48" fill="#e7d2b5" />
+          <path d="M9 29h3m21-9h2" stroke="#d0b793" opacity=".5" fill="none" />
         </pattern>
         <pattern id="island-grid" width="32" height="32" patternUnits="userSpaceOnUse">
           <path d="M32 0H0V32" fill="none" stroke="#ffffe9" strokeOpacity=".4" strokeWidth="1" />
@@ -115,7 +118,7 @@ const Terrain = memo(function Terrain({
       </defs>
       <rect x="-2000" y="-2000" width="5280" height="5152" fill="url(#island-water)" />
       <path d={outline} fill="none" stroke="#c8e9df" strokeWidth="14" strokeLinejoin="round" />
-      <path d={outline} fill="url(#island-grass)" fillRule="evenodd" />
+      <path d={outline} fill="url(#island-ground)" fillRule="evenodd" />
       <path d={outline} fill="none" stroke="#eddbac" strokeWidth="6" strokeLinejoin="round" />
       <text x="640" y="1100" textAnchor="middle" fill="#e5f2dc" fontSize="14" letterSpacing="7">
         PONGDANG ISLAND
@@ -130,7 +133,8 @@ const defaultCamera = (): Camera => ({
   zoom: window.innerWidth > window.innerHeight && window.innerHeight < 600 ? 0.75 : 0.95,
 })
 type Gesture = {
-  kind: 'pan' | 'item'
+  kind: 'pan' | 'item' | 'land' | 'batch'
+  land?:Cell
   id?: string
   px: number
   py: number
@@ -162,8 +166,10 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
       live ? readPageIsland(storageKey) : readState(storageKey),
     ),
     [history, setHistory] = useState<IslandState[]>([]),
+    [editMode,setEditMode]=useState<'decorate'|'terrain'>('decorate'),
+    [signText,setSignText]=useState(''),
     [tool, setTool] = useState<'edit' | 'land' | 'floor'>('edit'),
-    [floor, setFloor] = useState<FloorKind | 'grass'>('dirt'),
+    [floor, setFloor] = useState<FloorKind | 'bare'>('dirt'),
     [rotation, setRotation] = useState(0),
     [panel, setPanel] = useState<'shop' | 'storage' | null>(null),
     [category, setCategory] = useState<'all' | 'building' | 'decoration' | 'floor' | 'land'>('all'),
@@ -172,10 +178,17 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
     [selected, setSelected] = useState<string | null>(null),
     [selectedLand, setSelectedLand] = useState<Cell | null>(null),
     [pending, setPending] = useState(false),
+    [batchType,setBatchType]=useState<string|null>(null),
+    [batchPreview,setBatchPreview]=useState<{from:Cell;to:Cell}|null>(null),
+    [batchSteps,setBatchSteps]=useState(0),
+    [dragLand,setDragLand]=useState<Cell|null>(null),
+    [movingLand,setMovingLand]=useState<Cell|null>(null),
+    [landPreview,setLandPreview]=useState<Cell|null>({x:20,y:17}),
+    [landPulse,setLandPulse]=useState<(Cell&{key:number})|null>(null),
     [dragging, setDragging] = useState(false),
     [ghost, setGhost] = useState<Placement | null>(null),
     [message, setMessage] = useState(
-      '시설을 눌러 이동·보관하거나 페이지로 들어가세요. 빈 곳을 끌면 섬이 이동해요.',
+      '시설을 눌러 이동·보관하거나 페이지로 들어가세요. 땅 이동은 땅 편집에서, 화면 이동은 빈 곳을 끌어서 해요.',
     ),
     [saveStatus, setSaveStatus] = useState('이 기기에 저장'),
     [size, setSize] = useState({ w: 1000, h: 750 }),
@@ -188,12 +201,17 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
     svg = useRef<SVGSVGElement>(null),
     gesture = useRef<Gesture | null>(null),
     pointers = useRef(new Map<number, { x: number; y: number }>()),
-    pinch = useRef<{ distance: number; zoom: number } | null>(null)
+    pinch = useRef<{ distance: number; zoom: number; x:number; y:number; cx:number; cy:number } | null>(null)
   const fit = Math.min(size.w / WORLD.width, size.h / WORLD.height),
     scale = fit * camera.zoom
   const current = selected && state.owned.includes(selected) ? resolve(selected) : undefined,
     placed = state.layout.some((p) => p.id === selected)
+  const batchStock=batchType?storedDecorationIds(state,batchType):[]
+  const batchPlan=batchType&&batchPreview?planDecorationPlacement(state,batchType,batchPreview.from,batchPreview.to,rotation):null
   const hasSelection = tool === 'edit' && !panel && !!(current || selectedLand)
+  useEffect(()=>{if(tool==='land'&&!panel)setLandPreview({x:Math.floor(camera.x/32),y:Math.floor(camera.y/32)})},[tool,panel])
+  useEffect(()=>{if(tool!=='land'||panel)setMovingLand(null)},[tool,panel])
+  const showGrid = !panel && (tool === 'floor' || tool === 'land' || !!current || !!selectedLand || !!dragLand || pending)
   const selectionMode = hasSelection ? (pending ? 'placing' : 'bottom') : null
   const mapWidth = size.w
   const mapHeight = size.h
@@ -276,6 +294,7 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
     document.body.style.overflow = 'hidden'
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
+        setBatchType(null);setBatchPreview(null);setBatchSteps(0);gesture.current=null;pointers.current.clear();pinch.current=null;setDragLand(null);setDragging(false)
         setTool('edit')
         setPanel(null)
         setSelected(null)
@@ -291,6 +310,12 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
       if (document.fullscreenElement === el) void document.exitFullscreen().catch(() => {})
     }
   }, [])
+  function switchMode(mode:'decorate'|'terrain'){
+    gesture.current=null;pointers.current.clear();pinch.current=null
+    setBatchType(null);setBatchPreview(null);setBatchSteps(0);setEditMode(mode);setTool('edit');setPanel(null);setSelected(null);setSelectedLand(null);setPending(false);setGhost(null);setDragLand(null);setDragging(false);setBatchPreview(null)
+    setMessage(mode==='terrain'?'땅을 선택하거나 드래그해 편집하세요. 바다를 끌면 화면이 이동해요.':'구조물은 드래그로 옮기고, 빈 곳을 끌면 화면이 이동해요.')
+  }
+  useEffect(()=>{setSignText(state.layout.find(p=>p.id===selected)?.label??(selected?state.signLabels?.[selected]:undefined)??'')},[selected,state.layout,state.signLabels])
   function change(next: IslandState) {
     setSelectedLand(null)
     setHistory((h) => [...h.slice(-29), local])
@@ -305,6 +330,7 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
   function place(input: Placement) {
     const p = {
       ...input,
+      ...((state.layout.find(p=>p.id===input.id)?.label??state.signLabels?.[input.id])!==undefined?{label:state.layout.find(p=>p.id===input.id)?.label??state.signLabels?.[input.id]}:{}),
       rotation:
         input.rotation ??
         (selected === input.id
@@ -320,10 +346,29 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
       setMessage(
         resolve(p.id)?.kind === 'dock'
           ? '항구를 육지에 걸쳐 놓고 바다 쪽으로 향하게 해주세요. 회전해서 어느 해안에든 붙일 수 있어요.'
+          : resolve(p.id)?.placementTerrain === 'water'
+            ? '다리와 징검돌은 다른 구조물과 겹치지 않는 바다 위에 배치해주세요.'
           : resolve(p.id)?.placementTerrain === 'any'
             ? '다른 시설과 겹치지 않는 육지나 바다에 놓아주세요.'
             : '육지 안쪽의 다른 시설과 겹치지 않는 곳에 놓아주세요.',
       )
+  }
+  function finishBatch(){setBatchType(null);setBatchPreview(null);setBatchSteps(0);setSelected(null);setPending(false);setGhost(null);gesture.current=null}
+  function undo(){
+    const previous=history.at(-1)
+    if(!previous)return
+    setLocal(previous);setHistory(h=>h.slice(0,-1));setSelectedLand(null);setBatchPreview(null)
+    if(batchType){const next=storedDecorationIds(previous,batchType)[0];if(next)setSelected(next);setPending(true);setBatchSteps(n=>Math.max(0,n-1))}
+    else{setSelected(null);setPending(false)}
+    setMessage('이전 상태로 되돌렸어요.')
+  }
+  function commitBatch(from:Cell,to:Cell){
+    if(!batchType)return
+    const result=applyDecorationPlacement(state,batchType,from,to,rotation)
+    if(!result){setMessage(batchStock.length?'놓을 수 있는 빈 칸을 골라주세요.':'보유한 장식물을 모두 배치했어요.');setBatchPreview(null);return}
+    change(result.state);setBatchSteps(n=>n+1)
+    setSelected(storedDecorationIds(result.state,batchType)[0]??result.plan.placements.at(-1)!.id);setPending(true);setBatchPreview(null)
+    setMessage(`${result.plan.placements.length}개를 배치했어요. · 남은 수량 ${result.plan.remaining}개`)
   }
   function zoom(delta: number) {
     setCamera((c) => ({ ...c, zoom: Math.min(4, Math.max(0.7, c.zoom + delta)) }))
@@ -334,9 +379,9 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
     e.currentTarget.setPointerCapture(e.pointerId)
     if (pointers.current.size === 2) {
       const [a, b] = [...pointers.current.values()]
-      pinch.current = { distance: Math.hypot(a.x - b.x, a.y - b.y), zoom: camera.zoom }
+      pinch.current = { distance: Math.hypot(a.x - b.x, a.y - b.y), zoom: camera.zoom,x:(a.x+b.x)/2,y:(a.y+b.y)/2,cx:camera.x,cy:camera.y }
       gesture.current = null
-      setGhost(null)
+      setGhost(null);setDragLand(null);setDragging(false)
       return
     }
     if (pointers.current.size > 2) return
@@ -345,8 +390,11 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
       undefined
     const p = state.layout.find((p) => p.id === id)
     const at = point(e)
+    if(tool==='land')setLandPreview(at)
+    if(batchType&&pending)setBatchPreview({from:at,to:at})
     gesture.current = {
-      kind: tool === 'edit' && p ? 'item' : 'pan',
+      kind: batchType&&pending?'batch':tool === 'edit' && editMode==='decorate' && p ? 'item' : tool==='edit'&&editMode==='terrain'&&!id&&!!storeLand({...state,landStock:0},at)?'land':'pan',
+      land:at,
       id,
       px: e.clientX,
       py: e.clientY,
@@ -358,6 +406,8 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
     }
   }
   function move(e: ReactPointerEvent<SVGSVGElement>) {
+    if(tool==='land'&&!pinch.current)setLandPreview(point(e))
+    if(batchType&&pending&&!pinch.current&&!pointers.current.has(e.pointerId)){const at=point(e);setBatchPreview({from:at,to:at})}
     if (!pointers.current.has(e.pointerId)) return
     pointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY })
     if (pinch.current && pointers.current.size === 2) {
@@ -365,19 +415,24 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
       const z =
         (pinch.current.zoom * Math.hypot(a.x - b.x, a.y - b.y)) /
         Math.max(1, pinch.current.distance)
-      setCamera((c) => ({ ...c, zoom: Math.min(4, Math.max(0.7, z)) }))
+      const pan=pinch.current
+      setCamera((c) => ({ ...c, zoom: Math.min(4, Math.max(0.7, z)),x:Math.max(0,Math.min(WORLD.width,pan.cx-((a.x+b.x)/2-pan.x)/(fit*pan.zoom))),y:Math.max(0,Math.min(WORLD.height,pan.cy-((a.y+b.y)/2-pan.y)/(fit*pan.zoom))) }))
       return
     }
     const g = gesture.current
     if (!g) return
     if (Math.hypot(e.clientX - g.px, e.clientY - g.py) > 5) g.moved = true
     if (!g.moved) return
+    if(g.kind==='batch'&&g.land){setBatchPreview({from:g.land,to:point(e)});return}
     if (g.kind === 'pan')
       setCamera((c) => ({
         ...c,
         x: Math.max(0, Math.min(WORLD.width, g.cx - (e.clientX - g.px) / scale)),
         y: Math.max(0, Math.min(WORLD.height, g.cy - (e.clientY - g.py) / scale)),
       }))
+    else if(g.kind==='land'&&g.land){
+      setDragging(true);setDragLand(g.land);setLandPreview(point(e));setSelected(null);setSelectedLand(null)
+    }
     else if (g.id) {
       setDragging(true)
       const p = point(e)
@@ -390,7 +445,7 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
     }
   }
   function up(e: ReactPointerEvent<SVGSVGElement>) {
-    setDragging(false)
+    setDragging(false);setDragLand(null)
     pointers.current.delete(e.pointerId)
     if (pinch.current) {
       if (pointers.current.size === 0) pinch.current = null
@@ -400,13 +455,14 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
     const g = gesture.current
     gesture.current = null
     if (!g) return
+    if(g.kind==='batch'&&g.land){commitBatch(g.land,point(e));return}
     if (tool === 'floor' && !g.moved) {
       const next = paintFloor(state, point(e), floor)
       if (next) {
         change(next)
         setMessage(
-          floor === 'grass'
-            ? '잔디로 복원하고 타일을 보관함으로 돌려보냈어요.'
+          floor === 'bare'
+            ? '맨땅으로 복원하고 타일을 보관함으로 돌려보냈어요.'
             : '바닥 타일을 깔았어요. 땅과 시설의 배치 조건은 그대로예요.',
         )
       } else
@@ -414,20 +470,24 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
           '땅 위의 빈 바닥을 고르거나 남은 타일 수량을 확인해주세요. 바다에는 깔 수 없어요.',
         )
     } else if (tool === 'land' && !g.moved) {
-      const next = addLand(state, point(e))
+      const next = movingLand?moveLand(state,movingLand,point(e)):addLand(state, point(e))
       if (next) {
         change(next)
+        setLandPulse({...point(e),key:Date.now()})
+        if(movingLand){setMovingLand(null);setTool('edit');setSelectedLand(point(e))}
         setMessage(
-          state.landStock > 0
-            ? '보관한 땅을 다시 배치했어요.'
-            : `땅 한 칸을 추가했어요. · ${LAND_PRICE} 체험 코인`,
+          movingLand?'땅 조각과 타일을 함께 옮겼어요.':'보관한 땅을 배치했어요.',
         )
       } else
         setMessage(
-          state.coins < LAND_PRICE && state.landStock === 0
-            ? '체험 코인이 부족해요. 상점에서 무료 충전할 수 있어요.'
+          !movingLand&&state.landStock === 0
+            ? '보관한 땅이 없어요. 꾸미기 상점에서 땅을 먼저 구매해주세요.'
             : '빈 바다 칸을 눌러주세요. 부두가 있는 칸에는 땅을 놓을 수 없어요.',
         )
+    } else if(g.kind==='land'&&g.moved&&g.land){
+      const next=moveLand(state,g.land,point(e))
+      if(next){change(next);setSelectedLand(point(e));setLandPulse({...point(e),key:Date.now()});setMessage('땅 조각과 타일을 함께 옮겼어요.')}
+      else setMessage('빈 바다에 놓아주세요. 놓을 수 없는 곳에서는 원래 위치를 유지해요.')
     } else if (g.kind === 'item' && g.moved && g.id) {
       const p = point(e)
       place({
@@ -439,7 +499,7 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
       setSelectedLand(null)
       setSelected(g.id)
       setRotation(state.layout.find((p) => p.id === g.id)?.rotation ?? 0)
-    } else if (!g.moved && g.id && tool === 'edit') {
+    } else if (!g.moved && g.id && tool === 'edit'&&editMode==='decorate') {
       setSelectedLand(null)
       setSelected(g.id)
       setRotation(state.layout.find((p) => p.id === g.id)?.rotation ?? 0)
@@ -450,21 +510,22 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
       setPending(false)
       const cell = point(e)
       setSelectedLand(
-        tool === 'edit' && isLand(cell.x, cell.y, state.land, state.removedLand) ? cell : null,
+        tool === 'edit' && editMode==='terrain'&&isLand(cell.x, cell.y, state.land, state.removedLand) ? cell : null,
       )
     }
     setGhost(null)
   }
   function cancel(e: ReactPointerEvent<SVGSVGElement>) {
-    setDragging(false)
+    setDragging(false);setDragLand(null)
     pointers.current.delete(e.pointerId)
     gesture.current = null
     pinch.current = null
-    setGhost(null)
+    setGhost(null);setBatchPreview(null)
   }
   function rotateSelected() {
     if (!selected || !canRotate(selected)) return
     const nextRotation = (rotation + 90) % 360
+    if(batchType){setRotation(nextRotation);return}
     setRotation(nextRotation)
     const p = state.layout.find((p) => p.id === selected)
     if (
@@ -569,14 +630,15 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
             />
           ))}
         </g>
-        <rect
+        {showGrid && <rect
+          data-island-grid
           x="0"
           y="0"
           width={WORLD.width}
           height={WORLD.height}
           fill="url(#island-grid)"
           pointerEvents="none"
-        />
+        />}
         {selectedLand && tool === 'edit' && (
           <rect
             x={selectedLand.x * 32}
@@ -606,6 +668,7 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
                 aria-label={`${f.name} 선택`}
                 className="island-object"
                 onKeyDown={(e) => {
+                  if(editMode!=='decorate'||batchType)return
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault()
                     setSelectedLand(null)
@@ -628,7 +691,7 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
                 }}
               >
                 <rect width={bounds.w * 32} height={bounds.h * 32} fill="transparent" />
-                {selected === p.id && (
+                {selected === p.id && !batchType && (
                   <rect
                     x="-5"
                     y="-6"
@@ -642,10 +705,24 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
                     strokeDasharray="6 4"
                   />
                 )}
-                <Building f={f} rotation={p.rotation} />
+                <Building f={f} rotation={p.rotation} label={p.label} connections={decorationConnections(state.layout,p)}/>
               </g>
             )
           })}
+        {!panel&&(dragLand||tool==='land'&&(state.landStock>0||movingLand))&&landPreview&&(()=>{
+          const source=dragLand??movingLand
+          const allowed=!!(source?moveLand(state,source,landPreview):addLand(state,landPreview))
+          return <g data-land-preview data-valid={allowed} pointerEvents="none" transform={`translate(${landPreview.x*32} ${landPreview.y*32})`}>
+            <rect width="32" height="32" rx="3" fill={allowed?'#91b58b':'#d99180'} fillOpacity=".35" stroke={allowed?'#6b9367':'#bf715f'} strokeWidth="2"/>
+            <g className="island-land-ghost"><rect y="-8" width="32" height="32" rx="4" fill="#d4bf9d"/><rect y="-12" width="32" height="30" rx="4" fill="#e7d2b5" stroke={allowed?'#fff7df':'#bf715f'} strokeWidth="2"/><path d="M7 0h3m11 8h3" stroke="#cbb18e" strokeWidth="1.5"/></g>
+          </g>
+        })()}
+        {landPulse&&<rect key={landPulse.key} className="island-land-placed" x={landPulse.x*32} y={landPulse.y*32} width="32" height="32" rx="4" fill="none" stroke="#fff8df" strokeWidth="3" pointerEvents="none"/>}
+        {batchType&&batchPlan&&batchPlan.slots.map((slot,i)=>{
+          const f=facilityFor(batchType)!,bounds=footprint(slot.placement)
+          const previewLayout=[...state.layout,...batchPlan.placements]
+          return <g key={i} data-decoration-preview data-valid={slot.allowed} pointerEvents="none" opacity=".65" transform={`translate(${slot.cell.x*32} ${slot.cell.y*32})`}><rect width={bounds.w*32} height={bounds.h*32} rx="3" fill={slot.allowed?'#a9c993':'#df9a89'} stroke={slot.allowed?'#729166':'#b76d5b'} strokeWidth="1.5"/><Building f={f} rotation={slot.placement.rotation} label={slot.placement.label} connections={decorationConnections(previewLayout,slot.placement)}/></g>
+        })}
         {ghost &&
           (() => {
             const f = resolve(ghost.id)!
@@ -671,6 +748,12 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
             )
           })()}
       </svg>
+      {tool==='land'&&!panel&&<section aria-label="땅 배치" className="island-land-placement">
+        <div className="island-held-land" aria-hidden="true"><LandThumbnail/></div>
+        <div className="island-land-placement-copy"><strong>{movingLand?'땅 조각 이동 중':state.landStock>0?'땅 배치 중':'땅을 모두 배치했어요'}</strong><span role="status" aria-live="polite">{movingLand?'타일도 함께 이동해요':<>남은 땅 <b>{state.landStock}</b>칸</>}</span><small>{movingLand?'옮길 바다 칸을 눌러주세요.':state.landStock>0?'빈 바다를 눌러 한 칸씩 놓으세요.':'상점에서 땅을 더 구매할 수 있어요.'}</small></div>
+        <div className="island-land-placement-actions">{!movingLand&&state.landStock===0&&<button className="island-small-button" onClick={()=>{setPanel('shop');setCategory('land');setSearch('')}}>구매하기</button>}<button className="island-small-button" onClick={()=>{setTool('edit');setMovingLand(null);setLandPreview(null)}}><Check size={15}/>{movingLand?'취소':'완료'}</button></div>
+      </section>}
+      <div role="group" aria-label="섬 편집 모드" className="island-edit-modes"><button aria-pressed={editMode==='decorate'} onClick={()=>switchMode('decorate')}>꾸미기</button><button aria-pressed={editMode==='terrain'} onClick={()=>switchMode('terrain')}>땅 편집</button></div>
       <header className="island-topbar">
         <div className="island-title-card">
           <Link to="/aquarium" aria-label="섬 나가기" className="island-icon-button">
@@ -731,16 +814,16 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
         <RotateCcw size={14} />
         <span>기본 배치</span>
       </button>
-      <div className="island-message island-message--browse" role="status">
+      <div hidden={!!batchType||(tool==='land'||tool==='floor')&&!panel} className="island-message island-message--browse" role="status">
         {message}
       </div>
       {tool === 'floor' && !panel && (
         <div className="island-floor-tool">
           <strong>
-            {floor === 'grass' ? '잔디로 복원' : floorTiles.find((t) => t.id === floor)?.name}
+            {floor === 'bare' ? '맨땅으로 복원' : floorTiles.find((t) => t.id === floor)?.name}
           </strong>
           <span>
-            {floor === 'grass'
+            {floor === 'bare'
               ? '걷어낸 타일은 보관함으로 돌아가요'
               : `남은 타일 ${state.tileStock[floor] ?? 0}개 · 땅을 눌러 한 칸씩 깔기`}
           </span>
@@ -755,7 +838,7 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
       )}
       {tool === 'edit' && current && selected && !panel && (
         <section
-          className={`island-selected-card ${pending ? 'is-placing' : ''}`}
+          className={`island-selected-card ${pending ? 'is-placing' : ''} ${batchType?'is-batch-placement':''}`}
           role="dialog"
           aria-labelledby="island-selected-title"
           aria-modal="false"
@@ -763,32 +846,33 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
           <header className="island-selected-header">
             <div className="island-selected-art" aria-hidden="true">
               <svg viewBox={buildingViewBox(current, rotation)}>
-                <Building f={current} rotation={rotation} />
+                <Building f={current} rotation={rotation} label={signText}/>
               </svg>
             </div>
             <div className="island-selected-heading">
               <span>{current.category === 'decoration' ? '섬 꾸미기' : '나의 시설'}</span>
               <h2 id="island-selected-title">{current.name}</h2>
               <p>
-                {pending
-                  ? current.placementTerrain === 'any'
+                {batchType?<><span role="status" aria-live="polite">보유 {batchStock.length}개{batchPlan?` · 배치 예정 ${batchPlan.placements.length}개`:''}</span><br/>{batchStock.length===0?'모두 배치했어요.':supportsLinePlacement(batchType)?'톡톡 누르거나 끌어서 한 줄 배치 · 두 손가락으로 화면 이동':'톡톡 눌러 연속 배치 · 두 손가락으로 화면 이동'}</>:pending
+                  ? current.placementTerrain === 'water'
+                    ? '바다에 놓고 회전해서 땅과 땅을 이어보세요'
+                  : current.placementTerrain === 'any'
                     ? '육지나 바다를 눌러 배치하세요'
                     : '빈 땅을 눌러 배치하세요'
-                  : `${current.w} × ${current.h}칸 · ${current.placementTerrain === 'any' ? '육지·바다' : current.kind === 'dock' ? '해안 전용' : current.category === 'decoration' ? '장식물' : '건물'}`}
+                  : `${current.w} × ${current.h}칸 · ${current.placementTerrain === 'water'?'바다 전용':current.placementTerrain === 'any' ? '육지·바다' : current.kind === 'dock' ? '해안 전용' : current.category === 'decoration' ? '장식물' : '건물'}`}
               </p>
             </div>
             <button
               className="island-selected-close island-icon-button"
               aria-label="시설 선택 닫기"
               onClick={() => {
-                setSelected(null)
-                setPending(false)
-                setGhost(null)
+                finishBatch()
               }}
             >
               <X size={16} />
             </button>
           </header>
+          {(current.kind==='arrow-sign'||current.kind==='name-sign')&&placed&&!pending&&<form className="island-sign-form" onSubmit={e=>{e.preventDefault();change({...state,signLabels:{...state.signLabels,[selected]:signText.trim().slice(0,16)},layout:state.layout.map(p=>p.id===selected?{...p,label:signText.trim().slice(0,16)}:p)});setMessage('표지판 문구를 저장했어요.')}}><label htmlFor="island-sign-text">{current.kind==='name-sign'?'섬 이름':'표지판 문구'}</label><div><input id="island-sign-text" value={signText} onChange={e=>setSignText(e.target.value)} maxLength={16} placeholder={current.kind==='name-sign'?'나의 퐁당섬':'이쪽으로'} /><button className="island-small-button" type="submit">저장</button></div><small>{signText.length} / 16자</small></form>}
           <div className="island-selected-actions">
             {canRotate(selected) && (
               <button className="island-small-button" onClick={rotateSelected}>
@@ -802,19 +886,12 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
                 판매 {decorationSellPrice(selected)}
               </button>
             )}
-            {placed && !pending ? (
+            {batchType?<>
+              <button className="island-small-button" disabled={!batchSteps} onClick={undo}><Undo2 size={14}/>되돌리기</button>
+              {batchStock.length===0&&<button className="island-small-button" onClick={()=>{finishBatch();setPanel('shop');setCategory('decoration');setSearch(current.name)}}>구매하기</button>}
+              <button className="island-small-button island-enter" onClick={finishBatch}><Check size={14}/>완료</button>
+            </>:placed && !pending ? (
               <>
-                <button
-                  className="island-small-button"
-                  onClick={() => {
-                    setTool('edit')
-                    setPending(true)
-                    setMessage('새 위치를 누르거나 시설을 끌어 옮기세요.')
-                  }}
-                >
-                  <Move size={14} />
-                  이동
-                </button>
                 <button
                   className="island-small-button"
                   onClick={() => {
@@ -865,7 +942,7 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
             </div>
             <div className="island-selected-heading">
               <span>나의 땅</span>
-              <h2 id="island-land-title">잔디 땅</h2>
+              <h2 id="island-land-title">땅 조각</h2>
               <p>1 × 1칸 · 땅</p>
             </div>
             <button
@@ -877,13 +954,17 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
             </button>
           </header>
           <div className="island-selected-actions">
+            <button className="island-small-button" onClick={()=>{
+              if(!storeLand({...state,landStock:0},selectedLand)){setMessage('시설이 있거나 다른 배치를 지탱하는 땅은 옮길 수 없어요. 먼저 시설을 옮겨주세요.');return}
+              setMovingLand(selectedLand);setLandPreview(selectedLand);setTool('land');setSelected(null);setSelectedLand(null);setPending(false)
+            }}>이동</button>
             <button
               className="island-small-button"
               onClick={() => {
                 const next = storeLand(state, selectedLand)
                 if (next) {
                   change(next)
-                  setMessage('땅 한 칸을 보관했어요. 보관함에서 꺼내 다시 배치할 수 있어요.')
+                  setMessage('땅 조각 한 개를 보관했어요. 보관함에서 꺼내 다시 배치할 수 있어요.')
                 } else
                   setMessage(
                     '건물이나 장식물이 있는 땅은 보관할 수 없어요. 먼저 시설을 옮겨주세요.',
@@ -907,14 +988,13 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
               setMessage('시설을 눌러 이동·보관하거나 페이지로 들어가세요.')
               return
             }
-            setTool('land')
+            if(state.landStock===0){setPanel('shop');setCategory('land');setSearch('');setMessage('꾸미기 상점에서 땅을 구매한 뒤 배치해주세요.');return}
+            setEditMode('terrain');setTool('land')
             setPanel(null)
             setSelected(null)
             setPending(false)
             setMessage(
-              state.landStock > 0
-                ? `빈 바다를 누르면 보관한 땅을 꺼내요. · 남은 땅 ${state.landStock}칸`
-                : `빈 바다를 누르면 땅 한 칸을 추가해요. · 한 칸 ${LAND_PRICE} 체험 코인`,
+              `빈 바다를 눌러 보관한 땅을 배치하세요. · 남은 땅 ${state.landStock}칸`,
             )
           }}
         >
@@ -947,17 +1027,7 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
         <button
           aria-label="되돌리기"
           disabled={!history.length}
-          onClick={() => {
-            const previous = history.at(-1)
-            if (previous) {
-              setLocal(previous)
-              setHistory((h) => h.slice(0, -1))
-              setSelected(null)
-              setSelectedLand(null)
-              setPending(false)
-              setMessage('이전 상태로 되돌렸어요.')
-            }
-          }}
+          onClick={undo}
         >
           <Undo2 size={20} />
           <span>되돌리기</span>
@@ -1039,22 +1109,23 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
             onChange={(e) => setSearch(e.target.value)}
           />
           <div className="island-products">
-            {panel === 'storage' &&
-              inventoryMode === 'stored' &&
+            {(panel === 'shop' || (panel === 'storage' && inventoryMode === 'stored')) &&
               (category === 'all' || category === 'land') &&
-              state.landStock > 0 &&
-              '잔디 땅'.includes(search.trim()) && (
+              (panel === 'shop'||state.landStock > 0) &&
+              '땅 조각'.includes(search.trim()) && (
                 <article className="island-product">
                   <div className="island-product-art">
                     <LandThumbnail />
                     <span className="island-count">{state.landStock}개</span>
                   </div>
-                  <h3>잔디 땅</h3>
+                  <h3>땅 조각</h3>
                   <small>1 × 1칸 · 바다에 배치</small>
                   <button
                     className="island-buy-button"
+                    disabled={panel==='shop'&&(state.coins<LAND_PRICE||state.landStock>=10000)}
                     onClick={() => {
-                      setTool('land')
+                      if(panel==='shop'){const next=buyLand(state);if(next){change(next);setMessage('땅 조각 한 개를 구매했어요. 보관함에서 꺼내 배치하세요.')}return}
+                      setEditMode('terrain');setTool('land')
                       setPanel(null)
                       setSelected(null)
                       setSelectedLand(null)
@@ -1064,7 +1135,7 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
                       )
                     }}
                   >
-                    배치하기
+                    {panel==='shop'?`구매 ${LAND_PRICE}`:'배치하기'}
                   </button>
                 </article>
               )}
@@ -1099,7 +1170,7 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
                           }
                         } else {
                           setFloor(tile.id)
-                          setTool('floor')
+                          setEditMode('terrain');setTool('floor')
                           setSelected(null)
                           setPending(false)
                           setPanel(null)
@@ -1138,7 +1209,7 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
                   <h3>{f.name}</h3>
                   <small>
                     {f.w} × {f.h}칸{f.kind === 'dock' ? ' · 해안 전용' : ''}
-                    {f.placementTerrain === 'any' ? ' · 육지·바다' : ''}
+                    {f.placementTerrain === 'water'?' · 바다 전용':f.placementTerrain === 'any' ? ' · 육지·바다' : ''}
                     {f.category === 'decoration'
                       ? canRotate(f.id)
                         ? ' · 회전 가능'
@@ -1157,6 +1228,7 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
                         setSelectedLand(null)
                         setSelected(ids[0])
                         const existing = state.layout.find((p) => p.id === ids[0])
+                        setBatchType(!existing&&f.category==='decoration'?f.id:null);setBatchPreview(null);setBatchSteps(0)
                         setRotation(existing?.rotation ?? 0)
                         setPending(!existing)
                         if (existing)
@@ -1165,11 +1237,13 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
                             x: (existing.x + f.w / 2) * 32,
                             y: (existing.y + f.h / 2) * 32,
                           }))
-                        setTool('edit')
+                        setEditMode('decorate');setTool('edit')
                         setPanel(null)
                         setMessage(
                           f.kind === 'dock'
                             ? '육지와 바다가 닿는 곳에 항구를 놓으세요. 회전해서 방향을 바꿀 수 있어요.'
+                            : f.placementTerrain === 'water'
+                              ? '바다에 놓고 회전해서 땅과 땅을 이어보세요.'
                             : f.placementTerrain === 'any'
                               ? '육지나 바다를 눌러 배치하세요. 드래그하면 지도를 이동해요.'
                               : '빈 땅을 눌러 배치하세요. 드래그하면 지도를 이동해요.',
@@ -1208,14 +1282,14 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
             <button
               className="island-refill"
               onClick={() => {
-                setFloor('grass')
-                setTool('floor')
+                setFloor('bare')
+                setEditMode('terrain');setTool('floor')
                 setPanel(null)
                 setSelected(null)
                 setPending(false)
               }}
             >
-              잔디로 복원 · 깔린 타일 회수
+              맨땅으로 복원 · 깔린 타일 회수
             </button>
           )}
           {panel === 'storage' &&
@@ -1224,7 +1298,7 @@ function IslandEditor({ storageKey, managed }: { storageKey: string; managed?: F
               inventoryMode === 'stored' &&
               (category === 'all' || category === 'land') &&
               state.landStock > 0 &&
-              '잔디 땅'.includes(search.trim())
+              '땅 조각'.includes(search.trim())
             ) &&
             !(
               category === 'all' &&

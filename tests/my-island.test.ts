@@ -7,6 +7,7 @@ import {
   parseState,
   readState,
   addLand,
+  buyLand,
   footprint,
   isLand,
   LAND_PRICE,
@@ -64,7 +65,7 @@ it('preserves stored facilities and rejects corrupt placements', () => {
 it('adds isolated sea tiles and joins them back to the square island', () => {
   let state = defaultState()
   const coins = state.coins
-  for (const x of [36, 35, 34]) state = addLand(state, { x, y: 16 })!
+  for (const x of [36, 35, 34]) state = addLand(buyLand(state)!, { x, y: 16 })!
   expect(state.land).toHaveLength(3)
   expect(state.coins).toBe(coins - 3 * LAND_PRICE)
   for (let x = 33; x <= 36; x++) expect(isLand(x, 16, state.land)).toBe(true)

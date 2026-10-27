@@ -1,3 +1,6 @@
+import {gardenKinds} from './garden-decoration-catalog'
+import {GardenDecoration} from './garden-decoration'
+import {WaterwayDecoration} from './waterway-decoration'
 import {
   FuelProductionFacility,
   BaitProductionFacility,
@@ -11,7 +14,10 @@ import { ActivityLandmark } from './activity-landmarks'
 import type { Facility } from './island-model'
 import { canRotate } from './island-model'
 import { RotatedFacilityArt } from './rotated-facility-art'
-export function Building({ f, rotation = 0 }: { f: Facility; rotation?: number }) {
+export function Building({ f, rotation = 0,label,connections }: { f: Facility; rotation?: number;label?:string;connections?:{north:boolean;east:boolean;south:boolean;west:boolean} }) {
+  rotation=canRotate(f.id)?rotation:0
+  if(gardenKinds.has(f.kind))return <GardenDecoration f={f} rotation={rotation} label={label} connections={connections}/>
+  if(['bridge','stepping-stones','reeds'].includes(f.kind))return <WaterwayDecoration f={f} rotation={rotation}/>
   if (rotation && canRotate(f.id)) return <RotatedFacilityArt f={f} rotation={rotation} />
   const { w, h, sx, sy, x, y } = artGeometry(f)
   return (

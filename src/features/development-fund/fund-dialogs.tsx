@@ -12,13 +12,14 @@ export const statusLabels={pending:'확인 대기',confirmed:'확인 완료',rej
 export const fundDate=(value:string)=>new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date(value))
 const localKst=()=>new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date()).replace(' ','T')
 export function FundSubmitDialog({open,onOpenChange,onSubmit}:{open:boolean;onOpenChange:(open:boolean)=>void;onSubmit:(draft:FundDraft)=>Promise<void>}){
+ const [message,setMessage]=useState('')
  const [name,setName]=useState(''),[amount,setAmount]=useState(''),[date,setDate]=useState(localKst),[busy,setBusy]=useState(false),[error,setError]=useState(''),[complete,setComplete]=useState(false)
  const pending=useRef<FundDraft|null>(null)
  async function submit(e:FormEvent){e.preventDefault();if(busy)return;setError('');const n=Number(amount)
   if(!pending.current&&(!name.trim()||!Number.isSafeInteger(n)||n<1||n>1000000000||!date)){setError('입금자명·금액·입금 일시를 확인해주세요.');return}
-  if(!pending.current)pending.current={id:crypto.randomUUID(),depositorName:name.trim(),reportedWon:n,remittedAt:new Date(date+':00+09:00').toISOString(),message:'',publicProfile:true}
+  if(!pending.current)pending.current={id:crypto.randomUUID(),depositorName:name.trim(),reportedWon:n,remittedAt:new Date(date+':00+09:00').toISOString(),message:message.trim(),publicProfile:true}
   setBusy(true)
-  try{await onSubmit(pending.current);pending.current=null;setName('');setAmount('');setComplete(true)}catch(cause){setError(fundError(cause));if(/INVALID_|FUND_REPORT_LIMIT|AUTH_REQUIRED|FUND_PROFILE_REQUIRED/.test(String((cause as {message?:string})?.message)))pending.current=null}finally{setBusy(false)}
+  try{await onSubmit(pending.current);pending.current=null;setName('');setAmount('');setMessage('');setComplete(true)}catch(cause){setError(fundError(cause));if(/INVALID_|FUND_REPORT_LIMIT|AUTH_REQUIRED|FUND_PROFILE_REQUIRED/.test(String((cause as {message?:string})?.message)))pending.current=null}finally{setBusy(false)}
  }
  const locked=busy||!!pending.current
  const close=()=>{setComplete(false);onOpenChange(false)}
@@ -30,6 +31,11 @@ export function FundSubmitDialog({open,onOpenChange,onSubmit}:{open:boolean;onOp
    <div className="space-y-1.5"><Label htmlFor="fund-payer">입금자명</Label><Input id="fund-payer" value={name} onChange={e=>setName(e.target.value)} maxLength={40} required disabled={locked} autoComplete="off"/></div>
    <div className="space-y-1.5"><Label htmlFor="fund-amount">입금한 금액 (원)</Label><Input id="fund-amount" type="number" inputMode="numeric" min={1} max={1000000000} step={1} value={amount} onChange={e=>setAmount(e.target.value)} required disabled={locked} placeholder="예: 5,000원 → 5000"/></div>
    <div className="space-y-1.5"><Label htmlFor="fund-date">입금 일시 (한국시간)</Label><Input id="fund-date" type="datetime-local" value={date} onChange={e=>setDate(e.target.value)} required disabled={locked} className="min-w-0 w-full"/></div>
+   <div className="space-y-1.5">
+    <div className="flex items-center justify-between gap-3"><Label htmlFor="fund-message">전달할 메시지 <span className="text-xs font-normal text-muted-foreground">(선택)</span></Label><span id="fund-message-count" className="text-[10px] tabular-nums text-muted-foreground">{message.length} / 200</span></div>
+    <textarea id="fund-message" value={message} onChange={e=>setMessage(e.target.value)} maxLength={200} rows={3} disabled={locked} aria-describedby="fund-message-hint fund-message-count" placeholder="운영팀에 전하고 싶은 이야기를 남겨주세요." className="w-full resize-none rounded-xl border border-input bg-secondary/20 px-3 py-2.5 text-sm leading-6 outline-none transition-colors placeholder:text-muted-foreground/65 focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/30 disabled:cursor-not-allowed disabled:opacity-60"/>
+    <p id="fund-message-hint" className="text-[11px] text-muted-foreground">후원 내역과 함께 운영팀에 전달돼요.</p>
+   </div>
    {error&&<p role="alert" className="text-xs leading-5 text-destructive">{error}</p>}
    <div className="mt-6 border-t border-border/50 pt-5"><Button type="submit" disabled={busy} className="min-h-12 w-full rounded-xl text-sm">{busy?<LoaderCircle className="size-4 animate-spin"/>:<Heart className="size-4"/>}{pending.current?'신고 결과 다시 확인':'후원했어요'}</Button></div>
   </form>

@@ -30,13 +30,13 @@ it('keeps existing building positions while clearing their old rotations', () =>
 it('places every navigation destination in the complete starter without collisions', () => {
   const state = createDefaultIsland(),
     items = ownedFacilities()
-  expect(state.layout.length).toBe(items.length + 1)
+  expect(state.layout.length).toBe(items.length + 2)
   for (const item of items)
     expect(
       state.layout.filter((p) => p.id === item.id),
       item.name,
     ).toHaveLength(['/farm', '/decoration-shop'].includes(item.to ?? '') ? 0 : 1)
-  for (const p of state.layout) expect(canPlace(state.layout, p, state.land), p.id).toBe(true)
+  for (const p of state.layout) expect(canPlace(state.layout, p, state.land,state.removedLand), p.id).toBe(true)
   expect(parseState(state).layout).toEqual(state.layout)
 })
 it('sizes compact destinations consistently for rendering and collision checks', () => {

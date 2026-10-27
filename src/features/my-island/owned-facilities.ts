@@ -5,6 +5,7 @@ import {
   canPlace,
   footprint,
   canRotate,
+  isLand,
 } from './island-model'
 import type { Facility, IslandState } from './island-model'
 import { headerPlaces } from '@/components/header-place-navigation'
@@ -107,15 +108,21 @@ export function visibleIslandState(local: IslandState, items: Facility[]): Islan
     layout: mergeBuildings(local.layout).filter((p) => isDecoration(p.id) || ids.has(p.id)),
   }
 }
-/** Complete starter town: keep the plaza, then arrange every remaining destination around it. */
+/** Keep a quiet central lake, with shops north and production along the west edge. */
 export function createDefaultIsland(): IslandState {
   const state = localIslandState(defaultState()),
     items = ownedFacilities()
+  state.removedLand = Array.from({length:9},(_,i)=>({x:19+i%3,y:16+Math.floor(i/3)}))
+  state.owned.push('rubber-duck~starter-lake')
+  state.layout.push({id:'rubber-duck~starter-lake',x:20,y:17})
   const preferred: Record<string, [number, number]> = {
-    '/production': [7, 14],
-    '/bait-production': [7, 19],
-    '/my-bait-production': [7, 23],
-    '/warehouse': [7, 27],
+    '/aquarium':[19,9],'/notifications':[17,13],'/collection':[13,12],'/storage':[25,12],'/friends':[31,21],
+    '/titles':[15,23],'/relics':[13,18],'/harbor':[19,23],'/square/notices':[27,14],'/board':[27,18],'/music-room':[16,26],'/savings':[27,23],'/arcade':[24,26],
+
+    '/production': [8, 12],
+    '/bait-production': [8, 17],
+    '/my-bait-production': [8, 22],
+    '/warehouse': [8, 27],
     '/shop': [27, 5],
     '/shipyard': [25, 28],
     '/port': [20, 30],
@@ -133,12 +140,16 @@ export function createDefaultIsland(): IslandState {
     '/square/sponsorship': [7, 9],
     '/square/begging': [11, 17],
   }
+  // Reposition the starter facilities into clear shop, production and community areas.
+  for(const p of state.layout){const f=items.find(f=>f.id===p.id),spot=f&&preferred[f.to??''];if(spot){p.x=spot[0];p.y=spot[1]}}
   const missing = items.filter(
     (f) => !initiallyStored.has(f.to ?? '') && !state.layout.some((p) => p.id === f.id),
   )
   const place = (id: string, x: number, y: number) => {
     const p = { id, x, y }
-    if (!canPlace(state.layout, p, state.land)) return false
+    if (!canPlace(state.layout, p, state.land,state.removedLand)) return false
+    const size=footprint(p)
+    if(x<23&&x+size.w>18&&y<20&&y+size.h>15)return false
     state.layout.push(p)
     return true
   }
@@ -175,6 +186,15 @@ export function createDefaultIsland(): IslandState {
         for (let x = 6; x < 34 && !placed; x++) placed = place(f.id, x, y)
     if (!placed) throw new Error(`기본 섬의 배치 공간이 부족해요: ${f.name}`)
   }
+  const surfaces=new Map<string,{x:number;y:number;type:'grass'|'stone'|'wood'}>()
+  const surface=(x:number,y:number,type:'grass'|'stone'|'wood')=>{if(isLand(x,y,state.land,state.removedLand))surfaces.set(x+','+y,{x,y,type})}
+  // Grass is a recoverable surface, rather than the underlying land.
+  for(const [left,top,right,bottom] of [[12,11,16,21],[24,11,28,21],[17,8,23,12],[14,23,26,27]])
+    for(let y=top;y<=bottom;y++)for(let x=left;x<=right;x++)surface(x,y,'grass')
+  for(let x=11;x<=30;x++){surface(x,8,'stone');surface(x,28,'stone')}
+  for(let y=8;y<=28;y++){surface(11,y,'stone');surface(29,y,'stone')}
+  for(let y=15;y<=19;y++)for(let x=18;x<=22;x++)if(x===18||x===22||y===15||y===19)surface(x,y,'wood')
+  state.paving=[...surfaces.values()]
   return state
 }
 export function readPageIsland(key: string): IslandState {

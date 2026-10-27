@@ -20,20 +20,20 @@ it('limits rotation to decorations and the coastal dock with matching collision 
     const rotatable = f.rotatable === true
     expect(canRotate(f.id), f.name).toBe(rotatable)
     for (const rotation of [0, 90, 180, 270]) {
-      const p = { id: f.id, x: 20, y: 15, rotation }
+      const p = { id: f.id, x: f.placementTerrain==='water'?35:20, y: 15, rotation }
       expect(footprint(p)).toEqual(rotation % 180 === 90 ? { w: f.h, h: f.w } : { w: f.w, h: f.h })
       if (f.kind === 'dock') continue
       if (!rotatable && rotation) {
         expect(canPlace([], p), f.name).toBe(false)
         expect(parseState({ ...defaultState(), owned: [f.id], layout: [p] }).layout).toEqual([
-          { id: f.id, x: 20, y: 15 },
+          { id: f.id, x: p.x, y: 15 },
         ])
         continue
       }
       expect(canPlace([], p), f.name).toBe(true)
       const state = { ...defaultState(), owned: [f.id], layout: [p] }
       expect(parseState(state).layout).toEqual([
-        { id: f.id, x: 20, y: 15, ...(rotation ? { rotation } : {}) },
+        { id: f.id, x: p.x, y: 15, ...(rotation ? { rotation } : {}) },
       ])
       expect(
         storeLand(state, { x: p.x + footprint(p).w - 1, y: p.y + footprint(p).h - 1 }),

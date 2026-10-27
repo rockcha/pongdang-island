@@ -1,6 +1,8 @@
 import { expect, it } from 'vitest'
 import {
   addLand,
+  moveLand,
+  buyLand,
   buyFloor,
   canPlace,
   defaultState,
@@ -36,7 +38,7 @@ it('moves original ground to a new island and stores purchased ground', () => {
   expect(state.land).toEqual([])
   expect(state.landStock).toBe(1)
   expect(state.removedLand).toEqual([{ x: 8, y: 8 }])
-  const bought = addLand(defaultState(), { x: 36, y: 16 })!
+  const bought = addLand(buyLand(defaultState())!, { x: 36, y: 16 })!
   expect(storeLand(bought, { x: 36, y: 16 })?.landStock).toBe(1)
 })
 it('rejects removal under buildings, decorations and all rotated dock footprints', () => {
@@ -80,4 +82,38 @@ it('preserves holes, land inventory and layouts after a save round trip', () => 
   expect(parseState({ ...stored, landStock: -1 }).landStock).toBe(0)
   expect(storeLand(stored, { x: -1, y: 8 })).toBeNull()
   expect(storeLand(stored, { x: 7.5, y: 8 })).toBeNull()
+})
+
+it('requires land inventory even with enough coins and charges only at purchase',()=>{
+ const state=defaultState()
+ expect(addLand(state,{x:36,y:16})).toBeNull()
+ const bought=buyLand(state)!
+ expect(bought.landStock).toBe(1)
+ expect(bought.coins).toBe(state.coins-50)
+ const placed=addLand(bought,{x:36,y:16})!
+ expect(placed.landStock).toBe(0)
+ expect(placed.coins).toBe(bought.coins)
+ expect(buyLand({...state,coins:49})).toBeNull()
+})
+it('moves a land piece with its tile without charging coins or changing stock',()=>{
+ const original=paintFloor(buyFloor(defaultState(),'grass')!,{x:8,y:8},'grass')!
+ const moved=moveLand(original,{x:8,y:8},{x:36,y:16})!
+ expect(isLand(8,8,moved.land,moved.removedLand)).toBe(false)
+ expect(isLand(36,16,moved.land,moved.removedLand)).toBe(true)
+ expect(moved.paving).toContainEqual({x:36,y:16,type:'grass'})
+ expect(moved.paving.some(p=>p.x===8&&p.y===8)).toBe(false)
+ expect(moved.tileStock).toEqual(original.tileStock)
+ expect(moved.landStock).toBe(original.landStock)
+ expect(moved.coins).toBe(original.coins)
+ expect(parseState(moved)).toEqual(moved)
+ expect(original.removedLand).toEqual([])
+})
+it('rejects blocked land moves atomically and supports moving when inventory is full',()=>{
+ const state=defaultState()
+ expect(moveLand(state,{x:19,y:10},{x:36,y:16})).toBeNull()
+ expect(moveLand(state,{x:8,y:8},{x:9,y:8})).toBeNull()
+ expect(moveLand(state,{x:8,y:8},{x:8,y:8})).toBeNull()
+ expect(moveLand(state,{x:8,y:8},{x:-1,y:8})).toBeNull()
+ expect(moveLand({...state,landStock:10000},{x:8,y:8},{x:36,y:16})?.landStock).toBe(10000)
+ expect(state.land).toEqual([]);expect(state.removedLand).toEqual([])
 })

@@ -48,11 +48,18 @@ it('stores only moment metadata in drafts and can open writing without image ser
  expect(value.firstDiscovery).toBe(true);expect(value.renderVersion).toBe(1)
  editor(id)
  expect(screen.getByRole('textbox')).toBeTruthy()
- expect(screen.getByRole('button',{name:'자랑 올리기'})).toHaveProperty('disabled',false)
+ await waitFor(()=>expect(screen.getByRole('button',{name:'자랑 올리기'})).toHaveProperty('disabled',false))
 })
 it('rejects direct entry and drafts belonging to another player',async()=>{
  const id=draft();expect(getShowcaseDraft('other',id)).toBeNull()
  const router=editor();await screen.findByText('자랑 목록');expect(router.state.location.pathname).toBe('/showcase')
+})
+it('waits for a visible catch image before allowing publication',async()=>{
+ let finish!:()=>void;mock.paint.mockReturnValue(new Promise<void>(resolve=>{finish=resolve}))
+ editor(draft())
+ const publish=screen.getByRole('button',{name:'자랑 올리기'})
+ expect(publish).toHaveProperty('disabled',true);fireEvent.click(publish);expect(mock.publish).not.toHaveBeenCalled()
+ finish();await waitFor(()=>expect(publish).toHaveProperty('disabled',false))
 })
 it('locks the preview route for non-operators even in development',async()=>{
  const router=createMemoryRouter([{path:'/showcase/preview',element:<ShowcasePreview/>},{path:'/showcase',element:<p>자랑 목록</p>}],{initialEntries:['/showcase/preview']})
@@ -63,6 +70,7 @@ it('locks the preview route for non-operators even in development',async()=>{
 it('preserves caption and verified attempt reference on ambiguous publication failure',async()=>{
  mock.publish.mockRejectedValueOnce(new Error('offline')).mockResolvedValueOnce('published')
  const router=editor(draft())
+ await waitFor(()=>expect(screen.getByRole('button',{name:'자랑 올리기'})).toHaveProperty('disabled',false))
  const caption=screen.getByRole('textbox',{name:'이 순간, 어땠나요?'})
  expect(caption.getAttribute('maxlength')).toBe('200')
  fireEvent.change(caption,{target:{value:'드디어 만났다!'}})
@@ -77,6 +85,7 @@ it('preserves caption and verified attempt reference on ambiguous publication fa
 })
 it('keeps preview publication and emoji reactions entirely local',async()=>{
  editor(draft(true),true)
+ await waitFor(()=>expect(screen.getByRole('button',{name:'미리보기로 확인'})).toHaveProperty('disabled',false))
  fireEvent.change(screen.getByRole('textbox'),{target:{value:'미리보기 캡션'}})
  fireEvent.click(screen.getByRole('button',{name:'미리보기로 확인'}))
  await screen.findByText('미리보기 캡션')

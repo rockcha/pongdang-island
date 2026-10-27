@@ -60,6 +60,8 @@ export function AquariumPage() {
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
   const [renameOpen, setRenameOpen] = useState(false)
+  const [renameId,setRenameId]=useState<string|null>(null)
+  const renameTank=state?.tanks.find(item=>item.id===renameId)
   const [renameError, setRenameError] = useState('')
   const [purchaseOpen, setPurchaseOpen] = useState(false)
   const [purchaseError, setPurchaseError] = useState('')
@@ -295,9 +297,6 @@ export function AquariumPage() {
       if (active.current) setBusy(false)
     }
   }
-  useEffect(() => {
-    setName(tank?.name ?? '')
-  }, [tank?.id, tank?.name])
   async function buyTank() {
     if (locked.current) return
     locked.current = true
@@ -318,23 +317,23 @@ export function AquariumPage() {
     const target=state?.tanks.find(item=>item.id===id)
     if(!target||busy||goldBusy)return
     navigationRequest.current++
-    setSelectedId(id);setName(target.name);setRenameError('');setRenameOpen(true)
+    setRenameId(id);setName(target.name);setRenameError('');setRenameOpen(true)
   }
   async function rename() {
     if (
-      !tank ||
+      !renameTank ||
       locked.current ||
       goldBusy ||
       !name.trim() ||
       name.length > 8 ||
-      name.trim() === tank.name
+      name.trim() === renameTank.name
     )
       return
     locked.current = true
     setBusy(true)
     setRenameError('')
     try {
-      const data = await manageTank(tank.id, 'rename', name.trim())
+      const data = await manageTank(renameTank.id, 'rename', name.trim())
       if (active.current) {
         setState(data)
         setRenameOpen(false)
@@ -501,7 +500,7 @@ export function AquariumPage() {
                   if (!busy && !goldBusy) {
                     setRenameOpen(value)
                     if (value) {
-                      setName(tank.name)
+                      setName(renameTank?.name??'')
                       setRenameError('')
                     }
                   }
@@ -585,7 +584,7 @@ export function AquariumPage() {
                           goldBusy ||
                           !name.trim() ||
                           name.length > 8 ||
-                          name.trim() === tank.name
+                          !renameTank || name.trim() === renameTank.name
                         }
                       >
                         {busy ? '저장 중…' : '저장'}

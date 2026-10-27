@@ -2,6 +2,7 @@ import { useId } from 'react'
 export function FloorPatterns({ prefix = 'island-floor' }: { prefix?: string }) {
   return (
     <defs>
+      <pattern id={`${prefix}-grass`} width="32" height="32" patternUnits="userSpaceOnUse"><rect width="32" height="32" fill="#b1c994"/><path d="m7 23 2-3 2 3m12-12 2-3 2 3" stroke="#8fac78" strokeWidth="1.1" fill="none" opacity=".65"/></pattern>
       <pattern id={`${prefix}-dirt`} width="32" height="32" patternUnits="userSpaceOnUse">
         <rect width="32" height="32" fill="#d2b78b" />
         <path d="M4 9h3m11 14h4m3-18h2M5 28h2" stroke="#b59b74" strokeWidth="1.3" opacity=".55" />

@@ -1,0 +1,53 @@
+{
+  "project": {
+    "id": "ewafafphiovbpjwogwzn",
+    "name": "pongdang-island"
+  },
+  "verifiedAt": "2026-10-27 18:02:57.007645+00",
+  "scope": "Two theme rows, four public PNG hashes, new migration only, unchanged related aquarium RPCs. Full remote schema/history equivalence and individual player ownership are outside scope.",
+  "themes": [
+    {
+      "id": "black-sail-cove",
+      "name": "검은돛 해적만",
+      "tier": "special",
+      "price": 1100,
+      "image_path": "black-sail-cove-v1.png"
+    },
+    {
+      "id": "sunlit-tropical-aquascape",
+      "name": "햇살이 머무는 열대 수초항",
+      "tier": "mood",
+      "price": 650,
+      "image_path": "sunlit-tropical-aquascape-v1.png"
+    }
+  ],
+  "history": [
+    {
+      "name": "black_sail_cove_aquarium_theme",
+      "version": "20261027175936"
+    }
+  ],
+  "images": [
+    {
+      "file": "sunlit-tropical-aquascape-v1.png",
+      "sha256": "9405ba585ded3b719d02e9a9754f0b033e1f64deec5caff5a5c22280b19a0924",
+      "publicVerified": true
+    },
+    {
+      "file": "sunlit-tropical-aquascape-panorama-v2.png",
+      "sha256": "924250b6a752bddb19ddeee5e3cd8c1ae3b9ce7c6dc7f061e416150b38c50e79",
+      "publicVerified": true
+    },
+    {
+      "file": "black-sail-cove-v1.png",
+      "sha256": "b0737584d6428099e4ec96ef52aa27612d27dc8ea9f841a86b264fff9c37c1e2",
+      "publicVerified": true
+    },
+    {
+      "file": "black-sail-cove-panorama-v2.png",
+      "sha256": "e5314efd3fea9a8f1bcf25eac53fc79f1628126765d0a54b3410ca03595dd8ec",
+      "publicVerified": true
+    }
+  ],
+  "existingRpcsUnchanged": true
+}

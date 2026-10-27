@@ -1,0 +1,43 @@
+{
+  "tool": "built-in image_gen",
+  "createdAt": "2026-10-27T17:19:34.392Z",
+  "theme": {
+    "id": "black-sail-cove",
+    "name": "검은돛 해적만",
+    "designTier": "special"
+  },
+  "status": "generated locally",
+  "items": [
+    {
+      "id": "black-sail-cove-v1",
+      "theme_id": "black-sail-cove",
+      "role": "portrait",
+      "file": "aquarium-backgrounds/black-sail-cove-v1.png",
+      "storage_path": "black-sail-cove-v1.png",
+      "width": 941,
+      "height": 1672,
+      "sha256": "b0737584d6428099e4ec96ef52aa27612d27dc8ea9f841a86b264fff9c37c1e2",
+      "generated_source": "C:\\Users\\user\\.codex\\generated_images\\01a17df4-0715-7532-8ead-20b19285ec60\\exec-3323aa84-f1dd-4416-8b9d-6c34b2fa937e.png",
+      "prompt": "Use case: stylized-concept. Recompose the supplied approved underwater pirate cove into ONE full-bleed opaque PORTRAIT 9:16 mobile aquarium background. Preserve the painterly fantasy illustration, elegant materials and deep teal-blue water with warm amber-gold lantern rays. This is the same '검은돛 해적만' (Black-Sail Pirate Cove). LEFT OUTER edge: just a portion of the large dark wooden pirate ship hull high in the frame, a thick rope going down to a small seaweed-covered iron anchor at bottom-left. RIGHT OUTER edge: barnacled wooden pier piling, worn barrel and a modest partially open treasure chest tucked into bottom-right. Dark sandy floor with a few shells and a few scattered gold coins occupies lower 18-22%. A subtle black-sail shadow can reflect in the rippling underwater ceiling. CENTRAL 60% width and middle 65% height must remain broad clear low-contrast teal swimming water for actual fish sprites, distant faint dock silhouette only. Recompose the objects for portrait instead of cropping the wide scene; don't put the treasure chest or ship in the central swimming corridor. Completely underwater camera, readable luminous teal rather than black, warm lantern shafts from above, cozy adventurous secret-harbor mood at dusk. No built-in fish or ANY animals, people, large skull decorations, words, UI, glass edges, borders, collage or watermark. One coherent beautiful portrait illustration matching the reference.",
+      "reference": "C:\\Users\\user\\.codex\\generated_images\\01a17df4-0715-7532-8ead-20b19285ec60\\exec-2b2b0f32-a3f9-4f04-bf67-111b06db1abc.png"
+    },
+    {
+      "id": "black-sail-cove-panorama-v2",
+      "theme_id": "black-sail-cove",
+      "role": "panorama",
+      "file": "aquarium-backgrounds/black-sail-cove-panorama-v2.png",
+      "storage_path": "black-sail-cove-panorama-v2.png",
+      "width": 1717,
+      "height": 916,
+      "sha256": "e5314efd3fea9a8f1bcf25eac53fc79f1628126765d0a54b3410ca03595dd8ec",
+      "generated_source": "C:\\Users\\user\\.codex\\generated_images\\01a17df4-0715-7532-8ead-20b19285ec60\\exec-c24e788e-fcbb-4204-b4b2-6304418022b9.png",
+      "prompt": "Edit this underwater pirate cove artwork into a NORMAL landscape canvas with STRICT aspect ratio 15:8 (1.875:1), 1920 wide by 1024 tall composition. The reference is too wide and shallow. Extend the composition VERTICALLY by adding more calm underwater teal water above and more dark sandy seabed below, while preserving ALL of its current left and right scenery. Do not crop or squeeze the reference. Keep its left weathered ship hull, descending anchor rope and seaweed-covered iron anchor; open central swimming water; right barnacled pier pillars, barrel and modest open treasure chest; amber lantern reflections and beautiful teal and midnight-blue painterly palette. Keep the camera completely underwater. Lower decorations stay at the edges, middle-depth swimming area stays spacious and low contrast. This must be a NORMAL 15:8 landscape image, NOT an ultrawide 2.4:1 strip. No fish, animals, people, added objects, text, UI, frame, panels, seams or watermark. Full-bleed opaque polished game background.",
+      "reference": "C:\\Users\\user\\.codex\\generated_images\\01a17df4-0715-7532-8ead-20b19285ec60\\exec-2b2b0f32-a3f9-4f04-bf67-111b06db1abc.png"
+    }
+  ],
+  "initialGeneration": {
+    "source": "C:\\Users\\user\\.codex\\generated_images\\01a17df4-0715-7532-8ead-20b19285ec60\\exec-2b2b0f32-a3f9-4f04-bf67-111b06db1abc.png",
+    "prompt": "Use case: stylized-concept. Create ONE opaque full-bleed LANDSCAPE aquarium game background, STRICT aspect ratio 15:8 (1.875:1, normal landscape about 1920x1024, NOT an ultrawide strip). Theme: '검은돛 해적만' (Black-Sail Pirate Cove). An elegant secret pirate anchorage seen from COMPLETELY UNDERWATER at dusk, viewed straight ahead at fish swimming height. Cozy adventurous mood, rich deep teal and muted midnight-blue water with gentle amber-gold lantern shafts from above; painterly polished fantasy storybook rendering, dimensional weathered wood and subtle caustics. The supplied image is STYLE ONLY for soft paint, material shading and warm lantern light; DO NOT copy its bottle shape, glass edges, lighthouse, tiny sailboat or coral canyon. Build ONE continuous environment across LEFT, CENTER and RIGHT: LEFT third shows only the submerged side/underside of a large old pirate ship entering from upper-left corner, charcoal black sail reflected subtly on the rippling ceiling, thick mooring rope descending beside the outer edge to a small seaweed-covered iron anchor at the bottom-left; CENTER is a spacious open teal-water anchorage, a faint distant hull/piling silhouette far behind, broad uninterrupted low-contrast clear swimming area for real game fish; RIGHT lower third has two barnacle-covered wooden pier pilings, a worn half-buried small barrel and one modest partially open treasure chest nestled by a rock at bottom-right. Dark sandy bottom across lower 20%, a few shells and only a FEW gold coins near the chest. Water remains readable teal, not pitch black; muted warm amber reflections on floor. Lush detail is concentrated near outer edges and bottom, not a cluttered treasure pile. Each third should look intentionally composed when viewed separately, while floor and light connect seamlessly. No entire ship in frame, no main foreground object in center, no built-in fish or ANY animals, no people, no skull pile, no readable text, no signs, no UI, no glass tank rim, no frame, no divided panels, no collage, no seams, no watermark, no sky or above-water scene. One beautiful aquarium wallpaper.",
+    "reference": "assets/storage-upload/new/20261019-085940/aquarium-backgrounds/bottle-harbor.png"
+  }
+}

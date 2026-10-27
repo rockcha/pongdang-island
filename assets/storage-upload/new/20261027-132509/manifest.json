@@ -1,0 +1,20 @@
+{
+  "tool": "image_gen",
+  "purpose": "nyamnyam-bamboo-steamer-platform",
+  "styleReferences": [
+    "assets/storage-upload/new/20261023-032120/nyamnyam/scenery-v2.png"
+  ],
+  "entries": [
+    {
+      "path": "fishing/platforms/nyamnyam-steamer-v1.png",
+      "publicPath": "/fishing/platforms/nyamnyam-steamer-v1.png",
+      "source": "sources/nyamnyam-steamer.source",
+      "prompt": "Use case: stylized-concept. Asset type: production mobile fantasy fishing-game foreground overlay with genuine TRANSPARENT ALPHA. WIDE LANDSCAPE 3:1 canvas. A GIANT ROUND BAMBOO STEAMER BASKET used as a fishing platform, seen from inside it, fisher's first-person view looking slightly downward and forward across the broad interior toward water beyond. The lower foreground is a beautiful honey-gold tightly woven BAMBOO MAT floor, NOT wooden dock planks. A LOW gracefully curved elliptical far rim crosses the upper-middle; layered pale bamboo bands lashed with small thin bamboo ties make it unmistakably a Chinese/Korean dumpling steamer basket. Wide open center 70 percent of floor contains only subtle woven herringbone strips and a small circular weave medallion. At far left corner only TWO SMALL softly pleated steamed dumplings resting on a tiny green leaf; at far right corner only ONE SMALL pale crescent dumpling on a green leaf, a pair of slender chopsticks laid nearly horizontally along rim. Keep all dumplings low and small so the center and fishing controls stay readable. Cozy painted fantasy RPG illustration, warm golden afternoon light with soft turquoise reflected light matching a sunny whimsical food ocean with dumpling islands. Gentle hand-painted natural bamboo grain, creamy steamed-dough folds, refined crisp silhouette. COMPOSITION CRITICAL: bottom-anchored game platform, the bamboo floor fills the entire bottom edge with no empty gap beneath and spans full canvas left-to-right. It is a huge basket cut off naturally by left/right and bottom canvas edges, NOT a small freestanding basket pictured from outside. The far rim stays LOW: upper 30 percent of canvas completely TRANSPARENT above it, no tall basket wall or lid, no tall props. NO sky, NO sea, NO background, NO steam or fog outside object, NO people, NO animals, NO text, NO interface, NO plate, NO ship railing, NO wood planks, NO floating crumbs, NO black/white fringe, NO checkerboard. Actual transparent background with clean antialiased edge.",
+      "transparent": true,
+      "width": 2172,
+      "height": 724,
+      "alpha": true,
+      "sha256": "012e3d07924229ff5af779a60a0552618130b678429b096644df0b2f8716bbd2"
+    }
+  ]
+}

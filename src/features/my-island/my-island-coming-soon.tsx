@@ -1,8 +1,16 @@
 import { Link } from 'react-router'
 import { ArrowLeft, Hammer } from 'lucide-react'
 import { appArt } from '@/components/app-art'
+import { lazy, Suspense } from 'react'
+import { useOperator } from '@/features/notices/use-operator'
+
+const OperatorIsland = lazy(() => import('./my-island-page').then(module => ({ default: module.MyIslandPage })))
+const loadingIsland = <p role="status" className="p-8 text-center text-xs text-muted-foreground">섬을 준비하고 있어요…</p>
 
 export function MyIslandPage() {
+  const { operator, loading } = useOperator()
+  if (loading) return loadingIsland
+  if (operator) return <Suspense fallback={loadingIsland}><OperatorIsland /></Suspense>
   return (
     <section
       className="flex min-h-dvh flex-col bg-background px-6 text-foreground"

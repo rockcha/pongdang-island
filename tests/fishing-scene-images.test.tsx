@@ -10,6 +10,14 @@ beforeEach(()=>{
  })
 })
 afterEach(()=>{cleanup();vi.unstubAllGlobals();vi.useRealTimers()})
+it('prepares the dedicated bamboo steamer for the food sea',async()=>{
+ const {prepareFishingScene}=await import('@/features/fishing/scene-images')
+ const prepared=prepareFishingScene('nyamnyam')
+ expect(images.some(image=>image.src==='/fishing/platforms/nyamnyam-steamer-v1.png')).toBe(true)
+ expect(images.some(image=>image.src==='/fishing/platforms/pongdang.png')).toBe(false)
+ images.forEach(image=>image.onload())
+ await prepared
+})
 it('prepares the dedicated pirate harbor, close water and ship bow without starting-sea fallbacks',async()=>{
  const {prepareFishingScene}=await import('@/features/fishing/scene-images')
  const prepared=prepareFishingScene('plunder')

@@ -1,0 +1,11 @@
+{
+  "id": "mechsanctum-orbis",
+  "storage_path": "fish/epic/mechsanctum-orbis_v1_sprite.png",
+  "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-963fb0eb-52b1-492b-86bd-9d18a215125e.png",
+  "prompt": "Make an animated sprite atlas from image 1 POSITION GUIDE. Keep its EXACT transparent empty canvas and EXACT FOUR small subject placements and subject sizes: centers at 25%,25%;75%,25%;25%,75%;75%,75%. Each whole ray must stay small as in guide, NO zooming, NO cropping canvas. Image 2 is identity/painting reference. Redraw FOUR actually DIFFERENT swimming poses of this brass gear guardian ray: first neutral, second wings bent slightly upward, third neutral with near fin forward, fourth wings bent slightly downward. Central head/halo fixed and same size. All face RIGHT. This is a 2x2 sprite sheet with LOTS of blank transparent space between tiny poses; maintain that space exactly. Do not fill blank space with rays, backgrounds, shadows, gold haze, glow, particles, grids, text or labels. All background pixels fully transparent. No clipping of wing, halo or tail. Reference guide copies are placeholders for positions only; create genuine articulated fin changes.",
+  "references": [
+    "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/layout-guides/mechsanctum-orbis.png",
+    "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-orbis_v1_thumbnail.png"
+  ],
+  "frames": 4
+}

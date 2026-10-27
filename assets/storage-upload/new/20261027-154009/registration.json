@@ -1,0 +1,4831 @@
+[
+  {
+    "id": "mechsanctum-clockwork-anchovy",
+    "storage_path": "fish/normal/mechsanctum-clockwork-anchovy_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-clockwork-anchovy_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.1199999999999999,
+    "rawWidth": 1774,
+    "rawHeight": 887,
+    "rawFrames": [
+      {
+        "x": 37,
+        "y": 91,
+        "width": 829,
+        "height": 332,
+        "pixels": 134449,
+        "margin": 20
+      },
+      {
+        "x": 55,
+        "y": 91,
+        "width": 810,
+        "height": 333,
+        "pixels": 133318,
+        "margin": 19
+      },
+      {
+        "x": 37,
+        "y": 55,
+        "width": 829,
+        "height": 330,
+        "pixels": 134919,
+        "margin": 21
+      },
+      {
+        "x": 54,
+        "y": 55,
+        "width": 811,
+        "height": 328,
+        "pixels": 132474,
+        "margin": 22
+      }
+    ],
+    "frames": [
+      {
+        "x": 85,
+        "y": 245,
+        "width": 479,
+        "height": 192,
+        "pixels": 45086,
+        "margin": 76
+      },
+      {
+        "x": 95,
+        "y": 244,
+        "width": 468,
+        "height": 193,
+        "pixels": 44711,
+        "margin": 77
+      },
+      {
+        "x": 84,
+        "y": 224,
+        "width": 480,
+        "height": 191,
+        "pixels": 45223,
+        "margin": 76
+      },
+      {
+        "x": 94,
+        "y": 224,
+        "width": 469,
+        "height": 189,
+        "pixels": 44405,
+        "margin": 77
+      }
+    ],
+    "patch": {
+      "x": 413,
+      "y": 309,
+      "width": 32,
+      "height": 32,
+      "score": -16.681205037969367
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 4.054127577324515
+      },
+      {
+        "dx": 0,
+        "dy": -21,
+        "rmse": 5.533705885430331
+      },
+      {
+        "dx": 0,
+        "dy": -21,
+        "rmse": 5.51182050589968
+      }
+    ],
+    "commonExportScale": 0.5772266065388951,
+    "sha256": "daa1f0a4c9d3b7e7c9468940e5b1709788a36a584636ae9160e1aa07c0deb131",
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          37,
+          91,
+          829,
+          332,
+          134449
+        ],
+        [
+          55,
+          91,
+          810,
+          333,
+          133318
+        ],
+        [
+          37,
+          55,
+          829,
+          330,
+          134919
+        ],
+        [
+          54,
+          55,
+          811,
+          328,
+          132474
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-brass-carp",
+    "storage_path": "fish/normal/mechsanctum-brass-carp_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-brass-carp_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.1107438016528925,
+    "rawWidth": 1448,
+    "rawHeight": 1086,
+    "rawFrames": [
+      {
+        "x": 23,
+        "y": 40,
+        "width": 676,
+        "height": 448,
+        "pixels": 160468,
+        "margin": 23
+      },
+      {
+        "x": 43,
+        "y": 41,
+        "width": 674,
+        "height": 443,
+        "pixels": 161450,
+        "margin": 7
+      },
+      {
+        "x": 38,
+        "y": 29,
+        "width": 683,
+        "height": 462,
+        "pixels": 167010,
+        "margin": 3
+      },
+      {
+        "x": 36,
+        "y": 30,
+        "width": 683,
+        "height": 445,
+        "pixels": 163391,
+        "margin": 5
+      }
+    ],
+    "frames": [
+      {
+        "x": 80,
+        "y": 156,
+        "width": 479,
+        "height": 317,
+        "pixels": 80398,
+        "margin": 80
+      },
+      {
+        "x": 94,
+        "y": 157,
+        "width": 477,
+        "height": 313,
+        "pixels": 80898,
+        "margin": 69
+      },
+      {
+        "x": 91,
+        "y": 149,
+        "width": 483,
+        "height": 326,
+        "pixels": 83650,
+        "margin": 66
+      },
+      {
+        "x": 89,
+        "y": 149,
+        "width": 484,
+        "height": 315,
+        "pixels": 81853,
+        "margin": 67
+      }
+    ],
+    "patch": {
+      "x": 408,
+      "y": 268,
+      "width": 32,
+      "height": 32,
+      "score": -18.51191398098095
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": 15,
+        "dy": 1,
+        "rmse": 14.311686838569702
+      },
+      {
+        "dx": 17,
+        "dy": -6,
+        "rmse": 20.833360881524484
+      },
+      {
+        "dx": 18,
+        "dy": -6,
+        "rmse": 20.657528193721053
+      }
+    ],
+    "commonExportScale": 0.7071823204419889,
+    "sha256": "b5d328ce845b5a153ea917e2ce7bd409e8fd69906a862b5583fa1bacecd15e85",
+    "rawAudit": {
+      "width": 1448,
+      "height": 1086,
+      "bounds": [
+        [
+          23,
+          40,
+          676,
+          448,
+          160468
+        ],
+        [
+          43,
+          41,
+          674,
+          443,
+          161450
+        ],
+        [
+          38,
+          29,
+          683,
+          462,
+          167010
+        ],
+        [
+          36,
+          30,
+          683,
+          445,
+          163391
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-meshing-crab",
+    "storage_path": "fish/normal/mechsanctum-meshing-crab_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-meshing-crab_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.2473317865429234,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 128,
+        "y": 117,
+        "width": 561,
+        "height": 336,
+        "pixels": 94481,
+        "margin": 59
+      },
+      {
+        "x": 90,
+        "y": 116,
+        "width": 580,
+        "height": 331,
+        "pixels": 88609,
+        "margin": 65
+      },
+      {
+        "x": 111,
+        "y": 73,
+        "width": 647,
+        "height": 347,
+        "pixels": 96620,
+        "margin": 10
+      },
+      {
+        "x": 111,
+        "y": 86,
+        "width": 576,
+        "height": 334,
+        "pixels": 98604,
+        "margin": 81
+      }
+    ],
+    "frames": [
+      {
+        "x": 149,
+        "y": 227,
+        "width": 374,
+        "height": 224,
+        "pixels": 42210,
+        "margin": 117
+      },
+      {
+        "x": 124,
+        "y": 226,
+        "width": 387,
+        "height": 221,
+        "pixels": 39586,
+        "margin": 124
+      },
+      {
+        "x": 138,
+        "y": 198,
+        "width": 431,
+        "height": 231,
+        "pixels": 43113,
+        "margin": 71
+      },
+      {
+        "x": 138,
+        "y": 206,
+        "width": 384,
+        "height": 223,
+        "pixels": 44015,
+        "margin": 118
+      }
+    ],
+    "patch": {
+      "x": 405,
+      "y": 299,
+      "width": 32,
+      "height": 32,
+      "score": -16.844306732269402
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -15,
+        "dy": -5,
+        "rmse": 56.78592523106255
+      },
+      {
+        "dx": 24,
+        "dy": -29,
+        "rmse": 56.78875807303996
+      },
+      {
+        "dx": -5,
+        "dy": -23,
+        "rmse": 43.540136406089374
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "119692615e4cd5b1506a1fdd9cbff029be5d7440d5530d2cb8e0333060a58327",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          128,
+          117,
+          561,
+          336,
+          94481
+        ],
+        [
+          90,
+          116,
+          580,
+          331,
+          88609
+        ],
+        [
+          111,
+          73,
+          647,
+          347,
+          96620
+        ],
+        [
+          111,
+          86,
+          576,
+          334,
+          98604
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-spring-shrimp",
+    "storage_path": "fish/normal/mechsanctum-spring-shrimp_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-spring-shrimp_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.086060606060606,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 22,
+        "y": 60,
+        "width": 742,
+        "height": 431,
+        "pixels": 126630,
+        "margin": 4
+      },
+      {
+        "x": 37,
+        "y": 76,
+        "width": 718,
+        "height": 406,
+        "pixels": 128784,
+        "margin": 13
+      },
+      {
+        "x": 57,
+        "y": 54,
+        "width": 705,
+        "height": 380,
+        "pixels": 114682,
+        "margin": 6
+      },
+      {
+        "x": 25,
+        "y": 40,
+        "width": 728,
+        "height": 409,
+        "pixels": 124829,
+        "margin": 15
+      }
+    ],
+    "frames": [
+      {
+        "x": 78,
+        "y": 189,
+        "width": 495,
+        "height": 287,
+        "pixels": 56724,
+        "margin": 67
+      },
+      {
+        "x": 88,
+        "y": 199,
+        "width": 479,
+        "height": 271,
+        "pixels": 57660,
+        "margin": 73
+      },
+      {
+        "x": 102,
+        "y": 184,
+        "width": 470,
+        "height": 254,
+        "pixels": 51347,
+        "margin": 68
+      },
+      {
+        "x": 80,
+        "y": 176,
+        "width": 486,
+        "height": 272,
+        "pixels": 55885,
+        "margin": 74
+      }
+    ],
+    "patch": {
+      "x": 422,
+      "y": 285,
+      "width": 32,
+      "height": 32,
+      "score": -15.439298299603422
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": 3,
+        "dy": 5,
+        "rmse": 20.416738729262885
+      },
+      {
+        "dx": 6,
+        "dy": -18,
+        "rmse": 20.96551850304912
+      },
+      {
+        "dx": -2,
+        "dy": -19,
+        "rmse": 20.65008105208372
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "4348b026068c448639afd8e49cdce0c8a968207519ec3c4f6994df8bdbc823fb",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          22,
+          60,
+          742,
+          431,
+          126630
+        ],
+        [
+          37,
+          76,
+          718,
+          406,
+          128784
+        ],
+        [
+          57,
+          54,
+          705,
+          380,
+          114682
+        ],
+        [
+          25,
+          40,
+          728,
+          409,
+          124829
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-spiral-whelk",
+    "storage_path": "fish/normal/mechsanctum-spiral-whelk_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-spiral-whelk_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.1536480686695278,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 49,
+        "y": 81,
+        "width": 690,
+        "height": 386,
+        "pixels": 173637,
+        "margin": 29
+      },
+      {
+        "x": 12,
+        "y": 80,
+        "width": 689,
+        "height": 386,
+        "pixels": 174029,
+        "margin": 12
+      },
+      {
+        "x": 49,
+        "y": 37,
+        "width": 698,
+        "height": 387,
+        "pixels": 180110,
+        "margin": 21
+      },
+      {
+        "x": 25,
+        "y": 37,
+        "width": 698,
+        "height": 389,
+        "pixels": 176409,
+        "margin": 25
+      }
+    ],
+    "frames": [
+      {
+        "x": 97,
+        "y": 202,
+        "width": 460,
+        "height": 258,
+        "pixels": 77375,
+        "margin": 83
+      },
+      {
+        "x": 72,
+        "y": 202,
+        "width": 460,
+        "height": 258,
+        "pixels": 77555,
+        "margin": 72
+      },
+      {
+        "x": 96,
+        "y": 173,
+        "width": 466,
+        "height": 259,
+        "pixels": 80252,
+        "margin": 78
+      },
+      {
+        "x": 81,
+        "y": 173,
+        "width": 465,
+        "height": 260,
+        "pixels": 78594,
+        "margin": 81
+      }
+    ],
+    "patch": {
+      "x": 393,
+      "y": 290,
+      "width": 32,
+      "height": 32,
+      "score": -0.7833405608571091
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -33,
+        "dy": -4,
+        "rmse": 42.05128630151105
+      },
+      {
+        "dx": -5,
+        "dy": -31,
+        "rmse": 33.00724398279574
+      },
+      {
+        "dx": -16,
+        "dy": -30,
+        "rmse": 37.65476155761931
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "b57320398a79220113cacff107dd95ae9e058e86d5aae11d415866808c1c6eee",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          49,
+          81,
+          690,
+          386,
+          173637
+        ],
+        [
+          12,
+          80,
+          689,
+          386,
+          174029
+        ],
+        [
+          49,
+          37,
+          698,
+          387,
+          180110
+        ],
+        [
+          25,
+          37,
+          698,
+          389,
+          176409
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-gear-starfish",
+    "storage_path": "fish/normal/mechsanctum-gear-starfish_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-gear-starfish_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.5101123595505617,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 167,
+        "y": 63,
+        "width": 493,
+        "height": 405,
+        "pixels": 99492,
+        "margin": 44
+      },
+      {
+        "x": 159,
+        "y": 64,
+        "width": 512,
+        "height": 409,
+        "pixels": 102631,
+        "margin": 39
+      },
+      {
+        "x": 166,
+        "y": 50,
+        "width": 532,
+        "height": 399,
+        "pixels": 100560,
+        "margin": 50
+      },
+      {
+        "x": 143,
+        "y": 60,
+        "width": 492,
+        "height": 400,
+        "pixels": 101121,
+        "margin": 52
+      }
+    ],
+    "frames": [
+      {
+        "x": 175,
+        "y": 191,
+        "width": 329,
+        "height": 270,
+        "pixels": 44366,
+        "margin": 136
+      },
+      {
+        "x": 170,
+        "y": 192,
+        "width": 341,
+        "height": 272,
+        "pixels": 45787,
+        "margin": 129
+      },
+      {
+        "x": 174,
+        "y": 182,
+        "width": 356,
+        "height": 266,
+        "pixels": 44853,
+        "margin": 110
+      },
+      {
+        "x": 159,
+        "y": 189,
+        "width": 329,
+        "height": 266,
+        "pixels": 45107,
+        "margin": 152
+      }
+    ],
+    "patch": {
+      "x": 391,
+      "y": 287,
+      "width": 32,
+      "height": 32,
+      "score": -13.690134708252485
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": 1,
+        "dy": 1,
+        "rmse": 51.36633138545131
+      },
+      {
+        "dx": 20,
+        "dy": -8,
+        "rmse": 56.75337204162619
+      },
+      {
+        "dx": -10,
+        "dy": -7,
+        "rmse": 30.51240965340402
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "a32b1699cfdc4d4464fcad1fb4ac1f9d6f86feeef5ce51e337aec73be7d80cff",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          167,
+          63,
+          493,
+          405,
+          99492
+        ],
+        [
+          159,
+          64,
+          512,
+          409,
+          102631
+        ],
+        [
+          166,
+          50,
+          532,
+          399,
+          100560
+        ],
+        [
+          143,
+          60,
+          492,
+          400,
+          101121
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-gear-flounder",
+    "storage_path": "fish/normal/mechsanctum-gear-flounder_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-gear-flounder_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.1061728395061727,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 51,
+        "y": 58,
+        "width": 699,
+        "height": 430,
+        "pixels": 176689,
+        "margin": 18
+      },
+      {
+        "x": 40,
+        "y": 58,
+        "width": 710,
+        "height": 430,
+        "pixels": 177362,
+        "margin": 18
+      },
+      {
+        "x": 23,
+        "y": 58,
+        "width": 728,
+        "height": 430,
+        "pixels": 178119,
+        "margin": 17
+      },
+      {
+        "x": 38,
+        "y": 59,
+        "width": 709,
+        "height": 429,
+        "pixels": 177773,
+        "margin": 21
+      }
+    ],
+    "frames": [
+      {
+        "x": 98,
+        "y": 188,
+        "width": 466,
+        "height": 286,
+        "pixels": 78688,
+        "margin": 76
+      },
+      {
+        "x": 90,
+        "y": 188,
+        "width": 474,
+        "height": 286,
+        "pixels": 79001,
+        "margin": 76
+      },
+      {
+        "x": 79,
+        "y": 188,
+        "width": 486,
+        "height": 286,
+        "pixels": 79329,
+        "margin": 75
+      },
+      {
+        "x": 89,
+        "y": 188,
+        "width": 473,
+        "height": 287,
+        "pixels": 79180,
+        "margin": 78
+      }
+    ],
+    "patch": {
+      "x": 418,
+      "y": 284,
+      "width": 32,
+      "height": 32,
+      "score": -17.552470633475483
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 14.89293747978751
+      },
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 14.744518522023057
+      },
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 6.902957804179379
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "94cc7a95ec7dc0bf2712c4128b8c459f1a95df21aabbc2dc4d6df0d0ab5d7991",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          51,
+          58,
+          699,
+          430,
+          176689
+        ],
+        [
+          40,
+          58,
+          710,
+          430,
+          177362
+        ],
+        [
+          23,
+          58,
+          728,
+          430,
+          178119
+        ],
+        [
+          38,
+          59,
+          709,
+          429,
+          177773
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-rusty-sardine",
+    "storage_path": "fish/normal/mechsanctum-rusty-sardine_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-rusty-sardine_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.1636363636363636,
+    "rawWidth": 1774,
+    "rawHeight": 887,
+    "rawFrames": [
+      {
+        "x": 54,
+        "y": 109,
+        "width": 787,
+        "height": 310,
+        "pixels": 123283,
+        "margin": 24
+      },
+      {
+        "x": 32,
+        "y": 108,
+        "width": 799,
+        "height": 314,
+        "pixels": 124458,
+        "margin": 21
+      },
+      {
+        "x": 61,
+        "y": 32,
+        "width": 788,
+        "height": 319,
+        "pixels": 126244,
+        "margin": 32
+      },
+      {
+        "x": 38,
+        "y": 24,
+        "width": 793,
+        "height": 327,
+        "pixels": 126919,
+        "margin": 24
+      }
+    ],
+    "frames": [
+      {
+        "x": 95,
+        "y": 255,
+        "width": 454,
+        "height": 179,
+        "pixels": 41343,
+        "margin": 91
+      },
+      {
+        "x": 82,
+        "y": 254,
+        "width": 462,
+        "height": 182,
+        "pixels": 41740,
+        "margin": 82
+      },
+      {
+        "x": 98,
+        "y": 210,
+        "width": 456,
+        "height": 185,
+        "pixels": 42332,
+        "margin": 86
+      },
+      {
+        "x": 85,
+        "y": 206,
+        "width": 458,
+        "height": 189,
+        "pixels": 42549,
+        "margin": 85
+      }
+    ],
+    "patch": {
+      "x": 407,
+      "y": 311,
+      "width": 32,
+      "height": 32,
+      "score": -18.810714500214523
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -7,
+        "dy": 0,
+        "rmse": 13.263851328558975
+      },
+      {
+        "dx": 3,
+        "dy": -45,
+        "rmse": 16.48164518788017
+      },
+      {
+        "dx": -9,
+        "dy": -47,
+        "rmse": 14.777551659793012
+      }
+    ],
+    "commonExportScale": 0.5772266065388951,
+    "sha256": "7d24153703b5a06b5dce7748313dc7bb91490af283f8d2e308e0288e371c0328",
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          54,
+          109,
+          787,
+          310,
+          123283
+        ],
+        [
+          32,
+          108,
+          799,
+          314,
+          124458
+        ],
+        [
+          61,
+          32,
+          788,
+          319,
+          126244
+        ],
+        [
+          38,
+          24,
+          793,
+          327,
+          126919
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-screw-medaka",
+    "storage_path": "fish/normal/mechsanctum-screw-medaka_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-screw-medaka_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.146268656716418,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 53,
+        "y": 110,
+        "width": 698,
+        "height": 313,
+        "pixels": 107747,
+        "margin": 17
+      },
+      {
+        "x": 54,
+        "y": 110,
+        "width": 693,
+        "height": 313,
+        "pixels": 106979,
+        "margin": 21
+      },
+      {
+        "x": 47,
+        "y": 95,
+        "width": 703,
+        "height": 302,
+        "pixels": 107860,
+        "margin": 18
+      },
+      {
+        "x": 50,
+        "y": 95,
+        "width": 698,
+        "height": 313,
+        "pixels": 106967,
+        "margin": 20
+      }
+    ],
+    "frames": [
+      {
+        "x": 99,
+        "y": 222,
+        "width": 466,
+        "height": 209,
+        "pixels": 48093,
+        "margin": 75
+      },
+      {
+        "x": 100,
+        "y": 222,
+        "width": 462,
+        "height": 209,
+        "pixels": 47737,
+        "margin": 78
+      },
+      {
+        "x": 95,
+        "y": 212,
+        "width": 469,
+        "height": 202,
+        "pixels": 48151,
+        "margin": 76
+      },
+      {
+        "x": 97,
+        "y": 212,
+        "width": 466,
+        "height": 209,
+        "pixels": 47750,
+        "margin": 77
+      }
+    ],
+    "patch": {
+      "x": 419,
+      "y": 286,
+      "width": 32,
+      "height": 32,
+      "score": -16.368140971898804
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": 0,
+        "dy": -1,
+        "rmse": 17.483758697197185
+      },
+      {
+        "dx": 1,
+        "dy": -13,
+        "rmse": 22.35739935200702
+      },
+      {
+        "dx": -2,
+        "dy": -11,
+        "rmse": 19.299830856108045
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "f0dacfe0fc2a295e585de899db0ed68a7877e34a20b9cc38edebafc55cf0db84",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          53,
+          110,
+          698,
+          313,
+          107747
+        ],
+        [
+          54,
+          110,
+          693,
+          313,
+          106979
+        ],
+        [
+          47,
+          95,
+          703,
+          302,
+          107860
+        ],
+        [
+          50,
+          95,
+          698,
+          313,
+          106967
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-pulley-halfbeak",
+    "storage_path": "fish/normal/mechsanctum-pulley-halfbeak_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-pulley-halfbeak_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.0904665314401623,
+    "rawWidth": 1774,
+    "rawHeight": 887,
+    "rawFrames": [
+      {
+        "x": 30,
+        "y": 107,
+        "width": 840,
+        "height": 295,
+        "pixels": 109590,
+        "margin": 17
+      },
+      {
+        "x": 18,
+        "y": 112,
+        "width": 840,
+        "height": 285,
+        "pixels": 109949,
+        "margin": 18
+      },
+      {
+        "x": 26,
+        "y": 60,
+        "width": 852,
+        "height": 307,
+        "pixels": 115645,
+        "margin": 9
+      },
+      {
+        "x": 25,
+        "y": 60,
+        "width": 840,
+        "height": 298,
+        "pixels": 111464,
+        "margin": 22
+      }
+    ],
+    "frames": [
+      {
+        "x": 81,
+        "y": 253,
+        "width": 485,
+        "height": 171,
+        "pixels": 36776,
+        "margin": 74
+      },
+      {
+        "x": 73,
+        "y": 257,
+        "width": 486,
+        "height": 165,
+        "pixels": 36928,
+        "margin": 73
+      },
+      {
+        "x": 78,
+        "y": 226,
+        "width": 493,
+        "height": 178,
+        "pixels": 38838,
+        "margin": 69
+      },
+      {
+        "x": 77,
+        "y": 227,
+        "width": 486,
+        "height": 172,
+        "pixels": 37434,
+        "margin": 77
+      }
+    ],
+    "patch": {
+      "x": 417,
+      "y": 317,
+      "width": 32,
+      "height": 32,
+      "score": -8.066852887858937
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -4,
+        "dy": -1,
+        "rmse": 20.900523834385687
+      },
+      {
+        "dx": 8,
+        "dy": -27,
+        "rmse": 28.493533749207757
+      },
+      {
+        "dx": -1,
+        "dy": -25,
+        "rmse": 25.573845071168666
+      }
+    ],
+    "commonExportScale": 0.5772266065388951,
+    "sha256": "883b4459f67df80f410a324a39a89f2fc884d4c9162c13a05d731bd1ad3b91ed",
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          30,
+          107,
+          840,
+          295,
+          109590
+        ],
+        [
+          18,
+          112,
+          840,
+          285,
+          109949
+        ],
+        [
+          26,
+          60,
+          852,
+          307,
+          115645
+        ],
+        [
+          25,
+          60,
+          840,
+          298,
+          111464
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-bearing-urchin",
+    "storage_path": "fish/normal/mechsanctum-bearing-urchin_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-bearing-urchin_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.3541561712846346,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 153,
+        "y": 26,
+        "width": 554,
+        "height": 466,
+        "pixels": 163960,
+        "margin": 20
+      },
+      {
+        "x": 86,
+        "y": 23,
+        "width": 595,
+        "height": 474,
+        "pixels": 165735,
+        "margin": 15
+      },
+      {
+        "x": 144,
+        "y": 14,
+        "width": 556,
+        "height": 449,
+        "pixels": 163878,
+        "margin": 14
+      },
+      {
+        "x": 84,
+        "y": 12,
+        "width": 562,
+        "height": 452,
+        "pixels": 165911,
+        "margin": 12
+      }
+    ],
+    "frames": [
+      {
+        "x": 166,
+        "y": 166,
+        "width": 369,
+        "height": 311,
+        "pixels": 73062,
+        "margin": 105
+      },
+      {
+        "x": 121,
+        "y": 164,
+        "width": 397,
+        "height": 317,
+        "pixels": 73856,
+        "margin": 121
+      },
+      {
+        "x": 160,
+        "y": 158,
+        "width": 371,
+        "height": 300,
+        "pixels": 73030,
+        "margin": 109
+      },
+      {
+        "x": 120,
+        "y": 157,
+        "width": 375,
+        "height": 301,
+        "pixels": 73941,
+        "margin": 120
+      }
+    ],
+    "patch": {
+      "x": 414,
+      "y": 278,
+      "width": 32,
+      "height": 32,
+      "score": -16.027293114260733
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -42,
+        "dy": -1,
+        "rmse": 24.26021127772117
+      },
+      {
+        "dx": -4,
+        "dy": -9,
+        "rmse": 22.202858873324406
+      },
+      {
+        "dx": -41,
+        "dy": -8,
+        "rmse": 14.100876240283851
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "63bbb4829fb4137446c0af4ca2ab32aa9dfd8750408ac2c3fe9cc1f894cbe86b",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          153,
+          26,
+          554,
+          466,
+          163960
+        ],
+        [
+          86,
+          23,
+          595,
+          474,
+          165735
+        ],
+        [
+          144,
+          14,
+          556,
+          449,
+          163878
+        ],
+        [
+          84,
+          12,
+          562,
+          452,
+          165911
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-hinge-scallop",
+    "storage_path": "fish/normal/mechsanctum-hinge-scallop_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-hinge-scallop_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.2053811659192823,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 76,
+        "y": 40,
+        "width": 626,
+        "height": 457,
+        "pixels": 199110,
+        "margin": 15
+      },
+      {
+        "x": 49,
+        "y": 39,
+        "width": 655,
+        "height": 459,
+        "pixels": 202408,
+        "margin": 14
+      },
+      {
+        "x": 75,
+        "y": 17,
+        "width": 669,
+        "height": 452,
+        "pixels": 203588,
+        "margin": 17
+      },
+      {
+        "x": 41,
+        "y": 14,
+        "width": 660,
+        "height": 455,
+        "pixels": 206730,
+        "margin": 14
+      }
+    ],
+    "frames": [
+      {
+        "x": 114,
+        "y": 175,
+        "width": 418,
+        "height": 306,
+        "pixels": 88675,
+        "margin": 108
+      },
+      {
+        "x": 96,
+        "y": 174,
+        "width": 438,
+        "height": 307,
+        "pixels": 90155,
+        "margin": 96
+      },
+      {
+        "x": 114,
+        "y": 160,
+        "width": 446,
+        "height": 302,
+        "pixels": 90694,
+        "margin": 80
+      },
+      {
+        "x": 91,
+        "y": 158,
+        "width": 441,
+        "height": 304,
+        "pixels": 92075,
+        "margin": 91
+      }
+    ],
+    "patch": {
+      "x": 402,
+      "y": 279,
+      "width": 32,
+      "height": 32,
+      "score": -16.12681010018873
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -14,
+        "dy": 2,
+        "rmse": 17.55346025552081
+      },
+      {
+        "dx": 5,
+        "dy": -14,
+        "rmse": 31.85780001016397
+      },
+      {
+        "dx": -15,
+        "dy": -16,
+        "rmse": 30.422846460790936
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "5bf5a7817d6b5bbbe948093d45611e1df506ee154d1f2f7e241b8cce2932dbee",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          76,
+          40,
+          626,
+          457,
+          199110
+        ],
+        [
+          49,
+          39,
+          655,
+          459,
+          202408
+        ],
+        [
+          75,
+          17,
+          669,
+          452,
+          203588
+        ],
+        [
+          41,
+          14,
+          660,
+          455,
+          206730
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-plate-filefish",
+    "storage_path": "fish/normal/mechsanctum-plate-filefish_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-plate-filefish_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.1893805309734513,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 64,
+        "y": 36,
+        "width": 660,
+        "height": 445,
+        "pixels": 150831,
+        "margin": 31
+      },
+      {
+        "x": 38,
+        "y": 35,
+        "width": 655,
+        "height": 446,
+        "pixels": 147796,
+        "margin": 31
+      },
+      {
+        "x": 52,
+        "y": 21,
+        "width": 678,
+        "height": 450,
+        "pixels": 154108,
+        "margin": 21
+      },
+      {
+        "x": 36,
+        "y": 21,
+        "width": 677,
+        "height": 448,
+        "pixels": 154290,
+        "margin": 21
+      }
+    ],
+    "frames": [
+      {
+        "x": 106,
+        "y": 173,
+        "width": 441,
+        "height": 297,
+        "pixels": 67205,
+        "margin": 93
+      },
+      {
+        "x": 90,
+        "y": 172,
+        "width": 436,
+        "height": 298,
+        "pixels": 65856,
+        "margin": 90
+      },
+      {
+        "x": 99,
+        "y": 163,
+        "width": 452,
+        "height": 300,
+        "pixels": 68632,
+        "margin": 89
+      },
+      {
+        "x": 88,
+        "y": 163,
+        "width": 452,
+        "height": 299,
+        "pixels": 68736,
+        "margin": 88
+      }
+    ],
+    "patch": {
+      "x": 410,
+      "y": 277,
+      "width": 32,
+      "height": 32,
+      "score": -17.244931942764378
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -20,
+        "dy": 1,
+        "rmse": 15.364308753441346
+      },
+      {
+        "dx": 6,
+        "dy": -11,
+        "rmse": 16.749244463039062
+      },
+      {
+        "dx": -12,
+        "dy": -12,
+        "rmse": 28.048732680081603
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "19c358a111809d0d7b984ee422b2253f8fff7f0d787eda57d55c34d51c3f729e",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          64,
+          36,
+          660,
+          445,
+          150831
+        ],
+        [
+          38,
+          35,
+          655,
+          446,
+          147796
+        ],
+        [
+          52,
+          21,
+          678,
+          450,
+          154108
+        ],
+        [
+          36,
+          21,
+          677,
+          448,
+          154290
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-planetary-puffer",
+    "storage_path": "fish/rare/mechsanctum-planetary-puffer_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-planetary-puffer_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.1763676148796498,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 52,
+        "y": 35,
+        "width": 681,
+        "height": 458,
+        "pixels": 176831,
+        "margin": 19
+      },
+      {
+        "x": 79,
+        "y": 35,
+        "width": 637,
+        "height": 458,
+        "pixels": 167258,
+        "margin": 19
+      },
+      {
+        "x": 146,
+        "y": 30,
+        "width": 587,
+        "height": 458,
+        "pixels": 161357,
+        "margin": 24
+      },
+      {
+        "x": 33,
+        "y": 30,
+        "width": 685,
+        "height": 456,
+        "pixels": 177633,
+        "margin": 26
+      }
+    ],
+    "frames": [
+      {
+        "x": 98,
+        "y": 172,
+        "width": 455,
+        "height": 306,
+        "pixels": 78811,
+        "margin": 87
+      },
+      {
+        "x": 117,
+        "y": 172,
+        "width": 425,
+        "height": 306,
+        "pixels": 74558,
+        "margin": 98
+      },
+      {
+        "x": 161,
+        "y": 169,
+        "width": 392,
+        "height": 305,
+        "pixels": 71886,
+        "margin": 87
+      },
+      {
+        "x": 86,
+        "y": 169,
+        "width": 457,
+        "height": 304,
+        "pixels": 79162,
+        "margin": 86
+      }
+    ],
+    "patch": {
+      "x": 410,
+      "y": 276,
+      "width": 32,
+      "height": 32,
+      "score": -17.56689498788073
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -11,
+        "dy": 0,
+        "rmse": 10.855264937324382
+      },
+      {
+        "dx": 0,
+        "dy": -3,
+        "rmse": 18.513062174431873
+      },
+      {
+        "dx": -9,
+        "dy": -3,
+        "rmse": 10.166282790928253
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "dfebd7520e9dcf74b769c04796521710fac97aa11b05d0655928a4db32172629",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          52,
+          35,
+          681,
+          458,
+          176831
+        ],
+        [
+          79,
+          35,
+          637,
+          458,
+          167258
+        ],
+        [
+          146,
+          30,
+          587,
+          458,
+          161357
+        ],
+        [
+          33,
+          30,
+          685,
+          456,
+          177633
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-silver-seahorse",
+    "storage_path": "fish/rare/mechsanctum-silver-seahorse_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-silver-seahorse_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.0795180722891566,
+    "rawWidth": 1245,
+    "rawHeight": 1263,
+    "rawFrames": [
+      {
+        "x": 165,
+        "y": 10,
+        "width": 401,
+        "height": 613,
+        "pixels": 130716,
+        "margin": 8
+      },
+      {
+        "x": 122,
+        "y": 13,
+        "width": 401,
+        "height": 610,
+        "pixels": 130011,
+        "margin": 8
+      },
+      {
+        "x": 196,
+        "y": 11,
+        "width": 398,
+        "height": 602,
+        "pixels": 130656,
+        "margin": 11
+      },
+      {
+        "x": 118,
+        "y": 8,
+        "width": 412,
+        "height": 613,
+        "pixels": 133772,
+        "margin": 8
+      }
+    ],
+    "frames": [
+      {
+        "x": 201,
+        "y": 72,
+        "width": 325,
+        "height": 498,
+        "pixels": 86308,
+        "margin": 70
+      },
+      {
+        "x": 166,
+        "y": 74,
+        "width": 326,
+        "height": 496,
+        "pixels": 85813,
+        "margin": 70
+      },
+      {
+        "x": 226,
+        "y": 73,
+        "width": 323,
+        "height": 489,
+        "pixels": 86238,
+        "margin": 73
+      },
+      {
+        "x": 162,
+        "y": 70,
+        "width": 336,
+        "height": 498,
+        "pixels": 88325,
+        "margin": 70
+      }
+    ],
+    "patch": {
+      "x": 417,
+      "y": 232,
+      "width": 32,
+      "height": 32,
+      "score": 3.286047324524656
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -34,
+        "dy": 1,
+        "rmse": 17.269856220718733
+      },
+      {
+        "dx": 21,
+        "dy": 2,
+        "rmse": 27.475270624104297
+      },
+      {
+        "dx": -29,
+        "dy": 0,
+        "rmse": 29.03969213005304
+      }
+    ],
+    "commonExportScale": 0.8114104595879557,
+    "sha256": "0c2d1f94fee0cebb6a19cd79930b6a1ec312eaed43b7baefc9eb5f3f54009a83",
+    "rawAudit": {
+      "width": 1245,
+      "height": 1263,
+      "bounds": [
+        [
+          165,
+          10,
+          401,
+          613,
+          130716
+        ],
+        [
+          122,
+          13,
+          401,
+          610,
+          130011
+        ],
+        [
+          196,
+          11,
+          398,
+          602,
+          130656
+        ],
+        [
+          118,
+          8,
+          412,
+          613,
+          133772
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-layered-nautilus",
+    "storage_path": "fish/rare/mechsanctum-layered-nautilus_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-layered-nautilus_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.3610126582278481,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 156,
+        "y": 112,
+        "width": 477,
+        "height": 312,
+        "pixels": 94850,
+        "margin": 88
+      },
+      {
+        "x": 95,
+        "y": 111,
+        "width": 521,
+        "height": 328,
+        "pixels": 99040,
+        "margin": 73
+      },
+      {
+        "x": 155,
+        "y": 82,
+        "width": 591,
+        "height": 335,
+        "pixels": 109435,
+        "margin": 22
+      },
+      {
+        "x": 95,
+        "y": 81,
+        "width": 491,
+        "height": 318,
+        "pixels": 101004,
+        "margin": 81
+      }
+    ],
+    "frames": [
+      {
+        "x": 168,
+        "y": 223,
+        "width": 318,
+        "height": 208,
+        "pixels": 42266,
+        "margin": 154
+      },
+      {
+        "x": 127,
+        "y": 222,
+        "width": 348,
+        "height": 220,
+        "pixels": 44128,
+        "margin": 127
+      },
+      {
+        "x": 167,
+        "y": 203,
+        "width": 395,
+        "height": 224,
+        "pixels": 48803,
+        "margin": 78
+      },
+      {
+        "x": 127,
+        "y": 203,
+        "width": 328,
+        "height": 212,
+        "pixels": 44992,
+        "margin": 127
+      }
+    ],
+    "patch": {
+      "x": 376,
+      "y": 303,
+      "width": 32,
+      "height": 32,
+      "score": -6.272596749566944
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -38,
+        "dy": 1,
+        "rmse": 25.465444022944393
+      },
+      {
+        "dx": 9,
+        "dy": -24,
+        "rmse": 51.0502859583428
+      },
+      {
+        "dx": -31,
+        "dy": -19,
+        "rmse": 28.960834081812727
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "77fe7ca6ca5f3329b5441473cbc698c32b6fbea900174fc69489c295ce9c05e9",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          156,
+          112,
+          477,
+          312,
+          94850
+        ],
+        [
+          95,
+          111,
+          521,
+          328,
+          99040
+        ],
+        [
+          155,
+          82,
+          591,
+          335,
+          109435
+        ],
+        [
+          95,
+          81,
+          491,
+          318,
+          101004
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-counter-jellyfish",
+    "storage_path": "fish/rare/mechsanctum-counter-jellyfish_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-counter-jellyfish_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.604776119402985,
+    "rawWidth": 1368,
+    "rawHeight": 1150,
+    "rawFrames": [
+      {
+        "x": 162,
+        "y": 171,
+        "width": 446,
+        "height": 380,
+        "pixels": 93020,
+        "margin": 24
+      },
+      {
+        "x": 210,
+        "y": 183,
+        "width": 376,
+        "height": 367,
+        "pixels": 77394,
+        "margin": 25
+      },
+      {
+        "x": 276,
+        "y": 139,
+        "width": 274,
+        "height": 340,
+        "pixels": 57201,
+        "margin": 96
+      },
+      {
+        "x": 160,
+        "y": 141,
+        "width": 448,
+        "height": 381,
+        "pixels": 91783,
+        "margin": 53
+      }
+    ],
+    "frames": [
+      {
+        "x": 185,
+        "y": 233,
+        "width": 334,
+        "height": 285,
+        "pixels": 52222,
+        "margin": 121
+      },
+      {
+        "x": 221,
+        "y": 241,
+        "width": 282,
+        "height": 275,
+        "pixels": 43464,
+        "margin": 124
+      },
+      {
+        "x": 270,
+        "y": 209,
+        "width": 206,
+        "height": 255,
+        "pixels": 32134,
+        "margin": 164
+      },
+      {
+        "x": 184,
+        "y": 210,
+        "width": 335,
+        "height": 286,
+        "pixels": 51508,
+        "margin": 121
+      }
+    ],
+    "patch": {
+      "x": 409,
+      "y": 329,
+      "width": 32,
+      "height": 32,
+      "score": -17.943206378850807
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": 6,
+        "dy": 14,
+        "rmse": 35.311014833831116
+      },
+      {
+        "dx": -11,
+        "dy": -28,
+        "rmse": 52.48614535804143
+      },
+      {
+        "dx": -1,
+        "dy": -19,
+        "rmse": 23.91958808622916
+      }
+    ],
+    "commonExportScale": 0.7485380116959064,
+    "sha256": "74bbccd35a881bf35e1cf19b3df387191495cb84a17e6ff81fee0d5ea117935a",
+    "rawAudit": {
+      "width": 1368,
+      "height": 1150,
+      "bounds": [
+        [
+          162,
+          171,
+          446,
+          380,
+          93020
+        ],
+        [
+          210,
+          183,
+          376,
+          367,
+          77394
+        ],
+        [
+          276,
+          139,
+          274,
+          340,
+          57201
+        ],
+        [
+          160,
+          141,
+          448,
+          381,
+          91783
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-pendulum-ray",
+    "storage_path": "fish/rare/mechsanctum-pendulum-ray_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-pendulum-ray_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.1341772151898735,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 46,
+        "y": 82,
+        "width": 712,
+        "height": 383,
+        "pixels": 120926,
+        "margin": 10
+      },
+      {
+        "x": 52,
+        "y": 54,
+        "width": 674,
+        "height": 428,
+        "pixels": 121389,
+        "margin": 30
+      },
+      {
+        "x": 82,
+        "y": 28,
+        "width": 676,
+        "height": 416,
+        "pixels": 119393,
+        "margin": 10
+      },
+      {
+        "x": 42,
+        "y": 44,
+        "width": 695,
+        "height": 404,
+        "pixels": 119986,
+        "margin": 31
+      }
+    ],
+    "frames": [
+      {
+        "x": 95,
+        "y": 203,
+        "width": 474,
+        "height": 256,
+        "pixels": 53949,
+        "margin": 71
+      },
+      {
+        "x": 98,
+        "y": 184,
+        "width": 450,
+        "height": 286,
+        "pixels": 54142,
+        "margin": 92
+      },
+      {
+        "x": 118,
+        "y": 168,
+        "width": 451,
+        "height": 277,
+        "pixels": 53242,
+        "margin": 71
+      },
+      {
+        "x": 92,
+        "y": 178,
+        "width": 464,
+        "height": 270,
+        "pixels": 53530,
+        "margin": 84
+      }
+    ],
+    "patch": {
+      "x": 423,
+      "y": 291,
+      "width": 32,
+      "height": 32,
+      "score": -16.844306732269402
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -20,
+        "dy": 0,
+        "rmse": 28.59358276268666
+      },
+      {
+        "dx": 7,
+        "dy": -19,
+        "rmse": 43.10833460476865
+      },
+      {
+        "dx": -11,
+        "dy": -20,
+        "rmse": 27.326310997411866
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "f7544a3e351f9a9a65f6ebb75073a57911e17b1c7a1eac4214aa5259bceb924d",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          46,
+          82,
+          712,
+          383,
+          120926
+        ],
+        [
+          52,
+          54,
+          674,
+          428,
+          121389
+        ],
+        [
+          82,
+          28,
+          676,
+          416,
+          119393
+        ],
+        [
+          42,
+          44,
+          695,
+          404,
+          119986
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-ring-eel",
+    "storage_path": "fish/rare/mechsanctum-ring-eel_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-ring-eel_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.146268656716418,
+    "rawWidth": 1774,
+    "rawHeight": 887,
+    "rawFrames": [
+      {
+        "x": 53,
+        "y": 126,
+        "width": 811,
+        "height": 272,
+        "pixels": 106148,
+        "margin": 23
+      },
+      {
+        "x": 45,
+        "y": 103,
+        "width": 783,
+        "height": 310,
+        "pixels": 104166,
+        "margin": 30
+      },
+      {
+        "x": 59,
+        "y": 109,
+        "width": 805,
+        "height": 262,
+        "pixels": 107185,
+        "margin": 23
+      },
+      {
+        "x": 49,
+        "y": 87,
+        "width": 797,
+        "height": 283,
+        "pixels": 100224,
+        "margin": 41
+      }
+    ],
+    "frames": [
+      {
+        "x": 94,
+        "y": 265,
+        "width": 469,
+        "height": 157,
+        "pixels": 35627,
+        "margin": 77
+      },
+      {
+        "x": 89,
+        "y": 252,
+        "width": 453,
+        "height": 179,
+        "pixels": 34949,
+        "margin": 89
+      },
+      {
+        "x": 97,
+        "y": 255,
+        "width": 466,
+        "height": 151,
+        "pixels": 35940,
+        "margin": 77
+      },
+      {
+        "x": 91,
+        "y": 242,
+        "width": 461,
+        "height": 164,
+        "pixels": 33639,
+        "margin": 88
+      }
+    ],
+    "patch": {
+      "x": 510,
+      "y": 330,
+      "width": 32,
+      "height": 32
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -21,
+        "dy": 1,
+        "rmse": 20.165713052257363
+      },
+      {
+        "dx": 0,
+        "dy": -24,
+        "rmse": 23.84220742089236
+      },
+      {
+        "dx": -9,
+        "dy": -25,
+        "rmse": 44.06090384755228
+      }
+    ],
+    "commonExportScale": 0.5772266065388951,
+    "sha256": "d699a108b6d32d7a022847b037eb1a102843f3c97da81e0a3d5d1baf28b5545f",
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          53,
+          126,
+          811,
+          272,
+          106148
+        ],
+        [
+          45,
+          103,
+          783,
+          310,
+          104166
+        ],
+        [
+          59,
+          109,
+          805,
+          262,
+          107185
+        ],
+        [
+          49,
+          87,
+          797,
+          283,
+          100224
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-twin-wheel-turtle",
+    "storage_path": "fish/rare/mechsanctum-twin-wheel-turtle_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-twin-wheel-turtle_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.0993865030674848,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 32,
+        "y": 62,
+        "width": 733,
+        "height": 420,
+        "pixels": 165451,
+        "margin": 3
+      },
+      {
+        "x": 21,
+        "y": 50,
+        "width": 715,
+        "height": 440,
+        "pixels": 157734,
+        "margin": 21
+      },
+      {
+        "x": 39,
+        "y": 23,
+        "width": 724,
+        "height": 411,
+        "pixels": 159867,
+        "margin": 5
+      },
+      {
+        "x": 16,
+        "y": 34,
+        "width": 721,
+        "height": 425,
+        "pixels": 163481,
+        "margin": 16
+      }
+    ],
+    "frames": [
+      {
+        "x": 85,
+        "y": 190,
+        "width": 489,
+        "height": 280,
+        "pixels": 73725,
+        "margin": 66
+      },
+      {
+        "x": 78,
+        "y": 182,
+        "width": 477,
+        "height": 294,
+        "pixels": 70308,
+        "margin": 78
+      },
+      {
+        "x": 90,
+        "y": 164,
+        "width": 483,
+        "height": 275,
+        "pixels": 71271,
+        "margin": 67
+      },
+      {
+        "x": 74,
+        "y": 172,
+        "width": 481,
+        "height": 283,
+        "pixels": 72849,
+        "margin": 74
+      }
+    ],
+    "patch": {
+      "x": 421,
+      "y": 286,
+      "width": 32,
+      "height": 32,
+      "score": -19.920000000000016
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -16,
+        "dy": 0,
+        "rmse": 35.05830444764552
+      },
+      {
+        "dx": 0,
+        "dy": -25,
+        "rmse": 28.773660763257222
+      },
+      {
+        "dx": -18,
+        "dy": -19,
+        "rmse": 37.254014149456886
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "91bb90ab791c26b371408e1fd98acfad1a7d67873357b2ab82397afbfeaa8b67",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          32,
+          62,
+          733,
+          420,
+          165451
+        ],
+        [
+          21,
+          50,
+          715,
+          440,
+          157734
+        ],
+        [
+          39,
+          23,
+          724,
+          411,
+          159867
+        ],
+        [
+          16,
+          34,
+          721,
+          425,
+          163481
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-crown-octopus",
+    "storage_path": "fish/rare/mechsanctum-crown-octopus_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-crown-octopus_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.1586206896551725,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 78,
+        "y": 26,
+        "width": 647,
+        "height": 467,
+        "pixels": 186107,
+        "margin": 19
+      },
+      {
+        "x": 62,
+        "y": 28,
+        "width": 657,
+        "height": 465,
+        "pixels": 189034,
+        "margin": 19
+      },
+      {
+        "x": 69,
+        "y": 15,
+        "width": 695,
+        "height": 466,
+        "pixels": 192409,
+        "margin": 4
+      },
+      {
+        "x": 62,
+        "y": 21,
+        "width": 673,
+        "height": 464,
+        "pixels": 191076,
+        "margin": 21
+      }
+    ],
+    "frames": [
+      {
+        "x": 116,
+        "y": 166,
+        "width": 432,
+        "height": 312,
+        "pixels": 82957,
+        "margin": 92
+      },
+      {
+        "x": 105,
+        "y": 167,
+        "width": 438,
+        "height": 311,
+        "pixels": 84222,
+        "margin": 97
+      },
+      {
+        "x": 110,
+        "y": 158,
+        "width": 464,
+        "height": 312,
+        "pixels": 85758,
+        "margin": 66
+      },
+      {
+        "x": 105,
+        "y": 163,
+        "width": 449,
+        "height": 309,
+        "pixels": 85132,
+        "margin": 86
+      }
+    ],
+    "patch": {
+      "x": 412,
+      "y": 278,
+      "width": 32,
+      "height": 32,
+      "score": -16.659101917148625
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -12,
+        "dy": 5,
+        "rmse": 16.949182676118333
+      },
+      {
+        "dx": 24,
+        "dy": -7,
+        "rmse": 27.19637038252478
+      },
+      {
+        "dx": 2,
+        "dy": -2,
+        "rmse": 18.976115914659974
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "356dac06caf42f09622adad59035a7b59f5f5578f1d414dfc8a5ab629851c95b",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          78,
+          26,
+          647,
+          467,
+          186107
+        ],
+        [
+          62,
+          28,
+          657,
+          465,
+          189034
+        ],
+        [
+          69,
+          15,
+          695,
+          466,
+          192409
+        ],
+        [
+          62,
+          21,
+          673,
+          464,
+          191076
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-armored-horseshoe",
+    "storage_path": "fish/rare/mechsanctum-armored-horseshoe_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-armored-horseshoe_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.0926829268292682,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 24,
+        "y": 145,
+        "width": 738,
+        "height": 317,
+        "pixels": 102725,
+        "margin": 6
+      },
+      {
+        "x": 13,
+        "y": 138,
+        "width": 732,
+        "height": 329,
+        "pixels": 106708,
+        "margin": 13
+      },
+      {
+        "x": 24,
+        "y": 89,
+        "width": 735,
+        "height": 321,
+        "pixels": 102263,
+        "margin": 9
+      },
+      {
+        "x": 13,
+        "y": 90,
+        "width": 734,
+        "height": 320,
+        "pixels": 102045,
+        "margin": 13
+      }
+    ],
+    "frames": [
+      {
+        "x": 80,
+        "y": 245,
+        "width": 492,
+        "height": 212,
+        "pixels": 45865,
+        "margin": 68
+      },
+      {
+        "x": 73,
+        "y": 241,
+        "width": 488,
+        "height": 219,
+        "pixels": 47633,
+        "margin": 73
+      },
+      {
+        "x": 80,
+        "y": 208,
+        "width": 490,
+        "height": 215,
+        "pixels": 45642,
+        "margin": 70
+      },
+      {
+        "x": 72,
+        "y": 209,
+        "width": 490,
+        "height": 213,
+        "pixels": 45542,
+        "margin": 72
+      }
+    ],
+    "patch": {
+      "x": 416,
+      "y": 317,
+      "width": 32,
+      "height": 32,
+      "score": -16.093902202965218
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -18,
+        "dy": -1,
+        "rmse": 23.123679323467222
+      },
+      {
+        "dx": -1,
+        "dy": -37,
+        "rmse": 33.63083492646651
+      },
+      {
+        "dx": -9,
+        "dy": -37,
+        "rmse": 35.74013763287054
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "1733730acb5cbf450e2b3881e578e05dd6ce9c4b0b8cefe1237a2b41a0baeeea",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          24,
+          145,
+          738,
+          317,
+          102725
+        ],
+        [
+          13,
+          138,
+          732,
+          329,
+          106708
+        ],
+        [
+          24,
+          89,
+          735,
+          321,
+          102263
+        ],
+        [
+          13,
+          90,
+          734,
+          320,
+          102045
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-tuning-sunfish",
+    "storage_path": "fish/rare/mechsanctum-tuning-sunfish_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-tuning-sunfish_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.4,
+    "rawWidth": 1536,
+    "rawHeight": 1024,
+    "rawFrames": [
+      {
+        "x": 132,
+        "y": 14,
+        "width": 544,
+        "height": 494,
+        "pixels": 123315,
+        "margin": 4
+      },
+      {
+        "x": 129,
+        "y": 13,
+        "width": 552,
+        "height": 487,
+        "pixels": 124181,
+        "margin": 12
+      },
+      {
+        "x": 142,
+        "y": 13,
+        "width": 574,
+        "height": 485,
+        "pixels": 132486,
+        "margin": 13
+      },
+      {
+        "x": 119,
+        "y": 11,
+        "width": 559,
+        "height": 495,
+        "pixels": 126059,
+        "margin": 6
+      }
+    ],
+    "frames": [
+      {
+        "x": 152,
+        "y": 158,
+        "width": 363,
+        "height": 330,
+        "pixels": 54974,
+        "margin": 125
+      },
+      {
+        "x": 150,
+        "y": 157,
+        "width": 368,
+        "height": 325,
+        "pixels": 55368,
+        "margin": 122
+      },
+      {
+        "x": 158,
+        "y": 158,
+        "width": 384,
+        "height": 323,
+        "pixels": 59069,
+        "margin": 98
+      },
+      {
+        "x": 143,
+        "y": 156,
+        "width": 373,
+        "height": 330,
+        "pixels": 56223,
+        "margin": 124
+      }
+    ],
+    "patch": {
+      "x": 400,
+      "y": 270,
+      "width": 32,
+      "height": 32,
+      "score": -15.207338943759957
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": 5,
+        "dy": 0,
+        "rmse": 18.823615816221235
+      },
+      {
+        "dx": 22,
+        "dy": -5,
+        "rmse": 36.204424185153286
+      },
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 26.32344114508983
+      }
+    ],
+    "commonExportScale": 0.6666666666666666,
+    "sha256": "53ab0555e2e280029c1d1bfc3c78abcf5508656d03983927895151e461be9598",
+    "rawAudit": {
+      "width": 1536,
+      "height": 1024,
+      "bounds": [
+        [
+          132,
+          14,
+          544,
+          494,
+          123315
+        ],
+        [
+          129,
+          13,
+          552,
+          487,
+          124181
+        ],
+        [
+          142,
+          13,
+          574,
+          485,
+          132486
+        ],
+        [
+          119,
+          11,
+          559,
+          495,
+          126059
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-spring-nudibranch",
+    "storage_path": "fish/rare/mechsanctum-spring-nudibranch_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-spring-nudibranch_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 2.1082352941176468,
+    "rawWidth": 1254,
+    "rawHeight": 1254,
+    "rawFrames": [
+      {
+        "x": 180,
+        "y": 261,
+        "width": 286,
+        "height": 139,
+        "pixels": 24930,
+        "margin": 161
+      },
+      {
+        "x": 168,
+        "y": 259,
+        "width": 303,
+        "height": 144,
+        "pixels": 26998,
+        "margin": 156
+      },
+      {
+        "x": 155,
+        "y": 234,
+        "width": 312,
+        "height": 144,
+        "pixels": 28410,
+        "margin": 155
+      },
+      {
+        "x": 176,
+        "y": 229,
+        "width": 300,
+        "height": 150,
+        "pixels": 27946,
+        "margin": 151
+      }
+    ],
+    "frames": [
+      {
+        "x": 211,
+        "y": 277,
+        "width": 234,
+        "height": 113,
+        "pixels": 16651,
+        "margin": 195
+      },
+      {
+        "x": 202,
+        "y": 276,
+        "width": 247,
+        "height": 117,
+        "pixels": 18036,
+        "margin": 191
+      },
+      {
+        "x": 190,
+        "y": 255,
+        "width": 255,
+        "height": 118,
+        "pixels": 18984,
+        "margin": 190
+      },
+      {
+        "x": 208,
+        "y": 251,
+        "width": 245,
+        "height": 123,
+        "pixels": 18658,
+        "margin": 187
+      }
+    ],
+    "patch": {
+      "x": 363,
+      "y": 309,
+      "width": 32,
+      "height": 32,
+      "score": -17.159155055269633
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": 2,
+        "dy": -2,
+        "rmse": 38.993274374288845
+      },
+      {
+        "dx": -1,
+        "dy": -22,
+        "rmse": 20.84257533100388
+      },
+      {
+        "dx": 6,
+        "dy": -23,
+        "rmse": 27.40099874352862
+      }
+    ],
+    "commonExportScale": 0.8165869218500797,
+    "sha256": "1aa8a9f719ea15366baaea45fe57b9095e6619c733f00e58c34a30b36a051ab2",
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          180,
+          261,
+          286,
+          139,
+          24930
+        ],
+        [
+          168,
+          259,
+          303,
+          144,
+          26998
+        ],
+        [
+          155,
+          234,
+          312,
+          144,
+          28410
+        ],
+        [
+          176,
+          229,
+          300,
+          150,
+          27946
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-orbis",
+    "storage_path": "fish/epic/mechsanctum-orbis_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-orbis_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.873170731707317,
+    "rawWidth": 1254,
+    "rawHeight": 1254,
+    "rawFrames": [
+      {
+        "x": 193,
+        "y": 240,
+        "width": 276,
+        "height": 177,
+        "pixels": 25949,
+        "margin": 158
+      },
+      {
+        "x": 201,
+        "y": 175,
+        "width": 279,
+        "height": 246,
+        "pixels": 30850,
+        "margin": 147
+      },
+      {
+        "x": 183,
+        "y": 221,
+        "width": 351,
+        "height": 184,
+        "pixels": 30750,
+        "margin": 93
+      },
+      {
+        "x": 205,
+        "y": 225,
+        "width": 287,
+        "height": 194,
+        "pixels": 27315,
+        "margin": 135
+      }
+    ],
+    "frames": [
+      {
+        "x": 221,
+        "y": 260,
+        "width": 226,
+        "height": 145,
+        "pixels": 17364,
+        "margin": 193
+      },
+      {
+        "x": 228,
+        "y": 207,
+        "width": 228,
+        "height": 201,
+        "pixels": 20654,
+        "margin": 184
+      },
+      {
+        "x": 213,
+        "y": 244,
+        "width": 287,
+        "height": 151,
+        "pixels": 20526,
+        "margin": 140
+      },
+      {
+        "x": 232,
+        "y": 248,
+        "width": 234,
+        "height": 158,
+        "pixels": 18269,
+        "margin": 174
+      }
+    ],
+    "patch": {
+      "x": 365,
+      "y": 300,
+      "width": 32,
+      "height": 32,
+      "score": -16.623848344638507
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": 10,
+        "dy": 0,
+        "rmse": 34.76272082647242
+      },
+      {
+        "dx": -1,
+        "dy": -13,
+        "rmse": 36.968862022778836
+      },
+      {
+        "dx": 16,
+        "dy": -11,
+        "rmse": 38.93964941157401
+      }
+    ],
+    "commonExportScale": 0.8165869218500797,
+    "sha256": "86ee0f07630dc8677b79d1a11182eead371bccee5bc1346eaf1836c8ddf5fbb9",
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          193,
+          240,
+          276,
+          177,
+          25949
+        ],
+        [
+          201,
+          175,
+          279,
+          246,
+          30850
+        ],
+        [
+          183,
+          221,
+          351,
+          184,
+          30750
+        ],
+        [
+          205,
+          225,
+          287,
+          194,
+          27315
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-talos",
+    "storage_path": "fish/epic/mechsanctum-talos_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-talos_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.9131672597864766,
+    "rawWidth": 1254,
+    "rawHeight": 1254,
+    "rawFrames": [
+      {
+        "x": 178,
+        "y": 230,
+        "width": 322,
+        "height": 192,
+        "pixels": 30833,
+        "margin": 127
+      },
+      {
+        "x": 167,
+        "y": 230,
+        "width": 320,
+        "height": 190,
+        "pixels": 31343,
+        "margin": 140
+      },
+      {
+        "x": 162,
+        "y": 228,
+        "width": 344,
+        "height": 189,
+        "pixels": 32312,
+        "margin": 121
+      },
+      {
+        "x": 176,
+        "y": 229,
+        "width": 319,
+        "height": 183,
+        "pixels": 30926,
+        "margin": 132
+      }
+    ],
+    "frames": [
+      {
+        "x": 210,
+        "y": 252,
+        "width": 262,
+        "height": 157,
+        "pixels": 20604,
+        "margin": 168
+      },
+      {
+        "x": 200,
+        "y": 252,
+        "width": 262,
+        "height": 155,
+        "pixels": 20937,
+        "margin": 178
+      },
+      {
+        "x": 196,
+        "y": 250,
+        "width": 281,
+        "height": 154,
+        "pixels": 21581,
+        "margin": 163
+      },
+      {
+        "x": 208,
+        "y": 251,
+        "width": 260,
+        "height": 150,
+        "pixels": 20640,
+        "margin": 172
+      }
+    ],
+    "patch": {
+      "x": 300,
+      "y": 285,
+      "width": 20,
+      "height": 20
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": 8,
+        "dy": 0,
+        "rmse": 27.998177783271423
+      },
+      {
+        "dx": 0,
+        "dy": -1,
+        "rmse": 21.716400272980938
+      },
+      {
+        "dx": 6,
+        "dy": 0,
+        "rmse": 27.343991617008303
+      }
+    ],
+    "commonExportScale": 0.8165869218500797,
+    "sha256": "ab1baded43c81c153cac15d171f48b49985ab511a5bbd1fbd12bc9e4348e0a67",
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          178,
+          230,
+          322,
+          192,
+          30833
+        ],
+        [
+          167,
+          230,
+          320,
+          190,
+          31343
+        ],
+        [
+          162,
+          228,
+          344,
+          189,
+          32312
+        ],
+        [
+          176,
+          229,
+          319,
+          183,
+          30926
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-aion",
+    "storage_path": "fish/epic/mechsanctum-aion_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-aion_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.0882591093117409,
+    "rawWidth": 1774,
+    "rawHeight": 887,
+    "rawFrames": [
+      {
+        "x": 27,
+        "y": 106,
+        "width": 850,
+        "height": 333,
+        "pixels": 150187,
+        "margin": 4
+      },
+      {
+        "x": 25,
+        "y": 124,
+        "width": 838,
+        "height": 317,
+        "pixels": 141609,
+        "margin": 2
+      },
+      {
+        "x": 26,
+        "y": 77,
+        "width": 854,
+        "height": 332,
+        "pixels": 150257,
+        "margin": 7
+      },
+      {
+        "x": 25,
+        "y": 24,
+        "width": 840,
+        "height": 380,
+        "pixels": 158198,
+        "margin": 22
+      }
+    ],
+    "frames": [
+      {
+        "x": 79,
+        "y": 253,
+        "width": 491,
+        "height": 193,
+        "pixels": 50313,
+        "margin": 70
+      },
+      {
+        "x": 78,
+        "y": 263,
+        "width": 484,
+        "height": 184,
+        "pixels": 47402,
+        "margin": 78
+      },
+      {
+        "x": 78,
+        "y": 237,
+        "width": 494,
+        "height": 192,
+        "pixels": 50313,
+        "margin": 68
+      },
+      {
+        "x": 78,
+        "y": 206,
+        "width": 485,
+        "height": 220,
+        "pixels": 52976,
+        "margin": 77
+      }
+    ],
+    "patch": {
+      "x": 415,
+      "y": 317,
+      "width": 32,
+      "height": 32,
+      "score": -16.814030759721618
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -5,
+        "dy": 1,
+        "rmse": 20.859526234091316
+      },
+      {
+        "dx": 0,
+        "dy": -25,
+        "rmse": 29.178525727602544
+      },
+      {
+        "dx": -5,
+        "dy": -24,
+        "rmse": 20.264572350829006
+      }
+    ],
+    "commonExportScale": 0.5772266065388951,
+    "sha256": "a5bf8bf9e8989d1b78a3b2e1fc1765151360a8ddcaad766fe49bdcb141beca6a",
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          27,
+          106,
+          850,
+          333,
+          150187
+        ],
+        [
+          25,
+          124,
+          838,
+          317,
+          141609
+        ],
+        [
+          26,
+          77,
+          854,
+          332,
+          150257
+        ],
+        [
+          25,
+          24,
+          840,
+          380,
+          158198
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-helix",
+    "storage_path": "fish/epic/mechsanctum-helix_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-helix_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 2.5478672985781987,
+    "rawWidth": 1254,
+    "rawHeight": 1254,
+    "rawFrames": [
+      {
+        "x": 209,
+        "y": 227,
+        "width": 243,
+        "height": 190,
+        "pixels": 23779,
+        "margin": 175
+      },
+      {
+        "x": 209,
+        "y": 227,
+        "width": 214,
+        "height": 183,
+        "pixels": 22938,
+        "margin": 204
+      },
+      {
+        "x": 209,
+        "y": 226,
+        "width": 258,
+        "height": 191,
+        "pixels": 24375,
+        "margin": 160
+      },
+      {
+        "x": 209,
+        "y": 226,
+        "width": 219,
+        "height": 189,
+        "pixels": 23073,
+        "margin": 199
+      }
+    ],
+    "frames": [
+      {
+        "x": 234,
+        "y": 249,
+        "width": 199,
+        "height": 156,
+        "pixels": 15906,
+        "margin": 207
+      },
+      {
+        "x": 234,
+        "y": 249,
+        "width": 175,
+        "height": 150,
+        "pixels": 15342,
+        "margin": 231
+      },
+      {
+        "x": 234,
+        "y": 249,
+        "width": 211,
+        "height": 156,
+        "pixels": 16307,
+        "margin": 195
+      },
+      {
+        "x": 234,
+        "y": 249,
+        "width": 179,
+        "height": 154,
+        "pixels": 15425,
+        "margin": 227
+      }
+    ],
+    "patch": {
+      "x": 346,
+      "y": 313,
+      "width": 32,
+      "height": 32,
+      "score": 3.3074751957392436
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -1,
+        "dy": -1,
+        "rmse": 26.203553453534372
+      },
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 15.459075318683775
+      },
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 23.869334838471474
+      }
+    ],
+    "commonExportScale": 0.8165869218500797,
+    "sha256": "ec5eed57a940026e9403f7594436c6465845358b11fcccb51057ce8d2e6149f7",
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          209,
+          227,
+          243,
+          190,
+          23779
+        ],
+        [
+          209,
+          227,
+          214,
+          183,
+          22938
+        ],
+        [
+          209,
+          226,
+          258,
+          191,
+          24375
+        ],
+        [
+          209,
+          226,
+          219,
+          189,
+          23073
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-nema",
+    "storage_path": "fish/epic/mechsanctum-nema_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-nema_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.7454545454545454,
+    "rawWidth": 1254,
+    "rawHeight": 1254,
+    "rawFrames": [
+      {
+        "x": 182,
+        "y": 220,
+        "width": 335,
+        "height": 282,
+        "pixels": 55366,
+        "margin": 110
+      },
+      {
+        "x": 162,
+        "y": 213,
+        "width": 321,
+        "height": 287,
+        "pixels": 54610,
+        "margin": 127
+      },
+      {
+        "x": 161,
+        "y": 197,
+        "width": 377,
+        "height": 280,
+        "pixels": 58245,
+        "margin": 89
+      },
+      {
+        "x": 153,
+        "y": 183,
+        "width": 348,
+        "height": 293,
+        "pixels": 60017,
+        "margin": 126
+      }
+    ],
+    "frames": [
+      {
+        "x": 213,
+        "y": 243,
+        "width": 274,
+        "height": 231,
+        "pixels": 36944,
+        "margin": 153
+      },
+      {
+        "x": 197,
+        "y": 238,
+        "width": 261,
+        "height": 234,
+        "pixels": 36427,
+        "margin": 168
+      },
+      {
+        "x": 195,
+        "y": 225,
+        "width": 308,
+        "height": 228,
+        "pixels": 38873,
+        "margin": 137
+      },
+      {
+        "x": 189,
+        "y": 214,
+        "width": 285,
+        "height": 239,
+        "pixels": 40040,
+        "margin": 166
+      }
+    ],
+    "patch": {
+      "x": 397,
+      "y": 323,
+      "width": 32,
+      "height": 32,
+      "score": -15.487971631294823
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -10,
+        "dy": 1,
+        "rmse": 30.778582174779512
+      },
+      {
+        "dx": 16,
+        "dy": -27,
+        "rmse": 26.219070448290378
+      },
+      {
+        "dx": -10,
+        "dy": -19,
+        "rmse": 39.073289889112495
+      }
+    ],
+    "commonExportScale": 0.8165869218500797,
+    "sha256": "31bdc298a17c48574a24e9ee32acbecb16a2bac2333884ac6de3b0b26baeef27",
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          182,
+          220,
+          335,
+          282,
+          55366
+        ],
+        [
+          162,
+          213,
+          321,
+          287,
+          54610
+        ],
+        [
+          161,
+          197,
+          377,
+          280,
+          58245
+        ],
+        [
+          153,
+          183,
+          348,
+          293,
+          60017
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-ouros",
+    "storage_path": "fish/epic/mechsanctum-ouros_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-ouros_v1_sprite.png",
+    "width": 1280,
+    "height": 1280,
+    "cell": 640,
+    "scale": 2.432579185520362,
+    "rawWidth": 1254,
+    "rawHeight": 1254,
+    "rawFrames": [
+      {
+        "x": 215,
+        "y": 224,
+        "width": 224,
+        "height": 212,
+        "pixels": 30483,
+        "margin": 188
+      },
+      {
+        "x": 190,
+        "y": 214,
+        "width": 244,
+        "height": 229,
+        "pixels": 32964,
+        "margin": 184
+      },
+      {
+        "x": 197,
+        "y": 201,
+        "width": 270,
+        "height": 238,
+        "pixels": 40921,
+        "margin": 160
+      },
+      {
+        "x": 199,
+        "y": 206,
+        "width": 267,
+        "height": 237,
+        "pixels": 40063,
+        "margin": 161
+      }
+    ],
+    "frames": [
+      {
+        "x": 240,
+        "y": 247,
+        "width": 182,
+        "height": 173,
+        "pixels": 20404,
+        "margin": 218
+      },
+      {
+        "x": 219,
+        "y": 239,
+        "width": 199,
+        "height": 187,
+        "pixels": 22015,
+        "margin": 214
+      },
+      {
+        "x": 224,
+        "y": 228,
+        "width": 221,
+        "height": 195,
+        "pixels": 27357,
+        "margin": 195
+      },
+      {
+        "x": 227,
+        "y": 232,
+        "width": 218,
+        "height": 194,
+        "pixels": 26779,
+        "margin": 195
+      }
+    ],
+    "patch": {
+      "x": 360,
+      "y": 303,
+      "width": 32,
+      "height": 32,
+      "score": -14.304247196375142
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -5,
+        "dy": 4,
+        "rmse": 29.883604476598226
+      },
+      {
+        "dx": 16,
+        "dy": -8,
+        "rmse": 43.57204305262511
+      },
+      {
+        "dx": 18,
+        "dy": -2,
+        "rmse": 36.510209706930425
+      }
+    ],
+    "commonExportScale": 0.8165869218500797,
+    "sha256": "6c0d5255cef25d879271d080cd9ae670c3763c8d33969098805ee5a51769ab82",
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          215,
+          224,
+          224,
+          212,
+          30483
+        ],
+        [
+          190,
+          214,
+          244,
+          229,
+          32964
+        ],
+        [
+          197,
+          201,
+          270,
+          238,
+          40921
+        ],
+        [
+          199,
+          206,
+          267,
+          237,
+          40063
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-deus-machina",
+    "storage_path": "fish/mythic/mechsanctum-deus-machina_swim8_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-deus-machina_swim8_v1_sprite.png",
+    "width": 2560,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.364467005076142,
+    "rawWidth": 1774,
+    "rawHeight": 887,
+    "rawFrames": [
+      {
+        "x": 65,
+        "y": 109,
+        "width": 336,
+        "height": 294,
+        "pixels": 37012,
+        "margin": 40
+      },
+      {
+        "x": 79,
+        "y": 110,
+        "width": 314,
+        "height": 293,
+        "pixels": 35655,
+        "margin": 40
+      },
+      {
+        "x": 61,
+        "y": 109,
+        "width": 337,
+        "height": 294,
+        "pixels": 36670,
+        "margin": 40
+      },
+      {
+        "x": 68,
+        "y": 110,
+        "width": 327,
+        "height": 293,
+        "pixels": 37614,
+        "margin": 40
+      },
+      {
+        "x": 97,
+        "y": 102,
+        "width": 267,
+        "height": 288,
+        "pixels": 35652,
+        "margin": 53
+      },
+      {
+        "x": 91,
+        "y": 102,
+        "width": 283,
+        "height": 288,
+        "pixels": 35422,
+        "margin": 53
+      },
+      {
+        "x": 92,
+        "y": 51,
+        "width": 305,
+        "height": 339,
+        "pixels": 40516,
+        "margin": 46
+      },
+      {
+        "x": 57,
+        "y": 102,
+        "width": 340,
+        "height": 288,
+        "pixels": 36379,
+        "margin": 46
+      }
+    ],
+    "frames": [
+      {
+        "x": 140,
+        "y": 191,
+        "width": 388,
+        "height": 340,
+        "pixels": 49607,
+        "margin": 109
+      },
+      {
+        "x": 156,
+        "y": 191,
+        "width": 363,
+        "height": 340,
+        "pixels": 47775,
+        "margin": 109
+      },
+      {
+        "x": 135,
+        "y": 191,
+        "width": 390,
+        "height": 340,
+        "pixels": 49144,
+        "margin": 109
+      },
+      {
+        "x": 143,
+        "y": 191,
+        "width": 378,
+        "height": 340,
+        "pixels": 50374,
+        "margin": 109
+      },
+      {
+        "x": 176,
+        "y": 182,
+        "width": 309,
+        "height": 334,
+        "pixels": 47741,
+        "margin": 124
+      },
+      {
+        "x": 170,
+        "y": 183,
+        "width": 327,
+        "height": 332,
+        "pixels": 47414,
+        "margin": 125
+      },
+      {
+        "x": 171,
+        "y": 123,
+        "width": 352,
+        "height": 393,
+        "pixels": 54282,
+        "margin": 117
+      },
+      {
+        "x": 130,
+        "y": 182,
+        "width": 394,
+        "height": 334,
+        "pixels": 48736,
+        "margin": 116
+      }
+    ],
+    "patch": {
+      "x": 372,
+      "y": 311,
+      "width": 32,
+      "height": 32,
+      "score": 11.360000000000014
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": -3,
+        "dy": 0,
+        "rmse": 16.14402767681069
+      },
+      {
+        "dx": -4,
+        "dy": 0,
+        "rmse": 16.665347169990078
+      },
+      {
+        "dx": -9,
+        "dy": 1,
+        "rmse": 18.087173171431
+      },
+      {
+        "dx": 0,
+        "dy": -15,
+        "rmse": 14.02824531674103
+      },
+      {
+        "dx": -2,
+        "dy": -12,
+        "rmse": 18.75
+      },
+      {
+        "dx": -5,
+        "dy": -15,
+        "rmse": 27.970098120830553
+      },
+      {
+        "dx": -8,
+        "dy": -12,
+        "rmse": 18.92828815800818
+      }
+    ],
+    "commonExportScale": 1.1557562076749435,
+    "sha256": "0efd0f853adde31f7dd57028db27939c54b43ca9cb68a9b2fb6d2a201cbc9872",
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          65,
+          109,
+          336,
+          294,
+          37012
+        ],
+        [
+          79,
+          110,
+          314,
+          293,
+          35655
+        ],
+        [
+          61,
+          109,
+          337,
+          294,
+          36670
+        ],
+        [
+          68,
+          110,
+          327,
+          293,
+          37614
+        ],
+        [
+          97,
+          102,
+          267,
+          288,
+          35652
+        ],
+        [
+          91,
+          102,
+          283,
+          288,
+          35422
+        ],
+        [
+          92,
+          51,
+          305,
+          339,
+          40516
+        ],
+        [
+          57,
+          102,
+          340,
+          288,
+          36379
+        ]
+      ]
+    }
+  },
+  {
+    "id": "mechsanctum-automakion",
+    "storage_path": "fish/mythic/mechsanctum-automakion_swim8_v1_sprite.png",
+    "source": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-automakion_swim8_v1_sprite.png",
+    "width": 2560,
+    "height": 1280,
+    "cell": 640,
+    "scale": 1.350753768844221,
+    "rawWidth": 1774,
+    "rawHeight": 887,
+    "rawFrames": [
+      {
+        "x": 79,
+        "y": 125,
+        "width": 294,
+        "height": 256,
+        "pixels": 41129,
+        "margin": 62
+      },
+      {
+        "x": 55,
+        "y": 101,
+        "width": 320,
+        "height": 278,
+        "pixels": 44881,
+        "margin": 55
+      },
+      {
+        "x": 80,
+        "y": 134,
+        "width": 291,
+        "height": 249,
+        "pixels": 41049,
+        "margin": 60
+      },
+      {
+        "x": 43,
+        "y": 135,
+        "width": 325,
+        "height": 246,
+        "pixels": 42633,
+        "margin": 43
+      },
+      {
+        "x": 83,
+        "y": 99,
+        "width": 290,
+        "height": 259,
+        "pixels": 42340,
+        "margin": 70
+      },
+      {
+        "x": 52,
+        "y": 69,
+        "width": 344,
+        "height": 307,
+        "pixels": 53852,
+        "margin": 47
+      },
+      {
+        "x": 67,
+        "y": 99,
+        "width": 309,
+        "height": 259,
+        "pixels": 44033,
+        "margin": 67
+      },
+      {
+        "x": 67,
+        "y": 99,
+        "width": 303,
+        "height": 261,
+        "pixels": 42517,
+        "margin": 67
+      }
+    ],
+    "frames": [
+      {
+        "x": 156,
+        "y": 209,
+        "width": 339,
+        "height": 296,
+        "pixels": 55061,
+        "margin": 135
+      },
+      {
+        "x": 128,
+        "y": 181,
+        "width": 370,
+        "height": 322,
+        "pixels": 60070,
+        "margin": 128
+      },
+      {
+        "x": 157,
+        "y": 219,
+        "width": 336,
+        "height": 289,
+        "pixels": 54952,
+        "margin": 132
+      },
+      {
+        "x": 114,
+        "y": 221,
+        "width": 376,
+        "height": 283,
+        "pixels": 57028,
+        "margin": 114
+      },
+      {
+        "x": 160,
+        "y": 179,
+        "width": 336,
+        "height": 299,
+        "pixels": 56712,
+        "margin": 144
+      },
+      {
+        "x": 124,
+        "y": 144,
+        "width": 398,
+        "height": 355,
+        "pixels": 72101,
+        "margin": 118
+      },
+      {
+        "x": 142,
+        "y": 179,
+        "width": 357,
+        "height": 299,
+        "pixels": 58950,
+        "margin": 141
+      },
+      {
+        "x": 142,
+        "y": 178,
+        "width": 351,
+        "height": 302,
+        "pixels": 56944,
+        "margin": 142
+      }
+    ],
+    "patch": {
+      "x": 450,
+      "y": 360,
+      "width": 20,
+      "height": 20
+    },
+    "registration": [
+      {
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "dx": 2,
+        "dy": -5,
+        "rmse": 16.637798127475047
+      },
+      {
+        "dx": -2,
+        "dy": 11,
+        "rmse": 14.82155765864612
+      },
+      {
+        "dx": -6,
+        "dy": 6,
+        "rmse": 19.026297590440446
+      },
+      {
+        "dx": 0,
+        "dy": -26,
+        "rmse": 19.353320655850336
+      },
+      {
+        "dx": 20,
+        "dy": -27,
+        "rmse": 22.467323210496126
+      },
+      {
+        "dx": 2,
+        "dy": -28,
+        "rmse": 15.32504952217587
+      },
+      {
+        "dx": -4,
+        "dy": -27,
+        "rmse": 16.50123681202505
+      }
+    ],
+    "commonExportScale": 1.1557562076749435,
+    "sha256": "e93c6ac5ff06a297991b0c02ddd0997f325de0e133c8a32d149890becfd4629d",
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          79,
+          125,
+          294,
+          256,
+          41129
+        ],
+        [
+          55,
+          101,
+          320,
+          278,
+          44881
+        ],
+        [
+          80,
+          134,
+          291,
+          249,
+          41049
+        ],
+        [
+          43,
+          135,
+          325,
+          246,
+          42633
+        ],
+        [
+          83,
+          99,
+          290,
+          259,
+          42340
+        ],
+        [
+          52,
+          69,
+          344,
+          307,
+          53852
+        ],
+        [
+          67,
+          99,
+          309,
+          259,
+          44033
+        ],
+        [
+          67,
+          99,
+          303,
+          261,
+          42517
+        ]
+      ]
+    }
+  }
+]

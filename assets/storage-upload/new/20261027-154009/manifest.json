@@ -1,0 +1,2238 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "region": "mechsanctum",
+  "items": [
+    {
+      "id": "mechsanctum-aion",
+      "name": "영겁의 고래 아이온",
+      "kind": "fish",
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/mechsanctum-aion_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/mechsanctum-aion_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-armored-horseshoe",
+      "name": "톱니갑옷 투구게",
+      "kind": "fish",
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/mechsanctum-armored-horseshoe_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/mechsanctum-armored-horseshoe_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-automakion",
+      "name": "천륜의 심판자, 오토마키온",
+      "kind": "fish",
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/mechsanctum-automakion_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/mechsanctum-automakion_swim8_v1_sprite.png",
+      "frames": 8,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-backward-fish",
+      "name": "거꾸로 조립된 물고기",
+      "kind": "trash",
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/mechsanctum-backward-fish_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-bearing-urchin",
+      "name": "베어링성게",
+      "kind": "fish",
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mechsanctum-bearing-urchin_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/mechsanctum-bearing-urchin_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-brass-carp",
+      "name": "황동붕어",
+      "kind": "fish",
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mechsanctum-brass-carp_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/mechsanctum-brass-carp_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-brass-column",
+      "name": "황동 톱니 기둥",
+      "kind": "decoration",
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/mechsanctum-brass-column_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-broken-prayer-circuit",
+      "name": "끊어진 기도회로",
+      "kind": "trash",
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/mechsanctum-broken-prayer-circuit_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-clockwork-anchovy",
+      "name": "태엽멸치",
+      "kind": "fish",
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mechsanctum-clockwork-anchovy_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/mechsanctum-clockwork-anchovy_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-copper-coral",
+      "name": "구리선 산호",
+      "kind": "decoration",
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/mechsanctum-copper-coral_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-copper-pipes",
+      "name": "구리 배관 묶음",
+      "kind": "decoration",
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/mechsanctum-copper-pipes_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-counter-jellyfish",
+      "name": "역회전 해파리",
+      "kind": "fish",
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/mechsanctum-counter-jellyfish_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/mechsanctum-counter-jellyfish_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-creator-blueprint",
+      "name": "창조주의 설계도",
+      "kind": "decoration",
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/mechsanctum-creator-blueprint_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-crown-octopus",
+      "name": "금관톱니 문어",
+      "kind": "fish",
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/mechsanctum-crown-octopus_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/mechsanctum-crown-octopus_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-deus-machina",
+      "name": "태초의 설계자, 데우스 마키나",
+      "kind": "fish",
+      "rarity": "mythic",
+      "thumbnail_path": "fish/mythic/mechsanctum-deus-machina_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/mythic/mechsanctum-deus-machina_swim8_v1_sprite.png",
+      "frames": 8,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-deus-zero",
+      "name": "심장을 잃은 신, 데우스 제로",
+      "kind": "decoration",
+      "rarity": "mythic",
+      "thumbnail_path": "decorations/mythic/mechsanctum-deus-zero_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-empty-crown",
+      "name": "기계신의 빈 왕관",
+      "kind": "trash",
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/mechsanctum-empty-crown_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-eternal-pendulum",
+      "name": "영겁의 진자",
+      "kind": "decoration",
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/mechsanctum-eternal-pendulum_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-filter-residue",
+      "name": "성수 필터 찌꺼기",
+      "kind": "trash",
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/mechsanctum-filter-residue_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-gear-flounder",
+      "name": "기어가자미",
+      "kind": "fish",
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mechsanctum-gear-flounder_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/mechsanctum-gear-flounder_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-gear-starfish",
+      "name": "톱니불가사리",
+      "kind": "fish",
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mechsanctum-gear-starfish_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/mechsanctum-gear-starfish_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-guardian-throne",
+      "name": "잠든 수호자의 석좌",
+      "kind": "decoration",
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/mechsanctum-guardian-throne_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-helix",
+      "name": "역행의 나선 헬릭스",
+      "kind": "fish",
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/mechsanctum-helix_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/mechsanctum-helix_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-hinge-scallop",
+      "name": "경첩가리비",
+      "kind": "fish",
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mechsanctum-hinge-scallop_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/mechsanctum-hinge-scallop_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-layered-nautilus",
+      "name": "겹톱니 앵무조개",
+      "kind": "fish",
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/mechsanctum-layered-nautilus_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/mechsanctum-layered-nautilus_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-meshing-crab",
+      "name": "맞물림게",
+      "kind": "fish",
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mechsanctum-meshing-crab_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/mechsanctum-meshing-crab_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-nema",
+      "name": "백팔륜의 사제 네마",
+      "kind": "fish",
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/mechsanctum-nema_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/mechsanctum-nema_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-orbis",
+      "name": "천륜의 수호자 오르비스",
+      "kind": "fish",
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/mechsanctum-orbis_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/mechsanctum-orbis_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-ouros",
+      "name": "성소를 감싼 우로스",
+      "kind": "fish",
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/mechsanctum-ouros_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/mechsanctum-ouros_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-pendulum-ray",
+      "name": "시계추 가오리",
+      "kind": "fish",
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/mechsanctum-pendulum-ray_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/mechsanctum-pendulum-ray_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-planetary-puffer",
+      "name": "유성기어 복어",
+      "kind": "fish",
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/mechsanctum-planetary-puffer_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/mechsanctum-planetary-puffer_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-plate-filefish",
+      "name": "철판쥐치",
+      "kind": "fish",
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mechsanctum-plate-filefish_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/mechsanctum-plate-filefish_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-prayer-lamp",
+      "name": "기계신의 기도등",
+      "kind": "decoration",
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/mechsanctum-prayer-lamp_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-praying-automaton",
+      "name": "기도하는 자동인형",
+      "kind": "decoration",
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/mechsanctum-praying-automaton_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-pressure-gauge",
+      "name": "황동 압력계",
+      "kind": "decoration",
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/mechsanctum-pressure-gauge_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-priest-screw",
+      "name": "기계 사제의 나사",
+      "kind": "trash",
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/mechsanctum-priest-screw_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-pulley-halfbeak",
+      "name": "도르래학꽁치",
+      "kind": "fish",
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mechsanctum-pulley-halfbeak_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/mechsanctum-pulley-halfbeak_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-rejected-prayer",
+      "name": "반려된 기도문",
+      "kind": "trash",
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/mechsanctum-rejected-prayer_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-repairing-tree",
+      "name": "자가수복 톱니나무",
+      "kind": "decoration",
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/mechsanctum-repairing-tree_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-ring-eel",
+      "name": "환형톱니 장어",
+      "kind": "fish",
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/mechsanctum-ring-eel_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/mechsanctum-ring-eel_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-rusted-joint",
+      "name": "녹슨 관절 부품",
+      "kind": "trash",
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/mechsanctum-rusted-joint_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-rusty-sardine",
+      "name": "녹슨정어리",
+      "kind": "fish",
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mechsanctum-rusty-sardine_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/mechsanctum-rusty-sardine_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-screw-medaka",
+      "name": "나사송사리",
+      "kind": "fish",
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mechsanctum-screw-medaka_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/mechsanctum-screw-medaka_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-silver-guardian",
+      "name": "백은 수호상",
+      "kind": "decoration",
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/mechsanctum-silver-guardian_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-silver-seahorse",
+      "name": "백은톱니 해마",
+      "kind": "fish",
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/mechsanctum-silver-seahorse_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/mechsanctum-silver-seahorse_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-small-altar",
+      "name": "기계신의 작은 제단",
+      "kind": "decoration",
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/mechsanctum-small-altar_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-spare-part",
+      "name": "정체불명의 여분 부품",
+      "kind": "trash",
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/mechsanctum-spare-part_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-spiral-whelk",
+      "name": "나선고둥",
+      "kind": "fish",
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mechsanctum-spiral-whelk_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/mechsanctum-spiral-whelk_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-spring-bird-nest",
+      "name": "잠든 태엽새 둥지",
+      "kind": "decoration",
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/mechsanctum-spring-bird-nest_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-spring-nudibranch",
+      "name": "나선태엽 갯민숭달팽이",
+      "kind": "fish",
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/mechsanctum-spring-nudibranch_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/mechsanctum-spring-nudibranch_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-spring-shrimp",
+      "name": "태엽새우",
+      "kind": "fish",
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/mechsanctum-spring-shrimp_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/normal/mechsanctum-spring-shrimp_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-stopped-heart",
+      "name": "멈춘 태엽 심장",
+      "kind": "trash",
+      "rarity": "rare",
+      "thumbnail_path": "trash/rare/mechsanctum-stopped-heart_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-talos",
+      "name": "성문분쇄자 탈로스",
+      "kind": "fish",
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/mechsanctum-talos_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/epic/mechsanctum-talos_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-tangled-copper",
+      "name": "엉킨 구리 신경",
+      "kind": "trash",
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/mechsanctum-tangled-copper_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-teal-reactor",
+      "name": "청록 동력 수정로",
+      "kind": "decoration",
+      "rarity": "rare",
+      "thumbnail_path": "decorations/rare/mechsanctum-teal-reactor_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-toolbox",
+      "name": "정비사의 공구함",
+      "kind": "decoration",
+      "rarity": "common",
+      "thumbnail_path": "decorations/normal/mechsanctum-toolbox_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    },
+    {
+      "id": "mechsanctum-tuning-sunfish",
+      "name": "진동굽쇠 개복치",
+      "kind": "fish",
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/mechsanctum-tuning-sunfish_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/mechsanctum-tuning-sunfish_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-twin-wheel-turtle",
+      "name": "쌍륜거북",
+      "kind": "fish",
+      "rarity": "rare",
+      "thumbnail_path": "fish/rare/mechsanctum-twin-wheel-turtle_v1_thumbnail.png",
+      "sprite_sheet_path": "fish/rare/mechsanctum-twin-wheel-turtle_v1_sprite.png",
+      "frames": 4,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-worn-cog",
+      "name": "닳아버린 톱니바퀴",
+      "kind": "trash",
+      "rarity": "common",
+      "thumbnail_path": "trash/normal/mechsanctum-worn-cog_v1_thumbnail.png",
+      "sprite_sheet_path": null,
+      "frames": 0,
+      "source_facing": null
+    }
+  ],
+  "assets": [
+    {
+      "id": "mechsanctum-deus-zero",
+      "storage_path": "decorations/mythic/mechsanctum-deus-zero_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-d8a984a0-888d-4049-8012-2e5b3ffbd841.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 심장을 잃은 신, 데우스 제로: ancient seated mechanical giant idol, empty large circular hole through chest, broken gear halo above head, small fish swimming through hollow chest, solemn submerged god statue. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Soft richly painted fantasy illustration matching reference rendering, strong distinctive anatomy, no copying ray silhouette from style reference. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/mythic/mechsanctum-deus-zero_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-deus-zero_v1_thumbnail.png",
+      "sha256": "1ea25d60e5e302093f96028c43d8906f4deb6a6e5640c23f0449bbdff5735d99",
+      "width": 1368,
+      "height": 1150,
+      "bytes": 1783756
+    },
+    {
+      "id": "mechsanctum-brass-column",
+      "storage_path": "decorations/normal/mechsanctum-brass-column_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-65c85211-7988-414e-8d96-5d1dca11604e.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 황동 톱니 기둥: short freestanding brass column built from stacked cogwheels. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/normal/mechsanctum-brass-column_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-brass-column_v1_thumbnail.png",
+      "sha256": "36f46d714fa330dd768851090d8053c770e04892f7b367492372380a4575bfd4",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1078443
+    },
+    {
+      "id": "mechsanctum-copper-coral",
+      "storage_path": "decorations/normal/mechsanctum-copper-coral_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-59bda4b5-a98c-41f6-b7bd-2d04ec6fa512.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 구리선 산호: branching copper wire coral sculpture on tiny rock foot. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/normal/mechsanctum-copper-coral_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-copper-coral_v1_thumbnail.png",
+      "sha256": "4110a405371ea771212cead935d43f140f3a4d5a1d445c82016e496dea7a1beb",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1215256
+    },
+    {
+      "id": "mechsanctum-copper-pipes",
+      "storage_path": "decorations/normal/mechsanctum-copper-pipes_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-5e185625-08dc-4eac-8975-ebd57c1f2ad4.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 구리 배관 묶음: neat bundle of bent copper pipes with small brass valves. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/normal/mechsanctum-copper-pipes_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-copper-pipes_v1_thumbnail.png",
+      "sha256": "68a69852ef462b67baf71e0ceb2725108057b85d2c2a9ad2e8e96d7582aea425",
+      "width": 1374,
+      "height": 1145,
+      "bytes": 1563715
+    },
+    {
+      "id": "mechsanctum-pressure-gauge",
+      "storage_path": "decorations/normal/mechsanctum-pressure-gauge_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-9de9975d-16e1-48c6-bada-9cdd4b5c5074.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 황동 압력계: freestanding antique round brass pressure gauge on short pipe base. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/normal/mechsanctum-pressure-gauge_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-pressure-gauge_v1_thumbnail.png",
+      "sha256": "0828bab1164a8785f677e162f3a6f046571309ee4af3e0728a1fcb39e21b31e8",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1210048
+    },
+    {
+      "id": "mechsanctum-small-altar",
+      "storage_path": "decorations/normal/mechsanctum-small-altar_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-42ce2746-0fd4-4f42-9df0-ad8de3007f99.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 기계신의 작은 제단: small stone and brass altar with central cogwheel emblem. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/normal/mechsanctum-small-altar_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-small-altar_v1_thumbnail.png",
+      "sha256": "924a21697fd902a3bc18357617e62abead3d679aa0708d813705fdb9876c82b6",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 1676040
+    },
+    {
+      "id": "mechsanctum-spring-bird-nest",
+      "storage_path": "decorations/normal/mechsanctum-spring-bird-nest_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-e0f21476-1fa1-44d6-b083-158461539a33.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 잠든 태엽새 둥지: tiny sleeping brass clockwork bird curled in copper wire nest. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/normal/mechsanctum-spring-bird-nest_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-spring-bird-nest_v1_thumbnail.png",
+      "sha256": "f32ff22291644897e903a9e83be3bdb632c6910b7fe849ff5c8261b0b7fe7ecd",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 2195256
+    },
+    {
+      "id": "mechsanctum-toolbox",
+      "storage_path": "decorations/normal/mechsanctum-toolbox_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-e3946247-4dd2-4d44-aa62-0b1fd2ac0341.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 정비사의 공구함: small open copper mechanics toolbox with neatly arranged miniature wrench and screwdriver. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/normal/mechsanctum-toolbox_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-toolbox_v1_thumbnail.png",
+      "sha256": "d96319fd980efd15deae411792a2233a0a46d4de24ccde4e7bef17e90774dc9b",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 1902834
+    },
+    {
+      "id": "mechsanctum-creator-blueprint",
+      "storage_path": "decorations/rare/mechsanctum-creator-blueprint_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-bc10a6b2-25cd-42ad-9844-68356b2ff44e.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 창조주의 설계도: aged teal blueprint parchment in small upright brass display frame, fine abstract machine diagrams, no legible lettering. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-creator-blueprint_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-creator-blueprint_v1_thumbnail.png",
+      "sha256": "24f10b79bd7108db42f845c31fc8f0f7488a3fae5e5a74038474262c55f10eca",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1683087
+    },
+    {
+      "id": "mechsanctum-eternal-pendulum",
+      "storage_path": "decorations/rare/mechsanctum-eternal-pendulum_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-309ca149-2422-4956-a585-ce3375a6dc27.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 영겁의 진자: freestanding brass pendulum clock frame with long weighted pendulum. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-eternal-pendulum_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-eternal-pendulum_v1_thumbnail.png",
+      "sha256": "9f8e84a3d94dcf826f5ff38939144ec97c7b7f18f875ccf0b9de2494948e2163",
+      "width": 1199,
+      "height": 1312,
+      "bytes": 2012072
+    },
+    {
+      "id": "mechsanctum-guardian-throne",
+      "storage_path": "decorations/rare/mechsanctum-guardian-throne_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-b7edde9c-e3d1-410c-ab8d-2baf844454bd.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 잠든 수호자의 석좌: empty stone guardian throne with weathered gear shaped backrest and copper trim. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-guardian-throne_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-guardian-throne_v1_thumbnail.png",
+      "sha256": "92ed345d624e71fd91dd7627be843c7f87f0d1b9e3fa5bb26051a280dfa81444",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 1831430
+    },
+    {
+      "id": "mechsanctum-prayer-lamp",
+      "storage_path": "decorations/rare/mechsanctum-prayer-lamp_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-11646db5-e2b8-44a6-8ab5-e35df0099eb4.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 기계신의 기도등: small ornate brass shrine lantern with restrained teal light contained inside glass. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-prayer-lamp_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-prayer-lamp_v1_thumbnail.png",
+      "sha256": "462b8a59891842d9f765684cc2d1751382815dc920ac8923737558f7b2642607",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1383822
+    },
+    {
+      "id": "mechsanctum-praying-automaton",
+      "storage_path": "decorations/rare/mechsanctum-praying-automaton_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-5d9ab12c-4d30-4259-8c4b-e81bf46a8f7b.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 기도하는 자동인형: small kneeling praying automaton, folded mechanical hands, rounded brass head and chest gear. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-praying-automaton_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-praying-automaton_v1_thumbnail.png",
+      "sha256": "65336a4a535b306c6de55211cf8aad128c1023309b5fe969f7ee9d5592188b8c",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 1367328
+    },
+    {
+      "id": "mechsanctum-repairing-tree",
+      "storage_path": "decorations/rare/mechsanctum-repairing-tree_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-2fe32610-874a-41ca-be2e-393a265d7e4c.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 자가수복 톱니나무: small intricate gear tree with bronze branching trunk and cogwheel leaves. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-repairing-tree_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-repairing-tree_v1_thumbnail.png",
+      "sha256": "f5e121dbb2d2d0ea5b457109808d233b71b50a555c877ea5a7c3a7fdb76b0dfc",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1723764
+    },
+    {
+      "id": "mechsanctum-silver-guardian",
+      "storage_path": "decorations/rare/mechsanctum-silver-guardian_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-a07cca95-398c-4914-8cd0-1c881fd45d50.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 백은 수호상: small white silver guardian automaton statue holding a cogwheel shield. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-silver-guardian_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-silver-guardian_v1_thumbnail.png",
+      "sha256": "7b85175e8184481d2b438768872c1e4b0c1f57cf9faeb6a331bc8b37616bd663",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1541460
+    },
+    {
+      "id": "mechsanctum-teal-reactor",
+      "storage_path": "decorations/rare/mechsanctum-teal-reactor_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-d21ab6ac-5f7c-4ccd-a3ae-ee5ee9351e6a.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 청록 동력 수정로: small brass reactor cage containing suspended teal power crystal, contained glow. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Single freestanding aquarium decoration, full silhouette and base, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-teal-reactor_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-teal-reactor_v1_thumbnail.png",
+      "sha256": "4ca8c70ed39d41d8e6e02d92badbf253a7aee1a6f29a2d7db4d158e0d685eeb1",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1396150
+    },
+    {
+      "id": "rod-float",
+      "storage_path": "equipment/rods/mechsanctum/float.png",
+      "transparent": true,
+      "prompt": "Single fishing bobber FLOAT sprite for Machine God's Sanctuary, upright vertically and perfectly centered in square canvas. Small elegant narrow brass capsule with turquoise glass center, tiny cogwheel collar, thin brass antenna above and short dark stem below, long axis vertical. Whole bobber inside central 60% height with generous transparent margin. Soft painted premium fantasy game icon, no rod, no water, no line, no scene, no text, clean alpha.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-4413b9e5-2e3f-407e-a620-0456b7b13758.png",
+      "local": "assets/storage-upload/new/20261027-154009/equipment/rods/mechsanctum/float.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/float.png",
+      "sha256": "92d2324de581fed45af6fcf8383c434f42ceb2bd9e62ba762c1dc738b0873cd7",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 319663
+    },
+    {
+      "id": "rod-reel-frame",
+      "storage_path": "equipment/rods/mechsanctum/reel-frame.png",
+      "transparent": true,
+      "prompt": "Production fishing reel fixed FRAME sprite, exactly front-on circular perfectly centered at canvas center. Machine God's Sanctuary theme. Ornate bronze circular outer frame with twelve small gear-like outer teeth, dark teal recessed interior, thin brass rings, tiny turquoise inlays. NO rotating spool, NO handle, NO rod, no perspective. Outer disk diameter 74% of square canvas, perfectly centered axle at exact canvas center. Soft painted warm premium fantasy game icon, clean true transparent background, no shadow outside silhouette, no text.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-616ed1f7-a287-48af-aa20-623ba891c815.png",
+      "local": "assets/storage-upload/new/20261027-154009/equipment/rods/mechsanctum/reel-frame.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/reel-frame.png",
+      "sha256": "c7a058cfc40eb480a22938a211378f100a48140fa296baad43136c584806df23",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2215087
+    },
+    {
+      "id": "rod-reel-rotor",
+      "storage_path": "equipment/rods/mechsanctum/reel-rotor.png",
+      "transparent": true,
+      "prompt": "Production fishing reel ROTOR sprite, exactly front-on concentric circular gear spool centered at exact center of square canvas. Machine God's Sanctuary brass and turquoise style. Single intricate brass toothed wheel with six symmetrical spokes and central small turquoise crystal axle at exact canvas center, short slim mechanical crank extends from central axle to lower right with small dark leather knob, all contained within centered 76% diameter disk footprint. NO outer frame, NO rod, no perspective. Soft painted premium fantasy game icon, clean true transparent background with margin, no text.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-9fd5ee72-a8aa-42a5-a9e8-ebb730cd9d05.png",
+      "local": "assets/storage-upload/new/20261027-154009/equipment/rods/mechsanctum/reel-rotor.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/reel-rotor.png",
+      "sha256": "80012389ec1d0f1d89bf9719e8423a984db4b52e4f0af23686b2364d4b5cec9f",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2175201
+    },
+    {
+      "id": "rod-thumbnail",
+      "storage_path": "equipment/rods/mechsanctum/thumbnail.png",
+      "transparent": true,
+      "prompt": "Single complete elegant fishing rod inventory thumbnail, Machine God's Sanctuary theme. Slender antique bronze shaft with polished brass bands and fine turquoise power conduits, intricate circular brass gear reel with central teal crystal, dark leather grip, fine fishing line and small teal brass float. Full rod diagonally from bottom left handle to upper right tip, entire silhouette with generous margin, no other equipment, no background, no text, no UI. Warm refined soft painted fantasy illustration.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-ce84709f-6611-480e-8eff-e1e29deb7424.png",
+      "local": "assets/storage-upload/new/20261027-154009/equipment/rods/mechsanctum/thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/thumbnail.png",
+      "sha256": "5d07a010973546b6f5f0c14aeb9dc471c222fbd4a15149f89cb95df81a7bfde7",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1305390
+    },
+    {
+      "id": "mechsanctum-aion",
+      "storage_path": "fish/epic/mechsanctum-aion_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-da6f0389-d2bc-4dde-81d7-c292b89a40c8.png",
+      "prompt": "Production animation ATLAS of exact giant mechanical baleen whale Aion in reference. Four SMALL whole whales arranged precisely TWO columns x TWO rows of equal cells. Every frame head faces RIGHT, heavy rounded whale head and torso stay stationary at same anchor, same body scale. Four genuine drawings: near flipper gently up/tail neutral, near flipper neutral/tail down, near flipper gently down/tail neutral, near flipper neutral/tail up. Tiny internal golden gears rotate incrementally and hanging bell sways slightly in open flank. Keep unmistakable bulky whale anatomy, no ray wings or ribbons. Each whale occupies ONLY 55% of equal cell, huge empty transparent margins around full tail and every fin, NO cropping and no crossing into other cells. Soft luminous fantasy painting exactly as reference. No glow clouds, scenery, text, labels, grid lines, shadows outside subject. Fully transparent background.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-aion_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-aion_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-aion_v1_sprite.png",
+      "sha256": "a5bf8bf9e8989d1b78a3b2e1fc1765151360a8ddcaad766fe49bdcb141beca6a",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 755932,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-aion",
+      "storage_path": "fish/epic/mechsanctum-aion_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-485e4d05-59f7-4141-93b0-802c350aed19.png",
+      "prompt": "Single whole giant mechanical BALEEN WHALE, 영겁의 고래 아이온. Emphasize unmistakable bulky humpback whale anatomy: massive deep rounded head on RIGHT, long heavy torpedo torso to left, small short pectoral flippers, broad horizontal tail fluke at far left, tiny kind eye and ventral throat pleats. CUTAWAY OPEN FLANK reveals large intricate slow golden gear train and a hanging bronze bell. A majestic ancient whale assembled from weathered brass, pearl silver plates, teal joints. NO ray wings, NO pointed beak, NO purple ribbon fins, NO ornate horn. Reference is ONLY soft luminous hand-painted fantasy rendering, not creature shape or purple palette. Whole body faces screen right, all fins contained with 12% transparent margin, no scenery, text, particles or disconnected glow, clean alpha.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-aion_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-aion_v1_thumbnail.png",
+      "sha256": "7383b70db3df862ba5e18cabf3f73fd0c2334f889bd04924e79e6cfa2d2c18e3",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1812234
+    },
+    {
+      "id": "mechsanctum-helix",
+      "storage_path": "fish/epic/mechsanctum-helix_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-62eed7c1-00ca-4f8c-bb89-b262a768068c.png",
+      "prompt": "Use image 1 as STRICT POSITION AND SIZE GUIDE for an animation atlas. KEEP its exact canvas proportions, exact 4 SMALL subject placements, and LOTS of blank fully transparent space. Do NOT zoom, crop or enlarge subjects. Image 2 is detailed identity/rendering reference for 역행의 나선 헬릭스. Redraw 4 GENUINELY DIFFERENT articulated animation drawings at these exact guide locations and same rigid body scale. Precisely TWO columns TWO rows equal cells, centers x25/75 percent and y25/75 percent. Four successive short tentacle curl/relax poses and tiny gear turns, rigid spiral shell and head anchored. All head/eyes face SCREEN RIGHT, same orientation and rigid body anchor in every cell. Every appendage fits within the small guide footprint, wide empty margins on all sides. No clipping. No backgrounds, gold haze, glow, shadows, particles, grid, text or labels. All background pixels FULLY TRANSPARENT. Guide contains repeated placeholders ONLY to indicate positions; output must have actual different animated poses.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/layout-guides/mechsanctum-helix.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-helix_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-helix_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-helix_v1_sprite.png",
+      "sha256": "ec5eed57a940026e9403f7594436c6465845358b11fcccb51057ce8d2e6149f7",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 263730,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-helix",
+      "storage_path": "fish/epic/mechsanctum-helix_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-4b068a6e-12af-430d-9f24-550a162bfc16.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 역행의 나선 헬릭스: giant nautilus with complex spiral cog shell, reversed brass gearing, elegant short silver tentacles. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Soft richly painted fantasy illustration matching reference rendering, strong distinctive anatomy, no copying ray silhouette from style reference. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-helix_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-helix_v1_thumbnail.png",
+      "sha256": "825b10b3d4ffdec284c0d9a034c8c89740f4c90ea7ddd3d5bd535f8c51bed5d4",
+      "width": 1368,
+      "height": 1150,
+      "bytes": 1802716
+    },
+    {
+      "id": "mechsanctum-nema",
+      "storage_path": "fish/epic/mechsanctum-nema_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-f2dd56b4-3abe-42cc-88a0-ff1a9b4130e9.png",
+      "prompt": "Use image 1 as STRICT POSITION AND SIZE GUIDE for an animation atlas. KEEP its exact canvas proportions, exact 4 SMALL subject placements, and LOTS of blank fully transparent space. Do NOT zoom, crop or enlarge subjects. Image 2 is detailed identity/rendering reference for 백팔륜의 사제 네마. Redraw 4 GENUINELY DIFFERENT articulated animation drawings at these exact guide locations and same rigid body scale. Precisely TWO columns TWO rows equal cells, centers x25/75 percent and y25/75 percent. Four successive alternating octopus arm curls, rigid head anchored, gear mechanisms move gently. All head/eyes face SCREEN RIGHT, same orientation and rigid body anchor in every cell. Every appendage fits within the small guide footprint, wide empty margins on all sides. No clipping. No backgrounds, gold haze, glow, shadows, particles, grid, text or labels. All background pixels FULLY TRANSPARENT. Guide contains repeated placeholders ONLY to indicate positions; output must have actual different animated poses.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/layout-guides/mechsanctum-nema.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-nema_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-nema_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-nema_v1_sprite.png",
+      "sha256": "31bdc298a17c48574a24e9ee32acbecb16a2bac2333884ac6de3b0b26baeef27",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 623660,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-nema",
+      "storage_path": "fish/epic/mechsanctum-nema_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-42014615-8664-4014-a59c-083f58b87f04.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 백팔륜의 사제 네마: mechanical priest octopus, round head with luminous central gear, eight clearly articulated toothed arms, ceremonial bronze details. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Soft richly painted fantasy illustration matching reference rendering, strong distinctive anatomy, no copying ray silhouette from style reference. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-nema_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-nema_v1_thumbnail.png",
+      "sha256": "c20b96d9c911d85aecb373c4df261f31d12e6c856898a697cd168aab70923e8f",
+      "width": 1368,
+      "height": 1150,
+      "bytes": 2063532
+    },
+    {
+      "id": "mechsanctum-orbis",
+      "storage_path": "fish/epic/mechsanctum-orbis_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-963fb0eb-52b1-492b-86bd-9d18a215125e.png",
+      "prompt": "Make an animated sprite atlas from image 1 POSITION GUIDE. Keep its EXACT transparent empty canvas and EXACT FOUR small subject placements and subject sizes: centers at 25%,25%;75%,25%;25%,75%;75%,75%. Each whole ray must stay small as in guide, NO zooming, NO cropping canvas. Image 2 is identity/painting reference. Redraw FOUR actually DIFFERENT swimming poses of this brass gear guardian ray: first neutral, second wings bent slightly upward, third neutral with near fin forward, fourth wings bent slightly downward. Central head/halo fixed and same size. All face RIGHT. This is a 2x2 sprite sheet with LOTS of blank transparent space between tiny poses; maintain that space exactly. Do not fill blank space with rays, backgrounds, shadows, gold haze, glow, particles, grids, text or labels. All background pixels fully transparent. No clipping of wing, halo or tail. Reference guide copies are placeholders for positions only; create genuine articulated fin changes.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/layout-guides/mechsanctum-orbis.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-orbis_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-orbis_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-orbis_v1_sprite.png",
+      "sha256": "86ee0f07630dc8677b79d1a11182eead371bccee5bc1346eaf1836c8ddf5fbb9",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 352693,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-orbis",
+      "storage_path": "fish/epic/mechsanctum-orbis_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-67b3b463-59f1-459d-ba0a-83b21012fedd.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 천륜의 수호자 오르비스: massive guardian manta ray, hundreds of interlocking brass gears composing broad wings, large separate gear ring behind back. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Soft richly painted fantasy illustration matching reference rendering, strong distinctive anatomy, no copying ray silhouette from style reference. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-orbis_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-orbis_v1_thumbnail.png",
+      "sha256": "8d6297b3471d9b64acd1c27708d58ff32e947db53b3e155175a894c6558c0c22",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2501971
+    },
+    {
+      "id": "mechsanctum-ouros",
+      "storage_path": "fish/epic/mechsanctum-ouros_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-8a5febd9-7a34-401c-92f5-2fea2a6869b4.png",
+      "prompt": "Use image 1 as STRICT POSITION AND SIZE GUIDE for an animation atlas. KEEP its exact canvas proportions, exact 4 SMALL subject placements, and LOTS of blank fully transparent space. Do NOT zoom, crop or enlarge subjects. Image 2 is detailed identity/rendering reference for 성소를 감싼 우로스. Redraw 4 GENUINELY DIFFERENT articulated animation drawings at these exact guide locations and same rigid body scale. Precisely TWO columns TWO rows equal cells, centers x25/75 percent and y25/75 percent. Four successive subtle segmented ring joint flexions and gear movements, circular serpent maintains its tail bite, head anchored right. All head/eyes face SCREEN RIGHT, same orientation and rigid body anchor in every cell. Every appendage fits within the small guide footprint, wide empty margins on all sides. No clipping. No backgrounds, gold haze, glow, shadows, particles, grid, text or labels. All background pixels FULLY TRANSPARENT. Guide contains repeated placeholders ONLY to indicate positions; output must have actual different animated poses.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/layout-guides/mechsanctum-ouros.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-ouros_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-ouros_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-ouros_v1_sprite.png",
+      "sha256": "6c0d5255cef25d879271d080cd9ae670c3763c8d33969098805ee5a51769ab82",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 407626,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-ouros",
+      "storage_path": "fish/epic/mechsanctum-ouros_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-2006ae58-1951-4417-a71a-484b13a0b98c.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 성소를 감싼 우로스: ouroboros sea serpent of countless linked ring gears, biting own tail forming circular body, head on right, turquoise mechanical core. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Soft richly painted fantasy illustration matching reference rendering, strong distinctive anatomy, no copying ray silhouette from style reference. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-ouros_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-ouros_v1_thumbnail.png",
+      "sha256": "4900fffb1fd28fa99df2359d4984f437768869287ba137a7be9485d9ebfa6c58",
+      "width": 1368,
+      "height": 1150,
+      "bytes": 1850358
+    },
+    {
+      "id": "mechsanctum-talos",
+      "storage_path": "fish/epic/mechsanctum-talos_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-a1992287-711d-4acf-baaf-d777454067ce.png",
+      "prompt": "Use image 1 as STRICT POSITION AND SIZE GUIDE for an animation atlas. KEEP its exact canvas proportions, exact 4 SMALL subject placements, and LOTS of blank fully transparent space. Do NOT zoom, crop or enlarge subjects. Image 2 is detailed identity/rendering reference for 성문분쇄자 탈로스. Redraw 4 GENUINELY DIFFERENT articulated animation drawings at these exact guide locations and same rigid body scale. Precisely TWO columns TWO rows equal cells, centers x25/75 percent and y25/75 percent. Four successive articulated walking leg and rotating pincer poses, central crab shell anchored, head right. All head/eyes face SCREEN RIGHT, same orientation and rigid body anchor in every cell. Every appendage fits within the small guide footprint, wide empty margins on all sides. No clipping. No backgrounds, gold haze, glow, shadows, particles, grid, text or labels. All background pixels FULLY TRANSPARENT. Guide contains repeated placeholders ONLY to indicate positions; output must have actual different animated poses.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/layout-guides/mechsanctum-talos.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-talos_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-talos_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-talos_v1_sprite.png",
+      "sha256": "ab1baded43c81c153cac15d171f48b49985ab511a5bbd1fbd12bc9e4348e0a67",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 372476,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-talos",
+      "storage_path": "fish/epic/mechsanctum-talos_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-b3ed11d5-c60c-4bfd-9783-b471cb8fc7d8.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 성문분쇄자 탈로스: massive gate armored crab with heavily layered rotating cogwheel pincers, riveted cathedral gate armor. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Soft richly painted fantasy illustration matching reference rendering, strong distinctive anatomy, no copying ray silhouette from style reference. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/epic-mythic-starlight.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-talos_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-talos_v1_thumbnail.png",
+      "sha256": "c334bf82563b18ae95329793b9d13540a418b28e24acc9c9c50bb018aa464fab",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2537157
+    },
+    {
+      "id": "mechsanctum-automakion",
+      "storage_path": "fish/mythic/mechsanctum-automakion_swim8_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-23dae66b-1f4c-43b2-98ce-b60d6a8b7917.png",
+      "prompt": "Use image 1 as STRICT POSITION AND SIZE GUIDE for an animation atlas. KEEP its exact canvas proportions, exact 8 SMALL subject placements, and LOTS of blank fully transparent space. Do NOT zoom, crop or enlarge subjects. Image 2 is detailed identity/rendering reference for 천륜의 심판자, 오토마키온. Redraw 8 GENUINELY DIFFERENT articulated animation drawings at these exact guide locations and same rigid body scale. Precisely FOUR columns TWO rows equal square cells, row-major frames0..7; centers at x12.5/37.5/62.5/87.5 percent and y25/75 percent. Top row four gentle tentacle flexions and small rotating outer gears with fixed rigid central eye disk. Bottom row: gate panels anticipate closing, unfold to awakened eye, return, recover neutral. Eye disk always same anchor/scale. All head/eyes face SCREEN RIGHT, same orientation and rigid body anchor in every cell. Every appendage fits within the small guide footprint, wide empty margins on all sides. No clipping. No backgrounds, gold haze, glow, shadows, particles, grid, text or labels. All background pixels FULLY TRANSPARENT. Guide contains repeated placeholders ONLY to indicate positions; output must have actual different animated poses.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/layout-guides/mechsanctum-automakion.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/mythic/mechsanctum-automakion_v1_thumbnail.png"
+      ],
+      "frames": 8,
+      "local": "assets/storage-upload/new/20261027-154009/fish/mythic/mechsanctum-automakion_swim8_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-automakion_swim8_v1_sprite.png",
+      "sha256": "e93c6ac5ff06a297991b0c02ddd0997f325de0e133c8a32d149890becfd4629d",
+      "width": 2560,
+      "height": 1280,
+      "bytes": 2026298,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-automakion",
+      "storage_path": "fish/mythic/mechsanctum-automakion_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-5e599863-51b2-4d10-a70c-e52725ef5280.png",
+      "prompt": "Reframe/redraw this exact circular machine god, retaining eye directed screen RIGHT, concentric gear rings, brass silver teal materials, long articulated mechanical tentacles. CRUCIAL: show the COMPLETE BODY and ALL tentacle tips fully inside the image. Make the subject SMALL, only 65% of canvas width and height. Wide 17% completely empty transparent border on all four sides. Curve long tentacles inward to keep all tips inside central 65% box. No chopped off bottom tentacles or clipped side ring. Preserve exact mechanical deity identity, not a ray or fish, soft painted fantasy, no text, no particles, no shadows outside silhouette, no scenery.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/mythic/mechsanctum-automakion_v1_thumbnail.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/mythic/mechsanctum-automakion_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-automakion_v1_thumbnail.png",
+      "sha256": "9496ab215df92485588e681e8ea6a50f66a6873d0be9c146144158443e8b1091",
+      "width": 1368,
+      "height": 1150,
+      "bytes": 1434438
+    },
+    {
+      "id": "mechsanctum-deus-machina",
+      "storage_path": "fish/mythic/mechsanctum-deus-machina_swim8_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-ce63baea-5a33-4c8e-b598-1e37b83e7995.png",
+      "prompt": "Use image 1 as STRICT POSITION AND SIZE GUIDE for an animation atlas. KEEP its exact canvas proportions, exact 8 SMALL subject placements, and LOTS of blank fully transparent space. Do NOT zoom, crop or enlarge subjects. Image 2 is detailed identity/rendering reference for 태초의 설계자, 데우스 마키나. Redraw 8 GENUINELY DIFFERENT articulated animation drawings at these exact guide locations and same rigid body scale. Precisely FOUR columns TWO rows equal square cells, row-major frames0..7; centers at x12.5/37.5/62.5/87.5 percent and y25/75 percent. Every drawing exactly SIX visible arms, three per side. Top row four subtle gliding arm-joint poses with fixed rigid head/torso. Bottom row: lower pair prepares small cogwheel, middle pair assembles, upper pair presents, all six arms recover neutral. Bell head and single eye unchanged. All head/eyes face SCREEN RIGHT, same orientation and rigid body anchor in every cell. Every appendage fits within the small guide footprint, wide empty margins on all sides. No clipping. No backgrounds, gold haze, glow, shadows, particles, grid, text or labels. All background pixels FULLY TRANSPARENT. Guide contains repeated placeholders ONLY to indicate positions; output must have actual different animated poses.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/layout-guides/mechsanctum-deus-machina.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/mythic/mechsanctum-deus-machina_v1_thumbnail.png"
+      ],
+      "frames": 8,
+      "local": "assets/storage-upload/new/20261027-154009/fish/mythic/mechsanctum-deus-machina_swim8_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-deus-machina_swim8_v1_sprite.png",
+      "sha256": "0efd0f853adde31f7dd57028db27939c54b43ca9cb68a9b2fb6d2a201cbc9872",
+      "width": 2560,
+      "height": 1280,
+      "bytes": 1778098,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-deus-machina",
+      "storage_path": "fish/mythic/mechsanctum-deus-machina_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-b6480b18-2729-4210-bdd2-83612a4db9ec.png",
+      "prompt": "Edit this machine deity. Preserve the exact brass bell head, single turquoise eye facing screen RIGHT, gear halo, materials, torso and current four arms. Add ONE ADDITIONAL PAIR of articulated mechanical arms growing from the LOWER torso, one lower-left and one lower-right, so there are exactly SIX visible arms and SIX separate visible hands: three arms on left, three arms on right. Arrange three heights: upper pair holding small gears, middle pair extended, lower pair assembling a small mechanism near waist. Every hand distinct and countable, no hidden arms. Make entire deity SMALLER within a square canvas with a generous 15% EMPTY TRANSPARENT border, whole halo tip and every arm and hand fully inside. No cropping. No animals, no snout, no text, no scenery, no floating particles, no backdrop. Keep clean true transparency and soft painted fantasy style.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/mythic/mechsanctum-deus-machina_v1_thumbnail.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/mythic/mechsanctum-deus-machina_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-deus-machina_v1_thumbnail.png",
+      "sha256": "4b74812472065d935f8522cc6d3323776021e643ea5c400d46c1f484444a84ce",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1387172
+    },
+    {
+      "id": "mechsanctum-bearing-urchin",
+      "storage_path": "fish/normal/mechsanctum-bearing-urchin_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-7f83ce6d-028e-4f46-94fb-ff2d9c034079.png",
+      "prompt": "Production 4-frame animation sprite atlas for 베어링성게. EXACT creature identity, materials, proportions and rendering from reference. A TWO column by TWO row equal-cell sprite sheet, four separate genuine successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, body trails left. alternate articulated walking feet, front legs reaching then pushing, slight claw or shell mechanism motion without moving body. Frames 0 neutral,1 beginning stroke,2 fullest stroke,3 returning toward neutral. SAME body center, head size and body scale in all cells; only joints/appendages move, no whole body bouncing, shrinking or rotating. Subject entirely contained within central 75% of each equal cell, at least 12% transparent empty border on every side; include every antenna, tail, leg. No object overlaps another cell. Warm cartoon painting same as reference. True alpha background, no scenery, no text, no grid, no labels, no panel backgrounds, no detached particles or shadows.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-bearing-urchin_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-bearing-urchin_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-bearing-urchin_v1_sprite.png",
+      "sha256": "63bbb4829fb4137446c0af4ca2ab32aa9dfd8750408ac2c3fe9cc1f894cbe86b",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 1033631,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-bearing-urchin",
+      "storage_path": "fish/normal/mechsanctum-bearing-urchin_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-62f8e67c-9636-4cfa-88fa-54366f2d4750.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 베어링성게: round sea urchin made of shiny steel ball bearings, short brass spines, tiny eyes. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-bearing-urchin_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-bearing-urchin_v1_thumbnail.png",
+      "sha256": "6f578693fa1648b3aa66fba47e87dfd0bed4220e11dfab072cba4249c7cdba6c",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2031162
+    },
+    {
+      "id": "mechsanctum-brass-carp",
+      "storage_path": "fish/normal/mechsanctum-brass-carp_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-0c1815de-a051-4816-aada-cdb853c52f0b.png",
+      "prompt": "Production 4-frame animation sprite atlas for 황동붕어. EXACT creature identity, materials, proportions and rendering from reference. A TWO column by TWO row equal-cell sprite sheet, four separate genuine successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, body trails left. alternate near pectoral fin opening and closing and small tail strokes, incrementally turned gear mechanisms. Frames 0 neutral,1 beginning stroke,2 fullest stroke,3 returning toward neutral. SAME body center, head size and body scale in all cells; only joints/appendages move, no whole body bouncing, shrinking or rotating. Subject entirely contained within central 75% of each equal cell, at least 12% transparent empty border on every side; include every antenna, tail, leg. No object overlaps another cell. Warm cartoon painting same as reference. True alpha background, no scenery, no text, no grid, no labels, no panel backgrounds, no detached particles or shadows.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-brass-carp_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-brass-carp_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-brass-carp_v1_sprite.png",
+      "sha256": "b5d328ce845b5a153ea917e2ce7bd409e8fd69906a862b5583fa1bacecd15e85",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 1187067,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-brass-carp",
+      "storage_path": "fish/normal/mechsanctum-brass-carp_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-f56b67ea-8d2f-4916-bc04-4f75db47bc49.png",
+      "prompt": "Brass crucian carp with overlapping gear scales; references: approved clockwork anchovy and common-rare-pongi.png.",
+      "references": [
+        "accepted-clockwork-anchovy",
+        "assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-brass-carp_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-brass-carp_v1_thumbnail.png",
+      "sha256": "80b4f8fbb53f95192f4b213da9ad61e387267aeee316d72e07e7f2e633b470e0",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1580624
+    },
+    {
+      "id": "mechsanctum-clockwork-anchovy",
+      "storage_path": "fish/normal/mechsanctum-clockwork-anchovy_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-ac312bb7-70c1-449d-a51a-73260b8b9fd8.png",
+      "prompt": "Production animation SPRITE SHEET of the exact clockwork anchovy from reference. One square transparent image, precisely TWO columns and TWO rows, four equal square cells. SAME fish in every cell, head RIGHT, body centered on same anchor with exactly same body scale and proportions, full silhouette including winding key, nose and tail within the central 78% of each cell, transparent margins at least 10% at each boundary. Four genuinely DIFFERENT consecutive swimming drawings: neutral fin/tail, tail bent slightly toward viewer with near pectoral fin open, neutral midstroke, tail bent slightly away with pectoral fin closed. Turn the two small internal gears incrementally and winding key slightly. Keep body and head STATIONARY and same size in all four frames, no rotation of whole fish, no vertical bounce, no changes of identity or anatomy. All cells head right. Seamless reversible cycle. Warm detailed cartoon painting exactly like reference. True transparent background, no grid lines, no letters, no labels, no panel background, no underwater scenery, no motion streaks, no glow, no shadows.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-clockwork-anchovy_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-clockwork-anchovy_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-clockwork-anchovy_v1_sprite.png",
+      "sha256": "daa1f0a4c9d3b7e7c9468940e5b1709788a36a584636ae9160e1aa07c0deb131",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 679195,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-clockwork-anchovy",
+      "storage_path": "fish/normal/mechsanctum-clockwork-anchovy_v1_thumbnail.png",
+      "prompt": "Previously generated and user-approved clockwork anchovy reference; silver body, brass spring window, winding key and mint fins. Original preview prompt is not retained in this batch.",
+      "source": "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+      "references": [],
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-clockwork-anchovy_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-clockwork-anchovy_v1_thumbnail.png",
+      "sha256": "efc37e87bf7e69faa29c27690af94cfa7bdc2a6227c21c4a812cdd54d66457aa",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1209678
+    },
+    {
+      "id": "mechsanctum-gear-flounder",
+      "storage_path": "fish/normal/mechsanctum-gear-flounder_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-01f8ca5d-1424-4174-a70b-de0489b5bacd.png",
+      "prompt": "Production 4-frame animation sprite atlas for 기어가자미. EXACT creature identity, materials, proportions and rendering from reference. A TWO column by TWO row equal-cell sprite sheet, four separate genuine successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, body trails left. alternate near pectoral fin opening and closing and small tail strokes, incrementally turned gear mechanisms. Frames 0 neutral,1 beginning stroke,2 fullest stroke,3 returning toward neutral. SAME body center, head size and body scale in all cells; only joints/appendages move, no whole body bouncing, shrinking or rotating. Subject entirely contained within central 75% of each equal cell, at least 12% transparent empty border on every side; include every antenna, tail, leg. No object overlaps another cell. Warm cartoon painting same as reference. True alpha background, no scenery, no text, no grid, no labels, no panel backgrounds, no detached particles or shadows.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-gear-flounder_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-gear-flounder_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-gear-flounder_v1_sprite.png",
+      "sha256": "94cc7a95ec7dc0bf2712c4128b8c459f1a95df21aabbc2dc4d6df0d0ab5d7991",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 1107351,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-gear-flounder",
+      "storage_path": "fish/normal/mechsanctum-gear-flounder_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-aa7b0dd8-4bcb-46e1-b76b-7a8a557a357b.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 기어가자미: flat round cogwheel flounder, two raised eyes, small tail and rippled fin rim. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-gear-flounder_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-gear-flounder_v1_thumbnail.png",
+      "sha256": "fe3b6d768703c585686ee8af0d06f75b06c399ac862c42c6c9d981af950956d8",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2045846
+    },
+    {
+      "id": "mechsanctum-gear-starfish",
+      "storage_path": "fish/normal/mechsanctum-gear-starfish_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-642079dc-06ea-4188-9b90-055a09796547.png",
+      "prompt": "Create a production sprite ATLAS with FOUR SMALL isolated drawings of exact 톱니불가사리 from reference, arranged precisely 2 columns x 2 rows. Each sprite must occupy ONLY 45 PERCENT of its own equal cell width and height, surrounded by wide EMPTY TRANSPARENT space on every side. Four objects far apart, no crossing center lines. Preserve whole silhouette including every claw, shell tip, arm and leg. All four face screen RIGHT, same head/body scale anchored to identical local center. Four subtly different animation poses: neutral, articulated appendages start stroke, appendages full stroke, returning to neutral. Walking joints/arm cogs move, rigid central shell stays stationary. Exactly same creature from reference, warm painted cartoon. Fully transparent background, absolutely NO brown glow or haze, no colored panels or scenery, no cast shadow, no motion streaks, no text, no grid lines. Do NOT fill cells with large subjects; wide empty border is crucial.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-gear-starfish_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-gear-starfish_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-gear-starfish_v1_sprite.png",
+      "sha256": "a32b1699cfdc4d4464fcad1fb4ac1f9d6f86feeef5ce51e337aec73be7d80cff",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 670190,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-gear-starfish",
+      "storage_path": "fish/normal/mechsanctum-gear-starfish_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-bc7e7330-ca7b-4228-b3dc-7a5c06886aa7.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 톱니불가사리: five small cogwheel arms around central brass gear, recognizable five pointed starfish. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-gear-starfish_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-gear-starfish_v1_thumbnail.png",
+      "sha256": "ecdb3d0aa32f13bb9f0b806354ca0cc5f66436bddcdd5ce8fc5bce1a5da467c9",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1896863
+    },
+    {
+      "id": "mechsanctum-hinge-scallop",
+      "storage_path": "fish/normal/mechsanctum-hinge-scallop_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-644d7558-8789-4edd-8f3a-0249ae252c9d.png",
+      "prompt": "Production 4-frame animation sprite atlas for 경첩가리비. EXACT creature identity, materials, proportions and rendering from reference. A TWO column by TWO row equal-cell sprite sheet, four separate genuine successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, body trails left. alternate articulated walking feet, front legs reaching then pushing, slight claw or shell mechanism motion without moving body. Frames 0 neutral,1 beginning stroke,2 fullest stroke,3 returning toward neutral. SAME body center, head size and body scale in all cells; only joints/appendages move, no whole body bouncing, shrinking or rotating. Subject entirely contained within central 75% of each equal cell, at least 12% transparent empty border on every side; include every antenna, tail, leg. No object overlaps another cell. Warm cartoon painting same as reference. True alpha background, no scenery, no text, no grid, no labels, no panel backgrounds, no detached particles or shadows.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-hinge-scallop_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-hinge-scallop_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-hinge-scallop_v1_sprite.png",
+      "sha256": "5bf5a7817d6b5bbbe948093d45611e1df506ee154d1f2f7e241b8cce2932dbee",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 1231301,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-hinge-scallop",
+      "storage_path": "fish/normal/mechsanctum-hinge-scallop_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-194e63b3-6eec-4dc7-b92a-04c171992146.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 경첩가리비: scallop shell with visible brass hinge, scalloped copper shell slightly open, tiny mantle eyes. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-hinge-scallop_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-hinge-scallop_v1_thumbnail.png",
+      "sha256": "3b42a850f7416d083e6b6cbeff489cad7b62fb532cd437f1431bf37c9dc9afe1",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1920559
+    },
+    {
+      "id": "mechsanctum-meshing-crab",
+      "storage_path": "fish/normal/mechsanctum-meshing-crab_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-70d1a5e8-5916-4d8e-af66-b481645fca1e.png",
+      "prompt": "Create a production sprite ATLAS with FOUR SMALL isolated drawings of exact 맞물림게 from reference, arranged precisely 2 columns x 2 rows. Each sprite must occupy ONLY 45 PERCENT of its own equal cell width and height, surrounded by wide EMPTY TRANSPARENT space on every side. Four objects far apart, no crossing center lines. Preserve whole silhouette including every claw, shell tip, arm and leg. All four face screen RIGHT, same head/body scale anchored to identical local center. Four subtly different animation poses: neutral, articulated appendages start stroke, appendages full stroke, returning to neutral. Walking joints/arm cogs move, rigid central shell stays stationary. Exactly same creature from reference, warm painted cartoon. Fully transparent background, absolutely NO brown glow or haze, no colored panels or scenery, no cast shadow, no motion streaks, no text, no grid lines. Do NOT fill cells with large subjects; wide empty border is crucial.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-meshing-crab_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-meshing-crab_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-meshing-crab_v1_sprite.png",
+      "sha256": "119692615e4cd5b1506a1fdd9cbff029be5d7440d5530d2cb8e0333060a58327",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 644307,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-meshing-crab",
+      "storage_path": "fish/normal/mechsanctum-meshing-crab_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-4ad90fd4-cef5-4095-a549-0ca0d4016ff8.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 맞물림게: small crab with two interlocking toothed gear pincers, copper legs. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-meshing-crab_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-meshing-crab_v1_thumbnail.png",
+      "sha256": "46a2053ccd1dd929e287ce16fa0911ac98a7f470ac0c08adc95ffb3d794f7e73",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2015960
+    },
+    {
+      "id": "mechsanctum-plate-filefish",
+      "storage_path": "fish/normal/mechsanctum-plate-filefish_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-724ea5d0-731b-4ea7-a78a-bf0c240a79cf.png",
+      "prompt": "Production 4-frame animation sprite atlas for 철판쥐치. EXACT creature identity, materials, proportions and rendering from reference. A TWO column by TWO row equal-cell sprite sheet, four separate genuine successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, body trails left. alternate near pectoral fin opening and closing and small tail strokes, incrementally turned gear mechanisms. Frames 0 neutral,1 beginning stroke,2 fullest stroke,3 returning toward neutral. SAME body center, head size and body scale in all cells; only joints/appendages move, no whole body bouncing, shrinking or rotating. Subject entirely contained within central 75% of each equal cell, at least 12% transparent empty border on every side; include every antenna, tail, leg. No object overlaps another cell. Warm cartoon painting same as reference. True alpha background, no scenery, no text, no grid, no labels, no panel backgrounds, no detached particles or shadows.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-plate-filefish_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-plate-filefish_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-plate-filefish_v1_sprite.png",
+      "sha256": "19c358a111809d0d7b984ee422b2253f8fff7f0d787eda57d55c34d51c3f729e",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 990825,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-plate-filefish",
+      "storage_path": "fish/normal/mechsanctum-plate-filefish_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-9e89adf6-df4d-4632-89db-21d4759de073.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 철판쥐치: diamond shaped filefish, overlapping riveted steel plates, narrow mouth, fine brass fin rays. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-plate-filefish_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-plate-filefish_v1_thumbnail.png",
+      "sha256": "4ae2b65843dc6b7c08ada023b93f40a483033400d6c4e8bfd2a95f57c6e6356f",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2066204
+    },
+    {
+      "id": "mechsanctum-pulley-halfbeak",
+      "storage_path": "fish/normal/mechsanctum-pulley-halfbeak_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-0b5dcac8-176c-4861-b21d-52ad01f86ea2.png",
+      "prompt": "Production 4-frame animation sprite atlas for 도르래학꽁치. EXACT creature identity, materials, proportions and rendering from reference. A TWO column by TWO row equal-cell sprite sheet, four separate genuine successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, body trails left. alternate near pectoral fin opening and closing and small tail strokes, incrementally turned gear mechanisms. Frames 0 neutral,1 beginning stroke,2 fullest stroke,3 returning toward neutral. SAME body center, head size and body scale in all cells; only joints/appendages move, no whole body bouncing, shrinking or rotating. Subject entirely contained within central 75% of each equal cell, at least 12% transparent empty border on every side; include every antenna, tail, leg. No object overlaps another cell. Warm cartoon painting same as reference. True alpha background, no scenery, no text, no grid, no labels, no panel backgrounds, no detached particles or shadows.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-pulley-halfbeak_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-pulley-halfbeak_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-pulley-halfbeak_v1_sprite.png",
+      "sha256": "883b4459f67df80f410a324a39a89f2fc884d4c9162c13a05d731bd1ad3b91ed",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 570420,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-pulley-halfbeak",
+      "storage_path": "fish/normal/mechsanctum-pulley-halfbeak_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-701ce21c-4cfa-4de0-b130-4219a9b5ac32.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 도르래학꽁치: long slender halfbeak fish, elongated lower jaw ending in a tiny pulley and copper line. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-pulley-halfbeak_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-pulley-halfbeak_v1_thumbnail.png",
+      "sha256": "2a59946ac9f56700b6a8e7ff73797be232a1be3783dcc308c8cca93f6ff963fb",
+      "width": 1774,
+      "height": 887,
+      "bytes": 985355
+    },
+    {
+      "id": "mechsanctum-rusty-sardine",
+      "storage_path": "fish/normal/mechsanctum-rusty-sardine_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-35807923-cd09-4feb-a4e7-b51dd32c1ab3.png",
+      "prompt": "Production 4-frame animation sprite atlas for 녹슨정어리. EXACT creature identity, materials, proportions and rendering from reference. A TWO column by TWO row equal-cell sprite sheet, four separate genuine successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, body trails left. alternate near pectoral fin opening and closing and small tail strokes, incrementally turned gear mechanisms. Frames 0 neutral,1 beginning stroke,2 fullest stroke,3 returning toward neutral. SAME body center, head size and body scale in all cells; only joints/appendages move, no whole body bouncing, shrinking or rotating. Subject entirely contained within central 75% of each equal cell, at least 12% transparent empty border on every side; include every antenna, tail, leg. No object overlaps another cell. Warm cartoon painting same as reference. True alpha background, no scenery, no text, no grid, no labels, no panel backgrounds, no detached particles or shadows.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-rusty-sardine_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-rusty-sardine_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-rusty-sardine_v1_sprite.png",
+      "sha256": "7d24153703b5a06b5dce7748313dc7bb91490af283f8d2e308e0288e371c0328",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 626691,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-rusty-sardine",
+      "storage_path": "fish/normal/mechsanctum-rusty-sardine_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-c2621008-421c-4b81-854d-04cc213233d4.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 녹슨정어리: slender sardine with patches of rust on brass gear scales, worn silver body. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-rusty-sardine_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-rusty-sardine_v1_thumbnail.png",
+      "sha256": "bd21421da1fb104d919ad9b9e8c5d68fdf82d031f9d384441324d7707c918d4d",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1268162
+    },
+    {
+      "id": "mechsanctum-screw-medaka",
+      "storage_path": "fish/normal/mechsanctum-screw-medaka_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-c7daf8c5-8bf0-47b9-9f8c-e594b88c29dd.png",
+      "prompt": "Production 4-frame animation sprite atlas for 나사송사리. EXACT creature identity, materials, proportions and rendering from reference. A TWO column by TWO row equal-cell sprite sheet, four separate genuine successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, body trails left. alternate near pectoral fin opening and closing and small tail strokes, incrementally turned gear mechanisms. Frames 0 neutral,1 beginning stroke,2 fullest stroke,3 returning toward neutral. SAME body center, head size and body scale in all cells; only joints/appendages move, no whole body bouncing, shrinking or rotating. Subject entirely contained within central 75% of each equal cell, at least 12% transparent empty border on every side; include every antenna, tail, leg. No object overlaps another cell. Warm cartoon painting same as reference. True alpha background, no scenery, no text, no grid, no labels, no panel backgrounds, no detached particles or shadows.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-screw-medaka_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-screw-medaka_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-screw-medaka_v1_sprite.png",
+      "sha256": "f0dacfe0fc2a295e585de899db0ed68a7877e34a20b9cc38edebafc55cf0db84",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 705511,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-screw-medaka",
+      "storage_path": "fish/normal/mechsanctum-screw-medaka_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-28378610-7709-4d69-a38a-b5047f96b65e.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 나사송사리: tiny medaka with screw thread segmented body, large friendly eye, small mint fins. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-screw-medaka_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-screw-medaka_v1_thumbnail.png",
+      "sha256": "1d8671d14cabf6832d299d90a905d942562a65d6bc74b60809ebb36821efb4c6",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1240734
+    },
+    {
+      "id": "mechsanctum-spiral-whelk",
+      "storage_path": "fish/normal/mechsanctum-spiral-whelk_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-8ff836ed-be6d-45bf-8279-b97ca2315c64.png",
+      "prompt": "Production 4-frame animation sprite atlas for 나선고둥. EXACT creature identity, materials, proportions and rendering from reference. A TWO column by TWO row equal-cell sprite sheet, four separate genuine successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, body trails left. alternate articulated walking feet, front legs reaching then pushing, slight claw or shell mechanism motion without moving body. Frames 0 neutral,1 beginning stroke,2 fullest stroke,3 returning toward neutral. SAME body center, head size and body scale in all cells; only joints/appendages move, no whole body bouncing, shrinking or rotating. Subject entirely contained within central 75% of each equal cell, at least 12% transparent empty border on every side; include every antenna, tail, leg. No object overlaps another cell. Warm cartoon painting same as reference. True alpha background, no scenery, no text, no grid, no labels, no panel backgrounds, no detached particles or shadows.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-spiral-whelk_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-spiral-whelk_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-spiral-whelk_v1_sprite.png",
+      "sha256": "b57320398a79220113cacff107dd95ae9e058e86d5aae11d415866808c1c6eee",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 1084337,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-spiral-whelk",
+      "storage_path": "fish/normal/mechsanctum-spiral-whelk_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-c55d6ebd-61c4-4424-9199-6fb826cdfb16.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 나선고둥: little whelk snail with spiral helical gear shell, copper foot, two eye stalks. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-spiral-whelk_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-spiral-whelk_v1_thumbnail.png",
+      "sha256": "934f1016dccadb580eff2952e9a8a2d5f5177db63b43bcb5a614d63e4317425f",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2114831
+    },
+    {
+      "id": "mechsanctum-spring-shrimp",
+      "storage_path": "fish/normal/mechsanctum-spring-shrimp_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-6154045b-6934-4c83-a090-1946539a0752.png",
+      "prompt": "Production 4-frame animation sprite atlas for 태엽새우. EXACT creature identity, materials, proportions and rendering from reference. A TWO column by TWO row equal-cell sprite sheet, four separate genuine successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, body trails left. alternate small swimmerets and tail fan flexion, gentle antenna tips. Frames 0 neutral,1 beginning stroke,2 fullest stroke,3 returning toward neutral. SAME body center, head size and body scale in all cells; only joints/appendages move, no whole body bouncing, shrinking or rotating. Subject entirely contained within central 75% of each equal cell, at least 12% transparent empty border on every side; include every antenna, tail, leg. No object overlaps another cell. Warm cartoon painting same as reference. True alpha background, no scenery, no text, no grid, no labels, no panel backgrounds, no detached particles or shadows.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-spring-shrimp_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-spring-shrimp_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-spring-shrimp_v1_sprite.png",
+      "sha256": "4348b026068c448639afd8e49cdce0c8a968207519ec3c4f6994df8bdbc823fb",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 883264,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-spring-shrimp",
+      "storage_path": "fish/normal/mechsanctum-spring-shrimp_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-0b7ce27f-9a44-4cca-ba82-1c54286010a7.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 태엽새우: transparent shrimp carapace revealing coiled spring and tiny brass gears, fine copper antennae. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-spring-shrimp_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-spring-shrimp_v1_thumbnail.png",
+      "sha256": "eb363b60669ffc42a91d0b2838c8407f18779800533053467213b454f33c9c6c",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2052856
+    },
+    {
+      "id": "mechsanctum-armored-horseshoe",
+      "storage_path": "fish/rare/mechsanctum-armored-horseshoe_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-86e0a708-6a07-4b1c-8d32-60bed802bead.png",
+      "prompt": "Production 4-frame animation atlas for 톱니갑옷 투구게: horseshoe crab with layered toothed bronze armor shield, long narrow spike tail, tiny legs beneath. EXACT identity, proportions, materials and art from reference. Precisely TWO columns and TWO rows of equal cells, four genuine separate successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, head and mouth point right and body trails left. alternate articulated feet and gentle short arm curls, shell or back springs rotate subtly. Frame 0 neutral,1 starting stroke,2 fullest stroke,3 returning to neutral. Keep rigid head/body centered on same anchor and exact same scale across all cells, no whole-body rotation or bounce. All appendages fully inside central 72% of each cell, generous empty alpha border at least 12% each side, no clipping or cell crossing. No black or white or checker backdrop, no grid or text, no UI, no scenery, no detached glow or particles. Clean true alpha edges.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-armored-horseshoe_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-armored-horseshoe_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-armored-horseshoe_v1_sprite.png",
+      "sha256": "1733730acb5cbf450e2b3881e578e05dd6ce9c4b0b8cefe1237a2b41a0baeeea",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 690361,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-armored-horseshoe",
+      "storage_path": "fish/rare/mechsanctum-armored-horseshoe_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-0c47c674-24d7-4b3e-884e-e76f80a114dd.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 톱니갑옷 투구게: horseshoe crab with layered toothed bronze armor shield, long narrow spike tail, tiny legs beneath. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-armored-horseshoe_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-armored-horseshoe_v1_thumbnail.png",
+      "sha256": "bdada3087d703a162c857e208bd9714ae30afa89c730a1842d541d8d756ec783",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1642823
+    },
+    {
+      "id": "mechsanctum-counter-jellyfish",
+      "storage_path": "fish/rare/mechsanctum-counter-jellyfish_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-661b0561-a804-4f85-a673-a80cf5591e92.png",
+      "prompt": "Four-frame transparent animation atlas of exact counterrotating mechanical jellyfish in reference. Arrange FOUR VERY SMALL whole jellyfish in a TWO-column TWO-row grid with equal cells. Each jellyfish only 45% of its cell width and height, huge empty transparent gaps between drawings and around outer edges. All long tendrils must be shortened/curved inwards to remain fully inside central 45% box. Keep same umbrella head fixed at same local anchor and scale in every cell, leaning screen RIGHT in all four. Four genuine poses: relaxed bell, slightly contracting bell with counterrotating rings, full gentle contraction, relaxed recovery; trailing tentacles sway subtly without changing length or anatomy. Warm cartoon brass gears and teal glass. NO clipped tentacles, no cell crossing, no glow or haze, no scenery, no text, no grid or labels. Perfect real transparent background. Do NOT enlarge subjects to fill canvas.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-counter-jellyfish_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-counter-jellyfish_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-counter-jellyfish_v1_sprite.png",
+      "sha256": "74bbccd35a881bf35e1cf19b3df387191495cb84a17e6ff81fee0d5ea117935a",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 727947,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-counter-jellyfish",
+      "storage_path": "fish/rare/mechsanctum-counter-jellyfish_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-8f7f4a00-544e-44cf-aff0-0cbb78b1ed61.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 역회전 해파리: jellyfish umbrella made of two concentric counter rotating toothed rings, translucent teal bell, fine copper tendrils. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-counter-jellyfish_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-counter-jellyfish_v1_thumbnail.png",
+      "sha256": "98a3e44ef24b5db2ccdf7af28b31a60bac16e044973c23468b966598c7b30782",
+      "width": 1368,
+      "height": 1150,
+      "bytes": 1594992
+    },
+    {
+      "id": "mechsanctum-crown-octopus",
+      "storage_path": "fish/rare/mechsanctum-crown-octopus_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-35677a6d-4bc2-4c13-9ac3-86fc59204a3e.png",
+      "prompt": "Production 4-frame animation atlas for 금관톱니 문어: octopus with crown shaped gold gear on rounded head, eight articulated arms with small cogs. EXACT identity, proportions, materials and art from reference. Precisely TWO columns and TWO rows of equal cells, four genuine separate successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, head and mouth point right and body trails left. alternate articulated feet and gentle short arm curls, shell or back springs rotate subtly. Frame 0 neutral,1 starting stroke,2 fullest stroke,3 returning to neutral. Keep rigid head/body centered on same anchor and exact same scale across all cells, no whole-body rotation or bounce. All appendages fully inside central 72% of each cell, generous empty alpha border at least 12% each side, no clipping or cell crossing. No black or white or checker backdrop, no grid or text, no UI, no scenery, no detached glow or particles. Clean true alpha edges.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-crown-octopus_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-crown-octopus_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-crown-octopus_v1_sprite.png",
+      "sha256": "356dac06caf42f09622adad59035a7b59f5f5578f1d414dfc8a5ab629851c95b",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 1184921,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-crown-octopus",
+      "storage_path": "fish/rare/mechsanctum-crown-octopus_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-9f885f3f-c4b6-421e-82f5-6c7458a9c2ed.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 금관톱니 문어: octopus with crown shaped gold gear on rounded head, eight articulated arms with small cogs. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-crown-octopus_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-crown-octopus_v1_thumbnail.png",
+      "sha256": "cf6e85c919161f864051b266ea815369f2b7f57d68d4fd6ad60649e753574e09",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2222587
+    },
+    {
+      "id": "mechsanctum-layered-nautilus",
+      "storage_path": "fish/rare/mechsanctum-layered-nautilus_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-621ab0ad-cade-459b-8e9b-2b033774950f.png",
+      "prompt": "Create a production sprite ATLAS with FOUR SMALL isolated drawings of exact 겹톱니 앵무조개 from reference, arranged precisely 2 columns x 2 rows. Each sprite must occupy ONLY 45 PERCENT of its own equal cell width and height, surrounded by wide EMPTY TRANSPARENT space on every side. Four objects far apart, no crossing center lines. Preserve whole silhouette including every claw, shell tip, arm and leg. All four face screen RIGHT, same head/body scale anchored to identical local center. Four subtly different animation poses: neutral, articulated appendages start stroke, appendages full stroke, returning to neutral. Small tentacles curl and relax, rigid spiral shell stays stationary. Exactly same creature from reference, warm painted cartoon. Fully transparent background, absolutely NO brown glow or haze, no colored panels or scenery, no cast shadow, no motion streaks, no text, no grid lines. Do NOT fill cells with large subjects; wide empty border is crucial.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-layered-nautilus_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-layered-nautilus_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-layered-nautilus_v1_sprite.png",
+      "sha256": "77fe7ca6ca5f3329b5441473cbc698c32b6fbea900174fc69489c295ce9c05e9",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 666612,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-layered-nautilus",
+      "storage_path": "fish/rare/mechsanctum-layered-nautilus_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-ee88fe31-976f-41c1-bae7-32d9cd6daaf2.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 겹톱니 앵무조개: nautilus with cutaway layered brass cogwheel spiral shell, short delicate tentacles. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-layered-nautilus_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-layered-nautilus_v1_thumbnail.png",
+      "sha256": "4c8b03005b3f3cfe21b5a6caedeb25c31cda2f1ee8b5de0a982cb68cf2f54c95",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2078006
+    },
+    {
+      "id": "mechsanctum-pendulum-ray",
+      "storage_path": "fish/rare/mechsanctum-pendulum-ray_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-0e4c5792-525c-4d9a-9613-3b75f47b100d.png",
+      "prompt": "Production 4-frame animation atlas for 시계추 가오리: manta ray with brass toothed lattice wings and long weighted clock pendulum tail. EXACT identity, proportions, materials and art from reference. Precisely TWO columns and TWO rows of equal cells, four genuine separate successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, head and mouth point right and body trails left. gently alternate natural fin or flipper strokes, tail or articulated tentacles flex in a reversible swimming cycle, mechanical gears incrementally turn. Frame 0 neutral,1 starting stroke,2 fullest stroke,3 returning to neutral. Keep rigid head/body centered on same anchor and exact same scale across all cells, no whole-body rotation or bounce. All appendages fully inside central 72% of each cell, generous empty alpha border at least 12% each side, no clipping or cell crossing. No black or white or checker backdrop, no grid or text, no UI, no scenery, no detached glow or particles. Clean true alpha edges.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-pendulum-ray_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-pendulum-ray_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-pendulum-ray_v1_sprite.png",
+      "sha256": "f7544a3e351f9a9a65f6ebb75073a57911e17b1c7a1eac4214aa5259bceb924d",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 801104,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-pendulum-ray",
+      "storage_path": "fish/rare/mechsanctum-pendulum-ray_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-c3e4acb3-7ba8-4a2f-b365-cd8c88388274.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 시계추 가오리: manta ray with brass toothed lattice wings and long weighted clock pendulum tail. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-pendulum-ray_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-pendulum-ray_v1_thumbnail.png",
+      "sha256": "5eca0d3a7a2a1f838da2f175fe214b3fb551c8e4781ecfe728c20312e7099ec1",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1913350
+    },
+    {
+      "id": "mechsanctum-planetary-puffer",
+      "storage_path": "fish/rare/mechsanctum-planetary-puffer_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-b19e3513-55e0-42b9-9ff8-6cebf3a8d6b0.png",
+      "prompt": "Production 4-frame animation atlas for 유성기어 복어: round pufferfish with central sun gear orbited by smaller planet gears, puffed circular silhouette. EXACT identity, proportions, materials and art from reference. Precisely TWO columns and TWO rows of equal cells, four genuine separate successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, head and mouth point right and body trails left. gently alternate natural fin or flipper strokes, tail or articulated tentacles flex in a reversible swimming cycle, mechanical gears incrementally turn. Frame 0 neutral,1 starting stroke,2 fullest stroke,3 returning to neutral. Keep rigid head/body centered on same anchor and exact same scale across all cells, no whole-body rotation or bounce. All appendages fully inside central 72% of each cell, generous empty alpha border at least 12% each side, no clipping or cell crossing. No black or white or checker backdrop, no grid or text, no UI, no scenery, no detached glow or particles. Clean true alpha edges.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-planetary-puffer_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-planetary-puffer_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-planetary-puffer_v1_sprite.png",
+      "sha256": "dfebd7520e9dcf74b769c04796521710fac97aa11b05d0655928a4db32172629",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 1053393,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-planetary-puffer",
+      "storage_path": "fish/rare/mechsanctum-planetary-puffer_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-7a047a1f-c89d-4317-a646-b50707cfd62d.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 유성기어 복어: round pufferfish with central sun gear orbited by smaller planet gears, puffed circular silhouette. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-planetary-puffer_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-planetary-puffer_v1_thumbnail.png",
+      "sha256": "60fad8c360bd45e990a1cacd79773553aa09899cfc9dc2173459f277a703442f",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2002187
+    },
+    {
+      "id": "mechsanctum-ring-eel",
+      "storage_path": "fish/rare/mechsanctum-ring-eel_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-4c43ec5b-703e-4084-9621-acf7c28c7860.png",
+      "prompt": "Production 4-frame animation atlas for 환형톱니 장어: long eel assembled from linked ring shaped gears, sinuous curved body, small head facing right. EXACT identity, proportions, materials and art from reference. Precisely TWO columns and TWO rows of equal cells, four genuine separate successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, head and mouth point right and body trails left. gently alternate natural fin or flipper strokes, tail or articulated tentacles flex in a reversible swimming cycle, mechanical gears incrementally turn. Frame 0 neutral,1 starting stroke,2 fullest stroke,3 returning to neutral. Keep rigid head/body centered on same anchor and exact same scale across all cells, no whole-body rotation or bounce. All appendages fully inside central 72% of each cell, generous empty alpha border at least 12% each side, no clipping or cell crossing. No black or white or checker backdrop, no grid or text, no UI, no scenery, no detached glow or particles. Clean true alpha edges.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-ring-eel_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-ring-eel_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-ring-eel_v1_sprite.png",
+      "sha256": "d699a108b6d32d7a022847b037eb1a102843f3c97da81e0a3d5d1baf28b5545f",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 537582,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-ring-eel",
+      "storage_path": "fish/rare/mechsanctum-ring-eel_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-e6043dd5-f719-4620-821f-13601775d675.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 환형톱니 장어: long eel assembled from linked ring shaped gears, sinuous curved body, small head facing right. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-ring-eel_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-ring-eel_v1_thumbnail.png",
+      "sha256": "77eb60059ec862c7fe46a8514349244f6847ad9dda7f7c4a7b445730c352d5d9",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1141442
+    },
+    {
+      "id": "mechsanctum-silver-seahorse",
+      "storage_path": "fish/rare/mechsanctum-silver-seahorse_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-77e324b6-d1a2-43da-bb19-6c83d19341d2.png",
+      "prompt": "Production 4-frame animation atlas for 백은톱니 해마: delicate silver white seahorse built of intricate gears, curled gear tail, pale turquoise accents. EXACT identity, proportions, materials and art from reference. Precisely TWO columns and TWO rows of equal cells, four genuine separate successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, head and mouth point right and body trails left. gently alternate natural fin or flipper strokes, tail or articulated tentacles flex in a reversible swimming cycle, mechanical gears incrementally turn. Frame 0 neutral,1 starting stroke,2 fullest stroke,3 returning to neutral. Keep rigid head/body centered on same anchor and exact same scale across all cells, no whole-body rotation or bounce. All appendages fully inside central 72% of each cell, generous empty alpha border at least 12% each side, no clipping or cell crossing. No black or white or checker backdrop, no grid or text, no UI, no scenery, no detached glow or particles. Clean true alpha edges.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-silver-seahorse_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-silver-seahorse_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-silver-seahorse_v1_sprite.png",
+      "sha256": "0c2d1f94fee0cebb6a19cd79930b6a1ec312eaed43b7baefc9eb5f3f54009a83",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 1299941,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-silver-seahorse",
+      "storage_path": "fish/rare/mechsanctum-silver-seahorse_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-49e39d14-f42d-4f28-acda-83ffd863e2c1.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 백은톱니 해마: delicate silver white seahorse built of intricate gears, curled gear tail, pale turquoise accents. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-silver-seahorse_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-silver-seahorse_v1_thumbnail.png",
+      "sha256": "3bb3d481b0d18a6e57b0a34b8a76dfe708d3524b4dad850091b6fde4c0249cad",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2162093
+    },
+    {
+      "id": "mechsanctum-spring-nudibranch",
+      "storage_path": "fish/rare/mechsanctum-spring-nudibranch_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-494a08fd-7f7f-414b-b708-447a27e881ca.png",
+      "prompt": "Use image 1 as STRICT POSITION AND SIZE GUIDE for an animation atlas. KEEP its exact canvas proportions, exact 4 SMALL subject placements, and LOTS of blank fully transparent space. Do NOT zoom, crop or enlarge subjects. Image 2 is detailed identity/rendering reference for 나선태엽 갯민숭달팽이. Redraw 4 GENUINELY DIFFERENT articulated animation drawings at these exact guide locations and same rigid body scale. Precisely TWO columns TWO rows equal cells, centers x25/75 percent and y25/75 percent. Four successive tiny nudibranch crawling foot waves and small rotating spring poses, head and body anchored right. All head/eyes face SCREEN RIGHT, same orientation and rigid body anchor in every cell. Every appendage fits within the small guide footprint, wide empty margins on all sides. No clipping. No backgrounds, gold haze, glow, shadows, particles, grid, text or labels. All background pixels FULLY TRANSPARENT. Guide contains repeated placeholders ONLY to indicate positions; output must have actual different animated poses.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/layout-guides/mechsanctum-spring-nudibranch.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-spring-nudibranch_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-spring-nudibranch_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-spring-nudibranch_v1_sprite.png",
+      "sha256": "1aa8a9f719ea15366baaea45fe57b9095e6619c733f00e58c34a30b36a051ab2",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 293016,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-spring-nudibranch",
+      "storage_path": "fish/rare/mechsanctum-spring-nudibranch_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-16fb64ad-cfef-4afe-a92c-034c400a88c7.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 나선태엽 갯민숭달팽이: soft teal nudibranch sea slug, tiny curled brass clock springs along back, two delicate rhinophores. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-spring-nudibranch_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-spring-nudibranch_v1_thumbnail.png",
+      "sha256": "b1fa4c28a57721036eb94bbe41b488cea95be3845dceb752db1457d4a2d3e6f2",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1806338
+    },
+    {
+      "id": "mechsanctum-tuning-sunfish",
+      "storage_path": "fish/rare/mechsanctum-tuning-sunfish_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-e825cff1-1dd9-443c-9f90-0d5f6b0580ff.png",
+      "prompt": "Production 4-frame animation atlas for 진동굽쇠 개복치: round silver sunfish, tall tuning fork shaped metallic dorsal and ventral fins, brass rim. EXACT identity, proportions, materials and art from reference. Precisely TWO columns and TWO rows of equal cells, four genuine separate successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, head and mouth point right and body trails left. gently alternate natural fin or flipper strokes, tail or articulated tentacles flex in a reversible swimming cycle, mechanical gears incrementally turn. Frame 0 neutral,1 starting stroke,2 fullest stroke,3 returning to neutral. Keep rigid head/body centered on same anchor and exact same scale across all cells, no whole-body rotation or bounce. All appendages fully inside central 72% of each cell, generous empty alpha border at least 12% each side, no clipping or cell crossing. No black or white or checker backdrop, no grid or text, no UI, no scenery, no detached glow or particles. Clean true alpha edges.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-tuning-sunfish_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-tuning-sunfish_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-tuning-sunfish_v1_sprite.png",
+      "sha256": "53ab0555e2e280029c1d1bfc3c78abcf5508656d03983927895151e461be9598",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 826439,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-tuning-sunfish",
+      "storage_path": "fish/rare/mechsanctum-tuning-sunfish_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-c98d79fe-4e7b-4bca-899c-2aa6ef818f5d.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 진동굽쇠 개복치: round silver sunfish, tall tuning fork shaped metallic dorsal and ventral fins, brass rim. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-tuning-sunfish_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-tuning-sunfish_v1_thumbnail.png",
+      "sha256": "d66b497620376d6245ed625b9b1c1f0c9eb8d591dd4b829cee1dfa14fa3e8838",
+      "width": 1303,
+      "height": 1207,
+      "bytes": 1437723
+    },
+    {
+      "id": "mechsanctum-twin-wheel-turtle",
+      "storage_path": "fish/rare/mechsanctum-twin-wheel-turtle_v1_sprite.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-dec9d229-f6eb-4a59-98d6-91c0e829d94b.png",
+      "prompt": "Production 4-frame animation atlas for 쌍륜거북: sea turtle with two large meshing bronze gears in carapace, four flippers, gentle face. EXACT identity, proportions, materials and art from reference. Precisely TWO columns and TWO rows of equal cells, four genuine separate successive drawings. Face SCREEN RIGHT in clear side or side-three-quarter profile in ALL FOUR cells, head and mouth point right and body trails left. gently alternate natural fin or flipper strokes, tail or articulated tentacles flex in a reversible swimming cycle, mechanical gears incrementally turn. Frame 0 neutral,1 starting stroke,2 fullest stroke,3 returning to neutral. Keep rigid head/body centered on same anchor and exact same scale across all cells, no whole-body rotation or bounce. All appendages fully inside central 72% of each cell, generous empty alpha border at least 12% each side, no clipping or cell crossing. No black or white or checker backdrop, no grid or text, no UI, no scenery, no detached glow or particles. Clean true alpha edges.",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-twin-wheel-turtle_v1_thumbnail.png"
+      ],
+      "frames": 4,
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-twin-wheel-turtle_v1_sprite.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-twin-wheel-turtle_v1_sprite.png",
+      "sha256": "91bb90ab791c26b371408e1fd98acfad1a7d67873357b2ab82397afbfeaa8b67",
+      "width": 1280,
+      "height": 1280,
+      "bytes": 1028170,
+      "source_facing": "right"
+    },
+    {
+      "id": "mechsanctum-twin-wheel-turtle",
+      "storage_path": "fish/rare/mechsanctum-twin-wheel-turtle_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-ff201948-5c00-4a1b-81e7-eafcf88b9691.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 쌍륜거북: sea turtle with two large meshing bronze gears in carapace, four flippers, gentle face. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. Whole creature faces RIGHT, head at right and natural anatomy, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-twin-wheel-turtle_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-twin-wheel-turtle_v1_thumbnail.png",
+      "sha256": "9cd551924906f16150b6405bcaf32e96332ac0a51ad866af9b70540837005650",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1965477
+    },
+    {
+      "id": "mechsanctum-broken-prayer-circuit",
+      "storage_path": "trash/normal/mechsanctum-broken-prayer-circuit_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-be12b9af-bb33-4c25-be00-d36b7b95e240.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 끊어진 기도회로: broken small copper prayer circuit board with severed fine circuit traces. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. A single discarded inert object, not a living character, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/trash/normal/mechsanctum-broken-prayer-circuit_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-broken-prayer-circuit_v1_thumbnail.png",
+      "sha256": "3eb25c25019c63574185d565445e265047c11e31348c8228bd98cfb4c3cea919",
+      "width": 1374,
+      "height": 1145,
+      "bytes": 1559301
+    },
+    {
+      "id": "mechsanctum-priest-screw",
+      "storage_path": "trash/normal/mechsanctum-priest-screw_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-50bf24ce-56ba-429a-b9fb-3eba26d8bbd3.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 기계 사제의 나사: one small ornate brass screw with tiny ritual engraving. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. A single discarded inert object, not a living character, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/trash/normal/mechsanctum-priest-screw_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-priest-screw_v1_thumbnail.png",
+      "sha256": "cd0f74372119316fe30f33fe3b1366a078b5f89b4a775213bb7d64a9c64d62fc",
+      "width": 1263,
+      "height": 1245,
+      "bytes": 1092062
+    },
+    {
+      "id": "mechsanctum-rejected-prayer",
+      "storage_path": "trash/normal/mechsanctum-rejected-prayer_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-ea3f56f2-ea65-4942-9021-332fa3b66156.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 반려된 기도문: folded rejected prayer paper, faint abstract mechanical diagrams, oil stained edges, no legible text. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. A single discarded inert object, not a living character, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/trash/normal/mechsanctum-rejected-prayer_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-rejected-prayer_v1_thumbnail.png",
+      "sha256": "dc6f56fcc1a9c8b2d61191e7cb9cb611901e7a685e3a9ec5a198ffdd357ce33e",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 1517948
+    },
+    {
+      "id": "mechsanctum-rusted-joint",
+      "storage_path": "trash/normal/mechsanctum-rusted-joint_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-b71db9e5-f69d-4aa2-aba9-14cc0c858dc7.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 녹슨 관절 부품: rusted mechanical ball joint and short hinge assembly. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. A single discarded inert object, not a living character, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/trash/normal/mechsanctum-rusted-joint_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-rusted-joint_v1_thumbnail.png",
+      "sha256": "fe031cac27b1df57c72ca9b93351d4b7f1e3cb6a64c6768ec42a60c83dcfdb61",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 1428491
+    },
+    {
+      "id": "mechsanctum-tangled-copper",
+      "storage_path": "trash/normal/mechsanctum-tangled-copper_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-51485dfb-bcfc-4685-ab4e-1f88c5dd815e.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 엉킨 구리 신경: tangle of thin copper wires resembling discarded neural wiring. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. A single discarded inert object, not a living character, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/trash/normal/mechsanctum-tangled-copper_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-tangled-copper_v1_thumbnail.png",
+      "sha256": "c9cdf026f2a5ef4cc4e94d2e45393aea466609749d4d35e3fd66ff64abf94a6b",
+      "width": 1266,
+      "height": 1242,
+      "bytes": 1648160
+    },
+    {
+      "id": "mechsanctum-worn-cog",
+      "storage_path": "trash/normal/mechsanctum-worn-cog_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-be127f60-47b3-4576-aea6-6e15f2d4819e.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 닳아버린 톱니바퀴: single worn brass cogwheel with rounded broken teeth. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. A single discarded inert object, not a living character, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/trash/normal/mechsanctum-worn-cog_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-worn-cog_v1_thumbnail.png",
+      "sha256": "aa51b788f879033afbcecf9a66629476aa29504f040eb9ef3a4483cd16689adb",
+      "width": 1302,
+      "height": 1208,
+      "bytes": 1368019
+    },
+    {
+      "id": "mechsanctum-backward-fish",
+      "storage_path": "trash/rare/mechsanctum-backward-fish_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-0ca2ba37-65ac-4b1b-98d0-1f687703acc2.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 거꾸로 조립된 물고기: broken inert mechanical fish assembled backwards, misplaced small fins and tail, clearly discarded toy mechanism. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. A single discarded inert object, not a living character, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/trash/rare/mechsanctum-backward-fish_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-backward-fish_v1_thumbnail.png",
+      "sha256": "fbac4adbca3ec8743434a87631f802a0f55f64aa7ee15981f110999f05688c46",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1970517
+    },
+    {
+      "id": "mechsanctum-empty-crown",
+      "storage_path": "trash/rare/mechsanctum-empty-crown_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-31dc3352-9e38-4541-a96b-c1a390a88298.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 기계신의 빈 왕관: abandoned small toothed machine god crown, empty central gemstone socket. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. A single discarded inert object, not a living character, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/trash/rare/mechsanctum-empty-crown_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-empty-crown_v1_thumbnail.png",
+      "sha256": "22459ede55000df5c9306f4ca1bf6d45d74e8841eedf81994fdd23e37cc954f7",
+      "width": 1484,
+      "height": 1060,
+      "bytes": 1444291
+    },
+    {
+      "id": "mechsanctum-filter-residue",
+      "storage_path": "trash/rare/mechsanctum-filter-residue_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-58bfc3c1-33f7-4301-8113-35fdc689b1a0.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 성수 필터 찌꺼기: worn small brass filter cartridge with teal mineral residue. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. A single discarded inert object, not a living character, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/trash/rare/mechsanctum-filter-residue_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-filter-residue_v1_thumbnail.png",
+      "sha256": "cd107f43f3e6ddd0b016ae66c6d4a802878727362a1971980ee138595da2408d",
+      "width": 1327,
+      "height": 1186,
+      "bytes": 1507667
+    },
+    {
+      "id": "mechsanctum-spare-part",
+      "storage_path": "trash/rare/mechsanctum-spare-part_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-1c9121a7-d28f-4f95-961e-83c2ab5f8181.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 정체불명의 여분 부품: mysterious small asymmetrical spare machine part, sockets gears and inexplicable connectors. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. A single discarded inert object, not a living character, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/trash/rare/mechsanctum-spare-part_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-spare-part_v1_thumbnail.png",
+      "sha256": "036aecbccb28a1ebd1a6d546ce381985acab1b0dc30cdec9c5cd8a01a1aaad79",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 1435232
+    },
+    {
+      "id": "mechsanctum-stopped-heart",
+      "storage_path": "trash/rare/mechsanctum-stopped-heart_v1_thumbnail.png",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-fd2ce2ea-5977-4cc6-bbff-6620296c5393.png",
+      "prompt": "Use case: stylized-concept. Production transparent collectible thumbnail for Korean cozy aquarium game. Subject 멈춘 태엽 심장: heart shaped clockwork mechanism with motionless coiled mainspring and cracked brass case. Machine God's Sanctuary theme: intermeshing brass, copper and silver gears form life, restrained turquoise energy. Warm readable cozy Pongi cartoon illustration; first reference supplies brass craftsmanship/materials, second reference supplies only cartoon painting style. A single discarded inert object, not a living character, no scenery. Centered whole subject with at least 8% transparent border. Clean alpha edges, no matte, no backdrop or checker pattern, no text, no labels, no decorative particles, no detached glow, no clipping.",
+      "references": [
+        "C:/Users/ojr55/.codex/generated_images/01a171d4-fb61-70f1-b6c9-da5c9d12ad43/exec-9b247d94-f7cc-4707-a9fb-f33f734f3bb8.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/references/collectible-style/common-rare-pongi.png"
+      ],
+      "local": "assets/storage-upload/new/20261027-154009/trash/rare/mechsanctum-stopped-heart_v1_thumbnail.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/mechsanctum-stopped-heart_v1_thumbnail.png",
+      "sha256": "437de9f5c9741432d306286725e26f8bfa11bad25a36443716aa92e49d4c70a4",
+      "width": 1312,
+      "height": 1199,
+      "bytes": 1776501
+    },
+    {
+      "id": "close-water",
+      "publicPath": "fishing/close-water/mechsanctum-v1.png",
+      "transparent": false,
+      "prompt": "Portrait 2:3 game fishing close-water background, looking obliquely down at calm turquoise deep water within the Machine God's Sanctuary. Water fills entire image, subtle caustics, faint huge submerged bronze gear circles far below, hints of copper architecture only at far upper corners, center and lower water entirely clear for fishing float. Soft hand painted fantasy, no shore, no dock, no fish, no objects floating, no text, no UI, full bleed.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-a745fec0-34e5-45da-a2f5-a373eb900f03.png",
+      "local": "public/fishing/close-water/mechsanctum-v1.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/close-water.png",
+      "sha256": "bb7aa0ca4b812cbc0c0d1c3128d93d765fad1155e1c60ee79ec828ac2b2733cc",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2190395
+    },
+    {
+      "id": "platform",
+      "publicPath": "fishing/platforms/mechsanctum-v1.png",
+      "transparent": true,
+      "prompt": "Single wide landscape 5:2 transparent foreground fishing platform sprite, ancient Machine God's Sanctuary. A sturdy wide horizontal bronze-and-stone maintenance pier viewed from slightly above with a shallow visible front edge, interlocking brass plate panels, rivets, inset small gear teeth, restrained teal power conduits along edge. Whole platform occupies central lower part, left and right edges intact, no tall railing or objects blocking angler view. No wood planks, no background water, no scenery, no cast shadow outside silhouette, no text. Soft painted high quality fantasy game asset, clean alpha, generous margin.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-2042b8cc-374b-454d-9606-f6c8225d0836.png",
+      "local": "public/fishing/platforms/mechsanctum-v1.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/platform.png",
+      "sha256": "00fe38614bbcae75be866c10700e33d0000273150635ec91b0ee0ae287a5104f",
+      "width": 1200,
+      "height": 480,
+      "bytes": 585861
+    },
+    {
+      "id": "fishing-scenery",
+      "publicPath": "fishing/scenery/mechsanctum-v1.png",
+      "transparent": false,
+      "prompt": "Portrait 2:3 soft painted fantasy fishing game background, Machine God's Sanctuary. Angler eye level facing a tranquil teal pool inside a vast open-air brass gear sanctuary. Top third distant luminous concentric gear arch with turquoise heart, bronze stone pillars and copper pipes framing left and right, lower two thirds open unobstructed clear water reflecting warm amber lights. Richly rendered cozy magical scenery, readable small-screen composition, no foreground dock or fishing rod or people or fish, no text, no UI. Full bleed.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-f1c6d760-aa6c-4c6f-9424-8b1ef2efde5c.png",
+      "local": "public/fishing/scenery/mechsanctum-v1.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/fishing-scenery.png",
+      "sha256": "111e4227b5e11aefe6ee59612171c50380c3029e0ceecce1a79c39730e0eaffc",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 2877044
+    },
+    {
+      "id": "icon",
+      "publicPath": "region-icons/mechsanctum-v1.png",
+      "transparent": true,
+      "prompt": "Single small readable game region icon: miniature brass cogwheel sanctuary gate enclosing one turquoise crystal eye, simple stone footing with tiny water curl. Cozy warm hand-painted cartoon fantasy, strong clean recognizable silhouette with low detail, square composition, transparent background, no text, no UI, no outer border, no detached glow.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-cacfb4ca-5472-483f-8599-299872210b2b.png",
+      "local": "public/region-icons/mechsanctum-v1.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/icon.png",
+      "sha256": "1bc6a756983a23744d95da279efdef4fe6a7fddc2a416bfabd91aa87db84c93f",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1572682
+    },
+    {
+      "id": "map",
+      "publicPath": "regions/mechsanctum/map-v1.png",
+      "transparent": true,
+      "prompt": "Single square antique parchment nautical map item thumbnail of Machine God's Sanctuary. Aged cream parchment with softly worn irregular edges; intricate sepia illustrated chart of a circular gear shaped sanctuary island surrounded by smaller cogwheel islets, copper pipe bridges, compass rose, delicate winding route to mechanical temple. Entire parchment visible with transparent margin, warm gold linework, restrained teal chart accents, no legible words, no labels, no UI. Soft painted polished fantasy inventory artwork. Map is one complete uncut chart; game will reveal six pieces.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-b1d4fa8b-b0cd-494f-855e-35bdafa06c9e.png",
+      "local": "public/regions/mechsanctum/map-v1.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/map.png",
+      "sha256": "351069c05b8414bbb7b65ba1c8a174f6ee7ee05e4b5a751772309e4c3140f3cf",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 3587641
+    },
+    {
+      "id": "region-scenery",
+      "publicPath": "regions/mechsanctum/scenery-v1.png",
+      "transparent": false,
+      "prompt": "Portrait 2:3 illustrated game map-page destination landscape. Machine God's Sanctuary, an ancient ocean sanctuary made of enormous intermeshing brass and silver cogwheels forming islands and arches, teal clear sea around a distant colossal mechanical god shrine, copper pipes and worn stone, majestic but welcoming peaceful magical world, soft richly painted fantasy, warm bronze highlights contrasting calm turquoise water. Foreground water, midground gear islands, distant sanctuary with abstract gear halo. No close-up fish, no text, no interface, no borders. Beautiful coherent full-bleed scenery.",
+      "source": "C:\\Users\\ojr55\\.codex\\generated_images\\01a171d4-fb61-70f1-b6c9-da5c9d12ad43\\exec-d3acfb88-23d0-46ef-9fdf-2e1a0a412781.png",
+      "local": "public/regions/mechsanctum/scenery-v1.png",
+      "source_local": "assets/storage-upload/new/20261027-154009/.source/region-scenery.png",
+      "sha256": "8a5661dfd1b8d2197cc8ac5ad5676c5a00d07128594bc198539e37ff8bde9c74",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 3334932
+    }
+  ],
+  "entries": [
+    {
+      "id": "mechsanctum-automakion",
+      "frames": 8,
+      "columns": 4,
+      "prompt": "Use image 1 as STRICT POSITION AND SIZE GUIDE for an animation atlas. KEEP its exact canvas proportions, exact 8 SMALL subject placements, and LOTS of blank fully transparent space. Do NOT zoom, crop or enlarge subjects. Image 2 is detailed identity/rendering reference for 천륜의 심판자, 오토마키온. Redraw 8 GENUINELY DIFFERENT articulated animation drawings at these exact guide locations and same rigid body scale. Precisely FOUR columns TWO rows equal square cells, row-major frames0..7; centers at x12.5/37.5/62.5/87.5 percent and y25/75 percent. Top row four gentle tentacle flexions and small rotating outer gears with fixed rigid central eye disk. Bottom row: gate panels anticipate closing, unfold to awakened eye, return, recover neutral. Eye disk always same anchor/scale. All head/eyes face SCREEN RIGHT, same orientation and rigid body anchor in every cell. Every appendage fits within the small guide footprint, wide empty margins on all sides. No clipping. No backgrounds, gold haze, glow, shadows, particles, grid, text or labels. All background pixels FULLY TRANSPARENT. Guide contains repeated placeholders ONLY to indicate positions; output must have actual different animated poses.",
+      "storage_path": "fish/mythic/mechsanctum-automakion_swim8_v1_sprite.png",
+      "source": ".source/mechsanctum-automakion_swim8_v1_sprite.png",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/layout-guides/mechsanctum-automakion.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/mythic/mechsanctum-automakion_v1_thumbnail.png"
+      ]
+    },
+    {
+      "id": "mechsanctum-deus-machina",
+      "frames": 8,
+      "columns": 4,
+      "prompt": "Use image 1 as STRICT POSITION AND SIZE GUIDE for an animation atlas. KEEP its exact canvas proportions, exact 8 SMALL subject placements, and LOTS of blank fully transparent space. Do NOT zoom, crop or enlarge subjects. Image 2 is detailed identity/rendering reference for 태초의 설계자, 데우스 마키나. Redraw 8 GENUINELY DIFFERENT articulated animation drawings at these exact guide locations and same rigid body scale. Precisely FOUR columns TWO rows equal square cells, row-major frames0..7; centers at x12.5/37.5/62.5/87.5 percent and y25/75 percent. Every drawing exactly SIX visible arms, three per side. Top row four subtle gliding arm-joint poses with fixed rigid head/torso. Bottom row: lower pair prepares small cogwheel, middle pair assembles, upper pair presents, all six arms recover neutral. Bell head and single eye unchanged. All head/eyes face SCREEN RIGHT, same orientation and rigid body anchor in every cell. Every appendage fits within the small guide footprint, wide empty margins on all sides. No clipping. No backgrounds, gold haze, glow, shadows, particles, grid, text or labels. All background pixels FULLY TRANSPARENT. Guide contains repeated placeholders ONLY to indicate positions; output must have actual different animated poses.",
+      "storage_path": "fish/mythic/mechsanctum-deus-machina_swim8_v1_sprite.png",
+      "source": ".source/mechsanctum-deus-machina_swim8_v1_sprite.png",
+      "references": [
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/layout-guides/mechsanctum-deus-machina.png",
+        "C:/Users/ojr55/OneDrive/바탕 화면/pongdang-island/assets/storage-upload/new/20261027-154009/fish/mythic/mechsanctum-deus-machina_v1_thumbnail.png"
+      ]
+    }
+  ]
+}

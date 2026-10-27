@@ -10,6 +10,12 @@ beforeEach(()=>{
  })
 })
 afterEach(()=>{cleanup();vi.unstubAllGlobals();vi.useRealTimers()})
+it('prepares the sanctuary water, landscape and metal platform together',async()=>{
+ const {prepareFishingScene}=await import('@/features/fishing/scene-images')
+ const prepared=prepareFishingScene('mechsanctum')
+ expect(images.map(image=>image.src).sort()).toEqual(['/fishing/close-water/mechsanctum-v1.png','/fishing/platforms/mechsanctum-v1.png','/fishing/scenery/mechsanctum-v1.png'].sort())
+ images.forEach(image=>image.onload());await prepared
+})
 it('prepares the dedicated bamboo steamer for the food sea',async()=>{
  const {prepareFishingScene}=await import('@/features/fishing/scene-images')
  const prepared=prepareFishingScene('nyamnyam')

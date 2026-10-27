@@ -3,6 +3,7 @@ import {collectibleUrl} from '@/features/collection/api'
 
 // Origins are the artwork's axle/body center, independent of the game's transforms.
 const artwork:Record<string,{frame:number;rotor:number;float:number;rotorWidth:number;rotorX?:number}>={
+ mechsanctum:{frame:.49,rotor:.477,float:.52,rotorWidth:70,rotorX:.492},
  plunder:{frame:.54,rotor:.45,float:.61,rotorWidth:74,rotorX:.478},
  siren:{frame:.5,rotor:.5,float:.5,rotorWidth:84},
  whitenight:{frame:.5,rotor:.5,float:.5,rotorWidth:70},

@@ -5,11 +5,11 @@
     640
   ],
   "summary": {
-    "count": 609,
-    "sourceBytes": 667100837,
-    "smallBytes": 16315308,
-    "largeBytes": 43654058,
-    "smallReductionPercent": 97.55
+    "count": 722,
+    "sourceBytes": 828610809,
+    "smallBytes": 19574028,
+    "largeBytes": 52808624,
+    "smallReductionPercent": 97.64
   },
   "items": [
     {
@@ -473,6 +473,26 @@
       }
     },
     {
+      "key": "decorations/mythic/mechsanctum-deus-zero_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/mythic/mechsanctum-deus-zero_v1_thumbnail.png",
+      "sourceHash": "1ea25d60e5e302093f96028c43d8906f4deb6a6e5640c23f0449bbdff5735d99",
+      "sourceBytes": 1783756,
+      "sourceWidth": 1368,
+      "sourceHeight": 1150,
+      "small": {
+        "url": "/game-art/thumbnails/d610c5828ad6ce35cf603050-320.webp",
+        "bytes": 38514,
+        "width": 320,
+        "height": 269
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e74f75677a2ffdee5d35061e-640.webp",
+        "bytes": 118344,
+        "width": 640,
+        "height": 538
+      }
+    },
+    {
       "key": "decorations/mythic/pongi-subsea-drilling-platform_v1_thumbnail.png",
       "source": "assets/storage-upload/new/20261025-044359/decorations/mythic/pongi-subsea-drilling-platform_v1_thumbnail.png",
       "sourceHash": "46b8d3acff52231b5c6d601d1ce30f3a54b684c1749b78cfd1c6a71669842047",
@@ -893,6 +913,146 @@
       }
     },
     {
+      "key": "decorations/normal/mechsanctum-brass-column_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/normal/mechsanctum-brass-column_v1_thumbnail.png",
+      "sourceHash": "36f46d714fa330dd768851090d8053c770e04892f7b367492372380a4575bfd4",
+      "sourceBytes": 1078443,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/5990455ddfbcb16b6b3b278d-320.webp",
+        "bytes": 24912,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/04898fe89b3f0b6c745c4a1e-640.webp",
+        "bytes": 66870,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/mechsanctum-copper-coral_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/normal/mechsanctum-copper-coral_v1_thumbnail.png",
+      "sourceHash": "4110a405371ea771212cead935d43f140f3a4d5a1d445c82016e496dea7a1beb",
+      "sourceBytes": 1215256,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/4afc1b5a5ab474c1fd98becf-320.webp",
+        "bytes": 32978,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/96376fbd363a4643355d5dc8-640.webp",
+        "bytes": 91370,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/mechsanctum-copper-pipes_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/normal/mechsanctum-copper-pipes_v1_thumbnail.png",
+      "sourceHash": "68a69852ef462b67baf71e0ceb2725108057b85d2c2a9ad2e8e96d7582aea425",
+      "sourceBytes": 1563715,
+      "sourceWidth": 1374,
+      "sourceHeight": 1145,
+      "small": {
+        "url": "/game-art/thumbnails/b11ae470b5278a8316964997-320.webp",
+        "bytes": 30604,
+        "width": 320,
+        "height": 267
+      },
+      "large": {
+        "url": "/game-art/thumbnails/95a163a20f9362a1d9775fd4-640.webp",
+        "bytes": 86784,
+        "width": 640,
+        "height": 533
+      }
+    },
+    {
+      "key": "decorations/normal/mechsanctum-pressure-gauge_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/normal/mechsanctum-pressure-gauge_v1_thumbnail.png",
+      "sourceHash": "0828bab1164a8785f677e162f3a6f046571309ee4af3e0728a1fcb39e21b31e8",
+      "sourceBytes": 1210048,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/05e011a861dfdc2f9253d56f-320.webp",
+        "bytes": 25838,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1e5344e78fa309b017e06681-640.webp",
+        "bytes": 70980,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/mechsanctum-small-altar_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/normal/mechsanctum-small-altar_v1_thumbnail.png",
+      "sourceHash": "924a21697fd902a3bc18357617e62abead3d679aa0708d813705fdb9876c82b6",
+      "sourceBytes": 1676040,
+      "sourceWidth": 1312,
+      "sourceHeight": 1199,
+      "small": {
+        "url": "/game-art/thumbnails/5958b3cf60ff15669b7ef1b6-320.webp",
+        "bytes": 32242,
+        "width": 320,
+        "height": 292
+      },
+      "large": {
+        "url": "/game-art/thumbnails/0a4febd95cb0db88b0fa03fb-640.webp",
+        "bytes": 92696,
+        "width": 640,
+        "height": 585
+      }
+    },
+    {
+      "key": "decorations/normal/mechsanctum-spring-bird-nest_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/normal/mechsanctum-spring-bird-nest_v1_thumbnail.png",
+      "sourceHash": "f32ff22291644897e903a9e83be3bdb632c6910b7fe849ff5c8261b0b7fe7ecd",
+      "sourceBytes": 2195256,
+      "sourceWidth": 1312,
+      "sourceHeight": 1199,
+      "small": {
+        "url": "/game-art/thumbnails/6de2cf05d9deecdff104d791-320.webp",
+        "bytes": 57970,
+        "width": 320,
+        "height": 292
+      },
+      "large": {
+        "url": "/game-art/thumbnails/643b43da0a58c94b60915b59-640.webp",
+        "bytes": 171716,
+        "width": 640,
+        "height": 585
+      }
+    },
+    {
+      "key": "decorations/normal/mechsanctum-toolbox_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/normal/mechsanctum-toolbox_v1_thumbnail.png",
+      "sourceHash": "d96319fd980efd15deae411792a2233a0a46d4de24ccde4e7bef17e90774dc9b",
+      "sourceBytes": 1902834,
+      "sourceWidth": 1312,
+      "sourceHeight": 1199,
+      "small": {
+        "url": "/game-art/thumbnails/d39242b26e19cdd911354ab8-320.webp",
+        "bytes": 35542,
+        "width": 320,
+        "height": 292
+      },
+      "large": {
+        "url": "/game-art/thumbnails/8c35e981c58f698de70d0741-640.webp",
+        "bytes": 100482,
+        "width": 640,
+        "height": 585
+      }
+    },
+    {
       "key": "decorations/normal/mint-starfish_thumbnail.png",
       "source": "assets/storage-upload/new/decorations/normal/mint-starfish_thumbnail.png",
       "sourceHash": "ce5764d4c339cd29f5b869a2a43082b114eade1a951eb1e782c86d18b8285afb",
@@ -1088,6 +1248,126 @@
       "large": {
         "url": "/game-art/thumbnails/abf18b1e8302ff6fe0b3540c-640.webp",
         "bytes": 53462,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/plunder-barnacle-sailor-chair_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/decorations/normal/plunder-barnacle-sailor-chair_v1_thumbnail.png",
+      "sourceHash": "496c3a09d42e58f414135369e92c162330cbaff13dc5f520ef4a287b66ba6aa9",
+      "sourceBytes": 1226654,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/7f8f9e5d5f012a36b2f46f0a-320.webp",
+        "bytes": 31076,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6a5f8deada6cb068c784be3e-640.webp",
+        "bytes": 86488,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/plunder-empty-supply-barrel_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/decorations/normal/plunder-empty-supply-barrel_v1_thumbnail.png",
+      "sourceHash": "1d08232d93967e94434b4a576cc1e67ead36e315fd257b4f25cbb2f77413d68c",
+      "sourceBytes": 1357893,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/426600a8d269aa18e2cd7087-320.webp",
+        "bytes": 27736,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/559b3e41f588708be43a66de-640.webp",
+        "bytes": 70616,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/plunder-folded-pirate-flag_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/decorations/normal/plunder-folded-pirate-flag_v1_thumbnail.png",
+      "sourceHash": "f67ff15c16cbab269aa1b4c550cd40fdda58e8d50b4f016b152d144816e220fa",
+      "sourceBytes": 1143902,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/24d769f4ed2181ec20abf99a-320.webp",
+        "bytes": 22712,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f1bb8c95c94d4a1335c49d21-640.webp",
+        "bytes": 57332,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/plunder-rope-mooring-post_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/decorations/normal/plunder-rope-mooring-post_v1_thumbnail.png",
+      "sourceHash": "72a0ca09801f00af46e326815466d15af117bbbe132dea86d6c02031a911717e",
+      "sourceBytes": 1263675,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/58c5b202b9ac4eebfbce9ad7-320.webp",
+        "bytes": 26916,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3c56b59f1466f11c822be713-640.webp",
+        "bytes": 74134,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/plunder-sand-cannonball-pile_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/decorations/normal/plunder-sand-cannonball-pile_v1_thumbnail.png",
+      "sourceHash": "f264f9995580b7d702aa9b1f4fe5547d3ae43c9ded3d2bea988a7727fa63a302",
+      "sourceBytes": 1021402,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/3bc3fd56d1113582b186d635-320.webp",
+        "bytes": 19682,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/98fd3692d27d8cacdb05735d-640.webp",
+        "bytes": 53542,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/plunder-wet-card-table_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/decorations/normal/plunder-wet-card-table_v1_thumbnail.png",
+      "sourceHash": "71e9f37bcef80d663c122e54971b045870499ef787c2aa3aa513e83195895eee",
+      "sourceBytes": 1424098,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/43718fda11b025936af5d55c-320.webp",
+        "bytes": 31372,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e80644a55254f19815edf5b5-640.webp",
+        "bytes": 88420,
         "width": 640,
         "height": 640
       }
@@ -1753,6 +2033,166 @@
       }
     },
     {
+      "key": "decorations/rare/mechsanctum-creator-blueprint_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-creator-blueprint_v1_thumbnail.png",
+      "sourceHash": "24f10b79bd7108db42f845c31fc8f0f7488a3fae5e5a74038474262c55f10eca",
+      "sourceBytes": 1683087,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/f8f43dd6743c65b29f5efbde-320.webp",
+        "bytes": 36082,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/987982843c4733794106d8a5-640.webp",
+        "bytes": 107674,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/mechsanctum-eternal-pendulum_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-eternal-pendulum_v1_thumbnail.png",
+      "sourceHash": "9f8e84a3d94dcf826f5ff38939144ec97c7b7f18f875ccf0b9de2494948e2163",
+      "sourceBytes": 2012072,
+      "sourceWidth": 1199,
+      "sourceHeight": 1312,
+      "small": {
+        "url": "/game-art/thumbnails/55a2f58ceed1891bfdbce539-320.webp",
+        "bytes": 60904,
+        "width": 292,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/caf53bebb86c14a6b5db34bb-640.webp",
+        "bytes": 176674,
+        "width": 585,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/mechsanctum-guardian-throne_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-guardian-throne_v1_thumbnail.png",
+      "sourceHash": "92ed345d624e71fd91dd7627be843c7f87f0d1b9e3fa5bb26051a280dfa81444",
+      "sourceBytes": 1831430,
+      "sourceWidth": 1312,
+      "sourceHeight": 1199,
+      "small": {
+        "url": "/game-art/thumbnails/daed4efdc8ade9da072ac941-320.webp",
+        "bytes": 34928,
+        "width": 320,
+        "height": 292
+      },
+      "large": {
+        "url": "/game-art/thumbnails/4ef3c4031a16a67fdf188894-640.webp",
+        "bytes": 101012,
+        "width": 640,
+        "height": 585
+      }
+    },
+    {
+      "key": "decorations/rare/mechsanctum-prayer-lamp_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-prayer-lamp_v1_thumbnail.png",
+      "sourceHash": "462b8a59891842d9f765684cc2d1751382815dc920ac8923737558f7b2642607",
+      "sourceBytes": 1383822,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/b6b1eb8b2ef9f52f53f7f949-320.webp",
+        "bytes": 34212,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/541b8df9bf78616df0378078-640.webp",
+        "bytes": 97628,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/mechsanctum-praying-automaton_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-praying-automaton_v1_thumbnail.png",
+      "sourceHash": "65336a4a535b306c6de55211cf8aad128c1023309b5fe969f7ee9d5592188b8c",
+      "sourceBytes": 1367328,
+      "sourceWidth": 1312,
+      "sourceHeight": 1199,
+      "small": {
+        "url": "/game-art/thumbnails/8e8da8537e3c0b9909afd935-320.webp",
+        "bytes": 27694,
+        "width": 320,
+        "height": 292
+      },
+      "large": {
+        "url": "/game-art/thumbnails/a7c292245e3c817c849a3687-640.webp",
+        "bytes": 78608,
+        "width": 640,
+        "height": 585
+      }
+    },
+    {
+      "key": "decorations/rare/mechsanctum-repairing-tree_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-repairing-tree_v1_thumbnail.png",
+      "sourceHash": "f5e121dbb2d2d0ea5b457109808d233b71b50a555c877ea5a7c3a7fdb76b0dfc",
+      "sourceBytes": 1723764,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/195c51b9b20d4a877e3eba05-320.webp",
+        "bytes": 45368,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/00bd349cedf31f0ca3e577ad-640.webp",
+        "bytes": 128336,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/mechsanctum-silver-guardian_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-silver-guardian_v1_thumbnail.png",
+      "sourceHash": "7b85175e8184481d2b438768872c1e4b0c1f57cf9faeb6a331bc8b37616bd663",
+      "sourceBytes": 1541460,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1149427c62b6ebce0446ca7b-320.webp",
+        "bytes": 32920,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/967cb01e44a00b89831a9989-640.webp",
+        "bytes": 92974,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/mechsanctum-teal-reactor_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/decorations/rare/mechsanctum-teal-reactor_v1_thumbnail.png",
+      "sourceHash": "4ca8c70ed39d41d8e6e02d92badbf253a7aee1a6f29a2d7db4d158e0d685eeb1",
+      "sourceBytes": 1396150,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/b8f8c4e3819bf65d685e1619-320.webp",
+        "bytes": 34958,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/fab1ef3a226bf6528dafba7a-640.webp",
+        "bytes": 99026,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "decorations/rare/mist-bell-windchime_thumbnail.png",
       "source": ".cache/thumbnail-sources/aaac6ef2ae6c7df0b1cb6b56.png",
       "sourceHash": "a7083c8b0b5d015e685b57216a7c5afe3ba17081dfd75e79980c4c89e263e0b5",
@@ -1988,6 +2428,106 @@
       "large": {
         "url": "/game-art/thumbnails/f2927770373f5ca33ee22c77-640.webp",
         "bytes": 47246,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/plunder-blue-flame-stern-lantern_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/decorations/rare/plunder-blue-flame-stern-lantern_v1_thumbnail.png",
+      "sourceHash": "2cea6c3017a706cb6ec81b34c44da5b06e0f6c98a38e0f94fffc4b9302985826",
+      "sourceBytes": 907480,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/9f341afa311dd860c205ed67-320.webp",
+        "bytes": 27618,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/ab4c082ec4b99865f2dffa41-640.webp",
+        "bytes": 71760,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/plunder-captains-red-armchair_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/decorations/rare/plunder-captains-red-armchair_v1_thumbnail.png",
+      "sourceHash": "c9ca66f3516e22a125ec421ac372f5ac6ebd4b7be2b9aab3a6d9ae4f7f93a81d",
+      "sourceBytes": 1302032,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/05b87f9dff1a969dd0cf7618-320.webp",
+        "bytes": 26796,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e08caf7fa86439bc48c9970c-640.webp",
+        "bytes": 71966,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/plunder-secret-trading-desk_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/decorations/rare/plunder-secret-trading-desk_v1_thumbnail.png",
+      "sourceHash": "dfb1098c8694d52c5e6572489b62ee67fd283a65fd7714c7762ee7be46a58c97",
+      "sourceBytes": 1569206,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ef535747ac8feaf49866c3a4-320.webp",
+        "bytes": 38690,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9fb1de896f0ffdea5e1350bc-640.webp",
+        "bytes": 104730,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/plunder-skull-weapon-rack_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/decorations/rare/plunder-skull-weapon-rack_v1_thumbnail.png",
+      "sourceHash": "5f84e45f0ecd3be1180005a998050ae0ba0dad48b7867a51a535d68836849e0c",
+      "sourceBytes": 1368963,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/7244b84229b958065b326be9-320.webp",
+        "bytes": 33786,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3a1c0d29e19c9ffabd1ae884-640.webp",
+        "bytes": 94494,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/plunder-wreck-figurehead_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/decorations/rare/plunder-wreck-figurehead_v1_thumbnail.png",
+      "sourceHash": "2098593e7cc6efe2de36023ca9b8c12622d0547bdd9b68ad35c09c2989956e9b",
+      "sourceBytes": 1677796,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/7939ae0622cb17a1ea4400e0-320.webp",
+        "bytes": 34410,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d977b308497ce009db7f8932-640.webp",
+        "bytes": 106780,
         "width": 640,
         "height": 640
       }
@@ -3333,6 +3873,126 @@
       }
     },
     {
+      "key": "fish/epic/mechsanctum-aion_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-aion_v1_thumbnail.png",
+      "sourceHash": "7383b70db3df862ba5e18cabf3f73fd0c2334f889bd04924e79e6cfa2d2c18e3",
+      "sourceBytes": 1812234,
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "small": {
+        "url": "/game-art/thumbnails/d732297f88c79fe7cc01e31d-320.webp",
+        "bytes": 21388,
+        "width": 320,
+        "height": 160
+      },
+      "large": {
+        "url": "/game-art/thumbnails/15e812f57be3f69d88d4cfea-640.webp",
+        "bytes": 65098,
+        "width": 640,
+        "height": 320
+      }
+    },
+    {
+      "key": "fish/epic/mechsanctum-helix_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-helix_v1_thumbnail.png",
+      "sourceHash": "825b10b3d4ffdec284c0d9a034c8c89740f4c90ea7ddd3d5bd535f8c51bed5d4",
+      "sourceBytes": 1802716,
+      "sourceWidth": 1368,
+      "sourceHeight": 1150,
+      "small": {
+        "url": "/game-art/thumbnails/b258cfd4ae6aab3bdcadf45b-320.webp",
+        "bytes": 33690,
+        "width": 320,
+        "height": 269
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f65b8cb37236df9a4302f7d8-640.webp",
+        "bytes": 102734,
+        "width": 640,
+        "height": 538
+      }
+    },
+    {
+      "key": "fish/epic/mechsanctum-nema_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-nema_v1_thumbnail.png",
+      "sourceHash": "c20b96d9c911d85aecb373c4df261f31d12e6c856898a697cd168aab70923e8f",
+      "sourceBytes": 2063532,
+      "sourceWidth": 1368,
+      "sourceHeight": 1150,
+      "small": {
+        "url": "/game-art/thumbnails/129ee23d6d3451280006d38f-320.webp",
+        "bytes": 45682,
+        "width": 320,
+        "height": 269
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e0b6e70cb65d4bd24702a73b-640.webp",
+        "bytes": 137118,
+        "width": 640,
+        "height": 538
+      }
+    },
+    {
+      "key": "fish/epic/mechsanctum-orbis_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-orbis_v1_thumbnail.png",
+      "sourceHash": "8d6297b3471d9b64acd1c27708d58ff32e947db53b3e155175a894c6558c0c22",
+      "sourceBytes": 2501971,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/17bca029eb8af703b5315f87-320.webp",
+        "bytes": 37450,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/27b66566e9867c2819600899-640.webp",
+        "bytes": 110330,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
+      "key": "fish/epic/mechsanctum-ouros_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-ouros_v1_thumbnail.png",
+      "sourceHash": "4900fffb1fd28fa99df2359d4984f437768869287ba137a7be9485d9ebfa6c58",
+      "sourceBytes": 1850358,
+      "sourceWidth": 1368,
+      "sourceHeight": 1150,
+      "small": {
+        "url": "/game-art/thumbnails/bfbd5225c0b21705d7afa9e5-320.webp",
+        "bytes": 41226,
+        "width": 320,
+        "height": 269
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5404845c5d708361ed84908f-640.webp",
+        "bytes": 119060,
+        "width": 640,
+        "height": 538
+      }
+    },
+    {
+      "key": "fish/epic/mechsanctum-talos_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/epic/mechsanctum-talos_v1_thumbnail.png",
+      "sourceHash": "c334bf82563b18ae95329793b9d13540a418b28e24acc9c9c50bb018aa464fab",
+      "sourceBytes": 2537157,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/8a2ae7bf600b8955d6172e1b-320.webp",
+        "bytes": 35698,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d59ecf06c933464868be39bf-640.webp",
+        "bytes": 105470,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
       "key": "fish/epic/meteor-tentacle-squid_thumbnail.png",
       "source": "assets/storage-upload/new/20261018-114000/fish/epic/meteor-tentacle-squid_thumbnail.png",
       "sourceHash": "3794384bac736d2695fc08b6c00973ce89bb0787297972d2bea647151f64624d",
@@ -3668,6 +4328,106 @@
       "large": {
         "url": "/game-art/thumbnails/dc3272a4a52ccf854d224311-640.webp",
         "bytes": 114650,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/plunder-anchor-whisker-sealion_v2_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-090400/fish/epic/plunder-anchor-whisker-sealion_v2_thumbnail.png",
+      "sourceHash": "c540bb58fec7bfa2dc5cef508a0ba33734dec679026790ebe81a2ff0224b91dc",
+      "sourceBytes": 1191985,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/f395e08cd167967f1b1bbec5-320.webp",
+        "bytes": 28522,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/ea7d793fe1b8c6b6a10ee0ea-640.webp",
+        "bytes": 78042,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/plunder-loot-king-hermit_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/epic/plunder-loot-king-hermit_v1_thumbnail.png",
+      "sourceHash": "db15ce23bed4b9f3c04a2a30e1125f87c9bcda4ca6b39e227b1e5859cba87b6d",
+      "sourceBytes": 1823197,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e05ea8fe38894012908cb7dd-320.webp",
+        "bytes": 45850,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/50e1912c0fcfa56d20c16371-640.webp",
+        "bytes": 147246,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/plunder-treasure-chart-eel_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/epic/plunder-treasure-chart-eel_v1_thumbnail.png",
+      "sourceHash": "3f85cc0c7804d4dc27888ccc893d5112aa59bb7e28e0a7c563e20e5d523311eb",
+      "sourceBytes": 1124173,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/149d30e86d220d911c463b7e-320.webp",
+        "bytes": 29702,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/bf1c48dde70a0c9cfb0817d0-640.webp",
+        "bytes": 88224,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/plunder-twin-cannon-lobster_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/epic/plunder-twin-cannon-lobster_v1_thumbnail.png",
+      "sourceHash": "f3d031a4e4f35cbd3ac08265791a774588704099253e639b056d828e48563cb9",
+      "sourceBytes": 1393619,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e52b0ee4e5aae8dbbe974b9b-320.webp",
+        "bytes": 39760,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/8d3731bdddc1e6f7e256e306-640.webp",
+        "bytes": 121466,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/plunder-wreckback-turtle_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/epic/plunder-wreckback-turtle_v1_thumbnail.png",
+      "sourceHash": "162ef4078a21bdca7141cae85ade39a193fe7e909155e9f5b1675feb2fa72dca",
+      "sourceBytes": 1724743,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/07610924d97d6f749d553cba-320.webp",
+        "bytes": 42514,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/30efb2650af7f9cfb5d4f2f5-640.webp",
+        "bytes": 141708,
         "width": 640,
         "height": 640
       }
@@ -4533,6 +5293,46 @@
       }
     },
     {
+      "key": "fish/mythic/mechsanctum-automakion_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/mythic/mechsanctum-automakion_v1_thumbnail.png",
+      "sourceHash": "9496ab215df92485588e681e8ea6a50f66a6873d0be9c146144158443e8b1091",
+      "sourceBytes": 1434438,
+      "sourceWidth": 1368,
+      "sourceHeight": 1150,
+      "small": {
+        "url": "/game-art/thumbnails/5071118ee375cc9f1d64027b-320.webp",
+        "bytes": 33902,
+        "width": 320,
+        "height": 269
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b6877bb924b8c9ab6ee7cac6-640.webp",
+        "bytes": 102168,
+        "width": 640,
+        "height": 538
+      }
+    },
+    {
+      "key": "fish/mythic/mechsanctum-deus-machina_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/mythic/mechsanctum-deus-machina_v1_thumbnail.png",
+      "sourceHash": "4b74812472065d935f8522cc6d3323776021e643ea5c400d46c1f484444a84ce",
+      "sourceBytes": 1387172,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/84ab03f500c1816a73c2dbc6-320.webp",
+        "bytes": 40314,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/a692b38b400aefcfdc2fce34-640.webp",
+        "bytes": 124956,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "fish/mythic/muk-hyeonmu_thumbnail.png",
       "source": "assets/storage-upload/new/mukhyang-creatures/fish/mythic/muk-hyeonmu_thumbnail.png",
       "sourceHash": "2de09a155f495de89a24472472c6cdca11775094438a866ce358dc9ff1b190dd",
@@ -4728,6 +5528,66 @@
       "large": {
         "url": "/game-art/thumbnails/8dc62f7187c92ad159fbb006-640.webp",
         "bytes": 85820,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/plunder-barca_v2_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-090400/fish/mythic/plunder-barca_v2_thumbnail.png",
+      "sourceHash": "73c780733b5f508c0f014157a044a9934222879df935e115c892ae7a87c2947e",
+      "sourceBytes": 902432,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1d50cb14f61ba55d1cfffbf5-320.webp",
+        "bytes": 24938,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3edb67c59f03d5c6d87a9015-640.webp",
+        "bytes": 80372,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/plunder-bloodsail_v2_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-090400/fish/mythic/plunder-bloodsail_v2_thumbnail.png",
+      "sourceHash": "a11a8cfdcebc89087d9c5247f07a80d8783a5075c0d03e4f4bdc1749c0e7a107",
+      "sourceBytes": 1584990,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/2be9c74818da4ab30cf651d8-320.webp",
+        "bytes": 35520,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1b2deecf90e48f85acad2f08-640.webp",
+        "bytes": 119458,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/plunder-morgar_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/mythic/plunder-morgar_v1_thumbnail.png",
+      "sourceHash": "b5978ada1eec62be021be84b2172ba7bbfe1785f768809e5bd68c86dc5559edc",
+      "sourceBytes": 1434083,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/fe0e507e50937b4fa7cbf387-320.webp",
+        "bytes": 35238,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/4a238c0253cb37a4d3a229fe-640.webp",
+        "bytes": 106100,
         "width": 640,
         "height": 640
       }
@@ -6173,6 +7033,266 @@
       }
     },
     {
+      "key": "fish/normal/mechsanctum-bearing-urchin_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-bearing-urchin_v1_thumbnail.png",
+      "sourceHash": "6f578693fa1648b3aa66fba47e87dfd0bed4220e11dfab072cba4249c7cdba6c",
+      "sourceBytes": 2031162,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/b026d1184389b16745c7a295-320.webp",
+        "bytes": 23174,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/62e424b7b60b5070cfae6f01-640.webp",
+        "bytes": 65904,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
+      "key": "fish/normal/mechsanctum-brass-carp_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-brass-carp_v1_thumbnail.png",
+      "sourceHash": "80b4f8fbb53f95192f4b213da9ad61e387267aeee316d72e07e7f2e633b470e0",
+      "sourceBytes": 1580624,
+      "sourceWidth": 1448,
+      "sourceHeight": 1086,
+      "small": {
+        "url": "/game-art/thumbnails/aa7f52eb2179c3b02f424d94-320.webp",
+        "bytes": 29264,
+        "width": 320,
+        "height": 240
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7d3099a05fed31b871196904-640.webp",
+        "bytes": 81150,
+        "width": 640,
+        "height": 480
+      }
+    },
+    {
+      "key": "fish/normal/mechsanctum-clockwork-anchovy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-clockwork-anchovy_v1_thumbnail.png",
+      "sourceHash": "efc37e87bf7e69faa29c27690af94cfa7bdc2a6227c21c4a812cdd54d66457aa",
+      "sourceBytes": 1209678,
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "small": {
+        "url": "/game-art/thumbnails/8e6c177aa571dd1dfbc6e919-320.webp",
+        "bytes": 18138,
+        "width": 320,
+        "height": 160
+      },
+      "large": {
+        "url": "/game-art/thumbnails/26b11e190f69b6d251e49d43-640.webp",
+        "bytes": 49232,
+        "width": 640,
+        "height": 320
+      }
+    },
+    {
+      "key": "fish/normal/mechsanctum-gear-flounder_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-gear-flounder_v1_thumbnail.png",
+      "sourceHash": "fe3b6d768703c585686ee8af0d06f75b06c399ac862c42c6c9d981af950956d8",
+      "sourceBytes": 2045846,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/45565aacb62d5596429072eb-320.webp",
+        "bytes": 24668,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/632b6cb51dc1ca1e878768c8-640.webp",
+        "bytes": 67142,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
+      "key": "fish/normal/mechsanctum-gear-starfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-gear-starfish_v1_thumbnail.png",
+      "sourceHash": "ecdb3d0aa32f13bb9f0b806354ca0cc5f66436bddcdd5ce8fc5bce1a5da467c9",
+      "sourceBytes": 1896863,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/f1e4b6f7503525833dc24302-320.webp",
+        "bytes": 22882,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/aa87e7f4999b25807ea5d023-640.webp",
+        "bytes": 60786,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
+      "key": "fish/normal/mechsanctum-hinge-scallop_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-hinge-scallop_v1_thumbnail.png",
+      "sourceHash": "3b42a850f7416d083e6b6cbeff489cad7b62fb532cd437f1431bf37c9dc9afe1",
+      "sourceBytes": 1920559,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/49247f25989c52cb4dc43678-320.webp",
+        "bytes": 21610,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/42d49d5d0a9d4f4e85528be5-640.webp",
+        "bytes": 61472,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
+      "key": "fish/normal/mechsanctum-meshing-crab_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-meshing-crab_v1_thumbnail.png",
+      "sourceHash": "46a2053ccd1dd929e287ce16fa0911ac98a7f470ac0c08adc95ffb3d794f7e73",
+      "sourceBytes": 2015960,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/1edcacaca338a5586d59e021-320.webp",
+        "bytes": 26148,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1335db9ebf2a46cdee0d7e3f-640.webp",
+        "bytes": 72076,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
+      "key": "fish/normal/mechsanctum-plate-filefish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-plate-filefish_v1_thumbnail.png",
+      "sourceHash": "4ae2b65843dc6b7c08ada023b93f40a483033400d6c4e8bfd2a95f57c6e6356f",
+      "sourceBytes": 2066204,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/7c2eb1f9e3b078ccbcf22146-320.webp",
+        "bytes": 24250,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5faa03b9b0ce0fb5beb2f3c5-640.webp",
+        "bytes": 67200,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
+      "key": "fish/normal/mechsanctum-pulley-halfbeak_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-pulley-halfbeak_v1_thumbnail.png",
+      "sourceHash": "2a59946ac9f56700b6a8e7ff73797be232a1be3783dcc308c8cca93f6ff963fb",
+      "sourceBytes": 985355,
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "small": {
+        "url": "/game-art/thumbnails/ddee5b99e1ff794a74c1982d-320.webp",
+        "bytes": 16166,
+        "width": 320,
+        "height": 160
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2157df69d674b0353903fa79-640.webp",
+        "bytes": 43072,
+        "width": 640,
+        "height": 320
+      }
+    },
+    {
+      "key": "fish/normal/mechsanctum-rusty-sardine_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-rusty-sardine_v1_thumbnail.png",
+      "sourceHash": "bd21421da1fb104d919ad9b9e8c5d68fdf82d031f9d384441324d7707c918d4d",
+      "sourceBytes": 1268162,
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "small": {
+        "url": "/game-art/thumbnails/2915ea305eb48cd273556105-320.webp",
+        "bytes": 18018,
+        "width": 320,
+        "height": 160
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f962c995c550944b0e4e0927-640.webp",
+        "bytes": 50500,
+        "width": 640,
+        "height": 320
+      }
+    },
+    {
+      "key": "fish/normal/mechsanctum-screw-medaka_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-screw-medaka_v1_thumbnail.png",
+      "sourceHash": "1d8671d14cabf6832d299d90a905d942562a65d6bc74b60809ebb36821efb4c6",
+      "sourceBytes": 1240734,
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "small": {
+        "url": "/game-art/thumbnails/a3fa0270895d448ee78d0e6a-320.webp",
+        "bytes": 18354,
+        "width": 320,
+        "height": 160
+      },
+      "large": {
+        "url": "/game-art/thumbnails/15c86221c7a8dcc9b191f4b0-640.webp",
+        "bytes": 49156,
+        "width": 640,
+        "height": 320
+      }
+    },
+    {
+      "key": "fish/normal/mechsanctum-spiral-whelk_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-spiral-whelk_v1_thumbnail.png",
+      "sourceHash": "934f1016dccadb580eff2952e9a8a2d5f5177db63b43bcb5a614d63e4317425f",
+      "sourceBytes": 2114831,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/aa1e6c9a10d7ec44c0d41884-320.webp",
+        "bytes": 24556,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/cabbfcc0bfc6dbdd53e2a5c5-640.webp",
+        "bytes": 68636,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
+      "key": "fish/normal/mechsanctum-spring-shrimp_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/normal/mechsanctum-spring-shrimp_v1_thumbnail.png",
+      "sourceHash": "eb363b60669ffc42a91d0b2838c8407f18779800533053467213b454f33c9c6c",
+      "sourceBytes": 2052856,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/6d36b5078b81fd69659a4ed8-320.webp",
+        "bytes": 30746,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d156429f7d71e958b7664e15-640.webp",
+        "bytes": 84482,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
       "key": "fish/normal/mistmoon-mistwhisker-loach_thumbnail.png",
       "source": "assets/storage-upload/new/20261021-050000/fish/normal/mistmoon-mistwhisker-loach_thumbnail.png",
       "sourceHash": "c9c3225f8b869bb78c9a1ff7dc07ff5173adee2053010da0f48b26ee8a0604d7",
@@ -6873,6 +7993,246 @@
       }
     },
     {
+      "key": "fish/normal/plunder-bandana-octopus_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/normal/plunder-bandana-octopus_v1_thumbnail.png",
+      "sourceHash": "d8b856096036c3ef24f9204bc2cbc946fba1f15c2a5c52aec51573e8f0229238",
+      "sourceBytes": 1090067,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/b89e22aad3ff3a9d91b7b190-320.webp",
+        "bytes": 28118,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e9446f2afeb3325cea2926ae-640.webp",
+        "bytes": 69858,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/plunder-deck-cleaner-shrimp_v2_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-090400/fish/normal/plunder-deck-cleaner-shrimp_v2_thumbnail.png",
+      "sourceHash": "110340447fd8bc43db340703b75c39f33bc5f4739e32422f1479c2158bf9259d",
+      "sourceBytes": 845309,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/949b2763c206ae44edee6093-320.webp",
+        "bytes": 29578,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/bca3d2700696a26c3cc13597-640.webp",
+        "bytes": 82242,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/plunder-jewel-appraiser-shrimp_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/normal/plunder-jewel-appraiser-shrimp_v1_thumbnail.png",
+      "sourceHash": "b4a2d247551e804faf8304855101f3a5275c4cdcc8cb302b1b13ebbe1364fb08",
+      "sourceBytes": 976840,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/6e65ee6cc312d3acc2c1c4bc-320.webp",
+        "bytes": 30640,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f9ef92f979ee3e21d2959832-640.webp",
+        "bytes": 82322,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/plunder-lookout-goby_v2_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-090400/fish/normal/plunder-lookout-goby_v2_thumbnail.png",
+      "sourceHash": "5c3892317f2bc456e753b23c05a9fb8777077f2c3933e4ac68724ab6ac3aefd6",
+      "sourceBytes": 944734,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1536167996bec8d346fbf822-320.webp",
+        "bytes": 23718,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/78c1f336c1df9afab30d140d-640.webp",
+        "bytes": 61776,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/plunder-one-eyed-carp_v2_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-090400/fish/normal/plunder-one-eyed-carp_v2_thumbnail.png",
+      "sourceHash": "1722bcfc1e61a3df0f8283a45e1b929a5af76b604f4df7797d59c5400ff5f169",
+      "sourceBytes": 1189003,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/397877fb6bee1ae414192c2f-320.webp",
+        "bytes": 27234,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2db3873be5a8901ce9ab0c49-640.webp",
+        "bytes": 73780,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/plunder-peg-leg-crab_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/normal/plunder-peg-leg-crab_v1_thumbnail.png",
+      "sourceHash": "a0dea0c05c88a25afde878903ea69435030c64f9488dc8c82a50a82bfe15c34d",
+      "sourceBytes": 797465,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/b34318f80855557c2adf8845-320.webp",
+        "bytes": 22840,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9cb349588a64d3c7aa8a33ad-640.webp",
+        "bytes": 57266,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/plunder-rope-tail-pipefish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/normal/plunder-rope-tail-pipefish_v1_thumbnail.png",
+      "sourceHash": "e351d1a5bd3abae185c01062750fa6e1ff8db11465248b7ad846317e171f0b14",
+      "sourceBytes": 450865,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/6d10ef0db91f4ac5f33fa4e7-320.webp",
+        "bytes": 15564,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/8d774d5f733e55e130be544d-640.webp",
+        "bytes": 39474,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/plunder-rum-barrel-puffer_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/normal/plunder-rum-barrel-puffer_v1_thumbnail.png",
+      "sourceHash": "3b7d1be78c2c7620746fd14f04fd896588f017e504bf0374c8e31e361c573c81",
+      "sourceBytes": 1052582,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/80f393133463d01023643282-320.webp",
+        "bytes": 23104,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/ae9f87e292435e870def3948-640.webp",
+        "bytes": 59000,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/plunder-smuggler-pouch-puffer_v2_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-090400/fish/normal/plunder-smuggler-pouch-puffer_v2_thumbnail.png",
+      "sourceHash": "bfe718a16edd34f86eb77eb92dd382115a386516b7c6d9912fb48ef737dac6f2",
+      "sourceBytes": 1152437,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e84e20c5a0374e3041a85b96-320.webp",
+        "bytes": 26662,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e33139ed52086b232887378b-640.webp",
+        "bytes": 69936,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/plunder-striped-piratefish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/normal/plunder-striped-piratefish_v1_thumbnail.png",
+      "sourceHash": "612ebb6cae7faa1c8ba0fca2917da54651bec12db6f87c0a13baca308ef7acd8",
+      "sourceBytes": 1033660,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ad681e54c0ddcdc710dc7f59-320.webp",
+        "bytes": 25142,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/bd2cc27bc26f51dbc3a047f1-640.webp",
+        "bytes": 61664,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/plunder-triangle-sail-jelly_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/normal/plunder-triangle-sail-jelly_v1_thumbnail.png",
+      "sourceHash": "c73453f1d30291e3dae9ee9beea99434edc475c98c9fe5eb4f7b6ea413b2a4c0",
+      "sourceBytes": 1052628,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e024401c33dba03b253b0c78-320.webp",
+        "bytes": 33288,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e6a28eb3b7857cf2641c980a-640.webp",
+        "bytes": 84380,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/plunder-wanted-bandit-crab_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/normal/plunder-wanted-bandit-crab_v1_thumbnail.png",
+      "sourceHash": "409daa748a78a30cd37743b74a29925f43dd9da443fc4f6639a898474a8e0bf3",
+      "sourceBytes": 863720,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ea1411cb4fe34cf340665b7e-320.webp",
+        "bytes": 24474,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/cbd920fcc6d62194bc37f553-640.webp",
+        "bytes": 62944,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "fish/normal/pongi-crab_thumbnail.png",
       "source": "assets/storage-upload/new/20261020-050901/fish/normal/pongi-crab_thumbnail.png",
       "sourceHash": "430f88b7d998194c345375dde375c1cb52134e2395d757c1c45a40339d180ba4",
@@ -7013,6 +8373,26 @@
       }
     },
     {
+      "key": "fish/normal/shared-banggai-cardinalfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-094300/fish/normal/shared-banggai-cardinalfish_v1_thumbnail.png",
+      "sourceHash": "adfc5dca640e246b991ee4c076468a24b076b29ea1703b1d6d5851c9c1bc0044",
+      "sourceBytes": 919028,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/614a5f5c1139ff7b9fe6091a-320.webp",
+        "bytes": 27642,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/fc5250ac9c44193ba0d148d7-640.webp",
+        "bytes": 70414,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "fish/normal/shared-blue-leaf-sheep_thumbnail.png",
       "source": "assets/storage-upload/new/20261022-041530/fish/normal/shared-blue-leaf-sheep_thumbnail.png",
       "sourceHash": "ca180b5be2e398255c3949ef048d298fc3b50d0e1eb370af7d69185b515392d4",
@@ -7030,6 +8410,86 @@
         "bytes": 67308,
         "width": 627,
         "height": 627
+      }
+    },
+    {
+      "key": "fish/normal/shared-blue-tang_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-094300/fish/normal/shared-blue-tang_v1_thumbnail.png",
+      "sourceHash": "32f646c6f3e6ccff1501a407473d72930beabdda2e2bae94624bbcab699b06d0",
+      "sourceBytes": 872851,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/aa2f151a7b1912397ff60bc1-320.webp",
+        "bytes": 21166,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b6f188e20131e2fc649e3c1b-640.webp",
+        "bytes": 54126,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/shared-bobtail-squid_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-094300/fish/normal/shared-bobtail-squid_v1_thumbnail.png",
+      "sourceHash": "bd33e087857937b78a18a29c4a79456a5514448e26e88e1610d84a499a435b4e",
+      "sourceBytes": 1003824,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/5a5eaa05cc359f50a3dcce50-320.webp",
+        "bytes": 24152,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/31876461e0b884066a4e3579-640.webp",
+        "bytes": 64636,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/shared-clown-triggerfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-094300/fish/normal/shared-clown-triggerfish_v1_thumbnail.png",
+      "sourceHash": "0c283897e71c72754adee9f8ba60b57b1b6dd41bc201aab0c5f66f9d252f5856",
+      "sourceBytes": 869581,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/80f58c6957c967bf30201103-320.webp",
+        "bytes": 22198,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/8ef9863c12094007e12b2bb1-640.webp",
+        "bytes": 54702,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/shared-flame-angelfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-094300/fish/normal/shared-flame-angelfish_v1_thumbnail.png",
+      "sourceHash": "cf410667e587a22e39158d29a991d23feb7f7666eb8500f5c309ab3e48d8bf3d",
+      "sourceBytes": 991743,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/29325c99dea851eb11ef1385-320.webp",
+        "bytes": 25410,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2b90e5e9fef55da280a8bc0d-640.webp",
+        "bytes": 66946,
+        "width": 640,
+        "height": 640
       }
     },
     {
@@ -7210,6 +8670,46 @@
         "bytes": 19962,
         "width": 512,
         "height": 512
+      }
+    },
+    {
+      "key": "fish/normal/shared-royal-gramma_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-094300/fish/normal/shared-royal-gramma_v1_thumbnail.png",
+      "sourceHash": "06e8ce6af4cf6dd2f2c47b5f50cf502d87917a97aaae70bdcbd14c74d328c27c",
+      "sourceBytes": 879395,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/65deba5233199c62b11199b0-320.webp",
+        "bytes": 22814,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/48493948dc48db13e32fe23b-640.webp",
+        "bytes": 61500,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/shared-sea-hare_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-094300/fish/normal/shared-sea-hare_v1_thumbnail.png",
+      "sourceHash": "9447169a842cd5239e44aedc974bdcc0bb8b4f3e1cf7fe90c2b310ba75896c9e",
+      "sourceBytes": 960912,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/ca570b8ef7017422c7b7e34e-320.webp",
+        "bytes": 24984,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f863a5b89d95b4f3a440ee4f-640.webp",
+        "bytes": 63756,
+        "width": 640,
+        "height": 640
       }
     },
     {
@@ -8653,6 +10153,226 @@
       }
     },
     {
+      "key": "fish/rare/mechsanctum-armored-horseshoe_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-armored-horseshoe_v1_thumbnail.png",
+      "sourceHash": "bdada3087d703a162c857e208bd9714ae30afa89c730a1842d541d8d756ec783",
+      "sourceBytes": 1642823,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/50efa0a16d7e2cf445020647-320.webp",
+        "bytes": 17448,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1aba2fd7264913234e7a8e0f-640.webp",
+        "bytes": 48980,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
+      "key": "fish/rare/mechsanctum-counter-jellyfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-counter-jellyfish_v1_thumbnail.png",
+      "sourceHash": "98a3e44ef24b5db2ccdf7af28b31a60bac16e044973c23468b966598c7b30782",
+      "sourceBytes": 1594992,
+      "sourceWidth": 1368,
+      "sourceHeight": 1150,
+      "small": {
+        "url": "/game-art/thumbnails/2695d57a72053b21fe15857f-320.webp",
+        "bytes": 40438,
+        "width": 320,
+        "height": 269
+      },
+      "large": {
+        "url": "/game-art/thumbnails/096b2783867510e5698ff6b5-640.webp",
+        "bytes": 116656,
+        "width": 640,
+        "height": 538
+      }
+    },
+    {
+      "key": "fish/rare/mechsanctum-crown-octopus_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-crown-octopus_v1_thumbnail.png",
+      "sourceHash": "cf6e85c919161f864051b266ea815369f2b7f57d68d4fd6ad60649e753574e09",
+      "sourceBytes": 2222587,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/6a393d158e6edb6d696da475-320.webp",
+        "bytes": 29112,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/bf1ed1cd395842fe16780118-640.webp",
+        "bytes": 81232,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
+      "key": "fish/rare/mechsanctum-layered-nautilus_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-layered-nautilus_v1_thumbnail.png",
+      "sourceHash": "4c8b03005b3f3cfe21b5a6caedeb25c31cda2f1ee8b5de0a982cb68cf2f54c95",
+      "sourceBytes": 2078006,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/49a5828c9774233e73aa3f73-320.webp",
+        "bytes": 23200,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e6dd3804c61c16636f34f63a-640.webp",
+        "bytes": 65776,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
+      "key": "fish/rare/mechsanctum-pendulum-ray_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-pendulum-ray_v1_thumbnail.png",
+      "sourceHash": "5eca0d3a7a2a1f838da2f175fe214b3fb551c8e4781ecfe728c20312e7099ec1",
+      "sourceBytes": 1913350,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/19c5d5c79bd94d9db6e61795-320.webp",
+        "bytes": 22408,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2eee1b3b37be10773e68b708-640.webp",
+        "bytes": 59940,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
+      "key": "fish/rare/mechsanctum-planetary-puffer_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-planetary-puffer_v1_thumbnail.png",
+      "sourceHash": "60fad8c360bd45e990a1cacd79773553aa09899cfc9dc2173459f277a703442f",
+      "sourceBytes": 2002187,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/88f1ad979cfb9370873c68c2-320.webp",
+        "bytes": 24618,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/43634db4beb2554175ff2878-640.webp",
+        "bytes": 66382,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
+      "key": "fish/rare/mechsanctum-ring-eel_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-ring-eel_v1_thumbnail.png",
+      "sourceHash": "77eb60059ec862c7fe46a8514349244f6847ad9dda7f7c4a7b445730c352d5d9",
+      "sourceBytes": 1141442,
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "small": {
+        "url": "/game-art/thumbnails/fe8d8b4639e75ee076862767-320.webp",
+        "bytes": 17620,
+        "width": 320,
+        "height": 160
+      },
+      "large": {
+        "url": "/game-art/thumbnails/70f1f53cff000973b604a68a-640.webp",
+        "bytes": 48108,
+        "width": 640,
+        "height": 320
+      }
+    },
+    {
+      "key": "fish/rare/mechsanctum-silver-seahorse_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-silver-seahorse_v1_thumbnail.png",
+      "sourceHash": "3bb3d481b0d18a6e57b0a34b8a76dfe708d3524b4dad850091b6fde4c0249cad",
+      "sourceBytes": 2162093,
+      "sourceWidth": 1024,
+      "sourceHeight": 1536,
+      "small": {
+        "url": "/game-art/thumbnails/23311b63bef3cc2e43edb807-320.webp",
+        "bytes": 28678,
+        "width": 213,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/660d40ec125489e7211ac19b-640.webp",
+        "bytes": 78486,
+        "width": 427,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/mechsanctum-spring-nudibranch_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-spring-nudibranch_v1_thumbnail.png",
+      "sourceHash": "b1fa4c28a57721036eb94bbe41b488cea95be3845dceb752db1457d4a2d3e6f2",
+      "sourceBytes": 1806338,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/39f1fce8bf3d32622a547f68-320.webp",
+        "bytes": 22990,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5f9e2bfc8d3dd52c1f8608c4-640.webp",
+        "bytes": 63060,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
+      "key": "fish/rare/mechsanctum-tuning-sunfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-tuning-sunfish_v1_thumbnail.png",
+      "sourceHash": "d66b497620376d6245ed625b9b1c1f0c9eb8d591dd4b829cee1dfa14fa3e8838",
+      "sourceBytes": 1437723,
+      "sourceWidth": 1303,
+      "sourceHeight": 1207,
+      "small": {
+        "url": "/game-art/thumbnails/cd3387b7d90e931489f955fa-320.webp",
+        "bytes": 30004,
+        "width": 320,
+        "height": 296
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f35dedd9f1e849d85ec01f2e-640.webp",
+        "bytes": 84112,
+        "width": 640,
+        "height": 593
+      }
+    },
+    {
+      "key": "fish/rare/mechsanctum-twin-wheel-turtle_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/fish/rare/mechsanctum-twin-wheel-turtle_v1_thumbnail.png",
+      "sourceHash": "9cd551924906f16150b6405bcaf32e96332ac0a51ad866af9b70540837005650",
+      "sourceBytes": 1965477,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/d5bb669c17f1eab3e1a38881-320.webp",
+        "bytes": 24688,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/df4adc6871454bc689407ef3-640.webp",
+        "bytes": 67020,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
       "key": "fish/rare/mint-mahi-mahi_thumbnail.png",
       "source": "assets/storage-upload/collectibles/fish/rare/mint-mahi-mahi_thumbnail.png",
       "sourceHash": "ff0c8a79c92dc1aadbbce6dfb69b093d05e88941b71427780bca56d3bf2a446b",
@@ -9328,6 +11048,166 @@
       "large": {
         "url": "/game-art/thumbnails/190899a0400d5cd0aa7e27f1-640.webp",
         "bytes": 41106,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/plunder-bounty-gold-puffer_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/rare/plunder-bounty-gold-puffer_v1_thumbnail.png",
+      "sourceHash": "035dab83f3058fe2e08b5d6adaf01f85066d52ed30c937bd009267d5a9d2bc34",
+      "sourceBytes": 1145808,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/127518e321bdf14c081ecdec-320.webp",
+        "bytes": 27560,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/91c8e2140b6620a35f0958ee-640.webp",
+        "bytes": 70392,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/plunder-cannon-ink-squid_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/rare/plunder-cannon-ink-squid_v1_thumbnail.png",
+      "sourceHash": "a210ddd5184eb54fd22e7d216ec2093d0912321452f7256ba6a01cbeb97f09de",
+      "sourceBytes": 1058939,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/bbeb181d6283d0df7c7cf237-320.webp",
+        "bytes": 27600,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e6e0084e1f4584184de8d941-640.webp",
+        "bytes": 70646,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/plunder-pirate-captain-horseshoe_v2_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-090400/fish/rare/plunder-pirate-captain-horseshoe_v2_thumbnail.png",
+      "sourceHash": "94e1c6936ebb0bd66ec310e8b2b06577f4e3ea86d0ddf4d7b2066e044b869259",
+      "sourceBytes": 745085,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e239ea88e912da8b36c3c1d6-320.webp",
+        "bytes": 21000,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1857028ab53b837195119934-640.webp",
+        "bytes": 58690,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/plunder-plunder-crown-urchin_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/rare/plunder-plunder-crown-urchin_v1_thumbnail.png",
+      "sourceHash": "e376b2f43307067b10349d9b0c911892a4f4cda7dc8d8da031cc2318dab06ef5",
+      "sourceBytes": 1405007,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/2ef59e5b4dac8057e19fdc2d-320.webp",
+        "bytes": 32104,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/37d019cf2435d0433dd79a2b-640.webp",
+        "bytes": 90328,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/plunder-sailor-sock-moray_v2_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-090400/fish/rare/plunder-sailor-sock-moray_v2_thumbnail.png",
+      "sourceHash": "d53c1a32d4b97154013c19ce8335e822318a7c9ee0bade50775f61e7881ed7b2",
+      "sourceBytes": 781459,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/2c487463ad3e5e8b38c064c0-320.webp",
+        "bytes": 20564,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/49892a48dfb9ee9e62cd7e01-640.webp",
+        "bytes": 50680,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/plunder-smuggler-vault-turtle_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/rare/plunder-smuggler-vault-turtle_v1_thumbnail.png",
+      "sourceHash": "96c1a6384c6eb9f6d058a48e52003a83ca953b8a2fdb02d8cbd0446a7232399a",
+      "sourceBytes": 988041,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/03975445f81fe82af2901361-320.webp",
+        "bytes": 24004,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b95fbd70a7f6c72b2bd08898-640.webp",
+        "bytes": 64432,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/plunder-tattered-chart-ray_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/rare/plunder-tattered-chart-ray_v1_thumbnail.png",
+      "sourceHash": "61b103380f33ffec08d36528fa7ef7d76c2f7db93ec5bb45f22d73cec6e64a7f",
+      "sourceBytes": 802765,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1c91ff4e9c2f1a075a678a83-320.webp",
+        "bytes": 18316,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/77eb8aed6fc1548a21428272-640.webp",
+        "bytes": 46392,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/plunder-twin-pistol-shrimp_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/fish/rare/plunder-twin-pistol-shrimp_v1_thumbnail.png",
+      "sourceHash": "7b9860cb3d5dbc4bab6e35a6568e352a4871de2953b2d952c6367547875186ec",
+      "sourceBytes": 1076102,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/7e859504f4e42287ca970fac-320.webp",
+        "bytes": 33628,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9bcdc15f54670a15b0148474-640.webp",
+        "bytes": 90940,
         "width": 640,
         "height": 640
       }
@@ -11033,6 +12913,126 @@
       }
     },
     {
+      "key": "trash/normal/mechsanctum-broken-prayer-circuit_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/trash/normal/mechsanctum-broken-prayer-circuit_v1_thumbnail.png",
+      "sourceHash": "3eb25c25019c63574185d565445e265047c11e31348c8228bd98cfb4c3cea919",
+      "sourceBytes": 1559301,
+      "sourceWidth": 1374,
+      "sourceHeight": 1145,
+      "small": {
+        "url": "/game-art/thumbnails/59b50ca12faf9f69534c2845-320.webp",
+        "bytes": 29150,
+        "width": 320,
+        "height": 267
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e00871f332bfa81df60ccfb6-640.webp",
+        "bytes": 82646,
+        "width": 640,
+        "height": 533
+      }
+    },
+    {
+      "key": "trash/normal/mechsanctum-priest-screw_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/trash/normal/mechsanctum-priest-screw_v1_thumbnail.png",
+      "sourceHash": "cd0f74372119316fe30f33fe3b1366a078b5f89b4a775213bb7d64a9c64d62fc",
+      "sourceBytes": 1092062,
+      "sourceWidth": 1263,
+      "sourceHeight": 1245,
+      "small": {
+        "url": "/game-art/thumbnails/41256c8bd37a16a505c648dc-320.webp",
+        "bytes": 21556,
+        "width": 320,
+        "height": 315
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b1fc472d27b6d4d66b0e5321-640.webp",
+        "bytes": 58684,
+        "width": 640,
+        "height": 631
+      }
+    },
+    {
+      "key": "trash/normal/mechsanctum-rejected-prayer_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/trash/normal/mechsanctum-rejected-prayer_v1_thumbnail.png",
+      "sourceHash": "dc6f56fcc1a9c8b2d61191e7cb9cb611901e7a685e3a9ec5a198ffdd357ce33e",
+      "sourceBytes": 1517948,
+      "sourceWidth": 1312,
+      "sourceHeight": 1199,
+      "small": {
+        "url": "/game-art/thumbnails/4ac00176a5eb9c390ec00c62-320.webp",
+        "bytes": 27772,
+        "width": 320,
+        "height": 292
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7a5e147faaefa9d87c1e7bab-640.webp",
+        "bytes": 78092,
+        "width": 640,
+        "height": 585
+      }
+    },
+    {
+      "key": "trash/normal/mechsanctum-rusted-joint_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/trash/normal/mechsanctum-rusted-joint_v1_thumbnail.png",
+      "sourceHash": "fe031cac27b1df57c72ca9b93351d4b7f1e3cb6a64c6768ec42a60c83dcfdb61",
+      "sourceBytes": 1428491,
+      "sourceWidth": 1312,
+      "sourceHeight": 1199,
+      "small": {
+        "url": "/game-art/thumbnails/b832799a7ca6f3abc2b449af-320.webp",
+        "bytes": 27254,
+        "width": 320,
+        "height": 292
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5cd0955b321b5a3fe9cdbfe6-640.webp",
+        "bytes": 86242,
+        "width": 640,
+        "height": 585
+      }
+    },
+    {
+      "key": "trash/normal/mechsanctum-tangled-copper_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/trash/normal/mechsanctum-tangled-copper_v1_thumbnail.png",
+      "sourceHash": "c9cdf026f2a5ef4cc4e94d2e45393aea466609749d4d35e3fd66ff64abf94a6b",
+      "sourceBytes": 1648160,
+      "sourceWidth": 1266,
+      "sourceHeight": 1242,
+      "small": {
+        "url": "/game-art/thumbnails/5aad1606f75d610830520ea2-320.webp",
+        "bytes": 43464,
+        "width": 320,
+        "height": 314
+      },
+      "large": {
+        "url": "/game-art/thumbnails/276b3a238d635f75d9cfad6c-640.webp",
+        "bytes": 122036,
+        "width": 640,
+        "height": 628
+      }
+    },
+    {
+      "key": "trash/normal/mechsanctum-worn-cog_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/trash/normal/mechsanctum-worn-cog_v1_thumbnail.png",
+      "sourceHash": "aa51b788f879033afbcecf9a66629476aa29504f040eb9ef3a4483cd16689adb",
+      "sourceBytes": 1368019,
+      "sourceWidth": 1302,
+      "sourceHeight": 1208,
+      "small": {
+        "url": "/game-art/thumbnails/7fda2ea491b40b1cb006030f-320.webp",
+        "bytes": 24756,
+        "width": 320,
+        "height": 297
+      },
+      "large": {
+        "url": "/game-art/thumbnails/379ca10832fb7bbc2e314f1c-640.webp",
+        "bytes": 70160,
+        "width": 640,
+        "height": 594
+      }
+    },
+    {
       "key": "trash/normal/nyamnyam-broken-chopstick_v1_thumbnail.png",
       "source": "assets/storage-upload/new/20261023-034400/trash/normal/nyamnyam-broken-chopstick_v1_thumbnail.png",
       "sourceHash": "3b789c93916e04ab57fa34f45ed3ab8ab3db2f93cdd7e5765683a17ea0740fc4",
@@ -11148,6 +13148,106 @@
       "large": {
         "url": "/game-art/thumbnails/33648733f46a782f811e7704-640.webp",
         "bytes": 94844,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/plunder-captains-single-boot_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/trash/normal/plunder-captains-single-boot_v1_thumbnail.png",
+      "sourceHash": "7272a094b70b51e788c4ab2c0408dc03ae87dd427f2047aeba4c6c7686901254",
+      "sourceBytes": 1433210,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1c25ddc411937c35c921b550-320.webp",
+        "bytes": 28754,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/03c892df8fdcef9a0d0d634a-640.webp",
+        "bytes": 84308,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/plunder-dud-salute-shell_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/trash/normal/plunder-dud-salute-shell_v1_thumbnail.png",
+      "sourceHash": "01ccec611d8db20a2f6be8a3c7042acd1adac171f45285005192ca727f0670a8",
+      "sourceBytes": 1061616,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1482a059a16a237a664d8293-320.webp",
+        "bytes": 19582,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/aa37983fbeb6975cabce8129-640.webp",
+        "bytes": 50724,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/plunder-erased-sailor-tag_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/trash/normal/plunder-erased-sailor-tag_v1_thumbnail.png",
+      "sourceHash": "e61246bba9148643def2a8bb7008b4c959307786febd19d8c4ca601f92acc696",
+      "sourceBytes": 1067541,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/71957d3f246f9b7cfb937ea4-320.webp",
+        "bytes": 24138,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9d3b10f281f64dfd669a8597-640.webp",
+        "bytes": 73858,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/plunder-half-eaten-hard-tack_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/trash/normal/plunder-half-eaten-hard-tack_v1_thumbnail.png",
+      "sourceHash": "5d162f86668a7b9ab66f753d8262edebef2ced4fc5f75ac06a3ef68753584047",
+      "sourceBytes": 1594020,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/4316adaf53df9f659ac88c85-320.webp",
+        "bytes": 30024,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d7abe4767ba106584bff1020-640.webp",
+        "bytes": 76562,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/plunder-rum-bottle-neck_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/trash/normal/plunder-rum-bottle-neck_v1_thumbnail.png",
+      "sourceHash": "be7f70aef99ac931a3da05b38ec30dbc3f642b9705623b633be8fe7b74bc5248",
+      "sourceBytes": 819211,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/b3b7da006222b1738a59e5c7-320.webp",
+        "bytes": 18604,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5a8cc2139a7c82201a68fcbf-640.webp",
+        "bytes": 48874,
         "width": 640,
         "height": 640
       }
@@ -11973,6 +14073,106 @@
       }
     },
     {
+      "key": "trash/rare/mechsanctum-backward-fish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/trash/rare/mechsanctum-backward-fish_v1_thumbnail.png",
+      "sourceHash": "fbac4adbca3ec8743434a87631f802a0f55f64aa7ee15981f110999f05688c46",
+      "sourceBytes": 1970517,
+      "sourceWidth": 1536,
+      "sourceHeight": 1024,
+      "small": {
+        "url": "/game-art/thumbnails/f7448834b9281261c5a4d580-320.webp",
+        "bytes": 23018,
+        "width": 320,
+        "height": 213
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d21f83fb742d4b799ec22750-640.webp",
+        "bytes": 64376,
+        "width": 640,
+        "height": 427
+      }
+    },
+    {
+      "key": "trash/rare/mechsanctum-empty-crown_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/trash/rare/mechsanctum-empty-crown_v1_thumbnail.png",
+      "sourceHash": "22459ede55000df5c9306f4ca1bf6d45d74e8841eedf81994fdd23e37cc954f7",
+      "sourceBytes": 1444291,
+      "sourceWidth": 1484,
+      "sourceHeight": 1060,
+      "small": {
+        "url": "/game-art/thumbnails/d30dd1bb7e9b8ac182066cce-320.webp",
+        "bytes": 25324,
+        "width": 320,
+        "height": 229
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e3be56878c9af7c1198a86a1-640.webp",
+        "bytes": 70034,
+        "width": 640,
+        "height": 457
+      }
+    },
+    {
+      "key": "trash/rare/mechsanctum-filter-residue_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/trash/rare/mechsanctum-filter-residue_v1_thumbnail.png",
+      "sourceHash": "cd107f43f3e6ddd0b016ae66c6d4a802878727362a1971980ee138595da2408d",
+      "sourceBytes": 1507667,
+      "sourceWidth": 1327,
+      "sourceHeight": 1186,
+      "small": {
+        "url": "/game-art/thumbnails/a0ba3741fb6e871e7bafa2f0-320.webp",
+        "bytes": 27498,
+        "width": 320,
+        "height": 286
+      },
+      "large": {
+        "url": "/game-art/thumbnails/74f47a802e56b8f2e320c64e-640.webp",
+        "bytes": 83196,
+        "width": 640,
+        "height": 572
+      }
+    },
+    {
+      "key": "trash/rare/mechsanctum-spare-part_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/trash/rare/mechsanctum-spare-part_v1_thumbnail.png",
+      "sourceHash": "036aecbccb28a1ebd1a6d546ce381985acab1b0dc30cdec9c5cd8a01a1aaad79",
+      "sourceBytes": 1435232,
+      "sourceWidth": 1312,
+      "sourceHeight": 1199,
+      "small": {
+        "url": "/game-art/thumbnails/96a4db62bcc80c536c910786-320.webp",
+        "bytes": 29706,
+        "width": 320,
+        "height": 292
+      },
+      "large": {
+        "url": "/game-art/thumbnails/046d34cd82ab0d41ff3ca0f3-640.webp",
+        "bytes": 85318,
+        "width": 640,
+        "height": 585
+      }
+    },
+    {
+      "key": "trash/rare/mechsanctum-stopped-heart_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-154009/trash/rare/mechsanctum-stopped-heart_v1_thumbnail.png",
+      "sourceHash": "437de9f5c9741432d306286725e26f8bfa11bad25a36443716aa92e49d4c70a4",
+      "sourceBytes": 1776501,
+      "sourceWidth": 1312,
+      "sourceHeight": 1199,
+      "small": {
+        "url": "/game-art/thumbnails/1939e9ff4e8a8d8d5e18c46e-320.webp",
+        "bytes": 34512,
+        "width": 320,
+        "height": 292
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9a04ec9ca55cb2c91ae38596-640.webp",
+        "bytes": 104336,
+        "width": 640,
+        "height": 585
+      }
+    },
+    {
       "key": "trash/rare/octopus-plush_thumbnail.png",
       "source": "assets/storage-upload/new/20261021-115454/trash/rare/octopus-plush_thumbnail.png",
       "sourceHash": "c2e44b19980077d939cff6b142e5a51ff93d11dd41bef10f9fd5a6a858543c98",
@@ -12008,6 +14208,66 @@
       "large": {
         "url": "/game-art/thumbnails/97cfd7a2f555afabdb52a0d8-640.webp",
         "bytes": 81358,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/plunder-hollow-gold-crown_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/trash/rare/plunder-hollow-gold-crown_v1_thumbnail.png",
+      "sourceHash": "0c6fed4e5cda25a2d64c57ae6a26bcc64d6b5597dd619841ab9bc2b237215d75",
+      "sourceBytes": 1308980,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/d408133805a4603fa9b82ce2-320.webp",
+        "bytes": 29082,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/4eaee7136829342b6b5f4a6c-640.webp",
+        "bytes": 77070,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/plunder-washed-bounty-poster_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/trash/rare/plunder-washed-bounty-poster_v1_thumbnail.png",
+      "sourceHash": "d15d2ef9468d86e93abac8bc67e06b691e9bf9ce5d56e446d21c0db740064bbf",
+      "sourceBytes": 1432843,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/558e2515437fa4a415c38a9f-320.webp",
+        "bytes": 26362,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9e8ad2c4506ae5f4731960d5-640.webp",
+        "bytes": 70288,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/plunder-wrong-treasure-map_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261027-034411/trash/rare/plunder-wrong-treasure-map_v1_thumbnail.png",
+      "sourceHash": "6a68bc6eccb5f35417dab377f71e86c48b6e6e099286c175c019d1ff452aebb5",
+      "sourceBytes": 1302298,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/25583e12058cb2d30fea6750-320.webp",
+        "bytes": 27628,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/c08066a585a33bbfc079ceaf-640.webp",
+        "bytes": 72994,
         "width": 640,
         "height": 640
       }

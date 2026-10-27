@@ -36,7 +36,7 @@ for(const item of manifest.items){
     if(type==='thumbnail')thumbs.push({item,file})
   }
 }
-const previewRoot='artifacts/plunder-previews'
+const previewRoot=path.join(root,'review')
 fs.mkdirSync(previewRoot,{recursive:true})
 for(let start=0;start<thumbs.length;start+=6){
   for(const [background,name] of [['#fff7e6','light'],['#203c46','dark']]){

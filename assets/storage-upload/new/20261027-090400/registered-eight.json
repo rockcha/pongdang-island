@@ -1,0 +1,124 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261027-090400/fish/mythic/plunder-bloodsail_swim8_v2_sprite.png",
+        "storage_path":  "fish/mythic/plunder-bloodsail_swim8_v2_sprite.png",
+        "patch":  [
+                      150,
+                      222,
+                      28,
+                      28
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -5,
+                           "dy":  -1,
+                           "rmse":  25.882088401054503
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -6,
+                           "dy":  -1,
+                           "rmse":  27.397764507346217
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -6,
+                           "dy":  0,
+                           "rmse":  25.373559072388723
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  -1,
+                           "dy":  -32,
+                           "rmse":  29.258075808227716
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  -2,
+                           "dy":  -32,
+                           "rmse":  30.745406160921018
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -4,
+                           "dy":  -33,
+                           "rmse":  32.951100133379462
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  -3,
+                           "dy":  -33,
+                           "rmse":  30.843718971615598
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261027-090400/fish/mythic/plunder-barca_swim8_v2_sprite.png",
+        "storage_path":  "fish/mythic/plunder-barca_swim8_v2_sprite.png",
+        "patch":  [
+                      329,
+                      238,
+                      24,
+                      24
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  20.796634343085422
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  17.272630083458626
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  19.556608537780779
+                       },
+                       {
+                           "frame":  4,
+                           "dx":  0,
+                           "dy":  -7,
+                           "rmse":  24.893209415420905
+                       },
+                       {
+                           "frame":  5,
+                           "dx":  0,
+                           "dy":  -7,
+                           "rmse":  26.496167175650143
+                       },
+                       {
+                           "frame":  6,
+                           "dx":  -1,
+                           "dy":  -7,
+                           "rmse":  24.171344734002698
+                       },
+                       {
+                           "frame":  7,
+                           "dx":  0,
+                           "dy":  -7,
+                           "rmse":  21.76884959064213
+                       }
+                   ]
+    }
+]

@@ -1,0 +1,950 @@
+[
+  {
+    "id": "plunder-deck-cleaner-shrimp",
+    "storage_path": "fish/normal/plunder-deck-cleaner-shrimp_v2_sprite.png",
+    "cell": 627,
+    "scale": 1.4509090909090907,
+    "commonExportScale": 1,
+    "patch": [
+      406,
+      326,
+      44,
+      44
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          165,
+          212,
+          363,
+          264,
+          43050,
+          396877,
+          351223
+        ],
+        [
+          132,
+          214,
+          350,
+          261,
+          42925,
+          394599,
+          345766
+        ],
+        [
+          162,
+          147,
+          362,
+          258,
+          42148,
+          325369,
+          282515
+        ],
+        [
+          128,
+          147,
+          361,
+          258,
+          41994,
+          326161,
+          274521
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-090400/fish/normal/plunder-deck-cleaner-shrimp_v2_sprite.png",
+      "storage_path": "fish/normal/plunder-deck-cleaner-shrimp_v2_sprite.png",
+      "patch": [
+        406,
+        326,
+        44,
+        44
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -32,
+          "dy": 0,
+          "rmse": 11.07785578931631
+        },
+        {
+          "frame": 2,
+          "dx": 2,
+          "dy": -70,
+          "rmse": 16.686288449569073
+        },
+        {
+          "frame": 3,
+          "dx": -31,
+          "dy": -70,
+          "rmse": 13.872114314536034
+        }
+      ]
+    }
+  },
+  {
+    "id": "plunder-lookout-goby",
+    "storage_path": "fish/normal/plunder-lookout-goby_v2_sprite.png",
+    "cell": 627,
+    "scale": 1.1499563318777293,
+    "commonExportScale": 1,
+    "patch": [
+      396,
+      276,
+      44,
+      44
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          122,
+          203,
+          439,
+          286,
+          64906,
+          401008,
+          321609
+        ],
+        [
+          101,
+          203,
+          458,
+          302,
+          68649,
+          375215,
+          323474
+        ],
+        [
+          112,
+          147,
+          449,
+          286,
+          64899,
+          329107,
+          265596
+        ],
+        [
+          118,
+          148,
+          441,
+          284,
+          63727,
+          365844,
+          264925
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-090400/fish/normal/plunder-lookout-goby_v2_sprite.png",
+      "storage_path": "fish/normal/plunder-lookout-goby_v2_sprite.png",
+      "patch": [
+        396,
+        276,
+        44,
+        44
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -2,
+          "dy": 1,
+          "rmse": 23.925021769408417
+        },
+        {
+          "frame": 2,
+          "dx": 0,
+          "dy": -55,
+          "rmse": 14.420702710570891
+        },
+        {
+          "frame": 3,
+          "dx": -1,
+          "dy": -55,
+          "rmse": 17.183066599934303
+        }
+      ]
+    }
+  },
+  {
+    "id": "plunder-smuggler-pouch-puffer",
+    "storage_path": "fish/normal/plunder-smuggler-pouch-puffer_v2_sprite.png",
+    "cell": 627,
+    "scale": 1.1708375008665166,
+    "commonExportScale": 0.9332611012433393,
+    "patch": [
+      426,
+      291,
+      44,
+      44
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          113,
+          193,
+          482,
+          322,
+          103867,
+          339690,
+          353887
+        ],
+        [
+          84,
+          179,
+          448,
+          337,
+          100516,
+          329779,
+          353956
+        ],
+        [
+          127,
+          127,
+          468,
+          322,
+          99083,
+          280441,
+          288008
+        ],
+        [
+          55,
+          116,
+          478,
+          333,
+          102431,
+          275296,
+          287060
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-090400/fish/normal/plunder-smuggler-pouch-puffer_v2_sprite.png",
+      "storage_path": "fish/normal/plunder-smuggler-pouch-puffer_v2_sprite.png",
+      "patch": [
+        426,
+        291,
+        44,
+        44
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -60,
+          "dy": 1,
+          "rmse": 17.90105521408662
+        },
+        {
+          "frame": 2,
+          "dx": -1,
+          "dy": -61,
+          "rmse": 21.316868646423867
+        },
+        {
+          "frame": 3,
+          "dx": -61,
+          "dy": -61,
+          "rmse": 26.801782693611177
+        }
+      ]
+    }
+  },
+  {
+    "id": "plunder-one-eyed-carp",
+    "storage_path": "fish/normal/plunder-one-eyed-carp_v2_sprite.png",
+    "cell": 627,
+    "scale": 1.1704,
+    "commonExportScale": 1,
+    "patch": [
+      416,
+      341,
+      44,
+      44
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          134,
+          196,
+          396,
+          301,
+          72522,
+          377056,
+          314597
+        ],
+        [
+          94,
+          196,
+          434,
+          313,
+          80743,
+          356511,
+          316646
+        ],
+        [
+          127,
+          145,
+          405,
+          291,
+          70842,
+          339443,
+          262099
+        ],
+        [
+          82,
+          145,
+          450,
+          291,
+          79009,
+          297620,
+          263448
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-090400/fish/normal/plunder-one-eyed-carp_v2_sprite.png",
+      "storage_path": "fish/normal/plunder-one-eyed-carp_v2_sprite.png",
+      "patch": [
+        416,
+        341,
+        44,
+        44
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -1,
+          "dy": 0,
+          "rmse": 4.25022875201376
+        },
+        {
+          "frame": 2,
+          "dx": 0,
+          "dy": -52,
+          "rmse": 8.041351461870905
+        },
+        {
+          "frame": 3,
+          "dx": -1,
+          "dy": -52,
+          "rmse": 9.34564663953817
+        }
+      ]
+    }
+  },
+  {
+    "id": "plunder-sailor-sock-moray",
+    "storage_path": "fish/rare/plunder-sailor-sock-moray_v2_sprite.png",
+    "cell": 627,
+    "scale": 1.0538853977359812,
+    "commonExportScale": 0.9169738219895288,
+    "patch": [
+      471,
+      326,
+      44,
+      44
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          83,
+          238,
+          516,
+          278,
+          76784,
+          371550,
+          346416
+        ],
+        [
+          43,
+          239,
+          523,
+          294,
+          81348,
+          398507,
+          346065
+        ],
+        [
+          55,
+          166,
+          545,
+          249,
+          67531,
+          319276,
+          276515
+        ],
+        [
+          52,
+          166,
+          516,
+          281,
+          80029,
+          298400,
+          275362
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-090400/fish/rare/plunder-sailor-sock-moray_v2_sprite.png",
+      "storage_path": "fish/rare/plunder-sailor-sock-moray_v2_sprite.png",
+      "patch": [
+        471,
+        326,
+        44,
+        44
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -31,
+          "dy": 0,
+          "rmse": 11.606894502837527
+        },
+        {
+          "frame": 2,
+          "dx": 0,
+          "dy": -65,
+          "rmse": 18.77507212591561
+        },
+        {
+          "frame": 3,
+          "dx": -31,
+          "dy": -65,
+          "rmse": 19.2284222499461
+        }
+      ]
+    }
+  },
+  {
+    "id": "plunder-pirate-captain-horseshoe",
+    "storage_path": "fish/rare/plunder-pirate-captain-horseshoe_v2_sprite.png",
+    "cell": 627,
+    "scale": 1.0263753748240623,
+    "commonExportScale": 0.8771719532554256,
+    "patch": [
+      486,
+      266,
+      44,
+      44
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          26,
+          224,
+          565,
+          272,
+          69156,
+          293625,
+          348801
+        ],
+        [
+          28,
+          224,
+          581,
+          275,
+          71027,
+          301478,
+          349615
+        ],
+        [
+          31,
+          176,
+          566,
+          278,
+          67534,
+          242323,
+          300852
+        ],
+        [
+          28,
+          175,
+          585,
+          278,
+          70404,
+          247065,
+          303003
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-090400/fish/rare/plunder-pirate-captain-horseshoe_v2_sprite.png",
+      "storage_path": "fish/rare/plunder-pirate-captain-horseshoe_v2_sprite.png",
+      "patch": [
+        486,
+        266,
+        44,
+        44
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": 16,
+          "dy": 0,
+          "rmse": 17.73811426489351
+        },
+        {
+          "frame": 2,
+          "dx": 3,
+          "dy": -43,
+          "rmse": 16.533756871294248
+        },
+        {
+          "frame": 3,
+          "dx": 13,
+          "dy": -42,
+          "rmse": 26.26134306418626
+        }
+      ]
+    }
+  },
+  {
+    "id": "plunder-anchor-whisker-sealion",
+    "storage_path": "fish/epic/plunder-anchor-whisker-sealion_v2_sprite.png",
+    "cell": 627,
+    "scale": 1.0313016339269323,
+    "commonExportScale": 0.9821046728971962,
+    "patch": [
+      481,
+      176,
+      44,
+      44
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          68,
+          146,
+          506,
+          369,
+          80508,
+          392975,
+          306537
+        ],
+        [
+          66,
+          146,
+          498,
+          373,
+          84164,
+          375865,
+          310388
+        ],
+        [
+          75,
+          118,
+          506,
+          351,
+          74685,
+          378384,
+          251441
+        ],
+        [
+          60,
+          118,
+          520,
+          378,
+          84036,
+          352219,
+          281552
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-090400/fish/epic/plunder-anchor-whisker-sealion_v2_sprite.png",
+      "storage_path": "fish/epic/plunder-anchor-whisker-sealion_v2_sprite.png",
+      "patch": [
+        481,
+        176,
+        44,
+        44
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -11,
+          "dy": 0,
+          "rmse": 25.773263493611186
+        },
+        {
+          "frame": 2,
+          "dx": 7,
+          "dy": -29,
+          "rmse": 25.02516511212042
+        },
+        {
+          "frame": 3,
+          "dx": 7,
+          "dy": -29,
+          "rmse": 27.442728241436445
+        }
+      ]
+    }
+  },
+  {
+    "id": "plunder-bloodsail",
+    "storage_path": "fish/mythic/plunder-bloodsail_swim8_v2_sprite.png",
+    "cell": 444,
+    "scale": 1.405811320754717,
+    "commonExportScale": 1,
+    "patch": [
+      150,
+      222,
+      28,
+      28
+    ],
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          97,
+          150,
+          256,
+          205,
+          31441,
+          248706,
+          238295
+        ],
+        [
+          93,
+          147,
+          251,
+          205,
+          32157,
+          246888,
+          238319
+        ],
+        [
+          93,
+          148,
+          258,
+          207,
+          32008,
+          248170,
+          237910
+        ],
+        [
+          93,
+          149,
+          256,
+          211,
+          31904,
+          247459,
+          239357
+        ],
+        [
+          94,
+          116,
+          265,
+          208,
+          33161,
+          217251,
+          207309
+        ],
+        [
+          95,
+          129,
+          255,
+          189,
+          30709,
+          217969,
+          214036
+        ],
+        [
+          95,
+          117,
+          259,
+          207,
+          32521,
+          216817,
+          207158
+        ],
+        [
+          97,
+          116,
+          256,
+          204,
+          32028,
+          216552,
+          207222
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-090400/fish/mythic/plunder-bloodsail_swim8_v2_sprite.png",
+      "storage_path": "fish/mythic/plunder-bloodsail_swim8_v2_sprite.png",
+      "patch": [
+        150,
+        222,
+        28,
+        28
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -5,
+          "dy": -1,
+          "rmse": 25.882088401054503
+        },
+        {
+          "frame": 2,
+          "dx": -6,
+          "dy": -1,
+          "rmse": 27.397764507346217
+        },
+        {
+          "frame": 3,
+          "dx": -6,
+          "dy": 0,
+          "rmse": 25.373559072388723
+        },
+        {
+          "frame": 4,
+          "dx": -1,
+          "dy": -32,
+          "rmse": 29.258075808227716
+        },
+        {
+          "frame": 5,
+          "dx": -2,
+          "dy": -32,
+          "rmse": 30.745406160921018
+        },
+        {
+          "frame": 6,
+          "dx": -4,
+          "dy": -33,
+          "rmse": 32.95110013337946
+        },
+        {
+          "frame": 7,
+          "dx": -3,
+          "dy": -33,
+          "rmse": 30.843718971615598
+        }
+      ]
+    }
+  },
+  {
+    "id": "plunder-barca",
+    "storage_path": "fish/mythic/plunder-barca_swim8_v2_sprite.png",
+    "cell": 444,
+    "scale": 1.1392660550458715,
+    "commonExportScale": 1,
+    "patch": [
+      329,
+      238,
+      24,
+      24
+    ],
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          55,
+          154,
+          326,
+          191,
+          35354,
+          279226,
+          244384
+        ],
+        [
+          55,
+          154,
+          327,
+          181,
+          35664,
+          269878,
+          244419
+        ],
+        [
+          56,
+          154,
+          326,
+          191,
+          35450,
+          280314,
+          244559
+        ],
+        [
+          57,
+          154,
+          326,
+          191,
+          35293,
+          279432,
+          244569
+        ],
+        [
+          55,
+          148,
+          326,
+          185,
+          35566,
+          270501,
+          238097
+        ],
+        [
+          55,
+          148,
+          326,
+          185,
+          35653,
+          270079,
+          238186
+        ],
+        [
+          56,
+          147,
+          326,
+          186,
+          35532,
+          270196,
+          238258
+        ],
+        [
+          56,
+          147,
+          327,
+          186,
+          35682,
+          269962,
+          238135
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-090400/fish/mythic/plunder-barca_swim8_v2_sprite.png",
+      "storage_path": "fish/mythic/plunder-barca_swim8_v2_sprite.png",
+      "patch": [
+        329,
+        238,
+        24,
+        24
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 20.796634343085422
+        },
+        {
+          "frame": 2,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 17.272630083458626
+        },
+        {
+          "frame": 3,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 19.55660853778078
+        },
+        {
+          "frame": 4,
+          "dx": 0,
+          "dy": -7,
+          "rmse": 24.893209415420905
+        },
+        {
+          "frame": 5,
+          "dx": 0,
+          "dy": -7,
+          "rmse": 26.496167175650143
+        },
+        {
+          "frame": 6,
+          "dx": -1,
+          "dy": -7,
+          "rmse": 24.171344734002698
+        },
+        {
+          "frame": 7,
+          "dx": 0,
+          "dy": -7,
+          "rmse": 21.76884959064213
+        }
+      ]
+    }
+  }
+]

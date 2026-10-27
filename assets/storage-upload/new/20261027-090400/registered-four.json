@@ -1,0 +1,261 @@
+﻿[
+    {
+        "file":  "assets/storage-upload/new/20261027-090400/fish/normal/plunder-deck-cleaner-shrimp_v2_sprite.png",
+        "storage_path":  "fish/normal/plunder-deck-cleaner-shrimp_v2_sprite.png",
+        "patch":  [
+                      406,
+                      326,
+                      44,
+                      44
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -32,
+                           "dy":  0,
+                           "rmse":  11.07785578931631
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  2,
+                           "dy":  -70,
+                           "rmse":  16.686288449569073
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -31,
+                           "dy":  -70,
+                           "rmse":  13.872114314536034
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261027-090400/fish/normal/plunder-lookout-goby_v2_sprite.png",
+        "storage_path":  "fish/normal/plunder-lookout-goby_v2_sprite.png",
+        "patch":  [
+                      396,
+                      276,
+                      44,
+                      44
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -2,
+                           "dy":  1,
+                           "rmse":  23.925021769408417
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -55,
+                           "rmse":  14.420702710570891
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  -55,
+                           "rmse":  17.183066599934303
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261027-090400/fish/normal/plunder-smuggler-pouch-puffer_v2_sprite.png",
+        "storage_path":  "fish/normal/plunder-smuggler-pouch-puffer_v2_sprite.png",
+        "patch":  [
+                      426,
+                      291,
+                      44,
+                      44
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -60,
+                           "dy":  1,
+                           "rmse":  17.901055214086622
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  -1,
+                           "dy":  -61,
+                           "rmse":  21.316868646423867
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -61,
+                           "dy":  -61,
+                           "rmse":  26.801782693611177
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261027-090400/fish/normal/plunder-one-eyed-carp_v2_sprite.png",
+        "storage_path":  "fish/normal/plunder-one-eyed-carp_v2_sprite.png",
+        "patch":  [
+                      416,
+                      341,
+                      44,
+                      44
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -1,
+                           "dy":  0,
+                           "rmse":  4.25022875201376
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -52,
+                           "rmse":  8.0413514618709048
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -1,
+                           "dy":  -52,
+                           "rmse":  9.34564663953817
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261027-090400/fish/rare/plunder-sailor-sock-moray_v2_sprite.png",
+        "storage_path":  "fish/rare/plunder-sailor-sock-moray_v2_sprite.png",
+        "patch":  [
+                      471,
+                      326,
+                      44,
+                      44
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -31,
+                           "dy":  0,
+                           "rmse":  11.606894502837527
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  0,
+                           "dy":  -65,
+                           "rmse":  18.77507212591561
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  -31,
+                           "dy":  -65,
+                           "rmse":  19.2284222499461
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261027-090400/fish/rare/plunder-pirate-captain-horseshoe_v2_sprite.png",
+        "storage_path":  "fish/rare/plunder-pirate-captain-horseshoe_v2_sprite.png",
+        "patch":  [
+                      486,
+                      266,
+                      44,
+                      44
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  16,
+                           "dy":  0,
+                           "rmse":  17.738114264893511
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  3,
+                           "dy":  -43,
+                           "rmse":  16.533756871294248
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  13,
+                           "dy":  -42,
+                           "rmse":  26.26134306418626
+                       }
+                   ]
+    },
+    {
+        "file":  "assets/storage-upload/new/20261027-090400/fish/epic/plunder-anchor-whisker-sealion_v2_sprite.png",
+        "storage_path":  "fish/epic/plunder-anchor-whisker-sealion_v2_sprite.png",
+        "patch":  [
+                      481,
+                      176,
+                      44,
+                      44
+                  ],
+        "method":  "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+        "frames":  [
+                       {
+                           "frame":  0,
+                           "dx":  0,
+                           "dy":  0,
+                           "rmse":  0
+                       },
+                       {
+                           "frame":  1,
+                           "dx":  -11,
+                           "dy":  0,
+                           "rmse":  25.773263493611186
+                       },
+                       {
+                           "frame":  2,
+                           "dx":  7,
+                           "dy":  -29,
+                           "rmse":  25.025165112120419
+                       },
+                       {
+                           "frame":  3,
+                           "dx":  7,
+                           "dy":  -29,
+                           "rmse":  27.442728241436445
+                       }
+                   ]
+    }
+]

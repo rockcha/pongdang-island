@@ -50,7 +50,8 @@ public static class SpriteRegistration {
 $entries=Get-Content -Raw -Encoding utf8 -LiteralPath $Config | ConvertFrom-Json
 $results=@(foreach($entry in $entries){
  $p=$entry.patch
- $measured=[SpriteRegistration]::Measure((Resolve-Path -LiteralPath $entry.file).Path,$p[0],$p[1],$p[2],$p[3],$SearchRange,$Columns)
+ try {$measured=[SpriteRegistration]::Measure((Resolve-Path -LiteralPath $entry.file).Path,$p[0],$p[1],$p[2],$p[3],$SearchRange,$Columns)}
+ catch {throw "Anchor registration failed for $($entry.storage_path): $($_.Exception.Message)"}
  [ordered]@{file=$entry.file;storage_path=$entry.storage_path;patch=$p;method='Rigid head/foot RGB template translation; no image edits or frame rescaling';frames=@(0..($Columns*2-1) | ForEach-Object {[ordered]@{frame=$_;dx=$measured[$_][0];dy=$measured[$_][1];rmse=$measured[$_][2]}})}
 })
 $results | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $Output -Encoding utf8

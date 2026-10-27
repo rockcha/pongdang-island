@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import sharp from 'sharp'
-const root='assets/storage-upload/new/20261027-034411'
+const root=process.argv[2]??'assets/storage-upload/new/20261027-034411'
 const reports=JSON.parse(fs.readFileSync(root+'/registration.json','utf8').replace(/^\uFEFF/,''))
 const configs={4:[],8:[]},layers=[]
 for(let index=0;index<reports.length;index++){
@@ -29,6 +29,7 @@ for(let index=0;index<reports.length;index++){
  const label=Buffer.from(`<svg width="230" height="24"><text x="115" y="18" text-anchor="middle" font-size="10" fill="#243a40">${r.id.replace('plunder-','')}</text></svg>`)
  layers.push({input:thumb,left:index%5*230+10,top:Math.floor(index/5)*240},{input:label,left:index%5*230,top:Math.floor(index/5)*240+210})
 }
-await sharp({create:{width:1150,height:Math.ceil(reports.length/5)*240,channels:4,background:'#f6ecd7'}}).composite(layers).png().toFile('artifacts/plunder-previews/anchor-patches.png')
+fs.mkdirSync(root+'/review',{recursive:true})
+await sharp({create:{width:1150,height:Math.ceil(reports.length/5)*240,channels:4,background:'#f6ecd7'}}).composite(layers).png().toFile(root+'/review/anchor-patches.png')
 for(const frames of [4,8])fs.writeFileSync(root+`/anchors-${frames===4?'four':'eight'}.json`,JSON.stringify(configs[frames],null,2)+'\n')
 fs.writeFileSync(root+'/registration.json',JSON.stringify(reports,null,2)+'\n')

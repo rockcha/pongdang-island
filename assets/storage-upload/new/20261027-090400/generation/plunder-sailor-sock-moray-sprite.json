@@ -1,0 +1,9 @@
+{
+  "id": "plunder-sailor-sock-moray",
+  "type": "sprite",
+  "source": "C:\\Users\\user\\.codex\\generated_images\\01a17879-4548-75d1-b05b-400ce8519dd6\\exec-c8f0a4e6-3753-419b-b7ec-70ba033abd45.png",
+  "destination": "assets/storage-upload/new/20261027-090400/fish/rare/plunder-sailor-sock-moray_v2_sprite.png",
+  "raw": "assets/storage-upload/new/20261027-090400/sources/plunder-sailor-sock-moray-sprite.source",
+  "tool": "image_gen",
+  "prompt": "Production animation sprite sheet, TWO columns TWO rows, square, equal square cells, 4 distinct poses row-major. First reference is placement guide, preserve its small center position and generous empty padding; second reference is EXACT creature identity. Draw SMALL in central 55% of every cell, at least 15% transparent padding every edge including all props. A long cute navy-and-cream striped moray eel, clearly eel anatomy with a long flowing body, no otter face. Add a tilted weathered dark pirate tricorn hat with a small skull emblem, tied crimson neckerchief near the head, and a tiny worn brass sailor tag attached near the tail. Keep worn sock-like horizontal stripes and a small frayed-looking marking near tail. Face SCREEN RIGHT in side or side-three-quarter profile: head and snout on the right, body and tail trail left. Never front-facing or left-facing. Same head and rigid torso size and cell-relative coordinates in every pose. Gentle traveling body wave toward the tail with rigid head/hat anchor; neckerchief and tail tag gently trail. Genuine smooth articulated changes, no repeated cloned frames, no whole-body translation or per-frame resizing or opacity changes. Real transparent alpha, intact polished antialiased silhouette, no white or black matte fringe, no checkerboard, no detached pixels, no mist or broad exterior glow. All anatomy and accessories fully inside canvas. No text labels, no scenery."
+}

@@ -1,0 +1,156 @@
+{
+  "testedAt": "2026-10-27T01:14:22.567Z",
+  "checks": [
+    {
+      "width": 1100,
+      "height": 1120,
+      "dpr": 2,
+      "actualAquariumReady": true,
+      "animated": [
+        {
+          "id": "shared-banggai-cardinalfish",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-bobtail-squid",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-sea-hare",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-blue-tang",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-flame-angelfish",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-royal-gramma",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-clown-triggerfish",
+          "distinctPoses": 4
+        }
+      ],
+      "reducedMotionStatic": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dpr": 1,
+      "actualAquariumReady": true,
+      "animated": [
+        {
+          "id": "shared-banggai-cardinalfish",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-bobtail-squid",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-sea-hare",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-blue-tang",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-flame-angelfish",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-royal-gramma",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-clown-triggerfish",
+          "distinctPoses": 4
+        }
+      ],
+      "reducedMotionStatic": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dpr": 2,
+      "actualAquariumReady": true,
+      "animated": [
+        {
+          "id": "shared-banggai-cardinalfish",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-bobtail-squid",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-sea-hare",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-blue-tang",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-flame-angelfish",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-royal-gramma",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-clown-triggerfish",
+          "distinctPoses": 4
+        }
+      ],
+      "reducedMotionStatic": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dpr": 3,
+      "actualAquariumReady": true,
+      "animated": [
+        {
+          "id": "shared-banggai-cardinalfish",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-bobtail-squid",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-sea-hare",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-blue-tang",
+          "distinctPoses": 3
+        },
+        {
+          "id": "shared-flame-angelfish",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-royal-gramma",
+          "distinctPoses": 4
+        },
+        {
+          "id": "shared-clown-triggerfish",
+          "distinctPoses": 3
+        }
+      ],
+      "reducedMotionStatic": true
+    }
+  ],
+  "errors": [],
+  "missing": [],
+  "note": "Actual Phaser aquarium and React collection preview with local image routing; no remote player mutations."
+}

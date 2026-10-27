@@ -1,3 +1,5 @@
+import sharedCommonLayouts from './shared-wonders-frame-layouts.json'
+
 const blinkSheets=new Set([
  'fish/epic/pongdang-shark_sprite.png',
  'fish/epic/pongdang-whale_sprite.png',
@@ -22,6 +24,10 @@ const currentSheets=new Set([
 // These sheets reserve frames 1/2 for half-closed/closed eyes.
 // Swim between open-eyed frames; blink briefly every 4–6 seconds per individual.
 export function premiumSwimFrame(path:string|null,time:number,seed:number,fallback:number,reduced=false){
+ if(path&&Object.hasOwn(sharedCommonLayouts,path)){
+  // Reverse through the intermediate poses rather than snapping from 3 to 0.
+  return reduced?0:[0,1,2,3,2,1][((Math.floor(time*4+seed)%6)+6)%6]
+ }
  if(path&&currentSheets.has(path)){
   return reduced?0:Math.floor(time*4+seed)%4
  }

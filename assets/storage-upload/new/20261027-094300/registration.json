@@ -1,0 +1,646 @@
+[
+  {
+    "id": "shared-banggai-cardinalfish",
+    "storage_path": "fish/normal/shared-banggai-cardinalfish_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.2539999999999998,
+    "commonExportScale": 1,
+    "patch": [
+      466,
+      331,
+      44,
+      44
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          124,
+          142,
+          417,
+          390,
+          58821,
+          316816,
+          349831
+        ],
+        [
+          109,
+          142,
+          406,
+          391,
+          61199,
+          338038,
+          355001
+        ],
+        [
+          116,
+          72,
+          420,
+          380,
+          59856,
+          246606,
+          276990
+        ],
+        [
+          117,
+          70,
+          402,
+          382,
+          59558,
+          253451,
+          280348
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-094300/fish/normal/shared-banggai-cardinalfish_v1_sprite.png",
+      "storage_path": "fish/normal/shared-banggai-cardinalfish_v1_sprite.png",
+      "patch": [
+        466,
+        331,
+        44,
+        44
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -27,
+          "dy": 6,
+          "rmse": 17.52055935180153
+        },
+        {
+          "frame": 2,
+          "dx": -5,
+          "dy": -74,
+          "rmse": 15.770718295485326
+        },
+        {
+          "frame": 3,
+          "dx": -21,
+          "dy": -70,
+          "rmse": 17.7011926779588
+        }
+      ]
+    }
+  },
+  {
+    "id": "shared-bobtail-squid",
+    "storage_path": "fish/normal/shared-bobtail-squid_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.1071442544700496,
+    "commonExportScale": 0.9748163265306122,
+    "patch": [
+      381,
+      326,
+      44,
+      44
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          95,
+          168,
+          488,
+          342,
+          89885,
+          318184,
+          391299
+        ],
+        [
+          87,
+          197,
+          468,
+          313,
+          85792,
+          328989,
+          393614
+        ],
+        [
+          97,
+          110,
+          484,
+          349,
+          88131,
+          268187,
+          336565
+        ],
+        [
+          71,
+          141,
+          483,
+          318,
+          85418,
+          270206,
+          340253
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-094300/fish/normal/shared-bobtail-squid_v1_sprite.png",
+      "storage_path": "fish/normal/shared-bobtail-squid_v1_sprite.png",
+      "patch": [
+        381,
+        326,
+        44,
+        44
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -30,
+          "dy": 2,
+          "rmse": 14.500229883235185
+        },
+        {
+          "frame": 2,
+          "dx": -2,
+          "dy": -51,
+          "rmse": 18.353019733366313
+        },
+        {
+          "frame": 3,
+          "dx": -30,
+          "dy": -50,
+          "rmse": 19.872957616933732
+        }
+      ]
+    }
+  },
+  {
+    "id": "shared-sea-hare",
+    "storage_path": "fish/normal/shared-sea-hare_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.101241332561325,
+    "commonExportScale": 0.9433141831238779,
+    "patch": [
+      386,
+      301,
+      44,
+      44
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          83,
+          214,
+          507,
+          276,
+          90078,
+          385382,
+          360776
+        ],
+        [
+          69,
+          216,
+          499,
+          279,
+          88116,
+          372997,
+          361970
+        ],
+        [
+          86,
+          145,
+          506,
+          271,
+          85929,
+          311328,
+          286754
+        ],
+        [
+          65,
+          144,
+          503,
+          272,
+          86084,
+          310108,
+          288710
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-094300/fish/normal/shared-sea-hare_v1_sprite.png",
+      "storage_path": "fish/normal/shared-sea-hare_v1_sprite.png",
+      "patch": [
+        386,
+        301,
+        44,
+        44
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -21,
+          "dy": 2,
+          "rmse": 15.620941869323778
+        },
+        {
+          "frame": 2,
+          "dx": -1,
+          "dy": -64,
+          "rmse": 19.421352684408106
+        },
+        {
+          "frame": 3,
+          "dx": -21,
+          "dy": -61,
+          "rmse": 20.65179274975424
+        }
+      ]
+    }
+  },
+  {
+    "id": "shared-blue-tang",
+    "storage_path": "fish/normal/shared-blue-tang_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.175625,
+    "commonExportScale": 1,
+    "patch": [
+      471,
+      291,
+      44,
+      44
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          117,
+          189,
+          443,
+          278,
+          75448,
+          317159,
+          327785
+        ],
+        [
+          109,
+          189,
+          419,
+          278,
+          74515,
+          321928,
+          329901
+        ],
+        [
+          112,
+          149,
+          448,
+          278,
+          77342,
+          281850,
+          289380
+        ],
+        [
+          112,
+          148,
+          417,
+          279,
+          74385,
+          280840,
+          291127
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-094300/fish/normal/shared-blue-tang_v1_sprite.png",
+      "storage_path": "fish/normal/shared-blue-tang_v1_sprite.png",
+      "patch": [
+        471,
+        291,
+        44,
+        44
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -33,
+          "dy": 1,
+          "rmse": 12.24363780363772
+        },
+        {
+          "frame": 2,
+          "dx": 0,
+          "dy": -37,
+          "rmse": 13.976607440847566
+        },
+        {
+          "frame": 3,
+          "dx": -30,
+          "dy": -37,
+          "rmse": 21.905580212458297
+        }
+      ]
+    }
+  },
+  {
+    "id": "shared-flame-angelfish",
+    "storage_path": "fish/normal/shared-flame-angelfish_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.1088,
+    "commonExportScale": 1,
+    "patch": [
+      491,
+      316,
+      44,
+      44
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          102,
+          165,
+          462,
+          323,
+          101000,
+          322025,
+          334945
+        ],
+        [
+          110,
+          167,
+          431,
+          326,
+          94324,
+          323569,
+          339196
+        ],
+        [
+          93,
+          128,
+          475,
+          324,
+          102100,
+          286129,
+          297848
+        ],
+        [
+          93,
+          128,
+          447,
+          324,
+          98089,
+          284117,
+          299231
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-094300/fish/normal/shared-flame-angelfish_v1_sprite.png",
+      "storage_path": "fish/normal/shared-flame-angelfish_v1_sprite.png",
+      "patch": [
+        491,
+        316,
+        44,
+        44
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -24,
+          "dy": 0,
+          "rmse": 17.510536510595237
+        },
+        {
+          "frame": 2,
+          "dx": 3,
+          "dy": -38,
+          "rmse": 14.706461165079789
+        },
+        {
+          "frame": 3,
+          "dx": -24,
+          "dy": -37,
+          "rmse": 16.94379598030566
+        }
+      ]
+    }
+  },
+  {
+    "id": "shared-royal-gramma",
+    "storage_path": "fish/normal/shared-royal-gramma_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.1499563318777293,
+    "commonExportScale": 1,
+    "patch": [
+      486,
+      326,
+      44,
+      44
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          107,
+          201,
+          456,
+          269,
+          69253,
+          341874,
+          346115
+        ],
+        [
+          92,
+          200,
+          447,
+          277,
+          67684,
+          341917,
+          345364
+        ],
+        [
+          105,
+          139,
+          458,
+          269,
+          67752,
+          288908,
+          283265
+        ],
+        [
+          85,
+          138,
+          454,
+          266,
+          68673,
+          280097,
+          281344
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-094300/fish/normal/shared-royal-gramma_v1_sprite.png",
+      "storage_path": "fish/normal/shared-royal-gramma_v1_sprite.png",
+      "patch": [
+        486,
+        326,
+        44,
+        44
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -25,
+          "dy": -1,
+          "rmse": 14.80945643837072
+        },
+        {
+          "frame": 2,
+          "dx": 0,
+          "dy": -65,
+          "rmse": 10.63693773811074
+        },
+        {
+          "frame": 3,
+          "dx": -22,
+          "dy": -65,
+          "rmse": 16.151126551695672
+        }
+      ]
+    }
+  },
+  {
+    "id": "shared-clown-triggerfish",
+    "storage_path": "fish/normal/shared-clown-triggerfish_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.1751383740415378,
+    "commonExportScale": 0.9535862068965516,
+    "patch": [
+      331,
+      356,
+      44,
+      44
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          118,
+          218,
+          470,
+          283,
+          82857,
+          358621,
+          367636
+        ],
+        [
+          93,
+          218,
+          453,
+          283,
+          77655,
+          364121,
+          368044
+        ],
+        [
+          123,
+          150,
+          466,
+          278,
+          79847,
+          290740,
+          297575
+        ],
+        [
+          91,
+          145,
+          455,
+          283,
+          79115,
+          290624,
+          296895
+        ]
+      ]
+    },
+    "anchorRegistration": {
+      "file": "assets/storage-upload/new/20261027-094300/fish/normal/shared-clown-triggerfish_v1_sprite.png",
+      "storage_path": "fish/normal/shared-clown-triggerfish_v1_sprite.png",
+      "patch": [
+        331,
+        356,
+        44,
+        44
+      ],
+      "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+      "frames": [
+        {
+          "frame": 0,
+          "dx": 0,
+          "dy": 0,
+          "rmse": 0
+        },
+        {
+          "frame": 1,
+          "dx": -37,
+          "dy": 0,
+          "rmse": 17.997715904463483
+        },
+        {
+          "frame": 2,
+          "dx": 1,
+          "dy": -69,
+          "rmse": 16.562239515771346
+        },
+        {
+          "frame": 3,
+          "dx": -35,
+          "dy": -68,
+          "rmse": 26.647055288634718
+        }
+      ]
+    }
+  }
+]

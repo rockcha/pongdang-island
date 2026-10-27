@@ -1,0 +1,648 @@
+{
+  "results": [
+    {
+      "id": "shared-banggai-cardinalfish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-094300\\sources\\shared-banggai-cardinalfish-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            67,
+            102,
+            1105,
+            1034
+          ],
+          "margin": 67,
+          "occupancy": 0.8811802232854864,
+          "opaque": 403598,
+          "transparent": 1146961,
+          "soft": 424351
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-banggai-cardinalfish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-094300\\sources\\shared-banggai-cardinalfish-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            124,
+            142,
+            417,
+            390
+          ],
+          "margin": 86,
+          "occupancy": 0.6650717703349283,
+          "opaque": 58821,
+          "transparent": 322564,
+          "soft": 70273
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            109,
+            142,
+            406,
+            391
+          ],
+          "margin": 94,
+          "occupancy": 0.6475279106858054,
+          "opaque": 61199,
+          "transparent": 321206,
+          "soft": 71631
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            116,
+            72,
+            420,
+            380
+          ],
+          "margin": 72,
+          "occupancy": 0.6698564593301436,
+          "opaque": 59856,
+          "transparent": 321777,
+          "soft": 71008
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            117,
+            70,
+            402,
+            382
+          ],
+          "margin": 70,
+          "occupancy": 0.6411483253588517,
+          "opaque": 59558,
+          "transparent": 321018,
+          "soft": 71721
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-bobtail-squid",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-094300\\sources\\shared-bobtail-squid-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            71,
+            226,
+            1138,
+            807
+          ],
+          "margin": 45,
+          "occupancy": 0.9074960127591707,
+          "opaque": 485807,
+          "transparent": 1079026,
+          "soft": 492435
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-bobtail-squid",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-094300\\sources\\shared-bobtail-squid-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            95,
+            168,
+            488,
+            342
+          ],
+          "margin": 44,
+          "occupancy": 0.7783094098883573,
+          "opaque": 89885,
+          "transparent": 291181,
+          "soft": 101734
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            87,
+            197,
+            468,
+            313
+          ],
+          "margin": 72,
+          "occupancy": 0.7464114832535885,
+          "opaque": 85792,
+          "transparent": 294334,
+          "soft": 98615
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            97,
+            110,
+            484,
+            349
+          ],
+          "margin": 46,
+          "occupancy": 0.7719298245614035,
+          "opaque": 88131,
+          "transparent": 294058,
+          "soft": 98831
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            71,
+            141,
+            483,
+            318
+          ],
+          "margin": 71,
+          "occupancy": 0.7703349282296651,
+          "opaque": 85418,
+          "transparent": 295514,
+          "soft": 97438
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-sea-hare",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-094300\\sources\\shared-sea-hare-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            42,
+            292,
+            1203,
+            682
+          ],
+          "margin": 9,
+          "occupancy": 0.9593301435406698,
+          "opaque": 519357,
+          "transparent": 1042554,
+          "soft": 528786
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-sea-hare",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-094300\\sources\\shared-sea-hare-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            83,
+            214,
+            507,
+            276
+          ],
+          "margin": 37,
+          "occupancy": 0.8086124401913876,
+          "opaque": 90078,
+          "transparent": 293814,
+          "soft": 98952
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            69,
+            216,
+            499,
+            279
+          ],
+          "margin": 59,
+          "occupancy": 0.79585326953748,
+          "opaque": 88116,
+          "transparent": 295299,
+          "soft": 97499
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            86,
+            145,
+            506,
+            271
+          ],
+          "margin": 35,
+          "occupancy": 0.8070175438596491,
+          "opaque": 85929,
+          "transparent": 296001,
+          "soft": 96834
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            65,
+            144,
+            503,
+            272
+          ],
+          "margin": 59,
+          "occupancy": 0.8022328548644339,
+          "opaque": 86084,
+          "transparent": 295329,
+          "soft": 97507
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-blue-tang",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-094300\\sources\\shared-blue-tang-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            50,
+            257,
+            1172,
+            732
+          ],
+          "margin": 32,
+          "occupancy": 0.9346092503987241,
+          "opaque": 516516,
+          "transparent": 1037849,
+          "soft": 534035
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-blue-tang",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-094300\\sources\\shared-blue-tang-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            117,
+            189,
+            443,
+            278
+          ],
+          "margin": 67,
+          "occupancy": 0.7065390749601276,
+          "opaque": 75448,
+          "transparent": 309700,
+          "soft": 83307
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            109,
+            189,
+            419,
+            278
+          ],
+          "margin": 99,
+          "occupancy": 0.6682615629984051,
+          "opaque": 74515,
+          "transparent": 312160,
+          "soft": 80819
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            112,
+            149,
+            448,
+            278
+          ],
+          "margin": 67,
+          "occupancy": 0.7145135566188198,
+          "opaque": 77342,
+          "transparent": 307624,
+          "soft": 85334
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            112,
+            148,
+            417,
+            279
+          ],
+          "margin": 98,
+          "occupancy": 0.6650717703349283,
+          "opaque": 74385,
+          "transparent": 311512,
+          "soft": 81458
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-flame-angelfish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-094300\\sources\\shared-flame-angelfish-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            85,
+            214,
+            1127,
+            810
+          ],
+          "margin": 42,
+          "occupancy": 0.8987240829346093,
+          "opaque": 598832,
+          "transparent": 963008,
+          "soft": 607905
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-flame-angelfish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-094300\\sources\\shared-flame-angelfish-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            102,
+            165,
+            462,
+            323
+          ],
+          "margin": 63,
+          "occupancy": 0.7368421052631579,
+          "opaque": 101000,
+          "transparent": 286340,
+          "soft": 106704
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            110,
+            167,
+            431,
+            326
+          ],
+          "margin": 86,
+          "occupancy": 0.6874003189792663,
+          "opaque": 94324,
+          "transparent": 293137,
+          "soft": 99914
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            93,
+            128,
+            475,
+            324
+          ],
+          "margin": 59,
+          "occupancy": 0.7575757575757576,
+          "opaque": 102100,
+          "transparent": 284893,
+          "soft": 108119
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            93,
+            128,
+            447,
+            324
+          ],
+          "margin": 87,
+          "occupancy": 0.7129186602870813,
+          "opaque": 98089,
+          "transparent": 289399,
+          "soft": 103648
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-royal-gramma",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-094300\\sources\\shared-royal-gramma-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            52,
+            261,
+            1175,
+            732
+          ],
+          "margin": 27,
+          "occupancy": 0.9370015948963317,
+          "opaque": 466837,
+          "transparent": 1095822,
+          "soft": 475526
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-royal-gramma",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-094300\\sources\\shared-royal-gramma-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            107,
+            201,
+            456,
+            269
+          ],
+          "margin": 64,
+          "occupancy": 0.7272727272727273,
+          "opaque": 69253,
+          "transparent": 317854,
+          "soft": 75119
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            92,
+            200,
+            447,
+            277
+          ],
+          "margin": 88,
+          "occupancy": 0.7129186602870813,
+          "opaque": 67684,
+          "transparent": 319998,
+          "soft": 72949
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            105,
+            139,
+            458,
+            269
+          ],
+          "margin": 64,
+          "occupancy": 0.7304625199362041,
+          "opaque": 67752,
+          "transparent": 316415,
+          "soft": 76457
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            85,
+            138,
+            454,
+            266
+          ],
+          "margin": 85,
+          "occupancy": 0.7240829346092504,
+          "opaque": 68673,
+          "transparent": 316915,
+          "soft": 75959
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-clown-triggerfish",
+      "type": "thumbnail",
+      "file": "assets\\storage-upload\\new\\20261027-094300\\sources\\shared-clown-triggerfish-thumbnail.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            38,
+            275,
+            1183,
+            711
+          ],
+          "margin": 33,
+          "occupancy": 0.9433811802232854,
+          "opaque": 517901,
+          "transparent": 1046812,
+          "soft": 524203
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "id": "shared-clown-triggerfish",
+      "type": "sprite",
+      "file": "assets\\storage-upload\\new\\20261027-094300\\sources\\shared-clown-triggerfish-sprite.source",
+      "width": 1254,
+      "height": 1254,
+      "cell": 627,
+      "frames": [
+        {
+          "frame": 0,
+          "bounds": [
+            118,
+            218,
+            470,
+            283
+          ],
+          "margin": 39,
+          "occupancy": 0.7496012759170654,
+          "opaque": 82857,
+          "transparent": 304346,
+          "soft": 88518
+        },
+        {
+          "frame": 1,
+          "bounds": [
+            93,
+            218,
+            453,
+            283
+          ],
+          "margin": 81,
+          "occupancy": 0.722488038277512,
+          "opaque": 77655,
+          "transparent": 308515,
+          "soft": 84358
+        },
+        {
+          "frame": 2,
+          "bounds": [
+            123,
+            150,
+            466,
+            278
+          ],
+          "margin": 38,
+          "occupancy": 0.7432216905901117,
+          "opaque": 79847,
+          "transparent": 306016,
+          "soft": 86907
+        },
+        {
+          "frame": 3,
+          "bounds": [
+            91,
+            145,
+            455,
+            283
+          ],
+          "margin": 81,
+          "occupancy": 0.7256778309409888,
+          "opaque": 79115,
+          "transparent": 306653,
+          "soft": 86210
+        }
+      ],
+      "warnings": []
+    }
+  ]
+}

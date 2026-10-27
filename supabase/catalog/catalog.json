@@ -10108,6 +10108,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "shared-banggai-cardinalfish",
+      "kind": "fish",
+      "name": "방가이 카디널피시",
+      "description": "은빛 몸의 굵은 검은 줄과 길게 갈라진 지느러미가 돋보이는 작은 물고기예요.",
+      "swim_y_min": "0.24",
+      "swim_y_max": "0.76",
+      "speed": "0.026",
+      "size": 46,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-banggai-cardinalfish_v1_thumbnail.png",
+      "sell_price": 40,
+      "sprite_sheet_path": "fish/normal/shared-banggai-cardinalfish_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "shared-blue-leaf-sheep",
       "kind": "fish",
       "name": "쪽빛 잎사귀 양달팽이",
@@ -10122,6 +10140,24 @@
       "sprite_sheet_path": "fish/normal/shared-blue-leaf-sheep_sprite.png",
       "native_region_id": null,
       "movement_type": "crawl",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-blue-tang",
+      "kind": "fish",
+      "name": "블루탱",
+      "description": "선명한 파란 몸과 검은 팔레트 무늬, 노란 꼬리를 가진 산호초 물고기예요.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.77",
+      "speed": "0.03",
+      "size": 50,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-blue-tang_v1_thumbnail.png",
+      "sell_price": 48,
+      "sprite_sheet_path": "fish/normal/shared-blue-tang_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
       "flip_with_direction": true,
       "travel_direction": "both"
     },
@@ -10144,6 +10180,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "shared-bobtail-squid",
+      "kind": "fish",
+      "name": "밥테일오징어",
+      "description": "동그란 몸과 큰 눈, 짧은 팔을 가진 작은 오징어예요. 몸의 잔무늬가 은은하게 반짝여요.",
+      "swim_y_min": "0.35",
+      "swim_y_max": "0.78",
+      "speed": "0.022",
+      "size": 44,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-bobtail-squid_v1_thumbnail.png",
+      "sell_price": 45,
+      "sprite_sheet_path": "fish/normal/shared-bobtail-squid_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "shared-cheolgak-sunken-harbor",
       "kind": "fish",
       "name": "가라앉은 항구의 주인, 철각",
@@ -10156,6 +10210,24 @@
       "thumbnail_path": "fish/mythic/shared-cheolgak-sunken-harbor_thumbnail.png",
       "sell_price": 3295,
       "sprite_sheet_path": "fish/mythic/shared-cheolgak-sunken-harbor_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-clown-triggerfish",
+      "kind": "fish",
+      "name": "클라운 트리거피시",
+      "description": "검은 몸의 큼직한 흰 물방울무늬와 노란 입술이 눈길을 끄는 쥐치예요.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.77",
+      "speed": "0.024",
+      "size": 55,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-clown-triggerfish_v1_thumbnail.png",
+      "sell_price": 48,
+      "sprite_sheet_path": "fish/normal/shared-clown-triggerfish_v1_sprite.png",
       "native_region_id": null,
       "movement_type": "swim",
       "flip_with_direction": true,
@@ -10267,6 +10339,24 @@
       "native_region_id": null,
       "movement_type": "fixed",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-flame-angelfish",
+      "kind": "fish",
+      "name": "플레임 엔젤피시",
+      "description": "붉은 주황빛 몸에 검은 세로줄과 푸른 지느러미 끝이 선명한 산호초 물고기예요.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.77",
+      "speed": "0.028",
+      "size": 51,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-flame-angelfish_v1_thumbnail.png",
+      "sell_price": 50,
+      "sprite_sheet_path": "fish/normal/shared-flame-angelfish_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -10666,6 +10756,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "shared-royal-gramma",
+      "kind": "fish",
+      "name": "로열 그라마",
+      "description": "보랏빛 머리에서 황금빛 꼬리로 이어지는 두 가지 색이 매력적인 작은 물고기예요.",
+      "swim_y_min": "0.2",
+      "swim_y_max": "0.77",
+      "speed": "0.025",
+      "size": 48,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-royal-gramma_v1_thumbnail.png",
+      "sell_price": 55,
+      "sprite_sheet_path": "fish/normal/shared-royal-gramma_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "shared-scarlet-skirt-dancer",
       "kind": "fish",
       "name": "붉은 치맛자락 무희",
@@ -10680,6 +10788,24 @@
       "sprite_sheet_path": "fish/rare/shared-scarlet-skirt-dancer_sprite.png",
       "native_region_id": null,
       "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
+      "id": "shared-sea-hare",
+      "kind": "fish",
+      "name": "바다토끼",
+      "description": "토끼 귀 같은 두 돌기를 세우고 바닥을 느릿하게 기어 다니는 바다 연체동물이에요.",
+      "swim_y_min": "0.86",
+      "swim_y_max": "0.95",
+      "speed": "0.009",
+      "size": 48,
+      "rarity": "common",
+      "thumbnail_path": "fish/normal/shared-sea-hare_v1_thumbnail.png",
+      "sell_price": 30,
+      "sprite_sheet_path": "fish/normal/shared-sea-hare_v1_sprite.png",
+      "native_region_id": null,
+      "movement_type": "crawl",
       "flip_with_direction": true,
       "travel_direction": "both"
     },
@@ -22520,6 +22646,62 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "shared-banggai-cardinalfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-banggai-cardinalfish",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-banggai-cardinalfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-banggai-cardinalfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-banggai-cardinalfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-banggai-cardinalfish",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-banggai-cardinalfish",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-banggai-cardinalfish",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-banggai-cardinalfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-banggai-cardinalfish",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-banggai-cardinalfish",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-banggai-cardinalfish",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-banggai-cardinalfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-banggai-cardinalfish",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "shared-blue-leaf-sheep",
       "region_id": "bluegrove"
     },
@@ -22565,6 +22747,62 @@
     },
     {
       "species_id": "shared-blue-leaf-sheep",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-blue-tang",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-blue-tang",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-blue-tang",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-blue-tang",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-blue-tang",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-blue-tang",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-blue-tang",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-blue-tang",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-blue-tang",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-blue-tang",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-blue-tang",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-blue-tang",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-blue-tang",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-blue-tang",
       "region_id": "whitenight"
     },
     {
@@ -22616,6 +22854,62 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "shared-bobtail-squid",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-bobtail-squid",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-bobtail-squid",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-bobtail-squid",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-bobtail-squid",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-bobtail-squid",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-bobtail-squid",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-bobtail-squid",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-bobtail-squid",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-bobtail-squid",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-bobtail-squid",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-bobtail-squid",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-bobtail-squid",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-bobtail-squid",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "shared-cheolgak-sunken-harbor",
       "region_id": "bluegrove"
     },
@@ -22661,6 +22955,62 @@
     },
     {
       "species_id": "shared-cheolgak-sunken-harbor",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-clown-triggerfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-clown-triggerfish",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-clown-triggerfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-clown-triggerfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-clown-triggerfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-clown-triggerfish",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-clown-triggerfish",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-clown-triggerfish",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-clown-triggerfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-clown-triggerfish",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-clown-triggerfish",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-clown-triggerfish",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-clown-triggerfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-clown-triggerfish",
       "region_id": "whitenight"
     },
     {
@@ -22949,6 +23299,62 @@
     },
     {
       "species_id": "shared-empty-bait-bag",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-flame-angelfish",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-flame-angelfish",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-flame-angelfish",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-flame-angelfish",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-flame-angelfish",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-flame-angelfish",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-flame-angelfish",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-flame-angelfish",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-flame-angelfish",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-flame-angelfish",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-flame-angelfish",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-flame-angelfish",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-flame-angelfish",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-flame-angelfish",
       "region_id": "whitenight"
     },
     {
@@ -24028,6 +24434,62 @@
       "region_id": "whitenight"
     },
     {
+      "species_id": "shared-royal-gramma",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-royal-gramma",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-royal-gramma",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-royal-gramma",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-royal-gramma",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-royal-gramma",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-royal-gramma",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-royal-gramma",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-royal-gramma",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-royal-gramma",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-royal-gramma",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-royal-gramma",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-royal-gramma",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-royal-gramma",
+      "region_id": "whitenight"
+    },
+    {
       "species_id": "shared-scarlet-skirt-dancer",
       "region_id": "bluegrove"
     },
@@ -24073,6 +24535,62 @@
     },
     {
       "species_id": "shared-scarlet-skirt-dancer",
+      "region_id": "whitenight"
+    },
+    {
+      "species_id": "shared-sea-hare",
+      "region_id": "bluegrove"
+    },
+    {
+      "species_id": "shared-sea-hare",
+      "region_id": "cloudferry"
+    },
+    {
+      "species_id": "shared-sea-hare",
+      "region_id": "coral"
+    },
+    {
+      "species_id": "shared-sea-hare",
+      "region_id": "dreamabyss"
+    },
+    {
+      "species_id": "shared-sea-hare",
+      "region_id": "mistmoon"
+    },
+    {
+      "species_id": "shared-sea-hare",
+      "region_id": "mukhyang"
+    },
+    {
+      "species_id": "shared-sea-hare",
+      "region_id": "nyamnyam"
+    },
+    {
+      "species_id": "shared-sea-hare",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "shared-sea-hare",
+      "region_id": "pongdang"
+    },
+    {
+      "species_id": "shared-sea-hare",
+      "region_id": "primal"
+    },
+    {
+      "species_id": "shared-sea-hare",
+      "region_id": "scrapisle"
+    },
+    {
+      "species_id": "shared-sea-hare",
+      "region_id": "siren"
+    },
+    {
+      "species_id": "shared-sea-hare",
+      "region_id": "starruins"
+    },
+    {
+      "species_id": "shared-sea-hare",
       "region_id": "whitenight"
     },
     {

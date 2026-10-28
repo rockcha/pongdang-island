@@ -22,6 +22,15 @@ import {
 export function AppQueryProvider({ children }: { children: ReactNode }) {
   useEffect(subscribeResourceEvents, [])
   useEffect(()=>{
+    const refresh=()=>{
+      if(!document.hidden)void appQueryClient.refetchQueries({type:'active',predicate:q=>q.queryKey[2]==='new-content'},{cancelRefetch:false})
+    }
+    const timer=setInterval(refresh,60_000)
+    window.addEventListener('focus',refresh)
+    window.addEventListener('online',refresh)
+    return()=>{clearInterval(timer);window.removeEventListener('focus',refresh);window.removeEventListener('online',refresh)}
+  },[])
+  useEffect(()=>{
     const timer=setInterval(()=>{
       if(!document.hidden)void appQueryClient.refetchQueries({type:'active',predicate:q=>['merchant','menu-status'].includes(String(q.queryKey[2]))},{cancelRefetch:false})
     },30_000)

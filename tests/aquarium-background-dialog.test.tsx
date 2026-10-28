@@ -2,6 +2,7 @@ import { cleanup,fireEvent,render,screen,waitFor,within } from '@testing-library
 import { afterEach,expect,it,vi } from 'vitest'
 import { AquariumBackgroundDialog } from '../src/features/aquarium/aquarium-background-dialog'
 import type { AquariumState } from '../src/features/aquarium/api'
+import {backgroundPreviewArt} from '../src/features/aquarium/background-preview-art'
 vi.mock('@/features/aquarium/api',()=>({backgroundUrl:(path:string)=>`/backgrounds/${path}`}))
 vi.mock('@/features/aquarium/tank-inhabitants',()=>({TankInhabitants:()=> <div aria-label="어항 미리보기 장면"/>}))
 afterEach(()=>{cleanup();vi.unstubAllGlobals()})
@@ -105,7 +106,9 @@ it('shows the complete panorama at its natural ratio directly in the list withou
  fireEvent.click(screen.getByRole('button',{name:'배경 바꾸기',exact:true}));expect(screen.queryByRole('tab',{name:'장식물'})).toBeNull()
  fireEvent.click(screen.getByRole('tab',{name:'구매'}))
  const image=screen.getByRole('img',{name:'산호 정원'}) as HTMLImageElement
- expect(image.getAttribute('src')).toContain('coral-panorama-v2.png')
+ expect(image.getAttribute('src')).toBe(backgroundPreviewArt('coral.png')!.url)
+ expect(image.getAttribute('loading')).toBe('lazy')
+ expect(image.getAttribute('decoding')).toBe('async')
  Object.defineProperties(image,{naturalWidth:{value:1800},naturalHeight:{value:1000}})
  fireEvent.load(image)
  expect(parseFloat(image.parentElement!.style.aspectRatio)).toBe(1.8)

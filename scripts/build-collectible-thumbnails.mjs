@@ -6,7 +6,7 @@ import path from 'node:path'
 const profile='webp-q88-alpha100-inside-v1',out='public/game-art/thumbnails'
 const manifestPath='assets/optimized-thumbnails/manifest.json'
 const catalog=JSON.parse(await readFile('supabase/catalog/catalog.json','utf8'))
-const keys=[...new Set(catalog.collectible_species.map(s=>s.thumbnail_path))].sort()
+const keys=[...new Set([...catalog.collectible_species,...catalog.region_maps].map(s=>s.thumbnail_path))].sort()
 const candidates=new Map()
 async function walk(dir){
  for(const e of await readdir(dir,{withFileTypes:true})){

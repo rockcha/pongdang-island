@@ -3,7 +3,7 @@ import { Minus, Plus, Check, LoaderCircle } from 'lucide-react'
 import { appArt } from '@/components/app-art'
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
-import { collectibleUrl } from '@/features/collection/api'
+import { CollectibleThumbnail } from '@/features/collection/collectible-thumbnail'
 import { collectibleCardTones } from '@/features/collection/collectible-card-tones'
 import {
   loadProductionMaterials,
@@ -29,9 +29,9 @@ function MaterialImage({
   kind: ProductionFacility['kind']
 }) {
   return material.thumbnail_path ? (
-    <img
-      src={collectibleUrl(material.thumbnail_path)}
-      alt=""
+    <CollectibleThumbnail
+      path={material.thumbnail_path}
+      name={material.name}
       className={`${className} object-contain`}
       loading="lazy"
     />

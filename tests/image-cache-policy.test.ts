@@ -11,6 +11,7 @@ it('separates small thumbnails, remote originals, sprite sheets and backgrounds 
   [base+'public/collectibles/fish/rare/fish_thumbnail.png','game-art-thumbnails-v1'],
   [base+'public/aquarium-backgrounds/room.webp','game-art-backgrounds-v1'],
   ['https://pongdang.test/game-art/thumbnails/0123456789abcdef01234567-320.webp','game-art-small-v1'],
+  ['https://pongdang.test/game-art/background-previews/0123456789abcdef01234567-960.webp','game-art-background-previews-v1'],
   ['https://pongdang.test/aquarium/swim/fish_swim8_v1_sprite.png','aquarium-action-art-v1'],
  ]){const routes=matches(url);expect(routes).toHaveLength(1);expect(routes[0].options?.cacheName).toBe(cache)}
 })
@@ -20,6 +21,8 @@ it('excludes signed URLs, accounts, RPCs, avatars, audio, other projects and unv
   base+'public/collectibles/fish.json','https://another.supabase.co/storage/v1/object/public/collectibles/fish.png',
   'https://ewafafphiovbpjwogwzn.supabase.co/rest/v1/collectible_species',
   'https://pongdang.test/game-art/thumbnails/mutable.webp','https://pongdang.test/aquarium/swim/fish_sprite.png',
+  'https://another.test/game-art/background-previews/0123456789abcdef01234567-960.webp',
+  'https://pongdang.test/game-art/background-previews/mutable.webp',
  ])expect(matches(url)).toHaveLength(0)
 })
 it('preserves revision query strings, rejects failed responses and limits each cache independently',()=>{

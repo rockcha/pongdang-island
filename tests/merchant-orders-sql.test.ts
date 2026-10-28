@@ -9,6 +9,9 @@ const deliver=async(id,op=crypto.randomUUID(),user=me)=>(await asUser(user,'sele
 async function stock(order,user=me){for(const item of order.items)await db.query('insert into public.player_collectibles(user_id,species_id) select $1,$2 from generate_series(1,$3)',[user,item.speciesId,item.quantity])}
 beforeAll(async()=>{
  db=await createLocalDatabase();await replayMigrations(db)
+ // Historical migrations may have generated today's orders with snapshot rewards.
+ // Recipe assertions below exercise newly generated orders under the latest rule.
+ await db.exec('delete from app_private.merchant_orders;delete from app_private.merchant_days')
  for(const [id,name] of [[me,'납품퐁이'],[other,'다른상인']]){
   await db.query('insert into auth.users(id) values($1)',[id]);await db.query('insert into public.player_profiles(id,nickname) values($1,$2)',[id,name]);
   await db.query('insert into public.player_wallets(user_id,gold) values($1,1000) on conflict(user_id) do update set gold=1000',[id])
@@ -165,7 +168,7 @@ it('replaces unfinished old-rule orders while preserving completed orders and re
 
 it('computes every agreed bonus including multiple rares and epic or mythic supplements',async()=>{
  const bonus=async(grades,quantities)=> (await db.query('select app_private.merchant_order_bonus($1::jsonb) n',[JSON.stringify(grades.map((rarity,i)=>({rarity,quantity:quantities[i]})))])).rows[0].n
- for(const [rarity,expected] of [['common',80],['rare',100],['epic',250],['mythic',600]])expect(await bonus([rarity],[1])).toBe(expected)
+ for(const [rarity,expected] of [['common',72],['rare',90],['epic',225],['mythic',540]])expect(await bonus([rarity],[1])).toBe(expected)
  for(const [grades,quantities,expected] of [
   [['common','common'],[1,1],120],[['rare','common'],[1,1],200],[['rare','rare'],[1,1],250],
   [['common','common'],[1,2],200],[['rare','common'],[1,2],300],[['common','rare'],[1,2],380],[['rare','rare'],[1,2],500],
@@ -174,6 +177,21 @@ it('computes every agreed bonus including multiple rares and epic or mythic supp
   [['mythic','common','common'],[1,1,2],1200],
  ])expect(await bonus(grades,quantities)).toBe(expected)
  await expect(asUser(me,'select app_private.merchant_order_bonus($1::jsonb)',[JSON.stringify([{rarity:'common',quantity:1}])])).rejects.toThrow('permission denied')
+})
+it('keeps an existing single-kind snapshot and pays its original amount after the nerf',async()=>{
+ const definition=(await db.query("select pg_get_functiondef('app_private.merchant_order_bonus(jsonb)'::regprocedure) definition")).rows[0].definition
+ await db.exec(definition.replace("when 'common' then 72 when 'rare' then 90 when 'epic' then 225 else 540 end", "when 'common' then 80 when 'rare' then 100 when 'epic' then 250 else 600 end"))
+ const before=await state(),single=before.orders.find(o=>o.items.length===1)
+ await db.exec(definition)
+ const current=await state()
+ expect(current.orders.map(o=>o.id)).toEqual(before.orders.map(o=>o.id))
+ expect(current.orders.find(o=>o.id===single.id).rewardGold).toBe(single.rewardGold)
+ const newBonus=(await db.query('select app_private.merchant_order_bonus($1::jsonb) n',[JSON.stringify(single.items)])).rows[0].n
+ expect(newBonus).toBeLessThan(single.rewardGold-single.baseGold)
+ await stock(single)
+ const op=crypto.randomUUID(),paid=await deliver(single.id,op)
+ expect(paid.receipt.gold).toBe(single.rewardGold)
+ expect((await deliver(single.id,op)).receipt).toEqual(paid.receipt)
 })
 it('preserves completed mixed orders and receipts when upgrading v6 to more single-item orders',async()=>{
  const definition=(await db.query("select pg_get_functiondef('app_private.merchant_order_shape(integer)'::regprocedure) definition")).rows[0].definition

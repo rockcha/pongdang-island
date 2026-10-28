@@ -8,7 +8,7 @@ import manifest from '../assets/optimized-thumbnails/manifest.json'
 import catalog from '../supabase/catalog/catalog.json'
 
 it('covers every catalog thumbnail with immutable, distinct display-size assets',()=>{
- const paths=[...new Set(catalog.collectible_species.map(s=>s.thumbnail_path))]
+ const paths=[...new Set([...catalog.collectible_species,...catalog.region_maps].map(s=>s.thumbnail_path))]
  expect(manifest.items.map(i=>i.key).sort()).toEqual(paths.sort())
  for(const item of manifest.items){
   for(const size of ['small','large'] as const){

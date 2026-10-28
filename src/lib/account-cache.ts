@@ -126,6 +126,10 @@ export function resourceChanged<T>(
 }
 
 export const resourceEvents: Record<string, string[]> = {
+  'board-changed':['new-content'],
+  'exchange-changed':['new-content'],
+  'showcase-changed':['new-content'],
+  'flea-changed':['flea','new-content'],
   'wallet-changed': ['wallet','flea-inventory'],
   'attendance-changed': ['wallet'],
   'experience-changed': ['experience'],

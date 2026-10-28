@@ -10,6 +10,7 @@ import { ConfirmDialog } from '@/components/confirm-dialog'
 import { useAuth } from '@/components/auth-provider'
 import { GoldIcon, useGold } from '@/features/gold/gold-provider'
 import { collectibleUrl, loadCollection } from '@/features/collection/api'
+import {optimizedThumbnailUrl} from '@/features/collection/thumbnail-art'
 import { createShadowPractice } from './shadow-practice'
 import {
   shadowAction,
@@ -389,7 +390,7 @@ function AccountShadowGame() {
                     ) : (
                       <img
                         key={round.id}
-                        src={collectibleUrl(round.imagePath)}
+                        src={optimizedThumbnailUrl(round.imagePath,'large')??collectibleUrl(round.imagePath)}
                         alt={
                           round.answered
                             ? (round.answerName ?? '정답 개체')
@@ -398,7 +399,11 @@ function AccountShadowGame() {
                         className={`absolute inset-0 size-full object-contain p-3 ${round.answered ? 'pt-12' : ''}`}
                         style={{ filter: round.answered ? 'none' : 'brightness(0)' }}
                         draggable={false}
-                        onError={() => setImageFailed(true)}
+                        onError={event => {
+                          const original=collectibleUrl(round.imagePath)
+                          if(event.currentTarget.getAttribute('src')!==original)event.currentTarget.src=original
+                          else setImageFailed(true)
+                        }}
                       />
                     )}
                   </div>

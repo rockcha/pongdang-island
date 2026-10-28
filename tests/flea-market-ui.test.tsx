@@ -89,6 +89,33 @@ it('caps sale registration at owned stock while buy requests can exceed owned st
  fireEvent.change(quantity,{target:{value:'1.5'}})
  expect(quantity.value).toBe('1')
 })
+it('accepts the pictured forty-item request and explains the cap above one hundred items',async()=>{
+ const assets=[fish,{...fish,id:'can',name:'캔'},{...fish,id:'stone',name:'돌'},{...fish,id:'barrel',name:'통'}]
+ api.stock.mockResolvedValue({gold:13848,assets})
+ setup();fireEvent.click(screen.getByRole('tab',{name:'사요'}));fireEvent.click(screen.getByRole('button',{name:'글쓰기'}))
+ const dialog=screen.getByRole('dialog')
+ fireEvent.change(within(dialog).getByLabelText('글 제목'),{target:{value:'쓰레기 구해요'}})
+ for(const [index,asset] of assets.entries()){
+  fireEvent.click(await within(dialog).findByRole('button',{name:asset.name+' 추가'}))
+  fireEvent.change(within(dialog).getByLabelText(asset.name+' 수량'),{target:{value:10}})
+  fireEvent.change(within(dialog).getByLabelText(asset.name+' 개당 가격'),{target:{value:[7,6,7,5][index]}})
+ }
+ expect(within(dialog).getByText('250')).toBeTruthy()
+ expect(within(dialog).getByText('선택 4 / 5종 · 개체 40 / 100개')).toBeTruthy()
+ const submit=within(dialog).getByRole('button',{name:'골드 맡기고 등록'})
+ expect(submit.hasAttribute('disabled')).toBe(false)
+ for(const asset of assets)fireEvent.change(within(dialog).getByLabelText(asset.name+' 수량'),{target:{value:30}})
+ expect(within(dialog).getByRole('status').textContent).toContain('합계 100개까지')
+ expect(submit.hasAttribute('disabled')).toBe(true)
+ expect(submit.getAttribute('aria-describedby')).toBe('flea-draft-validation')
+ fireEvent.click(submit);expect(api.post).not.toHaveBeenCalled()
+ for(const asset of assets)fireEvent.change(within(dialog).getByLabelText(asset.name+' 수량'),{target:{value:25}})
+ expect(submit.hasAttribute('disabled')).toBe(false)
+ expect(within(dialog).queryByRole('status')).toBeNull()
+ fireEvent.click(submit)
+ await waitFor(()=>expect(api.post).toHaveBeenCalledOnce())
+ expect(api.post.mock.calls[0][0].p_items.map((item:{quantity:number})=>item.quantity)).toEqual([25,25,25,25])
+})
 it('limits supplies to available stock and lets only the owner recover remaining escrow',async()=>{
  setup();fireEvent.click(screen.getByRole('tab',{name:'사요'}))
  fireEvent.click(await screen.findByRole('button',{name:/남는 물건 정리해요/}))

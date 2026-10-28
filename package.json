@@ -23,7 +23,8 @@
     "preview": "vite preview",
     "arcade:engine": "node scripts/build-brick-replay.mjs",
     "arcade:engine:check": "node scripts/build-brick-replay.mjs --check",
-    "images:thumbnails": "node scripts/build-collectible-thumbnails.mjs"
+    "images:thumbnails": "node scripts/build-collectible-thumbnails.mjs",
+    "images:background-previews": "node scripts/build-background-previews.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",

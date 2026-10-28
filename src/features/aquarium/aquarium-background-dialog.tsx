@@ -1,4 +1,5 @@
 import {themePanoramaUrl} from './theme-panorama'
+import {backgroundPreviewArt} from './background-preview-art'
 import type {OwnedCollectible} from '@/features/collection/api'
 import {appArt} from '@/components/app-art'
 import { useRef, useState } from 'react'
@@ -16,16 +17,17 @@ import {themeTiers,type ThemeTier} from './theme-tiers'
 const {background:Image,shop:ShoppingBag}=appArt
 
 function Preview({path,name}:{path:string;name:string}){
+ const preview=backgroundPreviewArt(path)
  const [status,setStatus]=useState<'loading'|'ready'|'failed'>('loading')
  const [attempt,setAttempt]=useState(0)
- const [ratio,setRatio]=useState(15/8)
+ const [ratio,setRatio]=useState(preview?preview.width/preview.height:15/8)
  function loaded(image:HTMLImageElement){
   if(image.naturalWidth>0&&image.naturalHeight>0)setRatio(image.naturalWidth/image.naturalHeight)
   setStatus('ready')
  }
  return <div className="aquarium-background-preview relative w-full overflow-hidden bg-secondary/40" style={{aspectRatio:ratio}} aria-busy={status==='loading'}>
   {status==='loading'&&<div aria-hidden="true" className="absolute inset-0 bg-secondary/50 motion-safe:animate-pulse"/>}
-  {status==='failed'?<div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-2 text-center text-muted-foreground"><Image aria-hidden="true" className="size-6"/><p className="text-xs">이미지를 불러오지 못했어요.</p><Button variant="outline" size="sm" onClick={()=>{setStatus('loading');setAttempt(value=>value+1)}}>다시 시도</Button></div>:<img key={attempt} src={themePanoramaUrl(path)??backgroundUrl(path)} alt={name} ref={image=>{if(image?.complete&&image.naturalWidth>0)loaded(image)}} className={'absolute inset-0 size-full object-contain transition-opacity duration-150 motion-reduce:transition-none '+(status==='ready'?'opacity-100':'opacity-0')} onLoad={event=>loaded(event.currentTarget)} onError={()=>setStatus('failed')}/>}
+  {status==='failed'?<div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-2 text-center text-muted-foreground"><Image aria-hidden="true" className="size-6"/><p className="text-xs">이미지를 불러오지 못했어요.</p><Button variant="outline" size="sm" onClick={()=>{setStatus('loading');setAttempt(value=>value+1)}}>다시 시도</Button></div>:<img key={attempt} src={preview?.url??themePanoramaUrl(path)??backgroundUrl(path)} alt={name} loading="lazy" decoding="async" width={preview?.width} height={preview?.height} ref={image=>{if(image?.complete&&image.naturalWidth>0)loaded(image)}} className={'absolute inset-0 size-full object-contain transition-opacity duration-150 motion-reduce:transition-none '+(status==='ready'?'opacity-100':'opacity-0')} onLoad={event=>loaded(event.currentTarget)} onError={()=>setStatus('failed')}/>}
  </div>
 }
 export function AquariumBackgroundDialog({state,selectedId,gold,busy,loading,error,onAct}:{previewItems?:OwnedCollectible[];state:AquariumState;selectedId:string;gold:number;busy:boolean;loading:boolean;error:boolean;onAct:(id:string,owned:boolean)=>Promise<void>}){

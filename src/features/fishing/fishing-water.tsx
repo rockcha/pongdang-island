@@ -4,6 +4,7 @@ import {hasRodSkin,RodSkinFloat,RodSkinFrame,RodSkinRotor,RodSkinGrip,RodSkinSha
 import type {FishingRod} from './fishing-rods'
 import { FishingSea,FishingPlatform } from './fishing-environment'
 import { collectibleUrl } from '@/features/collection/api'
+import {optimizedThumbnailUrl} from '@/features/collection/thumbnail-art'
 import type { Species } from '@/features/collection/api'
 import { useLayoutEffect, useId, useRef, useState } from 'react'
 import { fishBehavior, fishForce, fishStrength } from './tension-game'
@@ -120,7 +121,7 @@ export function FishingWater({game,visual,mood,active,reduced,regionId,rod,pulli
     </g>
    })}
   </g>
-  {active&&!waiting&&!won&&approach>0&&<g data-fishing-shadow="true" transform={`translate(${fx} ${fy}) rotate(${won?-65:warning?-35*Math.min(1,behavior.progress):surge?-15:10}) scale(${lost||escapeProgress>0?-fishScale:fishScale} ${fishScale})`} fill="#092b47" filter={`url(#${id}-${outline?'silhouette':'depth'})`} opacity={shadowOpacity}>{outline?<image href={collectibleUrl(outline.thumbnail_path)} x="-36" y="-32" width="72" height="64" preserveAspectRatio="xMidYMid meet"/>:<><path d="M-28 0Q-16-16 8-9L27-22 23-2 29 16 8 8Q-15 17-28 0Z"/><path d="M-5-8l12-14 4 16Z"/></>}</g>}
+  {active&&!waiting&&!won&&approach>0&&<g data-fishing-shadow="true" transform={`translate(${fx} ${fy}) rotate(${won?-65:warning?-35*Math.min(1,behavior.progress):surge?-15:10}) scale(${lost||escapeProgress>0?-fishScale:fishScale} ${fishScale})`} fill="#092b47" filter={`url(#${id}-${outline?'silhouette':'depth'})`} opacity={shadowOpacity}>{outline?<image href={optimizedThumbnailUrl(outline.thumbnail_path)??collectibleUrl(outline.thumbnail_path)} onError={event=>{const original=collectibleUrl(outline.thumbnail_path);if(event.currentTarget.getAttribute('href')!==original)event.currentTarget.setAttribute('href',original)}} x="-36" y="-32" width="72" height="64" preserveAspectRatio="xMidYMid meet"/>:<><path d="M-28 0Q-16-16 8-9L27-22 23-2 29 16 8 8Q-15 17-28 0Z"/><path d="M-5-8l12-14 4 16Z"/></>}</g>}
   {landingSplash&&<g data-fishing-catch-splash="true" transform={`translate(200 ${nearWater+32})`} pointerEvents="none">
    {[0,1,2].map(i=>{const spread=Math.max(0,(splashProgress-i*.12)/(1-i*.12));return <ellipse key={i} rx={18+spread*(78-i*10)} ry={5+spread*18} fill="none" stroke={i===0?'#efffff':palette.light} strokeWidth={2.5-i*.5} opacity={(1-spread)*.8}/>})}
    <path d={`M-42 3 Q-32 ${-Math.sin(splashProgress*Math.PI)*35} -20 -2 Q-12 ${-Math.sin(splashProgress*Math.PI)*57} 0 -4 Q12 ${-Math.sin(splashProgress*Math.PI)*50} 22 -1 Q33 ${-Math.sin(splashProgress*Math.PI)*30} 44 3 Q0 18 -42 3Z`} fill={palette.light} fillOpacity={(1-splashProgress)*.45} stroke="#e2faff" strokeOpacity={(1-splashProgress)*.7} strokeWidth="1.5"/>

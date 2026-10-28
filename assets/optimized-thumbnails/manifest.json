@@ -5,10 +5,10 @@
     640
   ],
   "summary": {
-    "count": 722,
-    "sourceBytes": 828610809,
-    "smallBytes": 19574028,
-    "largeBytes": 52808624,
+    "count": 727,
+    "sourceBytes": 839138934,
+    "smallBytes": 19778526,
+    "largeBytes": 53417518,
     "smallReductionPercent": 97.64
   },
   "items": [
@@ -12313,6 +12313,26 @@
       }
     },
     {
+      "key": "map/epic/map-starruins_thumbnail.png",
+      "source": ".cache/thumbnail-sources/908aa12738afe6d11828b55c.png",
+      "sourceHash": "bfd5b02c85ce8482606ffdff2ec6394182e1712976b67cf12e98f72220d20c62",
+      "sourceBytes": 1340959,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/de56173b18441f73bb02c3ab-320.webp",
+        "bytes": 21262,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/54eb0756a4d69d540486ce8b-640.webp",
+        "bytes": 52584,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "map/normal/map-bluegrove_thumbnail.png",
       "source": "assets/storage-upload/new/20261017-005542/map/normal/map-bluegrove_thumbnail.png",
       "sourceHash": "4fa3477ec558ba3ee827f71b901d1d986f9b973d5cee713a174d31a91f63904b",
@@ -12393,6 +12413,26 @@
       }
     },
     {
+      "key": "map/rare/map-mukhyang_thumbnail.png",
+      "source": "assets/storage-upload/new/mukhyang-map/map/rare/map-mukhyang_thumbnail.png",
+      "sourceHash": "8bb55fddecce8665868d13d8396b11470e563f5995e6910e7eb765e82f08478b",
+      "sourceBytes": 3476759,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/108a675c094c398116bfb957-320.webp",
+        "bytes": 64064,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/a59b477bf7a4a393b8a48b5c-640.webp",
+        "bytes": 212766,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "map/rare/map-starruins_thumbnail.png",
       "source": ".cache/thumbnail-sources/384fa0af4f708d8197272a09.png",
       "sourceHash": "bfd5b02c85ce8482606ffdff2ec6394182e1712976b67cf12e98f72220d20c62",
@@ -12408,6 +12448,66 @@
       "large": {
         "url": "/game-art/thumbnails/54eb0756a4d69d540486ce8b-640.webp",
         "bytes": 52584,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "map/routes/map-cloudferry_thumbnail.png",
+      "source": "assets/storage-upload/new/cloudferry/map/routes/map-cloudferry_thumbnail.png",
+      "sourceHash": "1a29422b15e6b867183195f3df111fe89fc4fcc94702bfc4f7741c4c40c5aaea",
+      "sourceBytes": 1867713,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/da7a2a440c4305ce33af5b45-320.webp",
+        "bytes": 36580,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/704ecfc25dcf442e23fe6994-640.webp",
+        "bytes": 107776,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "map/routes/map-scrapisle_thumbnail.png",
+      "source": "assets/storage-upload/new/20261017-183433/map/routes/map-scrapisle_thumbnail.png",
+      "sourceHash": "c3210209bd70c1ada7914006b483b16a749819fcb7b56b64828cbfdef5fbdff4",
+      "sourceBytes": 2182227,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/2c2d99dc1dfeb623dfafe025-320.webp",
+        "bytes": 47690,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2d393d95e58abfd5475ebb3f-640.webp",
+        "bytes": 131296,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "map/routes/map-whitenight_thumbnail.png",
+      "source": "assets/storage-upload/new/white-night/map/routes/map-whitenight_thumbnail.png",
+      "sourceHash": "38524f247ff365de25565d3d8733c22976821b86c5d4b1f03085a06f204f6636",
+      "sourceBytes": 1660467,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1fb717c96563f0dd5421c265-320.webp",
+        "bytes": 34902,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9498fc114485e6f2106d65c6-640.webp",
+        "bytes": 104472,
         "width": 640,
         "height": 640
       }

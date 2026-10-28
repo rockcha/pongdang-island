@@ -98,7 +98,8 @@ export function HeaderPlaceNavigation() {
     (to==='/showcase'&&newContent.showcase)||
     (to==='/square/suggestions'&&newContent.suggestions)||
     (to==='/square/bugs'&&newContent.bugs)||
-    (to==='/exchange'&&newContent.exchange)
+    (to==='/exchange'&&newContent.exchange)||
+    (to==='/flea-market'&&newContent.flea)
     ||(to==='/merchant-orders'&&merchantReady)
 
   return (

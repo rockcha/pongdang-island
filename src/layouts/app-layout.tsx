@@ -29,7 +29,7 @@ export function AppLayout() {
   const square=pathname==='/square'
   const showcase=pathname==='/showcase'||pathname.startsWith('/showcase/')
   const noticeList=pathname.startsWith('/square/begging')||pathname.startsWith('/square/sponsorship')||pathname==='/board'||pathname.startsWith('/board/')||pathname==='/square/notices'||(/^\/square\/notices\/[^/]+$/.test(pathname)&&!pathname.endsWith('/new'))||pathname==='/square/suggestions'||pathname.startsWith('/square/suggestions/')||pathname==='/square/bugs'||pathname.startsWith('/square/bugs/')
-  const exchange=pathname==='/merchant-orders'||pathname==='/exchange'||pathname.startsWith('/exchange/')||pathname==='/savings'
+  const exchange=/^\/flea-market\/?$/.test(pathname)||pathname==='/merchant-orders'||pathname==='/exchange'||pathname.startsWith('/exchange/')||pathname==='/savings'
   const friends=pathname==='/friends'||pathname==='/hall-of-fame'
   const shop=pathname==='/shop'||pathname==='/item-shop'||pathname==='/shipyard'
   const shipyard=pathname==='/shipyard'

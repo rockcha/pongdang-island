@@ -1,0 +1,138 @@
+{
+  "scope": "Local bundled assets in actual collection preview and Phaser aquarium; no production deployment or remote mutation",
+  "errors": [],
+  "failed": [],
+  "movement": [
+    {
+      "id": "tile-fitting-crab",
+      "type": "crawl",
+      "fixed": false,
+      "delta": 241.07358766343054,
+      "yRange": 0,
+      "passed": true
+    },
+    {
+      "id": "teacup-nest-blenny",
+      "type": "fixed",
+      "fixed": true,
+      "delta": 0,
+      "yRange": 0,
+      "passed": true
+    },
+    {
+      "id": "cracked-perfume-vial",
+      "type": "fixed",
+      "fixed": true,
+      "delta": 0,
+      "yRange": 0,
+      "passed": true
+    },
+    {
+      "id": "lost-atlantean-crown",
+      "type": "swim",
+      "fixed": false,
+      "delta": 430.86174351572953,
+      "yRange": 63.12736212411636,
+      "passed": true
+    },
+    {
+      "id": "amphora-home-octopus",
+      "type": "pulse",
+      "fixed": false,
+      "delta": 17.28115181516657,
+      "yRange": 9.506009918617053,
+      "passed": true
+    },
+    {
+      "id": "broken-kingdom-tile",
+      "type": "swim",
+      "fixed": false,
+      "delta": 529.2806627447482,
+      "yRange": 56.53096492921924,
+      "passed": true
+    },
+    {
+      "id": "sunken-kingdom-fountain",
+      "type": "fixed",
+      "fixed": true,
+      "delta": 0,
+      "yRange": 0,
+      "passed": true
+    },
+    {
+      "id": "azure-armored-sea-turtle",
+      "type": "swim",
+      "fixed": false,
+      "delta": 472.4883071610205,
+      "yRange": 36.6625547096819,
+      "passed": true
+    },
+    {
+      "id": "templekeeper-moray",
+      "type": "swim",
+      "fixed": false,
+      "delta": 99.35850845809445,
+      "yRange": 48.0797054068282,
+      "passed": true
+    },
+    {
+      "id": "mask-changing-octopus",
+      "type": "pulse",
+      "fixed": false,
+      "delta": 59.18326422113884,
+      "yRange": 4.924884579806047,
+      "passed": true
+    },
+    {
+      "id": "letter-carrier-ray",
+      "type": "swim",
+      "fixed": false,
+      "delta": 412.01606976450967,
+      "yRange": 52.143024252113975,
+      "passed": true
+    },
+    {
+      "id": "atlantean-guard-shark",
+      "type": "swim",
+      "fixed": false,
+      "delta": 375.9128069054052,
+      "yRange": 58.55046700333986,
+      "passed": true
+    },
+    {
+      "id": "living-mosaic-ray",
+      "type": "swim",
+      "fixed": false,
+      "delta": 264.5985007563162,
+      "yRange": 68.99334281950621,
+      "passed": true
+    },
+    {
+      "id": "palace-lantern-anglerfish",
+      "type": "swim",
+      "fixed": false,
+      "delta": 275.28595859664597,
+      "yRange": 54.39947040990663,
+      "passed": true
+    },
+    {
+      "id": "atlantean-giant-squid",
+      "type": "pulse",
+      "fixed": false,
+      "delta": 55.44939186645368,
+      "yRange": 8.824631507966558,
+      "passed": true
+    },
+    {
+      "id": "atlantean-sentinel",
+      "type": "fixed",
+      "fixed": true,
+      "delta": 0,
+      "yRange": 0,
+      "passed": true
+    }
+  ],
+  "reduced": true,
+  "overflow": false,
+  "passed": true
+}

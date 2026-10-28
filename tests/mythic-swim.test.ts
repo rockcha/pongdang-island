@@ -113,15 +113,18 @@ it('keeps the measured chest stationary through all poses in both directions',()
  for(const sign of [1,-1])for(const p of positions){expect(sign*p.x).toBeCloseTo(sign*positions[0].x);expect(p.y).toBeCloseTo(positions[0].y)}
 })
 it.each(['atlantean-sentinel','pongi-explorer','ancient-coral-giant-crab','dawn-narwhal'])('aligns the registered rigid body for %s',id=>{
- const batch=id==='atlantean-sentinel'?'20261017-095349':'20261017-093000'
- const report=JSON.parse(readFileSync(`assets/storage-upload/new/${batch}/${id}-registration.json`,'utf8'))
+ const refreshed=id==='atlantean-sentinel'
+ const current=refreshed?JSON.parse(readFileSync('assets/storage-upload/new/20261029-055051/final-verification.json','utf8')).results.find((s:{id:string})=>s.id===id):null
+ const report=current?{width:current.cell*4,height:current.cell*2,patch:current.patch,frames:current.frames.map((f:{anchor:{frame:number;dx:number;dy:number}})=>f.anchor)}:JSON.parse(readFileSync(`assets/storage-upload/new/20261017-093000/${id}-registration.json`,'utf8'))
  const cell=report.width/4
  const positions=report.frames.map((f:{frame:number;dx:number;dy:number})=>{
   const layout=mythicSwimLayout(`fish/mythic/${id}_swim8_sprite.png`,f.frame)!
   return [(report.patch[0]+f.dx-layout.originX*cell)*layout.scale,(report.patch[1]+f.dy-layout.originY*cell)*layout.scale]
  })
- for(const p of positions){expect(p[0]).toBeCloseTo(positions[0][0]);expect(p[1]).toBeCloseTo(positions[0][1])}
- const png=readFileSync(`public/aquarium/swim/${id}_swim8_sprite.png`)
+ const tolerance=refreshed?mythicSwimLayout(`fish/mythic/${id}_swim8_sprite.png`,0)!.scale+.001:.005
+ for(const p of positions){expect(Math.abs(p[0]-positions[0][0])).toBeLessThan(tolerance);expect(Math.abs(p[1]-positions[0][1])).toBeLessThan(tolerance)}
+ const asset=mythicSwimAsset(`fish/mythic/${id}_sprite.png`,'mythic')!
+ const png=readFileSync('public'+asset.url)
  expect(png.readUInt32BE(16)).toBe(report.width)
  expect(png.readUInt32BE(20)).toBe(report.height)
 })

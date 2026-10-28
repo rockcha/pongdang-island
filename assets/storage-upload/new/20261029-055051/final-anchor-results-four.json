@@ -1,0 +1,446 @@
+[
+  {
+    "file": "assets/storage-upload/new/20261029-055051/fish/normal/tile-fitting-crab_bluegold_v2_sprite.png",
+    "storage_path": "fish/normal/tile-fitting-crab_bluegold_v2_sprite.png",
+    "patch": [
+      275,
+      179,
+      50,
+      44
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 33.219059722601344
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 16.372999078184463
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 19.92287500880836
+      }
+    ]
+  },
+  {
+    "file": "assets/storage-upload/new/20261029-055051/fish/normal/teacup-nest-blenny_bluegold_v2_sprite.png",
+    "storage_path": "fish/normal/teacup-nest-blenny_bluegold_v2_sprite.png",
+    "patch": [
+      296,
+      351,
+      56,
+      50
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 13.151710621058461
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 8.04678656320696
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 15.012043668613515
+      }
+    ]
+  },
+  {
+    "file": "assets/storage-upload/new/20261029-055051/fish/normal/amphora-home-octopus_bluegold_v2_sprite.png",
+    "storage_path": "fish/normal/amphora-home-octopus_bluegold_v2_sprite.png",
+    "patch": [
+      397,
+      261,
+      50,
+      50
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 12.36477024665623
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 11.584240876216304
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 17.85710776071687
+      }
+    ]
+  },
+  {
+    "file": "assets/storage-upload/new/20261029-055051/decorations/rare/sunken-kingdom-fountain_bluegold_v2_sprite.png",
+    "storage_path": "decorations/rare/sunken-kingdom-fountain_bluegold_v2_sprite.png",
+    "patch": [
+      287,
+      475,
+      63,
+      28
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 9.455409134710242
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 9.331781333547355
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 9.759000729485331
+      }
+    ]
+  },
+  {
+    "file": "assets/storage-upload/new/20261029-055051/fish/rare/azure-armored-sea-turtle_bluegold_v2_sprite.png",
+    "storage_path": "fish/rare/azure-armored-sea-turtle_bluegold_v2_sprite.png",
+    "patch": [
+      469,
+      244,
+      47,
+      41
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 13.923499534445867
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 16.58958365102288
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 10.242702105820095
+      }
+    ]
+  },
+  {
+    "file": "assets/storage-upload/new/20261029-055051/fish/rare/templekeeper-moray_bluegold_v2_sprite.png",
+    "storage_path": "fish/rare/templekeeper-moray_bluegold_v2_sprite.png",
+    "patch": [
+      490,
+      369,
+      42,
+      36
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 20.488927032726263
+      },
+      {
+        "frame": 2,
+        "dx": -1,
+        "dy": 1,
+        "rmse": 24.72329006076197
+      },
+      {
+        "frame": 3,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 23.038044363513976
+      }
+    ]
+  },
+  {
+    "file": "assets/storage-upload/new/20261029-055051/fish/rare/mask-changing-octopus_bluegold_v2_sprite.png",
+    "storage_path": "fish/rare/mask-changing-octopus_bluegold_v2_sprite.png",
+    "patch": [
+      374,
+      265,
+      50,
+      50
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 14.798122484482413
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 14.317096030771228
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 16.440255682939217
+      }
+    ]
+  },
+  {
+    "file": "assets/storage-upload/new/20261029-055051/fish/rare/letter-carrier-ray_bluegold_v2_sprite.png",
+    "storage_path": "fish/rare/letter-carrier-ray_bluegold_v2_sprite.png",
+    "patch": [
+      460,
+      317,
+      44,
+      41
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 20.070737998626853
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 12.808154024831584
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 24.76910037392019
+      }
+    ]
+  },
+  {
+    "file": "assets/storage-upload/new/20261029-055051/fish/epic/atlantean-guard-shark_bluegold_v2_sprite.png",
+    "storage_path": "fish/epic/atlantean-guard-shark_bluegold_v2_sprite.png",
+    "patch": [
+      451,
+      305,
+      39,
+      39
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 16.85054386072945
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 14.87293320135051
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 22.42723275909824
+      }
+    ]
+  },
+  {
+    "file": "assets/storage-upload/new/20261029-055051/fish/epic/living-mosaic-ray_bluegold_v2_sprite.png",
+    "storage_path": "fish/epic/living-mosaic-ray_bluegold_v2_sprite.png",
+    "patch": [
+      443,
+      337,
+      44,
+      44
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 37.20383791432754
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 21.004153028495207
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 20.777819370130683
+      }
+    ]
+  },
+  {
+    "file": "assets/storage-upload/new/20261029-055051/fish/epic/palace-lantern-anglerfish_bluegold_v2_sprite.png",
+    "storage_path": "fish/epic/palace-lantern-anglerfish_bluegold_v2_sprite.png",
+    "patch": [
+      390,
+      301,
+      44,
+      50
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 14.213980966005293
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 15.196039215635674
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 15.594462315256681
+      }
+    ]
+  },
+  {
+    "file": "assets/storage-upload/new/20261029-055051/fish/epic/atlantean-giant-squid_bluegold_v2_sprite.png",
+    "storage_path": "fish/epic/atlantean-giant-squid_bluegold_v2_sprite.png",
+    "patch": [
+      326,
+      281,
+      35,
+      35
+    ],
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 25.953952278774207
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 1,
+        "rmse": 27.692445319577285
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 21.3310952602064
+      }
+    ]
+  }
+]

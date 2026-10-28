@@ -1,0 +1,61 @@
+{
+  "file": "assets/storage-upload/new/20261029-055051/sources/atlantean-sentinel-sprite-grid.source",
+  "storage_path": "fish/mythic/atlantean-sentinel_swim8_bluegold_v2_sprite.png",
+  "patch": [
+    244,
+    191,
+    22,
+    22
+  ],
+  "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling",
+  "frames": [
+    {
+      "frame": 0,
+      "dx": 0,
+      "dy": 0,
+      "rmse": 0
+    },
+    {
+      "frame": 1,
+      "dx": 0,
+      "dy": 0,
+      "rmse": 20.050814353786233
+    },
+    {
+      "frame": 2,
+      "dx": -1,
+      "dy": 0,
+      "rmse": 18.182452048609946
+    },
+    {
+      "frame": 3,
+      "dx": 0,
+      "dy": 0,
+      "rmse": 17.85313347846814
+    },
+    {
+      "frame": 4,
+      "dx": 0,
+      "dy": 0,
+      "rmse": 27.8447846328536
+    },
+    {
+      "frame": 5,
+      "dx": 0,
+      "dy": 0,
+      "rmse": 27.993860934140542
+    },
+    {
+      "frame": 6,
+      "dx": -1,
+      "dy": 0,
+      "rmse": 28.87148246973127
+    },
+    {
+      "frame": 7,
+      "dx": 0,
+      "dy": 0,
+      "rmse": 27.815589716020764
+    }
+  ]
+}

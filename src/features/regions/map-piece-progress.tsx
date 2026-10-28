@@ -8,7 +8,7 @@ export function MapPieceProgress({region}:{region:Region}){
 
 export function MapPieceArtwork({region,compact=false}:{region:Region;compact?:boolean}){
  if(!region.mapPieceCount||!region.map_image_path)return null
- const columns=Math.ceil(Math.sqrt(region.mapPieceCount)),rows=Math.ceil(region.mapPieceCount/columns)
+ const columns=region.mapPieceCount===8?4:Math.ceil(Math.sqrt(region.mapPieceCount)),rows=Math.ceil(region.mapPieceCount/columns)
  return <div role="img" aria-label={`${region.name} 지도 ${region.mapPieces?.length??0}/${region.mapPieceCount}조각 수집`} className={`relative mx-auto aspect-square overflow-hidden border border-amber-200/40 bg-[#e6cfaa] shadow-lg ${compact?'size-16 rounded-lg':'w-[min(52vw,25dvh,14rem)] rounded-xl'}`}>
    <img src={region.map_image_path} alt="" className="absolute inset-0 size-full object-cover opacity-20 grayscale sepia"/>
    {Array.from({length:region.mapPieceCount},(_,i)=>{

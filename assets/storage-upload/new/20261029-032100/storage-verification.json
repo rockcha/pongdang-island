@@ -1,0 +1,528 @@
+{
+  "project": "ewafafphiovbpjwogwzn",
+  "verifiedAt": "2026-10-28T20:17:50.749Z",
+  "scope": "Public bytes of the 104 fairy collectible and rod images only; not frontend deployment.",
+  "count": 104,
+  "files": [
+    {
+      "path": "fish/normal/firefly-leaf-medaka_v1_thumbnail.png",
+      "sha256": "acae9fcd75c4baf4d85e61f88b6e4e5a26607b6fc139218e413697daa9666df7",
+      "bytes": 683952
+    },
+    {
+      "path": "fish/normal/firefly-leaf-medaka_v1_sprite.png",
+      "sha256": "9b9184fefce033337ecd2e8aafa999ccc303a770667d42348c86065c9905cdde",
+      "bytes": 883197
+    },
+    {
+      "path": "fish/normal/firefly-acorn-puffer_v1_thumbnail.png",
+      "sha256": "3ba4ae5e38e145b4404e393def37cd197a20023eb7b63d2adf493be4f809cdd9",
+      "bytes": 1043909
+    },
+    {
+      "path": "fish/normal/firefly-acorn-puffer_v1_sprite.png",
+      "sha256": "8688683a06bf7707b9c6586ed3fbd703c2d561dd995751ead8aa18980258ffe5",
+      "bytes": 732897
+    },
+    {
+      "path": "fish/normal/firefly-honey-guppy_v1_thumbnail.png",
+      "sha256": "2e45a185b20b2a5061b172f487967c10c63708ad8ed4445aa51cf75ea4f5b221",
+      "bytes": 886071
+    },
+    {
+      "path": "fish/normal/firefly-honey-guppy_v1_sprite.png",
+      "sha256": "52fdba8e60d841d593f18efdcbedb62a4d802e4f2cbbef150b366d19bced1078",
+      "bytes": 1145799
+    },
+    {
+      "path": "fish/normal/firefly-petal-bitterling_v1_thumbnail.png",
+      "sha256": "10e1d32b3077c0345fa2d45a2f18dd2b355dae3fff8f2831d2c8843c1f4fe5aa",
+      "bytes": 810658
+    },
+    {
+      "path": "fish/normal/firefly-petal-bitterling_v1_sprite.png",
+      "sha256": "ac42edf2dc1143f525ba96ee00ea976a8798ed6a0ab9e7cf6eb941a0a212b93e",
+      "bytes": 1085826
+    },
+    {
+      "path": "fish/normal/firefly-sprout-minnow_v1_thumbnail.png",
+      "sha256": "b160dcf40090ce21e1427f380d1b7b81ed78c40eef180d7ae99e496bff494349",
+      "bytes": 629707
+    },
+    {
+      "path": "fish/normal/firefly-sprout-minnow_v1_sprite.png",
+      "sha256": "5ef459ccac32ba639141010fddc11d6d278b435dd2737f4ea3549c6a50f96813",
+      "bytes": 853317
+    },
+    {
+      "path": "fish/normal/firefly-clover-platy_v1_thumbnail.png",
+      "sha256": "117d084fe77299e1ff349eb2bbaf96af474edee383060cc66bf223cff81fd4a6",
+      "bytes": 680982
+    },
+    {
+      "path": "fish/normal/firefly-clover-platy_v1_sprite.png",
+      "sha256": "144b3e5bc03db5062c34eb1db8facbafc3041e01ac80f19c29d6d846387749de",
+      "bytes": 1007365
+    },
+    {
+      "path": "fish/normal/firefly-willow-loach_v1_thumbnail.png",
+      "sha256": "91009accfb3203b5497694d9f2003f762147c84c489e11505a8d8ec44603812e",
+      "bytes": 646910
+    },
+    {
+      "path": "fish/normal/firefly-willow-loach_v1_sprite.png",
+      "sha256": "521fa3e569c610d83202b2a2c1a4e0b21a4bc8c776eab825f314910d9385295d",
+      "bytes": 789435
+    },
+    {
+      "path": "fish/normal/firefly-moss-goby_v1_thumbnail.png",
+      "sha256": "c2128f464b0d6b9696d3a54b29a9a566788fcc417b5dcd1a20c54f93ccaeb679",
+      "bytes": 844821
+    },
+    {
+      "path": "fish/normal/firefly-moss-goby_v1_sprite.png",
+      "sha256": "3eac4908b47edc0e224c5b2a3ed8ff16b04875185b32395af8bd20433934617c",
+      "bytes": 763944
+    },
+    {
+      "path": "fish/normal/firefly-bud-goldfish_v1_thumbnail.png",
+      "sha256": "932671afe6b7f4aa224f46d7b961085549274321f25c1dd78ec1378269f44c37",
+      "bytes": 903343
+    },
+    {
+      "path": "fish/normal/firefly-bud-goldfish_v1_sprite.png",
+      "sha256": "025a8376397ebd0934d44d185bda2c54fee505bbe85ff6597dcfc1171e0f26ca",
+      "bytes": 1231547
+    },
+    {
+      "path": "fish/normal/firefly-daisy-medaka_v1_thumbnail.png",
+      "sha256": "a203d53dd1a6643bcf75b54b1a90eca820e533c2910fd6d8f094e608e1e539ce",
+      "bytes": 705223
+    },
+    {
+      "path": "fish/normal/firefly-daisy-medaka_v1_sprite.png",
+      "sha256": "432a722eac9fe03bb76095c83de854f3097ebfaee8b9b95827b7d656c1e5a43a",
+      "bytes": 973631
+    },
+    {
+      "path": "fish/normal/firefly-dandelion-guppy_v1_thumbnail.png",
+      "sha256": "0449474d6564bfb25981bc77d34596697ab505f2fefd06339e38364e493fc535",
+      "bytes": 940641
+    },
+    {
+      "path": "fish/normal/firefly-dandelion-guppy_v1_sprite.png",
+      "sha256": "f3b4ee4c6bc29a1ac48348d6fe9982d41b77b21b83742d66fcdd4676b588dc75",
+      "bytes": 1350126
+    },
+    {
+      "path": "fish/normal/firefly-grass-seed-anchovy_v1_thumbnail.png",
+      "sha256": "223b05c0537214232afa782781cc9e5426d95c42b48658caec2134985f9a0758",
+      "bytes": 567902
+    },
+    {
+      "path": "fish/normal/firefly-grass-seed-anchovy_v1_sprite.png",
+      "sha256": "087f545c5237660984ba66b9e243fc5119e1f379744c0ea05a7e64ff2b4b5e3f",
+      "bytes": 729999
+    },
+    {
+      "path": "fish/normal/firefly-pinecone-carp_v1_thumbnail.png",
+      "sha256": "19c233294aa0ab2811dac5fe8549f97f6aa0680420045d36865b1d41afc1b9f5",
+      "bytes": 1069892
+    },
+    {
+      "path": "fish/normal/firefly-pinecone-carp_v1_sprite.png",
+      "sha256": "4b9afb56f6f68c4c84fd5f5d1f5e8f751ef44aee27b0259d6af5d402b47e6d90",
+      "bytes": 868721
+    },
+    {
+      "path": "fish/normal/firefly-waterlily-fry_v1_thumbnail.png",
+      "sha256": "378c9d020e4d2aa8fb8a2303a25828ec0c278ae854860d60e526e8eddb54d4cb",
+      "bytes": 601535
+    },
+    {
+      "path": "fish/normal/firefly-waterlily-fry_v1_sprite.png",
+      "sha256": "7454d85dbb7af54370bd94e612245c2b8f0327ebd5596c065f20c0d0ef6d83ff",
+      "bytes": 519439
+    },
+    {
+      "path": "fish/normal/firefly-mushroom-sculpin_v1_thumbnail.png",
+      "sha256": "90727e6c7e9c34ed91fba6c38f3b4849a8e1f479a60bd369c54678948ea99f60",
+      "bytes": 885315
+    },
+    {
+      "path": "fish/normal/firefly-mushroom-sculpin_v1_sprite.png",
+      "sha256": "2c384bf1dadc00a89d99ec08dbb67684f07ac7378c90f929824c1b060c5cad12",
+      "bytes": 744896
+    },
+    {
+      "path": "fish/rare/firefly-firefly-lanternfish_v1_thumbnail.png",
+      "sha256": "11deb980428650594a564aae2315909affc24f99c5d0777635ad2883d2660e66",
+      "bytes": 735740
+    },
+    {
+      "path": "fish/rare/firefly-firefly-lanternfish_v1_sprite.png",
+      "sha256": "4dcf91d79f0698d52a2aa52f9d49f27901006fbb5e77776c22ef5bc031b9c885",
+      "bytes": 667684
+    },
+    {
+      "path": "fish/rare/firefly-flower-cloak-seahorse_v1_thumbnail.png",
+      "sha256": "40a5f25166834bf2964881a71d4e88ee51f25615b93965703aceaac039814ebb",
+      "bytes": 986792
+    },
+    {
+      "path": "fish/rare/firefly-flower-cloak-seahorse_v1_sprite.png",
+      "sha256": "1bcb71e84c9ea69d268aaa12f50a9faf6646e6a87eafe0fc6d79b55f438921da",
+      "bytes": 1419132
+    },
+    {
+      "path": "fish/rare/firefly-waterlily-jellyfish_v1_thumbnail.png",
+      "sha256": "194fcff9de54535ab1c3efaf762599c403ce1aa0e5e2db65b2af8a62b9f52fb9",
+      "bytes": 1066300
+    },
+    {
+      "path": "fish/rare/firefly-waterlily-jellyfish_v1_sprite.png",
+      "sha256": "7c7ef22c8d0a11cc8c41e88aa2e26561df6896d3e18aae45bb6580e45401d49f",
+      "bytes": 1265529
+    },
+    {
+      "path": "fish/rare/firefly-leaf-wing-guppy_v1_thumbnail.png",
+      "sha256": "92a246dc4dee24728186600ff777d0b22aa3ac9d334ddf46047084b23a750fed",
+      "bytes": 982576
+    },
+    {
+      "path": "fish/rare/firefly-leaf-wing-guppy_v1_sprite.png",
+      "sha256": "c4a3d2e9d6ab31515ccfd3c1a31b8cf551e768fa0fdae9aaefca7bc179b0e2f3",
+      "bytes": 1140204
+    },
+    {
+      "path": "fish/rare/firefly-clover-postfish_v1_thumbnail.png",
+      "sha256": "abb2de53dc2023cc0dc3d5d45c4376511a97b358978ac781457010e1a7009414",
+      "bytes": 944264
+    },
+    {
+      "path": "fish/rare/firefly-clover-postfish_v1_sprite.png",
+      "sha256": "e827a1908c283458e9c8f9f8db9f974c9e368b0aa89af5cc6c952f844c02bf5c",
+      "bytes": 979543
+    },
+    {
+      "path": "fish/rare/firefly-willow-ribbon-pipefish_v1_thumbnail.png",
+      "sha256": "66f53c02bb04e0871693ef289570345533401bea8703b28e680499aa1ca567eb",
+      "bytes": 635442
+    },
+    {
+      "path": "fish/rare/firefly-willow-ribbon-pipefish_v1_sprite.png",
+      "sha256": "3ef7e9eca695704a24990568951705c03ec7afcd926bb9f8d3e30d0512e191fb",
+      "bytes": 837288
+    },
+    {
+      "path": "fish/rare/firefly-acorn-lantern-hermit_v1_thumbnail.png",
+      "sha256": "32fa3434f14f77721f268b359200c4388a1640303a455dfcb9b1cb544e8be59d",
+      "bytes": 1109006
+    },
+    {
+      "path": "fish/rare/firefly-acorn-lantern-hermit_v1_sprite.png",
+      "sha256": "0058af49f1241a739b61eae61633f95a2087f17986bfc01d6e6e1e9fe070ff42",
+      "bytes": 935899
+    },
+    {
+      "path": "fish/rare/firefly-flower-letter-batfish_v1_thumbnail.png",
+      "sha256": "2c6b23590f42ab13a403c45079bded20e7dd77a1264f658fceed1fa80895c2e7",
+      "bytes": 976895
+    },
+    {
+      "path": "fish/rare/firefly-flower-letter-batfish_v1_sprite.png",
+      "sha256": "881428509096c6c5a8e95a5b68ba0c05a2d285cca36f250820413fc9a5c02709",
+      "bytes": 880385
+    },
+    {
+      "path": "fish/rare/firefly-clover-ray_v1_thumbnail.png",
+      "sha256": "b1b9246adb801069a01b84d2f2ec54937e28eaf38ba081f257edd5fa0308ac11",
+      "bytes": 786235
+    },
+    {
+      "path": "fish/rare/firefly-clover-ray_v1_sprite.png",
+      "sha256": "07996934d3a62df50f0015592072a7b5d4f269d1bdb5e43328f4f03add3afea7",
+      "bytes": 730035
+    },
+    {
+      "path": "fish/rare/firefly-woodgrain-turtle_v1_thumbnail.png",
+      "sha256": "8797c64cb10a40155e6e5340d81225496a9cb23044d923a1d49f5ffbc560978f",
+      "bytes": 923219
+    },
+    {
+      "path": "fish/rare/firefly-woodgrain-turtle_v1_sprite.png",
+      "sha256": "5dee9990cda2df4335c20362a4642513484d904b164febd001c4b6390dabb566",
+      "bytes": 859752
+    },
+    {
+      "path": "fish/epic/firefly-lantern-keeper-fairy_v1_thumbnail.png",
+      "sha256": "6956f6ad57b4f1864958cdcf6f0cc9f68e4e36c4a6ffea015e1fbd297b5e6d40",
+      "bytes": 1453741
+    },
+    {
+      "path": "fish/epic/firefly-lantern-keeper-fairy_v1_sprite.png",
+      "sha256": "fca6d821e337f295624e919eb34ccdb64c93240a79ff0c4ca68d9142b85d2aaf",
+      "bytes": 1069930
+    },
+    {
+      "path": "fish/epic/firefly-acorn-warden-fairy_v1_thumbnail.png",
+      "sha256": "d205d0c37ba228427a91750bfc313010c0401b0071f783f5b18f324b7afd85c2",
+      "bytes": 1546153
+    },
+    {
+      "path": "fish/epic/firefly-acorn-warden-fairy_v1_sprite.png",
+      "sha256": "32a434bc0e6329e20d449e08e93069f347af12a8551d9f756fb75f92338cf747",
+      "bytes": 1311176
+    },
+    {
+      "path": "fish/epic/firefly-waterlily-dancer-fairy_v1_thumbnail.png",
+      "sha256": "f0d16bf58eab1de4591827ddebd154cd356f9ec6c9fc93b11789ff145c03a42e",
+      "bytes": 1514405
+    },
+    {
+      "path": "fish/epic/firefly-waterlily-dancer-fairy_v1_sprite.png",
+      "sha256": "e2581bdd5a1f7161fddf1fbe0cc457fadeb930b0d615cee8c57457b54ac125d9",
+      "bytes": 1235913
+    },
+    {
+      "path": "fish/epic/firefly-clover-luck-fairy_v1_thumbnail.png",
+      "sha256": "9ca44d10c04acce72bdb262a784739f4ad7c67b46d1472f39ffb809c272cd0c5",
+      "bytes": 1494535
+    },
+    {
+      "path": "fish/epic/firefly-clover-luck-fairy_v1_sprite.png",
+      "sha256": "30a75f92802674986c2146d211f37ea0ccaa8506d412571d154d1910c30eb0ee",
+      "bytes": 1171777
+    },
+    {
+      "path": "fish/epic/firefly-flower-post-fairy_v1_thumbnail.png",
+      "sha256": "3d098fc0c831d3dc7c2fe14e22866a771446eef5dd23e58ab1f8f6e661448b36",
+      "bytes": 1495056
+    },
+    {
+      "path": "fish/epic/firefly-flower-post-fairy_v1_sprite.png",
+      "sha256": "bccde2794eb7b6c51a47041feccb7f7aa7843e506d68675ebb0c102502cb7e48",
+      "bytes": 1165652
+    },
+    {
+      "path": "fish/epic/firefly-mushroom-child-fairy_v1_thumbnail.png",
+      "sha256": "e46bbe35bed338f46154b55a2c22115258c7a84dc6fe7c982aa7a4548c45bebd",
+      "bytes": 1401176
+    },
+    {
+      "path": "fish/epic/firefly-mushroom-child-fairy_v1_sprite.png",
+      "sha256": "4ea1f3bfc83fb263cbca317401913d1927a30292313cd5d63f6f9cad845112d6",
+      "bytes": 1096605
+    },
+    {
+      "path": "fish/epic/firefly-honey-teahouse-fairy_v1_thumbnail.png",
+      "sha256": "e3914ce0a9243ccf0ba058a29ec473cd179acc608ade9d4a1fa3cd77b569320a",
+      "bytes": 1587488
+    },
+    {
+      "path": "fish/epic/firefly-honey-teahouse-fairy_v1_sprite.png",
+      "sha256": "4dc91932a082354781476748093eb9cb687bfb1c738bf934e5f4836746ca3dcb",
+      "bytes": 1374098
+    },
+    {
+      "path": "fish/epic/firefly-evening-lullaby-fairy_v1_thumbnail.png",
+      "sha256": "da0124d4a93ce16ee4eaf04cf74ce2be7cfeaafac6e53ee0e52e534bf7efafb3",
+      "bytes": 1720454
+    },
+    {
+      "path": "fish/epic/firefly-evening-lullaby-fairy_v1_sprite.png",
+      "sha256": "0ead73927268c46c2dd0f7ccecfb74a09cb035da17cc2437ee18a4683526e705",
+      "bytes": 1107908
+    },
+    {
+      "path": "trash/normal/firefly-broken-acorn-cup_v1_thumbnail.png",
+      "sha256": "bc39084bbd85dc4c2d06e1ddfd74738505a22cc91f24243f6e9f1d7ffb2f592f",
+      "bytes": 964849
+    },
+    {
+      "path": "trash/normal/firefly-torn-leaf-umbrella_v1_thumbnail.png",
+      "sha256": "e535e09029da7d559a81dc4744f98b954b46897f18ec7043814b9fb7ed4ba574",
+      "bytes": 977309
+    },
+    {
+      "path": "trash/normal/firefly-spent-firefly-lantern_v1_thumbnail.png",
+      "sha256": "159aea3ded40991e131f431026c49f7261dcd7f9a471c040e07f7bf561f84e8b",
+      "bytes": 973776
+    },
+    {
+      "path": "trash/normal/firefly-tangled-grass-thread_v1_thumbnail.png",
+      "sha256": "8b013ef1abb6f4e4e485cc1a9a4bfd503cbf13aaab176b994dadfddc145b0582",
+      "bytes": 1347030
+    },
+    {
+      "path": "trash/normal/firefly-wet-flower-letter_v1_thumbnail.png",
+      "sha256": "433be93fbc21fdb854c83c65b58dd8105d056b9e681005e67403647559850541",
+      "bytes": 1300752
+    },
+    {
+      "path": "trash/normal/firefly-single-petal-shoe_v1_thumbnail.png",
+      "sha256": "286008126482e4fe88a5e9e7f98ac27e4e58e157b75abd4d35bb9b45c12224ca",
+      "bytes": 917050
+    },
+    {
+      "path": "trash/normal/firefly-cracked-honey-pot_v1_thumbnail.png",
+      "sha256": "76fde882796b5560610370dd22f1eda41a3458296061979723657b3a56386f54",
+      "bytes": 920233
+    },
+    {
+      "path": "trash/rare/firefly-faded-fairy-invitation_v1_thumbnail.png",
+      "sha256": "2b85f34f60069f2d883e227c0bfea98027d99fffd2ae053c925264f4682a3a38",
+      "bytes": 1225005
+    },
+    {
+      "path": "trash/rare/firefly-cracked-dew-perfume_v1_thumbnail.png",
+      "sha256": "ae1a731c78a9981d37e4338dc1f01d2a28013b8a3c0e64d4323b4053292d2279",
+      "bytes": 981961
+    },
+    {
+      "path": "trash/rare/firefly-broken-flower-lamp-staff_v1_thumbnail.png",
+      "sha256": "ac99f89aa95b99259472ecc9b4d17284fc670c7a1131f5a7df97268942239351",
+      "bytes": 673608
+    },
+    {
+      "path": "trash/rare/firefly-untied-flower-mask_v1_thumbnail.png",
+      "sha256": "94baf04e9266c4f88522c170dad8a0a2daf74f6d1c014b050ee7b8983798db4d",
+      "bytes": 1141462
+    },
+    {
+      "path": "trash/rare/firefly-torn-leaf-map_v1_thumbnail.png",
+      "sha256": "0ed3a21f817fe949044561d446ddfc8bad89d1da24c0b0aa0a54aeaba2c72845",
+      "bytes": 1493105
+    },
+    {
+      "path": "decorations/normal/firefly-acorn-teacups_v1_thumbnail.png",
+      "sha256": "6699124a4323cf8768117b242db6af31e3e227c1fa9405983165e375bea7b678",
+      "bytes": 1071606
+    },
+    {
+      "path": "decorations/normal/firefly-mushroom-stool_v1_thumbnail.png",
+      "sha256": "c7371ed0df8fd1b52c70f199547d6bd934fc256749b3aad1b16215b3779ac92d",
+      "bytes": 876716
+    },
+    {
+      "path": "decorations/normal/firefly-pebble-flowerpot_v1_thumbnail.png",
+      "sha256": "59f9b821cecf36fa139df81c7afa33d28f497b5af62bed6da3110fcd19981637",
+      "bytes": 1091237
+    },
+    {
+      "path": "decorations/normal/firefly-grass-thread-basket_v1_thumbnail.png",
+      "sha256": "cf0717a2a2615e1d51e8b96658167d597e95656c40f26ab4fbbfb9a6d19cf5be",
+      "bytes": 1339416
+    },
+    {
+      "path": "decorations/normal/firefly-acorn-signpost_v1_thumbnail.png",
+      "sha256": "dd7a1d135f902b78da062db8bf041dd6514a403ccb44bf636baa1e474f256450",
+      "bytes": 865098
+    },
+    {
+      "path": "decorations/normal/firefly-moss-stump-table_v1_thumbnail.png",
+      "sha256": "91824df237ba7fbf370f6263977ed7d083ff18389f8c91619ececd6f2f95ae52",
+      "bytes": 1099566
+    },
+    {
+      "path": "decorations/rare/firefly-leafroof-acorn-house_v1_thumbnail.png",
+      "sha256": "f8ec68808e9af4e88160fc5fa8efb2b9fdd6cf4642740b5882232571beb19690",
+      "bytes": 1447531
+    },
+    {
+      "path": "decorations/rare/firefly-firefly-flower-lamppost_v1_thumbnail.png",
+      "sha256": "cc6a9d1a679043eed49ea357535d691d42452844b8d75c556adfa392369259a6",
+      "bytes": 823539
+    },
+    {
+      "path": "decorations/rare/firefly-moss-arch-bridge_v1_thumbnail.png",
+      "sha256": "99e077b925fea3ecc9e430636000136e3066759b65cf87fa1c370dea63da60ec",
+      "bytes": 1111153
+    },
+    {
+      "path": "decorations/rare/firefly-honey-acorn-teahouse_v1_thumbnail.png",
+      "sha256": "376860b9dec9b642ab7ae9dd3db48a4258aca3936b98e23b860c82ea5e43b9ea",
+      "bytes": 1419619
+    },
+    {
+      "path": "decorations/rare/firefly-lily-bell-tower_v1_thumbnail.png",
+      "sha256": "faf5485b8f6a2668eb55ef1c129408df58f6ea9332b6b475d11d66c05f84ca3e",
+      "bytes": 1185045
+    },
+    {
+      "path": "decorations/rare/firefly-leafboat-dock_v1_thumbnail.png",
+      "sha256": "253ef5454d897e549479c87c3608581be9de5d84c2dbfeff9d76c74fa18efd06",
+      "bytes": 990783
+    },
+    {
+      "path": "decorations/rare/firefly-fairy-village-mailbox_v1_thumbnail.png",
+      "sha256": "61ee260868bfa44eeb07c5eed6b5842b3197c3cc41f4e1a1d867234a7d81da78",
+      "bytes": 1164614
+    },
+    {
+      "path": "decorations/rare/firefly-waterlily-pavilion_v1_thumbnail.png",
+      "sha256": "33086539d4aada32f501448829d86b1748ce9716728b94aae1eccc26b92f39ed",
+      "bytes": 1437340
+    },
+    {
+      "path": "fish/mythic/firefly-millennium-lantern-queen_v1_thumbnail.png",
+      "sha256": "7fd2f0620544461e010de88bbc484424d98b706607355dce6f7306cec862ea7e",
+      "bytes": 1868583
+    },
+    {
+      "path": "fish/mythic/firefly-millennium-lantern-queen_swim8_v1_sprite.png",
+      "sha256": "a4577279d54f14befd70b92e2e828918314aab8a19e059b19e0d6623e73c96f3",
+      "bytes": 1014304
+    },
+    {
+      "path": "fish/mythic/firefly-village-elder-turtle_v1_thumbnail.png",
+      "sha256": "47d090366aca39a04818f3efa7b49ca9f3a756db30ccac37bcddd6107f789de5",
+      "bytes": 1851287
+    },
+    {
+      "path": "fish/mythic/firefly-village-elder-turtle_swim8_v1_sprite.png",
+      "sha256": "ababa8ceb74a9ea68634b5391b5f23e313895c98fdb71f40c44e1390408c70b3",
+      "bytes": 1268799
+    },
+    {
+      "path": "fish/mythic/firefly-flower-dream-queen_v1_thumbnail.png",
+      "sha256": "2ef95d58fd4a426f7e93ea82b2287d77b3ff46fe62a1965ebf174523f9202cc8",
+      "bytes": 1602347
+    },
+    {
+      "path": "fish/mythic/firefly-flower-dream-queen_swim8_v1_sprite.png",
+      "sha256": "824382b6e3efd2a196175de5809d6a3c18409c521b60dc2d68b21468459305ad",
+      "bytes": 1277351
+    },
+    {
+      "path": "fish/mythic/firefly-first-firefly-spirit_v1_thumbnail.png",
+      "sha256": "55b06adb23b53ecb47b6c78f14d9141b8712584675bdf9c18dc63569cd7dfc44",
+      "bytes": 1090666
+    },
+    {
+      "path": "fish/mythic/firefly-first-firefly-spirit_swim8_v1_sprite.png",
+      "sha256": "8812ffca5a81802114b2b7d9ebdfbaf03f6f0f2669993edfd0b8c94cd34f120e",
+      "bytes": 800250
+    },
+    {
+      "path": "equipment/rods/firefly/thumbnail.png",
+      "sha256": "e8328617235135bb062d0900d0ff2b8fe776c8dc252e4f01d8c385402724d936",
+      "bytes": 1268193
+    },
+    {
+      "path": "equipment/rods/firefly/reel-frame.png",
+      "sha256": "b235d4893b28620af855a43715fe35a199f2e29e4ceaf7392c407f6dc7a119a1",
+      "bytes": 2029412
+    },
+    {
+      "path": "equipment/rods/firefly/reel-rotor.png",
+      "sha256": "28f9c8847401135d22ff0fd88bdedaf10ff20d47dfad91d8177a60e094b185bd",
+      "bytes": 1845713
+    },
+    {
+      "path": "equipment/rods/firefly/float.png",
+      "sha256": "8fef12260a0d7a21191f9150597309448e5a7f5dc69b232cbbc272837708a665",
+      "bytes": 412357
+    }
+  ]
+}

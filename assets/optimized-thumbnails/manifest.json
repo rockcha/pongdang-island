@@ -5,10 +5,10 @@
     640
   ],
   "summary": {
-    "count": 727,
-    "sourceBytes": 839138934,
-    "smallBytes": 19778526,
-    "largeBytes": 53417518,
+    "count": 790,
+    "sourceBytes": 907651558,
+    "smallBytes": 21403322,
+    "largeBytes": 57875068,
     "smallReductionPercent": 97.64
   },
   "items": [
@@ -748,6 +748,126 @@
       "large": {
         "url": "/game-art/thumbnails/5d4e97f48b02d17c566a54ce-640.webp",
         "bytes": 88482,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/firefly-acorn-signpost_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/decorations/normal/firefly-acorn-signpost_v1_thumbnail.png",
+      "sourceHash": "dd7a1d135f902b78da062db8bf041dd6514a403ccb44bf636baa1e474f256450",
+      "sourceBytes": 865098,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1f72ba0b749dd3acb33a2c57-320.webp",
+        "bytes": 22322,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e19718c1d4260d919a8f3c68-640.webp",
+        "bytes": 56532,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/firefly-acorn-teacups_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/decorations/normal/firefly-acorn-teacups_v1_thumbnail.png",
+      "sourceHash": "6699124a4323cf8768117b242db6af31e3e227c1fa9405983165e375bea7b678",
+      "sourceBytes": 1071606,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/4fca3be35d9eb0c528292caa-320.webp",
+        "bytes": 24236,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/846126883b2f2b418a24b827-640.webp",
+        "bytes": 64804,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/firefly-grass-thread-basket_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/decorations/normal/firefly-grass-thread-basket_v1_thumbnail.png",
+      "sourceHash": "cf0717a2a2615e1d51e8b96658167d597e95656c40f26ab4fbbfb9a6d19cf5be",
+      "sourceBytes": 1339416,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a6217f0cacd9795267e62c1b-320.webp",
+        "bytes": 30628,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7493189b0d0addcc7db975ed-640.webp",
+        "bytes": 84046,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/firefly-moss-stump-table_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/decorations/normal/firefly-moss-stump-table_v1_thumbnail.png",
+      "sourceHash": "91824df237ba7fbf370f6263977ed7d083ff18389f8c91619ececd6f2f95ae52",
+      "sourceBytes": 1099566,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/6b3db68a7f1d0deb68973983-320.webp",
+        "bytes": 25366,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b8c39a5a270e44bf58452855-640.webp",
+        "bytes": 67632,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/firefly-mushroom-stool_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/decorations/normal/firefly-mushroom-stool_v1_thumbnail.png",
+      "sourceHash": "c7371ed0df8fd1b52c70f199547d6bd934fc256749b3aad1b16215b3779ac92d",
+      "sourceBytes": 876716,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1aaa8536af7c77986b621527-320.webp",
+        "bytes": 19200,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/da4c06bdb1a4c6d44d80a550-640.webp",
+        "bytes": 47574,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/normal/firefly-pebble-flowerpot_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/decorations/normal/firefly-pebble-flowerpot_v1_thumbnail.png",
+      "sourceHash": "59f9b821cecf36fa139df81c7afa33d28f497b5af62bed6da3110fcd19981637",
+      "sourceBytes": 1091237,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/83f1402ac623da3c5ff392eb-320.webp",
+        "bytes": 24524,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/82e89f7736a2fe56f9edfca9-640.webp",
+        "bytes": 65584,
         "width": 640,
         "height": 640
       }
@@ -1808,6 +1928,166 @@
       "large": {
         "url": "/game-art/thumbnails/413d4d5ff57e14e916ef8234-640.webp",
         "bytes": 64374,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/firefly-fairy-village-mailbox_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-fairy-village-mailbox_v1_thumbnail.png",
+      "sourceHash": "61ee260868bfa44eeb07c5eed6b5842b3197c3cc41f4e1a1d867234a7d81da78",
+      "sourceBytes": 1164614,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/af5b1370410c688fa834976b-320.webp",
+        "bytes": 29274,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/c81c2a75241b257c08ed461a-640.webp",
+        "bytes": 77818,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/firefly-firefly-flower-lamppost_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-firefly-flower-lamppost_v1_thumbnail.png",
+      "sourceHash": "cc6a9d1a679043eed49ea357535d691d42452844b8d75c556adfa392369259a6",
+      "sourceBytes": 823539,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/2f42720f8d944125dbffa8e2-320.webp",
+        "bytes": 24624,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7ac7b4b3496c0fde417b2da9-640.webp",
+        "bytes": 66900,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/firefly-honey-acorn-teahouse_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-honey-acorn-teahouse_v1_thumbnail.png",
+      "sourceHash": "376860b9dec9b642ab7ae9dd3db48a4258aca3936b98e23b860c82ea5e43b9ea",
+      "sourceBytes": 1419619,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/d11645c2f8c2ce8bdc5ec124-320.webp",
+        "bytes": 30622,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/a9ce8a33216d452d0c4f9273-640.webp",
+        "bytes": 83184,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/firefly-leafboat-dock_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-leafboat-dock_v1_thumbnail.png",
+      "sourceHash": "253ef5454d897e549479c87c3608581be9de5d84c2dbfeff9d76c74fa18efd06",
+      "sourceBytes": 990783,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/692673f8790ebfbd9ecefd31-320.webp",
+        "bytes": 25928,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1088bed8a6a2546cebce914d-640.webp",
+        "bytes": 68746,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/firefly-leafroof-acorn-house_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-leafroof-acorn-house_v1_thumbnail.png",
+      "sourceHash": "f8ec68808e9af4e88160fc5fa8efb2b9fdd6cf4642740b5882232571beb19690",
+      "sourceBytes": 1447531,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/486b9f96145b2e27e99258c6-320.webp",
+        "bytes": 31488,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/a6d569e236b4f046b0f7870a-640.webp",
+        "bytes": 86326,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/firefly-lily-bell-tower_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-lily-bell-tower_v1_thumbnail.png",
+      "sourceHash": "faf5485b8f6a2668eb55ef1c129408df58f6ea9332b6b475d11d66c05f84ca3e",
+      "sourceBytes": 1185045,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/c702b9b91e0d5a91973a8981-320.webp",
+        "bytes": 30626,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/05e52c15b055d93998208512-640.webp",
+        "bytes": 84328,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/firefly-moss-arch-bridge_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-moss-arch-bridge_v1_thumbnail.png",
+      "sourceHash": "99e077b925fea3ecc9e430636000136e3066759b65cf87fa1c370dea63da60ec",
+      "sourceBytes": 1111153,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/99de2b5f90cfc5da2b3d51d0-320.webp",
+        "bytes": 28480,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/52cdb75ec0d5983650374ba9-640.webp",
+        "bytes": 76746,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "decorations/rare/firefly-waterlily-pavilion_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/decorations/rare/firefly-waterlily-pavilion_v1_thumbnail.png",
+      "sourceHash": "33086539d4aada32f501448829d86b1748ce9716728b94aae1eccc26b92f39ed",
+      "sourceBytes": 1437340,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/0aae557af1e302563a4ed57f-320.webp",
+        "bytes": 38046,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/dfb4f1859f14285b63981338-640.webp",
+        "bytes": 103130,
         "width": 640,
         "height": 640
       }
@@ -3448,6 +3728,166 @@
       "large": {
         "url": "/game-art/thumbnails/5548b335f91b31e399cfe13d-640.webp",
         "bytes": 88596,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/firefly-acorn-warden-fairy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-acorn-warden-fairy_v1_thumbnail.png",
+      "sourceHash": "d205d0c37ba228427a91750bfc313010c0401b0071f783f5b18f324b7afd85c2",
+      "sourceBytes": 1546153,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/0a06a039359926015aa636f3-320.webp",
+        "bytes": 37380,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1d6ddf2587d849c3abe73261-640.webp",
+        "bytes": 111638,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/firefly-clover-luck-fairy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-clover-luck-fairy_v1_thumbnail.png",
+      "sourceHash": "9ca44d10c04acce72bdb262a784739f4ad7c67b46d1472f39ffb809c272cd0c5",
+      "sourceBytes": 1494535,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/6676a954520355bf1e39de6b-320.webp",
+        "bytes": 35042,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/93b3a2ec023170a66396e6fa-640.webp",
+        "bytes": 104522,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/firefly-evening-lullaby-fairy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-evening-lullaby-fairy_v1_thumbnail.png",
+      "sourceHash": "da0124d4a93ce16ee4eaf04cf74ce2be7cfeaafac6e53ee0e52e534bf7efafb3",
+      "sourceBytes": 1720454,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/8ad0383839b4deb28a1f8dc2-320.webp",
+        "bytes": 40218,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1be70b002719d1cbb118232b-640.webp",
+        "bytes": 121382,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/firefly-flower-post-fairy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-flower-post-fairy_v1_thumbnail.png",
+      "sourceHash": "3d098fc0c831d3dc7c2fe14e22866a771446eef5dd23e58ab1f8f6e661448b36",
+      "sourceBytes": 1495056,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a3c773d094f212080078c226-320.webp",
+        "bytes": 33674,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/05f0b55ad70540de966e00cd-640.webp",
+        "bytes": 100194,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/firefly-honey-teahouse-fairy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-honey-teahouse-fairy_v1_thumbnail.png",
+      "sourceHash": "e3914ce0a9243ccf0ba058a29ec473cd179acc608ade9d4a1fa3cd77b569320a",
+      "sourceBytes": 1587488,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/0f4fc102c60e3ae71d58084f-320.webp",
+        "bytes": 38608,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3a723c4b2c4168cabf3a72b2-640.webp",
+        "bytes": 116152,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/firefly-lantern-keeper-fairy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-lantern-keeper-fairy_v1_thumbnail.png",
+      "sourceHash": "6956f6ad57b4f1864958cdcf6f0cc9f68e4e36c4a6ffea015e1fbd297b5e6d40",
+      "sourceBytes": 1453741,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/0d4cee56f3e200a0b7069cdb-320.webp",
+        "bytes": 34790,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/75845a78be29b29577668769-640.webp",
+        "bytes": 104336,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/firefly-mushroom-child-fairy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-mushroom-child-fairy_v1_thumbnail.png",
+      "sourceHash": "e46bbe35bed338f46154b55a2c22115258c7a84dc6fe7c982aa7a4548c45bebd",
+      "sourceBytes": 1401176,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/dcf573278dec9aa1019e5036-320.webp",
+        "bytes": 30288,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/43206d0f61311c9b4ddceab8-640.webp",
+        "bytes": 91142,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/epic/firefly-waterlily-dancer-fairy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/epic/firefly-waterlily-dancer-fairy_v1_thumbnail.png",
+      "sourceHash": "f0d16bf58eab1de4591827ddebd154cd356f9ec6c9fc93b11789ff145c03a42e",
+      "sourceBytes": 1514405,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/fb601cf72ded3654517a27cd-320.webp",
+        "bytes": 36572,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/5e94434ac02054785c7b95ba-640.webp",
+        "bytes": 108802,
         "width": 640,
         "height": 640
       }
@@ -5133,6 +5573,86 @@
       }
     },
     {
+      "key": "fish/mythic/firefly-first-firefly-spirit_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/mythic/firefly-first-firefly-spirit_v1_thumbnail.png",
+      "sourceHash": "55b06adb23b53ecb47b6c78f14d9141b8712584675bdf9c18dc63569cd7dfc44",
+      "sourceBytes": 1090666,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/5cfb7643dae2b17167a516e2-320.webp",
+        "bytes": 26812,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/951194735ed7cd82c68d07ed-640.webp",
+        "bytes": 77870,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/firefly-flower-dream-queen_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/mythic/firefly-flower-dream-queen_v1_thumbnail.png",
+      "sourceHash": "2ef95d58fd4a426f7e93ea82b2287d77b3ff46fe62a1965ebf174523f9202cc8",
+      "sourceBytes": 1602347,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/8ba138c9d4e970d15ca54f46-320.webp",
+        "bytes": 36294,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3d3b9ebe9c034ef1a588f122-640.webp",
+        "bytes": 105862,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/mythic/firefly-millennium-lantern-queen_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/mythic/firefly-millennium-lantern-queen_v1_thumbnail.png",
+      "sourceHash": "7fd2f0620544461e010de88bbc484424d98b706607355dce6f7306cec862ea7e",
+      "sourceBytes": 1868583,
+      "sourceWidth": 1368,
+      "sourceHeight": 1150,
+      "small": {
+        "url": "/game-art/thumbnails/367368cafde0519a5c49d434-320.webp",
+        "bytes": 37296,
+        "width": 320,
+        "height": 269
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3bd8f083370fb34773958007-640.webp",
+        "bytes": 111678,
+        "width": 640,
+        "height": 538
+      }
+    },
+    {
+      "key": "fish/mythic/firefly-village-elder-turtle_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/mythic/firefly-village-elder-turtle_v1_thumbnail.png",
+      "sourceHash": "47d090366aca39a04818f3efa7b49ca9f3a756db30ccac37bcddd6107f789de5",
+      "sourceBytes": 1851287,
+      "sourceWidth": 1368,
+      "sourceHeight": 1150,
+      "small": {
+        "url": "/game-art/thumbnails/c5e71c15a8953ec3c0fcc0c9-320.webp",
+        "bytes": 38078,
+        "width": 320,
+        "height": 269
+      },
+      "large": {
+        "url": "/game-art/thumbnails/9bbc7605989b7852af8c323b-640.webp",
+        "bytes": 119834,
+        "width": 640,
+        "height": 538
+      }
+    },
+    {
       "key": "fish/mythic/god-devouring-leviathan_thumbnail.png",
       "source": "assets/storage-upload/new/20261018-114000/fish/mythic/god-devouring-leviathan_thumbnail.png",
       "sourceHash": "833a4ab28c808aa8d4947e58dde75b4d6557facd16a3c221a1cc956cd5292445",
@@ -6508,6 +7028,306 @@
       "large": {
         "url": "/game-art/thumbnails/1bd17b85bd12b3ffc88d7061-640.webp",
         "bytes": 39112,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/firefly-acorn-puffer_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-acorn-puffer_v1_thumbnail.png",
+      "sourceHash": "3ba4ae5e38e145b4404e393def37cd197a20023eb7b63d2adf493be4f809cdd9",
+      "sourceBytes": 1043909,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/6881bc3462370e119c7c1486-320.webp",
+        "bytes": 22408,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/662385ba6060c07e9b919e08-640.webp",
+        "bytes": 56256,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/firefly-bud-goldfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-bud-goldfish_v1_thumbnail.png",
+      "sourceHash": "932671afe6b7f4aa224f46d7b961085549274321f25c1dd78ec1378269f44c37",
+      "sourceBytes": 903343,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/8e66e81c3dcd253f62466abc-320.webp",
+        "bytes": 20396,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f2e3b3e35b1cb68d53d51319-640.webp",
+        "bytes": 51008,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/firefly-clover-platy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-clover-platy_v1_thumbnail.png",
+      "sourceHash": "117d084fe77299e1ff349eb2bbaf96af474edee383060cc66bf223cff81fd4a6",
+      "sourceBytes": 680982,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/afa5515e639604b5731519e1-320.webp",
+        "bytes": 16672,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/1849e6ef231718c32b1e383a-640.webp",
+        "bytes": 41578,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/firefly-daisy-medaka_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-daisy-medaka_v1_thumbnail.png",
+      "sourceHash": "a203d53dd1a6643bcf75b54b1a90eca820e533c2910fd6d8f094e608e1e539ce",
+      "sourceBytes": 705223,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/bab69db791c3fd34cc74499f-320.webp",
+        "bytes": 17784,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2f95f0ec2ba62dc2e45535bd-640.webp",
+        "bytes": 44406,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/firefly-dandelion-guppy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-dandelion-guppy_v1_thumbnail.png",
+      "sourceHash": "0449474d6564bfb25981bc77d34596697ab505f2fefd06339e38364e493fc535",
+      "sourceBytes": 940641,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/0473596b07741aa90ebb0816-320.webp",
+        "bytes": 22102,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/853c44422d2247bd3a2a341a-640.webp",
+        "bytes": 60044,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/firefly-grass-seed-anchovy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-grass-seed-anchovy_v1_thumbnail.png",
+      "sourceHash": "223b05c0537214232afa782781cc9e5426d95c42b48658caec2134985f9a0758",
+      "sourceBytes": 567902,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/9f1a33c1b7e269ada691a618-320.webp",
+        "bytes": 14948,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2c3e30b9aa525ef8197097f1-640.webp",
+        "bytes": 39040,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/firefly-honey-guppy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-honey-guppy_v1_thumbnail.png",
+      "sourceHash": "2e45a185b20b2a5061b172f487967c10c63708ad8ed4445aa51cf75ea4f5b221",
+      "sourceBytes": 886071,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a8ea96b9b4996506f8c33d75-320.webp",
+        "bytes": 21274,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/f478181797ab16b2525083e2-640.webp",
+        "bytes": 56028,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/firefly-leaf-medaka_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-leaf-medaka_v1_thumbnail.png",
+      "sourceHash": "acae9fcd75c4baf4d85e61f88b6e4e5a26607b6fc139218e413697daa9666df7",
+      "sourceBytes": 683952,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/2f435822771eb95203a46c41-320.webp",
+        "bytes": 17356,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/650f39da09c304dcd666d4b5-640.webp",
+        "bytes": 44388,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/firefly-moss-goby_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-moss-goby_v1_thumbnail.png",
+      "sourceHash": "c2128f464b0d6b9696d3a54b29a9a566788fcc417b5dcd1a20c54f93ccaeb679",
+      "sourceBytes": 844821,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/e67b783e48566f24b2ca26e2-320.webp",
+        "bytes": 19940,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/0cdcaf6ecf8e31a9d2c4368b-640.webp",
+        "bytes": 50316,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/firefly-mushroom-sculpin_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-mushroom-sculpin_v1_thumbnail.png",
+      "sourceHash": "90727e6c7e9c34ed91fba6c38f3b4849a8e1f479a60bd369c54678948ea99f60",
+      "sourceBytes": 885315,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/fca5ccac443a3bd9478a342d-320.webp",
+        "bytes": 20714,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/cb229eefcdccdc81d8b4291e-640.webp",
+        "bytes": 50938,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/firefly-petal-bitterling_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-petal-bitterling_v1_thumbnail.png",
+      "sourceHash": "10e1d32b3077c0345fa2d45a2f18dd2b355dae3fff8f2831d2c8843c1f4fe5aa",
+      "sourceBytes": 810658,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/361104492932820908b1d4df-320.webp",
+        "bytes": 18968,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6181b4329439a2891452acd3-640.webp",
+        "bytes": 50702,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/firefly-pinecone-carp_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-pinecone-carp_v1_thumbnail.png",
+      "sourceHash": "19c233294aa0ab2811dac5fe8549f97f6aa0680420045d36865b1d41afc1b9f5",
+      "sourceBytes": 1069892,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/98b45864536eead73cc95516-320.webp",
+        "bytes": 24528,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/3fba420f618fc7f9dab9980a-640.webp",
+        "bytes": 64000,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/firefly-sprout-minnow_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-sprout-minnow_v1_thumbnail.png",
+      "sourceHash": "b160dcf40090ce21e1427f380d1b7b81ed78c40eef180d7ae99e496bff494349",
+      "sourceBytes": 629707,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/d3f8c46c2fb76735e57e776d-320.webp",
+        "bytes": 17488,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/062f63cb1a4f86523dbb6627-640.webp",
+        "bytes": 44672,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/firefly-waterlily-fry_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-waterlily-fry_v1_thumbnail.png",
+      "sourceHash": "378c9d020e4d2aa8fb8a2303a25828ec0c278ae854860d60e526e8eddb54d4cb",
+      "sourceBytes": 601535,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/2f15485e66780b864c9e36b7-320.webp",
+        "bytes": 14040,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/6f0bee368749c0c068bec1a5-640.webp",
+        "bytes": 36312,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/normal/firefly-willow-loach_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/normal/firefly-willow-loach_v1_thumbnail.png",
+      "sourceHash": "91009accfb3203b5497694d9f2003f762147c84c489e11505a8d8ec44603812e",
+      "sourceBytes": 646910,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/4a87abc17db4e87c769dab83-320.webp",
+        "bytes": 16932,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/53fc251240cd95824dd43d95-640.webp",
+        "bytes": 44740,
         "width": 640,
         "height": 640
       }
@@ -9630,6 +10450,206 @@
         "bytes": 21130,
         "width": 512,
         "height": 512
+      }
+    },
+    {
+      "key": "fish/rare/firefly-acorn-lantern-hermit_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-acorn-lantern-hermit_v1_thumbnail.png",
+      "sourceHash": "32fa3434f14f77721f268b359200c4388a1640303a455dfcb9b1cb544e8be59d",
+      "sourceBytes": 1109006,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/eb0ec6dd310f6148c5501345-320.webp",
+        "bytes": 28504,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b28883290c6c7b8a138f7462-640.webp",
+        "bytes": 75444,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/firefly-clover-postfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-clover-postfish_v1_thumbnail.png",
+      "sourceHash": "abb2de53dc2023cc0dc3d5d45c4376511a97b358978ac781457010e1a7009414",
+      "sourceBytes": 944264,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/b585063e98faa180596623ae-320.webp",
+        "bytes": 22406,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/a266444c81e734ee99ed5126-640.webp",
+        "bytes": 59276,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/firefly-clover-ray_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-clover-ray_v1_thumbnail.png",
+      "sourceHash": "b1b9246adb801069a01b84d2f2ec54937e28eaf38ba081f257edd5fa0308ac11",
+      "sourceBytes": 786235,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/5fdd8f84360743a3b5d6daec-320.webp",
+        "bytes": 18020,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/871a3b2c0a090bb6e8958f15-640.webp",
+        "bytes": 44992,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/firefly-firefly-lanternfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-firefly-lanternfish_v1_thumbnail.png",
+      "sourceHash": "11deb980428650594a564aae2315909affc24f99c5d0777635ad2883d2660e66",
+      "sourceBytes": 735740,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a5d856715d23285a191b83b3-320.webp",
+        "bytes": 18848,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/51e74ae4c5161468f9ea9d31-640.webp",
+        "bytes": 48076,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/firefly-flower-cloak-seahorse_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-flower-cloak-seahorse_v1_thumbnail.png",
+      "sourceHash": "40a5f25166834bf2964881a71d4e88ee51f25615b93965703aceaac039814ebb",
+      "sourceBytes": 986792,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/13151e3841d2cf06736879ae-320.webp",
+        "bytes": 25318,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d7212a09dfc836c2bd1ec1e3-640.webp",
+        "bytes": 65474,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/firefly-flower-letter-batfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-flower-letter-batfish_v1_thumbnail.png",
+      "sourceHash": "2c6b23590f42ab13a403c45079bded20e7dd77a1264f658fceed1fa80895c2e7",
+      "sourceBytes": 976895,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/3bd2b1c9133500c553aaea8b-320.webp",
+        "bytes": 26120,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/4b922b4885cb0e9418a5e286-640.webp",
+        "bytes": 70618,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/firefly-leaf-wing-guppy_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-leaf-wing-guppy_v1_thumbnail.png",
+      "sourceHash": "92a246dc4dee24728186600ff777d0b22aa3ac9d334ddf46047084b23a750fed",
+      "sourceBytes": 982576,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/1cac46f9c4ba631fdaf98318-320.webp",
+        "bytes": 22158,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2b59b63eb1c0f565c6b6f6f4-640.webp",
+        "bytes": 59164,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/firefly-waterlily-jellyfish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-waterlily-jellyfish_v1_thumbnail.png",
+      "sourceHash": "194fcff9de54535ab1c3efaf762599c403ce1aa0e5e2db65b2af8a62b9f52fb9",
+      "sourceBytes": 1066300,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/eec765a3304d7173878a5c0c-320.webp",
+        "bytes": 27918,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/95613ed74be8e6968631505c-640.webp",
+        "bytes": 73146,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/firefly-willow-ribbon-pipefish_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-willow-ribbon-pipefish_v1_thumbnail.png",
+      "sourceHash": "66f53c02bb04e0871693ef289570345533401bea8703b28e680499aa1ca567eb",
+      "sourceBytes": 635442,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/fe1f32b6bf031858f62c7f72-320.webp",
+        "bytes": 23608,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e86e7643bc8548bfe6370e9f-640.webp",
+        "bytes": 61810,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "fish/rare/firefly-woodgrain-turtle_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/fish/rare/firefly-woodgrain-turtle_v1_thumbnail.png",
+      "sourceHash": "8797c64cb10a40155e6e5340d81225496a9cb23044d923a1d49f5ffbc560978f",
+      "sourceBytes": 923219,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/a03cd3c5a36100581f46a267-320.webp",
+        "bytes": 21878,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/071e2878b2873e4ab94fd561-640.webp",
+        "bytes": 56430,
+        "width": 640,
+        "height": 640
       }
     },
     {
@@ -12833,6 +13853,146 @@
       }
     },
     {
+      "key": "trash/normal/firefly-broken-acorn-cup_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/trash/normal/firefly-broken-acorn-cup_v1_thumbnail.png",
+      "sourceHash": "bc39084bbd85dc4c2d06e1ddfd74738505a22cc91f24243f6e9f1d7ffb2f592f",
+      "sourceBytes": 964849,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/81f724f2829fbf9c9afbbe11-320.webp",
+        "bytes": 22892,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/cffd8d58d3bfa77a0e67be73-640.webp",
+        "bytes": 57644,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/firefly-cracked-honey-pot_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/trash/normal/firefly-cracked-honey-pot_v1_thumbnail.png",
+      "sourceHash": "76fde882796b5560610370dd22f1eda41a3458296061979723657b3a56386f54",
+      "sourceBytes": 920233,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/58b0d5e0da1f2b27f5b3da8e-320.webp",
+        "bytes": 20052,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/26d10520d9694fcf612a4872-640.webp",
+        "bytes": 50530,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/firefly-single-petal-shoe_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/trash/normal/firefly-single-petal-shoe_v1_thumbnail.png",
+      "sourceHash": "286008126482e4fe88a5e9e7f98ac27e4e58e157b75abd4d35bb9b45c12224ca",
+      "sourceBytes": 917050,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/496b6ed525600faaec8ba965-320.webp",
+        "bytes": 18552,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/bec08ff42a6b31aca696e61f-640.webp",
+        "bytes": 51110,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/firefly-spent-firefly-lantern_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/trash/normal/firefly-spent-firefly-lantern_v1_thumbnail.png",
+      "sourceHash": "159aea3ded40991e131f431026c49f7261dcd7f9a471c040e07f7bf561f84e8b",
+      "sourceBytes": 973776,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/0818c8a8f64d38e40f618d06-320.webp",
+        "bytes": 23036,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/7465d368490ad9083da80e59-640.webp",
+        "bytes": 61580,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/firefly-tangled-grass-thread_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/trash/normal/firefly-tangled-grass-thread_v1_thumbnail.png",
+      "sourceHash": "8b013ef1abb6f4e4e485cc1a9a4bfd503cbf13aaab176b994dadfddc145b0582",
+      "sourceBytes": 1347030,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/11cb182d808ef1f90d56c1d9-320.webp",
+        "bytes": 31338,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/d4447a99674da76b27642b83-640.webp",
+        "bytes": 88248,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/firefly-torn-leaf-umbrella_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/trash/normal/firefly-torn-leaf-umbrella_v1_thumbnail.png",
+      "sourceHash": "e535e09029da7d559a81dc4744f98b954b46897f18ec7043814b9fb7ed4ba574",
+      "sourceBytes": 977309,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/9d1239dbb0bd685e2c428e6d-320.webp",
+        "bytes": 25932,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/cb05f96a7c6f7ac591632f04-640.webp",
+        "bytes": 68836,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/normal/firefly-wet-flower-letter_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/trash/normal/firefly-wet-flower-letter_v1_thumbnail.png",
+      "sourceHash": "433be93fbc21fdb854c83c65b58dd8105d056b9e681005e67403647559850541",
+      "sourceBytes": 1300752,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/b2331931315e29ad9ec6a233-320.webp",
+        "bytes": 26586,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/e11c8d726190db656a3bcc25-640.webp",
+        "bytes": 74478,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
       "key": "trash/normal/glass-bottle_thumbnail.png",
       "source": "assets/storage-upload/collectibles/trash/normal/glass-bottle_thumbnail.png",
       "sourceHash": "cd70cecc768eb96da8e0464d76cc05d33ab3241fd876b38294a12267114a2c97",
@@ -13968,6 +15128,106 @@
       "large": {
         "url": "/game-art/thumbnails/275612fa7d206a1b0beabf8f-640.webp",
         "bytes": 51222,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/firefly-broken-flower-lamp-staff_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/trash/rare/firefly-broken-flower-lamp-staff_v1_thumbnail.png",
+      "sourceHash": "ac99f89aa95b99259472ecc9b4d17284fc670c7a1131f5a7df97268942239351",
+      "sourceBytes": 673608,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/99d110fb60abca9d048734f4-320.webp",
+        "bytes": 20832,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/36d29fe16480a8c13eb5d89f-640.webp",
+        "bytes": 55550,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/firefly-cracked-dew-perfume_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/trash/rare/firefly-cracked-dew-perfume_v1_thumbnail.png",
+      "sourceHash": "ae1a731c78a9981d37e4338dc1f01d2a28013b8a3c0e64d4323b4053292d2279",
+      "sourceBytes": 981961,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/c13e29bfc7fcb305ac93b440-320.webp",
+        "bytes": 23270,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/caff7313db3922bce3307878-640.webp",
+        "bytes": 63910,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/firefly-faded-fairy-invitation_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/trash/rare/firefly-faded-fairy-invitation_v1_thumbnail.png",
+      "sourceHash": "2b85f34f60069f2d883e227c0bfea98027d99fffd2ae053c925264f4682a3a38",
+      "sourceBytes": 1225005,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/4cec71bf257243d55bb3a02d-320.webp",
+        "bytes": 23386,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/b2a746702e918aec32414b67-640.webp",
+        "bytes": 66048,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/firefly-torn-leaf-map_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/trash/rare/firefly-torn-leaf-map_v1_thumbnail.png",
+      "sourceHash": "0ed3a21f817fe949044561d446ddfc8bad89d1da24c0b0aa0a54aeaba2c72845",
+      "sourceBytes": 1493105,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/4af101daf535512bf7be7023-320.webp",
+        "bytes": 29236,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/dbd55d3a7300ec75b5e801a0-640.webp",
+        "bytes": 81584,
+        "width": 640,
+        "height": 640
+      }
+    },
+    {
+      "key": "trash/rare/firefly-untied-flower-mask_v1_thumbnail.png",
+      "source": "assets/storage-upload/new/20261029-032100/trash/rare/firefly-untied-flower-mask_v1_thumbnail.png",
+      "sourceHash": "94baf04e9266c4f88522c170dad8a0a2daf74f6d1c014b050ee7b8983798db4d",
+      "sourceBytes": 1141462,
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "small": {
+        "url": "/game-art/thumbnails/5bf6106bd997da53febe605f-320.webp",
+        "bytes": 28940,
+        "width": 320,
+        "height": 320
+      },
+      "large": {
+        "url": "/game-art/thumbnails/2b341fbd94d3a84eaceaed66-640.webp",
+        "bytes": 82412,
         "width": 640,
         "height": 640
       }

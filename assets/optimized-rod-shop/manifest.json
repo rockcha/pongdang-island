@@ -1,9 +1,9 @@
 {
   "profile": "rod-shop-q90-320-v1",
   "summary": {
-    "count": 20,
-    "sourceBytes": 72568892,
-    "displayBytes": 1235398
+    "count": 21,
+    "sourceBytes": 77712210,
+    "displayBytes": 1292898
   },
   "items": [
     {
@@ -226,6 +226,38 @@
       "reel": {
         "url": "/game-art/rod-shop/reel/d7d356a18a6134ba3876d785-320.webp",
         "bytes": 32818,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "firefly",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261029-032100/equipment/rods/firefly/thumbnail.png",
+          "sourceHash": "e8328617235135bb062d0900d0ff2b8fe776c8dc252e4f01d8c385402724d936",
+          "sourceBytes": 1268193
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261029-032100/equipment/rods/firefly/reel-frame.png",
+          "sourceHash": "b235d4893b28620af855a43715fe35a199f2e29e4ceaf7392c407f6dc7a119a1",
+          "sourceBytes": 2029412
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261029-032100/equipment/rods/firefly/reel-rotor.png",
+          "sourceHash": "28f9c8847401135d22ff0fd88bdedaf10ff20d47dfad91d8177a60e094b185bd",
+          "sourceBytes": 1845713
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/cd616e3fc686a0163e705b19-320.webp",
+        "bytes": 15150,
+        "width": 320,
+        "height": 213
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/1bf8d3c1bc0e7284f757fe44-320.webp",
+        "bytes": 42350,
         "width": 320,
         "height": 320
       }

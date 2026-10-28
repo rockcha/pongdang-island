@@ -1,0 +1,2911 @@
+[
+  {
+    "id": "firefly-leaf-medaka",
+    "storage_path": "fish/normal/firefly-leaf-medaka_v1_sprite.png",
+    "cell": 627,
+    "scale": 0.9354884547069272,
+    "patch": [
+      516,
+      377,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -17,
+        "dy": -1,
+        "rmse": 15.934453386725503
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -72,
+        "rmse": 11.901655695071323
+      },
+      {
+        "frame": 3,
+        "dx": -15,
+        "dy": -73,
+        "rmse": 10.707653625040649
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          44,
+          247,
+          563,
+          270,
+          88402
+        ],
+        [
+          35,
+          248,
+          556,
+          279,
+          85416
+        ],
+        [
+          45,
+          176,
+          561,
+          263,
+          87701
+        ],
+        [
+          43,
+          169,
+          550,
+          267,
+          82542
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-acorn-puffer",
+    "storage_path": "fish/normal/firefly-acorn-puffer_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.2660576923076923,
+    "patch": [
+      462,
+      350,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -29,
+        "dy": -1,
+        "rmse": 8.69809201685794
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -74,
+        "rmse": 11.104466290535225
+      },
+      {
+        "frame": 3,
+        "dx": -29,
+        "dy": -75,
+        "rmse": 7.5211732686648105
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          131,
+          202,
+          416,
+          329,
+          75470
+        ],
+        [
+          126,
+          203,
+          391,
+          329,
+          73772
+        ],
+        [
+          132,
+          129,
+          414,
+          327,
+          75253
+        ],
+        [
+          107,
+          129,
+          409,
+          328,
+          74830
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-honey-guppy",
+    "storage_path": "fish/normal/firefly-honey-guppy_v1_sprite.png",
+    "cell": 627,
+    "scale": 0.8792654424040067,
+    "patch": [
+      543,
+      359,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -4,
+        "dy": 1,
+        "rmse": 13.27073570061219
+      },
+      {
+        "frame": 2,
+        "dx": -1,
+        "dy": -73,
+        "rmse": 8.480485779320336
+      },
+      {
+        "frame": 3,
+        "dx": -4,
+        "dy": -75,
+        "rmse": 11.659112798262292
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          23,
+          192,
+          597,
+          359,
+          132275
+        ],
+        [
+          36,
+          146,
+          581,
+          402,
+          130268
+        ],
+        [
+          21,
+          116,
+          599,
+          368,
+          135761
+        ],
+        [
+          25,
+          140,
+          591,
+          363,
+          123235
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-petal-bitterling",
+    "storage_path": "fish/normal/firefly-petal-bitterling_v1_sprite.png",
+    "cell": 627,
+    "scale": 0.9321769911504425,
+    "patch": [
+      507,
+      332,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -24,
+        "dy": 2,
+        "rmse": 11.025857183331324
+      },
+      {
+        "frame": 2,
+        "dx": -1,
+        "dy": -59,
+        "rmse": 12.415989881347674
+      },
+      {
+        "frame": 3,
+        "dx": -20,
+        "dy": -60,
+        "rmse": 12.88920698897856
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          47,
+          164,
+          565,
+          379,
+          121902
+        ],
+        [
+          57,
+          156,
+          531,
+          381,
+          111653
+        ],
+        [
+          45,
+          106,
+          565,
+          374,
+          121157
+        ],
+        [
+          32,
+          106,
+          560,
+          377,
+          118732
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-sprout-minnow",
+    "storage_path": "fish/normal/firefly-sprout-minnow_v1_sprite.png",
+    "cell": 627,
+    "scale": 0.9338297872340425,
+    "patch": [
+      507,
+      404,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -14,
+        "dy": 0,
+        "rmse": 17.81645406647907
+      },
+      {
+        "frame": 2,
+        "dx": -1,
+        "dy": -115,
+        "rmse": 16.198199184006032
+      },
+      {
+        "frame": 3,
+        "dx": -12,
+        "dy": -115,
+        "rmse": 14.671350336968278
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          41,
+          264,
+          561,
+          270,
+          85189
+        ],
+        [
+          23,
+          259,
+          564,
+          277,
+          84721
+        ],
+        [
+          47,
+          147,
+          553,
+          267,
+          83118
+        ],
+        [
+          24,
+          145,
+          564,
+          273,
+          85654
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-clover-platy",
+    "storage_path": "fish/normal/firefly-clover-platy_v1_sprite.png",
+    "cell": 627,
+    "scale": 0.9288888888888889,
+    "patch": [
+      507,
+      359,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -1,
+        "dy": 0,
+        "rmse": 7.078177146411096
+      },
+      {
+        "frame": 2,
+        "dx": -1,
+        "dy": -76,
+        "rmse": 6.722082306290543
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": -78,
+        "rmse": 8.48275312570842
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          44,
+          212,
+          564,
+          354,
+          123812
+        ],
+        [
+          53,
+          211,
+          553,
+          369,
+          117023
+        ],
+        [
+          43,
+          135,
+          565,
+          344,
+          123671
+        ],
+        [
+          42,
+          129,
+          567,
+          364,
+          126606
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-willow-loach",
+    "storage_path": "fish/normal/firefly-willow-loach_v1_sprite.png",
+    "cell": 627,
+    "scale": 0.8926779661016949,
+    "patch": [
+      516,
+      386,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -8,
+        "dy": 1,
+        "rmse": 17.865788270673768
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -92,
+        "rmse": 12.591088235676052
+      },
+      {
+        "frame": 3,
+        "dx": -8,
+        "dy": -102,
+        "rmse": 16.763142861047317
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          31,
+          258,
+          586,
+          253,
+          66132
+        ],
+        [
+          40,
+          196,
+          568,
+          320,
+          71487
+        ],
+        [
+          27,
+          181,
+          590,
+          235,
+          65759
+        ],
+        [
+          32,
+          212,
+          576,
+          231,
+          66112
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-moss-goby",
+    "storage_path": "fish/normal/firefly-moss-goby_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.1474509803921566,
+    "patch": [
+      471,
+      359,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -50,
+        "dy": 0,
+        "rmse": 18.95435969584016
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -78,
+        "rmse": 12.898385294108184
+      },
+      {
+        "frame": 3,
+        "dx": -44,
+        "dy": -77,
+        "rmse": 17.42384104284674
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          130,
+          245,
+          443,
+          252,
+          67781
+        ],
+        [
+          66,
+          245,
+          459,
+          258,
+          69281
+        ],
+        [
+          130,
+          168,
+          443,
+          251,
+          67120
+        ],
+        [
+          86,
+          168,
+          444,
+          256,
+          65844
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-bud-goldfish",
+    "storage_path": "fish/normal/firefly-bud-goldfish_v1_sprite.png",
+    "cell": 627,
+    "scale": 0.917560975609756,
+    "patch": [
+      525,
+      368,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -50,
+        "dy": -2,
+        "rmse": 17.613369048276063
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -83,
+        "rmse": 13.838245604848844
+      },
+      {
+        "frame": 3,
+        "dx": -44,
+        "dy": -83,
+        "rmse": 12.294223399388951
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          49,
+          166,
+          565,
+          417,
+          153891
+        ],
+        [
+          12,
+          163,
+          553,
+          419,
+          146292
+        ],
+        [
+          40,
+          83,
+          574,
+          419,
+          155713
+        ],
+        [
+          16,
+          83,
+          555,
+          420,
+          148287
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-daisy-medaka",
+    "storage_path": "fish/normal/firefly-daisy-medaka_v1_sprite.png",
+    "cell": 627,
+    "scale": 0.917560975609756,
+    "patch": [
+      534,
+      350,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -41,
+        "dy": 2,
+        "rmse": 16.706171130637742
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -110,
+        "rmse": 13.961273572397097
+      },
+      {
+        "frame": 3,
+        "dx": -40,
+        "dy": -110,
+        "rmse": 15.350250079877947
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          48,
+          218,
+          572,
+          318,
+          115470
+        ],
+        [
+          36,
+          218,
+          544,
+          324,
+          101527
+        ],
+        [
+          46,
+          110,
+          574,
+          318,
+          116801
+        ],
+        [
+          26,
+          134,
+          555,
+          329,
+          109790
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-dandelion-guppy",
+    "storage_path": "fish/normal/firefly-dandelion-guppy_v1_sprite.png",
+    "cell": 627,
+    "scale": 0.9003076923076923,
+    "patch": [
+      534,
+      341,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -12,
+        "dy": -1,
+        "rmse": 9.458645586518239
+      },
+      {
+        "frame": 2,
+        "dx": 2,
+        "dy": -57,
+        "rmse": 15.732461823554056
+      },
+      {
+        "frame": 3,
+        "dx": -9,
+        "dy": -57,
+        "rmse": 13.49287561299267
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          41,
+          130,
+          579,
+          419,
+          151942
+        ],
+        [
+          48,
+          139,
+          560,
+          419,
+          137942
+        ],
+        [
+          36,
+          71,
+          585,
+          430,
+          155998
+        ],
+        [
+          33,
+          86,
+          578,
+          415,
+          145913
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-grass-seed-anchovy",
+    "storage_path": "fish/normal/firefly-grass-seed-anchovy_v1_sprite.png",
+    "cell": 627,
+    "scale": 0.8881618887015177,
+    "patch": [
+      534,
+      350,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -13,
+        "dy": 4,
+        "rmse": 17.72012862763365
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": -67,
+        "rmse": 15.158970238714266
+      },
+      {
+        "frame": 3,
+        "dx": -11,
+        "dy": -67,
+        "rmse": 17.648692058080304
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          23,
+          264,
+          593,
+          227,
+          69945
+        ],
+        [
+          19,
+          267,
+          584,
+          231,
+          69529
+        ],
+        [
+          28,
+          198,
+          589,
+          224,
+          69426
+        ],
+        [
+          20,
+          200,
+          583,
+          222,
+          68712
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-pinecone-carp",
+    "storage_path": "fish/normal/firefly-pinecone-carp_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.155,
+    "patch": [
+      462,
+      368,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -21,
+        "dy": 1,
+        "rmse": 20.618613409609075
+      },
+      {
+        "frame": 2,
+        "dx": 11,
+        "dy": -51,
+        "rmse": 21.86003080385666
+      },
+      {
+        "frame": 3,
+        "dx": -19,
+        "dy": -51,
+        "rmse": 16.258225046320547
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          125,
+          210,
+          434,
+          313,
+          80539
+        ],
+        [
+          89,
+          210,
+          447,
+          314,
+          78430
+        ],
+        [
+          113,
+          161,
+          456,
+          307,
+          79578
+        ],
+        [
+          99,
+          159,
+          443,
+          312,
+          82549
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-waterlily-fry",
+    "storage_path": "fish/normal/firefly-waterlily-fry_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.378743455497382,
+    "patch": [
+      435,
+      350,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -28,
+        "dy": -1,
+        "rmse": 14.941206275612895
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": -72,
+        "rmse": 16.813412158225553
+      },
+      {
+        "frame": 3,
+        "dx": -20,
+        "dy": -70,
+        "rmse": 22.19384076827031
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          164,
+          249,
+          362,
+          223,
+          45903
+        ],
+        [
+          116,
+          246,
+          382,
+          226,
+          48462
+        ],
+        [
+          160,
+          175,
+          368,
+          223,
+          47959
+        ],
+        [
+          127,
+          176,
+          380,
+          226,
+          48654
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-mushroom-sculpin",
+    "storage_path": "fish/normal/firefly-mushroom-sculpin_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.2107586206896552,
+    "patch": [
+      453,
+      350,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -24,
+        "dy": 0,
+        "rmse": 8.440620998495115
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -58,
+        "rmse": 10.346725749134876
+      },
+      {
+        "frame": 3,
+        "dx": -22,
+        "dy": -58,
+        "rmse": 12.624117521445461
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          119,
+          237,
+          432,
+          255,
+          66589
+        ],
+        [
+          101,
+          237,
+          426,
+          258,
+          66705
+        ],
+        [
+          117,
+          180,
+          435,
+          256,
+          67695
+        ],
+        [
+          96,
+          180,
+          435,
+          255,
+          67260
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-firefly-lanternfish",
+    "storage_path": "fish/rare/firefly-firefly-lanternfish_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.1575384615384616,
+    "patch": [
+      489,
+      413,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -61,
+        "dy": 0,
+        "rmse": 13.122150296440246
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": -149,
+        "rmse": 14.856811638807498
+      },
+      {
+        "frame": 3,
+        "dx": -52,
+        "dy": -149,
+        "rmse": 18.39820868563667
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          119,
+          277,
+          454,
+          271,
+          59698
+        ],
+        [
+          59,
+          259,
+          455,
+          289,
+          60970
+        ],
+        [
+          121,
+          133,
+          452,
+          268,
+          58657
+        ],
+        [
+          82,
+          133,
+          439,
+          266,
+          56748
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-flower-cloak-seahorse",
+    "storage_path": "fish/rare/firefly-flower-cloak-seahorse_v1_sprite.png",
+    "cell": 627,
+    "scale": 0.9207692307692308,
+    "patch": [
+      480,
+      278,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 25,
+        "dy": 1,
+        "rmse": 14.815382618419868
+      },
+      {
+        "frame": 2,
+        "dx": 5,
+        "dy": -4,
+        "rmse": 13.90931108686705
+      },
+      {
+        "frame": 3,
+        "dx": 27,
+        "dy": -4,
+        "rmse": 15.251103364876714
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          65,
+          38,
+          529,
+          572,
+          134398
+        ],
+        [
+          59,
+          38,
+          560,
+          554,
+          135638
+        ],
+        [
+          59,
+          35,
+          540,
+          559,
+          130576
+        ],
+        [
+          85,
+          35,
+          536,
+          560,
+          134806
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-waterlily-jellyfish",
+    "storage_path": "fish/rare/firefly-waterlily-jellyfish_v1_sprite.png",
+    "cell": 627,
+    "scale": 0.9753333333333333,
+    "patch": [
+      462,
+      350,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -27,
+        "dy": 0,
+        "rmse": 16.231908454368693
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -40,
+        "rmse": 15.102656610225585
+      },
+      {
+        "frame": 3,
+        "dx": -28,
+        "dy": -41,
+        "rmse": 17.612907114994393
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          57,
+          117,
+          540,
+          427,
+          129411
+        ],
+        [
+          64,
+          116,
+          507,
+          452,
+          126049
+        ],
+        [
+          63,
+          77,
+          534,
+          428,
+          128134
+        ],
+        [
+          50,
+          77,
+          521,
+          429,
+          125619
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-leaf-wing-guppy",
+    "storage_path": "fish/rare/firefly-leaf-wing-guppy_v1_sprite.png",
+    "cell": 627,
+    "scale": 0.912790294627383,
+    "patch": [
+      534,
+      377,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -1,
+        "dy": 1,
+        "rmse": 13.49731509571068
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": -100,
+        "rmse": 16.021850833846003
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": -100,
+        "rmse": 10.854334067428425
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          51,
+          184,
+          565,
+          368,
+          113604
+        ],
+        [
+          39,
+          145,
+          577,
+          398,
+          99218
+        ],
+        [
+          48,
+          111,
+          568,
+          337,
+          112478
+        ],
+        [
+          67,
+          143,
+          547,
+          333,
+          108098
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-clover-postfish",
+    "storage_path": "fish/rare/firefly-clover-postfish_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.0128461538461537,
+    "patch": [
+      489,
+      377,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -34,
+        "dy": 2,
+        "rmse": 11.272380762169865
+      },
+      {
+        "frame": 2,
+        "dx": 6,
+        "dy": -130,
+        "rmse": 15.054929012584699
+      },
+      {
+        "frame": 3,
+        "dx": -33,
+        "dy": -129,
+        "rmse": 14.101177087969365
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          85,
+          228,
+          503,
+          321,
+          97038
+        ],
+        [
+          61,
+          228,
+          492,
+          322,
+          96762
+        ],
+        [
+          78,
+          100,
+          520,
+          319,
+          97175
+        ],
+        [
+          50,
+          100,
+          505,
+          318,
+          98699
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-willow-ribbon-pipefish",
+    "storage_path": "fish/rare/firefly-willow-ribbon-pipefish_v1_sprite.png",
+    "cell": 627,
+    "scale": 0.8987713310580204,
+    "patch": [
+      489,
+      332,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -13,
+        "dy": 0,
+        "rmse": 18.2142662128038
+      },
+      {
+        "frame": 2,
+        "dx": 8,
+        "dy": -94,
+        "rmse": 35.462116531035754
+      },
+      {
+        "frame": 3,
+        "dx": -8,
+        "dy": -102,
+        "rmse": 20.17067209237778
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          35,
+          215,
+          580,
+          340,
+          61489
+        ],
+        [
+          18,
+          268,
+          585,
+          293,
+          59892
+        ],
+        [
+          31,
+          116,
+          586,
+          312,
+          60596
+        ],
+        [
+          33,
+          115,
+          573,
+          345,
+          63116
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-acorn-lantern-hermit",
+    "storage_path": "fish/rare/firefly-acorn-lantern-hermit_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.2721739130434782,
+    "patch": [
+      417,
+      368,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -44,
+        "dy": 1,
+        "rmse": 16.88641132905285
+      },
+      {
+        "frame": 2,
+        "dx": 7,
+        "dy": -55,
+        "rmse": 12.256624823784316
+      },
+      {
+        "frame": 3,
+        "dx": -45,
+        "dy": -59,
+        "rmse": 15.226349397551974
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          161,
+          173,
+          414,
+          364,
+          85595
+        ],
+        [
+          119,
+          173,
+          412,
+          356,
+          84100
+        ],
+        [
+          170,
+          124,
+          412,
+          342,
+          81114
+        ],
+        [
+          118,
+          118,
+          413,
+          354,
+          84167
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-flower-letter-batfish",
+    "storage_path": "fish/rare/firefly-flower-letter-batfish_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.2660576923076923,
+    "patch": [
+      471,
+      350,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -2,
+        "dy": 1,
+        "rmse": 13.3044682621909
+      },
+      {
+        "frame": 2,
+        "dx": 6,
+        "dy": -65,
+        "rmse": 16.063713748952452
+      },
+      {
+        "frame": 3,
+        "dx": 4,
+        "dy": -63,
+        "rmse": 15.917780613043089
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          178,
+          173,
+          360,
+          400,
+          70338
+        ],
+        [
+          164,
+          168,
+          371,
+          402,
+          71082
+        ],
+        [
+          190,
+          96,
+          353,
+          416,
+          66458
+        ],
+        [
+          181,
+          111,
+          360,
+          388,
+          69217
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-clover-ray",
+    "storage_path": "fish/rare/firefly-clover-ray_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.0167567567567566,
+    "patch": [
+      507,
+      368,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -31,
+        "dy": 4,
+        "rmse": 25.917255680566072
+      },
+      {
+        "frame": 2,
+        "dx": 4,
+        "dy": -79,
+        "rmse": 26.711476158757712
+      },
+      {
+        "frame": 3,
+        "dx": -29,
+        "dy": -77,
+        "rmse": 28.583289486513312
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          95,
+          220,
+          513,
+          299,
+          74113
+        ],
+        [
+          77,
+          281,
+          493,
+          242,
+          60786
+        ],
+        [
+          90,
+          113,
+          518,
+          320,
+          75534
+        ],
+        [
+          66,
+          144,
+          506,
+          289,
+          69645
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-woodgrain-turtle",
+    "storage_path": "fish/rare/firefly-woodgrain-turtle_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.1499563318777293,
+    "patch": [
+      489,
+      323,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -39,
+        "dy": 0,
+        "rmse": 12.223510182571614
+      },
+      {
+        "frame": 2,
+        "dx": 4,
+        "dy": -44,
+        "rmse": 17.407320095276248
+      },
+      {
+        "frame": 3,
+        "dx": -41,
+        "dy": -44,
+        "rmse": 15.913923418814157
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          110,
+          198,
+          455,
+          300,
+          79801
+        ],
+        [
+          91,
+          198,
+          436,
+          325,
+          81340
+        ],
+        [
+          131,
+          159,
+          439,
+          293,
+          74808
+        ],
+        [
+          66,
+          158,
+          458,
+          307,
+          81154
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-lantern-keeper-fairy",
+    "storage_path": "fish/epic/firefly-lantern-keeper-fairy_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.2421698113207547,
+    "patch": [
+      399,
+      332,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -45,
+        "dy": 0,
+        "rmse": 15.368741810963934
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": -52,
+        "rmse": 22.18584094555666
+      },
+      {
+        "frame": 3,
+        "dx": -45,
+        "dy": -51,
+        "rmse": 16.006008487199665
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          167,
+          132,
+          401,
+          424,
+          85678
+        ],
+        [
+          116,
+          173,
+          408,
+          384,
+          79971
+        ],
+        [
+          158,
+          125,
+          409,
+          371,
+          77387
+        ],
+        [
+          121,
+          86,
+          402,
+          417,
+          85332
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-acorn-warden-fairy",
+    "storage_path": "fish/epic/firefly-acorn-warden-fairy_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.12779443254818,
+    "patch": [
+      399,
+      206,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -38,
+        "dy": 2,
+        "rmse": 22.56820694022991
+      },
+      {
+        "frame": 2,
+        "dx": 10,
+        "dy": -54,
+        "rmse": 19.16654660797661
+      },
+      {
+        "frame": 3,
+        "dx": -38,
+        "dy": -54,
+        "rmse": 19.304742342830608
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          128,
+          105,
+          458,
+          467,
+          105084
+        ],
+        [
+          88,
+          161,
+          460,
+          413,
+          101796
+        ],
+        [
+          132,
+          105,
+          467,
+          422,
+          102771
+        ],
+        [
+          93,
+          66,
+          453,
+          453,
+          102936
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-waterlily-dancer-fairy",
+    "storage_path": "fish/epic/firefly-waterlily-dancer-fairy_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.1229850746268655,
+    "patch": [
+      381,
+      278,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -57,
+        "dy": -1,
+        "rmse": 31.091295229585633
+      },
+      {
+        "frame": 2,
+        "dx": 1,
+        "dy": -62,
+        "rmse": 34.20457078698538
+      },
+      {
+        "frame": 3,
+        "dx": -56,
+        "dy": -59,
+        "rmse": 32.27241663928571
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          144,
+          113,
+          435,
+          469,
+          97514
+        ],
+        [
+          111,
+          189,
+          417,
+          392,
+          93108
+        ],
+        [
+          132,
+          149,
+          450,
+          373,
+          100474
+        ],
+        [
+          109,
+          87,
+          423,
+          434,
+          97423
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-clover-luck-fairy",
+    "storage_path": "fish/epic/firefly-clover-luck-fairy_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.2421698113207547,
+    "patch": [
+      390,
+      323,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -13,
+        "dy": 2,
+        "rmse": 12.704306682539732
+      },
+      {
+        "frame": 2,
+        "dx": 4,
+        "dy": -34,
+        "rmse": 13.41359594639028
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": -31,
+        "rmse": 14.176559951942005
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          159,
+          143,
+          381,
+          423,
+          91484
+        ],
+        [
+          123,
+          143,
+          408,
+          424,
+          95749
+        ],
+        [
+          149,
+          107,
+          400,
+          416,
+          91216
+        ],
+        [
+          150,
+          107,
+          398,
+          420,
+          95462
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-flower-post-fairy",
+    "storage_path": "fish/epic/firefly-flower-post-fairy_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.0859381443298968,
+    "patch": [
+      417,
+      269,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -63,
+        "dy": 0,
+        "rmse": 17.765567387938518
+      },
+      {
+        "frame": 2,
+        "dx": 12,
+        "dy": -49,
+        "rmse": 16.856556324595495
+      },
+      {
+        "frame": 3,
+        "dx": -64,
+        "dy": -56,
+        "rmse": 29.92866271771938
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          134,
+          159,
+          463,
+          415,
+          95110
+        ],
+        [
+          72,
+          195,
+          466,
+          387,
+          93426
+        ],
+        [
+          127,
+          147,
+          485,
+          370,
+          92103
+        ],
+        [
+          74,
+          101,
+          463,
+          412,
+          93898
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-mushroom-child-fairy",
+    "storage_path": "fish/epic/firefly-mushroom-child-fairy_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.2191666666666665,
+    "patch": [
+      408,
+      278,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 19,
+        "dy": 0,
+        "rmse": 11.37740156064597
+      },
+      {
+        "frame": 2,
+        "dx": -1,
+        "dy": -24,
+        "rmse": 17.91923861178358
+      },
+      {
+        "frame": 3,
+        "dx": 23,
+        "dy": -32,
+        "rmse": 9.465446347437242
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          141,
+          141,
+          376,
+          423,
+          93618
+        ],
+        [
+          125,
+          148,
+          418,
+          417,
+          90659
+        ],
+        [
+          139,
+          126,
+          378,
+          411,
+          83827
+        ],
+        [
+          155,
+          108,
+          392,
+          432,
+          99817
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-honey-teahouse-fairy",
+    "storage_path": "fish/epic/firefly-honey-teahouse-fairy_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.0704878048780488,
+    "patch": [
+      390,
+      314,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -48,
+        "dy": 5,
+        "rmse": 17.765484120493394
+      },
+      {
+        "frame": 2,
+        "dx": 14,
+        "dy": -19,
+        "rmse": 18.304015467883563
+      },
+      {
+        "frame": 3,
+        "dx": -20,
+        "dy": -16,
+        "rmse": 17.352676583610513
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          122,
+          87,
+          465,
+          492,
+          119150
+        ],
+        [
+          79,
+          150,
+          464,
+          427,
+          107250
+        ],
+        [
+          123,
+          133,
+          474,
+          421,
+          107602
+        ],
+        [
+          110,
+          71,
+          455,
+          492,
+          115476
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-evening-lullaby-fairy",
+    "storage_path": "fish/epic/firefly-evening-lullaby-fairy_v1_sprite.png",
+    "cell": 627,
+    "scale": 1.251021377672209,
+    "patch": [
+      363,
+      251,
+      37,
+      37
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": -84,
+        "dy": 138,
+        "rmse": 57.97373890405658
+      },
+      {
+        "frame": 2,
+        "dx": -43,
+        "dy": 57,
+        "rmse": 58.160331961195666
+      },
+      {
+        "frame": 3,
+        "dx": -31,
+        "dy": -64,
+        "rmse": 33.366697139324735
+      }
+    ],
+    "rawAudit": {
+      "width": 1254,
+      "height": 1254,
+      "bounds": [
+        [
+          167,
+          145,
+          409,
+          399,
+          87130
+        ],
+        [
+          116,
+          208,
+          414,
+          332,
+          86426
+        ],
+        [
+          167,
+          146,
+          412,
+          320,
+          82865
+        ],
+        [
+          123,
+          90,
+          421,
+          386,
+          88410
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-millennium-lantern-queen",
+    "storage_path": "fish/mythic/firefly-millennium-lantern-queen_swim8_v1_sprite.png",
+    "cell": 444,
+    "scale": 1.2404,
+    "patch": [
+      305,
+      262,
+      26,
+      26
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 15.260294305106996
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 15.721769958656417
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 3,
+        "rmse": 19.416569330264345
+      },
+      {
+        "frame": 4,
+        "dx": 8,
+        "dy": -33,
+        "rmse": 27.167553245868287
+      },
+      {
+        "frame": 5,
+        "dx": -126,
+        "dy": 3,
+        "rmse": 39.082799156066315
+      },
+      {
+        "frame": 6,
+        "dx": 9,
+        "dy": -22,
+        "rmse": 20.723618275542034
+      },
+      {
+        "frame": 7,
+        "dx": -1,
+        "dy": -26,
+        "rmse": 21.654508110760386
+      }
+    ],
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          111,
+          143,
+          233,
+          201,
+          26398
+        ],
+        [
+          104,
+          141,
+          241,
+          198,
+          26204
+        ],
+        [
+          105,
+          159,
+          240,
+          180,
+          25790
+        ],
+        [
+          106,
+          150,
+          238,
+          193,
+          26381
+        ],
+        [
+          109,
+          115,
+          243,
+          200,
+          29538
+        ],
+        [
+          93,
+          86,
+          300,
+          232,
+          37271
+        ],
+        [
+          104,
+          114,
+          252,
+          206,
+          29998
+        ],
+        [
+          108,
+          115,
+          236,
+          200,
+          26301
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-village-elder-turtle",
+    "storage_path": "fish/mythic/firefly-village-elder-turtle_swim8_v1_sprite.png",
+    "cell": 444,
+    "scale": 1.0912609970674487,
+    "patch": [
+      323,
+      268,
+      26,
+      26
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 2,
+        "dy": 1,
+        "rmse": 18.33577424828171
+      },
+      {
+        "frame": 2,
+        "dx": 13,
+        "dy": -4,
+        "rmse": 24.00932174935805
+      },
+      {
+        "frame": 3,
+        "dx": 5,
+        "dy": 0,
+        "rmse": 20.662111206412884
+      },
+      {
+        "frame": 4,
+        "dx": 1,
+        "dy": -11,
+        "rmse": 20.132891827388665
+      },
+      {
+        "frame": 5,
+        "dx": 14,
+        "dy": -11,
+        "rmse": 20.61597726324218
+      },
+      {
+        "frame": 6,
+        "dx": 3,
+        "dy": -12,
+        "rmse": 26.621605446389026
+      },
+      {
+        "frame": 7,
+        "dx": 3,
+        "dy": -10,
+        "rmse": 22.152390278742573
+      }
+    ],
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          73,
+          150,
+          290,
+          225,
+          34683
+        ],
+        [
+          71,
+          151,
+          297,
+          230,
+          36476
+        ],
+        [
+          60,
+          152,
+          321,
+          233,
+          38845
+        ],
+        [
+          77,
+          152,
+          294,
+          229,
+          36231
+        ],
+        [
+          74,
+          140,
+          291,
+          233,
+          36583
+        ],
+        [
+          56,
+          140,
+          341,
+          226,
+          39914
+        ],
+        [
+          74,
+          140,
+          308,
+          248,
+          37456
+        ],
+        [
+          74,
+          141,
+          293,
+          233,
+          36634
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-flower-dream-queen",
+    "storage_path": "fish/mythic/firefly-flower-dream-queen_swim8_v1_sprite.png",
+    "cell": 444,
+    "scale": 1.301118881118881,
+    "patch": [
+      323,
+      280,
+      26,
+      26
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 10.92194859166445
+      },
+      {
+        "frame": 2,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 6.82099509059888
+      },
+      {
+        "frame": 3,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 8.787535446345535
+      },
+      {
+        "frame": 4,
+        "dx": 0,
+        "dy": -2,
+        "rmse": 9.348761984848617
+      },
+      {
+        "frame": 5,
+        "dx": 0,
+        "dy": -2,
+        "rmse": 10.451340559015359
+      },
+      {
+        "frame": 6,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 11.120356903550249
+      },
+      {
+        "frame": 7,
+        "dx": 0,
+        "dy": -1,
+        "rmse": 11.34079522624566
+      }
+    ],
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          87,
+          112,
+          273,
+          269,
+          41050
+        ],
+        [
+          86,
+          113,
+          274,
+          269,
+          41649
+        ],
+        [
+          86,
+          112,
+          275,
+          269,
+          41474
+        ],
+        [
+          85,
+          112,
+          276,
+          270,
+          41630
+        ],
+        [
+          85,
+          110,
+          275,
+          272,
+          41779
+        ],
+        [
+          84,
+          110,
+          286,
+          272,
+          42492
+        ],
+        [
+          86,
+          110,
+          275,
+          272,
+          41738
+        ],
+        [
+          85,
+          110,
+          276,
+          272,
+          41708
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  },
+  {
+    "id": "firefly-first-firefly-spirit",
+    "storage_path": "fish/mythic/firefly-first-firefly-spirit_swim8_v1_sprite.png",
+    "cell": 444,
+    "scale": 1.2404,
+    "patch": [
+      305,
+      256,
+      26,
+      26
+    ],
+    "frames": [
+      {
+        "frame": 0,
+        "dx": 0,
+        "dy": 0,
+        "rmse": 0
+      },
+      {
+        "frame": 1,
+        "dx": 8,
+        "dy": 5,
+        "rmse": 20.859299835094887
+      },
+      {
+        "frame": 2,
+        "dx": 25,
+        "dy": 5,
+        "rmse": 26.47260284329256
+      },
+      {
+        "frame": 3,
+        "dx": 32,
+        "dy": 5,
+        "rmse": 26.387841552847437
+      },
+      {
+        "frame": 4,
+        "dx": 12,
+        "dy": -23,
+        "rmse": 22.76553273085171
+      },
+      {
+        "frame": 5,
+        "dx": 10,
+        "dy": -23,
+        "rmse": 17.422555913110298
+      },
+      {
+        "frame": 6,
+        "dx": 30,
+        "dy": -23,
+        "rmse": 23.719204230973883
+      },
+      {
+        "frame": 7,
+        "dx": 10,
+        "dy": -23,
+        "rmse": 20.4448894957519
+      }
+    ],
+    "rawAudit": {
+      "width": 1774,
+      "height": 887,
+      "bounds": [
+        [
+          116,
+          148,
+          246,
+          187,
+          20943
+        ],
+        [
+          143,
+          123,
+          231,
+          218,
+          23992
+        ],
+        [
+          95,
+          151,
+          297,
+          193,
+          26306
+        ],
+        [
+          98,
+          167,
+          300,
+          176,
+          22846
+        ],
+        [
+          96,
+          112,
+          283,
+          203,
+          26032
+        ],
+        [
+          152,
+          89,
+          223,
+          227,
+          23982
+        ],
+        [
+          106,
+          129,
+          289,
+          185,
+          24687
+        ],
+        [
+          121,
+          122,
+          255,
+          190,
+          21744
+        ]
+      ]
+    },
+    "method": "Rigid head/foot RGB template translation; no image edits or frame rescaling"
+  }
+]

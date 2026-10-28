@@ -2,7 +2,9 @@ import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/r
 import {MemoryRouter} from 'react-router'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {ExchangePage} from '@/features/exchange/exchange-page'
+import {appQueryClient} from '@/lib/account-cache'
 const mock=vi.hoisted(()=>({load:vi.fn(),inventory:vi.fn(),post:vi.fn(),act:vi.fn(),refresh:vi.fn()}))
+vi.mock('@/features/exchange/read-market',()=>({readExchangeMarket:(filter:{tab:string;query:string;offset:number})=>mock.load(filter.tab,filter.query,filter.offset)}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:'me'}}})}))
 vi.mock('@/features/gold/gold-provider',()=>({useGold:()=>({refresh:mock.refresh}),GoldIcon:()=>null}))
 vi.mock('@/features/social/social-provider',()=>({useSocial:()=>({refresh:mock.refresh})}))
@@ -11,7 +13,7 @@ vi.mock('@/features/exchange/api',async original=>({...await original<typeof imp
 const fish={kind:'collectible',id:'soft-sea-cucumber',name:'말랑 해삼',quantity:1,thumbnail_path:'fish.png',available:2,sell_price:30}
 const money={kind:'gold',id:'gold',name:'골드',quantity:300,thumbnail_path:null}
 const listing={id:'listing',owner_id:'other',owner_name:'섬친구',side:'sell',offer:fish,wanted:money,status:'active',taker_id:null,created_at:'2026-10-17T00:00:00Z',closed_at:null}
-beforeEach(()=>{vi.clearAllMocks();mock.load.mockResolvedValue({items:[listing],total:1});mock.inventory.mockResolvedValue({gold:5000,assets:[fish]});mock.post.mockResolvedValue({...listing,owner_id:'me'});mock.act.mockResolvedValue({...listing,status:'completed'});mock.refresh.mockResolvedValue(undefined)})
+beforeEach(()=>{vi.clearAllMocks();appQueryClient.clear();localStorage.clear();mock.load.mockResolvedValue({items:[listing],total:1});mock.inventory.mockResolvedValue({gold:5000,assets:[fish]});mock.post.mockResolvedValue({...listing,owner_id:'me'});mock.act.mockResolvedValue({...listing,status:'completed'});mock.refresh.mockResolvedValue(undefined)})
 afterEach(cleanup)
 const setup=()=>render(<MemoryRouter><ExchangePage/></MemoryRouter>)
 it('selects different item types with separate quantities and posts one total price',async()=>{
@@ -33,7 +35,8 @@ it('selects different item types with separate quantities and posts one total pr
 })
 it('opens posts from the list without purchase actions',async()=>{
  setup();const link=await screen.findByRole('link',{name:'말랑 해삼 상세 보기'})
- expect(within(link.parentElement!).getByLabelText('상점 판매가 개당 30골드')).toBeTruthy()
+ expect(within(link.parentElement!).queryByLabelText('상점 판매가 개당 30골드')).toBeNull()
+ expect(within(link.parentElement!).getByText('전체 가격')).toBeTruthy()
  expect(link.getAttribute('href')).toBe('/exchange/listing')
  expect(within(link.parentElement!).getByText('섬친구')).toBeTruthy()
  expect(within(link.parentElement!).getByText('300')).toBeTruthy()
@@ -46,7 +49,7 @@ it('retains the same post operation and conditions after a transport error',asyn
  const picker=await screen.findByLabelText('판매할 물품 검색')
  expect(await screen.findByRole('button',{name:'말랑 해삼 선택 · 보유 2개'})).toBeTruthy()
  fireEvent.change(picker,{target:{value:'해삼'}})
- expect(screen.queryByRole('combobox')).toBeNull()
+ expect(within(screen.getByRole('dialog')).queryByRole('combobox')).toBeNull()
  fireEvent.click(await screen.findByRole('button',{name:'말랑 해삼 선택 · 보유 2개'}))
  fireEvent.change(screen.getByLabelText('판매 가격'),{target:{value:'300'}})
  fireEvent.change(screen.getByLabelText('판매글 제목'),{target:{value:'레전드 해파리 팝니다'}})

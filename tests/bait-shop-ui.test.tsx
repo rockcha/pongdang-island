@@ -1,4 +1,4 @@
-import {cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
+import {act,cleanup,fireEvent,render,screen,waitFor,within} from '@testing-library/react'
 import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {BaitShop} from '@/features/fishing/bait-shop'
 import {BaitTarget} from '@/features/fishing/bait-info'
@@ -49,6 +49,27 @@ it('restores the minimum only when an empty field loses focus',async()=>{
  render(<BaitShop/>);fireEvent.click(await screen.findByRole('button',{name:'테스트 미끼 상세 보기'}))
  const input=screen.getByRole('spinbutton',{name:'구매 수량'}) as HTMLInputElement
  fireEvent.change(input,{target:{value:''}});fireEvent.blur(input);expect(input.value).toBe('1')
+})
+it('keeps the complete bait content until the exit animation finishes and resets on reopening',async()=>{
+ render(<BaitShop/>)
+ const trigger=await screen.findByRole('button',{name:'테스트 미끼 상세 보기'})
+ fireEvent.click(trigger)
+ const dialog=screen.getByRole('dialog')
+ fireEvent.change(within(dialog).getByRole('spinbutton',{name:'구매 수량'}),{target:{value:'3'}})
+ let finish!:()=>void
+ const closing=new Promise<void>(resolve=>{finish=resolve})
+ const animations=vi.fn(()=>[{finished:closing}])
+ Object.defineProperty(dialog,'getAnimations',{value:animations,configurable:true})
+ fireEvent.click(within(dialog).getByRole('button',{name:'Close'}))
+ await waitFor(()=>expect(animations).toHaveBeenCalled())
+ expect(dialog.textContent).toContain('테스트 미끼')
+ expect(dialog.querySelector('[data-bait-detail-body]')).not.toBeNull()
+ expect((dialog.querySelector('#bait-purchase-quantity') as HTMLInputElement).value).toBe('3')
+ await act(async()=>finish())
+ await waitFor(()=>expect(document.body.contains(dialog)).toBe(false))
+ fireEvent.click(trigger)
+ expect(screen.getByRole('dialog',{name:'테스트 미끼'})).toBeTruthy()
+ expect(screen.getByRole('spinbutton',{name:'구매 수량'})).toHaveProperty('value','1')
 })
 
 it('combines search, target and waiting filters and resets an empty result before purchase',async()=>{

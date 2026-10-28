@@ -7,6 +7,7 @@ import { LandscapeImage } from '@/components/landscape-image'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/components/ui/dialog'
 import { productionDuration } from './facilities'
+import {FacilityShop} from './facility-shop'
 import { useProduction } from './use-production'
 import { productionStatus, remainingTime } from './production-status'
 import { MaterialDialog } from './material-dialog'
@@ -87,7 +88,7 @@ function Details({ site, compact = false }: { site: ProductionFacility; compact?
 
 export function ProductionPage({ shop = false }: { shop?: boolean }) {
   const [searchParams,setSearchParams]=useSearchParams()
-  const { state, error, busy, now, reload, action, retry } = useProduction()
+  const { state, error, busy, pending, now, reload, action, retry } = useProduction()
   const [quantity, setQuantity] = useState(1),
     [shopFilters, setShopFilters] = useState(initialShopFilters)
   const [category, setCategory] = useState<'trash' | 'fish'>('trash'),
@@ -152,6 +153,7 @@ export function ProductionPage({ shop = false }: { shop?: boolean }) {
       </button>
     </p>
   )
+  if(shop)return <FacilityShop kind="fuel" facilities={state?.facilities??[]} gold={state?.gold??0} fuel={state?.fuel??0} loading={!state&&!error} error={error} busy={busy} pending={pending} selectedId={selected?.id??null} onSelect={id=>setSelected(id?{id,mode:'buy'}:null)} onBuy={async(id,quantity)=>{if(await action({p_action:'buy',p_facility:id,p_quantity:quantity}))setSelected(null)}} onRetry={()=>{void retry().then(success=>{if(success)setSelected(null)})}}/>
   return (
     <section
       aria-label={shop ? '연료 생산소 상점' : '연료 생산소'}

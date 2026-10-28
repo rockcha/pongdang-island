@@ -6,12 +6,12 @@ import {BaitOddsBars} from './bait-info'
 
 export const baitPercent=(bp:number)=>`${Number((bp/100).toFixed(2))}%`
 
-export function BaitEffectDetails({bait,compact=false}:{bait:FishingBait;compact?:boolean}){
+export function BaitEffectDetails({bait,compact=false,minimal=false}:{bait:FishingBait;compact?:boolean;minimal?:boolean}){
  if(bait.mechanicsVersion===2)return <section aria-label="미끼 효과" className="min-w-0 space-y-3">
   <p className="text-xs leading-6 text-foreground/80">{baitWaitFlavor(bait.id)}</p>
-  <div className="rounded-xl border border-border/60 px-3 py-3">
+  <div className={minimal?'space-y-2':'rounded-xl border border-border/60 px-3 py-3'}>
    <div className="mb-3 flex items-center justify-between gap-2"><h3 className="text-xs font-medium">등급 확률</h3>{bait.period&&<span className="rounded-full bg-secondary px-2 py-0.5 text-[10px] text-muted-foreground">현재 {bait.period==='night'?'밤':'낮'} 기준</span>}{bait.alternating&&<span className="text-[10px] text-primary">다음 {bait.nextRarity==='rare'?'희귀':'일반'}</span>}</div>
-   <BaitOddsBars bait={bait}/>
+   <BaitOddsBars bait={bait} compact={minimal}/>
    {bait.alternating&&<p className="mt-3 text-[10px] leading-5 text-muted-foreground">사용할 때마다 일반·희귀가 교대하며, 다음 순서는 유지돼요.</p>}
    {bait.id==='bait_first_greeting'&&<p className="mt-3 text-[10px] leading-5 text-muted-foreground">남은 미발견 개체에 따라 실제 등급 비율이 달라질 수 있어요. 모두 발견했다면 미끼를 소모하지 않아요.</p>}
    {bait.id==='bait_grubby_magnet'&&<p className="mt-3 text-[10px] leading-5 text-muted-foreground">해당 등급에 쓰레기가 없으면 다른 등급의 쓰레기를 만나요.</p>}
@@ -30,7 +30,7 @@ export function BaitEffectDetails({bait,compact=false}:{bait:FishingBait;compact
   :tail?{icon:Trash2,title:'쓰레기 속 신화의 기회',text:`성공 시 일반 쓰레기 ${baitPercent(bait.common_bp)} · 신화 등급 개체 ${baitPercent(bait.mythic_bp)}예요. 신화는 물고기·쓰레기·장식물 중에서 포획해요.`}:null
  const bonus=bait.successChanceBp!==undefined&&bait.baseSuccessChanceBp!==undefined?Math.max(0,bait.successChanceBp-bait.baseSuccessChanceBp):0
  return <section aria-label="미끼 효과" className={compact?"min-w-0 space-y-3":"min-w-0 space-y-5 py-1"}>
-  {compact&&bait.description&&<p className="rounded-xl border border-primary/10 bg-secondary/30 px-3 py-2.5 text-xs leading-6 text-foreground/80">{bait.description}</p>}
+  {compact&&bait.description&&<p className={minimal?'text-xs leading-6 text-foreground/80':'rounded-xl border border-primary/10 bg-secondary/30 px-3 py-2.5 text-xs leading-6 text-foreground/80'}>{bait.description}</p>}
   {!compact&&<div>
    <div className="flex items-center justify-between gap-3"><span className="text-xs text-muted-foreground">낚시 성공률</span><strong className="text-xl font-semibold tabular-nums text-primary">{chance===undefined?'—':baitPercent(chance)}</strong></div>
   </div>}

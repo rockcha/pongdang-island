@@ -35,7 +35,7 @@ function readPending(key: string): Pending | null {
     return null
   }
 }
-function ItemRow({ item, delivery = false, completed = false }: { item: MerchantItem; delivery?: boolean; completed?: boolean }) {
+function ItemRow({ item, delivery = false, completed = false, details = false }: { item: MerchantItem; delivery?: boolean; completed?: boolean; details?:boolean }) {
   const enough = item.owned >= item.quantity
   return (
     <li className="flex min-w-0 items-center gap-3 py-2">
@@ -46,7 +46,7 @@ function ItemRow({ item, delivery = false, completed = false }: { item: Merchant
       />
       <div className="min-w-0 flex-1">
         <p className="break-words text-sm leading-5">{item.name}</p>
-        <span className="mt-0.5 flex items-center gap-1 text-[10px] text-muted-foreground">
+        {details&&<span className="mt-0.5 flex items-center gap-1 text-[10px] text-muted-foreground">
           <span
             aria-hidden
             className="size-1.5 rounded-full"
@@ -54,20 +54,20 @@ function ItemRow({ item, delivery = false, completed = false }: { item: Merchant
           />
           {rarities[item.rarity].label} ·{' '}
           {item.kind === 'fish' ? '물고기' : item.kind === 'trash' ? '쓰레기' : '장식물'}
-        </span>
+        </span>}
       </div>
       <div className="shrink-0 text-right">
         {completed?<span className="text-xs tabular-nums text-muted-foreground">×{item.quantity}</span>:<span
           aria-label={`${item.name} 보유 ${item.owned}개, 필요 ${item.quantity}개`}
           className={`flex shrink-0 items-center gap-1 text-xs tabular-nums ${enough ? 'text-primary' : 'text-muted-foreground'}`}
         >
-          <strong className="text-sm font-medium">
+          <span className="text-[9px] font-normal">보유</span><strong className="text-xs font-medium">
             {(delivery ? Math.min(item.owned, item.quantity) : item.owned).toLocaleString('ko-KR')}
           </strong>
-          <span className="opacity-60">/ {item.quantity}</span>
+          <span className="opacity-60">/ 필요 {item.quantity}</span>
           {enough && <Check aria-hidden className="size-3" />}
         </span>}
-        {delivery && (
+        {!completed && (delivery || !enough) && (
           <p className={`mt-1 text-[10px] ${enough ? 'text-primary' : 'text-destructive'}`}>
             {enough ? '자동으로 채웠어요' : `${item.quantity - item.owned}개 부족`}
           </p>
@@ -90,6 +90,7 @@ function AccountMerchant({ owner }: { owner: string }) {
   const [filter, setFilter] = useState<'open' | 'ready' | 'done'>('open'),
     [selected, setSelected] = useState<MerchantOrder | null>(null)
   const [message, setMessage] = useState('')
+  const [dialogOpen,setDialogOpen]=useState(false)
   const [itemCount, setItemCount] = useState<0 | 1 | 2 | 3>(0)
   const [pending, setPending] = useState<Pending | null>(() => readPending(key))
   const now = useServerDeadlines(data?.serverNow, query.dataUpdatedAt, [data?.resetsAt])
@@ -133,7 +134,7 @@ function AccountMerchant({ owner }: { owner: string }) {
       } catch {}
       if (alive.current) {
         remember(null)
-        setSelected(null)
+        setDialogOpen(false)
         setMessage('')
         setFilter('done')
         toast.success(`납품 완료 · ${next.receipt?.gold.toLocaleString('ko-KR') ?? ''}골드`)
@@ -143,9 +144,9 @@ function AccountMerchant({ owner }: { owner: string }) {
         const code = String((cause as { code?: string })?.code ?? '')
         if (/^[0-9A-Z]{5}$/.test(code)) {
           remember(null)
-          setSelected(null)
+          setDialogOpen(false)
         }
-        setSelected(null)
+        setDialogOpen(false)
         void reload()
         setError(merchantError(cause))
         toast.error(merchantError(cause))
@@ -161,10 +162,9 @@ function AccountMerchant({ owner }: { owner: string }) {
     data?.orders.filter((order) =>
       filter === 'done'
         ? order.completed
-        : filter === 'ready'
-          ? canDeliver(order)
-          : !order.completed && (itemCount === 0 || order.items.length === itemCount),
+        : filter === 'ready' ? canDeliver(order) : !order.completed && (itemCount === 0 || order.items.length === itemCount),
     ).sort((a,b)=>Number(canDeliver(b))-Number(canDeliver(a))||a.number-b.number) ?? []
+  const active=data?.orders.find(order=>order.id===selected?.id)??selected
   const counts = {
     open: data?.orders.filter(order => !order.completed).length,
     ready: data?.orders.filter(canDeliver).length,
@@ -176,7 +176,7 @@ function AccountMerchant({ owner }: { owner: string }) {
         <div
           role="group"
           aria-label="주문 필터"
-          className="grid grid-cols-3 border-b border-border/60 px-3"
+          className="grid grid-cols-3 border-b border-border/60"
         >
           {(
             [
@@ -192,7 +192,7 @@ function AccountMerchant({ owner }: { owner: string }) {
               aria-description={counts[value] === undefined ? '의뢰 수를 불러오는 중' : `${counts[value]}개 의뢰`}
               aria-pressed={filter === value}
               onClick={() => setFilter(value)}
-              className={`flex min-h-12 items-center justify-center border-b-2 px-1 py-3 text-xs outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${filter === value ? 'border-primary font-medium text-primary' : 'border-transparent text-muted-foreground hover:text-foreground'}`}
+              className={`flex min-h-14 items-center justify-center border-r border-border/60 last:border-r-0 px-1 py-3 text-sm outline-none transition-colors focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring ${filter === value ? 'bg-secondary font-medium text-primary' : 'bg-background text-muted-foreground hover:bg-secondary/30'}`}
             >
               <span className="inline-flex items-center gap-1.5">
                 {label}
@@ -288,13 +288,13 @@ function AccountMerchant({ owner }: { owner: string }) {
                   disabled={busy}
                   onClick={() => {
                     setMessage('')
-                    setSelected(order)
+                    setSelected(order);setDialogOpen(true)
                   }}
                   className="absolute inset-0 flex w-full items-center justify-end rounded-t-xl pr-3 text-muted-foreground outline-none transition-colors hover:bg-secondary/20 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
                 >
                   <ChevronRight aria-hidden className="size-3.5 opacity-50" />
                 </button>
-                {canDeliver(order) && !expired && <p className="pointer-events-none relative px-4 pt-3 text-[11px] font-medium text-orange-600">바로 납품 가능</p>}
+                {canDeliver(order) && !expired && <p className="pointer-events-none relative px-4 pt-3 text-[11px] font-medium text-primary">바로 납품 가능</p>}
                 <ul className="pointer-events-none relative space-y-1 py-3 pr-9 pl-4">
                   {order.items.map((item) => (
                     <ItemRow key={item.speciesId} item={item} completed={order.completed}/>
@@ -314,12 +314,12 @@ function AccountMerchant({ owner }: { owner: string }) {
                       disabled={busy || !!pending || expired}
                       onClick={() => {
                         setMessage('')
-                        setSelected(order)
+                        setSelected(order);setDialogOpen(true)
                       }}
                     >
                       납품하기
                     </Button>
-                  ):<Button variant="ghost" className="min-h-11 shrink-0 rounded-md px-2 text-[11px] text-muted-foreground" disabled={busy} onClick={()=>{setMessage('');setSelected(order)}}>{order.items.reduce((total,item)=>total+Math.max(0,item.quantity-item.owned),0)}개 부족</Button>}
+                  ):<Button variant="ghost" className="min-h-11 shrink-0 rounded-md px-2 text-[11px] text-muted-foreground" disabled={busy} onClick={()=>{setMessage('');setSelected(order);setDialogOpen(true)}}>{order.items.reduce((total,item)=>total+Math.max(0,item.quantity-item.owned),0)}개 부족</Button>}
                 </div>
                 {order.completed && order.delivery && (
                   <div className="mx-4 flex items-start gap-2 border-t border-border/40 py-3">
@@ -363,64 +363,66 @@ function AccountMerchant({ owner }: { owner: string }) {
         )}
       </div>
       <Dialog
-        open={!!selected}
+        open={dialogOpen}
+        onOpenChangeComplete={open=>{if(!open&&!dialogOpen)setSelected(null)}}
         onOpenChange={(value) => {
-          if (!value && !busy) setSelected(null)
+          if (!value && !busy) setDialogOpen(false)
         }}
       >
         <DialogContent
-          className="max-h-[85dvh] overflow-y-auto rounded-2xl sm:max-w-sm"
+          className="flex max-h-[85dvh] w-[calc(100%-2rem)] min-w-0 max-w-md flex-col gap-0 overflow-hidden rounded-2xl p-0 sm:max-w-md"
           showCloseButton={!busy}
         >
-          <DialogHeader>
-            <DialogTitle>
-              {selected?.completed
+          <DialogHeader className="shrink-0 px-4 pt-4 pb-3 pr-12">
+            <DialogTitle className="text-base font-normal">
+              {active?.completed
                 ? '완료된 주문'
-                : selected && canDeliver(selected)
+                : active && canDeliver(active)
                   ? '상인에게 납품할까요?'
                   : '납품할 개체 확인'}
             </DialogTitle>
-            <DialogDescription>
-              {selected?.completed
+            <DialogDescription className="text-xs leading-5">
+              {active?.completed
                 ? '완료된 주문의 구성과 지급액을 확인해요.'
                 : '납품하면 아래 개체가 보관함에서 판매됩니다. 완료한 납품은 되돌릴 수 없어요.'}
             </DialogDescription>
           </DialogHeader>
-          {selected && (
+          {active && (
             <>
-              {!selected.completed && (
+              <div className="min-h-0 flex-1 space-y-3 overflow-y-auto overscroll-contain px-4 pb-4">
+              {!active.completed && (
                 <p className="rounded-lg bg-secondary/40 px-3 py-2.5 text-[11px] leading-5 text-muted-foreground">
                   보관함에서 필요한 수량을 자동으로 채워요. 어항에 있는 개체는 포함되지 않아요.
                 </p>
               )}
               <ul className="divide-y divide-border/50">
-                {selected.items.map((item) => (
-                  <ItemRow key={item.speciesId} item={item} delivery={!selected.completed} />
+                {active.items.map((item) => (
+                  <ItemRow key={item.speciesId} item={item} delivery={!active.completed} completed={active.completed} details/>
                 ))}
               </ul>
               <div className="flex items-center justify-between border-t pt-4 text-xs text-muted-foreground">
                 <span>일반 판매가</span>
                 <span className="tabular-nums">
-                  {selected.baseGold.toLocaleString('ko-KR')}골드
+                  {active.baseGold.toLocaleString('ko-KR')}골드
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">
                 <span className="text-xs text-muted-foreground">추가 보상</span>
                 <span className="text-xs tabular-nums text-primary">
-                  +{Math.max(0, selected.rewardGold - selected.baseGold).toLocaleString('ko-KR')}골드
+                  +{Math.max(0, active.rewardGold - active.baseGold).toLocaleString('ko-KR')}골드
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm">
                 <span>받는 골드</span>
                 <strong className="flex items-center gap-1.5 text-xl font-medium tabular-nums text-primary">
                   <GoldIcon className="size-5" />
-                  {selected.rewardGold.toLocaleString('ko-KR')}
+                  {active.rewardGold.toLocaleString('ko-KR')}
                 </strong>
               </div>
               <p className="text-[11px] leading-5 text-muted-foreground">
                 선착순이라 확인하는 동안 다른 모험가가 먼저 납품할 수 있어요.
               </p>
-              {canDeliver(selected) && (
+              {canDeliver(active) && (
                 <label className="space-y-2 text-xs">
                   <span className="flex items-center justify-between text-muted-foreground">
                     <span>
@@ -448,24 +450,25 @@ function AccountMerchant({ owner }: { owner: string }) {
                   {error}
                 </p>
               )}
-              {canDeliver(selected) ? (
+              </div><div className="shrink-0 border-t border-border/60 bg-background px-4 pt-3 pb-[max(1rem,env(safe-area-inset-bottom))]">
+              {canDeliver(active) ? (
                 <Button
                   className="min-h-12 w-full rounded-xl"
                   disabled={busy || expired || !!pending}
-                  onClick={() => void submit(selected)}
+                  onClick={() => void submit(active)}
                 >
                   {busy
                     ? '납품 확인 중…'
-                    : `${selected.rewardGold.toLocaleString('ko-KR')}골드 받고 납품`}
+                    : `${active.rewardGold.toLocaleString('ko-KR')}골드 받고 납품`}
                 </Button>
               ) : (
-                !selected.completed && (
+                !active.completed && (
                   <Button className="min-h-12 w-full rounded-xl" disabled>
                     개체가 부족해요
                   </Button>
                 )
               )}
-            </>
+            </div></>
           )}
         </DialogContent>
       </Dialog>

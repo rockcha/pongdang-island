@@ -1,0 +1,650 @@
+{
+  "profile": "rod-shop-q90-320-v1",
+  "summary": {
+    "count": 20,
+    "sourceBytes": 72568892,
+    "displayBytes": 1235398
+  },
+  "items": [
+    {
+      "id": "basic",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261016-155626/equipment/rods/starter/thumbnail.png",
+          "sourceHash": "5f05202fdd49851635180f6816933ecfa111d9605ca9a96864992641c0f02aec",
+          "sourceBytes": 787407
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261016-155626/equipment/rods/starter/reel-frame.png",
+          "sourceHash": "2de12f412672fc9e509fab07b8dea59c29b300b4d50c18b0db90e915a669ec2a",
+          "sourceBytes": 1132141
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261016-155626/equipment/rods/starter/reel-rotor.png",
+          "sourceHash": "47da01fc348041a73dd59b5ccc25146fa1b12da79f057eb5a8b63ca4b476dd1b",
+          "sourceBytes": 1025275
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/f904cf0b8307b9006e214741-320.webp",
+        "bytes": 23140,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/3dc0c218f5e04b890ef740a7-320.webp",
+        "bytes": 34086,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "bluegrove",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261017-005542/equipment/rods/bluegrove/thumbnail.png",
+          "sourceHash": "6f1a7c88046e917850cc82184c05e20432d5a8f67f2c4e0d4c432d1f8756613c",
+          "sourceBytes": 628694
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261017-005542/equipment/rods/bluegrove/reel-frame.png",
+          "sourceHash": "2ba7ebd3a4da464163cb03d0ac4752359313999baa60d77af4eef1f127991f54",
+          "sourceBytes": 1684496
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261017-005542/equipment/rods/bluegrove/reel-rotor.png",
+          "sourceHash": "4bb80cd5aa848946c3e0615378ad6cb91a9712b321cc97095fe9c54f7020abc0",
+          "sourceBytes": 872507
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/7bd6b6101466d5676f23ce6f-320.webp",
+        "bytes": 23358,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/0d674c086bf8aead33c12091-320.webp",
+        "bytes": 26082,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "bronze",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261016-155626/equipment/rods/bronze/thumbnail.png",
+          "sourceHash": "6ccdf883acb92bd030204bd428ad74648b6508efd3aa0299d1df6e9e5c5a778e",
+          "sourceBytes": 1006227
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261016-155626/equipment/rods/bronze/reel-frame.png",
+          "sourceHash": "896a573f111b13a6a7aaad84d8168ba4cf54334e00e0c8fa003ae3a57b826e23",
+          "sourceBytes": 1266615
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261016-155626/equipment/rods/bronze/reel-rotor.png",
+          "sourceHash": "b1294cc7e745fe6d5317d1e7d0eae4c64db4f3584f165ce0dbde19d784a5ae61",
+          "sourceBytes": 727765
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/5f1132320bd9a37979d1cc59-320.webp",
+        "bytes": 28094,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/d083110e062549868f3f1b32-320.webp",
+        "bytes": 31002,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "calm",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261016-152733/equipment/rods/calm/thumbnail.png",
+          "sourceHash": "85f8351097733c43118a67b1995596b7412b2708613f26235dbc6f66a188c4aa",
+          "sourceBytes": 1112323
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261016-155626/equipment/rods/calm/reel-frame.png",
+          "sourceHash": "1761fc3b054c490230a6455b1a760a686dd6003d48feb432a7049901b5100434",
+          "sourceBytes": 1258894
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261016-155626/equipment/rods/calm/reel-rotor.png",
+          "sourceHash": "065e823343af1bece1584d4fa2f0f97cacebb4db21b5311e2c5b186600def239",
+          "sourceBytes": 1393672
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/9c5cbbe9099557ea61f9dfb0-320.webp",
+        "bytes": 35774,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/eb81c9689fb8f55f26e69fbd-320.webp",
+        "bytes": 31644,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "cloudferry",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/cloudferry/equipment/rods/cloudferry/thumbnail.png",
+          "sourceHash": "6e1b2a0f4f3c70ed4c87e60b636c9a888b58dd095d30ab95ced11da37170dca8",
+          "sourceBytes": 835970
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261019-132700/equipment/rods/cloudferry/reel-frame.png",
+          "sourceHash": "17789b6bfe1e33b118fabb5454b4a0fbcd57bdc6dc599c5bac73871b8c1e73df",
+          "sourceBytes": 1415212
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261019-132700/equipment/rods/cloudferry/reel-rotor.png",
+          "sourceHash": "ec1194d5cb43e8b2d71f618496863bb3686326259095ebb3bef4fb75eec13674",
+          "sourceBytes": 1412895
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/e783da47065f076b4265e529-320.webp",
+        "bytes": 27942,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/dd60871fe9fa29bfacf80909-320.webp",
+        "bytes": 38316,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "coral",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261016-152733/equipment/rods/coral/thumbnail.png",
+          "sourceHash": "5043848c279625bff6b4f993a0681b284f12e19a75d86ca1f95568b8774278c3",
+          "sourceBytes": 1063196
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261016-152733/equipment/rods/coral/reel-frame.png",
+          "sourceHash": "dc1cfb49260e7ad318c0ac862c362320c31c2c8f615fcc77fab0b9df666474b6",
+          "sourceBytes": 1200614
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261016-152733/equipment/rods/coral/reel-rotor.png",
+          "sourceHash": "28df3901dde3256c0d74287bf7ad28c51a8855aa4cfec39a20d7aadc855e94ed",
+          "sourceBytes": 1174598
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/ea5a410c25351b2cb2a7072f-320.webp",
+        "bytes": 33272,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/cd4aae6082cf23b118feb48b-320.webp",
+        "bytes": 28846,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "dreamabyss",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261016-152733/equipment/rods/dreamabyss/thumbnail.png",
+          "sourceHash": "275504d48c58fc7730ba4e760529f2c31351e699f635311d9db6c844afd81937",
+          "sourceBytes": 1124446
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261016-155626/equipment/rods/dreamabyss/reel-frame.png",
+          "sourceHash": "740585dfe6df27a6f2c776e82d024778004c44a5b81ef0ad6bf8f9336d9d01c9",
+          "sourceBytes": 1513358
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261016-155626/equipment/rods/dreamabyss/reel-rotor.png",
+          "sourceHash": "82bc78bddbc552fbe44f31cf1eb27ab39203893709e590ab51c6ff0bb1bca019",
+          "sourceBytes": 1513274
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/0d2e74cf523ad58204986386-320.webp",
+        "bytes": 35462,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/d7d356a18a6134ba3876d785-320.webp",
+        "bytes": 32818,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "lunea",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261016-152733/equipment/rods/lunea/thumbnail.png",
+          "sourceHash": "22d0322987000f76efdabe07e7332c3a93f1b06031abba45d22868d08bed7caa",
+          "sourceBytes": 1180258
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261016-155626/equipment/rods/lunea/reel-frame.png",
+          "sourceHash": "2d18f0605bc1228989a2378dc06e04fb77e93b536bf57faef043447f2bec1c2f",
+          "sourceBytes": 1384174
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261016-155626/equipment/rods/lunea/reel-rotor.png",
+          "sourceHash": "4d0d2b9b1f1367d00ea6d56c5042d2a3ef8a9b141e600df58569e2fff5996d28",
+          "sourceBytes": 1353537
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/429c74ab336216df04c57ff0-320.webp",
+        "bytes": 37980,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/827626106a20411c441d6adf-320.webp",
+        "bytes": 37066,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "mechsanctum",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261027-154009/equipment/rods/mechsanctum/thumbnail.png",
+          "sourceHash": "5d07a010973546b6f5f0c14aeb9dc471c222fbd4a15149f89cb95df81a7bfde7",
+          "sourceBytes": 1305390
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261027-154009/equipment/rods/mechsanctum/reel-frame.png",
+          "sourceHash": "c7a058cfc40eb480a22938a211378f100a48140fa296baad43136c584806df23",
+          "sourceBytes": 2215087
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261027-154009/equipment/rods/mechsanctum/reel-rotor.png",
+          "sourceHash": "80012389ec1d0f1d89bf9719e8423a984db4b52e4f0af23686b2364d4b5cec9f",
+          "sourceBytes": 2175201
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/701decfa9f4d45f99ee98089-320.webp",
+        "bytes": 15762,
+        "width": 320,
+        "height": 213
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/0e026c351e6734b375e05e74-320.webp",
+        "bytes": 34050,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "mistmoon",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261016-152733/equipment/rods/mistmoon/thumbnail.png",
+          "sourceHash": "74220210725f673ff4e2b7d1c8e5b38f895d21b117b09fa22b836c962eb0e5b6",
+          "sourceBytes": 1063741
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261016-152733/equipment/rods/mistmoon/reel-frame.png",
+          "sourceHash": "ce6c0b7e07221138c3cd6b77c2613d8468a00087d75333277582abaf04d63920",
+          "sourceBytes": 1145449
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261016-152733/equipment/rods/mistmoon/reel-rotor.png",
+          "sourceHash": "38aad6ce19e7374eea8d7b37beaf2c587a3ce5cee3761752eab4beb8a7a68a4f",
+          "sourceBytes": 855512
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/ce3b9314a8faa3d6b14ec5f2-320.webp",
+        "bytes": 34762,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/8bf12d5829f3372081e2d366-320.webp",
+        "bytes": 33278,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "mukhyang",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/mukhyang-rod/equipment/rods/mukhyang/thumbnail.png",
+          "sourceHash": "f8d632e15e5fee746c29f59323870a48dc07de6c8f2ffbe16c8b1b890e2ae6b5",
+          "sourceBytes": 820529
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/mukhyang-rod/equipment/rods/mukhyang/reel-frame.png",
+          "sourceHash": "9bbe629d52ed4f8d7a391fe92a8ead1faf3d2c0afee77d737d8299b544d28f29",
+          "sourceBytes": 2214721
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/mukhyang-rod/equipment/rods/mukhyang/reel-rotor.png",
+          "sourceHash": "80398e0a2b6b747912789d7bafc219f2148b4482890cc86670419d117814f841",
+          "sourceBytes": 1357975
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/cce357e8b7ee576d89f497f5-320.webp",
+        "bytes": 26744,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/3c33fca9c917f84cf4898bfa-320.webp",
+        "bytes": 24894,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "nyamnyam",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261026-181300/equipment/rods/nyamnyam/thumbnail.png",
+          "sourceHash": "9809a4822c6b00c4b61590c3ec067478ec1468a6096bdefa995712444b3dc508",
+          "sourceBytes": 301440
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261026-181300/equipment/rods/nyamnyam/reel-frame.png",
+          "sourceHash": "3d644f3d9ba6303873a665faefc8d90da4479ffa6ff447fd6db77aa5a94c6cf5",
+          "sourceBytes": 322534
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261026-181300/equipment/rods/nyamnyam/reel-rotor.png",
+          "sourceHash": "2c07afe9fa34492c86aa7be28c40bb2587eb4fa4a2b62e21cedaddb7850e29b4",
+          "sourceBytes": 330058
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/e6c95840f42dd814090a6ef3-320.webp",
+        "bytes": 24308,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/0d996c327097cfa7d66fec4a-320.webp",
+        "bytes": 32468,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "plunder",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261027-103400/equipment/rods/plunder/thumbnail.png",
+          "sourceHash": "e689ca28360e6148f0e670c5091e8e29b2c987663f8e65b173a42dd1a8e90c74",
+          "sourceBytes": 815244
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261027-103400/equipment/rods/plunder/reel-frame.png",
+          "sourceHash": "343ef529bf1402a72f68bb8b9b70e027be229e586ba068e9d4ec461fab451bcf",
+          "sourceBytes": 1413955
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261027-103400/equipment/rods/plunder/reel-rotor.png",
+          "sourceHash": "adcd4554b738855a1994df871e9d321367636d1d4b65339dcc7935241739e8f4",
+          "sourceBytes": 1148748
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/c6eeeac64f048ac9180bc3af-320.webp",
+        "bytes": 25612,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/6d312e7a64a00606c0aff460-320.webp",
+        "bytes": 32722,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "pongdang",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261016-152733/equipment/rods/pongdang/thumbnail.png",
+          "sourceHash": "088effea23122655bd67df750cde38db4cb3d9ff0d200752b0f830b8e25def7a",
+          "sourceBytes": 1029520
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261016-152733/equipment/rods/pongdang/reel-frame.png",
+          "sourceHash": "b28df1bc2e3b9c53b458ae8cb2c0de01bd5dd4f697ed116af2b3877c99451561",
+          "sourceBytes": 1348550
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261016-152733/equipment/rods/pongdang/reel-rotor.png",
+          "sourceHash": "3e4efb2a2f0ea5d71a6d6dd0fa22f3be02e5c2e24d087e11734c720055a2c17e",
+          "sourceBytes": 1055836
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/0bac2e6a6affe964e3964fe5-320.webp",
+        "bytes": 29398,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/8d4f398102244d370ba8e79c-320.webp",
+        "bytes": 27692,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "primal",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261016-210114/equipment/rods/primal/thumbnail.png",
+          "sourceHash": "7916f3b5b8378acb5d575f80fdf0fd53a1e90c4bea5c114761abe64a721524a4",
+          "sourceBytes": 791074
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261016-210114/equipment/rods/primal/reel-frame.png",
+          "sourceHash": "8499cc763a8dc729381838f4416f1c91723adee0bc7907f2bb240374572c32cb",
+          "sourceBytes": 1739412
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261016-210114/equipment/rods/primal/reel-rotor.png",
+          "sourceHash": "ed18ff3b7009d964ce1617abf1cf83463bdf9d03876e62a0a37fecc82b5d0111",
+          "sourceBytes": 2759951
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/137dec82536ef7bae9e8f537-320.webp",
+        "bytes": 25232,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/c4933985ffd28c7664a861b5-320.webp",
+        "bytes": 36198,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "scrapisle",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261017-183433/equipment/rods/scrapisle/thumbnail.png",
+          "sourceHash": "f6acc1130fba2dcce2c9c405682e6a9951b107910425cdaea152a18aac6da212",
+          "sourceBytes": 909693
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261017-183433/equipment/rods/scrapisle/reel-frame.png",
+          "sourceHash": "55b94310d934c23d4b05678d2ff3ffac9e56a2f20c1094175f2061d8e7b0d967",
+          "sourceBytes": 2448918
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261017-183433/equipment/rods/scrapisle/reel-rotor.png",
+          "sourceHash": "1f7dc4f93c60650783ad3ca548d0c507e4e82d4d4e6d014a6dee2e11132af216",
+          "sourceBytes": 1805788
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/b1faa13a4a71b6c2b2aa46e0-320.webp",
+        "bytes": 27314,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/91cc82fc93afebab055524ee-320.webp",
+        "bytes": 35296,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "siren",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261019-121432/equipment/rods/siren/thumbnail.png",
+          "sourceHash": "642ecb20d8d5726920e6f368dcb202289150643271f950c3516dd535d1b56e81",
+          "sourceBytes": 686916
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261019-132700/equipment/rods/siren/reel-frame.png",
+          "sourceHash": "51b1f19c79a37663b640fe8f4132e6d86acaac29b2ab8a88e0dae27479ff9049",
+          "sourceBytes": 1387892
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261019-132700/equipment/rods/siren/reel-rotor.png",
+          "sourceHash": "cb2c530a6ce91837a6768695de627d2fdacf0ea0684900dfc10fdfec2555eac3",
+          "sourceBytes": 1680341
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/69ff90bf9a549ca34fbedd64-320.webp",
+        "bytes": 22788,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/e5a1045bac3dade896e37c7c-320.webp",
+        "bytes": 35630,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "starruins",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261016-152733/equipment/rods/starruins/thumbnail.png",
+          "sourceHash": "85989cc058149dd2a61ee196bdfc8b30d99137186f31472c00e84b042c18c53d",
+          "sourceBytes": 1216768
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261016-155626/equipment/rods/starruins/reel-frame.png",
+          "sourceHash": "0e522395df6fdfd722a467cf1725e609790d35bae39143cca7e8f3876ab37a5a",
+          "sourceBytes": 1653814
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261016-155626/equipment/rods/starruins/reel-rotor.png",
+          "sourceHash": "0f71743564f105e53a5dd300ec7c28151711644b22a6d5b20525ac3ac8ab628c",
+          "sourceBytes": 1549168
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/be54ef590c78c44148995f08-320.webp",
+        "bytes": 37700,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/bab3499a22dd89cd157c60f9-320.webp",
+        "bytes": 33704,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "swift",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/20261026-181300/equipment/rods/swift-v2/thumbnail.png",
+          "sourceHash": "a7be1476cdc207ffdf8e1e3472ddd136ca17e2609d6af276a6d83aead2219635",
+          "sourceBytes": 268506
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261026-181300/equipment/rods/swift-v2/reel-frame.png",
+          "sourceHash": "e28a2fdefa63d979c1a05c98ced006bceab02740d1b7743eeff7488cde0c2e0a",
+          "sourceBytes": 334862
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261026-181300/equipment/rods/swift-v2/reel-rotor.png",
+          "sourceHash": "923d7756b8836bbc5d379e23492714464adf5c66da713d9409dcdddb674b4237",
+          "sourceBytes": 288512
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/0b9df3ac2aa24cc813bfbba3-320.webp",
+        "bytes": 23124,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/d111b8d67cb8beb11a09a13c-320.webp",
+        "bytes": 37078,
+        "width": 320,
+        "height": 320
+      }
+    },
+    {
+      "id": "whitenight",
+      "sources": {
+        "thumbnail": {
+          "source": "assets/storage-upload/new/white-night/equipment/rods/whitenight/thumbnail.png",
+          "sourceHash": "faf1de7d452f4d608adbb04da72a70ffaf763915c23f4459af0c0fc208c5eb50",
+          "sourceBytes": 1127167
+        },
+        "reel-frame": {
+          "source": "assets/storage-upload/new/20261019-132700/equipment/rods/whitenight/reel-frame.png",
+          "sourceHash": "4a4b8feec0592c1ab766aea74590158e52bde4b9db7b0743878d6b69e7c44dda",
+          "sourceBytes": 1326957
+        },
+        "reel-rotor": {
+          "source": "assets/storage-upload/new/20261019-132700/equipment/rods/whitenight/reel-rotor.png",
+          "sourceHash": "3de9aefba07b463d48a243d3197f712dc7757b3e10565905161e9614f69630c6",
+          "sourceBytes": 1606115
+        }
+      },
+      "thumbnail": {
+        "url": "/game-art/rod-shop/thumbnail/a498e99aa9111e1423e77f7f-320.webp",
+        "bytes": 32584,
+        "width": 320,
+        "height": 320
+      },
+      "reel": {
+        "url": "/game-art/rod-shop/reel/0afe3b8dfdbc93e2df4f0e86-320.webp",
+        "bytes": 42178,
+        "width": 320,
+        "height": 320
+      }
+    }
+  ]
+}

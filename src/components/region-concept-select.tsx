@@ -70,9 +70,6 @@ export function RegionConceptSelect({
                 </Select.Item>
               ))}
             </Select.List>
-            <p className="border-t px-3 py-2 text-[10px] text-muted-foreground">
-              도감의 서식지 기준
-            </p>
           </Select.Popup>
         </Select.Positioner>
       </Select.Portal>

@@ -108,6 +108,7 @@ export function useProduction() {
     state,
     error,
     busy,
+    pending: pending.current!==null,
     now,
     reload,
     action: (args: Omit<ProductionAction, 'p_operation_id'>) => mutate({ kind: 'single', args }),

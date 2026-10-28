@@ -41,7 +41,8 @@ export const headerPlaces = [
   { to: '/development-fund', label: '퐁당섬 발전기금', icon: appArt.developmentFund },
   { to: '/titles', label: '칭호', icon: appArt.title },
   { to: '/relics', label: '유물', icon: RelicIcon },
-  { to: '/collection', label: '도감', icon: appArt.collection },
+  { to: '/collection', label: '개체 도감', icon: appArt.collection },
+  { to: '/item-collection', label: '아이템 도감', icon: appArt.collection },
   { to: '/storage', label: '보관함', icon: appArt.storage },
   { to: '/bait-production', label: '미끼 생산소', icon: appArt.baitProduction },
   { to: '/my-bait-production', label: '나만의 미끼 생산소', icon: appArt.baitProduction },
@@ -78,7 +79,7 @@ export const menuIcons:Record<string,typeof House>={
  '/profile':UserRound,'/aquarium':Fish,'/music-room':AudioLines,'/decoration-shop':Shapes,
  '/harbor':MapOutline,'/fishing':FishingRod,'/expeditions':ShoppingBasket,'/shop':FishingRod,'/item-shop':ShoppingBag,
  '/port':Anchor,'/shipyard':ShipOutline,'/production':Flame,'/bait-production':Factory,'/my-bait-production':FlaskConical,'/farm':Sprout,'/production-shop':Factory,'/bait-production-shop':ShoppingBag,
- '/flea-market':ShoppingBasket,'/exchange':TradeIcon,'/merchant-orders':ClipboardList,'/savings':Landmark,'/storage':Package,'/warehouse':WarehouseOutline,'/collection':BookOpen,'/titles':Medal,'/relics':Gem,'/collection-animation':BookOpen,
+ '/flea-market':ShoppingBasket,'/exchange':TradeIcon,'/merchant-orders':ClipboardList,'/savings':Landmark,'/storage':Package,'/warehouse':WarehouseOutline,'/collection':BookOpen,'/item-collection':BookOpen,'/titles':Medal,'/relics':Gem,'/collection-animation':BookOpen,
  '/friends':LighthouseOutline,'/board':MessageSquare,'/showcase':Images,'/hall-of-fame':Trophy,'/arcade':GameIcon,'/island-news':Newspaper,'/square/notices':Megaphone,'/development-fund':Heart,'/square/sponsorship':Gift,'/square/begging':Mail,'/square/suggestions':Lightbulb,'/square/bugs':Bug,
 }
 

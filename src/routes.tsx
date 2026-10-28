@@ -86,6 +86,7 @@ export function AppRoutes() {
             <Route path="my-island" element={<MyIslandPage />} />
             <Route path="aquarium/:tankId?" element={<AquariumPage />} />
             <Route path="collection" element={<CollectionPage />} />
+            <Route path="item-collection" element={<CollectionPage items />} />
             <Route path="storage" element={<StoragePage />} />
             <Route path="bait-production" element={<BaitProductionPage />} />
             <Route path="my-bait-production" element={<PersonalBaitWorkshopPage />} />

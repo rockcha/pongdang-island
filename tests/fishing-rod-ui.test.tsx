@@ -14,6 +14,26 @@ vi.mock('@/features/fishing/rod-api',()=>({loadRods:load,equipRod:equip,rodError
 vi.mock('@/features/collection/api',()=>({collectibleUrl:(path:string)=>'/collectibles/'+path}))
 vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null,useGold:()=>({wallet:{gold:10000,inventory:{bait:7}},transact,loading:false,busy:false,error:'',testClaimed:false,testEnabled:true,refresh:vi.fn()})}))
 function snapshot(){return {...server,owned:[...server.owned],catalog:fishingRods.map(rod=>({id:rod.id,name:rod.name,price:rod.price,region_id:rod.region??null,failure_reduction_bp:rod.failureReductionBp,native_bonus_bp:rod.nativeBonusBp})),baits:[{id:'bait',name:'퐁당 지렁이',description:'기본 미끼',image_path:'/items/baits/pongdang-worm.png'}]}}
+it('filters the shop by ordinary and regional theme rods and restores the complete catalog',async()=>{
+ render(<RodProvider><FishingRodShop/></RodProvider>)
+ await screen.findByRole('button',{name:'입문용 낚싯대 상세 보기'})
+ const choose=async(name:string)=>{
+  fireEvent.click(screen.getByRole('combobox',{name:'낚싯대 종류'}))
+  fireEvent.keyDown(await screen.findByRole('option',{name}),{key:'Enter'})
+  await waitFor(()=>expect(screen.queryByRole('listbox')).toBeNull())
+ }
+ await choose('테마 낚싯대')
+ expect(screen.getByRole('button',{name:'산호꽃 낚싯대 상세 보기'})).toBeTruthy()
+ expect(screen.queryByRole('button',{name:'입문용 낚싯대 상세 보기'})).toBeNull()
+ expect(screen.queryByRole('button',{name:'쏜살 낚싯대 상세 보기'})).toBeNull()
+ await choose('일반 낚싯대')
+ expect(screen.getByRole('button',{name:'입문용 낚싯대 상세 보기'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'쏜살 낚싯대 상세 보기'})).toBeTruthy()
+ expect(screen.queryByRole('button',{name:'산호꽃 낚싯대 상세 보기'})).toBeNull()
+ await choose('전체 낚싯대')
+ expect(screen.getByRole('button',{name:'산호꽃 낚싯대 상세 보기'})).toBeTruthy()
+ expect(screen.getByRole('button',{name:'청동 낚싯대 상세 보기'})).toBeTruthy()
+})
 beforeEach(()=>{
  user.id+='-next';server.owned=['basic'];server.selected='basic'
  load.mockImplementation(async()=>snapshot())

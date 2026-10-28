@@ -119,7 +119,7 @@ it('confirms a half-price sale and retries an uncertain response using the same 
  await waitFor(()=>expect(screen.queryByRole('dialog')).toBeNull())
 })
 it('offers the same shop sort select as fuel production and keeps bait search working',async()=>{
- mock.load.mockResolvedValue({serverNow:new Date().toISOString(),gold:10000,fuel:20,facilities:[site,{...site,id:'second',name:'별빛 공방',baitName:'진주새우',output_count:10,price:900}],sites:[]})
+ mock.load.mockResolvedValue({serverNow:new Date().toISOString(),gold:10000,fuel:20,facilities:[site,{...site,id:'second',name:'별빛 공방',baitName:'진주새우',output_count:10,price:900},...Array.from({length:11},(_,i)=>({...site,id:'extra'+i,name:'추가 생산소 '+i}))],sites:[]})
  render(<MemoryRouter><BaitProductionPage shop/></MemoryRouter>)
  await screen.findByRole('button',{name:/꼬물꼬물 흙상자/})
  fireEvent.click(screen.getByRole('combobox',{name:'생산소 정렬'}))

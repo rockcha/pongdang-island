@@ -12,6 +12,7 @@ it('separates small thumbnails, remote originals, sprite sheets and backgrounds 
   [base+'public/aquarium-backgrounds/room.webp','game-art-backgrounds-v1'],
   ['https://pongdang.test/game-art/thumbnails/0123456789abcdef01234567-320.webp','game-art-small-v1'],
   ['https://pongdang.test/game-art/background-previews/0123456789abcdef01234567-960.webp','game-art-background-previews-v1'],
+  ['https://pongdang.test/game-art/rod-shop/reel/0123456789abcdef01234567-320.webp','game-art-rod-shop-v1'],
   ['https://pongdang.test/aquarium/swim/fish_swim8_v1_sprite.png','aquarium-action-art-v1'],
  ]){const routes=matches(url);expect(routes).toHaveLength(1);expect(routes[0].options?.cacheName).toBe(cache)}
 })

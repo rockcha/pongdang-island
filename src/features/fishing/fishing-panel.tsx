@@ -219,6 +219,7 @@ export function FishingPanel({regionId,regionName,toolbarTarget,oddsTarget,scene
    <FishingStorageDialog iconOnly={!!fishingTools} catches={catches} disabled={gameOpen||busy||uncertain||revealing||castOpen} onSold={ids=>setTrip(previous=>({userId,items:previous.items.filter(item=>!item.collectible_id||!ids.includes(item.collectible_id))}))}/>
    {!fishingTools&&rodControl}
    <CollectionDialog fishing dock iconOnly={!!fishingTools} disabled={gameOpen||busy||uncertain||revealing||castOpen}/>
+   <CollectionDialog items fishing dock iconOnly={!!fishingTools} disabled={gameOpen||busy||uncertain||revealing||castOpen}/>
   </>
  return <div className={regionId?"relative isolate min-h-0 flex-1 bg-[#123c68]":"space-y-5"}>
   {regionId&&<FirstDayFishingGuide/>}

@@ -13,6 +13,7 @@ import {BaitShopFilters,filterBaitShop,initialBaitShopFilter} from './bait-shop-
 export function BaitShop(){
  const {wallet,transact,loading,busy,error:goldError}=useGold()
  const [detail,setDetail]=useState<FishingBait|null>(null),[purchasing,setPurchasing]=useState(false)
+ const [detailOpen,setDetailOpen]=useState(false)
  const [quantity,setQuantity]=useState<number|''>(1)
  const count=quantity===''?0:quantity
  const detailChance=detail?.successChanceBp??detail?.success_chance_bp??detail?.baseSuccessChanceBp
@@ -39,7 +40,7 @@ export function BaitShop(){
    setPurchaseError(cause instanceof Error?cause.message:'구매하지 못했어요.')
    if(cause instanceof Error&&cause.message.includes('미끼 구매 가격이 바뀌었어요')){
     quotes.current.delete(item.id)
-    try{const latest=await loadFishing();setItems([...latest.baits].sort((a,b)=>(a.price??Number.MAX_SAFE_INTEGER)-(b.price??Number.MAX_SAFE_INTEGER)));setDetail(latest.baits.find(b=>b.id===item.id)??null)}catch{/* Keep the confirmed quote until prices can be reloaded. */}
+    try{const latest=await loadFishing();setItems([...latest.baits].sort((a,b)=>(a.price??Number.MAX_SAFE_INTEGER)-(b.price??Number.MAX_SAFE_INTEGER)));const updated=latest.baits.find(b=>b.id===item.id);if(updated)setDetail(updated);else setDetailOpen(false)}catch{/* Keep the confirmed quote until prices can be reloaded. */}
    }
   }
   finally{lock.current=false;setPurchasing(false)}
@@ -47,20 +48,23 @@ export function BaitShop(){
  if(error)return <div role="alert" className="space-y-2 text-sm"><p>{error}</p><Button variant="outline" onClick={()=>setAttempt(a=>a+1)}>다시 불러오기</Button></div>
  if(!items)return <ProductSkeleton/>
  const visibleItems=filterBaitShop(items,filter)
- return <><BaitShopFilters value={filter} onChange={setFilter}/>{visibleItems.length===0&&<div className="space-y-3 px-4 py-10 text-center"><p className="text-xs text-muted-foreground">조건에 맞는 미끼가 없어요.</p><Button variant="outline" className="min-h-11 text-xs" onClick={()=>setFilter(initialBaitShopFilter)}>검색·필터 초기화</Button></div>}<ul className="grid grid-cols-3 border-border/60">{visibleItems.map(item=><li key={item.id} className="min-w-0 overflow-hidden border-r border-b border-border/60 bg-card"><button type="button" aria-label={item.name+' 상세 보기'} disabled={purchasing} onClick={()=>{setDetail(quotes.current.get(item.id)?.item??item);setQuantity(quotes.current.get(item.id)?.quantity??1);setPurchaseError('')}} className="flex w-full flex-col items-center px-1 pt-2 pb-3 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring"><div className="relative aspect-square w-full"><LandscapeImage src={item.image_path} alt="" className="absolute inset-0 size-full object-contain"/></div><h2 className="mt-1 h-10 text-xs leading-5 line-clamp-2">{item.name}</h2><span className="flex items-center gap-1 text-xs text-primary">{item.price===null?'구매 불가':<><GoldIcon className="size-3"/>{item.price.toLocaleString('ko-KR')}</>}</span></button></li>)}</ul>
- <Dialog open={!!detail} onOpenChange={value=>{if(!value&&!purchasing)setDetail(null)}}>
+ return <><BaitShopFilters value={filter} onChange={setFilter}/>{visibleItems.length===0&&<div className="space-y-3 px-4 py-10 text-center"><p className="text-xs text-muted-foreground">조건에 맞는 미끼가 없어요.</p><Button variant="outline" className="min-h-11 text-xs" onClick={()=>setFilter(initialBaitShopFilter)}>검색·필터 초기화</Button></div>}<ul className="grid grid-cols-3 border-border/60">{visibleItems.map(item=><li key={item.id} className="min-w-0 overflow-hidden border-r border-b border-border/60 bg-card"><button type="button" aria-label={item.name+' 상세 보기'} disabled={purchasing} onClick={()=>{setDetail(quotes.current.get(item.id)?.item??item);setQuantity(quotes.current.get(item.id)?.quantity??1);setPurchaseError('');setDetailOpen(true)}} className="flex w-full flex-col items-center px-1 pt-2 pb-3 text-center outline-none focus-visible:ring-2 focus-visible:ring-ring"><div className="relative aspect-square w-full"><LandscapeImage src={item.image_path} alt="" className="absolute inset-0 size-full object-contain"/></div><h2 className="mt-1 h-10 text-xs leading-5 line-clamp-2">{item.name}</h2><span className="flex items-center gap-1 text-xs text-primary">{item.price===null?'구매 불가':<><GoldIcon className="size-3"/>{item.price.toLocaleString('ko-KR')}</>}</span></button></li>)}</ul>
+ <Dialog open={detailOpen} onOpenChange={value=>{if(!value&&!purchasing)setDetailOpen(false)}} onOpenChangeComplete={open=>{if(!open&&!detailOpen)setDetail(null)}}>
   <DialogContent className="flex max-h-[85dvh] w-[calc(100%-2rem)] min-w-0 max-w-md flex-col gap-0 overflow-hidden rounded-2xl p-0 [--bait-detail-inset:max(1rem,env(safe-area-inset-left,0px),env(safe-area-inset-right,0px))] sm:max-w-md">
-   <DialogHeader className="min-w-0 shrink-0 px-[var(--bait-detail-inset)] pt-5 pb-3">
-    <DialogTitle className="flex min-w-0 items-start gap-2 pr-8"><img src="/branding/pongi-starfish.png" alt="" aria-hidden="true" className="mt-0.5 size-5 shrink-0 object-contain"/><span className="min-w-0 flex-1 break-keep leading-6 [overflow-wrap:anywhere]">{detail?.name}</span></DialogTitle>
+   <DialogHeader className="min-w-0 shrink-0 px-[var(--bait-detail-inset)] pt-4 pb-3 pr-12">
+    <div className="flex min-w-0 items-center gap-3">
+     {detail&&<div className="relative size-16 shrink-0"><LandscapeImage src={detail.image_path} alt="" className="absolute inset-0 size-full object-contain"/></div>}
+     <div className="min-w-0 flex-1 space-y-1.5">
+      <DialogTitle className="break-keep text-base leading-6 [overflow-wrap:anywhere]">{detail?.name}</DialogTitle>
+      {detail&&<BaitTarget bait={detail}/>}
+      {detail&&detail.mechanicsVersion!==2&&<p className="text-[11px] text-muted-foreground">낚시 성공률 {detailChance===undefined?'—':baitPercent(detailChance)}</p>}
+     </div>
+    </div>
     <DialogDescription className="sr-only">미끼 효과를 확인하고 구매 수량을 선택하세요.</DialogDescription>
    </DialogHeader>
    {detail&&<>
-    <div data-bait-detail-body className="min-h-0 w-full min-w-0 flex-1 overflow-y-auto overscroll-contain px-[var(--bait-detail-inset)] pb-3 [overflow-wrap:anywhere]">
-     <div className="mb-3 flex min-w-0 items-center gap-3">
-      <div className="relative size-[72px] shrink-0"><LandscapeImage src={detail.image_path} alt={detail.name} className="absolute inset-0 size-full object-contain"/></div>
-      <div className="min-w-0 flex-1">{detail.mechanicsVersion===2?<div className="space-y-1.5"><BaitTarget bait={detail}/></div>:<><p className="text-xs text-muted-foreground">낚시 성공률</p><p className="mt-1 text-2xl font-semibold tabular-nums text-primary">{detailChance===undefined?'—':baitPercent(detailChance)}</p></>}</div>
-     </div>
-     <BaitEffectDetails bait={detail} compact/>
+    <div data-bait-detail-body className="min-h-0 w-full min-w-0 flex-1 overflow-y-auto overscroll-contain px-[var(--bait-detail-inset)] pb-4 [overflow-wrap:anywhere]">
+     <BaitEffectDetails bait={detail} compact minimal/>
      {purchaseError&&<p role="alert" className="mt-3 text-xs leading-5 text-destructive">{purchaseError}</p>}
     </div>
     <div aria-label="미끼 구매" className="w-full min-w-0 shrink-0 border-t border-border/60 bg-background px-[var(--bait-detail-inset)] pt-3 pb-[max(1rem,env(safe-area-inset-bottom))]">

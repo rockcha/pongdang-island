@@ -9,7 +9,7 @@ export type HarborBoat=Omit<HarborVessel,'id'|'ownedCount'>&{id:string;vessel_id
 export type HarborRegion={id:string;name:string;unlocked:boolean}
 export type HarborVoyage={region_id?:string;region_name?:string;id:string;boat_id:string;vessel_id:string;vessel_snapshot:HarborVessel&{secondary_region_id?:string;secondary_region_name?:string};departed_at:string;returns_at:string;arrival_seen_at:string|null;claimed_at:string|null}
 export type HarborResult=ExpeditionOutcome&{voyageId:string;vesselName:string;regionId?:string;regionName?:string}
-export type HarborState={serverNow:string;fuel:number;fuelPrice:number;fuelDailyLimit?:number;fuelPurchasedToday?:number;regions?:HarborRegion[];dockSlots:number;nextDockExpansion?:{slot:number;price:number}|null;vessels:HarborVessel[];boats:HarborBoat[];voyages:HarborVoyage[];receipt?:{action:string;voyageId?:string;vesselId?:string;boatId?:string;dockSlots?:number;gold?:number;results?:HarborResult[]};replayed?:boolean}
+export type HarborState={serverNow:string;fuel:number;fuelPrice:number;boatPurchaseLimit?:number;fuelDailyLimit?:number;fuelPurchasedToday?:number;regions?:HarborRegion[];dockSlots:number;nextDockExpansion?:{slot:number;price:number}|null;vessels:HarborVessel[];boats:HarborBoat[];voyages:HarborVoyage[];receipt?:{action:string;voyageId?:string;vesselId?:string;boatId?:string;dockSlots?:number;gold?:number;results?:HarborResult[]};replayed?:boolean}
 export type HarborAction={p_action:'buy'|'fuel'|'depart'|'arrive'|'claim'|'claim_all'|'dock'|'store'|'sell'|'expand'|'cancel';p_refund_expected?:boolean;p_operation_id:string;p_vessel_id?:string;p_voyage_id?:string;p_quantity?:number;p_boat_id?:string;p_slot?:number;p_region_id?:string;p_secondary_region_id?:string}
 export const loadHarbor=()=>readAccountResource('harbor',readHarbor)
 export async function readHarbor(signal:AbortSignal){const {data,error}=await createClient().rpc('harbor_state').abortSignal(signal);if(error)throw error;return data}
@@ -45,6 +45,7 @@ export async function harborAction(args: HarborAction) {
 }
 export function harborError(error:unknown){
  const message=String((error as {message?:string})?.message??'')
+ if(message.includes('INVALID_BOAT_QUANTITY'))return '배는 한 번에 1~100척까지 구매할 수 있어요.'
  if(message.includes('CANCELLATION_QUOTE_CHANGED'))return '연료를 돌려받을 수 있는 30초가 지났어요. 닫고 긴급 귀항 조건을 다시 확인해 주세요.'
  if(message.includes('VOYAGE_ALREADY_RETURNED'))return '이미 항구에 돌아왔어요. 취소 대신 어획물을 수령해 주세요.'
  if(message.includes('FUEL_LIMIT'))return '연료 보유 한도를 초과해 반환할 수 없어요. 연료를 사용한 뒤 다시 확인해 주세요.'

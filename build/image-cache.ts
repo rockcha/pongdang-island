@@ -24,6 +24,10 @@ export const imageRuntimeCaching:RuntimeCaching[]=[{
  handler:'CacheFirst',
  options:{cacheName:'game-art-background-previews-v1',cacheableResponse:{statuses:[200],headers:{'Content-Type':'image/webp'}},expiration:{maxEntries:128,maxAgeSeconds:180*24*60*60,purgeOnQuotaError:true}},
 },{
+ urlPattern:({url,sameOrigin})=>sameOrigin&&/^\/game-art\/rod-shop\/(thumbnail|reel)\/[a-f0-9]{24}-320\.webp$/.test(url.pathname)&&!url.search,
+ handler:'CacheFirst',
+ options:{cacheName:'game-art-rod-shop-v1',cacheableResponse:{statuses:[200],headers:{'Content-Type':'image/webp'}},expiration:{maxEntries:80,maxAgeSeconds:180*24*60*60,purgeOnQuotaError:true}},
+},{
  // Keep the existing action cache, so a deploy does not re-download these sheets.
  urlPattern:({url,sameOrigin})=>sameOrigin&&url.pathname.startsWith('/aquarium/swim/')&&url.pathname.endsWith('.png')&&(url.searchParams.has('v')||/_v\d+_sprite\.png$/.test(url.pathname)),
  handler:'CacheFirst',

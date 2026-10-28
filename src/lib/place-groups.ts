@@ -39,7 +39,7 @@ export const placeGroups = [
     label: '수집',
     sections: [
       { label: '보관', paths: ['/storage', '/warehouse'] },
-      { label: '수집 기록', paths: ['/collection', '/titles', '/relics', '/collection-animation'] },
+      { label: '수집 기록', paths: ['/collection', '/item-collection', '/titles', '/relics', '/collection-animation'] },
     ],
   },
   {

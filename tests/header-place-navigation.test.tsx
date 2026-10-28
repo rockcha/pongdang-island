@@ -32,7 +32,7 @@ it.each([
  ['소식',['/island-news','/square/notices','/square/suggestions','/square/bugs']],
  ['생산',['/bait-production','/my-bait-production','/production','/farm']],
  ['장터',['/shop','/item-shop','/decoration-shop','/shipyard','/bait-production-shop','/production-shop','/flea-market','/exchange','/merchant-orders']],
- ['수집',['/storage','/warehouse','/collection','/titles','/relics']],
+ ['수집',['/storage','/warehouse','/collection','/item-collection','/titles','/relics']],
  ['광장',['/friends','/board','/showcase','/hall-of-fame','/development-fund','/square/sponsorship','/square/begging']],
 ])('keeps the correct destinations in %s',async(name,paths)=>{
  render(<MemoryRouter><View/></MemoryRouter>)

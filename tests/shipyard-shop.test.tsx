@@ -1,0 +1,61 @@
+import {cleanup,fireEvent,render,screen,waitFor} from '@testing-library/react'
+import {afterEach,expect,it,vi} from 'vitest'
+import {filterShipyard,ShipyardShop} from '@/features/port/shipyard-shop'
+import type {HarborVessel} from '@/features/port/api'
+vi.mock('@/features/gold/gold-provider',()=>({GoldIcon:()=>null}))
+afterEach(cleanup)
+const raft:HarborVessel={id:'raft',name:'뗏목',price:300,duration_minutes:30,fuel_cost:1,fishing_count:2,sprite_path:'/raft.png',owned:true,ownedCount:1}
+const boat:HarborVessel={...raft,id:'boat',name:'큰 배',price:900,duration_minutes:120,fishing_count:4,fishing_count_max:10,owned:false,ownedCount:0}
+it('compares maximum attempts per hour separately from voyage count and price',()=>{
+ const vessels=[boat,raft]
+ expect(filterShipyard(vessels,'','all','price').map(v=>v.id)).toEqual(['raft','boat'])
+ expect(filterShipyard(vessels,'','all','price-desc').map(v=>v.id)).toEqual(['boat','raft'])
+ expect(filterShipyard(vessels,'','all','catch').map(v=>v.id)).toEqual(['boat','raft'])
+ expect(filterShipyard(vessels,'','all','duration').map(v=>v.id)).toEqual(['raft','boat'])
+ expect(filterShipyard(vessels,' 배 ','unowned','price')).toEqual([boat])
+ expect(filterShipyard(vessels,'','owned','price')).toEqual([raft])
+})
+it('combines search and ownership, resets empty results and opens a purchase detail without buying',async()=>{
+ const buy=vi.fn()
+ render(<ShipyardShop vessels={[boat,raft]} gold={500} disabled={false} onBuy={buy} stats={()=>null}/>)
+ fireEvent.click(screen.getByRole('combobox',{name:'조선소 보유 필터'}))
+ fireEvent.keyDown(await screen.findByRole('option',{name:'미보유 배'}),{key:'Enter'})
+ await waitFor(()=>expect(screen.queryByRole('listbox')).toBeNull())
+ expect(screen.queryByRole('button',{name:'뗏목 상세 보기'})).toBeNull()
+ fireEvent.change(screen.getByRole('textbox',{name:'배 이름 검색'}),{target:{value:'뗏목'}})
+ expect(screen.getByText('조건에 맞는 배가 없어요.')).toBeTruthy()
+ fireEvent.click(screen.getByRole('button',{name:'검색·필터 초기화'}))
+ fireEvent.click(screen.getByRole('button',{name:'큰 배 상세 보기'}))
+ expect(screen.getByRole('dialog').textContent).not.toContain('시간당')
+ expect(screen.getByRole('button',{name:'큰 배 구매 900 골드'})).toHaveProperty('disabled',true)
+ expect(buy).not.toHaveBeenCalled()
+})
+it('shows four card stats and quotes quantity, total and resulting ownership before purchase',()=>{
+ const buy=vi.fn()
+ render(<ShipyardShop vessels={[raft]} gold={1000} disabled={false} purchaseLimit={100} onBuy={buy} stats={()=>null}/>)
+ const card=screen.getByRole('button',{name:'뗏목 상세 보기'})
+ expect(card.querySelectorAll('[aria-label]')).toHaveLength(5)
+ expect(screen.getByLabelText('항해 시간 30분')).toBeTruthy()
+ expect(screen.getByLabelText('낚시 횟수 2회')).toBeTruthy()
+ expect(screen.getByLabelText('연료 1개')).toBeTruthy()
+ expect(screen.getByLabelText('낚시 성공률 정보 없음')).toBeTruthy()
+ fireEvent.click(card)
+ fireEvent.click(screen.getByRole('button',{name:'구매 수량 늘리기'}))
+ expect(screen.queryByLabelText('구매 후 보유 수량')).toBeNull()
+ expect(screen.getByRole('button',{name:'뗏목 구매 600 골드'})).toBeTruthy()
+ fireEvent.change(screen.getByRole('spinbutton',{name:'배 구매 수량'}),{target:{value:'999'}})
+ expect(screen.getByRole('spinbutton',{name:'배 구매 수량'})).toHaveProperty('value','3')
+ expect(screen.getByRole('button',{name:'구매 수량 늘리기'})).toHaveProperty('disabled',true)
+ expect(screen.queryByLabelText('구매 후 보유 수량')).toBeNull()
+ fireEvent.click(screen.getByRole('button',{name:'뗏목 구매 900 골드'}))
+ expect(buy).toHaveBeenCalledExactlyOnceWith('raft',3)
+})
+it('keeps an older server at one boat and blocks an empty quantity',()=>{
+ render(<ShipyardShop vessels={[raft]} gold={10000} disabled={false} onBuy={vi.fn()} stats={()=>null}/>)
+ fireEvent.click(screen.getByRole('button',{name:'뗏목 상세 보기'}))
+ expect(screen.getByRole('button',{name:'구매 수량 늘리기'})).toHaveProperty('disabled',true)
+ fireEvent.change(screen.getByRole('spinbutton',{name:'배 구매 수량'}),{target:{value:''}})
+ expect(screen.getByRole('button',{name:'뗏목 구매 300 골드'})).toHaveProperty('disabled',true)
+ fireEvent.blur(screen.getByRole('spinbutton',{name:'배 구매 수량'}))
+ expect(screen.getByRole('spinbutton',{name:'배 구매 수량'})).toHaveProperty('value','1')
+})

@@ -1,7 +1,6 @@
 import {playPurchaseSound,playSaleSound} from '@/features/gold/purchase-sound'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link,useSearchParams } from 'react-router'
-import {PersonalBaitWorkshopLink} from './personal-bait-workshop-page'
 import { ArrowRight, Info, LoaderCircle } from 'lucide-react'
 import { toast } from 'sonner'
 import { appArt } from '@/components/app-art'
@@ -17,6 +16,7 @@ import {
 import { GoldIcon } from '@/features/gold/gold-provider'
 import {ProductionAutoClaimNotice} from './production-auto-claim-notice'
 import { productionDuration } from './facilities'
+import {FacilityShop} from './facility-shop'
 import { baitProductionArt } from './bait-production-art'
 import {ProductionStatusSprite,ProductionProgress} from './status-sprite'
 import { remainingTime } from './production-status'
@@ -184,6 +184,7 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
         (s) => (s.siteId ?? s.id) === (selected.siteId ?? selected.id),
       )
     : null
+  if(shop)return <FacilityShop kind="bait" facilities={state?.facilities??[]} gold={state?.gold??0} fuel={state?.fuel??0} loading={!state&&!error} error={error} busy={busy} pending={!!pending.current} selectedId={selected?.id??null} onSelect={id=>setSelected(state?.facilities.find(site=>site.id===id)??null)} onBuy={(id,quantity)=>mutate({p_action:'buy',p_facility:id,p_quantity:quantity})} onRetry={()=>{if(pending.current)void mutate(pending.current);else void reload()}}/>
   return (
     <section
       aria-label={shop ? '미끼 생산소 상점' : '미끼 생산소'}
@@ -228,7 +229,6 @@ export function BaitProductionPage({ shop = false }: { shop?: boolean }) {
         )}
       </div>
       <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 pb-8">
-        {!shop&&<PersonalBaitWorkshopLink/>}
         {error && (
           <div
             role="alert"

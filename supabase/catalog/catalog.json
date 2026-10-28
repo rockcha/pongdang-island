@@ -33030,5 +33030,2339 @@
       "effect_value": 5,
       "sell_price": 3000
     }
+  ],
+  "island_shop_items": [
+    {
+      "id": "aquarium-1~owned:hub",
+      "family": "facility",
+      "name": "아쿠아리움",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "arcade-cabinet~owned:hub",
+      "family": "facility",
+      "name": "미니게임",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "bait~owned:hub",
+      "family": "facility",
+      "name": "미끼 생산소",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "bait~owned:personal-workshop",
+      "family": "facility",
+      "name": "나만의 미끼 공방",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "beach-chair",
+      "family": "decoration",
+      "name": "비치체어",
+      "price": 120,
+      "width": 1,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "beach-parasol",
+      "family": "decoration",
+      "name": "해변 파라솔",
+      "price": 220,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "bench",
+      "family": "decoration",
+      "name": "나무 벤치",
+      "price": 120,
+      "width": 2,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "books~owned:hub",
+      "family": "facility",
+      "name": "도감",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "bread-display",
+      "family": "decoration",
+      "name": "빵 진열대",
+      "price": 280,
+      "width": 2,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "butterfly-flowerbed",
+      "family": "decoration",
+      "name": "나비 화단",
+      "price": 140,
+      "width": 2,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "community-board~owned:hub",
+      "family": "facility",
+      "name": "자유게시판",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "coral-planter",
+      "family": "decoration",
+      "name": "산호 화분",
+      "price": 160,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "dock~owned:hub",
+      "family": "facility",
+      "name": "항구",
+      "price": 0,
+      "width": 2,
+      "height": 3,
+      "terrain": "shore",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "droplet-lamp",
+      "family": "decoration",
+      "name": "물방울 가로등",
+      "price": 180,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "fish-fountain",
+      "family": "decoration",
+      "name": "물고기 분수",
+      "price": 900,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "fishing-pongi-statue",
+      "family": "decoration",
+      "name": "낚시하는 퐁이 동상",
+      "price": 800,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "floor-brick",
+      "family": "floor",
+      "name": "벽돌길",
+      "price": 20,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "floor-dirt",
+      "family": "floor",
+      "name": "흙길",
+      "price": 10,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "floor-grass",
+      "family": "floor",
+      "name": "잔디 타일",
+      "price": 10,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "floor-gravel",
+      "family": "floor",
+      "name": "자갈길",
+      "price": 10,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "floor-moonstone",
+      "family": "floor",
+      "name": "푸른 달빛 돌길",
+      "price": 30,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "floor-sand",
+      "family": "floor",
+      "name": "모래 바닥",
+      "price": 10,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "floor-shell-mosaic",
+      "family": "floor",
+      "name": "조개 모자이크",
+      "price": 40,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "floor-star-mosaic",
+      "family": "floor",
+      "name": "별무늬 모자이크",
+      "price": 40,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "floor-stone",
+      "family": "floor",
+      "name": "돌 포장길",
+      "price": 20,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "floor-teal-glass",
+      "family": "floor",
+      "name": "청록 유리 타일",
+      "price": 30,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "floor-wood",
+      "family": "floor",
+      "name": "나무 데크",
+      "price": 20,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "flower-arch",
+      "family": "decoration",
+      "name": "꽃 아치",
+      "price": 250,
+      "width": 2,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "flower-bicycle",
+      "family": "decoration",
+      "name": "꽃바구니 자전거",
+      "price": 180,
+      "width": 2,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "flowers",
+      "family": "decoration",
+      "name": "봄꽃 화단",
+      "price": 50,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "fuel~owned:hub",
+      "family": "facility",
+      "name": "연료 생산소",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "gramophone~owned:hub",
+      "family": "facility",
+      "name": "음악 감상",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "hydrangea-blue",
+      "family": "decoration",
+      "name": "푸른 수국 화단",
+      "price": 90,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "hydrangea-lilac",
+      "family": "decoration",
+      "name": "보랏빛 수국 화단",
+      "price": 90,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "hydrangea-pink",
+      "family": "decoration",
+      "name": "분홍 수국 화단",
+      "price": 90,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "island-name-sign",
+      "family": "decoration",
+      "name": "이름 간판",
+      "price": 120,
+      "width": 2,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": true
+    },
+    {
+      "id": "lamp",
+      "family": "decoration",
+      "name": "별빛 가로등",
+      "price": 150,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "land-piece",
+      "family": "land",
+      "name": "땅 조각",
+      "price": 50,
+      "width": 1,
+      "height": 1,
+      "terrain": "any",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "lighthouse~owned:hub",
+      "family": "facility",
+      "name": "등대",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "mailbox-planter",
+      "family": "decoration",
+      "name": "우편함 화단",
+      "price": 160,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "mail~owned:mail",
+      "family": "facility",
+      "name": "우편함",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "map-table~owned:hub",
+      "family": "facility",
+      "name": "지도",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "notice-board~owned:hub",
+      "family": "facility",
+      "name": "공지",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "pastel-surfboard",
+      "family": "decoration",
+      "name": "파스텔 서핑보드",
+      "price": 140,
+      "width": 1,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "picnic-table",
+      "family": "decoration",
+      "name": "피크닉 테이블",
+      "price": 300,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "pine",
+      "family": "decoration",
+      "name": "솔솔 소나무",
+      "price": 300,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "pond",
+      "family": "decoration",
+      "name": "작은 연못",
+      "price": 250,
+      "width": 2,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/bait-production-shop",
+      "family": "facility",
+      "name": "미끼 생산소 상점",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/decoration-shop",
+      "family": "facility",
+      "name": "어항 장식물 상점",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/development-fund",
+      "family": "facility",
+      "name": "퐁당섬 발전기금",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/exchange",
+      "family": "facility",
+      "name": "거래소",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/expeditions",
+      "family": "facility",
+      "name": "통발",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/farm",
+      "family": "facility",
+      "name": "농장",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/fishing",
+      "family": "facility",
+      "name": "낚시",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/hall-of-fame",
+      "family": "facility",
+      "name": "명예의 전당",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/island-news",
+      "family": "facility",
+      "name": "퐁당섬 소식",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/item-shop",
+      "family": "facility",
+      "name": "아이템 상점",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/merchant-orders",
+      "family": "facility",
+      "name": "바다 상인의 의뢰",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/production-shop",
+      "family": "facility",
+      "name": "연료 생산소 상점",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/profile",
+      "family": "facility",
+      "name": "내 정보",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/showcase",
+      "family": "facility",
+      "name": "자랑하기",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/square/begging",
+      "family": "facility",
+      "name": "사연함",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/square/bugs",
+      "family": "facility",
+      "name": "버그 제보",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/square/sponsorship",
+      "family": "facility",
+      "name": "후원소",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "portal~owned:page:/square/suggestions",
+      "family": "facility",
+      "name": "건의함",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "reeds",
+      "family": "decoration",
+      "name": "물가 갈대",
+      "price": 60,
+      "width": 1,
+      "height": 1,
+      "terrain": "any",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "relic-case~owned:hub",
+      "family": "facility",
+      "name": "유물",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "rubber-duck",
+      "family": "decoration",
+      "name": "고무오리",
+      "price": 100,
+      "width": 1,
+      "height": 1,
+      "terrain": "any",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "shell-fountain",
+      "family": "decoration",
+      "name": "조개 분수대",
+      "price": 1200,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "shell-safe~owned:hub",
+      "family": "facility",
+      "name": "조개 적금",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "shipyard~owned:hub",
+      "family": "facility",
+      "name": "조선소",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "shop~owned:hub",
+      "family": "facility",
+      "name": "낚시 상점",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "sleeping-cat",
+      "family": "decoration",
+      "name": "잠자는 고양이",
+      "price": 450,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "stash~owned:hub",
+      "family": "facility",
+      "name": "보관함",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "stepping-stones",
+      "family": "decoration",
+      "name": "물길 징검돌",
+      "price": 80,
+      "width": 1,
+      "height": 1,
+      "terrain": "water",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "stone-wall",
+      "family": "decoration",
+      "name": "낮은 돌담",
+      "price": 60,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "title-flag~owned:hub",
+      "family": "facility",
+      "name": "칭호",
+      "price": 0,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "tree",
+      "family": "decoration",
+      "name": "동글 나무",
+      "price": 300,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "warehouse~owned:warehouse",
+      "family": "facility",
+      "name": "창고",
+      "price": 0,
+      "width": 2,
+      "height": 2,
+      "terrain": "land",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "water-lily",
+      "family": "decoration",
+      "name": "호수 수련",
+      "price": 60,
+      "width": 1,
+      "height": 1,
+      "terrain": "water",
+      "rotations": [
+        0
+      ],
+      "text_label": false
+    },
+    {
+      "id": "wood-arrow-sign",
+      "family": "decoration",
+      "name": "나무 화살표 표지판",
+      "price": 80,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0,
+        180
+      ],
+      "text_label": true
+    },
+    {
+      "id": "wood-bridge-1",
+      "family": "decoration",
+      "name": "짧은 나무다리",
+      "price": 100,
+      "width": 1,
+      "height": 1,
+      "terrain": "water",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "wood-bridge-2",
+      "family": "decoration",
+      "name": "나무다리",
+      "price": 200,
+      "width": 1,
+      "height": 2,
+      "terrain": "water",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "wood-bridge-3",
+      "family": "decoration",
+      "name": "긴 나무다리",
+      "price": 300,
+      "width": 1,
+      "height": 3,
+      "terrain": "water",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    },
+    {
+      "id": "wood-fence",
+      "family": "decoration",
+      "name": "나무 울타리",
+      "price": 40,
+      "width": 1,
+      "height": 1,
+      "terrain": "land",
+      "rotations": [
+        0,
+        90,
+        180,
+        270
+      ],
+      "text_label": false
+    }
+  ],
+  "island_starters": [
+    {
+      "id": "default",
+      "blueprint": {
+        "document": {
+          "layout": [
+            {
+              "id": "aquarium-1~owned:hub",
+              "x": 8,
+              "y": 7
+            },
+            {
+              "id": "fuel~owned:hub",
+              "x": 18,
+              "y": 11
+            },
+            {
+              "id": "bait~owned:hub",
+              "x": 18,
+              "y": 7
+            },
+            {
+              "id": "dock~owned:hub",
+              "x": 20,
+              "y": 30
+            },
+            {
+              "id": "shop~owned:hub",
+              "x": 25,
+              "y": 7
+            },
+            {
+              "id": "mail~owned:mail",
+              "x": 8,
+              "y": 11
+            },
+            {
+              "id": "warehouse~owned:warehouse",
+              "x": 30,
+              "y": 20
+            },
+            {
+              "id": "bait~owned:personal-workshop",
+              "x": 22,
+              "y": 7
+            },
+            {
+              "id": "shipyard~owned:hub",
+              "x": 25,
+              "y": 10
+            },
+            {
+              "id": "books~owned:hub",
+              "x": 26,
+              "y": 20
+            },
+            {
+              "id": "stash~owned:hub",
+              "x": 28,
+              "y": 20
+            },
+            {
+              "id": "lighthouse~owned:hub",
+              "x": 8,
+              "y": 20
+            },
+            {
+              "id": "title-flag~owned:hub",
+              "x": 26,
+              "y": 22
+            },
+            {
+              "id": "relic-case~owned:hub",
+              "x": 29,
+              "y": 22
+            },
+            {
+              "id": "map-table~owned:hub",
+              "x": 22,
+              "y": 25
+            },
+            {
+              "id": "notice-board~owned:hub",
+              "x": 30,
+              "y": 28
+            },
+            {
+              "id": "community-board~owned:hub",
+              "x": 8,
+              "y": 23
+            },
+            {
+              "id": "gramophone~owned:hub",
+              "x": 11,
+              "y": 11
+            },
+            {
+              "id": "shell-safe~owned:hub",
+              "x": 31,
+              "y": 13
+            },
+            {
+              "id": "arcade-cabinet~owned:hub",
+              "x": 14,
+              "y": 11
+            },
+            {
+              "id": "portal~owned:page:/profile",
+              "x": 12,
+              "y": 7
+            },
+            {
+              "id": "portal~owned:page:/island-news",
+              "x": 26,
+              "y": 28
+            },
+            {
+              "id": "portal~owned:page:/development-fund",
+              "x": 14,
+              "y": 23
+            },
+            {
+              "id": "portal~owned:page:/bait-production-shop",
+              "x": 28,
+              "y": 10
+            },
+            {
+              "id": "portal~owned:page:/production-shop",
+              "x": 31,
+              "y": 10
+            },
+            {
+              "id": "portal~owned:page:/fishing",
+              "x": 18,
+              "y": 25
+            },
+            {
+              "id": "portal~owned:page:/decoration-shop",
+              "x": 31,
+              "y": 7
+            },
+            {
+              "id": "portal~owned:page:/item-shop",
+              "x": 28,
+              "y": 7
+            },
+            {
+              "id": "portal~owned:page:/expeditions",
+              "x": 23,
+              "y": 28
+            },
+            {
+              "id": "portal~owned:page:/farm",
+              "x": 22,
+              "y": 11
+            },
+            {
+              "id": "portal~owned:page:/exchange",
+              "x": 25,
+              "y": 13
+            },
+            {
+              "id": "portal~owned:page:/merchant-orders",
+              "x": 28,
+              "y": 13
+            },
+            {
+              "id": "portal~owned:page:/hall-of-fame",
+              "x": 11,
+              "y": 23
+            },
+            {
+              "id": "portal~owned:page:/showcase",
+              "x": 12,
+              "y": 20
+            },
+            {
+              "id": "portal~owned:page:/square/sponsorship",
+              "x": 8,
+              "y": 26
+            },
+            {
+              "id": "portal~owned:page:/square/begging",
+              "x": 12,
+              "y": 26
+            },
+            {
+              "id": "portal~owned:page:/square/suggestions",
+              "x": 26,
+              "y": 30
+            },
+            {
+              "id": "portal~owned:page:/square/bugs",
+              "x": 30,
+              "y": 30
+            },
+            {
+              "id": "tree~starter-1",
+              "x": 7,
+              "y": 5
+            },
+            {
+              "id": "tree~starter-2",
+              "x": 14,
+              "y": 5
+            },
+            {
+              "id": "bench~starter",
+              "x": 10,
+              "y": 13
+            },
+            {
+              "id": "rubber-duck~starter-lake",
+              "x": 20,
+              "y": 17
+            },
+            {
+              "id": "wood-arrow-sign~starter-aquarium",
+              "x": 6,
+              "y": 8,
+              "label": "아쿠아리움"
+            },
+            {
+              "id": "island-name-sign~zone-home",
+              "x": 10,
+              "y": 4,
+              "label": "내 섬"
+            },
+            {
+              "id": "island-name-sign~zone-sea",
+              "x": 19,
+              "y": 22,
+              "label": "바다"
+            },
+            {
+              "id": "island-name-sign~zone-production",
+              "x": 19,
+              "y": 4,
+              "label": "생산"
+            },
+            {
+              "id": "island-name-sign~zone-market",
+              "x": 28,
+              "y": 4,
+              "label": "장터"
+            },
+            {
+              "id": "island-name-sign~zone-collection",
+              "x": 28,
+              "y": 17,
+              "label": "수집"
+            },
+            {
+              "id": "island-name-sign~zone-community",
+              "x": 10,
+              "y": 17,
+              "label": "광장"
+            },
+            {
+              "id": "island-name-sign~zone-news",
+              "x": 28,
+              "y": 26,
+              "label": "소식"
+            }
+          ],
+          "land": [],
+          "removedLand": [
+            {
+              "x": 19,
+              "y": 16
+            },
+            {
+              "x": 20,
+              "y": 16
+            },
+            {
+              "x": 21,
+              "y": 16
+            },
+            {
+              "x": 19,
+              "y": 17
+            },
+            {
+              "x": 20,
+              "y": 17
+            },
+            {
+              "x": 21,
+              "y": 17
+            },
+            {
+              "x": 19,
+              "y": 18
+            },
+            {
+              "x": 20,
+              "y": 18
+            },
+            {
+              "x": 21,
+              "y": 18
+            }
+          ],
+          "paving": [
+            {
+              "x": 18,
+              "y": 7,
+              "type": "grass"
+            },
+            {
+              "x": 19,
+              "y": 7,
+              "type": "grass"
+            },
+            {
+              "x": 18,
+              "y": 8,
+              "type": "grass"
+            },
+            {
+              "x": 19,
+              "y": 8,
+              "type": "grass"
+            },
+            {
+              "x": 22,
+              "y": 7,
+              "type": "grass"
+            },
+            {
+              "x": 23,
+              "y": 7,
+              "type": "grass"
+            },
+            {
+              "x": 22,
+              "y": 8,
+              "type": "grass"
+            },
+            {
+              "x": 23,
+              "y": 8,
+              "type": "grass"
+            },
+            {
+              "x": 18,
+              "y": 11,
+              "type": "grass"
+            },
+            {
+              "x": 19,
+              "y": 11,
+              "type": "grass"
+            },
+            {
+              "x": 18,
+              "y": 12,
+              "type": "grass"
+            },
+            {
+              "x": 19,
+              "y": 12,
+              "type": "grass"
+            },
+            {
+              "x": 22,
+              "y": 11,
+              "type": "grass"
+            },
+            {
+              "x": 23,
+              "y": 11,
+              "type": "grass"
+            },
+            {
+              "x": 22,
+              "y": 12,
+              "type": "grass"
+            },
+            {
+              "x": 23,
+              "y": 12,
+              "type": "grass"
+            },
+            {
+              "x": 8,
+              "y": 7,
+              "type": "grass"
+            },
+            {
+              "x": 9,
+              "y": 7,
+              "type": "grass"
+            },
+            {
+              "x": 8,
+              "y": 8,
+              "type": "grass"
+            },
+            {
+              "x": 9,
+              "y": 8,
+              "type": "grass"
+            },
+            {
+              "x": 12,
+              "y": 7,
+              "type": "grass"
+            },
+            {
+              "x": 13,
+              "y": 7,
+              "type": "grass"
+            },
+            {
+              "x": 12,
+              "y": 8,
+              "type": "grass"
+            },
+            {
+              "x": 13,
+              "y": 8,
+              "type": "grass"
+            },
+            {
+              "x": 8,
+              "y": 11,
+              "type": "grass"
+            },
+            {
+              "x": 11,
+              "y": 11,
+              "type": "grass"
+            },
+            {
+              "x": 14,
+              "y": 11,
+              "type": "grass"
+            },
+            {
+              "x": 10,
+              "y": 13,
+              "type": "grass"
+            },
+            {
+              "x": 11,
+              "y": 13,
+              "type": "grass"
+            },
+            {
+              "x": 8,
+              "y": 23,
+              "type": "grass"
+            },
+            {
+              "x": 11,
+              "y": 23,
+              "type": "grass"
+            },
+            {
+              "x": 14,
+              "y": 23,
+              "type": "grass"
+            },
+            {
+              "x": 7,
+              "y": 20,
+              "type": "grass"
+            },
+            {
+              "x": 8,
+              "y": 20,
+              "type": "grass"
+            },
+            {
+              "x": 9,
+              "y": 20,
+              "type": "grass"
+            },
+            {
+              "x": 10,
+              "y": 20,
+              "type": "grass"
+            },
+            {
+              "x": 11,
+              "y": 20,
+              "type": "grass"
+            },
+            {
+              "x": 12,
+              "y": 20,
+              "type": "grass"
+            },
+            {
+              "x": 13,
+              "y": 20,
+              "type": "grass"
+            },
+            {
+              "x": 14,
+              "y": 20,
+              "type": "grass"
+            },
+            {
+              "x": 7,
+              "y": 21,
+              "type": "grass"
+            },
+            {
+              "x": 8,
+              "y": 21,
+              "type": "grass"
+            },
+            {
+              "x": 9,
+              "y": 21,
+              "type": "grass"
+            },
+            {
+              "x": 10,
+              "y": 21,
+              "type": "grass"
+            },
+            {
+              "x": 11,
+              "y": 21,
+              "type": "grass"
+            },
+            {
+              "x": 12,
+              "y": 21,
+              "type": "grass"
+            },
+            {
+              "x": 13,
+              "y": 21,
+              "type": "grass"
+            },
+            {
+              "x": 14,
+              "y": 21,
+              "type": "grass"
+            },
+            {
+              "x": 7,
+              "y": 22,
+              "type": "grass"
+            },
+            {
+              "x": 8,
+              "y": 22,
+              "type": "grass"
+            },
+            {
+              "x": 9,
+              "y": 22,
+              "type": "grass"
+            },
+            {
+              "x": 10,
+              "y": 22,
+              "type": "grass"
+            },
+            {
+              "x": 11,
+              "y": 22,
+              "type": "grass"
+            },
+            {
+              "x": 12,
+              "y": 22,
+              "type": "grass"
+            },
+            {
+              "x": 13,
+              "y": 22,
+              "type": "grass"
+            },
+            {
+              "x": 14,
+              "y": 22,
+              "type": "grass"
+            },
+            {
+              "x": 17,
+              "y": 14,
+              "type": "grass"
+            },
+            {
+              "x": 23,
+              "y": 14,
+              "type": "grass"
+            },
+            {
+              "x": 17,
+              "y": 20,
+              "type": "grass"
+            },
+            {
+              "x": 23,
+              "y": 20,
+              "type": "grass"
+            },
+            {
+              "x": 24,
+              "y": 20,
+              "type": "grass"
+            },
+            {
+              "x": 17,
+              "y": 21,
+              "type": "grass"
+            },
+            {
+              "x": 23,
+              "y": 21,
+              "type": "grass"
+            },
+            {
+              "x": 24,
+              "y": 21,
+              "type": "grass"
+            },
+            {
+              "x": 17,
+              "y": 13,
+              "type": "grass"
+            },
+            {
+              "x": 23,
+              "y": 13,
+              "type": "grass"
+            },
+            {
+              "x": 16,
+              "y": 4,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 5,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 6,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 7,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 8,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 9,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 10,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 11,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 12,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 13,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 14,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 16,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 17,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 18,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 19,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 20,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 21,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 22,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 23,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 25,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 26,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 27,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 28,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 29,
+              "type": "stone"
+            },
+            {
+              "x": 16,
+              "y": 30,
+              "type": "stone"
+            },
+            {
+              "x": 7,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 8,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 9,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 10,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 11,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 12,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 13,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 14,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 15,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 17,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 18,
+              "y": 15,
+              "type": "wood"
+            },
+            {
+              "x": 19,
+              "y": 15,
+              "type": "wood"
+            },
+            {
+              "x": 20,
+              "y": 15,
+              "type": "wood"
+            },
+            {
+              "x": 21,
+              "y": 15,
+              "type": "wood"
+            },
+            {
+              "x": 22,
+              "y": 15,
+              "type": "wood"
+            },
+            {
+              "x": 23,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 24,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 25,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 26,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 27,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 28,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 29,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 30,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 31,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 32,
+              "y": 15,
+              "type": "stone"
+            },
+            {
+              "x": 17,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 18,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 19,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 20,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 21,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 22,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 23,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 24,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 25,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 26,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 27,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 28,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 29,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 30,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 31,
+              "y": 24,
+              "type": "stone"
+            },
+            {
+              "x": 8,
+              "y": 27,
+              "type": "stone"
+            },
+            {
+              "x": 9,
+              "y": 27,
+              "type": "stone"
+            },
+            {
+              "x": 10,
+              "y": 27,
+              "type": "stone"
+            },
+            {
+              "x": 11,
+              "y": 27,
+              "type": "stone"
+            },
+            {
+              "x": 12,
+              "y": 27,
+              "type": "stone"
+            },
+            {
+              "x": 13,
+              "y": 27,
+              "type": "stone"
+            },
+            {
+              "x": 14,
+              "y": 27,
+              "type": "stone"
+            },
+            {
+              "x": 15,
+              "y": 27,
+              "type": "stone"
+            },
+            {
+              "x": 24,
+              "y": 7,
+              "type": "stone"
+            },
+            {
+              "x": 24,
+              "y": 8,
+              "type": "stone"
+            },
+            {
+              "x": 24,
+              "y": 9,
+              "type": "stone"
+            },
+            {
+              "x": 24,
+              "y": 10,
+              "type": "stone"
+            },
+            {
+              "x": 24,
+              "y": 11,
+              "type": "stone"
+            },
+            {
+              "x": 24,
+              "y": 12,
+              "type": "stone"
+            },
+            {
+              "x": 24,
+              "y": 13,
+              "type": "stone"
+            },
+            {
+              "x": 24,
+              "y": 14,
+              "type": "stone"
+            },
+            {
+              "x": 18,
+              "y": 16,
+              "type": "wood"
+            },
+            {
+              "x": 22,
+              "y": 16,
+              "type": "wood"
+            },
+            {
+              "x": 18,
+              "y": 17,
+              "type": "wood"
+            },
+            {
+              "x": 22,
+              "y": 17,
+              "type": "wood"
+            },
+            {
+              "x": 18,
+              "y": 18,
+              "type": "wood"
+            },
+            {
+              "x": 22,
+              "y": 18,
+              "type": "wood"
+            },
+            {
+              "x": 18,
+              "y": 19,
+              "type": "wood"
+            },
+            {
+              "x": 19,
+              "y": 19,
+              "type": "wood"
+            },
+            {
+              "x": 20,
+              "y": 19,
+              "type": "wood"
+            },
+            {
+              "x": 21,
+              "y": 19,
+              "type": "wood"
+            },
+            {
+              "x": 22,
+              "y": 19,
+              "type": "wood"
+            }
+          ],
+          "signLabels": {}
+        },
+        "items": [
+          {
+            "id": "tree~starter-1",
+            "item_id": "tree"
+          },
+          {
+            "id": "tree~starter-2",
+            "item_id": "tree"
+          },
+          {
+            "id": "bench~starter",
+            "item_id": "bench"
+          },
+          {
+            "id": "rubber-duck~starter-lake",
+            "item_id": "rubber-duck"
+          },
+          {
+            "id": "wood-arrow-sign~starter-aquarium",
+            "item_id": "wood-arrow-sign"
+          },
+          {
+            "id": "island-name-sign~zone-home",
+            "item_id": "island-name-sign"
+          },
+          {
+            "id": "island-name-sign~zone-sea",
+            "item_id": "island-name-sign"
+          },
+          {
+            "id": "island-name-sign~zone-production",
+            "item_id": "island-name-sign"
+          },
+          {
+            "id": "island-name-sign~zone-market",
+            "item_id": "island-name-sign"
+          },
+          {
+            "id": "island-name-sign~zone-collection",
+            "item_id": "island-name-sign"
+          },
+          {
+            "id": "island-name-sign~zone-community",
+            "item_id": "island-name-sign"
+          },
+          {
+            "id": "island-name-sign~zone-news",
+            "item_id": "island-name-sign"
+          }
+        ],
+        "stocks": {
+          "floor-brick": 0,
+          "floor-dirt": 0,
+          "floor-grass": 66,
+          "floor-gravel": 0,
+          "floor-moonstone": 0,
+          "floor-sand": 0,
+          "floor-shell-mosaic": 0,
+          "floor-star-mosaic": 0,
+          "floor-stone": 78,
+          "floor-teal-glass": 0,
+          "floor-wood": 16,
+          "land-piece": 775
+        }
+      }
+    }
   ]
 }

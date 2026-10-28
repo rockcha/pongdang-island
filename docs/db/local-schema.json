@@ -1,6 +1,6 @@
 {
   "provenance": "local-migration-replay; not remote evidence",
-  "migrationHash": "95a387df42522be9aa1db5987bf36858eab319c1ef58019ec88c064e056a770b",
+  "migrationHash": "de19e45bf37af1458be6f710e943fee8ae3949d85ce307597f7ca84d4114c544",
   "structure": {
     "enums": [
       {
@@ -258,6 +258,12 @@
       },
       {
         "rls": true,
+        "name": "island_operations",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
         "name": "ladder_runs",
         "schema": "app_private",
         "force_rls": false
@@ -337,6 +343,24 @@
       {
         "rls": true,
         "name": "player_harbor_capacity",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "player_island_items",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "player_island_stocks",
+        "schema": "app_private",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "player_islands",
         "schema": "app_private",
         "force_rls": false
       },
@@ -655,6 +679,18 @@
       {
         "rls": true,
         "name": "harbor_voyages",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "island_shop_items",
+        "schema": "public",
+        "force_rls": false
+      },
+      {
+        "rls": true,
+        "name": "island_starters",
         "schema": "public",
         "force_rls": false
       },
@@ -2754,6 +2790,56 @@
         "generated": ""
       },
       {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "island_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "operation_id",
+        "type": "uuid",
+        "table": "island_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "signature",
+        "type": "jsonb",
+        "table": "island_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "receipt",
+        "type": "jsonb",
+        "table": "island_operations",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "island_operations",
+        "schema": "app_private",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
         "name": "id",
         "type": "uuid",
         "table": "ladder_runs",
@@ -3539,6 +3625,126 @@
         "table": "player_harbor_capacity",
         "schema": "app_private",
         "default": "2",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "text",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "item_id",
+        "type": "text",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "sale_value",
+        "type": "integer",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "acquired_at",
+        "type": "timestamp with time zone",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "default": "now()",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "player_island_stocks",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "item_id",
+        "type": "text",
+        "table": "player_island_stocks",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "quantity",
+        "type": "integer",
+        "table": "player_island_stocks",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "user_id",
+        "type": "uuid",
+        "table": "player_islands",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "document",
+        "type": "jsonb",
+        "table": "player_islands",
+        "schema": "app_private",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "revision",
+        "type": "bigint",
+        "table": "player_islands",
+        "schema": "app_private",
+        "default": "0",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "updated_at",
+        "type": "timestamp with time zone",
+        "table": "player_islands",
+        "schema": "app_private",
+        "default": "now()",
         "identity": "",
         "nullable": false,
         "generated": ""
@@ -8165,6 +8371,116 @@
       },
       {
         "name": "id",
+        "type": "text",
+        "table": "island_shop_items",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "family",
+        "type": "text",
+        "table": "island_shop_items",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "name",
+        "type": "text",
+        "table": "island_shop_items",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "price",
+        "type": "integer",
+        "table": "island_shop_items",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "width",
+        "type": "integer",
+        "table": "island_shop_items",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "height",
+        "type": "integer",
+        "table": "island_shop_items",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "terrain",
+        "type": "text",
+        "table": "island_shop_items",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "rotations",
+        "type": "jsonb",
+        "table": "island_shop_items",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "text_label",
+        "type": "boolean",
+        "table": "island_shop_items",
+        "schema": "public",
+        "default": "false",
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
+        "type": "text",
+        "table": "island_starters",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "blueprint",
+        "type": "jsonb",
+        "table": "island_starters",
+        "schema": "public",
+        "default": null,
+        "identity": "",
+        "nullable": false,
+        "generated": ""
+      },
+      {
+        "name": "id",
         "type": "uuid",
         "table": "memory_game_runs",
         "schema": "public",
@@ -10464,6 +10780,12 @@
         "definition": "CREATE INDEX island_fund_reviews_report ON app_private.island_fund_reviews USING btree (report_id, created_at)"
       },
       {
+        "name": "island_operations_pkey",
+        "table": "island_operations",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX island_operations_pkey ON app_private.island_operations USING btree (user_id, operation_id)"
+      },
+      {
         "name": "ladder_runs_latest",
         "table": "ladder_runs",
         "schema": "app_private",
@@ -10588,6 +10910,30 @@
         "table": "player_harbor_capacity",
         "schema": "app_private",
         "definition": "CREATE UNIQUE INDEX player_harbor_capacity_pkey ON app_private.player_harbor_capacity USING btree (user_id)"
+      },
+      {
+        "name": "player_island_items_pkey",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX player_island_items_pkey ON app_private.player_island_items USING btree (user_id, id)"
+      },
+      {
+        "name": "player_island_items_type_idx",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "definition": "CREATE INDEX player_island_items_type_idx ON app_private.player_island_items USING btree (user_id, item_id)"
+      },
+      {
+        "name": "player_island_stocks_pkey",
+        "table": "player_island_stocks",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX player_island_stocks_pkey ON app_private.player_island_stocks USING btree (user_id, item_id)"
+      },
+      {
+        "name": "player_islands_pkey",
+        "table": "player_islands",
+        "schema": "app_private",
+        "definition": "CREATE UNIQUE INDEX player_islands_pkey ON app_private.player_islands USING btree (user_id)"
       },
       {
         "name": "player_presence_sessions_pkey",
@@ -11610,6 +11956,18 @@
         "definition": "CREATE INDEX harbor_voyages_vessel_idx ON public.harbor_voyages USING btree (vessel_id)"
       },
       {
+        "name": "island_shop_items_pkey",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX island_shop_items_pkey ON public.island_shop_items USING btree (id)"
+      },
+      {
+        "name": "island_starters_pkey",
+        "table": "island_starters",
+        "schema": "public",
+        "definition": "CREATE UNIQUE INDEX island_starters_pkey ON public.island_starters USING btree (id)"
+      },
+      {
         "name": "memory_game_runs_pkey",
         "table": "memory_game_runs",
         "schema": "public",
@@ -12532,6 +12890,30 @@
         "tablename": "harbor_voyages",
         "permissive": "PERMISSIVE",
         "policyname": "harbor_voyages_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "true",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "island_shop_items",
+        "permissive": "PERMISSIVE",
+        "policyname": "island_shop_read",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "true",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "island_starters",
+        "permissive": "PERMISSIVE",
+        "policyname": "island_starter_read",
         "schemaname": "public",
         "with_check": null
       },
@@ -14944,6 +15326,36 @@
         "securityDefiner": true
       },
       {
+        "name": "island_ensure",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.island_ensure()\n RETURNS void\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_created uuid;v_blueprint jsonb;v_doc jsonb;v_item jsonb;v_id text;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if exists(select 1 from app_private.player_islands where user_id=v_uid) then return;end if;\n select blueprint into v_blueprint from public.island_starters where id='default';\n if v_blueprint is null then raise exception 'ISLAND_CATALOG_UNAVAILABLE';end if;\n v_doc:=v_blueprint->'document';\n insert into app_private.player_islands(user_id,document) values(v_uid,v_doc) on conflict do nothing returning user_id into v_created;\n if v_created is null then return;end if;\n for v_item in select value from jsonb_array_elements(v_blueprint->'items') loop\n  v_id:=(v_item->>'item_id')||'~'||gen_random_uuid()::text;\n  insert into app_private.player_island_items(user_id,id,item_id,sale_value) values(v_uid,v_id,v_item->>'item_id',0);\n  v_doc:=jsonb_set(v_doc,'{layout}',(select coalesce(jsonb_agg(case when p->>'id'=v_item->>'id' then p||jsonb_build_object('id',v_id) else p end),'[]') from jsonb_array_elements(v_doc->'layout')p));\n end loop;\n insert into app_private.player_island_stocks(user_id,item_id,quantity)\n select v_uid,key,value::integer from jsonb_each_text(v_blueprint->'stocks');\n update app_private.player_islands set document=v_doc where user_id=v_uid;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "island_land_at",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_document jsonb, p_x integer, p_y integer",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.island_land_at(p_document jsonb, p_x integer, p_y integer)\n RETURNS boolean\n LANGUAGE sql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\n select (p_x>=6 and p_x<34 and p_y>=3 and p_y<31 and not exists(select 1 from jsonb_array_elements(p_document->'removedLand')c where (c->>'x')::integer=p_x and (c->>'y')::integer=p_y))\n or exists(select 1 from jsonb_array_elements(p_document->'land')c where (c->>'x')::integer=p_x and (c->>'y')::integer=p_y)\n$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "island_validate_document",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_document jsonb",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.island_validate_document(p_document jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_doc jsonb;v_key text;v_cell jsonb;v_place jsonb;v_item public.island_shop_items;v_labels jsonb;\n v_x integer;v_y integer;v_w integer;v_h integer;v_rotation integer;v_dx integer;v_dy integer;v_stock integer;v_count integer;\n v_seen jsonb:='{}';v_ids jsonb:='{}';v_surface jsonb:='{}';v_coord text;v_anchor boolean;v_water boolean;v_r record;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_document is null or jsonb_typeof(p_document)<>'object' or octet_length(p_document::text)>260000 then raise exception 'INVALID_ISLAND_LAYOUT';end if;\n v_doc:=jsonb_build_object('layout',coalesce(p_document->'layout','[]'),'land',coalesce(p_document->'land','[]'),'removedLand',coalesce(p_document->'removedLand','[]'),'paving',coalesce(p_document->'paving','[]'),'signLabels',coalesce(p_document->'signLabels','{}'));\n foreach v_key in array array['layout','land','removedLand','paving'] loop\n  if jsonb_typeof(v_doc->v_key)<>'array' or jsonb_array_length(v_doc->v_key)>1440 then raise exception 'INVALID_ISLAND_LAYOUT';end if;\n end loop;\n if jsonb_array_length(v_doc->'layout')>400 or jsonb_typeof(v_doc->'signLabels')<>'object' then raise exception 'INVALID_ISLAND_LAYOUT';end if;\n foreach v_key in array array['land','removedLand','paving'] loop\n  v_seen:='{}';\n  for v_cell in select value from jsonb_array_elements(v_doc->v_key) loop\n   if jsonb_typeof(v_cell)<>'object' or jsonb_typeof(v_cell->'x') is distinct from 'number' or jsonb_typeof(v_cell->'y') is distinct from 'number'\n    or v_cell->>'x' !~ '^[0-9]{1,2}$' or v_cell->>'y' !~ '^[0-9]{1,2}$' then raise exception 'INVALID_ISLAND_LAYOUT';end if;\n   v_x:=(v_cell->>'x')::integer;v_y:=(v_cell->>'y')::integer;v_coord:=v_x||','||v_y;\n   if v_x>=40 or v_y>=36 or v_seen?v_coord then raise exception 'INVALID_ISLAND_LAYOUT';end if;\n   v_seen:=v_seen||jsonb_build_object(v_coord,true);\n   if v_key='removedLand' and not(v_x>=6 and v_x<34 and v_y>=3 and v_y<31) then raise exception 'INVALID_ISLAND_LAYOUT';end if;\n   if v_key='land' and v_x>=6 and v_x<34 and v_y>=3 and v_y<31 then raise exception 'INVALID_ISLAND_LAYOUT';end if;\n   if v_key='paving' then\n    if not app_private.island_land_at(v_doc,v_x,v_y) or not exists(select 1 from public.island_shop_items where id='floor-'||(v_cell->>'type') and family='floor') then raise exception 'INVALID_ISLAND_TERRAIN';end if;\n   end if;\n  end loop;\n end loop;\n select quantity into v_stock from app_private.player_island_stocks where user_id=v_uid and item_id='land-piece';\n if 784-jsonb_array_length(v_doc->'removedLand')+jsonb_array_length(v_doc->'land')>coalesce(v_stock,0) then raise exception 'ISLAND_STOCK_REQUIRED';end if;\n for v_r in select p->>'type' type,count(*) amount from jsonb_array_elements(v_doc->'paving')p group by p->>'type' loop\n  select quantity into v_stock from app_private.player_island_stocks where user_id=v_uid and item_id='floor-'||v_r.type;\n  if v_r.amount>coalesce(v_stock,0) then raise exception 'ISLAND_STOCK_REQUIRED';end if;\n end loop;\n v_seen:='{}';\n for v_place in select value from jsonb_array_elements(v_doc->'layout') loop\n  if jsonb_typeof(v_place)<>'object' or jsonb_typeof(v_place->'id') is distinct from 'string' or jsonb_typeof(v_place->'x') is distinct from 'number' or jsonb_typeof(v_place->'y') is distinct from 'number'\n    or v_place->>'x' !~ '^[0-9]{1,2}$' or v_place->>'y' !~ '^[0-9]{1,2}$' or v_ids?(v_place->>'id') then raise exception 'INVALID_ISLAND_LAYOUT';end if;\n  v_ids:=v_ids||jsonb_build_object(v_place->>'id',true);\n  select c.* into v_item from app_private.player_island_items i join public.island_shop_items c on c.id=i.item_id where i.user_id=v_uid and i.id=v_place->>'id';\n  if not found then select * into v_item from public.island_shop_items where family='facility' and id=v_place->>'id';end if;\n  if v_item.id is null then raise exception 'ISLAND_ITEM_NOT_OWNED';end if;\n  if v_place?'rotation' and (jsonb_typeof(v_place->'rotation')<>'number' or v_place->>'rotation' !~ '^[0-9]{1,3}$') then raise exception 'INVALID_ISLAND_ROTATION';end if;\n  v_rotation:=coalesce((v_place->>'rotation')::integer,0);\n  if not v_item.rotations@>jsonb_build_array(v_rotation) then raise exception 'INVALID_ISLAND_ROTATION';end if;\n  if v_place?'label' and (not v_item.text_label or jsonb_typeof(v_place->'label')<>'string' or length(v_place->>'label')>6) then raise exception 'INVALID_ISLAND_LABEL';end if;\n  v_x:=(v_place->>'x')::integer;v_y:=(v_place->>'y')::integer;\n  v_w:=case when v_rotation%180=90 then v_item.height else v_item.width end;\n  v_h:=case when v_rotation%180=90 then v_item.width else v_item.height end;\n  if v_x+v_w>40 or v_y+v_h>36 then raise exception 'INVALID_ISLAND_LAYOUT';end if;\n  v_anchor:=false;v_water:=false;\n  for v_dx in 0..v_w-1 loop for v_dy in 0..v_h-1 loop\n   v_coord:=(v_x+v_dx)||','||(v_y+v_dy);\n   if v_seen?v_coord then raise exception 'ISLAND_PLACEMENT_OVERLAP';end if;\n   v_seen:=v_seen||jsonb_build_object(v_coord,true);\n   if v_item.terrain='land' and not app_private.island_land_at(v_doc,v_x+v_dx,v_y+v_dy) then raise exception 'INVALID_ISLAND_TERRAIN';end if;\n   if v_item.terrain='water' and app_private.island_land_at(v_doc,v_x+v_dx,v_y+v_dy) then raise exception 'INVALID_ISLAND_TERRAIN';end if;\n   if v_item.terrain='shore' then\n    if (case v_rotation when 0 then v_dy=0 when 90 then v_dx=v_w-1 when 180 then v_dy=v_h-1 else v_dx=0 end) and app_private.island_land_at(v_doc,v_x+v_dx,v_y+v_dy) then v_anchor:=true;end if;\n    if (case v_rotation when 0 then v_dy=v_h-1 when 90 then v_dx=0 when 180 then v_dy=0 else v_dx=v_w-1 end) then\n     if not app_private.island_land_at(v_doc,v_x+v_dx,v_y+v_dy) or not app_private.island_land_at(v_doc,v_x+v_dx+case v_rotation when 90 then -1 when 270 then 1 else 0 end,v_y+v_dy+case v_rotation when 0 then 1 when 180 then -1 else 0 end) then v_water:=true;end if;\n    end if;\n   end if;\n  end loop;end loop;\n  if v_item.terrain='shore' and (not v_anchor or not v_water) then raise exception 'INVALID_ISLAND_TERRAIN';end if;\n end loop;\n for v_r in select key,value from jsonb_each(v_doc->'signLabels') loop\n  if jsonb_typeof(v_r.value)<>'string' or length(v_r.value#>>'{}')>6 or not exists(select 1 from app_private.player_island_items i join public.island_shop_items c on c.id=i.item_id where i.user_id=v_uid and i.id=v_r.key and c.text_label) then raise exception 'INVALID_ISLAND_LABEL';end if;\n end loop;\n return v_doc;\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "ladder_game",
         "config": [
           "search_path=\"\""
@@ -15171,6 +15583,16 @@
         "schema": "app_private",
         "arguments": "p_import jsonb",
         "definition": "CREATE OR REPLACE FUNCTION app_private.music_library(p_import jsonb DEFAULT NULL::jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_user uuid:=auth.uid(); v_new uuid; v_track jsonb;\nbegin\n if v_user is null then raise exception 'AUTH_REQUIRED'; end if;\n if p_import is not null then\n  if jsonb_typeof(p_import)<>'array' then raise exception 'INVALID_MUSIC_IMPORT'; end if;\n  if jsonb_array_length(p_import)>200 then raise exception 'MUSIC_LIMIT'; end if;\n  for v_track in select value from jsonb_array_elements(p_import) loop\n   if jsonb_typeof(v_track)<>'object' or coalesce(v_track->>'id','') !~ '^[A-Za-z0-9_-]{11}$'\n    or jsonb_typeof(v_track->'id') is distinct from 'string'\n    or jsonb_typeof(v_track->'title') is distinct from 'string'\n    or jsonb_typeof(v_track->'customName') is distinct from 'string'\n    or char_length(v_track->>'title')>1000 or char_length(v_track->>'customName')>150\n    then raise exception 'INVALID_MUSIC_IMPORT'; end if;\n  end loop;\n end if;\n insert into public.music_libraries(user_id) values(v_user) on conflict do nothing returning user_id into v_new;\n -- Serialize initial import and all subsequent changes for this owner only.\n perform 1 from public.music_libraries where user_id=v_user for update;\n if v_new is not null then\n  if p_import is null then\n   insert into public.music_tracks(user_id,video_id,title,created_at)\n   select v_user,video_id,title,now()+sort_order*interval '1 microsecond' from public.music_defaults;\n  else\n   insert into public.music_tracks(user_id,video_id,title,custom_name,created_at)\n   select v_user,t.id,t.title,t.name,now()+t.ord*interval '1 microsecond' from (\n    select distinct on (value->>'id') value->>'id' id,value->>'title' title,btrim(value->>'customName') name,ordinality ord\n    from jsonb_array_elements(p_import) with ordinality order by value->>'id',ordinality desc\n   ) t;\n  end if;\n end if;\n return coalesce((select jsonb_agg(jsonb_build_object('id',video_id,'title',title,'customName',custom_name) order by created_at,video_id) from public.music_tracks where user_id=v_user),'[]'::jsonb);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "my_island_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.my_island_state()\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_island app_private.player_islands;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n perform app_private.island_ensure();\n select * into v_island from app_private.player_islands where user_id=v_uid;\n return jsonb_build_object('revision',v_island.revision,'document',v_island.document,\n 'items',coalesce((select jsonb_agg(jsonb_build_object('id',i.id,'type',i.item_id,'sellPrice',i.sale_value) order by i.acquired_at,i.id) from app_private.player_island_items i where i.user_id=v_uid),'[]'),\n 'stocks',coalesce((select jsonb_object_agg(item_id,quantity) from app_private.player_island_stocks where user_id=v_uid),'{}'),\n 'catalog',(select jsonb_agg(to_jsonb(c) order by family,price,id) from public.island_shop_items c));\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -15894,6 +16316,16 @@
         "securityDefiner": false
       },
       {
+        "name": "save_my_island",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_document jsonb, p_revision bigint, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.save_my_island(p_document jsonb, p_revision bigint, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_profile app_private.player_islands;v_signature jsonb;v_previous app_private.island_operations;v_doc jsonb;v_receipt jsonb;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_revision is null or p_revision<0 then raise exception 'INVALID_ISLAND_OPERATION';end if;\n perform app_private.island_ensure();\n select * into v_profile from app_private.player_islands where user_id=v_uid for update;\n v_signature:=jsonb_build_object('action','layout','document',p_document,'revision',p_revision);\n select * into v_previous from app_private.island_operations where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if v_previous.signature<>v_signature then raise exception 'OPERATION_CONFLICT';end if;\n  return jsonb_build_object('island',app_private.my_island_state(),'receipt',v_previous.receipt||jsonb_build_object('applied',false));\n end if;\n if v_profile.revision<>p_revision then raise exception 'ISLAND_REVISION_CHANGED';end if;\n v_doc:=app_private.island_validate_document(p_document);\n update app_private.player_islands set document=v_doc,revision=revision+1,updated_at=now() where user_id=v_uid returning * into v_profile;\n v_receipt:=jsonb_build_object('operationId',p_operation_id,'revision',v_profile.revision,'applied',true);\n insert into app_private.island_operations(user_id,operation_id,signature,receipt) values(v_uid,p_operation_id,v_signature,v_receipt);\n return jsonb_build_object('island',app_private.my_island_state(),'receipt',v_receipt);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
         "name": "savings_action",
         "config": [
           "search_path=\"\""
@@ -16401,6 +16833,16 @@
         "schema": "app_private",
         "arguments": "p_operation_id uuid, p_action text, p_item_id text",
         "definition": "CREATE OR REPLACE FUNCTION app_private.trade_gold(p_operation_id uuid, p_action text, p_item_id text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_wallet public.player_wallets;v_previous public.gold_transactions;v_delta integer;v_count integer;v_price integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('charge','buy','sell') then raise exception 'INVALID_TRADE';end if;\n insert into public.player_wallets(user_id) values(v_uid) on conflict do nothing;\n select * into v_wallet from public.player_wallets where user_id=v_uid for update;\n select * into v_previous from public.gold_transactions where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if v_previous.action<>p_action or v_previous.item_id is distinct from p_item_id then raise exception 'OPERATION_CONFLICT';end if;\n  return app_private.get_gold_wallet()||jsonb_build_object('delta',0);\n end if;\n if p_action='charge' then\n  if p_item_id is not null then raise exception 'INVALID_TRADE';end if;\n  if not coalesce((select test_charge_enabled from app_private.gold_settings where id),false) then raise exception 'TEST_CHARGE_DISABLED';end if;\n  if v_wallet.test_claimed then raise exception 'TEST_CHARGE_ALREADY_CLAIMED';end if;\n  v_delta:=1000;\n else\n  if p_item_id is null or p_item_id not in ('bait','shell') then raise exception 'INVALID_ITEM';end if;\n  v_count:=coalesce((v_wallet.inventory->>p_item_id)::integer,0);\n  v_price:=case when p_item_id='bait' then (select price from public.fishing_baits where id='bait') else 300 end;\n  if v_price is null then raise exception 'INVALID_ITEM';end if;\n  if p_action='buy' then\n   if p_item_id='bait' then v_price:=greatest(1,v_price-app_private.relic_bonus('bait_discount_gold')::integer);end if;\n   if v_wallet.gold<v_price then raise exception 'INSUFFICIENT_GOLD';end if;\n   v_delta:=-v_price;v_count:=v_count+1;\n  else\n   if v_count<1 then raise exception 'INSUFFICIENT_INVENTORY';end if;\n   v_delta:=v_price*6/10;v_count:=v_count-1;\n  end if;\n  v_wallet.inventory:=jsonb_set(v_wallet.inventory,array[p_item_id],to_jsonb(v_count));\n end if;\n if v_wallet.gold+v_delta>1000000000 then raise exception 'GOLD_LIMIT';end if;\n update public.player_wallets set gold=gold+v_delta,inventory=v_wallet.inventory,test_claimed=test_claimed or p_action='charge',updated_at=now() where user_id=v_uid;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,p_action,p_item_id,v_delta);\n return app_private.get_gold_wallet()||jsonb_build_object('delta',v_delta);\nend $function$\n",
+        "securityDefiner": true
+      },
+      {
+        "name": "trade_island",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "app_private",
+        "arguments": "p_action text, p_item_id text, p_quantity integer, p_expected_price integer, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION app_private.trade_island(p_action text, p_item_id text, p_quantity integer, p_expected_price integer, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_uid uuid:=auth.uid();v_wallet public.player_wallets;v_profile app_private.player_islands;v_catalog public.island_shop_items;\n v_previous app_private.island_operations;v_signature jsonb;v_receipt jsonb;v_item app_private.player_island_items;v_ids jsonb:='[]';v_id text;v_delta integer;v_stock integer;v_count integer;v_placed integer;v_unit_price integer;\nbegin\n if v_uid is null then raise exception 'AUTH_REQUIRED';end if;\n if p_operation_id is null or p_action is null or p_action not in ('buy','sell') or p_item_id is null or p_quantity is null or p_quantity<1 or p_quantity>100 then raise exception 'INVALID_ISLAND_OPERATION';end if;\n insert into public.player_wallets(user_id) values(v_uid) on conflict do nothing;\n select * into v_wallet from public.player_wallets where user_id=v_uid for update;\n perform app_private.island_ensure();\n select * into v_profile from app_private.player_islands where user_id=v_uid for update;\n v_signature:=jsonb_build_object('action',p_action,'item',p_item_id,'quantity',p_quantity,'price',p_expected_price);\n select * into v_previous from app_private.island_operations where user_id=v_uid and operation_id=p_operation_id;\n if found then\n  if v_previous.signature<>v_signature then raise exception 'OPERATION_CONFLICT';end if;\n  return jsonb_build_object('island',app_private.my_island_state(),'wallet',app_private.get_gold_wallet(),'receipt',v_previous.receipt||jsonb_build_object('applied',false));\n end if;\n if exists(select 1 from public.gold_transactions where user_id=v_uid and operation_id=p_operation_id) then raise exception 'OPERATION_CONFLICT';end if;\n if p_action='buy' then\n  select * into v_catalog from public.island_shop_items where id=p_item_id and family<>'facility';\n  if not found then raise exception 'INVALID_ISLAND_ITEM';end if;\n  if p_expected_price is distinct from v_catalog.price then raise exception 'ISLAND_PRICE_CHANGED';end if;\n  v_delta:=-(v_catalog.price*p_quantity);\n  if v_wallet.gold+v_delta<0 then raise exception 'INSUFFICIENT_GOLD';end if;\n  if v_catalog.family='decoration' then\n   select count(*) into v_count from app_private.player_island_items where user_id=v_uid;\n   if v_count+p_quantity>300 then raise exception 'ISLAND_INVENTORY_LIMIT';end if;\n   for v_count in 1..p_quantity loop\n    v_id:=p_item_id||'~'||gen_random_uuid()::text;\n    insert into app_private.player_island_items(user_id,id,item_id,sale_value) values(v_uid,v_id,p_item_id,v_catalog.price*7/10);\n    v_ids:=v_ids||jsonb_build_array(v_id);\n   end loop;\n  else\n   select quantity into v_stock from app_private.player_island_stocks where user_id=v_uid and item_id=p_item_id;\n   if coalesce(v_stock,0)+p_quantity>10000 then raise exception 'ISLAND_INVENTORY_LIMIT';end if;\n   insert into app_private.player_island_stocks(user_id,item_id,quantity) values(v_uid,p_item_id,p_quantity) on conflict(user_id,item_id) do update set quantity=app_private.player_island_stocks.quantity+excluded.quantity;\n  end if;\n else\n  select * into v_catalog from public.island_shop_items where id=p_item_id and family in ('floor','land');\n  if found then\n   v_unit_price:=v_catalog.price/2;\n   if p_expected_price is distinct from v_unit_price then raise exception 'ISLAND_PRICE_CHANGED';end if;\n   select quantity into v_stock from app_private.player_island_stocks where user_id=v_uid and item_id=p_item_id for update;\n   if v_catalog.family='land' then\n    v_placed:=784-jsonb_array_length(v_profile.document->'removedLand')+jsonb_array_length(v_profile.document->'land');\n   else\n    select count(*) into v_placed from jsonb_array_elements(v_profile.document->'paving') p where 'floor-'||(p->>'type')=p_item_id;\n   end if;\n   if coalesce(v_stock,0)-v_placed<p_quantity then raise exception 'ISLAND_STOCK_NOT_STORED';end if;\n   v_delta:=v_unit_price*p_quantity;\n   update app_private.player_island_stocks set quantity=quantity-p_quantity where user_id=v_uid and item_id=p_item_id;\n  else\n   if p_quantity<>1 then raise exception 'INVALID_ISLAND_OPERATION';end if;\n   select * into v_item from app_private.player_island_items where user_id=v_uid and id=p_item_id for update;\n   if not found then raise exception 'ISLAND_ITEM_NOT_OWNED';end if;\n   if v_item.sale_value=0 then raise exception 'ISLAND_STARTER_NOT_FOR_SALE';end if;\n   if p_expected_price is distinct from v_item.sale_value then raise exception 'ISLAND_PRICE_CHANGED';end if;\n   v_delta:=v_item.sale_value;\n   delete from app_private.player_island_items where user_id=v_uid and id=p_item_id;\n   update app_private.player_islands set document=jsonb_set(document,'{layout}',(select coalesce(jsonb_agg(p),'[]') from jsonb_array_elements(document->'layout')p where p->>'id'<>p_item_id))#-array['signLabels',p_item_id],revision=revision+1,updated_at=now() where user_id=v_uid;\n   v_ids:=jsonb_build_array(p_item_id);\n  end if;\n end if;\n if v_wallet.gold::bigint+v_delta>1000000000 then raise exception 'GOLD_LIMIT';end if;\n update public.player_wallets set gold=gold+v_delta,updated_at=now() where user_id=v_uid;\n insert into public.gold_transactions(user_id,operation_id,action,item_id,delta) values(v_uid,p_operation_id,p_action,'island:'||p_item_id,v_delta);\n v_receipt:=jsonb_build_object('operationId',p_operation_id,'action',p_action,'itemId',p_item_id,'quantity',p_quantity,'itemIds',v_ids,'delta',v_delta,'applied',true);\n insert into app_private.island_operations(user_id,operation_id,signature,receipt) values(v_uid,p_operation_id,v_signature,v_receipt);\n return jsonb_build_object('island',app_private.my_island_state(),'wallet',app_private.get_gold_wallet(),'receipt',v_receipt);\nend $function$\n",
         "securityDefiner": true
       },
       {
@@ -17554,6 +17996,16 @@
         "securityDefiner": false
       },
       {
+        "name": "my_island_state",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "",
+        "definition": "CREATE OR REPLACE FUNCTION public.my_island_state()\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.my_island_state()$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "new_content_state",
         "config": [
           "search_path=\"\""
@@ -17924,6 +18376,16 @@
         "securityDefiner": false
       },
       {
+        "name": "save_my_island",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_document jsonb, p_revision bigint, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.save_my_island(p_document jsonb, p_revision bigint, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.save_my_island(p_document,p_revision,p_operation_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
         "name": "savings_action",
         "config": [
           "search_path=\"\""
@@ -18211,6 +18673,16 @@
         "schema": "public",
         "arguments": "p_operation_id uuid, p_action text, p_item_id text",
         "definition": "CREATE OR REPLACE FUNCTION public.trade_gold(p_operation_id uuid, p_action text, p_item_id text DEFAULT NULL::text)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.trade_gold(p_operation_id,p_action,p_item_id)$function$\n",
+        "securityDefiner": false
+      },
+      {
+        "name": "trade_island",
+        "config": [
+          "search_path=\"\""
+        ],
+        "schema": "public",
+        "arguments": "p_action text, p_item_id text, p_quantity integer, p_expected_price integer, p_operation_id uuid",
+        "definition": "CREATE OR REPLACE FUNCTION public.trade_island(p_action text, p_item_id text, p_quantity integer, p_expected_price integer, p_operation_id uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select app_private.trade_island(p_action,p_item_id,p_quantity,p_expected_price,p_operation_id)$function$\n",
         "securityDefiner": false
       },
       {
@@ -20094,6 +20566,48 @@
         "definition": "NOT NULL signature"
       },
       {
+        "name": "island_operations_created_at_not_null",
+        "table": "island_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL created_at"
+      },
+      {
+        "name": "island_operations_operation_id_not_null",
+        "table": "island_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL operation_id"
+      },
+      {
+        "name": "island_operations_pkey",
+        "table": "island_operations",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, operation_id)"
+      },
+      {
+        "name": "island_operations_receipt_not_null",
+        "table": "island_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL receipt"
+      },
+      {
+        "name": "island_operations_signature_not_null",
+        "table": "island_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL signature"
+      },
+      {
+        "name": "island_operations_user_id_fkey",
+        "table": "island_operations",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "island_operations_user_id_not_null",
+        "table": "island_operations",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
         "name": "ladder_runs_bridges_check",
         "table": "ladder_runs",
         "schema": "app_private",
@@ -20906,6 +21420,150 @@
       {
         "name": "player_harbor_capacity_user_id_not_null",
         "table": "player_harbor_capacity",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "player_island_items_acquired_at_not_null",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "definition": "NOT NULL acquired_at"
+      },
+      {
+        "name": "player_island_items_id_not_null",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "player_island_items_item_id_fkey",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (item_id) REFERENCES island_shop_items(id)"
+      },
+      {
+        "name": "player_island_items_item_id_not_null",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "definition": "NOT NULL item_id"
+      },
+      {
+        "name": "player_island_items_pkey",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, id)"
+      },
+      {
+        "name": "player_island_items_sale_value_check",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "definition": "CHECK (((sale_value >= 0) AND (sale_value <= 10000000)))"
+      },
+      {
+        "name": "player_island_items_sale_value_not_null",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "definition": "NOT NULL sale_value"
+      },
+      {
+        "name": "player_island_items_user_id_fkey",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "player_island_items_user_id_not_null",
+        "table": "player_island_items",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "player_island_stocks_item_id_fkey",
+        "table": "player_island_stocks",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (item_id) REFERENCES island_shop_items(id)"
+      },
+      {
+        "name": "player_island_stocks_item_id_not_null",
+        "table": "player_island_stocks",
+        "schema": "app_private",
+        "definition": "NOT NULL item_id"
+      },
+      {
+        "name": "player_island_stocks_pkey",
+        "table": "player_island_stocks",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id, item_id)"
+      },
+      {
+        "name": "player_island_stocks_quantity_check",
+        "table": "player_island_stocks",
+        "schema": "app_private",
+        "definition": "CHECK (((quantity >= 0) AND (quantity <= 10000)))"
+      },
+      {
+        "name": "player_island_stocks_quantity_not_null",
+        "table": "player_island_stocks",
+        "schema": "app_private",
+        "definition": "NOT NULL quantity"
+      },
+      {
+        "name": "player_island_stocks_user_id_fkey",
+        "table": "player_island_stocks",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "player_island_stocks_user_id_not_null",
+        "table": "player_island_stocks",
+        "schema": "app_private",
+        "definition": "NOT NULL user_id"
+      },
+      {
+        "name": "player_islands_document_check",
+        "table": "player_islands",
+        "schema": "app_private",
+        "definition": "CHECK ((jsonb_typeof(document) = 'object'::text))"
+      },
+      {
+        "name": "player_islands_document_not_null",
+        "table": "player_islands",
+        "schema": "app_private",
+        "definition": "NOT NULL document"
+      },
+      {
+        "name": "player_islands_pkey",
+        "table": "player_islands",
+        "schema": "app_private",
+        "definition": "PRIMARY KEY (user_id)"
+      },
+      {
+        "name": "player_islands_revision_check",
+        "table": "player_islands",
+        "schema": "app_private",
+        "definition": "CHECK ((revision >= 0))"
+      },
+      {
+        "name": "player_islands_revision_not_null",
+        "table": "player_islands",
+        "schema": "app_private",
+        "definition": "NOT NULL revision"
+      },
+      {
+        "name": "player_islands_updated_at_not_null",
+        "table": "player_islands",
+        "schema": "app_private",
+        "definition": "NOT NULL updated_at"
+      },
+      {
+        "name": "player_islands_user_id_fkey",
+        "table": "player_islands",
+        "schema": "app_private",
+        "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+      },
+      {
+        "name": "player_islands_user_id_not_null",
+        "table": "player_islands",
         "schema": "app_private",
         "definition": "NOT NULL user_id"
       },
@@ -25188,6 +25846,132 @@
         "definition": "NOT NULL vessel_snapshot"
       },
       {
+        "name": "island_shop_items_family_check",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "CHECK ((family = ANY (ARRAY['decoration'::text, 'facility'::text, 'land'::text, 'floor'::text])))"
+      },
+      {
+        "name": "island_shop_items_family_not_null",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "NOT NULL family"
+      },
+      {
+        "name": "island_shop_items_height_check",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "CHECK (((height >= 1) AND (height <= 16)))"
+      },
+      {
+        "name": "island_shop_items_height_not_null",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "NOT NULL height"
+      },
+      {
+        "name": "island_shop_items_id_not_null",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "island_shop_items_name_check",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "CHECK (((length(name) >= 1) AND (length(name) <= 80)))"
+      },
+      {
+        "name": "island_shop_items_name_not_null",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "NOT NULL name"
+      },
+      {
+        "name": "island_shop_items_pkey",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "island_shop_items_price_check",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "CHECK (((price >= 0) AND (price <= 10000000)))"
+      },
+      {
+        "name": "island_shop_items_price_not_null",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "NOT NULL price"
+      },
+      {
+        "name": "island_shop_items_rotations_check",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "CHECK ((jsonb_typeof(rotations) = 'array'::text))"
+      },
+      {
+        "name": "island_shop_items_rotations_not_null",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "NOT NULL rotations"
+      },
+      {
+        "name": "island_shop_items_terrain_check",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "CHECK ((terrain = ANY (ARRAY['land'::text, 'water'::text, 'any'::text, 'shore'::text])))"
+      },
+      {
+        "name": "island_shop_items_terrain_not_null",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "NOT NULL terrain"
+      },
+      {
+        "name": "island_shop_items_text_label_not_null",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "NOT NULL text_label"
+      },
+      {
+        "name": "island_shop_items_width_check",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "CHECK (((width >= 1) AND (width <= 16)))"
+      },
+      {
+        "name": "island_shop_items_width_not_null",
+        "table": "island_shop_items",
+        "schema": "public",
+        "definition": "NOT NULL width"
+      },
+      {
+        "name": "island_starters_blueprint_check",
+        "table": "island_starters",
+        "schema": "public",
+        "definition": "CHECK ((jsonb_typeof(blueprint) = 'object'::text))"
+      },
+      {
+        "name": "island_starters_blueprint_not_null",
+        "table": "island_starters",
+        "schema": "public",
+        "definition": "NOT NULL blueprint"
+      },
+      {
+        "name": "island_starters_id_not_null",
+        "table": "island_starters",
+        "schema": "public",
+        "definition": "NOT NULL id"
+      },
+      {
+        "name": "island_starters_pkey",
+        "table": "island_starters",
+        "schema": "public",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
         "name": "memory_game_runs_created_at_not_null",
         "table": "memory_game_runs",
         "schema": "public",
@@ -27512,6 +28296,20 @@
       {
         "role": "authenticated",
         "table": "harbor_voyages",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "island_shop_items",
+        "schema": "public",
+        "grantable": "NO",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "island_starters",
         "schema": "public",
         "grantable": "NO",
         "privilege": "SELECT"
@@ -31281,6 +32079,83 @@
         "role": "authenticated",
         "table": "harbor_voyages",
         "column": "vessel_snapshot",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "island_shop_items",
+        "column": "family",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "island_shop_items",
+        "column": "height",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "island_shop_items",
+        "column": "id",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "island_shop_items",
+        "column": "name",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "island_shop_items",
+        "column": "price",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "island_shop_items",
+        "column": "rotations",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "island_shop_items",
+        "column": "terrain",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "island_shop_items",
+        "column": "text_label",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "island_shop_items",
+        "column": "width",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "island_starters",
+        "column": "blueprint",
+        "schema": "public",
+        "privilege": "SELECT"
+      },
+      {
+        "role": "authenticated",
+        "table": "island_starters",
+        "column": "id",
         "schema": "public",
         "privilege": "SELECT"
       },
@@ -36772,6 +37647,69 @@
         "arguments": ""
       },
       {
+        "name": "island_ensure",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "island_ensure",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "island_ensure",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "island_land_at",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_document jsonb, p_x integer, p_y integer"
+      },
+      {
+        "name": "island_land_at",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_document jsonb, p_x integer, p_y integer"
+      },
+      {
+        "name": "island_land_at",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_document jsonb, p_x integer, p_y integer"
+      },
+      {
+        "name": "island_validate_document",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_document jsonb"
+      },
+      {
+        "name": "island_validate_document",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_document jsonb"
+      },
+      {
+        "name": "island_validate_document",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_document jsonb"
+      },
+      {
         "name": "ladder_game",
         "role": "anon",
         "schema": "app_private",
@@ -37253,6 +38191,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_import jsonb"
+      },
+      {
+        "name": "my_island_state",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "my_island_state",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "my_island_state",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": ""
       },
       {
         "name": "notice_delete",
@@ -38767,6 +39726,27 @@
         "arguments": "p_primary_region text, p_region text, p_rod_region text"
       },
       {
+        "name": "save_my_island",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_document jsonb, p_revision bigint, p_operation_id uuid"
+      },
+      {
+        "name": "save_my_island",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_document jsonb, p_revision bigint, p_operation_id uuid"
+      },
+      {
+        "name": "save_my_island",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_document jsonb, p_revision bigint, p_operation_id uuid"
+      },
+      {
         "name": "savings_action",
         "role": "anon",
         "schema": "app_private",
@@ -39836,6 +40816,27 @@
         "schema": "app_private",
         "execute": false,
         "arguments": "p_operation_id uuid, p_action text, p_item_id text"
+      },
+      {
+        "name": "trade_island",
+        "role": "anon",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_item_id text, p_quantity integer, p_expected_price integer, p_operation_id uuid"
+      },
+      {
+        "name": "trade_island",
+        "role": "authenticated",
+        "schema": "app_private",
+        "execute": true,
+        "arguments": "p_action text, p_item_id text, p_quantity integer, p_expected_price integer, p_operation_id uuid"
+      },
+      {
+        "name": "trade_island",
+        "role": "service_role",
+        "schema": "app_private",
+        "execute": false,
+        "arguments": "p_action text, p_item_id text, p_quantity integer, p_expected_price integer, p_operation_id uuid"
       },
       {
         "name": "trap_minutes_per_bait",
@@ -42253,6 +43254,27 @@
         "arguments": "p_import jsonb"
       },
       {
+        "name": "my_island_state",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
+        "name": "my_island_state",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": ""
+      },
+      {
+        "name": "my_island_state",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": ""
+      },
+      {
         "name": "new_content_state",
         "role": "anon",
         "schema": "public",
@@ -43030,6 +44052,27 @@
         "arguments": "p_request_id uuid, p_action text"
       },
       {
+        "name": "save_my_island",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_document jsonb, p_revision bigint, p_operation_id uuid"
+      },
+      {
+        "name": "save_my_island",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_document jsonb, p_revision bigint, p_operation_id uuid"
+      },
+      {
+        "name": "save_my_island",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_document jsonb, p_revision bigint, p_operation_id uuid"
+      },
+      {
         "name": "savings_action",
         "role": "anon",
         "schema": "public",
@@ -43637,6 +44680,27 @@
         "schema": "public",
         "execute": false,
         "arguments": "p_operation_id uuid, p_action text, p_item_id text"
+      },
+      {
+        "name": "trade_island",
+        "role": "anon",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_item_id text, p_quantity integer, p_expected_price integer, p_operation_id uuid"
+      },
+      {
+        "name": "trade_island",
+        "role": "authenticated",
+        "schema": "public",
+        "execute": true,
+        "arguments": "p_action text, p_item_id text, p_quantity integer, p_expected_price integer, p_operation_id uuid"
+      },
+      {
+        "name": "trade_island",
+        "role": "service_role",
+        "schema": "public",
+        "execute": false,
+        "arguments": "p_action text, p_item_id text, p_quantity integer, p_expected_price integer, p_operation_id uuid"
       },
       {
         "name": "travel_region",

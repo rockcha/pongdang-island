@@ -1,16 +1,18 @@
 ﻿import type {Facility} from './island-model'
+import {villageKinds} from './village-decoration-catalog'
+import {VillageDecoration} from './village-decoration'
 type Connections={north:boolean;east:boolean;south:boolean;west:boolean}
 type Props={f:Facility;rotation?:number;label?:string;connections?:Connections}
 const outline='#917c60'
 function Flowers({color}:{color:string}){return <>{[[8,14],[21,11],[16,21],[27,22]].map(([x,y],i)=><g key={i}><path d={`M${x} ${y+6}q-8 1-5-4 5-2 5 4m0 0q7 2 5-4-4-2-5 4`} fill="#92ad7b"/>{[[0,-3],[3,0],[0,3],[-3,0]].map(([dx,dy],n)=><circle key={n} cx={x+dx} cy={y+dy} r="3" fill={color} stroke="#fff4dd" strokeWidth=".4"/>)}<circle cx={x} cy={y} r="1.2" fill="#f7e9bd"/></g>)}</>}
 export function GardenDecoration({f,rotation=0,label,connections}:Props){
+ if(villageKinds.has(f.kind))return <g data-garden={f.kind}><VillageDecoration f={f}/></g>
  const horizontal=rotation%180===0,reverse=rotation===180||rotation===270,w=(horizontal?f.w:f.h)*32,h=(horizontal?f.h:f.w)*32
  const base=<ellipse cx={w/2} cy={h-2} rx={w*.46} ry="3" fill="#688263" opacity=".16"/>
  if(f.kind==='arrow-sign'){
-  const vertical=!horizontal
-  return <g data-garden={f.kind} data-art-direction={rotation}>{base}<path d="M15 2v27" stroke="#a18358" strokeWidth="4" strokeLinecap="round"/>
-   {vertical?<path d={reverse?'M6-13h17v16h6L15 15 1 3h5Z':'M6 11h17V-5h6L15-17 1-5h5Z'} fill="#c9a470" stroke={outline} strokeWidth="1"/>:<path d={reverse?'M29-12H9L1-3l8 9h20Z':'M2-12h20l9 9-9 9H2Z'} fill="#c9a470" stroke={outline} strokeWidth="1"/>}
-   <text x="16" y={vertical?'-1':'0'} textAnchor="middle" fill="#69583e" fontSize="5" fontFamily="inherit" textLength={label&&label.length>5?23:undefined} lengthAdjust="spacingAndGlyphs">{label||'이쪽으로'}</text><path d="M5-9h13" stroke="#ecd2a5" strokeWidth="1"/>
+  return <g data-garden={f.kind} data-art-direction={rotation} data-sign-flipped={reverse}>{base}
+   <g transform={reverse?'translate(32 0) scale(-1 1)':undefined}><path d="M15 2v27" stroke="#a18358" strokeWidth="4" strokeLinecap="round"/><path d="M2-12h20l9 9-9 9H2Z" fill="#c9a470" stroke={outline} strokeWidth="1"/><path d="M5-9h13" stroke="#ecd2a5" strokeWidth="1"/></g>
+   <text x="16" y="0" textAnchor="middle" fill="#69583e" fontSize="5" fontFamily="inherit" textLength={label&&label.length>5?23:undefined} lengthAdjust="spacingAndGlyphs">{label||'이쪽으로'}</text>
   </g>
  }
  if(f.kind==='name-sign')return <g data-garden={f.kind}>{base}<path d="M8 5v23m47-23v23" stroke="#a8885e" strokeWidth="4" strokeLinecap="round"/><rect x="1" y="-12" width="62" height="28" rx="5" fill="#b89463" stroke={outline} strokeWidth="1"/><rect x="4" y="-9" width="56" height="22" rx="3" fill="#e3c99c" stroke="#f1dfb9" strokeWidth=".8"/><path d="M10-5h8m29 14h7" stroke="#c7a878" strokeWidth="1"/><text x="32" y="5" textAnchor="middle" fill="#705b3e" fontSize="8" fontFamily="inherit" textLength={label&&label.length>7?49:undefined} lengthAdjust="spacingAndGlyphs">{label||'나의 퐁당섬'}</text></g>

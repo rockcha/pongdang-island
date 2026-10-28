@@ -1,4 +1,5 @@
 ﻿import {facilityFor,canPlace,type Cell,type IslandState,type Placement} from './island-model'
+import {footprint} from './island-model'
 export function storedDecorationIds(state:IslandState,type:string){
  const occupied=new Set(state.layout.map(p=>p.id))
  return [...new Set(state.owned)].filter(id=>!occupied.has(id)&&facilityFor(id)?.category==='decoration'&&facilityFor(id)?.id===type)
@@ -28,4 +29,15 @@ export function planDecorationPlacement(state:IslandState,type:string,from:Cell,
 export function applyDecorationPlacement(state:IslandState,type:string,from:Cell,to:Cell,rotation=0){
  const plan=planDecorationPlacement(state,type,from,to,rotation)
  return plan.placements.length?{state:{...state,layout:[...state.layout,...plan.placements]},plan}:null
+}
+
+// Remove placements only: ownership, sign text, terrain and coins stay intact.
+export function planDecorationRemoval(state:IslandState,cells:Cell[]){
+ const placements=state.layout.filter(p=>{
+  if(facilityFor(p.id)?.category!=='decoration')return false
+  const {w,h}=footprint(p)
+  return cells.some(c=>c.x>=p.x&&c.x<p.x+w&&c.y>=p.y&&c.y<p.y+h)
+ })
+ const ids=new Set(placements.map(p=>p.id))
+ return {placements,count:placements.length,state:ids.size?{...state,layout:state.layout.filter(p=>!ids.has(p.id))}:state}
 }

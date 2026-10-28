@@ -1,0 +1,618 @@
+.is-account .island-account-camera,
+.is-account [hidden] {
+  display: none !important;
+}
+.is-account .island-topbar {
+  align-items: center;
+  right: max(70px, env(safe-area-inset-right));
+  gap: 8px;
+}
+.is-account .island-title-card {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  padding: 0;
+  gap: 8px;
+}
+.is-account .island-title-card > div > span {
+  display: none;
+}
+.is-account .island-title-card h1 {
+  font-size: 16px;
+  color: #fffef2;
+  text-shadow: 0 1px 8px #315f6260;
+}
+.is-account .island-title-card > a,
+.island-more-toggle {
+  background: #fffdf0eb;
+  border: 1px solid #fff9;
+  border-radius: 50%;
+  box-shadow: 0 3px 14px #395e5714;
+}
+.is-account .island-save {
+  display: none;
+}
+.is-account .island-coins {
+  padding: 9px 13px;
+  border-radius: 24px;
+  font-size: 14px;
+  min-height: 42px;
+  box-shadow: 0 3px 14px #395e5714;
+}
+.island-more-toggle {
+  position: absolute;
+  right: max(18px, env(safe-area-inset-right));
+  top: max(16px, env(safe-area-inset-top));
+}
+.island-more-menu {
+  position: absolute;
+  right: 18px;
+  top: 68px;
+  z-index: 8;
+  display: grid;
+  gap: 3px;
+  padding: 7px;
+  border: 1px solid #e7d8c5;
+  border-radius: 15px;
+  background: #fffdf5;
+  box-shadow: 0 8px 30px #245c6426;
+  min-width: 166px;
+}
+.island-more-menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px;
+  border-radius: 9px;
+  font-size: 12px;
+  text-align: left;
+  cursor: pointer;
+}
+.island-more-menu button:hover {
+  background: #f2e8d7;
+}
+.island-more-menu button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.island-browse-dock {
+  position: absolute;
+  left: 50%;
+  bottom: max(26px, calc(env(safe-area-inset-bottom) + 12px));
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 10px;
+  background: #fffcf2ed;
+  border: 1px solid #fff9;
+  border-radius: 25px;
+  box-shadow: 0 5px 30px #265c6526;
+  backdrop-filter: blur(12px);
+}
+.island-browse-dock button {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  min-width: 76px;
+  min-height: 56px;
+  padding: 9px 14px;
+  border-radius: 18px;
+  font-size: 11px;
+  cursor: pointer;
+}
+.island-browse-dock button.active,
+.island-browse-dock button:hover {
+  background: #eddfcc;
+}
+.island-browse-dock button:focus-visible,
+.island-more-menu button:focus-visible {
+  outline: 2px solid #805231;
+  outline-offset: 2px;
+}
+.island-edit-bar {
+  position: absolute;
+  left: 50%;
+  top: max(76px, calc(env(safe-area-inset-top) + 58px));
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  min-width: 220px;
+  justify-content: space-between;
+  padding: 6px 7px 6px 16px;
+  border: 1px solid #fff9;
+  border-radius: 24px;
+  background: #fffdf0f2;
+  box-shadow: 0 3px 15px #395e5715;
+  font-size: 12px;
+}
+.island-edit-bar > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+}
+.island-edit-bar button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: #926444;
+  color: #fffdf0;
+  padding: 9px 15px;
+  border-radius: 20px;
+  min-width: 68px;
+  cursor: pointer;
+}
+.island-edit-bar button:disabled {
+  opacity: 0.6;
+}
+.is-account .island-message.island-message--browse {
+  top: auto;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: min(380px, calc(100% - 36px));
+  width: max-content;
+  border: 1px solid #fff9;
+  text-align: center;
+  padding: 10px 15px;
+  font-size: 11px;
+}
+.is-account.has-bottom-selection .island-message,
+.is-account.has-placing-selection .island-message {
+  display: none;
+}
+.is-account .island-mobile-tip {
+  display: none;
+}
+.is-account .island-floor-tool {
+  top: 135px;
+}
+.is-account .island-drawer {
+  z-index: 9;
+}
+.is-account .island-land-placement {
+  z-index: 4;
+}
+.island-sync-error {
+  position: absolute;
+  left: 50%;
+  top: 135px;
+  transform: translateX(-50%);
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 11px 14px;
+  max-width: calc(100% - 24px);
+  width: max-content;
+  border: 1px solid #e0b9a5;
+  border-radius: 14px;
+  background: #fff4e9;
+  font-size: 11px;
+  box-shadow: 0 3px 18px #67463215;
+}
+.island-sync-error button {
+  padding: 6px 8px;
+  border: 1px solid #ddc3ad;
+  border-radius: 7px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.island-account-loading {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  background: linear-gradient(#b5dddb, #e2ebd7);
+  padding: 24px;
+  text-align: center;
+  color: #5b7063;
+}
+.island-account-loading h1 {
+  font-size: 17px;
+  font-weight: 600;
+}
+.island-account-loading p {
+  font-size: 12px;
+}
+.island-account-loading button {
+  padding: 11px 20px;
+  background: #fffdf3;
+  border-radius: 22px;
+  cursor: pointer;
+}
+.island-account-orb {
+  height: 45px;
+  width: 45px;
+  border: 2px solid #fff9;
+  border-top-color: #7a9b88;
+  border-radius: 50%;
+  animation: island-orbit 1.5s linear infinite;
+}
+.island-placement-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: island-placement-pulse 0.65s ease-out forwards;
+}
+@keyframes island-placement-pulse {
+  0% {
+    opacity: 1;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+@keyframes island-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.island-trade-dialog,
+.island-acquired-dialog {
+  width: min(380px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
+  border: 1px solid #efe0c9;
+  border-radius: 25px;
+  background: #fffcf3;
+  padding: 26px;
+  color: #6b4935;
+  gap: 14px;
+}
+.island-trade-dialog[data-closed],
+.island-acquired-dialog[data-closed] {
+  display: none;
+}
+.island-trade-dialog [data-slot='dialog-title'],
+.island-acquired-dialog [data-slot='dialog-title'] {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.island-trade-dialog [data-slot='dialog-description'],
+.island-acquired-dialog [data-slot='dialog-description'] {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #9a826b;
+}
+.island-trade-art {
+  display: grid;
+  place-items: center;
+  height: 108px;
+  margin-top: 5px;
+  border-radius: 18px;
+  background: #f5eddb;
+}
+.island-trade-art > svg {
+  height: 88px;
+  width: 140px;
+  overflow: visible;
+}
+.island-trade-dialog h3 {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+.island-trade-quantity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.island-trade-quantity > div {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e1cfb7;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fffefa;
+}
+.island-trade-quantity button {
+  height: 38px;
+  width: 38px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.island-trade-quantity button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+.island-trade-quantity input {
+  width: 44px;
+  background: transparent;
+  text-align: center;
+  outline: none;
+  appearance: textfield;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.island-trade-quantity input::-webkit-inner-spin-button {
+  appearance: none;
+}
+.island-trade-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 13px;
+  border-top: 1px solid #eadfce;
+  font-size: 12px;
+}
+.island-trade-price b {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+}
+.island-trade-balance {
+  font-size: 11px;
+  color: #9a826b;
+  text-align: right;
+  margin-top: -9px;
+}
+.island-trade-error {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #a45236;
+  background: #fbece0;
+  border-radius: 9px;
+  padding: 10px;
+}
+.island-trade-confirm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 46px;
+  width: 100%;
+  padding: 12px;
+  border-radius: 14px;
+  background: #926444;
+  color: #fffdf3;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.island-trade-confirm:disabled {
+  background: #c9bba6;
+  cursor: default;
+}
+.island-acquired-dialog {
+  text-align: center;
+  background: radial-gradient(ellipse at 50% 35%, #fff9d7, #fffdf5 67%);
+}
+.island-acquired-dialog [data-slot='dialog-header'] {
+  align-items: center;
+  text-align: center;
+  gap: 9px;
+}
+.island-acquired-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #928263;
+}
+.island-acquired-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 170px;
+  margin: 5px 0;
+  isolation: isolate;
+}
+.island-acquired-art > svg {
+  width: 170px;
+  height: 135px;
+  overflow: visible;
+  animation: island-item-arrive 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.island-acquired-halo {
+  position: absolute;
+  z-index: -1;
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  background: radial-gradient(#f4dc8f70, transparent 70%);
+}
+.island-acquired-art i {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  background: #ddba60;
+  animation: island-sparkle 1.5s ease-in-out infinite;
+  transform: rotate(45deg);
+}
+.island-acquired-art i:nth-last-child(4) {
+  top: 20%;
+  left: 20%;
+}
+.island-acquired-art i:nth-last-child(3) {
+  top: 30%;
+  right: 16%;
+  animation-delay: 0.3s;
+  width: 4px;
+  height: 4px;
+}
+.island-acquired-art i:nth-last-child(2) {
+  bottom: 17%;
+  left: 28%;
+  animation-delay: 0.6s;
+  width: 4px;
+  height: 4px;
+}
+.island-acquired-art i:last-child {
+  bottom: 24%;
+  right: 23%;
+  animation-delay: 0.9s;
+}
+.island-acquired-cost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #a18a69;
+  margin-bottom: 5px;
+  font-variant-numeric: tabular-nums;
+}
+.island-acquired-store {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 40px;
+  font-size: 12px;
+  color: #9a826b;
+  cursor: pointer;
+}
+@keyframes island-item-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.65);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes island-sparkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    scale: 0.7;
+  }
+  50% {
+    opacity: 1;
+    scale: 1.2;
+  }
+}
+@media (max-width: 600px) {
+  .is-account .island-topbar {
+    top: max(14px, env(safe-area-inset-top));
+    left: 12px;
+    right: 64px;
+  }
+  .is-account .island-title-card {
+    gap: 5px;
+  }
+  .is-account .island-title-card h1 {
+    font-size: 14px;
+  }
+  .is-account .island-coins {
+    font-size: 13px;
+    padding: 9px 11px;
+    gap: 5px;
+  }
+  .island-more-toggle {
+    right: 12px;
+    top: max(14px, env(safe-area-inset-top));
+  }
+  .island-more-menu {
+    right: 12px;
+    top: 64px;
+  }
+  .island-browse-dock {
+    bottom: max(23px, calc(env(safe-area-inset-bottom) + 12px));
+  }
+  .is-account .island-drawer {
+    top: 74px;
+    bottom: 112px;
+  }
+  .island-edit-bar {
+    top: 74px;
+  }
+  .is-account .island-floor-tool {
+    top: 129px;
+  }
+  .is-account .island-selected-card {
+    max-width: calc(100% - 24px);
+  }
+  .island-trade-dialog,
+  .island-acquired-dialog {
+    padding: 24px;
+  }
+}
+@media (orientation: landscape) and (max-height: 600px) {
+  .island-browse-dock {
+    bottom: 14px;
+    left: auto;
+    right: max(18px, env(safe-area-inset-right));
+    transform: none;
+    flex-direction: column;
+    padding: 5px 8px;
+  }
+  .island-browse-dock button {
+    min-height: 44px;
+    min-width: 70px;
+    gap: 3px;
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+  .island-edit-bar {
+    left: 50%;
+    top: 16px;
+    min-width: 190px;
+    gap: 18px;
+  }
+  .is-account .island-drawer {
+    top: 12px;
+    bottom: 12px;
+  }
+  .is-account .island-floor-tool {
+    top: 74px;
+  }
+  .island-sync-error {
+    top: 76px;
+  }
+  .island-trade-dialog {
+    gap: 10px;
+    padding: 20px;
+  }
+  .island-trade-art {
+    height: 64px;
+  }
+  .island-trade-art > svg {
+    height: 58px;
+  }
+  .island-acquired-dialog {
+    gap: 9px;
+    padding: 20px;
+  }
+  .island-acquired-art {
+    min-height: 110px;
+  }
+  .island-acquired-art > svg {
+    height: 100px;
+  }
+  .island-acquired-halo {
+    height: 120px;
+    width: 120px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .island-placement-pulse,
+  .island-account-orb,
+  .island-acquired-art > svg,
+  .island-acquired-art i {
+    animation: none;
+  }
+  .island-placement-pulse {
+    opacity: 0;
+  }
+}

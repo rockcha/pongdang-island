@@ -9,6 +9,14 @@ import {GoldProvider,useGold} from '@/features/gold/gold-provider'
 import {useState} from 'react'
 function Buy(){const {transact,loading,busy}=useGold();return <button disabled={loading||busy} onClick={()=>void transact({type:'buy',id:'fishing:bait'})}>구매</button>}
 function RefreshWallet(){const {refresh,loading}=useGold();return <button disabled={loading} onClick={()=>void refresh()}>잔액 갱신</button>}
+it('lets an island acquisition present its cost once while later gold changes still animate',async()=>{
+ const wallet={gold:1000,inventory:{},delta:0,testClaimed:false,testEnabled:false};load.mockResolvedValue(wallet)
+ render(<GoldProvider><RefreshWallet/></GoldProvider>);const button=screen.getByRole('button',{name:'잔액 갱신'}) as HTMLButtonElement
+ await waitFor(()=>expect(button.disabled).toBe(false))
+ window.dispatchEvent(new CustomEvent('pongdang-island-gold-effect',{detail:{owner:'player',gold:900}}));load.mockResolvedValue({...wallet,gold:900});fireEvent.click(button)
+ await waitFor(()=>expect(load).toHaveBeenCalledTimes(2));await new Promise(r=>setTimeout(r,20));expect(document.body.querySelectorAll('.gold-change')).toHaveLength(0)
+ load.mockResolvedValue({...wallet,gold:950});fireEvent.click(button);expect(await screen.findByText('+50')).toBeTruthy()
+})
 function Sell(){const {transact,loading}=useGold();return <button disabled={loading} onClick={()=>void transact({type:'sell',id:'collectibles:fish-1,fish-2'}).catch(()=>{})}>모두 판매</button>}
 it('plays a single sound for a successful multi-fish sale and stays silent on failure',async()=>{
  const wallet={gold:1000,inventory:{},delta:0,testClaimed:false,testEnabled:false}

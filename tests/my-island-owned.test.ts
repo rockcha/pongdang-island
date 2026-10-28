@@ -30,12 +30,12 @@ it('keeps existing building positions while clearing their old rotations', () =>
 it('places every navigation destination in the complete starter without collisions', () => {
   const state = createDefaultIsland(),
     items = ownedFacilities()
-  expect(state.layout.length).toBe(items.length + 2)
+  expect(state.layout.length).toBe(items.length + state.owned.length)
   for (const item of items)
     expect(
       state.layout.filter((p) => p.id === item.id),
       item.name,
-    ).toHaveLength(['/farm', '/decoration-shop'].includes(item.to ?? '') ? 0 : 1)
+    ).toHaveLength(1)
   for (const p of state.layout) expect(canPlace(state.layout, p, state.land,state.removedLand), p.id).toBe(true)
   expect(parseState(state).layout).toEqual(state.layout)
 })
@@ -86,13 +86,14 @@ it('moves the garden and aquascape shop into storage once and permits placing th
   expect(visibleIslandState(migrated, ownedFacilities()).owned).toEqual(
     expect.arrayContaining(items.map((f) => f.id)),
   )
-  migrated.layout.push({ id: items[0].id, x: 11, y: 24 })
+  migrated.layout.push({ id: items[0].id, x: 6, y: 3 })
   localStorage.setItem(key, JSON.stringify(migrated))
   expect(readPageIsland(key).layout).toEqual(migrated.layout)
   localStorage.removeItem(key)
   localStorage.removeItem(marker)
   const fresh = readPageIsland(key)
-  fresh.layout.push({ id: items[0].id, x: 11, y: 24 })
+  fresh.layout=fresh.layout.filter(p=>p.id!==items[0].id)
+  fresh.layout.push({ id: items[0].id, x: 6, y: 3 })
   localStorage.setItem(key, JSON.stringify(fresh))
   expect(readPageIsland(key).layout).toEqual(fresh.layout)
   localStorage.removeItem(key)

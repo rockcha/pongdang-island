@@ -8,6 +8,10 @@ export const floorTiles = [
   { id: 'stone', name: '돌 포장길', price: 20 },
   { id: 'brick', name: '벽돌길', price: 20 },
   { id: 'wood', name: '나무 데크', price: 20 },
+  { id: 'moonstone', name: '푸른 달빛 돌길', price: 30 },
+  { id: 'star-mosaic', name: '별무늬 모자이크', price: 40 },
+  { id: 'teal-glass', name: '청록 유리 타일', price: 30 },
+  { id: 'shell-mosaic', name: '조개 모자이크', price: 40 },
 ] as const
 export type FloorKind = (typeof floorTiles)[number]['id']
 export type FloorPlacement = Cell & { type: FloorKind }
@@ -17,6 +21,10 @@ export const canRotate = (id: string) => {
   const f = facilityFor(id)
   return f?.rotatable === true
 }
+// Locked objects retain saved headings without changing existing placements.
+export const supportsSavedRotation=(id:string)=>canRotate(id)||['dock','flower-arch','arrow-sign'].includes(facilityFor(id)?.kind??'')
+export const canFlipSign=(id:string)=>facilityFor(id)?.kind==='arrow-sign'
+export const limitSignText=(text:string)=>Array.from(text).slice(0,6).join('')
 export function footprint(p: Placement) {
   const f = facilityFor(p.id)!
   return (p.rotation ?? 0) % 180 === 90 ? { w: f.h, h: f.w } : { w: f.w, h: f.h }
@@ -260,7 +268,7 @@ export const facilities: Facility[] = [
   },
   {
     id: 'dock',
-    rotatable: true,
+    rotatable: false,
     name: '어선 시설',
     kind: 'dock',
     w: 2,
@@ -407,7 +415,8 @@ export function canPlace(
     item.x < 0 ||
     item.y < 0 ||
     ![0, 90, 180, 270].includes(item.rotation ?? 0) ||
-    (!!item.rotation && !canRotate(item.id))
+    (canFlipSign(item.id)&&![0,180].includes(item.rotation??0)) ||
+    (!!item.rotation && !supportsSavedRotation(item.id))
   )
     return false
   const { w, h } = footprint(item)
@@ -520,11 +529,12 @@ export function parseState(value: unknown): IslandState {
       p.y === 28
         ? { ...p, y: 30 }
         : p
+    if(item&&typeof item.id==='string'&&canFlipSign(item.id))item={...item,rotation:item.rotation===180||item.rotation===270?180:0}
     if (
       item &&
       typeof item.id === 'string' &&
       facilityFor(item.id) &&
-      !canRotate(item.id) &&
+      !supportsSavedRotation(item.id) &&
       [90, 180, 270].includes(item.rotation ?? 0)
     )
       item = { ...item, rotation: 0 }
@@ -541,7 +551,7 @@ export function parseState(value: unknown): IslandState {
         x: item.x,
         y: item.y,
         ...(item.rotation ? { rotation: item.rotation } : {}),
-        ...((facilityFor(item.id)?.kind==='arrow-sign'||facilityFor(item.id)?.kind==='name-sign')&&typeof item.label==='string'?{label:item.label.trim().slice(0,16)}:{}),
+        ...((facilityFor(item.id)?.kind==='arrow-sign'||facilityFor(item.id)?.kind==='name-sign')&&typeof item.label==='string'?{label:limitSignText(item.label.trim())}:{}),
       })
   }
   const tileStock: Record<string, number> = {}
@@ -568,7 +578,7 @@ export function parseState(value: unknown): IslandState {
         paving.push({ x: p.x, y: p.y, type: p.type })
     }
   const signLabels:Record<string,string>={}
-  if(data.signLabels&&typeof data.signLabels==='object')for(const id of owned){const label=data.signLabels[id],kind=facilityFor(id)?.kind;if((kind==='arrow-sign'||kind==='name-sign')&&typeof label==='string')signLabels[id]=label.trim().slice(0,16)}
+  if(data.signLabels&&typeof data.signLabels==='object')for(const id of owned){const label=data.signLabels[id],kind=facilityFor(id)?.kind;if((kind==='arrow-sign'||kind==='name-sign')&&typeof label==='string')signLabels[id]=limitSignText(label.trim())}
   return {
     ...(Object.keys(signLabels).length?{signLabels}:{}),
     owned,

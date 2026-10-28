@@ -6,10 +6,10 @@
   overflow: hidden;
   isolation: isolate;
   background: #8ec9cc;
-  color: #52644e;
+  color: #6b4935;
   font-family: inherit;
 }
-.island-reset-button{position:absolute;right:max(18px,env(safe-area-inset-right));top:94px;display:flex;align-items:center;gap:6px;min-height:40px;padding:8px 12px;border:1px solid #fff9df;border-radius:13px;background:#fffbedee;box-shadow:0 4px 16px #395e5715;font-size:11px;color:#63775b;cursor:pointer}
+.island-reset-button{position:absolute;right:max(18px,env(safe-area-inset-right));top:94px;display:flex;align-items:center;gap:6px;min-height:40px;padding:8px 12px;border:1px solid #fff9df;border-radius:13px;background:#fffbedee;box-shadow:0 4px 16px #395e5715;font-size:11px;color:#94765d;cursor:pointer}
 @media(max-width:600px){.island-reset-button{top:148px;right:10px}}
 @media(orientation:landscape) and (max-height:600px){.island-reset-button{top:74px;right:max(12px,env(safe-area-inset-right));min-height:34px}}
 .island-floor-tool {
@@ -31,7 +31,7 @@
 }
 .island-floor-tool span {
   font-size: 10px;
-  color: #879275;
+  color: #9a7b61;
   grid-column: 1;
 }
 .island-floor-tool button {
@@ -46,7 +46,7 @@
 .island-search {
   flex-shrink: 0;
   min-height: 40px;
-  border: 1px solid #dbe1c9;
+  border: 1px solid #e4d2bc;
   border-radius: 11px;
   padding: 8px 12px;
   margin-bottom: 13px;
@@ -55,8 +55,8 @@
   outline: none;
 }
 .island-search:focus {
-  border-color: #799578;
-  box-shadow: 0 0 0 2px #79957822;
+  border-color: #b47d50;
+  box-shadow: 0 0 0 2px #b47d5022;
 }
 .island-sell-button {
   display: flex;
@@ -137,7 +137,7 @@
 .island-drawer-head > div > span {
   font-size: 8px;
   letter-spacing: 2px;
-  color: #91a080;
+  color: #ae9278;
 }
 .island-title-card h1 {
   font-size: 17px;
@@ -149,7 +149,7 @@
   align-items: center;
   gap: 4px;
   font-size: 10px;
-  color: #8c9c7c;
+  color: #9a7b61;
   margin-left: 20px;
   white-space: nowrap;
 }
@@ -224,11 +224,14 @@
   transition: background 0.15s;
 }
 .island-dock button:hover {
-  background: #e9edda;
+  background: #f0e2d0;
 }
+.island-dock .island-land-stock-art {position:relative;display:block;width:28px;height:28px;}
+.island-dock .island-land-stock-art svg {display: block; width: 100%; height: 100%;}
 .island-dock button.active {
-  background: #638061;
+  background: #995e36;
   color: #fff9e6;
+  transition: none;
 }
 .island-dock i {
   height: 30px;
@@ -236,6 +239,25 @@
   background: #dfe1cc;
   margin: 0 3px;
 }
+.island-dock > button,.island-cleanup > button {font-weight:600;letter-spacing:-.15px;}
+.island-cleanup {display:flex;flex-shrink:0;}
+.island-cleanup > button {width:100%;}
+.island-dock-icon {position:relative;display:grid;place-items:center;width:24px;height:26px;}
+.island-dock-count {position:absolute;top:-5px;left:15px;width:max-content;min-width:19px;white-space:nowrap;overflow-wrap:normal;padding:1px 4px;border:2px solid #fffbed;border-radius:7px;background:#edd8bf;color:#6b432d;font-size:9px;line-height:13px;font-variant-numeric:tabular-nums;}
+.island-dock button.active .island-dock-count {background:#fffbed;border-color:#995e36;}
+.island-cleanup-popover {position:absolute;z-index:20;left:50%;bottom:calc(100% + 12px);transform:translateX(-50%);width:300px;max-width:calc(100vw - 24px);padding:13px;border:1px solid #fff9e3;border-radius:20px;background:#fffbed;box-shadow:0 12px 34px #395e572b;}
+.island-cleanup-popover header {display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;padding-left:3px;}
+.island-cleanup-popover strong {font-size:12px;color:#6b432d;}
+.island-dock .island-cleanup-popover header button {flex:0 0 28px;min-width:28px;min-height:28px;width:28px;padding:4px;border-radius:50%;background:transparent;}
+.island-cleanup-options {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;}
+.island-cleanup-popover .island-cleanup-options button {min-width:0;min-height:82px;gap:6px;padding:9px 3px;border:1px solid #dfcdb5;border-radius:13px;background:#faf0e2;font-size:11px;white-space:nowrap;}
+.island-cleanup-options button:hover {border-color:#c99c73;background:#efddc6;}
+.island-cleanup-art {display:grid;place-items:center;width:32px;height:32px;color:#995e36;}
+.island-cleanup-popover .island-cleanup-art svg {display:block;width:30px;height:30px;}
+.island-cleanup-popover .island-cleanup-art:has([data-cleanup-decoration]) {width:48px;}
+.island-cleanup-popover .island-cleanup-art svg[data-cleanup-decoration] {width:48px;height:36px;}
+.island-cleanup-popover p {margin:10px 0 0;text-align:center;font-size:10px;color:#9a7b61;}
+.island-dock button:focus-visible {outline:2px solid #995e36;outline-offset:2px;}
 .island-message {
   position: absolute;
   bottom: 113px;
@@ -281,8 +303,8 @@
   display: grid;
   place-items: center;
   border-radius: 17px;
-  background: linear-gradient(145deg, #e4edda, #f1efdb);
-  border: 1px solid #dce5cc;
+  background: linear-gradient(145deg, #eddac2, #fbefdf);
+  border: 1px solid #e4d2bc;
 }
 .island-selected-art svg {
   width: 70px;
@@ -303,14 +325,14 @@
   line-height: 1.4;
   font-weight: 700;
   letter-spacing: -.5px;
-  color: #4e674e;
+  color: #6b432d;
   overflow-wrap: anywhere;
 }
 .island-selected-heading p {
   margin: 5px 0 0;
   font-size: 11px;
   line-height: 1.5;
-  color: #829177;
+  color: #9a7b61;
 }
 .island-selected-close.island-icon-button {
   position: absolute;
@@ -321,13 +343,13 @@
   padding: 5px;
   border-radius: 50%;
   background: transparent;
-  color: #8a967d;
+  color: #9a7b61;
 }
 .island-selected-actions {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 7px;
-  border-top: 1px solid #e3e7d6;
+  border-top: 1px solid #e4d2bc;
   padding-top: 12px;
   margin-top: 12px;
 }
@@ -342,7 +364,7 @@
   grid-column: 1 / -1;
 }
 .island-selected-actions .island-enter:hover {
-  background: #536f50;
+  background: #7d4829;
 }
 .island-small-button {
   display: inline-flex;
@@ -351,18 +373,18 @@
   gap: 5px;
   min-height: 38px;
   padding: 7px 10px;
-  background: #edf0df;
-  border: 1px solid #dfe5cf;
+  background: #f6ead9;
+  border: 1px solid #e4d2bc;
   border-radius: 10px;
   font-size: 11px;
   white-space: nowrap;
   cursor: pointer;
 }
 .island-small-button:hover {
-  background: #dee6cc;
+  background: #ebd5bb;
 }
 .island-enter {
-  background: #647e5f;
+  background: #995e36;
   color: #fffbed;
 }
 .island-drawer {
@@ -390,6 +412,22 @@
   justify-content: space-between;
   gap: 10px;
 }
+.island-drawer:is(.island-shop,.island-storage) {overflow:hidden;}
+.island-drawer-controls {flex-shrink:0;min-width:0;}
+.island-drawer-controls > .island-search {width:100%;}
+.island-drawer-scroll {flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding-bottom:2px;outline-offset:-2px;}
+.island-drawer-scroll > .island-refill {width:100%;}
+@media (orientation:landscape) and (max-height:600px) {
+  .island-drawer:is(.island-shop,.island-storage) {top:max(12px,env(safe-area-inset-top));width:min(560px,calc(100% - 24px));}
+  .island-drawer .island-drawer-controls {display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:7px 14px;padding-bottom:10px;}
+  .island-drawer-controls .island-drawer-head {grid-column:1/-1;}
+  .island-drawer-controls .island-drawer-head .island-icon-button {min-height:30px;min-width:30px;}
+  .island-drawer-controls .island-drawer-note {display:none;}
+  .island-drawer-controls .island-tabs {margin:0;}
+  .island-drawer-controls .island-tabs button {min-height:34px;padding:6px 3px;}
+  .island-drawer-controls > .island-search {margin:0;min-height:34px;}
+  .island-drawer-controls .island-purchase-quantity {grid-column:1/-1;margin:0;padding:0 0 7px;}
+}
 .island-drawer-head h2 {
   font-size: 19px;
   font-weight: 700;
@@ -405,7 +443,7 @@
 .island-tabs {
   display: flex;
   gap: 5px;
-  background: #ecefdd;
+  background: #efdfcb;
   padding: 4px;
   border-radius: 12px;
   margin-bottom: 14px;
@@ -421,9 +459,34 @@
 .island-tabs button.active {
   background: #fffbed;
   box-shadow: 0 2px 5px #61745012;
-  color: #597052;
+  color: #995e36;
   font-weight: 600;
 }
+.island-purchase-quantity {display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:8px 0 14px;padding:8px 0 12px;border-bottom:1px solid #e8dac7;font-size:11px;color:#7d4829;}
+.island-purchase-quantity > label {margin-right:2px;}
+.island-quantity-stepper {display:flex;align-items:center;height:36px;border:1px solid #dfccb3;border-radius:8px;background:#fffdf8;}
+.island-quantity-stepper button {width:32px;height:34px;color:#995e36;font-size:17px;cursor:pointer;}
+.island-quantity-stepper button:disabled {opacity:.3;cursor:default;}
+.island-quantity-stepper input {width:34px;min-width:0;padding:0;border:0;background:transparent;text-align:center;font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;appearance:textfield;}
+.island-quantity-stepper input::-webkit-inner-spin-button,.island-quantity-stepper input::-webkit-outer-spin-button {appearance:none;margin:0;}
+.island-quantity-presets {display:flex;gap:4px;margin-left:auto;}
+.island-quantity-presets button {min-width:31px;min-height:34px;padding:4px;border-radius:7px;font-size:10px;color:#94765d;cursor:pointer;}
+.island-quantity-presets button[aria-pressed='true'] {background:#995e36;color:#fff8ee;}
+.island-quantity-presets button:hover {box-shadow:inset 0 0 0 1px #d9c2a6;}
+.island-shop .island-drawer-head h2 {margin:0;font-size:17px;}
+.island-shop .island-drawer-note {margin:3px 0 12px;color:#9a7b61;}
+.island-shop .island-tabs {gap:4px;padding:0;border-bottom:1px solid #e8dac7;border-radius:0;background:transparent;margin-bottom:12px;}
+.island-shop .island-tabs button {min-height:38px;border-radius:0;border-bottom:2px solid transparent;}
+.island-shop .island-tabs button.active {border-color:#995e36;background:transparent;box-shadow:none;}
+.island-shop .island-search {min-height:38px;border-color:#e5d5bf;border-radius:8px;font-size:11px;}
+.island-shop .island-products {gap:16px 12px;}
+.island-shop .island-product {padding:0;border:0;border-radius:0;background:transparent;}
+.island-shop .island-product-art {height:96px;border-radius:10px;background:#f3eadc;}
+.island-shop .island-product h3 {margin:0;font-size:12px;}
+.island-shop .island-product > small {margin:3px 0;color:#a08a72;}
+.island-shop .island-buy-button {min-height:36px;margin-top:7px;padding:5px 7px;border:1px solid #e5d5bf;border-radius:8px;background:transparent;font-size:11px;}
+.island-shop .island-buy-button:hover {background:#f0e2cf;}
+.island-shop .island-buy-button span {margin-right:0;}
 .island-products {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -468,10 +531,10 @@
   gap: 4px;
   width: 100%;
   min-height: 35px;
-  background: #eaf0dd;
+  background: #f1e0c9;
   border-radius: 9px;
   font-size: 10px;
-  color: #5d7752;
+  color: #7d4829;
   margin-top: 8px;
   cursor: pointer;
 }
@@ -480,7 +543,7 @@
   margin-right: 4px;
 }
 .island-buy-button:hover {
-  background: #dfe9cc;
+  background: #e8ceb0;
 }
 .island-buy-button:disabled {
   opacity: 0.45;
@@ -490,11 +553,30 @@
   position: absolute;
   top: 6px;
   right: 6px;
-  font-size: 9px;
-  border-radius: 8px;
-  background: #fffbed;
-  padding: 3px 6px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:28px;
+  min-height:22px;
+  font-size:11px;
+  font-weight:700;
+  font-variant-numeric:tabular-nums;
+  line-height:18px;
+  border:2px solid #fff8ee;
+  border-radius:8px;
+  background:#995e36;
+  color:#fff8ee;
+  padding:1px 6px;
+  box-shadow:0 2px 5px #7d482918;
 }
+.island-terrain-badge {position:absolute;top:6px;left:6px;display:grid;place-items:center;width:34px;height:29px;border:1px solid #e7d7c1;border-radius:8px;background:#fff8eeeb;}
+.island-product-art .island-terrain-badge svg {width:28px;height:24px;overflow:visible;}
+.island-storage .island-drawer-head h2 {font-size:17px;margin:0;}
+.island-storage .island-drawer-note {margin:6px 0 12px;color:#9a7b61;}
+.island-storage .island-tabs button {min-height:38px;font-size:12px;}
+.island-storage .island-product {border-color:#e6d6c1;}
+.island-storage .island-product-art {background:#f4ebdd;}
+.island-product > small {color:#9a836b;}
 .island-refill {
   display: flex;
   align-items: center;
@@ -539,7 +621,7 @@
 }
 .island-studio button:focus-visible,
 .island-studio a:focus-visible {
-  outline: 2px solid #577b59;
+  outline: 2px solid #995e36;
   outline-offset: 3px;
 }
 @media (max-width: 600px) {
@@ -734,10 +816,15 @@
 
 @media (max-width: 600px) {
   .island-dock button {
-    min-width: 47px;
+    min-width: 0;
+    flex: 1;
   }
+  .island-cleanup {flex:1;min-width:0;}
+  .island-dock button > span:not(.island-land-stock-label):not(.island-land-stock-art) {max-width:100%;white-space:normal;overflow-wrap:anywhere;text-align:center;line-height:1.3;}
   .island-dock {
     gap: 1px;
+    width: calc(100% - 20px);
+    max-width: 360px;
   }
   .island-selected-card {
     max-width: calc(100% - 88px);
@@ -775,13 +862,13 @@
 .has-bottom-selection .island-camera-controls {bottom: 168px;}
 .has-bottom-selection .island-mobile-tip {display: none;}
 .has-placing-selection .island-selected-card {
-  left: 12px;
+  left: 50%;
   right: auto;
   bottom: max(12px, env(safe-area-inset-bottom));
   width: 310px;
-  max-width: calc(100% - 84px);
+  max-width: calc(100% - 24px);
   max-height: 72px;
-  transform: none;
+  transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -797,7 +884,7 @@
 .has-placing-selection .island-selected-actions {display: flex; margin: 0; padding: 0; border: 0;}
 .has-placing-selection .island-selected-actions > button {min-height: 36px; padding: 4px 8px;}
 .has-placing-selection .island-selected-actions > button[aria-label="배치 취소"] {display: none;}
-.is-dragging .island-selected-card {visibility: hidden;}
+.island-selected-card .island-selected-actions > .island-rotate-button {flex: 0 0 88px; min-width: 88px;}
 @media (min-width: 601px) {
   .has-bottom-selection .island-selected-card {
     display: flex;
@@ -823,7 +910,7 @@
   }
   .has-bottom-selection .island-selected-actions {
     border-top: 0;
-    border-left: 1px solid #e3e7d6;
+    border-left: 1px solid #e4d2bc;
     margin: 0;
     padding: 0 0 0 12px;
   }
@@ -833,6 +920,52 @@
     padding: 7px 10px;
   }
   .has-bottom-selection .island-camera-controls {bottom: 108px;}
+}
+/* Terrain selection uses the same compact horizontal tools as facilities. */
+.has-bottom-selection .island-selected-land {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  left: 50%;
+  right: auto;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  width: max-content;
+  max-width: calc(100% - 24px);
+  padding: 10px 42px 10px 12px;
+  transform: translateX(-50%);
+}
+.has-bottom-selection .island-selected-land .island-selected-header {
+  position: static;
+  min-width: 0;
+  padding: 0;
+  gap: 9px;
+}
+.has-bottom-selection .island-selected-land .island-selected-heading {min-width: 48px;}
+.has-bottom-selection .island-selected-land .island-selected-heading h2 {white-space: nowrap;}
+.has-bottom-selection .island-selected-land .island-selected-close {
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+}
+.has-bottom-selection .island-selected-land .island-selected-actions {
+  flex-shrink: 0;
+  border-top: 0;
+  border-left: 1px solid #e4d2bc;
+  margin: 0;
+  padding: 0 0 0 10px;
+}
+.has-bottom-selection .island-selected-land .island-selected-actions > button {
+  flex: none;
+  min-width: 56px;
+  padding: 6px 8px;
+  white-space: nowrap;
+}
+.has-bottom-selection:has(.island-selected-land) .island-camera-controls {bottom: 108px;}
+@media(max-width:360px) {
+  .has-bottom-selection .island-selected-land {gap: 7px; padding-left: 8px; padding-right: 36px;}
+  .has-bottom-selection .island-selected-land .island-selected-art {flex-basis: 36px; height: 36px;}
+  .has-bottom-selection .island-selected-land .island-selected-art svg {width: 34px; height: 34px;}
+  .has-bottom-selection .island-selected-land .island-selected-actions {padding-left: 7px;}
 }
 .island-sync {
   display: flex;
@@ -860,25 +993,23 @@
   margin-bottom: 12px;
   flex-shrink: 0;
 }
-.island-land-placement{position:absolute;z-index:12;bottom:calc(108px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;width:max-content;max-width:calc(100% - 24px);padding:12px 14px;border:1px solid #fff8e5;border-radius:18px;background:#fffbedf5;box-shadow:0 8px 28px #395e5720;backdrop-filter:blur(10px)}
-.island-held-land{width:48px;flex-shrink:0;filter:drop-shadow(0 5px 4px #796a4120);transform:rotate(-8deg)}
+.island-land-placement{position:absolute;z-index:12;bottom:max(12px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;width:max-content;max-width:calc(100% - 24px);padding:10px 12px;border:1px solid #fff8e5;border-radius:18px;background:#fffbedf5;box-shadow:0 8px 28px #395e5720;backdrop-filter:blur(10px)}
+.island-held-land{width:44px;height:44px;flex-shrink:0;display:grid;place-items:center;border-radius:11px;background:linear-gradient(145deg,#eddac2,#fbefdf);border:1px solid #e4d2bc}
 .island-held-land svg{display:block;width:100%}
 .island-land-placement-copy{display:flex;min-width:0;flex-direction:column;gap:3px}
 .island-land-placement-copy strong{font-size:13px;font-weight:600}
-.island-land-placement-copy span{font-size:12px;color:#6a7c60;font-variant-numeric:tabular-nums}
-.island-land-placement-copy b{font-size:17px;color:#53694c}
-.island-land-placement-copy small{font-size:10px;color:#879275}
-.island-land-placement-actions{display:flex;align-items:center;gap:5px;margin-left:3px}
-.island-land-placement-actions button{display:flex;align-items:center;gap:4px;min-height:40px;white-space:nowrap}
+.island-land-placement-copy span{font-size:10px;color:#8b684e;font-variant-numeric:tabular-nums;white-space:nowrap}
+.island-land-placement-title{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.island-land-placement-copy b{display:inline-block;min-width:28px;padding:3px 7px;border-radius:8px;background:#eed9bf;color:#6a3518;font-size:18px;font-weight:700;line-height:1.2;text-align:center;vertical-align:middle;font-variant-numeric:tabular-nums;letter-spacing:-.3px}
+.island-land-placement-copy small{font-size:10px;color:#9a7b61}
+.island-land-placement-actions{display:flex;align-items:center;gap:5px;padding-left:10px;border-left:1px solid #e4d2bc;flex-shrink:0}
+.island-land-placement-actions button{display:flex;align-items:center;gap:4px;min-height:40px;padding:6px 8px;font-size:11px;white-space:nowrap}
+.is-land-placing .island-dock,.is-land-placing .island-reset-button,.is-land-placing .island-mobile-tip{display:none}
+.is-land-placing .island-camera-controls{bottom:108px}
 .island-land-placed{animation:island-land-settle .45s ease-out forwards}
 @keyframes island-land-settle{from{opacity:1;stroke-width:5}to{opacity:0;stroke-width:1}}
-@media(max-width:420px){.island-land-placement{gap:8px;padding:10px}.island-held-land{width:36px}.island-land-placement-actions{flex-direction:column;gap:2px}.island-land-placement-copy small{max-width:160px}}
-@media(orientation:landscape) and (max-height:600px){.island-land-placement{bottom:90px;padding:8px 12px}.island-held-land{width:36px}}
+@media(max-width:360px){.island-land-placement{gap:7px;padding:8px}.island-held-land{width:32px;height:32px}.island-land-placement-actions{padding-left:7px}.island-land-placement-actions button{padding:6px;font-size:10px}}
 @media(prefers-reduced-motion:reduce){.island-land-placed{animation:none;opacity:0}}
-@media(max-width:600px){.island-land-placement{left:calc(50% - 28px);max-width:calc(100% - 88px)}}
-.island-edit-modes{position:absolute;top:max(18px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:15;display:flex;padding:4px;gap:3px;border:1px solid #fff8df;border-radius:14px;background:#fffbedf5;box-shadow:0 4px 18px #395e5712}
-.island-edit-modes button{min-height:38px;padding:7px 16px;border-radius:10px;color:#7c886d;font-size:12px;cursor:pointer;transition:background .15s}
-.island-edit-modes button[aria-pressed='true']{background:#698364;color:#fff9e6}
 .island-sign-form{width:100%;padding:5px 0;display:grid;grid-template-columns:1fr auto;gap:5px}
 .island-sign-form label{font-size:11px;color:#788769}.island-sign-form>div{grid-column:1/3;display:flex;gap:6px}.island-sign-form input{min-width:0;flex:1;min-height:36px;border:1px solid #d9dbc5;background:#fffdf4;border-radius:9px;padding:6px 9px;font-size:12px;outline-color:#91a880}.island-sign-form small{grid-row:1;grid-column:2;font-size:10px;color:#8a967c}
 .island-selected-card:has(.island-sign-form){flex-wrap:wrap;max-height:260px;overflow-y:auto}
@@ -891,14 +1022,14 @@
 @keyframes island-ripple{0%{transform:scale(.6);opacity:.8}90%,100%{transform:scale(1.5);opacity:0}}
 @keyframes island-cat-tail{0%,80%,100%{transform:rotate(0deg)}86%{transform:rotate(-7deg)}92%{transform:rotate(3deg)}}
 @keyframes island-cat-ear{0%,85%,100%{transform:rotate(0deg)}90%{transform:rotate(-9deg)}94%{transform:rotate(2deg)}}
-@media(max-width:600px){.island-edit-modes{top:79px}.island-edit-modes button{min-height:36px;padding:6px 16px;font-size:11px}.island-floor-tool{top:126px}}
-@media(orientation:landscape) and (max-height:600px){.island-edit-modes{top:10px}.island-edit-modes button{min-height:32px;padding:5px 12px}}
 @media(prefers-reduced-motion:reduce){.island-fountain-stream,.island-fountain-ripple,.island-cat-tail,.island-cat-ear{animation:none}}
 @media(max-width:600px) and (orientation:portrait){.island-message.island-message--browse{top:130px;max-width:calc(100% - 158px)}}
-.has-placing-selection .island-selected-card.is-batch-placement{display:block;width:340px;max-height:190px;padding:12px;overflow-y:auto}
-.has-placing-selection .is-batch-placement .island-selected-header{padding-right:24px}
-.has-placing-selection .is-batch-placement .island-selected-heading p{line-height:1.65}
-.has-placing-selection .is-batch-placement .island-selected-heading [role='status']{font-size:11px;font-weight:600;color:#5c7855}
-.has-placing-selection .is-batch-placement .island-selected-close{top:9px;right:7px;transform:none}
-.has-placing-selection .is-batch-placement .island-selected-actions{flex-wrap:wrap;gap:5px;margin-top:9px}
+.has-placing-selection .island-selected-card.is-batch-placement{display:flex;flex-wrap:wrap;align-items:center;gap:10px;left:50%;right:auto;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);width:max-content;max-width:calc(100% - 24px);max-height:160px;padding:10px 40px 10px 12px;overflow-y:auto}
+.has-placing-selection .is-batch-placement .island-selected-header{flex:1;min-width:130px;padding:0;gap:9px}
+.has-placing-selection .is-batch-placement .island-selected-art{display:grid;flex-basis:36px;height:36px;border-radius:10px}
+.has-placing-selection .is-batch-placement .island-selected-art svg{width:34px;height:34px}
+.has-placing-selection .is-batch-placement .island-selected-heading p{line-height:1.5}
+.has-placing-selection .is-batch-placement .island-selected-heading [role='status']{font-size:11px;font-weight:600;color:#995e36}
+.has-placing-selection .is-batch-placement .island-selected-close{top:50%;right:6px;transform:translateY(-50%)}
+.has-placing-selection .is-batch-placement .island-selected-actions{flex-wrap:wrap;gap:5px;margin:0;padding-left:10px;border-left:1px solid #e4d2bc}
 .has-placing-selection .is-batch-placement .island-selected-actions>button{flex:1;justify-content:center;white-space:nowrap;font-size:10px}

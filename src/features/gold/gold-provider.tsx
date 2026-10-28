@@ -33,9 +33,14 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
   const locked = useRef(false)
   const pending = useRef<{ signature: string; id: string } | null>(null)
   const previousGold=useRef<number|null>(null),previousFuel=useRef<number|null>(null)
+  const handledGold=useRef<number|null>(null)
   function apply(data: Awaited<ReturnType<typeof readGold>>,notifyChange=false) {
     if (!active.current) return
-    if(notifyChange&&previousGold.current!==null)showDelta(data.gold-previousGold.current)
+    if(notifyChange&&previousGold.current!==null){
+      const handled=handledGold.current===data.gold
+      handledGold.current=null
+      if(!handled)showDelta(data.gold-previousGold.current)
+    }
     const fuel=data.inventory.fuel??0
     if(previousFuel.current!==null)showDelta(fuel-previousFuel.current,'fuel')
     if(notifyChange&&previousFuel.current!==null&&fuel>previousFuel.current)playRewardSound(`fuel:${randomId()}`)
@@ -61,8 +66,10 @@ function AccountGold({ children, userId }: { children: ReactNode; userId?: strin
       showDelta(reward.quantity,'bait',reward.icon,reward.name)
       playRewardSound(reward.key)
     }
+    const islandGold=(event:Event)=>{const detail=(event as CustomEvent<{owner:string;gold:number}>).detail;if(detail?.owner===userId&&Number.isSafeInteger(detail.gold)&&detail.gold!==previousGold.current)handledGold.current=detail.gold}
+    window.addEventListener('pongdang-island-gold-effect',islandGold)
     window.addEventListener(BAIT_RECEIVED,receiveBait)
-    return () => { active.current = false; window.removeEventListener(BAIT_RECEIVED,receiveBait) }
+    return () => { active.current = false; window.removeEventListener(BAIT_RECEIVED,receiveBait);window.removeEventListener('pongdang-island-gold-effect',islandGold) }
     // AccountGold remounts when the authenticated user changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId])

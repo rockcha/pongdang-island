@@ -1,3 +1,4 @@
+import {placeGroups} from '@/lib/place-groups'
 import {useMenuActivity,MenuActivityLine} from './menu-activity'
 import {RelicIcon} from '@/components/collection-filter-icons'
 import {useEquippedRelic} from '@/features/relics/use-equipped-relic'
@@ -9,7 +10,7 @@ import { appArt } from '@/components/app-art'
 import { useNewContent } from './use-new-content'
 
 import { Link, useLocation } from 'react-router'
-import { Check, House, FishingRod, Factory, Store as MarketIcon, BookOpen } from 'lucide-react'
+import { Check, House, FishingRod, Waves, Factory, Store as MarketIcon, BookOpen } from 'lucide-react'
 
 import {UserRound,AudioLines,Fish,Shapes,Package,Warehouse as WarehouseOutline,Medal,Gem,Map as MapOutline,ShoppingBasket,ShoppingBag,Flame,Sprout,FlaskConical,Anchor,Ship as ShipOutline,Handshake as TradeIcon,ClipboardList,Landmark,Gamepad2 as GameIcon,TowerControl as LighthouseOutline,MessageSquare,Images,Trophy,Newspaper,Megaphone,Heart,Gift,Mail,Lightbulb,Bug} from 'lucide-react'
 
@@ -80,6 +81,8 @@ export const menuIcons:Record<string,typeof House>={
  '/friends':LighthouseOutline,'/board':MessageSquare,'/showcase':Images,'/hall-of-fame':Trophy,'/arcade':GameIcon,'/island-news':Newspaper,'/square/notices':Megaphone,'/development-fund':Heart,'/square/sponsorship':Gift,'/square/begging':Mail,'/square/suggestions':Lightbulb,'/square/bugs':Bug,
 }
 
+const categoryIcons:Record<string,typeof House>={home:House,sea:Waves,production:Factory,market:MarketIcon,collection:BookOpen,community:TradeIcon,news:Newspaper}
+const groups=placeGroups.map(group=>({...group,icon:categoryIcons[group.id]??House}))
 export function HeaderPlaceNavigation() {
   const equippedRelic=useEquippedRelic()
   const newContent = useNewContent()
@@ -95,15 +98,7 @@ export function HeaderPlaceNavigation() {
     (to==='/square/bugs'&&newContent.bugs)||
     (to==='/exchange'&&newContent.exchange)
     ||(to==='/merchant-orders'&&newContent.merchant)
-  const groups = [
-    {label:'내 섬',icon:House,sections:[{label:'나의 공간',paths:['/my-island','/aquarium','/profile']},{label:'꾸미기',paths:['/decoration-shop']},{label:'쉬어가기',paths:['/music-room','/arcade']}]},
-    {label:'낚시',icon:FishingRod,sections:[{label:'직접 낚시',paths:['/harbor','/fishing']},{label:'자동 낚시',paths:['/expeditions','/port']},{label:'낚시 준비',paths:['/shop','/item-shop','/shipyard']}]},
-    {label:'생산',icon:Factory,sections:[{label:'가동·재배',paths:['/production','/bait-production','/my-bait-production','/farm']},{label:'시설 구매',paths:['/production-shop','/bait-production-shop']}]},
-    {label:'장터',icon:MarketIcon,sections:[{label:'거래·의뢰',paths:['/exchange','/merchant-orders']},{label:'골드 관리',paths:['/savings']}]},
-    {label:'수집',icon:BookOpen,sections:[{label:'보관',paths:['/storage','/warehouse']},{label:'수집 기록',paths:['/collection','/titles','/relics','/collection-animation']}]},
-    {label:'소식',icon:Newspaper,sections:[{label:'섬 소식',paths:['/island-news','/square/notices']},{label:'섬에 전하기',paths:['/square/suggestions','/square/bugs']}]},
-    {label:'광장',icon:TradeIcon,sections:[{label:'교류',paths:['/friends','/board','/showcase']},{label:'명예로운 기록',paths:['/hall-of-fame']},{label:'함께하는 섬',paths:['/development-fund','/square/sponsorship','/square/begging']}]},
-  ]
+
   return (
     <nav aria-label="장소 바로가기" className="grid w-[224px] shrink-0 grid-cols-7 gap-1 sm:w-[252px]">
       {groups.map((group) => {

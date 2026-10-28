@@ -118,7 +118,7 @@ export const arcadeGames: ArcadeGame[] = [
     id: 'tower-defense',
     operatorOnly: true,
     title: '바닷길 방어전 · 연습',
-    description: '바닷길 주변에 타워를 설치하고 강화해 5번의 파도를 막아요. 무료 연습판 · 보상 없음.',
+    description: '산호벽으로 바닷길을 설계하고 타워를 세워 5번의 파도를 막아요. 무료 연습판 · 보상 없음.',
     icon: Castle,
     tags: ['brain'],
     entryFee: 0,

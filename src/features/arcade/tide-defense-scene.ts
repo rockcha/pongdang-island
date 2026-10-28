@@ -1,13 +1,16 @@
 import Phaser from 'phaser'
 import {
   FIELD,
-  ROUTE,
+  GRID,
+  ENTRANCE,
+  ISLAND,
   SITES,
   routePoint,
   stepDefense,
   towerRange,
   TOWERS,
   type DefenseState,
+  type WallPreview,
 } from './tide-defense-engine'
 
 export function mountDefense(
@@ -15,51 +18,26 @@ export function mountDefense(
   read: () => DefenseState,
   selected: () => number | null,
   notify: () => void,
+  preview: () => WallPreview | null = () => null,
 ) {
   class DefenseScene extends Phaser.Scene {
     private ink!: Phaser.GameObjects.Graphics
+    private terrain!: Phaser.GameObjects.Graphics
+    private lastRoute?: DefenseState['route']
+    private lastPreview?: WallPreview | null
     private fish = new Map<number, Phaser.GameObjects.Image>()
     private notified = 0
     create() {
       const board = this.add.graphics()
-      const path = ROUTE.map(p => new Phaser.Math.Vector2(p.x, p.y))
       board.fillStyle(0x1c5265).fillRect(0, 0, FIELD.width, FIELD.height)
-      board.fillStyle(0x8ec6b4).fillRoundedRect(10, 14, 400, 494, 40)
-      board.fillStyle(0xd9d5ab).fillRoundedRect(18, 22, 384, 478, 35)
-      board.lineStyle(68, 0xadd6c3, 1).strokePoints(path, false)
-      board.lineStyle(50, 0x327b86, 1).strokePoints(path, false)
-      for (const p of ROUTE.slice(1, -1)) board.fillStyle(0x327b86).fillCircle(p.x, p.y, 25)
-      board.lineStyle(2, 0xb1e4d1, 0.2).strokePoints(path, false)
-      for (let d = 90; d < 1350; d += 125) {
-        const p = routePoint(d),
-          a = p.angle
-        const pt = (x: number, y: number) => ({
-          x: p.x + Math.cos(a) * x - Math.sin(a) * y,
-          y: p.y + Math.sin(a) * x + Math.cos(a) * y,
-        })
-        const tip = pt(5, 0),
-          left = pt(-4, -4),
-          right = pt(-4, 4)
-        board.fillStyle(0xc9eee0, 0.35).fillTriangle(tip.x, tip.y, left.x, left.y, right.x, right.y)
-      }
-      for (const p of SITES) {
-        board.fillStyle(0xa5b58a, 0.4).fillEllipse(p.x, p.y + 7, 60, 42)
-        board.fillStyle(0xf0e3b7).fillCircle(p.x, p.y, 25)
-        board.lineStyle(2, 0xc5b991).strokeCircle(p.x, p.y, 25)
-      }
-      for (const [x, y] of [
-        [40, 265],
-        [226, 470],
-        [390, 407],
-        [237, 320],
-        [26, 424],
-      ]) {
-        board.lineStyle(3, 0x789d77).lineBetween(x, y + 10, x, y - 8)
+      board.fillStyle(0x2a6572).fillRoundedRect(18, 28, 384, 464, 22)
+      for (const [cell, p] of SITES.entries()) {
         board
-          .fillStyle(0x709e7c)
-          .fillEllipse(x - 5, y - 7, 15, 6)
-          .fillEllipse(x + 4, y - 11, 17, 6)
+          .fillStyle((cell + Math.floor(cell / GRID.columns)) % 2 ? 0x3d7b82 : 0x36727c, 0.6)
+          .fillRoundedRect(p.x - 19, p.y - 19, 38, 38, 5)
+        board.lineStyle(1, 0xa0c9bb, 0.18).strokeRoundedRect(p.x - 20, p.y - 20, 40, 40, 5)
       }
+      this.terrain = this.add.graphics()
       const art = this.add.graphics()
       for (const [key, color] of [
         ['fish', 0xb3e1d4],
@@ -87,14 +65,77 @@ export function mountDefense(
       }
       art.destroy()
       this.add
-        .text(17, 23, '입구 →', { fontFamily: 'sans-serif', fontSize: '10px', color: '#f3f0cf' })
+        .text(8, SITES[ENTRANCE].y - 28, '입구 →', {
+          fontFamily: 'sans-serif',
+          fontSize: '10px',
+          color: '#d3ece0',
+        })
         .setDepth(3)
       this.add
-        .text(369, 492, '우리 섬', { fontFamily: 'sans-serif', fontSize: '10px', color: '#214a53' })
+        .text(389, SITES[ISLAND].y - 28, '우리 섬', {
+          fontFamily: 'sans-serif',
+          fontSize: '10px',
+          color: '#f3dfae',
+        })
         .setOrigin(0.5)
         .setDepth(3)
       this.ink = this.add.graphics().setDepth(2)
       notify()
+    }
+    drawTerrain(s: DefenseState, ghost: WallPreview | null) {
+      if (this.lastRoute === s.route && this.lastPreview === ghost) return
+      this.lastRoute = s.route
+      this.lastPreview = ghost
+      const map = this.terrain.clear(),
+        path = s.route.map((p) => new Phaser.Math.Vector2(p.x, p.y))
+      map.lineStyle(28, 0x76b5b0, 0.6).strokePoints(path, false)
+      for (const p of s.route) map.fillStyle(0x76b5b0, 0.6).fillCircle(p.x, p.y, 14)
+      map.lineStyle(2, 0xc2e7cd, 0.55).strokePoints(path, false)
+      for (let d = 90; d < s.routeLength - 40; d += 80) {
+        const p = routePoint(d, s.route),
+          a = p.angle
+        map
+          .fillStyle(0xe1efcb, 0.75)
+          .fillTriangle(
+            p.x + Math.cos(a) * 5,
+            p.y + Math.sin(a) * 5,
+            p.x + Math.cos(a + 2.4) * 5,
+            p.y + Math.sin(a + 2.4) * 5,
+            p.x + Math.cos(a - 2.4) * 5,
+            p.y + Math.sin(a - 2.4) * 5,
+          )
+      }
+      for (const cell of s.walls) {
+        const p = SITES[cell]
+        map.fillStyle(0x173f4b, 0.3).fillRoundedRect(p.x - 17, p.y - 12, 34, 32, 8)
+        map.fillStyle(0xeaa789).fillRoundedRect(p.x - 17, p.y - 17, 34, 34, 8)
+        map
+          .lineStyle(3, 0xffd2ad, 0.8)
+          .lineBetween(p.x, p.y + 10, p.x, p.y - 10)
+          .lineBetween(p.x, p.y + 2, p.x - 9, p.y - 5)
+          .lineBetween(p.x, p.y - 3, p.x + 9, p.y - 10)
+      }
+      const home = SITES[ISLAND]
+      map.fillStyle(0xe7d598).fillCircle(home.x, home.y, 15)
+      map
+        .fillStyle(0x7c9b71)
+        .fillTriangle(home.x - 11, home.y + 5, home.x, home.y - 9, home.x + 11, home.y + 5)
+      if (ghost && SITES[ghost.cell]) {
+        const p = SITES[ghost.cell],
+          color = ghost.valid ? 0xf3d397 : 0xf2a099
+        if (ghost.plan)
+          map.lineStyle(4, color, 0.95).strokePoints(
+            ghost.plan.points.map((p) => new Phaser.Math.Vector2(p.x, p.y)),
+            false,
+          )
+        map.fillStyle(color, 0.35).fillRoundedRect(p.x - 18, p.y - 18, 36, 36, 7)
+        map.lineStyle(2, color).strokeRoundedRect(p.x - 18, p.y - 18, 36, 36, 7)
+        if (!ghost.valid)
+          map
+            .lineStyle(3, color)
+            .lineBetween(p.x - 7, p.y - 7, p.x + 7, p.y + 7)
+            .lineBetween(p.x + 7, p.y - 7, p.x - 7, p.y + 7)
+      }
     }
     update(time: number, delta: number) {
       const s = read(),
@@ -102,10 +143,11 @@ export function mountDefense(
       stepDefense(s, delta / 1000)
       const ink = this.ink
       if (!ink) return
+      this.drawTerrain(s, s.phase === 'build' ? preview() : null)
       ink.clear()
       const site = selected(),
         tower = s.towers.find((t) => t.site === site)
-      if (site !== null) {
+      if (site !== null && s.walls.includes(site)) {
         const p = SITES[site]
         ink
           .fillStyle(tower ? TOWERS[tower.kind].color : 0xeff5d8, 0.12)
@@ -120,8 +162,8 @@ export function mountDefense(
           sprite = this.add.image(0, 0, 'tide-' + e.kind).setDepth(1)
           this.fish.set(e.id, sprite)
         }
-        const p = routePoint(e.distance),
-          size = e.kind === 'boss' ? 1.6 : e.kind === 'swift' ? 0.85 : 1
+        const p = routePoint(e.distance, s.route),
+          size = e.kind === 'boss' ? 1.1 : e.kind === 'swift' ? 0.65 : 0.75
         sprite
           .setPosition(p.x, p.y)
           .setRotation(p.angle)

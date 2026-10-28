@@ -92,7 +92,7 @@
 .td-board {
   position: relative;
   flex: 1;
-  min-height: 260px;
+  min-height: 220px;
   max-height: 560px;
   border-radius: 18px;
   overflow: hidden;
@@ -101,13 +101,13 @@
   align-items: center;
   justify-content: center;
   border: 1px solid #8ab6ac;
+  container-type: size;
 }
 .td-map {
   position: relative;
   aspect-ratio: 420/520;
-  width: 100%;
-  max-width: calc((100dvh - 290px) * 0.8077);
-  max-height: 100%;
+  width: min(100cqw, calc(100cqh * 420 / 520));
+  max-width: 100%;
   flex-shrink: 0;
 }
 .td-phaser {
@@ -119,24 +119,53 @@
   max-width: 100%;
   max-height: 100%;
 }
-.td-site {
+.td-grid {
   position: absolute;
-  transform: translate(-50%, -50%);
-  width: 44px;
-  height: 44px;
-  border: 1.5px dashed #8b9a73;
-  border-radius: 50%;
+  left: 7.142857%;
+  top: 7.692308%;
+  width: 85.714286%;
+  height: 84.615385%;
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  grid-template-rows: repeat(11, minmax(0, 1fr));
+}
+.td-cell {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  border-radius: 6px;
   display: grid;
   place-items: center;
-  background: #ecdfb7cc;
-  color: #6f8769;
+  color: #e1f3d5;
   touch-action: manipulation;
 }
-.td-site:disabled {
-  opacity: 0.6;
+.td-cell > svg {
+  opacity: 0;
+  width: 65%;
+  height: 65%;
+}
+.td-cell:not(:disabled):hover,
+.td-cell-selected {
+  background: #e3edb825;
+  outline: 2px solid #fff4c8;
+  outline-offset: -3px;
+}
+.td-cell-selected > svg,
+.td-cell:not(:disabled):hover > svg,
+.td-cell.td-site-built > svg {
+  opacity: 1;
+}
+.td-cell.td-cell-wall:not(.td-site-built) > svg {
+  opacity: 0;
+}
+.td-cell.td-cell-invalid:not(:disabled) {
+  outline: 2px solid #f3a39a;
+  outline-offset: -3px;
+  background: #c15e5e99;
+  color: #ffd0b8;
 }
 .td-site-built {
-  border: 2px solid #819b83;
+  border: 2px solid #819b8380;
   background: #e0d5a5;
   box-shadow: 0 3px 0 #536e6738;
 }
@@ -152,12 +181,12 @@
   color: #75639a;
   background: #d2c0e8;
 }
-.td-site small {
+.td-cell small {
   position: absolute;
-  right: -3px;
-  bottom: -2px;
-  width: 16px;
-  height: 16px;
+  right: -1px;
+  bottom: -1px;
+  width: 13px;
+  height: 13px;
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -165,10 +194,100 @@
   color: #fff9df;
   font-size: 9px;
 }
-.td-site-selected {
-  outline: 3px solid #fff8d6;
-  outline-offset: 3px;
-  box-shadow: 0 0 0 6px #629e8a;
+.td-terrain-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-shrink: 0;
+  background: #e6ede5;
+  border: 1px solid #d4dfd1;
+  border-radius: 10px;
+  padding: 7px 9px;
+  font-size: 10px;
+}
+.td-terrain-status > span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.td-terrain-status small {
+  font-size: 9px;
+  font-weight: 400;
+  opacity: 0.6;
+}
+.td-terrain-status > span:last-child {
+  font-size: 9px;
+  color: #698577;
+}
+.td-wall-planner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 96px;
+  padding: 12px;
+  border: 1px solid #d8d5ba;
+  background: #f5efdb;
+  border-radius: 12px;
+}
+.td-wall-planner b {
+  display: block;
+  font-size: 11px;
+  line-height: 1.7;
+}
+.td-wall-planner p {
+  font-size: 10px;
+  line-height: 1.7;
+  color: #7d8879;
+  margin-top: 3px;
+}
+.td-wall-planner-invalid {
+  border-color: #dfb5aa;
+  background: #f6e6dd;
+}
+.td-wall-planner-invalid b {
+  color: #ab6555;
+}
+.td-place-wall {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  background: #c9856c;
+  color: #fff8e6;
+  font-size: 11px;
+}
+.td-place-wall:disabled {
+  opacity: 0.4;
+}
+.td-reclaim {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding-top: 5px;
+  font-size: 9px;
+  color: #7c8e80;
+}
+.td-reclaim button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  min-height: 28px;
+  padding: 3px 7px;
+  border-radius: 7px;
+  background: #e8ecdf;
+  color: #647b62;
+  font-size: 10px;
+}
+.td-reclaim button:disabled {
+  opacity: 0.45;
 }
 .td-wave-label {
   position: absolute;
@@ -436,12 +555,9 @@
   .td-instructions {
     gap: 5px;
   }
-  .td-map {
-    max-width: calc((100dvh - 262px) * 0.8077);
-  }
-  .td-site {
-    width: 38px;
-    height: 38px;
+  .td-wall-planner {
+    min-height: 80px;
+    padding: 8px;
   }
   .td-wave-label {
     font-size: 8px;

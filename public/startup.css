@@ -4,6 +4,7 @@
 #app-startup[hidden]{display:none!important}
 .island-startup-art{width:clamp(176px,52vw,248px);aspect-ratio:1;margin-bottom:24px}
 .island-startup-art img{display:block;width:100%;height:100%;object-fit:contain;animation:island-startup-float 3s ease-in-out infinite}
+.island-startup[data-state="error"] .island-startup-art img{animation:none}
 .island-startup-brand{margin:0;font-size:30px;font-weight:400;letter-spacing:.04em;line-height:1.5}
 .island-startup-tagline{margin:8px 0 0;font-size:14px;line-height:1.8;letter-spacing:-.02em;color:#846c57;word-break:keep-all}
 .island-startup-title{max-width:280px;margin:28px 0 0;font-size:12px;font-weight:400;line-height:1.7;color:#95877b;word-break:keep-all}

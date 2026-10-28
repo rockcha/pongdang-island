@@ -11,7 +11,9 @@ it('requires purchase confirmation, supports cancellation and prevents duplicate
  const onAct=vi.fn(()=>new Promise<void>(resolve=>{finish=resolve}))
  const state={owned:[],catalog:[{id:'night',name:'달밤',price:500,image_path:'night.png'}]} as AquariumState
  render(<AquariumBackgroundDialog state={state} selectedId="default" gold={1000} busy={false} loading={false} error={false} onAct={onAct}/>)
- fireEvent.click(screen.getByRole('button',{name:'배경 바꾸기',exact:true}))
+ const caption=screen.getByText('배경 바꾸기',{exact:true})
+ expect(caption.closest('button')).toBe(screen.getByRole('button',{name:'배경 바꾸기',exact:true}))
+ fireEvent.click(caption)
  fireEvent.click(await screen.findByRole('tab',{name:'구매'}))
  fireEvent.click(screen.getByRole('button',{name:'500 구매'}))
  let guard=await screen.findByRole('alertdialog')

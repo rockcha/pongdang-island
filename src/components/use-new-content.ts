@@ -5,14 +5,11 @@ import {createClient} from '@/lib/client'
 import {isAuthFailure} from '@/lib/background-session'
 import {useAccountResource} from '@/lib/account-query'
 import {readNewContent,type ContentSource} from '@/lib/new-content'
+import {contentSeenAt as seen,markContentSeen,contentSeenEvent} from '@/lib/content-seen'
 
 const sources:ContentSource[]=['board','exchange','flea','suggestions','bugs','showcase','merchant']
 const sourcePaths:Record<ContentSource,string>={board:'/board',exchange:'/exchange',flea:'/flea-market',suggestions:'/square/suggestions',bugs:'/square/bugs',showcase:'/showcase',merchant:'/merchant-orders'}
 const emptyState={board:false,exchange:false,flea:false,suggestions:false,bugs:false,showcase:false,merchant:false}
-const seenKey=(owner:string,source:ContentSource)=>'pongdang:content-seen:'+owner+':'+source
-function seen(owner:string,source:ContentSource){
- try{return Number(localStorage.getItem(seenKey(owner,source)))||0}catch{return 0}
-}
 function visiting(path:string,source:ContentSource){
  const destination=sourcePaths[source]
  return path===destination||(source!=='showcase'&&path.startsWith(destination+'/'))
@@ -36,16 +33,20 @@ export function useNewContent(){
  useEffect(()=>{
   if(!owner||recovery||!latest)return
   for(const source of sources){
+   // Feedback feeds acknowledge their actual loaded rows, not a possibly stale menu snapshot.
+   if(source==='bugs'||source==='suggestions')continue
    const newest=Date.parse(latest[source]??'')||0
    if(visiting(pathname,source)&&newest>seen(owner,source)){
-    try{localStorage.setItem(seenKey(owner,source),String(newest))}catch{}
+    markContentSeen(owner,source,[latest[source]])
    }
   }
  },[owner,recovery,latest,pathname])
  useEffect(()=>{
   const storage=(event:StorageEvent)=>{if(owner&&event.key?.startsWith('pongdang:content-seen:'+owner+':'))tick(n=>n+1)}
+  const changed=(event:Event)=>{if((event as CustomEvent<{owner:string}>).detail?.owner===owner)tick(n=>n+1)}
   window.addEventListener('storage',storage)
-  return()=>window.removeEventListener('storage',storage)
+  window.addEventListener(contentSeenEvent,changed)
+  return()=>{window.removeEventListener('storage',storage);window.removeEventListener(contentSeenEvent,changed)}
  },[owner])
  if(!owner||recovery||!latest)return emptyState
  const updates={...emptyState}

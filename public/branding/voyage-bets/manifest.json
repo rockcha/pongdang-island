@@ -1,0 +1,47 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "assets/references/collectible-style/common-rare-pongi.png",
+  "referenceRole": "Pongi otter identity only",
+  "items": [
+    {
+      "companyId": "tongtong",
+      "file": "tongtong-banner-v1.png",
+      "prompt": "Use case: stylized-concept. Asset: wide 3:1 landscape banner illustration for a cozy Korean fishing game company card. Refined warm hand-painted storybook game art, soft dimensional shading, delicate brown edges, inviting charming maritime mood, polished detailed environment. Reference image is only the Pongi otter identity: small rounded golden-brown otter, cream muzzle and belly, little ears, dark nose and whiskers. Do not copy its fishing hook or starfish accessory. Horizontal harbor/sea composition. Main fishing vessel and otter crew occupy the RIGHT TWO THIRDS; left third is calmer darker water/sky with subtle texture, suitable for a title overlay drawn later in HTML. Attractive legible silhouettes at small card size. Edge-to-edge opaque artwork. No text, letters, logo, watermark, UI, panel borders or numbers. Tongtong Shipping: a sturdy compact navy-blue and ivory wooden fishing vessel sailing on sparkling teal daytime coastal water, two cute small otter crew in blue working coats and a striped navy sail. A tidy net and modest fish crates, warm distant lighthouse and soft coral cliffs. Reliable balanced fishing company mood. Palette navy, sea blue, warm cream, muted amber.",
+      "delivery": {
+        "file": "tongtong-banner-v1.webp",
+        "width": 1200,
+        "encoding": "WebP quality 85, sharp; generated PNG retained as fallback"
+      }
+    },
+    {
+      "companyId": "frugal",
+      "file": "frugal-banner-v1.png",
+      "prompt": "Use case: stylized-concept. Asset: wide 3:1 landscape banner illustration for a cozy Korean fishing game company card. Refined warm hand-painted storybook game art, soft dimensional shading, delicate brown edges, inviting charming maritime mood, polished detailed environment. Reference image is only the Pongi otter identity: small rounded golden-brown otter, cream muzzle and belly, little ears, dark nose and whiskers. Do not copy its fishing hook or starfish accessory. Horizontal harbor/sea composition. Main fishing vessel and otter crew occupy the RIGHT TWO THIRDS; left third is calmer darker water/sky with subtle texture, suitable for a title overlay drawn later in HTML. Attractive legible silhouettes at small card size. Edge-to-edge opaque artwork. No text, letters, logo, watermark, UI, panel borders or numbers. Frugal Fisheries: a practical moss-green and honey-colored wooden fishing workboat with neat stacks of small fish crates and simple reusable baskets, three hardworking cute otter crew in olive workwear. Warm sunny sheltered harbor, modest cloth sunshade, abundant small fish in tidy crates. Resourceful cheerful high-volume company mood. Palette sage green, warm yellow, turquoise sea.",
+      "delivery": {
+        "file": "frugal-banner-v1.webp",
+        "width": 1200,
+        "encoding": "WebP quality 85, sharp; generated PNG retained as fallback"
+      }
+    },
+    {
+      "companyId": "lantern",
+      "file": "lantern-banner-v1.png",
+      "prompt": "Use case: stylized-concept. Asset: wide 3:1 landscape banner illustration for a cozy Korean fishing game company card. Refined warm hand-painted storybook game art, soft dimensional shading, delicate brown edges, inviting charming maritime mood, polished detailed environment. Reference image is only the Pongi otter identity: small rounded golden-brown otter, cream muzzle and belly, little ears, dark nose and whiskers. Do not copy its fishing hook or starfish accessory. Horizontal harbor/sea composition. Main fishing vessel and otter crew occupy the RIGHT TWO THIRDS; left third is calmer darker water/sky with subtle texture, suitable for a title overlay drawn later in HTML. Attractive legible silhouettes at small card size. Edge-to-edge opaque artwork. No text, letters, logo, watermark, UI, panel borders or numbers. Night Lantern Fisheries: a handsome deep-indigo fishing boat under a twilight purple sky, amber brass lanterns hanging from a short mast, two cute otter crew in dark plum coats tending a softly luminous fishing net. Restrained violet and turquoise glow in the deep water, distant moonlit islands. Mysterious but cozy premium-catch expedition mood. Palette indigo, lavender, amber, deep teal.",
+      "delivery": {
+        "file": "lantern-banner-v1.webp",
+        "width": 1200,
+        "encoding": "WebP quality 85, sharp; generated PNG retained as fallback"
+      }
+    },
+    {
+      "companyId": "golden",
+      "file": "golden-banner-v1.png",
+      "prompt": "Use case: stylized-concept. Asset: wide 3:1 landscape banner illustration for a cozy Korean fishing game company card. Refined warm hand-painted storybook game art, soft dimensional shading, delicate brown edges, inviting charming maritime mood, polished detailed environment. Reference image is only the Pongi otter identity: small rounded golden-brown otter, cream muzzle and belly, little ears, dark nose and whiskers. Do not copy its fishing hook or starfish accessory. Horizontal harbor/sea composition. Main fishing vessel and otter crew occupy the RIGHT TWO THIRDS; left third is calmer darker water/sky with subtle texture, suitable for a title overlay drawn later in HTML. Attractive legible silhouettes at small card size. Edge-to-edge opaque artwork. No text, letters, logo, watermark, UI, panel borders or numbers. Golden Ocean: a graceful golden-brown and dark-teal ocean-going fishing cutter with modest ivory triangular sails, a cute otter captain in an ocher coat watching a distant shimmering golden star reflection on the open sea. Small brass compass and pearl ornaments on the ship, majestic distant clouds at golden hour, no treasure overload. Rare legendary-catch exploration mood. Palette amber gold, ivory, deep turquoise.",
+      "delivery": {
+        "file": "golden-banner-v1.webp",
+        "width": 1200,
+        "encoding": "WebP quality 85, sharp; generated PNG retained as fallback"
+      }
+    }
+  ]
+}

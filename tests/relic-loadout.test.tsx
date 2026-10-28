@@ -142,7 +142,7 @@ it('confirms sale proceeds and retries an uncertain sale with the same operation
  await waitFor(()=>expect(screen.queryByRole('alertdialog')).toBeNull())
  expect(screen.queryByRole('article',{name:a.name})).toBeNull()
  fireEvent.click(screen.getByRole('button',{name:'유물 도감'}))
- expect(within(screen.getByRole('article',{name:a.name})).getByText('미보유')).toBeTruthy();expect(screen.queryByRole('button',{name:'장착'})).toBeNull()
+ expect(within(screen.getByRole('article',{name:a.name})).queryByText(/미보유|미발견/)).toBeNull();expect(screen.queryByRole('button',{name:'장착'})).toBeNull()
 })
 it('loads the relic page directly and equips for free and charges 500 only for unequipping',async()=>{
  load.mockResolvedValue(state)

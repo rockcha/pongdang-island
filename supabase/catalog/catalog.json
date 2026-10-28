@@ -8997,6 +8997,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "plunder-black-sail-captain-pongi",
+      "kind": "fish",
+      "name": "검은돛 선장 퐁이",
+      "description": "검은 삼각모와 붉은 안감 코트를 두른 작은 선장이에요. 가슴의 황동 나침반으로 동료들이 돌아갈 길을 찾아요.",
+      "swim_y_min": "0.30",
+      "swim_y_max": "0.70",
+      "speed": "0.021",
+      "size": 150,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/plunder-black-sail-captain-pongi_v1_thumbnail.png",
+      "sell_price": 1180,
+      "sprite_sheet_path": "fish/epic/plunder-black-sail-captain-pongi_v1_sprite.png",
+      "native_region_id": "plunder",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "plunder-bloodsail",
       "kind": "fish",
       "name": "탐욕의 황금손",
@@ -9375,6 +9393,24 @@
       "travel_direction": "both"
     },
     {
+      "id": "plunder-red-knot-bosun-pongi",
+      "kind": "fish",
+      "name": "붉은매듭 갑판장 퐁이",
+      "description": "붉은 머릿수건과 밧줄 꾸러미를 두른 씩씩한 갑판장이에요. 단단한 매듭만큼 동료와의 약속도 풀리지 않아요.",
+      "swim_y_min": "0.30",
+      "swim_y_max": "0.70",
+      "speed": "0.024",
+      "size": 145,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/plunder-red-knot-bosun-pongi_v1_thumbnail.png",
+      "sell_price": 1140,
+      "sprite_sheet_path": "fish/epic/plunder-red-knot-bosun-pongi_v1_sprite.png",
+      "native_region_id": "plunder",
+      "movement_type": "swim",
+      "flip_with_direction": true,
+      "travel_direction": "both"
+    },
+    {
       "id": "plunder-rope-mooring-post",
       "kind": "decoration",
       "name": "밧줄 감긴 계선주",
@@ -9444,6 +9480,24 @@
       "native_region_id": "plunder",
       "movement_type": "fixed",
       "flip_with_direction": false,
+      "travel_direction": "both"
+    },
+    {
+      "id": "plunder-safecracker-pongi",
+      "kind": "fish",
+      "name": "금고털이 퐁이",
+      "description": "청록 두건에 열쇠를 숨기고 작은 황동 금고를 꼭 안은 퐁이예요. 자기 금고의 비밀번호는 자주 잊어버려요.",
+      "swim_y_min": "0.30",
+      "swim_y_max": "0.70",
+      "speed": "0.023",
+      "size": 136,
+      "rarity": "epic",
+      "thumbnail_path": "fish/epic/plunder-safecracker-pongi_v1_thumbnail.png",
+      "sell_price": 1160,
+      "sprite_sheet_path": "fish/epic/plunder-safecracker-pongi_v1_sprite.png",
+      "native_region_id": "plunder",
+      "movement_type": "swim",
+      "flip_with_direction": true,
       "travel_direction": "both"
     },
     {
@@ -22615,6 +22669,10 @@
       "region_id": "plunder"
     },
     {
+      "species_id": "plunder-black-sail-captain-pongi",
+      "region_id": "plunder"
+    },
+    {
       "species_id": "plunder-bloodsail",
       "region_id": "plunder"
     },
@@ -22699,6 +22757,10 @@
       "region_id": "plunder"
     },
     {
+      "species_id": "plunder-red-knot-bosun-pongi",
+      "region_id": "plunder"
+    },
+    {
       "species_id": "plunder-rope-mooring-post",
       "region_id": "plunder"
     },
@@ -22712,6 +22774,10 @@
     },
     {
       "species_id": "plunder-rum-bottle-neck",
+      "region_id": "plunder"
+    },
+    {
+      "species_id": "plunder-safecracker-pongi",
       "region_id": "plunder"
     },
     {

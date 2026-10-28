@@ -10,7 +10,7 @@ import { appArt } from '@/components/app-art'
 import { useNewContent } from './use-new-content'
 
 import { Link, useLocation } from 'react-router'
-import { Check, House, FishingRod, Waves, Factory, Store as MarketIcon, BookOpen } from 'lucide-react'
+import { Check, House, FishingRod, Waves, Factory, Store as MarketIcon, BookOpen, NotebookPen } from 'lucide-react'
 
 import {UserRound,AudioLines,Fish,Shapes,Package,Warehouse as WarehouseOutline,Medal,Gem,Map as MapOutline,ShoppingBasket,ShoppingBag,Flame,Sprout,FlaskConical,Anchor,Ship as ShipOutline,Handshake as TradeIcon,ClipboardList,Landmark,Gamepad2 as GameIcon,TowerControl as LighthouseOutline,MessageSquare,Images,Trophy,Newspaper,Megaphone,Heart,Gift,Mail,Lightbulb,Bug} from 'lucide-react'
 
@@ -42,7 +42,7 @@ export const headerPlaces = [
   { to: '/titles', label: '칭호', icon: appArt.title },
   { to: '/relics', label: '유물', icon: RelicIcon },
   { to: '/collection', label: '개체 도감', icon: appArt.collection },
-  { to: '/item-collection', label: '아이템 도감', icon: appArt.collection },
+  { to: '/item-collection', label: '아이템 도감', icon: appArt.itemCollection },
   { to: '/storage', label: '보관함', icon: appArt.storage },
   { to: '/bait-production', label: '미끼 생산소', icon: appArt.baitProduction },
   { to: '/my-bait-production', label: '나만의 미끼 생산소', icon: appArt.baitProduction },
@@ -64,6 +64,7 @@ export const headerPlaces = [
   { to: '/savings', label: '조개 적금', icon: Shell },
   { to: '/warehouse', label: '창고', icon: Warehouse },
   { to: '/arcade', label: '미니게임', icon: Gamepad2 },
+  { to: '/voyage-bets', label: '만선 승부장', icon: Ship },
   { to: '/friends', label: '등대', icon: TowerControl },
   { to: '/hall-of-fame', label: '명예의 전당', icon: appArt.ranking },
   { to: '/board', label: '자유게시판', icon: PlazaIcon },
@@ -80,11 +81,16 @@ export const menuIcons:Record<string,typeof House>={
  '/harbor':MapOutline,'/fishing':FishingRod,'/expeditions':ShoppingBasket,'/shop':FishingRod,'/item-shop':ShoppingBag,
  '/port':Anchor,'/shipyard':ShipOutline,'/production':Flame,'/bait-production':Factory,'/my-bait-production':FlaskConical,'/farm':Sprout,'/production-shop':Factory,'/bait-production-shop':ShoppingBag,
  '/flea-market':ShoppingBasket,'/exchange':TradeIcon,'/merchant-orders':ClipboardList,'/savings':Landmark,'/storage':Package,'/warehouse':WarehouseOutline,'/collection':BookOpen,'/item-collection':BookOpen,'/titles':Medal,'/relics':Gem,'/collection-animation':BookOpen,
- '/friends':LighthouseOutline,'/board':MessageSquare,'/showcase':Images,'/hall-of-fame':Trophy,'/arcade':GameIcon,'/island-news':Newspaper,'/square/notices':Megaphone,'/development-fund':Heart,'/square/sponsorship':Gift,'/square/begging':Mail,'/square/suggestions':Lightbulb,'/square/bugs':Bug,
+ '/friends':LighthouseOutline,'/board':MessageSquare,'/showcase':Images,'/hall-of-fame':Trophy,'/arcade':GameIcon,'/voyage-bets':ShipOutline,'/island-news':Newspaper,'/square/notices':Megaphone,'/development-fund':Heart,'/square/sponsorship':Gift,'/square/begging':Mail,'/square/suggestions':Lightbulb,'/square/bugs':Bug,
 }
 
 const categoryIcons:Record<string,typeof House>={home:House,sea:Waves,production:Factory,market:MarketIcon,collection:BookOpen,community:TradeIcon,news:Newspaper}
+menuIcons['/voyage-bets-test']=FlaskConical
+menuIcons['/fishing-records']=NotebookPen
 const groups=placeGroups.map(group=>({...group,icon:categoryIcons[group.id]??House}))
+const voyageTestPlace={to:'/voyage-bets-test',label:'만선 승부장 테스트',icon:FlaskConical}
+// A record page belongs in the fishing menu without creating an island facility.
+const fishingRecordsPlace={to:'/fishing-records',label:'오늘의 낚시 기록',icon:NotebookPen}
 export function HeaderPlaceNavigation() {
   const equippedRelic=useEquippedRelic()
   const newContent = useNewContent()
@@ -107,8 +113,10 @@ export function HeaderPlaceNavigation() {
     <nav aria-label="장소 바로가기" className="grid w-[224px] shrink-0 grid-cols-7 gap-1 sm:w-[252px]">
       {groups.map((group) => {
         const items = group.sections.flatMap(section=>section.paths)
+          .flatMap(path=>operator&&path==='/voyage-bets'?[path,'/voyage-bets-test']:[path])
+          .flatMap(path=>path==='/fishing'?[path,'/fishing-records']:[path])
           .filter((path) => path !== '/collection-animation' || operator)
-          .map((path) => headerPlaces.find((item) => item.to === path)!)
+          .map((path) => path==='/fishing-records'?fishingRecordsPlace:path==='/voyage-bets-test'?voyageTestPlace:headerPlaces.find((item) => item.to === path)!)
         const selected = items.find(
           (item) => current === item.to || current.startsWith(item.to + '/'),
         )
@@ -163,7 +171,7 @@ export function HeaderPlaceNavigation() {
                             NEW
                           </span>
                         )}
-                        {to === '/collection-animation' && (
+                        {(to === '/collection-animation'||to==='/voyage-bets-test') && (
                           <span className="shrink-0 rounded bg-primary/10 px-1.5 py-1 text-[10px] text-primary">
                             운영자
                           </span>

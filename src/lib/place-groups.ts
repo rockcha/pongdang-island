@@ -5,7 +5,7 @@ export const placeGroups = [
     label: '내 섬',
     sections: [
       { label: '나의 공간', paths: ['/my-island', '/aquarium', '/profile'] },
-      { label: '쉬어가기', paths: ['/music-room', '/arcade'] },
+      { label: '쉬어가기', paths: ['/music-room', '/arcade', '/voyage-bets'] },
       { label: '골드 관리', paths: ['/savings'] },
     ],
   },

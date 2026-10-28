@@ -18,7 +18,7 @@
     "format:arcade:check": "prettier --check \"src/features/arcade/**/*.{ts,tsx,css}\"",
     "dev": "vite",
     "titles:generate": "node scripts/build-title-tiers.mjs",
-    "build": "node scripts/build-title-tiers.mjs && tsc -b && vite build",
+    "build": "node scripts/build-title-tiers.mjs && node scripts/build-voyage-bait-art.mjs && tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
     "arcade:engine": "node scripts/build-brick-replay.mjs",

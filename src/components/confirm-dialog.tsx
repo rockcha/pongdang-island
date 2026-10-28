@@ -28,9 +28,9 @@ export function ConfirmDialog({open,onOpenChange,title,description,onConfirm,tri
   {trigger&&<AlertDialogTrigger render={trigger}/>}
   <AlertDialogContent portalContainer={portalContainer} size="sm" initialFocus={cancel} className="pongi-confirm max-h-[85dvh] w-[calc(100%-2rem)] gap-0 overflow-y-auto rounded-[10px] border p-6 text-center shadow-sm">
    {!compact&&<img src={illustration==='trap'?'/app-icons/fish-trap.png':`/branding/confirm/pongi-${illustration}.png`} alt="" width={160} height={160} className="mx-auto mb-4 size-40 shrink-0 object-contain"/>}
-   <AlertDialogHeader className="gap-2">
+   <AlertDialogHeader className={description==null?'grid-rows-1 gap-0':'gap-2'}>
     <AlertDialogTitle className="text-base font-normal leading-7 text-balance">{title}</AlertDialogTitle>
-    <AlertDialogDescription className="text-xs leading-5 text-pretty">{description}</AlertDialogDescription>
+    {description!=null&&<AlertDialogDescription className="text-xs leading-5 text-pretty">{description}</AlertDialogDescription>}
    </AlertDialogHeader>
    {children&&<div data-slot="confirm-body" className="mt-5 text-left">{children}</div>}
    {error&&<p role="alert" className="mt-3 text-xs leading-5 text-destructive">{error}</p>}

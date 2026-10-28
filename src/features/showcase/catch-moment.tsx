@@ -5,6 +5,7 @@ import {limitedCollectionEvent} from '@/features/collection/limited-events'
 import {collectibleUrl} from '@/features/collection/api'
 import {optimizedThumbnailUrl} from '@/features/collection/thumbnail-art'
 import {catchMomentTheme} from './moment-theme'
+import {RelicIcon} from '@/components/collection-filter-icons'
 
 type MomentProps=CatchMomentArt&{lazy?:boolean;onReadyChange?:(ready:boolean)=>void}
 export function CatchMoment(props:MomentProps){
@@ -43,7 +44,7 @@ function MomentArtwork({species,firstDiscovery=false,practice=false,preview=fals
     {state==='failed'&&!fallbackFailed?<img key={fallbackUrl} src={fallbackUrl} alt={species.name} className="size-full object-contain" onLoad={fallbackLoaded} onError={fallbackError}/>:<span className="size-16 animate-pulse rounded-full bg-current opacity-10 motion-reduce:animate-none" aria-hidden="true"/>}
    </div>
    <span className="rounded bg-current/10 px-2 py-1 text-xs">{rarities[species.rarity].label}</span>
-   <strong className="text-balance text-lg">{species.name}</strong>
+   <strong className="text-balance text-lg">{species.kind==='relic'&&<span role="img" aria-label="유물" className="mr-1.5 inline-flex align-middle"><RelicIcon className="size-[1em] shrink-0"/></span>}{species.name}</strong>
    {species.description&&<p className="line-clamp-2 text-xs leading-5" style={{color:theme.muted}}>{species.description}</p>}
    {state==='loading'?<p className="text-xs" style={{color:theme.metadata}}>바다의 순간을 준비하는 중…</p>:<div className="text-xs" style={{color:theme.metadata}}>
     <p>{fallbackReady?'기본 이미지로 표시하고 있어요.':fallbackFailed?'이미지를 불러오지 못했어요.':'물고기를 불러오는 중…'}</p>

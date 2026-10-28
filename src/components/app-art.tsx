@@ -18,6 +18,7 @@ function decorationShopArtwork({className='size-6'}:{className?:string;strokeWid
  return <span aria-hidden="true" className={`relative inline-block shrink-0 ${className}`}><Decoration className="size-full"/><Store className="absolute -bottom-0.5 -right-0.5 size-[45%] rounded-full bg-background p-px text-primary" strokeWidth={2.3}/></span>
 }
 export const appArt={
+ itemCollection:artwork('item-collection'),
  developmentFund:artwork('development-fund','app-icons','svg'),
  decorationShop:decorationShopArtwork,
  production:productionArtwork('fuel'),
@@ -52,6 +53,7 @@ export const appArt={
  notices:artwork('announcement','notification-icons'),suggestions:artwork('suggestion','notification-icons'),bugs:artwork('bug','notification-icons'),
 }
 const placeArt:Record<string,ReturnType<typeof artwork>>={
+ '/item-collection':appArt.itemCollection,
  '/relics':appArt.relic,
  '/production':appArt.production,
  '/bait-production':appArt.baitProduction,

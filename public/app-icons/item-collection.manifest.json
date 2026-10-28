@@ -1,0 +1,14 @@
+{
+  "generator": "image_gen (built-in)",
+  "prompt": "Create ONE small UI inventory field guide book icon for a cozy Korean fishing island game. Use reference 1 as the precise style and shape family: warm cream parchment book, thick clean dark brown outlines, rounded cute hand-painted cartoon, restrained soft golden shadows, slightly tilted 3/4 front cover view. Reference 2 only supplies the concept of a turquoise shell compass relic. The NEW icon is an ITEM ENCYCLOPEDIA covering maps and relics, clearly distinct from the fish encyclopedia in ref 1. Main silhouette a closed chunky teal-green field guide book with cream page edges, brown leather spine, and small parchment bookmark peeking out. On the front cover put ONE simple large gold compass medallion with turquoise center and a tiny folded parchment map tucked behind the compass. No fish. No lettering, no words, no letters, no numbers. Keep the cover decoration bold and very simple, legible at 24 pixels. Fully isolated on genuinely transparent background, no scene, no square tile, no surrounding shadow outside the icon. Icon fills about 88 percent of square canvas. Palette warm brown outlines, muted teal green book, parchment cream, honey gold. Match the two existing bitmap game icons' handmade charm, no photorealism or glossy 3D.",
+  "references": [
+    "public/app-icons/collection-v2.png",
+    "public/app-icons/relic.png"
+  ],
+  "source": "assets/app-icons/source/item-collection.png",
+  "asset": "public/app-icons/item-collection.png",
+  "width": 256,
+  "height": 256,
+  "transparent": true,
+  "sha256": "065d7ac739eee714a4160b12efcb8267f8432e40c89b3abd7299b43b3ed2b957"
+}

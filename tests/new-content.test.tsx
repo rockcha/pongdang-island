@@ -3,6 +3,7 @@ import {afterEach,beforeEach,expect,it,vi} from 'vitest'
 import {useNewContent} from '@/components/use-new-content'
 import {AppQueryProvider} from '@/lib/account-query'
 import {appQueryClient,setQueryAccount} from '@/lib/account-cache'
+import {markContentSeen} from '@/lib/content-seen'
 const mock=vi.hoisted(()=>({owner:'me',path:'/',reply:vi.fn(),rpc:vi.fn(),allowed:true,auth:undefined as undefined|(()=>void)}))
 vi.mock('@/components/auth-provider',()=>({useAuth:()=>({session:{user:{id:mock.owner}},recovery:false})}))
 vi.mock('react-router',()=>({useLocation:()=>({pathname:mock.path})}))
@@ -107,4 +108,29 @@ it('checks new posts through the shared minute poll without navigating',async()=
  await act(async()=>{await vi.advanceTimersByTimeAsync(60_000)})
  expect(view.result.current.flea).toBe(true)
  expect(mock.rpc).toHaveBeenCalledTimes(2)
+})
+
+it.each([['bugs','/square/bugs'],['suggestions','/square/suggestions']] as const)('keeps already loaded %s seen when an older menu cache catches up',async(source,path)=>{
+ const loaded='2026-10-21T02:00:00Z',newer='2026-10-21T03:00:00Z'
+ mock.reply.mockResolvedValue({data:{...latest,[source]:timestamp},error:null})
+ const view=setup(),second=setup()
+ await waitFor(()=>expect(view.result.current[source]).toBe(true))
+ mock.path=path;view.rerender();second.rerender()
+ expect(localStorage.getItem('pongdang:content-seen:me:'+source)).toBeNull()
+ act(()=>markContentSeen('me',source,[loaded]))
+ mock.path='/';view.rerender();second.rerender()
+ expect(view.result.current[source]).toBe(false);expect(second.result.current[source]).toBe(false)
+ mock.reply.mockResolvedValue({data:{...latest,[source]:loaded},error:null})
+ act(()=>window.dispatchEvent(new Event('focus')))
+ await waitFor(()=>expect(mock.rpc).toHaveBeenCalledTimes(2))
+ expect(view.result.current[source]).toBe(false)
+ mock.path=path;view.rerender()
+ mock.reply.mockResolvedValue({data:{...latest,[source]:newer},error:null})
+ act(()=>window.dispatchEvent(new Event('focus')))
+ await waitFor(()=>expect(appQueryClient.getQueryData<{[key:string]:string}>(['account','me','new-content'])?.[source]).toBe(newer))
+ // A menu poll while on the page must not acknowledge posts absent from its loaded feed.
+ mock.path='/';view.rerender()
+ expect(view.result.current[source]).toBe(true)
+ act(()=>markContentSeen('me',source,[timestamp]))
+ expect(localStorage.getItem('pongdang:content-seen:me:'+source)).toBe(String(Date.parse(loaded)))
 })

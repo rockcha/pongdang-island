@@ -30,7 +30,7 @@ export function RelicCatalogTabs({state,disabled,listRef,onEquip,onSell,onShare}
     const equipped=state.equippedId===r.id
     return <article key={r.id} aria-label={r.name} className={`flex items-center gap-3 px-1 py-4 ${equipped?'bg-primary/[0.035]':''}`}>
      <CollectibleThumbnail path={r.thumbnail_path} name={r.name} className={`size-11 shrink-0 ${r.discovered||r.owned?'':'[&_img]:grayscale [&_img]:brightness-[.08]'}`}/>
-     <div className="min-w-0 flex-1"><div className="flex flex-wrap items-center gap-x-2 gap-y-0.5"><h3 className="text-[13px] font-medium leading-5">{r.name}</h3><RarityBadge rarity={r.rarity}/>{catalog&&<span className="text-[10px] text-muted-foreground">{r.owned?'보유':r.discovered?'미보유':'미발견'}</span>}</div><p className="mt-0.5 text-[11px] leading-[1.65] text-muted-foreground"><RelicEffectText description={r.description}/></p></div>
+     <div className="min-w-0 flex-1"><div className="flex flex-wrap items-center gap-x-2 gap-y-0.5"><h3 className="text-[13px] font-medium leading-5">{r.name}</h3><RarityBadge rarity={r.rarity}/></div><p className="mt-0.5 text-[11px] leading-[1.65] text-muted-foreground"><RelicEffectText description={r.description}/></p></div>
      {!catalog&&<div className="flex shrink-0 items-center gap-0.5"><Button size="sm" variant="ghost" className={`h-9 px-2 text-[11px] ${equipped?'text-primary disabled:opacity-100':'text-muted-foreground'}`} disabled={disabled||!r.owned||equipped} onClick={()=>onEquip(r)}>{equipped?'장착 중':r.owned?(state.equippedId?'교체':'장착'):r.discovered?'미보유':'미발견'}</Button>
       {r.owned&&r.sell_price>0&&<RelicMenu relic={r} equipped={equipped} disabled={disabled} onSell={()=>onSell(r)} onShare={onShare?()=>onShare(r):undefined}/>}
      </div>}

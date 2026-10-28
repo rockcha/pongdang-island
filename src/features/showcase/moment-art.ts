@@ -48,13 +48,15 @@ export async function paintCatchMoment(canvas:HTMLCanvasElement,input:CatchMomen
  const theme=catchMomentTheme(species,regionName)
  const native=species.is_native&&species.native_region_id?regionIcons[species.native_region_id]:undefined
  const titleIcon=limitedCollectionEvent(species.id)?.iconPath??native?.src
+ const titleIcons=[species.kind==='relic'?'/app-icons/relic.png':undefined,titleIcon].filter((path):path is string=>!!path)
  const region=Object.values(regionIcons).find(item=>item.name===regionName)
- const [creature,titleImage,regionImage]=await Promise.all([
+ const [creature,loadedTitleImages,regionImage]=await Promise.all([
   loadMomentCreature(species.thumbnail_path),
-  titleIcon?loadImage(titleIcon).catch(()=>null):Promise.resolve(null),
+  Promise.all(titleIcons.map(path=>loadImage(path).catch(()=>null))),
   region?loadImage(region.src).catch(()=>null):Promise.resolve(null),
   loadMomentFont(`${species.name} ${species.description??''} ${regionName??''} ${rarities[species.rarity].label} 미리보기 실제 포획 기록이 아니에요 NEW 0123456789`),
  ])
+ const titleImages=loadedTitleImages.filter((image):image is HTMLImageElement=>image!==null)
  canvas.width=canvas.height=size
  const ctx=canvas.getContext('2d');if(!ctx)throw new Error('MOMENT_CANVAS_UNAVAILABLE')
  ctx.setTransform(size/catchImageSize,0,0,size/catchImageSize,0,0)
@@ -82,10 +84,11 @@ export async function paintCatchMoment(canvas:HTMLCanvasElement,input:CatchMomen
  badge(ctx,rarities[species.rarity].label,540-total/2,690,gradeWidth,gradeBadge.background,30,gradeBadge.text)
  if(isNew)badge(ctx,'NEW',540-total/2+gradeWidth+gap,690,newWidth,'#dc2626',25)
  ctx.font=`700 58px ${font}`;ctx.fillStyle=theme.text
- const nameLines=wrapMomentText(species.name,t=>ctx.measureText(t).width,titleImage?800:920,2)
+ const titlePrefixWidth=titleImages.length*68
+ const nameLines=wrapMomentText(species.name,t=>ctx.measureText(t).width,titleImages.length?Math.min(800,920-titlePrefixWidth):920,2)
  nameLines.forEach((line,index)=>{
   const y=802+index*70
-  if(titleImage&&index===0){const width=ctx.measureText(line).width;fitImage(ctx,titleImage,540-(width+68)/2,y-45,50,50);ctx.fillText(line,574,y)}else ctx.fillText(line,540,y)
+  if(titleImages.length&&index===0){const width=ctx.measureText(line).width,left=540-(width+titlePrefixWidth)/2;titleImages.forEach((image,i)=>fitImage(ctx,image,left+i*68,y-45,50,50));ctx.fillText(line,540+titlePrefixWidth/2,y)}else ctx.fillText(line,540,y)
  })
  const descriptionY=802+(nameLines.length-1)*70+57
  ctx.font=`400 33px ${font}`;ctx.fillStyle=theme.muted

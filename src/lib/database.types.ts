@@ -111,6 +111,12 @@ export type Database = {
       claim_quest:{Args:{p_kind:import('@/features/quests/api').QuestKind;p_start:string;p_quest_id:string};Returns:import('@/features/quests/api').QuestState}
       expedition_state:{Args:Record<string,never>;Returns:import('@/features/expeditions/api').ExpeditionState}
       expedition_action:{Args:import('@/features/expeditions/api').ExpeditionAction;Returns:import('@/features/expeditions/api').ExpeditionState}
+      voyage_bets_state:{Args:Record<string,never>;Returns:unknown}
+      voyage_bets_place:{Args:{p_operation_id:string;p_plan_id:string;p_side:string;p_stake:number};Returns:unknown}
+      today_fishing_records:{Args:Record<string,never>;Returns:import('@/features/fishing-records/api').TodayFishingRecords}
+      voyage_race_state:{Args:Record<string,never>;Returns:import('@/features/voyage-bets/api').VoyageState}
+      voyage_race_test_sample:{Args:Record<string,never>;Returns:import('@/features/voyage-bets/voyage-test-api').VoyageTestSample}
+      voyage_race_place:{Args:import('@/features/voyage-bets/api').VoyageBetRequest;Returns:import('@/features/voyage-bets/api').VoyageState}
       savings_state:{Args:Record<string,never>;Returns:import('@/features/savings/api').SavingsState}
       savings_action:{Args:import('@/features/savings/api').SavingsAction;Returns:import('@/features/savings/api').SavingsResult}
       confirm_bug_report:{Args:{p_id:string};Returns:import('@/features/bugs/api').BugReport}
